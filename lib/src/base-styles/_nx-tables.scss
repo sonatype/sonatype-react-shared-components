@@ -270,7 +270,7 @@
 
 //Allows making content visible only to screen readers but not visually
 //Applied to the <th> when dealing with clickable rows
-.nx-cell--header.nx-cell--row-btn > .nx-cell__row-btn-header-text {
+.nx-cell__row-btn-header-text {
   @include nx-text-helpers.visually-hidden;
 }
 
