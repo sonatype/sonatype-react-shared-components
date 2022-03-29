@@ -9,7 +9,7 @@ import React from 'react';
 
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NivoLineChartExample from './NivoLineChartExample';
+import NivoLineChartExample from './NivoLineChartMediumDataSetExample';
 const NivolineChartSourceCode = require('./NivoLineChartExample?raw');
 
 const NivoLineChartPage = () =>
