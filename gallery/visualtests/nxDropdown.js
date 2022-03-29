@@ -18,9 +18,9 @@ describe('NxDropdown', function() {
 
     it('has a light grey border by default', simpleTest(defaultSelector));
     it('has a dark grey border when hovered', hoverTest(defaultSelector));
-    it('has a light blue border when focused', focusTest(defaultSelector));
-    it('has a dark grey border when focused and hovered', focusAndHoverTest(defaultSelector));
-    it('has a dark grey border and light grey background when clicked', clickTest(defaultSelector));
+    it('has a light blue border and glow when focused', focusTest(defaultSelector));
+    it('has a light blue border and glow when focused and hovered', focusAndHoverTest(defaultSelector));
+    it('has a dark grey border when clicked', clickTest(defaultSelector));
   });
 
   describe('Default NxDropdown when open', function() {
