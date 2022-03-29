@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode, NxTile, NxH3, NxH4 } from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode, NxTile, NxH3, NxH4, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -107,23 +107,48 @@ const NxTilePage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>.nx-tile__subsection</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>.nx-tile-subsection</NxCode></NxTable.Cell>
               <NxTable.Cell><NxCode>NxTile.Subsection</NxCode></NxTable.Cell>
-              <NxTable.Cell><NxCode>&lt;section&gt;</NxCode> within <NxCode>.nx-tile-content</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                Tile contents may contain subsections with their own <NxCode>h3</NxCode>-level headers. This is
-                the containing element for such subsections.
+                <NxCode>&lt;section&gt;</NxCode> within <NxCode>.nx-tile-content</NxCode> or
+                within another <NxCode>.nx-tile-subsection</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>
+                Tile contents may contain subsections in three cases:
+                <NxList className="nx-list--numbered">
+                  <NxList.Item>
+                    <NxList.Text>
+                      When the tile itself has a header (an <NxCode>h2</NxCode>), the{' '}
+                      <NxCode>.nx-tile-content</NxCode> may contain <NxCode>.nx-tile-subsection</NxCode>s as
+                      immediate children. These subsections should have <NxCode>h3</NxCode> level headers.
+                    </NxList.Text>
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxList.Text>
+                      When the tile has no single <NxCode>h2</NxCode>-level header, the tile contents may be made
+                      up of <NxCode>.nx-tile-subsection</NxCode>s that each have an <NxCode>h2</NxCode> level header.
+                    </NxList.Text>
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxList.Text>
+                      When a tile is using <NxCode>.nx-tile-subsection</NxCode>s for multiple <NxCode>h2</NxCode>
+                      -level sections, each of those sections may have further <NxCode>h3</NxCode>-level subsections
+                      also implemented using <NxCode>.nx-tile-subsection</NxCode>
+                    </NxList.Text>
+                  </NxList.Item>
+                </NxList>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>.nx-tile__subsection-header</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>.nx-tile-subsection__header</NxCode></NxTable.Cell>
               <NxTable.Cell><NxCode>NxTile.SubsectionHeader</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 <NxCode>&lt;header&gt;</NxCode> within <NxCode>.nx-tile__subsection</NxCode>
               </NxTable.Cell>
               <NxTable.Cell>
                 This element contains the header of a tile subsection. Its contents should be
-                an <NxCode>&lt;h3&gt;</NxCode>.
+                an <NxCode>&lt;h2&gt;</NxCode> or <NxCode>&lt;h3&gt;</NxCode> as described in
+                the <NxCode>.nx-tile-subsection</NxCode> documentation above.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -148,9 +173,9 @@ const NxTilePage = () =>
           The tile itself may have a header which pertains to the entire tile – this should be
           implemented using the <NxCode>.nx-tile-header</NxCode> family of classes. Alternatively, a single tile
           might represent multiple equal-level sections which each have their own header. In this
-          scenario, <NxCode>.nx-tile-header</NxCode> should be omitted and the separate sections, along with
-          their <NxCode>.nx-h2</NxCode> headers, should all be placed within
-          the <NxCode>.nx-tile-content</NxCode> element. In some cases a tile may not have headers at all, particularly
+          scenario, <NxCode>.nx-tile-header</NxCode> should be omitted and the separate sections should be implemented
+          as <NxCode>.nx-tile-subsection</NxCode>s within the <NxCode>.nx-tile-content</NxCode>,
+          using <NxCode>.nx-h2</NxCode> headers.  In some cases a tile may not have headers at all, particularly
           when that tile is the sole content on the page and falls under the <NxCode>.nx-page-title</NxCode>.
         </NxP>
         <section>
@@ -159,7 +184,7 @@ const NxTilePage = () =>
             <NxCode>.nx-tile</NxCode> supports both a subtitle to its main header and also separate subheaders, both
             consisting of <NxCode>&lt;h3&gt;</NxCode> elements with their typical RSC styling. The subtitle
             is included within the <NxCode>.nx-tile-header</NxCode> using the appropriate classes as documented above.
-            Subheaders are included within subsections (<NxCode>.nx-tile__subsection</NxCode>) also using
+            Subheaders are included within subsections (<NxCode>.nx-tile-subsection</NxCode>) also using
             classes documented above.
           </NxP>
         </section>
