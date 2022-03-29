@@ -82,7 +82,7 @@ describe('NxFilterDropdown', function() {
         await resetBtn.scrollIntoView();
       });
 
-      it('looks disabled when no items are selected', simpleTest(dropdownSelector));
+      it('looks disabled when no items are selected', simpleTest(tableExampleSelector));
 
       describe('NxFilterDropdown reset button when items are selected', function() {
         beforeEach(async function() {
@@ -91,11 +91,11 @@ describe('NxFilterDropdown', function() {
           checkbox.click();
         });
 
-        it('looks like a link', simpleTest(dropdownSelector));
-        it('has lighter blue text when clicked', clickTest(dropdownSelector, resetBtnSelector));
-        it('has darker text when hovered', hoverTest(dropdownSelector, resetBtnSelector));
+        it('looks like a link', simpleTest(tableExampleSelector));
+        it('has lighter blue text when clicked', clickTest(tableExampleSelector, resetBtnSelector));
+        it('has darker text when hovered', hoverTest(tableExampleSelector, resetBtnSelector));
         it('has a focus border around the Reset icon and text when focused',
-            focusTest(dropdownSelector, resetBtnSelector));
+            focusTest(tableExampleSelector, resetBtnSelector));
       });
     });
   });
