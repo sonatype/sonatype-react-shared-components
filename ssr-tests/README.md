@@ -22,8 +22,9 @@ following command which is adequate for creating a local test environment:
 docker run --name selenium-chrome -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:3.141.59
 ```
 
-When using docker, you must also set the `TEST_IP` environment variable to a non-localhost IP address for your local
-system. This allows the Chrome instance within the docker container to reach out of the container to your local host
-in order to connect to the next.js server.
+When using docker, you must also set the `TEST_IP` environment variable to a non-localhost IP address, i.e.
+the IP address by which your physical host machine connects to the external network (e.g. 192.168.0.2,
+*not* 127.0.0.1). This allows the Chrome instance within the docker container to reach out of the container
+to your local host in order to connect to the next.js server.
 
 Once eveything is set up, run `yarn test` to execute the test suite.

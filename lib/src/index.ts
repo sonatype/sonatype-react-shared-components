@@ -315,4 +315,4 @@ export { StatefulItemProps as NxTreeStatefulItemProps } from './components/NxTre
 
 export { default as NxStableUniqueIdContext } from './components/NxStableUniqueIdContext/NxStableUniqueIdContext';
 
-export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemNotice';
+export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
