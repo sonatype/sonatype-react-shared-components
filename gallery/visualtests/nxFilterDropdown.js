@@ -75,7 +75,7 @@ describe('NxFilterDropdown', function() {
 
     describe('NxFilterDropdown reset button', function() {
       const resetBtnSelector = `${dropdownSelector} .nx-filter-dropdown__reset`,
-          checkboxSelector = `${dropdownSelector} .nx-checkbox`;
+          checkboxSelector = `${dropdownSelector} .nx-checkbox:last-of-type`;
 
       beforeEach(async function() {
         const resetBtn = await browser.$(resetBtnSelector);
