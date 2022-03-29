@@ -22,6 +22,7 @@ const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
     NxTileWithSubtitleCode = require('./NxTileWithSubtitleExample.html'),
     NxTileSubsectionCode = require('./NxTileSubsectionExample.html'),
     NxTileSubsectionWithPrecedingCode = require('./NxTileSubsectionWithPrecedingExample.html'),
+    NxTileSubsectionWithSubtitleCode = require('./NxTileSubsectionWithSubtitleExample.html'),
     NxTileFormCode = require('./NxTileFormExample.tsx?raw'),
     NxTileFormErrorCode = require('./NxTileFormErrorExample.tsx?raw'),
     NxTileDropdownActionsCode = require('./NxTileDropdownActionsExample?raw'),
@@ -80,6 +81,15 @@ const NxTilesExamples = () =>
       An example of an <NxCode>nx-tile</NxCode> containing mulitple subsections, with some non-subsectioned content
       before the first subsection. Note the horizontal rule which appears before the first subsection, but not
       between subsections.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with Subsections and Subtitle"
+                        id="nx-tile-subsections-and-subtitle-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={NxTileSubsectionWithSubtitleCode}
+                        codeExamples={NxTileSubsectionWithSubtitleCode}>
+      An example of an <NxCode>nx-tile</NxCode> containing a tile header with subtitle, and also a subsection as
+      its first content. This demonstrates the spacing between the subtitle and the subsection's subheader.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Multiple Top-Level Headers"
