@@ -21,6 +21,7 @@ const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
     NxTileWithActionsCode = require('./NxTileWithActionsExample.html'),
     NxTileWithSubtitleCode = require('./NxTileWithSubtitleExample.html'),
     NxTileSubsectionCode = require('./NxTileSubsectionExample.html'),
+    NxTileSubsectionWithPrecedingCode = require('./NxTileSubsectionWithPrecedingExample.html'),
     NxTileFormCode = require('./NxTileFormExample.tsx?raw'),
     NxTileFormErrorCode = require('./NxTileFormErrorExample.tsx?raw'),
     NxTileDropdownActionsCode = require('./NxTileDropdownActionsExample?raw'),
@@ -46,14 +47,6 @@ const NxTilesExamples = () =>
       A simple example of an <NxCode>nx-tile</NxCode> containing only a content area and no header.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Example with Multiple Top-Level Headers"
-                        id="nx-tile-multi-header-example"
-                        defaultCheckeredBackground={true}
-                        htmlExample={NxTileMultiHeaderCode}
-                        codeExamples={NxTileMultiHeaderCode}>
-      An <NxCode>nx-tile</NxCode> containing multiple top-level headers.
-    </GalleryExampleTile>
-
     <GalleryExampleTile title="Header Actions Example"
                         id="nx-tile-actions-example"
                         defaultCheckeredBackground={true}
@@ -71,13 +64,30 @@ const NxTilesExamples = () =>
       An example of an <NxCode>nx-tile</NxCode> with a long subtitle that wraps.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Example of Subsections with Preceding Content"
+    <GalleryExampleTile title="Subsections Example"
                         id="nx-tile-subsections-example"
                         defaultCheckeredBackground={true}
                         htmlExample={NxTileSubsectionCode}
                         codeExamples={NxTileSubsectionCode}>
-      An example of an <NxCode>nx-tile</NxCode> containing mulitple subsections. Note the horizontal
-      rule which appears before the first subsection, but not between subsections.
+      An example of an <NxCode>nx-tile</NxCode> containing mulitple subsections.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example of Subsections with Preceding Content"
+                        id="nx-tile-subsections-preceding-content-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={NxTileSubsectionWithPrecedingCode}
+                        codeExamples={NxTileSubsectionWithPrecedingCode}>
+      An example of an <NxCode>nx-tile</NxCode> containing mulitple subsections, with some non-subsectioned content
+      before the first subsection. Note the horizontal rule which appears before the first subsection, but not
+      between subsections.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with Multiple Top-Level Headers"
+                        id="nx-tile-multi-header-example"
+                        defaultCheckeredBackground={true}
+                        htmlExample={NxTileMultiHeaderCode}
+                        codeExamples={NxTileMultiHeaderCode}>
+      An <NxCode>nx-tile</NxCode> containing multiple top-level headers.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Form Tile Example"
