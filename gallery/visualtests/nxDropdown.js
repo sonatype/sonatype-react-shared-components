@@ -13,7 +13,7 @@ describe('NxDropdown', function() {
   });
 
   const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown',
-      buttonSelector = `${defaultSelector} .nx-dropdown`;
+      buttonSelector = `${defaultSelector} .nx-dropdown__toggle`;
 
   describe('Default NxDropdown when closed', function() {
 
