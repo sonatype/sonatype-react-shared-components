@@ -93,6 +93,7 @@ describe('NxTableCell', function () {
         expect(component.children().length).toBe(1);
         expect(component.find('span')).not.toHaveText('foo');
         expect(component.find('span')).toHaveText('Select Row');
+        expect(component.find('span')).toHaveClassName('visually-hidden');
       });
     });
   });
@@ -149,6 +150,7 @@ describe('NxTableCell', function () {
         expect(component.children().length).toBe(1);
         expect(component.find('span')).not.toHaveText('foo');
         expect(component.find('span')).toHaveText('Select Row');
+        expect(component.find('span')).toHaveClassName('visually-hidden');
       });
     });
   });
