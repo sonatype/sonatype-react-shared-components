@@ -12,15 +12,16 @@ describe('NxDropdown', function() {
     await browser.url('#/pages/Dropdown');
   });
 
-  const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown';
+  const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown',
+      buttonSelector = `${defaultSelector} .nx-dropdown`;
 
   describe('Default NxDropdown when closed', function() {
 
     it('has a light grey border by default', simpleTest(defaultSelector));
-    it('has a dark grey border when hovered', hoverTest(defaultSelector));
-    it('has a light blue border and glow when focused', focusTest(defaultSelector));
-    it('has a light blue border and glow when focused and hovered', focusAndHoverTest(defaultSelector));
-    it('has a dark grey border when clicked', clickTest(defaultSelector));
+    it('has a dark grey border when hovered', hoverTest(defaultSelector, buttonSelector));
+    it('has a light blue border and glow when focused', focusTest(defaultSelector, buttonSelector));
+    it('has a light blue border and glow when focused and hovered', focusAndHoverTest(defaultSelector, buttonSelector));
+    it('has a dark grey border when clicked', clickTest(defaultSelector, buttonSelector));
   });
 
   describe('Default NxDropdown when open', function() {
