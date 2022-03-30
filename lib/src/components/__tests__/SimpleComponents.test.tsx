@@ -30,7 +30,6 @@ import {
   NxReadOnly,
   NxTableContainer,
   NxGlobalHeader,
-  NxSystemNotice,
   NxDescriptionList
 } from '../SimpleComponents';
 
@@ -331,18 +330,6 @@ describe('NxGlobalHeader', function() {
 describe('NxGlobalHeader.Actions', function() {
   it('makes an <div> with an nx-global-header__actions class', function() {
     expect(shallow(<NxGlobalHeader.Actions/>)).toMatchSelector('div.nx-global-header__actions');
-  });
-});
-
-describe('NxSystemNotice', function() {
-  it('makes an <div> with an nx-system-notice class', function() {
-    expect(shallow(<NxSystemNotice/>)).toMatchSelector('div.nx-system-notice');
-  });
-});
-
-describe('NxSystemNotice.Container', function() {
-  it('makes an <div> with an nx-system-notice-container class', function() {
-    expect(shallow(<NxSystemNotice.Container/>)).toMatchSelector('div.nx-system-notice-container');
   });
 });
 
