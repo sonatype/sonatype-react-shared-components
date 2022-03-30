@@ -155,7 +155,7 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
-      const component = await browser.$(basicExampleSelector),
+      const component = await browser.$(errorExampleSelector),
           { x, y } = await component.getLocation(),
           region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 195);
 
