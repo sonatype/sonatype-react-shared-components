@@ -4,24 +4,54 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+const { a11yTest } = require('./testUtils');
+
 describe('NxGlobalHeader', function() {
-  it('looks right with full content', async function() {
-    await browser.url('#/NxGlobalHeaderFullExample');
-    await browser.eyesSnapshot(null);
+  describe('NxGlobalHeader with full content', function() {
+    beforeEach(async function() {
+      await browser.url('#/NxGlobalHeaderFullExample');
+    });
+
+    it('looks right', async function() {
+      await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
-  it('looks right without action bar', async function() {
-    await browser.url('#/NxGlobalHeaderNoActionsExample');
-    await browser.eyesSnapshot(null);
+  describe('NxGlobalHeader without action bar', function() {
+    beforeEach(async function() {
+      await browser.url('#/NxGlobalHeaderNoActionsExample');
+    });
+
+    it('looks right', async function() {
+      await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
-  it('looks right without back button', async function() {
-    await browser.url('#/NxGlobalHeaderNoBackButtonExample');
-    await browser.eyesSnapshot(null);
+  describe('NxGlobalHeader without back button', function() {
+    beforeEach(async function() {
+      await browser.url('#/NxGlobalHeaderNoBackButtonExample');
+    });
+
+    it('looks right', async function() {
+      await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
-  it('looks right when empty', async function() {
-    await browser.url('#/NxGlobalHeaderEmptyExample');
-    await browser.eyesSnapshot(null);
+  describe('NxGlobalHeader when empty', function() {
+    beforeEach(async function() {
+      await browser.url('#/NxGlobalHeaderEmptyExample');
+    });
+
+    it('looks right', async function() {
+      await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 });

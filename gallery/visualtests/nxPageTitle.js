@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest } = require('./testUtils');
+const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('nx-page-title', function() {
   beforeEach(async function() {
-    await browser.url('#/pages/Page%20Title');
+    await browser.url('#/pages/Page%20Title?noCheckeredBackground');
   });
 
   const simplePageTitle = '#nx-page-title-example .nx-page-title';
@@ -23,4 +23,6 @@ describe('nx-page-title', function() {
   it('looks right with policy violation indicator', simpleTest(policyViolationIndicatorPageTitle));
 
   it('looks right with sub-title, description, and tags', simpleTest(everythingPageTitle));
+
+  it('passes a11y checks', a11yTest());
 });

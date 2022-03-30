@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { focusTest, simpleTest } = require('./testUtils');
+const { focusTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxPolicyThreatSlider', function() {
   beforeEach(async function() {
@@ -14,8 +14,10 @@ describe('NxPolicyThreatSlider', function() {
 
   const exampleSelector = '#nx-policy-threat-slider-example .gallery-example-live',
       disabledExampleSelector = '#nx-policy-threat-slider-disabled-example .nx-policy-threat-slider',
-      lowerSliderSelector = `${exampleSelector} .nx-policy-threat-slider__value-label[index="0"] .MuiSlider-thumb`,
-      upperSliderSelector = `${exampleSelector} .nx-policy-threat-slider__value-label[index="1"] .MuiSlider-thumb`;
+      lowerSliderSelector =
+          `${exampleSelector} .nx-policy-threat-slider__value-label .MuiSlider-thumb`,
+      upperSliderSelector =
+          `${exampleSelector} .nx-policy-threat-slider__value-label ~ .nx-policy-threat-slider__value-label .MuiSlider-thumb`;
 
   async function dragSliderHandle(browser, sliderElement, spaces) {
     await browser.performActions([{
@@ -74,4 +76,6 @@ describe('NxPolicyThreatSlider', function() {
   describe('Disabled NxPolicyThreatSlider', function() {
     it('looks right', simpleTest(disabledExampleSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

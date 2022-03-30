@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxTooltip', function() {
   beforeEach(async function() {
@@ -47,4 +47,7 @@ describe('NxTooltip', function() {
     const screenshotRegion = new Region(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
     await browser.eyesRegionSnapshot(null, Target.region(screenshotRegion));
   });
+
+  //disabling the region rule to get around the "Some page content is not contained by landmarks" for tooltips
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('region')));
 });

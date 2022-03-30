@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest, simpleTestLongElement } = require('./testUtils');
+const { simpleTest, simpleTestLongElement, a11yTest } = require('./testUtils');
 
 describe('nx-form', function() {
   beforeEach(async function() {
@@ -41,4 +41,7 @@ describe('nx-form', function() {
 
     it('looks right', simpleTest(selector));
   });
+
+  // color-contrast rule doesn't work on elements with a background-image (such as nx-form-select)
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
 });

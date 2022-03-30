@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+const { a11yTest } = require('./testUtils');
+
 describe('Page Layout', function() {
 
   function testLoadWrapper(url) {
@@ -21,6 +23,11 @@ describe('Page Layout', function() {
     it('looks right with sidebar, system notice, and page scrolling', async function() {
       await browser.url('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout');
       await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks with sidebar, system notice, and page scrolling', async function() {
+      await browser.url('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout');
+      await a11yTest()();
     });
 
     it('looks right with sidebar, and page scrolling', async function() {
@@ -41,6 +48,13 @@ describe('Page Layout', function() {
     it('looks right with sidebar, system notice, and section scrolling', async function() {
       await browser.url('#/pageLayouts/LegacySidebarSystemNoticeLayout');
       await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks with sidebar, system notice, and section scrolling', async function() {
+      await browser.url('#/pageLayouts/LegacySidebarSystemNoticeLayout');
+
+      // This rule appears to not work correctly on elements that are partially scrolled off the page
+      await a11yTest(builder => builder.disableRules('color-contrast'));
     });
 
     it('looks right with sidebar, and section scrolling', async function() {
@@ -70,6 +84,13 @@ describe('Page Layout', function() {
     it('looks right with sidebar, system notice, and header', async function() {
       await browser.url('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout');
       await browser.eyesSnapshot(null);
+    });
+
+    it('passes a11y checks with sidebar, system notice, and header', async function() {
+      await browser.url('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout');
+
+      // This rule appears to not work correctly on elements that are partially scrolled off the page
+      await a11yTest(builder => builder.disableRules('color-contrast'));
     });
 
     it('looks right with sidebar, and header', async function() {

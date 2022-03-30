@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Target } = require('@applitools/eyes-webdriverio');
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('nx-form-select', function() {
   const selector = '#nx-form-select-example .nx-form-select',
@@ -44,4 +44,7 @@ describe('nx-form-select', function() {
 
     it('looks disabled', simpleTest(disabledSelector));
   });
+
+  // color-contrast rule breaks in the presence of background-images
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
 });

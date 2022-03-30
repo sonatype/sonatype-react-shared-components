@@ -6,21 +6,24 @@
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
 
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxSegmentedButton', function() {
   beforeEach(async function() {
     await browser.url('#/pages/Segmented%20Button');
   });
 
+  async function openDropdown(dropdownBtnSelector) {
+    const button = await browser.$(dropdownBtnSelector);
+
+    await button.scrollIntoView({ block: 'center' });
+    await button.click();
+  }
+
   function openedTest(selector, dropdownBtnSelector) {
     return async function() {
       await browser.refresh();
-
-      const button = await browser.$(dropdownBtnSelector);
-
-      await button.scrollIntoView({ block: 'center' });
-      await button.click();
+      await openDropdown(dropdownBtnSelector);
 
       const targetElement = await browser.$(selector);
 
@@ -53,6 +56,12 @@ describe('NxSegmentedButton', function() {
       it('has a lighter blue background when clicked', clickTest(selector, dropdownBtnSelector));
       it('has a light blue border when focused', focusTest(selector, dropdownBtnSelector));
       it('has a lighter blue background when opened', openedTest(selector, dropdownBtnSelector));
+    });
+
+    it('passes a11y checks when opened', async function() {
+      await openDropdown(dropdownBtnSelector);
+
+      await a11yTest()();
     });
   });
 
@@ -101,4 +110,6 @@ describe('NxSegmentedButton', function() {
       it('has a lighter blue background when opened', openedTest(selector, dropdownBtnSelector));
     });
   });
+
+  it('passes a11y checks', a11yTest());
 });

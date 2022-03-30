@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 const { Region, Target } = require('@applitools/eyes-webdriverio');
 
 describe('NxTag', function() {
@@ -58,4 +58,6 @@ describe('NxTag', function() {
       }
     });
   });
+
+  it('passes a11y checks', a11yTest());
 });

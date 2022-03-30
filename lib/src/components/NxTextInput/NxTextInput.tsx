@@ -98,7 +98,7 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
               className: 'nx-text-input__input',
               onKeyPress: inputOnKeyPress,
               'aria-invalid': isInvalid,
-              'aria-errormessage': invalidMessageId
+              'aria-errormessage': disabled ? undefined : invalidMessageId
             })}
             <NxFontAwesomeIcon icon={faCheck} className="nx-icon nx-icon--valid"/>
             <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon nx-icon--invalid"/>

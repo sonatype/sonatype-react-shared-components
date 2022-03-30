@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
 
 describe('NxDateInput', function() {
   const simpleComponentSelector = '#nx-date-input-simple-example .nx-text-input',
@@ -71,4 +71,6 @@ describe('NxDateInput', function() {
     it('looks disabled when valid', simpleTest(disabledValidComponentSelector));
     it('looks disabled when invalid', simpleTest(disabledInvalidComponentSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { simpleTest, simpleTestLongElement } = require('./testUtils');
+const { simpleTest, simpleTestLongElement, a11yTest } = require('./testUtils');
 
 describe('nx-tile', function() {
   beforeEach(async function() {
@@ -74,4 +74,6 @@ describe('nx-tile', function() {
   describe('nx-tile with alert as only child', function() {
     it('looks right', simpleTest(alertChildTileSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

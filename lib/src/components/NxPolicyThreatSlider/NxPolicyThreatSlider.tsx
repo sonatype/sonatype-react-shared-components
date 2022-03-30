@@ -22,7 +22,7 @@ import './NxPolicyThreatSlider.scss';
  */
 function NxPolicyThreatSliderValueLabelDisplay(props: LabelDisplayProps) {
 
-  const { value, children, className, disabled, ...otherProps } = props,
+  const { value, children, className, disabled, index, ...otherProps } = props,
 
       // this impl doesn't need to support these props. Filter them out so they don't cause react warnings on the span
       filteredProps = omit(['open', 'valueLabelFormat', 'valueLabelDisplay'], otherProps),
@@ -30,10 +30,15 @@ function NxPolicyThreatSliderValueLabelDisplay(props: LabelDisplayProps) {
       threatCategory = categoryByPolicyThreatLevel[limitedValue],
       thumb = React.Children.only(children),
       screenReaderValue = `${limitedValue} (${threatCategory})`,
+      label = `threat level ${index === 0 ? 'min' : 'max'}`,
 
       // the thumb element isn't initially constructed with any children. Add the value as its child and
       // add extra accessibility attrs
-      additionalThumbProps = { 'aria-valuetext': screenReaderValue, 'aria-disabled': disabled },
+      additionalThumbProps = {
+        'aria-valuetext': screenReaderValue,
+        'aria-disabled': disabled,
+        'aria-label': label
+      },
       thumbWithLabel = React.cloneElement(thumb, additionalThumbProps, limitedValue),
       nxBaseClass = 'nx-policy-threat-slider__value-label',
       classes = classnames(nxBaseClass, `${nxBaseClass}--${threatCategory}`, className);

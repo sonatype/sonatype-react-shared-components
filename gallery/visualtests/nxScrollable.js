@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { Target } = require('@applitools/eyes-webdriverio');
-const { simpleTest } = require('./testUtils');
+const { simpleTest, a11yTest } = require('./testUtils');
 
 describe('nx-scrollable', function() {
   beforeEach(async function() {
@@ -16,4 +16,6 @@ describe('nx-scrollable', function() {
       tableSelector = '#nx-scrollable-table-example .nx-scrollable';
 
   it('looks right', simpleTest(simpleSelector));
+
+  it('passes a11y checks', a11yTest());
 });
