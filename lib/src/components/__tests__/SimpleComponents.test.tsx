@@ -322,8 +322,8 @@ describe('NxTableContainer.Footer', function() {
 });
 
 describe('NxGlobalHeader', function() {
-  it('makes an <aside> with an nx-global-header class', function() {
-    expect(shallow(<NxGlobalHeader/>)).toMatchSelector('aside.nx-global-header');
+  it('makes a <header> with an nx-global-header class', function() {
+    expect(shallow(<NxGlobalHeader/>)).toMatchSelector('header.nx-global-header');
   });
 });
 
