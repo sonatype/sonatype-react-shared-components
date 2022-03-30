@@ -75,6 +75,7 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
                 onChange={() => toggle(id)}
                 isChecked={normalizedSelectedIds.has(id)}
                 overflowTooltip={!optionTooltipGenerator}
+                disabled={disabled}
                 inputAttributes={{ role: 'menuitemcheckbox' }}
                 role="">
       {optionName}
