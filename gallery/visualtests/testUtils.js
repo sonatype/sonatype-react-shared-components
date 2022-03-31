@@ -228,7 +228,7 @@ module.exports = {
       clickTest(elementSelector, clickSelector = elementSelector) {
         return async () => {
           const [targetElement, clickElement] = await waitAndGetElements(elementSelector, clickSelector),
-              { x, y, width, height }= await clickElement.boundingBox();
+              { x, y, width, height } = await clickElement.boundingBox();
 
           await page.mouse.move(x + width / 2, y + height / 2);
 
