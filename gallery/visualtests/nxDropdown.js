@@ -64,7 +64,6 @@ describe('NxDropdown', function() {
     it('has links that look right', async function() {
       const [targetElement] = await waitAndGetElements(selector);
 
-      //await targetElement.scrollIntoView({ block: 'center' });
       await moveMouseAway();
 
       await checkScreenshot(targetElement, 251, 153);

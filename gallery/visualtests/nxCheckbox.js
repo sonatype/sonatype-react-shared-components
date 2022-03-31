@@ -55,11 +55,6 @@ describe('NxCheckbox', function() {
       when clicked, focused, and hovered`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
-          //targetElementBox = targetElement.boundingBox(),
-          //targetElementCenter = {
-            //x: targetElementBox.x + (targetElementBox.width / 2),
-            //y: targetElementBox.y + (targetElementBox.height / 2)
-          //};
 
       await targetElement.click();
       await focusElement.focus();
