@@ -205,7 +205,7 @@ This will create the image and give it a name of "rsc-visualtesting". Note that 
 have docker set up with login credentials for docker-all.repo.sonatype.com.  For non-Sonatype employees, you can instead
 edit the dockerfile to point to the public `node:12` base image instead of the copy hosted on Sonatype's infrastructure.
 
-Once the image is build, execute the tests within a container based on that image by running the following command,
+Once the image is built, execute the tests within a container based on that image by running the following command,
 again from the top directory of the repo.
 
 ```
