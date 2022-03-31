@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-form-select', function() {
-  const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/Form Select');
+  const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Form Select');
   const selector = '#nx-form-select-example .nx-form-select',
       overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
       disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
@@ -37,4 +37,7 @@ describe('nx-form-select', function() {
 
     it('looks disabled', simpleTest(disabledSelector));
   });
+
+  // color-contrast rule breaks in the presence of background-images
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
 });

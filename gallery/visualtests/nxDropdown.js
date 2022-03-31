@@ -15,7 +15,8 @@ describe('NxDropdown', function() {
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
-    checkScreenshot
+    checkScreenshot,
+    a11yTest
   } = setupBrowser('#/pages/Dropdown');
 
   const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown';
@@ -119,4 +120,6 @@ describe('NxDropdown', function() {
       await checkScreenshot(targetElement, 151, 184);
     });
   });
+
+  it('passes a11y checks', a11yTest());
 });

@@ -18,15 +18,19 @@ describe('NxSegmentedButton', function() {
     checkScreenshot,
     checkScreenshotCoordinates,
     getPage
-  } = setupBrowser('#/pages/Segmented%20Button');
+ , a11yTest } = setupBrowser('#/pages/Segmented%20Button');
+
+  async function openDropdown(dropdownBtnSelector) {
+    const [button] = await waitAndGetElements(dropdownBtnSelector);
+
+    await button.click();
+    await moveMouseAway();
+  }
 
   function openedTest(selector, dropdownBtnSelector) {
     return async function() {
-      const [targetElement, button] = await waitAndGetElements(selector, dropdownBtnSelector),
-          page = getPage();
-
-      await button.click();
-      await moveMouseAway();
+      const [targetElement] = await waitAndGetElements(selector);
+      await openDropdown(dropdownBtnSelector);
 
       const { x, y } = await targetElement.boundingBox();
 
@@ -54,6 +58,12 @@ describe('NxSegmentedButton', function() {
       it('has a lighter blue background when clicked', clickTest(selector, dropdownBtnSelector));
       it('has a light blue border when focused', focusTest(selector, dropdownBtnSelector));
       it('has a lighter blue background when opened', openedTest(selector, dropdownBtnSelector));
+    });
+
+    it('passes a11y checks when opened', async function() {
+      await openDropdown(dropdownBtnSelector);
+
+      await a11yTest()();
     });
   });
 
@@ -102,4 +112,6 @@ describe('NxSegmentedButton', function() {
       it('has a lighter blue background when opened', openedTest(selector, dropdownBtnSelector));
     });
   });
+
+  it('passes a11y checks', a11yTest());
 });

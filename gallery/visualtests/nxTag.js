@@ -17,8 +17,9 @@ describe('NxTag', function() {
         checkScreenshotCoordinates,
         checkScreenshot,
         scrollIntoView,
-        wait
-  } = setupBrowser('#/pages/Tag');
+        wait,
+        a11yTest
+      } = setupBrowser('#/pages/Tag');
 
   describe('Basic NxTag', function() {
     const selector = '#nx-tag-example .gallery-example-live',
@@ -59,4 +60,6 @@ describe('NxTag', function() {
       await checkScreenshot(targetElement);
     });
   });
+
+  it('passes a11y checks', a11yTest());
 });

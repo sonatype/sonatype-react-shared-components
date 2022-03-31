@@ -7,11 +7,13 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxSmallThreatCounter', function() {
-  const { simpleTest } = setupBrowser('#/pages/Small%20Threat%20Counter');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Small%20Threat%20Counter');
 
   const basicExampleSelector = '#nx-small-threat-counter-example .gallery-example-live',
       customExampleSelector = '#nx-small-threat-counter-max-digits-example .gallery-example-live';
 
   it('looks correct with default maxDigits and all categories', simpleTest(basicExampleSelector));
   it('looks correct with custom maxDigits and other nearby content', simpleTest(customExampleSelector));
+
+  it('passes a11y checks', a11yTest());
 });

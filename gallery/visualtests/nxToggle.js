@@ -16,7 +16,8 @@ describe('NxToggle', function() {
     moveMouseAway,
     checkScreenshot,
     blurElement,
-    wait
+    wait,
+    a11yTest
   } = setupBrowser('#/pages/Toggle');
 
   const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',
@@ -77,4 +78,6 @@ describe('NxToggle', function() {
     it('looks disabled by default', simpleTest(disabledSelector));
     it('looks disabled when hovered', hoverTest(disabledSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

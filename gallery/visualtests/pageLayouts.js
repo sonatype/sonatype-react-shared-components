@@ -14,7 +14,7 @@ describe('Page Layout', function() {
         checkFullPageScreenshot,
         getPage,
         waitForSelectors,
-        disableLoadingSpinnerAnimation,
+        disableLoadingSpinnerAnimation
       } = setupBrowser(url, false);
 
       beforeEach(async function() {
@@ -37,7 +37,8 @@ describe('Page Layout', function() {
     describe('with sidebar, system notice, and page scrolling', function() {
       const {
         checkFullPageScreenshot,
-        getPage
+        getPage,
+        a11yTest
       } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout', false);
 
       beforeEach(async function() {
@@ -47,6 +48,8 @@ describe('Page Layout', function() {
       it('looks right', async function() {
         await checkFullPageScreenshot();
       });
+
+      it('passes a11y checks', a11yTest());
     });
 
     describe('with sidebar, and page scrolling', function() {
@@ -107,6 +110,11 @@ describe('Page Layout', function() {
       it('looks right', async function() {
         await checkFullPageScreenshot();
       });
+
+      it('passes a11y checks', async function() {
+        // This rule appears to not work correctly on elements that are partially scrolled off the page
+        await a11yTest(builder => builder.disableRules('color-contrast'));
+      });
     });
 
     describe('with sidebar, and section scrolling', function() {
@@ -161,6 +169,11 @@ describe('Page Layout', function() {
 
       it('looks right', async function() {
         await checkFullPageScreenshot();
+      });
+
+      it('passes a11y checks', async function() {
+        // This rule appears to not work correctly on elements that are partially scrolled off the page
+        await a11yTest(builder => builder.disableRules('color-contrast'));
       });
     });
 

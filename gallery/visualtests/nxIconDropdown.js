@@ -17,7 +17,8 @@ describe('NxIconDropdown', function() {
     moveMouseAway,
     checkScreenshot,
     checkScreenshotCoordinates,
-    getPage
+    getPage,
+    a11yTest
   } = setupBrowser('#/pages/Icon%20Dropdown');
 
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
@@ -65,4 +66,6 @@ describe('NxIconDropdown', function() {
 
     it('looks disabled', simpleTest(selector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

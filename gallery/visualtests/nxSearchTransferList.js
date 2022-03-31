@@ -15,7 +15,8 @@ describe('NxSearchTransferList', function() {
         simpleTest,
         waitAndGetElements,
         checkScreenshot,
-        getPage
+        getPage,
+        a11yTest
       } = setupBrowser('#/pages/Search Transfer List');
 
   const simpleListSelector = '#nx-search-transfer-list-example .nx-search-transfer-list',
@@ -23,20 +24,29 @@ describe('NxSearchTransferList', function() {
 
   it('looks right', simpleTest(simpleListSelector));
 
-  it('looks right when displaying results', async function() {
-    const inputSelector = `${simpleListSelector} .nx-filter-input input`,
-        dropdownButtonSelector = `${simpleListSelector} .nx-dropdown-button`,
-        [component, input] = await waitAndGetElements(
-          simpleListSelector,
-          inputSelector
-        );
+  describe('when displaying results', function() {
+    beforeEach(async function() {
+      const inputSelector = `${simpleListSelector} .nx-filter-input input`,
+          dropdownButtonSelector = `${simpleListSelector} .nx-dropdown-button`,
+          [component, input] = await waitAndGetElements(
+            simpleListSelector,
+            inputSelector
+          );
 
-    await input.focus();
-    await getPage().keyboard.type('1');
-    await getPage().waitForSelector(dropdownButtonSelector);
+      await input.focus();
+      await getPage().keyboard.type('1');
+      await getPage().waitForSelector(dropdownButtonSelector);
 
-    await checkScreenshot(component);
+    });
+
+    it('looks right when displaying results', async function() {
+      await checkScreenshot(component);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
   it('looks right with complex options', simpleTest(complexListSelector));
+
+  it('passes a11y checks', a11yTest());
 });

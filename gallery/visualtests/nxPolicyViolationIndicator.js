@@ -7,10 +7,12 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxPolicyViolationIndicator', function() {
-  const { simpleTest } = setupBrowser('#/pages/Policy%20Violation%20Indicator');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Policy%20Violation%20Indicator');
 
   const policyViolationIndicatorCategoryExampleSelector =
       '#nx-policy-violation-indicator-category-example .gallery-example-live';
 
   it('looks right', simpleTest(policyViolationIndicatorCategoryExampleSelector));
+
+  it('passes a11y checks', a11yTest());
 });

@@ -37,7 +37,7 @@ export default function GlobalSidebarSidebarLayout() {
                                          href="#/pages/Page%20Layout"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
-      <NxPageSidebar>
+      <NxPageSidebar tabIndex={0}>
         <NxP>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum augue ut mi facilisis commodo. Sed
           quis faucibus metus. Duis volutpat nisl et risus pellentesque euismod. Praesent iaculis ipsum et iaculis

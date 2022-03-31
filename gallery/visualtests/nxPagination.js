@@ -7,7 +7,8 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxPagination', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/Pagination');
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } =
+      setupBrowser('#/pages/Pagination');
 
   const selector = '#nx-pagination-example .gallery-example-live',
       btnSelector = `${selector} .nx-btn--pagination:nth-child(4)`,
@@ -20,4 +21,6 @@ describe('NxPagination', function() {
   it('puts a dark border and grey background on a clicked button', clickTest(selector, btnSelector));
 
   it('focus button stays blue on click', clickTest(selector, currentBtnSelector));
+
+  it('passes a11y checks', a11yTest());
 });

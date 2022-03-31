@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-list', function() {
-  const { hoverTest, simpleTest, disableLoadingSpinnerAnimation } = setupBrowser('#/pages/List (HTML)');
+  const { hoverTest, simpleTest, disableLoadingSpinnerAnimation, a11yTest } = setupBrowser('#/pages/List (HTML)');
 
   const simpleSelector = '#nx-list-simple-example .gallery-example-live',
       clickableSelector = '#nx-list-clickable-example .nx-list',
@@ -73,4 +73,7 @@ describe('nx-list', function() {
   describe('Deprecated clickable list', function() {
     it('looks right', simpleTest(deprecatedSelector));
   });
+
+  // see comment in the NxListButtonItem source code about aria-selected
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('aria-allowed-attr')));
 });

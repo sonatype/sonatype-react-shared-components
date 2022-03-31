@@ -7,9 +7,11 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-pre', function() {
-  const { simpleTest } = setupBrowser('#/pages/Pre');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Pre');
 
   const selector = '.gallery-example-live';
 
   it('looks right', simpleTest(selector));
+
+  it('passes a11y checks', a11yTest());
 });

@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-threat-number', function() {
-  const { simpleTest } = setupBrowser('#/pages/Threat Number');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Threat Number');
 
   const listSelector = '#nx-threat-number-list-example .nx-list',
       tableSelector = '#nx-threat-number-table-example .nx-table',
@@ -17,4 +17,6 @@ describe('nx-threat-number', function() {
   it('looks right', simpleTest(basicSelector));
   it('looks right in a list', simpleTest(listSelector));
   it('looks right in a table', simpleTest(tableSelector));
+
+  it('passes a11y checks', a11yTest());
 });

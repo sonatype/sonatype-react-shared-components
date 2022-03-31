@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-tile', function() {
-  const { simpleTest, waitAndGetElements, checkScreenshot } = setupBrowser('#/pages/Tile');
+  const { simpleTest, waitAndGetElements, checkScreenshot, a11yTest } = setupBrowser('#/pages/Tile');
 
   const simpleTileSelector = '#nx-tile-simple-example .nx-tile',
       actionsTileSelector = '#nx-tile-actions-example .nx-tile',
@@ -66,4 +66,6 @@ describe('nx-tile', function() {
   describe('nx-tile with alert as only child', function() {
     it('looks right', simpleTest(alertChildTileSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

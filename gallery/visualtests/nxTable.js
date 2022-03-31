@@ -12,7 +12,8 @@ describe('NxTable', function() {
     waitAndGetElements,
     checkScreenshot,
     getPage,
-    disableLoadingSpinnerAnimation
+    disableLoadingSpinnerAnimation, 
+    a11yTest
   } = setupBrowser('#/pages/Table');
 
   const iconColumnTableSelector = '#nx-table-clickable-example .nx-table',
@@ -147,4 +148,6 @@ describe('NxTable', function() {
       expect(heightWithClassAndFullData).toBe(heightWithoutClassAndFullData);
     });
   });
+
+  it('passes a11y checks', a11yTest());
 });

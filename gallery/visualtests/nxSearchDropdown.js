@@ -18,7 +18,8 @@ describe('NxSearchDropdown', function() {
     blurElement,
     scrollIntoView,
     disableLoadingSpinnerAnimation,
-    checkScreenshot
+    checkScreenshot,
+    a11yTest
   } = setupBrowser('#/pages/Search%20Dropdown');
 
   const basicExampleSelector = '#nx-search-dropdown-basic-example .nx-search-dropdown',
@@ -27,50 +28,70 @@ describe('NxSearchDropdown', function() {
       longErrorExampleSelector = '#nx-search-dropdown-long-error-example .nx-search-dropdown';
 
   it('looks right initially', simpleTest(basicExampleSelector));
-  it('looks right when loading', async function() {
-    const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
-        loadingSpinnerSelector = `${basicExampleSelector} .nx-loading-spinner`,
-        [component, input] = await waitAndGetElements(
-          basicExampleSelector,
-          inputSelector
-        );
+  it('passes a11y checks', a11yTest());
 
-    const { x, y } = await component.boundingBox();
+  describe('when loading', function() {
+    beforeEach(async function() {
+      const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
+          loadingSpinnerSelector = `${basicExampleSelector} .nx-loading-spinner`,
+          [component, input] = await waitAndGetElements(
+            basicExampleSelector,
+            inputSelector
+          );
 
-    await scrollIntoView(component);
-    await input.focus();
-    await getPage().keyboard.type('1');
-    await getPage().waitForSelector(loadingSpinnerSelector);
-    await disableLoadingSpinnerAnimation();
+      const { x, y } = await component.boundingBox();
 
-    await checkScreenshot(component, 300, 125);
+      await scrollIntoView(component);
+      await input.focus();
+      await getPage().keyboard.type('1');
+      await getPage().waitForSelector(loadingSpinnerSelector);
+    });
+
+    it('looks right', async function() {
+      await disableLoadingSpinnerAnimation();
+      await checkScreenshot(component, 300, 125);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
-  it('looks right when displaying results', async function() {
-    const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
-        dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
-        [component, input] = await waitAndGetElements(
-          basicExampleSelector,
-          inputSelector
-        );
+  describe('when displaying results', function() {
+    beforeEach(async function() {
+      const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
+          dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
+          [component, input] = await waitAndGetElements(
+            basicExampleSelector,
+            inputSelector
+          );
 
-    await input.focus();
-    await getPage().keyboard.type('1');
-    await getPage().waitForSelector(dropdownButtonSelector);
+      await input.focus();
+      await getPage().keyboard.type('1');
+      await getPage().waitForSelector(dropdownButtonSelector);
+    });
 
-    await checkScreenshot(component, 300, 376);
+    it('looks right', async function() {
+      await checkScreenshot(component, 300, 376);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
-  it('looks right with truncated results', async function() {
-    const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
-        dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
-        [component, input] = await waitAndGetElements(basicExampleSelector, inputSelector);
+  describe('with truncated results', function() {
+    beforeEach(async function() {
+      const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
+          dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
+          [component, input] = await waitAndGetElements(basicExampleSelector, inputSelector);
 
-    await input.focus();
-    await getPage().keyboard.type('loo');
-    await getPage().waitForSelector(dropdownButtonSelector);
+      await input.focus();
+      await getPage().keyboard.type('loo');
+      await getPage().waitForSelector(dropdownButtonSelector);
 
-    await checkScreenshot(component, 300, 88);
+    });
+
+    it('looks right', async function() {
+      await checkScreenshot(component, 300, 88);
+    });
+  });
   });
 
   it('hides the dropdown when not focused', async function() {
@@ -91,34 +112,90 @@ describe('NxSearchDropdown', function() {
     await checkScreenshot(component, 300, 125);
   });
 
-  it('looks right when displaying the empty message', async function() {
-    const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
-        emptyMessageSelector = `${basicExampleSelector} .nx-search-dropdown__empty-message`,
-        [component, input] = await waitAndGetElements(
-          basicExampleSelector,
-          inputSelector
-        );
+  describe('when displaying empty message', function() {
+    beforeEach(async function() {
+      const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
+          emptyMessageSelector = `${basicExampleSelector} .nx-search-dropdown__empty-message`,
+          [component, input] = await waitAndGetElements(
+            basicExampleSelector,
+            inputSelector
+          );
 
-    await scrollIntoView(component);
-    await input.focus();
-    await getPage().keyboard.type('asdfasdf');
-    await getPage().waitForSelector(emptyMessageSelector);
+      await scrollIntoView(component);
+      await input.focus();
+      await getPage().keyboard.type('asdfasdf');
+      await getPage().waitForSelector(emptyMessageSelector);
+    });
 
-    await checkScreenshot(component, 300, 88);
+    it('looks right', async function() {
+      await checkScreenshot(component, 300, 88);
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
-  it('looks right when displaying an error', async function() {
-    const inputSelector = `${errorExampleSelector} .nx-filter-input input`,
-        errorSelector = `${errorExampleSelector} .nx-alert--load-error`,
-        [component, input] =
-            await waitAndGetElements(errorExampleSelector, inputSelector);
+  describe('when displaying an error', function() {
+    beforeEach(async function() {
+      const inputSelector = `${errorExampleSelector} .nx-filter-input input`,
+          errorSelector = `${errorExampleSelector} .nx-alert--load-error`,
+          [component, input] =
+              await waitAndGetElements(errorExampleSelector, inputSelector);
 
-    await scrollIntoView(component);
-    await input.focus();
-    await getPage().keyboard.type('1');
-    await getPage().waitForSelector(errorSelector);
+      await scrollIntoView(component);
+      await input.focus();
+      await getPage().keyboard.type('1');
+      await getPage().waitForSelector(errorSelector);
+    });
 
-    await checkScreenshot(component, 300, 195);
+    it('looks right', async function() {
+      await checkScreenshot(component, 300, 195);
+    });
+
+  describe('NxSearchDropdown displaying the empty message', function() {
+    beforeEach(async function() {
+      const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
+          emptyMessageSelector = `${basicExampleSelector} .nx-search-dropdown__empty-message`,
+          [input, emptyMessage] = await Promise.all([
+            browser.$(inputSelector),
+            browser.$(emptyMessageSelector)
+          ]);
+
+      await input.scrollIntoView({ block: 'center' });
+      await input.setValue('asdfasdf');
+      await emptyMessage.waitForDisplayed();
+    });
+
+    it('looks right', async function() {
+      const component = await browser.$(basicExampleSelector),
+          { x, y } = await component.getLocation(),
+          region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 88);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
+    });
+
+    it('passes a11y checks', a11yTest());
+  });
+
+  describe('NxSearchDropdown displaying an error', function() {
+    beforeEach(async function() {
+      const inputSelector = `${errorExampleSelector} .nx-filter-input input`,
+          errorSelector = `${errorExampleSelector} .nx-alert--load-error`,
+          [input, errorAlert] = await Promise.all([browser.$(inputSelector), browser.$(errorSelector)]);
+
+      await input.scrollIntoView({ block: 'center' });
+      await input.setValue('1');
+      await errorAlert.waitForDisplayed();
+    });
+
+    it('looks right', async function() {
+      const component = await browser.$(errorExampleSelector),
+          { x, y } = await component.getLocation(),
+          region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 195);
+
+      await browser.eyesRegionSnapshot(null, Target.region(region));
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 
   it('looks right with the long variant', async function() {

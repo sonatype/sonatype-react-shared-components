@@ -6,8 +6,8 @@
  */
 const { setupBrowser } = require('./testUtils');
 
-describe('nxThreatIndicatorLegend', function() {
-  const { simpleTest } = setupBrowser('#/pages/Threat Indicator Legend');
+describe('NxThreatIndicatorLegend', function() {
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Threat Indicator Legend');
 
   const horizontalLegendSelector = '#nx-threat-indicator-legend-example .gallery-example-live',
       horizontalLegendHalfSelector = '#nx-threat-indicator-legend-example-half .gallery-example-live',
@@ -23,4 +23,6 @@ describe('nxThreatIndicatorLegend', function() {
       simpleTest(verticalLegendSelector));
   it('looks correct with vertical orientation and only some category level threats shown',
       simpleTest(verticalLegendHalfSelector));
+
+  it('passes a11y checks', a11yTest());
 });

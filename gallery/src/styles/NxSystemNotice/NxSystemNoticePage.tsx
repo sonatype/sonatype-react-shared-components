@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode, NxTile, NxH2, NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode, NxTile, NxH2, NxTextLink, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -64,6 +64,18 @@ const NxSystemNoticePage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Accessibility Considerations</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The <NxCode>NxSystemNotice</NxCode> convenience component has an ARIA <NxCode>role</NxCode> of
+          "complementary" along with a hard-coded <NxCode>aria-label</NxCode>. "Complementary" is a landmark role
+          and is therefore constrained by the rule that no two elements with the same landmark should have the same
+          label. Therefore, whenever multiple <NxCode>NxSystemNotice</NxCode> components are used, at least one of
+          them should be given a custom <NxCode>aria-label</NxCode> to override the hard-coded default.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <NxTile>

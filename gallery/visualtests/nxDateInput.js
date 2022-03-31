@@ -13,7 +13,8 @@ describe('NxDateInput', function() {
     hoverTest,
     simpleTest,
     waitAndGetElements,
-    checkScreenshot
+    checkScreenshot,
+    a11yTest
   } = setupBrowser('#/pages/Date%20Input');
 
   const simpleComponentSelector = '#nx-date-input-simple-example .nx-text-input',
@@ -71,4 +72,6 @@ describe('NxDateInput', function() {
     it('looks disabled when valid', simpleTest(disabledValidComponentSelector));
     it('looks disabled when invalid', simpleTest(disabledInvalidComponentSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

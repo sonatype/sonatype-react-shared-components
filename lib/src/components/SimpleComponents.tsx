@@ -73,12 +73,8 @@ export const NxTableContainer = Object.assign(withClass('div', 'nx-table-contain
   Footer: withClass('div', 'nx-table-container__footer')
 });
 
-export const NxGlobalHeader = Object.assign(withClass('aside', 'nx-global-header'), {
+export const NxGlobalHeader = Object.assign(withClass('header', 'nx-global-header'), {
   Actions: withClass('div', 'nx-global-header__actions')
-});
-
-export const NxSystemNotice = Object.assign(withClass('div', 'nx-system-notice'), {
-  Container: withClass('div', 'nx-system-notice-container')
 });
 
 export const NxDescriptionList = Object.assign(withClass('dl', 'nx-list nx-list--description-list'), {

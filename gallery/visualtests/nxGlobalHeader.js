@@ -8,38 +8,46 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxGlobalHeader', function() {
   describe('with full content', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderFullExample', false);
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeaderFullExample', false);
 
     it('looks right', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
       await checkFullPageScreenshot();
     });
+
+    it('passes a11y checks', a11yTest());
   });
 
   describe('without action bar', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderNoActionsExample', false);
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeaderNoActionsExample', false);
 
     it('looks right', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
       await checkFullPageScreenshot();
     });
+
+    it('passes a11y checks', a11yTest());
   });
 
   describe('without back button', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderNoBackButtonExample', false);
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeaderNoBackButtonExample', false);
 
     it('looks right', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
       await checkFullPageScreenshot();
     });
+
+    it('passes a11y checks', a11yTest());
   });
 
   describe('when empty', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalHeaderEmptyExample', false);
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeaderEmptyExample', false);
 
     it('looks right when empty', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
       await checkFullPageScreenshot();
     });
+
+    it('passes a11y checks', a11yTest());
   });
 });

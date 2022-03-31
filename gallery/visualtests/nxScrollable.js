@@ -7,10 +7,12 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-scrollable', function() {
-  const { simpleTest } = setupBrowser('#/pages/nx-scrollable');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/nx-scrollable');
 
   const simpleSelector = '#nx-scrollable-simple-example .nx-scrollable',
       tableSelector = '#nx-scrollable-table-example .nx-scrollable';
 
   it('looks right', simpleTest(simpleSelector));
+
+  it('passes a11y checks', a11yTest());
 });

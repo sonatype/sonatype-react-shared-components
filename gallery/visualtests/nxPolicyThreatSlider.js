@@ -7,13 +7,15 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxPolicyThreatSlider', function() {
-  const { focusTest, simpleTest, getPage, waitAndGetElements, scrollIntoView } =
+  const { focusTest, simpleTest, getPage, waitAndGetElements, scrollIntoView, a11yTest } =
       setupBrowser('#/pages/Policy%20Threat%20Slider');
 
   const exampleSelector = '#nx-policy-threat-slider-example .gallery-example-live',
       disabledExampleSelector = '#nx-policy-threat-slider-disabled-example .nx-policy-threat-slider',
-      lowerSliderSelector = `${exampleSelector} .nx-policy-threat-slider__value-label[index="0"] .MuiSlider-thumb`,
-      upperSliderSelector = `${exampleSelector} .nx-policy-threat-slider__value-label[index="1"] .MuiSlider-thumb`;
+      lowerSliderSelector =
+          `${exampleSelector} .nx-policy-threat-slider__value-label .MuiSlider-thumb`,
+      upperSliderSelector =
+          `${exampleSelector} .nx-policy-threat-slider__value-label ~ .nx-policy-threat-slider__value-label .MuiSlider-thumb`;
 
   async function dragSliderHandle(sliderElement, spaces) {
     const { mouse } = getPage(),
@@ -57,4 +59,6 @@ describe('NxPolicyThreatSlider', function() {
   describe('Disabled NxPolicyThreatSlider', function() {
     it('looks right', simpleTest(disabledExampleSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

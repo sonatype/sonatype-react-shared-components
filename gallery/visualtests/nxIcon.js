@@ -7,9 +7,11 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-icon', function() {
-  const { simpleTest } = setupBrowser('#/pages/Icon');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Icon');
 
   const selector = '.gallery-example-live';
 
   it('looks right', simpleTest(selector));
+
+  it('passes a11y checks', a11yTest());
 });

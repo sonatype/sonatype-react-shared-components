@@ -10,7 +10,7 @@ describe('NxGlobalSidebarFooter', function() {
   // Full examples of this component are captured by NxGlobalSidebar
 
   describe('minimal layout', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarFooterMinimalExample', false);
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalSidebarFooterMinimalExample', false);
 
     beforeEach(async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
@@ -19,10 +19,12 @@ describe('NxGlobalSidebarFooter', function() {
     it('looks right', async function() {
       await checkFullPageScreenshot();
     });
+
+    it('passes a11y checks', a11yTest());
   });
 
   describe('when empty', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarFooterEmptyExample', false);
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalSidebarFooterEmptyExample', false);
 
     beforeEach(async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
@@ -31,5 +33,7 @@ describe('NxGlobalSidebarFooter', function() {
     it('looks right', async function() {
       await checkFullPageScreenshot();
     });
+
+    it('passes a11y checks', a11yTest());
   });
 });

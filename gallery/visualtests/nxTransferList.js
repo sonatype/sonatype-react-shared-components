@@ -15,7 +15,8 @@ describe('NxTransferList', function() {
     simpleTest,
     waitAndGetElements,
     checkScreenshot,
-    wait
+    wait,
+    a11yTest
   } = setupBrowser('#/pages/Transfer List');
 
   const simpleListSelector = '#nx-transfer-list-minimal-example .nx-transfer-list',
@@ -50,4 +51,6 @@ describe('NxTransferList', function() {
 
   it('makes the move all button dark blue when hovered', hoverTest(complexListSelector, transferAllSelector));
   it('makes the move all button light blue when clicked', clickTest(complexListSelector, transferAllSelector));
+
+  it('passes a11y checks', a11yTest());
 });

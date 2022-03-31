@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTooltip', function() {
-  const { waitAndGetElements, checkScreenshotCoordinates, wait } = setupBrowser('#/pages/Tooltip');
+  const { waitAndGetElements, checkScreenshotCoordinates, wait, a11yTest } = setupBrowser('#/pages/Tooltip');
 
   const selector = '.gallery-example .nx-btn-bar',
       firstBtnSelector = `${selector} button:first-child`,
@@ -40,4 +40,7 @@ describe('NxTooltip', function() {
 
     await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
   });
+
+  //disabling the region rule to get around the "Some page content is not contained by landmarks" for tooltips
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('region')));
 });

@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-page-title', function() {
-  const { simpleTest } = setupBrowser('#/pages/Page%20Title');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Page%20Title?noCheckeredBackground');
 
   const simplePageTitle = '#nx-page-title-example .nx-page-title';
   const actionsPageTitle = '#nx-page-title-actions-example .nx-page-title';
@@ -21,4 +21,6 @@ describe('nx-page-title', function() {
   it('looks right with policy violation indicator', simpleTest(policyViolationIndicatorPageTitle));
 
   it('looks right with sub-title, description, and tags', simpleTest(everythingPageTitle));
+
+  it('passes a11y checks', a11yTest());
 });

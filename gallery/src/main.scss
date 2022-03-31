@@ -110,3 +110,49 @@
     display: none;
   }
 }
+
+// Accessibility Checklist Page
+.nx-list.gallery-list--no-bullets {
+  .nx-list__item {
+    list-style: none;
+  }
+}
+
+.gallery-accessibility-list {
+  .nx-checkbox__box {
+    align-self: flex-start;
+    margin-top: var(--nx-spacing-base);
+  }
+
+  .nx-radio-checkbox__content {
+    white-space: normal;
+  }
+
+  .nx-text-link {
+    margin-left: var(--nx-spacing-6x);
+  }
+
+  &.gallery-a-hidden {
+    .gallery-level-a {
+      display: none;
+    }
+  }
+  
+  &.gallery-aa-hidden {
+    .gallery-level-aa {
+      display: none;
+    }
+  }
+  
+  &.gallery-aaa-hidden {
+    .gallery-level-aaa {
+      display: none;
+    }
+  }
+  
+  &.gallery-reco-hidden {
+    .gallery-level-reco {
+      display: none;
+    }
+  }
+}

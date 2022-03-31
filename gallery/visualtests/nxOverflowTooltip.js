@@ -17,7 +17,7 @@ describe('NxOverflowTooltip', function() {
     waitAndGetElements,
     wait,
     getElements
-  } = setupBrowser('#/pages/Overflow%20Tooltip');
+ , a11yTest } = setupBrowser('#/pages/Overflow%20Tooltip');
 
   const listSelector = '#nx-overflow-tooltip-simple-example .nx-list',
       descendantOverflowListSelector = '#nx-overflow-tooltip-descendant-example .nx-list',
@@ -196,5 +196,19 @@ describe('NxOverflowTooltip', function() {
         'List item 2 - this text is long and should truncate with a tooltip this text is long and should truncate ' +
         'with a tooltip this text is long and should truncate with a tooltip'
     );
+  });
+
+  it('passes a11y checks when tooltip not active', a11yTest());
+  it('passes a11y checks when tooltip is active', async function() {
+    const item2 = await browser.$(item2Selector);
+
+    await item2.scrollIntoView({ block: 'center' });
+    await item2.moveTo();
+    await browser.pause(1000);
+
+    await browser.$(tooltipSelector);
+
+    //disabling the region rule to get around the "Some page content is not contained by landmarks" for tooltips
+    await a11yTest(builder => builder.disableRules('region'));
   });
 });

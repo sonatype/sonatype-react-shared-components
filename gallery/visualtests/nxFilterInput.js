@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTextInput', function() {
-  const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = setupBrowser('#/pages/Filter%20Input');
+  const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Filter%20Input');
 
   const simpleComponentSelector = '#nx-filter-input-simple-example .nx-filter-input',
       searchComponentSelector = '#nx-filter-input-search-example .nx-filter-input',
@@ -25,4 +25,6 @@ describe('NxTextInput', function() {
   describe('Disabled NxFilterInput', function() {
     it('looks disabled', simpleTest(disabledComponentSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

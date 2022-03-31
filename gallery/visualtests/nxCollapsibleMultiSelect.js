@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCollapsibleMultiSelect', function() {
-  const { focusTest, simpleTest } = setupBrowser('#/pages/Collapsible Multi-Select');
+  const { focusTest, simpleTest, a11yTest } = setupBrowser('#/pages/Collapsible Multi-Select');
 
   const selector = '#nx-collapsible-multi-select-example .nx-collapsible-items--select';
 
@@ -17,4 +17,6 @@ describe('NxCollapsibleMultiSelect', function() {
     const checkboxSelector = selector + ' .nx-collapsible-items__child:nth-child(2) .nx-radio-checkbox__input';
     it('has an offsetted blue outer border outline and glow when focused', focusTest(selector, checkboxSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

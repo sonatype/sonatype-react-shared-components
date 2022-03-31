@@ -7,9 +7,11 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-counter', function() {
-  const { simpleTest } = setupBrowser('#/pages/Counter');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Counter');
 
   const selector = '.gallery-example-live';
 
   it('looks right', simpleTest(selector));
+
+  it('passes a11y checks', a11yTest());
 });

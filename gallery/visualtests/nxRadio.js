@@ -15,7 +15,8 @@ describe('NxRadio', function() {
     waitAndGetElements,
     moveMouseAway,
     blurElement,
-    checkScreenshot
+    checkScreenshot,
+    a11yTest
   } = setupBrowser('#/pages/Radio');
 
   const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
@@ -75,4 +76,6 @@ describe('NxRadio', function() {
     it('looks disabled by default', simpleTest(disabledCheckedSelector));
     it('looks disabled when hovered', hoverTest(disabledCheckedSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

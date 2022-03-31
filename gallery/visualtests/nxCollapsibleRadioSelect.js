@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCollapsibleRadioSelect', function() {
-  const { focusTest, simpleTest } = setupBrowser('#/pages/Collapsible Radio-Select');
+  const { focusTest, simpleTest, a11yTest } = setupBrowser('#/pages/Collapsible Radio-Select');
 
   const selector = '#nx-collapsible-radio-select-example .nx-collapsible-items--select';
 
@@ -17,4 +17,6 @@ describe('NxCollapsibleRadioSelect', function() {
     const radioSelector = selector + ' .nx-collapsible-items__child:nth-child(3) .nx-radio-checkbox__input';
     it('has an offsetted blue outer border outline and glow when focused', focusTest(selector, radioSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

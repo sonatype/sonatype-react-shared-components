@@ -17,21 +17,32 @@ describe('NxModal', function() {
       stackedExampleSelector = '#nx-modal-stacked-example',
       escClosingExampleSelector = '#nx-modal-esc-example';
 
+  async function openModal(exampleSelector) {
+    const openModalBtnSelector = `${exampleSelector} button`,
+        closeModalBtnSelector =
+            `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`;
+
+    const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
+
+    await openModalBtn.click();
+
+    const [closeModalBtn] = await waitAndGetElements(closeModalBtnSelector);
+  }
+
   function simpleModalTest(exampleSelector) {
     return async function() {
-      const openModalBtnSelector = `${exampleSelector} button`,
-          closeModalBtnSelector =
-              `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`;
-
-      const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
-
-      await openModalBtn.click();
-
-      const [closeModalBtn] = await waitAndGetElements(closeModalBtnSelector);
+      await openModal(exampleSelector);
 
       // take image of entire viewport in order to capture the backdrop color
       await checkFullPageScreenshot();
-    }
+    };
+  }
+
+  function modalA11yTest(exampleSelector) {
+    return async function() {
+      await openModal(exampleSelector);
+      await a11yTest()();
+    };
   }
 
   beforeEach(async function() {
@@ -40,6 +51,8 @@ describe('NxModal', function() {
 
   describe('Simple NxModal', function() {
     it('looks right', simpleModalTest(simpleExampleSelector));
+
+    it('passes a11y checks', modalA11yTest(simpleExampleSelector));
   });
 
   describe('Form NxModal', function() {
@@ -90,6 +103,8 @@ describe('NxModal', function() {
 
       await checkFullPageScreenshot();
     });
+
+    it('passes a11y checks', modalA11yTest(formWithAlertExampleSelector));
   });
 
   describe('Narrow NxModal', function() {

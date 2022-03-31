@@ -24,7 +24,7 @@ describe('NxTextInput', function() {
     return `${componentSelector} ${inputType}`;
   }
 
-  const { getPage, blurElement, simpleTest, focusTest, hoverTest, focusAndHoverTest } =
+  const { getPage, blurElement, simpleTest, focusTest, hoverTest, focusAndHoverTest, a11yTest } =
       setupBrowser('#/pages/Text Input');
 
   describe('Simple NxTextInput', function() {
@@ -143,4 +143,6 @@ describe('NxTextInput', function() {
     it('looks disabled when valid', simpleTest(disabledValidComponentSelector));
     it('looks disabled when invalid', simpleTest(disabledInvalidComponentSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

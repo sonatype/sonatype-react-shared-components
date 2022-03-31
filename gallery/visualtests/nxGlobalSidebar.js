@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-global-sidebar', function() {
-  const { getPage, waitAndGetElements, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarExample', false);
+  const { getPage, waitAndGetElements, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalSidebarExample', false);
 
   beforeEach(async function() {
     await getPage().setViewport({ width: 1366, height: 1000 });
@@ -25,4 +25,6 @@ describe('nx-global-sidebar', function() {
 
     await checkFullPageScreenshot();
   });
+
+  it('passes a11y checks', a11yTest());
 });

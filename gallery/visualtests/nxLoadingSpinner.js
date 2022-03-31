@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxLoadingSpinner', function() {
-  const { simpleTest, disableLoadingSpinnerAnimation } = setupBrowser('#/pages/Loading%20Spinner');
+  const { simpleTest, disableLoadingSpinnerAnimation, a11yTest } = setupBrowser('#/pages/Loading%20Spinner');
 
   const selector = '.gallery-example .nx-loading-spinner';
 
@@ -15,4 +15,6 @@ describe('NxLoadingSpinner', function() {
     await disableLoadingSpinnerAnimation();
     await simpleTest(selector)();
   });
+
+  it('passes a11y checks', a11yTest());
 });

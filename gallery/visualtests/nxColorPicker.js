@@ -15,7 +15,8 @@ describe('NxColorPicker', function() {
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
-    checkScreenshot
+    checkScreenshot, 
+    a11yTest 
   } = setupBrowser('#/pages/Color%20Picker');
 
   const selector = '.gallery-example-live .nx-color-picker',
@@ -35,4 +36,6 @@ describe('NxColorPicker', function() {
 
     await checkScreenshot(targetElement);
   });
+
+  it('passes a11y checks', a11yTest());
 });

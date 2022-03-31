@@ -14,7 +14,8 @@ describe('NxTree', function() {
     blurElement,
     waitAndGetElements,
     getPage,
-    isFocused
+    isFocused,
+    a11yTest
   } = setupBrowser('#/pages/Tree');
 
   const nonCollapsibleExampleSelector = '#nx-tree-non-collapsible-example .nx-tree',
@@ -663,4 +664,6 @@ describe('NxTree', function() {
       expect(await hasClass(keyboard, 'open')).toBe(true);
     });
   });
+
+  it('passes a11y checks', a11yTest());
 });

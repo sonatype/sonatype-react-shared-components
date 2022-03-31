@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxSubmitMask', function() {
-  const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation, getPage } =
+  const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation, getPage, a11yTest } =
       setupBrowser('#/pages/Submit%20Mask');
 
   const loadingMaskBtnSelector = '#nx-submit-mask-loading-example button',
@@ -17,20 +17,31 @@ describe('NxSubmitMask', function() {
     await getPage().setViewport({ width: 1366, height: 1000 });
   });
 
-  it('looks right when loading', async function() {
-    const [btn] = await waitAndGetElements(loadingMaskBtnSelector);
+  describe('when loading', function() {
+    beforeEach(async function() {
+      const [btn] = await waitAndGetElements(loadingMaskBtnSelector);
+      await btn.click();
+    });
 
-    await btn.click();
-    await disableLoadingSpinnerAnimation();
+    it('looks right', async function() {
+      await disableLoadingSpinnerAnimation();
+      await checkFullPageScreenshot();
+    });
 
-    await checkFullPageScreenshot();
+    it('passes a11y checks', a11yTest());
   });
 
-  it('looks right when successful', async function() {
-    const [btn] = await waitAndGetElements(successMaskBtnSelector);
+  describe('when successful', function() {
+    beforeEach(async function() {
+      const [btn] = await waitAndGetElements(successMaskBtnSelector);
 
-    await btn.click();
+      await btn.click();
+    });
 
-    await checkFullPageScreenshot();
+    it('looks right when successful', async function() {
+      await checkFullPageScreenshot();
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 });
