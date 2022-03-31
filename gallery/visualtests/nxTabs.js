@@ -7,8 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTabs', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, waitAndGetElements, checkScreenshot } =
-      setupBrowser('#/pages/Tabs?noCheckeredBackground');
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    checkScreenshot,
+    a11yTest
+  } = setupBrowser('#/pages/Tabs?noCheckeredBackground');
 
   const tabTileExampleSelector = '#nx-tab-tile-example .nx-tile',
       tabTileNoHeaderExampleSelector = '#nx-tab-tile-no-header-example .nx-tile',

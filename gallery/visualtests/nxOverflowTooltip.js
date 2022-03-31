@@ -200,13 +200,11 @@ describe('NxOverflowTooltip', function() {
 
   it('passes a11y checks when tooltip not active', a11yTest());
   it('passes a11y checks when tooltip is active', async function() {
-    const item2 = await browser.$(item2Selector);
+    const [item2] = await waitAndGetElements(item2Selector);
 
-    await item2.scrollIntoView({ block: 'center' });
-    await item2.moveTo();
-    await browser.pause(1000);
+    await item2.hover();
 
-    await browser.$(tooltipSelector);
+    await waitAndGetElements(tooltipSelector);
 
     //disabling the region rule to get around the "Some page content is not contained by landmarks" for tooltips
     await a11yTest(builder => builder.disableRules('region'));

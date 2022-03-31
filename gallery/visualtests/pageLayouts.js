@@ -100,7 +100,8 @@ describe('Page Layout', function() {
     describe('with sidebar, system notice, and section scrolling', function() {
       const {
         checkFullPageScreenshot,
-        getPage
+        getPage,
+        a11yTest
       } = setupBrowser('#/pageLayouts/LegacySidebarSystemNoticeLayout', false);
 
       beforeEach(async function() {
@@ -160,7 +161,8 @@ describe('Page Layout', function() {
     describe('with sidebar, system notice, and header', function() {
       const {
         checkFullPageScreenshot,
-        getPage
+        getPage,
+        a11yTest
       } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout', false);
 
       beforeEach(async function() {

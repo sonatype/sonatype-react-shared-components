@@ -12,7 +12,7 @@
     "webpack-dev-server": "webpack serve",
     "test": "npm-run-all check-install build jest",
     "check-install": "yarn install --check-files --frozen-lockfile",
-    "jest": "jest --testTimeout=30000",
+    "jest": "jest --testTimeout=120000",
     "clean": "rimraf dist webpack-modules test-results"
   },
   "repository": {

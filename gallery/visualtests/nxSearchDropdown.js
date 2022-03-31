@@ -48,11 +48,13 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
+      const [component] = await waitAndGetElements(basicExampleSelector);
       await disableLoadingSpinnerAnimation();
       await checkScreenshot(component, 300, 125);
     });
 
-    it('passes a11y checks', a11yTest());
+    // color-contrast rule doesn't work when elements overlap, which of course happens when the dropdown is open
+    it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
   });
 
   describe('when displaying results', function() {
@@ -70,10 +72,11 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
+      const [component] = await waitAndGetElements(basicExampleSelector);
       await checkScreenshot(component, 300, 376);
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
   });
 
   describe('with truncated results', function() {
@@ -89,9 +92,9 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
+      const [component] = await waitAndGetElements(basicExampleSelector);
       await checkScreenshot(component, 300, 88);
     });
-  });
   });
 
   it('hides the dropdown when not focused', async function() {
@@ -128,10 +131,11 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
+      const [component] = await waitAndGetElements(basicExampleSelector);
       await checkScreenshot(component, 300, 88);
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
   });
 
   describe('when displaying an error', function() {
@@ -148,54 +152,9 @@ describe('NxSearchDropdown', function() {
     });
 
     it('looks right', async function() {
+      const [component] = await waitAndGetElements(errorExampleSelector);
       await checkScreenshot(component, 300, 195);
     });
-
-  describe('NxSearchDropdown displaying the empty message', function() {
-    beforeEach(async function() {
-      const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
-          emptyMessageSelector = `${basicExampleSelector} .nx-search-dropdown__empty-message`,
-          [input, emptyMessage] = await Promise.all([
-            browser.$(inputSelector),
-            browser.$(emptyMessageSelector)
-          ]);
-
-      await input.scrollIntoView({ block: 'center' });
-      await input.setValue('asdfasdf');
-      await emptyMessage.waitForDisplayed();
-    });
-
-    it('looks right', async function() {
-      const component = await browser.$(basicExampleSelector),
-          { x, y } = await component.getLocation(),
-          region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 88);
-
-      await browser.eyesRegionSnapshot(null, Target.region(region));
-    });
-
-    it('passes a11y checks', a11yTest());
-  });
-
-  describe('NxSearchDropdown displaying an error', function() {
-    beforeEach(async function() {
-      const inputSelector = `${errorExampleSelector} .nx-filter-input input`,
-          errorSelector = `${errorExampleSelector} .nx-alert--load-error`,
-          [input, errorAlert] = await Promise.all([browser.$(inputSelector), browser.$(errorSelector)]);
-
-      await input.scrollIntoView({ block: 'center' });
-      await input.setValue('1');
-      await errorAlert.waitForDisplayed();
-    });
-
-    it('looks right', async function() {
-      const component = await browser.$(errorExampleSelector),
-          { x, y } = await component.getLocation(),
-          region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 195);
-
-      await browser.eyesRegionSnapshot(null, Target.region(region));
-    });
-
-    it('passes a11y checks', a11yTest());
   });
 
   it('looks right with the long variant', async function() {
