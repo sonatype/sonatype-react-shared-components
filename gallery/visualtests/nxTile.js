@@ -31,7 +31,7 @@ describe('nx-tile', function() {
   });
 
   describe('nx-tile with multiple headers', function() {
-    it('looks right', simpleTestLongElement(multiHeaderTileSelector));
+    it('looks right', simpleTest(multiHeaderTileSelector));
   });
 
   describe('nx-tile with actions buttons', function() {
