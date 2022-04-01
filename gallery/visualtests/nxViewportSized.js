@@ -4,19 +4,42 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+const { setupBrowser } = require('./testUtils');
+
 describe('nx-viewport-sized', function() {
-  it('looks right when shrinking content', async function() {
-    await browser.url('#/NxViewportSizedExample');
-    await browser.eyesSnapshot(null);
+  describe('with shrinking content', function() {
+    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxViewportSizedExample');
+
+    beforeEach(async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+    });
+
+    it('looks right', async function() {
+      await checkFullPageScreenshot();
+    });
   });
 
-  it('looks right when expanding content', async function() {
-    await browser.url('#/NxViewportSizedExpandingExample');
-    await browser.eyesSnapshot(null);
+  describe('with expandign content', function() {
+    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxViewportSizedExpandingExample');
+
+    beforeEach(async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+    });
+
+    it('looks right', async function() {
+      await checkFullPageScreenshot();
+    });
   });
 
-  it('looks right with adjacent scrollables content', async function() {
-    await browser.url('#/NxViewportSizedAdjacentExample');
-    await browser.eyesSnapshot(null);
+  describe('with adjacent scrollable', function() {
+    const { checkFullPageScreenshot, getPage } = setupBrowser('#/NxViewportSizedAdjacentExample');
+
+    beforeEach(async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+    });
+
+    it('looks right', async function() {
+      await checkFullPageScreenshot();
+    });
   });
 });

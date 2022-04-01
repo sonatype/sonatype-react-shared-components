@@ -11,11 +11,9 @@ import { NxRadio } from '@sonatype/react-shared-components';
 export default function NxRadioNowrapExample() {
   const [color, setColor] = useState<string | null>('red');
 
-  const appliedColor = color || 'black';
-
   return (
     <>
-      <p style={{color: appliedColor}}>Selected Color: {color}</p>
+      <p>Selected Color: {color}</p>
 
       <div style={{width: '70px', border: '1px solid red'}}>
         Some text

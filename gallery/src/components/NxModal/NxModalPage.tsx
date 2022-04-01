@@ -230,6 +230,12 @@ export default function NxModalPage() {
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
+        <NxP>
+          Additionally, keep in mind that scrollable content areas should either be focusable or include at least
+          one focusable descendant. Therefore, as seen in the first example below, it may be necessary to add
+          a <NxCode>tabIndex</NxCode> to the <NxCode>.nx-modal-content</NxCode> when it contains a significant amount
+          of exclusively static content.
+        </NxP>
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxModal Example"

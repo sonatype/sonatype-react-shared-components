@@ -23,7 +23,8 @@ export default function NxTextInputSimpleExample() {
     console.log('Pressed key:', key); // eslint-disable-line
   }
 
+  // Every NxTextInput should have an accessible name, whether from a surrounding label, a placeholder, etc
   return (
-    <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} />
+    <NxTextInput { ...state } onChange={onChange} onKeyPress={onKeyPress} placeholder="Input"/>
   );
 }

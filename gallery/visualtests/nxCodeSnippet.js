@@ -4,14 +4,21 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxCodeSnippet', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Code%20Snippet');
-  });
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    a11yTest,
+    waitAndGetElements,
+    dismissResultingDialog,
+    getPage,
+    checkScreenshot
+  } = setupBrowser('#/pages/Code%20Snippet');
 
   const multipleSnippetSelector = '#nx-code-snippet-simple-example .gallery-example-live',
       complexSnippetExample = '#complex-nx-code-snippet',
@@ -25,41 +32,25 @@ describe('NxCodeSnippet', function() {
       focusAndHoverTest(complexSnippetExample, textareaSelector));
 
   it('selects the text when the button is clicked', async function() {
-    const [codeSnippet, copyBtn] = await Promise.all([browser.$(complexSnippetExample), browser.$(copyBtnSelector)]);
+    const [codeSnippet, copyBtn] = await waitAndGetElements(complexSnippetExample, copyBtnSelector);
 
-    await codeSnippet.scrollIntoView({ block: 'center' });
-
-    try {
+    await dismissResultingDialog(async () => {
       await copyBtn.click();
-    }
-    finally {
-      if (await browser.isAlertOpen()) {
-        await browser.acceptAlert();
-      }
-    }
+    });
 
-    await codeSnippet.moveTo({ xOffset: -10, yOffset: -10 });
+    await getPage().mouse.move(0, 0);
 
-    await browser.eyesRegionSnapshot(null, Target.region(codeSnippet));
+    await checkScreenshot(codeSnippet);
   });
 
   it('copies the text to the clipboard when the button is clicked', async function() {
-    const [codeSnippet, copyBtn] = await Promise.all([browser.$(complexSnippetExample), browser.$(copyBtnSelector)]);
+    const [codeSnippet, copyBtn] = await waitAndGetElements(complexSnippetExample, copyBtnSelector);
 
-    await codeSnippet.scrollIntoView({ block: 'center' });
-
-    try {
+    await dismissResultingDialog(async () => {
       await copyBtn.click();
-    }
-    finally {
-      if (await browser.isAlertOpen()) {
-        await browser.acceptAlert();
-      }
-    }
-
-    const clipboardText = await browser.executeAsync(function(done) {
-      return window.navigator.clipboard.readText().then(done);
     });
+
+    const clipboardText = await getPage().evaluate(() => window.navigator.clipboard.readText());
 
     expect(clipboardText).toBe(
 String.raw`#define _ -F<00||--F-OO--;

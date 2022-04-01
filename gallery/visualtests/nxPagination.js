@@ -4,13 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxPagination', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Pagination');
-    await browser.refresh();
-  });
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } =
+      setupBrowser('#/pages/Pagination');
 
   const selector = '#nx-pagination-example .gallery-example-live',
       btnSelector = `${selector} .nx-btn--pagination:nth-child(4)`,
@@ -23,4 +21,6 @@ describe('NxPagination', function() {
   it('puts a dark border and grey background on a clicked button', clickTest(selector, btnSelector));
 
   it('focus button stays blue on click', clickTest(selector, currentBtnSelector));
+
+  it('passes a11y checks', a11yTest());
 });

@@ -118,6 +118,7 @@ import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxSt
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
+import AccessibilityChecklistPage from './pages/AccessibilityChecklist';
 import NxDividerPage from './styles/NxDivider/NxDividerPage';
 import NxThreatIndicatorLegendPage from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegendPage';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
@@ -282,6 +283,7 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Accessibility': { content: AccessibilityPage, type: 'documentation' },
+    'Accessibility Checklist': { content: AccessibilityChecklistPage, type: 'documentation' },
     'Additional Resources': { content: AdditionalResourcePage, type: 'documentation' },
     'Contributing to the Gallery': { content: ContributingPage, type: 'documentation' },
     'Font-size and Line-height': { content: FontSizePage, type: 'documentation' },

@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxDateInput, nxDateInputStateHelpers } from '@sonatype/react-shared-components';
+import { NxDateInput, nxDateInputStateHelpers, NxFormGroup } from '@sonatype/react-shared-components';
 
 const { initialState, userInput } = nxDateInputStateHelpers;
 
@@ -23,6 +23,8 @@ export default function NxDateInputValidationExample() {
   }
 
   return (
-    <NxDateInput { ...state } onChange={onChange} validatable={true} />
+    <NxFormGroup label="Date">
+      <NxDateInput { ...state } onChange={onChange} validatable={true} />
+    </NxFormGroup>
   );
 }

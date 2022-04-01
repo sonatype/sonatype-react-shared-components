@@ -128,3 +128,14 @@
   padding: var(--nx-spacing-6x);
   max-width: var(--nx-width-text-wrapping);
 }
+
+//Class that allows making content visible only to screen readers
+@mixin visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

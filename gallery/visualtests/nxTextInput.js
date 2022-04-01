@@ -4,8 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxTextInput', function() {
   const simpleComponentSelector = '#nx-text-input-simple-example .nx-text-input',
@@ -25,9 +24,8 @@ describe('NxTextInput', function() {
     return `${componentSelector} ${inputType}`;
   }
 
-  beforeEach(async function() {
-    await browser.url('#/pages/Text Input');
-  });
+  const { getPage, blurElement, simpleTest, focusTest, hoverTest, focusAndHoverTest, a11yTest } =
+      setupBrowser('#/pages/Text Input');
 
   describe('Simple NxTextInput', function() {
     it('has a dark border by default', simpleTest(simpleComponentSelector));
@@ -45,46 +43,47 @@ describe('NxTextInput', function() {
     it('has a dark border when pristine', simpleTest(validatableComponentSelector));
 
     it('has validation styles when valid', async function() {
-      const inputSelector = getInputElementSelector(validatableComponentSelector),
+      const page = getPage(),
+          inputSelector = getInputElementSelector(validatableComponentSelector),
           [targetElement, inputElement] = await Promise.all([
-            browser.$(validatableComponentSelector),
-            browser.$(inputSelector)
+            page.$(validatableComponentSelector),
+            page.$(inputSelector)
           ]);
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await inputElement.setValue('foo');
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      await inputElement.type('foo');
+      await targetElement.screenshot();
     });
 
     it('has invalid validation styles when invalid and dirty', async function() {
-      const inputSelector = getInputElementSelector(validatableComponentSelector),
+      const page = getPage(),
+          inputSelector = getInputElementSelector(validatableComponentSelector),
           [targetElement, inputElement] = await Promise.all([
-            browser.$(validatableComponentSelector),
-            browser.$(inputSelector)
+            page.$(validatableComponentSelector),
+            page.$(inputSelector)
           ]);
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await inputElement.setValue('foo');
-      await browser.keys(['Backspace', 'Backspace', 'Backspace']);
+      await inputElement.type('foo');
+      await inputElement.press('Backspace');
+      await inputElement.press('Backspace');
+      await inputElement.press('Backspace');
 
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 74);
+      const { x, y } = await targetElement.boundingBox();
 
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      await page.screenshot({ x, y, height: 74, width: 300 });
     });
   });
 
   describe('Password NxTextInput', function() {
     it('displays password dots', async function() {
-      const inputSelector = getInputElementSelector(passwordComponentSelector),
+      const page = getPage(),
+          inputSelector = getInputElementSelector(passwordComponentSelector),
           [targetElement, inputElement] = await Promise.all([
-            browser.$(passwordComponentSelector),
-            browser.$(inputSelector)
+            page.$(passwordComponentSelector),
+            page.$(inputSelector)
           ]);
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await inputElement.setValue('foo');
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      await inputElement.type('foo');
+      await targetElement.screenshot();
     });
   });
 
@@ -94,32 +93,32 @@ describe('NxTextInput', function() {
 
   describe('Validatable Textarea NxTextInput', function() {
     it('has validation styles when valid', async function() {
-      const inputSelector = getInputElementSelector(validatableTextareaComponentSelector, 'textarea'),
+      const page = getPage(),
+          inputSelector = getInputElementSelector(validatableTextareaComponentSelector, 'textarea'),
           [targetElement, inputElement] = await Promise.all([
-            browser.$(validatableTextareaComponentSelector),
-            browser.$(inputSelector)
+            page.$(validatableTextareaComponentSelector),
+            page.$(inputSelector)
           ]);
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await inputElement.setValue('foo');
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      await inputElement.type('foo');
+      await targetElement.screenshot();
     });
 
     it('has invalid validation styles when invalid and dirty', async function() {
-      const inputSelector = getInputElementSelector(validatableTextareaComponentSelector, 'textarea'),
+      const page = getPage(),
+          inputSelector = getInputElementSelector(validatableTextareaComponentSelector, 'textarea'),
           [targetElement, inputElement] = await Promise.all([
-            browser.$(validatableTextareaComponentSelector),
-            browser.$(inputSelector)
+            page.$(validatableTextareaComponentSelector),
+            page.$(inputSelector)
           ]);
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await inputElement.setValue('foo');
-      await browser.keys(['Backspace', 'Backspace', 'Backspace']);
+      await inputElement.type('foo');
+      await inputElement.press('Backspace');
+      await inputElement.press('Backspace');
+      await inputElement.press('Backspace');
 
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 300);
-
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      const { x, y } = await targetElement.boundingBox();
+      await page.screenshot({ x, y, height: 300, width: 300 });
     });
   });
 
@@ -144,4 +143,6 @@ describe('NxTextInput', function() {
     it('looks disabled when valid', simpleTest(disabledValidComponentSelector));
     it('looks disabled when invalid', simpleTest(disabledInvalidComponentSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });
