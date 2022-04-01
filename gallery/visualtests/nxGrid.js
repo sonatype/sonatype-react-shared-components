@@ -4,14 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTestLongElement } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('nx-grid', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Grid');
-  });
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Grid');
 
   const selector = '.gallery-example-live';
 
-  it('looks right', simpleTestLongElement(selector));
+  it('looks right', simpleTest(selector));
+
+  it('passes a11y checks', a11yTest());
 });

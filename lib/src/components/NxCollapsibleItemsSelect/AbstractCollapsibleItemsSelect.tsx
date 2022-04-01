@@ -113,6 +113,7 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
     <NxCollapsibleItems onToggleCollapse={onToggleCollapse}
                         isOpen={isOpen && options.length > 0}
                         id={id}
+                        role="menu"
                         triggerContent={triggerWithCounter}
                         triggerTooltip={getTriggerTooltip()}
                         disabled={disabled}

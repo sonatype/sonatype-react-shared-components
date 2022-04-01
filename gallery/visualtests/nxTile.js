@@ -4,13 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { simpleTest, simpleTestLongElement } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('nx-tile', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Tile');
-  });
+  const { simpleTest, waitAndGetElements, checkScreenshot, a11yTest } = setupBrowser('#/pages/Tile');
 
   const simpleTileSelector = '#nx-tile-simple-example .nx-tile',
       actionsTileSelector = '#nx-tile-actions-example .nx-tile',
@@ -42,28 +39,23 @@ describe('nx-tile', function() {
       const dropdownSelector = `${dropdownActionMenuTileSelector} .nx-dropdown`,
           screenshotHeight = 210,
           [tileEl, dropdownEl] =
-              await Promise.all([browser.$(dropdownActionMenuTileSelector), browser.$(dropdownSelector)]);
+              await waitAndGetElements(dropdownActionMenuTileSelector, dropdownSelector);
 
-      await dropdownEl.scrollIntoView({ block: 'center' });
       await dropdownEl.click();
 
-      const { x, y, width, height } = await browser.getElementRect(tileEl.elementId),
-          screenshotRegion = new Region(x, y, width, screenshotHeight);
-
-      await browser.eyesRegionSnapshot(null, Target.region(screenshotRegion));
+      await checkScreenshot(tileEl, undefined, screenshotHeight);
     });
   });
 
   describe('nx-tile with accordions', function() {
     it('looks right', async function() {
       const accordionSelector = `${accordionTileSelector} .nx-accordion`,
-          accordionEl = await browser.$(accordionSelector);
+          [accordionEl] = await waitAndGetElements(accordionSelector);
 
       // open an accordion just to make sure the tile expands accordingly
-      await accordionEl.scrollIntoView({ block: 'center' });
       await accordionEl.click();
 
-      await simpleTestLongElement(accordionTileSelector)();
+      await simpleTest(accordionTileSelector)();
     });
   });
 
@@ -74,4 +66,6 @@ describe('nx-tile', function() {
   describe('nx-tile with alert as only child', function() {
     it('looks right', simpleTest(alertChildTileSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

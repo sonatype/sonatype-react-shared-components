@@ -17,14 +17,15 @@ export default function NxModalSimpleExample() {
     <>
       <NxButton onClick={() => setShowModal(true)}>Open Modal</NxButton>
       { showModal &&
-        <NxModal id="nx-modal-simple-example" onCancel={modalCloseHandler} aria-labelledby="modal-header-text">
+        <NxModal onCancel={modalCloseHandler} aria-labelledby="modal-header-text">
           <header className="nx-modal-header">
             <h2 className="nx-h2" id="modal-header-text">
               <NxFontAwesomeIcon icon={faAngry} />
               <span>Example NxModal header</span>
             </h2>
           </header>
-          <div className="nx-modal-content">
+          {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+          <div className="nx-modal-content" tabIndex={0}>
             <p className="nx-p">
               Bacon ipsum dolor amet tri-tip pork belly pork chop, prosciutto cupim short ribs strip steak frankfurter
               sausage shank alcatra corned beef. Buffalo prosciutto leberkas swine bacon turducken kevin, biltong pork

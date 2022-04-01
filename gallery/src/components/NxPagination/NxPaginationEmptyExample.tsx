@@ -8,5 +8,5 @@ import React from 'react';
 import { NxPagination } from '@sonatype/react-shared-components';
 
 export default function NxPaginationEmptyExample() {
-  return <NxPagination onChange={() => {}} pageCount={0} currentPage={null} />;
+  return <NxPagination aria-label="pagination - empty" onChange={() => {}} pageCount={0} currentPage={null} />;
 }

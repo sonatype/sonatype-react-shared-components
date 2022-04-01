@@ -14,7 +14,9 @@ import {
   NxStatefulGlobalSidebar,
   NxPageMain,
   NxTile,
-  NxH2
+  NxH2,
+  NxH1,
+  NxPageTitle
 } from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faEdit } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,23 +26,23 @@ export default function NxSystemNoticeGlobalSidebarExample() {
   return (
     <>
       <div className="nx-system-notice-container">
-        <div className="nx-system-notice">
+        <div className="nx-system-notice" role="complementary">
           This is a test; this is only a test; only a test; a test; a test; a test; a test; a test; a test;
           a test; a test; a test; a test; a test; a test; a test; a test; a test; a test;
           a test; a test; a test; a test; a test; a test; a test; a test; a test; a test;
           a test; a test; a test; a test; a test; a test; a test; a test; a test; a test;
           a test; a test; a test; a test; a test; a test; a test; a test; a test; a test;
         </div>
-        <div className="nx-system-notice nx-system-notice--alert">
+        <div className="nx-system-notice nx-system-notice--alert" role="complementary" aria-label="alert system notice">
           You should really change your password
         </div>
       </div>
-      <aside className="nx-global-header">
+      <header className="nx-global-header">
         <NxBackButton href="#/pages/nx-system-notice" targetPageTitle="Documentation" />
         <div className="nx-global-header__actions">
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         </div>
-      </aside>
+      </header>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
                                toggleCloseIcon={faArrowRight}
@@ -52,6 +54,9 @@ export default function NxSystemNoticeGlobalSidebarExample() {
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageMain>
+        <NxPageTitle>
+          <NxH1>Lorem Ipsum</NxH1>
+        </NxPageTitle>
         <NxTile>
           <NxTile.Header>
             <NxTile.HeaderTitle>
