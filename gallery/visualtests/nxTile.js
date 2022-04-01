@@ -10,9 +10,13 @@ describe('nx-tile', function() {
   const { simpleTest, waitAndGetElements, checkScreenshot, a11yTest } = setupBrowser('#/pages/Tile');
 
   const simpleTileSelector = '#nx-tile-simple-example .nx-tile',
+      headerlessTileSelector = '#nx-tile-headerless-example .nx-tile',
+      multiHeaderTileSelector = '#nx-tile-multi-header-example .nx-tile',
       actionsTileSelector = '#nx-tile-actions-example .nx-tile',
       subtitleTileSelector = '#nx-tile-subtitle-example .nx-tile',
       subsectionsTileSelector = '#nx-tile-subsections-example .nx-tile',
+      subsectionsPrecedingContentTileSelector = '#nx-tile-subsections-preceding-content-example .nx-tile',
+      subsectionsSubtitleTileSelector = '#nx-tile-subsections-and-subtitle-example .nx-tile',
       dropdownActionMenuTileSelector = '#nx-tile-dropdown-actions-example .nx-tile';
       accordionTileSelector = '#nx-tile-accordion-example .gallery-example-live';
       policyViolationIndicatorTileSelector = '#nx-tile-policy-violation-indicator-example .gallery-example-live',
@@ -20,6 +24,14 @@ describe('nx-tile', function() {
 
   describe('Simple nx-tile', function() {
     it('looks right', simpleTest(simpleTileSelector));
+  });
+
+  describe('nx-tile with no header', function() {
+    it('looks right', simpleTest(headerlessTileSelector));
+  });
+
+  describe('nx-tile with multiple headers', function() {
+    it('looks right', simpleTest(multiHeaderTileSelector));
   });
 
   describe('nx-tile with actions buttons', function() {
@@ -32,6 +44,14 @@ describe('nx-tile', function() {
 
   describe('nx-tile with subsections', function() {
     it('looks right', simpleTest(subsectionsTileSelector));
+  });
+
+  describe('nx-tile with subsections with preceding content', function() {
+    it('looks right', simpleTest(subsectionsPrecedingContentTileSelector));
+  });
+
+  describe('nx-tile with subsection with subtitle', function() {
+    it('looks right', simpleTest(subsectionsSubtitleTileSelector));
   });
 
   describe('nx-tile with expanded dropdown in actions menu', function() {
