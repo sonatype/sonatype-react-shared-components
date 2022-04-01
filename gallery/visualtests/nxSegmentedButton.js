@@ -4,35 +4,37 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxSegmentedButton', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Segmented%20Button');
-  });
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    checkScreenshot,
+    checkScreenshotCoordinates,
+    getPage
+ , a11yTest } = setupBrowser('#/pages/Segmented%20Button');
 
   async function openDropdown(dropdownBtnSelector) {
-    const button = await browser.$(dropdownBtnSelector);
+    const [button] = await waitAndGetElements(dropdownBtnSelector);
 
-    await button.scrollIntoView({ block: 'center' });
     await button.click();
+    await moveMouseAway();
   }
 
   function openedTest(selector, dropdownBtnSelector) {
     return async function() {
-      await browser.refresh();
+      const [targetElement] = await waitAndGetElements(selector);
       await openDropdown(dropdownBtnSelector);
 
-      const targetElement = await browser.$(selector);
+      const { x, y } = await targetElement.boundingBox();
 
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
-
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10) - 82, parseInt(y, 10), 250, 122);
-
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      await checkScreenshotCoordinates(x - 82, y, 250, 122);
     };
   }
 

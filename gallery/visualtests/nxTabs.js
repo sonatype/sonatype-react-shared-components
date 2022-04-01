@@ -4,13 +4,19 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
-const { Target } = require('@applitools/eyes-webdriverio');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxTabs', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Tabs?noCheckeredBackground');
-  });
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    checkScreenshot,
+    a11yTest
+  } = setupBrowser('#/pages/Tabs?noCheckeredBackground');
 
   const tabTileExampleSelector = '#nx-tab-tile-example .nx-tile',
       tabTileNoHeaderExampleSelector = '#nx-tab-tile-no-header-example .nx-tile',
@@ -44,21 +50,13 @@ describe('NxTabs', function() {
               `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`,
           modalSelector = `${exampleSelector} .nx-modal`;
 
-      const openModalBtn = await browser.$(openModalBtnSelector);
+      const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
-      await openModalBtn.scrollIntoView({ block: 'center' });
       await openModalBtn.click();
 
-      const closeModalBtn = await browser.$(closeModalBtnSelector);
+      const [closeModalBtn, targetElement] = await waitAndGetElements(closeModalBtnSelector, modalSelector);
 
-      const targetElement = await browser.$(modalSelector);
-
-      try {
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-      }
-      finally {
-        await closeModalBtn.click();
-      }
+      await checkScreenshot(targetElement);
     }
   }
 

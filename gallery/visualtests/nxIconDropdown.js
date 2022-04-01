@@ -4,13 +4,22 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxIconDropdown', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Icon%20Dropdown');
-  });
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    checkScreenshot,
+    checkScreenshotCoordinates,
+    getPage,
+    a11yTest
+  } = setupBrowser('#/pages/Icon%20Dropdown');
 
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
 
@@ -27,22 +36,22 @@ describe('NxIconDropdown', function() {
 
   describe('Default NxIconDropdown when open', function() {
     beforeEach(async function() {
-      const button = await browser.$(defaultSelector + ' .nx-icon-dropdown__toggle');
+      const [button] = await waitAndGetElements(defaultSelector + ' .nx-icon-dropdown__toggle');
 
-      await button.scrollIntoView({ block: 'center' });
       await button.click();
     });
 
     it('has a dark grey button border with expanded menu', async function() {
-      const targetElement = await browser.$(defaultSelector);
+      const [targetElement] = await waitAndGetElements(defaultSelector),
+          page = getPage();
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+      await moveMouseAway();
 
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10) - 208, parseInt(y, 10), 251, 346);
+      const { x, y, width, height } = await targetElement.boundingBox(),
+          pageScrollY = await page.evaluate(() => window.scrollY),
+          pageScrollX = await page.evaluate(() => window.scrollX);
 
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 251, 346);
     });
   });
 

@@ -25,7 +25,7 @@ module.exports = function(env = { production: false }) {
     entry: './main.tsx',
     output: {
       filename: 'bundle.js',
-      publicPath: '/'
+      publicPath: './'
     },
     resolve: {
       symlinks: false,

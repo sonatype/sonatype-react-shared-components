@@ -4,12 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxButton', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Button');
-  });
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Button');
 
   describe('Default NxButton', function() {
     const selector = '#nx-button-default-example .nx-btn:not([disabled]):not(.disabled)';
@@ -92,9 +90,7 @@ describe('NxButton', function() {
   describe('nx-btn class on <a>', function() {
     const selector = '#nx-btn-links-example .nx-btn-bar';
 
-    beforeEach(async function() {
-      await browser.url('#/pages/Button (HTML)');
-    });
+    const { simpleTest } = setupBrowser('#/pages/Button (HTML)');
 
     it('looks right', simpleTest(selector));
   });

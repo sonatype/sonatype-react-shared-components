@@ -4,41 +4,48 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxSearchTransferList', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Search Transfer List');
-    await browser.refresh();
-  });
+  const {
+        clickTest,
+        focusTest,
+        focusAndHoverTest,
+        hoverTest,
+        simpleTest,
+        waitAndGetElements,
+        checkScreenshot,
+        getPage,
+        a11yTest
+      } = setupBrowser('#/pages/Search Transfer List');
 
   const simpleListSelector = '#nx-search-transfer-list-example .nx-search-transfer-list',
       complexListSelector = '#nx-search-transfer-list-complex-example .nx-search-transfer-list';
 
   it('looks right', simpleTest(simpleListSelector));
 
-  describe('NxSearchTransferList when displaying results', function() {
+  describe('when displaying results', function() {
     beforeEach(async function() {
       const inputSelector = `${simpleListSelector} .nx-filter-input input`,
           dropdownButtonSelector = `${simpleListSelector} .nx-dropdown-button`,
-          [component, input, dropdownButton] = await Promise.all([
-            browser.$(simpleListSelector),
-            browser.$(inputSelector),
-            browser.$(dropdownButtonSelector)
-          ]);
+          [component, input] = await waitAndGetElements(
+            simpleListSelector,
+            inputSelector
+          );
 
-      await component.scrollIntoView({ block: 'end' });
-      await input.setValue('1');
-      await dropdownButton.waitForDisplayed();
+      await input.focus();
+      await getPage().keyboard.type('1');
+      await getPage().waitForSelector(dropdownButtonSelector);
+
     });
 
-    it('looks right', async function() {
-      const component = await browser.$(simpleListSelector);
-      await browser.eyesRegionSnapshot(null, Target.region(component));
+    it('looks right when displaying results', async function() {
+      const [component] = await waitAndGetElements(simpleListSelector);
+      await checkScreenshot(component);
     });
 
-    it('passes a11y checks', a11yTest());
+    // color-contrast rule doesn't work when elements overlap, which of course happens when the dropdown is open
+    it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
   });
 
   it('looks right with complex options', simpleTest(complexListSelector));

@@ -4,18 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Target } = require('@applitools/eyes-webdriverio');
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('nx-form-select', function() {
+  const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Form Select');
   const selector = '#nx-form-select-example .nx-form-select',
       overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
       disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
-      widthSelector = '#nx-form-select-widths-examples .form-select-width-variants';
+      widthSelector = '#nx-form-select-widths-example .form-select-width-variants';
 
-  beforeEach(async function() {
-    await browser.url('#/pages/Form Select');
-  });
 
   describe('Simple NxFormSelect', function() {
     it('has a dark border by default', simpleTest(selector));
@@ -30,17 +27,13 @@ describe('nx-form-select', function() {
   });
 
   describe('Short and Long Variants of NxFormSelect', function() {
-    beforeEach(async function() {
-      await browser.url('#/pages/Form Select');
-    });
+    const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
 
     it('looks shorter and longer', simpleTest(widthSelector));
   });
 
-  describe('Disabled nx-form-select', function() {
-    beforeEach(async function() {
-      await browser.url('#/pages/Form Select (HTML)');
-    });
+  describe('Disabled NxFormSelect', function() {
+    const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
 
     it('looks disabled', simpleTest(disabledSelector));
   });

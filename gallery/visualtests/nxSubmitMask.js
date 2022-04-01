@@ -4,41 +4,42 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxSubmitMask', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Submit%20Mask');
-  });
+  const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation, getPage, a11yTest } =
+      setupBrowser('#/pages/Submit%20Mask');
 
   const loadingMaskBtnSelector = '#nx-submit-mask-loading-example button',
       successMaskBtnSelector = '#nx-submit-mask-success-example button';
 
-  describe('NxSubmitMask when loading', function() {
-    beforeEach(async function() {
-      const btn = await browser.$(loadingMaskBtnSelector);
+  beforeEach(async function() {
+    await getPage().setViewport({ width: 1366, height: 1000 });
+  });
 
-      await btn.scrollIntoView({ block: 'center' });
+  describe('when loading', function() {
+    beforeEach(async function() {
+      const [btn] = await waitAndGetElements(loadingMaskBtnSelector);
       await btn.click();
     });
 
     it('looks right', async function() {
-      await browser.eyesSnapshot(null);
+      await disableLoadingSpinnerAnimation();
+      await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', a11yTest());
   });
 
-  describe('NxSubmitMask when successful', function() {
+  describe('when successful', function() {
     beforeEach(async function() {
-      const btn = await browser.$(successMaskBtnSelector);
+      const [btn] = await waitAndGetElements(successMaskBtnSelector);
 
-      await btn.scrollIntoView({ block: 'center' });
       await btn.click();
     });
 
-    it('looks right', async function() {
-      await browser.eyesSnapshot(null);
+    it('looks right when successful', async function() {
+      await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', a11yTest());

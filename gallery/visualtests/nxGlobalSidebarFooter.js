@@ -4,29 +4,34 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
+
 describe('NxGlobalSidebarFooter', function() {
   // Full examples of this component are captured by NxGlobalSidebar
 
-  describe('NxGlobalSidebarFooter with minimal layout', function() {
+  describe('minimal layout', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalSidebarFooterMinimalExample', false);
+
     beforeEach(async function() {
-      await browser.url('#/NxGlobalSidebarFooterMinimalExample');
+      await getPage().setViewport({ width: 1366, height: 1000 });
     });
 
     it('looks right', async function() {
-      await browser.eyesSnapshot(null);
+      await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', a11yTest());
   });
 
-  describe('NxGlobalSidebarFooter when empty', function() {
+  describe('when empty', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalSidebarFooterEmptyExample', false);
+
     beforeEach(async function() {
-      await browser.url('#/NxGlobalSidebarFooterEmptyExample');
+      await getPage().setViewport({ width: 1366, height: 1000 });
     });
 
     it('looks right', async function() {
-      await browser.eyesSnapshot(null);
+      await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', a11yTest());

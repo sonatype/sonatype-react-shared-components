@@ -4,152 +4,251 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-const AxeBuilder = require('@axe-core/webdriverio').default;
+const puppeteer = require('puppeteer');
+
+const pageUrl = `file://${__dirname}/../dist/index.html`;
+
+const { AxePuppeteer } = require('@axe-core/puppeteer');
 
 module.exports = {
-  simpleTest(selector) {
-    return async () => {
-      const targetElement = await browser.$(selector);
+  setupBrowser(pageFragmentIdentifier, ignoreVersionNumber = true) {
+    let browser, page;
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-    };
-  },
+    async function enableClipboardAccess(browser) {
+      // This ought to be possible with browser.defaultBrowserContext().overridePermissions but that doesn't
+      // seem to work right for enabling clipboard-write.  See
+      // https://github.com/puppeteer/puppeteer/issues/3241#issuecomment-751489962
+      await browser._connection.send('Browser.grantPermissions', {
+        origin: pageUrl,
+        permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite'],
+      });
+    }
 
-  hoverTest(elementSelector, hoverSelector = elementSelector) {
-    return async () => {
-      const [targetElement, hoverElement] = await Promise.all([browser.$(elementSelector), browser.$(hoverSelector)]);
+    async function hideVersionNumber() {
+      const [versionEl] = await waitAndGetElements('.gallery-page-header__version');
+      await versionEl.evaluate(el => { el.style.visibility = 'hidden'; });
+    }
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await hoverElement.moveTo();
+    beforeAll(async function() {
+      browser = await puppeteer.launch({
+        defaultViewport: { width: 1366, height: 3000 },
+        headless: true,
 
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-    };
-  },
+        // we trust the pages we'll be viewing, and this is needed to run in docker without hampering docker's own
+        // security configuration
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--font-render-hinting=none'
+        ]
+      });
+      await enableClipboardAccess(browser);
+    });
 
-  focusTest(elementSelector, focusSelector = elementSelector) {
-    return async () => {
-      const [targetElement, focusElement] = await Promise.all([browser.$(elementSelector), browser.$(focusSelector)]);
+    afterEach(async function() {
+      await page.removeAllListeners();
+      await page.close();
+    });
 
-      await targetElement.scrollIntoView({ block: 'center' });
+    afterAll(async function() {
+      await browser.close();
+    });
 
-      // make sure mouse is not on element
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+    beforeEach(async function() {
+      page = await browser.newPage();
+      await page.goto(pageUrl + pageFragmentIdentifier);
 
-      try {
-        await browser.execute(function(el) {
-          el.focus();
-        }, focusElement);
-
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      if (ignoreVersionNumber) {
+        await hideVersionNumber();
       }
-      finally {
-        await browser.execute(function(el) {
-          el.blur();
-        }, focusElement);
+
+      await page.mouse.move(0, 0);
+    });
+
+    async function blurElement(element) {
+      await page.evaluate(function(el) {
+        el.blur();
+      }, element);
+    }
+
+    async function isFocused(element) {
+      return await element.evaluate(e => e === document.activeElement);
+    }
+
+    async function waitForSelectors(...selectors) {
+      return Promise.all(selectors.map(s => page.waitForSelector(s)));
+    }
+
+    async function getElements(...selectors) {
+      return Promise.all(selectors.map(s => page.$(s)));
+    }
+
+    async function waitAndGetElements(...selectors) {
+      await waitForSelectors(...selectors);
+      return await getElements(...selectors);
+    }
+
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function checkScreenshot(element, customWidth, customHeight) {
+      let image;
+      if (customHeight || customWidth) {
+        const { x, y, width, height } = await element.boundingBox(),
+            pageScrollY = await page.evaluate(() => window.scrollY),
+            pageScrollX = await page.evaluate(() => window.scrollX);
+
+        image = await page.screenshot({
+          clip: {
+            x: x + pageScrollX,
+            y: y + pageScrollY,
+            width: customWidth == null ? width : customWidth,
+            height: customHeight == null ? height : customHeight
+          }
+        });
       }
-    };
-  },
-
-  focusAndHoverTest(elementSelector, focusHoverSelector = elementSelector) {
-    return async () => {
-      const [focusElement, targetElement] =
-          await Promise.all([browser.$(focusHoverSelector), browser.$(elementSelector)]);
-
-      await targetElement.scrollIntoView({ block: 'center' });
-      await browser.execute(function(el) {
-        el.focus();
-      }, focusElement);
-      await focusElement.moveTo();
-
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-    };
-  },
-
-  clickTest(elementSelector, clickSelector = elementSelector) {
-    return async () => {
-      const [targetElement, clickElement] = await Promise.all([browser.$(elementSelector), browser.$(clickSelector)]);
-
-      await clickElement.scrollIntoView({ block: 'center' });
-
-      await browser.performActions([{
-        id: 'pointer1',
-        type: 'pointer',
-        parameters: {
-          pointerType: 'mouse'
-        },
-        actions: [{
-          type: "pointerMove",
-          duration: 0,
-          origin: clickElement,
-          x: 10,
-          y: 10
-        }, {
-          type: 'pointerDown',
-          button: 0
-        }]
-      }]);
-
-      try {
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      else {
+        image = await element.screenshot();
       }
-      finally {
-        browser.releaseActions();
 
-        await browser.pause(1000);
+      expect(image).toMatchImageSnapshot();
+    }
 
-        // some button examples have click handlers that fire alert dialogs
-        if (await browser.isAlertOpen()) {
-          await browser.acceptAlert();
+    async function checkScreenshotCoordinates(x, y, width, height) {
+      const pageScrollY = await page.evaluate(() => window.scrollY),
+          pageScrollX = await page.evaluate(() => window.scrollX),
+          image = await page.screenshot({
+            clip: {
+              x: x + pageScrollX,
+              y: y + pageScrollY,
+              height,
+              width
+            }
+          });
+
+      expect(image).toMatchImageSnapshot();
+    }
+
+    async function checkFullPageScreenshot() {
+      const screenshot = await page.screenshot();
+      expect(screenshot).toMatchImageSnapshot();
+    }
+
+    async function dismissResultingDialog(action, waitTime) {
+      page.once('dialog', async d => {
+        if (waitTime) {
+          await wait(waitTime);
         }
+
+        await d.dismiss();
+      });
+
+      await action();
+    }
+
+    async function disableLoadingSpinnerAnimation() {
+      const spinner = await page.$('.nx-loading-spinner__icon');
+      await spinner.evaluate(el => el.style.animation = 'none');
+    }
+
+    async function scrollIntoView(el) {
+      await el.evaluate(e => e.scrollIntoView({ block: 'center' }));
+    }
+
+    async function moveMouseAway() {
+      await page.mouse.move(0, 0);
+    }
+
+    return {
+      getBrowser: () => browser,
+      getPage: () => page,
+
+      blurElement,
+      isFocused,
+      moveMouseAway,
+      dismissResultingDialog,
+      disableLoadingSpinnerAnimation,
+      scrollIntoView,
+
+      waitForSelectors,
+      getElements,
+      waitAndGetElements,
+      wait,
+
+      checkScreenshot,
+      checkFullPageScreenshot,
+      checkScreenshotCoordinates,
+
+      simpleTest(selector) {
+        return async function() {
+          const [element] = await waitAndGetElements(selector);
+          await checkScreenshot(element);
+        };
+      },
+
+      focusTest(elementSelector, focusSelector = elementSelector) {
+        return async function() {
+          const [targetElement, focusElement] = await waitAndGetElements(elementSelector, focusSelector);
+
+          try {
+            await focusElement.focus();
+            await checkScreenshot(targetElement);
+          }
+          finally {
+            await blurElement(focusElement);
+          }
+        };
+      },
+
+      hoverTest(elementSelector, hoverSelector = elementSelector) {
+        return async function() {
+          const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
+
+          await focusElement.hover();
+          await checkScreenshot(targetElement);
+        };
+      },
+
+      focusAndHoverTest(elementSelector, hoverSelector = elementSelector) {
+        return async function() {
+          const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
+
+          try {
+            await focusElement.focus();
+            await focusElement.hover();
+            await checkScreenshot(targetElement);
+          }
+          finally {
+            await blurElement(focusElement);
+          }
+        };
+      },
+
+      clickTest(elementSelector, clickSelector = elementSelector) {
+        return async () => {
+          const [targetElement, clickElement] = await waitAndGetElements(elementSelector, clickSelector),
+              { x, y, width, height } = await clickElement.boundingBox();
+
+          await page.mouse.move(x + width / 2, y + height / 2);
+
+          await dismissResultingDialog(async () => {
+            await page.mouse.down();
+            await checkScreenshot(targetElement);
+          }, 300);
+        };
+      },
+
+      a11yTest(builderCustomizer) {
+        return async () => {
+          const builder = new AxePuppeteer(page),
+              customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
+              axeResults = await customizedBuilder.analyze();
+
+          expect(axeResults.violations).toEqual([]);
+          expect(axeResults.incomplete).toEqual([]);
+        };
       }
-    };
-  },
-
-  // A simple-style test for elements that are too tall to fit into view all at once. It takes a series of screenshots
-  // with appropriate scrolling to ultimately capture the whole element
-  simpleTestLongElement(selector) {
-    return async () => {
-      const targetElement = await browser.$(selector),
-          screenshotHeight = 900,
-          headerHeight = 75;
-
-      const { x, y, width, height } = await browser.getElementRect(targetElement.elementId);
-
-      let currentScreenshotY = y,
-          i = 0;
-      while (currentScreenshotY < y + height) {
-        const remainingElementHeight = height - screenshotHeight * i,
-          currentScreenshotHeight = Math.min(screenshotHeight, remainingElementHeight),
-          screenshotRegion = new Region(x, currentScreenshotY, width, currentScreenshotHeight);
-
-        await browser.execute(function(x, y) {
-          return window.scroll(x, y);
-        }, 0, y + (screenshotHeight * i) - headerHeight);
-
-        await browser.eyesRegionSnapshot(`Part ${i}`, Target.region(screenshotRegion));
-
-        i++;
-        currentScreenshotY += screenshotHeight;
-      }
-    };
-  },
-
-  a11yTest(builderCustomizer) {
-    return async () => {
-      const body = await browser.$('body');
-
-      // scroll to top. Stops issues with element overlapping the page header
-      body.scrollIntoView(true);
-
-      const builder = new AxeBuilder({ client: browser }),
-          customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
-          axeResults = await customizedBuilder.analyze();
-
-      expect(axeResults.violations).toEqual([]);
-      expect(axeResults.incomplete).toEqual([]);
     };
   }
 };

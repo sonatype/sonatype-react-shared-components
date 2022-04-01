@@ -4,12 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('nx-page-title', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Page%20Title?noCheckeredBackground');
-  });
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Page%20Title?noCheckeredBackground');
 
   const simplePageTitle = '#nx-page-title-example .nx-page-title';
   const actionsPageTitle = '#nx-page-title-actions-example .nx-page-title';

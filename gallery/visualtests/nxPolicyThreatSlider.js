@@ -4,13 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { focusTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxPolicyThreatSlider', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Policy%20Threat%20Slider');
-    await browser.refresh();
-  });
+  const { focusTest, simpleTest, getPage, waitAndGetElements, scrollIntoView, a11yTest } =
+      setupBrowser('#/pages/Policy%20Threat%20Slider');
 
   const exampleSelector = '#nx-policy-threat-slider-example .gallery-example-live',
       disabledExampleSelector = '#nx-policy-threat-slider-disabled-example .nx-policy-threat-slider',
@@ -19,46 +17,31 @@ describe('NxPolicyThreatSlider', function() {
       upperSliderSelector =
           `${exampleSelector} .nx-policy-threat-slider__value-label ~ .nx-policy-threat-slider__value-label .MuiSlider-thumb`;
 
-  async function dragSliderHandle(browser, sliderElement, spaces) {
-    await browser.performActions([{
-      id: 'pointer1',
-      type: 'pointer',
-      parameters: {
-        pointerType: 'mouse'
-      },
-      actions: [{
-        type: "pointerMove",
-        duration: 0,
-        origin: sliderElement,
-        x: 0,
-        y: 0
-      }, {
-        type: 'pointerDown',
-        button: 0
-      }, {
-        type: 'pointerMove',
-        duration: 0,
-        origin: 'pointer',
-        x: 20 * spaces,
-        y: 0
-      }, {
-        type: 'pointerUp',
-        button: 0
-      }]
-    }]);
+  async function dragSliderHandle(sliderElement, spaces) {
+    const { mouse } = getPage(),
+        sliderElementBox = await sliderElement.boundingBox(),
+        sliderElementCenter = {
+          x: sliderElementBox.x + (sliderElementBox.width / 2),
+          y: sliderElementBox.y + (sliderElementBox.height / 2)
+        };
+
+    await mouse.move(sliderElementCenter.x, sliderElementCenter.y);
+    await mouse.down();
+    await mouse.move(sliderElementCenter.x + (20 * spaces), sliderElementCenter.y);
+    await mouse.up();
   }
 
   function testSlider(spacesFromDefault) {
     return async () => {
       const [targetElement, lowerSliderElement, upperSliderElement] =
-          await Promise.all([browser.$(exampleSelector), browser.$(lowerSliderSelector), browser.$(upperSliderSelector)]);
+          await waitAndGetElements(exampleSelector, lowerSliderSelector, upperSliderSelector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await dragSliderHandle(browser, lowerSliderElement, spacesFromDefault);
-      await dragSliderHandle(browser, upperSliderElement, -(spacesFromDefault));
+      await scrollIntoView(targetElement);
+      await dragSliderHandle(lowerSliderElement, spacesFromDefault);
+      await dragSliderHandle(upperSliderElement, -(spacesFromDefault));
 
       // click off of the slider
-      await targetElement.click({ x: -50, y: -50 });
+      await targetElement.click({ offset: { x: -50, y: -50 } });
 
       await simpleTest(exampleSelector)();
     };

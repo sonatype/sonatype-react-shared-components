@@ -4,52 +4,48 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxGlobalHeader', function() {
-  describe('NxGlobalHeader with full content', function() {
-    beforeEach(async function() {
-      await browser.url('#/NxGlobalHeaderFullExample');
-    });
+  describe('with full content', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeaderFullExample', false);
 
     it('looks right', async function() {
-      await browser.eyesSnapshot(null);
+      await getPage().setViewport({ width: 1366, height: 1000 });
+      await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', a11yTest());
   });
 
-  describe('NxGlobalHeader without action bar', function() {
-    beforeEach(async function() {
-      await browser.url('#/NxGlobalHeaderNoActionsExample');
-    });
+  describe('without action bar', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeaderNoActionsExample', false);
 
     it('looks right', async function() {
-      await browser.eyesSnapshot(null);
+      await getPage().setViewport({ width: 1366, height: 1000 });
+      await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', a11yTest());
   });
 
-  describe('NxGlobalHeader without back button', function() {
-    beforeEach(async function() {
-      await browser.url('#/NxGlobalHeaderNoBackButtonExample');
-    });
+  describe('without back button', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeaderNoBackButtonExample', false);
 
     it('looks right', async function() {
-      await browser.eyesSnapshot(null);
+      await getPage().setViewport({ width: 1366, height: 1000 });
+      await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', a11yTest());
   });
 
-  describe('NxGlobalHeader when empty', function() {
-    beforeEach(async function() {
-      await browser.url('#/NxGlobalHeaderEmptyExample');
-    });
+  describe('when empty', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeaderEmptyExample', false);
 
-    it('looks right', async function() {
-      await browser.eyesSnapshot(null);
+    it('looks right when empty', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+      await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', a11yTest());

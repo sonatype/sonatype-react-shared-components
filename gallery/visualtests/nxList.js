@@ -4,12 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('nx-list', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/List (HTML)');
-  });
+  const { hoverTest, simpleTest, disableLoadingSpinnerAnimation, a11yTest } = setupBrowser('#/pages/List (HTML)');
 
   const simpleSelector = '#nx-list-simple-example .gallery-example-live',
       clickableSelector = '#nx-list-clickable-example .nx-list',
@@ -29,11 +27,12 @@ describe('nx-list', function() {
   });
 
   describe('Clickable nx-list', function() {
-    it('looks right with a row hovered', hoverTest(clickableSelector, `${clickableSelector} li:first-child`));
+    it('looks right with a row hovered', hoverTest(clickableSelector, `${clickableSelector} li:first-child button`));
   });
 
   describe('Clickable links nx-list', function() {
-    it('looks right with a row hovered', hoverTest(clickableLinksSelector, `${clickableLinksSelector} li:first-child`));
+    it('looks right with a row hovered',
+        hoverTest(clickableLinksSelector, `${clickableLinksSelector} li:first-child a`));
   });
 
   describe('Bulleted nx-list', function() {
@@ -61,7 +60,10 @@ describe('nx-list', function() {
   });
 
   describe('Loading nx-list', function() {
-    it('looks right', simpleTest(loadingSelector));
+    it('looks right', async function() {
+      await disableLoadingSpinnerAnimation();
+      await simpleTest(loadingSelector)();
+    });
   });
 
   describe('Description nx-list', function() {

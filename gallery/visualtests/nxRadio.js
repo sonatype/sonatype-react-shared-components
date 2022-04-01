@@ -4,13 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
-const { Target } = require('@applitools/eyes-webdriverio');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxRadio', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Radio');
-  });
+  const {
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    blurElement,
+    checkScreenshot,
+    a11yTest
+  } = setupBrowser('#/pages/Radio');
 
   const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
       otherRadioSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(1)',
@@ -22,68 +29,38 @@ describe('NxRadio', function() {
     it('has a light grey border and white background by default', simpleTest(selector));
     it('has a black border when hovered', hoverTest(selector));
     it('has a thick blue border and white background when clicked', async function() {
+      const inputSelector = `${selector} input`;
 
-      const blurSelector = `${selector} input`,
-        [targetElement, otherElement, blurElement] = await Promise.all([browser.$(selector),
-          browser.$(otherRadioSelector), browser.$(blurSelector)]);
+      const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
-      await browser.execute(function(el) {
-        el.blur();
-      }, blurElement);
+      await blurElement(inputElement);
 
-      try {
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-      }
-      finally {
-        // click away to reset the state
-        await otherElement.click();
-      }
+      await checkScreenshot(targetElement);
     });
 
     it(`has a thick blue border, white background, with a light blue outer border and glow
       when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
-          [targetElement, otherElement, focusElement] =
-            await Promise.all([browser.$(selector), browser.$(otherRadioSelector), browser.$(focusSelector)]);
+          [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
-      await browser.execute(function(el) {
-        el.focus();
-      }, focusElement);
+      await moveMouseAway();
+      await focusElement.focus();
 
-      try {
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-      }
-      finally {
-        // click again to reset the state
-        await otherElement.click();
-      }
+      await checkScreenshot(targetElement);
     });
 
     it(`has a thick blue border and white background with a light blue outer border
       when clicked, focused, and hovered`, async function() {
       const focusSelector = `${selector} input`,
-          [targetElement, otherElement, focusElement] =
-            await Promise.all([browser.$(selector), browser.$(otherRadioSelector), browser.$(focusSelector)]);
+          [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
-      await targetElement.moveTo();
-      await browser.execute(function(el) {
-        el.focus();
-      }, focusElement);
+      await focusElement.focus();
+      await targetElement.hover();
 
-      try {
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-      }
-      finally {
-        // click again to reset the state
-        await otherElement.click();
-      }
+      await checkScreenshot(targetElement);
     });
 
     it('has a light blue outer border and glow when focused', focusTest(selector));

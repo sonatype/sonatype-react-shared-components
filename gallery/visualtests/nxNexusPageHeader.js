@@ -4,12 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxNexusPageHeader', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Nexus%20Page%20Header');
-  });
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } =
+      setupBrowser('#/pages/Nexus%20Page%20Header');
 
   const customLogoNexusPageHeaderSelector = '#nx-page-header-custom-logo-example .nx-page-header',
       defaultNexusPageHeaderSelector = '#nx-page-header-default-example .nx-page-header',

@@ -4,14 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Target } = require('@applitools/eyes-webdriverio');
-const { a11yTest } = require('./testUtils');
-
+const { setupBrowser } = require('./testUtils');
 describe('NxModal', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Modal');
-    await browser.refresh();
-  });
+  const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation, getPage, a11yTest } =
+      setupBrowser('#/pages/Modal');
 
   const simpleExampleSelector = '#nx-modal-simple-example',
       formWithAlertExampleSelector = '#nx-modal-form-with-alert-example',
@@ -26,12 +22,11 @@ describe('NxModal', function() {
         closeModalBtnSelector =
             `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`;
 
-    const openModalBtn = await browser.$(openModalBtnSelector);
+    const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
-    await openModalBtn.scrollIntoView({ block: 'center' });
     await openModalBtn.click();
 
-    const closeModalBtn = await browser.$(closeModalBtnSelector);
+    const [closeModalBtn] = await waitAndGetElements(closeModalBtnSelector);
   }
 
   function simpleModalTest(exampleSelector) {
@@ -39,7 +34,7 @@ describe('NxModal', function() {
       await openModal(exampleSelector);
 
       // take image of entire viewport in order to capture the backdrop color
-      await browser.eyesSnapshot(null);
+      await checkFullPageScreenshot();
     };
   }
 
@@ -49,6 +44,10 @@ describe('NxModal', function() {
       await a11yTest()();
     };
   }
+
+  beforeEach(async function() {
+    await getPage().setViewport({ width: 1366, height: 1000 });
+  });
 
   describe('Simple NxModal', function() {
     it('looks right', simpleModalTest(simpleExampleSelector));
@@ -63,16 +62,14 @@ describe('NxModal', function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
           modalSelector = `#nx-modal-form-example`;
 
-      const openModalBtn = await browser.$(openModalBtnSelector);
+      const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
-      await openModalBtn.scrollIntoView({ block: 'center' });
       await openModalBtn.click();
 
-      const modal = await browser.$(modalSelector);
+      const [modal] = await waitAndGetElements(modalSelector);
 
-      await modal.waitForDisplayed();
-
-      await browser.eyesSnapshot(null);
+      await disableLoadingSpinnerAnimation();
+      await checkFullPageScreenshot();
     });
 
     it('shows the tooltip in front of the modal', async function() {
@@ -82,20 +79,14 @@ describe('NxModal', function() {
           cancelBtnSelector =
               `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__cancel-btn`;
 
-      const openModalBtn = await browser.$(openModalBtnSelector);
+      const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
-      await openModalBtn.scrollIntoView({ block: 'center' });
       await openModalBtn.click();
 
-      const submitBtn = await browser.$(submitBtnSelector);
-      const cancelBtn = await browser.$(cancelBtnSelector);
+      // wait for submit button to appear after loading completes
+      const [submitBtn] = await waitAndGetElements(submitBtnSelector);
 
-      // this modal has a loading form built in so we need to wait for it to load
-      await submitBtn.waitForDisplayed();
-      await submitBtn.moveTo();
-
-      // take image of entire viewport in order to capture the backdrop color
-      await browser.eyesSnapshot(null);
+      await checkFullPageScreenshot();
     });
 
     it('does not cut off overflowing focus borders in the content area', async function() {
@@ -103,20 +94,14 @@ describe('NxModal', function() {
           modalSelector = `${formExampleSelector} .nx-modal`,
           checkboxSelector = `${formExampleSelector} fieldset .nx-checkbox:first-of-type`;
 
-      const openModalBtn = await browser.$(openModalBtnSelector);
+      const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
-      await openModalBtn.scrollIntoView({ block: 'center' });
       await openModalBtn.click();
 
-      const [modal, checkbox] = await Promise.all([browser.$(modalSelector), browser.$(checkboxSelector)]);
+      const [modal, checkbox] = await waitAndGetElements(modalSelector, checkboxSelector);
+      await checkbox.focus();
 
-      // wait for load to finish
-      await checkbox.waitForDisplayed();
-      await browser.execute(el => {
-        el.focus();
-      }, checkbox);
-
-      await browser.eyesSnapshot(null);
+      await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', modalA11yTest(formWithAlertExampleSelector));
@@ -140,83 +125,88 @@ describe('NxModal', function() {
           closeFirstModalBtnSelector =
               `${exampleSelector} .nx-modal-backdrop .nx-footer .nx-btn-bar .nx-btn`;
 
-      const openFirstModalBtn = await browser.$(openFirstModalBtnSelector);
+      const [openFirstModalBtn] = await waitAndGetElements(openFirstModalBtnSelector);
 
-      await openFirstModalBtn.scrollIntoView({ block: 'center' });
       await openFirstModalBtn.click();
 
-      const closeFirstModalBtn = await browser.$(closeFirstModalBtnSelector);
-
-      const openSecondModalBtn = await browser.$(openSecondModalBtnSelector);
+      const [closeFirstModalBtn, openSecondModalBtn] =
+          await waitAndGetElements(closeFirstModalBtnSelector, openSecondModalBtnSelector);
 
       await openSecondModalBtn.click();
 
-      const closeSecondModalBtn = await browser.$(closeSecondModalBtnSelector);
+      const [closeSecondModalBtn] = await waitAndGetElements(closeSecondModalBtnSelector);
 
-      // take image of entire viewport in order to capture the backdrop color
-      await browser.eyesSnapshot(null);
+      await checkFullPageScreenshot();
     });
   });
 
   describe('NxModal + NxDropdown ESC Closing behavior', function() {
     it('closes one layer per ESC press', async function() {
-      const [
-        initialBtn,
-        customPanel,
-        customPanelBtn,
-        dropdownToggle,
-        dropdownMenu,
-        dropdownBtn,
-        modal1,
-        modal1CloseBtn,
-        modal2,
-        modal2CloseBtn
-      ] = await Promise.all([
-        browser.$(`${escClosingExampleSelector} #esc-example-initial-btn`),
-        browser.$(`${escClosingExampleSelector} .gallery-custom-expandable`),
-        browser.$(`${escClosingExampleSelector} .gallery-custom-expandable button`),
-        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`),
-        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`),
-        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`),
-        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal`),
-        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-footer .nx-btn`),
-        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal2`),
-        browser.$(`${escClosingExampleSelector} #nx-modal-esc-example-modal2 .nx-footer .nx-btn`)
-      ]);
-
+      const [initialBtn] = await waitAndGetElements(`${escClosingExampleSelector} #esc-example-initial-btn`);
       await initialBtn.click();
-      await customPanel.waitForDisplayed();
-      await customPanelBtn.click();
-      await modal1.waitForDisplayed();
-      await dropdownToggle.click();
-      await dropdownBtn.waitForDisplayed();
-      await dropdownBtn.click();
-      await modal2.waitForDisplayed();
 
-      expect(await modal2CloseBtn.isFocused()).toBe(true);
+      const [customPanel, customPanelBtn] = await waitAndGetElements(
+        `${escClosingExampleSelector} .gallery-custom-expandable`,
+        `${escClosingExampleSelector} .gallery-custom-expandable button`
+      );
+      await customPanelBtn.click();
+
+      const [modal1, modal1CloseBtn, dropdownToggle] = await waitAndGetElements(
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-footer .nx-btn`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`
+      );
+      await dropdownToggle.click();
+
+      const [dropdownMenu, dropdownBtn] = await waitAndGetElements(
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`
+      );
+      await dropdownBtn.click();
+
+      const [modal2, modal2CloseBtn] = await waitAndGetElements(
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal2`,
+        `${escClosingExampleSelector} #nx-modal-esc-example-modal2 .nx-footer .nx-btn`
+      );
+
+      async function isFocused(el) {
+        return el.evaluate(e => e === document.activeElement);
+      }
+
+      async function isInDocument(el) {
+        return el.evaluate(e => e.isConnected);
+      }
+
+      async function pressEsc() {
+        const { keyboard } = getPage();
+
+        await keyboard.press('Escape');
+      }
+
+      expect(await isFocused(modal2CloseBtn)).toBe(true);
 
       // close second modal
-      await browser.keys('Escape');
+      await pressEsc();
 
-      expect(await modal2.isDisplayed()).toBe(false);
-      expect(await dropdownBtn.isFocused()).toBe(true);
+      expect(await isInDocument(modal2)).toBe(false);
+      expect(await isFocused(dropdownBtn)).toBe(true);
 
       // close dropdown menu
-      await browser.keys('Escape');
+      await pressEsc();
 
-      expect(await dropdownMenu.isDisplayed()).toBe(false);
-      expect(await dropdownToggle.isFocused()).toBe(true);
+      expect(await isInDocument(dropdownMenu)).toBe(false);
+      expect(await isFocused(dropdownToggle)).toBe(true);
 
       // close first modal
-      await browser.keys('Escape');
+      await pressEsc();
 
-      expect(await modal1.isDisplayed()).toBe(false);
-      expect(await customPanelBtn.isFocused()).toBe(true);
+      expect(await isInDocument(modal1)).toBe(false);
+      expect(await isFocused(customPanelBtn)).toBe(true);
 
       // close custom panel
-      await browser.keys('Escape');
+      await pressEsc();
 
-      expect(await customPanel.isDisplayed()).toBe(false);
+      expect(await isInDocument(customPanel)).toBe(false);
     });
   });
 });

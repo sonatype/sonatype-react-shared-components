@@ -4,10 +4,19 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxDateInput', function() {
+  const {
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    checkScreenshot,
+    a11yTest
+  } = setupBrowser('#/pages/Date%20Input');
+
   const simpleComponentSelector = '#nx-date-input-simple-example .nx-text-input',
       validatableComponentSelector = '#nx-date-input-validation-example .nx-text-input',
       disabledComponentSelector = '#nx-date-input-disabled-example .nx-text-input.pristine',
@@ -17,10 +26,6 @@ describe('NxDateInput', function() {
   function getInputElementSelector(componentSelector, inputType = 'input') {
     return `${componentSelector} ${inputType}`;
   }
-
-  beforeEach(async function() {
-    await browser.url('#/pages/Date%20Input');
-  });
 
   describe('Simple NxDateInput', function() {
     it('has a dark border by default', simpleTest(simpleComponentSelector));
@@ -39,30 +44,26 @@ describe('NxDateInput', function() {
 
     it('has validation styles when valid', async function() {
       const inputSelector = getInputElementSelector(validatableComponentSelector),
-          [targetElement, inputElement] = await Promise.all([
-            browser.$(validatableComponentSelector),
-            browser.$(inputSelector)
-          ]);
+          [targetElement, inputElement] = await waitAndGetElements(
+            validatableComponentSelector,
+            inputSelector
+          );
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await inputElement.setValue('2019-01-01');
-      await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+      await inputElement.evaluate(e => { e.value = '2019-01-01'; });
+      await checkScreenshot(targetElement);
     });
 
     it('has invalid validation styles when invalid', async function() {
       const inputSelector = getInputElementSelector(validatableComponentSelector),
-          [targetElement, inputElement] = await Promise.all([
-            browser.$(validatableComponentSelector),
-            browser.$(inputSelector)
-          ]);
+          [targetElement, inputElement] = await waitAndGetElements(
+            validatableComponentSelector,
+            inputSelector
+          );
 
-      await targetElement.scrollIntoView({ block: 'center' });
-      await inputElement.setValue('2019-01-01');
+      await inputElement.evaluate(e => { e.value = '2019-01-01'; });
 
-      const { x, y } = await targetElement.getLocation();
-      const region = new Region(parseInt(x, 10), parseInt(y, 10), 300, 74);
-
-      await browser.eyesRegionSnapshot(null, Target.region(region));
+      const { x, y } = await targetElement.boundingBox();
+      await checkScreenshot(targetElement, 300, 74);
     });
   });
 
