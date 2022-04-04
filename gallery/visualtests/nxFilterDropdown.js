@@ -18,6 +18,7 @@ describe('NxFilterDropdown', function() {
     focusAndHoverTest,
     hoverTest,
     simpleTest,
+    a11yTest,
     checkScreenshot
   } = setupBrowser('#/pages/Filter Dropdown');
 
@@ -96,6 +97,8 @@ describe('NxFilterDropdown', function() {
             focusTest(tableExampleSelector, resetBtnSelector));
       });
     });
+
+    it('passes a11y checks', a11yTest());
   });
 
   describe('Short NxFilterDropdown', function() {
@@ -168,4 +171,6 @@ describe('NxFilterDropdown', function() {
 
     expect(await isInDocument(dropdownMenu)).toBe(false);
   });
+
+  it('passes a11y checks', a11yTest());
 });
