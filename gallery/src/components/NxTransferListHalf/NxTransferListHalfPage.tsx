@@ -43,44 +43,42 @@ const NxTransferListPage = () =>
               <NxTable.Cell>ReactNode</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>This is the label to display over the list; it must not be null.</NxTable.Cell>
+              <NxTable.Cell>The label to display over the list. Must not be null.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>filterValue</NxCode></NxTable.Cell>
               <NxTable.Cell>string</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>This is the current value for the filter box.</NxTable.Cell>
+              <NxTable.Cell>Current value for the filter box</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onFilterChange</NxCode></NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>This function fires when the filter value is changed by the user.</NxTable.Cell>
+              <NxTable.Cell>Handler which fires when the filter value is changed by the user</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>showMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>When this prop is true, the "Remove All"/"Transfer All" button is shown.</NxTable.Cell>
+              <NxTable.Cell>Whether or not to show the "Remove All"/"Transfer All" button</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>
-                This function fires when the user activates the "Remove All"/"Transfer All" button.
-              </NxTable.Cell>
+              <NxTable.Cell>Handler for the user activating the "Remove All"/"Transfer All" button</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>items</NxCode></NxTable.Cell>
               <NxTable.Cell>DataItem[]</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>This is the unfiltered list of items to display within the component.</NxTable.Cell>
+              <NxTable.Cell>The unfiltered list of items to display within the component</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>isSelected</NxCode></NxTable.Cell>
@@ -88,8 +86,8 @@ const NxTransferListPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                This prop specifies whether this component represents selected or unselected items. This affects what 
-                icons are used and the wording of the Move All button.
+                Whether this component represents selected or unselected items. This affects what icons are used and
+                the wording of the Move All button.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -98,7 +96,7 @@ const NxTransferListPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                This function fires when the user activates an item in the list. This handler will be passed two
+                Handler function for the user activating an item in the list. This handler will be passed two
                 arguments: whether the item was currently selected (i.e. the value of
                 the <NxCode>isSelected</NxCode> prop) and the id of the item.
               </NxTable.Cell>
@@ -109,8 +107,8 @@ const NxTransferListPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                This text is displayed in the footer of the component, typically expressing the number of items in the
-                list and potentially a number of possible or available items.
+                Text to display in the footer of the component, typically expressing the number of items in the list
+                and potentially a number of possible or available items.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -119,7 +117,7 @@ const NxTransferListPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>Case-insensitive substring match</NxTable.Cell>
               <NxTable.Cell>
-                This function determines if a given item matches a given filter string. The default should
+                The function to use to determine if a given item matches a given filter string. The default should
                 be adequate for most cases but this customization point is provided in case a different strategy is
                 desired.
               </NxTable.Cell>
@@ -130,8 +128,8 @@ const NxTransferListPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                This function fires when the user uses the reordering buttons within the list. It receives two
-                arguments: the list index of the item being reordered, and the direction in which it is being moved as a
+                Handler for the user activating the reordering buttons within the list. Receives two arguments:
+                the list index of the item being reordered, and the direction in which it is being moved as a
                 number (-1 for towards the beginning of the list, 1 for towards the end of the list). While this
                 prop is optional, it should be provided when <NxCode>allowReordering</NxCode> is true.
               </NxTable.Cell>
@@ -141,7 +139,7 @@ const NxTransferListPage = () =>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>This prop determines whether the reordering buttons are shown.</NxTable.Cell>
+              <NxTable.Cell>Whether the reordering buttons should be displayed on each item</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
