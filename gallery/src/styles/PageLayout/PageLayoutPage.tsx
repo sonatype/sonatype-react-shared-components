@@ -284,6 +284,36 @@ const PageLayoutPage = () =>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Accessibility Considerations</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          There is an accessibility rule that every scrollable region on a page must either contain a focusable element,
+          or be focusable itself. Notice in the examples below that some of the elements are given
+          a <NxCode>tabIndex</NxCode> in order to meet this requirement. This only needs to be done explictly if
+          the scrolling element contains no naturally interactive content whatsoever, which is often the case in these
+          contrived examples. In actual development, if the scrolling region of the page contains even a single link,
+          text input, or other interactive element, it will automatically satisfy this requirement. If on the other hand
+          an element which is/may be scrollable contains only static content, it should be given
+          a <NxCode>tabIndex</NxCode> of zero as seen in these examples.
+        </NxP>
+
+        <NxP>
+          Additionally, many of the RSC page layout components provide ARIA roles which are designated
+          as <NxTextLink external href="https://www.w3.org/TR/wai-aria/#landmark_roles">Landmark Roles</NxTextLink>.
+          In pages which contain multiple elements using the same landmark role, each one must be given a distinct
+          label. RSC attempts to assist with this by providing default labels for
+          the <NxCode>NxGlobalSidebar</NxCode> and <NxCode>NxSystemNotice</NxCode> components, both of which provide the
+          <NxCode>complementary</NxCode> role. Additionally, <NxCode>NxPageSidebar</NxCode> provides that same role but
+          <em>does not</em> have a default label, since its content is completely variable. In most situations this is
+          fine, as the lack of a label still makes it distinct from other <NxCode>complementary</NxCode> elements which
+          do have a label. However, in the event that a page is constructed which contains any <em>additional</em>
+          complementary elements beyond one instance each of those three, then
+          additional <NxCode>aria-label</NxCode>s should be added in order to keep the complementary elements
+          distinguishable.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <NxTile>

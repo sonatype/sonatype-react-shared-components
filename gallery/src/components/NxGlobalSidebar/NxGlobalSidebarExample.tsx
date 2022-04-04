@@ -11,8 +11,10 @@ import {
   NxGlobalSidebarNavigationLink,
   NxGlobalSidebarFooter,
   useToggle,
-  NxPageMain }
-  from '@sonatype/react-shared-components';
+  NxPageMain,
+  NxH1,
+  NxPageTitle
+} from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
 
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
@@ -52,7 +54,11 @@ export default function NxGlobalSidebarExample() {
                                releaseText="Release 3.1.4"
                                productTagLine="Powered by PLAID VILLAIN" />
       </NxGlobalSidebar>
-      <NxPageMain>Page content</NxPageMain>
+      <NxPageMain>
+        <NxPageTitle>
+          <NxH1>Foo</NxH1>
+        </NxPageTitle>
+      </NxPageMain>
     </>
   );
 }

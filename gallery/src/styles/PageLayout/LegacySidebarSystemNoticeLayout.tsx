@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxPageHeader, NxSystemNotice, NxP, NxPageSidebar, NxPageMain, NxTile, NxH2 }
+import { NxPageHeader, NxSystemNotice, NxP, NxPageSidebar, NxPageMain, NxTile, NxPageTitle, NxH1 }
   from '@sonatype/react-shared-components';
 import CodeExample from '../../CodeExample';
 
@@ -17,7 +17,7 @@ export default function LegacySidebarSystemNoticeLayout() {
       <NxPageHeader />
       <NxSystemNotice>This is a System Notice</NxSystemNotice>
       <div className="nx-page-content">
-        <NxPageSidebar>
+        <NxPageSidebar tabIndex={0}>
           <NxP>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum augue ut mi facilisis commodo. Sed
             quis faucibus metus. Duis volutpat nisl et risus pellentesque euismod. Praesent iaculis ipsum et iaculis
@@ -45,12 +45,10 @@ export default function LegacySidebarSystemNoticeLayout() {
           </NxP>
         </NxPageSidebar>
         <NxPageMain>
+          <NxPageTitle>
+            <NxH1>This Example's Code</NxH1>
+          </NxPageTitle>
           <NxTile>
-            <NxTile.Header>
-              <NxTile.HeaderTitle>
-                <NxH2>This Example's Code</NxH2>
-              </NxTile.HeaderTitle>
-            </NxTile.Header>
             <NxTile.Content>
               <CodeExample content={exampleCode} />
             </NxTile.Content>

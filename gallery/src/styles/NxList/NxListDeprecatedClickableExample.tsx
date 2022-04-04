@@ -32,7 +32,8 @@ const NxListDeprecatedClickableExample = () =>
       </span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>
-    <li className="nx-list__item disabled">
+    {/* eslint-disable-next-line jsx-a11y/role-supports-aria-props */}
+    <li className="nx-list__item disabled" aria-disabled="true">
       <span className="nx-list__text">This list item is disabled</span>
       <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
     </li>

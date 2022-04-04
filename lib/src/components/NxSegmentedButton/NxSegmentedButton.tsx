@@ -53,6 +53,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
                     variant={variant}
                     className="nx-segmented-btn__dropdown-btn"
                     onClick={onToggleCollapse}
+                    aria-label="more options"
                     disabled={disabled || undefined}>
             <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} />
           </NxButton>

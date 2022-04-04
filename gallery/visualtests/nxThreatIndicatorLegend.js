@@ -4,12 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
-describe('nxThreatIndicatorLegend', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Threat Indicator Legend');
-  });
+describe('NxThreatIndicatorLegend', function() {
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Threat Indicator Legend');
 
   const horizontalLegendSelector = '#nx-threat-indicator-legend-example .gallery-example-live',
       horizontalLegendHalfSelector = '#nx-threat-indicator-legend-example-half .gallery-example-live',
@@ -25,4 +23,6 @@ describe('nxThreatIndicatorLegend', function() {
       simpleTest(verticalLegendSelector));
   it('looks correct with vertical orientation and only some category level threats shown',
       simpleTest(verticalLegendHalfSelector));
+
+  it('passes a11y checks', a11yTest());
 });

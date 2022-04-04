@@ -70,7 +70,10 @@ const NxTablePaginationFilterExample = () => {
         </NxTable.Body>
       </NxTable>
       <div className="nx-table-container__footer">
-        <NxPagination aria-controls="pagination-filter-table" { ...{ pageCount, currentPage } } onChange={setPage} />
+        <NxPagination aria-label="pagination - filter-table"
+                      aria-controls="pagination-filter-table"
+                      { ...{ pageCount, currentPage } }
+                      onChange={setPage} />
       </div>
     </div>
   );

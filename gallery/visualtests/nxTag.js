@@ -4,13 +4,22 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
-const { Region, Target } = require('@applitools/eyes-webdriverio');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxTag', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Tag');
-  });
+  const {
+        clickTest,
+        focusTest,
+        focusAndHoverTest,
+        hoverTest,
+        simpleTest,
+        waitAndGetElements,
+        checkScreenshotCoordinates,
+        checkScreenshot,
+        scrollIntoView,
+        wait,
+        a11yTest
+      } = setupBrowser('#/pages/Tag');
 
   describe('Basic NxTag', function() {
     const selector = '#nx-tag-example .gallery-example-live',
@@ -22,17 +31,16 @@ describe('NxTag', function() {
     it('looks right', simpleTest(selector));
 
     it('has a tooltip', async function() {
-      const [tagElement, tooltipTagElement] = await Promise.all([browser.$(selector), browser.$(tagSelector)]);
+      const [tagElement, tooltipTagElement] = await waitAndGetElements(selector, tagSelector);
 
-      await tagElement.scrollIntoView({ block: 'center' });
-
-      const { x, y, height, width } = await browser.getElementRect(tagElement.elementId);
 
       // hover the tag to activate its tooltip.
-      await tooltipTagElement.moveTo();
+      await scrollIntoView(tagElement);
+      await tooltipTagElement.hover();
+      await wait(1500);
+      const { x, y, height, width } = await tagElement.boundingBox();
 
-      const screenshotRegion = new Region(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
-      await browser.eyesRegionSnapshot(null, Target.region(screenshotRegion));
+      await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
     });
   });
 
@@ -45,17 +53,13 @@ describe('NxTag', function() {
     it('has a light blue glow and blue border when focused and hovered', focusAndHoverTest(selector));
 
     it('has a dark blue/grey background when clicked', async function() {
-      const targetElement = await browser.$(selector);
+      const [targetElement] = await waitAndGetElements(selector);
 
       await targetElement.click();
 
-      try {
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-      }
-      finally {
-        // click again to reset the state
-        await targetElement.click();
-      }
+      await checkScreenshot(targetElement);
     });
   });
+
+  it('passes a11y checks', a11yTest());
 });

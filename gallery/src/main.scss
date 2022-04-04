@@ -15,14 +15,14 @@
   width: 400px;
 }
 
-.gallery-example {
-  pre {
-    font-size: var(--nx-font-size-s);
-  }
-}
-
 .gallery-example-live {
   padding: var(--nx-spacing-6x);
+}
+
+.gallery-example-code code {
+  // Our current react-syntax-highlighter theme specifies various OS-specific fonts, which cause visual test
+  // discrepancies, so we override with an open source font that we provide
+  font-family: Courier Prime, sans-serif !important;
 }
 
 .gallery-example--checkered-background {
@@ -108,5 +108,51 @@
   // it there
   .gallery-checkered-background-toggle {
     display: none;
+  }
+}
+
+// Accessibility Checklist Page
+.nx-list.gallery-list--no-bullets {
+  .nx-list__item {
+    list-style: none;
+  }
+}
+
+.gallery-accessibility-list {
+  .nx-checkbox__box {
+    align-self: flex-start;
+    margin-top: var(--nx-spacing-base);
+  }
+
+  .nx-radio-checkbox__content {
+    white-space: normal;
+  }
+
+  .nx-text-link {
+    margin-left: var(--nx-spacing-6x);
+  }
+
+  &.gallery-a-hidden {
+    .gallery-level-a {
+      display: none;
+    }
+  }
+  
+  &.gallery-aa-hidden {
+    .gallery-level-aa {
+      display: none;
+    }
+  }
+  
+  &.gallery-aaa-hidden {
+    .gallery-level-aaa {
+      display: none;
+    }
+  }
+  
+  &.gallery-reco-hidden {
+    .gallery-level-reco {
+      display: none;
+    }
   }
 }

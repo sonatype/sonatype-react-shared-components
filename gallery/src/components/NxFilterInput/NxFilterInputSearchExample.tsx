@@ -12,7 +12,7 @@ const NxFilterInputSearchExample = () => {
   const [value, changeValue] = useState('');
 
   return (
-    <NxFilterInput searchIcon placeholder="Enter a filter value" id="input-id" onChange={changeValue} value={value}/>
+    <NxFilterInput searchIcon placeholder="Enter a filter value" onChange={changeValue} value={value}/>
   );
 };
 

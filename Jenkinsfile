@@ -6,10 +6,8 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
-def seleniumHubDockerImage = 'docker-all.repo.sonatype.com/selenium/hub'
-def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/node-chrome'
+def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
 def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
-def numSeleniumContainers = 10;
 
 dockerizedBuildPipeline(
   deployBranch: 'main',
@@ -21,17 +19,10 @@ dockerizedBuildPipeline(
 
     withSonatypeDockerRegistry() {
       sh """
-        docker network create grid
-        docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub \
-            ${seleniumHubDockerImage}:${seleniumDockerVersion}
-
-        for i in \$(seq 1 ${numSeleniumContainers}); do
-          docker run --name selenium-chrome-\$i -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub \
-              -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
-              -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
-              -v /dev/shm:/dev/shm \
-              ${seleniumDockerImage}:${seleniumDockerVersion}
-        done
+        docker run --name selenium-chrome -d \
+            -p 4444:4444 \
+            -v /dev/shm:/dev/shm \
+            ${seleniumDockerImage}:${seleniumDockerVersion}
       """
     }
   },
@@ -87,7 +78,7 @@ dockerizedBuildPipeline(
       exit $exitSuccessfully
     '''
 
-    withCredentials([string(credentialsId: 'REACT_SHARED_COMPONENTS_APPLITOOLS_KEY', variable: 'APPLITOOLS_API_KEY')]) {
+    withCredentials([string(credentialsId: 'GAINSIGHT_PX_API_KEY', variable: 'PX_API_KEY')]) {
       sh """
         registry=https://repo.sonatype.com/repository/npm-all/
 
@@ -99,32 +90,19 @@ dockerizedBuildPipeline(
         npm pack
         cd ../..
 
-        (
-          # Needed for docker-based webdriverio tests
-          export TEST_IP=\$JENKINS_AGENT_IP
+        cd gallery
+        yarn install --registry "\${registry}" --frozen-lockfile
 
-          cd gallery
-          yarn install --registry "\${registry}" --frozen-lockfile
+        yarn test
+        yarn build
+        cd ..
 
-          # Run the visual tests, hitting the selenium server on the host (which its port was forwarded to)
-          MAX_INSTANCES=${numSeleniumContainers} yarn test
-          cd ..
+        cd ssr-tests
+        yarn install --registry "\${registry}" --frozen-lockfile
 
-          cd ssr-tests
-          yarn install --registry "\${registry}" --frozen-lockfile
-
-          # Run the server-side rendering tests, through docker similarly to the visual tests
-          NEXT_TELEMETRY_DISABLED=1 yarn test
-        )
+        # Run the server-side rendering tests, through docker similarly to the visual tests
+        TEST_IP=\$JENKINS_AGENT_IP NEXT_TELEMETRY_DISABLED=1 yarn test
       """
-
-      // NOTE: we don't want the applitools test run to have the gainsight key
-      withCredentials([string(credentialsId: 'GAINSIGHT_PX_API_KEY', variable: 'PX_API_KEY')]) {
-        sh """
-          cd gallery
-          yarn build
-        """
-      }
     }
   },
   vulnerabilityScan: {
@@ -153,7 +131,7 @@ dockerizedBuildPipeline(
     }
   },
   archiveArtifacts: 'lib/dist/*.tgz,gallery/dist/**/*',
-  testResults: ['lib/junit.xml'],
+  testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
     if (env.BRANCH_NAME == 'main') {
@@ -164,19 +142,15 @@ dockerizedBuildPipeline(
   },
   onFailure: {
     githubStatusUpdate('failure')
+    archiveArtifacts(artifacts: 'gallery/test-results/**/*')
     sendEmailNotification(currentBuild, env,
         [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], null)
   },
   cleanup: {
     sh """
-      for i in \$(seq 1 ${numSeleniumContainers}); do
-        docker rm -f selenium-chrome-\$i
-      done
+      docker rm -f selenium-chrome
 
-      docker rm -f selenium-hub
       docker rmi ${seleniumDockerImage}:${seleniumDockerVersion}
-      docker rmi ${seleniumHubDockerImage}:${seleniumDockerVersion}
-      docker network rm grid
     """
   }
 )
