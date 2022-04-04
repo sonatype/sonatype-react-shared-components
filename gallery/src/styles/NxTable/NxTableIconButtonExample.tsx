@@ -29,10 +29,10 @@ export default function NxTableIconButtonExample() {
           <th className="nx-cell nx-cell--header"/>
         </tr>
         <tr className="nx-table-row nx-table-row--header nx-table-row--filter-header">
-          <th className="nx-cell nx-cell--header">
+          <td className="nx-cell nx-cell--header">
             <NxFilterInput value="" placeholder="Type a name"/>
-          </th>
-          <th className="nx-cell nx-cell--header">
+          </td>
+          <td className="nx-cell nx-cell--header">
             <NxFilterInput value="" placeholder="Select a country" list="countryList"/>
             <datalist id="countryList">
               <option value="Colombia"/>
@@ -40,12 +40,12 @@ export default function NxTableIconButtonExample() {
               <option value="Germany"/>
               <option value="USA"/>
             </datalist>
-          </th>
-          <th className="nx-cell nx-cell--header">
+          </td>
+          <td className="nx-cell nx-cell--header">
             <div className="nx-btn-bar">
               <NxButton title="Tasks" variant="icon-only"><NxFontAwesomeIcon icon={faTasks} /></NxButton>
             </div>
-          </th>
+          </td>
         </tr>
       </thead>
       <tbody>
