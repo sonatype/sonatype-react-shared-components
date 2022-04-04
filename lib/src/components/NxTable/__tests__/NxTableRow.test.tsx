@@ -59,11 +59,11 @@ describe('NxTableRow', function () {
     expect(component.children().children()).toMatchSelector('NxTableCell#foo');
   });
 
-  it('sets the rendered text content into RowContext provider with cells separated by semi-colons', function() {
+  it('sets the rendered text content into RowContext provider label with cells separated by semi-colons', function() {
     function ContextDependentChild() {
-      const contextVal = useContext(RowContext);
+      const { label } = useContext(RowContext);
 
-      return <span className="context-dependent" aria-label={contextVal} />;
+      return <span className="context-dependent" aria-label={label} />;
     }
 
     const component = mount(
@@ -80,11 +80,11 @@ describe('NxTableRow', function () {
     expect(component.find('.context-dependent')).toHaveProp('aria-label', 'Foo; Bar; Baz');
   });
 
-  it('sets the clickAccessbleLabel into the RowContext provider if it is defined', function() {
+  it('sets the clickAccessbleLabel into the RowContext provider label if it is defined', function() {
     function ContextDependentChild() {
-      const contextVal = useContext(RowContext);
+      const { label } = useContext(RowContext);
 
-      return <span className="context-dependent" aria-label={contextVal} />;
+      return <span className="context-dependent" aria-label={label} />;
     }
 
     const component = mount(
@@ -99,5 +99,59 @@ describe('NxTableRow', function () {
     );
 
     expect(component.find('.context-dependent')).toHaveProp('aria-label', 'asdf');
+  });
+
+  it('sets the isFilterHeader flag into the RowContext, normalized to a boolean', function() {
+    function ContextDependentChild() {
+      const { isFilterHeader } = useContext(RowContext);
+
+      return <span className="context-dependent">{isFilterHeader.toString()}</span>;
+    }
+
+    const component1 = mount(
+          <NxTableRow isFilterHeader={true}>
+            <NxTableCell>Foo</NxTableCell>
+            <NxTableCell>Bar</NxTableCell>
+            <NxTableCell/>
+            <NxTableCell>Baz</NxTableCell>
+            <NxTableCell><ContextDependentChild/></NxTableCell>
+          </NxTableRow>,
+          { attachTo: document.createElement('tbody') }
+        ),
+        component2 = mount(
+          <NxTableRow isFilterHeader={false}>
+            <NxTableCell>Foo</NxTableCell>
+            <NxTableCell>Bar</NxTableCell>
+            <NxTableCell/>
+            <NxTableCell>Baz</NxTableCell>
+            <NxTableCell><ContextDependentChild/></NxTableCell>
+          </NxTableRow>,
+          { attachTo: document.createElement('tbody') }
+        ),
+        component3 = mount(
+          <NxTableRow isFilterHeader={null}>
+            <NxTableCell>Foo</NxTableCell>
+            <NxTableCell>Bar</NxTableCell>
+            <NxTableCell/>
+            <NxTableCell>Baz</NxTableCell>
+            <NxTableCell><ContextDependentChild/></NxTableCell>
+          </NxTableRow>,
+          { attachTo: document.createElement('tbody') }
+        ),
+        component4 = mount(
+          <NxTableRow>
+            <NxTableCell>Foo</NxTableCell>
+            <NxTableCell>Bar</NxTableCell>
+            <NxTableCell/>
+            <NxTableCell>Baz</NxTableCell>
+            <NxTableCell><ContextDependentChild/></NxTableCell>
+          </NxTableRow>,
+          { attachTo: document.createElement('tbody') }
+        );
+
+    expect(component1.find('.context-dependent')).toHaveText('true');
+    expect(component2.find('.context-dependent')).toHaveText('false');
+    expect(component3.find('.context-dependent')).toHaveText('false');
+    expect(component4.find('.context-dependent')).toHaveText('false');
   });
 });
