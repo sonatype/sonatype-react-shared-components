@@ -4,13 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxTooltip', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Tooltip');
-  });
+  const { waitAndGetElements, checkScreenshotCoordinates, wait, a11yTest } = setupBrowser('#/pages/Tooltip');
 
   const selector = '.gallery-example .nx-btn-bar',
       firstBtnSelector = `${selector} button:first-child`,
@@ -20,31 +17,30 @@ describe('NxTooltip', function() {
       tooltipHeightOffset = 45;
 
   it('looks right', async function() {
-    const [btnBarElement, firstBtnElement] = await Promise.all([browser.$(selector), browser.$(firstBtnSelector)]);
+    const [btnBarElement, firstBtnElement] = await waitAndGetElements(selector, firstBtnSelector);
 
-    await btnBarElement.scrollIntoView({ block: 'center' });
-
-    const { x, y, height, width } = await browser.getElementRect(btnBarElement.elementId);
+    const { x, y, height, width } = await btnBarElement.boundingBox();
 
     // hover the first button to activate its tooltip.
     // There is also another tooltip which is always active on the third button
-    await firstBtnElement.moveTo();
+    await firstBtnElement.hover();
+    await wait(1500);
 
-    const screenshotRegion = new Region(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
-    await browser.eyesRegionSnapshot(null, Target.region(screenshotRegion));
+    await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
   });
 
   it('looks right with an HTML tooltip', async function() {
-    const [btnBarElement, secondBtnElement] = await Promise.all([browser.$(selector), browser.$(secondBtnSelector)]);
+    const [btnBarElement, secondBtnElement] = await waitAndGetElements(selector, secondBtnSelector);
 
-    await btnBarElement.scrollIntoView({ block: 'center' });
-
-    const { x, y, height, width } = await browser.getElementRect(btnBarElement.elementId);
+    const { x, y, height, width } = await btnBarElement.boundingBox();
 
     // hover the second button to activate its tooltip, which uses additional properties and custom HTML
-    await secondBtnElement.moveTo();
+    await secondBtnElement.hover();
+    await wait(1500);
 
-    const screenshotRegion = new Region(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
-    await browser.eyesRegionSnapshot(null, Target.region(screenshotRegion));
+    await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
   });
+
+  //disabling the region rule to get around the "Some page content is not contained by landmarks" for tooltips
+  it('passes a11y checks', a11yTest(builder => builder.disableRules('region')));
 });

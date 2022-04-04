@@ -12,12 +12,13 @@ import {
   NxPageSidebar,
   NxPageMain,
   NxTile,
-  NxH2,
   NxStatefulGlobalSidebar,
   NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
   NxBackButton,
-  NxGlobalHeader
+  NxGlobalHeader,
+  NxPageTitle,
+  NxH1
 } from '@sonatype/react-shared-components';
 
 import CodeExample from '../../CodeExample';
@@ -44,7 +45,7 @@ export default function GlobalSidebarHeaderSystemNoticeSidebarLayout() {
       <NxGlobalHeader>
         <NxBackButton href="#/pages/Page%20Layout" />
       </NxGlobalHeader>
-      <NxPageSidebar>
+      <NxPageSidebar tabIndex={0}>
         <NxP>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum augue ut mi facilisis commodo. Sed
           quis faucibus metus. Duis volutpat nisl et risus pellentesque euismod. Praesent iaculis ipsum et iaculis
@@ -72,12 +73,10 @@ export default function GlobalSidebarHeaderSystemNoticeSidebarLayout() {
         </NxP>
       </NxPageSidebar>
       <NxPageMain>
+        <NxPageTitle>
+          <NxH1>This Example's Code</NxH1>
+        </NxPageTitle>
         <NxTile>
-          <NxTile.Header>
-            <NxTile.HeaderTitle>
-              <NxH2>This Example's Code</NxH2>
-            </NxTile.HeaderTitle>
-          </NxTile.Header>
           <NxTile.Content>
             <CodeExample content={exampleCode} />
           </NxTile.Content>

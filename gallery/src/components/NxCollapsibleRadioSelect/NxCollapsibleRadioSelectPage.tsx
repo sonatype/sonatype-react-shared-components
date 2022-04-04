@@ -203,7 +203,6 @@ const NxCollapsibleRadioSelectPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxCollapsibleRadioSelect Custom Tooltip Example"
-                        id="nx-collapsible-radio-select-example"
                         liveExample={NxCollapsibleRadioSelectCustomTooltipExample}
                         codeExamples={NxCollapsibleRadioSelectCustomTooltipExampleCode}>
       Example of an <NxCode>NxCollapsibleRadioSelect</NxCode> which generates a tooltip for each option

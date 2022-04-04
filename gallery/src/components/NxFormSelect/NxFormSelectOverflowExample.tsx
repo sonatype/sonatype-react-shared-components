@@ -5,16 +5,18 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxFormSelect } from '@sonatype/react-shared-components';
+import { NxFormGroup, NxFormSelect } from '@sonatype/react-shared-components';
 
-const NxFormSelectExample = () => (
-  <NxFormSelect>
-    <option value="1">Looooooooooooooooooong Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-    <option value="4">Option 4</option>
-    <option value="5">Option 5</option>
-  </NxFormSelect>
+const NxFormSelectOverflowExample = () => (
+  <NxFormGroup label="Overflowing Form Select" isRequired>
+    <NxFormSelect>
+      <option value="1">Looooooooooooooooooong Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </NxFormSelect>
+  </NxFormGroup>
 );
 
-export default NxFormSelectExample;
+export default NxFormSelectOverflowExample;

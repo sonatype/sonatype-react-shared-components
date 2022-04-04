@@ -4,13 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
-const { Region, Target } = require('@applitools/eyes-webdriverio');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxColorPicker', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Color%20Picker');
-  });
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    checkScreenshot, 
+    a11yTest 
+  } = setupBrowser('#/pages/Color%20Picker');
 
   const selector = '.gallery-example-live .nx-color-picker',
       labelSelector = `${selector} .nx-color-picker__color:first-of-type`;
@@ -21,14 +28,14 @@ describe('NxColorPicker', function() {
   it('looks right with a hovered and focused color', focusAndHoverTest(selector, labelSelector));
 
   it('looks right with a selected color', async function() {
-    const [targetElement, labelElement] = await Promise.all([browser.$(selector), browser.$(labelSelector)]);
+    const [targetElement, labelElement] = await waitAndGetElements(selector, labelSelector);
 
-    await targetElement.scrollIntoView({ block: 'center' });
     await labelElement.click();
 
-    // make sure mouse is not on element
-    await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
+    await moveMouseAway();
 
-    await browser.eyesRegionSnapshot(null, Target.region(targetElement));
+    await checkScreenshot(targetElement);
   });
+
+  it('passes a11y checks', a11yTest());
 });

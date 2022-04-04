@@ -82,7 +82,7 @@ describe('NxTableCell', function () {
     });
 
     describe('when isHeader', function() {
-      it('renders an empty header cell', function() {
+      it('renders a visually hidden header cell with the text "Select Row"', function() {
         const component = getMountedHeaderComponent({
           chevron: true,
           sortDir: 'asc',
@@ -90,7 +90,10 @@ describe('NxTableCell', function () {
         });
 
         expect(component).toMatchSelector('th.nx-cell.nx-cell--header');
-        expect(component.children()).not.toExist();
+        expect(component.children().length).toBe(1);
+        expect(component.find('span')).not.toHaveText('foo');
+        expect(component.find('span')).toHaveText('Select Row');
+        expect(component.find('span')).toHaveClassName('nx-cell__row-btn-header-text');
       });
     });
   });
@@ -136,7 +139,7 @@ describe('NxTableCell', function () {
     });
 
     describe('when isHeader', function() {
-      it('renders an empty header cell', function() {
+      it('renders a visually hidden header cell with the text "Select Row"', function() {
         const component = getMountedHeaderComponent({
           rowBtnIcon: faEdit,
           sortDir: 'asc',
@@ -144,7 +147,10 @@ describe('NxTableCell', function () {
         });
 
         expect(component).toMatchSelector('th.nx-cell.nx-cell--header');
-        expect(component.children()).not.toExist();
+        expect(component.children().length).toBe(1);
+        expect(component.find('span')).not.toHaveText('foo');
+        expect(component.find('span')).toHaveText('Select Row');
+        expect(component.find('span')).toHaveClassName('nx-cell__row-btn-header-text');
       });
     });
   });

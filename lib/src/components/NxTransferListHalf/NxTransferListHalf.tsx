@@ -50,8 +50,8 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       }
   );
 
-  const moveUpButtonTitle = isTopItem || isFilteredItem ? null : 'Move Up';
-  const moveDownButtonTitle = isBottomItem || isFilteredItem ? null : 'Move Down';
+  const moveUpButtonTitle = isTopItem || isFilteredItem ? 'Move Up (disabled)' : 'Move Up';
+  const moveDownButtonTitle = isBottomItem || isFilteredItem ? 'Move Down (disabled)' : 'Move Down';
 
   return (
     <div className={classes}>

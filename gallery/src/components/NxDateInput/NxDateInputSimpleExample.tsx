@@ -9,7 +9,8 @@ import React, { useState } from 'react';
 import {
   NxDateInput,
   NxDateInputStateProps,
-  nxDateInputStateHelpers
+  nxDateInputStateHelpers,
+  NxFormGroup
 } from '@sonatype/react-shared-components';
 
 const { initialState, userInput } = nxDateInputStateHelpers;
@@ -24,6 +25,8 @@ export default function NxDateInputSimpleExample() {
   }
 
   return (
-    <NxDateInput { ...state } onChange={onChange} />
+    <NxFormGroup label="Date">
+      <NxDateInput { ...state } onChange={onChange} />
+    </NxFormGroup>
   );
 }

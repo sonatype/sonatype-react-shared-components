@@ -4,18 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Region, Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxOverflowTooltip', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Overflow%20Tooltip');
-    await browser.refresh();
-  });
-
-  afterEach(async function() {
-    await browser.setWindowSize(1366, 1000);
-  });
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    getPage,
+    waitAndGetElements,
+    wait,
+    getElements
+ , a11yTest } = setupBrowser('#/pages/Overflow%20Tooltip');
 
   const listSelector = '#nx-overflow-tooltip-simple-example .nx-list',
       descendantOverflowListSelector = '#nx-overflow-tooltip-descendant-example .nx-list',
@@ -26,160 +28,185 @@ describe('NxOverflowTooltip', function() {
       dynamicExampleTextInputSelector = `${dynamicExampleSelector} .nx-text-input input`,
       dynamicExampleTooltipTargetSelector = `${dynamicExampleSelector} .gallery-example-live .nx-p`,
       tooltipSelector = '.nx-tooltip';
-      maxBeforeOverflowStr = 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
+      maxBeforeOverflowStr = 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
       descendantOverflowItemSelector = `${descendantOverflowListSelector} .nx-list__item:nth-child(2)`;
 
-  async function openDropdownAndHoverButton(btnSelector) {
-    const dropdownEl = await browser.$(dropdownSelector);
+  const wait1Sec = () => wait(1000)
 
-    await dropdownEl.scrollIntoView({ block: 'center' });
+  async function openDropdownAndHoverButton(btnSelector) {
+    const [dropdownEl] = await waitAndGetElements(dropdownSelector);
+
     await dropdownEl.click();
 
-    const btnEl = await browser.$(btnSelector);
+    const [btnEl] = await waitAndGetElements(btnSelector);
 
-    await btnEl.moveTo();
-    await browser.pause(1000);
+    await btnEl.hover();
+    await wait1Sec();
+  }
+
+  async function isInDocument(el) {
+    return el.evaluate(e => e.isConnected);
+  }
+
+  async function clearTextInput() {
+    await getPage().keyboard.down('Control');
+    await getPage().keyboard.press('A');
+    await getPage().keyboard.up('Control');
+    await getPage().keyboard.press('Backspace');
   }
 
   it('does not display a tooltip when a non-overflowing element is hovered', async function() {
-    const item1 = await browser.$(item1Selector);
+    const [item1] = await waitAndGetElements(item1Selector);
 
-    await item1.scrollIntoView({ block: 'center' });
-    await item1.moveTo();
-    await browser.pause(1000);
+    await item1.hover();
+    await wait1Sec();
 
-    const tooltipEl = await browser.$(tooltipSelector);
-
-    expect(await tooltipEl.isDisplayed()).toBe(false);
+    expect(await getPage().$(tooltipSelector)).toBe(null);
   });
 
   it('displays a tooltip with the full text when an overflowing element is hovered', async function() {
-    const item2 = await browser.$(item2Selector);
+    const [item2] = await waitAndGetElements(item2Selector);
 
-    await item2.scrollIntoView({ block: 'center' });
-    await item2.moveTo();
-    await browser.pause(1000);
+    await item2.hover();
 
-    const tooltipEl = await browser.$(tooltipSelector);
+    const [tooltipEl] = await waitAndGetElements(tooltipSelector);
 
-    expect(await tooltipEl.isDisplayed()).toBe(true);
-    expect(await tooltipEl.getText()).toBe( 'List item 2 - this text is long and should truncate with a tooltip ' +
+    expect(await isInDocument(tooltipEl)).toBe(true);
+    expect(await tooltipEl.evaluate(e => e.innerText)).toBe(
+        'List item 2 - this text is long and should truncate with a tooltip ' +
         'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip');
   });
 
   it('displays a tooltip with explicit title when the element is overflowing and hovered', async function() {
-    const item4 = await browser.$(item4Selector);
+    const [item4] = await waitAndGetElements(item4Selector);
 
-    await item4.scrollIntoView({ block: 'center' });
-    await item4.moveTo();
-    await browser.pause(1000);
+    await item4.hover();
 
-    const tooltipEl = await browser.$(tooltipSelector);
+    const [tooltipEl] = await waitAndGetElements(tooltipSelector);
 
-    expect(await tooltipEl.isDisplayed()).toBe(true);
-    expect(await tooltipEl.getText()).toBe('Foo Bar 2 - this text is long and should truncate with a tooltip ' +
-        'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip');
+    expect(await isInDocument(tooltipEl)).toBe(true);
+    expect(await tooltipEl.evaluate(e => e.innerText)).toBe(
+        'Foo Bar 2 - this text is long and should truncate with a tooltip ' +
+        'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip'
+    );
   });
 
   it('activates tooltip display when an already existing element gains text overflow due to more content',
       async function() {
-        const [inputEl, targetEl, tooltipEl] = await Promise.all([
-          browser.$(dynamicExampleTextInputSelector),
-          browser.$(dynamicExampleTooltipTargetSelector),
-          browser.$(tooltipSelector)
-        ]);
+        const [inputEl, targetEl] = await waitAndGetElements(
+          dynamicExampleTextInputSelector,
+          dynamicExampleTooltipTargetSelector
+        );
 
-        expect(await tooltipEl.isExisting()).toBe(false);
+        await targetEl.hover();
+        await wait1Sec();
+        expect(await getPage().$(tooltipSelector)).toBe(null);
 
-        await inputEl.setValue(maxBeforeOverflowStr + 'W');
+        await inputEl.focus();
+        await clearTextInput();
+        await getPage().keyboard.type(maxBeforeOverflowStr + 'W');
+        await wait1Sec();
+        await targetEl.hover();
 
-        expect(await tooltipEl.isExisting()).toBe(false);
-
-        await targetEl.moveTo();
-
-        await browser.pause(1000);
-        expect(await tooltipEl.isExisting()).toBe(true);
-        expect(await tooltipEl.getText()).toBe(maxBeforeOverflowStr + 'W');
+        const [tooltipEl] = await waitAndGetElements(tooltipSelector);
+        expect(await tooltipEl.evaluate(e => e.innerText)).toBe(maxBeforeOverflowStr + 'W');
       }
   );
 
   it('deactivates tooltip display when an already overflowing element loses text overflow due to less content',
       async function() {
-        const [inputEl, targetEl, tooltipEl] = await Promise.all([
-          browser.$(dynamicExampleTextInputSelector),
-          browser.$(dynamicExampleTooltipTargetSelector),
-          browser.$(tooltipSelector)
-        ]);
+        const [inputEl, targetEl] = await waitAndGetElements(
+          dynamicExampleTextInputSelector,
+          dynamicExampleTooltipTargetSelector,
+        );
 
-        await inputEl.setValue(maxBeforeOverflowStr + 'W');
-        await targetEl.moveTo();
+        await inputEl.focus();
+        await clearTextInput();
+        await getPage().keyboard.type(maxBeforeOverflowStr + 'W');
+        await targetEl.hover();
 
-        await browser.pause(1000);
-        expect(await tooltipEl.isExisting()).toBe(true);
+        await wait1Sec();
+        const [tooltipEl] = await waitAndGetElements(tooltipSelector);
 
-        await inputEl.setValue(maxBeforeOverflowStr);
+        await inputEl.focus();
+        await getPage().keyboard.press('Backspace');
 
-        await browser.pause(1000); // tooltip takes a bit to go away
-        expect(await tooltipEl.isExisting()).toBe(false);
+        await wait1Sec();
+        expect(await isInDocument(tooltipEl)).toBe(false);
       }
   );
 
   it('activates tooltip display when an already existing element gains text overflow due to width decrease',
       async function() {
-        const [inputEl, targetEl, tooltipEl] = await Promise.all([
-          browser.$(dynamicExampleTextInputSelector),
-          browser.$(dynamicExampleTooltipTargetSelector),
-          browser.$(tooltipSelector)
-        ]);
+        const [inputEl, targetEl] = await waitAndGetElements(
+          dynamicExampleTextInputSelector,
+          dynamicExampleTooltipTargetSelector
+        );
 
-        await browser.setWindowSize(1400, 1000);
-        await inputEl.setValue(maxBeforeOverflowStr + 'W');
-        await targetEl.moveTo();
+        await getPage().setViewport({ width: 1400, height: 1000 });
+        await inputEl.focus();
+        await clearTextInput();
+        await getPage().keyboard.type(maxBeforeOverflowStr + 'W');
+        await targetEl.hover();
+        await wait1Sec();
 
-        expect(await tooltipEl.isExisting()).toBe(false);
+        expect(await getPage().$(tooltipSelector)).toBe(null);
 
-        await browser.setWindowSize(1366, 1000);
-        await targetEl.moveTo();
+        await getPage().setViewport({ width: 1366, height: 1000 });
+        await targetEl.hover();
 
-        await browser.pause(1000);
-        expect(await tooltipEl.isExisting()).toBe(true);
-        expect(await tooltipEl.getText()).toBe(maxBeforeOverflowStr + 'W');
+        await wait1Sec();
+        tooltipEl = (await getElements(tooltipSelector))[0];
+        expect(await isInDocument(tooltipEl)).toBe(true);
+        expect(await tooltipEl.evaluate(e => e.innerText)).toBe(maxBeforeOverflowStr + 'W');
       }
   );
 
   it('deactivates tooltip display when an already overflowing element loses text overflow due to width increase',
       async function() {
-        const [inputEl, targetEl, tooltipEl] = await Promise.all([
-          browser.$(dynamicExampleTextInputSelector),
-          browser.$(dynamicExampleTooltipTargetSelector),
-          browser.$(tooltipSelector)
-        ]);
+        const [inputEl, targetEl] = await waitAndGetElements(
+          dynamicExampleTextInputSelector,
+          dynamicExampleTooltipTargetSelector
+        );
 
-        await inputEl.setValue(maxBeforeOverflowStr + 'W');
-        await targetEl.moveTo();
+        await inputEl.focus();
+        await clearTextInput();
+        await getPage().keyboard.type(maxBeforeOverflowStr + 'W');
+        await targetEl.hover();
 
-        await browser.pause(1000);
-        expect(await tooltipEl.isExisting()).toBe(true);
+        await wait1Sec();
+        const [tooltipEl] = await waitAndGetElements(tooltipSelector);
 
-        await browser.setWindowSize(1400, 1000);
-        await targetEl.moveTo();
+        await getPage().setViewport({ width: 1400, height: 1000 });
+        await targetEl.hover();
 
-        await browser.pause(1000); // tooltip takes a bit to go away
-        expect(await tooltipEl.isExisting()).toBe(false);
+        await wait1Sec();
+        expect(await isInDocument(tooltipEl)).toBe(false);
       }
   );
 
   it('displays a tooltip with the full text when an element with an overflowing child is hovered', async function() {
-    const item = await browser.$(descendantOverflowItemSelector);
+    const [item] = await waitAndGetElements(descendantOverflowItemSelector);
 
-    await item.scrollIntoView({ block: 'center' });
-    await item.moveTo();
-    await browser.pause(1000);
+    await item.hover();
 
-    const tooltipEl = await browser.$(tooltipSelector);
+    const [tooltipEl] = await waitAndGetElements(tooltipSelector);
 
-    expect(await tooltipEl.isDisplayed()).toBe(true);
-    expect(await tooltipEl.getText()).toBe( 'List item 2 - this text is long and should truncate with a tooltip ' +
-        'this text is long and should truncate with a tooltip this text is long and should truncate with a tooltip');
+    expect(await tooltipEl.evaluate(e => e.innerText)).toBe(
+        'List item 2 - this text is long and should truncate with a tooltip this text is long and should truncate ' +
+        'with a tooltip this text is long and should truncate with a tooltip'
+    );
+  });
+
+  it('passes a11y checks when tooltip not active', a11yTest());
+  it('passes a11y checks when tooltip is active', async function() {
+    const [item2] = await waitAndGetElements(item2Selector);
+
+    await item2.hover();
+
+    await waitAndGetElements(tooltipSelector);
+
+    //disabling the region rule to get around the "Some page content is not contained by landmarks" for tooltips
+    await a11yTest(builder => builder.disableRules('region'));
   });
 });

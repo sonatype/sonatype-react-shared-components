@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-text-helpers';
 
 // returns a data URL for a triangular caret SVG of the specified color.
 // Unfortunately CSS url() functions must take the whole literal URL as their parameter
@@ -16,6 +17,7 @@
 }
 
 .nx-form-select {
+  @include nx-text-helpers.regular;
   $caret: caret-with-color('hsl(0, 0%25, 10%25)');
   $icon-size: 12px;
 

@@ -19,7 +19,7 @@ export default function NxOverflowTooltipDynamicExample() {
 
   return (
     <>
-      <NxTextInput className="nx-text-input--long" { ...textState } onChange={onChange} />
+      <NxTextInput className="nx-text-input--long" { ...textState } onChange={onChange} placeholder="Text input" />
 
       <NxOverflowTooltip>
         <p className="nx-p nx-truncate-ellipsis">{textState.trimmedValue}</p>
