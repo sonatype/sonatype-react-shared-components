@@ -8,7 +8,7 @@ import React from 'react';
 
 import { NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-components';
 
-import { data, DATA_CVE_AFFECTED, THREAT_COLORS } from './data';
+import { data } from './data';
 
 import { ResponsivePie } from '@nivo/pie';
 

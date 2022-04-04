@@ -9,15 +9,15 @@ import React from 'react';
 
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NivoLineChartExample from './NivoLineChartMediumDataSetExample';
-const NivolineChartSourceCode = require('./NivoLineChartExample?raw');
+import NivoLineChartSmallDataSetExample from './NivoLineChartSmallDataSetExample';
+const NivolineChartSmallDataSetSourceCode = require('./NivoLineChartSmallDataSetExample?raw');
 
 const NivoLineChartPage = () =>
   <>
     <GalleryExampleTile title="Nivo Line Chart Example"
                         id="nivo-line-chart-example"
-                        liveExample={NivoLineChartExample}
-                        codeExamples={NivolineChartSourceCode}>
+                        liveExample={NivoLineChartSmallDataSetExample}
+                        codeExamples={NivolineChartSmallDataSetSourceCode}>
       A basic example of a Line Chart.
     </GalleryExampleTile>
   </>;

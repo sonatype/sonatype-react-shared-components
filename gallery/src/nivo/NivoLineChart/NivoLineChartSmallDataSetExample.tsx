@@ -32,10 +32,6 @@ const theme = {
   background: '#ffffff'
 };
 
-const style = {
-  lineWidth: 2
-};
-
 const dateXScale: ScaleSpec = {
   type: 'time',
   format: '%Y-%m-%d',
@@ -86,13 +82,20 @@ const legends: LegendProps[] = [
   }
 ];
 
+const style = {
+  lineWidth: 4,
+  pointSize: 10,
+  pointColor: 'red',
+  pointBorderWidth: 4,
+  pointBorderColor: { inherit: 'color' }
+};
+
 const margins = { top: 40, right: 60, bottom: 80, left: 60 };
 
 export default function LineChartExample() {
   return (
     <div style={{ height: '400px' }}>
       <ResponsiveLine data={DATA_WITH_DATES}
-                      { ...style }
                       margin={margins}
                       xScale={dateXScale}
                       xFormat="time:%Y-%m-%d"
@@ -108,15 +111,13 @@ export default function LineChartExample() {
                         legendOffset: -40,
                         legendPosition: 'middle'
                       }}
-                      pointSize={10}
-                      pointColor={{ theme: 'background' }}
-                      pointBorderColor={{ from: 'serieColor' }}
                       pointLabelYOffset={-12}
                       useMesh={true}
                       crosshairType='cross'
                       theme={theme}
                       colors={colors}
                       legends={legends}
+                      { ...style }
       />
     </div>
   );

@@ -142,9 +142,7 @@ import NxTreePage from './components/NxTree/NxTreePage';
 import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBar';
 
-import NivoBarChartPage from './nivo/NivoBarChart/NivoBarChartPage';
 import NivoLineChartPage from './nivo/NivoLineChart/NivoLineChartPage';
-import NivoPieChartPage from './nivo/NivoPieChart/NivoPieChartPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {

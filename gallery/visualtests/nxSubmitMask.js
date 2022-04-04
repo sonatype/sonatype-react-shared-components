@@ -4,31 +4,44 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxSubmitMask', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Submit%20Mask');
-  });
+  const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation, getPage, a11yTest } =
+      setupBrowser('#/pages/Submit%20Mask');
 
   const loadingMaskBtnSelector = '#nx-submit-mask-loading-example button',
       successMaskBtnSelector = '#nx-submit-mask-success-example button';
 
-  it('looks right when loading', async function() {
-    const btn = await browser.$(loadingMaskBtnSelector);
-
-    await btn.scrollIntoView({ block: 'center' });
-    await btn.click();
-
-    await browser.eyesSnapshot(null);
+  beforeEach(async function() {
+    await getPage().setViewport({ width: 1366, height: 1000 });
   });
 
-  it('looks right when successful', async function() {
-    const btn = await browser.$(successMaskBtnSelector);
+  describe('when loading', function() {
+    beforeEach(async function() {
+      const [btn] = await waitAndGetElements(loadingMaskBtnSelector);
+      await btn.click();
+    });
 
-    await btn.scrollIntoView({ block: 'center' });
-    await btn.click();
+    it('looks right', async function() {
+      await disableLoadingSpinnerAnimation();
+      await checkFullPageScreenshot();
+    });
 
-    await browser.eyesSnapshot(null);
+    it('passes a11y checks', a11yTest());
+  });
+
+  describe('when successful', function() {
+    beforeEach(async function() {
+      const [btn] = await waitAndGetElements(successMaskBtnSelector);
+
+      await btn.click();
+    });
+
+    it('looks right when successful', async function() {
+      await checkFullPageScreenshot();
+    });
+
+    it('passes a11y checks', a11yTest());
   });
 });

@@ -113,10 +113,17 @@
   @include nx-container-helpers.container-vertical;
   margin-top: var(--nx-spacing-8x);
 
-  &:first-of-type {
+  // the first subsection should be separated from preceding non-subsection content by a line. The line should not
+  // appear if there is no preceding content within the tile content area, and should not appear if the immediately
+  // preceding element is the header of a parent nx-tile-subsection
+  :not(.nx-tile-subsection__header) + &:first-of-type {
     border-top: var(--nx-border-default);
     margin-top: var(--nx-spacing-6x);
     padding-top: var(--nx-spacing-6x);
+  }
+
+  .nx-tile-subsection__header + & {
+    margin-top: var(--nx-spacing-6x);
   }
 
   .nx-tile-subsection__header {

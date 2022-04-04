@@ -11,8 +11,10 @@ import {
   NxGlobalSidebarNavigationLink,
   NxGlobalSidebarFooter,
   useToggle,
-  NxPageMain }
-  from '@sonatype/react-shared-components';
+  NxPageMain,
+  NxPageTitle,
+  NxH1
+} from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
 
 const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
@@ -37,7 +39,11 @@ export default function NxGlobalSidebarFooterEmptyExample() {
         </NxGlobalSidebarNavigation>
         <NxGlobalSidebarFooter showCreatedBy={false} />
       </NxGlobalSidebar>
-      <NxPageMain>Page content</NxPageMain>
+      <NxPageMain>
+        <NxPageTitle>
+          <NxH1>Foo</NxH1>
+        </NxPageTitle>
+      </NxPageMain>
     </>
   );
 }

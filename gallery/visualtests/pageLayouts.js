@@ -4,118 +4,291 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+const { setupBrowser } = require('./testUtils');
+
 describe('Page Layout', function() {
 
-  function testLoadWrapper(url) {
-    return async () => {
-      await browser.url(url);
-      await browser.eyesSnapshot('loading');
+  function testLoadWrapper(thingsToSee, url) {
+    describe('with ' + thingsToSee, function() {
+      const {
+        checkFullPageScreenshot,
+        getPage,
+        waitForSelectors,
+        disableLoadingSpinnerAnimation
+      } = setupBrowser(url, false);
 
-      const alertEl = await browser.$('.nx-alert');
-      await alertEl.waitForDisplayed();
-      await browser.eyesSnapshot('error');
-    };
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await disableLoadingSpinnerAnimation();
+        let screenshot = await getPage().screenshot();
+        expect(screenshot).toMatchImageSnapshot();
+
+        await waitForSelectors('.nx-alert');
+        screenshot = await getPage().screenshot();
+        expect(screenshot).toMatchImageSnapshot();
+      });
+    });
   }
 
   describe('Legacy Page Layout', function() {
-    it('looks right with sidebar, system notice, and page scrolling', async function() {
-      await browser.url('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout');
-      await browser.eyesSnapshot(null);
+    describe('with sidebar, system notice, and page scrolling', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage,
+        a11yTest
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarSystemNoticeLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
+
+      it('passes a11y checks', a11yTest());
     });
 
-    it('looks right with sidebar, and page scrolling', async function() {
-      await browser.url('#/pageLayouts/pageScrolling/LegacySidebarLayout');
-      await browser.eyesSnapshot(null);
+    describe('with sidebar, and page scrolling', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySidebarLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with system notice, and page scrolling', async function() {
-      await browser.url('#/pageLayouts/pageScrolling/LegacySystemNoticeLayout');
-      await browser.eyesSnapshot(null);
+    describe('with system notice, and page scrolling', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacySystemNoticeLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with page scrolling', async function() {
-      await browser.url('#/pageLayouts/pageScrolling/LegacyLayout');
-      await browser.eyesSnapshot(null);
+    describe('with page scrolling', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/pageScrolling/LegacyLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with sidebar, system notice, and section scrolling', async function() {
-      await browser.url('#/pageLayouts/LegacySidebarSystemNoticeLayout');
-      await browser.eyesSnapshot(null);
+    describe('with sidebar, system notice, and section scrolling', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage,
+        a11yTest
+      } = setupBrowser('#/pageLayouts/LegacySidebarSystemNoticeLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
+
+      it('passes a11y checks', async function() {
+        // This rule appears to not work correctly on elements that are partially scrolled off the page
+        await a11yTest(builder => builder.disableRules('color-contrast'));
+      });
     });
 
-    it('looks right with sidebar, and section scrolling', async function() {
-      await browser.url('#/pageLayouts/LegacySidebarLayout');
-      await browser.eyesSnapshot(null);
+    describe('with sidebar, and section scrolling', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/LegacySidebarLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with system notice, and section scrolling', async function() {
-      await browser.url('#/pageLayouts/LegacySystemNoticeLayout');
-      await browser.eyesSnapshot(null);
+    describe('with system notice, and section scrolling', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/LegacySystemNoticeLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
     describe('NxLoadWrapper in Legacy Page Layout', function() {
-      it('looks right with section scrolling', testLoadWrapper('#/pageLayouts/LegacyLoadWrapperLayout'));
-
-      it('looks right with system notice, and section scrolling',
-          testLoadWrapper('#/pageLayouts/LegacySystemNoticeLoadWrapperLayout'));
-
-      it('looks right with page scrolling', testLoadWrapper('#/pageLayouts/pageScrolling/LegacyLoadWrapperLayout'));
-
-      it('looks right with system notice, and page scrolling',
-          testLoadWrapper('#/pageLayouts/pageScrolling/LegacySystemNoticeLoadWrapperLayout'));
+      testLoadWrapper('section scrolling', '#/pageLayouts/LegacyLoadWrapperLayout');
+      testLoadWrapper('system notice and section scrolling', '#/pageLayouts/LegacySystemNoticeLoadWrapperLayout');
+      testLoadWrapper('page scrolling', '#/pageLayouts/pageScrolling/LegacyLoadWrapperLayout');
+      testLoadWrapper('system notice and page scrolling',
+          '#/pageLayouts/pageScrolling/LegacySystemNoticeLoadWrapperLayout');
     });
   });
 
   describe('Global sidebar page layout', function() {
-    it('looks right with sidebar, system notice, and header', async function() {
-      await browser.url('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout');
-      await browser.eyesSnapshot(null);
+    describe('with sidebar, system notice, and header', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage,
+        a11yTest
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeSidebarLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
+
+      it('passes a11y checks', async function() {
+        // This rule appears to not work correctly on elements that are partially scrolled off the page
+        await a11yTest(builder => builder.disableRules('color-contrast'));
+      });
     });
 
-    it('looks right with sidebar, and header', async function() {
-      await browser.url('#/pageLayouts/GlobalSidebarHeaderSidebarLayout');
-      await browser.eyesSnapshot(null);
+    describe('with sidebar, and header', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSidebarLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with system notice, and header', async function() {
-      await browser.url('#/pageLayouts/GlobalSidebarHeaderSystemNoticeLayout');
-      await browser.eyesSnapshot(null);
+    describe('with system notice, and header', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderSystemNoticeLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with header', async function() {
-      await browser.url('#/pageLayouts/GlobalSidebarHeaderLayout');
-      await browser.eyesSnapshot(null);
+    describe('with header', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarHeaderLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with sidebar and system notice', async function() {
-      await browser.url('#/pageLayouts/GlobalSidebarSystemNoticeSidebarLayout');
-      await browser.eyesSnapshot(null);
+    describe('with sidebar and system notice', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeSidebarLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with sidebar', async function() {
-      await browser.url('#/pageLayouts/GlobalSidebarSidebarLayout');
-      await browser.eyesSnapshot(null);
+    describe('with sidebar', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarSidebarLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with system notice', async function() {
-      await browser.url('#/pageLayouts/GlobalSidebarSystemNoticeLayout');
-      await browser.eyesSnapshot(null);
+    describe('with system notice', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarSystemNoticeLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
-    it('looks right with min content', async function() {
-      await browser.url('#/pageLayouts/GlobalSidebarLayout');
-      await browser.eyesSnapshot(null);
+    describe('with min content', function() {
+      const {
+        checkFullPageScreenshot,
+        getPage
+      } = setupBrowser('#/pageLayouts/GlobalSidebarLayout', false);
+
+      beforeEach(async function() {
+        await getPage().setViewport({ width: 1366, height: 1000 });
+      });
+
+      it('looks right', async function() {
+        await checkFullPageScreenshot();
+      });
     });
 
     describe('NxLoadWrapper in Global sidebar page layout', function() {
-      it('looks right with system notice, and header',
-          testLoadWrapper('#/pageLayouts/GlobalSidebarHeaderSystemNoticeLoadWrapperLayout'));
-
-      it('looks right with header', testLoadWrapper('#/pageLayouts/GlobalSidebarHeaderLoadWrapperLayout'));
-
-      it('looks right with system notice', testLoadWrapper('#/pageLayouts/GlobalSidebarSystemNoticeLoadWrapperLayout'));
-
-      it('looks right with min content', testLoadWrapper('#/pageLayouts/GlobalSidebarLoadWrapperLayout'));
+      testLoadWrapper('system notice and header', '#/pageLayouts/GlobalSidebarHeaderSystemNoticeLoadWrapperLayout');
+      testLoadWrapper('header', '#/pageLayouts/GlobalSidebarHeaderLoadWrapperLayout');
+      testLoadWrapper('system notice', '#/pageLayouts/GlobalSidebarSystemNoticeLoadWrapperLayout');
+      testLoadWrapper('min content', '#/pageLayouts/GlobalSidebarLoadWrapperLayout');
     });
   });
 });

@@ -4,12 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxCloseButton', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Close%20Button');
-  });
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } =
+      setupBrowser('#/pages/Close%20Button');
 
   const selector = '.gallery-example-live .nx-btn--close';
 

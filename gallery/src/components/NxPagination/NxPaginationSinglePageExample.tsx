@@ -11,7 +11,11 @@ export default function NxPaginationSinglePageExample() {
   return (
     <>
       <div id="single-page-example">Example 1</div>
-      <NxPagination aria-controls="single-page-example" onChange={() => { }} pageCount={1} currentPage={0} />
+      <NxPagination aria-controls="single-page-example"
+                    aria-label="pagination - single-page"
+                    onChange={() => { }}
+                    pageCount={1}
+                    currentPage={0} />
     </>
   );
 }

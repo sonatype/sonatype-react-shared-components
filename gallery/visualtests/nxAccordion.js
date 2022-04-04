@@ -4,13 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { focusTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxAccordion', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Accordion');
-    await browser.refresh();
-  });
+  const {
+    waitAndGetElements,
+    simpleTest,
+    focusTest,
+    dismissResultingDialog,
+    blurElement
+  } = setupBrowser('#/pages/Accordion');
 
   const exampleSelector = '#nx-accordion-example .gallery-example-live',
       nestedNxListExampleSelector = '#nx-accordion-nested-nx-list-example .gallery-example-live',
@@ -20,21 +23,20 @@ describe('NxAccordion', function() {
 
   describe('Closed NxAccordion', function() {
     it('looks right', simpleTest(exampleSelector));
+
     it('looks right when the header is focused', focusTest(exampleSelector, headerSelector));
   });
 
   describe('Open NxAccordion', function() {
     beforeEach(async function() {
-      const header = await browser.$(headerSelector);
-      await header.scrollIntoView({ block: 'center' });
-      await header.click();
+      let header;
 
-      // this example header has a click handler that opens an alert
-      await browser.acceptAlert();
+      await dismissResultingDialog(async () => {
+        header = (await waitAndGetElements(headerSelector))[0];
+        await header.click();
+      });
 
-      await browser.execute(function(el) {
-        el.blur();
-      }, header);
+      await blurElement(header);
     });
 
     it('looks right', simpleTest(exampleSelector));
@@ -54,9 +56,7 @@ describe('NxAccordion', function() {
   });
 
   describe('non-deprecated NxAccordion', function() {
-    beforeEach(async function() {
-      await browser.url('#/pages/Accordion?hideDeprecatedExamples');
-    });
+    const { a11yTest } = setupBrowser('#/pages/Accordion?hideDeprecatedExamples');
 
     it('passes a11y checks', a11yTest());
   });

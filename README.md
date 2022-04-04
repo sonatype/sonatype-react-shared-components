@@ -188,29 +188,45 @@ tests, in which case you may have to hit 'a' in your console window to run the t
 debug as normal.  Be aware of the test filtering options in the console which can cut down on extraneous breakpoint
 hits.
 
-## Visual Tests
+## Running Visual Tests
 
-To run visual tests, first a selenium server must be running on port 4444 and able to launch Chrome browser
-instances. This is most easily accomplished via docker.  See the Jenkinsfile for a full-fledged setup, or consider the
-following command which is adequate for creating a local test environment:
+The visual tests use jest-image-snapshot to compare screenshots of the components to their expected state. This
+setup is configured for an exact visual match, so the tests must be run on a consistent platform. The browser used for
+the tests is downloaded via the puppeteer npm package. However, it is also important to run these tests on a consistent
+operating system. The cleanest way to do this is via docker - specifically, to run the tests in a docker environment
+identical to the one which the CI system uses. This environment is defined in the `Dockerfile` present within the
+the top level directory of the repository. To build the docker image, run the following command from this directory:
 
 ```
-docker run --name selenium-chrome -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:3.141.59
+docker build -t rsc-visualtesting .
 ```
 
-In addition, there are also two environment variables that need to be defined:
-* TEST_IP <br>
-A non-localhost IP address, i.e.
-the IP address by which your physical host machine connects to the external network (e.g. 192.168.0.2, *not* 127.0.0.1). This allows the Chrome instance within the docker container to reach out of the container
-to your local host in order to connect to the gallery server.
-* APPLITOOLS_API_KEY <br>
-The API key required to run Applitools (the visual testing platform used by Sonatype).
+This will create the image and give it a name of "rsc-visualtesting". Note that before running this command, you must
+have docker set up with login credentials for docker-all.repo.sonatype.com.  For non-Sonatype employees, you can instead
+edit the dockerfile to point to the public `node:12` base image instead of the copy hosted on Sonatype's infrastructure.
 
-### Running Visual Tests
-Once the selenium server is running on port 4444, and the environment variables are defined, run the following command in the gallery/ directory:
+Once the image is built, execute the tests within a container based on that image by running the following command,
+again from the top directory of the repo.
+
 ```
-yarn run test
+docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
 ```
+
+Note that the `yarn test` command will (re-)install the gallery dependencies, ensuring that puppeteer downloads the
+correct version of Chromium before running the gallery build and tests.
+
+### Visual Test Shortcut for Linux Hosts
+
+For developers whose physical systems are already running Linux, it may not be necessary to run the visual tests
+in the docker container. In this scenario, feel free to try running without the container, by running `yarn test` in
+the gallery directory. Note however that whether or not this results in matching screenshots may depend on the specifics
+of your system. If seemingly spurious diffs are detected, try running in the docker container instead
+
+### Updating Visual Test Screenshots
+
+If running the tests results in differences that are expected/intended based on new changes to the library, then the
+baseline screenshots may be updated by running `yarn jest -u` within the gallery directory. This does need to be run
+within the docker container or an equivalent environment in order to ensure that the updated baselines match on CI.
 
 ## Component Gallery
 You can view components in your browser by running the gallery.

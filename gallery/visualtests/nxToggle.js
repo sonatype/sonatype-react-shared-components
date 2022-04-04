@@ -4,13 +4,21 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
-const { Target } = require('@applitools/eyes-webdriverio');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxToggle', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Toggle');
-  });
+  const {
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    moveMouseAway,
+    checkScreenshot,
+    blurElement,
+    wait,
+    a11yTest
+  } = setupBrowser('#/pages/Toggle');
 
   const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',
       disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)',
@@ -22,64 +30,44 @@ describe('NxToggle', function() {
 
     it('has a blue background and white indicator when clicked', async function() {
       const blurSelector = `${selector} input`,
-          [targetElement, blurElement] = await Promise.all([browser.$(selector), browser.$(blurSelector)]);
+          [targetElement, inputElement] = await waitAndGetElements(selector, blurSelector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
-      await targetElement.moveTo({ xOffset: -10, yOffset: -10 });
-      await browser.execute(function(el) {
-        el.blur();
-      }, blurElement);
+      await moveMouseAway();
+      await blurElement(inputElement);
 
-      try {
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-      }
-      finally {
-        // click again to reset the state
-        await targetElement.click();
-      }
+      // wait for animation
+      await wait(400);
+
+      await checkScreenshot(targetElement);
     });
 
     it(`has a blue background, white indicator, light outer blue border and glow
       when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
-          [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
+          [targetElement, inputElement] = await waitAndGetElements(selector, focusSelector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
-      await targetElement.moveTo({ xOffset: -15, yOffset: -15 });
-      await browser.execute(function(el) {
-        el.focus();
-      }, focusElement);
+      await moveMouseAway();
 
-      try {
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-      }
-      finally {
-        // click again to reset the state
-        await targetElement.click();
-      }
+      // wait for animation
+      await wait(400);
+
+      await checkScreenshot(targetElement);
     });
 
     it(`dark border, blue background and white indicator with light outer blue border
       when clicked, focused, and hovered`, async function() {
-      const focusSelector = `${selector} input`,
-          [targetElement, focusElement] = await Promise.all([browser.$(selector), browser.$(focusSelector)]);
+      const inputSelector = `${selector} input`,
+          [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
 
-      await targetElement.scrollIntoView({ block: 'center' });
       await targetElement.click();
-      await targetElement.moveTo();
-      await browser.execute(function(el) {
-        el.focus();
-      }, focusElement);
+      await targetElement.hover();
 
-      try {
-        await browser.eyesRegionSnapshot(null, Target.region(targetElement));
-      }
-      finally {
-        // click again to reset the state
-        await targetElement.click();
-      }
+      // wait for animation
+      await wait(400);
+
+      await checkScreenshot(targetElement);
     });
 
     it('has a light blue outer border and glow when focused', focusTest(selector));
@@ -90,4 +78,6 @@ describe('NxToggle', function() {
     it('looks disabled by default', simpleTest(disabledSelector));
     it('looks disabled when hovered', hoverTest(disabledSelector));
   });
+
+  it('passes a11y checks', a11yTest());
 });

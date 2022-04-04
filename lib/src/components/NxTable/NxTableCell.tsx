@@ -100,6 +100,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
         rowBtnIcon ? rowBtnCellContents :
         children
       }
+      {isHeader && rowBtnIcon && <span className="nx-cell__row-btn-header-text">Select Row</span>}
     </Tag>
   );
 };

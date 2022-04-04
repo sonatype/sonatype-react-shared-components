@@ -33,6 +33,9 @@ const NxScrollablePage = () =>
                         codeExamples={nxScrollableExampleCode}
                         htmlExample={nxScrollableExampleCode}>
       In this instance the max-height has been left at its default value of 400px.
+      Since this example renders a scrollable area without any interactive elements, <NxCode>tabindex="0"</NxCode> has
+      been added to make the element part of the normal tab flow. It is not necessary to
+      add <NxCode>tabindex</NxCode> if the scrollable area contains any interactive elements.
     </GalleryExampleTile>
   </>;
 
