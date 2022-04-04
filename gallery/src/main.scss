@@ -128,6 +128,10 @@
     white-space: normal;
   }
 
+  .nx-list__item {
+    align-items: flex-start;
+  }
+
   .nx-text-link {
     margin-left: var(--nx-spacing-6x);
   }
