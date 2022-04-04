@@ -10,12 +10,12 @@ import { join, map, prop, filter } from 'ramda';
 import useMergedRef from '@react-hook/merged-ref';
 
 import { NxTableRowProps, nxTableRowPropTypes} from './types';
-import { HeaderContext, RowContext } from './contexts';
+import { HeaderContext, FilterHeaderContext, RowContext } from './contexts';
 export { NxTableRowProps };
 
 const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxTableRow(props, externalRef) {
   const {
-        isFilterHeader = false,
+        isFilterHeader: isFilterHeaderProp,
         isClickable = false,
         className,
         selected,
@@ -23,6 +23,7 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
         clickAccessibleLabel,
         ...attrs
       } = props,
+      isFilterHeader = isFilterHeaderProp ?? false,
       isHeader = useContext(HeaderContext),
 
       // For the default accessibility label on the chevron button, we need the text content of the row.
@@ -52,9 +53,11 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
 
   return (
     <tr ref={ref} className={classes} {...attrs}>
-      <RowContext.Provider value={clickAccessibleLabel || rowTextContent}>
-        {children}
-      </RowContext.Provider>
+      <FilterHeaderContext.Provider value={isFilterHeader}>
+        <RowContext.Provider value={clickAccessibleLabel || rowTextContent}>
+          {children}
+        </RowContext.Provider>
+      </FilterHeaderContext.Provider>
     </tr>
   );
 });
