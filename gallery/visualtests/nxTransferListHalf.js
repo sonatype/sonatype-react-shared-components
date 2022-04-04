@@ -9,14 +9,18 @@ const { setupBrowser } = require('./testUtils');
 describe('NxTransferListHalf', function() {
   const {
     waitAndGetElements,
+    wait,
     clickTest,
     focusTest,
     focusAndHoverTest,
     hoverTest,
     simpleTest,
+    a11yTest,
     waitForSelectors,
     checkScreenshot
   } = setupBrowser('#/pages/Transfer List Half');
+
+  const wait1Sec = () => wait(1000);
 
   const simpleListSelector = '#nx-transfer-list-half-example .nx-transfer-list__half',
       complexListSelector = '#nx-transfer-list-half-ordering-example .nx-transfer-list__half',
@@ -36,6 +40,9 @@ describe('NxTransferListHalf', function() {
 
     await waitForSelectors('.nx-tooltip');
 
+    // give toolttip time to fully appear
+    await wait1Sec();
+
     await checkScreenshot(list);
   });
 
@@ -47,4 +54,6 @@ describe('NxTransferListHalf', function() {
 
   it('makes the move all button dark blue when hovered', hoverTest(complexListSelector, transferAllSelector));
   it('makes the move all button light blue when clicked', clickTest(complexListSelector, transferAllSelector));
+
+  it('passes a11y checks', a11yTest());
 });
