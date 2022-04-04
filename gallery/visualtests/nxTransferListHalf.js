@@ -4,14 +4,19 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { Target } = require('@applitools/eyes-webdriverio');
-const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxTransferListHalf', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Transfer List Half');
-    await browser.refresh();
-  });
+  const {
+    waitAndGetElements,
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitForSelectors,
+    checkScreenshot
+  } = setupBrowser('#/pages/Transfer List Half');
 
   const simpleListSelector = '#nx-transfer-list-half-example .nx-transfer-list__half',
       complexListSelector = '#nx-transfer-list-half-ordering-example .nx-transfer-list__half',
@@ -25,15 +30,13 @@ describe('NxTransferListHalf', function() {
   it('looks right', simpleTest(simpleListSelector));
   it('looks right with complex options', simpleTest(complexListSelector));
   it('handles overflowing content with a tooltip', async function() {
-    const [list, firstItem] = await Promise.all([browser.$(simpleListSelector), browser.$(firstItemSelector)]);
+    const [list, firstItem] = await waitAndGetElements(simpleListSelector, firstItemSelector);
 
-    await list.scrollIntoView({ block: 'center' });
-    await firstItem.moveTo();
+    await firstItem.hover();
 
-    const tooltip = await browser.$('.nx-tooltip');
-    await tooltip.waitForDisplayed();
+    await waitForSelectors('.nx-tooltip');
 
-    await browser.eyesRegionSnapshot(null, Target.region(list));
+    await checkScreenshot(list);
   });
 
   it('puts a dark border on hovered items', hoverTest(simpleListSelector, secondItemSelector));
