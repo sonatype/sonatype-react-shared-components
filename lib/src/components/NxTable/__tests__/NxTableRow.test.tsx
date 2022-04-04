@@ -109,45 +109,48 @@ describe('NxTableRow', function () {
     }
 
     const component1 = mount(
-          <NxTableRow isFilterHeader={true}>
-            <NxTableCell>Foo</NxTableCell>
-            <NxTableCell>Bar</NxTableCell>
-            <NxTableCell/>
-            <NxTableCell>Baz</NxTableCell>
-            <NxTableCell><ContextDependentChild/></NxTableCell>
-          </NxTableRow>,
-          { attachTo: document.createElement('tbody') }
-        ),
-        component2 = mount(
-          <NxTableRow isFilterHeader={false}>
-            <NxTableCell>Foo</NxTableCell>
-            <NxTableCell>Bar</NxTableCell>
-            <NxTableCell/>
-            <NxTableCell>Baz</NxTableCell>
-            <NxTableCell><ContextDependentChild/></NxTableCell>
-          </NxTableRow>,
-          { attachTo: document.createElement('tbody') }
-        ),
-        component3 = mount(
-          <NxTableRow isFilterHeader={null}>
-            <NxTableCell>Foo</NxTableCell>
-            <NxTableCell>Bar</NxTableCell>
-            <NxTableCell/>
-            <NxTableCell>Baz</NxTableCell>
-            <NxTableCell><ContextDependentChild/></NxTableCell>
-          </NxTableRow>,
-          { attachTo: document.createElement('tbody') }
-        ),
-        component4 = mount(
-          <NxTableRow>
-            <NxTableCell>Foo</NxTableCell>
-            <NxTableCell>Bar</NxTableCell>
-            <NxTableCell/>
-            <NxTableCell>Baz</NxTableCell>
-            <NxTableCell><ContextDependentChild/></NxTableCell>
-          </NxTableRow>,
-          { attachTo: document.createElement('tbody') }
-        );
+      <NxTableRow isFilterHeader={true}>
+        <NxTableCell>Foo</NxTableCell>
+        <NxTableCell>Bar</NxTableCell>
+        <NxTableCell/>
+        <NxTableCell>Baz</NxTableCell>
+        <NxTableCell><ContextDependentChild/></NxTableCell>
+      </NxTableRow>,
+      { attachTo: document.createElement('tbody') }
+    );
+
+    const component2 = mount(
+      <NxTableRow isFilterHeader={false}>
+        <NxTableCell>Foo</NxTableCell>
+        <NxTableCell>Bar</NxTableCell>
+        <NxTableCell/>
+        <NxTableCell>Baz</NxTableCell>
+        <NxTableCell><ContextDependentChild/></NxTableCell>
+      </NxTableRow>,
+      { attachTo: document.createElement('tbody') }
+    );
+
+    const component3 = mount(
+      <NxTableRow isFilterHeader={null}>
+        <NxTableCell>Foo</NxTableCell>
+        <NxTableCell>Bar</NxTableCell>
+        <NxTableCell/>
+        <NxTableCell>Baz</NxTableCell>
+        <NxTableCell><ContextDependentChild/></NxTableCell>
+      </NxTableRow>,
+      { attachTo: document.createElement('tbody') }
+    );
+
+    const component4 = mount(
+      <NxTableRow>
+        <NxTableCell>Foo</NxTableCell>
+        <NxTableCell>Bar</NxTableCell>
+        <NxTableCell/>
+        <NxTableCell>Baz</NxTableCell>
+        <NxTableCell><ContextDependentChild/></NxTableCell>
+      </NxTableRow>,
+      { attachTo: document.createElement('tbody') }
+    );
 
     expect(component1.find('.context-dependent')).toHaveText('true');
     expect(component2.find('.context-dependent')).toHaveText('false');
