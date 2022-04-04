@@ -4,13 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useContext, useRef, useEffect, useState } from 'react';
+import React, { forwardRef, useContext, useRef, useEffect, useState, useMemo } from 'react';
 import classnames from 'classnames';
 import { join, map, prop, filter } from 'ramda';
 import useMergedRef from '@react-hook/merged-ref';
 
 import { NxTableRowProps, nxTableRowPropTypes} from './types';
-import { HeaderContext, FilterHeaderContext, RowContext } from './contexts';
+import { HeaderContext, RowContext } from './contexts';
 export { NxTableRowProps };
 
 const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxTableRow(props, externalRef) {
@@ -30,7 +30,12 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
       // This component uses the DOM to retrieve that and provides it via RowContext
       [rowTextContent, setRowTextContent] = useState(''),
       rowRef = useRef<HTMLTableRowElement>(null),
-      ref = useMergedRef(rowRef, externalRef);
+      ref = useMergedRef(rowRef, externalRef),
+      rowLabel = clickAccessibleLabel || rowTextContent,
+      rowContext = useMemo(() => ({
+        label: rowLabel,
+        isFilterHeader
+      }), [rowLabel, isFilterHeader]);
 
   const classes = classnames('nx-table-row', className, {
     'nx-table-row--header': isHeader,
@@ -53,11 +58,9 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
 
   return (
     <tr ref={ref} className={classes} {...attrs}>
-      <FilterHeaderContext.Provider value={isFilterHeader}>
-        <RowContext.Provider value={clickAccessibleLabel || rowTextContent}>
-          {children}
-        </RowContext.Provider>
-      </FilterHeaderContext.Provider>
+      <RowContext.Provider value={rowContext}>
+        {children}
+      </RowContext.Provider>
     </tr>
   );
 });

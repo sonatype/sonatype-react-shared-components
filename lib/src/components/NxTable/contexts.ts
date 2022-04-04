@@ -8,5 +8,4 @@ import React from 'react';
 
 export const ColumnCountContext = React.createContext(1);
 export const HeaderContext = React.createContext(false);
-export const FilterHeaderContext = React.createContext(false);
-export const RowContext = React.createContext('');
+export const RowContext = React.createContext({ label: '', isFilterHeader: false });

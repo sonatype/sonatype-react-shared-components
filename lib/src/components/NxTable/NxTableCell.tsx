@@ -12,7 +12,7 @@ import {ensureElement} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { NxTableCellProps, nxTableCellPropTypes } from './types';
-import { FilterHeaderContext, HeaderContext, RowContext } from './contexts';
+import { HeaderContext, RowContext } from './contexts';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import { textContent } from '../../util/childUtil';
 export { NxTableCellProps };
@@ -31,8 +31,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
         ...attrs
       } = props,
       isHeader = useContext(HeaderContext),
-      isFilterHeader = useContext(FilterHeaderContext),
-      rowTextContent = useContext(RowContext),
+      { label: rowLabel, isFilterHeader } = useContext(RowContext),
       rowBtnIcon = rowBtnIconProp || (chevron ? faChevronRight : null),
       isSortable = isSortableProp && isHeader && !chevron;
 
@@ -80,7 +79,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   const Tag = isHeader && !isFilterHeader ? 'th' : 'td';
 
   const rowBtnCellContents = isHeader || !rowBtnIcon ? null : (
-    <button type="button" className="nx-cell__row-btn" aria-label={rowTextContent}>
+    <button type="button" className="nx-cell__row-btn" aria-label={rowLabel}>
       <NxFontAwesomeIcon icon={rowBtnIcon}/>
     </button>
   );
