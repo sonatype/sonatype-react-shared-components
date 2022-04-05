@@ -119,17 +119,19 @@
 }
 
 .gallery-accessibility-list {
-  .nx-checkbox__box {
-    align-self: flex-start;
-    margin-top: var(--nx-spacing-base);
+  .nx-list__item {
+    .nx-radio-checkbox {
+      align-items: first baseline;
+    }
+
+    .nx-checkbox__box {
+      align-self: flex-start;
+      margin-top: var(--nx-spacing-base);
+    }
   }
 
   .nx-radio-checkbox__content {
     white-space: normal;
-  }
-
-  .nx-list__item {
-    align-items: flex-start;
   }
 
   .nx-text-link {
