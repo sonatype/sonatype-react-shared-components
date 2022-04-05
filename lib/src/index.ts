@@ -318,3 +318,5 @@ export { default as NxStableUniqueIdContext } from './components/NxStableUniqueI
 export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemNotice';
 
 export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
+
+export { default as NxToast } from './components/NxToast/NxToast';
