@@ -13,20 +13,20 @@ import { ScaleSpec } from '@nivo/scales';
 import { LegendProps } from '@nivo/legends';
 import { ResponsiveLine } from '@nivo/line';
 
-const colors = [
-  '#008FCC',
-  '#99005A',
-  '#3BA60C',
-  '#650099',
-  '#CC6A00',
-  '#02306D',
-  '#FF6685',
-  '#664800',
-  '#02978B',
-  '#99001E',
-  '#6D7AC5',
-  '#005A80'
-];
+// const colors = [
+//   '#008FCC',
+//   '#99005A',
+//   '#3BA60C',
+//   '#650099',
+//   '#CC6A00',
+//   '#02306D',
+//   '#FF6685',
+//   '#664800',
+//   '#02978B',
+//   '#99001E',
+//   '#6D7AC5',
+//   '#005A80'
+// ];
 
 const threatColors = [
   '#CC0028'
@@ -90,6 +90,10 @@ const style = {
   lineWidth: 4,
   pointSize: 10,
   pointBorderWidth: 4
+};
+
+const dateFormat = {
+  xFormat: 'time:%Y-%m-%d',
 };
 
 const margins = { top: 40, right: 40, bottom: 80, left: 60 };

@@ -16,17 +16,27 @@ const generateStringData = (id: string, itemNames: string[], [min, max]: [number
 
 const generateDateData = (id: string, [min, max]: [number, number]) => {
   const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const numberOfDaysInMonth = new Date(year, month, 0).getDate();
+  // const year = date.getFullYear();
+  // const month = date.getMonth() + 1;
+  // const numberOfDaysInMonth = new Date(year, month, 0).getDate();
+
+  const dates = Array.from({ length: 90 }).map((_, index) => {
+    const date = new Date();
+    date.setDate(date.getDate() - index);
+    return date;
+  });
+
   return {
     id,
-    data: Array.from({ length: numberOfDaysInMonth }).map((_, index) => (
-      {
-        x: `${year}-${month}-${index + 1 < 10 ? `0${index + 1}` : index + 1}`,
+    data: dates.map(date => {
+      const _year = date.getFullYear();
+      const _month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const _date = date.getDate().toString().padStart(2, '0');
+      return {
+        x: `${_year}-${_month}-${_date}`,
         y: Math.round(Math.random() * (max - min) + min)
-      }
-    ))
+      };
+    })
   };
 };
 
@@ -39,12 +49,12 @@ const itemNames = [
   'bears'
 ];
 
-const time = Array.from({ length: 24 }).map((_, index) => {
-  const hour = index + 1;
-  const AMPM = hour >= 12 || hour === 24 ? 'pm' : 'am';
-  const hourString = hour > 12 ? hour - 12 : hour;
-  return `${hourString}${AMPM}`;
-});
+// const time = Array.from({ length: 24 }).map((_, index) => {
+//   const hour = index + 1;
+//   const AMPM = hour >= 12 || hour === 24 ? 'pm' : 'am';
+//   const hourString = hour > 12 ? hour - 12 : hour;
+//   return `${hourString}${AMPM}`;
+// });
 
 const days = [
   'Thu, March 31',
