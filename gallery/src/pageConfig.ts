@@ -140,6 +140,7 @@ import NxStatefulCollapsibleRadioSelectPage
   from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
 import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
+import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBar';
 
 const pageConfig: PageConfig = {
@@ -206,6 +207,7 @@ const pageConfig: PageConfig = {
     'Stateful Toggle': { content: NxStatefulTogglePage, type: 'react' },
     'Transfer List': { content: NxTransferListPage, type: 'react' },
     'Stateful Transfer List': { content: NxStatefulTransferListPage, type: 'react' },
+    'Transfer List Half': { content: NxTransferListHalfPage, type: 'react' },
     'Tree View Multi-Select': { content: NxTreeViewMultiSelect, type: 'react' },
     'Stateful Tree View Multi-Select': { content: NxStatefulTreeViewMultiSelect, type: 'react' },
     'Tree View Radio-Select': { content: NxTreeViewRadioSelectPage, type: 'react' },
