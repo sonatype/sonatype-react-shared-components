@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { ReactNode } from 'react';
+import * as PropTypes from 'prop-types';
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
 import DataItem from '../../util/DataItem';
 
@@ -35,3 +36,16 @@ export interface Props<T extends string | number = string> {
   allowReordering?: boolean | null;
 }
 
+// generic props omitted due to type checking issues
+export const propTypes = {
+  label: PropTypes.node.isRequired,
+  filterValue: PropTypes.string.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  onItemChange: PropTypes.func.isRequired,
+  footerContent: PropTypes.node.isRequired,
+  filterFn: PropTypes.func,
+  showMoveAll: PropTypes.bool.isRequired,
+  allowReordering: PropTypes.bool,
+  onReorderItem: PropTypes.func
+};
