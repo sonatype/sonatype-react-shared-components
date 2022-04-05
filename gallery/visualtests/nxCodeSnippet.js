@@ -8,7 +8,6 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxCodeSnippet', function() {
   const {
-    clickTest,
     focusTest,
     focusAndHoverTest,
     hoverTest,
@@ -44,7 +43,7 @@ describe('NxCodeSnippet', function() {
   });
 
   it('copies the text to the clipboard when the button is clicked', async function() {
-    const [codeSnippet, copyBtn] = await waitAndGetElements(complexSnippetExample, copyBtnSelector);
+    const [copyBtn] = await waitAndGetElements(complexSnippetExample, copyBtnSelector);
 
     await dismissResultingDialog(async () => {
       await copyBtn.click();

@@ -57,7 +57,7 @@ describe('NxTabs', function() {
       const [closeModalBtn, targetElement] = await waitAndGetElements(closeModalBtnSelector, modalSelector);
 
       await checkScreenshot(targetElement);
-    }
+    };
   }
 
   describe('Tabs in an NxModal', function() {

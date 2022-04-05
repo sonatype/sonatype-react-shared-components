@@ -45,8 +45,8 @@ describe('NxDateInput', function() {
     it('has validation styles when valid', async function() {
       const inputSelector = getInputElementSelector(validatableComponentSelector),
           [targetElement, inputElement] = await waitAndGetElements(
-            validatableComponentSelector,
-            inputSelector
+              validatableComponentSelector,
+              inputSelector
           );
 
       await inputElement.evaluate(e => { e.value = '2019-01-01'; });
@@ -56,13 +56,12 @@ describe('NxDateInput', function() {
     it('has invalid validation styles when invalid', async function() {
       const inputSelector = getInputElementSelector(validatableComponentSelector),
           [targetElement, inputElement] = await waitAndGetElements(
-            validatableComponentSelector,
-            inputSelector
+              validatableComponentSelector,
+              inputSelector
           );
 
       await inputElement.evaluate(e => { e.value = '2019-01-01'; });
 
-      const { x, y } = await targetElement.boundingBox();
       await checkScreenshot(targetElement, 300, 74);
     });
   });

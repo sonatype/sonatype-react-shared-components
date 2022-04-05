@@ -21,8 +21,7 @@ describe('NxToggle', function() {
   } = setupBrowser('#/pages/Toggle');
 
   const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',
-      disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)',
-      gaplessSelector = '#nx-toggle-gapless-example .gallery-example-live';
+      disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)';
 
   describe('Default NxToggle', function() {
     it('has a blue border, blue indicator, and white background by default', simpleTest(selector));
@@ -45,7 +44,7 @@ describe('NxToggle', function() {
     it(`has a blue background, white indicator, light outer blue border and glow
       when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
-          [targetElement, inputElement] = await waitAndGetElements(selector, focusSelector);
+          [targetElement] = await waitAndGetElements(selector, focusSelector);
 
       await targetElement.click();
       await moveMouseAway();
@@ -59,7 +58,7 @@ describe('NxToggle', function() {
     it(`dark border, blue background and white indicator with light outer blue border
       when clicked, focused, and hovered`, async function() {
       const inputSelector = `${selector} input`,
-          [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
+          [targetElement] = await waitAndGetElements(selector, inputSelector);
 
       await targetElement.click();
       await targetElement.hover();
