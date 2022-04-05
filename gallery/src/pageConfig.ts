@@ -118,6 +118,7 @@ import NxStatefulTransferListPage from './components/NxStatefulTransferList/NxSt
 import NxPPage from './styles/NxP/NxPPage';
 import NxHPage from './styles/NxH/NxHPage';
 import AccessibilityPage from './pages/Accessibility';
+import AccessibilityChecklistPage from './pages/AccessibilityChecklist';
 import NxDividerPage from './styles/NxDivider/NxDividerPage';
 import NxThreatIndicatorLegendPage from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegendPage';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
@@ -139,6 +140,7 @@ import NxStatefulCollapsibleRadioSelectPage
   from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
 import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
+import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBar';
 
 const pageConfig: PageConfig = {
@@ -205,6 +207,7 @@ const pageConfig: PageConfig = {
     'Stateful Toggle': { content: NxStatefulTogglePage, type: 'react' },
     'Transfer List': { content: NxTransferListPage, type: 'react' },
     'Stateful Transfer List': { content: NxStatefulTransferListPage, type: 'react' },
+    'Transfer List Half': { content: NxTransferListHalfPage, type: 'react' },
     'Tree View Multi-Select': { content: NxTreeViewMultiSelect, type: 'react' },
     'Stateful Tree View Multi-Select': { content: NxStatefulTreeViewMultiSelect, type: 'react' },
     'Tree View Radio-Select': { content: NxTreeViewRadioSelectPage, type: 'react' },
@@ -282,6 +285,7 @@ const pageConfig: PageConfig = {
   },
   'Guidelines': {
     'Accessibility': { content: AccessibilityPage, type: 'documentation' },
+    'Accessibility Checklist': { content: AccessibilityChecklistPage, type: 'documentation' },
     'Additional Resources': { content: AdditionalResourcePage, type: 'documentation' },
     'Contributing to the Gallery': { content: ContributingPage, type: 'documentation' },
     'Font-size and Line-height': { content: FontSizePage, type: 'documentation' },

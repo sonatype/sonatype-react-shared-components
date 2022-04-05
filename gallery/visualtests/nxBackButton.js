@@ -4,15 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxBackButton', function() {
-  const exampleSelector = '#nx-back-button-simple-example .nx-back-button',
+  const { hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Back Button'),
+      exampleSelector = '#nx-back-button-simple-example .nx-back-button',
       hoverElementSelector = exampleSelector + ' a';
-
-  beforeEach(async function() {
-    await browser.url('#/pages/Back%20Button');
-  });
 
   describe('Simple NxBackButton', function() {
     it('looks right', simpleTest(exampleSelector));

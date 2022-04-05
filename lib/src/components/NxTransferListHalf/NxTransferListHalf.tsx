@@ -14,7 +14,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxButton from '../NxButton/NxButton';
 
-import { Props, TransferListItemProps } from './types';
+import { Props, TransferListItemProps, propTypes } from './types';
 import NxFieldset from '../NxFieldset/NxFieldset';
 
 import './NxTransferListHalf.scss';
@@ -50,8 +50,8 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       }
   );
 
-  const moveUpButtonTitle = isTopItem || isFilteredItem ? null : 'Move Up';
-  const moveDownButtonTitle = isBottomItem || isFilteredItem ? null : 'Move Down';
+  const moveUpButtonTitle = isTopItem || isFilteredItem ? 'Move Up (disabled)' : 'Move Up';
+  const moveDownButtonTitle = isBottomItem || isFilteredItem ? 'Move Down (disabled)' : 'Move Down';
 
   return (
     <div className={classes}>
@@ -148,3 +148,5 @@ export default function NxTransferListHalf<T extends string | number = string>(p
     </NxFieldset>
   );
 }
+
+NxTransferListHalf.propTypes = propTypes;

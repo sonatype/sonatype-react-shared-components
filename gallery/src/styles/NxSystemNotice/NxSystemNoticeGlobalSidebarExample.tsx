@@ -26,12 +26,12 @@ export default function NxSystemNoticeGlobalSidebarExample() {
       <div className="nx-system-notice">
         This is a test; this is only a test
       </div>
-      <aside className="nx-global-header">
+      <header className="nx-global-header">
         <NxBackButton href="#/pages/nx-system-notice" targetPageTitle="Documentation" />
         <div className="nx-global-header__actions">
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         </div>
-      </aside>
+      </header>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
                                toggleCloseIcon={faArrowRight}

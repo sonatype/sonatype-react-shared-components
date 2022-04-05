@@ -4,13 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxCollapsibleItems', function() {
-  beforeEach(async function() {
-    await browser.url('#/pages/Collapsible%20Items');
-    await browser.refresh();
-  });
+  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest, waitAndGetElements, wait } =
+      setupBrowser('#/pages/Collapsible%20Items');
 
   const selector = '#nx-collapsible-items-example .nx-collapsible-items:nth-child(3)',
       disabledTreeViewSelector = '#nx-collapsible-items-disabled-example .nx-collapsible-items',
@@ -20,8 +18,9 @@ describe('NxCollapsibleItems', function() {
       emptyTreeViewSelector = '#nx-collapsible-items-empty-example .nx-collapsible-items';
 
   async function expandCollapsibleItems(selector) {
-    const targetElement = await browser.$(selector);
+    const [targetElement] = await waitAndGetElements(selector);
     await targetElement.click();
+    await wait(350);
   }
 
   function simpleExpandedTest(selector) {
@@ -82,10 +81,11 @@ describe('NxCollapsibleItems', function() {
     it('looks right expanded', async function() {
       const firstTreeSelector = `${checkboxTreeViewSelector} .nx-collapsible-items:first-child`,
           secondTreeSelector = `${checkboxTreeViewSelector} .nx-collapsible-items:last-child`,
-          [firstTree, secondTree] = await Promise.all([browser.$(firstTreeSelector), browser.$(secondTreeSelector)]);
+          [firstTree, secondTree] = await waitAndGetElements(firstTreeSelector, secondTreeSelector);
 
       await firstTree.click();
       await secondTree.click();
+      await wait(350);
 
       await simpleTest(checkboxTreeViewSelector)();
     });
