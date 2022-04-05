@@ -21,7 +21,7 @@ const getHostedVersion = () => fetch(HOSTED_VERSIONS_JSON_URL, {
   }
 }).then((response) => {
   if (!response.ok) {
-    throw new Error('HTTP error.');
+    throw new Error('Failed to load hosted versions.');
   }
   return response.json();
 });
