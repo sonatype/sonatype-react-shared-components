@@ -8,23 +8,13 @@ import React from 'react';
 
 import { NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-components';
 
-import { data } from './data';
+// import { data } from './data';
 
-import { ResponsivePie } from '@nivo/pie';
+import { Pie } from '@nivo/pie';
 
 const colors = [
-  '#008FCC',
-  '#99005A',
-  '#3BA60C',
-  '#650099',
-  '#CC6A00',
-  '#02306D',
-  '#FF6685',
-  '#664800',
-  '#02978B',
-  '#99001E',
-  '#6D7AC5',
-  '#005A80'
+  '#235ECA',
+  '#C9DEFC'
 ];
 
 // const LEGENDS: LegendProps[] = [
@@ -39,33 +29,29 @@ const colors = [
 //   }
 // ];
 
+const data = [
+  {
+    id: 'a',
+    value: 40
+  },
+  {
+    id: 'b',
+    value: 60
+  }
+];
+
 export default function NivoPieChartExample() {
   return (
     <div>
       <div style={{ height: '400px' }}>
-        <ResponsivePie data={data}
-                       colors={colors}
-                       padAngle={3}
-                       cornerRadius={0}
-                       enableArcLabels={false}
-                       innerRadius={0.5}
-                       enableArcLinkLabels={true}
-                       arcLinkLabel={d => `${d.id} (${d.value})`}
-                       margin={{
-                         top: 20,
-                         bottom: 20,
-                         left: 40,
-                         right: 40
-                       }}
-                       legends={[
-                         {
-                           anchor: 'bottom-right',
-                           direction: 'column',
-                           itemWidth: 100,
-                           itemHeight: 20,
-                           itemsSpacing: 0
-                         }
-                       ]}
+        <Pie data={data}
+             colors={colors}
+             cornerRadius={0}
+             innerRadius={0.5}
+             enableArcLabels={false}
+             enableArcLinkLabels={false}
+             width={100}
+             height={100}
         />
       </div>
       <NxStatefulAccordion defaultOpen={false}>

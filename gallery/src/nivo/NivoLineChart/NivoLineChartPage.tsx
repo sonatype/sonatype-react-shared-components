@@ -9,15 +9,25 @@ import React from 'react';
 
 import { GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NivoLineChartSmallDataSetExample from './NivoLineChartSmallDataSetExample';
-const NivolineChartSmallDataSetSourceCode = require('./NivoLineChartSmallDataSetExample?raw');
+import NivoLineChartWithDateExample from './NivoLineChartWithDateExample';
+import NivoLineChartWithStringExample from './NivoLineChartWithStringExample';
+
+const NivolineChartWithDateSourceCode = require('./NivoLineChartWithDateExample?raw');
+const NivolineChartWithStringSourceCode = require('./NivoLineChartWithStringExample?raw');
 
 const NivoLineChartPage = () =>
   <>
-    <GalleryExampleTile title="Nivo Line Chart Example"
-                        id="nivo-line-chart-example"
-                        liveExample={NivoLineChartSmallDataSetExample}
-                        codeExamples={NivolineChartSmallDataSetSourceCode}>
+    <GalleryExampleTile title="Nivo Line Chart Date Example"
+                        id="nivo-line-chart-date-example"
+                        liveExample={NivoLineChartWithDateExample}
+                        codeExamples={NivolineChartWithDateSourceCode}>
+      A basic example of a Line Chart.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Nivo Line Chart String Example"
+                        id="nivo-line-chart-string-example"
+                        liveExample={NivoLineChartWithStringExample}
+                        codeExamples={NivolineChartWithStringSourceCode}>
       A basic example of a Line Chart.
     </GalleryExampleTile>
   </>;

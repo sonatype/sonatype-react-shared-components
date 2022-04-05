@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { DATA_WITH_DATES } from './data';
+import { DATA_WITH_DATE } from './data';
 
 import { AxisProps } from '@nivo/axes';
 import { ScaleSpec } from '@nivo/scales';
@@ -26,6 +26,10 @@ const colors = [
   '#99001E',
   '#6D7AC5',
   '#005A80'
+];
+
+const threatColors = [
+  '#CC0028'
 ];
 
 const theme = {
@@ -85,29 +89,29 @@ const legends: LegendProps[] = [
 const style = {
   lineWidth: 4,
   pointSize: 10,
-  pointColor: 'red',
-  pointBorderWidth: 4,
-  pointBorderColor: { inherit: 'color' }
+  pointBorderWidth: 4
 };
 
-const margins = { top: 40, right: 60, bottom: 80, left: 60 };
+const margins = { top: 40, right: 40, bottom: 80, left: 60 };
 
 export default function LineChartExample() {
   return (
     <div style={{ height: '400px' }}>
-      <ResponsiveLine data={DATA_WITH_DATES}
+      <ResponsiveLine data={DATA_WITH_DATE}
                       margin={margins}
                       xScale={dateXScale}
                       xFormat="time:%Y-%m-%d"
                       yScale={linearYScale}
+
                       axisTop={null}
                       axisRight={null}
                       axisBottom={axisBottom}
+
                       axisLeft={{
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: 'Number of Downloads',
+                        legend: 'Vulnerable Proxied Components',
                         legendOffset: -40,
                         legendPosition: 'middle'
                       }}
@@ -115,7 +119,7 @@ export default function LineChartExample() {
                       useMesh={true}
                       crosshairType='cross'
                       theme={theme}
-                      colors={colors}
+                      colors={threatColors}
                       legends={legends}
                       { ...style }
       />

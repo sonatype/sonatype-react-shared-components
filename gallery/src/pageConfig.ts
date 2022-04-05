@@ -143,6 +143,7 @@ import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSid
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBar';
 
 import NivoLineChartPage from './nivo/NivoLineChart/NivoLineChartPage';
+import NivoPieChartPage from './nivo/NivoPieChart/NivoPieChartPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -293,7 +294,8 @@ const pageConfig: PageConfig = {
     'Styling Components': { content: StylingComponentsPage, type: 'documentation' }
   },
   'Nivo': {
-    'Line Chart': { content: NivoLineChartPage, type: 'documentation' }
+    'Line Chart': { content: NivoLineChartPage, type: 'documentation' },
+    'Pie Chart': { content: NivoPieChartPage, type: 'documentation' }
   }
 };
 
