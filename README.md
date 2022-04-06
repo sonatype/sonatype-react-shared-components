@@ -225,7 +225,7 @@ docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtes
 
 And from powershell
 ```
-docker run --rm -it -w /home/jenkins/gallery -v $pwd:/home/jenkins rsc-visualtesting yarn test
+docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test
 ```
 
 ---
