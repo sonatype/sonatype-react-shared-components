@@ -5,8 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
+import { ReactNode } from 'react';
+
 // Common interface for items which need to have text to display in the UI and a unique id
 export default interface DataItem<T extends string | number = string> {
   id: T;
-  displayName: string;
+  displayName: ReactNode;
 }

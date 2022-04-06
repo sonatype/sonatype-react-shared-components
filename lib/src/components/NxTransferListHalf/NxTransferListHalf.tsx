@@ -13,12 +13,13 @@ import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxButton from '../NxButton/NxButton';
+import NxTooltip from '../NxTooltip/NxTooltip';
+import NxFieldset from '../NxFieldset/NxFieldset';
+import { textContent } from '../../util/childUtil';
 
 import { Props, TransferListItemProps, propTypes } from './types';
-import NxFieldset from '../NxFieldset/NxFieldset';
 
 import './NxTransferListHalf.scss';
-import NxTooltip from '../NxTooltip/NxTooltip';
 
 export { Props };
 
@@ -106,8 +107,12 @@ export default function NxTransferListHalf<T extends string | number = string>(p
       } = props,
       defaultFilterFn = pipe(toLower, includes(toLower(filterValue))),
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
-      visibleItems = useMemo(() => filterValue ? filter(pipe(prop('displayName'), filterFn), items) : items,
-          [filterFn, items, filterValue]);
+      visibleItems = useMemo(
+          () => filterValue ?
+            filter(pipe(prop('displayName'), textContent, filterFn), items) :
+            items,
+          [filterFn, items, filterValue]
+      );
 
   function onMoveAllClick() {
     const idsToMove = map(prop('id'), visibleItems);
