@@ -20,10 +20,15 @@ const NxFormGroup = forwardRef<HTMLDivElement, Props>(
           childId = useUniqueId('nx-form-group-child', children.props.id),
           sublabelId = useUniqueId('nx-sub-label', sublabel ? undefined : ''),
           childDescribedBy = classnames(children.props['aria-describedby'], sublabelId),
+          childRequired = children.props['aria-required'] ?? isRequired,
 
-          childNeedsAugmentation = !children.props.id || sublabelId,
+          childNeedsAugmentation = !children.props.id || sublabelId || (isRequired && !children.props['aria-required']),
           childEl = childNeedsAugmentation ?
-            React.cloneElement(children, { id: childId, 'aria-describedby': childDescribedBy }) :
+            React.cloneElement(children, {
+              id: childId,
+              'aria-describedby': childDescribedBy,
+              'aria-required': childRequired
+            }) :
             children;
 
       return (
