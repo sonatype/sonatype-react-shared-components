@@ -15,7 +15,7 @@ import ToastContext from './contexts';
 import { toastTypeMap } from './toastTypeMapping';
 
 const NxToast = (props: NxToastProps) => {
-  const { toastId, className, message, type, ...otherProps } = props,
+  const { toastId, className, message, type, toastContainerRef, ...otherProps } = props,
       toastClass = toastTypeMap[type].class,
       toastIcon = toastTypeMap[type].icon,
       toastIconLabel = toastTypeMap[type].iconLabel,
@@ -23,11 +23,21 @@ const NxToast = (props: NxToastProps) => {
       toastContext = useContext(ToastContext),
       closeBtnRef = useRef<HTMLButtonElement>(null);
 
+  //Fire effect to focus on the close button of the toast that is rendered
   useEffect(() => {
-    if (closeBtnRef.current) {
-      closeBtnRef.current.focus();
+    const closeBtn = closeBtnRef.current;
+    if (closeBtn) {
+      closeBtn.focus();
     }
   }, []);
+
+  //Effect to shift focus to the next toast's close button
+  useEffect(() => {
+    if (toastContainerRef) {
+      const closeBtn = toastContainerRef.current?.querySelectorAll('.nx-btn--close')[0] as HTMLButtonElement;
+      closeBtn.focus();
+    }
+  }, [toastContext?.toasts]);
 
   return (
     <div role="alert" { ...otherProps } className={classes} aria-atomic={true}>
@@ -38,5 +48,5 @@ const NxToast = (props: NxToastProps) => {
   );
 };
 
-NxToast.propType = nxToastPropTypes;
+NxToast.propTypes = nxToastPropTypes;
 export default NxToast;
