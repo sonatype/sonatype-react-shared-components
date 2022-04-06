@@ -335,4 +335,38 @@ describe('NxFormGroup', function() {
       });
     });
   });
+
+  describe('aria-required', function() {
+    it('is unset or false on the child if the child does not specify it and isRequired is not true', function() {
+      expect(getShallow().find(NxStatefulTextInput)).toHaveProp('aria-required', undefined);
+      expect(getShallow({ isRequired: false }).find(NxStatefulTextInput)).toHaveProp('aria-required', false);
+      expect(getShallow({ isRequired: null }).find(NxStatefulTextInput)).toHaveProp('aria-required', null);
+    });
+
+    it('is set to true if the child does not specify it and isRequired is true', function() {
+      expect(getShallow({ isRequired: true }).find(NxStatefulTextInput)).toHaveProp('aria-required', true);
+    });
+
+    it('keeps the value specified on the child if already set', function() {
+      expect(
+        getShallow({ isRequired: true, children: <NxStatefulTextInput aria-required={false} /> })
+          .find(NxStatefulTextInput)
+      ).toHaveProp('aria-required', false);
+
+      expect(
+        getShallow({ isRequired: false, children: <NxStatefulTextInput aria-required={true} /> })
+          .find(NxStatefulTextInput)
+      ).toHaveProp('aria-required', true);
+
+      expect(
+        getShallow({ isRequired: true, children: <NxStatefulTextInput aria-required={true} /> })
+          .find(NxStatefulTextInput)
+      ).toHaveProp('aria-required', true);
+
+      expect(
+        getShallow({ children: <NxStatefulTextInput aria-required={false} /> })
+          .find(NxStatefulTextInput)
+      ).toHaveProp('aria-required', false);
+    });
+  });
 });
