@@ -35,15 +35,20 @@ const HostedVersionsSelect = () => {
 
   useEffect(() => {
     setIsLoadingHostedVersions(true);
-    getHostedVersion()
-        .then((hostedVersions) => {
-          setHostedVersions(hostedVersions);
-          setIsLoadingHostedVersions(false);
-        })
-        .catch(() => {
-          setHostedVersions([CURRENT_VERSION]);
-          setIsLoadingHostedVersions(false);
-        });
+
+    const loadHostedVersion = async () => {
+      try {
+        const hostedVersions = await getHostedVersion();
+        setHostedVersions(hostedVersions);
+        setIsLoadingHostedVersions(false);
+      }
+      catch {
+        setHostedVersions([CURRENT_VERSION]);
+        setIsLoadingHostedVersions(false);
+      }
+    };
+
+    loadHostedVersion();
   }, []);
 
   return (
