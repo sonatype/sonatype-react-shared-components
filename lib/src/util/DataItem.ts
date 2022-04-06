@@ -10,5 +10,5 @@ import { ReactNode } from 'react';
 // Common interface for items which need to have text to display in the UI and a unique id
 export default interface DataItem<T extends string | number = string> {
   id: T;
-  displayName: ReactNode;
+  displayName: Exclude<ReactNode, null | undefined>;
 }
