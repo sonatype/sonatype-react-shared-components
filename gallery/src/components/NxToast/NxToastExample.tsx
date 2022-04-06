@@ -4,10 +4,23 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { NxToast } from '@sonatype/react-shared-components';
+import { NxButton, ToastContext, NxToastProvider } from '@sonatype/react-shared-components';
+
+const Child = () => {
+  const context = useContext(ToastContext);
+  return (
+    <NxButton onClick={() => context?.addToast({toastId: 0, type: 'error', message: 'test'})}>
+      test
+    </NxButton>
+  );
+};
 
 export default function NxToastExample() {
-  return <NxToast toastId={1} type="warning">toast message</NxToast>;
+  return (
+    <NxToastProvider>
+      <Child />
+    </NxToastProvider>
+  );
 }

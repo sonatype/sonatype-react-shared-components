@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 
 import { nxToastPropTypes, NxToastProps } from './types';
@@ -15,6 +15,7 @@ import {
   faExclamationCircle,
   faExclamationTriangle,
   faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import ToastContext from './contexts';
 
 const toastMap = {
   info: {
@@ -40,14 +41,16 @@ const toastMap = {
 };
 
 const NxToast = (props: NxToastProps) => {
-  const { toastId, className, children, type, ...otherProps } = props,
+  const { toastId, className, message, type, ...otherProps } = props,
       classes = classnames('nx-toast', className, toastMap[type].class);
+
+  const toastContext = useContext(ToastContext);
 
   return (
     <div role="alert" { ...otherProps } className={classes} aria-atomic={true}>
       <NxFontAwesomeIcon aria-label={toastMap[type].iconLabel} icon={toastMap[type].icon}/>
-      <div className="nx-toast__content">{children}</div>
-      <NxCloseButton onClick={() => {}} />
+      <div className="nx-toast__content">{message}</div>
+      <NxCloseButton onClick={() => toastContext?.removeToast(toastId)} />
     </div>
   );
 };

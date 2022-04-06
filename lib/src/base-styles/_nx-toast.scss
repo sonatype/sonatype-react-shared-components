@@ -6,6 +6,13 @@
  */
 @use '../base-styles/nx-alert';
 
+.nx-toast__container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
 .nx-toast {
   @extend .nx-alert;
   width: 500px;
