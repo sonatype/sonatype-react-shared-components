@@ -15,7 +15,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
 
   return createPortal(
     <div className="nx-toast__container" ref={toastContainerRef}>
-      {toasts.reverse().map(toast => (
+      {toasts.sort((a, b) => (a.toastId > b.toastId) ? -1 : 1).map(toast => (
         <NxToast key={toast.toastId}
                  toastId={toast.toastId}
                  type={toast.type}
