@@ -45,3 +45,12 @@ export type ToastContextType = {
   addToast: (model: ToastAddModel) => void,
   removeToast: (id: number) => void,
 } | null;
+
+//NxToastContainer
+export type NxToastContainerProps = {
+  toasts: ToastModel[] | []
+};
+
+export const nxToastContainerPropTypes: PropTypes.ValidationMap<NxToastContainerProps> = {
+  toasts: PropTypes.array.isRequired
+};

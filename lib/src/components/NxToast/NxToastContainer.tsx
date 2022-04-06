@@ -7,9 +7,9 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import NxToast from './NxToast';
-import { ToastModel } from './types';
+import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
 
-const NxToastContainer = (props: { toasts: ToastModel[]; }) => {
+const NxToastContainer = (props: NxToastContainerProps) => {
   const { toasts } = props;
   return createPortal(
     <div className="nx-toast__container">
@@ -21,4 +21,5 @@ const NxToastContainer = (props: { toasts: ToastModel[]; }) => {
   );
 };
 
+NxToastContainer.propType = nxToastContainerPropTypes;
 export default NxToastContainer;

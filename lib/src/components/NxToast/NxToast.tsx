@@ -4,53 +4,36 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import classnames from 'classnames';
 
 import { nxToastPropTypes, NxToastProps } from './types';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import {
-  faCheckCircle,
-  faExclamationCircle,
-  faExclamationTriangle,
-  faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import ToastContext from './contexts';
 
-const toastMap = {
-  info: {
-    icon: faInfoCircle,
-    iconLabel: 'Info',
-    class: 'nx-toast--info'
-  },
-  warning: {
-    icon: faExclamationTriangle,
-    iconLabel: 'Warning',
-    class: 'nx-toast--warning'
-  },
-  success: {
-    icon: faCheckCircle,
-    iconLabel: 'Success',
-    class: 'nx-toast--success'
-  },
-  error: {
-    icon: faExclamationCircle,
-    iconLabel: 'Error',
-    class: 'nx-toast--error'
-  }
-};
+import ToastContext from './contexts';
+import { toastTypeMap } from './toastTypeMapping';
 
 const NxToast = (props: NxToastProps) => {
   const { toastId, className, message, type, ...otherProps } = props,
-      classes = classnames('nx-toast', className, toastMap[type].class);
+      toastClass = toastTypeMap[type].class,
+      toastIcon = toastTypeMap[type].icon,
+      toastIconLabel = toastTypeMap[type].iconLabel,
+      classes = classnames('nx-toast', className, toastClass),
+      toastContext = useContext(ToastContext),
+      closeBtnRef = useRef<HTMLButtonElement>(null);
 
-  const toastContext = useContext(ToastContext);
+  useEffect(() => {
+    if (closeBtnRef.current) {
+      closeBtnRef.current.focus();
+    }
+  }, []);
 
   return (
     <div role="alert" { ...otherProps } className={classes} aria-atomic={true}>
-      <NxFontAwesomeIcon aria-label={toastMap[type].iconLabel} icon={toastMap[type].icon}/>
+      <NxFontAwesomeIcon aria-label={toastIconLabel} icon={toastIcon}/>
       <div className="nx-toast__content">{message}</div>
-      <NxCloseButton onClick={() => toastContext?.removeToast(toastId)} />
+      <NxCloseButton ref={closeBtnRef} onClick={() => toastContext?.removeToast(toastId)} />
     </div>
   );
 };
