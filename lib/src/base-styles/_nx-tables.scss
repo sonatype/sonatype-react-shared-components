@@ -191,7 +191,7 @@
 // nested and located this far down the file for specificity reasons
 .nx-table {
   .nx-table-row--filter-header {
-    > .nx-cell--header {
+    > .nx-cell {
       top: nx-table-variables.$table-cell-header-height;
     }
 
@@ -302,7 +302,7 @@
   -ms-user-select: none;
 }
 
-.nx-table-row--filter-header > .nx-cell--header {
+.nx-table-row--filter-header > .nx-cell {
   background-color: var(--nx-color-component-background);
   border-bottom: var(--nx-border-default);
   padding-top: var(--nx-spacing-4x);
