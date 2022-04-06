@@ -6,10 +6,10 @@
  */
 import React, { useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { DataItem, NxFontAwesomeIcon, NxSearchTransferList, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME } from '@sonatype/react-shared-components';
+import { DataItem, NxFontAwesomeIcon, NxSearchTransferList, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+  from '@sonatype/react-shared-components';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
-
 
 const items: DataItem<number>[] = prepend(
     {
