@@ -35,8 +35,13 @@ export interface ToastModel {
   message: string,
 }
 
+export interface ToastAddModel {
+  type: ToastType,
+  message: string,
+}
+
 export type ToastContextType = {
   toasts: ToastModel[];
-  addToast: (model: ToastModel) => void,
+  addToast: (model: ToastAddModel) => void,
   removeToast: (id: number) => void,
 } | null;

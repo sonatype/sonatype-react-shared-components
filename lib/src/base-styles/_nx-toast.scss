@@ -5,8 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../base-styles/nx-alert';
+@use '../scss-shared/nx-container-helpers';
 
 .nx-toast__container {
+  @include nx-container-helpers.container-vertical;
+  margin-right: var(--nx-spacing-2x);
+  margin-top: var(--nx-spacing-2x);
   position: absolute;
   right: 0;
   top: 0;

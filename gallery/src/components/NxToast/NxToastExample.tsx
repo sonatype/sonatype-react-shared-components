@@ -11,9 +11,20 @@ import { NxButton, ToastContext, NxToastProvider } from '@sonatype/react-shared-
 const Child = () => {
   const context = useContext(ToastContext);
   return (
-    <NxButton onClick={() => context?.addToast({toastId: 0, type: 'error', message: 'test'})}>
-      test
-    </NxButton>
+    <>
+      <NxButton onClick={() => context?.addToast({type: 'error', message: '1'})}>
+        Show error toast
+      </NxButton>
+      <NxButton onClick={() => context?.addToast({type: 'success', message: '2'})}>
+        Show success toast
+      </NxButton>
+      <NxButton onClick={() => context?.addToast({type: 'warning', message: '3'})}>
+        Show warning toast
+      </NxButton>
+      <NxButton onClick={() => context?.addToast({type: 'info', message: '4'})}>
+        Show info toast
+      </NxButton>
+    </>
   );
 };
 

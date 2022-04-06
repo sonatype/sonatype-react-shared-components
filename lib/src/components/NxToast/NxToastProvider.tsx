@@ -9,10 +9,10 @@ import React, { useCallback, useState } from 'react';
 import ToastContext from './contexts';
 import NxToastContainer from './NxToastContainer';
 import { ToastModel } from './types';
+import * as PropTypes from 'prop-types';
 
 let id = 1;
 
-// eslint-disable-next-line react/prop-types
 const NxToastProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
@@ -38,4 +38,7 @@ const NxToastProvider: React.FC<React.ReactNode> = ({ children }) => {
   );
 };
 
+NxToastProvider.propTypes = {
+  children: PropTypes.any
+};
 export default NxToastProvider;

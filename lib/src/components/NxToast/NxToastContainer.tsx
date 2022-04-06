@@ -13,7 +13,7 @@ const NxToastContainer = (props: { toasts: ToastModel[]; }) => {
   const { toasts } = props;
   return createPortal(
     <div className="nx-toast__container">
-      {toasts.map(toast => (
+      {toasts.reverse().map(toast => (
         <NxToast key={toast.toastId} toastId={toast.toastId} type={toast.type} message={toast.message} />
       ))}
     </div>,
