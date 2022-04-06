@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef, useContext, useEffect } from 'react';
+import React, { useRef, useContext, useEffect, useState } from 'react';
 import classnames from 'classnames';
 
 import { nxToastPropTypes, NxToastProps } from './types';
@@ -15,11 +15,12 @@ import ToastContext from './contexts';
 import { toastTypeMap } from './toastTypeMapping';
 
 const NxToast = (props: NxToastProps) => {
+  const [animate, setAnimate] = useState(false);
   const { toastId, className, message, type, toastContainerRef, ...otherProps } = props,
       toastClass = toastTypeMap[type].class,
       toastIcon = toastTypeMap[type].icon,
       toastIconLabel = toastTypeMap[type].iconLabel,
-      classes = classnames('nx-toast', className, toastClass),
+      classes = classnames('nx-toast', className, toastClass, {'animate slide-in': animate}),
       toastContext = useContext(ToastContext),
       closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -29,6 +30,7 @@ const NxToast = (props: NxToastProps) => {
     if (closeBtn) {
       closeBtn.focus();
     }
+    setAnimate(true);
   }, []);
 
   //Effect to shift focus to the next toast's close button
