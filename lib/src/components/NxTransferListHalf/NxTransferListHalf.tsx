@@ -60,7 +60,7 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
         <label className="nx-transfer-list__select">
           <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
           <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
-          <span>{displayName}</span>
+          <span className="nx-transfer-list__display-name">{displayName}</span>
         </label>
       </NxOverflowTooltip>
       { showReorderingButtons && (
