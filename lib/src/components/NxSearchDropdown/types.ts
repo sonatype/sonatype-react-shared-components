@@ -33,7 +33,7 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   error: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
-    displayName: PropTypes.string.isRequired
+    displayName: PropTypes.node.isRequired
   }).isRequired).isRequired,
   onSelect: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
