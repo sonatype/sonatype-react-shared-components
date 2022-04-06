@@ -65,7 +65,8 @@ const NxFormGroupPage = () =>
             <NxTable.Cell>false</NxTable.Cell>
             <NxTable.Cell>
               Sets whether the input should display the optional flag – the flag is present by default and
-              setting <NxCode>isRequired</NxCode> to true removes the flag.
+              setting <NxCode>isRequired</NxCode> to true removes the flag. Also sets
+              the <NxCode>aria-required</NxCode> prop on the child if not already present.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -75,7 +76,7 @@ const NxFormGroupPage = () =>
             <NxTable.Cell>N/A</NxTable.Cell>
             <NxTable.Cell>
               The form element that this group wraps and labels. For accessibility reasons, it
-              must be able to receive <NxCode>id</NxCode> and{' '}
+              must be able to receive <NxCode>id</NxCode>, <NxCode>aria-required</NxCode>, and{' '}
               <NxCode>aria-describedby</NxCode> props which must ultimately get rendered onto the
               native input element. If these props are already present, their values
               will be respected. Otherwise, the <NxCode>NxFormGroup</NxCode> will clone and
