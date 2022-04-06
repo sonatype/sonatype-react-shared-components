@@ -212,6 +212,24 @@ again from the top directory of the repo.
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
 ```
 
+---
+
+### Windows Users!!
+
+For you seemingly rare Windows (Windows 11 to be precise) users, you have a couple options
+
+From simple command prompt
+```
+docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn test
+```
+
+And from powershell
+```
+docker run --rm -it -w /home/jenkins/gallery -v $pwd:/home/jenkins rsc-visualtesting yarn test
+```
+
+---
+
 Note that the `yarn test` command will (re-)install the gallery dependencies, ensuring that puppeteer downloads the
 correct version of Chromium before running the gallery build and tests.
 
