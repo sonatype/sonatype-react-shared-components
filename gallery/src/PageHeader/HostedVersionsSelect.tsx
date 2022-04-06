@@ -14,12 +14,7 @@ import './HostedVersionsSelect.scss';
 const CURRENT_VERSION = packageJson.version;
 const HOSTED_VERSIONS_JSON_URL = 'https://gallery.sonatype.dev/versions/latest/hosted-versions.json';
 
-const getHostedVersion = () => fetch(HOSTED_VERSIONS_JSON_URL, {
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  }
-}).then((response) => {
+const getHostedVersion = () => fetch(HOSTED_VERSIONS_JSON_URL).then((response) => {
   if (!response.ok) {
     throw new Error('Failed to load hosted versions.');
   }
