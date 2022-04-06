@@ -136,9 +136,12 @@ const NxFormGroupPage = () =>
     <GalleryExampleTile title="Existing ID and ARIA Attributes Example"
                         liveExample={NxFormGroupExistingAriaExample}
                         codeExamples={nxFormGroupExistingAriaExampleCode}>
-      This example shows how existing values of the id and aria-describedby attribute get respected/augmented.
-      Inspect the live example to see the resulting attributes. This example also happens to demonstrate a
-      different kind of text input – a large textarea.
+      This example shows how existing values of the <NxCode>id</NxCode>, <NxCode>aria-required</NxCode>,
+      and <NxCode>aria-describedby</NxCode> attributes get
+      respected/augmented. Inspect the live example to see the resulting attributes. This example also happens to
+      demonstrate a different kind of text input – a large textarea. Note that this example demonstrates
+      an explicit <NxCode>aria-required</NxCode> value which is contradictory to the <NxCode>isRequired</NxCode> prop
+      on the <NxCode>NxFormGroup</NxCode> which is for demonstration purposes only and is not a recommended arrangement.
     </GalleryExampleTile>
   </>;
 
