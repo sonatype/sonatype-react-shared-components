@@ -10,6 +10,7 @@ describe('NxTransferListHalf', function() {
   const {
     waitAndGetElements,
     wait,
+    scrollIntoView,
     clickTest,
     focusTest,
     focusAndHoverTest,
@@ -36,6 +37,7 @@ describe('NxTransferListHalf', function() {
   it('handles overflowing content with a tooltip', async function() {
     const [list, firstItem] = await waitAndGetElements(simpleListSelector, firstItemSelector);
 
+    await scrollIntoView(list);
     await firstItem.hover();
 
     await waitForSelectors('.nx-tooltip');
