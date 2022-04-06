@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useContext, useRef, useEffect, useState } from 'react';
+import React, { forwardRef, useContext, useRef, useEffect, useState, useMemo } from 'react';
 import classnames from 'classnames';
 import { join, map, prop, filter } from 'ramda';
 import useMergedRef from '@react-hook/merged-ref';
@@ -15,7 +15,7 @@ export { NxTableRowProps };
 
 const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxTableRow(props, externalRef) {
   const {
-        isFilterHeader = false,
+        isFilterHeader: isFilterHeaderProp,
         isClickable = false,
         className,
         selected,
@@ -23,13 +23,19 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
         clickAccessibleLabel,
         ...attrs
       } = props,
+      isFilterHeader = isFilterHeaderProp ?? false,
       isHeader = useContext(HeaderContext),
 
       // For the default accessibility label on the chevron button, we need the text content of the row.
       // This component uses the DOM to retrieve that and provides it via RowContext
       [rowTextContent, setRowTextContent] = useState(''),
       rowRef = useRef<HTMLTableRowElement>(null),
-      ref = useMergedRef(rowRef, externalRef);
+      ref = useMergedRef(rowRef, externalRef),
+      rowLabel = clickAccessibleLabel || rowTextContent,
+      rowContext = useMemo(() => ({
+        label: rowLabel,
+        isFilterHeader
+      }), [rowLabel, isFilterHeader]);
 
   const classes = classnames('nx-table-row', className, {
     'nx-table-row--header': isHeader,
@@ -52,7 +58,7 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
 
   return (
     <tr ref={ref} className={classes} {...attrs}>
-      <RowContext.Provider value={clickAccessibleLabel || rowTextContent}>
+      <RowContext.Provider value={rowContext}>
         {children}
       </RowContext.Provider>
     </tr>

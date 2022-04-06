@@ -20,13 +20,13 @@ export default function NxTableScrollingExample() {
             <th className="nx-cell nx-cell--header">Header 5</th>
           </tr>
           <tr className="nx-table-row nx-table-row--header nx-table-row--filter-header">
-            <th className="nx-cell nx-cell--header">
+            <td className="nx-cell nx-cell--header">
               <NxFilterInput value="" />
-            </th>
-            <th className="nx-cell nx-cell--header"></th>
-            <th className="nx-cell nx-cell--header"></th>
-            <th className="nx-cell nx-cell--header nx-cell--num"></th>
-            <th className="nx-cell nx-cell--header"></th>
+            </td>
+            <td className="nx-cell nx-cell--header"></td>
+            <td className="nx-cell nx-cell--header"></td>
+            <td className="nx-cell nx-cell--header nx-cell--num"></td>
+            <td className="nx-cell nx-cell--header"></td>
           </tr>
         </thead>
         <tbody>

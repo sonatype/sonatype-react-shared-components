@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import {getShallowComponent} from '../../../__testutils__/enzymeUtils';
-import Counter, {Props} from '../NxCollapsibleItemsCounter';
+import Counter, {Props} from '../Counter';
 
-describe('NxCollapsibleItemsCounter', function() {
+describe('Counter', function() {
   const simpleProps: Props = {
     children: 'foobar'
   };
