@@ -47,14 +47,14 @@ const HostedVersionsSelect = () => {
   }, []);
 
   return (
-    <div className="hosted-versions-select">
-      <label className="hosted-versions-select__label" htmlFor="hosted-versions-select">
+    <div className="gallery-hosted-versions-select">
+      <label className="gallery-hosted-versions-select__label" htmlFor="gallery-hosted-versions-select">
         Version
       </label>
       {
         !isLoadingHostedVersions && (
-          <NxFormSelect className="hosted-versions-select__select nx-form-select--short"
-                        id="hosted-versions-select"
+          <NxFormSelect className="gallery-hosted-versions-select__select nx-form-select--short"
+                        id="gallery-hosted-versions-select"
                         defaultValue={CURRENT_VERSION}
                         onChange={onChange}>
             {
