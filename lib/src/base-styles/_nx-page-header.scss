@@ -8,19 +8,15 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-button-helpers';
 
-$-background: var(--nx-swatch-white);
-$-product-height: 52px;
-$-product-title-row-height: 2fr;
-$-product-version-row-height: 1fr;
-
-/*
-  #Main Header
-*/
+// You will see many one-off sizes for top-margins throughout this file. This is intentional in order
+// to accomplish a subjectively pleasing "centered" look amongst the header's parts. Actually centering them
+// does not look as good. At this point all of the one-off sizes are measured in the same way (from the top
+// of the component) so things don't get too confusing
 
 .nx-page-header {
   box-sizing: content-box;
 
-  background-color: $-background;
+  background-color: var(--nx-swatch-white);
   border-bottom: 1px solid var(--nx-swatch-grey-90);
   grid-area: old-header; // see nx-page's grid template
   height: nx-header-variables.$main-header-height;
@@ -29,10 +25,10 @@ $-product-version-row-height: 1fr;
 .nx-page-header__inner {
   @include nx-container-helpers.container-horizontal;
 
-  align-items: center;
+  align-items: flex-start;
   box-sizing: border-box;
   display: flex;
-  height: nx-header-variables.$main-header-height;
+  height: 100%;
   margin: 0 auto;
   padding: 0 var(--nx-spacing-6x);
   width: 100%;
@@ -41,7 +37,7 @@ $-product-version-row-height: 1fr;
 
 .nx-page-header__links {
   @include nx-container-helpers.container-horizontal;
-  margin: 0 var(--nx-spacing-16x);
+  margin: 26px var(--nx-spacing-16x) 0 var(--nx-spacing-16x);
 }
 
 .nx-page-header__link {
@@ -84,6 +80,9 @@ $-product-version-row-height: 1fr;
 .nx-page-header__extra-content {
   @include nx-container-helpers.container-horizontal;
 
+  align-items: center;
+  align-self: stretch;
+  display: flex;
   margin-left: auto;
 
   .nx-btn--icon-only {
@@ -92,44 +91,40 @@ $-product-version-row-height: 1fr;
 }
 
 .nx-product {
-  align-items: center;
-  box-sizing: border-box;
-  display: flex;
-  height: nx-header-variables.$main-header-height - 6px; // aids vertical alignment of contents
-  margin-bottom: 6px;
-  text-decoration: none;
+  display: contents;
 }
 
 .nx-product__home-link {
   display: block;
 }
 
+.nx-product__logo {
+  margin-top: 25px;
+}
+
 .nx-product__logo-image {
-  display: inline-block;
-  height: 21px;
-  margin-top: 13px; // fix vertical centering
+  display: block;
+}
+
+.nx-product__divider {
+  color: var(--nx-swatch-black);
+  font-size: 21px;
+  line-height: 1;
+  margin-top: 21px;
+  margin-left: var(--nx-spacing-3x);
+  margin-right: var(--nx-spacing-3x);
 }
 
 .nx-product__name {
-  display: inline-block;
+  align-items: flex-start;
+  display: flex;
   font-size: 26px;
-  margin-left: var(--nx-spacing-3x);
-  text-transform: lowercase;
-  white-space: nowrap;
-
-  &::before {
-    color: var(--nx-swatch-black);
-    content: "|";
-    display: inline-block;
-    font-size: 21px;
-    margin-right: var(--nx-spacing-3x);
-  }
+  margin-top: 13px;
 }
 
 .nx-product__version {
-  color: var(--nx-swatch-grey-10);
-  display: inline-block;
-  font-size: 12px;
-  margin-top: 8px; // move version down to match product name baseline
+  display: block;
+  font-size: var(--nx-font-size-xs);
+  margin-top: 27px;
   margin-left: var(--nx-spacing-3x);
 }
