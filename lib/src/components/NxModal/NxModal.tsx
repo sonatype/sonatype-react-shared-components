@@ -26,6 +26,8 @@ const hasWindow = typeof window !== 'undefined',
     hasNativeModalSupport = !!(hasWindow && dynamicallyTypedWindow.HTMLDialogElement &&
       dynamicallyTypedWindow.HTMLDialogElement.prototype.showModal);
 
+// propTypes static analysis doesn't work with the way this component is written
+/* eslint-disable react/prop-types */
 const _NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onClose, variant, role, ...attrs }) => {
   const modalClasses = classnames('nx-modal', className, {
         'nx-modal--wide': variant === 'wide',
