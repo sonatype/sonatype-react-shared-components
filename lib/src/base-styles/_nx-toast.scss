@@ -17,15 +17,6 @@
   z-index: 2;
 }
 
-.animate {
-  transition: all 0.3s ease-in-out;
-}
-
-.animate.slide-in {
-  opacity: 1;
-  top: 0;
-}
-
 .nx-toast {
   @extend .nx-alert;
   opacity: 0.5;
@@ -48,4 +39,18 @@
 
 .nx-toast--info {
   @extend .nx-alert--info;
+}
+
+.animate {
+  transition: all 0.3s ease-in-out;
+}
+
+.animate.slide-in {
+  opacity: 1;
+  top: 0;
+}
+
+.animate.slide-out {
+  opacity: 0.5;
+  top: -16px;
 }

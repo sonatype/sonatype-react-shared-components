@@ -15,12 +15,15 @@ import ToastContext from './contexts';
 import { toastTypeMap } from './toastTypeMapping';
 
 const NxToast = (props: NxToastProps) => {
-  const [animate, setAnimate] = useState(false);
   const { toastId, className, message, type, toastContainerRef, ...otherProps } = props,
       toastClass = toastTypeMap[type].class,
       toastIcon = toastTypeMap[type].icon,
       toastIconLabel = toastTypeMap[type].iconLabel,
-      classes = classnames('nx-toast', className, toastClass, {'animate slide-in': animate}),
+      [animate, setAnimate] = useState(false),
+      classes = classnames('nx-toast', 'animate', className, toastClass,
+          {'slide-in': animate},
+          {'slide-out': !animate}
+      ),
       toastContext = useContext(ToastContext),
       closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -30,22 +33,33 @@ const NxToast = (props: NxToastProps) => {
     if (closeBtn) {
       closeBtn.focus();
     }
+
+    //When component is mounted, add class "animate slide-in" to trigger animation
     setAnimate(true);
   }, []);
 
   //Effect to shift focus to the next toast's close button
   useEffect(() => {
     if (toastContainerRef) {
+      //Gets the first close button of the child from the parent toast container div
       const closeBtn = toastContainerRef.current?.querySelectorAll('.nx-btn--close')[0] as HTMLButtonElement;
       closeBtn.focus();
     }
   }, [toastContext?.toasts]);
 
+  const handleCloseClick = () => {
+    setAnimate(false);
+    //Wait for slide-out animation before removing toast from DOM
+    setTimeout(() => {
+      toastContext?.removeToast(toastId);
+    }, 250);
+  };
+
   return (
     <div role="alert" { ...otherProps } className={classes} aria-atomic={true}>
       <NxFontAwesomeIcon aria-label={toastIconLabel} icon={toastIcon}/>
       <div className="nx-toast__content">{message}</div>
-      <NxCloseButton ref={closeBtnRef} onClick={() => toastContext?.removeToast(toastId)} />
+      <NxCloseButton ref={closeBtnRef} onClick={handleCloseClick} />
     </div>
   );
 };
