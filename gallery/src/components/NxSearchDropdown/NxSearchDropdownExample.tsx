@@ -20,6 +20,7 @@ const items: DataItem<number>[] = prepend(
 );
 
 function getDisplayNameString({ displayName }: DataItem<number>) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return typeof displayName === 'string' ? displayName : (displayName as any).props.children[1].props.children;
 }
 
