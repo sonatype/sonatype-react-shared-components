@@ -10,7 +10,7 @@ import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
 import NxCollapsibleMultiSelect, {Props, Option} from '../NxCollapsibleMultiSelect';
 import { NxTreeViewMultiSelect } from '../../../../index';
 
-import MultiSelectCounter from '../MultiSelectCounter';
+import MultiSelectCounter from '../../../Counter/MultiSelectCounter';
 
 describe('NxCollapsibleMultiSelect', function() {
   const requiredProps: Props = {

@@ -71,7 +71,7 @@ describe('NxTableCell', function () {
 
       it('sets the nx-cell__row-btn aria-label from the RowContext', function() {
         const component = mount(
-          <RowContext.Provider value="foobar">
+          <RowContext.Provider value={{ label: 'foobar', isFilterHeader: false }}>
             <NxTableCell chevron/>
           </RowContext.Provider>,
           { attachTo: document.createElement('tr') }
@@ -128,7 +128,7 @@ describe('NxTableCell', function () {
 
       it('sets the nx-cell__row-btn aria-label from the RowContext', function() {
         const component = mount(
-          <RowContext.Provider value="foobar">
+          <RowContext.Provider value={{ label: 'foobar', isFilterHeader: false }}>
             <NxTableCell rowBtnIcon={faEdit} />
           </RowContext.Provider>,
           { attachTo: document.createElement('tr') }
@@ -224,6 +224,21 @@ describe('NxTableCell', function () {
         expect(descIcons.find(NxFontAwesomeIcon).first()).toHaveProp('icon', faSortUp);
         expect(descIcons.find(NxFontAwesomeIcon).last()).toHaveProp('icon', faSortDown);
       });
+    });
+  });
+
+  describe('when the RowContext has isFilterHeader set', function() {
+    it('renders a td even if the HeaderContext  is set', function() {
+      const component = mount(
+        <HeaderContext.Provider value={true}>
+          <RowContext.Provider value={{ label: 'foobar', isFilterHeader: true }}>
+            <NxTableCell />
+          </RowContext.Provider>
+        </HeaderContext.Provider>,
+        { attachTo: document.createElement('tr') }
+      );
+
+      expect(component.find('td')).toHaveClassName('nx-cell');
     });
   });
 });
