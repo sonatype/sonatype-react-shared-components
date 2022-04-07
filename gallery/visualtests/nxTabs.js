@@ -38,9 +38,9 @@ describe('NxTabs', function() {
     it('has a light blue border and semi-bold text when clicked',
         clickTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`));
     it('has a light blue border when focused',
-        focusTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`))
+        focusTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`));
     it('has a light blue border and semi-bold text when focused and hovered',
-        focusAndHoverTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`))
+        focusAndHoverTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`));
   });
 
   function simpleModalTest(exampleSelector) {

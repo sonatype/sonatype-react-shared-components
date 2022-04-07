@@ -6,6 +6,7 @@
  */
 const puppeteer = require('puppeteer');
 
+// eslint-disable-next-line no-undef
 const pageUrl = `file://${__dirname}/../dist/index.html`;
 
 const { AxePuppeteer } = require('@axe-core/puppeteer');
@@ -20,7 +21,7 @@ module.exports = {
       // https://github.com/puppeteer/puppeteer/issues/3241#issuecomment-751489962
       await browser._connection.send('Browser.grantPermissions', {
         origin: pageUrl,
-        permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite'],
+        permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite']
       });
     }
 

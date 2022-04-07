@@ -52,7 +52,7 @@ describe('NxCodeSnippet', function() {
     const clipboardText = await getPage().evaluate(() => window.navigator.clipboard.readText());
 
     expect(clipboardText).toBe(
-String.raw`#define _ -F<00||--F-OO--;
+        String.raw`#define _ -F<00||--F-OO--;
 int F=00,OO=00;main(){F_OO();printf("%1.3f\n",4.*-F/OO/OO);}F_OO()
 {
             _-_-_-_
