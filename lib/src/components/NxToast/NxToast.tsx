@@ -39,6 +39,7 @@ const NxToast = (props: NxToastProps) => {
   }, []);
 
   //Effect to shift focus to the next toast's close button
+  //Dependency on the global toasts array
   useEffect(() => {
     if (toastContainerRef) {
       //Gets the first close button of the child from the parent toast container div

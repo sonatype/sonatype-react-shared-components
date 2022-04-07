@@ -8,7 +8,7 @@
 import React, { useCallback, useState } from 'react';
 import ToastContext from './contexts';
 import NxToastContainer from './NxToastContainer';
-import { ToastModel } from './types';
+import { ToastAddModel, ToastModel } from './types';
 import * as PropTypes from 'prop-types';
 
 let id = 1;
@@ -16,17 +16,14 @@ let id = 1;
 const NxToastProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
-  const addToast = useCallback((content) => {
-    // eslint-disable-next-line no-console
-    console.log('toast id', id);
+  const addToast = useCallback((content: ToastAddModel) => {
     setToasts((toasts) => [
       ...toasts,
       { toastId: id++, type: content.type, message: content.message }
     ]);
-
   }, [setToasts]);
 
-  const removeToast = useCallback(id => {
+  const removeToast = useCallback((id: number) => {
     setToasts(toasts => toasts.filter(t => t.toastId !== id));
   }, [setToasts]);
 
