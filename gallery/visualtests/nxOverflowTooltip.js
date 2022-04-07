@@ -12,7 +12,8 @@ describe('NxOverflowTooltip', function() {
     waitAndGetElements,
     wait,
     getElements,
-    a11yTest } = setupBrowser('#/pages/Overflow%20Tooltip');
+    a11yTest
+  } = setupBrowser('#/pages/Overflow%20Tooltip');
 
   const listSelector = '#nx-overflow-tooltip-simple-example .nx-list',
       descendantOverflowListSelector = '#nx-overflow-tooltip-descendant-example .nx-list',
