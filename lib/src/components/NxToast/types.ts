@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, RefObject } from 'react';
+import { HTMLAttributes, ReactNode, RefObject } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { allToastTypes, ToastType } from '../../util/toastLevels';
@@ -57,5 +57,16 @@ export type NxToastContainerProps = {
 
 export const nxToastContainerPropTypes: PropTypes.ValidationMap<NxToastContainerProps> = {
   toasts: PropTypes.array.isRequired,
+  isCentered: PropTypes.bool.isRequired
+};
+
+//NxToastProvider
+export type NxToastProviderProps = {
+  children: ReactNode | null,
+  isCentered?: boolean
+};
+
+export const nxToastProviderPropTypes: PropTypes.ValidationMap<NxToastProviderProps> = {
+  children: PropTypes.any,
   isCentered: PropTypes.bool.isRequired
 };

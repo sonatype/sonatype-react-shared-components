@@ -5,20 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import React, { ReactNode, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import ToastContext from './contexts';
 import NxToastContainer from './NxToastContainer';
-import { ToastAddModel, ToastModel } from './types';
-import * as PropTypes from 'prop-types';
+import { NxToastProviderProps, nxToastProviderPropTypes, ToastAddModel, ToastModel } from './types';
 
 let id = 1;
 
-interface ProviderProps {
-  children: ReactNode | null,
-  isCentered?: boolean
-}
-
-const NxToastProvider = (props: ProviderProps) => {
+const NxToastProvider = (props: NxToastProviderProps) => {
   const { children, isCentered } = props;
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
@@ -41,8 +35,5 @@ const NxToastProvider = (props: ProviderProps) => {
   );
 };
 
-NxToastProvider.propTypes = {
-  children: PropTypes.any,
-  isCentered: PropTypes.bool
-};
+NxToastProvider.propTypes = nxToastProviderPropTypes;
 export default NxToastProvider;
