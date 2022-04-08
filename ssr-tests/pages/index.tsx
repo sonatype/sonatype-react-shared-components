@@ -39,7 +39,6 @@ import {
   NxLoadingSpinner,
   NxLoadWrapper,
   NxModal,
-  NxNexusPageHeader,
   NxOverflowTooltip,
   NxPageHeader,
   NxPageMain,
@@ -253,7 +252,6 @@ const Home: NextPage = () => {
         </NxLoadWrapper>
         <NxLoadingSpinner />
         <NxModal onClose={noop} />
-        <NxNexusPageHeader productInfo={{name: 'a', meta: 'b', version: '1' }} />
         <NxPageHeader />
         <NxPagination onChange={noop} pageCount={43}  currentPage={2} />
         <NxIndeterminatePagination onPrevPageSelect={noop} onNextPageSelect={noop} />
