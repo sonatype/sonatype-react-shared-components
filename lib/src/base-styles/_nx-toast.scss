@@ -61,3 +61,22 @@
   opacity: 0.5;
   top: -16px;
 }
+
+/*
+  If the user has expressed their preference for reduced motion,
+  then only animate the fade effect.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .nx-toast {
+    top: 0;
+  }
+
+  .animate {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .animate.slide-out {
+    opacity: 0.5;
+    top: 0;
+  }
+}
