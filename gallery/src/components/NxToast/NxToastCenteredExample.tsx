@@ -10,10 +10,10 @@ import { NxButton, ToastContext, NxToastProvider } from '@sonatype/react-shared-
 
 const Child = () => {
   const context = useContext(ToastContext);
+  const showToast = () => context?.addToast({type: 'error', message: 'Error. Please try again.'});
+
   return (
-    <NxButton onClick={() => context?.addToast({type: 'error', message: 'Error. Please try again.'})}>
-      Show centered success toast
-    </NxButton>
+    <NxButton onClick={showToast}>Show centered toast</NxButton>
   );
 };
 

@@ -6,25 +6,22 @@
  */
 import React, { useContext } from 'react';
 
-import { NxButton, ToastContext, NxToastProvider } from '@sonatype/react-shared-components';
+import { NxButton, ToastContext, NxToastProvider, NxButtonBar } from '@sonatype/react-shared-components';
 
 const Child = () => {
   const context = useContext(ToastContext);
+  const showErrorToast = () => context?.addToast({type: 'error', message: 'Error. Please try again.'});
+  const showSuccessToast = () => context?.addToast({type: 'success', message: 'Policy added!'});
+  const showWarningToast = () => context?.addToast({type: 'warning', message: 'Some form fields are missing.'});
+  const showInfoToast = () => context?.addToast({type: 'info', message: 'Logging out in 30 seconds.'});
+
   return (
-    <>
-      <NxButton onClick={() => context?.addToast({type: 'error', message: 'Error. Please try again.'})}>
-        Show error toast
-      </NxButton>
-      <NxButton onClick={() => context?.addToast({type: 'success', message: 'Policy added!'})}>
-        Show success toast
-      </NxButton>
-      <NxButton onClick={() => context?.addToast({type: 'warning', message: 'Some form fields are missing.'})}>
-        Show warning toast
-      </NxButton>
-      <NxButton onClick={() => context?.addToast({type: 'info', message: 'Logging out in 30 seconds.'})}>
-        Show info toast
-      </NxButton>
-    </>
+    <NxButtonBar>
+      <NxButton onClick={showErrorToast}>Show error toast</NxButton>
+      <NxButton onClick={showSuccessToast}>Show success toast</NxButton>
+      <NxButton onClick={showWarningToast}>Show warning toast</NxButton>
+      <NxButton onClick={showInfoToast}>Show info toast</NxButton>
+    </NxButtonBar>
   );
 };
 
