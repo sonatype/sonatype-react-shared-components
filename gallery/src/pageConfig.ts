@@ -140,6 +140,9 @@ import NxStatefulCollapsibleRadioSelectPage
   from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
 import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
+import NxFilterDropdownPage from './components/NxFilterDropdown/NxFilterDropdownPage';
+import NxStatefulFilterDropdownPage from './components/NxStatefulFilterDropdown/NxStatefulFilterDropdownPage';
+import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBar';
 
 import NivoLineChartPage from './nivo/NivoLineChart/NivoLineChartPage';
@@ -175,6 +178,8 @@ const pageConfig: PageConfig = {
     'Close Button': { content: NxCloseButtonPage, type: 'react' },
     'Dropdown': { content: NxDropdownPage, type: 'react' },
     'Stateful Dropdown': { content: NxStatefulDropdownPage, type: 'react' },
+    'Filter Dropdown': { content: NxFilterDropdownPage, type: 'react' },
+    'Stateful Filter Dropdown': { content: NxStatefulFilterDropdownPage, type: 'react' },
     'Icon Dropdown': { content: NxIconDropdownPage, type: 'react' },
     'Stateful Icon Dropdown': { content: NxStatefulIconDropdownPage, type: 'react' },
     'Pagination': { content: NxPaginationPage, type: 'react' },
@@ -209,6 +214,7 @@ const pageConfig: PageConfig = {
     'Stateful Toggle': { content: NxStatefulTogglePage, type: 'react' },
     'Transfer List': { content: NxTransferListPage, type: 'react' },
     'Stateful Transfer List': { content: NxStatefulTransferListPage, type: 'react' },
+    'Transfer List Half': { content: NxTransferListHalfPage, type: 'react' },
     'Tree View Multi-Select': { content: NxTreeViewMultiSelect, type: 'react' },
     'Stateful Tree View Multi-Select': { content: NxStatefulTreeViewMultiSelect, type: 'react' },
     'Tree View Radio-Select': { content: NxTreeViewRadioSelectPage, type: 'react' },
