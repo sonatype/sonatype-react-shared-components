@@ -15,7 +15,7 @@ const generateStringData = (id: string, itemNames: string[], [min, max]: [number
 );
 
 const generateDateData = (id: string, [min, max]: [number, number]) => {
-  const date = new Date();
+  // const date = new Date();
   // const year = date.getFullYear();
   // const month = date.getMonth() + 1;
   // const numberOfDaysInMonth = new Date(year, month, 0).getDate();
