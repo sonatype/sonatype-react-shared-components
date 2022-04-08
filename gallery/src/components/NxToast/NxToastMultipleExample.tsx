@@ -10,20 +10,25 @@ import { NxButton, ToastContext, NxToastProvider } from '@sonatype/react-shared-
 
 const Child = () => {
   const context = useContext(ToastContext);
+  const showSuccessToast = () => context?.addToast({type: 'success', message: 'Account successfully created.'});
+  const showInfoToast = () => context?.addToast({type: 'info', message: 'Check permissions.'});
+  const showWarningToast = () => context?.addToast({type: 'warning', message: 'Unauthorized access may be monitored.'});
   const showErrorToast = () => context?.addToast({type: 'error', message: 'Error. Please try again.'});
-  const showWarningToast = () => context?.addToast({type: 'warning', message: 'Some form fields are missing.'});
-  const showInfoToast = () => context?.addToast({type: 'info', message: 'New user created.'});
 
   const handleClick = () => {
-    showInfoToast();
+    showSuccessToast();
 
     setTimeout(() => {
-      showWarningToast();
+      showInfoToast();
     }, 2000);
 
     setTimeout(() => {
-      showErrorToast();
+      showWarningToast();
     }, 4000);
+
+    setTimeout(() => {
+      showErrorToast();
+    }, 6000);
   };
 
   return (
