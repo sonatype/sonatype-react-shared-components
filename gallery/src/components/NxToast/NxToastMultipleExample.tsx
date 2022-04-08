@@ -4,30 +4,26 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { NxButton, ToastContext, NxToastProvider } from '@sonatype/react-shared-components';
+import { NxButton, useToast, NxToastProvider } from '@sonatype/react-shared-components';
 
 const Child = () => {
-  const context = useContext(ToastContext);
-  const showSuccessToast = () => context?.addToast({type: 'success', message: 'Account successfully created.'});
-  const showInfoToast = () => context?.addToast({type: 'info', message: 'Check permissions.'});
-  const showWarningToast = () => context?.addToast({type: 'warning', message: 'Unauthorized access may be monitored.'});
-  const showErrorToast = () => context?.addToast({type: 'error', message: 'Error. Please try again.'});
+  const { showErrorToast, showSuccessToast, showWarningToast, showInfoToast } = useToast();
 
   const handleClick = () => {
-    showSuccessToast();
+    showSuccessToast('Account successfully created.');
 
     setTimeout(() => {
-      showInfoToast();
+      showInfoToast('Check permissions.');
     }, 2000);
 
     setTimeout(() => {
-      showWarningToast();
+      showWarningToast('Unauthorized access may be monitored.');
     }, 4000);
 
     setTimeout(() => {
-      showErrorToast();
+      showErrorToast('Error. Please try again.');
     }, 6000);
   };
 

@@ -327,3 +327,5 @@ export { default as NxProgressBar } from './components/NxProgressBar/NxProgressB
 export { default as ToastContext } from './components/NxToast/contexts';
 
 export { default as NxToastProvider } from './components/NxToast/NxToastProvider';
+
+export { default as useToast } from './util/useToast';
