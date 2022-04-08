@@ -34,6 +34,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell>Class</NxTable.Cell>
             <NxTable.Cell>Location</NxTable.Cell>
+            <NxTable.Cell>Component</NxTable.Cell>
             <NxTable.Cell>Details</NxTable.Cell>
           </NxTable.Row>
         </NxTable.Head>
@@ -41,6 +42,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-form</NxCode></NxTable.Cell>
             <NxTable.Cell>Top-Level</NxTable.Cell>
+            <NxTable.Cell><NxCode><NxTextLink href="#/pages/Form">NxForm</NxTextLink></NxCode></NxTable.Cell>
             <NxTable.Cell>
               Default form class. Resets browser <NxCode>&lt;form&gt;</NxCode> attributes and applies
               NX styles.
@@ -49,6 +51,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-form-group</NxCode></NxTable.Cell>
             <NxTable.Cell>Element</NxTable.Cell>
+            <NxTable.Cell><NxCode><NxTextLink href="#/pages/Form Group">NxFormGroup</NxTextLink></NxCode></NxTable.Cell>
             <NxTable.Cell>
               Basic container for form elements. Typically it is best to use
               the <NxCode>NxFormGroup</NxCode> react component instead of using this class directly.
@@ -57,6 +60,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-form-row</NxCode></NxTable.Cell>
             <NxTable.Cell>Element</NxTable.Cell>
+            <NxTable.Cell><NxCode>NxFormRow</NxCode></NxTable.Cell>
             <NxTable.Cell>
               Used as a parent when you want <NxCode>.nx-form-group</NxCode> blocks to display
               horizontally rather than stack vertically.
@@ -65,6 +69,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-label</NxCode></NxTable.Cell>
             <NxTable.Cell>Element</NxTable.Cell>
+            <NxTable.Cell>(Part of <NxCode>NxFormGroup</NxCode>)</NxTable.Cell>
             <NxTable.Cell>
               Standard class for <NxCode>&lt;label&gt;</NxCode> elements. This element may either be
               wrapped around the form field and sublabel, or precede them and use
@@ -77,6 +82,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-label--optional</NxCode></NxTable.Cell>
             <NxTable.Cell>Modifier</NxTable.Cell>
+            <NxTable.Cell />
             <NxTable.Cell>
               Used when you want "Optional" text to appear after a <NxCode>&lt;label&gt;</NxCode>
               element.
@@ -85,6 +91,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-sub-label</NxCode></NxTable.Cell>
             <NxTable.Cell>Element</NxTable.Cell>
+            <NxTable.Cell>(Part of <NxCode>NxFormGroup</NxCode> and <NxCode>NxFieldset</NxCode>)</NxTable.Cell>
             <NxTable.Cell>
               Used when you want text below the standard <NxCode>&lt;label&gt;</NxCode> text.
               <NxCode>.nx-sub-label</NxCode> is meant to be applied to a{' '}
@@ -98,6 +105,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-fieldset</NxCode></NxTable.Cell>
             <NxTable.Cell>Element</NxTable.Cell>
+            <NxTable.Cell><NxCode><NxTextLink href="#/pages/Fieldset">NxFieldset</NxTextLink></NxCode></NxTable.Cell>
             <NxTable.Cell>
               Applied to a <NxCode>&lt;fieldset&gt;</NxCode> element that wraps checkboxes or
               radio buttons.
@@ -106,6 +114,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-footer</NxCode></NxTable.Cell>
             <NxTable.Cell>Element</NxTable.Cell>
+            <NxTable.Cell><NxCode>NxFooter</NxCode></NxTable.Cell>
             <NxTable.Cell>
               Applied to a footer which contains the form action buttons (e.g. Submit, Cancel, etc).
             </NxTable.Cell>
@@ -113,6 +122,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-legend</NxCode></NxTable.Cell>
             <NxTable.Cell>Element</NxTable.Cell>
+            <NxTable.Cell>(Part of <NxCode>NxFieldset</NxCode>)</NxTable.Cell>
             <NxTable.Cell>
               Standard class for <NxCode>&lt;legend&gt;</NxCode> elements. A legend is used inside of a
               <NxCode>&lt;fieldset&gt;</NxCode> in the place of a
@@ -122,6 +132,7 @@ const NxFormLayoutPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>.nx-legend--optional</NxCode></NxTable.Cell>
             <NxTable.Cell>Modifier</NxTable.Cell>
+            <NxTable.Cell />
             <NxTable.Cell>
               Used when you want "Optional" text to appear after a <NxCode>&lt;legend&gt;</NxCode>
               element.

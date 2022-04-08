@@ -16,6 +16,7 @@ const NxFormGroupExistingAriaExample = () =>
     <NxFormGroup label="Comments" sublabel="Tell us what you really think…">
       <NxStatefulTextInput id="gallery-example-comments"
                            aria-describedby="gallery-example-comment-description"
+                           aria-required={true}
                            className="nx-text-input--long"
                            type="textarea" />
     </NxFormGroup>

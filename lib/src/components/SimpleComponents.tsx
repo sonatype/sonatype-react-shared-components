@@ -26,6 +26,8 @@ export const NxH4 = withClass('h4', 'nx-h4');
 
 export const NxDivider = withClass('hr', 'nx-divider');
 
+export const NxFormRow = withClass('div', 'nx-form-row');
+
 export const NxTile = Object.assign(withClass('section', 'nx-tile'), {
   Header: withClass('header', 'nx-tile-header'),
   Headings: withClass('hgroup', 'nx-tile-header__headings'),

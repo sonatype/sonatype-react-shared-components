@@ -8,7 +8,7 @@ import React from 'react';
 
 import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
 import NxCollapsibleRadioSelect, {Option, Props} from '../NxCollapsibleRadioSelect';
-import NxCollapsibleItemsCounter from '../../NxCollapsibleItemsCounter';
+import Counter from '../../../Counter/Counter';
 
 import { NxTreeViewRadioSelect } from '../../../../index';
 
@@ -162,14 +162,14 @@ describe('NxCollapsibleRadioSelect', function() {
       expect(renderPropWrapper).toBeEmptyRender();
     });
 
-    it('renders <NxCollapsibleItemsCounter> with selected option name if selectedId prop is provided', function () {
+    it('renders <Counter> with selected option name if selectedId prop is provided', function () {
       const renderPropWrapper = getShallow({selectedId: 'bar'}).renderProp('renderCounter')();
-      expect(renderPropWrapper).toContainReact(<NxCollapsibleItemsCounter>Bar</NxCollapsibleItemsCounter>);
+      expect(renderPropWrapper).toContainReact(<Counter>Bar</Counter>);
     });
 
-    it('renders <NxCollapsibleItemsCounter> with selected option name even if the option id is null', function () {
+    it('renders <Counter> with selected option name even if the option id is null', function () {
       const renderPropWrapper = getShallow({selectedId: null}).renderProp('renderCounter')();
-      expect(renderPropWrapper).toContainReact(<NxCollapsibleItemsCounter>Null</NxCollapsibleItemsCounter>);
+      expect(renderPropWrapper).toContainReact(<Counter>Null</Counter>);
     });
   });
 });

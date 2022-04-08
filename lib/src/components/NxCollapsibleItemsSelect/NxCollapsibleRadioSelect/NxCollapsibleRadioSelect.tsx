@@ -9,7 +9,7 @@ import { propEq, find } from 'ramda';
 
 import { Props, propTypes, Option } from './types';
 export { Props, Option } from './types';
-import NxCollapsibleItemsCounter from '../NxCollapsibleItemsCounter';
+import Counter from '../../Counter/Counter';
 import NxRadio from '../../NxRadio/NxRadio';
 import AbstractCollapsibleItemsSelect, { generateId } from '../AbstractCollapsibleItemsSelect';
 
@@ -38,7 +38,7 @@ function NxCollapsibleRadioSelect<T extends Option>(props: Props<T>) {
 
   const renderCounter = () =>
     selectedItem
-    && selectedItem.name ? <NxCollapsibleItemsCounter>{selectedItem.name}</NxCollapsibleItemsCounter> : null;
+    && selectedItem.name ? <Counter>{selectedItem.name}</Counter> : null;
 
   return <AbstractCollapsibleItemsSelect {...props}
                                          optionTooltipGenerator={optionTooltipGenerator}

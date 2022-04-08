@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import useMergedRef from '@react-hook/merged-ref';
 import React, { forwardRef } from 'react';
 
 import { KeyboardEventHandler, useEffect, useRef } from 'react';
@@ -44,11 +45,14 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
     onKeyDown: onKeyDownProp,
     onCloseClick,
     onCloseKeyDown: onCloseKeyDownProp,
+    menuRef: menuRefProp,
     ...attrs
   } = props;
 
-  const menuRef = useRef<HTMLDivElement>(null);
-  const toggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null),
+      menuRefs = [menuRef, ...(menuRefProp ? [menuRefProp] : [])],
+      mergedMenuRef = useMergedRef(...menuRefs),
+      toggleRef = useRef<HTMLButtonElement>(null);
 
   const onKeyDown: KeyboardEventHandler<HTMLDivElement> = event => {
     if (isOpen && !disabled && event.key === 'Escape' && onToggleCollapseProp) {
@@ -138,7 +142,7 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
     <div ref={ref} className={className} onKeyDown={onKeyDown} {...attrs}>
       { renderToggleElement(toggleRef, onToggleCollapse) }
       { isOpen &&
-        <NxDropdownMenu ref={menuRef} onClosing={onMenuClosing}>
+        <NxDropdownMenu ref={mergedMenuRef} onClosing={onMenuClosing}>
           { children }
         </NxDropdownMenu>
       }
