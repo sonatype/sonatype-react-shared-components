@@ -6,18 +6,33 @@
  */
 import React, { useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { DataItem, NxSearchTransferList, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME } from '@sonatype/react-shared-components';
+import { DataItem, NxFontAwesomeIcon, NxSearchTransferList, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+  from '@sonatype/react-shared-components';
 import { useDebounceCallback } from '@react-hook/debounce';
+import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
 
-const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
-    map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
+const items: DataItem<number>[] = prepend(
+    {
+      id: 0,
+      displayName: <><NxFontAwesomeIcon icon={faArrowsAltH} /><span>Loooooooooooooooooooooooooong Name</span></>
+    },
+    map<number, DataItem<number>>(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101))
+);
 
+function getDisplayNameString({ displayName }: DataItem<number>) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return typeof displayName === 'string' ? displayName : (displayName as any).props.children[1].props.children;
+}
+
+// This function simulates a backend query that takes 3 seconds to return results. In a real implementation
+// this would typically use window.fetch, axios, or a similar REST library rather than querying in-memory data,
+// and typically this would be in another file outside of the react component
 function search(query: string): Promise<DataItem<number>[]> {
   const lowercaseQuery = query.toLowerCase(),
-      matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
+      matchingItems = filter(i => getDisplayNameString(i).toLowerCase().includes(lowercaseQuery), items);
 
   return new Promise(resolve => {
-    setTimeout(() => resolve(matchingItems), 1000);
+    setTimeout(() => resolve(matchingItems), 3000);
   });
 }
 
