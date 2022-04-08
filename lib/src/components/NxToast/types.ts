@@ -63,10 +63,10 @@ export const nxToastContainerPropTypes: PropTypes.ValidationMap<NxToastContainer
 //NxToastProvider
 export type NxToastProviderProps = {
   children: ReactNode | null,
-  isCentered?: boolean
+  isCentered?: boolean | undefined | null
 };
 
 export const nxToastProviderPropTypes: PropTypes.ValidationMap<NxToastProviderProps> = {
   children: PropTypes.any,
-  isCentered: PropTypes.bool.isRequired
+  isCentered: PropTypes.bool
 };
