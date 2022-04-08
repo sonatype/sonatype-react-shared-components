@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { forwardRef, ReactElement } from 'react';
 import classnames from 'classnames';
 import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +18,7 @@ import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 import AbstractDropdown, { AbstractDropdownRenderToggleElement } from './AbstractDropdown';
 
-const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
+const NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props, ref) {
   const {
     children,
     className,
@@ -53,7 +53,7 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
                 aria-haspopup="true"
                 aria-expanded={isOpen}>
         <span className="nx-dropdown__toggle-label">{ label }</span>
-        <NxFontAwesomeIcon icon={isOpen ? faCaretUp : faCaretDown} size="lg" />
+        <NxFontAwesomeIcon className="nx-dropdown__toggle-caret" icon={isOpen ? faCaretUp : faCaretDown} size="lg" />
       </NxButton>
     );
 
@@ -65,12 +65,13 @@ const NxDropdown: FunctionComponent<Props> = function NxDropdown(props) {
                       isOpen={isOpen}
                       disabled={disabled}
                       renderToggleElement={renderToggleElement}
+                      ref={ref}
                       { ...otherProps }
     >
       { wrappedChildren }
     </AbstractDropdown>
   );
-};
+});
 
 NxDropdown.propTypes = propTypes;
 

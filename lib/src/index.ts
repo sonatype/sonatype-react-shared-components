@@ -314,6 +314,11 @@ export { default as NxTree, ItemProps as NxTreeItemProps } from './components/Nx
 export { StatefulItemProps as NxTreeStatefulItemProps } from './components/NxTree/stateful/NxTreeStatefulItem';
 
 export { default as NxStableUniqueIdContext } from './components/NxStableUniqueIdContext/NxStableUniqueIdContext';
+export { default as NxFilterDropdown, Props as NxFilterDropdownProps }
+  from './components/NxFilterDropdown/NxFilterDropdown';
+
+export { default as NxStatefulFilterDropdown, Props as NxStatefulFilterDropdownProps }
+  from './components/NxFilterDropdown/stateful/NxStatefulFilterDropdown';
 
 export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemNotice';
 

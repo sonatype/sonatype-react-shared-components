@@ -140,6 +140,7 @@ export default function NxModalPage() {
             <NxTable.Row>
               <NxTable.Cell>Class</NxTable.Cell>
               <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Convenience Component</NxTable.Cell>
               <NxTable.Cell>Details</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Head>
@@ -147,6 +148,7 @@ export default function NxModalPage() {
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-modal-header</NxCode></NxTable.Cell>
               <NxTable.Cell>HTML <NxCode>header</NxCode> element</NxTable.Cell>
+              <NxTable.Cell><NxCode>NxModal.Header</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 The <NxCode>NxModal</NxCode> component supports any component that adheres to the
                 RSC guidelines for margin and padding. Most commonly, components will be included in
@@ -157,6 +159,7 @@ export default function NxModalPage() {
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-modal-content</NxCode></NxTable.Cell>
               <NxTable.Cell>Wrapping the modal content</NxTable.Cell>
+              <NxTable.Cell><NxCode>NxModal.Content</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 All content between the header and footer should be wrapped in a div with
                 the <NxCode>.nx-modal-content</NxCode> className. This element (and thus the modal
@@ -169,6 +172,7 @@ export default function NxModalPage() {
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-footer</NxCode></NxTable.Cell>
               <NxTable.Cell>HTML <NxCode>footer</NxCode> element</NxTable.Cell>
+              <NxTable.Cell><NxCode>NxFooter</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 Each modal should contain a footer containing buttons for various actions. At a minimum, there
                 should be a button that enables the user to close the modal. Further, the footer may contain
@@ -179,6 +183,7 @@ export default function NxModalPage() {
             <NxTable.Row>
               <NxTable.Cell><NxCode>.nx-modal-content--tabs</NxCode></NxTable.Cell>
               <NxTable.Cell>Modifier of <NxCode>.nx-modal-content</NxCode></NxTable.Cell>
+              <NxTable.Cell />
               <NxTable.Cell>
                 A modifier class that must be added to <NxCode>.nx-modal-content</NxCode> when
                 you want to use tabs within an <NxCode>NxModal</NxCode> as the sole contents of

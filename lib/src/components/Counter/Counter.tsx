@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 /* eslint react/prop-types: 0 */
-import React, {FunctionComponent, ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import classnames from 'classnames';
 
 export interface Props {
@@ -13,9 +13,7 @@ export interface Props {
   children: ReactNode;
 }
 
-const NxCollapsibleItemsCounter: FunctionComponent<Props> = function NxCollapsibleItemsCounter({isActive, children}) {
+export default function Counter({isActive, children}: Props) {
   const classes = classnames('nx-counter', {'nx-counter--active': isActive});
   return <div className={classes}>{children}</div>;
-};
-
-export default NxCollapsibleItemsCounter;
+}

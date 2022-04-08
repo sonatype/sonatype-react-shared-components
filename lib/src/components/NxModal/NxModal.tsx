@@ -8,6 +8,7 @@ import React, {FunctionComponent, KeyboardEvent, useEffect, useRef, useState} fr
 import classnames from 'classnames';
 import { pick, omit } from 'ramda';
 
+import withClass from '../../util/withClass';
 import {Props, propTypes} from './types';
 
 import './NxModal.scss';
@@ -25,7 +26,9 @@ const hasWindow = typeof window !== 'undefined',
     hasNativeModalSupport = !!(hasWindow && dynamicallyTypedWindow.HTMLDialogElement &&
       dynamicallyTypedWindow.HTMLDialogElement.prototype.showModal);
 
-const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onClose, variant, role, ...attrs }) => {
+// propTypes static analysis doesn't work with the way this component is written
+/* eslint-disable react/prop-types */
+const _NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onClose, variant, role, ...attrs }) => {
   const modalClasses = classnames('nx-modal', className, {
         'nx-modal--wide': variant === 'wide',
         'nx-modal--narrow': variant === 'narrow'
@@ -145,7 +148,11 @@ const NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onCl
   );
 };
 
-NxModal.propTypes = propTypes;
+const NxModal = Object.assign(_NxModal, {
+  propTypes,
+  Header: withClass('header', 'nx-modal-header'),
+  Content: withClass('div', 'nx-modal-content')
+});
 
 export default NxModal;
 export {Props} from './types';
