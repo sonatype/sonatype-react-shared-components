@@ -40,6 +40,7 @@ export interface ToastModel {
 export interface ToastAddModel {
   type: ToastType,
   message: string,
+  position?: string | null
 }
 
 export type ToastContextType = {
@@ -50,9 +51,11 @@ export type ToastContextType = {
 
 //NxToastContainer
 export type NxToastContainerProps = {
-  toasts: ToastModel[] | []
+  toasts: ToastModel[] | [],
+  isCentered: boolean
 };
 
 export const nxToastContainerPropTypes: PropTypes.ValidationMap<NxToastContainerProps> = {
-  toasts: PropTypes.array.isRequired
+  toasts: PropTypes.array.isRequired,
+  isCentered: PropTypes.bool.isRequired
 };

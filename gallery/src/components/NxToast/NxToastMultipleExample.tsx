@@ -10,19 +10,22 @@ import { NxButton, ToastContext, NxToastProvider } from '@sonatype/react-shared-
 
 const Child = () => {
   const context = useContext(ToastContext);
+  const handleClick = () => {
+    context?.addToast({type: 'info', message: 'New form created.'});
+
+    setTimeout(() => {
+      context?.addToast({type: 'warning', message: 'Some form fields are missing.'});
+    }, 2000);
+
+    setTimeout(() => {
+      context?.addToast({type: 'error', message: 'Error. Please try again.'});
+    }, 4000);
+  };
+
   return (
     <>
-      <NxButton onClick={() => context?.addToast({type: 'error', message: 'Error. Please try again.'})}>
-        Show error toast
-      </NxButton>
-      <NxButton onClick={() => context?.addToast({type: 'success', message: 'Policy added!'})}>
-        Show success toast
-      </NxButton>
-      <NxButton onClick={() => context?.addToast({type: 'warning', message: 'Some form fields are missing.'})}>
-        Show warning toast
-      </NxButton>
-      <NxButton onClick={() => context?.addToast({type: 'info', message: 'Logging out in 30 seconds.'})}>
-        Show info toast
+      <NxButton onClick={handleClick}>
+        Show multiple toasts
       </NxButton>
     </>
   );

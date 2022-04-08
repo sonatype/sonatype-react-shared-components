@@ -10,23 +10,26 @@ import { NxCode, NxInfoAlert, NxP, NxTable } from '@sonatype/react-shared-compon
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxToastExample from './NxToastExample';
+import NxToastCenteredExample from './NxToastCenteredExample';
+import NxToastMultipleExample from './NxToastMultipleExample';
 
-const NxToastExampleCode = require('./NxToastExample?raw');
+const NxToastExampleCode = require('./NxToastExample?raw'),
+    NxToastCenteredExampleCode = require('./NxToastCenteredExample?raw'),
+    NxToastMultipleExampleCode = require('./NxToastMultipleExample?raw');
 
 const NxToastPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        <NxCode>NxThreatIndicatorLegend</NxCode> is an element to display the legend for
-        various threat levels. The legend can be in two formats: horizontal and vertical.
+        <NxCode>NxToastProvider</NxCode> is the wrapper component to display various kinds of toasts.
+        The toasts can be either rendered on the top right or the center of the screen..
       </NxP>
       <NxInfoAlert>
-        By default, <NxCode>NxThreatIndicatorLegend</NxCode> renders a horizontal legend.
-        To render a vertical legend, the prop <NxCode>vertical</NxCode> needs to be provided.
+        By default, the toasts are rendered on the top right of the screen.
+        To have toasts that are centrally aligned, the prop <NxCode>isCentered</NxCode> needs to be provided.
       </NxInfoAlert>
       <NxP>
-        <NxCode>NxThreatIndicatorLegend</NxCode> supports displaying the legend for
-        'unspecified', 'none', 'low', 'moderate', 'severe', and 'critical' threat levels.
+        Toasts variations include 'warning', 'success', 'info' and 'error'.
       </NxP>
       <NxTable>
         <NxTable.Head>
@@ -43,12 +46,26 @@ const NxToastPage = () =>
       </NxTable>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Toast Example"
+    <GalleryExampleTile title="Toasts Example"
                         id="nx-toast-example"
                         liveExample={NxToastExample}
                         codeExamples={NxToastExampleCode}>
-      An example of a horizontal <NxCode>NxThreatIndicatorLegend</NxCode> displaying all possible
-      category level threats.
+      An example of a the different types of toasts that can be displayed.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Centered Toast Example"
+                        id="nx-toast-centered-example"
+                        liveExample={NxToastCenteredExample}
+                        codeExamples={NxToastCenteredExampleCode}>
+      An example of a toast that is centrally aligned.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Multiple Toasts Example"
+                        id="nx-toast-multiple-example"
+                        liveExample={NxToastMultipleExample}
+                        codeExamples={NxToastMultipleExampleCode}>
+      An example of displaying multiple toasts at once. This example also shows how a toast
+      appears and is stacked on top of other toasts.
     </GalleryExampleTile>
   </>;
 
