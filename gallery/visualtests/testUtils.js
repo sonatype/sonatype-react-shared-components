@@ -6,7 +6,6 @@
  */
 const puppeteer = require('puppeteer');
 
-// eslint-disable-next-line no-undef
 const pageUrl = `file://${__dirname}/../dist/index.html`;
 
 const { AxePuppeteer } = require('@axe-core/puppeteer');
