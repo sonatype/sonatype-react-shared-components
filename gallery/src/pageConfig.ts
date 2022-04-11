@@ -139,11 +139,12 @@ import NxStatefulCollapsibleMultiSelectPage
 import NxStatefulCollapsibleRadioSelectPage
   from './components/NxStatefulCollapsibleRadioSelect/NxStatefulCollapsibleRadioSelectPage';
 import NxTreePage from './components/NxTree/NxTreePage';
-import ServerSideRenderingPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingPage';
+import ServerSideRenderingUtilsPage from './jsUtilPages/ServerSideRendering/ServerSideRenderingUtilsPage';
 import NxFilterDropdownPage from './components/NxFilterDropdown/NxFilterDropdownPage';
 import NxStatefulFilterDropdownPage from './components/NxStatefulFilterDropdown/NxStatefulFilterDropdownPage';
 import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBar';
+import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -281,7 +282,7 @@ const pageConfig: PageConfig = {
   'JavaScript & TypeScript Utilities': {
     'IDUtils': { content: IdUtilPage, type: 'js' },
     'Policy Threat Level Utils': { content: PolicyThreatLevelUtilsPage, type: 'js' },
-    'Server Side Rendering Utilities': { content: ServerSideRenderingPage, type: 'js'},
+    'Server Side Rendering Utilities': { content: ServerSideRenderingUtilsPage, type: 'js'},
     'TooltipConfigProps': { content: TooltipConfigPropsPage, type: 'js' },
     'useToggle': { content: UseTogglePage, type: 'js' },
     'Validation Utils': { content: ValidationUtilsPage, type: 'js' },
@@ -294,7 +295,8 @@ const pageConfig: PageConfig = {
     'Contributing to the Gallery': { content: ContributingPage, type: 'documentation' },
     'Font-size and Line-height': { content: FontSizePage, type: 'documentation' },
     'Form Validation Guidelines': { content: FormValidationPage, type: 'documentation' },
-    'Styling Components': { content: StylingComponentsPage, type: 'documentation' }
+    'Styling Components': { content: StylingComponentsPage, type: 'documentation' },
+    'Server Side Rendering': { content: ServerSideRenderingPage, type: 'documentation' }
   }
 };
 

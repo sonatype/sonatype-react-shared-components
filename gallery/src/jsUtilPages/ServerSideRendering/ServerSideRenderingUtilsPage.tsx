@@ -13,7 +13,7 @@ import NxStableUniqueIdContextExample from './NxStableUniqueIdContextExample';
 
 const nxStableUniqueIdContextCode = require('./NxStableUniqueIdContextExample?raw');
 
-const ServerSideRenderingPage = () =>
+const ServerSideRenderingUtilsPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
@@ -53,4 +53,4 @@ const ServerSideRenderingPage = () =>
     </GalleryExampleTile>
   </>;
 
-export default ServerSideRenderingPage;
+export default ServerSideRenderingUtilsPage;
