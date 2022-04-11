@@ -4,14 +4,32 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React, { forwardRef } from 'react';
 import { faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-import React, { forwardRef } from 'react';
+import { map, range } from 'ramda';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { Props, propTypes } from './types';
+import { StepsProps, Props, propTypes } from './types';
 
 import './NxProgressBar.scss';
+
+function Steps({ max, value }: StepsProps) {
+  const indexes = range(1, max),
+      mkStepClasses = (idx: number) => classnames('nx-progress-bar__step', {
+        'nx-progress-bar__step--below-value': idx < value,
+        'nx-progress-bar__step--at-value': idx === value,
+        'nx-progress-bar__step--above-value': idx > value
+      }),
+      mkStep = (idx: number) => <span key={idx} className={mkStepClasses(idx)} />,
+      steps = map(mkStep, indexes);
+
+  return (
+    <div role="presentation" className="nx-progress-bar__step-container">
+      {steps}
+    </div>
+  );
+}
 
 const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
     function NxProgressBar(props, ref) {
@@ -23,12 +41,14 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
         labelSuccess,
         max: maxProp,
         showCounter: showCounterProp,
+        showSteps: showStepsProp,
         value,
         variant,
         ...otherAttributes
       } = props;
 
       const showCounter = showCounterProp ?? true;
+      const showSteps = !!showStepsProp;
       const showLabelElement = !(variant === 'inline' || variant === 'small' || inlineCounter);
 
       const max = maxProp ?? 100;
@@ -62,10 +82,11 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
                     value={labelError ? 0 : value}
                     max={max}
                     {...otherAttributes} />
+          { showSteps && <Steps max={max} value={labelError ? 0 : value} /> }
           {
             variant !== 'inline' && (
               <span className="nx-progress-bar__counter-and-label">
-                {counterElement}
+                {!showSteps && counterElement}
                 {labelElement}
               </span>
             )
