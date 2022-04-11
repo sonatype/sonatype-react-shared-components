@@ -23,6 +23,7 @@ import {
   NxDropdown,
   NxErrorAlert,
   NxFieldset,
+  NxFilterDropdown,
   NxFilterInput,
   NxFontAwesomeIcon,
   NxForm,
@@ -347,6 +348,11 @@ const Home: NextPage = () => {
           </NxTree.StatefulItem>
         </NxTree>
         <NxVulnerabilityDetails vulnerabilityDetails={vulnerabilityDetailsJson} />
+        <NxFilterDropdown isOpen={true}
+                          onToggleCollapse={noop}
+                          options={[{ id: 'a', displayName: 'b' }]}
+                          selectedIds={new Set(['a'])}
+                          onChange={noop} />
       </NxPageMain>
     </div>
   )

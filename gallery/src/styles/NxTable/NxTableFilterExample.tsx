@@ -15,10 +15,10 @@ const NxTableFilter = () =>
         <th className="nx-cell nx-cell--header">Country</th>
       </tr>
       <tr className="nx-table-row nx-table-row--header nx-table-row--filter-header">
-        <th className="nx-cell nx-cell--header">
+        <td className="nx-cell nx-cell--header">
           <NxFilterInput value="" placeholder="Type a name"/>
-        </th>
-        <th className="nx-cell nx-cell--header">
+        </td>
+        <td className="nx-cell nx-cell--header">
           <NxFilterInput value="" placeholder="Select a country" list="countryList"/>
           <datalist id="countryList">
             <option value="Colombia"/>
@@ -26,7 +26,7 @@ const NxTableFilter = () =>
             <option value="Germany"/>
             <option value="USA"/>
           </datalist>
-        </th>
+        </td>
       </tr>
     </thead>
     <tbody>

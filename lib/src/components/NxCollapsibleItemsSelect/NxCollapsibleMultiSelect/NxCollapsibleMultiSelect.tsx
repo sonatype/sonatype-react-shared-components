@@ -10,7 +10,7 @@ import { all, propEq, any } from 'ramda';
 import { Props, propTypes, Option } from './types';
 export { Props, Option } from './types';
 import NxCheckbox from '../../NxCheckbox/NxCheckbox';
-import MultiSelectCounter from './MultiSelectCounter';
+import MultiSelectCounter from '../../Counter/MultiSelectCounter';
 import AbstractCollapsibleItemsSelect, { generateId } from '../AbstractCollapsibleItemsSelect';
 
 function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {

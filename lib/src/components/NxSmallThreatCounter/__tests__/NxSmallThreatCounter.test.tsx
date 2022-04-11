@@ -201,4 +201,82 @@ describe('NxSmallThreatCounter', function() {
     expect(noneTooltip).toHaveProp('title', 'None');
     expect(unspecifiedTooltip).toHaveProp('title', 'Unspecified');
   });
+
+  describe('when maxDigits is Infinity', function() {
+    const defaultProps = { maxDigits: Infinity },
+        getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxSmallThreatCounter, defaultProps);
+
+    it('does not render the .nx-small-threat-counter__sizer element', function() {
+      const component = getMountedComponent({
+        criticalCount: 66,
+        severeCount: 55,
+        moderateCount: 44,
+        lowCount: 33,
+        noneCount: 22,
+        unspecifiedCount: 42
+      });
+
+      expect(component.find('.nx-small-threat-counter__sizer')).not.toExist();
+    });
+
+    it('has the .nx-small-threat-counter-container--no-max class', function() {
+      const component = getMountedComponent({ criticalCount: 0 }),
+          nonInfiniteComponent = getMountedComponent({ criticalCount: 0, maxDigits: 5 }),
+          container = component.find('.nx-small-threat-counter-container'),
+          nonInfiniteContainer = nonInfiniteComponent.find('.nx-small-threat-counter-container');
+
+      expect(container).toHaveClassName('nx-small-threat-counter-container--no-max');
+      expect(nonInfiniteContainer).not.toHaveClassName('nx-small-threat-counter-container--no-max');
+    });
+
+    it('still renders nx-small-threat-counters with the category and count', function() {
+      const component = getMountedComponent({
+        criticalCount: 66,
+        severeCount: 55,
+        moderateCount: 44,
+        lowCount: 33,
+        noneCount: 22,
+        unspecifiedCount: 42
+      });
+
+      const criticalCounter = component.find('.nx-small-threat-counter--critical');
+      expect(criticalCounter.find('.nx-small-threat-counter__count')).toHaveText('66');
+      expect(criticalCounter.find('.nx-small-threat-counter__category')).toHaveText('Critical');
+
+      const severeCounter = component.find('.nx-small-threat-counter--severe');
+      expect(severeCounter.find('.nx-small-threat-counter__count')).toHaveText('55');
+      expect(severeCounter.find('.nx-small-threat-counter__category')).toHaveText('Severe');
+
+      const moderateCounter = component.find('.nx-small-threat-counter--moderate');
+      expect(moderateCounter.find('.nx-small-threat-counter__count')).toHaveText('44');
+      expect(moderateCounter.find('.nx-small-threat-counter__category')).toHaveText('Moderate');
+
+      const lowCounter = component.find('.nx-small-threat-counter--low');
+      expect(lowCounter.find('.nx-small-threat-counter__count')).toHaveText('33');
+      expect(lowCounter.find('.nx-small-threat-counter__category')).toHaveText('Low');
+
+      const noneCounter = component.find('.nx-small-threat-counter--none');
+      expect(noneCounter.find('.nx-small-threat-counter__count')).toHaveText('22');
+      expect(noneCounter.find('.nx-small-threat-counter__category')).toHaveText('None');
+
+      const unspecifiedCounter = component.find('.nx-small-threat-counter--unspecified');
+      expect(unspecifiedCounter.find('.nx-small-threat-counter__count')).toHaveText('42');
+      expect(unspecifiedCounter.find('.nx-small-threat-counter__category')).toHaveText('Unspecified');
+    });
+
+    it('does not cut off the displayed number', function() {
+      const component = getMountedComponent({
+        criticalCount: 34592384579138,
+        severeCount: 1
+      });
+
+      const criticalCounter = component.find('.nx-small-threat-counter--critical');
+      expect(criticalCounter.find('.nx-small-threat-counter__count')).toHaveText('34592384579138');
+      expect(criticalCounter.find('.nx-small-threat-counter__category')).toHaveText('Critical');
+
+      const severeCounter = component.find('.nx-small-threat-counter--severe');
+      expect(severeCounter.find('.nx-small-threat-counter__count')).toHaveText('1');
+      expect(severeCounter.find('.nx-small-threat-counter__category')).toHaveText('Severe');
+    });
+  });
 });

@@ -30,7 +30,8 @@ import {
   NxReadOnly,
   NxTableContainer,
   NxGlobalHeader,
-  NxDescriptionList
+  NxDescriptionList,
+  NxFormRow
 } from '../SimpleComponents';
 
 describe('NxP', function() {
@@ -360,5 +361,11 @@ describe('NxDescriptionList.Term', function() {
 describe('NxDescriptionList.Description', function() {
   it('makes a <dd> tag with the nx-list__description class', function() {
     expect(shallow(<NxDescriptionList.Description/>)).toMatchSelector('dd.nx-list__description');
+  });
+});
+
+describe('NxFormRow', function() {
+  it('makes a <div> tag with the nx-form-row class', function() {
+    expect(shallow(<NxFormRow/>)).toMatchSelector('div.nx-form-row');
   });
 });

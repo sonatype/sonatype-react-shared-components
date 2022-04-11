@@ -34,9 +34,15 @@ describe('NxIconDropdown', function() {
 
   describe('Default NxIconDropdown when open', function() {
     beforeEach(async function() {
-      const [button] = await waitAndGetElements(defaultSelector + ' .nx-icon-dropdown__toggle');
+      const [button, sidebar] = await waitAndGetElements(
+        defaultSelector + ' .nx-icon-dropdown__toggle',
+        '.nx-page-sidebar'
+      );
 
       await button.click();
+
+      // hide sidebar so changes to it don't interfere with the background of the image
+      await sidebar.evaluate(el => { el.style.visibility = 'hidden'; });
     });
 
     it('has a dark grey button border with expanded menu', async function() {
