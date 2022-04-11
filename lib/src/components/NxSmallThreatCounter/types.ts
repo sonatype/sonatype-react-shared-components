@@ -4,13 +4,20 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, ValidationMap } from 'react';
+import { HTMLAttributes, ReactNode, ValidationMap } from 'react';
 import * as PropTypes from 'prop-types';
 import { ThreatLevelCategory } from '../../util/threatLevels';
 
-export interface CounterProps {
+export interface BaseCounterProps {
   category: ThreatLevelCategory;
   count: number;
+  display: ReactNode;
+  children?: ReactNode;
+}
+
+export type CounterProps = Omit<BaseCounterProps, 'children' | 'display'>;
+
+export interface MaxDigitCounterProps extends CounterProps {
   maxDigits: number;
 }
 
