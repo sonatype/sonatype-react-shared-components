@@ -4,17 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
- @use "sass:math";
+@use "sass:math";
 
 $-progress-background-color: var(--nx-swatch-indigo-95);
 $-progress-bar-color: var(--nx-swatch-teal-60);
 
 .nx-progress-bar {
   display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-areas:
-    'bar'
-    'label';
+  grid-template-columns: 1fr;
+  grid-template-areas: 'bar';
+  grid-auto-flow: row;
 
   gap: var(--nx-spacing-2x);
   justify-content: start;
@@ -22,7 +21,7 @@ $-progress-bar-color: var(--nx-swatch-teal-60);
   width: min-content;
 
   &--inline-counter {
-    grid-template-areas: 'bar label';
+    grid-auto-flow: column;
 
     .nx-progress-bar__counter {
       margin: 0;
@@ -59,7 +58,6 @@ $-progress-bar-color: var(--nx-swatch-teal-60);
 }
 
 .nx-progress-bar__counter-and-label {
-  grid-area: label;
   .nx-icon {
     margin: 0 0 0 var(--nx-spacing-2x);
   }
@@ -131,6 +129,8 @@ $-normal-height: 25px;
 }
 
 .nx-progress-bar--full {
+  width: 100%;
+
   .nx-progress-bar__progress,
   .nx-progress-bar__progress::-webkit-progress-bar {
     min-width: 300px;
