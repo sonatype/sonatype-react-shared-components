@@ -10,7 +10,7 @@ const { setupBrowser } = require('./testUtils');
 jest.setTimeout(60000);
 
 describe('nx-card', function() {
-  const { simpleTest, a11yTest, simpleTestLongElement } = setupBrowser('#/pages/Card');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Card');
 
   const rowLayoutCardSelector = '#nx-card-row-example .gallery-example-live';
 

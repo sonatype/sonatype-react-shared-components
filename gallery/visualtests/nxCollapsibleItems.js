@@ -7,8 +7,15 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCollapsibleItems', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest, waitAndGetElements, wait } =
-      setupBrowser('#/pages/Collapsible%20Items');
+  const {
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    a11yTest,
+    waitAndGetElements,
+    wait
+  } = setupBrowser('#/pages/Collapsible%20Items');
 
   const selector = '#nx-collapsible-items-example .nx-collapsible-items:nth-child(3)',
       disabledTreeViewSelector = '#nx-collapsible-items-disabled-example .nx-collapsible-items',

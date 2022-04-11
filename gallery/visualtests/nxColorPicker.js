@@ -8,15 +8,14 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxColorPicker', function() {
   const {
-    clickTest,
     focusTest,
     focusAndHoverTest,
     hoverTest,
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
-    checkScreenshot, 
-    a11yTest 
+    checkScreenshot,
+    a11yTest
   } = setupBrowser('#/pages/Color%20Picker');
 
   const selector = '.gallery-example-live .nx-color-picker',

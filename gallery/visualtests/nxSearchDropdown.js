@@ -8,10 +8,6 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxSearchDropdown', function() {
   const {
-    clickTest,
-    focusTest,
-    focusAndHoverTest,
-    hoverTest,
     simpleTest,
     waitAndGetElements,
     getPage,
@@ -35,11 +31,9 @@ describe('NxSearchDropdown', function() {
       const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
           loadingSpinnerSelector = `${basicExampleSelector} .nx-loading-spinner`,
           [component, input] = await waitAndGetElements(
-            basicExampleSelector,
-            inputSelector
+              basicExampleSelector,
+              inputSelector
           );
-
-      const { x, y } = await component.boundingBox();
 
       await scrollIntoView(component);
       await input.focus();
@@ -62,8 +56,8 @@ describe('NxSearchDropdown', function() {
       const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
           dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
           [component, input] = await waitAndGetElements(
-            basicExampleSelector,
-            inputSelector
+              basicExampleSelector,
+              inputSelector
           );
 
       await input.focus();
@@ -88,7 +82,6 @@ describe('NxSearchDropdown', function() {
       await input.focus();
       await getPage().keyboard.type('loo');
       await getPage().waitForSelector(dropdownButtonSelector);
-
     });
 
     it('looks right', async function() {
@@ -101,8 +94,8 @@ describe('NxSearchDropdown', function() {
     const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
         dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
         [component, input] = await waitAndGetElements(
-          basicExampleSelector,
-          inputSelector
+            basicExampleSelector,
+            inputSelector
         );
 
     await scrollIntoView(component);
@@ -120,8 +113,8 @@ describe('NxSearchDropdown', function() {
       const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
           emptyMessageSelector = `${basicExampleSelector} .nx-search-dropdown__empty-message`,
           [component, input] = await waitAndGetElements(
-            basicExampleSelector,
-            inputSelector
+              basicExampleSelector,
+              inputSelector
           );
 
       await scrollIntoView(component);
@@ -161,8 +154,8 @@ describe('NxSearchDropdown', function() {
     const inputSelector = `${longExampleSelector} .nx-filter-input input`,
         dropdownButtonSelector = `${longExampleSelector} .nx-dropdown-button`,
         [component, input] = await waitAndGetElements(
-          longExampleSelector,
-          inputSelector
+            longExampleSelector,
+            inputSelector
         );
 
     await scrollIntoView(component);
@@ -177,8 +170,8 @@ describe('NxSearchDropdown', function() {
     const inputSelector = `${longErrorExampleSelector} .nx-filter-input input`,
         errorSelector = `${longErrorExampleSelector} .nx-alert--load-error`,
         [component, input] = await waitAndGetElements(
-          longErrorExampleSelector,
-          inputSelector
+            longErrorExampleSelector,
+            inputSelector
         );
 
     await scrollIntoView(component);

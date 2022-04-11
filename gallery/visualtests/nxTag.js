@@ -8,31 +8,29 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxTag', function() {
   const {
-        clickTest,
-        focusTest,
-        focusAndHoverTest,
-        hoverTest,
-        simpleTest,
-        waitAndGetElements,
-        checkScreenshotCoordinates,
-        checkScreenshot,
-        scrollIntoView,
-        wait,
-        a11yTest
-      } = setupBrowser('#/pages/Tag');
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    waitAndGetElements,
+    checkScreenshotCoordinates,
+    checkScreenshot,
+    scrollIntoView,
+    wait,
+    a11yTest
+  } = setupBrowser('#/pages/Tag');
 
   describe('Basic NxTag', function() {
     const selector = '#nx-tag-example .gallery-example-live',
-      tagSelector = `${selector} .nx-selectable-color--pink`,
+        tagSelector = `${selector} .nx-selectable-color--pink`,
 
-      // expected distance from top of element to the top of its tooltip
-      tooltipHeightOffset = 21;
+        // expected distance from top of element to the top of its tooltip
+        tooltipHeightOffset = 21;
 
     it('looks right', simpleTest(selector));
 
     it('has a tooltip', async function() {
       const [tagElement, tooltipTagElement] = await waitAndGetElements(selector, tagSelector);
-
 
       // hover the tag to activate its tooltip.
       await scrollIntoView(tagElement);
