@@ -7,8 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTextLink', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } =
-      setupBrowser('#/pages/Text Link');
+  const { clickTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Text Link');
 
   describe('Default NxTextLink', function() {
     const selector = '#nx-text-link-internal-example .nx-text-link';

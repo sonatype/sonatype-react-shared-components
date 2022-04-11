@@ -60,7 +60,7 @@ describe('NxModal', function() {
 
     it('correctly renders its loading spinner', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
-          modalSelector = `#nx-modal-form-example`;
+          modalSelector = '#nx-modal-form-example';
 
       const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
@@ -146,27 +146,27 @@ describe('NxModal', function() {
       await initialBtn.click();
 
       const [customPanel, customPanelBtn] = await waitAndGetElements(
-        `${escClosingExampleSelector} .gallery-custom-expandable`,
-        `${escClosingExampleSelector} .gallery-custom-expandable button`
+          `${escClosingExampleSelector} .gallery-custom-expandable`,
+          `${escClosingExampleSelector} .gallery-custom-expandable button`
       );
       await customPanelBtn.click();
 
       const [modal1, modal1CloseBtn, dropdownToggle] = await waitAndGetElements(
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-footer .nx-btn`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal`,
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-footer .nx-btn`,
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`
       );
       await dropdownToggle.click();
 
       const [dropdownMenu, dropdownBtn] = await waitAndGetElements(
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`,
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`
       );
       await dropdownBtn.click();
 
       const [modal2, modal2CloseBtn] = await waitAndGetElements(
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal2`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal2 .nx-footer .nx-btn`
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal2`,
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal2 .nx-footer .nx-btn`
       );
 
       async function isFocused(el) {

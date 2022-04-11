@@ -15,7 +15,6 @@ describe('NxIconDropdown', function() {
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
-    checkScreenshot,
     checkScreenshotCoordinates,
     getPage,
     a11yTest
@@ -24,7 +23,6 @@ describe('NxIconDropdown', function() {
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
 
   describe('Default NxIconDropdown when closed', function() {
-
     it('has no border by default', simpleTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
     it('has a dark grey border when hovered', hoverTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
     it('has a light blue border when focused', focusTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
@@ -53,7 +51,7 @@ describe('NxIconDropdown', function() {
 
       await moveMouseAway();
 
-      const { x, y, width, height } = await targetElement.boundingBox(),
+      const { x, y } = await targetElement.boundingBox(),
           pageScrollY = await page.evaluate(() => window.scrollY),
           pageScrollX = await page.evaluate(() => window.scrollX);
 

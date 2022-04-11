@@ -8,7 +8,6 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxTree', function() {
   const {
-    clickTest,
     focusTest,
     simpleTest,
     blurElement,
@@ -20,7 +19,8 @@ describe('NxTree', function() {
 
   const nonCollapsibleExampleSelector = '#nx-tree-non-collapsible-example .nx-tree',
       collapsibleExampleSelector = '#nx-tree-collapsible-example .gallery-example-live > .nx-tree',
-      collapsibleExamplePreviousFocusableElementSelector = '#nx-tree-collapsible-example .gallery-checkered-background-toggle label',
+      collapsibleExamplePreviousFocusableElementSelector =
+        '#nx-tree-collapsible-example .gallery-checkered-background-toggle label',
       nonCollapsibleMultiTopExampleSelector = '#nx-tree-non-collapsible-multi-top-example .nx-tree',
       collapsibleMultiTopExampleSelector = '#nx-tree-collapsible-multi-top-example .nx-tree',
       noGutterExampleSelector = '#nx-tree-no-gutter-example .gallery-example-live',
@@ -46,7 +46,7 @@ describe('NxTree', function() {
   }
 
   it('looks right with a single top entry and no collapsing', async function() {
-    await simpleTest(nonCollapsibleExampleSelector)()
+    await simpleTest(nonCollapsibleExampleSelector)();
   });
 
   it('looks right with a single top entry and collapsing', simpleTest(collapsibleExampleSelector));
@@ -83,8 +83,8 @@ describe('NxTree', function() {
   describe('keyboard navigation', function() {
     it('initially focuses the first item in the tree when reached via tab', async function() {
       const [previousFocusableElement, tree] = await waitAndGetElements(
-        collapsibleExamplePreviousFocusableElementSelector,
-        collapsibleExampleSelector
+          collapsibleExamplePreviousFocusableElementSelector,
+          collapsibleExampleSelector
       );
 
       const firstItem = await tree.$('.nx-tree__item');
@@ -98,8 +98,8 @@ describe('NxTree', function() {
 
     it('moves beyond the tree when tab is pressed while part of the tree is focused', async function() {
       const [tree, firstItem] = await waitAndGetElements(
-            collapsibleExampleSelector,
-            `${collapsibleExampleSelector} .nx-tree__item`
+              collapsibleExampleSelector,
+              `${collapsibleExampleSelector} .nx-tree__item`
           ),
           page = getPage();
 
@@ -113,13 +113,13 @@ describe('NxTree', function() {
 
     it('focuses an item when that item is clicked', async function() {
       const [tree, itemOutsideTree] = await waitAndGetElements(
-            collapsibleExampleSelector,
-            collapsibleExamplePreviousFocusableElementSelector
+              collapsibleExampleSelector,
+              collapsibleExamplePreviousFocusableElementSelector
           ),
           [root, cat1, videos] = await Promise.all([
             itemWithText(tree, '/'),
             itemWithText(tree, 'cat1.jpg'),
-            itemWithText(tree, 'videos'),
+            itemWithText(tree, 'videos')
           ]),
           [rootClickTarget, cat1ClickTarget, videosClickTarget] = await Promise.all([
             clickTarget(root),
@@ -331,25 +331,26 @@ describe('NxTree', function() {
     });
 
     describe('right arrow', function() {
-      it('expands a collapsed, expandable tree item, without expanding previously collapsed subtrees', async function() {
-        const [tree] = await waitAndGetElements(collapsibleExampleSelector),
-            [root, images] = await Promise.all([
-              itemWithText(tree, '/'),
-              itemWithText(tree, 'images')
-            ]),
-            [rootCollapse, imagesCollapse] = await Promise.all([collapseTarget(root), collapseTarget(images)]),
-            page = getPage();
+      it('expands a collapsed, expandable tree item, without expanding previously collapsed subtrees',
+          async function() {
+            const [tree] = await waitAndGetElements(collapsibleExampleSelector),
+                [root, images] = await Promise.all([
+                  itemWithText(tree, '/'),
+                  itemWithText(tree, 'images')
+                ]),
+                [rootCollapse, imagesCollapse] = await Promise.all([collapseTarget(root), collapseTarget(images)]),
+                page = getPage();
 
-        await imagesCollapse.click();
-        await rootCollapse.click();
-        expect(await isFocused(root)).toBe(true);
-        expect(await hasClass(root, 'open')).toBe(false);
+            await imagesCollapse.click();
+            await rootCollapse.click();
+            expect(await isFocused(root)).toBe(true);
+            expect(await hasClass(root, 'open')).toBe(false);
 
-        await page.keyboard.press('ArrowRight');
-        expect(await isFocused(root)).toBe(true);
-        expect(await hasClass(root, 'open')).toBe(true);
-        expect(await hasClass(images, 'open')).toBe(false);
-      });
+            await page.keyboard.press('ArrowRight');
+            expect(await isFocused(root)).toBe(true);
+            expect(await hasClass(root, 'open')).toBe(true);
+            expect(await hasClass(images, 'open')).toBe(false);
+          });
 
       it('moves to the first child of an expanded tree item', async function() {
         const [tree] = await waitAndGetElements(collapsibleExampleSelector),
@@ -400,34 +401,35 @@ describe('NxTree', function() {
     });
 
     describe('left arrow', function() {
-      it('collapses an expanded, collapsible tree item, without affecting collapse state of subtrees', async function() {
-        const [tree] = await waitAndGetElements(collapsibleExampleSelector),
-            [root, images, videos] = await Promise.all([
-              itemWithText(tree, '/'),
-              itemWithText(tree, 'images'),
-              itemWithText(tree, 'videos')
-            ]),
-            [imagesCollapse, rootClick] = await Promise.all([
-              collapseTarget(images),
-              clickTarget(root)
-            ]),
-            page = getPage();
+      it('collapses an expanded, collapsible tree item, without affecting collapse state of subtrees',
+          async function() {
+            const [tree] = await waitAndGetElements(collapsibleExampleSelector),
+                [root, images, videos] = await Promise.all([
+                  itemWithText(tree, '/'),
+                  itemWithText(tree, 'images'),
+                  itemWithText(tree, 'videos')
+                ]),
+                [imagesCollapse, rootClick] = await Promise.all([
+                  collapseTarget(images),
+                  clickTarget(root)
+                ]),
+                page = getPage();
 
-        await imagesCollapse.click();
-        await rootClick.click();
-        expect(await isFocused(root)).toBe(true);
-        expect(await hasClass(root, 'open')).toBe(true);
+            await imagesCollapse.click();
+            await rootClick.click();
+            expect(await isFocused(root)).toBe(true);
+            expect(await hasClass(root, 'open')).toBe(true);
 
-        await page.keyboard.press('ArrowLeft');
-        expect(await isFocused(root)).toBe(true);
-        expect(await hasClass(root, 'open')).toBe(false);
+            await page.keyboard.press('ArrowLeft');
+            expect(await isFocused(root)).toBe(true);
+            expect(await hasClass(root, 'open')).toBe(false);
 
-        await page.keyboard.press('ArrowRight');
-        expect(await isFocused(root)).toBe(true);
-        expect(await hasClass(root, 'open')).toBe(true);
-        expect(await hasClass(images, 'open')).toBe(false);
-        expect(await hasClass(videos, 'open')).toBe(true);
-      });
+            await page.keyboard.press('ArrowRight');
+            expect(await isFocused(root)).toBe(true);
+            expect(await hasClass(root, 'open')).toBe(true);
+            expect(await hasClass(images, 'open')).toBe(false);
+            expect(await hasClass(videos, 'open')).toBe(true);
+          });
 
       it('moves to the parent of a collapsed tree item', async function() {
         const [tree] = await waitAndGetElements(collapsibleExampleSelector),
