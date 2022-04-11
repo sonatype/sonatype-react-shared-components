@@ -10,11 +10,13 @@ import { NxTable, NxCode, NxP } from '@sonatype/react-shared-components';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxProgressBarInlineExample from './NxProgressBarInlineExample';
+import NxProgressBarStepsExample from './NxProgressBarStepsExample';
 import NxProgressBarSmallExample from './NxProgressBarSmallExample';
 import NxProgressBarNormalExample from './NxProgressBarNormalExample';
 import NxProgressBarFullExample from './NxProgressBarFullExample';
 
 const nxProgressBarInlineExampleCode = require('./NxProgressBarInlineExample?raw');
+const nxProgressBarStepsExampleCode = require('./NxProgressBarStepsExample?raw');
 const nxProgressBarSmallExampleCode = require('./NxProgressBarSmallExample?raw');
 const nxProgressBarNormalExampleCode = require('./NxProgressBarNormalExample?raw');
 const nxProgressBarFullExampleCode = require('./NxProgressBarFullExample?raw');
@@ -149,6 +151,18 @@ const NxPaginationPage = () =>
               If this is set to true, the label will not be shown.
             </NxTable.Cell>
           </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>showSteps</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              boolean
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              When true, divider lines are shown within the progress bar corresponding to each step value that it
+              can have. Defaults to <NxCode>false</NxCode>. This prop should only be used with relatively small
+              values of <NxCode>max</NxCode> and is incompatible with <NxCode>inlineCounter</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
@@ -184,6 +198,13 @@ const NxPaginationPage = () =>
       Examples of "inline" variant <NxCode>NxProgressBar</NxCode> showing 0% progress,
       a partial-progress, success (100% progress), and error state progress bar.
       Notice this variant hides the percentage counter and label.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxProgressBar Steps Example"
+                        id="nx-progress-bar-steps-example"
+                        liveExample={NxProgressBarStepsExample}
+                        codeExamples={nxProgressBarStepsExampleCode}>
+      Examples of <NxCode>NxProgressBar</NxCode> using the <NxCode>showSteps</NxCode> mode.
     </GalleryExampleTile>
   </>;
 
