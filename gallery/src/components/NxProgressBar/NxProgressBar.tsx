@@ -160,7 +160,8 @@ const NxPaginationPage = () =>
             <NxTable.Cell>
               When true, divider lines are shown within the progress bar corresponding to each step value that it
               can have. Defaults to <NxCode>false</NxCode>. This prop should only be used with relatively small
-              values of <NxCode>max</NxCode> and is incompatible with <NxCode>inlineCounter</NxCode>.
+              values of <NxCode>max</NxCode> and is incompatible with <NxCode>inlineCounter</NxCode> and with the
+              "small" and "inline" values of <NxCode>variant</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
