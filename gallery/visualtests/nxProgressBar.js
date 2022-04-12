@@ -29,5 +29,9 @@ describe('NxProgressBar', function() {
     it('looks right', simpleTest(selector));
   });
 
+  describe('with steps visible', function() {
+    it('looks right', simpleTest('#nx-progress-bar-steps-example .gallery-example-live'));
+  });
+
   it('passes a11y checks', a11yTest());
 });
