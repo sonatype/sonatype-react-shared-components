@@ -74,6 +74,10 @@ $-progress-bar-color: var(--nx-swatch-teal-60);
 
 .nx-progress-bar__label-text {
   margin-left: var(--nx-spacing-2x);
+
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
 .nx-progress-bar__step-container {
