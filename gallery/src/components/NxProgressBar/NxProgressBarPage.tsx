@@ -118,13 +118,15 @@ const NxProgressBarPage = () =>
               <NxP>
                 <strong>"normal" (default): </strong>
                 The width is set to 300px.
-                Supports <NxCode>showCounter</NxCode>, <NxCode>inlineCounter</NxCode>, and label.
+                Supports <NxCode>showCounter</NxCode>, <NxCode>inlineCounter</NxCode>, <NxCode>showSteps</NxCode>, and
+                label.
               </NxP>
               <NxP>
                 <strong>"full": </strong>
                 The width will extend to the width of the container.
                 Minimum width of 300px.
-                Supports <NxCode>showCounter</NxCode>, <NxCode>inlineCounter</NxCode>, and label.
+                Supports <NxCode>showCounter</NxCode>, <NxCode>inlineCounter</NxCode>, <NxCode>showSteps</NxCode>, and
+                label.
               </NxP>
             </NxTable.Cell>
           </NxTable.Row>
