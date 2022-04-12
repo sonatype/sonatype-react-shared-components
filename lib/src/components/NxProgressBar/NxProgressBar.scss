@@ -12,6 +12,11 @@ $-progress-bar-color: var(--nx-swatch-teal-60);
 .nx-progress-bar {
   display: grid;
   grid-template-columns: 1fr;
+
+  // In many of the layout modes, there will be two grid cells: one for the bar and one for the label.
+  // However in some modes there is just the bar cell, and the location of the label cell (below or to the right)
+  // varies. Therefore only the bar cell is actually in the template. The label cell, when needed, is generated
+  // using grid auto-placement, controlled by the grid-auto-flow property
   grid-template-areas: 'bar';
   grid-auto-flow: row;
 
