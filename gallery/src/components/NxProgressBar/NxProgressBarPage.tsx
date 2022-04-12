@@ -21,7 +21,7 @@ const nxProgressBarSmallExampleCode = require('./NxProgressBarSmallExample?raw')
 const nxProgressBarNormalExampleCode = require('./NxProgressBarNormalExample?raw');
 const nxProgressBarFullExampleCode = require('./NxProgressBarFullExample?raw');
 
-const NxPaginationPage = () =>
+const NxProgressBarPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
@@ -209,4 +209,4 @@ const NxPaginationPage = () =>
     </GalleryExampleTile>
   </>;
 
-export default NxPaginationPage;
+export default NxProgressBarPage;
