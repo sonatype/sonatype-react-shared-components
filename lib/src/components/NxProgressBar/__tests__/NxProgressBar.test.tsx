@@ -169,8 +169,8 @@ describe('NxProgressBar', function() {
     it('renders all .nx-progress-bar__step elements with .nx-progress-bar__ste--above-value when labelError is set',
         function() {
           expect(
-            getMountedComponent({ showSteps: true, max: 12, value: 3, labelError: 'asdf' })
-                .find('.nx-progress-bar__step--above-value').length
+              getMountedComponent({ showSteps: true, max: 12, value: 3, labelError: 'asdf' })
+                  .find('.nx-progress-bar__step--above-value').length
           ).toBe(11);
         }
     );
