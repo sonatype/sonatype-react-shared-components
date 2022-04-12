@@ -60,6 +60,10 @@ $-progress-bar-color: var(--nx-swatch-teal-60);
 .nx-progress-bar__counter-and-label {
   .nx-icon {
     margin: 0 0 0 var(--nx-spacing-2x);
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 }
 
