@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxWarningAlert, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -17,6 +17,12 @@ const nxFontSizeScssExampleCode = require('./NxFontSizeScssExample.scss?raw');
 const NxFontSizePage = () =>
   <>
     <GalleryDescriptionTile>
+      <NxWarningAlert>
+        Deprecated. This SCSS mixin is deprecated and will be removed in a future version. In its place, the default
+        RSC font size (and many other RSC defaults) may be customized by overriding the values of the appropriate
+        <NxTextLink href="#/pages/Style%20Variables">CSS variables</NxTextLink>. Note that RSC is not tested
+        with alternative font sizes.
+      </NxWarningAlert>
       <NxP>
         <NxCode>font-size()</NxCode> is a mixin that can be applied to the <NxCode>&lt;body&gt;</NxCode> tag of
         your project to adjust the default RSC font size to better match your project. The default font size in RSC
