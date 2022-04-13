@@ -7,7 +7,7 @@
     "start": "npm-run-all lint webpack-dev-server",
     "build": "npm-run-all lint webpack copy-assets",
     "copy-assets": "cpx \"{src/index.html,src/assets/images/favicon*}\" dist",
-    "lint": "eslint '{src/**/*.{js,ts}{,x}}'",
+    "lint": "eslint 'src/**/*.{js,ts}{,x}'",
     "lint-tests": "eslint --no-eslintrc -c .eslintrc-tests \"visualtests/*.js\"",
     "webpack": "webpack --env production --mode=production",
     "webpack-dev-server": "webpack serve",
