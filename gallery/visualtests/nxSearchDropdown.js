@@ -55,10 +55,7 @@ describe('NxSearchDropdown', function() {
     beforeEach(async function() {
       const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
           dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(
-              basicExampleSelector,
-              inputSelector
-          );
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('1');
@@ -77,7 +74,7 @@ describe('NxSearchDropdown', function() {
     beforeEach(async function() {
       const inputSelector = `${basicExampleSelector} .nx-filter-input input`,
           dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(basicExampleSelector, inputSelector);
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('loo');
