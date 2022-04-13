@@ -8,34 +8,45 @@ import React from 'react';
 import classnames from 'classnames';
 import { head, repeat, tail, toUpper } from 'ramda';
 
-import { CounterProps, Props, propTypes } from './types';
+import { BaseCounterProps, MaxDigitCounterProps, CounterProps, Props, propTypes } from './types';
 export { Props } from './types';
 
 import './NxSmallThreatCounter.scss';
 import NxTooltip from '../NxTooltip/NxTooltip';
+import { ThreatLevelCategory } from '../../util/threatLevels';
 
-function Counter({ category, count, maxDigits }: CounterProps) {
+function BaseCounter({ category, count, display, children }: BaseCounterProps) {
   const categoryForDisplay = `${toUpper(head(category))}${tail(category)}`,
       className = classnames(`nx-small-threat-counter nx-small-threat-counter--${category}`, {
         'nx-small-threat-counter--zero': count === 0
-      }),
-
-      // If we want maxDigits = 3 that means we want room for three digits in addition to a plus sign so
-      // that we can show e.g. "999+"
-      overflowDisplay = repeat('9', maxDigits).concat('+').join(''),
-      maxValue = Math.pow(10, Math.floor(maxDigits)) - 1;
+      });
 
   return (
     <NxTooltip title={categoryForDisplay}>
       <div className={className}>
         {/* Ideally this would be implemented as an aria-label but that doesn't get read by ChromeVox */}
         <span className="nx-small-threat-counter__category">{categoryForDisplay}</span>
-        <span className="nx-small-threat-counter__count">{count > maxValue ? overflowDisplay : count}</span>
-        <div className="nx-small-threat-counter__sizer">
-          {overflowDisplay}
-        </div>
+        <span className="nx-small-threat-counter__count">{display}</span>
+        {children}
       </div>
     </NxTooltip>
+  );
+}
+
+function Counter({ category, count }: CounterProps) {
+  return <BaseCounter category={category} count={count} display={count} />;
+}
+
+function MaxDigitCounter({ category, count, maxDigits }: MaxDigitCounterProps) {
+  // If we want maxDigits = 3 that means we want room for three digits in addition to a plus sign so
+  // that we can show e.g. "999+"
+  const overflowDisplay = repeat('9', maxDigits).concat('+').join(''),
+      maxValue = Math.pow(10, Math.floor(maxDigits)) - 1;
+
+  return (
+    <BaseCounter category={category} count={count} display={count > maxValue ? overflowDisplay : count}>
+      <div className="nx-small-threat-counter__sizer">{overflowDisplay}</div>
+    </BaseCounter>
   );
 }
 
@@ -47,14 +58,22 @@ export default function NxSmallThreatCounter(props: Props) {
         lowCount,
         noneCount,
         unspecifiedCount,
-        maxDigits: maxDigitsProp,
+        maxDigits,
         className: classNameProp,
         ...attrs
       } = props,
-      className = classnames('nx-small-threat-counter-container', classNameProp),
-      maxDigits = maxDigitsProp || 3;
+      hasMaxDigits = maxDigits !== Infinity,
+      className = classnames('nx-small-threat-counter-container', classNameProp, {
+        'nx-small-threat-counter-container--no-max': !hasMaxDigits
+      });
 
-  if (maxDigits < 1) {
+  function renderCounter(category: ThreatLevelCategory, count: number) {
+    return hasMaxDigits ?
+      <MaxDigitCounter category={category} count={count} maxDigits={maxDigits || 3} /> :
+      <Counter category={category} count={count} />;
+  }
+
+  if (typeof maxDigits === 'number' && maxDigits < 1) {
     throw new Error('maxDigits must be positive');
   }
 
@@ -70,24 +89,12 @@ export default function NxSmallThreatCounter(props: Props) {
 
   return (
     <div className={className} { ...attrs }>
-      { typeof criticalCount === 'number' &&
-        <Counter category="critical" count={criticalCount} maxDigits={maxDigits} />
-      }
-      { typeof severeCount === 'number' &&
-        <Counter category="severe" count={severeCount} maxDigits={maxDigits} />
-      }
-      { typeof moderateCount === 'number' &&
-        <Counter category="moderate" count={moderateCount} maxDigits={maxDigits} />
-      }
-      { typeof lowCount === 'number' &&
-        <Counter category="low" count={lowCount} maxDigits={maxDigits} />
-      }
-      { typeof noneCount === 'number' &&
-        <Counter category="none" count={noneCount} maxDigits={maxDigits} />
-      }
-      { typeof unspecifiedCount === 'number' &&
-        <Counter category="unspecified" count={unspecifiedCount} maxDigits={maxDigits} />
-      }
+      { typeof criticalCount === 'number' && renderCounter('critical', criticalCount) }
+      { typeof severeCount === 'number' && renderCounter('severe', severeCount) }
+      { typeof moderateCount === 'number' && renderCounter('moderate', moderateCount) }
+      { typeof lowCount === 'number' && renderCounter('low', lowCount) }
+      { typeof noneCount === 'number' && renderCounter('none', noneCount) }
+      { typeof unspecifiedCount === 'number' && renderCounter('unspecified', unspecifiedCount) }
     </div>
   );
 }

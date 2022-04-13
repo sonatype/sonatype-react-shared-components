@@ -7,12 +7,11 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTextInput', function() {
-  const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Filter%20Input');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Filter%20Input');
 
   const simpleComponentSelector = '#nx-filter-input-simple-example .nx-filter-input',
       searchComponentSelector = '#nx-filter-input-search-example .nx-filter-input',
       disabledComponentSelector = '#nx-filter-input-disabled-example .nx-filter-input';
-
 
   describe('Simple NxFilterInput', function() {
     it('looks right', simpleTest(simpleComponentSelector));

@@ -7,8 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxThreatIndicator', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } =
-      setupBrowser('#/pages/Threat Indicator');
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Threat Indicator');
 
   const threatIndicatorsListExampleSelector = '#nx-threat-indicator-list-example .nx-list',
       threatIndicatorsTableExampleSelector = '#nx-threat-indicator-table-example .nx-table',

@@ -13,7 +13,6 @@ describe('nx-form-select', function() {
       disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
       widthSelector = '#nx-form-select-widths-example .form-select-width-variants';
 
-
   describe('Simple NxFormSelect', function() {
     it('has a dark border by default', simpleTest(selector));
 
