@@ -5,6 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
+export const generateData = (numberOfItems: number, range: [number, number]) =>
+  Array.from({ length: numberOfItems })
+      .map((_, index) => ({
+        id: `item-${index}`,
+        value: Math.floor(Math.random() * (range[1] - range[0] + 1) + range[0])
+      }));
+
 const raw = [
   ['repo1', 102],
   ['repo2', 134],

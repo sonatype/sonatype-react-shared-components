@@ -4,42 +4,79 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 import { ResponsiveLine } from '@nivo/line';
+import { NxFormSelect, NxStatefulToggle } from '@sonatype/react-shared-components';
 
 import {
-  colors,
-  legendBottom,
   axisBottom,
   axisLeft,
   baseProps,
-  yScale,
+  colors,
+  legendBottom,
+  legendRight,
+  marginsLegendBottom,
+  marginsLegendRight,
+  marginsNoLegend,
   stringXScale,
-  marginsLegendBottom
+  yScaleNotStacked,
+  yScaleStacked
 } from './common';
 
-import { DATA_WITH_STRING } from './data';
+import { generateStringData } from './data';
 
 export default function LineChartExample() {
+  const [numberOfLines, setNumberOfLine] = useState(3);
+  const [data, setData] = useState(generateStringData(numberOfLines, [0, 100]));
+  const [isStacked, setIsStacked] = useState(false);
+
+  const updateData = (lines: number) => {
+    setNumberOfLine(lines);
+    setData(generateStringData(lines, [0, 100]));
+  };
+
+  const margins = numberOfLines === 1 ?
+    marginsNoLegend : numberOfLines > 5 ?
+      marginsLegendRight : marginsLegendBottom;
+
+  const legends = numberOfLines === 1 ?
+    [] : numberOfLines > 5 ?
+      legendRight : legendBottom;
+
   return (
-    <div style={{ height: '400px' }}>
-      <ResponsiveLine data={DATA_WITH_STRING}
+    <>
+      <div>
+        <NxFormSelect onChange={(event) => updateData(parseInt(event.target.value))}>
+          <option value="1">1 line</option>
+          <option value="3">3 lines</option>
+          <option value="6">6 lines</option>
+          <option value="8">8 lines (Not Recommended)</option>
+          <option value="10">10 lines (Maximum, Not Recommended)</option>
+        </NxFormSelect>
+        <NxStatefulToggle defaultChecked={isStacked}
+                          onChange={(boolean) => setIsStacked(boolean)}>
+          Is Stacked
+        </NxStatefulToggle>
+      </div>
+      <div style={{ height: '400px' }}>
+        <ResponsiveLine data={data}
 
-                      colors={colors}
+                        colors={colors}
 
-                      margin={marginsLegendBottom}
-                      xScale={stringXScale}
-                      yScale={yScale}
+                        margin={margins}
+                        xScale={stringXScale}
+                        yScale={isStacked ? yScaleStacked : yScaleNotStacked}
 
-                      axisTop={null}
-                      axisRight={null}
-                      axisBottom={axisBottom}
-                      axisLeft={axisLeft}
+                        axisTop={null}
+                        axisRight={null}
+                        axisBottom={axisBottom}
+                        axisLeft={axisLeft}
 
-                      legends={legendBottom}
+                        legends={legends}
 
-                      { ...baseProps }
-      />
-    </div>
+                        { ...baseProps }
+        />
+      </div>
+    </>
   );
 }

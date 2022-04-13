@@ -10,7 +10,8 @@ import { LegendProps } from '@nivo/legends';
 import { LineSvgProps } from '@nivo/line';
 import { AxisProps } from '@nivo/axes';
 
-// Set of colors selected for Line Chart usage.
+// Set of colors selected
+// for Line Chart usage.
 export const colors = [
   '#008FCC',
   '#99005A',
@@ -33,7 +34,7 @@ export const colors = [
 
 const legendBase: Omit<LegendProps, 'anchor' | 'direction'> = {
   justify: false,
-  itemsSpacing: 12,
+  itemsSpacing: 8,
   itemDirection: 'left-to-right',
   itemWidth: 100,
   itemHeight: 20,
@@ -52,7 +53,7 @@ const legendBase: Omit<LegendProps, 'anchor' | 'direction'> = {
   ]
 };
 
-// Legends bottom for more than 5 items:
+// Legend aligned to the bottom for 5 or less items.
 export const legendBottom: LegendProps[] = [
   {
     anchor: 'bottom',
@@ -63,7 +64,7 @@ export const legendBottom: LegendProps[] = [
   }
 ];
 
-// Legends Right for more than 5 items:
+// Legend aligned to the right for more than 5 items:
 export const legendRight: LegendProps[] = [
   {
     anchor: 'top-right',
@@ -91,9 +92,24 @@ export const baseProps: Partial<LineSvgProps> = {
   crosshairType: 'cross'
 };
 
-export const yScale: ScaleSpec = {
+export const styleNoPoints: Partial<LineSvgProps> = {
+  // style
+  lineWidth: 3,
+  pointSize: 0,
+  pointBorderWidth: 0,
+  pointBorderColor: 'white',
+  pointLabelYOffset: -12
+};
+
+export const yScaleStacked: ScaleSpec = {
   type: 'linear',
   stacked: true,
+  reverse: false
+};
+
+export const yScaleNotStacked: ScaleSpec = {
+  type: 'linear',
+  stacked: false,
   reverse: false
 };
 
@@ -119,19 +135,19 @@ const baseAxis: Partial<AxisProps> = {
 // Date Format
 export const axisBottomDate: AxisProps = {
   format: '%b-%d',
-  legend: 'Bottom Legend',
+  legend: 'Dates',
   legendOffset: 40,
   ...baseAxis
 };
 
 export const axisBottom: AxisProps = {
-  legend: 'Bottom Legend',
+  legend: 'Y Legend',
   legendOffset: 40,
   ...baseAxis
 };
 
 export const axisLeft: AxisProps = {
-  legend: 'Left Legend',
+  legend: 'Components consumed with age < than a week',
   legendOffset: -40,
   ...baseAxis
 };

@@ -4,61 +4,38 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
+import { ResponsivePie } from '@nivo/pie';
+import { NxFormSelect } from '@sonatype/react-shared-components';
 
-import { NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-components';
+import { generateData } from './data';
 
-// import { data } from './data';
-
-import { Pie } from '@nivo/pie';
-
-const colors = [
-  '#235ECA',
-  '#C9DEFC'
-];
-
-// const LEGENDS: LegendProps[] = [
-//   {
-//     dataFrom: 'indexes',
-//     anchor: 'bottom-right',
-//     direction: 'column',
-//     itemWidth: 100,
-//     itemHeight: 20,
-//     itemsSpacing: 0,
-//     translateX: 140
-//   }
-// ];
-
-const data = [
-  {
-    id: 'a',
-    value: 40
-  },
-  {
-    id: 'b',
-    value: 60
-  }
-];
+import {
+  colors,
+  margins,
+  style
+} from './common';
 
 export default function NivoPieChartExample() {
+
+  const [numberOfPoints, setNumberOfPoints] = useState(12);
+
   return (
-    <div>
+    <>
+      <NxFormSelect defaultValue={numberOfPoints}
+                    onChange={event => setNumberOfPoints(parseInt(event.target.value))}>
+        <option value="3">3</option>
+        <option value="6">6</option>
+        <option value="12">12</option>
+      </NxFormSelect>
+
       <div style={{ height: '400px' }}>
-        <Pie data={data}
-             colors={colors}
-             cornerRadius={0}
-             innerRadius={0.5}
-             enableArcLabels={false}
-             enableArcLinkLabels={false}
-             width={100}
-             height={100}
+        <ResponsivePie data={generateData(numberOfPoints, [1, 100])}
+                       margin={margins}
+                       colors={colors}
+                       {...style}
         />
       </div>
-      <NxStatefulAccordion defaultOpen={false}>
-        <NxAccordion.Header>
-          <NxAccordion.Title>Foo</NxAccordion.Title>
-        </NxAccordion.Header>
-      </NxStatefulAccordion>
-    </div>
+    </>
   );
 }
