@@ -14,7 +14,7 @@ import './HostedVersionsSelect.scss';
 const CURRENT_VERSION = packageJson.version;
 const HOSTED_VERSIONS_JSON_URL = 'https://gallery.sonatype.dev/hosted-versions.json';
 
-const getHostedVersion = () => fetch(HOSTED_VERSIONS_JSON_URL).then((response) => {
+const getHostedVersions = () => fetch(HOSTED_VERSIONS_JSON_URL).then((response) => {
   if (!response.ok) {
     throw new Error('Failed to load hosted versions.');
   }
@@ -31,9 +31,9 @@ const HostedVersionsSelect = () => {
   useEffect(() => {
     setIsLoadingHostedVersions(true);
 
-    const loadHostedVersion = async () => {
+    const loadHostedVersions = async () => {
       try {
-        const hostedVersions = await getHostedVersion();
+        const hostedVersions = await getHostedVersions();
 
         const sortedVersions = hostedVersions.filter((v: string) => v !== 'latest').sort((a: string, b: string) => {
           const aParts = a.split('.');
@@ -58,7 +58,7 @@ const HostedVersionsSelect = () => {
       }
     };
 
-    loadHostedVersion();
+    loadHostedVersions();
   }, []);
 
   return (
