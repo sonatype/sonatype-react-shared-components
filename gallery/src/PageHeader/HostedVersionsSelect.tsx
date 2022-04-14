@@ -12,7 +12,7 @@ import packageJson from '../../package.json';
 import './HostedVersionsSelect.scss';
 
 const CURRENT_VERSION = packageJson.version;
-const HOSTED_VERSIONS_JSON_URL = 'https://gallery.sonatype.dev/versions/latest/hosted-versions.json';
+const HOSTED_VERSIONS_JSON_URL = 'https://gallery.sonatype.dev/hosted-versions.json';
 
 const getHostedVersion = () => fetch(HOSTED_VERSIONS_JSON_URL).then((response) => {
   if (!response.ok) {
@@ -34,7 +34,22 @@ const HostedVersionsSelect = () => {
     const loadHostedVersion = async () => {
       try {
         const hostedVersions = await getHostedVersion();
-        setHostedVersions(hostedVersions);
+
+        const sortedVersions = hostedVersions.filter((v: string) => v !== 'latest').sort((a: string, b: string) => {
+          const aParts = a.split('.');
+          const bParts = b.split('.');
+
+          const compareVersionPart = (index: number): number => {
+            if (aParts[index] === bParts[index]) {
+              return index + 1 > aParts.length ? 0 : compareVersionPart(index + 1);
+            }
+            return -(+aParts[index] - +bParts[index]);
+          };
+
+          return compareVersionPart(0);
+        });
+
+        setHostedVersions(sortedVersions);
         setIsLoadingHostedVersions(false);
       }
       catch {
