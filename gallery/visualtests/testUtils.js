@@ -20,7 +20,7 @@ module.exports = {
       // https://github.com/puppeteer/puppeteer/issues/3241#issuecomment-751489962
       await browser._connection.send('Browser.grantPermissions', {
         origin: pageUrl,
-        permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite'],
+        permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite']
       });
     }
 
@@ -205,6 +205,7 @@ module.exports = {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
+          await scrollIntoView(targetElement);
           await focusElement.hover();
           await checkScreenshot(targetElement);
         };
@@ -215,6 +216,7 @@ module.exports = {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
           try {
+            await scrollIntoView(targetElement);
             await focusElement.focus();
             await focusElement.hover();
             await checkScreenshot(targetElement);

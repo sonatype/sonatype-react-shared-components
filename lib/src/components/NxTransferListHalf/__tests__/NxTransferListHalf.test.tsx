@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { faArrowDown, faArrowUp, faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faArrowUp, faEdit, faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { includes } from 'ramda';
 import React from 'react';
 
@@ -237,13 +237,13 @@ describe('NxTransferListHalf', function() {
       displayName: 'bar'
     }, {
       id: 4,
-      displayName: 'foo'
+      displayName: <><NxFontAwesomeIcon icon={faEdit} />foo</>
     }, {
       id: 5,
-      displayName: 'Foo'
+      displayName: <><NxFontAwesomeIcon icon={faEdit} />Foo</>
     }, {
       id: 6,
-      displayName: 'bar'
+      displayName: <><NxFontAwesomeIcon icon={faEdit} />bar</>
     }];
 
     const getComponent = (moreProps: Partial<Props<number>>) => getMounted({ items, ...moreProps });

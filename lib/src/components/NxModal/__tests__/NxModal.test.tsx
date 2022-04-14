@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxModal, {Props, NxModalContext} from '../NxModal';
@@ -20,7 +20,7 @@ describe('NxModal', function() {
     onClose: dummyCloseHandler
   };
 
-  const getShallow = getShallowComponent(NxModal, minimalProps),
+  const getShallow = getShallowComponent<Props>(NxModal, minimalProps),
       getModal = (props?: Partial<Props>) => getShallow(props).children();
 
   it('renders a context provider around an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
@@ -203,5 +203,17 @@ describe('NxModal', function() {
       expect(document.activeElement === externalBtn).toBe(true);
       done();
     }, 100);
+  });
+});
+
+describe('NxModal.Header', function() {
+  it('makes a <header> tag with the nx-modal-header class', function() {
+    expect(shallow(<NxModal.Header/>)).toMatchSelector('header.nx-modal-header');
+  });
+});
+
+describe('NxModal.Content', function() {
+  it('makes a <div> tag with the nx-modal-content class', function() {
+    expect(shallow(<NxModal.Content/>)).toMatchSelector('div.nx-modal-content');
   });
 });

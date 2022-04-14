@@ -234,8 +234,11 @@ const NxTransferListPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>displayName</NxTable.Cell>
-              <NxTable.Cell><NxCode>string</NxCode></NxTable.Cell>
-              <NxTable.Cell>The text to display in the UI for this item</NxTable.Cell>
+              <NxTable.Cell><NxCode>ReactNode</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                The text to display in the UI for this item. In order for filtering to work properly, all text content
+                must be immediately present in the JSX itself, and not implemented by child components
+              </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>

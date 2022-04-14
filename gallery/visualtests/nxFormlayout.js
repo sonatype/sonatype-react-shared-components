@@ -21,7 +21,7 @@ describe('nx-form', function() {
   });
 
   describe('nx-form-group deprecated layout', function() {
-    const { simpleTest, a11yTest } = setupBrowser('#/pages/Form Group (HTML)');
+    const { simpleTest } = setupBrowser('#/pages/Form Group (HTML)');
 
     const selector = '#nx-form-group-deprecated-example .nx-form-group';
 
@@ -29,7 +29,7 @@ describe('nx-form', function() {
   });
 
   describe('nx-fieldset deprecated layout', function() {
-    const { simpleTest, a11yTest } = setupBrowser('#/pages/Fieldset (HTML)');
+    const { simpleTest } = setupBrowser('#/pages/Fieldset (HTML)');
 
     const selector = '#nx-fieldset-deprecated-example .nx-fieldset';
 
