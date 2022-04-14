@@ -135,7 +135,8 @@ dockerizedBuildPipeline(
   onSuccess: {
     githubStatusUpdate('success')
     if (env.BRANCH_NAME == 'main') {
-      build job:'/uxui/publish-gallery-to-s3', propagate: false, wait: false, parameters: [
+      build job:'/uxui/publish-gallery-with-versions-to-s3', propagate: false, wait: false, parameters: [
+        [$class: 'StringParameterValue', name: 'RSC_VERSION', value: "${env.VERSION}"],
         run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
       ]
     }
