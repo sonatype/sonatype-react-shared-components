@@ -35,8 +35,8 @@ describe('NxIconDropdown', function() {
   describe('Default NxIconDropdown when open', function() {
     beforeEach(async function() {
       const [button, sidebar] = await waitAndGetElements(
-        defaultSelector + ' .nx-icon-dropdown__toggle',
-        '.nx-page-sidebar'
+          defaultSelector + ' .nx-icon-dropdown__toggle',
+          '.nx-page-sidebar'
       );
 
       await button.click();

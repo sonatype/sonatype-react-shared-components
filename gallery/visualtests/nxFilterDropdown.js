@@ -28,7 +28,7 @@ describe('NxFilterDropdown', function() {
 
   const tableExampleSelector = '#nx-filter-dropdown-table-example .gallery-example-live',
       dropdownSelector = `${tableExampleSelector} .nx-filter-dropdown`,
-      toggleSelector = `${dropdownSelector} .nx-dropdown__toggle`;
+      toggleSelector = `${dropdownSelector} .nx-dropdown__toggle`,
       shortDropdownSelector = '#nx-filter-dropdown-short-example .nx-filter-dropdown',
       nonDefaultDropdownSelector = '#nx-filter-dropdown-non-default-example .nx-filter-dropdown',
       labelledDropdownSelector = '#nx-filter-dropdown-example .nx-form-group';
@@ -60,9 +60,9 @@ describe('NxFilterDropdown', function() {
 
     it('has focus, hover, and selection styles for checkboxes', async function() {
       const [dropdownEl, cb1, cb2] = await waitAndGetElements(
-        dropdownSelector,
-        `${dropdownSelector} .nx-checkbox:first-child`,
-        `${dropdownSelector} .nx-checkbox:nth-child(2)`
+          dropdownSelector,
+          `${dropdownSelector} .nx-checkbox:first-child`,
+          `${dropdownSelector} .nx-checkbox:nth-child(2)`
       );
 
       // after this cb1 should be selected and focused, cb2 should be hovered
@@ -104,8 +104,8 @@ describe('NxFilterDropdown', function() {
   describe('Short NxFilterDropdown', function() {
     it('looks right when open', async function() {
       const [dropdown, button] = await waitAndGetElements(
-        shortDropdownSelector,
-        shortDropdownSelector + ' .nx-dropdown__toggle'
+          shortDropdownSelector,
+          shortDropdownSelector + ' .nx-dropdown__toggle'
       );
 
       await button.click();
@@ -117,8 +117,8 @@ describe('NxFilterDropdown', function() {
   describe('NxFilterDropdown with custom placeholder and no Reset', function() {
     it('looks right when open', async function() {
       const [dropdown, button] = await waitAndGetElements(
-        nonDefaultDropdownSelector,
-        nonDefaultDropdownSelector + ' .nx-dropdown__toggle'
+          nonDefaultDropdownSelector,
+          nonDefaultDropdownSelector + ' .nx-dropdown__toggle'
       );
 
       await button.click();
@@ -130,8 +130,8 @@ describe('NxFilterDropdown', function() {
   describe('NxFilterDropdown with label', function() {
     it('looks right when open', async function() {
       const [formGroup, button] = await waitAndGetElements(
-        labelledDropdownSelector,
-        labelledDropdownSelector + ' .nx-dropdown__toggle'
+          labelledDropdownSelector,
+          labelledDropdownSelector + ' .nx-dropdown__toggle'
       );
 
       await button.click();
@@ -146,8 +146,8 @@ describe('NxFilterDropdown', function() {
     await button.click();
 
     const [dropdownMenu, checkbox] = await waitAndGetElements(
-      `${dropdownSelector} .nx-dropdown-menu`,
-      `${dropdownSelector} .nx-checkbox:first-child`
+        `${dropdownSelector} .nx-dropdown-menu`,
+        `${dropdownSelector} .nx-checkbox:first-child`
     );
 
     await checkbox.click();
@@ -157,8 +157,8 @@ describe('NxFilterDropdown', function() {
 
   it('closes when a click outside of the dropdown occurs', async function() {
     const [table, button] = await waitAndGetElements(
-      tableExampleSelector,
-      dropdownSelector + ' .nx-dropdown__toggle'
+        tableExampleSelector,
+        dropdownSelector + ' .nx-dropdown__toggle'
     );
 
     await scrollIntoView(table);

@@ -143,7 +143,7 @@ import ServerSideRenderingUtilsPage from './jsUtilPages/ServerSideRendering/Serv
 import NxFilterDropdownPage from './components/NxFilterDropdown/NxFilterDropdownPage';
 import NxStatefulFilterDropdownPage from './components/NxStatefulFilterDropdown/NxStatefulFilterDropdownPage';
 import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
-import NxProgressBarPage from './components/NxProgressBar/NxProgressBar';
+import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 
 const pageConfig: PageConfig = {
