@@ -24,10 +24,7 @@ describe('NxSearchTransferList', function() {
     beforeEach(async function() {
       const inputSelector = `${simpleListSelector} .nx-filter-input input`,
           dropdownButtonSelector = `${simpleListSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(
-              simpleListSelector,
-              inputSelector
-          );
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('1');

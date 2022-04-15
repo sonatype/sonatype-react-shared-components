@@ -25,7 +25,7 @@ const ColorPalettePage = () =>
         variable.
       </NxP>
       <NxWarningAlert>
-        The lime palette is deprecated and is currently an alias for the green palette.
+        The lime palette is deprecated and is currently an alias for a subset of the green palette.
       </NxWarningAlert>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>

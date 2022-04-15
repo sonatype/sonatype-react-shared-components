@@ -10,16 +10,18 @@ import { NxTable, NxCode, NxP } from '@sonatype/react-shared-components';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxProgressBarInlineExample from './NxProgressBarInlineExample';
+import NxProgressBarStepsExample from './NxProgressBarStepsExample';
 import NxProgressBarSmallExample from './NxProgressBarSmallExample';
 import NxProgressBarNormalExample from './NxProgressBarNormalExample';
 import NxProgressBarFullExample from './NxProgressBarFullExample';
 
 const nxProgressBarInlineExampleCode = require('./NxProgressBarInlineExample?raw');
+const nxProgressBarStepsExampleCode = require('./NxProgressBarStepsExample?raw');
 const nxProgressBarSmallExampleCode = require('./NxProgressBarSmallExample?raw');
 const nxProgressBarNormalExampleCode = require('./NxProgressBarNormalExample?raw');
 const nxProgressBarFullExampleCode = require('./NxProgressBarFullExample?raw');
 
-const NxPaginationPage = () =>
+const NxProgressBarPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
@@ -116,13 +118,15 @@ const NxPaginationPage = () =>
               <NxP>
                 <strong>"normal" (default): </strong>
                 The width is set to 300px.
-                Supports <NxCode>showCounter</NxCode>, <NxCode>inlineCounter</NxCode>, and label.
+                Supports <NxCode>showCounter</NxCode>, <NxCode>inlineCounter</NxCode>, <NxCode>showSteps</NxCode>, and
+                label.
               </NxP>
               <NxP>
                 <strong>"full": </strong>
                 The width will extend to the width of the container.
                 Minimum width of 300px.
-                Supports <NxCode>showCounter</NxCode>, <NxCode>inlineCounter</NxCode>, and label.
+                Supports <NxCode>showCounter</NxCode>, <NxCode>inlineCounter</NxCode>, <NxCode>showSteps</NxCode>, and
+                label.
               </NxP>
             </NxTable.Cell>
           </NxTable.Row>
@@ -147,6 +151,19 @@ const NxPaginationPage = () =>
               By default this is set to <NxCode>false</NxCode>.
               Place the percentage counter inline with the progress bar.
               If this is set to true, the label will not be shown.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>showSteps</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              boolean
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              When true, divider lines are shown within the progress bar corresponding to each step value that it
+              can have. Defaults to <NxCode>false</NxCode>. This prop should only be used with relatively small
+              values of <NxCode>max</NxCode> and is incompatible with <NxCode>inlineCounter</NxCode> and with the
+              "small" and "inline" values of <NxCode>variant</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
@@ -185,6 +202,13 @@ const NxPaginationPage = () =>
       a partial-progress, success (100% progress), and error state progress bar.
       Notice this variant hides the percentage counter and label.
     </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxProgressBar Steps Example"
+                        id="nx-progress-bar-steps-example"
+                        liveExample={NxProgressBarStepsExample}
+                        codeExamples={nxProgressBarStepsExampleCode}>
+      Examples of <NxCode>NxProgressBar</NxCode> using the <NxCode>showSteps</NxCode> mode.
+    </GalleryExampleTile>
   </>;
 
-export default NxPaginationPage;
+export default NxProgressBarPage;

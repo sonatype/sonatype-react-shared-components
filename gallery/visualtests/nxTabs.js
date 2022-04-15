@@ -46,15 +46,13 @@ describe('NxTabs', function() {
   function simpleModalTest(exampleSelector) {
     return async function() {
       const openModalBtnSelector = `${exampleSelector} button`,
-          closeModalBtnSelector =
-              `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`,
           modalSelector = `${exampleSelector} .nx-modal`;
 
       const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
       await openModalBtn.click();
 
-      const [closeModalBtn, targetElement] = await waitAndGetElements(closeModalBtnSelector, modalSelector);
+      const [targetElement] = await waitAndGetElements(modalSelector);
 
       await checkScreenshot(targetElement);
     };
