@@ -5,7 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useEffect, ChangeEventHandler, useState } from 'react';
+import { without } from 'ramda';
 import { NxFormSelect } from '@sonatype/react-shared-components';
+import compareVersions from 'compare-versions';
 
 import packageJson from '../../package.json';
 
@@ -34,20 +36,7 @@ const HostedVersionsSelect = () => {
     const loadHostedVersions = async () => {
       try {
         const hostedVersions = await getHostedVersions();
-
-        const sortedVersions = hostedVersions.filter((v: string) => v !== 'latest').sort((a: string, b: string) => {
-          const aParts = a.split('.');
-          const bParts = b.split('.');
-
-          const compareVersionPart = (index: number): number => {
-            if (aParts[index] === bParts[index]) {
-              return index + 1 > aParts.length ? 0 : compareVersionPart(index + 1);
-            }
-            return -(+aParts[index] - +bParts[index]);
-          };
-
-          return compareVersionPart(0);
-        });
+        const sortedVersions = without(['latest'], hostedVersions).sort(compareVersions).reverse();
 
         setHostedVersions(sortedVersions);
         setIsLoadingHostedVersions(false);
