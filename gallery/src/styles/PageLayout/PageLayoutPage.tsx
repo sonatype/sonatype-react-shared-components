@@ -199,15 +199,6 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/NxNexusPageHeader"><NxCode>NxNexusPageHeader</NxCode></NxTextLink>
-              </NxTable.Cell>
-              <NxTable.Cell>Component</NxTable.Cell>
-              <NxTable.Cell>Legacy</NxTable.Cell>
-              <NxTable.Cell>Yes or use alternate</NxTable.Cell>
-              <NxTable.Cell>An alternative page header intended for Sonatype's "nexus branded" products</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>
                 <NxTextLink href="#/pages/nx-system-notice"><NxCode>.nx-system-notice</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Class</NxTable.Cell>
