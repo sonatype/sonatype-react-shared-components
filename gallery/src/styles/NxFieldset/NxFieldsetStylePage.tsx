@@ -94,13 +94,13 @@ const NxFieldsetPage = () =>
     <GalleryExampleTile title="Simple Example"
                         liveExample={NxFieldsetExample}
                         codeExamples={nxFormGroupExampleCode}>
-      A simple example of an <NxCode>nx-form-group</NxCode>.
+      A simple example of an <NxCode>nx-fieldset</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Complex Example"
                         liveExample={NxFieldsetComplexExample}
                         codeExamples={nxFormGroupComplexExampleCode}>
-      An example of an <NxCode>nx-form-group</NxCode> containing a sublabel and the "Optional"
+      An example of an <NxCode>nx-fieldset</NxCode> containing a sublabel and the "Optional"
       modifier
     </GalleryExampleTile>
 
@@ -109,10 +109,10 @@ const NxFieldsetPage = () =>
                         liveExample={NxFieldsetDeprecatedExample}
                         codeExamples={nxFormGroupDeprecatedExampleCode}>
       This example show an alternative layout of the <NxCode>nx-fieldset</NxCode> internals. In this
-      layout, the <NxCode>nx-sub-label</NxCode> is inside of
+      layout, the <NxCode>.nx-sub-label</NxCode> is inside of
       the <NxCode>.nx-legend</NxCode>. This layout is deprecated since it is inconsistent with
       the way that <NxCode>.nx-sub-labels</NxCode> are used
-      within <NxCode>.nx-form-group</NxCode>.
+      within <NxCode>.nx-fieldset</NxCode>.
     </GalleryExampleTile>
   </>;
 
