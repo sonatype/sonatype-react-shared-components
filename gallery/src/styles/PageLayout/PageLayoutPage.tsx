@@ -194,7 +194,7 @@ const PageLayoutPage = () =>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Legacy</NxTable.Cell>
-              <NxTable.Cell>Yes or use alternate</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>The page header in legacy page layouts</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
