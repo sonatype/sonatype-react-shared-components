@@ -17,8 +17,8 @@ describe('nx-tile', function() {
       subsectionsTileSelector = '#nx-tile-subsections-example .nx-tile',
       subsectionsPrecedingContentTileSelector = '#nx-tile-subsections-preceding-content-example .nx-tile',
       subsectionsSubtitleTileSelector = '#nx-tile-subsections-and-subtitle-example .nx-tile',
-      dropdownActionMenuTileSelector = '#nx-tile-dropdown-actions-example .nx-tile';
-      accordionTileSelector = '#nx-tile-accordion-example .gallery-example-live';
+      dropdownActionMenuTileSelector = '#nx-tile-dropdown-actions-example .nx-tile',
+      accordionTileSelector = '#nx-tile-accordion-example .gallery-example-live',
       policyViolationIndicatorTileSelector = '#nx-tile-policy-violation-indicator-example .gallery-example-live',
       alertChildTileSelector = '#nx-tile-form-error-example .gallery-example-live';
 

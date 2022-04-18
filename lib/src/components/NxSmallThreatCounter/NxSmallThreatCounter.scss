@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use 'sass:math';
+@use '../../scss-shared/nx-text-helpers';
 
 .nx-small-threat-counter {
   $height: 25px;
@@ -33,10 +34,7 @@
 
   &__category {
     //invisible but still read by the screenreader
-    display: block;
-    overflow: hidden;
-    width: 0;
-    height: 0;
+    @include nx-text-helpers.visually-hidden;
   }
 
   // Used to set the width of the counter based on its max text content
@@ -57,4 +55,21 @@
   gap: var(--nx-spacing-2x);
   margin-left: var(--nx-spacing-2x);
   margin-right: var(--nx-spacing-2x);
+
+  &--no-max {
+    display: inline-grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+
+    .nx-small-threat-counter {
+      box-sizing: border-box;
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+
+      &--zero {
+        visibility: visible;
+      }
+    }
+  }
 }

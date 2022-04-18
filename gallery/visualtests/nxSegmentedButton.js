@@ -10,15 +10,13 @@ describe('NxSegmentedButton', function() {
   const {
     clickTest,
     focusTest,
-    focusAndHoverTest,
     hoverTest,
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
-    checkScreenshot,
     checkScreenshotCoordinates,
-    getPage
- , a11yTest } = setupBrowser('#/pages/Segmented%20Button');
+    a11yTest
+  } = setupBrowser('#/pages/Segmented%20Button');
 
   async function openDropdown(dropdownBtnSelector) {
     const [button] = await waitAndGetElements(dropdownBtnSelector);
@@ -41,7 +39,6 @@ describe('NxSegmentedButton', function() {
   describe('Primary NxButton', function() {
     const exampleSelector = '#nx-segmented-button-primary-example',
         selector = `${exampleSelector} .nx-segmented-btn:first-child`,
-        disabledSelector = `${exampleSelector} .nx-segmented-btn:last-child`,
         mainBtnSelector = `${selector} .nx-segmented-btn__main-btn`,
         dropdownBtnSelector = `${selector} .nx-segmented-btn__dropdown-btn`;
 
@@ -70,7 +67,6 @@ describe('NxSegmentedButton', function() {
   describe('Secondary NxButton', function() {
     const exampleSelector = '#nx-segmented-button-secondary-example',
         selector = `${exampleSelector} .nx-segmented-btn:first-child`,
-        disabledSelector = `${exampleSelector} .nx-segmented-btn:last-child`,
         mainBtnSelector = `${selector} .nx-segmented-btn__main-btn`,
         dropdownBtnSelector = `${selector} .nx-segmented-btn__dropdown-btn`;
 
@@ -93,7 +89,6 @@ describe('NxSegmentedButton', function() {
   describe('Tertiary NxButton', function() {
     const exampleSelector = '#nx-segmented-button-tertiary-example',
         selector = `${exampleSelector} .nx-segmented-btn:first-child`,
-        disabledSelector = `${exampleSelector} .nx-segmented-btn:last-child`,
         mainBtnSelector = `${selector} .nx-segmented-btn__main-btn`,
         dropdownBtnSelector = `${selector} .nx-segmented-btn__dropdown-btn`;
 

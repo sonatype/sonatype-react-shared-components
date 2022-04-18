@@ -33,7 +33,7 @@ export interface Props<T extends string | number = string> extends StatefulProps
 
 const matchesPropType = PropTypes.arrayOf(PropTypes.shape({
   id: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.string.isRequired]).isRequired,
-  displayName: PropTypes.string.isRequired
+  displayName: PropTypes.node.isRequired
 }).isRequired).isRequired;
 
 export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps<string | number>> = {

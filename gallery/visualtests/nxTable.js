@@ -12,7 +12,7 @@ describe('NxTable', function() {
     waitAndGetElements,
     checkScreenshot,
     getPage,
-    disableLoadingSpinnerAnimation, 
+    disableLoadingSpinnerAnimation,
     a11yTest
   } = setupBrowser('#/pages/Table');
 
@@ -28,8 +28,8 @@ describe('NxTable', function() {
     const middleRowSelector = `${clickableTableSelector} tbody tr:nth-of-type(1)`,
         [table, row] = await waitAndGetElements(clickableTableSelector, middleRowSelector);
 
-      await row.hover();
-      await checkScreenshot(table);
+    await row.hover();
+    await checkScreenshot(table);
   });
 
   it('looks right with a custom clickable row icon', simpleTest(clickableCustomIconTableSelector));
@@ -38,8 +38,8 @@ describe('NxTable', function() {
     const columnSelector = `${sortableTableSelector} thead th:first-child`,
         [table, columnHeader] = await waitAndGetElements(sortableTableSelector, columnSelector);
 
-      await columnHeader.click();
-      await checkScreenshot(table);
+    await columnHeader.click();
+    await checkScreenshot(table);
   });
 
   it('looks right when loading', async function() {
@@ -60,7 +60,7 @@ describe('NxTable', function() {
     it('looks right when scrolled down', async function() {
       const bottomRowSelector = `${tableSelector} tbody tr:last-child`,
           topRowSelector = `${tableSelector} tbody tr:first-child`,
-          [scrollableEl, bottomRowEl, topRowEl] =
+          [scrollableEl, bottomRowEl] =
               await waitAndGetElements(tableSelector, bottomRowSelector, topRowSelector);
 
       await bottomRowEl.evaluate(el => el.scrollIntoView({ block: 'center' }));

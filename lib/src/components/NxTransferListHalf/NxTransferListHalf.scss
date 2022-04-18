@@ -131,6 +131,10 @@ $-visible-item-count: 10;
   }
 }
 
+.nx-transfer-list__display-name {
+  @include nx-container-helpers.container-horizontal;
+}
+
 .nx-transfer-list__button-bar {
   border: var(--nx-border-default);
   border-left: 0;

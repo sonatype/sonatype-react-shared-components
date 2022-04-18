@@ -26,7 +26,7 @@ describe('NxModal', function() {
 
     await openModalBtn.click();
 
-    const [closeModalBtn] = await waitAndGetElements(closeModalBtnSelector);
+    await waitAndGetElements(closeModalBtnSelector);
   }
 
   function simpleModalTest(exampleSelector) {
@@ -60,13 +60,13 @@ describe('NxModal', function() {
 
     it('correctly renders its loading spinner', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
-          modalSelector = `#nx-modal-form-example`;
+          modalSelector = '#nx-modal-form-example';
 
       const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
       await openModalBtn.click();
 
-      const [modal] = await waitAndGetElements(modalSelector);
+      await waitAndGetElements(modalSelector);
 
       await disableLoadingSpinnerAnimation();
       await checkFullPageScreenshot();
@@ -75,16 +75,14 @@ describe('NxModal', function() {
     it('shows the tooltip in front of the modal', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
           submitBtnSelector =
-              `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__submit-btn`,
-          cancelBtnSelector =
-              `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__cancel-btn`;
+              `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__submit-btn`;
 
       const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
       await openModalBtn.click();
 
       // wait for submit button to appear after loading completes
-      const [submitBtn] = await waitAndGetElements(submitBtnSelector);
+      await waitAndGetElements(submitBtnSelector);
 
       await checkFullPageScreenshot();
     });
@@ -98,7 +96,7 @@ describe('NxModal', function() {
 
       await openModalBtn.click();
 
-      const [modal, checkbox] = await waitAndGetElements(modalSelector, checkboxSelector);
+      const [, checkbox] = await waitAndGetElements(modalSelector, checkboxSelector);
       await checkbox.focus();
 
       await checkFullPageScreenshot();
@@ -121,20 +119,17 @@ describe('NxModal', function() {
           openFirstModalBtnSelector = `${exampleSelector} button`,
           openSecondModalBtnSelector = `${exampleSelector} .nx-modal-backdrop .nx-btn--primary`,
           closeSecondModalBtnSelector =
-              `${exampleSelector} .nx-modal-backdrop + .nx-modal-backdrop .nx-footer .nx-btn-bar .nx-btn`,
-          closeFirstModalBtnSelector =
-              `${exampleSelector} .nx-modal-backdrop .nx-footer .nx-btn-bar .nx-btn`;
+              `${exampleSelector} .nx-modal-backdrop + .nx-modal-backdrop .nx-footer .nx-btn-bar .nx-btn`;
 
       const [openFirstModalBtn] = await waitAndGetElements(openFirstModalBtnSelector);
 
       await openFirstModalBtn.click();
 
-      const [closeFirstModalBtn, openSecondModalBtn] =
-          await waitAndGetElements(closeFirstModalBtnSelector, openSecondModalBtnSelector);
+      const [openSecondModalBtn] = await waitAndGetElements(openSecondModalBtnSelector);
 
       await openSecondModalBtn.click();
 
-      const [closeSecondModalBtn] = await waitAndGetElements(closeSecondModalBtnSelector);
+      await waitAndGetElements(closeSecondModalBtnSelector);
 
       await checkFullPageScreenshot();
     });
@@ -146,27 +141,26 @@ describe('NxModal', function() {
       await initialBtn.click();
 
       const [customPanel, customPanelBtn] = await waitAndGetElements(
-        `${escClosingExampleSelector} .gallery-custom-expandable`,
-        `${escClosingExampleSelector} .gallery-custom-expandable button`
+          `${escClosingExampleSelector} .gallery-custom-expandable`,
+          `${escClosingExampleSelector} .gallery-custom-expandable button`
       );
       await customPanelBtn.click();
 
-      const [modal1, modal1CloseBtn, dropdownToggle] = await waitAndGetElements(
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-footer .nx-btn`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`
+      const [modal1, dropdownToggle] = await waitAndGetElements(
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal`,
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown__toggle`
       );
       await dropdownToggle.click();
 
       const [dropdownMenu, dropdownBtn] = await waitAndGetElements(
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-menu`,
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal .nx-dropdown-button`
       );
       await dropdownBtn.click();
 
       const [modal2, modal2CloseBtn] = await waitAndGetElements(
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal2`,
-        `${escClosingExampleSelector} #nx-modal-esc-example-modal2 .nx-footer .nx-btn`
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal2`,
+          `${escClosingExampleSelector} #nx-modal-esc-example-modal2 .nx-footer .nx-btn`
       );
 
       async function isFocused(el) {

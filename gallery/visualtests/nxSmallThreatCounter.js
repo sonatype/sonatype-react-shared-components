@@ -10,10 +10,12 @@ describe('NxSmallThreatCounter', function() {
   const { simpleTest, a11yTest } = setupBrowser('#/pages/Small%20Threat%20Counter');
 
   const basicExampleSelector = '#nx-small-threat-counter-example .gallery-example-live',
-      customExampleSelector = '#nx-small-threat-counter-max-digits-example .gallery-example-live';
+      customExampleSelector = '#nx-small-threat-counter-max-digits-example .gallery-example-live',
+      infiniteMaxDigitsExampleSelector = '#nx-small-threat-counter-infinite-max-digits-example .gallery-example-live';
 
   it('looks correct with default maxDigits and all categories', simpleTest(basicExampleSelector));
   it('looks correct with custom maxDigits and other nearby content', simpleTest(customExampleSelector));
+  it('looks correct with infinite maxDigits', simpleTest(infiniteMaxDigitsExampleSelector));
 
   it('passes a11y checks', a11yTest());
 });

@@ -15,7 +15,8 @@ describe('NxPolicyThreatSlider', function() {
       lowerSliderSelector =
           `${exampleSelector} .nx-policy-threat-slider__value-label .MuiSlider-thumb`,
       upperSliderSelector =
-          `${exampleSelector} .nx-policy-threat-slider__value-label ~ .nx-policy-threat-slider__value-label .MuiSlider-thumb`;
+          `${exampleSelector}
+            .nx-policy-threat-slider__value-label ~ .nx-policy-threat-slider__value-label .MuiSlider-thumb`;
 
   async function dragSliderHandle(sliderElement, spaces) {
     const { mouse } = getPage(),
