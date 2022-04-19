@@ -16,8 +16,15 @@ module.exports = function(env = { production: false }) {
     new CopyModulesPlugin({
       destination: 'webpack-modules',
       includePackageJsons: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env.PRODUCTION': JSON.stringify(true)
     })
-  ] : [];
+  ] : [
+    new webpack.DefinePlugin({
+      'process.env.PRODUCTION': JSON.stringify(false)
+    })
+  ];
 
   return {
     mode: 'development',

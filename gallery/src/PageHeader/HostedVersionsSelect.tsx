@@ -14,10 +14,13 @@ import packageJson from '../../package.json';
 import './HostedVersionsSelect.scss';
 
 const CURRENT_VERSION = packageJson.version;
-const HOSTED_VERSIONS_JSON_URL = 'https://gallery.sonatype.dev/hosted-versions.json';
+const HOSTED_VERSIONS_JSON_PATH = '/hosted-versions.json';
+
+// eslint-disable-next-line no-undef
+const PRODUCTION = process.env.PRODUCTION;
 
 const getHostedVersions = async () => {
-  const response = await fetch(HOSTED_VERSIONS_JSON_URL);
+  const response = await fetch(HOSTED_VERSIONS_JSON_PATH);
 
   if (!response.ok) {
     throw new Error('Failed to load hosted versions.');
@@ -28,6 +31,7 @@ const getHostedVersions = async () => {
 
 const HostedVersionsSelect = () => {
   const [isLoadingHostedVersions, setIsLoadingHostedVersions] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [hostedVersions, setHostedVersions] = useState([CURRENT_VERSION]);
 
   useEffect(() => {
@@ -42,7 +46,7 @@ const HostedVersionsSelect = () => {
         setIsLoadingHostedVersions(false);
       }
       catch {
-        setHostedVersions([CURRENT_VERSION]);
+        setHasError(true);
         setIsLoadingHostedVersions(false);
       }
     };
@@ -52,13 +56,15 @@ const HostedVersionsSelect = () => {
 
   return (
     <div className="gallery-hosted-versions-select">
-      <label className="gallery-hosted-versions-select__label" htmlFor="gallery-hosted-versions-select">
-        Version
-      </label>
+      <span className="gallery-hosted-versions-select__version">
+        Version{' '}
+        {
+          (!PRODUCTION || hasError) && CURRENT_VERSION
+        }
+      </span>
       {
-        !isLoadingHostedVersions && (
+        PRODUCTION && !isLoadingHostedVersions && !hasError && (
           <NxStatefulDropdown className="gallery-hosted-versions-select__dropdown nx-dropdown--short"
-                              id="gallery-hosted-versions-select"
                               label={CURRENT_VERSION}
           >
             {
