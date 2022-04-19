@@ -57,10 +57,7 @@ const HostedVersionsSelect = () => {
   return (
     <div className="gallery-hosted-versions-select">
       <span className="gallery-hosted-versions-select__version">
-        Version{' '}
-        {
-          (!PRODUCTION || hasError) && CURRENT_VERSION
-        }
+        Version { (!PRODUCTION || hasError) && CURRENT_VERSION }
       </span>
       {
         PRODUCTION && !isLoadingHostedVersions && !hasError && (
