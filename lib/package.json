@@ -84,7 +84,8 @@
     "classnames": "^2.2.6",
     "fuse.js": "^6.4.6",
     "prop-types": "^15.7.2",
-    "ramda": "^0.28.0"
+    "ramda": "^0.28.0",
+    "react-use-scrollspy": "^3.0.2"
   },
   "peerDependencies": {
     "react": "^16.10.1",
