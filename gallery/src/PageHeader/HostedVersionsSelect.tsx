@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect, ChangeEventHandler, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { without } from 'ramda';
-import { NxFormSelect } from '@sonatype/react-shared-components';
+import { NxStatefulDropdown } from '@sonatype/react-shared-components';
 import compareVersions from 'compare-versions';
 
 import packageJson from '../../package.json';
@@ -26,9 +26,6 @@ const getHostedVersions = () => fetch(HOSTED_VERSIONS_JSON_URL).then((response) 
 const HostedVersionsSelect = () => {
   const [isLoadingHostedVersions, setIsLoadingHostedVersions] = useState(false);
   const [hostedVersions, setHostedVersions] = useState([CURRENT_VERSION]);
-
-  const onChange: ChangeEventHandler<HTMLSelectElement> = event =>
-    window.location.href = `/versions/${event.target.value}`;
 
   useEffect(() => {
     setIsLoadingHostedVersions(true);
@@ -57,17 +54,20 @@ const HostedVersionsSelect = () => {
       </label>
       {
         !isLoadingHostedVersions && (
-          <NxFormSelect className="gallery-hosted-versions-select__select nx-form-select--short"
-                        id="gallery-hosted-versions-select"
-                        defaultValue={CURRENT_VERSION}
-                        onChange={onChange}>
+          <NxStatefulDropdown className="gallery-hosted-versions-select__dropdown nx-dropdown--short"
+                              id="gallery-hosted-versions-select"
+                              label={CURRENT_VERSION}
+          >
             {
               hostedVersions.map(
-                  version =>
-                    <option key={version} value={version}>{version}</option>
+                  version => (
+                    <a key={version} href={`versions/${version}`} className="nx-dropdown-button">
+                      {version}
+                    </a>
+                  )
               )
             }
-          </NxFormSelect>
+          </NxStatefulDropdown>
         )
       }
     </div>
