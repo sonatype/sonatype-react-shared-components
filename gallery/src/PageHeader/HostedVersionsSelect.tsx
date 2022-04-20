@@ -40,7 +40,7 @@ const HostedVersionsSelect = () => {
     const loadHostedVersions = async () => {
       try {
         const hostedVersions = await getHostedVersions();
-        const sortedVersions = without(['latest'], hostedVersions).sort(compareVersions).reverse();
+        const sortedVersions = without(['latest'], hostedVersions).sort(pipe(compareVersions, negate));
 
         setHostedVersions(sortedVersions);
         setIsLoadingHostedVersions(false);
