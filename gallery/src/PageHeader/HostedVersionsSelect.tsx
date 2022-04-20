@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useEffect, useState } from 'react';
-import { without } from 'ramda';
+import { negate, pipe, without } from 'ramda';
 import { NxStatefulDropdown } from '@sonatype/react-shared-components';
 import compareVersions from 'compare-versions';
 
@@ -51,7 +51,9 @@ const HostedVersionsSelect = () => {
       }
     };
 
-    loadHostedVersions();
+    if (PRODUCTION) {
+      loadHostedVersions();
+    }
   }, []);
 
   return (
