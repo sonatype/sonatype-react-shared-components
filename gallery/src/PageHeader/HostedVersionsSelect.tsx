@@ -35,9 +35,9 @@ const HostedVersionsSelect = () => {
   const [hostedVersions, setHostedVersions] = useState([CURRENT_VERSION]);
 
   useEffect(() => {
-    setIsLoadingHostedVersions(true);
-
     const loadHostedVersions = async () => {
+      setIsLoadingHostedVersions(true);
+
       try {
         const hostedVersions = await getHostedVersions();
         const sortedVersions = without(['latest'], hostedVersions).sort(pipe(compareVersions, negate));
