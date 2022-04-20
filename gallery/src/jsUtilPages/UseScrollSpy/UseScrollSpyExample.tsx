@@ -14,23 +14,23 @@ export default function UseScrollSpyExample() {
         bar: useRef<HTMLElement>(null),
         baz: useRef<HTMLElement>(null)
       },
-      { scrollTo, activeRef } = useScrollSpy(scrollRefs);
+      { onScroll, scrollTo, activeSection } = useScrollSpy(scrollRefs);
 
   return (
     <>
       <div>
         <NxButton onClick={() => scrollTo('foo')}>Foo</NxButton>
-        { activeRef === 'foo' && <NxFontAwesomeIcon icon={faHandPointLeft} /> }
+        { activeSection === 'foo' && <NxFontAwesomeIcon icon={faHandPointLeft} /> }
       </div>
       <div>
         <NxButton onClick={() => scrollTo('bar')}>Bar</NxButton>
-        { activeRef === 'bar' && <NxFontAwesomeIcon icon={faHandPointLeft} /> }
+        { activeSection === 'bar' && <NxFontAwesomeIcon icon={faHandPointLeft} /> }
       </div>
       <div>
         <NxButton onClick={() => scrollTo('baz')}>Baz</NxButton>
-        { activeRef === 'baz' && <NxFontAwesomeIcon icon={faHandPointLeft} /> }
+        { activeSection === 'baz' && <NxFontAwesomeIcon icon={faHandPointLeft} /> }
       </div>
-      <div className="nx-scrollable">
+      <div onScroll={onScroll} className="nx-scrollable">
         <NxP ref={scrollRefs.foo}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mollis augue at scelerisque dictum. Nunc
           euismod ipsum a dui consectetur cursus. Curabitur efficitur risus ac lorem faucibus, nec varius velit
