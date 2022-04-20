@@ -67,7 +67,7 @@ const HostedVersionsSelect = () => {
             {
               hostedVersions.map(
                   version => (
-                    <a key={version} href={`versions/${version}`} className="nx-dropdown-button">
+                    <a key={version} href={`/versions/${version}`} className="nx-dropdown-button">
                       {version}
                     </a>
                   )
