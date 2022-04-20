@@ -17,7 +17,7 @@ const CURRENT_VERSION = packageJson.version;
 const HOSTED_VERSIONS_JSON_PATH = '/hosted-versions.json';
 
 // eslint-disable-next-line no-undef
-const PRODUCTION = process.env.PRODUCTION;
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 const getHostedVersions = async () => {
   const response = await fetch(HOSTED_VERSIONS_JSON_PATH);
@@ -51,7 +51,7 @@ const HostedVersionsSelect = () => {
       }
     };
 
-    if (PRODUCTION) {
+    if (IS_PRODUCTION) {
       loadHostedVersions();
     }
   }, []);
@@ -59,10 +59,10 @@ const HostedVersionsSelect = () => {
   return (
     <div className="gallery-hosted-versions-select">
       <span className="gallery-hosted-versions-select__version">
-        Version { (!PRODUCTION || hasError) && CURRENT_VERSION }
+        Version { (!IS_PRODUCTION || hasError) && CURRENT_VERSION }
       </span>
       {
-        PRODUCTION && !isLoadingHostedVersions && !hasError && (
+        IS_PRODUCTION && !isLoadingHostedVersions && !hasError && (
           <NxStatefulDropdown className="gallery-hosted-versions-select__dropdown nx-dropdown--short"
                               label={CURRENT_VERSION}
           >
