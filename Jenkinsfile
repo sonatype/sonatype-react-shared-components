@@ -82,9 +82,6 @@ dockerizedBuildPipeline(
       sh """
         registry=https://repo.sonatype.com/repository/npm-all/
 
-        npm install -g yarn
-        yarn set version berry
-
         cd lib
         yarn install --registry "\${registry}" --frozen-lockfile --ignore-scripts
         yarn rebuild puppeteer --registry "\${registry}" --frozen-lockfile
