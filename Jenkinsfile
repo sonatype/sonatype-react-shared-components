@@ -84,6 +84,7 @@ dockerizedBuildPipeline(
 
         cd lib
         yarn install --registry "\${registry}" --frozen-lockfile --ignore-scripts
+        yarn rebuild puppeteer --registry "\${registry}" --frozen-lockfile
         yarn test
         yarn build
         cd dist
@@ -92,6 +93,7 @@ dockerizedBuildPipeline(
 
         cd gallery
         yarn install --registry "\${registry}" --frozen-lockfile --ignore-scripts
+        yarn rebuild puppeteer --registry "\${registry}" --frozen-lockfile
 
         yarn test
         yarn build
