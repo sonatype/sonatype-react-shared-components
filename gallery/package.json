@@ -85,6 +85,9 @@
   "dependenciesMeta": {
     "puppeteer": { 
       "built": true
+    },
+    "@sonatype/react-shared-components": {
+      "built": true
     }
   }
 }
