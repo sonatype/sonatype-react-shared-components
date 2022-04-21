@@ -134,7 +134,7 @@ dockerizedBuildPipeline(
   testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
-    if (env.BRANCH_NAME == 'RSC-810_gallery-versions') {
+    if (env.BRANCH_NAME == 'main') {
       build job:'/uxui/publish-gallery-with-versions-to-s3', propagate: false, wait: false, parameters: [
         [$class: 'StringParameterValue', name: 'RSC_VERSION', value: "${env.VERSION}"],
         run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
