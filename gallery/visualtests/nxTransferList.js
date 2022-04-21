@@ -37,7 +37,7 @@ describe('NxTransferList', function() {
 
     await firstItem.hover();
 
-    const [tooltip] = await waitAndGetElements('.nx-tooltip');
+    await waitAndGetElements('.nx-tooltip');
     await wait(500);
 
     await checkScreenshot(list);

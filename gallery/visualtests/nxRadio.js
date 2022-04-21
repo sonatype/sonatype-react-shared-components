@@ -20,7 +20,6 @@ describe('NxRadio', function() {
   } = setupBrowser('#/pages/Radio');
 
   const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
-      otherRadioSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(1)',
       disabledSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(1)',
       disabledCheckedSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(2)';
 

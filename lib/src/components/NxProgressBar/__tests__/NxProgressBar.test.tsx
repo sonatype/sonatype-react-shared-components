@@ -11,7 +11,8 @@ import NxProgressBar from '../NxProgressBar';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 describe('NxProgressBar', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxProgressBar, { value: 50, label: 'test label' });
+  const getShallowComponent = enzymeUtils.getShallowComponent(NxProgressBar, { value: 50, label: 'test label' }),
+      getMountedComponent = enzymeUtils.getMountedComponent(NxProgressBar, { value: 50, label: 'test label' });
 
   it('sets the correct max and value to the progress element',
       function() {
@@ -104,6 +105,8 @@ describe('NxProgressBar', function() {
 
   it('sets the correct classname and displays the correct element based on the variant',
       function() {
+        const defaultComponent = getShallowComponent({ showCounter: true, label: 'label' });
+        const normalComponent = getShallowComponent({ variant: 'normal', showCounter: true, label: 'label' });
         const inlineComponent = getShallowComponent({ variant: 'inline', showCounter: true, label: 'label' });
         const smallComponent = getShallowComponent({ variant: 'small', showCounter: true, label: 'label' });
         const fullComponent = getShallowComponent({ variant: 'full', showCounter: true, label: 'label' });
@@ -111,17 +114,80 @@ describe('NxProgressBar', function() {
         const counterSelector = '.nx-progress-bar__counter';
         const labelTextSelector = '.nx-progress-bar__label-text';
 
+        expect(defaultComponent).toHaveClassName('nx-progress-bar--normal');
+        expect(defaultComponent).not.toHaveClassName('nx-progress-bar--undefined');
+        expect(defaultComponent.find(counterSelector)).toExist();
+        expect(defaultComponent.find(labelTextSelector)).toExist();
+
+        expect(normalComponent).toHaveClassName('nx-progress-bar--normal');
+        expect(normalComponent).not.toHaveClassName('nx-progress-bar--undefined');
+        expect(normalComponent.find(counterSelector)).toExist();
+        expect(normalComponent.find(labelTextSelector)).toExist();
+
         expect(inlineComponent).toHaveClassName('nx-progress-bar--inline');
+        expect(inlineComponent).not.toHaveClassName('nx-progress-bar--undefined');
         expect(inlineComponent.find(counterSelector)).not.toExist();
         expect(inlineComponent.find(labelTextSelector)).not.toExist();
 
         expect(smallComponent).toHaveClassName('nx-progress-bar--small');
+        expect(smallComponent).not.toHaveClassName('nx-progress-bar--undefined');
         expect(smallComponent.find(counterSelector)).toExist();
         expect(smallComponent.find(labelTextSelector)).not.toExist();
 
         expect(fullComponent).toHaveClassName('nx-progress-bar--full');
+        expect(fullComponent).not.toHaveClassName('nx-progress-bar--undefined');
         expect(fullComponent.find(counterSelector)).toExist();
         expect(fullComponent.find(labelTextSelector)).toExist();
       }
   );
+
+  describe('showSteps', function() {
+    it('adds an .nx-progress-bar__step-container when true', function() {
+      expect(getMountedComponent()).not.toContainMatchingElement('.nx-progress-bar__step-container');
+      expect(getMountedComponent({ showSteps: true })).toContainMatchingElement('.nx-progress-bar__step-container');
+    });
+
+    it('removes the .nx-progress-bar__counter when true', function() {
+      expect(getMountedComponent({ showSteps: true })).not.toContainMatchingElement('.nx-progress-bar__counter');
+    });
+
+    it('adds a number of .nx-progress-bar__step elements equal to one less than the max when true', function() {
+      expect(getMountedComponent()).not.toContainMatchingElement('.nx-progress-bar__step');
+      expect(getMountedComponent({ showSteps: true }).find('.nx-progress-bar__step').length).toBe(99);
+      expect(getMountedComponent({ showSteps: true, max: 12 }).find('.nx-progress-bar__step').length).toBe(11);
+      expect(getMountedComponent({ showSteps: true, max: 1 }).find('.nx-progress-bar__step').length).toBe(0);
+    });
+
+    it('adds the appropriate modifier class to each step depending on whether it is above, below, or at the ' +
+         'current value', function() {
+      const zeroBar = getMountedComponent({ showSteps: true, max: 12, value: 0 }),
+          partialBar = getMountedComponent({ showSteps: true, max: 12, value: 3 }),
+          fullBar = getMountedComponent({ showSteps: true, max: 12, value: 12 });
+
+      expect(zeroBar.find('.nx-progress-bar__step--below-value')).not.toExist();
+      expect(zeroBar.find('.nx-progress-bar__step--at-value')).not.toExist();
+      expect(zeroBar.find('.nx-progress-bar__step--above-value').length).toBe(11);
+
+      expect(partialBar.find('.nx-progress-bar__step--below-value').length).toBe(2);
+      expect(partialBar.find('.nx-progress-bar__step--at-value').length).toBe(1);
+      expect(partialBar.find('.nx-progress-bar__step--above-value').length).toBe(8);
+
+      // ensure correct ordering
+      expect(partialBar.find('.nx-progress-bar__step--at-value ~ .nx-progress-bar__step--below-value')).not.toExist();
+      expect(partialBar.find('.nx-progress-bar__step--above-value ~ .nx-progress-bar__step--at-value')).not.toExist();
+
+      expect(fullBar.find('.nx-progress-bar__step--below-value').length).toBe(11);
+      expect(fullBar.find('.nx-progress-bar__step--at-value')).not.toExist();
+      expect(fullBar.find('.nx-progress-bar__step--above-value')).not.toExist();
+    });
+
+    it('renders all .nx-progress-bar__step elements with .nx-progress-bar__ste--above-value when labelError is set',
+        function() {
+          expect(
+              getMountedComponent({ showSteps: true, max: 12, value: 3, labelError: 'asdf' })
+                  .find('.nx-progress-bar__step--above-value').length
+          ).toBe(11);
+        }
+    );
+  });
 });
