@@ -7,7 +7,9 @@
 .gallery-page-header {
   $logo-image-size: 40px;
 
-  box-sizing: border-box;
+  > .nx-page-header__inner {
+    align-items: center;
+  }
 
   &__home-link {
     align-items: center;
