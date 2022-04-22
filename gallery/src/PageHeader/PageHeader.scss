@@ -29,11 +29,8 @@
     height: $logo-image-size;
   }
 
-  &__info {
-    color: var(--nx-swatch-grey-30);
-  }
-
   &__name {
+    color: var(--nx-swatch-grey-30);
     font-size: 18px;
     font-weight: 600;
     margin-right: var(--nx-spacing-4x);
@@ -41,9 +38,6 @@
   }
 
   &__version {
-    font-size: 14px;
-    font-style: italic;
-    font-weight: 500;
-    min-width: max-content;
+    margin-left: auto;
   }
 }
