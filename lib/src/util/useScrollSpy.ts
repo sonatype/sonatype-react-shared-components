@@ -98,6 +98,7 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
    * Users of this hook can call this function to scroll one of the named refs to the top of the container
    */
   function scrollTo(sectionName: keyof T) {
+    resetProgrammaticScrollRefs();
     handlingProgrammaticScroll.current = true;
     sectionRefs[sectionName].current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setActiveSection(sectionName);
