@@ -23,12 +23,8 @@ type SmallestPositiveAccumulator = null | {
 };
 
 /**
- * A [transducer](https://github.com/cognitect-labs/transducers-js#transformer-protocol)
- * implementation that returns the index of the smallest positive value within a list of numbers.
- * Note that this is weakly typed because neither ramda nor the transducers-js library have typings that
- * correctly describe this type of transducer usage as far as I can tell
+ * Finds the index of the smallest positive value within a list of numbers.
  */
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 function smallestPositiveReducer(acc: SmallestPositiveAccumulator, currentValue: number): SmallestPositiveAccumulator {
   const newCurrentIndex = acc ? acc.currentIndex + 1 : 0,
       accWithIncrementedIndex = { ...acc, currentIndex: newCurrentIndex };
