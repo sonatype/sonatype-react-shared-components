@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode, NxTable, NxTile, NxH3, NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTable, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -23,10 +23,13 @@ const UseScrollSpyPage = () =>
         the visible scrolling area.
       </NxP>
 
-      <NxInfoAlert>
-        RSC's <NxCode>useScrollSpy</NxCode> is a wrapper around the
-        third-party <NxCode>react-use-scrollspy</NxCode> package.
-      </NxInfoAlert>
+      <NxP>
+        There are two related categories of elements which are relevant to this hook: the scrolling container element,
+        and some number of its descendant element which can be targeted for scroll tracking and programmatic scrolling.
+        The scrolling container element is specified by setting the <NxCode>onScroll</NxCode> callback returned from
+        this hook on that element. The targetable descendants are specified via refs which are passed in as the
+        hook's <NxCode>sectionRefs</NxCode> parameter.
+      </NxP>
 
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -43,7 +46,7 @@ const UseScrollSpyPage = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>refs</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>sectionRefs</NxCode></NxTable.Cell>
               <NxTable.Cell>Object</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
@@ -72,10 +75,18 @@ const UseScrollSpyPage = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell>activeRef</NxTable.Cell>
+              <NxTable.Cell>onScroll</NxTable.Cell>
+              <NxTable.Cell>function</NxTable.Cell>
+              <NxTable.Cell>
+                A function which must be bound to the <NxCode>onScroll</NxCode> prop of the scrolling container
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>activeSection</NxTable.Cell>
               <NxTable.Cell>string</NxTable.Cell>
               <NxTable.Cell>
-                The name (from the <NxCode>refs</NxCode> parameter) of the ref which is currently active
+                The name (from the <NxCode>sectionRefs</NxCode> parameter) of the ref which is currently the first
+                visible ref within the scrollable area
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
