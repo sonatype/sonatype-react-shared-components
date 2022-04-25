@@ -83,7 +83,7 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
       [activeSection, setActiveSection] = useState(firstSection);
 
   function scrollTo(sectionName: keyof T) {
-    sectionRefs[sectionName].current?.scrollIntoView();
+    sectionRefs[sectionName].current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   const handleScroll = useDebounceCallback(function handleScroll(container: Element) {
