@@ -6,7 +6,7 @@
  */
 import { RefObject, useState, UIEvent, useCallback, useRef } from 'react';
 import { useThrottleCallback } from '@react-hook/throttle';
-import { bind, compose, curry, keys, map, nthArg, pipe, prop, transduce, values } from 'ramda';
+import { curry, keys, last, map, pipe, prop, reduce, values } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
 
 type RefsParentType = Record<string, RefObject<HTMLElement>>;
@@ -22,9 +22,6 @@ type SmallestPositiveAccumulator = null | {
   currentIndex: number;
 };
 
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-const _transduce: any = transduce, _compose: any = compose;
-
 /**
  * A [transducer](https://github.com/cognitect-labs/transducers-js#transformer-protocol)
  * implementation that returns the index of the smallest positive value within a list of numbers.
@@ -32,37 +29,31 @@ const _transduce: any = transduce, _compose: any = compose;
  * correctly describe this type of transducer usage as far as I can tell
  */
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-function smallestPositiveTransducer(nextTransformer: any) {
-  return {
-    '@@transducer/result': pipe(prop('idx'), nextTransformer['@@transducer/result']),
-    '@@transducer/step': (acc: SmallestPositiveAccumulator, currentValue: number) => {
-      const newCurrentIndex = acc ? acc.currentIndex + 1 : 0,
-          accWithIncrementedIndex = { ...acc, currentIndex: newCurrentIndex },
-          next = bind(nextTransformer['@@transducer/step'], nextTransformer);
+function smallestPositiveReducer(acc: SmallestPositiveAccumulator, currentValue: number): SmallestPositiveAccumulator {
+  const newCurrentIndex = acc ? acc.currentIndex + 1 : 0,
+      accWithIncrementedIndex = { ...acc, currentIndex: newCurrentIndex };
 
-      // ignore null and non-positive values
-      if (!currentValue || currentValue < 0) {
-        if (acc) {
-          return next(acc, accWithIncrementedIndex);
-        }
-        else {
-          return accWithIncrementedIndex;
-        }
-      }
-      else if (acc && typeof acc.value === 'number' && acc.value < currentValue) {
-        return next(acc, accWithIncrementedIndex);
-      }
-      else {
-        const newAcc = {
-          idx: newCurrentIndex,
-          value: currentValue,
-          currentIndex: newCurrentIndex
-        };
-
-        return next(acc, newAcc);
-      }
+  // ignore null and non-positive values
+  if (!currentValue || currentValue < 0) {
+    if (acc) {
+      return accWithIncrementedIndex;
     }
-  };
+    else {
+      return accWithIncrementedIndex;
+    }
+  }
+  else if (acc && typeof acc.value === 'number' && acc.value < currentValue) {
+    return accWithIncrementedIndex;
+  }
+  else {
+    const newAcc = {
+      idx: newCurrentIndex,
+      value: currentValue,
+      currentIndex: newCurrentIndex
+    };
+
+    return newAcc;
+  }
 }
 
 /**
@@ -112,17 +103,13 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
    */
   const handleScroll = useCallback(function handleScroll(container: Element) {
     const containerBoundingBox = container.getBoundingClientRect(),
+        bottomScrollOffsets: number[] =
+            map(pipe(prop('current'), getBottomScrollOffset(containerBoundingBox)), sectionRefValues),
 
-        // a transducer that finds the first visible or partially visible section
-        transducer = _compose(
-            map(prop('current')),
-            map(getBottomScrollOffset(containerBoundingBox)),
-            smallestPositiveTransducer
-        ),
-
-        smallestPositiveBottomOffsetIndex: number =
-            _transduce(transducer, nthArg(1), null, sectionRefValues),
-        newActiveSection = sectionNames[smallestPositiveBottomOffsetIndex];
+        smallestPositiveBottomOffsetIndex = reduce(smallestPositiveReducer, null, bottomScrollOffsets)?.idx,
+        newActiveSection = smallestPositiveBottomOffsetIndex != null ?
+            sectionNames[smallestPositiveBottomOffsetIndex] :
+            last(sectionNames) as keyof T; // assert that sectionNames is non-empty, basically
 
     if (handlingProgrammaticScroll.current) {
       if (activeSection === newActiveSection) {
