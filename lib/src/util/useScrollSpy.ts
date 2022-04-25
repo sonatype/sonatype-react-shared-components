@@ -6,7 +6,7 @@
  */
 import { RefObject, useState, UIEvent, useCallback } from 'react';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { bind, compose, curry, map, nthArg, pipe, prop, transduce, values } from 'ramda';
+import { bind, compose, curry, keys, map, nthArg, pipe, prop, transduce, values } from 'ramda';
 
 type RefsParentType = Record<string, RefObject<HTMLElement>>;
 
@@ -79,7 +79,9 @@ const getBottomScrollOffset = curry(
 );
 
 export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
-  const firstSection = Object.keys(sectionRefs)[0],
+  const sectionNames = keys(sectionRefs),
+      sectionRefValues = values(sectionRefs),
+      firstSection = sectionNames[0],
       [activeSection, setActiveSection] = useState(firstSection);
 
   function scrollTo(sectionName: keyof T) {
@@ -97,10 +99,10 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
         ),
 
         smallestPositiveBottomOffsetIndex: number =
-            _transduce(transducer, nthArg(1), null, values(sectionRefs));
+            _transduce(transducer, nthArg(1), null, sectionRefValues);
 
-    setActiveSection(Object.keys(sectionRefs)[smallestPositiveBottomOffsetIndex]);
-  }, [...Object.keys(sectionRefs), ...Object.values(sectionRefs)]);
+    setActiveSection(sectionNames[smallestPositiveBottomOffsetIndex]);
+  }, [...sectionNames, ...sectionRefValues]);
 
   const debouncedHandleScroll = useDebounceCallback(handleScroll, 100);
 
