@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { RefObject, useState, UIEvent } from 'react';
+import { RefObject, useState, UIEvent, useCallback } from 'react';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { bind, compose, curry, map, nthArg, pipe, prop, transduce, values } from 'ramda';
 
@@ -86,7 +86,7 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
     sectionRefs[sectionName].current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  const handleScroll = useDebounceCallback(function handleScroll(container: Element) {
+  const handleScroll = useCallback(function handleScroll(container: Element) {
     const containerBoundingBox = container.getBoundingClientRect(),
 
         // a transducer that finds the first visible or partially visible section
@@ -100,13 +100,15 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
             _transduce(transducer, nthArg(1), null, values(sectionRefs));
 
     setActiveSection(Object.keys(sectionRefs)[smallestPositiveBottomOffsetIndex]);
-  }, 100);
+  }, [...Object.keys(sectionRefs), ...Object.values(sectionRefs)]);
 
-  function onScroll(evt: UIEvent) {
+  const debouncedHandleScroll = useDebounceCallback(handleScroll, 100);
+
+  const onScroll = useCallback(function onScroll(evt: UIEvent) {
     // Note: this event object is reused within react for performance reasons and so currentTarget must be accessed
     // synchronously rather than within the debounced logic
-    handleScroll(evt.currentTarget);
-  }
+    debouncedHandleScroll(evt.currentTarget);
+  }, [debouncedHandleScroll]);
 
   return { onScroll, scrollTo, activeSection };
 }
