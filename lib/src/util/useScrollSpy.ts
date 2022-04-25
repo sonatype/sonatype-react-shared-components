@@ -74,8 +74,13 @@ const getBottomScrollOffset = curry(
 
 export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
   const sectionNames = keys(sectionRefs),
-      sectionRefValues = values(sectionRefs),
-      firstSection = sectionNames[0],
+      sectionRefValues = values(sectionRefs);
+
+  if (sectionNames.length === 0) {
+    throw new Error('sectionRefs must not be empty');
+  }
+
+  const firstSection = sectionNames[0],
       [activeSection, setActiveSection] = useState(firstSection),
 
       /*
