@@ -4,11 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { RefObject, useState, UIEvent, useCallback } from 'react';
-import { useDebounceCallback } from '@react-hook/debounce';
+import { RefObject, useState, UIEvent, useCallback, useRef } from 'react';
+import { useThrottleCallback } from '@react-hook/throttle';
 import { bind, compose, curry, keys, map, nthArg, pipe, prop, transduce, values } from 'ramda';
+import { useDebounceCallback } from '@react-hook/debounce';
 
 type RefsParentType = Record<string, RefObject<HTMLElement>>;
+
+const SCROLL_CHECKS_PER_SECOND = 10;
 
 type SmallestPositiveAccumulator = null | {
   // these two properties store information about the smallest value found so far: what it was and where it was found
@@ -82,12 +85,31 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
   const sectionNames = keys(sectionRefs),
       sectionRefValues = values(sectionRefs),
       firstSection = sectionNames[0],
-      [activeSection, setActiveSection] = useState(firstSection);
+      [activeSection, setActiveSection] = useState(firstSection),
 
+      /*
+       * The following refs help track whether we think a programmatic scroll initiated by scrollTo is
+       * still in progress. We use the following criteria to determine when such a programmatic scroll has stopped:
+       * 1. Is the scroll still moving in the same direction?
+       * 2. Has it been more than a tenth of a second since we received a scroll event?
+       * 3. Have we reached the ref that the programmatic scroll was destined for?
+       */
+      handlingProgrammaticScroll = useRef(false),
+      programmaticScrollDirection = useRef<'down' | 'up' | null>(null),
+      previousScrollTop = useRef<number | null>(null);
+
+  /**
+   * Users of this hook can call this function to scroll one of the named refs to the top of the container
+   */
   function scrollTo(sectionName: keyof T) {
+    handlingProgrammaticScroll.current = true;
     sectionRefs[sectionName].current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setActiveSection(sectionName);
   }
 
+  /**
+   * Check the current scroll position and update activeSection accordingly.
+   */
   const handleScroll = useCallback(function handleScroll(container: Element) {
     const containerBoundingBox = container.getBoundingClientRect(),
 
@@ -99,18 +121,86 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
         ),
 
         smallestPositiveBottomOffsetIndex: number =
-            _transduce(transducer, nthArg(1), null, sectionRefValues);
+            _transduce(transducer, nthArg(1), null, sectionRefValues),
+        newActiveSection = sectionNames[smallestPositiveBottomOffsetIndex];
 
-    setActiveSection(sectionNames[smallestPositiveBottomOffsetIndex]);
-  }, [...sectionNames, ...sectionRefValues]);
+    if (handlingProgrammaticScroll.current) {
+      if (activeSection === newActiveSection) {
+        resetProgrammaticScrollRefs();
+      }
+    }
+    else {
+      setActiveSection(newActiveSection);
+    }
+  }, [activeSection, ...sectionNames, ...sectionRefValues]);
 
-  const debouncedHandleScroll = useDebounceCallback(handleScroll, 100);
+  /**
+   * Reset the refs that track programmatic scroll status and return whether or not a programmatic
+   * scroll was in-progress
+   */
+  function resetProgrammaticScrollRefs() {
+    const wasHandlingProgrammaticScroll = handlingProgrammaticScroll.current;
 
+    handlingProgrammaticScroll.current = false;
+    programmaticScrollDirection.current = null;
+    previousScrollTop.current = null;
+
+    return wasHandlingProgrammaticScroll;
+  }
+
+  /**
+   * Reset the refs that track programmatic scroll status and, if a programmatic scroll was in-progress, call
+   * handleScroll in order to update activeSection
+   */
+  const endProgrammaticScroll = useCallback(function endProgrammaticScroll(container: Element) {
+    const wasHandlingProgrammaticScroll = resetProgrammaticScrollRefs();
+
+    if (wasHandlingProgrammaticScroll) {
+      handleScroll(container);
+    }
+  }, [handleScroll]);
+
+  // A version of handleScroll that only executes up to once every tenth of a second, and a version of
+  // endProgrammaticScroll that only executes after calls to it have ceased for at least a tenth of a second
+  const throttledHandleScroll = useThrottleCallback(handleScroll, SCROLL_CHECKS_PER_SECOND),
+      debouncedEndProgrammaticScroll = useDebounceCallback(endProgrammaticScroll, 1000 / SCROLL_CHECKS_PER_SECOND);
+
+  /**
+   * Listener that the hook caller should attach to the scroll container's onScroll prop
+   */
   const onScroll = useCallback(function onScroll(evt: UIEvent) {
+    if (handlingProgrammaticScroll.current) {
+      const { scrollTop } = evt.currentTarget;
+
+      if (previousScrollTop.current) {
+        if (programmaticScrollDirection.current === 'down' && previousScrollTop.current > scrollTop) {
+          // not going down anymore, programmatic scroll must be over/stopped by user
+          resetProgrammaticScrollRefs();
+        }
+        else if (programmaticScrollDirection.current === 'up' && previousScrollTop.current < scrollTop) {
+          // not going up anymore, programmatic scroll must be over/stopped by user
+          resetProgrammaticScrollRefs();
+        }
+        else {
+          if (programmaticScrollDirection.current === null) {
+            programmaticScrollDirection.current = previousScrollTop.current < scrollTop ? 'down' : 'up';
+          }
+
+          previousScrollTop.current = scrollTop;
+        }
+      }
+      else {
+        previousScrollTop.current = scrollTop;
+      }
+    }
+
     // Note: this event object is reused within react for performance reasons and so currentTarget must be accessed
-    // synchronously rather than within the debounced logic
-    debouncedHandleScroll(evt.currentTarget);
-  }, [debouncedHandleScroll]);
+    // synchronously rather than within the throttled logic
+    throttledHandleScroll(evt.currentTarget);
+
+    // after scroll events stop for a tenth of a second, assume any current programmatic scroll has ceased
+    debouncedEndProgrammaticScroll(evt.currentTarget);
+  }, [throttledHandleScroll]);
 
   return { onScroll, scrollTo, activeSection };
 }
