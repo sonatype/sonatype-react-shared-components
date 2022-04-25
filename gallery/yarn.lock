@@ -911,6 +911,7 @@ __metadata:
     axios: ^0.21.1
     chromedriver: ^88.0.0
     classnames: ^2.2.6
+    compare-versions: ^4.1.3
     copy-modules-webpack-plugin: ^2.2.1
     core-js: ^3.8.3
     cpx: ^1.5.0
@@ -946,8 +947,6 @@ __metadata:
     webpack-cli: ^4.9.2
     webpack-dev-server: ^3.11.2
   dependenciesMeta:
-    "@sonatype/react-shared-components":
-      built: true
     puppeteer:
       built: true
   languageName: unknown
@@ -3028,6 +3027,13 @@ __metadata:
   version: 7.0.0
   resolution: "commander@npm:7.0.0"
   checksum: 3e264be8d7c0253120836e9426332234d488311462f5910ddcbf1fe34514aee3bf959454e9f6ee7570151472d375f94bcf35376f9f3f34edf7fb415820659905
+  languageName: node
+  linkType: hard
+
+"compare-versions@npm:^4.1.3":
+  version: 4.1.3
+  resolution: "compare-versions@npm:4.1.3"
+  checksum: 54460756ab2d62f8a9d672db249b248fec7ca41c3e8ed242925e2f2257793ad3e83cecb2cdfd60b46a3aabc962a3a4cbf37a4b928c8f30517822d2bde937a3d1
   languageName: node
   linkType: hard
 
