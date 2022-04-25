@@ -19,8 +19,8 @@ type SmallestPositiveAccumulator = null | {
   currentIndex: number;
 };
 
-const _transduce: any = transduce,
-    _compose: any = compose;
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+const _transduce: any = transduce, _compose: any = compose;
 
 /**
  * A [transducer](https://github.com/cognitect-labs/transducers-js#transformer-protocol)
@@ -28,6 +28,7 @@ const _transduce: any = transduce,
  * Note that this is weakly typed because neither ramda nor the transducers-js library have typings that
  * correctly describe this type of transducer usage as far as I can tell
  */
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 function smallestPositiveTransducer(nextTransformer: any) {
   return {
     '@@transducer/result': pipe(prop('idx'), nextTransformer['@@transducer/result']),
@@ -66,15 +67,15 @@ function smallestPositiveTransducer(nextTransformer: any) {
  * taking into account current scroll position
  */
 const getBottomScrollOffset = curry(
-  function getBottomScrollOffset(containerBoundingBox: DOMRect, el: Element | null): number | null {
-    if (el) {
-      const boundingBox = el.getBoundingClientRect();
-      return boundingBox.bottom - containerBoundingBox.top;
+    function getBottomScrollOffset(containerBoundingBox: DOMRect, el: Element | null): number | null {
+      if (el) {
+        const boundingBox = el.getBoundingClientRect();
+        return boundingBox.bottom - containerBoundingBox.top;
+      }
+      else {
+        return null;
+      }
     }
-    else {
-      return null;
-    }
-  }
 );
 
 export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
@@ -90,20 +91,19 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
 
         // a transducer that finds the first visible or partially visible section
         transducer = _compose(
-          map(prop('current')),
-          map(getBottomScrollOffset(containerBoundingBox)),
-          smallestPositiveTransducer
+            map(prop('current')),
+            map(getBottomScrollOffset(containerBoundingBox)),
+            smallestPositiveTransducer
         ),
 
         smallestPositiveBottomOffsetIndex: number =
             _transduce(transducer, nthArg(1), null, values(sectionRefs));
 
-    console.log('index', smallestPositiveBottomOffsetIndex);
     setActiveSection(Object.keys(sectionRefs)[smallestPositiveBottomOffsetIndex]);
   }, 100);
 
   function onScroll(evt: UIEvent) {
-    // Note: this event object is reused within react for performance reasons and so currentTarget must be accessed 
+    // Note: this event object is reused within react for performance reasons and so currentTarget must be accessed
     // synchronously rather than within the debounced logic
     handleScroll(evt.currentTarget);
   }
