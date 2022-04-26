@@ -81,9 +81,12 @@ dockerizedBuildPipeline(
     withCredentials([string(credentialsId: 'GAINSIGHT_PX_API_KEY', variable: 'PX_API_KEY')]) {
       sh """
         registry=https://repo.sonatype.com/repository/npm-all/
+        export YARN_ENABLE_IMMUTABLE_INSTALLS=false
+        export CI=true
 
         cd lib
-        CI=true yarn install --registry "\${registry}" --immutable
+        yarn config set npmRegistryServer ${registry}
+        yarn install
         yarn test
         yarn build
         cd dist
@@ -91,14 +94,15 @@ dockerizedBuildPipeline(
         cd ../..
 
         cd gallery
-        CI=true yarn install --registry "\${registry}" --immutable
+        yarn config set npmRegistryServer ${registry}
+        yarn install
 
         yarn test
         yarn build
         cd ..
 
         cd ssr-tests
-        CI=true yarn install --registry "\${registry}" --immutable
+        yarn install
 
         # Run the server-side rendering tests, through docker similarly to the visual tests
         TEST_IP=\$JENKINS_AGENT_IP NEXT_TELEMETRY_DISABLED=1 yarn test
