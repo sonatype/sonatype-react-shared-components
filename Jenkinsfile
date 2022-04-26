@@ -98,7 +98,7 @@ dockerizedBuildPipeline(
         cd ..
 
         cd ssr-tests
-        YARN_ENABLE_IMMUTABLE_INSTALLS=false CI=TRUE yarn install --registry "\${registry}"
+        CI=TRUE yarn install --registry "\${registry}" --immutable
 
         # Run the server-side rendering tests, through docker similarly to the visual tests
         TEST_IP=\$JENKINS_AGENT_IP NEXT_TELEMETRY_DISABLED=1 yarn test
