@@ -1089,8 +1089,8 @@ __metadata:
   linkType: soft
 
 "@sonatype/react-shared-components@file:../lib/dist::locator=%40sonatype%2Freact-shared-components-gallery%40workspace%3A.":
-  version: 10.0.5
-  resolution: "@sonatype/react-shared-components@file:../lib/dist#../lib/dist::hash=a261f9&locator=%40sonatype%2Freact-shared-components-gallery%40workspace%3A."
+  version: 10.0.6
+  resolution: "@sonatype/react-shared-components@file:../lib/dist#../lib/dist::hash=6d36a1&locator=%40sonatype%2Freact-shared-components-gallery%40workspace%3A."
   dependencies:
     "@fortawesome/fontawesome-svg-core": ^1.2.32
     "@fortawesome/free-regular-svg-icons": ^5.15.4
@@ -1111,7 +1111,7 @@ __metadata:
   peerDependencies:
     react: ^16.10.1
     react-dom: ^16.10.1
-  checksum: 1636e2aafae2c92227ff22a9ab7cf060a1d51f0bfa5df8a6ff66b20a9b397321a21a4210938e7d1cf38e317a64f472fef50ee0f75c158938ffe6eb6ba982cff9
+  checksum: 2bfaab5e0b4422cbeb1ebf7830007682c25607e1e25c64c4872291a1b028d0eb1f31949a081cb5c0453520a59daebd06d598778c9aca3020c829b27d4bf75cec
   languageName: node
   linkType: hard
 
