@@ -3,8 +3,8 @@ dist
 webpack-modules
 test-results
 
+.pnp.*
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
