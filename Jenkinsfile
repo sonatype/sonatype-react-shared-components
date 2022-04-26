@@ -83,7 +83,7 @@ dockerizedBuildPipeline(
         registry=https://repo.sonatype.com/repository/npm-all/
 
         cd lib
-        CI=true yarn install --registry "\${registry}"
+        YARN_ENABLE_IMMUTABLE_INSTALLS=false CI=true yarn install --registry "\${registry}"
         yarn test
         yarn build
         cd dist
@@ -91,7 +91,7 @@ dockerizedBuildPipeline(
         cd ../..
 
         cd gallery
-        CI=true yarn install --registry "\${registry}"
+        YARN_ENABLE_IMMUTABLE_INSTALLS=false CI=true yarn install --registry "\${registry}"
 
         yarn test
         yarn build
