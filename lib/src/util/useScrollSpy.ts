@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { RefObject, useState, UIEvent, useCallback, useRef } from 'react';
-import { useThrottleCallback } from '@react-hook/throttle';
 import { curry, keys, last, map, pipe, prop, reduce, values } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
+import { useThrottleCallback } from '@react-hook/throttle';
 
 type RefsParentType = Record<string, RefObject<HTMLElement>>;
 
