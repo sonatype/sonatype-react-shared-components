@@ -91,7 +91,7 @@ dockerizedBuildPipeline(
         cd ../..
 
         cd gallery
-        CI=TRUE yarn install --registry "\${registry}" --immutable
+        YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install --registry "\${registry}"
 
         yarn test
         yarn build
