@@ -110,8 +110,8 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
 
         smallestPositiveBottomOffsetIndex = reduce(smallestPositiveReducer, null, bottomScrollOffsets)?.idx,
         newActiveSection = smallestPositiveBottomOffsetIndex != null ?
-            sectionNames[smallestPositiveBottomOffsetIndex] :
-            last(sectionNames) as keyof T; // assert that sectionNames is non-empty, basically
+          sectionNames[smallestPositiveBottomOffsetIndex] :
+          last(sectionNames) as keyof T; // assert that sectionNames is non-empty, basically
 
     if (handlingProgrammaticScroll.current) {
       if (activeSection === newActiveSection) {
