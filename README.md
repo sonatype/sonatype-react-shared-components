@@ -150,8 +150,14 @@ The RSC code is split into two separate codebases: the library itself which live
 ## Building
 
 ### Required Software
-Node 10.x or 12.x.  Node 14.x is known not to work currently.
-yarn 1.21.1
+<!-- Node 10.x or 12.x. Node 14.x is known not to work currently. -->
+Node 12.x
+yarn 3.2
+
+Go to lib/ or/and gallery/ directory and run:
+`yarn set version berry`
+
+You must run `yarn install` each time you switch between branches.
 
 ### Installation of Dependencies
 In the lib/ directory, run `yarn install`
