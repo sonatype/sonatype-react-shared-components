@@ -26,9 +26,9 @@ const UseScrollSpyPage = () =>
       <NxP>
         There are two related categories of elements which are relevant to this hook: the scrolling container element,
         and some number of its descendant elements which can be targeted for scroll tracking and programmatic scrolling.
-        The scrolling container element is specified by wrapping its JSX node in the <NxCode>withScrollSpy</NxCode>{' '}
-        higher-order-component which is part of this hook's return value. The targetable descendants are specified via
-        refs which are passed in as the hook's <NxCode>sectionRefs</NxCode> parameter.
+        The scrolling container element is specified by spreading the <NxCode>scrollContainerProps</NxCode> returned
+        from the hook onto the element. The targetable descendants are specified via refs which are passed in as the
+        hook's <NxCode>sectionRefs</NxCode> parameter.
       </NxP>
 
       <NxTile.Subsection>
@@ -75,14 +75,12 @@ const UseScrollSpyPage = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell>withScrollSpy</NxTable.Cell>
-              <NxTable.Cell>function</NxTable.Cell>
+              <NxTable.Cell>scrollContainerProps</NxTable.Cell>
+              <NxTable.Cell>Object containing <NxCode>ref</NxCode> and <NxCode>onScroll</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                A higher-order-component which must be used to wrap the scroll container element. This HOC will add
-                a <NxCode>ref</NxCode> and an <NxCode>onScroll</NxCode> handler to the wrapped element, and the element
-                must be of a type that can accept those props (e.g. a native div). Any
-                existing <NxCode>ref</NxCode> or <NxCode>onScroll</NxCode> on the wrapped element will also behave as
-                typical, they are not removed in favor of the props added by the HOC.
+                Props that should be applied to the scroll container element, typically by using the spread
+                syntax. The scroll container must be capable of receiving a <NxCode>ref</NxCode> and
+                an <NxCode>onScroll</NxCode> handler.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
