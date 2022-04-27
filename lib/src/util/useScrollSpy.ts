@@ -83,13 +83,8 @@ const getBottomScrollOffset = curry(
 export default function useScrollSpy<T extends Record<string, RefObject<HTMLElement>>>(sectionRefs: T) {
   const sectionNames = keys(sectionRefs),
       sectionRefValues = values(sectionRefs),
-      containerRef = useRef<HTMLElement>(null);
-
-  if (sectionNames.length === 0) {
-    throw new Error('sectionRefs must not be empty');
-  }
-
-  const firstSection = sectionNames[0],
+      containerRef = useRef<HTMLElement>(null),
+      firstSection = sectionNames[0],
       [activeSection, setActiveSection] = useState(firstSection),
 
       /*
@@ -114,7 +109,8 @@ export default function useScrollSpy<T extends Record<string, RefObject<HTMLElem
   }
 
   /**
-   * Check the current scroll position and update activeSection accordingly.
+   * Check the current scroll position and update activeSection accordingly. Since this is passed to
+   * useThrottleCallback, it must be wrapped in useCallback per the useThrottleCallback docs
    */
   const handleScroll = useCallback(function handleScroll(container: Element) {
     const containerBoundingBox = container.getBoundingClientRect(),
@@ -202,7 +198,7 @@ export default function useScrollSpy<T extends Record<string, RefObject<HTMLElem
 
     // after scroll events stop for a tenth of a second, assume any current programmatic scroll has ceased
     debouncedEndProgrammaticScroll(evt.currentTarget);
-  }, [throttledHandleScroll]);
+  }, [throttledHandleScroll, debouncedEndProgrammaticScroll]);
 
   /**
    * HOC wrapper which attaches the ref and onScroll to the container. This provides a cleaner interface than
@@ -234,6 +230,10 @@ export default function useScrollSpy<T extends Record<string, RefObject<HTMLElem
       handleScroll(containerRef.current);
     }
   }, [containerRef.current]);
+
+  if (sectionNames.length === 0) {
+    throw new Error('sectionRefs must not be empty');
+  }
 
   return { withScrollSpy, scrollTo, activeSection };
 }
