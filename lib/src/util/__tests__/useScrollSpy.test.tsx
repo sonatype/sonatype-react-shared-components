@@ -4,35 +4,60 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useRef } from 'react';
+import React, { useRef } from 'react';
 import { mount } from 'enzyme';
 
 import useScrollSpy from '../useScrollSpy';
 
 describe('useScrollSpy', function() {
-  jest.useFakeTimers();
-
-  let container: HTMLElement;
-
-  beforeEach(function() {
-    container = document.createElement('div');
-    document.body.append(container);
-  });
-
-  afterEach(function() {
-    container.remove();
-  });
-
   it('returns an object with a scrollTo function', function() {
-    const Fixture = () => {
-      const { scrollTo } = useScrollSpy({ foo: useRef(null) });
+    let scrollTo;
 
-      return <div onClick={scrollTo as any}></div>;
+    const Fixture = () => {
+      const retval = useScrollSpy({ foo: useRef(null) });
+
+      scrollTo = retval.scrollTo;
+
+      return <div />;
     };
 
-    const component = mount(<Fixture />).find('div');
+    mount(<Fixture />).find('div');
 
-    expect(component.prop('onClick')).toBeInstanceOf(Function);
+    expect(scrollTo).toBeInstanceOf(Function);
+  });
+
+  it('returns scrollContainerProps containing a ref and an onScroll function', function() {
+    let ref, onScroll;
+
+    const Fixture = () => {
+      const { scrollContainerProps } = useScrollSpy({ foo: useRef(null) });
+
+      ref = scrollContainerProps.ref;
+      onScroll = scrollContainerProps.onScroll;
+
+      return <div />;
+    };
+
+    mount(<Fixture />).find('div');
+
+    expect(onScroll).toBeInstanceOf(Function);
+    expect(ref).toBeInstanceOf(Function);
+  });
+
+  it('returns an activeSection string', function() {
+    let activeSection;
+
+    const Fixture = () => {
+      const retval = useScrollSpy({ foo: useRef(null) });
+
+      activeSection = retval.activeSection;
+
+      return <div />;
+    };
+
+    mount(<Fixture />).find('div');
+
+    expect(typeof activeSection).toBe('string');
   });
 
   it('throws an error if passed an empty object', function() {
@@ -43,48 +68,6 @@ describe('useScrollSpy', function() {
     };
 
     expect(() => mount(<Fixture />)).toThrowError();
-  });
-
-  describe('withScrollSpy', function() {
-    it('can wrap an element without errors', function() {
-      const Fixture = () => {
-        const { withScrollSpy } = useScrollSpy({ foo: useRef(null) });
-
-        return withScrollSpy(<div id="foo" />);
-      };
-
-      expect(mount(<Fixture />)).toContainMatchingElement('#foo');
-    });
-
-    it('does not override the ref on the wrapped element', function() {
-      const Fixture = forwardRef<HTMLDivElement>((_, ref) => {
-        const { withScrollSpy } = useScrollSpy({ foo: useRef(null) });
-
-        return withScrollSpy(<div ref={ref} id="foo" />);
-      });
-
-      const ref = React.createRef<HTMLDivElement>(),
-          component = mount(<Fixture ref={ref} />);
-
-      expect(ref.current).toBe(component.getDOMNode());
-    });
-
-    it('does not override the onScroll on the wrapped element', function() {
-      const Fixture = (({ onScroll }: { onScroll: any }) => {
-        const { withScrollSpy } = useScrollSpy({ foo: useRef(null) });
-
-        return withScrollSpy(<div onScroll={onScroll} id="foo" />);
-      });
-
-      const onScroll = jest.fn(),
-          component = mount(<Fixture onScroll={onScroll} />);
-
-      expect(onScroll).not.toHaveBeenCalled();
-
-      component.find('#foo').simulate('scroll', { currentTarget: component.getDOMNode() });
-
-      expect(onScroll).toHaveBeenCalled();
-    });
   });
 
   // jsdom does not really implement getBoundingClientRect - it just sets all of the fields to zero.
