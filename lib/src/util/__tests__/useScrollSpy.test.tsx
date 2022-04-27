@@ -58,5 +58,5 @@ describe('useScrollSpy', function() {
   });
 
   // jsdom does not really implement getBoundingClientRect - it just sets all of the fields to zero.
-  // It is therefore unsuitable for testing most of he behavior of this hook
+  // It is therefore unsuitable for testing most of the behavior of this hook
 });
