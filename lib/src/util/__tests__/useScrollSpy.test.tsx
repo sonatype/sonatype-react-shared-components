@@ -6,7 +6,6 @@
  */
 import React, { useRef } from 'react';
 import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
 
 import useScrollSpy from '../useScrollSpy';
 
