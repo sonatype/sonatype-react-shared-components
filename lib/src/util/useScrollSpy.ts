@@ -11,6 +11,7 @@ import {
   useCallback,
   useRef,
   useEffect,
+  RefCallback
 } from 'react';
 import { curry, keys, last, map, pipe, prop, reduce, values } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
@@ -29,6 +30,16 @@ type SmallestPositiveAccumulator = null | {
   // where we are currently in the input list
   currentIndex: number;
 };
+
+interface Retval<T extends Record<string, RefObject<HTMLElement>>> {
+  scrollContainerProps: {
+    ref: RefCallback<HTMLElement>;
+    onScroll: (e: UIEvent) => void;
+  };
+
+  scrollTo: (n: keyof T) => void;
+  activeSection: keyof T;
+}
 
 /**
  * Finds the index of the smallest positive value within a list of numbers.
@@ -76,10 +87,10 @@ const getBottomScrollOffset = curry(
     }
 );
 
-export default function useScrollSpy<T extends Record<string, RefObject<HTMLElement>>>(sectionRefs: T) {
+export default function useScrollSpy<T extends Record<string, RefObject<HTMLElement>>>(sectionRefs: T): Retval<T> {
   const sectionNames = keys(sectionRefs),
       sectionRefValues = values(sectionRefs),
-      containerRef = useRef<HTMLElement>(null),
+      containerRef = useRef<HTMLElement | null>(null),
       firstSection = sectionNames[0],
       [activeSection, setActiveSection] = useState(firstSection),
 
@@ -208,7 +219,11 @@ export default function useScrollSpy<T extends Record<string, RefObject<HTMLElem
   }
 
   return {
-    scrollContainerProps: { ref: containerRef, onScroll },
+    scrollContainerProps: {
+      // Use a RefCallback rather than the RefObject directly to get around some TS typing challenges
+      ref: (el: HTMLElement) => containerRef.current = el,
+      onScroll
+    },
     scrollTo,
     activeSection
   };
