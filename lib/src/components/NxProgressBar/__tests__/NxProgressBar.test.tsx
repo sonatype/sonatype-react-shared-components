@@ -105,6 +105,8 @@ describe('NxProgressBar', function() {
 
   it('sets the correct classname and displays the correct element based on the variant',
       function() {
+        const defaultComponent = getShallowComponent({ showCounter: true, label: 'label' });
+        const normalComponent = getShallowComponent({ variant: 'normal', showCounter: true, label: 'label' });
         const inlineComponent = getShallowComponent({ variant: 'inline', showCounter: true, label: 'label' });
         const smallComponent = getShallowComponent({ variant: 'small', showCounter: true, label: 'label' });
         const fullComponent = getShallowComponent({ variant: 'full', showCounter: true, label: 'label' });
@@ -112,15 +114,28 @@ describe('NxProgressBar', function() {
         const counterSelector = '.nx-progress-bar__counter';
         const labelTextSelector = '.nx-progress-bar__label-text';
 
+        expect(defaultComponent).toHaveClassName('nx-progress-bar--normal');
+        expect(defaultComponent).not.toHaveClassName('nx-progress-bar--undefined');
+        expect(defaultComponent.find(counterSelector)).toExist();
+        expect(defaultComponent.find(labelTextSelector)).toExist();
+
+        expect(normalComponent).toHaveClassName('nx-progress-bar--normal');
+        expect(normalComponent).not.toHaveClassName('nx-progress-bar--undefined');
+        expect(normalComponent.find(counterSelector)).toExist();
+        expect(normalComponent.find(labelTextSelector)).toExist();
+
         expect(inlineComponent).toHaveClassName('nx-progress-bar--inline');
+        expect(inlineComponent).not.toHaveClassName('nx-progress-bar--undefined');
         expect(inlineComponent.find(counterSelector)).not.toExist();
         expect(inlineComponent.find(labelTextSelector)).not.toExist();
 
         expect(smallComponent).toHaveClassName('nx-progress-bar--small');
+        expect(smallComponent).not.toHaveClassName('nx-progress-bar--undefined');
         expect(smallComponent.find(counterSelector)).toExist();
         expect(smallComponent.find(labelTextSelector)).not.toExist();
 
         expect(fullComponent).toHaveClassName('nx-progress-bar--full');
+        expect(fullComponent).not.toHaveClassName('nx-progress-bar--undefined');
         expect(fullComponent.find(counterSelector)).toExist();
         expect(fullComponent.find(labelTextSelector)).toExist();
       }

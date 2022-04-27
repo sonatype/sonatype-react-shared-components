@@ -17,6 +17,7 @@ const logoImg = importImage('sonatype-logo-with-hexagon.png');
 function HeaderProductInfo({ name, version }: ProductInfo) {
   return (
     <>
+      <div role="presentation" className="nx-product__divider">|</div>
       <div className="nx-product__name">{name}</div>
       { version && <div className="nx-product__version">Version: {version}</div> }
     </>

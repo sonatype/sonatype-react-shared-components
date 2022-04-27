@@ -43,10 +43,11 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
         showCounter: showCounterProp,
         showSteps: showStepsProp,
         value,
-        variant,
+        variant: variantProp,
         ...otherAttributes
       } = props;
 
+      const variant = variantProp ?? 'normal';
       const showCounter = showCounterProp ?? true;
       const showSteps = !!showStepsProp;
       const showLabelElement = !(variant === 'inline' || variant === 'small' || inlineCounter);
