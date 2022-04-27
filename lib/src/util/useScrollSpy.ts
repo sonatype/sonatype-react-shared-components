@@ -4,21 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {
+import {
   RefObject,
   useState,
   UIEvent,
   useCallback,
   useRef,
   useEffect,
-  ReactElement,
-  HTMLAttributes,
-  RefAttributes
 } from 'react';
 import { curry, keys, last, map, pipe, prop, reduce, values } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { useThrottleCallback } from '@react-hook/throttle';
-import useMergedRef from '@react-hook/merged-ref';
 
 const SCROLL_CHECKS_PER_SECOND = 10;
 
@@ -200,30 +196,6 @@ export default function useScrollSpy<T extends Record<string, RefObject<HTMLElem
     debouncedEndProgrammaticScroll(evt.currentTarget);
   }, [throttledHandleScroll, debouncedEndProgrammaticScroll]);
 
-  /**
-   * HOC wrapper which attaches the ref and onScroll to the container. This provides a cleaner interface than
-   * requiring the caller to both pass in the ref and ensure that onScroll is attached to the same element that the
-   * ref is for
-   */
-  function withScrollSpy(containerComponent: ReactElement<HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement>>) {
-    // Cast due to missing property in typings.  React devs assert that ref will be available, see
-    // https://github.com/facebook/react/issues/8873
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const mergedRef = useMergedRef(containerRef, (containerComponent as any).ref || null),
-        otherOnScroll = containerComponent.props?.onScroll;
-
-    return React.cloneElement(containerComponent, {
-      ref: mergedRef,
-      onScroll(evt: UIEvent<HTMLElement>) {
-        if (otherOnScroll) {
-          otherOnScroll(evt);
-        }
-
-        onScroll(evt);
-      }
-    });
-  }
-
   // Initial check of the scroll position in case it isn't at the top
   useEffect(function() {
     if (containerRef.current) {
@@ -235,5 +207,9 @@ export default function useScrollSpy<T extends Record<string, RefObject<HTMLElem
     throw new Error('sectionRefs must not be empty');
   }
 
-  return { withScrollSpy, scrollTo, activeSection };
+  return {
+    scrollContainerProps: { ref: containerRef, onScroll },
+    scrollTo,
+    activeSection
+  };
 }
