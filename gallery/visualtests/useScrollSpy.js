@@ -27,7 +27,10 @@ describe('useScrollSpy', function() {
   });
 
   it('scrolls to the second section when the appropriate button is clicked', async function() {
-    const [example, secondBtn] = await waitAndGetElements(exampleSelector, `${exampleSelector} > div:nth-child(2) button`);
+    const [example, secondBtn] = await waitAndGetElements(
+        exampleSelector,
+        `${exampleSelector} > div:nth-child(2) button`
+    );
 
     await secondBtn.click();
     await wait(2000);
@@ -36,7 +39,10 @@ describe('useScrollSpy', function() {
   });
 
   it('scrolls to the third section when the appropriate button is clicked', async function() {
-    const [example, thirdBtn] = await waitAndGetElements(exampleSelector, `${exampleSelector} > div:nth-child(3) button`);
+    const [example, thirdBtn] = await waitAndGetElements(
+        exampleSelector,
+        `${exampleSelector} > div:nth-child(3) button`
+    );
 
     await thirdBtn.click();
     await wait(2000);
@@ -46,9 +52,9 @@ describe('useScrollSpy', function() {
 
   it('scrolls back to the first section when the first button is clicked while scrolled elsewhere', async function() {
     const [example, scrollable, firstBtn] = await waitAndGetElements(
-      exampleSelector,
-      `${exampleSelector} > .nx-scrollable`,
-      `${exampleSelector} > div:first-child button`
+        exampleSelector,
+        `${exampleSelector} > .nx-scrollable`,
+        `${exampleSelector} > div:first-child button`
     );
 
     await scrollable.hover();
@@ -63,12 +69,11 @@ describe('useScrollSpy', function() {
   });
 
   it('indicates that the second section is active when the user scrolls to it', async function() {
-    const [example, scrollable, firstIndicator, secondIndicator, thirdIndicator] = await waitAndGetElements(
-      exampleSelector,
-      `${exampleSelector} > .nx-scrollable`,
-      `${exampleSelector} > div:first-child`,
-      `${exampleSelector} > div:nth-child(2)`,
-      `${exampleSelector} > div:nth-child(3)`
+    const [scrollable, firstIndicator, secondIndicator, thirdIndicator] = await waitAndGetElements(
+        `${exampleSelector} > .nx-scrollable`,
+        `${exampleSelector} > div:first-child`,
+        `${exampleSelector} > div:nth-child(2)`,
+        `${exampleSelector} > div:nth-child(3)`
     );
 
     await scrollable.hover();
@@ -90,11 +95,11 @@ describe('useScrollSpy', function() {
 
   it('follows clicks of multiple scroll buttons in quick succession without issue', async function() {
     const [example, firstBtn, secondBtn, thirdBtn, thirdIndicator] = await waitAndGetElements(
-      exampleSelector,
-      `${exampleSelector} > div:first-child button`,
-      `${exampleSelector} > div:nth-child(2) button`,
-      `${exampleSelector} > div:nth-child(3) button`,
-      `${exampleSelector} > div:nth-child(3)`
+        exampleSelector,
+        `${exampleSelector} > div:first-child button`,
+        `${exampleSelector} > div:nth-child(2) button`,
+        `${exampleSelector} > div:nth-child(3) button`,
+        `${exampleSelector} > div:nth-child(3)`
     );
 
     await firstBtn.click();
@@ -114,10 +119,10 @@ describe('useScrollSpy', function() {
 
   it('keeps the indicator on the last option when all sections are scrolled off the top of the view', async function() {
     const [example, scrollable, thirdP, thirdIndicator] = await waitAndGetElements(
-      exampleSelector,
-      `${exampleSelector} .nx-scrollable`,
-      `${exampleSelector} .nx-scrollable > .nx-p:nth-child(3)`,
-      `${exampleSelector} > div:nth-child(3)`
+        exampleSelector,
+        `${exampleSelector} .nx-scrollable`,
+        `${exampleSelector} .nx-scrollable > .nx-p:nth-child(3)`,
+        `${exampleSelector} > div:nth-child(3)`
     );
 
     // add a bunch of space to the bottom of the scroll container

@@ -30,7 +30,8 @@ export default function UseScrollSpyExample() {
         <NxButton onClick={() => scrollTo('baz')}>Baz</NxButton>
         { activeSection === 'baz' && <NxFontAwesomeIcon icon={faHandPointLeft} /> }
       </div>
-      { withScrollSpy(
+      {
+        withScrollSpy(
           <div className="nx-scrollable">
             <NxP ref={scrollRefs.foo}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mollis augue at scelerisque dictum. Nunc
