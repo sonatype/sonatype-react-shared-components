@@ -168,7 +168,7 @@ export default function useScrollSpy<T extends Record<string, RefObject<HTMLElem
       debouncedEndProgrammaticScroll = useDebounceCallback(endProgrammaticScroll, 1000 / SCROLL_CHECKS_PER_SECOND);
 
   /**
-   * Listener that the hook caller should attach to the scroll container's onScroll prop
+   * Listener that gets attached to the scroll container's onScroll prop
    */
   const onScroll = useCallback(function onScroll(evt: UIEvent) {
     if (handlingProgrammaticScroll.current) {
@@ -210,7 +210,9 @@ export default function useScrollSpy<T extends Record<string, RefObject<HTMLElem
    * ref is for
    */
   function withScrollSpy(containerComponent: ReactElement<HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement>>) {
-    const mergedRef = useMergedRef(containerRef, containerComponent.props?.ref || null),
+    // cast due to missing property in typings.  React devs assert that ref will be available, see
+    // https://github.com/facebook/react/issues/8873
+    const mergedRef = useMergedRef(containerRef, (containerComponent as any).ref || null),
         otherOnScroll = containerComponent.props?.onScroll;
 
     return React.cloneElement(containerComponent, {
