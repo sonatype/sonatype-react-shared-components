@@ -210,8 +210,9 @@ export default function useScrollSpy<T extends Record<string, RefObject<HTMLElem
    * ref is for
    */
   function withScrollSpy(containerComponent: ReactElement<HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement>>) {
-    // cast due to missing property in typings.  React devs assert that ref will be available, see
+    // Cast due to missing property in typings.  React devs assert that ref will be available, see
     // https://github.com/facebook/react/issues/8873
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mergedRef = useMergedRef(containerRef, (containerComponent as any).ref || null),
         otherOnScroll = containerComponent.props?.onScroll;
 
