@@ -4,15 +4,27 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { RefObject, useState, UIEvent, useCallback, useRef } from 'react';
+import React, {
+  RefObject,
+  useState,
+  UIEvent,
+  useCallback,
+  useRef,
+  useEffect,
+  ReactElement,
+  HTMLAttributes,
+  RefAttributes
+} from 'react';
 import { curry, keys, last, map, pipe, prop, reduce, values } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { useThrottleCallback } from '@react-hook/throttle';
-
-type RefsParentType = Record<string, RefObject<HTMLElement>>;
+import useMergedRef from '@react-hook/merged-ref';
 
 const SCROLL_CHECKS_PER_SECOND = 10;
 
+/**
+ * Type for the accumulator in smallestPositiveReducer
+ */
 type SmallestPositiveAccumulator = null | {
   // these two properties store information about the smallest value found so far: what it was and where it was found
   idx?: number;
@@ -68,9 +80,10 @@ const getBottomScrollOffset = curry(
     }
 );
 
-export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
+export default function useScrollSpy<T extends Record<string, RefObject<HTMLElement>>>(sectionRefs: T) {
   const sectionNames = keys(sectionRefs),
-      sectionRefValues = values(sectionRefs);
+      sectionRefValues = values(sectionRefs),
+      containerRef = useRef<HTMLElement>(null);
 
   if (sectionNames.length === 0) {
     throw new Error('sectionRefs must not be empty');
@@ -191,5 +204,33 @@ export default function useScrollSpy<T extends RefsParentType>(sectionRefs: T) {
     debouncedEndProgrammaticScroll(evt.currentTarget);
   }, [throttledHandleScroll]);
 
-  return { onScroll, scrollTo, activeSection };
+  /**
+   * HOC wrapper which attaches the ref and onScroll to the container. This provides a cleaner interface than
+   * requiring the caller to both pass in the ref and ensure that onScroll is attached to the same element that the
+   * ref is for
+   */
+  function withScrollSpy(containerComponent: ReactElement<HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement>>) {
+    const mergedRef = useMergedRef(containerRef, containerComponent.props?.ref || null),
+        otherOnScroll = containerComponent.props?.onScroll;
+
+    return React.cloneElement(containerComponent, {
+      ref: mergedRef,
+      onScroll(evt: UIEvent<HTMLElement>) {
+        if (otherOnScroll) {
+          otherOnScroll(evt);
+        }
+
+        onScroll(evt);
+      }
+    });
+  }
+
+  // Initial check of the scroll position in case it isn't at the top
+  useEffect(function() {
+    if (containerRef.current) {
+      handleScroll(containerRef.current);
+    }
+  }, [containerRef.current]);
+
+  return { withScrollSpy, scrollTo, activeSection };
 }
