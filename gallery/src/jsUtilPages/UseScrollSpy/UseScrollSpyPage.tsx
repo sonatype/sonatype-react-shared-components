@@ -25,10 +25,10 @@ const UseScrollSpyPage = () =>
 
       <NxP>
         There are two related categories of elements which are relevant to this hook: the scrolling container element,
-        and some number of its descendant element which can be targeted for scroll tracking and programmatic scrolling.
-        The scrolling container element is specified by setting the <NxCode>onScroll</NxCode> callback returned from
-        this hook on that element. The targetable descendants are specified via refs which are passed in as the
-        hook's <NxCode>sectionRefs</NxCode> parameter.
+        and some number of its descendant elements which can be targeted for scroll tracking and programmatic scrolling.
+        The scrolling container element is specified by wrapping its JSX node in the <NxCode>withScrollSpy</NxCode>{' '}
+        higher-order-component which is part of this hook's return value. The targetable descendants are specified via
+        refs which are passed in as the hook's <NxCode>sectionRefs</NxCode> parameter.
       </NxP>
 
       <NxTile.Subsection>
@@ -75,10 +75,14 @@ const UseScrollSpyPage = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell>onScroll</NxTable.Cell>
+              <NxTable.Cell>withScrollSpy</NxTable.Cell>
               <NxTable.Cell>function</NxTable.Cell>
               <NxTable.Cell>
-                A function which must be bound to the <NxCode>onScroll</NxCode> prop of the scrolling container
+                A higher-order-component which must be used to wrap the scroll container element. This HOC will add
+                a <NxCode>ref</NxCode> and an <NxCode>onScroll</NxCode> handler to the wrapped element, and the element
+                must be of a type that can accept those props (e.g. a native div). Any
+                existing <NxCode>ref</NxCode> or <NxCode>onScroll</NxCode> on the wrapped element will also behave as
+                typical, they are not removed in favor of the props added by the HOC.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
