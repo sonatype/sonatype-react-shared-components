@@ -228,6 +228,9 @@ And from powershell
 docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test
 ```
 
+Also keep in mind that the [auto-crlf](https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings) 
+setting in git for your cloned repository should be **false**, you will have issues with some visual test failures otherwise.
+
 ---
 
 Note that the `yarn test` command will (re-)install the gallery dependencies, ensuring that puppeteer downloads the
