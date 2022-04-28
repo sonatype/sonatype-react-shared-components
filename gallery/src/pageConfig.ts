@@ -77,7 +77,6 @@ import NxPaginationPage from './components/NxPagination/NxPaginationPage';
 import NxIndeterminatePaginationPage
   from './components/NxIndeterminatePagination/NxIndeterminatePaginationPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
-import NxNexusPageHeaderPage from './components/NxNexusPageHeader/NxNexusPageHeaderPage';
 import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
@@ -143,7 +142,7 @@ import ServerSideRenderingUtilsPage from './jsUtilPages/ServerSideRendering/Serv
 import NxFilterDropdownPage from './components/NxFilterDropdown/NxFilterDropdownPage';
 import NxStatefulFilterDropdownPage from './components/NxStatefulFilterDropdown/NxStatefulFilterDropdownPage';
 import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
-import NxProgressBarPage from './components/NxProgressBar/NxProgressBar';
+import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 
 const pageConfig: PageConfig = {
@@ -241,7 +240,6 @@ const pageConfig: PageConfig = {
     'Global Sidebar Footer': { content: NxGlobalSidebarFooterPage, type: 'react' },
     'Grid': { content: NxGridPage, type: 'html' },
     'Modal': { content: NxModalPage, type: 'react' },
-    'Nexus Page Header': { content: NxNexusPageHeaderPage, type: 'react' },
     'Page Header': { content: NxPageHeaderPage, type: 'react' },
     'Page Title': { content: NxPageTitlePage, type: 'html' },
     'Read Only': { content: NxReadOnlyPage, type: 'html' },

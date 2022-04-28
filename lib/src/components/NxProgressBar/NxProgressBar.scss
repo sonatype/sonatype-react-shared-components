@@ -4,16 +4,29 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
- @use "sass:math";
+@use "sass:math";
+
+$-progress-background-color: var(--nx-swatch-indigo-95);
+$-progress-bar-color: var(--nx-swatch-teal-60);
 
 .nx-progress-bar {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  // In many of the layout modes, there will be two grid cells: one for the bar and one for the label.
+  // However in some modes there is just the bar cell, and the location of the label cell (below or to the right)
+  // varies. Therefore only the bar cell is actually in the template. The label cell, when needed, is generated
+  // using grid auto-placement, controlled by the grid-auto-flow property
+  grid-template-areas: 'bar';
+  grid-auto-flow: row;
+
   gap: var(--nx-spacing-2x);
+  justify-content: start;
   margin: var(--nx-spacing-6x) 0;
+  width: min-content;
 
   &--inline-counter {
-    flex-direction: row;
+    grid-auto-flow: column;
 
     .nx-progress-bar__counter {
       margin: 0;
@@ -21,23 +34,23 @@
   }
 
   &--inline {
-    display: inline-flex;
+    display: inline-grid;
     margin: 0 var(--nx-spacing-6x);
     vertical-align: middle;
   }
 
   &--success {
     color: var(--nx-swatch-green-25);
-  
+
     .nx-progress-bar__counter {
       border-color: var(--nx-swatch-green-25);
       background-color: var(--nx-swatch-green-95);
     }
   }
-  
+
   &--error {
     color: var(--nx-swatch-red-40);
-  
+
     .nx-progress-bar__counter {
       border-color: var(--nx-swatch-red-40);
       background-color: var(--nx-swatch-red-95);
@@ -52,11 +65,43 @@
 .nx-progress-bar__counter-and-label {
   .nx-icon {
     margin: 0 0 0 var(--nx-spacing-2x);
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 }
 
 .nx-progress-bar__label-text {
   margin-left: var(--nx-spacing-2x);
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.nx-progress-bar__step-container {
+  display: flex;
+  grid-area: bar;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.nx-progress-bar__step {
+  height: 100%;
+  width: 2px;
+
+  &--below-value {
+    background-color: $-progress-background-color;
+  }
+
+  &--at-value {
+    visibility: hidden;
+  }
+
+  &--above-value {
+    background-color: $-progress-bar-color;
+  }
 }
 
 $-normal-height: 25px;
@@ -67,12 +112,13 @@ $-normal-height: 25px;
   appearance: none;
 
   border: 0;
+  grid-area: bar;
   height: $-normal-height;
   width: 100%;
 
   &,
   &::-webkit-progress-bar {
-    background: var(--nx-swatch-indigo-95);
+    background: $-progress-background-color;
     border-radius: math.div($-normal-height, 2);
     height: $-normal-height;
     overflow: hidden;
@@ -80,11 +126,11 @@ $-normal-height: 25px;
   }
 
   &::-moz-progress-bar {
-    background: var(--nx-swatch-teal-60);
+    background: $-progress-bar-color;
   }
-  
+
   &::-webkit-progress-value {
-    background: var(--nx-swatch-teal-60);
+    background: $-progress-bar-color;
   }
 }
 
@@ -96,6 +142,8 @@ $-normal-height: 25px;
 }
 
 .nx-progress-bar--full {
+  width: 100%;
+
   .nx-progress-bar__progress,
   .nx-progress-bar__progress::-webkit-progress-bar {
     min-width: 300px;

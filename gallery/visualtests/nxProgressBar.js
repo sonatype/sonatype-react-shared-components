@@ -9,24 +9,28 @@ const { setupBrowser } = require('./testUtils');
 describe('NxProgressBar', function() {
   const { a11yTest, simpleTest } = setupBrowser('#/pages/Progress Bar');
 
-  describe('NxProgressBar Normal', function() {
-    const selector = '#nx-progress-bar-normal-example';
+  describe('Normal', function() {
+    const selector = '#nx-progress-bar-normal-example .gallery-example-live';
     it('looks right', simpleTest(selector));
   });
 
-  describe('NxProgressBar Small', function() {
-    const selector = '#nx-progress-bar-small-example';
+  describe('Small', function() {
+    const selector = '#nx-progress-bar-small-example .gallery-example-live';
     it('looks right', simpleTest(selector));
   });
 
-  describe('NxProgressBar Full', function() {
-    const selector = '#nx-progress-bar-full-example';
+  describe('Full', function() {
+    const selector = '#nx-progress-bar-full-example .gallery-example-live';
     it('looks right', simpleTest(selector));
   });
 
-  describe('NxProgressBar Inline', function() {
-    const selector = '#nx-progress-bar-inline-example';
+  describe('Inline', function() {
+    const selector = '#nx-progress-bar-inline-example .gallery-example-live';
     it('looks right', simpleTest(selector));
+  });
+
+  describe('with steps visible', function() {
+    it('looks right', simpleTest('#nx-progress-bar-steps-example .gallery-example-live'));
   });
 
   it('passes a11y checks', a11yTest());

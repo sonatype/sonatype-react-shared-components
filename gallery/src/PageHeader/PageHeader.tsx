@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import packageJson from '../../package.json';
+import HostedVersionsSelect from './HostedVersionsSelect';
 
 const plaidVillain = require('./plaid-villain.svg');
 const tartanLogotype = require('./tartan-logotype.svg');
@@ -26,14 +26,12 @@ const PageHeader = () => (
              alt="Sonatype Tartan" />
       </a>
 
-      <div className="gallery-page-header__info">
-        <span className="gallery-page-header__name">
-          React Shared Component Library
-        </span>
+      <span className="gallery-page-header__name">
+        React Shared Component Library
+      </span>
 
-        <span className="gallery-page-header__version">
-          Version {packageJson.version}
-        </span>
+      <div className="gallery-page-header__version">
+        <HostedVersionsSelect />
       </div>
     </div>
   </header>
