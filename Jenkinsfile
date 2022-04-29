@@ -83,7 +83,7 @@ dockerizedBuildPipeline(
         registry=https://repo.sonatype.com/repository/npm-all/
 
         cd lib
-        yarn install --registry "\${registry}" --frozen-lockfile
+        CI=TRUE yarn install --registry "\${registry}" --immutable
         yarn test
         yarn build
         cd dist
@@ -91,14 +91,14 @@ dockerizedBuildPipeline(
         cd ../..
 
         cd gallery
-        yarn install --registry "\${registry}" --frozen-lockfile
+        YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install --registry "\${registry}"
 
         yarn test
         yarn build
         cd ..
 
         cd ssr-tests
-        yarn install --registry "\${registry}" --frozen-lockfile
+        YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install --registry "\${registry}"
 
         # Run the server-side rendering tests, through docker similarly to the visual tests
         TEST_IP=\$JENKINS_AGENT_IP NEXT_TELEMETRY_DISABLED=1 yarn test
