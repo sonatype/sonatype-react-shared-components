@@ -6,11 +6,12 @@
  */
 
 // Quick and dirty removal of any comment appearing at the beginning of the content, as it is assumed to be
-// a license which is not helpful to the example display. Both HTML-syntax and C-syntax comments are removed
+// a license which is not helpful to the example display. Both HTML-syntax and C-syntax comments are removed.
+// Will handle both unix and windows line endings
 export const removeLicense = (content: string) =>
   content
-      .replace(/^<!--(.|\n)*?-->\s*\n?/, '')
-      .replace(/^\/\*(.|\n)*?\*\/\s*\n?/, '');
+      .replace(/^<!--(.|\r*\n)*?-->\s*\r*\n?/, '')
+      .replace(/^\/\*(.|\r*\n)*?\*\/\s*\r*\n?/, '');
 
 // Copies a string to the clipboard.
 export const copyTextToClipboard = (textToCopy: string) => {
