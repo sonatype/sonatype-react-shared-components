@@ -10,4 +10,13 @@
   &__overflow-dropdown ~ * {
     display: none;
   }
+
+  // prevent brief flash of scrollbar on ancestor/viewport
+  &--calculating {
+    overflow: hidden;
+
+    > * {
+      visibility: hidden;
+    }
+  }
 }
