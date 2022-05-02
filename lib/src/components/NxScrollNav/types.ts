@@ -10,6 +10,7 @@ export interface Props {
   scrollSections: string[];
   onScrollSectionClick: (section: string) => void;
   isDropdownOpen: boolean;
+  onToggleDropdownCollapse: () => void;
 }
 
 export const propTypes: ValidationMap<Props> = {

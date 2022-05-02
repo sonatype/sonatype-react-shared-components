@@ -144,6 +144,7 @@ import NxStatefulFilterDropdownPage from './components/NxStatefulFilterDropdown/
 import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
+import NxScrollNavPage from './components/NxScrollNav/NxScrollNavPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -181,6 +182,7 @@ const pageConfig: PageConfig = {
     'Stateful Icon Dropdown': { content: NxStatefulIconDropdownPage, type: 'react' },
     'Pagination': { content: NxPaginationPage, type: 'react' },
     'Indeterminate Pagination': { content: NxIndeterminatePaginationPage, type: 'react' },
+    'Scroll Nav': { content: NxScrollNavPage, type: 'react' },
     'Search Dropdown': { content: NxSearchDropdownPage, type: 'react' },
     'Stateful Search Dropdown': { content: NxStatefulSearchDropdownPage, type: 'react' },
     'Text Link': { content: NxTextLinkPage, type: 'react' }

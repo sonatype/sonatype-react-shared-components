@@ -7,21 +7,23 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import useResizeObserver from '@react-hook/resize-observer';
 import classnames from 'classnames';
-import { inc, insert, map } from 'ramda';
+import { inc, map, splitAt } from 'ramda';
 
 import NxIconDropdown from '../NxIconDropdown/NxIconDropdown';
 
 import { Props } from './types';
 
-export default function NxScrollNav({ scrollSections, onScrollSectionClick, isDropdownOpen }: Props) {
-  const [overflowCount, setOverflowCount] = useState(0),
+import './NxScrollNav.scss';
+
+export default function NxScrollNav(props: Props) {
+  const { scrollSections, onScrollSectionClick, isDropdownOpen, onToggleDropdownCollapse } = props,
+      [overflowCount, setOverflowCount] = useState(0),
       ref = useRef<HTMLElement>(null),
       classes = classnames('nx-scroll-nav', {
         'nx-scroll-nav--overflowing': !!overflowCount
       }),
       buttons = map(s => <button key={s} onClick={() => onScrollSectionClick(s)}>{s}</button>, scrollSections),
-      overflowDropdown = <NxIconDropdown isOpen={isDropdownOpen} className="nx-scroll-nav__overflow-dropdown" />,
-      buttonsWithOverflow = overflowCount ? insert(buttons.length - overflowCount, overflowDropdown, buttons) : buttons;
+      [buttonsBeforeOverflow, buttonsAfterOverflow] = splitAt(scrollSections.length - overflowCount, buttons);
 
   useResizeObserver(ref, recalculateOverflow);
   useLayoutEffect(recalculateOverflow, [scrollSections]);
@@ -45,7 +47,12 @@ export default function NxScrollNav({ scrollSections, onScrollSectionClick, isDr
 
   return (
     <nav ref={ref} className={classes}>
-      {buttonsWithOverflow}
+      {buttonsBeforeOverflow}
+      { overflowCount && <NxIconDropdown isOpen={isDropdownOpen}
+                                         className="nx-scroll-nav__overflow-dropdown"
+                                         onToggleCollapse={onToggleDropdownCollapse} />
+      }
+      {buttonsAfterOverflow}
     </nav>
   );
 }
