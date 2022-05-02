@@ -37,8 +37,8 @@ export default function NxScrollNav(props: Props) {
       [buttonsBeforeOverflow, buttonsAfterOverflow] = splitAt(scrollSections.length - overflowCount, buttons);
 
   useResizeObserver(ref, recalculateOverflow);
-  useLayoutEffect(recalculateOverflow, [scrollSections]);
-  useLayoutEffect(checkOverflow, [overflowCount]);
+  useLayoutEffect(recalculateOverflow, scrollSections);
+  useLayoutEffect(checkOverflow, [overflowCount, calculatingOverflow]);
 
   // Reset the overflowCount, triggering the checkOverflow useLayoutEffect to repeatedly increment it
   // until things fit
@@ -63,7 +63,7 @@ export default function NxScrollNav(props: Props) {
   return (
     <nav ref={ref} className={classes}>
       {buttonsBeforeOverflow}
-      { overflowCount &&
+      { !!overflowCount &&
         <NxIconDropdown title="TODO"
                         isOpen={isDropdownOpen}
                         className="nx-scroll-nav__overflow-dropdown"
