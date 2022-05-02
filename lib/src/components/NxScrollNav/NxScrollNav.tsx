@@ -21,7 +21,6 @@ export default function NxScrollNav(props: Props) {
       [calculatingOverflow, setCalculatingOverflow] = useState(false),
       ref = useRef<HTMLElement>(null),
       classes = classnames('nx-scroll-nav', {
-        'nx-scroll-nav--overflowing': !!overflowCount,
         'nx-scroll-nav--calculating': calculatingOverflow
       }),
       buttons = map(s => <button key={s} onClick={() => onScrollSectionClick(s)}>{s}</button>, scrollSections),
@@ -54,7 +53,8 @@ export default function NxScrollNav(props: Props) {
   return (
     <nav ref={ref} className={classes}>
       {buttonsBeforeOverflow}
-      { overflowCount && <NxIconDropdown isOpen={isDropdownOpen}
+      { overflowCount && <NxIconDropdown title="TODO"
+                                         isOpen={isDropdownOpen}
                                          className="nx-scroll-nav__overflow-dropdown"
                                          onToggleCollapse={onToggleDropdownCollapse} />
       }
