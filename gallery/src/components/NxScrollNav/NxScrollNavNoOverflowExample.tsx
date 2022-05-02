@@ -13,19 +13,10 @@ const sections = [
   'foooo',
   'fooooo',
   'foooooo',
-  'fooooooo',
-  'foooooooo',
-  'fooooooooo',
-  'foooooooooo',
-  'fooooooooooo',
-  'foooooooooooo',
-  'fooooooooooooo',
-  'foooooooooooooo',
-  'fooooooooooooooo',
-  'foooooooooooooooo'
+  'fooooooo'
 ];
 
-export default function NxScrollNavExample() {
+export default function NxScrollNavNoOverflowExample() {
   const [isDropdownOpen, toggleDropdownOpen] = useToggle(false),
       [activeSection, setActiveSection] = useState(sections[0]);
 
