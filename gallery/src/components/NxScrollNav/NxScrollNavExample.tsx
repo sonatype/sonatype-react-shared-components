@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 import { NxScrollNav, useToggle } from '@sonatype/react-shared-components';
 
 const sections = [
@@ -22,37 +22,20 @@ const sections = [
   'fooooooooooooo',
   'foooooooooooooo',
   'fooooooooooooooo',
-  'foooooooooooooooo',
-  'fooooooooooooooooo',
-  'foooooooooooooooooo',
-  'fooooooooooooooooooo',
-  'foooooooooooooooooooo',
-  'fooooooooooooooooooooo',
-  'foooooooooooooooooooooo',
-  'fooooooooooooooooooooooo',
-  'foooooooooooooooooooooooo',
-  'fooooooooooooooooooooooooo',
-  'foooooooooooooooooooooooooo',
-  'fooooooooooooooooooooooooooo',
-  'foooooooooooooooooooooooooooo',
-  'fooooooooooooooooooooooooooooo',
-  'foooooooooooooooooooooooooooooo',
-  'fooooooooooooooooooooooooooooooo',
-  'foooooooooooooooooooooooooooooooo',
-  'fooooooooooooooooooooooooooooooooo',
-  'foooooooooooooooooooooooooooooooooo',
-  'fooooooooooooooooooooooooooooooooooo',
-  'foooooooooooooooooooooooooooooooooooo',
-  'fooooooooooooooooooooooooooooooooooooo',
+  'foooooooooooooooo'
 ];
 
 export default function NxScrollNavExample() {
-  const [isDropdownOpen, toggleDropdownOpen] = useToggle(false);
+  const [isDropdownOpen, toggleDropdownOpen] = useToggle(false),
+      [currentSection, setCurrentSection] = useState(sections[0]);
 
   return (
-    <NxScrollNav scrollSections={sections}
-                 isDropdownOpen={isDropdownOpen}
-                 onScrollSectionClick={() => {}}
-                 onToggleDropdownCollapse={toggleDropdownOpen} />
+    <div>
+      <span>Current Section: {currentSection}</span>
+      <NxScrollNav scrollSections={sections}
+                   isDropdownOpen={isDropdownOpen}
+                   onScrollSectionClick={setCurrentSection}
+                   onToggleDropdownCollapse={toggleDropdownOpen} />
+    </div>
   );
 }
