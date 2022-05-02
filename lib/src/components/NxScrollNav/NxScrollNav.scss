@@ -21,8 +21,12 @@
   }
 
   .nx-dropdown-menu {
-    button {
+    .nx-scroll-nav__button {
       display: block;
     }
   }
+}
+
+.nx-scroll-nav__button.selected {
+  outline: 1px solid red;
 }

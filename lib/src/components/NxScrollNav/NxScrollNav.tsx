@@ -16,14 +16,24 @@ import { Props } from './types';
 import './NxScrollNav.scss';
 
 export default function NxScrollNav(props: Props) {
-  const { scrollSections, onScrollSectionClick, isDropdownOpen, onToggleDropdownCollapse } = props,
+  const { scrollSections, activeSection, onScrollSectionClick, isDropdownOpen, onToggleDropdownCollapse } = props,
       [overflowCount, setOverflowCount] = useState(0),
       [calculatingOverflow, setCalculatingOverflow] = useState(false),
       ref = useRef<HTMLElement>(null),
       classes = classnames('nx-scroll-nav', {
         'nx-scroll-nav--calculating': calculatingOverflow
       }),
-      buttons = map(s => <button key={s} onClick={() => onScrollSectionClick(s)}>{s}</button>, scrollSections),
+      buttons = map(s => {
+          const classes = classnames('nx-scroll-nav__button', {
+            selected: s === activeSection
+          });
+
+          return (
+            <button key={s} className={classes} onClick={() => onScrollSectionClick(s)}>{s}</button>
+          );
+        },
+        scrollSections
+      ),
       [buttonsBeforeOverflow, buttonsAfterOverflow] = splitAt(scrollSections.length - overflowCount, buttons);
 
   useResizeObserver(ref, recalculateOverflow);

@@ -8,6 +8,7 @@ import { ValidationMap } from 'react';
 
 export interface Props {
   scrollSections: string[];
+  activeSection: string;
   onScrollSectionClick: (section: string) => void;
   isDropdownOpen: boolean;
   onToggleDropdownCollapse: () => void;
