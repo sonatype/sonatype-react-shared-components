@@ -53,10 +53,13 @@ export default function NxScrollNav(props: Props) {
   return (
     <nav ref={ref} className={classes}>
       {buttonsBeforeOverflow}
-      { overflowCount && <NxIconDropdown title="TODO"
-                                         isOpen={isDropdownOpen}
-                                         className="nx-scroll-nav__overflow-dropdown"
-                                         onToggleCollapse={onToggleDropdownCollapse} />
+      { overflowCount &&
+        <NxIconDropdown title="TODO"
+                        isOpen={isDropdownOpen}
+                        className="nx-scroll-nav__overflow-dropdown"
+                        onToggleCollapse={onToggleDropdownCollapse}>
+          {buttonsAfterOverflow}
+        </NxIconDropdown>
       }
       {buttonsAfterOverflow}
     </nav>
