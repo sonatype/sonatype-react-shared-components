@@ -320,3 +320,4 @@ export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemN
 export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
 
 export { default as NxScrollNav } from './components/NxScrollNav/NxScrollNav';
+export { default as useScrollSpy } from './util/useScrollSpy';

@@ -145,6 +145,7 @@ import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferLi
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxScrollNavPage from './components/NxScrollNav/NxScrollNavPage';
+import UseScrollSpyPage from './jsUtilPages/UseScrollSpy/UseScrollSpyPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -284,6 +285,7 @@ const pageConfig: PageConfig = {
     'Policy Threat Level Utils': { content: PolicyThreatLevelUtilsPage, type: 'js' },
     'Server Side Rendering Utilities': { content: ServerSideRenderingUtilsPage, type: 'js'},
     'TooltipConfigProps': { content: TooltipConfigPropsPage, type: 'js' },
+    'useScrollSpy': { content: UseScrollSpyPage, type: 'js' },
     'useToggle': { content: UseTogglePage, type: 'js' },
     'Validation Utils': { content: ValidationUtilsPage, type: 'js' },
     'withClass Higher-Order Component': { content: WithClassPage, type: 'js' }
