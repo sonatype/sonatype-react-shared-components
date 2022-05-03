@@ -146,6 +146,7 @@ import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxScrollNavPage from './components/NxScrollNav/NxScrollNavPage';
 import UseScrollSpyPage from './jsUtilPages/UseScrollSpy/UseScrollSpyPage';
+import ScrollNavLayoutPage from './styles/ScrollNavLayout/ScrollNavLayoutPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -248,6 +249,7 @@ const pageConfig: PageConfig = {
     'Read Only': { content: NxReadOnlyPage, type: 'html' },
     'Tabs': { content: NxTabsPage, type: 'react' },
     'Stateful Tabs': { content: NxStatefulTabsPage, type: 'react' },
+    'Scroll Nav Layout Example': { content: ScrollNavLayoutPage, type: 'layout' },
     'Tile': { content: NxTilePage, type: 'html' },
     'Vulnerability Details': { content: NxVulnerabilityDetailsPage, type: 'react' }
   },
