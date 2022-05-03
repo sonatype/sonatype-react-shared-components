@@ -130,7 +130,7 @@ export default function NxScrollNavExample() {
         <NxTile ref={scrollRefs.Table}>
           <NxTile.Header>
             <NxTile.HeaderTitle>
-              <NxH2>Information</NxH2>
+              <NxH2>Table</NxH2>
             </NxTile.HeaderTitle>
           </NxTile.Header>
           <NxTile.Content>
