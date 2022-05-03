@@ -10,7 +10,7 @@ FROM docker-all.repo.sonatype.com/node:16
 RUN apt-get update && \
     apt-get autoremove -y && apt-get clean -y && \
     apt-get install jq -y && \
-    apt-get install chromium libatk-bridge2.0-0 libxkbcommon0 libgbm1 -y
+    apt-get install chromium chromium-browser libatk-bridge2.0-0 libxkbcommon0 libgbm1 -y
 
 RUN useradd -u 1002 -g 100 jenkins
 RUN mkdir -p /home/jenkins/.npm
