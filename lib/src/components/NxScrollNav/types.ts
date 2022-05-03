@@ -6,14 +6,14 @@
  */
 import { ValidationMap } from 'react';
 
-export interface Props {
-  scrollSections: string[];
-  activeSection: string;
-  onScrollSectionClick: (section: string) => void;
+export interface Props<S extends string> {
+  scrollSections: S[];
+  activeSection: S;
+  onScrollSectionClick: (section: S) => void;
   isDropdownOpen: boolean;
   onToggleDropdownCollapse: () => void;
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: ValidationMap<Props<string>> = {
 
 };

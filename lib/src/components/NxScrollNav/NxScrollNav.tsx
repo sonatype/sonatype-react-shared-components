@@ -15,7 +15,7 @@ import { Props } from './types';
 
 import './NxScrollNav.scss';
 
-export default function NxScrollNav(props: Props) {
+export default function NxScrollNav<S extends string>(props: Props<S>) {
   const { scrollSections, activeSection, onScrollSectionClick, isDropdownOpen, onToggleDropdownCollapse } = props,
       [overflowCount, setOverflowCount] = useState(0),
       [calculatingOverflow, setCalculatingOverflow] = useState(false),
