@@ -92,9 +92,9 @@ dockerizedBuildPipeline(
 
         cd gallery
         whereis chromium
-        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium yarn install --registry "\${registry}" --frozen-lockfile --ignore-scripts
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE yarn install --registry "\${registry}" --frozen-lockfile --ignore-scripts
 
-        yarn test
+        PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium yarn test
         yarn build
         cd ..
 
