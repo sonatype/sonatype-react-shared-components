@@ -24,16 +24,14 @@ export default function NxScrollNav(props: Props) {
         'nx-scroll-nav--calculating': calculatingOverflow
       }),
       buttons = map(s => {
-          const classes = classnames('nx-scroll-nav__button', {
-            selected: s === activeSection
-          });
+        const classes = classnames('nx-scroll-nav__button', {
+          selected: s === activeSection
+        });
 
-          return (
-            <button key={s} className={classes} onClick={() => onScrollSectionClick(s)}>{s}</button>
-          );
-        },
-        scrollSections
-      ),
+        return (
+          <button key={s} className={classes} onClick={() => onScrollSectionClick(s)}>{s}</button>
+        );
+      }, scrollSections),
       [buttonsBeforeOverflow, buttonsAfterOverflow] = splitAt(scrollSections.length - overflowCount, buttons);
 
   useResizeObserver(ref, recalculateOverflow);
