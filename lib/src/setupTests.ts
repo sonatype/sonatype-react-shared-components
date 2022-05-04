@@ -6,6 +6,7 @@
  */
 /// <reference types="./__testutils__/jest-enzyme-overrides" />
 
+import '@testing-library/jest-dom';
 import 'jest-enzyme';
 
 import Enzyme from 'enzyme';
