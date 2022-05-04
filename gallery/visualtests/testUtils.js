@@ -247,7 +247,7 @@ module.exports = {
       a11yTest(builderCustomizer) {
         return async () => {
           await page.screenshot({
-            path: `./test/before-a11y_${Math.round(Math.random() * 1000)}.png`,
+            path: `./before-a11y_${Math.round(Math.random() * 1000)}.png`,
             fullPage: true
           });
 
