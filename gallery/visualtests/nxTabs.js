@@ -38,26 +38,24 @@ describe('NxTabs', function() {
     it('has a light blue border and semi-bold text when clicked',
         clickTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`));
     it('has a light blue border when focused',
-        focusTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`))
+        focusTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`));
     it('has a light blue border and semi-bold text when focused and hovered',
-        focusAndHoverTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`))
+        focusAndHoverTest(tabTileExampleSelector, `${tabTileExampleSelector} .nx-tab:nth-child(2)`));
   });
 
   function simpleModalTest(exampleSelector) {
     return async function() {
       const openModalBtnSelector = `${exampleSelector} button`,
-          closeModalBtnSelector =
-              `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`,
           modalSelector = `${exampleSelector} .nx-modal`;
 
       const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
       await openModalBtn.click();
 
-      const [closeModalBtn, targetElement] = await waitAndGetElements(closeModalBtnSelector, modalSelector);
+      const [targetElement] = await waitAndGetElements(modalSelector);
 
       await checkScreenshot(targetElement);
-    }
+    };
   }
 
   describe('Tabs in an NxModal', function() {

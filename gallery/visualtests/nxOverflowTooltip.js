@@ -8,16 +8,12 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxOverflowTooltip', function() {
   const {
-    clickTest,
-    focusTest,
-    focusAndHoverTest,
-    hoverTest,
-    simpleTest,
     getPage,
     waitAndGetElements,
     wait,
-    getElements
- , a11yTest } = setupBrowser('#/pages/Overflow%20Tooltip');
+    getElements,
+    a11yTest
+  } = setupBrowser('#/pages/Overflow%20Tooltip');
 
   const listSelector = '#nx-overflow-tooltip-simple-example .nx-list',
       descendantOverflowListSelector = '#nx-overflow-tooltip-descendant-example .nx-list',
@@ -27,22 +23,11 @@ describe('NxOverflowTooltip', function() {
       dynamicExampleSelector = '#nx-overflow-tooltip-dynamic-example',
       dynamicExampleTextInputSelector = `${dynamicExampleSelector} .nx-text-input input`,
       dynamicExampleTooltipTargetSelector = `${dynamicExampleSelector} .gallery-example-live .nx-p`,
-      tooltipSelector = '.nx-tooltip';
+      tooltipSelector = '.nx-tooltip',
       maxBeforeOverflowStr = 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
       descendantOverflowItemSelector = `${descendantOverflowListSelector} .nx-list__item:nth-child(2)`;
 
-  const wait1Sec = () => wait(1000)
-
-  async function openDropdownAndHoverButton(btnSelector) {
-    const [dropdownEl] = await waitAndGetElements(dropdownSelector);
-
-    await dropdownEl.click();
-
-    const [btnEl] = await waitAndGetElements(btnSelector);
-
-    await btnEl.hover();
-    await wait1Sec();
-  }
+  const wait1Sec = () => wait(1000);
 
   async function isInDocument(el) {
     return el.evaluate(e => e.isConnected);
@@ -94,8 +79,8 @@ describe('NxOverflowTooltip', function() {
   it('activates tooltip display when an already existing element gains text overflow due to more content',
       async function() {
         const [inputEl, targetEl] = await waitAndGetElements(
-          dynamicExampleTextInputSelector,
-          dynamicExampleTooltipTargetSelector
+            dynamicExampleTextInputSelector,
+            dynamicExampleTooltipTargetSelector
         );
 
         await targetEl.hover();
@@ -116,8 +101,8 @@ describe('NxOverflowTooltip', function() {
   it('deactivates tooltip display when an already overflowing element loses text overflow due to less content',
       async function() {
         const [inputEl, targetEl] = await waitAndGetElements(
-          dynamicExampleTextInputSelector,
-          dynamicExampleTooltipTargetSelector,
+            dynamicExampleTextInputSelector,
+            dynamicExampleTooltipTargetSelector,
         );
 
         await inputEl.focus();
@@ -139,8 +124,8 @@ describe('NxOverflowTooltip', function() {
   it('activates tooltip display when an already existing element gains text overflow due to width decrease',
       async function() {
         const [inputEl, targetEl] = await waitAndGetElements(
-          dynamicExampleTextInputSelector,
-          dynamicExampleTooltipTargetSelector
+            dynamicExampleTextInputSelector,
+            dynamicExampleTooltipTargetSelector
         );
 
         await getPage().setViewport({ width: 1400, height: 1000 });
@@ -156,7 +141,7 @@ describe('NxOverflowTooltip', function() {
         await targetEl.hover();
 
         await wait1Sec();
-        tooltipEl = (await getElements(tooltipSelector))[0];
+        const tooltipEl = (await getElements(tooltipSelector))[0];
         expect(await isInDocument(tooltipEl)).toBe(true);
         expect(await tooltipEl.evaluate(e => e.innerText)).toBe(maxBeforeOverflowStr + 'W');
       }
@@ -165,8 +150,8 @@ describe('NxOverflowTooltip', function() {
   it('deactivates tooltip display when an already overflowing element loses text overflow due to width increase',
       async function() {
         const [inputEl, targetEl] = await waitAndGetElements(
-          dynamicExampleTextInputSelector,
-          dynamicExampleTooltipTargetSelector
+            dynamicExampleTextInputSelector,
+            dynamicExampleTooltipTargetSelector
         );
 
         await inputEl.focus();
@@ -207,6 +192,6 @@ describe('NxOverflowTooltip', function() {
     await waitAndGetElements(tooltipSelector);
 
     //disabling the region rule to get around the "Some page content is not contained by landmarks" for tooltips
-    await a11yTest(builder => builder.disableRules('region'));
+    await a11yTest(builder => builder.disableRules('region'))();
   });
 });

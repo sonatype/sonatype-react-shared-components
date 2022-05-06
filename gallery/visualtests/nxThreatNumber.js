@@ -13,7 +13,6 @@ describe('nx-threat-number', function() {
       tableSelector = '#nx-threat-number-table-example .nx-table',
       basicSelector = '#nx-threat-number-basic-example .gallery-example-live';
 
-
   it('looks right', simpleTest(basicSelector));
   it('looks right in a list', simpleTest(listSelector));
   it('looks right in a table', simpleTest(tableSelector));

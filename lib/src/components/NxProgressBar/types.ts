@@ -10,6 +10,11 @@ import { HTMLAttributes } from 'react';
 export const NX_PROGRESS_BAR_VARIANTS = ['inline', 'small', 'normal', 'full'] as const;
 export type NX_PROGRESS_BAR_VARIANT_TYPE = (typeof NX_PROGRESS_BAR_VARIANTS)[number];
 
+export interface StepsProps {
+  max: number;
+  value: number;
+}
+
 export interface Props extends HTMLAttributes<Omit<HTMLProgressElement, 'value' | 'max'>> {
   inlineCounter?: boolean | null;
   label: string;
@@ -17,6 +22,7 @@ export interface Props extends HTMLAttributes<Omit<HTMLProgressElement, 'value' 
   labelError?: string | null;
   max?: number | null;
   showCounter?: boolean | null;
+  showSteps?: boolean | null;
   value: number;
   variant?: NX_PROGRESS_BAR_VARIANT_TYPE | null;
 }

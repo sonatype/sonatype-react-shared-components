@@ -7,7 +7,8 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-global-sidebar', function() {
-  const { getPage, waitAndGetElements, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalSidebarExample', false);
+  const { getPage, waitAndGetElements, checkFullPageScreenshot, a11yTest } =
+      setupBrowser('#/NxGlobalSidebarExample', false);
 
   beforeEach(async function() {
     await getPage().setViewport({ width: 1366, height: 1000 });

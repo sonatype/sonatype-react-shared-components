@@ -8,16 +8,12 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxSearchTransferList', function() {
   const {
-        clickTest,
-        focusTest,
-        focusAndHoverTest,
-        hoverTest,
-        simpleTest,
-        waitAndGetElements,
-        checkScreenshot,
-        getPage,
-        a11yTest
-      } = setupBrowser('#/pages/Search Transfer List');
+    simpleTest,
+    waitAndGetElements,
+    checkScreenshot,
+    getPage,
+    a11yTest
+  } = setupBrowser('#/pages/Search Transfer List');
 
   const simpleListSelector = '#nx-search-transfer-list-example .nx-search-transfer-list',
       complexListSelector = '#nx-search-transfer-list-complex-example .nx-search-transfer-list';
@@ -28,10 +24,7 @@ describe('NxSearchTransferList', function() {
     beforeEach(async function() {
       const inputSelector = `${simpleListSelector} .nx-filter-input input`,
           dropdownButtonSelector = `${simpleListSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(
-            simpleListSelector,
-            inputSelector
-          );
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('1');

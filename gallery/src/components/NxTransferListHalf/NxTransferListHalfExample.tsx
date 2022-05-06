@@ -5,11 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { DataItem, NxTransferListHalf } from '@sonatype/react-shared-components';
+import { DataItem, NxFontAwesomeIcon, NxTransferListHalf } from '@sonatype/react-shared-components';
 import { map, range, prepend, reject, propEq } from 'ramda';
+import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
 
-const initialItems: DataItem<number>[] = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
-    map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)));
+const initialItems: DataItem<number>[] = prepend(
+    {
+      id: 0,
+      displayName: <><NxFontAwesomeIcon icon={faArrowsAltH} /><span>Loooooooooooooooooooooooooong Name</span></>
+    },
+    map<number, DataItem<number>>(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101))
+);
 
 export default function NxTransferListHalfExample() {
   const [items, setItems] = useState<DataItem<number>[]>(initialItems),

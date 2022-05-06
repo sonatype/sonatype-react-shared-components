@@ -11,7 +11,6 @@ describe('Page Layout', function() {
   function testLoadWrapper(thingsToSee, url) {
     describe('with ' + thingsToSee, function() {
       const {
-        checkFullPageScreenshot,
         getPage,
         waitForSelectors,
         disableLoadingSpinnerAnimation
