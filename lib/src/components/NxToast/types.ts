@@ -34,39 +34,34 @@ export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
 export interface ToastModel {
   toastId: number,
   type: ToastType,
-  message: string,
+  message: string
 }
 
 export interface ToastAddModel {
   type: ToastType,
-  message: string,
-  position?: string | null
+  message: string
 }
 
 export type ToastContextType = {
   toasts: ToastModel[];
   addToast: (model: ToastAddModel) => void,
-  removeToast: (id: number) => void,
+  removeToast: (id: number) => void
 } | null;
 
 //NxToastContainer
 export type NxToastContainerProps = {
-  toasts: ToastModel[] | [],
-  isCentered: boolean
+  toasts: ToastModel[] | []
 };
 
 export const nxToastContainerPropTypes: PropTypes.ValidationMap<NxToastContainerProps> = {
-  toasts: PropTypes.array.isRequired,
-  isCentered: PropTypes.bool.isRequired
+  toasts: PropTypes.array.isRequired
 };
 
 //NxToastProvider
 export type NxToastProviderProps = {
-  children: ReactNode | null,
-  isCentered?: boolean | undefined | null
+  children: ReactNode | null
 };
 
 export const nxToastProviderPropTypes: PropTypes.ValidationMap<NxToastProviderProps> = {
-  children: PropTypes.any,
-  isCentered: PropTypes.bool
+  children: PropTypes.any
 };

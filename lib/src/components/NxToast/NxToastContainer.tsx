@@ -11,8 +11,8 @@ import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
 import classNames from 'classnames';
 
 const NxToastContainer = (props: NxToastContainerProps) => {
-  const { toasts, isCentered } = props,
-      className = classNames('nx-toast__container', {'centered': isCentered}),
+  const { toasts } = props,
+      className = classNames('nx-toast__container'),
       toastContainerRef = useRef<HTMLDivElement | null>(null);
 
   return createPortal(

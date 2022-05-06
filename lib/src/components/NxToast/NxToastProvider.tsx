@@ -13,7 +13,7 @@ import { NxToastProviderProps, nxToastProviderPropTypes, ToastAddModel, ToastMod
 let id = 1;
 
 const NxToastProvider = (props: NxToastProviderProps) => {
-  const { children, isCentered } = props;
+  const { children } = props;
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
   const addToast = useCallback((content: ToastAddModel) => {
@@ -29,7 +29,7 @@ const NxToastProvider = (props: NxToastProviderProps) => {
 
   return (
     <ToastContext.Provider value={{toasts, addToast, removeToast}}>
-      <NxToastContainer toasts={toasts} isCentered={isCentered || false}/>
+      <NxToastContainer toasts={toasts} />
       {children}
     </ToastContext.Provider>
   );
