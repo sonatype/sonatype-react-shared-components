@@ -62,17 +62,15 @@
   cursor: default;
   display: block;
   margin-bottom: var(--nx-spacing-2x);
+
+  &::after {
+    content: ' *';
+  }
 }
 
 .nx-label--optional, .nx-legend--optional {
   .nx-label__text::after, .nx-legend__text::after {
-    @include nx-text-helpers.regular;
-
-    color: var(--nx-color-text);
-    content: "Optional";
-    font-size: var(--nx-font-size-xs);
-    font-style: italic;
-    margin-left: var(--nx-spacing-2x);
+    display: none;
   }
 }
 
