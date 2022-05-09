@@ -7,28 +7,26 @@
 @use '../base-styles/nx-alert';
 @use '../scss-shared/nx-container-helpers';
 
-.nx-toast__container {
+.nx-toast__container--wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: var(--nx-spacing-6x);
+}
+
+.nx-toast__container--content {
   @include nx-container-helpers.container-vertical;
   margin-right: var(--nx-spacing-2x);
   margin-top: var(--nx-spacing-2x);
   position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 2;
-}
-
-.nx-toast__container.centered{
-  margin-right: 0;
-  right: unset;
-  left: 50%;
-  transform: translate(-50%);
 }
 
 .nx-toast {
   @extend .nx-alert;
   opacity: 0.5;
   position: relative;
-  top: -16px;
   width: 500px;
 }
 
