@@ -57,7 +57,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
       const renderForm = () => {
         return (
           <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
-            <FormPristineContext.Provider value={isPristine || true}>
+            <FormPristineContext.Provider value={isPristine}>
               {getChildren()}
               <footer className="nx-footer">
                 { submitError &&
