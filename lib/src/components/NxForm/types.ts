@@ -24,7 +24,10 @@ export interface Props extends FormHTMLAttributes<HTMLFormElement> {
   submitMaskSuccessMessage?: string | null;
   children: ReactNode | (() => ReactNode);
   additionalFooterBtns?: ReactNode | null;
+  isPristine: boolean;
 }
+
+export type StatefulProps = Omit<Props, 'isPristine'>;
 
 export const propTypes: ValidationMap<Props> = {
   loading: PropTypes.bool,

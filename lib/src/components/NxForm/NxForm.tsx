@@ -14,6 +14,7 @@ import NxButton from '../NxButton/NxButton';
 import NxSubmitMask from '../NxSubmitMask/NxSubmitMask';
 
 import { Props, propTypes } from './types';
+import { FormPristineContext } from './contexts';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
 
 const NxForm = forwardRef<HTMLFormElement, Props>(
@@ -35,55 +36,56 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             submitMaskSuccessMessage,
             children,
             additionalFooterBtns,
+            isPristine,
             ...formAttrs
           } = props,
           formClasses = classnames('nx-form', className),
           getChildren = children instanceof Function ? children : always(children),
-          submitDisabled = hasValidationErrors(validationErrors),
-          submitBtnClasses = classnames('nx-form__submit-btn', submitBtnClassesProp, {
-            disabled: submitDisabled
-          });
+          submitBtnClasses = classnames('nx-form__submit-btn', submitBtnClassesProp),
+          formHasValidationErrors = hasValidationErrors(validationErrors);
+
+      if (isPristine == null) {
+        throw new Error('isPristine is strictly required!');
+      }
 
       function onSubmit(evt: FormEvent) {
         evt.preventDefault();
 
-        if (!submitDisabled) {
-          onSubmitProp();
-        }
+        onSubmitProp();
       }
 
       const renderForm = () => {
-        const submitValidationError = getFirstValidationError(validationErrors) || '',
-            submitAriaLabel = submitValidationError ? `Submit disabled: ${submitValidationError}` : undefined;
-
         return (
           <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
-            { getChildren() }
-            <footer className="nx-footer">
-              { submitError &&
-                <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
-                             error={submitError}
-                             retryHandler={onSubmitProp} />
-              }
-
-              <div className="nx-btn-bar">
-                { additionalFooterBtns }
-                { onCancel &&
-                  <NxButton type="button" onClick={onCancel} className="nx-form__cancel-btn">
-                    Cancel
-                  </NxButton>
+            <FormPristineContext.Provider value={isPristine || true}>
+              {getChildren()}
+              <footer className="nx-footer">
+                { submitError &&
+                  <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
+                               error={submitError}
+                               retryHandler={onSubmitProp} />
                 }
-                { !submitError &&
-                  <NxButton variant="primary"
-                            className={submitBtnClasses || 'nx-form__submit-btn'}
-                            title={submitValidationError}
-                            aria-label={submitAriaLabel}>
-                    {submitBtnText || 'Submit'}
-                  </NxButton>
+                { !submitError && formHasValidationErrors && !isPristine &&
+                  <NxLoadError titleMessage="There were validation errors."
+                               error={getFirstValidationError(validationErrors)}
+                               retryHandler={onSubmitProp} />
                 }
-              </div>
+                <div className="nx-btn-bar">
+                  { additionalFooterBtns }
+                  { onCancel &&
+                    <NxButton type="button" onClick={onCancel} className="nx-form__cancel-btn">
+                      Cancel
+                    </NxButton>
+                  }
+                  { !!submitError || (formHasValidationErrors && !isPristine) ||
+                    <NxButton variant="primary" className={submitBtnClasses}>
+                      {submitBtnText || 'Submit'}
+                    </NxButton>
+                  }
+                </div>
 
-            </footer>
+              </footer>
+            </FormPristineContext.Provider>
             { submitMaskState != null &&
               <NxSubmitMask success={submitMaskState}
                             message={submitMaskMessage}

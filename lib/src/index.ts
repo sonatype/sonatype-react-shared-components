@@ -184,6 +184,10 @@ export {
   default as NxForm,
   Props as NxFormProps
 } from './components/NxForm/NxForm';
+export {
+  default as NxStatefulForm,
+  Props as NxStatefulFormProps
+} from './components/NxForm/stateful/NxStatefulForm';
 
 export * from './util/threatLevels';
 export * from './util/validationUtil';
