@@ -8,7 +8,7 @@ import React, { useState, useEffect, FormEvent } from 'react';
 
 import {
   NxCheckbox,
-  NxForm,
+  NxStatefulForm,
   NxRadio,
   NxFormGroup,
   NxTextInput,
@@ -79,30 +79,32 @@ export default function NxFormExample() {
   }
 
   function onSubmit() {
-    // For the sake of example, simulate that the submit fails the first time, and then upon retry
-    // succeeds after 3 seconds
-    if (submitCount < 1) {
-      setSubmitError('The form could not be saved!');
-    }
-    else {
-      setSubmitError(null);
+    if (!hasValidationErrors(validationErrors)) {
+      // For the sake of example, simulate that the submit fails the first time, and then upon retry
+      // succeeds after 3 seconds
+      if (submitCount < 1) {
+        setSubmitError('The form could not be saved!');
+      }
+      else {
+        setSubmitError(null);
 
-      setSubmitMaskState(false);
-
-      setTimeout(function() {
-        setSubmitMaskState(true);
+        setSubmitMaskState(false);
 
         setTimeout(function() {
-          setSubmitMaskState(null);
-        }, SUCCESS_VISIBLE_TIME_MS);
-      }, 3000);
-    }
+          setSubmitMaskState(true);
 
-    setSubmitCount(submitCount + 1);
+          setTimeout(function() {
+            setSubmitMaskState(null);
+          }, SUCCESS_VISIBLE_TIME_MS);
+        }, 3000);
+      }
+
+      setSubmitCount(submitCount + 1);
+    }
   }
 
   return (
-    <NxForm loading={loading}
+    <NxStatefulForm loading={loading}
             doLoad={doLoad}
             onSubmit={onSubmit}
             loadError={loadError}
@@ -150,6 +152,6 @@ export default function NxFormExample() {
           <option value="option5">Option 5</option>
         </NxFormSelect>
       </NxFormGroup>
-    </NxForm>
+    </NxStatefulForm>
   );
 }

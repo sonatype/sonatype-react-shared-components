@@ -12,11 +12,11 @@ import {
   NxButton,
   NxTextInput,
   NxFormGroup,
-  NxForm,
   nxTextInputStateHelpers,
   NxFieldset,
   NxCheckbox,
-  useToggle
+  useToggle,
+  NxStatefulForm
 } from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
@@ -53,7 +53,7 @@ export default function NxModalFormExample() {
       <NxButton onClick={openModal}>Open Modal with Form</NxButton>
       {showModal &&
         <NxModal id="nx-modal-form-example" onCancel={modalCloseHandler} aria-labelledby="modal-form-header">
-          <NxForm className="nx-form"
+          <NxStatefulForm className="nx-form"
                   onSubmit={modalCloseHandler}
                   onCancel={modalCloseHandler}
                   validationErrors={validationErrors}
@@ -90,7 +90,7 @@ export default function NxModalFormExample() {
                 <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
               </NxFieldset>
             </div>
-          </NxForm>
+          </NxStatefulForm>
         </NxModal>
       }
     </>

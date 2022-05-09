@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxStatefulTextInput, NxButton, NxFormGroup, NxForm } from '@sonatype/react-shared-components';
+import { NxStatefulTextInput, NxButton, NxFormGroup, NxStatefulForm } from '@sonatype/react-shared-components';
 
 export default function NxTileFormExample() {
   function onSubmit() {
@@ -15,7 +15,7 @@ export default function NxTileFormExample() {
 
   return (
     <section className="nx-tile" aria-label="Example of nx-tile with a form with error">
-      <NxForm onSubmit={onSubmit} doLoad={() => {}} loadError="404 Not Found">
+      <NxStatefulForm onSubmit={onSubmit} doLoad={() => {}} loadError="404 Not Found">
         <header className="nx-tile-header">
           <div className="nx-tile-header__title">
             <h2 className="nx-h2">NX Simple Tile with Form</h2>
@@ -34,7 +34,7 @@ export default function NxTileFormExample() {
             <NxButton variant="primary">Footer Button</NxButton>
           </div>
         </footer>
-      </NxForm>
+      </NxStatefulForm>
     </section>
   );
 }

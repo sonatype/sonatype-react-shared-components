@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxModal, NxFontAwesomeIcon, NxTextInput, NxButton, nxTextInputStateHelpers, NxFormGroup, NxForm }
+import { NxModal, NxFontAwesomeIcon, NxTextInput, NxButton, nxTextInputStateHelpers, NxFormGroup, NxStatefulForm }
   from '@sonatype/react-shared-components';
 import { faAngry } from '@fortawesome/free-solid-svg-icons';
 
@@ -29,7 +29,7 @@ export default function NxModalFormErrorExample() {
         <NxModal id="nx-modal-form-error-example"
                  onCancel={modalCloseHandler}
                  aria-labelledby="modal-form-error-header">
-          <NxForm className="nx-form"
+          <NxStatefulForm className="nx-form"
                   onSubmit={modalCloseHandler}
                   onCancel={modalCloseHandler}
                   submitError={error}>
@@ -51,7 +51,7 @@ export default function NxModalFormErrorExample() {
                              { ...textFieldState }/>
               </NxFormGroup>
             </div>
-          </NxForm>
+          </NxStatefulForm>
         </NxModal>
       }
     </>

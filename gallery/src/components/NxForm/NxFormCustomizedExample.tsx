@@ -6,7 +6,8 @@
  */
 import React, { useState } from 'react';
 
-import { NxForm, NxFormGroup, NxTextInput, NxButton, nxTextInputStateHelpers } from '@sonatype/react-shared-components';
+import { NxFormGroup, NxTextInput, NxButton, nxTextInputStateHelpers, NxStatefulForm }
+  from '@sonatype/react-shared-components';
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
 
 const { initialState, userInput } = nxTextInputStateHelpers;
@@ -63,7 +64,7 @@ export default function NxFormCustomizedExample() {
   );
 
   return (
-    <NxForm onSubmit={onSubmit}
+    <NxStatefulForm onSubmit={onSubmit}
             onCancel={resetForm}
             submitMaskState={submitMaskState}
             className="gallery-custom-form"
@@ -80,6 +81,6 @@ export default function NxFormCustomizedExample() {
       <NxFormGroup label="Hostname">
         <NxTextInput { ...hostnameState } onChange={onHostnameChange} className="nx-text-input--long"/>
       </NxFormGroup>
-    </NxForm>
+    </NxStatefulForm>
   );
 }
