@@ -13,6 +13,7 @@
  *   Note that prefers-color-scheme: light doesn't really do anything since light is already the default.
  * 3. If nx-html--dark-mode or nx-html--light-mode is set, follow that class, regardless of prefers-color-scheme.
  *   Setting both of those classes simultaneously is not advised but will result in dark mode.
+ * 4. If nx-html--enable-color-schemes is NOT set, always light mode
  */
 @mixin dark-mode {
   .nx-html--enable-color-schemes.nx-html--dark-mode &, &.nx-html--enable-color-schemes.nx-html--dark-mode {
