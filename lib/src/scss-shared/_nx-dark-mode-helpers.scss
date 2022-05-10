@@ -15,12 +15,12 @@
  *   Setting both of those classes simultaneously is not advised but will result in dark mode.
  */
 @mixin dark-mode {
-  .nx-html--dark-mode & {
+  .nx-html--enable-color-schemes.nx-html--dark-mode & {
     @content;
   }
 
   @media (prefers-color-scheme: dark) {
-    .nx-html:not(.nx-html--light-mode) & {
+    .nx-html--enable-color-schemes:not(.nx-html--light-mode) & {
       @content;
     }
   }
