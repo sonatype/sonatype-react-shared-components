@@ -6,6 +6,7 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
 
 /*
   #Name-spaced Tile System
@@ -64,7 +65,7 @@
 
   grid-area: subtitle;
 
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   font-size: var(--nx-font-size-heading-3);
   // There should be an 8px spacing between the title and the subtitle.
   // The 1px margin-top is calculated from:
@@ -105,6 +106,10 @@
   &:last-child {
     padding-bottom: var(--nx-spacing-4x);
     margin-bottom: calc(0px - var(--nx-tile-spacing));
+  }
+
+  @include nx-dark-mode-helpers.dark-mode {
+    background-color: var(--nx-swatch-indigo-05);
   }
 }
 
