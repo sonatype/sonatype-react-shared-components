@@ -5,15 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxInfoAlert, NxP, NxTable } from '@sonatype/react-shared-components';
+import { NxCode, NxInfoAlert, NxP, NxTable, NxTile, NxH2, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxToastExample from './NxToastExample';
 import NxToastMultipleExample from './NxToastMultipleExample';
+import CodeExample from '../../CodeExample';
 
-const NxToastExampleCode = require('./NxToastExample?raw'),
-    NxToastMultipleExampleCode = require('./NxToastMultipleExample?raw');
+const nxToastExampleCode = require('./NxToastExample?raw'),
+    nxToastMultipleExampleCode = require('./NxToastMultipleExample?raw'),
+    nxGlobalHeaderToastExampleCode = require('../../styles/NxGlobalHeader/NxGlobalHeaderToastExample?raw');
 
 const NxToastPage = () =>
   <>
@@ -47,17 +49,33 @@ const NxToastPage = () =>
     <GalleryExampleTile title="Toasts Example"
                         id="nx-toast-example"
                         liveExample={NxToastExample}
-                        codeExamples={NxToastExampleCode}>
+                        codeExamples={nxToastExampleCode}>
       An example of a the different types of toasts that can be displayed.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Multiple Toasts Example"
                         id="nx-toast-multiple-example"
                         liveExample={NxToastMultipleExample}
-                        codeExamples={NxToastMultipleExampleCode}>
+                        codeExamples={nxToastMultipleExampleCode}>
       An example of displaying multiple toasts at once. This example also shows how a toast
       appears and is stacked on top of other toasts.
     </GalleryExampleTile>
+
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>Toasts Used With NxGlobalHeader Example</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          <NxTextLink href="#/NxGlobalHeaderToastExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+        <CodeExample content={nxGlobalHeaderToastExampleCode} />
+      </NxTile.Content>
+    </NxTile>
   </>;
 
 export default NxToastPage;
