@@ -10,11 +10,9 @@ import { NxCode, NxInfoAlert, NxP, NxTable } from '@sonatype/react-shared-compon
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxToastExample from './NxToastExample';
-import NxToastCenteredExample from './NxToastCenteredExample';
 import NxToastMultipleExample from './NxToastMultipleExample';
 
 const NxToastExampleCode = require('./NxToastExample?raw'),
-    NxToastCenteredExampleCode = require('./NxToastCenteredExample?raw'),
     NxToastMultipleExampleCode = require('./NxToastMultipleExample?raw');
 
 const NxToastPage = () =>
@@ -51,13 +49,6 @@ const NxToastPage = () =>
                         liveExample={NxToastExample}
                         codeExamples={NxToastExampleCode}>
       An example of a the different types of toasts that can be displayed.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Centered Toast Example"
-                        id="nx-toast-centered-example"
-                        liveExample={NxToastCenteredExample}
-                        codeExamples={NxToastCenteredExampleCode}>
-      An example of a toast that is centrally aligned.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Multiple Toasts Example"
