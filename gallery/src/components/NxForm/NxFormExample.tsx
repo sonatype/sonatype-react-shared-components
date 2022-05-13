@@ -39,17 +39,18 @@ export default function NxFormExample() {
       [redChecked, toggleRed] = useToggle(false),
       [blueChecked, toggleBlue] = useToggle(false),
       [greenChecked, toggleGreen] = useToggle(false),
+      [isFieldsetPristine, setIsFieldsetPristine] = useState(true),
       [radioColor, setRadioColor] = useState<string | null>(null),
       [loading, setLoading] = useState(true),
       [loadError, setLoadError] = useState<string | null>(null),
       [submitCount, setSubmitCount] = useState(0),
       [submitError, setSubmitError] = useState<string | null>(null),
       [submitMaskState, setSubmitMaskState] = useState<boolean | null>(null),
-      radioValidationErrors = (redChecked || blueChecked || greenChecked) ?
+      checkboxValidationErrors = (redChecked || blueChecked || greenChecked) ?
         null : 'Please select at least one checkbox',
       requiredFieldValidationErrors = hasValidationErrors(usernameState.validationErrors) ?
         'Missing required fields' : null,
-      validationErrors = combineValidationErrors(requiredFieldValidationErrors, radioValidationErrors);
+      validationErrors = combineValidationErrors(requiredFieldValidationErrors, checkboxValidationErrors);
 
   function onUsernameChange(val: string) {
     setUsernameState(userInput(validator, val));
@@ -103,6 +104,11 @@ export default function NxFormExample() {
     }
   }
 
+  const setColor = (setter: () => void) => () => {
+    setter();
+    setIsFieldsetPristine(false);
+  };
+
   return (
     <NxStatefulForm loading={loading}
                     doLoad={doLoad}
@@ -117,10 +123,13 @@ export default function NxFormExample() {
       <NxFormGroup label="Hostname">
         <NxTextInput { ...hostnameState } onChange={onHostnameChange} className="nx-text-input--long"/>
       </NxFormGroup>
-      <NxFieldset label="Colors" isRequired>
-        <NxCheckbox onChange={toggleRed} isChecked={redChecked}>Red</NxCheckbox>
-        <NxCheckbox onChange={toggleBlue} isChecked={blueChecked}>Blue</NxCheckbox>
-        <NxCheckbox onChange={toggleGreen} isChecked={greenChecked}>Green</NxCheckbox>
+      <NxFieldset label="Colors"
+                  isRequired
+                  isPristine={isFieldsetPristine}
+                  validationErrors={checkboxValidationErrors}>
+        <NxCheckbox onChange={setColor(toggleRed)} isChecked={redChecked}>Red</NxCheckbox>
+        <NxCheckbox onChange={setColor(toggleBlue)} isChecked={blueChecked}>Blue</NxCheckbox>
+        <NxCheckbox onChange={setColor(toggleGreen)} isChecked={greenChecked}>Green</NxCheckbox>
       </NxFieldset>
       <NxFieldset label="Primary Color" sublabel="Pick a single color">
         <NxRadio name="color"
