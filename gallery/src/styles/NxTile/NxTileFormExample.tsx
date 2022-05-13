@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxStatefulTextInput, NxButton, NxFormGroup, NxStatefulForm, NxForm } from '@sonatype/react-shared-components';
+import { NxStatefulTextInput, NxFormGroup, NxStatefulForm, NxForm } from '@sonatype/react-shared-components';
 
 export default function NxTileFormExample() {
   function validator(val: string) {
@@ -38,11 +38,6 @@ export default function NxTileFormExample() {
             <NxStatefulTextInput/>
           </NxFormGroup>
         </div>
-        <footer className="nx-footer">
-          <div className="nx-btn-bar">
-            <NxButton variant="primary">Footer Button</NxButton>
-          </div>
-        </footer>
       </NxStatefulForm>
     </section>
   );
