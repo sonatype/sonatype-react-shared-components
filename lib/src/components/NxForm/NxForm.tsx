@@ -16,6 +16,7 @@ import NxSubmitMask from '../NxSubmitMask/NxSubmitMask';
 import { Props, propTypes } from './types';
 import { FormPristineContext } from './contexts';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
+import { NxErrorAlert } from '../NxAlert/NxAlert';
 
 const NxForm = forwardRef<HTMLFormElement, Props>(
     function NxForm(props, ref) {
@@ -66,9 +67,10 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
                                retryHandler={onSubmitProp} />
                 }
                 { !submitError && formHasValidationErrors && !isPristine &&
-                  <NxLoadError titleMessage="There were validation errors."
-                               error={getFirstValidationError(validationErrors)}
-                               retryHandler={onSubmitProp} />
+                  <NxErrorAlert>
+                    There were validation errors.
+                    {getFirstValidationError(validationErrors)}
+                  </NxErrorAlert>
                 }
                 <div className="nx-btn-bar">
                   { additionalFooterBtns }
