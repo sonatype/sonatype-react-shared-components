@@ -4,27 +4,31 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent } from 'react';
+import React from 'react';
 
-import { NxStatefulTextInput, NxButton, NxFormGroup } from '@sonatype/react-shared-components';
+import { NxStatefulTextInput, NxButton, NxFormGroup, NxStatefulForm, NxForm } from '@sonatype/react-shared-components';
 
 export default function NxTileFormExample() {
   function validator(val: string) {
     return val.length ? null : 'Must be non-empty';
   }
 
-  function onSubmit(evt: FormEvent) {
-    evt.preventDefault();
+  function onSubmit() {
     alert('Submitted!');
   }
 
   return (
     <section className="nx-tile" aria-label="Example of nx-tile with a form">
-      <form className="nx-form" onSubmit={onSubmit}>
+      <NxStatefulForm onSubmit={onSubmit}>
         <header className="nx-tile-header">
-          <div className="nx-tile-header__title">
-            <h2 className="nx-h2">NX Simple Tile with Form</h2>
-          </div>
+          <hgroup className="nx-tile-header__headings">
+            <div className="nx-tile-header__title">
+              <h2 className="nx-h2">NX Simple Tile with Form</h2>
+            </div>
+            <h3 className="nx-tile-header__subtitle">
+              <NxForm.RequiredFieldNotice />
+            </h3>
+          </hgroup>
         </header>
         <div className="nx-tile-content">
           <NxFormGroup label="Username" isRequired>
@@ -39,7 +43,7 @@ export default function NxTileFormExample() {
             <NxButton variant="primary">Footer Button</NxButton>
           </div>
         </footer>
-      </form>
+      </NxStatefulForm>
     </section>
   );
 }
