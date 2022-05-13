@@ -64,6 +64,7 @@
   margin-bottom: var(--nx-spacing-2x);
 
   &::after {
+    color: var(--nx-swatch-red-40);
     content: ' *';
   }
 }
