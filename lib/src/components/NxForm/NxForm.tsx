@@ -18,7 +18,16 @@ import { FormPristineContext } from './contexts';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
 import { NxErrorAlert } from '../NxAlert/NxAlert';
 
-const NxForm = forwardRef<HTMLFormElement, Props>(
+function RequiredFieldNotice() {
+  return (
+    <span className="nx-form__required-field-notice">
+      <span className="nx-form__required-field-asterisk">*</span>
+      {' '}Required fields are marked with an asterisk
+    </span>
+  );
+}
+
+const _NxForm = forwardRef<HTMLFormElement, Props>(
     function NxForm(props, ref) {
       const {
             className,
@@ -105,7 +114,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
     }
 );
 
-NxForm.propTypes = propTypes;
+const NxForm = Object.assign(_NxForm, { propTypes, RequiredFieldNotice });
 
 export default NxForm;
 export { Props, propTypes };

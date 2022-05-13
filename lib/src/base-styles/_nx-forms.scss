@@ -11,6 +11,10 @@
   position: relative;
 }
 
+.nx-form__required-field-asterisk {
+  color: var(--nx-swatch-red-40);
+}
+
 // Basic form layout
 .nx-form-group {
   margin-bottom: var(--nx-spacing-8x);
@@ -64,7 +68,7 @@
   margin-bottom: var(--nx-spacing-2x);
 
   &::after {
-    color: var(--nx-swatch-red-40);
+    @extend .nx-form__required-field-asterisk;
     content: ' *';
   }
 }
