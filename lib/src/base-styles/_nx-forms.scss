@@ -9,11 +9,64 @@
 
 .nx-form {
   position: relative;
+
+  &__required-field-asterisk {
+    color: var(--nx-swatch-red-40);
+  }
+
+  &__validation-errors {
+    display: none;
+  }
+
+  .invalid {
+    .nx-form__invalid-field-message {
+      display: block;
+    }
+
+    &.pristine {
+      .nx-form__invalid-field-message {
+        display: none;
+      }
+    }
+  }
+
+  &--show-validation-errors {
+    &.nx-form--has-validation-errors {
+      .nx-form__validation-errors {
+        display: flex;
+      }
+
+      .nx-form__submit-btn {
+        display: none;
+      }
+    }
+
+    .nx-form__invalid-field-message {
+      display: block;
+    }
+
+    .invalid {
+      &, &.pristine {
+        .nx-form__invalid-field-message {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__invalid-field-message {
+    color: var(--nx-color-validation-invalid);
+    display: none;
+    font-size: var(--nx-font-size-xs);
+    line-height: 16px;
+    margin-top: var(--nx-spacing-2x);
+
+    // this positions the invalid message inside the bottom margin of .nx-form-group or .nx-fieldset which allows
+    // us to maintain consistent spacing whether there is validation or not
+    position: absolute;
+  }
 }
 
-.nx-form__required-field-asterisk {
-  color: var(--nx-swatch-red-40);
-}
 
 // Basic form layout
 .nx-form-group {

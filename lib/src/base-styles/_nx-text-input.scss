@@ -28,7 +28,7 @@
     }
   }
 
-  &.invalid {
+  &.invalid:not(.pristine) {
     &:focus-within, &:hover {
       .nx-text-input__box {
         border-color: var(--nx-swatch-red-45);
@@ -36,7 +36,7 @@
     }
   }
 
-  &.valid {
+  &.valid:not(.pristine) {
     &:focus-within, &:hover {
       .nx-text-input__box {
         border-color: var(--nx-swatch-green-30);

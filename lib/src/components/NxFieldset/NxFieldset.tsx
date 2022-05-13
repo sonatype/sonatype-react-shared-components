@@ -4,13 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
 import { useUniqueId } from '../../util/idUtil';
-import { FormPristineContext } from '../NxForm/contexts';
 export { Props };
 
 const NxFieldset = forwardRef<HTMLFieldSetElement, Props>(
@@ -22,12 +21,15 @@ const NxFieldset = forwardRef<HTMLFieldSetElement, Props>(
             children,
             isRequired,
             validationErrors,
-            isPristine: isPristineProp,
+            isPristine,
             ...attrs
           } = props,
-          isFormPristine = useContext(FormPristineContext),
-          isPristine = isFormPristine && isPristineProp,
-          classNames = classnames('nx-fieldset', className),
+          isValid = hasValidationErrors(validationErrors),
+          classNames = classnames('nx-fieldset', className, {
+            pristine: isPristine,
+            valid: isValid,
+            invalid: !isValid
+          }),
           legendClassnames = classnames('nx-legend', { 'nx-legend--optional': !isRequired }),
           invalidMessageId = useUniqueId('nx-fieldset-invalid-message'),
           describedBy = hasValidationErrors(validationErrors) ? invalidMessageId : undefined;
@@ -39,8 +41,8 @@ const NxFieldset = forwardRef<HTMLFieldSetElement, Props>(
           </legend>
           { sublabel && <div className="nx-sub-label">{sublabel}</div> }
           {children}
-          <div id={invalidMessageId} role="alert" className="nx-text-input__invalid-message">
-            {!isPristine && getFirstValidationError(validationErrors)}
+          <div id={invalidMessageId} role="alert" className="nx-form__invalid-field-message">
+            {getFirstValidationError(validationErrors)}
           </div>
         </fieldset>
       );

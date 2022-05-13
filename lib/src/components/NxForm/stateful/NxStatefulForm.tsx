@@ -4,8 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useEffect, useState } from 'react';
-import { hasValidationErrors } from '../../../util/validationUtil';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { hasValidationErrors, ValidationErrors } from '../../../util/validationUtil';
 import NxForm from '../NxForm';
 
 import { StatefulProps as Props } from '../types';
@@ -14,11 +14,12 @@ export { Props };
 
 /* eslint-disable react/prop-types */
 const NxStatefulForm = forwardRef<HTMLFormElement, Props>(function NxStatefulForm(props, ref) {
-  const { onSubmit: onSubmitProp, ...otherProps } = props,
-      [isPristine, setIsPristine] = useState(true);
+  const { onSubmit: onSubmitProp, submitMaskState, validationErrors } = props,
+      [showValidationErrors, setShowValidationErrors] = useState(false),
+      previousValidationErrors = useRef<ValidationErrors | undefined>(null);
 
   function onSubmit() {
-    setIsPristine(false);
+    setShowValidationErrors(true);
 
     if (!hasValidationErrors(props.validationErrors)) {
       onSubmitProp();
@@ -26,13 +27,21 @@ const NxStatefulForm = forwardRef<HTMLFormElement, Props>(function NxStatefulFor
   }
 
   useEffect(function() {
-    if (props.submitMaskState === null) {
+    if (submitMaskState === null) {
       // reset pristine state after successful submission
-      setIsPristine(true);
+      setShowValidationErrors(false);
     }
-  }, [props.submitMaskState]);
+  }, [submitMaskState]);
 
-  return <NxForm ref={ref} { ...otherProps } onSubmit={onSubmit} isPristine={isPristine} />;
+  useEffect(function() {
+    if (!hasValidationErrors(validationErrors) && hasValidationErrors(previousValidationErrors.current)) {
+      setShowValidationErrors(false);
+    }
+
+    previousValidationErrors.current = validationErrors;
+  }, [validationErrors]);
+
+  return <NxForm ref={ref} { ...props } onSubmit={onSubmit} showValidationErrors={showValidationErrors} />;
 });
 
 export default NxStatefulForm;
