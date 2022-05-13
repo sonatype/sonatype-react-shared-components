@@ -101,4 +101,10 @@
   margin: 0 0 var(--nx-spacing-8x) 0;
   min-inline-size: auto;
   padding: 0;
+
+  // The container-vertical mixin doesn't fully do the job here because the last child is actually the
+  // validation message and we want to remove the bottom margin from the last child _besides_ the validation message
+  > :nth-last-child(2) {
+    margin-bottom: 0;
+  }
 }
