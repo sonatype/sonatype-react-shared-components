@@ -54,16 +54,16 @@ export default function NxModalFormExample() {
       {showModal &&
         <NxModal id="nx-modal-form-example" onCancel={modalCloseHandler} aria-labelledby="modal-form-header">
           <NxStatefulForm className="nx-form"
-                  onSubmit={modalCloseHandler}
-                  onCancel={modalCloseHandler}
-                  validationErrors={validationErrors}
-                  additionalFooterBtns={
-                    <NxButton type="button" onClick={modalCloseHandler} variant="tertiary">
-                      Tertiary
-                    </NxButton>
-                  }
-                  doLoad={() => {}}
-                  loading={loading}>
+                          onSubmit={modalCloseHandler}
+                          onCancel={modalCloseHandler}
+                          validationErrors={validationErrors}
+                          additionalFooterBtns={
+                            <NxButton type="button" onClick={modalCloseHandler} variant="tertiary">
+                              Tertiary
+                            </NxButton>
+                          }
+                          doLoad={() => {}}
+                          loading={loading}>
             <header className="nx-modal-header">
               <h2 className="nx-h2" id="modal-form-header">
                 <NxFontAwesomeIcon icon={faAngry} />

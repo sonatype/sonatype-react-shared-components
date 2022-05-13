@@ -105,12 +105,12 @@ export default function NxFormExample() {
 
   return (
     <NxStatefulForm loading={loading}
-            doLoad={doLoad}
-            onSubmit={onSubmit}
-            loadError={loadError}
-            submitError={submitError}
-            validationErrors={validationErrors}
-            submitMaskState={submitMaskState}>
+                    doLoad={doLoad}
+                    onSubmit={onSubmit}
+                    loadError={loadError}
+                    submitError={submitError}
+                    validationErrors={validationErrors}
+                    submitMaskState={submitMaskState}>
       <NxFormGroup label="Username" isRequired>
         <NxTextInput { ...usernameState } onChange={onUsernameChange} validatable/>
       </NxFormGroup>

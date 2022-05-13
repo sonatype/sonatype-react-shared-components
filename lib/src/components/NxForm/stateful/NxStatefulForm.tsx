@@ -12,6 +12,7 @@ import { StatefulProps as Props } from '../types';
 
 export { Props };
 
+/* eslint-disable react/prop-types */
 const NxStatefulForm = forwardRef<HTMLFormElement, Props>(function NxStatefulForm(props, ref) {
   const { onSubmit: onSubmitProp, ...otherProps } = props,
       [isPristine, setIsPristine] = useState(true);

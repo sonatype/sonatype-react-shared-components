@@ -65,16 +65,16 @@ export default function NxFormCustomizedExample() {
 
   return (
     <NxStatefulForm onSubmit={onSubmit}
-            onCancel={resetForm}
-            submitMaskState={submitMaskState}
-            className="gallery-custom-form"
-            submitBtnClasses="gallery-custom-form__submit"
-            submitError={submitError}
-            submitErrorTitleMessage="There was an error sending the message."
-            submitBtnText="Send it"
-            submitMaskMessage="Sending…"
-            submitMaskSuccessMessage="Sent!"
-            additionalFooterBtns={additionalFooterBtns}>
+                    onCancel={resetForm}
+                    submitMaskState={submitMaskState}
+                    className="gallery-custom-form"
+                    submitBtnClasses="gallery-custom-form__submit"
+                    submitError={submitError}
+                    submitErrorTitleMessage="There was an error sending the message."
+                    submitBtnText="Send it"
+                    submitMaskMessage="Sending…"
+                    submitMaskSuccessMessage="Sent!"
+                    additionalFooterBtns={additionalFooterBtns}>
       <NxFormGroup label="Username">
         <NxTextInput { ...usernameState } onChange={onUsernameChange} />
       </NxFormGroup>
