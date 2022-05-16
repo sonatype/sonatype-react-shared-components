@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { getMountedComponent } from '../../../__testutils__/enzymeUtils';
 import NxToast from '../NxToast';
 
 import NxToastContainer from '../NxToastContainer';
@@ -13,30 +13,23 @@ import { NxToastContainerProps } from '../types';
 
 describe('NxToastContainer', function() {
   const simpleProps: NxToastContainerProps = {
-        toasts: [],
-        isCentered: false
+        toasts: []
       },
-      getShallow = getShallowComponent<NxToastContainerProps>(NxToastContainer, simpleProps);
+      getMounted = getMountedComponent<NxToastContainerProps>(NxToastContainer, simpleProps);
 
   it('renders a <div> with a .nx-toast__container class', function() {
-    const nxToastContainer = getShallow();
-    expect(nxToastContainer.find('div.nx-toast__container')).toExist();
-    expect(nxToastContainer).toContainExactlyOneMatchingElement('div.nx-toast__container');
-  });
-
-  it('renders a <div> with a .nx-toast__container.centered class if isCentered prop is provided', function() {
-    const nxToastContainer = getShallow({ ...simpleProps, isCentered: true});
-    expect(nxToastContainer.find('div.nx-toast__container.centered')).toExist();
-    expect(nxToastContainer).toContainExactlyOneMatchingElement('div.nx-toast__container.centered');
+    const nxToastContainer = getMounted();
+    expect(nxToastContainer.find('div.nx-toast__wrapper')).toExist();
+    expect(nxToastContainer).toContainExactlyOneMatchingElement('div.nx-toast__wrapper');
   });
 
   it('doesn\'t render a toast if toasts array is empty', function() {
-    const nxToastContainer = getShallow();
+    const nxToastContainer = getMounted();
     expect(nxToastContainer).not.toContain(NxToast);
   });
 
   it('renders a toast if toasts array is not empty', function() {
-    const nxToastContainer = getShallow({
+    const nxToastContainer = getMounted({
       toasts: [{toastId: 1, type: 'error', message: 'test'}]
     });
     expect(nxToastContainer).toExist();
@@ -45,7 +38,7 @@ describe('NxToastContainer', function() {
   });
 
   it('renders multiple toasts if toasts array has multiple elements', function() {
-    const nxToastContainer = getShallow({
+    const nxToastContainer = getMounted({
       toasts: [
         {toastId: 1, type: 'error', message: 'error test'},
         {toastId: 2, type: 'success', message: 'success test'}
@@ -56,7 +49,7 @@ describe('NxToastContainer', function() {
   });
 
   it('renders toasts ordered based on toastId in descending order', function() {
-    const nxToastContainer = getShallow({
+    const nxToastContainer = getMounted({
       toasts: [
         {toastId: 1, type: 'error', message: 'error test'},
         {toastId: 2, type: 'success', message: 'success test'},

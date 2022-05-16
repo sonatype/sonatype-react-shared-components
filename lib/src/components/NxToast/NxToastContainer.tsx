@@ -12,7 +12,7 @@ import classNames from 'classnames';
 
 const NxToastContainer = (props: NxToastContainerProps) => {
   const { toasts } = props,
-      className = classNames('nx-toast__container--wrapper'),
+      className = classNames('nx-toast__wrapper'),
       toastContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [domReady, setDomReady] = React.useState(false);
@@ -21,7 +21,8 @@ const NxToastContainer = (props: NxToastContainerProps) => {
     setDomReady(true);
   }, []);
 
-  const nxPageMainDOM = document.querySelector('.nx-page-main') as HTMLElement;
+  //Create a portal to .nx-page-main if exists, if not, default to document.body
+  const domNodeForPortal = document.querySelector('.nx-page-main') as HTMLElement || document.body;
 
   if (!domReady) {
     return null;
@@ -29,7 +30,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
 
   return createPortal(
     <div className={className} ref={toastContainerRef}>
-      <div className="nx-toast__container--content">
+      <div className="nx-toast__container">
         {toasts.sort((a, b) => (a.toastId > b.toastId) ? -1 : 1).map(toast => (
           <NxToast key={toast.toastId}
                    toastId={toast.toastId}
@@ -39,7 +40,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
         ))}
       </div>
     </div>,
-    nxPageMainDOM
+    domNodeForPortal
   );
 };
 
