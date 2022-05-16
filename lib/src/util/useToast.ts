@@ -11,7 +11,7 @@ import ToastContext from '../components/NxToast/contexts';
 function useToast() {
   const context = useContext(ToastContext);
   /**
-   * Base component that renders a standardized alert.
+   * Base component that renders a standardized toast.
    * @param message Message to show on the toast.
    */
   const showErrorToast = (message: string) => context?.addToast({type: 'error', message});
