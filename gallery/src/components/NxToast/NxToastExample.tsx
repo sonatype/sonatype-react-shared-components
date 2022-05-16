@@ -6,18 +6,13 @@
  */
 import React from 'react';
 
-import { NxButton, useToast, NxToastProvider, NxButtonBar } from '@sonatype/react-shared-components';
+import { NxButton, useToast, NxToastProvider } from '@sonatype/react-shared-components';
 
 const SomeConsumerComponent = () => {
-  const { showErrorToast, showSuccessToast, showWarningToast, showInfoToast } = useToast();
+  const { showSuccessToast } = useToast();
 
   return (
-    <NxButtonBar>
-      <NxButton onClick={() => showErrorToast('Error. Please try again.')}>Show error toast</NxButton>
-      <NxButton onClick={() => showSuccessToast('Policy added!')}>Show success toast</NxButton>
-      <NxButton onClick={() => showWarningToast('Some form fields are missing.')}>Show warning toast</NxButton>
-      <NxButton onClick={() => showInfoToast('Logging out in 30 seconds.')}>Show info toast</NxButton>
-    </NxButtonBar>
+    <NxButton onClick={() => showSuccessToast('Policy added!')}>Show success toast</NxButton>
   );
 };
 

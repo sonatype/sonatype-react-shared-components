@@ -12,14 +12,17 @@ const Child = () => {
   const { showErrorToast, showSuccessToast, showWarningToast, showInfoToast } = useToast();
 
   const handleClick = () => {
-    showSuccessToast('Account successfully created.');
+    showSuccessToast('Logged in as client.');
+    showInfoToast('Software version 7.0.');
+    showWarningToast('Invalid directoty structure.');
+    showErrorToast('Malware detected.');
 
     setTimeout(() => {
-      showInfoToast('Check permissions.');
+      showInfoToast('Logging out in 1 minute.');
     }, 2000);
 
     setTimeout(() => {
-      showWarningToast('Unauthorized access may be monitored.');
+      showWarningToast('Missing credentials.');
     }, 4000);
 
     setTimeout(() => {
