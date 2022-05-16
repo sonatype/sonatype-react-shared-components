@@ -31,16 +31,16 @@ export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
   toastContainerRef: PropTypes.any
 };
 
-export interface ToastModel {
+export type ToastModel = {
   toastId: number,
   type: ToastType,
   message: string
-}
+};
 
-export interface ToastAddModel {
+export type ToastAddModel = {
   type: ToastType,
   message: string
-}
+};
 
 export type ToastContextType = {
   toasts: ToastModel[];
