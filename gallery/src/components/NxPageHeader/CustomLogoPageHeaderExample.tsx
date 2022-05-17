@@ -11,6 +11,6 @@ import { NxPageHeader } from '@sonatype/react-shared-components';
 const customLogo = require('../../assets/images/custom-logo.png');
 
 const SimplePageHeaderExample = () =>
-  <NxPageHeader logo={customLogo} />;
+  <NxPageHeader logo={{ path: customLogo, alt: 'Custom Logo' }} />;
 
 export default SimplePageHeaderExample;

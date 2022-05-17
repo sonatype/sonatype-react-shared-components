@@ -67,10 +67,12 @@ const NxPageHeaderPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>logo</NxTable.Cell>
-            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>Object</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              An optional string path/URL referencing an alternative image to use as the header logo. This image
+              Optional data with which to construct an alternative logo image. If specified, should be an object
+              containing a <NxCode>path</NxCode> to be used as the image's <NxCode>src</NxCode> URL, and
+              an <NxCode>alt</NxCode> property to be used as the image's alt text.  This image
               should have a height of 21px and a width no greater than 160px. Additionally the image should
               have a transparent background and content that is easily visible over light colored backgrounds.
             </NxTable.Cell>

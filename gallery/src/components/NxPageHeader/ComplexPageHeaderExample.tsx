@@ -25,7 +25,7 @@ const ComplexPageHeaderExample = () => {
   }
 
   return (
-    <NxPageHeader logo={customLogo}
+    <NxPageHeader logo={{ path: customLogo, alt: 'Custom Logo' }}
                   productInfo={{ name: 'Test Product', version: '1.0.0' }}
                   homeLink="#"
                   links={links}>
