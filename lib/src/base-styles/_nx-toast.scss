@@ -24,6 +24,7 @@
 
 .nx-toast {
   @extend .nx-alert;
+  margin: var(--nx-spacing-2x) 0 0 0;
   opacity: 0.5;
   position: relative;
   width: 500px;
