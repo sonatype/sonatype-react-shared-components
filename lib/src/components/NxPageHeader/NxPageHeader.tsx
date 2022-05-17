@@ -12,7 +12,11 @@ import importImage from '../../util/importImage';
 
 export { Props };
 
-const defaultLogoImg = importImage('sonatype-logo-with-hexagon.png');
+const defaultLogoImg = importImage('sonatype-logo-with-hexagon.png'),
+    defaultLogoProps = {
+      path: defaultLogoImg,
+      alt: 'Sonatype'
+    };
 
 function HeaderProductInfo({ name, version }: ProductInfo) {
   return (
@@ -24,14 +28,14 @@ function HeaderProductInfo({ name, version }: ProductInfo) {
   );
 }
 
-function LogoImg({ logo }: LogoProps) {
+function LogoImg({ path, alt }: LogoProps) {
   // When dark mode is implemented, this will presumably return multiple <img>s, only one of which will
   // be visible at a time
-  return <img src={logo || defaultLogoImg} className="nx-product__logo-image" alt="Sonatype"/>;
+  return <img src={path} className="nx-product__logo-image" alt={alt} />;
 }
 
 export default function NxPageHeader({ logo, productInfo, ...otherProps }: Props) {
-  const logoEl = <LogoImg logo={logo} />,
+  const logoEl = <LogoImg { ...(logo ?? defaultLogoProps) } />,
       productInfoContent = productInfo ? <HeaderProductInfo { ...productInfo } /> : null;
 
   return <AbstractNxPageHeader { ...otherProps } productInfoContent={productInfoContent} logo={logoEl} />;

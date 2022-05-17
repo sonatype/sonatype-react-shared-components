@@ -17,14 +17,16 @@ export interface ProductInfo {
 }
 
 export interface LogoProps {
-  logo?: string | null;
+  path: string;
+  alt: string;
 
   // Once dark mode is supported, add this
-  //logoDark?: string | null;
+  //darkModePath?: string | null;
 }
 
-export type Props = Omit<AbstractNxPageHeaderProps, 'logo' | 'productInfoContent'> & LogoProps & {
+export interface Props extends Omit<AbstractNxPageHeaderProps, 'logo' | 'productInfoContent'> {
   productInfo?: ProductInfo | null;
+  logo?: LogoProps | null;
 }
 
 export const propTypes: ValidationMap<Props> = {
@@ -33,6 +35,8 @@ export const propTypes: ValidationMap<Props> = {
     name: PropTypes.string.isRequired,
     version: PropTypes.string
   }),
-  logo: PropTypes.string
-  //logoDark: PropTypes.string
+  logo: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired
+  })
 };
