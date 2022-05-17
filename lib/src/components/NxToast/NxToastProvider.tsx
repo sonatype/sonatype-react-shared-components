@@ -15,11 +15,18 @@ let id = 1;
 const NxToastProvider = (props: NxToastProviderProps) => {
   const { children } = props;
   const [toasts, setToasts] = useState<ToastModel[]>([]);
-  const [activeElement, setActiveElement] = useState<HTMLElement | null>(null);
+  const [activeElementBeforeToast, setActiveElementBeforeToast] = useState<HTMLElement | null>(null);
 
   const addToast = useCallback((content: ToastAddModel) => {
-    //Keep track of active element right before toast is displayed
-    setActiveElement(document.activeElement as HTMLElement);
+    //Before displaying the toast, keep track of active element
+    const currentFocusedElement = document.activeElement as HTMLElement;
+
+    //When the toast is displayed, the focus is on the Toast's close button
+    //In this case, the active element is the Toast's close button, so ignore it
+    if (!currentFocusedElement.classList.contains('nx-toast__close')) {
+      setActiveElementBeforeToast(currentFocusedElement);
+    }
+
     setToasts((toasts) => [
       ...toasts,
       { toastId: id++, type: content.type, message: content.message }
@@ -34,7 +41,7 @@ const NxToastProvider = (props: NxToastProviderProps) => {
     //Whenever all toasts are dismissed, return focus back to active element
     //that was in focus when the toast was triggered
     if (toasts.length === 0) {
-      activeElement?.focus();
+      activeElementBeforeToast?.focus();
     }
   }, [toasts]);
 

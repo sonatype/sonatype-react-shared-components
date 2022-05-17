@@ -60,7 +60,7 @@ const NxToast = (props: NxToastProps) => {
     <div role="alert" { ...otherProps } className={classes} aria-atomic={true}>
       <NxFontAwesomeIcon aria-label={toastIconLabel} icon={toastIcon}/>
       <div className="nx-toast__content">{message}</div>
-      <NxCloseButton ref={closeBtnRef} onClick={handleCloseClick} />
+      <NxCloseButton ref={closeBtnRef} onClick={handleCloseClick} className="nx-toast__close"/>
     </div>
   );
 };
