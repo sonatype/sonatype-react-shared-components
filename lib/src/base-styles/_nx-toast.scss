@@ -18,7 +18,6 @@
 
 .nx-toast__container {
   @include nx-container-helpers.container-vertical;
-  margin-right: var(--nx-spacing-2x);
   margin-top: var(--nx-spacing-2x);
   position: fixed;
 }
