@@ -8,6 +8,8 @@ import React from 'react';
 
 import { NxButton, NxPageHeader } from '@sonatype/react-shared-components';
 
+const customLogo = require('../../assets/images/custom-logo.png');
+
 const ComplexPageHeaderExample = () => {
   const links = [{
     name: 'NxButton',
@@ -23,7 +25,8 @@ const ComplexPageHeaderExample = () => {
   }
 
   return (
-    <NxPageHeader productInfo={{ name: 'Test Product', version: '1.0.0' }}
+    <NxPageHeader logo={customLogo}
+                  productInfo={{ name: 'Test Product', version: '1.0.0' }}
                   homeLink="#"
                   links={links}>
       <NxButton onClick={onButtonClick}>Click Me</NxButton>

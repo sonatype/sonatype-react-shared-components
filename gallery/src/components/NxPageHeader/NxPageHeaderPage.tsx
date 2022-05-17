@@ -10,6 +10,7 @@ import { NxTable, NxCode, NxP, NxH3 } from '@sonatype/react-shared-components';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import SimplePageHeaderExample from './SimplePageHeaderExample';
+import CustomLogoPageHeaderExample from './CustomLogoPageHeaderExample';
 import ProductNamePageHeaderExample from './ProductNamePageHeaderExample';
 import ProductNameAndVersionPageHeaderExample from './ProductNameAndVersionPageHeaderExample';
 import HomeLinkPageHeaderExample from './HomeLinkPageHeaderExample';
@@ -18,6 +19,7 @@ import ExtraContentPageHeaderExample from './ExtraContentPageHeaderExample';
 import ComplexPageHeaderExample from './ComplexPageHeaderExample';
 
 const simplePageHeaderExampleCode = require('./SimplePageHeaderExample?raw'),
+    customLogoPageHeaderExampleCode = require('./CustomLogoPageHeaderExample?raw'),
     productNamePageHeaderExampleCode = require('./ProductNamePageHeaderExample?raw'),
     productNameAndVersionPageHeaderExampleCode =
         require('./ProductNameAndVersionPageHeaderExample?raw'),
@@ -64,6 +66,16 @@ const NxPageHeaderPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>logo</NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              An optional string path/URL referencing an alternative image to use as the header logo. This image
+              should have a height of 21px and a width no greater than 160px. Additionally the image should
+              have a transparent background and content that is easily visible over light colored backgrounds.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>links</NxTable.Cell>
             <NxTable.Cell>array</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
@@ -103,6 +115,13 @@ const NxPageHeaderPage = () =>
                         liveExample={SimplePageHeaderExample}>
       A minimal instance of <NxCode>NxPageHeader</NxCode> which includes no
       product name, no version, no links, and no additional content.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Header with Custom Logo"
+                        id="nx-page-header-custom-logo-example"
+                        codeExamples={customLogoPageHeaderExampleCode}
+                        liveExample={CustomLogoPageHeaderExample}>
+      A minimal instance of <NxCode>NxPageHeader</NxCode> which sets a custom logo image
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Product Name"
