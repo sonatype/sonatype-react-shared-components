@@ -41,6 +41,7 @@
     calc(var(--nx-spacing-2x) - 1px)
     calc(var(--nx-spacing-4x) - 1px);
   width: var(--nx-width-form-element-normal);
+  max-width: 100%;
 
   &:hover {
     border-color: var(--nx-color-form-element-border);
