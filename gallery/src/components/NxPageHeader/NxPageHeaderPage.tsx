@@ -120,7 +120,6 @@ const NxPageHeaderPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Custom Logo"
-                        id="nx-page-header-custom-logo-example"
                         codeExamples={customLogoPageHeaderExampleCode}
                         liveExample={CustomLogoPageHeaderExample}>
       A minimal instance of <NxCode>NxPageHeader</NxCode> which sets a custom logo image
@@ -133,6 +132,7 @@ const NxPageHeaderPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Product Name and Version"
+                        id="nx-page-header-product-name-and-version-example"
                         codeExamples={productNameAndVersionPageHeaderExampleCode}
                         liveExample={ProductNameAndVersionPageHeaderExample}>
       An instance of <NxCode>NxPageHeader</NxCode> which includes a product name

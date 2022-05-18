@@ -13,6 +13,7 @@ describe('NxPageHeader', function() {
       complexHeaderSelector = '#nx-page-header-complex-example .nx-page-header';
 
   it('looks right with minimal content', simpleTest(simpleHeaderSelector));
+  it('looks right with product name and version', simpleTest(simpleHeaderSelector));
   it('looks right with all optional content', simpleTest(complexHeaderSelector));
 
   it('passes a11y checks', a11yTest());
