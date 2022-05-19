@@ -29,6 +29,7 @@ export default function NxSearchDropdownErrorExample() {
 
   function onSearch(query: string) {
     setLoading(true);
+    setError(null);
     executeQuery(query);
   }
 
