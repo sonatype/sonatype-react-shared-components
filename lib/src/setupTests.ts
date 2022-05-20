@@ -6,8 +6,13 @@
  */
 /// <reference types="./__testutils__/jest-enzyme-overrides" />
 
-import '@testing-library/jest-dom';
 import 'jest-enzyme';
+
+// We can't have @testing-library/jest-dom imported globally
+// because it will overwrite some of the jest-enzyme matchers.
+// Instead, we need to import them individual in the test modules
+// until we fully transitioned to react-testing-library.
+// import '@testing-library/jest-dom';
 
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';

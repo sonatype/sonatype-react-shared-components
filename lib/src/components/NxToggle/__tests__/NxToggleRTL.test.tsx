@@ -5,12 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import '@testing-library/jest-dom';
 
 import { render, screen } from '@testing-library/react';
 
 import NxToggle, { Props } from '../NxToggle';
 
-describe.only('NxToggle', function() {
+describe('NxToggle', function() {
   const simpleProps: Props = {
     inputId: 'toggle-id',
     isChecked: false,
@@ -28,13 +29,5 @@ describe.only('NxToggle', function() {
     expect(checkbox).toHaveAttribute('id', 'toggle-id');
     expect(checkbox).toHaveClass('nx-toggle__input');
 
-    // expect(shallowRender.find('.nx-toggle__control')).toExist();
   });
-
-  // it('adds classes specified with the className prop', function() {
-  //   const component = getShallow({ className: 'foo' });
-
-  //   expect(component).toHaveClassName('foo');
-  //   expect(component).toHaveClassName('nx-toggle');
-  // });
 });
