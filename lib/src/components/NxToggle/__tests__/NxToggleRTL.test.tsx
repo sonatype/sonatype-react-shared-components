@@ -7,7 +7,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import NxToggle, { Props } from '../NxToggle';
 
@@ -29,5 +29,55 @@ describe('NxToggle', function() {
     expect(checkbox).toHaveAttribute('id', 'toggle-id');
     expect(checkbox).toHaveClass('nx-toggle__input');
 
+  });
+
+  it('adds classes specified with the className prop', function() {
+    const { container } = render(<NxToggle {...simpleProps} className="foo"></NxToggle>);
+
+    const label = container.querySelector('label');
+
+    expect(label).toHaveClass('foo');
+    expect(label).toHaveClass('nx-toggle');
+  });
+
+  it('calls its onChange prop when the input fires a change event', function() {
+    const onChange = jest.fn();
+
+    render(<NxToggle {...simpleProps} onChange={onChange}></NxToggle>);
+
+    const checkbox = screen.getByRole('switch');
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    fireEvent.click(checkbox);
+
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it('passes input attributes into the input element and does not clash with top-level attributes', function() {
+    const props = {
+      inputId: 'not-garfield',
+      disabled: true,
+      isChecked: true,
+      className: 'label-classname',
+      inputAttributes: {
+        id: 'garfield',
+        name: 'garfield',
+        disabled: false,
+        className: 'input-classname',
+        checked: false
+      } as Props['inputAttributes']
+    };
+
+    render(<NxToggle {...props}></NxToggle>);
+
+    const checkbox = screen.getByRole('switch');
+
+    expect(checkbox).toHaveAttribute('id', 'garfield');
+    expect(checkbox).toHaveAttribute('name', 'garfield');
+    expect(checkbox).toBeDisabled();
+    expect(checkbox).toHaveClass('input-classname');
+    expect(checkbox).not.toHaveClass('label-classname');
+    expect(checkbox).toBeChecked();
   });
 });
