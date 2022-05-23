@@ -7,7 +7,7 @@
 import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef, useState } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
-import { always, clamp, dec, defaultTo, inc, partial, pipe } from 'ramda';
+import { always, clamp, dec, inc, partial } from 'ramda';
 
 import './NxSearchDropdown.scss';
 
@@ -147,7 +147,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
 
   useEffect(function() {
     if (matches.length) {
-      setFocusableBtnIndex(pipe(defaultTo(0), clamp(0, matches.length - 1)));
+      setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex));
     }
     else {
       setFocusableBtnIndex(null);
