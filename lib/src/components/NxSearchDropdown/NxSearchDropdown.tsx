@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef } from 'react';
+import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef, useState } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
-import { partial } from 'ramda';
+import { always, clamp, dec, defaultTo, inc, partial, pipe } from 'ramda';
 
 import './NxSearchDropdown.scss';
 
@@ -16,6 +16,7 @@ import { Props, propTypes } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
+import { useUniqueId } from '../../util/idUtil';
 export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
@@ -38,12 +39,21 @@ function NxSearchDropdownRender<T extends string | number = string>(
         emptyMessage,
         ...attrs
       } = props,
+      isEmpty = !matches.length,
+      showDropdown = !!(searchText && !disabled),
       ref = useRef<HTMLDivElement>(null),
       mergedRef = useMergedRef(externalRef, ref),
       menuRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
+      [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       className = classnames('nx-search-dropdown', classNameProp),
       filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
+      dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
+      dropdownMenuRole =
+          !showDropdown ? 'presentation' :
+          error || loading || isEmpty ? 'dialog' :
+          'menu',
+      filterHasPopup = dropdownMenuRole === 'presentation' ? false : dropdownMenuRole,
       menuClassName = classnames('nx-search-dropdown__menu', {
         'nx-search-dropdown__menu--error': !!error
       });
@@ -92,132 +102,89 @@ function NxSearchDropdownRender<T extends string | number = string>(
     onSearch(value.trim());
   }
 
-  function focusNext(el: HTMLElement) {
-    const rootEl = ref.current;
+  const adjustBtnFocus = (adjust: (i: number) => number) => () => {
+        const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
+            elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
 
-    if (el instanceof HTMLInputElement) {
-      rootEl?.querySelector<HTMLElement>('.nx-dropdown-button:first-child')?.focus();
-    }
-    else {
-      const nextBtn = el.nextElementSibling as (HTMLElement | null);
-
-      if (nextBtn) {
-        nextBtn.focus();
-      }
-      else {
-        rootEl?.querySelector<HTMLElement>('.nx-text-input__input')?.focus();
-      }
-    }
-  }
-
-  function focusPrev(el: HTMLElement) {
-    const rootEl = ref.current;
-
-    if (el instanceof HTMLInputElement) {
-      rootEl?.querySelector<HTMLElement>('.nx-dropdown-button:last-child')?.focus();
-    }
-    else {
-      const prevBtn = el.previousElementSibling as (HTMLElement | null);
-
-      if (prevBtn) {
-        prevBtn.focus();
-      }
-      else {
-        rootEl?.querySelector<HTMLElement>('.nx-text-input__input')?.focus();
-      }
-    }
-  }
-
-  function focusFirst(parent: HTMLElement) {
-    (parent.firstElementChild as HTMLElement | null)?.focus();
-  }
-
-  function focusLast(parent: HTMLElement) {
-    (parent.lastElementChild as HTMLElement | null)?.focus();
-  }
+        if (elToFocus) {
+          elToFocus.focus();
+          setFocusableBtnIndex(newFocusableBtnIndex);
+        }
+      },
+      focusNext = adjustBtnFocus(inc),
+      focusPrev = adjustBtnFocus(dec),
+      focusFirst = adjustBtnFocus(always(0)),
+      focusLast = adjustBtnFocus(always(matches.length - 1));
 
   function handleButtonKeyDown(evt: KeyboardEvent<HTMLElement>) {
-    const target = evt.currentTarget;
-
     switch (evt.key) {
       case 'Home':
-        focusFirst(target);
+        focusFirst();
         evt.preventDefault();
         break;
       case 'End':
-        focusLast(target);
+        focusLast();
         evt.preventDefault();
         break;
-      default:
-        handleKeyDown(evt);
+      case 'ArrowDown':
+        focusNext();
+        evt.preventDefault();
+        break;
+      case 'ArrowUp':
+        focusPrev();
+        evt.preventDefault();
+        break;
     }
   }
 
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
-    const target = evt.target as HTMLElement;
-
     switch (evt.key) {
       case 'Escape':
         onSearchTextChange('');
         evt.preventDefault();
         break;
-      case 'ArrowDown':
-        focusNext(target);
-        evt.preventDefault();
-        break;
-      case 'ArrowUp':
-        focusPrev(target);
-        evt.preventDefault();
-        break;
-      case 'Tab':
-        // Do nothing aside from let the browser handle it by moving to the next component
-        break;
-      case 'Enter':
-        // Do nothing aside from let the browser handle it by triggering button activation
-        break;
-      default:
-        // focus the filter immediately so that it handles other keys such as text input
-        filterRef.current?.querySelector<HTMLInputElement>('.nx-text-input__input')?.focus();
     }
   }
 
   useEffect(function() {
-    const rootEl = ref.current;
-
-    // When we get an error, if the focus is on the text input move it to the retry button
-    // When leaving the error state, move focus from the retry button to the input
-    if (rootEl?.contains(document.activeElement)) {
-      if (error) {
-        (rootEl?.querySelector('.nx-load-error__retry') as HTMLElement)?.focus();
-      }
-      else {
-        (rootEl?.querySelector('.nx-text-input__input') as HTMLElement)?.focus();
-      }
+    if (matches.length) {
+      setFocusableBtnIndex(pipe(defaultTo(0), clamp(0, matches.length - 1)));
     }
-  }, [error]);
+    else {
+      setFocusableBtnIndex(null);
+    }
+  }, [matches]);
 
   return (
     <div ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
-      <NxFilterInput ref={filterRef}
+      <NxFilterInput role="searchbox"
+                     ref={filterRef}
                      className={filterClassName}
                      value={searchText}
                      onChange={handleFilterChange}
                      disabled={disabled || undefined}
                      placeholder="Search"
                      searchIcon
-                     onKeyDown={handleKeyDown} />
-      { searchText && !disabled &&
+                     onKeyDown={handleKeyDown}
+                     aria-controls={dropdownMenuId}
+                     aria-haspopup={filterHasPopup} />
+      { showDropdown &&
         <NxDropdownMenu key={error ? 'error' : 'no-error'}
+                        id={dropdownMenuId}
+                        role={dropdownMenuRole}
                         ref={menuRef}
                         className={menuClassName}
                         onClosing={onMenuClosing}
-                        onKeyDown={handleButtonKeyDown}>
+                        onKeyDown={handleButtonKeyDown}
+                        aria-busy={!!loading}
+                        aria-live="polite">
           <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
             {
-              matches.length ? matches.map(match =>
-                <button className="nx-dropdown-button"
+              matches.length ? matches.map((match, i) =>
+                <button role="menuitem"
+                        className="nx-dropdown-button"
                         key={match.id}
-                        tabIndex={-1}
+                        tabIndex={i === focusableBtnIndex ? 0 : -1}
                         onClick={partial(onSelect, [match])}>
                   {match.displayName}
                 </button>
@@ -234,4 +201,3 @@ function NxSearchDropdownRender<T extends string | number = string>(
 const NxSearchDropdown = Object.assign(forwardRef(NxSearchDropdownRender), { propTypes });
 
 export default NxSearchDropdown;
-
