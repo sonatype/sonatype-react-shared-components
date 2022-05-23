@@ -46,12 +46,16 @@ function NxSearchDropdownRender<T extends string | number = string>(
       menuRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
-      className = classnames('nx-search-dropdown', classNameProp),
+      className = classnames('nx-search-dropdown', classNameProp, {
+        'nx-search-dropdown--dropdown-showable': showDropdown
+      }),
       filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
       dropdownMenuRole =
+          !showDropdown ? 'presentation' :
           error || loading || isEmpty ? 'dialog' :
           'menu',
+      filterHasPopup = dropdownMenuRole === 'presentation' ? false : dropdownMenuRole,
       menuClassName = classnames('nx-search-dropdown__menu', {
         'nx-search-dropdown__menu--error': !!error
       });
@@ -171,34 +175,32 @@ function NxSearchDropdownRender<T extends string | number = string>(
                      searchIcon
                      onKeyDown={handleKeyDown}
                      aria-controls={dropdownMenuId}
-                     aria-haspopup={dropdownMenuRole} />
-      { showDropdown &&
-        <NxDropdownMenu key={error ? 'error' : 'no-error'}
-                        id={dropdownMenuId}
-                        role={dropdownMenuRole}
-                        ref={menuRef}
-                        className={menuClassName}
-                        onClosing={onMenuClosing}
-                        onKeyDown={handleButtonKeyDown}
-                        aria-busy={!!loading}
-                        aria-live="polite">
-          <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
-            {
-              matches.length ? matches.map((match, i) =>
-                <button role="menuitem"
-                        className="nx-dropdown-button"
-                        key={match.id}
-                        tabIndex={i === focusableBtnIndex ? 0 : -1}
-                        onClick={partial(onSelect, [match])}
-                        onFocus={() => onBtnFocus(i)}>
-                  {match.displayName}
-                </button>
-              ) :
-              <div className="nx-search-dropdown__empty-message">{emptyMessage || 'No Results Found'}</div>
-            }
-          </NxLoadWrapper>
-        </NxDropdownMenu>
-      }
+                     aria-haspopup={filterHasPopup} />
+      <NxDropdownMenu key={error ? 'error' : 'no-error'}
+                      id={dropdownMenuId}
+                      role={dropdownMenuRole}
+                      ref={menuRef}
+                      className={menuClassName}
+                      onClosing={onMenuClosing}
+                      onKeyDown={handleButtonKeyDown}
+                      aria-busy={!!loading}
+                      aria-live="polite">
+        <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
+          {
+            matches.length ? matches.map((match, i) =>
+              <button role="menuitem"
+                      className="nx-dropdown-button"
+                      key={match.id}
+                      tabIndex={i === focusableBtnIndex ? 0 : -1}
+                      onClick={partial(onSelect, [match])}
+                      onFocus={() => onBtnFocus(i)}>
+                {match.displayName}
+              </button>
+            ) :
+            <div className="nx-search-dropdown__empty-message">{emptyMessage || 'No Results Found'}</div>
+          }
+        </NxLoadWrapper>
+      </NxDropdownMenu>
     </div>
   );
 }

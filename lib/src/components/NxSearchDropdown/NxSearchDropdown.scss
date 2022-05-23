@@ -28,7 +28,7 @@
     text-align: center;
   }
 
-  &:focus-within {
+  &--dropdown-showable:focus-within {
     .nx-search-dropdown__menu {
       position: absolute;
       right: initial;
