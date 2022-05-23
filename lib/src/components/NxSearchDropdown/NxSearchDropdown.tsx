@@ -145,9 +145,14 @@ function NxSearchDropdownRender<T extends string | number = string>(
     }
   }
 
+  // in case a button gets focused some way besides tab, update the focusableBtnIndex to that button
+  function onBtnFocus(index: number) {
+    setFocusableBtnIndex(index);
+  }
+
   useEffect(function() {
     if (matches.length) {
-      setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex));
+      setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex ?? 0));
     }
     else {
       setFocusableBtnIndex(null);
@@ -184,7 +189,8 @@ function NxSearchDropdownRender<T extends string | number = string>(
                         className="nx-dropdown-button"
                         key={match.id}
                         tabIndex={i === focusableBtnIndex ? 0 : -1}
-                        onClick={partial(onSelect, [match])}>
+                        onClick={partial(onSelect, [match])}
+                        onFocus={() => onBtnFocus(i)}>
                   {match.displayName}
                 </button>
               ) :
