@@ -50,10 +50,8 @@ function NxSearchDropdownRender<T extends string | number = string>(
       filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
       dropdownMenuRole =
-          !showDropdown ? 'presentation' :
           error || loading || isEmpty ? 'dialog' :
           'menu',
-      filterHasPopup = dropdownMenuRole === 'presentation' ? false : dropdownMenuRole,
       menuClassName = classnames('nx-search-dropdown__menu', {
         'nx-search-dropdown__menu--error': !!error
       });
@@ -134,15 +132,16 @@ function NxSearchDropdownRender<T extends string | number = string>(
         focusPrev();
         evt.preventDefault();
         break;
+      case 'Escape':
+        filterRef.current?.querySelector('input')?.focus();
+        onSearchTextChange('');
+        break;
     }
   }
 
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
-    switch (evt.key) {
-      case 'Escape':
-        onSearchTextChange('');
-        evt.preventDefault();
-        break;
+    if (evt.key === 'Escape') {
+      onSearchTextChange('');
     }
   }
 
@@ -167,7 +166,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                      searchIcon
                      onKeyDown={handleKeyDown}
                      aria-controls={dropdownMenuId}
-                     aria-haspopup={filterHasPopup} />
+                     aria-haspopup={dropdownMenuRole} />
       { showDropdown &&
         <NxDropdownMenu key={error ? 'error' : 'no-error'}
                         id={dropdownMenuId}

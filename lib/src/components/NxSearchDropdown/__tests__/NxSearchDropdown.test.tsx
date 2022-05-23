@@ -62,12 +62,14 @@ describe('NxSearchDropdown', function() {
     expect(component.getDOMNode()).toBe(ref.current);
   });
 
-  it('has an NxFilterInput child with the nx-search-dropdown__input class', function() {
-    const component = getShallow(),
-        input = component.find(NxFilterInput);
+  it('has an NxFilterInput child with the nx-search-dropdown__input class and searchbox role', function() {
+    const component = getMounted(),
+        filterInput = component.find(NxFilterInput),
+        nativeInput = filterInput.find('input');
 
-    expect(input).toExist();
-    expect(input).toHaveClassName('nx-search-dropdown__input');
+    expect(filterInput).toExist();
+    expect(filterInput).toHaveClassName('nx-search-dropdown__input');
+    expect(nativeInput).toHaveProp('role', 'searchbox');
   });
 
   it('sets the searchText as the value of the input', function() {
@@ -139,6 +141,26 @@ describe('NxSearchDropdown', function() {
 
   it('sets the nx-search-dropdown__menu class on the NxDropdownMenu', function() {
     expect(getShallow({ searchText: 'foo' }).find(NxDropdownMenu)).toHaveClassName('nx-search-dropdown__menu');
+  });
+
+  it('sets the menu role on the NxDropdownMenu when it contains results', function() {
+    expect(getShallow({ searchText: 'asdf', matches: [{ id: 'foo', displayName: 'bar' }] }).find(NxDropdownMenu))
+        .toHaveProp('role', 'menu');
+  });
+
+  it('sets the dialog role on the NxDropdownMenu when it is in loading, error, or empty states', function() {
+    expect(getShallow({ searchText: 'asdf', matches: [] }).find(NxDropdownMenu)).toHaveProp('role', 'dialog');
+    expect(getShallow({ searchText: 'asdf', loading: true }).find(NxDropdownMenu)).toHaveProp('role', 'dialog');
+    expect(getShallow({ searchText: 'asdf', error: 'foo' }).find(NxDropdownMenu)).toHaveProp('role', 'dialog');
+  });
+
+  it('sets an id on the NxDropdownMenu and references it in the search boxes aria-controls', function() {
+    const component = getMounted({ searchText: 'foo' }),
+        filterInput = component.find(NxFilterInput).find('input'),
+        dropdown = component.find('.nx-dropdown-menu');
+
+    expect(dropdown).toHaveProp('id');
+    expect(filterInput).toHaveProp('aria-controls', dropdown.prop('id'));
   });
 
   it('renders an NxLoadWrapper within the dropdown menu', function() {
@@ -326,23 +348,18 @@ describe('NxSearchDropdown', function() {
     ];
 
     const onSearchTextChange = jest.fn(),
-        escPreventDefault = jest.fn(),
         component = getShallow(
             { searchText: 'One', matches, onSearchTextChange }
         ),
         filterInput = component.find(NxFilterInput),
         dropdownMenu = component.find(NxDropdownMenu);
 
-    const keyDownEvent = {
-      key: 'Escape',
-      preventDefault: escPreventDefault
-    };
+    const keyDownEvent = { key: 'Escape' };
 
     expect(onSearchTextChange).not.toHaveBeenCalled();
 
     filterInput.simulate('keyDown', keyDownEvent);
 
-    expect(escPreventDefault).toHaveBeenCalled();
     expect(onSearchTextChange).toHaveBeenCalledWith('');
 
     onSearchTextChange.mockClear();
