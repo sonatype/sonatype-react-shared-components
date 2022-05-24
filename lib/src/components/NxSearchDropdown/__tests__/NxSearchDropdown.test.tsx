@@ -189,6 +189,17 @@ describe('NxSearchDropdown', function() {
     expect(notLoadingLoadWrapper.childAt(1)).toHaveText('Two');
   });
 
+  it('should have buttons with type button', function() {
+    const matches = [
+          { id: '1', displayName: 'cat' }
+        ],
+        notLoading = getShallow({ matches, searchText: 'cat' }),
+        notLoadingLoadWrapper = notLoading.find(NxLoadWrapper);
+
+    expect(notLoadingLoadWrapper.childAt(0)).toMatchSelector('button.nx-dropdown-button');
+    expect(notLoadingLoadWrapper.childAt(0)).toHaveProp('type', 'button');
+  });
+
   it('sets an onClick handler on the menu button that fires onSelect with the match object', function() {
     const onSelect = jest.fn(),
         matches = [
