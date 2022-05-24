@@ -129,14 +129,23 @@ describe('NxSearchDropdown', function() {
     expect(getShallow({ disabled: true }).find(NxFilterInput)).toHaveProp('disabled', true);
   });
 
-  it('renders an NxDropdownMenu if the searchText is non-empty and disabled is not true', function() {
-    expect(getShallow()).not.toContainMatchingElement(NxDropdownMenu);
-    expect(getShallow({ searchText: 'foo', disabled: true })).not.toContainMatchingElement(NxDropdownMenu);
-
+  it('renders an NxDropdownMenu', function() {
+    expect(getShallow()).toContainMatchingElement(NxDropdownMenu);
+    expect(getShallow({ searchText: 'foo', disabled: true })).toContainMatchingElement(NxDropdownMenu);
     expect(getShallow({ searchText: 'foo', disabled: false })).toContainMatchingElement(NxDropdownMenu);
     expect(getShallow({ searchText: 'foo', disabled: undefined })).toContainMatchingElement(NxDropdownMenu);
     expect(getShallow({ searchText: 'foo', disabled: null })).toContainMatchingElement(NxDropdownMenu);
     expect(getShallow({ searchText: 'foo' })).toContainMatchingElement(NxDropdownMenu);
+  });
+
+  it('sets aria-hidden to true on the dropdown menu if the searchText is empty or disabled is true', function() {
+    expect(getShallow().find(NxDropdownMenu)).toHaveProp('aria-hidden', true);
+    expect(getShallow({ searchText: 'foo', disabled: true }).find(NxDropdownMenu)).toHaveProp('aria-hidden', true);
+    expect(getShallow({ searchText: 'foo', disabled: false }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
+    expect(getShallow({ searchText: 'foo', disabled: undefined }).find(NxDropdownMenu))
+        .toHaveProp('aria-hidden', false);
+    expect(getShallow({ searchText: 'foo', disabled: null }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
+    expect(getShallow({ searchText: 'foo' }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
   });
 
   it('sets the nx-search-dropdown__menu class on the NxDropdownMenu', function() {
@@ -148,10 +157,10 @@ describe('NxSearchDropdown', function() {
         .toHaveProp('role', 'menu');
   });
 
-  it('sets the dialog role on the NxDropdownMenu when it is in loading, error, or empty states', function() {
-    expect(getShallow({ searchText: 'asdf', matches: [] }).find(NxDropdownMenu)).toHaveProp('role', 'dialog');
-    expect(getShallow({ searchText: 'asdf', loading: true }).find(NxDropdownMenu)).toHaveProp('role', 'dialog');
-    expect(getShallow({ searchText: 'asdf', error: 'foo' }).find(NxDropdownMenu)).toHaveProp('role', 'dialog');
+  it('sets the alert role on the NxDropdownMenu when it is in loading, error, or empty states', function() {
+    expect(getShallow({ searchText: 'asdf', matches: [] }).find(NxDropdownMenu)).toHaveProp('role', 'alert');
+    expect(getShallow({ searchText: 'asdf', loading: true }).find(NxDropdownMenu)).toHaveProp('role', 'alert');
+    expect(getShallow({ searchText: 'asdf', error: 'foo' }).find(NxDropdownMenu)).toHaveProp('role', 'alert');
   });
 
   it('sets an id on the NxDropdownMenu and references it in the search boxes aria-controls', function() {
@@ -249,7 +258,6 @@ describe('NxSearchDropdown', function() {
 
     component.setProps({ searchText: '' });
 
-    expect(component.find('.nx-dropdown-button')).not.toExist();
     expect(document.activeElement === component.find('.nx-search-dropdown__input input').getDOMNode()).toBe(true);
   });
 
