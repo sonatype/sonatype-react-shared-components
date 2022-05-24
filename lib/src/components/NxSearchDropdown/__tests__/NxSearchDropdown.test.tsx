@@ -148,6 +148,15 @@ describe('NxSearchDropdown', function() {
     expect(getShallow({ searchText: 'foo' }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
   });
 
+  it('sets aria-live on the dropdown menu to "polite"', function() {
+    expect(getShallow().find(NxDropdownMenu)).toHaveProp('aria-live', 'polite');
+  });
+
+  it('sets aria-busy on the dropdown menu if loading is true', function() {
+    expect(getShallow().find(NxDropdownMenu)).toHaveProp('aria-busy', false);
+    expect(getShallow({ loading: true }).find(NxDropdownMenu)).toHaveProp('aria-busy', true);
+  });
+
   it('sets the nx-search-dropdown__menu class on the NxDropdownMenu', function() {
     expect(getShallow({ searchText: 'foo' }).find(NxDropdownMenu)).toHaveClassName('nx-search-dropdown__menu');
   });
@@ -170,6 +179,13 @@ describe('NxSearchDropdown', function() {
 
     expect(dropdown).toHaveProp('id');
     expect(filterInput).toHaveProp('aria-controls', dropdown.prop('id'));
+  });
+
+  it('sets aria-haspopup on the filter input', function() {
+    const component = getMounted({ searchText: 'foo' }),
+        filterInput = component.find(NxFilterInput).find('input');
+
+    expect(filterInput).toHaveProp('aria-haspopup', 'menu');
   });
 
   it('renders an NxLoadWrapper within the dropdown menu', function() {
