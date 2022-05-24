@@ -25,7 +25,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
 
-  return <div role="listbox" ref={ref} { ...{ className, ...attrs } } />;
+  return <div ref={ref} { ...{ className, ...attrs } } />;
 });
 
 NxDropdownMenu.propTypes = propTypes;
