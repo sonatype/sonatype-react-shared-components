@@ -120,13 +120,18 @@ describe('NxSearchDropdown', function() {
     expect(getShallow({ long: true }).find(NxFilterInput)).toHaveClassName('nx-text-input--long');
   });
 
-  it('passes the disabled prop to the input', function() {
+  it('passes the disabled prop to the input and buttons', function() {
     expect(getShallow().find(NxFilterInput)).toHaveProp('disabled', undefined);
     expect(getShallow({ disabled: undefined }).find(NxFilterInput)).toHaveProp('disabled', undefined);
     expect(getShallow({ disabled: null }).find(NxFilterInput)).toHaveProp('disabled', undefined);
     expect(getShallow({ disabled: false }).find(NxFilterInput)).toHaveProp('disabled', undefined);
 
     expect(getShallow({ disabled: true }).find(NxFilterInput)).toHaveProp('disabled', true);
+
+    expect(getShallow({ disabled: true, matches: [{ id: '1', displayName: '1' }] }).find('.nx-dropdown-button'))
+        .toHaveProp('disabled', true);
+    expect(getShallow({ disabled: false, matches: [{ id: '1', displayName: '1' }] }).find('.nx-dropdown-button'))
+        .toHaveProp('disabled', undefined);
   });
 
   it('renders an NxDropdownMenu', function() {
