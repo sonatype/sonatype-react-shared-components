@@ -174,7 +174,7 @@ describe('NxSearchDropdown', function() {
     expect(onSearch).toHaveBeenCalledWith('foo');
   });
 
-  it('sets the load wrapper contents to buttons for each match', function() {
+  it('sets the load wrapper contents to buttons with type "button" for each match', function() {
     const matches = [
           { id: '1', displayName: 'One' },
           { id: '2', displayName: 'Two' }
@@ -184,20 +184,10 @@ describe('NxSearchDropdown', function() {
 
     expect(notLoadingLoadWrapper.children().length).toBe(2);
     expect(notLoadingLoadWrapper.childAt(0)).toMatchSelector('button.nx-dropdown-button');
+    expect(notLoadingLoadWrapper.childAt(0)).toHaveProp('type', 'button');
     expect(notLoadingLoadWrapper.childAt(0)).toHaveText('One');
     expect(notLoadingLoadWrapper.childAt(1)).toMatchSelector('button.nx-dropdown-button');
     expect(notLoadingLoadWrapper.childAt(1)).toHaveText('Two');
-  });
-
-  it('should have buttons with type button', function() {
-    const matches = [
-          { id: '1', displayName: 'cat' }
-        ],
-        notLoading = getShallow({ matches, searchText: 'cat' }),
-        notLoadingLoadWrapper = notLoading.find(NxLoadWrapper);
-
-    expect(notLoadingLoadWrapper.childAt(0)).toMatchSelector('button.nx-dropdown-button');
-    expect(notLoadingLoadWrapper.childAt(0)).toHaveProp('type', 'button');
   });
 
   it('sets an onClick handler on the menu button that fires onSelect with the match object', function() {
