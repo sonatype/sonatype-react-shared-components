@@ -52,32 +52,11 @@ function NxSearchDropdownRender<T extends string | number = string>(
       filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
       dropdownMenuRole =
-          !showDropdown ? 'presentation' :
-          error || loading || isEmpty ? 'dialog' :
+          error || loading || isEmpty ? 'alert' :
           'menu',
-      filterHasPopup = dropdownMenuRole === 'presentation' ? false : dropdownMenuRole,
       menuClassName = classnames('nx-search-dropdown__menu', {
         'nx-search-dropdown__menu--error': !!error
       });
-
-  /*
-   * When the dropdown is closed while focus is within it, set focus back to the text input. Otherwise
-   * it goes back to the <body> which is less helpful especially when within a modal. Note that we also use
-   * a distinct react `key` on the dropdown when it is in error state to get it to re-render entirely when
-   * switching to and from that state - thereby triggering this logic when the error state is cleared which would
-   * result in the Retry button (which may have focus) being removed from DOM
-   */
-  function onMenuClosing() {
-    /* eslint-disable @typescript-eslint/no-non-null-assertion */
-    const focusedEl = document.activeElement,
-        menuEl = menuRef.current;
-
-    if (menuEl && menuEl.contains(focusedEl) && filterRef.current) {
-      const inputEl = filterRef.current.querySelector(':scope input')! as HTMLElement;
-      inputEl!.focus();
-    }
-    /* eslint-enable @typescript-eslint/no-non-null-assertion */
-  }
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
@@ -102,6 +81,10 @@ function NxSearchDropdownRender<T extends string | number = string>(
 
   function doSearch(value: string) {
     onSearch(value.trim());
+  }
+
+  function focusTextInput() {
+    filterRef.current?.querySelector('input')?.focus();
   }
 
   const adjustBtnFocus = (adjust: (i: number) => number) => () => {
@@ -137,7 +120,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'Escape':
-        filterRef.current?.querySelector('input')?.focus();
+        focusTextInput();
         onSearchTextChange('');
         break;
     }
@@ -163,6 +146,19 @@ function NxSearchDropdownRender<T extends string | number = string>(
     }
   }, [matches]);
 
+  useEffect(function() {
+    // if searchText has been cleared, the menu disappears. If focus was in the menu when that happened, move
+    // it to the text input
+    if (!searchText) {
+      const focusedEl = document.activeElement,
+          menuEl = menuRef.current;
+
+      if (menuEl?.contains(focusedEl)) {
+        focusTextInput();
+      }
+    }
+  }, [searchText]);
+
   return (
     <div ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
       <NxFilterInput role="searchbox"
@@ -175,21 +171,23 @@ function NxSearchDropdownRender<T extends string | number = string>(
                      searchIcon
                      onKeyDown={handleKeyDown}
                      aria-controls={dropdownMenuId}
-                     aria-haspopup={filterHasPopup} />
+                     aria-haspopup="menu" />
       <NxDropdownMenu key={error ? 'error' : 'no-error'}
                       id={dropdownMenuId}
                       role={dropdownMenuRole}
                       ref={menuRef}
                       className={menuClassName}
-                      onClosing={onMenuClosing}
+                      onClosing={() => {}}
                       onKeyDown={handleButtonKeyDown}
                       aria-busy={!!loading}
-                      aria-live="polite">
+                      aria-live="polite"
+                      aria-hidden={!showDropdown}>
         <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
           {
             matches.length ? matches.map((match, i) =>
               <button role="menuitem"
                       className="nx-dropdown-button"
+                      disabled={disabled || undefined}
                       key={match.id}
                       tabIndex={i === focusableBtnIndex ? 0 : -1}
                       onClick={partial(onSelect, [match])}
