@@ -182,7 +182,9 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       aria-busy={!!loading}
                       aria-live="polite"
                       aria-hidden={!showDropdown}>
-        <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
+        <NxLoadWrapper { ...{ loading, error } }
+                       retryHandler={() => doSearch(searchText)}
+                       onFocusedRetryButtonUnmount={focusTextInput}>
           {
             matches.length ? matches.map((match, i) =>
               <button role="menuitem"
