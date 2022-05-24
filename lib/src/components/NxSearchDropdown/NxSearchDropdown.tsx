@@ -116,7 +116,10 @@ function NxSearchDropdownRender<T extends string | number = string>(
           <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
             {
               matches.length ? matches.map(match =>
-                <button className="nx-dropdown-button" key={match.id} onClick={partial(onSelect, [match])}>
+                <button className="nx-dropdown-button"
+                        type="button"
+                        key={match.id}
+                        onClick={partial(onSelect, [match])} >
                   {match.displayName}
                 </button>
               ) :
