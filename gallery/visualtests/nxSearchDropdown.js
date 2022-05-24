@@ -15,6 +15,8 @@ describe('NxSearchDropdown', function() {
     scrollIntoView,
     disableLoadingSpinnerAnimation,
     checkScreenshot,
+    isFocused,
+    dismissResultingDialog,
     a11yTest
   } = setupBrowser('#/pages/Search%20Dropdown');
 
@@ -302,8 +304,8 @@ describe('NxSearchDropdown', function() {
 
       // check pressing esc on error Retry button
       page.keyboard.press('Escape');
-      expect(await isFocused(input)).toBe(true);
-      expect(await input.evaluate(el => el.value)).toBe('');
+      expect(await isFocused(errorInput)).toBe(true);
+      expect(await errorInput.evaluate(el => el.value)).toBe('');
     });
 
     it('resets focus to the text input when the dropdown closes due to selection', async function() {
@@ -315,7 +317,7 @@ describe('NxSearchDropdown', function() {
 
       await firstBtn.focus();
 
-      dismissResultingDialog(async () => await firstBtn.click());
+      await dismissResultingDialog(async () => await firstBtn.click());
 
       expect(await isFocused(input)).toBe(true);
     });
