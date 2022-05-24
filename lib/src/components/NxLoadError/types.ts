@@ -13,6 +13,7 @@ export type Props = NxAlertProps & {
   error?: ReactNode | null;
   titleMessage?: string | null;
   retryHandler?: (() => void) | null;
+  onFocusedRetryButtonUnmount?: (() => void) | null;
 };
 
 // In a strictly typescript environment, PropTypes are mostly redundant.  However, they still provide safety when this
@@ -21,6 +22,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   ...nxAlertPropTypes,
   error: PropTypes.node,
   titleMessage: PropTypes.string,
-  retryHandler: PropTypes.func
+  retryHandler: PropTypes.func,
+  onFocusedRetryButtonUnmount: PropTypes.func
 };
 
