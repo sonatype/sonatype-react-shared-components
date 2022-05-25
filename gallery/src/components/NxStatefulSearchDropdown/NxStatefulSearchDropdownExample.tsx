@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { filter, map, match, prepend, range } from 'ramda';
+import { filter, map, prepend, range } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { NxStatefulSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
