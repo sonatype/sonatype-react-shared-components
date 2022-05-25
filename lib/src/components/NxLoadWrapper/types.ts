@@ -12,7 +12,6 @@ export interface Props {
   loading?: boolean | null;
   children: ReactNode | (() => ReactNode) | null;
   retryHandler: (() => void);
-  onFocusedRetryButtonUnmount?: (() => void) | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -23,6 +22,5 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
     PropTypes.node,
     PropTypes.func
   ]),
-  retryHandler: PropTypes.func.isRequired,
-  onFocusedRetryButtonUnmount: PropTypes.func
+  retryHandler: PropTypes.func.isRequired
 };

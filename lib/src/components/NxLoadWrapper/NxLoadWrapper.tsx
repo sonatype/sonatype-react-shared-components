@@ -24,10 +24,10 @@ export { Props, propTypes } from './types';
  * function when clicked
  */
 const NxLoadWrapper: FunctionComponent<Props> =
-  function NxLoadWrapper({ error, loading, children, retryHandler, onFocusedRetryButtonUnmount }) {
+  function NxLoadWrapper({ error, loading, children, retryHandler }) {
     const getChildren: (() => ReactNode) = children instanceof Function ? children : always(children);
 
-    return error ? <NxLoadError { ...{ error, retryHandler, onFocusedRetryButtonUnmount } } /> :
+    return error ? <NxLoadError error={error} retryHandler={retryHandler} /> :
       loading ? <NxLoadingSpinner /> :
       <>{getChildren()}</>;
   };

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useLayoutEffect, useRef } from 'react';
+import React, { forwardRef } from 'react';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 
@@ -25,28 +25,8 @@ import './NxLoadError.scss';
  * @param retryHandler If this is defined, a Retry button will be rendered which executes this function when clicked
  */
 const NxLoadError = forwardRef<HTMLDivElement, Props>(
-    function NxLoadError(props, ref) {
-      const { error, titleMessage, retryHandler, className, onFocusedRetryButtonUnmount, ...otherProps } = props,
-          alertClasses = classnames('nx-alert--load-error', className),
-          retryBtnRef = useRef<HTMLButtonElement>(null);
-
-      function checkRetryFocus() {
-        if (onFocusedRetryButtonUnmount && retryBtnRef.current?.contains(document.activeElement)) {
-          onFocusedRetryButtonUnmount();
-        }
-      }
-
-      // When the Retry button disappears, this is the only place that it's possible to catch whether it was
-      // focused. Typically when that is the case the calling code will want the ability to move the focus to
-      // some other specific spot rather than letting it reset to the <body>
-      useLayoutEffect(function() {
-        if (!(error && retryHandler)) {
-          checkRetryFocus();
-        }
-      }, [error, retryHandler]);
-
-      // also check when the entire component unmounts
-      useLayoutEffect(() => checkRetryFocus, []);
+    function NxLoadError({ error, titleMessage, retryHandler, className, ...otherProps }, ref) {
+      const alertClasses = classnames('nx-alert--load-error', className);
 
       return error != null && (
         <NxErrorAlert { ...otherProps } className={alertClasses} ref={ref}>
@@ -56,11 +36,7 @@ const NxLoadError = forwardRef<HTMLDivElement, Props>(
             { error }
           </span>
           { retryHandler &&
-            <NxButton ref={retryBtnRef}
-                      type="button"
-                      variant="error"
-                      onClick={retryHandler}
-                      className="nx-load-error__retry">
+            <NxButton type="button" variant="error" onClick={retryHandler} className="nx-load-error__retry">
               <NxFontAwesomeIcon icon={faSync} />
               <span>Retry</span>
             </NxButton>
