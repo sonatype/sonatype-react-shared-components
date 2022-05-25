@@ -121,14 +121,14 @@ function NxSearchDropdownRender<T extends string | number = string>(
         break;
       case 'Escape':
         focusTextInput();
-        onSearchTextChange('');
+        handleFilterChange('');
         break;
     }
   }
 
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
     if (evt.key === 'Escape') {
-      onSearchTextChange('');
+      handleFilterChange('');
     }
   }
 

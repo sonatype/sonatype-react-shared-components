@@ -52,8 +52,13 @@ export default function NxSearchDropdownExample() {
   }
 
   function onSearch(query: string) {
-    setLoading(true);
-    executeQuery(query);
+    if (query === '') {
+      setMatches([]);
+    }
+    else {
+      setLoading(true);
+      executeQuery(query);
+    }
   }
 
   return (
