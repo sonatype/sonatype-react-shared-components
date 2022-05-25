@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
-import { always, clamp, dec, inc, partial } from 'ramda';
+import { always, any, clamp, dec, inc, partial, pipe, prop } from 'ramda';
 
 import './NxSearchDropdown.scss';
 
@@ -17,6 +17,7 @@ import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import { useUniqueId } from '../../util/idUtil';
+import useMutationObserver from '@rooks/use-mutation-observer';
 export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
@@ -56,7 +57,8 @@ function NxSearchDropdownRender<T extends string | number = string>(
           'menu',
       menuClassName = classnames('nx-search-dropdown__menu', {
         'nx-search-dropdown__menu--error': !!error
-      });
+      }),
+      elFocusedOnMostRecentRender = useRef<Element | null>(null);
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
@@ -137,6 +139,18 @@ function NxSearchDropdownRender<T extends string | number = string>(
     setFocusableBtnIndex(index);
   }
 
+  /*
+   * Horrible Hack: When an element within the dropdown is removed from the DOM while it is focused, we want
+   * to move focus to the text input.  It turns out that this is very difficult to track in React, since
+   * useEffect and useLayoutEffect generally fire too late - after the element has already been removed and
+   * lost whatever focus it might've had. The only other way to get this info is with a useLayoutEffect handler
+   * _in the component that was unmounted_, e.g. in NxButton. That would require adding new props for a special use
+   * case to not only NxButton, but also NxLoadWrapper and NxLoadError. Just querying who has focus on every render
+   * seemed like the less bad option.
+   */
+  elFocusedOnMostRecentRender.current = document.activeElement;
+
+  // Clamp or nullify focusableBtnIndex whenever the number of matches changes
   useEffect(function() {
     if (matches.length) {
       setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex ?? 0));
@@ -146,18 +160,19 @@ function NxSearchDropdownRender<T extends string | number = string>(
     }
   }, [matches]);
 
-  useEffect(function() {
-    // if searchText has been cleared, the menu disappears. If focus was in the menu when that happened, move
-    // it to the text input
-    if (!searchText) {
-      const focusedEl = document.activeElement,
-          menuEl = menuRef.current;
+  const checkForRemovedFocusedEl = useCallback(function checkForRemovedFocusedEl(mutations: MutationRecord[]) {
+    const nodeContainedFocus = (el: Node) => el.contains(elFocusedOnMostRecentRender.current),
+        nodeListContainedFocus =
+            pipe<[NodeList], Node[], boolean>(Array.from, any(nodeContainedFocus)),
+        focusedChildWasRemoved =
+            any(pipe(prop('removedNodes'), nodeListContainedFocus), mutations);
 
-      if (menuEl?.contains(focusedEl)) {
-        focusTextInput();
-      }
+    if (focusedChildWasRemoved) {
+      focusTextInput();
     }
-  }, [searchText]);
+  }, []);
+
+  useMutationObserver(menuRef, checkForRemovedFocusedEl, { childList: true });
 
   return (
     <div ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
@@ -172,8 +187,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                      onKeyDown={handleKeyDown}
                      aria-controls={dropdownMenuId}
                      aria-haspopup="menu" />
-      <NxDropdownMenu key={error ? 'error' : 'no-error'}
-                      id={dropdownMenuId}
+      <NxDropdownMenu id={dropdownMenuId}
                       role={dropdownMenuRole}
                       ref={menuRef}
                       className={menuClassName}
@@ -182,9 +196,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       aria-busy={!!loading}
                       aria-live="polite"
                       aria-hidden={!showDropdown}>
-        <NxLoadWrapper { ...{ loading, error } }
-                       retryHandler={() => doSearch(searchText)}
-                       onFocusedRetryButtonUnmount={focusTextInput}>
+        <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
           {
             matches.length ? matches.map((match, i) =>
               <button role="menuitem"
