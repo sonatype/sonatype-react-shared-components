@@ -150,8 +150,8 @@ The RSC code is split into two separate codebases: the library itself which live
 ## Building
 
 ### Required Software
-Node 10.x or 12.x.  Node 14.x is known not to work currently.
-yarn 1.21.1
+Node 16.x or 14.x. Automated testing is performed on 16.x.
+yarn 1.22.x
 
 ### Installation of Dependencies
 In the lib/ directory, run `yarn install`
@@ -211,6 +211,24 @@ again from the top directory of the repo.
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
 ```
+
+---
+
+### Windows Users!!
+
+For you seemingly rare Windows (Windows 11 to be precise) users, you have a couple options
+
+From simple command prompt
+```
+docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn test
+```
+
+And from powershell
+```
+docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test
+```
+
+---
 
 Note that the `yarn test` command will (re-)install the gallery dependencies, ensuring that puppeteer downloads the
 correct version of Chromium before running the gallery build and tests.
