@@ -157,7 +157,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
    * case to not only NxButton, but also NxLoadWrapper and NxLoadError. Just querying who has focus on every render
    * seemed like the less bad option.
    */
-  elFocusedOnMostRecentRender.current = document.activeElement;
+  elFocusedOnMostRecentRender.current = typeof document === 'undefined' ? null : document.activeElement;
 
   const checkForRemovedFocusedEl = useCallback(function checkForRemovedFocusedEl(mutations: MutationRecord[]) {
     const nodeContainedFocus = (el: Node) => el.contains(elFocusedOnMostRecentRender.current),
