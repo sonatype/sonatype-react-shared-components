@@ -184,8 +184,8 @@ describe('NxSearchDropdown', function() {
   describe('keynav', function() {
     it('has one tab stop for the input and one for the result list when visible', async function() {
       const [component, input] = await waitAndGetElements(
-            basicExampleSelector,
-            `${basicExampleSelector} .nx-filter-input input`
+              basicExampleSelector,
+              `${basicExampleSelector} .nx-filter-input input`
           ),
           page = getPage();
 
@@ -207,7 +207,7 @@ describe('NxSearchDropdown', function() {
 
       await input.focus();
       await page.keyboard.type('10');
-      const [loadingSpinner] = await waitAndGetElements(`${basicExampleSelector} .nx-loading-spinner`);
+      await waitAndGetElements(`${basicExampleSelector} .nx-loading-spinner`);
       await page.keyboard.press('Tab');
 
       // component is still only one tab stop, the loading spinner is not tabbable
@@ -231,10 +231,10 @@ describe('NxSearchDropdown', function() {
 
       await input.type('1');
       const [firstBtn, secondBtn, secondToLastBtn, lastBtn] = await waitAndGetElements(
-        `${basicExampleSelector} .nx-dropdown-button:first-child`,
-        `${basicExampleSelector} .nx-dropdown-button:nth-child(2)`,
-        `${basicExampleSelector} .nx-dropdown-button:nth-last-child(2)`,
-        `${basicExampleSelector} .nx-dropdown-button:last-child`
+          `${basicExampleSelector} .nx-dropdown-button:first-child`,
+          `${basicExampleSelector} .nx-dropdown-button:nth-child(2)`,
+          `${basicExampleSelector} .nx-dropdown-button:nth-last-child(2)`,
+          `${basicExampleSelector} .nx-dropdown-button:last-child`
       );
 
       await firstBtn.focus();
@@ -260,11 +260,8 @@ describe('NxSearchDropdown', function() {
           page = getPage();
 
       await input.type('1');
-      const [firstBtn, secondBtn, secondToLastBtn, lastBtn] = await waitAndGetElements(
-        `${basicExampleSelector} .nx-dropdown-button:first-child`,
-        `${basicExampleSelector} .nx-dropdown-button:nth-child(2)`,
-        `${basicExampleSelector} .nx-dropdown-button:nth-last-child(2)`,
-        `${basicExampleSelector} .nx-dropdown-button:last-child`
+      const [secondBtn] = await waitAndGetElements(
+          `${basicExampleSelector} .nx-dropdown-button:nth-child(2)`,
       );
 
       await secondBtn.focus();
@@ -280,7 +277,7 @@ describe('NxSearchDropdown', function() {
           page = getPage();
 
       await input.type('1');
-      const [firstBtn] = await waitAndGetElements(`${basicExampleSelector} .nx-dropdown-button:first-child`);
+      await waitAndGetElements(`${basicExampleSelector} .nx-dropdown-button:first-child`);
 
       // check pressing esc on the text input
       page.keyboard.press('Escape');
@@ -288,8 +285,8 @@ describe('NxSearchDropdown', function() {
       expect(await input.evaluate(el => el.value)).toBe('');
 
       await input.type('1');
-      const [firstBtnAgain] = await waitAndGetElements(`${basicExampleSelector} .nx-dropdown-button:first-child`);
-      await firstBtnAgain.focus();
+      const [firstBtn] = await waitAndGetElements(`${basicExampleSelector} .nx-dropdown-button:first-child`);
+      await firstBtn.focus();
 
       // check pressing esc on a dropdown button
       page.keyboard.press('Escape');
@@ -309,8 +306,7 @@ describe('NxSearchDropdown', function() {
     });
 
     it('resets focus to the text input when the dropdown closes due to selection', async function() {
-      const [input] = await waitAndGetElements(`${basicExampleSelector} .nx-filter-input input`),
-          page = getPage();
+      const [input] = await waitAndGetElements(`${basicExampleSelector} .nx-filter-input input`);
 
       await input.type('1');
       const [firstBtn] = await waitAndGetElements(`${basicExampleSelector} .nx-dropdown-button:first-child`);
@@ -323,8 +319,7 @@ describe('NxSearchDropdown', function() {
     });
 
     it('resets focus to the text input when the Retry button disappears', async function() {
-      const [input] = await waitAndGetElements(`${errorExampleSelector} .nx-filter-input input`),
-          page = getPage();
+      const [input] = await waitAndGetElements(`${errorExampleSelector} .nx-filter-input input`);
 
       await input.type('1');
       const [retryBtn] = await waitAndGetElements(`${errorExampleSelector} .nx-btn--error`);
