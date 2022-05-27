@@ -150,8 +150,12 @@ The RSC code is split into two separate codebases: the library itself which live
 ## Building
 
 ### Required Software
-Node 16.x or 14.x. Automated testing is performed on 16.x.
-yarn 1.22.x
+* Node 16.x or 14.x. Automated testing is performed on 16.x.
+* yarn 1.22.x
+* git-lfs for visual test snapshots. For the command line git client, git-lfs is a separate program which functions as a
+plugin, for graphical git clients, git-lfs support is often built-in. To check whether your checkout used git-lfs
+successfully, check whether the files within `gallery/visualtests/__image_snapshots` are actual pngs as opposed to
+stub text files.
 
 ### Installation of Dependencies
 In the lib/ directory, run `yarn install`
