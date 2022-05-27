@@ -150,8 +150,8 @@ The RSC code is split into two separate codebases: the library itself which live
 ## Building
 
 ### Required Software
-Node 10.x or 12.x.  Node 14.x is known not to work currently.
-yarn 1.21.1
+Node 16.x or 14.x. Automated testing is performed on 16.x.
+yarn 1.22.x
 
 ### Installation of Dependencies
 In the lib/ directory, run `yarn install`

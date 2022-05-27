@@ -10,6 +10,7 @@ import { NxTable, NxCode, NxP, NxH3 } from '@sonatype/react-shared-components';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import SimplePageHeaderExample from './SimplePageHeaderExample';
+import CustomLogoPageHeaderExample from './CustomLogoPageHeaderExample';
 import ProductNamePageHeaderExample from './ProductNamePageHeaderExample';
 import ProductNameAndVersionPageHeaderExample from './ProductNameAndVersionPageHeaderExample';
 import HomeLinkPageHeaderExample from './HomeLinkPageHeaderExample';
@@ -18,6 +19,7 @@ import ExtraContentPageHeaderExample from './ExtraContentPageHeaderExample';
 import ComplexPageHeaderExample from './ComplexPageHeaderExample';
 
 const simplePageHeaderExampleCode = require('./SimplePageHeaderExample?raw'),
+    customLogoPageHeaderExampleCode = require('./CustomLogoPageHeaderExample?raw'),
     productNamePageHeaderExampleCode = require('./ProductNamePageHeaderExample?raw'),
     productNameAndVersionPageHeaderExampleCode =
         require('./ProductNameAndVersionPageHeaderExample?raw'),
@@ -64,6 +66,18 @@ const NxPageHeaderPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>logo</NxTable.Cell>
+            <NxTable.Cell>Object</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Optional data with which to construct an alternative logo image. If specified, should be an object
+              containing a <NxCode>path</NxCode> to be used as the image's <NxCode>src</NxCode> URL, and
+              an <NxCode>alt</NxCode> property to be used as the image's alt text.  This image
+              should have a height of 21px and a width no greater than 160px. Additionally the image should
+              have a transparent background and content that is easily visible over light colored backgrounds.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>links</NxTable.Cell>
             <NxTable.Cell>array</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
@@ -105,6 +119,12 @@ const NxPageHeaderPage = () =>
       product name, no version, no links, and no additional content.
     </GalleryExampleTile>
 
+    <GalleryExampleTile title="Header with Custom Logo"
+                        codeExamples={customLogoPageHeaderExampleCode}
+                        liveExample={CustomLogoPageHeaderExample}>
+      A minimal instance of <NxCode>NxPageHeader</NxCode> which sets a custom logo image
+    </GalleryExampleTile>
+
     <GalleryExampleTile title="Header with Product Name"
                         codeExamples={productNamePageHeaderExampleCode}
                         liveExample={ProductNamePageHeaderExample}>
@@ -112,6 +132,7 @@ const NxPageHeaderPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Header with Product Name and Version"
+                        id="nx-page-header-product-name-and-version-example"
                         codeExamples={productNameAndVersionPageHeaderExampleCode}
                         liveExample={ProductNameAndVersionPageHeaderExample}>
       An instance of <NxCode>NxPageHeader</NxCode> which includes a product name

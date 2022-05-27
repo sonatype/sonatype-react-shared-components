@@ -200,6 +200,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
           {
             matches.length ? matches.map((match, i) =>
               <button role="menuitem"
+                      type="button"
                       className="nx-dropdown-button"
                       disabled={disabled || undefined}
                       key={match.id}

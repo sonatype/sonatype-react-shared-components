@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { NxSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME, NxFontAwesomeIcon }
@@ -49,7 +49,7 @@ export default function NxSearchDropdownExample() {
   }
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
-  const executeQuery = useDebounceCallback(function executeQuery(query: string) {
+  const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
     latestExecutedQueryRef.current = query;
 
     search(query).then(matches => {
@@ -59,7 +59,7 @@ export default function NxSearchDropdownExample() {
         setLoading(false);
       }
     });
-  }, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+  }, [matches, query]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
 
   function onSearchTextChange(query: string) {
     setQuery(query);
