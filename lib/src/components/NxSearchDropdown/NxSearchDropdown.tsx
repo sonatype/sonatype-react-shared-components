@@ -139,6 +139,16 @@ function NxSearchDropdownRender<T extends string | number = string>(
     setFocusableBtnIndex(index);
   }
 
+  // Clamp or nullify focusableBtnIndex whenever the number of matches changes
+  useEffect(function() {
+    if (matches.length) {
+      setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex ?? 0));
+    }
+    else {
+      setFocusableBtnIndex(null);
+    }
+  }, [matches]);
+
   /*
    * Horrible Hack: When an element within the dropdown is removed from the DOM while it is focused, we want
    * to move focus to the text input.  It turns out that this is very difficult to track in React, since
@@ -149,16 +159,6 @@ function NxSearchDropdownRender<T extends string | number = string>(
    * seemed like the less bad option.
    */
   elFocusedOnMostRecentRender.current = document.activeElement;
-
-  // Clamp or nullify focusableBtnIndex whenever the number of matches changes
-  useEffect(function() {
-    if (matches.length) {
-      setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex ?? 0));
-    }
-    else {
-      setFocusableBtnIndex(null);
-    }
-  }, [matches]);
 
   const checkForRemovedFocusedEl = useCallback(function checkForRemovedFocusedEl(mutations: MutationRecord[]) {
     const nodeContainedFocus = (el: Node) => el.contains(elFocusedOnMostRecentRender.current),
