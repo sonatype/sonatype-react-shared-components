@@ -40,25 +40,28 @@ function NxSearchDropdownRender<T extends string | number = string>(
         emptyMessage,
         ...attrs
       } = props,
+
       isEmpty = !matches.length,
       showDropdown = !!(searchText && !disabled),
+
       ref = useRef<HTMLDivElement>(null),
       mergedRef = useMergedRef(externalRef, ref),
       menuRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
+      elFocusedOnMostRecentRender = useRef<Element | null>(null),
+
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
+
+      dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
+      dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'menu',
+
+      filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
       className = classnames('nx-search-dropdown', classNameProp, {
         'nx-search-dropdown--dropdown-showable': showDropdown
       }),
-      filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
-      dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
-      dropdownMenuRole =
-          error || loading || isEmpty ? 'alert' :
-          'menu',
       menuClassName = classnames('nx-search-dropdown__menu', {
         'nx-search-dropdown__menu--error': !!error
-      }),
-      elFocusedOnMostRecentRender = useRef<Element | null>(null);
+      });
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
@@ -81,14 +84,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
     }
   }
 
-  function doSearch(value: string) {
-    onSearch(value.trim());
-  }
-
-  function focusTextInput() {
-    filterRef.current?.querySelector('input')?.focus();
-  }
-
+  // helper for focusing different buttons in the dropdown menu
   const adjustBtnFocus = (adjust: (i: number) => number) => () => {
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
             elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
@@ -134,9 +130,12 @@ function NxSearchDropdownRender<T extends string | number = string>(
     }
   }
 
-  // in case a button gets focused some way besides tab, update the focusableBtnIndex to that button
-  function onBtnFocus(index: number) {
-    setFocusableBtnIndex(index);
+  function doSearch(value: string) {
+    onSearch(value.trim());
+  }
+
+  function focusTextInput() {
+    filterRef.current?.querySelector('input')?.focus();
   }
 
   // Clamp or nullify focusableBtnIndex whenever the number of matches changes
@@ -206,7 +205,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       key={match.id}
                       tabIndex={i === focusableBtnIndex ? 0 : -1}
                       onClick={partial(onSelect, [match])}
-                      onFocus={() => onBtnFocus(i)}>
+                      onFocus={() => setFocusableBtnIndex(i)}>
                 {match.displayName}
               </button>
             ) :
