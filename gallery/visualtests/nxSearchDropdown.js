@@ -321,5 +321,19 @@ describe('NxSearchDropdown', function() {
 
       expect(await isFocused(input)).toBe(true);
     });
+
+    it('resets focus to the text input when the Retry button disappears', async function() {
+      const [input] = await waitAndGetElements(`${errorExampleSelector} .nx-filter-input input`),
+          page = getPage();
+
+      await input.type('1');
+      const [retryBtn] = await waitAndGetElements(`${errorExampleSelector} .nx-btn--error`);
+
+      await retryBtn.focus();
+      await retryBtn.click();
+
+      expect(await isFocused(input)).toBe(true);
+    });
+
   });
 });
