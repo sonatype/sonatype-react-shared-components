@@ -269,35 +269,6 @@ describe('NxSearchDropdown', function() {
     expect(component.find('.nx-search-dropdown__empty-message')).toHaveText('asdfasdf');
   });
 
-  it('sets focus to the filter input if focus is within the dropdown menu when the menu is closed', function() {
-    const component = getMounted(
-        { searchText: 'foo', matches: [{ id: '1', displayName: 'foo' }] },
-        { attachTo: mountPoint }
-    );
-
-    (component.find('.nx-dropdown-button').getDOMNode() as HTMLElement).focus();
-
-    component.setProps({ searchText: '' });
-
-    expect(document.activeElement === component.find('.nx-search-dropdown__input input').getDOMNode()).toBe(true);
-  });
-
-  it('sets focus to the filter input if the load wrapper retry button is focused when the error prop becomes unset',
-      function() {
-        const component = getMounted(
-            { searchText: 'foo', error: 'foo' },
-            { attachTo: mountPoint }
-        );
-
-        (component.find('button.nx-load-error__retry').getDOMNode() as HTMLElement).focus();
-
-        component.setProps({ error: null });
-
-        expect(component.find('.nx-load-error__retry')).not.toExist();
-        expect(document.activeElement === component.find('.nx-search-dropdown__input input').getDOMNode()).toBe(true);
-      }
-  );
-
   it('calls onSearch with the current trimmed searchText if focus enters the component from elsewhere on the page ' +
       'while there is an error', function() {
     const onSearch = jest.fn(),
