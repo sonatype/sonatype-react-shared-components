@@ -12,12 +12,16 @@ export interface TabContextType {
   rootId: string;
   index: number;
   onTabSelect: (index: number) => void;
+  focusedTabIndex?: number | null;
+  numberOfTabs: number;
+  setFocusTabIndex: (index: number) => void;
 }
 
 export type NxTabsProps = HTMLAttributes<HTMLDivElement> & {
   activeTab?: number | null ;
   onTabSelect: ((index: number) => void);
   children?: ReactNode | null;
+  activationMode?: 'automatic' | 'manual';
 };
 
 export type NxTabListProps = HTMLAttributes<HTMLUListElement>;

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { Children, cloneElement, isValidElement } from 'react';
+import React, { Children, cloneElement, isValidElement, useState } from 'react';
 import classnames from 'classnames';
 
 import { useUniqueId } from '../../util/idUtil';
@@ -16,7 +16,7 @@ export { NxTabsProps } from './types';
 import './NxTabs.scss';
 
 const NxTabs = function NxTabsElement(props: NxTabsProps) {
-  const { activeTab, onTabSelect, id, className, children, ...attrs } = props;
+  const { activeTab, onTabSelect: onTabSelectProp, id, className, children, ...attrs } = props;
 
   const [tabList, ...tabPanels] = Children.toArray(children);
 
@@ -31,32 +31,45 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
 
   const rootId = useUniqueId('nx-tabs', id);
 
-  const clonedTabList = cloneElement(tabList, {
-    children: Children.toArray(tabList.props.children).map((tab, index) => {
-      if (isValidElement<NxTabProps>(tab)) {
-        const activeTabContext: TabContextType = {
-          activeTab,
-          rootId,
-          index,
-          onTabSelect: onTabSelect || (() => { })
-        };
-        return <TabContext.Provider key={index} value={activeTabContext}>{tab}</TabContext.Provider>;
-      }
-      return tab;
-    })
-  });
+  const [focusedTabIndex, setFocusTabIndexState] = useState(activeTab);
+  const tabElements = Children.toArray(tabList.props.children);
 
-  const clonedTabPanels = tabPanels.map((tabPanel, index) => {
-    if (isValidElement<NxTabPanelProps>(tabPanel)) {
+  const onTabSelect = (index: number) => {
+    setFocusTabIndex(index);
+    onTabSelectProp(index);
+  };
+
+  const setFocusTabIndex = (index: number) => {
+    setFocusTabIndexState(index);
+    // tabElements[index].focus();
+  };
+
+  const clonedTabList = cloneElement(tabList, {
+    children: tabElements.map((tab, index) => {
       const activeTabContext: TabContextType = {
         activeTab,
         rootId,
         index,
-        onTabSelect: onTabSelect || (() => { })
+        onTabSelect: onTabSelect || (() => { }),
+        numberOfTabs: tabElements.length,
+        focusedTabIndex,
+        setFocusTabIndex
       };
-      return <TabContext.Provider key={index} value={activeTabContext}>{tabPanel}</TabContext.Provider>;
-    }
-    return tabPanel;
+      return <TabContext.Provider key={index} value={activeTabContext}>{tab}</TabContext.Provider>;
+    })
+  });
+
+  const clonedTabPanels = tabPanels.map((tabPanel, index) => {
+    const activeTabContext: TabContextType = {
+      activeTab,
+      rootId,
+      index,
+      onTabSelect: onTabSelect || (() => { }),
+      numberOfTabs: tabElements.length,
+      focusedTabIndex,
+      setFocusTabIndex
+    };
+    return <TabContext.Provider key={index} value={activeTabContext}>{tabPanel}</TabContext.Provider>;
   });
 
   return (
