@@ -62,12 +62,14 @@ describe('NxSearchDropdown', function() {
     expect(component.getDOMNode()).toBe(ref.current);
   });
 
-  it('has an NxFilterInput child with the nx-search-dropdown__input class', function() {
-    const component = getShallow(),
-        input = component.find(NxFilterInput);
+  it('has an NxFilterInput child with the nx-search-dropdown__input class and searchbox role', function() {
+    const component = getMounted(),
+        filterInput = component.find(NxFilterInput),
+        nativeInput = filterInput.find('input');
 
-    expect(input).toExist();
-    expect(input).toHaveClassName('nx-search-dropdown__input');
+    expect(filterInput).toExist();
+    expect(filterInput).toHaveClassName('nx-search-dropdown__input');
+    expect(nativeInput).toHaveProp('role', 'searchbox');
   });
 
   it('sets the searchText as the value of the input', function() {
@@ -118,27 +120,77 @@ describe('NxSearchDropdown', function() {
     expect(getShallow({ long: true }).find(NxFilterInput)).toHaveClassName('nx-text-input--long');
   });
 
-  it('passes the disabled prop to the input', function() {
+  it('passes the disabled prop to the input and buttons', function() {
     expect(getShallow().find(NxFilterInput)).toHaveProp('disabled', undefined);
     expect(getShallow({ disabled: undefined }).find(NxFilterInput)).toHaveProp('disabled', undefined);
     expect(getShallow({ disabled: null }).find(NxFilterInput)).toHaveProp('disabled', undefined);
     expect(getShallow({ disabled: false }).find(NxFilterInput)).toHaveProp('disabled', undefined);
 
     expect(getShallow({ disabled: true }).find(NxFilterInput)).toHaveProp('disabled', true);
+
+    expect(getShallow({ disabled: true, matches: [{ id: '1', displayName: '1' }] }).find('.nx-dropdown-button'))
+        .toHaveProp('disabled', true);
+    expect(getShallow({ disabled: false, matches: [{ id: '1', displayName: '1' }] }).find('.nx-dropdown-button'))
+        .toHaveProp('disabled', undefined);
   });
 
-  it('renders an NxDropdownMenu if the searchText is non-empty and disabled is not true', function() {
-    expect(getShallow()).not.toContainMatchingElement(NxDropdownMenu);
-    expect(getShallow({ searchText: 'foo', disabled: true })).not.toContainMatchingElement(NxDropdownMenu);
-
+  it('renders an NxDropdownMenu', function() {
+    expect(getShallow()).toContainMatchingElement(NxDropdownMenu);
+    expect(getShallow({ searchText: 'foo', disabled: true })).toContainMatchingElement(NxDropdownMenu);
     expect(getShallow({ searchText: 'foo', disabled: false })).toContainMatchingElement(NxDropdownMenu);
     expect(getShallow({ searchText: 'foo', disabled: undefined })).toContainMatchingElement(NxDropdownMenu);
     expect(getShallow({ searchText: 'foo', disabled: null })).toContainMatchingElement(NxDropdownMenu);
     expect(getShallow({ searchText: 'foo' })).toContainMatchingElement(NxDropdownMenu);
   });
 
+  it('sets aria-hidden to true on the dropdown menu if the searchText is empty or disabled is true', function() {
+    expect(getShallow().find(NxDropdownMenu)).toHaveProp('aria-hidden', true);
+    expect(getShallow({ searchText: 'foo', disabled: true }).find(NxDropdownMenu)).toHaveProp('aria-hidden', true);
+    expect(getShallow({ searchText: 'foo', disabled: false }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
+    expect(getShallow({ searchText: 'foo', disabled: undefined }).find(NxDropdownMenu))
+        .toHaveProp('aria-hidden', false);
+    expect(getShallow({ searchText: 'foo', disabled: null }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
+    expect(getShallow({ searchText: 'foo' }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
+  });
+
+  it('sets aria-live on the dropdown menu to "polite"', function() {
+    expect(getShallow().find(NxDropdownMenu)).toHaveProp('aria-live', 'polite');
+  });
+
+  it('sets aria-busy on the dropdown menu if loading is true', function() {
+    expect(getShallow().find(NxDropdownMenu)).toHaveProp('aria-busy', false);
+    expect(getShallow({ loading: true }).find(NxDropdownMenu)).toHaveProp('aria-busy', true);
+  });
+
   it('sets the nx-search-dropdown__menu class on the NxDropdownMenu', function() {
     expect(getShallow({ searchText: 'foo' }).find(NxDropdownMenu)).toHaveClassName('nx-search-dropdown__menu');
+  });
+
+  it('sets the menu role on the NxDropdownMenu when it contains results', function() {
+    expect(getShallow({ searchText: 'asdf', matches: [{ id: 'foo', displayName: 'bar' }] }).find(NxDropdownMenu))
+        .toHaveProp('role', 'menu');
+  });
+
+  it('sets the alert role on the NxDropdownMenu when it is in loading, error, or empty states', function() {
+    expect(getShallow({ searchText: 'asdf', matches: [] }).find(NxDropdownMenu)).toHaveProp('role', 'alert');
+    expect(getShallow({ searchText: 'asdf', loading: true }).find(NxDropdownMenu)).toHaveProp('role', 'alert');
+    expect(getShallow({ searchText: 'asdf', error: 'foo' }).find(NxDropdownMenu)).toHaveProp('role', 'alert');
+  });
+
+  it('sets an id on the NxDropdownMenu and references it in the search boxes aria-controls', function() {
+    const component = getMounted({ searchText: 'foo' }),
+        filterInput = component.find(NxFilterInput).find('input'),
+        dropdown = component.find('.nx-dropdown-menu');
+
+    expect(dropdown).toHaveProp('id');
+    expect(filterInput).toHaveProp('aria-controls', dropdown.prop('id'));
+  });
+
+  it('sets aria-haspopup on the filter input', function() {
+    const component = getMounted({ searchText: 'foo' }),
+        filterInput = component.find(NxFilterInput).find('input');
+
+    expect(filterInput).toHaveProp('aria-haspopup', 'menu');
   });
 
   it('renders an NxLoadWrapper within the dropdown menu', function() {
@@ -217,36 +269,6 @@ describe('NxSearchDropdown', function() {
 
     expect(component.find('.nx-search-dropdown__empty-message')).toHaveText('asdfasdf');
   });
-
-  it('sets focus to the filter input if focus is within the dropdown menu when the menu is closed', function() {
-    const component = getMounted(
-        { searchText: 'foo', matches: [{ id: '1', displayName: 'foo' }] },
-        { attachTo: mountPoint }
-    );
-
-    (component.find('.nx-dropdown-button').getDOMNode() as HTMLElement).focus();
-
-    component.setProps({ searchText: '' });
-
-    expect(component.find('.nx-dropdown-button')).not.toExist();
-    expect(document.activeElement === component.find('.nx-search-dropdown__input input').getDOMNode()).toBe(true);
-  });
-
-  it('sets focus to the filter input if the load wrapper retry button is focused when the error prop becomes unset',
-      function() {
-        const component = getMounted(
-            { searchText: 'foo', error: 'foo' },
-            { attachTo: mountPoint }
-        );
-
-        (component.find('button.nx-load-error__retry').getDOMNode() as HTMLElement).focus();
-
-        component.setProps({ error: null });
-
-        expect(component.find('.nx-load-error__retry')).not.toExist();
-        expect(document.activeElement === component.find('.nx-search-dropdown__input input').getDOMNode()).toBe(true);
-      }
-  );
 
   it('calls onSearch with the current trimmed searchText if focus enters the component from elsewhere on the page ' +
       'while there is an error', function() {
@@ -327,23 +349,18 @@ describe('NxSearchDropdown', function() {
     ];
 
     const onSearchTextChange = jest.fn(),
-        escPreventDefault = jest.fn(),
         component = getShallow(
             { searchText: 'One', matches, onSearchTextChange }
         ),
         filterInput = component.find(NxFilterInput),
         dropdownMenu = component.find(NxDropdownMenu);
 
-    const keyDownEvent = {
-      key: 'Escape',
-      preventDefault: escPreventDefault
-    };
+    const keyDownEvent = { key: 'Escape' };
 
     expect(onSearchTextChange).not.toHaveBeenCalled();
 
     filterInput.simulate('keyDown', keyDownEvent);
 
-    expect(escPreventDefault).toHaveBeenCalled();
     expect(onSearchTextChange).toHaveBeenCalledWith('');
 
     onSearchTextChange.mockClear();
