@@ -15,23 +15,27 @@
   padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-2x);
 
   &::before {
-    content: url('data:image/svg+xml,<svg><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>');
-    margin-right: var(--nx-spacing-3x);
-    width: 6px;
+    border-radius: 6px;
+    content: '';
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    margin: 6px var(--nx-spacing-3x) 6px 0;
+    vertical-align: bottom;
   }
 
   // negative styles (default)
   background-color: var(--nx-swatch-grey-95);
   color: var(--nx-swatch-grey-10);
   &::before {
-    color: var(--nx-swatch-grey-30);
+    background-color: var(--nx-swatch-grey-30);
   }
 
   &--intermediate {
     background-color: var(--nx-swatch-blue-95);
     color: var(--nx-swatch-blue-10);
     &::before {
-      color: var(--nx-swatch-blue-30);
+      background-color: var(--nx-swatch-blue-30);
     }
   }
 
@@ -39,7 +43,7 @@
     background-color: var(--nx-swatch-green-95);
     color: var(--nx-swatch-green-10);
     &::before {
-      color: var(--nx-swatch-green-25);
+      background-color: var(--nx-swatch-green-25);
     }
   }
 
@@ -47,7 +51,7 @@
     background-color: var(--nx-swatch-red-95);
     color: var(--nx-swatch-red-10);
     &::before {
-      color: var(--nx-swatch-red-40);
+      background-color: var(--nx-swatch-red-40);
     }
   }
 }
