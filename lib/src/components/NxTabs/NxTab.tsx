@@ -58,20 +58,16 @@ const NxTab = function NxTabElement(props: NxTabProps) {
       switch (key) {
         case 'Left':
         case 'ArrowLeft': {
-          event.preventDefault();
           return tabElements?.[index - 1] ?? tabElements?.[tabElements.length - 1];
         }
         case 'Right':
         case 'ArrowRight': {
-          event.preventDefault();
           return tabElements?.[index + 1] ?? tabElements?.[0];
         }
         case 'Home': {
-          event.preventDefault();
           return tabElements?.[tabElements.length - 1];
         }
         case 'End': {
-          event.preventDefault();
           return tabElements?.[0];
         }
         default: {
@@ -83,6 +79,7 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     const nextElement = getNextElementFromEventKey(event.key);
 
     if (nextElement) {
+      event.preventDefault();
       (nextElement as HTMLElement).focus();
     }
   }

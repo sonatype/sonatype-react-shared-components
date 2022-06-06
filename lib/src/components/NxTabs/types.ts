@@ -12,8 +12,6 @@ export interface TabContextType {
   rootId: string;
   index: number;
   onTabSelect: (index: number) => void;
-  focusedTab?: number | null;
-  setFocusedTab: (index: number) => void;
   activationMode?: 'automatic' | 'manual';
 }
 

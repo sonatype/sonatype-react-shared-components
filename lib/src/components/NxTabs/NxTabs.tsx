@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { Children, cloneElement, isValidElement, useState } from 'react';
+import React, { Children, cloneElement, isValidElement } from 'react';
 import classnames from 'classnames';
 
 import { useUniqueId } from '../../util/idUtil';
@@ -18,7 +18,7 @@ import './NxTabs.scss';
 const NxTabs = function NxTabsElement(props: NxTabsProps) {
   const {
     activeTab,
-    onTabSelect: onTabSelectProp,
+    onTabSelect,
     id,
     className,
     activationMode = 'automatic',
@@ -39,24 +39,14 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
 
   const rootId = useUniqueId('nx-tabs', id);
 
-  const [focusedTab, setFocusedTab] = useState(activeTab);
-  const tabElements = Children.toArray(tabList.props.children);
-
-  const onTabSelect = (index: number) => {
-    setFocusedTab(index);
-    onTabSelectProp(index);
-  };
-
   const clonedTabList = cloneElement(tabList, {
-    children: tabElements.map((tab, index) => {
+    children: Children.toArray(tabList.props.children).map((tab, index) => {
       const activeTabContext: TabContextType = {
         activeTab,
         rootId,
         index,
-        onTabSelect: onTabSelect || (() => { }),
-        activationMode,
-        focusedTab,
-        setFocusedTab
+        onTabSelect,
+        activationMode
       };
       return <TabContext.Provider key={index} value={activeTabContext}>{tab}</TabContext.Provider>;
     })
@@ -67,9 +57,7 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
       activeTab,
       rootId,
       index,
-      onTabSelect: onTabSelect || (() => { }),
-      focusedTab,
-      setFocusedTab
+      onTabSelect
     };
     return <TabContext.Provider key={index} value={activeTabContext}>{tabPanel}</TabContext.Provider>;
   });
