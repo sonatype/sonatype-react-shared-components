@@ -69,8 +69,8 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>intermediate</NxCode></NxTable.Cell>
             <NxTable.Cell>
-            </NxTable.Cell>
               In transition or partial state between negative and positive.
+            </NxTable.Cell>
             <NxTable.Cell>
               "Starting", "Partial", "In Progress"
             </NxTable.Cell>
