@@ -6,14 +6,14 @@
  */
 
 .nx-status-indicator {
+  $height: calc(var(--nx-line-height) * var(--nx-font-size));
+
   // common styles
-  $height: 24px;
-  border-radius: $height * 0.5;
+  border-radius: calc(#{$height} * 0.5);
   display: inline-block;
   font-size: var(--nx-font-size-s);
   line-height: $height;
   padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-2x);
-
   &::before {
     border-radius: 6px;
     content: '';
