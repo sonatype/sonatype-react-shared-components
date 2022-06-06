@@ -13,6 +13,7 @@
   display: inline-block;
   font-size: var(--nx-font-size-s);
   line-height: $height;
+  margin: 0 var(--nx-spacing-2x);
   padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-2x);
   &::before {
     border-radius: 6px;
