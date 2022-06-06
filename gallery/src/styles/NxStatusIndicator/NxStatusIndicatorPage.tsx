@@ -9,7 +9,10 @@ import { NxTable, NxCode, NxP, NxReadOnly, NxTile, NxH3 } from '@sonatype/react-
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxStatusIndicatorExampleCode = require('./NxStatusIndicatorExample.html');
+import NxStatusIndicatorComponentExample from './NxStatusIndicatorComponentExample';
+
+const nxStatusIndicatorExampleCode = require('./NxStatusIndicatorExample.html'),
+    nxStatusIndicatorComponentExampleCode = require('./NxStatusIndicatorComponentExample?raw');
 
 const NxThreatIndicatorPage = () =>
   <>
@@ -94,6 +97,7 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell>Class</NxTable.Cell>
             <NxTable.Cell>Location</NxTable.Cell>
+            <NxTable.Cell>Convenience Component</NxTable.Cell>
             <NxTable.Cell>Details</NxTable.Cell>
           </NxTable.Row>
         </NxTable.Head>
@@ -101,6 +105,7 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>nx-status-indicator</NxCode></NxTable.Cell>
             <NxTable.Cell><NxCode>&lt;span&gt;</NxCode> representing the status indicator</NxTable.Cell>
+            <NxTable.Cell />
             <NxTable.Cell>
               The overall status indicator element. Should contain only simple, brief text describing the current status
             </NxTable.Cell>
@@ -108,6 +113,7 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>nx-status-indicator--negative</NxCode></NxTable.Cell>
             <NxTable.Cell>The <NxCode>.nx-status-indicator</NxCode> element</NxTable.Cell>
+            <NxTable.Cell><NxCode>NxNegativeStatusIndicator</NxCode></NxTable.Cell>
             <NxTable.Cell>
               This class may optionally be set on <NxCode>negative</NxCode> status indicators. It is optional however
               - negative is the default state.
@@ -116,6 +122,7 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>nx-status-indicator--positive</NxCode></NxTable.Cell>
             <NxTable.Cell>The <NxCode>.nx-status-indicator</NxCode> element</NxTable.Cell>
+            <NxTable.Cell><NxCode>NxPositiveStatusIndicator</NxCode></NxTable.Cell>
             <NxTable.Cell>
               This class must be set on <NxCode>positive</NxCode> status indicators.
             </NxTable.Cell>
@@ -123,6 +130,7 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>nx-status-indicator--intermediate</NxCode></NxTable.Cell>
             <NxTable.Cell>The <NxCode>.nx-status-indicator</NxCode> element</NxTable.Cell>
+            <NxTable.Cell><NxCode>NxIntermediateStatusIndicator</NxCode></NxTable.Cell>
             <NxTable.Cell>
               This class must be set on <NxCode>intermediate</NxCode> status indicators.
             </NxTable.Cell>
@@ -130,6 +138,7 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>nx-status-indicator--error</NxCode></NxTable.Cell>
             <NxTable.Cell>The <NxCode>.nx-status-indicator</NxCode> element</NxTable.Cell>
+            <NxTable.Cell><NxCode>NxErrorStatusIndicator</NxCode></NxTable.Cell>
             <NxTable.Cell>
               This class must be set on <NxCode>error</NxCode> status indicators.
             </NxTable.Cell>
@@ -149,6 +158,12 @@ const NxThreatIndicatorPage = () =>
     <GalleryExampleTile title="Mixed Example"
                         htmlExample={nxStatusIndicatorExampleCode}
                         codeExamples={nxStatusIndicatorExampleCode}>
+      A series of <NxCode>.nx-status-indicator</NxCode>s of all statuses, intermixed with plain text content
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Convenience Component Example"
+                        liveExample={NxStatusIndicatorComponentExample}
+                        codeExamples={nxStatusIndicatorComponentExampleCode}>
       A series of <NxCode>.nx-status-indicator</NxCode>s of all statuses, intermixed with plain text content
     </GalleryExampleTile>
   </>;
