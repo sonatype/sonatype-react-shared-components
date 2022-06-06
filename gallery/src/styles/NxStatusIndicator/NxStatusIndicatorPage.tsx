@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxDescriptionList } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxReadOnly } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -15,46 +15,81 @@ const NxThreatIndicatorPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        <NxCode>nx-status-indicator</NxCode> is used to indicate the status of workflows or external systems which
-        could be in one of up to four different states. The four states have rough semantics assigned but the
-        exact wording which should associated may vary from one usage case to another. The descriptions of the four
-        states below give examples of wordings that might be used with them. The wording for a given indicator
-        must be written into the HTML along with the usage of the <NxCode>nx-status-indicator</NxCode> classes.
-
-        TODO usage guidelines
+        <NxCode>nx-status-indicator</NxCode> is used to indicate four distinct states of a workflow or external system.
+        Depending on the usage scenario, the exact wording associated with each state may vary.
+        The associated wording must be specified as the text content of the element to which
+        the <NxCode>nx-status-indicator</NxCode> class is applied.
       </NxP>
-      <NxDescriptionList>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term><NxCode>negative</NxCode></NxDescriptionList.Term>
-          <NxDescriptionList.Description>
-            The status in which the item in question is not present, activated, etc. Might be paired with wording such
-            as "Off", "Disabled", "Inactive", "Not Started", "Down", etc.
-          </NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term><NxCode>positive</NxCode></NxDescriptionList.Term>
-          <NxDescriptionList.Description>
-            The opposite status of <NxCode>negative</NxCode>. Might be paired with wording such as
-            "On", "Enabled", "Active", "Complete", "Up", etc.
-          </NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term><NxCode>intermediate</NxCode></NxDescriptionList.Term>
-          <NxDescriptionList.Description>
-            A less common status indicating a partial or in-transition state
-            between <NxCode>negative</NxCode> and <NxCode>positive</NxCode>. Might be paired with wording such as
-            "Starting", "Partial", "In Progress", "Indeterminate", etc.
-          </NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term><NxCode>error</NxCode></NxDescriptionList.Term>
-          <NxDescriptionList.Description>
-            A status that may be used when the item described by the indicator attempted to get to the
-            <NxCode>positive</NxCode> status but failed in some way. Might be paired with wording such as
-            "Error", "Failed", "Died", etc.
-          </NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-      </NxDescriptionList>
+      <NxP>
+        Unlike tags, <NxCode>nx-status-indicator</NxCode>s do not appear conditionally. They are always visible and
+        indicate one of the
+        four distinct states to reflect related object's current state. They should not be used to
+        report error occurrences.
+      </NxP>
+      <NxReadOnly>
+        <NxReadOnly.Label>Example</NxReadOnly.Label>
+        <NxReadOnly.Data>
+          Scenario – A REST call has failed (an event)<br/>
+          Do not use nx-status-indicator
+        </NxReadOnly.Data>
+        <NxReadOnly.Data>
+          Scenario – A REST service is broken and unresponsive (a state)<br/>
+          Use <NxCode>nx-status-indicator</NxCode> with the <NxCode>error</NxCode> state
+        </NxReadOnly.Data>
+      </NxReadOnly>
+      <NxP>
+        The table below describes the four states that <NxCode>nx-status-indicator</NxCode> can represent as well as
+        suggested paired wording for each state:
+      </NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>State</NxTable.Cell>
+            <NxTable.Cell>Description</NxTable.Cell>
+            <NxTable.Cell>Suggested Paired Wording</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>negative</NxCode></NxTable.Cell>
+            <NxTable.Cell>The status in which the item in question is absent, not activated, etc</NxTable.Cell>
+            <NxTable.Cell>
+              "Off", "Disabled", "Inactive", "Not Started", "Down"
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>positive</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              The status in which the item in question is present, activated, etc
+            </NxTable.Cell>
+            <NxTable.Cell>
+              "On", "Enabled", "Active", "Complete", "Up"
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>intermediate</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              In transition or partial status between negative and positive
+            </NxTable.Cell>
+            <NxTable.Cell>
+              "Starting", "Partial", "In Progress"
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>error</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              A status that may be used when the item described by the indicator attempted to get to
+              the <NxCode>positive</NxCode> status but failed in some way
+            </NxTable.Cell>
+            <NxTable.Cell>
+              "Error", "Failed"
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
+      <NxP>
+        <NxCode>nx-status-indicator</NxCode>s are created by using the following CSS classes:
+      </NxP>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>
