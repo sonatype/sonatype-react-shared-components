@@ -20,7 +20,14 @@ describe('NxToggle', function() {
     children: 'Enables whales'
   };
 
-  it('renders a <label> containing a toggle <input> and toggle control', function() {
+  it('renders a <label> containing an <input>', function() {
+    const { container } = render(<NxToggle {...simpleProps}></NxToggle>);
+
+    const checkboxInsideLabel = container.querySelector('label > input[type="checkbox"]');
+    expect(checkboxInsideLabel).toBeTruthy();
+  });
+
+  it('renders an input element with role switch with the correct attributes and classname', function() {
     render(<NxToggle {...simpleProps}></NxToggle>);
 
     const checkbox = screen.getByRole('switch');
@@ -28,7 +35,6 @@ describe('NxToggle', function() {
     expect(checkbox).toHaveAttribute('type', 'checkbox');
     expect(checkbox).toHaveAttribute('id', 'toggle-id');
     expect(checkbox).toHaveClass('nx-toggle__input');
-
   });
 
   it('adds classes specified with the className prop', function() {
