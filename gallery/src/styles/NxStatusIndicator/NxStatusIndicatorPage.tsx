@@ -166,7 +166,8 @@ const NxThreatIndicatorPage = () =>
     <GalleryExampleTile title="Convenience Component Example"
                         liveExample={NxStatusIndicatorComponentExample}
                         codeExamples={nxStatusIndicatorComponentExampleCode}>
-      A series of <NxCode>.nx-status-indicator</NxCode>s of all statuses, intermixed with plain text content
+      Another example of all statuses intermixed with other content, but this time implemented using the
+      convenience components.
     </GalleryExampleTile>
   </>;
 
