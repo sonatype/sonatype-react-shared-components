@@ -9,9 +9,7 @@ import { NxTable, NxCode, NxP, NxDescriptionList } from '@sonatype/react-shared-
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxStatusIndicatorExample from './NxStatusIndicatorExample';
-
-const nxStatusIndicatorExampleCode = require('./NxStatusIndicatorExample?raw');
+const nxStatusIndicatorExampleCode = require('./NxStatusIndicatorExample.html');
 
 const NxThreatIndicatorPage = () =>
   <>
@@ -107,7 +105,7 @@ const NxThreatIndicatorPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Mixed Example"
-                        liveExample={NxStatusIndicatorExample}
+                        htmlExample={nxStatusIndicatorExampleCode}
                         codeExamples={nxStatusIndicatorExampleCode}>
       A series of <NxCode>.nx-status-indicator</NxCode>s of all statuses, intermixed with plain text content
     </GalleryExampleTile>
