@@ -52,7 +52,7 @@ const NxThreatIndicatorPage = () =>
         <NxTable.Body>
           <NxTable.Row>
             <NxTable.Cell><NxCode>negative</NxCode></NxTable.Cell>
-            <NxTable.Cell>The status in which the item in question is absent, not activated, etc</NxTable.Cell>
+            <NxTable.Cell>The item in question is absent or not activated. </NxTable.Cell>
             <NxTable.Cell>
               "Off", "Disabled", "Inactive", "Not Started", "Down"
             </NxTable.Cell>
@@ -60,7 +60,7 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>positive</NxCode></NxTable.Cell>
             <NxTable.Cell>
-              The status in which the item in question is present, activated, etc
+              The item in question is present and active or complete.
             </NxTable.Cell>
             <NxTable.Cell>
               "On", "Enabled", "Active", "Complete", "Up"
@@ -69,8 +69,8 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>intermediate</NxCode></NxTable.Cell>
             <NxTable.Cell>
-              In transition or partial status between negative and positive
             </NxTable.Cell>
+              In transition or partial state between negative and positive.
             <NxTable.Cell>
               "Starting", "Partial", "In Progress"
             </NxTable.Cell>
@@ -78,8 +78,7 @@ const NxThreatIndicatorPage = () =>
           <NxTable.Row>
             <NxTable.Cell><NxCode>error</NxCode></NxTable.Cell>
             <NxTable.Cell>
-              A status that may be used when the item described by the indicator attempted to get to
-              the <NxCode>positive</NxCode> status but failed in some way
+              A status that may be used to indicate a failed attempt at achieving a positive status.
             </NxTable.Cell>
             <NxTable.Cell>
               "Error", "Failed"
