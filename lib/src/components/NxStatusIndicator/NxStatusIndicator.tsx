@@ -13,6 +13,7 @@ import { Props } from './types';
 const NxStatusIndicator = withClass('span', 'nx-status-indicator', 'status');
 
 function mkModifiedStatusIndicator(modifier: string) {
+  /* eslint-disable react/prop-types */
   return forwardRef<HTMLSpanElement, Props>(function ({ className, ...otherProps }, ref) {
     return <NxStatusIndicator ref={ref}
                               className={classnames(`nx-status-indicator--${modifier}`, className)}
