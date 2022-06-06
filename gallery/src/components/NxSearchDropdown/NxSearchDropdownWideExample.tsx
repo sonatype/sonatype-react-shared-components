@@ -32,6 +32,7 @@ export default function NxSearchDropdownExample() {
   function onSelect({ displayName }: DataItem<number>) {
     alert('Selected ' + displayName);
     setQuery('');
+    setMatches([]);
   }
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
@@ -52,8 +53,13 @@ export default function NxSearchDropdownExample() {
   }
 
   function onSearch(query: string) {
-    setLoading(true);
-    executeQuery(query);
+    if (query === '') {
+      setMatches([]);
+    }
+    else {
+      setLoading(true);
+      executeQuery(query);
+    }
   }
 
   return (

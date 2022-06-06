@@ -73,6 +73,8 @@ const NxSearchDropdownPage = () =>
                 the component gains focus while in an error state (which is intended to automatically trigger a retry
                 attempt). The handler passed in for this prop should, in addition to performing the search, update
                 the <NxCode>loading</NxCode> prop. The handler receives the new search text value as its argument.
+                If the search string is the empty string, this callback <em>should</em> clear
+                the <NxCode>matches</NxCode>, <NxCode>loading</NxCode>, and <NxCode>error</NxCode> props.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
