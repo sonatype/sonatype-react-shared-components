@@ -150,7 +150,8 @@ const NxThreatIndicatorPage = () =>
           <NxH3>Accessibility Considerations</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          <NxCode>nx-status-indicator</NxCode>s should have the ARIA <NxCode>status</NxCode> role.
+          <NxCode>nx-status-indicator</NxCode>s should have the ARIA <NxCode>status</NxCode> role. When using the
+          convenience components, this role is set automatically.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
