@@ -13,8 +13,7 @@ export default React.createContext<TabContextType>({
   rootId: '',
   index: -1,
   onTabSelect: () => {},
-  numberOfTabs: 0,
-  focusedTabIndex: 0,
-  setFocusTabIndex: () => {}
+  focusedTab: 0,
+  setFocusedTab: () => {}
 });
 

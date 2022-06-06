@@ -12,9 +12,9 @@ export interface TabContextType {
   rootId: string;
   index: number;
   onTabSelect: (index: number) => void;
-  focusedTabIndex?: number | null;
-  numberOfTabs: number;
-  setFocusTabIndex: (index: number) => void;
+  focusedTab?: number | null;
+  setFocusedTab: (index: number) => void;
+  activationMode?: 'automatic' | 'manual';
 }
 
 export type NxTabsProps = HTMLAttributes<HTMLDivElement> & {

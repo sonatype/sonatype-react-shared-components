@@ -9,14 +9,22 @@ import classnames from 'classnames';
 
 import { useUniqueId } from '../../util/idUtil';
 import TabContext from './TabContext';
-import { TabContextType, NxTabProps, NxTabPanelProps, NxTabsProps, nxTabsPropTypes } from './types';
+import { TabContextType, NxTabsProps, nxTabsPropTypes } from './types';
 
 export { NxTabsProps } from './types';
 
 import './NxTabs.scss';
 
 const NxTabs = function NxTabsElement(props: NxTabsProps) {
-  const { activeTab, onTabSelect: onTabSelectProp, id, className, children, ...attrs } = props;
+  const {
+    activeTab,
+    onTabSelect: onTabSelectProp,
+    id,
+    className,
+    activationMode = 'automatic',
+    children,
+    ...attrs
+  } = props;
 
   const [tabList, ...tabPanels] = Children.toArray(children);
 
@@ -31,17 +39,12 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
 
   const rootId = useUniqueId('nx-tabs', id);
 
-  const [focusedTabIndex, setFocusTabIndexState] = useState(activeTab);
+  const [focusedTab, setFocusedTab] = useState(activeTab);
   const tabElements = Children.toArray(tabList.props.children);
 
   const onTabSelect = (index: number) => {
-    setFocusTabIndex(index);
+    setFocusedTab(index);
     onTabSelectProp(index);
-  };
-
-  const setFocusTabIndex = (index: number) => {
-    setFocusTabIndexState(index);
-    // tabElements[index].focus();
   };
 
   const clonedTabList = cloneElement(tabList, {
@@ -51,9 +54,9 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
         rootId,
         index,
         onTabSelect: onTabSelect || (() => { }),
-        numberOfTabs: tabElements.length,
-        focusedTabIndex,
-        setFocusTabIndex
+        activationMode,
+        focusedTab,
+        setFocusedTab
       };
       return <TabContext.Provider key={index} value={activeTabContext}>{tab}</TabContext.Provider>;
     })
@@ -65,9 +68,8 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
       rootId,
       index,
       onTabSelect: onTabSelect || (() => { }),
-      numberOfTabs: tabElements.length,
-      focusedTabIndex,
-      setFocusTabIndex
+      focusedTab,
+      setFocusedTab
     };
     return <TabContext.Provider key={index} value={activeTabContext}>{tabPanel}</TabContext.Provider>;
   });

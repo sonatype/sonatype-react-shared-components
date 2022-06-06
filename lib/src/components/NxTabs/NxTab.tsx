@@ -20,12 +20,13 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     activeTab,
     rootId,
     index,
+    activationMode,
     onTabSelect
   } = useContext(TabContext);
   const { className, children, onClick, onKeyPress, ...attrs } = props;
   const active = activeTab === index;
   const classNames = classnames('nx-tab', className, { active });
-  const liElement = useRef<HTMLLIElement>(null);
+  const liElement = useRef<HTMLLIElement | null>(null);
 
   function handleKeyPress(event: React.KeyboardEvent<HTMLLIElement>) {
     if (onKeyPress) {
@@ -51,23 +52,44 @@ const NxTab = function NxTabElement(props: NxTabProps) {
       return;
     }
 
-    if (event.key === 'ArrowRight') {
-      event.preventDefault();
-      const tabElements = event.currentTarget.parentElement?.children;
-      const nextElement = tabElements?.[index + 1] ?? tabElements?.[0];
-      if (nextElement) {
-        (nextElement as HTMLElement).focus();
+    const tabElements = event.currentTarget.parentElement?.children;
+
+    const getNextElementFromEventKey = (key: string) => {
+      switch (key) {
+        case 'Left':
+        case 'ArrowLeft': {
+          event.preventDefault();
+          return tabElements?.[index - 1] ?? tabElements?.[tabElements.length - 1];
+        }
+        case 'Right':
+        case 'ArrowRight': {
+          event.preventDefault();
+          return tabElements?.[index + 1] ?? tabElements?.[0];
+        }
+        case 'Home': {
+          event.preventDefault();
+          return tabElements?.[tabElements.length - 1];
+        }
+        case 'End': {
+          event.preventDefault();
+          return tabElements?.[0];
+        }
+        default: {
+          return;
+        }
       }
+    };
+
+    const nextElement = getNextElementFromEventKey(event.key);
+
+    if (nextElement) {
+      (nextElement as HTMLElement).focus();
     }
-    else if (event.key === 'ArrowLeft') {
-      event.preventDefault();
-      // eslint-disable-next-line
-      console.log('tab');
-      const tabElements = event.currentTarget.parentElement?.children;
-      const nextElement = tabElements?.[index - 1] ?? tabElements?.[tabElements.length - 1];
-      if (nextElement) {
-        (nextElement as HTMLElement).focus();
-      }
+  }
+
+  function handleFocus() {
+    if (activationMode === 'automatic' && activeTab !== index) {
+      onTabSelect(index);
     }
   }
 
@@ -80,6 +102,7 @@ const NxTab = function NxTabElement(props: NxTabProps) {
           aria-selected={active}
           onKeyPress={handleKeyPress}
           onKeyDown={handleKeyDown}
+          onFocus={handleFocus}
           onClick={handleClick}
           tabIndex={activeTab === index ? 0 : -1}
           ref={liElement}
