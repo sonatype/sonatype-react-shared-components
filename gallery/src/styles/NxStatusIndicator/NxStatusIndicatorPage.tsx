@@ -156,6 +156,7 @@ const NxThreatIndicatorPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Mixed Example"
+                        id="nx-status-indicator-example"
                         htmlExample={nxStatusIndicatorExampleCode}
                         codeExamples={nxStatusIndicatorExampleCode}>
       A series of <NxCode>.nx-status-indicator</NxCode>s of all statuses, intermixed with plain text content
