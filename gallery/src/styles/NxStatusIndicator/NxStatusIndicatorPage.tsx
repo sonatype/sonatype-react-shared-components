@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxReadOnly } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxReadOnly, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -136,6 +136,14 @@ const NxThreatIndicatorPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Accessibility Considerations</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          <NxCode>nx-status-indicator</NxCode>s should have the ARIA <NxCode>status</NxCode> role.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Mixed Example"
