@@ -65,10 +65,10 @@ const NxTab = function NxTabElement(props: NxTabProps) {
           return tabElements?.[index + 1] ?? tabElements?.[0];
         }
         case 'Home': {
-          return tabElements?.[tabElements.length - 1];
+          return tabElements?.[0];
         }
         case 'End': {
-          return tabElements?.[0];
+          return tabElements?.[tabElements.length - 1];
         }
         default: {
           return;

@@ -14,12 +14,14 @@ import NxTabsOutsideTileExample from './NxTabsOutsideTileExample';
 import NxTabsTileNoHeaderExample from './NxTabsTileNoHeaderExample';
 import NxTabsModalExample from './NxTabsModalExample';
 import NxTabsModalNoHeaderExample from './NxTabsModalNoHeaderExample';
+import NxTabsManualActivationModeExample from './NxTabsManualActivationModeExample';
 
 const NxTabsTileHeaderExampleCode = require('./NxTabsTileHeaderExample?raw');
 const NxTabsOutsideTileExampleCode = require('./NxTabsOutsideTileExample?raw');
 const NxTabsTileNoHeaderExampleCode = require('./NxTabsTileNoHeaderExample?raw');
 const NxTabsModalExampleCode = require('./NxTabsModalExample?raw');
 const NxTabsModalNoHeaderExampleCode = require('./NxTabsModalNoHeaderExample?raw');
+const NxTabsManualActivationModeExampleCode = require('./NxTabsManualActivationModeExample?raw');
 
 export default function NxTabsPage() {
   return (
@@ -61,6 +63,15 @@ export default function NxTabsPage() {
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
                   Called with the index of the newly selected tab when the currently selected tab changes.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>activationMode</NxTable.Cell>
+                <NxTable.Cell>"automatic" | "manual"</NxTable.Cell>
+                <NxTable.Cell>"automatic"</NxTable.Cell>
+                <NxTable.Cell>
+                  When set to "automatic", tabs are activated when receiving focus or clicked.
+                  When "manual", tabs are activated when clicked or focused and spacebar or enter key is pressed only.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -181,7 +192,66 @@ export default function NxTabsPage() {
             </NxTable.Body>
           </NxTable>
         </NxTile.Subsection>
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>Keyboard Navigation</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxP>
+            Adheres to the{' '}
+            <NxTextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/" external>
+              Tabs WAI-ARIA design pattern
+            </NxTextLink>.
+          </NxP>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Key</NxTable.Cell>
+                <NxTable.Cell>Description</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>
+                  Tab
+                </NxTable.Cell>
+                <NxTable.Cell>
+                  When focus moves into the tabs it goes to the active tab.{' '}
+                  When you tab again the focus will move to the associated panel container.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>
+                  Arrow Right | Arrow Left
+                </NxTable.Cell>
+                <NxTable.Cell>
+                  When you're focused on a tab, you can use the right or left arrow keys to change{' '}
+                  focus between tabs. When <NxCode>activationMode</NxCode> is set to "automatic" (manual),{' '}
+                  it will set focus on that tab and activate it. When <NxCode>activationMode</NxCode>{' '}
+                  is set to "manual", it will set focus on that tab but does not activate it.{' '}
+                  To activate it, you need to use "spacebar" or "enter".
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>
+                  Home
+                </NxTable.Cell>
+                <NxTable.Cell>
+                  Focuses the first tab.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>
+                  End
+                </NxTable.Cell>
+                <NxTable.Cell>
+                  Focuses the last tab.
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
+        </NxTile.Subsection>
       </GalleryDescriptionTile>
+
       <GalleryExampleTile title="NxTabs in NxTile Example"
                           id="nx-tab-tile-example"
                           defaultCheckeredBackground={true}
@@ -221,6 +291,12 @@ export default function NxTabsPage() {
                           codeExamples={NxTabsModalNoHeaderExampleCode}>
         A basic example of how to use the <NxCode>NxTabs</NxCode> family of components in an
         {' '}<NxCode>NxModal</NxCode> with no modal header.
+      </GalleryExampleTile>
+      <GalleryExampleTile title="NxTabs with manual activationMode Example"
+                          id="nx-tab-manual-activation-mode-example"
+                          liveExample={NxTabsManualActivationModeExample}
+                          codeExamples={NxTabsManualActivationModeExampleCode}>
+        A basic example of <NxCode>NxTabs</NxCode> with "manual" activation mode.
       </GalleryExampleTile>
     </>
   );
