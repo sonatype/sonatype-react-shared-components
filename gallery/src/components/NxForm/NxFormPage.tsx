@@ -151,12 +151,34 @@ const NxFormPage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>validationErrors</NxTable.Cell>
-            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell><NxCode>ValidationErrors</NxCode></NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>undefined</NxTable.Cell>
             <NxTable.Cell>
-              A form-wide validation error message which, when defined, is displayed as a tooltip on the Submit
-              button. Additionally the submit button is disabled when present.
+              A string or list of strings, the first of which becomes the overall validation message for the form.
+              When defined and <NxCode>showValidationErrors</NxCode> is true, this message will appear in the form
+              footer within an <NxCode>NxErrorAlert</NxCode>, and the Submit button will not be visible.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>showValidationErrors</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell />
+            <NxTable.Cell>
+              <NxP>
+                Whether or not validation errors within the form should all currently be shown. When true, the form-wide
+                <NxCode>validationErrors</NxCode> will be displayed in an <NxCode>NxErrorAlert</NxCode> in the footer
+                and all <NxCode>validationErrors</NxCode> on individual form fields will also be displayed regardless of
+                whether those fields are pristine (pristine fields do not otherwise display
+                their <NxCode>validationErrors</NxCode>).
+              </NxP>
+              <NxP>
+                Calling code should set this prop to false on freshly-rendered forms, forms that have been submitted
+                successfully, and when a form transitions from having <NxCode>validationErrors</NxCode> to having
+                no <NxCode>validationErrors</NxCode>. Calling code should set this prop to true when a form submission
+                is attempted.  See <NxCode>NxStatefulForm</NxCode> for automatic management of this prop.
+              </NxP>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
