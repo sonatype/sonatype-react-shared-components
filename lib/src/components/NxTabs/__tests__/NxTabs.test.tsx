@@ -144,39 +144,4 @@ describe('NxTabs', function () {
 
     expect(onTabSelect).toHaveBeenCalledWith(0);
   });
-
-  it('should tab to the right', function () {
-    const onTabSelect = jest.fn();
-
-    const component = mount(
-      <NxTabs activeTab={0} onTabSelect={onTabSelect}>
-        <NxTabList>
-          <NxTab>Tab 1</NxTab>
-          <NxTab>Tab 2</NxTab>
-        </NxTabList>
-        <NxTabPanel>1</NxTabPanel>
-        <NxTabPanel>2</NxTabPanel>
-      </NxTabs>
-    );
-
-    const tabs = component.find('[role="tab"]');
-
-    (tabs.at(0).getDOMNode() as HTMLElement).focus();
-
-    // const keyDownRightArrow = { key: 'ArrowRight' };
-    // const keyDownLeftEvent = { key: 'ArrowLeft' };
-
-    tabs.at(0).simulate('keyDown', { key: 'ArrowRight' });
-
-    // expect(onTabSelect).toBeCalled();
-    // expect(document.activeElement === tabs.at(1).getDOMNode()).toBe(true);
-    // expect(tabs.get(0).ref.current).toEqual(document?.activeElement);
-
-    setTimeout(() => {
-      expect(tabs.at(1).is(':focus')).toBe(true);
-    }, 500);
-
-    // tabs.at(1).simulate('keydown', keyDownRightArrow);
-    // expect(document.activeElement).toBe(tabs.get(1));
-  });
 });
