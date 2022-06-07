@@ -105,7 +105,10 @@ const NxFormPage = () =>
               form submission semantics (e.g. page reload) the form
               event's <NxCode>preventDefault</NxCode> method is called before this method is
               dispatched. This function does not receive the form submit event as an argument, because it may
-              also be called in response to a click on the Retry button in the form submission error alert.
+              also be called in response to a click on the Retry button in the form submission error alert. Note that
+              this handler does get called even if the form is currently invalid, and should <em>not</em> carry out
+              the submission when that is the case. It should however always
+              update <NxCode>showValidationErrors</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
