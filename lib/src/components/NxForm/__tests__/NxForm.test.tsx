@@ -13,10 +13,12 @@ import NxButton from '../../NxButton/NxButton';
 import NxLoadError from '../../NxLoadError/NxLoadError';
 import NxSubmitMask from '../../NxSubmitMask/NxSubmitMask';
 import NxLoadWrapper from '../../NxLoadWrapper/NxLoadWrapper';
+import { NxErrorAlert } from '../../NxAlert/NxAlert';
 
 describe('NxForm', function() {
   const minimalProps = {
         onSubmit: () => {},
+        showValidationErrors: false,
         children: <div/>
       },
       getShallow = getShallowComponent<Props>(NxForm, minimalProps);
@@ -31,6 +33,19 @@ describe('NxForm', function() {
 
       expect(component).toHaveClassName('foo');
       expect(component).toHaveClassName('nx-form');
+    });
+
+    it('sets the nx-form--has-validation-errors class if the validationErrors contain/are a string', function() {
+      expect(getShallow()).not.toHaveClassName('nx-form--has-validation-errors');
+      expect(getShallow({ validationErrors: null })).not.toHaveClassName('nx-form--has-validation-errors');
+      expect(getShallow({ validationErrors: [] })).not.toHaveClassName('nx-form--has-validation-errors');
+      expect(getShallow({ validationErrors: 'foo' })).toHaveClassName('nx-form--has-validation-errors');
+      expect(getShallow({ validationErrors: ['foo', 'bar'] })).toHaveClassName('nx-form--has-validation-errors');
+    });
+
+    it('sets the nx-form--show-validation-errors class if the showValidationErrors prop is set', function() {
+      expect(getShallow()).not.toHaveClassName('nx-form--show-validation-errors');
+      expect(getShallow({ showValidationErrors: true })).toHaveClassName('nx-form--show-validation-errors');
     });
 
     it('sets extra attrs on the form', function() {
@@ -52,50 +67,25 @@ describe('NxForm', function() {
     });
 
     describe('on form submit', function() {
-      describe('when there are validation errors', function() {
-        let component: ShallowWrapper,
-            onSubmit: jest.Mock;
+      let component: ShallowWrapper,
+          onSubmit: jest.Mock;
 
-        beforeEach(function() {
-          onSubmit = jest.fn();
-          component = getShallow({ validationErrors: 'its broke', onSubmit });
-        });
-
-        it('calls preventDefault on the event', function() {
-          const event = { preventDefault: jest.fn() };
-
-          component.simulate('submit', event);
-          expect(event.preventDefault).toHaveBeenCalled();
-        });
-
-        it('does not call the onSubmit prop', function() {
-          component.simulate('submit', { preventDefault: jest.fn() });
-
-          expect(onSubmit).not.toHaveBeenCalled();
-        });
+      beforeEach(function() {
+        onSubmit = jest.fn();
+        component = getShallow({ onSubmit });
       });
 
-      describe('when there are not validation errors', function() {
-        let component: ShallowWrapper,
-            onSubmit: jest.Mock;
+      it('calls preventDefault on the event', function() {
+        const event = { preventDefault: jest.fn() };
 
-        beforeEach(function() {
-          onSubmit = jest.fn();
-          component = getShallow({ onSubmit });
-        });
+        component.simulate('submit', event);
+        expect(event.preventDefault).toHaveBeenCalled();
+      });
 
-        it('calls preventDefault on the event', function() {
-          const event = { preventDefault: jest.fn() };
+      it('calls the onSubmit prop', function() {
+        component.simulate('submit', { preventDefault: jest.fn() });
 
-          component.simulate('submit', event);
-          expect(event.preventDefault).toHaveBeenCalled();
-        });
-
-        it('calls the onSubmit prop', function() {
-          component.simulate('submit', { preventDefault: jest.fn() });
-
-          expect(onSubmit).toHaveBeenCalled();
-        });
+        expect(onSubmit).toHaveBeenCalled();
       });
     });
 
@@ -122,20 +112,6 @@ describe('NxForm', function() {
         expect(submitBtn).toHaveClassName('bar');
       });
 
-      it('adds the disabled class to the submit button iff there are validation errors', function() {
-        const disabledSubmitBtn = getShallow({ validationErrors: 'bad' })
-            .find(NxButton)
-            .filterWhere(btn => btn.prop('variant') === 'primary');
-
-        expect(disabledSubmitBtn).toHaveClassName('disabled');
-
-        const enabledSubmitBtn = getShallow()
-            .find(NxButton)
-            .filterWhere(btn => btn.prop('variant') === 'primary');
-
-        expect(enabledSubmitBtn).not.toHaveClassName('disabled');
-      });
-
       it('uses the submitBtnText in place of "Submit" if provided', function() {
         const submitBtn = getShallow({ submitBtnText: 'Save' })
             .find(NxButton)
@@ -143,28 +119,6 @@ describe('NxForm', function() {
 
         expect(submitBtn).toHaveText('Save');
       });
-
-      it('sets a title one the submit button with the first validation message if present', function() {
-        const validComponent = getShallow(),
-            invalidComponent = getShallow({ validationErrors: ['Broken', 'Foobarred'] }),
-            validComponentTooltip = validComponent.find('.nx-form__submit-btn'),
-            invalidComponentTooltip = invalidComponent.find('.nx-form__submit-btn');
-
-        expect(validComponentTooltip).toHaveProp('title', '');
-        expect(invalidComponentTooltip).toHaveProp('title', 'Broken');
-      });
-
-      it('sets an aria-label on the submit button indicating why it is disabled when there are validation errors',
-          function() {
-            const validComponent = getShallow(),
-                invalidComponent = getShallow({ validationErrors: ['Broken', 'Foobarred'] }),
-                validComponentTooltip = validComponent.find('.nx-form__submit-btn'),
-                invalidComponentTooltip = invalidComponent.find('.nx-form__submit-btn');
-
-            expect(validComponentTooltip).toHaveProp('aria-label', undefined);
-            expect(invalidComponentTooltip).toHaveProp('aria-label', 'Submit disabled: Broken');
-          }
-      );
 
       it('does not render the submit button is there is a submitError', function() {
         const submitBtn = getShallow({ submitError: 'bad' })
@@ -266,6 +220,28 @@ describe('NxForm', function() {
           submitMaskState: true,
           submitMaskSuccessMessage: 'succeeded'
         }).find(NxSubmitMask)).toHaveProp('successMessage', 'succeeded');
+      });
+    });
+
+    describe('validation errors', function() {
+      it('renders an NxErrorAlert when there are validation errors and no submitError', function() {
+        expect(getShallow()).not.toContainMatchingElement(NxErrorAlert);
+        expect(getShallow({ validationErrors: null })).not.toContainMatchingElement(NxErrorAlert);
+        expect(getShallow({ validationErrors: [] })).not.toContainMatchingElement(NxErrorAlert);
+        expect(getShallow({ validationErrors: 'foo' })).toContainMatchingElement(NxErrorAlert);
+        expect(getShallow({ validationErrors: ['foo'] })).toContainMatchingElement(NxErrorAlert);
+        expect(getShallow({ submitError: 'bar', validationErrors: 'foo' })).not.toContainMatchingElement(NxErrorAlert);
+      });
+
+      it('sets the nx-form__validation-errors class on the NxErrorAlert', function() {
+        expect(getShallow({ validationErrors: 'foo' }).find(NxErrorAlert))
+            .toHaveClassName('nx-form__validation-errors');
+      });
+
+      it('includes the first validation error within the NxErrorAlert content', function() {
+        expect(getShallow({ validationErrors: 'foo' }).find(NxErrorAlert)).toIncludeText('foo');
+        expect(getShallow({ validationErrors: ['bar', 'foo'] }).find(NxErrorAlert)).toIncludeText('bar');
+        expect(getShallow({ validationErrors: ['bar', 'foo'] }).find(NxErrorAlert)).not.toIncludeText('foo');
       });
     });
   });
