@@ -16,6 +16,10 @@
 
   &__validation-errors {
     display: none;
+
+    + .nx-btn-bar {
+      margin-top: 0;
+    }
   }
 
   .invalid {
