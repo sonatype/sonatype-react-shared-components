@@ -9,10 +9,7 @@ import classnames from 'classnames';
 
 import { NxTabListProps, nxTabListPropTypes } from './types';
 export { NxTabListProps };
-// const ARROW_LEFT = 37;
-// const ARROW_UP = 38;
-// const ARROW_RIGHT = '39';
-// const ARROW_DOWN = 40;
+
 const NxTabList = function NxTabListElement(props: NxTabListProps) {
   const { className, ...attrs } = props;
 

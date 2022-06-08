@@ -14,8 +14,6 @@ describe('NxTabPanel', function () {
     return {
       rootId: 'nx-tabs-0',
       onTabSelect: jest.fn(),
-      setFocusedTab: () => {},
-      focusedTab: 0,
       ...testContext
     };
   }
