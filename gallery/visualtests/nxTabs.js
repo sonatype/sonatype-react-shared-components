@@ -29,8 +29,8 @@ describe('NxTabs', function() {
       tabOutsideTileExampleSelector = '#nx-tab-tile-no-header-example .nx-tile',
       tabModalExampleSelector = '#nx-tab-modal-example',
       tabModalNoHeaderExampleSelector = '#nx-tab-modal-no-header-example',
-      tabManualActivationModeExampleSelector = '#nx-tab-manual-activation-mode-example',
-      tabAutomaticActivationModeExampleSelector = '#nx-tab-tile-no-header-example';
+      tabManualActivationModeExampleSelector = '#nx-tab-manual-activation-mode-example .gallery-example-live',
+      tabAutomaticActivationModeExampleSelector = '#nx-tab-tile-no-header-example .gallery-example-live';
 
   it('looks right in a Tile', simpleTest(tabTileExampleSelector));
   it('looks right in a Tile with no header', simpleTest(tabTileNoHeaderExampleSelector));
