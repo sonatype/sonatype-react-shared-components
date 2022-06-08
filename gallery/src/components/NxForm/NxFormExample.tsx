@@ -99,7 +99,7 @@ export default function NxFormExample() {
   }
 
   function onSubmit() {
-    setShowValidationErrors(true)
+    setShowValidationErrors(true);
 
     if (!hasValidationErrors(validationErrors)) {
       // For the sake of example, simulate that the submit fails the first time, and then upon retry
