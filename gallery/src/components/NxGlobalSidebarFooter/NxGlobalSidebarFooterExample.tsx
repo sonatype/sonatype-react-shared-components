@@ -34,7 +34,7 @@ export default function NxGlobalSidebarFooterExample() {
           <NxGlobalSidebarNavigationLink icon={faLink}
                                          text="NxGlobalSidebarFooter"
                                          href="#/pages/NxGlobalSidebarFooter"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/NxLoadError"/>
+          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/Load%20Error"/>
         </NxGlobalSidebarNavigation>
         <NxGlobalSidebarFooter supportText="Support for RSC"
                                supportLink="https://github.com/sonatype/sonatype-react-shared-components"

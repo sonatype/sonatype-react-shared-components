@@ -227,7 +227,7 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/NxGlobalSidebar"><NxCode>NxGlobalSidebar</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/Global%20Sidebar"><NxCode>NxGlobalSidebar</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Global Sidebar</NxTable.Cell>

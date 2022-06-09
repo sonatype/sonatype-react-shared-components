@@ -29,7 +29,7 @@ export default function NxStatefulGlobalSidebarExample() {
           <NxGlobalSidebarNavigationLink icon={faLink}
                                          text="NxStatefulGlobalSidebar"
                                          href="#/pages/NxStatefulGlobalSidebar"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/NxLoadError"/>
+          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/Load%20Error"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/NxLoadWrapper"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
                                          text="NxLoadingSpinner"

@@ -32,8 +32,8 @@ export default function NxGlobalSidebarExample() {
                        logoAltText="RSC Plaid Villain"
                        logoLink="#">
         <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/NxLoadError"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
+          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/Load%20Error"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/NxLoadWrapper"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
                                          text="NxLoadingSpinner"
