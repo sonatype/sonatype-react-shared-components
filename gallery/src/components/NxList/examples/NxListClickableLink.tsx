@@ -20,7 +20,7 @@ function NxListClickableLink() {
           monofilament realism order-flow corporation car footage vinyl.
         </NxList.Text>
       </NxList.LinkItem>
-      <NxList.LinkItem href="#/pages/NxButton">
+      <NxList.LinkItem href="#/pages/Button">
         <NxList.Text>NxButton page</NxList.Text>
       </NxList.LinkItem>
       <NxList.LinkItem href="#/pages/NxAlert">
