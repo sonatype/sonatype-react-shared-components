@@ -26,6 +26,7 @@
   &:focus {
     box-shadow: var(--nx-box-shadow-focus);
     outline: solid 1px var(--nx-color-interactive-border-focus);
+    outline-offset: -1px;
   }
 }
 
