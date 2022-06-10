@@ -141,7 +141,7 @@ const NxFormLayoutPage = () =>
                         id="nx-form-layout-inline-example"
                         liveExample={NxFormInlineLayoutExample}
                         codeExamples={NxFormInlineLayoutCode}>
-      This example demonstrates a form layout with the submit button placed inline with a text input field.
+      This example demonstrates a form layout with a button placed inline with a text input field.
     </GalleryExampleTile>
   </>;
 
