@@ -35,9 +35,6 @@ export default function NxStatefulGlobalSidebarExample() {
                                          text="NxLoadingSpinner"
                                          href="#/pages/Loading%20Spinner"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxModal" href="#/pages/Modal"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
-                                         text="NxNexusPageHeader"
-                                         href="#/pages/NxNexusPageHeader"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/Page%20Header"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
                                          text="NxPagination"
