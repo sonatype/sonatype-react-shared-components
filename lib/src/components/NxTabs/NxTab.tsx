@@ -52,18 +52,19 @@ const NxTab = function NxTabElement(props: NxTabProps) {
       return;
     }
 
-    const tabElements = event.currentTarget.parentElement?.children;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const tabElements = event.currentTarget.parentElement!.children;
 
     const getNextElementFromEventKey = (key: string) => {
       switch (key) {
         case 'ArrowLeft':
-          return tabElements?.[index - 1] ?? tabElements?.[tabElements.length - 1];
+          return tabElements[index - 1] ?? tabElements[tabElements.length - 1];
         case 'ArrowRight':
-          return tabElements?.[index + 1] ?? tabElements?.[0];
+          return tabElements[index + 1] ?? tabElements[0];
         case 'Home':
-          return tabElements?.[0];
+          return tabElements[0];
         case 'End':
-          return tabElements?.[tabElements.length - 1];
+          return tabElements[tabElements.length - 1];
         default:
           return;
       }
