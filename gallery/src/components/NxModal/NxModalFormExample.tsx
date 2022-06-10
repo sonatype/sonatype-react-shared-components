@@ -53,8 +53,7 @@ export default function NxModalFormExample() {
       <NxButton onClick={openModal}>Open Modal with Form</NxButton>
       {showModal &&
         <NxModal id="nx-modal-form-example" onCancel={modalCloseHandler} aria-labelledby="modal-form-header">
-          <NxStatefulForm className="nx-form"
-                          onSubmit={modalCloseHandler}
+          <NxStatefulForm onSubmit={modalCloseHandler}
                           onCancel={modalCloseHandler}
                           validationErrors={validationErrors}
                           additionalFooterBtns={
