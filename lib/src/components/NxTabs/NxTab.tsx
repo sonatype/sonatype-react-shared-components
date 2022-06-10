@@ -56,10 +56,8 @@ const NxTab = function NxTabElement(props: NxTabProps) {
 
     const getNextElementFromEventKey = (key: string) => {
       switch (key) {
-        case 'Left':
         case 'ArrowLeft':
           return tabElements?.[index - 1] ?? tabElements?.[tabElements.length - 1];
-        case 'Right':
         case 'ArrowRight':
           return tabElements?.[index + 1] ?? tabElements?.[0];
         case 'Home':
