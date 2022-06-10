@@ -22,7 +22,9 @@ const NxStatefulTreeViewRadioSelectPage = () =>
         to <NxCode>NxStatefulCollapsibleRadioSelect</NxCode> and
         is now deprecated and will be removed in the next major version.
         Please use
-        {' '}<NxTextLink href="#/pages/Stateful%20Collapsible%20Radio-Select">NxStatefulCollapsibleRadioSelect
+        {' '}
+        <NxTextLink href="#/pages/Stateful%20Collapsible%20Radio-Select">
+          NxStatefulCollapsibleRadioSelect
         </NxTextLink>
         {' '}instead.
       </NxWarningAlert>
