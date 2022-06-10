@@ -19,7 +19,7 @@ const NxStatefulIconDropdownPage = () =>
       <NxP>
         A dropdown menu component which uses a single icon as its toggle and therefore resembles an icon-only
         button. <NxCode>NxStatefulIconDropdown</NxCode> shares all of the same props as{' '}
-        <NxTextLink href="#/pages/NxIconDropdown">NxIconDropdown</NxTextLink> except the ones listed below.
+        <NxTextLink href="#/pages/Icon%20Dropdown">NxIconDropdown</NxTextLink> except the ones listed below.
       </NxP>
       <NxList bulleted>
         <NxList.Item><NxList.Text><NxCode>isOpen</NxCode></NxList.Text></NxList.Item>

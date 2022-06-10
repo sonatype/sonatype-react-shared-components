@@ -190,7 +190,7 @@ const PageLayoutPage = () =>
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxCode><NxTextLink href="#/pages/NxPageHeader">NxPageHeader</NxTextLink></NxCode>
+                <NxCode><NxTextLink href="#/pages/Page%20Header">NxPageHeader</NxTextLink></NxCode>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Legacy</NxTable.Cell>
@@ -236,7 +236,7 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/NxStatefulGlobalSidebar"><NxCode>NxStatefulGlobalSidebar</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/Stateful%20Global%20Sidebar"><NxCode>NxStatefulGlobalSidebar</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Global Sidebar</NxTable.Cell>
@@ -256,7 +256,7 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/NxLoadWrapper"><NxCode>NxLoadWrapper</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/Load%20Wrapper"><NxCode>NxLoadWrapper</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Any</NxTable.Cell>

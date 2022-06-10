@@ -33,7 +33,7 @@ export default function NxGlobalSidebarFooterExample() {
         <NxGlobalSidebarNavigation>
           <NxGlobalSidebarNavigationLink icon={faLink}
                                          text="NxGlobalSidebarFooter"
-                                         href="#/pages/NxGlobalSidebarFooter"/>
+                                         href="#/pages/Global%20Sidebar%20Footer"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/Load%20Error"/>
         </NxGlobalSidebarNavigation>
         <NxGlobalSidebarFooter supportText="Support for RSC"
