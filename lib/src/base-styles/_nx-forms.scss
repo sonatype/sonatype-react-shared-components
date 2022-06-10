@@ -39,10 +39,6 @@
       .nx-form__validation-errors {
         display: flex;
       }
-
-      .nx-form__submit-btn {
-        display: none;
-      }
     }
 
     .nx-form__invalid-field-message {
@@ -55,6 +51,23 @@
           display: block;
         }
       }
+    }
+  }
+
+  &--has-submit-error {
+    .nx-form__validation-errors {
+      display: none;
+    }
+  }
+
+  &--has-submit-error, &--show-validation-errors.nx-form--has-validation-errors {
+    .nx-form__submit-btn {
+      display: none;
+    }
+
+    // remove right margin from the last _visible_ footer button
+    .nx-footer .nx-btn-bar > :nth-last-child(2) {
+      margin-right: 0;
     }
   }
 

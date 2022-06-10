@@ -53,6 +53,7 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
           formClasses = classnames('nx-form', className, {
             'nx-form--show-validation-errors': showValidationErrors,
             'nx-form--has-validation-errors': formHasValidationErrors
+            'nx-form--has-submit-error': !!submitError
           }),
           getChildren = children instanceof Function ? children : always(children),
           submitBtnClasses = classnames('nx-form__submit-btn', submitBtnClassesProp);
@@ -72,12 +73,10 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
           <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
             {getChildren()}
             <footer className="nx-footer">
-              { submitError &&
-                <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
-                             error={submitError}
-                             retryHandler={onSubmitProp} />
-              }
-              { !submitError && formHasValidationErrors &&
+              <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
+                           error={submitError}
+                           retryHandler={onSubmitProp} />
+              { formHasValidationErrors &&
                 <NxErrorAlert className="nx-form__validation-errors">
                   There were validation errors.{' '}
                   {getFirstValidationError(validationErrors)}
@@ -90,11 +89,9 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
                     Cancel
                   </NxButton>
                 }
-                { !!submitError ||
-                  <NxButton variant="primary" className={submitBtnClasses}>
-                    {submitBtnText || 'Submit'}
-                  </NxButton>
-                }
+                <NxButton variant="primary" className={submitBtnClasses}>
+                  {submitBtnText || 'Submit'}
+                </NxButton>
               </div>
 
             </footer>
