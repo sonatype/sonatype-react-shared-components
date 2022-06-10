@@ -84,7 +84,6 @@ import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
-import NxFormGroupStylePage from './styles/NxFormGroup/NxFormGroupStylePage';
 import NxFieldsetPage from './components/NxFieldset/NxFieldsetPage';
 import NxFieldsetStylePage from './styles/NxFieldset/NxFieldsetStylePage';
 import NxFormPage from './components/NxForm/NxFormPage';
@@ -260,7 +259,6 @@ const pageConfig: PageConfig = {
     'Alert (HTML)': { content: NxAlertPage, type: 'html' },
     'Button (HTML)': { content: NxBtnPage, type: 'html' },
     'Fieldset (HTML)': { content: NxFieldsetStylePage, type: 'html' },
-    'Form Group (HTML)': { content: NxFormGroupStylePage, type: 'html' },
     'Form Select (HTML)': { content: NxFormSelectPage, type: 'html' },
     'Icon': { content: NxIconPage, type: 'html' },
     'List (HTML)': { content: NxListPage, type: 'html' },
