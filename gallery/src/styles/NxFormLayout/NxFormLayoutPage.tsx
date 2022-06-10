@@ -84,6 +84,15 @@ const NxFormLayoutPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell><NxCode><NxTextLink href="#/pages/Read Only">NxReadOnly</NxTextLink></NxCode></NxTable.Cell>
+              <NxTable.Cell>Descendant of <NxCode>NxForm</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Static/read-only data presented in a format that matches the interactive parts of the form: the data
+                labels are styled equivalently to <NxCode>NxFormGroup</NxCode>'s labels, and the data itself takes
+                the place of a form control such as <NxCode>NxTextInput</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell><NxCode>NxFooter</NxCode></NxTable.Cell>
               <NxTable.Cell>Part of <NxCode>NxForm</NxCode>, not used directly by calling code</NxTable.Cell>
               <NxTable.Cell>
