@@ -160,7 +160,9 @@ const NxFormPage = () =>
             <NxTable.Cell>
               A string or list of strings, the first of which becomes the overall validation message for the form.
               When defined and <NxCode>showValidationErrors</NxCode> is true, this message will appear in the form
-              footer within an <NxCode>NxErrorAlert</NxCode>, and the Submit button will not be visible.
+              footer within an <NxCode>NxErrorAlert</NxCode>, and the Submit button will not be visible. This
+              prop must be set with a value if any of the fields within this form
+              have <NxCode>validationErrors</NxCode> values of their own.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -308,6 +310,40 @@ const NxFormPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Validation Behaviors</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          RSC forms have a number of validation behaviors. Validation errors can be present on individual
+          form fields and/or on the form as a whole. On individual fields, validation error messages are displayed
+          in small red text underneath of the field whenever the field is not pristine or a submission of the form
+          has been attempted. For instance, when the user first arrives at a form, no validation errors are shown, even
+          if the initial values of some fields are not valid. If the user then attempts to immediately submit the form
+          however, all current individual field validation errors would become visible. Alternatively if they edit a
+          field but leave it with an invalid value, that field's validation error would become visible.
+        </NxP>
+        <NxP>
+          In addition to each field's validation errors, the form overall may have validation errors. These errors
+          display within the form footer. Like the individual field validation errors, this overall error is not
+          displayed upon the form's initial load and is only displayed once the user attempts to submit the form.
+          Once the user takes whatever action is necessary to fix the form-level validation error, any new form-level
+          validation errors also do not display until the user again attempts to submit the form. At the implementation
+          level, the display of the form-level validation errors are controlled by
+          the <NxCode>showValidationErrors</NxCode> prop, and the calling code must manage this prop according to the
+          rules above. Wherever possible, it is recommend to use <NxCode>NxStatefulForm</NxCode> instead which manages
+          that prop automatically.
+        </NxP>
+        <NxP>
+          As an additional important aspect of form validation, note that the form-level validation error must function
+          as a "roll-up" of the individual field validation errors.  That is, if any fields have an active validation
+          error, then the form overall should also have a validation error, though it does not need to be worded
+          identically. The overall effect being that when the user attempts to submit the form, they see the form
+          validation error in the footer (near the Submit button that they just clicked) <em>and</em> see a field
+          validation error on the field(s) that are the cause of the problem. There may also be some cases where
+          form-level validation errors are appropriate even in the absense of any field validation errors.
+        </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
