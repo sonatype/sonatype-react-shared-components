@@ -24,6 +24,10 @@ describe('NxTabs', function() {
     return element.evaluate((el, cls) => el.classList.contains(cls), cls);
   }
 
+  function getId(element) {
+    return element.evaluate(el => el.getAttribute('id'));
+  }
+
   const tabTileExampleSelector = '#nx-tab-tile-example .nx-tile',
       tabTileNoHeaderExampleSelector = '#nx-tab-tile-no-header-example .nx-tile',
       tabOutsideTileExampleSelector = '#nx-tab-tile-no-header-example .nx-tile',
@@ -168,6 +172,9 @@ describe('NxTabs', function() {
 
       expect(await isFocused(firstTab)).toBe(true);
       expect(await hasClass(firstTab, 'active')).toBe(false);
+
+      const panel = await example.$('.nx-tab-panel');
+      expect(await getId(panel)).toMatch(/^nx-tabs-[0-9]+-tabpanel-2$/);
     });
 
     it('focuses on the correct tab when arrow left is pressed but '
@@ -193,6 +200,9 @@ describe('NxTabs', function() {
 
       expect(await isFocused(fourthTab)).toBe(true);
       expect(await hasClass(fourthTab, 'active')).toBe(false);
+
+      const panel = await example.$('.nx-tab-panel');
+      expect(await getId(panel)).toMatch(/^nx-tabs-[0-9]+-tabpanel-1$/);
     });
 
     it('focuses on the first tab when home key is pressed '
@@ -212,6 +222,9 @@ describe('NxTabs', function() {
 
       expect(await isFocused(firstTab)).toBe(true);
       expect(await hasClass(firstTab, 'active')).toBe(false);
+
+      const panel = await example.$('.nx-tab-panel');
+      expect(await getId(panel)).toMatch(/^nx-tabs-[0-9]+-tabpanel-3$/);
     });
 
     it('focuses on the last tab when End key is pressed '
@@ -222,7 +235,7 @@ describe('NxTabs', function() {
       const firstTab = await example.$('.nx-tab:nth-child(1)');
       const fourthTab = await example.$('.nx-tab:nth-child(4)');
 
-      await firstTab.focus();
+      await firstTab.click();
 
       expect(await isFocused(firstTab)).toBe(true);
       expect(await hasClass(firstTab, 'active')).toBe(true);
@@ -231,6 +244,9 @@ describe('NxTabs', function() {
 
       expect(await isFocused(fourthTab)).toBe(true);
       expect(await hasClass(fourthTab, 'active')).toBe(false);
+
+      const panel = await example.$('.nx-tab-panel');
+      expect(await getId(panel)).toMatch(/^nx-tabs-[0-9]+-tabpanel-0$/);
     });
   });
 
