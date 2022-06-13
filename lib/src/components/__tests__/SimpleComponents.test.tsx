@@ -264,7 +264,7 @@ describe('NxPageTitle', function() {
 
 describe('NxPageTitle.Headings', function() {
   it('makes a <hgroup> tag with an nx-page-title__headings class', function() {
-    expect(shallow(<NxPageTitle.Headings/>)).toMatchSelector('div.nx-page-title__headings');
+    expect(shallow(<NxPageTitle.Headings/>)).toMatchSelector('hgroup.nx-page-title__headings');
   });
 });
 
