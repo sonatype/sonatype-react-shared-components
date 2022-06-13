@@ -21,7 +21,6 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
     onTabSelect,
     id,
     className,
-    activationMode = 'automatic',
     children,
     ...attrs
   } = props;
@@ -45,8 +44,7 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
         activeTab,
         rootId,
         index,
-        onTabSelect,
-        activationMode
+        onTabSelect
       };
       return <TabContext.Provider key={index} value={activeTabContext}>{tab}</TabContext.Provider>;
     })

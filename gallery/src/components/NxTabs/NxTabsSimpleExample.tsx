@@ -15,11 +15,11 @@ import {
   NxTextLink
 } from '@sonatype/react-shared-components';
 
-const NxTabsManualActivationModeExample = () => {
+const NxTabsSimpleExample = () => {
   const [activeTabId, setActiveTabId] = useState(0);
   return (
     <>
-      <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId} activationMode="manual">
+      <NxTabs activeTab={activeTabId} onTabSelect={setActiveTabId}>
         <NxTabList>
           <NxTab>Tab 1</NxTab>
           <NxTab>Tab 2</NxTab>
@@ -53,4 +53,4 @@ const NxTabsManualActivationModeExample = () => {
   );
 };
 
-export default NxTabsManualActivationModeExample;
+export default NxTabsSimpleExample;

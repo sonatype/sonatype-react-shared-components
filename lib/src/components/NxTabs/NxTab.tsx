@@ -20,7 +20,6 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     activeTab,
     rootId,
     index,
-    activationMode,
     onTabSelect
   } = useContext(TabContext);
   const { className, children, onClick, onKeyPress, ...attrs } = props;
@@ -78,12 +77,6 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     }
   }
 
-  function handleFocus() {
-    if (activationMode === 'automatic' && !isActiveTab) {
-      onTabSelect(index);
-    }
-  }
-
   return (
     <NxOverflowTooltip title={children}>
       <li role="tab"
@@ -93,7 +86,6 @@ const NxTab = function NxTabElement(props: NxTabProps) {
           aria-selected={isActiveTab}
           onKeyPress={handleKeyPress}
           onKeyDown={handleKeyDown}
-          onFocus={handleFocus}
           onClick={handleClick}
           tabIndex={isActiveTab ? 0 : -1}
           ref={liElement}

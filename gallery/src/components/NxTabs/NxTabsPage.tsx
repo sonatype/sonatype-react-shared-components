@@ -14,14 +14,14 @@ import NxTabsOutsideTileExample from './NxTabsOutsideTileExample';
 import NxTabsTileNoHeaderExample from './NxTabsTileNoHeaderExample';
 import NxTabsModalExample from './NxTabsModalExample';
 import NxTabsModalNoHeaderExample from './NxTabsModalNoHeaderExample';
-import NxTabsManualActivationModeExample from './NxTabsManualActivationModeExample';
+import NxTabsSimpleExample from './NxTabsSimpleExample';
 
 const NxTabsTileHeaderExampleCode = require('./NxTabsTileHeaderExample?raw');
 const NxTabsOutsideTileExampleCode = require('./NxTabsOutsideTileExample?raw');
 const NxTabsTileNoHeaderExampleCode = require('./NxTabsTileNoHeaderExample?raw');
 const NxTabsModalExampleCode = require('./NxTabsModalExample?raw');
 const NxTabsModalNoHeaderExampleCode = require('./NxTabsModalNoHeaderExample?raw');
-const NxTabsManualActivationModeExampleCode = require('./NxTabsManualActivationModeExample?raw');
+const NxTabsSimpleExampleCode = require('./NxTabsSimpleExample?raw');
 
 export default function NxTabsPage() {
   return (
@@ -63,15 +63,6 @@ export default function NxTabsPage() {
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
                   Called with the index of the newly selected tab when the currently selected tab changes.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>activationMode</NxTable.Cell>
-                <NxTable.Cell>"automatic" | "manual"</NxTable.Cell>
-                <NxTable.Cell>"automatic"</NxTable.Cell>
-                <NxTable.Cell>
-                  When set to "automatic", tabs are activated when receiving focus or clicked.
-                  When "manual", tabs are activated when clicked or focused and spacebar or enter key is pressed only.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -225,10 +216,7 @@ export default function NxTabsPage() {
                 </NxTable.Cell>
                 <NxTable.Cell>
                   When you're focused on a tab, you can use the right or left arrow keys to change{' '}
-                  focus between tabs. When <NxCode>activationMode</NxCode> is set to "automatic" (manual),{' '}
-                  it will set focus on that tab and activate it. When <NxCode>activationMode</NxCode>{' '}
-                  is set to "manual", it will set focus on that tab but does not activate it.{' '}
-                  To activate it, you need to use "spacebar" or "enter".
+                  focus between tabs. You can then use "spacebar" or "enter" key to activate the focused tab.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -252,6 +240,12 @@ export default function NxTabsPage() {
         </NxTile.Subsection>
       </GalleryDescriptionTile>
 
+      <GalleryExampleTile title="NxTabs Simple Example"
+                          id="nx-tab-simple-example"
+                          liveExample={NxTabsSimpleExample}
+                          codeExamples={NxTabsSimpleExampleCode}>
+        A basic example of <NxCode>NxTabs</NxCode>.
+      </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxTile Example"
                           id="nx-tab-tile-example"
                           defaultCheckeredBackground={true}
@@ -291,12 +285,6 @@ export default function NxTabsPage() {
                           codeExamples={NxTabsModalNoHeaderExampleCode}>
         A basic example of how to use the <NxCode>NxTabs</NxCode> family of components in an
         {' '}<NxCode>NxModal</NxCode> with no modal header.
-      </GalleryExampleTile>
-      <GalleryExampleTile title="NxTabs with manual activationMode Example"
-                          id="nx-tab-manual-activation-mode-example"
-                          liveExample={NxTabsManualActivationModeExample}
-                          codeExamples={NxTabsManualActivationModeExampleCode}>
-        A basic example of <NxCode>NxTabs</NxCode> with "manual" activation mode.
       </GalleryExampleTile>
     </>
   );
