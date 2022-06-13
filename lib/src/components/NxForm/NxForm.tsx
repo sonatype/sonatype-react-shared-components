@@ -52,7 +52,7 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
           formHasValidationErrors = hasValidationErrors(validationErrors),
           formClasses = classnames('nx-form', className, {
             'nx-form--show-validation-errors': showValidationErrors,
-            'nx-form--has-validation-errors': formHasValidationErrors
+            'nx-form--has-validation-errors': formHasValidationErrors,
             'nx-form--has-submit-error': !!submitError
           }),
           getChildren = children instanceof Function ? children : always(children),
