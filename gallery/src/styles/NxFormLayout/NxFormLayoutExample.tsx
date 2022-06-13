@@ -77,10 +77,10 @@ export default function NxFormLayoutExample() {
 
   const formValidationErrors =
       hasValidationErrors(combineValidationErrors(
-        textInputState.validationErrors,
-        colorValidationError,
-        selectValidationErrors,
-        tagColorValidationError
+          textInputState.validationErrors,
+          colorValidationError,
+          selectValidationErrors,
+          tagColorValidationError
       )) ? 'Required fields are missing' : null;
 
   function onSubmit() {
@@ -92,17 +92,17 @@ export default function NxFormLayoutExample() {
   }
 
   const hostnameSublabel = (
-        <>
-          <NxFontAwesomeIcon icon={faCalendar}/>
-          <span id="long-field-sublabel">The field element below is wider than the default.</span>
-        </>
-      ),
-      toggleSublabel = (
-        <>
-          In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code> - this text is
-          extra long to demonstrate wrapping, how much wood would a woodchuck chuck
-        </>
-      );
+    <>
+      <NxFontAwesomeIcon icon={faCalendar}/>
+      <span id="long-field-sublabel">The field element below is wider than the default.</span>
+    </>
+  );
+  const toggleSublabel = (
+    <>
+      In a form layout toggles are laid out in a <code className="nx-code">&lt;fieldset&gt;</code> - this text is
+      extra long to demonstrate wrapping, how much wood would a woodchuck chuck
+    </>
+  );
 
   return (
     <NxStatefulForm onSubmit={onSubmit}

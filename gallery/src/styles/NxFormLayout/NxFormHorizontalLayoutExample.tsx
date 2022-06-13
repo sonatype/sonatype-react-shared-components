@@ -51,10 +51,10 @@ export default function NxFormLayoutExample() {
 
   const formValidationErrors =
       hasValidationErrors(combineValidationErrors(
-        textInputState.validationErrors,
-        selectValidationErrors,
-        colorCheckboxValidationErrors,
-        colorRadioValidationErrors
+          textInputState.validationErrors,
+          selectValidationErrors,
+          colorCheckboxValidationErrors,
+          colorRadioValidationErrors
       )) ? 'Required fields are missing' : null;
 
   function onSubmit() {

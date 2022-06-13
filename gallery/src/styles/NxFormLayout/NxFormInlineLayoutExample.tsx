@@ -7,8 +7,18 @@
 import React, { useState } from 'react';
 import {faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 
-import { NxFontAwesomeIcon, NxButton, NxButtonBar, NxFormGroup, NxFormRow, nxTextInputStateHelpers, NxStatefulForm, NxTextInput, hasValidationErrors, combineValidationErrors }
-  from '@sonatype/react-shared-components';
+import {
+  NxFontAwesomeIcon,
+  NxButton,
+  NxButtonBar,
+  NxFormGroup,
+  NxFormRow,
+  nxTextInputStateHelpers,
+  NxStatefulForm,
+  NxTextInput,
+  hasValidationErrors,
+  combineValidationErrors
+} from '@sonatype/react-shared-components';
 import { } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
@@ -19,8 +29,8 @@ export default function NxFormLayoutExample() {
   const [usernameState, setUsernameState] = useState(nxTextInputStateHelpers.initialState('', validator)),
       [hostnameState, setHostnameState] = useState(nxTextInputStateHelpers.initialState('', validator)),
       formValidationErrors = hasValidationErrors(combineValidationErrors(
-        usernameState.validationErrors,
-        hostnameState.validationErrors
+          usernameState.validationErrors,
+          hostnameState.validationErrors
       )) ? 'Required fields are missing' : null;
 
   function onUsernameChange(val: string) {
