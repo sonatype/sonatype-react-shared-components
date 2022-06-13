@@ -54,7 +54,6 @@ import NxOverflowTooltipPage from './components/NxOverflowTooltip/NxOverflowTool
 import NxFilterInputPage from './components/NxFilterInput/NxFilterInputPage';
 import NxPolicyThreatSliderPage from './components/NxPolicyThreatSlider/NxPolicyThreatSliderPage';
 import NxDropdownPage from './components/NxDropdown/NxDropdownPage';
-import FormValidationPage from './guidelines/FormValidation/FormValidationPage';
 import PageLayoutPage from './styles/PageLayout/PageLayoutPage';
 import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDropdownPage';
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
@@ -290,7 +289,6 @@ const pageConfig: PageConfig = {
     'Additional Resources': { content: AdditionalResourcePage, type: 'documentation' },
     'Contributing to the Gallery': { content: ContributingPage, type: 'documentation' },
     'Font-size and Line-height': { content: FontSizePage, type: 'documentation' },
-    'Form Validation Guidelines': { content: FormValidationPage, type: 'documentation' },
     'Styling Components': { content: StylingComponentsPage, type: 'documentation' },
     'Server Side Rendering': { content: ServerSideRenderingPage, type: 'documentation' }
   }
