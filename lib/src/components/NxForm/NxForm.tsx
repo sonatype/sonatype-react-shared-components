@@ -14,6 +14,7 @@ import NxButton from '../NxButton/NxButton';
 import NxSubmitMask from '../NxSubmitMask/NxSubmitMask';
 
 import { Props, propTypes } from './types';
+import { FormAriaContext } from './context';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
 import { NxErrorAlert } from '../NxAlert/NxAlert';
 
@@ -71,7 +72,9 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
       const renderForm = () => {
         return (
           <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
-            {getChildren()}
+            <FormAriaContext.Provider value={{ showValidationErrors }}>
+              {getChildren()}
+            </FormAriaContext.Provider>
             <footer className="nx-footer">
               <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
                            error={submitError}

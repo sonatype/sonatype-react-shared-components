@@ -29,18 +29,6 @@
         display: flex;
       }
     }
-
-    .nx-field-validation-message {
-      @include nx-validation-helpers.show-validation-message;
-    }
-
-    .invalid {
-      &, &.pristine {
-        .nx-field-validation-message {
-          @include nx-validation-helpers.show-validation-message;
-        }
-      }
-    }
   }
 
   &--has-submit-error {
@@ -155,9 +143,9 @@
   min-inline-size: auto;
   padding: 0;
 
-  // The container-vertical mixin doesn't fully do the job here because the last child is actually the
-  // validation message and we want to remove the bottom margin from the last child _besides_ the validation message
-  > :nth-last-child(2) {
+  // when the validation message is present, we need to remove bottom margin from the last child _other than the
+  // validation message_ i.e. the second-to-last child
+  &.invalid > :nth-last-child(2) {
     margin-bottom: 0;
   }
 }

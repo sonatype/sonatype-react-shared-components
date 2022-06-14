@@ -57,9 +57,21 @@ export default function NxFormLayoutExample() {
     setSelectVal(evt.currentTarget.value);
   }
 
-  const [isRed, toggleRed] = useToggle(false),
-      [isBlue, toggleBlue] = useToggle(false),
-      [isGreen, toggleGreen] = useToggle(false),
+  const [isRed, _toggleRed] = useToggle(false),
+      [isBlue, _toggleBlue] = useToggle(false),
+      [isGreen, _toggleGreen] = useToggle(false),
+      [colorIsPristine, setColorIsPristine] = useState(true),
+
+      // toggle the specified color and update the pristine flag
+      toggleColor = (_toggleColor: () => void) => () => {
+        setColorIsPristine(false);
+        _toggleColor();
+      },
+
+      toggleRed = toggleColor(_toggleRed),
+      toggleBlue = toggleColor(_toggleBlue),
+      toggleGreen = toggleColor(_toggleGreen),
+
       colorValidationError = !(isRed || isBlue || isGreen) ? 'A color is required' : null;
 
   const [color, setColor] = useState<string | null>(null);
@@ -119,7 +131,7 @@ export default function NxFormLayoutExample() {
       <NxFormGroup label="Hostname" sublabel={hostnameSublabel}>
         <NxStatefulTextInput className="nx-text-input--long"/>
       </NxFormGroup>
-      <NxFieldset label="Colors" isRequired validationErrors={colorValidationError}>
+      <NxFieldset label="Colors" isRequired isPristine={colorIsPristine} validationErrors={colorValidationError}>
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>

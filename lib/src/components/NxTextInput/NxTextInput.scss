@@ -93,18 +93,6 @@
     }
   }
 
-  &.invalid {
-    .nx-field-validation-message {
-      @include nx-validation-helpers.show-validation-message;
-    }
-
-    &.pristine {
-      .nx-field-validation-message {
-        @include nx-validation-helpers.hide-validation-message;
-      }
-    }
-  }
-
   &, &.pristine, &.pristine.valid {
     &:hover {
       .nx-text-input__box {

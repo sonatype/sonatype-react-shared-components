@@ -13,7 +13,6 @@
 }
 
 @mixin validation-message {
-  @include hide-validation-message;
 
   color: var(--nx-color-validation-invalid);
   font-size: var(--nx-font-size-xs);
