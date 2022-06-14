@@ -41,12 +41,31 @@ export default function NxFormLayoutExample() {
     setSelectVal(evt.currentTarget.value);
   }
 
-  const [isRed, toggleRed] = useToggle(false),
-      [isBlue, toggleBlue] = useToggle(false),
-      [isGreen, toggleGreen] = useToggle(false),
+  const [isRed, _toggleRed] = useToggle(false),
+      [isBlue, _toggleBlue] = useToggle(false),
+      [isGreen, _toggleGreen] = useToggle(false),
+      [colorCheckboxIsPristine, setColorCheckboxIsPristine] = useState(true),
+
+      // toggle the specified color and update the pristine flag
+      toggleColor = (_toggleColor: () => void) => () => {
+        setColorCheckboxIsPristine(false);
+        _toggleColor();
+      },
+
+      toggleRed = toggleColor(_toggleRed),
+      toggleBlue = toggleColor(_toggleBlue),
+      toggleGreen = toggleColor(_toggleGreen),
       colorCheckboxValidationErrors = !(isRed || isBlue || isGreen) ? 'A color is required' : null;
 
-  const [color, setColor] = useState<string | null>(null),
+  const [color, _setColor] = useState<string | null>(null),
+      [colorRadioIsPristine, setColorRadioIsPristine] = useState(true),
+
+      // toggle the specified color and update the pristine flag
+      setColor = (c: string | null) => {
+        setColorRadioIsPristine(false);
+        _setColor(c);
+      },
+
       colorRadioValidationErrors = color === null ? 'A color is required' : null;
 
   const formValidationErrors =
@@ -86,12 +105,18 @@ export default function NxFormLayoutExample() {
           </NxFormSelect>
         </NxFormGroup>
       </NxFormRow>
-      <NxFieldset label="Colors" isRequired validationErrors={colorCheckboxValidationErrors}>
+      <NxFieldset label="Colors"
+                  isRequired
+                  isPristine={colorCheckboxIsPristine}
+                  validationErrors={colorCheckboxValidationErrors}>
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
       </NxFieldset>
-      <NxFieldset label="Primary Color" isRequired validationErrors={colorRadioValidationErrors}>
+      <NxFieldset label="Primary Color"
+                  isRequired
+                  isPristine={colorRadioIsPristine}
+                  validationErrors={colorRadioValidationErrors}>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
