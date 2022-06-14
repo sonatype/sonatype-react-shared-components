@@ -56,7 +56,7 @@
 .nx-threat-counter-container {
   display: inline-grid;
   gap: var(--nx-spacing-4x);
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
 }
 
