@@ -20,14 +20,6 @@ describe('nx-form', function() {
     it('looks right', simpleTest(horizontablFormSelector));
   });
 
-  describe('nx-form-group deprecated layout', function() {
-    const { simpleTest } = setupBrowser('#/pages/Form Group (HTML)');
-
-    const selector = '#nx-form-group-deprecated-example .nx-form-group';
-
-    it('looks right', simpleTest(selector));
-  });
-
   describe('nx-fieldset deprecated layout', function() {
     const { simpleTest } = setupBrowser('#/pages/Fieldset (HTML)');
 
