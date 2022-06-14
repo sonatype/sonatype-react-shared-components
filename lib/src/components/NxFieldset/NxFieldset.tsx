@@ -41,7 +41,7 @@ const NxFieldset = forwardRef<HTMLFieldSetElement, Props>(
           </legend>
           { sublabel && <div className="nx-sub-label">{sublabel}</div> }
           {children}
-          <div id={invalidMessageId} role="alert" className="nx-form__invalid-field-message">
+          <div id={invalidMessageId} role="alert" className="nx-field-validation-message">
             {getFirstValidationError(validationErrors)}
           </div>
         </fieldset>
