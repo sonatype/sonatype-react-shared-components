@@ -4,6 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-validation-helpers';
+
 .nx-text-input {
   display: inline-block;
   position: relative;
@@ -90,6 +93,18 @@
     }
   }
 
+  &.invalid {
+    .nx-field-validation-message {
+      @include nx-validation-helpers.show-validation-message;
+    }
+
+    &.pristine {
+      .nx-field-validation-message {
+        @include nx-validation-helpers.hide-validation-message;
+      }
+    }
+  }
+
   &, &.pristine, &.pristine.valid {
     &:hover {
       .nx-text-input__box {
@@ -128,7 +143,7 @@
         border-color: var(--nx-color-interactive-border-disabled);
       }
 
-      .nx-text-input__invalid-message {
+      .nx-field-validation-message {
         visibility: hidden;
       }
 

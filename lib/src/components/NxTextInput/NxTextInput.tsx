@@ -103,7 +103,7 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
             <NxFontAwesomeIcon icon={faCheck} className="nx-icon nx-icon--valid"/>
             <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon nx-icon--invalid"/>
           </div>
-          <div id={invalidMessageId} role="alert" className="nx-form__invalid-field-message">
+          <div id={invalidMessageId} role="alert" className="nx-field-validation-message">
             {firstValidationError}
           </div>
         </div>
