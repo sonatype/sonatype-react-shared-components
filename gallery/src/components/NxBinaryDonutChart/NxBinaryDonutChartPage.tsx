@@ -27,6 +27,18 @@ const NxBinaryDonutChartPage = () =>
       <NxP>
         <NxCode>NxBinaryDonutChart</NxCode> represents a binary donut chart.
       </NxP>
+      <NxP>
+        The <NxCode>NxBinaryDonutChart</NxCode> accepts a default height of 30px (without padding or margin), which
+        can be modified by accessing the CSS height property on the <NxCode>.nx-binary-donut-chart</NxCode> class.
+      </NxP>
+      <NxP>
+        By default the CSS property of <NxCode>NxBinaryDonutChart</NxCode> is set to a value of
+        inline. <NxCode>Display:inline</NxCode> will not generate any line breaks to maintain the flow of the
+        container, and situate preceding / proceeding elements of the same display property next to one another. The
+        chart's display property can be overridden to block, which will generate a line break both before and after
+        the element to create vertical stacking within the parent container. This can be done by
+        adding <NxCode>display:block</NxCode> to the <NxCode>.nx-binary-donut-chart</NxCode> class.
+      </NxP>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>
