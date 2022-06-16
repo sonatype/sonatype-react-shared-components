@@ -10,12 +10,24 @@ import { NxBinaryDonutChart } from '@sonatype/react-shared-components';
 export default function NxBinaryDonutChartCustomExample() {
   return (
     <>
-      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom" percent={0} aria-label="0 out of 100 components identified" />
-      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom" percent={15} aria-label="15 out of 100 components identified" />
-      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom" percent={25} aria-label="25 out of 100 components identified" />
-      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom" percent={50} aria-label="50 out of 100 components identified" />
-      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom" percent={90} aria-label="90 out of 100 components identified" />
-      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom" percent={100} aria-label="100 out of 100 components identified" />
+      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
+                          percent={0}
+                          aria-label="0 out of 100 components identified" />
+      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
+                          percent={15}
+                          aria-label="15 out of 100 components identified" />
+      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
+                          percent={25}
+                          aria-label="25 out of 100 components identified" />
+      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
+                          percent={50}
+                          aria-label="50 out of 100 components identified" />
+      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
+                          percent={90}
+                          aria-label="90 out of 100 components identified" />
+      <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
+                          percent={100}
+                          aria-label="100 out of 100 components identified" />
     </>
   );
 }
