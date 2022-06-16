@@ -13,6 +13,7 @@ import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample
 import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
 import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
 import NxBinaryDonutChartBackgroundColorExample from './NxBinaryDonutChartBackgroundColorExample';
+import NxBinaryDonutChartCustomExample from './NxBinaryDonutChartCustomExample';
 
 import './NxBinaryDonutChartBackgroundColorExample.scss';
 
