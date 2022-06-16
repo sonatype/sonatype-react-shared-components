@@ -20,7 +20,7 @@ const NxStatefulTreeViewMultiSelectPage = () =>
       <NxWarningAlert>
         <NxCode>NxStatefulTreeViewMultiSelect</NxCode> has been renamed
         to <NxCode>NxCollapsibleMultiSelect</NxCode>.
-        Please use <NxTextLink href="#/pages/NxCollapsibleMultiSelect">NxCollapsibleMultiSelect</NxTextLink> instead.
+        Please use <NxTextLink href="#/pages/Collapsible%20Multi-Select">NxCollapsibleMultiSelect</NxTextLink> instead.
       </NxWarningAlert>
 
       <NxP>
