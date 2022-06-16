@@ -87,7 +87,7 @@ const NxFormPage = () =>
             <NxTable.Cell>
               When this prop is defined, it indicates that some asynchronous, retryable data load must happen
               before the form can be displayed. The form is wrapped in an{' '}
-              <NxTextLink href="#/pages/NxLoadWrapper">
+              <NxTextLink href="#/pages/Load%20Wrapper">
                 <NxCode>NxLoadWrapper</NxCode>
               </NxTextLink>
               {' '}and this function is wired up to the retry button on the load error alert. Note that the
