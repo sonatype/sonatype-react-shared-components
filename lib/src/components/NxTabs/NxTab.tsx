@@ -56,6 +56,9 @@ const NxTab = function NxTabElement(props: NxTabProps) {
 
     const getNextElementFromEventKey = (key: string) => {
       switch (key) {
+        case 'Tab':
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          return event.currentTarget.parentElement!.nextSibling;
         case 'ArrowLeft':
           return tabElements[index - 1] ?? tabElements[tabElements.length - 1];
         case 'ArrowRight':
