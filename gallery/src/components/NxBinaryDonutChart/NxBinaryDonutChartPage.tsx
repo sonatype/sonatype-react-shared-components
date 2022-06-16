@@ -140,7 +140,7 @@ const NxBinaryDonutChartPage = () =>
                         codeExamples={nxBinaryDonutChartCustomExample}
                         liveExample={NxBinaryDonutChartCustomExample}>
       An example of <NxCode>NxBinaryDonutChart</NxCode>s with customized CSS properties. The example shows
-      the display property set to block, and the height property set to 45px.
+      the display property set to block, the height set to 45px, and a custom color.
     </GalleryExampleTile>
   </>;
 

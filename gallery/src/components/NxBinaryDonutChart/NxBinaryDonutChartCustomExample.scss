@@ -8,5 +8,8 @@
  .gallery-binary-donut-chart-custom {
     display: block;
     height: 45px;
+    .nx-binary-donut-chart__arc {
+      stroke: var(--nx-swatch-purple-70);
+    }
   }
   
