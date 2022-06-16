@@ -5,7 +5,7 @@
 # distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
 #
 
-FROM --platform=linux/arm64/v8 docker-all.repo.sonatype.com/node:16-bullseye
+FROM docker-all.repo.sonatype.com/node:16
 
 RUN apt-get update && \
     apt-get autoremove -y && apt-get clean -y && \
@@ -18,10 +18,9 @@ RUN chown -R jenkins /home/jenkins/
 
 WORKDIR /home/jenkins
 COPY . .
+
 WORKDIR /home/jenkins/gallery 
 RUN yarn install
 
-WORKDIR /home/jenkins
-COPY . .
 WORKDIR /home/jenkins/lib
 RUN yarn install
