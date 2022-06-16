@@ -21,6 +21,7 @@ const nxBinaryDonutChartMinimalExampleCode = require('./NxBinaryDonutChartMinima
 const nxBinaryDonutChartNoHoleExample = require('./NxBinaryDonutChartNoHoleExample?raw');
 const nxBinaryDonutChartLargeHoleExample = require('./NxBinaryDonutChartLargeHoleExample?raw');
 const nxBinaryDonutChartBackgroundColorExample = require('./NxBinaryDonutChartBackgroundColorExample?raw');
+const nxBinaryDonutChartCustomExample = require('./NxBinaryDonutChartCustomExample?raw');
 
 const NxBinaryDonutChartPage = () =>
   <>
@@ -131,6 +132,14 @@ const NxBinaryDonutChartPage = () =>
       Examples of <NxCode>NxBinaryDonutChart</NxCode>s on containers that have background colors which match parts
       of the chart. This example shows that the chart is still discernable in this case due to the white borders
       on the inside and outside of the donut.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with Custom CSS Properties"
+                        id="nx-binary-donut-chart-custom-examples"
+                        codeExamples={nxBinaryDonutChartCustomExample}
+                        liveExample={NxBinaryDonutChartCustomExample}>
+      An example of <NxCode>NxBinaryDonutChart</NxCode>s with customized CSS properties. The example shows
+      the display property set to block, and the height property set to 45px.
     </GalleryExampleTile>
   </>;
 
