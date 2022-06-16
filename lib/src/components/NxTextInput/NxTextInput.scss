@@ -108,36 +108,16 @@
     }
   }
 
-  &.invalid {
-    &:focus-within, &:hover {
-      .nx-text-input__box {
-        border-color: var(--nx-swatch-red-45);
-      }
-    }
-  }
-
-  &.valid {
-    &:focus-within, &:hover {
-      .nx-text-input__box {
-        border-color: var(--nx-swatch-green-30);
-      }
-    }
-  }
-
   &.disabled {
-    &, &.valid, &.invalid, &.pristine {
+    &, &:hover {
       .nx-text-input__box {
         background-color: var(--nx-color-interactive-background-disabled);
         border-color: var(--nx-color-interactive-border-disabled);
       }
+    }
 
-      .nx-field-validation-message {
-        visibility: hidden;
-      }
-
-      .nx-icon {
-        display: none;
-      }
+    .nx-icon {
+      display: none;
     }
   }
 
