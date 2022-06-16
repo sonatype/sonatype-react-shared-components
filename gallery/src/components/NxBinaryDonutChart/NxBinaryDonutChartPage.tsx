@@ -16,6 +16,7 @@ import NxBinaryDonutChartBackgroundColorExample from './NxBinaryDonutChartBackgr
 import NxBinaryDonutChartCustomExample from './NxBinaryDonutChartCustomExample';
 
 import './NxBinaryDonutChartBackgroundColorExample.scss';
+import './NxBinaryDonutChartCustomExample.scss'
 
 const nxBinaryDonutChartMinimalExampleCode = require('./NxBinaryDonutChartMinimalExample?raw');
 const nxBinaryDonutChartNoHoleExample = require('./NxBinaryDonutChartNoHoleExample?raw');
