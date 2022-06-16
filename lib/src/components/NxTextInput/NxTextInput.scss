@@ -108,7 +108,7 @@
     }
   }
 
-  &.invalid:not(.pristine) {
+  &.invalid {
     &:focus-within, &:hover {
       .nx-text-input__box {
         border-color: var(--nx-swatch-red-45);
@@ -116,7 +116,7 @@
     }
   }
 
-  &.valid:not(.pristine) {
+  &.valid {
     &:focus-within, &:hover {
       .nx-text-input__box {
         border-color: var(--nx-swatch-green-30);
@@ -166,23 +166,25 @@ textarea.nx-text-input__input {
 
 // validation messages should be shown in these cases
 .nx-form--show-validation-errors .nx-text-input, .nx-text-input:not(.pristine) {
-  &.valid {
-    .nx-text-input__box {
-      border-color: var(--nx-color-validation-valid);
+  :not(.disabled) {
+    &.valid {
+      .nx-text-input__box {
+        border-color: var(--nx-color-validation-valid);
+      }
+
+      .nx-icon--valid {
+        display: inline-block;
+      }
     }
 
-    .nx-icon--valid {
-      display: inline-block;
-    }
-  }
+    &.invalid {
+      .nx-text-input__box {
+        border-color: var(--nx-color-validation-invalid);
+      }
 
-  &.invalid {
-    .nx-text-input__box {
-      border-color: var(--nx-color-validation-invalid);
-    }
-
-    .nx-icon--invalid {
-      display: inline-block;
+      .nx-icon--invalid {
+        display: inline-block;
+      }
     }
   }
 }
