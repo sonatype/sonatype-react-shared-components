@@ -23,6 +23,7 @@ const nxBinaryDonutChartNoHoleExample = require('./NxBinaryDonutChartNoHoleExamp
 const nxBinaryDonutChartLargeHoleExample = require('./NxBinaryDonutChartLargeHoleExample?raw');
 const nxBinaryDonutChartBackgroundColorExample = require('./NxBinaryDonutChartBackgroundColorExample?raw');
 const nxBinaryDonutChartCustomExample = require('./NxBinaryDonutChartCustomExample?raw');
+const nxBinaryDonutChartCustomExampleScss = require('./NxBinaryDonutChartCustomExample.scss?raw');
 
 const NxBinaryDonutChartPage = () =>
   <>
@@ -137,7 +138,8 @@ const NxBinaryDonutChartPage = () =>
 
     <GalleryExampleTile title="Example with Custom CSS Properties"
                         id="nx-binary-donut-chart-custom-examples"
-                        codeExamples={nxBinaryDonutChartCustomExample}
+                        codeExamples={[nxBinaryDonutChartCustomExample,
+                          { content: nxBinaryDonutChartCustomExampleScss, language: 'scss' }]}
                         liveExample={NxBinaryDonutChartCustomExample}>
       An example of <NxCode>NxBinaryDonutChart</NxCode>s with customized CSS properties. The example shows
       the display property set to block, the height set to 45px, and a custom color.
