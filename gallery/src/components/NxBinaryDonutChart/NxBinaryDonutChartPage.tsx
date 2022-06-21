@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -59,19 +59,6 @@ const NxBinaryDonutChartPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
-            <NxTable.Cell>aria-label</NxTable.Cell>
-            <NxTable.Cell>string</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              If the chart is not accompanied by visible text content that contains the same information that the chart
-              conveys, then the chart should either be wrapped in a tooltip or have
-              an <NxCode>aria-label</NxCode> attribute giving it an accessible name which adequately describes its
-              information for non-visual users. If the chart is accompanied by a text description however, such a
-              label would be redundant and the chart is considered a presentational element. In that scenario, it should
-              be given <NxCode>role="presentation"</NxCode>.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
             <NxTable.Cell>SVG <NxCode>&lt;svg&gt;</NxCode> Attributes</NxTable.Cell>
             <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/SVG/Element/svg">
@@ -86,6 +73,38 @@ const NxBinaryDonutChartPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
+      <NxH3>Accessibility</NxH3>
+      <NxP>
+        <NxCode>NxBinaryDonutChart</NxCode> uses the <NxCode>meter</NxCode> role and must have an
+        accessible name. If the meter has a visible label, it is referenced by <NxCode>aria-labelledby</NxCode>
+        {' '} attribute. Otherwise, the element with role meter has a label provided by <NxCode>aria-label</NxCode>
+        {' '} attribute.
+      </NxP>
+      <NxTable>
+        <NxTable.Head>
+          <NxTable.Row>
+            <NxTable.Cell>Attribute</NxTable.Cell>
+            <NxTable.Cell>Details</NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Head>
+        <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>aria-labelledby</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              When the <NxCode>aria-labelledby</NxCode> attribute is used an ID is applied to the
+              HTML element that will be providing the label information, the ID is referenced by
+              <NxCode>aria-labelledby</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>aria-label</NxCode></NxTable.Cell>
+            <NxTable.Cell>
+              When the <NxCode>aria-label</NxCode> attribute is used the text is added directly to the
+              attribute.
+            </NxTable.Cell>
+          </NxTable.Row>
+        </NxTable.Body>
+      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Minimal Examples"
@@ -93,8 +112,7 @@ const NxBinaryDonutChartPage = () =>
                         codeExamples={nxBinaryDonutChartMinimalExampleCode}
                         liveExample={NxBinaryDonutChartMinimalExample}>
       Minimal examples of <NxCode>NxBinaryDonutChart</NxCode>s with different values.
-      Some of these charts demonstrate the usage of <NxCode>aria-label</NxCode> to describe the
-      chart contents.
+      These charts demonstrate the usage of <NxCode>aria-label</NxCode> to describe the chart contents.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with no Hole"

@@ -10,6 +10,22 @@ import NxBinaryDonutChart from '../NxBinaryDonutChart';
 describe('NxBinaryDonutChart', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxBinaryDonutChart, {percent: 0});
 
+  it('sets the role to "meter"', function() {
+    expect(getShallowComponent()).toHaveProp('role', 'meter');
+  });
+
+  it('sets the aria-valuemin to 0', function() {
+    expect(getShallowComponent()).toHaveProp('aria-valuemin', 0);
+  });
+
+  it('sets the aria-valuemax to 100', function() {
+    expect(getShallowComponent()).toHaveProp('aria-valuemax', 100);
+  });
+
+  it('sets the aria-valuenow to percent value', function() {
+    expect(getShallowComponent({percent: 30})).toHaveProp('aria-valuenow', 30);
+  });
+
   it('renders an svg with the expected properties', function() {
     expect(getShallowComponent({ percent: 90 })).toHaveClassName('.nx-binary-donut-chart');
     expect(getShallowComponent({ percent: 90 })).toHaveProp('viewBox', '-15 -15 30 30');

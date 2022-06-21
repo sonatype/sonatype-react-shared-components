@@ -36,8 +36,14 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
       const largeArc = percent > 50 ? 1 : 0;
 
       return (
-        <svg ref={ref} viewBox="-15 -15 30 30" role="meter" aria-valuemin={0} aria-valuemax={100} 
-             aria-valuenow={percent} className={donutClasses} {...svgAttrs}>
+        <svg ref={ref}
+             viewBox="-15 -15 30 30"
+             role="meter"
+             aria-valuemin={0}
+             aria-valuemax={100}
+             aria-valuenow={percent}
+             className={donutClasses}
+             {...svgAttrs}>
           {/*
             * The first `M` and two `a`s below draw the outer border and the later ones draw the inner border.
             * The reason we need two `a`s for each is because svg gets confused trying to draw a full
