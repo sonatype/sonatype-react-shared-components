@@ -20,11 +20,16 @@ describe('NxToggle', function() {
     children: 'Enables whales'
   };
 
-  it('renders a <label> containing an <input>', function() {
-    const { container } = render(<NxToggle {...simpleProps}></NxToggle>);
+  it('renders a <label> with an <input>', function() {
+    render(<NxToggle {...simpleProps}></NxToggle>);
 
-    const checkboxInsideLabel = container.querySelector('label > input[type="checkbox"]');
-    expect(checkboxInsideLabel).toBeTruthy();
+    const checkbox = screen.getByRole<HTMLInputElement>('switch', { name: 'Enables whales' });
+
+    expect(checkbox.tagName).toEqual('INPUT');
+
+    const label = checkbox.labels?.[0];
+
+    expect(label?.textContent).toEqual('Enables whales');
   });
 
   it('renders an input element with role switch with the correct attributes and classname', function() {
