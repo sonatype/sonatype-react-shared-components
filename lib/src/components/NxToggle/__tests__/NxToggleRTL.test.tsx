@@ -7,7 +7,8 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import NxToggle, { Props } from '../NxToggle';
 
@@ -51,7 +52,7 @@ describe('NxToggle', function() {
     expect(label).toHaveClass('nx-toggle');
   });
 
-  it('calls its onChange prop when the input fires a change event', function() {
+  it('calls its onChange prop when the input fires a change event', async function() {
     const onChange = jest.fn();
 
     render(<NxToggle {...simpleProps} onChange={onChange}></NxToggle>);
@@ -60,7 +61,7 @@ describe('NxToggle', function() {
 
     expect(onChange).not.toHaveBeenCalled();
 
-    fireEvent.click(checkbox);
+    await userEvent.click(checkbox);
 
     expect(onChange).toHaveBeenCalled();
   });
