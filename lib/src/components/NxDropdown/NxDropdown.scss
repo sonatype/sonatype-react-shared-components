@@ -38,10 +38,6 @@
     @include nx-text-helpers.truncate-ellipsis;
 
     flex-grow: 1;
-
-    .nx-icon {
-      color: var(--nx-swatch-grey-05);
-    }
   }
 
   .nx-dropdown__toggle-caret {
@@ -139,6 +135,10 @@
       text-decoration: none;
     }
   }
+}
+
+.nx-dropdown-icon {
+  color: var(--nx-swatch-grey-05);
 }
 
 .nx-dropdown--divider {
