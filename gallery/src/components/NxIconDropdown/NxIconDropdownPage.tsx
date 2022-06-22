@@ -22,9 +22,7 @@ const NxIconDropdownPage = () =>
       <NxP>
         A variation of the dropdown menu component which uses a single icon as its toggle.
         <NxCode>NxIconDropdown</NxCode> shares all of the same props as{' '}
-        <NxTextLink href="#/pages/NxDropdown" className="nx-dropdown-button">
-          NxDropdown
-        </NxTextLink>{' '}
+        <NxTextLink href="#/pages/Dropdown">NxDropdown</NxTextLink>{' '}
         as well as the ones listed below. Like <NxCode>NxDropdown</NxCode> this is for menus of nagivation links or
         action-triggering buttons.  It is <em>not</em> a form select field. By default the dropdown can display a
         maximum of 10 items before it scrolls the contents of the dropdown menu.
@@ -70,7 +68,7 @@ const NxIconDropdownPage = () =>
         </NxTile.SubsectionHeader>
         <NxP>
           <NxCode>NxIconDropdown</NxCode> also supports the same classes and auxilary styles as{' '}
-          <NxTextLink href="#/pages/NxDropdown">NxDropdown</NxTextLink>.
+          <NxTextLink href="#/pages/Dropdown">NxDropdown</NxTextLink>.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>

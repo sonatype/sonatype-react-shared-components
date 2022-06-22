@@ -35,6 +35,7 @@ describe('NxPageHeader', function() {
     const logo = shallow(getShallowComponent().prop('logo'));
 
     // this path comes from imgMock.ts
+    expect(logo).toHaveDisplayName('img');
     expect(logo).toHaveProp('src', 'path/to/asset.png');
     expect(logo).toHaveProp('alt', 'Sonatype');
     expect(logo).toHaveClassName('nx-product__logo-image');
@@ -72,5 +73,15 @@ describe('NxPageHeader', function() {
     expect(noVersionProductInfoContent).not.toContainMatchingElement('.nx-product__version');
     expect(richProductInfoContent).toContainMatchingElement('.nx-product__version');
     expect(richProductInfoContent.find('.nx-product__version')).toHaveText('Version: 1.2.3');
+  });
+
+  it('can accept a logo prop that overrides the src and alt for the logo', function() {
+    const logo = shallow(getShallowComponent({ logo: { path: 'foo', alt: 'bar' } }).prop('logo'));
+
+    // this path comes from imgMock.ts
+    expect(logo).toHaveDisplayName('img');
+    expect(logo).toHaveProp('src', 'foo');
+    expect(logo).toHaveProp('alt', 'bar');
+    expect(logo).toHaveClassName('nx-product__logo-image');
   });
 });
