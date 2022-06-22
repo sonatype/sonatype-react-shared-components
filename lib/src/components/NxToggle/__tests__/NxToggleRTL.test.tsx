@@ -52,7 +52,9 @@ describe('NxToggle', function() {
     expect(label).toHaveClass('nx-toggle');
   });
 
-  it('calls its onChange prop when the input fires a change event', async function() {
+  it('calls its onChange prop when the input is clicked', async function() {
+    const user = userEvent.setup();
+
     const onChange = jest.fn();
 
     render(<NxToggle {...simpleProps} onChange={onChange}></NxToggle>);
@@ -61,7 +63,7 @@ describe('NxToggle', function() {
 
     expect(onChange).not.toHaveBeenCalled();
 
-    await userEvent.click(checkbox);
+    await user.click(checkbox);
 
     expect(onChange).toHaveBeenCalled();
   });
