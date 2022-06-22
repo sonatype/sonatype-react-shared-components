@@ -11,11 +11,14 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxCodeSnippetExample from './NxCodeSnippetExample';
 import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
+import NxCodeSnippetSizingExample from './NxCodeSnippetSizingExample';
 
 import './NxCodeSnippet.scss';
 
 const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
-    nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw');
+    nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw'),
+    nxCodeSnippetSizingCode = require('./NxCodeSnippetSizingExample?raw'),
+    nxCodeSnippetSizingCodeScss = require('./NxCodeSnippet.scss?raw');
 
 export default function NxCodeSnippetPage() {
   return (
@@ -121,6 +124,14 @@ export default function NxCodeSnippetPage() {
         An <NxCode>NxCodeSnippet</NxCode> demonstrating optional
         props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
         and <NxCode>inputProps</NxCode>
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Custom Sizing Example"
+                          id="nx-code-snippet-custom-sizing-example"
+                          liveExample={NxCodeSnippetSizingExample}
+                          codeExamples={[nxCodeSnippetSizingCode,
+                            {content: nxCodeSnippetSizingCodeScss, language: 'scss'}]}>
+        An <NxCode>NxCodeSnippet</NxCode> demonstrating optional sizing for the textarea.
       </GalleryExampleTile>
     </>
   );

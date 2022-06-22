@@ -7,13 +7,13 @@
 import React from 'react';
 import { NxCodeSnippet } from '@sonatype/react-shared-components';
 
-export default function NxCodeSnippetExample() {
+export default function NxCodeSnippetSizingExample() {
   return (
     <>
       <NxCodeSnippet label="RSC Github URL"
-                     content="https://github.com/sonatype/sonatype-react-shared-components" />
-      <NxCodeSnippet label="RSC Package URL"
-                     content="https://www.npmjs.com/package/@sonatype/react-shared-components" />
+                     content="https://github.com/sonatype/sonatype-react-shared-components"
+                     className="nx-code-snippet-custom-sizing"
+                     rows={1} />
     </>
   );
 }
