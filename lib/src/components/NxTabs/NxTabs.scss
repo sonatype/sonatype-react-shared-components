@@ -16,13 +16,18 @@
 
   border-bottom: var(--nx-border-default);
   display: flex;
-  margin: 0;
+  margin: 0 0 var(--nx-spacing-6x) 0;
   padding: 0;
 }
 
 .nx-tab-panel {
   @include nx-container-helpers.container-vertical;
-  padding-top: var(--nx-spacing-6x);
+
+  &:focus {
+    box-shadow: var(--nx-box-shadow-focus);
+    outline: solid 1px var(--nx-color-interactive-border-focus);
+    outline-offset: -1px;
+  }
 }
 
 .nx-tab {
