@@ -10,6 +10,7 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
 import NxTextInput, { PrivateNxTextInput, Props } from '../NxTextInput';
 import { mount } from 'enzyme';
+import { FormAriaContext } from '../../NxForm/context';
 
 describe('PrivateNxTextInput', function() {
   const minimalProps = {
@@ -50,10 +51,30 @@ describe('PrivateNxTextInput', function() {
     expect(component.find('.nx-text-input__input')).toHaveProp('aria-errormessage', invalidMessageId);
   });
 
-  it('sets aria-invalid to true iff it is validatable and has validation errors', function() {
+  it('sets aria-invalid to true if it is validatable and has validation errors, ' +
+      'and either isPristine is false or a surrounding FormAriaContext\'s showValidationErrors is true', function() {
     expect(getShallowComponent().find('input')).not.toHaveProp('aria-invalid', true);
     expect(getShallowComponent({ validatable: true }).find('input')).not.toHaveProp('aria-invalid', true);
     expect(getShallowComponent({ validatable: true, validationErrors: 'foo' }).find('input'))
+        .toHaveProp('aria-invalid', true);
+
+    expect(getShallowComponent({ isPristine: true, validatable: true, validationErrors: 'foo' }).find('input'))
+        .not.toHaveProp('aria-invalid', true);
+
+    function getMountedWithContext(extraProps: Partial<Props> = {}) {
+      return mount(
+        <FormAriaContext.Provider value={{ showValidationErrors: true }}>
+          <PrivateNxTextInput { ...minimalProps } { ...extraProps } />
+        </FormAriaContext.Provider>
+      );
+    }
+
+    expect(getMountedWithContext().find('input')).not.toHaveProp('aria-invalid', true);
+    expect(getMountedWithContext({ validatable: true }).find('input')).not.toHaveProp('aria-invalid', true);
+    expect(getMountedWithContext({ validatable: true, validationErrors: 'foo' }).find('input'))
+        .toHaveProp('aria-invalid', true);
+
+    expect(getMountedWithContext({ isPristine: true, validatable: true, validationErrors: 'foo' }).find('input'))
         .toHaveProp('aria-invalid', true);
   });
 

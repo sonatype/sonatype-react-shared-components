@@ -4,16 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useContext } from 'react';
 import { ShallowWrapper, mount, shallow } from 'enzyme';
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
 import NxForm, { Props } from '../NxForm';
 import NxButton from '../../NxButton/NxButton';
 import NxLoadError from '../../NxLoadError/NxLoadError';
 import NxSubmitMask from '../../NxSubmitMask/NxSubmitMask';
 import NxLoadWrapper from '../../NxLoadWrapper/NxLoadWrapper';
 import { NxErrorAlert } from '../../NxAlert/NxAlert';
+import { FormAriaContext } from '../context';
 
 describe('NxForm', function() {
   const minimalProps = {
@@ -21,7 +22,8 @@ describe('NxForm', function() {
         showValidationErrors: false,
         children: <div/>
       },
-      getShallow = getShallowComponent<Props>(NxForm, minimalProps);
+      getShallow = getShallowComponent<Props>(NxForm, minimalProps),
+      getMounted = getMountedComponent<Props>(NxForm, minimalProps);
 
   describe('when doLoad is not defined', function() {
     it('renders a form with .nx-form', function() {
@@ -95,6 +97,17 @@ describe('NxForm', function() {
 
     it('renders children passed as a function', function() {
       expect(getShallow({ children: () => <div id="foo" /> })).toContainMatchingElement('div#foo');
+    });
+
+    it('provides the showValidationErrors value to the children via FormAriaContext', function() {
+      function Fixture() {
+        const { showValidationErrors } = useContext(FormAriaContext);
+
+        return <span className="fixture">{showValidationErrors.toString()}</span>;
+      }
+
+      expect(getMounted({ children: <Fixture /> }).find('.fixture')).toHaveText('false');
+      expect(getMounted({ children: <Fixture />, showValidationErrors: true }).find('.fixture')).toHaveText('true');
     });
 
     describe('submit button', function() {
