@@ -19,8 +19,7 @@ export { Props };
 export default function NxCodeSnippet(props: Props) {
   const { content, label, sublabel, className, onCopyUsingBtn, rows, inputProps, ...otherProps } = props,
       classes = classnames('nx-code-snippet', className),
-      textInputRef = useRef<HTMLDivElement>(null),
-      lines = rows ? rows : 9;
+      textInputRef = useRef<HTMLDivElement>(null);
 
   function copyWithNavigatorClipboard() {
     window.navigator.clipboard.writeText(content).then(function() {
@@ -71,7 +70,7 @@ export default function NxCodeSnippet(props: Props) {
     <div className={classes} { ...otherProps }>
       <NxButton type="button" variant="tertiary" onClick={copyToClipboard}>Copy to Clipboard</NxButton>
       <NxFormGroup label={label} sublabel={sublabel}>
-        <NxTextInput rows={lines}
+        <NxTextInput rows={rows || undefined}
                      { ...inputProps }
                      ref={textInputRef}
                      type="textarea"
