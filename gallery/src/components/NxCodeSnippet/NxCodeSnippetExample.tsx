@@ -11,7 +11,8 @@ export default function NxCodeSnippetExample() {
   return (
     <>
       <NxCodeSnippet label="RSC Github URL"
-                     content="https://github.com/sonatype/sonatype-react-shared-components" />
+                     content="https://github.com/sonatype/sonatype-react-shared-components"
+                     className="nx-code-snippet-custom-sizing" />
       <NxCodeSnippet label="RSC Package URL"
                      content="https://www.npmjs.com/package/@sonatype/react-shared-components" />
     </>

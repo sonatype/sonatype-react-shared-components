@@ -12,6 +12,8 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxCodeSnippetExample from './NxCodeSnippetExample';
 import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
 
+import './NxCodeSnippet.scss';
+
 const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
     nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw');
 
