@@ -18,30 +18,30 @@ function NxDropdownWithThreatIndicatorsExample() {
                 className="extra-class"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
-        <button className="nx-dropdown-button" onClick={onClick}>
-            <NxThreatIndicator />
-            <span>Unspecified</span>
-        </button>
-        <button className="nx-dropdown-button" onClick={onClick}>
-            <NxThreatIndicator threatLevelCategory="none" />
-            <span>None</span>
-        </button>
-        <button className="nx-dropdown-button" onClick={onClick}>
-            <NxThreatIndicator threatLevelCategory="low" />
-            <span>Low</span>
-        </button>
-        <button className="nx-dropdown-button" onClick={onClick}>
-            <NxThreatIndicator threatLevelCategory="moderate" />
-            <span>Moderate</span>
-        </button>
-        <button className="nx-dropdown-button" onClick={onClick}>
-            <NxThreatIndicator threatLevelCategory="severe" />
-            <span>Severe</span>
-        </button>
-        <button className="nx-dropdown-button" onClick={onClick}>
-            <NxThreatIndicator threatLevelCategory="critical" />
-            <span>Critical</span>
-        </button>
+      <button className="nx-dropdown-button" onClick={onClick}>
+        <NxThreatIndicator />
+        <span>Unspecified</span>
+      </button>
+      <button className="nx-dropdown-button" onClick={onClick}>
+        <NxThreatIndicator threatLevelCategory="none" />
+        <span>None</span>
+      </button>
+      <button className="nx-dropdown-button" onClick={onClick}>
+        <NxThreatIndicator threatLevelCategory="low" />
+        <span>Low</span>
+      </button>
+      <button className="nx-dropdown-button" onClick={onClick}>
+        <NxThreatIndicator threatLevelCategory="moderate" />
+        <span>Moderate</span>
+      </button>
+      <button className="nx-dropdown-button" onClick={onClick}>
+        <NxThreatIndicator threatLevelCategory="severe" />
+        <span>Severe</span>
+      </button>
+      <button className="nx-dropdown-button" onClick={onClick}>
+        <NxThreatIndicator threatLevelCategory="critical" />
+        <span>Critical</span>
+      </button>
     </NxDropdown>
   );
 }
