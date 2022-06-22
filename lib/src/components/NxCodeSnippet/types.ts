@@ -16,11 +16,13 @@ export interface Props extends Omit<NxFormGroupProps, 'children' | 'isRequired'>
   content: string;
   onCopyUsingBtn?: (() => void) | null;
   inputProps?: InputProps | null;
+  rows?: number | null;
 }
 
 export const propTypes: ValidationMap<Props> = {
   ...omit(['children', 'isRequired'], nxFormGroupPropTypes),
   content: PropTypes.string.isRequired,
   onCopyUsingBtn: PropTypes.func,
-  inputProps: PropTypes.shape(omit(['type', 'value', 'isPristine', 'readOnly'], nxTextInputPropTypes))
+  inputProps: PropTypes.shape(omit(['type', 'value', 'isPristine', 'readOnly'], nxTextInputPropTypes)),
+  rows: PropTypes.number
 };
