@@ -322,3 +322,5 @@ export { default as NxStatefulFilterDropdown, Props as NxStatefulFilterDropdownP
 export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemNotice';
 
 export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
+
+export * from './components/NxStatusIndicator/NxStatusIndicator';
