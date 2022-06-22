@@ -8,7 +8,7 @@ import React from 'react';
 
 import { NxDropdown, useToggle, NxThreatIndicator } from '@sonatype/react-shared-components';
 
-function NxDropdownWithThreatIndicatorsExample() {
+function NxDropdownWithNxThreatIndicatorExample() {
   const [isOpen, onToggleCollapse] = useToggle(false),
       onClick = () => { alert('click'); },
       labelElement = <><NxThreatIndicator threatLevelCategory="moderate" /><span>Moderate</span></>;
@@ -46,4 +46,4 @@ function NxDropdownWithThreatIndicatorsExample() {
   );
 }
 
-export default NxDropdownWithThreatIndicatorsExample;
+export default NxDropdownWithNxThreatIndicatorExample;

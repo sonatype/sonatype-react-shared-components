@@ -90,6 +90,25 @@ describe('NxDropdown', function() {
 
   });
 
+  describe('NxDropdown NxThreatIndicator', function() {
+    const selector = '#nx-dropdown-with-nx-threat-indicator-example .nx-dropdown';
+
+    beforeEach(async function() {
+      const [button] = await waitAndGetElements(selector + ' .nx-dropdown__toggle');
+
+      await button.click();
+    });
+
+    it('looks right', async function() {
+      const [targetElement] = await waitAndGetElements(selector);
+
+      await moveMouseAway();
+
+      await checkScreenshot(targetElement, 251, 288);
+    });
+
+  });
+
   describe('NxDropdown with right-floating buttons', function() {
     const selector = '#nx-dropdown-right-buttons-example .nx-dropdown';
 
