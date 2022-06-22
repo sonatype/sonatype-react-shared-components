@@ -33,7 +33,7 @@ describe('PrivateNxTextInput', function() {
   it('contains the first validation message if isPristine is not true', function() {
     const validationErrorProps = { validatable: true, validationErrors: 'foo' },
         multiErrorValidationProps = { validatable: true, validationErrors: ['asdf', 'foo'] },
-        pristineWithErrorsProps ={ ...validationErrorProps, isPristine: true };
+        pristineWithErrorsProps = { ...validationErrorProps, isPristine: true };
 
     expect(getShallowComponent()).not.toContainMatchingElement('.nx-field-validation-message');
     expect(getShallowComponent(validationErrorProps).find('.nx-field-validation-message')).toHaveText('foo');
