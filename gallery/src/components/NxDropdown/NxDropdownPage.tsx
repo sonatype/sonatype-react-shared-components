@@ -17,6 +17,7 @@ import NxDropdownRightButtonsExample from './NxDropdownRightButtonsExample';
 import NxDropdownCustomLabelExample from './NxDropdownCustomLabelExample';
 import NxDropdownLinksExample from './NxDropdownLinksExample';
 import NxDropdownCloseHandlerExample from './NxDropdownCloseHandlerExample';
+import NxDropdownWithNxThreatIndicatorExample from './NxDropdownWithNxThreatIndicatorExample';
 
 const nxDropdownNavigationExampleCode = require('./NxDropdownNavigationExample?raw'),
     nxDropdownShortExampleCode = require('./NxDropdownShortExample?raw'),
@@ -25,7 +26,8 @@ const nxDropdownNavigationExampleCode = require('./NxDropdownNavigationExample?r
     nxDropdownCustomLabelExampleCode = require('./NxDropdownCustomLabelExample?raw'),
     nxDropdownRightButtonsExampleCode = require('./NxDropdownRightButtonsExample?raw'),
     nxDropdownLinksExampleCode = require('./NxDropdownLinksExample?raw'),
-    nxDropdownCloseHandlerExampleCode = require('./NxDropdownCloseHandlerExample?raw');
+    nxDropdownCloseHandlerExampleCode = require('./NxDropdownCloseHandlerExample?raw'),
+    nxDropdownWithNxThreatIndicatorExampleCode = require('./NxDropdownWithNxThreatIndicatorExample?raw');
 
 const NxDropdownPage = () =>
   <>
@@ -315,6 +317,13 @@ const NxDropdownPage = () =>
                         liveExample={NxDropdownCustomLabelExample}
                         codeExamples={nxDropdownCustomLabelExampleCode}>
       This dropdown contains more complex JSX in its label.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Custom label with NxThreatIndicator example"
+                        id="nx-dropdown-with-nx-threat-indicator-example"
+                        liveExample={NxDropdownWithNxThreatIndicatorExample}
+                        codeExamples={nxDropdownWithNxThreatIndicatorExampleCode}>
+      An example of a dropdown with <NxCode>NxThreatIndicator</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with right-floating buttons"
