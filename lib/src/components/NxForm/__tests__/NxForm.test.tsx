@@ -119,23 +119,16 @@ describe('NxForm', function() {
 
         expect(submitBtn).toHaveText('Save');
       });
-
-      it('does not render the submit button is there is a submitError', function() {
-        const submitBtn = getShallow({ submitError: 'bad' })
-            .find(NxButton)
-            .filterWhere(btn => btn.prop('variant') === 'primary');
-
-        expect(submitBtn).not.toExist();
-      });
     });
 
     describe('submit error', function() {
       it('renders an NxLoadError in the nx-footer with the submitError', function() {
         const noErrorComponent = getShallow(),
             errorComponent = getShallow({ submitError: 'BAAAAD' }),
-            loadError = errorComponent.find('.nx-footer').find(NxLoadError);
+            loadError = errorComponent.find('.nx-footer').find(NxLoadError),
+            emptyLoadError = noErrorComponent.find('.nx-footer').find(NxLoadError);
 
-        expect(noErrorComponent.find(NxLoadError)).not.toExist();
+        expect(emptyLoadError).toHaveProp('error', undefined);
         expect(loadError).toExist();
         expect(loadError).toHaveProp('error', 'BAAAAD');
       });
@@ -281,3 +274,4 @@ describe('NxForm', function() {
     });
   });
 });
+

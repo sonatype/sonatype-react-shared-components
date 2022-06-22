@@ -79,7 +79,7 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
               <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
                            error={submitError}
                            retryHandler={onSubmitProp} />
-              { formHasValidationErrors &&
+              { formHasValidationErrors && !submitError &&
                 <NxErrorAlert className="nx-form__validation-errors">
                   There were validation errors.{' '}
                   {getFirstValidationError(validationErrors)}
