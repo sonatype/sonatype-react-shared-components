@@ -330,7 +330,7 @@ const NxFormPage = () =>
           displayed upon the form's initial load and is only displayed once the user attempts to submit the form.
           Once the user takes whatever action is necessary to fix the form-level validation error, any new form-level
           validation errors also do not display until the user again attempts to submit the form. At the implementation
-          level, the display of the form-level validation errors are controlled by
+          level, the display of the form-level validation errors is controlled by
           the <NxCode>showValidationErrors</NxCode> prop, and the calling code must manage this prop according to the
           rules above. Wherever possible, it is recommend to use <NxCode>NxStatefulForm</NxCode> instead which manages
           that prop automatically.
