@@ -231,4 +231,3 @@ describe('NxTextInput', function() {
     expect(component).toHaveProp('onChange', onChange);
   });
 });
-
