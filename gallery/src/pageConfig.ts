@@ -142,6 +142,7 @@ import NxStatefulFilterDropdownPage from './components/NxStatefulFilterDropdown/
 import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
+import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -159,6 +160,7 @@ const pageConfig: PageConfig = {
     'Tag': { content: NxTagPage, type: 'react' },
     'Threat Counter': { content: NxThreatCounterPage, type: 'react' },
     'Small Threat Counter': { content: NxSmallThreatCounterPage, type: 'react' },
+    'Status Indicator': { content: NxStatusIndicatorPage, type: 'html' },
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
