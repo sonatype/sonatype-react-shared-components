@@ -69,7 +69,7 @@ describe('NxToggle', function() {
   });
 
   it('passes input attributes into the input element and does not clash with top-level attributes', function() {
-    const props = {
+    const props: Props = {
       inputId: 'not-garfield',
       disabled: true,
       isChecked: true,
@@ -77,10 +77,8 @@ describe('NxToggle', function() {
       inputAttributes: {
         id: 'garfield',
         name: 'garfield',
-        disabled: false,
-        className: 'input-classname',
-        checked: false
-      } as Props['inputAttributes']
+        className: 'input-classname'
+      }
     };
 
     render(<NxToggle {...props}></NxToggle>);
