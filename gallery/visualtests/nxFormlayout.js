@@ -16,8 +16,8 @@ describe('nx-form', function() {
     it('looks right', simpleTest(generalFormSelector));
     it('looks right with form-wide validation errors', async function() {
       const [form, submitBtn] = await waitAndGetElements(
-        generalFormSelector,
-        `${generalFormSelector} .nx-form__submit-btn`
+          generalFormSelector,
+          `${generalFormSelector} .nx-form__submit-btn`
       );
 
       await submitBtn.click();
