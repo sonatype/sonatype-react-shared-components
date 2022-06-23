@@ -9,14 +9,21 @@ import classnames from 'classnames';
 
 import { useUniqueId } from '../../util/idUtil';
 import TabContext from './TabContext';
-import { TabContextType, NxTabProps, NxTabPanelProps, NxTabsProps, nxTabsPropTypes } from './types';
+import { TabContextType, NxTabsProps, nxTabsPropTypes } from './types';
 
 export { NxTabsProps } from './types';
 
 import './NxTabs.scss';
 
 const NxTabs = function NxTabsElement(props: NxTabsProps) {
-  const { activeTab, onTabSelect, id, className, children, ...attrs } = props;
+  const {
+    activeTab,
+    onTabSelect,
+    id,
+    className,
+    children,
+    ...attrs
+  } = props;
 
   const [tabList, ...tabPanels] = Children.toArray(children);
 
@@ -33,30 +40,24 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
 
   const clonedTabList = cloneElement(tabList, {
     children: Children.toArray(tabList.props.children).map((tab, index) => {
-      if (isValidElement<NxTabProps>(tab)) {
-        const activeTabContext: TabContextType = {
-          activeTab,
-          rootId,
-          index,
-          onTabSelect: onTabSelect || (() => { })
-        };
-        return <TabContext.Provider key={index} value={activeTabContext}>{tab}</TabContext.Provider>;
-      }
-      return tab;
-    })
-  });
-
-  const clonedTabPanels = tabPanels.map((tabPanel, index) => {
-    if (isValidElement<NxTabPanelProps>(tabPanel)) {
       const activeTabContext: TabContextType = {
         activeTab,
         rootId,
         index,
-        onTabSelect: onTabSelect || (() => { })
+        onTabSelect
       };
-      return <TabContext.Provider key={index} value={activeTabContext}>{tabPanel}</TabContext.Provider>;
-    }
-    return tabPanel;
+      return <TabContext.Provider key={index} value={activeTabContext}>{tab}</TabContext.Provider>;
+    })
+  });
+
+  const clonedTabPanels = tabPanels.map((tabPanel, index) => {
+    const activeTabContext: TabContextType = {
+      activeTab,
+      rootId,
+      index,
+      onTabSelect
+    };
+    return <TabContext.Provider key={index} value={activeTabContext}>{tabPanel}</TabContext.Provider>;
   });
 
   return (
