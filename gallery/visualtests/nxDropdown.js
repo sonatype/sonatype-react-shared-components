@@ -90,7 +90,7 @@ describe('NxDropdown', function() {
 
   });
 
-  describe('NxDropdown NxThreatIndicator', function() {
+  describe('NxDropdown with NxThreatIndicator', function() {
     const selector = '#nx-dropdown-with-nx-threat-indicator-example .nx-dropdown';
 
     beforeEach(async function() {
@@ -104,7 +104,7 @@ describe('NxDropdown', function() {
 
       await moveMouseAway();
 
-      await checkScreenshot(targetElement, 251, 288);
+      await checkScreenshot(targetElement, 251, 252);
     });
 
   });
