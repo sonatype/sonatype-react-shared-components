@@ -48,7 +48,7 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       'nx-transfer-list__item',
       {
         'nx-transfer-list__item--with-reordering': !!showReorderingButtons
-      }
+      },
   );
 
   const moveUpButtonTitle = isTopItem || isFilteredItem ? 'Move Up (disabled)' : 'Move Up';
@@ -69,14 +69,14 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
             <NxButton type="button"
                       variant="icon-only"
                       title={moveUpButtonTitle}
-                      disabled={isFilteredItem || isTopItem}
+                      className={isFilteredItem || isTopItem ? 'disabled' : ''}
                       onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
             <NxButton type="button"
                       variant="icon-only"
                       title={moveDownButtonTitle}
-                      disabled={isFilteredItem || isBottomItem}
+                      className={isFilteredItem || isBottomItem ? 'disabled' : ''}
                       onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
             </NxButton>
