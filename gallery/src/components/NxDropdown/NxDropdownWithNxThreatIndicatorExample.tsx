@@ -15,7 +15,6 @@ function NxDropdownWithNxThreatIndicatorExample() {
 
   return (
     <NxDropdown label={labelElement}
-                className="extra-class"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
       <button className="nx-dropdown-button" onClick={onClick}>
