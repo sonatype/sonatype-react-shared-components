@@ -34,7 +34,7 @@ export default function NxGlobalSidebarPage() {
             <NxList.Text>
               A footer which contains meta-information about the application. Refer to the
               {' '}<a className="nx-text-link" href="#/pages/Global%20Sidebar%20Footer">NxGlobalSidebarFooter</a> page
-              {' '}for its documentation.
+              for its documentation.
             </NxList.Text>
           </NxList.Item>
         </NxList>

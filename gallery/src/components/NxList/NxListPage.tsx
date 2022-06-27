@@ -16,7 +16,7 @@ const NxListPage = () =>
         <NxCode>NxList</NxCode> encapsulates the styles defined in the{' '}
         <NxTextLink href="#/pages/List%20(HTML)">List (HTML)</NxTextLink> style page into simple React components. In
         addition, <NxCode>NxList</NxCode> also contains children components that make it easy to customize lists. With
-        the help of these components, it is quite simple to create lists that have clickable buttons, links, action{' '}
+        the help of these components, it is quite simple to create lists that have clickable buttons, links, action
         buttons, multiple lines of text, and even lists with empty and error states.
       </NxP>
 
