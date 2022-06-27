@@ -6,16 +6,16 @@
  */
 import React from 'react';
 
-import { NxFormGroup, NxStatefulTextInput, NxForm, NxH4 } from '@sonatype/react-shared-components';
+import { NxFormGroup, NxStatefulTextInput, NxForm, NxTile } from '@sonatype/react-shared-components';
 
 export default function NxFormGroupRequiredExample() {
   const requiredValidator = (val: string) => val ? null : 'Must be non-empty';
 
   return (
     <>
-      <NxH4>
+      <NxTile.HeaderSubtitle>
         <NxForm.RequiredFieldNotice />
-      </NxH4>
+      </NxTile.HeaderSubtitle>
       <NxFormGroup label="Username" isRequired>
         <NxStatefulTextInput validator={requiredValidator} />
       </NxFormGroup>

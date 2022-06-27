@@ -9,6 +9,9 @@ import { NxFormGroup, NxFormSelect, NxForm, NxTile} from '@sonatype/react-shared
 
 const NxFormSelectOverflowExample = () => (
   <>
+    <NxTile.HeaderSubtitle>
+      <NxForm.RequiredFieldNotice />
+    </NxTile.HeaderSubtitle>
     <NxFormGroup label="Overflowing Form Select" isRequired>
       <NxFormSelect>
         <option value="1">Looooooooooooooooooong Option 1</option>
@@ -18,9 +21,6 @@ const NxFormSelectOverflowExample = () => (
         <option value="5">Option 5</option>
       </NxFormSelect>
     </NxFormGroup>
-    <NxTile.HeaderSubtitle>
-      <NxForm.RequiredFieldNotice />
-    </NxTile.HeaderSubtitle>
   </>
 );
 

@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FormEvent } from 'react';
-import { NxFormSelect, nxFormSelectStateHelpers, NxFormGroup, NxForm, NxH4 } from '@sonatype/react-shared-components';
+import { NxFormSelect, nxFormSelectStateHelpers, NxFormGroup, NxForm, NxTile } from '@sonatype/react-shared-components';
 
 const NxFormSelectExample = () => {
   const [selectState, setSelectValue] = nxFormSelectStateHelpers.useNxFormSelectState<number>(1);
@@ -16,9 +16,9 @@ const NxFormSelectExample = () => {
 
   return (
     <>
-      <NxH4>
+      <NxTile.HeaderSubtitle>
         <NxForm.RequiredFieldNotice />
-      </NxH4>
+      </NxTile.HeaderSubtitle>
       <NxFormGroup label={`Selected Option: ${selectState.value}`} isRequired>
         <NxFormSelect onChange={onChange} { ...selectState }>
           <option value="1">Option 1</option>

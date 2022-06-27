@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxFieldset, NxRadio, NxForm, NxTile } from '@sonatype/react-shared-components';
+import { NxFieldset, NxRadio, NxForm, NxTile} from '@sonatype/react-shared-components';
 
 export default function NxFieldsetRequiredExample() {
   const [val, setVal] = useState<string | null>(null);
