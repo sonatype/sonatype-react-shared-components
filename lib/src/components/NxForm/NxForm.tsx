@@ -13,6 +13,8 @@ import NxLoadError from '../NxLoadError/NxLoadError';
 import NxButton from '../NxButton/NxButton';
 import NxSubmitMask from '../NxSubmitMask/NxSubmitMask';
 
+import './NxForm.scss';
+
 import { Props, propTypes } from './types';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
 import { NxErrorAlert } from '../NxAlert/NxAlert';
