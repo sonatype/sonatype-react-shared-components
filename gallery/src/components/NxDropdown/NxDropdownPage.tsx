@@ -197,6 +197,17 @@ const NxDropdownPage = () =>
               </NxTable.Cell>
               <NxTable.Cell>Renders the dropdown toggle and menu at a smaller width than the default</NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-dropdown-icon</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>FontAwesomeIcon</NxCode>, within the label and inside the dropdown content.{' '}
+                Except for in the case where it is inside{' '}
+                <NxCode>NxButton</NxCode> and <NxCode>nx-dropdown-link</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>
+                This applies the correct color to the icon.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
@@ -260,17 +271,6 @@ const NxDropdownPage = () =>
                 any <NxCode>.nx-dropdown-right-button</NxCode>s.
               </NxTable.Cell>
             </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>nx-dropdown-icon</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                <NxCode>FontAwesomeIcon</NxCode>, within the label and inside the dropdown content.{' '}
-                Except for in the case where it is inside{' '}
-                <NxCode>NxButton</NxCode> and <NxCode>nx-dropdown-link</NxCode>
-              </NxTable.Cell>
-              <NxTable.Cell>
-                This applies the correct color to the icon.
-              </NxTable.Cell>
-            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
@@ -316,14 +316,14 @@ const NxDropdownPage = () =>
                         id="nx-dropdown-custom-label-example"
                         liveExample={NxDropdownCustomLabelExample}
                         codeExamples={nxDropdownCustomLabelExampleCode}>
-      This dropdown contains more complex JSX in its label.
+      This dropdown contains more complex JSX in its label and uses <NxCode>nx-dropdown-icon</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Custom label with NxThreatIndicator example"
                         id="nx-dropdown-with-nx-threat-indicator-example"
                         liveExample={NxDropdownWithNxThreatIndicatorExample}
                         codeExamples={nxDropdownWithNxThreatIndicatorExampleCode}>
-      An example of a dropdown with <NxCode>NxThreatIndicator</NxCode>.
+      An example of a dropdown with <NxCode>NxThreatIndicator</NxCode> but without <NxCode>nx-dropdown-icon</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with right-floating buttons"
