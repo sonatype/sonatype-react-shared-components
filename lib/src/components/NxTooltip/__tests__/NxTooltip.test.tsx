@@ -33,7 +33,7 @@ describe('NxTooltip', function() {
         component = getTooltip({ open: false, onOpen, onClose, placement: 'left' });
 
     expect(component).toMatchSelector(Tooltip);
-    expect(component).toHaveProp('children', minimalProps.children);
+    expect(component.children()).toMatchSelector('div#foo');
     expect(component).toHaveProp('open', false);
     expect(component).toHaveProp('onOpen', onOpen);
     expect(component).toHaveProp('onClose', onClose);
