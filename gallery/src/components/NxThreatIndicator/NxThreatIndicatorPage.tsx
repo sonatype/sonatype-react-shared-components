@@ -68,6 +68,14 @@ const NxThreatIndicatorPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>Additional CSS class names to apply to the rendered element</NxTable.Cell>
           </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>presentational</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              When this is set to true the tooltip will be hidden and the icon's role will be set to "presentation"
+            </NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
 
@@ -112,6 +120,8 @@ const NxThreatIndicatorPage = () =>
                         codeExamples={nxThreatIndicatorByCategoryCode}>
       A series of lines of text, each beginning with an <NxCode>NxThreatIndicator</NxCode> whose
       color is set to a different <NxCode>threatLevelCategory</NxCode> value.
+      The <NxCode>NxThreatIndicator</NxCode> has presentational props set to true because{' '}
+      they are accompanied by text describing their threat level that are matching their tooltip.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Indicators by Policy Number"
