@@ -115,9 +115,6 @@
       cursor: default;
     }
   }
-  &.disabled:active {
-    pointer-events: none;
-  }
 }
 
 .nx-btn--icon-only {
@@ -142,8 +139,5 @@
       border-color: transparent;
       box-shadow: none;
     }
-  }
-  &.disabled:active {
-    pointer-events: none;
   }
 }
