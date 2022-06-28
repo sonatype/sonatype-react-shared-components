@@ -84,17 +84,6 @@ export default function NxTooltipPage() {
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>A callback function executed when the tooltip closes</NxTable.Cell>
             </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>scrollContainerRef</NxTable.Cell>
-              <NxTable.Cell>Ref</NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell>
-                A ref to a scrollable container element which is an ancestor of the tooltip-wrapped element. Providing
-                this prop enables an optimization where tooltips on elements that are scrolled out of view will
-                not be fully enabled until the element is scrolled into view, helping with performance issues when
-                many items wrapped in tooltips are created at once.
-              </NxTable.Cell>
-            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </GalleryDescriptionTile>
