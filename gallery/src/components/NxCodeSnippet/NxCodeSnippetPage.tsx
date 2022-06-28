@@ -13,12 +13,9 @@ import NxCodeSnippetExample from './NxCodeSnippetExample';
 import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
 import NxCodeSnippetSizingExample from './NxCodeSnippetSizingExample';
 
-import './NxCodeSnippet.scss';
-
 const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
     nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw'),
-    nxCodeSnippetSizingCode = require('./NxCodeSnippetSizingExample?raw'),
-    nxCodeSnippetSizingCodeScss = require('./NxCodeSnippet.scss?raw');
+    nxCodeSnippetSizingCode = require('./NxCodeSnippetSizingExample?raw')
 
 export default function NxCodeSnippetPage() {
   return (
@@ -129,8 +126,7 @@ export default function NxCodeSnippetPage() {
       <GalleryExampleTile title="Custom Sizing Example"
                           id="nx-code-snippet-custom-sizing-example"
                           liveExample={NxCodeSnippetSizingExample}
-                          codeExamples={[nxCodeSnippetSizingCode,
-                            {content: nxCodeSnippetSizingCodeScss, language: 'scss'}]}>
+                          codeExamples={nxCodeSnippetSizingCode}>
         An <NxCode>NxCodeSnippet</NxCode> demonstrating optional sizing for the textarea.
       </GalleryExampleTile>
     </>

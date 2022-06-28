@@ -12,7 +12,6 @@ export default function NxCodeSnippetSizingExample() {
     <>
       <NxCodeSnippet label="RSC Github URL"
                      content="https://github.com/sonatype/sonatype-react-shared-components"
-                     className="nx-code-snippet-custom-sizing"
                      rows={1} />
     </>
   );
