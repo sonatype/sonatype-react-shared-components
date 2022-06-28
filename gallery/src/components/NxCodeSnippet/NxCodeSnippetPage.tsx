@@ -136,7 +136,7 @@ export default function NxCodeSnippetPage() {
                           codeExamples={nxCodeSnippetComplexCode}>
         An <NxCode>NxCodeSnippet</NxCode> demonstrating optional
         props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
-        and <NxCode>inputProps</NxCode>
+        and <NxCode>rows</NxCode>.
       </GalleryExampleTile>
     </>
   );
