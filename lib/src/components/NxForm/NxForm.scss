@@ -6,6 +6,6 @@
  */
 
 .nx-form__required-field-notice {
-    display: inline-block;
-    margin: var(--nx-spacing-2x) 0;
+    display: block;
+    margin-bottom: var(--nx-spacing-8x);
 }
