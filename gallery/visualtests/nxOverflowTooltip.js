@@ -27,7 +27,8 @@ describe('NxOverflowTooltip', function() {
       maxBeforeOverflowStr = 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
       descendantOverflowItemSelector = `${descendantOverflowListSelector} .nx-list__item:nth-child(2)`;
 
-  const wait1Sec = () => wait(1000);
+  // NOTE: not really 1 sec anymore
+  const wait1Sec = () => wait(1500);
 
   async function isInDocument(el) {
     return el.evaluate(e => e.isConnected);
