@@ -667,11 +667,6 @@
     "@types/raf-schd" "^4.0.0"
     raf-schd "^4.0.2"
 
-"@rooks/use-intersection-observer-ref@^4.11.0":
-  version "4.11.2"
-  resolved "https://registry.npmjs.org/@rooks/use-intersection-observer-ref/-/use-intersection-observer-ref-4.11.2.tgz#d83a9279c1192d7aae221388985457f7491c6333"
-  integrity sha512-9RJYT21Fll1b1oiiMAc6oUOyH5bS1P+nKTIpUUGeQO6+AOP7OflVaPAoULxe+rMnu9ue8LxYZJ6N/pbEcFQu7A==
-
 "@rooks/use-mutation-observer@^4.11.0":
   version "4.11.0"
   resolved "https://registry.npmjs.org/@rooks/use-mutation-observer/-/use-mutation-observer-4.11.0.tgz#2df8f9520c6c63041c02f2e66e091c2cf40a178d"

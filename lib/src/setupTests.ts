@@ -12,9 +12,3 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
-
-// JSDOM does not implement IntersectionObserver
-window.IntersectionObserver = jest.fn().mockReturnValue({
-  observe: jest.fn(),
-  disconnect: jest.fn()
-});
