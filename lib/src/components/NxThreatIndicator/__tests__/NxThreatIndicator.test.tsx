@@ -94,4 +94,16 @@ describe('NxThreatIndicator', function() {
     expect(icon).toHaveClassName('nx-threat-indicator');
     expect(icon).toHaveClassName('nx-threat-indicator--low');
   });
+
+  it('should hide tooltip when presentational prop is set true', function() {
+    const tooltip = getShallowComponent({ presentational: true }).find(NxToolip);
+
+    expect(tooltip).not.toExist();
+  });
+
+  it('should set the role to "presentation" when presentational prop is true', function() {
+    const icon = getShallowComponent({ presentational: true }).find(NxFontAwesomeIcon);
+
+    expect(icon).toHaveProp('role', 'presentation');
+  });
 });
