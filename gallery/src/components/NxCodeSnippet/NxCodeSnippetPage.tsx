@@ -60,6 +60,15 @@ export default function NxCodeSnippetPage() {
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>rows</NxTable.Cell>
+              <NxTable.Cell>number</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                The number of rows of the text area to dictate its height
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>onCopyUsingBtn</NxTable.Cell>
               <NxTable.Cell>Function () =&gt; void</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
@@ -127,7 +136,7 @@ export default function NxCodeSnippetPage() {
                           id="nx-code-snippet-custom-sizing-example"
                           liveExample={NxCodeSnippetSizingExample}
                           codeExamples={nxCodeSnippetSizingCode}>
-        An <NxCode>NxCodeSnippet</NxCode> demonstrating optional sizing for the textarea.
+        An <NxCode>NxCodeSnippet</NxCode> demonstrating custom sizing with the optional <NxCode>rows</NxCode> prop.
       </GalleryExampleTile>
     </>
   );
