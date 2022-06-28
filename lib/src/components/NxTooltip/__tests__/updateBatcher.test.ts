@@ -54,70 +54,68 @@ describe('NxTooltip updateBatcher', function() {
   });
 
   it('executes the groups of 100 as soon as they fill up, and executes the final unfilled group 1 second after its ' +
-     'first unit arrives',
-      function() {
-        const work = jest.fn();
+     'first unit arrives', function() {
+    const work = jest.fn();
 
-        for (let i = 0; i < 80; i++) {
-          batch(work);
-        }
+    for (let i = 0; i < 80; i++) {
+      batch(work);
+    }
 
-        // 80 units submitted, no time elapsed
-        expect(work).not.toHaveBeenCalled();
+    // 80 units submitted, no time elapsed
+    expect(work).not.toHaveBeenCalled();
 
-        for (let i = 0; i < 80; i++) {
-          batch(work);
-        }
+    for (let i = 0; i < 80; i++) {
+      batch(work);
+    }
 
-        jest.advanceTimersByTime(0);
+    jest.advanceTimersByTime(0);
 
-        // 160 units submitted, no time elapsed
-        expect(work).toHaveBeenCalledTimes(100);
+    // 160 units submitted, no time elapsed
+    expect(work).toHaveBeenCalledTimes(100);
 
-        for (let i = 0; i < 30; i++) {
-          batch(work);
-        }
+    for (let i = 0; i < 30; i++) {
+      batch(work);
+    }
 
-        // 190 units submitted, no time elapsed
-        expect(work).toHaveBeenCalledTimes(100);
+    // 190 units submitted, no time elapsed
+    expect(work).toHaveBeenCalledTimes(100);
 
-        jest.advanceTimersByTime(1000);
+    jest.advanceTimersByTime(1000);
 
-        // 190 units submitted, 1 second elapsed
-        expect(work).toHaveBeenCalledTimes(190);
+    // 190 units submitted, 1 second elapsed
+    expect(work).toHaveBeenCalledTimes(190);
 
-        jest.advanceTimersByTime(500);
+    jest.advanceTimersByTime(500);
 
-        // 190 units submitted, 1.5 second elapsed
-        expect(work).toHaveBeenCalledTimes(190);
+    // 190 units submitted, 1.5 second elapsed
+    expect(work).toHaveBeenCalledTimes(190);
 
-        for (let i = 0; i < 5; i++) {
-          batch(work);
-        }
+    for (let i = 0; i < 5; i++) {
+      batch(work);
+    }
 
-        jest.advanceTimersByTime(500);
+    jest.advanceTimersByTime(500);
 
-        // 195 units submitted, 2 second elapsed (0.5 seconds since most recent units added)
-        expect(work).toHaveBeenCalledTimes(190);
+    // 195 units submitted, 2 second elapsed (0.5 seconds since most recent units added)
+    expect(work).toHaveBeenCalledTimes(190);
 
-        jest.advanceTimersByTime(500);
+    jest.advanceTimersByTime(500);
 
-        // 195 units submitted, 2.5 seconds elapsed (1 second since most recent units added)
-        expect(work).toHaveBeenCalledTimes(195);
+    // 195 units submitted, 2.5 seconds elapsed (1 second since most recent units added)
+    expect(work).toHaveBeenCalledTimes(195);
 
-        for (let i = 0; i < 120; i++) {
-          batch(work);
-        }
+    for (let i = 0; i < 120; i++) {
+      batch(work);
+    }
 
-        jest.advanceTimersByTime(0);
+    jest.advanceTimersByTime(0);
 
-        // 315 units submitted, 2.5 seconds elapsed (since last empty: 120 units, 0 seconds)
-        expect(work).toHaveBeenCalledTimes(295);
+    // 315 units submitted, 2.5 seconds elapsed (since last empty: 120 units, 0 seconds)
+    expect(work).toHaveBeenCalledTimes(295);
 
-        jest.advanceTimersByTime(1000);
+    jest.advanceTimersByTime(1000);
 
-        // 315 units submitted, 3.5 seconds elapsed (since last empty: 120 units, 1 second)
-        expect(work).toHaveBeenCalledTimes(315);
-      }
-  );
+    // 315 units submitted, 3.5 seconds elapsed (since last empty: 120 units, 1 second)
+    expect(work).toHaveBeenCalledTimes(315);
+  });
 });
