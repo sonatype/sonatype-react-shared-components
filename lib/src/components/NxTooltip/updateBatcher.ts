@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+// eslint-disable-next-line camelcase
 import { unstable_batchedUpdates } from 'react-dom';
 
 // requestIdleCallback is not available in Safari, so fallback to this simplified fake version there
@@ -43,7 +44,7 @@ export default function batch(work: () => void) {
   }
   else if (!timeoutHandle) {
     // queue is fresh, start a timeout to execute it after MAX_WORK_TIME
-    timeoutHandle = setTimeout(() => {
+    timeoutHandle = window.setTimeout(() => {
       dispatch();
       timeoutHandle = null;
     }, MAX_WORK_TIME);
