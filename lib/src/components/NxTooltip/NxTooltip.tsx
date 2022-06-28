@@ -57,17 +57,20 @@ function fixOptional(props: Omit<Props, 'title' | 'children'>): Omit<TooltipProp
  */
 export const TooltipContext = createContext<boolean>(false);
 
-// You may wonder why we have this wrapper that just passes through to mui Tooltip. It is to encapsulate the fact
-// that we are using mui, and then limit the available props down to just those that would be still be easily supported
-// if we switched to a different implementation
 const NxTooltip: FunctionComponent<Props> =
     function NxTooltip({ className, title, children, scrollContainerRef, ...otherProps }) {
-      const tooltipClassName = classnames('nx-tooltip', className),
-          parentModal = useContext(NxModalContext),
-          isUnmounted = useRef(false);
 
+      /*
+       * For performance reasons, in some cases it can be worthwhile to only activate tooltips on items
+       * that are scrolled into view: For instance in a large NxTransferList where only about 10 items are
+       * visible at a time, but there could be thousands, all with tooltips. When scrollContainerRef is defined,
+       * we use an IntersectionObserver to track whether this item is scrolled into view within that container,
+       * and enable the tooltip only if so.
+       */
       const handleIntersection = useCallback(function handleIntersection(entries: IntersectionObserverEntry[]) {
         if (scrollContainerRef) {
+          // use batching. If there are many tooltips checking their scroll position, batching improves throughput
+          // substantially
           batch(() => {
             if (!isUnmounted.current) {
               setIsVisisble(any(prop('isIntersecting'), entries));
@@ -77,13 +80,20 @@ const NxTooltip: FunctionComponent<Props> =
       }, [scrollContainerRef]);
 
       const [scrollContainer, setScrollContainer] = useState<HTMLElement | null>(null),
-          [intersectionRef] = useIntersectionObserverRef(handleIntersection, { root: scrollContainer }),
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ref: Ref<HTMLElement> = useMergedRef(children.ref, intersectionRef),
           [isVisible, setIsVisisble] = useState(!scrollContainerRef),
+
+          tooltipClassName = classnames('nx-tooltip', className),
+          parentModal = useContext(NxModalContext),
+          [intersectionRef] = useIntersectionObserverRef(handleIntersection, { root: scrollContainer }),
+
+          isUnmounted = useRef(false),
+          ref: Ref<HTMLElement> = useMergedRef(children.ref, intersectionRef),
           childrenWithRef = React.cloneElement(children, { ref });
 
       useEffect(function() {
+        // The useIntersectionObserverRef API requires an actual DOM node for the root (rather than a Ref containing
+        // one). On first render the ref isn't typically populated yet, so we have to use useEffect to wait until it
+        // is populated, and then set it as a state value to trigger a re-render
         setScrollContainer(scrollContainerRef?.current ?? null);
       }, [scrollContainerRef?.current]);
 
