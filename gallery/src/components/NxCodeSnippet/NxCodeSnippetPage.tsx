@@ -123,6 +123,13 @@ export default function NxCodeSnippetPage() {
         copied to the clipboard.
       </GalleryExampleTile>
 
+      <GalleryExampleTile title="Custom Sizing Example"
+                          id="nx-code-snippet-custom-sizing-example"
+                          liveExample={NxCodeSnippetSizingExample}
+                          codeExamples={nxCodeSnippetSizingCode}>
+        An <NxCode>NxCodeSnippet</NxCode> demonstrating custom sizing with the optional <NxCode>rows</NxCode> prop.
+      </GalleryExampleTile>
+
       <GalleryExampleTile title="More Complex Example"
                           id="nx-code-snippet-complex-example"
                           liveExample={NxCodeSnippetComplexExample}
@@ -132,12 +139,7 @@ export default function NxCodeSnippetPage() {
         and <NxCode>inputProps</NxCode>
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="Custom Sizing Example"
-                          id="nx-code-snippet-custom-sizing-example"
-                          liveExample={NxCodeSnippetSizingExample}
-                          codeExamples={nxCodeSnippetSizingCode}>
-        An <NxCode>NxCodeSnippet</NxCode> demonstrating custom sizing with the optional <NxCode>rows</NxCode> prop.
-      </GalleryExampleTile>
+      
     </>
   );
 }
