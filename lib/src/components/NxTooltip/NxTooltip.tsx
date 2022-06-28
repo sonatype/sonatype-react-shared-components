@@ -61,7 +61,7 @@ export const TooltipContext = createContext<boolean>(false);
 // that we are using mui, and then limit the available props down to just those that would be still be easily supported
 // if we switched to a different implementation
 const NxTooltip: FunctionComponent<Props> =
-    function NxTooltip({ className, title, children, open, scrollContainerRef, ...otherProps }) {
+    function NxTooltip({ className, title, children, scrollContainerRef, ...otherProps }) {
       const tooltipClassName = classnames('nx-tooltip', className),
           parentModal = useContext(NxModalContext),
           isUnmounted = useRef(false);
@@ -80,7 +80,7 @@ const NxTooltip: FunctionComponent<Props> =
           [intersectionRef] = useIntersectionObserverRef(handleIntersection, { root: scrollContainer }),
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ref: Ref<HTMLElement> = useMergedRef(children.ref, intersectionRef),
-          [isVisible, setIsVisisble] = useState(false),
+          [isVisible, setIsVisisble] = useState(!scrollContainerRef),
           childrenWithRef = React.cloneElement(children, { ref });
 
       useEffect(function() {
