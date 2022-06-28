@@ -51,8 +51,10 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       },
   );
 
-  const moveUpButtonTitle = isTopItem || isFilteredItem ? 'Move Up (disabled)' : 'Move Up';
-  const moveDownButtonTitle = isBottomItem || isFilteredItem ? 'Move Down (disabled)' : 'Move Down';
+  const moveUpDisabled = isFilteredItem || isTopItem;
+  const moveDownDisabled = isFilteredItem || isBottomItem;
+  const moveUpButtonTitle = moveUpDisabled ? 'Move Up (disabled)' : 'Move Up';
+  const moveDownButtonTitle = moveDownDisabled ? 'Move Down (disabled)' : 'Move Down';
 
   return (
     <div className={classes}>
@@ -69,15 +71,15 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
             <NxButton type="button"
                       variant="icon-only"
                       title={moveUpButtonTitle}
-                      className={isFilteredItem || isTopItem ? 'disabled' : ''}
-                      onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
+                      className={moveUpDisabled ? 'disabled' : ''}
+                      onClick={() => !moveUpDisabled && onReorderItem && onReorderItem(index, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
             <NxButton type="button"
                       variant="icon-only"
                       title={moveDownButtonTitle}
-                      className={isFilteredItem || isBottomItem ? 'disabled' : ''}
-                      onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
+                      className={moveDownDisabled ? 'disabled' : ''}
+                      onClick={() => !moveDownDisabled && onReorderItem && onReorderItem(index, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
             </NxButton>
           </div>
