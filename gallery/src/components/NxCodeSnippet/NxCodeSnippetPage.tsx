@@ -138,8 +138,6 @@ export default function NxCodeSnippetPage() {
         props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
         and <NxCode>inputProps</NxCode>
       </GalleryExampleTile>
-
-      
     </>
   );
 }
