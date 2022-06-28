@@ -7,9 +7,10 @@
 import { unstable_batchedUpdates } from 'react-dom';
 
 // requestIdleCallback is not available in Safari, so fallback to this simplified fake version there
-const requestIdleCallback = window.requestIdleCallback ?? function fakeRequestIdleCallback(fn: () => void) {
-  setTimeout(fn, 0);
-}
+const requestIdleCallback = typeof window !== 'undefined' && window.requestIdleCallback ||
+  function fakeRequestIdleCallback(fn: () => void) {
+    setTimeout(fn, 0);
+  };
 
 const BATCH_SIZE = 100,
     MAX_WORK_TIME = 1000; // max amount of time for work to wait in the queue before being dispatched, in ms
@@ -36,13 +37,13 @@ export default function batch(work: () => void) {
 
     if (timeoutHandle) {
       // queue filled up before MAX_WORK_TIME, cancel the timeout
-      window.clearTimeout(timeoutHandle);
+      clearTimeout(timeoutHandle);
       timeoutHandle = null;
     }
   }
   else if (!timeoutHandle) {
     // queue is fresh, start a timeout to execute it after MAX_WORK_TIME
-    timeoutHandle = window.setTimeout(() => {
+    timeoutHandle = setTimeout(() => {
       dispatch();
       timeoutHandle = null;
     }, MAX_WORK_TIME);
