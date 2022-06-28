@@ -4,13 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
 
-import { TabContextType } from './types';
-
-export default React.createContext<TabContextType>({
-  activeTab: null,
-  rootId: '',
-  index: -1,
-  onTabSelect: () => {}
-});
+ .gallery-binary-donut-chart-custom {
+    display: block;
+    height: 45px;
+    .nx-binary-donut-chart__arc {
+      stroke: var(--nx-swatch-purple-70);
+    }
+  }

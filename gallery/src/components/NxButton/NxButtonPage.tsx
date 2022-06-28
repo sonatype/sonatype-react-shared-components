@@ -82,8 +82,8 @@ export default function NxButtonPage() {
         </NxTable>
         <NxP>
           <NxCode>NxButton</NxCode>s are often used within an <NxCode>NxButtonBar</NxCode> wrapper. See the
-          documentation of the <NxTextLink href="#/pages/nx-btn">raw <NxCode>nx-btn</NxCode> styles</NxTextLink> for
-          details.
+          documentation of the{' '}
+          <NxTextLink href="#/pages/Button%20(HTML)">raw <NxCode>nx-btn</NxCode> styles</NxTextLink> for details.
         </NxP>
       </GalleryDescriptionTile>
 
