@@ -15,7 +15,7 @@ import NxCodeSnippetSizingExample from './NxCodeSnippetSizingExample';
 
 const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
     nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw'),
-    nxCodeSnippetSizingCode = require('./NxCodeSnippetSizingExample?raw')
+    nxCodeSnippetSizingCode = require('./NxCodeSnippetSizingExample?raw');
 
 export default function NxCodeSnippetPage() {
   return (

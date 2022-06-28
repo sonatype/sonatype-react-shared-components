@@ -49,7 +49,7 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
           typeAttr = isTextArea ? undefined : (type || 'text'),
-          classes = rows && isTextArea? 'nx-text-input__input textarea-custom-sizing' : 'nx-text-input__input',
+          classes = rows && isTextArea ? 'nx-text-input__input textarea-custom-sizing' : 'nx-text-input__input',
           isInvalid = validatable && hasValidationErrors(validationErrors),
           firstValidationError = validatable && getFirstValidationError(validationErrors),
           internalClassName = classnames('nx-text-input', className, {
