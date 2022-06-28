@@ -6,13 +6,16 @@
  */
 import React, { useState } from 'react';
 
-import { NxRadio, NxFieldset } from '@sonatype/react-shared-components';
+import { NxRadio, NxFieldset, NxForm, NxTile } from '@sonatype/react-shared-components';
 
 export default function NxRadioDisabledExample() {
   const [city, setCity] = useState<string | null>('fulton');
 
   return (
     <>
+      <NxTile.HeaderSubtitle>
+        <NxForm.RequiredFieldNotice />
+      </NxTile.HeaderSubtitle>
       <NxFieldset label={`Selected City: ${city}`} isRequired={true}>
         <NxRadio name="city"
                  value="arlington"
