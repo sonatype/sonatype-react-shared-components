@@ -198,8 +198,15 @@ The visual tests use jest-image-snapshot to compare screenshots of the component
 setup is configured for an exact visual match, so the tests must be run on a consistent platform. The browser used for
 the tests is downloaded via the puppeteer npm package. However, it is also important to run these tests on a consistent
 operating system. The cleanest way to do this is via docker - specifically, to run the tests in a docker environment
-identical to the one which the CI system uses. This environment is defined in the `Dockerfile` present within the
-the top level directory of the repository. To build the docker image, run the following command from this directory:
+identical to the one which the CI system uses. To do that, first 
+[install docker on your computer](https://docs.docker.com/get-docker/). Then, within the top of the directory, log into
+Docker by running the following command:
+
+```
+docker login
+```
+
+Then build a docker image by running the following command:
 
 ```
 docker build -t rsc-visualtesting .
