@@ -64,7 +64,7 @@ const NxTooltip: FunctionComponent<Props> =
 
       useEffect(function() {
         batch(() => {
-          if (!isUnmounted) {
+          if (!isUnmounted.current) {
             setInitialized(true);
           }
         });
