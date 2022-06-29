@@ -22,12 +22,14 @@ let queue: Queue = [];
 
 let timeoutHandle: number | null;
 
-// A simple React work batcher. It accumulates units of work until it has at least BATCH_SIZE of them, or it's been
-// MAX_WORK_TIME ms since the first one was submitted, and then executes them all in requestIdleTimeout. The
-// batched units of work are executed within React's unstable_batchedUpdates in order to signficantly cut down
-// on React overhead.  Note that adjusting BATCH_SIZE involves a tradeoff between minimizing react overhead
-// by using large batches, and keeping the page reasonably interactive. The current BATCH_SIZE is tuned to the
-// workloads and needs of NxTooltip (and NxOverflowTooltip) specifically.
+/**
+ * A simple React work batcher. It accumulates units of work until it has at least BATCH_SIZE of them, or it's been
+ * MAX_WORK_TIME ms since the first one was submitted, and then executes them all in requestIdleTimeout. The
+ * batched units of work are executed within React's unstable_batchedUpdates in order to signficantly cut down
+ * on React overhead.  Note that adjusting BATCH_SIZE involves a tradeoff between minimizing react overhead
+ * by using large batches, and keeping the page reasonably interactive. The current BATCH_SIZE is tuned to the
+ * workloads and needs of NxTooltip (and NxOverflowTooltip) specifically.
+ */
 export default function batch(work: () => void) {
   queue.push(work);
 
