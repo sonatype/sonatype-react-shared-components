@@ -7,6 +7,8 @@
 // eslint-disable-next-line camelcase
 import { unstable_batchedUpdates } from 'react-dom';
 
+type Queue = Array<() => void>;
+
 // requestIdleCallback is not available in Safari, so fallback to this simplified fake version there
 const requestIdleCallback = typeof window !== 'undefined' && window.requestIdleCallback ||
   function fakeRequestIdleCallback(fn: () => void) {
@@ -16,11 +18,8 @@ const requestIdleCallback = typeof window !== 'undefined' && window.requestIdleC
 const BATCH_SIZE = 100,
     MAX_WORK_TIME = 1000; // max amount of time for work to wait in the queue before being dispatched, in ms
 
-type Queue = Array<() => void>;
-
-let queue: Queue = [];
-
-let timeoutHandle: number | null;
+let queue: Queue = [],
+    timeoutHandle: number | null;
 
 /**
  * A simple React work batcher. It accumulates units of work until it has at least BATCH_SIZE of them, or it's been
