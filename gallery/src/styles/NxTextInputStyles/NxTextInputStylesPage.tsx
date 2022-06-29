@@ -19,7 +19,7 @@ const NxTextInputStylesPage = () =>
       <NxP>
         Base styles for Sonatype text inputs.  Only the styles intended for "static" usage are shown
         here. For styles that involve business logic, such as validation, see
-        the <NxTextLink href="#pages/NxTextInput">NxTextInput React Component</NxTextLink>.
+        the <NxTextLink href="#/pages/Text%20Input">NxTextInput React Component</NxTextLink>.
       </NxP>
       <NxP>Classes:</NxP>
       <NxTable>
