@@ -6,6 +6,10 @@
  */
 @use '../../scss-shared/nx-text-helpers';
 
+// This is the calculated width of the
+// longest threat counter, "unspecified".
+$-min-width: 154px;
+
 .nx-threat-counter {
   align-items: center;
   box-sizing: content-box;
@@ -54,16 +58,16 @@
 }
 
 .nx-threat-counter-container {
-  display: inline-grid;
+  display: grid;
   gap: var(--nx-spacing-4x);
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax($-min-width, 1fr));
   margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
 }
 
 .nx-threat-counter-container--column {
-  grid-template-columns: auto;
+  grid-template-columns: min-content;
 }
 
 .nx-threat-counter-container--grid {
-  grid-template-columns: auto auto;
+  grid-template-columns: min-content min-content;
 }
