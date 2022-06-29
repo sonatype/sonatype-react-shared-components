@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, RefObject } from 'react';
+import { ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
 import DataItem from '../../util/DataItem';
@@ -19,7 +19,6 @@ export interface TransferListItemProps<T extends string | number = string> exten
   onReorderItem?: (index: number, direction: 1 | -1) => void | null;
   index: number;
   listLength: number;
-  scrollContainerRef: RefObject<HTMLElement>;
 }
 
 export interface Props<T extends string | number = string> {

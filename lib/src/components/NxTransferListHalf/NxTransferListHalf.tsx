@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, useMemo, useRef } from 'react';
+import React, { FormEvent, useMemo } from 'react';
 import { filter, includes, map, partial, pipe, prop, toLower } from 'ramda';
 import { faPlusCircle, faTimesCircle, faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
@@ -33,8 +33,7 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
     onChange: onChangeProp,
     onReorderItem,
     index,
-    listLength,
-    scrollContainerRef
+    listLength
   } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
@@ -57,7 +56,7 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
 
   return (
     <div className={classes}>
-      <NxOverflowTooltip scrollContainerRef={scrollContainerRef}>
+      <NxOverflowTooltip>
         <label className="nx-transfer-list__select">
           <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
           <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
@@ -106,7 +105,6 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         footerContent,
         filterFn: filterFnProp
       } = props,
-      scrollContainerRef = useRef(null),
       defaultFilterFn = pipe(toLower, includes(toLower(filterValue))),
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
       visibleItems = useMemo(
@@ -135,7 +133,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
             <span>{isSelected ? 'Remove' : 'Transfer'} All</span>
           </button>
         }
-        <div ref={scrollContainerRef} className="nx-transfer-list__item-list">
+        <div className="nx-transfer-list__item-list">
           { visibleItems.map(
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
                                                  isFilteredItem={!!filterValue}
@@ -145,7 +143,6 @@ export default function NxTransferListHalf<T extends string | number = string>(p
                                                  onReorderItem={onReorderItem}
                                                  index={index}
                                                  listLength={visibleItems.length}
-                                                 scrollContainerRef={scrollContainerRef}
                                                  { ...i } />)
           }
         </div>
