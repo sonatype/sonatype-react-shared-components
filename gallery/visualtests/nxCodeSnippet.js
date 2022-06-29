@@ -20,11 +20,13 @@ describe('NxCodeSnippet', function() {
   } = setupBrowser('#/pages/Code%20Snippet');
 
   const multipleSnippetSelector = '#nx-code-snippet-simple-example .gallery-example-live',
+      sizingSnippetSelector = '#nx-code-snippet-custom-sizing-example .gallery-example-live',
       complexSnippetExample = '#complex-nx-code-snippet',
       textareaSelector = `${complexSnippetExample} textarea`,
       copyBtnSelector = `${complexSnippetExample} .nx-btn`;
 
   it('looks right including distance to other components', simpleTest(multipleSnippetSelector));
+  it('looks right', simpleTest(sizingSnippetSelector));
   it('looks no different when the text area is hovered', hoverTest(complexSnippetExample, textareaSelector));
   it('has a blue border around the text area when it is focused', focusTest(complexSnippetExample, textareaSelector));
   it('has a blue border around the text area when it is focused and hovered',
