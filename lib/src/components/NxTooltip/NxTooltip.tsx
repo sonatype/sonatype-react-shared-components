@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { createContext, FunctionComponent, useContext, useEffect, useState } from 'react';
+import React, { createContext, FunctionComponent, useContext, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
 
@@ -59,10 +59,17 @@ const NxTooltip: FunctionComponent<Props> =
 
       const [initialized, setInitialized] = useState(false),
           tooltipClassName = classnames('nx-tooltip', className),
-          parentModal = useContext(NxModalContext);
+          parentModal = useContext(NxModalContext),
+          isUnmounted = useRef(false);
 
       useEffect(function() {
-        batch(() => { setInitialized(true); });
+        batch(() => {
+          if (!isUnmounted) {
+            setInitialized(true);
+          }
+        });
+
+        return () => { isUnmounted.current = true; };
       }, []);
 
       return (
