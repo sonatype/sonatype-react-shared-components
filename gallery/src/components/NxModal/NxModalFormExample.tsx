@@ -16,7 +16,9 @@ import {
   NxFieldset,
   NxCheckbox,
   useToggle,
-  NxStatefulForm
+  NxStatefulForm,
+  NxForm,
+  NxTile
 } from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
@@ -70,6 +72,9 @@ export default function NxModalFormExample() {
                 <span>NxModal header with form content</span>
               </h2>
             </header>
+            <NxTile.HeaderSubtitle>
+              <NxForm.RequiredFieldNotice />
+            </NxTile.HeaderSubtitle>
             <div className="nx-modal-content">
               <NxFormGroup label="Username" isRequired>
                 <NxTextInput aria-required={true}

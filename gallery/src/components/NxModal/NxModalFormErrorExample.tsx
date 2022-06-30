@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 
-import { NxModal, NxFontAwesomeIcon, NxTextInput, NxButton, nxTextInputStateHelpers, NxFormGroup, NxStatefulForm }
+import { NxModal, NxFontAwesomeIcon, NxTextInput, NxButton, nxTextInputStateHelpers, NxFormGroup, NxStatefulForm, NxForm, NxTile }
   from '@sonatype/react-shared-components';
 import { faAngry } from '@fortawesome/free-solid-svg-icons';
 
@@ -39,6 +39,9 @@ export default function NxModalFormErrorExample() {
                 <span>Example NxModal header with form content and error styling</span>
               </h2>
             </header>
+            <NxTile.HeaderSubtitle>
+              <NxForm.RequiredFieldNotice />
+            </NxTile.HeaderSubtitle>
             <div className="nx-modal-content">
               <NxFormGroup label="Username" isRequired>
                 <NxTextInput { ...textFieldState } onChange={onChange} aria-required={true} />
