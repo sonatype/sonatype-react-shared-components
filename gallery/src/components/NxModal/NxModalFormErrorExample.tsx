@@ -6,7 +6,15 @@
  */
 import React, { useState } from 'react';
 
-import { NxModal, NxFontAwesomeIcon, NxTextInput, NxButton, nxTextInputStateHelpers, NxFormGroup, NxStatefulForm, NxForm, NxTile }
+import { NxModal,
+  NxFontAwesomeIcon,
+  NxTextInput,
+  NxButton,
+  nxTextInputStateHelpers,
+  NxFormGroup,
+  NxStatefulForm,
+  NxForm,
+  NxTile }
   from '@sonatype/react-shared-components';
 import { faAngry } from '@fortawesome/free-solid-svg-icons';
 
