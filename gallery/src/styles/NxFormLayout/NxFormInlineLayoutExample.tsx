@@ -19,7 +19,6 @@ import {
   hasValidationErrors,
   combineValidationErrors
 } from '@sonatype/react-shared-components';
-import { } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
