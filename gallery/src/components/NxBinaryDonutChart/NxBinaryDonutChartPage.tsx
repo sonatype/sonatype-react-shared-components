@@ -13,19 +13,35 @@ import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample
 import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
 import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
 import NxBinaryDonutChartBackgroundColorExample from './NxBinaryDonutChartBackgroundColorExample';
+import NxBinaryDonutChartCustomExample from './NxBinaryDonutChartCustomExample';
 
 import './NxBinaryDonutChartBackgroundColorExample.scss';
+import './NxBinaryDonutChartCustomExample.scss';
 
 const nxBinaryDonutChartMinimalExampleCode = require('./NxBinaryDonutChartMinimalExample?raw');
 const nxBinaryDonutChartNoHoleExample = require('./NxBinaryDonutChartNoHoleExample?raw');
 const nxBinaryDonutChartLargeHoleExample = require('./NxBinaryDonutChartLargeHoleExample?raw');
 const nxBinaryDonutChartBackgroundColorExample = require('./NxBinaryDonutChartBackgroundColorExample?raw');
+const nxBinaryDonutChartCustomExample = require('./NxBinaryDonutChartCustomExample?raw');
+const nxBinaryDonutChartCustomExampleScss = require('./NxBinaryDonutChartCustomExample.scss?raw');
 
 const NxBinaryDonutChartPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
         <NxCode>NxBinaryDonutChart</NxCode> represents a binary donut chart.
+      </NxP>
+      <NxP>
+        The <NxCode>NxBinaryDonutChart</NxCode> accepts a default height of 30px (without padding or margin), which
+        can be modified by applying a new class to the element with the height property and preferred value defined.
+      </NxP>
+      <NxP>
+        By default the CSS display property of <NxCode>NxBinaryDonutChart</NxCode> is set to a value of
+        inline. <NxCode>display:inline</NxCode> will not generate any line breaks to maintain the flow of the
+        container, and situate preceding / proceeding elements of the same display property next to one another. The
+        chart's display property can be overridden to block, which will generate a line break both before and after
+        the element to create vertical stacking within the parent container. This can be done by applying a new class
+        to the element with the display property's value set to block.
       </NxP>
       <NxTable>
         <NxTable.Head>
@@ -118,6 +134,15 @@ const NxBinaryDonutChartPage = () =>
       Examples of <NxCode>NxBinaryDonutChart</NxCode>s on containers that have background colors which match parts
       of the chart. This example shows that the chart is still discernable in this case due to the white borders
       on the inside and outside of the donut.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with Custom CSS Properties"
+                        id="nx-binary-donut-chart-custom-examples"
+                        codeExamples={[nxBinaryDonutChartCustomExample,
+                          { content: nxBinaryDonutChartCustomExampleScss, language: 'scss' }]}
+                        liveExample={NxBinaryDonutChartCustomExample}>
+      An example of <NxCode>NxBinaryDonutChart</NxCode>s with customized CSS properties. The example shows
+      the display property set to block, the height set to 45px, and a custom color.
     </GalleryExampleTile>
   </>;
 

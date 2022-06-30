@@ -20,13 +20,13 @@ const NxTreeViewPage = () =>
       <NxWarningAlert>
         <NxCode>NxTreeView</NxCode> has been renamed to <NxCode>NxCollapsibleItems</NxCode>
         and is now deprecated and will be removed in the future.
-        Please use <NxTextLink href="#/pages/NxCollapsibleItems">NxCollapsibleItems</NxTextLink> instead.
+        Please use <NxTextLink href="#/pages/Collapsible%20Items">NxCollapsibleItems</NxTextLink> instead.
       </NxWarningAlert>
 
       <NxP>
         A set of default styles for an expandable series of items. Note that the name of this component is
         a misnomer as it no longer supports tree structures.
-        For an actual tree component, see <NxTextLink href="#/pages/NxTree"><NxCode>NxTree</NxCode></NxTextLink>.
+        For an actual tree component, see <NxTextLink href="#/pages/Tree"><NxCode>NxTree</NxCode></NxTextLink>.
       </NxP>
     </GalleryDescriptionTile>
   </>;

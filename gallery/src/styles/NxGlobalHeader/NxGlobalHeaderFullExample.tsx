@@ -34,7 +34,7 @@ export default function NxGlobalHeaderFullExample() {
   return (
     <>
       <header className="nx-global-header">
-        <NxBackButton href="#/pages/nx-global-header" targetPageTitle="Documentation" />
+        <NxBackButton href="#/pages/Global%20Header" targetPageTitle="Documentation" />
         <div className="nx-global-header__actions">
           <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
           <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
@@ -49,7 +49,7 @@ export default function NxGlobalHeaderFullExample() {
                                logoAltText="RSC Plaid Villain"
                                logoLink="#">
         <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageSidebar tabIndex={0}>
