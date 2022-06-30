@@ -23,7 +23,6 @@ export interface PopOverContextType {
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   variant?: NX_POP_OVER_VARIANT_TYPE | null;
-  isOpen: boolean;
   onClose: () => void;
   children?: ReactNode;
 }

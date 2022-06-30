@@ -15,9 +15,11 @@ export default function NxPopOverExample() {
   return (
     <div className="gallery-pop-over-example">
       <NxButton onClick={() => setShowPopOver(true)}>Open Pop Over</NxButton>
-      <NxPopOver isOpen={showPopOver} onClose={popOverCloseHandler}>
-        <NxPopOverHeader title="Example Pop Over"/>
-      </NxPopOver>
+      {showPopOver && (
+        <NxPopOver onClose={popOverCloseHandler}>
+          <NxPopOverHeader title="Example Pop Over"/>
+        </NxPopOver>
+      )}
     </div>
   );
 }

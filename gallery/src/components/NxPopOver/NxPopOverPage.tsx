@@ -20,6 +20,8 @@ import NxPopOverExample from './NxPopOverExample';
 
 const NxPopOverSourceCode = require('./NxPopOverExample?raw');
 
+import './NxPopOverExample.scss';
+
 export default function NxPopOverPage() {
   return (
     <>

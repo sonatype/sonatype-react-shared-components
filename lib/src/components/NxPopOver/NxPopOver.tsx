@@ -39,16 +39,10 @@ export const NxPopOverHeader = (props: PopOverHeaderProps) => {
 
 const NxPopOver = (props: Props) => {
   const {
-    isOpen,
     onClose,
     children,
     ...otherProps
   } = props;
-
-  if (!isOpen) {
-    return null;
-  }
-
   const popOverContextValue = {
     onClose
   };
