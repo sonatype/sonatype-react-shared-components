@@ -64,7 +64,7 @@ const NxFormLayoutPage = () =>
                 Descendant of <NxCode>NxForm</NxCode>, potentially wrapped in <NxCode>NxFormRow</NxCode>
               </NxTable.Cell>
               <NxTable.Cell>
-                Wrapper for an individual form control which gies it a label and optional sublabel.
+                Wrapper for an individual form control which gives it a label and optional sublabel.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
