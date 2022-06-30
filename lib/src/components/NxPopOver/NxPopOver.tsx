@@ -9,6 +9,12 @@ import React from 'react';
 import classnames from 'classnames';
 
 //import withClass from '../../util/withClass';
+
+// click outside behaviour
+// close icon on the button
+// use NxCloseButton
+// Fix spacings on header
+
 import {
   Props,
   PopOverContextType,
