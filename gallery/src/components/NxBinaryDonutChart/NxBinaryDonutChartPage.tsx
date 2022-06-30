@@ -75,6 +75,14 @@ const NxBinaryDonutChartPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>maxVal</NxTable.Cell>
+            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Defines the maximum values for the binary donut chart. The default value is set to 100.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>SVG <NxCode>&lt;svg&gt;</NxCode> Attributes</NxTable.Cell>
             <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/SVG/Element/svg">
@@ -135,7 +143,8 @@ const NxBinaryDonutChartPage = () =>
                         id="nx-binary-donut-chart-no-hole-example"
                         codeExamples={nxBinaryDonutChartNoHoleExample}
                         liveExample={NxBinaryDonutChartNoHoleExample}>
-      An example of a <NxCode>NxBinaryDonutChart</NxCode> without a hole i.e. a pie chart.
+      An example of a <NxCode>NxBinaryDonutChart</NxCode> without a hole i.e. a pie chart. This chart demonstrates
+      the usage of <NxCode>maxVal</NxCode> to define the maximum values.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with a Large Hole"

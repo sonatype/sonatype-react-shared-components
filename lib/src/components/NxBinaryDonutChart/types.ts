@@ -11,9 +11,11 @@ import { requiredPercentNumber, optionalPercentNumber } from '../../util/customP
 export interface Props extends SVGAttributes<SVGSVGElement> {
   percent: number;
   innerRadiusPercent?: number | null;
+  maxVal?: number | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   percent: requiredPercentNumber,
-  innerRadiusPercent: optionalPercentNumber
+  innerRadiusPercent: optionalPercentNumber,
+  maxVal: PropTypes.number
 };
