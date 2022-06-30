@@ -13,6 +13,10 @@
   display: inline-block;
   position: relative;
   width: nx-dropdown-variables.$dropdown-width;
+
+  .nx-icon:not(.nx-threat-indicator) {
+    color: var(--nx-swatch-grey-05);
+  }
 }
 
 .nx-dropdown--short {
@@ -137,16 +141,11 @@
   }
 }
 
-.nx-dropdown-icon:not(.nx-threat-indicator) {
-  color: var(--nx-swatch-grey-05);
-}
-
 .nx-dropdown--divider {
   background-color: var(--nx-swatch-grey-70);
   height: 1px;
   margin: 9px 1px;
 }
-
 
 .nx-dropdown-button-content {
   @include nx-text-helpers.truncate-ellipsis;
