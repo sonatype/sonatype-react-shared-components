@@ -108,6 +108,15 @@ const NxRadioPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>isRequired</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Sets whether the input should display the optional flag – the flag is present by default and
+              setting <NxCode>isRequired</NxCode> to true removes the flag.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>HTML <NxCode>&lt;label&gt;</NxCode> Attributes</NxTable.Cell>
             <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/label">
@@ -157,6 +166,7 @@ const NxRadioPage = () =>
                         liveExample={NxRadioDisabledExample}>
       This example shows radios that are disabled.
       Disabled radios can either be checked or unchecked.
+      The example also demonstrates the use of the isRequired flag to remove the "Optional" indicator.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Radio label does not wrap"
