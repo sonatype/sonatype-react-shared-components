@@ -231,6 +231,17 @@ const NxFormPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>isRequired</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
+            <NxTable.Cell>
+              Sets whether the input should display the optional flag – the flag is present by default and
+              setting <NxCode>isRequired</NxCode> to true removes the flag. Also sets
+              the <NxCode>aria-required</NxCode> prop on the child if not already present.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>HTML <NxCode>&lt;form&gt;</NxCode> Attributes</NxTable.Cell>
             <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/form">
@@ -292,7 +303,8 @@ const NxFormPage = () =>
                         liveExample={NxFormExample}>
       This example shows an asynchronously loading NxForm. The example is contrived such that the
       form fails to load the first time, but does load (after a brief wait) upon a second attempt.
-      Additionally, the first attempt to submit the form fails, while the retry succeeds.
+      Additionally, the first attempt to submit the form fails, while the retry succeeds. The example also{' '}
+      demonstrates the use of the isRequired flag to remove the "Optional" indicator.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Customized Example"

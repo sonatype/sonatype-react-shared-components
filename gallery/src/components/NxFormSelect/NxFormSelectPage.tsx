@@ -53,6 +53,17 @@ const NxFormSelectPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>isRequired</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                Sets whether the input should display the optional flag – the flag is present by default and
+                setting <NxCode>isRequired</NxCode> to true removes the flag. Also sets
+                the <NxCode>aria-required</NxCode> prop on the child if not already present.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;select&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/select">
@@ -155,21 +166,23 @@ const NxFormSelectPage = () =>
                         codeExamples={nxFormSelectExampleSourceCode}
                         liveExample={NxFormSelectExample}>
       Demonstrates an <NxCode>NxFormSelect</NxCode> using the <NxCode>useNxFormSelectState</NxCode> hook to manage
-      its state.
+      its state.The example also demonstrates the use of the isRequired flag to remove the "Optional" indicator.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Form Select Overflow Example"
                         id="nx-form-select-overflow-example"
                         codeExamples={nxFormSelectOverflowExampleSourceCode}
                         liveExample={NxFormSelectOverflowExample}>
-      Demonstrates an <NxCode>NxFormSelect</NxCode> with long option text that overflows.
+      Demonstrates an <NxCode>NxFormSelect</NxCode> with long option text that overflows. The example also{' '}
+      demonstrates the use of the isRequired flag to remove the "Optional" indicator.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Form Select Widths Examples"
                         id="nx-form-select-widths-examples"
                         codeExamples={nxFormSelectWidthsExampleSourceCode}
                         liveExample={NxFormSelectWidthsExample}>
-      Demonstrates <NxCode>NxFormSelect</NxCode>'s with with the short and long variants applied.
+      Demonstrates <NxCode>NxFormSelect</NxCode>'s with with the short and long variants applied. The example also{' '}
+      demonstrates the use of the isRequired flag to remove the "Optional" indicator.
     </GalleryExampleTile>
   </>;
 
