@@ -5,8 +5,37 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
- .nx-pop-over {
+.nx-pop-over {
+  box-sizing: border-box;
+  height: 100%;
+  border-left: 1px solid black;
   position: absolute;
+  padding: var(--nx-spacing-6x);
   right: 0;
   top: 0;
- }
+  width: 540px;
+  background-color: white;
+}
+
+.nx-pop-over-header {
+  display: grid;
+  grid-template: "title close"
+                 "subtitle subtitle"
+                 "paragraph paragraph" / auto min-content;
+
+  &__close {
+    grid-area: close;
+  }
+
+  &__title {
+    grid-area: title;
+  }
+
+  &__subtitle {
+    grid-area: subtitle;
+  }
+
+  &__paragraph {
+    grid-area: paragraph;
+  }
+}
