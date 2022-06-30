@@ -7,5 +7,12 @@
 
 .nx-form__required-field-notice {
     display: block;
-    margin-bottom: var(--nx-spacing-8x);
+    margin-bottom: var(--nx-spacing-6x);
+}
+
+.nx-modal {
+    .nx-form__required-field-notice {
+        margin-top: var(--nx-spacing-2x);
+        margin-bottom: 0;
+    }
 }
