@@ -137,7 +137,7 @@
   }
 }
 
-.nx-dropdown-icon {
+.nx-dropdown-icon:not(.nx-threat-indicator) {
   color: var(--nx-swatch-grey-05);
 }
 
