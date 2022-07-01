@@ -100,9 +100,9 @@ const NxBinaryDonutChartPage = () =>
       <NxH3>Accessibility</NxH3>
       <NxP>
         <NxCode>NxBinaryDonutChart</NxCode> uses the <NxCode>meter</NxCode> role and must have an
-        accessible name. If the meter has a visible label, it is referenced by <NxCode>aria-labelledby</NxCode>
-        {' '} attribute. Otherwise, the element with role meter must have a label provided by <NxCode>aria-label</NxCode>
-        {' '} attribute.
+        accessible name. If the meter has a visible label, it should be referenced by 
+        {' '} <NxCode>aria-labelledby</NxCode> attribute. Otherwise, the element with role meter 
+        must have a label provided by <NxCode>aria-label</NxCode> attribute.
       </NxP>
       <NxTable>
         <NxTable.Head>
@@ -117,7 +117,7 @@ const NxBinaryDonutChartPage = () =>
             <NxTable.Cell>
               When the <NxCode>aria-labelledby</NxCode> attribute is used an ID is applied to the
               HTML element that will be providing the label information, the ID is referenced by
-              <NxCode>aria-labelledby</NxCode>.
+              {' '} <NxCode>aria-labelledby</NxCode>.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
