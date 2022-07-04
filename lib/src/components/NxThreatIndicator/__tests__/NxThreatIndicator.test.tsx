@@ -106,4 +106,10 @@ describe('NxThreatIndicator', function() {
 
     expect(icon).toHaveProp('role', 'presentation');
   });
+
+  it('should set aria-label to undefined when presentational prop is true', function() {
+    const icon = getShallowComponent({ presentational: true }).find(NxFontAwesomeIcon);
+
+    expect(icon).toHaveProp('aria-label', undefined);
+  });
 });

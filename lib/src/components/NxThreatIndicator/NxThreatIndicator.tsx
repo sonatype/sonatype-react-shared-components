@@ -31,7 +31,7 @@ const NxThreatIndicator: FunctionComponent<Props> =
 
     const icon = (
       <NxFontAwesomeIcon aria-hidden={false}
-                         aria-label={label}
+                         aria-label={presentational ? undefined : label}
                          className={className}
                          icon={faCircle}
                          role={presentational ? 'presentation' : undefined} />
