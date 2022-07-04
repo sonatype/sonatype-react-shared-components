@@ -15,7 +15,7 @@ import NxCopyToClipboardComplexExample from './NxCopyToClipboardComplexExample';
 const nxCopyToClipabordCode = require('./NxCopyToClipboardExample?raw'),
     nxCopyToClipboardComplexCode = require('./NxCopyToClipboardComplexExample?raw');
 
-export default function NxCodeSnippetPage() {
+export default function NxCopyToClipboardPage() {
   return (
     <>
       <GalleryDescriptionTile>
