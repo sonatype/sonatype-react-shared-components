@@ -24,8 +24,8 @@ export default function NxCodeSnippetPage() {
       </NxWarningAlert>
 
       <NxP>
-        A read-only textarea containing specified text content with a button to enable the user to copy that text content
-        {' '}to the clipboard.
+        A read-only textarea containing specified text content with a button to enable the user to copy that text{' '}
+        content to the clipboard.
       </NxP>
     </GalleryDescriptionTile>
   );
