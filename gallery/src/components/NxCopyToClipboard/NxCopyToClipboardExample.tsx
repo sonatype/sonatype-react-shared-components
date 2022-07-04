@@ -7,7 +7,7 @@
 import React from 'react';
 import { NxCodeSnippet } from '@sonatype/react-shared-components';
 
-export default function NxCodeSnippetExample() {
+export default function NxCopyToClipboardExample() {
   return (
     <>
       <NxCodeSnippet label="RSC Github URL"

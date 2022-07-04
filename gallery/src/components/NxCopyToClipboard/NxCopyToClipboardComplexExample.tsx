@@ -31,7 +31,7 @@ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
             _-_-_-_
 }`;
 
-export default function NxCodeSnippetExample() {
+export default function NxCopyToClipboardExample() {
   return <NxCodeSnippet label="IOCCC Code"
                         id="complex-nx-code-snippet"
                         sublabel="The following is a winner of the International Obfuscated C Code Competition"

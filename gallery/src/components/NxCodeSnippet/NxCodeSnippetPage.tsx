@@ -7,13 +7,13 @@
 import React from 'react';
 import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-components';
 
-import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
+import {GalleryDescriptionTile} from '../../gallery-components/GalleryTiles';
 
-import NxCodeSnippetExample from './NxCodeSnippetExample';
-import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
+// import NxCodeSnippetExample from './NxCodeSnippetExample';
+// import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
 
-const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
-    nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw');
+// const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
+//     nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw');
 
 export default function NxCodeSnippetPage() {
   return (
@@ -104,7 +104,7 @@ export default function NxCodeSnippetPage() {
         </NxTable>
       </GalleryDescriptionTile>
 
-      <GalleryExampleTile title="Simple Example"
+      {/* <GalleryExampleTile title="Simple Example"
                           id="nx-code-snippet-simple-example"
                           liveExample={NxCodeSnippetExample}
                           codeExamples={nxCodeSnippetCode}>
@@ -119,7 +119,7 @@ export default function NxCodeSnippetPage() {
         An <NxCode>NxCodeSnippet</NxCode> demonstrating optional
         props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
         and <NxCode>inputProps</NxCode>
-      </GalleryExampleTile>
+      </GalleryExampleTile> */}
     </>
   );
 }

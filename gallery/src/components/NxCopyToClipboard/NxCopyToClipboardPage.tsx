@@ -9,11 +9,11 @@ import { NxTable, NxTextLink, NxP, NxCode } from '@sonatype/react-shared-compone
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-import NxCodeSnippetExample from './NxCodeSnippetExample';
-import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
+import NxCopyToClipboardExample from './NxCopyToClipboardExample';
+import NxCopyToClipboardComplexExample from './NxCopyToClipboardComplexExample';
 
-const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
-    nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw');
+const nxCopyToClipabordCode = require('./NxCopyToClipboardExample?raw'),
+    nxCopyToClipboardComplexCode = require('./NxCopyToClipboardComplexExample?raw');
 
 export default function NxCodeSnippetPage() {
   return (
@@ -106,16 +106,16 @@ export default function NxCodeSnippetPage() {
 
       <GalleryExampleTile title="Simple Example"
                           id="nx-code-snippet-simple-example"
-                          liveExample={NxCodeSnippetExample}
-                          codeExamples={nxCodeSnippetCode}>
+                          liveExample={NxCopyToClipboardExample}
+                          codeExamples={nxCopyToClipabordCode}>
         Two <NxCode>NxCodeSnippet</NxCode>s with minimal props: just some content which can be
         copied to the clipboard.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="More Complex Example"
                           id="nx-code-snippet-complex-example"
-                          liveExample={NxCodeSnippetComplexExample}
-                          codeExamples={nxCodeSnippetComplexCode}>
+                          liveExample={NxCopyToClipboardComplexExample}
+                          codeExamples={nxCopyToClipboardComplexCode}>
         An <NxCode>NxCodeSnippet</NxCode> demonstrating optional
         props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
         and <NxCode>inputProps</NxCode>
