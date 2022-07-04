@@ -20,7 +20,7 @@ export default function NxCopyToClipboardPage() {
     <>
       <GalleryDescriptionTile>
         <NxP>
-          <NxCode>NxCodeSnippet</NxCode> creates a read-only text area containing the specified text
+          <NxCode>NxCopyToClipboard</NxCode> creates a read-only text area containing the specified text
           content, along with a button enabling the user to easily copy that text content to the clipboard.
         </NxP>
         <NxTable>
@@ -83,7 +83,7 @@ export default function NxCopyToClipboardPage() {
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Props to apply to the textarea within the <NxCode>NxCodeSnippet</NxCode>
+                Props to apply to the textarea within the <NxCode>NxCopyToClipboard</NxCode>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -96,7 +96,7 @@ export default function NxCopyToClipboardPage() {
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>N/A</NxTable.Cell>
               <NxTable.Cell>
-                <NxCode>NxCodeSnippet</NxCode> supports any HTML attribute that's normally
+                <NxCode>NxCopyToClipboard</NxCode> supports any HTML attribute that's normally
                 supported by <NxCode>&lt;div&gt;</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
@@ -108,7 +108,7 @@ export default function NxCopyToClipboardPage() {
                           id="nx-code-snippet-simple-example"
                           liveExample={NxCopyToClipboardExample}
                           codeExamples={nxCopyToClipabordCode}>
-        Two <NxCode>NxCodeSnippet</NxCode>s with minimal props: just some content which can be
+        Two <NxCode>NxCopyToClipboard</NxCode>s with minimal props: just some content which can be
         copied to the clipboard.
       </GalleryExampleTile>
 
@@ -116,7 +116,7 @@ export default function NxCopyToClipboardPage() {
                           id="nx-code-snippet-complex-example"
                           liveExample={NxCopyToClipboardComplexExample}
                           codeExamples={nxCopyToClipboardComplexCode}>
-        An <NxCode>NxCodeSnippet</NxCode> demonstrating optional
+        An <NxCode>NxCopyToClipboard</NxCode> demonstrating optional
         props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
         and <NxCode>inputProps</NxCode>
       </GalleryExampleTile>
