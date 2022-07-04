@@ -73,7 +73,12 @@ const NxThreatIndicatorPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              When this is set to true the tooltip will be hidden and the icon's role will be set to "presentation"
+              When this is true, the tooltip will be hidden, aria-label will not be set,
+              and the icon's role will be set to "presentation".
+              This should be set to true when <NxCode>NxThreatIndicator</NxCode> is used alongside
+              visible text that repeats its meaning.
+              For example, In the case of Critical <NxCode>NxThreatIndicator</NxCode> with "Critical"
+              printed next to it, we don't want the screenreader to read the <NxCode>NxThreatIndicator</NxCode> tooltip.
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
