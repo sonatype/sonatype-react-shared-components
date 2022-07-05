@@ -268,8 +268,8 @@ const NxDropdownPage = () =>
               <NxTable.Cell>
                 This class is available for icons which specify their own color that{' '}
                 <NxCode>NxDropdown</NxCode> should not override.
-                <NxCode>NxThreatIndicator</NxCode> should also use this class when nested{' '}
-                inside <NxCode>NxDropdown</NxCode>.
+                <NxCode>NxThreatIndicator</NxCode> should also use this class when used{' '}
+                with <NxCode>NxDropdown</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
