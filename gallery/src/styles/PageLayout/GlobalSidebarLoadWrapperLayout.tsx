@@ -49,7 +49,7 @@ export default function GlobalSidebarLoadWrapperLayout() {
         <NxGlobalSidebarNavigation>
           <NxGlobalSidebarNavigationLink icon={faLink}
                                          text="Page Layout"
-                                         href="#/pages/Page%20Layout"/>
+                                         href="#/pages/Page%20Layout%20Examples"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxLoadWrapper loading={loading} retryHandler={() => { setError(null); }} error={error}>

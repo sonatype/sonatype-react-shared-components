@@ -38,12 +38,12 @@ export default function GlobalSidebarHeaderSystemNoticeSidebarLayout() {
         <NxGlobalSidebarNavigation>
           <NxGlobalSidebarNavigationLink icon={faLink}
                                          text="Page Layout"
-                                         href="#/pages/Page%20Layout"/>
+                                         href="#/pages/Page%20Layout%20Examples"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxSystemNotice>This is a System Notice</NxSystemNotice>
       <NxGlobalHeader>
-        <NxBackButton href="#/pages/Page%20Layout" />
+        <NxBackButton href="#/pages/Page%20Layout%20Examples" />
       </NxGlobalHeader>
       <NxPageSidebar tabIndex={0}>
         <NxP>

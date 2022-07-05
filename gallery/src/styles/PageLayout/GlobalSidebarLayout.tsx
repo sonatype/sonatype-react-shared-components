@@ -33,7 +33,7 @@ export default function GlobalSidebarLayout() {
         <NxGlobalSidebarNavigation>
           <NxGlobalSidebarNavigationLink icon={faLink}
                                          text="Page Layout"
-                                         href="#/pages/Page%20Layout"/>
+                                         href="#/pages/Page%20Layout%20Examples"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageMain>
