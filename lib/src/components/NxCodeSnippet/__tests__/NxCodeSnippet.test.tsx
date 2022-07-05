@@ -67,8 +67,8 @@ describe('NxCodeSnippet', function() {
     expect(getShallow().find(NxTextInput)).toHaveProp('readOnly', true);
   });
 
-  it('adds rows prop and inputProps to the NxTextInput', function() {
-    const textarea = getShallow({ rows: 1, inputProps: { id: 'foo' } }).find(NxTextInput);
+  it('adds inputProps to the NxTextInput', function() {
+    const textarea = getShallow({ inputProps: { rows: 1, id: 'foo' } }).find(NxTextInput);
 
     expect(textarea).toHaveProp('id', 'foo');
     expect(textarea).toHaveProp('rows', 1);
