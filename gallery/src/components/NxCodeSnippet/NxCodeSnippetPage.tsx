@@ -123,11 +123,11 @@ export default function NxCodeSnippetPage() {
         copied to the clipboard.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="Custom Sizing Example"
+      <GalleryExampleTile title="Single-Line Example"
                           id="nx-code-snippet-custom-sizing-example"
                           liveExample={NxCodeSnippetSizingExample}
                           codeExamples={nxCodeSnippetSizingCode}>
-        An <NxCode>NxCodeSnippet</NxCode> demonstrating custom sizing with the optional <NxCode>rows</NxCode> prop.
+        An <NxCode>NxCodeSnippet</NxCode> demonstrating a single-line textarea with the optional <NxCode>rows</NxCode> prop.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="More Complex Example"
