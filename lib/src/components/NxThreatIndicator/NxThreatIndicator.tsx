@@ -30,8 +30,7 @@ const NxThreatIndicator: FunctionComponent<Props> =
         label = `threat level ${category}`;
 
     const icon = (
-      <NxFontAwesomeIcon aria-hidden={false}
-                         aria-label={presentational ? undefined : label}
+      <NxFontAwesomeIcon aria-label={presentational ? undefined : label}
                          className={className}
                          icon={faCircle}
                          role={presentational ? 'presentation' : undefined} />
