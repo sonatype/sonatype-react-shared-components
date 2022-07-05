@@ -46,7 +46,8 @@
   }
 
   &--zero {
-    visibility: hidden;
+    background-color: var(--nx-color-threat-zero);
+    color: var(--nx-swatch-grey-40);
   }
 }
 
