@@ -25,8 +25,14 @@ describe('NxCodeSnippet', function() {
       textareaSelector = `${complexSnippetExample} textarea`,
       copyBtnSelector = `${complexSnippetExample} .nx-btn`;
 
-  it('looks right including distance to other components', simpleTest(multipleSnippetSelector));
-  it('looks right', simpleTest(sizingSnippetSelector));
+  describe('NxCodeSnippet', function(){
+    it('looks right including distance to other components', simpleTest(multipleSnippetSelector));
+    
+    describe('with rows=1', function(){
+      it('renders with a single-line textarea', simpleTest(sizingSnippetSelector));
+    });
+  });
+
   it('looks no different when the text area is hovered', hoverTest(complexSnippetExample, textareaSelector));
   it('has a blue border around the text area when it is focused', focusTest(complexSnippetExample, textareaSelector));
   it('has a blue border around the text area when it is focused and hovered',
