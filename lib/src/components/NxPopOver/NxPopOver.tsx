@@ -4,15 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import classnames from 'classnames';
 
 //import withClass from '../../util/withClass';
-
 // click outside behaviour
-// close icon on the button
-// use NxCloseButton
 // Fix spacings on header
 
 import {
@@ -73,6 +70,21 @@ export const NxPopOverFooter = (props: PopOverFooterProps) => {
   );
 };
 
+const useClickOutside = <T extends HTMLElement>(ref: React.RefObject<T>, fn: (e: MouseEvent) => void) => {
+  useEffect(() => {
+    const listener = (event: MouseEvent) => {
+      if (!ref.current || ref.current.contains(event.target as Node)) {
+        return;
+      }
+      fn(event);
+    };
+    document.addEventListener('click', listener);
+    return () => {
+      document.removeEventListener('click', listener);
+    };
+  }, [ref, fn]);
+};
+
 const NxPopOver = (props: Props) => {
   const {
     className,
@@ -81,6 +93,8 @@ const NxPopOver = (props: Props) => {
     ...otherProps
   } = props;
 
+  const asideRef = useRef<HTMLElement>(null);
+  useClickOutside(asideRef, () => onClose());
   const popOverContextValue = {
     onClose
   };
@@ -89,7 +103,7 @@ const NxPopOver = (props: Props) => {
 
   return (
     <PopOverContext.Provider value={popOverContextValue}>
-      <aside className={classes} {...otherProps}>{children}</aside>
+      <aside ref={asideRef} className={classes} {...otherProps}>{children}</aside>
     </PopOverContext.Provider>
   );
 };
