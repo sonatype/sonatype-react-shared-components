@@ -127,7 +127,8 @@ export default function NxCodeSnippetPage() {
                           id="nx-code-snippet-custom-sizing-example"
                           liveExample={NxCodeSnippetSizingExample}
                           codeExamples={nxCodeSnippetSizingCode}>
-        An <NxCode>NxCodeSnippet</NxCode> demonstrating a single-line textarea with the optional <NxCode>rows</NxCode> prop.
+        An <NxCode>NxCodeSnippet</NxCode> demonstrating a single-line textarea with the optional
+        {' '}<NxCode>rows</NxCode> prop.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="More Complex Example"
