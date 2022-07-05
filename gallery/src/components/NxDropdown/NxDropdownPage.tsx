@@ -260,6 +260,18 @@ const NxDropdownPage = () =>
                 any <NxCode>.nx-dropdown-right-button</NxCode>s.
               </NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-dropdown__colored-icon</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Allow for colored icons not to be overriden by <NxCode>NxDropdown</NxCode>.
+              </NxTable.Cell>
+              <NxTable.Cell>
+                This class is available for icons which specify their own color that{' '}
+                <NxCode>NxDropdown</NxCode> should not override.
+                <NxCode>NxThreatIndicator</NxCode> should also use this class when nested{' '}
+                inside <NxCode>NxDropdown</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
@@ -313,6 +325,8 @@ const NxDropdownPage = () =>
                         liveExample={NxDropdownWithNxThreatIndicatorExample}
                         codeExamples={nxDropdownWithNxThreatIndicatorExampleCode}>
       An example of a dropdown with <NxCode>NxThreatIndicator</NxCode>.
+      Notice that <NxCode>NxThreatIndicator</NxCode> has <NxCode>nx-dropdown__colored-icon</NxCode>
+      applied to it, this is so the color is not overriden by <NxCode>NxDropdown</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with right-floating buttons"
