@@ -36,6 +36,6 @@ export default function NxCodeSnippetExample() {
                         id="complex-nx-code-snippet"
                         sublabel="The following is a winner of the International Obfuscated C Code Competition"
                         onCopyUsingBtn={() => alert('Copied using the button')}
-                        rows={20}
+                        inputProps={{rows: 20}}
                         content={snippet} />;
 }

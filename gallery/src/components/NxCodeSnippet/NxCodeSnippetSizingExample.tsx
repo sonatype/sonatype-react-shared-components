@@ -12,7 +12,7 @@ export default function NxCodeSnippetSizingExample() {
     <>
       <NxCodeSnippet label="RSC Github URL"
                      content="https://github.com/sonatype/sonatype-react-shared-components"
-                     rows={1} />
+                     inputProps={{rows: 1}} />
     </>
   );
 }
