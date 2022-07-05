@@ -25,6 +25,8 @@ import {
 
 import './NxPopOver.scss';
 
+import NxCloseButton from '../NxCloseButton/NxCloseButton';
+
 const PopOverContext = React.createContext<PopOverContextType>({
   onClose: () => {}
 });
@@ -37,9 +39,9 @@ export const NxPopOverHeader = (props: PopOverHeaderProps) => {
 
   return (
     <header className="nx-pop-over-header">
-      <button className="nx-pop-over-header__close" type="button" onClick={onClose}>
+      <NxCloseButton className="nx-pop-over-header__close" type="button" onClick={onClose}>
         Close
-      </button>
+      </NxCloseButton>
 
       <h2 className="nx-pop-over-header__title">
         {props.title}
