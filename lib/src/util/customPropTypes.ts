@@ -49,3 +49,21 @@ export const optionalPercentNumber: PropTypes.Validator<number> =
     }
     return requiredPercentNumberValidator(props, propName, componentName);
   };
+
+export const requiredValueNumber: PropTypes.Validator<number> =
+  function requiredValueNumberValidator(props: Props, propName: string, componentName: string): Error | null {
+    const value = props[propName];
+
+    if (props['maxVal']) {
+      const max = props['maxVal'];
+      if (typeof value === 'number' && value >= 0 && value <= max) {
+        return null;
+      }
+      const err = `${componentName}: prop "${propName}" must be a number between 0 and ${max} inclusive;
+      received ${value}`;
+      return new TypeError(err);
+    }
+    else {
+      return requiredPercentNumberValidator(props, propName, componentName);
+    }
+  };

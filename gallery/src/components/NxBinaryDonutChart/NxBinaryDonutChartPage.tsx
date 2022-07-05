@@ -54,12 +54,19 @@ const NxBinaryDonutChartPage = () =>
         </NxTable.Head>
         <NxTable.Body>
           <NxTable.Row>
-            <NxTable.Cell>percent</NxTable.Cell>
-            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>value</NxTable.Cell>
+            <NxTable.Cell>0 &le; number &le; <NxCode>maxVal</NxCode></NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
-              Percentage which this donut represents. E.g. when 0 the donut is empty, and as it increases towards 100
-              the amount of the donut which is filled in increases.
+              Defines current value for the binary donut chart. A number from 0 to <NxCode>maxVal</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>maxVal</NxTable.Cell>
+            <NxTable.Cell>number &gt; 0 and number &ge; <NxCode>value</NxCode></NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Defines the maximum value for the binary donut chart. The default value is set to 100.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -72,14 +79,6 @@ const NxBinaryDonutChartPage = () =>
               That is, when the component is rendered at its default 30px width, a value of 50 on this prop corresponds
               to 14px (<NxCode>((30px - (1px * 2)) * 50%)</NxCode>). That 14px is the radius of the inside of the actual
               donut value arc and background, with the inner border being 1px further inside.
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>maxVal</NxTable.Cell>
-            <NxTable.Cell>number</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Defines the maximum values for the binary donut chart. The default value is set to 100.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -100,8 +99,8 @@ const NxBinaryDonutChartPage = () =>
       <NxH3>Accessibility</NxH3>
       <NxP>
         <NxCode>NxBinaryDonutChart</NxCode> uses the <NxCode>meter</NxCode> role and must have an
-        accessible name. If the meter has a visible label, it should be referenced by 
-        {' '} <NxCode>aria-labelledby</NxCode> attribute. Otherwise, the element with role meter 
+        accessible name. If the meter has a visible label, it should be referenced by
+        {' '} <NxCode>aria-labelledby</NxCode> attribute. Otherwise, the element with role meter
         must have a label provided by <NxCode>aria-label</NxCode> attribute.
       </NxP>
       <NxTable>
@@ -144,7 +143,7 @@ const NxBinaryDonutChartPage = () =>
                         codeExamples={nxBinaryDonutChartNoHoleExample}
                         liveExample={NxBinaryDonutChartNoHoleExample}>
       An example of a <NxCode>NxBinaryDonutChart</NxCode> without a hole i.e. a pie chart. This chart demonstrates
-      the usage of <NxCode>maxVal</NxCode> to define the maximum values.
+      the usage of <NxCode>maxVal</NxCode> to define the maximum value.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with a Large Hole"

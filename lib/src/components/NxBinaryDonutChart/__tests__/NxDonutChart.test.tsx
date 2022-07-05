@@ -8,7 +8,7 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxBinaryDonutChart from '../NxBinaryDonutChart';
 
 describe('NxBinaryDonutChart', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxBinaryDonutChart, {percent: 0});
+  const getShallowComponent = enzymeUtils.getShallowComponent(NxBinaryDonutChart, {value: 0});
 
   it('sets the role to "meter"', function() {
     expect(getShallowComponent()).toHaveProp('role', 'meter');
@@ -18,18 +18,22 @@ describe('NxBinaryDonutChart', function() {
     expect(getShallowComponent()).toHaveProp('aria-valuemin', 0);
   });
 
-  it('sets the aria-valuemax to 100', function() {
+  it('sets the aria-valuemax to 100 when maxVal is not specified', function() {
     expect(getShallowComponent()).toHaveProp('aria-valuemax', 100);
   });
 
-  it('sets the aria-valuenow to percent value', function() {
-    expect(getShallowComponent({percent: 30})).toHaveProp('aria-valuenow', 30);
+  it('sets the aria-valuemax to maxVal when maxVal is specified', function() {
+    expect(getShallowComponent({maxVal: 200})).toHaveProp('aria-valuemax', 200);
+  });
+
+  it('sets the aria-valuenow to value', function() {
+    expect(getShallowComponent({value: 30})).toHaveProp('aria-valuenow', 30);
   });
 
   it('renders an svg with the expected properties', function() {
-    expect(getShallowComponent({ percent: 90 })).toHaveClassName('.nx-binary-donut-chart');
-    expect(getShallowComponent({ percent: 90 })).toHaveProp('viewBox', '-15 -15 30 30');
-    expect(getShallowComponent({ percent: 90 })).toMatchSelector('svg');
+    expect(getShallowComponent({ value: 90 })).toHaveClassName('.nx-binary-donut-chart');
+    expect(getShallowComponent({ value: 90 })).toHaveProp('viewBox', '-15 -15 30 30');
+    expect(getShallowComponent({ value: 90 })).toMatchSelector('svg');
   });
 
   it('renders only the background path with the expected properties at zero percent', function() {
@@ -44,8 +48,8 @@ describe('NxBinaryDonutChart', function() {
   });
 
   it('renders the background path and an arc circle with the expected properties when percent is 100', function() {
-    const circles = getShallowComponent({ percent: 100}).find('circle');
-    const paths = getShallowComponent({ percent: 100}).find('path');
+    const circles = getShallowComponent({ value: 100}).find('circle');
+    const paths = getShallowComponent({ value: 100}).find('path');
 
     expect(circles.length).toBe(1);
     expect(circles.at(0)).toHaveClassName('.nx-binary-donut-chart__arc');
@@ -56,8 +60,8 @@ describe('NxBinaryDonutChart', function() {
   });
 
   it('renders only a background circle path percent is negative', function() {
-    const circles = getShallowComponent({ percent: -50}).find('circle');
-    const paths = getShallowComponent({ percent: -50}).find('path');
+    const circles = getShallowComponent({ value: -50}).find('circle');
+    const paths = getShallowComponent({ value: -50}).find('path');
 
     expect(circles.length).toBe(0);
     expect(paths.length).toBe(1);
@@ -65,8 +69,8 @@ describe('NxBinaryDonutChart', function() {
   });
 
   it('renders a background path and arc path with expected properties when 0 < percent < 100', function() {
-    const circles = getShallowComponent({ percent: 50}).find('circle');
-    const paths = getShallowComponent({ percent: 50}).find('path');
+    const circles = getShallowComponent({ value: 50}).find('circle');
+    const paths = getShallowComponent({ value: 50}).find('path');
 
     expect(circles.length).toBe(0);
     expect(paths.length).toBe(2);
@@ -78,8 +82,8 @@ describe('NxBinaryDonutChart', function() {
   });
 
   it('renders an arc circle and its background with the expected properties when percent is 72', function() {
-    const circles = getShallowComponent({ percent: 72 }).find('circle');
-    const paths = getShallowComponent({ percent: 72 }).find('path');
+    const circles = getShallowComponent({ value: 72 }).find('circle');
+    const paths = getShallowComponent({ value: 72 }).find('path');
 
     // (2*percent + 0.5)π
     const arcEnd = 1.94 * Math.PI;
@@ -94,8 +98,8 @@ describe('NxBinaryDonutChart', function() {
   });
 
   it('renders an arc circle and its background with the expected properties when percent is 11', function() {
-    const circles = getShallowComponent({ percent: 11}).find('circle');
-    const paths = getShallowComponent({ percent: 11}).find('path');
+    const circles = getShallowComponent({ value: 11}).find('circle');
+    const paths = getShallowComponent({ value: 11}).find('path');
 
     // (2*percent + 0.5)π
     const arcEnd = 0.72 * Math.PI;
@@ -110,10 +114,10 @@ describe('NxBinaryDonutChart', function() {
   });
 
   it('adjusts the circles and paths based on the innerRadiusPercent', function() {
-    const withZeroInnerRadius = getShallowComponent({ innerRadiusPercent: 0, percent: 50 }),
-        with100InnerRadius = getShallowComponent({ innerRadiusPercent: 100, percent: 50 }),
-        withZeroInnerRadiusAnd100Percent = getShallowComponent({ innerRadiusPercent: 0, percent: 100 }),
-        with100InnerRadiusAnd100Percent = getShallowComponent({ innerRadiusPercent: 100, percent: 100 });
+    const withZeroInnerRadius = getShallowComponent({ innerRadiusPercent: 0, value: 50 }),
+        with100InnerRadius = getShallowComponent({ innerRadiusPercent: 100, value: 50 }),
+        withZeroInnerRadiusAnd100Percent = getShallowComponent({ innerRadiusPercent: 0, value: 100 }),
+        with100InnerRadiusAnd100Percent = getShallowComponent({ innerRadiusPercent: 100, value: 100 });
 
     expect(withZeroInnerRadius.find('.nx-binary-donut-chart__arc')).toHaveProp('d',
         `M 0 -7 A 7 7 0 0 1 ${-7 * Math.cos(1.5 * Math.PI)} 7`);
@@ -129,10 +133,10 @@ describe('NxBinaryDonutChart', function() {
   });
 
   it('clamps the innerRadiusPercent between zero and 100', function() {
-    const withNegativeInnerRadius = getShallowComponent({ innerRadiusPercent: -50, percent: 50 }),
-        withExcessInnerRadius = getShallowComponent({ innerRadiusPercent: 150, percent: 50 }),
-        withNegativeInnerRadiusAnd100Percent = getShallowComponent({ innerRadiusPercent: -50, percent: 100 }),
-        withExcessInnerRadiusAnd100Percent = getShallowComponent({ innerRadiusPercent: 150, percent: 100 });
+    const withNegativeInnerRadius = getShallowComponent({ innerRadiusPercent: -50, value: 50 }),
+        withExcessInnerRadius = getShallowComponent({ innerRadiusPercent: 150, value: 50 }),
+        withNegativeInnerRadiusAnd100Percent = getShallowComponent({ innerRadiusPercent: -50, value: 100 }),
+        withExcessInnerRadiusAnd100Percent = getShallowComponent({ innerRadiusPercent: 150, value: 100 });
 
     expect(withNegativeInnerRadius.find('.nx-binary-donut-chart__arc')).toHaveProp('d',
         `M 0 -7 A 7 7 0 0 1 ${-7 * Math.cos(1.5 * Math.PI)} 7`);

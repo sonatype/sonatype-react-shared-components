@@ -13,11 +13,12 @@ import classnames from 'classnames';
 
 const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
     function NxBinaryDonutChart(props, ref) {
-      const { innerRadiusPercent, percent, className, maxVal, ...svgAttrs } = props;
+      const { innerRadiusPercent, value, className, maxVal, ...svgAttrs } = props;
 
       const donutClasses = classnames('nx-binary-donut-chart', className);
 
-      const max = (maxVal === null || maxVal === undefined) ? 100 : maxVal;
+      const max = maxVal ?? 100;
+      const percent = Math.round(value / max * 100);
 
       // _Not counting the borders_, the inner radius is defined as a percentage
       // of the outer radius. Of the 30x30 viewbox, 1px on each side is border - the area that
@@ -43,7 +44,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
              role="meter"
              aria-valuemin={0}
              aria-valuemax={max}
-             aria-valuenow={percent / 100 * max}
+             aria-valuenow={value}
              className={donutClasses}
              {...svgAttrs}>
           {/*
