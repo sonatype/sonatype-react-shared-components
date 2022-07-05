@@ -60,15 +60,6 @@ export default function NxCodeSnippetPage() {
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell>rows</NxTable.Cell>
-              <NxTable.Cell>number</NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>
-                The number of rows of the text area to dictate its height
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
               <NxTable.Cell>onCopyUsingBtn</NxTable.Cell>
               <NxTable.Cell>Function () =&gt; void</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
@@ -127,8 +118,9 @@ export default function NxCodeSnippetPage() {
                           id="nx-code-snippet-custom-sizing-example"
                           liveExample={NxCodeSnippetSizingExample}
                           codeExamples={nxCodeSnippetSizingCode}>
-        An <NxCode>NxCodeSnippet</NxCode> demonstrating a single-line textarea with the optional
-        {' '}<NxCode>rows</NxCode> prop.
+        An <NxCode>NxCodeSnippet</NxCode>demonstrating a single-line textarea with optional
+        {' '}<NxCode>inputProps</NxCode>. Note that defining the number of rows in <NxCode>inputProps</NxCode>
+        {' '}will remove the user's ability to resize the textarea.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="More Complex Example"
@@ -137,7 +129,7 @@ export default function NxCodeSnippetPage() {
                           codeExamples={nxCodeSnippetComplexCode}>
         An <NxCode>NxCodeSnippet</NxCode> demonstrating optional
         props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
-        and <NxCode>rows</NxCode>.
+        and <NxCode>inputProps</NxCode>.
       </GalleryExampleTile>
     </>
   );
