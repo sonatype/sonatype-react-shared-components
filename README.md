@@ -197,65 +197,82 @@ hits.
 The visual tests use jest-image-snapshot to compare screenshots of the components to their expected state. This
 setup is configured for an exact visual match, so the tests must be run on a consistent platform. The browser used for
 the tests is downloaded via the puppeteer npm package. However, it is also important to run these tests on a consistent
-operating system. The cleanest way to do this is via docker - specifically, to run the tests in a docker environment
-identical to the one which the CI system uses. To do that, first 
-[install docker on your computer](https://docs.docker.com/get-docker/). Then, within the top of the directory, log into
-Docker by running the following command:
+operating system. The cleanest way to do this is via Docker - specifically, to run the tests in a Docker environment
+identical to the one which the CI system uses.
+
+To test in a Docker environment, first [install Docker on your computer](https://docs.docker.com/get-docker/). Then,
+within the top of the directory, log into Docker by running the following command. You may be asked to input
+credentials:
 
 ```
 docker login
 ```
 
-Then build a docker image by running the following command:
+Then build a Docker image. The command below will create the image and give it a name of "rsc-visualtesting". For
+non-Sonatype employees, you can edit the dockerfile to point to the public `node:12` base image instead of the copy
+hosted on Sonatype's infrastructure.
 
 ```
 docker build -t rsc-visualtesting .
 ```
-
-This will create the image and give it a name of "rsc-visualtesting". Note that before running this command, you must
-have docker set up with login credentials for docker-all.repo.sonatype.com.  For non-Sonatype employees, you can instead
-edit the dockerfile to point to the public `node:12` base image instead of the copy hosted on Sonatype's infrastructure.
-
-Once the image is built, execute the tests within a container based on that image by running the following command,
-again from the top directory of the repo.
+You can execute the tests within the Docker container based on that image by running the following command:
 
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
 ```
+On some computers, visual testing may take more than 20 minutes, so let the tests run in the background. Note that the
+`yarn test` command will (re-)install the gallery dependencies, ensuring that puppeteer downloads the correct version
+of Chromium before running the gallery build and tests. The above commands work because the Docker environment is
+defined in the `Dockerfile` within the top level directory of the repo.
+
+### Visual Test Shortcut for Linux Hosts
+
+For developers whose physical systems are already running Linux, it may not be necessary to run the visual tests
+in the Docker container. In this scenario, feel free to try running without the container, by running `yarn test` in
+the gallery directory. Note however that whether or not this results in matching screenshots may depend on the
+specifics of your system. If seemingly spurious diffs are detected, try running in the Docker container instead.
+
+### Updating Visual Test Screenshots
+
+If running the tests results in differences that are expected/intended based on new changes to the library, then the
+baseline screenshots may be updated by running the following command:
+```
+docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest -u
+```
+
+The command above ensures you update the screenshots within the Docker container. The updates need be run within the
+Docker container or an equivalent environment in order to ensure that the updated baselines match on CI. Note that
+updating visual test screenshots takes roughly the same amount of time as running the visual tests.
 
 ---
 
 ### Windows Users!!
 
-For you seemingly rare Windows (Windows 11 to be precise) users, you have a couple options
+For you seemingly rare Windows (Windows 11 to be precise) users, you have a couple options.
 
 From simple command prompt
+
+Run tests:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn test
 ```
+Update screenshots:
+```
+docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn jest -u
+```
 
-And from powershell
+And from PowerShell
+
+Run tests:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test
 ```
+Update screenshots:
+```
+docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn jest -u
+```
 
 ---
-
-Note that the `yarn test` command will (re-)install the gallery dependencies, ensuring that puppeteer downloads the
-correct version of Chromium before running the gallery build and tests.
-
-### Visual Test Shortcut for Linux Hosts
-
-For developers whose physical systems are already running Linux, it may not be necessary to run the visual tests
-in the docker container. In this scenario, feel free to try running without the container, by running `yarn test` in
-the gallery directory. Note however that whether or not this results in matching screenshots may depend on the specifics
-of your system. If seemingly spurious diffs are detected, try running in the docker container instead
-
-### Updating Visual Test Screenshots
-
-If running the tests results in differences that are expected/intended based on new changes to the library, then the
-baseline screenshots may be updated by running `yarn jest -u` within the gallery directory. This does need to be run
-within the docker container or an equivalent environment in order to ensure that the updated baselines match on CI.
 
 ## Component Gallery
 You can view components in your browser by running the gallery.
