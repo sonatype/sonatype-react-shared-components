@@ -38,7 +38,7 @@ export default function NxSystemNoticeGlobalSidebarExample() {
         </div>
       </div>
       <header className="nx-global-header">
-        <NxBackButton href="#/pages/nx-system-notice" targetPageTitle="Documentation" />
+        <NxBackButton href="#/pages/System%20Notice" targetPageTitle="Documentation" />
         <div className="nx-global-header__actions">
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         </div>
@@ -50,7 +50,7 @@ export default function NxSystemNoticeGlobalSidebarExample() {
                                logoAltText="RSC Plaid Villain"
                                logoLink="#">
         <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageMain>

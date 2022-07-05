@@ -190,7 +190,7 @@ const PageLayoutPage = () =>
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxCode><NxTextLink href="#/pages/NxPageHeader">NxPageHeader</NxTextLink></NxCode>
+                <NxCode><NxTextLink href="#/pages/Page%20Header">NxPageHeader</NxTextLink></NxCode>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Legacy</NxTable.Cell>
@@ -199,7 +199,7 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/nx-system-notice"><NxCode>.nx-system-notice</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/System%20Notice"><NxCode>.nx-system-notice</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Class</NxTable.Cell>
               <NxTable.Cell>Any</NxTable.Cell>
@@ -212,22 +212,22 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/nx-system-notice"><NxCode>.nx-system-notice-container</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/System%20Notice"><NxCode>.nx-system-notice-container</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Class</NxTable.Cell>
               <NxTable.Cell>Any</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>
                 When multiple system notices are desired, wrap them in this class. See the{' '}
-                <NxTextLink href="#/pages/nx-system-notice">
-                  <NxCode>nx-system-notice</NxCode> documentation
+                <NxTextLink href="#/pages/System%20Notice">
+                  System Notice documentation
                 </NxTextLink>
                 {' '}for details
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/NxGlobalSidebar"><NxCode>NxGlobalSidebar</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/Global%20Sidebar"><NxCode>NxGlobalSidebar</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Global Sidebar</NxTable.Cell>
@@ -236,7 +236,8 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/NxStatefulGlobalSidebar"><NxCode>NxStatefulGlobalSidebar</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/Stateful%20Global%20Sidebar"><NxCode>NxStatefulGlobalSidebar</NxCode>
+                </NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Global Sidebar</NxTable.Cell>
@@ -247,7 +248,7 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/nx-global-header"><NxCode>nx-global-header</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/Global%20Header"><NxCode>.nx-global-header</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Class</NxTable.Cell>
               <NxTable.Cell>Global Sidebar</NxTable.Cell>
@@ -256,7 +257,7 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/NxLoadWrapper"><NxCode>NxLoadWrapper</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/Load%20Wrapper"><NxCode>NxLoadWrapper</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Component</NxTable.Cell>
               <NxTable.Cell>Any</NxTable.Cell>

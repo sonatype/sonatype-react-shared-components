@@ -38,22 +38,19 @@ export default function NxGlobalSidebarScrollingExample() {
                        logoAltText="RSC Plaid Villain"
                        logoLink="#">
         <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/NxLoadError"/>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/NxLoadWrapper"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
+          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/Load%20Error"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/Load%20Wrapper"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
                                          text="NxLoadingSpinner"
-                                         href="#/pages/NxLoadingSpinner"/>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxModal" href="#/pages/NxModal"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
-                                         text="NxNexusPageHeader"
-                                         href="#/pages/NxNexusPageHeader"/>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/NxPageHeader"/>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/NxPageHeader"/>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/NxPageHeader"/>
+                                         href="#/pages/Loading%20Spinner"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxModal" href="#/pages/Modal"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/Page%20Header"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/Page%20Header"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/Page%20Header"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
                                          text="NxPagination"
-                                         href="#/pages/NxPagination"/>
+                                         href="#/pages/Pagination"/>
         </NxGlobalSidebarNavigation>
         <section className="gallery-custom-sidebar-content
                             nx-global-sidebar__other-content

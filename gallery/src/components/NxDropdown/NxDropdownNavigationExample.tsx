@@ -14,13 +14,13 @@ function NxDropdownNavigationExample() {
 
   return (
     <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
-      <a onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
+      <a onClick={onClick} href="#/pages/Dropdown" className="nx-dropdown-button">
         Text link 1
       </a>
-      <a onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
+      <a onClick={onClick} href="#/pages/Dropdown" className="nx-dropdown-button">
         Text link 2
       </a>
-      <a onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-button">
+      <a onClick={onClick} href="#/pages/Dropdown" className="nx-dropdown-button">
         Text link 3 - this link should trigger truncation
       </a>
       <button onClick={onClick} className="nx-dropdown-button">
