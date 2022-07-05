@@ -34,7 +34,6 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
         onKeyPress,
         disabled,
         prefixContent,
-        rows,
         ...attrs
       } = props;
 
@@ -49,7 +48,6 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
           typeAttr = isTextArea ? undefined : (type || 'text'),
-          classes = rows && isTextArea ? 'nx-text-input__input textarea-custom-sizing' : 'nx-text-input__input',
           isInvalid = validatable && hasValidationErrors(validationErrors),
           firstValidationError = validatable && getFirstValidationError(validationErrors),
           internalClassName = classnames('nx-text-input', className, {
@@ -83,10 +81,6 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
         }
       }
 
-      // let classes
-      // rows? console.log('hey') : console.log('nope');
-      // rows?  classes= 'nx-text-input__input custom';
-
       return (
         <div ref={forwardedRef} className={internalClassName}>
           {/* This click handler doesn't need to be accessible, it is only to mitigate a mouse-specific
@@ -98,11 +92,10 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
             {React.createElement(element, {
               ...newProps,
               disabled,
-              rows,
               ref: inputRef,
               type: typeAttr,
               onChange: inputOnChange,
-              className: classes,
+              className: 'nx-text-input__input',
               onKeyPress: inputOnKeyPress,
               'aria-invalid': isInvalid,
               'aria-errormessage': disabled ? undefined : invalidMessageId
