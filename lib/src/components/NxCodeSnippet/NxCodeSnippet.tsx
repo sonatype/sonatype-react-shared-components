@@ -17,7 +17,7 @@ import './NxCodeSnippet.scss';
 export { Props };
 
 export default function NxCodeSnippet(props: Props) {
-  const { content, label, sublabel, className, onCopyUsingBtn, rows, inputProps, ...otherProps } = props,
+  const { content, label, sublabel, className, onCopyUsingBtn, inputProps, ...otherProps } = props,
       classes = classnames('nx-code-snippet', className),
       textInputRef = useRef<HTMLDivElement>(null);
 
@@ -70,8 +70,7 @@ export default function NxCodeSnippet(props: Props) {
     <div className={classes} { ...otherProps }>
       <NxButton type="button" variant="tertiary" onClick={copyToClipboard}>Copy to Clipboard</NxButton>
       <NxFormGroup label={label} sublabel={sublabel}>
-        <NxTextInput rows={rows || undefined}
-                     { ...inputProps }
+        <NxTextInput { ...inputProps }
                      ref={textInputRef}
                      type="textarea"
                      value={content}
