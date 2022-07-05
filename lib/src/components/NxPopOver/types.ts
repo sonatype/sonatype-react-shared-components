@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {HTMLAttributes, ReactNode} from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
 export type CloseHandler = (evt: Event) => void;
@@ -29,7 +29,7 @@ export interface PopOverFooterProps {
   children?: ReactNode;
 }
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface Props extends HTMLAttributes<HTMLDialogElement> {
   variant?: NX_POP_OVER_VARIANT_TYPE | null;
   onClose: () => void;
   children?: ReactNode;

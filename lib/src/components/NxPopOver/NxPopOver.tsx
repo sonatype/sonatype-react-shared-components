@@ -98,11 +98,11 @@ const NxPopOver = (props: Props) => {
     onClose
   };
 
-  function keyboardListener(event: KeyboardEvent<HTMLDialogElement>) {
+  const keyboardListener = (event: KeyboardEvent<HTMLDialogElement>) => {
     if (event.key === 'Escape') {
       onClose();
     }
-  }
+  };
 
   const classes = classnames('nx-pop-over', className);
 
