@@ -4,12 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, KeyboardEvent, KeyboardEventHandler } from 'react';
 
 import classnames from 'classnames';
 
 //import withClass from '../../util/withClass';
-// click outside behaviour
 // Fix spacings on header
 
 import {
@@ -93,17 +92,28 @@ const NxPopOver = (props: Props) => {
     ...otherProps
   } = props;
 
-  const asideRef = useRef<HTMLElement>(null);
+  const asideRef = useRef<HTMLDialogElement>(null);
   useClickOutside(asideRef, () => onClose());
   const popOverContextValue = {
     onClose
   };
 
+  function keyboardListener(event: KeyboardEvent<HTMLDialogElement>) {
+    if (event.key === 'Escape') {
+      onClose();
+    }
+  }
+
   const classes = classnames('nx-pop-over', className);
 
   return (
     <PopOverContext.Provider value={popOverContextValue}>
-      <aside ref={asideRef} className={classes} {...otherProps}>{children}</aside>
+      <dialog ref={asideRef}
+              className={classes}
+              onKeyDown={keyboardListener}
+              {...otherProps}>
+        {children}
+      </dialog>
     </PopOverContext.Provider>
   );
 };
