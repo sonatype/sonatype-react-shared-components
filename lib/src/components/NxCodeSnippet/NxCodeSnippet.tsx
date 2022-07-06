@@ -70,12 +70,7 @@ export default function NxCodeSnippet(props: Props) {
     <div className={classes} { ...otherProps }>
       <NxButton type="button" variant="tertiary" onClick={copyToClipboard}>Copy to Clipboard</NxButton>
       <NxFormGroup label={label} sublabel={sublabel}>
-        <NxTextInput { ...inputProps }
-                     ref={textInputRef}
-                     type="textarea"
-                     value={content}
-                     isPristine={true}
-                     readOnly />
+        <NxTextInput { ...inputProps } ref={textInputRef} type="textarea" value={content} isPristine={true} readOnly />
       </NxFormGroup>
     </div>
   );
