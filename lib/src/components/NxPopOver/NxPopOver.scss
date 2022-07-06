@@ -6,6 +6,22 @@
  */
 
 .nx-pop-over {
+  // undo styles that chrome applies to <dialog> elements
+  border: initial;
+  max-width: initial;
+  max-height: initial;
+  width: initial;
+  height: initial;
+  margin: initial;
+  padding: initial;
+
+  // prevent brief flash of scrollbar as tooltips disappear
+  overflow: hidden;
+
+  &::backdrop {
+    // chrome tries to add its own subtle mask here which doubles up with our own
+    display: none;
+  }
   box-sizing: border-box;
   height: 100%;
   border-left: 1px solid black;

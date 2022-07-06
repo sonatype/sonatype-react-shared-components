@@ -92,19 +92,23 @@ const NxPopOver = (props: Props) => {
     ...otherProps
   } = props;
 
-  const asideRef = useRef<HTMLDialogElement>(null);
-  useClickOutside(asideRef, () => onClose());
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  useClickOutside(dialogRef, () => onClose());
   const popOverContextValue = {
     onClose
   };
 
   useEffect(() => {
+    dialogRef.current?.showModal();
+  }, []);
+
+  useEffect(() => {
     const handleCancel = () => {
       onClose();
     };
-    asideRef.current?.addEventListener('cancel', handleCancel);
+    dialogRef.current?.addEventListener('cancel', handleCancel);
     return () => {
-      asideRef.current?.removeEventListener('cancel', handleCancel);
+      dialogRef.current?.removeEventListener('cancel', handleCancel);
     };
   }, [onClose]);
 
@@ -118,10 +122,9 @@ const NxPopOver = (props: Props) => {
 
   return (
     <PopOverContext.Provider value={popOverContextValue}>
-      <dialog ref={asideRef}
+      <dialog ref={dialogRef}
               className={classes}
               onKeyDown={keyboardListener}
-              open
               aria-modal="true"
               {...otherProps}>
         {children}
