@@ -12,23 +12,23 @@ export default function NxRadioDisabledExample() {
   const [city, setCity] = useState<string | null>('fulton');
 
   return (
-      <NxFieldset label={`Selected City: ${city}`} isRequired={true}>
-        <NxRadio name="city"
-                 value="arlington"
-                 onChange={setCity}
-                 isChecked={city === 'arlington'}
-                 disabled={true}
-                 radioId="city-arlington">
-          Arlington (disabled)
-        </NxRadio>
-        <NxRadio name="city"
-                 value="fulton"
-                 onChange={setCity}
-                 isChecked={city === 'fulton'}
-                 disabled={true}
-                 radioId="city-fulton">
-          Fulton (disabled + checked)
-        </NxRadio>
-      </NxFieldset>
+    <NxFieldset label={`Selected City: ${city}`} isRequired={true}>
+      <NxRadio name="city"
+               value="arlington"
+               onChange={setCity}
+               isChecked={city === 'arlington'}
+               disabled={true}
+               radioId="city-arlington">
+        Arlington (disabled)
+      </NxRadio>
+      <NxRadio name="city"
+               value="fulton"
+               onChange={setCity}
+               isChecked={city === 'fulton'}
+               disabled={true}
+               radioId="city-fulton">
+        Fulton (disabled + checked)
+      </NxRadio>
+    </NxFieldset>
   );
 }

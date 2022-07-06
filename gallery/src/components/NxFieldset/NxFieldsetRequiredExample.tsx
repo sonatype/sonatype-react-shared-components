@@ -12,11 +12,11 @@ export default function NxFieldsetRequiredExample() {
   const [val, setVal] = useState<string | null>(null);
 
   return (
-      <NxFieldset label="Color" isRequired>
-        <NxRadio value="red" isChecked={val === 'red'} name="color" onChange={setVal}>Red</NxRadio>
-        <NxRadio value="green" isChecked={val === 'green'} name="color" onChange={setVal}>Green</NxRadio>
-        <NxRadio value="blue" isChecked={val === 'blue'} name="color" onChange={setVal}>Blue</NxRadio>
-        <NxRadio value="purple" isChecked={val === 'purple'} name="color" onChange={setVal}>Purple</NxRadio>
-      </NxFieldset>
+    <NxFieldset label="Color" isRequired>
+      <NxRadio value="red" isChecked={val === 'red'} name="color" onChange={setVal}>Red</NxRadio>
+      <NxRadio value="green" isChecked={val === 'green'} name="color" onChange={setVal}>Green</NxRadio>
+      <NxRadio value="blue" isChecked={val === 'blue'} name="color" onChange={setVal}>Blue</NxRadio>
+      <NxRadio value="purple" isChecked={val === 'purple'} name="color" onChange={setVal}>Purple</NxRadio>
+    </NxFieldset>
   );
 }

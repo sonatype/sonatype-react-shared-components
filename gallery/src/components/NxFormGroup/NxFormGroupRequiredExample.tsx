@@ -12,8 +12,8 @@ export default function NxFormGroupRequiredExample() {
   const requiredValidator = (val: string) => val ? null : 'Must be non-empty';
 
   return (
-      <NxFormGroup label="Username" isRequired>
-        <NxStatefulTextInput validator={requiredValidator} />
-      </NxFormGroup>
+    <NxFormGroup label="Username" isRequired>
+      <NxStatefulTextInput validator={requiredValidator} />
+    </NxFormGroup>
   );
 }
