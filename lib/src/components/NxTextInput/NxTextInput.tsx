@@ -87,7 +87,7 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
             * presentational concern
             */}
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions*/}
-          <div className="nx-text-input__box custom" onClick={setFocusToInput}>
+          <div className="nx-text-input__box" onClick={setFocusToInput}>
             {prefixContent}
             {React.createElement(element, {
               ...newProps,
