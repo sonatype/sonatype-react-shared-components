@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCodeSnippet } from '@sonatype/react-shared-components';
+import { NxCopyToClipboard } from '@sonatype/react-shared-components';
 
 // Snippet text is from https://github.com/ioccc-src/winner/blob/main/1988/westley.c
 // See that repo for its attribution and licensing.
@@ -32,10 +32,10 @@ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 }`;
 
 export default function NxCopyToClipboardExample() {
-  return <NxCodeSnippet label="IOCCC Code"
-                        id="complex-nx-code-snippet"
-                        sublabel="The following is a winner of the International Obfuscated C Code Competition"
-                        onCopyUsingBtn={() => alert('Copied using the button')}
-                        inputProps={{rows: 20}}
-                        content={snippet} />;
+  return <NxCopyToClipboard label="IOCCC Code"
+                            id="complex-nx-code-snippet"
+                            sublabel="The following is a winner of the International Obfuscated C Code Competition"
+                            onCopyUsingBtn={() => alert('Copied using the button')}
+                            inputProps={{rows: 20}}
+                            content={snippet} />;
 }

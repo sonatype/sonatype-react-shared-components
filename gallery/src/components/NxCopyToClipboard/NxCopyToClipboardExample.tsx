@@ -5,15 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCodeSnippet } from '@sonatype/react-shared-components';
+import { NxCopyToClipboard } from '@sonatype/react-shared-components';
 
 export default function NxCopyToClipboardExample() {
   return (
     <>
-      <NxCodeSnippet label="RSC Github URL"
-                     content="https://github.com/sonatype/sonatype-react-shared-components" />
-      <NxCodeSnippet label="RSC Package URL"
-                     content="https://www.npmjs.com/package/@sonatype/react-shared-components" />
+      <NxCopyToClipboard label="RSC Github URL"
+                         content="https://github.com/sonatype/sonatype-react-shared-components" />
+      <NxCopyToClipboard label="RSC Package URL"
+                         content="https://www.npmjs.com/package/@sonatype/react-shared-components" />
     </>
   );
 }
