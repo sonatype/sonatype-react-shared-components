@@ -13,7 +13,7 @@ function NxDropdownWithNxThreatIndicatorExample() {
       onClick = () => { alert('click'); },
       labelElement = (
         <>
-          <NxThreatIndicator className="nx-dropdown__colored-icon" threatLevelCategory="moderate" />
+          <NxThreatIndicator threatLevelCategory="moderate" />
           <span>Moderate</span>
         </>
       );
@@ -23,27 +23,27 @@ function NxDropdownWithNxThreatIndicatorExample() {
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
       <button className="nx-dropdown-button" onClick={onClick}>
-        <NxThreatIndicator className="nx-dropdown__colored-icon" />
+        <NxThreatIndicator />
         <span>Unspecified</span>
       </button>
       <button className="nx-dropdown-button" onClick={onClick}>
-        <NxThreatIndicator className="nx-dropdown__colored-icon" threatLevelCategory="none" />
+        <NxThreatIndicator threatLevelCategory="none" />
         <span>None</span>
       </button>
       <button className="nx-dropdown-button" onClick={onClick}>
-        <NxThreatIndicator className="nx-dropdown__colored-icon" threatLevelCategory="low" />
+        <NxThreatIndicator threatLevelCategory="low" />
         <span>Low</span>
       </button>
       <button className="nx-dropdown-button" onClick={onClick}>
-        <NxThreatIndicator className="nx-dropdown__colored-icon" threatLevelCategory="moderate" />
+        <NxThreatIndicator threatLevelCategory="moderate" />
         <span>Moderate</span>
       </button>
       <button className="nx-dropdown-button" onClick={onClick}>
-        <NxThreatIndicator className="nx-dropdown__colored-icon" threatLevelCategory="severe" />
+        <NxThreatIndicator threatLevelCategory="severe" />
         <span>Severe</span>
       </button>
       <button className="nx-dropdown-button" onClick={onClick}>
-        <NxThreatIndicator className="nx-dropdown__colored-icon" threatLevelCategory="critical" />
+        <NxThreatIndicator threatLevelCategory="critical" />
         <span>Critical</span>
       </button>
     </NxDropdown>

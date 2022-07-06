@@ -261,15 +261,13 @@ const NxDropdownPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>nx-dropdown__colored-icon</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>nx-dropdown-icon</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                Allow for colored icons not to be overriden by <NxCode>NxDropdown</NxCode>.
+                Set custom icons to the correct color.
               </NxTable.Cell>
               <NxTable.Cell>
-                This class is available for icons which specify their own color that{' '}
-                <NxCode>NxDropdown</NxCode> should not override.
-                <NxCode>NxThreatIndicator</NxCode> should also use this class when used{' '}
-                with <NxCode>NxDropdown</NxCode>.
+                This class should be applied to custom icons that are not colored{' '}
+                so they are set to the correct <NxCode>NxDropdown</NxCode> icon color.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
@@ -318,6 +316,8 @@ const NxDropdownPage = () =>
                         liveExample={NxDropdownCustomLabelExample}
                         codeExamples={nxDropdownCustomLabelExampleCode}>
       This dropdown contains more complex JSX in its label.
+      Notice that the added <NxCode>NxFontAwesome</NxCode> icons have <NxCode>nx-dropdown-icon</NxCode>{' '}
+      class applied to them, this is so they are set to the correct color.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Custom label with NxThreatIndicator example"
@@ -325,8 +325,6 @@ const NxDropdownPage = () =>
                         liveExample={NxDropdownWithNxThreatIndicatorExample}
                         codeExamples={nxDropdownWithNxThreatIndicatorExampleCode}>
       An example of a dropdown with <NxCode>NxThreatIndicator</NxCode>.
-      Notice that <NxCode>NxThreatIndicator</NxCode> has <NxCode>nx-dropdown__colored-icon</NxCode>
-      applied to it, this is so the color is not overriden by <NxCode>NxDropdown</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with right-floating buttons"
