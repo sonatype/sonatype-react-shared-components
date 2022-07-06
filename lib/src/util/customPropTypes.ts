@@ -54,8 +54,8 @@ export const requiredValueNumber: PropTypes.Validator<number> =
   function requiredValueNumberValidator(props: Props, propName: string, componentName: string): Error | null {
     const value = props[propName];
 
-    if (props['maxVal']) {
-      const max = props['maxVal'];
+    if (props.maxVal) {
+      const max = props.maxVal;
       if (typeof value === 'number' && value >= 0 && value <= max) {
         return null;
       }
