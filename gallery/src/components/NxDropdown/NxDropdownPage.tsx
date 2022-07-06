@@ -325,6 +325,8 @@ const NxDropdownPage = () =>
                         liveExample={NxDropdownWithNxThreatIndicatorExample}
                         codeExamples={nxDropdownWithNxThreatIndicatorExampleCode}>
       An example of a dropdown with <NxCode>NxThreatIndicator</NxCode>.
+      Notice that <NxCode>NxThreatIndicator</NxCode>s do not have <NxCode>nx-dropdown-icon</NxCode>{' '}
+      class applied to them because we don't want their colors to be overriden.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with right-floating buttons"
