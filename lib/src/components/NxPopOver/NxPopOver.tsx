@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef, useEffect, KeyboardEvent, KeyboardEventHandler } from 'react';
+import React, { useRef, useEffect, KeyboardEvent } from 'react';
 
 import classnames from 'classnames';
 
@@ -98,6 +98,16 @@ const NxPopOver = (props: Props) => {
     onClose
   };
 
+  useEffect(() => {
+    const handleCancel = () => {
+      onClose();
+    };
+    asideRef.current?.addEventListener('cancel', handleCancel);
+    return () => {
+      asideRef.current?.removeEventListener('cancel', handleCancel);
+    };
+  }, [onClose]);
+
   const keyboardListener = (event: KeyboardEvent<HTMLDialogElement>) => {
     if (event.key === 'Escape') {
       onClose();
@@ -111,6 +121,8 @@ const NxPopOver = (props: Props) => {
       <dialog ref={asideRef}
               className={classes}
               onKeyDown={keyboardListener}
+              open
+              aria-modal="true"
               {...otherProps}>
         {children}
       </dialog>
