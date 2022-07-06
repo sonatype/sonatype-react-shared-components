@@ -16,7 +16,7 @@ const requestIdleCallback = typeof window !== 'undefined' && window.requestIdleC
   };
 
 const BATCH_SIZE = 100,
-    MAX_WORK_TIME = 1000; // max amount of time for work to wait in the queue before being dispatched, in ms
+    MAX_WORK_TIME = 100; // max amount of time for work to wait in the queue before being dispatched, in ms
 
 let queue: Queue = [],
     timeoutHandle: number | null;

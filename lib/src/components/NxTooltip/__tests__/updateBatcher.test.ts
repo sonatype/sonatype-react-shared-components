@@ -11,20 +11,20 @@ describe('NxTooltip updateBatcher', function() {
     jest.useFakeTimers();
   });
 
-  it('executes a single provided unit of work after 1 second', function() {
+  it('executes a single provided unit of work after 100 ms', function() {
     const work = jest.fn();
 
     batch(work);
     expect(work).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(999);
+    jest.advanceTimersByTime(99);
     expect(work).not.toHaveBeenCalled();
 
     jest.advanceTimersByTime(1);
     expect(work).toHaveBeenCalled();
   });
 
-  it('executes a group of less than 100 units of work after 1 second', function() {
+  it('executes a group of less than 100 units of work after 100 ms', function() {
     const work = jest.fn();
 
     for (let i = 0; i < 99; i++) {
@@ -33,7 +33,7 @@ describe('NxTooltip updateBatcher', function() {
 
     expect(work).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(999);
+    jest.advanceTimersByTime(99);
     expect(work).not.toHaveBeenCalled();
 
     jest.advanceTimersByTime(1);
@@ -53,7 +53,7 @@ describe('NxTooltip updateBatcher', function() {
     expect(work).toHaveBeenCalledTimes(100);
   });
 
-  it('executes the groups of 100 as soon as they fill up, and executes the final unfilled group 1 second after its ' +
+  it('executes the groups of 100 as soon as they fill up, and executes the final unfilled group 100 ms after its ' +
      'first unit arrives', function() {
     const work = jest.fn();
 
@@ -80,28 +80,28 @@ describe('NxTooltip updateBatcher', function() {
     // 190 units submitted, no time elapsed
     expect(work).toHaveBeenCalledTimes(100);
 
-    jest.advanceTimersByTime(1000);
+    jest.advanceTimersByTime(100);
 
-    // 190 units submitted, 1 second elapsed
+    // 190 units submitted, 100 ms elapsed
     expect(work).toHaveBeenCalledTimes(190);
 
-    jest.advanceTimersByTime(500);
+    jest.advanceTimersByTime(50);
 
-    // 190 units submitted, 1.5 second elapsed
+    // 190 units submitted, 150 ms elapsed
     expect(work).toHaveBeenCalledTimes(190);
 
     for (let i = 0; i < 5; i++) {
       batch(work);
     }
 
-    jest.advanceTimersByTime(500);
+    jest.advanceTimersByTime(50);
 
-    // 195 units submitted, 2 second elapsed (0.5 seconds since most recent units added)
+    // 195 units submitted, 200 ms elapsed (50 ms since most recent units added)
     expect(work).toHaveBeenCalledTimes(190);
 
-    jest.advanceTimersByTime(500);
+    jest.advanceTimersByTime(50);
 
-    // 195 units submitted, 2.5 seconds elapsed (1 second since most recent units added)
+    // 195 units submitted, 250 ms elapsed (100 ms since most recent units added)
     expect(work).toHaveBeenCalledTimes(195);
 
     for (let i = 0; i < 120; i++) {
@@ -110,12 +110,12 @@ describe('NxTooltip updateBatcher', function() {
 
     jest.advanceTimersByTime(0);
 
-    // 315 units submitted, 2.5 seconds elapsed (since last empty: 120 units, 0 seconds)
+    // 315 units submitted, 250 ms elapsed (since last empty: 120 units, 0 ms)
     expect(work).toHaveBeenCalledTimes(295);
 
-    jest.advanceTimersByTime(1000);
+    jest.advanceTimersByTime(100);
 
-    // 315 units submitted, 3.5 seconds elapsed (since last empty: 120 units, 1 second)
+    // 315 units submitted, 350 ms elapsed (since last empty: 120 units, 100 ms)
     expect(work).toHaveBeenCalledTimes(315);
   });
 });
