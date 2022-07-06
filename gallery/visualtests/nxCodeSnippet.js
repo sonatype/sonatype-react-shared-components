@@ -25,7 +25,6 @@ describe('NxCodeSnippet', function() {
       textareaSelector = `${complexSnippetExample} textarea`,
       copyBtnSelector = `${complexSnippetExample} .nx-btn`;
 
-
   it('looks right including distance to other components', simpleTest(multipleSnippetSelector));
   describe('with rows=1', function() {
     it('renders with a single-line textarea', simpleTest(sizingSnippetSelector));
