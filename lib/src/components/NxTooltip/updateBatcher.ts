@@ -34,7 +34,7 @@ export default function batch(work: () => void) {
 
   if (queue.length >= BATCH_SIZE) {
 
-    //queue is full; dispatch work
+    // queue is full; dispatch work
     dispatch();
 
     if (timeoutHandle) {
