@@ -59,8 +59,8 @@ export const requiredValueNumber: PropTypes.Validator<number> =
       if (typeof value === 'number' && value >= 0 && value <= max) {
         return null;
       }
-      const err = `${componentName}: prop "${propName}" must be a number between 0 and ${max} inclusive;
-      received ${value}`;
+      const err = `${componentName}: prop "${propName}" must be a number between 0 and ${max} inclusive;` +
+      ` received ${value}`;
       return new TypeError(err);
     }
     else {
