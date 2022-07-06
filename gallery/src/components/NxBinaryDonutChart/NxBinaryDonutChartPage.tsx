@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink, NxH3 } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink, NxH3, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -53,6 +53,20 @@ const NxBinaryDonutChartPage = () =>
           </NxTable.Row>
         </NxTable.Head>
         <NxTable.Body>
+          <NxTable.Row>
+            <NxTable.Cell>percent</NxTable.Cell>
+            <NxTable.Cell>number</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Percentage which this donut represents. E.g. when 0 the donut is empty, and as it increases towards 100
+              the amount of the donut which is filled in increases.
+              <NxWarningAlert>
+                Deprecated: With the introduction of the <NxCode>value</NxCode> prop, you can now define
+                current value, and the percent will be calculated based on the <NxCode>value</NxCode> prop
+                and the <NxCode>maxVal</NxCode> prop.
+              </NxWarningAlert>
+            </NxTable.Cell>
+          </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>value</NxTable.Cell>
             <NxTable.Cell>0 &le; number &le; <NxCode>maxVal</NxCode></NxTable.Cell>
