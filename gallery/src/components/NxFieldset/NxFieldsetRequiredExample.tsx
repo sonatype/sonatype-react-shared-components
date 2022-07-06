@@ -6,22 +6,17 @@
  */
 import React, { useState } from 'react';
 
-import { NxFieldset, NxRadio, NxForm, NxTile} from '@sonatype/react-shared-components';
+import { NxFieldset, NxRadio } from '@sonatype/react-shared-components';
 
 export default function NxFieldsetRequiredExample() {
   const [val, setVal] = useState<string | null>(null);
 
   return (
-    <>
-      <NxTile.HeaderSubtitle>
-        <NxForm.RequiredFieldNotice />
-      </NxTile.HeaderSubtitle>
       <NxFieldset label="Color" isRequired>
         <NxRadio value="red" isChecked={val === 'red'} name="color" onChange={setVal}>Red</NxRadio>
         <NxRadio value="green" isChecked={val === 'green'} name="color" onChange={setVal}>Green</NxRadio>
         <NxRadio value="blue" isChecked={val === 'blue'} name="color" onChange={setVal}>Blue</NxRadio>
         <NxRadio value="purple" isChecked={val === 'purple'} name="color" onChange={setVal}>Purple</NxRadio>
       </NxFieldset>
-    </>
   );
 }
