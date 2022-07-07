@@ -223,8 +223,7 @@ docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtes
 ```
 On some computers, visual testing may take more than 20 minutes, so let the tests run in the background. Note that the
 `yarn test` command will (re-)install the gallery dependencies, ensuring that puppeteer downloads the correct version
-of Chromium before running the gallery build and tests. The above commands work because the Docker environment is
-defined in the `Dockerfile` within the top level directory of the repo.
+of Chromium before running the gallery build and tests.
 
 ### Visual Test Shortcut for Linux Hosts
 
