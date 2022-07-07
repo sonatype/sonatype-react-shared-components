@@ -7,20 +7,26 @@
 import React from 'react';
 import { Tooltip } from '@material-ui/core';
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxTooltip, { TooltipContext, Props } from '../NxTooltip';
+import { act } from 'react-dom/test-utils';
 
 describe('NxTooltip', function() {
   const minimalProps = {
         children: <div id="foo" />,
         title: 'tip'
       },
-      getComponent = getShallowComponent(NxTooltip, minimalProps),
-      getTooltip = (extraProps?: Partial<Props>) => getComponent(extraProps).children();
+      getMounted = getMountedComponent(NxTooltip, minimalProps),
+      getShallow = getShallowComponent(NxTooltip, minimalProps),
+      getTooltip = (extraProps?: Partial<Props>) => getMounted(extraProps).children();
+
+  beforeEach(function() {
+    jest.useFakeTimers();
+  });
 
   it('creates a TooltipContext.Provider that provides a value of true', function() {
-    expect(getComponent()).toMatchSelector(TooltipContext.Provider);
-    expect(getComponent()).toHaveProp('value', true);
+    expect(getShallow()).toMatchSelector(TooltipContext.Provider);
+    expect(getShallow()).toHaveProp('value', true);
   });
 
   it('creates a MUI tooltip as the context providers child', function() {
@@ -55,19 +61,26 @@ describe('NxTooltip', function() {
     expect(component).toHaveProp('title', '');
   });
 
-  it('passes through string titles', function() {
-    const emptyComponent = getTooltip({ title: '' });
-    expect(emptyComponent.prop('title')).toBe('');
+  it('passes through string titles after an asynchronous initialization period', function() {
+    const emptyComponent = getMounted({ title: '' });
+    act(() => { jest.runAllTimers(); });
+    emptyComponent.update();
+    expect(emptyComponent.children()).toHaveProp('title', '');
 
-    const component = getTooltip({ title: 'foo' });
-    expect(component.prop('title')).toBe('foo');
+    const component = getMounted({ title: 'foo' });
+    act(() => { jest.runAllTimers(); });
+    component.update();
+    expect(component.children()).toHaveProp('title', 'foo');
   });
 
   it('passes through JSX titles', function() {
     const title = <div className="foo" />,
-        component = getTooltip({ title });
+        component = getMounted({ title });
 
-    expect(component.prop('title')).toBe(title);
+    act(() => { jest.runAllTimers(); });
+    component.update();
+
+    expect(component.children()).toHaveProp('title', title);
   });
 
   it('passes "nx-tooltip" as the `tooltip` property on the `classes` prop of the Tooltip', function() {
