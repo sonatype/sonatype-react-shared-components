@@ -201,16 +201,17 @@ operating system. The cleanest way to do this is via Docker - specifically, to r
 identical to the one which the CI system uses.
 
 To test in a Docker environment, first [install Docker on your computer](https://docs.docker.com/get-docker/). Then,
-within the top of the directory, log into Docker by running the following command. You may be asked to input
-credentials:
+within the top level directory of the repository, log into Docker by running the following command. You may be asked to
+input credentials:
 
 ```
-docker login
+docker login docker-all.repo.sonatype.com
 ```
 
-Then build a Docker image. The command below will create the image and give it a name of "rsc-visualtesting". For
-non-Sonatype employees, you can edit the dockerfile to point to the public `node:12` base image instead of the copy
-hosted on Sonatype's infrastructure.
+Then build a Docker image. You build an image so that you can run tests within a container (environment) based on that
+image. The command below will create the image and give it a name of "rsc-visualtesting". For non-Sonatype employees,
+you can edit the dockerfile to point to the public `node:12` base image instead of the copy hosted on Sonatype's
+infrastructure.
 
 ```
 docker build -t rsc-visualtesting .
