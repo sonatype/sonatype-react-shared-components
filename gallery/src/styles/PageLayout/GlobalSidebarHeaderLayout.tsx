@@ -34,12 +34,12 @@ export default function GlobalSidebarHeaderLayout() {
                                logoLink="#">
         <NxGlobalSidebarNavigation>
           <NxGlobalSidebarNavigationLink icon={faLink}
-                                         text="Page Layout"
-                                         href="#/pages/Page%20Layout"/>
+                                         text="Page Layout Examples"
+                                         href="#/pages/Page%20Layout%20Examples"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxGlobalHeader>
-        <NxBackButton href="#/pages/Page%20Layout" />
+        <NxBackButton href="#/pages/Page%20Layout%20Examples" />
       </NxGlobalHeader>
       <NxPageMain>
         <NxTile>
