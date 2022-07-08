@@ -9,7 +9,6 @@ import {faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 
 import { NxButton, NxFormGroup, NxForm } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
-import { NxTile } from '@sonatype/react-shared-components';
 import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
@@ -24,9 +23,9 @@ export default function NxFormLayoutExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit} aria-label="Inline Form Example">
-      <NxTile.HeaderSubtitle>
+      <p className="nx-p--required-field-notice">
         <NxForm.RequiredFieldNotice />
-      </NxTile.HeaderSubtitle>
+      </p>
       <div className="nx-form-row">
         <NxFormGroup label="Username" isRequired>
           <NxStatefulTextInput aria-required={true} validator={validator}/>

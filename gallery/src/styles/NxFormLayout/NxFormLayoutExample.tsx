@@ -22,8 +22,7 @@ import {
   NxFormSelect,
   nxFormSelectStateHelpers,
   NxTransferList,
-  NxForm,
-  NxTile
+  NxForm
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -72,9 +71,9 @@ export default function NxFormLayoutExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit} aria-label="Default Form Layout Example">
-      <NxTile.HeaderSubtitle>
+      <p className="nx-p--required-field-notice">
         <NxForm.RequiredFieldNotice />
-      </NxTile.HeaderSubtitle>
+      </p>
       <NxInfoAlert>This is a sample alert message</NxInfoAlert>
       <NxFormGroup label="A Field to Fill in" isRequired>
         <NxStatefulTextInput aria-required={true} validator={validator}/>
