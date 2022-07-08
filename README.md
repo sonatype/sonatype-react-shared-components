@@ -241,8 +241,8 @@ docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtes
 ```
 
 The command above ensures you update the screenshots within the Docker container. The updates need be run within the
-Docker container or an equivalent environment in order to ensure that the updated baselines match on CI. Note that
-updating visual test screenshots takes roughly the same amount of time as running the visual tests.
+Docker container or an equivalent environment to ensure that the updated baselines match on CI. Note that updating
+visual test screenshots take roughly the same amount of time as running the visual tests.
 
 ---
 
