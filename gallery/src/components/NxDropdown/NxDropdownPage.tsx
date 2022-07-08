@@ -266,7 +266,7 @@ const NxDropdownPage = () =>
                 Set custom icons to the correct color.
               </NxTable.Cell>
               <NxTable.Cell>
-                This class should be applied to custom icons that are not colored{' '}
+                This class should be applied to custom icons that do not have built-in color{' '}
                 so they are set to the correct <NxCode>NxDropdown</NxCode> icon color.
               </NxTable.Cell>
             </NxTable.Row>
