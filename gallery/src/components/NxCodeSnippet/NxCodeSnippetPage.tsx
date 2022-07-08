@@ -11,9 +11,11 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxCodeSnippetExample from './NxCodeSnippetExample';
 import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
+import NxCodeSnippetSizingExample from './NxCodeSnippetSizingExample';
 
 const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
-    nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw');
+    nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw'),
+    nxCodeSnippetSizingCode = require('./NxCodeSnippetSizingExample?raw');
 
 export default function NxCodeSnippetPage() {
   return (
@@ -112,13 +114,22 @@ export default function NxCodeSnippetPage() {
         copied to the clipboard.
       </GalleryExampleTile>
 
+      <GalleryExampleTile title="Single-Line Example"
+                          id="nx-code-snippet-custom-sizing-example"
+                          liveExample={NxCodeSnippetSizingExample}
+                          codeExamples={nxCodeSnippetSizingCode}>
+        An <NxCode>NxCodeSnippet</NxCode>demonstrating a single-line textarea with optional
+        {' '}<NxCode>inputProps</NxCode>. Note that defining the number of rows in <NxCode>inputProps</NxCode>
+        {' '}will remove the user's ability to resize the textarea.
+      </GalleryExampleTile>
+
       <GalleryExampleTile title="More Complex Example"
                           id="nx-code-snippet-complex-example"
                           liveExample={NxCodeSnippetComplexExample}
                           codeExamples={nxCodeSnippetComplexCode}>
         An <NxCode>NxCodeSnippet</NxCode> demonstrating optional
         props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
-        and <NxCode>inputProps</NxCode>
+        and <NxCode>inputProps</NxCode>.
       </GalleryExampleTile>
     </>
   );
