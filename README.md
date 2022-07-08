@@ -208,10 +208,10 @@ input credentials:
 docker login docker-all.repo.sonatype.com
 ```
 
-Then build a Docker image. You build an image so that you can run tests within a container (environment) based on that
-image. The command below will create the image and give it a name of "rsc-visualtesting". For non-Sonatype employees,
-you can edit the dockerfile to point to the public `node:12` base image instead of the copy hosted on Sonatype's
-infrastructure.
+Then build a Docker image using the command below. You build an image so that you can run tests within a container
+(environment) based on that image. The command below will create an image and give it a name of "rsc-visualtesting". Be
+sure to run this command within the top level directory of the repository. For non-Sonatype employees, you can edit the
+dockerfile to point to the public `node:12` base image instead of the copy hosted on Sonatype's infrastructure.
 
 ```
 docker build -t rsc-visualtesting .
