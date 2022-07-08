@@ -25,12 +25,12 @@ export default function NxTileFormExample() {
             <div className="nx-tile-header__title">
               <h2 className="nx-h2">NX Simple Tile with Form</h2>
             </div>
-            <h3 className="nx-tile-header__subtitle">
-              <NxForm.RequiredFieldNotice />
-            </h3>
           </hgroup>
         </header>
         <div className="nx-tile-content">
+          <p className="nx-p--required-field-notice">
+            <NxForm.RequiredFieldNotice />
+          </p>
           <NxFormGroup label="Username" isRequired>
             <NxStatefulTextInput aria-required={true} validator={validator}/>
           </NxFormGroup>
