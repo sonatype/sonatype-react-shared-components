@@ -12,19 +12,7 @@ import {
   NxWarningAlert
 } from '@sonatype/react-shared-components';
 
-<<<<<<< HEAD
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-=======
-import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
-
-import NxCodeSnippetExample from './NxCodeSnippetExample';
-import NxCodeSnippetComplexExample from './NxCodeSnippetComplexExample';
-import NxCodeSnippetSizingExample from './NxCodeSnippetSizingExample';
-
-const nxCodeSnippetCode = require('./NxCodeSnippetExample?raw'),
-    nxCodeSnippetComplexCode = require('./NxCodeSnippetComplexExample?raw'),
-    nxCodeSnippetSizingCode = require('./NxCodeSnippetSizingExample?raw');
->>>>>>> main
 
 export default function NxCodeSnippetPage() {
   return (
