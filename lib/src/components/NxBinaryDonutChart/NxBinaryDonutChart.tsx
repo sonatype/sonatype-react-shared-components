@@ -18,7 +18,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
       const donutClasses = classnames('nx-binary-donut-chart', className);
 
       const max = maxVal ?? 100;
-      const calculatedPercent = value ? Math.round(value / max * 100) : percent as number;
+      const calculatedPercent = value ? value / max * 100 : percent as number;
       const calculatedValue = value ?? calculatedPercent * max / 100;
 
       // _Not counting the borders_, the inner radius is defined as a percentage
