@@ -43,17 +43,17 @@ const NxFormLayoutPage = () =>
               <NxTable.Cell><NxCode><NxTextLink href="#/pages/Form">NxForm</NxTextLink></NxCode></NxTable.Cell>
               <NxTable.Cell>Top-Level</NxTable.Cell>
               <NxTable.Cell>
-                Form component with styling reset and various default behaviors
+                Form component with styling reset and various default behaviors.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
                 <NxCode><NxTextLink href="#/pages/Stateful Form">NxStatefulForm</NxTextLink></NxCode>
               </NxTable.Cell>
-              <NxTable.Cell>Top-Level alternative to <NxCode>NxForm</NxCode></NxTable.Cell>
+              <NxTable.Cell>Top-Level alternative to <NxCode>NxForm</NxCode>.</NxTable.Cell>
               <NxTable.Cell>
                 An alternative to <NxCode>NxForm</NxCode> that internalizes the logic around when to show form-wide
-                validation errors
+                validation errors.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -61,7 +61,7 @@ const NxFormLayoutPage = () =>
                 <NxCode><NxTextLink href="#/pages/Form Group">NxFormGroup</NxTextLink></NxCode>
               </NxTable.Cell>
               <NxTable.Cell>
-                Descendant of <NxCode>NxForm</NxCode>, potentially wrapped in <NxCode>NxFormRow</NxCode>
+                Descendant of <NxCode>NxForm</NxCode>, potentially wrapped in <NxCode>NxFormRow</NxCode>.
               </NxTable.Cell>
               <NxTable.Cell>
                 Wrapper for an individual form control which gives it a label and optional sublabel.
@@ -69,7 +69,7 @@ const NxFormLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxFormRow</NxCode></NxTable.Cell>
-              <NxTable.Cell>Descendant of <NxCode>NxForm</NxCode></NxTable.Cell>
+              <NxTable.Cell>Descendant of <NxCode>NxForm</NxCode>.</NxTable.Cell>
               <NxTable.Cell>
                 Container for multiple <NxCode>NxFormGroup</NxCode> or <NxCode>NxButtonBar</NxCode>s which causes them
                 to lay out horizontally rather than stack vertically.
@@ -77,15 +77,15 @@ const NxFormLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode><NxTextLink href="#/pages/Fieldset">NxFieldset</NxTextLink></NxCode></NxTable.Cell>
-              <NxTable.Cell>Descendant of <NxCode>NxForm</NxCode></NxTable.Cell>
+              <NxTable.Cell>Descendant of <NxCode>NxForm</NxCode>.</NxTable.Cell>
               <NxTable.Cell>
-                A fieldset styled similarly to <NxCode>NxFormGroup</NxCode>, intended as a wrapper for groups of
+                A fieldset styled similarly to <NxCode>NxFormGroup</NxCode>, intended as a wrapper for groups of{' '}
                 <NxCode>NxCheckbox</NxCode>es, <NxCode>NxRadio</NxCode>s, or <NxCode>NxToggle</NxCode>s.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode><NxTextLink href="#/pages/Read Only">NxReadOnly</NxTextLink></NxCode></NxTable.Cell>
-              <NxTable.Cell>Descendant of <NxCode>NxForm</NxCode></NxTable.Cell>
+              <NxTable.Cell>Descendant of <NxCode>NxForm</NxCode>.</NxTable.Cell>
               <NxTable.Cell>
                 Static/read-only data presented in a format that matches the interactive parts of the form: the data
                 labels are styled equivalently to <NxCode>NxFormGroup</NxCode>'s labels, and the data itself takes
@@ -94,7 +94,7 @@ const NxFormLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>NxFooter</NxCode></NxTable.Cell>
-              <NxTable.Cell>Part of <NxCode>NxForm</NxCode>, not used directly by calling code</NxTable.Cell>
+              <NxTable.Cell>Part of <NxCode>NxForm</NxCode>, not used directly by calling code.</NxTable.Cell>
               <NxTable.Cell>
                 <NxCode>NxForm</NxCode> renders a footer element which contains submission and form-wide validation
                 errors (at the appropriate times), the submit button, optionally a cancel button, and additional
