@@ -15,12 +15,14 @@ export interface Props {
   policyThreatLevel?: ThreatLevelNumber;
   title?: string | null;
   className?: string | null;
+  presentational?: boolean | null;
 }
 
 export const propTypes: WeakValidationMap<Props> = {
   title: PropTypes.string,
   threatLevelCategory: PropTypes.oneOf(allThreatLevelCategories),
   policyThreatLevel: PropTypes.oneOf(allThreatLevelNumbers),
-  className: PropTypes.string
+  className: PropTypes.string,
+  presentational: PropTypes.bool
 };
 
