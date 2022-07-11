@@ -8,7 +8,7 @@ import React, { useRef, useEffect, KeyboardEvent } from 'react';
 
 import classnames from 'classnames';
 
-//import withClass from '../../util/withClass';
+import withClass from '../../util/withClass';
 // Fix spacings on header
 
 import {
@@ -30,8 +30,8 @@ const PopOverContext = React.createContext<PopOverContextType>({
 export const NxPopOverHeader = (props: PopOverHeaderProps) => {
   const { onClose } = React.useContext(PopOverContext);
 
-  const subtitle = props.subtitle ? <h3 className="nx-pop-over-header__subtitle">{props.subtitle}</h3> : null;
-  const paragraph = props.paragraph ? <p className="nx-pop-over-header__paragraph">{props.paragraph}</p> : null;
+  const subtitle = props.subtitle ? <h3 className="nx-h3 nx-pop-over-header__subtitle">{props.subtitle}</h3> : null;
+  const paragraph = props.paragraph ? <p className="nx-p nx-pop-over-header__paragraph">{props.paragraph}</p> : null;
 
   return (
     <header className="nx-pop-over-header">
@@ -39,7 +39,7 @@ export const NxPopOverHeader = (props: PopOverHeaderProps) => {
         Close
       </NxCloseButton>
 
-      <h2 className="nx-pop-over-header__title">
+      <h2 className="nx-h2 nx-pop-over-header__title">
         {props.title}
       </h2>
 
@@ -84,7 +84,7 @@ const useClickOutside = <T extends HTMLElement>(ref: React.RefObject<T>, fn: (e:
   }, [ref, fn]);
 };
 
-const NxPopOver = (props: Props) => {
+const _NxPopOver = (props: Props) => {
   const {
     className,
     onClose,
@@ -132,6 +132,12 @@ const NxPopOver = (props: Props) => {
     </PopOverContext.Provider>
   );
 };
+
+const NxPopOver = Object.assign(_NxPopOver, {
+  Header: NxPopOverHeader,
+  Content: withClass('div', 'nx-pop-over-content'),
+  Footer: withClass('footer', 'nx-pop-over-footer')
+});
 
 export default NxPopOver;
 

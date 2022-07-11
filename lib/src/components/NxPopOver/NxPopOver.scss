@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+ @use '../../scss-shared/nx-container-helpers';
+ @use '../../scss-shared/nx-text-helpers';
 
 .nx-pop-over {
   // undo styles that chrome applies to <dialog> elements
@@ -14,6 +16,7 @@
   height: initial;
   margin: initial;
   padding: initial;
+  left: initial;
 
   // prevent brief flash of scrollbar as tooltips disappear
   overflow: hidden;
@@ -25,33 +28,60 @@
   box-sizing: border-box;
   height: 100%;
   border-left: 1px solid black;
-  position: absolute;
+  position: fixed;
   padding: var(--nx-spacing-6x);
   right: 0;
   top: 0;
   width: 540px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.nx-pop-over-footer {
+  height: min-content;
+  padding-top: var(--nx-spacing-6x);
+  border-top: 1px solid var(--nx-swatch-indigo-90);
+}
+
+.nx-pop-over-content {
+  padding: var(--nx-spacing-6x) 0;
+  flex-grow: 1;
+  overflow-y: scroll;
 }
 
 .nx-pop-over-header {
+  @include nx-container-helpers.container-vertical;
+
+  border-bottom: 1px solid var(--nx-swatch-indigo-90);
+  padding-bottom: var(--nx-spacing-6x);
   display: grid;
   grid-template: "title close"
                  "subtitle subtitle"
                  "paragraph paragraph" / auto min-content;
+  height: min-content;
 
+  gap: var(--nx-spacing-2x);
   &__close {
     grid-area: close;
+    margin: 0;
   }
 
   &__title {
+    @include nx-text-helpers.truncate-ellipsis;
+
     grid-area: title;
+    margin: 0;
   }
 
   &__subtitle {
     grid-area: subtitle;
+    margin: 0;
   }
 
   &__paragraph {
     grid-area: paragraph;
+    margin: 0;
   }
 }

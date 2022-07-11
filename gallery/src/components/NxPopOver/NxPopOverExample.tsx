@@ -6,7 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import { NxPopOver, NxPopOverHeader, NxButton } from '@sonatype/react-shared-components';
+import { NxPopOver, NxButton, NxP } from '@sonatype/react-shared-components';
 
 export default function NxPopOverExample() {
   const [showPopOver, setShowPopOver] = useState(false);
@@ -25,9 +25,44 @@ export default function NxPopOverExample() {
       <NxButton onClick={() => setShowPopOver(true)}>Open Pop Over</NxButton>
       {showPopOver && (
         <NxPopOver onClose={popOverCloseHandler}>
-          <NxPopOverHeader title="Example Pop Over"
-                           subtitle="Example subtitle"
-                           paragraph={paragraph} />
+          <NxPopOver.Header title="Example Pop Over Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
+           cillum dolore eu fugiat nulla pariatur."
+                            subtitle="Example subtitle"
+                            paragraph={paragraph} />
+          <NxPopOver.Content>
+            <NxP>
+              Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo{' '}
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum{' '}
+              dolore eu fugiat nulla pariatur.
+            </NxP>
+            <NxP>
+              Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo{' '}
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum{' '}
+              dolore eu fugiat nulla pariatur.
+            </NxP>
+            <NxP>
+              Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo{' '}
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum{' '}
+              dolore eu fugiat nulla pariatur.
+            </NxP>
+            <NxP>
+              Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo{' '}
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum{' '}
+              dolore eu fugiat nulla pariatur.
+            </NxP>
+            <NxButton>Click</NxButton>
+          </NxPopOver.Content>
+          <NxPopOver.Footer>
+            <NxButton>Done</NxButton>
+          </NxPopOver.Footer>
         </NxPopOver>
       )}
     </div>
