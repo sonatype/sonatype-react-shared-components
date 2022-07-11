@@ -68,9 +68,18 @@
       text-align: center;
       width: 100%;
 
-      &--zero {
-        visibility: visible;
+      @each $category in critical, severe, moderate, low, none, unspecified {
+        &--#{$category} {
+          background-color: var(--nx-color-threat-#{$category});
+        }
       }
+
+      &--critical,
+      &--none,
+      &--unspecified {
+        color: var(--nx-swatch-white);
+      }
+
     }
   }
 }
