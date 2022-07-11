@@ -140,7 +140,11 @@
 textarea.nx-text-input__input {
   min-height: 220px;
   padding: 0;
-  resize: vertical;
+
+  &[rows] {
+    min-height: unset;
+    resize: none;
+  } resize: vertical;
 }
 
 // validation messages should be shown in these cases

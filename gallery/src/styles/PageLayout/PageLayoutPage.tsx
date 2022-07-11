@@ -199,7 +199,7 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/nx-system-notice"><NxCode>.nx-system-notice</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/System%20Notice"><NxCode>.nx-system-notice</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Class</NxTable.Cell>
               <NxTable.Cell>Any</NxTable.Cell>
@@ -212,15 +212,15 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/nx-system-notice"><NxCode>.nx-system-notice-container</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/System%20Notice"><NxCode>.nx-system-notice-container</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Class</NxTable.Cell>
               <NxTable.Cell>Any</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>
                 When multiple system notices are desired, wrap them in this class. See the{' '}
-                <NxTextLink href="#/pages/nx-system-notice">
-                  <NxCode>nx-system-notice</NxCode> documentation
+                <NxTextLink href="#/pages/System%20Notice">
+                  System Notice documentation
                 </NxTextLink>
                 {' '}for details
               </NxTable.Cell>
@@ -248,7 +248,7 @@ const PageLayoutPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>
-                <NxTextLink href="#/pages/nx-global-header"><NxCode>nx-global-header</NxCode></NxTextLink>
+                <NxTextLink href="#/pages/Global%20Header"><NxCode>.nx-global-header</NxCode></NxTextLink>
               </NxTable.Cell>
               <NxTable.Cell>Class</NxTable.Cell>
               <NxTable.Cell>Global Sidebar</NxTable.Cell>
