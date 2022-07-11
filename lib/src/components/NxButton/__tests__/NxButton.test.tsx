@@ -79,8 +79,8 @@ describe('NxButton', function() {
   });
 
   it('throws an error when it contains both disabled and title props', function() {
-    expect(() => {shallow(
-      <NxButton variant="icon-only" title="Delete" disabled><NxFontAwesomeIcon icon={faTrashAlt}/></NxButton>
-    )}).toThrow(TypeError);
+    expect(() => {
+      shallow(<NxButton variant="icon-only" title="Delete" disabled><NxFontAwesomeIcon icon={faTrashAlt}/></NxButton>);
+    }).toThrow(TypeError);
   });
 });
