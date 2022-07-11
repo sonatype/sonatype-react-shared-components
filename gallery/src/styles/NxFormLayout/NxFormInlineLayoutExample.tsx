@@ -59,8 +59,8 @@ export default function NxFormLayoutExample() {
           <NxTextInput { ...hostnameState } validatable onChange={onHostnameChange} />
         </NxFormGroup>
         <NxButtonBar>
-          <NxButton title="Add" variant="icon-only"><NxFontAwesomeIcon icon={faPlus}/></NxButton>
-          <NxButton title="Subtract" variant="icon-only"><NxFontAwesomeIcon icon={faMinus}/></NxButton>
+          <NxButton type="button" title="Add" variant="icon-only"><NxFontAwesomeIcon icon={faPlus}/></NxButton>
+          <NxButton type="button" title="Subtract" variant="icon-only"><NxFontAwesomeIcon icon={faMinus}/></NxButton>
         </NxButtonBar>
       </NxFormRow>
     </NxStatefulForm>
