@@ -118,7 +118,7 @@ export default function NxCopyToClipboardPage() {
                           id="nx-copy-to-clipboard-custom-sizing-example"
                           liveExample={NxCopyToClipboardSizingExample}
                           codeExamples={nxCopyToClipboardSizingCode}>
-        An <NxCode>NxCopyToClipboard</NxCode>demonstrating a single-line textarea with optional
+        An <NxCode>NxCopyToClipboard</NxCode> demonstrating a single-line textarea with optional
         {' '}<NxCode>inputProps</NxCode>. Note that defining the number of rows in <NxCode>inputProps</NxCode>
         {' '}will remove the user's ability to resize the textarea.
       </GalleryExampleTile>
