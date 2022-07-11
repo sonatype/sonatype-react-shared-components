@@ -23,8 +23,8 @@ const NxDividerPage = () =>
       </NxP>
       <NxInfoAlert>
         The <NxCode>.nx-divider</NxCode> class is only used to create horizontal dividers.
-        For vertical dividers, please refer to <NxCode>.nx-grid</NxCode> guidelines
-        listed <NxTextLink href="#/pages/nx-grid">here</NxTextLink>.
+        For vertical dividers, please refer to the Grid guidelines
+        listed <NxTextLink href="#/pages/Grid">here</NxTextLink>.
       </NxInfoAlert>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
