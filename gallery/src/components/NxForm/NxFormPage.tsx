@@ -321,7 +321,7 @@ const NxFormPage = () =>
           in small red text underneath of the field whenever the field is not pristine or a submission of the form
           has been attempted. For instance, when the user first arrives at a form, no validation errors are shown, even
           if the initial values of some fields are not valid. If the user then attempts to immediately submit the form
-          however, all current individual field validation errors would become visible. Alternatively if they edit a
+          however, all current individual field validation errors would become visible. Alternatively, if they edit a
           field but leave it with an invalid value, that field's validation error would become visible.
         </NxP>
         <NxP>
