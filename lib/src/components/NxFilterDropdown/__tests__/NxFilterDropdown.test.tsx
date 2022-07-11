@@ -70,7 +70,7 @@ describe('NxFilterDropdown', function() {
         toggleLabel = component.find('.nx-dropdown__toggle-label'),
         icon = toggleLabel.find(NxFontAwesomeIcon);
 
-    expect(icon).toMatchSelector('.nx-filter-dropdown__filter-icon');
+    expect(icon).toMatchSelector('.nx-dropdown-icon');
     expect(icon).toHaveProp('icon', faFilter);
 
     expect(toggleLabel).toHaveText('Filter');
@@ -93,7 +93,7 @@ describe('NxFilterDropdown', function() {
         icon = toggleLabel.find(NxFontAwesomeIcon),
         counter = toggleLabel.find(MultiSelectCounter);
 
-    expect(icon).toMatchSelector('.nx-filter-dropdown__filter-icon');
+    expect(icon).toMatchSelector('.nx-dropdown-icon');
     expect(icon).toHaveProp('icon', faFilter);
 
     expect(counter).toHaveProp('options', props.options);
