@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { NxSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
@@ -19,22 +19,17 @@ export default function NxSearchDropdownLongErrorExample() {
   }
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
-  const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
+  const executeQuery = useDebounceCallback(function executeQuery(query: string) {
     setError(`Error executing query ${query}`);
-    setLoading(false);
-  }, [error]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+  }, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
 
   function onSearchTextChange(query: string) {
     setQuery(query);
   }
 
   function onSearch(query: string) {
-    setError(null);
-
-    if (query !== '') {
-      setLoading(true);
-      executeQuery(query);
-    }
+    setLoading(true);
+    executeQuery(query);
   }
 
   return (

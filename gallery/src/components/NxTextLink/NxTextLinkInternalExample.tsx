@@ -11,11 +11,11 @@ import { NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 export default () =>
   <>
     <NxP>
-      <NxTextLink href="#/pages/Tile">Tile documentation page</NxTextLink>
+      <NxTextLink href="#/pages/nx-tile">nx-tile documentation page</NxTextLink>
     </NxP>
     <NxP>
       <NxCode>
-        <NxTextLink href="#/pages/Text%20Link">
+        <NxTextLink href="#/pages/NxTextLink">
           NxTextLink inside NxCode
         </NxTextLink>{' '}
       </NxCode>
@@ -23,21 +23,21 @@ export default () =>
     <NxP>
       <NxCode>
         This is an example of{' '}
-        <NxTextLink href="#/pages/Text%20Link">
+        <NxTextLink href="#/pages/NxTextLink">
           NxTextLink
         </NxTextLink>{' '}
         with text inside NxCode
       </NxCode>
     </NxP>
     <NxP>
-      <NxTextLink href="#/pages/Code">
+      <NxTextLink href="#/pages/nx-code">
         <NxCode>
           NxCode inside NxTextLink (Not Recommended)
         </NxCode>
       </NxTextLink>
     </NxP>
     <NxP>
-      <NxTextLink href="#/pages/Code">
+      <NxTextLink href="#/pages/nx-code">
         This is an example of{' '}
         <NxCode>
           NxCode

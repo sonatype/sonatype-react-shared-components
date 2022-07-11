@@ -33,8 +33,8 @@ export default function GlobalSidebarSystemNoticeLayout() {
                                logoLink="#">
         <NxGlobalSidebarNavigation>
           <NxGlobalSidebarNavigationLink icon={faLink}
-                                         text="Page Layout Examples"
-                                         href="#/pages/Page%20Layout%20Examples"/>
+                                         text="Page Layout"
+                                         href="#/pages/Page%20Layout"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxSystemNotice>This is a System Notice</NxSystemNotice>

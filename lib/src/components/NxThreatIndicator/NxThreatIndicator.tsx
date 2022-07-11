@@ -20,7 +20,7 @@ const capitalize = (string: string) => string.charAt(0).toUpperCase() + string.s
 
 const NxThreatIndicator: FunctionComponent<Props> =
   function NxThreatIndicator(props): ReactElement<Props> {
-    const { title, threatLevelCategory, policyThreatLevel, className: classNameProp, presentational } = props,
+    const { title, threatLevelCategory, policyThreatLevel, className: classNameProp } = props,
         category: ThreatLevelCategory =
           threatLevelCategory ? threatLevelCategory :
           policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] :
@@ -29,16 +29,12 @@ const NxThreatIndicator: FunctionComponent<Props> =
         className = classnames(classNameProp, `nx-threat-indicator nx-threat-indicator--${category}`),
         label = `threat level ${category}`;
 
-    const icon = (
-      <NxFontAwesomeIcon aria-label={presentational ? undefined : label}
-                         className={className}
-                         icon={faCircle}
-                         role={presentational ? 'presentation' : undefined} />
-    );
-
-    return presentational ? icon : (
+    return (
       <NxTooltip title={title || capitalize(category)}>
-        {icon}
+        <NxFontAwesomeIcon aria-hidden={false}
+                           aria-label={label}
+                           className={className}
+                           icon={faCircle} />
       </NxTooltip>
     );
   };

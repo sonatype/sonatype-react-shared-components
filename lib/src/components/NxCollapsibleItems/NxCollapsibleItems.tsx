@@ -68,7 +68,8 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
     <div className={treeViewClasses}
          id={treeViewId}
          role="list"
-         { ...otherProps }>
+         { ...otherProps }
+         aria-disabled={disabled || undefined}>
       {
         triggerTooltipProps ? (
           // div necessary to avoid error message when tooltip is on disabled button

@@ -322,5 +322,3 @@ export { default as NxProgressBar } from './components/NxProgressBar/NxProgressB
 export { default as NxToastProvider } from './components/NxToast/NxToastProvider';
 
 export { default as useToast } from './util/useToast';
-
-export * from './components/NxStatusIndicator/NxStatusIndicator';

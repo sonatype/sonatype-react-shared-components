@@ -11,9 +11,8 @@
   position: relative;
 
   &__menu {
-    // Only show when the component is focused. When hidden, just move offscreen so still in the tab order
-    position: fixed;
-    right: 100%;
+    // only show when the component is focused
+    display: none;
     width: 100%;
 
     &--error {
@@ -28,10 +27,9 @@
     text-align: center;
   }
 
-  &--dropdown-showable:focus-within {
+  &:focus-within {
     .nx-search-dropdown__menu {
-      position: absolute;
-      right: initial;
+      display: block;
     }
   }
 

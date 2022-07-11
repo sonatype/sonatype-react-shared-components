@@ -11,13 +11,13 @@ import { NxPageHeader } from '@sonatype/react-shared-components';
 const LinksPageHeaderExample = () => {
   const links = [{
     name: 'NxButton',
-    href: '#/pages/Button'
+    href: '#/pages/NxButton'
   }, {
     name: 'NxTextInput',
-    href: '#/pages/Text%20Input'
+    href: '#/pages/NxTextInput'
   }, {
     name: 'NxPageHeader',
-    href: '#/pages/Page%20Header',
+    href: '#/pages/NxPageHeader',
     current: true
   }];
 

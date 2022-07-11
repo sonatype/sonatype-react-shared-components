@@ -10,22 +10,22 @@ import { NxThreatIndicator } from '@sonatype/react-shared-components';
 
 const NxThreatIndicatorByNameExample = () =>
   <>
-    <NxThreatIndicator presentational />
+    <NxThreatIndicator />
     <span>Threat Level Unspecified</span>
     <br/>
-    <NxThreatIndicator threatLevelCategory="none" presentational />
+    <NxThreatIndicator threatLevelCategory="none" />
     <span>Threat Level None</span>
     <br/>
-    <NxThreatIndicator threatLevelCategory="low" presentational />
+    <NxThreatIndicator threatLevelCategory="low" />
     <span>Threat Level Low</span>
     <br/>
-    <NxThreatIndicator threatLevelCategory="moderate" presentational />
+    <NxThreatIndicator threatLevelCategory="moderate" />
     <span>Threat Level Moderate</span>
     <br/>
-    <NxThreatIndicator threatLevelCategory="severe" presentational />
+    <NxThreatIndicator threatLevelCategory="severe" />
     <span>Threat Level Severe</span>
     <br/>
-    <NxThreatIndicator threatLevelCategory="critical" presentational />
+    <NxThreatIndicator threatLevelCategory="critical" />
     <span>Threat Level Critical</span>
   </>;
 

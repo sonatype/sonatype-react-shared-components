@@ -29,10 +29,5 @@ describe('NxBinaryDonutChart', function() {
     it('has visible borders', simpleTest(simpleDonutSelector));
   });
 
-  describe('NxBinaryDonutChart with custom properties', function() {
-    const simpleDonutSelector = '#nx-binary-donut-chart-custom-examples .gallery-example-live';
-    it('has custom properties', simpleTest(simpleDonutSelector));
-  });
-
   it('passes a11y checks', a11yTest());
 });

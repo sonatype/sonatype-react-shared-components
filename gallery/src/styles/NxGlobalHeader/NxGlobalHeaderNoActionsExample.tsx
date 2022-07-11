@@ -23,7 +23,7 @@ export default function NxGlobalHeaderNoActionsExample() {
   return (
     <>
       <header className="nx-global-header">
-        <NxBackButton href="#/pages/Global%20Header" targetPageTitle="Documentation" />
+        <NxBackButton href="#/pages/nx-global-header" targetPageTitle="Documentation" />
       </header>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
@@ -32,7 +32,7 @@ export default function NxGlobalHeaderNoActionsExample() {
                                logoAltText="RSC Plaid Villain"
                                logoLink="#">
         <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageMain>

@@ -11,8 +11,8 @@ import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 const NxListClickableLinksExample = () =>
   <ul className="nx-list">
     <li className="nx-list__item nx-list__item--clickable">
-      <a href="#/pages/List%20(HTML)" className="nx-list__link">
-        <span className="nx-list__text">List (HTML) page</span>
+      <a href="#/pages/nx-list" className="nx-list__link">
+        <span className="nx-list__text">nx-list page</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </a>
     </li>
@@ -21,9 +21,9 @@ const NxListClickableLinksExample = () =>
         * tends to work in real-world screenreaders
         */}
       {/* eslint-disable-next-line jsx-a11y/role-supports-aria-props */}
-      <a href="#/pages/Table%20(HTML)" className="nx-list__link selected" aria-selected="true" aria-current="true">
+      <a href="#/pages/nx-table" className="nx-list__link selected" aria-selected="true" aria-current="true">
         <span className="nx-list__text nx-truncate-ellipsis">
-          Table (HTML) page. This list item should be truncated at the right end edge. youtube weathered network
+          nx-table page. This list item should be truncated at the right end edge. youtube weathered network
           network systemic systema claymore mine voodoo god garage monofilament realism order-flow corporation car
           footage vinyl.
         </span>
@@ -31,20 +31,20 @@ const NxListClickableLinksExample = () =>
       </a>
     </li>
     <li className="nx-list__item nx-list__item--clickable">
-      <a href="#/pages/Tile" className="nx-list__link">
-        <span className="nx-list__text">Tile page</span>
+      <a href="#/pages/nx-tile" className="nx-list__link">
+        <span className="nx-list__text">nx-tile page</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </a>
     </li>
     <li className="nx-list__item nx-list__item--clickable">
-      <a href="#/pages/Alert%20(HTML)" className="nx-list__link">
-        <span className="nx-list__text">Alert (HTML) page</span>
-        <span className="nx-list__subtext">This row is a link to the Alert (HTML) page</span>
+      <a href="#/pages/nx-alert" className="nx-list__link">
+        <span className="nx-list__text">nx-alert page</span>
+        <span className="nx-list__subtext">This row is a link to the nx-alert page</span>
         <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
       </a>
     </li>
     <li className="nx-list__item nx-list__item--clickable">
-      <a href="#/pages/Alert%20(HTML)"
+      <a href="#/pages/nx-alert"
          onClick={evt => { evt.preventDefault(); }}
          className="nx-list__link disabled"
          aria-disabled="true">

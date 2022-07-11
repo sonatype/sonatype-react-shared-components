@@ -40,19 +40,19 @@ $-progress-bar-color: var(--nx-swatch-teal-60);
   }
 
   &--success {
-    color: var(--nx-color-alert-success);
+    color: var(--nx-swatch-green-25);
 
     .nx-progress-bar__counter {
-      border-color: var(--nx-color-alert-success);
+      border-color: var(--nx-swatch-green-25);
       background-color: var(--nx-swatch-green-95);
     }
   }
 
   &--error {
-    color: var(--nx-color-alert-error);
+    color: var(--nx-swatch-red-40);
 
     .nx-progress-bar__counter {
-      border-color: var(--nx-color-alert-error);
+      border-color: var(--nx-swatch-red-40);
       background-color: var(--nx-swatch-red-95);
     }
   }

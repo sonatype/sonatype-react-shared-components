@@ -7,8 +7,7 @@
 import React from 'react';
 import { faShapes, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
-import { NxFontAwesomeIcon, NxNegativeStatusIndicator, NxPositiveStatusIndicator }
-  from '@sonatype/react-shared-components';
+import { NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 export default function NxCardRowLayoutExample() {
   return (
@@ -45,11 +44,11 @@ export default function NxCardRowLayoutExample() {
             <h3 className="nx-h3">Card header</h3>
           </header>
           <div className="nx-card__content">
-            <div>
-              Server 1: <NxNegativeStatusIndicator>Down</NxNegativeStatusIndicator>
+            <div className="nx-status-indicator">
+              <span>Server one</span>
             </div>
-            <div>
-              Server 2: <NxPositiveStatusIndicator>Up</NxPositiveStatusIndicator>
+            <div className="nx-status-indicator">
+              <span>Server two</span>
             </div>
           </div>
           <footer className="nx-card__footer">
