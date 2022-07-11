@@ -15,19 +15,19 @@ interface BaseProps extends SVGAttributes<SVGSVGElement> {
 
 interface CurrentProps extends BaseProps {
   value: number;
-  percent?: number;
+  percent?: never;
 }
 
 interface DeprecatedProps extends BaseProps {
-  value?: number | null;
+  value?: never;
   percent: number;
 }
 
 export type Props = CurrentProps | DeprecatedProps;
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
+export const propTypes = {
   value: PropTypes.number,
   percent: optionalPercentNumber,
   innerRadiusPercent: optionalPercentNumber,
   maxVal: PropTypes.number
-};
+} as PropTypes.ValidationMap<Props>;
