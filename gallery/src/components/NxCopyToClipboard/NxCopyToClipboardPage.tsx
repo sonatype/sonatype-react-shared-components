@@ -11,9 +11,11 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxCopyToClipboardExample from './NxCopyToClipboardExample';
 import NxCopyToClipboardComplexExample from './NxCopyToClipboardComplexExample';
+import NxCopyToClipboardSizingExample from './NxCopyToClipboardSizingExample';
 
 const nxCopyToClipabordCode = require('./NxCopyToClipboardExample?raw'),
-    nxCopyToClipboardComplexCode = require('./NxCopyToClipboardComplexExample?raw');
+    nxCopyToClipboardComplexCode = require('./NxCopyToClipboardComplexExample?raw'),
+    nxCopyToClipboardSizingCode = require('./NxCopyToClipboardSizingExample?raw');
 
 export default function NxCopyToClipboardPage() {
   return (
@@ -110,6 +112,15 @@ export default function NxCopyToClipboardPage() {
                           codeExamples={nxCopyToClipabordCode}>
         Two <NxCode>NxCopyToClipboard</NxCode>s with minimal props: just some content which can be
         copied to the clipboard.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Single-Line Example"
+                          id="nx-copy-to-clipboard-custom-sizing-example"
+                          liveExample={NxCopyToClipboardSizingExample}
+                          codeExamples={nxCopyToClipboardSizingCode}>
+        An <NxCode>NxCopyToClipboard</NxCode>demonstrating a single-line textarea with optional
+        {' '}<NxCode>inputProps</NxCode>. Note that defining the number of rows in <NxCode>inputProps</NxCode>
+        {' '}will remove the user's ability to resize the textarea.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="More Complex Example"
