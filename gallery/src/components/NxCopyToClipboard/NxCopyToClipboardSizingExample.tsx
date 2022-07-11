@@ -11,8 +11,8 @@ export default function NxCopyToClipboardSizingExample() {
   return (
     <>
       <NxCopyToClipboard label="RSC Github URL"
-                     content="https://github.com/sonatype/sonatype-react-shared-components"
-                     inputProps={{rows: 1}} />
+                         content="https://github.com/sonatype/sonatype-react-shared-components"
+                         inputProps={{rows: 1}} />
     </>
   );
 }
