@@ -105,7 +105,7 @@ export default function NxCopyToClipboardPage() {
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple Example"
-                          id="nx-code-snippet-simple-example"
+                          id="nx-copy-to-clipboard-simple-example"
                           liveExample={NxCopyToClipboardExample}
                           codeExamples={nxCopyToClipabordCode}>
         Two <NxCode>NxCopyToClipboard</NxCode>s with minimal props: just some content which can be
@@ -113,7 +113,7 @@ export default function NxCopyToClipboardPage() {
       </GalleryExampleTile>
 
       <GalleryExampleTile title="More Complex Example"
-                          id="nx-code-snippet-complex-example"
+                          id="nx-copy-to-clipboard-complex-example"
                           liveExample={NxCopyToClipboardComplexExample}
                           codeExamples={nxCopyToClipboardComplexCode}>
         An <NxCode>NxCopyToClipboard</NxCode> demonstrating optional
