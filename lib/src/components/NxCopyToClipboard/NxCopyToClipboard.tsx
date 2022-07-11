@@ -18,7 +18,7 @@ export { Props };
 
 export default function NxCopyToClipboard(props: Props) {
   const { content, label, sublabel, className, onCopyUsingBtn, inputProps, ...otherProps } = props,
-      classes = classnames('nx-code-snippet', className),
+      classes = classnames('nx-copy-to-clipboard', className),
       textInputRef = useRef<HTMLDivElement>(null);
 
   function copyWithNavigatorClipboard() {
