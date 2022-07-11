@@ -23,6 +23,8 @@ import './NxPopOver.scss';
 
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 
+const ANIMATION_OUT_DURATION_IN_MS = 120;
+
 const PopOverContext = React.createContext<PopOverContextType>({
   onClose: () => {}
 });
@@ -92,10 +94,21 @@ const _NxPopOver = (props: Props) => {
     ...otherProps
   } = props;
 
+  let timeOut: number | null = null;
+
+  const closePopOver = () => {
+    if (timeOut) {
+      return;
+    }
+    dialogRef.current?.classList.remove('nx-pop-over--slide-in');
+    dialogRef.current?.classList.add('nx-pop-over--slide-out');
+    timeOut = window.setTimeout(() => onClose(), ANIMATION_OUT_DURATION_IN_MS);
+  };
+
   const dialogRef = useRef<HTMLDialogElement>(null);
-  useClickOutside(dialogRef, () => onClose());
+  useClickOutside(dialogRef, () => closePopOver());
   const popOverContextValue = {
-    onClose
+    onClose: closePopOver
   };
 
   useEffect(() => {
@@ -104,7 +117,7 @@ const _NxPopOver = (props: Props) => {
 
   useEffect(() => {
     const handleCancel = () => {
-      onClose();
+      closePopOver();
     };
     dialogRef.current?.addEventListener('cancel', handleCancel);
     return () => {
@@ -114,11 +127,11 @@ const _NxPopOver = (props: Props) => {
 
   const keyboardListener = (event: KeyboardEvent<HTMLDialogElement>) => {
     if (event.key === 'Escape') {
-      onClose();
+      closePopOver();
     }
   };
 
-  const classes = classnames('nx-pop-over', className);
+  const classes = classnames('nx-pop-over', 'nx-pop-over--slide-in', className);
 
   return (
     <PopOverContext.Provider value={popOverContextValue}>
