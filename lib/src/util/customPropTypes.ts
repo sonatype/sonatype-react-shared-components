@@ -49,4 +49,3 @@ export const optionalPercentNumber: PropTypes.Validator<number> =
     }
     return requiredPercentNumberValidator(props, propName, componentName);
   };
-
