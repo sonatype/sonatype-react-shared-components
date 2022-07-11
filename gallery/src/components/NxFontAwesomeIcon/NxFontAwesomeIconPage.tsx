@@ -45,7 +45,7 @@ const NxFontAwesomeIconPage = () => {
           due to our preference for <NxCode>NxTooltip</NxCode>. This technique should therefore be
           used sparingly, and labels on parent elements should be preferred where appropriate. For instance,
           the accessible name for an icon-only button should be placed on the button itself, not on the icon.
-          See the <NxTextLink href="#/pages/NxButton"><NxCode>NxButton</NxCode></NxTextLink> page for an example.
+          See the <NxTextLink href="#/pages/Button"><NxCode>NxButton</NxCode></NxTextLink> page for an example.
         </NxP>
         <NxP>
           If you are in doubt about whether an icon should be made accessible consider whether the user could perform

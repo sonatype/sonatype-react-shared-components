@@ -13,10 +13,11 @@ const NxListPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        <NxCode>NxList</NxCode> encapsulates the styles defined in the <NxCode>nx-list</NxCode> style page into
-        simple React components. In addition, <NxCode>NxList</NxCode> also contains children components that make
-        it easy to customize lists. With the help of these components, it is quite simple to create lists that have
-        clickable buttons, links, action buttons, multiple lines of text, and even lists with empty and error states.
+        <NxCode>NxList</NxCode> encapsulates the styles defined in the{' '}
+        <NxTextLink href="#/pages/List%20(HTML)">List (HTML)</NxTextLink> style page into simple React components. In
+        addition, <NxCode>NxList</NxCode> also contains children components that make it easy to customize lists. With
+        the help of these components, it is quite simple to create lists that have clickable buttons, links, action
+        buttons, multiple lines of text, and even lists with empty and error states.
       </NxP>
 
       <NxTile.Subsection>
@@ -29,7 +30,7 @@ const NxListPage = () =>
           <NxCode>NxList.Item</NxCode> render a <NxCode>ul</NxCode> and an <NxCode>li</NxCode> respectively rather than
           the necessary <NxCode>dl</NxCode> and <NxCode>div</NxCode> for a description list. Use
           the <NxCode>NxDescriptionList</NxCode> family of convenience components instead. See
-          the <NxTextLink href="#/pages/nx-list">nx-list</NxTextLink> page for details.
+          the <NxTextLink href="#/pages/List%20(HTML)">List (HTML)</NxTextLink> page for details.
         </NxWarningAlert>
         <NxP>
           <NxCode>NxList</NxCode> also supports the styling of description lists

@@ -246,6 +246,9 @@ module.exports = {
 
       a11yTest(builderCustomizer) {
         return async () => {
+          // to allow async code such as tooltip initialization to complete
+          await wait(1500);
+
           const builder = new AxePuppeteer(page),
               customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
               axeResults = await customizedBuilder.analyze();

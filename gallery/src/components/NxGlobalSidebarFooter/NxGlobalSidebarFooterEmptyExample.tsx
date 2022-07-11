@@ -34,8 +34,8 @@ export default function NxGlobalSidebarFooterEmptyExample() {
         <NxGlobalSidebarNavigation>
           <NxGlobalSidebarNavigationLink icon={faLink}
                                          text="NxGlobalSidebarFooter"
-                                         href="#/pages/NxGlobalSidebarFooter"/>
-          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/NxLoadError"/>
+                                         href="#/pages/Global%20Sidebar%20Footer"/>
+          <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/Load%20Error"/>
         </NxGlobalSidebarNavigation>
         <NxGlobalSidebarFooter showCreatedBy={false} />
       </NxGlobalSidebar>

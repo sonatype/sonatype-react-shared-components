@@ -54,37 +54,37 @@
 
 .nx-alert--warning {
   background-color: var(--nx-swatch-orange-90);
-  border-color: var(--nx-swatch-orange-50);
+  border-color: var(--nx-color-alert-warning);
 
   > .nx-icon {
-    color: var(--nx-swatch-orange-50);
+    color: var(--nx-color-alert-warning);
   }
 }
 
 .nx-alert--error {
   background-color: var(--nx-swatch-red-95);
-  border-color: var(--nx-swatch-red-40);
+  border-color: var(--nx-color-alert-error);
 
   > .nx-icon {
-    color: var(--nx-swatch-red-40);
+    color: var(--nx-color-alert-error);
   }
 }
 
 .nx-alert--info {
   background-color: var(--nx-swatch-blue-95);
-  border-color: var(--nx-swatch-blue-40);
+  border-color: var(--nx-color-alert-info);
 
   > .nx-icon {
-    color: var(--nx-swatch-blue-40);
+    color: var(--nx-color-alert-info);
   }
 }
 
 .nx-alert--success {
   background-color: var(--nx-swatch-green-95);
-  border-color: var(--nx-swatch-green-25);
+  border-color: var(--nx-color-alert-success);
 
   > .nx-icon {
-    color: var(--nx-swatch-green-25);
+    color: var(--nx-color-alert-success);
   }
 }
 

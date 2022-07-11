@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+.nx-status-indicator {
+  $height: calc(var(--nx-line-height) * var(--nx-font-size));
+
+  // common styles
+  border-radius: calc(#{$height} * 0.5);
+  display: inline-block;
+  font-size: var(--nx-font-size-s);
+  line-height: $height;
+  margin: 0 var(--nx-spacing-2x);
+  padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-2x);
+  &::before {
+    border-radius: 6px;
+    content: '';
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    margin: 6px var(--nx-spacing-3x) 6px 0;
+    vertical-align: bottom;
+  }
+
+  // negative styles (default)
+  background-color: var(--nx-swatch-grey-95);
+  color: var(--nx-swatch-grey-10);
+  &::before {
+    background-color: var(--nx-swatch-grey-30);
+  }
+
+  &--intermediate {
+    background-color: var(--nx-swatch-blue-95);
+    color: var(--nx-swatch-blue-10);
+    &::before {
+      background-color: var(--nx-swatch-blue-30);
+    }
+  }
+
+  &--positive {
+    background-color: var(--nx-swatch-green-95);
+    color: var(--nx-swatch-green-10);
+    &::before {
+      background-color: var(--nx-color-alert-success);
+    }
+  }
+
+  &--error {
+    background-color: var(--nx-swatch-red-95);
+    color: var(--nx-swatch-red-10);
+    &::before {
+      background-color: var(--nx-color-alert-error);
+    }
+  }
+}
