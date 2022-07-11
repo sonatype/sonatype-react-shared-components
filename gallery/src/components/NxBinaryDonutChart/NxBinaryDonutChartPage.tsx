@@ -56,7 +56,7 @@ const NxBinaryDonutChartPage = () =>
           <NxTable.Row>
             <NxTable.Cell>value</NxTable.Cell>
             <NxTable.Cell>0 &le; number &le; <NxCode>maxVal</NxCode></NxTable.Cell>
-            <NxTable.Cell>Yes</NxTable.Cell>
+            <NxTable.Cell>Yes, unless <NxCode>percent</NxCode> is specified</NxTable.Cell>
             <NxTable.Cell>
               Defines current value for the binary donut chart. A number from 0 to <NxCode>maxVal</NxCode>.
             </NxTable.Cell>
