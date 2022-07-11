@@ -71,7 +71,7 @@ export default function NxFormLayoutExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit} aria-label="Default Form Layout Example">
-      <p className="nx-p--required-field-notice">
+      <p className="nx-p__required-field-notice">
         <NxForm.RequiredFieldNotice />
       </p>
       <NxInfoAlert>This is a sample alert message</NxInfoAlert>

@@ -23,7 +23,7 @@ export default function NxFormLayoutExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit} aria-label="Inline Form Example">
-      <p className="nx-p--required-field-notice">
+      <p className="nx-p__required-field-notice">
         <NxForm.RequiredFieldNotice />
       </p>
       <div className="nx-form-row">

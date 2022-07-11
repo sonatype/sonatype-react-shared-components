@@ -118,7 +118,7 @@ export default function NxFormExample() {
                     submitError={submitError}
                     validationErrors={validationErrors}
                     submitMaskState={submitMaskState}>
-      <p className="nx-p--required-field-notice">
+      <p className="nx-p__required-field-notice">
         <NxForm.RequiredFieldNotice />
       </p>
       <NxFormGroup label="Username" isRequired>
