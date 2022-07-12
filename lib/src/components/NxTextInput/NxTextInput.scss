@@ -149,7 +149,7 @@ textarea.nx-text-input__input {
 
 // validation messages should be shown in these cases
 .nx-form--show-validation-errors .nx-text-input, .nx-text-input:not(.pristine) {
-  :not(.disabled) {
+  &:not(.disabled) {
     &.valid {
       .nx-text-input__box {
         border-color: var(--nx-color-validation-valid);
