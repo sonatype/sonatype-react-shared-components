@@ -44,7 +44,7 @@
     background-color: var(--nx-swatch-green-95);
     color: var(--nx-swatch-green-10);
     &::before {
-      background-color: var(--nx-swatch-green-25);
+      background-color: var(--nx-color-alert-success);
     }
   }
 
@@ -52,7 +52,7 @@
     background-color: var(--nx-swatch-red-95);
     color: var(--nx-swatch-red-10);
     &::before {
-      background-color: var(--nx-swatch-red-40);
+      background-color: var(--nx-color-alert-error);
     }
   }
 }
