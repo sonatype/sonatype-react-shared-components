@@ -303,8 +303,7 @@ const NxFormPage = () =>
                         liveExample={NxFormExample}>
       This example shows an asynchronously loading NxForm. The example is contrived such that the
       form fails to load the first time, but does load (after a brief wait) upon a second attempt.
-      Additionally, the first attempt to submit the form fails, while the retry succeeds. The example also{' '}
-      demonstrates the use of the isRequired flag to remove the "Optional" indicator.
+      Additionally, the first attempt to submit the form fails, while the retry succeeds.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Customized Example"

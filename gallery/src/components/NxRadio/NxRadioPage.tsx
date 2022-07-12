@@ -157,7 +157,6 @@ const NxRadioPage = () =>
                         liveExample={NxRadioDisabledExample}>
       This example shows radios that are disabled.
       Disabled radios can either be checked or unchecked.
-      The example also demonstrates the use of the isRequired flag to remove the "Optional" indicator.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Radio label does not wrap"

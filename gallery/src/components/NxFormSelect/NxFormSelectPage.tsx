@@ -155,23 +155,21 @@ const NxFormSelectPage = () =>
                         codeExamples={nxFormSelectExampleSourceCode}
                         liveExample={NxFormSelectExample}>
       Demonstrates an <NxCode>NxFormSelect</NxCode> using the <NxCode>useNxFormSelectState</NxCode> hook to manage
-      its state.The example also demonstrates the use of the isRequired flag to remove the "Optional" indicator.
+      its state.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Form Select Overflow Example"
                         id="nx-form-select-overflow-example"
                         codeExamples={nxFormSelectOverflowExampleSourceCode}
                         liveExample={NxFormSelectOverflowExample}>
-      Demonstrates an <NxCode>NxFormSelect</NxCode> with long option text that overflows. The example also{' '}
-      demonstrates the use of the isRequired flag to remove the "Optional" indicator.
+      Demonstrates an <NxCode>NxFormSelect</NxCode> with long option text that overflows.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Form Select Widths Examples"
                         id="nx-form-select-widths-examples"
                         codeExamples={nxFormSelectWidthsExampleSourceCode}
                         liveExample={NxFormSelectWidthsExample}>
-      Demonstrates <NxCode>NxFormSelect</NxCode>'s with with the short and long variants applied. The example also{' '}
-      demonstrates the use of the isRequired flag to remove the "Optional" indicator.
+      Demonstrates <NxCode>NxFormSelect</NxCode>'s with with the short and long variants applied.
     </GalleryExampleTile>
   </>;
 
