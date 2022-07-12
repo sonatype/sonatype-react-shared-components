@@ -19,10 +19,10 @@ import { NxErrorAlert } from '../NxAlert/NxAlert';
 
 function RequiredFieldNotice() {
   return (
-    <span className="nx-form__required-field-notice">
+    <p className="nx-form__required-field-notice">
       <span className="nx-form__required-field-asterisk">*</span>
       {' '}Required fields are marked with an asterisk.
-    </span>
+    </p>
   );
 }
 

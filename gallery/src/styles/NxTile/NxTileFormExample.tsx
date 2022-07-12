@@ -28,9 +28,7 @@ export default function NxTileFormExample() {
           </hgroup>
         </header>
         <div className="nx-tile-content">
-          <p className="nx-p__required-field-notice">
-            <NxForm.RequiredFieldNotice />
-          </p>
+          <NxForm.RequiredFieldNotice />
           <NxFormGroup label="Username" isRequired>
             <NxStatefulTextInput aria-required={true} validator={validator}/>
           </NxFormGroup>

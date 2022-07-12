@@ -72,9 +72,7 @@ export default function NxModalFormExample() {
               </h2>
             </header>
             <div className="nx-modal-content">
-              <p className="nx-p__required-field-notice">
-                <NxForm.RequiredFieldNotice />
-              </p>
+              <NxForm.RequiredFieldNotice />
               <NxFormGroup label="Username" isRequired>
                 <NxTextInput aria-required={true}
                              placeholder="Username"
