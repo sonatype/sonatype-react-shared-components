@@ -81,7 +81,7 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
   const renderCounter = () => <MultiSelectCounter options={options} selectedIds={selectedIds} />,
       dropdownLabel = (
         <>
-          <NxFontAwesomeIcon className="nx-filter-dropdown__filter-icon" icon={faFilter} />
+          <NxFontAwesomeIcon className="nx-dropdown-icon" icon={faFilter} />
           { hasSelection ? renderCounter() : <span>{placeholder ?? 'Filter'}</span> }
         </>
       );
