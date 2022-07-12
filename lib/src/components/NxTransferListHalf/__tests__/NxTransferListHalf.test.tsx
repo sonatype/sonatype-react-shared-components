@@ -311,20 +311,20 @@ describe('NxTransferListHalf', function() {
       expect(firstItem).toExist();
       expect(firstItemMoveUpButton).toExist();
       expect(firstItemMoveDownButton).toExist();
-      expect(firstItemMoveUpButton.prop('disabled')).toBe(true);
-      expect(firstItemMoveDownButton.prop('disabled')).toBe(false);
+      expect(firstItemMoveUpButton).toHaveClassName('disabled');
+      expect(firstItemMoveDownButton).not.toHaveClassName('disabled');
 
       expect(secondItem).toExist();
       expect(secondItemMoveUpButton).toExist();
       expect(secondItemMoveDownButton).toExist();
-      expect(secondItemMoveUpButton.prop('disabled')).toBe(false);
-      expect(secondItemMoveDownButton.prop('disabled')).toBe(false);
+      expect(secondItemMoveUpButton).not.toHaveClassName('disabled');
+      expect(secondItemMoveDownButton).not.toHaveClassName('disabled');
 
       expect(thirdItem).toExist();
       expect(thirdItemMoveUpButton).toExist();
       expect(thirdItemMoveDownButton).toExist();
-      expect(thirdItemMoveUpButton.prop('disabled')).toBe(false);
-      expect(thirdItemMoveDownButton.prop('disabled')).toBe(true);
+      expect(thirdItemMoveUpButton).not.toHaveClassName('disabled');
+      expect(thirdItemMoveDownButton).toHaveClassName('disabled');
     });
   });
 
@@ -420,10 +420,10 @@ describe('NxTransferListHalf', function() {
     const middleMoveUpButton = secondItem.find('.nx-btn').at(0);
     const middleMoveDownButton = secondItem.find('.nx-btn').at(1);
 
-    expect(firstMoveUpButton).toHaveProp('disabled', true);
-    expect(lastMoveDownButton).toHaveProp('disabled', true);
-    expect(middleMoveUpButton).toHaveProp('disabled', true);
-    expect(middleMoveDownButton).toHaveProp('disabled', true);
+    expect(firstMoveUpButton).toHaveClassName('disabled');
+    expect(lastMoveDownButton).toHaveClassName('disabled');
+    expect(middleMoveUpButton).toHaveClassName('disabled');
+    expect(middleMoveDownButton).toHaveClassName('disabled');
 
     firstMoveUpButton.simulate('click');
     lastMoveDownButton.simulate('click');

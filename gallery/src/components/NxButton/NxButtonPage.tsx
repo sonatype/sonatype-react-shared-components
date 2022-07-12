@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxTextLink, NxP } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxTextLink, NxP, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
@@ -60,6 +60,10 @@ export default function NxButtonPage() {
                 for buttons that include text content, but icon-only buttons should use this to make the button's
                 meaning clear in all contexts. Omitting this prop when using an icon-only button is deprecated and will
                 become unsupported in a future release.
+                <NxWarningAlert>
+                  Warning: If <NxCode>NxButton</NxCode> contains both <NxCode>title</NxCode> and
+                  {' '}<NxCode>disabled</NxCode> props, <NxCode>NxButton</NxCode> will throw an error.
+                </NxWarningAlert>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -126,11 +130,12 @@ export default function NxButtonPage() {
                           id="nx-button-icon-only-example"
                           liveExample={NxButtonIconOnlyExample}
                           codeExamples={nxButtonIconOnlyCode}>
-        An example of buttons containing only an icon and two with different ways of disabling.
-        Tooltips do not work on buttons that are disabled using the <NxCode>disabled</NxCode> attribute.
-        However, you can enable tooltips by using the "disabled" class instead of attribute.
-        For accessibility purposes, it is important to use the title prop on all icon-only buttons
-        so a screen reader can interpret the content correctly.
+        An example of buttons containing only an icon. When disabling icon only buttons, use the
+        {' '}<NxCode>disabled</NxCode> class instead of the <NxCode>disabled</NxCode> prop. Creating a button
+        containing both the <NxCode>disabled</NxCode> and <NxCode>title</NxCode> props will throw an error. Buttons
+        using the <NxCode>disabled</NxCode> class will have tooltips enabled. For accessibility purposes, it is
+        important to use the title prop on all icon-only buttons so a screen reader can interpret the content
+        correctly.
       </GalleryExampleTile>
     </>
   );
