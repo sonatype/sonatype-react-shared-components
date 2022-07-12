@@ -19,7 +19,7 @@ export default function NxCodeSnippetPage() {
     <GalleryDescriptionTile>
       <NxWarningAlert>
         <NxCode>NxCodeSnippet</NxCode> has been renamed to <NxCode>NxCopyToClipboard</NxCode>
-        and is now deprecated and will be removed in the future.
+        {' '}and is now deprecated and will be removed in the future.
         Please use <NxTextLink href="#/pages/Copy%20To%20Clipboard">NxCopyToClipboard</NxTextLink> instead.
       </NxWarningAlert>
 
