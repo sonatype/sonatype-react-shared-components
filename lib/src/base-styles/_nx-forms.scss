@@ -14,7 +14,7 @@
     color: var(--nx-swatch-red-40);
   }
 
-  .nx-p__required-field-notice {
+  &__required-field-notice {
     font-weight: 600;
     color: var(--nx-color-text-dark);
     margin-bottom: var(--nx-spacing-6x);
