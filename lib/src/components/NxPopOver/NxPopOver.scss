@@ -56,7 +56,7 @@
   flex-direction: column;
   align-items: stretch;
   transform: translateX(100%);
-
+  
   &--slide-in {
     animation-name: slide-in;
     animation-duration: 200ms;
@@ -70,7 +70,21 @@
     animation-duration: 120ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    //animation-direction: reverse;
+  }
+
+  @media (prefers-reduced-motion) {
+    &--slide-in {
+      animation-name: slide-in;
+      animation-duration: 0ms;
+      animation-fill-mode: forwards;
+    }
+  
+    &--slide-out {
+      transform: translateX(0%);
+      animation-name: slide-out;
+      animation-duration: 0ms;
+      animation-fill-mode: forwards;
+    }
   }
 }
 

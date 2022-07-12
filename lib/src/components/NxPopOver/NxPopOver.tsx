@@ -100,9 +100,10 @@ const _NxPopOver = (props: Props) => {
     if (timeOut) {
       return;
     }
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     dialogRef.current?.classList.remove('nx-pop-over--slide-in');
     dialogRef.current?.classList.add('nx-pop-over--slide-out');
-    timeOut = window.setTimeout(() => onClose(), ANIMATION_OUT_DURATION_IN_MS);
+    timeOut = window.setTimeout(() => onClose(), prefersReducedMotion ? 0 : ANIMATION_OUT_DURATION_IN_MS);
   };
 
   const dialogRef = useRef<HTMLDialogElement>(null);
