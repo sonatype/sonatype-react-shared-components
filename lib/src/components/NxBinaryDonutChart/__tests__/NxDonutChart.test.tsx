@@ -40,7 +40,7 @@ describe('NxBinaryDonutChart', function() {
       expect(getShallowComponent({value: 90})).toMatchSelector('svg');
     });
 
-    it('renders only the background path with the expected properties at zero percent', function() {
+    it('renders only the background path with the expected properties at zero value', function() {
       const circles = getShallowComponent().find('circle');
       const paths = getShallowComponent().find('path');
 
@@ -51,7 +51,7 @@ describe('NxBinaryDonutChart', function() {
       // whether the background renders correctly is best left to the visual tests
     });
 
-    it('renders only the background path with the expected properties at zero percent with maxVal',
+    it('renders only the background path with the expected properties at zero value with maxVal',
         function() {
           const circles = getShallowComponent({maxVal: 200}).find('circle');
           const paths = getShallowComponent({maxVal: 200}).find('path');
@@ -63,7 +63,7 @@ describe('NxBinaryDonutChart', function() {
         // whether the background renders correctly is best left to the visual tests
         });
 
-    it('renders the background path and an arc circle with the expected properties when percent is 100',
+    it('renders the background path and an arc circle with the expected properties when value is 100',
         function() {
           const circles = getShallowComponent({value: 100}).find('circle');
           const paths = getShallowComponent({value: 100}).find('path');
@@ -76,7 +76,7 @@ describe('NxBinaryDonutChart', function() {
           expect(paths.at(0)).toHaveClassName('.nx-binary-donut-chart__background');
         });
 
-    it('renders the background path and an arc circle with the expected properties when percent is 100 with maxVal',
+    it('renders the background path and an arc circle with the expected properties when value is equal to maxVal',
         function() {
           const circles = getShallowComponent({value: 80, maxVal: 80}).find('circle');
           const paths = getShallowComponent({value: 80, maxVal: 80}).find('path');
@@ -89,7 +89,7 @@ describe('NxBinaryDonutChart', function() {
           expect(paths.at(0)).toHaveClassName('.nx-binary-donut-chart__background');
         });
 
-    it('renders only a background circle path when percent is negative', function() {
+    it('renders only a background circle path when value is negative', function() {
       const circles = getShallowComponent({value: -50}).find('circle');
       const paths = getShallowComponent({value: -50}).find('path');
 
@@ -98,7 +98,7 @@ describe('NxBinaryDonutChart', function() {
       expect(paths.at(0)).toHaveClassName('.nx-binary-donut-chart__background');
     });
 
-    it('renders only a background circle path when percent is negative with maxVal', function() {
+    it('renders only a background circle path when value is negative with maxVal', function() {
       const circles = getShallowComponent({value: -50, maxVal: 200}).find('circle');
       const paths = getShallowComponent({value: -50, maxVal: 200}).find('path');
 
@@ -107,7 +107,7 @@ describe('NxBinaryDonutChart', function() {
       expect(paths.at(0)).toHaveClassName('.nx-binary-donut-chart__background');
     });
 
-    it('renders a background path and arc path with expected properties when 0 < percent < 100', function() {
+    it('renders a background path and arc path with expected properties when 0 < value < 100', function() {
       const circles = getShallowComponent({value: 50}).find('circle');
       const paths = getShallowComponent({value: 50}).find('path');
 
@@ -120,7 +120,7 @@ describe('NxBinaryDonutChart', function() {
       expect(paths.at(1)).toHaveProp('strokeWidth', 7);
     });
 
-    it('renders a background path and arc path with expected properties when 0 < percent < 100 with maxVal',
+    it('renders a background path and arc path with expected properties when 0 < value < maxVal',
         function() {
           const circles = getShallowComponent({value: 100, maxVal: 200}).find('circle');
           const paths = getShallowComponent({value: 100, maxVal: 200}).find('path');
