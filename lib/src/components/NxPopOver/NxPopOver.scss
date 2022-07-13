@@ -56,6 +56,11 @@ $-box-shadow-offset: 52px;
   top: 0;
   padding-left: $-box-shadow-offset;
   box-sizing: border-box;
+
+  &--with-top-bar {
+    top: 42px;
+    height: calc(100% - 42px);
+  }
   
   &--narrow {
     width: 348px + $-box-shadow-offset;

@@ -24,7 +24,7 @@ export default function NxPopOverExample() {
     <div className="gallery-pop-over-example">
       <NxButton onClick={() => setShowPopOver(true)}>Open Pop Over</NxButton>
       {showPopOver && (
-        <NxPopOver variant={'narrow'} onClose={popOverCloseHandler}>
+        <NxPopOver className="nx-pop-over--with-top-bar" variant="narrow" onClose={popOverCloseHandler}>
           <NxPopOver.Header title="Example Pop Over Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
            cillum dolore eu fugiat nulla pariatur."
                             subtitle="Example subtitle"
