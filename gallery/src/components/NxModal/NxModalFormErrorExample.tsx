@@ -6,7 +6,8 @@
  */
 import React, { useState } from 'react';
 
-import { NxModal,
+import {
+  NxModal,
   NxFontAwesomeIcon,
   NxTextInput,
   NxButton,
