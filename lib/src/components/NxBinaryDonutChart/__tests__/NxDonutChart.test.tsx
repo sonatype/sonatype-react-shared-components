@@ -8,7 +8,7 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxBinaryDonutChart, {Props} from '../NxBinaryDonutChart';
 
 describe('NxBinaryDonutChart', function() {
-  describe('with minimalProps', function() {
+  describe('with non-deprecated props', function() {
     const minimalProps: Props = {
           value: 0
         },
