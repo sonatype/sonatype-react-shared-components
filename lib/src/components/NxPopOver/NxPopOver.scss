@@ -24,6 +24,9 @@
     transform: translateX(100%);
   }
  }
+//520
+//348
+$-box-shadow-offset: 52px;
 
 .nx-pop-over {
   // undo styles that chrome applies to <dialog> elements
@@ -43,32 +46,43 @@
     // chrome tries to add its own subtle mask here which doubles up with our own
     display: none;
   }
-  box-sizing: border-box;
-  height: 100%;
-  border-left: 1px solid black;
+  z-index: 100;
   position: fixed;
-  padding: var(--nx-spacing-6x);
+  transform: translateX(100%);
+  background: transparent;
+  width: 520px + $-box-shadow-offset;
+  height: 100%;
   right: 0;
   top: 0;
-  width: 540px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  transform: translateX(100%);
-  z-index: 100;
-
-  &::after {
-    content: " ";
-    position: absolute;
-    width: 100%;
-    height: calc(100% - var(--nx-spacing-16x));
-    left: 0;
-    top: var(--nx-spacing-8x);
-    z-index: -1;
-    box-shadow: -2px 0px 50px rgba(128,128,128, 0.5);
-  }
+  padding-left: $-box-shadow-offset;
+  box-sizing: border-box;
   
+  &--narrow {
+    width: 348px + $-box-shadow-offset;
+  }
+
+  &__inner {
+    box-sizing: border-box;
+    padding: var(--nx-spacing-6x);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    height: 100%;
+
+    &::after {
+      content: " ";
+      position: absolute;
+      width: 100%;
+      height: calc(100% - var(--nx-spacing-16x));
+      left: 0;
+      top: var(--nx-spacing-8x);
+      z-index: -1;
+      box-shadow: -2px 0px 50px rgba(128,128,128, 0.5);
+    }  
+  }
+
   &--slide-in {
     animation-name: slide-in;
     animation-duration: 200ms;

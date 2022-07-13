@@ -51,26 +51,6 @@ export const NxPopOverHeader = (props: PopOverHeaderProps) => {
   );
 };
 
-export const NxPopOverContent = (props: PopOverContentProps) => {
-  const { children } = props;
-
-  return (
-    <div className="nx-pop-over-content">
-      {children}
-    </div>
-  );
-};
-
-export const NxPopOverFooter = (props: PopOverFooterProps) => {
-  const { children } = props;
-
-  return (
-    <footer className="nx-pop-over-footer">
-      {children}
-    </footer>
-  );
-};
-
 const useClickOutside = <T extends HTMLElement>(ref: React.RefObject<T>, fn: (e: MouseEvent) => void) => {
   useEffect(() => {
     const listener = (event: MouseEvent) => {
@@ -91,6 +71,7 @@ const _NxPopOver = (props: Props) => {
     className,
     onClose,
     children,
+    variant,
     ...otherProps
   } = props;
 
@@ -132,7 +113,9 @@ const _NxPopOver = (props: Props) => {
     }
   };
 
-  const classes = classnames('nx-pop-over', 'nx-pop-over--slide-in', className);
+  const classes = classnames('nx-pop-over', 'nx-pop-over--slide-in', {
+    'nx-pop-over--narrow': variant === 'narrow'
+  }, className);
 
   return (
     <PopOverContext.Provider value={popOverContextValue}>
@@ -141,7 +124,7 @@ const _NxPopOver = (props: Props) => {
               onKeyDown={keyboardListener}
               aria-modal="true"
               {...otherProps}>
-        {children}
+        <div className='nx-pop-over__inner'>{children}</div>
       </dialog>
     </PopOverContext.Provider>
   );
