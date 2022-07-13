@@ -43,12 +43,10 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 }
 
 .nx-collapsible-items--disabled {
-  .nx-collapsible-items__text, .nx-collapsible-items__child {
-    color: var(--nx-color-text-disabled);
-  }
 
   .nx-collapsible-items__trigger {
     cursor: default;
+    color: var(--nx-color-text-disabled);
   }
 }
 
