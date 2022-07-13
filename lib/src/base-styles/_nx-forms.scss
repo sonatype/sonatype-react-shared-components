@@ -10,6 +10,8 @@
 .nx-form {
   position: relative;
 
+  @include nx-container-helpers.container-vertical;
+
   &__required-field-asterisk {
     color: var(--nx-swatch-red-40);
   }
