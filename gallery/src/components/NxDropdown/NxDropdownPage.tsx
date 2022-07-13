@@ -17,6 +17,7 @@ import NxDropdownRightButtonsExample from './NxDropdownRightButtonsExample';
 import NxDropdownCustomLabelExample from './NxDropdownCustomLabelExample';
 import NxDropdownLinksExample from './NxDropdownLinksExample';
 import NxDropdownCloseHandlerExample from './NxDropdownCloseHandlerExample';
+import NxDropdownWithNxThreatIndicatorExample from './NxDropdownWithNxThreatIndicatorExample';
 
 const nxDropdownNavigationExampleCode = require('./NxDropdownNavigationExample?raw'),
     nxDropdownShortExampleCode = require('./NxDropdownShortExample?raw'),
@@ -25,7 +26,8 @@ const nxDropdownNavigationExampleCode = require('./NxDropdownNavigationExample?r
     nxDropdownCustomLabelExampleCode = require('./NxDropdownCustomLabelExample?raw'),
     nxDropdownRightButtonsExampleCode = require('./NxDropdownRightButtonsExample?raw'),
     nxDropdownLinksExampleCode = require('./NxDropdownLinksExample?raw'),
-    nxDropdownCloseHandlerExampleCode = require('./NxDropdownCloseHandlerExample?raw');
+    nxDropdownCloseHandlerExampleCode = require('./NxDropdownCloseHandlerExample?raw'),
+    nxDropdownWithNxThreatIndicatorExampleCode = require('./NxDropdownWithNxThreatIndicatorExample?raw');
 
 const NxDropdownPage = () =>
   <>
@@ -258,6 +260,16 @@ const NxDropdownPage = () =>
                 any <NxCode>.nx-dropdown-right-button</NxCode>s.
               </NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-dropdown-icon</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Set custom icons to the correct color.
+              </NxTable.Cell>
+              <NxTable.Cell>
+                This class should be applied to custom icons that do not have built-in color{' '}
+                so they are set to the correct <NxCode>NxDropdown</NxCode> icon color.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
@@ -304,6 +316,17 @@ const NxDropdownPage = () =>
                         liveExample={NxDropdownCustomLabelExample}
                         codeExamples={nxDropdownCustomLabelExampleCode}>
       This dropdown contains more complex JSX in its label.
+      Notice that the added <NxCode>NxFontAwesome</NxCode> icons have <NxCode>nx-dropdown-icon</NxCode>{' '}
+      class applied to them, this is so they are set to the correct color.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Custom label with NxThreatIndicator example"
+                        id="nx-dropdown-with-nx-threat-indicator-example"
+                        liveExample={NxDropdownWithNxThreatIndicatorExample}
+                        codeExamples={nxDropdownWithNxThreatIndicatorExampleCode}>
+      An example of a dropdown with <NxCode>NxThreatIndicator</NxCode>.
+      Notice that <NxCode>NxThreatIndicator</NxCode>s do not have <NxCode>nx-dropdown-icon</NxCode>{' '}
+      class applied to them because we don't want their colors to be overriden.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with right-floating buttons"
