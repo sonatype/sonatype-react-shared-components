@@ -42,10 +42,6 @@
   .nx-text-input {
     grid-area: textarea;
     width: 100%;
-    // When the rows attribute is specified for a textarea, Firefox adds an additional empty row at 
-    // the bottom of the textarea. Overflow-x:hidden resolves and removes the empty row
-    // https://stackoverflow.com/questions/46746887/textarea-extra-row-in-firefox-browser
-    overflow-x: hidden;
 
     .nx-text-input__box {
       border-color: var(--nx-color-form-element-border);
