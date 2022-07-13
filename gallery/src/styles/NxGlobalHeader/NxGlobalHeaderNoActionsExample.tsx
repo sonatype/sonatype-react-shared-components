@@ -23,7 +23,7 @@ export default function NxGlobalHeaderNoActionsExample() {
   return (
     <>
       <header className="nx-global-header">
-        <NxBackButton href="#/pages/nx-global-header" targetPageTitle="Documentation" />
+        <NxBackButton href="#/pages/Global%20Header" targetPageTitle="Documentation" />
       </header>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
