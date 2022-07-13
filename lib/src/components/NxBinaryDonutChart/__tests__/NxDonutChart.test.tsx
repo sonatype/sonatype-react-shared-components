@@ -173,7 +173,7 @@ describe('NxBinaryDonutChart', function() {
     });
   });
 
-  describe('with minimalDeprecatedProps', function() {
+  describe('with deprecated props', function() {
     const minimalDeprecatedProps: Props = {
           percent: 0
         },
