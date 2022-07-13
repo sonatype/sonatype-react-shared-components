@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+
 import React from 'react';
 import {
   NxTable,
@@ -11,7 +12,8 @@ import {
   NxP,
   NxTextLink,
   NxWarningAlert,
-  NxH3
+  NxH3,
+  NxTile
 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -127,8 +129,15 @@ export default function NxPopOverPage() {
                           liveExample={NxPopOverExample}
                           codeExamples={NxPopOverSourceCode}>
         A basic example of an <NxCode>NxPopOver</NxCode>.
-      </GalleryExampleTile>
+        <NxTile.Content>
+          <NxP>
+            <NxTextLink href="#/NxPopOverFullExample">
+              Click here to navigate to the live example.
+            </NxTextLink>
+          </NxP>
+        </NxTile.Content>
 
+      </GalleryExampleTile>
     </>
   );
 }

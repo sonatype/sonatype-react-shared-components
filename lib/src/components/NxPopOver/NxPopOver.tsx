@@ -14,9 +14,7 @@ import withClass from '../../util/withClass';
 import {
   Props,
   PopOverContextType,
-  PopOverHeaderProps,
-  PopOverContentProps,
-  PopOverFooterProps
+  PopOverHeaderProps
 } from './types';
 
 import './NxPopOver.scss';
@@ -94,7 +92,8 @@ const _NxPopOver = (props: Props) => {
   };
 
   useEffect(() => {
-    dialogRef.current?.showModal();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (dialogRef.current as any).showModal();
   }, []);
 
   useEffect(() => {
