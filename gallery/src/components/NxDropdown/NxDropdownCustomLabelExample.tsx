@@ -12,7 +12,12 @@ import { NxDropdown, NxFontAwesomeIcon, useToggle } from '@sonatype/react-shared
 function NxDropdownCustomLabelExample() {
   const [isOpen, onToggleCollapse] = useToggle(false),
       onClick = () => { alert('click'); },
-      labelElement = <><NxFontAwesomeIcon icon={faCarCrash}/><span>Beep Beep!</span></>;
+      labelElement = (
+        <>
+          <NxFontAwesomeIcon className="nx-dropdown-icon" icon={faCarCrash}/>
+          <span>Beep Beep!</span>
+        </>
+      );
 
   return (
     <NxDropdown label={labelElement}
@@ -20,7 +25,7 @@ function NxDropdownCustomLabelExample() {
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
       <button onClick={onClick} className="nx-dropdown-button">
-        <NxFontAwesomeIcon icon={faFrog}/>
+        <NxFontAwesomeIcon className="nx-dropdown-icon" icon={faFrog}/>
         <span>Some Action</span>
       </button>
     </NxDropdown>

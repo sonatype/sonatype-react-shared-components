@@ -153,8 +153,8 @@ export default function NxViewportSizedPage() {
             </NxTable.Body>
           </NxTable>
           <NxInfoAlert>
-            As described on the <NxTextLink href="#/pages/Page Layout">Page Layout</NxTextLink> page,
-            RSC's page-level styles support two overall scrolling modes. In the default "section scrolling" mode,
+            As described on the <NxTextLink href="#/pages/Page%20Layout%20Examples">Page Layout Examples</NxTextLink>
+            page, RSC's page-level styles support two overall scrolling modes. In the default "section scrolling" mode,
             the <NxCode>.nx-page-sidebar</NxCode> and <NxCode>.nx-page-main</NxCode>
             are sized the fill the available space in the viewport and may scroll individually if their contents
             require. In the alternative "page scrolling" mode, those two elements are allowed to be as tall as their

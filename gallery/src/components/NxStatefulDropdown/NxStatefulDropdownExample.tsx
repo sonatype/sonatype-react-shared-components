@@ -12,7 +12,7 @@ import { NxStatefulDropdown, NxFontAwesomeIcon } from '@sonatype/react-shared-co
 function NxStatefulDropdownExample() {
   const labelElement = (
     <>
-      <NxFontAwesomeIcon icon={faHatWizard}/>
+      <NxFontAwesomeIcon icon={faHatWizard} className="nx-dropdown-icon"/>
       <span>Apo Pantos Kakodaimonos!</span>
     </>
   );
