@@ -45,7 +45,9 @@ $-box-shadow-offset: 52px;
   &::backdrop {
     // chrome tries to add its own subtle mask here which doubles up with our own
     display: none;
+    pointer-events: auto;
   }
+
   z-index: 100;
   position: fixed;
   transform: translateX(100%);
@@ -145,8 +147,8 @@ $-box-shadow-offset: 52px;
                  "subtitle subtitle"
                  "paragraph paragraph" / auto min-content;
   height: min-content;
-
   gap: var(--nx-spacing-2x);
+
   &__close {
     grid-area: close;
     margin: 0;

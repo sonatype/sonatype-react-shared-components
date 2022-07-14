@@ -118,6 +118,7 @@ export default function NxPopOverFullExample() {
         </NxP>
         <NxP>
           <NxButton onClick={() => setShowPopOver(true)}>Open Pop Over (Narrow)</NxButton>
+          <NxButton onClick={() => alert('hello')}>Alert</NxButton>
         </NxP>
         <NxP>
           <NxButton onClick={() => setShowPopOver2(true)}>Open Pop Over (Normal)</NxButton>
