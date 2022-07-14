@@ -6,12 +6,13 @@
  */
 @use 'sass:math';
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-threat-colors-conditional';
+
 
 .nx-small-threat-counter {
   $height: 25px;
   position: relative;
   border-radius: math.div($height, 2);
-  color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-s);
   font-weight: bold;
   height: $height;
@@ -20,17 +21,7 @@
   padding-right: var(--nx-spacing-2x);
   text-align: center;
 
-  @each $category in critical, severe, moderate, low, none, unspecified {
-    &--#{$category} {
-      background-color: var(--nx-color-threat-#{$category});
-    }
-  }
-
-  &--critical,
-  &--none,
-  &--unspecified {
-    color: var(--nx-swatch-white);
-  }
+  @include nx-threat-colors-conditional.threat-colors($zero:false);
 
   &__category {
     //invisible but still read by the screenreader
@@ -46,8 +37,7 @@
   }
 
   &--zero {
-    background-color: var(--nx-swatch-grey-90);
-    color: var(--nx-swatch-grey-40);
+    @include nx-threat-colors-conditional.threat-colors ($zero:true);
   }
 }
 
@@ -68,18 +58,7 @@
       text-align: center;
       width: 100%;
 
-      @each $category in critical, severe, moderate, low, none, unspecified {
-        &--#{$category} {
-          background-color: var(--nx-color-threat-#{$category});
-        }
-      }
-
-      &--critical,
-      &--none,
-      &--unspecified {
-        color: var(--nx-swatch-white);
-      }
-
+      @include nx-threat-colors-conditional.threat-colors($zero:false);
     }
   }
 }
