@@ -16,7 +16,8 @@ import {
   NxFieldset,
   useToggle,
   NxFormSelect,
-  nxFormSelectStateHelpers
+  nxFormSelectStateHelpers,
+  NxForm
 } from '@sonatype/react-shared-components';
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
 import { combineValidationErrors, hasValidationErrors } from '@sonatype/react-shared-components/util/validationUtil';
@@ -117,6 +118,7 @@ export default function NxFormExample() {
                     submitError={submitError}
                     validationErrors={validationErrors}
                     submitMaskState={submitMaskState}>
+      <NxForm.RequiredFieldNotice />
       <NxFormGroup label="Username" isRequired>
         <NxTextInput { ...usernameState } onChange={onUsernameChange} validatable/>
       </NxFormGroup>

@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxStatefulTextInput, NxButton, NxFormGroup, NxStatefulForm } from '@sonatype/react-shared-components';
+import { NxStatefulTextInput, NxButton, NxFormGroup, NxStatefulForm, NxForm } from '@sonatype/react-shared-components';
 
 export default function NxTileFormExample() {
   function onSubmit() {
@@ -22,6 +22,7 @@ export default function NxTileFormExample() {
           </div>
         </header>
         <div className="nx-tile-content">
+          <NxForm.RequiredFieldNotice />
           <NxFormGroup label="Username" isRequired>
             <NxStatefulTextInput aria-required={true}/>
           </NxFormGroup>

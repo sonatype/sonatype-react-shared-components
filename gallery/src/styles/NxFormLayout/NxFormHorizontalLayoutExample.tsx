@@ -12,6 +12,7 @@ import { NxRadio } from '@sonatype/react-shared-components';
 import { NxButton } from '@sonatype/react-shared-components';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
 import { NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxForm } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -37,6 +38,7 @@ export default function NxFormLayoutExample() {
 
   return (
     <form className="nx-form" onSubmit={onSubmit} aria-label="Horizontal Layout Example">
+      <NxForm.RequiredFieldNotice />
       <div className="nx-form-row">
         <NxFormGroup label="Username" isRequired>
           <NxStatefulTextInput aria-required={true} validator={validator}/>
