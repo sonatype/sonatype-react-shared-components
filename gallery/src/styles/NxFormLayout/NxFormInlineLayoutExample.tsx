@@ -14,6 +14,7 @@ import {
   NxFormGroup,
   NxFormRow,
   nxTextInputStateHelpers,
+  NxForm,
   NxStatefulForm,
   NxTextInput,
   hasValidationErrors,
@@ -46,6 +47,7 @@ export default function NxFormLayoutExample() {
 
   return (
     <NxStatefulForm onSubmit={onSubmit} validationErrors={formValidationErrors} aria-label="Inline Form Example">
+      <NxForm.RequiredFieldNotice />
       <NxFormRow>
         <NxFormGroup label="Username" isRequired>
           <NxTextInput { ...usernameState } validatable onChange={onUsernameChange} />

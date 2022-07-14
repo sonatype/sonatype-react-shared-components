@@ -18,6 +18,7 @@ import {
   hasValidationErrors,
   combineValidationErrors,
   NxStatefulForm,
+  NxForm,
   NxFormRow,
   NxRadio,
   NxStatefulTextInput
@@ -82,6 +83,7 @@ export default function NxFormLayoutExample() {
 
   return (
     <NxStatefulForm onSubmit={onSubmit} validationErrors={formValidationErrors} aria-label="Horizontal Layout Example">
+      <NxForm.RequiredFieldNotice />
       <NxFormRow>
         <NxFormGroup label="Username" isRequired>
           <NxTextInput { ...textInputState } validatable onChange={onTextInputChange} />

@@ -6,8 +6,16 @@
  */
 import React, { useState } from 'react';
 
-import { NxModal, NxFontAwesomeIcon, NxTextInput, NxButton, nxTextInputStateHelpers, NxFormGroup, NxStatefulForm }
-  from '@sonatype/react-shared-components';
+import {
+  NxModal,
+  NxFontAwesomeIcon,
+  NxTextInput,
+  NxButton,
+  nxTextInputStateHelpers,
+  NxFormGroup,
+  NxStatefulForm,
+  NxForm
+} from '@sonatype/react-shared-components';
 import { faAngry } from '@fortawesome/free-solid-svg-icons';
 
 const { initialState, userInput } = nxTextInputStateHelpers;
@@ -39,6 +47,7 @@ export default function NxModalFormErrorExample() {
               </h2>
             </header>
             <div className="nx-modal-content">
+              <NxForm.RequiredFieldNotice />
               <NxFormGroup label="Username" isRequired>
                 <NxTextInput { ...textFieldState } onChange={onChange} aria-required={true} />
               </NxFormGroup>

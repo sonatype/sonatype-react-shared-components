@@ -139,6 +139,7 @@ export default function NxFormExample() {
             validationErrors={validationErrors}
             showValidationErrors={showValidationErrors}
             submitMaskState={submitMaskState}>
+      <NxForm.RequiredFieldNotice />
       <NxFormGroup label="Username" isRequired>
         <NxTextInput { ...usernameState } onChange={onUsernameChange} validatable/>
       </NxFormGroup>

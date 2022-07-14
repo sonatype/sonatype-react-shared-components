@@ -22,6 +22,7 @@ import {
   nxFormSelectStateHelpers,
   NxTransferList,
   NxStatefulForm,
+  NxForm,
   NxReadOnly,
   nxTextInputStateHelpers,
   NxTextInput,
@@ -121,6 +122,7 @@ export default function NxFormLayoutExample() {
                     onCancel={onCancel}
                     validationErrors={formValidationErrors}
                     aria-label="Default Form Layout Example">
+      <NxForm.RequiredFieldNotice />
       <NxInfoAlert>This is a sample alert message</NxInfoAlert>
       <NxFormGroup label="A Field to Fill in" isRequired>
         <NxTextInput { ...textInputState } validatable onChange={onTextInputChange}/>

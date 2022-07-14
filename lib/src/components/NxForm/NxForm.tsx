@@ -17,13 +17,14 @@ import { Props, propTypes } from './types';
 import { FormAriaContext } from './context';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
 import { NxErrorAlert } from '../NxAlert/NxAlert';
+import { NxP } from '../SimpleComponents';
 
 function RequiredFieldNotice() {
   return (
-    <span className="nx-form__required-field-notice">
+    <NxP className="nx-form__required-field-notice">
       <span className="nx-form__required-field-asterisk">*</span>
       {' '}Required fields are marked with an asterisk.
-    </span>
+    </NxP>
   );
 }
 
