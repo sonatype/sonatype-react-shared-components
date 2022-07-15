@@ -253,7 +253,7 @@ module.exports = {
           // there aren't any
           const builder = new AxePuppeteer(page).disableRules('color-contrast'),
               builderWithInclude = fullPage ? builder : builder.include('.gallery-example-live'),
-              customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
+              customizedBuilder = builderCustomizer ? builderCustomizer(builderWithInclude) : builderWithInclude,
               axeResults = await customizedBuilder.analyze();
 
           expect(axeResults.violations).toEqual([]);
