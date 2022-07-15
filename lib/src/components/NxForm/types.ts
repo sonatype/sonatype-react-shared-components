@@ -8,6 +8,10 @@ import { FormHTMLAttributes, ValidationMap, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 import { ValidationErrors, propTypes as nxTextInputPropTypes } from '../NxTextInput/types';
 
+export interface FormAriaContextType {
+  showValidationErrors: boolean;
+}
+
 export interface Props extends FormHTMLAttributes<HTMLFormElement> {
   loading?: boolean | null;
   doLoad?: (() => void) | null;

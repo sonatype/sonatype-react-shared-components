@@ -37,8 +37,7 @@ export default function NxModalFormErrorExample() {
         <NxModal id="nx-modal-form-error-example"
                  onCancel={modalCloseHandler}
                  aria-labelledby="modal-form-error-header">
-          <NxStatefulForm className="nx-form"
-                          onSubmit={modalCloseHandler}
+          <NxStatefulForm onSubmit={modalCloseHandler}
                           onCancel={modalCloseHandler}
                           submitError={error}>
             <header className="nx-modal-header">

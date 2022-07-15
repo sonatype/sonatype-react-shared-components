@@ -14,6 +14,7 @@ import NxButton from '../NxButton/NxButton';
 import NxSubmitMask from '../NxSubmitMask/NxSubmitMask';
 
 import { Props, propTypes } from './types';
+import { FormAriaContext } from './context';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
 import { NxErrorAlert } from '../NxAlert/NxAlert';
 import { NxP } from '../SimpleComponents';
@@ -53,7 +54,8 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
           formHasValidationErrors = hasValidationErrors(validationErrors),
           formClasses = classnames('nx-form', className, {
             'nx-form--show-validation-errors': showValidationErrors,
-            'nx-form--has-validation-errors': formHasValidationErrors
+            'nx-form--has-validation-errors': formHasValidationErrors,
+            'nx-form--has-submit-error': !!submitError
           }),
           getChildren = children instanceof Function ? children : always(children),
           submitBtnClasses = classnames('nx-form__submit-btn', submitBtnClassesProp);
@@ -71,14 +73,14 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
       const renderForm = () => {
         return (
           <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
-            {getChildren()}
+            <FormAriaContext.Provider value={{ showValidationErrors }}>
+              {getChildren()}
+            </FormAriaContext.Provider>
             <footer className="nx-footer">
-              { submitError &&
-                <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
-                             error={submitError}
-                             retryHandler={onSubmitProp} />
-              }
-              { !submitError && formHasValidationErrors &&
+              <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
+                           error={submitError}
+                           retryHandler={onSubmitProp} />
+              { formHasValidationErrors && !submitError &&
                 <NxErrorAlert className="nx-form__validation-errors">
                   There were validation errors.{' '}
                   {getFirstValidationError(validationErrors)}
@@ -91,11 +93,9 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
                     Cancel
                   </NxButton>
                 }
-                { !!submitError ||
-                  <NxButton variant="primary" className={submitBtnClasses}>
-                    {submitBtnText || 'Submit'}
-                  </NxButton>
-                }
+                <NxButton variant="primary" className={submitBtnClasses}>
+                  {submitBtnText || 'Submit'}
+                </NxButton>
               </div>
 
             </footer>

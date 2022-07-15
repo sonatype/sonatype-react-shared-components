@@ -10,6 +10,7 @@ import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 
 import NxTextInput, { PrivateNxTextInput, Props } from '../NxTextInput';
 import { mount } from 'enzyme';
+import { FormAriaContext } from '../../NxForm/context';
 
 describe('PrivateNxTextInput', function() {
   const minimalProps = {
@@ -31,24 +32,18 @@ describe('PrivateNxTextInput', function() {
 
   it('contains the first validation message if isPristine is not true', function() {
     const validationErrorProps = { validatable: true, validationErrors: 'foo' },
-        multiErrorValidationProps = { validatable: true, validationErrors: ['asdf', 'foo'] };
+        multiErrorValidationProps = { validatable: true, validationErrors: ['asdf', 'foo'] },
+        pristineWithErrorsProps = { ...validationErrorProps, isPristine: true };
 
-    expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__invalid-message');
-    expect(getShallowComponent().find('.nx-text-input__invalid-message')).toHaveText('');
-
-    expect(getShallowComponent(validationErrorProps).find('.nx-text-input__invalid-message'))
-        .toHaveText('foo');
-
-    expect(getShallowComponent(multiErrorValidationProps).find('.nx-text-input__invalid-message'))
-        .toHaveText('asdf');
-
-    expect(getShallowComponent({ ...validationErrorProps, isPristine: true }).find('.nx-text-input__invalid-message'))
-        .toHaveText('');
+    expect(getShallowComponent()).not.toContainMatchingElement('.nx-field-validation-message');
+    expect(getShallowComponent(validationErrorProps).find('.nx-field-validation-message')).toHaveText('foo');
+    expect(getShallowComponent(multiErrorValidationProps).find('.nx-field-validation-message')).toHaveText('asdf');
+    expect(getShallowComponent(pristineWithErrorsProps)).not.toContainMatchingElement('.nx-field-validation-message');
   });
 
   it('places the alert role on the invalid message and references it as aria-errormessage', function() {
-    const component = getShallowComponent(),
-        invalidMessage = component.find('.nx-text-input__invalid-message'),
+    const component = getShallowComponent({ validatable: true, validationErrors: 'foo' }),
+        invalidMessage = component.find('.nx-field-validation-message'),
         invalidMessageId = invalidMessage.prop('id');
 
     expect(invalidMessage).toHaveProp('role', 'alert');
@@ -56,10 +51,30 @@ describe('PrivateNxTextInput', function() {
     expect(component.find('.nx-text-input__input')).toHaveProp('aria-errormessage', invalidMessageId);
   });
 
-  it('sets aria-invalid to true iff it is validatable and has validation errors', function() {
+  it('sets aria-invalid to true if it is validatable and has validation errors, ' +
+      'and either isPristine is false or a surrounding FormAriaContext\'s showValidationErrors is true', function() {
     expect(getShallowComponent().find('input')).not.toHaveProp('aria-invalid', true);
     expect(getShallowComponent({ validatable: true }).find('input')).not.toHaveProp('aria-invalid', true);
     expect(getShallowComponent({ validatable: true, validationErrors: 'foo' }).find('input'))
+        .toHaveProp('aria-invalid', true);
+
+    expect(getShallowComponent({ isPristine: true, validatable: true, validationErrors: 'foo' }).find('input'))
+        .not.toHaveProp('aria-invalid', true);
+
+    function getMountedWithContext(extraProps: Partial<Props> = {}) {
+      return mount(
+        <FormAriaContext.Provider value={{ showValidationErrors: true }}>
+          <PrivateNxTextInput { ...minimalProps } { ...extraProps } />
+        </FormAriaContext.Provider>
+      );
+    }
+
+    expect(getMountedWithContext().find('input')).not.toHaveProp('aria-invalid', true);
+    expect(getMountedWithContext({ validatable: true }).find('input')).not.toHaveProp('aria-invalid', true);
+    expect(getMountedWithContext({ validatable: true, validationErrors: 'foo' }).find('input'))
+        .toHaveProp('aria-invalid', true);
+
+    expect(getMountedWithContext({ isPristine: true, validatable: true, validationErrors: 'foo' }).find('input'))
         .toHaveProp('aria-invalid', true);
   });
 

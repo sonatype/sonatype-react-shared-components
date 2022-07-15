@@ -4,10 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { NxFormGroup, NxTextInput, NxButton, nxTextInputStateHelpers, NxStatefulForm }
-  from '@sonatype/react-shared-components';
+import { NxFormGroup, NxTextInput, NxButton, nxTextInputStateHelpers, NxForm } from '@sonatype/react-shared-components';
 import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
 
 const { initialState, userInput } = nxTextInputStateHelpers;
@@ -18,7 +17,15 @@ export default function NxFormCustomizedExample() {
       [hostnameState, setHostnameState] = useState(initialFieldState.hostname),
       [submitMaskState, setSubmitMaskState] = useState<boolean | null>(null),
       [submitCount, setSubmitCount] = useState(0),
-      [submitError, setSubmitError] = useState<string | null>(null);
+      [submitError, setSubmitError] = useState<string | null>(null),
+      [showValidationErrors, setShowValidationErrors] = useState(false);
+
+  useEffect(function() {
+    if (submitMaskState === null) {
+      // reset pristine state after successful submission
+      setShowValidationErrors(false);
+    }
+  }, [submitMaskState]);
 
   function onUsernameChange(val: string) {
     setUsernameState(userInput(null, val));
@@ -31,9 +38,12 @@ export default function NxFormCustomizedExample() {
   function resetForm() {
     setUsernameState(initialFieldState.username);
     setHostnameState(initialFieldState.hostname);
+    setShowValidationErrors(false);
   }
 
   function onSubmit() {
+    setShowValidationErrors(true);
+
     // For the sake of example, simulate that the submit fails the first time, and then upon retry
     // succeeds after 3 seconds
     if (submitCount < 1) {
@@ -64,23 +74,24 @@ export default function NxFormCustomizedExample() {
   );
 
   return (
-    <NxStatefulForm onSubmit={onSubmit}
-                    onCancel={resetForm}
-                    submitMaskState={submitMaskState}
-                    className="gallery-custom-form"
-                    submitBtnClasses="gallery-custom-form__submit"
-                    submitError={submitError}
-                    submitErrorTitleMessage="There was an error sending the message."
-                    submitBtnText="Send it"
-                    submitMaskMessage="Sending…"
-                    submitMaskSuccessMessage="Sent!"
-                    additionalFooterBtns={additionalFooterBtns}>
+    <NxForm onSubmit={onSubmit}
+            onCancel={resetForm}
+            submitMaskState={submitMaskState}
+            className="gallery-custom-form"
+            submitBtnClasses="gallery-custom-form__submit"
+            submitError={submitError}
+            submitErrorTitleMessage="There was an error sending the message."
+            submitBtnText="Send it"
+            submitMaskMessage="Sending…"
+            submitMaskSuccessMessage="Sent!"
+            showValidationErrors={showValidationErrors}
+            additionalFooterBtns={additionalFooterBtns}>
       <NxFormGroup label="Username">
         <NxTextInput { ...usernameState } onChange={onUsernameChange} />
       </NxFormGroup>
       <NxFormGroup label="Hostname">
         <NxTextInput { ...hostnameState } onChange={onHostnameChange} className="nx-text-input--long"/>
       </NxFormGroup>
-    </NxStatefulForm>
+    </NxForm>
   );
 }

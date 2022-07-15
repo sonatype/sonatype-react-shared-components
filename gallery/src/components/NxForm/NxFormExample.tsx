@@ -4,11 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent, useRef } from 'react';
 
 import {
   NxCheckbox,
-  NxStatefulForm,
   NxRadio,
   NxFormGroup,
   NxTextInput,
@@ -17,10 +16,12 @@ import {
   useToggle,
   NxFormSelect,
   nxFormSelectStateHelpers,
-  NxForm
+  NxForm,
+  combineValidationErrors,
+  hasValidationErrors,
+  ValidationErrors,
+  SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS
 } from '@sonatype/react-shared-components';
-import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
-import { combineValidationErrors, hasValidationErrors } from '@sonatype/react-shared-components/util/validationUtil';
 
 const { initialState, userInput } = nxTextInputStateHelpers;
 
@@ -47,6 +48,8 @@ export default function NxFormExample() {
       [submitCount, setSubmitCount] = useState(0),
       [submitError, setSubmitError] = useState<string | null>(null),
       [submitMaskState, setSubmitMaskState] = useState<boolean | null>(null),
+      [showValidationErrors, setShowValidationErrors] = useState(false),
+      previousValidationErrors = useRef<ValidationErrors | undefined>(null),
       checkboxValidationErrors = (redChecked || blueChecked || greenChecked) ?
         null : 'Please select at least one checkbox',
       requiredFieldValidationErrors = hasValidationErrors(usernameState.validationErrors) ?
@@ -69,6 +72,21 @@ export default function NxFormExample() {
     }, 2500);
   }, []);
 
+  useEffect(function() {
+    if (submitMaskState === null) {
+      // reset pristine state after successful submission
+      setShowValidationErrors(false);
+    }
+  }, [submitMaskState]);
+
+  useEffect(function() {
+    if (!hasValidationErrors(validationErrors) && hasValidationErrors(previousValidationErrors.current)) {
+      setShowValidationErrors(false);
+    }
+
+    previousValidationErrors.current = validationErrors;
+  }, [validationErrors]);
+
   function doLoad() {
     setLoading(true);
     setLoadError(null);
@@ -81,6 +99,8 @@ export default function NxFormExample() {
   }
 
   function onSubmit() {
+    setShowValidationErrors(true);
+
     if (!hasValidationErrors(validationErrors)) {
       // For the sake of example, simulate that the submit fails the first time, and then upon retry
       // succeeds after 3 seconds
@@ -97,7 +117,7 @@ export default function NxFormExample() {
 
           setTimeout(function() {
             setSubmitMaskState(null);
-          }, SUCCESS_VISIBLE_TIME_MS);
+          }, SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS);
         }, 3000);
       }
 
@@ -111,13 +131,14 @@ export default function NxFormExample() {
   };
 
   return (
-    <NxStatefulForm loading={loading}
-                    doLoad={doLoad}
-                    onSubmit={onSubmit}
-                    loadError={loadError}
-                    submitError={submitError}
-                    validationErrors={validationErrors}
-                    submitMaskState={submitMaskState}>
+    <NxForm loading={loading}
+            doLoad={doLoad}
+            onSubmit={onSubmit}
+            loadError={loadError}
+            submitError={submitError}
+            validationErrors={validationErrors}
+            showValidationErrors={showValidationErrors}
+            submitMaskState={submitMaskState}>
       <NxForm.RequiredFieldNotice />
       <NxFormGroup label="Username" isRequired>
         <NxTextInput { ...usernameState } onChange={onUsernameChange} validatable/>
@@ -163,6 +184,6 @@ export default function NxFormExample() {
           <option value="option5">Option 5</option>
         </NxFormSelect>
       </NxFormGroup>
-    </NxStatefulForm>
+    </NxForm>
   );
 }
