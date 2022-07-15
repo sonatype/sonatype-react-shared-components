@@ -169,5 +169,6 @@ $-box-shadow-offset: 52px;
   &__paragraph {
     grid-area: paragraph;
     margin: 0;
+    color: var(--nx-swatch-grey-30);
   }
 }

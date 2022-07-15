@@ -4,38 +4,40 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef, useEffect, KeyboardEvent } from 'react';
+import React, { MouseEventHandler } from 'react';
+
+import AbstractDialog, { AbstractDialogContext } from '../NxModal/AbstractDialog';
 
 import classnames from 'classnames';
 
 import withClass from '../../util/withClass';
-// Fix spacings on header
 
 import {
   Props,
-  PopOverContextType,
   PopOverHeaderProps
 } from './types';
 
 import './NxPopOver.scss';
 
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
+import { useRef } from 'react';
 
 const ANIMATION_OUT_DURATION_IN_MS = 120;
 
-const PopOverContext = React.createContext<PopOverContextType>({
-  onClose: () => {}
-});
-
 export const NxPopOverHeader = (props: PopOverHeaderProps) => {
-  const { onClose } = React.useContext(PopOverContext);
+  const dialogValue = React.useContext(AbstractDialogContext);
 
   const subtitle = props.subtitle ? <h3 className="nx-h3 nx-pop-over-header__subtitle">{props.subtitle}</h3> : null;
   const paragraph = props.paragraph ? <p className="nx-p nx-pop-over-header__paragraph">{props.paragraph}</p> : null;
+  const handleCloseButton: MouseEventHandler<HTMLButtonElement> = (event) => {
+    dialogValue?.onClose && dialogValue?.onClose(event);
+  };
 
   return (
     <header className="nx-pop-over-header">
-      <NxCloseButton className="nx-pop-over-header__close" type="button" onClick={onClose}>
+      <NxCloseButton className="nx-pop-over-header__close"
+                     type="button"
+                     onClick={handleCloseButton}>
         Close
       </NxCloseButton>
 
@@ -49,28 +51,13 @@ export const NxPopOverHeader = (props: PopOverHeaderProps) => {
   );
 };
 
-const useClickOutside = <T extends HTMLElement>(ref: React.RefObject<T>, fn: (e: MouseEvent) => void) => {
-  useEffect(() => {
-    const listener = (event: MouseEvent) => {
-      if (!ref.current || ref.current.contains(event.target as Node)) {
-        return;
-      }
-      fn(event);
-    };
-    document.addEventListener('click', listener);
-    return () => {
-      document.removeEventListener('click', listener);
-    };
-  }, [ref, fn]);
-};
-
 const _NxPopOver = (props: Props) => {
   const {
     className,
     onClose,
     children,
-    variant,
-    ...otherProps
+    variant
+    //...otherProps
   } = props;
 
   let timeOut: number | null = null;
@@ -86,46 +73,15 @@ const _NxPopOver = (props: Props) => {
   };
 
   const dialogRef = useRef<HTMLDialogElement>(null);
-  useClickOutside(dialogRef, () => closePopOver());
-  const popOverContextValue = {
-    onClose: closePopOver
-  };
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (dialogRef.current as any).showModal();
-  }, []);
-
-  useEffect(() => {
-    const handleCancel = () => {
-      closePopOver();
-    };
-    dialogRef.current?.addEventListener('cancel', handleCancel);
-    return () => {
-      dialogRef.current?.removeEventListener('cancel', handleCancel);
-    };
-  }, [onClose]);
-
-  const keyboardListener = (event: KeyboardEvent<HTMLDialogElement>) => {
-    if (event.key === 'Escape') {
-      closePopOver();
-    }
-  };
 
   const classes = classnames('nx-pop-over', 'nx-pop-over--slide-in', {
     'nx-pop-over--narrow': variant === 'narrow'
   }, className);
 
   return (
-    <PopOverContext.Provider value={popOverContextValue}>
-      <dialog ref={dialogRef}
-              className={classes}
-              onKeyDown={keyboardListener}
-              aria-modal="true"
-              {...otherProps}>
-        <div className='nx-pop-over__inner'>{children}</div>
-      </dialog>
-    </PopOverContext.Provider>
+    <AbstractDialog closeOnClickOutside={true} ref={dialogRef} className={classes} onClose={closePopOver}>
+      <div className='nx-pop-over__inner'>{children}</div>
+    </AbstractDialog>
   );
 };
 

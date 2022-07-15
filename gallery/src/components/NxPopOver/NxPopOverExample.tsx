@@ -6,7 +6,7 @@
  */
 import React, {useState} from 'react';
 
-import { NxPopOver, NxButton, NxP, NxButtonBar } from '@sonatype/react-shared-components';
+import { NxPopOver, NxButton, NxP } from '@sonatype/react-shared-components';
 
 export default function NxPopOverExample() {
   const [showPopOver, setShowPopOver] = useState(false);
@@ -61,9 +61,13 @@ export default function NxPopOverExample() {
             <NxButton>Click</NxButton>
           </NxPopOver.Content>
           <NxPopOver.Footer>
-            <NxButtonBar>
-              <NxButton>Done</NxButton>
-            </NxButtonBar>
+            <NxP>
+              Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo{' '}
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum{' '}
+              dolore eu fugiat nulla pariatur.
+            </NxP>
           </NxPopOver.Footer>
         </NxPopOver>
       )}

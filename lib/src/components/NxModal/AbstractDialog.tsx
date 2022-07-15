@@ -4,14 +4,39 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {Children, FunctionComponent, KeyboardEvent, useEffect, useRef, useState} from 'react';
-import classnames from 'classnames';
-import { pick, omit } from 'ramda';
+import React, {forwardRef, useImperativeHandle, KeyboardEvent, useEffect, useRef, useState, ReactNode} from 'react';
+//import classnames from 'classnames';
+import { pick } from 'ramda';
 
-import withClass from '../../util/withClass';
-import {Props, propTypes} from './types';
+//import withClass from '../../util/withClass';
 
-export const AbstractDialogContext = React.createContext<HTMLDialogElement | null>(null);
+export type CloseHandler = (evt: unknown) => void;
+
+interface BaseProps {
+  closeOnClickOutside?: boolean | null;
+  className?: string;
+  role?: string | null;
+  children: ReactNode;
+}
+
+interface CurrentProps extends BaseProps {
+  onCancel: CloseHandler;
+  onClose?: never;
+}
+
+interface DeprecatedProps extends BaseProps {
+  onClose: CloseHandler;
+  onCancel?: never;
+}
+
+type Props = CurrentProps | DeprecatedProps;
+
+interface AbstractDialogContextValue {
+  dialogEl: HTMLDialogElement | null,
+  onClose?: CloseHandler;
+}
+
+export const AbstractDialogContext = React.createContext<AbstractDialogContextValue | null>(null);
 
 // Typescript has rather obnoxiously partially removed support for HTMLDialogElement.
 // See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-907490128 and
@@ -41,7 +66,7 @@ const useClickOutside = <T extends HTMLElement>(ref: React.RefObject<T>, fn: (e:
 
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */
-const AbstractDialog: FunctionComponent<Props> = (props) => {
+const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   const { className, onClose, children, closeOnClickOutside, onCancel = onClose, role, ...attrs } = props;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -49,6 +74,7 @@ const AbstractDialog: FunctionComponent<Props> = (props) => {
   // value has updated, and refs aren't tracked like state values. So we have to copy the ref value into a state
   // value in order for it to be tracked.
   const [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
+  useImperativeHandle(ref, () => dialogRefState as HTMLDialogElement);
 
   function dialogKeydownListener(evt: KeyboardEvent<HTMLDialogElement>) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
@@ -137,12 +163,16 @@ const AbstractDialog: FunctionComponent<Props> = (props) => {
 
   const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
       ariaLabels = pick(ariaLabelAttrNames, attrs);
-      //attrsWithoutLabels = omit(ariaLabelAttrNames, attrs);
+      //attrsWithoutLabels = omit([...ariaLabelAttrNames, 'tabIndex'], attrs);
+  const abstractDialogContextValue = {
+    dialogEl: dialogRefState,
+    onClose: onCancel
+  };
 
   return (
     // Provide the dialog element to descendants so that tooltips can attach to it instead of the body,
     // which is necessary so that they end up in the top layer rather than behind the modal
-    <AbstractDialogContext.Provider value={dialogRefState}>
+    <AbstractDialogContext.Provider value={abstractDialogContextValue}>
       {/* Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
         * what a <dialog> is.  It makes a difference there.
         *
@@ -152,15 +182,15 @@ const AbstractDialog: FunctionComponent<Props> = (props) => {
       <dialog ref={dialogRef}
               role={role || 'dialog'}
               aria-modal="true"
-              className="nx-modal-backdrop"
               tabIndex={-1}
               onKeyDown={dialogKeydownListener}
+              className={className}
               {...ariaLabels}>
         {children}
       </dialog>
     </AbstractDialogContext.Provider>
   );
-};
+});
 
 export default AbstractDialog;
 export {Props} from './types';
