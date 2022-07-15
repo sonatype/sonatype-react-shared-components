@@ -244,14 +244,15 @@ module.exports = {
         };
       },
 
-      a11yTest(builderCustomizer) {
+      a11yTest(builderCustomizer, fullPage = false) {
         return async () => {
           // to allow async code such as tooltip initialization to complete
           await wait(500);
 
           // the color contrast checker seems to be buggy, it has many complaints about overlapping items when
           // there aren't any
-          const builder = new AxePuppeteer(page).include('.gallery-example-live').disableRules('color-contrast'),
+          const builder = new AxePuppeteer(page).disableRules('color-contrast'),
+              builderWithInclude = fullPage ? builder : builder.include('.gallery-example-live'),
               customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
               axeResults = await customizedBuilder.analyze();
 
