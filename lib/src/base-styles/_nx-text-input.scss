@@ -147,6 +147,15 @@ textarea.nx-text-input__input {
   min-height: 220px;
   padding: 0;
   resize: vertical;
+
+  &[rows] {
+    min-height: unset;
+    resize: none;
+    // When the rows attribute is specified for a textarea, Firefox adds an additional empty row at 
+    // the bottom of the textarea. Overflow-x:hidden resolves and removes the empty row
+    // https://stackoverflow.com/questions/46746887/textarea-extra-row-in-firefox-browser
+    overflow-x: hidden;
+  }
 }
 
 ::-ms-clear {

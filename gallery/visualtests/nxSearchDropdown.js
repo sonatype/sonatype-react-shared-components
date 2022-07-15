@@ -280,7 +280,7 @@ describe('NxSearchDropdown', function() {
       await waitAndGetElements(`${basicExampleSelector} .nx-dropdown-button:first-child`);
 
       // check pressing esc on the text input
-      page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
       expect(await isFocused(input)).toBe(true);
       expect(await input.evaluate(el => el.value)).toBe('');
 
@@ -289,7 +289,7 @@ describe('NxSearchDropdown', function() {
       await firstBtn.focus();
 
       // check pressing esc on a dropdown button
-      page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
       expect(await isFocused(input)).toBe(true);
       expect(await input.evaluate(el => el.value)).toBe('');
 
@@ -300,7 +300,7 @@ describe('NxSearchDropdown', function() {
       await errorRetryBtn.focus();
 
       // check pressing esc on error Retry button
-      page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
       expect(await isFocused(errorInput)).toBe(true);
       expect(await errorInput.evaluate(el => el.value)).toBe('');
     });
