@@ -26,10 +26,10 @@ const NxToastProvider = (props: NxToastProviderProps) => {
     if (!currentFocusedElement.classList.contains('nx-toast__close')) {
       setActiveElementBeforeToast(currentFocusedElement);
     }
-
+    const toastId = id++;
     setToasts((toasts) => [
       ...toasts,
-      { toastId: id++, type: content.type, message: content.message }
+      { toastId, type: content.type, message: content.message }
     ]);
   }, [setToasts]);
 
