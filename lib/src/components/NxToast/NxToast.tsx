@@ -20,9 +20,8 @@ const NxToast = (props: NxToastProps) => {
       toastIcon = toastTypeMap[type].icon,
       toastIconLabel = toastTypeMap[type].iconLabel,
       [animate, setAnimate] = useState(false),
-      classes = classnames('nx-toast', 'animate', className, toastClass,
-          {'slide-in': animate},
-          {'slide-out': !animate}
+      classes = classnames('nx-toast', className, toastClass,
+          {'slide-in': animate}
       ),
       toastContext = useContext(ToastContext),
       closeBtnRef = useRef<HTMLButtonElement>(null);
@@ -53,7 +52,7 @@ const NxToast = (props: NxToastProps) => {
     //Wait for slide-out animation before removing toast from DOM
     setTimeout(() => {
       toastContext?.removeToast(toastId);
-    }, 250);
+    }, 300);
   };
 
   return (

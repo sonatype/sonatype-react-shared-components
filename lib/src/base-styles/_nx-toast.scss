@@ -25,9 +25,11 @@
 .nx-toast {
   @extend .nx-alert;
   margin: var(--nx-spacing-2x) 0 0 0;
-  opacity: 0.5;
+  opacity: 0;
   position: relative;
+  top: -16px;
   width: 500px;
+  transition: all 0.3s ease-in-out;
 }
 
 .nx-toast--success {
@@ -46,18 +48,9 @@
   @extend .nx-alert--info;
 }
 
-.animate {
-  transition: all 0.3s ease-in-out;
-}
-
-.animate.slide-in {
+.slide-in {
   opacity: 1;
   top: 0;
-}
-
-.animate.slide-out {
-  opacity: 0.5;
-  top: -16px;
 }
 
 /*
@@ -67,14 +60,6 @@
 @media (prefers-reduced-motion: reduce) {
   .nx-toast {
     top: 0;
-  }
-
-  .animate {
     transition: opacity 0.3s ease-in-out;
-  }
-
-  .animate.slide-out {
-    opacity: 0.5;
-    top: 0;
   }
 }
