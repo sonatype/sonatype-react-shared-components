@@ -15,7 +15,7 @@ import ToastContext from './contexts';
 import { toastTypeMap } from './toastTypeMapping';
 
 const NxToast = (props: NxToastProps) => {
-  const { toastId, className, message, type, toastContainerRef, ...otherProps } = props,
+  const { toastId, className, message, type, ...otherProps } = props,
       toastClass = toastTypeMap[type].class,
       toastIcon = toastTypeMap[type].icon,
       toastIconLabel = toastTypeMap[type].iconLabel,
@@ -36,16 +36,6 @@ const NxToast = (props: NxToastProps) => {
     //When component is mounted, add class "animate slide-in" to trigger animation
     setAnimate(true);
   }, []);
-
-  //Effect to shift focus to the next toast's close button
-  //Dependency on the global toasts array
-  useEffect(() => {
-    if (toastContainerRef) {
-      //Gets the first close button of the child from the parent toast container div
-      const closeBtn = toastContainerRef.current?.querySelectorAll('.nx-btn--close')[0] as HTMLButtonElement;
-      closeBtn.focus();
-    }
-  }, [toastContext?.toasts]);
 
   const handleCloseClick = () => {
     setAnimate(false);
