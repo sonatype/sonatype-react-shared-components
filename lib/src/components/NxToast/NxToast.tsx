@@ -50,9 +50,13 @@ const NxToast = (props: NxToastProps) => {
   const handleCloseClick = () => {
     setAnimate(false);
     //Wait for slide-out animation before removing toast from DOM
-    setTimeout(() => {
+    // setTimeout(() => {
+    //   toastContext?.removeToast(toastId);
+    // }, 300);
+    // const toastArray = toastContext?.toasts;
+    toastContext?.toasts.forEach(() => addEventListener('transitionend', () => {
       toastContext?.removeToast(toastId);
-    }, 300);
+    }));
   };
 
   return (
