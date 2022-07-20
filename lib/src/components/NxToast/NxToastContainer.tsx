@@ -8,11 +8,9 @@ import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import NxToast from './NxToast';
 import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
-import classNames from 'classnames';
 
 const NxToastContainer = (props: NxToastContainerProps) => {
   const { toasts } = props,
-      className = classNames('nx-toast__wrapper'),
       toastContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [domReady, setDomReady] = React.useState(false);
@@ -29,7 +27,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   }
 
   return createPortal(
-    <div className={className} ref={toastContainerRef}>
+    <div className="nx-toast__wrapper" ref={toastContainerRef}>
       <div className="nx-toast__container">
         {toasts.sort((a, b) => (a.toastId > b.toastId) ? -1 : 1).map(toast => (
           <NxToast key={toast.toastId}
