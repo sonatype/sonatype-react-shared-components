@@ -10,6 +10,7 @@ import { default as NxCopyToClipboard, Props } from '../NxCopyToClipboard';
 import NxButton from '../../NxButton/NxButton';
 import NxFormGroup from '../../NxFormGroup/NxFormGroup';
 import NxTextInput from '../../NxTextInput/NxTextInput';
+import { NxCodeSnippet } from '../../../index';
 
 describe('NxCopyToClipboard', function() {
   const minimalProps: Props = {
@@ -18,6 +19,10 @@ describe('NxCopyToClipboard', function() {
       },
       getShallow = getShallowComponent(NxCopyToClipboard, minimalProps),
       getMounted = getMountedComponent(NxCopyToClipboard, minimalProps);
+
+  it('is aliased as NxCodeSnippet', function() {
+    expect(NxCopyToClipboard).toBe(NxCodeSnippet);
+  });
 
   it('renders a div with the nx-copy-to-clipboard class', function() {
     expect(getShallow()).toMatchSelector('div.nx-copy-to-clipboard');
