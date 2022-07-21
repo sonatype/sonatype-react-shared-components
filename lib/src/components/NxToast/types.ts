@@ -21,14 +21,12 @@ export type NxToastProps = HTMLAttributes<HTMLDivElement> & {
   type: ToastType;
   message: string;
   className?: string | null;
-  // toastContainerRef: RefObject<HTMLDivElement> | null;
 };
 
 export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
   toastId: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   type: PropTypes.oneOf(allToastTypes).isRequired
-  // toastContainerRef: PropTypes.any
 };
 
 export type ToastModel = {

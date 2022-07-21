@@ -34,7 +34,7 @@ const NxToast = (props: NxToastProps) => {
       closeBtn.focus();
     }
 
-    //When component is mounted, add class "animate slide-in" to trigger animation
+    //When component is mounted, add class "slide-in" to trigger animation
     setVisible(true);
     setToastIsActive(true);
   }, []);
