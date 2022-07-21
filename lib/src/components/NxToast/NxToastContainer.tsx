@@ -29,7 +29,6 @@ const NxToastContainer = (props: NxToastContainerProps) => {
       //Gets the first close button of the child from the parent toast container div
       const closeBtn = toastContainerRef.current?.querySelectorAll('.nx-btn--close')[0] as HTMLButtonElement;
       closeBtn.focus();
-      console.log(closeBtn);
     }
   }, [toastContext?.toasts]);
 

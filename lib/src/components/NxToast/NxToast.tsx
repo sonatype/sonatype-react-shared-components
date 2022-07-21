@@ -20,6 +20,7 @@ const NxToast = (props: NxToastProps) => {
       toastIcon = toastTypeMap[type].icon,
       toastIconLabel = toastTypeMap[type].iconLabel,
       [animate, setAnimate] = useState(false),
+      [toastIsActive, setToastIsActive] = useState(false),
       classes = classnames('nx-toast', className, toastClass,
           {'slide-in': animate}
       ),
@@ -35,22 +36,26 @@ const NxToast = (props: NxToastProps) => {
 
     //When component is mounted, add class "animate slide-in" to trigger animation
     setAnimate(true);
+    setToastIsActive(true);
   }, []);
 
   const handleCloseClick = () => {
     setAnimate(false);
-    //Wait for slide-out animation before removing toast from DOM
-    // setTimeout(() => {
-    //   toastContext?.removeToast(toastId);
-    // }, 300);
-    // const toastArray = toastContext?.toasts;
-    toastContext?.toasts.forEach(() => addEventListener('transitionend', () => {
+    setToastIsActive(false);
+  };
+
+  const handleTransitionEnd = () => {
+    if (!toastIsActive) {
       toastContext?.removeToast(toastId);
-    }));
+    }
   };
 
   return (
-    <div role="alert" { ...otherProps } className={classes} aria-atomic={true}>
+    <div role="alert"
+         onTransitionEnd={handleTransitionEnd}
+         { ...otherProps }
+         className={classes}
+         aria-atomic={true}>
       <NxFontAwesomeIcon aria-label={toastIconLabel} icon={toastIcon}/>
       <div className="nx-toast__content">{message}</div>
       <NxCloseButton ref={closeBtnRef} onClick={handleCloseClick} className="nx-toast__close"/>

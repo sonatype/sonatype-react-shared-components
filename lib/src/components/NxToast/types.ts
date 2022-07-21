@@ -27,7 +27,7 @@ export type NxToastProps = HTMLAttributes<HTMLDivElement> & {
 export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
   toastId: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(allToastTypes).isRequired,
+  type: PropTypes.oneOf(allToastTypes).isRequired
   // toastContainerRef: PropTypes.any
 };
 
