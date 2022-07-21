@@ -19,10 +19,10 @@ const NxToast = (props: NxToastProps) => {
       toastClass = toastTypeMap[type].class,
       toastIcon = toastTypeMap[type].icon,
       toastIconLabel = toastTypeMap[type].iconLabel,
-      [animate, setAnimate] = useState(false),
+      [visible, setVisible] = useState(false),
       [toastIsActive, setToastIsActive] = useState(false),
       classes = classnames('nx-toast', className, toastClass,
-          {'slide-in': animate}
+          {'slide-in': visible}
       ),
       toastContext = useContext(ToastContext),
       closeBtnRef = useRef<HTMLButtonElement>(null);
@@ -35,12 +35,12 @@ const NxToast = (props: NxToastProps) => {
     }
 
     //When component is mounted, add class "animate slide-in" to trigger animation
-    setAnimate(true);
+    setVisible(true);
     setToastIsActive(true);
   }, []);
 
   const handleCloseClick = () => {
-    setAnimate(false);
+    setVisible(false);
     setToastIsActive(false);
   };
 
