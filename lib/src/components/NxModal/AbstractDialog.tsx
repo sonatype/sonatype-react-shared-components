@@ -14,18 +14,13 @@ import React, {
   useState
 } from 'react';
 
-//import classnames from 'classnames';
 import { pick, omit } from 'ramda';
-
-//import withClass from '../../util/withClass';
 
 export type CloseHandler = (evt: unknown) => void;
 
 interface Props extends HTMLAttributes<HTMLDialogElement> {
   closeOnClickOutside?: boolean | null;
-  //className?: string;
-  //role?: string | null;
-  //children: ReactNode;
+  cancelOnClickOutsideTargetClassName?: string | null;
   onCancel: CloseHandler;
   useNativeCancelOnEscape?: boolean | null;
 }
@@ -48,10 +43,10 @@ const hasWindow = typeof window !== 'undefined',
     hasNativeModalSupport = !!(hasWindow && dynamicallyTypedWindow.HTMLDialogElement &&
       dynamicallyTypedWindow.HTMLDialogElement.prototype.showModal);
 
-const useClickOutside = <T extends HTMLElement>(ref: React.RefObject<T>, fn: (e: MouseEvent) => void) => {
+const useClickOutside = <T extends HTMLElement>(el: T | null | undefined, fn: (e: MouseEvent) => void) => {
   useEffect(() => {
     const listener = (event: MouseEvent) => {
-      if (!ref.current || ref.current.contains(event.target as Node)) {
+      if (!el || el.contains(event.target as Node)) {
         return;
       }
       fn(event);
@@ -60,13 +55,22 @@ const useClickOutside = <T extends HTMLElement>(ref: React.RefObject<T>, fn: (e:
     return () => {
       document.removeEventListener('click', listener);
     };
-  }, [ref, fn]);
+  }, [el, fn]);
 };
 
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */
 const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
-  const { className, children, closeOnClickOutside, onCancel, useNativeCancelOnEscape, role, ...attrs } = props;
+  const {
+    className,
+    children,
+    closeOnClickOutside,
+    onCancel,
+    useNativeCancelOnEscape,
+    role,
+    cancelOnClickOutsideTargetClassName,
+    ...attrs
+  } = props;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   // The dialogRef value needs to get passed down in a context. But the context needs to know when the ref
@@ -161,7 +165,9 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   }, [onCancel]);
 
   if (closeOnClickOutside) {
-    useClickOutside(dialogRef, (event) => onCancel ? onCancel(event) : null);
+    useClickOutside(cancelOnClickOutsideTargetClassName ?
+      dialogRef?.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] as HTMLElement :
+      dialogRef?.current, (event) => onCancel ? onCancel(event) : null);
   }
 
   const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,

@@ -7,24 +7,6 @@
  @use '../../scss-shared/nx-container-helpers';
  @use '../../scss-shared/nx-text-helpers';
  
- @keyframes slide-in {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
- }
-
- @keyframes slide-out {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(100%);
-  }
- }
-
 $-box-shadow-offset: 52px;
 
 .nx-pop-over {
@@ -92,14 +74,15 @@ $-box-shadow-offset: 52px;
 
   transition-duration: 120ms;
   transition-timing-function: ease-in-out;
+  transition-property: transform;
 
-  &--slide-in {
+  &--open {
     transform: translateX(0%);
     transition-duration: 200ms;
   }
 
   @media (prefers-reduced-motion) {
-    &, &--slide-in {
+    &, &--open {
       transition: unset;
     }
   }

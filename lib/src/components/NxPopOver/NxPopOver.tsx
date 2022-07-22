@@ -49,6 +49,8 @@ export const NxPopOverHeader = (props: PopOverHeaderProps) => {
   );
 };
 
+const POP_OVER_OPEN_CLASS_NAME = 'nx-pop-over--open';
+
 const _NxPopOver = (props: Props) => {
   const {
     className,
@@ -61,20 +63,19 @@ const _NxPopOver = (props: Props) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    dialogRef.current?.classList.add('nx-pop-over--slide-in');
+    dialogRef.current?.classList.add(POP_OVER_OPEN_CLASS_NAME);
   }, [dialogRef]);
 
   const closePopOver = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    dialogRef.current?.classList.remove('nx-pop-over--slide-in');
+    dialogRef.current?.classList.remove(POP_OVER_OPEN_CLASS_NAME);
     if (prefersReducedMotion) {
       onCancel();
     }
-    //timeOut = window.setTimeout(() => onCancel(), prefersReducedMotion ? 0 : ANIMATION_OUT_DURATION_IN_MS);
   };
 
   const handleTransitionEnd = () => {
-    if (!dialogRef.current?.classList.contains('nx-pop-over--slide-in')) {
+    if (!dialogRef.current?.classList.contains(POP_OVER_OPEN_CLASS_NAME)) {
       onCancel();
     }
   };
@@ -88,6 +89,7 @@ const _NxPopOver = (props: Props) => {
                     ref={dialogRef}
                     className={classes}
                     onCancel={closePopOver}
+                    cancelOnClickOutsideTargetClassName="nx-pop-over__inner"
                     onTransitionEnd={handleTransitionEnd}>
       <div className='nx-pop-over__inner'>{children}</div>
     </AbstractDialog>
