@@ -62,6 +62,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
   margin: 0;
 
   &:focus {
+    border-width: 2px;
     border-color: var(--nx-color-interactive-border-focus);
   }
 
@@ -94,7 +95,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
   @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
 
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   display: block;
   padding: var(--nx-spacing-base)
            $-left-right-spacing
