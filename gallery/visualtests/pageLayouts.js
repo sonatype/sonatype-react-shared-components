@@ -112,8 +112,7 @@ describe('Page Layout', function() {
       });
 
       it('passes a11y checks', async function() {
-        // This rule appears to not work correctly on elements that are partially scrolled off the page
-        await a11yTest(builder => builder.disableRules('color-contrast'), true);
+        await a11yTest(null, true);
       });
     });
 
@@ -173,8 +172,7 @@ describe('Page Layout', function() {
       });
 
       it('passes a11y checks', async function() {
-        // This rule appears to not work correctly on elements that are partially scrolled off the page
-        await a11yTest(builder => builder.disableRules('color-contrast'), true);
+        await a11yTest(null, true);
       });
     });
 
