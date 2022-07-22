@@ -18,7 +18,7 @@ export interface PopOverHeaderProps {
 }
 
 export interface PopOverContextType {
-  onClose: () => void;
+  onCancel: () => void;
 }
 
 export interface PopOverContentProps {
@@ -31,11 +31,11 @@ export interface PopOverFooterProps {
 
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
   variant?: NX_POP_OVER_VARIANT_TYPE | null;
-  onClose: () => void;
+  onCancel: () => void;
   children?: ReactNode;
 }
 
 export const propTypes = {
-  onClose: PropTypes.func,
+  onCancel: PropTypes.func,
   variant: PropTypes.oneOf(NX_POP_OVER_VARIANTS)
 } as PropTypes.ValidationMap<Props>;

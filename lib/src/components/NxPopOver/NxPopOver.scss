@@ -24,8 +24,7 @@
     transform: translateX(100%);
   }
  }
-//520
-//348
+
 $-box-shadow-offset: 52px;
 
 .nx-pop-over {
@@ -58,6 +57,7 @@ $-box-shadow-offset: 52px;
   top: 0;
   padding-left: $-box-shadow-offset;
   box-sizing: border-box;
+  transform: translateX(100%);
 
   &--with-top-bar {
     top: 43px;
@@ -90,33 +90,17 @@ $-box-shadow-offset: 52px;
     }  
   }
 
-  &--slide-in {
-    animation-name: slide-in;
-    animation-duration: 200ms;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-  }
+  transition-duration: 120ms;
+  transition-timing-function: ease-in-out;
 
-  &--slide-out {
+  &--slide-in {
     transform: translateX(0%);
-    animation-name: slide-out;
-    animation-duration: 120ms;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
+    transition-duration: 200ms;
   }
 
   @media (prefers-reduced-motion) {
-    &--slide-in {
-      animation-name: slide-in;
-      animation-duration: 0ms;
-      animation-fill-mode: forwards;
-    }
-  
-    &--slide-out {
-      transform: translateX(0%);
-      animation-name: slide-out;
-      animation-duration: 0ms;
-      animation-fill-mode: forwards;
+    &, &--slide-in {
+      transition: unset;
     }
   }
 }

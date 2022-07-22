@@ -12,8 +12,7 @@ import {
   NxP,
   NxTextLink,
   NxWarningAlert,
-  NxH3,
-  NxTile
+  NxH3
 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -86,7 +85,7 @@ export default function NxPopOverPage() {
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell>onClose</NxTable.Cell>
+              <NxTable.Cell>onCancel</NxTable.Cell>
               <NxTable.Cell>Function (() =&gt; void)</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
@@ -129,14 +128,10 @@ export default function NxPopOverPage() {
                           liveExample={NxPopOverExample}
                           codeExamples={NxPopOverSourceCode}>
         A basic example of an <NxCode>NxPopOver</NxCode>.
-        <NxTile.Content>
-          <NxP>
-            <NxTextLink href="#/NxPopOverFullExample">
-              Click here to navigate to the live example.
-            </NxTextLink>
-          </NxP>
-        </NxTile.Content>
-
+        <br></br>
+        <NxTextLink href="#/NxPopOverFullExample">
+          Click here to navigate to the live example.
+        </NxTextLink>
       </GalleryExampleTile>
     </>
   );

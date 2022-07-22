@@ -4,36 +4,35 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {forwardRef, useImperativeHandle, KeyboardEvent, useEffect, useRef, useState, ReactNode} from 'react';
+import React, {
+  HTMLAttributes,
+  forwardRef,
+  useImperativeHandle,
+  KeyboardEvent,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
+
 //import classnames from 'classnames';
-import { pick } from 'ramda';
+import { pick, omit } from 'ramda';
 
 //import withClass from '../../util/withClass';
 
 export type CloseHandler = (evt: unknown) => void;
 
-interface BaseProps {
+interface Props extends HTMLAttributes<HTMLDialogElement> {
   closeOnClickOutside?: boolean | null;
-  className?: string;
-  role?: string | null;
-  children: ReactNode;
-}
-
-interface CurrentProps extends BaseProps {
+  //className?: string;
+  //role?: string | null;
+  //children: ReactNode;
   onCancel: CloseHandler;
-  onClose?: never;
+  useNativeCancelOnEscape?: boolean | null;
 }
-
-interface DeprecatedProps extends BaseProps {
-  onClose: CloseHandler;
-  onCancel?: never;
-}
-
-type Props = CurrentProps | DeprecatedProps;
 
 interface AbstractDialogContextValue {
   dialogEl: HTMLDialogElement | null,
-  onClose?: CloseHandler;
+  onCancel?: CloseHandler;
 }
 
 export const AbstractDialogContext = React.createContext<AbstractDialogContextValue | null>(null);
@@ -67,19 +66,19 @@ const useClickOutside = <T extends HTMLElement>(ref: React.RefObject<T>, fn: (e:
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */
 const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
-  const { className, onClose, children, closeOnClickOutside, onCancel = onClose, role, ...attrs } = props;
+  const { className, children, closeOnClickOutside, onCancel, useNativeCancelOnEscape, role, ...attrs } = props;
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   // The dialogRef value needs to get passed down in a context. But the context needs to know when the ref
   // value has updated, and refs aren't tracked like state values. So we have to copy the ref value into a state
   // value in order for it to be tracked.
   const [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
-  useImperativeHandle(ref, () => dialogRefState as HTMLDialogElement);
+  useImperativeHandle(ref, () => dialogRef.current as HTMLDialogElement);
 
   function dialogKeydownListener(evt: KeyboardEvent<HTMLDialogElement>) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
       // HACK for backwards compatibility: it is known that some downstream uses of NxModal do not provide
-      // the onCancel/onClose handler despite it being required. It is also known that these downstream uses
+      // the onCancel/onCancel handler despite it being required. It is also known that these downstream uses
       // have some logic which globally manages ESC handlers for a variety of things including modals. To keep that
       // working, only stopPropagation if the onCancel callback is defined. If it isn't defined, tenuously assume
       // that the ESC handling is implemented externall and do nothing here.
@@ -88,11 +87,15 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         // document don't pick it up
         evt.stopPropagation();
 
+        evt.nativeEvent.stopImmediatePropagation();
+        if (!useNativeCancelOnEscape) {
+          evt.preventDefault();
+          onCancel(new Event('cancel', { cancelable: true }));
+        }
+
         // prevent visibility to manually-registered native event listeners on the document too.
         // NOTE: this only works on listeners added after this one, which is believed to include any
         // registered in useEffect calls on components rendered simultaneously with the modal
-        evt.nativeEvent.stopImmediatePropagation();
-
         if (!hasNativeModalSupport && !evt.defaultPrevented) {
           // emulate cancel-on-esc behavior in browsers which don't do it natively
           onCancel(new Event('cancel', { cancelable: true }));
@@ -162,11 +165,11 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   }
 
   const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
-      ariaLabels = pick(ariaLabelAttrNames, attrs);
-      //attrsWithoutLabels = omit([...ariaLabelAttrNames, 'tabIndex'], attrs);
+      ariaLabels = pick(ariaLabelAttrNames, attrs),
+      attrsWithoutLabels = omit([...ariaLabelAttrNames, 'tabIndex'], attrs);
   const abstractDialogContextValue = {
     dialogEl: dialogRefState,
-    onClose: onCancel
+    onCancel: onCancel
   };
 
   return (
@@ -185,7 +188,8 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
               tabIndex={-1}
               onKeyDown={dialogKeydownListener}
               className={className}
-              {...ariaLabels}>
+              {...ariaLabels}
+              {...attrsWithoutLabels}>
         {children}
       </dialog>
     </AbstractDialogContext.Provider>
