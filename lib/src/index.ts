@@ -319,4 +319,6 @@ export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemN
 
 export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
 
+export { default as NxCombobox, Props as NxComboboxProps } from './components/NxCombobox/NxCombobox';
+
 export * from './components/NxStatusIndicator/NxStatusIndicator';

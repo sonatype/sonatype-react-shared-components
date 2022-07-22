@@ -145,6 +145,7 @@ import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferLi
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
+import NxComboboxPage from './components/NxCombobox/NxComboboxPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -196,6 +197,7 @@ const pageConfig: PageConfig = {
     'Collapsible Radio-Select': { content: NxCollapsibleRadioSelectPage, type: 'react' },
     'Stateful Collapsible Radio-Select': { content: NxStatefulCollapsibleRadioSelectPage, type: 'react' },
     'Color Picker': { content: NxColorPickerPage, type: 'react' },
+    'Combobox' : { content: NxComboboxPage, type: 'react' },
     'Date Input': { content: NxDateInputPage, type: 'react' },
     'Stateful Date Input': { content: NxStatefulDateInputPage, type: 'react' },
     'Fieldset': { content: NxFieldsetPage, type: 'react' },
