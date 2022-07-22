@@ -72,6 +72,7 @@
       text-align: center;
       width: 100%;
 
+      // using the counter-colors mixin will override the zero styling in this use case
       @include counter-colors;
     }
   }
