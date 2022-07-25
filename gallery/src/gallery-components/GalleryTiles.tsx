@@ -133,7 +133,7 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
         </NxTile.Content>
 
         <NxTile.Content className="nx-tile-content--accordion-container">
-          <NxStatefulAccordion>
+          <NxStatefulAccordion className="gallery-code-accordion">
             <NxAccordion.Header>
               <h2 className="nx-accordion__header-title">Example Code</h2>
             </NxAccordion.Header>

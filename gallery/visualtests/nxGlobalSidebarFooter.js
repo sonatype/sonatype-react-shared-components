@@ -20,7 +20,7 @@ describe('NxGlobalSidebarFooter', function() {
       await checkFullPageScreenshot();
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(null, true));
   });
 
   describe('when empty', function() {
@@ -34,6 +34,6 @@ describe('NxGlobalSidebarFooter', function() {
       await checkFullPageScreenshot();
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(null, true));
   });
 });

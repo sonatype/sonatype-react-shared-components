@@ -244,13 +244,16 @@ module.exports = {
         };
       },
 
-      a11yTest(builderCustomizer) {
+      a11yTest(builderCustomizer, fullPage = false) {
         return async () => {
           // to allow async code such as tooltip initialization to complete
-          await wait(1500);
+          await wait(500);
 
-          const builder = new AxePuppeteer(page),
-              customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
+          // the color contrast checker seems to be buggy, it has many complaints about overlapping items when
+          // there aren't any
+          const builder = new AxePuppeteer(page).disableRules('color-contrast'),
+              builderWithInclude = fullPage ? builder : builder.include('.gallery-example-live'),
+              customizedBuilder = builderCustomizer ? builderCustomizer(builderWithInclude) : builderWithInclude,
               axeResults = await customizedBuilder.analyze();
 
           expect(axeResults.violations).toEqual([]);
