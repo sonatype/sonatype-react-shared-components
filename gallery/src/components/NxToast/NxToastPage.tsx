@@ -5,7 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxP, NxTable, NxTile, NxH2, NxTextLink, NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-components';
+import { NxCode,
+  NxP,
+  NxTable,
+  NxTile,
+  NxH2,
+  NxTextLink,
+  NxStatefulAccordion,
+  NxAccordion } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
@@ -20,7 +27,7 @@ const nxToastExampleCode = require('./NxToastExample?raw'),
     nxToastMultipleExampleCode = require('./NxToastMultipleExample?raw'),
     nxGlobalHeaderToastExampleCode = require('../../styles/NxGlobalHeader/NxGlobalHeaderToastExample?raw');
 
-const NxToastPage = () => 
+const NxToastPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
@@ -153,7 +160,7 @@ const NxToastPage = () =>
       appears and is stacked on top of other toasts.
     </GalleryExampleTile>
 
-    {/* Manually built Gallery Tile because there is no use for the 
+    {/* Manually built Gallery Tile because there is no use for the
     "show checkered background" checkbox */}
     <NxTile>
       <NxTile.Header>
@@ -178,7 +185,8 @@ const NxToastPage = () =>
           <GalleryTileFooter clipboardContent= {nxGlobalHeaderToastExampleCode}/>
         </NxStatefulAccordion>
       </NxTile.Content>
-    </NxTile>   
+    </NxTile>
   </>;
 
 export default NxToastPage;
+
