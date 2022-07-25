@@ -22,7 +22,7 @@ const NxToastProvider = (props: NxToastProviderProps) => {
   // element.
   document.addEventListener('focusin', () => {
     const currentFocusedElement = document.activeElement as HTMLElement;
-    
+
     if (!currentFocusedElement.classList.contains('nx-toast__close')) {
       setActiveElementNotToast(currentFocusedElement);
     }

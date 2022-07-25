@@ -5,9 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxP, NxTable, NxTile, NxH2, NxTextLink } from '@sonatype/react-shared-components';
+import { NxCode, NxP, NxTable, NxTile, NxH2, NxTextLink, NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 import NxToastExample from './NxToastExample';
 import NxToastVariationsExample from './NxToastVariationsExample';
@@ -19,7 +20,7 @@ const nxToastExampleCode = require('./NxToastExample?raw'),
     nxToastMultipleExampleCode = require('./NxToastMultipleExample?raw'),
     nxGlobalHeaderToastExampleCode = require('../../styles/NxGlobalHeader/NxGlobalHeaderToastExample?raw');
 
-const NxToastPage = () =>
+const NxToastPage = () => 
   <>
     <GalleryDescriptionTile>
       <NxP>
@@ -60,10 +61,9 @@ const NxToastPage = () =>
         </NxCode>
       </NxP>
       <NxP>
-        When these functions to display the various kinds of toasts, i.e. <NxCode>showErrorToast()</NxCode>,
-        {' '}<NxCode>showSuccessToast()</NxCode>, <NxCode>showWarningToast()</NxCode>,
-        and <NxCode>showInfoToast()</NxCode> are contained within the children of <NxCode>NxToastProvider</NxCode>,
-        all toasts are rendered within the same container in the same top-right corner of the screen.
+        When these functions to display the various kinds of toasts are contained within the children of
+        {' '}<NxCode>NxToastProvider</NxCode>, all toasts are rendered within the same container in the same top-right
+        corner of the screen.
       </NxP>
       <NxTable>
         <NxTable.Head>
@@ -153,6 +153,8 @@ const NxToastPage = () =>
       appears and is stacked on top of other toasts.
     </GalleryExampleTile>
 
+    {/* Manually built Gallery Tile because there is no use for the 
+    "show checkered background" checkbox */}
     <NxTile>
       <NxTile.Header>
         <NxTile.HeaderTitle>
@@ -165,9 +167,18 @@ const NxToastPage = () =>
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
-        <CodeExample content={nxGlobalHeaderToastExampleCode} />
       </NxTile.Content>
-    </NxTile>
+
+      <NxTile.Content className= "nx-tile-content--accordion-container">
+        <NxStatefulAccordion>
+          <NxAccordion.Header>
+            <NxAccordion.Title>Example Code</NxAccordion.Title>
+          </NxAccordion.Header>
+          <CodeExample content={nxGlobalHeaderToastExampleCode} />
+          <GalleryTileFooter clipboardContent= {nxGlobalHeaderToastExampleCode}/>
+        </NxStatefulAccordion>
+      </NxTile.Content>
+    </NxTile>   
   </>;
 
 export default NxToastPage;
