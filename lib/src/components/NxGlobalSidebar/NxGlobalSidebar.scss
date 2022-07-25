@@ -64,6 +64,8 @@ $-separator-color: var(--nx-swatch-indigo-40);
   &:focus {
     border-width: 2px;
     border-color: var(--nx-color-interactive-border-focus);
+    padding-top: calc(var(--nx-spacing-base) - 2px);
+    padding-bottom: calc(var(--nx-spacing-base) - 2px);
   }
 
   &:active {
@@ -97,12 +99,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
 
   border: 2px solid transparent;
   display: block;
-  padding: var(--nx-spacing-base)
-           $-left-right-spacing
-           var(--nx-spacing-base)
-           // We need to add an extra pixel to the left to properly centre
-           // the icons when the sidebar is collapsed
-           calc(#{$-left-right-spacing} + 1px);
+  padding: calc(var(--nx-spacing-base) - 1px)
+           calc(#{$-left-right-spacing} - 1px)
+           calc(var(--nx-spacing-base) - 1px)
+           $-left-right-spacing;
   text-decoration: none;
 
   .nx-icon {
