@@ -197,7 +197,7 @@ const pageConfig: PageConfig = {
     'Collapsible Radio-Select': { content: NxCollapsibleRadioSelectPage, type: 'react' },
     'Stateful Collapsible Radio-Select': { content: NxStatefulCollapsibleRadioSelectPage, type: 'react' },
     'Color Picker': { content: NxColorPickerPage, type: 'react' },
-    'Combobox' : { content: NxComboboxPage, type: 'react' },
+    'Combobox': { content: NxComboboxPage, type: 'react' },
     'Date Input': { content: NxDateInputPage, type: 'react' },
     'Stateful Date Input': { content: NxStatefulDateInputPage, type: 'react' },
     'Fieldset': { content: NxFieldsetPage, type: 'react' },
