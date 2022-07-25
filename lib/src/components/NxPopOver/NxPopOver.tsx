@@ -6,7 +6,7 @@
  */
 import React, { MouseEventHandler, useEffect } from 'react';
 
-import AbstractDialog, { AbstractDialogContext } from '../NxModal/AbstractDialog';
+import AbstractDialog, { AbstractDialogContext } from '../AbstractDialog/AbstractDialog';
 
 import classnames from 'classnames';
 
@@ -27,8 +27,8 @@ export const NxPopOverHeader = (props: PopOverHeaderProps) => {
 
   const subtitle = props.subtitle ? <h3 className="nx-h3 nx-pop-over-header__subtitle">{props.subtitle}</h3> : null;
   const paragraph = props.paragraph ? <p className="nx-p nx-pop-over-header__paragraph">{props.paragraph}</p> : null;
-  const handleCloseButton: MouseEventHandler<HTMLButtonElement> = (event) => {
-    dialogValue?.onCancel && dialogValue?.onCancel(event);
+  const handleCloseButton: MouseEventHandler<HTMLButtonElement> = () => {
+    dialogValue?.onCancel && dialogValue?.onCancel();
   };
 
   return (
@@ -85,7 +85,7 @@ const _NxPopOver = (props: Props) => {
   }, className);
 
   return (
-    <AbstractDialog closeOnClickOutside={true}
+    <AbstractDialog cancelOnClickOutside={true}
                     ref={dialogRef}
                     className={classes}
                     onCancel={closePopOver}

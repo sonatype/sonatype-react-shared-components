@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, {
-  HTMLAttributes,
   forwardRef,
   useImperativeHandle,
   KeyboardEvent,
@@ -15,20 +14,7 @@ import React, {
 } from 'react';
 
 import { pick, omit } from 'ramda';
-
-export type CloseHandler = (evt: unknown) => void;
-
-interface Props extends HTMLAttributes<HTMLDialogElement> {
-  closeOnClickOutside?: boolean | null;
-  cancelOnClickOutsideTargetClassName?: string | null;
-  onCancel: CloseHandler;
-  useNativeCancelOnEscape?: boolean | null;
-}
-
-interface AbstractDialogContextValue {
-  dialogEl: HTMLDialogElement | null,
-  onCancel?: CloseHandler;
-}
+import { Props, AbstractDialogContextValue } from './types';
 
 export const AbstractDialogContext = React.createContext<AbstractDialogContextValue | null>(null);
 
@@ -64,7 +50,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   const {
     className,
     children,
-    closeOnClickOutside,
+    cancelOnClickOutside,
     onCancel,
     useNativeCancelOnEscape,
     role,
@@ -164,7 +150,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     }
   }, [onCancel]);
 
-  if (closeOnClickOutside) {
+  if (cancelOnClickOutside) {
     useClickOutside(cancelOnClickOutsideTargetClassName ?
       dialogRef?.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] as HTMLElement :
       dialogRef?.current, (event) => onCancel ? onCancel(event) : null);
