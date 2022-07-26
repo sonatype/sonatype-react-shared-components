@@ -56,8 +56,8 @@ const _NxPopOver = (props: Props) => {
     className,
     onCancel,
     children,
-    variant
-    //...otherProps
+    variant,
+    ...otherProps
   } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -89,9 +89,10 @@ const _NxPopOver = (props: Props) => {
                     ref={dialogRef}
                     className={classes}
                     onCancel={closePopOver}
-                    cancelOnClickOutsideTargetClassName="nx-pop-over__inner"
-                    onTransitionEnd={handleTransitionEnd}>
-      <div className='nx-pop-over__inner'>{children}</div>
+                    cancelOnClickOutsideTargetClassName={'nx-pop-over__inner'}
+                    onTransitionEnd={handleTransitionEnd}
+                    {...otherProps}>
+      <div className="nx-pop-over__inner">{children}</div>
     </AbstractDialog>
   );
 };

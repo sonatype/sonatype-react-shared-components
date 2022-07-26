@@ -29,20 +29,7 @@ const hasWindow = typeof window !== 'undefined',
     hasNativeModalSupport = !!(hasWindow && dynamicallyTypedWindow.HTMLDialogElement &&
       dynamicallyTypedWindow.HTMLDialogElement.prototype.showModal);
 
-const useClickOutside = <T extends HTMLElement>(el: T | null | undefined, fn: (e: MouseEvent) => void) => {
-  useEffect(() => {
-    const listener = (event: MouseEvent) => {
-      if (!el || el.contains(event.target as Node)) {
-        return;
-      }
-      fn(event);
-    };
-    document.addEventListener('click', listener);
-    return () => {
-      document.removeEventListener('click', listener);
-    };
-  }, [el, fn]);
-};
+const createCancelEvent = () => new Event('cancel', { cancelable: true });
 
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */
@@ -76,11 +63,11 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         // prevent visibility of the keydown outside of the modal, so that global ESC listeners on the
         // document don't pick it up
         evt.stopPropagation();
-
         evt.nativeEvent.stopImmediatePropagation();
+
         if (!useNativeCancelOnEscape) {
           evt.preventDefault();
-          onCancel(new Event('cancel', { cancelable: true }));
+          onCancel(createCancelEvent());
         }
 
         // prevent visibility to manually-registered native event listeners on the document too.
@@ -88,7 +75,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         // registered in useEffect calls on components rendered simultaneously with the modal
         else if (!hasNativeModalSupport && !evt.defaultPrevented) {
           // emulate cancel-on-esc behavior in browsers which don't do it natively
-          onCancel(new Event('cancel', { cancelable: true }));
+          onCancel(createCancelEvent());
         }
       }
     }
@@ -151,12 +138,29 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   }, [onCancel]);
 
   if (cancelOnClickOutside) {
-    useClickOutside(cancelOnClickOutsideTargetClassName ?
-      dialogRef?.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] as HTMLElement :
-      dialogRef?.current, (event) => onCancel ? onCancel(event) : null);
+    const clickOutsideTargetElement = cancelOnClickOutsideTargetClassName ?
+      dialogRef.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] as HTMLElement :
+      dialogRef.current;
+
+    useEffect(() => {
+      const listener = (event: MouseEvent) => {
+        if (!clickOutsideTargetElement || clickOutsideTargetElement.contains(event.target as Node)) {
+          return;
+        }
+
+        if (onCancel) {
+          onCancel(createCancelEvent());
+        }
+      };
+
+      document.addEventListener('click', listener);
+
+      return () => document.removeEventListener('click', listener);
+    }, [clickOutsideTargetElement]);
   }
 
   const attributesWithoutTabIndex = omit(['tabIndex'], attrs);
+
   const abstractDialogContextValue = {
     dialogEl: dialogRefState,
     onCancel: onCancel

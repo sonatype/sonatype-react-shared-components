@@ -6,13 +6,12 @@
  */
 import React, {FunctionComponent} from 'react';
 import classnames from 'classnames';
-
-import withClass from '../../util/withClass';
-import {CloseHandler, Props, propTypes} from './types';
-
 import { pick, omit } from 'ramda';
 
+import withClass from '../../util/withClass';
 import AbstractDialog, { AbstractDialogContext } from '../AbstractDialog/AbstractDialog';
+
+import {CloseHandler, Props, propTypes} from './types';
 
 import './NxModal.scss';
 
@@ -36,6 +35,7 @@ const _NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onC
                     className="nx-modal-backdrop"
                     tabIndex={-1}
                     onCancel={onCancel as CloseHandler}
+                    useNativeCancelOnEscape={true}
                     {...ariaLabels}>
       <div className={modalClasses} {...attrsWithoutLabels}/>
     </AbstractDialog>

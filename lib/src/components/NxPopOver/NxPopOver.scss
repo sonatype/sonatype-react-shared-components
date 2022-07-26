@@ -10,40 +10,40 @@
 $-box-shadow-offset: 52px;
 
 .nx-pop-over {
-  // undo styles that chrome applies to <dialog> elements
+  // Undo styles that chrome applies to <dialog> elements
   border: initial;
-  max-width: initial;
-  max-height: initial;
-  width: initial;
   height: initial;
-  margin: initial;
-  padding: initial;
   left: initial;
+  margin: initial;
+  max-height: initial;
+  max-width: initial;
+  padding: initial;
+  width: initial;
 
-  // prevent brief flash of scrollbar as tooltips disappear
+  // Prevent brief flash of scrollbar as tooltips disappear
   overflow: hidden;
 
   &::backdrop {
-    // chrome tries to add its own subtle mask here which doubles up with our own
+    // Chrome tries to add its own subtle mask here which doubles up with our own
     display: none;
     pointer-events: auto;
   }
 
-  z-index: 100;
-  position: fixed;
-  transform: translateX(100%);
   background: transparent;
-  width: 520px + $-box-shadow-offset;
+  box-sizing: border-box;
   height: 100%;
+  padding-left: $-box-shadow-offset;
+  position: fixed;
   right: 0;
   top: 0;
-  padding-left: $-box-shadow-offset;
-  box-sizing: border-box;
   transform: translateX(100%);
+  width: 520px + $-box-shadow-offset;
+  z-index: 100;
 
   &--with-top-bar {
-    top: 43px;
-    height: calc(100% - 43px);
+    $top-bar-height: 43px;
+    height: calc(100% - $top-bar-height);
+    top: $top-bar-height;
   }
   
   &--narrow {
@@ -51,14 +51,14 @@ $-box-shadow-offset: 52px;
   }
 
   &__inner {
+    align-items: stretch;
+    background-color: var(--nx-swatch-white);
     box-sizing: border-box;
-    padding: var(--nx-spacing-6x);
-    background-color: white;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    position: relative;
     height: 100%;
+    padding: var(--nx-spacing-6x);
+    position: relative;
 
     &::after {
       content: " ";
@@ -68,7 +68,7 @@ $-box-shadow-offset: 52px;
       left: 0;
       top: var(--nx-spacing-8x);
       z-index: -1;
-      box-shadow: -2px 0px 50px rgba(128,128,128, 0.5);
+      box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);
     }  
   }
 
