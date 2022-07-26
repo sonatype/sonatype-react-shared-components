@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {FunctionComponent, useContext} from 'react';
+import React, {FunctionComponent} from 'react';
 import classnames from 'classnames';
 
 import withClass from '../../util/withClass';
@@ -16,7 +16,7 @@ import AbstractDialog, { AbstractDialogContext } from '../AbstractDialog/Abstrac
 
 import './NxModal.scss';
 
-export const NxModalContext = React.createContext<HTMLDialogElement | null>(null);
+export const NxModalContext = AbstractDialogContext;
 
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */
@@ -25,7 +25,6 @@ const _NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onC
     'nx-modal--wide': variant === 'wide',
     'nx-modal--narrow': variant === 'narrow'
   });
-  const dialogContext = useContext(AbstractDialogContext);
 
   const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
       ariaLabels = pick(ariaLabelAttrNames, attrs),
@@ -38,9 +37,7 @@ const _NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onC
                     tabIndex={-1}
                     onCancel={onCancel as CloseHandler}
                     {...ariaLabels}>
-      <NxModalContext.Provider value={dialogContext && dialogContext.dialogEl}>
-        <div className={modalClasses} {...attrsWithoutLabels}/>
-      </NxModalContext.Provider>
+      <div className={modalClasses} {...attrsWithoutLabels}/>
     </AbstractDialog>
   );
 };

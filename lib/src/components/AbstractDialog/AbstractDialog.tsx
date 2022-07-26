@@ -13,7 +13,7 @@ import React, {
   useState
 } from 'react';
 
-import { pick, omit } from 'ramda';
+import { omit } from 'ramda';
 import { Props, AbstractDialogContextValue } from './types';
 
 export const AbstractDialogContext = React.createContext<AbstractDialogContextValue | null>(null);
@@ -156,9 +156,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       dialogRef?.current, (event) => onCancel ? onCancel(event) : null);
   }
 
-  const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
-      ariaLabels = pick(ariaLabelAttrNames, attrs),
-      attrsWithoutLabels = omit([...ariaLabelAttrNames, 'tabIndex'], attrs);
+  const attributesWithoutTabIndex = omit(['tabIndex'], attrs);
   const abstractDialogContextValue = {
     dialogEl: dialogRefState,
     onCancel: onCancel
@@ -180,8 +178,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
               tabIndex={-1}
               onKeyDown={dialogKeydownListener}
               className={className}
-              {...ariaLabels}
-              {...attrsWithoutLabels}>
+              {...attributesWithoutTabIndex}>
         {children}
       </dialog>
     </AbstractDialogContext.Provider>
