@@ -232,7 +232,7 @@ export { selectableColors, selectableColorClasses, SelectableColor } from './uti
 // deprecated
 export { selectableColors as NX_TAG_COLORS, SelectableColor as NX_TAG_COLORS_TYPE } from './util/selectableColors';
 
-export { default as NxCopyToClipboard, Props as NxCopyToClipboardProps}
+export { default as NxCopyToClipboard, Props as NxCopyToClipboardProps }
   from './components/NxCopyToClipboard/NxCopyToClipboard';
 
 // deprecated - now use NxCopyToClipboard
