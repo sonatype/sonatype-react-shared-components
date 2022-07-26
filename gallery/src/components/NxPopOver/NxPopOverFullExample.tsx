@@ -60,7 +60,7 @@ export default function NxPopOverFullExample() {
       </NxPopOver.Content>
       <NxPopOver.Footer>
         <NxButtonBar>
-          <NxButton onClick={() => setShowPopOver(true)}>Open Pop Over (Narrow)</NxButton>
+          <NxButton>Button</NxButton>
         </NxButtonBar>
       </NxPopOver.Footer>
     </>

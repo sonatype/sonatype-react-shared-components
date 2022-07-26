@@ -86,7 +86,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         // prevent visibility to manually-registered native event listeners on the document too.
         // NOTE: this only works on listeners added after this one, which is believed to include any
         // registered in useEffect calls on components rendered simultaneously with the modal
-        if (!hasNativeModalSupport && !evt.defaultPrevented) {
+        else if (!hasNativeModalSupport && !evt.defaultPrevented) {
           // emulate cancel-on-esc behavior in browsers which don't do it natively
           onCancel(new Event('cancel', { cancelable: true }));
         }
