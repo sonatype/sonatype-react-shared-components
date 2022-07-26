@@ -139,7 +139,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
   if (cancelOnClickOutside) {
     const clickOutsideTargetElement = cancelOnClickOutsideTargetClassName ?
-      dialogRef.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] as HTMLElement :
+      dialogRef.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] :
       dialogRef.current;
 
     useEffect(() => {
