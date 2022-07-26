@@ -65,7 +65,13 @@ describe('NxToggle', function() {
 
     await user.click(checkbox);
 
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledTimes(1);
+
+    await checkbox.focus();
+
+    await user.keyboard(' ');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
   });
 
   it('passes input attributes into the input element and does not clash with top-level attributes', function() {
