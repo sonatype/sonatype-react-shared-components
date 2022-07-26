@@ -13,7 +13,7 @@ import './NxCombobox.scss';
 
 import forwardRef from '../../util/genericForwardRef';
 import { Props, propTypes } from './types';
-import NxFilterInput from '../NxFilterInput/NxFilterInput';
+import NxTextInput from '../NxTextInput/NxTextInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import { useUniqueId } from '../../util/idUtil';
@@ -172,20 +172,23 @@ function NxComboboxRender<T extends string | number = string>(
   }, []);
 
   useMutationObserver(menuRef, checkForRemovedFocusedEl, { childList: true });
-
+  function handleOnClick(match: any){
+    onSelect(match);
+    focusTextInput();
+    !showDropdown
+  }
   return (
     <div ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
-      <NxFilterInput role="searchbox"
-                     ref={filterRef}
-                     className={filterClassName}
-                     value={searchText}
-                     onChange={handleFilterChange}
-                     disabled={disabled || undefined}
-                     placeholder="Search"
-                     searchIcon
-                     onKeyDown={handleKeyDown}
-                     aria-controls={dropdownMenuId}
-                     aria-haspopup="menu" />
+      <NxTextInput role="searchbox"
+                    ref={filterRef}
+                    className={filterClassName}
+                    value={searchText}
+                    onChange={handleFilterChange}
+                    disabled={disabled || undefined}
+                    isPristine={true}
+                    onKeyDown={handleKeyDown}
+                    aria-controls={dropdownMenuId}
+                    aria-haspopup="menu" />
       <NxDropdownMenu id={dropdownMenuId}
                       role={dropdownMenuRole}
                       ref={menuRef}
@@ -204,7 +207,7 @@ function NxComboboxRender<T extends string | number = string>(
                       disabled={disabled || undefined}
                       key={match.id}
                       tabIndex={i === focusableBtnIndex ? 0 : -1}
-                      onClick={partial(onSelect, [match])}
+                      onClick={partial(handleOnClick, [match])}
                       onFocus={() => setFocusableBtnIndex(i)}>
                 {match.displayName}
               </button>

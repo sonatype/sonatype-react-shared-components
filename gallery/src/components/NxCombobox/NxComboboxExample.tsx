@@ -7,7 +7,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxCombobox, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME, NxFontAwesomeIcon }
+import { NxCombobox, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME, NxFontAwesomeIcon, NxFormGroup }
   from '@sonatype/react-shared-components';
 import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
 
@@ -32,7 +32,7 @@ function search(query: string): Promise<DataItem<number>[]> {
       matchingItems = filter(i => getDisplayNameString(i).toLowerCase().includes(lowercaseQuery), items);
 
   return new Promise(resolve => {
-    setTimeout(() => resolve(matchingItems), 3000);
+    setTimeout(() => resolve(matchingItems), 1000);
   });
 }
 
@@ -42,10 +42,11 @@ export default function NxComboboxExample() {
       [query, setQuery] = useState(''),
       latestExecutedQueryRef = useRef<string | null>(null);
 
-  function onSelect({ displayName }: DataItem<number>) {
-    alert('Selected ' + displayName);
-    setQuery('');
-    setMatches([]);
+  function onSelect(item: DataItem<number>) {
+    if(typeof item.displayName === 'string') {
+      setQuery(item.displayName);
+      setMatches([item]);
+    }
   }
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
@@ -76,11 +77,13 @@ export default function NxComboboxExample() {
   }
 
   return (
-    <NxCombobox loading={loading}
-                matches={matches}
-                searchText={query}
-                onSearchTextChange={onSearchTextChange}
-                onSearch={onSearch}
-                onSelect={onSelect} />
+    <NxFormGroup label="Combobox" isRequired>
+      <NxCombobox loading={loading}
+                  matches={matches}
+                  searchText={query}
+                  onSearchTextChange={onSearchTextChange}
+                  onSearch={onSearch}
+                  onSelect={onSelect} />
+    </NxFormGroup>
   );
 }
