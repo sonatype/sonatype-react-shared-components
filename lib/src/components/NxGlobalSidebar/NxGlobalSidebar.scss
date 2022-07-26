@@ -102,6 +102,8 @@ $-separator-color: var(--nx-swatch-indigo-40);
   padding: calc(var(--nx-spacing-base) - 1px)
            calc(#{$-left-right-spacing} - 1px)
            calc(var(--nx-spacing-base) - 1px)
+           // We need to add an extra pixel to the left to properly centre
+           // the icons when the sidebar is collapsed
            $-left-right-spacing;
   text-decoration: none;
 
