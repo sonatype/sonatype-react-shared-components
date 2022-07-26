@@ -7,6 +7,20 @@
 @use 'sass:math';
 @use '../../scss-shared/nx-text-helpers';
 
+@mixin counter-colors {
+  @each $category in critical, severe, moderate, low, none, unspecified {
+    &--#{$category} {
+      background-color: var(--nx-color-threat-#{$category});
+    }
+  }
+
+  &--critical,
+  &--none,
+  &--unspecified {
+    color: var(--nx-swatch-white);
+  }
+}
+
 .nx-small-threat-counter {
   $height: 25px;
   position: relative;
@@ -20,22 +34,12 @@
   padding-right: var(--nx-spacing-2x);
   text-align: center;
 
-  @each $category in critical, severe, moderate, low, none, unspecified {
-    &--#{$category} {
-      background-color: var(--nx-color-threat-#{$category});
-    }
-  }
-
-  &--critical,
-  &--none,
-  &--unspecified {
-    color: var(--nx-swatch-white);
-  }
-
   &__category {
     //invisible but still read by the screenreader
     @include nx-text-helpers.visually-hidden;
   }
+
+  @include counter-colors;
 
   // Used to set the width of the counter based on its max text content
   &__sizer {
@@ -46,7 +50,8 @@
   }
 
   &--zero {
-    visibility: hidden;
+    background-color: var(--nx-swatch-grey-90);
+    color: var(--nx-swatch-grey-40);
   }
 }
 
@@ -67,9 +72,8 @@
       text-align: center;
       width: 100%;
 
-      &--zero {
-        visibility: visible;
-      }
+      // using the counter-colors mixin will override the zero styling in this use case
+      @include counter-colors;
     }
   }
 }
