@@ -87,9 +87,31 @@ describe('AbstractDialog', function() {
       }
     });
 
+    it('executes event.preventDefault when useNativeCancelOnEscape is false', function () {
+      const mockCallBack = jest.fn();
+      const component = getDialog({ useNativeCancelOnEscape: false, onCancel: mockCallBack });
+      const mockPreventDefault = jest.fn();
+
+      const escapeEvent = {
+        key: 'Escape',
+        stopPropagation: jest.fn(),
+        preventDefault: mockPreventDefault,
+        nativeEvent: {
+          stopImmediatePropagation: jest.fn()
+        }
+      };
+
+      expect(mockCallBack).not.toHaveBeenCalled();
+      expect(mockPreventDefault).not.toHaveBeenCalled();
+      component.simulate('keyDown', escapeEvent);
+      expect(mockCallBack).toHaveBeenCalledTimes(1);
+      expect(mockPreventDefault).toHaveBeenCalledTimes(1);
+      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
+    });
+
     it('executes onCancel method with a cancel event when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const component = getDialog({ onCancel: mockCallBack });
+      const component = getDialog({ useNativeCancelOnEscape: true, onCancel: mockCallBack });
 
       expect(mockCallBack).not.toHaveBeenCalled();
       component.simulate('keyDown', createEvent());
@@ -99,7 +121,7 @@ describe('AbstractDialog', function() {
 
     it('executes onCancel method ONLY when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const component = getDialog({ onCancel: mockCallBack });
+      const component = getDialog({ useNativeCancelOnEscape: true, onCancel: mockCallBack });
 
       component.simulate('keyDown', createEvent('Tab'));
       component.simulate('keyDown', createEvent('Enter'));
@@ -109,7 +131,7 @@ describe('AbstractDialog', function() {
     });
 
     it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
-      const component = getDialog({ onCancel: jest.fn() }),
+      const component = getDialog({ useNativeCancelOnEscape: true, onCancel: jest.fn() }),
           escEvent = createEvent(),
           otherEvent = createEvent('q');
 
