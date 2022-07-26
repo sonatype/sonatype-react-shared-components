@@ -72,6 +72,35 @@ const NxFieldsetPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>isPristine</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>false</NxTable.Cell>
+            <NxTable.Cell>
+              Should be set to true when the fieldset is capable of showing validation errors but has not yet
+              been modified by the user.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>validationErrors</NxTable.Cell>
+            <NxTable.Cell>string | string[]</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell />
+            <NxTable.Cell>
+              Validation failure messages.
+              Any strings contained by this prop's value are taken to be error messages describing a validation
+              failure on the fields within this component.
+              These trigger the invalid styling on the component and the first such error message is
+              displayed within the component. If this prop's value does not contain any strings (i.e. if it is null,
+              undefined, or an empty array), the component value is taken to be valid. This is typically used on
+              fieldsets that contain groups of radios, checkboxes, or toggles which can't have validation errors
+              of their own but which might have validation errors in aggregate.  In particular,
+              whenever <NxCode>isRequired</NxCode> is set to true, a validation error string must be provided whenever
+              there are zero children selected. This prop should not be used to repeat validation errors from
+              any <NxCode>NxTextInput</NxCode>s or other components which display the errors themselves.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>children</NxTable.Cell>
             <NxTable.Cell>ReactNode</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
@@ -111,8 +140,7 @@ const NxFieldsetPage = () =>
                         liveExample={NxFieldsetRequiredExample}
                         codeExamples={nxFieldsetRequiredExampleCode}>
       An example of an <NxCode>NxFieldset</NxCode> wrapping
-      some <NxCode>NxRadio</NxCode>s which uses the isRequired flag to remove the "Optional"
-      indicator.
+      some <NxCode>NxRadio</NxCode>s which uses the isRequired flag and corresponding validation.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Sublabel Example"
