@@ -173,4 +173,59 @@ describe('AbstractDialog', function() {
       done();
     }, 100);
   });
+
+  it('executes onCancel when clicked outside of dialog and cancelOnClickOutside is true', function() {
+    const mockOnCancel = jest.fn();
+    const map: any = {};
+    document.addEventListener = jest.fn((e: string, cb: () => void) => {
+      map[e] = cb;
+    }) as jest.Mock;
+    const container = mount(
+      <div className="container">
+        <NxButton className="outside-button">Outside</NxButton>
+        <AbstractDialog cancelOnClickOutside={true} onCancel={mockOnCancel}>
+          <NxButton className="inside-button">Inside</NxButton>
+        </AbstractDialog>
+      </div>
+    );
+    const outsideButton = container.find('.outside-button').at(0);
+    const insideButton = container.find('.inside-button').at(0);
+
+    expect(mockOnCancel).toHaveBeenCalledTimes(0);
+    map.click({ target: insideButton.getDOMNode() });
+    expect(mockOnCancel).toHaveBeenCalledTimes(0);
+    map.click({ target: outsideButton.getDOMNode() });
+    expect(mockOnCancel).toHaveBeenCalledTimes(1);
+  });
+
+  it('executes cancelOnClickOutsideTargetClassName when' +
+  'clicked outside of dialog and cancelOnClickOutside is true', function() {
+    const mockOnCancel = jest.fn();
+    const map: any = {};
+    document.addEventListener = jest.fn((e: string, cb: () => void) => {
+      map[e] = cb;
+    }) as jest.Mock;
+    const container = mount(
+      <div className="container">
+        <NxButton className="outside-button">Outside</NxButton>
+        <AbstractDialog cancelOnClickOutside={true} cancelOnClickOutsideTargetClassName="inner" onCancel={mockOnCancel}>
+          <NxButton className="inside-button">Inside</NxButton>
+          <div className="inner">
+            <NxButton className="inner-button">Inner</NxButton>
+          </div>
+        </AbstractDialog>
+      </div>
+    );
+    const outsideButton = container.find('.outside-button').at(0);
+    const insideButton = container.find('.inside-button').at(0);
+    const innerButton = container.find('.inner-button').at(0);
+
+    expect(mockOnCancel).toHaveBeenCalledTimes(0);
+    map.click({ target: innerButton.getDOMNode() });
+    expect(mockOnCancel).toHaveBeenCalledTimes(0);
+    map.click({ target: insideButton.getDOMNode() });
+    expect(mockOnCancel).toHaveBeenCalledTimes(1);
+    map.click({ target: outsideButton.getDOMNode() });
+    expect(mockOnCancel).toHaveBeenCalledTimes(2);
+  });
 });
