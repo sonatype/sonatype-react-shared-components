@@ -32,8 +32,8 @@ const NxToastProvider = (props: NxToastProviderProps) => {
     const toastId = id++;
 
     setToasts((toasts) => [
-      ...toasts,
-      { toastId, type: content.type, message: content.message }
+      { toastId, type: content.type, message: content.message },
+      ...toasts
     ]);
   }, [setToasts]);
 
