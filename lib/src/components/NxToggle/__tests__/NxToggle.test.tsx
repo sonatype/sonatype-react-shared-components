@@ -58,20 +58,26 @@ describe('NxToggle', function() {
     const onChange = jest.fn();
 
     const { container } = render(<NxToggle {...simpleProps} onChange={onChange}></NxToggle>);
-
     const label = container.querySelector('label') as HTMLLabelElement;
 
     expect(onChange).not.toHaveBeenCalled();
-
     await user.click(label);
-
     expect(onChange).toHaveBeenCalledTimes(1);
+  });
 
-    await label.focus();
+  it('calls its onChange prop when the input is focused and space key is pressed', async function() {
+    const user = userEvent.setup();
 
+    const onChange = jest.fn();
+
+    render(<NxToggle {...simpleProps} onChange={onChange}></NxToggle>);
+
+    const checkbox = screen.getByRole('switch');
+
+    expect(onChange).not.toHaveBeenCalled();
+    await checkbox.focus();
     await user.keyboard(' ');
-
-    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('passes input attributes into the input element and does not clash with top-level attributes', function() {
