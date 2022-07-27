@@ -4,50 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { MouseEventHandler, useEffect } from 'react';
-
-import AbstractDialog, { AbstractDialogContext } from '../AbstractDialog/AbstractDialog';
-
+import React, { useEffect } from 'react';
+import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import classnames from 'classnames';
-
 import withClass from '../../util/withClass';
 
-import {
-  Props,
-  PopOverHeaderProps
-} from './types';
+import {Props} from './types';
 
 import './NxPopOver.scss';
-
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import { useRef } from 'react';
-
-export const NxPopOverHeader = (props: PopOverHeaderProps) => {
-  const dialogValue = React.useContext(AbstractDialogContext);
-
-  const subtitle = props.subtitle ? <h3 className="nx-h3 nx-pop-over-header__subtitle">{props.subtitle}</h3> : null;
-  const paragraph = props.paragraph ? <p className="nx-p nx-pop-over-header__paragraph">{props.paragraph}</p> : null;
-  const handleCloseButton: MouseEventHandler<HTMLButtonElement> = () => {
-    dialogValue?.onCancel && dialogValue?.onCancel();
-  };
-
-  return (
-    <header className="nx-pop-over-header">
-      <NxCloseButton className="nx-pop-over-header__close"
-                     type="button"
-                     onClick={handleCloseButton}>
-        Close
-      </NxCloseButton>
-
-      <h2 className="nx-h2 nx-pop-over-header__title">
-        {props.title}
-      </h2>
-
-      {subtitle}
-      {paragraph}
-    </header>
-  );
-};
 
 const POP_OVER_OPEN_CLASS_NAME = 'nx-pop-over--open';
 
@@ -57,6 +23,9 @@ const _NxPopOver = (props: Props) => {
     onCancel,
     children,
     variant,
+    title,
+    subtitle,
+    paragraph,
     ...otherProps
   } = props;
 
@@ -84,6 +53,8 @@ const _NxPopOver = (props: Props) => {
     'nx-pop-over--narrow': variant === 'narrow'
   }, className);
 
+  const subtitleContent = subtitle ? <h3 className="nx-h3 nx-pop-over-header__subtitle">{subtitle}</h3> : null;
+  const paragraphContent = paragraph ? <p className="nx-p nx-pop-over-header__paragraph">{paragraph}</p> : null;
   return (
     <AbstractDialog cancelOnClickOutside={true}
                     ref={dialogRef}
@@ -92,17 +63,29 @@ const _NxPopOver = (props: Props) => {
                     cancelOnClickOutsideTargetClassName={'nx-pop-over__inner'}
                     onTransitionEnd={handleTransitionEnd}
                     {...otherProps}>
-      <div className="nx-pop-over__inner">{children}</div>
+      <div className="nx-pop-over__inner">
+        <header className="nx-pop-over-header">
+          <NxCloseButton className="nx-pop-over-header__close"
+                         type="button"
+                         onClick={() => onCancel()}>
+            Close
+          </NxCloseButton>
+          <h2 className="nx-h2 nx-pop-over-header__title">
+            {title}
+          </h2>
+          {subtitleContent}
+          {paragraphContent}
+        </header>
+        {children}
+      </div>
     </AbstractDialog>
   );
 };
 
 const NxPopOver = Object.assign(_NxPopOver, {
-  Header: NxPopOverHeader,
   Content: withClass('div', 'nx-pop-over-content'),
   Footer: withClass('footer', 'nx-pop-over-footer')
 });
 
 export default NxPopOver;
-
 export {Props} from './types';

@@ -11,12 +11,6 @@ export type CloseHandler = (evt: Event) => void;
 export const NX_POP_OVER_VARIANTS = ['normal', 'narrow'] as const;
 export type NX_POP_OVER_VARIANT_TYPE = (typeof NX_POP_OVER_VARIANTS)[number];
 
-export interface PopOverHeaderProps {
-  title: ReactNode | string;
-  subtitle?: ReactNode | string | null;
-  paragraph?: ReactNode | string | null;
-}
-
 export interface PopOverContextType {
   onCancel: () => void;
 }
@@ -33,6 +27,9 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   variant?: NX_POP_OVER_VARIANT_TYPE | null;
   onCancel: () => void;
   children?: ReactNode;
+  title: ReactNode | string;
+  subtitle?: ReactNode | string | null;
+  paragraph?: ReactNode | string | null;
 }
 
 export const propTypes = {

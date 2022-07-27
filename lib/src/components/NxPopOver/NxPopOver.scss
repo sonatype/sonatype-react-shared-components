@@ -42,7 +42,7 @@ $-box-shadow-offset: 52px;
 
   &--with-top-bar {
     $top-bar-height: 43px;
-    height: calc(100% - $top-bar-height);
+    height: calc(100% - #{$top-bar-height});
     top: $top-bar-height;
   }
   
