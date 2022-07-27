@@ -27,11 +27,14 @@ import {
   nxTextInputStateHelpers,
   NxTextInput,
   hasValidationErrors,
-  combineValidationErrors
+  combineValidationErrors,
+  nxFieldsetStateHelpers
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { map, range } from 'ramda';
+
+const { useCheckboxGroupState } = nxFieldsetStateHelpers;
 
 const transferListItems = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 
@@ -58,22 +61,18 @@ export default function NxFormLayoutExample() {
     setSelectVal(evt.currentTarget.value);
   }
 
-  const [isRed, _toggleRed] = useToggle(false),
-      [isBlue, _toggleBlue] = useToggle(false),
-      [isGreen, _toggleGreen] = useToggle(false),
-      [colorIsPristine, setColorIsPristine] = useState(true),
-
-      // toggle the specified color and update the pristine flag
-      toggleColor = (_toggleColor: () => void) => () => {
-        setColorIsPristine(false);
-        _toggleColor();
-      },
-
-      toggleRed = toggleColor(_toggleRed),
-      toggleBlue = toggleColor(_toggleBlue),
-      toggleGreen = toggleColor(_toggleGreen),
-
-      colorValidationError = !(isRed || isBlue || isGreen) ? 'A color is required' : null;
+  const {
+    states: {
+      red: [isRed, toggleRed],
+      blue: [isBlue, toggleBlue],
+      green: [isGreen, toggleGreen]
+    },
+    isPristine: colorIsPristine,
+    validationErrors: colorValidationError
+  } = useCheckboxGroupState(
+      { red: false, blue: false, green: false },
+      selectedColors => selectedColors.length ? null : 'A color is required'
+  );
 
   const [color, setColor] = useState<string | null>(null);
 
