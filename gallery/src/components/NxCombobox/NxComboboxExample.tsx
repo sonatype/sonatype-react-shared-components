@@ -43,10 +43,8 @@ export default function NxComboboxExample() {
       latestExecutedQueryRef = useRef<string | null>(null);
 
   function onSelect(item: DataItem<number>) {
-    if(typeof item.displayName === 'string') {
-      setQuery(item.displayName);
-      setMatches([item]);
-    }
+    setQuery(getDisplayNameString(item));
+    setMatches([item]);
   }
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second

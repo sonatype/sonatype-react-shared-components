@@ -18,6 +18,7 @@ import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import { useUniqueId } from '../../util/idUtil';
 import useMutationObserver from '@rooks/use-mutation-observer';
+import DataItem from '../../util/DataItem';
 export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
@@ -42,7 +43,8 @@ function NxComboboxRender<T extends string | number = string>(
       } = props,
 
       isEmpty = !matches.length,
-      showDropdown = !!(searchText && !disabled),
+      [isSelected, setIsSelected] = useState<boolean>(false),
+      showDropdown = !!(searchText && !disabled && !isSelected),
 
       ref = useRef<HTMLDivElement>(null),
       mergedRef = useMergedRef(externalRef, ref),
@@ -77,6 +79,7 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function handleFilterChange(value: string) {
+    setIsSelected(false);
     onSearchTextChange(value);
 
     if (value.trim() !== searchText.trim()) {
@@ -172,23 +175,23 @@ function NxComboboxRender<T extends string | number = string>(
   }, []);
 
   useMutationObserver(menuRef, checkForRemovedFocusedEl, { childList: true });
-  function handleOnClick(match: any){
+  function handleOnClick(match: DataItem<T>) {
     onSelect(match);
     focusTextInput();
-    !showDropdown
+    setIsSelected(true);
   }
   return (
     <div ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
       <NxTextInput role="searchbox"
-                    ref={filterRef}
-                    className={filterClassName}
-                    value={searchText}
-                    onChange={handleFilterChange}
-                    disabled={disabled || undefined}
-                    isPristine={true}
-                    onKeyDown={handleKeyDown}
-                    aria-controls={dropdownMenuId}
-                    aria-haspopup="menu" />
+                   ref={filterRef}
+                   className={filterClassName}
+                   value={searchText}
+                   onChange={handleFilterChange}
+                   disabled={disabled || undefined}
+                   isPristine={true}
+                   onKeyDown={handleKeyDown}
+                   aria-controls={dropdownMenuId}
+                   aria-haspopup="menu" />
       <NxDropdownMenu id={dropdownMenuId}
                       role={dropdownMenuRole}
                       ref={menuRef}
