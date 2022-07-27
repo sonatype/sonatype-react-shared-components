@@ -22,7 +22,7 @@ const NxToast = (props: NxToastProps) => {
       [visible, setVisible] = useState(false),
       [toastIsActive, setToastIsActive] = useState(false),
       classes = classnames('nx-toast', className, toastClass,
-          {'slide-in': visible}
+          {'nx-toast--visible': visible}
       ),
       toastContext = useContext(ToastContext),
       closeBtnRef = useRef<HTMLButtonElement>(null);
