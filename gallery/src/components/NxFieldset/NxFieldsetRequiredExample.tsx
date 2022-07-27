@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxCheckbox, NxFieldset, NxRadio, useToggle, nxFieldsetStateHelpers } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxFieldset, NxRadio, nxFieldsetStateHelpers } from '@sonatype/react-shared-components';
 const { useRadioGroupState, useCheckboxGroupState } = nxFieldsetStateHelpers;
 
 const requiredMessage = 'At least one color must be selected';
@@ -24,11 +24,11 @@ export default function NxFieldsetRequiredExample() {
     isPristine: isDirectionPristine,
     validationErrors: directionValidationErrors
   } = useCheckboxGroupState({
-    north: useToggle(false),
-    south: useToggle(false),
-    east: useToggle(false),
-    west: useToggle(false)
-  }, (selectedDirs: string[]) => selectedDirs.length ? null : requiredMessage);
+    north: false,
+    south: false,
+    east: false,
+    west: false
+  }, selectedDirs => selectedDirs.length ? null : requiredMessage);
 
   return (
     <>

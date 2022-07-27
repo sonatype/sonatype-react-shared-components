@@ -8,25 +8,37 @@ import { useState } from 'react';
 import { append, filter, head, map, toPairs, without } from 'ramda';
 
 import { ValidationErrors } from '../../util/validationUtil';
+import useToggle from '../../util/useToggle';
 
-type RadioValidator = (value: string | null) => ValidationErrors;
-type CheckboxValidator = (values: string[]) => ValidationErrors;
-type RadioSetter = (v: string | null) => void;
-type CheckboxState = [boolean, () => void, ...unknown[]];
-type CheckboxStates<K extends string | number> = Record<K, CheckboxState>;
+export type RadioValidator = (value: string | null) => ValidationErrors;
+export type CheckboxValidator = (values: string[]) => ValidationErrors;
+export type RadioSetter = (v: string | null) => void;
+export type CheckboxState = [boolean, () => void, ...unknown[]];
+export type CheckboxInitValues<K extends string | number> = Record<K, boolean>;
+export type CheckboxStates<K extends string | number> = Record<K, CheckboxState>;
 
-interface RadioStateProps {
+export interface RadioStateProps {
   value: string | null;
   isPristine: boolean;
   validationErrors: ValidationErrors;
 }
 
-interface CheckboxStateProps {
+export interface CheckboxStateProps {
   values: string[];
   isPristine: boolean;
   validationErrors: ValidationErrors;
 }
 
+export interface CheckboxGroupHookReturnValue<K extends string | number> {
+  states: CheckboxStates<K>;
+  isPristine: boolean;
+  validationErrors: ValidationErrors;
+}
+
+/**
+ * Create a RadioStateProps representing the initial state of a group of radio buttons based on the
+ * specified initial value, and validated according to the specified validator
+ */
 export function radioGroupInitialState(value?: string, validator?: RadioValidator): RadioStateProps {
   const normalizedValue = value ?? null;
 
@@ -37,6 +49,10 @@ export function radioGroupInitialState(value?: string, validator?: RadioValidato
   };
 }
 
+/**
+ * Create a RadioStateProps representing a non-initial state of a group of radio buttons based on the
+ * specified value, and validated according to the specified validator
+ */
 export function radioGroupUserInput(
   value: string | null,
   validator?: RadioValidator
@@ -48,6 +64,10 @@ export function radioGroupUserInput(
   };
 }
 
+/**
+ * A react hook to aid in managing the state of a radio group. Encapsulates tracking of pristine state and
+ * validation errors
+ */
 export function useRadioGroupState(
   initialValue?: string,
   validator?: RadioValidator
@@ -58,6 +78,10 @@ export function useRadioGroupState(
   return [state, setter];
 }
 
+/**
+ * Create a CheckboxStateProps representing the initial state of a group of checkboxes based on the
+ * specified initial values, and validated according to the specified validator
+ */
 export function checkboxGroupInitialState(
   values: string[] = [],
   validator?: CheckboxValidator
@@ -69,6 +93,10 @@ export function checkboxGroupInitialState(
   };
 }
 
+/**
+ * Create a CheckboxStateProps representing a non-initial state of a group of checkboxes based on the
+ * specified value, and validated according to the specified validator
+ */
 export function checkboxGroupUserInput(
   { values }: CheckboxStateProps,
   toggledValue: string,
@@ -85,17 +113,24 @@ export function checkboxGroupUserInput(
   };
 }
 
+/**
+ * A react hook to aid in managing the state of a checkbox group. Takes an object mapping state names (i.e. checkbox
+ * names) to the initial values for those checkboxes, along with an optional validator function, and returns
+ * an object containing React state values and setters (as if from useState) for each checkbox along with isPristine and
+ * validationErrors
+ */
 export function useCheckboxGroupState<K extends string>(
-  rawStates: CheckboxStates<K>,
+  initialValues: CheckboxInitValues<K>,
   validator?: CheckboxValidator
-) {
+): CheckboxGroupHookReturnValue<K> {
   type Pair = [K, CheckboxState];
 
   function wrapState([state, toggler]: CheckboxState): CheckboxState {
     return [state, () => { setIsPristine(false); toggler(); }];
   }
 
-  const [isPristine, setIsPristine] = useState(true),
+  const rawStates = map<CheckboxInitValues<K>, CheckboxStates<K>>(useToggle, initialValues),
+      [isPristine, setIsPristine] = useState(true),
       values = map<Pair, K>(head, filter<Pair, Pair[]>(([, [isSet]]) => isSet, toPairs(rawStates)));
 
   return {
