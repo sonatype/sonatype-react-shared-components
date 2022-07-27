@@ -46,10 +46,10 @@ describe('NxToggle', function() {
   it('adds classes specified with the className prop', function() {
     const { container } = render(<NxToggle {...simpleProps} className="foo"></NxToggle>);
 
-    const label = container.querySelector('label');
+    const root = container.children[0];
 
-    expect(label).toHaveClass('foo');
-    expect(label).toHaveClass('nx-toggle');
+    expect(root).toHaveClass('foo');
+    expect(root).toHaveClass('nx-toggle');
   });
 
   it('calls its onChange prop when the label is clicked', async function() {
