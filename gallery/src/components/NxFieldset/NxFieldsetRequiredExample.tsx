@@ -4,56 +4,57 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxCheckbox, NxFieldset, NxRadio, useToggle } from '@sonatype/react-shared-components';
+import { NxCheckbox, NxFieldset, NxRadio, useToggle, nxFieldsetStateHelpers } from '@sonatype/react-shared-components';
+const { useRadioGroupState, useCheckboxGroupState } = nxFieldsetStateHelpers;
 
 const requiredMessage = 'At least one color must be selected';
 
 export default function NxFieldsetRequiredExample() {
-  const [color, _setColor] = useState<string | null>(null),
-      [isColorPristine, setIsColorPristine] = useState(true),
-      setColor = (value: string | null) => {
-        _setColor(value);
-        setIsColorPristine(false);
-      };
+  const [color, setColor] = useRadioGroupState(undefined, v => v ? null : requiredMessage);
 
-  const [north, toggleNorth] = useToggle(false),
-      [south, toggleSouth] = useToggle(false),
-      [east, toggleEast] = useToggle(false),
-      [west, toggleWest] = useToggle(false),
-      anyDirectionSelected = north || south || east || west,
-      [isDirectionPristine, setIsDirectionPristine] = useState(true),
-      toggleDirection = (toggler: () => void) => () => {
-        toggler();
-        setIsDirectionPristine(false);
-      };
+  const {
+    states: {
+      north: [north, toggleNorth],
+      south: [south, toggleSouth],
+      east: [east, toggleEast],
+      west: [west, toggleWest]
+    },
+    isPristine: isDirectionPristine,
+    validationErrors: directionValidationErrors
+  } = useCheckboxGroupState({
+    north: useToggle(false),
+    south: useToggle(false),
+    east: useToggle(false),
+    west: useToggle(false)
+  }, (selectedDirs: string[]) => selectedDirs.length ? null : requiredMessage);
 
   return (
     <>
       <NxFieldset label="Color"
                   isRequired
-                  isPristine={isColorPristine}
-                  validationErrors={color ? null : requiredMessage}>
-        <NxRadio value="red" isChecked={color === 'red'} name="color" onChange={setColor}>Red</NxRadio>
-        <NxRadio value="green" isChecked={color === 'green'} name="color" onChange={setColor}>Green</NxRadio>
-        <NxRadio value="blue" isChecked={color === 'blue'} name="color" onChange={setColor}>Blue</NxRadio>
-        <NxRadio value="purple" isChecked={color === 'purple'} name="color" onChange={setColor}>Purple</NxRadio>
+                  isPristine={color.isPristine}
+                  validationErrors={color.validationErrors}>
+        <NxRadio value="red" isChecked={color.value === 'red'} name="color" onChange={setColor}>Red</NxRadio>
+        <NxRadio value="green" isChecked={color.value === 'green'} name="color" onChange={setColor}>Green</NxRadio>
+        <NxRadio value="blue" isChecked={color.value === 'blue'} name="color" onChange={setColor}>Blue</NxRadio>
+        <NxRadio value="purple" isChecked={color.value === 'purple'} name="color" onChange={setColor}>Purple</NxRadio>
       </NxFieldset>
       <NxFieldset label="Direction"
                   isRequired
                   isPristine={isDirectionPristine}
-                  validationErrors={anyDirectionSelected ? null : requiredMessage}>
-        <NxCheckbox isChecked={north} onChange={toggleDirection(toggleNorth)}>
+                  validationErrors={directionValidationErrors}>
+        <NxCheckbox isChecked={north} onChange={toggleNorth}>
           North
         </NxCheckbox>
-        <NxCheckbox isChecked={south} onChange={toggleDirection(toggleSouth)}>
+        <NxCheckbox isChecked={south} onChange={toggleSouth}>
           South
         </NxCheckbox>
-        <NxCheckbox isChecked={east} onChange={toggleDirection(toggleEast)}>
+        <NxCheckbox isChecked={east} onChange={toggleEast}>
           East
         </NxCheckbox>
-        <NxCheckbox isChecked={west} onChange={toggleDirection(toggleWest)}>
+        <NxCheckbox isChecked={west} onChange={toggleWest}>
           West
         </NxCheckbox>
       </NxFieldset>
