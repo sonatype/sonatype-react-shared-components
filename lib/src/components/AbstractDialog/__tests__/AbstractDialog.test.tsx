@@ -38,6 +38,16 @@ describe('AbstractDialog', function() {
     expect(dialog.find('dialog')).toContainMatchingElement('div.bar');
   });
 
+  it('forwards the dialog element ref', function() {
+    const ref = React.createRef<HTMLDialogElement>();
+    const dialog = mount(
+      <AbstractDialog ref={ref} onCancel={() => {}}>
+      </AbstractDialog>
+    );
+    const dialogEl = dialog.find('dialog').getDOMNode();
+    expect(ref.current).toBe(dialogEl);
+  });
+
   it('uses passed in className to the dialog', function() {
     const abstractDialog = getDialog({ className: 'test' });
 
