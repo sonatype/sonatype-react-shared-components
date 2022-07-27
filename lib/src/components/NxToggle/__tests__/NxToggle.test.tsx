@@ -52,22 +52,22 @@ describe('NxToggle', function() {
     expect(label).toHaveClass('nx-toggle');
   });
 
-  it('calls its onChange prop when the input is clicked', async function() {
+  it('calls its onChange prop when the label is clicked', async function() {
     const user = userEvent.setup();
 
     const onChange = jest.fn();
 
-    render(<NxToggle {...simpleProps} onChange={onChange}></NxToggle>);
+    const { container } = render(<NxToggle {...simpleProps} onChange={onChange}></NxToggle>);
 
-    const checkbox = screen.getByRole('switch');
+    const label = container.querySelector('label') as HTMLLabelElement;
 
     expect(onChange).not.toHaveBeenCalled();
 
-    await user.click(checkbox);
+    await user.click(label);
 
     expect(onChange).toHaveBeenCalledTimes(1);
 
-    await checkbox.focus();
+    await label.focus();
 
     await user.keyboard(' ');
 
