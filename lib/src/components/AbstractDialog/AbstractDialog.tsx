@@ -31,6 +31,19 @@ const hasWindow = typeof window !== 'undefined',
 
 const createCancelEvent = () => new Event('cancel', { cancelable: true });
 
+/**
+ * Abstracted Dialog element implementation and behaviors.
+ * @param className - A classname string for the dialog element.
+ * @param onCancel - A callback function that gets called when the dialog is canceled.
+ * @param cancelOnClickOutside - A boolean that if true triggers onCancel when the user clicks outside the dialog.
+ * @param cancelOnClickOutsideTargetClassName - A classname, if specified, selects an element inside the dialog
+ *    element that becomes the reference element for when the user clicks outside of, triggers the cancelOnClickOutside.
+ * @param useNativeCancelOnEscape - If this is set to true, it will attempt to use native dialog element
+ *    cancel behavior when escape is pressed. By default this is set to false, which means it uses event.preventDefault
+ *    and calls onCancel callback when escape is pressed.
+ * @return - Abstracted dialog element.
+ */
+
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */
 const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {

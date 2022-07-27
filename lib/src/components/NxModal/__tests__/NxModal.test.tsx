@@ -20,15 +20,15 @@ describe('NxModal', function() {
     onClose: dummyCloseHandler
   };
 
-  const getShallow = getMountedComponent<Props>(NxModal, minimalProps),
-      getModal = (props?: Partial<Props>) => getShallow(props).children();
+  const getMounted = getMountedComponent<Props>(NxModal, minimalProps),
+      getModal = (props?: Partial<Props>) => getMounted(props).children();
 
   it('renders a context provider around an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
-    const NxModal = getShallow(),
+    const NxModal = getMounted(),
         dialog = NxModal.find('dialog');
 
     expect(dialog).toExist();
-    // expect(dialog).toHaveClassName('.nx-modal-backdrop');
+    expect(dialog).toHaveClassName('.nx-modal-backdrop');
     expect(dialog.children()).toMatchSelector('div.nx-modal');
   });
 
