@@ -196,8 +196,9 @@ hits.
 
 We are currently transitioning from Enzyme to the [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) so we have both set up in place.
 We also use [jest-dom](https://testing-library.com/docs/ecosystem-jest-dom/) to provide custom DOM element matchers, but it is not imported globally because it will overwrite some of the `jest-enzyme` matchers.
-Instead, we need to import them individually into the RTL test modules until we fully transition to the react-testing library.
-To do this insert the following at the top of your RTL test module file: `import '@testing-library/jest-dom';`.
+Instead, they are temporarily imported inside `__testutils__/rtlUtils`.
+Alternatively, if you are not using the RTL render wrapper, you will need to import them individually into the test module.
+To do this, insert the following at the top of your RTL test module file: `import '@testing-library/jest-dom';`.
 
 ## Running Visual Tests
 

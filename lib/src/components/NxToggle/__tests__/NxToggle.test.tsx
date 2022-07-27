@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import '@testing-library/jest-dom';
 
-import { render, screen } from '@testing-library/react';
+import * as rtlUtils from '../../../__testutils__/rtlUtils';
+
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import NxToggle, { Props } from '../NxToggle';
@@ -21,8 +21,10 @@ describe('NxToggle', function() {
     children: 'Enables whales'
   };
 
+  const rtlRender = rtlUtils.rtlRender<Props>(NxToggle, simpleProps);
+
   it('renders a <label> with an <input>', function() {
-    render(<NxToggle {...simpleProps}></NxToggle>);
+    rtlRender();
 
     const checkbox = screen.getByRole<HTMLInputElement>('switch', { name: 'Enables whales' });
 
@@ -34,7 +36,7 @@ describe('NxToggle', function() {
   });
 
   it('renders an input element with role switch with the correct attributes and classname', function() {
-    render(<NxToggle {...simpleProps}></NxToggle>);
+    rtlRender();
 
     const checkbox = screen.getByRole('switch');
 
@@ -44,7 +46,7 @@ describe('NxToggle', function() {
   });
 
   it('adds classes specified with the className prop', function() {
-    const { container } = render(<NxToggle {...simpleProps} className="foo"></NxToggle>);
+    const { container } = rtlRender({ className: 'foo' });
 
     const root = container.children[0];
 
@@ -57,7 +59,7 @@ describe('NxToggle', function() {
 
     const onChange = jest.fn();
 
-    const { container } = render(<NxToggle {...simpleProps} onChange={onChange}></NxToggle>);
+    const { container } = rtlRender({ onChange });
     const label = container.querySelector('label') as HTMLLabelElement;
 
     expect(onChange).not.toHaveBeenCalled();
@@ -70,7 +72,7 @@ describe('NxToggle', function() {
 
     const onChange = jest.fn();
 
-    render(<NxToggle {...simpleProps} onChange={onChange}></NxToggle>);
+    rtlRender({ onChange });
 
     const checkbox = screen.getByRole('switch');
 
@@ -93,7 +95,7 @@ describe('NxToggle', function() {
       }
     };
 
-    render(<NxToggle {...props}></NxToggle>);
+    rtlRender(props);
 
     const checkbox = screen.getByRole('switch');
 
