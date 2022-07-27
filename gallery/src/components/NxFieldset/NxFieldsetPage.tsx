@@ -136,11 +136,15 @@ const NxFieldsetPage = () =>
       some <NxCode>NxCheckbox</NxCode>s.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="Required Example"
+    <GalleryExampleTile title="Required/Validation Examples"
                         liveExample={NxFieldsetRequiredExample}
                         codeExamples={nxFieldsetRequiredExampleCode}>
-      An example of an <NxCode>NxFieldset</NxCode> wrapping
-      some <NxCode>NxRadio</NxCode>s which uses the isRequired flag and corresponding validation.
+      Two examples of NxFieldset demonstrating the <NxCode>isRequired</NxCode> flag
+      and <NxCode>validationErrors</NxCode>. Note that in isolation, it is not generally possible for
+      an <NxCode>NxFieldset</NxCode> containing a group of radios to display an emptiness-based validation message:
+      the only time such a fieldset would be empty is when it is also pristine. When used
+      within <NxCode>NxForm</NxCode> however, the validation message on a radio group fieldset may be activated by
+      the form-wide validation logic.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Sublabel Example"
