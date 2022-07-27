@@ -11,13 +11,15 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFieldsetExample from './NxFieldsetExample';
 import NxFieldsetRequiredExample from './NxFieldsetRequiredExample';
+import NxFieldsetRequiredPureStateHelperExample from './NxFieldsetRequiredPureStateHelperExample';
 import NxFieldsetSublabelExample from './NxFieldsetSublabelExample';
 import NxFieldsetRichLabelExample from './NxFieldsetRichLabelExample';
 
 const nxFieldsetExampleCode = require('./NxFieldsetExample?raw'),
     nxFieldsetSublabelExampleCode = require('./NxFieldsetSublabelExample?raw'),
     nxFieldsetRichLabelExampleCode = require('./NxFieldsetRichLabelExample?raw'),
-    nxFieldsetRequiredExampleCode = require('./NxFieldsetRequiredExample?raw');
+    nxFieldsetRequiredExampleCode = require('./NxFieldsetRequiredExample?raw'),
+    nxFieldsetRequiredPureStateHelperExampleCode = require('./NxFieldsetRequiredExample?raw');
 
 const NxFieldsetPage = () =>
   <>
@@ -145,6 +147,14 @@ const NxFieldsetPage = () =>
       the only time such a fieldset would be empty is when it is also pristine. When used
       within <NxCode>NxForm</NxCode> however, the validation message on a radio group fieldset may be activated by
       the form-wide validation logic.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Required/Validation Examples using Pure State Helpers"
+                        liveExample={NxFieldsetRequiredPureStateHelperExample}
+                        codeExamples={nxFieldsetRequiredPureStateHelperExampleCode}>
+      These examples are similar to the Required/Validation Examples, except that they demonstrate the use of the pure
+      state helper functions rather than the React hooks. Typically, the pure state helpers would be used in code
+      outside of a React component file, such as in a Redux reducer.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Sublabel Example"
