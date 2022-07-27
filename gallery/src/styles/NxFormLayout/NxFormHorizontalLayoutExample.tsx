@@ -57,11 +57,8 @@ export default function NxFormLayoutExample() {
       selectedColors => selectedColors.length ? null : 'A color is required'
   );
 
-  const [{
-      value: color,
-      isPristine: colorRadioIsPristine,
-      validationErrors: colorRadioValidationErrors
-    },
+  const [
+    { value: color, isPristine: colorRadioIsPristine, validationErrors: colorRadioValidationErrors },
     setColor
   ] = useRadioGroupState(undefined, c => c ? null : 'A color is required');
 
