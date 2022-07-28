@@ -9,6 +9,7 @@ import React, { useCallback, useState } from 'react';
 import ToastContext from './contexts';
 import NxToastContainer from './NxToastContainer';
 import { NxToastProviderProps, nxToastProviderPropTypes, ToastAddModel, ToastModel } from './types';
+import { reject, propEq } from 'ramda';
 
 let id = 1;
 
@@ -38,7 +39,7 @@ const NxToastProvider = (props: NxToastProviderProps) => {
   }, [setToasts]);
 
   const removeToast = useCallback((id: number) => {
-    const _toasts = toasts.filter(t => t.toastId !== id);
+    const _toasts = reject(propEq('toastId', id), toasts);
     setToasts(_toasts);
 
     if (_toasts.length === 0) {
