@@ -7,7 +7,6 @@
 
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { act } from 'react-dom/test-utils';
 
 import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxPopOver, {Props} from '../NxPopOver';
@@ -17,17 +16,17 @@ import NxCloseButton from '../../NxCloseButton/NxCloseButton';
 
 describe('NxPopOver', function() {
   const dummyCancelHandler = jest.fn();
+
   const minimalProps: Props = {
-    children: 'A message to show in a popover',
+    title: 'Title',
     onCancel: dummyCancelHandler,
-    title: 'hello'
+    children: 'A message to show in a popover'
   };
 
   const getMounted = getMountedComponent<Props>(NxPopOver, minimalProps),
-      getPopOver = (props?: Partial<Props>) => getMounted(props).children(),
       getShallow = getShallowComponent<Props>(NxPopOver, minimalProps);
 
-  it('renders AbstractDialog with <dialog> with class nx-pop-over containing' +
+  it('renders AbstractDialog with nx-pop-over class applied to the dialog element and containing' +
   '<div> with class nx-pop-over__inner', function () {
     const component = getMounted();
     const dialog = component.find(AbstractDialog).children();
@@ -36,39 +35,47 @@ describe('NxPopOver', function() {
     expect(dialog.children()).toMatchSelector('div.nx-pop-over__inner');
   });
 
-  it('renders children nodes within the popover', function() {
-    const nxPopOver = getPopOver({ children: <div className="bar"/> });
+  it('sets nx-pop-over--open to dialog only once it is mounted', function() {
+    const component = getMounted();
+    const dialog = component.find('dialog.nx-pop-over');
+    expect(dialog).not.toHaveClassName('nx-pop-over--open');
+    // nx-pop-over--open is added after it is fully mounted.
+    expect(dialog.getDOMNode().classList.contains('nx-pop-over--open')).toBe(true);
+  });
 
-    expect(nxPopOver.find('.nx-pop-over')).toContainMatchingElement('div.bar');
+  it('renders children nodes within the popover', function() {
+    const component = getShallow({ children: <div className="bar"/> });
+    expect(component.find('.nx-pop-over')).toContainMatchingElement('div.bar');
   });
 
   it('merges any passed in className to the nx-pop-over dialog', function() {
-    const nxPopOver = getPopOver({ className: 'test' });
-
-    const nxPopOverDialog = nxPopOver.find('dialog.nx-pop-over');
-    expect(nxPopOverDialog).toHaveClassName('test');
+    const component = getMounted({ className: 'test' });
+    const dialog = component.find('dialog.nx-pop-over');
+    expect(dialog).toHaveClassName('test');
   });
 
   it('includes any passed in attributes to the nx-pop-over dialog', function() {
-    const nxPopOver = getPopOver({ id: 'pop-over-id', lang: 'en_US' });
-    const nxPopOverDialog = nxPopOver.find('dialog.nx-pop-over');
+    const component = getMounted({ id: 'pop-over-id', lang: 'en_US' });
+    const dialog = component.find('dialog.nx-pop-over');
 
-    expect(nxPopOverDialog.prop('id')).toEqual('pop-over-id');
-    expect(nxPopOverDialog.prop('lang')).toEqual('en_US');
+    expect(dialog.prop('id')).toEqual('pop-over-id');
+    expect(dialog.prop('lang')).toEqual('en_US');
   });
 
   it('adds the nx-pop-over--narrow class when the narrow variant is specified', function() {
-    const nxPopOver = getPopOver({ variant: 'narrow' });
-
-    expect(nxPopOver.find('.nx-pop-over')).toHaveClassName('nx-pop-over--narrow');
+    const component = getShallow({ variant: 'narrow' });
+    expect(component.find('.nx-pop-over')).toHaveClassName('nx-pop-over--narrow');
   });
 
   describe('NxPopOver event listener support', () => {
+    const defaultMatchMedia = window.matchMedia;
 
-    beforeAll(function () {
-      window.matchMedia = () => ({
-        matches: true
-      }) as MediaQueryList;
+    beforeAll(function() {
+      window.matchMedia = () => ({ matches: true }) as MediaQueryList;
+    });
+
+    afterAll(function() {
+      window.matchMedia = defaultMatchMedia;
     });
 
     const createEvent = (key = 'Escape') => ({
@@ -81,7 +88,7 @@ describe('NxPopOver', function() {
 
     it('executes onCancel callback when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const component = getPopOver({ onCancel: mockCallBack });
+      const component = getMounted({ onCancel: mockCallBack });
 
       expect(mockCallBack).not.toHaveBeenCalled();
       component.simulate('keyDown', createEvent());
@@ -90,13 +97,106 @@ describe('NxPopOver', function() {
 
     it('executes onCancel callback ONLY when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const component = getPopOver({ onCancel: mockCallBack });
+      const component = getMounted({ onCancel: mockCallBack });
 
       component.simulate('keyDown', createEvent('Tab'));
       component.simulate('keyDown', createEvent('Enter'));
       component.simulate('keyDown', createEvent('q'));
       component.simulate('keyDown', createEvent('Q'));
       expect(mockCallBack).not.toHaveBeenCalled();
+    });
+
+    it('executes onCancel when clicked outside of popOver', function() {
+      const mockOnCancel = jest.fn();
+      const map: any = {};
+      document.addEventListener = jest.fn((e: string, cb: () => void) => {
+        map[e] = cb;
+      }) as jest.Mock;
+      const container = mount(
+        <div className="container">
+          <NxButton className="outside-button">Outside</NxButton>
+          <NxPopOver title="hello" onCancel={mockOnCancel}>
+            <NxButton className="inside-button">Inside</NxButton>
+          </NxPopOver>
+        </div>
+      );
+      const outsideButton = container.find('.outside-button').at(0);
+      const insideButton = container.find('.inside-button').at(0);
+
+      expect(mockOnCancel).toHaveBeenCalledTimes(0);
+      map.click({ target: insideButton.getDOMNode() });
+      expect(mockOnCancel).toHaveBeenCalledTimes(0);
+      map.click({ target: outsideButton.getDOMNode() });
+      expect(mockOnCancel).toHaveBeenCalledTimes(1);
+    });
+
+    it('executes onCancel when clicked on the shadow of popOver', function() {
+      const mockOnCancel = jest.fn();
+      const map: any = {};
+      document.addEventListener = jest.fn((e: string, cb: () => void) => {
+        map[e] = cb;
+      }) as jest.Mock;
+      const container = mount(
+        <div className="container">
+          <NxPopOver title="hello" onCancel={mockOnCancel}>
+            <NxButton className="inside-button">Inside</NxButton>
+          </NxPopOver>
+        </div>
+      );
+      const dialog = container.find('dialog.nx-pop-over').at(0);
+      const insideButton = container.find('.inside-button').at(0);
+
+      expect(mockOnCancel).toHaveBeenCalledTimes(0);
+      map.click({ target: insideButton.getDOMNode() });
+      expect(mockOnCancel).toHaveBeenCalledTimes(0);
+      map.click({ target: dialog.getDOMNode() });
+      expect(mockOnCancel).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('NxPopOver Transition', () => {
+    const defaultMatchMedia = window.matchMedia;
+
+    beforeAll(function() {
+      window.matchMedia = () => ({ matches: false }) as MediaQueryList;
+    });
+
+    afterAll(function() {
+      window.matchMedia = defaultMatchMedia;
+    });
+
+    it('calls onCancel when prefers reduced motion is false and nx-pop-over--open is not applied' +
+    'and transitionEnd event is called  ', async function() {
+      const mockCallback = jest.fn();
+
+      const escapeEvent = {
+        key: 'Escape',
+        stopPropagation: jest.fn(),
+        nativeEvent: {
+          stopImmediatePropagation: jest.fn()
+        }
+      };
+
+      const component = mount(<NxPopOver title="hello" onCancel={mockCallback}></NxPopOver>);
+
+      const dialog = component.find('dialog.nx-pop-over');
+
+      // nx-pop-over--open is added after it is mounted.
+      expect(dialog.getDOMNode().classList.contains('nx-pop-over--open')).toBe(true);
+
+      component.simulate('transitionEnd');
+
+      expect(mockCallback).not.toHaveBeenCalled();
+
+      component.simulate('keyDown', escapeEvent);
+
+      expect(mockCallback).not.toHaveBeenCalled();
+
+      expect(dialog.getDOMNode().classList.contains('nx-pop-over--open')).toBe(false);
+
+      component.simulate('transitionEnd');
+
+      expect(mockCallback).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -137,102 +237,15 @@ describe('NxPopOver', function() {
     }, 100);
   });
 
-  it('executes onCancel when clicked outside of popOver', function() {
-    const mockOnCancel = jest.fn();
-    const map: any = {};
-    document.addEventListener = jest.fn((e: string, cb: () => void) => {
-      map[e] = cb;
-    }) as jest.Mock;
-    const container = mount(
-      <div className="container">
-        <NxButton className="outside-button">Outside</NxButton>
-        <NxPopOver title="hello" onCancel={mockOnCancel}>
-          <NxButton className="inside-button">Inside</NxButton>
-        </NxPopOver>
-      </div>
-    );
-    const outsideButton = container.find('.outside-button').at(0);
-    const insideButton = container.find('.inside-button').at(0);
+  describe('NxPopOver Header Portion', function() {
+    it('has a <header> tag with the nx-pop-over-header class and title', function() {
+      const titleText = 'Header Title';
 
-    expect(mockOnCancel).toHaveBeenCalledTimes(0);
-    map.click({ target: insideButton.getDOMNode() });
-    expect(mockOnCancel).toHaveBeenCalledTimes(0);
-    map.click({ target: outsideButton.getDOMNode() });
-    expect(mockOnCancel).toHaveBeenCalledTimes(1);
-  });
-
-  it('executes onCancel when clicked on the shadow of popOver', function() {
-    const mockOnCancel = jest.fn();
-    const map: any = {};
-    document.addEventListener = jest.fn((e: string, cb: () => void) => {
-      map[e] = cb;
-    }) as jest.Mock;
-    const container = mount(
-      <div className="container">
-        <NxPopOver title="hello" onCancel={mockOnCancel}>
-          <NxButton className="inside-button">Inside</NxButton>
-        </NxPopOver>
-      </div>
-    );
-    const dialog = container.find('dialog.nx-pop-over').at(0);
-    const insideButton = container.find('.inside-button').at(0);
-
-    expect(mockOnCancel).toHaveBeenCalledTimes(0);
-    map.click({ target: insideButton.getDOMNode() });
-    expect(mockOnCancel).toHaveBeenCalledTimes(0);
-    map.click({ target: dialog.getDOMNode() });
-    expect(mockOnCancel).toHaveBeenCalledTimes(1);
-  });
-
-  describe('NxPopOver transition', () => {
-
-    beforeAll(function () {
-      window.matchMedia = () => ({
-        matches: false
-      }) as MediaQueryList;
-    });
-
-    const createEvent = (key = 'Escape') => ({
-      key,
-      stopPropagation: jest.fn(),
-      nativeEvent: {
-        stopImmediatePropagation: jest.fn()
-      }
-    });
-
-    it('executes ', async function (done) {
-      let component;
-      await act(async () => {
-        component = mount(<NxPopOver title="hello" onCancel={() => {}}></NxPopOver>);
-      });
-      component = component as any;
-      component.update();
-      const dialog = component.find('dialog.nx-pop-over');
-      expect(dialog).toMatchSelector('.nx-pop-over--open');
-      component.simulate('keyDown', createEvent());
-      expect(dialog).not.toHaveClassName('nx-pop-over--open');
-      done();
-    });
-
-    // it('executes onCancel callback ONLY when pressing ESC key', function () {
-    //   const mockCallBack = jest.fn();
-    //   const component = getPopOver({ onCancel: mockCallBack });
-
-    //   component.simulate('keyDown', createEvent('Tab'));
-    //   component.simulate('keyDown', createEvent('Enter'));
-    //   component.simulate('keyDown', createEvent('q'));
-    //   component.simulate('keyDown', createEvent('Q'));
-    //   expect(mockCallBack).not.toHaveBeenCalled();
-    // });
-  });
-
-  describe('NxPopOver.Header', function() {
-    it('makes a <header> tag with the nx-pop-over-header class and title', function() {
-      const header = getShallow().find('.nx-pop-over-header');
+      const header = getShallow({ title: titleText }).find('.nx-pop-over-header');
       const title = header.find('h2.nx-pop-over-header__title');
 
       expect(header).toMatchSelector('header.nx-pop-over-header');
-      expect(title).toHaveText('hello');
+      expect(title).toHaveText(titleText);
     });
 
     it('has NxCloseButton with class nx-pop-over-header__close', function() {
@@ -257,18 +270,20 @@ describe('NxPopOver', function() {
     });
 
     it('executes onCancel when header close button is pressed', function() {
-      window.matchMedia = () => ({
-        matches: true
-      }) as MediaQueryList;
+      window.matchMedia = () => ({ matches: true }) as MediaQueryList;
 
       const mockOnCancel = jest.fn();
+
       const container = getShallow({
         onCancel: mockOnCancel
       });
+
       const closeButton = container.find(NxCloseButton).at(0);
 
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
+
       closeButton.simulate('click');
+
       expect(mockOnCancel).toHaveBeenCalledTimes(1);
     });
   });
@@ -284,5 +299,4 @@ describe('NxPopOver', function() {
       expect(shallow(<NxPopOver.Footer/>)).toMatchSelector('footer.nx-pop-over-footer');
     });
   });
-
 });

@@ -4,16 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect } from 'react';
-import AbstractDialog from '../AbstractDialog/AbstractDialog';
+import React, { useEffect, useRef } from 'react';
 import classnames from 'classnames';
+
+import AbstractDialog from '../AbstractDialog/AbstractDialog';
+import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import withClass from '../../util/withClass';
 
-import {Props} from './types';
+import { Props } from './types';
 
 import './NxPopOver.scss';
-import NxCloseButton from '../NxCloseButton/NxCloseButton';
-import { useRef } from 'react';
 
 const POP_OVER_OPEN_CLASS_NAME = 'nx-pop-over--open';
 
@@ -26,14 +26,12 @@ const _NxPopOver = (props: Props) => {
     title,
     subtitle,
     paragraph,
-    ...otherProps
+    ...attrs
   } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
-    dialogRef.current?.classList.add(POP_OVER_OPEN_CLASS_NAME);
-  }, [dialogRef]);
+  useEffect(() => dialogRef.current?.classList.add(POP_OVER_OPEN_CLASS_NAME), [dialogRef]);
 
   const closePopOver = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -49,20 +47,19 @@ const _NxPopOver = (props: Props) => {
     }
   };
 
-  const classes = classnames('nx-pop-over', {
-    'nx-pop-over--narrow': variant === 'narrow'
-  }, className);
+  const classes = classnames('nx-pop-over', { 'nx-pop-over--narrow': variant === 'narrow' }, className);
 
   const subtitleContent = subtitle ? <h3 className="nx-h3 nx-pop-over-header__subtitle">{subtitle}</h3> : null;
   const paragraphContent = paragraph ? <p className="nx-p nx-pop-over-header__paragraph">{paragraph}</p> : null;
+
   return (
-    <AbstractDialog cancelOnClickOutside={true}
-                    ref={dialogRef}
+    <AbstractDialog ref={dialogRef}
                     className={classes}
                     onCancel={closePopOver}
+                    cancelOnClickOutside={true}
                     cancelOnClickOutsideTargetClassName={'nx-pop-over__inner'}
                     onTransitionEnd={handleTransitionEnd}
-                    {...otherProps}>
+                    {...attrs}>
       <div className="nx-pop-over__inner">
         <header className="nx-pop-over-header">
           <NxCloseButton className="nx-pop-over-header__close"
@@ -88,4 +85,4 @@ const NxPopOver = Object.assign(_NxPopOver, {
 });
 
 export default NxPopOver;
-export {Props} from './types';
+export { Props } from './types';

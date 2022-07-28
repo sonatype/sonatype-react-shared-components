@@ -6,9 +6,9 @@
  */
 import React, {
   forwardRef,
-  useImperativeHandle,
   KeyboardEvent,
   useEffect,
+  useImperativeHandle,
   useRef,
   useState
 } from 'react';
@@ -57,12 +57,14 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     cancelOnClickOutsideTargetClassName,
     ...attrs
   } = props;
+
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   // The dialogRef value needs to get passed down in a context. But the context needs to know when the ref
   // value has updated, and refs aren't tracked like state values. So we have to copy the ref value into a state
   // value in order for it to be tracked.
   const [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
+
   useImperativeHandle(ref, () => dialogRef.current as HTMLDialogElement);
 
   function dialogKeydownListener(evt: KeyboardEvent<HTMLDialogElement>) {
@@ -97,7 +99,6 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   useEffect(function() {
     /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
     const el = dialogRef.current!,
-
         // HTML <dialog> elements are supposed to remember what element was focused before they were opened,
         // and restore focus to that element when they are closed. No browsers appear to implement this currently,
         // so we do it ourselves
@@ -183,12 +184,14 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     // Provide the dialog element to descendants so that tooltips can attach to it instead of the body,
     // which is necessary so that they end up in the top layer rather than behind the modal
     <AbstractDialogContext.Provider value={abstractDialogContextValue}>
-      {/* Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
+      {
+        /* Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
         * what a <dialog> is.  It makes a difference there.
         *
         * The tabindex is for the sake of browsers which don't support dialog. In those browsers we try to
         * focus the dialog element itself when it opens which can't be done if it doesn't have a tab index
-        */}
+        */
+      }
       <dialog ref={dialogRef}
               role={role || 'dialog'}
               aria-modal="true"
@@ -203,4 +206,4 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 });
 
 export default AbstractDialog;
-export {Props} from './types';
+export { Props } from './types';

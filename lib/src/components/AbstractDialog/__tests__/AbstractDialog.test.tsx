@@ -7,14 +7,16 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import AbstractDialog, {Props, AbstractDialogContext} from '../AbstractDialog';
-import NxTooltip from '../../NxTooltip/NxTooltip';
-import NxButton from '../../NxButton/NxButton';
 import { Tooltip } from '@material-ui/core';
+
+import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import AbstractDialog, { AbstractDialogContext, Props } from '../AbstractDialog';
+import NxButton from '../../NxButton/NxButton';
+import NxTooltip from '../../NxTooltip/NxTooltip';
 
 describe('AbstractDialog', function() {
   const dummyCloseHandler = jest.fn();
+
   const minimalProps: Props = {
     children: 'A message inside the dialog element.',
     onCancel: dummyCloseHandler
@@ -34,7 +36,6 @@ describe('AbstractDialog', function() {
 
   it('renders children nodes within the dialog', function() {
     const dialog = getDialog({ children: <div className="bar"/> });
-
     expect(dialog.find('dialog')).toContainMatchingElement('div.bar');
   });
 
@@ -59,6 +60,7 @@ describe('AbstractDialog', function() {
     const abstractDialog = getDialog({ id: 'dialog-id', lang: 'en_US' });
 
     const dialog = abstractDialog.find('dialog');
+
     expect(dialog.prop('id')).toEqual('dialog-id');
     expect(dialog.prop('lang')).toEqual('en_US');
   });
@@ -208,10 +210,13 @@ describe('AbstractDialog', function() {
 
   it('executes onCancel when clicked outside of dialog and cancelOnClickOutside is true', function() {
     const mockOnCancel = jest.fn();
+
     const map: any = {};
+
     document.addEventListener = jest.fn((e: string, cb: () => void) => {
       map[e] = cb;
     }) as jest.Mock;
+
     const container = mount(
       <div className="container">
         <NxButton className="outside-button">Outside</NxButton>
@@ -224,19 +229,26 @@ describe('AbstractDialog', function() {
     const insideButton = container.find('.inside-button').at(0);
 
     expect(mockOnCancel).toHaveBeenCalledTimes(0);
+
     map.click({ target: insideButton.getDOMNode() });
+
     expect(mockOnCancel).toHaveBeenCalledTimes(0);
+
     map.click({ target: outsideButton.getDOMNode() });
+
     expect(mockOnCancel).toHaveBeenCalledTimes(1);
   });
 
   it('executes cancelOnClickOutsideTargetClassName when' +
   'clicked outside of dialog and cancelOnClickOutside is true', function() {
     const mockOnCancel = jest.fn();
+
     const map: any = {};
+
     document.addEventListener = jest.fn((e: string, cb: () => void) => {
       map[e] = cb;
     }) as jest.Mock;
+
     const container = mount(
       <div className="container">
         <NxButton className="outside-button">Outside</NxButton>
@@ -248,16 +260,20 @@ describe('AbstractDialog', function() {
         </AbstractDialog>
       </div>
     );
+
     const outsideButton = container.find('.outside-button').at(0);
     const insideButton = container.find('.inside-button').at(0);
     const innerButton = container.find('.inner-button').at(0);
 
     expect(mockOnCancel).toHaveBeenCalledTimes(0);
     map.click({ target: innerButton.getDOMNode() });
+
     expect(mockOnCancel).toHaveBeenCalledTimes(0);
     map.click({ target: insideButton.getDOMNode() });
+
     expect(mockOnCancel).toHaveBeenCalledTimes(1);
     map.click({ target: outsideButton.getDOMNode() });
+
     expect(mockOnCancel).toHaveBeenCalledTimes(2);
   });
 });
