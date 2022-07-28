@@ -62,19 +62,18 @@ $-box-shadow-offset: 52px;
 
     &::after {
       content: " ";
-      position: absolute;
-      width: 100%;
+
+      box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);      
       height: calc(100% - var(--nx-spacing-16x));
+      width: 100%;      
+      position: absolute;
       left: 0;
       top: var(--nx-spacing-8x);
       z-index: -1;
-      box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);
     }  
   }
 
-  transition-duration: 120ms;
-  transition-timing-function: ease-in-out;
-  transition-property: transform;
+  transition: transform 120ms ease-in-out;
 
   &--open {
     transform: translateX(0%);
@@ -88,54 +87,55 @@ $-box-shadow-offset: 52px;
   }
 }
 
-.nx-pop-over-footer {
-  @include nx-container-helpers.container-vertical;
-
-  height: min-content;
-  padding-top: var(--nx-spacing-6x);
-  border-top: 1px solid var(--nx-swatch-indigo-90);
-}
-
-.nx-pop-over-content {
-  @include nx-container-helpers.container-vertical;
-
-  padding: var(--nx-spacing-6x) 0;
-  flex-grow: 1;
-  overflow-y: scroll;
-}
-
 .nx-pop-over-header {
   @include nx-container-helpers.container-vertical;
 
+  
   border-bottom: 1px solid var(--nx-swatch-indigo-90);
-  padding-bottom: var(--nx-spacing-6x);
   display: grid;
+  gap: var(--nx-spacing-2x);
   grid-template: "title close"
                  "subtitle subtitle"
                  "paragraph paragraph" / auto min-content;
   height: min-content;
-  gap: var(--nx-spacing-2x);
+  padding-bottom: var(--nx-spacing-6x);
+
+  &__close, &__title, &__subtitle, &__paragraph {
+    margin: 0;
+  }
 
   &__close {
     grid-area: close;
-    margin: 0;
   }
 
   &__title {
     @include nx-text-helpers.truncate-ellipsis;
 
     grid-area: title;
-    margin: 0;
   }
 
   &__subtitle {
     grid-area: subtitle;
-    margin: 0;
   }
 
   &__paragraph {
-    grid-area: paragraph;
-    margin: 0;
     color: var(--nx-swatch-grey-30);
+    grid-area: paragraph;
   }
+}
+
+.nx-pop-over-content {
+  @include nx-container-helpers.container-vertical;
+
+  flex-grow: 1;
+  overflow-y: scroll;
+  padding: var(--nx-spacing-6x) 0;
+}
+
+.nx-pop-over-footer {
+  @include nx-container-helpers.container-vertical;
+
+  border-top: 1px solid var(--nx-swatch-indigo-90);
+  height: min-content;
+  padding-top: var(--nx-spacing-6x);
 }
