@@ -7,6 +7,7 @@
 
 import React from 'react';
 import { mount, shallow } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 
 import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxPopOver, {Props} from '../NxPopOver';
@@ -181,6 +182,48 @@ describe('NxPopOver', function() {
     expect(mockOnCancel).toHaveBeenCalledTimes(0);
     map.click({ target: dialog.getDOMNode() });
     expect(mockOnCancel).toHaveBeenCalledTimes(1);
+  });
+
+  describe('NxPopOver transition', () => {
+
+    beforeAll(function () {
+      window.matchMedia = () => ({
+        matches: false
+      }) as MediaQueryList;
+    });
+
+    const createEvent = (key = 'Escape') => ({
+      key,
+      stopPropagation: jest.fn(),
+      nativeEvent: {
+        stopImmediatePropagation: jest.fn()
+      }
+    });
+
+    it('executes ', async function (done) {
+      let component;
+      await act(async () => {
+        component = mount(<NxPopOver title="hello" onCancel={() => {}}></NxPopOver>);
+      });
+      component = component as any;
+      component.update();
+      const dialog = component.find('dialog.nx-pop-over');
+      expect(dialog).toMatchSelector('.nx-pop-over--open');
+      component.simulate('keyDown', createEvent());
+      expect(dialog).not.toHaveClassName('nx-pop-over--open');
+      done();
+    });
+
+    // it('executes onCancel callback ONLY when pressing ESC key', function () {
+    //   const mockCallBack = jest.fn();
+    //   const component = getPopOver({ onCancel: mockCallBack });
+
+    //   component.simulate('keyDown', createEvent('Tab'));
+    //   component.simulate('keyDown', createEvent('Enter'));
+    //   component.simulate('keyDown', createEvent('q'));
+    //   component.simulate('keyDown', createEvent('Q'));
+    //   expect(mockCallBack).not.toHaveBeenCalled();
+    // });
   });
 
   describe('NxPopOver.Header', function() {
