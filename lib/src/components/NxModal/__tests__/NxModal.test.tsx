@@ -20,12 +20,11 @@ describe('NxModal', function() {
     onClose: dummyCloseHandler
   };
 
-  const getMounted = getMountedComponent<Props>(NxModal, minimalProps),
-      getModal = (props?: Partial<Props>) => getMounted(props).children();
+  const getMounted = getMountedComponent<Props>(NxModal, minimalProps);
 
   it('renders a context provider around an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
-    const NxModal = getMounted(),
-        dialog = NxModal.find('dialog');
+    const component = getMounted(),
+        dialog = component.find('dialog');
 
     expect(dialog).toExist();
     expect(dialog).toHaveClassName('.nx-modal-backdrop');
@@ -33,43 +32,42 @@ describe('NxModal', function() {
   });
 
   it('renders children nodes within the modal', function() {
-    const nxModal = getModal({ children: <div className="bar"/> });
-
-    expect(nxModal.find('.nx-modal')).toContainMatchingElement('div.bar');
+    const modal = getMounted({ children: <div className="bar"/> });
+    expect(modal.find('.nx-modal')).toContainMatchingElement('div.bar');
   });
 
   it('merges any passed in className to the nx-modal div', function() {
-    const nxModal = getModal({ className: 'test' });
-
-    const nxModalDiv = nxModal.find('.nx-modal');
-    expect(nxModalDiv).toHaveClassName('test');
+    const modal = getMounted({ className: 'test' });
+    const div = modal.find('.nx-modal');
+    expect(div).toHaveClassName('test');
   });
 
   it('includes any passed in attributes to the nx-modal div', function() {
-    const nxModal = getModal({ id: 'modal-id', lang: 'en_US' });
-
-    expect(nxModal.find('.nx-modal').prop('id')).toEqual('modal-id');
-    expect(nxModal.find('.nx-modal').prop('lang')).toEqual('en_US');
+    const component = getMounted({ id: 'modal-id', lang: 'en_US' });
+    const div = component.find('.nx-modal');
+    expect(div.prop('id')).toEqual('modal-id');
+    expect(div.prop('lang')).toEqual('en_US');
   });
 
   it('sets the dialog role on the backdrop by default', function() {
-    expect(getModal()).toHaveProp('role', 'dialog');
+    const dialog = getMounted().find('dialog');
+    expect(dialog).toHaveProp('role', 'dialog');
   });
 
   it('sets the specified role on the backdrop', function() {
-    expect(getModal({ role: 'asdf' })).toHaveProp('role', 'asdf');
+    expect(getMounted({ role: 'asdf' })).toHaveProp('role', 'asdf');
   });
 
   it('adds the nx-modal--wide class when the wide variant is specified', function() {
-    const nxModal = getModal({ variant: 'wide' });
+    const component = getMounted({ variant: 'wide' });
 
-    expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--wide');
+    expect(component.find('.nx-modal')).toHaveClassName('nx-modal--wide');
   });
 
   it('adds the nx-modal--narrow class when the narrow variant is specified', function() {
-    const nxModal = getModal({ variant: 'narrow' });
+    const component = getMounted({ variant: 'narrow' });
 
-    expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--narrow');
+    expect(component.find('.nx-modal')).toHaveClassName('nx-modal--narrow');
   });
 
   describe('NxModal event listener support', () => {
@@ -99,7 +97,7 @@ describe('NxModal', function() {
 
     it('executes onClose method with a cancel event when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const component = getModal({ onClose: mockCallBack });
+      const component = getMounted({ onClose: mockCallBack });
 
       expect(mockCallBack).not.toHaveBeenCalled();
       component.simulate('keyDown', createEvent());
@@ -109,7 +107,7 @@ describe('NxModal', function() {
 
     it('executes onCancel method with a cancel event when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const component = getModal({ onCancel: mockCallBack });
+      const component = getMounted({ onCancel: mockCallBack });
 
       expect(mockCallBack).not.toHaveBeenCalled();
       component.simulate('keyDown', createEvent());
@@ -119,7 +117,7 @@ describe('NxModal', function() {
 
     it('executes onClose method ONLY when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const component = getModal({ onClose: mockCallBack });
+      const component = getMounted({ onClose: mockCallBack });
 
       component.simulate('keyDown', createEvent('Tab'));
       component.simulate('keyDown', createEvent('Enter'));
@@ -130,7 +128,7 @@ describe('NxModal', function() {
 
     it('executes onCancel method ONLY when pressing ESC key', function () {
       const mockCallBack = jest.fn();
-      const component = getModal({ onCancel: mockCallBack });
+      const component = getMounted({ onCancel: mockCallBack });
 
       component.simulate('keyDown', createEvent('Tab'));
       component.simulate('keyDown', createEvent('Enter'));
@@ -140,7 +138,7 @@ describe('NxModal', function() {
     });
 
     it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
-      const component = getModal({ onClose: jest.fn() }),
+      const component = getMounted({ onClose: jest.fn() }),
           escEvent = createEvent(),
           otherEvent = createEvent('q');
 
@@ -156,7 +154,7 @@ describe('NxModal', function() {
   });
 
   it('renders descendant tooltips attached to the backdrop rather than the document body', function() {
-    const nxModal = mount(
+    const modal = mount(
       <NxModal onClose={() => {}}>
         <div id="test-div">
           <NxTooltip title="foo">
@@ -166,9 +164,9 @@ describe('NxModal', function() {
       </NxModal>
     );
 
-    const tooltip = nxModal.find(Tooltip).at(0);
+    const tooltip = modal.find(Tooltip).at(0);
 
-    expect(tooltip.prop('PopperProps')!.container).toBe(nxModal.getDOMNode());
+    expect(tooltip.prop('PopperProps')!.container).toBe(modal.getDOMNode());
   });
 
   it('moves focus back to the previously focused element when closed', function(done) {

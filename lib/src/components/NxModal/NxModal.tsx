@@ -11,7 +11,7 @@ import { pick, omit } from 'ramda';
 import withClass from '../../util/withClass';
 import AbstractDialog, { AbstractDialogContext } from '../AbstractDialog/AbstractDialog';
 
-import {CloseHandler, Props, propTypes} from './types';
+import { CloseHandler, Props, propTypes } from './types';
 
 import './NxModal.scss';
 
