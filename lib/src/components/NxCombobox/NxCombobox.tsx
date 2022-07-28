@@ -51,11 +51,14 @@ function NxComboboxRender<T extends string | number = string>(
       menuRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
+      buttonRef = useRef<HTMLButtonElement>(null),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
 
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
       dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'menu',
+
+      // dropdownButtonId= useUniqueId('nx-dropdown-button'),
 
       filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
       className = classnames('nx-search-dropdown', classNameProp, {
@@ -179,10 +182,11 @@ function NxComboboxRender<T extends string | number = string>(
     onSelect(match);
     focusTextInput();
     setIsSelected(true);
+    // console.log(buttonRef.current?.id)
   }
   return (
     <div ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
-      <NxTextInput role="searchbox"
+      <NxTextInput role="combobox"
                    ref={filterRef}
                    className={filterClassName}
                    value={searchText}
@@ -190,8 +194,9 @@ function NxComboboxRender<T extends string | number = string>(
                    disabled={disabled || undefined}
                    isPristine={true}
                    onKeyDown={handleKeyDown}
+                   aria-expanded={!showDropdown}
                    aria-controls={dropdownMenuId}
-                   aria-haspopup="menu" />
+                   />
       <NxDropdownMenu id={dropdownMenuId}
                       role={dropdownMenuRole}
                       ref={menuRef}
@@ -204,7 +209,9 @@ function NxComboboxRender<T extends string | number = string>(
         <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
           {
             matches.length ? matches.map((match, i) =>
-              <button role="menuitem"
+              <button id={`nx-dropdown-button-${i}`}
+                      ref={buttonRef}
+                      role="menuitem"
                       type="button"
                       className="nx-dropdown-button"
                       disabled={disabled || undefined}
