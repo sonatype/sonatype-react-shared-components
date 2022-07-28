@@ -326,4 +326,4 @@ export { default as NxProgressBar } from './components/NxProgressBar/NxProgressB
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
 
-export { default as NxPopOver, Props as NxPopOverProps, NxPopOverHeader } from './components/NxPopOver/NxPopOver';
+export { default as NxPopOver, Props as NxPopOverProps } from './components/NxPopOver/NxPopOver';
