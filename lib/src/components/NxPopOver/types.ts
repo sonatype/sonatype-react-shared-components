@@ -24,15 +24,18 @@ export interface PopOverFooterProps {
 }
 
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
-  variant?: NX_POP_OVER_VARIANT_TYPE | null;
   onCancel: () => void;
   children?: ReactNode;
+  variant?: NX_POP_OVER_VARIANT_TYPE | null;
   headerTitle: ReactNode | string;
   headerSubtitle?: ReactNode | string | null;
   headerParagraph?: ReactNode | string | null;
 }
 
 export const propTypes = {
-  onCancel: PropTypes.func,
-  variant: PropTypes.oneOf(NX_POP_OVER_VARIANTS)
+  onCancel: PropTypes.func.isRequired,
+  variant: PropTypes.oneOf(NX_POP_OVER_VARIANTS),
+  headerTitle: PropTypes.oneOf([PropTypes.string, PropTypes.node]).isRequired,
+  headerSubtitle: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  headerParagraph: PropTypes.oneOf([PropTypes.string, PropTypes.node])
 } as PropTypes.ValidationMap<Props>;

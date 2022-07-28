@@ -11,7 +11,7 @@ import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import withClass from '../../util/withClass';
 
-import { Props } from './types';
+import { Props, propTypes } from './types';
 
 import './NxPopOver.scss';
 
@@ -82,6 +82,7 @@ const _NxPopOver = (props: Props) => {
 };
 
 const NxPopOver = Object.assign(_NxPopOver, {
+  propTypes,
   Content: withClass('div', 'nx-pop-over-content'),
   Footer: withClass('footer', 'nx-pop-over-footer')
 });

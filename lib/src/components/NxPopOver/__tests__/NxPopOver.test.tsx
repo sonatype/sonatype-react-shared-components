@@ -9,7 +9,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 
 import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import NxPopOver, {Props} from '../NxPopOver';
+import NxPopOver, { Props } from '../NxPopOver';
 import AbstractDialog from '../../AbstractDialog/AbstractDialog';
 import NxButton from '../../NxButton/NxButton';
 import NxCloseButton from '../../NxCloseButton/NxCloseButton';
