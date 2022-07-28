@@ -6,28 +6,33 @@
  */
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
-import { default as NxCodeSnippet, Props } from '../NxCodeSnippet';
+import { default as NxCopyToClipboard, Props } from '../NxCopyToClipboard';
 import NxButton from '../../NxButton/NxButton';
 import NxFormGroup from '../../NxFormGroup/NxFormGroup';
 import NxTextInput from '../../NxTextInput/NxTextInput';
+import { NxCodeSnippet } from '../../../index';
 
-describe('NxCodeSnippet', function() {
+describe('NxCopyToClipboard', function() {
   const minimalProps: Props = {
         label: 'Foo',
         content: 'Lorem Ipsum'
       },
-      getShallow = getShallowComponent(NxCodeSnippet, minimalProps),
-      getMounted = getMountedComponent(NxCodeSnippet, minimalProps);
+      getShallow = getShallowComponent(NxCopyToClipboard, minimalProps),
+      getMounted = getMountedComponent(NxCopyToClipboard, minimalProps);
 
-  it('renders a div with the nx-code-snippet class', function() {
-    expect(getShallow()).toMatchSelector('div.nx-code-snippet');
+  it('is aliased as NxCodeSnippet', function() {
+    expect(NxCopyToClipboard).toBe(NxCodeSnippet);
+  });
+
+  it('renders a div with the nx-copy-to-clipboard class', function() {
+    expect(getShallow()).toMatchSelector('div.nx-copy-to-clipboard');
   });
 
   it('adds specified classes to the div', function() {
     const component = getShallow({ className: 'foo' });
 
     expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-code-snippet');
+    expect(component).toHaveClassName('nx-copy-to-clipboard');
   });
 
   it('adds specified extra attributes to the div', function() {
