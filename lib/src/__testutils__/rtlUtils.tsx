@@ -10,7 +10,7 @@ import { render, RenderResult } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 export function rtlRender<P>(Component: ComponentType<P>, minimalProps: P) {
-  return function getShallowComponent(additionalProps?: Partial<P>): RenderResult {
+  return function renderWrapper(additionalProps?: Partial<P>): RenderResult {
     return render(<Component { ...minimalProps } { ...additionalProps } />);
   };
 }
