@@ -27,9 +27,9 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   variant?: NX_POP_OVER_VARIANT_TYPE | null;
   onCancel: () => void;
   children?: ReactNode;
-  title: ReactNode | string;
-  subtitle?: ReactNode | string | null;
-  paragraph?: ReactNode | string | null;
+  headerTitle: ReactNode | string;
+  headerSubtitle?: ReactNode | string | null;
+  headerParagraph?: ReactNode | string | null;
 }
 
 export const propTypes = {

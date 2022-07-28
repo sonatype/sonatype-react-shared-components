@@ -18,7 +18,7 @@ describe('NxPopOver', function() {
   const dummyCancelHandler = jest.fn();
 
   const minimalProps: Props = {
-    title: 'Title',
+    headerTitle: 'Title',
     onCancel: dummyCancelHandler,
     children: 'A message to show in a popover'
   };
@@ -70,11 +70,11 @@ describe('NxPopOver', function() {
   describe('NxPopOver event listener support', () => {
     const defaultMatchMedia = window.matchMedia;
 
-    beforeAll(function() {
+    beforeEach(function() {
       window.matchMedia = () => ({ matches: true }) as MediaQueryList;
     });
 
-    afterAll(function() {
+    afterEach(function() {
       window.matchMedia = defaultMatchMedia;
     });
 
@@ -115,7 +115,7 @@ describe('NxPopOver', function() {
       const container = mount(
         <div className="container">
           <NxButton className="outside-button">Outside</NxButton>
-          <NxPopOver title="hello" onCancel={mockOnCancel}>
+          <NxPopOver headerTitle="hello" onCancel={mockOnCancel}>
             <NxButton className="inside-button">Inside</NxButton>
           </NxPopOver>
         </div>
@@ -138,7 +138,7 @@ describe('NxPopOver', function() {
       }) as jest.Mock;
       const container = mount(
         <div className="container">
-          <NxPopOver title="hello" onCancel={mockOnCancel}>
+          <NxPopOver headerTitle="hello" onCancel={mockOnCancel}>
             <NxButton className="inside-button">Inside</NxButton>
           </NxPopOver>
         </div>
@@ -154,50 +154,40 @@ describe('NxPopOver', function() {
     });
   });
 
-  describe('NxPopOver Transition', () => {
-    const defaultMatchMedia = window.matchMedia;
-
-    beforeAll(function() {
-      window.matchMedia = () => ({ matches: false }) as MediaQueryList;
-    });
-
-    afterAll(function() {
-      window.matchMedia = defaultMatchMedia;
-    });
-
-    it('calls onCancel when prefers reduced motion is false and nx-pop-over--open is not applied' +
+  it('calls onCancel when prefers reduced motion is false and nx-pop-over--open is not applied' +
     'and transitionEnd event is called  ', async function() {
-      const mockCallback = jest.fn();
+    window.matchMedia = () => ({ matches: false }) as MediaQueryList;
 
-      const escapeEvent = {
-        key: 'Escape',
-        stopPropagation: jest.fn(),
-        nativeEvent: {
-          stopImmediatePropagation: jest.fn()
-        }
-      };
+    const mockCallback = jest.fn();
 
-      const component = mount(<NxPopOver title="hello" onCancel={mockCallback}></NxPopOver>);
+    const escapeEvent = {
+      key: 'Escape',
+      stopPropagation: jest.fn(),
+      nativeEvent: {
+        stopImmediatePropagation: jest.fn()
+      }
+    };
 
-      const dialog = component.find('dialog.nx-pop-over');
+    const component = mount(<NxPopOver headerTitle="hello" onCancel={mockCallback}></NxPopOver>);
 
-      // nx-pop-over--open is added after it is mounted.
-      expect(dialog.getDOMNode().classList.contains('nx-pop-over--open')).toBe(true);
+    const dialog = component.find('dialog.nx-pop-over');
 
-      component.simulate('transitionEnd');
+    // nx-pop-over--open is added after it is mounted.
+    expect(dialog.getDOMNode().classList.contains('nx-pop-over--open')).toBe(true);
 
-      expect(mockCallback).not.toHaveBeenCalled();
+    component.simulate('transitionEnd');
 
-      component.simulate('keyDown', escapeEvent);
+    expect(mockCallback).not.toHaveBeenCalled();
 
-      expect(mockCallback).not.toHaveBeenCalled();
+    component.simulate('keyDown', escapeEvent);
 
-      expect(dialog.getDOMNode().classList.contains('nx-pop-over--open')).toBe(false);
+    expect(mockCallback).not.toHaveBeenCalled();
 
-      component.simulate('transitionEnd');
+    expect(dialog.getDOMNode().classList.contains('nx-pop-over--open')).toBe(false);
 
-      expect(mockCallback).toHaveBeenCalledTimes(1);
-    });
+    component.simulate('transitionEnd');
+
+    expect(mockCallback).toHaveBeenCalledTimes(1);
   });
 
   it('moves focus back to the previously focused element when closed', function(done) {
@@ -206,7 +196,7 @@ describe('NxPopOver', function() {
         <>
           <button id="test-btn">Test</button>
           { popOverOpen &&
-          <NxPopOver title="hello" onCancel={jest.fn()}>
+          <NxPopOver headerTitle="hello" onCancel={jest.fn()}>
             <button id="cancel-btn">Close</button>
           </NxPopOver> }
         </>
@@ -241,7 +231,7 @@ describe('NxPopOver', function() {
     it('has a <header> tag with the nx-pop-over-header class and title', function() {
       const titleText = 'Header Title';
 
-      const header = getShallow({ title: titleText }).find('.nx-pop-over-header');
+      const header = getShallow({ headerTitle: titleText }).find('.nx-pop-over-header');
       const title = header.find('h2.nx-pop-over-header__title');
 
       expect(header).toMatchSelector('header.nx-pop-over-header');
@@ -259,8 +249,8 @@ describe('NxPopOver', function() {
       const subtitleText = 'Subtitle in the Header';
       const paragraphText = 'Paragraph text in the Header';
       const header = getShallow({
-        subtitle: subtitleText,
-        paragraph: paragraphText
+        headerSubtitle: subtitleText,
+        headerParagraph: paragraphText
       });
       const subtitle = header.find('h3.nx-pop-over-header__subtitle');
       const paragraph = header.find('p.nx-pop-over-header__paragraph');

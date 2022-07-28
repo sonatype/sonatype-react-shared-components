@@ -87,20 +87,20 @@ export default function NxPopOverFullExample() {
         <NxPopOver className="nx-pop-over--with-top-bar"
                    variant="narrow"
                    onCancel={popOverCloseHandler}
-                   title="Example Pop Over Duis aute irure dolor in reprehenderit{' '}
+                   headerTitle="Example Pop Over Duis aute irure dolor in reprehenderit{' '}
         in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                   subtitle="Example subtitle"
-                   paragraph={paragraph}>
+                   headerSubtitle="Example subtitle"
+                   headerParagraph={paragraph}>
           {popOverContentFooter}
         </NxPopOver>
         )}
         {showPopOver2 && (
         <NxPopOver className="nx-pop-over--with-top-bar"
                    onCancel={() => setShowPopOver2(false)}
-                   title="Example Pop Over Duis aute irure dolor in reprehenderit{' '}
+                   headerTitle="Example Pop Over Duis aute irure dolor in reprehenderit{' '}
         in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                   subtitle="Example subtitle"
-                   paragraph={paragraph}>
+                   headerSubtitle="Example subtitle"
+                   headerParagraph={paragraph}>
           {popOverContentFooter}
         </NxPopOver>
         )}

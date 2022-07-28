@@ -49,8 +49,8 @@ export default function NxPopOverPage() {
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Any <NxCode>className</NxCode> attributes passed in on
-                the <NxCode>NxModal</NxCode> element will be added to
-                the <NxCode>nx-modal</NxCode> class on the modal div.
+                the <NxCode>NxPopOver</NxCode> will be added to
+                the dialog element.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -60,27 +60,7 @@ export default function NxPopOverPage() {
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 <NxP>
-                  A callback to be called when the browser's native <NxCode>cancel</NxCode> event for the
-                  modal's <NxCode>HTMLDialogElement</NxCode> is fired. The circumstances which will fire this event
-                  depend on the user agent, but typically include when the user presses ESC within the modal.
-                </NxP>
-                <NxP>
-                  It is expected that the handler passed for this prop will typically remove the NxModal from the
-                  JSX rendered to the page. If for whatever reason the handler wants to keep the modal open,
-                  it <strong>must</strong> call <NxCode>preventDefault</NxCode> on the event argument. This prevents
-                  the browser's native dialog closing logic, such as the removal of the <NxCode>open</NxCode> attribute
-                  from the dialog element.
-                </NxP>
-                <NxP>
-                  Note that at the time of writing, proper support for <NxCode>HTMLDialogElement</NxCode>, including
-                  its <NxCode>cancel</NxCode> event, is limited to Chromium-based browsers. In other
-                  browsers, <NxCode>NxModal</NxCode> itself listens for the ESC keypress and synthesizes the event
-                  passed to this callback.
-                </NxP>
-                <NxP>
-                  Also note that any components within the modal that have their own ESC handling should
-                  call <NxCode>preventDefault</NxCode> on any ESC keydowns that they handle in order to prevent the
-                  modal from also handling them. <NxCode>NxDropdown</NxCode> does this automatically.
+
                 </NxP>
               </NxTable.Cell>
             </NxTable.Row>

@@ -27,10 +27,10 @@ export default function NxPopOverExample() {
         <NxPopOver className="nx-pop-over--with-top-bar"
                    variant="narrow"
                    onCancel={popOverCloseHandler}
-                   title="Example Pop Over Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
+                   headerTitle="Example Pop Over Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
         cillum dolore eu fugiat nulla pariatur."
-                   subtitle="Example subtitle"
-                   paragraph={paragraph} >
+                   headerSubtitle="Example subtitle"
+                   headerParagraph={paragraph} >
           <NxPopOver.Content>
             <NxP>
               Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,

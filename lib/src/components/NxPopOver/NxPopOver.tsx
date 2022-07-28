@@ -23,9 +23,9 @@ const _NxPopOver = (props: Props) => {
     onCancel,
     children,
     variant,
-    title,
-    subtitle,
-    paragraph,
+    headerTitle,
+    headerSubtitle,
+    headerParagraph,
     ...attrs
   } = props;
 
@@ -49,8 +49,10 @@ const _NxPopOver = (props: Props) => {
 
   const classes = classnames('nx-pop-over', { 'nx-pop-over--narrow': variant === 'narrow' }, className);
 
-  const subtitleContent = subtitle ? <h3 className="nx-h3 nx-pop-over-header__subtitle">{subtitle}</h3> : null;
-  const paragraphContent = paragraph ? <p className="nx-p nx-pop-over-header__paragraph">{paragraph}</p> : null;
+  const subtitleContent = headerSubtitle ?
+    <h3 className="nx-h3 nx-pop-over-header__subtitle">{headerSubtitle}</h3> : null;
+  const paragraphContent = headerParagraph ?
+    <p className="nx-p nx-pop-over-header__paragraph">{headerParagraph}</p> : null;
 
   return (
     <AbstractDialog ref={dialogRef}
@@ -68,7 +70,7 @@ const _NxPopOver = (props: Props) => {
             Close
           </NxCloseButton>
           <h2 className="nx-h2 nx-pop-over-header__title">
-            {title}
+            {headerTitle}
           </h2>
           {subtitleContent}
           {paragraphContent}
