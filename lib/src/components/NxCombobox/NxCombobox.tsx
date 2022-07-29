@@ -63,7 +63,8 @@ function NxComboboxRender<T extends string | number = string>(
       }),
       menuClassName = classnames('nx-search-dropdown__menu', {
         'nx-search-dropdown__menu--error': !!error
-      });
+      }),
+      buttonClassName = classnames('nx-dropdown-button', { 'nx-combobox_option--selected': !!'[aria-selected]="true"'});
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
@@ -212,16 +213,16 @@ function NxComboboxRender<T extends string | number = string>(
 
   function handleActiveDesc(idx: number | null) {
     const desc = filterRef.current?.querySelector('input');
-      
-    if (typeof idx === "number") {
-      const itemId = menuRef.current?.children[idx].id;
+
+    if (typeof idx === 'number') {
+      const indexedItem = menuRef.current?.children[idx];
+      const itemId = indexedItem?.id;
 
       if (itemId) {
         desc?.setAttribute('aria-activedescendant', itemId);
-        const indexedItem = menuRef.current?.children[idx];
-        
-        if (typeof focusableBtnIndex=== "number") {
-          menuRef.current?.children[focusableBtnIndex].removeAttribute('aria-selected');
+
+        if (typeof focusableBtnIndex === 'number') {
+          menuRef.current?.children[focusableBtnIndex].setAttribute('aria-selected', 'false');
           indexedItem.setAttribute('aria-selected', 'true');
         }
       }
@@ -229,8 +230,8 @@ function NxComboboxRender<T extends string | number = string>(
     else {
       desc?.setAttribute('aria-activedescendant', '');
 
-      if (typeof focusableBtnIndex=== "number") {
-        menuRef.current?.children[focusableBtnIndex].removeAttribute('aria-selected');
+      if (typeof focusableBtnIndex === 'number') {
+        menuRef.current?.children[focusableBtnIndex].setAttribute('aria-selected', 'false');
       }
     }
   }
@@ -262,8 +263,9 @@ function NxComboboxRender<T extends string | number = string>(
             matches.length ? matches.map((match, i) =>
               <button id={`nx-dropdown-button-${i}`}
                       role="option"
+                      aria-selected="false"
+                      className= {buttonClassName}
                       type="button"
-                      className="nx-dropdown-button"
                       disabled={disabled || undefined}
                       key={match.id}
                       onClick={() => handleOnClick(match)}>
