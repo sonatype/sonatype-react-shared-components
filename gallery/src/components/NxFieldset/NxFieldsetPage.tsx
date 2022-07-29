@@ -340,6 +340,7 @@ const NxFieldsetPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Basic Example"
+                        id="nx-fieldset-example"
                         liveExample={NxFieldsetExample}
                         codeExamples={nxFieldsetExampleCode}>
       A basic example of an <NxCode>NxFieldset</NxCode> wrapping
@@ -347,6 +348,7 @@ const NxFieldsetPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Required/Validation Examples"
+                        id="nx-fieldset-validation-example"
                         liveExample={NxFieldsetRequiredExample}
                         codeExamples={nxFieldsetRequiredExampleCode}>
       Two examples of NxFieldset demonstrating the <NxCode>isRequired</NxCode> flag
