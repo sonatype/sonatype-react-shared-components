@@ -20,10 +20,9 @@ import {
 
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
-export default function NxPopOverFullExample() {
+export default function NxPopOverWithGlobalHeaderExample() {
   const [showPopOver, setShowPopOver] = useState(false);
   const [showPopOver2, setShowPopOver2] = useState(false);
-  const popOverCloseHandler = () => setShowPopOver(false);
 
   const popOverContentFooter = (
     <>
@@ -84,9 +83,9 @@ export default function NxPopOverFullExample() {
       </header>
       <NxPageMain>
         {showPopOver && (
-        <NxPopOver className="nx-pop-over--with-top-bar"
+        <NxPopOver className="nx-pop-over--with-global-header"
                    variant="narrow"
-                   onCancel={popOverCloseHandler}
+                   onCancel={() => setShowPopOver(false)}
                    headerTitle="Example Pop Over Duis aute irure dolor in reprehenderit{' '}
         in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                    headerSubtitle="Example subtitle"
@@ -95,7 +94,7 @@ export default function NxPopOverFullExample() {
         </NxPopOver>
         )}
         {showPopOver2 && (
-        <NxPopOver className="nx-pop-over--with-top-bar"
+        <NxPopOver className="nx-pop-over--with-global-header"
                    onCancel={() => setShowPopOver2(false)}
                    headerTitle="Example Pop Over Duis aute irure dolor in reprehenderit{' '}
         in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
@@ -121,46 +120,9 @@ export default function NxPopOverFullExample() {
         </NxP>
         <NxP>
           <NxButton onClick={() => setShowPopOver(true)}>Open Pop Over (Narrow)</NxButton>
-          <NxButton onClick={() => alert('hello')}>Alert</NxButton>
         </NxP>
         <NxP>
           <NxButton onClick={() => setShowPopOver2(true)}>Open Pop Over (Normal)</NxButton>
-        </NxP>
-        <NxP>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdum
-          varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
-          rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus quam
-          pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id diam
-          maecenas. Porta nibh venenatis cras sed felis eget velit aliquet. Semper feugiat nibh sed pulvinar proin
-          gravida hendrerit lectus a. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem. Purus non enim
-          praesent elementum facilisis leo. Dui sapien eget mi proin. Ultrices eros in cursus turpis massa tincidunt
-          dui ut ornare. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Turpis egestas maecenas
-          pharetra convallis posuere morbi leo urna.
-        </NxP>
-        <NxP>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdum
-          varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
-          rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus quam
-          pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id diam
-          maecenas. Porta nibh venenatis cras sed felis eget velit aliquet. Semper feugiat nibh sed pulvinar proin
-          gravida hendrerit lectus a. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem. Purus non enim
-          praesent elementum facilisis leo. Dui sapien eget mi proin. Ultrices eros in cursus turpis massa tincidunt
-          dui ut ornare. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Turpis egestas maecenas
-          pharetra convallis posuere morbi leo urna.
-        </NxP>
-        <NxP>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdum
-          varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
-          rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus quam
-          pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id diam
-          maecenas. Porta nibh venenatis cras sed felis eget velit aliquet. Semper feugiat nibh sed pulvinar proin
-          gravida hendrerit lectus a. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem. Purus non enim
-          praesent elementum facilisis leo. Dui sapien eget mi proin. Ultrices eros in cursus turpis massa tincidunt
-          dui ut ornare. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Turpis egestas maecenas
-          pharetra convallis posuere morbi leo urna.
         </NxP>
         <NxP>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et

@@ -18,8 +18,15 @@ import {
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxPopOverExample from './NxPopOverExample';
+import NxPopOverWithSubtitleOrParagraphExample from './NxPopOverWithSubtitleOrParagraphExample';
+import NxPopOverNarrowExample from './NxPopOverNarrowExample';
+import NxPopOverWithFooterExample from './NxPopOverWithFooterExample';
 
 const NxPopOverSourceCode = require('./NxPopOverExample?raw');
+const NxPopOverWithGlobalHeaderSourceCode = require('./NxPopOverWithGlobalHeaderExample?raw');
+const NxPopOverWithSubtitleOrParagraphSourceCode = require('./NxPopOverWithSubtitleOrParagraphExample?raw');
+const NxPopOverNarrowSourceCode = require('./NxPopOverNarrowExample?raw');
+const NxPopOverWithFooterSourceCode = require('./NxPopOverWithFooterExample?raw');
 
 export default function NxPopOverPage() {
   return (
@@ -182,29 +189,33 @@ export default function NxPopOverPage() {
         A basic example of an <NxCode>NxPopOver</NxCode>.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="Top Bar Modifier NxPopOver Example"
-                          codeExamples={NxPopOverSourceCode}>
-        A basic example of an <NxCode>NxPopOver</NxCode>.
-        <br></br>
-        <NxTextLink href="#/NxPopOverFullExample">
-          Click here to navigate to the live example.
-        </NxTextLink>
+      <GalleryExampleTile title="NxPopOver With Subtitle or Paragraph Example"
+                          id="nx-pop-over-with-subtitle-or-paragraph-example"
+                          liveExample={NxPopOverWithSubtitleOrParagraphExample}
+                          codeExamples={NxPopOverWithSubtitleOrParagraphSourceCode}>
+        An example of a <NxCode>NxPopOver</NxCode> with subtitle or paragraph in the header.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="Narrow without Subtitle/Paragraph"
-                          codeExamples={NxPopOverSourceCode}>
-        A basic example of an <NxCode>NxPopOver</NxCode>.
-        <br></br>
-        <NxTextLink href="#/NxPopOverOnlyTitleExample">
-          Click here to navigate to the live example.
-        </NxTextLink>
+      <GalleryExampleTile title="Narrow NxPopOver Example"
+                          id="nx-pop-over-narrow-example"
+                          liveExample={NxPopOverNarrowExample}
+                          codeExamples={NxPopOverNarrowSourceCode}>
+        An example of <NxCode>NxPopOver</NxCode> with "narrow" variant.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="Without Footer/Subtitle NxPopOver Example"
-                          codeExamples={NxPopOverSourceCode}>
-        A basic example of an <NxCode>NxPopOver</NxCode>.
+      <GalleryExampleTile title="NxPopOver With Footer Example"
+                          id="nx-pop-over-with-footer-example"
+                          liveExample={NxPopOverWithFooterExample}
+                          codeExamples={NxPopOverWithFooterSourceCode}>
+        An example of a <NxCode>NxPopOver</NxCode> with <NxCode>NxPopOver.Footer</NxCode>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxPopOver With Global Header Example"
+                          id="nx-pop-over-with-global-header-example"
+                          codeExamples={NxPopOverWithGlobalHeaderSourceCode}>
+        An example of a <NxCode>NxPopOver</NxCode> with a global header.
         <br></br>
-        <NxTextLink href="#/NxPopOverNoFooterExample">
+        <NxTextLink href="#/NxPopOverWithGlobalHeaderExample">
           Click here to navigate to the live example.
         </NxTextLink>
       </GalleryExampleTile>
