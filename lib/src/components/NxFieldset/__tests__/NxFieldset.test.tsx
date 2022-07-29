@@ -82,11 +82,11 @@ describe('NxFieldset', function() {
 
   describe('validation', function() {
     it('adds an alert with the first specified validation message when isPristine is false', function() {
-      expect(quickRender().getByRole('alert')).not.toBeTruthy();
-      expect(quickRender({ validationErrors: 'asdf' }).getByRole('alert')).not.toBeTruthy();
-      expect(quickRender({ isPristine: true }).getByRole('alert')).not.toBeTruthy();
+      expect(quickRender().queryByRole('alert')).toBeNull();
+      expect(quickRender({ isPristine: true, validationErrors: 'asdf' }).queryByRole('alert')).toBeNull();
+      expect(quickRender({ isPristine: true }).queryByRole('alert')).toBeNull();
 
-      const withValidationErrors = quickRender({ isPristine: true, validationErrors: ['asdf', 'zxcv'] }),
+      const withValidationErrors = quickRender({ isPristine: false, validationErrors: ['asdf', 'zxcv'] }),
           validationErrorEl = withValidationErrors.getByRole('alert');
 
       expect(validationErrorEl).toBeTruthy();
@@ -103,7 +103,7 @@ describe('NxFieldset', function() {
         );
       }
 
-      expect(renderWithContext(true).getByRole('alert')).not.toBeTruthy();
+      expect(renderWithContext(true).queryByRole('alert')).toBeNull();
 
       const withValidationErrors = renderWithContext(true, { validationErrors: ['asdf', 'zxcv'] }),
           validationErrorEl = withValidationErrors.getByRole('alert');
@@ -114,10 +114,11 @@ describe('NxFieldset', function() {
 
     it('sets the validation error as the accessible description of the fieldset', function() {
       expect(renderElement()).not.toHaveAccessibleDescription();
-      expect(renderElement({ validationErrors: 'asdf' })).not.toHaveAccessibleDescription();
+      expect(renderElement({ isPristine: true, validationErrors: 'asdf' })).not.toHaveAccessibleDescription();
       expect(renderElement({ isPristine: true })).not.toHaveAccessibleDescription();
-      expect(renderElement({ isPristine: true, validationErrors: ['asdf', 'zxcv'] }))
+      expect(renderElement({ isPristine: false, validationErrors: ['asdf', 'zxcv'] }))
           .toHaveAccessibleDescription('asdf');
     });
   });
 });
+
