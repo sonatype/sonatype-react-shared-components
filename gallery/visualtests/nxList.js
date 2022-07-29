@@ -75,5 +75,5 @@ describe('nx-list', function() {
   });
 
   // see comment in the NxListButtonItem source code about aria-selected
-  it('passes a11y checks', a11yTest(builder => builder.disableRules('aria-allowed-attr')));
+  it('passes a11y checks', a11yTest(builder => builder.disableRules(['aria-allowed-attr', 'color-contrast'])));
 });

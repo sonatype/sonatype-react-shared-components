@@ -10,6 +10,7 @@ import { NxTextLink, NxTable, NxP, NxCode } from '@sonatype/react-shared-compone
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxThreatCounterExample from './NxThreatCounterExample';
+import NxThreatCounterWrappingExample from './NxThreatCounterWrappingExample';
 import NxThreatCounterSmallExample from './NxThreatCounterSmallExample';
 import NxThreatCounterColumnExample from './NxThreatCounterColumnExample';
 import NxThreatCounterSmallColumnExample from './NxThreatCounterSmallColumnExample';
@@ -17,6 +18,7 @@ import NxThreatCounterGridExample from './NxThreatCounterGridExample';
 import NxThreatCounterSmallGridExample from './NxThreatCounterSmallGridExample';
 
 const NxThreatCounterCode = require('./NxThreatCounterExample?raw'),
+    NxThreatCounterWrappingCode = require('./NxThreatCounterWrappingExample?raw'),
     NxThreatCounterSmallCode = require('./NxThreatCounterSmallExample?raw'),
     NxThreatCounterColumnCode = require('./NxThreatCounterColumnExample?raw'),
     NxThreatCounterSmallColumnCode = require('./NxThreatCounterSmallColumnExample?raw'),
@@ -129,6 +131,13 @@ const NxThreatCounterPage = () =>
                         liveExample={NxThreatCounterExample}
                         codeExamples={NxThreatCounterCode}>
       <NxCode>nx-threat-counter</NxCode>s in the default (row) layout.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxThreatCounter Default Wrapping Example"
+                        id="nx-threat-counter-row-wrapping"
+                        liveExample={NxThreatCounterWrappingExample}
+                        codeExamples={NxThreatCounterWrappingCode}>
+      <NxCode>nx-threat-counter</NxCode>s in the default (row) layout wrapping example.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxThreatCounter Small Default Example"

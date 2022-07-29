@@ -258,8 +258,8 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>nx-transfer-list--full-width</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                The transfer list will expand to fit the width of its container rather than being constrained to a
-                static width as it is by default.
+                The transfer list will expand or contract to fit the width of its container rather than being
+                constrained to a static width as it is by default.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
