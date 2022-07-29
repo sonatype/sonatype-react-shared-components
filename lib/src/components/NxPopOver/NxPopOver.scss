@@ -40,10 +40,10 @@ $-box-shadow-offset: 52px;
   width: 520px + $-box-shadow-offset;
   z-index: 100;
 
-  &--with-top-bar {
-    $top-bar-height: 43px;
-    height: calc(100% - #{$top-bar-height});
-    top: $top-bar-height;
+  &--with-global-header {
+    $global-header-height: 43px;
+    height: calc(100% - #{$global-header-height});
+    top: $global-header-height;
   }
   
   &--narrow {

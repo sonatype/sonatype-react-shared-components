@@ -42,6 +42,8 @@ import NxGlobalSidebarFooterMinimalExample
 import NxGlobalSidebarFooterEmptyExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
 import NxPopOverFullExample from './components/NxPopOver/NxPopOverFullExample';
+import NxPopOverNoFooterExample from './components/NxPopOver/NxPopOverNoFooterExample';
+import NxPopOverOnlyTitleExample from './components/NxPopOver/NxPopOverOnlyTitleExample';
 
 const pageMappings = mergeAll(values(pageConfig));
 
@@ -146,6 +148,16 @@ function Application() {
         <Route exact path="/NxPopOverFullExample">
           <SectionScrollingWrapper>
             <NxPopOverFullExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxPopOverNoFooterExample">
+          <SectionScrollingWrapper>
+            <NxPopOverNoFooterExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxPopOverOnlyTitleExample">
+          <SectionScrollingWrapper>
+            <NxPopOverOnlyTitleExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>
