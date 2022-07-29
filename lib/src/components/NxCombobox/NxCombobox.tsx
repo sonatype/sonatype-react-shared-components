@@ -7,7 +7,7 @@
 import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
-import { always, any, clamp, dec, inc, partial, pipe, prop } from 'ramda';
+import { always, any, clamp, dec, inc, pipe, prop } from 'ramda';
 
 import './NxCombobox.scss';
 
@@ -51,14 +51,11 @@ function NxComboboxRender<T extends string | number = string>(
       menuRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
-      buttonRef = useRef<HTMLButtonElement>(null),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
 
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
       dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'menu',
-
-      // dropdownButtonId= useUniqueId('nx-dropdown-button'),
 
       filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
       className = classnames('nx-search-dropdown', classNameProp, {
@@ -94,9 +91,9 @@ function NxComboboxRender<T extends string | number = string>(
   const adjustBtnFocus = (adjust: (i: number) => number) => () => {
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
             elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
-
         if (elToFocus) {
           elToFocus.focus();
+          handleActiveDesc(newFocusableBtnIndex);
           setFocusableBtnIndex(newFocusableBtnIndex);
         }
       },
@@ -125,15 +122,42 @@ function NxComboboxRender<T extends string | number = string>(
         break;
       case 'Escape':
         focusTextInput();
-        handleFilterChange('');
+        setIsSelected(true);
+        handleActiveDesc(null);
         break;
     }
   }
 
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
-    if (evt.key === 'Escape') {
-      handleFilterChange('');
+    switch (evt.key) {
+      case 'Enter':
+        if (showDropdown) {
+          setIsSelected(true);
+        }
+        evt.preventDefault();
+        break;
+      case 'ArrowDown':
+        if (!isEmpty && !showDropdown) {
+          setIsSelected(false);
+        }
+        focusFirst();
+        evt.preventDefault();
+        break;
+      case 'ArrowUp':
+        if (!isEmpty && !showDropdown) {
+          setIsSelected(false);
+        }
+        focusLast();
+        evt.preventDefault();
+        break;
+      case 'Escape':
+        focusTextInput();
+        setIsSelected(true);
+        break;
     }
+    // if (evt.key === 'Escape') {
+    //   handleFilterChange('');
+    // }
   }
 
   function doSearch(value: string) {
@@ -178,12 +202,26 @@ function NxComboboxRender<T extends string | number = string>(
   }, []);
 
   useMutationObserver(menuRef, checkForRemovedFocusedEl, { childList: true });
+
   function handleOnClick(match: DataItem<T>) {
     onSelect(match);
     focusTextInput();
     setIsSelected(true);
-    // console.log(buttonRef.current?.id)
+    handleActiveDesc(null);
   }
+
+  function handleActiveDesc(idx: number | null){
+    const desc = filterRef.current?.querySelector('input');
+    if(typeof idx === 'number'){
+      const itemId = menuRef.current?.children[idx].id;
+      if(itemId){
+        desc?.setAttribute('aria-activedescendant', itemId);
+      }
+    }else{
+      desc?.setAttribute('aria-activedescendant', '');
+    }
+  }
+
   return (
     <div ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
       <NxTextInput role="combobox"
@@ -194,7 +232,7 @@ function NxComboboxRender<T extends string | number = string>(
                    disabled={disabled || undefined}
                    isPristine={true}
                    onKeyDown={handleKeyDown}
-                   aria-expanded={!showDropdown}
+                   aria-expanded={showDropdown}
                    aria-controls={dropdownMenuId}
                    />
       <NxDropdownMenu id={dropdownMenuId}
@@ -210,15 +248,13 @@ function NxComboboxRender<T extends string | number = string>(
           {
             matches.length ? matches.map((match, i) =>
               <button id={`nx-dropdown-button-${i}`}
-                      ref={buttonRef}
                       role="menuitem"
                       type="button"
                       className="nx-dropdown-button"
                       disabled={disabled || undefined}
                       key={match.id}
                       tabIndex={i === focusableBtnIndex ? 0 : -1}
-                      onClick={partial(handleOnClick, [match])}
-                      onFocus={() => setFocusableBtnIndex(i)}>
+                      onClick={() => handleOnClick(match)}>
                 {match.displayName}
               </button>
             ) :
