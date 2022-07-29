@@ -11,6 +11,7 @@ import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxFieldset, { Props } from '../NxFieldset';
 import NxStatefulTextInput from '../../NxTextInput/stateful/NxStatefulTextInput';
+import { FormAriaContext } from '../../NxForm/context';
 
 describe('NxFieldset', function() {
   const minimalProps = {
@@ -77,5 +78,46 @@ describe('NxFieldset', function() {
 
     expect(sublabelContent).toBeTruthy();
     expect(sublabelContent).toHaveTextContent('bar');
+  });
+
+  describe('validation', function() {
+    it('adds an alert with the first specified validation message when isPristine is false', function() {
+      expect(quickRender().getByRole('alert')).not.toBeTruthy();
+      expect(quickRender({ validationErrors: 'asdf' }).getByRole('alert')).not.toBeTruthy();
+      expect(quickRender({ isPristine: true }).getByRole('alert')).not.toBeTruthy();
+
+      const withValidationErrors = quickRender({ isPristine: true, validationErrors: ['asdf', 'zxcv'] }),
+          validationErrorEl = withValidationErrors.getByRole('alert');
+
+      expect(validationErrorEl).toBeTruthy();
+      expect(validationErrorEl).toHaveTextContent('asdf');
+    });
+
+    it('adds an alert with the first specified validation message when showValidationErrors is true ' +
+      'in the FormAriaContext', function() {
+      function renderWithContext(showValidationErrors: boolean, props?: Partial<Props>) {
+        return render(
+          <FormAriaContext.Provider value={{ showValidationErrors }}>
+            <NxFieldset { ...minimalProps } { ...props } />
+          </FormAriaContext.Provider>
+        );
+      }
+
+      expect(renderWithContext(true).getByRole('alert')).not.toBeTruthy();
+
+      const withValidationErrors = renderWithContext(true, { validationErrors: ['asdf', 'zxcv'] }),
+          validationErrorEl = withValidationErrors.getByRole('alert');
+
+      expect(validationErrorEl).toBeTruthy();
+      expect(validationErrorEl).toHaveTextContent('asdf');
+    });
+
+    it('sets the validation error as the accessible description of the fieldset', function() {
+      expect(renderElement()).not.toHaveAccessibleDescription();
+      expect(renderElement({ validationErrors: 'asdf' })).not.toHaveAccessibleDescription();
+      expect(renderElement({ isPristine: true })).not.toHaveAccessibleDescription();
+      expect(renderElement({ isPristine: true, validationErrors: ['asdf', 'zxcv'] }))
+          .toHaveAccessibleDescription('asdf');
+    });
   });
 });
