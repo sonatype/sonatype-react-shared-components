@@ -31,10 +31,9 @@ const NxSmallThreatCounterPage = () =>
       </NxP>
       <NxP>
         Each count is optional. If no value is provided for a given count, then the indicator for that severity level
-        will not be rendered and no space for it will be allotted. In addition, under the default configuration,
-        indicators for counts of zero are invisible - the space for them is still allotted but they do not render. It
-        is intended that within a table using this component, each row would define the same categories, thus getting
-        the same indicators with the same spacing, visually resulting in a grid-like appearance across all of the rows.
+        will not be rendered and no space for it will be allotted. It is intended that within a table using this
+        component, each row would define the same categories, thus getting the same indicators with the same spacing,
+        visually resulting in a grid-like appearance across all of the rows.
       </NxP>
       <NxP>
         In order to accomodate consistent sizing of the counters even across separate instances of the component
@@ -62,8 +61,7 @@ const NxSmallThreatCounterPage = () =>
             <NxTable.Cell />
             <NxTable.Cell>
               A numerical value, the number of critical threats. If no value is provided, then the count will be
-              hidden and no space allotted. If zero is provided, then the count will be hidden but space for it
-              will be allotted.
+              hidden and no space allotted.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -73,8 +71,7 @@ const NxSmallThreatCounterPage = () =>
             <NxTable.Cell />
             <NxTable.Cell>
               A numerical value, the number of severe threats. If no value is provided, then the count will be
-              hidden and no space allotted. If zero is provided, then the count will be hidden but space for it
-              will be allotted.
+              hidden and no space allotted.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -84,8 +81,7 @@ const NxSmallThreatCounterPage = () =>
             <NxTable.Cell />
             <NxTable.Cell>
               A numerical value, the number of moderate threats. If no value is provided, then the count will be
-              hidden and no space allotted. If zero is provided, then the count will be hidden but space for it
-              will be allotted.
+              hidden and no space allotted.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -95,8 +91,7 @@ const NxSmallThreatCounterPage = () =>
             <NxTable.Cell />
             <NxTable.Cell>
               A numerical value, the number of low threats. If no value is provided, then the count will be
-              hidden and no space allotted. If zero is provided, then the count will be hidden but space for it
-              will be allotted.
+              hidden and no space allotted.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -106,8 +101,7 @@ const NxSmallThreatCounterPage = () =>
             <NxTable.Cell />
             <NxTable.Cell>
               A numerical value, the number of threats of severity "none". If no value is provided, then the count
-              will be hidden and no space allotted. If zero is provided, then the count will be hidden but space for
-              it will be allotted.
+              will be hidden and no space allotted.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -117,8 +111,7 @@ const NxSmallThreatCounterPage = () =>
             <NxTable.Cell />
             <NxTable.Cell>
               A numerical value, the number of unspecfied threats. If no value is provided, then the count
-              will be hidden and no space allotted. If zero is provided, then the count will be hidden but space for
-              it will be allotted.
+              will be hidden and no space allotted.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -141,8 +134,7 @@ const NxSmallThreatCounterPage = () =>
                 activated: all counters within this instance of <NxCode>NxSmallThreatCounter</NxCode> will be as
                 wide as needed to display the largest number in any one of them. That is, within the component instance,
                 all of the counters will be the same width, and that width will depend on the data present. However,
-                when compared to another instance that uses different data, the widths may not be the same. In this
-                mode, counts of zero are not hidden as they are by default - the zero counters are rendered.
+                when compared to another instance that uses different data, the widths may not be the same.
               </NxP>
             </NxTable.Cell>
           </NxTable.Row>

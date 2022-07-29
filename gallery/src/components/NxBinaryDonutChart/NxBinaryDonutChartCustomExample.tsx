@@ -11,22 +11,22 @@ export default function NxBinaryDonutChartCustomExample() {
   return (
     <>
       <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
-                          percent={0}
+                          value={0}
                           aria-label="0 out of 100 components identified" />
       <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
-                          percent={15}
+                          value={15}
                           aria-label="15 out of 100 components identified" />
       <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
-                          percent={25}
+                          value={25}
                           aria-label="25 out of 100 components identified" />
       <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
-                          percent={50}
+                          value={50}
                           aria-label="50 out of 100 components identified" />
       <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
-                          percent={90}
+                          value={90}
                           aria-label="90 out of 100 components identified" />
       <NxBinaryDonutChart className="gallery-binary-donut-chart-custom"
-                          percent={100}
+                          value={100}
                           aria-label="100 out of 100 components identified" />
     </>
   );
