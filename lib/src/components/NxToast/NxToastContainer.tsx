@@ -26,7 +26,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   //Dependency on the global toasts array
   useEffect(() => {
     if (toastContainerRef && toasts.length) {
-      //Gets the first close button of the child from the parent toast container div
+      //Gets the last close button of the child from the parent toast container div
       const closeBtn =
         toastContainerRef.current?.querySelectorAll('.nx-btn--close')[toasts.length - 1] as HTMLButtonElement;
       closeBtn.focus();
