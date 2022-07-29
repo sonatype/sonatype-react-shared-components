@@ -55,7 +55,7 @@ function NxComboboxRender<T extends string | number = string>(
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
 
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
-      dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'menu',
+      dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'listbox',
 
       filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
       className = classnames('nx-search-dropdown', classNameProp, {
@@ -212,14 +212,26 @@ function NxComboboxRender<T extends string | number = string>(
 
   function handleActiveDesc(idx: number | null) {
     const desc = filterRef.current?.querySelector('input');
-    if (typeof idx === 'number') {
+      
+    if (typeof idx === "number") {
       const itemId = menuRef.current?.children[idx].id;
+
       if (itemId) {
         desc?.setAttribute('aria-activedescendant', itemId);
+        const indexedItem = menuRef.current?.children[idx];
+        
+        if (typeof focusableBtnIndex=== "number") {
+          menuRef.current?.children[focusableBtnIndex].removeAttribute('aria-selected');
+          indexedItem.setAttribute('aria-selected', 'true');
+        }
       }
     }
     else {
       desc?.setAttribute('aria-activedescendant', '');
+
+      if (typeof focusableBtnIndex=== "number") {
+        menuRef.current?.children[focusableBtnIndex].removeAttribute('aria-selected');
+      }
     }
   }
 
@@ -249,12 +261,11 @@ function NxComboboxRender<T extends string | number = string>(
           {
             matches.length ? matches.map((match, i) =>
               <button id={`nx-dropdown-button-${i}`}
-                      role="menuitem"
+                      role="option"
                       type="button"
                       className="nx-dropdown-button"
                       disabled={disabled || undefined}
                       key={match.id}
-                      tabIndex={i === focusableBtnIndex ? 0 : -1}
                       onClick={() => handleOnClick(match)}>
                 {match.displayName}
               </button>
