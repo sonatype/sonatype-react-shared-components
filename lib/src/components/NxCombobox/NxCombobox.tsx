@@ -210,14 +210,15 @@ function NxComboboxRender<T extends string | number = string>(
     handleActiveDesc(null);
   }
 
-  function handleActiveDesc(idx: number | null){
+  function handleActiveDesc(idx: number | null) {
     const desc = filterRef.current?.querySelector('input');
-    if(typeof idx === 'number'){
+    if (typeof idx === 'number') {
       const itemId = menuRef.current?.children[idx].id;
-      if(itemId){
+      if (itemId) {
         desc?.setAttribute('aria-activedescendant', itemId);
       }
-    }else{
+    }
+    else {
       desc?.setAttribute('aria-activedescendant', '');
     }
   }
