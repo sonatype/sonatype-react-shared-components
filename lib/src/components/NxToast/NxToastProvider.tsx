@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ToastContext from './contexts';
 import NxToastContainer from './NxToastContainer';
 import { NxToastProviderProps, nxToastProviderPropTypes, ToastAddModel, ToastModel } from './types';
@@ -21,13 +21,18 @@ const NxToastProvider = (props: NxToastProviderProps) => {
   // Keeps track of the last active element that's not a toast.
   // When all the toasts are closed, focus returns to the last active non-toast
   // element.
-  document.addEventListener('focusin', () => {
+  const adjustFocus = () => {
     const currentFocusedElement = document.activeElement as HTMLElement;
 
     if (!currentFocusedElement.classList.contains('nx-toast__close')) {
       setActiveElementNotToast(currentFocusedElement);
     }
-  });
+  };
+
+  useEffect(()=> {
+    document.addEventListener('focusin', adjustFocus);
+    return () => document.removeEventListener('focusin', adjustFocus);
+  }, [activeElementNotToast]);
 
   const addToast = useCallback((content: ToastAddModel) => {
     const toastId = id++;
