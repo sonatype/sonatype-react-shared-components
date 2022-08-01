@@ -95,9 +95,7 @@ function NxComboboxRender<T extends string | number = string>(
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
             elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
         if (elToFocus) {
-          // elToFocus.focus();
           setElToFocusId(elToFocus.id);
-          // handleActiveDesc(newFocusableBtnIndex);
           setFocusableBtnIndex(newFocusableBtnIndex);
         }
       },
@@ -127,7 +125,6 @@ function NxComboboxRender<T extends string | number = string>(
       case 'Escape':
         focusTextInput();
         setIsSelected(true);
-        // handleActiveDesc(null);
         setElToFocusId('');
         setFocusableBtnIndex(null);
         break;
@@ -146,14 +143,16 @@ function NxComboboxRender<T extends string | number = string>(
         if (!isEmpty && !showDropdown) {
           setIsSelected(false);
         }
-        elToFocusId ? focusNext() : focusFirst();
+        elToFocusId ? (menuRef.current?.children[matches.length - 1].id === elToFocusId ? focusFirst() : focusNext()) :
+          focusFirst();
         evt.preventDefault();
         break;
       case 'ArrowUp':
         if (!isEmpty && !showDropdown) {
           setIsSelected(false);
         }
-        elToFocusId ? focusPrev() : focusLast();
+        elToFocusId ? (menuRef.current?.children[0].id === elToFocusId ? focusLast() : focusPrev()) :
+          focusLast();
         evt.preventDefault();
         break;
       case 'Escape':
@@ -217,7 +216,6 @@ function NxComboboxRender<T extends string | number = string>(
     setIsSelected(true);
     setElToFocusId('');
     setFocusableBtnIndex(null);
-    // handleActiveDesc(null);
   }
 
   return (
