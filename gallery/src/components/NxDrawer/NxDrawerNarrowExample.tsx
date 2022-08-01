@@ -22,10 +22,13 @@ export default function NxDrawerExample() {
   );
 
   return (
-    <div className="gallery-drawer-narrow-example">
-      <NxButton onClick={() => setShowDrawer(true)}>Open Narrow Drawer</NxButton>
+    <>
+      <NxButton id="nx-drawer-narrow-open-button" onClick={() => setShowDrawer(true)}>
+        Open Narrow Drawer
+      </NxButton>
       {showDrawer && (
-        <NxDrawer onCancel={cancelHandler}
+        <NxDrawer id="nx-drawer-narrow"
+                  onCancel={cancelHandler}
                   variant="narrow"
                   headerTitle="An Example of Narrow NxDrawer Component"
                   headerParagraph={paragraph}>
@@ -66,6 +69,6 @@ export default function NxDrawerExample() {
           </NxDrawer.Content>
         </NxDrawer>
       )}
-    </div>
+    </>
   );
 }

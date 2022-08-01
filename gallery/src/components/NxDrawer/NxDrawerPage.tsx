@@ -21,12 +21,14 @@ import NxDrawerExample from './NxDrawerExample';
 import NxDrawerWithSubtitleOrParagraphExample from './NxDrawerWithSubtitleOrParagraphExample';
 import NxDrawerNarrowExample from './NxDrawerNarrowExample';
 import NxDrawerWithFooterExample from './NxDrawerWithFooterExample';
+import NxDrawerEscExample from './NxDrawerEscExample';
 
 const NxDrawerSourceCode = require('./NxDrawerExample?raw');
 const NxDrawerWithGlobalHeaderSourceCode = require('./NxDrawerWithGlobalHeaderExample?raw');
 const NxDrawerWithSubtitleOrParagraphSourceCode = require('./NxDrawerWithSubtitleOrParagraphExample?raw');
 const NxDrawerNarrowSourceCode = require('./NxDrawerNarrowExample?raw');
 const NxDrawerWithFooterSourceCode = require('./NxDrawerWithFooterExample?raw');
+const NxDrawerEscSourceCode = require('./NxDrawerEscExample?raw');
 
 export default function NxDrawerPage() {
   return (
@@ -183,7 +185,7 @@ export default function NxDrawerPage() {
       </GalleryDescriptionTile>
 
       <GalleryExampleTile title="Simple NxDrawer Example"
-                          id="nx-drawer-example"
+                          id="nx-drawer-simple-example"
                           liveExample={NxDrawerExample}
                           codeExamples={NxDrawerSourceCode}>
         A basic example of an <NxCode>NxDrawer</NxCode>.
@@ -218,6 +220,15 @@ export default function NxDrawerPage() {
         <NxTextLink href="#/NxDrawerWithGlobalHeaderExample">
           Click here to navigate to the live example.
         </NxTextLink>
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxDrawer Esc Example"
+                          id="nx-drawer-esc-example"
+                          liveExample={NxDrawerEscExample}
+                          codeExamples={NxDrawerEscSourceCode}>
+        An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxDropdown</NxCode> nested inside.
+        This example demonstrates, when the dropdown is in focus and is expanded, pressing the Esc key
+        collapses the dropdown, but not the drawer.
       </GalleryExampleTile>
     </>
   );

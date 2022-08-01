@@ -10,19 +10,21 @@ import { NxDrawer, NxButton, NxP } from '@sonatype/react-shared-components';
 
 export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
+
   const cancelHandler = () => setShowDrawer(false);
 
   return (
-    <div className="gallery-drawer-example">
-      <NxButton onClick={() => setShowDrawer(true)}>Open Drawer</NxButton>
+    <>
+      <NxButton id="nx-drawer-simple-open-button" onClick={() => setShowDrawer(true)}>Open Drawer</NxButton>
       {showDrawer && (
-        <NxDrawer onCancel={cancelHandler}
+        <NxDrawer id="nx-drawer-simple"
+                  onCancel={cancelHandler}
                   headerTitle="An Example of a Simple NxDrawer Component">
           <NxDrawer.Content>
             <NxP>
               Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
-              I love dessert cake. Pie candy canes liquorice jelly beans sweet roll. Jelly candy donut cotton candy
-              halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
+              I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
+              cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
               pie jelly-o cheesecake candy I love.
             </NxP>
             <NxP>
@@ -59,6 +61,6 @@ export default function NxDrawerExample() {
           </NxDrawer.Content>
         </NxDrawer>
       )}
-    </div>
+    </>
   );
 }

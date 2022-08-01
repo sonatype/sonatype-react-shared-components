@@ -13,10 +13,13 @@ export default function NxDrawerExample() {
   const cancelHandler = () => setShowDrawer(false);
 
   return (
-    <div className="gallery-drawer-with-footer-example">
-      <NxButton onClick={() => setShowDrawer(true)}>Open Drawer With Footer</NxButton>
+    <>
+      <NxButton id="nx-drawer-with-footer-open-button" onClick={() => setShowDrawer(true)}>
+        Open Drawer With Footer
+      </NxButton>
       {showDrawer && (
-        <NxDrawer onCancel={cancelHandler}
+        <NxDrawer id="nx-drawer-with-footer"
+                  onCancel={cancelHandler}
                   headerTitle="An Example NxDrawer with Footer">
           <NxDrawer.Content>
             <NxP>
@@ -68,6 +71,6 @@ export default function NxDrawerExample() {
           </NxDrawer.Footer>
         </NxDrawer>
       )}
-    </div>
+    </>
   );
 }

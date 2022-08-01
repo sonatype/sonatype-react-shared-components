@@ -69,12 +69,18 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
 
   return (
     <div className="gallery-drawer-with-subtitle-or-paragraph-example">
-      <NxButton onClick={() => setShowDrawer(true)}>Open Drawer with Subtitle</NxButton>
-      <NxButton onClick={() => setShowDrawer2(true)}>Open Drawer with Paragraph</NxButton>
-      <NxButton onClick={() => setShowDrawer3(true)}>Open Drawer with Both</NxButton>
-
+      <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => setShowDrawer(true)}>
+        Open Drawer with Subtitle
+      </NxButton>
+      <NxButton id="nx-drawer-with-paragraph-open-button" onClick={() => setShowDrawer2(true)}>
+        Open Drawer with Paragraph
+      </NxButton>
+      <NxButton id="nx-drawer-with-subtitle-and-paragraph-open-button" onClick={() => setShowDrawer3(true)}>
+        Open Drawer with Both
+      </NxButton>
       {showDrawer && (
-        <NxDrawer onCancel={() => setShowDrawer(false)}
+        <NxDrawer id="nx-drawer-with-subtitle"
+                  onCancel={() => setShowDrawer(false)}
                   headerTitle="An Example of NxDrawer with Subtitle"
                   headerSubtitle="Header Subtitle">
           {content}
@@ -82,7 +88,8 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
       )}
 
       {showDrawer2 && (
-        <NxDrawer onCancel={() => setShowDrawer2(false)}
+        <NxDrawer id="nx-drawer-with-paragraph"
+                  onCancel={() => setShowDrawer2(false)}
                   headerTitle="An Example of NxDrawer with Paragraph"
                   headerParagraph={paragraph}>
           {content}
@@ -90,7 +97,8 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
       )}
 
       {showDrawer3 && (
-        <NxDrawer onCancel={() => setShowDrawer3(false)}
+        <NxDrawer id="nx-drawer-with-subtitle-and-paragraph"
+                  onCancel={() => setShowDrawer3(false)}
                   headerTitle="An Example of NxDrawer with Subtitle and Paragraph"
                   headerSubtitle="Header Subtitle"
                   headerParagraph={paragraph}>

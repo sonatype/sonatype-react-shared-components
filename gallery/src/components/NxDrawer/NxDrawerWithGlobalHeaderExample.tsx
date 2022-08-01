@@ -78,14 +78,15 @@ export default function NxDrawerWithGlobalHeaderExample() {
   return (
     <>
       <header className="nx-global-header">
-        <NxBackButton href="#/pages/Pop%20Over" targetPageTitle="Documentation" />
+        <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
         <div className="nx-global-header__actions">
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         </div>
       </header>
       <NxPageMain>
         {showDrawer && (
-          <NxDrawer className="nx-drawer--with-global-header"
+          <NxDrawer id="nx-drawer-with-global-header-narrow"
+                    className="nx-drawer--with-global-header"
                     variant="narrow"
                     onCancel={() => setShowDrawer(false)}
                     headerTitle="Example of Narrow Drawer"
@@ -95,7 +96,8 @@ export default function NxDrawerWithGlobalHeaderExample() {
           </NxDrawer>
         )}
         {showDrawer2 && (
-          <NxDrawer className="nx-drawer--with-global-header"
+          <NxDrawer id="nx-drawer-with-global-header-normal"
+                    className="nx-drawer--with-global-header"
                     onCancel={() => setShowDrawer2(false)}
                     headerTitle="Example of Normal Drawer"
                     headerSubtitle="Example subtitle"
@@ -117,12 +119,12 @@ export default function NxDrawerWithGlobalHeaderExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="open-narrow-nx-drawer-button" onClick={() => setShowDrawer(true)}>
+          <NxButton id="nx-drawer-with-global-header-open-narrow-button" onClick={() => setShowDrawer(true)}>
             Open Drawer (Narrow)
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="open-normal-nx-drawer-button" onClick={() => setShowDrawer2(true)}>
+          <NxButton id="nx-drawer-with-global-header-open-normal-button" onClick={() => setShowDrawer2(true)}>
             Open Drawer (Normal)
           </NxButton>
         </NxP>
