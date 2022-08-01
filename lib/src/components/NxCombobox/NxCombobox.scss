@@ -32,6 +32,10 @@
      .nx-search-dropdown__menu {
        position: absolute;
        right: initial;
+
+       .nx-combobox__option--visual-selected {
+        background-color: var(--nx-swatch-indigo-97);
+       }
      }
    }
  

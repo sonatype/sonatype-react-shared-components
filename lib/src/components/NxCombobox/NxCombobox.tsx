@@ -53,6 +53,7 @@ function NxComboboxRender<T extends string | number = string>(
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
+      [elToFocusId, setElToFocusId] = useState<string>(''),
 
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
       dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'listbox',
@@ -63,8 +64,7 @@ function NxComboboxRender<T extends string | number = string>(
       }),
       menuClassName = classnames('nx-search-dropdown__menu', {
         'nx-search-dropdown__menu--error': !!error
-      }),
-      buttonClassName = classnames('nx-dropdown-button', { 'nx-combobox_option--selected': !!'[aria-selected]="true"'});
+      });
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
@@ -81,6 +81,8 @@ function NxComboboxRender<T extends string | number = string>(
 
   function handleFilterChange(value: string) {
     setIsSelected(false);
+    setElToFocusId('');
+    setFocusableBtnIndex(null);
     onSearchTextChange(value);
 
     if (value.trim() !== searchText.trim()) {
@@ -93,8 +95,9 @@ function NxComboboxRender<T extends string | number = string>(
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
             elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
         if (elToFocus) {
-          elToFocus.focus();
-          handleActiveDesc(newFocusableBtnIndex);
+          // elToFocus.focus();
+          setElToFocusId(elToFocus.id);
+          // handleActiveDesc(newFocusableBtnIndex);
           setFocusableBtnIndex(newFocusableBtnIndex);
         }
       },
@@ -124,7 +127,9 @@ function NxComboboxRender<T extends string | number = string>(
       case 'Escape':
         focusTextInput();
         setIsSelected(true);
-        handleActiveDesc(null);
+        // handleActiveDesc(null);
+        setElToFocusId('');
+        setFocusableBtnIndex(null);
         break;
     }
   }
@@ -141,19 +146,21 @@ function NxComboboxRender<T extends string | number = string>(
         if (!isEmpty && !showDropdown) {
           setIsSelected(false);
         }
-        focusFirst();
+        elToFocusId ? focusNext() : focusFirst();
         evt.preventDefault();
         break;
       case 'ArrowUp':
         if (!isEmpty && !showDropdown) {
           setIsSelected(false);
         }
-        focusLast();
+        elToFocusId ? focusPrev() : focusLast();
         evt.preventDefault();
         break;
       case 'Escape':
         focusTextInput();
         setIsSelected(true);
+        setElToFocusId('');
+        setFocusableBtnIndex(null);
         break;
     }
     // if (evt.key === 'Escape') {
@@ -208,32 +215,9 @@ function NxComboboxRender<T extends string | number = string>(
     onSelect(match);
     focusTextInput();
     setIsSelected(true);
-    handleActiveDesc(null);
-  }
-
-  function handleActiveDesc(idx: number | null) {
-    const desc = filterRef.current?.querySelector('input');
-
-    if (typeof idx === 'number') {
-      const indexedItem = menuRef.current?.children[idx];
-      const itemId = indexedItem?.id;
-
-      if (itemId) {
-        desc?.setAttribute('aria-activedescendant', itemId);
-
-        if (typeof focusableBtnIndex === 'number') {
-          menuRef.current?.children[focusableBtnIndex].setAttribute('aria-selected', 'false');
-          indexedItem.setAttribute('aria-selected', 'true');
-        }
-      }
-    }
-    else {
-      desc?.setAttribute('aria-activedescendant', '');
-
-      if (typeof focusableBtnIndex === 'number') {
-        menuRef.current?.children[focusableBtnIndex].setAttribute('aria-selected', 'false');
-      }
-    }
+    setElToFocusId('');
+    setFocusableBtnIndex(null);
+    // handleActiveDesc(null);
   }
 
   return (
@@ -248,6 +232,7 @@ function NxComboboxRender<T extends string | number = string>(
                    onKeyDown={handleKeyDown}
                    aria-expanded={showDropdown}
                    aria-controls={dropdownMenuId}
+                   aria-activedescendant={elToFocusId}
                    />
       <NxDropdownMenu id={dropdownMenuId}
                       role={dropdownMenuRole}
@@ -263,8 +248,9 @@ function NxComboboxRender<T extends string | number = string>(
             matches.length ? matches.map((match, i) =>
               <button id={`nx-dropdown-button-${i}`}
                       role="option"
-                      aria-selected="false"
-                      className= {buttonClassName}
+                      aria-selected={i === focusableBtnIndex && !!elToFocusId}
+                      className= {classnames('nx-dropdown-button',
+                          { 'nx-combobox__option--visual-selected': i === focusableBtnIndex && !!elToFocusId})}
                       type="button"
                       disabled={disabled || undefined}
                       key={match.id}
