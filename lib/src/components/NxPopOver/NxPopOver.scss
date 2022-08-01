@@ -93,7 +93,7 @@ $-box-shadow-offset: 52px;
   
   border-bottom: 1px solid var(--nx-swatch-indigo-90);
   display: grid;
-  gap: var(--nx-spacing-2x);
+  column-gap: var(--nx-spacing-2x);
   grid-template: "title close"
                  "subtitle subtitle"
                  "paragraph paragraph" / auto min-content;
@@ -116,11 +116,13 @@ $-box-shadow-offset: 52px;
 
   &__subtitle {
     grid-area: subtitle;
+    margin-top: var(--nx-spacing-2x);
   }
 
   &__paragraph {
     color: var(--nx-swatch-grey-30);
     grid-area: paragraph;
+    margin-top: var(--nx-spacing-2x);
   }
 }
 
