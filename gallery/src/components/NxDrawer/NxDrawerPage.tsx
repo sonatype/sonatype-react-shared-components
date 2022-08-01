@@ -17,25 +17,25 @@ import {
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxPopOverExample from './NxPopOverExample';
-import NxPopOverWithSubtitleOrParagraphExample from './NxPopOverWithSubtitleOrParagraphExample';
-import NxPopOverNarrowExample from './NxPopOverNarrowExample';
-import NxPopOverWithFooterExample from './NxPopOverWithFooterExample';
+import NxDrawerExample from './NxDrawerExample';
+import NxDrawerWithSubtitleOrParagraphExample from './NxDrawerWithSubtitleOrParagraphExample';
+import NxDrawerNarrowExample from './NxDrawerNarrowExample';
+import NxDrawerWithFooterExample from './NxDrawerWithFooterExample';
 
-const NxPopOverSourceCode = require('./NxPopOverExample?raw');
-const NxPopOverWithGlobalHeaderSourceCode = require('./NxPopOverWithGlobalHeaderExample?raw');
-const NxPopOverWithSubtitleOrParagraphSourceCode = require('./NxPopOverWithSubtitleOrParagraphExample?raw');
-const NxPopOverNarrowSourceCode = require('./NxPopOverNarrowExample?raw');
-const NxPopOverWithFooterSourceCode = require('./NxPopOverWithFooterExample?raw');
+const NxDrawerSourceCode = require('./NxDrawerExample?raw');
+const NxDrawerWithGlobalHeaderSourceCode = require('./NxDrawerWithGlobalHeaderExample?raw');
+const NxDrawerWithSubtitleOrParagraphSourceCode = require('./NxDrawerWithSubtitleOrParagraphExample?raw');
+const NxDrawerNarrowSourceCode = require('./NxDrawerNarrowExample?raw');
+const NxDrawerWithFooterSourceCode = require('./NxDrawerWithFooterExample?raw');
 
-export default function NxPopOverPage() {
+export default function NxDrawerPage() {
   return (
     <>
       <GalleryDescriptionTile>
         <NxP>
-          The <NxCode>NxPopOver</NxCode> component implements a dialog sidebar that is fixed to the
+          The <NxCode>NxDrawer</NxCode> component implements a dialog sidebar that is fixed to the
           right side of the viewport. Inside it consists of three parts: the header (built-in),{' '}
-          <NxCode>NxPopOver.Content</NxCode> (required), <NxCode>NxPopOver.Footer</NxCode> (optional).
+          <NxCode>NxDrawer.Content</NxCode> (required), <NxCode>NxDrawer.Footer</NxCode> (optional).
         </NxP>
         <NxTile.Subsection>
           <NxH3>Props</NxH3>
@@ -57,7 +57,7 @@ export default function NxPopOverPage() {
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
                   Any <NxCode>className</NxCode> attributes passed in on
-                  the <NxCode>NxPopOver</NxCode> will be added to
+                  the <NxCode>NxDrawer</NxCode> will be added to
                   the dialog element.
                 </NxTable.Cell>
               </NxTable.Row>
@@ -67,7 +67,7 @@ export default function NxPopOverPage() {
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
-                  The callback function passed into <NxCode>NxPopOver</NxCode> that gets called when the user
+                  The callback function passed into <NxCode>NxDrawer</NxCode> that gets called when the user
                   closes the dialog (when the user clicks outside the popover, when the user clicks the close button,
                   and when the user presses the Esc key).
                 </NxTable.Cell>
@@ -121,7 +121,7 @@ export default function NxPopOverPage() {
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
-                  NxPopOver supports any html attribute that's normally supported by
+                  NxDrawer supports any html attribute that's normally supported by
                   {' '}<NxCode>&lt;dialog&gt;</NxCode> elements.
                 </NxTable.Cell>
               </NxTable.Row>
@@ -130,11 +130,11 @@ export default function NxPopOverPage() {
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <NxH3>Using NxPopOver with nx-global-header</NxH3>
+            <NxH3>Using NxDrawer with nx-global-header</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
-            When using <NxCode>NxPopOver</NxCode> with <NxCode>nx-global-header</NxCode>,
-            <NxCode>nx-pop-over--with-global-header</NxCode> className must be applied so the
+            When using <NxCode>NxDrawer</NxCode> with <NxCode>nx-global-header</NxCode>,{' '}
+            <NxCode>nx-drawer--with-global-header</NxCode> className must be applied so the
             popover does not overlap with the global header.
           </NxP>
         </NxTile.Subsection>
@@ -151,7 +151,7 @@ export default function NxPopOverPage() {
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <NxH3>NxPopOver.Content (Required)</NxH3>
+            <NxH3>NxDrawer.Content (Required)</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
             This is a convenient component that specifies the main body content of the popover. It is placed
@@ -162,7 +162,7 @@ export default function NxPopOverPage() {
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <NxH3>NxPopOver.Footer (Optional)</NxH3>
+            <NxH3>NxDrawer.Footer (Optional)</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
             This is an optional convenient component that specifies the footer of the popover. It is placed
@@ -174,7 +174,7 @@ export default function NxPopOverPage() {
             <NxH3>Accessibility</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
-            <NxCode>NxPopOver</NxCode> implements the dialog role similar to <NxCode>NxModal</NxCode>.
+            <NxCode>NxDrawer</NxCode> implements the dialog role similar to <NxCode>NxModal</NxCode>.
             It is recommended that <NxCode>aria-labeledby</NxCode> or <NxCode>aria-label</NxCode> should be specified.
             Please refer to <NxTextLink href="#/pages/Modal">the accessibilty section</NxTextLink> of the{' '}
             <NxCode>NxModal</NxCode> documentation.
@@ -182,40 +182,40 @@ export default function NxPopOverPage() {
         </NxTile.Subsection>
       </GalleryDescriptionTile>
 
-      <GalleryExampleTile title="Simple NxPopOver Example"
-                          id="nx-pop-over-example"
-                          liveExample={NxPopOverExample}
-                          codeExamples={NxPopOverSourceCode}>
-        A basic example of an <NxCode>NxPopOver</NxCode>.
+      <GalleryExampleTile title="Simple NxDrawer Example"
+                          id="nx-drawer-example"
+                          liveExample={NxDrawerExample}
+                          codeExamples={NxDrawerSourceCode}>
+        A basic example of an <NxCode>NxDrawer</NxCode>.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="NxPopOver With Subtitle or Paragraph Example"
-                          id="nx-pop-over-with-subtitle-or-paragraph-example"
-                          liveExample={NxPopOverWithSubtitleOrParagraphExample}
-                          codeExamples={NxPopOverWithSubtitleOrParagraphSourceCode}>
-        An example of a <NxCode>NxPopOver</NxCode> with subtitle or paragraph in the header.
+      <GalleryExampleTile title="NxDrawer With Subtitle or Paragraph Example"
+                          id="nx-drawer-with-subtitle-or-paragraph-example"
+                          liveExample={NxDrawerWithSubtitleOrParagraphExample}
+                          codeExamples={NxDrawerWithSubtitleOrParagraphSourceCode}>
+        An example of a <NxCode>NxDrawer</NxCode> with subtitle or paragraph in the header.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="Narrow NxPopOver Example"
-                          id="nx-pop-over-narrow-example"
-                          liveExample={NxPopOverNarrowExample}
-                          codeExamples={NxPopOverNarrowSourceCode}>
-        An example of <NxCode>NxPopOver</NxCode> with "narrow" variant.
+      <GalleryExampleTile title="Narrow NxDrawer Example"
+                          id="nx-drawer-narrow-example"
+                          liveExample={NxDrawerNarrowExample}
+                          codeExamples={NxDrawerNarrowSourceCode}>
+        An example of <NxCode>NxDrawer</NxCode> with "narrow" variant.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="NxPopOver With Footer Example"
-                          id="nx-pop-over-with-footer-example"
-                          liveExample={NxPopOverWithFooterExample}
-                          codeExamples={NxPopOverWithFooterSourceCode}>
-        An example of a <NxCode>NxPopOver</NxCode> with <NxCode>NxPopOver.Footer</NxCode>.
+      <GalleryExampleTile title="NxDrawer With Footer Example"
+                          id="nx-drawer-with-footer-example"
+                          liveExample={NxDrawerWithFooterExample}
+                          codeExamples={NxDrawerWithFooterSourceCode}>
+        An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxDrawer.Footer</NxCode>.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="NxPopOver With Global Header Example"
-                          id="nx-pop-over-with-global-header-example"
-                          codeExamples={NxPopOverWithGlobalHeaderSourceCode}>
-        An example of a <NxCode>NxPopOver</NxCode> with a global header.
+      <GalleryExampleTile title="NxDrawer With Global Header Example"
+                          id="nx-drawer-with-global-header-example"
+                          codeExamples={NxDrawerWithGlobalHeaderSourceCode}>
+        An example of a <NxCode>NxDrawer</NxCode> with a global header.
         <br></br>
-        <NxTextLink href="#/NxPopOverWithGlobalHeaderExample">
+        <NxTextLink href="#/NxDrawerWithGlobalHeaderExample">
           Click here to navigate to the live example.
         </NxTextLink>
       </GalleryExampleTile>

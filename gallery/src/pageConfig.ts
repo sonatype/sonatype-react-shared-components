@@ -145,7 +145,7 @@ import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferLi
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
-import NxPopOverPage from './components/NxPopOver/NxPopOverPage';
+import NxDrawerPage from './components/NxDrawer/NxDrawerPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
 
 const pageConfig: PageConfig = {
@@ -245,7 +245,7 @@ const pageConfig: PageConfig = {
     'Global Sidebar Footer': { content: NxGlobalSidebarFooterPage, type: 'react' },
     'Grid': { content: NxGridPage, type: 'html' },
     'Modal': { content: NxModalPage, type: 'react' },
-    'Pop Over': { content: NxPopOverPage, type: 'react' },
+    'Drawer': { content: NxDrawerPage, type: 'react' },
     'Page Header': { content: NxPageHeaderPage, type: 'react' },
     'Page Title': { content: NxPageTitlePage, type: 'html' },
     'Read Only': { content: NxReadOnlyPage, type: 'html' },

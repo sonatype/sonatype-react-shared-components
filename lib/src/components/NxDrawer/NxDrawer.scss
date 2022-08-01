@@ -9,7 +9,7 @@
  
 $-box-shadow-offset: 52px;
 
-.nx-pop-over {
+.nx-drawer {
   // Undo styles that chrome applies to <dialog> elements
   border: initial;
   height: initial;
@@ -87,7 +87,7 @@ $-box-shadow-offset: 52px;
   }
 }
 
-.nx-pop-over-header {
+.nx-drawer-header {
   @include nx-container-helpers.container-vertical;
 
   
@@ -126,7 +126,7 @@ $-box-shadow-offset: 52px;
   }
 }
 
-.nx-pop-over-content {
+.nx-drawer-content {
   @include nx-container-helpers.container-vertical;
 
   flex-grow: 1;
@@ -134,7 +134,7 @@ $-box-shadow-offset: 52px;
   padding: var(--nx-spacing-6x) 0;
 }
 
-.nx-pop-over-footer {
+.nx-drawer-footer {
   @include nx-container-helpers.container-vertical;
 
   border-top: 1px solid var(--nx-swatch-indigo-90);

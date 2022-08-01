@@ -11,15 +11,15 @@ export type CloseHandler = (evt: Event) => void;
 export const NX_POP_OVER_VARIANTS = ['normal', 'narrow'] as const;
 export type NX_POP_OVER_VARIANT_TYPE = (typeof NX_POP_OVER_VARIANTS)[number];
 
-export interface PopOverContextType {
+export interface DrawerContextType {
   onCancel: () => void;
 }
 
-export interface PopOverContentProps {
+export interface DrawerContentProps {
   children?: ReactNode;
 }
 
-export interface PopOverFooterProps {
+export interface DrawerFooterProps {
   children?: ReactNode;
 }
 

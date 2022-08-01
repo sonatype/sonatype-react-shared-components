@@ -13,11 +13,11 @@ import withClass from '../../util/withClass';
 
 import { Props, propTypes } from './types';
 
-import './NxPopOver.scss';
+import './NxDrawer.scss';
 
-const POP_OVER_OPEN_CLASS_NAME = 'nx-pop-over--open';
+const POP_OVER_OPEN_CLASS_NAME = 'nx-drawer--open';
 
-const _NxPopOver = (props: Props) => {
+const _NxDrawer = (props: Props) => {
   const {
     className,
     onCancel,
@@ -33,7 +33,7 @@ const _NxPopOver = (props: Props) => {
 
   useEffect(() => dialogRef.current?.classList.add(POP_OVER_OPEN_CLASS_NAME), [dialogRef]);
 
-  const closePopOver = () => {
+  const closeDrawer = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     dialogRef.current?.classList.remove(POP_OVER_OPEN_CLASS_NAME);
     if (prefersReducedMotion) {
@@ -47,29 +47,29 @@ const _NxPopOver = (props: Props) => {
     }
   };
 
-  const classes = classnames('nx-pop-over', { 'nx-pop-over--narrow': variant === 'narrow' }, className);
+  const classes = classnames('nx-drawer', { 'nx-drawer--narrow': variant === 'narrow' }, className);
 
   const subtitleContent = headerSubtitle ?
-    <h3 className="nx-h3 nx-pop-over-header__subtitle">{headerSubtitle}</h3> : null;
+    <h3 className="nx-h3 nx-drawer-header__subtitle">{headerSubtitle}</h3> : null;
   const paragraphContent = headerParagraph ?
-    <p className="nx-p nx-pop-over-header__paragraph">{headerParagraph}</p> : null;
+    <p className="nx-p nx-drawer-header__paragraph">{headerParagraph}</p> : null;
 
   return (
     <AbstractDialog ref={dialogRef}
                     className={classes}
-                    onCancel={closePopOver}
+                    onCancel={closeDrawer}
                     cancelOnClickOutside={true}
-                    cancelOnClickOutsideTargetClassName={'nx-pop-over__inner'}
+                    cancelOnClickOutsideTargetClassName={'nx-drawer__inner'}
                     onTransitionEnd={handleTransitionEnd}
                     {...attrs}>
-      <div className="nx-pop-over__inner">
-        <header className="nx-pop-over-header">
-          <NxCloseButton className="nx-pop-over-header__close"
+      <div className="nx-drawer__inner">
+        <header className="nx-drawer-header">
+          <NxCloseButton className="nx-drawer-header__close"
                          type="button"
                          onClick={() => onCancel()}>
             Close
           </NxCloseButton>
-          <h2 className="nx-h2 nx-pop-over-header__title">
+          <h2 className="nx-h2 nx-drawer-header__title">
             {headerTitle}
           </h2>
           {subtitleContent}
@@ -81,11 +81,11 @@ const _NxPopOver = (props: Props) => {
   );
 };
 
-const NxPopOver = Object.assign(_NxPopOver, {
+const NxDrawer = Object.assign(_NxDrawer, {
   propTypes,
-  Content: withClass('div', 'nx-pop-over-content'),
-  Footer: withClass('footer', 'nx-pop-over-footer')
+  Content: withClass('div', 'nx-drawer-content'),
+  Footer: withClass('footer', 'nx-drawer-footer')
 });
 
-export default NxPopOver;
+export default NxDrawer;
 export { Props } from './types';
