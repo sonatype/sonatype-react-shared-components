@@ -10,15 +10,14 @@ import { NxDrawer, NxButton, NxP } from '@sonatype/react-shared-components';
 
 export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
-  const drawerCloseHandler = () => setShowDrawer(false);
+  const cancelHandler = () => setShowDrawer(false);
 
   return (
-    <div className="gallery-pop-over-example">
+    <div className="gallery-drawer-example">
       <NxButton onClick={() => setShowDrawer(true)}>Open Drawer</NxButton>
       {showDrawer && (
-        <NxDrawer onCancel={drawerCloseHandler}
-                  headerTitle="Example Drawer Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
-        cillum dolore eu fugiat nulla pariatur.">
+        <NxDrawer onCancel={cancelHandler}
+                  headerTitle="An Example of a Simple NxDrawer Component">
           <NxDrawer.Content>
             <NxP>
               Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie

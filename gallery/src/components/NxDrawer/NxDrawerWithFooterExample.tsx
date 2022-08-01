@@ -10,26 +10,25 @@ import { NxDrawer, NxButton, NxP, NxButtonBar } from '@sonatype/react-shared-com
 
 export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
-  const drawerCloseHandler = () => setShowDrawer(false);
+  const cancelHandler = () => setShowDrawer(false);
 
   return (
-    <div className="gallery-pop-over-with-footer-example">
+    <div className="gallery-drawer-with-footer-example">
       <NxButton onClick={() => setShowDrawer(true)}>Open Drawer With Footer</NxButton>
       {showDrawer && (
-        <NxDrawer onCancel={drawerCloseHandler}
-                  headerTitle="Example Drawer Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
-        cillum dolore eu fugiat nulla pariatur.">
+        <NxDrawer onCancel={cancelHandler}
+                  headerTitle="An Example NxDrawer with Footer">
           <NxDrawer.Content>
             <NxP>
-              Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo{' '}
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum{' '}
-              dolore eu fugiat nulla pariatur.
+              Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
+              I love dessert cake. Pie candy <strong>canes</strong> liquorice jelly beans sweet roll.
+              Jelly candy donut cotton candy halvah. Fruitcake halvah I love cheesecake I love I love.
+              Wafer sweet sweet roll apple pie jelly-o cheesecake candy I love.
             </NxP>
             <NxP>
               Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
-              I love dessert cake. Pie candy canes liquorice jelly beans sweet roll. Jelly candy donut cotton candy
+              I love dessert cake. <em>Pie</em> candy canes liquorice jelly beans sweet roll. Jelly candy donut cotton
+              candy
               halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
               pie jelly-o cheesecake candy I love.
             </NxP>
@@ -60,7 +59,7 @@ export default function NxDrawerExample() {
           </NxDrawer.Content>
           <NxDrawer.Footer>
             <NxP>
-              Pastry tiramisu jujubes biscuit marshmallow donut dragée.
+              <em>Pastry</em> tiramisu jujubes biscuit marshmallow donut dragée.
               Jelly beans chocolate bar jelly beans soufflé candy wafer topping.
             </NxP>
             <NxButtonBar>

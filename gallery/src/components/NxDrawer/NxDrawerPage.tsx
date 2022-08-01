@@ -68,7 +68,7 @@ export default function NxDrawerPage() {
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
                   The callback function passed into <NxCode>NxDrawer</NxCode> that gets called when the user
-                  closes the dialog (when the user clicks outside the popover, when the user clicks the close button,
+                  closes the dialog (when the user clicks outside the drawer, when the user clicks the close button,
                   and when the user presses the Esc key).
                 </NxTable.Cell>
               </NxTable.Row>
@@ -78,8 +78,8 @@ export default function NxDrawerPage() {
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>"normal"</NxTable.Cell>
                 <NxTable.Cell>
-                  This prop specifies a style variant for the popover. Currently, variants only differ in width.
-                  "normal" popvers are 520px wide, and "narrow" popovers are 348px wide.
+                  This prop specifies a style variant for the drawer. Currently, variants only differ in width.
+                  "normal" drawers are 520px wide, and "narrow" drawers are 348px wide.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -135,7 +135,7 @@ export default function NxDrawerPage() {
           <NxP>
             When using <NxCode>NxDrawer</NxCode> with <NxCode>nx-global-header</NxCode>,{' '}
             <NxCode>nx-drawer--with-global-header</NxCode> className must be applied so the
-            popover does not overlap with the global header.
+            drawer does not overlap with the global header.
           </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
@@ -143,7 +143,7 @@ export default function NxDrawerPage() {
             <NxH3>Built-in Header</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
-            The header is placed at the top of the popover component. It consists of four parts:
+            The header is placed at the top of the drawer component. It consists of four parts:
             the close button, the title, the subtitle (optional), and the paragraph (optional).
             The title, subtitle, and paragraph can be specified via the <NxCode>headerTitle</NxCode>,{' '}
             <NxCode>headerSubtitle</NxCode>, and <NxCode>headerParagraph</NxCode> props respectively.
@@ -154,8 +154,8 @@ export default function NxDrawerPage() {
             <NxH3>NxDrawer.Content (Required)</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
-            This is a convenient component that specifies the main body content of the popover. It is placed
-            under the header and extends the full height of the popover, unless the footer is specified, in which
+            This is a convenient component that specifies the main body content of the drawer. It is placed
+            under the header and extends the full height of the drawer, unless the footer is specified, in which
             case it occupies the height between the header and the footer. If there is over flowing content,
             the content area will be scrollable.
           </NxP>
@@ -165,8 +165,8 @@ export default function NxDrawerPage() {
             <NxH3>NxDrawer.Footer (Optional)</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
-            This is an optional convenient component that specifies the footer of the popover. It is placed
-            at the bottom of the popover, and it takes the height of it's content.
+            This is an optional convenient component that specifies the footer of the drawer. It is placed
+            at the bottom of the drawer, and it takes the height of it's content.
           </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
@@ -174,7 +174,7 @@ export default function NxDrawerPage() {
             <NxH3>Accessibility</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
-            <NxCode>NxDrawer</NxCode> implements the dialog role similar to <NxCode>NxModal</NxCode>.
+            <NxCode>NxDrawer</NxCode> implements the dialog role, similar to <NxCode>NxModal</NxCode>.
             It is recommended that <NxCode>aria-labeledby</NxCode> or <NxCode>aria-label</NxCode> should be specified.
             Please refer to <NxTextLink href="#/pages/Modal">the accessibilty section</NxTextLink> of the{' '}
             <NxCode>NxModal</NxCode> documentation.

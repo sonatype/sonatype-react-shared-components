@@ -15,10 +15,10 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
 
   const paragraph = (
     <>
-      Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Pastry carrot cake cake bear <em>claw bear</em> claw. Toffee jelly beans biscuit jelly cotton
+      candy marzipan liquorice. Brownie candy pie sweet roll powder danish dragée. Cake cookie
+      topping pastry carrot cake donut. Bear claw danish powder muffin bonbon cookie. I love I love
+      tootsie roll croissant chupa chups oat cake.
     </>
   );
 
@@ -55,11 +55,11 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
         chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
       </NxP>
       <NxP>
-        Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo{' '}
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum{' '}
-        dolore eu fugiat nulla pariatur.
+        Brownie candy pie sweet roll <strong>powder</strong> danish dragée. Cake cookie
+        topping pastry carrot cake donut. Bear claw danish powder muffin bonbon cookie. I love I love
+        tootsie roll croissant chupa chups oat cake. Icing gingerbread pastry marshmallow pudding
+        brownie gingerbread marzipan. I love candy canes dragée croissant cookie chocolate muffin. Marshmallow
+        powder lollipop cotton candy bonbon lollipop liquorice chupa chups jelly-o.
       </NxP>
       <NxButtonBar>
         <NxButton variant="primary">Button</NxButton>
@@ -68,33 +68,30 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
   );
 
   return (
-    <div className="gallery-pop-over-with-subtitle-or-paragraph-example">
-      <NxButton onClick={() => setShowDrawer2(true)}>Open Drawer with Subtitle</NxButton>
-      <NxButton onClick={() => setShowDrawer(true)}>Open Drawer with Paragraph </NxButton>
+    <div className="gallery-drawer-with-subtitle-or-paragraph-example">
+      <NxButton onClick={() => setShowDrawer(true)}>Open Drawer with Subtitle</NxButton>
+      <NxButton onClick={() => setShowDrawer2(true)}>Open Drawer with Paragraph</NxButton>
       <NxButton onClick={() => setShowDrawer3(true)}>Open Drawer with Both</NxButton>
 
       {showDrawer && (
         <NxDrawer onCancel={() => setShowDrawer(false)}
-                  headerTitle="Example Drawer Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
-        cillum dolore eu fugiat nulla pariatur."
-                  headerParagraph={paragraph}>
+                  headerTitle="An Example of NxDrawer with Subtitle"
+                  headerSubtitle="Header Subtitle">
           {content}
         </NxDrawer>
       )}
 
       {showDrawer2 && (
         <NxDrawer onCancel={() => setShowDrawer2(false)}
-                  headerTitle="Example Drawer Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
-        cillum dolore eu fugiat nulla pariatur."
-                  headerSubtitle="Header Subtitle">
+                  headerTitle="An Example of NxDrawer with Paragraph"
+                  headerParagraph={paragraph}>
           {content}
         </NxDrawer>
       )}
 
       {showDrawer3 && (
         <NxDrawer onCancel={() => setShowDrawer3(false)}
-                  headerTitle="Example Drawer Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
-        cillum dolore eu fugiat nulla pariatur."
+                  headerTitle="An Example of NxDrawer with Subtitle and Paragraph"
                   headerSubtitle="Header Subtitle"
                   headerParagraph={paragraph}>
           {content}

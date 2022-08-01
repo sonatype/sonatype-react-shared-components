@@ -20,7 +20,7 @@ describe('NxDrawer', function() {
   const minimalProps: Props = {
     headerTitle: 'Title',
     onCancel: dummyCancelHandler,
-    children: 'A message to show in a popover'
+    children: 'A message to show in a drawer'
   };
 
   const getMounted = getMountedComponent<Props>(NxDrawer, minimalProps),
@@ -43,7 +43,7 @@ describe('NxDrawer', function() {
     expect(dialog.getDOMNode().classList.contains('nx-drawer--open')).toBe(true);
   });
 
-  it('renders children nodes within the popover', function() {
+  it('renders children nodes within the drawer', function() {
     const component = getShallow({ children: <div className="bar"/> });
     expect(component.find('.nx-drawer')).toContainMatchingElement('div.bar');
   });
@@ -55,10 +55,10 @@ describe('NxDrawer', function() {
   });
 
   it('includes any passed in attributes to the nx-drawer dialog', function() {
-    const component = getMounted({ id: 'pop-over-id', lang: 'en_US' });
+    const component = getMounted({ id: 'drawer-id', lang: 'en_US' });
     const dialog = component.find('dialog.nx-drawer');
 
-    expect(dialog.prop('id')).toEqual('pop-over-id');
+    expect(dialog.prop('id')).toEqual('drawer-id');
     expect(dialog.prop('lang')).toEqual('en_US');
   });
 

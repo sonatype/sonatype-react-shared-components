@@ -28,7 +28,7 @@ export default function NxDrawerWithGlobalHeaderExample() {
     <>
       <NxDrawer.Content>
         <NxP>
-          Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
+          Powder <strong>tiramisu</strong> gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa
           I love dessert cake. Pie candy canes liquorice jelly beans sweet roll. Jelly candy donut cotton candy
           halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
           pie jelly-o cheesecake candy I love.
@@ -68,12 +68,13 @@ export default function NxDrawerWithGlobalHeaderExample() {
 
   const paragraph = (
     <>
-      Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Cupcake I love candy canes dragée croissant cookie chocolate muffin. Marshmallow
+      powder lollipop <strong>cotton</strong> candy bonbon lollipop liquorice chupa chups jelly-o. Biscuit I
+      love marzipan pastry pie ice cream chocolate bar dessert sweet. Cake topping cookie
+      cake icing macaroon marshmallow.
     </>
   );
+
   return (
     <>
       <header className="nx-global-header">
@@ -84,26 +85,26 @@ export default function NxDrawerWithGlobalHeaderExample() {
       </header>
       <NxPageMain>
         {showDrawer && (
-        <NxDrawer className="nx-drawer--with-global-header"
-                  variant="narrow"
-                  onCancel={() => setShowDrawer(false)}
-                  headerTitle="Example of Narrow Drawer"
-                  headerSubtitle="Example subtitle"
-                  headerParagraph={paragraph}>
-          {contentAndFooter}
-        </NxDrawer>
+          <NxDrawer className="nx-drawer--with-global-header"
+                    variant="narrow"
+                    onCancel={() => setShowDrawer(false)}
+                    headerTitle="Example of Narrow Drawer"
+                    headerSubtitle="Example subtitle"
+                    headerParagraph={paragraph}>
+            {contentAndFooter}
+          </NxDrawer>
         )}
         {showDrawer2 && (
-        <NxDrawer className="nx-drawer--with-global-header"
-                  onCancel={() => setShowDrawer2(false)}
-                  headerTitle="Example of Normal Drawer"
-                  headerSubtitle="Example subtitle"
-                  headerParagraph={paragraph}>
-          {contentAndFooter}
-        </NxDrawer>
+          <NxDrawer className="nx-drawer--with-global-header"
+                    onCancel={() => setShowDrawer2(false)}
+                    headerTitle="Example of Normal Drawer"
+                    headerSubtitle="Example subtitle"
+                    headerParagraph={paragraph}>
+            {contentAndFooter}
+          </NxDrawer>
         )}
         <NxPageTitle>
-          <NxH1>Lorem Ipsum</NxH1>
+          <NxH1>NxDrawers with Global Header</NxH1>
         </NxPageTitle>
         <NxP>
           Dragée pastry soufflé shortbread donut fruitcake. Ice cream tart bear claw I love
@@ -116,10 +117,14 @@ export default function NxDrawerWithGlobalHeaderExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton onClick={() => setShowDrawer(true)}>Open Drawer (Narrow)</NxButton>
+          <NxButton id="open-narrow-nx-drawer-button" onClick={() => setShowDrawer(true)}>
+            Open Drawer (Narrow)
+          </NxButton>
         </NxP>
         <NxP>
-          <NxButton onClick={() => setShowDrawer2(true)}>Open Drawer (Normal)</NxButton>
+          <NxButton id="open-normal-nx-drawer-button" onClick={() => setShowDrawer2(true)}>
+            Open Drawer (Normal)
+          </NxButton>
         </NxP>
         <NxP>
           Brownie dessert candy wafer macaroon. Marzipan dragée liquorice biscuit icing I love.
@@ -127,8 +132,6 @@ export default function NxDrawerWithGlobalHeaderExample() {
           love caramels. Pie jelly-o candy jelly beans icing. Sweet gingerbread pastry jelly bonbon danish icing.
         </NxP>
       </NxPageMain>
-
     </>
-
   );
 }

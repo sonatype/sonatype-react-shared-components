@@ -10,34 +10,26 @@ import { NxDrawer, NxButton, NxButtonBar, NxP } from '@sonatype/react-shared-com
 
 export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
-  const drawerCloseHandler = () => setShowDrawer(false);
+  const cancelHandler = () => setShowDrawer(false);
 
   const paragraph = (
     <>
-      Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Brownie dessert candy wafer macaroon. Marzipan dragée liquorice biscuit icing I love.
+      Wafer pastry sweet candy canes pie pie icing brownie. Wafer jelly cake bear claw I
+      love caramels. Pie <strong>jelly-o</strong> candy jelly beans icing.
+      Sweet gingerbread pastry jelly bonbon danish icing.
     </>
   );
 
   return (
-    <div className="gallery-pop-over-narrow-example">
+    <div className="gallery-drawer-narrow-example">
       <NxButton onClick={() => setShowDrawer(true)}>Open Narrow Drawer</NxButton>
       {showDrawer && (
-        <NxDrawer onCancel={drawerCloseHandler}
+        <NxDrawer onCancel={cancelHandler}
                   variant="narrow"
-                  headerTitle="Example Drawer Duis aute irure dolor in reprehenderit in voluptate velit esse{' '}
-        cillum dolore eu fugiat nulla pariatur."
+                  headerTitle="An Example of Narrow NxDrawer Component"
                   headerParagraph={paragraph}>
           <NxDrawer.Content>
-            <NxP>
-              Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo{' '}
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum{' '}
-              dolore eu fugiat nulla pariatur.
-            </NxP>
             <NxP>
               Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
               I love dessert cake. Pie candy canes liquorice jelly beans sweet roll. Jelly candy donut cotton candy
