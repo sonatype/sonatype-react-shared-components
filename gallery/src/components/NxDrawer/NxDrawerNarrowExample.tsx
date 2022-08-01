@@ -26,6 +26,7 @@ export default function NxDrawerExample() {
       <NxButton id="nx-drawer-narrow-open-button" onClick={() => setShowDrawer(true)}>
         Open Narrow Drawer
       </NxButton>
+
       {showDrawer && (
         <NxDrawer id="nx-drawer-narrow"
                   onCancel={cancelHandler}

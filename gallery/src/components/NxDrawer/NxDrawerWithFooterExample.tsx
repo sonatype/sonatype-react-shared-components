@@ -17,6 +17,7 @@ export default function NxDrawerExample() {
       <NxButton id="nx-drawer-with-footer-open-button" onClick={() => setShowDrawer(true)}>
         Open Drawer With Footer
       </NxButton>
+
       {showDrawer && (
         <NxDrawer id="nx-drawer-with-footer"
                   onCancel={cancelHandler}

@@ -21,7 +21,7 @@ export default function NxDrawerEscExample() {
       {showDrawer && (
         <NxDrawer id="nx-drawer-esc"
                   onCancel={cancelHandler}
-                  headerTitle="An Example of NxDrawer with NxDropdown">
+                  headerTitle="An Example of NxDrawer with NxDropdown Nested Inside.">
           <NxDrawer.Content>
             <NxDropdown label="Expand" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
               <button onClick={onClick} className="nx-dropdown-button">

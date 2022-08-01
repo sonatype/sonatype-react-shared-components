@@ -83,6 +83,7 @@ export default function NxDrawerWithGlobalHeaderExample() {
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         </div>
       </header>
+
       <NxPageMain>
         {showDrawer && (
           <NxDrawer id="nx-drawer-with-global-header-narrow"
@@ -105,9 +106,11 @@ export default function NxDrawerWithGlobalHeaderExample() {
             {contentAndFooter}
           </NxDrawer>
         )}
+
         <NxPageTitle>
           <NxH1>NxDrawers with Global Header</NxH1>
         </NxPageTitle>
+
         <NxP>
           Dragée pastry soufflé shortbread donut fruitcake. Ice cream tart bear claw I love
           cotton candy marzipan cotton candy cake danish. Pie gingerbread marshmallow bear claw

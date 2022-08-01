@@ -15,7 +15,7 @@ import { Props, propTypes } from './types';
 
 import './NxDrawer.scss';
 
-const POP_OVER_OPEN_CLASS_NAME = 'nx-drawer--open';
+const DRAWER_OPEN_CLASS_NAME = 'nx-drawer--open';
 
 const _NxDrawer = (props: Props) => {
   const {
@@ -31,18 +31,18 @@ const _NxDrawer = (props: Props) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => dialogRef.current?.classList.add(POP_OVER_OPEN_CLASS_NAME), [dialogRef]);
+  useEffect(() => dialogRef.current?.classList.add(DRAWER_OPEN_CLASS_NAME), [dialogRef]);
 
   const closeDrawer = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    dialogRef.current?.classList.remove(POP_OVER_OPEN_CLASS_NAME);
+    dialogRef.current?.classList.remove(DRAWER_OPEN_CLASS_NAME);
     if (prefersReducedMotion) {
       onCancel();
     }
   };
 
   const handleTransitionEnd = () => {
-    if (!dialogRef.current?.classList.contains(POP_OVER_OPEN_CLASS_NAME)) {
+    if (!dialogRef.current?.classList.contains(DRAWER_OPEN_CLASS_NAME)) {
       onCancel();
     }
   };
