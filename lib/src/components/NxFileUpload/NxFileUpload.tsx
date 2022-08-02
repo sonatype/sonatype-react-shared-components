@@ -7,14 +7,19 @@
 import classnames from 'classnames';
 import React, { FormEvent, forwardRef, useEffect, useRef } from 'react';
 
+import { useUniqueId } from '../../util/idUtil';
 import { Props, propTypes } from './types';
 
 export { Props };
 
+import './NxFileUpload.scss';
+
 const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(props) {
   const { onChange: onChangeProp, files, inputAttrs, className: classNameProp, ...attrs } = props,
       className = classnames('nx-file-upload', classNameProp),
-      inputRef = useRef<HTMLInputElement>(null);
+      inputClassName = classnames('nx-file-upload__input', inputAttrs?.className),
+      inputRef = useRef<HTMLInputElement>(null),
+      inputId = useUniqueId('nx-file-upload-input', inputAttrs?.id);
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     onChangeProp(evt.currentTarget.files);
@@ -28,8 +33,8 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
 
   return (
     <div className={className} { ...attrs }>
-      <label className="nx-btn nx-btn--tertiary">
-        <input ref={inputRef} { ...inputAttrs } onChange={onChange} type="file" />
+      <input ref={inputRef} { ...inputAttrs } onChange={onChange} id={inputId} className={inputClassName} type="file" />
+      <label htmlFor={inputId} className="nx-btn nx-btn--tertiary">
         <span>Choose File</span>
       </label>
     </div>
