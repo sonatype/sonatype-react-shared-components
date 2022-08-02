@@ -96,6 +96,7 @@ function NxComboboxRender<T extends string | number = string>(
             elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
         if (elToFocus) {
           setElToFocusId(elToFocus.id);
+          handleElInView(elToFocus);
           setFocusableBtnIndex(newFocusableBtnIndex);
         }
       },
@@ -216,6 +217,22 @@ function NxComboboxRender<T extends string | number = string>(
     setIsSelected(true);
     setElToFocusId('');
     setFocusableBtnIndex(null);
+  }
+
+  function handleElInView(el: HTMLElement) {
+    const bounding = el.getBoundingClientRect();
+    const dropdownMenu = menuRef.current;
+
+    // const isInView = bounding.top >= 0 && bounding.left >= 0 &&
+    //   bounding.bottom <= (document.documentElement.clientHeight)
+    //   && bounding.right <= (document.documentElement.clientWidth);
+
+    const isInView = dropdownMenu && el.offsetTop >= dropdownMenu.scrollTop &&
+    bounding.bottom <= (document.documentElement.clientHeight);
+
+    if (!isInView) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
 
   return (
