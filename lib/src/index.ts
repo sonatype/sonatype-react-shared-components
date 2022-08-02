@@ -325,3 +325,5 @@ export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemN
 export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
+
+export { default as NxFileUpload, Props as NxFileUploadProps } from './components/NxFileUpload/NxFileUpload';
