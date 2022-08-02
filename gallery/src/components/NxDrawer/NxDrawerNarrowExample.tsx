@@ -32,7 +32,8 @@ export default function NxDrawerExample() {
                   onCancel={cancelHandler}
                   variant="narrow"
                   headerTitle="An Example of Narrow NxDrawer Component"
-                  headerParagraph={paragraph}>
+                  headerParagraph={paragraph}
+                  aria-labelledby="nx-drawer-narrow">
           <NxDrawer.Content>
             <NxP>
               Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie

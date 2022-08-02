@@ -19,7 +19,8 @@ export default function NxDrawerExample() {
       {showDrawer && (
         <NxDrawer id="nx-drawer-simple"
                   onCancel={cancelHandler}
-                  headerTitle="An Example of a Simple NxDrawer Component">
+                  headerTitle="An Example of a Simple NxDrawer Component"
+                  aria-labelledby="nx-drawer-simple">
           <NxDrawer.Content>
             <NxP>
               Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie

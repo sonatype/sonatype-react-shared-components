@@ -15,28 +15,27 @@ describe('NxDrawer', function() {
   } = setupBrowser('#/pages/Drawer');
 
   async function openDrawer(drawerId, buttonId) {
-    const openDrawerBtnSelector = `#${buttonId}`,
-        closeDrawerBtnSelector = `#${drawerId} .nx-drawer-header__close`;
+    const openDrawerBtnSelector = `#${buttonId}`;
 
     const [openDrawerBtn] = await waitAndGetElements(openDrawerBtnSelector);
 
     await openDrawerBtn.click();
 
-    await waitAndGetElements(closeDrawerBtnSelector);
+    return await waitAndGetElements(`#${drawerId}`);
   }
 
   function simpleDrawerTest(drawerId, buttonId) {
     return async function() {
-      await openDrawer(drawerId, buttonId);
+      const [drawer] = await openDrawer(drawerId, buttonId);
 
-      checkScreenshot(`#${drawerId}`);
+      checkScreenshot(drawer);
     };
   }
 
   function drawerA11yTest(drawerId, buttonId) {
     return async function() {
       await openDrawer(drawerId, buttonId);
-      await a11yTest()();
+      await a11yTest();
     };
   }
 
@@ -69,35 +68,6 @@ describe('NxDrawer', function() {
   describe('With Subtitle and Paragraph NxDrawer', function() {
     it('looks right', simpleDrawerTest('nx-drawer-with-subtitle-and-paragraph',
         'nx-drawer-with-subtitle-and-paragraph-open-button'));
-  });
-
-  describe('With Global Header', function() {
-    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxDrawerWithGlobalHeaderExample', false);
-
-    it('looks right (narrow)', async function() {
-      await getPage().setViewport({ width: 1366, height: 1000 });
-      await openDrawer('nx-drawer-with-global-header-narrow', 'nx-drawer-with-global-header-narrow-open-button');
-      await checkFullPageScreenshot();
-    });
-
-    it('looks right (normal)', async function() {
-      await getPage().setViewport({ width: 1366, height: 1000 });
-      await openDrawer('nx-drawer-with-global-header-normal', 'nx-drawer-with-global-header-normal-open-button');
-      await checkFullPageScreenshot();
-    });
-
-    it('passes a11y (narrow)', async function() {
-      await getPage().setViewport({ width: 1366, height: 1000 });
-      await openDrawer('nx-drawer-with-global-header-narrow', 'nx-drawer-with-global-header-narrow-open-button');
-      await a11yTest();
-    });
-
-    it('passes a11y (normal)', async function() {
-      await getPage().setViewport({ width: 1366, height: 1000 });
-      await openDrawer('nx-drawer-with-global-header-normal', 'nx-drawer-with-global-header-normal-open-button');
-      await a11yTest();
-    });
-
   });
 
   describe('NxDrawer + NxDropdown ESC Closing behavior', function() {
@@ -145,5 +115,45 @@ describe('NxDrawer', function() {
 
       expect(await isFocused(openButton)).toBe(true);
     });
+  });
+
+  describe('With Global Header', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements } =
+    setupBrowser('#/NxDrawerWithGlobalHeaderExample', false);
+
+    async function openDrawer(drawerId, buttonId) {
+      const openDrawerBtnSelector = `#${buttonId}`;
+
+      const [openDrawerBtn] = await waitAndGetElements(openDrawerBtnSelector);
+
+      await openDrawerBtn.click();
+
+      return await waitAndGetElements(`#${drawerId}`);
+    }
+
+    it('looks right (narrow)', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+      await openDrawer('nx-drawer-with-global-header-narrow', 'nx-drawer-with-global-header-narrow-open-button');
+      await checkFullPageScreenshot();
+    });
+
+    it('looks right (normal)', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+      await openDrawer('nx-drawer-with-global-header-normal', 'nx-drawer-with-global-header-normal-open-button');
+      await checkFullPageScreenshot();
+    });
+
+    it('passes a11y (narrow)', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+      await openDrawer('nx-drawer-with-global-header-narrow', 'nx-drawer-with-global-header-narrow-open-button');
+      await a11yTest();
+    });
+
+    it('passes a11y (normal)', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+      await openDrawer('nx-drawer-with-global-header-normal', 'nx-drawer-with-global-header-normal-open-button');
+      await a11yTest();
+    });
+
   });
 });

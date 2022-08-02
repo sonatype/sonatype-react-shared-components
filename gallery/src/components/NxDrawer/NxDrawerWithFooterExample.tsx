@@ -21,7 +21,8 @@ export default function NxDrawerExample() {
       {showDrawer && (
         <NxDrawer id="nx-drawer-with-footer"
                   onCancel={cancelHandler}
-                  headerTitle="An Example NxDrawer with Footer">
+                  headerTitle="An Example NxDrawer with Footer"
+                  aria-labelledby="nx-drawer-with-footer">
           <NxDrawer.Content>
             <NxP>
               Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie

@@ -92,7 +92,8 @@ export default function NxDrawerWithGlobalHeaderExample() {
                     onCancel={() => setShowDrawer(false)}
                     headerTitle="Example of Narrow Drawer"
                     headerSubtitle="Example subtitle"
-                    headerParagraph={paragraph}>
+                    headerParagraph={paragraph}
+                    aria-labelledby="nx-drawer-with-global-header-narrow">
             {contentAndFooter}
           </NxDrawer>
         )}
@@ -102,7 +103,8 @@ export default function NxDrawerWithGlobalHeaderExample() {
                     onCancel={() => setShowDrawer2(false)}
                     headerTitle="Example of Normal Drawer"
                     headerSubtitle="Example subtitle"
-                    headerParagraph={paragraph}>
+                    headerParagraph={paragraph}
+                    aria-labelledby="nx-drawer-with-global-header-normal">
             {contentAndFooter}
           </NxDrawer>
         )}
@@ -122,12 +124,12 @@ export default function NxDrawerWithGlobalHeaderExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-global-header-open-narrow-button" onClick={() => setShowDrawer(true)}>
+          <NxButton id="nx-drawer-with-global-header-narrow-open-button" onClick={() => setShowDrawer(true)}>
             Open Drawer (Narrow)
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-global-header-open-normal-button" onClick={() => setShowDrawer2(true)}>
+          <NxButton id="nx-drawer-with-global-header-normal-open-button" onClick={() => setShowDrawer2(true)}>
             Open Drawer (Normal)
           </NxButton>
         </NxP>

@@ -82,7 +82,8 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
         <NxDrawer id="nx-drawer-with-subtitle"
                   onCancel={() => setShowDrawer(false)}
                   headerTitle="An Example of NxDrawer with Subtitle"
-                  headerSubtitle="Header Subtitle">
+                  headerSubtitle="Header Subtitle"
+                  aria-labelledby="nx-drawer-with-subtitle">
           {content}
         </NxDrawer>
       )}
@@ -91,7 +92,8 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
         <NxDrawer id="nx-drawer-with-paragraph"
                   onCancel={() => setShowDrawer2(false)}
                   headerTitle="An Example of NxDrawer with Paragraph"
-                  headerParagraph={paragraph}>
+                  headerParagraph={paragraph}
+                  aria-labelledby="nx-drawer-with-paragraph">
           {content}
         </NxDrawer>
       )}
@@ -101,7 +103,8 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
                   onCancel={() => setShowDrawer3(false)}
                   headerTitle="An Example of NxDrawer with Subtitle and Paragraph"
                   headerSubtitle="Header Subtitle"
-                  headerParagraph={paragraph}>
+                  headerParagraph={paragraph}
+                  aria-labelledby="nx-drawer-with-subtitle-and-paragraph">
           {content}
         </NxDrawer>
       )}
