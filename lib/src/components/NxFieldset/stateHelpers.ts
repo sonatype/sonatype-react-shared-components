@@ -13,7 +13,7 @@ import useToggle from '../../util/useToggle';
 export type RadioValidator = (value: string | null) => ValidationErrors;
 export type CheckboxValidator = (values: string[]) => ValidationErrors;
 export type RadioSetter = (v: string | null) => void;
-export type CheckboxState = [boolean, () => void, ...unknown[]];
+export type CheckboxState = [boolean, () => void];
 export type CheckboxInitValues<K extends string | number> = Record<K, boolean>;
 export type CheckboxStates<K extends string | number> = Record<K, CheckboxState>;
 
@@ -113,6 +113,12 @@ export function checkboxGroupUserInput(
   };
 }
 
+// Helper to make TypeScript happy with reducing useToggle's 3-tuple to a 2-tuple
+function _useToggle(initialValue: boolean): CheckboxState {
+  const [state, toggle] = useToggle(initialValue);
+  return [state, toggle];
+}
+
 /**
  * A react hook to aid in managing the state of a checkbox group. Takes an object mapping state names (i.e. checkbox
  * names) to the initial values for those checkboxes, along with an optional validator function, and returns
@@ -129,7 +135,7 @@ export function useCheckboxGroupState<K extends string>(
     return [state, () => { setIsPristine(false); toggler(); }];
   }
 
-  const rawStates = map<CheckboxInitValues<K>, CheckboxStates<K>>(useToggle, initialValues),
+  const rawStates = map<CheckboxInitValues<K>, CheckboxStates<K>>(_useToggle, initialValues),
       [isPristine, setIsPristine] = useState(true),
       values = map<Pair, K>(head, filter<Pair, Pair[]>(([, [isSet]]) => isSet, toPairs(rawStates)));
 
