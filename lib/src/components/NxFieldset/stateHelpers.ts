@@ -7,33 +7,30 @@
 import { useState } from 'react';
 import { append, filter, head, map, toPairs, without } from 'ramda';
 
-import { ValidationErrors } from '../../util/validationUtil';
 import useToggle from '../../util/useToggle';
+import {
+  RadioValidator,
+  CheckboxValidator,
+  RadioSetter,
+  CheckboxState,
+  CheckboxInitValues,
+  CheckboxStates,
+  RadioStateProps,
+  CheckboxStateProps,
+  CheckboxGroupHookReturnValue
+} from './types';
 
-export type RadioValidator = (value: string | null) => ValidationErrors;
-export type CheckboxValidator = (values: string[]) => ValidationErrors;
-export type RadioSetter = (v: string | null) => void;
-export type CheckboxState = [boolean, () => void];
-export type CheckboxInitValues<K extends string | number> = Record<K, boolean>;
-export type CheckboxStates<K extends string | number> = Record<K, CheckboxState>;
-
-export interface RadioStateProps {
-  value: string | null;
-  isPristine: boolean;
-  validationErrors: ValidationErrors;
-}
-
-export interface CheckboxStateProps {
-  values: string[];
-  isPristine: boolean;
-  validationErrors: ValidationErrors;
-}
-
-export interface CheckboxGroupHookReturnValue<K extends string | number> {
-  states: CheckboxStates<K>;
-  isPristine: boolean;
-  validationErrors: ValidationErrors;
-}
+export {
+  RadioValidator,
+  CheckboxValidator,
+  RadioSetter,
+  CheckboxState,
+  CheckboxInitValues,
+  CheckboxStates,
+  RadioStateProps,
+  CheckboxStateProps,
+  CheckboxGroupHookReturnValue
+};
 
 /**
  * Create a RadioStateProps representing the initial state of a group of radio buttons based on the
