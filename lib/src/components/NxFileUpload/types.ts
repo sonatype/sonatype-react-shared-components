@@ -8,9 +8,9 @@ import { HTMLAttributes, InputHTMLAttributes } from "react";
 import { ValidationMap } from "prop-types";
 
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  onChange: (files: FileList) => void;
-  files: FileList;
-  inputAttrs: InputHTMLAttributes<HTMLInputElement>;
+  onChange: (files: FileList | null) => void;
+  files: FileList | null;
+  inputAttrs?: InputHTMLAttributes<HTMLInputElement> | null;
 }
 
 export const propTypes: ValidationMap<Props> = {

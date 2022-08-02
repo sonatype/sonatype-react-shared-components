@@ -9,13 +9,15 @@ import React, { FormEvent, forwardRef, useEffect, useRef } from 'react';
 
 import { Props, propTypes } from './types';
 
+export { Props };
+
 const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(props) {
   const { onChange: onChangeProp, files, inputAttrs, className: classNameProp, ...attrs } = props,
       className = classnames('nx-file-upload', classNameProp),
       inputRef = useRef<HTMLInputElement>(null);
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
-    onChangeProp(evt.currentTarget.files!);
+    onChangeProp(evt.currentTarget.files);
   }
 
   useEffect(function() {
