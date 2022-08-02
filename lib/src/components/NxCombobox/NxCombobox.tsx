@@ -105,32 +105,32 @@ function NxComboboxRender<T extends string | number = string>(
       focusFirst = adjustBtnFocus(always(0)),
       focusLast = adjustBtnFocus(always(matches.length - 1));
 
-  function handleButtonKeyDown(evt: KeyboardEvent<HTMLElement>) {
-    switch (evt.key) {
-      case 'Home':
-        focusFirst();
-        evt.preventDefault();
-        break;
-      case 'End':
-        focusLast();
-        evt.preventDefault();
-        break;
-      case 'ArrowDown':
-        focusNext();
-        evt.preventDefault();
-        break;
-      case 'ArrowUp':
-        focusPrev();
-        evt.preventDefault();
-        break;
-      case 'Escape':
-        focusTextInput();
-        setIsSelected(true);
-        setElToFocusId('');
-        setFocusableBtnIndex(null);
-        break;
-    }
-  }
+  // function handleButtonKeyDown(evt: KeyboardEvent<HTMLElement>) {
+  //   switch (evt.key) {
+  //     case 'Home':
+  //       focusFirst();
+  //       evt.preventDefault();
+  //       break;
+  //     case 'End':
+  //       focusLast();
+  //       evt.preventDefault();
+  //       break;
+  //     case 'ArrowDown':
+  //       focusNext();
+  //       evt.preventDefault();
+  //       break;
+  //     case 'ArrowUp':
+  //       focusPrev();
+  //       evt.preventDefault();
+  //       break;
+  //     case 'Escape':
+  //       focusTextInput();
+  //       setIsSelected(true);
+  //       setElToFocusId('');
+  //       setFocusableBtnIndex(null);
+  //       break;
+  //   }
+  // }
 
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
     switch (evt.key) {
@@ -138,6 +138,18 @@ function NxComboboxRender<T extends string | number = string>(
         if (showDropdown) {
           setIsSelected(true);
         }
+        console.log(focusableBtnIndex);
+        if(typeof focusableBtnIndex === 'number'){
+          handleOnClick(matches[focusableBtnIndex]);
+        }
+        evt.preventDefault();
+        break;
+      case 'Home':
+        focusFirst();
+        evt.preventDefault();
+        break;
+      case 'End':
+        focusLast();
         evt.preventDefault();
         break;
       case 'ArrowDown':
@@ -233,13 +245,13 @@ function NxComboboxRender<T extends string | number = string>(
     }
 
     //this check if the option is not visible inside the dropdown menu
-    if ( dropdownMenu &&
+    if (dropdownMenu &&
       dropdownMenu.scrollTop + dropdownMenu.offsetHeight <
       el.offsetTop + el.offsetHeight
     ) {
       el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    } 
-    else if ( dropdownMenu && dropdownMenu.scrollTop > el.offsetTop + 4) {
+    }
+    else if (dropdownMenu && dropdownMenu.scrollTop > el.offsetTop + 4) {
       el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
@@ -263,7 +275,6 @@ function NxComboboxRender<T extends string | number = string>(
                       ref={menuRef}
                       className={menuClassName}
                       onClosing={() => {}}
-                      onKeyDown={handleButtonKeyDown}
                       aria-busy={!!loading}
                       aria-live="polite"
                       aria-hidden={!showDropdown}>
