@@ -7,8 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxFieldset', function() {
-  const { checkScreenshot, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest, waitAndGetElements } =
-      setupBrowser('#/pages/Fieldset');
+  const { checkScreenshot, simpleTest, waitAndGetElements } = setupBrowser('#/pages/Fieldset');
   const selector = '#nx-fieldset-example .nx-fieldset',
       validationSelector = '#nx-fieldset-validation-example .gallery-example-live';
 
@@ -21,8 +20,8 @@ describe('NxFieldset', function() {
   describe('when invalid', function() {
     it('displays the validation message', async function() {
       const [fieldset, firstCheckbox] = await waitAndGetElements(
-        validationSelector,
-        `${validationSelector} .nx-checkbox:first-of-type`
+          validationSelector,
+          `${validationSelector} .nx-checkbox:first-of-type`
       );
 
       // select and then unselect
@@ -35,6 +34,22 @@ describe('NxFieldset', function() {
       expect(validationMessage).toBeTruthy();
 
       await checkScreenshot(fieldset);
+    });
+  });
+
+  describe('when in an NxForm that is showing validation errors', function() {
+    const { checkScreenshot, waitAndGetElements } = setupBrowser('#/pages/Form Layout Examples'),
+        formSelector = '#nx-form-layout-example';
+
+    it('displays the validation message', async function() {
+      const [submitBtn, fieldset] = await waitAndGetElements(
+          `${formSelector} .nx-form__submit-btn`,
+          `${formSelector} .nx-fieldset:first-of-type`
+      );
+
+      await submitBtn.click();
+
+      await checkScreenshot(fieldset, undefined, 152);
     });
   });
 });
