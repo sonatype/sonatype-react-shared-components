@@ -32,7 +32,7 @@ const NxToastProvider = (props: NxToastProviderProps) => {
   useEffect(()=> {
     document.addEventListener('focusin', adjustFocus);
     return () => document.removeEventListener('focusin', adjustFocus);
-  }, [activeElementNotToast]);
+  }, []);
 
   const addToast = useCallback((content: ToastAddModel) => {
     const toastId = id++;
