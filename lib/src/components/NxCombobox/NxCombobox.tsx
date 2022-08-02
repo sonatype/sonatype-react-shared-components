@@ -223,14 +223,23 @@ function NxComboboxRender<T extends string | number = string>(
     const bounding = el.getBoundingClientRect();
     const dropdownMenu = menuRef.current;
 
-    // const isInView = bounding.top >= 0 && bounding.left >= 0 &&
-    //   bounding.bottom <= (document.documentElement.clientHeight)
-    //   && bounding.right <= (document.documentElement.clientWidth);
-
-    const isInView = dropdownMenu && el.offsetTop >= dropdownMenu.scrollTop &&
-    bounding.bottom <= (document.documentElement.clientHeight);
+    //this check if the dropdown menu is not in the document view
+    const isInView = bounding.top >= 0 && bounding.left >= 0 &&
+      bounding.bottom <= (document.documentElement.clientHeight)
+      && bounding.right <= (document.documentElement.clientWidth);
 
     if (!isInView) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    //this check if the option is not visible inside the dropdown menu
+    if ( dropdownMenu &&
+      dropdownMenu.scrollTop + dropdownMenu.offsetHeight <
+      el.offsetTop + el.offsetHeight
+    ) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } 
+    else if ( dropdownMenu && dropdownMenu.scrollTop > el.offsetTop + 4) {
       el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
