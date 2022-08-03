@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 import ToastContext from './contexts';
 import NxToastContainer from './NxToastContainer';
 import { NxToastProviderProps, nxToastProviderPropTypes, ToastAddModel, ToastModel } from './types';
@@ -16,7 +16,7 @@ let id = 1;
 const NxToastProvider = (props: NxToastProviderProps) => {
   const { children } = props;
   const [toasts, setToasts] = useState<ToastModel[]>([]);
-  const [activeElementNotToast, setActiveElementNotToast] = useState<HTMLElement | null>(null);
+  const activeElementNotToast = useRef<HTMLElement | null>(null);
 
   // Keeps track of the last active element that's not a toast.
   // When all the toasts are closed, focus returns to the last active non-toast
@@ -25,7 +25,7 @@ const NxToastProvider = (props: NxToastProviderProps) => {
     const currentFocusedElement = document.activeElement as HTMLElement;
 
     if (!currentFocusedElement.classList.contains('nx-toast__close')) {
-      setActiveElementNotToast(currentFocusedElement);
+      activeElementNotToast.current = currentFocusedElement;
     }
   };
 
@@ -48,7 +48,7 @@ const NxToastProvider = (props: NxToastProviderProps) => {
     setToasts(_toasts);
 
     if (_toasts.length === 0) {
-      activeElementNotToast?.focus();
+      activeElementNotToast.current?.focus();
     }
   }, [toasts]);
 
