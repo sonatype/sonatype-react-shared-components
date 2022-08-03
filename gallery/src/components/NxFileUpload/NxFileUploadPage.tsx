@@ -10,8 +10,10 @@ import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxFileUploadExample from './NxFileUploadExample';
+import NxFileUploadComplexExample from './NxFileUploadComplexExample';
 
 const nxFileUploadCode = require('./NxFileUploadExample?raw');
+const nxFileUploadComplexCode = require('./NxFileUploadComplexExample?raw');
 
 const NxTextInputPage = () =>
   <>
@@ -98,6 +100,17 @@ const NxTextInputPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>ref</NxTable.Cell>
+              <NxTable.Cell>Ref&lt;HTMLDivElement&gt;</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell />
+              <NxTable.Cell>
+                This component can receive a React ref which gets set with the top-level HTML element of the component
+                (a <NxCode>&lt;div&gt;</NxCode>). If DOM access to the <NxCode>&lt;input&gt;</NxCode> is desired, it
+                may be accessed via the native DOM APIs on the <NxCode>&lt;div&gt;</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;input type="file"&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/input/file">
@@ -122,6 +135,15 @@ const NxTextInputPage = () =>
                         liveExample={NxFileUploadExample}
                         codeExamples={nxFileUploadCode}>
       A basic example of an <NxCode>NxFileUpload</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Complex Example"
+                        id="nx-file-upload-example"
+                        liveExample={NxFileUploadComplexExample}
+                        codeExamples={nxFileUploadComplexCode}>
+      An example of <NxCode>NxFileUpload</NxCode> with required-field validation and various extra props. Notice that
+      while the <NxCode>id</NxCode> and <NxCode>accept</NxCode> get applied to the <NxCode>&lt;input&gt;</NxCode>,
+      the <NxCode>className</NxCode> gets applied to the enclosing <NxCode>&lt;div&gt;</NxCode>.
     </GalleryExampleTile>
   </>;
 
