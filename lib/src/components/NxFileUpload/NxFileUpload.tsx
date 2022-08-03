@@ -45,8 +45,8 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         ...attrs
       } = props,
       file = files?.item(0),
-      fileSelected = !!file,
-      showError = isRequired && !isPristine && !fileSelected,
+      isFileSelected = !!file,
+      showError = isRequired && !isPristine && !isFileSelected,
       className = classnames('nx-file-upload', classNameProp),
       inputClassName = classnames('nx-file-upload__input', inputAttrs?.className),
       noFileMessageClassName = classnames('nx-file-upload__no-file-message', {
@@ -61,7 +61,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
 
   useEffect(function() {
     if (inputRef.current) {
-      if (fileSelected) {
+      if (isFileSelected) {
         inputRef.current.files = files;
       }
       else {
@@ -77,7 +77,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       <label htmlFor={inputId} className="nx-btn nx-btn--tertiary">
         <span>Choose File</span>
       </label>
-      { fileSelected ?
+      { isFileSelected ?
         <SelectedFile file={file} onDismiss={() => onChangeProp(null)} /> :
         <span className={noFileMessageClassName}>
           <span>No file selected</span>
