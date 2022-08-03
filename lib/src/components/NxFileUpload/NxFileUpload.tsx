@@ -57,7 +57,10 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       validationErrorId = useUniqueId('nx-file-upload-valiation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
-    onChangeProp(evt.currentTarget.files);
+    const { files } = evt.currentTarget,
+        normalizedFiles = !files?.length ? null : files;
+
+    onChangeProp(normalizedFiles);
   }
 
   function openPicker() {

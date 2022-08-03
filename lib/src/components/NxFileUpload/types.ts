@@ -12,7 +12,7 @@ export interface SelectedFileProps {
   onDismiss: () => void;
 }
 
-export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'multiple'> {
   onChange: (files: FileList | null) => void;
   files: FileList | null;
   isRequired?: boolean | null;
