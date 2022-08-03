@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { InputHTMLAttributes } from 'react';
-import { ValidationMap } from 'prop-types';
+import * as PropTypes from 'prop-types';
 
 export interface SelectedFileProps {
   file: File;
@@ -19,6 +19,9 @@ export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onCh
   isPristine?: boolean | null;
 }
 
-export const propTypes: ValidationMap<Props> = {
-
+export const propTypes: PropTypes.ValidationMap<Props> = {
+  onChange: PropTypes.func.isRequired,
+  files: PropTypes.object as PropTypes.Validator<FileList | null>,
+  isRequired: PropTypes.bool,
+  isPristine: PropTypes.bool
 };
