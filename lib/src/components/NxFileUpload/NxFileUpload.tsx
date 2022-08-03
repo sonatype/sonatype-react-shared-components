@@ -53,7 +53,8 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         'nx-file-upload__no-file-message--invalid': showError
       }),
       inputRef = useRef<HTMLInputElement>(null),
-      inputId = useUniqueId('nx-file-upload-input', inputAttrs?.id);
+      inputId = useUniqueId('nx-file-upload-input', inputAttrs?.id),
+      validationErrorId = useUniqueId('nx-file-upload-valiation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     onChangeProp(evt.currentTarget.files);
@@ -73,7 +74,14 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
 
   return (
     <div className={className} { ...attrs }>
-      <input ref={inputRef} { ...inputAttrs } onChange={onChange} id={inputId} className={inputClassName} type="file" />
+      <input ref={inputRef}
+             { ...inputAttrs }
+             onChange={onChange}
+             id={inputId}
+             className={inputClassName}
+             type="file"
+             aria-invalid={showError || undefined}
+             aria-errormessage={showError ? validationErrorId : undefined} />
       <label htmlFor={inputId} className="nx-btn nx-btn--tertiary">
         <span>Choose File</span>
       </label>
@@ -86,7 +94,9 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       }
       { showError &&
         // TODO confirm whether this text should be hard-coded
-        <div role="alert" className="nx-file-upload__validation-error">This field is Required!</div>
+        <div id={validationErrorId} role="alert" className="nx-file-upload__validation-error">
+          This field is Required!
+        </div>
       }
     </div>
   );
