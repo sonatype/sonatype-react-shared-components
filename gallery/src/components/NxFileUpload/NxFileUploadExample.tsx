@@ -8,7 +8,13 @@ import React, { useState } from 'react';
 import { NxFileUpload } from '@sonatype/react-shared-components';
 
 export default function NxFileUploadExample() {
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [files, setFiles] = useState<FileList | null>(null),
+      [isPristine, setIsPristine] = useState(true);
 
-  return <NxFileUpload files={files} onChange={setFiles} />;
+  function onChange(files: FileList | null) {
+    setFiles(files);
+    setIsPristine(false);
+  }
+
+  return <NxFileUpload isRequired isPristine={isPristine} files={files} onChange={onChange} />;
 }
