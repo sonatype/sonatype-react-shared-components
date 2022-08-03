@@ -11,8 +11,6 @@
 .nx-file-upload {
   @include nx-container-helpers.container-horizontal;
 
-  padding-left: var(--nx-spacing-6x);
-  padding-right: var(--nx-spacing-6x);
   margin-bottom: var(--nx-spacing-8x);
 
   &__input {

@@ -84,6 +84,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
              id={inputId}
              className="nx-file-upload__input"
              type="file"
+             aria-required={isRequired ?? undefined}
              aria-invalid={showError || undefined}
              aria-errormessage={showError ? validationErrorId : undefined} />
       {/* Keynav and screenreaders can ignore the button itself in favor of the <input> */}
