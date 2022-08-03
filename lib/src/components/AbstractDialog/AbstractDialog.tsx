@@ -75,7 +75,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       // working, only stopPropagation if the onCancel callback is defined. If it isn't defined, tenuously assume
       // that the ESC handling is implemented externall and do nothing here.
       if (onCancel) {
-        // prevent visibility of the keydown outside of the modal, so that global ESC listeners on the
+        // prevent visibility of the keydown outside of the dialog, so that global ESC listeners on the
         // document don't pick it up
         evt.stopPropagation();
         evt.nativeEvent.stopImmediatePropagation();
@@ -91,7 +91,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
         // prevent visibility to manually-registered native event listeners on the document too.
         // NOTE: this only works on listeners added after this one, which is believed to include any
-        // registered in useEffect calls on components rendered simultaneously with the modal
+        // registered in useEffect calls on components rendered simultaneously with the dialog
         else if (!hasNativeModalSupport) {
           // emulate cancel-on-esc behavior in browsers which don't do it natively
           onCancel(createCancelEvent());
@@ -117,7 +117,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
      *
      * Note: not supported in safari, which is why the conditional is here. Once safari gets
      * it together, we should be able to take advantage of the "top layer" functionality built into
-     * the browser around modals to simplify the NxModal styling around z-index handling
+     * the browser around modals to simplify the dialog styling around z-index handling
      */
     if (hasNativeModalSupport) {
       // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
@@ -125,13 +125,13 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       (el as any).showModal();
     }
     else {
-      // without native support we don't trap focus in the modal, but we can at least start it off there
+      // without native support we don't trap focus in the dialog, but we can at least start it off there
       el.focus();
     }
 
     return () => {
       if (previouslyFocusedEl && previouslyFocusedEl instanceof HTMLElement) {
-        // The useEffect cleanup executes while the modal is still present (in React 16 at least). While the modal
+        // The useEffect cleanup executes while the dialog is still present (in React 16 at least). While the dialog
         // still exists, the document is still "blocked by the modal dialog" so trying to focus elements outside of
         // it won't work. So we have to wait until the next cycle of the event loop when it's gone
         Promise.resolve().then(() => previouslyFocusedEl.focus());
@@ -139,7 +139,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     };
   }, []);
 
-  // listen to the native HTMLDialogElement cancel event which supporting browsers fire when the modal is closed
+  // listen to the native HTMLDialogElement cancel event which supporting browsers fire when the dialog is closed
   // via ESC
   useEffect(function() {
     const dialog = dialogRef.current;

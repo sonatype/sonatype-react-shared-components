@@ -178,7 +178,7 @@ export default function NxDrawerPage() {
           <NxP>
             <NxCode>NxDrawer</NxCode> implements the dialog role, similar to <NxCode>NxModal</NxCode>.
             It is recommended that <NxCode>aria-labeledby</NxCode> or <NxCode>aria-label</NxCode> should be specified.
-            Please refer to <NxTextLink href="#/pages/Modal">the accessibilty section</NxTextLink> of the{' '}
+            Please refer to <NxTextLink href="#/pages/Modal">the Accessibilty Section</NxTextLink> of the{' '}
             <NxCode>NxModal</NxCode> documentation.
           </NxP>
         </NxTile.Subsection>

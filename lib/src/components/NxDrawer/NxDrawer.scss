@@ -94,18 +94,18 @@ $-box-shadow-offset: 52px;
   border-bottom: 1px solid var(--nx-swatch-indigo-90);
   display: grid;
   column-gap: var(--nx-spacing-2x);
-  grid-template: "title close"
+  grid-template: "title cancel-button"
                  "subtitle subtitle"
                  "paragraph paragraph" / auto min-content;
   height: min-content;
   padding-bottom: var(--nx-spacing-6x);
 
-  &__close, &__title, &__subtitle, &__paragraph {
+  &__cancel-button, &__title, &__subtitle, &__paragraph {
     margin: 0;
   }
 
-  &__close {
-    grid-area: close;
+  &__cancel-button {
+    grid-area: cancel-button;
   }
 
   &__title {

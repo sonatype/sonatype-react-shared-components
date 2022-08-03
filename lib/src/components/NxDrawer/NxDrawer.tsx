@@ -64,7 +64,7 @@ const _NxDrawer = (props: Props) => {
                     {...attrs}>
       <div className="nx-drawer__inner">
         <header className="nx-drawer-header">
-          <NxCloseButton className="nx-drawer-header__close"
+          <NxCloseButton className="nx-drawer-header__cancel-button"
                          type="button"
                          onClick={() => onCancel()}>
             Close

@@ -238,11 +238,11 @@ describe('NxDrawer', function() {
       expect(title).toHaveText(titleText);
     });
 
-    it('has NxCloseButton with class nx-drawer-header__close', function() {
+    it('has NxCloseButton with class nx-drawer-header__cancel-button', function() {
       const header = getShallow();
-      const closeButton = header.find(NxCloseButton);
+      const cancelButton = header.find(NxCloseButton);
 
-      expect(closeButton).toHaveClassName('nx-drawer-header__close');
+      expect(cancelButton).toHaveClassName('nx-drawer-header__cancel-button');
     });
 
     it('shows subtitle and paragraph when specified', function() {
@@ -259,7 +259,7 @@ describe('NxDrawer', function() {
       expect(paragraph).toHaveText(paragraphText);
     });
 
-    it('executes onCancel when header close button is pressed', function() {
+    it('executes onCancel when header cancel button is pressed', function() {
       window.matchMedia = () => ({ matches: true }) as MediaQueryList;
 
       const mockOnCancel = jest.fn();
@@ -268,11 +268,11 @@ describe('NxDrawer', function() {
         onCancel: mockOnCancel
       });
 
-      const closeButton = container.find(NxCloseButton).at(0);
+      const cancelButton = container.find(NxCloseButton).at(0);
 
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
 
-      closeButton.simulate('click');
+      cancelButton.simulate('click');
 
       expect(mockOnCancel).toHaveBeenCalledTimes(1);
     });
