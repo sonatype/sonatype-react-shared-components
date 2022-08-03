@@ -58,24 +58,24 @@ describe('NxDrawer', function() {
     it('looks right', simpleDrawerTest('nx-drawer-narrow', 'nx-drawer-narrow-open-button'));
   });
 
-  describe('With Footer NxDrawer', function() {
+  describe('NxDrawer With Footer', function() {
     it('looks right', simpleDrawerTest('nx-drawer-with-footer', 'nx-drawer-with-footer-open-button'));
   });
 
-  describe('With Subtitle NxDrawer', function() {
+  describe('NxDrawer With Subtitle', function() {
     it('looks right', simpleDrawerTest('nx-drawer-with-subtitle', 'nx-drawer-with-subtitle-open-button'));
   });
 
-  describe('With Paragraph NxDrawer', function() {
+  describe('NxDrawer With Paragraph', function() {
     it('looks right', simpleDrawerTest('nx-drawer-with-paragraph', 'nx-drawer-with-paragraph-open-button'));
   });
 
-  describe('With Subtitle and Paragraph NxDrawer', function() {
+  describe('NxDrawer With Subtitle and Paragraph', function() {
     it('looks right', simpleDrawerTest('nx-drawer-with-subtitle-and-paragraph',
         'nx-drawer-with-subtitle-and-paragraph-open-button'));
   });
 
-  describe('NxDrawer + NxDropdown ESC Closing behavior', function() {
+  describe('NxDrawer + NxDropdown ESC Closing Behavior', function() {
     async function isFocused(el) {
       return el.evaluate(e => e === document.activeElement);
     }
@@ -125,7 +125,7 @@ describe('NxDrawer', function() {
     });
   });
 
-  describe('With Global Header', function() {
+  describe('NxDrawer With Global Header', function() {
     const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements, wait } =
       setupBrowser('#/NxDrawerWithGlobalHeaderExample', false);
 

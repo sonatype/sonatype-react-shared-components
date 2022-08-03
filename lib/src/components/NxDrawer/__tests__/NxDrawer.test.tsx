@@ -26,8 +26,7 @@ describe('NxDrawer', function() {
   const getMounted = getMountedComponent<Props>(NxDrawer, minimalProps),
       getShallow = getShallowComponent<Props>(NxDrawer, minimalProps);
 
-  it('renders AbstractDialog with nx-drawer class applied to the dialog element and containing' +
-  '<div> with class nx-drawer__inner', function () {
+  it('renders AbstractDialog with class nx-drawer containing div.nx-drawer__inner', function () {
     const component = getMounted();
     const dialog = component.find(AbstractDialog).children();
 
@@ -35,7 +34,7 @@ describe('NxDrawer', function() {
     expect(dialog.children()).toMatchSelector('div.nx-drawer__inner');
   });
 
-  it('sets nx-drawer--open to dialog only once it is mounted', function() {
+  it('sets nx-drawer--open class to the dialog only once it is mounted', function() {
     const component = getMounted();
     const dialog = component.find('dialog.nx-drawer');
     expect(dialog).not.toHaveClassName('nx-drawer--open');
@@ -43,9 +42,9 @@ describe('NxDrawer', function() {
     expect(dialog.getDOMNode().classList.contains('nx-drawer--open')).toBe(true);
   });
 
-  it('renders children nodes within the drawer', function() {
+  it('renders children nodes within nx-drawer__inner', function() {
     const component = getShallow({ children: <div className="bar"/> });
-    expect(component.find('.nx-drawer')).toContainMatchingElement('div.bar');
+    expect(component.find('div.nx-drawer__inner')).toContainMatchingElement('div.bar');
   });
 
   it('merges any passed in className to the nx-drawer dialog', function() {
@@ -54,7 +53,7 @@ describe('NxDrawer', function() {
     expect(dialog).toHaveClassName('test');
   });
 
-  it('includes any passed in attributes to the nx-drawer dialog', function() {
+  it('includes any passed in attributes to the dialog element', function() {
     const component = getMounted({ id: 'drawer-id', lang: 'en_US' });
     const dialog = component.find('dialog.nx-drawer');
 
@@ -62,7 +61,7 @@ describe('NxDrawer', function() {
     expect(dialog.prop('lang')).toEqual('en_US');
   });
 
-  it('adds the nx-drawer--narrow class when the narrow variant is specified', function() {
+  it('adds the nx-drawer--narrow class when the narrow variant prop is specified', function() {
     const component = getShallow({ variant: 'narrow' });
     expect(component.find('.nx-drawer')).toHaveClassName('nx-drawer--narrow');
   });
@@ -106,7 +105,7 @@ describe('NxDrawer', function() {
       expect(mockCallBack).not.toHaveBeenCalled();
     });
 
-    it('executes onCancel when clicked outside of drawer', function() {
+    it('executes onCancel when clicked outside of the drawer', function() {
       const mockOnCancel = jest.fn();
       const map: any = {};
       document.addEventListener = jest.fn((e: string, cb: () => void) => {
@@ -130,7 +129,7 @@ describe('NxDrawer', function() {
       expect(mockOnCancel).toHaveBeenCalledTimes(1);
     });
 
-    it('executes onCancel when clicked on the shadow of drawer', function() {
+    it('executes onCancel when clicked on the shadow of the drawer', function() {
       const mockOnCancel = jest.fn();
       const map: any = {};
       document.addEventListener = jest.fn((e: string, cb: () => void) => {
@@ -154,7 +153,7 @@ describe('NxDrawer', function() {
     });
   });
 
-  it('calls onCancel when prefers reduced motion is false and nx-drawer--open is not applied' +
+  it('calls onCancel when prefers-reduced-motion is false, nx-drawer--open is not applied,' +
     'and transitionEnd event is called  ', async function() {
     window.matchMedia = () => ({ matches: false }) as MediaQueryList;
 
@@ -227,7 +226,7 @@ describe('NxDrawer', function() {
     }, 100);
   });
 
-  describe('NxDrawer Header Portion', function() {
+  describe('NxDrawer Header', function() {
     it('has a <header> tag with the nx-drawer-header class and title', function() {
       const titleText = 'Header Title';
 
@@ -259,7 +258,7 @@ describe('NxDrawer', function() {
       expect(paragraph).toHaveText(paragraphText);
     });
 
-    it('executes onCancel when header cancel button is pressed', function() {
+    it('executes onCancel when header cancel button is clicked', function() {
       window.matchMedia = () => ({ matches: true }) as MediaQueryList;
 
       const mockOnCancel = jest.fn();

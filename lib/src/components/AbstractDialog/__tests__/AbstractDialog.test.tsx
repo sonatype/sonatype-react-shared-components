@@ -208,7 +208,7 @@ describe('AbstractDialog', function() {
     }, 100);
   });
 
-  it('executes onCancel when clicked outside of dialog and cancelOnClickOutside is true', function() {
+  it('executes onCancel when clicked outside of the dialog and when cancelOnClickOutside is true', function() {
     const mockOnCancel = jest.fn();
 
     const map: any = {};
@@ -240,7 +240,7 @@ describe('AbstractDialog', function() {
   });
 
   it('executes cancelOnClickOutsideTargetClassName when' +
-  'clicked outside of dialog and cancelOnClickOutside is true', function() {
+  'clicked outside of the dialog and when cancelOnClickOutside is true', function() {
     const mockOnCancel = jest.fn();
 
     const map: any = {};
