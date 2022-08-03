@@ -71,37 +71,36 @@ describe('NxDrawer', function() {
   });
 
   describe('NxDrawer + NxDropdown ESC Closing behavior', function() {
+    async function isFocused(el) {
+      return el.evaluate(e => e === document.activeElement);
+    }
+
+    async function isInDocument(el) {
+      return el.evaluate(e => e.isConnected);
+    }
+
+    async function pressEsc() {
+      const { keyboard } = getPage();
+
+      await keyboard.press('Escape');
+    }
+
     it('closes one layer per ESC press', async function() {
-      const [drawer, openButton, dropdownToggle, dropdownMenu] = await waitAndGetElements(
-          '#nx-drawer-esc',
-          '#nx-drawer-esc-open-button',
-          '#nx-drawer-esc .nx-dropdown__toggle',
-          '#nx-drawer-esc .nx-dropdown-menu'
-      );
-
-      async function isFocused(el) {
-        return el.evaluate(e => e === document.activeElement);
-      }
-
-      async function isInDocument(el) {
-        return el.evaluate(e => e.isConnected);
-      }
-
-      async function pressEsc() {
-        const { keyboard } = getPage();
-
-        await keyboard.press('Escape');
-      }
-
-      expect(await isInDocument(drawer)).toBe(false);
+      const [openButton] = await waitAndGetElements('#nx-drawer-esc-open-button');
 
       await openButton.click();
 
-      expect(await isInDocument(drawer)).toBe(true);
+      const [drawer, dropdownToggle] = await waitAndGetElements(
+          '#nx-drawer-esc',
+          '#nx-drawer-esc .nx-dropdown__toggle'
+      );
 
-      expect(await isInDocument(dropdownMenu)).toBe(false);
+      expect(await isInDocument(drawer)).toBe(true);
+      expect(await isInDocument(dropdownToggle)).toBe(true);
 
       await dropdownToggle.click();
+
+      const [dropdownMenu] = await waitAndGetElements('#nx-drawer-esc .nx-dropdown-menu');
 
       expect(await isInDocument(dropdownMenu)).toBe(true);
 
@@ -119,7 +118,7 @@ describe('NxDrawer', function() {
 
   describe('With Global Header', function() {
     const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements } =
-    setupBrowser('#/NxDrawerWithGlobalHeaderExample', false);
+      setupBrowser('#/NxDrawerWithGlobalHeaderExample', false);
 
     async function openDrawer(drawerId, buttonId) {
       const openDrawerBtnSelector = `#${buttonId}`;
@@ -154,6 +153,5 @@ describe('NxDrawer', function() {
       await openDrawer('nx-drawer-with-global-header-normal', 'nx-drawer-with-global-header-normal-open-button');
       await a11yTest();
     });
-
   });
 });
