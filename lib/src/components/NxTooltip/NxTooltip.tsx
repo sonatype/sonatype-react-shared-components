@@ -59,7 +59,7 @@ const NxTooltip: FunctionComponent<Props> =
 
       const [initialized, setInitialized] = useState(false),
           tooltipClassName = classnames('nx-tooltip', className),
-          parentModalContext = useContext(NxModalContext),
+          parentModalContextValue = useContext(NxModalContext),
           isUnmounted = useRef(false);
 
       useEffect(function() {
@@ -77,7 +77,7 @@ const NxTooltip: FunctionComponent<Props> =
           <Tooltip { ...fixOptional(otherProps) }
                    title={initialized && title || ''}
                    classes={{ tooltip: tooltipClassName }}
-                   PopperProps={{ container: parentModalContext?.dialogEl }} />
+                   PopperProps={{ container: parentModalContextValue?.dialogEl }} />
         </TooltipContext.Provider>
       );
     };
