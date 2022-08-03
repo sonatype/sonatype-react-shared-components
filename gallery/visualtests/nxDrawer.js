@@ -22,7 +22,7 @@ describe('NxDrawer', function() {
 
     await openDrawerBtn.click();
 
-    await wait(250);
+    await wait(200);
 
     const [drawer] = await waitAndGetElements(`#${drawerId}`);
 
@@ -95,7 +95,7 @@ describe('NxDrawer', function() {
 
       await openButton.click();
 
-      await wait(250);
+      await wait(200);
 
       const [drawer, dropdownToggle] = await waitAndGetElements(
           '#nx-drawer-esc',
@@ -138,7 +138,7 @@ describe('NxDrawer', function() {
 
       await waitAndGetElements(`#${drawerId}`);
 
-      await wait(250);
+      await wait(200);
     }
 
     it('looks right (narrow)', async function() {
