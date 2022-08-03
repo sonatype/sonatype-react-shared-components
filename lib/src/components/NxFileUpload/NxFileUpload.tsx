@@ -17,6 +17,7 @@ export { Props };
 import './NxFileUpload.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import NxButton from '../NxButton/NxButton';
 
 const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
@@ -41,23 +42,26 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         files,
         isRequired,
         isPristine,
-        inputAttrs,
+        id,
         ...attrs
       } = props,
       file = files?.item(0),
       isFileSelected = !!file,
       showError = isRequired && !isPristine && !isFileSelected,
       className = classnames('nx-file-upload', classNameProp),
-      inputClassName = classnames('nx-file-upload__input', inputAttrs?.className),
       noFileMessageClassName = classnames('nx-file-upload__no-file-message', {
         'nx-file-upload__no-file-message--invalid': showError
       }),
       inputRef = useRef<HTMLInputElement>(null),
-      inputId = useUniqueId('nx-file-upload-input', inputAttrs?.id),
+      inputId = useUniqueId('nx-file-upload-input', id),
       validationErrorId = useUniqueId('nx-file-upload-valiation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     onChangeProp(evt.currentTarget.files);
+  }
+
+  function openPicker() {
+    inputRef.current?.click();
   }
 
   useEffect(function() {
@@ -73,18 +77,19 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
   }, [files]);
 
   return (
-    <div className={className} { ...attrs }>
+    <div className={className} >
       <input ref={inputRef}
-             { ...inputAttrs }
+             { ...attrs }
              onChange={onChange}
              id={inputId}
-             className={inputClassName}
+             className="nx-file-upload__input"
              type="file"
              aria-invalid={showError || undefined}
              aria-errormessage={showError ? validationErrorId : undefined} />
-      <label htmlFor={inputId} className="nx-btn nx-btn--tertiary">
-        <span>Choose File</span>
-      </label>
+      {/* Keynav and screenreaders can ignore the button itself in favor of the <input> */}
+      <NxButton type="button" variant="tertiary" onClick={openPicker} role="presentation" tabIndex={-1}>
+        Choose File
+      </NxButton>
       { isFileSelected ?
         <SelectedFile file={file} onDismiss={() => onChangeProp(null)} /> :
         <span className={noFileMessageClassName}>

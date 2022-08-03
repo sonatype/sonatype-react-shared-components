@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 import { ValidationMap } from 'prop-types';
 
 export interface SelectedFileProps {
@@ -12,12 +12,11 @@ export interface SelectedFileProps {
   onDismiss: () => void;
 }
 
-export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   onChange: (files: FileList | null) => void;
   files: FileList | null;
   isRequired?: boolean | null;
   isPristine?: boolean | null;
-  inputAttrs?: InputHTMLAttributes<HTMLInputElement> | null;
 }
 
 export const propTypes: ValidationMap<Props> = {
