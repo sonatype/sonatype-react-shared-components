@@ -11,7 +11,8 @@ describe('NxDrawer', function() {
     waitAndGetElements,
     checkScreenshot,
     getPage,
-    a11yTest
+    a11yTest,
+    wait
   } = setupBrowser('#/pages/Drawer');
 
   async function openDrawer(drawerId, buttonId) {
@@ -21,14 +22,18 @@ describe('NxDrawer', function() {
 
     await openDrawerBtn.click();
 
-    return await waitAndGetElements(`#${drawerId}`);
+    await wait(250);
+
+    const [drawer] = await waitAndGetElements(`#${drawerId}`);
+
+    return drawer;
   }
 
   function simpleDrawerTest(drawerId, buttonId) {
     return async function() {
-      const [drawer] = await openDrawer(drawerId, buttonId);
+      const drawer = await openDrawer(drawerId, buttonId);
 
-      checkScreenshot(drawer);
+      await checkScreenshot(drawer);
     };
   }
 
@@ -90,6 +95,8 @@ describe('NxDrawer', function() {
 
       await openButton.click();
 
+      await wait(250);
+
       const [drawer, dropdownToggle] = await waitAndGetElements(
           '#nx-drawer-esc',
           '#nx-drawer-esc .nx-dropdown__toggle'
@@ -110,6 +117,8 @@ describe('NxDrawer', function() {
 
       await pressEsc();
 
+      await wait(200);
+
       expect(await isInDocument(drawer)).toBe(false);
 
       expect(await isFocused(openButton)).toBe(true);
@@ -117,7 +126,7 @@ describe('NxDrawer', function() {
   });
 
   describe('With Global Header', function() {
-    const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements } =
+    const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements, wait } =
       setupBrowser('#/NxDrawerWithGlobalHeaderExample', false);
 
     async function openDrawer(drawerId, buttonId) {
@@ -127,7 +136,9 @@ describe('NxDrawer', function() {
 
       await openDrawerBtn.click();
 
-      return await waitAndGetElements(`#${drawerId}`);
+      await waitAndGetElements(`#${drawerId}`);
+
+      await wait(250);
     }
 
     it('looks right (narrow)', async function() {
