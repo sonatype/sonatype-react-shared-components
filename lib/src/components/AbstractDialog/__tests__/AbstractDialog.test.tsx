@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import {mount} from 'enzyme';
+import { mount } from 'enzyme';
 
 import { Tooltip } from '@material-ui/core';
 

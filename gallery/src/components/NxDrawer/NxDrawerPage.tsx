@@ -216,7 +216,7 @@ export default function NxDrawerPage() {
                           id="nx-drawer-with-global-header-example"
                           codeExamples={NxDrawerWithGlobalHeaderSourceCode}>
         An example of a <NxCode>NxDrawer</NxCode> with a global header.
-        <br></br>
+        <br/>
         <NxTextLink href="#/NxDrawerWithGlobalHeaderExample">
           Click here to navigate to the live example.
         </NxTextLink>

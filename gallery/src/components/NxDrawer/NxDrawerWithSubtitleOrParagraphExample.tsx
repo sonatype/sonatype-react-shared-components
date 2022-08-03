@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import { NxDrawer, NxButton, NxButtonBar, NxP } from '@sonatype/react-shared-components';
 
@@ -87,7 +87,6 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
           {content}
         </NxDrawer>
       )}
-
       {showDrawer2 && (
         <NxDrawer id="nx-drawer-with-paragraph"
                   onCancel={() => setShowDrawer2(false)}
@@ -97,7 +96,6 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
           {content}
         </NxDrawer>
       )}
-
       {showDrawer3 && (
         <NxDrawer id="nx-drawer-with-subtitle-and-paragraph"
                   onCancel={() => setShowDrawer3(false)}
