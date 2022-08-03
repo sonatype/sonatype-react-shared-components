@@ -73,11 +73,12 @@ $-box-shadow-offset: 52px;
     }  
   }
 
-  transition: transform 120ms ease-in-out;
+  transition: transform 120ms ease-in;
 
   &--open {
     transform: translateX(0%);
-    transition-duration: 200ms;
+    transition-duration: 180ms;
+    transition-timing-function: ease-out;
   }
 
   @media (prefers-reduced-motion) {
