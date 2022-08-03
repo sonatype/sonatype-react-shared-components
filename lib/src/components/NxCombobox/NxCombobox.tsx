@@ -43,7 +43,7 @@ function NxComboboxRender<T extends string | number = string>(
       } = props,
 
       isEmpty = !matches.length,
-      [isSelected, setIsSelected] = useState<boolean>(false),
+      [isSelected, setIsSelected] = useState<boolean | null>(null),
       showDropdown = !!(searchText && !disabled && !isSelected),
 
       ref = useRef<HTMLDivElement>(null),
@@ -79,6 +79,12 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }
 
+  function handleComponentBlur() {
+    menuRef.current?.scrollTo({top: 0});
+    setElToFocusId('');
+    setFocusableBtnIndex(null);
+  }
+
   function handleFilterChange(value: string) {
     setIsSelected(false);
     setElToFocusId('');
@@ -96,7 +102,6 @@ function NxComboboxRender<T extends string | number = string>(
             elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
         if (elToFocus) {
           setElToFocusId(elToFocus.id);
-          handleElInView(elToFocus);
           setFocusableBtnIndex(newFocusableBtnIndex);
         }
       },
@@ -136,11 +141,8 @@ function NxComboboxRender<T extends string | number = string>(
     switch (evt.key) {
       case 'Enter':
         if (showDropdown) {
-          setIsSelected(true);
-        }
-        console.log(focusableBtnIndex);
-        if(typeof focusableBtnIndex === 'number'){
-          handleOnClick(matches[focusableBtnIndex]);
+          typeof focusableBtnIndex === 'number' && elToFocusId ? handleOnClick(matches[focusableBtnIndex])
+            : setIsSelected(true);
         }
         evt.preventDefault();
         break;
@@ -169,7 +171,6 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'Escape':
-        focusTextInput();
         setIsSelected(true);
         setElToFocusId('');
         setFocusableBtnIndex(null);
@@ -197,6 +198,17 @@ function NxComboboxRender<T extends string | number = string>(
       setFocusableBtnIndex(null);
     }
   }, [matches]);
+
+  // If the dropdown is closed and use arrowkeys to navigate back to the items in the dropdown menu,
+  // the ref will fire before state is updated, this will insure the items have visual focus and it's inview.
+  useEffect(function() {
+    if (elToFocusId && typeof focusableBtnIndex === 'number') {
+      const el = menuRef.current?.children[focusableBtnIndex] as HTMLElement | null;
+      if (el) {
+        handleElInView(el);
+      }
+    }
+  }, [elToFocusId]);
 
   /*
    * Horrible Hack: When an element within the dropdown is removed from the DOM while it is focused, we want
@@ -257,7 +269,7 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   return (
-    <div ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
+    <div ref={mergedRef} className={className} onFocus={handleComponentFocus} onBlur={handleComponentBlur} { ...attrs }>
       <NxTextInput role="combobox"
                    ref={filterRef}
                    className={filterClassName}
@@ -286,7 +298,7 @@ function NxComboboxRender<T extends string | number = string>(
                       aria-selected={i === focusableBtnIndex && !!elToFocusId}
                       className= {classnames('nx-dropdown-button',
                           { 'nx-combobox__option--visual-selected': i === focusableBtnIndex && !!elToFocusId})}
-                      type="button"
+                      tabIndex={-1}
                       disabled={disabled || undefined}
                       key={match.id}
                       onClick={() => handleOnClick(match)}>
