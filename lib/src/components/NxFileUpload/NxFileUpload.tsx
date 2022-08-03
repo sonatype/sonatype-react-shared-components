@@ -9,15 +9,15 @@ import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
 
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import NxButton from '../NxButton/NxButton';
 import { useUniqueId } from '../../util/idUtil';
 import { Props, propTypes, SelectedFileProps } from './types';
 
 export { Props };
 
 import './NxFileUpload.scss';
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
-import NxButton from '../NxButton/NxButton';
 
 const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
