@@ -11,14 +11,12 @@ import { NxDrawer, NxButton, NxP } from '@sonatype/react-shared-components';
 export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
 
-  const cancelHandler = () => setShowDrawer(false);
-
   return (
     <>
       <NxButton id="nx-drawer-simple-open-button" onClick={() => setShowDrawer(true)}>Open Drawer</NxButton>
       {showDrawer && (
         <NxDrawer id="nx-drawer-simple"
-                  onCancel={cancelHandler}
+                  onCancel={() => setShowDrawer(false)}
                   headerTitle="An Example of a Simple NxDrawer Component"
                   aria-labelledby="nx-drawer-simple">
           <NxDrawer.Content>

@@ -9,9 +9,9 @@ import React, { useState } from 'react';
 import { NxDrawer, NxButton, NxButtonBar, NxP } from '@sonatype/react-shared-components';
 
 export default function NxDrawerWithSubtitleOrParagraphExample() {
-  const [showDrawer, setShowDrawer] = useState(false);
-  const [showDrawer2, setShowDrawer2] = useState(false);
-  const [showDrawer3, setShowDrawer3] = useState(false);
+  const [showDrawerWithSubtitle, setShowDrawerWithSubtitle] = useState(false);
+  const [showDrawerWithParagraph, setShowDrawerWithParagraph] = useState(false);
+  const [showDrawerWithBoth, setShowDrawerWithBoth] = useState(false);
 
   const paragraph = (
     <>
@@ -69,36 +69,36 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
 
   return (
     <div className="gallery-drawer-with-subtitle-or-paragraph-example">
-      <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => setShowDrawer(true)}>
+      <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => setShowDrawerWithSubtitle(true)}>
         Open Drawer with Subtitle
       </NxButton>
-      <NxButton id="nx-drawer-with-paragraph-open-button" onClick={() => setShowDrawer2(true)}>
+      <NxButton id="nx-drawer-with-paragraph-open-button" onClick={() => setShowDrawerWithParagraph(true)}>
         Open Drawer with Paragraph
       </NxButton>
-      <NxButton id="nx-drawer-with-subtitle-and-paragraph-open-button" onClick={() => setShowDrawer3(true)}>
+      <NxButton id="nx-drawer-with-subtitle-and-paragraph-open-button" onClick={() => setShowDrawerWithBoth(true)}>
         Open Drawer with Both
       </NxButton>
-      {showDrawer && (
+      {showDrawerWithSubtitle && (
         <NxDrawer id="nx-drawer-with-subtitle"
-                  onCancel={() => setShowDrawer(false)}
+                  onCancel={() => setShowDrawerWithSubtitle(false)}
                   headerTitle="An Example of NxDrawer with Subtitle"
                   headerSubtitle="Header Subtitle"
                   aria-labelledby="nx-drawer-with-subtitle">
           {content}
         </NxDrawer>
       )}
-      {showDrawer2 && (
+      {showDrawerWithParagraph && (
         <NxDrawer id="nx-drawer-with-paragraph"
-                  onCancel={() => setShowDrawer2(false)}
+                  onCancel={() => setShowDrawerWithParagraph(false)}
                   headerTitle="An Example of NxDrawer with Paragraph"
                   headerParagraph={paragraph}
                   aria-labelledby="nx-drawer-with-paragraph">
           {content}
         </NxDrawer>
       )}
-      {showDrawer3 && (
+      {showDrawerWithBoth && (
         <NxDrawer id="nx-drawer-with-subtitle-and-paragraph"
-                  onCancel={() => setShowDrawer3(false)}
+                  onCancel={() => setShowDrawerWithBoth(false)}
                   headerTitle="An Example of NxDrawer with Subtitle and Paragraph"
                   headerSubtitle="Header Subtitle"
                   headerParagraph={paragraph}

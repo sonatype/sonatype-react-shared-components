@@ -21,8 +21,8 @@ import {
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerWithGlobalHeaderExample() {
-  const [showDrawer, setShowDrawer] = useState(false);
-  const [showDrawer2, setShowDrawer2] = useState(false);
+  const [showNarrowDrawer, setShowNarrowDrawer] = useState(false);
+  const [showNormalDrawer, setShowNormalDrawer] = useState(false);
 
   const contentAndFooter = (
     <>
@@ -85,11 +85,11 @@ export default function NxDrawerWithGlobalHeaderExample() {
       </header>
 
       <NxPageMain>
-        {showDrawer && (
+        {showNarrowDrawer && (
           <NxDrawer id="nx-drawer-with-global-header-narrow"
                     className="nx-drawer--with-global-header"
                     variant="narrow"
-                    onCancel={() => setShowDrawer(false)}
+                    onCancel={() => setShowNarrowDrawer(false)}
                     headerTitle="Example of Narrow Drawer"
                     headerSubtitle="Example subtitle"
                     headerParagraph={paragraph}
@@ -97,10 +97,10 @@ export default function NxDrawerWithGlobalHeaderExample() {
             {contentAndFooter}
           </NxDrawer>
         )}
-        {showDrawer2 && (
+        {showNormalDrawer && (
           <NxDrawer id="nx-drawer-with-global-header-normal"
                     className="nx-drawer--with-global-header"
-                    onCancel={() => setShowDrawer2(false)}
+                    onCancel={() => setShowNormalDrawer(false)}
                     headerTitle="Example of Normal Drawer"
                     headerSubtitle="Example subtitle"
                     headerParagraph={paragraph}
@@ -124,12 +124,12 @@ export default function NxDrawerWithGlobalHeaderExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-global-header-narrow-open-button" onClick={() => setShowDrawer(true)}>
+          <NxButton id="nx-drawer-with-global-header-narrow-open-button" onClick={() => setShowNarrowDrawer(true)}>
             Open Drawer (Narrow)
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-global-header-normal-open-button" onClick={() => setShowDrawer2(true)}>
+          <NxButton id="nx-drawer-with-global-header-normal-open-button" onClick={() => setShowNormalDrawer(true)}>
             Open Drawer (Normal)
           </NxButton>
         </NxP>

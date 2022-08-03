@@ -10,7 +10,6 @@ import { NxDrawer, NxButton, NxButtonBar, NxP } from '@sonatype/react-shared-com
 
 export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
-  const cancelHandler = () => setShowDrawer(false);
 
   const paragraph = (
     <>
@@ -29,7 +28,7 @@ export default function NxDrawerExample() {
 
       {showDrawer && (
         <NxDrawer id="nx-drawer-narrow"
-                  onCancel={cancelHandler}
+                  onCancel={() => setShowDrawer(false)}
                   variant="narrow"
                   headerTitle="An Example of Narrow NxDrawer Component"
                   headerParagraph={paragraph}

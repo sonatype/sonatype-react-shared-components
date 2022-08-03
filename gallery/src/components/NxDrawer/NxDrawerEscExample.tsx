@@ -10,21 +10,20 @@ import { NxDropdown, NxDrawer, NxButton, useToggle } from '@sonatype/react-share
 
 export default function NxDrawerEscExample() {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [isOpen, onToggleCollapse] = useToggle(false);
-  const onClick = () => { alert('click'); };
+  const [dropdownIsOpen, onToggleDropdownCollapse] = useToggle(false);
 
-  const cancelHandler = () => setShowDrawer(false);
+  const onClick = () => { alert('click'); };
 
   return (
     <>
       <NxButton id="nx-drawer-esc-open-button" onClick={() => setShowDrawer(true)}>Open Drawer</NxButton>
       {showDrawer && (
         <NxDrawer id="nx-drawer-esc"
-                  onCancel={cancelHandler}
+                  onCancel={() => setShowDrawer(false)}
                   headerTitle="An Example of NxDrawer with NxDropdown Nested Inside."
                   aria-labelledby="nx-drawer-esc">
           <NxDrawer.Content>
-            <NxDropdown label="Expand" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
+            <NxDropdown label="Expand" isOpen={dropdownIsOpen} onToggleCollapse={onToggleDropdownCollapse}>
               <button onClick={onClick} className="nx-dropdown-button">
                 Hello
               </button>

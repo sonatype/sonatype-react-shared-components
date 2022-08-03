@@ -10,7 +10,6 @@ import { NxDrawer, NxButton, NxP, NxButtonBar } from '@sonatype/react-shared-com
 
 export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
-  const cancelHandler = () => setShowDrawer(false);
 
   return (
     <>
@@ -20,7 +19,7 @@ export default function NxDrawerExample() {
 
       {showDrawer && (
         <NxDrawer id="nx-drawer-with-footer"
-                  onCancel={cancelHandler}
+                  onCancel={() => setShowDrawer(false)}
                   headerTitle="An Example NxDrawer with Footer"
                   aria-labelledby="nx-drawer-with-footer">
           <NxDrawer.Content>
