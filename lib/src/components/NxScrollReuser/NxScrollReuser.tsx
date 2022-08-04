@@ -26,7 +26,7 @@ export default function NxScrollReuser({ children }: Props) {
       [parentHeight, setParentHeight] = useState(0),
       [childHeight, setChildHeight] = useState(0),
       sumChildHeight = childHeight * childCount,
-      renderedChildCount = divOrZero(parentHeight/ childHeight) + 2,
+      renderedChildCount = Math.ceil(divOrZero(parentHeight / childHeight)) + 2,
 
       [leadingSpacerHeight, setLeadingSpacerHeight] = useState(0),
       [trailingSpacerHeight, setTrailingSpacerHeight] = useState(0),
@@ -36,7 +36,8 @@ export default function NxScrollReuser({ children }: Props) {
 
       observerOpts = {
         root: parentRef.current,
-        rootMargin: `${childHeight}px 0px ${childHeight}px 0px`
+        rootMargin: `${childHeight}px 0px ${childHeight}px 0px`,
+        threshold: [0, 0.05]
       },
       { isIntersecting: isLeadingSpacerIntersecting } = useIntersectionObserver(leadingSpacerRef, observerOpts),
       { isIntersecting: isTrailingSpacerIntersecting } = useIntersectionObserver(trailingSpacerRef, observerOpts);
