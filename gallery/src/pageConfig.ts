@@ -146,6 +146,7 @@ import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
+import NxScrollReuserPage from './components/NxScrollReuser/NxScrollReuserPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -279,7 +280,8 @@ const pageConfig: PageConfig = {
     'nx-scrollable': { content: NxScrollablePage, type: 'css' },
     'nx-viewport-sized': { content: NxViewportSizedPage, type: 'css' },
     'Selectable Colors': { content: SelectableColorsPage, type: 'sass' },
-    'Style Variables': { content: CssVariablesPage, type: 'css' }
+    'Style Variables': { content: CssVariablesPage, type: 'css' },
+    'Scroll Reuser': { content: NxScrollReuserPage, type: 'react' }
   },
   'JavaScript & TypeScript Utilities': {
     'IDUtils': { content: IdUtilPage, type: 'js' },
