@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxButton, useToast, NxToastProvider } from '@sonatype/react-shared-components';
+import { NxButton, useToast } from '@sonatype/react-shared-components';
 
 const SomeConsumerComponent = () => {
   const { showSuccessToast } = useToast();
@@ -18,8 +18,6 @@ const SomeConsumerComponent = () => {
 
 export default function NxToastExample() {
   return (
-    <NxToastProvider>
-      <SomeConsumerComponent />
-    </NxToastProvider>
+    <SomeConsumerComponent />
   );
 }

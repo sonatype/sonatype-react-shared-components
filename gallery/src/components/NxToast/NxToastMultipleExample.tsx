@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxButton, useToast, NxToastProvider } from '@sonatype/react-shared-components';
+import { NxButton, useToast } from '@sonatype/react-shared-components';
 
 const Child = () => {
   const { showErrorToast, showSuccessToast, showWarningToast, showInfoToast } = useToast();
@@ -39,8 +39,6 @@ const Child = () => {
 
 export default function NxToastExample() {
   return (
-    <NxToastProvider>
-      <Child />
-    </NxToastProvider>
+    <Child />
   );
 }

@@ -35,10 +35,9 @@ const NxToastProvider = (props: NxToastProviderProps) => {
   }, []);
 
   const addToast = useCallback((content: ToastAddModel) => {
-    const toastId = id++;
-
+    id++;
     setToasts((toasts) => [
-      { toastId, type: content.type, message: content.message },
+      { toastId: id, type: content.type, message: content.message },
       ...toasts
     ]);
   }, [setToasts]);

@@ -8,6 +8,7 @@ import React, { useEffect } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { mergeAll, values } from 'ramda';
+import { NxPageMain } from '@sonatype/react-shared-components';
 
 // polyfill Array.prototype.includes which is used in query-string
 import 'core-js/features/array/includes';
@@ -57,14 +58,14 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   if (Content) {
     // Put a key on <main> so that it re-renders entirely on route change, resetting scroll position
     return (
-      <main key={pageName || 'home'} className="nx-page-main">
+      <NxPageMain key={pageName || 'home'}>
         <div className="nx-page-title">
           <h1 className="nx-h1">
             {pageHeader}
           </h1>
         </div>
         <Content/>
-      </main>
+      </NxPageMain>
     );
   }
   else {

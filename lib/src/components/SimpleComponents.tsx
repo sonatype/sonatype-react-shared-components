@@ -4,7 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React, { FC, ReactNode, HTMLAttributes } from 'react';
+import PropTypes from 'prop-types';
+import NxToastProvider from './NxToast/NxToastProvider';
 import withClass from '../util/withClass';
+import classnames from 'classnames';
 
 // Simple convenience components that are just a particular tag with a particular classname, with the ability
 // to add all attrs that you would normally be able to add to that tag (including more classnames)
@@ -16,8 +20,28 @@ export const NxFooter = withClass('footer', 'nx-footer');
 export const NxButtonBar = withClass('div', 'nx-btn-bar');
 export const NxCounter = withClass('span', 'nx-counter');
 export const NxThreatNumber = withClass('span', 'nx-threat-number');
-export const NxPageMain = withClass('main', 'nx-page-main');
+// export const NxPageMain = withClass('main', 'nx-page-main');
 export const NxPageSidebar = withClass('aside', 'nx-page-sidebar');
+
+interface NxPageMainProps extends HTMLAttributes<HTMLDivElement> {
+  children: ReactNode;
+}
+
+export const NxPageMain: FC<NxPageMainProps> = (props) => {
+  const { children, className, ...attrs } = props;
+  const classes = classnames('nx-page-main', className);
+
+  return (
+    <main className={classes} {...attrs}>
+      <NxToastProvider>{ children }</NxToastProvider>
+    </main>
+  );
+};
+
+NxPageMain.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+};
 
 export const NxH1 = withClass('h1', 'nx-h1');
 export const NxH2 = withClass('h2', 'nx-h2');
