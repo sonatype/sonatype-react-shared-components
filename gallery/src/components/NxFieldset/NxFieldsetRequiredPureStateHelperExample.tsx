@@ -54,10 +54,18 @@ export default function NxFieldsetRequiredPureStateHelperExample() {
                   isRequired
                   isPristine={color.isPristine}
                   validationErrors={color.validationErrors}>
-        <NxRadio value="red" isChecked={color.value === 'red'} name="color" onChange={setColor}>Red</NxRadio>
-        <NxRadio value="green" isChecked={color.value === 'green'} name="color" onChange={setColor}>Green</NxRadio>
-        <NxRadio value="blue" isChecked={color.value === 'blue'} name="color" onChange={setColor}>Blue</NxRadio>
-        <NxRadio value="purple" isChecked={color.value === 'purple'} name="color" onChange={setColor}>Purple</NxRadio>
+        <NxRadio value="red" isChecked={color.value === 'red'} name="color-example-2" onChange={setColor}>
+          Red
+        </NxRadio>
+        <NxRadio value="green" isChecked={color.value === 'green'} name="color-example-2" onChange={setColor}>
+          Green
+        </NxRadio>
+        <NxRadio value="blue" isChecked={color.value === 'blue'} name="color-example-2" onChange={setColor}>
+          Blue
+        </NxRadio>
+        <NxRadio value="purple" isChecked={color.value === 'purple'} name="color-example-2" onChange={setColor}>
+          Purple
+        </NxRadio>
       </NxFieldset>
       <NxFieldset label="Direction"
                   isRequired
