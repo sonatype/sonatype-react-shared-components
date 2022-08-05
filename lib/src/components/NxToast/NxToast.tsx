@@ -21,7 +21,7 @@ const NxToast = (props: NxToastProps) => {
       toastIconLabel = toastTypeMap[type].iconLabel,
       [toastIsActive, setToastIsActive] = useState(false),
       classes = classnames('nx-toast', className, toastClass,
-          {'nx-toast--visible': toastIsActive}
+          {'nx-toast--visible': toastIsActive}, {'nx-toast--slide-out': !toastIsActive}
       ),
       toastContext = useContext(ToastContext),
       closeBtnRef = useRef<HTMLButtonElement>(null);
@@ -49,7 +49,7 @@ const NxToast = (props: NxToastProps) => {
 
   return (
     <div role="alert"
-         onTransitionEnd={handleTransitionEnd}
+         onAnimationEnd={handleTransitionEnd}
          { ...otherProps }
          className={classes}
          aria-atomic={true}>

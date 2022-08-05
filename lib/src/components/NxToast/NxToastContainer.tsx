@@ -10,11 +10,13 @@ import NxToast from './NxToast';
 import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
 
 import ToastContext from './contexts';
+import classNames from 'classnames';
 
 const NxToastContainer = (props: NxToastContainerProps) => {
   const { toasts } = props,
       toastContainerRef = useRef<HTMLDivElement | null>(null),
-      toastContext = useContext(ToastContext);
+      toastContext = useContext(ToastContext),
+      classes = classNames('nx-toast__container', {'test': toasts.length});
 
   const [domReady, setDomReady] = React.useState(false);
 
@@ -40,9 +42,11 @@ const NxToastContainer = (props: NxToastContainerProps) => {
     return null;
   }
 
+  const style = {maxHeight: `${toasts.length * 74}px`};
+
   return createPortal(
     <div className="nx-toast__wrapper" ref={toastContainerRef}>
-      <div className="nx-toast__container">
+      <div className={classes} style={style}>
         {toasts.map(toast => (
           <NxToast key={toast.toastId}
                    toastId={toast.toastId}

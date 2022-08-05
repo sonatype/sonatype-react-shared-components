@@ -23,20 +23,72 @@
   @include nx-container-helpers.container-vertical;
   margin-top: var(--nx-spacing-2x);
   position: fixed;
+  overflow:hidden;
+  // border: 2px solid black;
+  transition: all 0.1s linear;
 }
 
 .nx-toast {
   @extend .nx-alert;
   margin: var(--nx-spacing-2x) 0 0 0;
-  opacity: 0;
   position: relative;
-  top: -16px;
   width: 500px;
-  transition: all 0.3s ease-in-out;
+  // overflow:hidden;
+  // top: 0px;
+  // left: -1000px;
+  right: -500px;
+  opacity:0;
+  // transition: all 0.3s ease-in-out;
 
   &.nx-toast--visible {
+    // top: 0;
+    // opacity: 1;
+    // // left:0px;
+    right: 0;
+    animation: animationIn 0.4s linear;
+    animation-fill-mode: forwards;
+  }
+  &.nx-toast--slide-out {
+    animation: animationOut 0.4s linear;
+    // animation-fill-mode:forwards;
+  }
+}
+
+@keyframes animationIn {
+  0% {
+    max-height: 0px;
+    right: -500px;
+    opacity: 0;
+  }
+  25% {
+    max-height: 40px;
+    right: -500px;
+    opacity: 0;
+  }
+  40% {
+    max-height:74px;
+  }
+  100% {
+    right: 0;
     opacity: 1;
-    top: 0;
+  }
+}
+
+@keyframes animationOut {
+  0% {
+    max-height: 75px;
+    right: 0;
+    opacity: 1;
+  }
+  75% {
+    max-height:74px;
+    right: -500px;
+    opacity: 0;
+  }
+  100% {
+    max-height: 0px;
+    right:-500px;
+    opacity: 0;
   }
 }
 
@@ -62,7 +114,7 @@
 */
 @media (prefers-reduced-motion: reduce) {
   .nx-toast {
-    top: 0;
+    right: 0;
     transition: opacity 0.3s ease-in-out;
   }
 }
