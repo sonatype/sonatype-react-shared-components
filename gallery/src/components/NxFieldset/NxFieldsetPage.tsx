@@ -139,7 +139,7 @@ const NxFieldsetPage = () =>
           the values of the <NxCode>isPristine</NxCode> and <NxCode>validationErrors</NxCode> props should be set based
           on the current values and user interactions within the fieldset. To assist with this, a number of utility
           function are provided in the <NxCode>nxFieldsetStateHelpers</NxCode> export. These function fall into two
-          categories: pure functions to assist in state managment outside of React (e.g. in Redux), and React hook
+          categories: pure functions to assist in state management outside of React (e.g. in Redux), and React hook
           functions to add further convenience when the state is being managed within a React component.
         </NxP>
         <NxH4>Pure State Helpers</NxH4>
@@ -257,9 +257,9 @@ const NxFieldsetPage = () =>
                 validator function, and <NxCode>isPristine</NxCode> set to false
               </NxTable.Cell>
               <NxTable.Cell>
-                Creates an object representing the state of a group of radio buttons after user input, based on the
+                Creates an object representing the state of a group of checkboxes after user input, based on the
                 specified user-selected value, and validated according to the specified validator.
-                This function can be used to update the pieces of state needed for a fieldset containing a radio group
+                This function can be used to update the pieces of state needed for a fieldset containing a checkbox group
                 upon user input.
               </NxTable.Cell>
             </NxTable.Row>
@@ -294,7 +294,7 @@ const NxFieldsetPage = () =>
                 </NxList>
               </NxTable.Cell>
               <NxTable.Cell>
-                Two value tuple where the first value is an bject containing the <NxCode>value</NxCode>,{' '}
+                Two value tuple where the first value is an object containing the <NxCode>value</NxCode>,{' '}
                 <NxCode>validationErrors</NxCode> as determined by the validator function, and
                 <NxCode>isPristine</NxCode> flag. The second value in the tuple is a setter function which
                 receives any newly selected radio name and triggers an update of all three fields (value, validation,
