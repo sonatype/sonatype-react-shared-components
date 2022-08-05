@@ -259,8 +259,8 @@ const NxFieldsetPage = () =>
               <NxTable.Cell>
                 Creates an object representing the state of a group of checkboxes after user input, based on the
                 specified user-selected value, and validated according to the specified validator.
-                This function can be used to update the pieces of state needed for a fieldset containing a checkbox group
-                upon user input.
+                This function can be used to update the pieces of state needed for a fieldset containing a checkbox
+                group upon user input.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
