@@ -39,7 +39,7 @@ function reducer(state: State, { type, payload }: { type: string, payload: strin
   }
 }
 
-export default function NxFieldsetRequiredExample() {
+export default function NxFieldsetRequiredPureStateHelperExample() {
   const [{ color, direction }, dispatch] = useReducer(reducer, initialState),
       setColor = (color: string | null) => {
         if (color) {
