@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxFieldset', function() {
-  const { checkScreenshot, simpleTest, waitAndGetElements } = setupBrowser('#/pages/Fieldset');
+  const { checkScreenshot, simpleTest, waitAndGetElements, a11yTest } = setupBrowser('#/pages/Fieldset');
   const selector = '#nx-fieldset-example .nx-fieldset',
       validationSelector = '#nx-fieldset-validation-example .gallery-example-live';
 
@@ -52,4 +52,6 @@ describe('NxFieldset', function() {
       await checkScreenshot(fieldset, undefined, 152);
     });
   });
+
+  it('passes a11y checks', a11yTest());
 });
