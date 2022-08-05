@@ -43,7 +43,7 @@ function NxComboboxRender<T extends string | number = string>(
       } = props,
 
       isEmpty = !matches.length,
-      [isSelected, setIsSelected] = useState<boolean | null>(null),
+      [isSelected, setIsSelected] = useState(false),
       showDropdown = !!(searchText && !disabled && !isSelected),
 
       ref = useRef<HTMLDivElement>(null),
@@ -53,7 +53,7 @@ function NxComboboxRender<T extends string | number = string>(
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
-      [elToFocusId, setElToFocusId] = useState<string>(''),
+      [elToFocusId, setElToFocusId] = useState(''),
 
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
       dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'listbox',

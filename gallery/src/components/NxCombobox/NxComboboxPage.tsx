@@ -10,8 +10,10 @@ import { NxTable, NxCode, NxP, NxH3, NxTile, NxTextLink } from '@sonatype/react-
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxComboboxExample from './NxComboboxExample';
+import NxComboboxPredeterminedListExample from './NxComboboxPredeterminedListExample';
 
 const NxComboboxExampleCode = require('./NxComboboxExample?raw');
+const NxComboboxPredeterminedListExampleCode = require('./NxComboboxPredeterminedListExample?raw');
 
 const NxComboboxPage = () =>
   <>
@@ -184,6 +186,13 @@ const NxComboboxPage = () =>
                         id="nx-search-dropdown-basic-example"
                         codeExamples={NxComboboxExampleCode}
                         liveExample={NxComboboxExample}>
+      An example of an <NxCode>NxSearchDropdown</NxCode> tied to a fake backend.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Second Example"
+                        id="nx-search-dropdown-basic-example"
+                        codeExamples={NxComboboxPredeterminedListExampleCode}
+                        liveExample={NxComboboxPredeterminedListExample}>
       An example of an <NxCode>NxSearchDropdown</NxCode> tied to a fake backend.
     </GalleryExampleTile>
 
