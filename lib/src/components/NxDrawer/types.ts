@@ -7,13 +7,8 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
-export type CloseHandler = (evt: Event) => void;
 export const NX_DRAWER_VARIANTS = ['normal', 'narrow'] as const;
 export type NX_DRAWER_VARIANT_TYPE = (typeof NX_DRAWER_VARIANTS)[number];
-
-export interface DrawerContextType {
-  onCancel: () => void;
-}
 
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
   onCancel: () => void;
@@ -27,7 +22,7 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
 export const propTypes: PropTypes.ValidationMap<Props> = {
   onCancel: PropTypes.func.isRequired,
   variant: PropTypes.oneOf(NX_DRAWER_VARIANTS),
-  headerTitle: PropTypes.oneOf([PropTypes.string, PropTypes.node]).isRequired,
-  headerSubtitle: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
-  headerParagraph: PropTypes.oneOf([PropTypes.string, PropTypes.node])
+  headerTitle: PropTypes.node.isRequired,
+  headerSubtitle: PropTypes.node,
+  headerParagraph: PropTypes.node
 };
