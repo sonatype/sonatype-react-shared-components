@@ -11,9 +11,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxComboboxExample from './NxComboboxExample';
 import NxComboboxPredeterminedListExample from './NxComboboxPredeterminedListExample';
+import NxComboboxDisabledExample from './NxComboboxDisabledExample';
 
 const NxComboboxExampleCode = require('./NxComboboxExample?raw');
 const NxComboboxPredeterminedListExampleCode = require('./NxComboboxPredeterminedListExample?raw');
+const NxComboboxDisabledExampleCode = require('./NxComboboxDisabledExample?raw');
 
 const NxComboboxPage = () =>
   <>
@@ -196,6 +198,14 @@ const NxComboboxPage = () =>
                         codeExamples={NxComboboxExampleCode}
                         liveExample={NxComboboxExample}>
       An example of an <NxCode>NxCombobox</NxCode> tied to a backend query.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Disabled Example"
+                        id="nx-combobox-disabled-example"
+                        codeExamples={NxComboboxDisabledExampleCode}
+                        liveExample={NxComboboxDisabledExample}>
+      An example of <NxCode>NxCombobox</NxCode> with a <NxCode>disabled</NxCode> prop. Note that even though in this
+      example there is non-empty search text, the dropdown does not open.
     </GalleryExampleTile>
 
   </>;
