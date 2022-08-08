@@ -79,21 +79,19 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         evt.stopPropagation();
         evt.nativeEvent.stopImmediatePropagation();
 
-        if (evt.defaultPrevented) {
-          return;
-        }
+        if (!evt.defaultPrevented) {
+          if (!useNativeCancelOnEscape) {
+            evt.preventDefault();
+            onCancel(createCancelEvent());
+          }
 
-        if (!useNativeCancelOnEscape) {
-          evt.preventDefault();
-          onCancel(createCancelEvent());
-        }
-
-        // prevent visibility to manually-registered native event listeners on the document too.
-        // NOTE: this only works on listeners added after this one, which is believed to include any
-        // registered in useEffect calls on components rendered simultaneously with the dialog
-        else if (!hasNativeModalSupport) {
-          // emulate cancel-on-esc behavior in browsers which don't do it natively
-          onCancel(createCancelEvent());
+          // prevent visibility to manually-registered native event listeners on the document too.
+          // NOTE: this only works on listeners added after this one, which is believed to include any
+          // registered in useEffect calls on components rendered simultaneously with the dialog
+          else if (!hasNativeModalSupport) {
+            // emulate cancel-on-esc behavior in browsers which don't do it natively
+            onCancel(createCancelEvent());
+          }
         }
       }
     }
