@@ -15,13 +15,6 @@ export interface DrawerContextType {
   onCancel: () => void;
 }
 
-export interface DrawerContentProps {
-  children?: ReactNode;
-}
-
-export interface DrawerFooterProps {
-  children?: ReactNode;
-}
 
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
   onCancel: () => void;
