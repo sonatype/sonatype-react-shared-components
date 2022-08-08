@@ -19,8 +19,10 @@ const NxComboboxPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A search text input that shows matching results in a dropdown for the user to select. Most commonly used
-        when the search requires a backend query.
+        A search text input that shows matching results in a dropdown for the user to select.
+        {' '}<NxCode>NxCombobox</NxCode> can be used when the search requires a backend query,
+        or with a provided list of options.
+
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -149,7 +151,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                <NxCode>NxSearchDropdown</NxCode> supports any HTML attribute that's normally supported by{' '}
+                <NxCode>NxCombobox</NxCode> supports any HTML attribute that's normally supported by{' '}
                 HTML <NxCode>&lt;div&gt;</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
@@ -161,39 +163,39 @@ const NxComboboxPage = () =>
           <NxH3>Helpers</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          The search functionality of <NxCode>NxSearchDropdown</NxCode> should be used with a debounce in order
-          to prevent excessive queries to the backend. The standard timing value to use for that debounce is provided
-          via the <NxCode>NX_SEARCH_DROPDOWN_DEBOUNCE_TIME</NxCode> export. See
-          also <NxCode>NxStatefulSearchDropdown</NxCode>, which manages the debounce internally.
+          If using <NxCode>NxCombobox</NxCode> for a backend query, the search functionality should be used with a
+          debounce in order to prevent excessive queries to the backend. The standard timing value to use for that
+          debounce is provided via the <NxCode>NX_SEARCH_DROPDOWN_DEBOUNCE_TIME</NxCode> export. See
+          also <NxCode>NxStatefulCombobox</NxCode>, which manages the debounce internally.
         </NxP>
       </NxTile.Subsection>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
-          <NxH3>Usage Notes</NxH3>
+          <NxH3>Usage Notes with a Backend Query</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          Due to its interaction with typically backend logic, <NxCode>NxSearchDropdown</NxCode> has some
+          Due to its interaction with typically backend logic, <NxCode>NxCombobox</NxCode> has some
           complexities that cannot be internalized and which much be handled by the calling code. These complications
           include debouncing the text change <em>after updating the search text and loading props</em> and ensuring
           that match results are for the most recently entered text. The location and manner in which these concerns
-          are handled will depend on the architecture of your application, but the example below demonstrates how it
-          might be done in a stateful wrapper component that manages the asynchronous call.
+          are handled will depend on the architecture of your application, but the backend query example demonstrates
+          how it might be done in a stateful wrapper component that manages the asynchronous call.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Basic Example"
-                        id="nx-search-dropdown-basic-example"
-                        codeExamples={NxComboboxExampleCode}
-                        liveExample={NxComboboxExample}>
-      An example of an <NxCode>NxSearchDropdown</NxCode> tied to a fake backend.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Second Example"
-                        id="nx-search-dropdown-basic-example"
+                        id="nx-combobox-basic-example"
                         codeExamples={NxComboboxPredeterminedListExampleCode}
                         liveExample={NxComboboxPredeterminedListExample}>
-      An example of an <NxCode>NxSearchDropdown</NxCode> tied to a fake backend.
+      An example of an <NxCode>NxCombobox</NxCode> tied to a provided list of options to select from.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Backend Query Example"
+                        id="nx-combobox-backend-example"
+                        codeExamples={NxComboboxExampleCode}
+                        liveExample={NxComboboxExample}>
+      An example of an <NxCode>NxCombobox</NxCode> tied to a backend query.
     </GalleryExampleTile>
 
   </>;
