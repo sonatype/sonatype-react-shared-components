@@ -90,7 +90,6 @@ $-box-shadow-offset: 52px;
 
 .nx-drawer-header {
   @include nx-container-helpers.container-vertical;
-
   
   border-bottom: 1px solid var(--nx-swatch-indigo-90);
   display: grid;
