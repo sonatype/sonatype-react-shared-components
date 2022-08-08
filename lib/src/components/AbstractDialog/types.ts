@@ -15,7 +15,7 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   useNativeCancelOnEscape?: boolean | null;
 }
 
-export interface AbstractDialogContextValue {
+export interface DialogContextValue {
   dialogEl: HTMLDialogElement | null,
   onCancel?: CancelHandler;
 }

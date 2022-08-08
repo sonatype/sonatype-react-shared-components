@@ -9,13 +9,13 @@ import classnames from 'classnames';
 import { pick, omit } from 'ramda';
 
 import withClass from '../../util/withClass';
-import AbstractDialog, { AbstractDialogContext } from '../AbstractDialog/AbstractDialog';
+import AbstractDialog, { DialogContext } from '../AbstractDialog/AbstractDialog';
 
 import { CloseHandler, Props, propTypes } from './types';
 
 import './NxModal.scss';
 
-export const NxModalContext = AbstractDialogContext;
+export const NxModalContext = DialogContext;
 
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */

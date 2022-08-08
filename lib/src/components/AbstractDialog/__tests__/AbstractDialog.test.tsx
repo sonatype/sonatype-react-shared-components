@@ -10,7 +10,7 @@ import { mount } from 'enzyme';
 import { Tooltip } from '@material-ui/core';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import AbstractDialog, { AbstractDialogContext, Props } from '../AbstractDialog';
+import AbstractDialog, { DialogContext, Props } from '../AbstractDialog';
 import NxButton from '../../NxButton/NxButton';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 
@@ -29,7 +29,7 @@ describe('AbstractDialog', function() {
     const contextProvider = getShallow(),
         dialog = contextProvider.children();
 
-    expect(contextProvider).toMatchSelector(AbstractDialogContext.Provider);
+    expect(contextProvider).toMatchSelector(DialogContext.Provider);
     expect(dialog).toMatchSelector('dialog');
     expect(dialog.children()).toHaveText('A message inside the dialog element.');
   });

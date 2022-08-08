@@ -14,9 +14,9 @@ import React, {
 } from 'react';
 
 import { omit } from 'ramda';
-import { Props, AbstractDialogContextValue } from './types';
+import { Props, DialogContextValue } from './types';
 
-export const AbstractDialogContext = React.createContext<AbstractDialogContextValue | null>(null);
+export const DialogContext = React.createContext<DialogContextValue | null>(null);
 
 // Typescript has rather obnoxiously partially removed support for HTMLDialogElement.
 // See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-907490128 and
@@ -179,7 +179,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
   const attributesWithoutTabIndex = omit(['tabIndex'], attrs);
 
-  const abstractDialogContextValue = {
+  const dialogContextValue = {
     dialogEl: dialogRefState,
     onCancel: onCancel
   };
@@ -187,7 +187,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   return (
     // Provide the dialog element to descendants so that tooltips can attach to it instead of the body,
     // which is necessary so that they end up in the top layer rather than behind the modal
-    <AbstractDialogContext.Provider value={abstractDialogContextValue}>
+    <DialogContext.Provider value={dialogContextValue}>
       {
         /* Note: role="dialog" should be redundant but I think some screenreaders (ChromeVox) don't know
         * what a <dialog> is.  It makes a difference there.
@@ -205,7 +205,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
               {...attributesWithoutTabIndex}>
         {children}
       </dialog>
-    </AbstractDialogContext.Provider>
+    </DialogContext.Provider>
   );
 });
 
