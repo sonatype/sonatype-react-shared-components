@@ -59,7 +59,7 @@ const _NxDrawer = (props: Props) => {
                     className={classes}
                     onCancel={closeDrawer}
                     cancelOnClickOutside={true}
-                    cancelOnClickOutsideTargetClassName={'nx-drawer__inner'}
+                    cancelOnClickOutsideTargetClassName="nx-drawer__inner"
                     onTransitionEnd={handleTransitionEnd}
                     {...attrs}>
       <div className="nx-drawer__inner">
