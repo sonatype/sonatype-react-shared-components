@@ -6,8 +6,15 @@
  */
 const { setupBrowser } = require('./testUtils');
 describe('NxModal', function() {
-  const { waitAndGetElements, checkFullPageScreenshot, disableLoadingSpinnerAnimation, getPage, a11yTest } =
-      setupBrowser('#/pages/Modal');
+  const {
+    waitAndGetElements,
+    checkFullPageScreenshot,
+    disableLoadingSpinnerAnimation,
+    getPage,
+    a11yTest,
+    isInDocument,
+    isFocused
+  } = setupBrowser('#/pages/Modal');
 
   const simpleExampleSelector = '#nx-modal-simple-example',
       formWithAlertExampleSelector = '#nx-modal-form-with-alert-example',
@@ -162,14 +169,6 @@ describe('NxModal', function() {
           `${escClosingExampleSelector} #nx-modal-esc-example-modal2`,
           `${escClosingExampleSelector} #nx-modal-esc-example-modal2 .nx-footer .nx-btn`
       );
-
-      async function isFocused(el) {
-        return el.evaluate(e => e === document.activeElement);
-      }
-
-      async function isInDocument(el) {
-        return el.evaluate(e => e.isConnected);
-      }
 
       async function pressEsc() {
         const { keyboard } = getPage();
