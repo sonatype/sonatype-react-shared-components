@@ -83,7 +83,7 @@ $-box-shadow-offset: 52px;
 
   @media (prefers-reduced-motion) {
     &, &--open {
-      transition: unset;
+      transition-duration: 1ms;
     }
   }
 }

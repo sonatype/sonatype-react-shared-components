@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 
 import AbstractDialog from '../AbstractDialog/AbstractDialog';
@@ -29,20 +29,22 @@ const _NxDrawer = (props: Props) => {
     ...attrs
   } = props;
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => dialogRef.current?.classList.add(DRAWER_OPEN_CLASS_NAME), []);
+  useEffect(() => {
+    dialogRef.current?.classList.add(DRAWER_OPEN_CLASS_NAME);
+    setIsOpen(true);
+  }, []);
 
   const closeDrawer = () => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setIsOpen(false);
     dialogRef.current?.classList.remove(DRAWER_OPEN_CLASS_NAME);
-    if (prefersReducedMotion) {
-      onCancel();
-    }
   };
 
   const handleTransitionEnd = () => {
-    if (!dialogRef.current?.classList.contains(DRAWER_OPEN_CLASS_NAME)) {
+    if (!isOpen) {
       onCancel();
     }
   };
