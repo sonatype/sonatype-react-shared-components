@@ -15,8 +15,6 @@ import { Props, propTypes } from './types';
 
 import './NxDrawer.scss';
 
-const DRAWER_OPEN_CLASS_NAME = 'nx-drawer--open';
-
 const _NxDrawer = (props: Props) => {
   const {
     className,
@@ -33,15 +31,9 @@ const _NxDrawer = (props: Props) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
-    dialogRef.current?.classList.add(DRAWER_OPEN_CLASS_NAME);
-    setIsOpen(true);
-  }, []);
+  useEffect(() => setIsOpen(true), []);
 
-  const closeDrawer = () => {
-    setIsOpen(false);
-    dialogRef.current?.classList.remove(DRAWER_OPEN_CLASS_NAME);
-  };
+  const closeDrawer = () => setIsOpen(false);
 
   const handleTransitionEnd = () => {
     if (!isOpen) {
@@ -49,7 +41,10 @@ const _NxDrawer = (props: Props) => {
     }
   };
 
-  const classes = classnames('nx-drawer', { 'nx-drawer--narrow': variant === 'narrow' }, className);
+  const classes = classnames('nx-drawer', {
+    'nx-drawer--open': isOpen,
+    'nx-drawer--narrow': variant === 'narrow'
+  }, className);
 
   const subtitleContent = headerSubtitle ?
     <h3 className="nx-h3 nx-drawer-header__subtitle">{headerSubtitle}</h3> : null;
