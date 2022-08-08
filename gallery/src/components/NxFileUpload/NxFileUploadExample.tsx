@@ -10,5 +10,5 @@ import { NxFileUpload } from '@sonatype/react-shared-components';
 export default function NxFileUploadExample() {
   const [files, setFiles] = useState<FileList | null>(null);
 
-  return <NxFileUpload files={files} onChange={setFiles} />;
+  return <NxFileUpload files={files} onChange={setFiles} aria-label="simple file upload" />;
 }

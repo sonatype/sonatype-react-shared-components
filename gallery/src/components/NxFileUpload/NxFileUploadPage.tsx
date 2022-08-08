@@ -131,14 +131,13 @@ const NxTextInputPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
-                        id="nx-file-upload-example"
                         liveExample={NxFileUploadExample}
                         codeExamples={nxFileUploadCode}>
       A basic example of an <NxCode>NxFileUpload</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Complex Example"
-                        id="nx-file-upload-example"
+                        id="nx-file-upload-complex-example"
                         liveExample={NxFileUploadComplexExample}
                         codeExamples={nxFileUploadComplexCode}>
       An example of <NxCode>NxFileUpload</NxCode> with required-field validation and various extra props. Notice that

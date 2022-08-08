@@ -97,7 +97,11 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
              aria-invalid={showError || undefined}
              aria-errormessage={showError ? validationErrorId : undefined} />
       {/* Keynav and screenreaders can ignore the button itself in favor of the <input> */}
-      <NxButton type="button" variant="tertiary" onClick={openPicker} role="presentation" tabIndex={-1}>
+      <NxButton type="button"
+                variant="tertiary"
+                onClick={openPicker}
+                tabIndex={-1}
+                className="nx-file-upload__select-btn">
         Choose File
       </NxButton>
       { isFileSelected ?

@@ -22,5 +22,6 @@ export default function NxFileUploadComplexExample() {
                        onChange={onChange}
                        id="my-file-upload"
                        className="file-upload-class"
+                       aria-label="complex file upload"
                        accept="text/plain,image/png"/>;
 }
