@@ -227,7 +227,8 @@ export default function NxDrawerPage() {
                           liveExample={NxDrawerEscExample}
                           codeExamples={NxDrawerEscSourceCode}>
         An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxDropdown</NxCode> nested inside.
-        This example demonstrates when the dropdown is in focus and is expanded. Pressing the Esc key collapses the dropdown, but not the drawer.
+        This example demonstrates when the dropdown is in focus and is expanded. Pressing the Esc key collapses
+        the dropdown, but not the drawer.
         collapses the dropdown, but not the drawer.
       </GalleryExampleTile>
     </>

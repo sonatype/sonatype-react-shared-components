@@ -34,7 +34,7 @@ const _NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onC
                     aria-modal="true"
                     className="nx-modal-backdrop"
                     tabIndex={-1}
-                    onCancel={onCancel!}
+                    onCancel={onCancel as CloseHandler}
                     useNativeCancelOnEscape={true}
                     {...ariaLabels}>
       <div className={modalClasses} {...attrsWithoutLabels}/>

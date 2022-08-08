@@ -15,7 +15,6 @@ export interface DrawerContextType {
   onCancel: () => void;
 }
 
-
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
   onCancel: () => void;
   children?: ReactNode;
