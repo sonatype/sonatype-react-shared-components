@@ -121,7 +121,7 @@ const NxTextInputPage = () =>
               <NxTable.Cell />
               <NxTable.Cell>
                 NxFileUpload supports any HTML attribute that's normally supported
-                by <NxCode>&lt;input type="file"&gt;</NxCode>, except for <NxCode>multiple</NxCode>. Note however that 
+                by <NxCode>&lt;input type="file"&gt;</NxCode>, except for <NxCode>multiple</NxCode>. Note however that
                 the <NxCode>input</NxCode> is not the top-level DOM element within this component
               </NxTable.Cell>
             </NxTable.Row>
