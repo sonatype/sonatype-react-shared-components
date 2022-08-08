@@ -31,7 +31,7 @@ const _NxDrawer = (props: Props) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => dialogRef.current?.classList.add(DRAWER_OPEN_CLASS_NAME), [dialogRef]);
+  useEffect(() => dialogRef.current?.classList.add(DRAWER_OPEN_CLASS_NAME), []);
 
   const closeDrawer = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
