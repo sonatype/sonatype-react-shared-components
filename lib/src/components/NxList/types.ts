@@ -30,7 +30,7 @@ export const nxListPropTypes: ValidationMap<NxListProps> = {
   retryHandler: PropTypes.func
 };
 
-export interface NxListButtonItemProps extends LiHTMLAttributes<HTMLLIElement> {
+export interface NxListButtonItemProps extends HTMLAttributes<HTMLDivElement> {
   selected?: boolean | null,
   disabled?: boolean | null,
   buttonClassName?: string | null,
