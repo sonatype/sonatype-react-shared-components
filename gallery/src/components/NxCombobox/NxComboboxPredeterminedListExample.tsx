@@ -18,7 +18,7 @@ const items: DataItem<number>[] = prepend(
       id: 0,
       displayName: <><NxFontAwesomeIcon icon={faArrowsAltH} /><span>Loooooooooooooooooooooooooong Name</span></>
     },
-    map<number, DataItem<number>>(i => ({ id: i, displayName: array[i] }), range(1, 6)));
+    map<number, DataItem<number>>(i => ({ id: i, displayName: array[i - 1] }), range(1, array.length + 1)));
 
 // const items: DataItem<number>[] = prepend(
 //     {

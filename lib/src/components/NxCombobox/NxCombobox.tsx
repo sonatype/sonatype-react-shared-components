@@ -23,6 +23,12 @@ export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
 
+//AUTOCOMPLETE:
+//set aria-autocomplete (BOTH - default would be list)
+//set aria-selected to array[0] / first match of array
+//take the value of array[0] and apply string to input
+//right key - does it complete the string?
+
 function NxComboboxRender<T extends string | number = string>(
   props: Props<T>,
   externalRef: Ref<HTMLDivElement>
@@ -48,22 +54,22 @@ function NxComboboxRender<T extends string | number = string>(
 
       ref = useRef<HTMLDivElement>(null),
       mergedRef = useMergedRef(externalRef, ref),
-      menuRef = useRef<HTMLDivElement>(null),
+      dropdownRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       [elToFocusId, setElToFocusId] = useState(''),
 
-      dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
-      dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'listbox',
+      dropdownId = useUniqueId('nx-combobox-dropdown'),
+      dropdownRole = error || loading || isEmpty ? 'alert' : 'listbox',
 
-      filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
-      className = classnames('nx-search-dropdown', classNameProp, {
-        'nx-search-dropdown--dropdown-showable': showDropdown
+      filterClassName = classnames('nx-combobox__input', { 'nx-text-input--long': long }),
+      className = classnames('nx-combobox', classNameProp, {
+        'nx-combobox--dropdown-showable': showDropdown
       }),
-      menuClassName = classnames('nx-search-dropdown__menu', {
-        'nx-search-dropdown__menu--error': !!error
+      dropdownClassName = classnames('nx-combobox__menu', {
+        'nx-combobox__menu--error': !!error
       });
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
@@ -80,7 +86,7 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function handleComponentBlur() {
-    menuRef.current?.scrollTo({top: 0});
+    dropdownRef.current?.scrollTo({top: 0});
     setElToFocusId('');
     setFocusableBtnIndex(null);
   }
@@ -99,7 +105,7 @@ function NxComboboxRender<T extends string | number = string>(
   // helper for focusing different buttons in the dropdown menu
   const adjustBtnFocus = (adjust: (i: number) => number) => () => {
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
-            elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
+            elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
         if (elToFocus) {
           setElToFocusId(elToFocus.id);
           setFocusableBtnIndex(newFocusableBtnIndex);
@@ -158,15 +164,16 @@ function NxComboboxRender<T extends string | number = string>(
         if (!isEmpty && !showDropdown) {
           setIsSelected(false);
         }
-        elToFocusId ? (menuRef.current?.children[matches.length - 1].id === elToFocusId ? focusFirst() : focusNext()) :
-          focusFirst();
+        elToFocusId
+          ? (dropdownRef.current?.children[matches.length - 1].id === elToFocusId ? focusFirst() : focusNext())
+          : focusFirst();
         evt.preventDefault();
         break;
       case 'ArrowUp':
         if (!isEmpty && !showDropdown) {
           setIsSelected(false);
         }
-        elToFocusId ? (menuRef.current?.children[0].id === elToFocusId ? focusLast() : focusPrev()) :
+        elToFocusId ? (dropdownRef.current?.children[0].id === elToFocusId ? focusLast() : focusPrev()) :
           focusLast();
         evt.preventDefault();
         break;
@@ -203,7 +210,7 @@ function NxComboboxRender<T extends string | number = string>(
   // the ref will fire before state is updated, this will insure the items have visual focus and it's inview.
   useEffect(function() {
     if (elToFocusId && typeof focusableBtnIndex === 'number') {
-      const el = menuRef.current?.children[focusableBtnIndex] as HTMLElement | null;
+      const el = dropdownRef.current?.children[focusableBtnIndex] as HTMLElement | null;
       if (el) {
         handleElInView(el);
       }
@@ -233,7 +240,7 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }, []);
 
-  useMutationObserver(menuRef, checkForRemovedFocusedEl, { childList: true });
+  useMutationObserver(dropdownRef, checkForRemovedFocusedEl, { childList: true });
 
   function handleOnClick(match: DataItem<T>) {
     onSelect(match);
@@ -245,7 +252,7 @@ function NxComboboxRender<T extends string | number = string>(
 
   function handleElInView(el: HTMLElement) {
     const bounding = el.getBoundingClientRect();
-    const dropdownMenu = menuRef.current;
+    const dropdownMenu = dropdownRef.current;
 
     //this check if the dropdown menu is not in the document view
     const isInView = bounding.top >= 0 && bounding.left >= 0 &&
@@ -279,13 +286,13 @@ function NxComboboxRender<T extends string | number = string>(
                    isPristine={true}
                    onKeyDown={handleKeyDown}
                    aria-expanded={showDropdown}
-                   aria-controls={dropdownMenuId}
+                   aria-controls={dropdownId}
                    aria-activedescendant={elToFocusId}
                    />
-      <NxDropdownMenu id={dropdownMenuId}
-                      role={dropdownMenuRole}
-                      ref={menuRef}
-                      className={menuClassName}
+      <NxDropdownMenu id={dropdownId}
+                      role={dropdownRole}
+                      ref={dropdownRef}
+                      className={dropdownClassName}
                       onClosing={() => {}}
                       aria-busy={!!loading}
                       aria-live="polite"
@@ -305,7 +312,7 @@ function NxComboboxRender<T extends string | number = string>(
                 {match.displayName}
               </button>
             ) :
-            <div className="nx-search-dropdown__empty-message">{emptyMessage || 'No Results Found'}</div>
+            <div className="nx-combobox__empty-message">{emptyMessage || 'No Results Found'}</div>
           }
         </NxLoadWrapper>
       </NxDropdownMenu>

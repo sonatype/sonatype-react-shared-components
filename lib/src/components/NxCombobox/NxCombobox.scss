@@ -6,7 +6,7 @@
  */
  @use '../../scss-shared/nx-container-helpers';
 
- .nx-search-dropdown {
+ .nx-combobox {
    display: inline-block;
    position: relative;
  
@@ -29,7 +29,7 @@
    }
  
    &--dropdown-showable:focus-within {
-     .nx-search-dropdown__menu {
+     .nx-combobox__menu {
        position: absolute;
        right: initial;
 
