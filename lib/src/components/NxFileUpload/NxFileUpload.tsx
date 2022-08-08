@@ -60,7 +60,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       }),
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-file-upload-input', id),
-      validationErrorId = useUniqueId('nx-file-upload-valiation-error');
+      validationErrorId = useUniqueId('nx-file-upload-validation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     const { files } = evt.currentTarget,
