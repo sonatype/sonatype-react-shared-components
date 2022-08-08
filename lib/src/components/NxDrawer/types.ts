@@ -32,10 +32,10 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   headerParagraph?: ReactNode | string | null;
 }
 
-export const propTypes = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   onCancel: PropTypes.func.isRequired,
   variant: PropTypes.oneOf(NX_DRAWER_VARIANTS),
   headerTitle: PropTypes.oneOf([PropTypes.string, PropTypes.node]).isRequired,
   headerSubtitle: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
   headerParagraph: PropTypes.oneOf([PropTypes.string, PropTypes.node])
-} as PropTypes.ValidationMap<Props>;
+};
