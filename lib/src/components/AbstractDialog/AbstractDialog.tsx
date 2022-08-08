@@ -13,7 +13,6 @@ import React, {
   useState
 } from 'react';
 
-import { omit } from 'ramda';
 import { Props, DialogContextValue } from './types';
 
 export const DialogContext = React.createContext<DialogContextValue | null>(null);
@@ -177,8 +176,6 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     }, [clickOutsideTargetElement]);
   }
 
-  const attributesWithoutTabIndex = omit(['tabIndex'], attrs);
-
   const dialogContextValue = {
     dialogEl: dialogRefState,
     onCancel: onCancel
@@ -199,10 +196,10 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       <dialog ref={dialogRef}
               role={role || 'dialog'}
               aria-modal="true"
-              tabIndex={-1}
               onKeyDown={dialogKeydownListener}
               className={className}
-              {...attributesWithoutTabIndex}>
+              {...attrs}
+              tabIndex={-1}>
         {children}
       </dialog>
     </DialogContext.Provider>
