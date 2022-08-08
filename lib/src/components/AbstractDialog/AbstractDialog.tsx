@@ -77,17 +77,18 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         // prevent visibility of the keydown outside of the dialog, so that global ESC listeners on the
         // document don't pick it up
         evt.stopPropagation();
+
+        // prevent visibility to manually-registered native event listeners on the document too.
+        // NOTE: this only works on listeners added after this one, which is believed to include any
+        // registered in useEffect calls on components rendered simultaneously with the dialog
         evt.nativeEvent.stopImmediatePropagation();
 
         if (!evt.defaultPrevented) {
           if (!useNativeCancelOnEscape) {
             evt.preventDefault();
+            // emulate cancel-on-esc behavior in browsers which don't do it natively
             onCancel(createCancelEvent());
           }
-
-          // prevent visibility to manually-registered native event listeners on the document too.
-          // NOTE: this only works on listeners added after this one, which is believed to include any
-          // registered in useEffect calls on components rendered simultaneously with the dialog
           else if (!hasNativeModalSupport) {
             // emulate cancel-on-esc behavior in browsers which don't do it natively
             onCancel(createCancelEvent());
