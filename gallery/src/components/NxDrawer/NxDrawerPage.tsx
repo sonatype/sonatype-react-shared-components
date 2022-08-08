@@ -69,7 +69,7 @@ export default function NxDrawerPage() {
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
-                  The callback function passed into <NxCode>NxDrawer</NxCode> that gets called when the user
+                  <NxCode>NxDrawer</NxCode>'s callback function. It gets called when the user
                   closes the dialog (when the user clicks outside the drawer, when the user clicks the close button,
                   and when the user presses the Esc key).
                 </NxTable.Cell>
@@ -109,8 +109,8 @@ export default function NxDrawerPage() {
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
-                  This prop specifies the header paragraph content placed under the subtitle if the
-                  subtitle is specified, if not, it will be placed under the header title.
+                  This prop sets the header paragraph's content under the subtitle if the subtitle is specified.
+                  If it's not specified, it will be placed under the header title.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -156,9 +156,9 @@ export default function NxDrawerPage() {
             <NxH3>NxDrawer.Content (Required)</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
-            This is a convenient component that specifies the main body content of the drawer. It is placed
+            This component specifies the drawer's body content. It is placed
             under the header and extends the full height of the drawer, unless the footer is specified, in which
-            case it occupies the height between the header and the footer. If there is over flowing content,
+            case it occupies the height between the header and the footer. If there is overflowing content,
             the content area will be scrollable.
           </NxP>
         </NxTile.Subsection>
@@ -167,8 +167,8 @@ export default function NxDrawerPage() {
             <NxH3>NxDrawer.Footer (Optional)</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
-            This is an optional convenient component that specifies the footer of the drawer. It is placed
-            at the bottom of the drawer, and it takes the height of it's content.
+            This is an optional convenient component that sets the drawer's footer content. It is placed
+            at the bottom of the drawer, and it takes the height of its content.
           </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
@@ -178,7 +178,7 @@ export default function NxDrawerPage() {
           <NxP>
             <NxCode>NxDrawer</NxCode> implements the dialog role, similar to <NxCode>NxModal</NxCode>.
             It is recommended that <NxCode>aria-labeledby</NxCode> or <NxCode>aria-label</NxCode> should be specified.
-            Please refer to <NxTextLink href="#/pages/Modal">the Accessibilty Section</NxTextLink> of the{' '}
+            Please refer to <NxTextLink href="#/pages/Modal">the Accessibility Section</NxTextLink> of the{' '}
             <NxCode>NxModal</NxCode> documentation.
           </NxP>
         </NxTile.Subsection>
