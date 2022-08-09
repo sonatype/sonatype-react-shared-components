@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { NxFontAwesomeIcon} from '@sonatype/react-shared-components';
+import { NxDescriptionList, NxFontAwesomeIcon} from '@sonatype/react-shared-components';
 
 const NxListDescriptionExample = () =>
   <div>
@@ -64,6 +64,10 @@ const NxListDescriptionExample = () =>
           </a>
         </dd>
       </div>
+      <NxDescriptionList.ButtonItem onClick={() => { alert('You clicked the NxDescriptionList.ButtonItem component.'); }}>
+        <dt>This is the NxDescriptionList.ButtonItem component</dt>
+        <dd>Clicking this row will give you an alert message.</dd>
+      </NxDescriptionList.ButtonItem>
     </dl>
   </div>;
 
