@@ -37,6 +37,7 @@ function NxComboboxRender<T extends string | number = string>(
         onSearchTextChange,
         onSearch,
         long,
+        short,
         disabled,
         emptyMessage,
         ...attrs
@@ -58,7 +59,8 @@ function NxComboboxRender<T extends string | number = string>(
       dropdownId = useUniqueId('nx-combobox-dropdown'),
       dropdownRole = error || loading || isEmpty ? 'alert' : 'listbox',
 
-      filterClassName = classnames('nx-combobox__input', { 'nx-text-input--long': long }),
+      filterClassName = classnames('nx-combobox__input', { 'nx-text-input--long': long,
+        'nx-text-input--short': short }),
       className = classnames('nx-combobox', classNameProp, {
         'nx-combobox--dropdown-showable': showDropdown
       }),

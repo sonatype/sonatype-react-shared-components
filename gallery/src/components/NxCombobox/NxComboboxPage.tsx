@@ -24,7 +24,6 @@ const NxComboboxPage = () =>
         A search text input that shows matching results in a dropdown for the user to select.
         {' '}<NxCode>NxCombobox</NxCode> can be used when the search requires a backend query,
         or with a provided list of options.
-
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -190,7 +189,7 @@ const NxComboboxPage = () =>
                         id="nx-combobox-basic-example"
                         codeExamples={NxComboboxPredeterminedListExampleCode}
                         liveExample={NxComboboxPredeterminedListExample}>
-      An example of an <NxCode>NxCombobox</NxCode> tied to a provided list of options to select from.
+      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>long</NxCode> prop tied to a provided list of options to select from.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Backend Query Example"
@@ -204,8 +203,8 @@ const NxComboboxPage = () =>
                         id="nx-combobox-disabled-example"
                         codeExamples={NxComboboxDisabledExampleCode}
                         liveExample={NxComboboxDisabledExample}>
-      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>disabled</NxCode> prop. Note that even though in this
-      example there is non-empty search text, the dropdown does not open.
+      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>disabled</NxCode> and <NxCode>short</NxCode> prop.
+      Note that even though in this example there is non-empty search text, the dropdown does not open.
     </GalleryExampleTile>
 
   </>;

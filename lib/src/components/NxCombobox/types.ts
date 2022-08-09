@@ -19,6 +19,7 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
   matches: DataItem<T>[];
   onSelect: (m: DataItem<T>) => void;
   long?: boolean | null;
+  short? : boolean | null;
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
 }
@@ -38,6 +39,7 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   onSelect: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
   long: PropTypes.bool,
+  short: PropTypes.bool,
   disabled: PropTypes.bool,
   emptyMessage: PropTypes.node
 };

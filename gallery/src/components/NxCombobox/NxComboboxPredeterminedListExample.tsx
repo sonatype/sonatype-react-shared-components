@@ -59,7 +59,8 @@ export default function NxComboboxPredeterminedListExample() {
 
   return (
     <NxFormGroup label="Combobox" isRequired>
-      <NxCombobox matches={matches}
+      <NxCombobox long
+                  matches={matches}
                   searchText={query}
                   onSearchTextChange={onSearchTextChange}
                   onSearch={onSearch}

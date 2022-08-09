@@ -77,6 +77,7 @@ export default function NxComboboxDisabledExample() {
   return (
     <NxFormGroup label="Combobox" isRequired>
       <NxCombobox disabled
+                  short
                   loading={loading}
                   matches={matches}
                   searchText={query}
