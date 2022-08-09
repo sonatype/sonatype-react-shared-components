@@ -108,6 +108,9 @@ function NxComboboxRender<T extends string | number = string>(
         if (elToFocus) {
           setElToFocusId(elToFocus.id);
           setFocusableBtnIndex(newFocusableBtnIndex);
+          if (autoComplete && typeof elToFocus.textContent === 'string') {
+            onSearchTextChange(elToFocus.textContent);
+          }
         }
       },
       focusNext = adjustBtnFocus(inc),
@@ -116,6 +119,7 @@ function NxComboboxRender<T extends string | number = string>(
       focusLast = adjustBtnFocus(always(matches.length - 1));
 
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
+    const inputEle = evt.target as HTMLInputElement;
     switch (evt.key) {
       case 'Enter':
         if (showDropdown) {
@@ -125,11 +129,11 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'Home':
-        focusFirst();
+        inputEle.setSelectionRange(0, 0);
         evt.preventDefault();
         break;
       case 'End':
-        focusLast();
+        inputEle.setSelectionRange(searchText.length, searchText.length);
         evt.preventDefault();
         break;
       case 'ArrowDown':
@@ -180,7 +184,7 @@ function NxComboboxRender<T extends string | number = string>(
   useEffect(function() {
     if (matches.length) {
       setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex ?? 0));
-      if (autoComplete) {
+      if (autoComplete && showDropdown) {
         setInlineOption();
       }
     }
