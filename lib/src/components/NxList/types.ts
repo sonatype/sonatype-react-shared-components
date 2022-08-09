@@ -9,10 +9,18 @@ import {
   LiHTMLAttributes,
   ValidationMap,
   ReactNode,
+  ReactElement,
   ButtonHTMLAttributes,
   AnchorHTMLAttributes
 } from 'react';
 import PropTypes from 'prop-types';
+
+export interface BaseList<T extends HTMLElement = HTMLLIElement> extends HTMLAttributes<T> {
+  selected?: boolean | null,
+  disabled?: boolean | null,
+  buttonClassName?: string | null,
+  buttonAttributes?: ButtonHTMLAttributes<HTMLButtonElement> | null
+}
 
 export interface NxListProps extends HTMLAttributes<HTMLUListElement> {
   bulleted?: boolean | null;
@@ -30,7 +38,7 @@ export const nxListPropTypes: ValidationMap<NxListProps> = {
   retryHandler: PropTypes.func
 };
 
-export interface NxListButtonItemProps extends HTMLAttributes<HTMLDivElement> {
+export interface NxListButtonItemProps extends LiHTMLAttributes<HTMLLIElement> {
   selected?: boolean | null,
   disabled?: boolean | null,
   buttonClassName?: string | null,
@@ -58,4 +66,11 @@ export const nxListLinkItemPropTypes: ValidationMap<NxListLinkItemProps> = {
   href: PropTypes.string.isRequired,
   anchorClassName: PropTypes.string,
   anchorAttributes: PropTypes.object
+};
+
+export interface NxDescriptionListButtonItemProps extends BaseList<HTMLDivElement> {
+  children: ReactElement[]
+}
+
+export const nxDescriptionListButtonItemPropTypes: ValidationMap<NxDescriptionListButtonItemProps> = {
 };

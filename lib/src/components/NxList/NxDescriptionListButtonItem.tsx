@@ -9,9 +9,9 @@ import classnames from 'classnames';
 import { includesDisabledClass } from '../../util/classUtil';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NxFontAwesomeIcon } from '../..';
-import { NxListButtonItemProps, nxListButtonItemPropTypes } from './types';
+import { NxDescriptionListButtonItemProps, nxDescriptionListButtonItemPropTypes} from './types';
 
-const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxListButtonItemProps>(
+const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxDescriptionListButtonItemProps>(
     function NxDescriptionListButtonItem(props) {
       const {
             children,
@@ -26,10 +26,8 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxListButtonItemP
           divClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className),
           buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled });
 
+      /* Using children[0].props.children allows for a more natural API for the consuming developer. */
       return (
-        // aria-current is the valid one here by the standards, but aria-selected is the one that actually
-        // tends to work in real-world screenreaders
-        /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
         <div className={divClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <dt className="nx-list__term">
             <button aria-disabled={includesDisabledClass(buttonClassNames)}
@@ -37,16 +35,16 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxListButtonItemP
                     disabled={disabled ? true : false}
                     {...buttonAttributes}
             >
-              {children[0]?.props?.children}
+              {children[0].props.children}
             </button>
           </dt>
           <dd className="nx-list__description">
             <button aria-disabled={includesDisabledClass(buttonClassNames)}
-                      className={buttonClassNames}
-                      disabled={disabled ? true : false}
-                      {...buttonAttributes}
+                    className={buttonClassNames}
+                    disabled={disabled ? true : false}
+                    {...buttonAttributes}
               >
-              {props.children[1].props.children}
+              {children[1].props.children}
               <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
             </button>
           </dd>
@@ -55,6 +53,6 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxListButtonItemP
     }
 );
 
-NxDescriptionListButtonItem.propTypes = nxListButtonItemPropTypes;
+NxDescriptionListButtonItem.propTypes = nxDescriptionListButtonItemPropTypes;
 
 export default NxDescriptionListButtonItem;
