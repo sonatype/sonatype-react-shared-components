@@ -22,16 +22,18 @@ import './NxFileUpload.scss';
 
 const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-function SelectedFile({ file, onDismiss }: SelectedFileProps) {
+function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps) {
   // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
   const buttonLabel = 'Unselect file';
 
   return (
     <span className="nx-selected-file">
-      <NxOverflowTooltip>
-        <span className="nx-selected-file__name">{file.name}</span>
-      </NxOverflowTooltip>
-      <span className="nx-selected-file__size">{formatSize(file.size)}</span>
+      <span id={descriptionId}>
+        <NxOverflowTooltip>
+          <span className="nx-selected-file__name">{file.name}</span>
+        </NxOverflowTooltip>
+        <span className="nx-selected-file__size">{formatSize(file.size)}</span>
+      </span>
       <NxTooltip title={buttonLabel}>
         <button aria-label={buttonLabel}className="nx-selected-file__dismiss-btn" onClick={onDismiss}>
           <NxFontAwesomeIcon icon={faTimesCircle} />
@@ -60,7 +62,8 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       }),
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-file-upload-input', id),
-      validationErrorId = useUniqueId('nx-file-upload-validation-error');
+      validationErrorId = useUniqueId('nx-file-upload-validation-error'),
+      descriptionId = useUniqueId('nx-file-upload-description');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     const { files } = evt.currentTarget,
@@ -93,6 +96,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
              id={inputId}
              className="nx-file-upload__input"
              type="file"
+             aria-describedby={descriptionId}
              aria-required={isRequired ?? undefined}
              aria-invalid={showError || undefined}
              aria-errormessage={showError ? validationErrorId : undefined} />
@@ -105,8 +109,8 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         Choose File
       </NxButton>
       { isFileSelected ?
-        <SelectedFile file={file} onDismiss={() => onChangeProp(null)} /> :
-        <span className={noFileMessageClassName}>
+        <SelectedFile descriptionId={descriptionId} file={file} onDismiss={() => onChangeProp(null)} /> :
+        <span id={descriptionId} className={noFileMessageClassName}>
           <span>No file selected</span>
           <NxFontAwesomeIcon icon={faExclamationCircle} />
         </span>
