@@ -204,7 +204,7 @@ const NxComboboxPage = () =>
                         id="nx-combobox-disabled-example"
                         codeExamples={NxComboboxDisabledExampleCode}
                         liveExample={NxComboboxDisabledExample}>
-      An example of <NxCode>NxCombobox</NxCode> with a <NxCode>disabled</NxCode> prop. Note that even though in this
+      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>disabled</NxCode> prop. Note that even though in this
       example there is non-empty search text, the dropdown does not open.
     </GalleryExampleTile>
 

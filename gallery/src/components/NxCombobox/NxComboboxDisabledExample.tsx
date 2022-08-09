@@ -32,7 +32,7 @@ function search(query: string): Promise<DataItem<number>[]> {
       matchingItems = filter(i => getDisplayNameString(i).toLowerCase().includes(lowercaseQuery), items);
 
   return new Promise(resolve => {
-    setTimeout(() => resolve(matchingItems), 1000);
+    setTimeout(() => resolve(matchingItems), 3000);
   });
 }
 
