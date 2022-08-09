@@ -6,7 +6,7 @@
  */
  @use '../../scss-shared/nx-container-helpers';
  @use '../../scss-shared/nx-text-helpers';
- 
+
 $-box-shadow-offset: 52px;
 
 .nx-drawer {
@@ -45,7 +45,7 @@ $-box-shadow-offset: 52px;
     height: calc(100% - #{$global-header-height});
     top: $global-header-height;
   }
-  
+
   &--narrow {
     width: 348px + $-box-shadow-offset;
   }
@@ -63,14 +63,14 @@ $-box-shadow-offset: 52px;
     &::after {
       content: " ";
 
-      box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);      
+      box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);
       height: calc(100% - var(--nx-spacing-16x));
-      width: 100%;      
+      width: 100%;
       position: absolute;
       left: 0;
       top: var(--nx-spacing-8x);
       z-index: -1;
-    }  
+    }
   }
 
   transition: transform 120ms ease-in;
@@ -90,7 +90,7 @@ $-box-shadow-offset: 52px;
 
 .nx-drawer-header {
   @include nx-container-helpers.container-vertical;
-  
+
   border-bottom: 1px solid var(--nx-swatch-indigo-90);
   display: grid;
   column-gap: var(--nx-spacing-2x);
