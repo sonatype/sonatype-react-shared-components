@@ -22,6 +22,7 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
   short? : boolean | null;
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
+  autoComplete?: boolean | null;
 }
 
 export interface StatefulProps<T extends string | number = string>
@@ -41,7 +42,8 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   long: PropTypes.bool,
   short: PropTypes.bool,
   disabled: PropTypes.bool,
-  emptyMessage: PropTypes.node
+  emptyMessage: PropTypes.node,
+  autoComplete: PropTypes.bool
 };
 
 export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps<string | number>> = {

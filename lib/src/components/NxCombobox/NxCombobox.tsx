@@ -40,6 +40,7 @@ function NxComboboxRender<T extends string | number = string>(
         short,
         disabled,
         emptyMessage,
+        autoComplete,
         ...attrs
       } = props,
 
@@ -55,6 +56,7 @@ function NxComboboxRender<T extends string | number = string>(
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       [elToFocusId, setElToFocusId] = useState(''),
+      [prevSearchText, setPrevSearchText] = useState(''),
 
       dropdownId = useUniqueId('nx-combobox-dropdown'),
       dropdownRole = error || loading || isEmpty ? 'alert' : 'listbox',
@@ -95,6 +97,7 @@ function NxComboboxRender<T extends string | number = string>(
 
     if (value.trim() !== searchText.trim()) {
       doSearch(value);
+      setPrevSearchText('');
     }
   }
 
@@ -165,10 +168,21 @@ function NxComboboxRender<T extends string | number = string>(
     filterRef.current?.querySelector('input')?.focus();
   }
 
+  function setInlineOption() {
+    if (typeof matches[0].displayName === 'string' &&
+    matches[0].displayName.toLowerCase().indexOf(searchText.toLowerCase()) === 0) {
+      setPrevSearchText(searchText);
+      onSearchTextChange(matches[0].displayName);
+    }
+  }
+
   // Clamp or nullify focusableBtnIndex whenever the number of matches changes
   useEffect(function() {
     if (matches.length) {
       setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex ?? 0));
+      if (autoComplete) {
+        setInlineOption();
+      }
     }
     else {
       setFocusableBtnIndex(null);
@@ -185,6 +199,13 @@ function NxComboboxRender<T extends string | number = string>(
       }
     }
   }, [elToFocusId]);
+
+  useEffect(function() {
+    if (prevSearchText && autoComplete) {
+      filterRef.current?.querySelector('input')?.setSelectionRange(prevSearchText.length, searchText.length);
+      focusFirst();
+    }
+  }, [prevSearchText]);
 
   /*
    * Horrible Hack: When an element within the dropdown is removed from the DOM while it is focused, we want

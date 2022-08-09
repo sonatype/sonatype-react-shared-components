@@ -76,6 +76,7 @@ export default function NxComboboxExample() {
   return (
     <NxFormGroup label="Combobox" isRequired>
       <NxCombobox loading={loading}
+                  autoComplete={true}
                   matches={matches}
                   searchText={query}
                   onSearchTextChange={onSearchTextChange}
