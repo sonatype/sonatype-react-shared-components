@@ -23,12 +23,6 @@ export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
 
-//AUTOCOMPLETE:
-//set aria-autocomplete (BOTH - default would be list)
-//set aria-selected to array[0] / first match of array
-//take the value of array[0] and apply string to input
-//right key - does it complete the string?
-
 function NxComboboxRender<T extends string | number = string>(
   props: Props<T>,
   externalRef: Ref<HTMLDivElement>
@@ -116,33 +110,6 @@ function NxComboboxRender<T extends string | number = string>(
       focusFirst = adjustBtnFocus(always(0)),
       focusLast = adjustBtnFocus(always(matches.length - 1));
 
-  // function handleButtonKeyDown(evt: KeyboardEvent<HTMLElement>) {
-  //   switch (evt.key) {
-  //     case 'Home':
-  //       focusFirst();
-  //       evt.preventDefault();
-  //       break;
-  //     case 'End':
-  //       focusLast();
-  //       evt.preventDefault();
-  //       break;
-  //     case 'ArrowDown':
-  //       focusNext();
-  //       evt.preventDefault();
-  //       break;
-  //     case 'ArrowUp':
-  //       focusPrev();
-  //       evt.preventDefault();
-  //       break;
-  //     case 'Escape':
-  //       focusTextInput();
-  //       setIsSelected(true);
-  //       setElToFocusId('');
-  //       setFocusableBtnIndex(null);
-  //       break;
-  //   }
-  // }
-
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
     switch (evt.key) {
       case 'Enter':
@@ -181,11 +148,11 @@ function NxComboboxRender<T extends string | number = string>(
         setIsSelected(true);
         setElToFocusId('');
         setFocusableBtnIndex(null);
+        if (!showDropdown) {
+          handleFilterChange('');
+        }
         break;
     }
-    // if (evt.key === 'Escape') {
-    //   handleFilterChange('');
-    // }
   }
 
   function doSearch(value: string) {
@@ -323,3 +290,9 @@ function NxComboboxRender<T extends string | number = string>(
 const NxCombobox = Object.assign(forwardRef(NxComboboxRender), { propTypes });
 
 export default NxCombobox;
+
+//AUTOCOMPLETE NOTE:
+//set aria-autocomplete (BOTH - default would be list)
+//set aria-selected to array[0] / first match of array
+//take the value of array[0] and apply string to input
+//right key - does it complete the string?

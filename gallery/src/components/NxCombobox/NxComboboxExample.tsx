@@ -32,7 +32,7 @@ function search(query: string): Promise<DataItem<number>[]> {
       matchingItems = filter(i => getDisplayNameString(i).toLowerCase().includes(lowercaseQuery), items);
 
   return new Promise(resolve => {
-    setTimeout(() => resolve(matchingItems), 1000);
+    setTimeout(() => resolve(matchingItems), 3000);
   });
 }
 
@@ -50,7 +50,6 @@ export default function NxComboboxExample() {
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
     latestExecutedQueryRef.current = query;
-
     search(query).then(matches => {
       // ensure that results from stale or out-of-order queries do not display
       if (latestExecutedQueryRef.current === query) {
