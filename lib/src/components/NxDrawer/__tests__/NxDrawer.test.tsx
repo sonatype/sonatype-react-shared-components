@@ -34,12 +34,10 @@ describe('NxDrawer', function() {
     expect(dialog.children()).toMatchSelector('div.nx-drawer__inner');
   });
 
-  it('sets nx-drawer--open class to the dialog only once it is mounted', function() {
+  it('sets nx-drawer--open class to the dialog once it is mounted', function() {
     const component = getMounted();
     const dialog = component.find('dialog.nx-drawer');
-    expect(dialog).not.toHaveClassName('nx-drawer--open');
-    // nx-drawer--open is added after it is fully mounted.
-    expect(dialog.getDOMNode().classList.contains('nx-drawer--open')).toBe(true);
+    expect(dialog).toHaveClassName('nx-drawer--open');
   });
 
   it('renders children nodes within nx-drawer__inner', function() {
@@ -91,6 +89,7 @@ describe('NxDrawer', function() {
 
       expect(mockCallBack).not.toHaveBeenCalled();
       component.simulate('keyDown', createEvent());
+      component.simulate('transitionEnd');
       expect(mockCallBack).toHaveBeenCalledTimes(1);
     });
 
@@ -102,6 +101,7 @@ describe('NxDrawer', function() {
       component.simulate('keyDown', createEvent('Enter'));
       component.simulate('keyDown', createEvent('q'));
       component.simulate('keyDown', createEvent('Q'));
+      component.simulate('transitionEnd');
       expect(mockCallBack).not.toHaveBeenCalled();
     });
 
@@ -121,11 +121,14 @@ describe('NxDrawer', function() {
       );
       const outsideButton = container.find('.outside-button').at(0);
       const insideButton = container.find('.inside-button').at(0);
+      const dialog = container.find('dialog.nx-drawer').at(0);
 
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
       map.click({ target: insideButton.getDOMNode() });
+      dialog.simulate('transitionEnd');
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
       map.click({ target: outsideButton.getDOMNode() });
+      dialog.simulate('transitionEnd');
       expect(mockOnCancel).toHaveBeenCalledTimes(1);
     });
 
@@ -147,8 +150,10 @@ describe('NxDrawer', function() {
 
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
       map.click({ target: insideButton.getDOMNode() });
+      dialog.simulate('transitionEnd');
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
       map.click({ target: dialog.getDOMNode() });
+      dialog.simulate('transitionEnd');
       expect(mockOnCancel).toHaveBeenCalledTimes(1);
     });
   });
@@ -263,15 +268,17 @@ describe('NxDrawer', function() {
 
       const mockOnCancel = jest.fn();
 
-      const container = getShallow({
+      const component = getShallow({
         onCancel: mockOnCancel
       });
 
-      const cancelButton = container.find(NxCloseButton).at(0);
+      const cancelButton = component.find(NxCloseButton).at(0);
 
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
 
       cancelButton.simulate('click');
+
+      component.simulate('transitionEnd');
 
       expect(mockOnCancel).toHaveBeenCalledTimes(1);
     });
