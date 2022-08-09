@@ -66,7 +66,7 @@ export default function NxDrawerWithGlobalHeaderExample() {
     </>
   );
 
-  const paragraph = (
+  const description = (
     <>
       Cupcake I love candy canes dragée croissant cookie chocolate muffin. Marshmallow
       powder lollipop <strong>cotton</strong> candy bonbon lollipop liquorice chupa chups jelly-o. Biscuit I
@@ -92,7 +92,7 @@ export default function NxDrawerWithGlobalHeaderExample() {
                     onCancel={() => setShowNarrowDrawer(false)}
                     headerTitle="Example of Narrow Drawer"
                     headerSubtitle="Example subtitle"
-                    headerParagraph={paragraph}
+                    headerDescription={description}
                     aria-labelledby="nx-drawer-with-global-header-narrow">
             {contentAndFooter}
           </NxDrawer>
@@ -103,7 +103,7 @@ export default function NxDrawerWithGlobalHeaderExample() {
                     onCancel={() => setShowNormalDrawer(false)}
                     headerTitle="Example of Normal Drawer"
                     headerSubtitle="Example subtitle"
-                    headerParagraph={paragraph}
+                    headerDescription={description}
                     aria-labelledby="nx-drawer-with-global-header-normal">
             {contentAndFooter}
           </NxDrawer>

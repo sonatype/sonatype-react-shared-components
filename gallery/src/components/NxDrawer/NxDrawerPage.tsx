@@ -18,14 +18,14 @@ import {
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxDrawerExample from './NxDrawerExample';
-import NxDrawerWithSubtitleOrParagraphExample from './NxDrawerWithSubtitleOrParagraphExample';
+import NxDrawerWithSubtitleOrDescriptionExample from './NxDrawerWithSubtitleOrDescriptionExample';
 import NxDrawerNarrowExample from './NxDrawerNarrowExample';
 import NxDrawerWithFooterExample from './NxDrawerWithFooterExample';
 import NxDrawerEscExample from './NxDrawerEscExample';
 
 const NxDrawerSourceCode = require('./NxDrawerExample?raw');
 const NxDrawerWithGlobalHeaderSourceCode = require('./NxDrawerWithGlobalHeaderExample?raw');
-const NxDrawerWithSubtitleOrParagraphSourceCode = require('./NxDrawerWithSubtitleOrParagraphExample?raw');
+const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubtitleOrDescriptionExample?raw');
 const NxDrawerNarrowSourceCode = require('./NxDrawerNarrowExample?raw');
 const NxDrawerWithFooterSourceCode = require('./NxDrawerWithFooterExample?raw');
 const NxDrawerEscSourceCode = require('./NxDrawerEscExample?raw');
@@ -104,12 +104,12 @@ export default function NxDrawerPage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>headerParagraph</NxTable.Cell>
+                <NxTable.Cell>headerDescription</NxTable.Cell>
                 <NxTable.Cell>ReactNode | string</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
-                  This prop sets the header paragraph's content under the subtitle if the subtitle is specified.
+                  This prop sets the header description content under the subtitle if the subtitle is specified.
                   If it's not specified, it will be placed under the header title.
                 </NxTable.Cell>
               </NxTable.Row>
@@ -146,9 +146,9 @@ export default function NxDrawerPage() {
           </NxTile.SubsectionHeader>
           <NxP>
             The header is placed at the top of the drawer component. It consists of four parts:
-            the close button, the title, the subtitle (optional), and the paragraph (optional).
-            The title, subtitle, and paragraph can be specified via the <NxCode>headerTitle</NxCode>,{' '}
-            <NxCode>headerSubtitle</NxCode>, and <NxCode>headerParagraph</NxCode> props respectively.
+            the close button, the title, the subtitle (optional), and the description (optional).
+            The title, subtitle, and description can be specified via the <NxCode>headerTitle</NxCode>,{' '}
+            <NxCode>headerSubtitle</NxCode>, and <NxCode>headerDescription</NxCode> props respectively.
           </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
@@ -191,11 +191,11 @@ export default function NxDrawerPage() {
         A basic example of an <NxCode>NxDrawer</NxCode>.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="NxDrawer With Subtitle or Paragraph Example"
-                          id="nx-drawer-with-subtitle-or-paragraph-example"
-                          liveExample={NxDrawerWithSubtitleOrParagraphExample}
-                          codeExamples={NxDrawerWithSubtitleOrParagraphSourceCode}>
-        An example of a <NxCode>NxDrawer</NxCode> with subtitle or paragraph in the header.
+      <GalleryExampleTile title="NxDrawer With Subtitle or Description Example"
+                          id="nx-drawer-with-subtitle-or-description-example"
+                          liveExample={NxDrawerWithSubtitleOrDescriptionExample}
+                          codeExamples={NxDrawerWithSubtitleOrDescriptionSourceCode}>
+        An example of a <NxCode>NxDrawer</NxCode> with subtitle or description in the header.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="Narrow NxDrawer Example"

@@ -8,12 +8,12 @@ import React, { useState } from 'react';
 
 import { NxDrawer, NxButton, NxButtonBar, NxP } from '@sonatype/react-shared-components';
 
-export default function NxDrawerWithSubtitleOrParagraphExample() {
+export default function NxDrawerWithSubtitleOrDescriptionExample() {
   const [showDrawerWithSubtitle, setShowDrawerWithSubtitle] = useState(false);
-  const [showDrawerWithParagraph, setShowDrawerWithParagraph] = useState(false);
+  const [showDrawerWithDescription, setShowDrawerWithDescription] = useState(false);
   const [showDrawerWithBoth, setShowDrawerWithBoth] = useState(false);
 
-  const paragraph = (
+  const description = (
     <>
       Pastry carrot cake cake bear <em>claw bear</em> claw. Toffee jelly beans biscuit jelly cotton
       candy marzipan liquorice. Brownie candy pie sweet roll powder danish dragée. Cake cookie
@@ -68,14 +68,14 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
   );
 
   return (
-    <div className="gallery-drawer-with-subtitle-or-paragraph-example">
+    <div className="gallery-drawer-with-subtitle-or-description-example">
       <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => setShowDrawerWithSubtitle(true)}>
         Open Drawer with Subtitle
       </NxButton>
-      <NxButton id="nx-drawer-with-paragraph-open-button" onClick={() => setShowDrawerWithParagraph(true)}>
-        Open Drawer with Paragraph
+      <NxButton id="nx-drawer-with-description-open-button" onClick={() => setShowDrawerWithDescription(true)}>
+        Open Drawer with Description
       </NxButton>
-      <NxButton id="nx-drawer-with-subtitle-and-paragraph-open-button" onClick={() => setShowDrawerWithBoth(true)}>
+      <NxButton id="nx-drawer-with-subtitle-and-description-open-button" onClick={() => setShowDrawerWithBoth(true)}>
         Open Drawer with Both
       </NxButton>
       {showDrawerWithSubtitle && (
@@ -87,22 +87,22 @@ export default function NxDrawerWithSubtitleOrParagraphExample() {
           {content}
         </NxDrawer>
       )}
-      {showDrawerWithParagraph && (
-        <NxDrawer id="nx-drawer-with-paragraph"
-                  onCancel={() => setShowDrawerWithParagraph(false)}
-                  headerTitle="An Example of NxDrawer with Paragraph"
-                  headerParagraph={paragraph}
-                  aria-labelledby="nx-drawer-with-paragraph">
+      {showDrawerWithDescription && (
+        <NxDrawer id="nx-drawer-with-description"
+                  onCancel={() => setShowDrawerWithDescription(false)}
+                  headerTitle="An Example of NxDrawer with Description"
+                  headerDescription={description}
+                  aria-labelledby="nx-drawer-with-description">
           {content}
         </NxDrawer>
       )}
       {showDrawerWithBoth && (
-        <NxDrawer id="nx-drawer-with-subtitle-and-paragraph"
+        <NxDrawer id="nx-drawer-with-subtitle-and-description"
                   onCancel={() => setShowDrawerWithBoth(false)}
-                  headerTitle="An Example of NxDrawer with Subtitle and Paragraph"
+                  headerTitle="An Example of NxDrawer with Subtitle and Description"
                   headerSubtitle="Header Subtitle"
-                  headerParagraph={paragraph}
-                  aria-labelledby="nx-drawer-with-subtitle-and-paragraph">
+                  headerDescription={description}
+                  aria-labelledby="nx-drawer-with-subtitle-and-description">
           {content}
         </NxDrawer>
       )}

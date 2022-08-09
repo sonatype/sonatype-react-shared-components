@@ -16,7 +16,7 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   variant?: NX_DRAWER_VARIANT_TYPE | null;
   headerTitle: ReactNode;
   headerSubtitle?: ReactNode;
-  headerParagraph?: ReactNode;
+  headerDescription?: ReactNode;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -24,5 +24,5 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   variant: PropTypes.oneOf(NX_DRAWER_VARIANTS),
   headerTitle: PropTypes.node.isRequired,
   headerSubtitle: PropTypes.node,
-  headerParagraph: PropTypes.node
+  headerDescription: PropTypes.node
 };

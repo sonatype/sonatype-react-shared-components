@@ -96,11 +96,11 @@ $-box-shadow-offset: 52px;
   column-gap: var(--nx-spacing-2x);
   grid-template: "title cancel-button"
                  "subtitle subtitle"
-                 "paragraph paragraph" / auto min-content;
+                 "description description" / auto min-content;
   height: min-content;
   padding-bottom: var(--nx-spacing-6x);
 
-  &__cancel-button, &__title, &__subtitle, &__paragraph {
+  &__cancel-button, &__title, &__subtitle, &__description {
     margin: 0;
   }
 
@@ -119,9 +119,9 @@ $-box-shadow-offset: 52px;
     margin-top: var(--nx-spacing-2x);
   }
 
-  &__paragraph {
+  &__description {
     color: var(--nx-swatch-grey-30);
-    grid-area: paragraph;
+    grid-area: description;
     margin-top: var(--nx-spacing-2x);
   }
 }

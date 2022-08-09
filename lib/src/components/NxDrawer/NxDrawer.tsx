@@ -23,7 +23,7 @@ const _NxDrawer = (props: Props) => {
     variant,
     headerTitle,
     headerSubtitle,
-    headerParagraph,
+    headerDescription,
     ...attrs
   } = props;
 
@@ -48,8 +48,8 @@ const _NxDrawer = (props: Props) => {
 
   const subtitleContent = headerSubtitle ?
     <h3 className="nx-h3 nx-drawer-header__subtitle">{headerSubtitle}</h3> : null;
-  const paragraphContent = headerParagraph ?
-    <p className="nx-p nx-drawer-header__paragraph">{headerParagraph}</p> : null;
+  const descriptionContent = headerDescription ?
+    <p className="nx-p nx-drawer-header__description">{headerDescription}</p> : null;
 
   return (
     <AbstractDialog ref={dialogRef}
@@ -70,7 +70,7 @@ const _NxDrawer = (props: Props) => {
             {headerTitle}
           </h2>
           {subtitleContent}
-          {paragraphContent}
+          {descriptionContent}
         </header>
         {children}
       </div>

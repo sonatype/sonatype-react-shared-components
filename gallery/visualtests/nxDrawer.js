@@ -66,13 +66,13 @@ describe('NxDrawer', function() {
     it('looks right', simpleDrawerTest('nx-drawer-with-subtitle', 'nx-drawer-with-subtitle-open-button'));
   });
 
-  describe('NxDrawer With Paragraph', function() {
-    it('looks right', simpleDrawerTest('nx-drawer-with-paragraph', 'nx-drawer-with-paragraph-open-button'));
+  describe('NxDrawer With Description', function() {
+    it('looks right', simpleDrawerTest('nx-drawer-with-description', 'nx-drawer-with-description-open-button'));
   });
 
-  describe('NxDrawer With Subtitle and Paragraph', function() {
-    it('looks right', simpleDrawerTest('nx-drawer-with-subtitle-and-paragraph',
-        'nx-drawer-with-subtitle-and-paragraph-open-button'));
+  describe('NxDrawer With Subtitle and Description', function() {
+    it('looks right', simpleDrawerTest('nx-drawer-with-subtitle-and-description',
+        'nx-drawer-with-subtitle-and-description-open-button'));
   });
 
   describe('NxDrawer + NxDropdown ESC Closing Behavior', function() {

@@ -249,18 +249,18 @@ describe('NxDrawer', function() {
       expect(cancelButton).toHaveClassName('nx-drawer-header__cancel-button');
     });
 
-    it('shows subtitle and paragraph when specified', function() {
+    it('shows subtitle and description when specified', function() {
       const subtitleText = 'Subtitle in the Header';
-      const paragraphText = 'Paragraph text in the Header';
+      const descriptionText = 'Description text in the Header';
       const header = getShallow({
         headerSubtitle: subtitleText,
-        headerParagraph: paragraphText
+        headerDescription: descriptionText
       });
       const subtitle = header.find('h3.nx-drawer-header__subtitle');
-      const paragraph = header.find('p.nx-drawer-header__paragraph');
+      const description = header.find('p.nx-drawer-header__description');
 
       expect(subtitle).toHaveText(subtitleText);
-      expect(paragraph).toHaveText(paragraphText);
+      expect(description).toHaveText(descriptionText);
     });
 
     it('executes onCancel when header cancel button is clicked', function() {

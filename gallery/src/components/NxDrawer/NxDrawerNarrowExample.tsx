@@ -11,7 +11,7 @@ import { NxDrawer, NxButton, NxButtonBar, NxP } from '@sonatype/react-shared-com
 export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
 
-  const paragraph = (
+  const description = (
     <>
       Brownie dessert candy wafer macaroon. Marzipan dragée liquorice biscuit icing I love.
       Wafer pastry sweet candy canes pie pie icing brownie. Wafer jelly cake bear claw I
@@ -31,7 +31,7 @@ export default function NxDrawerExample() {
                   onCancel={() => setShowDrawer(false)}
                   variant="narrow"
                   headerTitle="An Example of Narrow NxDrawer Component"
-                  headerParagraph={paragraph}
+                  headerDescription={description}
                   aria-labelledby="nx-drawer-narrow">
           <NxDrawer.Content>
             <NxP>
