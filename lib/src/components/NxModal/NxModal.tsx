@@ -27,7 +27,7 @@ const _NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onC
 
   const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
       ariaLabels = pick(ariaLabelAttrNames, attrs),
-      attrsWithoutLabels = omit([...ariaLabelAttrNames], attrs);
+      attrsWithoutLabels = omit(ariaLabelAttrNames, attrs);
 
   return (
     <AbstractDialog role={role || 'dialog'}
