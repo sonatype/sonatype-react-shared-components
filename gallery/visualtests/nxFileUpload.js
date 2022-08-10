@@ -214,4 +214,10 @@ describe('NxFileUpload', function() {
       expect(await isInDocument(noFileMessage)).toBe(true);
     });
   });
+
+  describe('when disabled', function() {
+    const disabledExampleSelector = '#nx-file-upload-disabled-example .gallery-example-live';
+
+    it('looks right', simpleTest(disabledExampleSelector));
+  });
 });
