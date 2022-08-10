@@ -11,9 +11,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFileUploadExample from './NxFileUploadExample';
 import NxFileUploadComplexExample from './NxFileUploadComplexExample';
+import NxFileUploadDisabledExample from './NxFileUploadDisabledExample';
 
 const nxFileUploadCode = require('./NxFileUploadExample?raw');
 const nxFileUploadComplexCode = require('./NxFileUploadComplexExample?raw');
+const nxFileUploadDisabledCode = require('./NxFileUploadDisabledExample?raw');
 
 const NxTextInputPage = () =>
   <>
@@ -100,6 +102,17 @@ const NxTextInputPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>disabled</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                When true, the component is disabled. On a native level, both the
+                file <NxCode>&lt;input&gt;</NxCode> and the button are disabled. This state is only supported when
+                no file selection has been made (e.g. when <NxCode>files</NxCode> is null).
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>ref</NxTable.Cell>
               <NxTable.Cell>Ref&lt;HTMLDivElement&gt;</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
@@ -143,6 +156,13 @@ const NxTextInputPage = () =>
       An example of <NxCode>NxFileUpload</NxCode> with required-field validation and various extra props. Notice that
       while the <NxCode>id</NxCode> and <NxCode>accept</NxCode> get applied to the <NxCode>&lt;input&gt;</NxCode>,
       the <NxCode>className</NxCode> gets applied to the enclosing <NxCode>&lt;div&gt;</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Disabled Example"
+                        id="nx-file-upload-disabled-example"
+                        liveExample={NxFileUploadDisabledExample}
+                        codeExamples={nxFileUploadDisabledCode}>
+      A disabled example of an <NxCode>NxFileUpload</NxCode>.
     </GalleryExampleTile>
   </>;
 

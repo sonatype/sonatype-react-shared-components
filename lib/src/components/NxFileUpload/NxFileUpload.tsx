@@ -51,6 +51,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         isRequired,
         isPristine,
         id,
+        disabled,
         ...attrs
       } = props,
       file = files?.item(0),
@@ -92,6 +93,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
     <div className={className} >
       <input ref={inputRef}
              { ...attrs }
+             disabled={disabled}
              onChange={onChange}
              id={inputId}
              className="nx-file-upload__input"
@@ -102,6 +104,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
              aria-errormessage={showError ? validationErrorId : undefined} />
       {/* Keynav and screenreaders can ignore the button itself in favor of the <input> */}
       <NxButton type="button"
+                disabled={disabled}
                 variant="tertiary"
                 onClick={openPicker}
                 tabIndex={-1}
