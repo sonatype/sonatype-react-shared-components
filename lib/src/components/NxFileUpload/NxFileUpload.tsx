@@ -77,6 +77,11 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
     inputRef.current?.click();
   }
 
+  function onDismiss() {
+    inputRef.current?.focus();
+    onChangeProp(null);
+  }
+
   useEffect(function() {
     if (inputRef.current) {
       if (isFileSelected) {
@@ -104,6 +109,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
              aria-errormessage={showError ? validationErrorId : undefined} />
       {/* Keynav and screenreaders can ignore the button itself in favor of the <input> */}
       <NxButton type="button"
+                aria-hidden={true}
                 disabled={disabled}
                 variant="tertiary"
                 onClick={openPicker}
@@ -112,7 +118,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         Choose File
       </NxButton>
       { isFileSelected ?
-        <SelectedFile descriptionId={descriptionId} file={file} onDismiss={() => onChangeProp(null)} /> :
+        <SelectedFile descriptionId={descriptionId} file={file} onDismiss={onDismiss} /> :
         <span id={descriptionId} className={noFileMessageClassName}>
           <span>No file selected</span>
           <NxFontAwesomeIcon icon={faExclamationCircle} />
