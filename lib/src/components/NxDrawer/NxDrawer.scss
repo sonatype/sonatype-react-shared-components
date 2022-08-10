@@ -9,7 +9,7 @@
 
 $-box-shadow-offset: 52px;
 
-.nx-drawer {
+.nx-drawer-backdrop {
   // Undo styles that chrome applies to <dialog> elements
   border: initial;
   height: initial;
@@ -29,17 +29,25 @@ $-box-shadow-offset: 52px;
     pointer-events: auto;
   }
 
-  background: transparent;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.nx-drawer {
+  background: white;
   box-sizing: border-box;
   height: 100%;
   padding-left: $-box-shadow-offset;
-  position: fixed;
   right: 0;
   top: 0;
   transform: translateX(100%);
   width: 520px + $-box-shadow-offset;
-  z-index: 100;
-
+  position: absolute;
+  
   &--with-global-header {
     $global-header-height: 43px;
     height: calc(100% - #{$global-header-height});

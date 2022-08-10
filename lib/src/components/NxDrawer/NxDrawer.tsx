@@ -51,15 +51,20 @@ const _NxDrawer = (props: Props) => {
   const descriptionContent = headerDescription ?
     <p className="nx-p nx-drawer-header__description">{headerDescription}</p> : null;
 
+  const handleBackdropClick: React.MouseEventHandler<HTMLDialogElement> = (event) => {
+    if (event.target === event.currentTarget) {
+      closeDrawer();
+    }
+  };
+
   return (
     <AbstractDialog ref={dialogRef}
-                    className={classes}
+                    className="nx-drawer-backdrop"
                     onCancel={closeDrawer}
-                    cancelOnClickOutside={true}
-                    cancelOnClickOutsideTargetClassName="nx-drawer__inner"
                     onTransitionEnd={handleTransitionEnd}
+                    onClick={handleBackdropClick}
                     {...attrs}>
-      <div className="nx-drawer__inner">
+      <div className={classes}>
         <header className="nx-drawer-header">
           <NxCloseButton className="nx-drawer-header__cancel-button"
                          type="button"
