@@ -8,10 +8,11 @@ import React, {
   forwardRef,
   KeyboardEvent,
   useEffect,
-  useImperativeHandle,
   useRef,
   useState
 } from 'react';
+
+import useMergedRef from '@react-hook/merged-ref';
 
 import { Props, DialogContextValue } from './types';
 
@@ -64,7 +65,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   // value in order for it to be tracked.
   const [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
 
-  useImperativeHandle(ref, () => dialogRef.current as HTMLDialogElement);
+  useMergedRef(ref, dialogRef);
 
   function dialogKeydownListener(evt: KeyboardEvent<HTMLDialogElement>) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
