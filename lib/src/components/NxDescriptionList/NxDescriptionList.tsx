@@ -8,9 +8,11 @@ import withClass from '../../util/withClass';
 
 import NxDescriptionListButtonItem from './NxDescriptionListButtonItem';
 
-export const NxDescriptionList = Object.assign(withClass('dl', 'nx-list nx-list--description-list'), {
+const NxDescriptionList = Object.assign(withClass('dl', 'nx-list nx-list--description-list'), {
   Item: withClass('div', 'nx-list__item'),
   Term: withClass('dt', 'nx-list__term'),
   Description: withClass('dd', 'nx-list__description'),
   ButtonItem: NxDescriptionListButtonItem
 });
+
+export default NxDescriptionList;
