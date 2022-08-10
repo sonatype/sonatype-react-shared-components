@@ -64,10 +64,9 @@ const NxListDescriptionExample = () =>
           </a>
         </dd>
       </div>
-      <NxDescriptionList.ButtonItem onClick={() => alert('You clicked the NxDescriptionList.ButtonItem component.')}>
-        <dt>This is the NxDescriptionList.ButtonItem component</dt>
-        <dd>Clicking this row will give you an alert message.</dd>
-      </NxDescriptionList.ButtonItem>
+      <NxDescriptionList.ButtonItem onClick={() => alert('You clicked the NxDescriptionList.ButtonItem component.')}
+                                    term="This is the NxDescriptionList.ButtonItem component"
+                                    description="Clicking this row will give you an alert message." />
     </dl>
   </div>;
 

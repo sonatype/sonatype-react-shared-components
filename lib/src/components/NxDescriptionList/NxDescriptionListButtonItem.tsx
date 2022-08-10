@@ -9,9 +9,9 @@ import classnames from 'classnames';
 import { includesDisabledClass } from '../../util/classUtil';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NxFontAwesomeIcon } from '../..';
-import { NxDescriptionListButtonItemProps, nxDescriptionListButtonItemPropTypes} from './types';
+import { ButtonItemProps, buttonItemPropTypes } from './types';
 
-const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxDescriptionListButtonItemProps>(
+const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
     function NxDescriptionListButtonItem(props) {
       const {
             children,
@@ -20,22 +20,22 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxDescriptionList
             selected: selectedProp,
             buttonClassName,
             buttonAttributes,
+            term,
+            description,
             ...attrs
           } = props,
           selected = selectedProp ?? undefined,
           divClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className),
           buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled });
 
-      /* Using children[0].props.children allows for a more natural API for the consuming developer. */
       return (
         <div className={divClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <dt className="nx-list__term">
             <button aria-disabled={includesDisabledClass(buttonClassNames)}
                     className={buttonClassNames}
                     disabled={disabled ? true : false}
-                    {...buttonAttributes}
-            >
-              {children[0].props.children}
+                    {...buttonAttributes}>
+              <span className="nx-list__text">{term}</span>
             </button>
           </dt>
           <dd className="nx-list__description">
@@ -43,7 +43,7 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxDescriptionList
                     className={buttonClassNames}
                     disabled={disabled ? true : false}
                     {...buttonAttributes}>
-              <span className="nx-list__text">{children[1].props.children}</span>
+              <span className="nx-list__text">{description}</span>
               <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
             </button>
           </dd>
@@ -52,6 +52,6 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxDescriptionList
     }
 );
 
-NxDescriptionListButtonItem.propTypes = nxDescriptionListButtonItemPropTypes;
+NxDescriptionListButtonItem.propTypes = buttonItemPropTypes;
 
 export default NxDescriptionListButtonItem;
