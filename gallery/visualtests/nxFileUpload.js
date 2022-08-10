@@ -104,7 +104,7 @@ describe('NxFileUpload', function() {
       it('has a dark border when hovered', hoverTest(complexExampleSelector, btnSelector));
       it('has a dark border and blue glow  when focused and hovered',
           focusAndHoverTest(complexExampleSelector, btnSelector));
-      it('has a dark border when clicked', focusAndHoverTest(complexExampleSelector, btnSelector));
+      it('has a dark border and grey background when clicked', clickTest(complexExampleSelector, btnSelector));
     });
   });
 
