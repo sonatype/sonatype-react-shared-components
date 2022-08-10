@@ -4,7 +4,35 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+const fs = require('fs');
+const path = require('path');
+const tmp = require('tmp-promise');
+
 const { setupBrowser } = require('./testUtils');
+
+async function fillFile(path, numBytes) {
+  const MAX_BUFFER_SIZE = 1 << 20, // 1 MiB
+      writeStream = fs.createWriteStream(path);
+
+  let buffer;
+
+  for (let i = 0; i < numBytes; i += MAX_BUFFER_SIZE) {
+    const bufferSize = Math.min(MAX_BUFFER_SIZE, numBytes - i);
+
+    if (!(buffer && buffer.length === bufferSize)) {
+      buffer = await Buffer.alloc(bufferSize);
+    }
+
+    writeStream.write(buffer);
+  }
+
+  return new Promise((resolve, reject) => {
+    writeStream.on('finish', resolve);
+    writeStream.on('error', reject);
+
+    writeStream.end();
+  });
+}
 
 describe('NxFileUpload', function() {
   const {
@@ -22,6 +50,33 @@ describe('NxFileUpload', function() {
   const complexExampleSelector = '#nx-file-upload-complex-example .gallery-example-live',
       btnSelector = `${complexExampleSelector} .nx-file-upload__select-btn`;
 
+  // Files of varying sizes to test the file size display in the component.  Due to the size
+  // of the largest of these files, there are problems with storing them in git so they
+  // are generated on the fly in beforeAll.
+  let files, tmpDir;
+
+  beforeAll(async function() {
+    tmpDir = await tmp.dir({ unsafeCleanup: true });
+
+    files = {
+      bytes: path.join(tmpDir.path, 'bytes'),
+      kilobytes: path.join(tmpDir.path, 'kilobytes'),
+      megabytes: path.join(tmpDir.path, 'megabytes'),
+      gigabytes: path.join(tmpDir.path, 'gigabytes-gigalongname')
+    }
+
+    const bytesPromise = fillFile(files.bytes, 14),
+        kilobytesPromise = fillFile(files.kilobytes, 2000),
+        megabytesPromise = fillFile(files.megabytes, 1500100),
+        gigabytesPromise = fillFile(files.gigabytes, 1200000100);
+
+    await Promise.all([bytesPromise, kilobytesPromise, megabytesPromise, gigabytesPromise]);
+  });
+
+  afterAll(async function() {
+    await tmpDir.cleanup();
+  });
+
   it('looks right when pristine', simpleTest(complexExampleSelector));
   it('has a blue glow around the button when focused', focusTest(complexExampleSelector, btnSelector));
   it('has a dark border around the button when hovered', hoverTest(complexExampleSelector, btnSelector));
@@ -34,7 +89,8 @@ describe('NxFileUpload', function() {
     beforeEach(async function() {
       const [input] = await waitAndGetElements(`${complexExampleSelector} input[type=file]`);
 
-      await input.uploadFile('visualtests/resources/file-upload-bytes.txt');
+      // Use the gigabytes file because it has a long filename that will cause truncation
+      await input.uploadFile(files.gigabytes);
     });
 
     it('shows the selected file', simpleTest(complexExampleSelector));
@@ -55,7 +111,7 @@ describe('NxFileUpload', function() {
   describe('when required but empty and non-pristine', function() {
     beforeEach(async function() {
       const [input] = await waitAndGetElements(`${complexExampleSelector} input[type=file]`);
-      await input.uploadFile('visualtests/resources/file-upload-bytes.txt');
+      await input.uploadFile(files.bytes);
 
       const [dismissBtn] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file__dismiss-btn`);
       await dismissBtn.click();
@@ -69,18 +125,19 @@ describe('NxFileUpload', function() {
   });
 
   describe('functionality', function() {
+
     it('opens the file picker when the select button is clicked and displays the result', async function() {
       const [button] = await waitAndGetElements(`${complexExampleSelector} .nx-file-upload__select-btn`);
 
       const [fileChooser] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
 
-      await fileChooser.accept(['visualtests/resources/file-upload-bytes.txt']);
+      await fileChooser.accept([files.bytes]);
 
       const [selectedFile] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file`),
           textContent = await selectedFile.evaluate(e => e.textContent);
 
-      expect(textContent).toMatch('file-upload-bytes.txt');
-      expect(textContent).not.toMatch('visualtests/resources');
+      expect(textContent).toMatch(path.basename(files.bytes));
+      expect(textContent).not.toMatch(path.dirname(files.bytes));
       expect(textContent).toMatch('14.0 B');
     });
 
@@ -89,7 +146,7 @@ describe('NxFileUpload', function() {
 
       const [fileChooser1] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
 
-      await fileChooser1.accept(['visualtests/resources/file-upload-kilobytes.txt']);
+      await fileChooser1.accept([files.kilobytes]);
 
       const [selectedFile1] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file`),
           textContent1 = await selectedFile1.evaluate(e => e.textContent);
@@ -98,7 +155,7 @@ describe('NxFileUpload', function() {
 
       const [fileChooser2] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
 
-      await fileChooser2.accept(['visualtests/resources/file-upload-megabytes.txt']);
+      await fileChooser2.accept([files.megabytes]);
 
       const [selectedFile2] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file`),
           textContent2 = await selectedFile2.evaluate(e => e.textContent);
@@ -107,7 +164,7 @@ describe('NxFileUpload', function() {
 
       const [fileChooser3] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
 
-      await fileChooser3.accept(['visualtests/resources/file-upload-gigabytes.txt']);
+      await fileChooser3.accept([files.gigabytes]);
 
       const [selectedFile3] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file`),
           textContent3 = await selectedFile3.evaluate(e => e.textContent);
@@ -120,7 +177,7 @@ describe('NxFileUpload', function() {
 
       const [fileChooser] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
 
-      await fileChooser.accept(['visualtests/resources/file-upload-bytes.txt']);
+      await fileChooser.accept([files.bytes]);
 
       const [selectedFile, dismissBtn] = await waitAndGetElements(
         `${complexExampleSelector} .nx-selected-file`,
@@ -141,7 +198,7 @@ describe('NxFileUpload', function() {
 
       const [fileChooser1] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
 
-      await fileChooser1.accept(['visualtests/resources/file-upload-bytes.txt']);
+      await fileChooser1.accept([files.bytes]);
 
       const [selectedFile] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file`);
 
@@ -151,7 +208,6 @@ describe('NxFileUpload', function() {
       // clicking Cancel in the file picker will cause the file to become unselected. On Firefox however it won't
       await fileChooser2.accept([]);
 
-      await getPage().screenshot({ path: '/tmp/screenshot.png' });
       const [noFileMessage] = await waitAndGetElements(`${complexExampleSelector} .nx-file-upload__no-file-message`);
 
       expect(await isInDocument(selectedFile)).toBe(false);
