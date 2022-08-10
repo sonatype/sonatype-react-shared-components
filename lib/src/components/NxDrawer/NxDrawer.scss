@@ -97,7 +97,6 @@ $-box-shadow-offset: 52px;
   grid-template: "title cancel-button"
                  "subtitle subtitle"
                  "description description" / auto min-content;
-  height: min-content;
   padding-bottom: var(--nx-spacing-6x);
 
   &__cancel-button, &__title, &__subtitle, &__description {
