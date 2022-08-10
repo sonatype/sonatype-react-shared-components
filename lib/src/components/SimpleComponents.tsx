@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import withClass from '../util/withClass';
-import NxDescriptionListButtonItem from './NxList/NxDescriptionListButtonItem';
 
 // Simple convenience components that are just a particular tag with a particular classname, with the ability
 // to add all attrs that you would normally be able to add to that tag (including more classnames)
@@ -78,11 +77,4 @@ export const NxTableContainer = Object.assign(withClass('div', 'nx-table-contain
 
 export const NxGlobalHeader = Object.assign(withClass('header', 'nx-global-header'), {
   Actions: withClass('div', 'nx-global-header__actions')
-});
-
-export const NxDescriptionList = Object.assign(withClass('dl', 'nx-list nx-list--description-list'), {
-  Item: withClass('div', 'nx-list__item'),
-  Term: withClass('dt', 'nx-list__term'),
-  Description: withClass('dd', 'nx-list__description'),
-  ButtonItem: NxDescriptionListButtonItem
 });
