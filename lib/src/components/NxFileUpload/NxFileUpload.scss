@@ -62,7 +62,9 @@
   border-radius: math.div($height, 2);
   box-sizing: border-box;
   display: inline-flex;
-  padding-left: 20px; // TODO confirm with Design, it's non-standard
+
+  // Deliberately non-standard, Design says standard sizes don't look right with the rounded borders here
+  padding-left: 20px;
   height: $height;
   width: 300px;
 
@@ -114,6 +116,10 @@
 
     &:hover, &:active {
       border-color: var(--nx-swatch-grey-05);
+    }
+
+    &:active {
+      background-color: var(--nx-swatch-indigo-90);
     }
   }
 }
