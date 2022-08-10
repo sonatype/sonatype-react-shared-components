@@ -28,7 +28,7 @@ function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps) {
 
   return (
     <span className="nx-selected-file">
-      <span id={descriptionId}>
+      <span className="nx-selected-file__info" id={descriptionId}>
         <NxOverflowTooltip>
           <span className="nx-selected-file__name">{file.name}</span>
         </NxOverflowTooltip>

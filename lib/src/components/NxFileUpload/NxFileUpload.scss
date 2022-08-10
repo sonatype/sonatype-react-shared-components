@@ -66,13 +66,20 @@
   height: $height;
   width: 300px;
 
+  &__info {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
   &__name {
     @include nx-text-helpers.truncate-ellipsis;
 
     color: var(--nx-swatch-indigo-30);
+    flex: 0 1 auto;
     font-weight: bold;
     margin-right: var(--nx-spacing-3x);
-    min-width: 0;
   }
 
   &__size {
