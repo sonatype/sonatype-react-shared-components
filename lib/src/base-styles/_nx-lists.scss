@@ -196,56 +196,58 @@
 .nx-list__item--link, // deprecated
 .nx-list--clickable .nx-list__item // deprecated
 {
-  &, > .nx-list__link, > .nx-list__btn {
-    color: inherit;
+  &, > .nx-list__term, > .nx-list__description {
+    &, > .nx-list__link, > .nx-list__btn {
+      color: inherit;
 
-    &.selected {
-      &, &:hover {
-        background-color: var(--nx-color-interactive-background-selected);
+      &.selected {
+        &, &:hover {
+          background-color: var(--nx-color-interactive-background-selected);
+        }
       }
-    }
-
-    &:hover {
-      background-color: var(--nx-color-interactive-background-hover);
-      cursor: pointer;
-    }
-
-    &:active {
-      background-color: var(--nx-color-interactive-background-active);
-    }
-
-    &:focus {
-      box-shadow: var(--nx-box-shadow-focus);
-      border-color: var(--nx-color-interactive-border-focus);
-      outline: none;
-    }
-
-    &.nx-list__item--empty {
-      @include nx-text-helpers.regular;
-
-      color: var(--nx-color-text);
-    }
-
-    &.disabled, &[disabled] {
-      color: var(--nx-color-text-disabled);
 
       &:hover {
-        background-color: transparent;
-        cursor: default;
+        background-color: var(--nx-color-interactive-background-hover);
+        cursor: pointer;
+      }
+
+      &:active {
+        background-color: var(--nx-color-interactive-background-active);
+      }
+
+      &:focus {
+        box-shadow: var(--nx-box-shadow-focus);
+        border-color: var(--nx-color-interactive-border-focus);
+        outline: none;
+      }
+
+      &.nx-list__item--empty {
+        @include nx-text-helpers.regular;
+
+        color: var(--nx-color-text);
+      }
+
+      &.disabled, &[disabled] {
+        color: var(--nx-color-text-disabled);
+
+        &:hover {
+          background-color: transparent;
+          cursor: default;
+        }
+
+        > .nx-chevron {
+          display: none;
+        }
       }
 
       > .nx-chevron {
-        display: none;
+        align-self: center;
+        color: var(--nx-color-text-dark);
+        grid-area: actions;
+
+        // custom sizing for the icon, brings it up to 13px
+        font-size: 21px;
       }
-    }
-
-    > .nx-chevron {
-      align-self: center;
-      color: var(--nx-color-text-dark);
-      grid-area: actions;
-
-      // custom sizing for the icon, brings it up to 13px
-      font-size: 21px;
     }
   }
 }
@@ -290,17 +292,44 @@
 }
 
 .nx-list__term {
-  flex: none;
-  font-weight: 600;
-  overflow-wrap: break-word;
-  width: 250px;
+  &, > .nx-list__link, > .nx-list__btn {
+    border: none;
+    flex: none;
+    font-weight: 600;
+    overflow-wrap: break-word;
+    padding: 0;
+    width: 250px;
+  }
 }
 
 .nx-list__description {
-  @include nx-container-helpers.container-vertical;
+  &, > .nx-list__link, > .nx-list__btn {
+    @include nx-container-helpers.container-vertical;
 
-  margin-left: var(--nx-spacing-6x);
-  max-width: var(--nx-width-text-wrapping);
+    flex: 1;
+    margin-left: var(--nx-spacing-6x);
+  }
+
+  > .nx-list__link, > .nx-list__btn {
+    border: none;
+    display: grid;
+    grid-template: "list-text actions" / 1fr auto;
+    padding: 0;
+
+    > .nx-list__text {
+      font-weight: normal;
+    }
+  }
+
+  .nx-list__text {
+    max-width: var(--nx-width-text-wrapping);
+  }
+}
+
+.nx-list__item--clickable {
+  > .nx-list__term, > .nx-list__description {
+    display: contents;
+  }
 }
 
 .nx-list--numbered {

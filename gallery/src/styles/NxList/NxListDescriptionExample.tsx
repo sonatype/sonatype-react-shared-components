@@ -46,7 +46,7 @@ const NxListDescriptionExample = () =>
         </dt>
         <dd className="nx-list__description">
           <button className="nx-list__btn" onClick={() => { alert('You clicked a clickable row!'); }}>
-            Clicking this row will create an alert
+            <span className="nx-list__text">Clicking this row will create an alert</span>
             <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
           </button>
         </dd>
@@ -59,7 +59,7 @@ const NxListDescriptionExample = () =>
         </dt>
         <dd className="nx-list__description">
           <a href="https://developer.mozilla.org/en-US/" className="nx-list__link">
-            This clicking this row will take you to MDN.
+            <span className="nx-list__text">This clicking this row will take you to MDN.</span>
             <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
           </a>
         </dd>

@@ -42,9 +42,8 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, NxDescriptionList
             <button aria-disabled={includesDisabledClass(buttonClassNames)}
                     className={buttonClassNames}
                     disabled={disabled ? true : false}
-                    {...buttonAttributes}
-              >
-              {children[1].props.children}
+                    {...buttonAttributes}>
+              <span className="nx-list__text">{children[1].props.children}</span>
               <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
             </button>
           </dd>
