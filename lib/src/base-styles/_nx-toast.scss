@@ -23,9 +23,10 @@
   @include nx-container-helpers.container-vertical;
   margin-top: var(--nx-spacing-2x);
   position: fixed;
-  overflow:hidden;
+  //overflow:hidden;
+  width: 500px;
   // border: 2px solid black;
-  transition: all 0.1s linear;
+  //transition: all 0.1s linear;
 }
 
 .nx-toast {
@@ -36,19 +37,12 @@
   // overflow:hidden;
   // top: 0px;
   // left: -1000px;
-  right: -500px;
-  opacity:0;
+  //right: -500px;
+  //opacity:0;
+  animation: animationIn 0.4s linear forwards;
   // transition: all 0.3s ease-in-out;
 
-  &.nx-toast--visible {
-    // top: 0;
-    // opacity: 1;
-    // // left:0px;
-    right: 0;
-    animation: animationIn 0.4s linear;
-    animation-fill-mode: forwards;
-  }
-  &.nx-toast--slide-out {
+  &.nx-toast--closing {
     animation: animationOut 0.4s linear;
     // animation-fill-mode:forwards;
   }

@@ -42,11 +42,11 @@ const NxToastContainer = (props: NxToastContainerProps) => {
     return null;
   }
 
-  const style = {maxHeight: `${toasts.length * 74}px`};
+  //const style = {maxHeight: `${toasts.length * 74}px`};
 
   return createPortal(
     <div className="nx-toast__wrapper" ref={toastContainerRef}>
-      <div className={classes} style={style}>
+      <div className={classes}>
         {toasts.map(toast => (
           <NxToast key={toast.toastId}
                    toastId={toast.toastId}

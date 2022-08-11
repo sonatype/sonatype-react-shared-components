@@ -19,10 +19,10 @@ const NxToast = (props: NxToastProps) => {
       toastClass = toastTypeMap[type].class,
       toastIcon = toastTypeMap[type].icon,
       toastIconLabel = toastTypeMap[type].iconLabel,
-      [toastIsActive, setToastIsActive] = useState(false),
-      classes = classnames('nx-toast', className, toastClass,
-          {'nx-toast--visible': toastIsActive}, {'nx-toast--slide-out': !toastIsActive}
-      ),
+      [isClosing, setClosing] = useState(false),
+      classes = classnames('nx-toast', className, toastClass, {
+        'nx-toast--closing': isClosing
+      }),
       toastContext = useContext(ToastContext),
       closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -32,24 +32,21 @@ const NxToast = (props: NxToastProps) => {
     if (closeBtn) {
       closeBtn.focus();
     }
-
-    //When component is mounted, add class "nx-toast--visible" to trigger animation
-    setToastIsActive(true);
   }, []);
 
   const handleCloseClick = () => {
-    setToastIsActive(false);
+    setClosing(true);
   };
 
-  const handleTransitionEnd = () => {
-    if (!toastIsActive) {
+  const handleAnimationEnd = () => {
+    if (isClosing) {
       toastContext?.removeToast(toastId);
     }
   };
 
   return (
     <div role="alert"
-         onAnimationEnd={handleTransitionEnd}
+         onAnimationEnd={handleAnimationEnd}
          { ...otherProps }
          className={classes}
          aria-atomic={true}>
