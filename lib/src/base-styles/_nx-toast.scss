@@ -20,8 +20,6 @@
 }
 
 .nx-toast__container {
-  @include nx-container-helpers.container-vertical;
-  margin-top: var(--nx-spacing-2x);
   position: fixed;
   //overflow:hidden;
   width: 500px;
@@ -37,8 +35,8 @@
   // overflow:hidden;
   // top: 0px;
   // left: -1000px;
-  //right: -500px;
-  //opacity:0;
+  right: 0;
+  opacity: 1;
   animation: animationIn 0.4s linear forwards;
   // transition: all 0.3s ease-in-out;
 
@@ -50,7 +48,10 @@
 
 @keyframes animationIn {
   0% {
+    margin-top: 0;
     max-height: 0px;
+    padding-top: 0;
+    padding-bottom: 0;
     right: -500px;
     opacity: 0;
   }
@@ -60,11 +61,10 @@
     opacity: 0;
   }
   40% {
+    margin-top: var(--nx-spacing-2x);
     max-height:74px;
-  }
-  100% {
-    right: 0;
-    opacity: 1;
+    padding-top: var(--nx-spacing-4x);
+    padding-bottom: var(--nx-spacing-4x);
   }
 }
 
