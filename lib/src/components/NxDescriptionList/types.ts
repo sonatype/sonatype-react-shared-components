@@ -16,6 +16,14 @@ export interface ButtonItemProps extends HTMLAttributes<HTMLDivElement> {
   description: Exclude<ReactNode, undefined | null>;
 }
 
+export interface Props extends HTMLAttributes<HTMLElement> {
+  emptyMessage?: string | null;
+}
+
 export const buttonItemPropTypes: ValidationMap<ButtonItemProps> = {
+  // TODO
+};
+
+export const propTypes: ValidationMap<Props> = {
   // TODO
 };
