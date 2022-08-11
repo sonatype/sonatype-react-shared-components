@@ -10,22 +10,23 @@ import { NxCode,
   NxTable,
   NxTile,
   NxH2,
-  NxTextLink,
-  NxStatefulAccordion,
-  NxAccordion } from '@sonatype/react-shared-components';
+  NxTextLink
+  // NxStatefulAccordion,
+  // NxAccordion 
+} from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
-import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
+// import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 import NxToastExample from './NxToastExample';
 import NxToastVariationsExample from './NxToastVariationsExample';
 import NxToastMultipleExample from './NxToastMultipleExample';
-import CodeExample from '../../CodeExample';
+// import CodeExample from '../../CodeExample';
 
 const nxToastExampleCode = require('./NxToastExample?raw'),
     nxToastVariationsExampleCode = require('./NxToastVariationsExample?raw'),
-    nxToastMultipleExampleCode = require('./NxToastMultipleExample?raw'),
-    nxGlobalHeaderToastExampleCode = require('../../styles/NxGlobalHeader/NxGlobalHeaderToastExample?raw');
+    nxToastMultipleExampleCode = require('./NxToastMultipleExample?raw');
+    // nxGlobalHeaderToastExampleCode = require('../../styles/NxGlobalHeader/NxGlobalHeaderToastExample?raw');
 
 const NxToastPage = () =>
   <>
@@ -176,7 +177,7 @@ const NxToastPage = () =>
         </NxP>
       </NxTile.Content>
 
-      <NxTile.Content className= "nx-tile-content--accordion-container">
+      {/* <NxTile.Content className= "nx-tile-content--accordion-container">
         <NxStatefulAccordion>
           <NxAccordion.Header>
             <NxAccordion.Title>Example Code</NxAccordion.Title>
@@ -184,7 +185,7 @@ const NxToastPage = () =>
           <CodeExample content={nxGlobalHeaderToastExampleCode} />
           <GalleryTileFooter clipboardContent= {nxGlobalHeaderToastExampleCode}/>
         </NxStatefulAccordion>
-      </NxTile.Content>
+      </NxTile.Content> */}
     </NxTile>
   </>;
 

@@ -7,10 +7,12 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import { createPortal } from 'react-dom';
 import NxToast from './NxToast';
-import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
+import { NxToastContainerProps, nxToastContainerPropTypes} from './types';
 
 import ToastContext from './contexts';
 import classNames from 'classnames';
+
+export { Props } from './types';
 
 const NxToastContainer = (props: NxToastContainerProps) => {
   const { toasts } = props,

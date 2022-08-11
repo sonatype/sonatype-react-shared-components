@@ -319,7 +319,7 @@ export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemN
 
 export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
 
-export { default as NxToastProvider } from './components/NxToast/NxToastProvider';
+export { default as NxToastContainer } from './components/NxToast/NxToastContainer';
 
 export { default as useToast } from './util/useToast';
 

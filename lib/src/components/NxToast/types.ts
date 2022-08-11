@@ -48,11 +48,13 @@ export type ToastContextType = {
 
 //NxToastContainer
 export type NxToastContainerProps = {
-  toasts: ToastModel[] | []
+  // toasts: ToastModel[] | []
+  children: ReactNode | null
 };
 
 export const nxToastContainerPropTypes: PropTypes.ValidationMap<NxToastContainerProps> = {
-  toasts: PropTypes.array.isRequired
+  // toasts: PropTypes.array,
+  children: PropTypes.any
 };
 
 //NxToastProvider
