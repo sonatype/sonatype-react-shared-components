@@ -145,6 +145,7 @@ import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferLi
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
+import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -222,6 +223,7 @@ const pageConfig: PageConfig = {
   'Data Presentation': {
     'Binary Donut Chart': { content: NxBinaryDonutChartPage, type: 'react' },
     'Collapsible Items': { content: NxCollapsibleItemsPage, type: 'react' },
+    'Description List': { content: NxDescriptionListPage, type: 'react' },
     'List': { content: NxListPageV2, type: 'react' },
     'Table': { content: NxTablePage, type: 'react' },
     'Table Container': { content: NxTableContainerPage, type: 'html' },
