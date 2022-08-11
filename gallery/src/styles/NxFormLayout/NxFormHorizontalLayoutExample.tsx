@@ -10,7 +10,6 @@ import {
   NxCheckbox,
   NxFormGroup,
   NxFieldset,
-  useToggle,
   NxFormSelect,
   nxFormSelectStateHelpers,
   nxTextInputStateHelpers,
@@ -21,8 +20,11 @@ import {
   NxForm,
   NxFormRow,
   NxRadio,
-  NxStatefulTextInput
+  NxStatefulTextInput,
+  nxFieldsetStateHelpers
 } from '@sonatype/react-shared-components';
+
+const { useRadioGroupState, useCheckboxGroupState } = nxFieldsetStateHelpers;
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -42,32 +44,23 @@ export default function NxFormLayoutExample() {
     setSelectVal(evt.currentTarget.value);
   }
 
-  const [isRed, _toggleRed] = useToggle(false),
-      [isBlue, _toggleBlue] = useToggle(false),
-      [isGreen, _toggleGreen] = useToggle(false),
-      [colorCheckboxIsPristine, setColorCheckboxIsPristine] = useState(true),
+  const {
+    states: {
+      red: [isRed, toggleRed],
+      blue: [isBlue, toggleBlue],
+      green: [isGreen, toggleGreen]
+    },
+    isPristine: colorCheckboxIsPristine,
+    validationErrors: colorCheckboxValidationErrors
+  } = useCheckboxGroupState(
+      { red: false, blue: false, green: false },
+      selectedColors => selectedColors.length ? null : 'A color is required'
+  );
 
-      // toggle the specified color and update the pristine flag
-      toggleColor = (_toggleColor: () => void) => () => {
-        setColorCheckboxIsPristine(false);
-        _toggleColor();
-      },
-
-      toggleRed = toggleColor(_toggleRed),
-      toggleBlue = toggleColor(_toggleBlue),
-      toggleGreen = toggleColor(_toggleGreen),
-      colorCheckboxValidationErrors = !(isRed || isBlue || isGreen) ? 'A color is required' : null;
-
-  const [color, _setColor] = useState<string | null>(null),
-      [colorRadioIsPristine, setColorRadioIsPristine] = useState(true),
-
-      // toggle the specified color and update the pristine flag
-      setColor = (c: string | null) => {
-        setColorRadioIsPristine(false);
-        _setColor(c);
-      },
-
-      colorRadioValidationErrors = color === null ? 'A color is required' : null;
+  const [
+    { value: color, isPristine: colorRadioIsPristine, validationErrors: colorRadioValidationErrors },
+    setColor
+  ] = useRadioGroupState(undefined, c => c ? null : 'A color is required');
 
   const formValidationErrors =
       hasValidationErrors(combineValidationErrors(

@@ -29,14 +29,6 @@ describe('nx-form', function() {
     it('looks right', simpleTest(horizontablFormSelector));
   });
 
-  describe('nx-fieldset deprecated layout', function() {
-    const { simpleTest } = setupBrowser('#/pages/Fieldset (HTML)');
-
-    const selector = '#nx-fieldset-deprecated-example .nx-fieldset';
-
-    it('looks right', simpleTest(selector));
-  });
-
   // color-contrast rule doesn't work on elements with a background-image (such as nx-form-select)
   it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
 });

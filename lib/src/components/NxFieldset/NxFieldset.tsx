@@ -13,6 +13,8 @@ import { useUniqueId } from '../../util/idUtil';
 import { FormAriaContext } from '../NxForm/context';
 export { Props };
 
+import './NxFieldset.scss';
+
 const NxFieldset = forwardRef<HTMLFieldSetElement, Props>(
     function NxFieldset(props, ref) {
       const {

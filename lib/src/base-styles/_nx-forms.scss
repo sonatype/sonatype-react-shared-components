@@ -136,22 +136,3 @@
   margin-bottom: var(--nx-spacing-4x);
   max-width: var(--nx-width-text-wrapping);
 }
-
-// Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>
-// element, so it is inappropriate to use a <label> for the group as a whole.  Instead, a <fieldset> and <legend> can
-// be used, but you'll still typically want the <legend> styled the way a <label> on a text field would be using
-// .nx-label.
-.nx-fieldset {
-  @include nx-container-helpers.container-vertical;
-
-  border: 0;
-  margin: 0 0 var(--nx-spacing-8x) 0;
-  min-inline-size: auto;
-  padding: 0;
-
-  // when the validation message is present, we need to remove bottom margin from the last child _other than the
-  // validation message_ i.e. the second-to-last child
-  &.invalid > :nth-last-child(2) {
-    margin-bottom: 0;
-  }
-}

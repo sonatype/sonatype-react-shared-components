@@ -84,7 +84,6 @@ import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndica
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
 import NxFieldsetPage from './components/NxFieldset/NxFieldsetPage';
-import NxFieldsetStylePage from './styles/NxFieldset/NxFieldsetStylePage';
 import NxFormPage from './components/NxForm/NxFormPage';
 import NxTogglePage from './components/NxToggle/NxTogglePage';
 import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
@@ -261,7 +260,6 @@ const pageConfig: PageConfig = {
   'HTML Variants': {
     'Alert (HTML)': { content: NxAlertPage, type: 'html' },
     'Button (HTML)': { content: NxBtnPage, type: 'html' },
-    'Fieldset (HTML)': { content: NxFieldsetStylePage, type: 'html' },
     'Form Select (HTML)': { content: NxFormSelectPage, type: 'html' },
     'Icon': { content: NxIconPage, type: 'html' },
     'List (HTML)': { content: NxListPage, type: 'html' },

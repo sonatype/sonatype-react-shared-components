@@ -217,6 +217,7 @@ export { default as NxPolicyViolationIndicator, Props as NxPolicyViolationIndica
 
 export { default as NxFormGroup, Props as NxFormGroupProps } from './components/NxFormGroup/NxFormGroup';
 export { default as NxFieldset, Props as NxFieldsetProps } from './components/NxFieldset/NxFieldset';
+export * as nxFieldsetStateHelpers from './components/NxFieldset/stateHelpers';
 
 export { default as NxToggle, Props as NxToggleProps } from './components/NxToggle/NxToggle';
 export { default as NxStatefulToggle, Props as NxStatefulToggleProps }

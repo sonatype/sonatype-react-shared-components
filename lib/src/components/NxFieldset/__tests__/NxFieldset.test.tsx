@@ -5,89 +5,119 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
 import NxFieldset, { Props } from '../NxFieldset';
 import NxStatefulTextInput from '../../NxTextInput/stateful/NxStatefulTextInput';
-import NxStatefulCheckbox from '../../NxCheckbox/stateful/NxStatefulCheckbox';
+import { FormAriaContext } from '../../NxForm/context';
 
 describe('NxFieldset', function() {
   const minimalProps = {
         label: 'foo',
         children: <NxStatefulTextInput/>
       },
-      getShallow = getShallowComponent<Props>(NxFieldset, minimalProps);
+      quickRender = rtlRender<Props>(NxFieldset, minimalProps),
+      renderElement = rtlRenderElement<Props>(NxFieldset, minimalProps);
 
   it('renders a .nx-fieldset fieldset with the specified attributes', function() {
-    const component = getShallow({ id: 'groupId', lang: 'en_US' });
+    const component = renderElement({ id: 'groupId', lang: 'en_US' })!;
 
-    expect(component).toMatchSelector('fieldset.nx-fieldset');
-    expect(component).toHaveProp('id', 'groupId');
-    expect(component).toHaveProp('lang', 'en_US');
+    expect(component.tagName).toBe('FIELDSET');
+    expect(component).toHaveClass('nx-fieldset');
+    expect(component).toHaveAttribute('id', 'groupId');
+    expect(component).toHaveAttribute('lang', 'en_US');
   });
 
   it('adds nx-fieldset to the specified classnames', function() {
-    const component = getShallow({ className: 'asdf' });
+    const component = renderElement({ className: 'asdf' });
 
-    expect(component).toHaveClassName('asdf');
-    expect(component).toHaveClassName('nx-fieldset');
+    expect(component).toHaveClass('asdf');
+    expect(component).toHaveClass('nx-fieldset');
   });
 
   it('sets the ref on the fieldset', function() {
     const ref = React.createRef<HTMLFieldSetElement>(),
-
-        // note: the fragment is necessary to get around an enzyme issue:
-        // https://github.com/enzymejs/enzyme/issues/1852#issuecomment-433145879
-        component = mount(<><NxFieldset { ...minimalProps } ref={ref} /></>),
-        domNode = component.find('fieldset').getDOMNode();
+        domNode = render(<NxFieldset { ...minimalProps } ref={ref} />).container.firstElementChild!;
 
     expect(ref.current).toBe(domNode);
   });
 
   it('contains the specified children', function() {
-    const children = <NxStatefulCheckbox defaultChecked={false} className="foo" />,
-        component = getShallow({ children });
+    const children = <input type="checkbox" id="bar" className="foo" />,
+        { getByRole } = quickRender({ children }),
+        checkbox = getByRole('checkbox');
 
-    expect(component).toContainMatchingElement(NxStatefulCheckbox);
-    expect(component.find(NxStatefulCheckbox)).toHaveClassName('foo');
+    expect(checkbox).toHaveAttribute('id', 'bar');
+    expect(checkbox).toHaveClass('foo');
   });
 
-  describe('nx-legend', function() {
-    it('is a <legend> child of NxFieldset', function() {
-      expect(getShallow()).toContainMatchingElement('legend.nx-legend');
-    });
+  it('sets the name of the fieldset based on its legend', function() {
+    const { getByRole, container } = quickRender(),
+        fieldset = container.firstElementChild!,
+        legend = fieldset.querySelector('legend');
 
-    it('contains an nx-legend__text populated from the label prop', function() {
-      expect(getShallow().find('.nx-legend')).toContainMatchingElement('.nx-legend__text');
-      expect(getShallow().find('.nx-legend__text')).toHaveText('foo');
-
-      expect(getShallow({ label: <span className="foo">bar</span> }).find('.nx-legend__text')).toContainReact(
-        <span className="foo">bar</span>
-      );
-    });
-
-    it('has the nx-legend--optional class unless the isRequired prop is true', function() {
-      expect(getShallow().find('.nx-legend')).toHaveClassName('nx-legend--optional');
-      expect(getShallow({ isRequired: undefined }).find('.nx-legend')).toHaveClassName('nx-legend--optional');
-      expect(getShallow({ isRequired: null }).find('.nx-legend')).toHaveClassName('nx-legend--optional');
-      expect(getShallow({ isRequired: false }).find('.nx-legend')).toHaveClassName('nx-legend--optional');
-      expect(getShallow({ isRequired: true }).find('.nx-legend')).not.toHaveClassName('nx-legend--optional');
-    });
+    expect(getByRole('group', { name: 'foo' })).toBe(fieldset);
+    expect(legend).toHaveTextContent('foo');
   });
 
-  describe('nx-sub-label', function() {
-    it('is not present by default', function() {
-      expect(getShallow()).not.toContainMatchingElement('.nx-sub-label');
+  it('sets the nx-legend--optional class on the legend unless the isRequired prop is true', function() {
+    expect(renderElement()!.querySelector('.nx-legend')).toHaveClass('nx-legend--optional');
+    expect(renderElement({ isRequired: undefined })!.querySelector('.nx-legend')).toHaveClass('nx-legend--optional');
+    expect(renderElement({ isRequired: null })!.querySelector('.nx-legend')).toHaveClass('nx-legend--optional');
+    expect(renderElement({ isRequired: false })!.querySelector('.nx-legend')).toHaveClass('nx-legend--optional');
+    expect(renderElement({ isRequired: true })!.querySelector('.nx-legend')).not.toHaveClass('nx-legend--optional');
+  });
+
+  it('includes the sublabel content if specified', function() {
+    expect(renderElement({ sublabel: 'qwerty' })).toHaveTextContent('qwerty');
+
+    const elementWithHtmlSublabel = renderElement({ sublabel: <span className="foo">bar</span> })!,
+        sublabelContent = elementWithHtmlSublabel.querySelector('.foo');
+
+    expect(sublabelContent).toBeTruthy();
+    expect(sublabelContent).toHaveTextContent('bar');
+  });
+
+  describe('validation', function() {
+    it('adds an alert with the first specified validation message when isPristine is false', function() {
+      expect(quickRender().queryByRole('alert')).toBeNull();
+      expect(quickRender({ isPristine: true, validationErrors: 'asdf' }).queryByRole('alert')).toBeNull();
+      expect(quickRender({ isPristine: true }).queryByRole('alert')).toBeNull();
+
+      const withValidationErrors = quickRender({ isPristine: false, validationErrors: ['asdf', 'zxcv'] }),
+          validationErrorEl = withValidationErrors.getByRole('alert');
+
+      expect(validationErrorEl).toBeTruthy();
+      expect(validationErrorEl).toHaveTextContent('asdf');
     });
 
-    it('is populated with the sublabel content', function() {
-      expect(getShallow({ sublabel: 'qwerty' })).toContainMatchingElement('.nx-sub-label');
-      expect(getShallow({ sublabel: 'qwerty' }).find('.nx-sub-label')).toHaveText('qwerty');
+    it('adds an alert with the first specified validation message when showValidationErrors is true ' +
+      'in the FormAriaContext', function() {
+      function renderWithContext(showValidationErrors: boolean, props?: Partial<Props>) {
+        return render(
+          <FormAriaContext.Provider value={{ showValidationErrors }}>
+            <NxFieldset { ...minimalProps } { ...props } />
+          </FormAriaContext.Provider>
+        );
+      }
 
-      expect(getShallow({ sublabel: <span className="foo">bar</span> }).find('.nx-sub-label')).toContainReact(
-        <span className="foo">bar</span>
-      );
+      expect(renderWithContext(true).queryByRole('alert')).toBeNull();
+
+      const withValidationErrors = renderWithContext(true, { validationErrors: ['asdf', 'zxcv'] }),
+          validationErrorEl = withValidationErrors.getByRole('alert');
+
+      expect(validationErrorEl).toBeTruthy();
+      expect(validationErrorEl).toHaveTextContent('asdf');
+    });
+
+    it('sets the validation error as the accessible description of the fieldset', function() {
+      expect(renderElement()).not.toHaveAccessibleDescription();
+      expect(renderElement({ isPristine: true, validationErrors: 'asdf' })).not.toHaveAccessibleDescription();
+      expect(renderElement({ isPristine: true })).not.toHaveAccessibleDescription();
+      expect(renderElement({ isPristine: false, validationErrors: ['asdf', 'zxcv'] }))
+          .toHaveAccessibleDescription('asdf');
     });
   });
 });
