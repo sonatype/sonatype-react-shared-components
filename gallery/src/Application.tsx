@@ -34,7 +34,7 @@ import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFul
 import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
 import NxGlobalHeaderNoActionsExample from './styles/NxGlobalHeader/NxGlobalHeaderNoActionsExample';
 import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEmptyExample';
-// import NxGlobalHeaderToastExample from './styles/NxGlobalHeader/NxGlobalHeaderToastExample';
+
 import NxSystemNoticeGlobalSidebarExample from './styles/NxSystemNotice/NxSystemNoticeGlobalSidebarExample';
 import NxSystemNoticeTraditionalPageExample from './styles/NxSystemNotice/NxSystemNoticeTraditionalPageExample';
 import NxSystemNoticeMultipleExample from './styles/NxSystemNotice/NxSystemNoticeMultipleExample';
@@ -43,6 +43,8 @@ import NxGlobalSidebarFooterMinimalExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterMinimalExample';
 import NxGlobalSidebarFooterEmptyExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
+
+import NxToastFullExample from './components/NxToast/NxToastFullPageExample';
 
 const pageMappings = mergeAll(values(pageConfig));
 
@@ -116,11 +118,11 @@ function Application() {
             <NxGlobalHeaderEmptyExample />
           </SectionScrollingWrapper>
         </Route>
-        {/* <Route exact path="/NxGlobalHeaderToastExample">
+        <Route exact path="/NxToastFullExample">
           <SectionScrollingWrapper>
-            <NxGlobalHeaderToastExample />
+            <NxToastFullExample />
           </SectionScrollingWrapper>
-        </Route> */}
+        </Route>
         <Route exact path="/NxSystemNoticeGlobalSidebarExample">
           <SectionScrollingWrapper>
             <NxSystemNoticeGlobalSidebarExample />

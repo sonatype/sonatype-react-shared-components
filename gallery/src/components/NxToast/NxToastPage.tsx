@@ -12,21 +12,21 @@ import { NxCode,
   NxH2,
   NxTextLink
   // NxStatefulAccordion,
-  // NxAccordion 
+  // NxAccordion
 } from '@sonatype/react-shared-components';
 
-import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 // import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
-import NxToastExample from './NxToastExample';
-import NxToastVariationsExample from './NxToastVariationsExample';
-import NxToastMultipleExample from './NxToastMultipleExample';
-// import CodeExample from '../../CodeExample';
+// import NxToastExample from './NxToastExample';
+// import NxToastVariationsExample from './NxToastVariationsExample';
+// import NxToastMultipleExample from './NxToastMultipleExample';
+// // import CodeExample from '../../CodeExample';
 
-const nxToastExampleCode = require('./NxToastExample?raw'),
-    nxToastVariationsExampleCode = require('./NxToastVariationsExample?raw'),
-    nxToastMultipleExampleCode = require('./NxToastMultipleExample?raw');
-    // nxGlobalHeaderToastExampleCode = require('../../styles/NxGlobalHeader/NxGlobalHeaderToastExample?raw');
+// const nxToastExampleCode = require('./NxToastExample?raw'),
+//     nxToastVariationsExampleCode = require('./NxToastVariationsExample?raw'),
+//     nxToastMultipleExampleCode = require('./NxToastMultipleExample?raw');
+//     // nxGlobalHeaderToastExampleCode = require('../../styles/NxGlobalHeader/NxGlobalHeaderToastExample?raw');
 
 const NxToastPage = () =>
   <>
@@ -139,7 +139,7 @@ const NxToastPage = () =>
       </NxTable>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Simple Toast Example"
+    {/* <GalleryExampleTile title="Simple Toast Example"
                         id="nx-toast-example"
                         liveExample={NxToastExample}
                         codeExamples={nxToastExampleCode}>
@@ -159,7 +159,7 @@ const NxToastPage = () =>
                         codeExamples={nxToastMultipleExampleCode}>
       An example of displaying multiple toasts at once. This example also shows how a toast
       appears and is stacked on top of other toasts.
-    </GalleryExampleTile>
+    </GalleryExampleTile> */}
 
     {/* Manually built Gallery Tile because there is no use for the
     "show checkered background" checkbox */}
@@ -171,7 +171,7 @@ const NxToastPage = () =>
       </NxTile.Header>
       <NxTile.Content>
         <NxP>
-          <NxTextLink href="#/NxGlobalHeaderToastExample">
+          <NxTextLink href="#/NxToastFullExample">
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>

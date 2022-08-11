@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import {
   NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
@@ -17,7 +17,6 @@ import {
   NxPageMain,
   NxPageTitle,
   NxH1,
-  // useToast,
   NxToastContainer,
   NxToast,
   NxSuccessAlert,
@@ -36,41 +35,8 @@ import {
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
-const allToastTypes = ['info', 'success', 'error', 'warning'] as const;
-type ToastType = (typeof allToastTypes)[number];
-
-type ToastAddModel = {
-  type: ToastType,
-  message: string
-};
-type ToastModel = {
-  toastId: number,
-  type: ToastType,
-  message: string
-};
-
-const SomeConsumerComponent = (props: any) => {
-  // const { showSuccessToast } = useToast();
-  console.log(props);
-  return (
-    <NxButton onClick={() => props}>Show success toast</NxButton>
-  );
-};
-
-export default function NxGlobalHeaderToastExample() {
-
-  // const [toasts, setToasts] = useState<ToastModel[]>([]);
-
-  // let id = 1;
-  // const addToast = useCallback((content: ToastAddModel) => {
-  //   id++;
-  //   setToasts((toasts) => [
-  //     { toastId: id, type: content.type, message: content.message },
-  //     ...toasts
-  //   ]);
-  // }, [setToasts]);
-
-  const [showToast, setShowToast] = useState<boolean>(false)
+export default function NxToastFullPageExample() {
+  const [showToast, setShowToast] = useState<boolean>(false);
 
   return (
     <>
@@ -118,6 +84,17 @@ export default function NxGlobalHeaderToastExample() {
         Volutpat ac tincidunt vitae semper. Pretium fusce id velit ut tortor pretium viverra.
       </NxPageSidebar>
       <NxPageMain tabIndex={0}>
+        <NxToastContainer>
+          {
+            showToast && (
+              <NxToast onClose={() => setShowToast(false)}>
+                <NxSuccessAlert>
+                  Hello
+                </NxSuccessAlert>
+              </NxToast>
+            )
+          }
+        </NxToastContainer>
         <NxPageTitle>
           <NxH1>Lorem Ipsum</NxH1>
         </NxPageTitle>
@@ -125,6 +102,7 @@ export default function NxGlobalHeaderToastExample() {
           <NxTile.Header>Lorem Ipsum</NxTile.Header>
           <NxTile.Content>
             <NxP>
+              <button type="button" onClick={() => setShowToast(true)}>Open Toast</button>
               Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
               dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
               varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
@@ -132,13 +110,6 @@ export default function NxGlobalHeaderToastExample() {
               pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
               diam maecenas.
             </NxP>
-            <NxToastContainer>
-              <NxToast>
-                <NxSuccessAlert>
-                  hello
-                </NxSuccessAlert>
-                </NxToast>
-            </NxToastContainer>
           </NxTile.Content>
         </NxTile>
       </NxPageMain>
