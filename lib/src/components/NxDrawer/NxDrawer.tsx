@@ -28,12 +28,24 @@ const _NxDrawer = (props: Props) => {
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => setIsOpen(true), []);
+  useEffect(() => {
+    setIsOpen(true);
 
-  const closeDrawer = () => setIsOpen(false);
+    window.setTimeout(() => {
+      // eslint-disable-next-line
+      console.log('HYA');
+      setIsDrawerOpen(true);
+    }, 1000);
+  }, []);
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+    setIsOpen(false);
+  };
 
   const handleTransitionEnd = () => {
     if (!isOpen) {
@@ -41,8 +53,12 @@ const _NxDrawer = (props: Props) => {
     }
   };
 
+  const backdropClasses = classnames('nx-drawer-backdrop', {
+    'nx-drawer-backdrop--open': isOpen
+  });
+
   const classes = classnames('nx-drawer', {
-    'nx-drawer--open': isOpen,
+    'nx-drawer--open': isDrawerOpen,
     'nx-drawer--narrow': variant === 'narrow'
   }, className);
 
@@ -59,7 +75,7 @@ const _NxDrawer = (props: Props) => {
 
   return (
     <AbstractDialog ref={dialogRef}
-                    className="nx-drawer-backdrop"
+                    className={backdropClasses}
                     onCancel={closeDrawer}
                     onTransitionEnd={handleTransitionEnd}
                     onClick={handleBackdropClick}

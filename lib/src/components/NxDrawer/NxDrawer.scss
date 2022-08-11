@@ -29,25 +29,32 @@ $-box-shadow-offset: 52px;
     pointer-events: auto;
   }
 
-  z-index: 100;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  position: fixed;
   background-color: rgba(0, 0, 0, 0.1);
+  top: 0;
+  right: 0;
+  position: fixed;
+  z-index: 100;
+  opacity: 0;
+  width: 100%;
+
+  transform: none;
+  transition: opacity 200ms ease-out;
+
+  &--open {
+    opacity: 1;
+    transition: opacity 200ms ease-out;
+  }
 }
 
 .nx-drawer {
-  background: white;
   box-sizing: border-box;
   height: 100%;
-  padding-left: $-box-shadow-offset;
-  right: 0;
-  top: 0;
-  transform: translateX(100%);
-  width: 520px + $-box-shadow-offset;
   position: absolute;
-  
+  right: 100px;
+  left: auto;
+  top: 0;
+  width: 520px + $-box-shadow-offset;
+
   &--with-global-header {
     $global-header-height: 43px;
     height: calc(100% - #{$global-header-height});
@@ -58,36 +65,24 @@ $-box-shadow-offset: 52px;
     width: 348px + $-box-shadow-offset;
   }
 
-  &__inner {
-    align-items: stretch;
-    background-color: var(--nx-swatch-white);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: var(--nx-spacing-6x);
-    position: relative;
+  align-items: stretch;
+  background-color: var(--nx-swatch-white);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--nx-spacing-6x);
+  padding-bottom: 0;
 
-    &::after {
-      content: " ";
+  transform: none;
 
-      box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);
-      height: calc(100% - var(--nx-spacing-16x));
-      width: 100%;
-      position: absolute;
-      left: 0;
-      top: var(--nx-spacing-8x);
-      z-index: -1;
-    }
-  }
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  transition: all 120ms ease-in;
 
-  transition: transform 120ms ease-in;
-
-  &--open {
-    transform: translateX(0%);
-    transition-duration: 180ms;
-    transition-timing-function: ease-out;
-  }
+  // &--open {
+  //   transform: translateX(0);
+  //   transition: all 200ms ease-out;
+  // }
 
   @media (prefers-reduced-motion) {
     &, &--open {
@@ -148,3 +143,19 @@ $-box-shadow-offset: 52px;
   height: min-content;
   padding-top: var(--nx-spacing-6x);
 }
+
+
+// Shadows
+
+
+// &::after {
+//   content: " ";
+
+//   box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);
+//   height: calc(100% - var(--nx-spacing-16x));
+//   width: 100%;
+//   position: absolute;
+//   left: 0;
+//   top: var(--nx-spacing-8x);
+//   z-index: -1;
+// }
