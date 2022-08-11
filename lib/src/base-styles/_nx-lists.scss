@@ -190,6 +190,17 @@
 
 .nx-list__item--link, .nx-list__item--clickable {
   display: contents;
+
+  > .nx-list__term, > .nx-list__description {
+    display: contents;
+  }
+
+  // only applies in description lists. In normal lists this element has display: contents set
+  &:focus-within {
+    box-shadow: var(--nx-box-shadow-focus);
+    border-color: var(--nx-color-interactive-border-focus);
+    outline: none;
+  }
 }
 
 .nx-list__item--clickable, // preferred
@@ -285,28 +296,33 @@
 
 .nx-list--description-list {
   .nx-list__item {
+    align-items: stretch;
     display: flex;
     padding: 0;
   }
 
   .nx-list__item--clickable {
-    border: none;
+    &:focus-within {
+      border-color: var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
+
+      .nx-list__link, .nx-list__btn {
+        box-shadow: none;
+        outline: none;
+      }
+    }
   }
 }
 
 .nx-list__term {
   &, > .nx-list__link, > .nx-list__btn {
+    border: none;
     box-sizing: border-box;
     flex: none;
     font-weight: 600;
     overflow-wrap: break-word;
     padding: var(--nx-spacing-4x) 0 var(--nx-padding-without-border) var(--nx-padding-without-border);
     width: 250px;
-  }
-
-  > .nx-list__link, > .nx-list__btn {
-    border: 1px solid transparent;
-    border-top-color: var(--nx-color-border-secondary);
   }
 }
 
@@ -321,8 +337,7 @@
   }
 
   > .nx-list__link, > .nx-list__btn {
-    border: 1px solid transparent;
-    border-top-color: var(--nx-color-border-secondary);
+    border: none;
     display: grid;
     grid-template: "list-text actions" / 1fr auto;
 
@@ -333,12 +348,6 @@
 
   .nx-list__text {
     max-width: var(--nx-width-text-wrapping);
-  }
-}
-
-.nx-list__item--clickable {
-  > .nx-list__term, > .nx-list__description {
-    display: contents;
   }
 }
 

@@ -8,7 +8,7 @@ import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import { includesDisabledClass } from '../../util/classUtil';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { NxFontAwesomeIcon } from '../..';
+import { NxFontAwesomeIcon, useUniqueId } from '../..';
 import { ButtonItemProps, buttonItemPropTypes } from './types';
 
 const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
@@ -26,12 +26,14 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
           } = props,
           selected = selectedProp ?? undefined,
           divClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className),
-          buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled });
+          buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled }),
+          descriptionId = useUniqueId('nx-list-description');
 
       return (
         <div className={divClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <dt className="nx-list__term">
             <button aria-disabled={includesDisabledClass(buttonClassNames)}
+                    aria-describedby={descriptionId}
                     className={buttonClassNames}
                     disabled={disabled ? true : false}
                     {...buttonAttributes}>
@@ -39,11 +41,16 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
             </button>
           </dt>
           <dd className="nx-list__description">
-            <button aria-disabled={includesDisabledClass(buttonClassNames)}
+            {/* This button only exists for the sake of expanding the click target all the way across the
+                row. From a screenreader/keynav perspective only the other button is present. This button's
+                text is attached to the other button via aria-describedby
+            */}
+            <button aria-hidden={true}
+                    tabIndex={-1}
                     className={buttonClassNames}
                     disabled={disabled ? true : false}
                     {...buttonAttributes}>
-              <span className="nx-list__text">{description}</span>
+              <span id={descriptionId} className="nx-list__text">{description}</span>
               <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
             </button>
           </dd>
