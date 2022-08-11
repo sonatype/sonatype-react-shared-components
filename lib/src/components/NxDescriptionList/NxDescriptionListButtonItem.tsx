@@ -14,7 +14,7 @@ import { ButtonItemProps, buttonItemPropTypes } from './types';
 const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
     function NxDescriptionListButtonItem(props) {
       const {
-            children,
+            onClick,
             className,
             disabled,
             selected: selectedProp,
@@ -32,11 +32,12 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
       return (
         <div className={divClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <dt className="nx-list__term">
-            <button aria-disabled={includesDisabledClass(buttonClassNames)}
+            <button {...buttonAttributes}
+                    aria-disabled={includesDisabledClass(buttonClassNames)}
                     aria-describedby={descriptionId}
                     className={buttonClassNames}
                     disabled={disabled ? true : false}
-                    {...buttonAttributes}>
+                    onClick={() => onClick()}>
               <span className="nx-list__text">{term}</span>
             </button>
           </dt>
@@ -45,11 +46,12 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
                 row. From a screenreader/keynav perspective only the other button is present. This button's
                 text is attached to the other button via aria-describedby
             */}
-            <button aria-hidden={true}
+            <button {...buttonAttributes}
+                    onClick={() => onClick()}
+                    aria-hidden={true}
                     tabIndex={-1}
                     className={buttonClassNames}
-                    disabled={disabled ? true : false}
-                    {...buttonAttributes}>
+                    disabled={disabled ? true : false}>
               <span id={descriptionId} className="nx-list__text">{description}</span>
               <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
             </button>

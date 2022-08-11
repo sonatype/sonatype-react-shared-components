@@ -8,12 +8,13 @@ import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 import { ValidationMap } from 'prop-types';
 
 export interface ButtonItemProps extends HTMLAttributes<HTMLDivElement> {
+  onClick: () => void;
+  term: Exclude<ReactNode, undefined | null>;
+  description: Exclude<ReactNode, undefined | null>;
   selected?: boolean | null;
   disabled?: boolean | null;
   buttonClassName?: string | null;
   buttonAttributes?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled' | 'className'> | null;
-  term: Exclude<ReactNode, undefined | null>;
-  description: Exclude<ReactNode, undefined | null>;
 }
 
 export interface Props extends HTMLAttributes<HTMLElement> {
