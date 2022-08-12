@@ -11,6 +11,7 @@ import withClass from '../../util/withClass';
 import useEmptyComponent from '../../util/useEmptyComponent';
 
 import NxDescriptionListButtonItem from './NxDescriptionListButtonItem';
+import NxDescriptionListLinkItem from './NxDescriptionListLinkItem';
 
 import { Props, propTypes } from './types';
 
@@ -39,7 +40,8 @@ const NxDescriptionList = Object.assign(_NxDescriptionList, {
   Item: withClass('div', 'nx-list__item'),
   Term: withClass('dt', 'nx-list__term'),
   Description: withClass('dd', 'nx-list__description'),
-  ButtonItem: NxDescriptionListButtonItem
+  ButtonItem: NxDescriptionListButtonItem,
+  LinkItem: NxDescriptionListLinkItem
 });
 
 export default NxDescriptionList;
