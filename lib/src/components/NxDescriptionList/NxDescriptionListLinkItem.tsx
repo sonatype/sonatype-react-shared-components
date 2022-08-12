@@ -35,7 +35,7 @@ const NxDescriptionListLinkItem = forwardRef<HTMLDivElement, LinkItemProps>(
           descriptionId = useUniqueId('nx-list-description');
 
       function preventMouseInteraction(evt: MouseEvent<HTMLAnchorElement>) {
-        if (isDisabled) {
+        if (disabled) {
           evt.preventDefault();
         }
       }
