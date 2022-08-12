@@ -145,6 +145,7 @@ import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferLi
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
+import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
 import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
 
 const pageConfig: PageConfig = {
@@ -197,6 +198,7 @@ const pageConfig: PageConfig = {
     'Collapsible Radio-Select': { content: NxCollapsibleRadioSelectPage, type: 'react' },
     'Stateful Collapsible Radio-Select': { content: NxStatefulCollapsibleRadioSelectPage, type: 'react' },
     'Color Picker': { content: NxColorPickerPage, type: 'react' },
+    'Copy To Clipboard': { content: NxCopyToClipboardPage, type: 'react' },
     'Date Input': { content: NxDateInputPage, type: 'react' },
     'Stateful Date Input': { content: NxStatefulDateInputPage, type: 'react' },
     'Fieldset': { content: NxFieldsetPage, type: 'react' },

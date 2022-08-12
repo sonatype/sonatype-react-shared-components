@@ -134,8 +134,7 @@ const NxSmallThreatCounterPage = () =>
                 activated: all counters within this instance of <NxCode>NxSmallThreatCounter</NxCode> will be as
                 wide as needed to display the largest number in any one of them. That is, within the component instance,
                 all of the counters will be the same width, and that width will depend on the data present. However,
-                when compared to another instance that uses different data, the widths may not be the same. In this
-                mode, counts of zero are not hidden as they are by default - the zero counters are rendered.
+                when compared to another instance that uses different data, the widths may not be the same.
               </NxP>
             </NxTable.Cell>
           </NxTable.Row>

@@ -4,99 +4,86 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import { shallow } from 'enzyme';
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+
+import * as rtlUtils from '../../../__testutils__/rtlUtils';
+
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import NxToggle, { Props } from '../NxToggle';
 
 describe('NxToggle', function() {
   const simpleProps: Props = {
-        inputId: 'toggle-id',
-        isChecked: false,
-        onChange: () => {},
-        disabled: undefined,
-        children: 'Enables whales'
-      },
-      getShallow = getShallowComponent<Props>(NxToggle, simpleProps);
+    inputId: 'toggle-id',
+    isChecked: false,
+    onChange: () => {},
+    disabled: undefined,
+    children: 'Enables whales'
+  };
 
-  it('renders a <label> containing a toggle <input> and toggle control', function() {
-    const shallowRender = getShallow();
+  const rtlRender = rtlUtils.rtlRender<Props>(NxToggle, simpleProps);
 
-    expect(shallowRender).toMatchSelector('label.nx-toggle');
+  it('renders a <label> with an <input>', function() {
+    rtlRender();
 
-    expect(shallowRender.find('input')).toHaveProp('type', 'checkbox');
-    expect(shallowRender.find('input')).toHaveProp('id', 'toggle-id');
-    expect(shallowRender.find('input')).toHaveClassName('nx-toggle__input');
+    const checkbox = screen.getByRole<HTMLInputElement>('switch', { name: 'Enables whales' });
 
-    expect(shallowRender.find('.nx-toggle__control')).toExist();
+    expect(checkbox.tagName).toEqual('INPUT');
+
+    const label = checkbox.labels?.[0];
+
+    expect(label?.textContent).toEqual('Enables whales');
+  });
+
+  it('renders an input element with role switch with the correct attributes and classname', function() {
+    rtlRender();
+
+    const checkbox = screen.getByRole('switch');
+
+    expect(checkbox).toHaveAttribute('type', 'checkbox');
+    expect(checkbox).toHaveAttribute('id', 'toggle-id');
+    expect(checkbox).toHaveClass('nx-toggle__input');
   });
 
   it('adds classes specified with the className prop', function() {
-    const component = getShallow({ className: 'foo' });
+    const { container } = rtlRender({ className: 'foo' });
 
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-toggle');
+    const root = container.children[0];
+
+    expect(root).toHaveClass('foo');
+    expect(root).toHaveClass('nx-toggle');
   });
 
-  it('adds the nx-toggle--disabled class if disabled is set', function() {
-    expect(getShallow()).not.toHaveClassName('nx-toggle--disabled');
-    expect(getShallow({ disabled: true })).toHaveClassName('nx-toggle--disabled');
-  });
+  it('calls its onChange prop when the label is clicked', async function() {
+    const user = userEvent.setup();
 
-  it('adds the tm-checked class if isChecked is true, and the tm-unchecked class if it is false', function() {
-    expect(getShallow()).toHaveClassName('tm-unchecked');
-    expect(getShallow()).not.toHaveClassName('tm-checked');
+    const onChange = jest.fn();
 
-    expect(getShallow({ isChecked: true })).not.toHaveClassName('tm-unchecked');
-    expect(getShallow({ isChecked: true })).toHaveClassName('tm-checked');
-  });
-
-  it('renders children nodes within an nx-toggle__content <span>', function() {
-    const render = shallow(
-      <NxToggle { ...simpleProps }>
-        <div className="bar"></div>
-      </NxToggle>
-    );
-
-    expect(render).toContainMatchingElement('label .nx-toggle__content .bar');
-  });
-
-  it('disables the input iff disabled is set', function() {
-    expect(getShallow().find('input')).toHaveProp('disabled', false);
-    expect(getShallow({ disabled: false }).find('input')).toHaveProp('disabled', false);
-    expect(getShallow({ disabled: true }).find('input')).toHaveProp('disabled', true);
-  });
-
-  it('sets the input to checked per the value of isChecked', function() {
-    expect(getShallow({ isChecked: false }).find('input')).toHaveProp('checked', false);
-    expect(getShallow({ isChecked: true }).find('input')).toHaveProp('checked', true);
-  });
-
-  it('calls its onChange prop when the input fires a change event', function() {
-    const onChange = jest.fn(),
-        component = getShallow({ onChange });
+    const { container } = rtlRender({ onChange });
+    const label = container.querySelector('label') as HTMLLabelElement;
 
     expect(onChange).not.toHaveBeenCalled();
-    component.find('input').simulate('change');
-    expect(onChange).toHaveBeenCalled();
+    await user.click(label);
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
-  it('sets the input as readonly if there is no onChange handler', function() {
-    expect(getShallow().find('input')).toHaveProp('readOnly', false);
-    expect(getShallow({ onChange: undefined }).find('input')).toHaveProp('readOnly', true);
-    expect(getShallow({ onChange: null }).find('input')).toHaveProp('readOnly', true);
-  });
+  it('calls its onChange prop when the input is focused and space key is pressed', async function() {
+    const user = userEvent.setup();
 
-  it('passes unknown props to the label element', function() {
-    const component = getShallow({ id: 'foo', htmlFor: 'baz' });
+    const onChange = jest.fn();
 
-    expect(component).toHaveProp('id', 'foo');
-    expect(component).toHaveProp('htmlFor', 'baz');
+    rtlRender({ onChange });
+
+    const checkbox = screen.getByRole('switch');
+
+    expect(onChange).not.toHaveBeenCalled();
+    await checkbox.focus();
+    await user.keyboard(' ');
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('passes input attributes into the input element and does not clash with top-level attributes', function() {
-    const component = getShallow({
+    const props: Props = {
       inputId: 'not-garfield',
       disabled: true,
       isChecked: true,
@@ -104,17 +91,19 @@ describe('NxToggle', function() {
       inputAttributes: {
         id: 'garfield',
         name: 'garfield',
-        disabled: false,
-        className: 'input-classname',
-        checked: false
-      } as Props['inputAttributes']
-    });
+        className: 'input-classname'
+      }
+    };
 
-    expect(component.find('input')).toHaveProp('id', 'garfield');
-    expect(component.find('input')).toHaveProp('name', 'garfield');
-    expect(component.find('input')).toHaveProp('disabled', true);
-    expect(component.find('input')).toHaveClassName('input-classname');
-    expect(component.find('input')).not.toHaveClassName('label-classname');
-    expect(component.find('input')).toHaveProp('checked', true);
+    rtlRender(props);
+
+    const checkbox = screen.getByRole('switch');
+
+    expect(checkbox).toHaveAttribute('id', 'garfield');
+    expect(checkbox).toHaveAttribute('name', 'garfield');
+    expect(checkbox).toBeDisabled();
+    expect(checkbox).toHaveClass('input-classname');
+    expect(checkbox).not.toHaveClass('label-classname');
+    expect(checkbox).toBeChecked();
   });
 });
