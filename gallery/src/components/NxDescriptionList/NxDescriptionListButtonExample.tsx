@@ -7,7 +7,7 @@
 import React from 'react';
 import { NxDescriptionList} from '@sonatype/react-shared-components';
 
-const NxDescriptionListNonInteractiveExample = () =>
+const NxDescriptionListButtonExample = () =>
   <NxDescriptionList>
     <NxDescriptionList.ButtonItem onClick={() => alert('You clicked the first row')}
                                   term="This is the NxDescriptionList.ButtonItem component"
@@ -29,4 +29,4 @@ const NxDescriptionListNonInteractiveExample = () =>
                                   description="This row is disabled. You can't click it." />
   </NxDescriptionList>;
 
-export default NxDescriptionListNonInteractiveExample;
+export default NxDescriptionListButtonExample;
