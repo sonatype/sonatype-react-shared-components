@@ -12,10 +12,15 @@ describe('NxDescriptionList', function() {
 
   const simpleSelector = '#nx-description-list-simple-example .gallery-example-live',
       buttonExampleSelector = '#nx-description-list-button-example .gallery-example-live',
-      linkExampleSelector = '#nx-description-list-link-example .gallery-example-live';
+      linkExampleSelector = '#nx-description-list-link-example .gallery-example-live',
+      emptyExampleSelector = '#nx-description-list-empty-example .gallery-example-live';
 
   describe('simple', function() {
     it('looks right', simpleTest(simpleSelector));
+  });
+
+  describe('empty', function() {
+    it('looks right', simpleTest(emptyExampleSelector));
   });
 
   describe('with button rows', function() {
