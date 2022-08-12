@@ -6,9 +6,11 @@
  */
 import React, { forwardRef, MouseEvent } from 'react';
 import classnames from 'classnames';
-import { includesDisabledClass } from '../../util/classUtil';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { NxFontAwesomeIcon, useUniqueId } from '../..';
+
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import { useUniqueId } from '../../util/idUtil';
+import { includesDisabledClass } from '../../util/classUtil';
 import { LinkItemProps, linkItemPropTypes } from './types';
 
 const NxDescriptionListLinkItem = forwardRef<HTMLDivElement, LinkItemProps>(
