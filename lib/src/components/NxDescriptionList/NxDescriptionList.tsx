@@ -12,7 +12,7 @@ import useEmptyComponent from '../../util/useEmptyComponent';
 
 import NxDescriptionListButtonItem from './NxDescriptionListButtonItem';
 
-import { Props } from './types';
+import { Props, propTypes } from './types';
 
 const _NxDescriptionList = forwardRef<HTMLElement, Props>(function({ emptyMessage, ...otherProps }, externalRef) {
   const emptyChildRef = useRef<HTMLLIElement>(null),
@@ -32,6 +32,8 @@ const _NxDescriptionList = forwardRef<HTMLElement, Props>(function({ emptyMessag
 
   return isEmpty ? emptyList : <dl ref={ref} className="nx-list nx-list--description-list" { ...otherProps } />;
 });
+
+_NxDescriptionList.propTypes = propTypes;
 
 const NxDescriptionList = Object.assign(_NxDescriptionList, {
   Item: withClass('div', 'nx-list__item'),

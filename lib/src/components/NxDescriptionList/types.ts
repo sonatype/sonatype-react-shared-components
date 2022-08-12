@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
-import { ValidationMap } from 'prop-types';
+import * as PropTypes from 'prop-types';
 
 export interface ButtonItemProps extends HTMLAttributes<HTMLDivElement> {
   onClick: () => void;
@@ -21,10 +21,15 @@ export interface Props extends HTMLAttributes<HTMLElement> {
   emptyMessage?: string | null;
 }
 
-export const buttonItemPropTypes: ValidationMap<ButtonItemProps> = {
-  // TODO
+export const buttonItemPropTypes: PropTypes.ValidationMap<ButtonItemProps> = {
+  onClick: PropTypes.func.isRequired,
+  term: PropTypes.node.isRequired,
+  description: PropTypes.node.isRequired,
+  selected: PropTypes.bool,
+  disabled: PropTypes.bool,
+  buttonClassName: PropTypes.string
 };
 
-export const propTypes: ValidationMap<Props> = {
-  // TODO
+export const propTypes: PropTypes.ValidationMap<Props> = {
+  emptyMessage: PropTypes.string
 };
