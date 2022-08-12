@@ -11,10 +11,12 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxDescriptionListNonInteractiveExample from './NxDescriptionListNonInteractiveExample';
 import NxDescriptionListButtonExample from './NxDescriptionListButtonExample';
 import NxDescriptionListLinkExample from './NxDescriptionListLinkExample';
+import NxDescriptionListEmptyExample from './NxDescriptionListEmptyExample';
 
 const nxDescriptionListNonInteractiveCode = require('./NxDescriptionListNonInteractiveExample?raw'),
     nxDescriptionListButtonCode = require('./NxDescriptionListButtonExample?raw'),
-    nxDescriptionListLinkCode = require('./NxDescriptionListLinkExample?raw');
+    nxDescriptionListLinkCode = require('./NxDescriptionListLinkExample?raw'),
+    nxDescriptionListEmptyCode = require('./NxDescriptionListEmptyExample?raw');
 
 const NxDescriptionListPage = () =>
   <>
@@ -546,6 +548,14 @@ const NxDescriptionListPage = () =>
                         liveExample={NxDescriptionListLinkExample}
                         codeExamples={nxDescriptionListLinkCode}>
       An example of an <NxCode>NxDescriptionList</NxCode> whose rows are clickable links.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Empty Example"
+                        id="nx-description-list-empty-example"
+                        liveExample={NxDescriptionListEmptyExample}
+                        codeExamples={nxDescriptionListEmptyCode}>
+      An example of an <NxCode>NxDescriptionList</NxCode> with no content. Note that it actually renders
+      a <NxCode>&lt;ul&gt;</NxCode> in this case.
     </GalleryExampleTile>
   </>;
 
