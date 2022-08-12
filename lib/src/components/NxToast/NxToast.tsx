@@ -42,12 +42,9 @@ const NxToast = (props: NxToastProps) => {
   //   React.isValidElement(child) ? React.cloneElement(child, { onClose: handleClose }) : child
   // );
 
-  let validChild = React.Children.only(children);
-  React.isValidElement(validChild) ? React.cloneElement(validChild, { onClose: handleClose })
-    : validChild
-
-    console.log(React.Children.only(children));
-
+  const validChild = React.Children.only(children);
+  const childrenWithProps = React.isValidElement(children) ?
+    React.cloneElement(validChild, { onClose: handleClose }) : validChild;
 
   const classes = classnames('nx-toast', {
     'nx-toast--closing': isClosing
@@ -57,7 +54,7 @@ const NxToast = (props: NxToastProps) => {
     <div className={classes}
          onAnimationEnd={handleAnimationEnd}
          aria-atomic={true}>
-      {validChild}
+      {childrenWithProps}
     </div>
   );
 };
