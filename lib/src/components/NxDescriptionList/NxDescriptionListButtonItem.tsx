@@ -37,7 +37,7 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
       return (
         <div ref={ref} className={divClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <dt className="nx-list__term">
-            <button {...buttonAttributes}
+            <button { ...buttonAttributes }
                     aria-disabled={isDisabled}
                     aria-describedby={descriptionId}
                     className={buttonClassNames}
@@ -51,7 +51,7 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
                 row. From a screenreader/keynav perspective only the other button is present. This button's
                 text is attached to the other button via aria-describedby
             */}
-            <button {...buttonAttributes}
+            <button { ...buttonAttributes }
                     onClick={() => onClick()}
                     aria-hidden={true}
                     tabIndex={-1}
