@@ -318,9 +318,11 @@
   &, > .nx-list__link, > .nx-list__btn {
     border: none;
     box-sizing: border-box;
+
+    // for proper vertical alignment of text in buttons
+    display: flex;
     flex: none;
     font-weight: 600;
-    overflow-wrap: break-word;
     padding: var(--nx-spacing-4x) 0 var(--nx-padding-without-border) var(--nx-padding-without-border);
     width: 250px;
   }
