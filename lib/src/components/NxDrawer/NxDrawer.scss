@@ -144,6 +144,14 @@ $-box-shadow-offset: 52px;
   padding-top: var(--nx-spacing-6x);
 }
 
+.nx-footer {
+  @include nx-container-helpers.container-vertical;
+
+  border-top: 1px solid var(--nx-swatch-indigo-90);
+  height: min-content;
+  padding-top: var(--nx-spacing-6x);
+}
+
 
 // Shadows
 

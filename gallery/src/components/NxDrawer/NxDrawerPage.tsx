@@ -22,6 +22,7 @@ import NxDrawerWithSubtitleOrDescriptionExample from './NxDrawerWithSubtitleOrDe
 import NxDrawerNarrowExample from './NxDrawerNarrowExample';
 import NxDrawerWithFooterExample from './NxDrawerWithFooterExample';
 import NxDrawerEscExample from './NxDrawerEscExample';
+import NxDrawerWithNxFormExample from './NxDrawerWithNxFormExample';
 
 const NxDrawerSourceCode = require('./NxDrawerExample?raw');
 const NxDrawerWithGlobalHeaderSourceCode = require('./NxDrawerWithGlobalHeaderExample?raw');
@@ -29,6 +30,7 @@ const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubti
 const NxDrawerNarrowSourceCode = require('./NxDrawerNarrowExample?raw');
 const NxDrawerWithFooterSourceCode = require('./NxDrawerWithFooterExample?raw');
 const NxDrawerEscSourceCode = require('./NxDrawerEscExample?raw');
+const NxDrawerWithNxFormSourceCode = require('./NxDrawerWithNxFormExample?raw');
 
 export default function NxDrawerPage() {
   return (
@@ -230,6 +232,13 @@ export default function NxDrawerPage() {
         This example demonstrates when the dropdown is in focus and is expanded. Pressing the Esc key collapses
         the dropdown, but not the drawer.
         collapses the dropdown, but not the drawer.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxDrawer With NxForm Example"
+                          id="nx-drawer-with-nx-form"
+                          liveExample={NxDrawerWithNxFormExample}
+                          codeExamples={NxDrawerWithNxFormSourceCode}>
+        An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxFrom</NxCode>.
       </GalleryExampleTile>
     </>
   );
