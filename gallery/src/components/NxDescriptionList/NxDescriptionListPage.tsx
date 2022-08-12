@@ -395,7 +395,10 @@ const NxDescriptionListPage = () =>
                 <NxCode>NxList.ButtonItem</NxCode> also supports any HTML attribute that's normally supported
                 by <NxCode>{'<button>'}</NxCode>. To apply such attributes, simply wrap them in an object and
                 provide the object in the <NxCode>buttonAttributes</NxCode> prop. For example:
-                <NxP><NxCode>{'buttonAttributes={{id: "testvalue"}}'}</NxCode></NxP>
+                <NxP><NxCode>{'buttonAttributes={{id: "testvalue"}}'}</NxCode></NxP>. Note that attributes
+                that would be equivalent to other props on this component or that the component must manage internally
+                are ignored. These include <NxCode>className</NxCode>, <NxCode>onClick</NxCode>,{' '}
+                <NxCode>disabled</NxCode>, <NxCode>tabIndex</NxCode> and ARIA attributes.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
