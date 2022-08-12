@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { useState } from 'react';
+import {reject, propEq} from 'ramda';
 import {
   NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
@@ -35,8 +36,39 @@ import {
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
+type ToastModel = {
+  toastId: number,
+};
+// type ToastAddModel = {
+//   message: string
+// };
+
+// type ToastAddModel = {
+//   type: ToastType,
+//   message: string
+// };
+
+// const allToastTypes = ['info', 'success', 'error', 'warning'] as const;
+// type ToastType = (typeof allToastTypes)[number];
+
 export default function NxToastFullPageExample() {
-  const [showToast, setShowToast] = useState<boolean>(false);
+  // const [showToast, setShowToast] = useState<boolean>(false);
+  const [toasts, setToasts] = useState<ToastModel[]>([]);
+  const [id, setId] = useState<number>(0)
+
+
+  const addToast = () => {
+    setId(id + 1);
+    setToasts((toasts) => [
+      { toastId: id },
+      ...toasts
+    ]);
+  };
+
+  const removeToast = (id:number) => {
+    const _toasts = reject(propEq('toastId', id), toasts);
+    setToasts(_toasts);
+  };
 
   return (
     <>
@@ -86,13 +118,13 @@ export default function NxToastFullPageExample() {
       <NxPageMain tabIndex={0}>
         <NxToastContainer>
           {
-            showToast && (
-              <NxToast onClose={() => setShowToast(false)}>
-                <NxSuccessAlert>
-                  Hello
-                </NxSuccessAlert>
+            toasts.map((toast) => (
+              <NxToast key={toast.toastId}
+                       id={toast.toastId}
+                       onClose={()=> removeToast(toast.toastId)}>
+                <NxSuccessAlert>Hello World</NxSuccessAlert>
               </NxToast>
-            )
+            ))
           }
         </NxToastContainer>
         <NxPageTitle>
@@ -102,7 +134,7 @@ export default function NxToastFullPageExample() {
           <NxTile.Header>Lorem Ipsum</NxTile.Header>
           <NxTile.Content>
             <NxP>
-              <button type="button" onClick={() => setShowToast(true)}>Open Toast</button>
+              <button type="button" onClick={() => addToast()}>Open Toast</button>
               Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
               dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
               varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris

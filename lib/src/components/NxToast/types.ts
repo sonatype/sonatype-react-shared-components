@@ -16,7 +16,7 @@ export const propTypes = {
   onClose: PropTypes.func
 } as PropTypes.ValidationMap<Props>;
 
-export type NxToastProps = HTMLAttributes<HTMLDivElement> & {
+export type NxToastProps = {
   toastId: number,
   type: ToastType;
   message: string;

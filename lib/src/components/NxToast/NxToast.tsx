@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, ReactElement, useState } from 'react';
 import classnames from 'classnames';
 
 // import { nxToastPropTypes, NxToastProps } from './types';
@@ -16,7 +16,8 @@ import classnames from 'classnames';
 
 export interface NxToastProps {
   onClose: () => void;
-  children: ReactNode;
+  id: number;
+  children: ReactElement;
   previousFocusedElement?: ReactNode;
 }
 
@@ -37,9 +38,16 @@ const NxToast = (props: NxToastProps) => {
     }
   };
 
-  const childrenWithProps = React.Children.map(children, child =>
-    React.isValidElement(child) ? React.cloneElement(child, { onClose: handleClose }) : child
-  );
+  // const childrenWithProps = React.Children.map(children, child =>
+  //   React.isValidElement(child) ? React.cloneElement(child, { onClose: handleClose }) : child
+  // );
+
+  let validChild = React.Children.only(children);
+  React.isValidElement(validChild) ? React.cloneElement(validChild, { onClose: handleClose })
+    : validChild
+
+    console.log(React.Children.only(children));
+
 
   const classes = classnames('nx-toast', {
     'nx-toast--closing': isClosing
@@ -49,7 +57,7 @@ const NxToast = (props: NxToastProps) => {
     <div className={classes}
          onAnimationEnd={handleAnimationEnd}
          aria-atomic={true}>
-      {childrenWithProps}
+      {validChild}
     </div>
   );
 };
