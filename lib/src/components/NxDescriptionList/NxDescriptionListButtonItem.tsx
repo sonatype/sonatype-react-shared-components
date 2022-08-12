@@ -12,7 +12,7 @@ import { NxFontAwesomeIcon, useUniqueId } from '../..';
 import { ButtonItemProps, buttonItemPropTypes } from './types';
 
 const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
-    function NxDescriptionListButtonItem(props) {
+    function NxDescriptionListButtonItem(props, ref) {
       const {
             onClick,
             className,
@@ -30,7 +30,7 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
           descriptionId = useUniqueId('nx-list-description');
 
       return (
-        <div className={divClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
+        <div ref={ref} className={divClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <dt className="nx-list__term">
             <button {...buttonAttributes}
                     aria-disabled={includesDisabledClass(buttonClassNames)}
