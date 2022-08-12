@@ -25,12 +25,15 @@ const NxDescriptionListLinkItem = forwardRef<HTMLDivElement, LinkItemProps>(
             ...attrs
           } = props,
           selected = selectedProp ?? undefined,
-          divClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className),
           linkClassNames = classnames('nx-list__link', anchorClassName, { selected, disabled }),
+          isDisabled = includesDisabledClass(linkClassNames),
+          divClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className, {
+            disabled: isDisabled
+          }),
           descriptionId = useUniqueId('nx-list-description');
 
-      function onClick(evt: MouseEvent<HTMLAnchorElement>) {
-        if (includesDisabledClass(linkClassNames)) {
+      function preventMouseInteraction(evt: MouseEvent<HTMLAnchorElement>) {
+        if (isDisabled) {
           evt.preventDefault();
         }
       }
@@ -39,11 +42,13 @@ const NxDescriptionListLinkItem = forwardRef<HTMLDivElement, LinkItemProps>(
         <div ref={ref} className={divClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <dt className="nx-list__term">
             <a {...anchorAttributes}
-               aria-disabled={includesDisabledClass(linkClassNames)}
+               aria-disabled={isDisabled}
                aria-describedby={descriptionId}
                className={linkClassNames}
                href={href}
-               onClick={onClick}>
+               onClick={preventMouseInteraction}
+               onMouseDown={preventMouseInteraction}
+               tabIndex={isDisabled ? -1 : 0}>
               <span className="nx-list__text">{term}</span>
             </a>
           </dt>
@@ -57,7 +62,8 @@ const NxDescriptionListLinkItem = forwardRef<HTMLDivElement, LinkItemProps>(
                tabIndex={-1}
                className={linkClassNames}
                href={href}
-               onClick={onClick}>
+               onClick={preventMouseInteraction}
+               onMouseDown={preventMouseInteraction}>
               <span id={descriptionId} className="nx-list__text">{description}</span>
               <NxFontAwesomeIcon icon={faAngleRight} className="nx-chevron" />
             </a>

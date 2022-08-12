@@ -25,15 +25,18 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
             ...attrs
           } = props,
           selected = selectedProp ?? undefined,
-          divClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className),
           buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled }),
+          isDisabled = includesDisabledClass(buttonClassNames),
+          divClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className, {
+            disabled: isDisabled
+          }),
           descriptionId = useUniqueId('nx-list-description');
 
       return (
         <div ref={ref} className={divClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <dt className="nx-list__term">
             <button {...buttonAttributes}
-                    aria-disabled={includesDisabledClass(buttonClassNames)}
+                    aria-disabled={isDisabled}
                     aria-describedby={descriptionId}
                     className={buttonClassNames}
                     disabled={disabled ? true : false}
