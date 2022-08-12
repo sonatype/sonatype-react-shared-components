@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxDescriptionList} from '@sonatype/react-shared-components';
+import { NxDescriptionList } from '@sonatype/react-shared-components';
 
 const NxDescriptionListLinkExample = () =>
   <NxDescriptionList>
