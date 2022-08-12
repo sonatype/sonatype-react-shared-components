@@ -12,10 +12,14 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxComboboxExample from './NxComboboxExample';
 import NxComboboxPredeterminedListExample from './NxComboboxPredeterminedListExample';
 import NxComboboxDisabledExample from './NxComboboxDisabledExample';
+import NxComboboxValidationExample from './NxComboboxValidationExample';
+import NxComboboxErrorExample from './NxComboboxErrorExample';
 
 const NxComboboxExampleCode = require('./NxComboboxExample?raw');
 const NxComboboxPredeterminedListExampleCode = require('./NxComboboxPredeterminedListExample?raw');
 const NxComboboxDisabledExampleCode = require('./NxComboboxDisabledExample?raw');
+const NxComboboxValidationExampleCode = require('./NxComboboxValidationExample?raw');
+const NxComboboxErrorExampleCode = require('./NxComboboxErrorExample?raw');
 
 const NxComboboxPage = () =>
   <>
@@ -80,7 +84,8 @@ const NxComboboxPage = () =>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                <NxCode>autoComplete</NxCode> will highlight the first matching item from the array of matches and provide an inline completion string.
+                <NxCode>autoComplete</NxCode> will highlight the first matching item from the array of matches and
+                provide an inline completion string.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -134,6 +139,15 @@ const NxComboboxPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell><NxCode>short</NxCode></NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                Whether to render a short variant of the search box and correspondingly the dropdown
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell><NxCode>disabled</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
@@ -149,6 +163,21 @@ const NxComboboxPage = () =>
               <NxTable.Cell>"No Results Found"</NxTable.Cell>
               <NxTable.Cell>
                 The text to display when the user performs a query for which no results are returned
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>inputProps</NxTable.Cell>
+              <NxTable.Cell>
+                Props for <NxCode>NxTextInput</NxCode> except
+                for <NxCode>type</NxCode>,{' '}
+                <NxCode>value</NxCode>,{' '}
+                <NxCode>isPristine</NxCode>,
+                and <NxCode>readOnly</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                Props to apply to the textarea within the <NxCode>NxCombobox</NxCode>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -175,21 +204,7 @@ const NxComboboxPage = () =>
         <NxP>
           If using <NxCode>NxCombobox</NxCode> for a backend query, the search functionality should be used with a
           debounce in order to prevent excessive queries to the backend. The standard timing value to use for that
-          debounce is provided via the <NxCode>NX_SEARCH_DROPDOWN_DEBOUNCE_TIME</NxCode> export. See
-          also <NxCode>NxStatefulCombobox</NxCode>, which manages the debounce internally.
-        </NxP>
-      </NxTile.Subsection>
-      <NxTile.Subsection>
-        <NxTile.SubsectionHeader>
-          <NxH3>Usage Notes with a Backend Query</NxH3>
-        </NxTile.SubsectionHeader>
-        <NxP>
-          Due to its interaction with typically backend logic, <NxCode>NxCombobox</NxCode> has some
-          complexities that cannot be internalized and which much be handled by the calling code. These complications
-          include debouncing the text change <em>after updating the search text and loading props</em> and ensuring
-          that match results are for the most recently entered text. The location and manner in which these concerns
-          are handled will depend on the architecture of your application, but the backend query example demonstrates
-          how it might be done in a stateful wrapper component that manages the asynchronous call.
+          debounce is provided via the <NxCode>NX_SEARCH_DROPDOWN_DEBOUNCE_TIME</NxCode> export.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
@@ -198,14 +213,30 @@ const NxComboboxPage = () =>
                         id="nx-combobox-basic-example"
                         codeExamples={NxComboboxPredeterminedListExampleCode}
                         liveExample={NxComboboxPredeterminedListExample}>
-      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>long</NxCode> prop tied to a provided list of options to select from.
+      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>long</NxCode> prop tied to a provided list of
+      options to select from.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Non-emptiness Validation Example"
+                        id="nx-combobox-non-emptiness-example"
+                        codeExamples={NxComboboxValidationExampleCode}
+                        liveExample={NxComboboxValidationExample}>
+      An example of an <NxCode>NxCombobox</NxCode> that validates that its contents are non-empty.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Backend Query Example"
                         id="nx-combobox-backend-example"
                         codeExamples={NxComboboxExampleCode}
                         liveExample={NxComboboxExample}>
-      An example of an <NxCode>NxCombobox</NxCode> tied to a backend query.
+      An example of an <NxCode>NxCombobox</NxCode> tied to a backend query and with <NxCode>autoComplete</NxCode>{' '}
+      set to true to provide an inline completion string.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Error Example"
+                        id="nx-combobox-error-example"
+                        codeExamples={NxComboboxErrorExampleCode}
+                        liveExample={NxComboboxErrorExample}>
+      An example of an <NxCode>NxCombobox</NxCode> that has an error when attempting to load results.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"

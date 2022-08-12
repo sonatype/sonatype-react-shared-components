@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { NxCombobox, DataItem, NxFormGroup }
+import { NxCombobox, DataItem, NxFormGroup, nxTextInputStateHelpers }
   from '@sonatype/react-shared-components';
 
 const array:string[] = ['Alabama', 'Alaska', 'Arizona', 'California', 'Colorado', 'Connecticut',
@@ -17,16 +17,23 @@ const items = prepend(
     { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: array[i - 1] }), range(1, array.length + 1)));
 
+const { initialState, userInput } = nxTextInputStateHelpers;
+
 function search(query: string):DataItem<number>[] {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
   return matchingItems;
 }
 
-export default function NxComboboxPredeterminedListExample() {
+function validator(val: string) {
+  return val.length ? null : 'Must be non-empty';
+}
+
+export default function NxComboboxRequiredExample() {
   const [matches, setMatches] = useState<DataItem<number>[]>(items),
       [query, setQuery] = useState(''),
-      latestExecutedQueryRef = useRef<string | null>(null);
+      latestExecutedQueryRef = useRef<string | null>(null),
+      [inputState, setInputState] = useState(initialState(''));
 
   function onSelect(item: DataItem<number>) {
     if (typeof item.displayName === 'string') {
@@ -37,11 +44,13 @@ export default function NxComboboxPredeterminedListExample() {
 
   const executeQuery = useCallback(function executeQuery(query: string) {
     latestExecutedQueryRef.current = query;
+
     setMatches(search(query));
   }, [query]);
 
   function onSearchTextChange(query: string) {
     setQuery(query);
+    setInputState(userInput(validator, query));
   }
 
   function onSearch(query: string) {
@@ -49,8 +58,8 @@ export default function NxComboboxPredeterminedListExample() {
   }
 
   return (
-    <NxFormGroup label="State">
-      <NxCombobox long
+    <NxFormGroup label="State" isRequired>
+      <NxCombobox inputProps={{...inputState, validatable: true}}
                   matches={matches}
                   searchText={query}
                   onSearchTextChange={onSearchTextChange}

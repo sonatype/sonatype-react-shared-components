@@ -7,8 +7,11 @@
 import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
 import { HTMLAttributes, ReactNode } from 'react';
+import { PublicProps as NxTextInputProps, propTypes as nxTextInputPropTypes } from '../NxTextInput/types';
 
 import DataItem from '../../util/DataItem';
+
+type InputProps = Omit<NxTextInputProps, 'type' | 'value' | 'isPristine' | 'readOnly'>;
 
 export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   searchText: string;
@@ -23,6 +26,7 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
   autoComplete?: boolean | null;
+  inputProps?: InputProps | null;
 }
 
 export interface StatefulProps<T extends string | number = string>
@@ -43,7 +47,8 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   short: PropTypes.bool,
   disabled: PropTypes.bool,
   emptyMessage: PropTypes.node,
-  autoComplete: PropTypes.bool
+  autoComplete: PropTypes.bool,
+  inputProps: PropTypes.shape(omit(['type', 'value', 'isPristine', 'readOnly'], nxTextInputPropTypes))
 };
 
 export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps<string | number>> = {

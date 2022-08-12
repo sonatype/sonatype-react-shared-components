@@ -21,8 +21,6 @@ import useMutationObserver from '@rooks/use-mutation-observer';
 import DataItem from '../../util/DataItem';
 export { Props } from './types';
 
-export const SEARCH_DEBOUNCE_TIME = 500;
-
 function NxComboboxRender<T extends string | number = string>(
   props: Props<T>,
   externalRef: Ref<HTMLDivElement>
@@ -41,12 +39,12 @@ function NxComboboxRender<T extends string | number = string>(
         disabled,
         emptyMessage,
         autoComplete,
+        inputProps,
         ...attrs
       } = props,
 
       isEmpty = !matches.length,
-      [isSelected, setIsSelected] = useState(false),
-      showDropdown = !!(searchText && !disabled && !isSelected),
+      showDropdown = !!(searchText && !disabled),
 
       ref = useRef<HTMLDivElement>(null),
       mergedRef = useMergedRef(externalRef, ref),
@@ -90,7 +88,6 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function handleFilterChange(value: string) {
-    setIsSelected(false);
     setElToFocusId('');
     setFocusableBtnIndex(null);
     onSearchTextChange(value);
@@ -122,9 +119,8 @@ function NxComboboxRender<T extends string | number = string>(
     const inputEle = evt.target as HTMLInputElement;
     switch (evt.key) {
       case 'Enter':
-        if (showDropdown) {
-          typeof focusableBtnIndex === 'number' && elToFocusId ? handleOnClick(matches[focusableBtnIndex])
-            : setIsSelected(true);
+        if (typeof focusableBtnIndex === 'number' && elToFocusId) {
+          handleOnClick(matches[focusableBtnIndex]);
         }
         evt.preventDefault();
         break;
@@ -137,24 +133,17 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'ArrowDown':
-        if (!isEmpty && !showDropdown) {
-          setIsSelected(false);
-        }
         elToFocusId
           ? (dropdownRef.current?.children[matches.length - 1].id === elToFocusId ? focusFirst() : focusNext())
           : focusFirst();
         evt.preventDefault();
         break;
       case 'ArrowUp':
-        if (!isEmpty && !showDropdown) {
-          setIsSelected(false);
-        }
         elToFocusId ? (dropdownRef.current?.children[0].id === elToFocusId ? focusLast() : focusPrev()) :
           focusLast();
         evt.preventDefault();
         break;
       case 'Escape':
-        setIsSelected(true);
         setElToFocusId('');
         setFocusableBtnIndex(null);
         if (!showDropdown) {
@@ -184,7 +173,7 @@ function NxComboboxRender<T extends string | number = string>(
   useEffect(function() {
     if (matches.length) {
       setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex ?? 0));
-      if (autoComplete && showDropdown) {
+      if (autoComplete) {
         setInlineOption();
       }
     }
@@ -239,7 +228,6 @@ function NxComboboxRender<T extends string | number = string>(
   function handleOnClick(match: DataItem<T>) {
     onSelect(match);
     focusTextInput();
-    setIsSelected(true);
     setElToFocusId('');
     setFocusableBtnIndex(null);
   }
@@ -273,16 +261,18 @@ function NxComboboxRender<T extends string | number = string>(
     <div ref={mergedRef} className={className} onFocus={handleComponentFocus} onBlur={handleComponentBlur} { ...attrs }>
       <NxTextInput role="combobox"
                    ref={filterRef}
+                   isPristine
+                   {...inputProps}
                    className={filterClassName}
                    value={searchText}
                    onChange={handleFilterChange}
                    disabled={disabled || undefined}
-                   isPristine={true}
                    onKeyDown={handleKeyDown}
+                   aria-autocomplete={autoComplete ? 'both' : 'list'}
                    aria-expanded={showDropdown}
                    aria-controls={dropdownId}
                    aria-activedescendant={elToFocusId}
-                   />
+                  />
       <NxDropdownMenu id={dropdownId}
                       role={dropdownRole}
                       ref={dropdownRef}
@@ -317,9 +307,3 @@ function NxComboboxRender<T extends string | number = string>(
 const NxCombobox = Object.assign(forwardRef(NxComboboxRender), { propTypes });
 
 export default NxCombobox;
-
-//AUTOCOMPLETE NOTE:
-//set aria-autocomplete (BOTH - default would be list)
-//set aria-selected to array[0] / first match of array
-//take the value of array[0] and apply string to input
-//right key - does it complete the string?
