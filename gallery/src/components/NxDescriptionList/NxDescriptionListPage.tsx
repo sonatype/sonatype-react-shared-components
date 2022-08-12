@@ -381,6 +381,7 @@ const NxDescriptionListPage = () =>
                 string
               </NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell />
               <NxTable.Cell>
                 Class names to be applied to the underlying <NxCode>button</NxCode> element.
               </NxTable.Cell>
@@ -393,6 +394,7 @@ const NxDescriptionListPage = () =>
                 </NxTextLink> wrapped in an object.
               </NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell />
               <NxTable.Cell>
                 <NxCode>NxList.ButtonItem</NxCode> also supports any HTML attribute that's normally supported
                 by <NxCode>{'<button>'}</NxCode>. To apply such attributes, simply wrap them in an object and
@@ -498,6 +500,7 @@ const NxDescriptionListPage = () =>
                 string
               </NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell />
               <NxTable.Cell>
                 Class names to be applied to the underlying <NxCode>a</NxCode> element.
               </NxTable.Cell>
@@ -510,6 +513,7 @@ const NxDescriptionListPage = () =>
                 </NxTextLink> wrapped in an object.
               </NxTable.Cell>
               <NxTable.Cell>no</NxTable.Cell>
+              <NxTable.Cell />
               <NxTable.Cell>
                 <NxCode>NxList.LinkItem</NxCode> also supports any HTML attribute that's normally supported
                 by <NxCode>{'<a>'}</NxCode>. To apply such attributes, simply wrap them in an object and
