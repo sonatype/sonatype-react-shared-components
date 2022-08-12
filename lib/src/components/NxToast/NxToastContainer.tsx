@@ -21,18 +21,17 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   const { children } = props;
 
   const ref = useRef<HTMLDivElement | null>(null);
+
   const [prevFocusedEl, setPrevFocusedEl] = useState<Element| null>(null);
 
   const adjustFocus = () => {
     if (!ref.current?.contains(document.activeElement)) {
       setPrevFocusedEl(document.activeElement);
-      // console.log(document.activeElement);
     }
 
     if (ref.current) {
       const closeBtns = ref.current.querySelectorAll('.nx-toast .nx-btn--close');
       const lastCloseBtn = closeBtns[closeBtns.length - 1];
-      // console.log(lastCloseBtn);
       if (lastCloseBtn) {
         (lastCloseBtn as HTMLElement).focus();
       }

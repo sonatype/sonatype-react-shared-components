@@ -31,6 +31,7 @@ const NxToast = (props: NxToastProps) => {
 
   useEffect(()=>{
     focusedToast?.adjustFocus();
+    return () => { Promise.resolve().then(() => focusedToast?.adjustFocus()); };
   }, []);
 
   const handleClose = () => {
@@ -42,7 +43,6 @@ const NxToast = (props: NxToastProps) => {
   const handleAnimationEnd = () => {
     if (isClosing) {
       onClose();
-      focusedToast?.adjustFocus();
     }
   };
 
