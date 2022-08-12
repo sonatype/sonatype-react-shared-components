@@ -7,6 +7,8 @@
 import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
+type ButtonAttributeOmissions = 'disabled' | 'className' | 'onClick';
+
 export interface ButtonItemProps extends HTMLAttributes<HTMLDivElement> {
   onClick: () => void;
   term: Exclude<ReactNode, undefined | null>;
@@ -14,7 +16,7 @@ export interface ButtonItemProps extends HTMLAttributes<HTMLDivElement> {
   selected?: boolean | null;
   disabled?: boolean | null;
   buttonClassName?: string | null;
-  buttonAttributes?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled' | 'className'> | null;
+  buttonAttributes?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, ButtonAttributeOmissions> | null;
 }
 
 export interface Props extends HTMLAttributes<HTMLElement> {
