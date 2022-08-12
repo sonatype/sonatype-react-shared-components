@@ -54,8 +54,7 @@ type ToastModel = {
 export default function NxToastFullPageExample() {
   // const [showToast, setShowToast] = useState<boolean>(false);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
-  const [id, setId] = useState<number>(0)
-
+  const [id, setId] = useState<number>(0);
 
   const addToast = () => {
     setId(id + 1);
@@ -120,7 +119,7 @@ export default function NxToastFullPageExample() {
           {
             toasts.map((toast) => (
               <NxToast key={toast.toastId}
-                       id={toast.toastId}
+                       toastId={toast.toastId}
                        onClose={()=> removeToast(toast.toastId)}>
                 <NxSuccessAlert>Hello World</NxSuccessAlert>
               </NxToast>
@@ -134,7 +133,7 @@ export default function NxToastFullPageExample() {
           <NxTile.Header>Lorem Ipsum</NxTile.Header>
           <NxTile.Content>
             <NxP>
-              <button type="button" onClick={() => addToast()}>Open Toast</button>
+              <NxButton type="button" onClick={() => addToast()}>Open Toast</NxButton>
               Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
               dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
               varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris

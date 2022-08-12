@@ -6,7 +6,7 @@
  */
 import {useContext} from 'react';
 
-import ToastContext from '../components/NxToast/contexts';
+import {ToastContext} from '../components/NxToast/contexts';
 
 function useToast() {
   const context = useContext(ToastContext);

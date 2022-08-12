@@ -30,9 +30,7 @@ export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
 };
 
 export type ToastModel = {
-  toastId: number,
-  type: ToastType,
-  message: string
+  toastId: number;
 };
 
 export type ToastAddModel = {
@@ -45,6 +43,10 @@ export type ToastContextType = {
   addToast: (model: ToastAddModel) => void,
   removeToast: (id: number) => void
 } | null;
+
+export type FocusContextType = {
+  adjustFocus: ()=> void;
+};
 
 //NxToastContainer
 export type NxToastContainerProps = {

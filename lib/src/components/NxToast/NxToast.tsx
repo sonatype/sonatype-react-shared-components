@@ -4,8 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ReactNode, ReactElement, useState } from 'react';
+import React, { ReactNode, ReactElement, useState, useContext, useEffect } from 'react';
 import classnames from 'classnames';
+import { FocusContext } from './contexts';
 
 // import { nxToastPropTypes, NxToastProps } from './types';
 // import NxCloseButton from '../NxCloseButton/NxCloseButton';
@@ -16,7 +17,7 @@ import classnames from 'classnames';
 
 export interface NxToastProps {
   onClose: () => void;
-  id: number;
+  toastId: number;
   children: ReactElement;
   previousFocusedElement?: ReactNode;
 }
@@ -25,6 +26,12 @@ const NxToast = (props: NxToastProps) => {
   const { onClose, children } = props;
 
   const [isClosing, setIsClosing] = useState(false);
+
+  const focusedToast = useContext(FocusContext);
+
+  useEffect(()=>{
+    focusedToast?.adjustFocus();
+  }, []);
 
   const handleClose = () => {
     if (!isClosing) {
@@ -35,6 +42,7 @@ const NxToast = (props: NxToastProps) => {
   const handleAnimationEnd = () => {
     if (isClosing) {
       onClose();
+      focusedToast?.adjustFocus();
     }
   };
 
