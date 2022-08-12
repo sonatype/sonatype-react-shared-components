@@ -13,7 +13,6 @@ import NxListClickableLinksExample from './NxListClickableLinksExample';
 import NxListWithActionsExample from './NxListWithActionsExample';
 import NxListErrorExample from './NxListErrorStateExample';
 import NxListLoadingExample from './NxListLoadingExample';
-import NxListDescriptionCodeExample from './NxListDescriptionExample';
 import NxListDeprecatedClickableExample from './NxListDeprecatedClickableExample';
 
 const NxListSimpleCode = require('./NxListDefaultExample.html'),
@@ -26,7 +25,7 @@ const NxListSimpleCode = require('./NxListDefaultExample.html'),
     NxListEmptyCode = require('./NxListEmptyExample.html'),
     NxListErrorStateCode = require('./NxListErrorStateExample.tsx?raw'),
     NxListLoadingCode = require('./NxListLoadingExample.tsx?raw'),
-    NxListDescriptionCode = require('./NxListDescriptionExample?raw'),
+    NxListDescriptionCode = require('./NxListDescriptionExample.html'),
     NxListDeprecatedClickableCode = require('./NxListDeprecatedClickableExample?raw');
 
 const NxListsExamples = () =>
@@ -109,7 +108,7 @@ const NxListsExamples = () =>
 
     <GalleryExampleTile title="NxList description list example"
                         id="nx-list-description-example"
-                        liveExample={NxListDescriptionCodeExample}
+                        htmlExample={NxListDescriptionCode}
                         codeExamples={NxListDescriptionCode}>
       Basic <NxCode>nx-list--description</NxCode> with a heading. Wrapping is demonstrated in both
       the terms and the descriptions.
