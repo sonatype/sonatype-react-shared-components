@@ -252,25 +252,12 @@
       }
 
       > .nx-chevron {
+        align-self: center;
         color: var(--nx-color-text-dark);
         grid-area: actions;
 
         // custom sizing for the icon, brings it up to 13px
         font-size: 21px;
-      }
-    }
-  }
-
-  &, > .nx-list__link, > .nx-list__btn {
-    > .nx-chevron {
-      align-self: center;
-    }
-  }
-
-  > .nx-list__description {
-    > .nx-list__link, .nx-list__btn {
-      .nx-chevron {
-        align-self: start;
       }
     }
   }
@@ -356,10 +343,6 @@
 
     > .nx-list__text {
       font-weight: normal;
-    }
-
-    > .nx-chevron {
-      align-self: start;
     }
   }
 
