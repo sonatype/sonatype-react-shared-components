@@ -187,6 +187,20 @@ const NxToastPage = () =>
         </NxStatefulAccordion>
       </NxTile.Content> */}
     </NxTile>
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>Toasts Variations Used With NxGlobalHeader Example</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          <NxTextLink href="#/NxToastFullPageVariationsExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+      </NxTile.Content>
+    </NxTile>
   </>;
 
 export default NxToastPage;

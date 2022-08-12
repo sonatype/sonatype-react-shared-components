@@ -45,6 +45,7 @@ import NxGlobalSidebarFooterEmptyExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
 
 import NxToastFullExample from './components/NxToast/NxToastFullPageExample';
+import NxToastFullPageVariationsExample from './components/NxToast/NxToastFullPageVariationsExample';
 
 const pageMappings = mergeAll(values(pageConfig));
 
@@ -121,6 +122,11 @@ function Application() {
         <Route exact path="/NxToastFullExample">
           <SectionScrollingWrapper>
             <NxToastFullExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxToastFullPageVariationsExample">
+          <SectionScrollingWrapper>
+            <NxToastFullPageVariationsExample />
           </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxSystemNoticeGlobalSidebarExample">
