@@ -52,17 +52,6 @@ type ToastModel = {
   toastId: number,
   alert: ReactElement;
 };
-// type ToastAddModel = {
-//   message: string
-// };
-
-// type ToastAddModel = {
-//   type: ToastType,
-//   message: string
-// };
-
-// const allToastTypes = ['info', 'success', 'error', 'warning'] as const;
-// type ToastType = (typeof allToastTypes)[number];
 
 export default function NxToastFullPageExample() {
   // const [showToast, setShowToast] = useState<boolean>(false);
@@ -134,7 +123,7 @@ export default function NxToastFullPageExample() {
           {
             toasts.map((toast) => (
               <NxToast key={toast.toastId}
-                       id={toast.toastId}
+                       toastId={toast.toastId}
                        onClose={()=> removeToast(toast.toastId)}>
                 {
                   toast.alert
