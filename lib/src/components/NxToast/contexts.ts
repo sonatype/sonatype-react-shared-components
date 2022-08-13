@@ -6,9 +6,8 @@
  */
 import { createContext } from 'react';
 
-import { ToastContextType, FocusContextType } from './types';
+import { FocusContextType } from './types';
 
-const ToastContext = createContext<ToastContextType | null>(null);
 const FocusContext = createContext<FocusContextType | null>(null);
 
-export {ToastContext, FocusContext};
+export default FocusContext;

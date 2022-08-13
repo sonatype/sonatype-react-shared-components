@@ -39,20 +39,9 @@ const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png
 type ToastModel = {
   toastId: number,
 };
-// type ToastAddModel = {
-//   message: string
-// };
-
-// type ToastAddModel = {
-//   type: ToastType,
-//   message: string
-// };
-
-// const allToastTypes = ['info', 'success', 'error', 'warning'] as const;
-// type ToastType = (typeof allToastTypes)[number];
 
 export default function NxToastFullPageExample() {
-  // const [showToast, setShowToast] = useState<boolean>(false);
+
   const [toasts, setToasts] = useState<ToastModel[]>([]);
   const [id, setId] = useState<number>(0);
 

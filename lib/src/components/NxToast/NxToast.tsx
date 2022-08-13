@@ -4,23 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ReactNode, ReactElement, useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import classnames from 'classnames';
-import { FocusContext } from './contexts';
+import FocusContext from './contexts';
 
-// import { nxToastPropTypes, NxToastProps } from './types';
-// import NxCloseButton from '../NxCloseButton/NxCloseButton';
-// import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import { nxToastPropTypes, NxToastProps, ToastModel } from './types';
 
-// import ToastContext from './contexts';
-// import { toastTypeMap } from './toastTypeMapping';
-
-export interface NxToastProps {
-  onClose: () => void;
-  toastId: number;
-  children: ReactElement;
-  previousFocusedElement?: ReactNode;
-}
+export { ToastModel };
 
 const NxToast = (props: NxToastProps) => {
   const { onClose, children } = props;
@@ -46,10 +36,6 @@ const NxToast = (props: NxToastProps) => {
     }
   };
 
-  // const childrenWithProps = React.Children.map(children, child =>
-  //   React.isValidElement(child) ? React.cloneElement(child, { onClose: handleClose }) : child
-  // );
-
   const validChild = React.Children.only(children);
   const childrenWithProps = React.isValidElement(children) ?
     React.cloneElement(validChild, { onClose: handleClose }) : validChild;
@@ -67,5 +53,5 @@ const NxToast = (props: NxToastProps) => {
   );
 };
 
-// NxToast.propTypes = nxToastPropTypes;
+NxToast.propTypes = nxToastPropTypes;
 export default NxToast;

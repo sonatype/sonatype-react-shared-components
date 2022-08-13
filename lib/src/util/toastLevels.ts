@@ -9,11 +9,11 @@
  * All Possible Toast Types
  */
 
-export const allToastTypes = ['info', 'success', 'error', 'warning'] as const;
+// export const allToastTypes = ['info', 'success', 'error', 'warning'] as const;
 
-/**
- * The type containing only the possible Toast types
- */
-export type ToastType = (typeof allToastTypes)[number];
+// /**
+//  * The type containing only the possible Toast types
+//  */
+// export type ToastType = (typeof allToastTypes)[number];
 
-Object.freeze(allToastTypes);
+// Object.freeze(allToastTypes);

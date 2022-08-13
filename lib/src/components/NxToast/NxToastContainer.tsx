@@ -4,18 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {ReactNode, useState, useRef} from 'react';
-import {FocusContext} from './contexts';
+import React, {useState, useRef} from 'react';
+import FocusContext from './contexts';
 
 // import classNames from 'classnames';
-// import {ToastModel} from './types';
+import {NxToastContainerProps} from './types';
 
 // export { Props } from './types';
-
-interface NxToastContainerProps {
-  children: ReactNode | null;
-  // children: ToastModel[] | null;
-}
 
 const NxToastContainer = (props: NxToastContainerProps) => {
   const { children } = props;
