@@ -63,7 +63,7 @@ describe('NxFileUpload', function() {
       kilobytes: path.join(tmpDir.path, 'kilobytes'),
       megabytes: path.join(tmpDir.path, 'megabytes'),
       gigabytes: path.join(tmpDir.path, 'gigabytes-gigalongname')
-    }
+    };
 
     const bytesPromise = fillFile(files.bytes, 14),
         kilobytesPromise = fillFile(files.kilobytes, 2000),
@@ -180,8 +180,8 @@ describe('NxFileUpload', function() {
       await fileChooser.accept([files.bytes]);
 
       const [selectedFile, dismissBtn] = await waitAndGetElements(
-        `${complexExampleSelector} .nx-selected-file`,
-        `${complexExampleSelector} .nx-selected-file__dismiss-btn`
+          `${complexExampleSelector} .nx-selected-file`,
+          `${complexExampleSelector} .nx-selected-file__dismiss-btn`
       );
 
       await dismissBtn.click();
@@ -216,18 +216,8 @@ describe('NxFileUpload', function() {
   });
 
   describe('stateful functionality', function() {
-    const {
-      waitAndGetElements,
-      dismissResultingDialog,
-      isInDocument,
-      getPage,
-      simpleTest,
-      focusTest,
-      hoverTest,
-      focusAndHoverTest,
-      clickTest,
-      a11yTest
-    } = setupBrowser('#/pages/Stateful File Upload');
+    const { waitAndGetElements, dismissResultingDialog, isInDocument, getPage }
+        = setupBrowser('#/pages/Stateful File Upload');
 
     const exampleSelector = '#nx-file-upload-stateful-example .gallery-example-live';
 
@@ -295,8 +285,8 @@ describe('NxFileUpload', function() {
       });
 
       const [selectedFile, dismissBtn] = await waitAndGetElements(
-        `${exampleSelector} .nx-selected-file`,
-        `${exampleSelector} .nx-selected-file__dismiss-btn`
+          `${exampleSelector} .nx-selected-file`,
+          `${exampleSelector} .nx-selected-file__dismiss-btn`
       );
 
       await dismissResultingDialog(async () => {
