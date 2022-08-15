@@ -11,11 +11,11 @@ import NxStatefulFileUpload, { Props } from '../NxStatefulFileUpload';
 
 describe('NxStatefulFileUpload', function() {
   const minimalProps = {
-      onChange: () => {}
-    },
-    render = rtlRender<Props>(NxStatefulFileUpload, minimalProps),
-    renderEl = rtlRenderElement<Props>(NxStatefulFileUpload, minimalProps),
-    renderInput = pipe(renderEl, el => el?.querySelector('input[type=file]'));
+        onChange: () => {}
+      },
+      render = rtlRender<Props>(NxStatefulFileUpload, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxStatefulFileUpload, minimalProps),
+      renderInput = pipe(renderEl, el => el?.querySelector('input[type=file]'));
 
   it('renders a file input and a button', function() {
     const component = render(),

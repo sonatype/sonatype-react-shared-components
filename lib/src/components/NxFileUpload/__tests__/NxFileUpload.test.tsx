@@ -11,12 +11,12 @@ import NxFileUpload from '../NxFileUpload';
 
 describe('NxFileUpload', function() {
   const minimalProps = {
-      files: null,
-      onChange: () => {}
-    },
-    render = rtlRender(NxFileUpload, minimalProps),
-    renderEl = rtlRenderElement(NxFileUpload, minimalProps),
-    renderInput = pipe(renderEl, el => el?.querySelector('input[type=file]'));
+        files: null,
+        onChange: () => {}
+      },
+      render = rtlRender(NxFileUpload, minimalProps),
+      renderEl = rtlRenderElement(NxFileUpload, minimalProps),
+      renderInput = pipe(renderEl, el => el?.querySelector('input[type=file]'));
 
   it('renders a file input and a button', function() {
     const component = render(),
