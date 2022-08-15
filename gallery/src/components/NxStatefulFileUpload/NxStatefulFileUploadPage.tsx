@@ -18,7 +18,7 @@ const NxTextInputPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         <NxCode>NxStatefulFileUpload</NxCode> is a stateful version of <NxCode>NxFileUpload</NxCode>.
-        It tracks the selected file internally while still exposing an <NxCode>onChange</NxCode>
+        It tracks the selected file and pristine state internally while still exposing an <NxCode>onChange</NxCode>
         prop which can be used to communicate the selected file to surrounding code.
       </NxP>
       <NxTile.Subsection>
@@ -27,7 +27,7 @@ const NxTextInputPage = () =>
         </NxTile.SubsectionHeader>
         <NxP>
           <NxCode>NxStatefulFileUpload</NxCode> takes all of the same props as <NxCode>NxFileUpload</NxCode>, except
-          for <NxCode>files</NxCode>.
+          for <NxCode>files</NxCode> and <NxCode>isPristine</NxCode>.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>

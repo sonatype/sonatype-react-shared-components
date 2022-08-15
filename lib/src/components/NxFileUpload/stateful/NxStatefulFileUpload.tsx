@@ -11,12 +11,14 @@ import { StatefulProps as Props } from '../types';
 export { Props };
 
 export default function NxStatefulFileUpload({ onChange: onChangeProp, ...otherProps }: Props) {
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [files, setFiles] = useState<FileList | null>(null),
+      [isPristine, setIsPristine] = useState(true);
 
   function onChange(files: FileList | null) {
+    setIsPristine(false);
     setFiles(files);
     onChangeProp(files);
   }
 
-  return <NxFileUpload { ...otherProps } files={files} onChange={onChange} />;
+  return <NxFileUpload { ...otherProps } { ...{ files, isPristine, onChange } } />;
 }
