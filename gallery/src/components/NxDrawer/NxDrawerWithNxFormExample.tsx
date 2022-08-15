@@ -15,9 +15,7 @@ import { NxForm,
   NxFieldset,
   NxCheckbox,
   useToggle,
-  nxTextInputStateHelpers,
-  NxP,
-  NxButtonBar
+  nxTextInputStateHelpers
 } from '@sonatype/react-shared-components';
 
 import {faAngry} from '@fortawesome/free-solid-svg-icons';

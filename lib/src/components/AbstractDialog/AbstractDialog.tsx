@@ -35,9 +35,6 @@ const createCancelEvent = () => new Event('cancel', { cancelable: true });
  * Abstracted Dialog element implementation and behaviors.
  * @param className - A classname string for the dialog element.
  * @param onCancel - A callback function that gets called when the dialog is canceled.
- * @param cancelOnClickOutside - A boolean that if true triggers onCancel when the user clicks outside the dialog.
- * @param cancelOnClickOutsideTargetClassName - A classname, if specified, selects an element inside the dialog
- *    element that becomes the reference element for when the user clicks outside of, triggers the cancelOnClickOutside.
  * @param useNativeCancelOnEscape - If this is set to true, it will attempt to use native dialog element
  *    cancel behavior when escape is pressed. By default this is set to false, which means it uses event.preventDefault
  *    and calls onCancel callback when escape is pressed.
@@ -50,22 +47,21 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   const {
     className,
     children,
-    cancelOnClickOutside,
     onCancel,
     useNativeCancelOnEscape,
     role,
-    cancelOnClickOutsideTargetClassName,
+    isModal,
     ...attrs
   } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  // The dialogRef value needs to get passed down in a context. But the context needs to know when the ref
+  // The dialogRef value needs to get passed down in a context. But athe context needs to know when the ref
   // value has updated, and refs aren't tracked like state values. So we have to copy the ref value into a state
   // value in order for it to be tracked.
   const [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
 
-  useMergedRef(ref, dialogRef);
+  const mergedRef = useMergedRef(dialogRef, ref);
 
   function dialogKeydownListener(evt: KeyboardEvent<HTMLDialogElement>) {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
@@ -118,14 +114,21 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
      * it together, we should be able to take advantage of the "top layer" functionality built into
      * the browser around modals to simplify the dialog styling around z-index handling
      */
-    if (hasNativeModalSupport) {
-      // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (el as any).showModal();
+
+    if (isModal) {
+      if (hasNativeModalSupport) {
+        // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (el as any).showModal();
+      }
+      else {
+        // without native support we don't trap focus in the dialog, but we can at least start it off there
+        el.focus();
+      }
     }
     else {
-      // without native support we don't trap focus in the dialog, but we can at least start it off there
-      el.focus();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (el as any).show();
     }
 
     return () => {
@@ -154,26 +157,26 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     }
   }, [onCancel]);
 
-  const clickOutsideTargetElement = cancelOnClickOutsideTargetClassName ?
-    dialogRef.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] :
-    dialogRef.current;
+  // const clickOutsideTargetElement = cancelOnClickOutsideTargetClassName ?
+  //   dialogRef.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] :
+  //   dialogRef.current;
 
-  useEffect(() => {
-    if (cancelOnClickOutside) {
-      const listener = (event: MouseEvent) => {
-        if (!clickOutsideTargetElement || clickOutsideTargetElement.contains(event.target as Node)) {
-          return;
-        }
+  // useEffect(() => {
+  //   if (cancelOnClickOutside) {
+  //     const listener = (event: MouseEvent) => {
+  //       if (!clickOutsideTargetElement || clickOutsideTargetElement.contains(event.target as Node)) {
+  //         return;
+  //       }
 
-        if (onCancel) {
-          onCancel(createCancelEvent());
-        }
-      };
-      document.addEventListener('click', listener);
-      return () => document.removeEventListener('click', listener);
-    }
-    return;
-  }, [clickOutsideTargetElement]);
+  //       if (onCancel) {
+  //         onCancel(createCancelEvent());
+  //       }
+  //     };
+  //     document.addEventListener('click', listener);
+  //     return () => document.removeEventListener('click', listener);
+  //   }
+  //   return;
+  // }, [clickOutsideTargetElement]);
 
   const dialogContextValue = {
     dialogEl: dialogRefState,
@@ -192,7 +195,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         * focus the dialog element itself when it opens which can't be done if it doesn't have a tab index
         */
       }
-      <dialog ref={dialogRef}
+      <dialog ref={mergedRef}
               role={role || 'dialog'}
               aria-modal="true"
               onKeyDown={dialogKeydownListener}

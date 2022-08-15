@@ -28,24 +28,14 @@ const _NxDrawer = (props: Props) => {
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     setIsOpen(true);
-
-    window.setTimeout(() => {
-      // eslint-disable-next-line
-      console.log('HYA');
-      setIsDrawerOpen(true);
-    }, 1000);
   }, []);
 
-  const closeDrawer = () => {
-    setIsDrawerOpen(false);
-    setIsOpen(false);
-  };
+  const closeDrawer = () => setIsOpen(false);
 
   const handleTransitionEnd = () => {
     if (!isOpen) {
@@ -53,12 +43,8 @@ const _NxDrawer = (props: Props) => {
     }
   };
 
-  const backdropClasses = classnames('nx-drawer-backdrop', {
-    'nx-drawer-backdrop--open': isOpen
-  });
-
   const classes = classnames('nx-drawer', {
-    'nx-drawer--open': isDrawerOpen,
+    'nx-drawer--open': isOpen,
     'nx-drawer--narrow': variant === 'narrow'
   }, className);
 
@@ -67,20 +53,35 @@ const _NxDrawer = (props: Props) => {
   const descriptionContent = headerDescription ?
     <p className="nx-p nx-drawer-header__description">{headerDescription}</p> : null;
 
-  const handleBackdropClick: React.MouseEventHandler<HTMLDialogElement> = (event) => {
-    if (event.target === event.currentTarget) {
-      closeDrawer();
-    }
-  };
+  // const clickOutsideTargetElement = cancelOnClickOutsideTargetClassName ?
+  //   dialogRef.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] :
+  //   dialogRef.current;
+
+  useEffect(() => {
+    const listener = (event: MouseEvent) => {
+      // eslint-disable-next-line
+      console.log(dialogRef);
+
+      if (dialogRef.current && !(dialogRef.current as HTMLDialogElement).contains(event.target as Node)) {
+        // eslint-disable-next-line
+        console.log('close drawer');
+        closeDrawer();
+      }
+    };
+
+    document.addEventListener('click', listener);
+
+    return () => document.removeEventListener('click', listener);
+  }, [dialogRef]);
 
   return (
     <AbstractDialog ref={dialogRef}
-                    className={backdropClasses}
+                    className={classes}
                     onCancel={closeDrawer}
                     onTransitionEnd={handleTransitionEnd}
-                    onClick={handleBackdropClick}
+                    isModal={false}
                     {...attrs}>
-      <div className={classes}>
+      <div className="nx-drawer__inner">
         <header className="nx-drawer-header">
           <NxCloseButton className="nx-drawer-header__cancel-button"
                          type="button"

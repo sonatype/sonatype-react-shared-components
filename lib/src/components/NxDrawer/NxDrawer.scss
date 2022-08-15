@@ -9,7 +9,7 @@
 
 $-box-shadow-offset: 52px;
 
-.nx-drawer-backdrop {
+.nx-drawer {
   // Undo styles that chrome applies to <dialog> elements
   border: initial;
   height: initial;
@@ -29,31 +29,52 @@ $-box-shadow-offset: 52px;
     pointer-events: auto;
   }
 
-  background-color: rgba(0, 0, 0, 0.1);
-  top: 0;
-  right: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: var(--nx-swatch-grey-30);
   position: fixed;
+  right: 0;
+  top: 0;
   z-index: 100;
-  opacity: 0;
-  width: 100%;
+  height: 100%;
 
-  transform: none;
-  transition: opacity 200ms ease-out;
+  width: 520px + $-box-shadow-offset;
+
+  transform: translateX(100%);
+  transition: transform 120ms ease-in;
 
   &--open {
-    opacity: 1;
-    transition: opacity 200ms ease-out;
+    transform: translateX(0);
+    transition: transform 200ms ease-out;
+  }
+
+  @media (prefers-reduced-motion) {
+    &, &--open {
+      transition-duration: 1ms;
+    }
+  }
+
+  &--narrow {
+    width: 348px + $-box-shadow-offset;
   }
 }
 
-.nx-drawer {
+.nx-drawer__inner {
   box-sizing: border-box;
+  background-color: var(--nx-swatch-white);
+  display: flex;
+  flex-direction: column;
+
   height: 100%;
   position: absolute;
-  right: 100px;
-  left: auto;
   top: 0;
-  width: 520px + $-box-shadow-offset;
+  right: 0;
+  left: $-box-shadow-offset;
+  width: calc(100% - #{$-box-shadow-offset});
+
+  pointer-events: auto;
+  align-items: stretch;
+  padding: var(--nx-spacing-6x);
 
   &--with-global-header {
     $global-header-height: 43px;
@@ -61,33 +82,16 @@ $-box-shadow-offset: 52px;
     top: $global-header-height;
   }
 
-  &--narrow {
-    width: 348px + $-box-shadow-offset;
-  }
+  &::after {
+    content: " ";
 
-  align-items: stretch;
-  background-color: var(--nx-swatch-white);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: var(--nx-spacing-6x);
-  padding-bottom: 0;
-
-  transform: none;
-
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-  transition: all 120ms ease-in;
-
-  // &--open {
-  //   transform: translateX(0);
-  //   transition: all 200ms ease-out;
-  // }
-
-  @media (prefers-reduced-motion) {
-    &, &--open {
-      transition-duration: 1ms;
-    }
+    box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);
+    height: calc(100% - var(--nx-spacing-16x));
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: var(--nx-spacing-8x);
+    z-index: -1;
   }
 }
 
@@ -122,7 +126,6 @@ $-box-shadow-offset: 52px;
   }
 
   &__description {
-    color: var(--nx-swatch-grey-30);
     grid-area: description;
     margin-top: var(--nx-spacing-2x);
   }
@@ -144,13 +147,13 @@ $-box-shadow-offset: 52px;
   padding-top: var(--nx-spacing-6x);
 }
 
-.nx-footer {
-  @include nx-container-helpers.container-vertical;
+// .nx-footer {
+//   @include nx-container-helpers.container-vertical;
 
-  border-top: 1px solid var(--nx-swatch-indigo-90);
-  height: min-content;
-  padding-top: var(--nx-spacing-6x);
-}
+//   border-top: 1px solid var(--nx-swatch-indigo-90);
+//   height: min-content;
+//   padding-top: var(--nx-spacing-6x);
+// }
 
 
 // Shadows

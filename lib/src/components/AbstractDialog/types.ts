@@ -13,6 +13,7 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   cancelOnClickOutsideTargetClassName?: string | null;
   onCancel: CancelHandler;
   useNativeCancelOnEscape?: boolean | null;
+  isModal?: boolean | null
 }
 
 export interface DialogContextValue {
