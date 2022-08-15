@@ -19,7 +19,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
 
   const body = document.getElementsByClassName('nx-body')[0];
 
-  const adjustFocus = () => {
+  const onToastClosing = () => {
     //When closing Toasts with a mouse click, document.activeElement becomes nx-body, so need
     //to specify not to assign selectedRef to body so the focus returns to the appropriate element
     if (!ref.current?.contains(document.activeElement) && document.activeElement !== body) {
@@ -39,7 +39,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   };
 
   return (
-    <FocusContext.Provider value={{adjustFocus}}>
+    <FocusContext.Provider value={{onToastClosing}}>
       <div className="nx-toast__wrapper" ref={ref}>
         <div className="nx-toast__container">
           {children}

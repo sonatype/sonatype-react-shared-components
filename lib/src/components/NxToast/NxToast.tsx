@@ -20,8 +20,8 @@ const NxToast = (props: NxToastProps) => {
   const focusedToast = useContext(FocusContext);
 
   useEffect(()=>{
-    focusedToast?.adjustFocus();
-    return () => { Promise.resolve().then(() => focusedToast?.adjustFocus()); };
+    focusedToast?.onToastClosing();
+    return () => { Promise.resolve().then(() => focusedToast?.onToastClosing()); };
   }, []);
 
   const handleClose = () => {

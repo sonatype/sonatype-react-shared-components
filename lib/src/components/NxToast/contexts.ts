@@ -6,8 +6,8 @@
  */
 import { createContext } from 'react';
 
-import { FocusContextType } from './types';
+import { NxToastContainerContext } from './types';
 
-const FocusContext = createContext<FocusContextType | null>(null);
+const FocusContext = createContext<NxToastContainerContext | null>(null);
 
 export default FocusContext;

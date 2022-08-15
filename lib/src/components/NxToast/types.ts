@@ -34,8 +34,8 @@ export type ToastModel = {
   toastId: number;
 };
 
-export type FocusContextType = {
-  adjustFocus: ()=> void;
+export type NxToastContainerContext = {
+  onToastClosing: ()=> void;
 };
 
 //NxToastContainer
