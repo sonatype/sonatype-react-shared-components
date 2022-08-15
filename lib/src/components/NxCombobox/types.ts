@@ -29,11 +29,6 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
   inputProps?: InputProps | null;
 }
 
-export interface StatefulProps<T extends string | number = string>
-  extends Omit<Props<T>, 'searchText' | 'onSearchTextChange'> {
-  defaultSearchText?: string | null;
-}
-
 export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   loading: PropTypes.bool,
   error: PropTypes.node,
@@ -49,9 +44,4 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   emptyMessage: PropTypes.node,
   autoComplete: PropTypes.bool,
   inputProps: PropTypes.shape(omit(['type', 'value', 'isPristine', 'readOnly'], nxTextInputPropTypes))
-};
-
-export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps<string | number>> = {
-  ...omit(['searchText', 'onSearchTextChange'], propTypes),
-  defaultSearchText: PropTypes.string
 };

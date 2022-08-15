@@ -44,22 +44,22 @@ function NxComboboxRender<T extends string | number = string>(
       } = props,
 
       isEmpty = !matches.length,
-      showDropdown = !!(searchText && !disabled),
 
       ref = useRef<HTMLDivElement>(null),
       mergedRef = useMergedRef(externalRef, ref),
       dropdownRef = useRef<HTMLDivElement>(null),
-      filterRef = useRef<HTMLDivElement>(null),
+      inputRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       [elToFocusId, setElToFocusId] = useState(''),
       [prevSearchText, setPrevSearchText] = useState(''),
+      [showDropdown, setShowDropdown] = useState(false),
 
       dropdownId = useUniqueId('nx-combobox-dropdown'),
       dropdownRole = error || loading || isEmpty ? 'alert' : 'listbox',
 
-      filterClassName = classnames('nx-combobox__input', { 'nx-text-input--long': long,
+      inputClassName = classnames('nx-combobox__input', { 'nx-text-input--long': long,
         'nx-text-input--short': short }),
       className = classnames('nx-combobox', classNameProp, {
         'nx-combobox--dropdown-showable': showDropdown
@@ -81,10 +81,14 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }
 
-  function handleComponentBlur() {
+  function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
     dropdownRef.current?.scrollTo({top: 0});
     setElToFocusId('');
     setFocusableBtnIndex(null);
+    // Check if the new focused element is a child of the parent, if not, then close the dropdown menu
+    if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget))) {
+      setShowDropdown(false);
+    }
   }
 
   function handleFilterChange(value: string) {
@@ -92,7 +96,7 @@ function NxComboboxRender<T extends string | number = string>(
     setFocusableBtnIndex(null);
     onSearchTextChange(value);
 
-    if (value.trim() !== searchText.trim()) {
+    if (value && value.trim() !== searchText.trim()) {
       doSearch(value);
       setPrevSearchText('');
     }
@@ -116,7 +120,7 @@ function NxComboboxRender<T extends string | number = string>(
       focusLast = adjustBtnFocus(always(matches.length - 1));
 
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
-    const inputEle = evt.target as HTMLInputElement;
+    const inputEle = evt.currentTarget as HTMLInputElement;
     switch (evt.key) {
       case 'Enter':
         if (typeof focusableBtnIndex === 'number' && elToFocusId) {
@@ -133,17 +137,24 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'ArrowDown':
+        if (!isEmpty) {
+          setShowDropdown(true);
+        }
         elToFocusId
           ? (dropdownRef.current?.children[matches.length - 1].id === elToFocusId ? focusFirst() : focusNext())
           : focusFirst();
         evt.preventDefault();
         break;
       case 'ArrowUp':
+        if (!isEmpty) {
+          setShowDropdown(true);
+        }
         elToFocusId ? (dropdownRef.current?.children[0].id === elToFocusId ? focusLast() : focusPrev()) :
           focusLast();
         evt.preventDefault();
         break;
       case 'Escape':
+        setShowDropdown(false);
         setElToFocusId('');
         setFocusableBtnIndex(null);
         if (!showDropdown) {
@@ -155,10 +166,11 @@ function NxComboboxRender<T extends string | number = string>(
 
   function doSearch(value: string) {
     onSearch(value.trim());
+    setShowDropdown(true);
   }
 
   function focusTextInput() {
-    filterRef.current?.querySelector('input')?.focus();
+    inputRef.current?.querySelector('input')?.focus();
   }
 
   function setInlineOption() {
@@ -195,7 +207,7 @@ function NxComboboxRender<T extends string | number = string>(
 
   useEffect(function() {
     if (prevSearchText && autoComplete) {
-      filterRef.current?.querySelector('input')?.setSelectionRange(prevSearchText.length, searchText.length);
+      inputRef.current?.querySelector('input')?.setSelectionRange(prevSearchText.length, searchText.length);
       focusFirst();
     }
   }, [prevSearchText]);
@@ -230,6 +242,7 @@ function NxComboboxRender<T extends string | number = string>(
     focusTextInput();
     setElToFocusId('');
     setFocusableBtnIndex(null);
+    setShowDropdown(false);
   }
 
   function handleElInView(el: HTMLElement) {
@@ -260,10 +273,10 @@ function NxComboboxRender<T extends string | number = string>(
   return (
     <div ref={mergedRef} className={className} onFocus={handleComponentFocus} onBlur={handleComponentBlur} { ...attrs }>
       <NxTextInput role="combobox"
-                   ref={filterRef}
+                   ref={inputRef}
                    isPristine
                    {...inputProps}
-                   className={filterClassName}
+                   className={inputClassName}
                    value={searchText}
                    onChange={handleFilterChange}
                    disabled={disabled || undefined}
