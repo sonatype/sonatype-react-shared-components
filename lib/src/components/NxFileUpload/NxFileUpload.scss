@@ -16,7 +16,7 @@
   &__input {
     @include nx-text-helpers.visually-hidden;
 
-    // focus styles must be reimplemented because it isn't the actual label.nx-btn that gets focus, it's the input
+    // focus styles must be reimplemented because it isn't the actual button that gets focus, it's the input
     &:focus + .nx-btn {
       border-color: var(--nx-color-interactive-border-focus);
       box-shadow: var(--nx-box-shadow-focus);
