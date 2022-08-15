@@ -15,6 +15,8 @@ import NxDescriptionListLinkItem from './NxDescriptionListLinkItem';
 
 import { Props, propTypes } from './types';
 
+export { Props, ButtonItemProps, LinkItemProps } from './types';
+
 const _NxDescriptionList = forwardRef<HTMLElement, Props>(function({ emptyMessage, ...otherProps }, externalRef) {
   const emptyChildRef = useRef<HTMLLIElement>(null),
       listRef = useRef<HTMLElement>(null),

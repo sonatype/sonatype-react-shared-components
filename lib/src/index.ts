@@ -326,4 +326,9 @@ export { default as NxProgressBar } from './components/NxProgressBar/NxProgressB
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
 
-export { default as NxDescriptionList } from './components/NxDescriptionList/NxDescriptionList';
+export {
+  default as NxDescriptionList,
+  Props as NxDescriptionListProps,
+  ButtonItemProps as NxDescriptionListButtonItemProps,
+  LinkItemProps as NxDescriptionListLinkItemProps
+} from './components/NxDescriptionList/NxDescriptionList';
