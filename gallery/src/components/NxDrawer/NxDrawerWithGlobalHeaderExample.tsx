@@ -84,31 +84,31 @@ export default function NxDrawerWithGlobalHeaderExample() {
         </div>
       </header>
 
-      <NxPageMain>
-        {showNarrowDrawer && (
-          <NxDrawer id="nx-drawer-with-global-header-narrow"
-                    className="nx-drawer--with-global-header"
-                    variant="narrow"
-                    onCancel={() => setShowNarrowDrawer(false)}
-                    headerTitle="Example of Narrow Drawer"
-                    headerSubtitle="Example subtitle"
-                    headerDescription={description}
-                    aria-labelledby="nx-drawer-with-global-header-narrow">
-            {contentAndFooter}
-          </NxDrawer>
-        )}
-        {showNormalDrawer && (
-          <NxDrawer id="nx-drawer-with-global-header-normal"
-                    className="nx-drawer--with-global-header"
-                    onCancel={() => setShowNormalDrawer(false)}
-                    headerTitle="Example of Normal Drawer"
-                    headerSubtitle="Example subtitle"
-                    headerDescription={description}
-                    aria-labelledby="nx-drawer-with-global-header-normal">
-            {contentAndFooter}
-          </NxDrawer>
-        )}
+      {showNarrowDrawer && (
+      <NxDrawer id="nx-drawer-with-global-header-narrow"
+                className="nx-drawer--with-global-header"
+                variant="narrow"
+                onCancel={() => setShowNarrowDrawer(false)}
+                headerTitle="Example of Narrow Drawer"
+                headerSubtitle="Example subtitle"
+                headerDescription={description}
+                aria-labelledby="nx-drawer-with-global-header-narrow">
+        {contentAndFooter}
+      </NxDrawer>
+      )}
+      {showNormalDrawer && (
+      <NxDrawer id="nx-drawer-with-global-header-normal"
+                className="nx-drawer--with-global-header"
+                onCancel={() => setShowNormalDrawer(false)}
+                headerTitle="Example of Normal Drawer"
+                headerSubtitle="Example subtitle"
+                headerDescription={description}
+                aria-labelledby="nx-drawer-with-global-header-normal">
+        {contentAndFooter}
+      </NxDrawer>
+      )}
 
+      <NxPageMain>
         <NxPageTitle>
           <NxH1>NxDrawers with Global Header</NxH1>
         </NxPageTitle>

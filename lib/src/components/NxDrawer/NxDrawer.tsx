@@ -27,24 +27,24 @@ const _NxDrawer = (props: Props) => {
     ...attrs
   } = props;
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
-    setIsOpen(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsClosing(true);
+  // }, []);
 
-  const closeDrawer = () => setIsOpen(false);
+  const closeDrawer = () => setIsClosing(true);
 
-  const handleTransitionEnd = () => {
-    if (!isOpen) {
+  const handleAnimationEnd = () => {
+    if (isClosing) {
       onCancel();
     }
   };
 
   const classes = classnames('nx-drawer', {
-    'nx-drawer--open': isOpen,
+    'nx-drawer--closing': isClosing,
     'nx-drawer--narrow': variant === 'narrow'
   }, className);
 
@@ -78,10 +78,9 @@ const _NxDrawer = (props: Props) => {
     <AbstractDialog ref={dialogRef}
                     className={classes}
                     onCancel={closeDrawer}
-                    onTransitionEnd={handleTransitionEnd}
                     isModal={false}
                     {...attrs}>
-      <div className="nx-drawer__inner">
+      <div className="nx-drawer__inner" onAnimationEnd={handleAnimationEnd}>
         <header className="nx-drawer-header">
           <NxCloseButton className="nx-drawer-header__cancel-button"
                          type="button"

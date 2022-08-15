@@ -9,7 +9,39 @@
 
 $-box-shadow-offset: 52px;
 
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(0px);
+    opacity: 0;
+  }
+  1% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
 .nx-drawer {
+
+  grid-area: content;
+  position: relative;
+
   // Undo styles that chrome applies to <dialog> elements
   border: initial;
   height: initial;
@@ -32,24 +64,25 @@ $-box-shadow-offset: 52px;
   box-sizing: border-box;
   background-color: transparent;
   color: var(--nx-swatch-grey-30);
-  position: fixed;
-  right: 0;
-  top: 0;
   z-index: 100;
   height: 100%;
+  backface-visibility: hidden;
+  justify-self: end;
 
   width: 520px + $-box-shadow-offset;
+  overflow-x: hidden;
+  transform: translateX(0);
 
-  transform: translateX(100%);
-  transition: transform 120ms ease-in;
-
-  &--open {
-    transform: translateX(0);
-    transition: transform 200ms ease-out;
+  &--closing {
+    .nx-drawer__inner {
+      animation-name: slide-out;
+      animation-duration: 180ms;
+      animation-timing-function: ease-in;
+    }
   }
 
   @media (prefers-reduced-motion) {
-    &, &--open {
+    &, &--closing {
       transition-duration: 1ms;
     }
   }
@@ -60,27 +93,27 @@ $-box-shadow-offset: 52px;
 }
 
 .nx-drawer__inner {
+  backface-visibility: hidden;
+
   box-sizing: border-box;
   background-color: var(--nx-swatch-white);
   display: flex;
   flex-direction: column;
 
   height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: $-box-shadow-offset;
+  position: relative;
+  margin-left: $-box-shadow-offset;
   width: calc(100% - #{$-box-shadow-offset});
 
   pointer-events: auto;
   align-items: stretch;
   padding: var(--nx-spacing-6x);
 
-  &--with-global-header {
-    $global-header-height: 43px;
-    height: calc(100% - #{$global-header-height});
-    top: $global-header-height;
-  }
+  opacity: 1;
+  transform: translateX(0px);
+  animation-name: slide-in;
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
 
   &::after {
     content: " ";
@@ -92,6 +125,7 @@ $-box-shadow-offset: 52px;
     left: 0;
     top: var(--nx-spacing-8x);
     z-index: -1;
+    backface-visibility: hidden;
   }
 }
 
