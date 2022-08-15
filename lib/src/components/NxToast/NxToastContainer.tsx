@@ -7,9 +7,9 @@
 import React, { useRef} from 'react';
 import FocusContext from './contexts';
 
-import { NxToastContainerProps } from './types';
+import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
 
-// export { Props } from './types';
+export { Props } from './types';
 
 const NxToastContainer = (props: NxToastContainerProps) => {
   const { children } = props;
@@ -49,6 +49,6 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   );
 };
 
-// NxToastContainer.propType = nxToastContainerPropTypes;
+NxToastContainer.propType = nxToastContainerPropTypes;
 
 export default NxToastContainer;
