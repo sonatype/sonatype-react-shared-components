@@ -4,24 +4,26 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {useState, useRef} from 'react';
+import React, { useRef} from 'react';
 import FocusContext from './contexts';
 
-// import classNames from 'classnames';
-import {NxToastContainerProps} from './types';
+import { NxToastContainerProps } from './types';
 
 // export { Props } from './types';
 
 const NxToastContainer = (props: NxToastContainerProps) => {
   const { children } = props;
 
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null),
+      prevSelectedRef = useRef<Element | null>(null);
 
-  const [prevFocusedEl, setPrevFocusedEl] = useState<Element| null>(null);
+  const body = document.getElementsByClassName('nx-body')[0];
 
   const adjustFocus = () => {
-    if (!ref.current?.contains(document.activeElement)) {
-      setPrevFocusedEl(document.activeElement);
+    //When closing Toasts with a mouse click, document.activeElement becomes nx-body, so need
+    //to specify not to assign selectedRef to body so the focus returns to the appropriate element
+    if (!ref.current?.contains(document.activeElement) && document.activeElement !== body) {
+      prevSelectedRef.current = document.activeElement;
     }
 
     if (ref.current) {
@@ -30,8 +32,8 @@ const NxToastContainer = (props: NxToastContainerProps) => {
       if (lastCloseBtn) {
         (lastCloseBtn as HTMLElement).focus();
       }
-      else if (prevFocusedEl) {
-        (prevFocusedEl as HTMLElement).focus();
+      else if (prevSelectedRef) {
+        (prevSelectedRef.current as HTMLElement).focus();
       }
     }
   };
@@ -39,7 +41,9 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   return (
     <FocusContext.Provider value={{adjustFocus}}>
       <div className="nx-toast__wrapper" ref={ref}>
-        {children}
+        <div className="nx-toast__container">
+          {children}
+        </div>
       </div>
     </FocusContext.Provider>
   );
