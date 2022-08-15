@@ -25,7 +25,7 @@ export interface Props extends StatefulProps {
 
 export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
   onChange: PropTypes.func.isRequired,
-  isRequired: PropTypes.bool,
+  isRequired: PropTypes.bool
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
