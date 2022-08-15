@@ -327,3 +327,5 @@ export { default as NxProgressBar } from './components/NxProgressBar/NxProgressB
 export * from './components/NxStatusIndicator/NxStatusIndicator';
 
 export { default as NxFileUpload, Props as NxFileUploadProps } from './components/NxFileUpload/NxFileUpload';
+export { default as NxStatefulFileUpload, Props as NxStatefulFileUploadProps }
+  from './components/NxFileUpload/stateful/NxStatefulFileUpload';

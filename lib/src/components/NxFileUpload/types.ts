@@ -13,16 +13,23 @@ export interface SelectedFileProps {
   onDismiss: () => void;
 }
 
-export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'multiple'> {
+export interface StatefulProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'multiple'> {
   onChange: (files: FileList | null) => void;
-  files: FileList | null;
   isRequired?: boolean | null;
   isPristine?: boolean | null;
 }
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
+export interface Props extends StatefulProps {
+  files: FileList | null;
+}
+
+export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
   onChange: PropTypes.func.isRequired,
-  files: PropTypes.object as PropTypes.Validator<FileList | null>,
   isRequired: PropTypes.bool,
   isPristine: PropTypes.bool
+};
+
+export const propTypes: PropTypes.ValidationMap<Props> = {
+  ...statefulPropTypes,
+  files: PropTypes.object as PropTypes.Validator<FileList | null>
 };
