@@ -215,6 +215,127 @@ describe('NxFileUpload', function() {
     });
   });
 
+  describe('stateful functionality', function() {
+    const {
+      waitAndGetElements,
+      dismissResultingDialog,
+      isInDocument,
+      getPage,
+      simpleTest,
+      focusTest,
+      hoverTest,
+      focusAndHoverTest,
+      clickTest,
+      a11yTest
+    } = setupBrowser('#/pages/Stateful File Upload');
+
+    const exampleSelector = '#nx-file-upload-stateful-example .gallery-example-live';
+
+    it('opens the file picker when the select button is clicked and displays the result', async function() {
+      const [button] = await waitAndGetElements(`${exampleSelector} .nx-file-upload__select-btn`);
+
+      const [fileChooser] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
+
+      await dismissResultingDialog(async () => {
+        await fileChooser.accept([files.bytes]);
+      });
+
+      const [selectedFile] = await waitAndGetElements(`${exampleSelector} .nx-selected-file`),
+          textContent = await selectedFile.evaluate(e => e.textContent);
+
+      expect(textContent).toMatch(path.basename(files.bytes));
+      expect(textContent).not.toMatch(path.dirname(files.bytes));
+      expect(textContent).toMatch('14.0 B');
+    });
+
+    it('correctly displays varying file sizes', async function() {
+      const [button] = await waitAndGetElements(`${exampleSelector} .nx-file-upload__select-btn`);
+
+      const [fileChooser1] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
+
+      await dismissResultingDialog(async () => {
+        await fileChooser1.accept([files.kilobytes]);
+      });
+
+      const [selectedFile1] = await waitAndGetElements(`${exampleSelector} .nx-selected-file`),
+          textContent1 = await selectedFile1.evaluate(e => e.textContent);
+
+      expect(textContent1).toMatch('2.0 kB');
+
+      const [fileChooser2] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
+
+      await dismissResultingDialog(async () => {
+        await fileChooser2.accept([files.megabytes]);
+      });
+
+      const [selectedFile2] = await waitAndGetElements(`${exampleSelector} .nx-selected-file`),
+          textContent2 = await selectedFile2.evaluate(e => e.textContent);
+
+      expect(textContent2).toMatch('1.5 MB');
+
+      const [fileChooser3] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
+
+      await dismissResultingDialog(async () => {
+        await fileChooser3.accept([files.gigabytes]);
+      });
+
+      const [selectedFile3] = await waitAndGetElements(`${exampleSelector} .nx-selected-file`),
+          textContent3 = await selectedFile3.evaluate(e => e.textContent);
+
+      expect(textContent3).toMatch('1.2 GB');
+    });
+
+    it('removes the selected file when the dismiss button is clicked', async function() {
+      const [button] = await waitAndGetElements(`${exampleSelector} .nx-file-upload__select-btn`);
+
+      const [fileChooser] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
+
+      await dismissResultingDialog(async () => {
+        await fileChooser.accept([files.bytes]);
+      });
+
+      const [selectedFile, dismissBtn] = await waitAndGetElements(
+        `${exampleSelector} .nx-selected-file`,
+        `${exampleSelector} .nx-selected-file__dismiss-btn`
+      );
+
+      await dismissResultingDialog(async () => {
+        await dismissBtn.click();
+      });
+
+      const [noFileMessage] = await waitAndGetElements(`${exampleSelector} .nx-file-upload__no-file-message`);
+
+      expect(await isInDocument(selectedFile)).toBe(false);
+      expect(await isInDocument(dismissBtn)).toBe(false);
+      expect(await isInDocument(noFileMessage)).toBe(true);
+    });
+
+    it('unsets the selected file if the user opens the picker again and picks nothing', async function() {
+      const [button] = await waitAndGetElements(`${exampleSelector} .nx-file-upload__select-btn`);
+
+      const [fileChooser1] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
+
+      await dismissResultingDialog(async () => {
+        await fileChooser1.accept([files.bytes]);
+      });
+
+      const [selectedFile] = await waitAndGetElements(`${exampleSelector} .nx-selected-file`);
+
+      const [fileChooser2] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
+
+      await dismissResultingDialog(async () => {
+        // Note that exactly what this looks like IRL seems to be browser-dependent. On my system, in Chrome
+        // clicking Cancel in the file picker will cause the file to become unselected. On Firefox however it won't
+        await fileChooser2.accept([]);
+      });
+
+      const [noFileMessage] = await waitAndGetElements(`${exampleSelector} .nx-file-upload__no-file-message`);
+
+      expect(await isInDocument(selectedFile)).toBe(false);
+      expect(await isInDocument(noFileMessage)).toBe(true);
+    });
+  });
+
   describe('when disabled', function() {
     const disabledExampleSelector = '#nx-file-upload-disabled-example .gallery-example-live';
 

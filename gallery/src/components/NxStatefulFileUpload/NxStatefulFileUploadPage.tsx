@@ -33,6 +33,7 @@ const NxTextInputPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
+                        id="nx-file-upload-stateful-example"
                         liveExample={NxStatefulFileUploadExample}
                         codeExamples={nxStatefulFileUploadCode}>
       A basic example of an <NxCode>NxStatefulFileUpload</NxCode>.
