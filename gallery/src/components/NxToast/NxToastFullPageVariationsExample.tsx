@@ -12,6 +12,7 @@ import {
   NxGlobalSidebarNavigationLink,
   NxPageSidebar,
   NxButton,
+  NxButtonBar,
   NxFontAwesomeIcon,
   NxBackButton,
   NxStatefulGlobalSidebar,
@@ -54,7 +55,7 @@ type ToastModel = {
 };
 
 export default function NxToastFullPageExample() {
-  // const [showToast, setShowToast] = useState<boolean>(false);
+
   const [toasts, setToasts] = useState<ToastModel[]>([]);
   const [id, setId] = useState<number>(0);
 
@@ -139,10 +140,6 @@ export default function NxToastFullPageExample() {
           <NxTile.Header>Lorem Ipsum</NxTile.Header>
           <NxTile.Content>
             <NxP>
-              <button type="button" onClick={() => addToast('info')}>Open Info Toast</button>
-              <button type="button" onClick={() => addToast('success')}>Open Sucess Toast</button>
-              <button type="button" onClick={() => addToast('error')}>Open Error Toast</button>
-              <button type="button" onClick={() => addToast('warning')}>Open Warning Toast</button>
               Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
               dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
               varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
@@ -150,6 +147,12 @@ export default function NxToastFullPageExample() {
               pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
               diam maecenas.
             </NxP>
+            <NxButtonBar>
+              <NxButton type="button" onClick={() => addToast('info')}>Open Info Toast</NxButton>
+              <NxButton type="button" onClick={() => addToast('success')}>Open Sucess Toast</NxButton>
+              <NxButton type="button" onClick={() => addToast('error')}>Open Error Toast</NxButton>
+              <NxButton type="button" onClick={() => addToast('warning')}>Open Warning Toast</NxButton>
+            </NxButtonBar>
           </NxTile.Content>
         </NxTile>
       </NxPageMain>

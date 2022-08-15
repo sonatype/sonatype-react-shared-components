@@ -24,6 +24,9 @@ import {
   NxTile,
   NxP
 } from '@sonatype/react-shared-components';
+
+import {ToastModel} from '@sonatype/react-shared-components/components/NxToast/types';
+
 import {
   faArrowLeft,
   faArrowRight,
@@ -35,10 +38,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
-
-type ToastModel = {
-  toastId: number,
-};
 
 export default function NxToastFullPageExample() {
 
@@ -122,7 +121,6 @@ export default function NxToastFullPageExample() {
           <NxTile.Header>Lorem Ipsum</NxTile.Header>
           <NxTile.Content>
             <NxP>
-              <NxButton type="button" onClick={() => addToast()}>Open Toast</NxButton>
               Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
               dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
               varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
@@ -130,6 +128,7 @@ export default function NxToastFullPageExample() {
               pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
               diam maecenas.
             </NxP>
+            <NxButton type="button" onClick={() => addToast()}>Open Toast</NxButton>
           </NxTile.Content>
         </NxTile>
       </NxPageMain>
