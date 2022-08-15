@@ -5,20 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { NxFileUpload } from '@sonatype/react-shared-components';
+import { NxFileUpload, nxFileUploadStateHelpers } from '@sonatype/react-shared-components';
 
 export default function NxFileUploadComplexExample() {
-  const [files, setFiles] = useState<FileList | null>(null),
-      [isPristine, setIsPristine] = useState(true);
+  const [state, setState] = useState(nxFileUploadStateHelpers.initialState(null));
 
   function onChange(files: FileList | null) {
-    setFiles(files);
-    setIsPristine(false);
+    setState(nxFileUploadStateHelpers.userInput(files));
   }
 
-  return <NxFileUpload isRequired
-                       isPristine={isPristine}
-                       files={files}
+  return <NxFileUpload { ...state }
+                       isRequired
                        onChange={onChange}
                        id="my-file-upload"
                        className="file-upload-class"

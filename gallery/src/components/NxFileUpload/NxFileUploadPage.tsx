@@ -141,6 +141,55 @@ const NxTextInputPage = () =>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>State Helpers</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          Like <NxCode>NxTextInput</NxCode>, <NxCode>NxFileUpload</NxCode> comes with helper functions to more
+          conveniently manage its state. In this case, these helpers only manage the <NxCode>files</NxCode>
+          and <NxCode>isPristine</NxCode> props – validation is not supported other than required value
+          validation, which the component handles internally. The helper functions are availble on
+          the <NxCode>nxFileUploadStateHelpers</NxCode> export. Use of these helpers is not necessary
+          on non-required file uploads, as the <NxCode>isPristine</NxCode> flag is not used there.
+        </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>Parameters</NxTable.Cell>
+              <NxTable.Cell>Return Value</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>initialValue</NxCode></NxTable.Cell>
+              <NxTable.Cell>files: <NxCode>FileList | null</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Object containing <NxCode>files</NxCode> and <NxCode>isPristine</NxCode> properties
+              </NxTable.Cell>
+              <NxTable.Cell>
+                This function sets up the initial state of a file upload. That is, it returns an object
+                containing the specified file list (usually null) and the <NxCode>isPristine</NxCode> flag set
+                to <NxCode>true</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>userInput</NxCode></NxTable.Cell>
+              <NxTable.Cell>files: <NxCode>FileList | null</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Object containing <NxCode>files</NxCode> and <NxCode>isPristine</NxCode> properties
+              </NxTable.Cell>
+              <NxTable.Cell>
+                This function represents a modification of the state of a file upload. That is, it returns an object
+                containing the specified file list and the <NxCode>isPristine</NxCode> flag set
+                to <NxCode>false</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
