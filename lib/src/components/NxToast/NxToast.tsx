@@ -50,8 +50,7 @@ const NxToast = (props: NxToastProps) => {
 
   return (
     <div className={classes}
-         onAnimationEnd={handleAnimationEnd}
-         aria-atomic={true}>
+         onAnimationEnd={handleAnimationEnd}>
       {childrenWithProps}
     </div>
   );
