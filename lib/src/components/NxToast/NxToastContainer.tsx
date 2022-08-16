@@ -27,7 +27,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
     }
 
     if (ref.current) {
-      const closeBtns = ref.current.querySelectorAll('.nx-toast .nx-btn--close');
+      const closeBtns = ref.current.querySelectorAll<HTMLButtonElement>('.nx-toast .nx-btn--close');
       const lastCloseBtn = closeBtns[closeBtns.length - 1];
       if (lastCloseBtn) {
         (lastCloseBtn as HTMLElement).focus();
