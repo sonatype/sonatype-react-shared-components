@@ -15,40 +15,22 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   const { children } = props;
 
   const ref = useRef<HTMLDivElement | null>(null);
-  // prevSelectedRef = useRef<HTMLElement | null>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
 
-  // const body = document.body;
-
-  const onToastClosing = () => {
-    //When closing Toasts with a mouse click, document.activeElement becomes nx-body, so need
-    //to specify not to assign selectedRef to body so the focus returns to the appropriate element
-    // if (!ref.current?.contains(document.activeElement) && document.activeElement !== body) {
-    //   prevSelectedRef.current = document.activeElement as HTMLElement;
-    // }
-
-    // if (ref.current) {
-    //   const closeBtns = ref.current.querySelectorAll<HTMLButtonElement>('.nx-toast .nx-btn--close');
-    //   const lastCloseBtn = closeBtns[closeBtns.length - 1];
-    //   if (lastCloseBtn) {
-    //     (lastCloseBtn as HTMLElement).focus();
-    //   }
-    //   else if (prevSelectedRef) {
-    //     (prevSelectedRef.current as HTMLElement).focus();
-    //   }
-    // }
-
-    if (ref.current) {
-      const closeBtns = ref.current.querySelectorAll<HTMLButtonElement>('.nx-toast .nx-btn--close');
-
-      const lastCloseBtn = closeBtns[closeBtns.length - 1];
-
-      if (lastCloseBtn) {
-        (lastCloseBtn as HTMLElement).focus();
-      }
+  // This implementation has issues when the user clicks on the close button
+  // it updates document.activeElement and therefore this cannot get the correct
+  // previously active element :(
+  const updatePreviousActiveElement = () => {
+    if (
+      document.activeElement
+      && document.activeElement !== document.body
+      && !ref.current?.contains(document.activeElement)
+    ) {
+      previousActiveElement.current = document.activeElement as HTMLElement;
     }
   };
 
-  const onToastOpening = () => {
+  const focusOnLastToast = () => {
     if (ref.current) {
       const closeBtns = ref.current.querySelectorAll<HTMLButtonElement>('.nx-toast .nx-btn--close');
 
@@ -56,7 +38,22 @@ const NxToastContainer = (props: NxToastContainerProps) => {
 
       if (lastCloseBtn) {
         (lastCloseBtn as HTMLElement).focus();
+        return true;
       }
+    }
+    return false;
+  };
+
+  const onToastOpening = () => {
+    updatePreviousActiveElement();
+    focusOnLastToast();
+  };
+
+  const onToastClosing = () => {
+    updatePreviousActiveElement();
+
+    if (!focusOnLastToast()) {
+      (previousActiveElement.current as HTMLElement).focus();
     }
   };
 
