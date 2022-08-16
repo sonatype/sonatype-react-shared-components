@@ -21,7 +21,7 @@ const NxToast = (props: NxToastProps) => {
 
   useEffect(() => {
     toastContainerContextValue?.onToastOpening();
-    return () => { Promise.resolve().then(() => toastContainerContextValue?.onToastClosing()) };
+    return () => { Promise.resolve().then(() => toastContainerContextValue?.onToastClosing()); };
   }, []);
 
   const handleClose = () => {
