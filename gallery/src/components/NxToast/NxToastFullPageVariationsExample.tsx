@@ -49,20 +49,21 @@ interface ToastModel {
 }
 
 export default function NxToastFullPageVariationsExample() {
-  const [toastId, setToastId] = useState<number>(0);
+  const [toastIdInc, setToastIdInc] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
   const addToast = (type: ToastTypes, message: string) => {
-    setToastId(toastId + 1);
+    const toastId = toastIdInc + 1;
+    setToastIdInc(toastId);
     setToasts([
       ...toasts,
-      { id: toastId + 1, type, message }
+      { id: toastId, type, message }
     ]);
   };
 
   const removeToast = (id: number) => setToasts(reject(propEq('id', id), toasts));
 
-  const alertMap = {
+  const toastAlertMap = {
     'success': NxSuccessAlert,
     'error': NxErrorAlert,
     'info': NxInfoAlert,
@@ -94,12 +95,12 @@ export default function NxToastFullPageVariationsExample() {
         <NxToastContainer>
           {
             toasts.map(({ id, type, message }) => {
-              const Alert = alertMap[type];
+              const ToastAlert = toastAlertMap[type];
               return (
                 <NxToast key={id}
                          toastId={id}
                          onClose={()=> removeToast(id)}>
-                  <Alert>{message}</Alert>
+                  <ToastAlert>{message}</ToastAlert>
                 </NxToast>
               );
             })
