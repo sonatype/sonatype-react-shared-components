@@ -18,7 +18,7 @@ const NxStatefulFileUpload = forwardRef<HTMLDivElement, Props>(function NxStatef
   function onChange(files: FileList | null) {
     setIsPristine(false);
     setFiles(files);
-    onChangeProp(files);
+    onChangeProp?.(files);
   }
 
   return <NxFileUpload ref={ref} { ...otherProps } { ...{ files, isPristine, onChange } } />;

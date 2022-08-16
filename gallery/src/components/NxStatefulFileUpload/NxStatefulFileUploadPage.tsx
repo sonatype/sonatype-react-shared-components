@@ -27,7 +27,7 @@ const NxTextInputPage = () =>
         </NxTile.SubsectionHeader>
         <NxP>
           <NxCode>NxStatefulFileUpload</NxCode> takes all of the same props as <NxCode>NxFileUpload</NxCode>, except
-          for <NxCode>files</NxCode> and <NxCode>isPristine</NxCode>.
+          for <NxCode>files</NxCode> and <NxCode>isPristine</NxCode>. The <NxCode>onChange</NxCode> prop is optional.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>

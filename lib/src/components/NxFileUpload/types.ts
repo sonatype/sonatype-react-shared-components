@@ -15,7 +15,7 @@ export interface SelectedFileProps {
 
 // Props for NxStatefulFileUpload
 export interface StatefulProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'multiple'> {
-  onChange: (files: FileList | null) => void;
+  onChange?: ((files: FileList | null) => void) | null;
   isRequired?: boolean | null;
 }
 
@@ -26,15 +26,18 @@ export interface StateProps {
 }
 
 // Props for NxFileUpload
-export type Props = StatefulProps & StateProps;
+export type Props = StatefulProps & StateProps & {
+  onChange: (files: FileList | null) => void;
+};
 
 export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   isRequired: PropTypes.bool
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   ...statefulPropTypes,
+  onChange: PropTypes.func.isRequired,
   files: PropTypes.object as PropTypes.Validator<FileList | null>,
   isPristine: PropTypes.bool
 };
