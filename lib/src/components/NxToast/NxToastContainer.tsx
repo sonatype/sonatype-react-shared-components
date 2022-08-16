@@ -15,7 +15,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   const { children } = props;
 
   const ref = useRef<HTMLDivElement | null>(null),
-      prevSelectedRef = useRef<Element | null>(null);
+      prevSelectedRef = useRef<HTMLElement | null>(null);
 
   const body = document.getElementsByClassName('nx-body')[0];
 
