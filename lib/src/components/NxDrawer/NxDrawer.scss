@@ -9,26 +9,26 @@
 
 $-box-shadow-offset: 52px;
 
-
 @keyframes slide-in {
   0% {
-    transform: translateX(0px);
+    transform: translateX(0);
     opacity: 0;
   }
+
   1% {
     transform: translateX(100%);
     opacity: 0;
   }
 
   100% {
-    transform: translateX(0px);
+    transform: translateX(0);
     opacity: 1;
   }
 }
 
 @keyframes slide-out {
   0% {
-    transform: translateX(0px);
+    transform: translateX(0);
     opacity: 1;
   }
   100% {
@@ -38,10 +38,6 @@ $-box-shadow-offset: 52px;
 }
 
 .nx-drawer {
-
-  grid-area: content;
-  position: relative;
-
   // Undo styles that chrome applies to <dialog> elements
   border: initial;
   height: initial;
@@ -61,59 +57,66 @@ $-box-shadow-offset: 52px;
     pointer-events: auto;
   }
 
+  grid-area: content;
   box-sizing: border-box;
+  backface-visibility: hidden;
+
   background-color: transparent;
   color: var(--nx-swatch-grey-30);
-  z-index: 100;
-  height: 100%;
-  backface-visibility: hidden;
+  
   justify-self: end;
 
-  width: 520px + $-box-shadow-offset;
-  overflow-x: hidden;
+  overflow: hidden;
   transform: translateX(0);
 
-  &--closing {
-    .nx-drawer__inner {
-      animation-name: slide-out;
-      animation-duration: 180ms;
-      animation-timing-function: ease-in;
-    }
-  }
+  width: 520px + $-box-shadow-offset;
+  height: 100%;
 
-  @media (prefers-reduced-motion) {
-    &, &--closing {
-      transition-duration: 1ms;
-    }
-  }
+  z-index: 100;
 
   &--narrow {
     width: 348px + $-box-shadow-offset;
   }
 }
 
-.nx-drawer__inner {
+.nx-drawer__animation-wrapper {
   backface-visibility: hidden;
+  height: 100%;
 
+  transform: translateX(0);
+  animation-name: slide-in;
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
+
+  &--close {
+    animation-name: slide-out;
+    animation-duration: 180ms;
+    animation-timing-function: ease-in;
+  }
+
+  @media (prefers-reduced-motion) {
+    &, &--close {
+      animation-duration: 1ms;
+    }
+  }
+}
+
+.nx-drawer__panel {
   box-sizing: border-box;
-  background-color: var(--nx-swatch-white);
   display: flex;
+  align-items: stretch;
   flex-direction: column;
+
+  background-color: var(--nx-swatch-white);
 
   height: 100%;
   position: relative;
   margin-left: $-box-shadow-offset;
   width: calc(100% - #{$-box-shadow-offset});
 
-  pointer-events: auto;
-  align-items: stretch;
   padding: var(--nx-spacing-6x);
 
   opacity: 1;
-  transform: translateX(0px);
-  animation-name: slide-in;
-  animation-duration: 200ms;
-  animation-timing-function: ease-out;
 
   &::after {
     content: " ";
@@ -125,7 +128,6 @@ $-box-shadow-offset: 52px;
     left: 0;
     top: var(--nx-spacing-8x);
     z-index: -1;
-    backface-visibility: hidden;
   }
 }
 
@@ -187,20 +189,4 @@ $-box-shadow-offset: 52px;
 //   border-top: 1px solid var(--nx-swatch-indigo-90);
 //   height: min-content;
 //   padding-top: var(--nx-spacing-6x);
-// }
-
-
-// Shadows
-
-
-// &::after {
-//   content: " ";
-
-//   box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);
-//   height: calc(100% - var(--nx-spacing-16x));
-//   width: 100%;
-//   position: absolute;
-//   left: 0;
-//   top: var(--nx-spacing-8x);
-//   z-index: -1;
 // }

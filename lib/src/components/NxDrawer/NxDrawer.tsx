@@ -31,10 +31,6 @@ const _NxDrawer = (props: Props) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  // useEffect(() => {
-  //   setIsClosing(true);
-  // }, []);
-
   const closeDrawer = () => setIsClosing(true);
 
   const handleAnimationEnd = () => {
@@ -43,13 +39,9 @@ const _NxDrawer = (props: Props) => {
     }
   };
 
-  const classes = classnames('nx-drawer', {
-    'nx-drawer--closing': isClosing,
-    'nx-drawer--narrow': variant === 'narrow'
-  }, className);
-
   const subtitleContent = headerSubtitle ?
     <h3 className="nx-h3 nx-drawer-header__subtitle">{headerSubtitle}</h3> : null;
+
   const descriptionContent = headerDescription ?
     <p className="nx-p nx-drawer-header__description">{headerDescription}</p> : null;
 
@@ -74,26 +66,37 @@ const _NxDrawer = (props: Props) => {
     return () => document.removeEventListener('click', listener);
   }, [dialogRef]);
 
+  const classes = classnames('nx-drawer', {
+    'nx-drawer--closing': isClosing,
+    'nx-drawer--narrow': variant === 'narrow'
+  }, className);
+
+  const animationWrapperClasses = classnames('nx-drawer__animation-wrapper', {
+    'nx-drawer__animation-wrapper--close': isClosing
+  });
+
   return (
     <AbstractDialog ref={dialogRef}
                     className={classes}
                     onCancel={closeDrawer}
                     isModal={false}
                     {...attrs}>
-      <div className="nx-drawer__inner" onAnimationEnd={handleAnimationEnd}>
-        <header className="nx-drawer-header">
-          <NxCloseButton className="nx-drawer-header__cancel-button"
-                         type="button"
-                         onClick={() => closeDrawer()}>
-            Close
-          </NxCloseButton>
-          <h2 className="nx-h2 nx-drawer-header__title">
-            {headerTitle}
-          </h2>
-          {subtitleContent}
-          {descriptionContent}
-        </header>
-        {children}
+      <div className={animationWrapperClasses} onAnimationEnd={handleAnimationEnd}>
+        <div className="nx-drawer__panel">
+          <header className="nx-drawer-header">
+            <NxCloseButton className="nx-drawer-header__cancel-button"
+                           type="button"
+                           onClick={() => closeDrawer()}>
+              Close
+            </NxCloseButton>
+            <h2 className="nx-h2 nx-drawer-header__title">
+              {headerTitle}
+            </h2>
+            {subtitleContent}
+            {descriptionContent}
+          </header>
+          {children}
+        </div>
       </div>
     </AbstractDialog>
   );
