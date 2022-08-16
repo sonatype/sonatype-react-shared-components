@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
 import { pipe } from 'ramda';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
@@ -65,6 +66,13 @@ describe('NxFileUpload', function() {
     expect(renderInput({ isRequired: true, isPristine: true })).not.toHaveErrorMessage();
 
     expect(renderInput({ isRequired: true, isPristine: false })).toHaveErrorMessage('This field is Required!');
+  });
+
+  it('attaches a ref to the top-level element', function() {
+    const ref = React.createRef<HTMLDivElement>(),
+        renderedEl = renderEl({ ref });
+
+    expect(ref.current).toBe(renderedEl);
   });
 
   // Everything that involves actually selecting a file cannot be cleanly tested in RTL, will be done in

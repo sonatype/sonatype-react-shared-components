@@ -43,7 +43,7 @@ function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps) {
   );
 }
 
-const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(props) {
+const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(props, ref) {
   const {
         className: classNameProp,
         onChange: onChangeProp,
@@ -95,7 +95,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
   }, [files]);
 
   return (
-    <div className={className} >
+    <div ref={ref} className={className} >
       <input ref={inputRef}
              { ...attrs }
              disabled={disabled}

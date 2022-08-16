@@ -4,17 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
 import { pipe } from 'ramda';
 
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
-import NxStatefulFileUpload, { Props } from '../NxStatefulFileUpload';
+import NxStatefulFileUpload from '../NxStatefulFileUpload';
 
 describe('NxStatefulFileUpload', function() {
   const minimalProps = {
         onChange: () => {}
       },
-      render = rtlRender<Props>(NxStatefulFileUpload, minimalProps),
-      renderEl = rtlRenderElement<Props>(NxStatefulFileUpload, minimalProps),
+      render = rtlRender(NxStatefulFileUpload, minimalProps),
+      renderEl = rtlRenderElement(NxStatefulFileUpload, minimalProps),
       renderInput = pipe(renderEl, el => el?.querySelector('input[type=file]'));
 
   it('renders a file input and a button', function() {
@@ -39,6 +40,13 @@ describe('NxStatefulFileUpload', function() {
     expect(renderInput()?.getAttribute('aria-required')).not.toBe('true');
     expect(renderInput({ isRequired: false })?.getAttribute('aria-required')).not.toBe('true');
     expect(renderInput({ isRequired: true })?.getAttribute('aria-required')).toBe('true');
+  });
+
+  it('attaches a ref to the top-level element', function() {
+    const ref = React.createRef<HTMLDivElement>(),
+        renderedEl = renderEl({ ref });
+
+    expect(ref.current).toBe(renderedEl);
   });
 
   // Everything that involves actually selecting a file cannot be cleanly tested in RTL, will be done in
