@@ -70,13 +70,10 @@ const _NxDrawer = (props: Props) => {
     }
   };
 
-  // const clickOutsideTargetElement = cancelOnClickOutsideTargetClassName ?
-  //   dialogRef.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] :
-  //   dialogRef.current;
-
   useEffect(() => {
+    const clickOutsideTargetElement = dialogRef.current?.getElementsByClassName('nx-drawer__panel')[0];
     const listener = (event: MouseEvent) => {
-      if (dialogRef.current && !(dialogRef.current as HTMLDialogElement).contains(event.target as Node)) {
+      if (dialogRef.current && !(clickOutsideTargetElement as HTMLDivElement).contains(event.target as Node)) {
         closeDrawer();
       }
     };
