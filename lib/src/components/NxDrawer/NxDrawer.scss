@@ -60,6 +60,7 @@ $-box-shadow-offset: 52px;
   grid-area: content;
   box-sizing: border-box;
   backface-visibility: hidden;
+  position: relative;
 
   background-color: transparent;
   color: var(--nx-swatch-grey-30);
