@@ -4,9 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useState} from 'react';
-// import {remove} from 'ramda';
+import { reject, propEq } from 'ramda';
+
 import {
   NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
@@ -39,40 +40,33 @@ import {
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
-// const alerts = {
-//   success: NxSuccessAlert,
-//   error: NxErrorAlert,
-//   info: NxInfoAlert,
-//   warning: NxWarningAlert
-// };
+type ToastTypes = 'success' | 'error' | 'info' | 'warning';
 
-// type alertType = keyof typeof alerts;
-
-// type ToastModel = {
-//   toastId: number,
-//   alert: ReactElement;
-// };
-
+interface ToastModel {
+  id: number;
+  type: ToastTypes;
+  message: string;
+}
 
 export default function NxToastFullPageVariationsExample() {
+  const [toastId, setToastId] = useState<number>(0);
+  const [toasts, setToasts] = useState<ToastModel[]>([]);
 
-  const [toastTypes, setToastTypes] = useState<string[]>([]);
+  const addToast = (type: ToastTypes, message: string) => {
+    setToastId(toastId + 1);
+    setToasts([
+      ...toasts,
+      { id: toastId + 1, type, message }
+    ]);
+  };
 
-  // const addToast = (type:alertType) => {
-  //   setId(id + 1);
-  //   const FindAlert = alerts[type];
-  //   const formatAlert = <FindAlert>This is a {type} toast.</FindAlert>;
-  //   setToastTypes((toasts) => [
-  //     { toastId: id, alert: formatAlert},
-  //     ...toasts
-  //   ]);
-  // };
+  const removeToast = (id: number) => setToasts(reject(propEq('id', id), toasts));
 
-  const removeToast = () => {
-    // const _toasts = remove(id, 1, toasts);
-    // setToastTypes(_toasts);
-    const alert = document.activeElement?.parentElement?.parentElement;
-    alert?.remove();
+  const alertMap = {
+    'success': NxSuccessAlert,
+    'error': NxErrorAlert,
+    'info': NxInfoAlert,
+    'warning': NxWarningAlert
   };
 
   return (
@@ -99,22 +93,16 @@ export default function NxToastFullPageVariationsExample() {
       <NxPageMain tabIndex={0}>
         <NxToastContainer>
           {
-            toastTypes.map((toast, id) => (
-              <NxToast key={id}
-                       toastId={id}
-                       onClose={()=> removeToast()}>
-                {
-                  toast === 'success' ?
-                    <NxSuccessAlert>This is a Success Toast</NxSuccessAlert> :
-                    toast === 'info' ?
-                      <NxInfoAlert>This is an Info Toast</NxInfoAlert> :
-                      toast === 'warning' ?
-                        <NxWarningAlert>This is a Warning Toast</NxWarningAlert> :
-                        <NxErrorAlert>This is an Error Toast</NxErrorAlert>
-                }
-                {/* <NxAlert className={`nx-alert--${toast}`} icon={faEye}> This is a {toast} Toast</NxAlert> */}
-              </NxToast>
-            ))
+            toasts.map(({ id, type, message }) => {
+              const Alert = alertMap[type];
+              return (
+                <NxToast key={id}
+                         toastId={id}
+                         onClose={()=> removeToast(id)}>
+                  <Alert>{message}</Alert>
+                </NxToast>
+              );
+            })
           }
         </NxToastContainer>
         <NxPageTitle>
@@ -172,10 +160,18 @@ export default function NxToastFullPageVariationsExample() {
               diam maecenas.
             </NxP>
             <NxButtonBar>
-              <NxButton type="button" onClick={() => setToastTypes(['info', ...toastTypes])}>Open Info Toast</NxButton>
-              <NxButton type="button" onClick={() => setToastTypes(['success', ...toastTypes])}>Open Sucess Toast</NxButton>
-              <NxButton type="button" onClick={() => setToastTypes(['error', ...toastTypes])}>Open Error Toast</NxButton>
-              <NxButton type="button" onClick={() => setToastTypes(['warning', ...toastTypes])}>Open Warning Toast</NxButton>
+              <NxButton type="button" onClick={() => addToast('info', 'Informational Stuff')}>
+                Open Info Toast
+              </NxButton>
+              <NxButton type="button" onClick={() => addToast('success', 'Success!')}>
+                Open Sucess Toast
+              </NxButton>
+              <NxButton type="button" onClick={() => addToast('error', 'Something went wrong!')}>
+                Open Error Toast
+              </NxButton>
+              <NxButton type="button" onClick={() => addToast('warning', 'Warning!')}>
+                Open Warning Toast
+              </NxButton>
             </NxButtonBar>
           </NxTile.Content>
         </NxTile>

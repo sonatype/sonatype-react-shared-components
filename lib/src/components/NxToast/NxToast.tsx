@@ -17,11 +17,11 @@ const NxToast = (props: NxToastProps) => {
 
   const [isClosing, setIsClosing] = useState(false);
 
-  const focusedToast = useContext(NxToastContainerContext);
+  const toastContainerContextValue = useContext(NxToastContainerContext);
 
-  useEffect(()=>{
-    focusedToast?.onToastClosing();
-    return () => { Promise.resolve().then(() => focusedToast?.onToastClosing()); };
+  useEffect(() => {
+    toastContainerContextValue?.onToastOpening();
+    return () => { Promise.resolve().then(() => toastContainerContextValue?.onToastClosing()) };
   }, []);
 
   const handleClose = () => {
