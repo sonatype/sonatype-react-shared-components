@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, HTMLAttributes, ReactNode, useContext } from 'react';
 import classnames from 'classnames';
 
 import AbstractDialog from '../AbstractDialog/AbstractDialog';
@@ -15,18 +15,49 @@ import { Props, propTypes } from './types';
 
 import './NxDrawer.scss';
 
+interface NxDrawerHeaderProps extends HTMLAttributes<HTMLElement>{
+  children: ReactNode;
+}
+
+interface NxDrawerContextValue {
+  closeDrawer: () => void;
+}
+
+const NxDrawerContext = React.createContext<NxDrawerContextValue>({
+  closeDrawer: () => {}
+});
+
+const _NxDrawerHeader = (props: NxDrawerHeaderProps) => {
+  const {
+    className,
+    children,
+    ...attrs
+  } = props;
+
+  const { closeDrawer } = useContext(NxDrawerContext);
+
+  const classes = classnames('nx-drawer-header', className);
+
+  return (
+    <header className={classes} {...attrs}>
+      <NxCloseButton className="nx-drawer-header__cancel-button"
+                     type="button"
+                     onClick={() => closeDrawer()}>
+        Close
+      </NxCloseButton>
+      {children}
+    </header>
+  );
+};
+
 const _NxDrawer = (props: Props) => {
   const {
     className,
     onCancel,
     children,
     variant,
-    headerTitle,
-    headerSubtitle,
-    headerDescription,
     ...attrs
   } = props;
-
   const [isClosing, setIsClosing] = useState(false);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -39,24 +70,13 @@ const _NxDrawer = (props: Props) => {
     }
   };
 
-  const subtitleContent = headerSubtitle ?
-    <h3 className="nx-h3 nx-drawer-header__subtitle">{headerSubtitle}</h3> : null;
-
-  const descriptionContent = headerDescription ?
-    <p className="nx-p nx-drawer-header__description">{headerDescription}</p> : null;
-
   // const clickOutsideTargetElement = cancelOnClickOutsideTargetClassName ?
   //   dialogRef.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] :
   //   dialogRef.current;
 
   useEffect(() => {
     const listener = (event: MouseEvent) => {
-      // eslint-disable-next-line
-      console.log(dialogRef);
-
       if (dialogRef.current && !(dialogRef.current as HTMLDialogElement).contains(event.target as Node)) {
-        // eslint-disable-next-line
-        console.log('close drawer');
         closeDrawer();
       }
     };
@@ -65,6 +85,8 @@ const _NxDrawer = (props: Props) => {
 
     return () => document.removeEventListener('click', listener);
   }, [dialogRef]);
+
+  const drawerContextValue = { closeDrawer };
 
   const classes = classnames('nx-drawer', {
     'nx-drawer--closing': isClosing,
@@ -76,36 +98,32 @@ const _NxDrawer = (props: Props) => {
   });
 
   return (
-    <AbstractDialog ref={dialogRef}
-                    className={classes}
-                    onCancel={closeDrawer}
-                    isModal={false}
-                    {...attrs}>
-      <div className={animationWrapperClasses} onAnimationEnd={handleAnimationEnd}>
-        <div className="nx-drawer__panel">
-          <header className="nx-drawer-header">
-            <NxCloseButton className="nx-drawer-header__cancel-button"
-                           type="button"
-                           onClick={() => closeDrawer()}>
-              Close
-            </NxCloseButton>
-            <h2 className="nx-h2 nx-drawer-header__title">
-              {headerTitle}
-            </h2>
-            {subtitleContent}
-            {descriptionContent}
-          </header>
-          {children}
+    <NxDrawerContext.Provider value={drawerContextValue}>
+      <AbstractDialog ref={dialogRef}
+                      className={classes}
+                      onCancel={closeDrawer}
+                      isModal={false}
+                      {...attrs}>
+        <div className={animationWrapperClasses} onAnimationEnd={handleAnimationEnd}>
+          <div className="nx-drawer__panel">
+            {children}
+          </div>
         </div>
-      </div>
-    </AbstractDialog>
+      </AbstractDialog>
+    </NxDrawerContext.Provider>
   );
 };
 
+const NxDrawerHeader = Object.assign(_NxDrawerHeader, {
+  Title: withClass('h2', 'nx-h2 nx-drawer-header__title'),
+  Subtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),
+  Description: withClass('p', 'nx-p nx-drawer-header__description')
+});
+
 const NxDrawer = Object.assign(_NxDrawer, {
   propTypes,
-  Content: withClass('div', 'nx-drawer-content'),
-  Footer: withClass('footer', 'nx-drawer-footer')
+  Header: NxDrawerHeader,
+  Content: withClass('div', 'nx-drawer-content')
 });
 
 export default NxDrawer;

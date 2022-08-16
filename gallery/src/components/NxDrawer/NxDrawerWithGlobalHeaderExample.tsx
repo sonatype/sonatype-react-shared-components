@@ -10,7 +10,6 @@ import {
   NxDrawer,
   NxButton,
   NxP,
-  NxButtonBar,
   NxBackButton,
   NxPageMain,
   NxPageTitle,
@@ -26,6 +25,11 @@ export default function NxDrawerWithGlobalHeaderExample() {
 
   const contentAndFooter = (
     <>
+      <NxDrawer.Header>
+        <NxDrawer.Header.Title>Hello</NxDrawer.Header.Title>
+        <NxDrawer.Header.Subtitle>Hello</NxDrawer.Header.Subtitle>
+        <NxDrawer.Header.Description>Hello</NxDrawer.Header.Description>
+      </NxDrawer.Header>
       <NxDrawer.Content>
         <NxP>
           Powder <strong>tiramisu</strong> gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa
@@ -58,11 +62,6 @@ export default function NxDrawerWithGlobalHeaderExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
       </NxDrawer.Content>
-      <NxDrawer.Footer>
-        <NxButtonBar>
-          <NxButton variant="primary">Button</NxButton>
-        </NxButtonBar>
-      </NxDrawer.Footer>
     </>
   );
 
@@ -89,9 +88,6 @@ export default function NxDrawerWithGlobalHeaderExample() {
                 className="nx-drawer--with-global-header"
                 variant="narrow"
                 onCancel={() => setShowNarrowDrawer(false)}
-                headerTitle="Example of Narrow Drawer"
-                headerSubtitle="Example subtitle"
-                headerDescription={description}
                 aria-labelledby="nx-drawer-with-global-header-narrow">
         {contentAndFooter}
       </NxDrawer>
@@ -100,9 +96,6 @@ export default function NxDrawerWithGlobalHeaderExample() {
       <NxDrawer id="nx-drawer-with-global-header-normal"
                 className="nx-drawer--with-global-header"
                 onCancel={() => setShowNormalDrawer(false)}
-                headerTitle="Example of Normal Drawer"
-                headerSubtitle="Example subtitle"
-                headerDescription={description}
                 aria-labelledby="nx-drawer-with-global-header-normal">
         {contentAndFooter}
       </NxDrawer>
