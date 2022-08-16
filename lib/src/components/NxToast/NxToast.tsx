@@ -33,6 +33,7 @@ const NxToast = (props: NxToastProps) => {
   const handleAnimationEnd = () => {
     if (isClosing) {
       onClose();
+      // setIsClosing(false);
     }
   };
 
@@ -42,7 +43,7 @@ const NxToast = (props: NxToastProps) => {
 
   if (!React.isValidElement(children)) {
     throw new TypeError('NxToast only accepts one NxAlert as a valid child element');
-  } 
+  }
 
   const classes = classnames('nx-toast', {
     'nx-toast--closing': isClosing

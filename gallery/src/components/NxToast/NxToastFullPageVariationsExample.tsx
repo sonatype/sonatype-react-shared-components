@@ -5,12 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { useState, ReactElement } from 'react';
-import {reject, propEq} from 'ramda';
+import { useState} from 'react';
+// import {remove} from 'ramda';
 import {
   NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
-  NxPageSidebar,
   NxButton,
   NxButtonBar,
   NxFontAwesomeIcon,
@@ -22,9 +21,9 @@ import {
   NxToastContainer,
   NxToast,
   NxSuccessAlert,
+  NxWarningAlert,
   NxErrorAlert,
   NxInfoAlert,
-  NxWarningAlert,
   NxTile,
   NxP
 } from '@sonatype/react-shared-components';
@@ -40,38 +39,40 @@ import {
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
-const alerts = {
-  success: NxSuccessAlert,
-  error: NxErrorAlert,
-  info: NxInfoAlert,
-  warning: NxWarningAlert
-};
+// const alerts = {
+//   success: NxSuccessAlert,
+//   error: NxErrorAlert,
+//   info: NxInfoAlert,
+//   warning: NxWarningAlert
+// };
 
-type alertType = keyof typeof alerts;
+// type alertType = keyof typeof alerts;
 
-type ToastModel = {
-  toastId: number,
-  alert: ReactElement;
-};
+// type ToastModel = {
+//   toastId: number,
+//   alert: ReactElement;
+// };
 
-export default function NxToastFullPageExample() {
 
-  const [toasts, setToasts] = useState<ToastModel[]>([]);
-  const [id, setId] = useState<number>(0);
+export default function NxToastFullPageVariationsExample() {
 
-  const addToast = (type:alertType) => {
-    setId(id + 1);
-    const FindAlert = alerts[type];
-    const formatAlert = <FindAlert>This is a {type} toast.</FindAlert>;
-    setToasts((toasts) => [
-      { toastId: id, alert: formatAlert},
-      ...toasts
-    ]);
-  };
+  const [toastTypes, setToastTypes] = useState<string[]>([]);
 
-  const removeToast = (id:number) => {
-    const _toasts = reject(propEq('toastId', id), toasts);
-    setToasts(_toasts);
+  // const addToast = (type:alertType) => {
+  //   setId(id + 1);
+  //   const FindAlert = alerts[type];
+  //   const formatAlert = <FindAlert>This is a {type} toast.</FindAlert>;
+  //   setToastTypes((toasts) => [
+  //     { toastId: id, alert: formatAlert},
+  //     ...toasts
+  //   ]);
+  // };
+
+  const removeToast = () => {
+    // const _toasts = remove(id, 1, toasts);
+    // setToastTypes(_toasts);
+    const alert = document.activeElement?.parentElement?.parentElement;
+    alert?.remove();
   };
 
   return (
@@ -95,40 +96,23 @@ export default function NxToastFullPageExample() {
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
-      <NxPageSidebar tabIndex={0}>
-        Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdum
-        varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
-        rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus quam
-        pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id diam
-        maecenas. Porta nibh venenatis cras sed felis eget velit aliquet. Semper feugiat nibh sed pulvinar proin
-        gravida hendrerit lectus a. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem. Purus non enim
-        praesent elementum facilisis leo. Dui sapien eget mi proin. Ultrices eros in cursus turpis massa tincidunt
-        dui ut ornare. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Turpis egestas maecenas
-        pharetra convallis posuere morbi leo urna. Tortor posuere ac ut consequat semper viverra nam libero.
-        Volutpat ac tincidunt vitae semper. Pretium fusce id velit ut tortor pretium viverra.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdum
-        varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
-        rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus quam
-        pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id diam
-        maecenas. Porta nibh venenatis cras sed felis eget velit aliquet. Semper feugiat nibh sed pulvinar proin
-        gravida hendrerit lectus a. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem. Purus non enim
-        praesent elementum facilisis leo. Dui sapien eget mi proin. Ultrices eros in cursus turpis massa tincidunt
-        dui ut ornare. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Turpis egestas maecenas
-        pharetra convallis posuere morbi leo urna. Tortor posuere ac ut consequat semper viverra nam libero.
-        Volutpat ac tincidunt vitae semper. Pretium fusce id velit ut tortor pretium viverra.
-      </NxPageSidebar>
       <NxPageMain tabIndex={0}>
         <NxToastContainer>
           {
-            toasts.map((toast) => (
-              <NxToast key={toast.toastId}
-                       toastId={toast.toastId}
-                       onClose={()=> removeToast(toast.toastId)}>
+            toastTypes.map((toast, id) => (
+              <NxToast key={id}
+                       toastId={id}
+                       onClose={()=> removeToast()}>
                 {
-                  toast.alert
+                  toast === 'success' ?
+                    <NxSuccessAlert>This is a Success Toast</NxSuccessAlert> :
+                    toast === 'info' ?
+                      <NxInfoAlert>This is an Info Toast</NxInfoAlert> :
+                      toast === 'warning' ?
+                        <NxWarningAlert>This is a Warning Toast</NxWarningAlert> :
+                        <NxErrorAlert>This is an Error Toast</NxErrorAlert>
                 }
+                {/* <NxAlert className={`nx-alert--${toast}`} icon={faEye}> This is a {toast} Toast</NxAlert> */}
               </NxToast>
             ))
           }
@@ -137,7 +121,7 @@ export default function NxToastFullPageExample() {
           <NxH1>Lorem Ipsum</NxH1>
         </NxPageTitle>
         <NxTile>
-          <NxTile.Header>Lorem Ipsum</NxTile.Header>
+          <NxTile.Header>Scroll Down to Find Toast Buttons</NxTile.Header>
           <NxTile.Content>
             <NxP>
               Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
@@ -147,11 +131,51 @@ export default function NxToastFullPageExample() {
               pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
               diam maecenas.
             </NxP>
+            <NxP>
+              Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
+              varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
+              rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus qu
+              pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+              diam maecenas.
+            </NxP>
+            <NxP>
+              Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
+              varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
+              rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus qu
+              pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+              diam maecenas.
+            </NxP>
+            <NxP>
+              Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
+              varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
+              rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus qu
+              pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+              diam maecenas.
+            </NxP>
+            <NxP>
+              Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
+              varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
+              rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus qu
+              pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+              diam maecenas.
+            </NxP>
+            <NxP>
+              Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
+              varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
+              rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus qu
+              pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+              diam maecenas.
+            </NxP>
             <NxButtonBar>
-              <NxButton type="button" onClick={() => addToast('info')}>Open Info Toast</NxButton>
-              <NxButton type="button" onClick={() => addToast('success')}>Open Sucess Toast</NxButton>
-              <NxButton type="button" onClick={() => addToast('error')}>Open Error Toast</NxButton>
-              <NxButton type="button" onClick={() => addToast('warning')}>Open Warning Toast</NxButton>
+              <NxButton type="button" onClick={() => setToastTypes(['info', ...toastTypes])}>Open Info Toast</NxButton>
+              <NxButton type="button" onClick={() => setToastTypes(['success', ...toastTypes])}>Open Sucess Toast</NxButton>
+              <NxButton type="button" onClick={() => setToastTypes(['error', ...toastTypes])}>Open Error Toast</NxButton>
+              <NxButton type="button" onClick={() => setToastTypes(['warning', ...toastTypes])}>Open Warning Toast</NxButton>
             </NxButtonBar>
           </NxTile.Content>
         </NxTile>
