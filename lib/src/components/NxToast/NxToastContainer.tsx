@@ -4,8 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef} from 'react';
-import FocusContext from './contexts';
+import React, { useRef } from 'react';
+import NxToastContainerContext from './contexts';
 
 import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
 
@@ -39,13 +39,13 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   };
 
   return (
-    <FocusContext.Provider value={{onToastClosing}}>
+    <NxToastContainerContext.Provider value={{onToastClosing}}>
       <div className="nx-toast__wrapper" ref={ref}>
         <div className="nx-toast__container">
           {children}
         </div>
       </div>
-    </FocusContext.Provider>
+    </NxToastContainerContext.Provider>
   );
 };
 

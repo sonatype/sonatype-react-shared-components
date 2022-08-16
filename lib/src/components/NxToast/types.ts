@@ -34,7 +34,7 @@ export type ToastModel = {
   toastId: number;
 };
 
-export type NxToastContainerContext = {
+export type NxToastContainerContextType = {
   onToastClosing: ()=> void;
 };
 

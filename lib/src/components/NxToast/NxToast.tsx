@@ -6,7 +6,7 @@
  */
 import React, { useState, useContext, useEffect } from 'react';
 import classnames from 'classnames';
-import FocusContext from './contexts';
+import NxToastContainerContext from './contexts';
 
 import { nxToastPropTypes, NxToastProps, ToastModel } from './types';
 
@@ -17,7 +17,7 @@ const NxToast = (props: NxToastProps) => {
 
   const [isClosing, setIsClosing] = useState(false);
 
-  const focusedToast = useContext(FocusContext);
+  const focusedToast = useContext(NxToastContainerContext);
 
   useEffect(()=>{
     focusedToast?.onToastClosing();
