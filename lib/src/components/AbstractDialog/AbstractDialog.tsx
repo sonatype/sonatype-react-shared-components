@@ -157,27 +157,6 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     }
   }, [onCancel]);
 
-  // const clickOutsideTargetElement = cancelOnClickOutsideTargetClassName ?
-  //   dialogRef.current?.getElementsByClassName(cancelOnClickOutsideTargetClassName)[0] :
-  //   dialogRef.current;
-
-  // useEffect(() => {
-  //   if (cancelOnClickOutside) {
-  //     const listener = (event: MouseEvent) => {
-  //       if (!clickOutsideTargetElement || clickOutsideTargetElement.contains(event.target as Node)) {
-  //         return;
-  //       }
-
-  //       if (onCancel) {
-  //         onCancel(createCancelEvent());
-  //       }
-  //     };
-  //     document.addEventListener('click', listener);
-  //     return () => document.removeEventListener('click', listener);
-  //   }
-  //   return;
-  // }, [clickOutsideTargetElement]);
-
   const dialogContextValue = {
     dialogEl: dialogRefState,
     onCancel: onCancel

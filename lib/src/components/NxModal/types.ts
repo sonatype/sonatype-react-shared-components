@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {HTMLAttributes} from 'react';
+import { HTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
-export type CloseHandler = (evt?: Event) => void;
+export type CloseHandler = (evt: Event) => void;
 export const NX_MODAL_VARIANTS = ['wide', 'normal', 'narrow'] as const;
 export type NX_MODAL_VARIANT_TYPE = (typeof NX_MODAL_VARIANTS)[number];
 

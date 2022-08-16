@@ -6,11 +6,9 @@
  */
 import { HTMLAttributes } from 'react';
 
-export type CancelHandler = (evt?: Event) => void;
+export type CancelHandler = (evt: Event) => void;
 
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
-  cancelOnClickOutside?: boolean | null;
-  cancelOnClickOutsideTargetClassName?: string | null;
   onCancel: CancelHandler;
   useNativeCancelOnEscape?: boolean | null;
   isModal?: boolean | null

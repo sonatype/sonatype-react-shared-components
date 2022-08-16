@@ -65,15 +65,6 @@ export default function NxDrawerWithGlobalHeaderExample() {
     </>
   );
 
-  const description = (
-    <>
-      Cupcake I love candy canes dragée croissant cookie chocolate muffin. Marshmallow
-      powder lollipop <strong>cotton</strong> candy bonbon lollipop liquorice chupa chups jelly-o. Biscuit I
-      love marzipan pastry pie ice cream chocolate bar dessert sweet. Cake topping cookie
-      cake icing macaroon marshmallow.
-    </>
-  );
-
   return (
     <>
       <header className="nx-global-header">
