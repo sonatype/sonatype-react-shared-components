@@ -92,6 +92,8 @@ import {
   NxTree,
   NxVulnerabilityDetails,
   NxWarningAlert,
+  NxFileUpload,
+  NxStatefulFileUpload,
   useUniqueId
 } from '@sonatype/react-shared-components';
 
@@ -351,6 +353,8 @@ const Home: NextPage = () => {
                           options={[{ id: 'a', displayName: 'b' }]}
                           selectedIds={new Set(['a'])}
                           onChange={noop} />
+        <NxFileUpload files={null} onChange={() => {}} />
+        <NxStatefulFileUpload />
       </NxPageMain>
     </div>
   )
