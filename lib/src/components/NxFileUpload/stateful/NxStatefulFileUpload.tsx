@@ -6,7 +6,7 @@
  */
 import React, { forwardRef, useState } from 'react';
 import NxFileUpload from '../NxFileUpload';
-import { StatefulProps as Props } from '../types';
+import { StatefulProps as Props, statefulPropTypes } from '../types';
 
 export { Props };
 
@@ -23,5 +23,7 @@ const NxStatefulFileUpload = forwardRef<HTMLDivElement, Props>(function NxStatef
 
   return <NxFileUpload ref={ref} { ...otherProps } { ...{ files, isPristine, onChange } } />;
 });
+
+NxStatefulFileUpload.propTypes = statefulPropTypes;
 
 export default NxStatefulFileUpload;
