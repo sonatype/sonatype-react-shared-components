@@ -17,7 +17,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   const ref = useRef<HTMLDivElement | null>(null),
       prevSelectedRef = useRef<HTMLElement | null>(null);
 
-  const body = document.getElementsByClassName('nx-body')[0];
+  const body = document.body;
 
   const onToastClosing = () => {
     //When closing Toasts with a mouse click, document.activeElement becomes nx-body, so need
