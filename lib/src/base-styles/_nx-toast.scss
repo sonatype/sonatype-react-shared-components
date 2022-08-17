@@ -4,8 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@use '../base-styles/nx-alert';
-@use '../scss-shared/nx-container-helpers';
 
 .nx-toast__wrapper {
   ///nx-toast__wrapper has position absolute to ensure toasts stay in the top right corner of the page.
@@ -14,36 +12,26 @@
   position: absolute;
   top: 0;
   right: 0;
-  // display: flex;
-  // justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
   margin-right: var(--nx-spacing-6x);
 }
 
 .nx-toast__container {
   position: fixed;
-  //overflow:hidden;
   width: 500px;
-  right: 0;
-  // border: 2px solid black;
-  //transition: all 0.1s linear;
 }
 
 .nx-toast {
-  // @extend .nx-alert;
-  margin: var(--nx-spacing-2x) 0 0 0;
   position: relative;
-  width: 500px;
-  // overflow:hidden;
-  // top: 0px;
-  // left: -1000px;
-  right: 0;
-  opacity: 1;
   animation: animationIn 0.4s linear;
-  // transition: all 0.3s ease-in-out;
 
   &.nx-toast--closing {
     animation: animationOut 0.4s linear;
-    // animation-fill-mode:forwards;
+  }
+  
+  .nx-alert {
+    margin: var(--nx-spacing-2x) 0 0 0;
   }
 }
 
@@ -51,21 +39,18 @@
   0% {
     margin-top: 0;
     max-height: 0px;
-    padding-top: 0;
-    padding-bottom: 0;
-    right: -500px;
-    opacity: 0;
-  }
-  25% {
-    max-height: 40px;
     right: -500px;
     opacity: 0;
   }
   40% {
     margin-top: var(--nx-spacing-2x);
+    right: -500px;
+    opacity: 0;
     max-height:74px;
-    padding-top: var(--nx-spacing-4x);
-    padding-bottom: var(--nx-spacing-4x);
+  }
+  100% {
+    right:0;
+    opacity: 1;
   }
 }
 
@@ -87,29 +72,34 @@
   }
 }
 
-.nx-toast--success {
-  @extend .nx-alert--success;
-}
-
-.nx-toast--warning {
-  @extend .nx-alert--warning;
-}
-
-.nx-toast--error {
-  @extend .nx-alert--error;
-}
-
-.nx-toast--info {
-  @extend .nx-alert--info;
-}
-
 /*
   If the user has expressed their preference for reduced motion,
   then only animate the fade effect.
 */
 @media (prefers-reduced-motion: reduce) {
   .nx-toast {
-    right: 0;
-    transition: opacity 0.3s ease-in-out;
+    animation: reducedAnimationIn 0.4s linear;
+
+    &.nx-toast--closing {
+      animation: reducedAnimationOut 0.4s linear;
+    }
+  }
+}
+
+@keyframes reducedAnimationIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes reducedAnimationOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
