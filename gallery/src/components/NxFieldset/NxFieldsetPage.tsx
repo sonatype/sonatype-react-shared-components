@@ -68,10 +68,7 @@ const NxFieldsetPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>false</NxTable.Cell>
-            <NxTable.Cell>
-              Sets whether the input should display the optional flag – the flag is present by default and
-              setting <NxCode>isRequired</NxCode> to true removes the flag.
-            </NxTable.Cell>
+            <NxTable.Cell>Sets whether the input should display the red required field asterisk.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>isPristine</NxTable.Cell>
