@@ -8,9 +8,7 @@ import React, { useState, useContext, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import NxToastContainerContext from './contexts';
 
-import { nxToastPropTypes, NxToastProps, ToastModel } from './types';
-
-export { ToastModel };
+import { nxToastPropTypes, NxToastProps } from './types';
 
 const NxToast = (props: NxToastProps) => {
   const { onClose, children } = props;

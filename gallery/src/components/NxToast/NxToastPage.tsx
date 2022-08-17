@@ -239,7 +239,7 @@ const NxToastPage = () => {
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            <NxTextLink href="#/NxToastFullExample">
+            <NxTextLink href="#/NxToastFullPageSimpleExample">
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>

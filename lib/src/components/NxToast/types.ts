@@ -7,8 +7,6 @@
 import { HTMLAttributes, ReactNode, ReactElement } from 'react';
 import * as PropTypes from 'prop-types';
 
-// import { allToastTypes, ToastType } from '../../util/toastLevels';
-
 export type Props = HTMLAttributes<HTMLDivElement>;
 
 export const propTypes = {
@@ -29,10 +27,6 @@ export interface NxToastProps {
   children: ReactElement;
   previousFocusedElement?: ReactNode;
 }
-
-export type ToastModel = {
-  toastId: number;
-};
 
 export type NxToastContainerContextType = {
   onToastClosing: (toast: HTMLElement | null)=> void;
