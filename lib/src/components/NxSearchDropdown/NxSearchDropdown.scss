@@ -28,10 +28,20 @@
     text-align: center;
   }
 
-  &--dropdown-showable:focus-within {
-    .nx-search-dropdown__menu {
-      position: absolute;
-      right: initial;
+  &--dropdown-showable {
+    @mixin show-menu {
+      .nx-search-dropdown__menu {
+        position: absolute;
+        right: initial;
+      }
+    }
+
+    &:focus-within {
+      @include show-menu
+    }
+
+    @supports (overflow: -webkit-paged-x) {
+      @include show-menu;
     }
   }
 
