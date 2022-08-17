@@ -19,7 +19,7 @@ const nxFieldsetExampleCode = require('./NxFieldsetExample?raw'),
     nxFieldsetSublabelExampleCode = require('./NxFieldsetSublabelExample?raw'),
     nxFieldsetRichLabelExampleCode = require('./NxFieldsetRichLabelExample?raw'),
     nxFieldsetRequiredExampleCode = require('./NxFieldsetRequiredExample?raw'),
-    nxFieldsetRequiredPureStateHelperExampleCode = require('./NxFieldsetRequiredExample?raw');
+    nxFieldsetRequiredPureStateHelperExampleCode = require('./NxFieldsetRequiredPureStateHelperExample?raw');
 
 const NxFieldsetPage = () =>
   <>
