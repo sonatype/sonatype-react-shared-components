@@ -39,12 +39,12 @@ const NxToast = (props: NxToastProps) => {
   };
 
   const validChild = React.Children.only(children);
-  const childrenWithProps = React.isValidElement(children) ?
-    React.cloneElement(validChild, { onClose: handleClose }) : null;
 
   if (!React.isValidElement(children)) {
     throw new TypeError('NxToast only accepts one NxAlert as a valid child element');
   }
+
+  const childrenWithProps = React.cloneElement(validChild, { onClose: handleClose });
 
   const classes = classnames('nx-toast', {
     'nx-toast--closing': isClosing
