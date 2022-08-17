@@ -79,6 +79,9 @@ function NxComboboxRender<T extends string | number = string>(
     if (!(comingFromOutsidePage || comingFromChildNode) && error) {
       doSearch(searchText);
     }
+    else if (error) {
+      setShowDropdown(true);
+    }
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
@@ -99,6 +102,9 @@ function NxComboboxRender<T extends string | number = string>(
     if (value && value.trim() !== searchText.trim()) {
       doSearch(value);
       setPrevSearchText('');
+    }
+    else if (!value) {
+      setShowDropdown(false);
     }
   }
 
