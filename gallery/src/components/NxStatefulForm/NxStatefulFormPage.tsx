@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode, NxH3, NxTile, NxInfoAlert } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxH3, NxTile, NxInfoAlert, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -17,8 +17,9 @@ const NxStatefulFormPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        <NxCode>NxStatefulForm</NxCode> is a stateful wrapper of <NxCode>NxForm</NxCode> which implements the
-        logic around when to show the form-wide validation errors.
+        <NxCode>NxStatefulForm</NxCode> is a stateful wrapper of{' '}
+        <NxCode><NxTextLink href="#/pages/Form">NxForm</NxTextLink></NxCode> which implements the logic around when
+        to show the form-wide validation errors.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>

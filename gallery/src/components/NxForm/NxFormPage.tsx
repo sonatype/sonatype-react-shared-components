@@ -182,7 +182,8 @@ const NxFormPage = () =>
                 Calling code should set this prop to false on freshly-rendered forms, forms that have been submitted
                 successfully, and when a form transitions from having <NxCode>validationErrors</NxCode> to having
                 no <NxCode>validationErrors</NxCode>. Calling code should set this prop to true when a form submission
-                is attempted.  See <NxCode>NxStatefulForm</NxCode> for automatic management of this prop.
+                is attempted. See <NxCode><NxTextLink href="#/pages/Stateful Form">NxStatefulForm</NxTextLink></NxCode>
+                {' '}for automatic management of this prop.
               </NxP>
             </NxTable.Cell>
           </NxTable.Row>
