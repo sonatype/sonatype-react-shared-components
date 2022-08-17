@@ -207,59 +207,62 @@
 .nx-list__item--link, // deprecated
 .nx-list--clickable .nx-list__item // deprecated
 {
-  &, > .nx-list__term, > .nx-list__description {
-    &, > .nx-list__link, > .nx-list__btn {
-      color: inherit;
+  &, > .nx-list__term, > .nx-list__description, > .nx-list__link, > .nx-list__btn {
+    &:hover {
+      background-color: var(--nx-color-interactive-background-hover);
+    }
 
-      &.selected {
-        &, &:hover {
-          background-color: var(--nx-color-interactive-background-selected);
-        }
-      }
+    &:active {
+      background-color: var(--nx-color-interactive-background-active);
+    }
+
+    &:focus {
+      box-shadow: var(--nx-box-shadow-focus);
+      border-color: var(--nx-color-interactive-border-focus);
+      outline: none;
+    }
+
+    &.nx-list__item--empty {
+      @include nx-text-helpers.regular;
+
+      color: var(--nx-color-text);
+    }
+
+    &.disabled, &[disabled] {
+      color: var(--nx-color-text-disabled);
 
       &:hover {
-        background-color: var(--nx-color-interactive-background-hover);
-        cursor: pointer;
-      }
-
-      &:active {
-        background-color: var(--nx-color-interactive-background-active);
-      }
-
-      &:focus {
-        box-shadow: var(--nx-box-shadow-focus);
-        border-color: var(--nx-color-interactive-border-focus);
-        outline: none;
-      }
-
-      &.nx-list__item--empty {
-        @include nx-text-helpers.regular;
-
-        color: var(--nx-color-text);
-      }
-
-      &.disabled, &[disabled] {
-        color: var(--nx-color-text-disabled);
-
-        &:hover {
-          background-color: transparent;
-          cursor: default;
-        }
-
-        > .nx-chevron {
-          display: none;
-        }
+        background-color: transparent;
+        cursor: default;
       }
 
       > .nx-chevron {
-        align-self: center;
-        color: var(--nx-color-text-dark);
-        grid-area: actions;
-
-        // custom sizing for the icon, brings it up to 13px
-        font-size: 21px;
+        display: none;
       }
     }
+
+    > .nx-chevron {
+      align-self: center;
+      color: var(--nx-color-text-dark);
+      grid-area: actions;
+
+      // custom sizing for the icon, brings it up to 13px
+      font-size: 21px;
+    }
+  }
+
+  &, .nx-list__link, .nx-list__btn {
+    cursor: pointer;
+
+    &.selected {
+      &, &:hover {
+        background-color: var(--nx-color-interactive-background-selected);
+      }
+    }
+  }
+
+  .nx-list__link {
+    color: inherit;
   }
 }
 
