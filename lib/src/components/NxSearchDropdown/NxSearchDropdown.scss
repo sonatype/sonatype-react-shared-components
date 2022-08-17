@@ -37,7 +37,7 @@
     }
 
     &:focus-within {
-      @include show-menu
+      @include show-menu;
     }
 
     // Hack to detect Safari. In Safari, focus seems to be intended to strictly be a keyboard nav thing,
