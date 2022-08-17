@@ -14,15 +14,9 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   onCancel: () => void;
   children?: ReactNode;
   variant?: NX_DRAWER_VARIANT_TYPE | null;
-  headerTitle: ReactNode;
-  headerSubtitle?: ReactNode;
-  headerDescription?: ReactNode;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   onCancel: PropTypes.func.isRequired,
-  variant: PropTypes.oneOf(NX_DRAWER_VARIANTS),
-  headerTitle: PropTypes.node.isRequired,
-  headerSubtitle: PropTypes.node,
-  headerDescription: PropTypes.node
+  variant: PropTypes.oneOf(NX_DRAWER_VARIANTS)
 };

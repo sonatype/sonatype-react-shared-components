@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect, useRef, useState, HTMLAttributes, ReactNode, useContext } from 'react';
+import React, { useContext, useEffect, useRef, useState, HTMLAttributes, ReactNode } from 'react';
 import classnames from 'classnames';
 
 import AbstractDialog from '../AbstractDialog/AbstractDialog';
@@ -72,8 +72,9 @@ const _NxDrawer = (props: Props) => {
 
   useEffect(() => {
     const clickOutsideTargetElement = dialogRef.current?.getElementsByClassName('nx-drawer__panel')[0];
+
     const listener = (event: MouseEvent) => {
-      if (dialogRef.current && !(clickOutsideTargetElement as HTMLDivElement).contains(event.target as Node)) {
+      if (clickOutsideTargetElement && !(clickOutsideTargetElement as HTMLDivElement).contains(event.target as Node)) {
         closeDrawer();
       }
     };

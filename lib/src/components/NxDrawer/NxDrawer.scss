@@ -15,6 +15,8 @@ $-box-shadow-offset: 52px;
     opacity: 0;
   }
 
+  // This is required to fix jitter effect on Firefox and Safari
+  // + not animating at all on Chrome.
   1% {
     transform: translateX(100%);
     opacity: 0;
@@ -97,6 +99,7 @@ $-box-shadow-offset: 52px;
 
   @media (prefers-reduced-motion) {
     &, &--close {
+      // animation-duration: 0 did not trigger the animationEnd event
       animation-duration: 1ms;
     }
   }
@@ -113,10 +116,8 @@ $-box-shadow-offset: 52px;
   height: 100%;
   position: relative;
   margin-left: $-box-shadow-offset;
-  width: calc(100% - #{$-box-shadow-offset});
-
   padding: var(--nx-spacing-6x);
-
+  width: calc(100% - #{$-box-shadow-offset});
   opacity: 1;
 
   &::after {
@@ -171,9 +172,13 @@ $-box-shadow-offset: 52px;
 .nx-drawer-content {
   @include nx-container-helpers.container-vertical;
 
+  --nx-drawer-padding: var(--nx-spacing-6x);
+
   flex-grow: 1;
   overflow-y: auto;
-  padding: var(--nx-spacing-6x) 0;
+
+  margin-right: calc(0px - var(--nx-drawer-padding));
+  margin-left: calc(0px - var(--nx-drawer-padding));
 }
 
 .nx-drawer-footer {
