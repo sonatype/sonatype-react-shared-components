@@ -56,8 +56,8 @@ export default function NxToastFullPageVariationsExample() {
     const toastId = toastIdInc + 1;
     setToastIdInc(toastId);
     setToasts([
-      ...toasts,
-      { id: toastId, type, message }
+      { id: toastId, type, message },
+      ...toasts
     ]);
   };
 
