@@ -11,7 +11,6 @@
    position: relative;
  
    &__menu {
-     // Only show when the component is focused. When hidden, just move offscreen so still in the tab order
      position: fixed;
      right: 100%;
      width: 100%;
@@ -28,7 +27,7 @@
      text-align: center;
    }
  
-   &--dropdown-showable:focus-within {
+   &--dropdown-showable{
      .nx-combobox__menu {
        position: absolute;
        right: initial;

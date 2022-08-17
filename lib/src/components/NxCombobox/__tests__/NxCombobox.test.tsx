@@ -8,7 +8,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import * as rtlUtils from '../../../__testutils__/rtlUtils';
 
-// import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import NxCombobox, {Props} from '../NxCombobox';
@@ -58,6 +57,16 @@ describe('NxCombobox', function() {
     it('sets aria-autocomplete on the input to list as default and to both if `autoComplete` prop is set to true', function() {
         expect(rtlRender().container!.querySelector('.nx-text-input__input')).toHaveAttribute('aria-autocomplete', 'list');
         expect(rtlRender({ autoComplete: true }).container!.querySelector('.nx-text-input__input')).toHaveAttribute('aria-autocomplete', 'both');
+    });
+
+    it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true', async function(){
+        const onSearchTextChange = jest.fn(),
+            { getByRole } = rtlRender({ autoComplete: true, matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onSearchTextChange}),
+            inputElement = getByRole('combobox');
+
+        inputElement.focus()
+        await userEvent.type(inputElement, 'f');
+        expect(onSearchTextChange).toBeCalledWith('Foo')
     });
 
     it('sets aria-expanded on the input to true when the dropdown is displayed and the dropdown has aria-hidden set to false', async function() {
@@ -183,9 +192,6 @@ describe('NxCombobox', function() {
     });
 
     it('fires onSelect with the match object when the button with role option is clicked', async function() {
-        //mock scrollTo function using jest
-        window.HTMLElement.prototype.scrollTo = jest.fn();
-
         const onSelect = jest.fn(),
             { getByRole, getAllByRole } = rtlRender({ matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onSelect }),
             inputElement = getByRole('combobox');
@@ -339,5 +345,5 @@ describe('NxCombobox', function() {
             await userEvent.keyboard('[Escape]');
             expect(onSearchTextChange).toBeCalledWith('');
         });
-    })
+    });
 })

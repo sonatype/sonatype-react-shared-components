@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, MouseEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
 import { always, any, clamp, dec, inc, pipe, prop } from 'ramda';
@@ -84,10 +84,16 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }
 
+  // In the blur event, we use the relatedTarget to check if the focused element is a child of the parent
+  // to show/hide dropdown, however, clicking the button in Safari does not focus it, which means the
+  // relatedTarget will be null, this is to stop the mouse down event being fired for the element that
+  // is listening to the blur event, in this case, the show/hide dropdown is handled by the click event
+  function handleMouseDown(evt: MouseEvent) {evt.preventDefault(); }
+
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
-    dropdownRef.current?.scrollTo({top: 0});
     setElToFocusId('');
     setFocusableBtnIndex(null);
+
     // Check if the new focused element is a child of the parent, if not, then close the dropdown menu
     if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget))) {
       setShowDropdown(false);
@@ -277,7 +283,13 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   return (
-    <div ref={mergedRef} className={className} onFocus={handleComponentFocus} onBlur={handleComponentBlur} { ...attrs }>
+    /*eslint-disable-next-line jsx-a11y/no-static-element-interactions*/
+    <div ref={mergedRef}
+         className={className}
+         onFocus={handleComponentFocus}
+         onBlur={handleComponentBlur}
+         onMouseDown={handleMouseDown}
+         { ...attrs }>
       <NxTextInput role="combobox"
                    ref={inputRef}
                    isPristine
