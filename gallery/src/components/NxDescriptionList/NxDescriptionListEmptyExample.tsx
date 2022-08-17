@@ -7,6 +7,6 @@
 import React from 'react';
 import { NxDescriptionList } from '@sonatype/react-shared-components';
 
-const NxDescriptionListNonInteractiveExample = () => <NxDescriptionList />;
+const NxDescriptionListEmptyExample = () => <NxDescriptionList />;
 
-export default NxDescriptionListNonInteractiveExample;
+export default NxDescriptionListEmptyExample;
