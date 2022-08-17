@@ -10,6 +10,8 @@ import {reject, last} from 'ramda';
 
 import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
 
+import './NxToast.scss';
+
 export { Props } from './types';
 
 const NxToastContainer = (props: NxToastContainerProps) => {
