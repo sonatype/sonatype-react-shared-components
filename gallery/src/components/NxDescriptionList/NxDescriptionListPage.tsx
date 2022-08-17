@@ -25,8 +25,8 @@ const NxDescriptionListPage = () =>
         <NxCode>NxDescriptionList</NxCode> creates HTML description lists with styling similar
         to <NxCode>NxList</NxCode>. These lists can support clickable rows implemented as either buttons or links,
         though in its simplest, noninteractive usage the <NxCode>NxDescriptionList</NxCode> family of components is
-        simply a convenience wrapper for the <NxCode>nx-list--description-list</NxCode> styles documented on the
-        <NxTextLink href="#/pages/List%20(HTML)">List (HTML)</NxTextLink> style page. Creating clickable description
+        simply a convenience wrapper for the <NxCode>nx-list--description-list</NxCode> styles documented on
+        the <NxTextLink href="#/pages/List%20(HTML)">List (HTML)</NxTextLink> style page. Creating clickable description
         lists is only supported through this component, and not through the raw styles due to structural complexity
         involved.
       </NxP>
