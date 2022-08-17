@@ -4,8 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import NxToastContainerContext from './contexts';
+import {reject, last} from 'ramda';
 
 import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
 
@@ -15,52 +16,38 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   const { children } = props;
 
   const ref = useRef<HTMLDivElement | null>(null);
-  const previousActiveElement = useRef<HTMLElement | null>(null);
+  const activeElementNotToast = useRef<HTMLElement | null>(null);
 
-  // This implementation has issues when the user clicks on the close button
-  // it updates document.activeElement and therefore this cannot get the correct
-  // previously active element :(
-  const updatePreviousActiveElement = () => {
-    if (
-      document.activeElement
-      && document.activeElement !== document.body
-      && !ref.current?.contains(document.activeElement)
-    ) {
-      previousActiveElement.current = document.activeElement as HTMLElement;
+  const onToastClosing = (toast:HTMLElement | null) => {
+    const closeBtns = Array.from(ref.current?.querySelectorAll<HTMLButtonElement>('.nx-toast .nx-btn--close') ?? []);
+    const filteredButtons = toast ? reject((btn:Node)=> toast.contains(btn), Array.from(closeBtns)) : closeBtns;
+    const lastCloseBtn = last(filteredButtons);
+
+    if (lastCloseBtn) {
+      lastCloseBtn.focus();
+    }
+    else {
+      activeElementNotToast.current?.focus();
     }
   };
 
-  const focusOnLastToast = () => {
-    if (ref.current) {
-      const closeBtns = ref.current.querySelectorAll<HTMLButtonElement>('.nx-toast .nx-btn--close');
+  const updateActiveElementNotToast = () => {
+    const currentFocusedElement = document.activeElement as HTMLElement;
 
-      const lastCloseBtn = closeBtns[closeBtns.length - 1];
-
-      if (lastCloseBtn) {
-        (lastCloseBtn as HTMLElement).focus();
-        return true;
-      }
-    }
-    return false;
-  };
-
-  const onToastOpening = () => {
-    updatePreviousActiveElement();
-    focusOnLastToast();
-  };
-
-  const onToastClosing = () => {
-    updatePreviousActiveElement();
-
-    if (!focusOnLastToast()) {
-      (previousActiveElement.current as HTMLElement).focus();
+    if (!ref.current?.contains(currentFocusedElement)) {
+      activeElementNotToast.current = document.activeElement as HTMLElement;
     }
   };
+
+  useEffect(()=> {
+    document.addEventListener('focusin', updateActiveElementNotToast);
+    return () => document.removeEventListener('focusin', updateActiveElementNotToast);
+  }, []);
 
   return (
-    <NxToastContainerContext.Provider value={{ onToastOpening, onToastClosing }}>
+    <NxToastContainerContext.Provider value={{ onToastClosing }}>
       <div className="nx-toast__wrapper" ref={ref}>
-        <div className="nx-toast__container">
+        <div className="nx-toast__container" >
           {children}
         </div>
       </div>

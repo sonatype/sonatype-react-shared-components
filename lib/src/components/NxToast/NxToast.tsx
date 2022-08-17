@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import NxToastContainerContext from './contexts';
 
@@ -19,21 +19,22 @@ const NxToast = (props: NxToastProps) => {
 
   const toastContainerContextValue = useContext(NxToastContainerContext);
 
+  const ref = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    toastContainerContextValue?.onToastOpening();
-    return () => { Promise.resolve().then(() => toastContainerContextValue?.onToastClosing()); };
+    ref.current?.querySelector<HTMLElement>('.nx-btn--close')?.focus();
   }, []);
 
   const handleClose = () => {
     if (!isClosing) {
       setIsClosing(true);
+      toastContainerContextValue?.onToastClosing(ref.current);
     }
   };
 
   const handleAnimationEnd = () => {
     if (isClosing) {
       onClose();
-      // setIsClosing(false);
     }
   };
 
@@ -51,7 +52,8 @@ const NxToast = (props: NxToastProps) => {
 
   return (
     <div className={classes}
-         onAnimationEnd={handleAnimationEnd}>
+         onAnimationEnd={handleAnimationEnd}
+         ref={ref}>
       {childrenWithProps}
     </div>
   );
