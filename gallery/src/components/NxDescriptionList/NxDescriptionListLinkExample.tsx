@@ -11,7 +11,7 @@ const NxDescriptionListLinkExample = () =>
   <NxDescriptionList>
     <NxDescriptionList.LinkItem href="#/"
                                 term="This is the NxDescriptionList.LinkItem component"
-                                description="Clicking this row will give you an alert message." />
+                                description="Clicking this row will go somewhere." />
     <NxDescriptionList.LinkItem href="#/"
                                 selected
                                 term="Something else to be defined"
