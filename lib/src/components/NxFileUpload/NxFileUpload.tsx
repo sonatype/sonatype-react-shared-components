@@ -24,7 +24,7 @@ const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 
 
 function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps) {
   // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
-  const buttonLabel = 'Unselect file';
+  const buttonLabel = 'Dismiss Upload';
 
   return (
     <span className="nx-selected-file">
