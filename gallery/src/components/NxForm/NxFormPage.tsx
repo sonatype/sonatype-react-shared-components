@@ -342,7 +342,7 @@ const NxFormPage = () =>
           identically. The overall effect being that when the user attempts to submit the form, they see the form
           validation error in the footer (near the Submit button that they just clicked) <em>and</em> see a field
           validation error on the field(s) that are the cause of the problem. There may also be some cases where
-          form-level validation errors are appropriate even in the absense of any field validation errors.
+          form-level validation errors are appropriate even in the absence of any field validation errors.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
