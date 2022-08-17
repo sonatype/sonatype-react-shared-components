@@ -192,6 +192,16 @@ tests, in which case you may have to hit 'a' in your console window to run the t
 debug as normal.  Be aware of the test filtering options in the console which can cut down on extraneous breakpoint
 hits.
 
+## Writing RTL Unit Test
+
+We are currently transitioning from Enzyme to the [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) so we both both set up in place.
+
+We also use [jest-dom](https://testing-library.com/docs/ecosystem-jest-dom/) to provide custom DOM element matchers, but it is not imported globally because it will overwrite some of the `jest-enzyme` matchers.
+Instead, they are temporarily imported inside `__testutils__/rtlUtils`.
+
+Alternatively, if you are not using the RTL render wrapper, you will need to import them individually into the test module.
+To do this, insert the following at the top of your RTL test module file: `import '@testing-library/jest-dom';`.
+
 ## Running Visual Tests
 
 The visual tests use jest-image-snapshot to compare screenshots of the components to their expected state. This

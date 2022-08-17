@@ -12,13 +12,13 @@ import NxFormGroup from '../NxFormGroup/NxFormGroup';
 import NxTextInput from '../NxTextInput/NxTextInput';
 import NxButton from '../NxButton/NxButton';
 
-import './NxCodeSnippet.scss';
+import './NxCopyToClipboard.scss';
 
 export { Props };
 
-export default function NxCodeSnippet(props: Props) {
+export default function NxCopyToClipboard(props: Props) {
   const { content, label, sublabel, className, onCopyUsingBtn, inputProps, ...otherProps } = props,
-      classes = classnames('nx-code-snippet', className),
+      classes = classnames('nx-copy-to-clipboard', className),
       textInputRef = useRef<HTMLDivElement>(null);
 
   function copyWithNavigatorClipboard() {
@@ -76,4 +76,4 @@ export default function NxCodeSnippet(props: Props) {
   );
 }
 
-NxCodeSnippet.propTypes = propTypes;
+NxCopyToClipboard.propTypes = propTypes;

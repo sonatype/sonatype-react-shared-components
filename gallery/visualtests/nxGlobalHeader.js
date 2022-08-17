@@ -15,7 +15,7 @@ describe('NxGlobalHeader', function() {
       await checkFullPageScreenshot();
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(null, true));
   });
 
   describe('without action bar', function() {
@@ -26,7 +26,7 @@ describe('NxGlobalHeader', function() {
       await checkFullPageScreenshot();
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(null, true));
   });
 
   describe('without back button', function() {
@@ -37,7 +37,7 @@ describe('NxGlobalHeader', function() {
       await checkFullPageScreenshot();
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(null, true));
   });
 
   describe('when empty', function() {
@@ -48,6 +48,6 @@ describe('NxGlobalHeader', function() {
       await checkFullPageScreenshot();
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(null, true));
   });
 });

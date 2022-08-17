@@ -6,7 +6,7 @@
  */
 const { setupBrowser } = require('./testUtils');
 
-describe('NxCodeSnippet', function() {
+describe('NxCopyToClipboard', function() {
   const {
     focusTest,
     focusAndHoverTest,
@@ -17,25 +17,25 @@ describe('NxCodeSnippet', function() {
     dismissResultingDialog,
     getPage,
     checkScreenshot
-  } = setupBrowser('#/pages/Code%20Snippet');
+  } = setupBrowser('#/pages/Copy%20To%20Clipboard');
 
-  const multipleSnippetSelector = '#nx-code-snippet-simple-example .gallery-example-live',
-      sizingSnippetSelector = '#nx-code-snippet-custom-sizing-example .gallery-example-live',
-      complexSnippetExample = '#complex-nx-code-snippet',
-      textareaSelector = `${complexSnippetExample} textarea`,
-      copyBtnSelector = `${complexSnippetExample} .nx-btn`;
+  const multipleCopySelector = '#nx-copy-to-clipboard-simple-example .gallery-example-live',
+      sizingCopySelector = '#nx-copy-to-clipboard-custom-sizing-example .gallery-example-live',
+      complexCopyExample = '#complex-nx-copy-to-clipboard',
+      textareaSelector = `${complexCopyExample} textarea`,
+      copyBtnSelector = `${complexCopyExample} .nx-btn`;
 
-  it('looks right including distance to other components', simpleTest(multipleSnippetSelector));
+  it('looks right including distance to other components', simpleTest(multipleCopySelector));
   describe('with rows=1', function() {
-    it('renders with a single-line textarea', simpleTest(sizingSnippetSelector));
+    it('renders with a single-line textarea', simpleTest(sizingCopySelector));
   });
-  it('looks no different when the text area is hovered', hoverTest(complexSnippetExample, textareaSelector));
-  it('has a blue border around the text area when it is focused', focusTest(complexSnippetExample, textareaSelector));
+  it('looks no different when the text area is hovered', hoverTest(complexCopyExample, textareaSelector));
+  it('has a blue border around the text area when it is focused', focusTest(complexCopyExample, textareaSelector));
   it('has a blue border around the text area when it is focused and hovered',
-      focusAndHoverTest(complexSnippetExample, textareaSelector));
+      focusAndHoverTest(complexCopyExample, textareaSelector));
 
   it('selects the text when the button is clicked', async function() {
-    const [codeSnippet, copyBtn] = await waitAndGetElements(complexSnippetExample, copyBtnSelector);
+    const [codeSnippet, copyBtn] = await waitAndGetElements(complexCopyExample, copyBtnSelector);
 
     await dismissResultingDialog(async () => {
       await copyBtn.click();
@@ -47,7 +47,7 @@ describe('NxCodeSnippet', function() {
   });
 
   it('copies the text to the clipboard when the button is clicked', async function() {
-    const [copyBtn] = await waitAndGetElements(complexSnippetExample, copyBtnSelector);
+    const [copyBtn] = await waitAndGetElements(complexCopyExample, copyBtnSelector);
 
     await dismissResultingDialog(async () => {
       await copyBtn.click();

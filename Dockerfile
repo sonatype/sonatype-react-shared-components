@@ -5,12 +5,14 @@
 # distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
 #
 
-FROM docker-all.repo.sonatype.com/node:16
+FROM docker-all.repo.sonatype.com/node:16-bullseye
 
 RUN apt-get update && \
     apt-get autoremove -y && apt-get clean -y && \
     apt-get install jq -y && \
     apt-get install chromium libatk-bridge2.0-0 libxkbcommon0 libgbm1 -y
+
+ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium
 
 RUN useradd -u 1002 -g 100 jenkins
 RUN mkdir -p /home/jenkins/.npm

@@ -27,5 +27,5 @@ describe('nx-global-sidebar', function() {
     await checkFullPageScreenshot();
   });
 
-  it('passes a11y checks', a11yTest());
+  it('passes a11y checks', a11yTest(null, true));
 });

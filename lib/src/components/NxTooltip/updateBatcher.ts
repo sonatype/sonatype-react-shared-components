@@ -9,12 +9,6 @@ import { unstable_batchedUpdates } from 'react-dom';
 
 type Queue = Array<() => void>;
 
-// requestIdleCallback is not available in Safari, so fallback to this simplified fake version there
-const requestIdleCallback = typeof window !== 'undefined' && window.requestIdleCallback ||
-  function fakeRequestIdleCallback(fn: () => void) {
-    setTimeout(fn, 0);
-  };
-
 const BATCH_SIZE = 100,
     MAX_WORK_TIME = 100; // max amount of time for work to wait in the queue before being dispatched, in ms
 
@@ -64,4 +58,14 @@ function execute(queue: Queue) {
       work();
     }
   });
+}
+
+function requestIdleCallback(fn: () => void) {
+  // requestIdleCallback is not available in Safari
+  if (typeof window !== 'undefined' && window.requestIdleCallback) {
+    window.requestIdleCallback(fn);
+  }
+  else {
+    setTimeout(fn, 0);
+  }
 }
