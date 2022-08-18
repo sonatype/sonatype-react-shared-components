@@ -45,7 +45,7 @@
     // of only showing the menu when something within the component has focus, because this means that the
     // component loses focus in the middle of the click, causing the menu to hide while the user is in the middle
     // of clicking, causing the click not to register at all. As a workaround, in Safari we remove the behavior
-    // where the menu is only visible when the compoent has focus.
+    // where the menu is only visible when the component has focus.
     @supports (overflow: -webkit-paged-x) {
       @include show-menu;
     }
