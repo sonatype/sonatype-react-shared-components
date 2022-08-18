@@ -45,16 +45,23 @@ const NxComboboxPage = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
+              <NxTable.Cell><NxCode>label</NxCode></NxTable.Cell>
+              <NxTable.Cell>string | ReactElement</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>The label for the text input's form group.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell><NxCode>searchText</NxCode></NxTable.Cell>
               <NxTable.Cell>string</NxTable.Cell>
-              <NxTable.Cell>true</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>The current value of the search box</NxTable.Cell>
+              <NxTable.Cell>The current value of the search input box.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onSearchTextChange</NxCode></NxTable.Cell>
               <NxTable.Cell>Function (string =&gt; void)</NxTable.Cell>
-              <NxTable.Cell>true</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Callback that fires when the user changes the search text. The handler passed in for this prop should
@@ -65,7 +72,7 @@ const NxComboboxPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onSearch</NxCode></NxTable.Cell>
               <NxTable.Cell>Function (string =&gt; void)</NxTable.Cell>
-              <NxTable.Cell>true</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Callback that fires when a new search query should be performed. The <em>trimmed</em> value of the
@@ -81,7 +88,7 @@ const NxComboboxPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>autoComplete</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 <NxCode>autoComplete</NxCode> will highlight the first matching item from the array of matches and
@@ -91,14 +98,14 @@ const NxComboboxPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>loading</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>Set to true when the search results are currently being loaded</NxTable.Cell>
+              <NxTable.Cell>Set to true when the search results are currently being loaded.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>error</NxCode></NxTable.Cell>
               <NxTable.Cell>ReactNode</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 If there is an error loading the search results, set the error message here to render an error
@@ -110,7 +117,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>
                 Array of objects containing an <NxCode>id</NxCode> and a <NxCode>displayName</NxCode>
               </NxTable.Cell>
-              <NxTable.Cell>true</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 The results of querying the current filter input value, which are to be displayed in the search
@@ -122,7 +129,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>
                 Function (match =&gt; void)
               </NxTable.Cell>
-              <NxTable.Cell>true</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 The callback function to execute when the user selects one of the matches from the dropdown menu.
@@ -132,37 +139,46 @@ const NxComboboxPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>long</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Whether to render a long variant of the search box and correspondingly the dropdown
+                Whether to render a long variant of the search box and correspondingly the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>short</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Whether to render a short variant of the search box and correspondingly the dropdown
+                Whether to render a short variant of the search box and correspondingly the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>disabled</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
                 When set, this prop disables the filter input and the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell><NxCode>isRequired</NxCode></NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                Whether the input is required or not. Also sets the <NxCode>aria-required</NxCode> prop on the child.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell><NxCode>emptyMessage</NxCode></NxTable.Cell>
               <NxTable.Cell>ReactNode</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>"No Results Found"</NxTable.Cell>
               <NxTable.Cell>
-                The text to display when the user performs a query for which no results are returned
+                The text to display when the user performs a query for which no results are returned.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -177,7 +193,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Props to apply to the textarea within the <NxCode>NxCombobox</NxCode>
+                Props to apply to the textarea within the <NxCode>NxCombobox</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>

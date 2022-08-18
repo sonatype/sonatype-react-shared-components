@@ -13,6 +13,7 @@ import './NxCombobox.scss';
 
 import forwardRef from '../../util/genericForwardRef';
 import { Props, propTypes } from './types';
+import NxFormGroup from '../NxFormGroup/NxFormGroup';
 import NxTextInput from '../NxTextInput/NxTextInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
@@ -40,6 +41,8 @@ function NxComboboxRender<T extends string | number = string>(
         emptyMessage,
         autoComplete,
         inputProps,
+        label,
+        isRequired,
         ...attrs
       } = props,
 
@@ -58,6 +61,7 @@ function NxComboboxRender<T extends string | number = string>(
 
       dropdownId = useUniqueId('nx-combobox-dropdown'),
       dropdownRole = error || loading || isEmpty ? 'alert' : 'listbox',
+      dropdownBtnId = useUniqueId('nx-dropdown-button'),
 
       inputClassName = classnames('nx-combobox__input', { 'nx-text-input--long': long,
         'nx-text-input--short': short }),
@@ -290,47 +294,50 @@ function NxComboboxRender<T extends string | number = string>(
          onBlur={handleComponentBlur}
          onMouseDown={handleMouseDown}
          { ...attrs }>
-      <NxTextInput role="combobox"
-                   ref={inputRef}
-                   isPristine
-                   {...inputProps}
-                   className={inputClassName}
-                   value={searchText}
-                   onChange={handleFilterChange}
-                   disabled={disabled || undefined}
-                   onKeyDown={handleKeyDown}
-                   aria-autocomplete={autoComplete ? 'both' : 'list'}
-                   aria-expanded={showDropdown}
-                   aria-controls={dropdownId}
-                   aria-activedescendant={elToFocusId}
-                  />
-      <NxDropdownMenu id={dropdownId}
-                      role={dropdownRole}
-                      ref={dropdownRef}
-                      className={dropdownClassName}
-                      onClosing={() => {}}
-                      aria-busy={!!loading}
-                      aria-live="polite"
-                      aria-hidden={!showDropdown}>
-        <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
-          {
-            matches.length ? matches.map((match, i) =>
-              <button id={`nx-dropdown-button-${i}`}
-                      role="option"
-                      aria-selected={i === focusableBtnIndex && !!elToFocusId}
-                      className= {classnames('nx-dropdown-button',
-                          { 'nx-combobox__option--visual-selected': i === focusableBtnIndex && !!elToFocusId})}
-                      tabIndex={-1}
-                      disabled={disabled || undefined}
-                      key={match.id}
-                      onClick={() => handleOnClick(match)}>
-                {match.displayName}
-              </button>
-            ) :
-            <div className="nx-combobox__empty-message">{emptyMessage || 'No Results Found'}</div>
-          }
-        </NxLoadWrapper>
-      </NxDropdownMenu>
+      <NxFormGroup label={label} isRequired={isRequired}>
+        <>
+          <NxTextInput role="combobox"
+                       ref={inputRef}
+                       isPristine
+                       {...inputProps}
+                       className={inputClassName}
+                       value={searchText}
+                       onChange={handleFilterChange}
+                       disabled={disabled || undefined}
+                       onKeyDown={handleKeyDown}
+                       aria-autocomplete={autoComplete ? 'both' : 'list'}
+                       aria-expanded={showDropdown}
+                       aria-controls={dropdownId}
+                       aria-activedescendant={elToFocusId}/>
+          <NxDropdownMenu id={dropdownId}
+                          role={dropdownRole}
+                          ref={dropdownRef}
+                          className={dropdownClassName}
+                          onClosing={() => {}}
+                          aria-busy={!!loading}
+                          aria-live="polite"
+                          aria-hidden={!showDropdown}>
+            <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
+              {
+                matches.length ? matches.map((match, i) =>
+                  <button id={`${dropdownBtnId}-${i}`}
+                          role="option"
+                          aria-selected={i === focusableBtnIndex && !!elToFocusId}
+                          className= {classnames('nx-dropdown-button',
+                              { 'nx-combobox__option--visual-selected': i === focusableBtnIndex && !!elToFocusId})}
+                          tabIndex={-1}
+                          disabled={disabled || undefined}
+                          key={match.id}
+                          onClick={() => handleOnClick(match)}>
+                    {match.displayName}
+                  </button>
+                ) :
+                <div className="nx-combobox__empty-message">{emptyMessage || 'No Results Found'}</div>
+              }
+            </NxLoadWrapper>
+          </NxDropdownMenu>
+        </>
+      </NxFormGroup>
     </div>
   );
 }

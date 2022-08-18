@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { NxCombobox, DataItem, NxFormGroup }
+import { NxCombobox, DataItem }
   from '@sonatype/react-shared-components';
 
 const array:string[] = ['Alabama', 'Alaska', 'Arizona', 'California', 'Colorado', 'Connecticut',
@@ -49,13 +49,12 @@ export default function NxComboboxPredeterminedListExample() {
   }
 
   return (
-    <NxFormGroup label="State">
-      <NxCombobox long
-                  matches={matches}
-                  searchText={query}
-                  onSearchTextChange={onSearchTextChange}
-                  onSearch={onSearch}
-                  onSelect={onSelect} />
-    </NxFormGroup>
+    <NxCombobox label="State"
+                long
+                matches={matches}
+                searchText={query}
+                onSearchTextChange={onSearchTextChange}
+                onSearch={onSearch}
+                onSelect={onSelect} />
   );
 }

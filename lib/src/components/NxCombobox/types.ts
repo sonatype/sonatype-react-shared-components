@@ -8,12 +8,15 @@ import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
 import { HTMLAttributes, ReactNode } from 'react';
 import { PublicProps as NxTextInputProps, propTypes as nxTextInputPropTypes } from '../NxTextInput/types';
+import { Props as NxFormGroupProps, propTypes as nxFormGroupPropTypes} from '../NxFormGroup/types';
 
 import DataItem from '../../util/DataItem';
 
 type InputProps = Omit<NxTextInputProps, 'type' | 'value' | 'isPristine' | 'readOnly'>;
 
 export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
+  label: NxFormGroupProps['label'];
+  isRequired?: NxFormGroupProps['isRequired'];
   searchText: string;
   onSearchTextChange: (s: string) => void;
   onSearch: (s: string) => void;
@@ -30,6 +33,8 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
 }
 
 export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
+  label: nxFormGroupPropTypes['label'],
+  isRequired: nxFormGroupPropTypes['isRequired'],
   loading: PropTypes.bool,
   error: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
