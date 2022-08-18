@@ -15,7 +15,7 @@ $-box-shadow-offset: 52px;
     opacity: 0;
   }
 
-  // This is required to fix jitter effect on Firefox and Safari
+  // This is required to fix jittering in Firefox and Safari
   // + not animating at all on Chrome.
   1% {
     transform: translateX(100%);
@@ -75,7 +75,7 @@ $-box-shadow-offset: 52px;
   width: 520px + $-box-shadow-offset;
   height: 100%;
 
-  z-index: 100;
+  z-index: var(--nx-z-index-drawer);
 
   &--narrow {
     width: 348px + $-box-shadow-offset;
@@ -83,6 +83,7 @@ $-box-shadow-offset: 52px;
 }
 
 .nx-drawer__animation-wrapper {
+  display: flex;
   backface-visibility: hidden;
   height: 100%;
 
@@ -131,6 +132,13 @@ $-box-shadow-offset: 52px;
     top: var(--nx-spacing-8x);
     z-index: -1;
   }
+
+  .nx-footer {
+    @include nx-container-helpers.container-vertical;
+  
+    border-top: 1px solid var(--nx-swatch-indigo-90);
+    height: min-content;
+  }  
 }
 
 .nx-drawer-header {
@@ -170,29 +178,15 @@ $-box-shadow-offset: 52px;
 }
 
 .nx-drawer-content {
-  @include nx-container-helpers.container-vertical;
-
   --nx-drawer-padding: var(--nx-spacing-6x);
 
-  flex-grow: 1;
-  overflow-y: auto;
-
-  margin-right: calc(0px - var(--nx-drawer-padding));
-  margin-left: calc(0px - var(--nx-drawer-padding));
-}
-
-.nx-drawer-footer {
   @include nx-container-helpers.container-vertical;
 
-  border-top: 1px solid var(--nx-swatch-indigo-90);
-  height: min-content;
-  padding-top: var(--nx-spacing-6x);
+  overflow: auto;
+
+  padding: var(--nx-spacing-6x);
+  
+  margin-right: calc(0px - var(--nx-drawer-padding));
+  margin-left: calc(0px - var(--nx-drawer-padding));
+  margin-bottom: calc(0px - var(--nx-drawer-padding));
 }
-
-// .nx-footer {
-//   @include nx-container-helpers.container-vertical;
-
-//   border-top: 1px solid var(--nx-swatch-indigo-90);
-//   height: min-content;
-//   padding-top: var(--nx-spacing-6x);
-// }

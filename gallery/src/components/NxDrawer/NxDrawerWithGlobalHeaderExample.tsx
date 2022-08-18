@@ -14,7 +14,8 @@ import {
   NxPageMain,
   NxPageTitle,
   NxH1,
-  NxFontAwesomeIcon
+  NxFontAwesomeIcon,
+  NxFooter
 } from '@sonatype/react-shared-components';
 
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -62,6 +63,14 @@ export default function NxDrawerWithGlobalHeaderExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
       </NxDrawer.Content>
+      <NxFooter>
+        <NxP>
+          Powder <strong>tiramisu</strong> gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa
+          I love dessert cake. Pie candy canes liquorice jelly beans sweet roll. Jelly candy donut cotton candy
+          halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
+          pie jelly-o cheesecake candy I love.
+        </NxP>
+      </NxFooter>
     </>
   );
 
@@ -73,15 +82,14 @@ export default function NxDrawerWithGlobalHeaderExample() {
           <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
         </div>
       </header>
-
       {showNarrowDrawer && (
-      <NxDrawer id="nx-drawer-with-global-header-narrow"
-                className="nx-drawer--with-global-header"
-                variant="narrow"
-                onCancel={() => setShowNarrowDrawer(false)}
-                aria-labelledby="nx-drawer-with-global-header-narrow">
-        {contentAndFooter}
-      </NxDrawer>
+        <NxDrawer id="nx-drawer-with-global-header-narrow"
+                  className="nx-drawer--with-global-header"
+                  variant="narrow"
+                  onCancel={() => setShowNarrowDrawer(false)}
+                  aria-labelledby="nx-drawer-with-global-header-narrow">
+          {contentAndFooter}
+        </NxDrawer>
       )}
       {showNormalDrawer && (
       <NxDrawer id="nx-drawer-with-global-header-normal"
