@@ -7,14 +7,17 @@
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-button-helpers';
+@use '../../scss-shared/nx-focus-border-helpers';
 
 .nx-accordion {
+  @include nx-focus-border-helpers.focus-transition;
   background: var(--nx-color-component-background);
   border-radius: var(--nx-border-radius);
   margin: var(--nx-spacing-4x) 0;
 }
 
 .nx-accordion__header {
+  @include nx-focus-border-helpers.focus-transition;
   // removes ::marker from FF
   list-style-type: none;
 
@@ -23,6 +26,7 @@
   }
 
   > .nx-accordion__summary-wrapper {
+    @include nx-focus-border-helpers.focus-transition;
     @include nx-container-helpers.container-horizontal;
     align-items: center;
     box-sizing: border-box;
@@ -44,6 +48,7 @@
   }
 
   &:focus {
+    @include nx-focus-border-helpers.focus-transition;
     outline: none;
 
     > .nx-accordion__summary-wrapper {

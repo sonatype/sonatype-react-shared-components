@@ -6,9 +6,11 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-focus-border-helpers';
 
 .nx-text-link {
   @include nx-container-helpers.container-horizontal;
+  @include nx-focus-border-helpers.focus-transition;
 
   color: var(--nx-color-link);
   cursor: pointer;

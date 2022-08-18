@@ -15,3 +15,7 @@
     height: calc(#{$height} + 6px);
     width: calc(#{$width} + 6px);
 }
+
+@mixin focus-transition() {
+    transition: box-shadow 0.25s, border 0.25s, outline 0.1s;
+}

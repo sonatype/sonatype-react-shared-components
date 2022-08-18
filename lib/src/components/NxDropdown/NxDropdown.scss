@@ -8,6 +8,7 @@
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-button-helpers';
 @use '../../scss-shared/nx-dropdown-variables';
+@use '../../scss-shared/nx-focus-border-helpers';
 
 .nx-dropdown {
   display: inline-block;
@@ -75,6 +76,7 @@
 .nx-dropdown-link, .nx-dropdown-button {
   @include nx-text-helpers.truncate-ellipsis;
   @include nx-text-helpers.regular;
+  @include nx-focus-border-helpers.focus-transition;
 
   background: none;
   box-sizing: border-box;

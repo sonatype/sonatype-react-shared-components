@@ -6,6 +6,7 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-focus-border-helpers';
 
 .nx-radio-checkbox {
   $max-width: 562px;
@@ -25,7 +26,7 @@
   width: calc(min(#{$max-width}, 100%));
   max-width: max-content;
   position: relative;
-
+  @include nx-focus-border-helpers.focus-transition;
   &:hover {
     cursor: pointer;
 
@@ -36,7 +37,9 @@
   }
 
   &:focus-within {
+    @include nx-focus-border-helpers.focus-transition;
     .nx-checkbox__box, .nx-radio__focus {
+      @include nx-focus-border-helpers.focus-transition;
       position: relative;
       &::after {
         border: 1px solid var(--nx-color-interactive-border-focus);
