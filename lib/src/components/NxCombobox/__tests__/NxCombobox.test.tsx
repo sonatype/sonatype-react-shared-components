@@ -14,7 +14,6 @@ import NxCombobox, {Props} from '../NxCombobox';
 
 describe('NxCombobox', function() {
   const minimalProps: Props<string | number> = {
-        label: '',
         searchText: '',
         onSearchTextChange: () => {},
         onSearch: () => {},
@@ -24,12 +23,12 @@ describe('NxCombobox', function() {
       rtlRender = rtlUtils.rtlRender(NxCombobox, minimalProps);
 
   it('renders a div with the nx-combobox class and the specified attributes', function() {
-    const { container } = rtlRender({ id: 'foo', title: 'bar' }),
+    const { container } = rtlRender({ title: 'bar' }),
         component = container.firstElementChild!;
 
     expect(component.tagName).toBe('DIV');
     expect(component).toHaveClass('nx-combobox');
-    expect(component).toHaveAttribute('id', 'foo');
+    expect(component).toHaveAttribute('title', 'bar');
   });
 
   it('adds the ref to the div', function() {
@@ -46,15 +45,6 @@ describe('NxCombobox', function() {
 
     expect(inputElement.tagName).toBe('INPUT');
     expect(inputElement).toHaveAttribute('role', 'combobox');
-  });
-
-  it('renders a label which has `for` attribute and refers to the input id', function() {
-    const { getByRole, container } = rtlRender({ label: 'State' }),
-        label = container.querySelector('label'),
-        inputElement = getByRole('combobox');
-
-    expect(label).toHaveTextContent('State');
-    expect(label).toHaveAttribute('for', inputElement.id);
   });
 
   it('sets the searchText as the value of the input', function() {

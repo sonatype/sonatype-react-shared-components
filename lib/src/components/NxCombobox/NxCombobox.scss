@@ -31,7 +31,6 @@
      .nx-combobox__menu {
        position: absolute;
        right: initial;
-       top: calc(var(--nx-spacing-20x) - var(--nx-spacing-2x));
 
        .nx-combobox__option--visual-selected {
         background-color: var(--nx-swatch-indigo-97);

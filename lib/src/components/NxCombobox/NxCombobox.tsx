@@ -19,7 +19,6 @@ import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import { useUniqueId } from '../../util/idUtil';
 import useMutationObserver from '@rooks/use-mutation-observer';
 import DataItem from '../../util/DataItem';
-import NxFormGroup from '../NxFormGroup/NxFormGroup';
 export { Props } from './types';
 
 function NxComboboxRender<T extends string | number = string>(
@@ -41,8 +40,8 @@ function NxComboboxRender<T extends string | number = string>(
         emptyMessage,
         autoComplete,
         inputProps,
-        label,
-        isRequired,
+        id,
+        'aria-required': attributes,
         ...attrs
       } = props,
 
@@ -59,6 +58,7 @@ function NxComboboxRender<T extends string | number = string>(
       [prevSearchText, setPrevSearchText] = useState(''),
       [showDropdown, setShowDropdown] = useState(false),
 
+      inputId = useUniqueId('nx-combobox-input', id),
       dropdownId = useUniqueId('nx-combobox-dropdown'),
       dropdownRole = error || loading || isEmpty ? 'alert' : 'listbox',
       dropdownBtnId = useUniqueId('nx-dropdown-button'),
@@ -294,21 +294,21 @@ function NxComboboxRender<T extends string | number = string>(
          onBlur={handleComponentBlur}
          onMouseDown={handleMouseDown}
          { ...attrs }>
-      <NxFormGroup label={label} isRequired={isRequired}>
-        <NxTextInput role="combobox"
-                     ref={inputRef}
-                     isPristine
-                     {...inputProps}
-                     className={inputClassName}
-                     value={searchText}
-                     onChange={handleFilterChange}
-                     disabled={disabled || undefined}
-                     onKeyDown={handleKeyDown}
-                     aria-autocomplete={autoComplete ? 'both' : 'list'}
-                     aria-expanded={showDropdown}
-                     aria-controls={dropdownId}
-                     aria-activedescendant={elToFocusId}/>
-      </NxFormGroup>
+      <NxTextInput role="combobox"
+                   ref={inputRef}
+                   id={inputId}
+                   isPristine
+                   {...inputProps}
+                   className={inputClassName}
+                   value={searchText}
+                   onChange={handleFilterChange}
+                   disabled={disabled || undefined}
+                   onKeyDown={handleKeyDown}
+                   aria-autocomplete={autoComplete ? 'both' : 'list'}
+                   aria-expanded={showDropdown}
+                   aria-controls={dropdownId}
+                   aria-activedescendant={elToFocusId}
+                   aria-required={attributes ?? undefined}/>
       <NxDropdownMenu id={dropdownId}
                       role={dropdownRole}
                       ref={dropdownRef}

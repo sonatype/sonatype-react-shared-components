@@ -8,22 +8,19 @@ import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
 import { HTMLAttributes, ReactNode } from 'react';
 import { PublicProps as NxTextInputProps, propTypes as nxTextInputPropTypes } from '../NxTextInput/types';
-import { Props as NxFormGroupProps, propTypes as nxFormGroupPropTypes} from '../NxFormGroup/types';
 
 import DataItem from '../../util/DataItem';
 
 type InputProps = Omit<NxTextInputProps, 'type' | 'value' | 'isPristine' | 'readOnly'>;
 
 export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
-  label: NxFormGroupProps['label'];
-  isRequired?: NxFormGroupProps['isRequired'];
   searchText: string;
-  onSearchTextChange: (s: string) => void;
-  onSearch: (s: string) => void;
   loading?: boolean | null;
   error?: ReactNode;
   matches: DataItem<T>[];
   onSelect: (m: DataItem<T>) => void;
+  onSearch: (s: string) => void;
+  onSearchTextChange: (s: string) => void;
   long?: boolean | null;
   short? : boolean | null;
   disabled?: boolean | null;
@@ -33,8 +30,7 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
 }
 
 export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
-  label: nxFormGroupPropTypes['label'],
-  isRequired: nxFormGroupPropTypes['isRequired'],
+  searchText: PropTypes.string.isRequired,
   loading: PropTypes.bool,
   error: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
@@ -43,6 +39,7 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   }).isRequired).isRequired,
   onSelect: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
   long: PropTypes.bool,
   short: PropTypes.bool,
   disabled: PropTypes.bool,
