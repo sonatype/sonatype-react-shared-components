@@ -13,7 +13,6 @@ import {
   NxGlobalSidebarNavigationLink,
   NxButton,
   NxButtonBar,
-  NxFontAwesomeIcon,
   NxBackButton,
   NxStatefulGlobalSidebar,
   NxPageMain,
@@ -31,11 +30,7 @@ import {
 import {
   faArrowLeft,
   faArrowRight,
-  faLink,
-  faQuestionCircle,
-  faBell,
-  faCog,
-  faUserCircle
+  faLink
 } from '@fortawesome/free-solid-svg-icons';
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
@@ -74,12 +69,6 @@ export default function NxToastFullPageVariationsExample() {
     <>
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Toast" targetPageTitle="Documentation" />
-        <div className="nx-global-header__actions">
-          <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
-          <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
-          <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
-          <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
-        </div>
       </header>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}

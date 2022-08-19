@@ -10,9 +10,11 @@ import { NxCode,
   NxTable,
   NxTile,
   NxH2,
+  NxH3,
   NxTextLink,
   NxStatefulAccordion,
-  NxAccordion
+  NxAccordion,
+  NxWarningAlert
 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
@@ -27,120 +29,101 @@ const NxToastPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        Toasts are rendered on the top right corner of the screen. RSC provides 4 different variations of
-        Toasts: success, warning, info, and error.
+        Toasts are rendered on the top right corner of the screen, and will remain in place until the user
+        dismisses them individually. Each toast renders one <NxCode>NxAlert</NxCode>, which comes in four
+        variations: Error, Info, Warning, and Success. To find out more about <NxCode>NxAlert</NxCode>, you
+        can review the documentation <NxTextLink href="#/pages/Alert">here</NxTextLink>.
       </NxP>
       <NxP>
-        Unlike all of the other React components provided by the RSC, the RSC toast component has a
-        slightly different API. While other components can simply be used directly by using the component
-        names, for example, using <NxCode>{'<NxList>'}</NxCode> to render a list or
-        using <NxCode>{'<NxAlert>'}</NxCode> to render an alert, the pattern for rendering
-        toasts is slightly different. Instead of using component names, the following functions are used
-        to display the different kinds of toasts:
+        Toasts generally fall under a ‘global and static’ context, in a sense that throughout the application,
+        toasts are rendered within the same container on the top right corner of the screen.
       </NxP>
-      <NxP>
-        <NxCode>showErrorToast()</NxCode> to render an error toast.
-      </NxP>
-      <NxP>
-        <NxCode>showSuccessToast()</NxCode> to render a success toast.
-      </NxP>
-      <NxP>
-        <NxCode>showWarningToast()</NxCode> to render a warning toast.
-      </NxP>
-      <NxP>
-        <NxCode>showInfoToast()</NxCode> to render an info toast.
-      </NxP>
-      <NxP>
-        Toasts generally fall under a 'global and static'
-        context, in a sense that throughout an application, toasts are rendered within the same
-        container on the top-right corner of the screen. Keeping this in mind, the most effective way of rendering
-        the toasts is to wrap the parent root React component with <NxCode>NxToastProvider</NxCode>.
-        RSC also provides a convenience React hook <NxCode>useToast</NxCode> that contains all of the functions
-        for rendering toasts. The <NxCode>useToast</NxCode> hook is used as follows:{' '}
-      </NxP>
-      <NxP>
-        <NxCode>
-          {'const { showErrorToast, showSuccessToast, showWarningToast, showInfoToast } = useToast();'}
-        </NxCode>
-      </NxP>
-      <NxP>
-        When these functions to display the various kinds of toasts are contained within the children of
-        {' '}<NxCode>NxToastProvider</NxCode>, all toasts are rendered within the same container in the same top-right
-        corner of the screen.
-      </NxP>
-      <NxTable>
-        <NxTable.Head>
-          <NxTable.Row>
-            <NxTable.Cell>Resource</NxTable.Cell>
-            <NxTable.Cell>Type</NxTable.Cell>
-            <NxTable.Cell>Required</NxTable.Cell>
-            <NxTable.Cell>Details</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Head>
-        <NxTable.Body>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>NxToastProvider</NxCode></NxTable.Cell>
-            <NxTable.Cell>React component</NxTable.Cell>
-            <NxTable.Cell>Yes</NxTable.Cell>
-            <NxTable.Cell>Component that wraps the parent root React component</NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>useToast</NxCode></NxTable.Cell>
-            <NxTable.Cell>React hook</NxTable.Cell>
-            <NxTable.Cell>Yes</NxTable.Cell>
-            <NxTable.Cell>Convenience React hook that provides functions to display toasts</NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>showErrorToast</NxCode></NxTable.Cell>
-            <NxTable.Cell>function</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Function to call in order to display an error toast. The function takes in a parameter of
-              type <NxCode>string</NxCode>, which is the message to be displayed on the toast.
-              For example: <NxCode>showErrorToast('Error. Please try again.');</NxCode>
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>showSuccessToast</NxCode></NxTable.Cell>
-            <NxTable.Cell>function</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Function to call in order to display a success toast. The function takes in a parameter of
-              type <NxCode>string</NxCode>, which is the message to be displayed on the toast.
-              For example: <NxCode>showSuccessToast('Account successfully created.');</NxCode>
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>showWarningToast</NxCode></NxTable.Cell>
-            <NxTable.Cell>function</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Function to call in order to display a warning toast. The function takes in a parameter of
-              type <NxCode>string</NxCode>, which is the message to be displayed on the toast.
-              For example: <NxCode>showWarningToast('Unauthorized access may be monitored.');</NxCode>
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell><NxCode>showInfoToast</NxCode></NxTable.Cell>
-            <NxTable.Cell>function</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Function to call in order to display an info toast. The function takes in a parameter of
-              type <NxCode>string</NxCode>, which is the message to be displayed on the toast.
-              For example: <NxCode>showInfoToast('Check permissions.');</NxCode>
-            </NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Body>
-      </NxTable>
+      <NxWarningAlert>
+        Note: In order to render toasts in the correct position, all toasts must be wrapped within the parent React
+        component <NxCode>NxToastContainer</NxCode>, which must be a direct child of <NxCode>NxPageMain</NxCode>.
+      </NxWarningAlert>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxToastContainer</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Resource</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>children</NxTable.Cell>
+              <NxTable.Cell>React Node</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                All <NxCode>NxToast</NxCode>s rendered within <NxCode>NxToastContainer</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxToast</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Resource</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>onClose</NxTable.Cell>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                A function that dismisses the toast when called. When the close button is clicked, this callback
+                will be fired.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>toastId</NxTable.Cell>
+              <NxTable.Cell>number</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                A unique numerical identifier for each toast that is used in the onClose callback to identify and
+                remove the correct toast from the page.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>children</NxTable.Cell>
+              <NxTable.Cell>React Element</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                A single <NxCode>NxAlert</NxCode>, or any of its four variations. Note that each
+                {' '}<NxCode>NxToast</NxCode> will only accept one <NxCode>NxAlert</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <NxTile>
       <NxTile.Header>
         <NxTile.HeaderTitle>
-          <NxH2>Toasts Used Without NxGlobalHeader Example</NxH2>
+          <NxH2>Toasts With Simple Page Layout Example</NxH2>
         </NxTile.HeaderTitle>
       </NxTile.Header>
       <NxTile.Content>
+        <NxP>
+          An simple full page layout example. Note that this layout does not have <NxCode>NxGlobalHeader</NxCode> and
+          therefore the toasts will be positioned in the top right corner of the screen.
+        </NxP>
         <NxP>
           <NxTextLink href="#/NxToastFullPageSimpleExample">
             Click here to navigate to the live example.
@@ -161,10 +144,15 @@ const NxToastPage = () =>
     <NxTile>
       <NxTile.Header>
         <NxTile.HeaderTitle>
-          <NxH2>Toasts Used With NxGlobalHeader Example</NxH2>
+          <NxH2>Toasts With Complex Page Layout Example</NxH2>
         </NxTile.HeaderTitle>
       </NxTile.Header>
       <NxTile.Content>
+        <NxP>
+          An complex full page layout example. With the inclusion of <NxCode>NxGlobalHeader</NxCode>, the toasts
+          will be positioned in the top right corner of the <NxCode>NxPageMain</NxCode>, underneath the the header.
+          Extra content is provided to be able to view the positioning of the toasts with scrolling behavior.
+        </NxP>
         <NxP>
           <NxTextLink href="#/NxToastFullPageVariationsExample">
             Click here to navigate to the live example.
