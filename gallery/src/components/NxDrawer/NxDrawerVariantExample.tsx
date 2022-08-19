@@ -20,7 +20,7 @@ import {
 
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
-export default function NxDrawerWithGlobalHeaderExample() {
+export default function NxDrawerVariantExample() {
   const [showNarrowDrawer, setShowNarrowDrawer] = useState(false);
   const [showNormalDrawer, setShowNormalDrawer] = useState(false);
 
@@ -83,8 +83,7 @@ export default function NxDrawerWithGlobalHeaderExample() {
         </div>
       </header>
       {showNarrowDrawer && (
-        <NxDrawer id="nx-drawer-with-global-header-narrow"
-                  className="nx-drawer--with-global-header"
+        <NxDrawer id="nx-drawer-variant-header-narrow"
                   variant="narrow"
                   onCancel={() => setShowNarrowDrawer(false)}
                   aria-labelledby="nx-drawer-with-global-header-narrow">
@@ -92,8 +91,7 @@ export default function NxDrawerWithGlobalHeaderExample() {
         </NxDrawer>
       )}
       {showNormalDrawer && (
-      <NxDrawer id="nx-drawer-with-global-header-normal"
-                className="nx-drawer--with-global-header"
+      <NxDrawer id="nx-drawer-variant-header-normal"
                 onCancel={() => setShowNormalDrawer(false)}
                 aria-labelledby="nx-drawer-with-global-header-normal">
         {contentAndFooter}
@@ -116,12 +114,12 @@ export default function NxDrawerWithGlobalHeaderExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-global-header-narrow-open-button" onClick={() => setShowNarrowDrawer(true)}>
+          <NxButton id="nx-drawer-variant-narrow-open-button" onClick={() => setShowNarrowDrawer(true)}>
             Open Drawer (Narrow)
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-global-header-normal-open-button" onClick={() => setShowNormalDrawer(true)}>
+          <NxButton id="nx-drawer-variant-normal-open-button" onClick={() => setShowNormalDrawer(true)}>
             Open Drawer (Normal)
           </NxButton>
         </NxP>

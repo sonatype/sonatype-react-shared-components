@@ -25,7 +25,7 @@ import NxDrawerEscExample from './NxDrawerEscExample';
 import NxDrawerWithNxFormExample from './NxDrawerWithNxFormExample';
 
 const NxDrawerSourceCode = require('./NxDrawerExample?raw');
-const NxDrawerWithGlobalHeaderSourceCode = require('./NxDrawerWithGlobalHeaderExample?raw');
+const NxDrawerVariantSourceCode = require('./NxDrawerVariantExample?raw');
 const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubtitleOrDescriptionExample?raw');
 const NxDrawerNarrowSourceCode = require('./NxDrawerNarrowExample?raw');
 const NxDrawerWithFooterSourceCode = require('./NxDrawerWithFooterExample?raw');
@@ -214,12 +214,12 @@ export default function NxDrawerPage() {
         An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxDrawer.Footer</NxCode>.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="NxDrawer With Global Header Example"
-                          id="nx-drawer-with-global-header-example"
-                          codeExamples={NxDrawerWithGlobalHeaderSourceCode}>
-        An example of a <NxCode>NxDrawer</NxCode> with a global header.
+      <GalleryExampleTile title="NxDrawer Variant Example"
+                          id="nx-drawer-variant-example"
+                          codeExamples={NxDrawerVariantSourceCode}>
+        An example of a <NxCode>NxDrawer</NxCode> with different variants.
         <br/>
-        <NxTextLink href="#/NxDrawerWithGlobalHeaderExample">
+        <NxTextLink href="#/NxDrawerVariantExample">
           Click here to navigate to the live example.
         </NxTextLink>
       </GalleryExampleTile>
@@ -236,9 +236,11 @@ export default function NxDrawerPage() {
 
       <GalleryExampleTile title="NxDrawer With NxForm Example"
                           id="nx-drawer-with-nx-form"
-                          liveExample={NxDrawerWithNxFormExample}
                           codeExamples={NxDrawerWithNxFormSourceCode}>
         An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxFrom</NxCode>.
+        <NxTextLink href="#/NxDrawerWithNxFormExample">
+          Click here to navigate to the live example.
+        </NxTextLink>
       </GalleryExampleTile>
     </>
   );
