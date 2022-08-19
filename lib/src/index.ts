@@ -325,3 +325,10 @@ export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemN
 export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
+
+export {
+  default as NxDescriptionList,
+  Props as NxDescriptionListProps,
+  ButtonItemProps as NxDescriptionListButtonItemProps,
+  LinkItemProps as NxDescriptionListLinkItemProps
+} from './components/NxDescriptionList/NxDescriptionList';
