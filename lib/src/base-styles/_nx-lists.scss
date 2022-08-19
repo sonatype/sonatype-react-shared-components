@@ -258,6 +258,7 @@
   }
 
   &, .nx-list__link, .nx-list__btn {
+    color: inherit;
     cursor: pointer;
 
     &.selected {
@@ -265,10 +266,6 @@
         background-color: var(--nx-color-interactive-background-selected);
       }
     }
-  }
-
-  .nx-list__link {
-    color: inherit;
   }
 }
 
