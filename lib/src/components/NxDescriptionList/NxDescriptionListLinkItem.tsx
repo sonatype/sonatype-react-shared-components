@@ -30,6 +30,7 @@ const NxDescriptionListLinkItem = forwardRef<HTMLDivElement, LinkItemProps>(
           linkClassNames = classnames('nx-list__link', anchorClassName, { selected, disabled }),
           isDisabled = includesDisabledClass(linkClassNames),
           divClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className, {
+            selected,
             disabled: isDisabled
           }),
           descriptionId = useUniqueId('nx-list-description');

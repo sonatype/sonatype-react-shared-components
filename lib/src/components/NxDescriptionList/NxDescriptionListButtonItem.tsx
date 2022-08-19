@@ -30,6 +30,7 @@ const NxDescriptionListButtonItem = forwardRef<HTMLDivElement, ButtonItemProps>(
           buttonClassNames = classnames('nx-list__btn', buttonClassName, { selected, disabled }),
           isDisabled = includesDisabledClass(buttonClassNames),
           divClassNames = classnames('nx-list__item', 'nx-list__item--clickable', className, {
+            selected,
             disabled: isDisabled
           }),
           descriptionId = useUniqueId('nx-list-description');
