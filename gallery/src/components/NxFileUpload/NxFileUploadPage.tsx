@@ -67,7 +67,7 @@ const NxTextInputPage = () =>
                 A callback which is called whenever the user changes their file selection. The new selection,
                 in the form of a <NxCode>FileList</NxCode>, is passed as the parameter. If the user has cleared their
                 selection, the callback will receive <NxCode>null</NxCode>. Otherwise, the <NxCode>FileList</NxCode>
-                will always contain a single <NxCode>File</NxCode>.
+                {' '}will always contain a single <NxCode>File</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -149,7 +149,7 @@ const NxTextInputPage = () =>
           Like <NxCode>NxTextInput</NxCode>, <NxCode>NxFileUpload</NxCode> comes with helper functions to more
           conveniently manage its state. In this case, these helpers only manage the <NxCode>files</NxCode>
           and <NxCode>isPristine</NxCode> props – validation is not supported other than required value
-          validation, which the component handles internally. The helper functions are availble on
+          validation, which the component handles internally. The helper functions are available on
           the <NxCode>nxFileUploadStateHelpers</NxCode> export. Use of these helpers is not necessary
           on non-required file uploads, as the <NxCode>isPristine</NxCode> flag is not used there.
         </NxP>

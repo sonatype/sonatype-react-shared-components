@@ -19,7 +19,7 @@ const NxTextInputPage = () =>
       <NxP>
         <NxCode>NxStatefulFileUpload</NxCode> is a stateful version of <NxCode>NxFileUpload</NxCode>.
         It tracks the selected file and pristine state internally while still exposing an <NxCode>onChange</NxCode>
-        prop which can be used to communicate the selected file to surrounding code.
+        {' '}prop which can be used to communicate the selected file to surrounding code.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
