@@ -242,12 +242,12 @@
         cursor: default;
       }
 
-      > .nx-chevron {
+      .nx-chevron {
         display: none;
       }
     }
 
-    > .nx-chevron {
+    .nx-chevron {
       align-self: center;
       color: var(--nx-color-text-dark);
       grid-area: actions;
