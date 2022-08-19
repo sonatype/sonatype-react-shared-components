@@ -28,10 +28,26 @@
     text-align: center;
   }
 
-  &--dropdown-showable:focus-within {
-    .nx-search-dropdown__menu {
-      position: absolute;
-      right: initial;
+  &--dropdown-showable {
+    @mixin show-menu {
+      .nx-search-dropdown__menu {
+        position: absolute;
+        right: initial;
+      }
+    }
+
+    &:focus-within {
+      @include show-menu;
+    }
+
+    // Hack to detect Safari. In Safari, focus seems to be intended to strictly be a keyboard nav thing,
+    // and when you click a button, focus does NOT go to that button, it goes to the <body>. This messes up our idea
+    // of only showing the menu when something within the component has focus, because this means that the
+    // component loses focus in the middle of the click, causing the menu to hide while the user is in the middle
+    // of clicking, causing the click not to register at all. As a workaround, in Safari we remove the behavior
+    // where the menu is only visible when the component has focus.
+    @supports (overflow: -webkit-paged-x) {
+      @include show-menu;
     }
   }
 
