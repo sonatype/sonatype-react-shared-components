@@ -337,6 +337,23 @@ describe('NxCombobox', function() {
       expect(optionBtns[0]).toHaveAttribute('aria-selected', 'true');
     });
 
+    it('should move visual focus to the next option if dropdown is open' +
+      'and the down arrow key is pressed', async function() {
+      const { getByRole, getAllByRole } = rtlRender({
+            matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
+          inputElement = getByRole('combobox');
+
+      inputElement.focus();
+      await userEvent.keyboard('[ArrowDown]');
+      const firstOptBtn = getAllByRole('option')[0],
+          secondOptBtn = getAllByRole('option')[1];
+
+      expect(firstOptBtn).toHaveAttribute('aria-selected', 'true');
+      await userEvent.keyboard('[ArrowDown]');
+      expect(firstOptBtn).toHaveAttribute('aria-selected', 'false');
+      expect(secondOptBtn).toHaveAttribute('aria-selected', 'true');
+    });
+
     it('should open dropdown and move visual focus to the last option if dropdown is closed' +
       'and there are matches when up arrow key is pressed', async function() {
       const { getByRole, getAllByRole, container} = rtlRender({
@@ -350,6 +367,23 @@ describe('NxCombobox', function() {
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'false');
       const optionBtns = getAllByRole('option');
       expect(optionBtns[1]).toHaveAttribute('aria-selected', 'true');
+    });
+
+    it('should move visual focus to the previous option if dropdown is open' +
+      'and the up arrow key is pressed', async function() {
+      const { getByRole, getAllByRole } = rtlRender({
+            matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
+          inputElement = getByRole('combobox');
+
+      inputElement.focus();
+      await userEvent.keyboard('[ArrowUp]');
+      const firstOptBtn = getAllByRole('option')[0],
+          secondOptBtn = getAllByRole('option')[1];
+
+      expect(secondOptBtn).toHaveAttribute('aria-selected', 'true');
+      await userEvent.keyboard('[ArrowUp]');
+      expect(secondOptBtn).toHaveAttribute('aria-selected', 'false');
+      expect(firstOptBtn).toHaveAttribute('aria-selected', 'true');
     });
 
     it('should close dropdown when Escape key is pressed', async function() {

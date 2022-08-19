@@ -45,13 +45,6 @@ const NxComboboxPage = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>label</NxCode></NxTable.Cell>
-              <NxTable.Cell>string | ReactElement</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>The label for the text input's form group.</NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
               <NxTable.Cell><NxCode>searchText</NxCode></NxTable.Cell>
               <NxTable.Cell>string</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
@@ -164,15 +157,6 @@ const NxComboboxPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>isRequired</NxCode></NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>
-                Whether the input is required or not. Also sets the <NxCode>aria-required</NxCode> prop on the child.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
               <NxTable.Cell><NxCode>emptyMessage</NxCode></NxTable.Cell>
               <NxTable.Cell>ReactNode</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
@@ -182,7 +166,7 @@ const NxComboboxPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell>inputProps</NxTable.Cell>
+              <NxTable.Cell><NxCode>inputProps</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 Props for <NxCode>NxTextInput</NxCode> except
                 for <NxCode>type</NxCode>,{' '}
@@ -237,7 +221,8 @@ const NxComboboxPage = () =>
                         id="nx-combobox-non-emptiness-example"
                         codeExamples={NxComboboxValidationExampleCode}
                         liveExample={NxComboboxValidationExample}>
-      An example of an <NxCode>NxCombobox</NxCode> that validates that its contents are non-empty.
+      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>short</NxCode> that validates that its contents
+      are non-empty.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Backend Query Example"
