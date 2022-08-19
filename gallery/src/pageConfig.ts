@@ -147,6 +147,7 @@ import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSide
 import NxToastPage from './components/NxToast/NxToastPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
+import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -226,6 +227,7 @@ const pageConfig: PageConfig = {
   'Data Presentation': {
     'Binary Donut Chart': { content: NxBinaryDonutChartPage, type: 'react' },
     'Collapsible Items': { content: NxCollapsibleItemsPage, type: 'react' },
+    'Description List': { content: NxDescriptionListPage, type: 'react' },
     'List': { content: NxListPageV2, type: 'react' },
     'Table': { content: NxTablePage, type: 'react' },
     'Table Container': { content: NxTableContainerPage, type: 'html' },

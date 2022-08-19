@@ -330,3 +330,10 @@ export { default as NxToast } from './components/NxToast/NxToast';
 // export { default as useToast } from './util/useToast';
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
+
+export {
+  default as NxDescriptionList,
+  Props as NxDescriptionListProps,
+  ButtonItemProps as NxDescriptionListButtonItemProps,
+  LinkItemProps as NxDescriptionListLinkItemProps
+} from './components/NxDescriptionList/NxDescriptionList';
