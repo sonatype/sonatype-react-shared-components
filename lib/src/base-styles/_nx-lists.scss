@@ -13,6 +13,10 @@
   overflow-wrap: anywhere;
   padding: 0;
 
+  // focused rows get a higher z-index; make a stacking context for them
+  position: relative;
+  z-index: 0;
+
   &, > ul, > ol {
     list-style: none;
   }
@@ -216,10 +220,12 @@
       background-color: var(--nx-color-interactive-background-active);
     }
 
-    &:focus {
+    &:focus, &:focus-within {
       box-shadow: var(--nx-box-shadow-focus);
       border-color: var(--nx-color-interactive-border-focus);
       outline: none;
+      position: relative;
+      z-index: 1;
     }
 
     &.nx-list__item--empty {
