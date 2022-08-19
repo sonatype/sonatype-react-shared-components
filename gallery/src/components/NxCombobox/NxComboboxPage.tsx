@@ -49,7 +49,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>string</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>The current value of the search input box.</NxTable.Cell>
+              <NxTable.Cell>The current value of the text input box.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onSearchTextChange</NxCode></NxTable.Cell>
@@ -69,13 +69,11 @@ const NxComboboxPage = () =>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Callback that fires when a new search query should be performed. The <em>trimmed</em> value of the
-                filter text is passed as an argument. This callback is executed whenever the user changes
-                the trimmed value of the filter input, whenever the error alert's Retry button is clicked, and whenever
+                text input is passed as an argument. This callback is executed whenever the user changes
+                the trimmed value of the text input, whenever the error alert's Retry button is clicked, and whenever
                 the component gains focus while in an error state (which is intended to automatically trigger a retry
                 attempt). The handler passed in for this prop should, in addition to performing the search, update
                 the <NxCode>loading</NxCode> prop. The handler receives the new search text value as its argument.
-                If the search string is the empty string, this callback <em>should</em> clear
-                the <NxCode>matches</NxCode>, <NxCode>loading</NxCode>, and <NxCode>error</NxCode> props.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -113,7 +111,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                The results of querying the current filter input value, which are to be displayed in the search
+                The results of querying the current text input value, which are to be displayed in the
                 dropdown for user selection.
               </NxTable.Cell>
             </NxTable.Row>
@@ -135,7 +133,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Whether to render a long variant of the search box and correspondingly the dropdown.
+                Whether to render a long variant of the text input box and correspondingly the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -144,7 +142,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Whether to render a short variant of the search box and correspondingly the dropdown.
+                Whether to render a short variant of the text input box and correspondingly the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -153,7 +151,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                When set, this prop disables the filter input and the dropdown.
+                When set, this prop disables the text input input and the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -177,7 +175,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Props to apply to the textarea within the <NxCode>NxCombobox</NxCode>.
+                Props to apply to the text input within the <NxCode>NxCombobox</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -213,16 +211,16 @@ const NxComboboxPage = () =>
                         id="nx-combobox-basic-example"
                         codeExamples={NxComboboxPredeterminedListExampleCode}
                         liveExample={NxComboboxPredeterminedListExample}>
-      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>long</NxCode> prop tied to a provided list of
-      options to select from.
+      An example of an <NxCode>NxCombobox</NxCode> tied to a provided list of options to select from and
+      with a <NxCode>long</NxCode> prop to make it wider.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Non-emptiness Validation Example"
                         id="nx-combobox-non-emptiness-example"
                         codeExamples={NxComboboxValidationExampleCode}
                         liveExample={NxComboboxValidationExample}>
-      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>short</NxCode> that validates that its contents
-      are non-empty.
+      An example of an <NxCode>NxCombobox</NxCode> that validates that its contents are non-empty and
+      with a <NxCode>short</NxCode> prop to make it narrower.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Backend Query Example"

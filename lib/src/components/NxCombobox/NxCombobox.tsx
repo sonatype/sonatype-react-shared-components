@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FocusEvent, KeyboardEvent, MouseEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
-import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
 import { always, any, clamp, dec, inc, pipe, prop } from 'ramda';
 
@@ -23,7 +22,7 @@ export { Props } from './types';
 
 function NxComboboxRender<T extends string | number = string>(
   props: Props<T>,
-  externalRef: Ref<HTMLDivElement>
+  ref: Ref<HTMLDivElement>
 ) {
   const {
         className: classNameProp,
@@ -41,14 +40,13 @@ function NxComboboxRender<T extends string | number = string>(
         autoComplete,
         inputProps,
         id,
-        'aria-required': attributes,
+        'aria-required': ariaRequired,
+        'aria-describedby': ariaDescribedBy,
         ...attrs
       } = props,
 
       isEmpty = !matches.length,
 
-      ref = useRef<HTMLDivElement>(null),
-      mergedRef = useMergedRef(externalRef, ref),
       dropdownRef = useRef<HTMLDivElement>(null),
       inputRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
@@ -288,7 +286,7 @@ function NxComboboxRender<T extends string | number = string>(
 
   return (
     /*eslint-disable-next-line jsx-a11y/no-static-element-interactions*/
-    <div ref={mergedRef}
+    <div ref={ref}
          className={className}
          onFocus={handleComponentFocus}
          onBlur={handleComponentBlur}
@@ -308,7 +306,8 @@ function NxComboboxRender<T extends string | number = string>(
                    aria-expanded={showDropdown}
                    aria-controls={dropdownId}
                    aria-activedescendant={elToFocusId}
-                   aria-required={attributes ?? undefined}/>
+                   aria-required={ariaRequired ?? undefined}
+                   aria-describedby={ariaDescribedBy ?? undefined}/>
       <NxDropdownMenu id={dropdownId}
                       role={dropdownRole}
                       ref={dropdownRef}

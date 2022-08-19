@@ -19,6 +19,7 @@ import {
   NxCollapsibleMultiSelect,
   NxCollapsibleRadioSelect,
   NxColorPicker,
+  NxCombobox,
   NxDateInput,
   NxDropdown,
   NxErrorAlert,
@@ -351,6 +352,11 @@ const Home: NextPage = () => {
                           options={[{ id: 'a', displayName: 'b' }]}
                           selectedIds={new Set(['a'])}
                           onChange={noop} />
+        <NxCombobox searchText=""
+                    onSelect={noop}
+                    onSearchTextChange={noop}
+                    onSearch={noop}
+                    matches={[]}/>
       </NxPageMain>
     </div>
   )
