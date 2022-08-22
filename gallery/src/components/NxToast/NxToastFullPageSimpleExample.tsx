@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, {ReactNode} from 'react';
 import { useState } from 'react';
 import {reject, propEq} from 'ramda';
 import {
@@ -35,11 +35,11 @@ import {
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
-type ToastTypes = 'success' | 'error' | 'info' | 'warning';
+// type ToastAlertTypes = 'success' | 'error' | 'info' | 'warning';
 
 interface ToastModel {
   id: number;
-  type: ToastTypes;
+  alert: ReactNode;
   message: string;
 }
 
@@ -47,23 +47,23 @@ export default function NxToastFullPageSimpleExample() {
   const [toastIdInc, setToastIdInc] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
-  const addToast = (type: ToastTypes, message: string) => {
+  const addToast = (alert:ReactNode, message: string) => {
     const toastId = toastIdInc + 1;
     setToastIdInc(toastId);
     setToasts([
-      { id: toastId, type, message },
+      { id: toastId, alert, message },
       ...toasts
     ]);
   };
 
   const removeToast = (id: number) => setToasts(reject(propEq('id', id), toasts));
 
-  const toastAlertMap = {
-    'success': NxSuccessAlert,
-    'error': NxErrorAlert,
-    'info': NxInfoAlert,
-    'warning': NxWarningAlert
-  };
+  // const toastAlertMap = {
+  //   'success': NxSuccessAlert,
+  //   'error': NxErrorAlert,
+  //   'info': NxInfoAlert,
+  //   'warning': NxWarningAlert
+  // };
 
   return (
     <>
@@ -80,8 +80,8 @@ export default function NxToastFullPageSimpleExample() {
       <NxPageMain>
         <NxToastContainer>
           {
-            toasts.map(({ id, type, message }) => {
-              const ToastAlert = toastAlertMap[type];
+            toasts.map(({ id, alert, message }) => {
+              const ToastAlert = alert;
               return (
                 <NxToast key={id}
                          onClose={()=> removeToast(id)}>
@@ -99,16 +99,16 @@ export default function NxToastFullPageSimpleExample() {
           <NxTile.Content>
             <NxP> Not too much, not too little, just right.</NxP>
             <NxButtonBar>
-              <NxButton type="button" onClick={() => addToast('info', 'Informational Stuff')}>
+              <NxButton type="button" onClick={() => addToast(NxInfoAlert, 'Informational Stuff')}>
                 Open Info Toast
               </NxButton>
-              <NxButton type="button" onClick={() => addToast('success', 'Success!')}>
+              <NxButton type="button" onClick={() => addToast(NxSuccessAlert, 'Success!')}>
                 Open Sucess Toast
               </NxButton>
-              <NxButton type="button" onClick={() => addToast('error', 'Something went wrong!')}>
+              <NxButton type="button" onClick={() => addToast(NxErrorAlert, 'Something went wrong!')}>
                 Open Error Toast
               </NxButton>
-              <NxButton type="button" onClick={() => addToast('warning', 'Warning!')}>
+              <NxButton type="button" onClick={() => addToast(NxWarningAlert, 'Warning!')}>
                 Open Warning Toast
               </NxButton>
             </NxButtonBar>
