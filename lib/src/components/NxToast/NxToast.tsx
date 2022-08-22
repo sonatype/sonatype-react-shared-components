@@ -26,7 +26,7 @@ const NxToast = (props: NxToastProps) => {
   const handleClose = () => {
     if (!isClosing) {
       setIsClosing(true);
-      toastContainerContextValue?.onToastClosing(ref.current);
+      toastContainerContextValue.onToastClosing(ref.current);
     }
   };
 

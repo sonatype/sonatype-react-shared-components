@@ -8,6 +8,6 @@ import { createContext } from 'react';
 
 import { NxToastContainerContextType } from './types';
 
-const NxToastContainerContext = createContext<NxToastContainerContextType | null>(null);
+const NxToastContainerContext = createContext<NxToastContainerContextType>({ onToastClosing: () => {} });
 
 export default NxToastContainerContext;
