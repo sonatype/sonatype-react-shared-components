@@ -209,7 +209,7 @@ function NxComboboxRender<T extends string | number = string>(
   }, [matches]);
 
   // If the dropdown is closed and use arrowkeys to navigate back to the items in the dropdown menu,
-  // the ref will fire before state is updated, this will insure the items have visual focus and it's inview.
+  // the ref will fire before state is updated, this will ensure the items have visual focus and it's in view.
   useEffect(function() {
     if (elToFocusId && typeof focusableBtnIndex === 'number') {
       const el = dropdownRef.current?.children[focusableBtnIndex] as HTMLElement | null;
