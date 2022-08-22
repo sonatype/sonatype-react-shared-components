@@ -9,13 +9,16 @@ import { filter, map, prepend, range } from 'ramda';
 import { NxCombobox, DataItem, NxFormGroup }
   from '@sonatype/react-shared-components';
 
-const array:string[] = ['Alabama', 'Alaska', 'Arizona', 'California', 'Colorado', 'Connecticut',
-  'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Kansas', 'Maryalnd', 'Michigan', 'Nevada',
-  'New York', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'Texas', 'Virginia', 'Wisconsin', 'Wyoming'];
+const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
+'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+'Maine', 'Maryland', 'Massachusetts','Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska',
+'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
+'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
+'Vermont', 'Virginia', 'Washington', 'Washington DC', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 const items = prepend(
     { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
-    map(i => ({ id: i, displayName: array[i - 1] }), range(1, array.length + 1)));
+    map(i => ({ id: i, displayName: states[i - 1] }), range(1, states.length + 1)));
 
 function search(query: string):DataItem<number>[] {
   const lowercaseQuery = query.toLowerCase(),

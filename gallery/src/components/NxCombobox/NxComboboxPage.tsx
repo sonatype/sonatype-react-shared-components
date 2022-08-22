@@ -25,9 +25,9 @@ const NxComboboxPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A search text input that shows matching results in a dropdown for the user to select.
-        {' '}<NxCode>NxCombobox</NxCode> can be used when the search requires a backend query,
-        or with a provided list of options.
+        An editable text input with an associated dropdown that allows users to type a value and select a value for
+        the combobox from a collection of possible values. It can be used when the search requires a backend query, or
+        with a provided list of options.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -175,7 +175,9 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Props to apply to the text input within the <NxCode>NxCombobox</NxCode>.
+                Props to apply to the text input within the <NxCode>NxCombobox</NxCode>. For accessibility reasons,
+                the <NxCode>id</NxCode>, <NxCode>aria-required</NxCode> and <NxCode>aria-describedby</NxCode> attributes
+                are applied to the <NxCode>&lt;input&gt;</NxCode> instead of <NxCode>&lt;div&gt;</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
