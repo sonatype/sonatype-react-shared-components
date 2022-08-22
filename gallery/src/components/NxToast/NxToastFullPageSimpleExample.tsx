@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {ReactNode} from 'react';
+import React, { ComponentType } from 'react';
 import { useState } from 'react';
 import {reject, propEq} from 'ramda';
 import {
@@ -35,11 +35,9 @@ import {
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
-// type ToastAlertTypes = 'success' | 'error' | 'info' | 'warning';
-
 interface ToastModel {
   id: number;
-  alert: ReactNode;
+  alertComponent: ComponentType;
   message: string;
 }
 
@@ -47,23 +45,16 @@ export default function NxToastFullPageSimpleExample() {
   const [toastIdInc, setToastIdInc] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
-  const addToast = (alert:ReactNode, message: string) => {
+  const addToast = (alertComponent: ComponentType, message: string) => {
     const toastId = toastIdInc + 1;
     setToastIdInc(toastId);
     setToasts([
-      { id: toastId, alert, message },
+      { id: toastId, alertComponent, message },
       ...toasts
     ]);
   };
 
   const removeToast = (id: number) => setToasts(reject(propEq('id', id), toasts));
-
-  // const toastAlertMap = {
-  //   'success': NxSuccessAlert,
-  //   'error': NxErrorAlert,
-  //   'info': NxInfoAlert,
-  //   'warning': NxWarningAlert
-  // };
 
   return (
     <>
@@ -80,8 +71,8 @@ export default function NxToastFullPageSimpleExample() {
       <NxPageMain>
         <NxToastContainer>
           {
-            toasts.map(({ id, alert, message }) => {
-              const ToastAlert = alert;
+            toasts.map(({ id, alertComponent, message }) => {
+              const ToastAlert = alertComponent;
               return (
                 <NxToast key={id}
                          onClose={()=> removeToast(id)}>
