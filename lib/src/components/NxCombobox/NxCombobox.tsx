@@ -62,7 +62,8 @@ function NxComboboxRender<T extends string | number = string>(
       dropdownBtnId = useUniqueId('nx-dropdown-button'),
 
       inputClassName = classnames('nx-combobox__input', { 'nx-text-input--long': long,
-        'nx-text-input--short': short }),
+        'nx-text-input--short': short
+      }),
       className = classnames('nx-combobox', classNameProp, {
         'nx-combobox--dropdown-showable': showDropdown
       }),
