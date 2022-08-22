@@ -9,24 +9,24 @@
  .nx-combobox {
    display: inline-block;
    position: relative;
- 
+
    &__menu {
      position: fixed;
      right: 100%;
      width: 100%;
- 
+
      &--error {
        padding: 0;
      }
    }
- 
+
    &__empty-message {
      @include nx-container-helpers.container-horizontal;
  
      padding: var(--nx-spacing-base) var(--nx-spacing-4x);
      text-align: center;
    }
- 
+
    &--dropdown-showable{
      .nx-combobox__menu {
        position: absolute;
@@ -37,11 +37,10 @@
        }
      }
    }
- 
+
    .nx-loading-spinner {
      padding-top: var(--nx-spacing-6x);
      padding-bottom: var(--nx-spacing-6x);
      text-align: center;
    }
  }
- 
