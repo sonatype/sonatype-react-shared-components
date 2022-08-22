@@ -37,7 +37,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
     const currentFocusedElement = document.activeElement as HTMLElement;
 
     if (!ref.current?.contains(currentFocusedElement)) {
-      activeElementNotToast.current = document.activeElement as HTMLElement;
+      activeElementNotToast.current = currentFocusedElement;
     }
   };
 
