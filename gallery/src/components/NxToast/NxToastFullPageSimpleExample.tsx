@@ -84,7 +84,6 @@ export default function NxToastFullPageSimpleExample() {
               const ToastAlert = toastAlertMap[type];
               return (
                 <NxToast key={id}
-                         toastId={id}
                          onClose={()=> removeToast(id)}>
                   <ToastAlert>{message}</ToastAlert>
                 </NxToast>

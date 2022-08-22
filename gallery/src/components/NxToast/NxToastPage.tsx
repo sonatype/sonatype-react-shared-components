@@ -91,21 +91,15 @@ const NxToastPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell>toastId</NxTable.Cell>
-              <NxTable.Cell>number</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
-              <NxTable.Cell>
-                A unique numerical identifier for each toast that is used in the onClose callback to identify and
-                remove the correct toast from the page.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
               <NxTable.Cell>children</NxTable.Cell>
               <NxTable.Cell>React Element</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
                 A single <NxCode>NxAlert</NxCode>, or any of its four variations. Note that each
-                {' '}<NxCode>NxToast</NxCode> will only accept one <NxCode>NxAlert</NxCode>.
+                {' '}<NxCode>NxToast</NxCode> will only accept one <NxCode>NxAlert</NxCode>, and that the alert's
+                given message should only be one line long. Constructing a wrapping element for the
+                {' '}<NxCode>NxAlert</NxCode> which accepts the <NxCode>onClose</NxCode> handler function may also
+                be used in lieu of an <NxCode>NxToast</NxCode> component as well.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
