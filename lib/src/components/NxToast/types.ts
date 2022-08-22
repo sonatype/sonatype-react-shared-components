@@ -17,7 +17,6 @@ export const propTypes = {
 export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
   onClose: PropTypes.func.isRequired,
   children: PropTypes.any.isRequired,
-  previousFocusedElement: PropTypes.any
 };
 
 export interface NxToastProps {
