@@ -22,7 +22,6 @@ export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
 export interface NxToastProps {
   onClose: () => void;
   children: ReactElement;
-  previousFocusedElement?: ReactNode;
 }
 
 export type NxToastContainerContextType = {
