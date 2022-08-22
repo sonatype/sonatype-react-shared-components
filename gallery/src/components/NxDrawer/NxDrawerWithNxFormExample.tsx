@@ -62,38 +62,31 @@ export default function NxDrawerWithNxFormExample() {
             <NxDrawer.Header.Subtitle>Hello</NxDrawer.Header.Subtitle>
             <NxDrawer.Header.Description>Hello</NxDrawer.Header.Description>
           </NxDrawer.Header>
-          <NxDrawer.Content>
-            <NxForm className="nx-form"
-                    onSubmit={() => setShowDrawer(false)}
-                    onCancel={() => setShowDrawer(false)}>
-              <header className="nx-drawer-header">
-                <h2 className="nx-h2" id="drawer-form-header">
-                  <NxFontAwesomeIcon icon={faAngry} />
-                  <span>NxDrawer header with form content</span>
-                </h2>
-              </header>
-              <div className="nx-drawer-content">
-                <NxFormGroup label="Username" isRequired>
-                  <NxTextInput aria-required={true}
-                               placeholder="Username"
-                               onChange={onUsernameChange}
-                               { ...usernameState } />
-                </NxFormGroup>
-                <NxFormGroup label="Password" isRequired>
-                  <NxTextInput type="password"
-                               aria-required={true}
-                               placeholder="Password"
-                               onChange={onPasswordChange}
-                               { ...passwordState } />
-                </NxFormGroup>
-                <NxFieldset label="Colors" isRequired>
-                  <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
-                  <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
-                  <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
-                </NxFieldset>
-              </div>
-            </NxForm>
-          </NxDrawer.Content>
+
+          <NxForm className="nx-form"
+                  onSubmit={() => setShowDrawer(false)}
+                  onCancel={() => setShowDrawer(false)}>
+            <NxDrawer.Content>
+              <NxFormGroup label="Username" isRequired>
+                <NxTextInput aria-required={true}
+                             placeholder="Username"
+                             onChange={onUsernameChange}
+                             { ...usernameState } />
+              </NxFormGroup>
+              <NxFormGroup label="Password" isRequired>
+                <NxTextInput type="password"
+                             aria-required={true}
+                             placeholder="Password"
+                             onChange={onPasswordChange}
+                             { ...passwordState } />
+              </NxFormGroup>
+              <NxFieldset label="Colors" isRequired>
+                <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+                <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+                <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
+              </NxFieldset>
+            </NxDrawer.Content>
+          </NxForm>
         </NxDrawer>
       )}
 

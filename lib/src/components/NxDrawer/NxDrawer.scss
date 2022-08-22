@@ -160,12 +160,12 @@ $-box-shadow-offset: 52px;
 
   &__subtitle {
     grid-area: subtitle;
-    margin-top: var(--nx-spacing-2x);
+    margin-top: var(--nx-spacing-4x);
   }
 
   &__description {
     grid-area: description;
-    margin-top: var(--nx-spacing-2x);
+    margin-top: var(--nx-spacing-4x);
   }
 }
 
