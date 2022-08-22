@@ -74,16 +74,18 @@ function NxComboboxRender<T extends string | number = string>(
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
   function handleComponentFocus(evt: FocusEvent<HTMLDivElement>) {
-    // check if this is focus coming into the component from somewhere else on the page, not just moving between
-    // children of this component and not from focus coming into the browser from some other window
-    const comingFromOutsidePage = evt.relatedTarget === null,
-        comingFromChildNode = evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget);
-
-    if (!(comingFromOutsidePage || comingFromChildNode) && error) {
-      doSearch(searchText);
-    }
-    else if (error) {
-      setShowDropdown(true);
+    if (error) {
+      // check if this is focus coming into the component from somewhere else on the page, not just moving between
+      // children of this component and not from focus coming into the browser from some other window
+      const comingFromOutsidePage = evt.relatedTarget === null,
+          comingFromChildNode = evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget);
+  
+      if (!(comingFromOutsidePage || comingFromChildNode)) {
+        doSearch(searchText);
+      }
+      else {
+        setShowDropdown(true);
+      }
     }
   }
 
