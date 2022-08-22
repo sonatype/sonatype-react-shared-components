@@ -6,7 +6,17 @@
  */
 import React, { useState } from 'react';
 
-import { NxDrawer, NxButton, NxButtonBar, NxP } from '@sonatype/react-shared-components';
+import { NxDrawer,
+  NxButton,
+  NxButtonBar,
+  NxP,
+  NxBackButton,
+  NxPageMain,
+  NxPageTitle,
+  NxH1,
+  NxFontAwesomeIcon
+} from '@sonatype/react-shared-components';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerWithSubtitleOrDescriptionExample() {
   const [showDrawerWithSubtitle, setShowDrawerWithSubtitle] = useState(false);
@@ -68,44 +78,123 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
   );
 
   return (
-    <div className="gallery-drawer-with-subtitle-or-description-example">
-      <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => setShowDrawerWithSubtitle(true)}>
-        Open Drawer with Subtitle
-      </NxButton>
-      <NxButton id="nx-drawer-with-description-open-button" onClick={() => setShowDrawerWithDescription(true)}>
-        Open Drawer with Description
-      </NxButton>
-      <NxButton id="nx-drawer-with-subtitle-and-description-open-button" onClick={() => setShowDrawerWithBoth(true)}>
-        Open Drawer with Both
-      </NxButton>
+    <>
+      <header className="nx-global-header">
+        <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
+        <div className="nx-global-header__actions">
+          <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
+        </div>
+      </header>
+
       {showDrawerWithSubtitle && (
         <NxDrawer id="nx-drawer-with-subtitle"
                   onCancel={() => setShowDrawerWithSubtitle(false)}
-                  headerTitle="An Example of NxDrawer with Subtitle"
-                  headerSubtitle="Header Subtitle"
                   aria-labelledby="nx-drawer-with-subtitle">
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title>NxDrawer Title</NxDrawer.Header.Title>
+            <NxDrawer.Header.Subtitle>Subtitle</NxDrawer.Header.Subtitle>
+          </NxDrawer.Header>
           {content}
         </NxDrawer>
       )}
       {showDrawerWithDescription && (
         <NxDrawer id="nx-drawer-with-description"
                   onCancel={() => setShowDrawerWithDescription(false)}
-                  headerTitle="An Example of NxDrawer with Description"
-                  headerDescription={description}
                   aria-labelledby="nx-drawer-with-description">
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title>NxDrawer Title</NxDrawer.Header.Title>
+            <NxDrawer.Header.Description>{description}</NxDrawer.Header.Description>
+          </NxDrawer.Header>
           {content}
         </NxDrawer>
       )}
       {showDrawerWithBoth && (
         <NxDrawer id="nx-drawer-with-subtitle-and-description"
                   onCancel={() => setShowDrawerWithBoth(false)}
-                  headerTitle="An Example of NxDrawer with Subtitle and Description"
-                  headerSubtitle="Header Subtitle"
-                  headerDescription={description}
                   aria-labelledby="nx-drawer-with-subtitle-and-description">
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title>NxDrawer Title</NxDrawer.Header.Title>
+            <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
+            <NxDrawer.Header.Description>{description}</NxDrawer.Header.Description>
+          </NxDrawer.Header>
           {content}
         </NxDrawer>
       )}
-    </div>
+      <NxPageMain>
+        <NxPageTitle>
+          <NxH1>NxDrawers With Subtitle Or Description Example</NxH1>
+        </NxPageTitle>
+
+        <NxP>
+          Dragée pastry soufflé shortbread donut fruitcake. Ice cream tart bear claw I love
+          cotton candy marzipan cotton candy cake danish. Pie gingerbread marshmallow bear claw
+          halvah tiramisu cotton candy icing topping. Liquorice chupa chups dessert carrot cake
+          macaroon wafer. Marshmallow apple pie danish muffin cupcake icing dessert I love lemon
+          drops. Cupcake I <em>love</em> candy canes dragée croissant cookie chocolate muffin. Marshmallow
+          powder lollipop cotton candy bonbon lollipop liquorice chupa chups jelly-o. Biscuit I
+          love marzipan pastry pie ice cream chocolate bar dessert sweet. Cake topping cookie
+          chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
+        </NxP>
+        <NxP>
+          <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => setShowDrawerWithSubtitle(true)}>
+            Open Drawer with Subtitle
+          </NxButton>
+          <br/>
+          <br/>
+          <NxButton id="nx-drawer-with-description-open-button" onClick={() => setShowDrawerWithDescription(true)}>
+            Open Drawer with Description
+          </NxButton>
+          <br/>
+          <br/>
+          <NxButton id="nx-drawer-with-subtitle-and-description-open-button"
+                    onClick={() => setShowDrawerWithBoth(true)}>
+            Open Drawer with Both
+          </NxButton>
+        </NxP>
+        <NxP>
+          Brownie dessert candy wafer macaroon. Marzipan dragée liquorice biscuit icing I love.
+          Wafer pastry sweet candy canes pie pie icing <strong>brownie</strong>. Wafer jelly cake bear claw I
+          love caramels. Pie jelly-o candy jelly beans icing. Sweet gingerbread pastry jelly bonbon danish icing.
+        </NxP>
+        <NxP>
+          Toffee tootsie roll danish chupa chups dessert cookie I love gummi bears wafer. Dragée
+          chocolate cake cake brownie carrot cake caramels chocolate cake. Halvah jelly-o tart wafer
+          jelly. Pastry <em>carrot</em> cake cake bear claw bear claw. Toffee jelly beans biscuit jelly cotton
+          candy marzipan liquorice. Brownie candy pie sweet roll powder danish dragée. Cake cookie
+          topping pastry carrot cake donut. Bear claw danish powder muffin bonbon cookie. I love I love
+          tootsie roll croissant chupa chups oat cake. Icing gingerbread pastry marshmallow pudding
+          brownie gingerbread marzipan.
+        </NxP>
+        <NxP>
+          Dragée pastry soufflé shortbread donut fruitcake. Ice cream tart bear claw I love
+          cotton candy marzipan cotton candy cake danish. Pie gingerbread marshmallow bear claw
+          halvah tiramisu cotton candy icing topping. Liquorice chupa chups dessert carrot cake
+          macaroon wafer. Marshmallow apple pie danish muffin cupcake icing dessert I love lemon
+          drops. Cupcake I <em>love</em> candy canes dragée croissant cookie chocolate muffin. Marshmallow
+          powder lollipop cotton candy bonbon lollipop liquorice chupa chups jelly-o. Biscuit I
+          love marzipan pastry pie ice cream chocolate bar dessert sweet. Cake topping cookie
+          chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
+        </NxP>
+        <NxP>
+          Toffee tootsie roll danish chupa chups dessert cookie I love gummi bears wafer. Dragée
+          chocolate cake cake brownie carrot cake caramels chocolate cake. Halvah jelly-o tart wafer
+          jelly. Pastry <em>carrot</em> cake cake bear claw bear claw. Toffee jelly beans biscuit jelly cotton
+          candy marzipan liquorice. Brownie candy pie sweet roll powder danish dragée. Cake cookie
+          topping pastry carrot cake donut. Bear claw danish powder muffin bonbon cookie. I love I love
+          tootsie roll croissant chupa chups oat cake. Icing gingerbread pastry marshmallow pudding
+          brownie gingerbread marzipan.
+        </NxP>
+        <NxP>
+          Dragée pastry soufflé shortbread donut fruitcake. Ice cream tart bear claw I love
+          cotton candy marzipan cotton candy cake danish. Pie gingerbread marshmallow bear claw
+          halvah tiramisu cotton candy icing topping. Liquorice chupa chups dessert carrot cake
+          macaroon wafer. Marshmallow apple pie danish muffin cupcake icing dessert I love lemon
+          drops. Cupcake I <em>love</em> candy canes dragée croissant cookie chocolate muffin. Marshmallow
+          powder lollipop cotton candy bonbon lollipop liquorice chupa chups jelly-o. Biscuit I
+          love marzipan pastry pie ice cream chocolate bar dessert sweet. Cake topping cookie
+          chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
+        </NxP>
+      </NxPageMain>
+    </>
   );
 }

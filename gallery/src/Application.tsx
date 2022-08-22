@@ -43,6 +43,9 @@ import NxGlobalSidebarFooterEmptyExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
 import NxDrawerVariantExample from './components/NxDrawer/NxDrawerVariantExample';
 import NxDrawerWithNxFormExample from './components/NxDrawer/NxDrawerWithNxFormExample';
+import NxDrawerEscExample from './components/NxDrawer/NxDrawerEscExample';
+import NxDrawerWithSubtitleOrDescriptionExample from './components/NxDrawer/NxDrawerWithSubtitleOrDescriptionExample';
+import NxDrawerExample from './components/NxDrawer/NxDrawerExample';
 
 const pageMappings = mergeAll(values(pageConfig));
 
@@ -152,6 +155,21 @@ function Application() {
         <Route exact path="/NxDrawerWithNxFormExample">
           <SectionScrollingWrapper>
             <NxDrawerWithNxFormExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerEscExample">
+          <SectionScrollingWrapper>
+            <NxDrawerEscExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerWithSubtitleOrDescriptionExample">
+          <SectionScrollingWrapper>
+            <NxDrawerWithSubtitleOrDescriptionExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerExample">
+          <SectionScrollingWrapper>
+            <NxDrawerExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>

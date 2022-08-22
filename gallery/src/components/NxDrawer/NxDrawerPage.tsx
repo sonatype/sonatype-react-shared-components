@@ -17,18 +17,15 @@ import {
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NxDrawerExample from './NxDrawerExample';
-import NxDrawerWithSubtitleOrDescriptionExample from './NxDrawerWithSubtitleOrDescriptionExample';
-import NxDrawerNarrowExample from './NxDrawerNarrowExample';
-import NxDrawerWithFooterExample from './NxDrawerWithFooterExample';
-import NxDrawerEscExample from './NxDrawerEscExample';
-import NxDrawerWithNxFormExample from './NxDrawerWithNxFormExample';
+//import NxDrawerExample from './NxDrawerExample';
+// import NxDrawerNarrowExample from './NxDrawerNarrowExample';
+// import NxDrawerWithFooterExample from './NxDrawerWithFooterExample';
 
 const NxDrawerSourceCode = require('./NxDrawerExample?raw');
 const NxDrawerVariantSourceCode = require('./NxDrawerVariantExample?raw');
 const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubtitleOrDescriptionExample?raw');
-const NxDrawerNarrowSourceCode = require('./NxDrawerNarrowExample?raw');
-const NxDrawerWithFooterSourceCode = require('./NxDrawerWithFooterExample?raw');
+// const NxDrawerNarrowSourceCode = require('./NxDrawerNarrowExample?raw');
+// const NxDrawerWithFooterSourceCode = require('./NxDrawerWithFooterExample?raw');
 const NxDrawerEscSourceCode = require('./NxDrawerEscExample?raw');
 const NxDrawerWithNxFormSourceCode = require('./NxDrawerWithNxFormExample?raw');
 
@@ -188,31 +185,37 @@ export default function NxDrawerPage() {
 
       <GalleryExampleTile title="Simple NxDrawer Example"
                           id="nx-drawer-simple-example"
-                          liveExample={NxDrawerExample}
                           codeExamples={NxDrawerSourceCode}>
-        A basic example of an <NxCode>NxDrawer</NxCode>.
+        A basic example of an <NxCode>NxDrawer</NxCode> with and without a footer.
+        <br/>
+        <NxTextLink href="#/NxDrawerExample">
+          Click here to navigate to the live example.
+        </NxTextLink>
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxDrawer With Subtitle or Description Example"
                           id="nx-drawer-with-subtitle-or-description-example"
-                          liveExample={NxDrawerWithSubtitleOrDescriptionExample}
                           codeExamples={NxDrawerWithSubtitleOrDescriptionSourceCode}>
-        An example of a <NxCode>NxDrawer</NxCode> with subtitle or description in the header.
+        An example of a <NxCode>NxDrawer</NxCode> with subtitle or description in the header or with a footer.
+        <br/>
+        <NxTextLink href="#/NxDrawerWithSubtitleOrDescriptionExample">
+          Click here to navigate to the live example.
+        </NxTextLink>
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="Narrow NxDrawer Example"
+      {/* <GalleryExampleTile title="Narrow NxDrawer Example"
                           id="nx-drawer-narrow-example"
                           liveExample={NxDrawerNarrowExample}
                           codeExamples={NxDrawerNarrowSourceCode}>
         An example of <NxCode>NxDrawer</NxCode> with "narrow" variant.
-      </GalleryExampleTile>
+      </GalleryExampleTile> */}
 
-      <GalleryExampleTile title="NxDrawer With Footer Example"
+      {/* <GalleryExampleTile title="NxDrawer With Footer Example"
                           id="nx-drawer-with-footer-example"
                           liveExample={NxDrawerWithFooterExample}
                           codeExamples={NxDrawerWithFooterSourceCode}>
         An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxDrawer.Footer</NxCode>.
-      </GalleryExampleTile>
+      </GalleryExampleTile> */}
 
       <GalleryExampleTile title="NxDrawer Variant Example"
                           id="nx-drawer-variant-example"
@@ -226,18 +229,22 @@ export default function NxDrawerPage() {
 
       <GalleryExampleTile title="NxDrawer Esc Example"
                           id="nx-drawer-esc-example"
-                          liveExample={NxDrawerEscExample}
                           codeExamples={NxDrawerEscSourceCode}>
         An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxDropdown</NxCode> nested inside.
         This example demonstrates when the dropdown is in focus and is expanded. Pressing the Esc key collapses
         the dropdown, but not the drawer.
         collapses the dropdown, but not the drawer.
+        <br/>
+        <NxTextLink href="#/NxDrawerEscExample">
+          Click here to navigate to the live example.
+        </NxTextLink>
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxDrawer With NxForm Example"
                           id="nx-drawer-with-nx-form"
                           codeExamples={NxDrawerWithNxFormSourceCode}>
         An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxFrom</NxCode>.
+        <br/>
         <NxTextLink href="#/NxDrawerWithNxFormExample">
           Click here to navigate to the live example.
         </NxTextLink>
