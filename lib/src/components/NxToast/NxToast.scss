@@ -25,49 +25,46 @@
 .nx-toast {
   position: relative;
   animation: animationIn 0.4s linear;
+  right: 0;
+  opacity: 1;
 
   &.nx-toast--closing {
-    animation: animationOut 0.4s linear;
+    animation-name: animationOut;
   }
-  
+
   .nx-alert {
     margin: var(--nx-spacing-2x) 0 0 0;
   }
 }
 
+//The 74px in each animation refers to the total height of each toast: the content itself,
+//plus the padding and margin-top applied. Setting the max-height of each toast to 74px within
+//the animation allows for each subsequent toast to smoothly move up or down as toasts are
+//added and removed.
 @keyframes animationIn {
   0% {
     margin-top: 0;
     max-height: 0px;
-    right: -500px;
+    right: -100%;
     opacity: 0;
   }
   40% {
     margin-top: var(--nx-spacing-2x);
-    right: -500px;
+    right: -100%;
     opacity: 0;
-    max-height:74px;
-  }
-  100% {
-    right:0;
-    opacity: 1;
+    max-height: 74px;
   }
 }
 
 @keyframes animationOut {
-  0% {
-    max-height: 75px;
-    right: 0;
-    opacity: 1;
-  }
   75% {
-    max-height:74px;
-    right: -500px;
+    max-height: 74px;
+    right: -100%;
     opacity: 0;
   }
   100% {
     max-height: 0px;
-    right:-500px;
+    right: -100%;
     opacity: 0;
   }
 }
@@ -81,7 +78,7 @@
     animation: reducedAnimationIn 0.4s linear;
 
     &.nx-toast--closing {
-      animation: reducedAnimationOut 0.4s linear;
+      animation: reducedAnimationIn, reducedAnimationIn 0.4s linear;
     }
   }
 }
@@ -90,15 +87,9 @@
   0% {
     opacity: 0;
   }
-  100% {
-    opacity: 1;
-  }
 }
 
 @keyframes reducedAnimationOut {
-  0% {
-    opacity: 1;
-  }
   100% {
     opacity: 0;
   }
