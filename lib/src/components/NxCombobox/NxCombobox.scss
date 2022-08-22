@@ -4,43 +4,43 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
- @use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-container-helpers';
 
- .nx-combobox {
-   display: inline-block;
-   position: relative;
+.nx-combobox {
+  display: inline-block;
+  position: relative;
 
-   &__menu {
-     position: fixed;
-     right: 100%;
-     width: 100%;
+  &__menu {
+    position: fixed;
+    right: 100%;
+    width: 100%;
 
-     &--error {
-       padding: 0;
-     }
-   }
+    &--error {
+      padding: 0;
+    }
+  }
 
-   &__empty-message {
-     @include nx-container-helpers.container-horizontal;
- 
-     padding: var(--nx-spacing-base) var(--nx-spacing-4x);
-     text-align: center;
-   }
+  &__empty-message {
+    @include nx-container-helpers.container-horizontal;
 
-   &--dropdown-showable{
-     .nx-combobox__menu {
-       position: absolute;
-       right: initial;
+    padding: var(--nx-spacing-base) var(--nx-spacing-4x);
+    text-align: center;
+  }
 
-       .nx-combobox__option--visual-selected {
-         background-color: var(--nx-swatch-blue-90);
-       }
-     }
-   }
+  &--dropdown-showable{
+    .nx-combobox__menu {
+      position: absolute;
+      right: initial;
 
-   .nx-loading-spinner {
-     padding-top: var(--nx-spacing-6x);
-     padding-bottom: var(--nx-spacing-6x);
-     text-align: center;
-   }
- }
+      .nx-combobox__option--visual-selected {
+        background-color: var(--nx-swatch-blue-90);
+      }
+    }
+  }
+
+  .nx-loading-spinner {
+    padding-top: var(--nx-spacing-6x);
+    padding-bottom: var(--nx-spacing-6x);
+    text-align: center;
+  }
+}
