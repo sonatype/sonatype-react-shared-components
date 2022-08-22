@@ -95,11 +95,14 @@ const NxToastPage = () =>
               <NxTable.Cell>React Element</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
-                A single <NxCode>NxAlert</NxCode>, or any of its four variations. Note that each
-                {' '}<NxCode>NxToast</NxCode> will only accept one <NxCode>NxAlert</NxCode>, and that the alert's
-                given message should only be one line long. Constructing a wrapping element for the
-                {' '}<NxCode>NxAlert</NxCode> which accepts the <NxCode>onClose</NxCode> handler function may also
-                be used in lieu of an <NxCode>NxToast</NxCode> component as well.
+                A single <NxCode>ReactElement</NxCode> which accepts an <NxCode>onClose</NxCode> prop and which
+                ultimately renders an <NxCode>NxAlert</NxCode> (or one of its variants such as
+                {' '}<NxCode>NxSuccessAlert</NxCode>. Most commonly, this would just be one of the RSC
+                {' '}<NxCode>Nx*Alert</NxCode> components themselves, but custom wrapping components are also permitted.
+                Note that the calling code should not specify the<NxCode>onClose</NxCode> prop for the alert, it will be
+                set up internally by <NxCode>NxToast</NxCode>. Calling code should instead use the
+                {' '}<NxCode>onClose</NxCode> prop of <NxCode>NxToast</NxCode> itself. Additionally, note that the alert
+                text content should be brief: only one rendered line of text per toast is supported.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
