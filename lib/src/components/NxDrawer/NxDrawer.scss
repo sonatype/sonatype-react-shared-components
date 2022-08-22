@@ -16,7 +16,7 @@ $-box-shadow-offset: 52px;
   }
 
   // This is required to fix jittering in Firefox and Safari
-  // + not animating at all on Chrome.
+  // and not animating at all in Chrome.
   1% {
     transform: translateX(100%);
     opacity: 0;
@@ -61,16 +61,11 @@ $-box-shadow-offset: 52px;
 
   grid-area: content;
   box-sizing: border-box;
-  backface-visibility: hidden;
   position: relative;
-
   background-color: transparent;
   color: var(--nx-swatch-grey-30);
-  
   justify-self: end;
-
   overflow: hidden;
-  transform: translateX(0);
 
   width: 520px + $-box-shadow-offset;
   height: 100%;
@@ -84,23 +79,20 @@ $-box-shadow-offset: 52px;
 
 .nx-drawer__animation-wrapper {
   display: flex;
-  backface-visibility: hidden;
   height: 100%;
 
-  transform: translateX(0);
-  animation-name: slide-in;
-  animation-duration: 200ms;
-  animation-timing-function: ease-out;
+  // Prevents flickering
+  backface-visibility: hidden;
+  animation: slide-in 200ms ease-out;
 
   &--close {
-    animation-name: slide-out;
-    animation-duration: 180ms;
-    animation-timing-function: ease-in;
+    animation: slide-out 180ms ease-in;
   }
 
   @media (prefers-reduced-motion) {
     &, &--close {
-      // animation-duration: 0 did not trigger the animationEnd event
+      // We are setting the duration to 1ms
+      // because 0 did not trigger the animationEnd event.
       animation-duration: 1ms;
     }
   }
