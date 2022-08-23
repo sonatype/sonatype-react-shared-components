@@ -19,7 +19,7 @@ export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
   children: PropTypes.any.isRequired
 };
 
-export interface NxToastProps {
+export interface NxToastProps extends HTMLAttributes<HTMLDivElement> {
   onClose: () => void;
   children: ReactElement;
 }

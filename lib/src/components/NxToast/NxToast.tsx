@@ -11,7 +11,7 @@ import NxToastContainerContext from './contexts';
 import { nxToastPropTypes, NxToastProps } from './types';
 
 const NxToast = (props: NxToastProps) => {
-  const { onClose, children } = props;
+  const { onClose, children, className } = props;
 
   const [isClosing, setIsClosing] = useState(false);
 
@@ -39,7 +39,7 @@ const NxToast = (props: NxToastProps) => {
   const validChild = React.Children.only(children),
       childrenWithProps = React.cloneElement(validChild, { onClose: handleClose });
 
-  const classes = classnames('nx-toast', {
+  const classes = classnames('nx-toast', className, {
     'nx-toast--closing': isClosing
   });
 

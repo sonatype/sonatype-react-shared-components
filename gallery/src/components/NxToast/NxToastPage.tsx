@@ -105,6 +105,21 @@ const NxToastPage = () =>
                 text content should be brief: only one rendered line of text per toast is supported.
               </NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>
+                HTML <NxCode>&lt;div&gt;</NxCode> Attributes
+              </NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                  HTML div Attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxToast</NxCode> supports any html attributes that are normally supported by the
+                {' '}<NxCode>&lt;div&gt;</NxCode> element.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
