@@ -99,7 +99,7 @@ const NxToastPage = () =>
                 ultimately renders an <NxCode>NxAlert</NxCode> (or one of its variants such as
                 {' '}<NxCode>NxSuccessAlert</NxCode>). Most commonly, this would just be one of the RSC
                 {' '}<NxCode>Nx*Alert</NxCode> components themselves, but custom wrapping components are also permitted.
-                Note that the calling code should not specify the<NxCode>onClose</NxCode> prop for the alert, it will be
+                Note that the calling code should not specify the<NxCode>onClose</NxCode> prop for the alert; it will be
                 set up internally by <NxCode>NxToast</NxCode>. Calling code should instead use the
                 {' '}<NxCode>onClose</NxCode> prop of <NxCode>NxToast</NxCode> itself. Additionally, note that the alert
                 text content should be brief: only one rendered line of text per toast is supported.
