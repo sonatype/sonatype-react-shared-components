@@ -93,7 +93,7 @@ function NxComboboxRender<T extends string | number = string>(
   // to show/hide dropdown, however, clicking the button in Safari does not focus it, which means the
   // relatedTarget will be null, this is to stop the mouse down event being fired for the element that
   // is listening to the blur event, in this case, the show/hide dropdown is handled by the click event
-  function handleMouseDown(evt: MouseEvent) {evt.preventDefault(); }
+  function handleMouseDown(evt: MouseEvent) { evt.preventDefault(); }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
     setElToFocusId('');
