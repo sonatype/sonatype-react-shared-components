@@ -43,7 +43,7 @@ interface ToastModel {
   message: string;
 }
 
-export default function NxToastFullPageVariationsExample() {
+export default function NxToastComplexLayoutExample() {
   const [toastIdInc, setToastIdInc] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 

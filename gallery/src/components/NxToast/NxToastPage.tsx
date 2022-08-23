@@ -22,8 +22,8 @@ import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 import CodeExample from '../../CodeExample';
 
-const NxToastFullPageVariationsExampleCode = require('./NxToastFullPageVariationsExample?raw'),
-    NxToastFullPageSimpleExampleCode = require('./NxToastFullPageSimpleExample?raw');
+const NxToastComplexLayoutExampleCode = require('./NxToastComplexLayoutExample?raw'),
+    NxToastSimpleLayoutExampleCode = require('./NxToastSimpleLayoutExample?raw');
 
 const NxToastPage = () =>
   <>
@@ -137,7 +137,7 @@ const NxToastPage = () =>
           therefore the toasts will be positioned in the top right corner of the screen.
         </NxP>
         <NxP>
-          <NxTextLink href="#/NxToastFullPageSimpleExample">
+          <NxTextLink href="#/NxToastSimpleLayoutExample">
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
@@ -147,8 +147,8 @@ const NxToastPage = () =>
           <NxAccordion.Header>
             <NxAccordion.Title>Example Code</NxAccordion.Title>
           </NxAccordion.Header>
-          <CodeExample content={NxToastFullPageSimpleExampleCode} />
-          <GalleryTileFooter clipboardContent= {NxToastFullPageSimpleExampleCode}/>
+          <CodeExample content={NxToastSimpleLayoutExampleCode} />
+          <GalleryTileFooter clipboardContent= {NxToastSimpleLayoutExampleCode}/>
         </NxStatefulAccordion>
       </NxTile.Content>
     </NxTile>
@@ -166,7 +166,7 @@ const NxToastPage = () =>
           Extra content is provided to be able to view the positioning of the toasts with scrolling behavior.
         </NxP>
         <NxP>
-          <NxTextLink href="#/NxToastFullPageVariationsExample">
+          <NxTextLink href="#/NxToastComplexLayoutExample">
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
@@ -176,8 +176,8 @@ const NxToastPage = () =>
           <NxAccordion.Header>
             <NxAccordion.Title>Example Code</NxAccordion.Title>
           </NxAccordion.Header>
-          <CodeExample content={NxToastFullPageVariationsExampleCode} />
-          <GalleryTileFooter clipboardContent= {NxToastFullPageVariationsExampleCode}/>
+          <CodeExample content={NxToastComplexLayoutExampleCode} />
+          <GalleryTileFooter clipboardContent= {NxToastComplexLayoutExampleCode}/>
         </NxStatefulAccordion>
       </NxTile.Content>
     </NxTile>
