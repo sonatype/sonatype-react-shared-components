@@ -100,7 +100,7 @@ export default function NxDrawerVariantExample() {
 
       <NxPageMain>
         <NxPageTitle>
-          <NxH1>NxDrawers with Global Header</NxH1>
+          <NxH1>NxDrawers with Normal and Narrow Variant</NxH1>
         </NxPageTitle>
 
         <NxP>

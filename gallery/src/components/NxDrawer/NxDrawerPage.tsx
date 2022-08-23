@@ -12,7 +12,8 @@ import {
   NxP,
   NxTextLink,
   NxH3,
-  NxTile
+  NxTile,
+  NxInfoAlert
 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -29,8 +30,10 @@ export default function NxDrawerPage() {
       <GalleryDescriptionTile>
         <NxP>
           The <NxCode>NxDrawer</NxCode> component implements a dialog sidebar that is fixed to the
-          right side of the viewport. Inside it consists of three parts: the header (built-in),{' '}
-          <NxCode>NxDrawer.Content</NxCode> (required), <NxCode>NxDrawer.Footer</NxCode> (optional).
+          right side of the <NxCode>NxPage</NxCode> layout content. It consists of three
+          parts: <NxCode>NxDrawer.Header</NxCode> (required), <NxCode>NxDrawer.Content</NxCode> (required),
+          {' '}<NxCode>NxFooter</NxCode> (optional). The <NxCode>NxDrawer</NxCode> is only compatible
+          within <NxCode>NxPage</NxCode> layout with global header (it is not supported in legacy layout).
         </NxP>
         <NxTile.Subsection>
           <NxH3>Props</NxH3>
@@ -58,7 +61,7 @@ export default function NxDrawerPage() {
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>onCancel</NxTable.Cell>
-                <NxTable.Cell>Function ((Event) =&gt; void)</NxTable.Cell>
+                <NxTable.Cell>Function (() =&gt; void)</NxTable.Cell>
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
@@ -78,35 +81,6 @@ export default function NxDrawerPage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>headerTitle</NxTable.Cell>
-                <NxTable.Cell>ReactNode | string</NxTable.Cell>
-                <NxTable.Cell>Yes</NxTable.Cell>
-                <NxTable.Cell></NxTable.Cell>
-                <NxTable.Cell>
-                  This prop specifies the header title content placed at the top, next to the close button.
-                  The text is truncated when it overflows.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>headerSubtitle</NxTable.Cell>
-                <NxTable.Cell>ReactNode | string</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell></NxTable.Cell>
-                <NxTable.Cell>
-                  This prop specifies the header subtitle content placed under the header title.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>headerDescription</NxTable.Cell>
-                <NxTable.Cell>ReactNode | string</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell></NxTable.Cell>
-                <NxTable.Cell>
-                  This prop sets the header description content under the subtitle if the subtitle is specified.
-                  If it's not specified, it will be placed under the header title.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
                 <NxTable.Cell>HTML <NxCode>&lt;dialog&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
@@ -123,25 +97,19 @@ export default function NxDrawerPage() {
             </NxTable.Body>
           </NxTable>
         </NxTile.Subsection>
+        <NxInfoAlert>
+          Note: This component is required to be a direct child of <NxCode>NxPage</NxCode>.
+        </NxInfoAlert>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <NxH3>Using NxDrawer with nx-global-header</NxH3>
-          </NxTile.SubsectionHeader>
-          <NxP>
-            When using <NxCode>NxDrawer</NxCode> with <NxCode>nx-global-header</NxCode>,{' '}
-            <NxCode>nx-drawer--with-global-header</NxCode> className must be applied so the
-            drawer does not overlap with the global header.
-          </NxP>
-        </NxTile.Subsection>
-        <NxTile.Subsection>
-          <NxTile.SubsectionHeader>
-            <NxH3>Built-in Header</NxH3>
+            <NxH3>NxDrawer.Header (Required)</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
             The header is placed at the top of the drawer component. It consists of four parts:
             the close button, the title, the subtitle (optional), and the description (optional).
-            The title, subtitle, and description can be specified via the <NxCode>headerTitle</NxCode>,{' '}
-            <NxCode>headerSubtitle</NxCode>, and <NxCode>headerDescription</NxCode> props respectively.
+            The title, subtitle, and description can be specified via the convenience components:{' '}
+            the <NxCode>NxDrawer.Header.Title</NxCode>, <NxCode>NxDrawer.Header.Subtitle</NxCode>,{' '}
+            and <NxCode>NxDrawer.Header.Description</NxCode>, respectively.
           </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
@@ -150,18 +118,21 @@ export default function NxDrawerPage() {
           </NxTile.SubsectionHeader>
           <NxP>
             This component specifies the drawer's body content. It is placed
-            under the header and extends the full height of the drawer, unless the footer is specified, in which
-            case it occupies the height between the header and the footer. If there is overflowing content,
-            the content area will be scrollable.
+            under the header and extends the full height of the drawer if the footer is not specified.
+            If the footer is specified, it occupies the height between the header and the footer.
+            The content area will be scrollable if the content overflows.
           </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <NxH3>NxDrawer.Footer (Optional)</NxH3>
+            <NxH3>NxFooter (Optional)</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
-            This is an optional convenient component that sets the drawer's footer content. It is placed
-            at the bottom of the drawer, and it takes the height of its content.
+            This is an optional component that sets the drawer's footer content. It is placed
+            at the bottom and it takes the height of its content.
+          </NxP>
+          <NxP>
+            Alternatively, the &lt;footer&gt; element can be used with the class <NxCode>nx-footer</NxCode>.
           </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
@@ -183,6 +154,7 @@ export default function NxDrawerPage() {
         A basic example of an <NxCode>NxDrawer</NxCode> with and without a footer.
         This example also shows a NxDrawer with overflowing content.
         <br/>
+        <br/>
         <NxTextLink href="#/NxDrawerExample">
           Click here to navigate to the live example.
         </NxTextLink>
@@ -192,6 +164,7 @@ export default function NxDrawerPage() {
                           id="nx-drawer-with-subtitle-or-description-example"
                           codeExamples={NxDrawerWithSubtitleOrDescriptionSourceCode}>
         An example of a <NxCode>NxDrawer</NxCode> with subtitle or description in the header.
+        <br/>
         <br/>
         <NxTextLink href="#/NxDrawerWithSubtitleOrDescriptionExample">
           Click here to navigate to the live example.
@@ -203,7 +176,20 @@ export default function NxDrawerPage() {
                           codeExamples={NxDrawerVariantSourceCode}>
         An example of a <NxCode>NxDrawer</NxCode> with different variants.
         <br/>
+        <br/>
         <NxTextLink href="#/NxDrawerVariantExample">
+          Click here to navigate to the live example.
+        </NxTextLink>
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxDrawer With NxForm Example"
+                          id="nx-drawer-with-nx-form"
+                          codeExamples={NxDrawerWithNxFormSourceCode}>
+        An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxFrom</NxCode>. This example
+        also shows <NxCode>NxDrawer</NxCode> with overflowing form content.
+        <br/>
+        <br/>
+        <NxTextLink href="#/NxDrawerWithNxFormExample">
           Click here to navigate to the live example.
         </NxTextLink>
       </GalleryExampleTile>
@@ -214,20 +200,9 @@ export default function NxDrawerPage() {
         An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxDropdown</NxCode> nested inside.
         This example demonstrates when the dropdown is in focus and is expanded. Pressing the Esc key collapses
         the dropdown, but not the drawer.
-        collapses the dropdown, but not the drawer.
+        <br/>
         <br/>
         <NxTextLink href="#/NxDrawerEscExample">
-          Click here to navigate to the live example.
-        </NxTextLink>
-      </GalleryExampleTile>
-
-      <GalleryExampleTile title="NxDrawer With NxForm Example"
-                          id="nx-drawer-with-nx-form"
-                          codeExamples={NxDrawerWithNxFormSourceCode}>
-        An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxFrom</NxCode>. This example
-        also shows NxDrawer overflowing with a form.
-        <br/>
-        <NxTextLink href="#/NxDrawerWithNxFormExample">
           Click here to navigate to the live example.
         </NxTextLink>
       </GalleryExampleTile>
