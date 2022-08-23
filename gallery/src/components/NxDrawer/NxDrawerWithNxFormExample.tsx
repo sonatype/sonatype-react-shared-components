@@ -6,8 +6,6 @@
  */
 import React, { useState } from 'react';
 
-import {faAngry} from '@fortawesome/free-solid-svg-icons';
-
 import {
   NxDrawer,
   NxButton,
@@ -30,6 +28,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerWithNxFormExample() {
   const [showDrawer, setShowDrawer] = useState(false),
+      [showDrawerOverflowing, setShowDrawerOverflowing] = useState(false),
       [usernameState, setUsernameState] = useState(nxTextInputStateHelpers.initialState('')),
       [passwordState, setPasswordState] = useState(nxTextInputStateHelpers.initialState('')),
       [isRed, toggleRed] = useToggle(false),
@@ -80,27 +79,6 @@ export default function NxDrawerWithNxFormExample() {
                              onChange={onPasswordChange}
                              { ...passwordState } />
               </NxFormGroup>
-              <NxFormGroup label="Password" isRequired>
-                <NxTextInput type="password"
-                             aria-required={true}
-                             placeholder="Password"
-                             onChange={onPasswordChange}
-                             { ...passwordState } />
-              </NxFormGroup>
-              <NxFormGroup label="Password" isRequired>
-                <NxTextInput type="password"
-                             aria-required={true}
-                             placeholder="Password"
-                             onChange={onPasswordChange}
-                             { ...passwordState } />
-              </NxFormGroup>
-              <NxFormGroup label="Password" isRequired>
-                <NxTextInput type="password"
-                             aria-required={true}
-                             placeholder="Password"
-                             onChange={onPasswordChange}
-                             { ...passwordState } />
-              </NxFormGroup>
               <NxFieldset label="Colors" isRequired>
                 <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
                 <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
@@ -109,6 +87,64 @@ export default function NxDrawerWithNxFormExample() {
             </NxDrawer.Content>
           </NxForm>
         </NxDrawer>
+      )}
+
+      {showDrawerOverflowing && (
+      <NxDrawer id="nx-drawer-with-nx-form-overflowing"
+                onCancel={() => setShowDrawerOverflowing(false)}
+                aria-labelledby="nx-drawer-with-nx-form">
+        <NxDrawer.Header>
+          <NxDrawer.Header.Title>An Example of NxDrawer with NxForm Nested Inside.</NxDrawer.Header.Title>
+          <NxDrawer.Header.Subtitle>Hello</NxDrawer.Header.Subtitle>
+          <NxDrawer.Header.Description>Hello</NxDrawer.Header.Description>
+        </NxDrawer.Header>
+
+        <NxForm className="nx-form"
+                onSubmit={() => setShowDrawerOverflowing(false)}
+                onCancel={() => setShowDrawerOverflowing(false)}>
+          <NxDrawer.Content>
+            <NxFormGroup label="Username" isRequired>
+              <NxTextInput aria-required={true}
+                           placeholder="Username"
+                           onChange={onUsernameChange}
+                           { ...usernameState } />
+            </NxFormGroup>
+            <NxFormGroup label="Password" isRequired>
+              <NxTextInput type="password"
+                           aria-required={true}
+                           placeholder="Password"
+                           onChange={onPasswordChange}
+                           { ...passwordState } />
+            </NxFormGroup>
+            <NxFormGroup label="Password" isRequired>
+              <NxTextInput type="password"
+                           aria-required={true}
+                           placeholder="Password"
+                           onChange={onPasswordChange}
+                           { ...passwordState } />
+            </NxFormGroup>
+            <NxFormGroup label="Password" isRequired>
+              <NxTextInput type="password"
+                           aria-required={true}
+                           placeholder="Password"
+                           onChange={onPasswordChange}
+                           { ...passwordState } />
+            </NxFormGroup>
+            <NxFormGroup label="Password" isRequired>
+              <NxTextInput type="password"
+                           aria-required={true}
+                           placeholder="Password"
+                           onChange={onPasswordChange}
+                           { ...passwordState } />
+            </NxFormGroup>
+            <NxFieldset label="Colors" isRequired>
+              <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+              <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+              <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
+            </NxFieldset>
+          </NxDrawer.Content>
+        </NxForm>
+      </NxDrawer>
       )}
 
       <NxPageMain>
@@ -129,6 +165,11 @@ export default function NxDrawerWithNxFormExample() {
         <NxP>
           <NxButton id="nx-drawer-with-nx-form-open-button" onClick={() => setShowDrawer(true)}>
             Open Drawer with NxForm
+          </NxButton>
+          <br/>
+          <br/>
+          <NxButton id="nx-drawer-with-nx-form-overflowing-open-button" onClick={() => setShowDrawerOverflowing(true)}>
+            Open Drawer with Overflowing NxForm
           </NxButton>
         </NxP>
         <NxP>

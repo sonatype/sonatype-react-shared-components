@@ -17,15 +17,9 @@ import {
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-//import NxDrawerExample from './NxDrawerExample';
-// import NxDrawerNarrowExample from './NxDrawerNarrowExample';
-// import NxDrawerWithFooterExample from './NxDrawerWithFooterExample';
-
 const NxDrawerSourceCode = require('./NxDrawerExample?raw');
 const NxDrawerVariantSourceCode = require('./NxDrawerVariantExample?raw');
 const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubtitleOrDescriptionExample?raw');
-// const NxDrawerNarrowSourceCode = require('./NxDrawerNarrowExample?raw');
-// const NxDrawerWithFooterSourceCode = require('./NxDrawerWithFooterExample?raw');
 const NxDrawerEscSourceCode = require('./NxDrawerEscExample?raw');
 const NxDrawerWithNxFormSourceCode = require('./NxDrawerWithNxFormExample?raw');
 
@@ -187,6 +181,7 @@ export default function NxDrawerPage() {
                           id="nx-drawer-simple-example"
                           codeExamples={NxDrawerSourceCode}>
         A basic example of an <NxCode>NxDrawer</NxCode> with and without a footer.
+        This example also shows a NxDrawer with overflowing content.
         <br/>
         <NxTextLink href="#/NxDrawerExample">
           Click here to navigate to the live example.
@@ -196,26 +191,12 @@ export default function NxDrawerPage() {
       <GalleryExampleTile title="NxDrawer With Subtitle or Description Example"
                           id="nx-drawer-with-subtitle-or-description-example"
                           codeExamples={NxDrawerWithSubtitleOrDescriptionSourceCode}>
-        An example of a <NxCode>NxDrawer</NxCode> with subtitle or description in the header or with a footer.
+        An example of a <NxCode>NxDrawer</NxCode> with subtitle or description in the header.
         <br/>
         <NxTextLink href="#/NxDrawerWithSubtitleOrDescriptionExample">
           Click here to navigate to the live example.
         </NxTextLink>
       </GalleryExampleTile>
-
-      {/* <GalleryExampleTile title="Narrow NxDrawer Example"
-                          id="nx-drawer-narrow-example"
-                          liveExample={NxDrawerNarrowExample}
-                          codeExamples={NxDrawerNarrowSourceCode}>
-        An example of <NxCode>NxDrawer</NxCode> with "narrow" variant.
-      </GalleryExampleTile> */}
-
-      {/* <GalleryExampleTile title="NxDrawer With Footer Example"
-                          id="nx-drawer-with-footer-example"
-                          liveExample={NxDrawerWithFooterExample}
-                          codeExamples={NxDrawerWithFooterSourceCode}>
-        An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxDrawer.Footer</NxCode>.
-      </GalleryExampleTile> */}
 
       <GalleryExampleTile title="NxDrawer Variant Example"
                           id="nx-drawer-variant-example"
@@ -243,7 +224,8 @@ export default function NxDrawerPage() {
       <GalleryExampleTile title="NxDrawer With NxForm Example"
                           id="nx-drawer-with-nx-form"
                           codeExamples={NxDrawerWithNxFormSourceCode}>
-        An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxFrom</NxCode>.
+        An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxFrom</NxCode>. This example
+        also shows NxDrawer overflowing with a form.
         <br/>
         <NxTextLink href="#/NxDrawerWithNxFormExample">
           Click here to navigate to the live example.

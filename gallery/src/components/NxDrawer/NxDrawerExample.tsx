@@ -22,6 +22,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
+  const [showDrawerScroll, setShowDrawerScroll] = useState(false);
   const [showDrawerWithFooter, setShowDrawerWithFooter] = useState(false);
 
   const content = (
@@ -81,6 +82,23 @@ export default function NxDrawerExample() {
           <NxDrawer.Header>
             <NxDrawer.Header.Title>A Simple NxDrawer</NxDrawer.Header.Title>
           </NxDrawer.Header>
+          <NxDrawer.Content>
+            <NxP>
+              Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
+              I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
+              cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
+              pie jelly-o cheesecake candy I love.
+            </NxP>
+          </NxDrawer.Content>
+        </NxDrawer>
+      )}
+      {showDrawerScroll && (
+        <NxDrawer id="nx-drawer-simple"
+                  onCancel={() => setShowDrawerScroll(false)}
+                  aria-labelledby="nx-drawer-simple">
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title>A Simple NxDrawer</NxDrawer.Header.Title>
+          </NxDrawer.Header>
           {content}
         </NxDrawer>
       )}
@@ -120,6 +138,11 @@ export default function NxDrawerExample() {
         </NxP>
         <NxP>
           <NxButton id="nx-drawer-simple-open-button" onClick={() => setShowDrawer(true)}>Open Simple Drawer</NxButton>
+          <br/>
+          <br/>
+          <NxButton id="nx-drawer-simple-scroll-open-button" onClick={() => setShowDrawerScroll(true)}>
+            Open Simple Drawer With Scroll
+          </NxButton>
           <br/>
           <br/>
           <NxButton id="nx-drawer-with-footer-open-button" onClick={() => setShowDrawerWithFooter(true)}>
