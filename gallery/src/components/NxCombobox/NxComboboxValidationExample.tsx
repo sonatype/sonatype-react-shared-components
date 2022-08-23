@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { NxCombobox, DataItem, nxTextInputStateHelpers, NxFormGroup }
   from '@sonatype/react-shared-components';
@@ -35,7 +35,6 @@ function validator(val: string) {
 export default function NxComboboxRequiredExample() {
   const [matches, setMatches] = useState<DataItem<number>[]>(items),
       [query, setQuery] = useState(''),
-      latestExecutedQueryRef = useRef<string | null>(null),
       [inputState, setInputState] = useState(initialState(''));
 
   function onSelect(item: DataItem<number>) {
@@ -46,8 +45,6 @@ export default function NxComboboxRequiredExample() {
   }
 
   const executeQuery = useCallback(function executeQuery(query: string) {
-    latestExecutedQueryRef.current = query;
-
     setMatches(search(query));
   }, [query]);
 

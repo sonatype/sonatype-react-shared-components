@@ -4,10 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { useDebounceCallback } from '@react-hook/debounce';
-import { NxCombobox, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME, NxFormGroup }
+import { NxCombobox, DataItem, NxFormGroup }
   from '@sonatype/react-shared-components';
 
 const items = prepend(
@@ -15,23 +14,15 @@ const items = prepend(
     map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101))
 );
 
-// This function simulates a backend query that takes 3 seconds to return results. In a real implementation
-// this would typically use window.fetch, axios, or a similar REST library rather than querying in-memory data,
-// and typically this would be in another file outside of the react component
-function search(query: string): Promise<DataItem<number>[]> {
+function search(query: string):DataItem<number>[] {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
-
-  return new Promise(resolve => {
-    setTimeout(() => resolve(matchingItems), 3000);
-  });
+  return matchingItems;
 }
 
 export default function NxComboboxDisabledExample() {
-  const [matches, setMatches] = useState<DataItem<number>[]>([]),
-      [loading, setLoading] = useState(false),
-      [query, setQuery] = useState('foo'),
-      latestExecutedQueryRef = useRef<string | null>(null);
+  const [matches, setMatches] = useState<DataItem<number>[]>(items),
+      [query, setQuery] = useState('foo');
 
   function onSelect(item: DataItem<number>) {
     if (typeof item.displayName === 'string') {
@@ -40,38 +31,22 @@ export default function NxComboboxDisabledExample() {
     setMatches([item]);
   }
 
-  // use debounce so that the backend query does not happen until the user has stopped typing for half a second
-  const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
-    latestExecutedQueryRef.current = query;
-
-    search(query).then(matches => {
-      // ensure that results from stale or out-of-order queries do not display
-      if (latestExecutedQueryRef.current === query) {
-        setMatches(matches);
-        setLoading(false);
-      }
-    });
-  }, [matches, query]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+  const executeQuery = useCallback(function executeQuery(query: string) {
+    setMatches(search(query));
+  }, [query]);
 
   function onSearchTextChange(query: string) {
     setQuery(query);
   }
 
   function onSearch(query: string) {
-    if (query === '') {
-      setMatches([]);
-    }
-    else {
-      setLoading(true);
-      executeQuery(query);
-    }
+    query ? executeQuery(query) : setMatches([]);
   }
 
   return (
     <NxFormGroup label="Combobox">
       <NxCombobox disabled
                   short
-                  loading={loading}
                   matches={matches}
                   searchText={query}
                   onSearchTextChange={onSearchTextChange}

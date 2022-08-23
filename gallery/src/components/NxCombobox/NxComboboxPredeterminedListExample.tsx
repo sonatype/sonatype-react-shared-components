@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { NxCombobox, DataItem, NxFormGroup }
   from '@sonatype/react-shared-components';
@@ -28,8 +28,7 @@ function search(query: string):DataItem<number>[] {
 
 export default function NxComboboxPredeterminedListExample() {
   const [matches, setMatches] = useState<DataItem<number>[]>(items),
-      [query, setQuery] = useState(''),
-      latestExecutedQueryRef = useRef<string | null>(null);
+      [query, setQuery] = useState('');
 
   function onSelect(item: DataItem<number>) {
     if (typeof item.displayName === 'string') {
@@ -39,7 +38,6 @@ export default function NxComboboxPredeterminedListExample() {
   }
 
   const executeQuery = useCallback(function executeQuery(query: string) {
-    latestExecutedQueryRef.current = query;
     setMatches(search(query));
   }, [query]);
 
