@@ -114,7 +114,7 @@ function NxComboboxRender<T extends string | number = string>(
         if (elToFocus) {
 
           setFocusableBtnIndex(newFocusableBtnIndex);
-          elToFocus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          elToFocus.scrollIntoView({ block: 'nearest' });
 
           if (autoComplete && elToFocus.textContent) {
             onSearchTextChange(elToFocus.textContent);
