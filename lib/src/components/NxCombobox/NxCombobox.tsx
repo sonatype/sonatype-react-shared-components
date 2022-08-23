@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, MouseEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, MouseEvent, Ref, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
-import { always, any, dec, inc, pipe, prop } from 'ramda';
+import { always, dec, inc } from 'ramda';
 
 import './NxCombobox.scss';
 
@@ -16,7 +16,6 @@ import NxTextInput from '../NxTextInput/NxTextInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import { useUniqueId } from '../../util/idUtil';
-import useMutationObserver from '@rooks/use-mutation-observer';
 import DataItem from '../../util/DataItem';
 export { Props } from './types';
 
@@ -47,7 +46,6 @@ function NxComboboxRender<T extends string | number = string>(
 
       dropdownRef = useRef<HTMLDivElement>(null),
       inputRef = useRef<HTMLDivElement>(null),
-      elFocusedOnMostRecentRender = useRef<Element | null>(null),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       [prevSearchText, setPrevSearchText] = useState(''),
@@ -209,31 +207,6 @@ function NxComboboxRender<T extends string | number = string>(
       focusFirst();
     }
   }, [prevSearchText]);
-
-  /*
-   * Horrible Hack: When an element within the dropdown is removed from the DOM while it is focused, we want
-   * to move focus to the text input.  It turns out that this is very difficult to track in React, since
-   * useEffect and useLayoutEffect generally fire too late - after the element has already been removed and
-   * lost whatever focus it might've had. The only other way to get this info is with a useLayoutEffect handler
-   * _in the component that was unmounted_, e.g. in NxButton. That would require adding new props for a special use
-   * case to not only NxButton, but also NxLoadWrapper and NxLoadError. Just querying who has focus on every render
-   * seemed like the less bad option.
-   */
-  elFocusedOnMostRecentRender.current = typeof document === 'undefined' ? null : document.activeElement;
-
-  const checkForRemovedFocusedEl = useCallback(function checkForRemovedFocusedEl(mutations: MutationRecord[]) {
-    const nodeContainedFocus = (el: Node) => el.contains(elFocusedOnMostRecentRender.current),
-        nodeListContainedFocus =
-            pipe<[NodeList], Node[], boolean>(Array.from, any(nodeContainedFocus)),
-        focusedChildWasRemoved =
-            any(pipe(prop('removedNodes'), nodeListContainedFocus), mutations);
-
-    if (focusedChildWasRemoved) {
-      focusTextInput();
-    }
-  }, []);
-
-  useMutationObserver(dropdownRef, checkForRemovedFocusedEl, { childList: true });
 
   function handleOnClick(match: DataItem<T>) {
     onSelect(match);
