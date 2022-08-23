@@ -24,6 +24,7 @@ export default function NxDrawerExample() {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDrawerScroll, setShowDrawerScroll] = useState(false);
   const [showDrawerWithFooter, setShowDrawerWithFooter] = useState(false);
+  const [showDrawerWithFooterScroll, setShowDrawerWithFooterScroll] = useState(false);
 
   const content = (
     <NxDrawer.Content>
@@ -109,6 +110,32 @@ export default function NxDrawerExample() {
           <NxDrawer.Header>
             <NxDrawer.Header.Title>A Simple NxDrawer With Footer</NxDrawer.Header.Title>
           </NxDrawer.Header>
+          <NxDrawer.Content>
+            <NxP>
+              Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
+              I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
+              cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
+              pie jelly-o cheesecake candy I love.
+            </NxP>
+          </NxDrawer.Content>
+          <NxFooter>
+            <NxP>
+              <em>Pastry</em> tiramisu jujubes biscuit marshmallow donut dragée.
+              Jelly beans chocolate bar jelly beans soufflé candy wafer topping.
+            </NxP>
+            <NxButtonBar>
+              <NxButton variant="primary">Footer</NxButton>
+            </NxButtonBar>
+          </NxFooter>
+        </NxDrawer>
+      )}
+      {showDrawerWithFooterScroll && (
+        <NxDrawer id="nx-drawer-with-footer-scroll"
+                  onCancel={() => setShowDrawerWithFooterScroll(false)}
+                  aria-labelledby="nx-drawer-with-footer">
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title>A Simple NxDrawer With Footer</NxDrawer.Header.Title>
+          </NxDrawer.Header>
           {content}
           <NxFooter>
             <NxP>
@@ -147,6 +174,11 @@ export default function NxDrawerExample() {
           <br/>
           <NxButton id="nx-drawer-with-footer-open-button" onClick={() => setShowDrawerWithFooter(true)}>
             Open Simple Drawer With Footer
+          </NxButton>
+          <br/>
+          <br/>
+          <NxButton id="nx-drawer-with-footer-scroll-open-button" onClick={() => setShowDrawerWithFooterScroll(true)}>
+            Open Simple Drawer With Footer and Scroll
           </NxButton>
         </NxP>
         <NxP>

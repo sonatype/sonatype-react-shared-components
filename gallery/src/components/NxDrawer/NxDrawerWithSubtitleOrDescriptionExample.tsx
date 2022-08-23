@@ -8,7 +8,6 @@ import React, { useState } from 'react';
 
 import { NxDrawer,
   NxButton,
-  NxButtonBar,
   NxP,
   NxBackButton,
   NxPageMain,
@@ -71,9 +70,6 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
         brownie gingerbread marzipan. I love candy canes dragée croissant cookie chocolate muffin. Marshmallow
         powder lollipop cotton candy bonbon lollipop liquorice chupa chups jelly-o.
       </NxP>
-      <NxButtonBar>
-        <NxButton variant="primary">Button</NxButton>
-      </NxButtonBar>
     </NxDrawer.Content>
   );
 
