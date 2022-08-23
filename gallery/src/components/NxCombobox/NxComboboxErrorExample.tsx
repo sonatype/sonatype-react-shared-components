@@ -40,7 +40,7 @@ export default function NxComboboxErrorExample() {
     <NxFormGroup label="Combobox">
       <NxCombobox matches={[]}
                   loading={loading}
-                  error={error}
+                  loadError={error}
                   searchText={query}
                   onSearchTextChange={onSearchTextChange}
                   onSearch={onSearch}

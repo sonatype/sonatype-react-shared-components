@@ -16,7 +16,7 @@ type InputProps = Omit<NxTextInputProps, 'type' | 'value' | 'isPristine' | 'read
 export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   searchText: string;
   loading?: boolean | null;
-  error?: ReactNode;
+  loadError?: ReactNode;
   matches: DataItem<T>[];
   onSelect: (m: DataItem<T>) => void;
   onSearch: (s: string) => void;
@@ -30,7 +30,7 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
 export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   searchText: PropTypes.string.isRequired,
   loading: PropTypes.bool,
-  error: PropTypes.node,
+  loadError: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
     displayName: PropTypes.node.isRequired

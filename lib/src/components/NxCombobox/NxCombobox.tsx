@@ -27,7 +27,7 @@ function NxComboboxRender<T extends string | number = string>(
   const {
         className: classNameProp,
         loading,
-        error,
+        loadError,
         matches,
         onSelect,
         searchText,
@@ -55,20 +55,20 @@ function NxComboboxRender<T extends string | number = string>(
 
       inputId = useUniqueId('nx-combobox-input', id),
       dropdownId = useUniqueId('nx-combobox-dropdown'),
-      dropdownRole = error || loading || isEmpty ? 'alert' : 'listbox',
+      dropdownRole = loadError || loading || isEmpty ? 'alert' : 'listbox',
       dropdownBtnId = useUniqueId('nx-dropdown-button'),
 
       className = classnames('nx-combobox', classNameProp, {
         'nx-combobox--dropdown-showable': showDropdown
       }),
       dropdownClassName = classnames('nx-combobox__menu', {
-        'nx-combobox__menu--error': !!error
+        'nx-combobox__menu--error': !!loadError
       });
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
   function handleComponentFocus(evt: FocusEvent<HTMLDivElement>) {
-    if (error) {
+    if (loadError) {
       // check if this is focus coming into the component from somewhere else on the page, not just moving between
       // children of this component and not from focus coming into the browser from some other window
       const comingFromOutsidePage = evt.relatedTarget === null,
@@ -180,6 +180,7 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function doSearch(value: string) {
+    focusTextInput();
     onSearch(value.trim());
     setShowDropdown(true);
   }
@@ -278,7 +279,7 @@ function NxComboboxRender<T extends string | number = string>(
                       aria-busy={!!loading}
                       aria-live="polite"
                       aria-hidden={!showDropdown}>
-        <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
+        <NxLoadWrapper { ...{ loading } } error={loadError} retryHandler={() => doSearch(searchText)}>
           {
             matches.length ? matches.map((match, i) =>
               <button id={`${dropdownBtnId}-${i}`}
