@@ -89,13 +89,9 @@ function NxComboboxRender<T extends string | number = string>(
   // is listening to the blur event, in this case, the show/hide dropdown is handled by the click event
   function handleMouseDown(evt: MouseEvent) { evt.preventDefault(); }
 
-  function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
+  function handleComponentBlur() {
     setFocusableBtnIndex(null);
-
-    // Check if the new focused element is a child of the parent, if not, then close the dropdown menu
-    if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget))) {
-      setShowDropdown(false);
-    }
+    setShowDropdown(false);
   }
 
   function handleFilterChange(value: string) {
