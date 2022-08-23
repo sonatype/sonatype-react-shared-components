@@ -158,8 +158,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   }, [onCancel]);
 
   const dialogContextValue = {
-    dialogEl: dialogRefState,
-    onCancel: onCancel
+    dialogEl: dialogRefState
   };
 
   return (
