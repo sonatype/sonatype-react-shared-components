@@ -32,7 +32,7 @@
       position: absolute;
       right: initial;
 
-      .nx-combobox__option--visual-selected {
+      .nx-dropdown-button.selected {
         background-color: var(--nx-swatch-blue-90);
       }
     }

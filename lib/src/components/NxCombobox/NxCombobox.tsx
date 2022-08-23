@@ -290,7 +290,7 @@ function NxComboboxRender<T extends string | number = string>(
                       role="option"
                       aria-selected={i === focusableBtnIndex }
                       className= {classnames('nx-dropdown-button',
-                          { 'nx-combobox__option--visual-selected': i === focusableBtnIndex })}
+                          { 'selected': i === focusableBtnIndex })}
                       tabIndex={-1}
                       disabled={disabled || undefined}
                       key={match.id}
