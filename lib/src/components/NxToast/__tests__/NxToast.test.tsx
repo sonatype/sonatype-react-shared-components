@@ -4,95 +4,75 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {
-  faCheckCircle,
-  faExclamationCircle,
-  faExclamationTriangle,
-  faInfoCircle
-} from '@fortawesome/free-solid-svg-icons';
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import NxCloseButton from '../../NxCloseButton/NxCloseButton';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+
+import React from 'react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import { fireEvent, screen } from '@testing-library/react';
+
+import userEvent from '@testing-library/user-event';
 
 import NxToast from '../NxToast';
 import { NxToastProps } from '../types';
+import { NxErrorAlert } from '../../NxAlert/NxAlert';
 
 describe('NxToast', function() {
   const simpleProps: NxToastProps = {
-        toastId: 1,
-        type: 'success',
-        message: 'Test toast message',
-        toastContainerRef: null
-      },
-      getShallow = getShallowComponent<NxToastProps>(NxToast, simpleProps);
+    onClose: () => {},
+    children: <NxErrorAlert>Toast Message</NxErrorAlert>
+  };
 
-  it('renders a toast', function() {
-    const nxToast = getShallow();
-    expect(nxToast).toMatchSelector('.nx-toast');
+  const quickRender = rtlRender(NxToast, simpleProps),
+      renderEl = rtlRenderElement(NxToast, simpleProps);
+
+  it('renders a div with a class .nx-toast', function() {
+    const component = quickRender();
+    const toast = component.container.children[0];
+
+    expect(toast.nodeName).toEqual('DIV');
+    expect(toast).toHaveClass('nx-toast');
   });
 
-  it('renders the classNames given to it', function() {
-    const extendedProps: Partial<NxToastProps> = {
-      className: 'test-classname ufo'
-    };
-    const nxToast = getShallow(extendedProps);
-    expect(nxToast).toMatchSelector('.nx-toast.test-classname.ufo');
+  it('contains an NxErrorAlert with the NxToast message', function() {
+    quickRender();
+
+    const alert = screen.getByRole('alert');
+
+    expect(alert).toBeInTheDocument();
+    expect(alert).toHaveTextContent('Toast Message');
   });
 
-  it('renders the toast message in an .nx-toast__content', function() {
-    const contentEl = getShallow({ ...simpleProps, message: 'test123'}).find('.nx-toast__content');
+  it('adds a class specified with the className prop', function() {
+    const component = renderEl({ className: 'foo' });
 
-    expect(contentEl).toExist();
-    expect(contentEl).toHaveText('test123');
+    expect(component).toHaveClass('foo');
+    expect(component).toHaveClass('nx-toast');
   });
 
-  describe('Icons', function() {
-    it('renders correct icon and aria-label props for toast of type "error"', function() {
-      const nxToast = getShallow({ ...simpleProps, type: 'error'});
+  it('calls the onClose function when the close button is clicked', async function() {
+    const user = userEvent.setup();
+    const onClose = jest.fn();
 
-      expect(nxToast.find(NxFontAwesomeIcon)).toExist();
-      expect(nxToast.find(NxFontAwesomeIcon)).toHaveProp('icon', faExclamationCircle);
-      expect(nxToast.find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'Error');
-    });
+    const toast = renderEl({ onClose });
+    const closeBtn = screen.getByRole('button', {name: 'Close'});
 
-    it('renders correct icon and aria-label props for toast of type "warning"', function() {
-      const nxToast = getShallow({ ...simpleProps, type: 'warning'});
-
-      expect(nxToast.find(NxFontAwesomeIcon)).toExist();
-      expect(nxToast.find(NxFontAwesomeIcon)).toHaveProp('icon', faExclamationTriangle);
-      expect(nxToast.find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'Warning');
-    });
-
-    it('renders correct icon and aria-label props for toast of type "success"', function() {
-      const nxToast = getShallow({ ...simpleProps, type: 'success'});
-
-      expect(nxToast.find(NxFontAwesomeIcon)).toExist();
-      expect(nxToast.find(NxFontAwesomeIcon)).toHaveProp('icon', faCheckCircle);
-      expect(nxToast.find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'Success');
-    });
-
-    it('renders correct icon and aria-label props for toast of type "info"', function() {
-      const nxToast = getShallow({ ...simpleProps, type: 'info'});
-
-      expect(nxToast.find(NxFontAwesomeIcon)).toExist();
-      expect(nxToast.find(NxFontAwesomeIcon)).toHaveProp('icon', faInfoCircle);
-      expect(nxToast.find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'Info');
-    });
+    expect(onClose).not.toHaveBeenCalled();
+    await user.click(closeBtn);
+    fireEvent.animationEnd(toast as Element);
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  it('passes any other props to the div', function() {
-    const nxToast = getShallow({ id: 'foo', title: 'baz' });
-    expect(nxToast).toHaveProp('id', 'foo');
-    expect(nxToast).toHaveProp('title', 'baz');
+  it('calls the onClose function when close button is in focus and Enter key is pressed', async function() {
+    const user = userEvent.setup();
+    const onClose = jest.fn();
+
+    const toast = renderEl({ onClose });
+    const closeBtn = screen.getByRole('button', {name: 'Close'});
+
+    expect(onClose).not.toHaveBeenCalled();
+    await closeBtn.focus();
+    await user.keyboard('{Enter}');
+    fireEvent.animationEnd(toast as Element);
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  it('sets aria-atomic on the div', function() {
-    expect(getShallow()).toHaveProp('aria-atomic', true);
-  });
-
-  it('renders a Close button', function() {
-    const nxToast = getShallow();
-
-    expect(nxToast).toContainMatchingElement(NxCloseButton);
-  });
 });
