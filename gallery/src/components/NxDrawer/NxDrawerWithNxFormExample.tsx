@@ -80,6 +80,27 @@ export default function NxDrawerWithNxFormExample() {
                              onChange={onPasswordChange}
                              { ...passwordState } />
               </NxFormGroup>
+              <NxFormGroup label="Password" isRequired>
+                <NxTextInput type="password"
+                             aria-required={true}
+                             placeholder="Password"
+                             onChange={onPasswordChange}
+                             { ...passwordState } />
+              </NxFormGroup>
+              <NxFormGroup label="Password" isRequired>
+                <NxTextInput type="password"
+                             aria-required={true}
+                             placeholder="Password"
+                             onChange={onPasswordChange}
+                             { ...passwordState } />
+              </NxFormGroup>
+              <NxFormGroup label="Password" isRequired>
+                <NxTextInput type="password"
+                             aria-required={true}
+                             placeholder="Password"
+                             onChange={onPasswordChange}
+                             { ...passwordState } />
+              </NxFormGroup>
               <NxFieldset label="Colors" isRequired>
                 <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
                 <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
