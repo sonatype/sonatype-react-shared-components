@@ -33,8 +33,6 @@ function NxComboboxRender<T extends string | number = string>(
         searchText,
         onSearchTextChange,
         onSearch,
-        long,
-        short,
         disabled,
         emptyMessage,
         autoComplete,
@@ -60,9 +58,6 @@ function NxComboboxRender<T extends string | number = string>(
       dropdownRole = error || loading || isEmpty ? 'alert' : 'listbox',
       dropdownBtnId = useUniqueId('nx-dropdown-button'),
 
-      inputClassName = classnames('nx-combobox__input', { 'nx-text-input--long': long,
-        'nx-text-input--short': short
-      }),
       className = classnames('nx-combobox', classNameProp, {
         'nx-combobox--dropdown-showable': showDropdown
       }),
@@ -263,7 +258,7 @@ function NxComboboxRender<T extends string | number = string>(
                    id={inputId}
                    isPristine
                    {...inputProps}
-                   className={inputClassName}
+                   className='nx-combobox__input'
                    value={searchText}
                    onChange={handleFilterChange}
                    disabled={disabled || undefined}

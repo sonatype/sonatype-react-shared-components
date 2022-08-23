@@ -51,7 +51,7 @@ export default function NxComboboxPredeterminedListExample() {
 
   return (
     <NxFormGroup label="State">
-      <NxCombobox long
+      <NxCombobox className="nx-combobox--long"
                   matches={matches}
                   searchText={query}
                   onSearchTextChange={onSearchTextChange}

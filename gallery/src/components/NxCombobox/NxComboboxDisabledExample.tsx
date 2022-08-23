@@ -45,8 +45,8 @@ export default function NxComboboxDisabledExample() {
 
   return (
     <NxFormGroup label="Combobox">
-      <NxCombobox disabled
-                  short
+      <NxCombobox className="nx-combobox--short"
+                  disabled
                   matches={matches}
                   searchText={query}
                   onSearchTextChange={onSearchTextChange}

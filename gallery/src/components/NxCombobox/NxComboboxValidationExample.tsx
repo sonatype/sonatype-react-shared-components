@@ -59,8 +59,8 @@ export default function NxComboboxRequiredExample() {
 
   return (
     <NxFormGroup label='State' isRequired>
-      <NxCombobox inputProps={{...inputState, validatable: true}}
-                  short
+      <NxCombobox className="nx-combobox--short"
+                  inputProps={{...inputState, validatable: true}}
                   matches={matches}
                   searchText={query}
                   onSearchTextChange={onSearchTextChange}

@@ -199,6 +199,36 @@ const NxComboboxPage = () =>
       </NxTile.Subsection>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
+          <NxH3>NxCombobox CSS Classes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-combobox--short</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Directly on the <NxCode>NxCombobox</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>Short variant of the <NxCode>NxCombobox</NxCode>.</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-combobox--long</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Directly on the <NxCode>NxCombobox</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>Long variant of the <NxCode>NxCombobox</NxCode>.</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Helpers</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
@@ -214,7 +244,7 @@ const NxComboboxPage = () =>
                         codeExamples={NxComboboxPredeterminedListExampleCode}
                         liveExample={NxComboboxPredeterminedListExample}>
       An example of an <NxCode>NxCombobox</NxCode> tied to a provided list of options to select from and
-      with a <NxCode>long</NxCode> prop to make it wider.
+      with a <NxCode>long</NxCode> modifier to make it wider.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Non-emptiness Validation Example"
@@ -222,7 +252,7 @@ const NxComboboxPage = () =>
                         codeExamples={NxComboboxValidationExampleCode}
                         liveExample={NxComboboxValidationExample}>
       An example of an <NxCode>NxCombobox</NxCode> that validates that its contents are non-empty and
-      with a <NxCode>short</NxCode> prop to make it narrower.
+      with a <NxCode>short</NxCode> modifier to make it narrower.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Backend Query Example"
@@ -244,7 +274,7 @@ const NxComboboxPage = () =>
                         id="nx-combobox-disabled-example"
                         codeExamples={NxComboboxDisabledExampleCode}
                         liveExample={NxComboboxDisabledExample}>
-      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>disabled</NxCode> and <NxCode>short</NxCode> prop.
+      An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>disabled</NxCode> and <NxCode>short</NxCode> modifier.
       Note that even though in this example there is non-empty search text, the dropdown does not open.
     </GalleryExampleTile>
 
