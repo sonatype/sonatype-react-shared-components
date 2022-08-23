@@ -30,12 +30,12 @@ const NxToastPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         Toasts are rendered on the top right corner of the screen, and will remain in place until the user
-        dismisses them individually. Each toast renders one <NxCode>NxAlert</NxCode>, which comes in four
-        variations: Error, Info, Warning, and Success. To find out more about <NxCode>NxAlert</NxCode>, you
-        can review the documentation <NxTextLink href="#/pages/Alert">here</NxTextLink>.
+        dismisses them individually. Each toast renders one
+        {' '}<NxTextLink href="#/pages/Alert"><NxCode>NxAlert</NxCode></NxTextLink>, which comes in four
+        variations: Error, Info, Warning, and Success.
       </NxP>
       <NxP>
-        Toasts generally fall under a ‘global and static’ context, in a sense that throughout the application,
+        Toasts generally fall under a "global and static" context, in a sense that throughout the application,
         toasts are rendered within the same container on the top right corner of the screen.
       </NxP>
       <NxWarningAlert>
@@ -49,7 +49,7 @@ const NxToastPage = () =>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
-              <NxTable.Cell>Resource</NxTable.Cell>
+              <NxTable.Cell>Prop</NxTable.Cell>
               <NxTable.Cell>Type</NxTable.Cell>
               <NxTable.Cell>Required</NxTable.Cell>
               <NxTable.Cell>Details</NxTable.Cell>
@@ -74,7 +74,7 @@ const NxToastPage = () =>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
-              <NxTable.Cell>Resource</NxTable.Cell>
+              <NxTable.Cell>Prop</NxTable.Cell>
               <NxTable.Cell>Type</NxTable.Cell>
               <NxTable.Cell>Required</NxTable.Cell>
               <NxTable.Cell>Details</NxTable.Cell>
@@ -99,8 +99,8 @@ const NxToastPage = () =>
                 ultimately renders an <NxCode>NxAlert</NxCode> (or one of its variants such as
                 {' '}<NxCode>NxSuccessAlert</NxCode>). Most commonly, this would just be one of the RSC
                 {' '}<NxCode>Nx*Alert</NxCode> components themselves, but custom wrapping components are also permitted.
-                Note that the calling code should not specify the<NxCode>onClose</NxCode> prop for the alert; it will be
-                set up internally by <NxCode>NxToast</NxCode>. Calling code should instead use the
+                Note that the calling code should not specify the <NxCode>onClose</NxCode> prop for the alert; it will
+                be set up internally by <NxCode>NxToast</NxCode>. Calling code should instead use the
                 {' '}<NxCode>onClose</NxCode> prop of <NxCode>NxToast</NxCode> itself. Additionally, note that the alert
                 text content should be brief: only one rendered line of text per toast is supported.
               </NxTable.Cell>
