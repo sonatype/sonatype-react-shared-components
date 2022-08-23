@@ -78,7 +78,7 @@
     animation: reducedAnimationIn 0.4s linear;
 
     &.nx-toast--closing {
-      animation: reducedAnimationIn, reducedAnimationIn 0.4s linear;
+      animation: reducedAnimationOut 0.4s linear;
     }
   }
 }
