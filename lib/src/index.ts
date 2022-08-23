@@ -324,8 +324,9 @@ export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemN
 
 export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
 
-export { default as NxToastContainer } from './components/NxToast/NxToastContainer';
-export { default as NxToast } from './components/NxToast/NxToast';
+export { default as NxToastContainer, NxToastContainerProps as NxToastContainerProps }
+  from './components/NxToast/NxToastContainer';
+export { default as NxToast, NxToastProps as NxToastProps } from './components/NxToast/NxToast';
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
 

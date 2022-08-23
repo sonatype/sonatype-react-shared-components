@@ -7,22 +7,15 @@
 import { HTMLAttributes, ReactNode, ReactElement } from 'react';
 import * as PropTypes from 'prop-types';
 
-export type Props = HTMLAttributes<HTMLDivElement>;
-
-export const propTypes = {
-  className: PropTypes.string,
-  onClose: PropTypes.func
-} as PropTypes.ValidationMap<Props>;
+export interface NxToastProps extends HTMLAttributes<HTMLDivElement> {
+  onClose: () => void;
+  children: ReactElement;
+}
 
 export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
   onClose: PropTypes.func.isRequired,
   children: PropTypes.any.isRequired
 };
-
-export interface NxToastProps extends HTMLAttributes<HTMLDivElement> {
-  onClose: () => void;
-  children: ReactElement;
-}
 
 export type NxToastContainerContextType = {
   onToastClosing: (toast: HTMLElement | null)=> void;

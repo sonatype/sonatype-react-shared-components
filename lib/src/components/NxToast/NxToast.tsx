@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import NxToastContainerContext from './contexts';
 
 import { nxToastPropTypes, NxToastProps } from './types';
+export { NxToastProps };
 
 const NxToast = (props: NxToastProps) => {
   const { onClose, children, className } = props;

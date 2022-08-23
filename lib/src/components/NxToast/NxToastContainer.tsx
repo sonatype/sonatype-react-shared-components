@@ -9,10 +9,9 @@ import NxToastContainerContext from './contexts';
 import {reject, last} from 'ramda';
 
 import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
+export { NxToastContainerProps };
 
 import './NxToast.scss';
-
-export { Props } from './types';
 
 const NxToastContainer = (props: NxToastContainerProps) => {
   const { children } = props;
