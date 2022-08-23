@@ -6,9 +6,9 @@
  */
 
 .nx-toast__wrapper {
-  ///nx-toast__wrapper has position absolute to ensure toasts stay in the top right corner of the page.
-  //Using display:flex and flex-end ensures the right side of the toast is aligned with the right side of 
-  //nx-page-main. The nx-toast_container has position fixed applied so it remains fixed while scrolling.
+  // nx-toast__wrapper has position absolute to ensure toasts stay in the top right corner of the page.
+  // Using display:flex and flex-end ensures the right side of the toast is aligned with the right side of 
+  // nx-page-main. The nx-toast_container has position fixed applied so it remains fixed while scrolling.
   position: absolute;
   top: 0;
   right: 0;
