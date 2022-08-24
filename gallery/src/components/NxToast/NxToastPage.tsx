@@ -161,7 +161,7 @@ const NxToastPage = () =>
       </NxTile.Header>
       <NxTile.Content>
         <NxP>
-          An complex full page layout example. With the inclusion of <NxCode>NxGlobalHeader</NxCode>, the toasts
+          A complex full page layout example. With the inclusion of <NxCode>NxGlobalHeader</NxCode>, the toasts
           will be positioned in the top right corner of the <NxCode>NxPageMain</NxCode>, underneath the the header.
           Extra content is provided to be able to view the positioning of the toasts with scrolling behavior.
         </NxP>
