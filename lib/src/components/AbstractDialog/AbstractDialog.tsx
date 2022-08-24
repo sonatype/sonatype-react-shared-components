@@ -115,20 +115,20 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
      * the browser around modals to simplify the dialog styling around z-index handling
      */
 
-    if (isModal) {
-      if (hasNativeModalSupport) {
+    if (hasNativeModalSupport) {
+      if (isModal) {
         // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (el as any).showModal();
       }
       else {
-        // without native support we don't trap focus in the dialog, but we can at least start it off there
-        el.focus();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (el as any).show();
       }
     }
     else {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (el as any).show();
+      // without native support we don't trap focus in the dialog, but we can at least start it off there
+      el.focus();
     }
 
     return () => {
