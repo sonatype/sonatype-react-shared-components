@@ -36,6 +36,37 @@ describe('NxFormSelect', function() {
     it('looks disabled', simpleTest(disabledSelector));
   });
 
+  describe('validatable', function() {
+    it('initially looks normal', simpleTest(validationSelector));
+
+    describe('when valid and non-pristine', function() {
+      beforeEach(async function() {
+        const [select] = await waitAndGetElements(`${validationSelector} .nx-form-select__select`);
+
+        await select.select('AU');
+      });
+
+      it('shows valid styling', simpleTest(validationSelector));
+
+      // color-contrast rule breaks in the presence of background-images
+      it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
+    });
+
+
+    describe('when invalid and non-pristine', function() {
+      beforeEach(async function() {
+        const [select] = await waitAndGetElements(`${validationSelector} .nx-form-select__select`);
+
+        await select.select('AU');
+        await select.select('');
+      });
+      it('shows invalid styling', simpleTest(validationSelector));
+
+      // color-contrast rule breaks in the presence of background-images
+      it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
+    });
+  });
+
   // color-contrast rule breaks in the presence of background-images
   it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
 });
