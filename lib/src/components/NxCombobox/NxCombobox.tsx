@@ -108,14 +108,15 @@ function NxComboboxRender<T extends string | number = string>(
   // helper for focusing different buttons in the dropdown menu
   const adjustBtnFocus = (adjust: (i: number) => number) => () => {
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
-            elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
+            elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null,
+            elToFocusText = matches[newFocusableBtnIndex].displayName as string | null;
         if (elToFocus) {
 
           setFocusableBtnIndex(newFocusableBtnIndex);
           elToFocus.scrollIntoView({ block: 'nearest' });
 
-          if (autoComplete && elToFocus.textContent) {
-            onChange(elToFocus.textContent);
+          if (autoComplete && elToFocusText) {
+            onChange(elToFocusText);
           }
         }
       },
