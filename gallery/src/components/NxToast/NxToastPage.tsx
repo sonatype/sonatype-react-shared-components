@@ -133,7 +133,7 @@ const NxToastPage = () =>
       </NxTile.Header>
       <NxTile.Content>
         <NxP>
-          An simple full page layout example. Note that this layout does not have <NxCode>NxGlobalHeader</NxCode> and
+          A simple full page layout example. Note that this layout does not have <NxCode>NxGlobalHeader</NxCode> and
           therefore the toasts will be positioned in the top right corner of the screen.
         </NxP>
         <NxP>
