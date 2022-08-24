@@ -54,8 +54,7 @@ export default function NxFormLayoutExample() {
     setCommentState(nxTextInputStateHelpers.userInput(validator, val));
   }
 
-  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>(''),
-      selectValidationErrors = selectState === null ? 'A selection is required' : null;
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('', validator);
 
   function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
     setSelectVal(evt.currentTarget.value);
@@ -91,7 +90,7 @@ export default function NxFormLayoutExample() {
       hasValidationErrors(combineValidationErrors(
           textInputState.validationErrors,
           colorValidationError,
-          selectValidationErrors,
+          selectState.validationErrors,
           tagColorValidationError
       )) ? 'Required fields are missing' : null;
 
@@ -157,14 +156,16 @@ export default function NxFormLayoutExample() {
           Blue
         </NxRadio>
       </NxFieldset>
-      <NxFormGroup label="Select" isRequired>
-        <NxFormSelect { ...selectState } onChange={onSelectChange}>
-          <option value="">Select an option</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-          <option value="option4">Option 4</option>
-          <option value="option5">Option 5</option>
+      <NxFormGroup label="Select a Continent" isRequired>
+        <NxFormSelect onChange={onSelectChange} validatable { ...selectState }>
+          <option value="">-- Select a Continent --</option>
+          <option value="NA">North America</option>
+          <option value="SA">South America</option>
+          <option value="AF">Africa</option>
+          <option value="EU">Europe</option>
+          <option value="AS">Asia</option>
+          <option value="AU">Australia</option>
+          <option value="AN">Antarctica</option>
         </NxFormSelect>
       </NxFormGroup>
       <NxFieldset label="Enable features - this text is extra long to demonstrate wrapping, how much wood would
