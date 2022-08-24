@@ -5,10 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-.nx-toast__wrapper {
-  // nx-toast__wrapper has position absolute to ensure toasts stay in the top right corner of the page.
+.nx-toast-wrapper {
+  // nx-toast-wrapper has position absolute to ensure toasts stay in the top right corner of the page.
   // Using display:flex and flex-end ensures the right side of the toast is aligned with the right side of 
-  // nx-page-main. The nx-toast_container has position fixed applied so it remains fixed while scrolling.
+  // nx-page-main. The nx-toast-container has position fixed applied so it remains fixed while scrolling.
   position: absolute;
   top: 0;
   right: 0;
@@ -17,7 +17,7 @@
   margin-right: var(--nx-spacing-6x);
 }
 
-.nx-toast__container {
+.nx-toast-container {
   position: fixed;
   width: 500px;
 }
