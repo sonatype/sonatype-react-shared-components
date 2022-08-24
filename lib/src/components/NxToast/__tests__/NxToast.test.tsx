@@ -48,6 +48,13 @@ describe('NxToast', function() {
     }
   });
 
+  it('sets the focus to its close button when initially rendered', function() {
+    renderEl();
+    const closeBtn = screen.getByRole('button', {name: 'Close'});
+
+    expect(closeBtn).toHaveFocus();
+  });
+
   it('calls the onClose function when the close button is clicked', async function() {
     const user = userEvent.setup();
     const onClose = jest.fn();
