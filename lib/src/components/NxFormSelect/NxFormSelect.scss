@@ -59,14 +59,6 @@
       outline: none;
     }
 
-    &[disabled] {
-      $disabled-caret: caret-with-color('hsl(0, 0%25, 60%25)');
-
-      color: var(--nx-color-text-disabled);
-      background-color: var(--nx-color-interactive-background-disabled);
-      background-image: url($disabled-caret);
-      border-color: var(--nx-color-interactive-border-disabled);
-    }
   }
 
   &--long {
@@ -78,16 +70,28 @@
   }
 
   &, &.pristine, &.pristine.valid {
-    &:hover {
-      .nx-form-select__select {
+    .nx-form-select__select {
+      &:hover {
         border-color: var(--nx-color-interactive-border-hover);
       }
-    }
 
-    &:focus-within {
-      .nx-form-select__select {
+      &:focus {
         border-color: var(--nx-color-interactive-border-focus);
         box-shadow: var(--nx-box-shadow-focus);
+      }
+    }
+  }
+
+  // styles which must appear this var down to override some with equal precedence higher up
+  &__select {
+    &[disabled] {
+      &, &:hover {
+        $disabled-caret: caret-with-color('hsl(0, 0%25, 60%25)');
+
+        color: var(--nx-color-text-disabled);
+        background-color: var(--nx-color-interactive-background-disabled);
+        background-image: url($disabled-caret);
+        border-color: var(--nx-color-interactive-border-disabled);
       }
     }
   }
