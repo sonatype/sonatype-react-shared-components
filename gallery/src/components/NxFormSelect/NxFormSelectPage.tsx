@@ -13,11 +13,13 @@ import NxFormSelectExample from './NxFormSelectExample';
 import NxFormSelectValidationExample from './NxFormSelectValidationExample';
 import NxFormSelectOverflowExample from './NxFormSelectOverflowExample';
 import NxFormSelectWidthsExample from './NxFormSelectWidthsExample';
+import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
 
 const nxFormSelectExampleSourceCode = require('./NxFormSelectExample?raw');
 const nxFormSelectValidationExampleSourceCode = require('./NxFormSelectValidationExample?raw');
 const nxFormSelectOverflowExampleSourceCode = require('./NxFormSelectOverflowExample?raw');
 const nxFormSelectWidthsExampleSourceCode = require('./NxFormSelectWidthsExample?raw');
+const nxFormSelectDisabledExampleSourceCode = require('./NxFormSelectDisabledExample?raw');
 
 const NxFormSelectPage = () =>
   <>
@@ -220,10 +222,18 @@ const NxFormSelectPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Form Select Widths Examples"
-                        id="nx-form-select-widths-examples"
+                        id="nx-form-select-widths-example"
                         codeExamples={nxFormSelectWidthsExampleSourceCode}
                         liveExample={NxFormSelectWidthsExample}>
       Demonstrates <NxCode>NxFormSelect</NxCode>'s with with the short and long variants applied.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Form Select Disabled Example"
+                        id="nx-form-select-disabled-example"
+                        codeExamples={nxFormSelectDisabledExampleSourceCode}
+                        liveExample={NxFormSelectDisabledExample}>
+      Demonstrates an <NxCode>NxFormSelect</NxCode> disabled state. Note that disabling
+      is only supported via attribute, not class name.
     </GalleryExampleTile>
   </>;
 
