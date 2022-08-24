@@ -5,15 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxTable, NxP, NxTextLink, NxTile, NxH3, NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxCode, NxTable, NxP, NxTextLink, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxFormSelectExample from './NxFormSelectExample';
+import NxFormSelectValidationExample from './NxFormSelectValidationExample';
 import NxFormSelectOverflowExample from './NxFormSelectOverflowExample';
 import NxFormSelectWidthsExample from './NxFormSelectWidthsExample';
 
 const nxFormSelectExampleSourceCode = require('./NxFormSelectExample?raw');
+const nxFormSelectValidationExampleSourceCode = require('./NxFormSelectValidationExample?raw');
 const nxFormSelectOverflowExampleSourceCode = require('./NxFormSelectOverflowExample?raw');
 const nxFormSelectWidthsExampleSourceCode = require('./NxFormSelectWidthsExample?raw');
 
@@ -45,11 +47,37 @@ const NxFormSelectPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                <NxWarningAlert>
-                  Deprecated: <NxCode>isPristine</NxCode> was previously only used for styling,
-                  but since we no longer want to show if this component is in the pristine state,
-                  this attribute is no longer needed.
-                </NxWarningAlert>
+                Should be set to true when the user has not yet adjusted the value of the select
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>validatable</NxCode></NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                If true, this <NxCode>NxFormSelect</NxCode> is subject to validation, the result of which should be
+                passed in via the <NxCode>validationErrors</NxCode> prop, resulting in validation CSS classes being
+                applied (see below). If false, the NxTextInput is not considered to be subject to validation, the
+                <NxCode>validationErrors</NxCode> prop is ignored, and validation-related CSS classes
+                are never applied.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>validationErrors</NxTable.Cell>
+              <NxTable.Cell>string | string[]</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell />
+              <NxTable.Cell>
+                Validation failure messages for components where <NxCode>validatable</NxCode> is
+                true. Any strings contained by this prop's value are taken to be error messages describing a validation
+                failure. These trigger the invalid styling on the component and the first such error message is
+                displayed within the component. If this prop's value does not contain any strings (i.e. if it is null,
+                undefined, or an empty array), the component value is taken to be valid, and corresponding styles
+                are added. For non-validatable components, this prop is ignored. In the case
+                of <NxCode>NxFormSelect</NxCode>, the most common use case for validation errors would be when
+                the first option within the select is actually a placeholder that doesn't truly represent a valid
+                selection.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -75,14 +103,9 @@ const NxFormSelectPage = () =>
         </NxTile.SubsectionHeader>
         <NxP>
           The <NxCode>nxFormSelectStateHelpers</NxCode> object includes the following recommended state helper
-          functions, which each return an object containining the "stateful" parts of the NxTextInput props{' '}
-          (<NxCode>value</NxCode>).
+          functions, which each return an object containining the "stateful" parts of the NxFormSelect props{' '}
+          (<NxCode>value</NxCode>, <NxCode>isPristine</NxCode>, <NxCode>validationErrors</NxCode>).
         </NxP>
-        <NxWarningAlert>
-          Deprecated: <NxCode>nxFormSelectStateHelpers</NxCode> used to do more,
-          but those features are now deprecated and are no longer needed.
-          We no longer recommend using this for new use.
-        </NxWarningAlert>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
@@ -94,18 +117,22 @@ const NxFormSelectPage = () =>
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell>initialState</NxTable.Cell>
-              <NxTable.Cell>(initialValue: string)</NxTable.Cell>
+              <NxTable.Cell>(initialValue: string, validator?: Function)</NxTable.Cell>
               <NxTable.Cell>
-                Returns an initialized state with the specified value.
+                Returns an initialized state with the specified value, <NxCode>isPristine</NxCode> set to true,
+                and <NxCode>validationErrors</NxCode> based on running the <NxCode>initialValue</NxCode> through
+                the <NxCode>validator</NxCode> function.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>userInput</NxTable.Cell>
-              <NxTable.Cell>(newValue: string)</NxTable.Cell>
+              <NxTable.Cell>(newValue: string, validator?: Function)</NxTable.Cell>
               <NxTable.Cell>
                 <NxP>
-                  Meant to be used to handle user changes to the text input value. Returns a state with the
-                  specified value.
+                  Meant to be used to handle user changes to the select value. Returns a state with the
+                  specified value, <NxCode>isPristine</NxCode> set to true,
+                  and <NxCode>validationErrors</NxCode> based on running the <NxCode>initialValue</NxCode> through
+                  the <NxCode>validator</NxCode> function.
                 </NxP>
               </NxTable.Cell>
             </NxTable.Row>
@@ -117,6 +144,25 @@ const NxFormSelectPage = () =>
           with <NxCode>useState</NxCode> to further simplify management of <NxCode>NxFormSelect</NxCode> state within
           a parent component.
         </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>Arguments</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>useNxFormSelectState</NxTable.Cell>
+              <NxTable.Cell>(initialValue: string, validator?: Function)</NxTable.Cell>
+              <NxTable.Cell>
+                Returns a 2-value tuple containing the current stateful state values and a setter function which
+                expects the new value driven by user selection.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
       </NxTile.Subsection>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -156,6 +202,14 @@ const NxFormSelectPage = () =>
                         liveExample={NxFormSelectExample}>
       Demonstrates an <NxCode>NxFormSelect</NxCode> using the <NxCode>useNxFormSelectState</NxCode> hook to manage
       its state.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Form Select Validation Example"
+                        id="nx-form-select-validation-example"
+                        codeExamples={nxFormSelectValidationExampleSourceCode}
+                        liveExample={NxFormSelectValidationExample}>
+      Demonstrates an <NxCode>NxFormSelect</NxCode> That requires an option other than the initial placeholder option
+      to be selected
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Form Select Overflow Example"
