@@ -31,7 +31,7 @@ const NxToastPage = () =>
       <NxP>
         Toasts are rendered on the top right corner of the screen, and will remain in place until the user
         dismisses them individually. Each toast renders one
-        {' '}<NxTextLink href="#/pages/Alert"><NxCode>NxAlert</NxCode></NxTextLink>, which comes in four
+        {' '}<NxCode><NxTextLink href="#/pages/Alert">NxAlert</NxTextLink></NxCode>, which comes in four
         variations: Error, Info, Warning, and Success.
       </NxP>
       <NxP>
