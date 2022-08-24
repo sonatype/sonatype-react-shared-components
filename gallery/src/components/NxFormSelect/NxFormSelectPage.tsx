@@ -210,7 +210,7 @@ const NxFormSelectPage = () =>
                         id="nx-form-select-validation-example"
                         codeExamples={nxFormSelectValidationExampleSourceCode}
                         liveExample={NxFormSelectValidationExample}>
-      Demonstrates an <NxCode>NxFormSelect</NxCode> That requires an option other than the initial placeholder option
+      Demonstrates an <NxCode>NxFormSelect</NxCode> that requires an option other than the initial placeholder option
       to be selected
     </GalleryExampleTile>
 
