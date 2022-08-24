@@ -17,9 +17,9 @@ describe('NxFormSelect', function() {
   describe('simple', function() {
     it('has a dark border by default', simpleTest(selector));
 
-    it('has a darker border when hovered', hoverTest(selector));
-    it('has a blue border when focused', focusTest(selector));
-    it('has a blue border when hovered and focused', focusAndHoverTest(selector));
+    it('has a darker border when hovered', hoverTest(selector, `${selector} select`));
+    it('has a blue border when focused', focusTest(selector, `${selector} select`));
+    it('has a blue border when hovered and focused', focusAndHoverTest(selector, `${selector} select`));
   });
 
   describe('with long overflowing text', function() {
@@ -27,14 +27,10 @@ describe('NxFormSelect', function() {
   });
 
   describe('short and long variants', function() {
-    const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
-
     it('looks shorter and longer', simpleTest(widthSelector));
   });
 
   describe('disabled', function() {
-    const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
-
     it('looks disabled', simpleTest(disabledSelector));
   });
 
