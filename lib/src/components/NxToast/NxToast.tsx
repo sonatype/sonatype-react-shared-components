@@ -12,7 +12,7 @@ import { nxToastPropTypes, NxToastProps } from './types';
 export { NxToastProps };
 
 const NxToast = (props: NxToastProps) => {
-  const { onClose, children, className } = props;
+  const { onClose, children, className, ...attrs } = props;
 
   const [isClosing, setIsClosing] = useState(false);
 
@@ -47,7 +47,8 @@ const NxToast = (props: NxToastProps) => {
   return (
     <div className={classes}
          onAnimationEnd={handleAnimationEnd}
-         ref={ref}>
+         ref={ref}
+         {...attrs}>
       {childrenWithProps}
     </div>
   );
