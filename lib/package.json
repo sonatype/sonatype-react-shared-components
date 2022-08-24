@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components",
-  "version": "10.5.4",
+  "version": "10.7.0",
   "description": "Sonatype shared UI components and utilities written in React",
   "main": "index.js",
   "repository": {
@@ -33,6 +33,8 @@
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",
   "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
     "@testing-library/dom": "^8.16.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.0.4",
@@ -87,6 +89,7 @@
     "@types/ramda": "^0.27.64",
     "classnames": "^2.2.6",
     "fuse.js": "^6.4.6",
+    "pretty-bytes": "^6.0.0",
     "prop-types": "^15.7.2",
     "ramda": "^0.28.0"
   },
