@@ -16,7 +16,7 @@ import './NxFormSelect.scss';
 
 export { Props };
 
-const NxFormSelect = forwardRef<HTMLSelectElement, Props>(function NxFormSelect(props: Props, forwardedRef) {
+const NxFormSelect = forwardRef<HTMLDivElement, Props>(function NxFormSelect(props: Props, forwardedRef) {
   const { className: classNameProp, validatable, isPristine, validationErrors, ...attrs } = props,
       { showValidationErrors: formShowValidationErrors } = useContext(FormAriaContext),
       showValidationErrors = formShowValidationErrors || !isPristine,
@@ -30,9 +30,8 @@ const NxFormSelect = forwardRef<HTMLSelectElement, Props>(function NxFormSelect(
       });
 
   return (
-    <div className={className}>
+    <div ref={forwardedRef} className={className}>
       <select className="nx-form-select__select"
-              ref={forwardedRef}
               { ...attrs }
               aria-invalid={isInvalid}
               aria-errormessage={invalidMessageId} />

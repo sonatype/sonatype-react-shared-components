@@ -83,6 +83,28 @@ const NxFormSelectPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>className</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell />
+              <NxTable.Cell>
+                Any <NxCode>className</NxCode> provided for this component is applied to the top-level element of the
+                component, which is a wrapper and is <em>not</em> the <NxCode>&lt;select&gt;</NxCode> itself.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>ref</NxTable.Cell>
+              <NxTable.Cell>Ref</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell />
+              <NxTable.Cell>
+                This component can receive a <NxCode>ref</NxCode> which will be attached to the top-level element
+                of the component. This element is not the <NxCode>&lt;select&gt;</NxCode>.
+                The <NxCode>&lt;select&gt;</NxCode> can be accessed from this element
+                via <NxCode>querySelector</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;select&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/select">
@@ -93,7 +115,8 @@ const NxFormSelectPage = () =>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 <NxCode>NxFormSelect</NxCode> supports any html attribute that's normally supported by HTML{' '}
-                <NxCode>&lt;select&gt;</NxCode>.
+                <NxCode>&lt;select&gt;</NxCode>. Any such attribute will be applied to
+                the <NxCode>&lt;select&gt;</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
