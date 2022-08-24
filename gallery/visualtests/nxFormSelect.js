@@ -7,12 +7,14 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxFormSelect', function() {
-  const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Form Select');
-  const selector = '#nx-form-select-example .nx-form-select',
-      validationSelector = '#nx-form-select-validation-example .nx-form-select',
-      overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
-      disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
-      widthSelector = '#nx-form-select-widths-example .form-select-width-variants';
+  const { waitAndGetElements, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } =
+      setupBrowser('#/pages/Form Select');
+
+  const selector = '#nx-form-select-example .gallery-example-live',
+      validationSelector = '#nx-form-select-validation-example .gallery-example-live',
+      overflowSelector = '#nx-form-select-overflow-example .gallery-example-live',
+      disabledSelector = '#nx-form-select-disabled-example .gallery-example-live',
+      widthSelector = '#nx-form-select-widths-example .gallery-example-live';
 
   describe('simple', function() {
     it('has a dark border by default', simpleTest(selector));
