@@ -75,10 +75,10 @@
 */
 @media (prefers-reduced-motion: reduce) {
   .nx-toast {
-    animation: reducedAnimationIn 0.4s linear;
+    animation-name: reducedAnimationIn;
 
     &.nx-toast--closing {
-      animation: reducedAnimationOut 0.4s linear;
+      animation-name: reducedAnimationOut;
     }
   }
 }
