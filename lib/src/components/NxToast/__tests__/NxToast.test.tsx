@@ -13,39 +13,39 @@ import userEvent from '@testing-library/user-event';
 
 import NxToast from '../NxToast';
 import { NxToastProps } from '../types';
-import { NxErrorAlert } from '../../NxAlert/NxAlert';
+
+import NxAlert from '../../NxAlert/NxAlert';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 describe('NxToast', function() {
   const simpleProps: NxToastProps = {
     onClose: () => {},
-    children: <NxErrorAlert>Toast Message</NxErrorAlert>
+    children: <NxAlert icon={faEye}>Toast Message</NxAlert>
   };
 
   const quickRender = rtlRender(NxToast, simpleProps),
       renderEl = rtlRenderElement(NxToast, simpleProps);
 
-  it('renders a div with a class .nx-toast', function() {
-    const component = quickRender();
-    const toast = component.container.children[0];
-
-    expect(toast.nodeName).toEqual('DIV');
-    expect(toast).toHaveClass('nx-toast');
-  });
-
   it('contains an alert with the child NxAlert\'s message', function() {
     quickRender();
 
-    const alert = screen.getByRole('alert');
+    const alert = screen.getByText('Toast Message');
 
     expect(alert).toBeInTheDocument();
-    expect(alert).toHaveTextContent('Toast Message');
   });
 
-  it('adds a class specified with the className prop', function() {
-    const component = renderEl({ className: 'foo' });
+  it('sets specified ClassNames and attributes on the top-level element', function() {
+    const component = renderEl()!;
+    const customizedComponent = renderEl({ className: 'foo', id: 'bar', lang: 'en' })!;
 
-    expect(component).toHaveClass('foo');
-    expect(component).toHaveClass('nx-toast');
+    expect(customizedComponent).toHaveClass('foo');
+    expect(customizedComponent).toHaveClass('nx-toast');
+    expect(customizedComponent).toHaveAttribute('id', 'bar');
+    expect(customizedComponent).toHaveAttribute('lang', 'en');
+
+    for (const cls of Array.from(component.classList)) {
+      expect(customizedComponent).toHaveClass(cls);
+    }
   });
 
   it('calls the onClose function when the close button is clicked', async function() {
