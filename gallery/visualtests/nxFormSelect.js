@@ -6,14 +6,15 @@
  */
 const { setupBrowser } = require('./testUtils');
 
-describe('nx-form-select', function() {
+describe('NxFormSelect', function() {
   const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Form Select');
   const selector = '#nx-form-select-example .nx-form-select',
+      validationSelector = '#nx-form-select-validation-example .nx-form-select',
       overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
       disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
       widthSelector = '#nx-form-select-widths-example .form-select-width-variants';
 
-  describe('Simple NxFormSelect', function() {
+  describe('simple', function() {
     it('has a dark border by default', simpleTest(selector));
 
     it('has a darker border when hovered', hoverTest(selector));
@@ -21,17 +22,17 @@ describe('nx-form-select', function() {
     it('has a blue border when hovered and focused', focusAndHoverTest(selector));
   });
 
-  describe('NxFormSelect with long overflowing text', function() {
-    it('it looks right and text is truncated', simpleTest(overflowSelector));
+  describe('with long overflowing text', function() {
+    it('looks right and text is truncated', simpleTest(overflowSelector));
   });
 
-  describe('Short and Long Variants of NxFormSelect', function() {
+  describe('short and long variants', function() {
     const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
 
     it('looks shorter and longer', simpleTest(widthSelector));
   });
 
-  describe('Disabled NxFormSelect', function() {
+  describe('disabled', function() {
     const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
 
     it('looks disabled', simpleTest(disabledSelector));
