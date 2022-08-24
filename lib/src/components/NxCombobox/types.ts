@@ -13,14 +13,15 @@ import DataItem from '../../util/DataItem';
 
 type InputProps = Omit<NxTextInputProps, 'type' | 'value' | 'isPristine' | 'readOnly'>;
 
-export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
-  searchText: string;
+export interface Props<T extends string | number = string>
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect' | 'onChange'> {
+  value: string;
   loading?: boolean | null;
   loadError?: ReactNode;
   matches: DataItem<T>[];
   onSelect: (m: DataItem<T>) => void;
   onSearch: (s: string) => void;
-  onSearchTextChange: (s: string) => void;
+  onChange: (s: string) => void;
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
   autoComplete?: boolean | null;
@@ -28,7 +29,7 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
 }
 
 export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
-  searchText: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   loading: PropTypes.bool,
   loadError: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
@@ -37,7 +38,7 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   }).isRequired).isRequired,
   onSelect: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  onSearchTextChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   emptyMessage: PropTypes.node,
   autoComplete: PropTypes.bool,

@@ -35,7 +35,7 @@ export default function NxComboboxDisabledExample() {
     setMatches(search(query));
   }, [query]);
 
-  function onSearchTextChange(query: string) {
+  function onChange(query: string) {
     setQuery(query);
   }
 
@@ -48,8 +48,8 @@ export default function NxComboboxDisabledExample() {
       <NxCombobox className="nx-combobox--short"
                   disabled
                   matches={matches}
-                  searchText={query}
-                  onSearchTextChange={onSearchTextChange}
+                  value={query}
+                  onChange={onChange}
                   onSearch={onSearch}
                   onSelect={onSelect} />
     </NxFormGroup>

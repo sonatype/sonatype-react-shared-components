@@ -45,21 +45,20 @@ const NxComboboxPage = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>searchText</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>value</NxCode></NxTable.Cell>
               <NxTable.Cell>string</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>The current value of the text input box.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>onSearchTextChange</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>onChange</NxCode></NxTable.Cell>
               <NxTable.Cell>Function (string =&gt; void)</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Callback that fires when the user changes the search text. The handler passed in for this prop should
-                update the <NxCode>searchText</NxCode> prop. The handler receives the new search text value as its
-                argument.
+                Callback that fires when the user changes the input value. The handler passed in for this prop should
+                update the <NxCode>value</NxCode> prop. The handler receives the new value as its argument.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -73,7 +72,7 @@ const NxComboboxPage = () =>
                 the trimmed value of the text input, whenever the error alert's Retry button is clicked, and whenever
                 the component gains focus while in an error state (which is intended to automatically trigger a retry
                 attempt). The handler passed in for this prop should, in addition to performing the search, update
-                the <NxCode>loading</NxCode> prop. The handler receives the new search text value as its argument.
+                the <NxCode>loading</NxCode> prop. The handler receives the new value as its argument.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -275,7 +274,7 @@ const NxComboboxPage = () =>
                         codeExamples={NxComboboxDisabledExampleCode}
                         liveExample={NxComboboxDisabledExample}>
       An example of an <NxCode>NxCombobox</NxCode> with a <NxCode>disabled</NxCode> and <NxCode>short</NxCode> modifier.
-      Note that even though in this example there is non-empty search text, the dropdown does not open.
+      Note that even though in this example there is non-empty value, the dropdown does not open.
     </GalleryExampleTile>
 
   </>;

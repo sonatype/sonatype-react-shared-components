@@ -41,7 +41,7 @@ export default function NxComboboxPredeterminedListExample() {
     setMatches(search(query));
   }, [query]);
 
-  function onSearchTextChange(query: string) {
+  function onChange(query: string) {
     setQuery(query);
   }
 
@@ -53,8 +53,8 @@ export default function NxComboboxPredeterminedListExample() {
     <NxFormGroup label="State">
       <NxCombobox className="nx-combobox--long"
                   matches={matches}
-                  searchText={query}
-                  onSearchTextChange={onSearchTextChange}
+                  value={query}
+                  onChange={onChange}
                   onSearch={onSearch}
                   onSelect={onSelect} />
     </NxFormGroup>

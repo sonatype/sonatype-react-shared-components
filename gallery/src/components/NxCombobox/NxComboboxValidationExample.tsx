@@ -48,7 +48,7 @@ export default function NxComboboxRequiredExample() {
     setMatches(search(query));
   }, [query]);
 
-  function onSearchTextChange(query: string) {
+  function onChange(query: string) {
     setQuery(query);
     setInputState(userInput(validator, query));
   }
@@ -62,8 +62,8 @@ export default function NxComboboxRequiredExample() {
       <NxCombobox className="nx-combobox--short"
                   inputProps={{...inputState, validatable: true}}
                   matches={matches}
-                  searchText={query}
-                  onSearchTextChange={onSearchTextChange}
+                  value={query}
+                  onChange={onChange}
                   onSearch={onSearch}
                   onSelect={onSelect} />
     </NxFormGroup>

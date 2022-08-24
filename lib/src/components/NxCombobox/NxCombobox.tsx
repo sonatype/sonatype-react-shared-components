@@ -29,8 +29,8 @@ function NxComboboxRender<T extends string | number = string>(
         loadError,
         matches,
         onSelect,
-        searchText,
-        onSearchTextChange,
+        value,
+        onChange,
         onSearch,
         disabled,
         emptyMessage,
@@ -73,7 +73,7 @@ function NxComboboxRender<T extends string | number = string>(
           comingFromChildNode = evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget);
 
       if (!(comingFromOutsidePage || comingFromChildNode)) {
-        doSearch(searchText);
+        doSearch(value);
       }
       else {
         setShowDropdown(true);
@@ -92,15 +92,15 @@ function NxComboboxRender<T extends string | number = string>(
     setShowDropdown(false);
   }
 
-  function handleFilterChange(value: string) {
+  function handleFilterChange(newVal: string) {
     setFocusableBtnIndex(null);
-    onSearchTextChange(value);
+    onChange(newVal);
 
-    if (value && value.trim() !== searchText.trim()) {
-      doSearch(value);
+    if (newVal && newVal.trim() !== value.trim()) {
+      doSearch(newVal);
       setPrevSearchText('');
     }
-    else if (!value) {
+    else if (!newVal) {
       setShowDropdown(false);
     }
   }
@@ -115,7 +115,7 @@ function NxComboboxRender<T extends string | number = string>(
           elToFocus.scrollIntoView({ block: 'nearest' });
 
           if (autoComplete && elToFocus.textContent) {
-            onSearchTextChange(elToFocus.textContent);
+            onChange(elToFocus.textContent);
           }
         }
       },
@@ -138,7 +138,7 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'End':
-        inputEle.setSelectionRange(searchText.length, searchText.length);
+        inputEle.setSelectionRange(value.length, value.length);
         evt.preventDefault();
         break;
       case 'ArrowDown':
@@ -185,9 +185,9 @@ function NxComboboxRender<T extends string | number = string>(
 
   function setInlineOption() {
     if (typeof matches[0].displayName === 'string' &&
-    matches[0].displayName.toLowerCase().indexOf(searchText.toLowerCase()) === 0) {
-      setPrevSearchText(searchText);
-      onSearchTextChange(matches[0].displayName);
+    matches[0].displayName.toLowerCase().indexOf(value.toLowerCase()) === 0) {
+      setPrevSearchText(value);
+      onChange(matches[0].displayName);
     }
   }
 
@@ -203,7 +203,7 @@ function NxComboboxRender<T extends string | number = string>(
 
   useEffect(function() {
     if (prevSearchText && autoComplete && showDropdown) {
-      inputRef.current?.querySelector('input')?.setSelectionRange(prevSearchText.length, searchText.length);
+      inputRef.current?.querySelector('input')?.setSelectionRange(prevSearchText.length, value.length);
       focusFirst();
     }
   }, [prevSearchText]);
@@ -229,7 +229,7 @@ function NxComboboxRender<T extends string | number = string>(
                    isPristine
                    {...inputProps}
                    className='nx-combobox__input'
-                   value={searchText}
+                   value={value}
                    onChange={handleFilterChange}
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
@@ -248,7 +248,7 @@ function NxComboboxRender<T extends string | number = string>(
                       aria-busy={!!loading}
                       aria-live="polite"
                       aria-hidden={!showDropdown}>
-        <NxLoadWrapper { ...{ loading } } error={loadError} retryHandler={() => doSearch(searchText)}>
+        <NxLoadWrapper { ...{ loading } } error={loadError} retryHandler={() => doSearch(value)}>
           {
             matches.length ? matches.map((match, i) =>
               <button id={`${dropdownBtnId}-${i}`}

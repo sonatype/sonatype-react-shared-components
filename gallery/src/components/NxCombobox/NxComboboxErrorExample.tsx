@@ -23,7 +23,7 @@ export default function NxComboboxErrorExample() {
     setLoading(false);
   }, [query]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
 
-  function onSearchTextChange(query: string) {
+  function onChange(query: string) {
     setQuery(query);
   }
 
@@ -41,8 +41,8 @@ export default function NxComboboxErrorExample() {
       <NxCombobox matches={[]}
                   loading={loading}
                   loadError={error}
-                  searchText={query}
-                  onSearchTextChange={onSearchTextChange}
+                  value={query}
+                  onChange={onChange}
                   onSearch={onSearch}
                   onSelect={onSelect} />
     </NxFormGroup>
