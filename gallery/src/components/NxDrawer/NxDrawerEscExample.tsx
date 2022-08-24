@@ -40,14 +40,20 @@ export default function NxDrawerEscExample() {
                   onCancel={() => setShowDrawer(false)}
                   aria-labelledby="nx-drawer-esc">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>Hello</NxDrawer.Header.Title>
-            <NxDrawer.Header.Subtitle>Hello</NxDrawer.Header.Subtitle>
-            <NxDrawer.Header.Description>Hello</NxDrawer.Header.Description>
+            <NxDrawer.Header.Title>Header Title</NxDrawer.Header.Title>
+            <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
+            <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
           </NxDrawer.Header>
           <NxDrawer.Content>
             <NxDropdown label="Expand" isOpen={dropdownIsOpen} onToggleCollapse={onToggleDropdownCollapse}>
               <button onClick={onClick} className="nx-dropdown-button">
-                Hello
+                Link 1
+              </button>
+              <button onClick={onClick} className="nx-dropdown-button">
+                Link 2
+              </button>
+              <button onClick={onClick} className="nx-dropdown-button">
+                Link 3
               </button>
             </NxDropdown>
           </NxDrawer.Content>
@@ -55,7 +61,7 @@ export default function NxDrawerEscExample() {
       )}
       <NxPageMain>
         <NxPageTitle>
-          <NxH1>NxDrawers Dropdown Escape Example</NxH1>
+          <NxH1>Drawer With Dropdown Example</NxH1>
         </NxPageTitle>
 
         <NxP>
@@ -69,7 +75,9 @@ export default function NxDrawerEscExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-esc-open-button" onClick={() => setShowDrawer(true)}>Open Drawer</NxButton>
+          <NxButton id="nx-drawer-esc-open-button" onClick={() => setShowDrawer(true)}>
+            Open Drawer With Dropdown
+          </NxButton>
         </NxP>
         <NxP>
           Brownie dessert candy wafer macaroon. Marzipan dragée liquorice biscuit icing I love.

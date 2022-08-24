@@ -87,7 +87,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
                   onCancel={() => setShowDrawerWithSubtitle(false)}
                   aria-labelledby="nx-drawer-with-subtitle">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>NxDrawer Title</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title>Drawer With Subtitle</NxDrawer.Header.Title>
             <NxDrawer.Header.Subtitle>Subtitle</NxDrawer.Header.Subtitle>
           </NxDrawer.Header>
           {content}
@@ -98,7 +98,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
                   onCancel={() => setShowDrawerWithDescription(false)}
                   aria-labelledby="nx-drawer-with-description">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>NxDrawer Title</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title>Drawer With Description</NxDrawer.Header.Title>
             <NxDrawer.Header.Description>{description}</NxDrawer.Header.Description>
           </NxDrawer.Header>
           {content}
@@ -109,7 +109,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
                   onCancel={() => setShowDrawerWithBoth(false)}
                   aria-labelledby="nx-drawer-with-subtitle-and-description">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>NxDrawer Title</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title>Drawer With Both</NxDrawer.Header.Title>
             <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
             <NxDrawer.Header.Description>{description}</NxDrawer.Header.Description>
           </NxDrawer.Header>
@@ -118,7 +118,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
       )}
       <NxPageMain>
         <NxPageTitle>
-          <NxH1>NxDrawers With Subtitle Or Description Example</NxH1>
+          <NxH1>Drawers With Subtitle Or Description Example</NxH1>
         </NxPageTitle>
 
         <NxP>

@@ -27,9 +27,9 @@ export default function NxDrawerVariantExample() {
   const contentAndFooter = (
     <>
       <NxDrawer.Header>
-        <NxDrawer.Header.Title>Hello</NxDrawer.Header.Title>
-        <NxDrawer.Header.Subtitle>Hello</NxDrawer.Header.Subtitle>
-        <NxDrawer.Header.Description>Hello</NxDrawer.Header.Description>
+        <NxDrawer.Header.Title>Header Title</NxDrawer.Header.Title>
+        <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
+        <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
       </NxDrawer.Header>
       <NxDrawer.Content>
         <NxP>
@@ -100,7 +100,7 @@ export default function NxDrawerVariantExample() {
 
       <NxPageMain>
         <NxPageTitle>
-          <NxH1>NxDrawers with Normal and Narrow Variant</NxH1>
+          <NxH1>Drawers with Normal and Narrow Variant</NxH1>
         </NxPageTitle>
 
         <NxP>
