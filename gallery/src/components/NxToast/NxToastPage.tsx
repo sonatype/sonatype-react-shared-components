@@ -148,7 +148,7 @@ const NxToastPage = () =>
             <NxAccordion.Title>Example Code</NxAccordion.Title>
           </NxAccordion.Header>
           <CodeExample content={NxToastSimpleLayoutExampleCode} />
-          <GalleryTileFooter clipboardContent= {NxToastSimpleLayoutExampleCode}/>
+          <GalleryTileFooter clipboardContent={NxToastSimpleLayoutExampleCode}/>
         </NxStatefulAccordion>
       </NxTile.Content>
     </NxTile>
