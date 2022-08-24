@@ -39,6 +39,7 @@ function NxComboboxRender<T extends string | number = string>(
         id,
         'aria-required': ariaRequired,
         'aria-describedby': ariaDescribedBy,
+        'aria-label': ariaLabel,
         ...attrs
       } = props,
 
@@ -92,7 +93,7 @@ function NxComboboxRender<T extends string | number = string>(
     setShowDropdown(false);
   }
 
-  function handleFilterChange(newVal: string) {
+  function handleOnChange(newVal: string) {
     setFocusableBtnIndex(null);
     onChange(newVal);
 
@@ -168,7 +169,7 @@ function NxComboboxRender<T extends string | number = string>(
         setShowDropdown(false);
         setFocusableBtnIndex(null);
         if (!showDropdown) {
-          handleFilterChange('');
+          handleOnChange('');
         }
         break;
     }
@@ -231,7 +232,7 @@ function NxComboboxRender<T extends string | number = string>(
                    {...inputProps}
                    className='nx-combobox__input'
                    value={value}
-                   onChange={handleFilterChange}
+                   onChange={handleOnChange}
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
                    aria-autocomplete={autoComplete ? 'both' : 'list'}
@@ -240,7 +241,8 @@ function NxComboboxRender<T extends string | number = string>(
                    aria-activedescendant={focusableBtnIndex !== null ?
                      dropdownRef.current?.children[focusableBtnIndex].id : undefined }
                    aria-required={ariaRequired ?? undefined}
-                   aria-describedby={ariaDescribedBy ?? undefined}/>
+                   aria-describedby={ariaDescribedBy ?? undefined}
+                   aria-label={ariaLabel ?? undefined}/>
       <NxDropdownMenu id={dropdownId}
                       role={dropdownRole}
                       ref={dropdownRef}

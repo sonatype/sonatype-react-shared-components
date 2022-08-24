@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { NxCombobox, DataItem, nxTextInputStateHelpers, NxFormGroup }
+import { NxCombobox, DataItem, nxTextInputStateHelpers }
   from '@sonatype/react-shared-components';
 
 const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
@@ -58,14 +58,13 @@ export default function NxComboboxRequiredExample() {
   }
 
   return (
-    <NxFormGroup label='State' isRequired>
-      <NxCombobox className="nx-combobox--short"
-                  inputProps={{...inputState, validatable: true}}
-                  matches={matches}
-                  value={query}
-                  onChange={onChange}
-                  onSearch={onSearch}
-                  onSelect={onSelect} />
-    </NxFormGroup>
+    <NxCombobox className="nx-combobox--short"
+                inputProps={{...inputState, validatable: true}}
+                matches={matches}
+                value={query}
+                onChange={onChange}
+                onSearch={onSearch}
+                onSelect={onSelect}
+                aria-label="combobox" />
   );
 }

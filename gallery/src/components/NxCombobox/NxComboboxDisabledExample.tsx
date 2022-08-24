@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { NxCombobox, DataItem, NxFormGroup }
+import { NxCombobox, DataItem }
   from '@sonatype/react-shared-components';
 
 const items = prepend(
@@ -44,14 +44,13 @@ export default function NxComboboxDisabledExample() {
   }
 
   return (
-    <NxFormGroup label="Combobox">
-      <NxCombobox className="nx-combobox--short"
-                  disabled
-                  matches={matches}
-                  value={query}
-                  onChange={onChange}
-                  onSearch={onSearch}
-                  onSelect={onSelect} />
-    </NxFormGroup>
+    <NxCombobox className="nx-combobox--short"
+                disabled
+                matches={matches}
+                value={query}
+                onChange={onChange}
+                onSearch={onSearch}
+                onSelect={onSelect}
+                aria-label="combobox" />
   );
 }

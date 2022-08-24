@@ -7,7 +7,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxCombobox, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME, NxFormGroup }
+import { NxCombobox, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 const items = prepend(
@@ -67,14 +67,13 @@ export default function NxComboboxExample() {
   }
 
   return (
-    <NxFormGroup label="Combobox">
-      <NxCombobox loading={loading}
-                  autoComplete={true}
-                  matches={matches}
-                  value={query}
-                  onChange={onChange}
-                  onSearch={onSearch}
-                  onSelect={onSelect} />
-    </NxFormGroup>
+    <NxCombobox loading={loading}
+                autoComplete={true}
+                matches={matches}
+                value={query}
+                onChange={onChange}
+                onSearch={onSearch}
+                onSelect={onSelect}
+                aria-label="combobox" />
   );
 }

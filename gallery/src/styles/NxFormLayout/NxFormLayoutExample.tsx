@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, useCallback } from 'react';
 
 import {
   NxCheckbox,
@@ -22,13 +22,25 @@ import {
   NxFormSelect,
   nxFormSelectStateHelpers,
   NxTransferList,
-  NxFileUpload
+  NxFileUpload,
+  NxCombobox,
+  DataItem
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { map, range } from 'ramda';
+import { map, range, prepend, filter } from 'ramda';
+
+const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
+  'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska',
+  'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
+  'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
+  'Vermont', 'Virginia', 'Washington', 'Washington DC', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 const transferListItems = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
+const comboboxItems = prepend(
+    { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
+    map(i => ({ id: i, displayName: states[i - 1] }), range(1, states.length + 1)));
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
@@ -62,6 +74,25 @@ export default function NxFormLayoutExample() {
       onFileChange = (files: FileList | null) => {
         setFiles(files);
         setFilePristine(false);
+      };
+
+  const [matches, setMatches] = useState<DataItem<number>[]>(comboboxItems),
+      [query, setQuery] = useState(''),
+      onComboboxChange = (query: string) => setQuery(query),
+      search = function(query: string):DataItem<number>[] {
+        const lowercaseQuery = query.toLowerCase(),
+            matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), comboboxItems);
+        return matchingItems;
+      },
+      executeQuery = useCallback(function executeQuery(query: string) {
+        setMatches(search(query));
+      }, [query]),
+      onComboboxSearch = (query: string) => query ? executeQuery(query) : setMatches([]),
+      onComboboxSelect = (item: DataItem<number>) => {
+        if (typeof item.displayName === 'string') {
+          setQuery(item.displayName);
+        }
+        setMatches([item]);
       };
 
   function onSubmit(evt: FormEvent) {
@@ -155,6 +186,13 @@ export default function NxFormLayoutExample() {
       </NxFieldset>
       <NxFormGroup label="Upload a File" sublabel={<>Foo<br/>Bar</>} isRequired>
         <NxFileUpload files={files} isRequired isPristine={isFilePristine} onChange={onFileChange} />
+      </NxFormGroup>
+      <NxFormGroup label="State" isRequired>
+        <NxCombobox matches={matches}
+                    value={query}
+                    onChange={onComboboxChange}
+                    onSearch={onComboboxSearch}
+                    onSelect={onComboboxSelect}/>
       </NxFormGroup>
       <dl className="nx-read-only">
         <dt className="nx-read-only__label">

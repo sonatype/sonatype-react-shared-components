@@ -36,6 +36,10 @@
         background-color: var(--nx-swatch-blue-90);
       }
     }
+
+    .nx-combobox__input{
+      margin-bottom: 0;
+    }
   }
 
   &--long{

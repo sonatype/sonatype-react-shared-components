@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useState } from 'react';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxCombobox, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME, NxFormGroup }
+import { NxCombobox, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 export default function NxComboboxErrorExample() {
@@ -37,14 +37,13 @@ export default function NxComboboxErrorExample() {
   }
 
   return (
-    <NxFormGroup label="Combobox">
-      <NxCombobox matches={[]}
-                  loading={loading}
-                  loadError={error}
-                  value={query}
-                  onChange={onChange}
-                  onSearch={onSearch}
-                  onSelect={onSelect} />
-    </NxFormGroup>
+    <NxCombobox matches={[]}
+                loading={loading}
+                loadError={error}
+                value={query}
+                onChange={onChange}
+                onSearch={onSearch}
+                onSelect={onSelect}
+                aria-label="combobox" />
   );
 }
