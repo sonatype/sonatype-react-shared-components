@@ -33,13 +33,6 @@ export default function NxComboboxExample() {
       [query, setQuery] = useState(''),
       latestExecutedQueryRef = useRef<string | null>(null);
 
-  function onSelect(item: DataItem<number>) {
-    if (typeof item.displayName === 'string') {
-      setQuery(item.displayName);
-    }
-    setMatches([item]);
-  }
-
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
     latestExecutedQueryRef.current = query;
@@ -73,7 +66,6 @@ export default function NxComboboxExample() {
                 value={query}
                 onChange={onChange}
                 onSearch={onSearch}
-                onSelect={onSelect}
                 aria-label="combobox" />
   );
 }

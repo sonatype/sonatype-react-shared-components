@@ -30,19 +30,13 @@ export default function NxComboboxPredeterminedListExample() {
   const [matches, setMatches] = useState<DataItem<number>[]>(items),
       [query, setQuery] = useState('');
 
-  function onSelect(item: DataItem<number>) {
-    if (typeof item.displayName === 'string') {
-      setQuery(item.displayName);
-    }
-    setMatches([item]);
-  }
-
   const executeQuery = useCallback(function executeQuery(query: string) {
     setMatches(search(query));
   }, [query]);
 
   function onChange(query: string) {
     setQuery(query);
+    setMatches(search(query));
   }
 
   function onSearch(query: string) {
@@ -55,7 +49,6 @@ export default function NxComboboxPredeterminedListExample() {
                 value={query}
                 onChange={onChange}
                 onSearch={onSearch}
-                onSelect={onSelect}
                 aria-label="state" />
   );
 }

@@ -115,18 +115,6 @@ const NxComboboxPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>onSelect</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                Function (match =&gt; void)
-              </NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>
-                The callback function to execute when the user selects one of the matches from the dropdown menu.
-                Receives the entire selected item from the <NxCode>matches</NxCode> array as an argument.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
               <NxTable.Cell><NxCode>long</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>

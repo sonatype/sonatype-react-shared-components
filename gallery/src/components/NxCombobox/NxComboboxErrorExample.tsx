@@ -6,17 +6,13 @@
  */
 import React, { useCallback, useState } from 'react';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxCombobox, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { NxCombobox, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 export default function NxComboboxErrorExample() {
   const [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
       [error, setError] = useState<string | null>(null);
-
-  function onSelect({ displayName }: DataItem<number>) {
-    alert('Selected ' + displayName);
-  }
 
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
     setError(`Error executing query ${query}`);
@@ -43,7 +39,6 @@ export default function NxComboboxErrorExample() {
                 value={query}
                 onChange={onChange}
                 onSearch={onSearch}
-                onSelect={onSelect}
                 aria-label="combobox" />
   );
 }

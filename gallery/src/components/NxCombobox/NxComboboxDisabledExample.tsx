@@ -24,13 +24,6 @@ export default function NxComboboxDisabledExample() {
   const [matches, setMatches] = useState<DataItem<number>[]>(items),
       [query, setQuery] = useState('foo');
 
-  function onSelect(item: DataItem<number>) {
-    if (typeof item.displayName === 'string') {
-      setQuery(item.displayName);
-    }
-    setMatches([item]);
-  }
-
   const executeQuery = useCallback(function executeQuery(query: string) {
     setMatches(search(query));
   }, [query]);
@@ -50,7 +43,6 @@ export default function NxComboboxDisabledExample() {
                 value={query}
                 onChange={onChange}
                 onSearch={onSearch}
-                onSelect={onSelect}
                 aria-label="combobox" />
   );
 }

@@ -14,12 +14,11 @@ import DataItem from '../../util/DataItem';
 type InputProps = Omit<NxTextInputProps, 'type' | 'value' | 'isPristine' | 'readOnly'>;
 
 export interface Props<T extends string | number = string>
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect' | 'onChange'> {
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   value: string;
   loading?: boolean | null;
   loadError?: ReactNode;
   matches: DataItem<T>[];
-  onSelect: (m: DataItem<T>) => void;
   onSearch: (s: string) => void;
   onChange: (s: string) => void;
   disabled?: boolean | null;
@@ -36,7 +35,6 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
     id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
     displayName: PropTypes.node.isRequired
   }).isRequired).isRequired,
-  onSelect: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,

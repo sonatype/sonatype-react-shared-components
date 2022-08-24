@@ -17,8 +17,7 @@ describe('NxCombobox', function() {
         value: '',
         onChange: () => {},
         onSearch: () => {},
-        matches: [],
-        onSelect: () => {}
+        matches: []
       },
       rtlRender = rtlUtils.rtlRender(NxCombobox, minimalProps);
 
@@ -206,17 +205,16 @@ describe('NxCombobox', function() {
     expect(onSearch).toHaveBeenCalled();
   });
 
-  it('fires onSelect with the match object when the button with role option is clicked', async function() {
-    const onSelect = jest.fn(),
+  it('fires onChange when the button with role option is clicked', async function() {
+    const onChange = jest.fn(),
         { getByRole, getAllByRole } = rtlRender({
-          matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onSelect }),
+          matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onChange }),
         inputElement = getByRole('combobox');
 
     await userEvent.type(inputElement, 'o');
     const optionBtns = getAllByRole('option');
-    expect(onSelect).not.toHaveBeenCalled();
     await userEvent.click(optionBtns[1]);
-    expect(onSelect).toHaveBeenCalledWith({ id: '2', displayName: 'Boo' });
+    expect(onChange).toHaveBeenCalledWith('Boo');
   });
 
   it('renders empty message if there are no results', function() {

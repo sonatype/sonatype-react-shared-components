@@ -28,7 +28,6 @@ function NxComboboxRender<T extends string | number = string>(
         loading,
         loadError,
         matches,
-        onSelect,
         value,
         onChange,
         onSearch,
@@ -210,8 +209,10 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }, [prevSearchText]);
 
-  function handleOnClick(match: DataItem<T>) {
-    onSelect(match);
+  function handleOnClick({displayName}: DataItem<T>) {
+    if (typeof displayName === 'string') {
+      onChange(displayName);
+    }
     focusTextInput();
     setFocusableBtnIndex(null);
     setShowDropdown(false);

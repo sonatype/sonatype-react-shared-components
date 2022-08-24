@@ -87,13 +87,7 @@ export default function NxFormLayoutExample() {
       executeQuery = useCallback(function executeQuery(query: string) {
         setMatches(search(query));
       }, [query]),
-      onComboboxSearch = (query: string) => query ? executeQuery(query) : setMatches([]),
-      onComboboxSelect = (item: DataItem<number>) => {
-        if (typeof item.displayName === 'string') {
-          setQuery(item.displayName);
-        }
-        setMatches([item]);
-      };
+      onComboboxSearch = (query: string) => query ? executeQuery(query) : setMatches([]);
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
@@ -191,8 +185,7 @@ export default function NxFormLayoutExample() {
         <NxCombobox matches={matches}
                     value={query}
                     onChange={onComboboxChange}
-                    onSearch={onComboboxSearch}
-                    onSelect={onComboboxSelect}/>
+                    onSearch={onComboboxSearch}/>
       </NxFormGroup>
       <dl className="nx-read-only">
         <dt className="nx-read-only__label">

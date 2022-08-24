@@ -19,6 +19,9 @@
       padding: 0;
     }
   }
+  &__input {
+    margin-bottom: 0;
+  }
 
   &__empty-message {
     @include nx-container-helpers.container-horizontal;
@@ -35,10 +38,6 @@
       .nx-dropdown-button.selected {
         background-color: var(--nx-swatch-blue-90);
       }
-    }
-
-    .nx-combobox__input{
-      margin-bottom: 0;
     }
   }
 
