@@ -32,7 +32,7 @@ describe('NxToast', function() {
     expect(toast).toHaveClass('nx-toast');
   });
 
-  it('contains an NxErrorAlert with the NxToast message', function() {
+  it('contains an alert with the child NxAlert\'s message', function() {
     quickRender();
 
     const alert = screen.getByRole('alert');
