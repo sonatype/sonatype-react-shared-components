@@ -21,7 +21,7 @@ const NxFormSelectExample = () => {
 
   return (
     <div className="form-select-width-variants">
-      <NxFormGroup label={`Selected Option: ${selectState.value}`} isRequired>
+      <NxFormGroup label={`Selected Option: ${selectState.value}`}>
         <NxFormSelect onChange={onChange} { ...selectState } className="nx-form-select--short">
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
@@ -31,7 +31,7 @@ const NxFormSelectExample = () => {
         </NxFormSelect>
       </NxFormGroup>
 
-      <NxFormGroup label={`Selected Option: ${selectState2.value}`} isRequired>
+      <NxFormGroup label={`Selected Option: ${selectState2.value}`}>
         <NxFormSelect onChange={onChange2} { ...selectState2 } className="nx-form-select--long">
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
