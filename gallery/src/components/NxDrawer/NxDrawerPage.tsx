@@ -111,6 +111,10 @@ export default function NxDrawerPage() {
             the <NxCode>NxDrawer.Header.Title</NxCode>, <NxCode>NxDrawer.Header.Subtitle</NxCode>,{' '}
             and <NxCode>NxDrawer.Header.Description</NxCode>, respectively.
           </NxP>
+          <NxP>
+            If the <NxCode>NxDrawer.Header.Title</NxCode> is too long to be fully seen, it will be truncated.
+            A tooltip will be visible when hovering over the title to read the full title.
+          </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
