@@ -18,7 +18,7 @@ export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
 };
 
 export type NxToastContainerContextType = {
-  onToastClosing: (toast: HTMLElement | null)=> void;
+  onToastClosing: (toast: HTMLElement | null) => void;
 };
 
 //NxToastContainer
