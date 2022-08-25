@@ -82,17 +82,15 @@
     }
   }
 
-  // styles which must appear this var down to override some with equal precedence higher up
-  &__select {
-    &[disabled] {
-      &, &:hover {
-        $disabled-caret: caret-with-color('hsl(0, 0%25, 60%25)');
+  // styles which must appear this far down to override some with equal precedence higher up
+  &__select[disabled] {
+    &, &:hover {
+      $disabled-caret: caret-with-color('hsl(0, 0%25, 60%25)');
 
-        color: var(--nx-color-text-disabled);
-        background-color: var(--nx-color-interactive-background-disabled);
-        background-image: url($disabled-caret);
-        border-color: var(--nx-color-interactive-border-disabled);
-      }
+      color: var(--nx-color-text-disabled);
+      background-color: var(--nx-color-interactive-background-disabled);
+      background-image: url($disabled-caret);
+      border-color: var(--nx-color-interactive-border-disabled);
     }
   }
 }
