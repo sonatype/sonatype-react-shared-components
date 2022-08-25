@@ -112,7 +112,7 @@ function NxComboboxRender<T extends string | number = string>(
   const adjustBtnFocus = (adjust: (i: number) => number) => () => {
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
             elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null,
-            elToFocusText = matches[newFocusableBtnIndex].displayName as string | null;
+            elToFocusText = matches[newFocusableBtnIndex].displayName;
         if (elToFocus) {
 
           setFocusableBtnIndex(newFocusableBtnIndex);
@@ -196,10 +196,10 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function setInlineOption() {
-    if (typeof matches[0].displayName === 'string' &&
-    matches[0].displayName.toLowerCase().indexOf(value.toLowerCase()) === 0) {
+    const firstOptVal = matches[0].displayName;
+    if (firstOptVal.toLocaleLowerCase().indexOf(value.toLowerCase()) === 0) {
       setPrevSearchText(value);
-      onChange(matches[0].displayName);
+      onChange(firstOptVal);
     }
   }
 
@@ -220,10 +220,8 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }, [prevSearchText]);
 
-  function handleOnClick({displayName}: DataItem<T>) {
-    if (typeof displayName === 'string') {
-      onChange(displayName);
-    }
+  function handleOnClick({displayName}: DataItem<T, string>) {
+    onChange(displayName);
     focusTextInput();
     setFocusableBtnIndex(null);
     setShowDropdown(false);

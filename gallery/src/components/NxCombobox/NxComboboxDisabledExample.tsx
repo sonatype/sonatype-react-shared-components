@@ -14,14 +14,14 @@ const items = prepend(
     map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101))
 );
 
-function search(query: string):DataItem<number>[] {
+function search(query: string):DataItem<number, string>[] {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
   return matchingItems;
 }
 
 export default function NxComboboxDisabledExample() {
-  const [matches, setMatches] = useState<DataItem<number>[]>(items),
+  const [matches, setMatches] = useState<DataItem<number, string>[]>(items),
       [query, setQuery] = useState('foo');
 
   const executeQuery = useCallback(function executeQuery(query: string) {

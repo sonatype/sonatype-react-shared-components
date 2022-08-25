@@ -76,10 +76,10 @@ export default function NxFormLayoutExample() {
         setFilePristine(false);
       };
 
-  const [matches, setMatches] = useState<DataItem<number>[]>(comboboxItems),
+  const [matches, setMatches] = useState<DataItem<number, string>[]>(comboboxItems),
       [query, setQuery] = useState(''),
       onComboboxChange = (query: string) => setQuery(query),
-      search = function(query: string):DataItem<number>[] {
+      search = function(query: string):DataItem<number, string>[] {
         const lowercaseQuery = query.toLowerCase(),
             matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), comboboxItems);
         return matchingItems;

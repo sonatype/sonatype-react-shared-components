@@ -18,7 +18,7 @@ const items = prepend(
 // This function simulates a backend query that takes 3 seconds to return results. In a real implementation
 // this would typically use window.fetch, axios, or a similar REST library rather than querying in-memory data,
 // and typically this would be in another file outside of the react component
-function search(query: string): Promise<DataItem<number>[]> {
+function search(query: string): Promise<DataItem<number, string>[]> {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
 
@@ -28,7 +28,7 @@ function search(query: string): Promise<DataItem<number>[]> {
 }
 
 export default function NxComboboxExample() {
-  const [matches, setMatches] = useState<DataItem<number>[]>([]),
+  const [matches, setMatches] = useState<DataItem<number, string>[]>([]),
       [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
       latestExecutedQueryRef = useRef<string | null>(null);

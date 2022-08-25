@@ -20,14 +20,14 @@ const items = prepend(
     { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: states[i - 1] }), range(1, states.length + 1)));
 
-function search(query: string):DataItem<number>[] {
+function search(query: string):DataItem<number, string>[] {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
   return matchingItems;
 }
 
 export default function NxComboboxPredeterminedListExample() {
-  const [matches, setMatches] = useState<DataItem<number>[]>(items),
+  const [matches, setMatches] = useState<DataItem<number, string>[]>(items),
       [query, setQuery] = useState('');
 
   const executeQuery = useCallback(function executeQuery(query: string) {

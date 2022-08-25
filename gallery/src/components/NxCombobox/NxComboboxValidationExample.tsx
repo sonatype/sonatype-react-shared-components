@@ -20,7 +20,7 @@ const items = prepend(
     { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: states[i - 1] }), range(1, states.length + 1)));
 
-function search(query: string):DataItem<number>[] {
+function search(query: string):DataItem<number, string>[] {
   const lowercaseQuery = query.toLowerCase(),
       matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
   return matchingItems;
@@ -31,7 +31,7 @@ function validator(val: string) {
 }
 
 export default function NxComboboxRequiredExample() {
-  const [matches, setMatches] = useState<DataItem<number>[]>(items),
+  const [matches, setMatches] = useState<DataItem<number, string>[]>(items),
       [query, setQuery] = useState(''),
       [error, setError] = useState<string | null>(null),
       [isPristine, setIsPristine] = useState(true);
