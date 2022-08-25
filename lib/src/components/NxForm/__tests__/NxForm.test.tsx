@@ -5,15 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useContext } from 'react';
-import { ShallowWrapper, mount, shallow } from 'enzyme';
+import { within, fireEvent } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
 
-import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
-import NxForm, { Props } from '../NxForm';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import NxForm from '../NxForm';
 import NxButton from '../../NxButton/NxButton';
-import NxLoadError from '../../NxLoadError/NxLoadError';
-import NxSubmitMask from '../../NxSubmitMask/NxSubmitMask';
-import NxLoadWrapper from '../../NxLoadWrapper/NxLoadWrapper';
-import { NxErrorAlert } from '../../NxAlert/NxAlert';
 import { FormAriaContext } from '../context';
 
 describe('NxForm', function() {
@@ -22,268 +19,298 @@ describe('NxForm', function() {
         showValidationErrors: false,
         children: <div/>
       },
-      getShallow = getShallowComponent<Props>(NxForm, minimalProps),
-      getMounted = getMountedComponent<Props>(NxForm, minimalProps);
+      quickRender = rtlRender(NxForm, minimalProps),
+      renderEl = rtlRenderElement(NxForm, minimalProps);
 
   describe('when doLoad is not defined', function() {
     it('renders a form with .nx-form', function() {
-      expect(getShallow()).toMatchSelector('form.nx-form');
+      const el = renderEl()!;
+
+      expect(el.tagName).toBe('FORM');
+      expect(el).toHaveClass('nx-form');
     });
 
     it('adds extra specified classes', function() {
-      const component = getShallow({ className: 'foo' });
+      const el = renderEl({ className: 'foo' });
 
-      expect(component).toHaveClassName('foo');
-      expect(component).toHaveClassName('nx-form');
-    });
-
-    it('sets the nx-form--has-validation-errors class if the validationErrors contain/are a string', function() {
-      expect(getShallow()).not.toHaveClassName('nx-form--has-validation-errors');
-      expect(getShallow({ validationErrors: null })).not.toHaveClassName('nx-form--has-validation-errors');
-      expect(getShallow({ validationErrors: [] })).not.toHaveClassName('nx-form--has-validation-errors');
-      expect(getShallow({ validationErrors: 'foo' })).toHaveClassName('nx-form--has-validation-errors');
-      expect(getShallow({ validationErrors: ['foo', 'bar'] })).toHaveClassName('nx-form--has-validation-errors');
-    });
-
-    it('sets the nx-form--show-validation-errors class if the showValidationErrors prop is set', function() {
-      expect(getShallow()).not.toHaveClassName('nx-form--show-validation-errors');
-      expect(getShallow({ showValidationErrors: true })).toHaveClassName('nx-form--show-validation-errors');
+      expect(el).toHaveClass('foo');
+      expect(el).toHaveClass('nx-form');
     });
 
     it('sets extra attrs on the form', function() {
-      const component = getShallow({ id: 'foo', lang: 'en_US' });
+      const el = renderEl({ id: 'foo', lang: 'en_US' });
 
-      expect(component).toHaveProp('id', 'foo');
-      expect(component).toHaveProp('lang', 'en_US');
+      expect(el).toHaveAttribute('id', 'foo');
+      expect(el).toHaveAttribute('lang', 'en_US');
     });
 
     it('puts the ref on the form', function() {
       const ref = React.createRef<HTMLFormElement>(),
+          el = renderEl({ ref });
 
-          // note: the fragment is necessary to get around an enzyme issue:
-          // https://github.com/enzymejs/enzyme/issues/1852#issuecomment-433145879
-          component = mount(<><NxForm { ...minimalProps } ref={ref} /></>),
-          domNode = component.find('form').getDOMNode();
-
-      expect(ref.current).toBe(domNode);
+      expect(ref.current).toBe(el);
     });
 
     describe('on form submit', function() {
-      let component: ShallowWrapper,
-          onSubmit: jest.Mock;
+      it('does not execute a native form submission', async function() {
+        const form = renderEl()!;
 
-      beforeEach(function() {
-        onSubmit = jest.fn();
-        component = getShallow({ onSubmit });
+        const defaultNotPrevented = fireEvent.submit(form);
+
+        expect(defaultNotPrevented).toBe(false);
       });
 
-      it('calls preventDefault on the event', function() {
-        const event = { preventDefault: jest.fn() };
+      it('calls the onSubmit prop', async function() {
+        const onSubmit = jest.fn(),
+            form = renderEl({ onSubmit })!;
 
-        component.simulate('submit', event);
-        expect(event.preventDefault).toHaveBeenCalled();
-      });
+        expect(onSubmit).not.toHaveBeenCalled();
 
-      it('calls the onSubmit prop', function() {
-        component.simulate('submit', { preventDefault: jest.fn() });
+        fireEvent.submit(form);
 
         expect(onSubmit).toHaveBeenCalled();
       });
     });
 
     it('renders children', function() {
-      expect(getShallow({ children: <div id="foo" /> })).toContainMatchingElement('div#foo');
+      expect(quickRender({ children: <div data-testid="foo" /> }).getByTestId('foo')).toBeInTheDocument();
     });
 
     it('renders children passed as a function', function() {
-      expect(getShallow({ children: () => <div id="foo" /> })).toContainMatchingElement('div#foo');
+      expect(quickRender({ children: () => <div data-testid="foo" /> }).getByTestId('foo')).toBeInTheDocument();
     });
 
     it('provides the showValidationErrors value to the children via FormAriaContext', function() {
       function Fixture() {
         const { showValidationErrors } = useContext(FormAriaContext);
 
-        return <span className="fixture">{showValidationErrors.toString()}</span>;
+        return <span data-testid="foo">{showValidationErrors.toString()}</span>;
       }
 
-      expect(getMounted({ children: <Fixture /> }).find('.fixture')).toHaveText('false');
-      expect(getMounted({ children: <Fixture />, showValidationErrors: true }).find('.fixture')).toHaveText('true');
+      expect(within(renderEl({ children: <Fixture /> })!).getByTestId('foo')).toHaveTextContent('false');
+      expect(within(renderEl({ children: <Fixture />, showValidationErrors: true })!).getByTestId('foo'))
+          .toHaveTextContent('true');
     });
 
     describe('submit button', function() {
-      it('renders an nx-footer with the submit button', function() {
-        expect(getShallow()).toContainMatchingElement('.nx-footer');
-        expect(getShallow().find('.nx-footer .nx-btn-bar').find(NxButton)).toHaveText('Submit');
+      it('renders a submit button', function() {
+        expect(quickRender().getByRole('button', { name: 'Submit' })).toBeInTheDocument();
       });
 
       it('adds submitBtnClassesProp classes to the submit button', function() {
-        const submitBtn = getShallow({ submitBtnClasses: 'foo bar' })
-            .find(NxButton)
-            .filterWhere(btn => btn.prop('variant') === 'primary');
+        const submitBtn = quickRender({ submitBtnClasses: 'foo bar' }).getByRole('button', { name: 'Submit' });
 
-        expect(submitBtn).toHaveClassName('foo');
-        expect(submitBtn).toHaveClassName('bar');
+        expect(submitBtn).toHaveClass('foo');
+        expect(submitBtn).toHaveClass('bar');
       });
 
       it('uses the submitBtnText in place of "Submit" if provided', function() {
-        const submitBtn = getShallow({ submitBtnText: 'Save' })
-            .find(NxButton)
-            .filterWhere(btn => btn.prop('variant') === 'primary');
+        const submitBtn = quickRender({ submitBtnText: 'Save' }).getByRole('button', { name: 'Save' });
 
-        expect(submitBtn).toHaveText('Save');
+        expect(submitBtn).toBeInTheDocument();
       });
     });
 
     describe('submit error', function() {
-      it('renders an NxLoadError in the nx-footer with the submitError', function() {
-        const noErrorComponent = getShallow(),
-            errorComponent = getShallow({ submitError: 'BAAAAD' }),
-            loadError = errorComponent.find('.nx-footer').find(NxLoadError),
-            emptyLoadError = noErrorComponent.find('.nx-footer').find(NxLoadError);
+      it('renders an alert with the submitError', function() {
+        const noErrorComponent = renderEl()!,
+            errorComponent = renderEl({ submitError: 'BAAAAD' })!,
+            loadError = within(errorComponent).getByRole('alert'),
+            emptyLoadError = within(noErrorComponent).queryByRole('alert');
 
-        expect(emptyLoadError).toHaveProp('error', undefined);
-        expect(loadError).toExist();
-        expect(loadError).toHaveProp('error', 'BAAAAD');
+        expect(emptyLoadError).not.toBeInTheDocument();
+        expect(loadError).toBeInTheDocument();
+        expect(loadError).toHaveTextContent(/BAAAAD/);
       });
 
-      it('attaches the onSubmit function to the NxLoadError retryHandler', function() {
-        const onSubmit = jest.fn(),
-            errorComponent = getShallow({ submitError: 'BAAAAD', onSubmit }),
-            loadError = errorComponent.find('.nx-footer').find(NxLoadError);
+      it('calls the onSubmit function when the submit error\'s retry button is clicked', async function() {
+        const user = userEvent.setup(),
+            onSubmit = jest.fn(),
+            errorComponent = quickRender({ submitError: 'BAAAAD', onSubmit }),
+            retryBtn = errorComponent.getByRole('button', { name: 'Retry' });
 
-        expect(loadError).toHaveProp('retryHandler', onSubmit);
+        expect(onSubmit).not.toHaveBeenCalled();
+
+        await user.click(retryBtn);
+
+        expect(onSubmit).toHaveBeenCalled();
       });
 
-      it('sets the NxLoadError titleMessage to the submitErrorTitleMessage prop if present', function() {
-        const errorComponent = getShallow({
+      it('includes the submitErrorTitleMessage at the beginning of the submit alert', function() {
+        const errorComponent = quickRender({
               submitError: 'BAAAAD',
               submitErrorTitleMessage: 'An error occurred launching the rocket.'
             }),
-            loadError = errorComponent.find('.nx-footer').find(NxLoadError);
+            loadError = errorComponent.getByRole('alert');
 
-        expect(loadError).toHaveProp('titleMessage', 'An error occurred launching the rocket.');
+        expect(loadError).toHaveTextContent(/^An error occurred launching the rocket./);
       });
 
-      it('sets the titleMessage to a default that mentions "saving" if submitErrorTitleMessage is not present',
+      it('sets default text for the alert that includes the word "saving" if submitErrorTitleMessage is not defined',
           function() {
-            const errorComponent = getShallow({ submitError: 'BAAAAD' }),
-                loadError = errorComponent.find('.nx-footer').find(NxLoadError);
+            const errorComponent = quickRender({ submitError: 'BAAAAD' }),
+                loadError = errorComponent.getByRole('alert');
 
-            expect(loadError.prop('titleMessage')).toContain('saving');
+            expect(loadError).toHaveTextContent(/saving/);
           }
       );
     });
 
     describe('other buttons', function() {
-      it('renders a cancel button before the submit button, hooked to onCancel if present', function() {
-        const onCancel = jest.fn(),
-            component = getShallow({ onCancel }),
-            cancelBtn = component.find(NxButton).at(0);
+      it('renders a cancel button hooked to onCancel if present', async function() {
+        const user = userEvent.setup(),
+            onCancel = jest.fn(),
+            component = quickRender({ onCancel }),
+            cancelBtn = component.getByRole('button', { name: 'Cancel' });
 
-        expect(cancelBtn).toHaveText('Cancel');
-        expect(cancelBtn).toHaveProp('type', 'button');
-        expect(cancelBtn).toHaveProp('onClick', onCancel);
+        expect(cancelBtn).toHaveAttribute('type', 'button');
+        expect(onCancel).not.toHaveBeenCalled();
 
-        // Cancel button comes before submit button
-        expect(component.find(NxButton).at(1)).toHaveProp('variant', 'primary');
+        await user.click(cancelBtn);
+
+        expect(onCancel).toHaveBeenCalled();
       });
 
-      it('renders additionalFooterBtns before the cancel and submit buttons', function() {
+      it('renders content specified in additionalFooterBtns', function() {
         const additionalFooterBtns = <NxButton>Foo</NxButton>,
-            component = getShallow({ onCancel: jest.fn(), additionalFooterBtns }),
-            additionalBtn = component.find(NxButton).at(0);
+            component = quickRender({ onCancel: jest.fn(), additionalFooterBtns }),
+            additionalBtn = component.getByRole('button', { name: 'Foo' }),
+            cancelBtn = component.getByRole('button', { name: 'Cancel' }),
+            submitBtn = component.getByRole('button', { name: 'Submit' });
 
-        expect(additionalBtn).toHaveText('Foo');
+        expect(additionalBtn).toBeInTheDocument();
 
-        expect(component.find(NxButton).at(1)).toHaveText('Cancel');
+        // ensure Cancel and Submit are still there too
+        expect(submitBtn).toBeInTheDocument();
+        expect(cancelBtn).toBeInTheDocument();
       });
     });
 
     describe('submit mask', function() {
-      it('renders an NxSubmitMask if submitMaskState is defined', function() {
-        expect(getShallow()).not.toContainMatchingElement(NxSubmitMask);
-        expect(getShallow({ submitMaskState: null })).not.toContainMatchingElement(NxSubmitMask);
-        expect(getShallow({ submitMaskState: false })).toContainMatchingElement(NxSubmitMask);
-        expect(getShallow({ submitMaskState: true })).toContainMatchingElement(NxSubmitMask);
+      it('renders no status element if submitMaskState is not defined', function() {
+        expect(within(renderEl()!).queryByRole('status')).not.toBeInTheDocument();
+        expect(within(renderEl({ submitMaskState: null })!).queryByRole('status')).not.toBeInTheDocument();
       });
 
-      it('passes submitMaskState as the mask\'s success prop', function() {
-        expect(getShallow({ submitMaskState: true }).find(NxSubmitMask)).toHaveProp('success', true);
-        expect(getShallow({ submitMaskState: false }).find(NxSubmitMask)).toHaveProp('success', false);
+      describe('when submitMaskState is false', function() {
+        it('renders a status of "Submitting…" when submitMaskMessage is not defined', function() {
+          const status = quickRender({ submitMaskState: false }).getByRole('status');
+          expect(status).toBeInTheDocument();
+          expect(status).toHaveTextContent('Submitting…');
+        });
+
+        it('renders the submitMaskMessage as the status text when it is defined', function() {
+          const status = quickRender({
+            submitMaskState: false,
+            submitMaskMessage: 'foo',
+            submitMaskSuccessMessage: 'bar'
+          }).getByRole('status');
+
+          expect(status).toBeInTheDocument();
+          expect(status).toHaveTextContent('foo');
+        });
       });
 
-      it('sets the mask\'s message from the submitMaskMessage prop', function() {
-        expect(getShallow({ submitMaskState: true }).find(NxSubmitMask)).toHaveProp('message', undefined);
-        expect(getShallow({
-          submitMaskState: true,
-          submitMaskMessage: 'running'
-        }).find(NxSubmitMask)).toHaveProp('message', 'running');
-      });
+      describe('when submitMaskState is false', function() {
+        it('renders a status of "Success!" when submitMaskSuccessMessage is not defined', function() {
+          const status = quickRender({ submitMaskState: true }).getByRole('status');
+          expect(status).toBeInTheDocument();
+          expect(status).toHaveTextContent('Success!');
+        });
 
-      it('sets the mask\'s successMessage prop from submitMaskSuccessMessage', function() {
-        expect(getShallow({ submitMaskState: true }).find(NxSubmitMask)).toHaveProp('successMessage', undefined);
-        expect(getShallow({
-          submitMaskState: true,
-          submitMaskSuccessMessage: 'succeeded'
-        }).find(NxSubmitMask)).toHaveProp('successMessage', 'succeeded');
+        it('renders the submitMaskSuccessMessage as the status text when it is defined', function() {
+          const status = quickRender({
+            submitMaskState: true,
+            submitMaskMessage: 'foo',
+            submitMaskSuccessMessage: 'bar'
+          }).getByRole('status');
+
+          expect(status).toBeInTheDocument();
+          expect(status).toHaveTextContent('bar');
+        });
       });
     });
 
     describe('validation errors', function() {
-      it('renders an NxErrorAlert when there are validation errors and no submitError', function() {
-        expect(getShallow()).not.toContainMatchingElement(NxErrorAlert);
-        expect(getShallow({ validationErrors: null })).not.toContainMatchingElement(NxErrorAlert);
-        expect(getShallow({ validationErrors: [] })).not.toContainMatchingElement(NxErrorAlert);
-        expect(getShallow({ validationErrors: 'foo' })).toContainMatchingElement(NxErrorAlert);
-        expect(getShallow({ validationErrors: ['foo'] })).toContainMatchingElement(NxErrorAlert);
-        expect(getShallow({ submitError: 'bar', validationErrors: 'foo' })).not.toContainMatchingElement(NxErrorAlert);
+      it('renders an alert when there are validation errors and no submitError', function() {
+        expect(within(renderEl()!).queryByRole('alert')).not.toBeInTheDocument();
+        expect(within(renderEl({ validationErrors: null })!).queryByRole('alert')).not.toBeInTheDocument();
+        expect(within(renderEl({ validationErrors: [] })!).queryByRole('alert')).not.toBeInTheDocument();
+        expect(within(renderEl({ validationErrors: 'foo' })!).getByRole('alert')).toBeInTheDocument();
+        expect(within(renderEl({ validationErrors: ['foo'] })!).getByRole('alert')).toBeInTheDocument();
+        expect(within(renderEl({ submitError: 'bar', validationErrors: 'foo' })!).getByRole('alert'))
+            .toBeInTheDocument();
       });
 
-      it('sets the nx-form__validation-errors class on the NxErrorAlert', function() {
-        expect(getShallow({ validationErrors: 'foo' }).find(NxErrorAlert))
-            .toHaveClassName('nx-form__validation-errors');
+      it('includes the first validation error within the alert content', function() {
+        expect(within(renderEl({ validationErrors: 'foo' })!).getByRole('alert')).toHaveTextContent(/foo/);
+        expect(within(renderEl({ validationErrors: ['foo', 'bar'] })!).getByRole('alert')).toHaveTextContent(/foo/);
+        expect(within(renderEl({ validationErrors: ['foo', 'bar'] })!).getByRole('alert')).not.toHaveTextContent(/bar/);
       });
 
-      it('includes the first validation error within the NxErrorAlert content', function() {
-        expect(getShallow({ validationErrors: 'foo' }).find(NxErrorAlert)).toIncludeText('foo');
-        expect(getShallow({ validationErrors: ['bar', 'foo'] }).find(NxErrorAlert)).toIncludeText('bar');
-        expect(getShallow({ validationErrors: ['bar', 'foo'] }).find(NxErrorAlert)).not.toIncludeText('foo');
+      it('does not render when there is a submitError', function() {
+        expect(quickRender({ submitError: 'bar', validationErrors: 'foo' }).getByRole('alert'))
+            .toHaveTextContent(/bar/);
       });
     });
   });
 
   describe('when doLoad is defined', function() {
-    const getShallow = getShallowComponent<Props>(NxForm, { ...minimalProps, doLoad: () => {} });
+    const quickRender = rtlRender(NxForm, { ...minimalProps, doLoad: () => {} }),
+        renderEl = rtlRenderElement(NxForm, { ...minimalProps, doLoad: () => {} });
 
-    it('renders the form lazily within NxLoadWrapper', function() {
-      const component = getShallow({ id: 'foo' }),
-          formRenderFn = component.prop('children');
+    it('does not call its children render function if loading is true', function() {
+      function BadChild() {
+        // would prevent el from rendering, if executed
+        throw new Error('bad');
 
-      expect(component).toMatchSelector(NxLoadWrapper);
-      expect(formRenderFn).toBeInstanceOf(Function);
+        return null;
+      }
 
-      const form = shallow(formRenderFn());
+      const el = renderEl({ children: () => <BadChild />, loading: true });
 
-      expect(form).toMatchSelector('form#foo.nx-form');
+      expect(el).toBeInTheDocument();
     });
 
-    it('passes the loading prop to the wrapper', function() {
-      expect(getShallow()).toHaveProp('loading', undefined);
-      expect(getShallow({ loading: null })).toHaveProp('loading', null);
-      expect(getShallow({ loading: true })).toHaveProp('loading', true);
-      expect(getShallow({ loading: false })).toHaveProp('loading', false);
+    it('renders only a loading status if loading is true', function() {
+      const component = quickRender({ children: <span>foo</span>, loading: true }),
+          status = component.getByRole('status');
+
+      expect(status).toHaveTextContent('Loading…');
+      expect(component.container.children).toHaveLength(1);
+      expect(component.container.firstElementChild).toBe(status);
     });
 
-    it('passes the loadError prop as the error prop to the wrapper', function() {
-      expect(getShallow()).toHaveProp('error', undefined);
-      expect(getShallow({ loadError: null })).toHaveProp('error', null);
-      expect(getShallow({ loadError: 'foo' })).toHaveProp('error', 'foo');
+    it('renders only an alert containing the loadError, if loadError is set', function() {
+      const component = quickRender({ children: <span>foo</span>, loadError: 'errrrrrrrr' }),
+          alert = component.getByRole('alert');
+
+      expect(alert).toHaveTextContent(/errrrrrrrr/);
+      expect(component.container.children).toHaveLength(1);
+      expect(component.container.firstElementChild).toBe(alert);
     });
 
-    it('sets the wrapper\'s retryHandler to doLoad', function() {
-      const doLoad = jest.fn();
+    it('renders a Retry button that calls doLoad when clicked, if loadError is set', async function() {
+      const user = userEvent.setup(),
+          doLoad = jest.fn(),
+          withoutError = within(renderEl({ doLoad })!).queryByRole('button', { name: 'Retry' }),
+          withError = within(renderEl({ doLoad, loadError: 'err' })!).getByRole('button', { name: 'Retry' });
 
-      expect(getShallow({ doLoad })).toHaveProp('retryHandler', doLoad);
+      expect(withoutError).not.toBeInTheDocument();
+      expect(withError).toBeInTheDocument();
+      expect(doLoad).not.toHaveBeenCalled();
+
+      await user.click(withError);
+
+      expect(doLoad).toHaveBeenCalled();
+    });
+
+    it('renders the children if neither loading nor loadError are set', function() {
+      expect(quickRender({ children: <div data-testid="foo" /> }).getByTestId('foo')).toBeInTheDocument();
+    });
+
+    it('renders children passed as a function if neither loading nor loadError are set', function() {
+      expect(quickRender({ children: () => <div data-testid="foo" /> }).getByTestId('foo')).toBeInTheDocument();
     });
   });
 });
