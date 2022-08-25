@@ -143,7 +143,7 @@ describe('NxToastContainer', function() {
 
     expect(toasts).toHaveLength(2);
     // bottommost close button has focus after first toast is closed
-    expect(closeBtns[1]).toHaveFocus();
+    expect(closeBtns[closeBtns.length - 1]).toHaveFocus();
 
     await user.keyboard('{Enter}');
     fireEvent.animationEnd(toasts[1] as Element);
