@@ -14,7 +14,7 @@ export interface NxToastProps extends HTMLAttributes<HTMLDivElement> {
 
 export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
   onClose: PropTypes.func.isRequired,
-  children: PropTypes.any.isRequired
+  children: PropTypes.element.isRequired
 };
 
 export type NxToastContainerContextType = {
