@@ -13,6 +13,8 @@ import { getFirstValidationError, hasValidationErrors } from '../../util/validat
 import { useUniqueId } from '../../util/idUtil';
 
 import './NxFormSelect.scss';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 export { Props };
 
@@ -35,6 +37,7 @@ const NxFormSelect = forwardRef<HTMLDivElement, Props>(function NxFormSelect(pro
               { ...attrs }
               aria-invalid={isInvalid}
               aria-errormessage={invalidMessageId} />
+      <NxFontAwesomeIcon role="presentation" className="nx-form-select__caret" icon={faCaretDown} />
       { isInvalid &&
         <div id={invalidMessageId} role="alert" className="nx-field-validation-message">
           {firstValidationError}

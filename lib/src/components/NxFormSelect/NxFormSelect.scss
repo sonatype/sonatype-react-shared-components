@@ -6,17 +6,13 @@
  */
 @use '../../scss-shared/nx-text-helpers';
 
-// returns a data URL for a triangular caret SVG of the specified color.
-// Unfortunately CSS url() functions must take the whole literal URL as their parameter
-// with no way to do any sort of interpolation from CSS variables, so this must be done in scss, using
-// values copied in code from the CSS variables. NOTE: color must be URL-escaped before being passed in!
-@function caret-with-color($color) {
-  @return "data:image/svg+xml;utf8, \
-    <svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='#{$color}'> \
-    <polygon points='0,0 100,0 50,50'/></svg>";
-}
-
 .nx-form-select {
+  $caret-right-spacing: var(--nx-spacing-4x);
+
+  // amount of space alotted to the top and bottom of the component outside of the text line box.
+  // Includes padding and border
+  $vertical-spacing: var(--nx-spacing-2x);
+
   display: inline-block;
   margin-bottom: var(--nx-spacing-8x);
   position: relative;
@@ -25,17 +21,12 @@
 
   &__select {
     @include nx-text-helpers.regular;
-    $caret: caret-with-color('hsl(0, 0%25, 10%25)');
-    $icon-size: 12px;
+    $icon-size: 15px;
 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background-color: var(--nx-swatch-white);
-    background-image: url($caret);
-    background-size: $icon-size;
-    background-position: calc(100% - var(--nx-spacing-4x)) 16px;
-    background-repeat: no-repeat;
     border: 1px solid var(--nx-color-form-element-border);
     border-radius: var(--nx-border-radius);
     color: var(--nx-color-text);
@@ -43,9 +34,9 @@
     line-height: var(--nx-line-height);
     text-overflow: ellipsis;
     padding:
-      calc(var(--nx-spacing-2x) - 1px)
-      calc(var(--nx-spacing-4x) + #{$icon-size} + var(--nx-spacing-6x) - 1px)
-      calc(var(--nx-spacing-2x) - 1px)
+      calc(#{$vertical-spacing} - 1px)
+      calc(var(--nx-spacing-4x) + #{$icon-size} + #{$caret-right-spacing} - 1px)
+      calc(#{$vertical-spacing} - 1px)
       calc(var(--nx-spacing-4x) - 1px);
     width: 100%;
 
@@ -58,7 +49,13 @@
       border-color: var(--nx-color-interactive-border-focus);
       outline: none;
     }
+  }
 
+  &__caret {
+    font-size: 24px; // gets the <path> element to a height a roughly 8px as specced
+    margin: $vertical-spacing 0;
+    position: absolute;
+    right: $caret-right-spacing;
   }
 
   &--long {
@@ -85,12 +82,13 @@
   // styles which must appear this far down to override some with equal precedence higher up
   &__select[disabled] {
     &, &:hover {
-      $disabled-caret: caret-with-color('hsl(0, 0%25, 60%25)');
-
       color: var(--nx-color-text-disabled);
       background-color: var(--nx-color-interactive-background-disabled);
-      background-image: url($disabled-caret);
       border-color: var(--nx-color-interactive-border-disabled);
+    }
+
+    + .nx-form-select__caret {
+      color: var(--nx-color-text-disabled);
     }
   }
 }
@@ -99,19 +97,21 @@
   &:not(.disabled) {
     &.valid {
       .nx-form-select__select {
-        $valid-caret: caret-with-color('hsl(102, 86%25, 30%25)');
-
-        background-image: url($valid-caret);
         border-color: var(--nx-color-validation-valid);
+      }
+
+      .nx-form-select__caret {
+        color: var(--nx-color-validation-valid);
       }
     }
 
     &.invalid {
       .nx-form-select__select {
-        $invalid-caret: caret-with-color('hsl(348, 100%25, 45%25)');
-
-        background-image: url($invalid-caret);
         border-color: var(--nx-color-validation-invalid);
+      }
+
+      .nx-form-select__caret {
+        color: var(--nx-color-validation-invalid);
       }
     }
   }
