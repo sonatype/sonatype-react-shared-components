@@ -22,9 +22,9 @@ export type NxToastContainerContextType = {
 };
 
 //NxToastContainer
-export type NxToastContainerProps = {
-  children: ReactNode | null
-};
+export interface NxToastContainerProps {
+  children: ReactNode
+}
 
 export const nxToastContainerPropTypes: PropTypes.ValidationMap<NxToastContainerProps> = {
   children: PropTypes.any
