@@ -166,7 +166,7 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'Backspace':
-        if(autoComplete) {
+        if (autoComplete) {
           setInlineStyle(false);
         }
         break;
@@ -184,7 +184,7 @@ function NxComboboxRender<T extends string | number = string>(
     focusTextInput();
     onSearch(val.trim());
     setShowDropdown(true);
-    if(autoComplete && !value.includes(val)){
+    if (autoComplete && !value.includes(val)) {
       setInlineStyle(true);
     }
   }
