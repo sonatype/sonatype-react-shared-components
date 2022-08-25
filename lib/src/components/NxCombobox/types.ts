@@ -5,13 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { omit } from 'ramda';
 import { HTMLAttributes, ReactNode } from 'react';
-import { PublicProps as NxTextInputProps, propTypes as nxTextInputPropTypes } from '../NxTextInput/types';
-
 import DataItem from '../../util/DataItem';
-
-type InputProps = Omit<NxTextInputProps, 'type' | 'value' | 'isPristine' | 'readOnly'>;
 
 export interface Props<T extends string | number = string>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
@@ -24,7 +19,9 @@ export interface Props<T extends string | number = string>
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
   autoComplete?: boolean | null;
-  inputProps?: InputProps | null;
+  validatable?: boolean | null;
+  isPristine?: boolean | null;
+  validationErrors?: string | string[] | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
@@ -40,5 +37,7 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   disabled: PropTypes.bool,
   emptyMessage: PropTypes.node,
   autoComplete: PropTypes.bool,
-  inputProps: PropTypes.shape(omit(['type', 'value', 'isPristine', 'readOnly'], nxTextInputPropTypes))
+  validatable: PropTypes.bool,
+  isPristine: PropTypes.bool,
+  validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string])
 };

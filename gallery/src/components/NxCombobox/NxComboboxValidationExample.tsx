@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { NxCombobox, DataItem, nxTextInputStateHelpers }
+import { NxCombobox, DataItem }
   from '@sonatype/react-shared-components';
 
 const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
@@ -19,8 +19,6 @@ const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California
 const items = prepend(
     { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: states[i - 1] }), range(1, states.length + 1)));
-
-const { initialState, userInput } = nxTextInputStateHelpers;
 
 function search(query: string):DataItem<number>[] {
   const lowercaseQuery = query.toLowerCase(),
@@ -35,7 +33,8 @@ function validator(val: string) {
 export default function NxComboboxRequiredExample() {
   const [matches, setMatches] = useState<DataItem<number>[]>(items),
       [query, setQuery] = useState(''),
-      [inputState, setInputState] = useState(initialState(''));
+      [error, setError] = useState<string | null>(null),
+      [isPristine, setIsPristine] = useState(true);
 
   const executeQuery = useCallback(function executeQuery(query: string) {
     setMatches(search(query));
@@ -43,7 +42,13 @@ export default function NxComboboxRequiredExample() {
 
   function onChange(query: string) {
     setQuery(query);
-    setInputState(userInput(validator, query));
+    setIsPristine(false);
+    if (validator(query)) {
+      setError(validator(query));
+    }
+    else {
+      setError(null);
+    }
   }
 
   function onSearch(query: string) {
@@ -52,7 +57,9 @@ export default function NxComboboxRequiredExample() {
 
   return (
     <NxCombobox className="nx-combobox--short"
-                inputProps={{...inputState, validatable: true}}
+                isPristine={isPristine}
+                validatable={true}
+                validationErrors={error}
                 matches={matches}
                 value={query}
                 onChange={onChange}

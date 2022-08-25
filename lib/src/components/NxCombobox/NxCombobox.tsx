@@ -34,7 +34,9 @@ function NxComboboxRender<T extends string | number = string>(
         disabled,
         emptyMessage,
         autoComplete,
-        inputProps,
+        validatable,
+        isPristine,
+        validationErrors,
         id,
         'aria-required': ariaRequired,
         'aria-describedby': ariaDescribedBy,
@@ -238,8 +240,9 @@ function NxComboboxRender<T extends string | number = string>(
       <NxTextInput role="combobox"
                    ref={inputRef}
                    id={inputId}
-                   isPristine
-                   {...inputProps}
+                   validationErrors={validationErrors}
+                   validatable={validatable}
+                   isPristine={!!isPristine}
                    className='nx-combobox__input'
                    value={value}
                    onChange={handleOnChange}

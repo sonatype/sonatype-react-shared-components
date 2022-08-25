@@ -93,7 +93,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>Set to true when the search results are currently being loaded.</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>error</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>loadError</NxCode></NxTable.Cell>
               <NxTable.Cell>ReactNode</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
@@ -115,24 +115,6 @@ const NxComboboxPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>long</NxCode></NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>
-                Whether to render a long variant of the text input box and correspondingly the dropdown.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>short</NxCode></NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>
-                Whether to render a short variant of the text input box and correspondingly the dropdown.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
               <NxTable.Cell><NxCode>disabled</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
@@ -151,20 +133,31 @@ const NxComboboxPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>inputProps</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                Props for <NxCode>NxTextInput</NxCode> except
-                for <NxCode>type</NxCode>,{' '}
-                <NxCode>value</NxCode>,{' '}
-                <NxCode>isPristine</NxCode>,
-                and <NxCode>readOnly</NxCode>
-              </NxTable.Cell>
+              <NxTable.Cell><NxCode>validatable</NxCode></NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Props to apply to the text input within the <NxCode>NxCombobox</NxCode>. For accessibility reasons,
-                the <NxCode>id</NxCode>, <NxCode>aria-required</NxCode> and <NxCode>aria-describedby</NxCode> attributes
-                are applied to the <NxCode>&lt;input&gt;</NxCode> instead of <NxCode>&lt;div&gt;</NxCode>.
+                Should be set to true if it is subject to validation.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>isPristine</NxCode></NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                Only required when <NxCode>validatable</NxCode> is true, it should be set to true when the user
+                has not yet adjusted the value of the input.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>validationErrors</NxCode></NxTable.Cell>
+              <NxTable.Cell>string | string[]</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                Validation failure messages.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
