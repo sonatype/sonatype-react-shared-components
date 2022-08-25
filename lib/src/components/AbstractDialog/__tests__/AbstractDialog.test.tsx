@@ -5,24 +5,22 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-// import { mount } from 'enzyme';
-import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
 import { render, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
 
-import { Tooltip } from '@material-ui/core';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-// import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import AbstractDialog, { Props } from '../AbstractDialog';
 import NxButton from '../../NxButton/NxButton';
-import NxTooltip from '../../NxTooltip/NxTooltip';
+// import NxTooltip from '../../NxTooltip/NxTooltip';
 import useToggle from '../../../util/useToggle';
 
 describe('AbstractDialog', function() {
-  const dummyCloseHandler = jest.fn();
-
   const minimalProps: Props = {
     children: 'A message inside the dialog element.',
-    onCancel: dummyCloseHandler
+    onCancel: jest.fn()
   };
 
   const quickRender = rtlRender(AbstractDialog, minimalProps),
@@ -39,13 +37,11 @@ describe('AbstractDialog', function() {
   // });
 
   it('uses passed in className to the dialog', function() {
-    const dialog = getDialog({ className: 'test' });
-    expect(dialog).toHaveClass('test');
+    expect(getDialog({ className: 'foo' })).toHaveClass('foo');
   });
 
   it('includes any passed in attributes to the dialog', function() {
     const dialog = getDialog({ id: 'dialog-id', lang: 'en_US' });
-
     expect(dialog).toHaveAttribute('id', 'dialog-id');
     expect(dialog).toHaveAttribute('lang', 'en_US');
   });
@@ -64,7 +60,6 @@ describe('AbstractDialog', function() {
     beforeEach(function () {
       // Rendering dialogContainer for the component in test.
       dialogContainer = document.createElement('div');
-
       document.body.appendChild(dialogContainer);
     });
 
@@ -75,128 +70,151 @@ describe('AbstractDialog', function() {
       }
     });
 
-    const createEvent = (key = 'Escape') => ({
-      key,
-      stopPropagation: jest.fn(),
-      preventDefault: () => {},
-      nativeEvent: {
-        stopImmediatePropagation: jest.fn()
-      }
-    });
+    // const createKeyDownEvent = (key = 'Escape', node) => ({
+    //   key,
+    //   stopPropagation: jest.fn(),
+    //   nativeEvent: {
+    //     stopImmediatePropagation: jest.fn()
+    //   }
+    // });
 
     it('executes event.preventDefault when useNativeCancelOnEscape is false', async function () {
-      const mockCallBack = jest.fn();
-      const component = getDialog({ useNativeCancelOnEscape: false, onCancel: mockCallBack })!;
-      const mockPreventDefault = jest.fn();
+      const mockOnCancel = jest.fn();
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const dialog = getDialog({ useNativeCancelOnEscape: false, onCancel: mockOnCancel })!;
+
+      expect(mockOnCancel).not.toHaveBeenCalled();
+
+      // const escapeEvent = createEvent.keyDown(dialog);
+      // escapeEvent.key = 'Escape';
 
       const escapeEvent = {
-        key: 'Escape',
-        stopPropagation: jest.fn(),
-        preventDefault: mockPreventDefault,
-        nativeEvent: {
-          stopImmediatePropagation: jest.fn()
-        }
+        key: 'Escape'
       };
 
-      expect(mockCallBack).not.toHaveBeenCalled();
-      expect(mockPreventDefault).not.toHaveBeenCalled();
-      await fireEvent.keyDown(component, escapeEvent);
-      expect(mockCallBack).toHaveBeenCalledTimes(1);
-      // expect(mockPreventDefault).toHaveBeenCalledTimes(1);
-      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
+      const result = await fireEvent.keyDown(dialog, escapeEvent);
+
+      expect(mockOnCancel).toHaveBeenCalledTimes(1);
+
+      // https://stackoverflow.com/questions/60455119/react-jest-test-preventdefault-action
+      // https://github.com/testing-library/react-testing-library/issues/572
+      expect(result).toBeFalsy();
+      expect(mockOnCancel.mock.calls[0][0].type).toBe('cancel');
     });
 
     it('executes onCancel method with a cancel event when pressing ESC key', async function () {
-      const mockCallBack = jest.fn();
-      const component = getDialog({ useNativeCancelOnEscape: true, onCancel: mockCallBack })!;
+      const mockOnCancel = jest.fn();
 
-      expect(mockCallBack).not.toHaveBeenCalled();
-      await fireEvent.keyDown(component, createEvent());
-      expect(mockCallBack).toHaveBeenCalledTimes(1);
-      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const dialog = getDialog({ useNativeCancelOnEscape: true, onCancel: mockOnCancel })!;
+
+      expect(mockOnCancel).not.toHaveBeenCalled();
+
+      const escapeEvent = {
+        key: 'Escape'
+      };
+
+      await fireEvent.keyDown(dialog, escapeEvent);
+      expect(mockOnCancel).toHaveBeenCalled();
+      expect(mockOnCancel.mock.calls[0][0].type).toBe('cancel');
     });
 
-    it('executes onCancel method ONLY when pressing ESC key', async function () {
-      const mockCallBack = jest.fn();
-      const component = getDialog({ useNativeCancelOnEscape: true, onCancel: mockCallBack })!;
+    // it('executes onCancel method ONLY when pressing ESC key', async function () {
+    //   const mockOnCancel = jest.fn();
 
-      await fireEvent.keyDown(component, createEvent('Tab'));
-      await fireEvent.keyDown(component, createEvent('Enter'));
-      await fireEvent.keyDown(component, createEvent('q'));
-      await fireEvent.keyDown(component, createEvent('Q'));
-      expect(mockCallBack).not.toHaveBeenCalled();
-    });
+    //   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    //   const dialog = getDialog({ useNativeCancelOnEscape: true, onCancel: mockOnCancel })!;
 
-    it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', async function() {
-      const component = getDialog({ useNativeCancelOnEscape: true, onCancel: jest.fn() })!,
-          escEvent = createEvent(),
-          otherEvent = createEvent('q');
+    //   await fireEvent.keyDown(dialog, createEvent('Tab'));
+    //   await fireEvent.keyDown(dialog, createEvent('Enter'));
+    //   await fireEvent.keyDown(dialog, createEvent('q'));
+    //   await fireEvent.keyDown(dialog, createEvent('Q'));
 
-      await fireEvent.keyDown(component, escEvent);
-      await fireEvent.keyDown(component, otherEvent);
+    //   expect(mockOnCancel).not.toHaveBeenCalled();
+    // });
 
-      expect(escEvent.stopPropagation).toHaveBeenCalled();
-      expect(escEvent.nativeEvent.stopImmediatePropagation).toHaveBeenCalled();
+    //   it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', async function() {
+    //     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    //     const dialog = getDialog({ useNativeCancelOnEscape: true, onCancel: jest.fn() })!;
+    //     const escEvent = createEvent();
+    //     const otherEvent = createEvent('q');
 
-      expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
-      expect(otherEvent.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
-    });
+    //     await fireEvent.keyDown(dialog, escEvent);
+    //     await fireEvent.keyDown(dialog, otherEvent);
+
+    //     expect(escEvent.stopPropagation).toHaveBeenCalled();
+    //     expect(escEvent.nativeEvent.stopImmediatePropagation).toHaveBeenCalled();
+
+    //     expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
+    //     expect(otherEvent.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
+    //   });
   });
 
-  // it('renders descendant tooltips attached to the backdrop rather than the document body', function() {
-  //   const dialog = render(
-  //     <AbstractDialog onCancel={() => {}}>
-  //       <div id="test-div">
+  // it('renders descendant tooltips attached to the backdrop rather than the document body', await function() {
+  //   userEvent.setup();
+
+  //   render(
+  //     <AbstractDialog onCancel={() => {}} isModal={true}>
+  //       <div>
   //         <NxTooltip title="foo">
-  //           <NxButton>Foo</NxButton>
+  //           <NxButton data-testid="tooltip-button">Foo</NxButton>
   //         </NxTooltip>
   //       </div>
   //     </AbstractDialog>
   //   );
 
-  //   const tooltip = dialog.find(Tooltip).at(0);
+  //   const dialog = screen.getByRole('dialog', { hidden: true });
+  //   const tooltipButton = screen.getByRole('button', { name: 'Foo', hidden: true });
 
-  //   expect(tooltip.prop('PopperProps')!.container).toBe(dialog.getDOMNode());
+  //   await userEvent.hover(tooltipButton);
+  //   expect(within(dialog).getByRole('tooltip', { hidden: true })).toBeInTheDocument();
+  //   await userEvent.unhover(tooltipButton);
+  //   expect(within(dialog).queryByRole('tooltip', { hidden: true })).not.toBeInTheDocument();
   // });
 
-  it('moves focus back to the previously focused element when closed', function(done) {
+  it('moves focus back to the previously focused element when closed', async function(done) {
     function Fixture() {
-      const [dialogOpen, toggleDialogOpen] = useToggle(false);
+      const [dialogOpen, toggleDialog] = useToggle(false);
       return (
-        <>
-          <button data-testid="toggle-btn" onClick={toggleDialogOpen}>Toggle Dialog</button>
-          { dialogOpen &&
-          <AbstractDialog onCancel={jest.fn()}>
-            <button data-testid="cancel-btn">
-              Close
-            </button>
-          </AbstractDialog> }
-        </>
+        <div>
+          <NxButton onClick={() => toggleDialog()}>Toggle Dialog</NxButton>
+          {
+            dialogOpen &&
+            <AbstractDialog onCancel={jest.fn()}>
+              <NxButton onClick={() => toggleDialog()}>
+                Close
+              </NxButton>
+            </AbstractDialog>
+          }
+        </div>
       );
     }
 
-    const divContainer = document.createElement('div');
-    document.body.append(divContainer);
+    render(<Fixture />);
 
-    const component = render(<Fixture dialogOpen={false} />, { container: divContainer }),
-        externalBtn = component.find('#test-btn').getDOMNode() as HTMLElement;
+    const toggleButton = screen.getByRole('button', { name: 'Toggle Dialog' });
 
-    externalBtn.focus();
-    expect(component).not.toContainMatchingElement(AbstractDialog);
-    expect(document.activeElement === externalBtn).toBe(true);
+    toggleButton.focus();
 
-    component.setProps({ dialogOpen: true });
-    expect(component).toContainMatchingElement(AbstractDialog);
-    expect(document.activeElement === component.find(AbstractDialog).getDOMNode()).toBe(true);
+    expect(toggleButton).toBeInTheDocument();
+    expect(screen.queryByRole('dialog', { hidden: true })).not.toBeInTheDocument();
+    expect(document.activeElement).toBe(toggleButton);
 
-    component.setProps({ dialogOpen: false });
-    expect(component).not.toContainMatchingElement(AbstractDialog);
+    await userEvent.click(toggleButton);
+
+    expect(screen.getByRole('dialog', { hidden: true })).toBeInTheDocument();
+    const closeButton = screen.getByRole('button', { name: 'Close', hidden: true });
+    expect(document.activeElement).toBe(closeButton);
+
+    await userEvent.click(closeButton);
 
     // The focus is moved asynchronously
     setTimeout(() => {
-      expect(document.activeElement === externalBtn).toBe(true);
+      expect(screen.queryByRole('dialog', { hidden: true })).not.toBeInTheDocument();
+      expect(document.activeElement).toBe(toggleButton);
       done();
-    }, 100);
+    }, 200);
   });
 
 });

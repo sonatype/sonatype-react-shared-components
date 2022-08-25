@@ -6,6 +6,13 @@
  */
 
 import React from 'react';
+
+import { render, fireEvent, within } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
+
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
 import { mount, shallow } from 'enzyme';
 
 import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
@@ -15,40 +22,42 @@ import NxButton from '../../NxButton/NxButton';
 import NxCloseButton from '../../NxCloseButton/NxCloseButton';
 
 describe('NxDrawer', function() {
-  const dummyCancelHandler = jest.fn();
-
   const minimalProps: Props = {
-    headerTitle: 'Title',
-    onCancel: dummyCancelHandler,
-    children: 'A message to show in a drawer'
+    onCancel: () => {},
+    children: 'Drawer Content'
   };
 
-  const getMounted = getMountedComponent<Props>(NxDrawer, minimalProps),
-      getShallow = getShallowComponent<Props>(NxDrawer, minimalProps);
+  const quickRender = rtlRender(NxDrawer, minimalProps);
+  const getDrawer = rtlRenderElement(NxDrawer, minimalProps);
 
-  it('renders AbstractDialog with class nx-drawer containing div.nx-drawer__inner', function () {
-    const component = getMounted();
-    const dialog = component.find(AbstractDialog).children();
-
-    expect(dialog).toMatchSelector('dialog.nx-drawer');
-    expect(dialog.children()).toMatchSelector('div.nx-drawer__inner');
+  it('renders <dialog> with class nx-drawer containing nx-drawer__animation-wrapper > nx-drawer__panel', function () {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const drawer = getDrawer()!;
+    const dialog = within(drawer).getByRole('dialog');
+    expect(dialog).toHaveClass('nx-drawer');
+    expect(dialog.children[0]).toHaveClass('nx-drawer__animation-wrapper');
+    expect(dialog.children[0].children[0]).toHaveClass('nx-drawer__panel');
   });
 
-  it('sets nx-drawer--open class to the dialog once it is mounted', function() {
-    const component = getMounted();
-    const dialog = component.find('dialog.nx-drawer');
-    expect(dialog).toHaveClassName('nx-drawer--open');
-  });
+  // it('sets nx-drawer--open class to the dialog once it is mounted', function() {
+  //   const component = getMounted()!;
+  //   const dialog = component.find('dialog.nx-drawer');
+  //   expect(dialog).toHaveClassName('nx-drawer--open');
+  // });
 
-  it('renders children nodes within nx-drawer__inner', function() {
-    const component = getShallow({ children: <div className="bar"/> });
-    expect(component.find('div.nx-drawer__inner')).toContainMatchingElement('div.bar');
+  it('renders children nodes within nx-drawer__panel', function() {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const drawer = getDrawer({ children: <div data-testid="foo"/> })!;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const panel = drawer.querySelector<HTMLDivElement>('.nx-drawer__panel')!;
+
+    expect(within(panel).getByTestId('foo')).toBe(panel.children[0]);
   });
 
   it('merges any passed in className to the nx-drawer dialog', function() {
-    const component = getMounted({ className: 'test' });
-    const dialog = component.find('dialog.nx-drawer');
-    expect(dialog).toHaveClassName('test');
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const drawer = getDrawer({ className: 'foo' });
+    expect(drawer).toHaveClass('foo');
   });
 
   it('includes any passed in attributes to the dialog element', function() {
@@ -233,6 +242,8 @@ describe('NxDrawer', function() {
 
   describe('NxDrawer Header', function() {
     it('has a <header> tag with the nx-drawer-header class and title', function() {
+      // render(<NxDrawer><NxDrawer.Header></NxDrawer.Header></NxDrawer>);
+
       const titleText = 'Header Title';
 
       const header = getShallow({ headerTitle: titleText }).find('.nx-drawer-header');

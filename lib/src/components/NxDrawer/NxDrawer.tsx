@@ -87,7 +87,6 @@ const _NxDrawer = (props: Props) => {
   const drawerContextValue = { closeDrawer };
 
   const classes = classnames('nx-drawer', {
-    'nx-drawer--closing': isClosing,
     'nx-drawer--narrow': variant === 'narrow'
   }, className);
 
