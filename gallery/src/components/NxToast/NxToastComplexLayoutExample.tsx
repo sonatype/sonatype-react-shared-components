@@ -61,6 +61,19 @@ export default function NxToastComplexLayoutExample() {
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Toast" targetPageTitle="Documentation" />
       </header>
+      <NxToastContainer>
+        {
+          toasts.map(({ id, alertComponent, message }) => {
+            const ToastAlert = alertComponent;
+            return (
+              <NxToast key={id}
+                       onClose={()=> removeToast(id)}>
+                <ToastAlert>{message}</ToastAlert>
+              </NxToast>
+            );
+          })
+        }
+      </NxToastContainer>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
                                toggleCloseIcon={faArrowRight}
@@ -72,19 +85,6 @@ export default function NxToastComplexLayoutExample() {
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageMain>
-        <NxToastContainer>
-          {
-            toasts.map(({ id, alertComponent, message }) => {
-              const ToastAlert = alertComponent;
-              return (
-                <NxToast key={id}
-                         onClose={()=> removeToast(id)}>
-                  <ToastAlert>{message}</ToastAlert>
-                </NxToast>
-              );
-            })
-          }
-        </NxToastContainer>
         <NxPageTitle>
           <NxH1>Lorem Ipsum</NxH1>
         </NxPageTitle>
@@ -144,7 +144,7 @@ export default function NxToastComplexLayoutExample() {
                 Open Info Toast
               </NxButton>
               <NxButton type="button" onClick={() => addToast(NxSuccessAlert, 'Success!')}>
-                Open Sucess Toast
+                Open Success Toast
               </NxButton>
               <NxButton type="button" onClick={() => addToast(NxErrorAlert, 'Something went wrong!')}>
                 Open Error Toast

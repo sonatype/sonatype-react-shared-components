@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ComponentType } from 'react';
-import { useState } from 'react';
-import {reject, propEq} from 'ramda';
+import React from 'react';
+import { useState, ComponentType } from 'react';
+import { reject, propEq } from 'ramda';
 import {
   NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
@@ -58,6 +58,19 @@ export default function NxToastSimpleLayoutExample() {
 
   return (
     <>
+      <NxToastContainer>
+        {
+          toasts.map(({ id, alertComponent, message }) => {
+            const ToastAlert = alertComponent;
+            return (
+              <NxToast key={id}
+                       onClose={()=> removeToast(id)}>
+                <ToastAlert>{message}</ToastAlert>
+              </NxToast>
+            );
+          })
+        }
+      </NxToastContainer>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
                                toggleCloseIcon={faArrowRight}
@@ -69,19 +82,6 @@ export default function NxToastSimpleLayoutExample() {
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageMain>
-        <NxToastContainer>
-          {
-            toasts.map(({ id, alertComponent, message }) => {
-              const ToastAlert = alertComponent;
-              return (
-                <NxToast key={id}
-                         onClose={()=> removeToast(id)}>
-                  <ToastAlert>{message}</ToastAlert>
-                </NxToast>
-              );
-            })
-          }
-        </NxToastContainer>
         <NxPageTitle>
           <NxH1>Lorem Ipsum</NxH1>
         </NxPageTitle>
@@ -94,7 +94,7 @@ export default function NxToastSimpleLayoutExample() {
                 Open Info Toast
               </NxButton>
               <NxButton type="button" onClick={() => addToast(NxSuccessAlert, 'Success!')}>
-                Open Sucess Toast
+                Open Success Toast
               </NxButton>
               <NxButton type="button" onClick={() => addToast(NxErrorAlert, 'Something went wrong!')}>
                 Open Error Toast

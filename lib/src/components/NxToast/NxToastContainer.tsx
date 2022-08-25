@@ -50,10 +50,8 @@ const NxToastContainer = (props: NxToastContainerProps) => {
 
   return (
     <NxToastContainerContext.Provider value={{ onToastClosing }}>
-      <div className="nx-toast-wrapper" ref={ref}>
-        <div className="nx-toast-container" >
-          {children}
-        </div>
+      <div className="nx-toast-container" ref={ref}>
+        {children}
       </div>
     </NxToastContainerContext.Provider>
   );

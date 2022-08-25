@@ -46,6 +46,7 @@ import NxGlobalSidebarFooterEmptyExample
 
 import NxToastSimpleLayoutExample from './components/NxToast/NxToastSimpleLayoutExample';
 import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayoutExample';
+import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
 
 const pageMappings = mergeAll(values(pageConfig));
 
@@ -127,6 +128,11 @@ function Application() {
         <Route exact path="/NxToastComplexLayoutExample">
           <SectionScrollingWrapper>
             <NxToastComplexLayoutExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxToastLegacyLayoutExample">
+          <SectionScrollingWrapper>
+            <NxToastLegacyLayoutExample />
           </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxSystemNoticeGlobalSidebarExample">

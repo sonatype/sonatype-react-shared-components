@@ -39,6 +39,10 @@
       auto             auto            1fr;
 }
 
+.nx-toast-container {
+  grid-area: content;
+}
+
 .nx-page-content {
   @include nx-container-helpers.container-horizontal;
 

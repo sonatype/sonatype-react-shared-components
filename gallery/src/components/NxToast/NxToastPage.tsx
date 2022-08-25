@@ -23,24 +23,25 @@ import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 import CodeExample from '../../CodeExample';
 
 const NxToastComplexLayoutExampleCode = require('./NxToastComplexLayoutExample?raw'),
-    NxToastSimpleLayoutExampleCode = require('./NxToastSimpleLayoutExample?raw');
+    NxToastSimpleLayoutExampleCode = require('./NxToastSimpleLayoutExample?raw'),
+    NxToastLegacyLayoutExampleCode = require('./NxToastLegacyLayoutExample?raw');
 
 const NxToastPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        Toasts are rendered on the top right corner of the screen, and will remain in place until the user
+        Toasts are rendered on the right side the screen, underneath the header, and will remain in place until the user
         dismisses them individually. Each toast renders one
         {' '}<NxCode><NxTextLink href="#/pages/Alert">NxAlert</NxTextLink></NxCode>, which comes in four
         variations: Error, Info, Warning, and Success.
       </NxP>
       <NxP>
         Toasts generally fall under a "global and static" context, in a sense that throughout the application,
-        toasts are rendered within the same container on the top right corner of the screen.
+        toasts are rendered within the same container on right side of the screen.
       </NxP>
       <NxWarningAlert>
         Note: In order to render toasts in the correct position, all toasts must be wrapped within the parent React
-        component <NxCode>NxToastContainer</NxCode>, which must be a direct child of <NxCode>NxPageMain</NxCode>.
+        component <NxCode>NxToastContainer</NxCode>, which must be a direct child of <NxCode>.nx-page</NxCode>.
       </NxWarningAlert>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -162,8 +163,8 @@ const NxToastPage = () =>
       <NxTile.Content>
         <NxP>
           A complex full page layout example. With the inclusion of <NxCode>NxGlobalHeader</NxCode>, the toasts
-          will be positioned in the top right corner of the <NxCode>NxPageMain</NxCode>, underneath the the header.
-          Extra content is provided to be able to view the positioning of the toasts with scrolling behavior.
+          will be positioned on the right side of the viewport, underneath the header. Extra content is provided
+          to be able to view the positioning of the toasts with scrolling behavior.
         </NxP>
         <NxP>
           <NxTextLink href="#/NxToastComplexLayoutExample">
@@ -178,6 +179,35 @@ const NxToastPage = () =>
           </NxAccordion.Header>
           <CodeExample content={NxToastComplexLayoutExampleCode} />
           <GalleryTileFooter clipboardContent={NxToastComplexLayoutExampleCode}/>
+        </NxStatefulAccordion>
+      </NxTile.Content>
+    </NxTile>
+
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>Toasts With Legacy Page Layout Example</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          A legacy layout page example. <NxCode>NxToast</NxCode>s will be positioned on the right side of the viewport,
+          underneath <NxCode>NxPageHeader</NxCode>. Note that in legacy layouts, if the viewport's width extends beyond
+          1600px, <NxCode>NxToast</NxCode>s will remain flush with the viewport and not the page content.
+        </NxP>
+        <NxP>
+          <NxTextLink href="#/NxToastLegacyLayoutExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+      </NxTile.Content>
+      <NxTile.Content className= "nx-tile-content--accordion-container">
+        <NxStatefulAccordion>
+          <NxAccordion.Header>
+            <NxAccordion.Title>Example Code</NxAccordion.Title>
+          </NxAccordion.Header>
+          <CodeExample content={NxToastLegacyLayoutExampleCode} />
+          <GalleryTileFooter clipboardContent={NxToastLegacyLayoutExampleCode}/>
         </NxStatefulAccordion>
       </NxTile.Content>
     </NxTile>
