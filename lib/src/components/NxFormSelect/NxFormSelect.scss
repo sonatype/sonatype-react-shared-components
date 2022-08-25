@@ -99,12 +99,18 @@
   &:not(.disabled) {
     &.valid {
       .nx-form-select__select {
+        $valid-caret: caret-with-color('hsl(102, 86%25, 30%25)');
+
+        background-image: url($valid-caret);
         border-color: var(--nx-color-validation-valid);
       }
     }
 
     &.invalid {
       .nx-form-select__select {
+        $invalid-caret: caret-with-color('hsl(348, 100%25, 45%25)');
+
+        background-image: url($invalid-caret);
         border-color: var(--nx-color-validation-invalid);
       }
     }
