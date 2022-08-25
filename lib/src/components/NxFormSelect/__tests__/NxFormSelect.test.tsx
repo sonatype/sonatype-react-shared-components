@@ -5,45 +5,83 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import NxFormSelect, { Props } from '../NxFormSelect';
-import { mount } from 'enzyme';
+import NxFormSelect from '../NxFormSelect';
 
 describe('NxFormSelect', function() {
   const minimalProps = { value: '', onChange: () => {} },
-      getShallow = getShallowComponent<Props>(NxFormSelect, minimalProps);
+      quickRender = rtlRender(NxFormSelect, minimalProps),
+      renderEl = rtlRenderElement(NxFormSelect, minimalProps);
 
-  it('renders a <select> with the nx-form-select class', function() {
-    expect(getShallow()).toMatchSelector('select.nx-form-select');
+  it('renders a <select> ', function() {
+    expect(quickRender().getByRole('combobox').tagName).toBe('SELECT');
   });
 
-  it('adds additional specified classNames', function() {
-    const component = getShallow({ className: 'foo' });
+  it('adds additional specified classNames to the top-level element', function() {
+    const el = renderEl({ className: 'foo' })!,
+        defaultEl = renderEl()!;
 
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-form-select');
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
   it('passes additional props to the select', function() {
-    const component = getShallow({ id: 'foo', lang: 'en-US' });
+    const select = quickRender({ id: 'foo', lang: 'en-US' }).getByRole('combobox');
 
-    expect(component).toHaveProp('lang', 'en-US');
-    expect(component).toHaveProp('id', 'foo');
+    expect(select).toHaveAttribute('lang', 'en-US');
+    expect(select).toHaveAttribute('id', 'foo');
   });
 
-  it('forwards a ref to the select', function() {
-    const ref = React.createRef<HTMLSelectElement>(),
-        component = mount(<><NxFormSelect ref={ref} { ...minimalProps } /></>);
+  it('passes children to the select', function() {
+    const select = quickRender({
+          children: (
+            <>
+              <option>Foo</option>
+              <option>Bar</option>
+            </>
+          )
+        }).getByRole('combobox') as HTMLSelectElement,
+        { options } = select;
 
-    expect(ref.current).toBe(component.getDOMNode());
+    expect(options).toHaveLength(2);
+    expect(options[0]).toHaveTextContent('Foo');
+    expect(options[1]).toHaveTextContent('Bar');
   });
 
-  it('attaches the onChange handler directly to the select', function() {
-    const onChange = jest.fn(),
-        component = getShallow({ onChange });
+  it('forwards a ref to the top-level element', function() {
+    const ref = React.createRef<HTMLDivElement>(),
+        el = renderEl({ ref });
 
-    expect(component).toHaveProp('onChange', onChange);
+    expect(ref.current).toBe(el);
+  });
+
+  it('calls onChange when the select value is changed', async function() {
+    let capturedValue: HTMLSelectElement;
+
+    const user = userEvent.setup(),
+        onChange = jest.fn().mockImplementation(evt => { capturedValue = evt.target.value; }),
+        component = quickRender({
+          onChange,
+          children: (
+            <>
+              <option>Foo</option>
+              <option>Bar</option>
+            </>
+          )
+        }),
+        select = component.getByRole('combobox');
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    await user.selectOptions(select, 'Bar');
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(capturedValue!).toBe('Bar');
   });
 });
