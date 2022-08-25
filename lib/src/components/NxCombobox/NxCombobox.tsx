@@ -50,6 +50,7 @@ function NxComboboxRender<T extends string | number = string>(
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       [prevSearchText, setPrevSearchText] = useState(''),
       [showDropdown, setShowDropdown] = useState(false),
+      [inlineStyle, setInlineStyle] = useState(true),
 
       inputId = useUniqueId('nx-combobox-input', id),
       dropdownId = useUniqueId('nx-combobox-dropdown'),
@@ -96,7 +97,7 @@ function NxComboboxRender<T extends string | number = string>(
     setFocusableBtnIndex(null);
     onChange(newVal);
 
-    if (newVal && newVal.trim() !== value.trim()) {
+    if (newVal && newVal.trim() !== value.trim() && newVal.toLowerCase() !== prevSearchText.toLowerCase()) {
       doSearch(newVal);
       setPrevSearchText('');
     }
@@ -164,6 +165,11 @@ function NxComboboxRender<T extends string | number = string>(
 
         evt.preventDefault();
         break;
+      case 'Backspace':
+        if(autoComplete) {
+          setInlineStyle(false);
+        }
+        break;
       case 'Escape':
         setShowDropdown(false);
         setFocusableBtnIndex(null);
@@ -174,10 +180,13 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }
 
-  function doSearch(value: string) {
+  function doSearch(val: string) {
     focusTextInput();
-    onSearch(value.trim());
+    onSearch(val.trim());
     setShowDropdown(true);
+    if(autoComplete && !value.includes(val)){
+      setInlineStyle(true);
+    }
   }
 
   function focusTextInput() {
@@ -194,7 +203,7 @@ function NxComboboxRender<T extends string | number = string>(
 
   // Nullify focusableBtnIndex whenever the number of matches changes
   useEffect(function() {
-    if (matches.length && autoComplete) {
+    if (matches.length && autoComplete && inlineStyle) {
       setInlineOption();
     }
     else {
@@ -203,7 +212,7 @@ function NxComboboxRender<T extends string | number = string>(
   }, [matches]);
 
   useEffect(function() {
-    if (prevSearchText && autoComplete && showDropdown) {
+    if (prevSearchText && autoComplete && showDropdown && inlineStyle) {
       inputRef.current?.querySelector('input')?.setSelectionRange(prevSearchText.length, value.length);
       focusFirst();
     }
