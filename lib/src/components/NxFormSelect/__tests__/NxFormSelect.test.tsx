@@ -111,11 +111,12 @@ describe('NxFormSelect', function() {
         describe('when in a form when showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-                  <NxForm showValidationErrors onSubmit={() => {}}>
-                    <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
-                  </NxForm>
-                ),
-                boundQueries = within(renderResult.container);
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
 
             return { ...renderResult, ...boundQueries };
           }
@@ -158,11 +159,12 @@ describe('NxFormSelect', function() {
         describe('when in a form when showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-                  <NxForm showValidationErrors onSubmit={() => {}}>
-                    <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
-                  </NxForm>
-                ),
-                boundQueries = within(renderResult.container);
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
 
             return { ...renderResult, ...boundQueries };
           }
@@ -202,11 +204,12 @@ describe('NxFormSelect', function() {
         describe('when in a form when showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-                  <NxForm showValidationErrors onSubmit={() => {}}>
-                    <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
-                  </NxForm>
-                ),
-                boundQueries = within(renderResult.container);
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
 
             return { ...renderResult, ...boundQueries };
           }
@@ -249,11 +252,12 @@ describe('NxFormSelect', function() {
         describe('when in a form when showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-                  <NxForm showValidationErrors onSubmit={() => {}}>
-                    <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
-                  </NxForm>
-                ),
-                boundQueries = within(renderResult.container);
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
 
             return { ...renderResult, ...boundQueries };
           }
@@ -297,11 +301,12 @@ describe('NxFormSelect', function() {
         describe('when in a form when showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-                  <NxForm showValidationErrors onSubmit={() => {}}>
-                    <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
-                  </NxForm>
-                ),
-                boundQueries = within(renderResult.container);
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
 
             return { ...renderResult, ...boundQueries };
           }
@@ -344,11 +349,12 @@ describe('NxFormSelect', function() {
         describe('when in a form when showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-                  <NxForm showValidationErrors onSubmit={() => {}}>
-                    <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
-                  </NxForm>
-                ),
-                boundQueries = within(renderResult.container);
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
 
             return { ...renderResult, ...boundQueries };
           }
@@ -399,11 +405,12 @@ describe('NxFormSelect', function() {
         describe('when in a form when showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-                  <NxForm showValidationErrors onSubmit={() => {}}>
-                    <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
-                  </NxForm>
-                ),
-                boundQueries = within(renderResult.container);
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
 
             return { ...renderResult, ...boundQueries };
           }
@@ -449,11 +456,12 @@ describe('NxFormSelect', function() {
         describe('when in a form when showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-                  <NxForm showValidationErrors onSubmit={() => {}}>
-                    <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
-                  </NxForm>
-                ),
-                boundQueries = within(renderResult.container);
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
 
             return { ...renderResult, ...boundQueries };
           }
