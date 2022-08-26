@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, MouseEvent, Ref, useEffect, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { always, dec, inc } from 'ramda';
 
@@ -84,15 +84,18 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }
 
-  // In the blur event, we use the relatedTarget to check if the focused element is a child of the parent
-  // to show/hide dropdown, however, clicking the button in Safari does not focus it, which means the
-  // relatedTarget will be null, this is to stop the mouse down event being fired for the element that
-  // is listening to the blur event, in this case, the show/hide dropdown is handled by the click event
-  function handleMouseDown(evt: MouseEvent) { evt.preventDefault(); }
-
-  function handleComponentBlur() {
+  function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
     setFocusableBtnIndex(null);
-    setShowDropdown(false);
+
+    // Check if useragent string contains Safari
+    const isSafari = navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1;
+
+    // Check if the new focused element is a child of the parent, if not, then close the dropdown menu
+    // For the issue that clicking the button in Safari does not focus it, we decide to show the dropdown in Safari
+    // when blur
+    if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget)) && !isSafari) {
+      setShowDropdown(false);
+    }
   }
 
   function handleOnChange(newVal: string) {
@@ -233,7 +236,6 @@ function NxComboboxRender<T extends string | number = string>(
          className={className}
          onFocus={handleComponentFocus}
          onBlur={handleComponentBlur}
-         onMouseDown={handleMouseDown}
          { ...attrs }>
       <NxTextInput role="combobox"
                    ref={inputRef}
