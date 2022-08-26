@@ -52,7 +52,6 @@ describe('NxFormSelect', function() {
       it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
     });
 
-
     describe('when invalid and non-pristine', function() {
       beforeEach(async function() {
         const [select] = await waitAndGetElements(`${validationSelector} .nx-form-select__select`);
