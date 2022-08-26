@@ -23,8 +23,8 @@ describe('AbstractDialog', function() {
     onCancel: jest.fn()
   };
 
-  const quickRender = rtlRender(AbstractDialog, minimalProps),
-      getDialog = rtlRenderElement(AbstractDialog, minimalProps);
+  const quickRender = rtlRender(AbstractDialog, minimalProps);
+  const getDialog = rtlRenderElement(AbstractDialog, minimalProps);
 
   it('renders children within the dialog element', function() {
     expect(quickRender({ children: <div data-testid="bar"/> }).getByTestId('bar')).toBeInTheDocument();
@@ -93,13 +93,14 @@ describe('AbstractDialog', function() {
         key: 'Escape'
       };
 
-      const result = await fireEvent.keyDown(dialog, escapeEvent);
+      const preventDefaultIsCalled = fireEvent.keyDown(dialog, escapeEvent);
 
-      expect(mockOnCancel).toHaveBeenCalledTimes(1);
+      expect(mockOnCancel).toHaveBeenCalled();
 
       // https://stackoverflow.com/questions/60455119/react-jest-test-preventdefault-action
       // https://github.com/testing-library/react-testing-library/issues/572
-      expect(result).toBeFalsy();
+      expect(preventDefaultIsCalled).toBeFalsy();
+
       expect(mockOnCancel.mock.calls[0][0].type).toBe('cancel');
     });
 

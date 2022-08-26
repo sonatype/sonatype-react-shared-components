@@ -82,9 +82,6 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
         if (!evt.defaultPrevented) {
           if (!useNativeCancelOnEscape) {
-            //eslint-disable-next-line
-            console.log('ABC', evt.preventDefault);
-
             evt.preventDefault();
             onCancel(createCancelEvent());
           }
