@@ -112,7 +112,7 @@ function NxComboboxRender<T extends string | number = string>(
   const adjustBtnFocus = (adjust: (i: number) => number) => () => {
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
             elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null,
-            elToFocusText = matches[newFocusableBtnIndex].displayName;
+            elToFocusText = !isEmpty ? matches[newFocusableBtnIndex].displayName : null;
         if (elToFocus) {
 
           setFocusableBtnIndex(newFocusableBtnIndex);
