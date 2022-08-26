@@ -21,15 +21,15 @@ export default function NxComboboxErrorExample() {
 
   function onChange(query: string) {
     setQuery(query);
+    if (!query) {
+      setError(null);
+    }
   }
 
   function onSearch(query: string) {
     setError(null);
-
-    if (query !== '') {
-      setLoading(true);
-      executeQuery(query);
-    }
+    setLoading(true);
+    executeQuery(query);
   }
 
   return (

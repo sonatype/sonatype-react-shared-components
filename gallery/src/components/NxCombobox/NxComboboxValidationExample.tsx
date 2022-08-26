@@ -52,7 +52,7 @@ export default function NxComboboxRequiredExample() {
   }
 
   function onSearch(query: string) {
-    query ? executeQuery(query) : setMatches([]);
+    executeQuery(query);
   }
 
   return (

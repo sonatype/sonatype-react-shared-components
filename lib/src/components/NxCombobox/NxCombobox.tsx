@@ -98,10 +98,10 @@ function NxComboboxRender<T extends string | number = string>(
   function handleOnChange(newVal: string) {
     setFocusableBtnIndex(null);
     onChange(newVal);
+    setPrevSearchText('');
 
     if (newVal && newVal.trim() !== value.trim() && newVal.toLowerCase() !== prevSearchText.toLowerCase()) {
       doSearch(newVal);
-      setPrevSearchText('');
     }
     else if (!newVal) {
       setShowDropdown(false);

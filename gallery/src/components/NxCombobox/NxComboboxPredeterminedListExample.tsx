@@ -40,7 +40,7 @@ export default function NxComboboxPredeterminedListExample() {
   }
 
   function onSearch(query: string) {
-    query ? executeQuery(query) : setMatches([]);
+    executeQuery(query);
   }
 
   return (

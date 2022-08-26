@@ -33,7 +33,7 @@ export default function NxComboboxDisabledExample() {
   }
 
   function onSearch(query: string) {
-    query ? executeQuery(query) : setMatches([]);
+    executeQuery(query);
   }
 
   return (
