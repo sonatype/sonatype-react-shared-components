@@ -7,8 +7,9 @@
 
 .nx-toast-container {
   grid-area: content;
-  position: sticky;
-  left: calc(100% - 500px);
+  position: static;
+  justify-self:end;
+  margin-right: 8px;
   height: max-content;
   width: 500px;
   z-index: 1;
