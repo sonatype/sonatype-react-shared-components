@@ -86,6 +86,7 @@ function NxComboboxRender<T extends string | number = string>(
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
     setFocusableBtnIndex(null);
+    setInlineStyle(false);
 
     // Check if useragent string contains Safari
     const isSafari = navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1;
