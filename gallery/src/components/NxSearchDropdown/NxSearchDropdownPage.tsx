@@ -169,7 +169,7 @@ const NxSearchDropdownPage = () =>
         <NxP>
           The search functionality of <NxCode>NxSearchDropdown</NxCode> should be used with a debounce in order
           to prevent excessive queries to the backend. The standard timing value to use for that debounce is provided
-          via the <NxCode>NX_SEARCH_DROPDOWN_DEBOUNCE_TIME</NxCode> export. See
+          via the <NxCode>NX_STANDARD_DEBOUNCE_TIME</NxCode> export. See
           also <NxCode>NxStatefulSearchDropdown</NxCode>, which manages the debounce internally.
         </NxP>
       </NxTile.Subsection>

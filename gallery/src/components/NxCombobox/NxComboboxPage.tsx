@@ -214,7 +214,7 @@ const NxComboboxPage = () =>
         <NxP>
           If using <NxCode>NxCombobox</NxCode> for a backend query, the search functionality should be used with a
           debounce in order to prevent excessive queries to the backend. The standard timing value to use for that
-          debounce is provided via the <NxCode>NX_SEARCH_DROPDOWN_DEBOUNCE_TIME</NxCode> export.
+          debounce is provided via the <NxCode>NX_STANDARD_DEBOUNCE_TIME</NxCode> export.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>

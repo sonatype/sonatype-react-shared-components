@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useState } from 'react';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxCombobox, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { NxCombobox, NX_STANDARD_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 export default function NxComboboxErrorExample() {
@@ -17,7 +17,7 @@ export default function NxComboboxErrorExample() {
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
     setError(`Error executing query ${query}`);
     setLoading(false);
-  }, [query]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+  }, [query]), NX_STANDARD_DEBOUNCE_TIME);
 
   function onChange(query: string) {
     setQuery(query);

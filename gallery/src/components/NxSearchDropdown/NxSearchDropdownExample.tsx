@@ -7,7 +7,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME, NxFontAwesomeIcon }
+import { NxSearchDropdown, DataItem, NX_STANDARD_DEBOUNCE_TIME, NxFontAwesomeIcon }
   from '@sonatype/react-shared-components';
 import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
 
@@ -59,7 +59,7 @@ export default function NxSearchDropdownExample() {
         setLoading(false);
       }
     });
-  }, [matches, query]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+  }, [matches, query]), NX_STANDARD_DEBOUNCE_TIME);
 
   function onSearchTextChange(query: string) {
     setQuery(query);

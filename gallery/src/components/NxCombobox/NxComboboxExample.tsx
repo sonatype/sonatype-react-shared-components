@@ -7,7 +7,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxCombobox, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { NxCombobox, DataItem, NX_STANDARD_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 const items = prepend(
@@ -43,7 +43,7 @@ export default function NxComboboxExample() {
         setLoading(false);
       }
     });
-  }, [matches, query]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+  }, [matches, query]), NX_STANDARD_DEBOUNCE_TIME);
 
   function onChange(query: string) {
     setQuery(query);
