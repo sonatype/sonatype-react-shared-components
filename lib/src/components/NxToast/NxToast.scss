@@ -6,12 +6,13 @@
  */
 
 .nx-toast-container {
+  grid-area: content;
   position: sticky;
   left: calc(100% - 500px);
   height: max-content;
   width: 500px;
   z-index: 1;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .nx-toast {
@@ -19,7 +20,7 @@
   animation: animationIn 0.4s linear;
   right: 0;
   opacity: 1;
-  overflow:hidden;
+  overflow: hidden;
 
   &.nx-toast--closing {
     animation-name: animationOut;
