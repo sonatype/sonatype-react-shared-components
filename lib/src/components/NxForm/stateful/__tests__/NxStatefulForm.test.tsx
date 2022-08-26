@@ -235,7 +235,7 @@ describe('NxStatefulForm', function() {
         expect(within(renderEl({ validationErrors: 'foo' })!).getByRole('alert')).toBeInTheDocument();
         expect(within(renderEl({ validationErrors: ['foo'] })!).getByRole('alert')).toBeInTheDocument();
         expect(within(renderEl({ submitError: 'bar', validationErrors: 'foo' })!).getByRole('alert'))
-            .toBeInTheDocument();
+            .not.toHaveTextContent(/foo/);
       });
 
       it('includes the first validation error within the alert content', function() {
