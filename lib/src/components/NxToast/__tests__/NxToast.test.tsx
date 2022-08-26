@@ -39,7 +39,6 @@ describe('NxToast', function() {
     const customizedComponent = renderEl({ className: 'foo', id: 'bar', lang: 'en' })!;
 
     expect(customizedComponent).toHaveClass('foo');
-    expect(customizedComponent).toHaveClass('nx-toast');
     expect(customizedComponent).toHaveAttribute('id', 'bar');
     expect(customizedComponent).toHaveAttribute('lang', 'en');
 
