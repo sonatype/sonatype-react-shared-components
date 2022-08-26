@@ -84,7 +84,7 @@ describe('NxDrawer', function() {
       }
     });
 
-    it('executes onCancel callback when pressing ESC key', async function () {
+    it('executes onCancel callback when pressing ESC key', async function (done) {
       const mockOnCancel = jest.fn();
       const drawer = getDrawer({ onCancel: mockOnCancel })!;
 
@@ -92,7 +92,10 @@ describe('NxDrawer', function() {
       await fireEvent.keyDown(drawer, createEvent());
       expect(drawer.querySelector('.nx-drawer__animation-wrapper')).toHaveClass('nx-drawer__animation-wrapper--close');
       await fireEvent.animationEnd(drawer);
-      expect(mockOnCancel).toHaveBeenCalled();
+      setTimeout(() => {
+        expect(mockOnCancel).toHaveBeenCalled();
+        done();
+      }, 500);
     });
 
     it('executes onCancel callback ONLY when pressing ESC key', async function () {
@@ -122,7 +125,7 @@ describe('NxDrawer', function() {
       document.addEventListener = jest.fn((e: string, cb: () => void) => {
         map[e] = cb;
       }) as jest.Mock;
-      const container = mount(
+      const container = render(
         <div className="container">
           <NxButton className="outside-button">Outside</NxButton>
           <NxDrawer onCancel={mockOnCancel}>
@@ -133,9 +136,11 @@ describe('NxDrawer', function() {
       const outsideButton = container.find('.outside-button').at(0);
       const insideButton = container.find('.inside-button').at(0);
       const dialog = container.find('dialog.nx-drawer').at(0);
+      //screen get by role
 
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
       map.click({ target: insideButton.getDOMNode() });
+      //user event for click
       //await fireEvent(dialog, new Event('transitionEnd'));
       dialog.simulate('transitionEnd');
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
