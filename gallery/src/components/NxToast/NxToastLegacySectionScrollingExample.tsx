@@ -31,7 +31,7 @@ interface ToastModel {
   message: string;
 }
 
-export default function NxToastLegacyLayoutExample() {
+export default function NxToastLegacySectionScrollingExample() {
   const [toastIdInc, setToastIdInc] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
@@ -72,6 +72,22 @@ export default function NxToastLegacyLayoutExample() {
             faucibus, lectus ligula aliquam velit, id imperdiet dui justo nec justo. Nunc porta sapien quis nisi
             ullamcorper auctor.
           </NxP>
+          <NxP>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum augue ut mi facilisis commodo. Sed
+            quis faucibus metus. Duis volutpat nisl et risus pellentesque euismod. Praesent iaculis ipsum et iaculis
+            sollicitudin. Fusce maximus, ex vehicula pellentesque congue, dolor leo auctor velit, at rutrum dui erat
+            in lorem. Maecenas nec urna dapibus, porttitor orci nec, congue erat. In mollis, enim ac lobortis
+            faucibus, lectus ligula aliquam velit, id imperdiet dui justo nec justo. Nunc porta sapien quis nisi
+            ullamcorper auctor.
+          </NxP>
+          <NxP>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum augue ut mi facilisis commodo. Sed
+            quis faucibus metus. Duis volutpat nisl et risus pellentesque euismod. Praesent iaculis ipsum et iaculis
+            sollicitudin. Fusce maximus, ex vehicula pellentesque congue, dolor leo auctor velit, at rutrum dui erat
+            in lorem. Maecenas nec urna dapibus, porttitor orci nec, congue erat. In mollis, enim ac lobortis
+            faucibus, lectus ligula aliquam velit, id imperdiet dui justo nec justo. Nunc porta sapien quis nisi
+            ullamcorper auctor.
+          </NxP>
         </NxPageSidebar>
         <NxPageMain>
           <NxTile>
@@ -81,6 +97,40 @@ export default function NxToastLegacyLayoutExample() {
               </NxTile.HeaderTitle>
             </NxTile.Header>
             <NxTile.Content>
+              <NxP>Scroll Down to Find Toast Buttons</NxP>
+              <NxBackButton href="#/pages/Toast" targetPageTitle="Documentation" />
+              <NxP>
+                Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
+                varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
+                rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus qu
+                pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+                diam maecenas.
+              </NxP>
+              <NxP>
+                Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
+                varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
+                rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus qu
+                pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+                diam maecenas.
+              </NxP>
+              <NxP>
+                Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
+                varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
+                rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus qu
+                pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+                diam maecenas.
+              </NxP>
+              <NxP>
+                Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
+                varius sit amet mattis. Enim praesent elementum facilisis leo vel. A arcu cursus vitae congue mauris
+                rhoncus aenean vel elit. Morbi tincidunt ornare massa eget egestas. Semper auctor neque vitae tempus qu
+                pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
+                diam maecenas.
+              </NxP>
               <NxP>
                 Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                 dolore magna aliqua. Tortor consequat id porta nibh venenatis cras. Proin libero nunc consequat interdu
@@ -111,7 +161,6 @@ export default function NxToastLegacyLayoutExample() {
                   Open Warning Toast
                 </NxButton>
               </NxButtonBar>
-              <NxBackButton href="#/pages/Toast" targetPageTitle="Documentation" />
             </NxTile.Content>
           </NxTile>
         </NxPageMain>

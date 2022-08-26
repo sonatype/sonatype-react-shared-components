@@ -24,7 +24,8 @@ import CodeExample from '../../CodeExample';
 
 const NxToastComplexLayoutExampleCode = require('./NxToastComplexLayoutExample?raw'),
     NxToastSimpleLayoutExampleCode = require('./NxToastSimpleLayoutExample?raw'),
-    NxToastLegacyLayoutExampleCode = require('./NxToastLegacyLayoutExample?raw');
+    NxToastLegacySectionScrollingExampleCode = require('./NxToastLegacySectionScrollingExample?raw'),
+    NxToastLegacyPageScrollingEaxmpleCode = require('./NxToastLegacyPageScrollingExample?raw');
 
 const NxToastPage = () =>
   <>
@@ -186,17 +187,18 @@ const NxToastPage = () =>
     <NxTile>
       <NxTile.Header>
         <NxTile.HeaderTitle>
-          <NxH2>Toasts With Legacy Page Layout Example</NxH2>
+          <NxH2>Legacy Page Layout with Section Scrolling Example</NxH2>
         </NxTile.HeaderTitle>
       </NxTile.Header>
       <NxTile.Content>
         <NxP>
-          A legacy layout page example. <NxCode>NxToast</NxCode>s will be positioned on the right side of the viewport,
-          underneath <NxCode>NxPageHeader</NxCode>. Note that in legacy layouts, if the viewport's width extends beyond
-          1600px, <NxCode>NxToast</NxCode>s will remain flush with the viewport and not the page content.
+          A legacy layout page example with section scrolling enabled. <NxCode>NxToast</NxCode>s will be positioned on
+          the right side of the viewport, underneath <NxCode>NxPageHeader</NxCode>. Note that in legacy layouts, if
+          the viewport's width extends beyond 1600px, <NxCode>NxToast</NxCode>s will remain on the right side of
+          the viewport and not the page content.
         </NxP>
         <NxP>
-          <NxTextLink href="#/NxToastLegacyLayoutExample">
+          <NxTextLink href="#/NxToastLegacySectionScrollingExample">
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
@@ -206,8 +208,37 @@ const NxToastPage = () =>
           <NxAccordion.Header>
             <NxAccordion.Title>Example Code</NxAccordion.Title>
           </NxAccordion.Header>
-          <CodeExample content={NxToastLegacyLayoutExampleCode} />
-          <GalleryTileFooter clipboardContent={NxToastLegacyLayoutExampleCode}/>
+          <CodeExample content={NxToastLegacySectionScrollingExampleCode} />
+          <GalleryTileFooter clipboardContent={NxToastLegacySectionScrollingExampleCode}/>
+        </NxStatefulAccordion>
+      </NxTile.Content>
+    </NxTile>
+
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>Legacy Page Layout with Page Scrolling Example</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          A legacy layout page example with page scrolling enabled. Note that in legacy layouts, if the
+          viewport's width extends beyond 1600px, <NxCode>NxToast</NxCode>s will remain on the right side of
+          the viewport and not the page content.
+        </NxP>
+        <NxP>
+          <NxTextLink href="#/NxToastLegacyPageScrollingExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+      </NxTile.Content>
+      <NxTile.Content className= "nx-tile-content--accordion-container">
+        <NxStatefulAccordion>
+          <NxAccordion.Header>
+            <NxAccordion.Title>Example Code</NxAccordion.Title>
+          </NxAccordion.Header>
+          <CodeExample content={NxToastLegacyPageScrollingEaxmpleCode} />
+          <GalleryTileFooter clipboardContent={NxToastLegacyPageScrollingEaxmpleCode}/>
         </NxStatefulAccordion>
       </NxTile.Content>
     </NxTile>

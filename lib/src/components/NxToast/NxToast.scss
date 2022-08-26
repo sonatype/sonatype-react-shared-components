@@ -5,6 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
+ @use '../../scss-shared/nx-header-variables';
+
 .nx-toast-container {
   grid-area: content;
   position: static;
@@ -14,6 +16,15 @@
   z-index: 1060;
   overflow: hidden;
   pointer-events: none;
+}
+
+// in legacy layouts where page scrolling is enabled, position: fixed helps keep
+// NxToastContainer in place. Top refers to the set height of the the header
+.nx-html--page-scrolling {
+  .nx-toast-container {
+    position: fixed;
+    top: nx-header-variables.$main-header-height;
+  }
 }
 
 .nx-toast {
