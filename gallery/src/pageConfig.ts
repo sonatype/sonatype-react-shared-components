@@ -147,6 +147,8 @@ import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSide
 import NxToastPage from './components/NxToast/NxToastPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
+import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
+import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
 import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
 
 const pageConfig: PageConfig = {
@@ -204,6 +206,8 @@ const pageConfig: PageConfig = {
     'Date Input': { content: NxDateInputPage, type: 'react' },
     'Stateful Date Input': { content: NxStatefulDateInputPage, type: 'react' },
     'Fieldset': { content: NxFieldsetPage, type: 'react' },
+    'File Upload': { content: NxFileUploadPage, type: 'react' },
+    'Stateful File Upload': { content: NxStatefulFileUploadPage, type: 'react' },
     'Filter Input': { content: NxFilterInputPage, type: 'react' },
     'Form': { content: NxFormPage, type: 'react' },
     'Form Group': { content: NxFormGroupPage, type: 'react' },

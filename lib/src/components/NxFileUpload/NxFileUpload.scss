@@ -1,0 +1,126 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use 'sass:math';
+@use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-container-helpers';
+
+.nx-file-upload {
+  @include nx-container-helpers.container-horizontal;
+
+  margin-bottom: var(--nx-spacing-8x);
+
+  &__input {
+    @include nx-text-helpers.visually-hidden;
+
+    // focus styles must be reimplemented because it isn't the actual button that gets focus, it's the input
+    &:focus + .nx-btn {
+      border-color: var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
+    }
+  }
+
+  > .nx-btn {
+    // container-horizontal doesn't work here because the input is the first child
+    margin-left: 0;
+    margin-right: var(--nx-spacing-4x);
+  }
+
+  &__validation-error {
+    color: var(--nx-color-validation-invalid);
+    font-size: var(--nx-font-size-xs);
+    margin-top: var(--nx-spacing-2x);
+    position: absolute;
+  }
+
+  &__no-file-message {
+    @include nx-container-helpers.container-horizontal;
+
+    > .nx-icon {
+      display: none;
+    }
+
+    &--invalid {
+      color: var(--nx-color-validation-invalid);
+
+      > .nx-icon {
+        display: inline;
+      }
+    }
+  }
+}
+
+.nx-selected-file {
+  $height: 36px;
+
+  align-items: center;
+  background-color: var(--nx-swatch-indigo-97);
+  border: 1px solid var(--nx-swatch-indigo-60);
+  border-radius: math.div($height, 2);
+  box-sizing: border-box;
+  display: inline-flex;
+
+  // Deliberately non-standard, Design says standard sizes don't look right with the rounded borders here
+  padding-left: 20px;
+  height: $height;
+  width: 300px;
+
+  &__info {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  &__name {
+    @include nx-text-helpers.truncate-ellipsis;
+
+    color: var(--nx-swatch-indigo-30);
+    flex: 0 1 auto;
+    font-weight: bold;
+    margin-right: var(--nx-spacing-3x);
+  }
+
+  &__size {
+    font-size: var(--nx-font-size-xs);
+    margin-right: var(--nx-spacing-4x);
+    min-width: max-content;
+  }
+
+  &__dismiss-btn {
+    @include nx-container-helpers.container-horizontal;
+
+    align-items: center;
+    background: transparent;
+    border-color: transparent;
+    border-style: inherit;
+    border-width: inherit;
+    border-radius: inherit;
+    color: var(--nx-swatch-indigo-30);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--nx-font-size);
+    height: inherit;
+    margin-left: auto;
+    margin-right: -1px; // border should overlap with parent border
+    padding: 0 calc(var(--nx-spacing-3x) - 1px);
+
+    &:focus {
+      border-color: var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
+      outline: none;
+    }
+
+    &:hover, &:active {
+      border-color: var(--nx-swatch-grey-05);
+    }
+
+    &:active {
+      background-color: var(--nx-swatch-indigo-90);
+      box-shadow: none;
+    }
+  }
+}
