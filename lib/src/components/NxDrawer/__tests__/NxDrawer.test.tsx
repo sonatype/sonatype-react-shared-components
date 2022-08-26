@@ -15,9 +15,7 @@ import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import { mount, shallow } from 'enzyme';
 
-//import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxDrawer, { Props } from '../NxDrawer';
-//import AbstractDialog from '../../AbstractDialog/AbstractDialog';
 import NxButton from '../../NxButton/NxButton';
 //import NxCloseButton from '../../NxCloseButton/NxCloseButton';
 
@@ -32,18 +30,12 @@ describe('NxDrawer', function() {
 
   it('renders <dialog> with class nx-drawer containing nx-drawer__animation-wrapper > nx-drawer__panel', function () {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const drawer = quickRender()!;
-    const dialog = drawer.getByRole('dialog', { hidden: true});
+    const dialog = getDrawer()!;
+    expect(dialog?.nodeName).toBe('DIALOG');
     expect(dialog).toHaveClass('nx-drawer');
     expect(dialog.children[0]).toHaveClass('nx-drawer__animation-wrapper');
     expect(dialog.children[0].children[0]).toHaveClass('nx-drawer__panel');
   });
-
-  // it('sets nx-drawer--open class to the dialog once it is mounted', function() {
-  //   const component = getMounted()!;
-  //   const dialog = component.find('dialog.nx-drawer');
-  //   expect(dialog).toHaveClassName('nx-drawer--open');
-  // });
 
   it('renders children nodes within nx-drawer__panel', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -56,24 +48,21 @@ describe('NxDrawer', function() {
 
   it('merges any passed in className to the nx-drawer dialog', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const drawer = getDrawer({ className: 'foo' });
-    expect(drawer).toHaveClass('foo');
+    const drawer = quickRender({ className: 'foo' });
+    const dialog = drawer.getByRole('dialog', { hidden: true });
+    expect(dialog).toHaveClass('foo');
   });
 
   it('includes any passed in attributes to the dialog element', function() {
     const drawer = getDrawer({ id: 'drawer-id', lang: 'en_US' });
-    //const dialog = component.find('dialog.nx-drawer');
 
     expect(drawer).toHaveAttribute('id', 'drawer-id');
     expect(drawer).toHaveAttribute('lang', 'en_US');
-    // expect(dialog.prop('id')).toEqual('drawer-id');
-    // expect(dialog.prop('lang')).toEqual('en_US');
   });
 
   it('adds the nx-drawer--narrow class when the narrow variant prop is specified', function() {
     const drawer = getDrawer({ variant: 'narrow' });
     expect(drawer).toHaveClass('nx-drawer--narrow');
-    //expect(component.find('.nx-drawer')).toHaveClassName('nx-drawer--narrow');
   });
 
   describe('NxDrawer event listener support', () => {
@@ -96,15 +85,14 @@ describe('NxDrawer', function() {
     });
 
     it('executes onCancel callback when pressing ESC key', async function () {
-      const mockCallBack = jest.fn();
-      const component = getDrawer({ onCancel: mockCallBack })!;
+      const mockOnCancel = jest.fn();
+      const drawer = getDrawer({ onCancel: mockOnCancel })!;
 
-      expect(mockCallBack).not.toHaveBeenCalled();
-      await fireEvent.keyDown(component, createEvent());
-      //component.simulate('keyDown', createEvent());
-      //component.simulate('transitionEnd');
-      await fireEvent(component, new Event('transitionEnd'));
-      expect(mockCallBack).toHaveBeenCalledTimes(1);
+      expect(mockOnCancel).not.toHaveBeenCalled();
+      await fireEvent.keyDown(drawer, createEvent());
+      expect(drawer.querySelector('.nx-drawer__animation-wrapper')).toHaveClass('nx-drawer__animation-wrapper--close');
+      await fireEvent.animationEnd(drawer);
+      expect(mockOnCancel).toHaveBeenCalled();
     });
 
     it('executes onCancel callback ONLY when pressing ESC key', async function () {
@@ -116,7 +104,7 @@ describe('NxDrawer', function() {
       await user.keyboard('Enter');
       await user.keyboard('q');
       await user.keyboard('Q');
-      await fireEvent.keyDown(component, createEvent('transitionEnd'));
+      await fireEvent.keyDown(component, createEvent('animationEnd'));
 
       //await fireEvent.keyDown(component, 'transitionEnd');
 
@@ -164,7 +152,7 @@ describe('NxDrawer', function() {
         map[e] = cb;
       }) as jest.Mock;
       // render(<NxDrawer><NxDrawer.Header></NxDrawer.Header></NxDrawer>);
-      const drawer = render(
+      render(
         <div className="container">
           <NxDrawer onCancel={mockOnCancel}>
             <NxDrawer.Header>
@@ -176,7 +164,7 @@ describe('NxDrawer', function() {
       );
 
       const dialog = screen.getByRole('dialog', { hidden: true});
-      const insideButton = drawer.queryAllByRole('button');
+      const insideButton = screen.getByRole('button', { hidden: true});
       // const container = mount(
       //   <div className="container">
       //     <NxDrawer headerTitle="hello" onCancel={mockOnCancel}>
@@ -188,7 +176,7 @@ describe('NxDrawer', function() {
       //const insideButton = container.find('.inside-button').at(0);
 
       expect(mockOnCancel).toHaveBeenCalledTimes(0);
-      await user.click(insideButton[0]);
+      await user.click(insideButton);
       //map.click({ target: insideButton.getDOMNode() });
 
       //dialog.simulate('transitionEnd');
@@ -292,7 +280,7 @@ describe('NxDrawer', function() {
     it('has a <header> tag with the nx-drawer-header class and title', function() {
       // render(<NxDrawer><NxDrawer.Header></NxDrawer.Header></NxDrawer>);
       const mockCallback = jest.fn();
-      render(
+      const drawer = render(
         <NxDrawer data-testid="nx-drawer" onCancel={mockCallback}>
           <NxDrawer.Header>
             <NxDrawer.Header.Title>
@@ -309,6 +297,7 @@ describe('NxDrawer', function() {
       screen.getByRole('NxDrawer.Header');
       //expect(header).toMatchSelector('header.nx-drawer-header');
       //expect(title).toHaveText(titleText);
+      drawer.container.querySelector('nx-drawer-header-title');
       expect(screen.getByRole('NxDrawer.Header.Title')).toHaveTextContent('Hello');
     });
 
