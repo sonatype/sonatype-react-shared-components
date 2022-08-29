@@ -14,23 +14,39 @@
     position: fixed;
     right: 100%;
     width: 100%;
+  }
+
+  &__input {
+    margin-bottom: 0;
+  }
+
+  &__alert {
+    @include nx-container-helpers.container-vertical;
+    position: fixed;
+    right: 100%;
+    width: 100%;
+    border-radius: var(--nx-border-radius);
+    margin: var(--nx-spacing-base) 0 0 0;
+    padding: var(--nx-spacing-base) 0; 
+    background: var(--nx-swatch-white);
+    box-shadow: 0 2px 12px 0 rgb(74 77 113 / 20%), 0 1px 2px 0 rgb(91 95 141 / 20%), 0 1px 1px 0 rgb(124 128 179 / 20%);
+    box-sizing: border-box;
+    display: block;
+    max-height: 328px;
+    overflow-y: auto;
+    z-index: 1;
 
     &--error {
       padding: 0;
     }
   }
-  &__input {
-    margin-bottom: 0;
-  }
 
   &__empty-message {
-    @include nx-container-helpers.container-horizontal;
-
     padding: var(--nx-spacing-base) var(--nx-spacing-4x);
     text-align: center;
   }
 
-  &--dropdown-showable{
+  &--dropdown-showable {
     .nx-combobox__menu {
       position: absolute;
       right: initial;
@@ -38,6 +54,11 @@
       .nx-dropdown-button.selected {
         background-color: var(--nx-swatch-blue-90);
       }
+    }
+
+    .nx-combobox__alert {
+      position: absolute;
+      right: initial;
     }
   }
 

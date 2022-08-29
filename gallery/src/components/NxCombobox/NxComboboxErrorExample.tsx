@@ -23,13 +23,17 @@ export default function NxComboboxErrorExample() {
     setQuery(query);
     if (!query) {
       setError(null);
+      setLoading(false);
     }
   }
 
   function onSearch(query: string) {
     setError(null);
-    setLoading(true);
-    executeQuery(query);
+
+    if (query !== '') {
+      setLoading(true);
+      executeQuery(query);
+    }
   }
 
   return (

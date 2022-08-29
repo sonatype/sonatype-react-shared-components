@@ -58,10 +58,14 @@ describe('NxCombobox', function() {
 
   it('sets aria-autocomplete on the input to list as default and to both if `autoComplete` prop is set to true',
       function() {
-        expect(rtlRender().container!.querySelector('.nx-text-input__input'))
-            .toHaveAttribute('aria-autocomplete', 'list');
-        expect(rtlRender({ autoComplete: true }).container!.querySelector('.nx-text-input__input'))
-            .toHaveAttribute('aria-autocomplete', 'both');
+        const { getByRole, rerender } = rtlRender(),
+            inputElement = getByRole('combobox');
+
+        expect(inputElement).toHaveAttribute('aria-autocomplete', 'list');
+
+        rerender(<NxCombobox {...minimalProps} autoComplete={true} />);
+
+        expect(inputElement).toHaveAttribute('aria-autocomplete', 'both');
       });
 
   it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true',
@@ -79,9 +83,9 @@ describe('NxCombobox', function() {
 
   it('sets aria-expanded on the input to true when the dropdown displayed which has aria-hidden set to false',
       async function() {
-        const { getByRole, container } = rtlRender(),
+        const { getByRole } = rtlRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
             inputElement = getByRole('combobox'),
-            dropdownElement = container.querySelector('.nx-combobox__menu');
+            dropdownElement = getByRole('listbox', { hidden: true });
 
         expect(inputElement).toHaveAttribute('aria-expanded', 'false');
         expect(dropdownElement).toHaveAttribute('aria-hidden', 'true');
@@ -114,72 +118,91 @@ describe('NxCombobox', function() {
   });
 
   it('adds the nx-text-input--long class to the div if set', function() {
-    expect(rtlRender().container!.querySelector('.nx-combobox')).not.toHaveClass('nx-text-input--long');
-    expect(rtlRender({ className: 'nx-text-input--long' }).container!.querySelector('.nx-combobox'))
+    expect(rtlRender().container.querySelector('.nx-combobox')).not.toHaveClass('nx-text-input--long');
+    expect(rtlRender({ className: 'nx-text-input--long' }).container.querySelector('.nx-combobox'))
         .toHaveClass('nx-text-input--long');
   });
 
   it('adds the nx-text-input--short class to the div if set', function() {
-    expect(rtlRender().container!.querySelector('.nx-combobox')).not.toHaveClass('nx-text-input--short');
-    expect(rtlRender({ className: 'nx-text-input--short' }).container!.querySelector('.nx-combobox'))
+    expect(rtlRender().container.querySelector('.nx-combobox')).not.toHaveClass('nx-text-input--short');
+    expect(rtlRender({ className: 'nx-text-input--short' }).container.querySelector('.nx-combobox'))
         .toHaveClass('nx-text-input--short');
   });
 
   it('passes the disabled prop to the input and buttons', function() {
-    expect(rtlRender().container!.querySelector('.nx-text-input__input')).toHaveProperty('disabled', false);
-    expect(rtlRender({ disabled: undefined }).container!.querySelector('.nx-text-input__input'))
-        .toHaveProperty('disabled', false);
-    expect(rtlRender({ disabled: null }).container!.querySelector('.nx-text-input__input'))
-        .toHaveProperty('disabled', false);
-    expect(rtlRender({ disabled: false }).container!.querySelector('.nx-text-input__input'))
-        .toHaveProperty('disabled', false);
-    expect(rtlRender({ disabled: true }).container!.querySelector('.nx-text-input__input'))
-        .toHaveProperty('disabled', true);
+    const { getByRole, rerender } = rtlRender(),
+        inputElement = getByRole('combobox');
 
-    expect(rtlRender({disabled: false, matches: [{ id: '1', displayName: '1' }]}).container!
-        .querySelector('.nx-dropdown-button')).toHaveProperty('disabled', false);
-    expect(rtlRender({disabled: true, matches: [{ id: '1', displayName: '1' }]}).container!
-        .querySelector('.nx-dropdown-button')).toHaveProperty('disabled', true);
+    expect(inputElement).toHaveProperty('disabled', false);
+
+    rerender(<NxCombobox {...minimalProps} disabled={undefined} />);
+    expect(inputElement).toHaveProperty('disabled', false);
+
+    rerender(<NxCombobox {...minimalProps} disabled={false} />);
+    expect(inputElement).toHaveProperty('disabled', false);
+
+    rerender(<NxCombobox {...minimalProps} matches={[{ id: '1', displayName: 'Foo' }]} disabled={false} />);
+    expect(getByRole('option', { hidden: true })).toHaveProperty('disabled', false);
+
+    rerender(<NxCombobox {...minimalProps} matches={[{ id: '1', displayName: 'Foo' }]} disabled={true} />);
+    expect(getByRole('option', { hidden: true })).toHaveProperty('disabled', true);
   });
 
-  it('renders a dropdown with the nx-combobox__menu class', function() {
-    const { container } = rtlRender(),
-        dropdownElement = container!.querySelector('.nx-combobox__menu');
+  it('renders a dropdown with the nx-combobox__menu class', async function() {
+    const { getByRole } = rtlRender({ matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
+        dropdownElement = getByRole('listbox', { hidden: true });
 
-    expect(dropdownElement).toBeVisible();
     expect(dropdownElement).toHaveClass('nx-combobox__menu');
   });
 
-  it('sets the listbox role on the dropdown when it contains results', function() {
-    const { container } = rtlRender({ matches: [{ id: '1', displayName: '1' }] }),
-        dropdownElement = container!.querySelector('.nx-combobox__menu');
+  it('sets the listbox role on the dropdown', function() {
+    const { getByRole } = rtlRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+        dropdownElement = getByRole('listbox', { hidden: true });
 
     expect(dropdownElement).toHaveAttribute('role', 'listbox');
   });
 
-  it('sets the alert role on the dropdown when it is in loading, error, or empty states', function() {
-    expect(rtlRender({ matches: [] }).container!.querySelector('.nx-combobox__menu')).toHaveAttribute('role', 'alert');
-    expect(rtlRender({ loading: true }).container!.querySelector('.nx-combobox__menu'))
-        .toHaveAttribute('role', 'alert');
-    expect(rtlRender({ loadError: 'boo' }).container!.querySelector('.nx-combobox__menu'))
-        .toHaveAttribute('role', 'alert');
-  });
-
   it('sets an id on the dropdown and references it in the combobox input aria-controls', function() {
-    const { getByRole, container } = rtlRender(),
+    const { getByRole } = rtlRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
         inputElement = getByRole('combobox'),
-        dropdownElement = container.querySelector('.nx-combobox__menu')!;
+        dropdownElement = getByRole('listbox', { hidden: true });
+
     expect(dropdownElement).toHaveAttribute('id');
     expect(inputElement).toHaveAttribute('aria-controls', dropdownElement.id);
   });
 
-  it('sets aria-live on the dropdown to "polite"', function() {
-    expect(rtlRender().container!.querySelector('.nx-combobox__menu')).toHaveAttribute('aria-live', 'polite');
+  it('renders an alert dropdown with nx_combobox__alert class', function() {
+    const { container } = rtlRender(),
+        alertDropdownElement = container.querySelector('.nx-combobox__alert');
+
+    expect(alertDropdownElement).toBeTruthy();
+    expect(alertDropdownElement).toHaveClass('nx-combobox__alert');
   });
 
-  it('sets aria-busy on the dropdown if loading is true', function() {
-    expect(rtlRender().container!.querySelector('.nx-combobox__menu')).toHaveAttribute('aria-busy', 'false');
-    expect(rtlRender({ loading: true }).container!.querySelector('.nx-combobox__menu'))
+  it('sets the alert role on the alert dropdown when it is in loading, error, or empty states', function() {
+    expect(rtlRender({ matches: [] }).container.querySelector('.nx-combobox__alert')).toHaveAttribute('role', 'alert');
+    expect(rtlRender({ loading: true }).container.querySelector('.nx-combobox__alert'))
+        .toHaveAttribute('role', 'alert');
+    expect(rtlRender({ loadError: 'boo' }).container.querySelector('.nx-combobox__alert'))
+        .toHaveAttribute('role', 'alert');
+  });
+
+  it('sets an id on the alert dropdown and references it in the combobox input aria-describedby', function() {
+    const { getByRole, container } = rtlRender(),
+        inputElement = getByRole('combobox'),
+        alertDropdownElement = container.querySelector('.nx-combobox__alert')!;
+
+    expect(alertDropdownElement).toHaveAttribute('id');
+    expect(inputElement).toHaveAttribute('aria-describedby', alertDropdownElement.id);
+  });
+
+  it('sets aria-live on the alert dropdown to "polite"', function() {
+    expect(rtlRender().container.querySelector('.nx-combobox__alert')).toHaveAttribute('aria-live', 'polite');
+  });
+
+  it('sets aria-busy on the alert dropdown if loading is true', function() {
+    expect(rtlRender().container.querySelector('.nx-combobox__alert')).toHaveAttribute('aria-busy', 'false');
+    expect(rtlRender({ loading: true }).container.querySelector('.nx-combobox__alert'))
         .toHaveAttribute('aria-busy', 'true');
   });
 
@@ -189,7 +212,7 @@ describe('NxCombobox', function() {
     expect(loadingElement).toBeTruthy();
   });
 
-  it('renders error when the `error` prop is set', function() {
+  it('renders error when the `loadError` prop is set', function() {
     const { container } = rtlRender({ loadError: 'err' }),
         errorElement = container.querySelector('.nx-alert--load-error');
     expect(errorElement).toBeTruthy();
@@ -273,7 +296,7 @@ describe('NxCombobox', function() {
         expect(onSearch).not.toHaveBeenCalled();
         inputElement.focus();
         expect(onSearch).not.toHaveBeenCalled();
-        (document.activeElement! as HTMLElement).blur();
+        (document.activeElement as HTMLElement).blur();
         expect(onSearch).not.toHaveBeenCalled();
         inputElement.focus();
         expect(onSearch).not.toHaveBeenCalled();
