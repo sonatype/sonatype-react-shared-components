@@ -303,7 +303,7 @@ describe('NxCombobox', function() {
       });
 
   describe('Keyboard Support', function() {
-    it('sets aria-activeddescendant on the combobox and refers to the focused element id' +
+    it('sets aria-activedescendant on the combobox and refers to the focused element id' +
     'when the element has visual focus', async function() {
       const { getByRole, getAllByRole } = rtlRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
