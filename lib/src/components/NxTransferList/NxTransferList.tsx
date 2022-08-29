@@ -45,13 +45,8 @@ export default function NxTransferList<T extends string | number = string>(props
   }
 
   const selectedItemsArray = useMemo(
-    () => selectedItems instanceof Array ? selectedItems : Array.from(selectedItems),
-    [selectedItems]
-  );
-
-  const selectedItemsSet = useMemo(
-    () => selectedItems instanceof Set ? selectedItems as Set<T> : new Set(selectedItems),
-    [selectedItems]
+      () => selectedItems instanceof Array ? selectedItems : Array.from(selectedItems),
+      [selectedItems]
   );
 
   /*
@@ -72,18 +67,20 @@ export default function NxTransferList<T extends string | number = string>(props
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
-  const groupedItems = useMemo(() => {
-          const allItemsIdToItemLookUp = groupBy(item => item.id.toString(), allItems);
-          return allowReordering
-            ? {
-              available: reject((item: DataItem<T>) => selectedItemsSet.has(item.id), allItems),
-              selected: chain(item => allItemsIdToItemLookUp[item.toString()], selectedItemsArray)
-            }
-            : groupBy(item => selectedItemsSet.has(item.id) ? 'selected' : 'available', allItems);
-        },
-        [allItems, selectedItems, allowReordering]
-      ),
-      { available = [], selected = [] } = groupedItems;
+  const { available = [], selected = [] } = useMemo(
+      () => {
+        const allItemsIdToItemLookUp = groupBy(item => item.id.toString(), allItems),
+            selectedItemsSet = selectedItems instanceof Set ? selectedItems as Set<T> : new Set(selectedItems);
+
+        return allowReordering
+          ? {
+            available: reject((item: DataItem<T>) => selectedItemsSet.has(item.id), allItems),
+            selected: chain(item => allItemsIdToItemLookUp[item.toString()], selectedItemsArray)
+          }
+          : groupBy(item => selectedItemsSet.has(item.id) ? 'selected' : 'available', allItems);
+      },
+      [allItems, selectedItems, allowReordering]
+  );
 
   const selectedCount = selectedItemsArray.length,
       availableCount = allItems.length - selectedCount;

@@ -51,8 +51,6 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
   const moveUpButtonTitle = isTopItem || isFilteredItem ? 'Move Up (disabled)' : 'Move Up';
   const moveDownButtonTitle = isBottomItem || isFilteredItem ? 'Move Down (disabled)' : 'Move Down';
 
-  console.log('rendering transfer list item', id);
-
   return (
     <div className={classes}>
       <NxOverflowTooltip>
