@@ -16,6 +16,7 @@ import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxDrawer, { Props } from '../NxDrawer';
 import NxButton from '../../NxButton/NxButton';
+import { NxFooter } from '../../SimpleComponents';
 //import NxCloseButton from '../../NxCloseButton/NxCloseButton';
 
 describe('NxDrawer', function() {
@@ -264,140 +265,219 @@ describe('NxDrawer', function() {
   //   expect(mockCallback).toHaveBeenCalledTimes(1);
   // });
 
-  // it('moves focus back to the previously focused element when closed', function(done) {
-  //   function Fixture({ drawerOpen }: { drawerOpen: boolean }) {
-  //     return (
-  //       <>
-  //         <NxButton>Outside</NxButton>
-  //         { drawerOpen &&
-  //         <NxDrawer onCancel={() => {}}>
-  //           <NxButton>Cancel</NxButton>
-  //         </NxDrawer> }
-  //       </>
-  //     );
-  //   }
+  it('moves focus back to the previously focused element when closed', async function(done) {
+    const user = userEvent.setup();
 
-  //   const outsideButton = screen.getByRole('button', { name: 'Outside' });
+    function Fixture({ drawerOpen }: { drawerOpen: boolean }) {
+      return (
+        <>
+          <NxButton>Outside</NxButton>
+          { drawerOpen &&
+          <NxDrawer onCancel={() => {}}>
+            <NxDrawer.Header>
+              Header
+            </NxDrawer.Header>
+            <NxButton>Cancel</NxButton>
+          </NxDrawer> }
+        </>
+      );
+    }
+    const component = render(<Fixture drawerOpen={false} />);
 
-  //   outsideButton.focus();
+    const outsideButton = screen.getByRole('button', { name: 'Outside' });
 
-  //   // expect(component).not.toContainMatchingElement(NxDrawer);
-  //   // expect(document.activeElement === externalBtn).toBe(true);
+    outsideButton.focus();
 
-  //   component.setProps({ drawerOpen: true });
-  //   expect(component).toContainMatchingElement(NxDrawer);
-  //   expect(document.activeElement === component.find(NxDrawer).getDOMNode()).toBe(true);
+    expect(screen.queryByRole('dialog', { hidden: true})).toBeNull();
+    // expect(component).not.toContainMatchingElement(NxDrawer);
 
-  //   component.setProps({ drawerOpen: false });
-  //   expect(component).not.toContainMatchingElement(NxDrawer);
+    expect(document.activeElement === outsideButton).toBe(true);
 
-  //   // The focus is moved asynchronously
-  //   setTimeout(() => {
-  //     expect(document.activeElement === externalBtn).toBe(true);
-  //     done();
-  //   }, 100);
-  // });
+    //component.setProps({ drawerOpen: true });
+    render(<Fixture drawerOpen={true}/>);
 
-  // describe('NxDrawer Header', function() {
-  //   it('has a <header> tag with the nx-drawer-header class and title', function() {
-  //     // render(<NxDrawer><NxDrawer.Header></NxDrawer.Header></NxDrawer>);
-  //     const mockCallback = jest.fn();
-  //     const drawer = render(
-  //       <NxDrawer data-testid="nx-drawer" onCancel={mockCallback}>
-  //         <NxDrawer.Header>
-  //           <NxDrawer.Header.Title>
-  //             Hello
-  //           </NxDrawer.Header.Title>
-  //         </NxDrawer.Header>
-  //       </NxDrawer>);
+    const cancelButton = component.container.querySelector('button.nx-drawer-header__cancel-button')!;
 
-  //     // const titleText = 'Header Title';
+    //const drawer = screen.getByRole('dialog', { hidden: true});
+    //const drawer = component.container.querySelector('dialag.nx-drawer');
 
-  //     // const header = getDrawer({ headerTitle: titleText }).find('.nx-drawer-header');
-  //     // const title = header.find('h2.nx-drawer-header__title');
+    expect(screen.queryByRole('dialog', { hidden: true})).toHaveClass('nx-drawer');
+    //expect(component).toContainMatchingElement(NxDrawer);
+    //expect(drawer?.nodeName.);
 
-  //     screen.getByRole('NxDrawer.Header');
-  //     //expect(header).toMatchSelector('header.nx-drawer-header');
-  //     //expect(title).toHaveText(titleText);
-  //     drawer.container.querySelector('nx-drawer-header-title');
-  //     expect(screen.getByRole('NxDrawer.Header.Title')).toHaveTextContent('Hello');
-  //   });
+    //expect(document.activeElement === component.find(NxDrawer).getDOMNode()).toBe(true);
 
-  //   it('has NxCloseButton with class nx-drawer-header__cancel-button', function() {
-  //     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  //     const header = getDrawer()!;
-  //     //const cancelButton = header.find(NxCloseButton);
-  //     const cancelButton = within(header).getByRole('button');
+    // component.setProps({ drawerOpen: false });
+    render(<Fixture drawerOpen={false}/>);
 
-  //     expect(cancelButton).toHaveClass('nx-drawer-header__cancel-button');
-  //   });
+    screen.queryByRole('dialog', { hidden: true});
+    const animationWrapper = component.container.querySelector('.nx-drawer__animation-wrapper')!;
+    await user.click(cancelButton);
+    fireEvent.animationEnd(animationWrapper);
 
-  //   it('shows subtitle and description when specified', function() {
-  //     const mockCallback = jest.fn();
+    //eslint-disable-next-line
+    console.log('here', document.activeElement);
+    //expect(screen.queryByRole('dialog', { hidden: true})).toBeNull();
+    //expect(component).not.toContainMatchingElement(NxDrawer);
 
-  //     //const subtitleText = 'Subtitle in the Header';
-  //     //const descriptionText = 'Description text in the Header';
-  //     // const header = getShallow({
-  //     //   headerSubtitle: subtitleText,
-  //     //   headerDescription: descriptionText
-  //     // });
-  //     // const subtitle = header.find('h3.nx-drawer-header__subtitle');
-  //     // const description = header.find('p.nx-drawer-header__description');
+    // The focus is moved asynchronously
+    setTimeout(() => {
+      //eslint-disable-next-line
+      //console.log('here', document.activeElement);
+      expect(document.activeElement === outsideButton).toBe(true);
+      done();
+    }, 100);
+  });
 
-  //     const component = render(
-  //       <NxDrawer data-testid="nx-drawer" onCancel={mockCallback}>
-  //         <NxDrawer.Header>
-  //           <NxDrawer.Header.Title data-testid='h3.nx-drawer-header__subtitle'>Hello</NxDrawer.Header.Title>
-  //           <NxDrawer.Header.Subtitle>Subtitle</NxDrawer.Header.Subtitle>
-  //           <NxDrawer.Header.Description>Description</NxDrawer.Header.Description>
-  //         </NxDrawer.Header>
-  //       </NxDrawer>);
+  describe('NxDrawer Header', function() {
+    it('has a <header> tag with the nx-drawer-header class and title', function() {
+      const mockCallback = jest.fn();
+      const drawer = render(
+        <NxDrawer data-testid="nx-drawer" onCancel={mockCallback}>
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title>
+              Hello
+            </NxDrawer.Header.Title>
+          </NxDrawer.Header>
+        </NxDrawer>);
 
-  //     const header = screen.getByRole('NxDrawer.Header');
-  //     const subtitle = component.getByTestId('h3.nx-drawer-header__subtitle');
-  //     const description = within(header).getByRole('Nx.Header.Description');
+      // const titleText = 'Header Title';
 
-  //     expect(subtitle).toHaveText('Subtitle');
-  //     expect(description).toHaveClass('p.nx-drawer-header__description');
-  //     expect(description).toHaveText('Description');
-  //     // expect(description).toHaveText(descriptionText);
-  //   });
+      // const header = getDrawer({ headerTitle: titleText }).find('.nx-drawer-header');
+      // const title = header.find('h2.nx-drawer-header__title');
 
-  //   it('executes onCancel when header cancel button is clicked', async function() {
-  //     window.matchMedia = () => ({ matches: true }) as MediaQueryList;
-  //     const user = userEvent.setup();
-  //     const mockOnCancel = jest.fn();
+      const header = drawer.container.querySelector('header');
+      //screen.getByRole('header', { hidden: true });
+      //expect(header).toMatchSelector('header.nx-drawer-header');
+      //expect(title).toHaveText(titleText);
+      const title = drawer.container.querySelector('h2');
+      expect(header).toHaveClass('nx-drawer-header');
+      expect(title).toHaveClass('nx-drawer-header__title');
+      expect(title).toHaveTextContent('Hello');
+    });
 
-  //     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  //     const component = getDrawer({
-  //       onCancel: mockOnCancel
-  //     })!;
+    it('has NxCloseButton with class nx-drawer-header__cancel-button', function() {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      //const header = getDrawer()!;
+      const mockCallback = jest.fn();
 
-  //     const header = within(component).getByRole('NxDrawer.Header');
-  //     const cancelButton = within(header).getByRole('button');
-  //     //const cancelButton = component.getBy(NxCloseButton).at(0);
+      render(
+        <NxDrawer data-testid="nx-drawer" onCancel={mockCallback}>
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title data-testid='h3.nx-drawer-header__subtitle'>Hello</NxDrawer.Header.Title>
+            <NxDrawer.Header.Subtitle>Subtitle</NxDrawer.Header.Subtitle>
+            <NxDrawer.Header.Description>Description</NxDrawer.Header.Description>
+          </NxDrawer.Header>
+        </NxDrawer>);
 
-  //     expect(mockOnCancel).toHaveBeenCalledTimes(0);
+      //const cancelButton = header.find(NxCloseButton);
+      //const cancelButton = within(header).getByRole('button');
+      const cancelButton = screen.getByRole('button', { hidden: true });
 
-  //     //cancelButton.simulate('click');
-  //     await user.click(cancelButton);
+      expect(cancelButton).toHaveClass('nx-drawer-header__cancel-button');
+    });
 
-  //     //component.simulate('transitionEnd');
-  //     await fireEvent(component, new Event('transitionEnd'));
+    it('shows subtitle and description when specified', function() {
+      const mockCallback = jest.fn();
 
-  //     expect(mockOnCancel).toHaveBeenCalledTimes(1);
-  //   });
-  // });
+      //const subtitleText = 'Subtitle in the Header';
+      //const descriptionText = 'Description text in the Header';
+      // const header = getShallow({
+      //   headerSubtitle: subtitleText,
+      //   headerDescription: descriptionText
+      // });
+      // const subtitle = header.find('h3.nx-drawer-header__subtitle');
+      // const description = header.find('p.nx-drawer-header__description');
 
-  // describe('NxDrawer.Content', function() {
-  //   it('makes a <div> tag with the nx-drawer-content class', function() {
-  //     expect(shallow(<NxDrawer.Content/>)).toMatchSelector('div.nx-drawer-content');
-  //   });
-  // });
+      const component = render(
+        <NxDrawer data-testid="nx-drawer" onCancel={mockCallback}>
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title data-testid='h3.nx-drawer-header__subtitle'>Hello</NxDrawer.Header.Title>
+            <NxDrawer.Header.Subtitle>Subtitle</NxDrawer.Header.Subtitle>
+            <NxDrawer.Header.Description>Description</NxDrawer.Header.Description>
+          </NxDrawer.Header>
+        </NxDrawer>);
 
-  // describe('NxDrawer.Footer', function() {
-  //   it('makes a <footer> tag with the nx-drawer-footer class', function() {
-  //     expect(shallow(<NxDrawer.Footer/>)).toMatchSelector('footer.nx-drawer-footer');
-  //   });
-  // });
+      // const header = screen.getByRole('NxDrawer.Header');
+      // const subtitle = component.getByTestId('h3.nx-drawer-header__subtitle');
+      // const description = within(header).getByRole('Nx.Header.Description');
+
+      //const header = component.container.querySelector('header');
+      const subtitle = component.container.querySelector('h3');
+      const description = component.container.querySelector('p');
+
+      expect(subtitle).toHaveTextContent('Subtitle');
+      expect(description).toHaveClass('nx-drawer-header__description');
+      expect(description).toHaveTextContent('Description');
+      // expect(description).toHaveText(descriptionText);
+    });
+
+    it('executes onCancel when header cancel button is clicked', async function() {
+      window.matchMedia = () => ({ matches: true }) as MediaQueryList;
+      const mockOnCancel = jest.fn();
+      const user = userEvent.setup();
+
+      const map: any = {};
+
+      document.addEventListener = jest.fn((e: string, cb: () => void) => {
+        map[e] = cb;
+      }) as jest.Mock;
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const component = render(
+        <NxDrawer data-testid="nx-drawer" onCancel={mockOnCancel}>
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title data-testid='h3.nx-drawer-header__subtitle'>Hello</NxDrawer.Header.Title>
+          </NxDrawer.Header>
+        </NxDrawer>);
+
+      //const header = component.container.querySelector('header');
+      const cancelButton = screen.getByRole('button', { hidden: true });
+      const cb = component.container.querySelector('button.nx-drawer-header__cancel-button')!;
+
+      expect(mockOnCancel).not.toHaveBeenCalled();
+
+      await map.click({ target: cancelButton });
+      await user.click(cb);
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      fireEvent.animationEnd(component.container.querySelector('.nx-drawer__animation-wrapper')!);
+
+      expect(mockOnCancel).toHaveBeenCalled();
+    });
+  });
+
+  describe('NxDrawer.Content', function() {
+    it('makes a <div> tag with the nx-drawer-content class', function() {
+      const mockOnCancel = jest.fn();
+
+      const component = render(
+        <NxDrawer data-testid="nx-drawer" onCancel={mockOnCancel}>
+          <NxDrawer.Content>
+            Content
+          </NxDrawer.Content>
+        </NxDrawer>);
+
+      const content = component.container.querySelector('div.nx-drawer-content');
+
+      expect(content).toHaveClass('nx-drawer-content');
+    });
+  });
+
+  describe('NxDrawer.Footer', function() {
+    it('makes a <footer> tag with the nx-drawer-footer class', function() {
+      const mockOnCancel = jest.fn();
+
+      const component = render(
+        <NxDrawer data-testid="nx-drawer" onCancel={mockOnCancel}>
+          <NxFooter>
+            Footer
+          </NxFooter>
+        </NxDrawer>);
+
+      const footer = component.container.querySelector('footer.nx-footer');
+
+      expect(footer).toHaveClass('nx-footer');
+    });
+  });
 });
