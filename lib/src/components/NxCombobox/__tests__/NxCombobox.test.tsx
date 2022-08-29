@@ -293,11 +293,8 @@ describe('NxCombobox', function() {
             { getByRole } = rtlRender({ value: 'f', loadError: 'err', onSearch }),
             inputElement = getByRole('combobox');
 
-        expect(onSearch).not.toHaveBeenCalled();
         inputElement.focus();
-        expect(onSearch).not.toHaveBeenCalled();
         (document.activeElement as HTMLElement).blur();
-        expect(onSearch).not.toHaveBeenCalled();
         inputElement.focus();
         expect(onSearch).not.toHaveBeenCalled();
       });
