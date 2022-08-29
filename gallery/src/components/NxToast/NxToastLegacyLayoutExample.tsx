@@ -31,7 +31,7 @@ interface ToastModel {
   message: string;
 }
 
-export default function NxToastLegacySectionScrollingExample() {
+export default function NxToastLegacyLayoutExample() {
   const [toastIdInc, setToastIdInc] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 

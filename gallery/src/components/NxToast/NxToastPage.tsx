@@ -24,8 +24,7 @@ import CodeExample from '../../CodeExample';
 
 const NxToastComplexLayoutExampleCode = require('./NxToastComplexLayoutExample?raw'),
     NxToastSimpleLayoutExampleCode = require('./NxToastSimpleLayoutExample?raw'),
-    NxToastLegacySectionScrollingExampleCode = require('./NxToastLegacySectionScrollingExample?raw'),
-    NxToastLegacyPageScrollingEaxmpleCode = require('./NxToastLegacyPageScrollingExample?raw');
+    NxToastLegacyLayoutExampleCode = require('./NxToastLegacyLayoutExample?raw');
 
 const NxToastPage = () =>
   <>
@@ -192,10 +191,10 @@ const NxToastPage = () =>
       </NxTile.Header>
       <NxTile.Content>
         <NxP>
-          A legacy layout page example with section scrolling enabled. <NxCode>NxToast</NxCode>s will be positioned on
-          the right side of the viewport, underneath <NxCode>NxPageHeader</NxCode>. Note that in legacy layouts, if
-          the viewport's width extends beyond 1600px, <NxCode>NxToast</NxCode>s will remain on the right side of
-          the viewport and not the page content.
+          A legacy layout page example with section scrolling (the default) enabled. <NxCode>NxToast</NxCode>s will
+          be positioned on the right side of the viewport, underneath <NxCode>NxPageHeader</NxCode>. Note that in
+          legacy layouts, if the viewport's width extends beyond 1600px, <NxCode>NxToast</NxCode>s will remain on the
+          right side of the viewport and not the page content.
         </NxP>
         <NxP>
           <NxTextLink href="#/NxToastLegacySectionScrollingExample">
@@ -208,8 +207,8 @@ const NxToastPage = () =>
           <NxAccordion.Header>
             <NxAccordion.Title>Example Code</NxAccordion.Title>
           </NxAccordion.Header>
-          <CodeExample content={NxToastLegacySectionScrollingExampleCode} />
-          <GalleryTileFooter clipboardContent={NxToastLegacySectionScrollingExampleCode}/>
+          <CodeExample content={NxToastLegacyLayoutExampleCode} />
+          <GalleryTileFooter clipboardContent={NxToastLegacyLayoutExampleCode}/>
         </NxStatefulAccordion>
       </NxTile.Content>
     </NxTile>
@@ -237,8 +236,8 @@ const NxToastPage = () =>
           <NxAccordion.Header>
             <NxAccordion.Title>Example Code</NxAccordion.Title>
           </NxAccordion.Header>
-          <CodeExample content={NxToastLegacyPageScrollingEaxmpleCode} />
-          <GalleryTileFooter clipboardContent={NxToastLegacyPageScrollingEaxmpleCode}/>
+          <CodeExample content={NxToastLegacyLayoutExampleCode} />
+          <GalleryTileFooter clipboardContent={NxToastLegacyLayoutExampleCode}/>
         </NxStatefulAccordion>
       </NxTile.Content>
     </NxTile>
