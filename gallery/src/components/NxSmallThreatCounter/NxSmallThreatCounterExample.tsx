@@ -31,25 +31,45 @@ export default function NxSmallThreatCounterExample() {
         <NxTable.Row>
           <NxTable.Cell>Bar</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={999} severeCount={0} moderateCount={2} lowCount={0} noneCount={1} />
+            <NxSmallThreatCounter criticalCount={999}
+                                  severeCount={0}
+                                  moderateCount={2}
+                                  lowCount={0}
+                                  noneCount={1}
+                                  unspecifiedCount={0} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
           <NxTable.Cell>Baz</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={0} severeCount={0} moderateCount={0} lowCount={0} noneCount={0} />
+            <NxSmallThreatCounter criticalCount={0}
+                                  severeCount={0}
+                                  moderateCount={0}
+                                  lowCount={0}
+                                  noneCount={0}
+                                  unspecifiedCount={0} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
           <NxTable.Cell>Qwerty</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={0} severeCount={0} moderateCount={0} lowCount={0} noneCount={8} />
+            <NxSmallThreatCounter criticalCount={0}
+                                  severeCount={0}
+                                  moderateCount={0}
+                                  lowCount={0}
+                                  noneCount={8}
+                                  unspecifiedCount={0} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
           <NxTable.Cell>qJuery</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={1000} severeCount={0} moderateCount={0} lowCount={0} noneCount={0} />
+            <NxSmallThreatCounter criticalCount={1000}
+                                  severeCount={0}
+                                  moderateCount={0}
+                                  lowCount={0}
+                                  noneCount={0}
+                                  unspecifiedCount={0} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
@@ -66,7 +86,12 @@ export default function NxSmallThreatCounterExample() {
         <NxTable.Row>
           <NxTable.Cell>Bean</NxTable.Cell>
           <NxTable.Cell>
-            <NxSmallThreatCounter criticalCount={0} severeCount={0} moderateCount={0} lowCount={0} noneCount={0} />
+            <NxSmallThreatCounter criticalCount={0}
+                                  severeCount={0}
+                                  moderateCount={0}
+                                  lowCount={0}
+                                  noneCount={0}
+                                  unspecifiedCount={0} />
           </NxTable.Cell>
         </NxTable.Row>
         <NxTable.Row>
@@ -109,7 +134,8 @@ export default function NxSmallThreatCounterExample() {
                                   severeCount={1000}
                                   moderateCount={0}
                                   lowCount={999}
-                                  noneCount={888} />
+                                  noneCount={888}
+                                  unspecifiedCount={0} />
           </NxTable.Cell>
         </NxTable.Row>
       </NxTable.Body>

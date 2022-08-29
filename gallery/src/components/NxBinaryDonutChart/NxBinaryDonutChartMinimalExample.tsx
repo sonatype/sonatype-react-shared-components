@@ -10,12 +10,12 @@ import { NxBinaryDonutChart } from '@sonatype/react-shared-components';
 export default function NxBinaryDonutChartMinimalExample() {
   return (
     <>
-      <NxBinaryDonutChart percent={0} aria-label="0 out of 100 components identified" />
-      <NxBinaryDonutChart percent={15} role="presentation" />
-      <NxBinaryDonutChart percent={25} role="presentation" />
-      <NxBinaryDonutChart percent={50} aria-label="50 out of 100 components identified" />
-      <NxBinaryDonutChart percent={90} role="presentation" />
-      <NxBinaryDonutChart percent={100} aria-label="100 out of 100 components identified" />
+      <NxBinaryDonutChart value={0} aria-label="0 out of 100 components identified" />
+      <NxBinaryDonutChart value={15} aria-label="15 out of 100 components identified" />
+      <NxBinaryDonutChart value={25} aria-label="25 out of 100 components identified" />
+      <NxBinaryDonutChart value={50} aria-label="50 out of 100 components identified" />
+      <NxBinaryDonutChart value={90} aria-label="90 out of 100 components identified" />
+      <NxBinaryDonutChart value={100} aria-label="100 out of 100 components identified" />
     </>
   );
 }

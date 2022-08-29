@@ -232,7 +232,12 @@ export { selectableColors, selectableColorClasses, SelectableColor } from './uti
 // deprecated
 export { selectableColors as NX_TAG_COLORS, SelectableColor as NX_TAG_COLORS_TYPE } from './util/selectableColors';
 
-export { default as NxCodeSnippet, Props as NxCodeSnippetProps } from './components/NxCodeSnippet/NxCodeSnippet';
+export { default as NxCopyToClipboard, Props as NxCopyToClipboardProps }
+  from './components/NxCopyToClipboard/NxCopyToClipboard';
+
+// deprecated - now use NxCopyToClipboard
+export { default as NxCodeSnippet, Props as NxCodeSnippetProps }
+  from './components/NxCopyToClipboard/NxCopyToClipboard';
 
 export { default as useToggle } from './util/useToggle';
 
@@ -320,3 +325,15 @@ export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemN
 export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
+
+export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';
+export { default as NxFileUpload, Props as NxFileUploadProps } from './components/NxFileUpload/NxFileUpload';
+export { default as NxStatefulFileUpload, Props as NxStatefulFileUploadProps }
+  from './components/NxFileUpload/stateful/NxStatefulFileUpload';
+
+export {
+  default as NxDescriptionList,
+  Props as NxDescriptionListProps,
+  ButtonItemProps as NxDescriptionListButtonItemProps,
+  LinkItemProps as NxDescriptionListLinkItemProps
+} from './components/NxDescriptionList/NxDescriptionList';

@@ -12,7 +12,7 @@ import withClass from '../../util/withClass';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
 
-import { NxDescriptionList } from '../SimpleComponents';
+import NxDescriptionList from '../NxDescriptionList/NxDescriptionList';
 import NxListButtonItem from './NxListButtonItem';
 import NxListLinkItem from './NxListLinkItem';
 import { NxListProps, nxListPropTypes } from './types';

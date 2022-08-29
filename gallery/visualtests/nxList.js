@@ -19,7 +19,6 @@ describe('nx-list', function() {
       emptySelector = '#nx-list-empty-example .nx-list',
       errorSelector = '#nx-list-error-example .nx-list',
       loadingSelector = '#nx-list-loading-example .nx-list',
-      descriptionSelector = '#nx-list-description-example .nx-list',
       deprecatedSelector = '#nx-list-deprecated-clickable-example .nx-list';
 
   describe('Simple nx-list', function() {
@@ -66,14 +65,10 @@ describe('nx-list', function() {
     });
   });
 
-  describe('Description nx-list', function() {
-    it('looks right', simpleTest(descriptionSelector));
-  });
-
   describe('Deprecated clickable list', function() {
     it('looks right', simpleTest(deprecatedSelector));
   });
 
   // see comment in the NxListButtonItem source code about aria-selected
-  it('passes a11y checks', a11yTest(builder => builder.disableRules('aria-allowed-attr')));
+  it('passes a11y checks', a11yTest(builder => builder.disableRules(['aria-allowed-attr', 'color-contrast'])));
 });

@@ -1,0 +1,54 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+.nx-copy-to-clipboard {
+  align-items: end;
+  display: grid;
+  grid-template:
+    "label    copy-btn" 1fr
+    "sublabel copy-btn" auto
+    "textarea textarea" auto /
+      1fr      auto;
+
+  margin-bottom: var(--nx-spacing-8x);
+  width: 700px;
+
+  .nx-form-group {
+    display: contents;
+  }
+
+  .nx-btn {
+    grid-area: copy-btn;
+    margin: 0 0 var(--nx-spacing-4x) var(--nx-spacing-6x);
+  }
+
+  .nx-label {
+    grid-area: label;
+  }
+
+  .nx-sub-label {
+    grid-area: sublabel;
+  }
+
+  .nx-label__text {
+    &::after {
+      display: none;
+    }
+  }
+
+  .nx-text-input {
+    grid-area: textarea;
+    width: 100%;
+
+    .nx-text-input__box {
+      border-color: var(--nx-color-form-element-border);
+    }
+
+    .nx-text-input__box:focus-within {
+      border-color: var(--nx-color-interactive-border-focus);
+    }
+  }
+}

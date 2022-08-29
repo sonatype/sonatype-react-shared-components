@@ -10,6 +10,7 @@ describe('NxThreatCounter', function() {
   const { simpleTest, a11yTest } = setupBrowser('#/pages/Threat Counter');
 
   const rowExampleSelector = '#nx-threat-counter-row .gallery-example-live',
+      rowWrappingExampleSelector = '#nx-threat-counter-row-wrapping .gallery-example-live',
       smallRowExampleSelector = '#nx-threat-counter-small-row .gallery-example-live',
       columnExampleSelector = '#nx-threat-counter-column .gallery-example-live',
       smallColumnExampleSelector = '#nx-threat-counter-small-column .gallery-example-live',
@@ -17,6 +18,7 @@ describe('NxThreatCounter', function() {
       smallGridExampleSelector = '#nx-threat-counter-small-grid .gallery-example-live';
 
   it('row layout looks correct', simpleTest(rowExampleSelector));
+  it('row wrapping layout looks correct', simpleTest(rowWrappingExampleSelector));
   it('small row layout looks correct', simpleTest(smallRowExampleSelector));
   it('column layout looks correct', simpleTest(columnExampleSelector));
   it('small column layout looks correct', simpleTest(smallColumnExampleSelector));
