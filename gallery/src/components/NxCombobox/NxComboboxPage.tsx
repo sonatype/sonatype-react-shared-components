@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxH3, NxTile, NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxH3, NxTile, NxTextLink, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -216,6 +216,11 @@ const NxComboboxPage = () =>
           debounce in order to prevent excessive queries to the backend. The standard timing value to use for that
           debounce is provided via the <NxCode>NX_STANDARD_DEBOUNCE_TIME</NxCode> export.
         </NxP>
+        <NxWarningAlert>
+          <NxCode>NX_SEARCH_DROPDOWN_DEBOUNCE_TIME</NxCode> has been renamed to{' '}
+          <NxCode>NX_STANDARD_DEBOUNCE_TIME</NxCode>, it is now deprecated but is still exported by RSC for
+          backwards compatibility.
+        </NxWarningAlert>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
