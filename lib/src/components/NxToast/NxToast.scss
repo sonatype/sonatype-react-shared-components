@@ -17,6 +17,7 @@
   margin-right: var(--nx-spacing-2x);
   width: 500px;
   z-index: var(--nx-z-index-toast);
+  overflow: hidden;
   pointer-events: none;
 }
 
@@ -35,6 +36,7 @@
   right: 0;
   opacity: 1;
   margin-top: var(--nx-spacing-2x);
+  overflow: hidden;
   pointer-events: auto;
 
   &.nx-toast--closing {
