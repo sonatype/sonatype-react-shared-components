@@ -136,15 +136,15 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         }
         <div className="nx-transfer-list__item-list">
           { visibleItems.map(
-              (i, index) => <TransferListItem showReorderingButtons={allowReordering}
-                                              isFilteredItem={!!filterValue}
-                                              key={i.id}
-                                              checked={isSelected}
-                                              onChange={onItemChange}
-                                              onReorderItem={onReorderItem}
-                                              isTopItem={index === 0}
-                                              isBottomItem={index === visibleItems.length - 1}
-                                              { ...i } />)
+              (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
+                                                 isFilteredItem={!!filterValue}
+                                                 key={i.id}
+                                                 checked={isSelected}
+                                                 onChange={onItemChange}
+                                                 onReorderItem={onReorderItem}
+                                                 isTopItem={index === 0}
+                                                 isBottomItem={index === visibleItems.length - 1}
+                                                 { ...i } />)
           }
         </div>
         <div className="nx-transfer-list__footer">
