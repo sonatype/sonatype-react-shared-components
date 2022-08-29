@@ -9,11 +9,10 @@
 
 .nx-toast-container {
   grid-area: content;
-  position: static;
   justify-self:end;
   margin-right: 8px;
   width: 500px;
-  z-index: 1060;
+  z-index: var(--nx-z-index-toast);
   overflow: hidden;
   pointer-events: none;
 }
@@ -34,6 +33,7 @@
   opacity: 1;
   overflow: hidden;
   margin-top: var(--nx-spacing-2x);
+  pointer-events: auto;
 
   &.nx-toast--closing {
     animation-name: animationOut;
@@ -41,7 +41,6 @@
 
   .nx-alert {
     margin: 0;
-    pointer-events:auto;
   }
 }
 
