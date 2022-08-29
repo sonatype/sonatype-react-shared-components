@@ -10,7 +10,7 @@
 .nx-toast-container {
   grid-area: content;
   justify-self: end;
-  margin-right: 8px;
+  margin-right: var(--nx-spacing-2x);
   width: 500px;
   z-index: var(--nx-z-index-toast);
   overflow: hidden;
