@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import NxToastContainer from '../NxToastContainer';
@@ -19,168 +19,77 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 describe('NxToastContainer', function() {
   const simpleProps: NxToastContainerProps = {
-    children: []
+    children:
+  <>
+    <NxToast onClose={()=>{}}>
+      <NxAlert icon={faEye}>This is an Alert</NxAlert>
+    </NxToast>
+    <NxToast onClose={()=>{}}>
+      <NxAlert icon={faEye}>This is an Alert</NxAlert>
+    </NxToast>
+    <NxToast onClose={()=>{}}>
+      <NxAlert icon={faEye}>This is an Alert</NxAlert>
+    </NxToast>
+  </>
   };
+
   const quickRender = rtlRender(NxToastContainer, simpleProps);
   const renderEl = rtlRenderElement(NxToastContainer, simpleProps);
 
-  it('doesn\'t render any toasts on page load', function() {
-    const component = renderEl()!;
-    const toast = component.querySelector('.nx-toast');
-
-    expect(component).not.toContainElement(toast as HTMLElement);
-  });
-
   it('renders any NxToasts passed into it', function() {
-    const NxToasts = (
-      <>
-        <NxToast onClose={()=>{}}>
-          <NxAlert icon={faEye}>This is an Alert</NxAlert>
-        </NxToast>
-        <NxToast onClose={()=>{}}>
-          <NxAlert icon={faEye}>This is an Alert</NxAlert>
-        </NxToast>
-      </>
-    );
-    renderEl({children: NxToasts});
-    // render(<Component />);
+    renderEl();
 
-    const alerts = screen.getAllByText(/this is an alert/i);
-    expect(alerts.length).toBe(2);
+    const alerts = screen.getAllByText('This is an Alert');
+
+    expect(alerts.length).toBe(3);
   });
 
-  it('sets focus on the first NxToast before any toasts are closed', async function() {
-    const NxToasts = (
-      <>
-        <NxToast onClose={()=>{}}>
-          <NxAlert icon={faEye}>This is an Alert</NxAlert>
-        </NxToast>
-        <NxToast onClose={()=>{}}>
-          <NxAlert icon={faEye}>This is an Alert</NxAlert>
-        </NxToast>
-      </>
-    );
-
-    quickRender({children: NxToasts});
-    setTimeout(()=> {
-      const closeBtns = screen.getAllByRole('button', {name: 'Close'});
-      screen.debug();
-      expect(closeBtns[1]).toHaveFocus();
-
-      done();
-    }, 450);
-    // fireEvent.animationEnd()
-  });
-
-  it('sets focus to last toast when a toast is closed', async function() {
+  it('sets focus to last toast when first toast is closed', async function() {
     const user = userEvent.setup();
-    const Component = () => {
-      return (
-        <NxToastContainer>
-          <NxToast onClose={() => {}} data-testid= "Test">
-            <NxAlert icon={faEye}>This is an Alert</NxAlert>
-          </NxToast>
-          <NxToast onClose={() => {}} data-testid= "Test">
-            <NxAlert icon={faEye}>This is an Alert</NxAlert>
-          </NxToast>
-        </NxToastContainer>
-      );
-    };
+    quickRender();
 
-    const {container} = render(<Component />);
     const closeBtns = screen.getAllByRole('button', {name: 'Close'});
-    const toasts = container.querySelectorAll('.nx-toast');
 
-    // expect(toasts.length).toBe(3);
-    expect(closeBtns[0]).toHaveFocus();
+    await user.click(closeBtns[0]);
 
-    await user.keyboard('{Enter}');
-    fireEvent.animationEnd(toasts[0] as Element);
-    // await waitForElementToBeRemoved(()=> toasts[1]);
-    const tests = screen.getAllByTestId('Test');
-    expect(tests.length).toBe(1);
-
-    // closeBtns = await screen.findAllByRole('button', {name: 'Close'});
-    // expect(closeBtns[0]).toHaveFocus();
-
+    expect(closeBtns[2]).toHaveFocus();
   });
 
-  // it('tests focusing when NxToasts mount and unmount', async function() {
-  //   const user = userEvent.setup();
+  it('sets focus to the next last toast when the last toast is closed', async function() {
+    const user = userEvent.setup();
+    quickRender();
 
-  //   interface ToastModel {
-  //     id: number;
-  //   }
+    const closeBtns = screen.getAllByRole('button', {name: 'Close'});
 
-  //   const FocusBehavior = () => {
-  //     const [toastIdInc, setToastIdInc] = useState<number>(0);
-  //     const [toasts, setToasts] = useState<ToastModel[]>([]);
+    await user.click(closeBtns[2]);
 
-  //     const addToast = () => {
-  //       const toastId = toastIdInc + 1;
-  //       setToastIdInc(toastId);
-  //       setToasts([
-  //         { id: toastId },
-  //         ...toasts
-  //       ]);
-  //     };
-  //     const removeToast = (id: number) => setToasts(reject(propEq('id', id), toasts));
-  //     return (
-  //       <>
-  //         <button type="button" onClick={()=>addToast()}>Show Toast</button>
-  //         <NxToastContainer>
-  //           {
-  //             toasts.map(({id}) => {
-  //               return (
-  //                 <NxToast key={id}
-  //                          onClose={()=> removeToast(id)}>
-  //                   <NxAlert icon={faEye}>Error Message</NxAlert>
-  //                 </NxToast>
-  //               );
-  //             })
-  //           }
-  //         </NxToastContainer>
-  //       </>
-  //     );
-  //   };
-  //   const {container} = render(<FocusBehavior />);
+    expect(closeBtns[1]).toHaveFocus();
+  });
 
-  //   // expect(screen.getByText('Error Message')).not.toBeInTheDocument();
+  it('sets focus to previous focused element when the last remaining toast is closed',
+      async function() {
+        const Component = () => {
+          return (
+            <>
+              <button type="button">Focus Me</button>
+              <NxToastContainer>
+                <NxToast onClose={()=>{}}>
+                  <NxAlert icon={faEye}>This is an Alert</NxAlert>
+                </NxToast>
+              </NxToastContainer>
+            </>
+          );
+        };
 
-  //   const button = screen.getByRole('button', {name: 'Show Toast'});
-  //   await user.click(button);
-  //   await user.click(button);
-  //   await user.click(button);
+        render(<Component />);
 
-  //   // use let because both arrays will be re-defined multiple times as btns are added / removed
-  //   let closeBtns = await screen.findAllByRole('button', {name: 'Close'});
-  //   let toasts = container.querySelectorAll('.nx-toast');
+        const prevFocusBtn = screen.getByRole('button', {name: 'Focus Me'});
+        const closeBtn = screen.getByRole('button', {name: 'Close'});
 
-  //   expect(toasts).toHaveLength(3);
-  //   // topmost close button has focus before any toasts are closed
-  //   expect(closeBtns[0]).toHaveFocus();
+        prevFocusBtn.focus();
 
-  //   await user.keyboard('{Enter}');
-  //   fireEvent.animationEnd(toasts[0] as Element);
-  //   closeBtns = await screen.findAllByRole('button', {name: 'Close'});
-  //   toasts = container.querySelectorAll('.nx-toast');
+        await userEvent.click(closeBtn);
 
-  //   expect(toasts).toHaveLength(2);
-  //   // bottommost close button has focus after first toast is closed
-  //   expect(closeBtns[1]).toHaveFocus();
-
-  //   await user.keyboard('{Enter}');
-  //   fireEvent.animationEnd(toasts[1] as Element);
-
-  //   // last toast remaining now has focus
-  //   expect(closeBtns[0]).toHaveFocus();
-
-  //   await user.keyboard('{Enter}');
-  //   fireEvent.animationEnd(toasts[0] as Element);
-
-  //   // check that the "Show Toast" button is now in focus
-  //   expect(button).toHaveFocus();
-
-  // });
-
+        expect(prevFocusBtn).toHaveFocus();
+      });
 });

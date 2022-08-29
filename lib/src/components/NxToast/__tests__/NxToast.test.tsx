@@ -48,8 +48,12 @@ describe('NxToast', function() {
   });
 
   it('sets the focus to its close button when initially rendered', function() {
-    renderEl();
+    const { container } = quickRender()!;
+
     const closeBtn = screen.getByRole('button', {name: 'Close'});
+    const toast = container.querySelector('.nx-toast')!;
+
+    fireEvent.animationEnd(toast);
 
     expect(closeBtn).toHaveFocus();
   });
@@ -59,11 +63,14 @@ describe('NxToast', function() {
     const onClose = jest.fn();
 
     const toast = renderEl({ onClose });
+
     const closeBtn = screen.getByRole('button', {name: 'Close'});
 
     expect(onClose).not.toHaveBeenCalled();
+
     await user.click(closeBtn);
     fireEvent.animationEnd(toast as Element);
+
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
@@ -72,13 +79,15 @@ describe('NxToast', function() {
     const onClose = jest.fn();
 
     const toast = renderEl({ onClose });
+
     const closeBtn = screen.getByRole('button', {name: 'Close'});
 
     expect(onClose).not.toHaveBeenCalled();
+
     await closeBtn.focus();
     await user.keyboard('{Enter}');
     fireEvent.animationEnd(toast as Element);
+
     expect(onClose).toHaveBeenCalledTimes(1);
   });
-
 });
