@@ -6,7 +6,7 @@
  */
 import React, { useRef, useEffect } from 'react';
 import NxToastContainerContext from './contexts';
-import {reject, last} from 'ramda';
+import { reject, last } from 'ramda';
 
 import { NxToastContainerProps, nxToastContainerPropTypes } from './types';
 export { NxToastContainerProps };
