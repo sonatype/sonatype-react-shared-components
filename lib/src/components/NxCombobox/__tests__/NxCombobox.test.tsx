@@ -279,7 +279,7 @@ describe('NxCombobox', function() {
     inputElement.focus();
     expect(onSearch).not.toHaveBeenCalled();
 
-    const retryBtn = getByRole('button', {name: /retry/i });
+    const retryBtn = getByRole('button', { name: /retry/i });
     retryBtn.focus();
 
     expect(onSearch).not.toHaveBeenCalled();
