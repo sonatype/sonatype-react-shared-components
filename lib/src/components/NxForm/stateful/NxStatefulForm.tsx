@@ -27,7 +27,7 @@ const NxStatefulForm = forwardRef<HTMLFormElement, Props>(function NxStatefulFor
   }
 
   useEffect(function() {
-    if (submitMaskState === null) {
+    if (submitMaskState == null) {
       // reset pristine state after successful submission
       setShowValidationErrors(false);
     }

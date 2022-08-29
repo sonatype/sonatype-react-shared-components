@@ -182,7 +182,8 @@ const NxFormPage = () =>
                 Calling code should set this prop to false on freshly-rendered forms, forms that have been submitted
                 successfully, and when a form transitions from having <NxCode>validationErrors</NxCode> to having
                 no <NxCode>validationErrors</NxCode>. Calling code should set this prop to true when a form submission
-                is attempted.  See <NxCode>NxStatefulForm</NxCode> for automatic management of this prop.
+                is attempted. See <NxCode><NxTextLink href="#/pages/Stateful Form">NxStatefulForm</NxTextLink></NxCode>
+                {' '}for automatic management of this prop.
               </NxP>
             </NxTable.Cell>
           </NxTable.Row>
@@ -342,7 +343,7 @@ const NxFormPage = () =>
           identically. The overall effect being that when the user attempts to submit the form, they see the form
           validation error in the footer (near the Submit button that they just clicked) <em>and</em> see a field
           validation error on the field(s) that are the cause of the problem. There may also be some cases where
-          form-level validation errors are appropriate even in the absense of any field validation errors.
+          form-level validation errors are appropriate even in the absence of any field validation errors.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
