@@ -23,7 +23,8 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   const activeElementNotToast = useRef<HTMLElement | null>(null);
 
   const onToastClosing = (toast:HTMLElement | null) => {
-    const closeBtns = Array.from(ref.current?.querySelectorAll<HTMLButtonElement>('.nx-toast .nx-btn--close') ?? []);
+    const closeBtns = Array.from(ref.current?.
+        querySelectorAll<HTMLButtonElement>('.nx-toast:not(.nx-toast--closing) .nx-btn--close') ?? []);
     const filteredButtons = toast ? reject((btn:Node)=> toast.contains(btn), closeBtns) : closeBtns;
     const lastCloseBtn = last(filteredButtons);
 
