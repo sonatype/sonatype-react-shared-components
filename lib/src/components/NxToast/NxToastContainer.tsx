@@ -19,7 +19,7 @@ const NxToastContainer = (props: NxToastContainerProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   // When all toasts are closed, the focus should return to the last element that received focus that was not
-  //a toast element.
+  // a toast element.
   const activeElementNotToast = useRef<HTMLElement | null>(null);
 
   const onToastClosing = (toast:HTMLElement | null) => {
