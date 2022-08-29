@@ -143,6 +143,7 @@ import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
+import NxStatefulFormPage from './components/NxStatefulForm/NxStatefulFormPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -200,6 +201,7 @@ const pageConfig: PageConfig = {
     'Fieldset': { content: NxFieldsetPage, type: 'react' },
     'Filter Input': { content: NxFilterInputPage, type: 'react' },
     'Form': { content: NxFormPage, type: 'react' },
+    'Stateful Form': { content: NxStatefulFormPage, type: 'react' },
     'Form Group': { content: NxFormGroupPage, type: 'react' },
     'Form Select': { content: NxFormSelectComponentPage, type: 'react' },
     'Policy Threat Slider': { content: NxPolicyThreatSliderPage, type: 'react' },
