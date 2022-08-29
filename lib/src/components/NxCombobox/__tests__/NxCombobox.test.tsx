@@ -71,9 +71,11 @@ describe('NxCombobox', function() {
   it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true',
       async function() {
         const onChange = jest.fn(),
-            { getByRole } = rtlRender({ autoComplete: true,
+            { getByRole } = rtlRender({ 
+              autoComplete: true,
               matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
-              onChange}),
+              onChange
+            }),
             inputElement = getByRole('combobox');
 
         inputElement.focus();
