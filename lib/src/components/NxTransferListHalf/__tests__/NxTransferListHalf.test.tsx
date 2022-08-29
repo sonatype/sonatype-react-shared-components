@@ -356,11 +356,11 @@ describe('NxTransferListHalf', function() {
 
     moveDownButton.simulate('click');
 
-    expect(onReorderItem).toHaveBeenCalledWith(0, 1);
+    expect(onReorderItem).toHaveBeenCalledWith(1, 1);
 
     moveUpButton.simulate('click');
 
-    expect(onReorderItem).toHaveBeenCalledWith(1, -1);
+    expect(onReorderItem).toHaveBeenCalledWith(2, -1);
   });
 
   it('set the move up and down icon button with faArrowUp and faArrowDown respectively',
