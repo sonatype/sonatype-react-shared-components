@@ -59,12 +59,17 @@ function NxComboboxRender<T extends string | number = string>(
       alertDropdownId = useUniqueId('nx-combobox-alert-dropdown'),
       dropdownId = useUniqueId('nx-combobox-dropdown'),
       dropdownBtnId = useUniqueId('nx-dropdown-button'),
+      focusableBtnId = focusableBtnIndex !== null ?
+        dropdownRef.current?.children[focusableBtnIndex].id : undefined,
 
       className = classnames('nx-combobox', classNameProp, {
         'nx-combobox--dropdown-showable': showDropdown
       }),
       alertClassName = classnames('nx-combobox__alert', {
         'nx-combobox__alert--error': !!loadError
+      }),
+      inputDescribedby = classnames(ariaDescribedBy, {
+        [`${alertDropdownId}`]: isAlert && showDropdown
       });
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
@@ -253,10 +258,9 @@ function NxComboboxRender<T extends string | number = string>(
                    aria-autocomplete={autoComplete ? 'both' : 'list'}
                    aria-expanded={showDropdown && !isAlert}
                    aria-controls={dropdownId}
-                   aria-activedescendant={focusableBtnIndex !== null ?
-                     dropdownRef.current?.children[focusableBtnIndex].id : undefined }
+                   aria-activedescendant={focusableBtnId}
                    aria-required={ariaRequired}
-                   aria-describedby={ isAlert ? alertDropdownId : ariaDescribedBy}
+                   aria-describedby={inputDescribedby}
                    aria-label={ariaLabel}/>
       { isAlert ?
         <div id={alertDropdownId}
@@ -278,19 +282,19 @@ function NxComboboxRender<T extends string | number = string>(
                         aria-hidden={!showDropdown}
                         aria-label="listbox of combobox">
           {
-          matches.length && matches.map((match, i) =>
-            <button id={`${dropdownBtnId}-${i}`}
-                    role="option"
-                    aria-selected={i === focusableBtnIndex }
-                    className= {classnames('nx-dropdown-button',
-                        { 'selected': i === focusableBtnIndex })}
-                    tabIndex={-1}
-                    disabled={disabled || undefined}
-                    key={match.id}
-                    onClick={() => handleOnClick(match)}>
-              {match.displayName}
-            </button>
-          )
+            matches.length && matches.map((match, i) =>
+              <button id={`${dropdownBtnId}-${i}`}
+                      role="option"
+                      aria-selected={i === focusableBtnIndex }
+                      className= {classnames('nx-dropdown-button',
+                          { 'selected': i === focusableBtnIndex })}
+                      tabIndex={-1}
+                      disabled={disabled || undefined}
+                      key={match.id}
+                      onClick={() => handleOnClick(match)}>
+                {match.displayName}
+              </button>
+            )
           }
         </NxDropdownMenu>
         }
