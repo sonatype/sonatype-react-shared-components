@@ -32,6 +32,7 @@ const NxToast = (props: NxToastProps) => {
       onClose();
     }
     else {
+      // finished opening
       ref.current?.querySelector<HTMLElement>('.nx-btn--close')?.focus();
     }
   };
