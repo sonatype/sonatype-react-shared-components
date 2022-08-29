@@ -275,7 +275,8 @@ function NxComboboxRender<T extends string | number = string>(
                         ref={dropdownRef}
                         className='nx-combobox__menu'
                         onClosing={() => {}}
-                        aria-hidden={!showDropdown}>
+                        aria-hidden={!showDropdown}
+                        aria-label="listbox of combobox">
           {
           matches.length && matches.map((match, i) =>
             <button id={`${dropdownBtnId}-${i}`}

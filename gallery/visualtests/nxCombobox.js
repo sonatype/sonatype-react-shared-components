@@ -24,14 +24,18 @@ describe('NxCombobox', function() {
       disabledExampleSelector = '#nx-combobox-disabled-example .nx-combobox';
 
   describe('when loading', function() {
-    it('looks right', async function() {
+    beforeEach(async function() {
       const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
           loadingSpinnerSelector = `${backendExampleSelector} .nx-loading-spinner`,
-          [component, input] = await waitAndGetElements(backendExampleSelector, inputSelector);
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('1');
       await getPage().waitForSelector(loadingSpinnerSelector);
+    });
+
+    it('looks right', async function() {
+      const [component] = await waitAndGetElements(backendExampleSelector);
       await disableLoadingSpinnerAnimation();
       await checkScreenshot(component, 300, 130);
     });
@@ -40,88 +44,110 @@ describe('NxCombobox', function() {
   });
 
   describe('when displaying results', function() {
-    it('looks right', async function() {
+    beforeEach(async function() {
       const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
           dropdownButtonSelector = `${backendExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(backendExampleSelector, inputSelector);
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('1');
       await getPage().waitForSelector(dropdownButtonSelector);
+    });
+
+    it('looks right', async function() {
+      const [component] = await waitAndGetElements(backendExampleSelector);
       await checkScreenshot(component, 300, 376);
     });
 
-    it('looks right with long variant', async function() {
+    it('passes a11Y checks', a11yTest());
+  });
+
+  describe('with long variant', function() {
+    beforeEach(async function() {
       const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
           dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(basicExampleSelector, inputSelector);
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('a');
       await getPage().waitForSelector(dropdownButtonSelector);
+    });
+
+    it('looks right', async function() {
+      const [component] = await waitAndGetElements(basicExampleSelector);
       await checkScreenshot(component, 800, 376);
     });
 
-    it('looks right with short variant', async function() {
+    it('passes a11Y checks', a11yTest());
+  });
+
+  describe('with short variant', function() {
+    beforeEach(async function() {
       const inputSelector = `${nonEmptinessExampleSelector} .nx-combobox__input input`,
           dropdownButtonSelector = `${nonEmptinessExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(nonEmptinessExampleSelector, inputSelector);
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('a');
       await getPage().waitForSelector(dropdownButtonSelector);
-      await checkScreenshot(component, 150, 376);
     });
 
-    it('looks right with truncated results', async function() {
-      const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
-          dropdownButtonSelector = `${backendExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(backendExampleSelector, inputSelector);
-
-      await input.focus();
-      await getPage().keyboard.type('loo');
-      await getPage().waitForSelector(dropdownButtonSelector);
-      await checkScreenshot(component, 300, 88);
+    it('looks right', async function() {
+      const [component] = await waitAndGetElements(nonEmptinessExampleSelector);
+      await checkScreenshot(component, 150, 376);
     });
 
     it('passes a11Y checks', a11yTest());
   });
 
   describe('when displaying empty message', function() {
-    it('looks right', async function() {
+    beforeEach(async function() {
       const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
           emptyMessageSelector = `${basicExampleSelector} .nx-combobox__empty-message`,
-          [component, input] = await waitAndGetElements(basicExampleSelector, inputSelector);
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('q');
       await getPage().waitForSelector(emptyMessageSelector);
+    });
+
+    it('looks right', async function() {
+      const [component] = await waitAndGetElements(basicExampleSelector);
       await checkScreenshot(component, 800, 88);
     });
 
     it('passes a11Y checks', a11yTest());
   });
 
+  it('looks right with truncated results', async function() {
+    const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
+        dropdownButtonSelector = `${backendExampleSelector} .nx-dropdown-button`,
+        [component, input] = await waitAndGetElements(backendExampleSelector, inputSelector);
+
+    await input.focus();
+    await getPage().keyboard.type('loo');
+    await getPage().waitForSelector(dropdownButtonSelector);
+    await checkScreenshot(component, 300, 88);
+  });
+
   describe('Validation', function() {
-    it('has validation styles when valid', async function() {
+    beforeEach(async function() {
       const inputSelector = `${nonEmptinessExampleSelector} .nx-combobox__input input`,
           dropdownButtonSelector = `${nonEmptinessExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(nonEmptinessExampleSelector, inputSelector);
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('a');
       await getPage().waitForSelector(dropdownButtonSelector);
+    });
+
+    it('has validation styles when valid', async function() {
+      const [component] = await waitAndGetElements(nonEmptinessExampleSelector);
       await checkScreenshot(component, 150, 376);
     });
 
     it('has invalid validation styles when invalid', async function() {
-      const inputSelector = `${nonEmptinessExampleSelector} .nx-combobox__input input`,
-          dropdownButtonSelector = `${nonEmptinessExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(nonEmptinessExampleSelector, inputSelector);
-
-      await input.focus();
-      await getPage().keyboard.type('c');
-      await getPage().waitForSelector(dropdownButtonSelector);
+      const [component] = await waitAndGetElements(nonEmptinessExampleSelector);
       await getPage().keyboard.press('Backspace');
       await checkScreenshot(component, 150, 88);
     });
@@ -130,14 +156,18 @@ describe('NxCombobox', function() {
   });
 
   describe('when displaying an error', function() {
-    it('looks right', async function() {
+    beforeEach(async function() {
       const inputSelector = `${errorExampleSelector} .nx-combobox__input input`,
           errorSelector = `${errorExampleSelector} .nx-alert--load-error`,
-          [component, input] = await waitAndGetElements(errorExampleSelector, inputSelector);
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('1');
       await getPage().waitForSelector(errorSelector);
+    });
+
+    it('looks right', async function() {
+      const [component] = await waitAndGetElements(errorExampleSelector);
       await checkScreenshot(component, 300, 195);
     });
 
