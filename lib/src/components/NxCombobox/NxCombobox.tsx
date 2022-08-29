@@ -178,6 +178,9 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'Backspace':
+        // If backspace is pressed, the value of the input box becomes the backspaced text and
+        // set the inlineStyle to false, this will stop both setInlineOption and seleting the
+        // first match.
         if (autoComplete) {
           setInlineStyle(false);
         }
@@ -205,6 +208,9 @@ function NxComboboxRender<T extends string | number = string>(
     inputRef.current?.querySelector('input')?.focus();
   }
 
+  // If the typed characters match the beginning of the name of option in the dropdown,
+  // set the prevSearchText and update the input value with the displayName of the first
+  // match option.
   function setInlineOption() {
     const firstOptVal = matches[0].displayName;
     if (firstOptVal.toLocaleLowerCase().indexOf(value.toLowerCase()) === 0) {
@@ -213,16 +219,19 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }
 
-  // Nullify focusableBtnIndex whenever the number of matches changes
   useEffect(function() {
     if (matches.length && autoComplete && inlineStyle) {
       setInlineOption();
     }
     else {
+      // Nullify focusableBtnIndex whenever the number of matches changes
       setFocusableBtnIndex(null);
     }
   }, [matches]);
 
+  // Highlight the portion of the selected suggestion that has not been typed by the user and display
+  // a completion string inline after the input cursor in the input box and have focus on the first
+  // option in the dropdwon.
   useEffect(function() {
     if (prevSearchText && autoComplete && showDropdown && inlineStyle) {
       inputRef.current?.querySelector('input')?.setSelectionRange(prevSearchText.length, value.length);
