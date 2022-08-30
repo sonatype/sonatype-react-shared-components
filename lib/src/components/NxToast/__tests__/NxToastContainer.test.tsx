@@ -70,6 +70,7 @@ describe('NxToastContainer', function() {
   it('sets focus to previous focused element when the last remaining toast is closed',
       async function() {
         render(
+        /* eslint-disable-next-line */
             <>
               <button type="button">Focus Me</button>
               <NxToastContainer>
@@ -94,6 +95,7 @@ describe('NxToastContainer', function() {
   it('sets focus to previous focused element (while toasts are rendered) when the last remaining toast is closed',
       async function() {
         render(
+            /* eslint-disable-next-line */
             <>
               <button type="button">Focus Me</button>
               <NxToastContainer>
