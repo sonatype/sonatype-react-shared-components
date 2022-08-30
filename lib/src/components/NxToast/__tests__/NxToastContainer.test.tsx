@@ -19,18 +19,19 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 describe('NxToastContainer', function() {
   const simpleProps: NxToastContainerProps = {
-    children:
-  <>
-    <NxToast onClose={()=>{}}>
-      <NxAlert icon={faEye}>This is an Alert</NxAlert>
-    </NxToast>
-    <NxToast onClose={()=>{}}>
-      <NxAlert icon={faEye}>This is an Alert</NxAlert>
-    </NxToast>
-    <NxToast onClose={()=>{}}>
-      <NxAlert icon={faEye}>This is an Alert</NxAlert>
-    </NxToast>
-  </>
+    children: (
+      <>
+        <NxToast onClose={()=>{}}>
+          <NxAlert icon={faEye}>This is an Alert</NxAlert>
+        </NxToast>
+        <NxToast onClose={()=>{}}>
+          <NxAlert icon={faEye}>This is an Alert</NxAlert>
+        </NxToast>
+        <NxToast onClose={()=>{}}>
+          <NxAlert icon={faEye}>This is an Alert</NxAlert>
+        </NxToast>
+      </>
+    )
   };
 
   const quickRender = rtlRender(NxToastContainer, simpleProps);
