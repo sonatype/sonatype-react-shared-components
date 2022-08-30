@@ -79,7 +79,7 @@ export default function NxDrawerWithNxFormExample() {
       {showDrawer && (
         <NxDrawer id="nx-drawer-with-nx-form"
                   onCancel={() => setShowDrawer(false)}
-                  aria-labelledby="nx-drawer-with-nx-form">
+                  aria-label="Drawer with Form">
           <NxDrawer.Header>
             <NxDrawer.Header.Title>An Example of A Drawer with Form</NxDrawer.Header.Title>
             <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
@@ -115,7 +115,7 @@ export default function NxDrawerWithNxFormExample() {
       {showDrawerOverflowing && (
       <NxDrawer id="nx-drawer-with-nx-form-overflowing"
                 onCancel={() => setShowDrawerOverflowing(false)}
-                aria-labelledby="nx-drawer-with-nx-form">
+                aria-label="Drawer with Overflowing Form">
         <NxDrawer.Header>
           <NxDrawer.Header.Title>Drawer With A Long Form</NxDrawer.Header.Title>
           <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>

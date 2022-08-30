@@ -86,14 +86,14 @@ export default function NxDrawerVariantExample() {
         <NxDrawer id="nx-drawer-variant-header-narrow"
                   variant="narrow"
                   onCancel={() => setShowNarrowDrawer(false)}
-                  aria-labelledby="nx-drawer-with-global-header-narrow">
+                  aria-label="Narrow Drawer">
           {contentAndFooter}
         </NxDrawer>
       )}
       {showNormalDrawer && (
       <NxDrawer id="nx-drawer-variant-header-normal"
                 onCancel={() => setShowNormalDrawer(false)}
-                aria-labelledby="nx-drawer-with-global-header-normal">
+                aria-label="Normal Drawer">
         {contentAndFooter}
       </NxDrawer>
       )}
