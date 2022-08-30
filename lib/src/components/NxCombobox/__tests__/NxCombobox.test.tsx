@@ -6,11 +6,11 @@
  */
 import React from 'react';
 import { render } from '@testing-library/react';
-import * as rtlUtils from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import userEvent from '@testing-library/user-event';
 
-import NxCombobox, {Props} from '../NxCombobox';
+import NxCombobox, { Props } from '../NxCombobox';
 
 describe('NxCombobox', function() {
   const minimalProps: Props<string | number> = {
@@ -19,21 +19,17 @@ describe('NxCombobox', function() {
         onSearch: () => {},
         matches: []
       },
-      rtlRender = rtlUtils.rtlRender(NxCombobox, minimalProps);
+      quickRender = rtlRender(NxCombobox, minimalProps),
+      renderEl = rtlRenderElement(NxCombobox, minimalProps);
 
-  //mock scrollIntoView function using jest
-  window.HTMLElement.prototype.scrollIntoView = jest.fn();
+  it('sets specified classNames and attributes on the top-level element', function() {
+    const component = renderEl({ className: 'foo', title: 'bar' });
 
-  it('renders a div with the nx-combobox class and the specified attributes', function() {
-    const { container } = rtlRender({ title: 'bar' }),
-        component = container.firstElementChild!;
-
-    expect(component.tagName).toBe('DIV');
-    expect(component).toHaveClass('nx-combobox');
+    expect(component).toHaveClass('foo');
     expect(component).toHaveAttribute('title', 'bar');
   });
 
-  it('adds the ref to the div', function() {
+  it('adds the ref to the top-level element', function() {
     const ref = React.createRef<HTMLDivElement>(),
         domNode = render(<NxCombobox { ...minimalProps } ref={ref} />).container.firstElementChild!;
 
@@ -42,36 +38,31 @@ describe('NxCombobox', function() {
   });
 
   it('renders an input child with the combobox role', function() {
-    const { getByRole } = rtlRender(),
-        inputElement = getByRole('combobox');
+    const inputElement = quickRender().getByRole('combobox');
 
     expect(inputElement.tagName).toBe('INPUT');
-    expect(inputElement).toHaveAttribute('role', 'combobox');
+    expect(inputElement).toBeInTheDocument();
   });
 
   it('sets the value as the value of the input', function() {
-    const { getByRole } = rtlRender({ value: 'foo' }),
-        inputElement = getByRole('combobox');
-
-    expect(inputElement).toHaveValue('foo');
+    expect(quickRender({ value: 'foo' }).getByRole('combobox')).toHaveValue('foo');
   });
 
   it('sets aria-autocomplete on the input to list as default and to both if `autoComplete` prop is set to true',
       function() {
-        const { getByRole, rerender } = rtlRender(),
+        const { getByRole, rerender } = quickRender(),
             inputElement = getByRole('combobox');
 
         expect(inputElement).toHaveAttribute('aria-autocomplete', 'list');
 
-        rerender(<NxCombobox {...minimalProps} autoComplete={true} />);
-
+        rerender(<NxCombobox { ...minimalProps } autoComplete={true}/>);
         expect(inputElement).toHaveAttribute('aria-autocomplete', 'both');
       });
 
   it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true',
       async function() {
         const onChange = jest.fn(),
-            { getByRole } = rtlRender({ 
+            { getByRole } = quickRender({
               autoComplete: true,
               matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
               onChange
@@ -85,7 +76,7 @@ describe('NxCombobox', function() {
 
   it('sets aria-expanded on the input to true when the dropdown displayed which has aria-hidden set to false',
       async function() {
-        const { getByRole } = rtlRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+        const { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
             inputElement = getByRole('combobox'),
             dropdownElement = getByRole('listbox', { hidden: true });
 
@@ -96,10 +87,17 @@ describe('NxCombobox', function() {
         expect(dropdownElement).toHaveAttribute('aria-hidden', 'false');
       });
 
+  it('sets an accessible description on the combobox', async function() {
+    const inputElement = quickRender().getByRole('combobox');
+
+    inputElement.focus();
+    await userEvent.type(inputElement, 'f');
+    expect(inputElement).toHaveAccessibleDescription();
+  });
+
   it('calls onChange whenver the input\'s onChange event fires', async function() {
     const onChange = jest.fn(),
-        { getByRole } = rtlRender({ onChange }),
-        inputElement = getByRole('combobox');
+        inputElement = quickRender({ onChange }).getByRole('combobox');
 
     expect(onChange).not.toHaveBeenCalled();
     await userEvent.type(inputElement, 'a');
@@ -109,7 +107,7 @@ describe('NxCombobox', function() {
   it('calls onSearch whenver the input\'s onChange event fires with a value that differs after trimming, ' +
     'passing the trimmed value', async function() {
     const onSearch = jest.fn(),
-        { getByRole } = rtlRender({ value: 'foo', onSearch }),
+        { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
     expect(onSearch).not.toHaveBeenCalled();
@@ -119,53 +117,37 @@ describe('NxCombobox', function() {
     expect(onSearch).toHaveBeenCalledWith('foof');
   });
 
-  it('adds the nx-text-input--long class to the div if set', function() {
-    expect(rtlRender().container.querySelector('.nx-combobox')).not.toHaveClass('nx-text-input--long');
-    expect(rtlRender({ className: 'nx-text-input--long' }).container.querySelector('.nx-combobox'))
-        .toHaveClass('nx-text-input--long');
-  });
-
-  it('adds the nx-text-input--short class to the div if set', function() {
-    expect(rtlRender().container.querySelector('.nx-combobox')).not.toHaveClass('nx-text-input--short');
-    expect(rtlRender({ className: 'nx-text-input--short' }).container.querySelector('.nx-combobox'))
-        .toHaveClass('nx-text-input--short');
-  });
-
   it('passes the disabled prop to the input and buttons', function() {
-    const { getByRole, rerender } = rtlRender(),
+    const { getByRole, rerender } = quickRender(),
         inputElement = getByRole('combobox');
 
-    expect(inputElement).toHaveProperty('disabled', false);
+    expect(inputElement).not.toBeDisabled();
 
-    rerender(<NxCombobox {...minimalProps} disabled={undefined} />);
-    expect(inputElement).toHaveProperty('disabled', false);
+    rerender(<NxCombobox { ...minimalProps } disabled={undefined}/>);
+    expect(inputElement).not.toBeDisabled();
 
-    rerender(<NxCombobox {...minimalProps} disabled={false} />);
-    expect(inputElement).toHaveProperty('disabled', false);
+    rerender(<NxCombobox { ...minimalProps } disabled={false}/>);
+    expect(inputElement).not.toBeDisabled();
 
-    rerender(<NxCombobox {...minimalProps} matches={[{ id: '1', displayName: 'Foo' }]} disabled={false} />);
-    expect(getByRole('option', { hidden: true })).toHaveProperty('disabled', false);
+    rerender(<NxCombobox { ...minimalProps } disabled={true}/>);
+    expect(inputElement).toBeDisabled();
 
-    rerender(<NxCombobox {...minimalProps} matches={[{ id: '1', displayName: 'Foo' }]} disabled={true} />);
-    expect(getByRole('option', { hidden: true })).toHaveProperty('disabled', true);
-  });
+    rerender(<NxCombobox { ...minimalProps } matches={ [{ id: '1', displayName: 'Foo' }] } disabled={false}/>);
+    expect(inputElement).not.toBeDisabled();
 
-  it('renders a dropdown with the nx-combobox__menu class', async function() {
-    const { getByRole } = rtlRender({ matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
-        dropdownElement = getByRole('listbox', { hidden: true });
-
-    expect(dropdownElement).toHaveClass('nx-combobox__menu');
+    rerender(<NxCombobox { ...minimalProps } matches={ [{ id: '1', displayName: 'Foo' }] } disabled={true}/>);
+    expect(inputElement).toBeDisabled();
   });
 
   it('sets the listbox role on the dropdown', function() {
-    const { getByRole } = rtlRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+    const { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
         dropdownElement = getByRole('listbox', { hidden: true });
 
-    expect(dropdownElement).toHaveAttribute('role', 'listbox');
+    expect(dropdownElement).toBeInTheDocument();
   });
 
   it('sets an id on the dropdown and references it in the combobox input aria-controls', function() {
-    const { getByRole } = rtlRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+    const { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
         inputElement = getByRole('combobox'),
         dropdownElement = getByRole('listbox', { hidden: true });
 
@@ -173,66 +155,56 @@ describe('NxCombobox', function() {
     expect(inputElement).toHaveAttribute('aria-controls', dropdownElement.id);
   });
 
-  it('renders an alert dropdown with nx_combobox__alert class', function() {
-    const { container } = rtlRender(),
-        alertDropdownElement = container.querySelector('.nx-combobox__alert');
-
-    expect(alertDropdownElement).toBeTruthy();
-    expect(alertDropdownElement).toHaveClass('nx-combobox__alert');
-  });
-
   it('sets the alert role on the alert dropdown when it is in loading, error, or empty states', function() {
-    expect(rtlRender({ matches: [] }).container.querySelector('.nx-combobox__alert')).toHaveAttribute('role', 'alert');
-    expect(rtlRender({ loading: true }).container.querySelector('.nx-combobox__alert'))
-        .toHaveAttribute('role', 'alert');
-    expect(rtlRender({ loadError: 'boo' }).container.querySelector('.nx-combobox__alert'))
-        .toHaveAttribute('role', 'alert');
-  });
+    const { getAllByRole, rerender } = quickRender({ value: 'f' }),
+        alertDropdownElement = getAllByRole('alert', { hidden: true })[1];
 
-  it('sets an id on the alert dropdown and references it in the combobox input aria-describedby', function() {
-    const { getByRole, container } = rtlRender(),
-        inputElement = getByRole('combobox'),
-        alertDropdownElement = container.querySelector('.nx-combobox__alert')!;
+    expect(alertDropdownElement).toBeInTheDocument();
 
-    expect(alertDropdownElement).toHaveAttribute('id');
-    expect(inputElement).toHaveAttribute('aria-describedby', alertDropdownElement.id);
+    rerender(<NxCombobox { ...minimalProps } loading={true} />);
+    expect(alertDropdownElement).toBeInTheDocument();
+
+    rerender(<NxCombobox { ...minimalProps } loadError={'boo'} />);
+    expect(alertDropdownElement).toBeInTheDocument();
   });
 
   it('sets aria-live on the alert dropdown to "polite"', function() {
-    expect(rtlRender().container.querySelector('.nx-combobox__alert')).toHaveAttribute('aria-live', 'polite');
+    expect(quickRender().getAllByRole('alert', { hidden: true })[1]).toHaveAttribute('aria-live', 'polite');
   });
 
   it('sets aria-busy on the alert dropdown if loading is true', function() {
-    expect(rtlRender().container.querySelector('.nx-combobox__alert')).toHaveAttribute('aria-busy', 'false');
-    expect(rtlRender({ loading: true }).container.querySelector('.nx-combobox__alert'))
-        .toHaveAttribute('aria-busy', 'true');
+    const { getAllByRole, rerender } = quickRender(),
+        alertDropdownElement = getAllByRole('alert', { hidden: true })[1];
+
+    expect(alertDropdownElement).toHaveAttribute('aria-busy', 'false');
+
+    rerender(<NxCombobox { ...minimalProps } loading={true} />);
+    expect(alertDropdownElement).toHaveAttribute('aria-busy', 'true');
   });
 
-  it('renders a loading spinner when the `loading` prop is true', function() {
-    const { container } = rtlRender({ loading: true }),
-        loadingElement = container.querySelector('.nx-loading-spinner');
-    expect(loadingElement).toBeTruthy();
-  });
+  it('renders error and textcontent when the `loadError` prop is set', function() {
+    const alertDropdownElement = quickRender({ loadError: 'err' }).getAllByRole('alert', { hidden: true })[1];
 
-  it('renders error when the `loadError` prop is set', function() {
-    const { container } = rtlRender({ loadError: 'err' }),
-        errorElement = container.querySelector('.nx-alert--load-error');
-    expect(errorElement).toBeTruthy();
+    expect(alertDropdownElement).toBeInTheDocument();
+    expect(alertDropdownElement).toHaveTextContent('err');
   });
 
   it('fires onSearch with the search text when the retry button is clicked', async function() {
     const onSearch = jest.fn(),
-        { container } = rtlRender({ loadError: 'err', onSearch }),
-        retryBtn = container.querySelector('.nx-load-error__retry')!;
+        { getByRole} = quickRender({ loadError: 'err', onSearch }),
+        inputElement = getByRole('combobox');
 
+    inputElement.focus();
     expect(onSearch).not.toHaveBeenCalled();
+    await userEvent.type(inputElement, 'f');
+    const retryBtn = getByRole('button', { name: /retry/i });
     await userEvent.click(retryBtn);
-    expect(onSearch).toHaveBeenCalled();
+    expect(onSearch).toHaveBeenCalledWith('f');
   });
 
   it('fires onChange when the button with role option is clicked', async function() {
     const onChange = jest.fn(),
-        { getByRole, getAllByRole } = rtlRender({
+        { getByRole, getAllByRole } = quickRender({
           matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onChange }),
         inputElement = getByRole('combobox');
 
@@ -243,30 +215,32 @@ describe('NxCombobox', function() {
   });
 
   it('renders empty message if there are no results', function() {
-    const { container } = rtlRender(),
-        emptyMessage = container.querySelector('.nx-combobox__empty-message');
+    const emptyMessage = quickRender().getAllByRole('alert', { hidden: true })[1];
 
-    expect(emptyMessage).toBeTruthy();
+    expect(emptyMessage).toBeInTheDocument();
     expect(emptyMessage).toHaveTextContent('No Results Found');
   });
 
   it('sets the empty message from the `emptyMessage` prop', function() {
-    const { container } = rtlRender({ emptyMessage: 'asdfasdf' }),
-        emptyMessage = container.querySelector('.nx-combobox__empty-message');
+    const emptyMessage = quickRender({ emptyMessage: 'asdfasdf' }).getAllByRole('alert', { hidden: true })[1];
 
+    expect(emptyMessage).toBeInTheDocument();
     expect(emptyMessage).toHaveTextContent('asdfasdf');
   });
 
   it('calls onSearch with the current trimmed search text if focus enters the component from elsewhere on the page ' +
-  'while there is an error', function() {
+    'while there is an error', function() {
     const onSearch = jest.fn(),
-        { getByRole} = rtlRender({ value: 'f', loadError: 'err', onSearch }),
-        inputElement = getByRole('combobox'),
-        anotherElement = document.createElement('button');
+        jsx =
+          <>
+            <NxCombobox { ...minimalProps } value={'f'} loadError={'err'} onSearch={onSearch}/>
+            <button type='button'>Click</button>
+          </>,
+        component = render(jsx),
+        inputElement = component.getByRole('combobox'),
+        anotherElement = component.getByRole('button', { name: /click/i });
 
-    document.body.append(anotherElement);
     anotherElement.focus();
-
     expect(onSearch).not.toHaveBeenCalled();
     inputElement.focus();
     expect(onSearch).toHaveBeenCalledWith('f');
@@ -274,7 +248,7 @@ describe('NxCombobox', function() {
 
   it('does not call onSearch if focus moves within the component while there is an error', function() {
     const onSearch = jest.fn(),
-        { getByRole } = rtlRender({ value: 'f', loadError: 'err', onSearch }),
+        { getByRole } = quickRender({ value: 'f', loadError: 'err', onSearch }),
         inputElement = getByRole('combobox');
 
     expect(onSearch).not.toHaveBeenCalled();
@@ -292,7 +266,7 @@ describe('NxCombobox', function() {
   it('does not call onSearch if focus moves into the component from an outside window while there is an error',
       function() {
         const onSearch = jest.fn(),
-            { getByRole } = rtlRender({ value: 'f', loadError: 'err', onSearch }),
+            { getByRole } = quickRender({ value: 'f', loadError: 'err', onSearch }),
             inputElement = getByRole('combobox');
 
         inputElement.focus();
@@ -302,9 +276,14 @@ describe('NxCombobox', function() {
       });
 
   describe('Keyboard Support', function() {
+    beforeEach(function() {
+      //mock scrollIntoView function using jest
+      window.HTMLElement.prototype.scrollIntoView = jest.fn();
+    });
+
     it('sets aria-activedescendant on the combobox and refers to the focused element id' +
     'when the element has visual focus', async function() {
-      const { getByRole, getAllByRole } = rtlRender({
+      const { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox');
 
@@ -316,7 +295,7 @@ describe('NxCombobox', function() {
 
     it('places the editing cursor at the begining of the input field when Home key is pressed', async function() {
       const onChange = jest.fn(),
-          { getByRole } = rtlRender({ value: 'f', onChange }),
+          { getByRole } = quickRender({ value: 'f', onChange }),
           inputElement = getByRole('combobox');
 
       inputElement.focus();
@@ -326,7 +305,7 @@ describe('NxCombobox', function() {
 
     it('places the editing cursor at the end of the input field when End key is pressed', async function() {
       const onChange = jest.fn(),
-          { getByRole} = rtlRender({ value: 'f', onChange }),
+          { getByRole} = quickRender({ value: 'f', onChange }),
           inputElement = getByRole('combobox');
 
       inputElement.focus();
@@ -336,10 +315,10 @@ describe('NxCombobox', function() {
 
     it('should open dropdown and move visual focus to the first option with aria-selected set to true' +
       'if dropdown is closed and there are matches when down arrow key is pressed', async function() {
-      const { getByRole, getAllByRole, container} = rtlRender({
+      const { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
-          dropdownElement = container.querySelector('.nx-combobox__menu');
+          dropdownElement = getByRole('listbox', { hidden: true });
 
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'true');
       inputElement.focus();
@@ -351,7 +330,7 @@ describe('NxCombobox', function() {
 
     it('should move visual focus to the next option if dropdown is open' +
       'and the down arrow key is pressed', async function() {
-      const { getByRole, getAllByRole } = rtlRender({
+      const { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox');
 
@@ -368,10 +347,10 @@ describe('NxCombobox', function() {
 
     it('should open dropdown and move visual focus to the last option if dropdown is closed' +
       'and there are matches when up arrow key is pressed', async function() {
-      const { getByRole, getAllByRole, container} = rtlRender({
+      const { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
-          dropdownElement = container.querySelector('.nx-combobox__menu');
+          dropdownElement = getByRole('listbox', { hidden: true });
 
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'true');
       inputElement.focus();
@@ -383,7 +362,7 @@ describe('NxCombobox', function() {
 
     it('should move visual focus to the previous option if dropdown is open' +
       'and the up arrow key is pressed', async function() {
-      const { getByRole, getAllByRole } = rtlRender({
+      const { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox');
 
@@ -399,10 +378,10 @@ describe('NxCombobox', function() {
     });
 
     it('should close dropdown when Escape key is pressed', async function() {
-      const { getByRole, container} = rtlRender({
+      const { getByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
-          dropdownElement = container.querySelector('.nx-combobox__menu');
+          dropdownElement = getByRole('listbox', { hidden: true });
 
       inputElement.focus();
       await userEvent.keyboard('[ArrowDown]');
@@ -413,7 +392,7 @@ describe('NxCombobox', function() {
 
     it('should clear input text if dropdown is close when Escape key is pressed', async function() {
       const onChange = jest.fn(),
-          { getByRole } = rtlRender({ value: 'a',
+          { getByRole } = quickRender({ value: 'a',
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
             onChange}),
           inputElement = getByRole('combobox');
