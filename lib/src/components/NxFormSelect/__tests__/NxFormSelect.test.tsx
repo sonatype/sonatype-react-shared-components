@@ -88,7 +88,7 @@ describe('NxFormSelect', function() {
   });
 
   describe('when not validatable', function() {
-    const nonValidatableMinimalProps = { ...minimalProps, validatable: true };
+    const nonValidatableMinimalProps = { ...minimalProps, validatable: false };
 
     describe('when pristine', function() {
       const pristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: true };
@@ -108,7 +108,7 @@ describe('NxFormSelect', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
-        describe('when in a form when showValidationErrors', function() {
+        describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
@@ -156,7 +156,7 @@ describe('NxFormSelect', function() {
           expect(multiRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
-        describe('when in a form when showValidationErrors', function() {
+        describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
@@ -184,10 +184,10 @@ describe('NxFormSelect', function() {
     });
 
     describe('when not pristine', function() {
-      const pristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: true };
+      const nonPristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: false };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps = pristineMinimalProps,
+        const noValidationErrorsMinimalProps = nonPristineMinimalProps,
             quickRender = rtlRender(NxFormSelect, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no select a11y error message', function() {
@@ -201,7 +201,7 @@ describe('NxFormSelect', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
-        describe('when in a form when showValidationErrors', function() {
+        describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
@@ -228,8 +228,8 @@ describe('NxFormSelect', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps = { ...pristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps = { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
+        const singleValidationErrorsMinimalProps = { ...nonPristineMinimalProps, validationErrors: 'foo' },
+            multiValidationErrorsMinimalProps = { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
             singleRender = rtlRender(NxFormSelect, singleValidationErrorsMinimalProps),
             multiRender = rtlRender(NxFormSelect, multiValidationErrorsMinimalProps);
 
@@ -249,7 +249,7 @@ describe('NxFormSelect', function() {
           expect(multiRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
-        describe('when in a form when showValidationErrors', function() {
+        describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
@@ -298,7 +298,7 @@ describe('NxFormSelect', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
-        describe('when in a form when showValidationErrors', function() {
+        describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
@@ -346,7 +346,7 @@ describe('NxFormSelect', function() {
           expect(multiRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
-        describe('when in a form when showValidationErrors', function() {
+        describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
@@ -402,7 +402,7 @@ describe('NxFormSelect', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
-        describe('when in a form when showValidationErrors', function() {
+        describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
@@ -453,7 +453,7 @@ describe('NxFormSelect', function() {
           expect(multiError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
         });
 
-        describe('when in a form when showValidationErrors', function() {
+        describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
