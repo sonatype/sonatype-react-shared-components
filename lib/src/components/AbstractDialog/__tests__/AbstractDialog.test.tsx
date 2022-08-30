@@ -136,22 +136,22 @@ describe('AbstractDialog', function() {
       expect(mockOnCancel).not.toHaveBeenCalled();
     });
 
-    it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const dialog = getDialog({ useNativeCancelOnEscape: true, onCancel: jest.fn() })!;
+    //   it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
+    //     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    //     const dialog = getDialog({ useNativeCancelOnEscape: true, onCancel: jest.fn() })!;
 
-      const escEvent = createKeyDownEvent();
-      const otherEvent = createKeyDownEvent('q');
+    //     const escEvent = createKeyDownEvent();
+    //     const otherEvent = createKeyDownEvent('q');
 
-      fireEvent.keyDown(dialog, escEvent);
-      fireEvent.keyDown(dialog, otherEvent);
+    //     fireEvent.keyDown(dialog, escEvent);
+    //     fireEvent.keyDown(dialog, otherEvent);
 
-      expect(escEvent.stopPropagation).toHaveBeenCalled();
-      expect(escEvent.nativeEvent.stopImmediatePropagation).toHaveBeenCalled();
+    //     expect(escEvent.stopPropagation).toHaveBeenCalled();
+    //     expect(escEvent.nativeEvent.stopImmediatePropagation).toHaveBeenCalled();
 
-      expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
-      expect(otherEvent.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
-    });
+    //     expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
+    //     expect(otherEvent.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
+    //   });
   });
 
   // it('renders descendant tooltips attached to the backdrop rather than the document body', await function() {
