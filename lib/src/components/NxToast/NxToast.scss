@@ -6,10 +6,11 @@
  */
 
  @use '../../scss-shared/nx-header-variables';
+ @use'../../scss-shared/nx-container-helpers';
 
  // 74px refers to the total height of each toast: the content itself, plus the padding
  // and margin-top applied. 
- $-nx-toast-height: 74px;
+ $-toast-height: 66px;
 
 .nx-toast-container {
   grid-area: content;
@@ -27,25 +28,23 @@
   .nx-toast-container {
     position: fixed;
     top: nx-header-variables.$main-header-height;
-    right:0;
+    right: 0;
   }
 }
 
 .nx-toast {
+  @include nx-container-helpers.container-vertical;
+  
   position: relative;
-  animation: animationIn 0.4s linear;
   right: 0;
   opacity: 1;
   margin-top: var(--nx-spacing-2x);
+  animation: animationIn 0.4s linear;
   overflow: hidden;
   pointer-events: auto;
 
   &.nx-toast--closing {
     animation-name: animationOut;
-  }
-
-  .nx-alert {
-    margin: 0;
   }
 }
 
@@ -53,24 +52,28 @@
 // subsequent toast to smoothly move up or down as toasts are added and removed
 @keyframes animationIn {
   0% {
+    margin-top: 0;
     max-height: 0px;
     right: -100%;
     opacity: 0;
   }
   40% {
+    margin-top: var(--nx-spacing-2x);
     right: -100%;
     opacity: 0;
-    max-height: $-nx-toast-height;
+    max-height: $-toast-height;
   }
 }
 
 @keyframes animationOut {
   75% {
-    max-height: $-nx-toast-height;
+    margin-top: var(--nx-spacing-2x);
+    max-height: $-toast-height;
     right: -100%;
     opacity: 0;
   }
   100% {
+    margin-top: 0;
     max-height: 0px;
     right: -100%;
     opacity: 0;
