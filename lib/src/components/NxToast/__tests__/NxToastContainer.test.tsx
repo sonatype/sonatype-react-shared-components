@@ -69,8 +69,7 @@ describe('NxToastContainer', function() {
 
   it('sets focus to previous focused element when the last remaining toast is closed',
       async function() {
-        const Component = () => {
-          return (
+        render(
             <>
               <button type="button">Focus Me</button>
               <NxToastContainer>
@@ -79,16 +78,14 @@ describe('NxToastContainer', function() {
                 </NxToast>
               </NxToastContainer>
             </>
-          );
-        };
-
-        render(<Component />);
+        );
 
         const prevFocusBtn = screen.getByRole('button', {name: 'Focus Me'});
         const closeBtn = screen.getByRole('button', {name: 'Close'});
 
         prevFocusBtn.focus();
 
+        closeBtn.focus();
         await userEvent.click(closeBtn);
 
         expect(prevFocusBtn).toHaveFocus();
@@ -96,8 +93,7 @@ describe('NxToastContainer', function() {
 
   it('sets focus to previous focused element (while toasts are rendered) when the last remaining toast is closed',
       async function() {
-        const Component = () => {
-          return (
+        render(
             <>
               <button type="button">Focus Me</button>
               <NxToastContainer>
@@ -109,10 +105,7 @@ describe('NxToastContainer', function() {
                 </NxToast>
               </NxToastContainer>
             </>
-          );
-        };
-
-        render(<Component />);
+        );
 
         const prevFocusBtn = screen.getByRole('button', {name: 'Focus Me'});
         const closeBtns = screen.getAllByRole('button', {name: 'Close'});
@@ -121,6 +114,7 @@ describe('NxToastContainer', function() {
 
         prevFocusBtn.focus();
 
+        closeBtns[0].focus();
         await userEvent.click(closeBtns[0]);
 
         expect(prevFocusBtn).toHaveFocus();
