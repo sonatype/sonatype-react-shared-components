@@ -61,7 +61,7 @@ const NxFormSelectPage = () =>
                 If true, this <NxCode>NxFormSelect</NxCode> is subject to validation, the result of which should be
                 passed in via the <NxCode>validationErrors</NxCode> prop, resulting in validation CSS classes being
                 applied (see below). If false, the NxTextInput is not considered to be subject to validation, the
-                <NxCode>validationErrors</NxCode> prop is ignored, and validation-related CSS classes
+                {' '}<NxCode>validationErrors</NxCode> prop is ignored, and validation-related CSS classes
                 are never applied.
               </NxTable.Cell>
             </NxTable.Row>
