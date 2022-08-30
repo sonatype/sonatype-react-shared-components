@@ -64,8 +64,8 @@ const NxToastPage = () =>
               <NxTable.Cell>
                 All <NxCode>NxToast</NxCode>s rendered within <NxCode>NxToastContainer</NxCode>.
                 <NxWarningAlert>
-                  Note: To ensure proper focusing order, <NxCode>NxToast</NxCode>s must be rendered in descending order,
-                  with the oldest <NxCode>NxToast</NxCode> at the bottom.
+                  Note: <NxCode>NxToast</NxCode>s must be rendered in descending order, with the newest toast at the
+                  top and as the first child of <NxCode>NxToastContainer</NxCode>.
                 </NxWarningAlert>
               </NxTable.Cell>
             </NxTable.Row>
