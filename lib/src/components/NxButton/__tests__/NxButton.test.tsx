@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxButton from '../NxButton';
@@ -76,5 +76,11 @@ describe('NxButton', function() {
 
     expect(titleNoContext).toMatchSelector('NxTooltip');
     expect(titleNoContext).toHaveProp('title', 'bar');
+  });
+
+  it('throws an error when it contains both disabled and title props', function() {
+    expect(() => {
+      shallow(<NxButton variant="icon-only" title="Delete" disabled><NxFontAwesomeIcon icon={faTrashAlt}/></NxButton>);
+    }).toThrow(TypeError);
   });
 });
