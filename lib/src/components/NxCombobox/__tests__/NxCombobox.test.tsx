@@ -111,15 +111,25 @@ describe('NxCombobox', function() {
     expect(onChange).toHaveBeenCalledWith('a');
   });
 
-  it('calls onSearch whenver the input\'s onChange event fires with a value that differs after trimming, ' +
+  it('does not call onSearch whenever the input\'s onChange event fires with a value that does not differ' +
+    'after trimming,', async function() {
+    const onSearch = jest.fn(),
+        { getByRole } = quickRender({ value: 'foo', onSearch }),
+        inputElement = getByRole('combobox');
+
+    inputElement.focus();
+    await userEvent.type(inputElement, ' ');
+    expect(onSearch).not.toHaveBeenCalled();
+  });
+
+  it('calls onSearch whenever the input\'s onChange event fires with a value that differs after trimming, ' +
     'passing the trimmed value', async function() {
     const onSearch = jest.fn(),
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
     inputElement.focus();
-    await userEvent.type(inputElement, ' f');
-    expect(onSearch).toBeCalledTimes(1);
+    await userEvent.type(inputElement, 'f');
     expect(onSearch).toHaveBeenCalledWith('foof');
   });
 
