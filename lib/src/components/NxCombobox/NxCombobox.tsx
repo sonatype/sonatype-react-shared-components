@@ -149,11 +149,19 @@ function NxComboboxRender<T extends string | number = string>(
         break;
       case 'Home':
         inputEle.setSelectionRange(0, 0);
+        setFocusableBtnIndex(null);
         evt.preventDefault();
         break;
       case 'End':
         inputEle.setSelectionRange(value.length, value.length);
+        setFocusableBtnIndex(null);
         evt.preventDefault();
+        break;
+      case 'ArrowLeft':
+        setFocusableBtnIndex(null);
+        break;
+      case 'ArrowRight':
+        setFocusableBtnIndex(null);
         break;
       case 'ArrowDown':
         if (!isEmpty) {
