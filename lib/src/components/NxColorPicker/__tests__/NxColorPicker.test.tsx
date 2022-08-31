@@ -67,7 +67,7 @@ describe('NxColorPicker', function() {
     const user = userEvent.setup(),
         onChange = jest.fn(),
         view = quickRender({ onChange }),
-        radio = view.getByRole('radio', { name: /turquoise/i })
+        radio = view.getByRole('radio', { name: /turquoise/i });
 
     expect(onChange).not.toHaveBeenCalled();
 
@@ -79,7 +79,7 @@ describe('NxColorPicker', function() {
   it('does nothing when an input is clicked with no onChange prop', async function() {
     const user = userEvent.setup(),
         view = quickRender(),
-        radio = view.getByRole('radio', { name: /turquoise/i })
+        radio = view.getByRole('radio', { name: /turquoise/i });
 
     await user.click(radio);
   });

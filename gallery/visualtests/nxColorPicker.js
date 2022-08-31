@@ -55,8 +55,8 @@ describe('NxColorPicker', function() {
 
     it('displays the validation message', async function() {
       const [picker, validationMessage] = await waitAndGetElements(
-        validationSelector,
-        `${validationSelector} .nx-field-validation-message`
+          validationSelector,
+          `${validationSelector} .nx-field-validation-message`
       );
 
       // sanity check that the message is there
