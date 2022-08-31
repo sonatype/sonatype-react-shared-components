@@ -75,12 +75,12 @@ describe('NxColorPicker', function() {
     it('displays the validation message', async function() {
       const [submitBtn, picker] = await waitAndGetElements(
           `${formSelector} .nx-form__submit-btn`,
-          `${formSelector} .nx-fieldset:first-of-type`
+          `${formSelector} .nx-color-picker`
       );
 
       await submitBtn.click();
 
-      await checkScreenshot(picker, undefined, 152);
+      await checkScreenshot(picker, undefined, 92);
     });
   });
 
