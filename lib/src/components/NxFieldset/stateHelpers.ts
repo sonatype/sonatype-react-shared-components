@@ -36,7 +36,10 @@ export {
  * Create a RadioStateProps representing the initial state of a group of radio buttons based on the
  * specified initial value, and validated according to the specified validator
  */
-export function radioGroupInitialState(value?: string, validator?: RadioValidator): RadioStateProps {
+export function radioGroupInitialState<T extends string = string>(
+  value?: T,
+  validator?: RadioValidator
+): RadioStateProps<T> {
   const normalizedValue = value ?? null;
 
   return {
@@ -50,10 +53,10 @@ export function radioGroupInitialState(value?: string, validator?: RadioValidato
  * Create a RadioStateProps representing a non-initial state of a group of radio buttons based on the
  * specified value, and validated according to the specified validator
  */
-export function radioGroupUserInput(
-  value: string | null,
+export function radioGroupUserInput<T extends string = string>(
+  value: T | null,
   validator?: RadioValidator
-): RadioStateProps {
+): RadioStateProps<T> {
   return {
     value,
     isPristine: false,
@@ -65,12 +68,12 @@ export function radioGroupUserInput(
  * A react hook to aid in managing the state of a radio group. Encapsulates tracking of pristine state and
  * validation errors
  */
-export function useRadioGroupState(
-  initialValue?: string,
+export function useRadioGroupState<T extends string = string>(
+  initialValue?: T,
   validator?: RadioValidator
-): [RadioStateProps, RadioSetter] {
+): [RadioStateProps<T>, RadioSetter<T>] {
   const [state, setState] = useState(radioGroupInitialState(initialValue, validator)),
-      setter = (v: string | null) => { setState(radioGroupUserInput(v, validator)); };
+      setter = (v: T | null) => { setState(radioGroupUserInput(v, validator)); };
 
   return [state, setter];
 }
@@ -79,10 +82,10 @@ export function useRadioGroupState(
  * Create a CheckboxStateProps representing the initial state of a group of checkboxes based on the
  * specified initial values, and validated according to the specified validator
  */
-export function checkboxGroupInitialState(
-  values: string[] = [],
+export function checkboxGroupInitialState<T extends string = string>(
+  values: T[] = [],
   validator?: CheckboxValidator
-): CheckboxStateProps {
+): CheckboxStateProps<T> {
   return {
     values,
     isPristine: true,
@@ -94,11 +97,11 @@ export function checkboxGroupInitialState(
  * Create a CheckboxStateProps representing a non-initial state of a group of checkboxes based on the
  * specified value, and validated according to the specified validator
  */
-export function checkboxGroupUserInput(
-  { values }: CheckboxStateProps,
-  toggledValue: string,
+export function checkboxGroupUserInput<T extends string = string>(
+  { values }: CheckboxStateProps<T>,
+  toggledValue: T,
   validator?: CheckboxValidator
-): CheckboxStateProps {
+): CheckboxStateProps<T> {
   const newValues = values.includes(toggledValue) ?
     without([toggledValue], values) :
     append(toggledValue, values);

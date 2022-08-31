@@ -27,19 +27,19 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
 // The following are for the state helpers
 export type RadioValidator = (value: string | null) => ValidationErrors;
 export type CheckboxValidator = (values: string[]) => ValidationErrors;
-export type RadioSetter = (v: string | null) => void;
+export type RadioSetter<T extends string = string> = (v: T | null) => void;
 export type CheckboxState = [boolean, () => void];
 export type CheckboxInitValues<K extends string | number> = Record<K, boolean>;
 export type CheckboxStates<K extends string | number> = Record<K, CheckboxState>;
 
-export interface RadioStateProps {
-  value: string | null;
+export interface RadioStateProps<T extends string = string> {
+  value: T | null;
   isPristine: boolean;
   validationErrors: ValidationErrors;
 }
 
-export interface CheckboxStateProps {
-  values: string[];
+export interface CheckboxStateProps<T extends string = string> {
+  values: T[];
   isPristine: boolean;
   validationErrors: ValidationErrors;
 }
