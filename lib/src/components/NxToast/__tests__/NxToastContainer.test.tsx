@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import { screen, render } from '@testing-library/react';
+import { screen, render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import NxToastContainer from '../NxToastContainer';
@@ -70,15 +70,16 @@ describe('NxToastContainer', function() {
   it('sets focus to previous focused element when the last remaining toast is closed',
       async function() {
         render(
-        /* eslint-disable-next-line */
-            <>
-              <button type="button">Focus Me</button>
-              <NxToastContainer>
-                <NxToast onClose={()=>{}}>
-                  <NxAlert icon={faEye}>This is an Alert</NxAlert>
-                </NxToast>
-              </NxToastContainer>
-            </>
+        /* eslint-disable-next-line @typescript-eslint/indent */
+          <>
+            <button type="button">Focus Me</button>
+            <NxToastContainer>
+              <NxToast onClose={()=>{}}>
+                <NxAlert icon={faEye}>This is an Alert</NxAlert>
+              </NxToast>
+            </NxToastContainer>
+            {/* eslint-disable-next-line @typescript-eslint/indent */}
+          </>
         );
 
         const prevFocusBtn = screen.getByRole('button', {name: 'Focus Me'});
@@ -92,32 +93,42 @@ describe('NxToastContainer', function() {
         expect(prevFocusBtn).toHaveFocus();
       });
 
-  it('sets focus to previous focused element (while toasts are rendered) when the last remaining toast is closed',
+  it('sets focus to previous focused element (before any toasts rendered) when the last remaining toast is closed',
       async function() {
-        render(
-            /* eslint-disable-next-line */
-            <>
-              <button type="button">Focus Me</button>
-              <NxToastContainer>
-                <NxToast onClose={()=>{}}>
-                  <NxAlert icon={faEye}>This is an Alert</NxAlert>
-                </NxToast>
-                <NxToast onClose={()=>{}}>
-                  <NxAlert icon={faEye}>This is an Alert</NxAlert>
-                </NxToast>
-              </NxToastContainer>
-            </>
+
+        const { rerender, container } = render(
+        /* eslint-disable-next-line @typescript-eslint/indent */
+          <>
+            <button type="button">Focus Me</button>
+            <NxToastContainer>
+              {}
+            </NxToastContainer>
+            {/* eslint-disable-next-line @typescript-eslint/indent */}
+          </>
         );
-
         const prevFocusBtn = screen.getByRole('button', {name: 'Focus Me'});
-        const closeBtns = screen.getAllByRole('button', {name: 'Close'});
-
-        await userEvent.click(closeBtns[1]);
 
         prevFocusBtn.focus();
 
-        closeBtns[0].focus();
-        await userEvent.click(closeBtns[0]);
+        rerender(
+        /* eslint-disable-next-line @typescript-eslint/indent */
+          <>
+            <button type="button">Focus Me</button>
+            <NxToastContainer>
+              <NxToast onClose={()=>{}}>
+                <NxAlert icon={faEye}>This is an Alert</NxAlert>
+              </NxToast>
+            </NxToastContainer>
+            {/* eslint-disable-next-line @typescript-eslint/indent */}
+          </>
+        );
+
+        const toast = container.querySelector('.nx-toast');
+        const closeBtn = screen.getByRole('button', {name: 'Close'});
+
+        closeBtn.focus();
+        await userEvent.click(closeBtn);
+        fireEvent.animationEnd(toast as Element);
 
         expect(prevFocusBtn).toHaveFocus();
       });
