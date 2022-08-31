@@ -4,154 +4,80 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
+import userEvent from '@testing-library/user-event';
 
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxColorPicker, { Props } from '../NxColorPicker';
-import NxTooltip from '../../NxTooltip/NxTooltip';
-import NxFieldset from '../../NxFieldset/NxFieldset';
+import { selectableColors } from '../../../util/selectableColors';
 
 describe('NxColorPicker', function() {
   const minimalProps = { label: 'My Color Picker' },
-      getShallow = getShallowComponent<Props>(NxColorPicker, minimalProps),
-      getMounted = getMountedComponent<Props>(NxColorPicker, minimalProps);
+      quickRender = rtlRender<Props>(NxColorPicker, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxColorPicker, minimalProps);
 
-  it('renders an NxFieldset with the nx-color-picker class', function() {
-    expect(getShallow()).toMatchSelector('.nx-color-picker');
-    expect(getShallow()).toMatchSelector(NxFieldset);
+  it('renders a fieldset with the specified attributes', function() {
+    const el = renderEl({ id: 'foo', lang: 'en' })!;
+
+    expect(el.tagName).toBe('FIELDSET');
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en');
   });
 
-  it('adds any custom classes to the NxFieldset', function() {
-    const component = getShallow({ className: 'foo' });
+  it('adds any custom classes to the fieldset', function() {
+    const el = renderEl({ className: 'foo' })!,
+        defaultEl = renderEl()!;
 
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-color-picker');
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('adds specified extra attributes to the fieldset', function() {
-    const component = getShallow({ id: 'foo', lang: 'en_US' });
+  it('names the fieldset according to the label prop', function() {
+    const fieldset = renderEl()!;
 
-    expect(component).toHaveProp('id', 'foo');
-    expect(component).toHaveProp('lang', 'en_US');
+    expect(fieldset).toHaveAccessibleName('My Color Picker');
   });
 
-  it('adds the label prop to the NxFieldset', function() {
-    const component = getShallow();
-    expect(component).toHaveProp('label', 'My Color Picker');
+  it('renders a radio for each color, named after the color and the color picker label', function() {
+    const view = quickRender();
+
+    expect(view.getAllByRole('radio')).toHaveLength(selectableColors.length);
+
+    for (const selectableColor of selectableColors) {
+      expect(view.getByRole('radio', { name: new RegExp(`My Color Picker ${selectableColor}`, 'i') }))
+          .toBeInTheDocument();
+    }
   });
 
-  it('renders a label.nx-color-picker__color wrapped around a input.nx-color-picker__input radio for each color',
-      function() {
-        const component = getMounted(),
-            labels = component.find('label.nx-color-picker__color');
+  it('sets the checked attr to true on the radio matching the value prop', function() {
+    const noneSelectedView = quickRender(),
+        turquoiseSelectedView = quickRender({ value: 'turquoise' });
 
-        expect(labels).toHaveLength(10);
+    expect(noneSelectedView.queryByRole('radio', { checked: true })).not.toBeInTheDocument();
 
-        labels.forEach(function(label) {
-          expect(label).toContainMatchingElement('input.nx-color-picker__input');
-          expect(label.find('input')).toHaveProp('type', 'radio');
-        });
-      }
-  );
-
-  it('sets a --color modifier class with the color name on each label', function() {
-    const component = getMounted(),
-        labels = component.find('label.nx-color-picker__color');
-
-    expect(labels.filter('.nx-selectable-color--sky')).toExist();
-    expect(labels.filter('.nx-selectable-color--purple')).toExist();
-    expect(labels.filter('.nx-selectable-color--pink')).toExist();
-    expect(labels.filter('.nx-selectable-color--blue')).toExist();
-    expect(labels.filter('.nx-selectable-color--red')).toExist();
-    expect(labels.filter('.nx-selectable-color--turquoise')).toExist();
-    expect(labels.filter('.nx-selectable-color--orange')).toExist();
-    expect(labels.filter('.nx-selectable-color--yellow')).toExist();
-    expect(labels.filter('.nx-selectable-color--kiwi')).toExist();
+    expect(turquoiseSelectedView.queryByRole('radio', { checked: true })).toHaveAccessibleName(/turquoise/i);
   });
 
-  it('wraps each label in a tooltip with a display friendly color name', function() {
-    const component = getMounted(),
-        tooltips = component.find(NxTooltip);
-
-    expect(tooltips).toHaveLength(10);
-
-    expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Sky'))
-        .toContainMatchingElement('label.nx-selectable-color--sky');
-
-    expect(tooltips.filterWhere(tooltip => tooltip.prop('title') === 'Turquoise'))
-        .toContainMatchingElement('label.nx-selectable-color--turquoise');
-  });
-
-  it('sets an aria-label derived from the color name and overall label on each <label>', function() {
-    const component = getMounted(),
-        labels = component.find('.nx-color-picker__color');
-
-    expect(labels.filter('.nx-selectable-color--sky')).toHaveProp('aria-label', 'My Color Picker Sky');
-    expect(labels.filter('.nx-selectable-color--turquoise')).toHaveProp('aria-label', 'My Color Picker Turquoise');
-  });
-
-  it('sets a random common name attr on each radio', function() {
-    const component1 = getMounted(),
-        component2 = getMounted(),
-        inputs1 = component1.find('input'),
-        inputs2 = component2.find('input'),
-        name1 = inputs1.at(0).prop('name'),
-        name2 = inputs2.at(0).prop('name');
-
-    expect(name1).toBeTruthy();
-    expect(name2).toBeTruthy();
-    expect(name1).not.toBe(name2);
-
-    inputs1.forEach(function(input) {
-      expect(input).toHaveProp('name', name1);
-    });
-
-    inputs2.forEach(function(input) {
-      expect(input).toHaveProp('name', name2);
-    });
-  });
-
-  it('sets the corresponding color value on each input', function() {
-    const component = getMounted(),
-        labels = component.find('.nx-color-picker__color');
-
-    expect(labels.filterWhere(label => label.hasClass('nx-selectable-color--sky')).find('input'))
-        .toHaveProp('value', 'sky');
-
-    expect(labels.filterWhere(label => label.hasClass('nx-selectable-color--turquoise')).find('input'))
-        .toHaveProp('value', 'turquoise');
-  });
-
-  it('sets the checked attr to true only on the input matching the value', function() {
-    const noneSelectedComponent = getMounted(),
-        turquoiseSelectedComponent = getMounted({ value: 'turquoise' });
-
-    expect(noneSelectedComponent.find('input').filterWhere(input => !!input.prop('checked'))).not.toExist();
-
-    expect(turquoiseSelectedComponent.find('input').filterWhere(input => !!input.prop('checked')))
-        .toHaveProp('value', 'turquoise');
-  });
-
-  it('sets the selected class on the label of the selected color', function() {
-    expect(getMounted({ value: 'turquoise' }).find('.nx-color-picker__color.selected'))
-        .toHaveClassName('nx-selectable-color--turquoise');
-  });
-
-  it('fires its onChange handler with the color of the clicked input', function() {
-    const onChange = jest.fn(),
-        component = getMounted({ onChange });
+  it('fires its onChange handler with the color of the clicked radio', async function() {
+    const user = userEvent.setup(),
+        onChange = jest.fn(),
+        view = quickRender({ onChange }),
+        radio = view.getByRole('radio', { name: /turquoise/i })
 
     expect(onChange).not.toHaveBeenCalled();
 
-    component.find('input').filterWhere(input => input.prop('value') === 'turquoise').simulate('change');
+    await user.click(radio);
 
     expect(onChange).toHaveBeenCalledWith('turquoise');
   });
 
-  it('does nothing when an input is clicked with no onChange prop', function() {
-    const component = getMounted();
+  it('does nothing when an input is clicked with no onChange prop', async function() {
+    const user = userEvent.setup(),
+        view = quickRender(),
+        radio = view.getByRole('radio', { name: /turquoise/i })
 
-    component.find('input').filterWhere(input => input.prop('value') === 'turquoise').simulate('change');
-
-    // shouldn't throw an exception
+    await user.click(radio);
   });
 });
