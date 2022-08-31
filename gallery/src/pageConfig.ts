@@ -76,7 +76,6 @@ import NxPaginationPage from './components/NxPagination/NxPaginationPage';
 import NxIndeterminatePaginationPage
   from './components/NxIndeterminatePagination/NxIndeterminatePaginationPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
-import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
 import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
@@ -262,7 +261,6 @@ const pageConfig: PageConfig = {
   'HTML Variants': {
     'Alert (HTML)': { content: NxAlertPage, type: 'html' },
     'Button (HTML)': { content: NxBtnPage, type: 'html' },
-    'Form Select (HTML)': { content: NxFormSelectPage, type: 'html' },
     'Icon': { content: NxIconPage, type: 'html' },
     'List (HTML)': { content: NxListPage, type: 'html' },
     'Table (HTML)': { content: NxTableStylePage, type: 'html' }
