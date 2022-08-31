@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor, createEvent} from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 
@@ -14,8 +14,9 @@ import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import AbstractDialog, { Props } from '../AbstractDialog';
 import NxButton from '../../NxButton/NxButton';
-// import NxTooltip from '../../NxTooltip/NxTooltip';
+import NxTooltip from '../../NxTooltip/NxTooltip';
 import useToggle from '../../../util/useToggle';
+//import { createEvent } from '@testing-library/user-event/dist/types/event/createEvent';
 
 describe('AbstractDialog', function() {
   const minimalProps: Props = {
@@ -30,11 +31,16 @@ describe('AbstractDialog', function() {
     expect(quickRender({ children: <div data-testid="bar"/> }).getByTestId('bar')).toBeInTheDocument();
   });
 
-  // it('forwards the dialog element ref', function() {
-  //   const ref = React.createRef<HTMLDialogElement>();
-  //   const dialog = getDialog({ ref });
-  //   expect(ref.current).toBe(dialog);
-  // });
+  it('forwards the dialog element ref', function() {
+    const ref = React.createRef<HTMLDialogElement>();
+    render(
+      <AbstractDialog ref={ref} onCancel={() => {}}>
+        Hello
+      </AbstractDialog>
+    );
+    const dialog = screen.getByRole('dialog', { hidden: true });
+    expect(ref.current).toBe(dialog);
+  });
 
   it('uses passed in className to the dialog', function() {
     expect(getDialog({ className: 'foo' })).toHaveClass('foo');
@@ -136,45 +142,46 @@ describe('AbstractDialog', function() {
       expect(mockOnCancel).not.toHaveBeenCalled();
     });
 
-    //   it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
-    //     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    //     const dialog = getDialog({ useNativeCancelOnEscape: true, onCancel: jest.fn() })!;
+    it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const dialog = getDialog({ onCancel: jest.fn() })!;
 
-    //     const escEvent = createKeyDownEvent();
-    //     const otherEvent = createKeyDownEvent('q');
+      const otherEvent = createKeyDownEvent('q');
+      const escEvent_ = createEvent.keyDown(dialog, {
+        key: 'Escape'
+      });
+      escEvent_.stopPropagation = jest.fn();
+      fireEvent(dialog, escEvent_);
+      fireEvent.keyDown(dialog, otherEvent);
 
-    //     fireEvent.keyDown(dialog, escEvent);
-    //     fireEvent.keyDown(dialog, otherEvent);
-
-    //     expect(escEvent.stopPropagation).toHaveBeenCalled();
-    //     expect(escEvent.nativeEvent.stopImmediatePropagation).toHaveBeenCalled();
-
-    //     expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
-    //     expect(otherEvent.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
-    //   });
+      expect(escEvent_.stopPropagation).toHaveBeenCalled();
+      expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
+    });
   });
 
-  // it('renders descendant tooltips attached to the backdrop rather than the document body', await function() {
-  //   userEvent.setup();
+  it('renders descendant tooltips attached to the backdrop rather than the document body', async function() {
+    userEvent.setup();
 
-  //   render(
-  //     <AbstractDialog onCancel={() => {}} isModal={true}>
-  //       <div>
-  //         <NxTooltip title="foo">
-  //           <NxButton data-testid="tooltip-button">Foo</NxButton>
-  //         </NxTooltip>
-  //       </div>
-  //     </AbstractDialog>
-  //   );
+    render(
+      <AbstractDialog onCancel={() => {}} isModal={true}>
+        <div>
+          <NxTooltip title="foo">
+            <NxButton data-testid="tooltip-button">Foo</NxButton>
+          </NxTooltip>
+        </div>
+      </AbstractDialog>
+    );
 
-  //   const dialog = screen.getByRole('dialog', { hidden: true });
-  //   const tooltipButton = screen.getByRole('button', { name: 'Foo', hidden: true });
+    const tooltipButton = screen.getByRole('button', { name: 'Foo', hidden: true });
 
-  //   await userEvent.hover(tooltipButton);
-  //   expect(within(dialog).getByRole('tooltip', { hidden: true })).toBeInTheDocument();
-  //   await userEvent.unhover(tooltipButton);
-  //   expect(within(dialog).queryByRole('tooltip', { hidden: true })).not.toBeInTheDocument();
-  // });
+    await userEvent.hover(tooltipButton);
+    const tooltip = await screen.findByRole('tooltip', { hidden: true });
+    expect(tooltip).toBeInTheDocument();
+    await userEvent.unhover(tooltipButton);
+    await waitFor(() => {
+      expect(screen.queryByRole('tooltip', { hidden: true })).not.toBeInTheDocument();
+    });
+  });
 
   it('moves focus back to the previously focused element when closed', async function(done) {
     function Fixture() {
