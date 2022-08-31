@@ -143,6 +143,9 @@ import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSide
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
 import NxStatefulFormPage from './components/NxStatefulForm/NxStatefulFormPage';
+import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
+import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
+import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -198,6 +201,8 @@ const pageConfig: PageConfig = {
     'Date Input': { content: NxDateInputPage, type: 'react' },
     'Stateful Date Input': { content: NxStatefulDateInputPage, type: 'react' },
     'Fieldset': { content: NxFieldsetPage, type: 'react' },
+    'File Upload': { content: NxFileUploadPage, type: 'react' },
+    'Stateful File Upload': { content: NxStatefulFileUploadPage, type: 'react' },
     'Filter Input': { content: NxFilterInputPage, type: 'react' },
     'Form': { content: NxFormPage, type: 'react' },
     'Stateful Form': { content: NxStatefulFormPage, type: 'react' },
@@ -222,6 +227,7 @@ const pageConfig: PageConfig = {
   'Data Presentation': {
     'Binary Donut Chart': { content: NxBinaryDonutChartPage, type: 'react' },
     'Collapsible Items': { content: NxCollapsibleItemsPage, type: 'react' },
+    'Description List': { content: NxDescriptionListPage, type: 'react' },
     'List': { content: NxListPageV2, type: 'react' },
     'Table': { content: NxTablePage, type: 'react' },
     'Table Container': { content: NxTableContainerPage, type: 'html' },

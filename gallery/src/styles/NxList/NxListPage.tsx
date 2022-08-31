@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxInfoAlert, NxTable, NxP, NxCode, NxTile, NxH3, NxList } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxTable, NxP, NxCode, NxTile, NxH3, NxList, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -172,6 +172,8 @@ const NxListPage = () =>
           In addition to ordered and unordered lists, <NxCode>nx-list</NxCode> also supports the
           styling of description lists using the following classes. Terms and descriptions are laid out side-by-side
           in rows. Currently only one description per term, and one term per description, are supported – not multiple.
+          For more details see
+          the <NxTextLink href="#/pages/Description List">Description List React component page.</NxTextLink>
         </NxP>
         <NxTable>
           <NxTable.Head>

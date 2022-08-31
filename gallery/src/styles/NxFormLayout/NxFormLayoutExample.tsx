@@ -28,7 +28,8 @@ import {
   NxTextInput,
   hasValidationErrors,
   combineValidationErrors,
-  nxFieldsetStateHelpers
+  nxFieldsetStateHelpers,
+  NxFileUpload
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -86,12 +87,20 @@ export default function NxFormLayoutExample() {
       [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
       [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState('');
 
+  const [files, setFiles] = useState<FileList | null>(null),
+      [isFilePristine, setFilePristine] = useState(true),
+      onFileChange = (files: FileList | null) => {
+        setFiles(files);
+        setFilePristine(false);
+      };
+
   const formValidationErrors =
       hasValidationErrors(combineValidationErrors(
           textInputState.validationErrors,
           colorValidationError,
           selectState.validationErrors,
-          tagColorValidationError
+          tagColorValidationError,
+          !files?.length && ! isFilePristine ? 'A file is required' : null
       )) ? 'Required fields are missing' : null;
 
   function onSubmit() {
@@ -198,6 +207,9 @@ export default function NxFormLayoutExample() {
                         onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
                         onChange={setSelectedTransferItems} />
       </NxFieldset>
+      <NxFormGroup label="Upload a File" sublabel={<>Foo<br/>Bar</>} isRequired>
+        <NxFileUpload files={files} isRequired isPristine={isFilePristine} onChange={onFileChange} />
+      </NxFormGroup>
       <NxReadOnly>
         <NxReadOnly.Label>
           This is a read only label that that describes the data that will appear below

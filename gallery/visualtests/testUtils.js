@@ -75,6 +75,10 @@ module.exports = {
       return await element.evaluate(e => e === document.activeElement);
     }
 
+    async function isInDocument(el) {
+      return el.evaluate(e => e.isConnected);
+    }
+
     async function waitForSelectors(...selectors) {
       return Promise.all(selectors.map(s => page.waitForSelector(s)));
     }
@@ -166,6 +170,7 @@ module.exports = {
 
       blurElement,
       isFocused,
+      isInDocument,
       moveMouseAway,
       dismissResultingDialog,
       disableLoadingSpinnerAnimation,
