@@ -62,7 +62,7 @@ describe('NxCombobox', function() {
   it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true',
       async function() {
         const onChange = jest.fn(),
-            { getByRole } = quickRender({
+            { getByRole, rerender } = quickRender({
               autoComplete: true,
               matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
               onChange
@@ -71,6 +71,11 @@ describe('NxCombobox', function() {
 
         inputElement.focus();
         await userEvent.type(inputElement, 'f');
+        rerender(
+          <NxCombobox { ...minimalProps }
+                      autoComplete={true}
+                      matches={ [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }
+                      onChange={onChange}/>);
         expect(onChange).toBeCalledWith('Foo');
       });
 
@@ -110,10 +115,9 @@ describe('NxCombobox', function() {
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
-    expect(onSearch).not.toHaveBeenCalled();
-    await userEvent.type(inputElement, ' ');
-    expect(onSearch).not.toHaveBeenCalled();
-    await userEvent.type(inputElement, 'f');
+    inputElement.focus();
+    await userEvent.type(inputElement, ' f');
+    expect(onSearch).toBeCalledTimes(1);
     expect(onSearch).toHaveBeenCalledWith('foof');
   });
 
