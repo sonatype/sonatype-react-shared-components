@@ -92,13 +92,15 @@ describe('NxCombobox', function() {
         expect(dropdownElement).toHaveAttribute('aria-hidden', 'false');
       });
 
-  it('sets an accessible description on the combobox', async function() {
-    const inputElement = quickRender().getByRole('combobox');
+  it('sets alert message as the accessible description of the combobox when there is an alert',
+      async function() {
+        const inputElement = quickRender({ emptyMessage: 'Sorry! No Results Found' }).getByRole('combobox');
 
-    inputElement.focus();
-    await userEvent.type(inputElement, 'f');
-    expect(inputElement).toHaveAccessibleDescription();
-  });
+        inputElement.focus();
+        expect(inputElement).not.toHaveAccessibleDescription();
+        await userEvent.type(inputElement, 'f');
+        expect(inputElement).toHaveAccessibleDescription('Sorry! No Results Found');
+      });
 
   it('calls onChange whenver the input\'s onChange event fires', async function() {
     const onChange = jest.fn(),
