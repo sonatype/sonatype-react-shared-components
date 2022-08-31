@@ -23,7 +23,7 @@ describe('NxColorPicker', function() {
       colorSelector = `${selector} .nx-color-picker__color:first-of-type`;
 
   it('looks right', simpleTest(selector));
-  it('looks right with a hovered color', hoverTest(selector, colorSelector));
+  it('looks right with a hovered color and shows a tooltip', hoverTest(selector, colorSelector, true));
   it('looks right with a focused color', focusTest(selector, colorSelector));
   it('looks right with a hovered and focused color', focusAndHoverTest(selector, colorSelector));
 
