@@ -40,8 +40,8 @@ const { useCheckboxGroupState } = nxFieldsetStateHelpers;
 const transferListItems = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 
 export default function NxFormLayoutExample() {
-  function validator(val: string) {
-    return val.length ? null : 'Must be non-empty';
+  function validator(val: string | null) {
+    return val?.length ? null : 'Must be non-empty';
   }
 
   const [textInputState, setTextInputState] = useState(nxTextInputStateHelpers.initialState('', validator)),
@@ -80,8 +80,7 @@ export default function NxFormLayoutExample() {
       [isKrakenOut, toggleKraken] = useToggle(false),
       [isShapes, toggleShapes] = useToggle(false);
 
-  const [tagColor, setTagColor] = useState<SelectableColor | null>(null),
-      tagColorValidationError = tagColor === null ? 'A tag color is required' : null;
+  const [tagColorState, setTagColor] = nxFieldsetStateHelpers.useRadioGroupState<SelectableColor>(undefined, validator);
 
   const [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
       [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
@@ -99,8 +98,8 @@ export default function NxFormLayoutExample() {
           textInputState.validationErrors,
           colorValidationError,
           selectState.validationErrors,
-          tagColorValidationError,
-          !files?.length && ! isFilePristine ? 'A file is required' : null
+          tagColorState.validationErrors,
+          !files?.length && !isFilePristine ? 'A file is required' : null
       )) ? 'Required fields are missing' : null;
 
   function onSubmit() {
@@ -197,7 +196,7 @@ export default function NxFormLayoutExample() {
                      placeholder="placeholder"
                      onChange={onCommentChange} />
       </NxFormGroup>
-      <NxColorPicker label="Tag Color" isRequired value={tagColor} onChange={setTagColor} />
+      <NxColorPicker label="Tag Color" isRequired { ...tagColorState } onChange={setTagColor} />
       <NxFieldset label="Numbered Items">
         <NxTransferList allItems={transferListItems}
                         selectedItems={selectedTransferItems}
