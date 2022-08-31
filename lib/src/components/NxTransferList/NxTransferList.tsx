@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import classnames from 'classnames';
-import { chain, groupBy, reject, without } from 'ramda';
+import { chain, groupBy, indexOf, reject, without } from 'ramda';
 
 import { Props, propTypes } from './types';
 import NxTransferListHalf from '../NxTransferListHalf/NxTransferListHalf';
@@ -44,14 +44,34 @@ export default function NxTransferList<T extends string | number = string>(props
     throw new TypeError('selectedItems must be an array if allowReordering is true');
   }
 
-  const selectedItemsArray = Array.from(selectedItems);
-  const selectedItemsSet = selectedItems instanceof Set ? selectedItems as Set<T> : new Set(selectedItemsArray);
+  const selectedItemsArray = useMemo(
+      () => selectedItems instanceof Array ? selectedItems : Array.from(selectedItems),
+      [selectedItems]
+  );
+
+  /*
+   * Performance Hack: We need the memoized functions below (especially onChange and onReorderItem) to
+   * remain stable as the selectedItems changes. This is because those functions get passed down into every
+   * individual TransferListItem and we don't want them all to rerender every time a selection is made.
+   * So to prevent those useCallbacks from having a dependency on selectedItemsArray, we additionally store the
+   * selected items array in a ref which the handler functions can access without declaring it a dependency.
+   * The ref must be kept in sync with selectedItemsArray manually.
+   */
+  const selectedItemsArrayRef = useRef(selectedItemsArray);
+  useEffect(function() {
+    selectedItemsArrayRef.current = selectedItemsArray;
+  }, [selectedItemsArray]);
+
+  const getSelectedItemsArray = () => selectedItemsArrayRef.current;
 
   const availableItemsCountFormatter = availableItemsCountFormatterProp || defaultAvailableItemsCountFormatter,
       selectedItemsCountFormatter = selectedItemsCountFormatterProp || defaultSelectedItemsCountFormatter;
 
-  const groupedItems = useMemo(() => {
-        const allItemsIdToItemLookUp = groupBy(item => item.id.toString(), allItems);
+  const { available = [], selected = [] } = useMemo(
+      () => {
+        const allItemsIdToItemLookUp = groupBy(item => item.id.toString(), allItems),
+            selectedItemsSet = selectedItems instanceof Set ? selectedItems as Set<T> : new Set(selectedItems);
+
         return allowReordering
           ? {
             available: reject((item: DataItem<T>) => selectedItemsSet.has(item.id), allItems),
@@ -60,39 +80,43 @@ export default function NxTransferList<T extends string | number = string>(props
           : groupBy(item => selectedItemsSet.has(item.id) ? 'selected' : 'available', allItems);
       },
       [allItems, selectedItems, allowReordering]
-      ),
-      available = groupedItems.available || [],
-      selected = groupedItems.selected || [];
+  );
 
-  const availableCount = allItems.length - selectedItemsArray.length,
-      selectedCount = selectedItemsArray.length;
+  const selectedCount = selectedItemsArray.length,
+      availableCount = allItems.length - selectedCount;
 
-  const handleOnChangeProp = (array: T[]) => {
+  const handleOnChangeProp = useCallback((array: T[]) => {
     if (allowReordering) {
       (onChangeProp as (newSelected: T[]) => void)(array);
     }
     else {
       (onChangeProp as (newSelected: Set<T>) => void)(new Set(array));
     }
-  };
+  }, [allowReordering, onChangeProp]);
 
-  function onChange(checked: boolean, id: T) {
-    const newSelectedItemsArray = checked
-      ? [...selectedItemsArray, id]
-      : without([id], selectedItemsArray);
+  const onChange = useCallback(function onChange(checked: boolean, id: T) {
+    const selectedItemsArray = getSelectedItemsArray(),
+        newSelectedItemsArray = checked
+          ? [...selectedItemsArray, id]
+          : without([id], selectedItemsArray);
 
     handleOnChangeProp(newSelectedItemsArray);
-  }
+  }, [handleOnChangeProp]);
 
-  function onSelectAll(idsToAdd: T[]) {
+  const onSelectAll = useCallback(function onSelectAll(idsToAdd: T[]) {
+    const selectedItemsArray = getSelectedItemsArray();
+
     handleOnChangeProp([...selectedItemsArray, ...idsToAdd]);
-  }
+  }, [handleOnChangeProp]);
 
-  function onUnselectAll(idsToRemove: T[]) {
-    handleOnChangeProp(without(idsToRemove, selectedItemsArray));
-  }
+  const onUnselectAll = useCallback(function onUnselectAll(idsToRemove: T[]) {
+    handleOnChangeProp(without(idsToRemove, getSelectedItemsArray()));
+  }, [handleOnChangeProp]);
 
-  function onReorderItem(index: number, direction: -1 | 1) {
+  const onReorderItem = useCallback(function onReorderItem(id: T, direction: -1 | 1) {
+    const selectedItemsArray = getSelectedItemsArray(),
+        index = indexOf(id, selectedItemsArray);
+
     if (typeof selectedItemsArray[index + direction] === 'undefined') {
       return;
     }
@@ -102,7 +126,7 @@ export default function NxTransferList<T extends string | number = string>(props
     newSelectedItems[index + direction] = selectedItemsArray[index];
 
     handleOnChangeProp(newSelectedItems);
-  }
+  }, [handleOnChangeProp]);
 
   return (
     <div className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>

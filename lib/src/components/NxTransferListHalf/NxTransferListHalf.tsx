@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, useMemo } from 'react';
+import React, { FormEvent, memo, useMemo } from 'react';
 import { filter, includes, map, partial, pipe, prop, toLower } from 'ramda';
 import { faPlusCircle, faTimesCircle, faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
@@ -23,7 +23,7 @@ import './NxTransferListHalf.scss';
 
 export { Props };
 
-function TransferListItem<T extends string | number = string>(props: TransferListItemProps<T>) {
+function _TransferListItem<T extends string | number = string>(props: TransferListItemProps<T>) {
   const {
     showReorderingButtons,
     checked,
@@ -32,17 +32,14 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
     displayName,
     onChange: onChangeProp,
     onReorderItem,
-    index,
-    listLength
+    isTopItem,
+    isBottomItem
   } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     // NOTE: the `checked` property on the DOM node will have the new value, not the old
     onChangeProp(evt.currentTarget.checked, id);
   }
-
-  const isTopItem = index === 0;
-  const isBottomItem = index === (listLength - 1);
 
   const classes = classnames(
       'nx-transfer-list__item',
@@ -72,14 +69,14 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
                       variant="icon-only"
                       title={moveUpButtonTitle}
                       className={moveUpDisabled ? 'disabled' : ''}
-                      onClick={() => !moveUpDisabled && onReorderItem && onReorderItem(index, -1)}>
+                      onClick={() => !moveUpDisabled && onReorderItem && onReorderItem(id, -1)}>
               <NxFontAwesomeIcon icon={faArrowUp}/>
             </NxButton>
             <NxButton type="button"
                       variant="icon-only"
                       title={moveDownButtonTitle}
                       className={moveDownDisabled ? 'disabled' : ''}
-                      onClick={() => !moveDownDisabled && onReorderItem && onReorderItem(index, 1)}>
+                      onClick={() => !moveDownDisabled && onReorderItem && onReorderItem(id, 1)}>
               <NxFontAwesomeIcon icon={faArrowDown}/>
             </NxButton>
           </div>
@@ -88,6 +85,8 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
     </div>
   );
 }
+
+const TransferListItem = memo(_TransferListItem) as typeof _TransferListItem;
 
 /*
  * Used by NxTransferList and NxSearchTransferList, but also available on its own for more flexibility
@@ -143,8 +142,8 @@ export default function NxTransferListHalf<T extends string | number = string>(p
                                                  checked={isSelected}
                                                  onChange={onItemChange}
                                                  onReorderItem={onReorderItem}
-                                                 index={index}
-                                                 listLength={visibleItems.length}
+                                                 isTopItem={index === 0}
+                                                 isBottomItem={index === visibleItems.length - 1}
                                                  { ...i } />)
           }
         </div>
