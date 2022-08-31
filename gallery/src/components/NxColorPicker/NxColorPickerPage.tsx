@@ -144,11 +144,15 @@ const NxColorPickerPage = () =>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Example" liveExample={NxColorPickerExample} codeExamples={NxColorPickerExampleCode}>
+    <GalleryExampleTile title="Example"
+                        id="nx-color-picker-example"
+                        liveExample={NxColorPickerExample}
+                        codeExamples={NxColorPickerExampleCode}>
       An example of an <NxCode>NxColorPicker</NxCode>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Required Example"
+                        id="nx-color-picker-required-example"
                         liveExample={NxColorPickerRequiredExample}
                         codeExamples={NxColorPickerRequiredExampleCode}>
       An example of an <NxCode>NxColorPicker</NxCode> that is required. In addition to the color picker itself, this
