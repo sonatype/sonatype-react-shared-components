@@ -36,7 +36,6 @@ export default function NxComboboxPredeterminedListExample() {
 
   function onChange(query: string) {
     setQuery(query);
-    setMatches(search(query));
   }
 
   function onSearch(query: string) {

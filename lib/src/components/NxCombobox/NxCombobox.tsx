@@ -53,7 +53,7 @@ function NxComboboxRender<T extends string | number = string>(
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       [prevSearchText, setPrevSearchText] = useState(''),
       [showDropdown, setShowDropdown] = useState(false),
-      [inlineStyle, setInlineStyle] = useState(true),
+      [inlineStyle, setInlineStyle] = useState(false),
 
       inputId = useUniqueId('nx-combobox-input', id),
       alertDropdownId = useUniqueId('nx-combobox-alert-dropdown'),
@@ -123,8 +123,8 @@ function NxComboboxRender<T extends string | number = string>(
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
             elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null,
             elToFocusText = !isEmpty ? matches[newFocusableBtnIndex].displayName : null;
-        if (elToFocus) {
 
+        if (elToFocus) {
           setFocusableBtnIndex(newFocusableBtnIndex);
           elToFocus.scrollIntoView({ block: 'nearest' });
 
@@ -235,7 +235,7 @@ function NxComboboxRender<T extends string | number = string>(
   useEffect(function() {
     if (prevSearchText && autoComplete && showDropdown && inlineStyle) {
       inputRef.current?.querySelector('input')?.setSelectionRange(prevSearchText.length, value.length);
-      focusFirst();
+      setFocusableBtnIndex(0);
     }
   }, [prevSearchText]);
 
