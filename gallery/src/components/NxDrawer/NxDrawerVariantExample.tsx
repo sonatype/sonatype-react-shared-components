@@ -73,7 +73,7 @@ export default function NxDrawerVariantExample() {
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
       </header>
       {showNarrowDrawer && (
-        <NxDrawer id="nx-drawer-variant-header-narrow"
+        <NxDrawer id="nx-drawer-variant-narrow"
                   variant="narrow"
                   onCancel={() => toggleNarrowDrawer()}
                   aria-labelledby="narrow-drawer-title">
@@ -86,7 +86,7 @@ export default function NxDrawerVariantExample() {
         </NxDrawer>
       )}
       {showNormalDrawer && (
-      <NxDrawer id="nx-drawer-variant-header-normal"
+      <NxDrawer id="nx-drawer-variant-normal"
                 onCancel={() => toggleNormalDrawer()}
                 aria-labelledby="normal-drawer-title">
         <NxDrawer.Header>

@@ -7,82 +7,146 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxDrawer', function() {
-  const {
-    waitAndGetElements,
-    checkScreenshot,
-    getPage,
-    a11yTest,
-    wait
-  } = setupBrowser('#/pages/Drawer');
-
-  async function openDrawer(drawerId, buttonId) {
+  const viewportSize = { width: 1366, height: 1000 };
+  const openDrawerFromPage = (waitAndGetElements, wait) => async (drawerId, buttonId) => {
     const openDrawerBtnSelector = `#${buttonId}`;
 
     const [openDrawerBtn] = await waitAndGetElements(openDrawerBtnSelector);
 
     await openDrawerBtn.click();
 
+    await waitAndGetElements(`#${drawerId}`);
+
     await wait(200);
+  };
 
-    const [drawer] = await waitAndGetElements(`#${drawerId}`);
+  describe('NxDrawer with Title, Footer, and non-overflowing content', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements, wait } =
+      setupBrowser('#/NxDrawerExample', false);
 
-    return drawer;
-  }
+    const drawerId = 'nx-drawer-with-footer';
+    const openButtonId = 'nx-drawer-with-footer-open-button';
 
-  function simpleDrawerTest(drawerId, buttonId) {
-    return async function() {
-      const drawer = await openDrawer(drawerId, buttonId);
+    const openDrawer = openDrawerFromPage(waitAndGetElements, wait);
 
-      await checkScreenshot(drawer);
-    };
-  }
+    it('looks right', async function() {
+      await getPage().setViewport(viewportSize);
+      await openDrawer(drawerId, openButtonId);
+      await checkFullPageScreenshot();
+    });
 
-  function drawerA11yTest(drawerId, buttonId) {
-    return async function() {
-      await openDrawer(drawerId, buttonId);
+    it('passes a11y', async function() {
+      await getPage().setViewport(viewportSize);
+      await openDrawer(drawerId, openButtonId);
       await a11yTest();
-    };
-  }
-
-  beforeEach(async function() {
-    await getPage().setViewport({ width: 1366, height: 1000 });
+    });
   });
 
-  describe('Simple NxDrawer', function() {
-    it('looks right', simpleDrawerTest('nx-drawer-simple', 'nx-drawer-simple-open-button'));
+  describe('NxDrawer With Subtitle Or Description Example', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements, wait } =
+      setupBrowser('#/NxDrawerWithSubtitleOrDescriptionExample', false);
 
-    it('passes a11y checks', drawerA11yTest('nx-drawer-simple', 'nx-drawer-simple-open-button'));
+    const openDrawer = openDrawerFromPage(waitAndGetElements, wait);
+
+    describe('with Subtitle', function() {
+      const drawerId = 'nx-drawer-with-subtitle';
+      const openButtonId = 'nx-drawer-with-subtitle-open-button';
+
+      it('looks right', async function() {
+        await getPage().setViewport(viewportSize);
+        await openDrawer(drawerId, openButtonId);
+        await checkFullPageScreenshot();
+      });
+
+      it('passes a11y', async function() {
+        await getPage().setViewport(viewportSize);
+        await openDrawer(drawerId, openButtonId);
+        await a11yTest();
+      });
+    });
+
+    describe('with Description', function() {
+      const drawerId = 'nx-drawer-with-description';
+      const openButtonId = 'nx-drawer-with-description-open-button';
+
+      it('looks right', async function() {
+        await getPage().setViewport(viewportSize);
+        await openDrawer(drawerId, openButtonId);
+        await checkFullPageScreenshot();
+      });
+
+      it('passes a11y', async function() {
+        await getPage().setViewport(viewportSize);
+        await openDrawer(drawerId, openButtonId);
+        await a11yTest();
+      });
+    });
+
+    describe('with Both', function() {
+      const drawerId = 'nx-drawer-with-subtitle-and-description';
+      const openButtonId = 'nx-drawer-with-subtitle-and-description-open-button';
+
+      it('looks right', async function() {
+        await getPage().setViewport(viewportSize);
+        await openDrawer(drawerId, openButtonId);
+        await checkFullPageScreenshot();
+      });
+
+      it('passes a11y', async function() {
+        await getPage().setViewport(viewportSize);
+        await openDrawer(drawerId, openButtonId);
+        await a11yTest();
+      });
+    });
   });
 
-  describe('Narrow NxDrawer', function() {
-    it('looks right', simpleDrawerTest('nx-drawer-narrow', 'nx-drawer-narrow-open-button'));
+  describe('NxDrawer with Narrow Variant', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements, wait } =
+      setupBrowser('#/NxDrawerVariantExample', false);
+
+    const drawerId = 'nx-drawer-variant-narrow';
+    const openButtonId = 'nx-drawer-variant-narrow-open-button';
+
+    const openDrawer = openDrawerFromPage(waitAndGetElements, wait);
+
+    it('looks right', async function() {
+      await getPage().setViewport(viewportSize);
+      await openDrawer(drawerId, openButtonId);
+      await checkFullPageScreenshot();
+    });
+
+    it('passes a11y', async function() {
+      await getPage().setViewport(viewportSize);
+      await openDrawer(drawerId, openButtonId);
+      await a11yTest();
+    });
   });
 
-  describe('NxDrawer With Footer', function() {
-    it('looks right', simpleDrawerTest('nx-drawer-with-footer', 'nx-drawer-with-footer-open-button'));
-  });
+  describe('NxDrawer with Overflowing Form', function() {
+    const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements, wait } =
+      setupBrowser('#/NxDrawerWithNxFormExample', false);
 
-  describe('NxDrawer With Subtitle', function() {
-    it('looks right', simpleDrawerTest('nx-drawer-with-subtitle', 'nx-drawer-with-subtitle-open-button'));
-  });
+    const drawerId = 'nx-drawer-with-nx-form-overflowing';
+    const openButtonId = 'nx-drawer-with-nx-form-overflowing-open-button';
 
-  describe('NxDrawer With Description', function() {
-    it('looks right', simpleDrawerTest('nx-drawer-with-description', 'nx-drawer-with-description-open-button'));
-  });
+    const openDrawer = openDrawerFromPage(waitAndGetElements, wait);
 
-  describe('NxDrawer With Subtitle and Description', function() {
-    it('looks right', simpleDrawerTest('nx-drawer-with-subtitle-and-description',
-        'nx-drawer-with-subtitle-and-description-open-button'));
+    it('looks right', async function() {
+      await getPage().setViewport(viewportSize);
+      await openDrawer(drawerId, openButtonId);
+      await checkFullPageScreenshot();
+    });
+
+    it('passes a11y', async function() {
+      await getPage().setViewport(viewportSize);
+      await openDrawer(drawerId, openButtonId);
+      await a11yTest();
+    });
   });
 
   describe('NxDrawer + NxDropdown ESC Closing Behavior', function() {
-    async function isFocused(el) {
-      return el.evaluate(e => e === document.activeElement);
-    }
-
-    async function isInDocument(el) {
-      return el.evaluate(e => e.isConnected);
-    }
+    const { getPage, isFocused, isInDocument, waitAndGetElements, wait } =
+      setupBrowser('#/NxDrawerEscExample', false);
 
     async function pressEsc() {
       const { keyboard } = getPage();
@@ -103,6 +167,7 @@ describe('NxDrawer', function() {
       );
 
       expect(await isInDocument(drawer)).toBe(true);
+
       expect(await isInDocument(dropdownToggle)).toBe(true);
 
       await dropdownToggle.click();
@@ -113,7 +178,11 @@ describe('NxDrawer', function() {
 
       await pressEsc();
 
+      expect(await isInDocument(drawer)).toBe(true);
+
       expect(await isInDocument(dropdownMenu)).toBe(false);
+
+      expect(await isFocused(dropdownToggle)).toBe(true);
 
       await pressEsc();
 
@@ -122,47 +191,6 @@ describe('NxDrawer', function() {
       expect(await isInDocument(drawer)).toBe(false);
 
       expect(await isFocused(openButton)).toBe(true);
-    });
-  });
-
-  describe('NxDrawer With Global Header', function() {
-    const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements, wait } =
-      setupBrowser('#/NxDrawerWithGlobalHeaderExample', false);
-
-    async function openDrawer(drawerId, buttonId) {
-      const openDrawerBtnSelector = `#${buttonId}`;
-
-      const [openDrawerBtn] = await waitAndGetElements(openDrawerBtnSelector);
-
-      await openDrawerBtn.click();
-
-      await waitAndGetElements(`#${drawerId}`);
-
-      await wait(200);
-    }
-
-    it('looks right (narrow)', async function() {
-      await getPage().setViewport({ width: 1366, height: 1000 });
-      await openDrawer('nx-drawer-with-global-header-narrow', 'nx-drawer-with-global-header-narrow-open-button');
-      await checkFullPageScreenshot();
-    });
-
-    it('looks right (normal)', async function() {
-      await getPage().setViewport({ width: 1366, height: 1000 });
-      await openDrawer('nx-drawer-with-global-header-normal', 'nx-drawer-with-global-header-normal-open-button');
-      await checkFullPageScreenshot();
-    });
-
-    it('passes a11y (narrow)', async function() {
-      await getPage().setViewport({ width: 1366, height: 1000 });
-      await openDrawer('nx-drawer-with-global-header-narrow', 'nx-drawer-with-global-header-narrow-open-button');
-      await a11yTest();
-    });
-
-    it('passes a11y (normal)', async function() {
-      await getPage().setViewport({ width: 1366, height: 1000 });
-      await openDrawer('nx-drawer-with-global-header-normal', 'nx-drawer-with-global-header-normal-open-button');
-      await a11yTest();
     });
   });
 });
