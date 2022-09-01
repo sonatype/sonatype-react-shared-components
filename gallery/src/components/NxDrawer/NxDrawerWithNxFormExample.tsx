@@ -138,7 +138,7 @@ export default function NxDrawerWithNxFormExample() {
               </NxToggle>
             </NxFieldset>
             <NxFormGroup label="Username" isRequired>
-              <NxTextInput aria-required={true}
+              <NxTextInput
                            placeholder="Username"
                            onChange={onUsernameChange}
                            { ...usernameState } />
