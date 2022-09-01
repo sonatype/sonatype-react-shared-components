@@ -189,7 +189,7 @@ export default function NxDrawerPage() {
       <GalleryExampleTile title="NxDrawer With NxForm Example"
                           id="nx-drawer-with-nx-form"
                           codeExamples={NxDrawerWithNxFormSourceCode}>
-        An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxFrom</NxCode>. This example
+        An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxForm</NxCode>. This example
         also shows <NxCode>NxDrawer</NxCode> with overflowing form content.
         <br/>
         <br/>
