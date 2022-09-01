@@ -26,11 +26,6 @@ export default function NxDrawerVariantExample() {
 
   const contentAndFooter = (
     <>
-      <NxDrawer.Header>
-        <NxDrawer.Header.Title>Header Title</NxDrawer.Header.Title>
-        <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
-        <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
-      </NxDrawer.Header>
       <NxDrawer.Content>
         <NxP>
           Powder <strong>tiramisu</strong> gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa
@@ -86,14 +81,24 @@ export default function NxDrawerVariantExample() {
         <NxDrawer id="nx-drawer-variant-header-narrow"
                   variant="narrow"
                   onCancel={() => setShowNarrowDrawer(false)}
-                  aria-label="Narrow Drawer">
+                  aria-labelledby="narrow-drawer-title">
+          <NxDrawer.Header>
+            <NxDrawer.Header.Title id="narrow-drawer-title">Header Title</NxDrawer.Header.Title>
+            <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
+            <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
+          </NxDrawer.Header>
           {contentAndFooter}
         </NxDrawer>
       )}
       {showNormalDrawer && (
       <NxDrawer id="nx-drawer-variant-header-normal"
                 onCancel={() => setShowNormalDrawer(false)}
-                aria-label="Normal Drawer">
+                aria-labelledby="normal-drawer-title">
+        <NxDrawer.Header>
+          <NxDrawer.Header.Title id="narrow-drawer-title">Header Title</NxDrawer.Header.Title>
+          <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
+          <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
+        </NxDrawer.Header>
         {contentAndFooter}
       </NxDrawer>
       )}

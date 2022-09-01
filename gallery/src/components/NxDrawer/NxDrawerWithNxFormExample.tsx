@@ -44,9 +44,9 @@ export default function NxDrawerWithNxFormExample() {
       {showDrawer && (
         <NxDrawer id="nx-drawer-with-nx-form"
                   onCancel={() => setShowDrawer(false)}
-                  aria-label="Drawer with Form">
+                  aria-labelledby="drawer-with-form-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>An Example of A Drawer with Form</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="drawer-with-form-title">An Example of A Drawer with Form</NxDrawer.Header.Title>
             <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
             <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
           </NxDrawer.Header>
@@ -77,9 +77,9 @@ export default function NxDrawerWithNxFormExample() {
       {showDrawerOverflowing && (
       <NxDrawer id="nx-drawer-with-nx-form-overflowing"
                 onCancel={() => setShowDrawerOverflowing(false)}
-                aria-label="Drawer with Overflowing Form">
+                aria-labelledby="drawer-with-overflowing-form-title">
         <NxDrawer.Header>
-          <NxDrawer.Header.Title>Drawer With A Long Form</NxDrawer.Header.Title>
+          <NxDrawer.Header.Title id="drawer-with-overflowing-form-title">Drawer With A Long Form</NxDrawer.Header.Title>
           <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
           <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
         </NxDrawer.Header>

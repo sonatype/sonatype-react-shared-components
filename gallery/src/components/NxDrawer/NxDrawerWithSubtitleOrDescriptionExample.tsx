@@ -85,9 +85,9 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
       {showDrawerWithSubtitle && (
         <NxDrawer id="nx-drawer-with-subtitle"
                   onCancel={() => setShowDrawerWithSubtitle(false)}
-                  aria-label="Drawer with Subtitle">
+                  aria-labelledby="drawer-with-subtitle-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>Drawer With Subtitle</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="drawer-with-subtitle-title">Drawer With Subtitle</NxDrawer.Header.Title>
             <NxDrawer.Header.Subtitle>Subtitle</NxDrawer.Header.Subtitle>
           </NxDrawer.Header>
           {content}
@@ -96,9 +96,9 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
       {showDrawerWithDescription && (
         <NxDrawer id="nx-drawer-with-description"
                   onCancel={() => setShowDrawerWithDescription(false)}
-                  aria-label="Drawer with Description">
+                  aria-labelledby="drawer-with-description-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>Drawer With Description</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="drawer-with-description-title">Drawer With Description</NxDrawer.Header.Title>
             <NxDrawer.Header.Description>{description}</NxDrawer.Header.Description>
           </NxDrawer.Header>
           {content}
@@ -107,9 +107,9 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
       {showDrawerWithBoth && (
         <NxDrawer id="nx-drawer-with-subtitle-and-description"
                   onCancel={() => setShowDrawerWithBoth(false)}
-                  aria-label="Drawer with Subtitle and Description">
+                  aria-labelledby="drawer-with-both-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>Drawer With Both</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="drawer-with-both-title">Drawer With Both</NxDrawer.Header.Title>
             <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
             <NxDrawer.Header.Description>{description}</NxDrawer.Header.Description>
           </NxDrawer.Header>

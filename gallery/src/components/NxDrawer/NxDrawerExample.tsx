@@ -80,9 +80,9 @@ export default function NxDrawerExample() {
       {showDrawer && (
         <NxDrawer id="nx-drawer-simple"
                   onCancel={() => setShowDrawer(false)}
-                  aria-label="Simple Drawer">
+                  aria-labelledby="simple-drawer-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>A Simple Drawer</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="simple-drawer-title">A Simple Drawer</NxDrawer.Header.Title>
           </NxDrawer.Header>
           <NxDrawer.Content>
             <NxP>
@@ -95,11 +95,13 @@ export default function NxDrawerExample() {
         </NxDrawer>
       )}
       {showDrawerScroll && (
-        <NxDrawer id="nx-drawer-simple"
+        <NxDrawer id="nx-drawer-simple-with-scroll"
                   onCancel={() => setShowDrawerScroll(false)}
-                  aria-label="Simple Drawer with Scroll">
+                  aria-labelledby="simple-drawer-with-scroll-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>A Simple Drawer</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="simple-drawer-with-scroll-title">
+              A Simple Drawer
+            </NxDrawer.Header.Title>
           </NxDrawer.Header>
           {content}
         </NxDrawer>
@@ -107,9 +109,11 @@ export default function NxDrawerExample() {
       {showDrawerWithFooter && (
         <NxDrawer id="nx-drawer-with-footer"
                   onCancel={() => setShowDrawerWithFooter(false)}
-                  aria-label="Drawer with Footer">
+                  aria-labelledby="simple-drawer-with-footer-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>A Simple Drawer With Footer</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="simple-drawer-with-footer-title">
+              A Simple Drawer With Footer
+            </NxDrawer.Header.Title>
           </NxDrawer.Header>
           <NxDrawer.Content>
             <NxP>
@@ -133,9 +137,11 @@ export default function NxDrawerExample() {
       {showDrawerWithFooterScroll && (
         <NxDrawer id="nx-drawer-with-footer-scroll"
                   onCancel={() => setShowDrawerWithFooterScroll(false)}
-                  aria-label="Drawer with Footer and Scroll">
+                  aria-labelledby="simple-drawer-with-footer-scroll-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>A Simple Drawer With Footer</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="simple-drawer-with-footer-scroll-title">
+              A Simple Drawer With Footer
+            </NxDrawer.Header.Title>
           </NxDrawer.Header>
           {content}
           <NxFooter>
@@ -152,9 +158,11 @@ export default function NxDrawerExample() {
       {showDrawerTruncated && (
         <NxDrawer id="nx-drawer-simple-truncated"
                   onCancel={() => setShowDrawerTruncated(false)}
-                  aria-label="Simple Drawer with Truncated Title">
+                  aria-labelledby="truncated-drawer-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>A simple drawer with a very long title that is truncated</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="truncated-drawer-title">
+              A simple drawer with a very long title that is truncated
+            </NxDrawer.Header.Title>
           </NxDrawer.Header>
           <NxDrawer.Content>
             <NxP>

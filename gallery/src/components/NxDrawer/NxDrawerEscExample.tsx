@@ -38,9 +38,9 @@ export default function NxDrawerEscExample() {
       {showDrawer && (
         <NxDrawer id="nx-drawer-esc"
                   onCancel={() => setShowDrawer(false)}
-                  aria-label="Drawer with Escape Example">
+                  aria-labelledby="nx-drawer-with-esc-example-title">
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>Header Title</NxDrawer.Header.Title>
+            <NxDrawer.Header.Title id="nx-drawer-with-esc-example-title">Header Title</NxDrawer.Header.Title>
             <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
             <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
           </NxDrawer.Header>
