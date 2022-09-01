@@ -27,7 +27,7 @@ const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {}
 });
 
-const _NxDrawerHeader = (props: NxDrawerHeaderProps) => {
+const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
   const {
     className,
     children,
@@ -111,16 +111,13 @@ const _NxDrawer = (props: Props) => {
   );
 };
 
-const NxDrawerHeader = Object.assign(_NxDrawerHeader, {
-  Title: withClass('h2', 'nx-h2 nx-drawer-header__title'),
-  Subtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),
-  Description: withClass('p', 'nx-p nx-drawer-header__description')
-});
-
 const NxDrawer = Object.assign(_NxDrawer, {
   propTypes,
   Header: NxDrawerHeader,
-  Content: withClass('div', 'nx-drawer-content')
+  Content: withClass('div', 'nx-drawer-content'),
+  HeaderTitle: withClass('h2', 'nx-h2 nx-drawer-header__title'),
+  HeaderSubtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),
+  HeaderDescription: withClass('p', 'nx-p nx-drawer-header__description')
 });
 
 export default NxDrawer;

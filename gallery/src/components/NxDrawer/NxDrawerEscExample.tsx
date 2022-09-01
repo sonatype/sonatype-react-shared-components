@@ -39,11 +39,10 @@ export default function NxDrawerEscExample() {
         <NxDrawer id="nx-drawer-esc"
                   onCancel={() => setShowDrawer(false)}
                   aria-labelledby="nx-drawer-with-esc-example-title">
-          <NxDrawer.Header>
-            <NxDrawer.Header.Title id="nx-drawer-with-esc-example-title">Header Title</NxDrawer.Header.Title>
-            <NxDrawer.Header.Subtitle>Header Subtitle</NxDrawer.Header.Subtitle>
-            <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
-          </NxDrawer.Header>
+          <NxDrawer.Header>Header</NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="nx-drawer-with-esc-example-title">Header Title</NxDrawer.HeaderTitle>
+          <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
+          <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
           <NxDrawer.Content>
             <NxDropdown label="Expand" isOpen={dropdownIsOpen} onToggleCollapse={onToggleDropdownCollapse}>
               <button onClick={onClick} className="nx-dropdown-button">
