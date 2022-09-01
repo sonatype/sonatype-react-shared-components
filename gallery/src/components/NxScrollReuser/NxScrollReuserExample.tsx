@@ -13,7 +13,7 @@ export default function NxScrollReuserExample() {
   return (
     <NxScrollReuser>
       <NxList className="nx-scrollable">
-        { range(1, 100).map(i =>
+        { range(1, 100000).map(i =>
           <NxList.Item key={i}>
             <NxList.Text>{i}</NxList.Text>
           </NxList.Item>

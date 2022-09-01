@@ -9,4 +9,5 @@ import { ReactElement } from 'react';
 
 export interface Props {
   children: ReactElement;
+  reuseChildren?: boolean | null;
 }

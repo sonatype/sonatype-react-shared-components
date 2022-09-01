@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { ReactElement, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import useResizeObserver from '@react-hook/resize-observer';
 import { useThrottleCallback } from '@react-hook/throttle';
 
@@ -12,28 +12,38 @@ import { Props } from './types';
 import { clamp, dec, defaultTo, identity, inc } from 'ramda';
 
 // intended to wrap division operations that may result in NaN, returns zero instead in that case
-const divOrZero = defaultTo(0);
+const divOrZero = (x: number | null, y: number | null) => ((x ?? 0) / (y ?? 0)) ?? 0;
 
-export default function NxScrollReuser({ children }: Props) {
+export default function NxScrollReuser({ children, reuseChildren }: Props) {
   const fullParent = children,
-      allChildren = React.Children.toArray(fullParent.props.children),
-      childCount = allChildren.length,
 
       parentRef = useRef<HTMLElement>(null),
       leadingSpacerRef = useRef<HTMLDivElement>(null),
       trailingSpacerRef = useRef<HTMLDivElement>(null),
 
-      [parentHeight, setParentHeight] = useState(0),
-      [childHeight, setChildHeight] = useState(0),
+      [parentHeight, setParentHeight] = useState<number | null>(null),
+      [childHeight, setChildHeight] = useState<number | null>(null),
+      renderedChildCount = Math.ceil(divOrZero(parentHeight, childHeight)) + 2,
+      initializing = parentHeight <= childHeight,
+
+      cloneWithKey = (child: ReactElement, idx: number) => React.cloneElement(child, { key: idx % renderedChildCount }),
+      keyedChildren = useMemo(() =>
+        reuseChildren !== false && !initializing ?
+          // Cannot use React.Children.map because it mangles the keys
+          (React.Children.toArray(fullParent.props.children) as ReactElement[]).map(cloneWithKey) :
+          fullParent.props.children,
+      [fullParent.props.children, reuseChildren, renderedChildCount, initializing]
+      ),
+      childCount = keyedChildren.length,
+
       sumChildHeight = childHeight * childCount,
-      renderedChildCount = Math.ceil(divOrZero(parentHeight / childHeight)) + 2,
       renderedChildHeight = childHeight * renderedChildCount,
 
       [leadingSpacerHeight, setLeadingSpacerHeight] = useState(0),
       [trailingSpacerHeight, setTrailingSpacerHeight] = useState(0),
 
       [firstRenderedChildIdx, setFirstRenderedChildIdx] = useState(0),
-      renderedRealChildren = allChildren.slice(firstRenderedChildIdx, firstRenderedChildIdx + renderedChildCount);
+      renderedRealChildren = keyedChildren.slice(firstRenderedChildIdx, firstRenderedChildIdx + renderedChildCount);
 
   const renderedChildren = (
     <>
