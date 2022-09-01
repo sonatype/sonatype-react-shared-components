@@ -59,25 +59,24 @@ describe('NxCombobox', function() {
         expect(inputElement).toHaveAttribute('aria-autocomplete', 'both');
       });
 
-  it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true',
-      async function() {
-        const onChange = jest.fn(),
-            { getByRole, rerender } = quickRender({
-              autoComplete: true,
-              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
-              onChange
-            }),
-            inputElement = getByRole('combobox');
+  it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true' +
+    'and the `autoSelectedVal is passed down', async function() {
+    const { getByRole, rerender } = quickRender({
+          autoSelectedVal: '',
+          autoComplete: true,
+          matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }]
+        }),
+        inputElement = getByRole('combobox');
 
-        inputElement.focus();
-        await userEvent.type(inputElement, 'f');
-        rerender(
-          <NxCombobox { ...minimalProps }
-                      autoComplete={true}
-                      matches={ [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }
-                      onChange={onChange}/>);
-        expect(onChange).toBeCalledWith('Foo');
-      });
+    inputElement.focus();
+    await userEvent.type(inputElement, 'f');
+    rerender(
+      <NxCombobox { ...minimalProps }
+                  autoSelectedVal={'Foo'}
+                  autoComplete={true}
+                  matches={ [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }/>);
+    expect(inputElement).toHaveValue('Foo');
+  });
 
   it('sets aria-expanded on the input to true when the dropdown displayed which has aria-hidden set to false',
       async function() {
@@ -434,6 +433,17 @@ describe('NxCombobox', function() {
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'false');
       await userEvent.keyboard('[Escape]');
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'true');
+    });
+
+    it('sets the value to be backpaced text when backspace is pressed', async function() {
+      const onChange = jest.fn(),
+          { getByRole } = quickRender({ value: 'foo', onChange }),
+          inputElement = getByRole('combobox') as HTMLInputElement;
+
+      inputElement.focus();
+      inputElement.setSelectionRange(1, 2);
+      await userEvent.keyboard('[Delete]');
+      expect(onChange).toHaveBeenCalledWith('fo');
     });
 
     it('should clear input text if dropdown is close when Escape key is pressed', async function() {
