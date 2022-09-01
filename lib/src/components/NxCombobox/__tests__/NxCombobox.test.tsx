@@ -343,6 +343,7 @@ describe('NxCombobox', function() {
           expect(optionBtn).toHaveAttribute('aria-selected', 'true');
           await userEvent.keyboard('[Home]o');
           expect(onChange).toBeCalledWith('of');
+          expect(optionBtn).toHaveAttribute('aria-selected', 'false');
         });
 
     it('places the editing cursor at the end of the input field when End key is pressed with focus in dropdown',
@@ -357,6 +358,7 @@ describe('NxCombobox', function() {
           expect(optionBtn).toHaveAttribute('aria-selected', 'true');
           await userEvent.keyboard('[Home][End]o');
           expect(onChange).toBeCalledWith('fo');
+          expect(optionBtn).toHaveAttribute('aria-selected', 'false');
         });
 
     it('should open dropdown and move visual focus to the first option with aria-selected set to true' +
