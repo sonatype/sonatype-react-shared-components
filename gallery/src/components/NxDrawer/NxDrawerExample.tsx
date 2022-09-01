@@ -191,23 +191,23 @@ export default function NxDrawerExample() {
         </NxP>
         <NxP>
           <NxButton id="nx-drawer-simple-open-button" onClick={() => setShowDrawer(true)}>Open Simple Drawer</NxButton>
-          <br/>
-          <br/>
+        </NxP>
+        <NxP>
           <NxButton id="nx-drawer-simple-scroll-open-button" onClick={() => setShowDrawerScroll(true)}>
             Open Simple Drawer With Scroll
           </NxButton>
-          <br/>
-          <br/>
+        </NxP>
+        <NxP>
           <NxButton id="nx-drawer-with-footer-open-button" onClick={() => setShowDrawerWithFooter(true)}>
             Open Simple Drawer With Footer
           </NxButton>
-          <br/>
-          <br/>
+        </NxP>
+        <NxP>
           <NxButton id="nx-drawer-with-footer-scroll-open-button" onClick={() => setShowDrawerWithFooterScroll(true)}>
             Open Simple Drawer With Footer and Scroll
           </NxButton>
-          <br/>
-          <br/>
+        </NxP>
+        <NxP>
           <NxButton id="nx-drawer-truncated-open-button" onClick={() => setShowDrawerTruncated(true)}>
             Open Simple Drawer With Truncated Title
           </NxButton>

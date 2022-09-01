@@ -128,8 +128,8 @@ export default function NxDrawerWithNxFormExample() {
           <NxButton id="nx-drawer-with-nx-form-open-button" onClick={() => setShowDrawer(true)}>
             Open Drawer with Form
           </NxButton>
-          <br/>
-          <br/>
+        </NxP>
+        <NxP>
           <NxButton id="nx-drawer-with-nx-form-overflowing-open-button" onClick={() => setShowDrawerOverflowing(true)}>
             Open Drawer with Overflowing Form
           </NxButton>

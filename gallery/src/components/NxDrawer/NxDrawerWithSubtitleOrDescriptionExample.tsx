@@ -135,13 +135,13 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
           <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => setShowDrawerWithSubtitle(true)}>
             Open Drawer with Subtitle
           </NxButton>
-          <br/>
-          <br/>
+        </NxP>
+        <NxP>
           <NxButton id="nx-drawer-with-description-open-button" onClick={() => setShowDrawerWithDescription(true)}>
             Open Drawer with Description
           </NxButton>
-          <br/>
-          <br/>
+        </NxP>
+        <NxP>
           <NxButton id="nx-drawer-with-subtitle-and-description-open-button"
                     onClick={() => setShowDrawerWithBoth(true)}>
             Open Drawer with Both
