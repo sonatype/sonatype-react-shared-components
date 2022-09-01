@@ -167,7 +167,7 @@ export default function NxDrawerPage() {
       <GalleryExampleTile title="NxDrawer With Subtitle or Description Example"
                           id="nx-drawer-with-subtitle-or-description-example"
                           codeExamples={NxDrawerWithSubtitleOrDescriptionSourceCode}>
-        An example of a <NxCode>NxDrawer</NxCode> with subtitle or description in the header.
+        An example of an <NxCode>NxDrawer</NxCode> with subtitle or description in the header.
         <br/>
         <br/>
         <NxTextLink href="#/NxDrawerWithSubtitleOrDescriptionExample">
