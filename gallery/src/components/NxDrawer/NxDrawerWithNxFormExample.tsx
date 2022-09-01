@@ -86,7 +86,7 @@ export default function NxDrawerWithNxFormExample() {
             <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
           </NxDrawer.Header>
 
-          <NxForm className="nx-form"
+          <NxForm
                   onSubmit={() => setShowDrawer(false)}
                   onCancel={() => setShowDrawer(false)}>
             <NxDrawer.Content>
