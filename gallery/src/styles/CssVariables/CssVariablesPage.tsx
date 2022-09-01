@@ -184,12 +184,6 @@ const CssVariablesPage = () => {
               case downstream code wants to set the z-index of another element relative to it (e.g. to ensure that
               that other element always appears above, or always below, the drawer).
             </NxP>
-            <NxWarningAlert>
-              Note that in browsers with proper support for HTML <NxCode>&lt;dialog&gt;</NxCode> elements, the
-              modal will be rendered into the{' '}
-              <NxTextLink href="https://fullscreen.spec.whatwg.org/#top-layer" external>top layer</NxTextLink>
-              , making its z-index irrelevant.
-            </NxWarningAlert>
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-radius">
             The typical border-radius applied to RSC elements with rounded borders.
