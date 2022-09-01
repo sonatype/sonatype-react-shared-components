@@ -13,6 +13,10 @@
   overflow-wrap: anywhere;
   padding: 0;
 
+  // focused rows get a higher z-index; make a stacking context for them
+  position: relative;
+  z-index: 0;
+
   &, > ul, > ol {
     list-style: none;
   }
@@ -190,34 +194,38 @@
 
 .nx-list__item--link, .nx-list__item--clickable {
   display: contents;
+
+  > .nx-list__term, > .nx-list__description {
+    display: contents;
+  }
+
+  // only applies in description lists. In normal lists this element has display: contents set
+  &:focus-within {
+    box-shadow: var(--nx-box-shadow-focus);
+    border-color: var(--nx-color-interactive-border-focus);
+    outline: none;
+  }
 }
 
 .nx-list__item--clickable, // preferred
 .nx-list__item--link, // deprecated
 .nx-list--clickable .nx-list__item // deprecated
 {
-  &, > .nx-list__link, > .nx-list__btn {
-    color: inherit;
-
-    &.selected {
-      &, &:hover {
-        background-color: var(--nx-color-interactive-background-selected);
-      }
-    }
-
+  &, > .nx-list__term, > .nx-list__description, > .nx-list__link, > .nx-list__btn {
     &:hover {
       background-color: var(--nx-color-interactive-background-hover);
-      cursor: pointer;
     }
 
     &:active {
       background-color: var(--nx-color-interactive-background-active);
     }
 
-    &:focus {
+    &:focus, &:focus-within {
       box-shadow: var(--nx-box-shadow-focus);
       border-color: var(--nx-color-interactive-border-focus);
       outline: none;
+      position: relative;
+      z-index: 1;
     }
 
     &.nx-list__item--empty {
@@ -234,18 +242,29 @@
         cursor: default;
       }
 
-      > .nx-chevron {
+      .nx-chevron {
         display: none;
       }
     }
 
-    > .nx-chevron {
+    .nx-chevron {
       align-self: center;
       color: var(--nx-color-text-dark);
       grid-area: actions;
 
       // custom sizing for the icon, brings it up to 13px
       font-size: 21px;
+    }
+  }
+
+  &, .nx-list__link, .nx-list__btn {
+    color: inherit;
+    cursor: pointer;
+
+    &.selected {
+      &, &:hover {
+        background-color: var(--nx-color-interactive-background-selected);
+      }
     }
   }
 }
@@ -283,24 +302,61 @@
 
 .nx-list--description-list {
   .nx-list__item {
+    align-items: stretch;
     display: flex;
+    padding: 0;
   }
 
-  border-bottom: var(--nx-border-default);
+  .nx-list__item--clickable {
+    &:focus-within {
+      border-color: var(--nx-color-interactive-border-focus);
+      box-shadow: var(--nx-box-shadow-focus);
+
+      .nx-list__link, .nx-list__btn {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+  }
 }
 
 .nx-list__term {
-  flex: none;
-  font-weight: 600;
-  overflow-wrap: break-word;
-  width: 250px;
+  &, > .nx-list__link, > .nx-list__btn {
+    border: none;
+    box-sizing: border-box;
+
+    // for proper vertical alignment of text in buttons
+    display: flex;
+    flex: none;
+    font-weight: 600;
+    padding: var(--nx-spacing-4x) 0 var(--nx-padding-without-border) var(--nx-padding-without-border);
+    width: 250px;
+  }
 }
 
 .nx-list__description {
-  @include nx-container-helpers.container-vertical;
+  &, > .nx-list__link, > .nx-list__btn {
+    @include nx-container-helpers.container-vertical;
 
-  margin-left: var(--nx-spacing-6x);
-  max-width: var(--nx-width-text-wrapping);
+    flex: 1;
+    margin: 0;
+    padding: var(--nx-spacing-4x) var(--nx-padding-without-border)
+      var(--nx-padding-without-border) var(--nx-spacing-6x);
+  }
+
+  > .nx-list__link, > .nx-list__btn {
+    border: none;
+    display: grid;
+    grid-template: "list-text actions" / 1fr auto;
+
+    > .nx-list__text {
+      font-weight: normal;
+    }
+  }
+
+  .nx-list__text {
+    max-width: var(--nx-width-text-wrapping);
+  }
 }
 
 .nx-list--numbered {

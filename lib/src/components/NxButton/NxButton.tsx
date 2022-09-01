@@ -27,11 +27,12 @@ const NxButton = forwardRef<HTMLButtonElement, Props>(
             </button>
           ),
           wrapInTooltip = title && !disabled && !alreadyHasTooltip;
-
+      if (disabled && title) {
+        throw new TypeError('NxButton cannot contain both the \'disabled\' and \'title\' props.');
+      }
       if (variant === 'icon-only' && !title && !disabled) {
         console.warn('Using icon-only buttons without the title prop is deprecated');
       }
-
       return wrapInTooltip ? <NxTooltip title={title}>{getBtn()}</NxTooltip> : getBtn({ title });
     }
 );

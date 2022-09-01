@@ -15,7 +15,6 @@ const NxButtonIconOnlyExample = () =>
     <NxButton variant="icon-only" title="Edit"><NxFontAwesomeIcon icon={faEdit}/></NxButton>
     <NxButton variant="icon-only" title="Save"><NxFontAwesomeIcon icon={faSave}/></NxButton>
     <NxButton variant="icon-only" title="Delete" className="disabled"><NxFontAwesomeIcon icon={faTrashAlt}/></NxButton>
-    <NxButton variant="icon-only" title="Delete" disabled><NxFontAwesomeIcon icon={faTrashAlt}/></NxButton>
   </NxButtonBar>;
 
 export default NxButtonIconOnlyExample;
