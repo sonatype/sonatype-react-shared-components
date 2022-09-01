@@ -6,6 +6,7 @@
  */
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import useResizeObserver from '@react-hook/resize-observer';
+import { useThrottleCallback } from '@react-hook/throttle';
 
 import { Props } from './types';
 import { clamp, dec, defaultTo, identity, inc } from 'ramda';
@@ -65,7 +66,7 @@ export default function NxScrollReuser({ children }: Props) {
     </>
   );
 
-  const updateRendering = useCallback(function updateRendering() {
+  const updateRendering = useThrottleCallback(useCallback(function updateRendering() {
     const scrollTop = parentRef.current?.scrollTop ?? 0,
         parentTop = parentRef.current?.getBoundingClientRect().top,
         leadingSpacerTop = leadingSpacerRef.current?.getBoundingClientRect().top,
@@ -102,7 +103,7 @@ export default function NxScrollReuser({ children }: Props) {
     setFirstRenderedChildIdx(newFirstRenderedChildIdx);
     setLeadingSpacerHeight(newLeadingSpacerHeight);
     setTrailingSpacerHeight(newTrailingSpacerHeight);
-  }, [childCount, childHeight, renderedChildCount, renderedChildHeight, sumChildHeight]);
+  }, [childCount, childHeight, renderedChildCount, renderedChildHeight, sumChildHeight]), 15);
 
   const adjustedParent = React.cloneElement(fullParent, {
     ref: parentRef,
