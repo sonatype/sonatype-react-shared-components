@@ -44,7 +44,7 @@ export default function NxComboboxExample() {
         // set the autoSelectedVal to the displayName of the first match option.
         if (matches.length) {
           const firstOptVal = matches[0].displayName;
-          if(firstOptVal.toLocaleLowerCase().indexOf(query.toLowerCase()) === 0){
+          if (firstOptVal.toLocaleLowerCase().indexOf(query.toLowerCase()) === 0) {
             setAutoSelectedVal(firstOptVal);
           }
         }

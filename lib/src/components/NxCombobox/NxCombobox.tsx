@@ -180,7 +180,6 @@ function NxComboboxRender<T extends string | number = string>(
         // If backspace is pressed, the value of the input box becomes the backspaced text,
         // set the inlineStyle to false.
         if (autoComplete) {
-          // setFocusableBtnIndex(null);
           setInlineStyle(false);
         }
         break;

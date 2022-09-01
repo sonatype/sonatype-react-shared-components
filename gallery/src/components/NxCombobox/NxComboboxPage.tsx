@@ -92,8 +92,8 @@ const NxComboboxPage = () =>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Only required when <NxCode>autoComplete</NxCode> is true, this value will be passed down to the text
-                input and the portion of the selected suggestion that has not been typed by the user will be highlighted and
-                displayed inline after the input cursor in the input box.
+                input and the portion of the selected suggestion that has not been typed by the user will be highlighted
+                and displayed inline after the input cursor in the input box.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
