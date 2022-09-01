@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import { screen, render, fireEvent } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import NxToastContainer from '../NxToastContainer';
@@ -45,7 +45,7 @@ describe('NxToastContainer', function() {
     expect(alerts.length).toBe(3);
   });
 
-  it('sets focus to last toast when first toast is closed', async function() {
+  it('sets focus to last toast\'s close button when first toast is closed', async function() {
     const user = userEvent.setup();
     quickRender();
 
@@ -56,7 +56,7 @@ describe('NxToastContainer', function() {
     expect(closeBtns[2]).toHaveFocus();
   });
 
-  it('sets focus to the next last toast when the last toast is closed', async function() {
+  it('sets focus to the next last toast\'s close button when the last toast is closed', async function() {
     const user = userEvent.setup();
     quickRender();
 
@@ -96,7 +96,7 @@ describe('NxToastContainer', function() {
   it('sets focus to previous focused element (before any toasts rendered) when the last remaining toast is closed',
       async function() {
 
-        const { rerender, container } = render(
+        const { rerender } = render(
         /* eslint-disable-next-line @typescript-eslint/indent */
           <>
             <button type="button">Focus Me</button>
@@ -123,12 +123,10 @@ describe('NxToastContainer', function() {
           </>
         );
 
-        const toast = container.querySelector('.nx-toast');
         const closeBtn = screen.getByRole('button', {name: 'Close'});
 
         closeBtn.focus();
         await userEvent.click(closeBtn);
-        fireEvent.animationEnd(toast as Element);
 
         expect(prevFocusBtn).toHaveFocus();
       });
