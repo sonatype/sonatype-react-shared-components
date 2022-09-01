@@ -12,10 +12,8 @@ import { NxDrawer,
   NxBackButton,
   NxPageMain,
   NxPageTitle,
-  NxH1,
-  NxFontAwesomeIcon
+  NxH1
 } from '@sonatype/react-shared-components';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerWithSubtitleOrDescriptionExample() {
   const [showDrawerWithSubtitle, setShowDrawerWithSubtitle] = useState(false);
@@ -77,9 +75,6 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
     <>
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
-        <div className="nx-global-header__actions">
-          <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-        </div>
       </header>
 
       {showDrawerWithSubtitle && (

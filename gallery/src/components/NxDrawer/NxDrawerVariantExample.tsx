@@ -14,11 +14,8 @@ import {
   NxPageMain,
   NxPageTitle,
   NxH1,
-  NxFontAwesomeIcon,
   NxFooter
 } from '@sonatype/react-shared-components';
-
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerVariantExample() {
   const [showNarrowDrawer, setShowNarrowDrawer] = useState(false);
@@ -73,9 +70,6 @@ export default function NxDrawerVariantExample() {
     <>
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
-        <div className="nx-global-header__actions">
-          <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-        </div>
       </header>
       {showNarrowDrawer && (
         <NxDrawer id="nx-drawer-variant-header-narrow"

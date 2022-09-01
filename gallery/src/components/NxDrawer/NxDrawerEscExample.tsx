@@ -13,13 +13,9 @@ import { NxDropdown,
   NxBackButton,
   NxPageTitle,
   NxH1,
-  NxFontAwesomeIcon,
   NxPageMain,
   NxP
-
 } from '@sonatype/react-shared-components';
-
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerEscExample() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -31,9 +27,6 @@ export default function NxDrawerEscExample() {
     <>
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
-        <div className="nx-global-header__actions">
-          <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-        </div>
       </header>
       {showDrawer && (
         <NxDrawer id="nx-drawer-esc"

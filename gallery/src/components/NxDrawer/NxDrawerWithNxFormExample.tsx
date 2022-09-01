@@ -14,7 +14,6 @@ import {
   NxPageMain,
   NxPageTitle,
   NxH1,
-  NxFontAwesomeIcon,
   NxForm,
   NxFormGroup,
   NxFieldset,
@@ -22,8 +21,6 @@ import {
   useToggle,
   NxStatefulTextInput
 } from '@sonatype/react-shared-components';
-
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerWithNxFormExample() {
   const [showDrawer, setShowDrawer] = useState(false),
@@ -36,9 +33,6 @@ export default function NxDrawerWithNxFormExample() {
     <>
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
-        <div className="nx-global-header__actions">
-          <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-        </div>
       </header>
 
       {showDrawer && (
