@@ -77,7 +77,6 @@ describe('NxDrawer', function() {
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const animationWrapper = dialog.querySelector('.nx-drawer__animation-wrapper')!;
-
       expect(animationWrapper).toHaveClass('nx-drawer__animation-wrapper--close');
 
       act(() => {
@@ -139,23 +138,19 @@ describe('NxDrawer', function() {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const animationWrapper = dialog.querySelector('.nx-drawer__animation-wrapper')!;
 
-        act(() => {
-          eventMap.click({ target: insideButton });
-        });
-
-        await waitFor(() => {
+        await act(async () => {
+          await eventMap.click({ target: insideButton });
           fireEvent.animationEnd(animationWrapper);
-          expect(mockOnCancel).not.toHaveBeenCalled();
         });
 
-        act(() => {
-          eventMap.click({ target: outsideButton });
-        });
+        expect(mockOnCancel).not.toHaveBeenCalled();
 
-        await waitFor(() => {
+        await act(async () => {
+          await eventMap.click({ target: outsideButton });
           fireEvent.animationEnd(animationWrapper);
-          expect(mockOnCancel).toHaveBeenCalled();
         });
+
+        expect(mockOnCancel).toHaveBeenCalled();
       }
       finally {
         document.addEventListener = documentAddEventListener;
@@ -307,18 +302,11 @@ describe('NxDrawer', function() {
 
       await act(async () => {
         await user.click(cancelButton);
-        await user.click(cancelButton);
       });
 
-      await waitFor(() => {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        // const animationWrapperEl = drawer.querySelector('.nx-drawer__animation-wrapper')!;
-        expect(drawer.querySelector('.nx-drawer__animation-wrapper'))
-            .toHaveClass('nx-drawer__animation-wrapper--close');
-      });
-
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const animationWrapperEl = drawer.querySelector('.nx-drawer__animation-wrapper')!;
+
+      expect(animationWrapperEl).toHaveClass('nx-drawer__animation-wrapper--close');
 
       act(() => {
         fireEvent.animationEnd(animationWrapperEl);
