@@ -10,7 +10,6 @@ import { NxDrawer,
   NxButton,
   NxP,
   NxBackButton,
-  NxFontAwesomeIcon,
   NxPageMain,
   NxPageTitle,
   NxFooter,
@@ -18,8 +17,6 @@ import { NxDrawer,
   NxButtonBar,
   useToggle
 } from '@sonatype/react-shared-components';
-
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerExample() {
   const [showDrawer, toggleDrawer] = useToggle(false);
@@ -74,9 +71,6 @@ export default function NxDrawerExample() {
     <>
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
-        <div className="nx-global-header__actions">
-          <NxButton title="Edit" variant="icon-only"><NxFontAwesomeIcon icon={faEdit} /></NxButton>
-        </div>
       </header>
       {showDrawer && (
         <NxDrawer id="nx-drawer-simple"
