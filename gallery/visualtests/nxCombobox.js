@@ -143,11 +143,11 @@ describe('NxCombobox', function() {
         await input.focus();
         await getPage().keyboard.type('a');
         await getPage().waitForSelector(dropdownButtonSelector);
+        await getPage().keyboard.press('Backspace');
       });
 
       it('has invalid validation styles when invalid', async function() {
         const [component] = await waitAndGetElements(nonEmptinessExampleSelector);
-        await getPage().keyboard.press('Backspace');
         await checkScreenshot(component, 150, 88);
       });
 
