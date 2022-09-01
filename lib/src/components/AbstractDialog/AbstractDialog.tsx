@@ -104,18 +104,18 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
     setDialogRefState(el);
 
-    /*
-     * This will cause the document to become "blocked by the modal dialog"
-     * (https://html.spec.whatwg.org/multipage/interaction.html#blocked-by-a-modal-dialog)
-     * meaning that only the modal and its contents are interactable/focusable.
-     *
-     * Note: not supported in safari, which is why the conditional is here. Once safari gets
-     * it together, we should be able to take advantage of the "top layer" functionality built into
-     * the browser around modals to simplify the dialog styling around z-index handling
-     */
-
     if (hasNativeModalSupport) {
       if (isModal) {
+        /*
+        * This will cause the document to become "blocked by the modal dialog"
+        * (https://html.spec.whatwg.org/multipage/interaction.html#blocked-by-a-modal-dialog)
+        * meaning that only the modal and its contents are interactable/focusable.
+        *
+        * Note: not supported in safari, which is why the conditional is here. Once safari gets
+        * it together, we should be able to take advantage of the "top layer" functionality built into
+        * the browser around modals to simplify the dialog styling around z-index handling
+        */
+
         // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (el as any).showModal();
