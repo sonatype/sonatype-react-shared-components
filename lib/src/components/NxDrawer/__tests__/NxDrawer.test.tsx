@@ -172,7 +172,7 @@ describe('NxDrawer', function() {
               <>
                 <NxDrawer onCancel={jest.fn()}>
                   <NxDrawer.Header>
-                    <NxDrawer.Header.Title>Title</NxDrawer.Header.Title>
+                    <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
                   </NxDrawer.Header>
                 </NxDrawer>
               </>
@@ -222,7 +222,7 @@ describe('NxDrawer', function() {
       quickRender({
         children: (
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>Title</NxDrawer.Header.Title>
+            <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
           </NxDrawer.Header>
         )
       });
@@ -237,9 +237,9 @@ describe('NxDrawer', function() {
       quickRender({
         children: (
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>Title</NxDrawer.Header.Title>
-            <NxDrawer.Header.Subtitle>Subtitle</NxDrawer.Header.Subtitle>
-            <NxDrawer.Header.Description>Description</NxDrawer.Header.Description>
+            <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
+            <NxDrawer.HeaderSubtitle>Subtitle</NxDrawer.HeaderSubtitle>
+            <NxDrawer.HeaderDescription>Description</NxDrawer.HeaderDescription>
           </NxDrawer.Header>
         )
       });
@@ -262,9 +262,9 @@ describe('NxDrawer', function() {
       quickRender({
         children: (
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>Title</NxDrawer.Header.Title>
-            <NxDrawer.Header.Subtitle>Subtitle</NxDrawer.Header.Subtitle>
-            <NxDrawer.Header.Description>Description</NxDrawer.Header.Description>
+            <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
+            <NxDrawer.HeaderSubtitle>Subtitle</NxDrawer.HeaderSubtitle>
+            <NxDrawer.HeaderDescription>Description</NxDrawer.HeaderDescription>
           </NxDrawer.Header>
         )
       });
@@ -288,7 +288,7 @@ describe('NxDrawer', function() {
         onCancel: mockOnCancel,
         children: (
           <NxDrawer.Header>
-            <NxDrawer.Header.Title>Hello</NxDrawer.Header.Title>
+            <NxDrawer.HeaderTitle>Hello</NxDrawer.HeaderTitle>
           </NxDrawer.Header>
         )
       })!;
