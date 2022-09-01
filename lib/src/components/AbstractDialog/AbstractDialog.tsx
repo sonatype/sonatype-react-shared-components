@@ -56,7 +56,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  // The dialogRef value needs to get passed down in a context. But athe context needs to know when the ref
+  // The dialogRef value needs to get passed down in a context. But the context needs to know when the ref
   // value has updated, and refs aren't tracked like state values. So we have to copy the ref value into a state
   // value in order for it to be tracked.
   const [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
