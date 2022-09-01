@@ -48,13 +48,13 @@
 
   --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
 
+  // similar to above, but for use in drop-shadow filters rather than box-shadow properties
+  --nx-drop-shadow-focus: 0 0 3px var(--nx-color-interactive-shadow-focus);
+
   // for dropdown 
   --nx-box-shadow-dropdown: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
                             0 1px 2px 0 rgba(91, 95, 141, 0.2),
                             0 1px 1px 0 rgba(124, 128, 179, 0.2);
-
-  // similar to above, but for use in drop-shadow filters rather than box-shadow properties
-  --nx-drop-shadow-focus: 0 0 3px var(--nx-color-interactive-shadow-focus);
 
   // Deprecated variables
   --nx-border-subsection: 1px solid var(--nx-color-subsection-border);
