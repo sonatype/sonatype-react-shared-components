@@ -6,7 +6,8 @@
  */
 import React from 'react';
 
-import { render, fireEvent, waitFor, createEvent} from '@testing-library/react';
+import { render, fireEvent, waitFor, createEvent } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import { screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 
@@ -16,7 +17,6 @@ import AbstractDialog, { Props } from '../AbstractDialog';
 import NxButton from '../../NxButton/NxButton';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import useToggle from '../../../util/useToggle';
-//import { createEvent } from '@testing-library/user-event/dist/types/event/createEvent';
 
 describe('AbstractDialog', function() {
   const minimalProps: Props = {
@@ -33,16 +33,12 @@ describe('AbstractDialog', function() {
 
   it('forwards the dialog element ref', function() {
     const ref = React.createRef<HTMLDialogElement>();
-    render(
-      <AbstractDialog ref={ref} onCancel={() => {}}>
-        Hello
-      </AbstractDialog>
-    );
+    render(<AbstractDialog ref={ref} onCancel={() => {}} />);
     const dialog = screen.getByRole('dialog', { hidden: true });
     expect(ref.current).toBe(dialog);
   });
 
-  it('uses passed in className to the dialog', function() {
+  it('applies the className to the dialog element', function() {
     expect(getDialog({ className: 'foo' })).toHaveClass('foo');
   });
 
@@ -52,62 +48,23 @@ describe('AbstractDialog', function() {
     expect(dialog).toHaveAttribute('lang', 'en_US');
   });
 
-  it('sets the dialog role on the backdrop by default', function() {
+  it('sets the dialog role on the dialog by default', function() {
     expect(getDialog()).toHaveAttribute('role', 'dialog');
   });
 
-  it('sets the specified role on the backdrop', function() {
+  it('applies passed in role attribute into the dialog', function() {
     expect(getDialog({ role: 'asdf' })).toHaveAttribute('role', 'asdf');
   });
 
   describe('Dialog event listener support', () => {
-    let dialogContainer: HTMLDivElement | null;
-
-    beforeEach(function () {
-      // Rendering dialogContainer for the component in test.
-      dialogContainer = document.createElement('div');
-      document.body.appendChild(dialogContainer);
-    });
-
-    afterEach(function () {
-      if (dialogContainer) {
-        document.body.removeChild(dialogContainer);
-        dialogContainer = null;
-      }
-    });
-
-    const createKeyDownEvent = (key = 'Escape') => ({
-      key,
-      stopPropagation: jest.fn(),
-      nativeEvent: {
-        stopImmediatePropagation: jest.fn()
-      }
-    });
+    const createKeyDownEvent = (target: HTMLElement, key = 'Escape', properties: Record<string, unknown> = {}) =>
+      Object.assign(createEvent.keyDown(target, { key }), { ...properties });
 
     it('executes event.preventDefault when useNativeCancelOnEscape is false', function () {
-      const mockOnCancel = jest.fn();
-
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const dialog = getDialog({ useNativeCancelOnEscape: false, onCancel: mockOnCancel })!;
-
-      expect(mockOnCancel).not.toHaveBeenCalled();
-
-      // const escapeEvent = createEvent.keyDown(dialog);
-      // escapeEvent.key = 'Escape';
-
-      const escapeEvent = {
-        key: 'Escape'
-      };
-
-      const preventDefaultIsCalled = fireEvent.keyDown(dialog, escapeEvent);
-
-      expect(mockOnCancel).toHaveBeenCalled();
-
-      // https://stackoverflow.com/questions/60455119/react-jest-test-preventdefault-action
-      // https://github.com/testing-library/react-testing-library/issues/572
-      expect(preventDefaultIsCalled).toBeFalsy();
-
-      expect(mockOnCancel.mock.calls[0][0].type).toBe('cancel');
+      const dialog = getDialog({ useNativeCancelOnEscape: false, onCancel: () => {}})!;
+      const defaultIsPrevented = fireEvent(dialog, createKeyDownEvent(dialog));
+      expect(defaultIsPrevented).toBeFalsy();
     });
 
     it('executes onCancel method with a cancel event when pressing ESC key', function () {
@@ -118,11 +75,7 @@ describe('AbstractDialog', function() {
 
       expect(mockOnCancel).not.toHaveBeenCalled();
 
-      const escapeEvent = {
-        key: 'Escape'
-      };
-
-      fireEvent.keyDown(dialog, escapeEvent);
+      fireEvent(dialog, createKeyDownEvent(dialog));
 
       expect(mockOnCancel).toHaveBeenCalled();
       expect(mockOnCancel.mock.calls[0][0].type).toBe('cancel');
@@ -134,28 +87,26 @@ describe('AbstractDialog', function() {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const dialog = getDialog({ useNativeCancelOnEscape: true, onCancel: mockOnCancel })!;
 
-      fireEvent.keyDown(dialog, createKeyDownEvent('Tab'));
-      fireEvent.keyDown(dialog, createKeyDownEvent('Enter'));
-      fireEvent.keyDown(dialog, createKeyDownEvent('q'));
-      fireEvent.keyDown(dialog, createKeyDownEvent('Q'));
+      fireEvent(dialog, createKeyDownEvent(dialog, 'Tab'));
+      fireEvent(dialog, createKeyDownEvent(dialog, 'Enter'));
+      fireEvent(dialog, createKeyDownEvent(dialog, 'q'));
+      fireEvent(dialog, createKeyDownEvent(dialog, 'Q'));
 
       expect(mockOnCancel).not.toHaveBeenCalled();
     });
 
-    it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
+    it('calls stopPropagation on Escape keydowns', function() {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const dialog = getDialog({ onCancel: jest.fn() })!;
 
-      const otherEvent = createKeyDownEvent('q');
-      const escEvent_ = createEvent.keyDown(dialog, {
-        key: 'Escape'
-      });
-      escEvent_.stopPropagation = jest.fn();
-      fireEvent(dialog, escEvent_);
-      fireEvent.keyDown(dialog, otherEvent);
+      const otherEvent = createKeyDownEvent(dialog, 'q', { stopPropagation: jest.fn() });
+      const escapeEvent = createKeyDownEvent(dialog, 'Escape', { stopPropagation: jest.fn() });
 
-      expect(escEvent_.stopPropagation).toHaveBeenCalled();
+      fireEvent(dialog, otherEvent);
+      fireEvent(dialog, escapeEvent);
+
       expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
+      expect(escapeEvent.stopPropagation).toHaveBeenCalled();
     });
   });
 
@@ -174,16 +125,22 @@ describe('AbstractDialog', function() {
 
     const tooltipButton = screen.getByRole('button', { name: 'Foo', hidden: true });
 
-    await userEvent.hover(tooltipButton);
-    const tooltip = await screen.findByRole('tooltip', { hidden: true });
-    expect(tooltip).toBeInTheDocument();
-    await userEvent.unhover(tooltipButton);
+    await act(async () => {
+      await userEvent.hover(tooltipButton);
+
+      const tooltip = await screen.findByRole('tooltip', { hidden: true });
+
+      expect(tooltip).toBeInTheDocument();
+
+      await userEvent.unhover(tooltipButton);
+    });
+
     await waitFor(() => {
       expect(screen.queryByRole('tooltip', { hidden: true })).not.toBeInTheDocument();
     });
   });
 
-  it('moves focus back to the previously focused element when closed', async function(done) {
+  it('moves focus back to the previously focused element when closed', async function() {
     function Fixture() {
       const [dialogOpen, toggleDialog] = useToggle(false);
 
@@ -210,22 +167,22 @@ describe('AbstractDialog', function() {
     toggleButton.focus();
 
     expect(toggleButton).toBeInTheDocument();
+
     expect(screen.queryByRole('dialog', { hidden: true })).not.toBeInTheDocument();
-    // expect(document.activeElement).toBe(toggleButton);
 
-    await userEvent.click(toggleButton);
+    await act(async () => {
+      await userEvent.click(toggleButton);
 
-    expect(screen.getByRole('dialog', { hidden: true })).toBeInTheDocument();
-    const closeButton = screen.getByRole('button', { name: 'Close', hidden: true });
-    // expect(document.activeElement).toBe(closeButton);
+      expect(screen.getByRole('dialog', { hidden: true })).toBeInTheDocument();
 
-    await userEvent.click(closeButton);
+      const closeButton = screen.getByRole('button', { name: 'Close', hidden: true });
 
-    // The focus is moved asynchronously
-    setTimeout(() => {
+      await userEvent.click(closeButton);
+    });
+
+    await waitFor(() => {
       expect(screen.queryByRole('dialog', { hidden: true })).not.toBeInTheDocument();
       expect(document.activeElement).toBe(toggleButton);
-      done();
-    }, 200);
+    });
   });
 });
