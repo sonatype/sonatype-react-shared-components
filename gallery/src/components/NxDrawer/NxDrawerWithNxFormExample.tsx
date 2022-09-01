@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState } from 'react';
 
 import {
   NxDrawer,
@@ -19,14 +19,8 @@ import {
   NxFormGroup,
   NxFieldset,
   NxCheckbox,
-  NxTextInput,
-  nxTextInputStateHelpers,
   useToggle,
-  NxRadio,
-  NxStatefulTextInput,
-  nxFormSelectStateHelpers,
-  NxFormSelect,
-  NxToggle
+  NxStatefulTextInput
 } from '@sonatype/react-shared-components';
 
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -34,38 +28,9 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 export default function NxDrawerWithNxFormExample() {
   const [showDrawer, setShowDrawer] = useState(false),
       [showDrawerOverflowing, setShowDrawerOverflowing] = useState(false),
-      [usernameState, setUsernameState] = useState(nxTextInputStateHelpers.initialState('')),
-      [passwordState, setPasswordState] = useState(nxTextInputStateHelpers.initialState('')),
       [isRed, toggleRed] = useToggle(false),
       [isBlue, toggleBlue] = useToggle(false),
       [isGreen, toggleGreen] = useToggle(false);
-
-  const [color, setColor] = useState<string | null>(null);
-  const [isWarpOn, toggleWarp] = useToggle(false),
-      [isKrakenOut, toggleKraken] = useToggle(false),
-      [isShapes, toggleShapes] = useToggle(false);
-  const [val, setVal] = useState('');
-  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('');
-
-  function onUsernameChange(val: string) {
-    setUsernameState(nxTextInputStateHelpers.userInput(null, val));
-  }
-
-  function onPasswordChange(val: string) {
-    setPasswordState(nxTextInputStateHelpers.userInput(null, val));
-  }
-
-  function onChange(e: ChangeEvent<HTMLSelectElement>) {
-    setVal(e.target.value);
-  }
-
-  function validator(val: string) {
-    return val.length ? null : 'Must be non-empty';
-  }
-
-  function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
-    setSelectVal(evt.currentTarget.value);
-  }
 
   return (
     <>
@@ -86,15 +51,14 @@ export default function NxDrawerWithNxFormExample() {
             <NxDrawer.Header.Description>Header Description</NxDrawer.Header.Description>
           </NxDrawer.Header>
 
-          <NxForm
-                  onSubmit={() => setShowDrawer(false)}
+          <NxForm onSubmit={() => setShowDrawer(false)}
                   onCancel={() => setShowDrawer(false)}>
             <NxDrawer.Content>
               <NxFormGroup label="A Field to Fill in" isRequired>
-                <NxStatefulTextInput aria-required={true} validator={validator}/>
+                <NxStatefulTextInput />
               </NxFormGroup>
               <NxFormGroup label="Country" sublabel="Pick your favorite from the list">
-                <select className="nx-form-select" value={val} onChange={onChange}>
+                <select className="nx-form-select">
                   <option value="">Pick a Country</option>
                   <option value="USA">USA</option>
                   <option value="GER">Canada</option>
@@ -102,11 +66,9 @@ export default function NxDrawerWithNxFormExample() {
                   <option value="COL">Colombia</option>
                 </select>
               </NxFormGroup>
-              <NxFieldset label="Colors" isRequired>
-                <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
-                <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
-                <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
-              </NxFieldset>
+              <NxFormGroup label="Hostname">
+                <NxStatefulTextInput/>
+              </NxFormGroup>
             </NxDrawer.Content>
           </NxForm>
         </NxDrawer>
@@ -126,60 +88,20 @@ export default function NxDrawerWithNxFormExample() {
                 onSubmit={() => setShowDrawerOverflowing(false)}
                 onCancel={() => setShowDrawerOverflowing(false)}>
           <NxDrawer.Content>
-            <NxFieldset label="Enable features" isRequired>
-              <NxToggle inputId="subscribe-check" onChange={toggleWarp} isChecked={isWarpOn}>
-                Enable Warp Drive
-              </NxToggle>
-              <NxToggle inputId="no-label-check" onChange={toggleKraken} isChecked={isKrakenOut}>
-                Release the Kraken!
-              </NxToggle>
-              <NxToggle inputId="children-check" onChange={toggleShapes} isChecked={isShapes}>
-                Allow shapes
-              </NxToggle>
-            </NxFieldset>
             <NxFormGroup label="Username" isRequired>
-              <NxTextInput
-                           placeholder="Username"
-                           onChange={onUsernameChange}
-                           { ...usernameState } />
+              <NxStatefulTextInput/>
             </NxFormGroup>
-            <NxFormGroup label="Password" isRequired>
-              <NxTextInput type="password"
-                           aria-required={true}
-                           placeholder="Password"
-                           onChange={onPasswordChange}
-                           { ...passwordState } />
+            <NxFormGroup label="Email" isRequired>
+              <NxStatefulTextInput/>
             </NxFormGroup>
-            <NxFieldset label="Primary Color" sublabel="Pick a single color">
-              <NxRadio name="color"
-                       value="red"
-                       onChange={setColor}
-                       isChecked={color === 'red'}>
-                Red
-              </NxRadio>
-              <NxRadio name="color"
-                       value="purple"
-                       onChange={setColor}
-                       isChecked={color === 'purple'}>
-                Purple
-              </NxRadio>
-              <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'}>
-                Green
-              </NxRadio>
-              <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'}>
-                Blue
-              </NxRadio>
+            <NxFormGroup label="A Field to Fill in" isRequired>
+              <NxStatefulTextInput/>
+            </NxFormGroup>
+            <NxFieldset label="Colors" isRequired>
+              <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
+              <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
+              <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
             </NxFieldset>
-            <NxFormGroup label="Select" isRequired>
-              <NxFormSelect { ...selectState } onChange={onSelectChange}>
-                <option value="">Select an option</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-                <option value="option4">Option 4</option>
-                <option value="option5">Option 5</option>
-              </NxFormSelect>
-            </NxFormGroup>
             <NxFormGroup label="Comments" isRequired>
               <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
             </NxFormGroup>
@@ -192,7 +114,6 @@ export default function NxDrawerWithNxFormExample() {
         <NxPageTitle>
           <NxH1>Drawers with Forms Inside</NxH1>
         </NxPageTitle>
-
         <NxP>
           Dragée pastry soufflé shortbread donut fruitcake. Ice cream tart bear claw I love
           cotton candy marzipan cotton candy cake danish. Pie gingerbread marshmallow bear claw
