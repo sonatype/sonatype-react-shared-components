@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
 import { NxDrawer,
   NxButton,
@@ -15,17 +15,18 @@ import { NxDrawer,
   NxPageTitle,
   NxFooter,
   NxH1,
-  NxButtonBar
+  NxButtonBar,
+  useToggle
 } from '@sonatype/react-shared-components';
 
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxDrawerExample() {
-  const [showDrawer, setShowDrawer] = useState(false);
-  const [showDrawerScroll, setShowDrawerScroll] = useState(false);
-  const [showDrawerWithFooter, setShowDrawerWithFooter] = useState(false);
-  const [showDrawerWithFooterScroll, setShowDrawerWithFooterScroll] = useState(false);
-  const [showDrawerTruncated, setShowDrawerTruncated] = useState(false);
+  const [showDrawer, toggleDrawer] = useToggle(false);
+  const [showDrawerScroll, toggleDrawerScroll] = useToggle(false);
+  const [showDrawerWithFooter, toggleDrawerWithFooter] = useToggle(false);
+  const [showDrawerWithFooterScroll, toggleDrawerWithFooterScroll] = useToggle(false);
+  const [showDrawerTruncated, toggleDrawerTruncated] = useToggle(false);
 
   const content = (
     <NxDrawer.Content>
@@ -79,7 +80,7 @@ export default function NxDrawerExample() {
       </header>
       {showDrawer && (
         <NxDrawer id="nx-drawer-simple"
-                  onCancel={() => setShowDrawer(false)}
+                  onCancel={() => toggleDrawer()}
                   aria-labelledby="simple-drawer-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="simple-drawer-title">A Simple Drawer</NxDrawer.HeaderTitle>
@@ -96,7 +97,7 @@ export default function NxDrawerExample() {
       )}
       {showDrawerScroll && (
         <NxDrawer id="nx-drawer-simple-with-scroll"
-                  onCancel={() => setShowDrawerScroll(false)}
+                  onCancel={() => toggleDrawerScroll()}
                   aria-labelledby="simple-drawer-with-scroll-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="simple-drawer-with-scroll-title">
@@ -108,7 +109,7 @@ export default function NxDrawerExample() {
       )}
       {showDrawerWithFooter && (
         <NxDrawer id="nx-drawer-with-footer"
-                  onCancel={() => setShowDrawerWithFooter(false)}
+                  onCancel={() => toggleDrawerWithFooter()}
                   aria-labelledby="simple-drawer-with-footer-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="simple-drawer-with-footer-title">
@@ -136,7 +137,7 @@ export default function NxDrawerExample() {
       )}
       {showDrawerWithFooterScroll && (
         <NxDrawer id="nx-drawer-with-footer-scroll"
-                  onCancel={() => setShowDrawerWithFooterScroll(false)}
+                  onCancel={() => toggleDrawerWithFooterScroll()}
                   aria-labelledby="simple-drawer-with-footer-scroll-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="simple-drawer-with-footer-scroll-title">
@@ -157,7 +158,7 @@ export default function NxDrawerExample() {
       )}
       {showDrawerTruncated && (
         <NxDrawer id="nx-drawer-simple-truncated"
-                  onCancel={() => setShowDrawerTruncated(false)}
+                  onCancel={() => toggleDrawerTruncated()}
                   aria-labelledby="truncated-drawer-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="truncated-drawer-title">
@@ -190,25 +191,25 @@ export default function NxDrawerExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-simple-open-button" onClick={() => setShowDrawer(true)}>Open Simple Drawer</NxButton>
+          <NxButton id="nx-drawer-simple-open-button" onClick={() => toggleDrawer()}>Open Simple Drawer</NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-simple-scroll-open-button" onClick={() => setShowDrawerScroll(true)}>
+          <NxButton id="nx-drawer-simple-scroll-open-button" onClick={() => toggleDrawerScroll()}>
             Open Simple Drawer With Scroll
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-footer-open-button" onClick={() => setShowDrawerWithFooter(true)}>
+          <NxButton id="nx-drawer-with-footer-open-button" onClick={() => toggleDrawerWithFooter()}>
             Open Simple Drawer With Footer
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-footer-scroll-open-button" onClick={() => setShowDrawerWithFooterScroll(true)}>
+          <NxButton id="nx-drawer-with-footer-scroll-open-button" onClick={() => toggleDrawerWithFooterScroll()}>
             Open Simple Drawer With Footer and Scroll
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-truncated-open-button" onClick={() => setShowDrawerTruncated(true)}>
+          <NxButton id="nx-drawer-truncated-open-button" onClick={() => toggleDrawerTruncated()}>
             Open Simple Drawer With Truncated Title
           </NxButton>
         </NxP>

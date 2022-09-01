@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   NxDrawer,
@@ -14,12 +14,13 @@ import {
   NxPageMain,
   NxPageTitle,
   NxH1,
-  NxFooter
+  NxFooter,
+  useToggle
 } from '@sonatype/react-shared-components';
 
 export default function NxDrawerVariantExample() {
-  const [showNarrowDrawer, setShowNarrowDrawer] = useState(false);
-  const [showNormalDrawer, setShowNormalDrawer] = useState(false);
+  const [showNarrowDrawer, toggleNarrowDrawer] = useToggle(false);
+  const [showNormalDrawer, toggleNormalDrawer] = useToggle(false);
 
   const contentAndFooter = (
     <>
@@ -74,7 +75,7 @@ export default function NxDrawerVariantExample() {
       {showNarrowDrawer && (
         <NxDrawer id="nx-drawer-variant-header-narrow"
                   variant="narrow"
-                  onCancel={() => setShowNarrowDrawer(false)}
+                  onCancel={() => toggleNarrowDrawer()}
                   aria-labelledby="narrow-drawer-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="narrow-drawer-title">Header Title</NxDrawer.HeaderTitle>
@@ -86,7 +87,7 @@ export default function NxDrawerVariantExample() {
       )}
       {showNormalDrawer && (
       <NxDrawer id="nx-drawer-variant-header-normal"
-                onCancel={() => setShowNormalDrawer(false)}
+                onCancel={() => toggleNormalDrawer()}
                 aria-labelledby="normal-drawer-title">
         <NxDrawer.Header>
           <NxDrawer.HeaderTitle id="narrow-drawer-title">Header Title</NxDrawer.HeaderTitle>
@@ -113,12 +114,12 @@ export default function NxDrawerVariantExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-variant-narrow-open-button" onClick={() => setShowNarrowDrawer(true)}>
+          <NxButton id="nx-drawer-variant-narrow-open-button" onClick={() => toggleNarrowDrawer()}>
             Open Drawer (Narrow)
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-variant-normal-open-button" onClick={() => setShowNormalDrawer(true)}>
+          <NxButton id="nx-drawer-variant-normal-open-button" onClick={() => toggleNormalDrawer()}>
             Open Drawer (Normal)
           </NxButton>
         </NxP>

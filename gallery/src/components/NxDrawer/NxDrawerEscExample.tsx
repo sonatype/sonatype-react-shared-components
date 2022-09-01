@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
 import { NxDropdown,
   NxDrawer,
@@ -18,7 +18,7 @@ import { NxDropdown,
 } from '@sonatype/react-shared-components';
 
 export default function NxDrawerEscExample() {
-  const [showDrawer, setShowDrawer] = useState(false);
+  const [showDrawer, toggleDrawer] = useToggle(false);
   const [dropdownIsOpen, onToggleDropdownCollapse] = useToggle(false);
 
   const onClick = () => { alert('click'); };
@@ -30,7 +30,7 @@ export default function NxDrawerEscExample() {
       </header>
       {showDrawer && (
         <NxDrawer id="nx-drawer-esc"
-                  onCancel={() => setShowDrawer(false)}
+                  onCancel={() => toggleDrawer()}
                   aria-labelledby="nx-drawer-with-esc-example-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="nx-drawer-with-esc-example-title">Header Title</NxDrawer.HeaderTitle>
@@ -68,7 +68,7 @@ export default function NxDrawerEscExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-esc-open-button" onClick={() => setShowDrawer(true)}>
+          <NxButton id="nx-drawer-esc-open-button" onClick={() => toggleDrawer()}>
             Open Drawer With Dropdown
           </NxButton>
         </NxP>

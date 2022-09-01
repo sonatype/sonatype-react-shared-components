@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
 import { NxDrawer,
   NxButton,
@@ -12,13 +12,14 @@ import { NxDrawer,
   NxBackButton,
   NxPageMain,
   NxPageTitle,
-  NxH1
+  NxH1,
+  useToggle
 } from '@sonatype/react-shared-components';
 
 export default function NxDrawerWithSubtitleOrDescriptionExample() {
-  const [showDrawerWithSubtitle, setShowDrawerWithSubtitle] = useState(false);
-  const [showDrawerWithDescription, setShowDrawerWithDescription] = useState(false);
-  const [showDrawerWithBoth, setShowDrawerWithBoth] = useState(false);
+  const [showDrawerWithSubtitle, toggleDrawerWithSubtitle] = useToggle(false);
+  const [showDrawerWithDescription, toggleDrawerWithDescription] = useToggle(false);
+  const [showDrawerWithBoth, toggleDrawerWithBoth] = useToggle(false);
 
   const description = (
     <>
@@ -79,7 +80,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
 
       {showDrawerWithSubtitle && (
         <NxDrawer id="nx-drawer-with-subtitle"
-                  onCancel={() => setShowDrawerWithSubtitle(false)}
+                  onCancel={() => toggleDrawerWithSubtitle()}
                   aria-labelledby="drawer-with-subtitle-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="drawer-with-subtitle-title">Drawer With Subtitle</NxDrawer.HeaderTitle>
@@ -90,7 +91,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
       )}
       {showDrawerWithDescription && (
         <NxDrawer id="nx-drawer-with-description"
-                  onCancel={() => setShowDrawerWithDescription(false)}
+                  onCancel={() => toggleDrawerWithDescription()}
                   aria-labelledby="drawer-with-description-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="drawer-with-description-title">Drawer With Description</NxDrawer.HeaderTitle>
@@ -101,7 +102,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
       )}
       {showDrawerWithBoth && (
         <NxDrawer id="nx-drawer-with-subtitle-and-description"
-                  onCancel={() => setShowDrawerWithBoth(false)}
+                  onCancel={() => toggleDrawerWithBoth()}
                   aria-labelledby="drawer-with-both-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="drawer-with-both-title">Drawer With Both</NxDrawer.HeaderTitle>
@@ -127,18 +128,18 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => setShowDrawerWithSubtitle(true)}>
+          <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => toggleDrawerWithSubtitle()}>
             Open Drawer with Subtitle
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-description-open-button" onClick={() => setShowDrawerWithDescription(true)}>
+          <NxButton id="nx-drawer-with-description-open-button" onClick={() => toggleDrawerWithDescription()}>
             Open Drawer with Description
           </NxButton>
         </NxP>
         <NxP>
           <NxButton id="nx-drawer-with-subtitle-and-description-open-button"
-                    onClick={() => setShowDrawerWithBoth(true)}>
+                    onClick={() => toggleDrawerWithBoth()}>
             Open Drawer with Both
           </NxButton>
         </NxP>
