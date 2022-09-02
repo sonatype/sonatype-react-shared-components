@@ -308,8 +308,8 @@ describe('NxCombobox', function() {
       'is referenced by aria-describedby passed in the combobox', async function() {
       const jsx =
         <>
-          <span id='label'>Combobox</span>
-          <NxCombobox { ...minimalProps } aria-describedby={'label'}/>
+          <span id="label">Combobox</span>
+          <NxCombobox { ...minimalProps } aria-describedby="label"/>
         </>,
           component = render(jsx),
           inputElement = component.getByRole('combobox');
