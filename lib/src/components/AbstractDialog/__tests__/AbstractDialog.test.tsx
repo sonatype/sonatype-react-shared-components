@@ -95,18 +95,28 @@ describe('AbstractDialog', function() {
       expect(mockOnCancel).not.toHaveBeenCalled();
     });
 
-    it('calls stopPropagation on Escape keydowns', function() {
+    it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const dialog = getDialog({ onCancel: jest.fn() })!;
 
-      const otherEvent = createKeyDownEvent(dialog, 'q', { stopPropagation: jest.fn() });
-      const escapeEvent = createKeyDownEvent(dialog, 'Escape', { stopPropagation: jest.fn() });
+      const otherEvent = createKeyDownEvent(dialog, 'q', {
+        stopPropagation: jest.fn(),
+        stopImmediatePropagation: jest.fn()
+      });
+
+      const escapeEvent = createKeyDownEvent(dialog, 'Escape', {
+        stopPropagation: jest.fn(),
+        stopImmediatePropagation: jest.fn()
+      });
 
       fireEvent(dialog, otherEvent);
       fireEvent(dialog, escapeEvent);
 
       expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
+      expect(otherEvent.stopImmediatePropagation).not.toHaveBeenCalled();
+
       expect(escapeEvent.stopPropagation).toHaveBeenCalled();
+      expect(escapeEvent.stopImmediatePropagation).toHaveBeenCalled();
     });
   });
 

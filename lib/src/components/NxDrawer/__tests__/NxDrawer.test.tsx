@@ -295,7 +295,6 @@ describe('NxDrawer', function() {
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const cancelButton = screen.getByRole('button', { hidden: true, name: 'Close' })!;
-
       expect(cancelButton).toBeInTheDocument();
 
       expect(mockOnCancel).not.toHaveBeenCalled();
@@ -304,8 +303,8 @@ describe('NxDrawer', function() {
         await user.click(cancelButton);
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const animationWrapperEl = drawer.querySelector('.nx-drawer__animation-wrapper')!;
-
       expect(animationWrapperEl).toHaveClass('nx-drawer__animation-wrapper--close');
 
       act(() => {
