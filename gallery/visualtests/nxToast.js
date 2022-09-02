@@ -23,81 +23,37 @@ describe('NxToast', function() {
     return container;
   };
 
-  describe('with global sidebar and header', function() {
-    const {
-      checkFullPageScreenshot,
-      getPage,
-      wait,
-      waitAndGetElements,
-      a11yTest
-    } = setupBrowser('#/NxToastComplexLayoutExample', false);
+  const testNxToast = (page, description) => {
+    describe(description, function() {
+      const {
+        checkFullPageScreenshot,
+        getPage,
+        wait,
+        waitAndGetElements,
+        a11yTest
+      } = setupBrowser(page, false);
 
-    const launchToasts = launchToastsFromPage(wait, waitAndGetElements);
+      const launchToasts = launchToastsFromPage(wait, waitAndGetElements);
 
-    beforeEach(async function() {
-      await getPage().setViewport(viewportSize);
+      beforeEach(async function() {
+        await getPage().setViewport(viewportSize);
+      });
+
+      it('is positioned correctly', async function() {
+        await launchToasts();
+        await checkFullPageScreenshot();
+      });
+
+      it('passes a11y checks', async function() {
+        await launchToasts();
+        a11yTest();
+      });
     });
+  };
 
-    it('is positioned correctly', async function() {
-      await launchToasts();
-      await checkFullPageScreenshot();
-    });
+  testNxToast('#/NxToastComplexLayoutExample', 'with global sidebar and header');
+  testNxToast('#/NxToastSimpleLayoutExample', 'with global sidebar and without header');
+  testNxToast('#/NxToastLegacySectionScrollingExample', 'with legacy layout and section scrolling');
+  testNxToast('#/NxToastLegacyPageScrollingExample', 'with legacy layout and page scrolling');
 
-    it('passes a11y checks', async function() {
-      await launchToasts();
-      a11yTest();
-    });
-  });
-
-  describe('with global sidebar and without header', function() {
-    const {
-      checkFullPageScreenshot,
-      getPage,
-      wait,
-      waitAndGetElements,
-      a11yTest
-    } = setupBrowser('#/NxToastSimpleLayoutExample', false);
-
-    const launchToasts = launchToastsFromPage(wait, waitAndGetElements);
-
-    beforeEach(async function() {
-      await getPage().setViewport(viewportSize);
-    });
-
-    it('is positioned correctly', async function() {
-      await launchToasts();
-      await checkFullPageScreenshot();
-    });
-
-    it('passes a11y checks', async function() {
-      await launchToasts();
-      a11yTest(null, true);
-    });
-  });
-
-  describe('with legacy layout', function() {
-    const {
-      checkFullPageScreenshot,
-      getPage,
-      wait,
-      waitAndGetElements,
-      a11yTest
-    } = setupBrowser('#/NxToastLegacySectionScrollingExample', false);
-
-    const launchToasts = launchToastsFromPage(wait, waitAndGetElements);
-
-    beforeEach(async function() {
-      await getPage().setViewport(viewportSize);
-    });
-
-    it('is positioned correctly', async function() {
-      await launchToasts();
-      await checkFullPageScreenshot();
-    });
-
-    it('passes a11y checks', async function() {
-      await launchToasts();
-      a11yTest(null, true);
-    });
-  });
 });
