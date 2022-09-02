@@ -10,6 +10,7 @@ const { setupBrowser } = require('./testUtils');
 describe('NxToast', function() {
   const openButton = '.nx-btn-bar .nx-btn--secondary';
   const toastContainer = '.nx-toast-container';
+  const viewportSize = { width: 1366, height: 1000 };
 
   describe('with global sidebar and header', function() {
     const {
@@ -33,21 +34,18 @@ describe('NxToast', function() {
       return container;
     }
 
-    describe('NxToastContainer', function() {
+    beforeEach(async function() {
+      await getPage().setViewport(viewportSize);
+    });
 
-      beforeEach(async function() {
-        await getPage().setViewport({ width: 1366, height: 1000 });
-      });
+    it('is positioned correctly', async function() {
+      await launchToasts(toastContainer, openButton);
+      await checkFullPageScreenshot();
+    });
 
-      it('is positioned correctly', async function() {
-        await launchToasts(toastContainer, openButton);
-        await checkFullPageScreenshot();
-      });
-
-      it('passes a11y checks', async function() {
-        await launchToasts(toastContainer, openButton);
-        a11yTest();
-      });
+    it('passes a11y checks', async function() {
+      await launchToasts(toastContainer, openButton);
+      a11yTest();
     });
   });
 
@@ -72,21 +70,18 @@ describe('NxToast', function() {
       return container;
     }
 
-    describe('NxToastContainer', function() {
+    beforeEach(async function() {
+      await getPage().setViewport(viewportSize);
+    });
 
-      beforeEach(async function() {
-        await getPage().setViewport({ width: 1366, height: 1000 });
-      });
+    it('is positioned correctly', async function() {
+      await launchToasts(toastContainer, openButton);
+      await checkFullPageScreenshot();
+    });
 
-      it('is positioned correctly', async function() {
-        await launchToasts(toastContainer, openButton);
-        await checkFullPageScreenshot();
-      });
-
-      it('passes a11y checks', async function() {
-        await launchToasts(toastContainer, openButton);
-        a11yTest(null, true);
-      });
+    it('passes a11y checks', async function() {
+      await launchToasts(toastContainer, openButton);
+      a11yTest(null, true);
     });
   });
 
@@ -111,21 +106,18 @@ describe('NxToast', function() {
       return container;
     }
 
-    describe('NxToastContainer', function() {
+    beforeEach(async function() {
+      await getPage().setViewport(viewportSize);
+    });
 
-      beforeEach(async function() {
-        await getPage().setViewport({ width: 1366, height: 1000 });
-      });
+    it('is positioned correctly', async function() {
+      await launchToasts(toastContainer, openButton);
+      await checkFullPageScreenshot();
+    });
 
-      it('is positioned correctly', async function() {
-        await launchToasts(toastContainer, openButton);
-        await checkFullPageScreenshot();
-      });
-
-      it('passes a11y checks', async function() {
-        await launchToasts(toastContainer, openButton);
-        a11yTest(null, true);
-      });
+    it('passes a11y checks', async function() {
+      await launchToasts(toastContainer, openButton);
+      a11yTest(null, true);
     });
   });
 });
