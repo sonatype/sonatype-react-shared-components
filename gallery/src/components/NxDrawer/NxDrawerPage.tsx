@@ -14,10 +14,13 @@ import {
   NxH3,
   NxTile,
   NxInfoAlert,
-  NxH2
+  NxH2,
+  NxStatefulAccordion,
+  NxAccordion
 } from '@sonatype/react-shared-components';
 
 import CodeExample from '../../CodeExample';
+import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -171,7 +174,15 @@ export default function NxDrawerPage() {
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
-          <CodeExample content={NxDrawerSourceCode}/>
+        </NxTile.Content>
+        <NxTile.Content className= "nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <NxAccordion.Title>Example Code</NxAccordion.Title>
+            </NxAccordion.Header>
+            <CodeExample content={NxDrawerSourceCode} />
+            <GalleryTileFooter clipboardContent={NxDrawerSourceCode}/>
+          </NxStatefulAccordion>
         </NxTile.Content>
       </NxTile>
 
@@ -190,7 +201,15 @@ export default function NxDrawerPage() {
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
-          <CodeExample content={NxDrawerWithSubtitleOrDescriptionSourceCode}/>
+        </NxTile.Content>
+        <NxTile.Content className= "nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <NxAccordion.Title>Example Code</NxAccordion.Title>
+            </NxAccordion.Header>
+            <CodeExample content={NxDrawerWithSubtitleOrDescriptionSourceCode} />
+            <GalleryTileFooter clipboardContent={NxDrawerWithSubtitleOrDescriptionSourceCode}/>
+          </NxStatefulAccordion>
         </NxTile.Content>
       </NxTile>
 
@@ -209,7 +228,15 @@ export default function NxDrawerPage() {
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
-          <CodeExample content={NxDrawerVariantSourceCode}/>
+        </NxTile.Content>
+        <NxTile.Content className= "nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <NxAccordion.Title>Example Code</NxAccordion.Title>
+            </NxAccordion.Header>
+            <CodeExample content={NxDrawerVariantSourceCode} />
+            <GalleryTileFooter clipboardContent={NxDrawerVariantSourceCode}/>
+          </NxStatefulAccordion>
         </NxTile.Content>
       </NxTile>
 
@@ -229,7 +256,15 @@ export default function NxDrawerPage() {
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
-          <CodeExample content={NxDrawerWithNxFormSourceCode}/>
+        </NxTile.Content>
+        <NxTile.Content className= "nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <NxAccordion.Title>Example Code</NxAccordion.Title>
+            </NxAccordion.Header>
+            <CodeExample content={NxDrawerWithNxFormSourceCode} />
+            <GalleryTileFooter clipboardContent={NxDrawerWithNxFormSourceCode}/>
+          </NxStatefulAccordion>
         </NxTile.Content>
       </NxTile>
 
@@ -250,7 +285,15 @@ export default function NxDrawerPage() {
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
-          <CodeExample content={NxDrawerEscSourceCode}/>
+        </NxTile.Content>
+        <NxTile.Content className= "nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <NxAccordion.Title>Example Code</NxAccordion.Title>
+            </NxAccordion.Header>
+            <CodeExample content={NxDrawerEscSourceCode} />
+            <GalleryTileFooter clipboardContent={NxDrawerEscSourceCode}/>
+          </NxStatefulAccordion>
         </NxTile.Content>
       </NxTile>
     </>
