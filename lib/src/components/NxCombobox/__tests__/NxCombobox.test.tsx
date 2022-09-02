@@ -68,7 +68,6 @@ describe('NxCombobox', function() {
         }),
         inputElement = getByRole('combobox');
 
-    inputElement.focus();
     await userEvent.type(inputElement, 'f');
     rerender(
       <NxCombobox { ...minimalProps }
@@ -91,16 +90,6 @@ describe('NxCombobox', function() {
         expect(dropdownElement).toHaveAttribute('aria-hidden', 'false');
       });
 
-  it('sets alert message as the accessible description of the combobox when there is an alert',
-      async function() {
-        const inputElement = quickRender({ emptyMessage: 'Sorry! No Results Found' }).getByRole('combobox');
-
-        inputElement.focus();
-        expect(inputElement).not.toHaveAccessibleDescription();
-        await userEvent.type(inputElement, 'f');
-        expect(inputElement).toHaveAccessibleDescription('Sorry! No Results Found');
-      });
-
   it('calls onChange whenver the input\'s onChange event fires', async function() {
     const onChange = jest.fn(),
         inputElement = quickRender({ onChange }).getByRole('combobox');
@@ -116,7 +105,6 @@ describe('NxCombobox', function() {
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
-    inputElement.focus();
     await userEvent.type(inputElement, ' ');
     expect(onSearch).not.toHaveBeenCalled();
   });
@@ -127,7 +115,6 @@ describe('NxCombobox', function() {
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
-    inputElement.focus();
     await userEvent.type(inputElement, 'f');
     expect(onSearch).toHaveBeenCalledWith('foof');
   });
@@ -209,7 +196,6 @@ describe('NxCombobox', function() {
         { getByRole} = quickRender({ loadError: 'err', onSearch }),
         inputElement = getByRole('combobox');
 
-    inputElement.focus();
     expect(onSearch).not.toHaveBeenCalled();
     await userEvent.type(inputElement, 'f');
     const retryBtn = getByRole('button', { name: /retry/i });
@@ -289,6 +275,50 @@ describe('NxCombobox', function() {
         inputElement.focus();
         expect(onSearch).not.toHaveBeenCalled();
       });
+
+  describe('Accessible Description', function() {
+    it('sets alert message as the accessible description of the combobox when there is an alert with empty message',
+        async function() {
+          const inputElement = quickRender({ emptyMessage: 'Sorry! No Results Found' }).getByRole('combobox');
+
+          expect(inputElement).not.toHaveAccessibleDescription();
+          await userEvent.type(inputElement, 'f');
+          expect(inputElement).toHaveAccessibleDescription('Sorry! No Results Found');
+        });
+
+    it('sets alert message as the accessible description of the combobox when there is an alert with loading',
+        async function() {
+          const inputElement = quickRender({ loading: true }).getByRole('combobox');
+
+          expect(inputElement).not.toHaveAccessibleDescription();
+          await userEvent.type(inputElement, 'f');
+          expect(inputElement).toHaveAccessibleDescription('Loading…');
+        });
+
+    it('sets alert message as the accessible description of the combobox when there is an alert with error',
+        async function() {
+          const inputElement = quickRender({ loadError: 'err' }).getByRole('combobox');
+
+          expect(inputElement).not.toHaveAccessibleDescription();
+          await userEvent.type(inputElement, 'f');
+          expect(inputElement).toHaveAccessibleDescription('An error occurred loading data. err Retry');
+        });
+
+    it('sets the message in addition to internal alert description if the message has an id and' +
+      'is referenced by aria-describedby passed in the combobox', async function() {
+      const jsx =
+        <>
+          <span id='label'>Combobox</span>
+          <NxCombobox { ...minimalProps } aria-describedby={'label'}/>
+        </>,
+          component = render(jsx),
+          inputElement = component.getByRole('combobox');
+
+      expect(inputElement).toHaveAccessibleDescription('Combobox');
+      await userEvent.type(inputElement, 'f');
+      expect(inputElement).toHaveAccessibleDescription('Combobox No Results Found');
+    });
+  });
 
   describe('Keyboard Support', function() {
     beforeEach(function() {
