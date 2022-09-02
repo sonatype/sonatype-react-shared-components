@@ -97,7 +97,8 @@ export default function NxDrawerPage() {
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
                   NxDrawer supports any html attribute that's normally supported by
-                  {' '}<NxCode>&lt;dialog&gt;</NxCode> elements.
+                  {' '}<NxCode>&lt;dialog&gt;</NxCode> elements, except <NxCode>open</NxCode> because
+                  it is being managed internally.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>

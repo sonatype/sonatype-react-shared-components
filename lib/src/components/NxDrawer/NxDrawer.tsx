@@ -6,6 +6,7 @@
  */
 import React, { useContext, useEffect, useRef, useState, HTMLAttributes, ReactNode } from 'react';
 import classnames from 'classnames';
+import { omit } from 'ramda';
 
 import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
@@ -94,13 +95,15 @@ const _NxDrawer = (props: Props) => {
     'nx-drawer__animation-wrapper--close': isClosing
   });
 
+  const dialogAttrs = omit(['open'], attrs);
+
   return (
     <NxDrawerContext.Provider value={drawerContextValue}>
       <AbstractDialog ref={dialogRef}
                       className={classes}
                       onCancel={closeDrawer}
                       isModal={false}
-                      {...attrs}>
+                      {...dialogAttrs}>
         <div className={animationWrapperClasses} onAnimationEnd={handleAnimationEnd}>
           <div className="nx-drawer__panel">
             {children}
