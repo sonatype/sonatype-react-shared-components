@@ -16,6 +16,7 @@ describe('NxDrawer', function() {
 
     await waitAndGetElements(`#${drawerId}`);
 
+    // Wait for animation.
     await wait(200);
   };
 
@@ -142,6 +143,8 @@ describe('NxDrawer', function() {
   describe('NxDrawer + NxDropdown ESC Closing Behavior', function() {
     const { getPage, isFocused, isInDocument, waitAndGetElements, wait } = setupBrowser('#/NxDrawerEscExample', false);
 
+    const waitForAnimation = () => wait(200);
+
     async function pressEsc() {
       const { keyboard } = getPage();
       await keyboard.press('Escape');
@@ -151,7 +154,7 @@ describe('NxDrawer', function() {
       const [openButton] = await waitAndGetElements('#nx-drawer-esc-open-button');
 
       await openButton.click();
-      await wait(200);
+      await waitForAnimation();
 
       const [drawer, dropdownToggle] = await waitAndGetElements(
           '#nx-drawer-esc',
@@ -174,7 +177,7 @@ describe('NxDrawer', function() {
       expect(await isFocused(dropdownToggle)).toBe(true);
 
       await pressEsc();
-      await wait(200);
+      await waitForAnimation();
 
       expect(await isInDocument(drawer)).toBe(false);
       expect(await isFocused(openButton)).toBe(true);
