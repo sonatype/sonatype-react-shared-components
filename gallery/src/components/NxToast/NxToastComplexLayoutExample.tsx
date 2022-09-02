@@ -26,7 +26,7 @@ import {
   NxInfoAlert,
   NxTile,
   NxP,
-  NxTextInput,
+  NxStatefulTextInput,
   NxFormGroup
 } from '@sonatype/react-shared-components';
 import {
@@ -101,8 +101,8 @@ export default function NxToastComplexLayoutExample() {
               pellentesque nec nam aliquam. Faucibus nisl tincidunt eget nullam non nisi est sit. Sit amet aliquam id
               diam maecenas.
             </NxP>
-            <NxFormGroup label ="Pre-filled Input">
-              <NxTextInput isPristine={true} value="can't change this"/>
+            <NxFormGroup label ="Here's a Text Input">
+              <NxStatefulTextInput />
             </NxFormGroup>
             <NxP>
               Loresssm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
