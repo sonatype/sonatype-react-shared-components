@@ -137,26 +137,26 @@ $-box-shadow-offset: 52px;
 
   .nx-drawer-content {
     --nx-drawer-padding: var(--nx-spacing-6x);
-  
+
     @include nx-container-helpers.container-vertical;
-  
+
     overflow: auto;
-  
+
     padding: var(--nx-spacing-6x);
     height: 100%;
-    
+
     margin-right: calc(0px - var(--nx-drawer-padding));
     margin-left: calc(0px - var(--nx-drawer-padding));
     margin-bottom: calc(0px - var(--nx-drawer-padding));
   }
-  
+
   .nx-footer {
     @include nx-container-helpers.container-vertical;
-  
+
     border-top: 1px solid var(--nx-swatch-indigo-90);
     height: min-content;
     flex-shrink: 0;
-  }  
+  }
 }
 
 .nx-drawer-header {
