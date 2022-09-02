@@ -89,7 +89,7 @@ export default function NxDrawerPage() {
               <NxTable.Row>
                 <NxTable.Cell>HTML <NxCode>&lt;dialog&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
-                  <NxTextLink external href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">
+                  <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog">
                     HTML Attributes
                   </NxTextLink>
                 </NxTable.Cell>
@@ -114,11 +114,11 @@ export default function NxDrawerPage() {
             The header is placed at the top of the drawer component. It consists of four parts:
             the close button, the title, the subtitle (optional), and the description (optional).
             The title, subtitle, and description can be specified via the convenience components:{' '}
-            the <NxCode>NxDrawer.Header.Title</NxCode>, <NxCode>NxDrawer.Header.Subtitle</NxCode>,{' '}
-            and <NxCode>NxDrawer.Header.Description</NxCode>, respectively.
+            the <NxCode>NxDrawer.HeaderTitle</NxCode>, <NxCode>NxDrawer.HeaderSubtitle</NxCode>,{' '}
+            and <NxCode>NxDrawer.HeaderDescription</NxCode>, respectively.
           </NxP>
           <NxP>
-            If the <NxCode>NxDrawer.Header.Title</NxCode> is too long to be fully seen, it will be truncated.
+            If the <NxCode>NxDrawer.HeaderTitle</NxCode> is too long to be fully seen, it will be truncated.
             A tooltip will be visible when hovering over the title to read the full title.
           </NxP>
         </NxTile.Subsection>
