@@ -74,7 +74,7 @@ export default function NxDrawerExample() {
       </header>
       {showDrawer && (
         <NxDrawer id="nx-drawer-simple"
-                  onCancel={() => toggleDrawer()}
+                  onCancel={toggleDrawer}
                   aria-labelledby="simple-drawer-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="simple-drawer-title">A Simple Drawer</NxDrawer.HeaderTitle>
@@ -91,7 +91,7 @@ export default function NxDrawerExample() {
       )}
       {showDrawerScroll && (
         <NxDrawer id="nx-drawer-simple-with-scroll"
-                  onCancel={() => toggleDrawerScroll()}
+                  onCancel={toggleDrawerScroll}
                   aria-labelledby="simple-drawer-with-scroll-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="simple-drawer-with-scroll-title">
@@ -103,7 +103,7 @@ export default function NxDrawerExample() {
       )}
       {showDrawerWithFooter && (
         <NxDrawer id="nx-drawer-with-footer"
-                  onCancel={() => toggleDrawerWithFooter()}
+                  onCancel={toggleDrawerWithFooter}
                   aria-labelledby="simple-drawer-with-footer-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="simple-drawer-with-footer-title">
@@ -131,7 +131,7 @@ export default function NxDrawerExample() {
       )}
       {showDrawerWithFooterScroll && (
         <NxDrawer id="nx-drawer-with-footer-scroll"
-                  onCancel={() => toggleDrawerWithFooterScroll()}
+                  onCancel={toggleDrawerWithFooterScroll}
                   aria-labelledby="simple-drawer-with-footer-scroll-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="simple-drawer-with-footer-scroll-title">
@@ -152,7 +152,7 @@ export default function NxDrawerExample() {
       )}
       {showDrawerTruncated && (
         <NxDrawer id="nx-drawer-simple-truncated"
-                  onCancel={() => toggleDrawerTruncated()}
+                  onCancel={toggleDrawerTruncated}
                   aria-labelledby="truncated-drawer-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="truncated-drawer-title">
@@ -185,25 +185,25 @@ export default function NxDrawerExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-simple-open-button" onClick={() => toggleDrawer()}>Open Simple Drawer</NxButton>
+          <NxButton id="nx-drawer-simple-open-button" onClick={toggleDrawer}>Open Simple Drawer</NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-simple-scroll-open-button" onClick={() => toggleDrawerScroll()}>
+          <NxButton id="nx-drawer-simple-scroll-open-button" onClick={toggleDrawerScroll}>
             Open Simple Drawer With Scroll
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-footer-open-button" onClick={() => toggleDrawerWithFooter()}>
+          <NxButton id="nx-drawer-with-footer-open-button" onClick={toggleDrawerWithFooter}>
             Open Simple Drawer With Footer
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-footer-scroll-open-button" onClick={() => toggleDrawerWithFooterScroll()}>
+          <NxButton id="nx-drawer-with-footer-scroll-open-button" onClick={toggleDrawerWithFooterScroll}>
             Open Simple Drawer With Footer and Scroll
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-truncated-open-button" onClick={() => toggleDrawerTruncated()}>
+          <NxButton id="nx-drawer-truncated-open-button" onClick={toggleDrawerTruncated}>
             Open Simple Drawer With Truncated Title
           </NxButton>
         </NxP>

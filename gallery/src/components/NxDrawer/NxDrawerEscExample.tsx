@@ -30,7 +30,7 @@ export default function NxDrawerEscExample() {
       </header>
       {showDrawer && (
         <NxDrawer id="nx-drawer-esc"
-                  onCancel={() => toggleDrawer()}
+                  onCancel={toggleDrawer}
                   aria-labelledby="nx-drawer-with-esc-example-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="nx-drawer-with-esc-example-title">Header Title</NxDrawer.HeaderTitle>
@@ -68,7 +68,7 @@ export default function NxDrawerEscExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-esc-open-button" onClick={() => toggleDrawer()}>
+          <NxButton id="nx-drawer-esc-open-button" onClick={toggleDrawer}>
             Open Drawer With Dropdown
           </NxButton>
         </NxP>

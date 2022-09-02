@@ -37,7 +37,7 @@ export default function NxDrawerWithNxFormExample() {
 
       {showDrawer && (
         <NxDrawer id="nx-drawer-with-nx-form"
-                  onCancel={() => toggleDrawer()}
+                  onCancel={toggleDrawer}
                   aria-labelledby="drawer-with-form-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="drawer-with-form-title">An Example of A Drawer with Form</NxDrawer.HeaderTitle>
@@ -45,8 +45,8 @@ export default function NxDrawerWithNxFormExample() {
             <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
           </NxDrawer.Header>
 
-          <NxForm onSubmit={() => toggleDrawer()}
-                  onCancel={() => toggleDrawer()}>
+          <NxForm onSubmit={toggleDrawer}
+                  onCancel={toggleDrawer}>
             <NxDrawer.Content>
               <NxFormGroup label="A Field to Fill in" isRequired>
                 <NxStatefulTextInput />
@@ -70,7 +70,7 @@ export default function NxDrawerWithNxFormExample() {
 
       {showDrawerOverflowing && (
       <NxDrawer id="nx-drawer-with-nx-form-overflowing"
-                onCancel={() => toggleDrawerOverflowing()}
+                onCancel={toggleDrawerOverflowing}
                 aria-labelledby="drawer-with-overflowing-form-title">
         <NxDrawer.Header>
           <NxDrawer.HeaderTitle id="drawer-with-overflowing-form-title">Drawer With A Long Form</NxDrawer.HeaderTitle>
@@ -79,8 +79,8 @@ export default function NxDrawerWithNxFormExample() {
         </NxDrawer.Header>
 
         <NxForm className="nx-form"
-                onSubmit={() => toggleDrawerOverflowing()}
-                onCancel={() => toggleDrawerOverflowing()}>
+                onSubmit={toggleDrawerOverflowing}
+                onCancel={toggleDrawerOverflowing}>
           <NxDrawer.Content>
             <NxFormGroup label="Username" isRequired>
               <NxStatefulTextInput/>
@@ -119,12 +119,12 @@ export default function NxDrawerWithNxFormExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-nx-form-open-button" onClick={() => toggleDrawer()}>
+          <NxButton id="nx-drawer-with-nx-form-open-button" onClick={toggleDrawer}>
             Open Drawer with Form
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-nx-form-overflowing-open-button" onClick={() => toggleDrawerOverflowing()}>
+          <NxButton id="nx-drawer-with-nx-form-overflowing-open-button" onClick={toggleDrawerOverflowing}>
             Open Drawer with Overflowing Form
           </NxButton>
         </NxP>

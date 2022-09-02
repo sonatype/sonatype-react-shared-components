@@ -75,7 +75,7 @@ export default function NxDrawerVariantExample() {
       {showNarrowDrawer && (
         <NxDrawer id="nx-drawer-variant-narrow"
                   variant="narrow"
-                  onCancel={() => toggleNarrowDrawer()}
+                  onCancel={toggleNarrowDrawer}
                   aria-labelledby="narrow-drawer-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="narrow-drawer-title">Header Title</NxDrawer.HeaderTitle>
@@ -87,7 +87,7 @@ export default function NxDrawerVariantExample() {
       )}
       {showNormalDrawer && (
       <NxDrawer id="nx-drawer-variant-normal"
-                onCancel={() => toggleNormalDrawer()}
+                onCancel={toggleNormalDrawer}
                 aria-labelledby="normal-drawer-title">
         <NxDrawer.Header>
           <NxDrawer.HeaderTitle id="narrow-drawer-title">Header Title</NxDrawer.HeaderTitle>
@@ -114,12 +114,12 @@ export default function NxDrawerVariantExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-variant-narrow-open-button" onClick={() => toggleNarrowDrawer()}>
+          <NxButton id="nx-drawer-variant-narrow-open-button" onClick={toggleNarrowDrawer}>
             Open Drawer (Narrow)
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-variant-normal-open-button" onClick={() => toggleNormalDrawer()}>
+          <NxButton id="nx-drawer-variant-normal-open-button" onClick={toggleNormalDrawer}>
             Open Drawer (Normal)
           </NxButton>
         </NxP>

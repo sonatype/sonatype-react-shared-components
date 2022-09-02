@@ -80,7 +80,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
 
       {showDrawerWithSubtitle && (
         <NxDrawer id="nx-drawer-with-subtitle"
-                  onCancel={() => toggleDrawerWithSubtitle()}
+                  onCancel={toggleDrawerWithSubtitle}
                   aria-labelledby="drawer-with-subtitle-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="drawer-with-subtitle-title">Drawer With Subtitle</NxDrawer.HeaderTitle>
@@ -91,7 +91,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
       )}
       {showDrawerWithDescription && (
         <NxDrawer id="nx-drawer-with-description"
-                  onCancel={() => toggleDrawerWithDescription()}
+                  onCancel={toggleDrawerWithDescription}
                   aria-labelledby="drawer-with-description-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="drawer-with-description-title">Drawer With Description</NxDrawer.HeaderTitle>
@@ -102,7 +102,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
       )}
       {showDrawerWithBoth && (
         <NxDrawer id="nx-drawer-with-subtitle-and-description"
-                  onCancel={() => toggleDrawerWithBoth()}
+                  onCancel={toggleDrawerWithBoth}
                   aria-labelledby="drawer-with-both-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="drawer-with-both-title">Drawer With Both</NxDrawer.HeaderTitle>
@@ -128,18 +128,18 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-subtitle-open-button" onClick={() => toggleDrawerWithSubtitle()}>
+          <NxButton id="nx-drawer-with-subtitle-open-button" onClick={toggleDrawerWithSubtitle}>
             Open Drawer with Subtitle
           </NxButton>
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-with-description-open-button" onClick={() => toggleDrawerWithDescription()}>
+          <NxButton id="nx-drawer-with-description-open-button" onClick={toggleDrawerWithDescription}>
             Open Drawer with Description
           </NxButton>
         </NxP>
         <NxP>
           <NxButton id="nx-drawer-with-subtitle-and-description-open-button"
-                    onClick={() => toggleDrawerWithBoth()}>
+                    onClick={toggleDrawerWithBoth}>
             Open Drawer with Both
           </NxButton>
         </NxP>
