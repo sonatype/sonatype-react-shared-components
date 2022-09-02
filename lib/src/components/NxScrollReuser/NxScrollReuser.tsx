@@ -9,12 +9,14 @@ import useResizeObserver from '@react-hook/resize-observer';
 import { useThrottleCallback } from '@react-hook/throttle';
 
 import { Props } from './types';
-import { clamp, dec, defaultTo, identity, inc } from 'ramda';
+import { always, clamp, dec, identity, inc, isNil } from 'ramda';
 
 // intended to wrap division operations that may result in NaN, returns zero instead in that case
-const divOrZero = (x: number | null, y: number | null) => ((x ?? 0) / (y ?? 0)) ?? 0;
+const divOrZero = (x: number, y: number) => x === 0 || y === 0 ? 0 : x / y;
 
-export default function NxScrollReuser({ children, reuseChildren }: Props) {
+const DEFAULT_INITIAL_CHILD_COUNT = 40;
+
+export default function NxScrollReuser({ children, reuseChildren, initialChildCount }: Props) {
   const fullParent = children,
 
       parentRef = useRef<HTMLElement>(null),
@@ -23,27 +25,34 @@ export default function NxScrollReuser({ children, reuseChildren }: Props) {
 
       [parentHeight, setParentHeight] = useState<number | null>(null),
       [childHeight, setChildHeight] = useState<number | null>(null),
-      renderedChildCount = Math.ceil(divOrZero(parentHeight, childHeight)) + 2,
-      initializing = parentHeight <= childHeight,
+      normalizedChildHeight = childHeight ?? 0,
+      renderedChildCount = parentHeight == null || childHeight == null ? null :
+        Math.ceil(divOrZero(parentHeight, childHeight)) + 2,
 
-      cloneWithKey = (child: ReactElement, idx: number) => React.cloneElement(child, { key: idx % renderedChildCount }),
-      keyedChildren = useMemo(() =>
-        reuseChildren !== false && !initializing ?
+      cloneWithKey = (child: ReactElement, idx: number) =>
+          React.cloneElement(child, { key: idx % (renderedChildCount as number) }),
+      keyedChildren = useMemo(() => {
+        console.log('useMemo', fullParent.props.children, reuseChildren, renderedChildCount);
+        return reuseChildren !== false && !isNil(renderedChildCount) ?
           // Cannot use React.Children.map because it mangles the keys
           (React.Children.toArray(fullParent.props.children) as ReactElement[]).map(cloneWithKey) :
-          fullParent.props.children,
-      [fullParent.props.children, reuseChildren, renderedChildCount, initializing]
+          fullParent.props.children
+      },
+      [fullParent.props.children, reuseChildren, renderedChildCount]
       ),
       childCount = keyedChildren.length,
 
-      sumChildHeight = childHeight * childCount,
-      renderedChildHeight = childHeight * renderedChildCount,
+      sumChildHeight = normalizedChildHeight * childCount,
+      renderedChildHeight = renderedChildCount == null ? 0 : normalizedChildHeight * renderedChildCount,
 
       [leadingSpacerHeight, setLeadingSpacerHeight] = useState(0),
       [trailingSpacerHeight, setTrailingSpacerHeight] = useState(0),
 
       [firstRenderedChildIdx, setFirstRenderedChildIdx] = useState(0),
-      renderedRealChildren = keyedChildren.slice(firstRenderedChildIdx, firstRenderedChildIdx + renderedChildCount);
+
+      initialRenderedChildCount = renderedChildCount ?? initialChildCount ?? DEFAULT_INITIAL_CHILD_COUNT,
+      renderedRealChildren =
+          keyedChildren.slice(firstRenderedChildIdx, firstRenderedChildIdx + initialRenderedChildCount);
 
   const renderedChildren = (
     <>
@@ -62,27 +71,28 @@ export default function NxScrollReuser({ children, reuseChildren }: Props) {
         parentTop = parentRef.current?.getBoundingClientRect().top,
         leadingSpacerTop = leadingSpacerRef.current?.getBoundingClientRect().top,
         topDifference = (parentTop ?? 0) - (leadingSpacerTop ?? 0),
-        topTooClose = topDifference < childHeight,
-        topTooFar = topDifference > childHeight * 2,
+        topTooClose = topDifference < normalizedChildHeight,
+        topTooFar = topDifference > normalizedChildHeight * 2,
         adjust =
           topTooClose ? dec :
           topTooFar ? inc :
           identity,
         sumSpacerHeight = sumChildHeight - renderedChildHeight,
-        clampFirstRenderedChildIdx = clamp(0, childCount - renderedChildCount),
+        clampFirstRenderedChildIdx = renderedChildCount == null ? always(0) :
+            clamp(0, childCount - renderedChildCount),
         clampSpacerHeight = clamp(0, sumSpacerHeight),
         newFirstRenderedChildIdx = clampFirstRenderedChildIdx(
-            adjust(Math.floor(divOrZero(scrollTop / childHeight)) - 2)
+            adjust(Math.floor(divOrZero(scrollTop, normalizedChildHeight)) - 2)
         ),
-        newLeadingSpacerHeight = clampSpacerHeight(newFirstRenderedChildIdx * childHeight),
-        newTrailingSpacerHeight = clampSpacerHeight(
-            sumChildHeight - (newLeadingSpacerHeight + renderedChildCount * childHeight)
+        newLeadingSpacerHeight = clampSpacerHeight(newFirstRenderedChildIdx * normalizedChildHeight),
+        newTrailingSpacerHeight = renderedChildCount == null ? 0 : clampSpacerHeight(
+            sumChildHeight - (newLeadingSpacerHeight + renderedChildCount * normalizedChildHeight)
         );
 
     setFirstRenderedChildIdx(newFirstRenderedChildIdx);
     setLeadingSpacerHeight(newLeadingSpacerHeight);
     setTrailingSpacerHeight(newTrailingSpacerHeight);
-  }, [childCount, childHeight, renderedChildCount, renderedChildHeight, sumChildHeight]), 15);
+  }, [childCount, normalizedChildHeight, renderedChildCount, renderedChildHeight, sumChildHeight]), 15);
 
   const adjustedParent = React.cloneElement(fullParent, {
     ref: parentRef,
@@ -94,11 +104,19 @@ export default function NxScrollReuser({ children, reuseChildren }: Props) {
     if (parentRef.current) {
       // note: not counting the spacer
       const firstChild = parentRef.current.children[1],
-          secondChild = parentRef.current.children[2],
-          firstChildTop = firstChild?.getBoundingClientRect()?.top ?? 0,
-          secondChildTop = secondChild?.getBoundingClientRect()?.top ?? 0;
+          secondChild = parentRef.current.children[2];
 
-      setChildHeight(secondChildTop - firstChildTop);
+      if (!secondChild) {
+        setChildHeight(0);
+      }
+      else {
+        const firstChildTop = firstChild?.getBoundingClientRect()?.top ?? 0,
+            secondChildTop = secondChild?.getBoundingClientRect()?.top ?? 0;
+
+        setChildHeight(secondChildTop - firstChildTop);
+      }
+
+      setParentHeight(parentRef.current.clientHeight);
     }
   }, []);
 

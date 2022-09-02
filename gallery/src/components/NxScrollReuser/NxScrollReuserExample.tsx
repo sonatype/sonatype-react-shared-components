@@ -11,7 +11,7 @@ import { NxList, NxScrollReuser } from '@sonatype/react-shared-components';
 
 export default function NxScrollReuserExample() {
   return (
-    <NxScrollReuser>
+    <NxScrollReuser initialChildCount={11}>
       <NxList className="nx-scrollable">
         { range(1, 100000).map(i =>
           <NxList.Item key={i}>
