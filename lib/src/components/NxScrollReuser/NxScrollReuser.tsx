@@ -26,17 +26,16 @@ export default function NxScrollReuser({ children, reuseChildren, initialChildCo
       [parentHeight, setParentHeight] = useState<number | null>(null),
       [childHeight, setChildHeight] = useState<number | null>(null),
       normalizedChildHeight = childHeight ?? 0,
-      renderedChildCount = parentHeight == null || childHeight == null ? null :
-        Math.ceil(divOrZero(parentHeight, childHeight)) + 2,
+      renderedChildCount =
+          parentHeight == null || childHeight == null ? null : Math.ceil(divOrZero(parentHeight, childHeight)) + 2,
 
       cloneWithKey = (child: ReactElement, idx: number) =>
-          React.cloneElement(child, { key: idx % (renderedChildCount as number) }),
+        React.cloneElement(child, { key: idx % (renderedChildCount as number) }),
       keyedChildren = useMemo(() => {
-        console.log('useMemo', fullParent.props.children, reuseChildren, renderedChildCount);
         return reuseChildren !== false && !isNil(renderedChildCount) ?
           // Cannot use React.Children.map because it mangles the keys
           (React.Children.toArray(fullParent.props.children) as ReactElement[]).map(cloneWithKey) :
-          fullParent.props.children
+          fullParent.props.children;
       },
       [fullParent.props.children, reuseChildren, renderedChildCount]
       ),
@@ -78,8 +77,8 @@ export default function NxScrollReuser({ children, reuseChildren, initialChildCo
           topTooFar ? inc :
           identity,
         sumSpacerHeight = sumChildHeight - renderedChildHeight,
-        clampFirstRenderedChildIdx = renderedChildCount == null ? always(0) :
-            clamp(0, childCount - renderedChildCount),
+        clampFirstRenderedChildIdx =
+            renderedChildCount == null ? always(0) : clamp(0, childCount - renderedChildCount),
         clampSpacerHeight = clamp(0, sumSpacerHeight),
         newFirstRenderedChildIdx = clampFirstRenderedChildIdx(
             adjust(Math.floor(divOrZero(scrollTop, normalizedChildHeight)) - 2)
