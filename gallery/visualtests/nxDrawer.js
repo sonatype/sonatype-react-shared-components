@@ -151,7 +151,6 @@ describe('NxDrawer', function() {
       const [openButton] = await waitAndGetElements('#nx-drawer-esc-open-button');
 
       await openButton.click();
-
       await wait(200);
 
       const [drawer, dropdownToggle] = await waitAndGetElements(
@@ -160,7 +159,6 @@ describe('NxDrawer', function() {
       );
 
       expect(await isInDocument(drawer)).toBe(true);
-
       expect(await isInDocument(dropdownToggle)).toBe(true);
 
       await dropdownToggle.click();
@@ -172,17 +170,13 @@ describe('NxDrawer', function() {
       await pressEsc();
 
       expect(await isInDocument(drawer)).toBe(true);
-
       expect(await isInDocument(dropdownMenu)).toBe(false);
-
       expect(await isFocused(dropdownToggle)).toBe(true);
 
       await pressEsc();
-
       await wait(200);
 
       expect(await isInDocument(drawer)).toBe(false);
-
       expect(await isFocused(openButton)).toBe(true);
     });
   });
