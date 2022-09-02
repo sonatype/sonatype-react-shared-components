@@ -8,9 +8,20 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxToast', function() {
-  const openButton = '.nx-btn-bar .nx-btn--secondary';
-  const toastContainer = '.nx-toast-container';
+
   const viewportSize = { width: 1366, height: 1000 };
+
+  const launchToastsFromPage = (wait, waitAndGetElements) => async () => {
+
+    const [openToastBtn] = await waitAndGetElements('.nx-btn-bar .nx-btn--secondary');
+    await openToastBtn.click();
+    await openToastBtn.click();
+
+    await wait(500);
+
+    const [container] = await waitAndGetElements('.nx-toast-container');
+    return container;
+  };
 
   describe('with global sidebar and header', function() {
     const {
@@ -21,30 +32,19 @@ describe('NxToast', function() {
       a11yTest
     } = setupBrowser('#/NxToastComplexLayoutExample', false);
 
-    async function launchToasts(toastsContainer, buttonSelector) {
-
-      const [openToastBtn] = await waitAndGetElements(buttonSelector);
-      await openToastBtn.click();
-      await openToastBtn.click();
-
-      // wait for animation
-      await wait(500);
-
-      const [container] = await waitAndGetElements(toastsContainer);
-      return container;
-    }
+    const launchToasts = launchToastsFromPage(wait, waitAndGetElements);
 
     beforeEach(async function() {
       await getPage().setViewport(viewportSize);
     });
 
     it('is positioned correctly', async function() {
-      await launchToasts(toastContainer, openButton);
+      await launchToasts();
       await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', async function() {
-      await launchToasts(toastContainer, openButton);
+      await launchToasts();
       a11yTest();
     });
   });
@@ -58,29 +58,19 @@ describe('NxToast', function() {
       a11yTest
     } = setupBrowser('#/NxToastSimpleLayoutExample', false);
 
-    async function launchToasts(toastsContainer, buttonSelector) {
-
-      const [openToastBtn] = await waitAndGetElements(buttonSelector);
-      await openToastBtn.click();
-      await openToastBtn.click();
-
-      await wait(500);
-
-      const [container] = await waitAndGetElements(toastsContainer);
-      return container;
-    }
+    const launchToasts = launchToastsFromPage(wait, waitAndGetElements);
 
     beforeEach(async function() {
       await getPage().setViewport(viewportSize);
     });
 
     it('is positioned correctly', async function() {
-      await launchToasts(toastContainer, openButton);
+      await launchToasts();
       await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', async function() {
-      await launchToasts(toastContainer, openButton);
+      await launchToasts();
       a11yTest(null, true);
     });
   });
@@ -94,29 +84,19 @@ describe('NxToast', function() {
       a11yTest
     } = setupBrowser('#/NxToastLegacySectionScrollingExample', false);
 
-    async function launchToasts(toastsContainer, buttonSelector) {
-
-      const [openToastBtn] = await waitAndGetElements(buttonSelector);
-      await openToastBtn.click();
-      await openToastBtn.click();
-
-      await wait(500);
-
-      const [container] = await waitAndGetElements(toastsContainer);
-      return container;
-    }
+    const launchToasts = launchToastsFromPage(wait, waitAndGetElements);
 
     beforeEach(async function() {
       await getPage().setViewport(viewportSize);
     });
 
     it('is positioned correctly', async function() {
-      await launchToasts(toastContainer, openButton);
+      await launchToasts();
       await checkFullPageScreenshot();
     });
 
     it('passes a11y checks', async function() {
-      await launchToasts(toastContainer, openButton);
+      await launchToasts();
       a11yTest(null, true);
     });
   });
