@@ -8,6 +8,7 @@ import React, { useEffect } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { mergeAll, values } from 'ramda';
+import { NxPageMain } from '@sonatype/react-shared-components';
 
 // polyfill Array.prototype.includes which is used in query-string
 import 'core-js/features/array/includes';
@@ -33,6 +34,7 @@ import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFul
 import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
 import NxGlobalHeaderNoActionsExample from './styles/NxGlobalHeader/NxGlobalHeaderNoActionsExample';
 import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEmptyExample';
+
 import NxSystemNoticeGlobalSidebarExample from './styles/NxSystemNotice/NxSystemNoticeGlobalSidebarExample';
 import NxSystemNoticeTraditionalPageExample from './styles/NxSystemNotice/NxSystemNoticeTraditionalPageExample';
 import NxSystemNoticeMultipleExample from './styles/NxSystemNotice/NxSystemNoticeMultipleExample';
@@ -41,6 +43,10 @@ import NxGlobalSidebarFooterMinimalExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterMinimalExample';
 import NxGlobalSidebarFooterEmptyExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
+
+import NxToastSimpleLayoutExample from './components/NxToast/NxToastSimpleLayoutExample';
+import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayoutExample';
+import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
 
 const pageMappings = mergeAll(values(pageConfig));
 
@@ -56,14 +62,14 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
   if (Content) {
     // Put a key on <main> so that it re-renders entirely on route change, resetting scroll position
     return (
-      <main key={pageName || 'home'} className="nx-page-main">
+      <NxPageMain key={pageName || 'home'}>
         <div className="nx-page-title">
           <h1 className="nx-h1">
             {pageHeader}
           </h1>
         </div>
         <Content/>
-      </main>
+      </NxPageMain>
     );
   }
   else {
@@ -113,6 +119,24 @@ function Application() {
           <SectionScrollingWrapper>
             <NxGlobalHeaderEmptyExample />
           </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxToastSimpleLayoutExample">
+          <SectionScrollingWrapper>
+            <NxToastSimpleLayoutExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxToastComplexLayoutExample">
+          <SectionScrollingWrapper>
+            <NxToastComplexLayoutExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxToastLegacySectionScrollingExample">
+          <SectionScrollingWrapper>
+            <NxToastLegacyLayoutExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxToastLegacyPageScrollingExample">
+          <NxToastLegacyLayoutExample />
         </Route>
         <Route exact path="/NxSystemNoticeGlobalSidebarExample">
           <SectionScrollingWrapper>
