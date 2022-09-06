@@ -10,7 +10,7 @@ import * as PropTypes from 'prop-types';
 export const NX_DRAWER_VARIANTS = ['normal', 'narrow'] as const;
 export type NX_DRAWER_VARIANT_TYPE = (typeof NX_DRAWER_VARIANTS)[number];
 
-export interface Props extends HTMLAttributes<HTMLDialogElement> {
+export interface Props extends Omit<HTMLAttributes<HTMLDialogElement>, 'open'> {
   onCancel: () => void;
   children?: ReactNode;
   variant?: NX_DRAWER_VARIANT_TYPE | null;
