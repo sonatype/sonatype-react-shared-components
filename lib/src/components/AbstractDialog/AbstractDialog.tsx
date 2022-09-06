@@ -174,7 +174,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       }
       <dialog ref={mergedRef}
               role={role || 'dialog'}
-              aria-modal="true"
+              aria-modal={!!isModal}
               onKeyDown={dialogKeydownListener}
               className={className}
               {...attrs}

@@ -31,13 +31,6 @@ describe('AbstractDialog', function() {
     expect(quickRender({ children: <div data-testid="bar"/> }).getByTestId('bar')).toBeInTheDocument();
   });
 
-  it('forwards the dialog element ref', function() {
-    const ref = React.createRef<HTMLDialogElement>();
-    render(<AbstractDialog ref={ref} onCancel={() => {}} />);
-    const dialog = screen.getByRole('dialog', { hidden: true });
-    expect(ref.current).toBe(dialog);
-  });
-
   it('applies the className to the dialog element', function() {
     expect(getDialog({ className: 'foo' })).toHaveClass('foo');
   });
@@ -54,6 +47,20 @@ describe('AbstractDialog', function() {
 
   it('applies passed in role attribute into the dialog', function() {
     expect(getDialog({ role: 'asdf' })).toHaveAttribute('role', 'asdf');
+  });
+
+  it('sets aria-modal to true if isModal is true', function() {
+    const modalDialog = getDialog({ isModal: true });
+    expect(modalDialog).toHaveAttribute('aria-modal', 'true');
+    const dialog = getDialog({ isModal: false });
+    expect(dialog).toHaveAttribute('aria-modal', 'false');
+  });
+
+  it('forwards the dialog element ref', function() {
+    const ref = React.createRef<HTMLDialogElement>();
+    render(<AbstractDialog ref={ref} onCancel={() => {}} />);
+    const dialog = screen.getByRole('dialog', { hidden: true });
+    expect(ref.current).toBe(dialog);
   });
 
   describe('Dialog event listener support', () => {
