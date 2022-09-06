@@ -37,7 +37,7 @@ describe('NxDrawer', function() {
     it('passes a11y', async function() {
       await getPage().setViewport(viewportSize);
       await openDrawer(buttonId, drawerId);
-      await a11yTest();
+      await a11yTest(null, true)();
     });
   });
 
@@ -59,7 +59,7 @@ describe('NxDrawer', function() {
       it('passes a11y', async function() {
         await getPage().setViewport(viewportSize);
         await openDrawer(buttonId, drawerId);
-        await a11yTest();
+        await a11yTest(null, true)();
       });
     });
 
@@ -76,7 +76,7 @@ describe('NxDrawer', function() {
       it('passes a11y', async function() {
         await getPage().setViewport(viewportSize);
         await openDrawer(buttonId, drawerId);
-        await a11yTest();
+        await a11yTest(null, true)();
       });
     });
 
@@ -93,14 +93,14 @@ describe('NxDrawer', function() {
       it('passes a11y', async function() {
         await getPage().setViewport(viewportSize);
         await openDrawer(buttonId, drawerId);
-        await a11yTest();
+        await a11yTest(null, true)();
       });
     });
   });
 
   describe('NxDrawer with Narrow Variant', function() {
     const browserSetup = setupBrowser('#/NxDrawerVariantExample', false);
-    const { getPage, checkFullPageScreenshot, a11yTest } = browserSetup;
+    const { getPage, checkFullPageScreenshot } = browserSetup;
     const openDrawer = openDrawerFromPage(browserSetup);
 
     const buttonId = 'nx-drawer-variant-narrow-open-button';
@@ -110,12 +110,6 @@ describe('NxDrawer', function() {
       await getPage().setViewport(viewportSize);
       await openDrawer(buttonId, drawerId);
       await checkFullPageScreenshot();
-    });
-
-    it('passes a11y', async function() {
-      await getPage().setViewport(viewportSize);
-      await openDrawer(buttonId, drawerId);
-      await a11yTest();
     });
   });
 
@@ -136,7 +130,7 @@ describe('NxDrawer', function() {
     it('passes a11y', async function() {
       await getPage().setViewport(viewportSize);
       await openDrawer(buttonId, drawerId);
-      await a11yTest();
+      await a11yTest(null, true)();
     });
   });
 
