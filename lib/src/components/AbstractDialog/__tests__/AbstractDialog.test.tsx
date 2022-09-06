@@ -21,7 +21,7 @@ import useToggle from '../../../util/useToggle';
 describe('AbstractDialog', function() {
   const minimalProps: Props = {
     children: 'A message inside the dialog element.',
-    onCancel: jest.fn()
+    onCancel: () => {}
   };
 
   const quickRender = rtlRender(AbstractDialog, minimalProps);
