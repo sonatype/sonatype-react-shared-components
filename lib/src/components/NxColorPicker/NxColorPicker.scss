@@ -31,8 +31,10 @@
   height: $size;
   width: $size;
 
+  vertical-align: top;
+
   &.selected {
-    border-color: var(--nx-swatch-teal-60);
+    padding: calc((var(--nx-spacing-base) / 2) - 1px);
   }
 
   &:focus-within {
