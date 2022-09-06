@@ -29,7 +29,6 @@ const _NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onC
 
   return (
     <AbstractDialog role={role}
-                    aria-modal="true"
                     className="nx-modal-backdrop"
                     tabIndex={-1}
                     onCancel={onCancel as CloseHandler}
