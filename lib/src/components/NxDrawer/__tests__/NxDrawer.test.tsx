@@ -34,6 +34,12 @@ describe('NxDrawer', function() {
     expect(dialog.children[0].children[0]).toHaveClass('nx-drawer__panel');
   });
 
+  it('has a dialog element with aria-modal set to false', function() {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const dialog = getDrawer()!;
+    expect(dialog).toHaveAttribute('aria-modal', 'false');
+  });
+
   it('renders children nodes within nx-drawer__panel', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer({ children: <div data-testid="foo"/> })!;
@@ -46,7 +52,12 @@ describe('NxDrawer', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = quickRender({ className: 'foo' });
     const dialog = drawer.getByRole('dialog', { hidden: true });
+
     expect(dialog).toHaveClass('foo');
+
+    for (const cls of Array.from(dialog.classList)) {
+      expect(dialog).toHaveClass(cls);
+    }
   });
 
   it('includes any passed in attributes to the dialog element', function() {
@@ -72,8 +83,10 @@ describe('NxDrawer', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(drawerRef.current!.dialog).toBe(dialog);
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    drawerRef.current!.closeDrawer();
+    act(() => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      drawerRef.current!.closeDrawer();
+    });
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const animationWrapperEl = container.querySelector('.nx-drawer__animation-wrapper')!;
