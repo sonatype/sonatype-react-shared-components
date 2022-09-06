@@ -4,7 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, HTMLAttributes, ReactNode } from 'react';
+import React, {
+  forwardRef,
+  HTMLAttributes,
+  ReactNode,
+  Ref,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState
+} from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 
@@ -51,7 +61,12 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
   );
 };
 
-const _NxDrawer = (props: Props) => {
+export interface DrawerRef {
+  dialog: HTMLDialogElement;
+  closeDrawer: () => void;
+}
+
+function NxDrawer(props: Props, ref: Ref<DrawerRef>) {
   const {
     className,
     onCancel,
@@ -70,6 +85,11 @@ const _NxDrawer = (props: Props) => {
       onCancel();
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    dialog: dialogRef.current as HTMLDialogElement,
+    closeDrawer
+  }));
 
   useEffect(() => {
     const clickOutsideTargetElement = dialogRef.current?.getElementsByClassName('nx-drawer__panel')[0];
@@ -114,16 +134,18 @@ const _NxDrawer = (props: Props) => {
       </AbstractDialog>
     </NxDrawerContext.Provider>
   );
-};
+}
 
-const NxDrawer = Object.assign(_NxDrawer, {
-  propTypes,
-  Header: NxDrawerHeader,
-  Content: withClass('div', 'nx-drawer-content'),
-  HeaderTitle: withClass('h2', 'nx-h2 nx-drawer-header__title'),
-  HeaderSubtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),
-  HeaderDescription: withClass('p', 'nx-p nx-drawer-header__description')
-});
+export default Object.assign(
+    forwardRef<DrawerRef, Props>(NxDrawer),
+    {
+      propTypes,
+      Header: NxDrawerHeader,
+      Content: withClass('div', 'nx-drawer-content'),
+      HeaderTitle: withClass('h2', 'nx-h2 nx-drawer-header__title'),
+      HeaderSubtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),
+      HeaderDescription: withClass('p', 'nx-p nx-drawer-header__description')
+    }
+);
 
-export default NxDrawer;
 export { Props } from './types';

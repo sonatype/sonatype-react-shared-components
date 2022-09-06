@@ -12,7 +12,7 @@ import userEvent from '@testing-library/user-event';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import NxDrawer, { Props } from '../NxDrawer';
+import NxDrawer, { Props, DrawerRef } from '../NxDrawer';
 import NxButton from '../../NxButton/NxButton';
 import useToggle from '../../../util/useToggle';
 
@@ -56,8 +56,34 @@ describe('NxDrawer', function() {
   });
 
   it('adds the nx-drawer--narrow class when the narrow variant prop is specified', function() {
-    const drawer = getDrawer({ variant: 'narrow' });
-    expect(drawer).toHaveClass('nx-drawer--narrow');
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const drawer = getDrawer({ variant: 'narrow' })!;
+    expect(drawer.querySelector('.nx-drawer__panel')).toHaveClass('nx-drawer__panel--narrow');
+  });
+
+  it('forwards the dialog element ref', function() {
+    const drawerRef = React.createRef<DrawerRef>();
+    const mockOnCancel = jest.fn();
+
+    const { container } = render(<NxDrawer ref={drawerRef} onCancel={mockOnCancel} />);
+
+    const dialog = screen.getByRole('dialog', { hidden: true });
+
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    expect(drawerRef.current!.dialog).toBe(dialog);
+
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    drawerRef.current!.closeDrawer();
+
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const animationWrapperEl = container.querySelector('.nx-drawer__animation-wrapper')!;
+    expect(animationWrapperEl).toHaveClass('nx-drawer__animation-wrapper--close');
+
+    act(() => {
+      fireEvent.animationEnd(animationWrapperEl);
+    });
+
+    expect(mockOnCancel).toHaveBeenCalled();
   });
 
   describe('NxDrawer event listener support', () => {
