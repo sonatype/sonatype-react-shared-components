@@ -42,7 +42,7 @@ interface ToastModel {
 }
 
 type alertComponentProps = {
-  role?:string;
+  role?: string;
 };
 
 export default function NxToastSimpleLayoutExample() {
@@ -71,7 +71,7 @@ export default function NxToastSimpleLayoutExample() {
                        onClose={()=> removeToast(id)}>
                 {
                   ToastAlert === NxWarningAlert || ToastAlert === NxInfoAlert ?
-                    <ToastAlert role= 'status'>{message}</ToastAlert> :
+                    <ToastAlert role="status">{message}</ToastAlert> :
                     <ToastAlert>{message}</ToastAlert>
                 }
               </NxToast>

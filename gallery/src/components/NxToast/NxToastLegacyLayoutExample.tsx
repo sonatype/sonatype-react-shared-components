@@ -30,11 +30,10 @@ interface ToastModel {
   id: number;
   alertComponent: ComponentType<alertComponentProps>;
   message: string;
-  role?:string;
 }
 
 type alertComponentProps = {
-  role?:string;
+  role?: string;
 };
 
 export default function NxToastLegacyLayoutExample() {
@@ -64,7 +63,7 @@ export default function NxToastLegacyLayoutExample() {
                        onClose={()=> removeToast(id)}>
                 {
                   ToastAlert === NxWarningAlert || ToastAlert === NxInfoAlert ?
-                    <ToastAlert role= 'status'>{message}</ToastAlert> :
+                    <ToastAlert role="status">{message}</ToastAlert> :
                     <ToastAlert>{message}</ToastAlert>
                 }
               </NxToast>
