@@ -35,13 +35,13 @@
     border-color: var(--nx-swatch-teal-60);
   }
 
-  &:hover {
-    border-color: var(--nx-color-interactive-border-hover);
-  }
-
   &:focus-within {
     border-color: var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
+  }
+
+  &:hover {
+    border-color: var(--nx-color-interactive-border-hover);
   }
 }
 
