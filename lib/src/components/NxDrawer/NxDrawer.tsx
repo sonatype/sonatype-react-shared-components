@@ -87,12 +87,14 @@ const _NxDrawer = (props: Props) => {
 
   const drawerContextValue = { closeDrawer };
 
-  const classes = classnames('nx-drawer', {
-    'nx-drawer--narrow': variant === 'narrow'
-  }, className);
+  const classes = classnames('nx-drawer', className);
 
   const animationWrapperClasses = classnames('nx-drawer__animation-wrapper', {
     'nx-drawer__animation-wrapper--close': isClosing
+  });
+
+  const panelClasses = classnames('nx-drawer__panel', {
+    'nx-drawer__panel--narrow': variant === 'narrow'
   });
 
   const dialogAttrs = omit(['open'], attrs);
@@ -105,7 +107,7 @@ const _NxDrawer = (props: Props) => {
                       isModal={false}
                       {...dialogAttrs}>
         <div className={animationWrapperClasses} onAnimationEnd={handleAnimationEnd}>
-          <div className="nx-drawer__panel">
+          <div className={panelClasses}>
             {children}
           </div>
         </div>

@@ -7,8 +7,6 @@
  @use '../../scss-shared/nx-container-helpers';
  @use '../../scss-shared/nx-text-helpers';
 
-$-box-shadow-offset: 52px;
-
 @keyframes slide-in {
   0% {
     transform: translateX(0);
@@ -65,20 +63,17 @@ $-box-shadow-offset: 52px;
   background-color: transparent;
   color: var(--nx-swatch-grey-30);
   justify-self: end;
-
-  width: 520px + $-box-shadow-offset;
-  height: 100%;
-
+  width: 100%;
+  pointer-events: none;
   z-index: var(--nx-z-index-drawer);
-
-  &--narrow {
-    width: 348px + $-box-shadow-offset;
-  }
 }
 
 .nx-drawer__animation-wrapper {
   display: flex;
   height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
 
   // Prevents flickering
   backface-visibility: hidden;
@@ -102,16 +97,17 @@ $-box-shadow-offset: 52px;
   display: flex;
   align-items: stretch;
   flex-direction: column;
-
+  pointer-events: auto;
   background-color: var(--nx-swatch-white);
-
-  height: 100%;
   position: relative;
-  margin-left: $-box-shadow-offset;
   padding: var(--nx-spacing-6x);
-  width: calc(100% - #{$-box-shadow-offset});
   opacity: 1;
   min-height: 0;
+  width: 520px;
+
+  &--narrow {
+    width: 348px;
+  }
 
   &::after {
     content: " ";
@@ -130,7 +126,6 @@ $-box-shadow-offset: 52px;
     flex-direction: column;
     align-items: stretch;
     height: 100%;
-
     min-height: 0;
   }
 
@@ -140,10 +135,8 @@ $-box-shadow-offset: 52px;
     @include nx-container-helpers.container-vertical;
 
     overflow: auto;
-
     padding: var(--nx-spacing-6x);
     height: 100%;
-
     margin-right: calc(0px - var(--nx-drawer-padding));
     margin-left: calc(0px - var(--nx-drawer-padding));
     margin-bottom: calc(0px - var(--nx-drawer-padding));
@@ -168,7 +161,6 @@ $-box-shadow-offset: 52px;
                  "subtitle subtitle"
                  "description description" / auto min-content;
   padding-bottom: var(--nx-spacing-6x);
-
   flex-shrink: 0;
 
   &__cancel-button, &__title, &__subtitle, &__description {

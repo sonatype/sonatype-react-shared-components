@@ -27,6 +27,7 @@
   min-width: var(--nx-width-page-min);
   height: 100%;
   width: 100%;
+  overflow: hidden;
 
   // NOTE: Most of this template is only used when using nx-page-content--full-width (or no nx-page-content at all).
   // In traditional layouts that use plain nx-page-content, that element manages everything below the second
