@@ -153,7 +153,6 @@
                  "subtitle subtitle"
                  "description description" / auto min-content;
   padding-bottom: var(--nx-spacing-6x);
-  flex-shrink: 0;
 
   &__cancel-button, &__title, &__subtitle, &__description {
     margin: 0;
