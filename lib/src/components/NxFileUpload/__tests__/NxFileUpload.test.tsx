@@ -5,22 +5,24 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { render } from '@testing-library/react';
 import { pipe } from 'ramda';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxFileUpload from '../NxFileUpload';
+import NxForm from '../../NxForm/NxForm';
 
 describe('NxFileUpload', function() {
   const minimalProps = {
         files: null,
         onChange: () => {}
       },
-      render = rtlRender(NxFileUpload, minimalProps),
+      quickRender = rtlRender(NxFileUpload, minimalProps),
       renderEl = rtlRenderElement(NxFileUpload, minimalProps),
       renderInput = pipe(renderEl, el => el?.querySelector('input[type=file]'));
 
   it('renders a file input and a button', function() {
-    const component = render(),
+    const component = quickRender(),
 
         // file inputs have no aria role and the label text is outside of the scope of this component,
         // so we have to query like this
@@ -38,12 +40,23 @@ describe('NxFileUpload', function() {
   });
 
   it('shows an error when there is no file selected, if it isRequired is not isPristine', function() {
-    expect(render().queryByRole('alert')).not.toBeTruthy();
-    expect(render({ isPristine: true }).queryByRole('alert')).not.toBeTruthy();
-    expect(render({ isRequired: true, isPristine: true }).queryByRole('alert')).not.toBeTruthy();
+    expect(quickRender().queryByRole('alert')).not.toBeTruthy();
+    expect(quickRender({ isPristine: true }).queryByRole('alert')).not.toBeTruthy();
+    expect(quickRender({ isRequired: true, isPristine: true }).queryByRole('alert')).not.toBeTruthy();
 
-    expect(render({ isRequired: true, isPristine: false }).queryByRole('alert'))
+    expect(quickRender({ isRequired: true, isPristine: false }).queryByRole('alert'))
         .toHaveTextContent('This field is Required!');
+  });
+
+  it('shows an error when in a form with showValidationErrors if it is isRequired and no file is selected', function() {
+    const renderWithForm = render(
+      <NxForm onSubmit={() => {}} showValidationErrors={true}>
+        <NxFileUpload { ...minimalProps } isRequired={true} />
+      </NxForm>
+    );
+
+    expect(renderWithForm.queryByRole('alert')).toBeTruthy();
+    expect(renderWithForm.queryByRole('alert')).toHaveTextContent('This field is Required!');
   });
 
   it('sets aria-required on the input if isRequired is true', function() {
