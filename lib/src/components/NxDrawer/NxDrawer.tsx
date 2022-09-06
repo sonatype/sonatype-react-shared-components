@@ -103,7 +103,7 @@ function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
     document.addEventListener('click', listener);
 
     return () => document.removeEventListener('click', listener);
-  }, [dialogRef]);
+  }, []);
 
   const drawerContextValue = { closeDrawer };
 
