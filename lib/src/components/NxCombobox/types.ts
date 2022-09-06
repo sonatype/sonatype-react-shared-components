@@ -19,7 +19,6 @@ export interface Props<T extends string | number = string>
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
   autoComplete?: boolean | null;
-  autoSelectedVal?: string | null;
   validatable?: boolean | null;
   isPristine?: boolean | null;
   validationErrors?: string | string[] | null;
@@ -38,7 +37,6 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   disabled: PropTypes.bool,
   emptyMessage: PropTypes.node,
   autoComplete: PropTypes.bool,
-  autoSelectedVal: PropTypes.string,
   validatable: PropTypes.bool,
   isPristine: PropTypes.bool,
   validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string])

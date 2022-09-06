@@ -31,8 +31,7 @@ export default function NxComboboxExample() {
   const [matches, setMatches] = useState<DataItem<number, string>[]>([]),
       [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
-      latestExecutedQueryRef = useRef<string | null>(null),
-      [autoSelectedVal, setAutoSelectedVal] = useState('');
+      latestExecutedQueryRef = useRef<string | null>(null);
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
@@ -40,14 +39,6 @@ export default function NxComboboxExample() {
     search(query).then(matches => {
       // ensure that results from stale or out-of-order queries do not display
       if (latestExecutedQueryRef.current === query) {
-        // If the typed characters match the beginning of the name of option in the dropdown,
-        // set the autoSelectedVal to the displayName of the first match option.
-        if (matches.length) {
-          const firstOptVal = matches[0].displayName;
-          if (firstOptVal.toLocaleLowerCase().indexOf(query.toLowerCase()) === 0) {
-            setAutoSelectedVal(firstOptVal);
-          }
-        }
         setMatches(matches);
         setLoading(false);
       }
@@ -55,14 +46,12 @@ export default function NxComboboxExample() {
   }, [matches, query]), NX_STANDARD_DEBOUNCE_TIME);
 
   function onChange(query: string) {
-    setAutoSelectedVal('');
     setQuery(query);
   }
 
   function onSearch(query: string) {
     if (query !== '') {
       setLoading(true);
-      setAutoSelectedVal('');
       executeQuery(query);
     }
   }
@@ -71,7 +60,6 @@ export default function NxComboboxExample() {
     <NxCombobox loading={loading}
                 autoComplete={true}
                 matches={matches}
-                autoSelectedVal={autoSelectedVal}
                 value={query}
                 onChange={onChange}
                 onSearch={onSearch}

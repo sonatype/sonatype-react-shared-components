@@ -59,23 +59,21 @@ describe('NxCombobox', function() {
         expect(inputElement).toHaveAttribute('aria-autocomplete', 'both');
       });
 
-  it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true' +
-    'and the `autoSelectedVal is passed down', async function() {
-    const { getByRole, rerender } = quickRender({
-          autoSelectedVal: '',
-          autoComplete: true,
-          matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }]
-        }),
-        inputElement = getByRole('combobox');
+  it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true',
+      async function() {
+        const { getByRole, rerender } = quickRender({
+              autoComplete: true,
+              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }]
+            }),
+            inputElement = getByRole('combobox');
 
-    await userEvent.type(inputElement, 'f');
-    rerender(
-      <NxCombobox { ...minimalProps }
-                  autoSelectedVal={'Foo'}
-                  autoComplete={true}
-                  matches={ [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }/>);
-    expect(inputElement).toHaveValue('Foo');
-  });
+        await userEvent.type(inputElement, 'f');
+        rerender(
+          <NxCombobox { ...minimalProps }
+                      autoComplete={true}
+                      matches={ [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }/>);
+        expect(inputElement).toHaveValue('Foo');
+      });
 
   it('sets aria-expanded on the input to true when the dropdown displayed which has aria-hidden set to false',
       async function() {
@@ -100,7 +98,7 @@ describe('NxCombobox', function() {
   });
 
   it('does not call onSearch whenever the input\'s onChange event fires with a value that does not differ' +
-    'after trimming,', async function() {
+    'after trimming', async function() {
     const onSearch = jest.fn(),
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
@@ -234,7 +232,7 @@ describe('NxCombobox', function() {
     const onSearch = jest.fn(),
         jsx =
           <>
-            <NxCombobox { ...minimalProps } value={'f'} loadError={'err'} onSearch={onSearch}/>
+            <NxCombobox { ...minimalProps } value="f" loadError="err" onSearch={onSearch}/>
             <button type='button'>Click</button>
           </>,
         component = render(jsx),

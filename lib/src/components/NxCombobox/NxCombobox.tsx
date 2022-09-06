@@ -38,7 +38,6 @@ function NxComboboxRender<T extends string | number = string>(
         validatable,
         isPristine,
         validationErrors,
-        autoSelectedVal,
         id,
         'aria-required': ariaRequired,
         'aria-describedby': ariaDescribedBy,
@@ -54,7 +53,7 @@ function NxComboboxRender<T extends string | number = string>(
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       [showDropdown, setShowDropdown] = useState(false),
       [inlineStyle, setInlineStyle] = useState(false),
-      inputVal = autoSelectedVal && inlineStyle ? autoSelectedVal : value,
+      inputVal = autoComplete && focusableBtnIndex !== null ? matches[focusableBtnIndex].displayName : value,
 
       inputId = useUniqueId('nx-combobox-input', id),
       alertDropdownId = useUniqueId('nx-combobox-alert-dropdown'),
@@ -92,7 +91,6 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
-    setFocusableBtnIndex(null);
 
     // Check if useragent string contains Safari
     const isSafari = navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1;
@@ -104,18 +102,12 @@ function NxComboboxRender<T extends string | number = string>(
 
       // The automatically selected suggestion becomes the value of the combobox
       // when the combobox loses focus.
-      if (autoComplete) {
-        if (autoSelectedVal && inlineStyle) {
-          onChange(autoSelectedVal);
-          // sync the dropdown
-          onSearch(autoSelectedVal);
-        }
-        else {
-          onSearch(value);
-        }
-        setInlineStyle(false);
+      if (autoComplete && focusableBtnIndex !== null) {
+        const elToFocusText = matches[focusableBtnIndex].displayName;
+        onChange(elToFocusText);
+        onSearch(elToFocusText);
       }
-
+      setFocusableBtnIndex(null);
       setShowDropdown(false);
     }
   }
@@ -136,10 +128,6 @@ function NxComboboxRender<T extends string | number = string>(
     focusTextInput();
     onSearch(val.trim());
     setShowDropdown(true);
-
-    if (autoComplete && !value.includes(val)) {
-      setInlineStyle(true);
-    }
   }
 
   function focusTextInput() {
@@ -149,15 +137,14 @@ function NxComboboxRender<T extends string | number = string>(
   // helper for focusing different buttons in the dropdown menu
   const adjustBtnFocus = (adjust: (i: number) => number) => () => {
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
-            elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null,
-            elToFocusText = !isEmpty ? matches[newFocusableBtnIndex].displayName : null;
+            elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
 
         if (elToFocus) {
           setFocusableBtnIndex(newFocusableBtnIndex);
           elToFocus.scrollIntoView({ block: 'nearest' });
 
-          if (autoComplete && elToFocusText) {
-            onChange(elToFocusText);
+          if (autoComplete) {
+            setInlineStyle(false);
           }
         }
       },
@@ -174,20 +161,9 @@ function NxComboboxRender<T extends string | number = string>(
     setShowDropdown(false);
   }
 
-  function handleOnKeyUp(evt: KeyboardEvent<HTMLElement>) {
-    switch (evt.key) {
-      case 'Backspace':
-        // If backspace is pressed, the value of the input box becomes the backspaced text,
-        // set the inlineStyle to false.
-        if (autoComplete) {
-          setInlineStyle(false);
-        }
-        break;
-    }
-  }
-
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
-    const inputEle = evt.currentTarget as HTMLInputElement;
+    const inputEle = evt.currentTarget as HTMLInputElement,
+        elToFocusText = focusableBtnIndex !== null ? matches[focusableBtnIndex].displayName : null;
     switch (evt.key) {
       case 'Enter':
         if (focusableBtnIndex !== null) {
@@ -197,21 +173,13 @@ function NxComboboxRender<T extends string | number = string>(
         break;
       case 'Home':
         inputEle.setSelectionRange(0, 0);
-        setFocusableBtnIndex(null);
         evt.preventDefault();
         break;
       case 'End':
-        autoSelectedVal && inlineStyle
-          ? inputEle.setSelectionRange(autoSelectedVal.length, autoSelectedVal.length)
+        autoComplete && elToFocusText
+          ? inputEle.setSelectionRange(elToFocusText.length, elToFocusText.length)
           : inputEle.setSelectionRange(value.length, value.length);
-        setFocusableBtnIndex(null);
         evt.preventDefault();
-        break;
-      case 'ArrowLeft':
-        setFocusableBtnIndex(null);
-        break;
-      case 'ArrowRight':
-        setFocusableBtnIndex(null);
         break;
       case 'ArrowDown':
         if (!isEmpty) {
@@ -235,11 +203,23 @@ function NxComboboxRender<T extends string | number = string>(
 
         evt.preventDefault();
         break;
+      case 'Backspace':
+        if (autoComplete) {
+          setInlineStyle(false);
+        }
+        break;
       case 'Escape':
-        setShowDropdown(false);
-        setFocusableBtnIndex(null);
-        if (!showDropdown) {
-          handleOnChange('');
+        if (showDropdown) {
+          setShowDropdown(false);
+        }
+        else {
+          onChange('');
+          setFocusableBtnIndex(null);
+        }
+        break;
+      default:
+        if (autoComplete) {
+          setInlineStyle(true);
         }
         break;
     }
@@ -248,14 +228,25 @@ function NxComboboxRender<T extends string | number = string>(
   useEffect(function() {
     // Nullify focusableBtnIndex whenever the number of matches changes
     setFocusableBtnIndex(null);
-    // Highlight the portion of the selected suggestion that has not been typed by the user and display
-    // a completion string inline after the input cursor in the input box and have focus on the first
-    // option in the dropdwon.
-    if (matches.length && inlineStyle && autoSelectedVal) {
-      inputRef.current?.querySelector('input')?.setSelectionRange(value.length, autoSelectedVal.length);
-      setFocusableBtnIndex(0);
+
+    if (matches.length && autoComplete && showDropdown && inlineStyle) {
+      // If the typed characters match the beginning of the name of option in the dropdown,
+      // the first suggestion is automatically selected.
+      const firstOptVal = matches[0].displayName;
+      if (firstOptVal.toLowerCase().indexOf(value.toLowerCase()) === 0) {
+        setFocusableBtnIndex(0);
+      }
     }
   }, [matches]);
+
+  // Highlight the portion of the selected suggestion that has not been typed by the user and display
+  // a completion string inline after the input cursor in the input box.
+  useEffect(function() {
+    if (inlineStyle && focusableBtnIndex === 0) {
+      const firstOptVal = matches[0].displayName;
+      inputRef.current?.querySelector('input')?.setSelectionRange(value.length, firstOptVal.length);
+    }
+  }, [focusableBtnIndex]);
 
   return (
     /*eslint-disable-next-line jsx-a11y/no-static-element-interactions*/
@@ -275,7 +266,6 @@ function NxComboboxRender<T extends string | number = string>(
                    onChange={handleOnChange}
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
-                   onKeyUp={handleOnKeyUp}
                    aria-autocomplete={autoComplete ? 'both' : 'list'}
                    aria-expanded={showDropdown && !isAlert}
                    aria-controls={dropdownId}
