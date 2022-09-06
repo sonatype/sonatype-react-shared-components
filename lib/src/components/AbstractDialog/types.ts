@@ -15,6 +15,6 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
 }
 
 export interface DialogContextValue {
-  dialogEl: HTMLDialogElement | null,
+  dialog: HTMLDialogElement | null,
   onCancel?: CancelHandler;
 }

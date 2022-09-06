@@ -77,7 +77,7 @@ const NxTooltip: FunctionComponent<Props> =
           <Tooltip { ...fixOptional(otherProps) }
                    title={initialized && title || ''}
                    classes={{ tooltip: tooltipClassName }}
-                   PopperProps={{ container: parentModalContextValue?.dialogEl }} />
+                   PopperProps={{ container: parentModalContextValue?.dialog }} />
         </TooltipContext.Provider>
       );
     };
