@@ -141,14 +141,6 @@
     margin-left: calc(0px - #{$padding});
     margin-bottom: calc(0px - #{$padding});
   }
-
-  .nx-footer {
-    @include nx-container-helpers.container-vertical;
-
-    border-top: 1px solid var(--nx-swatch-indigo-90);
-    height: min-content;
-    flex-shrink: 0;
-  }
 }
 
 .nx-drawer-header {
