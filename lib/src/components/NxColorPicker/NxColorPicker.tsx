@@ -37,7 +37,7 @@ const humanReadable: (c: SelectableColor) => string = pipe(
 
 function ColorRadio({ pickerLabel, color, value, onChange, name }: ColorRadioProps) {
   const selected = value === color,
-      classes = classnames('nx-color-picker__color', `nx-selectable-color--${color}`, { selected }),
+      classes = classnames('nx-color-picker__label', `nx-selectable-color--${color}`, { selected }),
       humanReadableColor = useMemo(() => humanReadable(color), [color]),
       label = `${pickerLabel} ${humanReadableColor}`;
 
@@ -56,6 +56,10 @@ function ColorRadio({ pickerLabel, color, value, onChange, name }: ColorRadioPro
                value={color}
                checked={color === value}
                onChange={inputOnChange} />
+        <svg className="nx-color-picker__circles" viewBox="-16 -16 32 32">
+          <circle className="nx-color-picker__outline" r="15.5" />
+          <circle className="nx-color-picker__color" r={selected ? 14 : 12} />
+        </svg>
       </label>
     </NxTooltip>
   );

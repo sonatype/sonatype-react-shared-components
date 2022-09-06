@@ -13,41 +13,49 @@
   .nx-legend__text {
     margin-bottom: var(--nx-spacing-base);
   }
-}
 
-.nx-color-picker__color {
-  $size: 32px;
+  &__label {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: var(--nx-spacing-2x);
 
-  background-clip: content-box;
-  background-color: var(--nx-selectable-color-dark);
-  border-radius: math.div($size, 2);
-  box-sizing: border-box;
-  border: 1px solid transparent;
-  cursor: pointer;
-  display: inline-block;
-  padding: calc(var(--nx-spacing-base) - 1px);
-  margin-right: var(--nx-spacing-2x);
+    &:focus-within {
+      .nx-color-picker__outline {
+        stroke: var(--nx-color-interactive-border-focus);
+      }
 
-  height: $size;
-  width: $size;
+      .nx-color-picker__circles {
+        box-shadow: var(--nx-box-shadow-focus);
+      }
+    }
 
-  vertical-align: top;
-
-  &.selected {
-    padding: calc((var(--nx-spacing-base) / 2) - 1px);
+    &:hover {
+      .nx-color-picker__outline {
+        stroke: var(--nx-color-interactive-border-hover);
+      }
+    }
   }
 
-  &:focus-within {
-    border-color: var(--nx-color-interactive-border-focus);
-    box-shadow: var(--nx-box-shadow-focus);
+  &__circles {
+    border-radius: 50%;
+    height: 32px;
   }
 
-  &:hover {
-    border-color: var(--nx-color-interactive-border-hover);
+  &__color {
+    stroke: none;
+    fill: var(--nx-selectable-color-dark);
   }
-}
 
-.nx-color-picker__input {
-  cursor: pointer;
-  opacity: 0;
+  &__outline {
+    stroke-width: 1px;
+    stroke: none;
+    fill: none;
+  }
+
+  &__input {
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+  }
 }
