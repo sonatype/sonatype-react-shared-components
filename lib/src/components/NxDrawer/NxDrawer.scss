@@ -130,16 +130,16 @@
   }
 
   .nx-drawer-content {
-    --nx-drawer-padding: var(--nx-spacing-6x);
+    $padding: var(--nx-spacing-6x);
 
     @include nx-container-helpers.container-vertical;
 
     overflow: auto;
-    padding: var(--nx-spacing-6x);
+    padding: $padding;
     height: 100%;
-    margin-right: calc(0px - var(--nx-drawer-padding));
-    margin-left: calc(0px - var(--nx-drawer-padding));
-    margin-bottom: calc(0px - var(--nx-drawer-padding));
+    margin-right: calc(0px - #{$padding});
+    margin-left: calc(0px - #{$padding});
+    margin-bottom: calc(0px - #{$padding});
   }
 
   .nx-footer {
