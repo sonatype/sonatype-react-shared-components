@@ -56,7 +56,7 @@ describe('NxModal', function() {
 
   it('has a dialog element with aria-modal set to true', function() {
     const dialog = getMounted().find('dialog');
-    expect(dialog).toHaveProp('aria-modal', 'true');
+    expect(dialog).toHaveProp('aria-modal', true);
   });
 
   it('sets the specified role on the backdrop', function() {

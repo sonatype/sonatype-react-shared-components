@@ -78,6 +78,8 @@ function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
+  const panelRef = useRef<HTMLDivElement>(null);
+
   const closeDrawer = () => setIsClosing(true);
 
   const handleAnimationEnd = () => {
@@ -92,10 +94,10 @@ function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
   }));
 
   useEffect(() => {
-    const clickOutsideTargetElement = dialogRef.current?.getElementsByClassName('nx-drawer__panel')[0];
+    const clickOutsideTargetElement = panelRef.current;
 
     const listener = (event: MouseEvent) => {
-      if (clickOutsideTargetElement && !(clickOutsideTargetElement as HTMLDivElement).contains(event.target as Node)) {
+      if (clickOutsideTargetElement && !clickOutsideTargetElement.contains(event.target as Node)) {
         closeDrawer();
       }
     };
@@ -127,7 +129,7 @@ function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
                       isModal={false}
                       {...dialogAttrs}>
         <div className={animationWrapperClasses} onAnimationEnd={handleAnimationEnd}>
-          <div className={panelClasses}>
+          <div className={panelClasses} ref={panelRef}>
             {children}
           </div>
         </div>
