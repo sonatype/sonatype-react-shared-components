@@ -7,7 +7,9 @@
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
 import { pipe, split, map, join, toUpper, head, tail } from 'ramda';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import { SelectableColor, selectableColors } from '../../util/selectableColors';
 import { useUniqueId } from '../../util/idUtil';
@@ -59,6 +61,14 @@ function ColorRadio({ pickerLabel, color, value, onChange, name }: ColorRadioPro
         <svg className="nx-color-picker__circles" viewBox="-16 -16 32 32">
           <circle className="nx-color-picker__outline" r="15.5" />
           <circle className="nx-color-picker__color" r={selected ? 14 : 12} />
+          { selected &&
+            <NxFontAwesomeIcon className="nx-color-picker__check"
+                               width="16"
+                               height="100%"
+                               x="-8"
+                               y="-16"
+                               icon={faCheck} />
+          }
         </svg>
       </label>
     </NxTooltip>

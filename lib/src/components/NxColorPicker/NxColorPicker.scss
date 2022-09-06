@@ -52,6 +52,10 @@
     fill: none;
   }
 
+  &__check {
+    color: var(--nx-color-text-dark);
+  }
+
   &__input {
     cursor: pointer;
     margin: 0;
