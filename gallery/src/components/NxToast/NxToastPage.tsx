@@ -108,6 +108,16 @@ const NxToastPage = () =>
                 be set up internally by <NxCode>NxToast</NxCode>. Calling code should instead use the
                 {' '}<NxCode>onClose</NxCode> prop of <NxCode>NxToast</NxCode> itself. Additionally, note that the alert
                 text content should be brief: only one rendered line of text per toast is supported.
+                <NxWarningAlert>
+                  <NxCode>Nx*Alert</NxCode>s must be passed a {' '}
+                  <NxTextLink external href="https://www.w3.org/TR/wai-aria/#live_region_roles">
+                    Live Region
+                  </NxTextLink>
+                  {' '}role if not already provided (see
+                  {' '}<NxCode><NxTextLink href="#/pages/Alert">NxAlert</NxTextLink></NxCode>
+                  for more information about default roles). Without a designated role, the content inside
+                  {' '}<NxCode>NxToast</NxCode> will not be immediately read by screenreaders when rendered on the page.
+                </NxWarningAlert>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
