@@ -27,15 +27,20 @@ import {
 
 interface ToastModel {
   id: number;
-  alertComponent: ComponentType;
+  alertComponent: ComponentType<alertComponentProps>;
   message: string;
+  role?:string;
 }
+
+type alertComponentProps = {
+  role?:string;
+};
 
 export default function NxToastLegacyLayoutExample() {
   const [toastIdInc, setToastIdInc] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
-  const addToast = (alertComponent: ComponentType, message: string) => {
+  const addToast = (alertComponent: ComponentType<alertComponentProps>, message: string) => {
     const toastId = toastIdInc + 1;
     setToastIdInc(toastId);
     setToasts([
@@ -56,7 +61,11 @@ export default function NxToastLegacyLayoutExample() {
             return (
               <NxToast key={id}
                        onClose={()=> removeToast(id)}>
-                <ToastAlert>{message}</ToastAlert>
+                {
+                  ToastAlert === NxWarningAlert || ToastAlert === NxInfoAlert ?
+                    <ToastAlert role= 'status'>{message}</ToastAlert> :
+                    <ToastAlert>{message}</ToastAlert>
+                }
               </NxToast>
             );
           })
