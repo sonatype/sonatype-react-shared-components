@@ -61,12 +61,12 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
   );
 };
 
-export interface DrawerRef {
+export interface NxDrawerRef {
   dialog: HTMLDialogElement;
   closeDrawer: () => void;
 }
 
-function NxDrawer(props: Props, ref: Ref<DrawerRef>) {
+function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
   const {
     className,
     onCancel,
@@ -137,7 +137,7 @@ function NxDrawer(props: Props, ref: Ref<DrawerRef>) {
 }
 
 export default Object.assign(
-    forwardRef<DrawerRef, Props>(NxDrawer),
+    forwardRef<NxDrawerRef, Props>(NxDrawer),
     {
       propTypes,
       Header: NxDrawerHeader,

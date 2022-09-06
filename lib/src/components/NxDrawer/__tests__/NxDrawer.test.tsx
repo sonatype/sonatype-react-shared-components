@@ -12,7 +12,7 @@ import userEvent from '@testing-library/user-event';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import NxDrawer, { Props, DrawerRef } from '../NxDrawer';
+import NxDrawer, { Props, NxDrawerRef } from '../NxDrawer';
 import NxButton from '../../NxButton/NxButton';
 import useToggle from '../../../util/useToggle';
 
@@ -73,7 +73,7 @@ describe('NxDrawer', function() {
   });
 
   it('forwards the dialog element ref', function() {
-    const drawerRef = React.createRef<DrawerRef>();
+    const drawerRef = React.createRef<NxDrawerRef>();
     const mockOnCancel = jest.fn();
 
     const { container } = render(<NxDrawer ref={drawerRef} onCancel={mockOnCancel} />);

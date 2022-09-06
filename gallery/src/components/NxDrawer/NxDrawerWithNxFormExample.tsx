@@ -20,12 +20,12 @@ import {
   NxCheckbox,
   useToggle,
   NxStatefulTextInput,
-  DrawerRef
+  NxDrawerRef
 } from '@sonatype/react-shared-components';
 
 export default function NxDrawerWithNxFormExample() {
-  const drawerRef = useRef<DrawerRef>(null);
-  const drawerOverflowingRef = useRef<DrawerRef>(null);
+  const drawerRef = useRef<NxDrawerRef>(null);
+  const drawerOverflowingRef = useRef<NxDrawerRef>(null);
 
   const [showDrawer, toggleDrawer] = useToggle(false),
       [showDrawerOverflowing, toggleDrawerOverflowing] = useToggle(false),

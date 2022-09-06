@@ -109,6 +109,18 @@ export default function NxDrawerPage() {
         </NxInfoAlert>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
+            <NxH3>NxDrawerRef</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxP>
+            <NxCode>NxDrawer</NxCode> forwards two things via ref, the dialog element
+            (<NxCode>ref.current.dialog</NxCode>) and the <NxCode>closeDrawer</NxCode> function
+            (<NxCode>ref.current.closeDrawer</NxCode>).
+            This function triggers the slide-out animation which in turn triggers
+            the <NxCode>onCancel</NxCode> callback once the animation is completed.
+          </NxP>
+        </NxTile.Subsection>
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
             <NxH3>NxDrawer.Header (Required)</NxH3>
           </NxTile.SubsectionHeader>
           <NxP>
@@ -250,7 +262,9 @@ export default function NxDrawerPage() {
         <NxTile.Content>
           <NxP>
             An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxForm</NxCode>. This example
-            also shows <NxCode>NxDrawer</NxCode> with overflowing form content.
+            also shows <NxCode>NxDrawer</NxCode> with overflowing form content. Notice
+            that <NxCode>closeDrawer</NxCode> from <NxCode>NxDrawerRef</NxCode> was used to trigger
+            the slide-out animation when the form is submitted or canceled.
           </NxP>
           <NxP>
             <NxTextLink href="#/NxDrawerWithNxFormExample">
