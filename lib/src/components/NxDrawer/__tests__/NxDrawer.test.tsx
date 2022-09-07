@@ -47,13 +47,14 @@ describe('NxDrawer', function() {
 
   it('merges any passed in className to the nx-drawer dialog', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const drawer = quickRender({ className: 'foo' });
-    const dialog = drawer.getByRole('dialog', { hidden: true });
+    const drawerWithAddedClassName = getDrawer({ className: 'foo' })!;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const drawer = getDrawer()!;
 
-    expect(dialog).toHaveClass('foo');
+    expect(drawerWithAddedClassName).toHaveClass('foo');
 
-    for (const cls of Array.from(dialog.classList)) {
-      expect(dialog).toHaveClass(cls);
+    for (const cls of Array.from(drawer.classList)) {
+      expect(drawerWithAddedClassName).toHaveClass(cls);
     }
   });
 
