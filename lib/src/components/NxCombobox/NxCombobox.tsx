@@ -200,9 +200,12 @@ function NxComboboxRender<T extends string | number = string>(
           setShowDropdown(true);
         }
 
-        focusableBtnIndex !== null
-          ? (focusableBtnIndex === 0 ? focusLast() : focusPrev())
-          : focusLast();
+        if (focusableBtnIndex) {
+          focusPrev();
+        }
+        else {
+          focusLast();
+        }
 
         evt.preventDefault();
         break;
