@@ -93,6 +93,8 @@
 }
 
 .nx-drawer__panel {
+  $padding: var(--nx-spacing-6x);
+
   box-sizing: border-box;
   display: flex;
   align-items: stretch;
@@ -100,7 +102,8 @@
   pointer-events: auto;
   background-color: var(--nx-swatch-white);
   position: relative;
-  padding: var(--nx-spacing-6x);
+  padding: $padding;
+  padding-bottom: 0;
   opacity: 1;
   min-height: 0;
   width: 520px;
@@ -130,8 +133,6 @@
   }
 
   .nx-drawer-content {
-    $padding: var(--nx-spacing-6x);
-
     @include nx-container-helpers.container-vertical;
 
     overflow: auto;
@@ -139,7 +140,11 @@
     height: 100%;
     margin-right: calc(0px - #{$padding});
     margin-left: calc(0px - #{$padding});
-    margin-bottom: calc(0px - #{$padding});
+  }
+
+  .nx-footer {
+    margin-top: 0;
+    padding-bottom: $padding;
   }
 }
 
