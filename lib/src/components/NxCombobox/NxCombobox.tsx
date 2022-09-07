@@ -174,9 +174,8 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'End':
-        autoComplete && elToFocusText
-          ? inputEle.setSelectionRange(elToFocusText.length, elToFocusText.length)
-          : inputEle.setSelectionRange(value.length, value.length);
+        const endIndex = autoComplete && elToFocusText ? elToFocusText.length : value.length;
+        inputEle.setSelectionRange(endIndex, endIndex);
         evt.preventDefault();
         break;
       case 'ArrowDown':
