@@ -48,32 +48,21 @@
   padding: initial;
   width: initial;
 
-  // Prevent brief flash of scrollbar as tooltips disappear
-  overflow: hidden;
-
   &::backdrop {
     // Chrome tries to add its own subtle mask here which doubles up with our own
     display: none;
     pointer-events: auto;
   }
 
+  background-color: transparent;
+  color: var(--nx-swatch-grey-30);
+
   grid-area: content;
   box-sizing: border-box;
   position: relative;
-  background-color: transparent;
-  color: var(--nx-swatch-grey-30);
   justify-self: end;
-  width: 100%;
-  pointer-events: none;
   z-index: var(--nx-z-index-drawer);
-}
-
-.nx-drawer__animation-wrapper {
-  display: flex;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
+  min-height: 0;
 
   // Prevents flickering
   backface-visibility: hidden;
@@ -96,16 +85,12 @@
   $padding: var(--nx-spacing-6x);
 
   box-sizing: border-box;
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  pointer-events: auto;
   background-color: var(--nx-swatch-white);
   position: relative;
   padding: $padding;
   padding-bottom: 0;
   opacity: 1;
-  min-height: 0;
+
   width: 520px;
 
   &--narrow {
@@ -124,22 +109,14 @@
     z-index: -1;
   }
 
-  .nx-form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    height: 100%;
-    min-height: 0;
-  }
-
   .nx-drawer-content {
     @include nx-container-helpers.container-vertical;
 
     overflow: auto;
     padding: $padding;
-    height: 100%;
     margin-right: calc(0px - #{$padding});
     margin-left: calc(0px - #{$padding});
+    width: auto;
   }
 
   .nx-footer {

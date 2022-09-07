@@ -109,15 +109,15 @@ function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
 
   const drawerContextValue = { closeDrawer };
 
-  const classes = classnames('nx-drawer', className);
+  const classes = classnames('nx-drawer', 'nx-viewport-sized', {
+    'nx-drawer--close': isClosing
+  }, className);
 
-  const animationWrapperClasses = classnames('nx-drawer__animation-wrapper', {
-    'nx-drawer__animation-wrapper--close': isClosing
-  });
-
-  const panelClasses = classnames('nx-drawer__panel', {
-    'nx-drawer__panel--narrow': variant === 'narrow'
-  });
+  const panelClasses = classnames('nx-drawer__panel',
+      'nx-viewport-sized__container',
+      {
+        'nx-drawer__panel--narrow': variant === 'narrow'
+      });
 
   const dialogAttrs = omit(['open'], attrs);
 
@@ -127,11 +127,10 @@ function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
                       className={classes}
                       onCancel={closeDrawer}
                       isModal={false}
+                      onAnimationEnd={handleAnimationEnd}
                       {...dialogAttrs}>
-        <div className={animationWrapperClasses} onAnimationEnd={handleAnimationEnd}>
-          <div className={panelClasses} ref={panelRef}>
-            {children}
-          </div>
+        <div className={panelClasses} ref={panelRef}>
+          {children}
         </div>
       </AbstractDialog>
     </NxDrawerContext.Provider>
@@ -143,7 +142,7 @@ export default Object.assign(
     {
       propTypes,
       Header: NxDrawerHeader,
-      Content: withClass('div', 'nx-drawer-content'),
+      Content: withClass('div', 'nx-drawer-content nx-viewport-sized__container'),
       HeaderTitle: withClass('h2', 'nx-h2 nx-drawer-header__title'),
       HeaderSubtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),
       HeaderDescription: withClass('p', 'nx-p nx-drawer-header__description')

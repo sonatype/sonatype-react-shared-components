@@ -25,13 +25,12 @@ describe('NxDrawer', function() {
   const quickRender = rtlRender(NxDrawer, minimalProps);
   const getDrawer = rtlRenderElement(NxDrawer, minimalProps);
 
-  it('renders <dialog> with class nx-drawer containing nx-drawer__animation-wrapper > nx-drawer__panel', function () {
+  it('renders <dialog> with class nx-drawer > nx-drawer__panel', function () {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const dialog = getDrawer()!;
     expect(dialog.nodeName).toBe('DIALOG');
     expect(dialog).toHaveClass('nx-drawer');
-    expect(dialog.children[0]).toHaveClass('nx-drawer__animation-wrapper');
-    expect(dialog.children[0].children[0]).toHaveClass('nx-drawer__panel');
+    expect(dialog.children[0]).toHaveClass('nx-drawer__panel');
   });
 
   it('has a dialog element with aria-modal set to false', function() {
@@ -76,7 +75,7 @@ describe('NxDrawer', function() {
     const drawerRef = React.createRef<NxDrawerRef>();
     const mockOnCancel = jest.fn();
 
-    const { container } = render(<NxDrawer ref={drawerRef} onCancel={mockOnCancel} />);
+    render(<NxDrawer ref={drawerRef} onCancel={mockOnCancel} />);
 
     const dialog = screen.getByRole('dialog', { hidden: true });
 
@@ -89,11 +88,10 @@ describe('NxDrawer', function() {
     });
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const animationWrapperEl = container.querySelector('.nx-drawer__animation-wrapper')!;
-    expect(animationWrapperEl).toHaveClass('nx-drawer__animation-wrapper--close');
+    expect(dialog).toHaveClass('nx-drawer--close');
 
     act(() => {
-      fireEvent.animationEnd(animationWrapperEl);
+      fireEvent.animationEnd(dialog);
     });
 
     expect(mockOnCancel).toHaveBeenCalled();
@@ -114,12 +112,10 @@ describe('NxDrawer', function() {
         fireEvent.keyDown(dialog, { key: 'Escape' });
       });
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const animationWrapper = dialog.querySelector('.nx-drawer__animation-wrapper')!;
-      expect(animationWrapper).toHaveClass('nx-drawer__animation-wrapper--close');
+      expect(dialog).toHaveClass('nx-drawer--close');
 
       act(() => {
-        fireEvent.animationEnd(animationWrapper);
+        fireEvent.animationEnd(dialog);
       });
 
       expect(mockOnCancel).toHaveBeenCalled();
@@ -138,9 +134,7 @@ describe('NxDrawer', function() {
       await user.keyboard('q');
       await user.keyboard('Q');
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const animationWrapper = drawer.querySelector('.nx-drawer__animation-wrapper')!;
-      fireEvent.animationEnd(animationWrapper);
+      fireEvent.animationEnd(drawer);
 
       expect(mockCallBack).not.toHaveBeenCalled();
     });
@@ -174,19 +168,16 @@ describe('NxDrawer', function() {
 
         expect(mockOnCancel).not.toHaveBeenCalled();
 
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const animationWrapper = dialog.querySelector('.nx-drawer__animation-wrapper')!;
-
         await act(async () => {
           await eventMap.click({ target: insideButton });
-          fireEvent.animationEnd(animationWrapper);
+          fireEvent.animationEnd(dialog);
         });
 
         expect(mockOnCancel).not.toHaveBeenCalled();
 
         await act(async () => {
           await eventMap.click({ target: outsideButton });
-          fireEvent.animationEnd(animationWrapper);
+          fireEvent.animationEnd(dialog);
         });
 
         expect(mockOnCancel).toHaveBeenCalled();
@@ -247,11 +238,8 @@ describe('NxDrawer', function() {
       await user.click(cancelButton);
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const animationWrapper = dialog.querySelector('.nx-drawer__animation-wrapper')!;
-
     waitFor(() => {
-      fireEvent.animationEnd(animationWrapper);
+      fireEvent.animationEnd(dialog);
       expect(document.activeElement).toBe(toggleButton);
     });
   });
@@ -342,12 +330,10 @@ describe('NxDrawer', function() {
         await user.click(cancelButton);
       });
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const animationWrapperEl = drawer.querySelector('.nx-drawer__animation-wrapper')!;
-      expect(animationWrapperEl).toHaveClass('nx-drawer__animation-wrapper--close');
+      expect(drawer).toHaveClass('nx-drawer--close');
 
       act(() => {
-        fireEvent.animationEnd(animationWrapperEl);
+        fireEvent.animationEnd(drawer);
       });
 
       expect(mockOnCancel).toHaveBeenCalled();
