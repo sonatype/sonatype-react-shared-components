@@ -119,6 +119,7 @@
 
   .nx-page {
     min-width: calc(var(--nx-width-page-min) - var(--nx-width-scrollbar));
+    overflow: initial;
   }
 
   .nx-page-header, .nx-system-notice, .nx-system-notice-container {
