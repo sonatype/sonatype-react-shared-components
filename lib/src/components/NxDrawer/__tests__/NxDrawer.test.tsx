@@ -22,7 +22,7 @@ describe('NxDrawer', function() {
     children: 'Drawer Content'
   };
 
-  const quickRender = rtlRender(NxDrawer, minimalProps);
+  const quickRender = rtlRender<React.ComponentPropsWithRef<typeof NxDrawer>>(NxDrawer, minimalProps);
   const getDrawer = rtlRenderElement(NxDrawer, minimalProps);
 
   it('renders <dialog> with class nx-drawer > nx-drawer__panel', function () {
@@ -75,7 +75,7 @@ describe('NxDrawer', function() {
     const drawerRef = React.createRef<NxDrawerRef>();
     const mockOnCancel = jest.fn();
 
-    render(<NxDrawer ref={drawerRef} onCancel={mockOnCancel} />);
+    quickRender({ ref: drawerRef, onCancel: mockOnCancel });
 
     const dialog = screen.getByRole('dialog', { hidden: true });
 
