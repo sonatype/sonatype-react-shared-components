@@ -186,9 +186,12 @@ function NxComboboxRender<T extends string | number = string>(
           setShowDropdown(true);
         }
 
-        focusableBtnIndex !== null
-          ? (focusableBtnIndex === matches.length - 1 ? focusFirst() : focusNext())
-          : focusFirst();
+        if (focusableBtnIndex === null || focusableBtnIndex === matches.length - 1) {
+          focusFirst();
+        }
+        else {
+          focusNext();
+        }
 
         evt.preventDefault();
         break;
