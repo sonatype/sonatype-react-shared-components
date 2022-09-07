@@ -143,9 +143,7 @@ function NxComboboxRender<T extends string | number = string>(
           setFocusableBtnIndex(newFocusableBtnIndex);
           elToFocus.scrollIntoView({ block: 'nearest' });
 
-          if (autoComplete) {
-            setInlineStyle(false);
-          }
+          setInlineStyle(false);
         }
       },
       focusNext = adjustBtnFocus(inc),
