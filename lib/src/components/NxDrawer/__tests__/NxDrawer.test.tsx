@@ -25,12 +25,11 @@ describe('NxDrawer', function() {
   const quickRender = rtlRender<React.ComponentPropsWithRef<typeof NxDrawer>>(NxDrawer, minimalProps);
   const getDrawer = rtlRenderElement(NxDrawer, minimalProps);
 
-  it('renders <dialog> with class nx-drawer > nx-drawer__panel', function () {
+  it('renders <dialog> with class nx-drawer', function () {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const dialog = getDrawer()!;
     expect(dialog.nodeName).toBe('DIALOG');
     expect(dialog).toHaveClass('nx-drawer');
-    expect(dialog.children[0]).toHaveClass('nx-drawer__panel');
   });
 
   it('has a dialog element with aria-modal set to false', function() {
@@ -39,12 +38,11 @@ describe('NxDrawer', function() {
     expect(dialog).toHaveAttribute('aria-modal', 'false');
   });
 
-  it('renders children nodes within nx-drawer__panel', function() {
+  it('renders children nodes within dialog', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer({ children: <div data-testid="foo"/> })!;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const panel = drawer.querySelector<HTMLDivElement>('.nx-drawer__panel')!;
-    expect(within(panel).getByTestId('foo')).toBe(panel.children[0]);
+    expect(within(drawer).getByTestId('foo')).toBe(drawer.children[0]);
   });
 
   it('merges any passed in className to the nx-drawer dialog', function() {
@@ -68,7 +66,7 @@ describe('NxDrawer', function() {
   it('adds the nx-drawer--narrow class when the narrow variant prop is specified', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer({ variant: 'narrow' })!;
-    expect(drawer.querySelector('.nx-drawer__panel')).toHaveClass('nx-drawer__panel--narrow');
+    expect(drawer).toHaveClass('nx-drawer--narrow');
   });
 
   it('forwards the dialog element ref', function() {

@@ -38,6 +38,8 @@
 }
 
 .nx-drawer {
+  $padding: var(--nx-spacing-6x);
+
   // Undo styles that chrome applies to <dialog> elements
   border: initial;
   height: initial;
@@ -54,15 +56,26 @@
     pointer-events: auto;
   }
 
-  background-color: transparent;
+  background-color: var(--nx-swatch-white);
+  box-shadow: -34px 0 50px -32px hsla(0, 0%, 50%, 0.5);
   color: var(--nx-swatch-grey-30);
+  opacity: 1;
 
-  grid-area: content;
   box-sizing: border-box;
-  position: relative;
+  grid-area: content;
   justify-self: end;
+  position: relative;
   z-index: var(--nx-z-index-drawer);
+
   min-height: 0;
+  padding: $padding;
+  padding-bottom: 0;
+
+  width: 520px;
+
+  &--narrow {
+    width: 348px;
+  }
 
   // Prevents flickering
   backface-visibility: hidden;
@@ -78,35 +91,6 @@
       // because 0 did not trigger the animationEnd event.
       animation-duration: 1ms;
     }
-  }
-}
-
-.nx-drawer__panel {
-  $padding: var(--nx-spacing-6x);
-
-  box-sizing: border-box;
-  background-color: var(--nx-swatch-white);
-  position: relative;
-  padding: $padding;
-  padding-bottom: 0;
-  opacity: 1;
-
-  width: 520px;
-
-  &--narrow {
-    width: 348px;
-  }
-
-  &::after {
-    content: " ";
-
-    box-shadow: -2px 0px 50px rgba(128, 128, 128, 0.5);
-    height: calc(100% - var(--nx-spacing-16x));
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: var(--nx-spacing-8x);
-    z-index: -1;
   }
 
   .nx-drawer-content {
