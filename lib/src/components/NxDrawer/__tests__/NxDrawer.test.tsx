@@ -243,6 +243,19 @@ describe('NxDrawer', function() {
     });
   });
 
+  describe('NxDrawer Content', function() {
+    it('should be focusable', async function() {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const drawer = getDrawer({ children: <NxDrawer.Content>Hello</NxDrawer.Content> })!;
+
+      const content = drawer.querySelector('.nx-drawer-content') as HTMLElement;
+
+      content.focus();
+
+      expect(content).toHaveFocus();
+    });
+  });
+
   describe('NxDrawer Header', function() {
     it('renders cancel button', function() {
       quickRender({

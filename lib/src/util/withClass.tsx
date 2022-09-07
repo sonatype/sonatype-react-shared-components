@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, DetailedHTMLProps, SVGProps } from 'react';
+import React, { forwardRef, DetailedHTMLProps, SVGProps, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 
 type NativeElType<E extends keyof JSX.IntrinsicElements> =
@@ -13,10 +13,11 @@ type NativeElType<E extends keyof JSX.IntrinsicElements> =
   JSX.IntrinsicElements[E] extends SVGProps<infer B> ? B :
   never;
 
-export default function withClass<E extends keyof JSX.IntrinsicElements>(
+export default function withClass<E extends keyof JSX.IntrinsicElements, P extends HTMLAttributes<E>>(
   El: E,
   withClassName: string,
-  withRole?: string
+  withRole?: string,
+  elementAttributes?: P
 ) {
   return forwardRef<NativeElType<E>, JSX.IntrinsicElements[E]>((props: JSX.IntrinsicElements[E], ref) => {
     const {
@@ -24,6 +25,6 @@ export default function withClass<E extends keyof JSX.IntrinsicElements>(
       ...otherProps
     } = props;
     const classes = classnames(withClassName, className);
-    return React.createElement(El, { className: classes, role: withRole, ref, ...otherProps});
+    return React.createElement(El, { className: classes, role: withRole, ref, ...elementAttributes, ...otherProps});
   });
 }
