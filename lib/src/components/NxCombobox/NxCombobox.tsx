@@ -69,7 +69,7 @@ function NxComboboxRender<T extends string | number = string>(
         'nx-combobox__alert--error': !!loadError
       }),
       inputDescribedby = classnames(ariaDescribedBy, {
-        [`${alertDropdownId}`]: isAlert && showDropdown
+        [alertDropdownId]: isAlert && showDropdown
       });
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
