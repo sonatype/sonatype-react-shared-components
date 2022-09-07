@@ -207,9 +207,7 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'Backspace':
-        if (autoComplete) {
-          setInlineStyle(false);
-        }
+        setInlineStyle(false);
         break;
       case 'Escape':
         if (showDropdown) {
