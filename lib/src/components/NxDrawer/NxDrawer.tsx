@@ -133,7 +133,7 @@ export default Object.assign(
     {
       propTypes,
       Header: NxDrawerHeader,
-      Content: withClass('div', 'nx-drawer-content nx-viewport-sized__container'),
+      Content: withClass('div', 'nx-drawer-content nx-scrollable nx-viewport-sized__scrollable'),
       HeaderTitle: withClass('h2', 'nx-h2 nx-drawer-header__title'),
       HeaderSubtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),
       HeaderDescription: withClass('p', 'nx-p nx-drawer-header__description')

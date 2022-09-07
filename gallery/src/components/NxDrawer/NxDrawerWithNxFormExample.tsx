@@ -62,8 +62,7 @@ export default function NxDrawerWithNxFormExample() {
             <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
           </NxDrawer.Header>
 
-          <NxForm className="nx-viewport-sized__container"
-                  onSubmit={closeDrawer}
+          <NxForm onSubmit={closeDrawer}
                   onCancel={closeDrawer}>
             <NxDrawer.Content>
               <NxFormGroup label="A Field to Fill in" isRequired>
@@ -97,8 +96,7 @@ export default function NxDrawerWithNxFormExample() {
           <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
         </NxDrawer.Header>
 
-        <NxForm className="nx-viewport-sized__container"
-                onSubmit={closeOverflowingDrawer}
+        <NxForm onSubmit={closeOverflowingDrawer}
                 onCancel={closeOverflowingDrawer}>
           <NxDrawer.Content>
             <NxFormGroup label="Username" isRequired>

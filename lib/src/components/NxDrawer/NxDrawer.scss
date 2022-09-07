@@ -93,6 +93,10 @@
     }
   }
 
+  .nx-form {
+    display: contents;
+  }
+
   .nx-drawer-content {
     @include nx-container-helpers.container-vertical;
 
