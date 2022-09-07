@@ -257,6 +257,19 @@ describe('NxDrawer', function() {
   });
 
   describe('NxDrawer Header', function() {
+    it('does not have a banner role', function() {
+      quickRender({
+        children: (
+          <NxDrawer.Header>
+            <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
+          </NxDrawer.Header>
+        )
+      });
+
+      expect(screen.queryByRole('banner', { hidden: true })).not.toBeInTheDocument();
+      expect(screen.getByText('Title')).toBeInTheDocument();
+    });
+
     it('renders cancel button', function() {
       quickRender({
         children: (
