@@ -495,7 +495,7 @@ describe('NxCombobox', function() {
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'true');
     });
 
-    it('sets the value to be backpaced text when backspace is pressed', async function() {
+    it('sets the value to be backspaced text when backspace is pressed', async function() {
       const onChange = jest.fn(),
           { getByRole } = quickRender({ value: 'foo', onChange }),
           inputElement = getByRole('combobox') as HTMLInputElement;
