@@ -50,14 +50,16 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
   const classes = classnames('nx-drawer-header', className);
 
   return (
-    <header className={classes} {...attrs}>
+    // We use <div> instead of <header> to prevent
+    // double banner landmark with the parent global header.
+    <div className={classes} {...attrs}>
       <NxCloseButton className="nx-drawer-header__cancel-button"
                      type="button"
                      onClick={() => closeDrawer()}>
         Close
       </NxCloseButton>
       {children}
-    </header>
+    </div>
   );
 };
 
