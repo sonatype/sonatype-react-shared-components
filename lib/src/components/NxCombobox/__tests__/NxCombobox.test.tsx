@@ -191,7 +191,7 @@ describe('NxCombobox', function() {
 
   it('fires onSearch with the search text when the retry button is clicked', async function() {
     const onSearch = jest.fn(),
-        { getByRole} = quickRender({ loadError: 'err', onSearch }),
+        { getByRole } = quickRender({ loadError: 'err', onSearch }),
         inputElement = getByRole('combobox');
 
     expect(onSearch).not.toHaveBeenCalled();
