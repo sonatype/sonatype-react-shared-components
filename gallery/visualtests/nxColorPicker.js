@@ -14,27 +14,38 @@ describe('NxColorPicker', function() {
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
+    blurElement,
     checkScreenshot,
     a11yTest
   } = setupBrowser('#/pages/Color%20Picker');
 
   const selector = '#nx-color-picker-example .gallery-example-live',
       validationSelector = '#nx-color-picker-required-example .gallery-example-live',
-      colorSelector = `${selector} .nx-color-picker__color:first-of-type`;
+      colorSelector = `${selector} .nx-color-picker__label:first-of-type`;
 
   it('looks right', simpleTest(selector));
   it('looks right with a hovered color and shows a tooltip', hoverTest(selector, colorSelector, true));
   it('looks right with a focused color', focusTest(selector, colorSelector));
   it('looks right with a hovered and focused color', focusAndHoverTest(selector, colorSelector));
 
-  it('looks right with a selected color', async function() {
-    const [targetElement, labelElement] = await waitAndGetElements(selector, colorSelector);
+  describe('when a color is selected', function() {
+    beforeEach(async function() {
+      const [targetElement, labelElement, inputElement] = await waitAndGetElements(
+        selector,
+        colorSelector,
+        `${colorSelector} input`
+      );
 
-    await labelElement.click();
+      await labelElement.click();
 
-    await moveMouseAway();
+      await moveMouseAway();
+      await blurElement(inputElement);
+    });
 
-    await checkScreenshot(targetElement);
+    it('looks right', simpleTest(selector));
+    it('looks right with a hovered color and shows a tooltip', hoverTest(selector, colorSelector, true));
+    it('looks right with a focused color', focusTest(selector, colorSelector));
+    it('looks right with a hovered and focused color', focusAndHoverTest(selector, colorSelector));
   });
 
   describe('when required', function() {
@@ -44,7 +55,7 @@ describe('NxColorPicker', function() {
   describe('when invalid', function() {
     beforeEach(async function() {
       const [firstCheckbox, clearBtn] = await waitAndGetElements(
-          `${validationSelector} .nx-color-picker__color:first-of-type`,
+          `${validationSelector} .nx-color-picker__label:first-of-type`,
           `${validationSelector} .nx-btn`
       );
 
