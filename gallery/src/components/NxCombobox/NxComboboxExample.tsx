@@ -50,7 +50,10 @@ export default function NxComboboxExample() {
   }
 
   function onSearch(query: string) {
-    if (query !== '') {
+    if (query === '') {
+      setMatches([]);
+    }
+    else {
       setLoading(true);
       executeQuery(query);
     }

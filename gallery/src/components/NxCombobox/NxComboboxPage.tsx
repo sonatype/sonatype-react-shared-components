@@ -81,8 +81,10 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                <NxCode>autoComplete</NxCode> will highlight the first matching item from the array of matches and
-                provide an inline completion string.
+                When <NxCode>autoComplete</NxCode> is set to true, it will highlight the first matching item from the
+                array of matches and provide an inline completion string, the portion of the selected suggestion that
+                has not been typed by the user. To follow this behavior, the search logic should only return the
+                matching items that start with the search text as suggestions.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -221,6 +223,19 @@ const NxComboboxPage = () =>
           <NxCode>NX_STANDARD_DEBOUNCE_TIME</NxCode>, it is now deprecated but is still exported by RSC for
           backwards compatibility.
         </NxWarningAlert>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Usage Notes</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          Due to its interaction with typically backend logic, <NxCode>NxCombobox</NxCode> has some
+          complexities that cannot be internalized and which much be handled by the calling code. These complications
+          include debouncing the text change <em>after updating the search text and loading props</em> and ensuring
+          that match results are for the most recently entered text. The location and manner in which these concerns
+          are handled will depend on the architecture of your application, but the example below demonstrates how it
+          might be done in a stateful wrapper component that manages the asynchronous call.
+        </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 

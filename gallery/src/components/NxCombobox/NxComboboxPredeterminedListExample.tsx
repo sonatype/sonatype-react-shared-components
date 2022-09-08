@@ -30,16 +30,12 @@ export default function NxComboboxPredeterminedListExample() {
   const [matches, setMatches] = useState<DataItem<number, string>[]>(items),
       [query, setQuery] = useState('');
 
-  const executeQuery = useCallback(function executeQuery(query: string) {
+  const onSearch = useCallback((query: string) => {
     setMatches(search(query));
   }, [query]);
 
   function onChange(query: string) {
     setQuery(query);
-  }
-
-  function onSearch(query: string) {
-    executeQuery(query);
   }
 
   return (
