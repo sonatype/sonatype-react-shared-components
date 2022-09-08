@@ -180,7 +180,8 @@ const NxToastPage = () =>
         <NxP>
           A complex full page layout example. With the inclusion of <NxCode>NxGlobalHeader</NxCode>, the toasts
           will be positioned on the right side of the viewport, underneath the header. Extra content is provided
-          to be able to view the positioning of the toasts with scrolling behavior.
+          to be able to view the positioning of the toasts with scrolling behavior. The role for NxInfoAlert has
+          also been updated to <NxCode>status</NxCode>.
         </NxP>
         <NxP>
           <NxTextLink href="#/NxToastComplexLayoutExample">
