@@ -305,7 +305,6 @@ function NxComboboxRender<T extends string | number = string>(
                       className= {classnames('nx-dropdown-button',
                           { 'selected': i === focusableBtnIndex })}
                       tabIndex={-1}
-                      disabled={disabled || undefined}
                       key={match.id}
                       onClick={() => handleOnClick(match)}>
                 {match.displayName}

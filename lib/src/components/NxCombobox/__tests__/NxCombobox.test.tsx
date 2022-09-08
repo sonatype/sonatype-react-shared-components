@@ -19,19 +19,24 @@ describe('NxCombobox', function() {
         onSearch: () => {},
         matches: []
       },
-      quickRender = rtlRender(NxCombobox, minimalProps),
-      renderEl = rtlRenderElement(NxCombobox, minimalProps);
+      quickRender = rtlRender<React.ComponentPropsWithRef<typeof NxCombobox>>(NxCombobox, minimalProps),
+      renderEl = rtlRenderElement<React.ComponentPropsWithRef<typeof NxCombobox>>(NxCombobox, minimalProps);
 
   it('sets specified classNames and attributes on the top-level element', function() {
-    const component = renderEl({ className: 'foo', title: 'bar' });
+    const component = renderEl()!,
+        customizedComponent = renderEl({ className: 'foo', title: 'bar' });
 
-    expect(component).toHaveClass('foo');
-    expect(component).toHaveAttribute('title', 'bar');
+    expect(customizedComponent).toHaveClass('foo');
+    expect(customizedComponent).toHaveAttribute('title', 'bar');
+
+    for (const cls of Array.from(component.classList)) {
+      expect(customizedComponent).toHaveClass(cls);
+    }
   });
 
   it('adds the ref to the top-level element', function() {
     const ref = React.createRef<HTMLDivElement>(),
-        domNode = render(<NxCombobox { ...minimalProps } ref={ref} />).container.firstElementChild!;
+        domNode = renderEl({ ref });
 
     expect(ref.current).toBeDefined();
     expect(ref.current).toBe(domNode);
@@ -61,13 +66,14 @@ describe('NxCombobox', function() {
 
   it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true',
       async function() {
-        const { getByRole, rerender } = quickRender({
+        const user = userEvent.setup(),
+            { getByRole, rerender } = quickRender({
               autoComplete: true,
               matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }]
             }),
             inputElement = getByRole('combobox');
 
-        await userEvent.type(inputElement, 'f');
+        await user.type(inputElement, 'f');
         rerender(
           <NxCombobox { ...minimalProps }
                       autoComplete={true}
@@ -77,43 +83,47 @@ describe('NxCombobox', function() {
 
   it('sets aria-expanded on the input to true when the dropdown displayed which has aria-hidden set to false',
       async function() {
-        const { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+        const user = userEvent.setup(),
+            { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
             inputElement = getByRole('combobox'),
             dropdownElement = getByRole('listbox', { hidden: true });
 
         expect(inputElement).toHaveAttribute('aria-expanded', 'false');
         expect(dropdownElement).toHaveAttribute('aria-hidden', 'true');
-        await userEvent.type(inputElement, 'f');
+        await user.type(inputElement, 'f');
         expect(inputElement).toHaveAttribute('aria-expanded', 'true');
         expect(dropdownElement).toHaveAttribute('aria-hidden', 'false');
       });
 
   it('calls onChange whenver the input\'s onChange event fires', async function() {
-    const onChange = jest.fn(),
+    const user = userEvent.setup(),
+        onChange = jest.fn(),
         inputElement = quickRender({ onChange }).getByRole('combobox');
 
     expect(onChange).not.toHaveBeenCalled();
-    await userEvent.type(inputElement, 'a');
+    await user.type(inputElement, 'a');
     expect(onChange).toHaveBeenCalledWith('a');
   });
 
   it('does not call onSearch whenever the input\'s onChange event fires with a value that does not differ' +
     'after trimming', async function() {
-    const onSearch = jest.fn(),
+    const user = userEvent.setup(),
+        onSearch = jest.fn(),
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
-    await userEvent.type(inputElement, ' ');
+    await user.type(inputElement, ' ');
     expect(onSearch).not.toHaveBeenCalled();
   });
 
   it('calls onSearch whenever the input\'s onChange event fires with a value that differs after trimming, ' +
     'passing the trimmed value', async function() {
-    const onSearch = jest.fn(),
+    const user = userEvent.setup(),
+        onSearch = jest.fn(),
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
-    await userEvent.type(inputElement, 'f');
+    await user.type(inputElement, 'f');
     expect(onSearch).toHaveBeenCalledWith('foof');
   });
 
@@ -130,12 +140,6 @@ describe('NxCombobox', function() {
     expect(inputElement).not.toBeDisabled();
 
     rerender(<NxCombobox { ...minimalProps } disabled={true}/>);
-    expect(inputElement).toBeDisabled();
-
-    rerender(<NxCombobox { ...minimalProps } matches={ [{ id: '1', displayName: 'Foo' }] } disabled={false}/>);
-    expect(inputElement).not.toBeDisabled();
-
-    rerender(<NxCombobox { ...minimalProps } matches={ [{ id: '1', displayName: 'Foo' }] } disabled={true}/>);
     expect(inputElement).toBeDisabled();
   });
 
@@ -166,6 +170,9 @@ describe('NxCombobox', function() {
 
     rerender(<NxCombobox { ...minimalProps } loadError={'boo'} />);
     expect(alertDropdownElement).toBeInTheDocument();
+
+    rerender(<NxCombobox { ...minimalProps } matches={ [{ id: '1', displayName: 'Foo' }] } />);
+    expect(alertDropdownElement).not.toBeInTheDocument();
   });
 
   it('sets aria-live on the alert dropdown to "polite"', function() {
@@ -190,26 +197,28 @@ describe('NxCombobox', function() {
   });
 
   it('fires onSearch with the search text when the retry button is clicked', async function() {
-    const onSearch = jest.fn(),
+    const user = userEvent.setup(),
+        onSearch = jest.fn(),
         { getByRole } = quickRender({ loadError: 'err', onSearch }),
         inputElement = getByRole('combobox');
 
     expect(onSearch).not.toHaveBeenCalled();
-    await userEvent.type(inputElement, 'f');
+    await user.type(inputElement, 'f');
     const retryBtn = getByRole('button', { name: /retry/i });
-    await userEvent.click(retryBtn);
+    await user.click(retryBtn);
     expect(onSearch).toHaveBeenCalledWith('f');
   });
 
   it('fires onChange when the button with role option is clicked', async function() {
-    const onChange = jest.fn(),
+    const user = userEvent.setup(),
+        onChange = jest.fn(),
         { getByRole, getAllByRole } = quickRender({
           matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onChange }),
         inputElement = getByRole('combobox');
 
-    await userEvent.type(inputElement, 'o');
+    await user.type(inputElement, 'o');
     const optionBtns = getAllByRole('option');
-    await userEvent.click(optionBtns[1]);
+    await user.click(optionBtns[1]);
     expect(onChange).toHaveBeenCalledWith('Boo');
   });
 
@@ -277,28 +286,31 @@ describe('NxCombobox', function() {
   describe('Accessible Description', function() {
     it('sets alert message as the accessible description of the combobox when there is an alert with empty message',
         async function() {
-          const inputElement = quickRender({ emptyMessage: 'Sorry! No Results Found' }).getByRole('combobox');
+          const user = userEvent.setup(),
+              inputElement = quickRender({ emptyMessage: 'Sorry! No Results Found' }).getByRole('combobox');
 
           expect(inputElement).not.toHaveAccessibleDescription();
-          await userEvent.type(inputElement, 'f');
+          await user.type(inputElement, 'f');
           expect(inputElement).toHaveAccessibleDescription('Sorry! No Results Found');
         });
 
     it('sets alert message as the accessible description of the combobox when there is an alert with loading',
         async function() {
-          const inputElement = quickRender({ loading: true }).getByRole('combobox');
+          const user = userEvent.setup(),
+              inputElement = quickRender({ loading: true }).getByRole('combobox');
 
           expect(inputElement).not.toHaveAccessibleDescription();
-          await userEvent.type(inputElement, 'f');
+          await user.type(inputElement, 'f');
           expect(inputElement).toHaveAccessibleDescription('Loading…');
         });
 
     it('sets alert message as the accessible description of the combobox when there is an alert with error',
         async function() {
-          const inputElement = quickRender({ loadError: 'err' }).getByRole('combobox');
+          const user = userEvent.setup(),
+              inputElement = quickRender({ loadError: 'err' }).getByRole('combobox');
 
           expect(inputElement).not.toHaveAccessibleDescription();
-          await userEvent.type(inputElement, 'f');
+          await user.type(inputElement, 'f');
           expect(inputElement).toHaveAccessibleDescription('An error occurred loading data. err Retry');
         });
 
@@ -309,11 +321,12 @@ describe('NxCombobox', function() {
           <span id="label">Combobox</span>
           <NxCombobox { ...minimalProps } aria-describedby="label"/>
         </>,
+          user = userEvent.setup(),
           component = render(jsx),
           inputElement = component.getByRole('combobox');
 
       expect(inputElement).toHaveAccessibleDescription('Combobox');
-      await userEvent.type(inputElement, 'f');
+      await user.type(inputElement, 'f');
       expect(inputElement).toHaveAccessibleDescription('Combobox No Results Found');
     });
   });
@@ -326,71 +339,77 @@ describe('NxCombobox', function() {
 
     it('sets aria-activedescendant on the combobox and refers to the focused element id' +
     'when the element has visual focus', async function() {
-      const { getByRole, getAllByRole } = quickRender({
+      const user = userEvent.setup(),
+          { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox');
 
       inputElement.focus();
-      await userEvent.keyboard('[ArrowDown]');
+      await user.keyboard('[ArrowDown]');
       const optionBtns = getAllByRole('option');
       expect(inputElement).toHaveAttribute('aria-activedescendant', optionBtns[0].id);
     });
 
     it('places the editing cursor at the begining of the input field when Home key is pressed with focus in combobox',
         async function() {
-          const onChange = jest.fn(),
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
               { getByRole } = quickRender({ value: 'f', onChange }),
               inputElement = getByRole('combobox');
 
           inputElement.focus();
-          await userEvent.keyboard('[Home]o');
+          await user.keyboard('[Home]o');
           expect(onChange).toBeCalledWith('of');
         });
 
     it('places the editing cursor at the end of the input field when End key is pressed with focus in combobox',
         async function() {
-          const onChange = jest.fn(),
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
               { getByRole} = quickRender({ value: 'f', onChange }),
               inputElement = getByRole('combobox');
 
           inputElement.focus();
-          await userEvent.keyboard('[Home][End]o');
+          await user.keyboard('[Home][End]o');
           expect(onChange).toBeCalledWith('fo');
         });
 
     it('places the editing cursor at the begining of the input field when Home key is pressed with focus in dropdown',
         async function() {
-          const onChange = jest.fn(),
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
               { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }], value: 'f', onChange }),
               inputElement = getByRole('combobox'),
               optionBtn = getByRole('option', { hidden: true });
 
           inputElement.focus();
-          await userEvent.keyboard('[ArrowDown]');
+          await user.keyboard('[ArrowDown]');
           expect(optionBtn).toHaveAttribute('aria-selected', 'true');
-          await userEvent.keyboard('[Home]o');
+          await user.keyboard('[Home]o');
           expect(onChange).toBeCalledWith('of');
           expect(optionBtn).toHaveAttribute('aria-selected', 'false');
         });
 
     it('places the editing cursor at the end of the input field when End key is pressed with focus in dropdown',
         async function() {
-          const onChange = jest.fn(),
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
               { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }], value: 'f', onChange }),
               inputElement = getByRole('combobox'),
               optionBtn = getByRole('option', { hidden: true });
 
           inputElement.focus();
-          await userEvent.keyboard('[ArrowUp]');
+          await user.keyboard('[ArrowUp]');
           expect(optionBtn).toHaveAttribute('aria-selected', 'true');
-          await userEvent.keyboard('[Home][End]o');
+          await user.keyboard('[Home][End]o');
           expect(onChange).toBeCalledWith('fo');
           expect(optionBtn).toHaveAttribute('aria-selected', 'false');
         });
 
     it('should open dropdown and move visual focus to the first option with aria-selected set to true' +
       'if dropdown is closed and there are matches when down arrow key is pressed', async function() {
-      const { getByRole, getAllByRole } = quickRender({
+      const user = userEvent.setup(),
+          { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
           dropdownElement = getByRole('listbox', { hidden: true }),
@@ -398,46 +417,54 @@ describe('NxCombobox', function() {
 
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'true');
       inputElement.focus();
-      await userEvent.keyboard('[ArrowDown]');
+      await user.keyboard('[ArrowDown]');
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'false');
       expect(firstOptBtn).toHaveAttribute('aria-selected', 'true');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', firstOptBtn.id);
     });
 
     it('should move visual focus to the next option if dropdown is open' +
       'and the down arrow key is pressed', async function() {
-      const { getByRole, getAllByRole } = quickRender({
+      const user = userEvent.setup(),
+          { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
           firstOptBtn = getAllByRole('option', { hidden: true })[0],
           secondOptBtn = getAllByRole('option', { hidden: true })[1];
 
       inputElement.focus();
-      await userEvent.keyboard('[ArrowDown]');
+      await user.keyboard('[ArrowDown]');
       expect(firstOptBtn).toHaveAttribute('aria-selected', 'true');
-      await userEvent.keyboard('[ArrowDown]');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', firstOptBtn.id);
+      await user.keyboard('[ArrowDown]');
       expect(firstOptBtn).toHaveAttribute('aria-selected', 'false');
       expect(secondOptBtn).toHaveAttribute('aria-selected', 'true');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', secondOptBtn.id);
     });
 
     it('should move visual focus to the first option if current focus is on the last option' +
       'and the down arrow key is pressed', async function() {
-      const { getByRole, getAllByRole } = quickRender({
+      const user = userEvent.setup(),
+          { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
           firstOptBtn = getAllByRole('option', { hidden: true })[0],
           secondOptBtn = getAllByRole('option', { hidden: true })[1];
 
       inputElement.focus();
-      await userEvent.keyboard('[ArrowUp]');
+      await user.keyboard('[ArrowUp]');
       expect(secondOptBtn).toHaveAttribute('aria-selected', 'true');
-      await userEvent.keyboard('[ArrowDown]');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', secondOptBtn.id);
+      await user.keyboard('[ArrowDown]');
       expect(secondOptBtn).toHaveAttribute('aria-selected', 'false');
       expect(firstOptBtn).toHaveAttribute('aria-selected', 'true');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', firstOptBtn.id);
     });
 
     it('should open dropdown and move visual focus to the last option if dropdown is closed' +
       'and there are matches when up arrow key is pressed', async function() {
-      const { getByRole, getAllByRole } = quickRender({
+      const user = userEvent.setup(),
+          { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
           dropdownElement = getByRole('listbox', { hidden: true }),
@@ -445,69 +472,79 @@ describe('NxCombobox', function() {
 
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'true');
       inputElement.focus();
-      await userEvent.keyboard('[ArrowUp]');
+      await user.keyboard('[ArrowUp]');
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'false');
       expect(lastOptBtn).toHaveAttribute('aria-selected', 'true');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', lastOptBtn.id);
     });
 
     it('should move visual focus to the previous option if dropdown is open' +
       'and the up arrow key is pressed', async function() {
-      const { getByRole, getAllByRole } = quickRender({
+      const user = userEvent.setup(),
+          { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
           firstOptBtn = getAllByRole('option', { hidden: true })[0],
           secondOptBtn = getAllByRole('option', { hidden: true })[1];
 
       inputElement.focus();
-      await userEvent.keyboard('[ArrowUp]');
+      await user.keyboard('[ArrowUp]');
       expect(secondOptBtn).toHaveAttribute('aria-selected', 'true');
-      await userEvent.keyboard('[ArrowUp]');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', secondOptBtn.id);
+      await user.keyboard('[ArrowUp]');
       expect(secondOptBtn).toHaveAttribute('aria-selected', 'false');
       expect(firstOptBtn).toHaveAttribute('aria-selected', 'true');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', firstOptBtn.id);
     });
 
     it('should move visual focus to the last option if current focus is on the first option' +
       'and the up arrow key is pressed', async function() {
-      const { getByRole, getAllByRole } = quickRender({
+      const user = userEvent.setup(),
+          { getByRole, getAllByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
           firstOptBtn = getAllByRole('option', { hidden: true })[0],
           secondOptBtn = getAllByRole('option', { hidden: true })[1];
 
       inputElement.focus();
-      await userEvent.keyboard('[ArrowDown]');
+      await user.keyboard('[ArrowDown]');
       expect(firstOptBtn).toHaveAttribute('aria-selected', 'true');
-      await userEvent.keyboard('[ArrowUp]');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', firstOptBtn.id);
+      await user.keyboard('[ArrowUp]');
       expect(firstOptBtn).toHaveAttribute('aria-selected', 'false');
       expect(secondOptBtn).toHaveAttribute('aria-selected', 'true');
+      expect(inputElement).toHaveAttribute('aria-activedescendant', secondOptBtn.id);
     });
 
     it('should close dropdown when Escape key is pressed', async function() {
-      const { getByRole } = quickRender({
+      const user = userEvent.setup(),
+          { getByRole } = quickRender({
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }),
           inputElement = getByRole('combobox'),
           dropdownElement = getByRole('listbox', { hidden: true });
 
       inputElement.focus();
-      await userEvent.keyboard('[ArrowDown]');
+      await user.keyboard('[ArrowDown]');
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'false');
-      await userEvent.keyboard('[Escape]');
+      await user.keyboard('[Escape]');
       expect(dropdownElement).toHaveAttribute('aria-hidden', 'true');
     });
 
     it('sets the value to be backspaced text when backspace is pressed', async function() {
-      const onChange = jest.fn(),
+      const user = userEvent.setup(),
+          onChange = jest.fn(),
           { getByRole } = quickRender({ value: 'foo', onChange }),
           inputElement = getByRole('combobox') as HTMLInputElement;
 
       inputElement.focus();
       inputElement.setSelectionRange(1, 2);
-      await userEvent.keyboard('[Delete]');
+      await user.keyboard('[Backspace]');
       expect(onChange).toHaveBeenCalledWith('fo');
     });
 
     it('should clear input text if dropdown is close when Escape key is pressed', async function() {
-      const onChange = jest.fn(),
+      const user = userEvent.setup(),
+          onChange = jest.fn(),
           { getByRole } = quickRender({
             value: 'a',
             matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
@@ -515,7 +552,7 @@ describe('NxCombobox', function() {
           inputElement = getByRole('combobox');
 
       inputElement.focus();
-      await userEvent.keyboard('[Escape]');
+      await user.keyboard('[Escape]');
       expect(onChange).toBeCalledWith('');
     });
   });
