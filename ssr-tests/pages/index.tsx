@@ -218,7 +218,7 @@ const Home: NextPage = () => {
         <NxFieldset label="foo" />
         <NxFilterInput value="foo" />
         <NxFontAwesomeIcon icon={faEdit} />
-        <NxForm onSubmit={noop}>
+        <NxForm onSubmit={noop} showValidationErrors={false}>
           Foo
         </NxForm>
         <NxFormGroup label="foo">

@@ -5,5 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { SelectHTMLAttributes } from 'react';
+import * as PropTypes from 'prop-types';
+import { ValidationErrors } from '../../util/validationUtil';
 
-export type Props = SelectHTMLAttributes<HTMLSelectElement>;
+export interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
+  isPristine?: boolean | null;
+  validatable?: boolean | null;
+  validationErrors?: ValidationErrors;
+}
+
+export const propTypes: PropTypes.ValidationMap<Props> = {
+  isPristine: PropTypes.bool,
+  validatable: PropTypes.bool,
+  validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string])
+};
