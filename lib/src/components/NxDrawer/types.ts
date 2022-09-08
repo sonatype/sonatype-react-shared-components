@@ -10,13 +10,17 @@ import * as PropTypes from 'prop-types';
 export const NX_DRAWER_VARIANTS = ['normal', 'narrow'] as const;
 export type NX_DRAWER_VARIANT_TYPE = (typeof NX_DRAWER_VARIANTS)[number];
 
-export interface Props extends Omit<HTMLAttributes<HTMLDialogElement>, 'open'> {
-  onCancel: () => void;
+export interface Props extends HTMLAttributes<HTMLDialogElement> {
+  open: boolean;
+  onClose: (value: boolean) => void;
+  onCancel?: (() => void) | null;
   children?: ReactNode;
   variant?: NX_DRAWER_VARIANT_TYPE | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  onCancel: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
   variant: PropTypes.oneOf(NX_DRAWER_VARIANTS)
 };

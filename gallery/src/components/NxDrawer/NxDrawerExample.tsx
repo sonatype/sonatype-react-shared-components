@@ -72,103 +72,102 @@ export default function NxDrawerExample() {
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
       </header>
-      {showDrawer && (
-        <NxDrawer id="nx-drawer-simple"
-                  onCancel={toggleDrawer}
-                  aria-labelledby="simple-drawer-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="simple-drawer-title">A Simple Drawer</NxDrawer.HeaderTitle>
-          </NxDrawer.Header>
-          <NxDrawer.Content tabIndex={0}>
-            <NxP>
-              Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
-              I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
-              cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
-              pie jelly-o cheesecake candy I love.
-            </NxP>
-          </NxDrawer.Content>
-        </NxDrawer>
-      )}
-      {showDrawerScroll && (
-        <NxDrawer id="nx-drawer-simple-with-scroll"
-                  onCancel={toggleDrawerScroll}
-                  aria-labelledby="simple-drawer-with-scroll-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="simple-drawer-with-scroll-title">
-              A Simple Drawer
-            </NxDrawer.HeaderTitle>
-          </NxDrawer.Header>
-          {content}
-        </NxDrawer>
-      )}
-      {showDrawerWithFooter && (
-        <NxDrawer id="nx-drawer-with-footer"
-                  onCancel={toggleDrawerWithFooter}
-                  aria-labelledby="simple-drawer-with-footer-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="simple-drawer-with-footer-title">
-              A Simple Drawer With Footer
-            </NxDrawer.HeaderTitle>
-          </NxDrawer.Header>
-          <NxDrawer.Content tabIndex={0}>
-            <NxP>
-              Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
-              I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
-              cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
-              pie jelly-o cheesecake candy I love.
-            </NxP>
-          </NxDrawer.Content>
-          <NxFooter>
-            <NxP>
-              <em>Pastry</em> tiramisu jujubes biscuit marshmallow donut dragée.
-              Jelly beans chocolate bar jelly beans soufflé candy wafer topping.
-            </NxP>
-            <NxButtonBar>
-              <NxButton variant="primary">Footer</NxButton>
-            </NxButtonBar>
-          </NxFooter>
-        </NxDrawer>
-      )}
-      {showDrawerWithFooterScroll && (
-        <NxDrawer id="nx-drawer-with-footer-scroll"
-                  onCancel={toggleDrawerWithFooterScroll}
-                  aria-labelledby="simple-drawer-with-footer-scroll-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="simple-drawer-with-footer-scroll-title">
-              A Simple Drawer With Footer
-            </NxDrawer.HeaderTitle>
-          </NxDrawer.Header>
-          {content}
-          <NxFooter>
-            <NxP>
-              <em>Pastry</em> tiramisu jujubes biscuit marshmallow donut dragée.
-              Jelly beans chocolate bar jelly beans soufflé candy wafer topping.
-            </NxP>
-            <NxButtonBar>
-              <NxButton variant="primary">Footer</NxButton>
-            </NxButtonBar>
-          </NxFooter>
-        </NxDrawer>
-      )}
-      {showDrawerTruncated && (
-        <NxDrawer id="nx-drawer-simple-truncated"
-                  onCancel={toggleDrawerTruncated}
-                  aria-labelledby="truncated-drawer-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="truncated-drawer-title">
-              A simple drawer with a very long title that is truncated
-            </NxDrawer.HeaderTitle>
-          </NxDrawer.Header>
-          <NxDrawer.Content>
-            <NxP>
-              Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
-              I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
-              cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
-              pie jelly-o cheesecake candy I love.
-            </NxP>
-          </NxDrawer.Content>
-        </NxDrawer>
-      )}
+      <NxDrawer id="nx-drawer-simple"
+                open={showDrawer}
+                onClose={toggleDrawer}
+                aria-labelledby="simple-drawer-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="simple-drawer-title">A Simple Drawer</NxDrawer.HeaderTitle>
+        </NxDrawer.Header>
+        <NxDrawer.Content tabIndex={0}>
+          <NxP>
+            Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
+            I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
+            cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
+            pie jelly-o cheesecake candy I love.
+          </NxP>
+        </NxDrawer.Content>
+      </NxDrawer>
+
+      <NxDrawer id="nx-drawer-simple-with-scroll"
+                open={showDrawerScroll}
+                onClose={toggleDrawerScroll}
+                aria-labelledby="simple-drawer-with-scroll-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="simple-drawer-with-scroll-title">
+            A Simple Drawer
+          </NxDrawer.HeaderTitle>
+        </NxDrawer.Header>
+        {content}
+      </NxDrawer>
+
+      <NxDrawer id="nx-drawer-with-footer"
+                open={showDrawerWithFooter}
+                onClose={toggleDrawerWithFooter}
+                aria-labelledby="simple-drawer-with-footer-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="simple-drawer-with-footer-title">
+            A Simple Drawer With Footer
+          </NxDrawer.HeaderTitle>
+        </NxDrawer.Header>
+        <NxDrawer.Content tabIndex={0}>
+          <NxP>
+            Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
+            I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
+            cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
+            pie jelly-o cheesecake candy I love.
+          </NxP>
+        </NxDrawer.Content>
+        <NxFooter>
+          <NxP>
+            <em>Pastry</em> tiramisu jujubes biscuit marshmallow donut dragée.
+            Jelly beans chocolate bar jelly beans soufflé candy wafer topping.
+          </NxP>
+          <NxButtonBar>
+            <NxButton variant="primary">Footer</NxButton>
+          </NxButtonBar>
+        </NxFooter>
+      </NxDrawer>
+
+      <NxDrawer id="nx-drawer-with-footer-scroll"
+                open={showDrawerWithFooterScroll}
+                onClose={toggleDrawerWithFooterScroll}
+                aria-labelledby="simple-drawer-with-footer-scroll-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="simple-drawer-with-footer-scroll-title">
+            A Simple Drawer With Footer
+          </NxDrawer.HeaderTitle>
+        </NxDrawer.Header>
+        {content}
+        <NxFooter>
+          <NxP>
+            <em>Pastry</em> tiramisu jujubes biscuit marshmallow donut dragée.
+            Jelly beans chocolate bar jelly beans soufflé candy wafer topping.
+          </NxP>
+          <NxButtonBar>
+            <NxButton variant="primary">Footer</NxButton>
+          </NxButtonBar>
+        </NxFooter>
+      </NxDrawer>
+
+      <NxDrawer id="nx-drawer-simple-truncated"
+                open={showDrawerTruncated}
+                onClose={toggleDrawerTruncated}
+                aria-labelledby="truncated-drawer-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="truncated-drawer-title">
+            A simple drawer with a very long title that is truncated
+          </NxDrawer.HeaderTitle>
+        </NxDrawer.Header>
+        <NxDrawer.Content>
+          <NxP>
+            Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
+            I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
+            cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
+            pie jelly-o cheesecake candy I love.
+          </NxP>
+        </NxDrawer.Content>
+      </NxDrawer>
       <NxPageMain>
         <NxPageTitle>
           <NxH1>Examples of Simple Drawers</NxH1>

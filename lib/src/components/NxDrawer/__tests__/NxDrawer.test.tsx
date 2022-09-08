@@ -12,13 +12,14 @@ import userEvent from '@testing-library/user-event';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import NxDrawer, { Props, NxDrawerRef } from '../NxDrawer';
+import NxDrawer, { Props } from '../NxDrawer';
 import NxButton from '../../NxButton/NxButton';
 import useToggle from '../../../util/useToggle';
 
 describe('NxDrawer', function() {
   const minimalProps: Props = {
-    onCancel: () => {},
+    open: false,
+    onClose: () => {},
     children: 'Drawer Content'
   };
 
@@ -36,6 +37,12 @@ describe('NxDrawer', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const dialog = getDrawer()!;
     expect(dialog).toHaveAttribute('aria-modal', 'false');
+  });
+
+  it('it does not have nx-drawer--closing class when initially loaded', function () {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const dialog = getDrawer()!;
+    expect(dialog).not.toHaveClass('nx-drawer--closing');
   });
 
   it('renders children nodes within dialog', function() {
@@ -68,32 +75,6 @@ describe('NxDrawer', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer({ variant: 'narrow' })!;
     expect(drawer).toHaveClass('nx-drawer--narrow');
-  });
-
-  it('forwards the dialog element ref', function() {
-    const drawerRef = React.createRef<NxDrawerRef>();
-    const mockOnCancel = jest.fn();
-
-    quickRender({ ref: drawerRef, onCancel: mockOnCancel });
-
-    const dialog = screen.getByRole('dialog', { hidden: true });
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    expect(drawerRef.current!.dialog).toBe(dialog);
-
-    act(() => {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      drawerRef.current!.closeDrawer();
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    expect(dialog).toHaveClass('nx-drawer--close');
-
-    act(() => {
-      fireEvent.animationEnd(dialog);
-    });
-
-    expect(mockOnCancel).toHaveBeenCalled();
   });
 
   describe('NxDrawer event listener support', () => {

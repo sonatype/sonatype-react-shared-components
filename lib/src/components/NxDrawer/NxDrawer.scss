@@ -31,6 +31,7 @@
     transform: translateX(0);
     opacity: 1;
   }
+
   100% {
     transform: translateX(100%);
     opacity: 0;
@@ -59,18 +60,15 @@
   background-color: var(--nx-swatch-white);
   box-shadow: -34px 0 50px -32px hsla(0, 0%, 50%, 0.5);
   color: var(--nx-swatch-grey-30);
-  opacity: 1;
 
   box-sizing: border-box;
   grid-area: content;
   justify-self: end;
   position: relative;
   z-index: var(--nx-z-index-drawer);
-
   min-height: 0;
   padding: $padding;
   padding-bottom: 0;
-
   width: 520px;
 
   &--narrow {
@@ -79,14 +77,24 @@
 
   // Prevents flickering
   backface-visibility: hidden;
-  animation: slide-in 200ms ease-out;
+  display: none;
+  transform: translateX(100%);
+  opacity: 0;
 
-  &--close {
-    animation: slide-out 180ms ease-in;
+  &--visible {
+    display: flex;
+  }
+ 
+  &--opening {
+    animation: slide-in 200ms ease-out forwards;
+  }
+
+  &--closing {
+    animation: slide-out 180ms ease-in forwards;
   }
 
   @media (prefers-reduced-motion) {
-    &, &--close {
+    &, &--closing, &--opening {
       // We are setting the duration to 1ms
       // because 0 did not trigger the animationEnd event.
       animation-duration: 1ms;

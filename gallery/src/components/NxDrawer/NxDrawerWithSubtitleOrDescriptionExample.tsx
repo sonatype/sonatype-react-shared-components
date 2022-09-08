@@ -78,40 +78,40 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
       </header>
 
-      {showDrawerWithSubtitle && (
-        <NxDrawer id="nx-drawer-with-subtitle"
-                  onCancel={toggleDrawerWithSubtitle}
-                  aria-labelledby="drawer-with-subtitle-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="drawer-with-subtitle-title">Drawer With Subtitle</NxDrawer.HeaderTitle>
-            <NxDrawer.HeaderSubtitle>Subtitle</NxDrawer.HeaderSubtitle>
-          </NxDrawer.Header>
-          {content}
-        </NxDrawer>
-      )}
-      {showDrawerWithDescription && (
-        <NxDrawer id="nx-drawer-with-description"
-                  onCancel={toggleDrawerWithDescription}
-                  aria-labelledby="drawer-with-description-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="drawer-with-description-title">Drawer With Description</NxDrawer.HeaderTitle>
-            <NxDrawer.HeaderDescription>{description}</NxDrawer.HeaderDescription>
-          </NxDrawer.Header>
-          {content}
-        </NxDrawer>
-      )}
-      {showDrawerWithBoth && (
-        <NxDrawer id="nx-drawer-with-subtitle-and-description"
-                  onCancel={toggleDrawerWithBoth}
-                  aria-labelledby="drawer-with-both-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="drawer-with-both-title">Drawer With Both</NxDrawer.HeaderTitle>
-            <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
-            <NxDrawer.HeaderDescription>{description}</NxDrawer.HeaderDescription>
-          </NxDrawer.Header>
-          {content}
-        </NxDrawer>
-      )}
+      <NxDrawer id="nx-drawer-with-subtitle"
+                open={showDrawerWithSubtitle}
+                onClose={toggleDrawerWithSubtitle}
+                aria-labelledby="drawer-with-subtitle-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="drawer-with-subtitle-title">Drawer With Subtitle</NxDrawer.HeaderTitle>
+          <NxDrawer.HeaderSubtitle>Subtitle</NxDrawer.HeaderSubtitle>
+        </NxDrawer.Header>
+        {content}
+      </NxDrawer>
+
+      <NxDrawer id="nx-drawer-with-description"
+                open={showDrawerWithDescription}
+                onClose={toggleDrawerWithDescription}
+                aria-labelledby="drawer-with-description-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="drawer-with-description-title">Drawer With Description</NxDrawer.HeaderTitle>
+          <NxDrawer.HeaderDescription>{description}</NxDrawer.HeaderDescription>
+        </NxDrawer.Header>
+        {content}
+      </NxDrawer>
+
+      <NxDrawer id="nx-drawer-with-subtitle-and-description"
+                open={showDrawerWithBoth}
+                onClose={toggleDrawerWithBoth}
+                aria-labelledby="drawer-with-both-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="drawer-with-both-title">Drawer With Both</NxDrawer.HeaderTitle>
+          <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
+          <NxDrawer.HeaderDescription>{description}</NxDrawer.HeaderDescription>
+        </NxDrawer.Header>
+        {content}
+      </NxDrawer>
+
       <NxPageMain>
         <NxPageTitle>
           <NxH1>Drawers With Subtitle Or Description Example</NxH1>

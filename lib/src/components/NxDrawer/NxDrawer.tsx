@@ -5,18 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, {
-  forwardRef,
   HTMLAttributes,
   ReactNode,
-  Ref,
   useContext,
   useEffect,
-  useImperativeHandle,
   useRef,
   useState
 } from 'react';
 import classnames from 'classnames';
-import { omit } from 'ramda';
 
 import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
@@ -32,10 +28,14 @@ interface NxDrawerHeaderProps extends HTMLAttributes<HTMLElement>{
 
 interface NxDrawerContextValue {
   closeDrawer: () => void;
+  open: boolean;
+  isVisible: boolean;
 }
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
-  closeDrawer: () => {}
+  closeDrawer: () => {},
+  open: false,
+  isVisible: false
 });
 
 const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
@@ -45,7 +45,15 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
     ...attrs
   } = props;
 
-  const { closeDrawer } = useContext(NxDrawerContext);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const { closeDrawer, isVisible } = useContext(NxDrawerContext);
+
+  useEffect(() => {
+    if (isVisible && closeButtonRef.current) {
+      closeButtonRef.current.focus();
+    }
+  }, [isVisible]);
 
   const classes = classnames('nx-drawer-header', className);
 
@@ -53,6 +61,7 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
     <header className={classes} role="none" {...attrs}>
       <NxCloseButton className="nx-drawer-header__cancel-button"
                      type="button"
+                     ref={closeButtonRef}
                      onClick={() => closeDrawer()}>
         Close
       </NxCloseButton>
@@ -61,35 +70,35 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
   );
 };
 
-export interface NxDrawerRef {
-  dialog: HTMLDialogElement;
-  closeDrawer: () => void;
-}
-
-function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
+function NxDrawer(props: Props) {
   const {
     className,
+    open,
+    onClose,
     onCancel,
     children,
     variant,
     ...attrs
   } = props;
-  const [isClosing, setIsClosing] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const previouslyActiveElement = useRef<HTMLElement | null>(null);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const closeDrawer = () => setIsClosing(true);
+  const closeDrawer = () => onClose(true);
 
   const handleAnimationEnd = () => {
-    if (isClosing) {
-      onCancel();
+    if (!open) {
+      setIsVisible(false);
+      if (onCancel) {
+        onCancel();
+      }
     }
   };
 
-  useImperativeHandle(ref, () => ({
-    dialog: dialogRef.current as HTMLDialogElement,
-    closeDrawer
-  }));
+  const updatePreviouslyActiveElement = () => {
+    previouslyActiveElement.current = document.activeElement as HTMLElement;
+  };
 
   useEffect(() => {
     const listener = (event: MouseEvent) => {
@@ -98,19 +107,28 @@ function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
       }
     };
 
-    document.addEventListener('click', listener);
+    if (open) {
+      updatePreviouslyActiveElement();
+      setIsVisible(true);
+      document.addEventListener('click', listener);
+    }
+    else {
+      if (previouslyActiveElement.current) {
+        previouslyActiveElement.current.focus();
+      }
+    }
 
     return () => document.removeEventListener('click', listener);
-  }, []);
-
-  const drawerContextValue = { closeDrawer };
+  }, [open]);
 
   const classes = classnames('nx-drawer', 'nx-viewport-sized', {
-    'nx-drawer--close': isClosing,
+    'nx-drawer--visible': isVisible,
+    'nx-drawer--opening': open,
+    'nx-drawer--closing': isVisible && !open,
     'nx-drawer--narrow': variant === 'narrow'
   }, className);
 
-  const dialogAttrs = omit(['open'], attrs);
+  const drawerContextValue = { closeDrawer, open, isVisible };
 
   return (
     <NxDrawerContext.Provider value={drawerContextValue}>
@@ -119,7 +137,7 @@ function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
                       onCancel={closeDrawer}
                       isModal={false}
                       onAnimationEnd={handleAnimationEnd}
-                      {...dialogAttrs}>
+                      {...attrs}>
         {children}
       </AbstractDialog>
     </NxDrawerContext.Provider>
@@ -127,7 +145,7 @@ function NxDrawer(props: Props, ref: Ref<NxDrawerRef>) {
 }
 
 export default Object.assign(
-    forwardRef<NxDrawerRef, Props>(NxDrawer),
+    NxDrawer,
     {
       propTypes,
       Header: NxDrawerHeader,

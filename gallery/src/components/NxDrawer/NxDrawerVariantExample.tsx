@@ -72,22 +72,23 @@ export default function NxDrawerVariantExample() {
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
       </header>
-      {showNarrowDrawer && (
-        <NxDrawer id="nx-drawer-variant-narrow"
-                  variant="narrow"
-                  onCancel={toggleNarrowDrawer}
-                  aria-labelledby="narrow-drawer-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="narrow-drawer-title">Header Title</NxDrawer.HeaderTitle>
-            <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
-            <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
-          </NxDrawer.Header>
-          {contentAndFooter}
-        </NxDrawer>
-      )}
-      {showNormalDrawer && (
+
+      <NxDrawer id="nx-drawer-variant-narrow"
+                variant="narrow"
+                open={showNarrowDrawer}
+                onClose={toggleNarrowDrawer}
+                aria-labelledby="narrow-drawer-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="narrow-drawer-title">Header Title</NxDrawer.HeaderTitle>
+          <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
+          <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
+        </NxDrawer.Header>
+        {contentAndFooter}
+      </NxDrawer>
+
       <NxDrawer id="nx-drawer-variant-normal"
-                onCancel={toggleNormalDrawer}
+                open={showNormalDrawer}
+                onClose={toggleNormalDrawer}
                 aria-labelledby="normal-drawer-title">
         <NxDrawer.Header>
           <NxDrawer.HeaderTitle id="narrow-drawer-title">Header Title</NxDrawer.HeaderTitle>
@@ -96,7 +97,6 @@ export default function NxDrawerVariantExample() {
         </NxDrawer.Header>
         {contentAndFooter}
       </NxDrawer>
-      )}
 
       <NxPageMain>
         <NxPageTitle>

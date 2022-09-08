@@ -28,30 +28,31 @@ export default function NxDrawerEscExample() {
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
       </header>
-      {showDrawer && (
-        <NxDrawer id="nx-drawer-esc"
-                  onCancel={toggleDrawer}
-                  aria-labelledby="nx-drawer-with-esc-example-title">
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="nx-drawer-with-esc-example-title">Header Title</NxDrawer.HeaderTitle>
-            <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
-            <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
-          </NxDrawer.Header>
-          <NxDrawer.Content>
-            <NxDropdown label="Expand" isOpen={dropdownIsOpen} onToggleCollapse={onToggleDropdownCollapse}>
-              <button onClick={onClick} className="nx-dropdown-button">
-                Link 1
-              </button>
-              <button onClick={onClick} className="nx-dropdown-button">
-                Link 2
-              </button>
-              <button onClick={onClick} className="nx-dropdown-button">
-                Link 3
-              </button>
-            </NxDropdown>
-          </NxDrawer.Content>
-        </NxDrawer>
-      )}
+
+      <NxDrawer id="nx-drawer-esc"
+                open={showDrawer}
+                onClose={toggleDrawer}
+                aria-labelledby="nx-drawer-with-esc-example-title">
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="nx-drawer-with-esc-example-title">Header Title</NxDrawer.HeaderTitle>
+          <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
+          <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
+        </NxDrawer.Header>
+        <NxDrawer.Content>
+          <NxDropdown label="Expand" isOpen={dropdownIsOpen} onToggleCollapse={onToggleDropdownCollapse}>
+            <button onClick={onClick} className="nx-dropdown-button">
+              Link 1
+            </button>
+            <button onClick={onClick} className="nx-dropdown-button">
+              Link 2
+            </button>
+            <button onClick={onClick} className="nx-dropdown-button">
+              Link 3
+            </button>
+          </NxDropdown>
+        </NxDrawer.Content>
+      </NxDrawer>
+
       <NxPageMain>
         <NxPageTitle>
           <NxH1>Drawer With Dropdown Example</NxH1>

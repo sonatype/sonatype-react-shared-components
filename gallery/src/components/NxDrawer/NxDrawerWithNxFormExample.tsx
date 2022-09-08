@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef } from 'react';
+import React from 'react';
 
 import {
   NxDrawer,
@@ -19,31 +19,15 @@ import {
   NxFieldset,
   NxCheckbox,
   useToggle,
-  NxStatefulTextInput,
-  NxDrawerRef
+  NxStatefulTextInput
 } from '@sonatype/react-shared-components';
 
 export default function NxDrawerWithNxFormExample() {
-  const drawerRef = useRef<NxDrawerRef>(null);
-  const drawerOverflowingRef = useRef<NxDrawerRef>(null);
-
   const [showDrawer, toggleDrawer] = useToggle(false),
       [showDrawerOverflowing, toggleDrawerOverflowing] = useToggle(false),
       [isRed, toggleRed] = useToggle(false),
       [isBlue, toggleBlue] = useToggle(false),
       [isGreen, toggleGreen] = useToggle(false);
-
-  const closeDrawer = () => {
-    if (drawerRef.current) {
-      drawerRef.current.closeDrawer();
-    }
-  };
-
-  const closeOverflowingDrawer = () => {
-    if (drawerOverflowingRef.current) {
-      drawerOverflowingRef.current.closeDrawer();
-    }
-  };
 
   return (
     <>
@@ -51,53 +35,50 @@ export default function NxDrawerWithNxFormExample() {
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
       </header>
 
-      {showDrawer && (
-        <NxDrawer id="nx-drawer-with-nx-form"
-                  aria-labelledby="drawer-with-form-title"
-                  onCancel={toggleDrawer}
-                  ref={drawerRef}>
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle id="drawer-with-form-title">An Example of A Drawer with Form</NxDrawer.HeaderTitle>
-            <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
-            <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
-          </NxDrawer.Header>
+      <NxDrawer id="nx-drawer-with-nx-form"
+                aria-labelledby="drawer-with-form-title"
+                open={showDrawer}
+                onClose={toggleDrawer}>
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="drawer-with-form-title">An Example of A Drawer with Form</NxDrawer.HeaderTitle>
+          <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
+          <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
+        </NxDrawer.Header>
 
-          <NxForm onSubmit={closeDrawer}
-                  onCancel={closeDrawer}>
-            <NxDrawer.Content>
-              <NxFormGroup label="A Field to Fill in" isRequired>
-                <NxStatefulTextInput />
-              </NxFormGroup>
-              <NxFormGroup label="Country" sublabel="Pick your favorite from the list">
-                <select className="nx-form-select">
-                  <option value="">Pick a Country</option>
-                  <option value="USA">USA</option>
-                  <option value="GER">Canada</option>
-                  <option value="CAN">Germany</option>
-                  <option value="COL">Colombia</option>
-                </select>
-              </NxFormGroup>
-              <NxFormGroup label="Hostname">
-                <NxStatefulTextInput/>
-              </NxFormGroup>
-            </NxDrawer.Content>
-          </NxForm>
-        </NxDrawer>
-      )}
+        <NxForm onSubmit={toggleDrawer}
+                onCancel={toggleDrawer}>
+          <NxDrawer.Content>
+            <NxFormGroup label="A Field to Fill in" isRequired>
+              <NxStatefulTextInput />
+            </NxFormGroup>
+            <NxFormGroup label="Country" sublabel="Pick your favorite from the list">
+              <select className="nx-form-select">
+                <option value="">Pick a Country</option>
+                <option value="USA">USA</option>
+                <option value="GER">Canada</option>
+                <option value="CAN">Germany</option>
+                <option value="COL">Colombia</option>
+              </select>
+            </NxFormGroup>
+            <NxFormGroup label="Hostname">
+              <NxStatefulTextInput/>
+            </NxFormGroup>
+          </NxDrawer.Content>
+        </NxForm>
+      </NxDrawer>
 
-      {showDrawerOverflowing && (
       <NxDrawer id="nx-drawer-with-nx-form-overflowing"
                 aria-labelledby="drawer-with-overflowing-form-title"
-                onCancel={toggleDrawerOverflowing}
-                ref={drawerOverflowingRef}>
+                open={showDrawerOverflowing}
+                onClose={toggleDrawerOverflowing}>
         <NxDrawer.Header>
           <NxDrawer.HeaderTitle id="drawer-with-overflowing-form-title">Drawer With A Long Form</NxDrawer.HeaderTitle>
           <NxDrawer.HeaderSubtitle>Header Subtitle</NxDrawer.HeaderSubtitle>
           <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
         </NxDrawer.Header>
 
-        <NxForm onSubmit={closeOverflowingDrawer}
-                onCancel={closeOverflowingDrawer}>
+        <NxForm onSubmit={toggleDrawerOverflowing}
+                onCancel={toggleDrawerOverflowing}>
           <NxDrawer.Content>
             <NxFormGroup label="Username" isRequired>
               <NxStatefulTextInput/>
@@ -119,7 +100,6 @@ export default function NxDrawerWithNxFormExample() {
           </NxDrawer.Content>
         </NxForm>
       </NxDrawer>
-      )}
 
       <NxPageMain>
         <NxPageTitle>
