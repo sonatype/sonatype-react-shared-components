@@ -24,7 +24,7 @@ export default function NxDrawerVariantExample() {
 
   const contentAndFooter = (
     <>
-      <NxDrawer.Content>
+      <NxDrawer.Content tabIndex={0}>
         <NxP>
           Powder <strong>tiramisu</strong> gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa
           I love dessert cake. Pie candy canes liquorice jelly beans sweet roll. Jelly candy donut cotton candy

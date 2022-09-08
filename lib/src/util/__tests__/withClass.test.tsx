@@ -60,11 +60,4 @@ describe('withClass', function() {
     expect(component).toHaveProp('id', 'baz');
     expect(component).toHaveProp('lang', 'en_US');
   });
-
-  it('passes attributes to the created element', function() {
-    const ExampleArticleElementWithTabIndex = withClass('article', 'foo', undefined, { tabIndex: 0 }),
-        component = shallow(<ExampleArticleElementWithTabIndex />);
-
-    expect(component).toHaveProp('tabIndex', 0);
-  });
 });

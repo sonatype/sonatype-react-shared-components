@@ -31,7 +31,7 @@ export default function NxDrawerWithSubtitleOrDescriptionExample() {
   );
 
   const content = (
-    <NxDrawer.Content>
+    <NxDrawer.Content tabIndex={0}>
       <NxP>
         Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
         I love dessert cake. Pie candy canes liquorice jelly beans sweet roll. Jelly candy donut cotton candy

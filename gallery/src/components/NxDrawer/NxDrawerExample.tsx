@@ -26,7 +26,7 @@ export default function NxDrawerExample() {
   const [showDrawerTruncated, toggleDrawerTruncated] = useToggle(false);
 
   const content = (
-    <NxDrawer.Content>
+    <NxDrawer.Content tabIndex={0}>
       <NxP>
         Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
         I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
@@ -79,7 +79,7 @@ export default function NxDrawerExample() {
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="simple-drawer-title">A Simple Drawer</NxDrawer.HeaderTitle>
           </NxDrawer.Header>
-          <NxDrawer.Content>
+          <NxDrawer.Content tabIndex={0}>
             <NxP>
               Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
               I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
@@ -110,7 +110,7 @@ export default function NxDrawerExample() {
               A Simple Drawer With Footer
             </NxDrawer.HeaderTitle>
           </NxDrawer.Header>
-          <NxDrawer.Content>
+          <NxDrawer.Content tabIndex={0}>
             <NxP>
               Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
               I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
