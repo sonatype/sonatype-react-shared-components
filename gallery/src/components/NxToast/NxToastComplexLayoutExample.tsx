@@ -75,7 +75,7 @@ export default function NxToastComplexLayoutExample() {
               <NxToast key={id}
                        onClose={()=> removeToast(id)}>
                 {
-                  ToastAlert === NxWarningAlert || ToastAlert === NxInfoAlert ?
+                  ToastAlert === NxInfoAlert ?
                     <ToastAlert role="status">{message}</ToastAlert> :
                     <ToastAlert>{message}</ToastAlert>
                 }
