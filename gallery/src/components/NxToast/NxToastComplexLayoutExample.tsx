@@ -39,11 +39,11 @@ const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png
 
 interface ToastModel {
   id: number;
-  alertComponent: ComponentType<alertComponentProps>;
+  alertComponent: ComponentType<AlertComponentProps>;
   message: string;
 }
 
-type alertComponentProps = {
+type AlertComponentProps = {
   role?: string;
 };
 
@@ -51,7 +51,7 @@ export default function NxToastComplexLayoutExample() {
   const [toastIdInc, setToastIdInc] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
-  const addToast = (alertComponent: ComponentType<alertComponentProps>, message: string) => {
+  const addToast = (alertComponent: ComponentType<AlertComponentProps>, message: string) => {
     const toastId = toastIdInc + 1;
     setToastIdInc(toastId);
     setToasts([
