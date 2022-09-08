@@ -58,9 +58,9 @@ function NxComboboxRender<T extends string | number = string>(
       inputId = useUniqueId('nx-combobox-input', id),
       alertDropdownId = useUniqueId('nx-combobox-alert-dropdown'),
       dropdownId = useUniqueId('nx-combobox-dropdown'),
-      dropdownBtnId = useUniqueId('nx-dropdown-button'),
+      dropdownBtnIdPrefix = useUniqueId('nx-dropdown-button'),
       focusableBtnId = focusableBtnIndex !== null ?
-        dropdownRef.current?.children[focusableBtnIndex].id : undefined,
+        getDropdownBtnIdForIndex(focusableBtnIndex) : undefined,
 
       className = classnames('nx-combobox', classNameProp, {
         'nx-combobox--dropdown-showable': showDropdown
@@ -110,6 +110,10 @@ function NxComboboxRender<T extends string | number = string>(
       setFocusableBtnIndex(null);
       setShowDropdown(false);
     }
+  }
+
+  function getDropdownBtnIdForIndex(idx: number) {
+    return `${dropdownBtnIdPrefix}-${idx}`;
   }
 
   function handleOnChange(newVal: string) {
@@ -295,7 +299,7 @@ function NxComboboxRender<T extends string | number = string>(
                         aria-label="listbox of combobox">
           {
             matches.length && matches.map((match, i) =>
-              <button id={`${dropdownBtnId}-${i}`}
+              <button id={getDropdownBtnIdForIndex(i)}
                       role="option"
                       aria-selected={i === focusableBtnIndex }
                       className= {classnames('nx-dropdown-button',
