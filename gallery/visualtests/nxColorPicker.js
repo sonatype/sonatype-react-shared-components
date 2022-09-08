@@ -30,11 +30,7 @@ describe('NxColorPicker', function() {
 
   describe('when a color is selected', function() {
     beforeEach(async function() {
-      const [targetElement, labelElement, inputElement] = await waitAndGetElements(
-        selector,
-        colorSelector,
-        `${colorSelector} input`
-      );
+      const [labelElement, inputElement] = await waitAndGetElements(colorSelector, `${colorSelector} input`);
 
       await labelElement.click();
 
