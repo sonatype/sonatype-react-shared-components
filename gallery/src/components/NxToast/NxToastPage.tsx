@@ -100,24 +100,26 @@ const NxToastPage = () =>
               <NxTable.Cell>React Element</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
-                A single <NxCode>ReactElement</NxCode> which accepts an <NxCode>onClose</NxCode> prop and which
-                ultimately renders an <NxCode>NxAlert</NxCode> (or one of its variants such as
-                {' '}<NxCode>NxSuccessAlert</NxCode>). Most commonly, this would just be one of the RSC
-                {' '}<NxCode>Nx*Alert</NxCode> components themselves, but custom wrapping components are also permitted.
-                Note that the calling code should not specify the <NxCode>onClose</NxCode> prop for the alert; it will
-                be set up internally by <NxCode>NxToast</NxCode>. Calling code should instead use the
-                {' '}<NxCode>onClose</NxCode> prop of <NxCode>NxToast</NxCode> itself. Additionally, note that the alert
-                text content should be brief: only one rendered line of text per toast is supported.
-                <NxWarningAlert>
-                  <NxCode>Nx*Alert</NxCode>s must be passed a {' '}
+                <NxP>
+                  A single <NxCode>ReactElement</NxCode> which accepts an <NxCode>onClose</NxCode> prop and which
+                  ultimately renders an <NxCode>NxAlert</NxCode> (or one of its variants such as
+                  {' '}<NxCode>NxSuccessAlert</NxCode>). Most commonly, this would just be one of the RSC
+                  {' '}<NxCode>Nx*Alert</NxCode> components themselves, but custom wrapping components are also
+                  permitted. Note that the calling code should not specify the <NxCode>onClose</NxCode> prop for the
+                  alert; it will be set up internally by <NxCode>NxToast</NxCode>. Calling code should instead use the
+                  {' '}<NxCode>onClose</NxCode> prop of <NxCode>NxToast</NxCode> itself. Additionally, note that the
+                  alert text content should be brief: only one rendered line of text per toast is supported.
+                </NxP>
+                <NxP>
+                  <NxCode>Nx*Alert</NxCode>s as children of <NxCode>NxToast</NxCode> will be assigned a default role
+                  of <NxCode>alert</NxCode>. The role can be updated to either <NxCode>status</NxCode> or
+                  {' '}<NxCode>log</NxCode>. One of these three {' '}
                   <NxTextLink external href="https://www.w3.org/TR/wai-aria/#live_region_roles">
                     Live Region
                   </NxTextLink>
-                  {' '}role if not already provided (see
-                  {' '}<NxCode><NxTextLink href="#/pages/Alert">NxAlert</NxTextLink></NxCode>
-                  for more information about default roles). Without a designated role, the content inside
-                  {' '}<NxCode>NxToast</NxCode> will not be immediately read by screenreaders when rendered on the page.
-                </NxWarningAlert>
+                  {' '}roles must be provided to ensure the content inside <NxCode>NxToast</NxCode> will be read
+                  immediately by screenreaders when rendered on the page.
+                </NxP>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
