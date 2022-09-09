@@ -11,9 +11,12 @@ describe('NxCombobox', function() {
     waitAndGetElements,
     getPage,
     simpleTest,
+    hoverTest,
     blurElement,
+    focusAndHoverTest,
     disableLoadingSpinnerAnimation,
     checkScreenshot,
+    clickTest,
     a11yTest
   } = setupBrowser('#/pages/Combobox');
 
@@ -22,6 +25,18 @@ describe('NxCombobox', function() {
       backendExampleSelector = '#nx-combobox-backend-example .nx-combobox',
       errorExampleSelector = '#nx-combobox-error-example .nx-combobox',
       disabledExampleSelector = '#nx-combobox-disabled-example .nx-combobox';
+
+  describe('text input', function() {
+    const inputSelector = `${basicExampleSelector} .nx-combobox__input input`;
+
+    it('has a dark border by default', simpleTest(basicExampleSelector));
+
+    it('has a darker border when hovered',
+        hoverTest(basicExampleSelector, inputSelector));
+
+    it('has a blue border and glow when hovered and focused',
+        focusAndHoverTest(basicExampleSelector, inputSelector));
+  });
 
   describe('when loading', function() {
     beforeEach(async function() {
@@ -71,17 +86,6 @@ describe('NxCombobox', function() {
     await getPage().keyboard.type('a');
     await getPage().waitForSelector(dropdownButtonSelector);
     await checkScreenshot(component, 800, 376);
-  });
-
-  it('looks right with short variant', async function() {
-    const inputSelector = `${nonEmptinessExampleSelector} .nx-combobox__input input`,
-        dropdownButtonSelector = `${nonEmptinessExampleSelector} .nx-dropdown-button`,
-        [component, input] = await waitAndGetElements(nonEmptinessExampleSelector, inputSelector);
-
-    await input.focus();
-    await getPage().keyboard.type('a');
-    await getPage().waitForSelector(dropdownButtonSelector);
-    await checkScreenshot(component, 150, 376);
   });
 
   describe('when displaying empty message', function() {
@@ -192,17 +196,34 @@ describe('NxCombobox', function() {
     });
   });
 
-  describe('dropdown button has a blue background when selected', function() {
-    it('looks right', async function() {
+  describe('dropdown button', function() {
+    beforeEach(async function() {
       const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
           dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(basicExampleSelector, inputSelector);
+          [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
       await getPage().keyboard.type('a');
       await getPage().waitForSelector(dropdownButtonSelector);
+    });
+
+    it('has a blue background when selected', async function() {
+      const [component] = await waitAndGetElements(basicExampleSelector);
       await getPage().keyboard.press('ArrowDown');
       await checkScreenshot(component, 800, 376);
+    });
+
+    it('has a grey background when hover', async function() {
+      const dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
+          buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`;
+      await hoverTest(dropdownMenuSelector, buttonSelector)();
+    });
+
+    it('has a light blue border and light blue background when clicked', async function() {
+      const dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
+          buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`;
+
+      await clickTest(dropdownMenuSelector, buttonSelector)();
     });
   });
 

@@ -4,8 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import { render } from '@testing-library/react';
+import React, { useState } from 'react';
+import { render, screen } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import userEvent from '@testing-library/user-event';
@@ -67,17 +67,20 @@ describe('NxCombobox', function() {
   it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true',
       async function() {
         const user = userEvent.setup(),
-            { getByRole, rerender } = quickRender({
-              autoComplete: true,
-              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }]
-            }),
-            inputElement = getByRole('combobox');
+            Fixture = () => {
+              const [value, setValue] = useState('');
+              return (
+                <NxCombobox { ...minimalProps }
+                            value={value}
+                            onChange={setValue}
+                            autoComplete={true}
+                            matches={ [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }/>
+              );
+            };
+        render(<Fixture/>);
+        const inputElement = screen.getByRole('combobox');
 
         await user.type(inputElement, 'f');
-        rerender(
-          <NxCombobox { ...minimalProps }
-                      autoComplete={true}
-                      matches={ [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }] }/>);
         expect(inputElement).toHaveValue('Foo');
       });
 
@@ -127,7 +130,7 @@ describe('NxCombobox', function() {
     expect(onSearch).toHaveBeenCalledWith('foof');
   });
 
-  it('passes the disabled prop to the input and buttons', function() {
+  it('passes the disabled prop to the input', function() {
     const { getByRole, rerender } = quickRender(),
         inputElement = getByRole('combobox');
 
