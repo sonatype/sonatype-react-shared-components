@@ -112,13 +112,7 @@ const NxToastPage = () =>
                 </NxP>
                 <NxP>
                   <NxCode>Nx*Alert</NxCode>s as children of <NxCode>NxToast</NxCode> will be assigned a default role
-                  of <NxCode>alert</NxCode>. The role can be updated to either <NxCode>status</NxCode> or
-                  {' '}<NxCode>log</NxCode>. One of these three {' '}
-                  <NxTextLink external href="https://www.w3.org/TR/wai-aria/#live_region_roles">
-                    Live Region
-                  </NxTextLink>
-                  {' '}roles must be provided to ensure the content inside <NxCode>NxToast</NxCode> will be read
-                  immediately by screenreaders when rendered on the page.
+                  of <NxCode>alert</NxCode>, which can be overridden if necessary.
                 </NxP>
               </NxTable.Cell>
             </NxTable.Row>
@@ -180,8 +174,8 @@ const NxToastPage = () =>
         <NxP>
           A complex full page layout example. With the inclusion of <NxCode>NxGlobalHeader</NxCode>, the toasts
           will be positioned on the right side of the viewport, underneath the header. Extra content is provided
-          to be able to view the positioning of the toasts with scrolling behavior. The role for NxInfoAlert has
-          also been updated to <NxCode>status</NxCode>.
+          to be able to view the positioning of the toasts with scrolling behavior. The role for
+          {' '}<NxCode>NxInfoAlert</NxCode> has also been updated to <NxCode>status</NxCode>.
         </NxP>
         <NxP>
           <NxTextLink href="#/NxToastComplexLayoutExample">
