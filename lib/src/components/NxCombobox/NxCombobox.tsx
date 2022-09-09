@@ -104,8 +104,8 @@ function NxComboboxRender<T extends string | number = string>(
       // when the combobox loses focus.
       if (autoComplete && focusableBtnIndex !== null) {
         const elToFocusText = matches[focusableBtnIndex].displayName;
-        onChange(elToFocusText);
-        onSearch(elToFocusText);
+        onChange(elToFocusText.trim());
+        onSearch(elToFocusText.trim());
       }
       setFocusableBtnIndex(null);
       setShowDropdown(false);
@@ -117,21 +117,21 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function handleOnChange(newVal: string) {
-    setFocusableBtnIndex(null);
     onChange(newVal);
 
-    if (newVal && newVal.trim() !== value.trim()) {
+    if (newVal.trim() !== value.trim()) {
       doSearch(newVal);
-    }
-    else if (!newVal) {
-      setShowDropdown(false);
     }
   }
 
   function doSearch(val: string) {
-    focusTextInput();
     onSearch(val.trim());
-    setShowDropdown(true);
+    if (!val) {
+      setShowDropdown(false);
+    }
+    else {
+      setShowDropdown(true);
+    }
   }
 
   function focusTextInput() {
@@ -146,7 +146,6 @@ function NxComboboxRender<T extends string | number = string>(
         if (elToFocus) {
           setFocusableBtnIndex(newFocusableBtnIndex);
           elToFocus.scrollIntoView({ block: 'nearest' });
-
           setInlineStyle(false);
         }
       },
@@ -156,8 +155,8 @@ function NxComboboxRender<T extends string | number = string>(
       focusLast = adjustBtnFocus(always(matches.length - 1));
 
   function handleOnClick({displayName}: DataItem<T, string>) {
-    onChange(displayName);
-    onSearch(displayName);
+    onChange(displayName.trim());
+    onSearch(displayName.trim());
     focusTextInput();
     setFocusableBtnIndex(null);
     setShowDropdown(false);
@@ -211,6 +210,10 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'Backspace':
+        if (inlineStyle && focusableBtnIndex === 0) {
+          evt.preventDefault();
+          setFocusableBtnIndex(null);
+        }
         setInlineStyle(false);
         break;
       case 'Escape':
@@ -222,36 +225,45 @@ function NxComboboxRender<T extends string | number = string>(
           setFocusableBtnIndex(null);
         }
         break;
-      default:
-        if (autoComplete) {
-          setInlineStyle(true);
-        }
+      case ' ':
+        setInlineStyle(false);
+        setFocusableBtnIndex(null);
         break;
     }
   }
 
+  function handleKeyUp(evt: KeyboardEvent<HTMLElement>) {
+      if (autoComplete && evt.key.length === 1 && evt.key.match(/[!-~]/)) {
+        setInlineStyle(true);
+      }
+  }
+
+  useEffect(function() {
+    if (!autoComplete) {
+      setInlineStyle(false);
+    }
+  }, [autoComplete]);
+
+
   useEffect(function() {
     // Nullify focusableBtnIndex whenever the number of matches changes
-    setFocusableBtnIndex(null);
-
+    // setFocusableBtnIndex(null);
+  
     if (matches.length && autoComplete && showDropdown && inlineStyle) {
-      // If the typed characters match the beginning of the name of option in the dropdown,
-      // the first suggestion is automatically selected.
-      const firstOptVal = matches[0].displayName;
-      if (firstOptVal.toLowerCase().indexOf(value.toLowerCase()) === 0) {
         setFocusableBtnIndex(0);
-      }
     }
+
   }, [matches]);
 
   // Highlight the portion of the selected suggestion that has not been typed by the user and display
   // a completion string inline after the input cursor in the input box.
   useEffect(function() {
-    if (inlineStyle && focusableBtnIndex === 0) {
+   
+    if(inlineStyle && focusableBtnIndex === 0){
       const firstOptVal = matches[0].displayName;
       inputRef.current?.querySelector('input')?.setSelectionRange(value.length, firstOptVal.length);
     }
-  }, [focusableBtnIndex]);
+  }, [matches, value, inlineStyle, focusableBtnIndex]);
 
   return (
     /*eslint-disable-next-line jsx-a11y/no-static-element-interactions*/
@@ -271,6 +283,7 @@ function NxComboboxRender<T extends string | number = string>(
                    onChange={handleOnChange}
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
+                   onKeyUp={handleKeyUp}
                    aria-autocomplete={autoComplete ? 'both' : 'list'}
                    aria-expanded={showDropdown && !isAlert}
                    aria-controls={dropdownId}
