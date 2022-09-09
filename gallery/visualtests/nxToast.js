@@ -45,7 +45,7 @@ describe('NxToast', function() {
 
       it('passes a11y checks', async function() {
         await launchToastsFromPage();
-        a11yTest();
+        await a11yTest(null, true)();
       });
     });
   };
