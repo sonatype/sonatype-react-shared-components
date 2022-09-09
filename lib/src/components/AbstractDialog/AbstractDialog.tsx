@@ -105,7 +105,9 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
     setDialogRefState(el);
 
-    if (open) {
+    // if the open attr isn't being explicitly controlled at all, or is being passed as explictly open, use the
+    // show(Modal) methods to open it, getting all the built-in browser behavior around focus
+    if (open == null || open) {
       if (hasNativeModalSupport) {
         if (isModal) {
           /*
@@ -141,8 +143,11 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         }
       };
     }
-    else {
+    else if (open === false) {
       (el as any).close();
+      return undefined;
+    }
+    else {
       return undefined;
     }
   }, [open]);
