@@ -8,16 +8,10 @@
  @use '../../scss-shared/nx-text-helpers';
 
 @keyframes slide-in {
-  0% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-
   // This is required to fix jittering in Firefox and Safari
   // and not animating at all in Chrome.
-  1% {
+  0% {
     transform: translateX(100%);
-    opacity: 0;
   }
 
   100% {
@@ -67,6 +61,7 @@
   position: relative;
   z-index: var(--nx-z-index-drawer);
   min-height: 0;
+  opacity: 0;
   padding: $padding;
   padding-bottom: 0;
   width: 520px;
@@ -77,20 +72,19 @@
 
   // Prevents flickering
   backface-visibility: hidden;
-  display: none;
   transform: translateX(100%);
   opacity: 0;
 
-  &--visible {
-    display: flex;
-  }
- 
-  &--opening {
+  &[open] {
     animation: slide-in 200ms ease-out forwards;
   }
 
-  &--closing {
+  &:not([open]) {
     animation: slide-out 180ms ease-in forwards;
+  }
+
+  &--closed {
+    display: none;
   }
 
   @media (prefers-reduced-motion) {

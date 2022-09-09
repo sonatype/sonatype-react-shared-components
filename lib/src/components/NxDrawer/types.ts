@@ -12,7 +12,7 @@ export type NX_DRAWER_VARIANT_TYPE = (typeof NX_DRAWER_VARIANTS)[number];
 
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
   open: boolean;
-  onClose: (value: boolean) => void;
+  onClose: () => void;
   onCancel?: (() => void) | null;
   children?: ReactNode;
   variant?: NX_DRAWER_VARIANT_TYPE | null;

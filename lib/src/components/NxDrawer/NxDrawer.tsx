@@ -29,13 +29,11 @@ interface NxDrawerHeaderProps extends HTMLAttributes<HTMLElement>{
 interface NxDrawerContextValue {
   closeDrawer: () => void;
   open: boolean;
-  isVisible: boolean;
 }
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {},
-  open: false,
-  isVisible: false
+  open: false
 });
 
 const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
@@ -47,13 +45,7 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
 
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  const { closeDrawer, isVisible } = useContext(NxDrawerContext);
-
-  useEffect(() => {
-    if (isVisible && closeButtonRef.current) {
-      closeButtonRef.current.focus();
-    }
-  }, [isVisible]);
+  const { closeDrawer } = useContext(NxDrawerContext);
 
   const classes = classnames('nx-drawer-header', className);
 
@@ -80,55 +72,49 @@ function NxDrawer(props: Props) {
     variant,
     ...attrs
   } = props;
-  const [isVisible, setIsVisible] = useState(false);
-  const previouslyActiveElement = useRef<HTMLElement | null>(null);
+
+  // Whether the drawer is _fully_ closed (i.e. not open and not animating between open/closed)
+  const [isClosed, setIsClosed] = useState(!open);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const closeDrawer = () => onClose(true);
+  const closeDrawer = () => onClose();
 
   const handleAnimationEnd = () => {
     if (!open) {
-      setIsVisible(false);
+      setIsClosed(true);
+
       if (onCancel) {
         onCancel();
       }
     }
   };
 
-  const updatePreviouslyActiveElement = () => {
-    previouslyActiveElement.current = document.activeElement as HTMLElement;
-  };
-
   useEffect(() => {
-    const listener = (event: MouseEvent) => {
-      if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
-        closeDrawer();
-      }
-    };
-
     if (open) {
-      updatePreviouslyActiveElement();
-      setIsVisible(true);
+      setIsClosed(false);
+
+      const listener = (event: MouseEvent) => {
+        if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
+          closeDrawer();
+        }
+      };
+
       document.addEventListener('click', listener);
+
+      return () => document.removeEventListener('click', listener);
     }
     else {
-      if (previouslyActiveElement.current) {
-        previouslyActiveElement.current.focus();
-      }
+      return undefined;
     }
-
-    return () => document.removeEventListener('click', listener);
   }, [open]);
 
   const classes = classnames('nx-drawer', 'nx-viewport-sized', {
-    'nx-drawer--visible': isVisible,
-    'nx-drawer--opening': open,
-    'nx-drawer--closing': isVisible && !open,
-    'nx-drawer--narrow': variant === 'narrow'
+    'nx-drawer--narrow': variant === 'narrow',
+    'nx-drawer--closed': isClosed
   }, className);
 
-  const drawerContextValue = { closeDrawer, open, isVisible };
+  const drawerContextValue = { closeDrawer, open };
 
   return (
     <NxDrawerContext.Provider value={drawerContextValue}>
@@ -137,6 +123,7 @@ function NxDrawer(props: Props) {
                       onCancel={closeDrawer}
                       isModal={false}
                       onAnimationEnd={handleAnimationEnd}
+                      open={open}
                       {...attrs}>
         {children}
       </AbstractDialog>

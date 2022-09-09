@@ -11,7 +11,8 @@ export type CancelHandler = (evt: Event) => void;
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
   onCancel: CancelHandler;
   useNativeCancelOnEscape?: boolean | null;
-  isModal?: boolean | null
+  isModal?: boolean | null;
+  open?: boolean | null;
 }
 
 export interface DialogContextValue {

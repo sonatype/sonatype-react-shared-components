@@ -51,6 +51,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     useNativeCancelOnEscape,
     role,
     isModal,
+    open,
     ...attrs
   } = props;
 
@@ -104,41 +105,47 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
     setDialogRefState(el);
 
-    if (hasNativeModalSupport) {
-      if (isModal) {
-        /*
-        * This will cause the document to become "blocked by the modal dialog"
-        * (https://html.spec.whatwg.org/multipage/interaction.html#blocked-by-a-modal-dialog)
-        * meaning that only the modal and its contents are interactable/focusable.
-        *
-        * Note: not supported in safari, which is why the conditional is here. Once safari gets
-        * it together, we should be able to take advantage of the "top layer" functionality built into
-        * the browser around modals to simplify the dialog styling around z-index handling
-        */
+    if (open) {
+      if (hasNativeModalSupport) {
+        if (isModal) {
+          /*
+          * This will cause the document to become "blocked by the modal dialog"
+          * (https://html.spec.whatwg.org/multipage/interaction.html#blocked-by-a-modal-dialog)
+          * meaning that only the modal and its contents are interactable/focusable.
+          *
+          * Note: not supported in safari, which is why the conditional is here. Once safari gets
+          * it together, we should be able to take advantage of the "top layer" functionality built into
+          * the browser around modals to simplify the dialog styling around z-index handling
+          */
 
-        // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (el as any).showModal();
+          // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (el as any).showModal();
+        }
+        else {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (el as any).show();
+        }
       }
       else {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (el as any).show();
+        // without native support we don't trap focus in the dialog, but we can at least start it off there
+        el.focus();
       }
+
+      return () => {
+        if (previouslyFocusedEl && previouslyFocusedEl instanceof HTMLElement) {
+          // The useEffect cleanup executes while the dialog is still present (in React 16 at least). While the dialog
+          // still exists, the document is still "blocked by the modal dialog" so trying to focus elements outside of
+          // it won't work. So we have to wait until the next cycle of the event loop when it's gone
+          Promise.resolve().then(() => previouslyFocusedEl.focus());
+        }
+      };
     }
     else {
-      // without native support we don't trap focus in the dialog, but we can at least start it off there
-      el.focus();
+      (el as any).close();
+      return undefined;
     }
-
-    return () => {
-      if (previouslyFocusedEl && previouslyFocusedEl instanceof HTMLElement) {
-        // The useEffect cleanup executes while the dialog is still present (in React 16 at least). While the dialog
-        // still exists, the document is still "blocked by the modal dialog" so trying to focus elements outside of
-        // it won't work. So we have to wait until the next cycle of the event loop when it's gone
-        Promise.resolve().then(() => previouslyFocusedEl.focus());
-      }
-    };
-  }, []);
+  }, [open]);
 
   // listen to the native HTMLDialogElement cancel event which supporting browsers fire when the dialog is closed
   // via ESC
