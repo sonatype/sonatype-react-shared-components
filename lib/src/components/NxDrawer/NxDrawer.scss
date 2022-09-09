@@ -12,6 +12,7 @@
   // and not animating at all in Chrome.
   0% {
     transform: translateX(100%);
+    opacity: 0;
   }
 
   100% {
@@ -61,7 +62,6 @@
   position: relative;
   z-index: var(--nx-z-index-drawer);
   min-height: 0;
-  opacity: 0;
   padding: $padding;
   padding-bottom: 0;
   width: 520px;
@@ -69,11 +69,6 @@
   &--narrow {
     width: 348px;
   }
-
-  // Prevents flickering
-  backface-visibility: hidden;
-  transform: translateX(100%);
-  opacity: 0;
 
   &[open] {
     animation: slide-in 200ms ease-out forwards;
