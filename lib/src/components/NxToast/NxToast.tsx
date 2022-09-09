@@ -38,8 +38,10 @@ const NxToast = (props: NxToastProps) => {
   };
 
   const validChild = React.Children.only(children),
-      childrenWithProps = React.cloneElement(validChild,
-          { onClose: handleClose, role: children.props.role ? children.props.role : 'alert' });
+      childrenWithProps = React.cloneElement(validChild, {
+        onClose: handleClose,
+        role: children.props.role ?? 'alert'
+      });
 
   const classes = classnames('nx-toast', className, {
     'nx-toast--closing': isClosing
