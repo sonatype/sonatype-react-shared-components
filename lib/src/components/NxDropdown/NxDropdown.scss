@@ -136,6 +136,7 @@
     &, &:hover, &:focus {
       color: var(--nx-color-link-disabled);
       cursor: default;
+      pointer-events: none;
       text-decoration: none;
     }
   }
