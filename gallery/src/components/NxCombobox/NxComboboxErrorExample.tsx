@@ -6,26 +6,25 @@
  */
 import React, { useCallback, useState } from 'react';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxSearchDropdown, DataItem, NX_STANDARD_DEBOUNCE_TIME }
+import { NxCombobox, NX_STANDARD_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
-export default function NxSearchDropdownLongErrorExample() {
+export default function NxComboboxErrorExample() {
   const [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
       [error, setError] = useState<string | null>(null);
 
-  function onSelect({ displayName }: DataItem) {
-    alert('Selected ' + displayName);
-  }
-
-  // use debounce so that the backend query does not happen until the user has stopped typing for half a second
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
     setError(`Error executing query ${query}`);
     setLoading(false);
-  }, [error]), NX_STANDARD_DEBOUNCE_TIME);
+  }, [query]), NX_STANDARD_DEBOUNCE_TIME);
 
-  function onSearchTextChange(query: string) {
+  function onChange(query: string) {
     setQuery(query);
+    if (!query) {
+      setError(null);
+      setLoading(false);
+    }
   }
 
   function onSearch(query: string) {
@@ -38,13 +37,12 @@ export default function NxSearchDropdownLongErrorExample() {
   }
 
   return (
-    <NxSearchDropdown long
-                      loading={loading}
-                      error={error}
-                      matches={[]}
-                      searchText={query}
-                      onSearchTextChange={onSearchTextChange}
-                      onSearch={onSearch}
-                      onSelect={onSelect} />
+    <NxCombobox matches={[]}
+                loading={loading}
+                loadError={error}
+                value={query}
+                onChange={onChange}
+                onSearch={onSearch}
+                aria-label="combobox" />
   );
 }
