@@ -64,7 +64,7 @@ describe('NxThreatIndicator', function() {
     const component = getShallowComponent({ policyThreatLevel: 9, threatLevelCategory: 'low' });
 
     expect(component.find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'threat level low');
-    expect(component.find(NxFontAwesomeIcon)).toHaveProp('aria-hidden', false);
+    expect(component.find(NxFontAwesomeIcon)).not.toHaveProp('aria-hidden');
   });
 
   it('should have the correct default tooltip title', function() {
@@ -93,5 +93,26 @@ describe('NxThreatIndicator', function() {
     expect(icon).toHaveClassName('foo');
     expect(icon).toHaveClassName('nx-threat-indicator');
     expect(icon).toHaveClassName('nx-threat-indicator--low');
+  });
+
+  it('should hide tooltip when presentational prop is set true', function() {
+    const component = getShallowComponent({ presentational: true });
+    const tooltip = component.find(NxToolip);
+    const icon = component.find(NxFontAwesomeIcon);
+
+    expect(tooltip).not.toExist();
+    expect(icon).toExist();
+  });
+
+  it('should set the role to "presentation" when presentational prop is true', function() {
+    const icon = getShallowComponent({ presentational: true }).find(NxFontAwesomeIcon);
+
+    expect(icon).toHaveProp('role', 'presentation');
+  });
+
+  it('should set aria-label to undefined when presentational prop is true', function() {
+    const icon = getShallowComponent({ presentational: true }).find(NxFontAwesomeIcon);
+
+    expect(icon).toHaveProp('aria-label', undefined);
   });
 });

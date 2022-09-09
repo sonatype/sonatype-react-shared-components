@@ -72,7 +72,7 @@ const NxLoadWrapperPage = () =>
         descendants. However there are cases where it makes sense to use it at a higher level in order to control
         the display of both <NxCode>.nx-page-main</NxCode> and <NxCode>.nx-page-sidebar</NxCode> simultaneously.
         For examples of ths situation, see
-        the <NxTextLink href="#/pages/Page Layout">Page Layout documentation</NxTextLink>.
+        the <NxTextLink href="#/pages/Page%20Layout%20Examples">Page Layout Examples documentation</NxTextLink>.
       </NxP>
     </GalleryDescriptionTile>
 

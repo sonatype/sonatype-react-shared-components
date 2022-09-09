@@ -86,12 +86,17 @@ import {
   NxThreatCounter,
   NxThreatIndicator,
   NxThreatIndicatorLegend,
+  NxToast,
+  NxToastContainer,
   NxToggle,
   NxTooltip,
   NxTransferList,
   NxTree,
   NxVulnerabilityDetails,
   NxWarningAlert,
+  NxFileUpload,
+  NxStatefulFileUpload,
+  NxDescriptionList,
   useUniqueId
 } from '@sonatype/react-shared-components';
 
@@ -315,6 +320,11 @@ const Home: NextPage = () => {
         <NxSmallThreatCounter criticalCount={2} />
         <NxThreatIndicator />
         <NxThreatIndicatorLegend critical />
+        <NxToastContainer>
+          <NxToast onClose={noop}>
+            <NxAlert icon={faEdit} />
+          </NxToast>
+        </NxToastContainer>
         <NxToggle isChecked={false} />
         <NxStatefulToggle defaultChecked={true} />
         <NxTooltip title="foo">
@@ -351,6 +361,16 @@ const Home: NextPage = () => {
                           options={[{ id: 'a', displayName: 'b' }]}
                           selectedIds={new Set(['a'])}
                           onChange={noop} />
+        <NxFileUpload files={null} onChange={() => {}} />
+        <NxStatefulFileUpload />
+        <NxDescriptionList>
+          <NxDescriptionList.Item>
+            <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
+            <NxDescriptionList.Description>Foo</NxDescriptionList.Description>
+          </NxDescriptionList.Item>
+          <NxDescriptionList.ButtonItem term="foo" description="bar" onClick={noop} />
+          <NxDescriptionList.LinkItem term="foo" description="bar" href="" />
+        </NxDescriptionList>
       </NxPageMain>
     </div>
   )

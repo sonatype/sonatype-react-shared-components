@@ -111,12 +111,14 @@
   }
 
   .nx-tab-list {
-    margin: 1px 1px 0 1px;
+    margin-top: 1px;
+    margin-left: 1px;
+    margin-right: 1px;
   }
 
   .nx-tab-panel {
     flex-shrink: 1;
     overflow-y: auto;
-    padding-bottom: var(--nx-spacing-6x);
+    margin-bottom: var(--nx-spacing-6x);
   }
 }

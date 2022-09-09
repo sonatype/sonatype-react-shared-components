@@ -18,7 +18,7 @@ describe('NxSystemNotice', function() {
       await checkFullPageScreenshot();
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(null, true));
   });
 
   describe('with traditional page layout', function() {
@@ -33,6 +33,6 @@ describe('NxSystemNotice', function() {
       await checkFullPageScreenshot();
     });
 
-    it('passes a11y checks', a11yTest());
+    it('passes a11y checks', a11yTest(null, true));
   });
 });

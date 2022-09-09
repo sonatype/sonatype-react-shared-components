@@ -20,7 +20,7 @@ export default function NxStatefulGlobalSidebarPage() {
       <GalleryDescriptionTile>
         <NxP>
           <NxCode>NxStatefulGlobalSidebar</NxCode> is the stateful version of <NxCode>NxGlobalSidebar</NxCode>. Please
-          {' '}<NxTextLink href="#/Pages/NxGlobalSidebar">refer to that component</NxTextLink> for shared
+          {' '}<NxTextLink href="#/Pages/Global%20Sidebar">refer to that component</NxTextLink> for shared
           props and documentation.
         </NxP>
         <NxTile.Subsection>

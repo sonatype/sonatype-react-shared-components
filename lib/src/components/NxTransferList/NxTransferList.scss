@@ -17,5 +17,9 @@
 
   .nx-transfer-list__half {
     width: auto;
+
+    &, .nx-transfer-list__filter .nx-text-input__input {
+      min-width: 0;
+    }
   }
 }

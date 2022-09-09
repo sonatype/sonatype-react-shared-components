@@ -51,13 +51,13 @@ export default function GlobalSidebarHeaderSystemNoticeLoadWrapperLayout() {
                                logoLink="#">
         <NxGlobalSidebarNavigation>
           <NxGlobalSidebarNavigationLink icon={faLink}
-                                         text="Page Layout"
-                                         href="#/pages/Page%20Layout"/>
+                                         text="Page Layout Examples"
+                                         href="#/pages/Page%20Layout%20Examples"/>
         </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxSystemNotice>This is a System Notice</NxSystemNotice>
       <NxGlobalHeader>
-        <NxBackButton href="#/pages/Page%20Layout" />
+        <NxBackButton href="#/pages/Page%20Layout%20Examples" />
       </NxGlobalHeader>
       <NxLoadWrapper loading={loading} retryHandler={() => { setError(null); }} error={error}>
         <NxPageSidebar>

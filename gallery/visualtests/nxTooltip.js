@@ -34,6 +34,9 @@ describe('NxTooltip', function() {
 
     const { x, y, height, width } = await btnBarElement.boundingBox();
 
+    // wait for the always-open tooltip on the next element over to appear, so that the HTML tooltip ends up on top
+    await wait(1500);
+
     // hover the second button to activate its tooltip, which uses additional properties and custom HTML
     await secondBtnElement.hover();
     await wait(1500);

@@ -107,5 +107,5 @@ describe('NxCollapsibleItems', function() {
   });
 
   // aria-required-children gets tripped up by empty lists in this component, even though it seemingly shouldn't
-  it('passes a11y checks', a11yTest(builder => builder.disableRules('aria-required-children')));
+  it('passes a11y checks', a11yTest(builder => builder.disableRules(['aria-required-children', 'color-contrast'])));
 });

@@ -15,7 +15,7 @@ const NxTreeViewMultiSelectPage = () =>
       <NxWarningAlert>
         <NxCode>NxTreeViewMultiSelect</NxCode> has been renamed to <NxCode>NxCollapsibleMultiSelect</NxCode>
         and is now deprecated and will be removed in the future.
-        Please use <NxTextLink href="#/pages/NxCollapsibleMultiSelect">NxCollapsibleMultiSelect</NxTextLink> instead.
+        Please use <NxTextLink href="#/pages/Collapsible%20Multi-Select">NxCollapsibleMultiSelect</NxTextLink> instead.
       </NxWarningAlert>
 
       <NxP>

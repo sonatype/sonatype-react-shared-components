@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import useResizeObserver from '@react-hook/resize-observer';
 
 import { textContent } from '../../util/childUtil';
@@ -12,6 +12,7 @@ import { textContent } from '../../util/childUtil';
 import { OverflowTooltipProps, overflowTooltipPropTypes } from './types';
 import NxTooltip from './NxTooltip';
 import { any } from 'ramda';
+import batch from './updateBatcher';
 
 export { OverflowTooltipProps };
 
@@ -29,16 +30,22 @@ export default function NxOverflowTooltip({ title, children, ...otherProps }: Ov
   const computedTitle = title || textContent(children),
       [needsTooltip, setNeedsTooltip] = useState(false),
       ref = useRef<HTMLElement>(null),
+      isUnmounted = useRef(false),
       childrenWithRef = React.cloneElement(children, { ref });
 
-  function updateNeedsTooltip() {
+  const updateNeedsTooltip = useCallback(function updateNeedsTooltip() {
     const el = ref.current;
 
-    setNeedsTooltip(!!el && selfOrChildrenOverflowing(el));
-  }
+    batch(() => {
+      if (!isUnmounted.current) {
+        setNeedsTooltip(!!el && selfOrChildrenOverflowing(el));
+      }
+    });
+  }, []);
 
   // check the width on initial layout and any time computedTitle changes
   useEffect(updateNeedsTooltip, [computedTitle]);
+  useEffect(() => () => { isUnmounted.current = true; }, []);
 
   // check the width any time the element resizes
   useResizeObserver(ref, updateNeedsTooltip);

@@ -24,7 +24,7 @@ describe('NxTextInput', function() {
     return `${componentSelector} ${inputType}`;
   }
 
-  const { getPage, simpleTest, focusTest, hoverTest, focusAndHoverTest, a11yTest } =
+  const { checkScreenshot, getPage, simpleTest, focusTest, hoverTest, focusAndHoverTest, a11yTest } =
       setupBrowser('#/pages/Text Input');
 
   describe('Simple NxTextInput', function() {
@@ -51,7 +51,7 @@ describe('NxTextInput', function() {
           ]);
 
       await inputElement.type('foo');
-      await targetElement.screenshot();
+      await checkScreenshot(targetElement);
     });
 
     it('has invalid validation styles when invalid and dirty', async function() {
@@ -69,7 +69,7 @@ describe('NxTextInput', function() {
 
       const { x, y } = await targetElement.boundingBox();
 
-      await page.screenshot({ x, y, height: 74, width: 300 });
+      await checkScreenshot(targetElement, 300, 74);
     });
   });
 
@@ -83,7 +83,7 @@ describe('NxTextInput', function() {
           ]);
 
       await inputElement.type('foo');
-      await targetElement.screenshot();
+      await checkScreenshot(targetElement);
     });
   });
 
@@ -101,7 +101,7 @@ describe('NxTextInput', function() {
           ]);
 
       await inputElement.type('foo');
-      await targetElement.screenshot();
+      await checkScreenshot(targetElement);
     });
 
     it('has invalid validation styles when invalid and dirty', async function() {
@@ -118,7 +118,7 @@ describe('NxTextInput', function() {
       await inputElement.press('Backspace');
 
       const { x, y } = await targetElement.boundingBox();
-      await page.screenshot({ x, y, height: 300, width: 300 });
+      await checkScreenshot(targetElement, 300, 300);
     });
   });
 

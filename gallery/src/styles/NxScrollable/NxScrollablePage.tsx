@@ -25,7 +25,8 @@ const NxScrollablePage = () =>
       </NxP>
       <NxP>
         <NxCode>.nx-scrollable</NxCode> should <strong>not</strong> be used to replicate page or browser
-        scrolling, refer instead to the <NxTextLink href="#Pages/Page Layout/">page layout templates</NxTextLink>.
+        scrolling, refer instead to the
+        <NxTextLink href="#/pages/Page%20Layout%20Examples">page layout templates</NxTextLink>.
       </NxP>
     </GalleryDescriptionTile>
     <GalleryExampleTile title="General Example"

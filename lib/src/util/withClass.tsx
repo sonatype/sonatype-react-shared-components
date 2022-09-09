@@ -15,7 +15,8 @@ type NativeElType<E extends keyof JSX.IntrinsicElements> =
 
 export default function withClass<E extends keyof JSX.IntrinsicElements>(
   El: E,
-  withClassName: string
+  withClassName: string,
+  withRole?: string
 ) {
   return forwardRef<NativeElType<E>, JSX.IntrinsicElements[E]>((props: JSX.IntrinsicElements[E], ref) => {
     const {
@@ -23,6 +24,6 @@ export default function withClass<E extends keyof JSX.IntrinsicElements>(
       ...otherProps
     } = props;
     const classes = classnames(withClassName, className);
-    return React.createElement(El, { className: classes, ref, ...otherProps});
+    return React.createElement(El, { className: classes, role: withRole, ref, ...otherProps});
   });
 }

@@ -124,7 +124,7 @@ const NxPaginationPage = () =>
       </NxTable>
       <NxP>
         For an example of an <NxCode>NxPagination</NxCode> component within/connected to a table,
-        see the <NxTextLink className="nx-text-link" href="#/pages/NxTable"><NxCode>NxTable</NxCode></NxTextLink> page.
+        see the <NxTextLink className="nx-text-link" href="#/pages/Table"><NxCode>NxTable</NxCode></NxTextLink> page.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>

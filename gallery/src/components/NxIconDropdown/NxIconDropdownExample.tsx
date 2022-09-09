@@ -19,10 +19,10 @@ function NxIconDropdownNavigationExample() {
                     onToggleCollapse={onToggleCollapse}
                     icon={faEllipsisV}
                     title="Options">
-      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-link">
+      <NxTextLink onClick={onClick} href="#/pages/Dropdown" className="nx-dropdown-link">
         Text link 1
       </NxTextLink>
-      <NxTextLink onClick={onClick} href="#/pages/NxDropdown" className="nx-dropdown-link">
+      <NxTextLink onClick={onClick} href="#/pages/Dropdown" className="nx-dropdown-link">
         Text link 2 - this link should trigger truncation
       </NxTextLink>
       <NxTextLink external

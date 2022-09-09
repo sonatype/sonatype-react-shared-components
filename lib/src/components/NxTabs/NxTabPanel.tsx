@@ -25,6 +25,7 @@ const NxTabPanel = function NxTabPanelElement(props: NxTabPanelProps) {
          id={`${rootId}-tabpanel-${index}`}
          aria-labelledby={`${rootId}-tab-${index}`}
          className={classnames('nx-tab-panel', className)}
+         tabIndex={0}
          {...attrs}
     />
   );

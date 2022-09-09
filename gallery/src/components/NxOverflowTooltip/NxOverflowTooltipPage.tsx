@@ -29,7 +29,7 @@ export default function NxOverflowTooltipPage() {
         </NxP>
         <NxP>
           The props that this component takes are effectively the same as those
-          of <NxTextLink href="#/pages/NxTooltip"><NxCode>NxTooltip</NxCode></NxTextLink>,
+          of <NxTextLink href="#/pages/Tooltip"><NxCode>NxTooltip</NxCode></NxTextLink>,
           however there is a behavioral difference in regards to the <NxCode>title</NxCode> prop.
           In typical use of this component, the title will be unspecified. This leaves it up to the component
           itself to determine the tooltip contents based on the "shallow-rendered" text content of the component's

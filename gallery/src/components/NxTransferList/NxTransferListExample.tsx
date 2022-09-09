@@ -6,16 +6,20 @@
  */
 import React, { useState } from 'react';
 import { DataItem, NxFontAwesomeIcon, NxTransferList } from '@sonatype/react-shared-components';
-import { map, range, prepend } from 'ramda';
+import { map, range, flatten } from 'ramda';
 import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
 
-const items: DataItem<number>[] = prepend(
-    {
-      id: 0,
-      displayName: <><NxFontAwesomeIcon icon={faArrowsAltH} /><span>Loooooooooooooooooooooooooong Name</span></>
-    },
-    map<number, DataItem<number>>(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101))
-);
+const items: DataItem<number>[] = flatten([
+  {
+    id: 0,
+    displayName: <><NxFontAwesomeIcon icon={faArrowsAltH} /><span>Loooooooooooooooooooooooooong Name</span></>
+  },
+  map<number, DataItem<number>>(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101)),
+  {
+    id: 200,
+    displayName: <>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</>
+  }
+]);
 
 export default function NxTransferListExample() {
   const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set([12, 37, 98])),

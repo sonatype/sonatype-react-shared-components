@@ -7,19 +7,7 @@
 @use 'sass:math';
 @use '../../scss-shared/nx-text-helpers';
 
-.nx-small-threat-counter {
-  $height: 25px;
-
-  border-radius: math.div($height, 2);
-  color: var(--nx-color-text-dark);
-  font-size: var(--nx-font-size-s);
-  font-weight: bold;
-  height: $height;
-  line-height: $height;
-  padding-left: var(--nx-spacing-2x);
-  padding-right: var(--nx-spacing-2x);
-  text-align: center;
-
+@mixin counter-colors {
   @each $category in critical, severe, moderate, low, none, unspecified {
     &--#{$category} {
       background-color: var(--nx-color-threat-#{$category});
@@ -31,11 +19,27 @@
   &--unspecified {
     color: var(--nx-swatch-white);
   }
+}
+
+.nx-small-threat-counter {
+  $height: 25px;
+  position: relative;
+  border-radius: math.div($height, 2);
+  color: var(--nx-color-text-dark);
+  font-size: var(--nx-font-size-s);
+  font-weight: bold;
+  height: $height;
+  line-height: $height;
+  padding-left: var(--nx-spacing-2x);
+  padding-right: var(--nx-spacing-2x);
+  text-align: center;
 
   &__category {
     //invisible but still read by the screenreader
     @include nx-text-helpers.visually-hidden;
   }
+
+  @include counter-colors;
 
   // Used to set the width of the counter based on its max text content
   &__sizer {
@@ -46,7 +50,8 @@
   }
 
   &--zero {
-    visibility: hidden;
+    background-color: var(--nx-swatch-grey-90);
+    color: var(--nx-swatch-grey-40);
   }
 }
 
@@ -67,9 +72,8 @@
       text-align: center;
       width: 100%;
 
-      &--zero {
-        visibility: visible;
-      }
+      // using the counter-colors mixin will override the zero styling in this use case
+      @include counter-colors;
     }
   }
 }

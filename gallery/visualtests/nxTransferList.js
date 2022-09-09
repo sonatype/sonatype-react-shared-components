@@ -16,6 +16,7 @@ describe('NxTransferList', function() {
     waitAndGetElements,
     checkScreenshot,
     wait,
+    scrollIntoView,
     a11yTest
   } = setupBrowser('#/pages/Transfer List');
 
@@ -25,6 +26,7 @@ describe('NxTransferList', function() {
       itemsSelector =
         `${simpleListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__item`,
       firstItemSelector = `${itemsSelector}:first-child .nx-transfer-list__select`,
+      lastItemSelector = `${itemsSelector}:last-child .nx-transfer-list__select`,
       secondItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
       transferAllSelector =
         `${complexListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__move-all`;
@@ -36,6 +38,18 @@ describe('NxTransferList', function() {
     const [list, firstItem] = await waitAndGetElements(simpleListSelector, firstItemSelector);
 
     await firstItem.hover();
+
+    await waitAndGetElements('.nx-tooltip');
+    await wait(500);
+
+    await checkScreenshot(list);
+  });
+
+  it('handles overflowing content with a tooltip on items initially scrolled out of view', async function() {
+    const [list, lastItem] = await waitAndGetElements(simpleListSelector, lastItemSelector);
+
+    await scrollIntoView(lastItem);
+    await lastItem.hover();
 
     await waitAndGetElements('.nx-tooltip');
     await wait(500);

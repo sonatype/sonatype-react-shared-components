@@ -75,6 +75,10 @@ module.exports = {
       return await element.evaluate(e => e === document.activeElement);
     }
 
+    async function isInDocument(el) {
+      return el.evaluate(e => e.isConnected);
+    }
+
     async function waitForSelectors(...selectors) {
       return Promise.all(selectors.map(s => page.waitForSelector(s)));
     }
@@ -166,6 +170,7 @@ module.exports = {
 
       blurElement,
       isFocused,
+      isInDocument,
       moveMouseAway,
       dismissResultingDialog,
       disableLoadingSpinnerAnimation,
@@ -244,10 +249,16 @@ module.exports = {
         };
       },
 
-      a11yTest(builderCustomizer) {
+      a11yTest(builderCustomizer, fullPage = false) {
         return async () => {
-          const builder = new AxePuppeteer(page),
-              customizedBuilder = builderCustomizer ? builderCustomizer(builder) : builder,
+          // to allow async code such as tooltip initialization to complete
+          await wait(500);
+
+          // the color contrast checker seems to be buggy, it has many complaints about overlapping items when
+          // there aren't any
+          const builder = new AxePuppeteer(page).disableRules('color-contrast'),
+              builderWithInclude = fullPage ? builder : builder.include('.gallery-example-live'),
+              customizedBuilder = builderCustomizer ? builderCustomizer(builderWithInclude) : builderWithInclude,
               axeResults = await customizedBuilder.analyze();
 
           expect(axeResults.violations).toEqual([]);

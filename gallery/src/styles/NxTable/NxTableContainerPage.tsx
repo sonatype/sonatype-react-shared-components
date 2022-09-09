@@ -96,7 +96,7 @@ const NxTableContainerPage = () =>
                         codeExamples={NxTableFooterCode}>
       A demonstration of a table with a footer element which for the sake of example just contains a button.
       The most common real-world use-case for a footer is a pagination bar, which can be seen in
-      the <NxTextLink href="#/pages/NxTable"><NxCode>NxTable</NxCode></NxTextLink> react
+      the <NxTextLink href="#/pages/Table"><NxCode>NxTable</NxCode></NxTextLink> react
       component examples.
     </GalleryExampleTile>
 

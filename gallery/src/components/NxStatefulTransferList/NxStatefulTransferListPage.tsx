@@ -18,7 +18,7 @@ const NxTransferListPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         <NxCode>NxStatefulTransferList</NxCode> is a wrapper around{' '}
-        <NxTextLink href="#/pages/NxTransferList">
+        <NxTextLink href="#/pages/Transfer%20List">
           <NxCode>NxTransferList</NxCode>
         </NxTextLink>
         {' '}which encapsulates the state handling around the filter boxes. The selection state of the items is still

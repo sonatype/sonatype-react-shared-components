@@ -68,6 +68,19 @@ const NxThreatIndicatorPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>Additional CSS class names to apply to the rendered element</NxTable.Cell>
           </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>presentational</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              When this is true, the tooltip will be hidden, aria-label will not be set,
+              and the icon's role will be set to "presentation".
+              This should be set to true when <NxCode>NxThreatIndicator</NxCode> is used alongside
+              visible text that repeats its meaning.
+              For example, In the case of Critical <NxCode>NxThreatIndicator</NxCode> with "Critical"
+              printed next to it, we don't want the screenreader to read the <NxCode>NxThreatIndicator</NxCode> tooltip.
+            </NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
 
@@ -112,6 +125,8 @@ const NxThreatIndicatorPage = () =>
                         codeExamples={nxThreatIndicatorByCategoryCode}>
       A series of lines of text, each beginning with an <NxCode>NxThreatIndicator</NxCode> whose
       color is set to a different <NxCode>threatLevelCategory</NxCode> value.
+      The <NxCode>NxThreatIndicator</NxCode> has presentational props set to true because{' '}
+      they are accompanied by text describing their threat level that are matching their tooltip.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Indicators by Policy Number"

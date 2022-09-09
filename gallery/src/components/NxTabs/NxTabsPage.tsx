@@ -14,12 +14,14 @@ import NxTabsOutsideTileExample from './NxTabsOutsideTileExample';
 import NxTabsTileNoHeaderExample from './NxTabsTileNoHeaderExample';
 import NxTabsModalExample from './NxTabsModalExample';
 import NxTabsModalNoHeaderExample from './NxTabsModalNoHeaderExample';
+import NxTabsSimpleExample from './NxTabsSimpleExample';
 
 const NxTabsTileHeaderExampleCode = require('./NxTabsTileHeaderExample?raw');
 const NxTabsOutsideTileExampleCode = require('./NxTabsOutsideTileExample?raw');
 const NxTabsTileNoHeaderExampleCode = require('./NxTabsTileNoHeaderExample?raw');
 const NxTabsModalExampleCode = require('./NxTabsModalExample?raw');
 const NxTabsModalNoHeaderExampleCode = require('./NxTabsModalNoHeaderExample?raw');
+const NxTabsSimpleExampleCode = require('./NxTabsSimpleExample?raw');
 
 export default function NxTabsPage() {
   return (
@@ -181,7 +183,69 @@ export default function NxTabsPage() {
             </NxTable.Body>
           </NxTable>
         </NxTile.Subsection>
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>Keyboard Navigation</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxP>
+            Adheres to the{' '}
+            <NxTextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/" external>
+              Tabs WAI-ARIA design pattern
+            </NxTextLink>.
+          </NxP>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Key</NxTable.Cell>
+                <NxTable.Cell>Description</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>
+                  Tab
+                </NxTable.Cell>
+                <NxTable.Cell>
+                  When focus moves into the tabs it goes to the active tab.{' '}
+                  When you tab again the focus will move to the associated panel container.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>
+                  Arrow Right | Arrow Left
+                </NxTable.Cell>
+                <NxTable.Cell>
+                  When you're focused on a tab, you can use the right or left arrow keys to change{' '}
+                  focus between tabs. You can then use "spacebar" or "enter" key to activate the focused tab.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>
+                  Home
+                </NxTable.Cell>
+                <NxTable.Cell>
+                  Focuses the first tab.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>
+                  End
+                </NxTable.Cell>
+                <NxTable.Cell>
+                  Focuses the last tab.
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
+        </NxTile.Subsection>
       </GalleryDescriptionTile>
+
+      <GalleryExampleTile title="NxTabs Simple Example"
+                          id="nx-tab-simple-example"
+                          liveExample={NxTabsSimpleExample}
+                          codeExamples={NxTabsSimpleExampleCode}>
+        A basic example of <NxCode>NxTabs</NxCode>.
+      </GalleryExampleTile>
       <GalleryExampleTile title="NxTabs in NxTile Example"
                           id="nx-tab-tile-example"
                           defaultCheckeredBackground={true}

@@ -30,7 +30,6 @@ import {
   NxReadOnly,
   NxTableContainer,
   NxGlobalHeader,
-  NxDescriptionList,
   NxFormRow
 } from '../SimpleComponents';
 
@@ -264,7 +263,7 @@ describe('NxPageTitle', function() {
 
 describe('NxPageTitle.Headings', function() {
   it('makes a <hgroup> tag with an nx-page-title__headings class', function() {
-    expect(shallow(<NxPageTitle.Headings/>)).toMatchSelector('div.nx-page-title__headings');
+    expect(shallow(<NxPageTitle.Headings/>)).toMatchSelector('hgroup.nx-page-title__headings');
   });
 });
 
@@ -337,30 +336,6 @@ describe('NxGlobalHeader.Actions', function() {
 describe('NxDivider', function() {
   it('makes a <hr> tag with an nx-divider class', function() {
     expect(shallow(<NxDivider/>)).toMatchSelector('hr.nx-divider');
-  });
-});
-
-describe('NxDescriptionList', function() {
-  it('makes a <dl> tag with nx-list and nx-list--description-list classes', function() {
-    expect(shallow(<NxDescriptionList/>)).toMatchSelector('dl.nx-list.nx-list--description-list');
-  });
-});
-
-describe('NxDescriptionList.Item', function() {
-  it('makes a <div> tag with the nx-list__item class', function() {
-    expect(shallow(<NxDescriptionList.Item/>)).toMatchSelector('div.nx-list__item');
-  });
-});
-
-describe('NxDescriptionList.Term', function() {
-  it('makes a <dt> tag with the nx-list__term class', function() {
-    expect(shallow(<NxDescriptionList.Term/>)).toMatchSelector('dt.nx-list__term');
-  });
-});
-
-describe('NxDescriptionList.Description', function() {
-  it('makes a <dd> tag with the nx-list__description class', function() {
-    expect(shallow(<NxDescriptionList.Description/>)).toMatchSelector('dd.nx-list__description');
   });
 });
 

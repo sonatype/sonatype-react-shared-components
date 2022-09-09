@@ -15,7 +15,7 @@ const NxTreeViewRadioSelectPage = () =>
       <NxWarningAlert>
         <NxCode>NxTreeViewRadioSelect</NxCode> has been renamed to <NxCode>NxCollapsibleRadioSelect</NxCode>
         and is now deprecated and will be removed in the future.
-        Please use <NxTextLink href="#/pages/NxCollapsibleRadioSelect">NxCollapsibleRadioSelect</NxTextLink> instead.
+        Please use <NxTextLink href="#/pages/Collapsible%20Radio-Select">NxCollapsibleRadioSelect</NxTextLink> instead.
       </NxWarningAlert>
 
       <NxP>

@@ -21,6 +21,7 @@ export default function NxSearchDropdownLongErrorExample() {
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
     setError(`Error executing query ${query}`);
+    setLoading(false);
   }, [error]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
 
   function onSearchTextChange(query: string) {
@@ -28,8 +29,12 @@ export default function NxSearchDropdownLongErrorExample() {
   }
 
   function onSearch(query: string) {
-    setLoading(true);
-    executeQuery(query);
+    setError(null);
+
+    if (query !== '') {
+      setLoading(true);
+      executeQuery(query);
+    }
   }
 
   return (

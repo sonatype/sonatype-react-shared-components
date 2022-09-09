@@ -178,6 +178,11 @@ const CssVariablesPage = () => {
               , making its z-index irrelevant.
             </NxWarningAlert>
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-z-index-toast">
+            The z-index of <NxCode>NxToast</NxCode> elements. This is provided as a variable in case downstream
+            code wants to set the z-index of another element relative to it (e.g. to ensure that that other element
+            always appears above, or always below, the submit mask).
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-radius">
             The typical border-radius applied to RSC elements with rounded borders.
           </PropertyDocItem>
@@ -319,6 +324,18 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-validation-invalid">
               The color used on validatable form fields when they are invalid.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-info">
+              The color used on the <NxCode>NxAlert</NxCode> info icon and for other equivalent icons and purposes.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-success">
+              The color used on the <NxCode>NxAlert</NxCode> success icon and for other equivalent icons and purposes.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-warning">
+              The color used on the <NxCode>NxAlert</NxCode> warning icon and for other equivalent icons and purposes.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-error">
+              The color used on the <NxCode>NxAlert</NxCode> error icon and for other equivalent icons and purposes.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>

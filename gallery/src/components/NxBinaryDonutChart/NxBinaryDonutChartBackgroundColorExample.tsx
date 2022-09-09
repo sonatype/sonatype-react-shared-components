@@ -11,11 +11,11 @@ export default function NxBinaryDonutChartBackgroundColorExample() {
   return (
     <>
       <div className="gallery-binary-donut-chart-background" style={{backgroundColor: 'var(--nx-swatch-indigo-95)'}}>
-        <NxBinaryDonutChart percent={25} aria-label="25 out of 100 components identified" />
+        <NxBinaryDonutChart value={25} aria-label="25 out of 100 components identified" />
       </div>
       <div className="gallery-binary-donut-chart-background" style={{backgroundColor: 'var(--nx-swatch-teal-60)'}}>
-        <NxBinaryDonutChart percent={25} innerRadiusPercent={25} aria-label="25 out of 100 components identified" />
-        <NxBinaryDonutChart percent={25} innerRadiusPercent={0} aria-label="25 out of 100 components identified" />
+        <NxBinaryDonutChart value={25} innerRadiusPercent={25} aria-label="25 out of 100 components identified" />
+        <NxBinaryDonutChart value={25} innerRadiusPercent={0} aria-label="25 out of 100 components identified" />
       </div>
     </>
   );

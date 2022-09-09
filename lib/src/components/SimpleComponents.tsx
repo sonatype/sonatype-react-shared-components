@@ -59,7 +59,7 @@ export const NxGrid = {
 };
 
 export const NxPageTitle = Object.assign(withClass('div', 'nx-page-title'), {
-  Headings: withClass('div', 'nx-page-title__headings'),
+  Headings: withClass('hgroup', 'nx-page-title__headings'),
   Subtitle: withClass('h2', 'nx-h2 nx-page-title__sub-title'),
   Description: withClass('div', 'nx-page-title__description'),
   Tags: withClass('div', 'nx-page-title__tags')
@@ -77,10 +77,4 @@ export const NxTableContainer = Object.assign(withClass('div', 'nx-table-contain
 
 export const NxGlobalHeader = Object.assign(withClass('header', 'nx-global-header'), {
   Actions: withClass('div', 'nx-global-header__actions')
-});
-
-export const NxDescriptionList = Object.assign(withClass('dl', 'nx-list nx-list--description-list'), {
-  Item: withClass('div', 'nx-list__item'),
-  Term: withClass('dt', 'nx-list__term'),
-  Description: withClass('dd', 'nx-list__description')
 });

@@ -21,8 +21,8 @@
   --nx-color-interactive-background-disabled: var(--nx-swatch-grey-95);
   --nx-color-interactive-border-hover: var(--nx-swatch-grey-05);
   --nx-color-interactive-border-disabled: var(--nx-swatch-grey-60);
-  --nx-color-interactive-border-focus: var(--nx-swatch-teal-45);
-  --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 65%, 0.3);
+  --nx-color-interactive-border-focus: var(--nx-swatch-teal-35);
+  --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 35%, 0.5);
 
   --nx-color-text-stark: var(--nx-swatch-grey-05);
   --nx-color-text: var(--nx-swatch-grey-30);
@@ -43,6 +43,11 @@
 
   --nx-color-validation-valid: var(--nx-swatch-green-30);
   --nx-color-validation-invalid: var(--nx-swatch-red-45);
+
+  --nx-color-alert-info: var(--nx-swatch-blue-40);
+  --nx-color-alert-success: var(--nx-swatch-green-25);
+  --nx-color-alert-warning: var(--nx-swatch-orange-50);
+  --nx-color-alert-error: var(--nx-swatch-red-40);
 
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);

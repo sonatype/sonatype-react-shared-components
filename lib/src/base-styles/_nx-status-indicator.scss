@@ -1,0 +1,93 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+.nx-status-indicator {
+  $height: calc(var(--nx-line-height) * var(--nx-font-size));
+  $border-radius: calc(#{$height} * 0.5);
+
+  // common styles
+  border-radius: $border-radius;
+  display: inline-block;
+  font-size: var(--nx-font-size-s);
+  line-height: $height;
+  margin: 0 var(--nx-spacing-2x);
+  padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-2x);
+  position: relative;
+  vertical-align: top;
+  &::before {
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    content: '';
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    margin: 6px var(--nx-spacing-3x) 6px 0;
+    vertical-align: bottom;
+  }
+  &::after {
+    // We can't set a border on the nx-status-indicator itself without affecting its height, since it's line-box based.
+    // Instead, create the border on this pseudo-element
+    border-radius: $border-radius;
+    border-style: solid;
+    border-width: 1px;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  // negative styles (default)
+  background-color: var(--nx-swatch-grey-95);
+  color: var(--nx-swatch-grey-10);
+  &::before {
+    background-color: var(--nx-swatch-grey-60);
+    border-color: var(--nx-swatch-grey-20);
+  }
+  &::after {
+    border-color: var(--nx-swatch-grey-30);
+  }
+
+  &--intermediate {
+    background-color: var(--nx-swatch-blue-95);
+    color: var(--nx-swatch-blue-10);
+    &::before {
+      background-color: var(--nx-swatch-blue-30);
+      border-color: var(--nx-swatch-blue-30);
+    }
+    &::after {
+      border-color: var(--nx-swatch-blue-30);
+    }
+  }
+
+  &--positive {
+    background-color: var(--nx-swatch-green-95);
+    color: var(--nx-swatch-green-10);
+    &::before {
+      background-color: var(--nx-swatch-green-45);
+      border-color: var(--nx-color-alert-success);
+    }
+    &::after {
+      border-color: var(--nx-color-alert-success);
+    }
+  }
+
+  &--error {
+    background-color: var(--nx-swatch-red-95);
+    color: var(--nx-swatch-red-10);
+    &::before {
+      background-color: var(--nx-swatch-red-65);
+      border-color: var(--nx-color-alert-error);
+    }
+    &::after {
+      border-color: var(--nx-color-alert-error);
+    }
+  }
+}

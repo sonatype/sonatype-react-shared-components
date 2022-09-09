@@ -21,7 +21,8 @@ import {
   NxInfoAlert,
   NxFormSelect,
   nxFormSelectStateHelpers,
-  NxTransferList
+  NxTransferList,
+  NxFileUpload
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -55,6 +56,13 @@ export default function NxFormLayoutExample() {
   const [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
       [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
       [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState('');
+
+  const [files, setFiles] = useState<FileList | null>(null),
+      [isFilePristine, setFilePristine] = useState(true),
+      onFileChange = (files: FileList | null) => {
+        setFiles(files);
+        setFilePristine(false);
+      };
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
@@ -145,6 +153,9 @@ export default function NxFormLayoutExample() {
                         onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
                         onChange={setSelectedTransferItems} />
       </NxFieldset>
+      <NxFormGroup label="Upload a File" sublabel={<>Foo<br/>Bar</>} isRequired>
+        <NxFileUpload files={files} isRequired isPristine={isFilePristine} onChange={onFileChange} />
+      </NxFormGroup>
       <dl className="nx-read-only">
         <dt className="nx-read-only__label">
           This is a read only label that that describes the data that will appear below
