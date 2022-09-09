@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-dark-mode-helpers';
+
 :root {
   --nx-color-border: var(--nx-swatch-indigo-90);
   --nx-color-border-secondary: var(--nx-swatch-indigo-95);
@@ -52,4 +54,13 @@
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
   --nx-color-text-dark: var(--nx-color-text-stark);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-text-stark: var(--nx-swatch-indigo-90);
+    --nx-color-text: var(--nx-swatch-indigo-80);
+
+    --nx-color-link: var(--nx-swatch-teal-75);
+
+    --nx-color-validation-invalid: var(--nx-swatch-red-75);
+  }
 }
