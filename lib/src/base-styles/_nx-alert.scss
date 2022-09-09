@@ -48,7 +48,11 @@
 }
 
 .nx-alert__content {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
+  justify-content: center;
+  min-height: 32px;
   overflow-wrap: anywhere;
 }
 
