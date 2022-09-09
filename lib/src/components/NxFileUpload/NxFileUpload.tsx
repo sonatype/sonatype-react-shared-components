@@ -35,7 +35,7 @@ function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps) {
         <span className="nx-selected-file__size">{formatSize(file.size)}</span>
       </span>
       <NxTooltip title={buttonLabel}>
-        <button aria-label={buttonLabel} className="nx-selected-file__dismiss-btn" onClick={onDismiss}>
+        <button type="button" aria-label={buttonLabel} className="nx-selected-file__dismiss-btn" onClick={onDismiss}>
           <NxFontAwesomeIcon icon={faTimesCircle} />
         </button>
       </NxTooltip>
