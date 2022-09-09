@@ -32,10 +32,7 @@ export default function NxComboboxPredeterminedListExample() {
   const executeQuery = useCallback(function executeQuery(query: string) {
     const lowercaseQuery = query.toLowerCase(),
         matchingItems = filter(i => i.displayName.toLowerCase().indexOf(lowercaseQuery) === 0, items);
-    if (isEqualShallow(matches, matchingItems)) {
-      // do nothing
-    }
-    else {
+    if (!isEqualShallow(matches, matchingItems)) {
       setMatches(matchingItems);
     }
   }, [query]);

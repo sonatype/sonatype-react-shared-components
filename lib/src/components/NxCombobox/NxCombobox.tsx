@@ -53,7 +53,9 @@ function NxComboboxRender<T extends string | number = string>(
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       [showDropdown, setShowDropdown] = useState(false),
       [inlineStyle, setInlineStyle] = useState(false),
-      inputVal = autoComplete && focusableBtnIndex !== null ? matches[focusableBtnIndex].displayName : value,
+      inputVal = autoComplete && focusableBtnIndex !== null && matches.length
+        ? matches[focusableBtnIndex].displayName
+        : value,
 
       inputId = useUniqueId('nx-combobox-input', id),
       alertDropdownId = useUniqueId('nx-combobox-alert-dropdown'),
@@ -117,6 +119,7 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function handleOnChange(newVal: string) {
+    setFocusableBtnIndex(null);
     onChange(newVal);
 
     if (newVal.trim() !== value.trim()) {
@@ -162,9 +165,16 @@ function NxComboboxRender<T extends string | number = string>(
     setShowDropdown(false);
   }
 
+  function handleKeyUp(evt: KeyboardEvent<HTMLElement>) {
+    if (autoComplete && evt.key.length === 1 && evt.key.match(/[!-~]/)) {
+      setInlineStyle(true);
+    }
+  }
+
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
     const inputEle = evt.currentTarget as HTMLInputElement,
-        elToFocusText = focusableBtnIndex !== null ? matches[focusableBtnIndex].displayName : null;
+        elToFocusText = matches.length && focusableBtnIndex !== null ? matches[focusableBtnIndex].displayName : null;
+
     switch (evt.key) {
       case 'Enter':
         if (focusableBtnIndex !== null) {
@@ -210,7 +220,7 @@ function NxComboboxRender<T extends string | number = string>(
         evt.preventDefault();
         break;
       case 'Backspace':
-        if (inlineStyle && focusableBtnIndex === 0) {
+        if (inlineStyle && value !== elToFocusText) {
           evt.preventDefault();
           setFocusableBtnIndex(null);
         }
@@ -232,38 +242,24 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }
 
-  function handleKeyUp(evt: KeyboardEvent<HTMLElement>) {
-      if (autoComplete && evt.key.length === 1 && evt.key.match(/[!-~]/)) {
-        setInlineStyle(true);
-      }
-  }
-
   useEffect(function() {
     if (!autoComplete) {
       setInlineStyle(false);
     }
   }, [autoComplete]);
 
-
   useEffect(function() {
-    // Nullify focusableBtnIndex whenever the number of matches changes
-    // setFocusableBtnIndex(null);
-  
-    if (matches.length && autoComplete && showDropdown && inlineStyle) {
-        setFocusableBtnIndex(0);
+    if (loading) {
+      setFocusableBtnIndex(null);
     }
-
-  }, [matches]);
-
-  // Highlight the portion of the selected suggestion that has not been typed by the user and display
-  // a completion string inline after the input cursor in the input box.
-  useEffect(function() {
-   
-    if(inlineStyle && focusableBtnIndex === 0){
+    // Highlight the portion of the selected suggestion that has not been typed by the user and display
+    // a completion string inline after the input cursor in the input box.
+    else if (matches.length && autoComplete && showDropdown && inlineStyle) {
+      setFocusableBtnIndex(0);
       const firstOptVal = matches[0].displayName;
       inputRef.current?.querySelector('input')?.setSelectionRange(value.length, firstOptVal.length);
     }
-  }, [matches, value, inlineStyle, focusableBtnIndex]);
+  }, [matches, value, inlineStyle, focusableBtnIndex, loading]);
 
   return (
     /*eslint-disable-next-line jsx-a11y/no-static-element-interactions*/
