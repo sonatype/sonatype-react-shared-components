@@ -27,7 +27,6 @@ import {
   nxTextInputStateHelpers,
   NxTextInput,
   hasValidationErrors,
-  combineValidationErrors,
   nxFieldsetStateHelpers,
   NxFileUpload
 } from '@sonatype/react-shared-components';
@@ -94,13 +93,13 @@ export default function NxFormLayoutExample() {
       };
 
   const formValidationErrors =
-      hasValidationErrors(combineValidationErrors(
+      hasValidationErrors(
           textInputState.validationErrors,
           colorValidationError,
           selectState.validationErrors,
           tagColorState.validationErrors,
           !files?.length && !isFilePristine ? 'A file is required' : null
-      )) ? 'Required fields are missing' : null;
+      ) ? 'Required fields are missing' : null;
 
   function onSubmit() {
     alert('Submitted!');

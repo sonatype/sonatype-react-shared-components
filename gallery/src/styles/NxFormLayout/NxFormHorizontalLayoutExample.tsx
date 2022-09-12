@@ -15,7 +15,6 @@ import {
   nxTextInputStateHelpers,
   NxTextInput,
   hasValidationErrors,
-  combineValidationErrors,
   NxStatefulForm,
   NxForm,
   NxFormRow,
@@ -63,12 +62,12 @@ export default function NxFormLayoutExample() {
   ] = useRadioGroupState(undefined, c => c ? null : 'A color is required');
 
   const formValidationErrors =
-      hasValidationErrors(combineValidationErrors(
+      hasValidationErrors(
           textInputState.validationErrors,
           selectValidationErrors,
           colorCheckboxValidationErrors,
           colorRadioValidationErrors
-      )) ? 'Required fields are missing' : null;
+      ) ? 'Required fields are missing' : null;
 
   function onSubmit() {
     alert('Submitted!');
