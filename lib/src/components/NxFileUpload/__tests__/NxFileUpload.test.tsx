@@ -57,7 +57,7 @@ describe('NxFileUpload', function() {
 
     expect(renderWithForm.queryByRole('alert')).toBeTruthy();
     expect(renderWithForm.queryByRole('alert')).toHaveTextContent('This field is Required!');
-    expect(renderWithForm.container.querySelector('input[type=file]')?.getAttribute('aria-invalid')).toBe('true');
+    expect(renderWithForm.container.querySelector('input[type=file]')).toHaveAttribute('aria-invalid', 'true');
     expect(renderWithForm.container.querySelector('input[type=file]')).toHaveErrorMessage('This field is Required!');
   });
 
