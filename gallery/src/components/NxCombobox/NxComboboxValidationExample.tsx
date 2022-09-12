@@ -36,16 +36,12 @@ export default function NxComboboxRequiredExample() {
   const [matches, setMatches] = useState<DataItem<number, string>[]>(items),
       [inputState, setInputState] = useState(initialState(''));
 
-  const executeQuery = useCallback(function executeQuery(query: string) {
+  const onSearch = useCallback((query: string) => {
     setMatches(search(query));
   }, [inputState.value]);
 
   function onChange(query: string) {
     setInputState(userInput(validator, query));
-  }
-
-  function onSearch(query: string) {
-    executeQuery(query);
   }
 
   return (

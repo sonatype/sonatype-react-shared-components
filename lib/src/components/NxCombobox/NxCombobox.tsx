@@ -17,7 +17,7 @@ import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadError from '../NxLoadError/NxLoadError';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import { useUniqueId } from '../../util/idUtil';
-// import useToggle from '../../util/useToggle';
+import useToggle from '../../util/useToggle';
 import DataItem from '../../util/DataItem';
 export { Props } from './types';
 
@@ -55,7 +55,7 @@ function NxComboboxRender<T extends string | number = string>(
       showAlert = !!(!disabled && isAlert && value),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
-      [inputIsFocused, toggleInputIsFocused] = useState(false),
+      [inputIsFocused, toggleInputIsFocused] = useToggle(false),
       [inlineStyle, setInlineStyle] = useState(false),
       inputVal = autoComplete && focusableBtnIndex !== null && matches.length
         ? matches[focusableBtnIndex].displayName
@@ -259,8 +259,8 @@ function NxComboboxRender<T extends string | number = string>(
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
                    onKeyUp={handleKeyUp}
-                   onFocus={() => toggleInputIsFocused(true)}
-                   onBlur={() => toggleInputIsFocused(false)}
+                   onFocus={toggleInputIsFocused}
+                   onBlur={toggleInputIsFocused}
                    aria-autocomplete={autoComplete ? 'both' : 'list'}
                    aria-expanded={ showDropdown && inputIsFocused}
                    aria-controls={showDropdown && inputIsFocused ? dropdownId : undefined}

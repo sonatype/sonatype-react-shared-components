@@ -20,41 +20,28 @@ const items = prepend(
     { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: states[i - 1] }), range(1, states.length + 1)));
 
-function isEqualShallow(obj1: DataItem<number, string>[], obj2: DataItem<number, string>[]) {
-  return Object.keys(obj1).length === Object.keys(obj2).length &&
-  (Object.keys(obj1) as (keyof typeof obj1)[]).every(key=> obj1[key] === obj2[key]);
+function search(query: string):DataItem<number, string>[] {
+  const lowercaseQuery = query.toLowerCase(),
+      matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
+  return matchingItems;
 }
 
 export default function NxComboboxPredeterminedListExample() {
   const [matches, setMatches] = useState<DataItem<number, string>[]>(items),
       [query, setQuery] = useState('');
 
-  const executeQuery = useCallback(function executeQuery(query: string) {
-    const lowercaseQuery = query.toLowerCase(),
-        matchingItems = filter(i => i.displayName.toLowerCase().indexOf(lowercaseQuery) === 0, items);
-    if (!isEqualShallow(matches, matchingItems)) {
-      setMatches(matchingItems);
-    }
+  const onSearch = useCallback((query: string) => {
+    setMatches(search(query));
   }, [query]);
 
   function onChange(query: string) {
     setQuery(query);
   }
 
-  function onSearch(query: string) {
-    if (query === '') {
-      setMatches(items);
-    }
-    else {
-      executeQuery(query);
-    }
-  }
-
   return (
     <NxCombobox className="nx-combobox--long"
                 matches={matches}
                 value={query}
-                autoComplete={true}
                 onChange={onChange}
                 onSearch={onSearch}
                 aria-label="state" />
