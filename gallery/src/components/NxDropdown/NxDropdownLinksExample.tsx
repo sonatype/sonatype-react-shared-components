@@ -25,14 +25,14 @@ function NxDropdownActionsExample() {
         <span>Go somewhere else</span>
         <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
       </a>
-      <a href="https://www.google.com/" className="nx-dropdown-link disabled">
+      <a href="https://www.google.com/" className="nx-dropdown-link disabled" onClick={evt => evt.preventDefault()}>
         <span>Can't go here though</span>
         <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
       </a>
       <a href="#/" className="nx-dropdown-link">
         <span>Go to homepage</span>
       </a>
-      <a href="#/" className="nx-dropdown-link disabled">
+      <a href="#/" className="nx-dropdown-link disabled" onClick={evt => evt.preventDefault()}>
         <span>Can't go here either</span>
       </a>
     </NxDropdown>
