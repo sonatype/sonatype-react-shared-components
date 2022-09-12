@@ -26,14 +26,13 @@ describe('validationUtil', function() {
       expect(hasValidationErrors('this is a really big problem')).toBe(true);
     });
 
-    it('returns true for multiple strings or arrays', function() {
-      expect(hasValidationErrors('foo', 'bar')).toBe(true);
-      expect(hasValidationErrors(['foo', 'bar'], ['asdf'])).toBe(true);
+    it('returns true iff any of its arguments is or contains a string', function() {
+      expect(hasValidationErrors(null, undefined, [])).toBe(false);
+      expect(hasValidationErrors('foo', [], undefined)).toBe(true);
+      expect(hasValidationErrors('foo', ['bar'])).toBe(true);
+      expect(hasValidationErrors(['foo', 'bar'], ['asdf'], [])).toBe(true);
     });
 
-    it('returns false for multiple empty arrays', function() {
-      expect(hasValidationErrors([], [])).toBe(false);
-    });
   });
 
   describe('getFirstValidationError', function() {
