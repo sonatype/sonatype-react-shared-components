@@ -15,7 +15,6 @@ import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxDrawer, { Props } from '../NxDrawer';
 import NxButton from '../../NxButton/NxButton';
 import useToggle from '../../../util/useToggle';
-// import useToggle from '../../../util/useToggle';
 
 describe('NxDrawer', function() {
   const minimalProps: Props = {
@@ -273,15 +272,14 @@ describe('NxDrawer', function() {
 
       const mockOnClose = jest.fn();
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      getDrawer({
+      quickRender({
         onClose: mockOnClose,
         children: (
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle>Hello</NxDrawer.HeaderTitle>
           </NxDrawer.Header>
         )
-      })!;
+      });
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const closeButton = screen.getByRole('button', { hidden: true, name: 'Close' })!;
