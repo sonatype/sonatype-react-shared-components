@@ -33,7 +33,8 @@ describe('NxTransferListHalf', function() {
       transferAllSelector = `${complexListSelector} .nx-transfer-list__move-all`,
       complexFirstItemSelector = `${complexListSelector} .nx-transfer-list__item:first-child`,
       moveUpSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :first-child`,
-      moveDownSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :last-child`;
+      moveDownSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :last-child`,
+      filterBoxSelector = `${complexListSelector} .nx-text-input__input`;
 
   it('looks right', simpleTest(simpleListSelector));
   it('looks right with complex options', simpleTest(complexListSelector));
@@ -62,6 +63,17 @@ describe('NxTransferListHalf', function() {
 
   it('gives the move up button a tooltip when hovered', hoverTest(complexListFullSelector, moveUpSelector, true));
   it('gives the move down button a tooltip when hovered', hoverTest(complexListFullSelector, moveDownSelector, true));
+
+  describe('when filtered', function() {
+    beforeEach(async function() {
+      const [input] = await waitAndGetElements(filterBoxSelector);
+
+      await input.type('I');
+    });
+
+    it('gives the move up button no tooltip of its own', hoverTest(complexListFullSelector, moveUpSelector, true));
+    it('gives the move down button no tooltip of its own', hoverTest(complexListFullSelector, moveDownSelector, true));
+  });
 
   it('passes a11y checks', a11yTest());
 });
