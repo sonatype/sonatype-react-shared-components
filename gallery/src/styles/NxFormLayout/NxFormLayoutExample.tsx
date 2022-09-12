@@ -21,6 +21,7 @@ import {
   NxInfoAlert,
   NxFormSelect,
   nxFormSelectStateHelpers,
+  nxTextInputStateHelpers,
   NxTransferList,
   NxFileUpload,
   NxCombobox,
@@ -76,9 +77,10 @@ export default function NxFormLayoutExample() {
         setFilePristine(false);
       };
 
-  const [matches, setMatches] = useState<DataItem<number, string>[]>(comboboxItems),
-      [query, setQuery] = useState(''),
-      onComboboxChange = (query: string) => setQuery(query),
+  const { initialState, userInput } = nxTextInputStateHelpers,
+      [matches, setMatches] = useState<DataItem<number, string>[]>(comboboxItems),
+      [inputState, setInputState] = useState(initialState('')),
+      onComboboxChange = (query: string) => setInputState(userInput(validator, query)),
       search = function(query: string):DataItem<number, string>[] {
         const lowercaseQuery = query.toLowerCase(),
             matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), comboboxItems);
@@ -86,8 +88,8 @@ export default function NxFormLayoutExample() {
       },
       executeQuery = useCallback(function executeQuery(query: string) {
         setMatches(search(query));
-      }, [query]),
-      onComboboxSearch = (query: string) => query ? executeQuery(query) : setMatches([]);
+      }, [inputState.value]),
+      onComboboxSearch = (query: string) => query ? executeQuery(query) : setMatches(comboboxItems);
 
   function onSubmit(evt: FormEvent) {
     evt.preventDefault();
@@ -183,7 +185,10 @@ export default function NxFormLayoutExample() {
       </NxFormGroup>
       <NxFormGroup label="State" isRequired>
         <NxCombobox matches={matches}
-                    value={query}
+                    value={inputState.value}
+                    isPristine={inputState.isPristine}
+                    validatable={true}
+                    validationErrors={inputState.validationErrors}
                     onChange={onComboboxChange}
                     onSearch={onComboboxSearch}/>
       </NxFormGroup>

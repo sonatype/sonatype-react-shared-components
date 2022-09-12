@@ -65,7 +65,7 @@ describe('NxCombobox', function() {
           [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
-      await getPage().keyboard.type('1');
+      await getPage().keyboard.type('i');
       await getPage().waitForSelector(dropdownButtonSelector);
     });
 
@@ -148,6 +148,7 @@ describe('NxCombobox', function() {
         await getPage().keyboard.type('a');
         await getPage().waitForSelector(dropdownButtonSelector);
         await getPage().keyboard.press('Backspace');
+        await blurElement(input);
       });
 
       it('has invalid validation styles when invalid', async function() {

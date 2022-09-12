@@ -20,7 +20,7 @@ const items = prepend(
 // and typically this would be in another file outside of the react component
 function search(query: string): Promise<DataItem<number, string>[]> {
   const lowercaseQuery = query.toLowerCase(),
-      matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
+      matchingItems = filter(i => i.displayName.toLowerCase().indexOf(lowercaseQuery) === 0, items);
 
   return new Promise(resolve => {
     setTimeout(() => resolve(matchingItems), 3000);
