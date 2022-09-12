@@ -66,14 +66,39 @@ export default function NxDrawerPage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>onCancel</NxTable.Cell>
+                <NxTable.Cell>open</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>Yes</NxTable.Cell>
+                <NxTable.Cell></NxTable.Cell>
+                <NxTable.Cell>
+                  This determines the visibility of <NxCode>NxDrawer</NxCode> (Does not remove it from the DOM),{' '}
+                  and controls the <NxCode>NxDrawer</NxCode> sliding in and out animation.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>onClose</NxTable.Cell>
                 <NxTable.Cell>Function (() =&gt; void)</NxTable.Cell>
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell></NxTable.Cell>
                 <NxTable.Cell>
-                  <NxCode>NxDrawer</NxCode>'s callback function. It gets called when the user
-                  closes the dialog (when the user clicks outside the drawer, when the user clicks the close button,
-                  and when the user presses the Esc key).
+                  A callback function which gets called when the user closes the dialog{' '}
+                  (When the user clicks outside, clicks the close button, or pressed the Escape).{' '}
+                  It is advised that this callback is used to toggle the <NxCode>open</NxCode> attribute.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>onCancel</NxTable.Cell>
+                <NxTable.Cell>Function (() =&gt; void)</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell></NxTable.Cell>
+                <NxTable.Cell>
+                  A callback function that gets called only after the <NxCode>open</NxCode> attribute{' '}
+                  is set to false, and the slide-out animation is completed.
+                  <NxInfoAlert>
+                    You can use this callback function to clean up the DOM after the animation is completed{' '}
+                    in certain cases (i.e., the content of the <NxCode>NxDrawer</NxCode> is expensive to keep{' '}
+                    in the DOM).
+                  </NxInfoAlert>
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -107,18 +132,6 @@ export default function NxDrawerPage() {
         <NxInfoAlert>
           Note: This component is required to be a direct child of <NxCode>NxPage</NxCode>.
         </NxInfoAlert>
-        <NxTile.Subsection>
-          <NxTile.SubsectionHeader>
-            <NxH3>NxDrawerRef</NxH3>
-          </NxTile.SubsectionHeader>
-          <NxP>
-            <NxCode>NxDrawer</NxCode> forwards two things via ref, the dialog element
-            (<NxCode>ref.current.dialog</NxCode>) and the <NxCode>closeDrawer</NxCode> function
-            (<NxCode>ref.current.closeDrawer</NxCode>).
-            This function triggers the slide-out animation which in turn triggers
-            the <NxCode>onCancel</NxCode> callback once the animation is completed.
-          </NxP>
-        </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
             <NxH3>NxDrawer.Header (Required)</NxH3>
