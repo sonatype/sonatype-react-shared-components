@@ -116,17 +116,17 @@
   border-bottom: 1px solid var(--nx-swatch-indigo-90);
   display: grid;
   column-gap: var(--nx-spacing-2x);
-  grid-template: "title cancel-button"
+  grid-template: "title close-button"
                  "subtitle subtitle"
                  "description description" / auto min-content;
   padding-bottom: var(--nx-spacing-6x);
 
-  &__cancel-button, &__title {
+  &__close-button, &__title {
     margin: 0;
   }
 
-  &__cancel-button {
-    grid-area: cancel-button;
+  &__close-button {
+    grid-area: close-button;
   }
 
   &__title {

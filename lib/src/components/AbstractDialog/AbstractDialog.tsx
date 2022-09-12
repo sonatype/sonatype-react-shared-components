@@ -27,7 +27,8 @@ const hasWindow = typeof window !== 'undefined',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dynamicallyTypedWindow = hasWindow && window as any,
     hasNativeModalSupport = !!(hasWindow && dynamicallyTypedWindow.HTMLDialogElement &&
-      dynamicallyTypedWindow.HTMLDialogElement.prototype.showModal);
+      dynamicallyTypedWindow.HTMLDialogElement.prototype.showModal
+      && dynamicallyTypedWindow.HTMLDialogElement.prototype.show);
 
 const createCancelEvent = () => new Event('cancel', { cancelable: true });
 
@@ -144,7 +145,10 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       };
     }
     else if (open === false) {
-      (el as any).close();
+      if (hasNativeModalSupport) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (el as any).close();
+      }
       return undefined;
     }
     else {
@@ -172,6 +176,12 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     dialog: dialogRefState
   };
 
+  const conditionalAttr: { open?: boolean } = {};
+
+  if (hasNativeModalSupport) {
+    conditionalAttr.open = !!(open == null || open);
+  }
+
   return (
     // Provide the dialog element to descendants so that tooltips can attach to it instead of the body,
     // which is necessary so that they end up in the top layer rather than behind the modal
@@ -189,6 +199,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
               aria-modal={!!isModal}
               onKeyDown={dialogKeydownListener}
               className={className}
+              {...conditionalAttr}
               {...attrs}
               tabIndex={-1}>
         {children}

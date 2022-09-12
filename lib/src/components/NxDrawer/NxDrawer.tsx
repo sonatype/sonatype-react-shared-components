@@ -42,18 +42,14 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
     children,
     ...attrs
   } = props;
-
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
-
   const { closeDrawer } = useContext(NxDrawerContext);
 
   const classes = classnames('nx-drawer-header', className);
 
   return (
     <header className={classes} role="none" {...attrs}>
-      <NxCloseButton className="nx-drawer-header__cancel-button"
+      <NxCloseButton className="nx-drawer-header__close-button"
                      type="button"
-                     ref={closeButtonRef}
                      onClick={() => closeDrawer()}>
         Close
       </NxCloseButton>

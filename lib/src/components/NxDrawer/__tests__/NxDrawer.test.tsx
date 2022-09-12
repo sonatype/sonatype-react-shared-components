@@ -15,10 +15,11 @@ import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxDrawer, { Props } from '../NxDrawer';
 import NxButton from '../../NxButton/NxButton';
 import useToggle from '../../../util/useToggle';
+// import useToggle from '../../../util/useToggle';
 
 describe('NxDrawer', function() {
   const minimalProps: Props = {
-    open: false,
+    open: true,
     onClose: () => {},
     children: 'Drawer Content'
   };
@@ -78,36 +79,29 @@ describe('NxDrawer', function() {
   });
 
   describe('NxDrawer event listener support', () => {
-    it('executes onCancel callback when ESC key is pressed', function() {
-      const mockOnCancel = jest.fn();
+    it('executes onClose callback when ESC key is pressed', function() {
+      const mockOnClose = jest.fn();
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      getDrawer({ onCancel: mockOnCancel })!;
+      getDrawer({ onClose: mockOnClose })!;
 
       const dialog = screen.getByRole('dialog', { hidden: true });
-
-      expect(mockOnCancel).not.toHaveBeenCalled();
+      expect(mockOnClose).not.toHaveBeenCalled();
 
       act(() => {
         fireEvent.keyDown(dialog, { key: 'Escape' });
       });
 
-      expect(dialog).toHaveClass('nx-drawer--close');
-
-      act(() => {
-        fireEvent.animationEnd(dialog);
-      });
-
-      expect(mockOnCancel).toHaveBeenCalled();
+      expect(mockOnClose).toHaveBeenCalled();
     });
 
-    it('executes onCancel callback ONLY when pressing ESC key', async function () {
+    it('executes onClose ONLY when pressing ESC key', async function () {
       const user = userEvent.setup();
 
-      const mockCallBack = jest.fn();
+      const mockOnClose = jest.fn();
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const drawer = getDrawer({ onCancel: mockCallBack })!;
+      const drawer = getDrawer({ onClose: mockOnClose })!;
 
       await user.keyboard('Tab');
       await user.keyboard('Enter');
@@ -116,10 +110,46 @@ describe('NxDrawer', function() {
 
       fireEvent.animationEnd(drawer);
 
-      expect(mockCallBack).not.toHaveBeenCalled();
+      expect(mockOnClose).not.toHaveBeenCalled();
     });
 
-    it('executes onCancel when clicked outside of the drawer', async function() {
+    it('executes onCancel when drawer is closed and animation is completed', async function() {
+      const user = userEvent.setup();
+      const mockOnCancel = jest.fn();
+
+      const Fixture = () => {
+        const [open, toggleDrawer] = useToggle(true);
+        return (
+          <NxDrawer open={open} onClose={toggleDrawer} onCancel={mockOnCancel}>
+            <NxDrawer.Header>
+              <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
+            </NxDrawer.Header>
+          </NxDrawer>
+        );
+      };
+
+      render(<Fixture />);
+
+      const closeButton = screen.getByRole('button', { name: 'Close', hidden: true });
+
+      await act(async () => {
+        await user.click(closeButton);
+      });
+
+      const dialog = screen.getByRole('dialog', { hidden: true });
+
+      await act(async () => {
+        await fireEvent.animationEnd(dialog);
+      });
+
+      await waitFor(() => {
+        const dialog = screen.getByRole('dialog', { hidden: true });
+        expect(dialog).not.toBeVisible();
+        expect(mockOnCancel).toHaveBeenCalled();
+      });
+    });
+
+    it('executes onClose when clicked outside of the drawer', async function() {
       const documentAddEventListener = document.addEventListener;
 
       try {
@@ -130,13 +160,12 @@ describe('NxDrawer', function() {
           eventMap[eventType] = callback;
         }) as jest.Mock;
 
-        const mockOnCancel = jest.fn();
+        const mockOnClose = jest.fn();
 
         render(
           <div>
             <NxButton>Outside</NxButton>
-
-            <NxDrawer onCancel={mockOnCancel}>
+            <NxDrawer open={true} onClose={mockOnClose}>
               <NxButton>Inside</NxButton>
             </NxDrawer>
           </div>
@@ -144,96 +173,24 @@ describe('NxDrawer', function() {
 
         const outsideButton = screen.getByRole('button', { name: 'Outside' });
         const insideButton = screen.getByRole('button', { name: 'Inside', hidden: true });
-        const dialog = screen.getByRole('dialog', { hidden: true });
 
-        expect(mockOnCancel).not.toHaveBeenCalled();
+        expect(mockOnClose).not.toHaveBeenCalled();
 
         await act(async () => {
           await eventMap.click({ target: insideButton });
-          fireEvent.animationEnd(dialog);
         });
 
-        expect(mockOnCancel).not.toHaveBeenCalled();
+        expect(mockOnClose).not.toHaveBeenCalled();
 
         await act(async () => {
           await eventMap.click({ target: outsideButton });
-          fireEvent.animationEnd(dialog);
         });
 
-        expect(mockOnCancel).toHaveBeenCalled();
+        expect(mockOnClose).toHaveBeenCalled();
       }
       finally {
         document.addEventListener = documentAddEventListener;
       }
-    });
-  });
-
-  it('moves focus back to the previously focused element when closed', async function() {
-    const user = userEvent.setup();
-
-    const Fixture = () => {
-      const [isOpen, toggleOpen] = useToggle(false);
-
-      return (
-        <>
-          <NxButton type="button" onClick={() => toggleOpen()}>Toggle</NxButton>
-          {
-            isOpen && (
-              <>
-                <NxDrawer onCancel={jest.fn()}>
-                  <NxDrawer.Header>
-                    <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
-                  </NxDrawer.Header>
-                </NxDrawer>
-              </>
-            )
-          }
-        </>
-      );
-    };
-
-    render(<Fixture />);
-
-    expect(screen.queryByRole('dialog', { hidden: true })).not.toBeInTheDocument();
-
-    const toggleButton = screen.getByRole('button', { name: 'Toggle' });
-
-    expect(toggleButton).toBeInTheDocument();
-
-    toggleButton.focus();
-
-    expect(document.activeElement).toBe(toggleButton);
-
-    await act(async () => {
-      await user.click(toggleButton);
-    });
-
-    const dialog = screen.getByRole('dialog', { hidden: true });
-
-    expect(dialog).toBeInTheDocument();
-
-    const cancelButton = screen.getByRole('button', { name: 'Close', hidden: true });
-
-    await act(async () => {
-      await user.click(cancelButton);
-    });
-
-    waitFor(() => {
-      fireEvent.animationEnd(dialog);
-      expect(document.activeElement).toBe(toggleButton);
-    });
-  });
-
-  describe('NxDrawer Content', function() {
-    it('should be focusable', async function() {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const drawer = getDrawer({ children: <NxDrawer.Content>Hello</NxDrawer.Content> })!;
-
-      const content = drawer.querySelector('.nx-drawer-content') as HTMLElement;
-
-      content.focus();
-
-      expect(content).toHaveFocus();
     });
   });
 
@@ -251,7 +208,7 @@ describe('NxDrawer', function() {
       expect(screen.getByText('Title')).toBeInTheDocument();
     });
 
-    it('renders cancel button', function() {
+    it('renders close button', function() {
       quickRender({
         children: (
           <NxDrawer.Header>
@@ -260,10 +217,10 @@ describe('NxDrawer', function() {
         )
       });
 
-      const cancelButton = screen.getByRole('button', { hidden: true, name: /close/i });
+      const closeButton = screen.getByRole('button', { hidden: true, name: /close/i });
 
-      expect(cancelButton).toBeInTheDocument();
-      expect(cancelButton).toHaveClass('nx-drawer-header__cancel-button');
+      expect(closeButton).toBeInTheDocument();
+      expect(closeButton).toHaveClass('nx-drawer-header__close-button');
     });
 
     it('renders title, subtitle, description with the correct tags', function() {
@@ -311,14 +268,14 @@ describe('NxDrawer', function() {
       expect(headerDescription).toHaveClass('nx-drawer-header__description');
     });
 
-    it('executes onCancel when header cancel button is clicked', async function() {
+    it('executes onClose when header close button is clicked', async function() {
       const user = userEvent.setup();
 
-      const mockOnCancel = jest.fn();
+      const mockOnClose = jest.fn();
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const drawer = getDrawer({
-        onCancel: mockOnCancel,
+      getDrawer({
+        onClose: mockOnClose,
         children: (
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle>Hello</NxDrawer.HeaderTitle>
@@ -327,22 +284,17 @@ describe('NxDrawer', function() {
       })!;
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const cancelButton = screen.getByRole('button', { hidden: true, name: 'Close' })!;
-      expect(cancelButton).toBeInTheDocument();
+      const closeButton = screen.getByRole('button', { hidden: true, name: 'Close' })!;
 
-      expect(mockOnCancel).not.toHaveBeenCalled();
+      expect(closeButton).toBeInTheDocument();
+
+      expect(mockOnClose).not.toHaveBeenCalled();
 
       await act(async () => {
-        await user.click(cancelButton);
+        await user.click(closeButton);
       });
 
-      expect(drawer).toHaveClass('nx-drawer--close');
-
-      act(() => {
-        fireEvent.animationEnd(drawer);
-      });
-
-      expect(mockOnCancel).toHaveBeenCalled();
+      expect(mockOnClose).toHaveBeenCalled();
 
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
