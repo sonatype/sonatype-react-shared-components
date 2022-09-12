@@ -25,12 +25,15 @@ describe('NxTransferListHalf', function() {
 
   const simpleListSelector = '#nx-transfer-list-half-example .nx-transfer-list__half',
       complexListSelector = '#nx-transfer-list-half-ordering-example .nx-transfer-list__half',
+      complexListFullSelector = '#nx-transfer-list-half-ordering-example .gallery-example-live',
       itemsSelector =
         `${simpleListSelector} .nx-transfer-list__item`,
       firstItemSelector = `${itemsSelector}:first-child .nx-transfer-list__select`,
       secondItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
-      transferAllSelector =
-        `${complexListSelector} .nx-transfer-list__move-all`;
+      transferAllSelector = `${complexListSelector} .nx-transfer-list__move-all`,
+      complexFirstItemSelector = `${complexListSelector} .nx-transfer-list__item:first-child`,
+      moveUpSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :first-child`,
+      moveDownSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :last-child`;
 
   it('looks right', simpleTest(simpleListSelector));
   it('looks right with complex options', simpleTest(complexListSelector));
@@ -56,6 +59,9 @@ describe('NxTransferListHalf', function() {
 
   it('makes the move all button dark blue when hovered', hoverTest(complexListSelector, transferAllSelector));
   it('makes the move all button light blue when clicked', clickTest(complexListSelector, transferAllSelector));
+
+  it('gives the move up button a tooltip when hovered', hoverTest(complexListFullSelector, moveUpSelector, true));
+  it('gives the move down button a tooltip when hovered', hoverTest(complexListFullSelector, moveDownSelector, true));
 
   it('passes a11y checks', a11yTest());
 });
