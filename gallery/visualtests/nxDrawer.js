@@ -135,7 +135,9 @@ describe('NxDrawer', function() {
   });
 
   describe('NxDrawer + NxDropdown ESC Closing Behavior', function() {
-    const { getPage, isFocused, isInDocument, waitAndGetElements, wait } = setupBrowser('#/NxDrawerEscExample', false);
+    const {
+      getPage, isFocused, isInDocument, isVisible, waitAndGetElements, wait
+    } = setupBrowser('#/NxDrawerEscExample', false);
 
     const waitForAnimation = () => wait(200);
 
@@ -155,25 +157,27 @@ describe('NxDrawer', function() {
           '#nx-drawer-esc .nx-dropdown__toggle'
       );
 
-      expect(await isInDocument(drawer)).toBe(true);
-      expect(await isInDocument(dropdownToggle)).toBe(true);
+      expect(await isVisible(drawer)).toBe(true);
+      expect(await isVisible(dropdownToggle)).toBe(true);
 
       await dropdownToggle.click();
 
       const [dropdownMenu] = await waitAndGetElements('#nx-drawer-esc .nx-dropdown-menu');
 
+      expect(await isVisible(drawer)).toBe(true);
       expect(await isInDocument(dropdownMenu)).toBe(true);
 
       await pressEsc();
+      await waitForAnimation();
 
-      expect(await isInDocument(drawer)).toBe(true);
+      expect(await isVisible(drawer)).toBe(true);
       expect(await isInDocument(dropdownMenu)).toBe(false);
       expect(await isFocused(dropdownToggle)).toBe(true);
 
       await pressEsc();
       await waitForAnimation();
 
-      expect(await isInDocument(drawer)).toBe(false);
+      expect(await isVisible(drawer)).toBe(false);
       expect(await isFocused(openButton)).toBe(true);
     });
   });
