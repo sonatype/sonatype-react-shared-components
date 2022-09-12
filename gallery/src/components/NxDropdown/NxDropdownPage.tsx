@@ -276,6 +276,7 @@ const NxDropdownPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Navigation Example"
+                        id="nx-dropdown-example"
                         liveExample={NxDropdownNavigationExample}
                         codeExamples={nxDropdownNavigationExampleCode}>
       An example of an <NxCode>NxDropdown</NxCode> as it might be used to implement a navigation list.
