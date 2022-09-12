@@ -6,7 +6,6 @@
  */
 import React, { forwardRef } from 'react';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
-import classnames from 'classnames';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { NxErrorAlert } from '../NxAlert/NxAlert';
@@ -25,22 +24,22 @@ import './NxLoadError.scss';
  * @param retryHandler If this is defined, a Retry button will be rendered which executes this function when clicked
  */
 const NxLoadError = forwardRef<HTMLDivElement, Props>(
-    function NxLoadError({ error, titleMessage, retryHandler, className, ...otherProps }, ref) {
-      const alertClasses = classnames('nx-alert--load-error', className);
-
+    function NxLoadError({ error, titleMessage, retryHandler, ...otherProps }, ref) {
       return error != null && (
-        <NxErrorAlert { ...otherProps } className={alertClasses} ref={ref}>
-          <span className="nx-load-error__message">
-            { titleMessage || 'An error occurred loading data.' }
-            {' '}
-            { error }
-          </span>
-          { retryHandler &&
-            <NxButton type="button" variant="error" onClick={retryHandler} className="nx-load-error__retry">
-              <NxFontAwesomeIcon icon={faSync} />
-              <span>Retry</span>
-            </NxButton>
-          }
+        <NxErrorAlert { ...otherProps } ref={ref}>
+          <div className="nx-load-error__content">
+            <span className="nx-load-error__message">
+              { titleMessage || 'An error occurred loading data.' }
+              {' '}
+              { error }
+            </span>
+            { retryHandler &&
+              <NxButton type="button" variant="error" onClick={retryHandler} className="nx-load-error__retry">
+                <NxFontAwesomeIcon icon={faSync} />
+                <span>Retry</span>
+              </NxButton>
+            }
+          </div>
         </NxErrorAlert>
       ) || null;
     }
