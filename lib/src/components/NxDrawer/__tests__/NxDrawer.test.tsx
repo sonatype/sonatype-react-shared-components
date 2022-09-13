@@ -34,27 +34,23 @@ describe('NxDrawer', function() {
   });
 
   it('has a dialog element with aria-modal set to false', function() {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const dialog = getDrawer()!;
+    const dialog = getDrawer();
     expect(dialog).toHaveAttribute('aria-modal', 'false');
   });
 
   it('it does not have nx-drawer--closing class when initially loaded', function () {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const dialog = getDrawer()!;
+    const dialog = getDrawer();
     expect(dialog).not.toHaveClass('nx-drawer--closing');
   });
 
   it('renders children nodes within dialog', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer({ children: <div data-testid="foo"/> })!;
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(within(drawer).getByTestId('foo')).toBe(drawer.children[0]);
   });
 
   it('merges any passed in className to the nx-drawer dialog', function() {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const drawerWithAddedClassName = getDrawer({ className: 'foo' })!;
+    const drawerWithAddedClassName = getDrawer({ className: 'foo' });
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer()!;
 
@@ -72,8 +68,7 @@ describe('NxDrawer', function() {
   });
 
   it('adds the nx-drawer--narrow class when the narrow variant prop is specified', function() {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const drawer = getDrawer({ variant: 'narrow' })!;
+    const drawer = getDrawer({ variant: 'narrow' });
     expect(drawer).toHaveClass('nx-drawer--narrow');
   });
 
@@ -130,20 +125,14 @@ describe('NxDrawer', function() {
       render(<Fixture />);
 
       const closeButton = screen.getByRole('button', { name: 'Close', hidden: true });
-
-      await act(async () => {
-        await user.click(closeButton);
-      });
-
       const dialog = screen.getByRole('dialog', { hidden: true });
 
       await act(async () => {
+        await user.click(closeButton);
         await fireEvent.animationEnd(dialog);
       });
 
       await waitFor(() => {
-        const dialog = screen.getByRole('dialog', { hidden: true });
-        expect(dialog).not.toBeVisible();
         expect(mockOnCancel).toHaveBeenCalled();
       });
     });
