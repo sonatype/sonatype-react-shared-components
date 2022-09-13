@@ -46,11 +46,9 @@ export default function NxComboboxRequiredExample() {
 
   return (
     <NxCombobox className="nx-combobox--short"
-                isPristine={inputState.isPristine}
+                { ...inputState }
                 validatable={true}
-                validationErrors={inputState.validationErrors}
                 matches={matches}
-                value={inputState.value}
                 onChange={onChange}
                 onSearch={onSearch}
                 aria-label="combobox" />
