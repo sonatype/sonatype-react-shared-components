@@ -132,6 +132,21 @@ function NxComboboxRender<T extends string | number = string>(
     inputRef.current?.querySelector('input')?.focus();
   }
 
+  function handleOnClick({displayName}: DataItem<T, string>) {
+    onChange(displayName);
+    onSearch(displayName.trim());
+    focusTextInput();
+    setFocusableBtnIndex(null);
+    setInlineStyle(false);
+  }
+
+  function handleKeyUp(evt: KeyboardEvent<HTMLElement>) {
+    if (autoComplete) {
+      const isPrintableChar = evt.key.length === 1 && evt.key.match(/[!-~]/);
+      setInlineStyle(!!isPrintableChar);
+    }
+  }
+
   // helper for focusing different buttons in the dropdown menu
   const adjustBtnFocus = (adjust: (i: number) => number) => () => {
         const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
@@ -147,21 +162,6 @@ function NxComboboxRender<T extends string | number = string>(
       focusPrev = adjustBtnFocus(dec),
       focusFirst = adjustBtnFocus(always(0)),
       focusLast = adjustBtnFocus(always(matches.length - 1));
-
-  function handleOnClick({displayName}: DataItem<T, string>) {
-    onChange(displayName);
-    onSearch(displayName.trim());
-    focusTextInput();
-    setFocusableBtnIndex(null);
-    setInlineStyle(false);
-  }
-
-  function handleKeyUp(evt: KeyboardEvent<HTMLElement>) {
-    if (autoComplete) {
-      const isPrintableChar = evt.key.length === 1 && evt.key.match(/[!-~]/);
-      setInlineStyle(!!isPrintableChar);
-    }
-  }
 
   function handleKeyDown(evt: KeyboardEvent<HTMLElement>) {
     const inputEle = evt.currentTarget as HTMLInputElement,
