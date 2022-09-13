@@ -26,11 +26,10 @@ describe('NxDrawer', function() {
   const quickRender = rtlRender<React.ComponentPropsWithRef<typeof NxDrawer>>(NxDrawer, minimalProps);
   const getDrawer = rtlRenderElement(NxDrawer, minimalProps);
 
-  it('renders <dialog> with class nx-drawer', function () {
+  it('renders a dialog element', function () {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const dialog = getDrawer()!;
     expect(dialog.nodeName).toBe('DIALOG');
-    expect(dialog).toHaveClass('nx-drawer');
   });
 
   it('has a dialog element with aria-modal set to false', function() {
