@@ -217,15 +217,11 @@ describe('NxDrawer', function() {
 
       const closeButton = screen.getByRole('button', { hidden: true, name: 'Close' });
 
-      expect(closeButton).toBeInTheDocument();
       expect(mockOnClose).not.toHaveBeenCalled();
 
-      await act(async () => {
-        await user.click(closeButton);
-      });
+      await user.click(closeButton);
 
       expect(mockOnClose).toHaveBeenCalled();
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
   });
 });
