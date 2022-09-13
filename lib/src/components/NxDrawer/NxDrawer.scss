@@ -8,8 +8,6 @@
  @use '../../scss-shared/nx-text-helpers';
 
 @keyframes slide-in {
-  // This is required to fix jittering in Firefox and Safari
-  // and not animating at all in Chrome.
   0% {
     transform: translateX(100%);
     opacity: 0;
