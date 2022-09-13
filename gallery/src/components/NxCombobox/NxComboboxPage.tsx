@@ -122,7 +122,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                When set, this prop disables the text input input and the dropdown.
+                When set, this prop disables the text input and the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
