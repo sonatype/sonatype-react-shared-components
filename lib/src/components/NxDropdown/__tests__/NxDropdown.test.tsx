@@ -15,6 +15,8 @@ import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
 import AbstractDropdown from '../AbstractDropdown';
+import { NxDropdownDivider } from '../../../';
+import { mount } from 'enzyme';
 
 describe('NxDropdown', () => {
   let container: HTMLDivElement | null;
@@ -344,5 +346,15 @@ describe('NxDropdown', () => {
 
     component.setProps({ isOpen: false });
     expect(document.activeElement).toBe(toggleBtn);
+  });
+
+  describe('Divider', function() {
+    it('is the same as NxDropdownDivider', function() {
+      expect(NxDropdown.Divider).toBe(NxDropdownDivider);
+    });
+
+    it('renders an element', function() {
+      expect(mount(<NxDropdown.Divider />)).not.toBeEmptyRender();
+    });
   });
 });
