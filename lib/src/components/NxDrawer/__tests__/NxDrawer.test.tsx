@@ -89,7 +89,7 @@ describe('NxDrawer', function() {
       expect(mockOnClose).toHaveBeenCalled();
     });
 
-    it('executes onClose ONLY when pressing ESC key', async function () {
+    it('does not execute onClose if a key other than ESC is pressed', async function () {
       const user = userEvent.setup();
 
       const mockOnClose = jest.fn();
