@@ -185,10 +185,8 @@ export default function NxFormLayoutExample() {
       </NxFormGroup>
       <NxFormGroup label="State" isRequired>
         <NxCombobox matches={matches}
-                    value={inputState.value}
-                    isPristine={inputState.isPristine}
+                    { ...inputState }
                     validatable={true}
-                    validationErrors={inputState.validationErrors}
                     onChange={onComboboxChange}
                     onSearch={onComboboxSearch}/>
       </NxFormGroup>
