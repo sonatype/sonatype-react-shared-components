@@ -13,7 +13,8 @@ describe('NxAlert', function() {
       successSelector = '#nx-alert-success-example .nx-alert',
       errorSelector = '#nx-alert-error-example .nx-alert',
       infoSelector = '#nx-alert-info-example .nx-alert',
-      warningSelector = '#nx-alert-warning-example .nx-alert';
+      warningSelector = '#nx-alert-warning-example .nx-alert',
+      noCloseSelector = '#nx-alert-no-close-example .nx-alert';
 
   describe('Custom NxAlert', function() {
     it('looks right', simpleTest(simpleSelector));
@@ -34,6 +35,10 @@ describe('NxAlert', function() {
 
   describe('NxWarningAlert', function() {
     it('looks right', simpleTest(warningSelector));
+  });
+
+  describe('without close button', function() {
+    it('looks right', simpleTest(noCloseSelector));
   });
 
   it('passes a11y checks', a11yTest());

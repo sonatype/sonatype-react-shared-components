@@ -84,7 +84,7 @@ describe('NxDropdown', function() {
 
       await moveMouseAway();
 
-      await checkScreenshot(targetElement, 251, 153);
+      await checkScreenshot(targetElement, 251, 218);
     });
   });
 
