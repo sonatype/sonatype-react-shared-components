@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { render, fireEvent, within, screen, waitFor } from '@testing-library/react';
+import { render, fireEvent, within, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
@@ -113,15 +113,15 @@ describe('NxDrawer', function() {
 
       render(<Fixture />);
 
-      const closeButton = screen.getByRole('button', { name: 'Close', hidden: true });
-      const dialog = screen.getByRole('dialog', { hidden: true });
-
       await act(async () => {
+        const closeButton = screen.getByRole('button', { name: 'Close', hidden: true });
         await user.click(closeButton);
-        await fireEvent.animationEnd(dialog);
       });
 
-      await waitFor(() => expect(mockOnCancel).toHaveBeenCalled());
+      const dialog = screen.getByRole('dialog', { hidden: true });
+      await fireEvent.animationEnd(dialog);
+
+      expect(mockOnCancel).toHaveBeenCalled();
     });
 
     it('executes onClose when clicked outside of the drawer', async function() {
