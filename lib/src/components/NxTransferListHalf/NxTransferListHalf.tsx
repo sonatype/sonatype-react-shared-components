@@ -68,7 +68,6 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
             <NxTooltip title={isFilteredItem ? '' : moveUpButtonTitle} placement="left">
               <NxButton type="button"
                         variant="icon-only"
-                        title={moveUpButtonTitle}
                         className={moveUpDisabled ? 'disabled' : ''}
                         onClick={() => !moveUpDisabled && onReorderItem && onReorderItem(id, -1)}>
                 <NxFontAwesomeIcon icon={faArrowUp}/>
@@ -77,7 +76,6 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
             <NxTooltip title={isFilteredItem ? '' : moveDownButtonTitle} placement="right">
               <NxButton type="button"
                         variant="icon-only"
-                        title={moveDownButtonTitle}
                         className={moveDownDisabled ? 'disabled' : ''}
                         onClick={() => !moveDownDisabled && onReorderItem && onReorderItem(id, 1)}>
                 <NxFontAwesomeIcon icon={faArrowDown}/>
