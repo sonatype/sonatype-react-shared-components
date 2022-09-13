@@ -79,6 +79,19 @@ module.exports = {
       return el.evaluate(e => e.isConnected);
     }
 
+    async function isVisible(el) {
+      return el.evaluate(e => {
+        const computedStyles = window.getComputedStyle(e);
+        const rect = e.getBoundingClientRect();
+        return !!(
+          computedStyles.display !== 'none'
+          && computedStyles.opacity !== '0'
+          && computedStyles.visibility !== 'hidden'
+          && !!(rect.bottom || rect.top || rect.height || rect.width)
+        );
+      });
+    }
+
     async function waitForSelectors(...selectors) {
       return Promise.all(selectors.map(s => page.waitForSelector(s)));
     }
@@ -170,6 +183,7 @@ module.exports = {
 
       blurElement,
       isFocused,
+      isVisible,
       isInDocument,
       moveMouseAway,
       dismissResultingDialog,
