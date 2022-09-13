@@ -24,7 +24,7 @@ const { initialState, userInput } = nxTextInputStateHelpers;
 
 function search(query: string):DataItem<number, string>[] {
   const lowercaseQuery = query.toLowerCase(),
-      matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
+      matchingItems = filter(i => i.displayName.toLowerCase().indexOf(lowercaseQuery) === 0, items);
   return matchingItems;
 }
 
