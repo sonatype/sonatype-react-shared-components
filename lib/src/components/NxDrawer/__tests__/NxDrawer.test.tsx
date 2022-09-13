@@ -62,18 +62,15 @@ describe('NxDrawer', function() {
   });
 
   describe('NxDrawer event listener support', () => {
-    it('executes onClose callback when ESC key is pressed', function() {
+    it('executes onClose callback when ESC key is pressed', async function() {
+      const user = userEvent.setup();
       const mockOnClose = jest.fn();
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      getDrawer({ onClose: mockOnClose })!;
+      quickRender({ onClose: mockOnClose });
 
-      const dialog = screen.getByRole('dialog', { hidden: true });
       expect(mockOnClose).not.toHaveBeenCalled();
 
-      act(() => {
-        fireEvent.keyDown(dialog, { key: 'Escape' });
-      });
+      await user.keyboard('{Escape}');
 
       expect(mockOnClose).toHaveBeenCalled();
     });
