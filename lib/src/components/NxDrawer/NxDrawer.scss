@@ -68,11 +68,11 @@
     width: 348px;
   }
 
-  &[open] {
+  &--opening {
     animation: slide-in 200ms ease-out forwards;
   }
 
-  &:not([open]) {
+  &--closing {
     animation: slide-out 180ms ease-in forwards;
   }
 
