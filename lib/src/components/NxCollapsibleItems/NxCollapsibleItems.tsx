@@ -16,7 +16,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 export { Props, NxCollapsibleItemsChildProps } from './types';
 
 import './NxCollapsibleItems.scss';
-import { ensureElement } from '../../util/reactUtil';
+import { ensureStartEndElements } from '../../util/reactUtil';
 
 type NxCollapsibleItemsFC =
   FC<Props> &
@@ -55,7 +55,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
                 disabled={disabled || isEmpty || undefined}>
           <NxFontAwesomeIcon className="nx-collapsible-items__twisty" icon={faCaretRight} />
           <span className="nx-collapsible-items__text">
-            {ensureElement(triggerContent)}
+            {ensureStartEndElements(triggerContent)}
           </span>
         </button>
       ),
