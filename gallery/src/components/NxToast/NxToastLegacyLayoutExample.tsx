@@ -12,8 +12,9 @@ import {
   NxP,
   NxPageSidebar,
   NxPageMain,
+  NxPageTitle,
   NxTile,
-  NxH2,
+  NxH1,
   NxButton,
   NxButtonBar,
   NxBackButton,
@@ -90,12 +91,10 @@ export default function NxToastLegacyLayoutExample() {
           </NxP>
         </NxPageSidebar>
         <NxPageMain>
+          <NxPageTitle>
+            <NxH1>Lorem Ipsum</NxH1>
+          </NxPageTitle>
           <NxTile>
-            <NxTile.Header>
-              <NxTile.HeaderTitle>
-                <NxH2>Lorem Ipsum</NxH2>
-              </NxTile.HeaderTitle>
-            </NxTile.Header>
             <NxTile.Content>
               <NxP>Scroll Down to Find Toast Buttons</NxP>
               <NxBackButton href="#/pages/Toast" targetPageTitle="Documentation" />

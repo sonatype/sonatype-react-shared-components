@@ -100,14 +100,20 @@ const NxToastPage = () =>
               <NxTable.Cell>React Element</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
-                A single <NxCode>ReactElement</NxCode> which accepts an <NxCode>onClose</NxCode> prop and which
-                ultimately renders an <NxCode>NxAlert</NxCode> (or one of its variants such as
-                {' '}<NxCode>NxSuccessAlert</NxCode>). Most commonly, this would just be one of the RSC
-                {' '}<NxCode>Nx*Alert</NxCode> components themselves, but custom wrapping components are also permitted.
-                Note that the calling code should not specify the <NxCode>onClose</NxCode> prop for the alert; it will
-                be set up internally by <NxCode>NxToast</NxCode>. Calling code should instead use the
-                {' '}<NxCode>onClose</NxCode> prop of <NxCode>NxToast</NxCode> itself. Additionally, note that the alert
-                text content should be brief: only one rendered line of text per toast is supported.
+                <NxP>
+                  A single <NxCode>ReactElement</NxCode> which accepts an <NxCode>onClose</NxCode> prop and which
+                  ultimately renders an <NxCode>NxAlert</NxCode> (or one of its variants such as
+                  {' '}<NxCode>NxSuccessAlert</NxCode>). Most commonly, this would just be one of the RSC
+                  {' '}<NxCode>Nx*Alert</NxCode> components themselves, but custom wrapping components are also
+                  permitted. Note that the calling code should not specify the <NxCode>onClose</NxCode> prop for the
+                  alert; it will be set up internally by <NxCode>NxToast</NxCode>. Calling code should instead use the
+                  {' '}<NxCode>onClose</NxCode> prop of <NxCode>NxToast</NxCode> itself. Additionally, note that the
+                  alert text content should be brief: only one rendered line of text per toast is supported.
+                </NxP>
+                <NxP>
+                  <NxCode>Nx*Alert</NxCode>s as children of <NxCode>NxToast</NxCode> will be assigned a default role
+                  of <NxCode>alert</NxCode>, which can be overridden if necessary.
+                </NxP>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -168,7 +174,8 @@ const NxToastPage = () =>
         <NxP>
           A complex full page layout example. With the inclusion of <NxCode>NxGlobalHeader</NxCode>, the toasts
           will be positioned on the right side of the viewport, underneath the header. Extra content is provided
-          to be able to view the positioning of the toasts with scrolling behavior.
+          to be able to view the positioning of the toasts with scrolling behavior. The role for
+          {' '}<NxCode>NxInfoAlert</NxCode> has also been updated to <NxCode>status</NxCode>.
         </NxP>
         <NxP>
           <NxTextLink href="#/NxToastComplexLayoutExample">

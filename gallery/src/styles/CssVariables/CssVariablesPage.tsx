@@ -265,10 +265,6 @@ const CssVariablesPage = () => {
               The standard color for the backgrounds of interactive elements (such as clickable list rows) when they
               are active (in the <NxCode>:active</NxCode> sense – while the mouse is depressed on them).
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-interactive-background-active">
-              The standard color for the backgrounds of interactive elements (such as clickable list rows) when they
-              are active (in the <NxCode>:active</NxCode> sense – while the mouse is depressed on them).
-            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-interactive-background-hover">
               The standard color for the backgrounds of interactive elements (such as clickable list rows) when they
               are hovered.
