@@ -38,6 +38,7 @@ function NxComboboxRender<T extends string | number = string>(
         autoComplete,
         validatable,
         isPristine,
+        trimmedValue,
         validationErrors,
         id,
         'aria-required': ariaRequired,

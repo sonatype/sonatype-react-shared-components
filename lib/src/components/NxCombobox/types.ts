@@ -21,6 +21,7 @@ export interface Props<T extends string | number = string>
   autoComplete?: boolean | null;
   validatable?: boolean | null;
   isPristine?: boolean | null;
+  trimmedValue?: string | null;
   validationErrors?: string | string[] | null;
 }
 
@@ -39,5 +40,6 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   autoComplete: PropTypes.bool,
   validatable: PropTypes.bool,
   isPristine: PropTypes.bool,
+  trimmedValue: PropTypes.string,
   validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string])
 };
