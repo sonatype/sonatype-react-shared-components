@@ -125,47 +125,34 @@ describe('NxDrawer', function() {
     });
 
     it('executes onClose when clicked outside of the drawer', async function() {
-      const documentAddEventListener = document.addEventListener;
+      const user = userEvent.setup();
+      const mockOnClose = jest.fn();
 
-      try {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const eventMap: any = {};
+      render(
+        <div>
+          <div>Outside</div>
+          <NxDrawer open={true} onClose={mockOnClose}>
+            <NxButton>Inside</NxButton>
+          </NxDrawer>
+        </div>
+      );
 
-        document.addEventListener = jest.fn((eventType: string, callback: () => void) => {
-          eventMap[eventType] = callback;
-        }) as jest.Mock;
+      const outsideDiv = screen.getByText('Outside');
+      const insideButton = screen.getByRole('button', { name: 'Inside', hidden: true });
 
-        const mockOnClose = jest.fn();
+      expect(mockOnClose).not.toHaveBeenCalled();
 
-        render(
-          <div>
-            <NxButton>Outside</NxButton>
-            <NxDrawer open={true} onClose={mockOnClose}>
-              <NxButton>Inside</NxButton>
-            </NxDrawer>
-          </div>
-        );
+      await act(async () => {
+        await user.click(insideButton);
+      });
 
-        const outsideButton = screen.getByRole('button', { name: 'Outside' });
-        const insideButton = screen.getByRole('button', { name: 'Inside', hidden: true });
+      expect(mockOnClose).not.toHaveBeenCalled();
 
-        expect(mockOnClose).not.toHaveBeenCalled();
+      await act(async () => {
+        await user.click(outsideDiv);
+      });
 
-        await act(async () => {
-          await eventMap.click({ target: insideButton });
-        });
-
-        expect(mockOnClose).not.toHaveBeenCalled();
-
-        await act(async () => {
-          await eventMap.click({ target: outsideButton });
-        });
-
-        expect(mockOnClose).toHaveBeenCalled();
-      }
-      finally {
-        document.addEventListener = documentAddEventListener;
-      }
+      expect(mockOnClose).toHaveBeenCalled();
     });
   });
 
