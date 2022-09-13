@@ -23,7 +23,7 @@ describe('NxDrawer', function() {
     children: 'Drawer Content'
   };
 
-  const quickRender = rtlRender<React.ComponentPropsWithRef<typeof NxDrawer>>(NxDrawer, minimalProps);
+  const quickRender = rtlRender<Props>(NxDrawer, minimalProps);
   const getDrawer = rtlRenderElement(NxDrawer, minimalProps);
 
   it('renders a dialog element', function () {
