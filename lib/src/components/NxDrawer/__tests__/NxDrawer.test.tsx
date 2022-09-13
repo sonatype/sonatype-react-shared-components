@@ -46,7 +46,7 @@ describe('NxDrawer', function() {
   it('renders children nodes within dialog', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer({ children: <div data-testid="foo"/> })!;
-    expect(within(drawer).getByTestId('foo')).toBe(drawer.children[0]);
+    expect(within(drawer).getByTestId('foo')).toBeInTheDocument();
   });
 
   it('merges any passed in className to the nx-drawer dialog', function() {
