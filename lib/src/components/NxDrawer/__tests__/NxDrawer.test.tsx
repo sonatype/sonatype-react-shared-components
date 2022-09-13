@@ -132,9 +132,7 @@ describe('NxDrawer', function() {
         await fireEvent.animationEnd(dialog);
       });
 
-      await waitFor(() => {
-        expect(mockOnCancel).toHaveBeenCalled();
-      });
+      await waitFor(() => expect(mockOnCancel).toHaveBeenCalled());
     });
 
     it('executes onClose when clicked outside of the drawer', async function() {
@@ -258,7 +256,6 @@ describe('NxDrawer', function() {
 
     it('executes onClose when header close button is clicked', async function() {
       const user = userEvent.setup();
-
       const mockOnClose = jest.fn();
 
       quickRender({
@@ -270,11 +267,9 @@ describe('NxDrawer', function() {
         )
       });
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const closeButton = screen.getByRole('button', { hidden: true, name: 'Close' })!;
+      const closeButton = screen.getByRole('button', { hidden: true, name: 'Close' });
 
       expect(closeButton).toBeInTheDocument();
-
       expect(mockOnClose).not.toHaveBeenCalled();
 
       await act(async () => {
@@ -282,7 +277,6 @@ describe('NxDrawer', function() {
       });
 
       expect(mockOnClose).toHaveBeenCalled();
-
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
   });
