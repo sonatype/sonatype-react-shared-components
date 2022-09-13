@@ -10,6 +10,8 @@ import * as PropTypes from 'prop-types';
 export const NX_DRAWER_VARIANTS = ['normal', 'narrow'] as const;
 export type NX_DRAWER_VARIANT_TYPE = (typeof NX_DRAWER_VARIANTS)[number];
 
+export type OpenState = 'open' | 'closed' | 'opening' | 'closing';
+
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
   open: boolean;
   onClose: () => void;

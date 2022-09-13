@@ -18,7 +18,7 @@ import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import withClass from '../../util/withClass';
 
-import { Props, propTypes } from './types';
+import { Props, OpenState, propTypes } from './types';
 
 import './NxDrawer.scss';
 
@@ -69,26 +69,33 @@ function NxDrawer(props: Props) {
     ...attrs
   } = props;
 
-  // Whether the drawer is _fully_ closed (i.e. not open and not animating between open/closed)
-  const [isClosed, setIsClosed] = useState(!open);
+  const [openState, setOpenState] = useState<OpenState>(open ? 'open' : 'closed');
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const closeDrawer = () => onClose();
 
   const handleAnimationEnd = () => {
-    if (!open) {
-      setIsClosed(true);
+    if (openState === 'closing') {
+      setOpenState('closed');
 
       if (onCancel) {
         onCancel();
       }
     }
+    else if(openState === 'opening') {
+      setOpenState('open');
+    }
+    else {
+      console.warn('Received animationEnd event when in unexpected openState', openState);
+    }
   };
 
   useEffect(() => {
     if (open) {
-      setIsClosed(false);
+      if (openState === 'closed') {
+        setOpenState('opening');
+      }
 
       const listener = (event: MouseEvent) => {
         if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
@@ -101,13 +108,17 @@ function NxDrawer(props: Props) {
       return () => document.removeEventListener('click', listener);
     }
     else {
+      if (openState === 'open') {
+        setOpenState('closing');
+      }
+
       return undefined;
     }
   }, [open]);
 
   const classes = classnames('nx-drawer', 'nx-viewport-sized', {
     'nx-drawer--narrow': variant === 'narrow',
-    'nx-drawer--closed': isClosed
+    [`nx-drawer--${openState}`]: openState !== 'open'
   }, className);
 
   const drawerContextValue = { closeDrawer, open };
@@ -119,7 +130,7 @@ function NxDrawer(props: Props) {
                       onCancel={closeDrawer}
                       isModal={false}
                       onAnimationEnd={handleAnimationEnd}
-                      open={open}
+                      open={openState === 'open'}
                       {...attrs}>
         {children}
       </AbstractDialog>
