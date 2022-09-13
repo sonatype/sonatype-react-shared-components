@@ -95,6 +95,7 @@ export default function NxFormLayoutExample() {
   const formValidationErrors =
       hasValidationErrors(
           textInputState.validationErrors,
+          commentState.validationErrors,
           colorValidationError,
           selectState.validationErrors,
           tagColorState.validationErrors,
