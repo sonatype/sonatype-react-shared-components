@@ -218,7 +218,7 @@ describe('NxCombobox', function() {
 
   it('passes a11y checks', a11yTest());
 
-  it('shows the dropdown when focused and hides the dropdwon when not focused', async function() {
+  it('shows the dropdown when focused and hides the dropdown when not focused', async function() {
     const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
         dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
         [input, dropdownMenu] = await waitAndGetElements(inputSelector, dropdownMenuSelector);
