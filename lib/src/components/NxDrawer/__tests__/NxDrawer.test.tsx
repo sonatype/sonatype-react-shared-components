@@ -169,7 +169,7 @@ describe('NxDrawer', function() {
     });
   });
 
-  describe('NxDrawer Header', function() {
+  describe('Header', function() {
     it('does not have a banner role', function() {
       quickRender({
         children: (
