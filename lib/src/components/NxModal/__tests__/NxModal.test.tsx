@@ -22,7 +22,7 @@ describe('NxModal', function() {
 
   const getMounted = getMountedComponent<Props>(NxModal, minimalProps);
 
-  it('renders a context provider around an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
+  it('renders a <dialog> element with nx-modal-backdrop class containing an nx-modal <div>', function () {
     const component = getMounted(),
         dialog = component.find('dialog');
 
