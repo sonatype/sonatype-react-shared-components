@@ -132,7 +132,7 @@ function NxComboboxRender<T extends string | number = string>(
     inputRef.current?.querySelector('input')?.focus();
   }
 
-  function handleOnClick({displayName}: DataItem<T, string>) {
+  function handleDropdownBtnClick({displayName}: DataItem<T, string>) {
     onChange(displayName);
     onSearch(displayName.trim());
     focusTextInput();
@@ -171,7 +171,7 @@ function NxComboboxRender<T extends string | number = string>(
     switch (evt.key) {
       case 'Enter':
         if (focusableBtnIndex !== null) {
-          handleOnClick(matches[focusableBtnIndex]);
+          handleDropdownBtnClick(matches[focusableBtnIndex]);
           inputEle.setSelectionRange(endIndex, endIndex);
         }
         evt.preventDefault();
@@ -296,7 +296,7 @@ function NxComboboxRender<T extends string | number = string>(
                           { 'selected': i === focusableBtnIndex })}
                       tabIndex={-1}
                       key={match.id}
-                      onClick={() => handleOnClick(match)}>
+                      onClick={() => handleDropdownBtnClick(match)}>
                 {match.displayName}
               </button>
             )
