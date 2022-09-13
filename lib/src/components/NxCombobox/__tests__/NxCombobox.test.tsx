@@ -89,7 +89,7 @@ describe('NxCombobox', function() {
       // visibility of dropdown when focused is tested in visual tests
       });
 
-  it('calls onChange whenver the input\'s onChange event fires', async function() {
+  it('calls onChange whenever the input\'s onChange event fires', async function() {
     const user = userEvent.setup(),
         onChange = jest.fn(),
         inputElement = quickRender({ onChange }).getByRole('combobox');
