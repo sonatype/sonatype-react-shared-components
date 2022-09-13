@@ -101,7 +101,7 @@ function NxComboboxRender<T extends string | number = string>(
       // when the combobox loses focus.
       if (autoComplete && focusableBtnIndex !== null) {
         const elToFocusText = matches[focusableBtnIndex].displayName;
-        onChange(elToFocusText.trim());
+        onChange(elToFocusText);
         onSearch(elToFocusText.trim());
       }
       setFocusableBtnIndex(null);
@@ -148,7 +148,7 @@ function NxComboboxRender<T extends string | number = string>(
       focusLast = adjustBtnFocus(always(matches.length - 1));
 
   function handleOnClick({displayName}: DataItem<T, string>) {
-    onChange(displayName.trim());
+    onChange(displayName);
     onSearch(displayName.trim());
     focusTextInput();
     setFocusableBtnIndex(null);
