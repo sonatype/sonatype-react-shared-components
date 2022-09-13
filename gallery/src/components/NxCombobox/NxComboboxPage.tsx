@@ -83,8 +83,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>
                 When <NxCode>autoComplete</NxCode> is set to true, it will highlight the first matching item from the
                 array of matches and provide an inline completion string, the portion of the selected suggestion that
-                has not been typed by the user. To follow this behavior, the search logic should only return the
-                matching items that start with the search text as suggestions.
+                has not been typed by the user.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -113,7 +112,8 @@ const NxComboboxPage = () =>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 The results of querying the current text input value, which are to be displayed in the
-                dropdown for user selection.
+                dropdown for user selection. The search logic should return all results that start with
+                the text the user specified, case-insensitive.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
