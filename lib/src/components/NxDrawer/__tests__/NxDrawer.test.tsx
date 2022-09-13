@@ -37,11 +37,6 @@ describe('NxDrawer', function() {
     expect(dialog).toHaveAttribute('aria-modal', 'false');
   });
 
-  it('it does not have nx-drawer--closing class when initially loaded', function () {
-    const dialog = getDrawer();
-    expect(dialog).not.toHaveClass('nx-drawer--closing');
-  });
-
   it('renders children nodes within dialog', function() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer({ children: <div data-testid="foo"/> })!;
