@@ -66,11 +66,6 @@ describe('NxDrawer', function() {
     expect(drawer).toHaveAttribute('lang', 'en_US');
   });
 
-  it('adds the nx-drawer--narrow class when the narrow variant prop is specified', function() {
-    const drawer = getDrawer({ variant: 'narrow' });
-    expect(drawer).toHaveClass('nx-drawer--narrow');
-  });
-
   describe('NxDrawer event listener support', () => {
     it('executes onClose callback when ESC key is pressed', function() {
       const mockOnClose = jest.fn();
