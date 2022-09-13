@@ -200,7 +200,6 @@ describe('NxDrawer', function() {
       const closeButton = screen.getByRole('button', { hidden: true, name: /close/i });
 
       expect(closeButton).toBeInTheDocument();
-      expect(closeButton).toHaveClass('nx-drawer-header__close-button');
     });
 
     it('renders title, subtitle, description with the correct tags', function() {
@@ -226,26 +225,6 @@ describe('NxDrawer', function() {
 
       expect(headerDescription).toBeInTheDocument();
       expect(headerDescription.nodeName).toBe('P');
-    });
-
-    it('renders title, subtitle, description with the correct classnames', function() {
-      quickRender({
-        children: (
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
-            <NxDrawer.HeaderSubtitle>Subtitle</NxDrawer.HeaderSubtitle>
-            <NxDrawer.HeaderDescription>Description</NxDrawer.HeaderDescription>
-          </NxDrawer.Header>
-        )
-      });
-
-      const headerTitle = screen.getByRole('heading', { name: 'Title', hidden: true });
-      const headerSubtitle = screen.getByRole('heading', { name: 'Subtitle', hidden: true });
-      const headerDescription = screen.getByText('Description');
-
-      expect(headerTitle).toHaveClass('nx-drawer-header__title');
-      expect(headerSubtitle).toHaveClass('nx-drawer-header__subtitle');
-      expect(headerDescription).toHaveClass('nx-drawer-header__description');
     });
 
     it('executes onClose when header close button is clicked', async function() {
