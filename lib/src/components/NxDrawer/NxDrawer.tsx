@@ -50,7 +50,7 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
     <header className={classes} role="none" {...attrs}>
       <NxCloseButton className="nx-drawer-header__close-button"
                      type="button"
-                     onClick={() => closeDrawer()}>
+                     onClick={closeDrawer}>
         Close
       </NxCloseButton>
       {children}
