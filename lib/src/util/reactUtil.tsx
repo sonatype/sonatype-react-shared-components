@@ -26,7 +26,7 @@ export function ensureElement(content: ReactNode): Exclude<ReactNode, ReactText>
   if (content == null) {
     return content;
   }
-  else if (Array.isArray(content)) {
+  else if (Array.isArray(content) && content.length) {
     return <span>{content}</span>;
   }
   else if (isReactText(content)) {
