@@ -5,8 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, {
-  HTMLAttributes,
-  ReactNode,
   useContext,
   useEffect,
   useRef,
@@ -18,18 +16,9 @@ import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import withClass from '../../util/withClass';
 
-import { Props, OpenState, propTypes } from './types';
+import { Props, NxDrawerHeaderProps, NxDrawerContextValue, OpenState, propTypes } from './types';
 
 import './NxDrawer.scss';
-
-interface NxDrawerHeaderProps extends HTMLAttributes<HTMLElement>{
-  children: ReactNode;
-}
-
-interface NxDrawerContextValue {
-  closeDrawer: () => void;
-  open: boolean;
-}
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {},
@@ -83,7 +72,7 @@ function NxDrawer(props: Props) {
         onCancel();
       }
     }
-    else if(openState === 'opening') {
+    else if (openState === 'opening') {
       setOpenState('open');
     }
     else {
