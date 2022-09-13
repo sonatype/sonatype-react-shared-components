@@ -142,15 +142,11 @@ describe('NxDrawer', function() {
 
       expect(mockOnClose).not.toHaveBeenCalled();
 
-      await act(async () => {
-        await user.click(insideButton);
-      });
+      await user.click(insideButton);
 
       expect(mockOnClose).not.toHaveBeenCalled();
 
-      await act(async () => {
-        await user.click(outsideDiv);
-      });
+      await user.click(outsideDiv);
 
       expect(mockOnClose).toHaveBeenCalled();
     });
