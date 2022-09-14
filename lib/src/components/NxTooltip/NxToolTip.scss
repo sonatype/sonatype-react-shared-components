@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-tooltip {
   // for specificity
@@ -18,6 +19,10 @@
     line-height: var(--nx-line-height);
     max-width: 600px;
     padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
+
+    @include nx-dark-mode-helpers.dark-mode {
+      color: var(--nx-swatch-indigo-05);
+    }
   }
 
   &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {
