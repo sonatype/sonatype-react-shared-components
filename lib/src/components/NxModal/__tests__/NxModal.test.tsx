@@ -20,43 +20,38 @@ describe('NxModal', function() {
     onClose: dummyCloseHandler
   };
 
-  const getModal = getMountedComponent<Props>(NxModal, minimalProps);
+  const getMounted = getMountedComponent<Props>(NxModal, minimalProps),
+      getModal = (props?: Partial<Props>) => getMounted(props).find('dialog');
 
-  it('renders a <dialog> element with nx-modal-backdrop class containing an nx-modal <div>', function () {
-    const component = getModal(),
-        dialog = component.find('dialog');
+  it('renders an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
+    const nxModal = getModal();
 
-    expect(dialog).toExist();
-    expect(dialog).toHaveClassName('.nx-modal-backdrop');
-    expect(dialog.children()).toMatchSelector('div.nx-modal');
+    expect(nxModal).toMatchSelector('dialog.nx-modal-backdrop');
+    expect(nxModal.children()).toMatchSelector('div.nx-modal');
   });
 
   it('renders children nodes within the modal', function() {
     const nxModal = getModal({ children: <div className="bar"/> });
+
     expect(nxModal.find('.nx-modal')).toContainMatchingElement('div.bar');
   });
 
   it('merges any passed in className to the nx-modal div', function() {
     const nxModal = getModal({ className: 'test' });
-    const div = nxModal.find('.nx-modal');
-    expect(div).toHaveClassName('test');
+
+    const nxModalDiv = nxModal.find('.nx-modal');
+    expect(nxModalDiv).toHaveClassName('test');
   });
 
   it('includes any passed in attributes to the nx-modal div', function() {
     const nxModal = getModal({ id: 'modal-id', lang: 'en_US' });
-    const div = nxModal.find('.nx-modal');
-    expect(div.prop('id')).toEqual('modal-id');
-    expect(div.prop('lang')).toEqual('en_US');
+
+    expect(nxModal.find('.nx-modal').prop('id')).toEqual('modal-id');
+    expect(nxModal.find('.nx-modal').prop('lang')).toEqual('en_US');
   });
 
   it('sets the dialog role on the backdrop by default', function() {
-    const dialog = getModal().find('dialog');
-    expect(dialog).toHaveProp('role', 'dialog');
-  });
-
-  it('has a dialog element with aria-modal set to true', function() {
-    const dialog = getModal().find('dialog');
-    expect(dialog).toHaveProp('aria-modal', true);
+    expect(getModal()).toHaveProp('role', 'dialog');
   });
 
   it('sets the specified role on the backdrop', function() {
