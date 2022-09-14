@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import { render, fireEvent, within, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -14,7 +13,6 @@ import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxDrawer, { Props } from '../NxDrawer';
 import NxButton from '../../NxButton/NxButton';
-import useToggle from '../../../util/useToggle';
 
 describe('NxDrawer', function() {
   const minimalProps: Props = {
@@ -94,28 +92,29 @@ describe('NxDrawer', function() {
     });
 
     it('executes onCancel when drawer is closed and animation is completed', async function() {
-      const user = userEvent.setup();
       const mockOnCancel = jest.fn();
-
-      const Fixture = () => {
-        const [open, toggleDrawer] = useToggle(true);
-        return (
-          <NxDrawer open={open} onClose={toggleDrawer} onCancel={mockOnCancel}>
-            <NxDrawer.Header>
-              <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
-            </NxDrawer.Header>
-          </NxDrawer>
-        );
+      const props = {
+        open: true,
+        onCancel: mockOnCancel,
+        children: (
+          <NxDrawer.Header>
+            <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
+          </NxDrawer.Header>
+        )
       };
 
-      render(<Fixture />);
-
-      await act(async () => {
-        const closeButton = screen.getByRole('button', { name: 'Close', hidden: true });
-        await user.click(closeButton);
-      });
+      const { rerender } = quickRender(props);
 
       const dialog = screen.getByRole('dialog', { hidden: true });
+
+      await fireEvent.animationEnd(dialog);
+
+      expect(mockOnCancel).not.toHaveBeenCalled();
+
+      rerender(<NxDrawer { ...minimalProps } { ...props } open={false} />);
+
+      expect(mockOnCancel).not.toHaveBeenCalled();
+
       await fireEvent.animationEnd(dialog);
 
       expect(mockOnCancel).toHaveBeenCalled();
