@@ -43,11 +43,13 @@ import NxGlobalSidebarFooterMinimalExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterMinimalExample';
 import NxGlobalSidebarFooterEmptyExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
+
+import NxDrawerEscExample from './components/NxDrawer/NxDrawerEscExample';
+import NxDrawerExample from './components/NxDrawer/NxDrawerExample';
 import NxDrawerVariantExample from './components/NxDrawer/NxDrawerVariantExample';
 import NxDrawerWithNxFormExample from './components/NxDrawer/NxDrawerWithNxFormExample';
-import NxDrawerEscExample from './components/NxDrawer/NxDrawerEscExample';
 import NxDrawerWithSubtitleOrDescriptionExample from './components/NxDrawer/NxDrawerWithSubtitleOrDescriptionExample';
-import NxDrawerExample from './components/NxDrawer/NxDrawerExample';
+import NxDrawerDefaultOpenExample from './components/NxDrawer/NxDrawerDefaultOpenExample';
 
 import NxToastSimpleLayoutExample from './components/NxToast/NxToastSimpleLayoutExample';
 import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayoutExample';
@@ -189,6 +191,11 @@ function Application() {
         <Route exact path="/NxDrawerWithSubtitleOrDescriptionExample">
           <SectionScrollingWrapper>
             <NxDrawerWithSubtitleOrDescriptionExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerDefaultOpenExample">
+          <SectionScrollingWrapper>
+            <NxDrawerDefaultOpenExample />
           </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxDrawerExample">

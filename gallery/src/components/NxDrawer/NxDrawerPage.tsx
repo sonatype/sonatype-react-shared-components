@@ -24,6 +24,7 @@ import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
+const NxDrawerDefaultOpenSourceCode = require('./NxDrawerDefaultOpenExample?raw');
 const NxDrawerSourceCode = require('./NxDrawerExample?raw');
 const NxDrawerVariantSourceCode = require('./NxDrawerVariantExample?raw');
 const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubtitleOrDescriptionExample?raw');
@@ -292,6 +293,33 @@ export default function NxDrawerPage() {
             </NxAccordion.Header>
             <CodeExample content={NxDrawerWithNxFormSourceCode} />
             <GalleryTileFooter clipboardContent={NxDrawerWithNxFormSourceCode}/>
+          </NxStatefulAccordion>
+        </NxTile.Content>
+      </NxTile>
+
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>NxDrawer That Is Open by Default Example</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
+          <NxP>
+            An example of a <NxCode>NxDrawer</NxCode> that is open by default.
+          </NxP>
+          <NxP>
+            <NxTextLink href="#/NxDrawerDefaultOpenExample">
+              Click here to navigate to the live example.
+            </NxTextLink>
+          </NxP>
+        </NxTile.Content>
+        <NxTile.Content className= "nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <NxAccordion.Title>Example Code</NxAccordion.Title>
+            </NxAccordion.Header>
+            <CodeExample content={NxDrawerDefaultOpenSourceCode} />
+            <GalleryTileFooter clipboardContent={NxDrawerDefaultOpenSourceCode}/>
           </NxStatefulAccordion>
         </NxTile.Content>
       </NxTile>
