@@ -9,7 +9,6 @@ import { includes } from 'ramda';
 import React from 'react';
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
-import NxButton from '../../NxButton/NxButton';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import NxFieldset from '../../NxFieldset/NxFieldset';
 import NxFilterInput from '../../NxFilterInput/NxFilterInput';
@@ -458,14 +457,21 @@ describe('NxTransferListHalf', function() {
     const secondItem = list.find('.nx-transfer-list__item').at(1);
     const filteredSecondItem = filteredList.find('.nx-transfer-list__item').at(1);
 
-    const moveUpButton = secondItem.find(NxButton).at(0);
-    const moveDownButton = secondItem.find(NxButton).at(1);
+    const moveUpButtonTooltip = secondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(0);
+    const moveDownButtonTooltip = secondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(1);
+
+    const filteredMoveUpButtonTooltip = filteredSecondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(0);
+    const filteredMoveDownButtonTooltip =
+        filteredSecondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(1);
 
     const itemTooltip = secondItem.find(NxTooltip).at(1);
     const filteredItemTooltip = filteredSecondItem.find(NxTooltip).at(1);
 
-    expect(moveUpButton).toHaveProp('title', 'Move Up');
-    expect(moveDownButton).toHaveProp('title', 'Move Down');
+    expect(moveUpButtonTooltip).toHaveProp('title', 'Move Up');
+    expect(moveDownButtonTooltip).toHaveProp('title', 'Move Down');
+
+    expect(filteredMoveUpButtonTooltip).toHaveProp('title', '');
+    expect(filteredMoveDownButtonTooltip).toHaveProp('title', '');
 
     expect(filteredItemTooltip).toHaveProp('title', 'Reordering is disabled when filtered');
     expect(itemTooltip).toHaveProp('title', '');

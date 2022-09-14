@@ -65,20 +65,22 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
       { showReorderingButtons && (
         <NxTooltip title={isFilteredItem ? 'Reordering is disabled when filtered' : ''}>
           <div className="nx-btn-bar nx-transfer-list__button-bar">
-            <NxButton type="button"
-                      variant="icon-only"
-                      title={moveUpButtonTitle}
-                      className={moveUpDisabled ? 'disabled' : ''}
-                      onClick={() => !moveUpDisabled && onReorderItem && onReorderItem(id, -1)}>
-              <NxFontAwesomeIcon icon={faArrowUp}/>
-            </NxButton>
-            <NxButton type="button"
-                      variant="icon-only"
-                      title={moveDownButtonTitle}
-                      className={moveDownDisabled ? 'disabled' : ''}
-                      onClick={() => !moveDownDisabled && onReorderItem && onReorderItem(id, 1)}>
-              <NxFontAwesomeIcon icon={faArrowDown}/>
-            </NxButton>
+            <NxTooltip title={isFilteredItem ? '' : moveUpButtonTitle} placement="left">
+              <NxButton type="button"
+                        variant="icon-only"
+                        className={moveUpDisabled ? 'disabled' : ''}
+                        onClick={() => !moveUpDisabled && onReorderItem && onReorderItem(id, -1)}>
+                <NxFontAwesomeIcon icon={faArrowUp}/>
+              </NxButton>
+            </NxTooltip>
+            <NxTooltip title={isFilteredItem ? '' : moveDownButtonTitle} placement="right">
+              <NxButton type="button"
+                        variant="icon-only"
+                        className={moveDownDisabled ? 'disabled' : ''}
+                        onClick={() => !moveDownDisabled && onReorderItem && onReorderItem(id, 1)}>
+                <NxFontAwesomeIcon icon={faArrowDown}/>
+              </NxButton>
+            </NxTooltip>
           </div>
         </NxTooltip>
       ) }
