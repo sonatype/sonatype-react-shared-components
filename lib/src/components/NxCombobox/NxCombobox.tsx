@@ -116,7 +116,7 @@ function NxComboboxRender<T extends string | number = string>(
     setFocusableBtnIndex(null);
     onChange(newVal);
 
-    if (newVal.trim() !== value.trim()) {
+    if (newVal.toLowerCase().trim() !== value.toLowerCase().trim()) {
       doSearch(newVal);
     }
   }
@@ -194,14 +194,6 @@ function NxComboboxRender<T extends string | number = string>(
       case 'Escape':
         handleOnChange('');
         setFocusableBtnIndex(null);
-        break;
-      case 'Backspace':
-        if (autoComplete && elToFocusText && value !== elToFocusText &&
-            inputEle?.selectionStart === value.length &&
-            inputEle?.selectionEnd === elToFocusText.length) {
-          evt.preventDefault();
-          setFocusableBtnIndex(null);
-        }
         break;
     }
   }
