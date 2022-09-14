@@ -29,6 +29,7 @@ function NxDropdownNavigationExample() {
       <button onClick={onClick} className="nx-dropdown-button">
         Button Link 5
       </button>
+      <NxDropdown.Divider />
       <button onClick={onClick} className="nx-dropdown-button">
         Button Link 6
       </button>

@@ -8,7 +8,7 @@ import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { faSort, faSortDown, faSortUp, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-import {ensureElement} from '../../util/reactUtil';
+import {ensureStartEndElements} from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { NxTableCellProps, nxTableCellPropTypes } from './types';
@@ -87,7 +87,7 @@ const NxTableCell = function NxTableCell(props: NxTableCellProps) {
   const cellSortingContents = (
     <NxTooltip title={ariaLabel} placement={isNumeric ? 'top-middle' : 'top'}>
       <button aria-label={ariaLabel} type="button" className="nx-cell__sort-btn">
-        {ensureElement(children)}
+        {ensureStartEndElements(children)}
         <span className="nx-cell__sort-icons fa-layers">{maskedSort}</span>
       </button>
     </NxTooltip>
