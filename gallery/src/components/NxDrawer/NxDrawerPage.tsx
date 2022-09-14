@@ -305,7 +305,8 @@ export default function NxDrawerPage() {
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            An example of a <NxCode>NxDrawer</NxCode> that is open by default.
+            An example of a <NxCode>NxDrawer</NxCode> that is open by default.{' '}
+            Notice that there is no slide-in animation when it is open by default.
           </NxP>
           <NxP>
             <NxTextLink href="#/NxDrawerDefaultOpenExample">

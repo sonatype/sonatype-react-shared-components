@@ -8,6 +8,7 @@ import React from 'react';
 
 import { NxDrawer,
   NxBackButton,
+  NxButton,
   NxH1,
   NxP,
   NxPageMain,
@@ -60,6 +61,11 @@ export default function NxDrawerDefaultOpenExample() {
           Brownie dessert candy wafer macaroon. Marzipan dragée liquorice biscuit icing I love.
           Wafer pastry sweet candy canes pie pie icing <strong>brownie</strong>. Wafer jelly cake bear claw I
           love caramels. Pie jelly-o candy jelly beans icing. Sweet gingerbread pastry jelly bonbon danish icing.
+        </NxP>
+        <NxP>
+          <NxButton id="nx-drawer-default-open-button" onClick={toggleDrawer}>
+            Reopen Drawer
+          </NxButton>
         </NxP>
         <NxP>
           Toffee tootsie roll danish chupa chups dessert cookie I love gummi bears wafer. Dragée
