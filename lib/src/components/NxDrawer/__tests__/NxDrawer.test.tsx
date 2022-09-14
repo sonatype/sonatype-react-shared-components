@@ -59,6 +59,34 @@ describe('NxDrawer', function() {
     expect(drawer).toHaveAttribute('lang', 'en_US');
   });
 
+  it('should immediately set the dialog open attr when the open prop is set to true initially ' +
+  'and the open attr removed immediately when open prop is set to false', async function() {
+    const { rerender } = quickRender({ open: true });
+
+    const dialog = screen.getByRole('dialog');
+    expect(dialog).toHaveAttribute('open');
+
+    rerender(<NxDrawer open={false} onClose={() => {}} />);
+
+    expect(dialog).not.toHaveAttribute('open');
+  });
+
+  it('should set the dialog open attr only after the animation ends when the drawer is transitioning from ' +
+  'closed to open', async function() {
+    const { rerender } = quickRender({ open: false });
+
+    const dialog = screen.getByRole('dialog', { hidden: true });
+    expect(dialog).not.toHaveAttribute('open');
+
+    rerender(<NxDrawer open={true} onClose={() => {}} />);
+
+    expect(dialog).not.toHaveAttribute('open');
+
+    await fireEvent.animationEnd(dialog);
+
+    expect(dialog).toHaveAttribute('open');
+  });
+
   describe('NxDrawer event listener support', () => {
     it('executes onClose callback when ESC key is pressed', async function() {
       const user = userEvent.setup();

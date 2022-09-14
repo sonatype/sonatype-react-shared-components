@@ -132,6 +132,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       }
       else {
         // without native support we don't trap focus in the dialog, but we can at least start it off there
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (el as any).open = true;
         el.focus();
       }
