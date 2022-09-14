@@ -218,12 +218,12 @@ function NxComboboxRender<T extends string | number = string>(
     if (loading) {
       setFocusableBtnIndex(null);
     }
-    else if (matches.length && autoComplete) {
+    else if (value && matches.length && autoComplete) {
       if (isInputFocused()) {
         setFocusableBtnIndex(0);
       }
     }
-  }, [loading, matches, autoComplete]);
+  }, [value, loading, matches, autoComplete]);
 
   return (
     <div ref={ref}
