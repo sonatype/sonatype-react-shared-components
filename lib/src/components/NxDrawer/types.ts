@@ -20,6 +20,15 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   variant?: NX_DRAWER_VARIANT_TYPE | null;
 }
 
+export interface NxDrawerHeaderProps extends HTMLAttributes<HTMLElement>{
+  children: ReactNode;
+}
+
+export interface NxDrawerContextValue {
+  closeDrawer: () => void;
+  open: boolean;
+}
+
 export const propTypes: PropTypes.ValidationMap<Props> = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,

@@ -5,8 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, {
-  HTMLAttributes,
-  ReactNode,
   useContext,
   useEffect,
   useRef,
@@ -18,18 +16,9 @@ import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import withClass from '../../util/withClass';
 
-import { Props, OpenState, propTypes } from './types';
+import { Props, NxDrawerHeaderProps, NxDrawerContextValue, OpenState, propTypes } from './types';
 
 import './NxDrawer.scss';
-
-interface NxDrawerHeaderProps extends HTMLAttributes<HTMLElement>{
-  children: ReactNode;
-}
-
-interface NxDrawerContextValue {
-  closeDrawer: () => void;
-  open: boolean;
-}
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {},
@@ -50,7 +39,7 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
     <header className={classes} role="none" {...attrs}>
       <NxCloseButton className="nx-drawer-header__close-button"
                      type="button"
-                     onClick={() => closeDrawer()}>
+                     onClick={closeDrawer}>
         Close
       </NxCloseButton>
       {children}
@@ -83,7 +72,7 @@ function NxDrawer(props: Props) {
         onCancel();
       }
     }
-    else if(openState === 'opening') {
+    else if (openState === 'opening') {
       setOpenState('open');
     }
     else {
@@ -143,7 +132,6 @@ export default Object.assign(
     {
       propTypes,
       Header: NxDrawerHeader,
-      // eslint-disable-next-line max-len
       Content: withClass('div', 'nx-drawer-content nx-scrollable nx-viewport-sized__scrollable'),
       HeaderTitle: withClass('h2', 'nx-h2 nx-drawer-header__title'),
       HeaderSubtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),

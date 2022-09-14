@@ -49,6 +49,7 @@ export { default as NxThreatIndicator, Props as NxThreatIndicatorProps }
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
 
+// deprecated
 export {
   default as NxVulnerabilityDetails,
   vulnerabilityDetailsPropType,
