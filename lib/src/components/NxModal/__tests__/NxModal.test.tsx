@@ -38,25 +38,20 @@ describe('NxModal', function() {
 
   it('merges any passed in className to the nx-modal div', function() {
     const nxModal = getModal({ className: 'test' });
-    const div = nxModal.find('.nx-modal');
-    expect(div).toHaveClassName('test');
+
+    const nxModalDiv = nxModal.find('.nx-modal');
+    expect(nxModalDiv).toHaveClassName('test');
   });
 
   it('includes any passed in attributes to the nx-modal div', function() {
     const nxModal = getModal({ id: 'modal-id', lang: 'en_US' });
-    const div = nxModal.find('.nx-modal');
-    expect(div.prop('id')).toEqual('modal-id');
-    expect(div.prop('lang')).toEqual('en_US');
+
+    expect(nxModal.find('.nx-modal').prop('id')).toEqual('modal-id');
+    expect(nxModal.find('.nx-modal').prop('lang')).toEqual('en_US');
   });
 
   it('sets the dialog role on the backdrop by default', function() {
-    const dialog = getModal().find('dialog');
-    expect(dialog).toHaveProp('role', 'dialog');
-  });
-
-  it('has a dialog element with aria-modal set to true', function() {
-    const dialog = getModal().find('dialog');
-    expect(dialog).toHaveProp('aria-modal', true);
+    expect(getModal().find('dialog')).toHaveProp('role', 'dialog');
   });
 
   it('sets the specified role on the backdrop', function() {
