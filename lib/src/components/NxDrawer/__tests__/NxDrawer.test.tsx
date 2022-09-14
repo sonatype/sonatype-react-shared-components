@@ -60,7 +60,7 @@ describe('NxDrawer', function() {
   });
 
   it('should immediately set the dialog open attr when the open prop is set to true initially ' +
-  'and the open attr removed immediately when open prop is set to false', async function() {
+  'and the open attr removed immediately when the open prop is set to false', async function() {
     const { rerender } = quickRender({ open: true });
 
     const dialog = screen.getByRole('dialog');
