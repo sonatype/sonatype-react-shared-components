@@ -103,7 +103,7 @@ function NxComboboxRender<T extends string | number = string>(
       if (autoComplete && focusableBtnIndex !== null) {
         const elToFocusText = matches[focusableBtnIndex].displayName;
         onChange(elToFocusText);
-        onSearch(elToFocusText.trim());
+        onSearch(elToFocusText);
       }
       setFocusableBtnIndex(null);
       setShowAutoComplete(false);
@@ -125,7 +125,7 @@ function NxComboboxRender<T extends string | number = string>(
 
   function doSearch(val: string) {
     focusTextInput();
-    onSearch(val.trim());
+    onSearch(val);
   }
 
   function focusTextInput() {
@@ -134,7 +134,7 @@ function NxComboboxRender<T extends string | number = string>(
 
   function handleDropdownBtnClick({displayName}: DataItem<T, string>) {
     onChange(displayName);
-    onSearch(displayName.trim());
+    onSearch(displayName);
     focusTextInput();
     setFocusableBtnIndex(null);
     setShowAutoComplete(false);

@@ -67,9 +67,9 @@ const NxComboboxPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Callback that fires when a new search query should be performed. The <em>trimmed</em> value of the
+                Callback that fires when a new search query should be performed. The value of the
                 text input is passed as an argument. This callback is executed whenever the user changes
-                the trimmed value of the text input, whenever the error alert's Retry button is clicked, and whenever
+                the value of the text input, whenever the error alert's Retry button is clicked, and whenever
                 the component gains focus while in an error state (which is intended to automatically trigger a retry
                 attempt). The handler passed in for this prop should, in addition to performing the search, update
                 the <NxCode>loading</NxCode> prop. The handler receives the new value as its argument.
