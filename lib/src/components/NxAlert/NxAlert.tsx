@@ -13,6 +13,7 @@ import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { Props, propTypes, NxAlertProps, nxAlertPropTypes} from './types';
+import { ensureElement } from '../../util/reactUtil';
 export { Props, propTypes, NxAlertProps, nxAlertPropTypes } from './types';
 
 /**
@@ -29,7 +30,7 @@ const NxAlert = forwardRef<HTMLDivElement, NxAlertProps>(
       return (
         <div { ...otherProps } ref={ref} className={classes} aria-atomic={true}>
           <NxFontAwesomeIcon aria-label={iconLabel || undefined} aria-hidden={!iconLabel} icon={icon}/>
-          <div className="nx-alert__content">{children}</div>
+          <div className="nx-alert__content">{ensureElement(children)}</div>
           { onClose && <NxCloseButton onClick={onClose} /> }
         </div>
       );

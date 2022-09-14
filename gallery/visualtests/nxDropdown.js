@@ -20,7 +20,8 @@ describe('NxDropdown', function() {
   } = setupBrowser('#/pages/Dropdown');
 
   const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown',
-      buttonSelector = `${defaultSelector} .nx-dropdown__toggle`;
+      buttonSelector = `${defaultSelector} .nx-dropdown__toggle`,
+      exampleWithDividerSelector = '#nx-dropdown-example .nx-dropdown';
 
   describe('Default NxDropdown when closed', function() {
 
@@ -44,6 +45,22 @@ describe('NxDropdown', function() {
       await moveMouseAway();
 
       await checkScreenshot(targetElement, 251, 376);
+    });
+  });
+
+  describe('with NxDropdown.Divider', function() {
+    beforeEach(async function() {
+      const [button] = await waitAndGetElements(exampleWithDividerSelector + ' .nx-dropdown__toggle');
+
+      await button.click();
+    });
+
+    it('looks right', async function() {
+      const [targetElement] = await waitAndGetElements(exampleWithDividerSelector);
+
+      await moveMouseAway();
+
+      await checkScreenshot(targetElement, 251, 293);
     });
   });
 

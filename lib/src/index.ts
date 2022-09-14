@@ -120,9 +120,12 @@ export {
 
 export {
   default as NxDropdown,
-  NxDropdownDivider,
   Props as NxDropdownProps
 } from './components/NxDropdown/NxDropdown';
+
+// Deprecated: NxDropdownDivider alias for NxDropdown.Divider
+import NxDropdown from './components/NxDropdown/NxDropdown';
+export const NxDropdownDivider = NxDropdown.Divider;
 
 export { TooltipConfigProps } from './util/tooltipUtils';
 
