@@ -206,12 +206,19 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }
 
+  function isInputFocused() {
+    const input = inputRef.current?.querySelector('input');
+    return input && document.activeElement === input;
+  }
+
   useEffect(function() {
     // Highlight the portion of the selected suggestion that has not been typed by the user and display
     // a completion string inline after the input cursor in the input box.
     if (!loading && matches.length && autoComplete) {
-      const firstOptVal = matches[0].displayName;
-      inputRef.current?.querySelector('input')?.setSelectionRange(value.length, firstOptVal.length);
+      if (isInputFocused()) {
+        const firstOptVal = matches[0].displayName;
+        inputRef.current?.querySelector('input')?.setSelectionRange(value.length, firstOptVal.length);
+      }
     }
   }, [matches, value, autoComplete, loading, inputVal]);
 
@@ -220,7 +227,9 @@ function NxComboboxRender<T extends string | number = string>(
       setFocusableBtnIndex(null);
     }
     else if (matches.length && autoComplete) {
-      setFocusableBtnIndex(0);
+      if (isInputFocused()) {
+        setFocusableBtnIndex(0);
+      }
     }
   }, [loading, matches, autoComplete]);
 
