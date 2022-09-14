@@ -63,7 +63,9 @@ describe('NxDrawer', function() {
   'and the open attr removed immediately when the open prop is set to false', async function() {
     const { rerender } = quickRender({ open: true });
 
-    const dialog = screen.getByRole('dialog');
+    const dialog = screen.getByRole('dialog', { hidden: true });
+    await fireEvent.animationEnd(dialog);
+
     expect(dialog).toHaveAttribute('open');
 
     rerender(<NxDrawer open={false} onClose={() => {}} />);
@@ -93,6 +95,9 @@ describe('NxDrawer', function() {
       const mockOnClose = jest.fn();
 
       quickRender({ onClose: mockOnClose });
+
+      const dialog = screen.getByRole('dialog', { hidden: true });
+      await fireEvent.animationEnd(dialog);
 
       expect(mockOnClose).not.toHaveBeenCalled();
 
@@ -133,8 +138,7 @@ describe('NxDrawer', function() {
 
       const { rerender } = quickRender(props);
 
-      const dialog = screen.getByRole('dialog');
-
+      const dialog = screen.getByRole('dialog', { hidden: true });
       await fireEvent.animationEnd(dialog);
 
       expect(mockOnCancel).not.toHaveBeenCalled();
@@ -160,6 +164,9 @@ describe('NxDrawer', function() {
           </NxDrawer>
         </div>
       );
+
+      const dialog = screen.getByRole('dialog', { hidden: true });
+      await fireEvent.animationEnd(dialog);
 
       const outsideDiv = screen.getByText('Outside');
       const insideButton = screen.getByRole('button', { name: 'Inside' });
@@ -190,7 +197,7 @@ describe('NxDrawer', function() {
       expect(screen.getByText('Title')).toBeInTheDocument();
     });
 
-    it('renders close button', function() {
+    it('renders close button', async function() {
       quickRender({
         children: (
           <NxDrawer.Header>
@@ -199,12 +206,15 @@ describe('NxDrawer', function() {
         )
       });
 
+      const dialog = screen.getByRole('dialog', { hidden: true });
+      await fireEvent.animationEnd(dialog);
+
       const closeButton = screen.getByRole('button', { name: /close/i });
 
       expect(closeButton).toBeInTheDocument();
     });
 
-    it('renders title, subtitle, description with the correct tags', function() {
+    it('renders title, subtitle, description with the correct tags', async function() {
       quickRender({
         children: (
           <NxDrawer.Header>
@@ -214,6 +224,9 @@ describe('NxDrawer', function() {
           </NxDrawer.Header>
         )
       });
+
+      const dialog = screen.getByRole('dialog', { hidden: true });
+      await fireEvent.animationEnd(dialog);
 
       const headerTitle = screen.getByRole('heading', { name: 'Title' });
       const headerSubtitle = screen.getByRole('heading', { name: 'Subtitle' });
@@ -241,6 +254,9 @@ describe('NxDrawer', function() {
           </NxDrawer.Header>
         )
       });
+
+      const dialog = screen.getByRole('dialog', { hidden: true });
+      await fireEvent.animationEnd(dialog);
 
       const closeButton = screen.getByRole('button', { name: 'Close' });
 

@@ -58,7 +58,7 @@ function NxDrawer(props: Props) {
     ...attrs
   } = props;
 
-  const [openState, setOpenState] = useState<OpenState>(open ? 'open' : 'closed');
+  const [openState, setOpenState] = useState<OpenState>('closed');
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
