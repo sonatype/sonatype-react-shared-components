@@ -26,21 +26,37 @@ export function ensureElement(content: ReactNode): Exclude<ReactNode, ReactText>
   if (content == null) {
     return content;
   }
-  else if (Array.isArray(content)) {
-    const firstPrintableIndex = getFirstPrintableIndex(content),
-        lastPrintableIndex = getLastPrintableIndex(content);
-
-    if (isReactText(content[firstPrintableIndex]) || isReactText(content[lastPrintableIndex])) {
-      return <span>{content}</span>;
-    }
-    else {
-      return content;
-    }
+  else if (Array.isArray(content) && content.length) {
+    return <span>{content}</span>;
   }
   else if (isReactText(content)) {
     return <span>{content}</span>;
   }
   else {
     return content;
+  }
+}
+
+/**
+ * Ensure that if this ReactNode is something renderable, that the first and last things that it renders are elements.
+ * by wrapping the whole thing in a <span> if necessary. If `content` is already an element, or is something that
+ * doesn't render, like null or undefined, then it is passed through.
+ *
+ * WARNING: this function does not dive into fragments, it assumes they will ultimately render an element
+ */
+export function ensureStartEndElements(content: ReactNode): Exclude<ReactNode, ReactText> {
+  if (Array.isArray(content)) {
+    const firstPrintableIndex = getFirstPrintableIndex(content),
+        lastPrintableIndex = getLastPrintableIndex(content);
+
+    if (isReactText(content[firstPrintableIndex]) || isReactText(content[lastPrintableIndex])) {
+      return ensureElement(content);
+    }
+    else {
+      return content;
+    }
+  }
+  else {
+    return ensureElement(content);
   }
 }
