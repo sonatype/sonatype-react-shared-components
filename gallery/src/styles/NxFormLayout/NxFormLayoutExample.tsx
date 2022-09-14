@@ -95,10 +95,11 @@ export default function NxFormLayoutExample() {
   const formValidationErrors =
       hasValidationErrors(
           textInputState.validationErrors,
+          commentState.validationErrors,
           colorValidationError,
           selectState.validationErrors,
           tagColorState.validationErrors,
-          !files?.length && !isFilePristine ? 'A file is required' : null
+          !files?.length ? 'A file is required' : null
       ) ? 'Required fields are missing' : null;
 
   function onSubmit() {
