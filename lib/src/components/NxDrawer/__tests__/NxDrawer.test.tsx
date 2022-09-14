@@ -105,7 +105,7 @@ describe('NxDrawer', function() {
 
       const { rerender } = quickRender(props);
 
-      const dialog = screen.getByRole('dialog', { hidden: true });
+      const dialog = screen.getByRole('dialog');
 
       await fireEvent.animationEnd(dialog);
 
@@ -134,7 +134,7 @@ describe('NxDrawer', function() {
       );
 
       const outsideDiv = screen.getByText('Outside');
-      const insideButton = screen.getByRole('button', { name: 'Inside', hidden: true });
+      const insideButton = screen.getByRole('button', { name: 'Inside' });
 
       expect(mockOnClose).not.toHaveBeenCalled();
 
@@ -158,7 +158,7 @@ describe('NxDrawer', function() {
         )
       });
 
-      expect(screen.queryByRole('banner', { hidden: true })).not.toBeInTheDocument();
+      expect(screen.queryByRole('banner')).not.toBeInTheDocument();
       expect(screen.getByText('Title')).toBeInTheDocument();
     });
 
@@ -171,7 +171,7 @@ describe('NxDrawer', function() {
         )
       });
 
-      const closeButton = screen.getByRole('button', { hidden: true, name: /close/i });
+      const closeButton = screen.getByRole('button', { name: /close/i });
 
       expect(closeButton).toBeInTheDocument();
     });
@@ -187,8 +187,8 @@ describe('NxDrawer', function() {
         )
       });
 
-      const headerTitle = screen.getByRole('heading', { name: 'Title', hidden: true });
-      const headerSubtitle = screen.getByRole('heading', { name: 'Subtitle', hidden: true });
+      const headerTitle = screen.getByRole('heading', { name: 'Title' });
+      const headerSubtitle = screen.getByRole('heading', { name: 'Subtitle' });
       const headerDescription = screen.getByText('Description');
 
       expect(headerTitle).toBeInTheDocument();
@@ -214,7 +214,7 @@ describe('NxDrawer', function() {
         )
       });
 
-      const closeButton = screen.getByRole('button', { hidden: true, name: 'Close' });
+      const closeButton = screen.getByRole('button', { name: 'Close' });
 
       expect(mockOnClose).not.toHaveBeenCalled();
 
