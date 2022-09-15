@@ -334,7 +334,7 @@ export { default as NxToast, NxToastProps as NxToastProps } from './components/N
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
 
-export { default as NxScrollReuser } from './components/NxScrollReuser/NxScrollReuser';
+export { default as NxScrollRender } from './components/NxScrollRender/NxScrollRender';
 
 export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';
 export { default as NxFileUpload, Props as NxFileUploadProps } from './components/NxFileUpload/NxFileUpload';

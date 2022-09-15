@@ -16,7 +16,7 @@ const divOrZero = (x: number, y: number) => x === 0 || y === 0 ? 0 : x / y;
 
 const DEFAULT_INITIAL_CHILD_COUNT = 40;
 
-export default function NxScrollReuser({ children, reuseChildren, initialChildCount }: Props) {
+export default function NxScrollRender({ children, reuseChildren, initialChildCount }: Props) {
   const fullParent = children,
 
       parentRef = useRef<HTMLElement>(null),

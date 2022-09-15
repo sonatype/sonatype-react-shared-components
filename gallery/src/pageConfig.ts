@@ -147,7 +147,7 @@ import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSide
 import NxToastPage from './components/NxToast/NxToastPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
-import NxScrollReuserPage from './components/NxScrollReuser/NxScrollReuserPage';
+import NxScrollRenderPage from './components/NxScrollRender/NxScrollRenderPage';
 import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
 import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
 import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
@@ -289,7 +289,7 @@ const pageConfig: PageConfig = {
     'nx-viewport-sized': { content: NxViewportSizedPage, type: 'css' },
     'Selectable Colors': { content: SelectableColorsPage, type: 'sass' },
     'Style Variables': { content: CssVariablesPage, type: 'css' },
-    'Scroll Reuser': { content: NxScrollReuserPage, type: 'react' }
+    'Scroll Render': { content: NxScrollRenderPage, type: 'react' }
   },
   'JavaScript & TypeScript Utilities': {
     'IDUtils': { content: IdUtilPage, type: 'js' },

@@ -8,18 +8,18 @@ import React from 'react';
 
 import {GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-import NxScrollReuserExample from './NxScrollReuserExample';
+import NxScrollRenderExample from './NxScrollRenderExample';
 
-const NxScrollReuserExampleCode = require('./NxScrollReuserExample?raw');
+const NxScrollRenderExampleCode = require('./NxScrollRenderExample?raw');
 
-const NxScrollReuserPage = () =>
+const NxScrollRenderPage = () =>
   <>
-    <GalleryExampleTile title="Simple Scroll Reuser Example"
+    <GalleryExampleTile title="Simple Scroll Render Example"
                         id="nx-tag-example"
-                        liveExample={NxScrollReuserExample}
-                        codeExamples={NxScrollReuserExampleCode}>
+                        liveExample={NxScrollRenderExample}
+                        codeExamples={NxScrollRenderExampleCode}>
       Basic tags in all available colors.
     </GalleryExampleTile>
   </>;
 
-export default NxScrollReuserPage;
+export default NxScrollRenderPage;

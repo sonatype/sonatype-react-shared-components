@@ -7,11 +7,11 @@
 import React from 'react';
 import { range } from 'ramda';
 
-import { NxList, NxScrollReuser } from '@sonatype/react-shared-components';
+import { NxList, NxScrollRender } from '@sonatype/react-shared-components';
 
-export default function NxScrollReuserExample() {
+export default function NxScrollRenderExample() {
   return (
-    <NxScrollReuser initialChildCount={11}>
+    <NxScrollRender initialChildCount={11}>
       <NxList className="nx-scrollable">
         { range(1, 100000).map(i =>
           <NxList.Item key={i}>
@@ -19,6 +19,6 @@ export default function NxScrollReuserExample() {
           </NxList.Item>
         )}
       </NxList>
-    </NxScrollReuser>
+    </NxScrollRender>
   );
 }
