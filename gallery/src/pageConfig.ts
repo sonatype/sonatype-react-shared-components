@@ -144,6 +144,7 @@ import NxStatefulFilterDropdownPage from './components/NxStatefulFilterDropdown/
 import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
+import NxToastPage from './components/NxToast/NxToastPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
 import NxScrollReuserPage from './components/NxScrollReuser/NxScrollReuserPage';
@@ -171,6 +172,7 @@ const pageConfig: PageConfig = {
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
+    'Toast': { content: NxToastPage, type: 'react' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
     'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' }
   },

@@ -178,6 +178,11 @@ const CssVariablesPage = () => {
               , making its z-index irrelevant.
             </NxWarningAlert>
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-z-index-toast">
+            The z-index of <NxCode>NxToast</NxCode> elements. This is provided as a variable in case downstream
+            code wants to set the z-index of another element relative to it (e.g. to ensure that that other element
+            always appears above, or always below, the submit mask).
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-radius">
             The typical border-radius applied to RSC elements with rounded borders.
           </PropertyDocItem>
@@ -248,10 +253,6 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-interactive-background-selected">
               The standard color for the backgrounds of interactive elements (such as clickable list rows) when they
               are selected.
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-interactive-background-active">
-              The standard color for the backgrounds of interactive elements (such as clickable list rows) when they
-              are active (in the <NxCode>:active</NxCode> sense – while the mouse is depressed on them).
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-interactive-background-active">
               The standard color for the backgrounds of interactive elements (such as clickable list rows) when they

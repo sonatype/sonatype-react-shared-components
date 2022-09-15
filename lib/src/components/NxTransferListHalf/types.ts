@@ -16,9 +16,9 @@ export interface TransferListItemProps<T extends string | number = string> exten
   onChange: SelectionChangeHandler<T>;
   showReorderingButtons?: boolean | null;
   isFilteredItem?: boolean | null;
-  onReorderItem?: (index: number, direction: 1 | -1) => void | null;
-  index: number;
-  listLength: number;
+  onReorderItem?: (id: T, direction: 1 | -1) => void | null;
+  isTopItem: boolean;
+  isBottomItem: boolean;
 }
 
 export interface Props<T extends string | number = string> {
@@ -32,7 +32,7 @@ export interface Props<T extends string | number = string> {
   onItemChange: SelectionChangeHandler<T>;
   footerContent: ReactNode;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
-  onReorderItem?: (index: number, direction: -1 | 1) => void | null;
+  onReorderItem?: (id: T, direction: -1 | 1) => void | null;
   allowReordering?: boolean | null;
 }
 

@@ -6,22 +6,22 @@
  */
 @use '../../scss-shared/nx-container-helpers';
 
-.nx-alert--load-error {
-  .nx-alert__content {
+.nx-load-error {
+  &__content {
     @include nx-container-helpers.container-horizontal;
     align-items: first baseline;
     display: flex;
     flex-wrap: wrap;
     row-gap: var(--nx-spacing-6x);
   }
-}
 
-.nx-load-error__message {
-  margin-right: var(--nx-spacing-3x);
+  &__message {
+    margin-right: var(--nx-spacing-3x);
 
-  word-break: break-word;
-}
+    word-break: break-word;
+  }
 
-.nx-load-error__retry {
-  margin-left: auto;
+  &__retry {
+    margin-left: auto;
+  }
 }

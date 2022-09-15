@@ -206,12 +206,17 @@ module.exports = {
         };
       },
 
-      hoverTest(elementSelector, hoverSelector = elementSelector) {
+      hoverTest(elementSelector, hoverSelector = elementSelector, waitForTooltip = false) {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
           await scrollIntoView(targetElement);
           await focusElement.hover();
+
+          if (waitForTooltip) {
+            await wait(500);
+          }
+
           await checkScreenshot(targetElement);
         };
       },

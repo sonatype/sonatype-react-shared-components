@@ -14,10 +14,12 @@ import NxErrorAlertExample from './NxErrorAlertExample';
 import NxWarningAlertExample from './NxWarningAlertExample';
 import NxInfoAlertExample from './NxInfoAlertExample';
 import NxSuccessAlertExample from './NxSuccessAlertExample';
+import NxNoCloseAlertExample from './NxNoCloseAlertExample';
 
 const nxErrorAlertExampleCode = require('./NxErrorAlertExample?raw'),
     nxInfoAlertExampleCode = require('./NxInfoAlertExample?raw'),
     nxSuccessAlertExampleCode = require('./NxSuccessAlertExample?raw'),
+    nxNoCloseAlertExampleCode = require('./NxNoCloseAlertExample?raw'),
     nxWarningAlertExampleCode = require('./NxWarningAlertExample?raw'),
     nxAlertExampleCode = require('./NxAlertExample?raw');
 
@@ -133,6 +135,13 @@ const NxAlertPage = () =>
                         liveExample={NxWarningAlertExample}
                         codeExamples={nxWarningAlertExampleCode}>
       An example of an alert demonstrating warning styling.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Unclosable Alert Example"
+                        id="nx-alert-no-close-example"
+                        liveExample={NxNoCloseAlertExample}
+                        codeExamples={nxNoCloseAlertExampleCode}>
+      An example of an alert that does not have a close button.
     </GalleryExampleTile>
   </>;
 

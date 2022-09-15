@@ -129,7 +129,7 @@ const NxTransferListPage = () =>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Handler for the user activating the reordering buttons within the list. Receives two arguments:
-                the list index of the item being reordered, and the direction in which it is being moved as a
+                the id of the item being reordered, and the direction in which it is being moved as a
                 number (-1 for towards the beginning of the list, 1 for towards the end of the list). While this
                 prop is optional, it should be provided when <NxCode>allowReordering</NxCode> is true.
               </NxTable.Cell>

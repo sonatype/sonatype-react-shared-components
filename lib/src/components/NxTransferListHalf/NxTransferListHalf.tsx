@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, useMemo } from 'react';
+import React, { FormEvent, memo, useMemo } from 'react';
 import { filter, includes, map, partial, pipe, prop, toLower } from 'ramda';
 import { faPlusCircle, faTimesCircle, faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
@@ -23,7 +23,7 @@ import './NxTransferListHalf.scss';
 
 export { Props };
 
-function TransferListItem<T extends string | number = string>(props: TransferListItemProps<T>) {
+function _TransferListItem<T extends string | number = string>(props: TransferListItemProps<T>) {
   const {
     showReorderingButtons,
     checked,
@@ -32,8 +32,8 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
     displayName,
     onChange: onChangeProp,
     onReorderItem,
-    index,
-    listLength
+    isTopItem,
+    isBottomItem
   } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
@@ -41,18 +41,17 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
     onChangeProp(evt.currentTarget.checked, id);
   }
 
-  const isTopItem = index === 0;
-  const isBottomItem = index === (listLength - 1);
-
   const classes = classnames(
       'nx-transfer-list__item',
       {
         'nx-transfer-list__item--with-reordering': !!showReorderingButtons
-      }
+      },
   );
 
-  const moveUpButtonTitle = isTopItem || isFilteredItem ? 'Move Up (disabled)' : 'Move Up';
-  const moveDownButtonTitle = isBottomItem || isFilteredItem ? 'Move Down (disabled)' : 'Move Down';
+  const moveUpDisabled = isFilteredItem || isTopItem;
+  const moveDownDisabled = isFilteredItem || isBottomItem;
+  const moveUpButtonTitle = moveUpDisabled ? 'Move Up (disabled)' : 'Move Up';
+  const moveDownButtonTitle = moveDownDisabled ? 'Move Down (disabled)' : 'Move Down';
 
   return (
     <div className={classes}>
@@ -66,26 +65,30 @@ function TransferListItem<T extends string | number = string>(props: TransferLis
       { showReorderingButtons && (
         <NxTooltip title={isFilteredItem ? 'Reordering is disabled when filtered' : ''}>
           <div className="nx-btn-bar nx-transfer-list__button-bar">
-            <NxButton type="button"
-                      variant="icon-only"
-                      title={moveUpButtonTitle}
-                      disabled={isFilteredItem || isTopItem}
-                      onClick={() => !isTopItem && onReorderItem && onReorderItem(index, -1)}>
-              <NxFontAwesomeIcon icon={faArrowUp}/>
-            </NxButton>
-            <NxButton type="button"
-                      variant="icon-only"
-                      title={moveDownButtonTitle}
-                      disabled={isFilteredItem || isBottomItem}
-                      onClick={() => !isBottomItem && onReorderItem && onReorderItem(index, 1)}>
-              <NxFontAwesomeIcon icon={faArrowDown}/>
-            </NxButton>
+            <NxTooltip title={isFilteredItem ? '' : moveUpButtonTitle} placement="left">
+              <NxButton type="button"
+                        variant="icon-only"
+                        className={moveUpDisabled ? 'disabled' : ''}
+                        onClick={() => !moveUpDisabled && onReorderItem && onReorderItem(id, -1)}>
+                <NxFontAwesomeIcon icon={faArrowUp}/>
+              </NxButton>
+            </NxTooltip>
+            <NxTooltip title={isFilteredItem ? '' : moveDownButtonTitle} placement="right">
+              <NxButton type="button"
+                        variant="icon-only"
+                        className={moveDownDisabled ? 'disabled' : ''}
+                        onClick={() => !moveDownDisabled && onReorderItem && onReorderItem(id, 1)}>
+                <NxFontAwesomeIcon icon={faArrowDown}/>
+              </NxButton>
+            </NxTooltip>
           </div>
         </NxTooltip>
       ) }
     </div>
   );
 }
+
+const TransferListItem = memo(_TransferListItem) as typeof _TransferListItem;
 
 /*
  * Used by NxTransferList and NxSearchTransferList, but also available on its own for more flexibility
@@ -141,8 +144,8 @@ export default function NxTransferListHalf<T extends string | number = string>(p
                                                  checked={isSelected}
                                                  onChange={onItemChange}
                                                  onReorderItem={onReorderItem}
-                                                 index={index}
-                                                 listLength={visibleItems.length}
+                                                 isTopItem={index === 0}
+                                                 isBottomItem={index === visibleItems.length - 1}
                                                  { ...i } />)
           }
         </div>

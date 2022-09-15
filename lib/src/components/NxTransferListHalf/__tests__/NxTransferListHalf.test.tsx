@@ -9,7 +9,6 @@ import { includes } from 'ramda';
 import React from 'react';
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
-import NxButton from '../../NxButton/NxButton';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import NxFieldset from '../../NxFieldset/NxFieldset';
 import NxFilterInput from '../../NxFilterInput/NxFilterInput';
@@ -311,20 +310,20 @@ describe('NxTransferListHalf', function() {
       expect(firstItem).toExist();
       expect(firstItemMoveUpButton).toExist();
       expect(firstItemMoveDownButton).toExist();
-      expect(firstItemMoveUpButton.prop('disabled')).toBe(true);
-      expect(firstItemMoveDownButton.prop('disabled')).toBe(false);
+      expect(firstItemMoveUpButton).toHaveClassName('disabled');
+      expect(firstItemMoveDownButton).not.toHaveClassName('disabled');
 
       expect(secondItem).toExist();
       expect(secondItemMoveUpButton).toExist();
       expect(secondItemMoveDownButton).toExist();
-      expect(secondItemMoveUpButton.prop('disabled')).toBe(false);
-      expect(secondItemMoveDownButton.prop('disabled')).toBe(false);
+      expect(secondItemMoveUpButton).not.toHaveClassName('disabled');
+      expect(secondItemMoveDownButton).not.toHaveClassName('disabled');
 
       expect(thirdItem).toExist();
       expect(thirdItemMoveUpButton).toExist();
       expect(thirdItemMoveDownButton).toExist();
-      expect(thirdItemMoveUpButton.prop('disabled')).toBe(false);
-      expect(thirdItemMoveDownButton.prop('disabled')).toBe(true);
+      expect(thirdItemMoveUpButton).not.toHaveClassName('disabled');
+      expect(thirdItemMoveDownButton).toHaveClassName('disabled');
     });
   });
 
@@ -356,11 +355,11 @@ describe('NxTransferListHalf', function() {
 
     moveDownButton.simulate('click');
 
-    expect(onReorderItem).toHaveBeenCalledWith(0, 1);
+    expect(onReorderItem).toHaveBeenCalledWith(1, 1);
 
     moveUpButton.simulate('click');
 
-    expect(onReorderItem).toHaveBeenCalledWith(1, -1);
+    expect(onReorderItem).toHaveBeenCalledWith(2, -1);
   });
 
   it('set the move up and down icon button with faArrowUp and faArrowDown respectively',
@@ -420,10 +419,10 @@ describe('NxTransferListHalf', function() {
     const middleMoveUpButton = secondItem.find('.nx-btn').at(0);
     const middleMoveDownButton = secondItem.find('.nx-btn').at(1);
 
-    expect(firstMoveUpButton).toHaveProp('disabled', true);
-    expect(lastMoveDownButton).toHaveProp('disabled', true);
-    expect(middleMoveUpButton).toHaveProp('disabled', true);
-    expect(middleMoveDownButton).toHaveProp('disabled', true);
+    expect(firstMoveUpButton).toHaveClassName('disabled');
+    expect(lastMoveDownButton).toHaveClassName('disabled');
+    expect(middleMoveUpButton).toHaveClassName('disabled');
+    expect(middleMoveDownButton).toHaveClassName('disabled');
 
     firstMoveUpButton.simulate('click');
     lastMoveDownButton.simulate('click');
@@ -458,14 +457,21 @@ describe('NxTransferListHalf', function() {
     const secondItem = list.find('.nx-transfer-list__item').at(1);
     const filteredSecondItem = filteredList.find('.nx-transfer-list__item').at(1);
 
-    const moveUpButton = secondItem.find(NxButton).at(0);
-    const moveDownButton = secondItem.find(NxButton).at(1);
+    const moveUpButtonTooltip = secondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(0);
+    const moveDownButtonTooltip = secondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(1);
+
+    const filteredMoveUpButtonTooltip = filteredSecondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(0);
+    const filteredMoveDownButtonTooltip =
+        filteredSecondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(1);
 
     const itemTooltip = secondItem.find(NxTooltip).at(1);
     const filteredItemTooltip = filteredSecondItem.find(NxTooltip).at(1);
 
-    expect(moveUpButton).toHaveProp('title', 'Move Up');
-    expect(moveDownButton).toHaveProp('title', 'Move Down');
+    expect(moveUpButtonTooltip).toHaveProp('title', 'Move Up');
+    expect(moveDownButtonTooltip).toHaveProp('title', 'Move Down');
+
+    expect(filteredMoveUpButtonTooltip).toHaveProp('title', '');
+    expect(filteredMoveDownButtonTooltip).toHaveProp('title', '');
 
     expect(filteredItemTooltip).toHaveProp('title', 'Reordering is disabled when filtered');
     expect(itemTooltip).toHaveProp('title', '');

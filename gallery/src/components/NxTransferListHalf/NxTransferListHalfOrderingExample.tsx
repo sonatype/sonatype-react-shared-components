@@ -32,8 +32,9 @@ export default function NxTransferListHalfOrderingExample() {
     setItems(reject(propEq('id', id), items));
   }
 
-  function onReorderItem(index: number, direction: -1 | 1) {
-    const newItems = [...items],
+  function onReorderItem(id: number, direction: -1 | 1) {
+    const index = items.findIndex(({ id: itemId }) => itemId === id),
+        newItems = [...items],
         destIndex = index + direction,
         itemAtIndex = newItems[index],
         itemAtDest = newItems[destIndex];
