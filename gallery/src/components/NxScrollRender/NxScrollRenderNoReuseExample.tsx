@@ -11,7 +11,7 @@ import { NxList, NxScrollRender } from '@sonatype/react-shared-components';
 
 export default function NxScrollRenderExample() {
   return (
-    <NxScrollRender initialChildCount={11}>
+    <NxScrollRender reuseChildren={false} initialChildCount={11}>
       <NxList className="nx-scrollable">
         { range(1, 10000).map(i =>
           <NxList.Item key={i}>
