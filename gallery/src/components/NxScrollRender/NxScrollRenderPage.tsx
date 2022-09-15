@@ -141,12 +141,14 @@ const NxScrollRenderPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Scroll Render Example without Reused Children"
+                        id="nx-scroll-render-no-reuse-example"
                         liveExample={NxScrollRenderNoReuseExample}
                         codeExamples={NxScrollRenderNoReuseExampleCode}>
       An example identical to the one above, but with <NxCode>reuseChildren</NxCode> set to false.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Scroll Render Example with Unfilled Container"
+                        id="nx-scroll-render-unfilled-example"
                         liveExample={NxScrollRenderUnfilledContainerExample}
                         codeExamples={NxScrollRenderUnfilledContainerExampleCode}>
       In this example, the number of children is smaller than the maximum that may be visible at one time within
@@ -155,6 +157,7 @@ const NxScrollRenderPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Scroll Render Example with Empty Container"
+                        id="nx-scroll-render-empty-example"
                         liveExample={NxScrollRenderEmptyExample}
                         codeExamples={NxScrollRenderEmptyExampleCode}>
       In this example, the scrolling container has no children at all. It is also safe to
@@ -162,6 +165,7 @@ const NxScrollRenderPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Scroll Render Example with Empty List"
+                        id="nx-scroll-render-empty-list-example"
                         liveExample={NxScrollRenderEmptyListExample}
                         codeExamples={NxScrollRenderEmptyListExampleCode}>
       This example is similar to the previous one, but in this case the container is an <NxCode>NxList</NxCode>
