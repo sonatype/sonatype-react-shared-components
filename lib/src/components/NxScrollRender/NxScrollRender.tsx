@@ -5,11 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { ReactElement, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { always, clamp, dec, identity, inc, isNil } from 'ramda';
 import useResizeObserver from '@react-hook/resize-observer';
 import { useThrottleCallback } from '@react-hook/throttle';
 
 import { Props } from './types';
-import { always, clamp, dec, identity, inc, isNil } from 'ramda';
 
 // intended to wrap division operations that may result in NaN, returns zero instead in that case
 const divOrZero = (x: number, y: number) => x === 0 || y === 0 ? 0 : x / y;
@@ -19,6 +19,11 @@ const DEFAULT_INITIAL_CHILD_COUNT = 40;
 export default function NxScrollRender({ children, reuseChildren, initialChildCount }: Props) {
   const fullParent = children,
 
+      childArray = useMemo(() => React.Children.toArray(fullParent.props.children) as ReactElement[],
+          [fullParent.props.children]),
+
+      childCount = childArray.length,
+
       parentRef = useRef<HTMLElement>(null),
       leadingSpacerRef = useRef<HTMLDivElement>(null),
       trailingSpacerRef = useRef<HTMLDivElement>(null),
@@ -26,20 +31,16 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
       [parentHeight, setParentHeight] = useState<number | null>(null),
       [childHeight, setChildHeight] = useState<number | null>(null),
       normalizedChildHeight = childHeight ?? 0,
-      renderedChildCount =
-          parentHeight == null || childHeight == null ? null : Math.ceil(divOrZero(parentHeight, childHeight)) + 2,
+      renderedChildCount = parentHeight == null || childHeight == null ? null :
+          Math.min(Math.ceil(divOrZero(parentHeight, childHeight)) + 2, childCount),
 
       cloneWithKey = (child: ReactElement, idx: number) =>
         React.cloneElement(child, { key: idx % (renderedChildCount as number) }),
       keyedChildren = useMemo(() => {
-        return reuseChildren !== false && !isNil(renderedChildCount) ?
-          // Cannot use React.Children.map because it mangles the keys
-          (React.Children.toArray(fullParent.props.children) as ReactElement[]).map(cloneWithKey) :
-          fullParent.props.children;
+        return reuseChildren !== false && !isNil(renderedChildCount) ? childArray.map(cloneWithKey) : childArray;
       },
-      [fullParent.props.children, reuseChildren, renderedChildCount]
+      [childArray, reuseChildren, renderedChildCount]
       ),
-      childCount = keyedChildren.length,
 
       sumChildHeight = normalizedChildHeight * childCount,
       renderedChildHeight = renderedChildCount == null ? 0 : normalizedChildHeight * renderedChildCount,
@@ -49,9 +50,9 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
 
       [firstRenderedChildIdx, setFirstRenderedChildIdx] = useState(0),
 
-      initialRenderedChildCount = renderedChildCount ?? initialChildCount ?? DEFAULT_INITIAL_CHILD_COUNT,
+      renderedChildCountWithDefault = renderedChildCount ?? initialChildCount ?? DEFAULT_INITIAL_CHILD_COUNT,
       renderedRealChildren =
-          keyedChildren.slice(firstRenderedChildIdx, firstRenderedChildIdx + initialRenderedChildCount);
+          keyedChildren.slice(firstRenderedChildIdx, firstRenderedChildIdx + renderedChildCountWithDefault);
 
   const renderedChildren = (
     <>
