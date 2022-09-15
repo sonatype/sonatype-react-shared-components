@@ -54,7 +54,7 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
       renderedRealChildren =
           keyedChildren.slice(firstRenderedChildIdx, firstRenderedChildIdx + renderedChildCountWithDefault);
 
-  const renderedChildren = (
+  const renderedChildren = childCount ? (
     <>
       <div ref={leadingSpacerRef}
            className="nx-scroll-reuser__spacer"
@@ -64,7 +64,7 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
            className="nx-scroll-reuser__spacer"
            style={{ height: trailingSpacerHeight }} />
     </>
-  );
+  ) : null;
 
   const updateRendering = useThrottleCallback(useCallback(function updateRendering() {
     const scrollTop = parentRef.current?.scrollTop ?? 0,
