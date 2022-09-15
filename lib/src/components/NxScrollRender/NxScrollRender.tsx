@@ -57,11 +57,11 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
   const renderedChildren = childCount ? (
     <>
       <div ref={leadingSpacerRef}
-           className="nx-scroll-reuser__spacer"
+           className="nx-scroll-render__spacer"
            style={{ height: leadingSpacerHeight }} />
       {renderedRealChildren}
       <div ref={trailingSpacerRef}
-           className="nx-scroll-reuser__spacer"
+           className="nx-scroll-render__spacer"
            style={{ height: trailingSpacerHeight }} />
     </>
   ) : null;
