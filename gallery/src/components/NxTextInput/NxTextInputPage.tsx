@@ -180,10 +180,12 @@ const NxTextInputPage = () =>
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell>initialState</NxTable.Cell>
-              <NxTable.Cell>(initialValue: string)</NxTable.Cell>
+              <NxTable.Cell>(initialValue: string, validator)</NxTable.Cell>
               <NxTable.Cell>
                 Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>
-                set to true.
+                set to true with validationErrors object set to null if validator is not specified.
+                The second argument is an optional validator function that receives the new input value (trimmed)
+                as a string and returns zero or * more validation error messages.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
