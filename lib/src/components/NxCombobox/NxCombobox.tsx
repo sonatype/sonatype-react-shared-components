@@ -40,6 +40,7 @@ function NxComboboxRender<T extends string | number = string>(
         autoComplete,
         validatable,
         isPristine,
+        /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
         trimmedValue,
         validationErrors,
         id,
