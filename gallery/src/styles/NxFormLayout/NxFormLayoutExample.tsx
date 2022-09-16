@@ -107,7 +107,7 @@ export default function NxFormLayoutExample() {
       };
 
   const [matches, setMatches] = useState<DataItem<number, string>[]>(comboboxItems),
-      [comboboxInputState, setComboboxInputState] = useState(initialState('')),
+      [comboboxInputState, setComboboxInputState] = useState(initialState('', validator)),
       onComboboxChange = (query: string) => setComboboxInputState(userInput(validator, query)),
       search = function(query: string):DataItem<number, string>[] {
         const lowercaseQuery = query.toLowerCase(),
