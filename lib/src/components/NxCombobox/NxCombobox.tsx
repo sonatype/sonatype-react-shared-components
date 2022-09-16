@@ -285,7 +285,7 @@ function NxComboboxRender<T extends string | number = string>(
       if (interval !== null) {
         window.clearInterval(interval);
       }
-    }
+    };
   }, [value, autoComplete, focusableBtnIndex, inputVal]);
 
   return (
