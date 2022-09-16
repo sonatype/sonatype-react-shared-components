@@ -335,7 +335,8 @@ function NxComboboxRender<T extends string | number = string>(
                         aria-label="listbox of combobox">
           {
             matches.length && matches.map((match, i) =>
-              <button id={getDropdownBtnIdForIndex(i)}
+              <button type="button"
+                      id={getDropdownBtnIdForIndex(i)}
                       role="option"
                       aria-selected={i === focusableBtnIndex }
                       className= {classnames('nx-dropdown-button',
