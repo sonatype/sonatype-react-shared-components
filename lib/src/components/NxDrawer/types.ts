@@ -26,7 +26,6 @@ export interface NxDrawerHeaderProps extends HTMLAttributes<HTMLElement>{
 
 export interface NxDrawerContextValue {
   closeDrawer: () => void;
-  open: boolean;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

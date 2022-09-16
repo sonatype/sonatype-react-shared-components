@@ -21,8 +21,7 @@ import { Props, NxDrawerHeaderProps, NxDrawerContextValue, OpenState, propTypes 
 import './NxDrawer.scss';
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
-  closeDrawer: () => {},
-  open: false
+  closeDrawer: () => {}
 });
 
 const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
