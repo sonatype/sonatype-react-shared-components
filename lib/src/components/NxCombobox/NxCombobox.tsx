@@ -18,7 +18,6 @@ import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadError from '../NxLoadError/NxLoadError';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import { useUniqueId } from '../../util/idUtil';
-import useToggle from '../../util/useToggle';
 import DataItem from '../../util/DataItem';
 export { Props } from './types';
 
@@ -58,7 +57,7 @@ function NxComboboxRender<T extends string | number = string>(
       showAlert = !!(!disabled && isAlert && value),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
-      [inputIsFocused, toggleInputIsFocused] = useToggle(false),
+      [inputIsFocused, setInputIsFocused] = useState(false),
       inputVal = autoComplete && focusableBtnIndex !== null && matches.length
         ? matches[focusableBtnIndex].displayName
         : value,
@@ -83,6 +82,7 @@ function NxComboboxRender<T extends string | number = string>(
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
   function handleComponentFocus(evt: FocusEvent<HTMLDivElement>) {
+    setInputIsFocused(true);
 
     if (loadError) {
       // check if this is focus coming into the component from somewhere else on the page, not just moving between
@@ -97,6 +97,7 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
+    setInputIsFocused(false);
 
     if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget))) {
       // The automatically selected suggestion becomes the value of the combobox
@@ -271,8 +272,6 @@ function NxComboboxRender<T extends string | number = string>(
                    onChange={handleOnChange}
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
-                   onFocus={toggleInputIsFocused}
-                   onBlur={toggleInputIsFocused}
                    aria-autocomplete={autoComplete ? 'both' : 'list'}
                    aria-expanded={showDropdown && inputIsFocused}
                    aria-controls={showDropdown && inputIsFocused ? dropdownId : undefined}
