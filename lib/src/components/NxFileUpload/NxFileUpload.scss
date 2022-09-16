@@ -29,13 +29,6 @@
     margin-right: var(--nx-spacing-4x);
   }
 
-  &__validation-error {
-    color: var(--nx-color-validation-invalid);
-    font-size: var(--nx-font-size-xs);
-    margin-top: var(--nx-spacing-2x);
-    position: absolute;
-  }
-
   &__no-file-message {
     @include nx-container-helpers.container-horizontal;
 

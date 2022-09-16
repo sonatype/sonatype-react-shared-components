@@ -28,7 +28,6 @@ import {
   nxTextInputStateHelpers,
   NxTextInput,
   hasValidationErrors,
-  combineValidationErrors,
   nxFieldsetStateHelpers,
   NxFileUpload,
   NxCombobox,
@@ -109,13 +108,14 @@ export default function NxFormLayoutExample() {
       };
 
   const formValidationErrors =
-      hasValidationErrors(combineValidationErrors(
+      hasValidationErrors(
           textInputState.validationErrors,
+          commentState.validationErrors,
           colorValidationError,
           selectState.validationErrors,
           tagColorState.validationErrors,
-          !files?.length && !isFilePristine ? 'A file is required' : null
-      )) ? 'Required fields are missing' : null;
+          !files?.length ? 'A file is required' : null
+      ) ? 'Required fields are missing' : null;
 
   const [matches, setMatches] = useState<DataItem<number, string>[]>(comboboxItems),
       [comboboxInputState, setComboboxInputState] = useState(initialState('')),

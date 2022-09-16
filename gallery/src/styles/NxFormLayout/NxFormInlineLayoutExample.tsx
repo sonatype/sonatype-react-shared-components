@@ -17,8 +17,7 @@ import {
   NxForm,
   NxStatefulForm,
   NxTextInput,
-  hasValidationErrors,
-  combineValidationErrors
+  hasValidationErrors
 } from '@sonatype/react-shared-components';
 
 export default function NxFormLayoutExample() {
@@ -28,10 +27,10 @@ export default function NxFormLayoutExample() {
 
   const [usernameState, setUsernameState] = useState(nxTextInputStateHelpers.initialState('', validator)),
       [hostnameState, setHostnameState] = useState(nxTextInputStateHelpers.initialState('', validator)),
-      formValidationErrors = hasValidationErrors(combineValidationErrors(
+      formValidationErrors = hasValidationErrors(
           usernameState.validationErrors,
           hostnameState.validationErrors
-      )) ? 'Required fields are missing' : null;
+      ) ? 'Required fields are missing' : null;
 
   function onUsernameChange(val: string) {
     setUsernameState(nxTextInputStateHelpers.userInput(validator, val));
