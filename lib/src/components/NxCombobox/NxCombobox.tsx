@@ -21,6 +21,8 @@ import { useUniqueId } from '../../util/idUtil';
 import DataItem from '../../util/DataItem';
 export { Props } from './types';
 
+const SELECTION_POLL_INTERVAL = 100;
+
 function NxComboboxRender<T extends string | number = string>(
   props: Props<T>,
   ref: Ref<HTMLDivElement>
@@ -51,7 +53,7 @@ function NxComboboxRender<T extends string | number = string>(
       isEmpty = !matches.length,
       isAlert = loading || loadError || isEmpty,
       dropdownRef = useRef<HTMLDivElement>(null),
-      inputRef = useRef<HTMLDivElement>(null),
+      inputRef = useRef<HTMLInputElement | null>(),
       alertRef = useRef<HTMLDivElement>(null),
       showDropdown = !disabled && !isEmpty,
       showAlert = !!(!disabled && isAlert && value),
@@ -129,7 +131,7 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function focusTextInput() {
-    inputRef.current?.querySelector('input')?.focus();
+    inputRef.current?.focus();
   }
 
   function handleDropdownBtnClick({displayName}: DataItem<T, string>) {
@@ -202,7 +204,7 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function isInputFocused() {
-    const input = inputRef.current?.querySelector('input');
+    const input = inputRef.current;
     return input && document.activeElement === input;
   }
 
@@ -231,13 +233,28 @@ function NxComboboxRender<T extends string | number = string>(
     return remainingNew.length === 0;
   }
 
+  /*
+   * Check that the user has not manually adjusted/cleared the text selection. If they have, update the
+   * value to match the full text
+   */
+  function checkSelection() {
+    const input = inputRef.current;
+
+    if (input && (input.selectionStart !== value.length || input.selectionEnd !== inputVal.length)) {
+      onChange(inputVal);
+    }
+  }
+
   useEffect(function() {
     // Highlight the portion of the selected suggestion that has not been typed by the user and display
     // a completion string inline after the input cursor in the input box.
     if (!loading && matches.length && autoComplete) {
-      if (isInputFocused() && focusableBtnIndex != null) {
+      const input = inputRef.current;
+
+      if (isInputFocused() && focusableBtnIndex != null && input?.selectionStart === input?.selectionEnd) {
         const firstOptVal = matches[focusableBtnIndex].displayName;
-        inputRef.current?.querySelector('input')?.setSelectionRange(value.length, firstOptVal.length);
+
+        input?.setSelectionRange(value.length, firstOptVal.length);
         updateValueCase();
       }
     }
@@ -255,6 +272,22 @@ function NxComboboxRender<T extends string | number = string>(
     }
   }, [value, loading, matches, autoComplete]);
 
+  useEffect(function() {
+    let interval: number | null = null;
+
+    if (value && autoComplete && focusableBtnIndex === 0 && value !== inputVal) {
+      // Note: in upcoming specs and future browser versions there should be a selectionchange event that we can
+      // listen to rather than polling
+      interval = window.setInterval(checkSelection, SELECTION_POLL_INTERVAL);
+    }
+
+    return () => {
+      if (interval !== null) {
+        window.clearInterval(interval);
+      }
+    }
+  }, [value, autoComplete, focusableBtnIndex, inputVal]);
+
   return (
     <div ref={ref}
          className={className}
@@ -262,7 +295,7 @@ function NxComboboxRender<T extends string | number = string>(
          onBlur={handleComponentBlur}
          { ...attrs }>
       <NxTextInput role="combobox"
-                   ref={inputRef}
+                   ref={div => inputRef.current = div?.querySelector('input')}
                    id={inputId}
                    validationErrors={validationErrors}
                    validatable={validatable}
