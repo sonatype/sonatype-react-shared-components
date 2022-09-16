@@ -6,7 +6,7 @@
  */
 // import React, { useState } from 'react';
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render, waitFor, within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import userEvent from '@testing-library/user-event';
@@ -490,6 +490,214 @@ describe('NxCombobox', function() {
       inputElement.focus();
       await user.keyboard('[Escape]');
       expect(onChange).toBeCalledWith('');
+    });
+  });
+
+  describe('when not validatable', function() {
+    const nonValidatableMinimalProps = { ...minimalProps, validatable: false };
+
+    describe('when pristine', function() {
+      const pristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: true };
+
+      describe('when there are no validation errors', function() {
+        const noValidationErrorsMinimalProps:Props<string | number> = pristineMinimalProps,
+            quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
+
+        it('has empty validation alert and no a11y error message', function() {
+          const component = quickRender();
+
+          expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the combobox', function() {
+          expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+      });
+
+      describe('when there are validation errors', function() {
+        const singleValidationErrorsMinimalProps:Props<string | number> =
+            { ...pristineMinimalProps, validationErrors: 'foo', id: '1' },
+            multiValidationErrorsMinimalProps:Props<string | number> =
+            { ...pristineMinimalProps, validationErrors: ['bar', 'foo'], id: '2' },
+            singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
+
+        it('has empty validation alert and no a11y error message', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+
+          expect(multiError.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the combobox', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+          expect(multiError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+      });
+    });
+
+    describe('when not pristine', function() {
+      const nonPristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: false };
+
+      describe('when there are no validation errors', function() {
+        const noValidationErrorsMinimalProps:Props<string | number> = nonPristineMinimalProps,
+            quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
+
+        it('has empty validation alert and no a11y error message', function() {
+          const component = quickRender();
+
+          expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the combobox', function() {
+          expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+      });
+
+      describe('when there are validation errors', function() {
+        const singleValidationErrorsMinimalProps:Props<string | number> =
+            { ...nonPristineMinimalProps, validationErrors: 'foo' },
+            multiValidationErrorsMinimalProps:Props<string | number> =
+            { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
+            singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
+
+        it('has empty validation alert and no a11y error message', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.queryAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+
+          expect(multiError.queryAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the combobox', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+          expect(multiError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+      });
+    });
+  });
+
+  describe('when validatable', function() {
+    const validatableMinimalProps = { ...minimalProps, validatable: true };
+
+    describe('when pristine', function() {
+      const pristineMinimalProps = { ...validatableMinimalProps, isPristine: true };
+
+      describe('when there are no validation errors', function() {
+        const noValidationErrorsMinimalProps:Props<string | number> = pristineMinimalProps,
+            quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
+
+        it('has empty validation alert and no a11y error message', function() {
+          const component = quickRender();
+
+          expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the combobox', function() {
+          expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+      });
+
+      describe('when there are validation errors', function() {
+        const singleValidationErrorsMinimalProps:Props<string | number> =
+            { ...pristineMinimalProps, validationErrors: 'foo' },
+            multiValidationErrorsMinimalProps:Props<string | number> =
+            { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
+            singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
+
+        it('has empty validation alert and no a11y error message', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+
+          expect(multiError.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+        });
+
+        it('sets aria-invalid on the combobox', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
+          expect(multiError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
+        });
+
+      });
+    });
+
+    describe('when not pristine', function() {
+      const nonPristineMinimalProps = { ...validatableMinimalProps, isPristine: false };
+
+      describe('when there are no validation errors', function() {
+        const noValidationErrorsMinimalProps:Props<string | number> = nonPristineMinimalProps,
+            quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
+
+        it('has empty validation alert and no a11y error message', function() {
+          const component = quickRender();
+
+          expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the combobox', function() {
+          expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+      });
+
+      describe('when there are validation errors', function() {
+        const singleValidationErrorsMinimalProps:Props<string | number> =
+            { ...nonPristineMinimalProps, validationErrors: 'foo' },
+            multiValidationErrorsMinimalProps:Props<string | number> =
+            { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
+            singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
+
+        it('has non-empty validation alert and a11y error message based on the first error', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getAllByRole('alert')[0]).toHaveTextContent('foo');
+          expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+
+          expect(multiError.getAllByRole('alert')[0]).toHaveTextContent('bar');
+          expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+        });
+
+        it('sets aria-invalid on the combobox', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
+          expect(multiError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
+        });
+
+      });
     });
   });
 });
