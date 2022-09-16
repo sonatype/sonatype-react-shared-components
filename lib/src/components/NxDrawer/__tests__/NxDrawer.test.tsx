@@ -59,11 +59,13 @@ describe('NxDrawer', function() {
     expect(drawer).toHaveAttribute('lang', 'en_US');
   });
 
-  it('should immediately set the dialog open attr when the open prop is set to true initially ' +
-  'and the open attr removed immediately when the open prop is set to false', async function() {
+  it('should only set the dialog open attr after the opening animation is completed ' +
+  'when the open prop is set to true initially', async function() {
     const { rerender } = quickRender({ open: true });
-
     const dialog = screen.getByRole('dialog', { hidden: true });
+
+    expect(dialog).not.toHaveAttribute('open');
+
     await fireEvent.animationEnd(dialog);
 
     expect(dialog).toHaveAttribute('open');
@@ -73,8 +75,8 @@ describe('NxDrawer', function() {
     expect(dialog).not.toHaveAttribute('open');
   });
 
-  it('should set the dialog open attr only after the animation ends when the drawer is transitioning from ' +
-  'closed to open', async function() {
+  it('should only set the dialog open attr after the animation is completed ' +
+  'when the drawer is transitioning from open to closed', async function() {
     const { rerender } = quickRender({ open: false });
 
     const dialog = screen.getByRole('dialog', { hidden: true });
