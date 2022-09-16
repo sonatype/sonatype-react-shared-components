@@ -61,7 +61,7 @@ describe('NxDrawer', function() {
 
   it('should only set the dialog open attr after the opening animation is completed ' +
   'when the open prop is set to true initially', async function() {
-    const { rerender } = quickRender({ open: true });
+    const { rerender } = quickRender();
     const dialog = screen.getByRole('dialog', { hidden: true });
 
     expect(dialog).not.toHaveAttribute('open');
@@ -129,7 +129,6 @@ describe('NxDrawer', function() {
     it('executes onCancel when drawer is closed and animation is completed', async function() {
       const mockOnCancel = jest.fn();
       const props = {
-        open: true,
         onCancel: mockOnCancel,
         children: (
           <NxDrawer.Header>
