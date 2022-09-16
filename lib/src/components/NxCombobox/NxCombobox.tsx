@@ -218,7 +218,6 @@ function NxComboboxRender<T extends string | number = string>(
   // of the value, so we must check when a new value is the same as the old one except with parts missing
   function isValueSameWithOmissions() {
     if (previousValue == null) {
-      console.log('prev is null')
       return false;
     }
 
