@@ -116,12 +116,14 @@ describe('NxDrawer', function() {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const drawer = getDrawer({ onClose: mockOnClose })!;
 
+      await fireEvent.animationEnd(drawer);
+
       await user.keyboard('Tab');
       await user.keyboard('Enter');
       await user.keyboard('q');
       await user.keyboard('Q');
 
-      fireEvent.animationEnd(drawer);
+      await fireEvent.animationEnd(drawer);
 
       expect(mockOnClose).not.toHaveBeenCalled();
     });
