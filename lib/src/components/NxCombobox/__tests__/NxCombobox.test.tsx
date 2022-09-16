@@ -61,7 +61,7 @@ describe('NxCombobox', function() {
 
         expect(inputElement).toHaveAttribute('aria-autocomplete', 'list');
 
-        rerender(<NxCombobox { ...minimalProps } autoComplete={true}/>);
+        rerender(<NxCombobox { ...minimalProps } autoComplete={true} />);
         expect(inputElement).toHaveAttribute('aria-autocomplete', 'both');
       });
 
@@ -76,7 +76,7 @@ describe('NxCombobox', function() {
 
         inputElement.focus();
         rerender(<NxCombobox { ...minimalProps } { ...props } value="f" />);
-        await expect(inputElement).toHaveValue('Foo');
+        expect(inputElement).toHaveValue('Foo');
       });
 
   it('sets aria-expanded on the input to true when focused',
@@ -127,13 +127,13 @@ describe('NxCombobox', function() {
 
     expect(inputElement).not.toBeDisabled();
 
-    rerender(<NxCombobox { ...minimalProps } disabled={undefined}/>);
+    rerender(<NxCombobox { ...minimalProps } disabled={undefined} />);
     expect(inputElement).not.toBeDisabled();
 
-    rerender(<NxCombobox { ...minimalProps } disabled={false}/>);
+    rerender(<NxCombobox { ...minimalProps } disabled={false} />);
     expect(inputElement).not.toBeDisabled();
 
-    rerender(<NxCombobox { ...minimalProps } disabled={true}/>);
+    rerender(<NxCombobox { ...minimalProps } disabled={true} />);
     expect(inputElement).toBeDisabled();
   });
 
