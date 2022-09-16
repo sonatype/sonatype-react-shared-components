@@ -18,7 +18,7 @@ import {
 } from '@sonatype/react-shared-components';
 import classnames from 'classnames';
 
-const EnableDarkMode = () => {
+const DarkModeModel = () => {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
 
@@ -113,4 +113,4 @@ const EnableDarkMode = () => {
   );
 };
 
-export default EnableDarkMode;
+export default DarkModeModel;
