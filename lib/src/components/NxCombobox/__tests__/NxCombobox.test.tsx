@@ -12,6 +12,7 @@ import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import userEvent from '@testing-library/user-event';
 
 import NxCombobox, { Props } from '../NxCombobox';
+import NxForm from '../../NxForm/NxForm';
 
 describe('NxCombobox', function() {
   const minimalProps: Props<string | number> = {
@@ -514,6 +515,30 @@ describe('NxCombobox', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<Props>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxCombobox data-testid="combobox" { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has empty validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the combobox', function() {
+            expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
       });
 
       describe('when there are validation errors', function() {
@@ -543,6 +568,30 @@ describe('NxCombobox', function() {
           expect(multiError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<Props>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxCombobox data-testid="combobox" { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has empty validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the combobox', function() {
+            expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
       });
     });
 
@@ -564,6 +613,30 @@ describe('NxCombobox', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<Props>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxCombobox data-testid="combobox" { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has empty validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the combobox', function() {
+            expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
       });
 
       describe('when there are validation errors', function() {
@@ -593,6 +666,30 @@ describe('NxCombobox', function() {
           expect(multiError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<Props>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxCombobox data-testid="combobox" { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has empty validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the combobox', function() {
+            expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
       });
     });
   });
@@ -618,6 +715,30 @@ describe('NxCombobox', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<Props>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxCombobox data-testid="combobox" { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has empty validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the combobox', function() {
+            expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
       });
 
       describe('when there are validation errors', function() {
@@ -625,12 +746,12 @@ describe('NxCombobox', function() {
             { ...pristineMinimalProps, validationErrors: 'foo' },
             multiValidationErrorsMinimalProps:Props<string | number> =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
+            singleRender = rtlRender(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRender(NxCombobox, multiValidationErrorsMinimalProps);
 
         it('has empty validation alert and no a11y error message', function() {
-          const singleError = within(singleRender() as HTMLElement),
-              multiError = within(multiRender() as HTMLElement);
+          const singleError = singleRender(),
+              multiError = multiRender();
 
           expect(singleError.getAllByRole('alert')[0]).toBeEmptyDOMElement();
           expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
@@ -640,13 +761,48 @@ describe('NxCombobox', function() {
         });
 
         it('sets aria-invalid on the combobox', function() {
-          const singleError = within(singleRender() as HTMLElement),
-              multiError = within(multiRender() as HTMLElement);
+          const singleError = singleRender(),
+              multiError = multiRender();
 
           expect(singleError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
           expect(multiError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
         });
 
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<Props<string | number>>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxCombobox data-testid="combobox" { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          const singleRender = () => quickRender(singleValidationErrorsMinimalProps),
+              multiRender = () => quickRender(multiValidationErrorsMinimalProps);
+
+          it('has non-empty validation alert and a11y error message based on the first error', function() {
+            const singleError = singleRender(),
+                multiError = multiRender();
+
+            expect(singleError.getAllByRole('alert')[0]).toHaveTextContent('foo');
+            expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+
+            expect(multiError.getAllByRole('alert')[0]).toHaveTextContent('bar');
+            expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+          });
+
+          it('sets aria-invalid on the combobox', function() {
+            const singleError = singleRender(),
+                multiError = multiRender();
+
+            expect(singleError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
+            expect(multiError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
+          });
+        });
       });
     });
 
@@ -668,6 +824,30 @@ describe('NxCombobox', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
 
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<Props>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxCombobox data-testid="combobox" { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has empty validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.getAllByRole('alert')[0]).toBeEmptyDOMElement();
+            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the combobox', function() {
+            expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
       });
 
       describe('when there are validation errors', function() {
@@ -697,6 +877,41 @@ describe('NxCombobox', function() {
           expect(multiError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
         });
 
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<Props<string | number>>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxCombobox data-testid="combobox" { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          const singleRender = () => quickRender(singleValidationErrorsMinimalProps),
+              multiRender = () => quickRender(multiValidationErrorsMinimalProps);
+
+          it('has non-empty validation alert and a11y error message based on the first error', function() {
+            const singleError = singleRender(),
+                multiError = multiRender();
+
+            expect(singleError.getAllByRole('alert')[0]).toHaveTextContent('foo');
+            expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+
+            expect(multiError.getAllByRole('alert')[0]).toHaveTextContent('bar');
+            expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+          });
+
+          it('sets aria-invalid on the combobox', function() {
+            const singleError = singleRender(),
+                multiError = multiRender();
+
+            expect(singleError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
+            expect(multiError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
+          });
+        });
       });
     });
   });
