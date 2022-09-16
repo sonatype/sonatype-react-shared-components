@@ -85,7 +85,7 @@ const DarkModeModel = () => {
             </NxFormGroup>
             <NxFieldset label="Choose Your Mode">
               <NxRadio name="mode"
-                       value="browser"
+                       value="browserChoice"
                        onChange={setMode}
                        isChecked={mode === 'browserChoice'}
                        disabled = {radioDisabled}>
