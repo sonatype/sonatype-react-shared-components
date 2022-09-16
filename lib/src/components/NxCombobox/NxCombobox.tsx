@@ -248,12 +248,15 @@ function NxComboboxRender<T extends string | number = string>(
   useEffect(function() {
     // Highlight the portion of the selected suggestion that has not been typed by the user and display
     // a completion string inline after the input cursor in the input box.
-    if (!loading && matches.length && autoComplete) {
-      const input = inputRef.current;
+    if (!loading && matches.length && autoComplete && focusableBtnIndex != null && isInputFocused()) {
+      const input = inputRef.current,
+          firstOptVal = matches[focusableBtnIndex].displayName,
 
-      if (isInputFocused() && focusableBtnIndex != null && input?.selectionStart === input?.selectionEnd) {
-        const firstOptVal = matches[focusableBtnIndex].displayName;
+          // we only want to update the selection if nothing is currently selected and the caret is at
+          // the end
+          selectionIsAtEnd = input?.selectionStart === inputVal.length && input?.selectionEnd === inputVal.length;
 
+      if (selectionIsAtEnd) {
         input?.setSelectionRange(value.length, firstOptVal.length);
         updateValueCase();
       }
