@@ -7,7 +7,7 @@
 import React from 'react';
 
 import HostedVersionsSelect from './HostedVersionsSelect';
-import DarkModeModel from '../DarkModeModel/DarkModeModel';
+import DarkModeModal from '../DarkModeModal/DarkModeModal';
 
 const plaidVillain = require('./plaid-villain.svg');
 const tartanLogotype = require('./tartan-logotype.svg');
@@ -31,7 +31,7 @@ const PageHeader = () => (
         React Shared Component Library
       </span>
       <div className="gallery-page-header__display-mode-btn">
-        <DarkModeModel />
+        <DarkModeModal />
       </div>
       <div className="gallery-page-header__version">
         <HostedVersionsSelect />

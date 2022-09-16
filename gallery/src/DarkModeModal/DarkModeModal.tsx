@@ -20,7 +20,7 @@ import {
 } from '@sonatype/react-shared-components';
 import classnames from 'classnames';
 
-const DarkModeModel = () => {
+const DarkModeModal = () => {
   const [showModal, setShowModal] = useState(false);
   const modalCloseHandler = () => setShowModal(false);
 
@@ -87,9 +87,9 @@ const DarkModeModel = () => {
             </header>
             <div className="nx-modal-content">
               <NxP>
-                In order to enable dark mode, the class <NxCode>nx-html-enable-color-schemes</NxCode> must first
+                In order to enable dark mode, the class <NxCode>nx-html--enable-color-schemes</NxCode> must first
                 be added to the <NxCode>html</NxCode> element, as demonstrated by the toggle below. Additional
-                classes <NxCode>nx-html–dark-mode</NxCode> or <NxCode>nx-html–light-mode</NxCode> may also be added
+                classes <NxCode>nx-html--dark-mode</NxCode> or <NxCode>nx-html--light-mode</NxCode> may also be added
                 to force either light or dark mode, as demonstrated by the radio buttons. However, using these
                 simultaneously will result in dark mode and is not recommended. If neither class is added,
                 prefers-color-scheme in the user’s settings will dictate the mode.
@@ -130,4 +130,4 @@ const DarkModeModel = () => {
   );
 };
 
-export default DarkModeModel;
+export default DarkModeModal;
