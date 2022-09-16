@@ -24,7 +24,7 @@ import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
-const NxDrawerDefaultOpenSourceCode = require('./NxDrawerDefaultOpenExample?raw');
+const NxDrawerConditionalRenderingSourceCode = require('./NxDrawerConditionalRenderingExample?raw');
 const NxDrawerSourceCode = require('./NxDrawerExample?raw');
 const NxDrawerVariantSourceCode = require('./NxDrawerVariantExample?raw');
 const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubtitleOrDescriptionExample?raw');
@@ -300,15 +300,19 @@ export default function NxDrawerPage() {
       <NxTile>
         <NxTile.Header>
           <NxTile.HeaderTitle>
-            <NxH2>NxDrawer That Is Open by Default Example</NxH2>
+            <NxH2>NxDrawer Conditional Rendering Example</NxH2>
           </NxTile.HeaderTitle>
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            An example of a <NxCode>NxDrawer</NxCode> that is open by default.
+            An example of a <NxCode>NxDrawer</NxCode> that is unmounted by default{' '}
+            and is unmounted when closed after the animation is completed.{' '}
+            Notice that it requires two states: one to keep track of the drawer's visibility and animation,
+            and another, in conjunction with the <NxCode>onCancel</NxCode> callback, was used to track mounting and
+            unmounting after the slide-out animation is completed.
           </NxP>
           <NxP>
-            <NxTextLink href="#/NxDrawerDefaultOpenExample">
+            <NxTextLink href="#/NxDrawerConditionalRenderingExample">
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
@@ -318,8 +322,8 @@ export default function NxDrawerPage() {
             <NxAccordion.Header>
               <NxAccordion.Title>Example Code</NxAccordion.Title>
             </NxAccordion.Header>
-            <CodeExample content={NxDrawerDefaultOpenSourceCode} />
-            <GalleryTileFooter clipboardContent={NxDrawerDefaultOpenSourceCode}/>
+            <CodeExample content={NxDrawerConditionalRenderingSourceCode} />
+            <GalleryTileFooter clipboardContent={NxDrawerConditionalRenderingSourceCode}/>
           </NxStatefulAccordion>
         </NxTile.Content>
       </NxTile>

@@ -16,8 +16,16 @@ import { NxDrawer,
   useToggle
 } from '@sonatype/react-shared-components';
 
-export default function NxDrawerDefaultOpenExample() {
-  const [showDrawer, toggleDrawer] = useToggle(true);
+export default function NxDrawerConditionalRenderingExample() {
+  const [mountDrawer, toggleMountDrawer] = useToggle(false);
+  const [open, toggleOpen, setOpen] = useToggle(true);
+
+  const renderDrawer = () => {
+    if (!mountDrawer) {
+      toggleMountDrawer();
+      setOpen(true);
+    }
+  };
 
   return (
     <>
@@ -25,26 +33,31 @@ export default function NxDrawerDefaultOpenExample() {
         <NxBackButton href="#/pages/Drawer" targetPageTitle="Documentation" />
       </header>
 
-      <NxDrawer id="nx-drawer-default-open"
-                open={showDrawer}
-                onClose={toggleDrawer}
-                aria-labelledby="drawer-default-open-title">
-        <NxDrawer.Header>
-          <NxDrawer.HeaderTitle id="drawer-default-open-title">A Drawer That Is Open by Default</NxDrawer.HeaderTitle>
-        </NxDrawer.Header>
-        <NxDrawer.Content tabIndex={0}>
-          <NxP>
-            Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
-            I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
-            cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
-            pie jelly-o cheesecake candy I love.
-          </NxP>
-        </NxDrawer.Content>
-      </NxDrawer>
+      {mountDrawer && (
+        <NxDrawer id="nx-drawer-default-open"
+                  open={open}
+                  onClose={toggleOpen}
+                  onCancel={toggleMountDrawer}
+                  aria-labelledby="drawer-default-open-title">
+          <NxDrawer.Header>
+            <NxDrawer.HeaderTitle id="drawer-default-open-title">
+              A Drawer That Is Conditionally Rendered
+            </NxDrawer.HeaderTitle>
+          </NxDrawer.Header>
+          <NxDrawer.Content tabIndex={0}>
+            <NxP>
+              Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
+              I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
+              cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
+              pie jelly-o cheesecake candy I love.
+            </NxP>
+          </NxDrawer.Content>
+        </NxDrawer>
+      )}
 
       <NxPageMain>
         <NxPageTitle>
-          <NxH1>An Example of a Drawer That Is Open by Default</NxH1>
+          <NxH1>An Example of Conditional Rendering of NxDrawer</NxH1>
         </NxPageTitle>
 
         <NxP>
@@ -63,8 +76,8 @@ export default function NxDrawerDefaultOpenExample() {
           love caramels. Pie jelly-o candy jelly beans icing. Sweet gingerbread pastry jelly bonbon danish icing.
         </NxP>
         <NxP>
-          <NxButton id="nx-drawer-default-open-button" onClick={toggleDrawer}>
-            Reopen Drawer
+          <NxButton id="nx-drawer-default-open-button" onClick={renderDrawer}>
+            Render Drawer
           </NxButton>
         </NxP>
         <NxP>
