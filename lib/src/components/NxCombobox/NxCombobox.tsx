@@ -6,7 +6,8 @@
  */
 import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
-import { always, dec, inc } from 'ramda';
+import { always, dec, head, inc, tail } from 'ramda';
+import usePrevious from '../../util/usePrevious';
 
 import './NxCombobox.scss';
 
@@ -17,7 +18,6 @@ import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadError from '../NxLoadError/NxLoadError';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import { useUniqueId } from '../../util/idUtil';
-import useToggle from '../../util/useToggle';
 import DataItem from '../../util/DataItem';
 export { Props } from './types';
 
@@ -46,6 +46,7 @@ function NxComboboxRender<T extends string | number = string>(
         'aria-label': ariaLabel,
         ...attrs
       } = props,
+      previousValue = usePrevious(value),
 
       isEmpty = !matches.length,
       isAlert = loading || loadError || isEmpty,
@@ -56,8 +57,7 @@ function NxComboboxRender<T extends string | number = string>(
       showAlert = !!(!disabled && isAlert && value),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
-      [inputIsFocused, toggleInputIsFocused] = useToggle(false),
-      [showAutoComplete, setShowAutoComplete] = useState(false),
+      [inputIsFocused, setInputIsFocused] = useState(false),
       inputVal = autoComplete && focusableBtnIndex !== null && matches.length
         ? matches[focusableBtnIndex].displayName
         : value,
@@ -82,6 +82,7 @@ function NxComboboxRender<T extends string | number = string>(
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
   function handleComponentFocus(evt: FocusEvent<HTMLDivElement>) {
+    setInputIsFocused(true);
 
     if (loadError) {
       // check if this is focus coming into the component from somewhere else on the page, not just moving between
@@ -96,6 +97,7 @@ function NxComboboxRender<T extends string | number = string>(
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
+    setInputIsFocused(false);
 
     if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget))) {
       // The automatically selected suggestion becomes the value of the combobox
@@ -103,10 +105,8 @@ function NxComboboxRender<T extends string | number = string>(
       if (autoComplete && focusableBtnIndex !== null) {
         const elToFocusText = matches[focusableBtnIndex].displayName;
         onChange(elToFocusText);
-        onSearch(elToFocusText);
       }
       setFocusableBtnIndex(null);
-      setShowAutoComplete(false);
     }
   }
 
@@ -118,7 +118,7 @@ function NxComboboxRender<T extends string | number = string>(
     setFocusableBtnIndex(null);
     onChange(newVal);
 
-    if (newVal.trim() !== value.trim()) {
+    if (newVal.toLowerCase() !== value.toLowerCase()) {
       doSearch(newVal);
     }
   }
@@ -137,14 +137,6 @@ function NxComboboxRender<T extends string | number = string>(
     onSearch(displayName);
     focusTextInput();
     setFocusableBtnIndex(null);
-    setShowAutoComplete(false);
-  }
-
-  function handleKeyUp(evt: KeyboardEvent<HTMLElement>) {
-    if (autoComplete) {
-      const isPrintableChar = evt.key.length === 1 && evt.key.match(/[!-~]/);
-      setShowAutoComplete(!!isPrintableChar);
-    }
   }
 
   // helper for focusing different buttons in the dropdown menu
@@ -154,8 +146,8 @@ function NxComboboxRender<T extends string | number = string>(
 
         if (elToFocus) {
           setFocusableBtnIndex(newFocusableBtnIndex);
+          onChange(matches[newFocusableBtnIndex].displayName);
           elToFocus.scrollIntoView({ block: 'nearest' });
-          setShowAutoComplete(false);
         }
       },
       focusNext = adjustBtnFocus(inc),
@@ -206,41 +198,63 @@ function NxComboboxRender<T extends string | number = string>(
         handleOnChange('');
         setFocusableBtnIndex(null);
         break;
-      case 'Backspace':
-        if (showAutoComplete && value !== elToFocusText) {
-          evt.preventDefault();
-          setFocusableBtnIndex(null);
-        }
-        setShowAutoComplete(false);
-        break;
-      case ' ':
-        setShowAutoComplete(false);
-        setFocusableBtnIndex(null);
-        break;
     }
   }
 
-  useEffect(function() {
-    if (!autoComplete) {
-      setShowAutoComplete(false);
+  function isInputFocused() {
+    const input = inputRef.current?.querySelector('input');
+    return input && document.activeElement === input;
+  }
+
+  // When autocomplete occurs we want to update the value to match the case (e.g. uppercase/lowercase) of the
+  // corresponding part of the autocompleted option
+  function updateValueCase() {
+    if (focusableBtnIndex != null) {
+      onChange(matches[focusableBtnIndex].displayName.slice(0, value.length));
     }
-  }, [autoComplete]);
+  }
+
+  // We don't want to activate autocomplete when the user is backspacing or otherwise only deleting parts
+  // of the value, so we must check when a new value is the same as the old one except with parts missing
+  function isValueSameWithOmissions() {
+    if (previousValue == null) {
+      console.log('prev is null')
+      return false;
+    }
+
+    let remainingPrev = previousValue, remainingNew = value;
+    for (; remainingPrev.length && remainingNew.length; remainingPrev = tail(remainingPrev)) {
+      if (head(remainingNew) === head(remainingPrev)) {
+        remainingNew = tail(remainingNew);
+      }
+    }
+
+    return remainingNew.length === 0;
+  }
+
+  useEffect(function() {
+    // Highlight the portion of the selected suggestion that has not been typed by the user and display
+    // a completion string inline after the input cursor in the input box.
+    if (!loading && matches.length && autoComplete) {
+      if (isInputFocused() && focusableBtnIndex != null) {
+        const firstOptVal = matches[focusableBtnIndex].displayName;
+        inputRef.current?.querySelector('input')?.setSelectionRange(value.length, firstOptVal.length);
+        updateValueCase();
+      }
+    }
+  }, [matches, value, autoComplete, loading, inputVal, focusableBtnIndex]);
 
   useEffect(function() {
     if (loading) {
       setFocusableBtnIndex(null);
     }
-    // Highlight the portion of the selected suggestion that has not been typed by the user and display
-    // a completion string inline after the input cursor in the input box.
-    else if (matches.length && autoComplete && showAutoComplete) {
-      setFocusableBtnIndex(0);
-      const firstOptVal = matches[0].displayName;
-      inputRef.current?.querySelector('input')?.setSelectionRange(value.length, firstOptVal.length);
+    else if (matches.length && autoComplete && !isValueSameWithOmissions() && isInputFocused()) {
+
+      // Note: this needs to use the function setter syntax so that this useEffect is not dependent on
+      // focusableBtnIndex - we don't want this logic executing every time focusableBtnIndex changes
+      setFocusableBtnIndex(focusableBtnIndex => focusableBtnIndex ?? 0);
     }
-    else if (matches.length === 0) {
-      setShowAutoComplete(false);
-    }
-  }, [matches, value, showAutoComplete, focusableBtnIndex, loading]);
+  }, [value, loading, matches, autoComplete]);
 
   return (
     <div ref={ref}
@@ -259,9 +273,6 @@ function NxComboboxRender<T extends string | number = string>(
                    onChange={handleOnChange}
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
-                   onKeyUp={handleKeyUp}
-                   onFocus={toggleInputIsFocused}
-                   onBlur={toggleInputIsFocused}
                    aria-autocomplete={autoComplete ? 'both' : 'list'}
                    aria-expanded={showDropdown && inputIsFocused}
                    aria-controls={showDropdown && inputIsFocused ? dropdownId : undefined}
