@@ -6,7 +6,7 @@
  */
 // import React, { useState } from 'react';
 import React from 'react';
-import { render, waitFor, within } from '@testing-library/react';
+import { fireEvent, render, waitFor, within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import userEvent from '@testing-library/user-event';
@@ -73,6 +73,7 @@ describe('NxCombobox', function() {
               matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Fooo' }] }),
             inputElement = getByRole('combobox');
 
+        inputElement.focus();
         await user.type(inputElement, 'f');
         await waitFor(() => expect(inputElement).toHaveValue('Foo'));
       });
@@ -100,25 +101,23 @@ describe('NxCombobox', function() {
   });
 
   it('does not call onSearch whenever the input\'s onChange event fires with a value that does not differ' +
-    'after trimming', async function() {
-    const user = userEvent.setup(),
-        onSearch = jest.fn(),
+    'after converting to lowercase value', async function() {
+    const onSearch = jest.fn(),
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
-    await user.type(inputElement, ' ');
+    fireEvent.change(inputElement, {target: {value: 'Foo'}});
     expect(onSearch).not.toHaveBeenCalled();
   });
 
-  it('calls onSearch whenever the input\'s onChange event fires with a value that differs after trimming, ' +
-    'passing the trimmed value', async function() {
-    const user = userEvent.setup(),
-        onSearch = jest.fn(),
+  it('calls onSearch whenever the input\'s onChange event fires with a value that differs after converting' +
+    'to lowercase value', async function() {
+    const onSearch = jest.fn(),
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
-    await user.type(inputElement, 'f');
-    expect(onSearch).toHaveBeenCalledWith('foof');
+    fireEvent.change(inputElement, {target: {value: 'boo'}});
+    expect(onSearch).toHaveBeenCalledWith('boo');
   });
 
   it('passes the disabled prop to the input', function() {
