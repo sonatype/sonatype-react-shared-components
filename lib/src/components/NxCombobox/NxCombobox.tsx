@@ -6,7 +6,8 @@
  */
 import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
-import { always, dec, inc } from 'ramda';
+import { always, dec, head, inc, tail } from 'ramda';
+import usePrevious from '../../util/usePrevious';
 
 import './NxCombobox.scss';
 
@@ -46,6 +47,7 @@ function NxComboboxRender<T extends string | number = string>(
         'aria-label': ariaLabel,
         ...attrs
       } = props,
+      previousValue = usePrevious(value),
 
       isEmpty = !matches.length,
       isAlert = loading || loadError || isEmpty,
@@ -102,7 +104,6 @@ function NxComboboxRender<T extends string | number = string>(
       if (autoComplete && focusableBtnIndex !== null) {
         const elToFocusText = matches[focusableBtnIndex].displayName;
         onChange(elToFocusText);
-        onSearch(elToFocusText.trim());
       }
       setFocusableBtnIndex(null);
     }
@@ -116,14 +117,14 @@ function NxComboboxRender<T extends string | number = string>(
     setFocusableBtnIndex(null);
     onChange(newVal);
 
-    if (newVal.toLowerCase().trim() !== value.toLowerCase().trim()) {
+    if (newVal.toLowerCase() !== value.toLowerCase()) {
       doSearch(newVal);
     }
   }
 
   function doSearch(val: string) {
     focusTextInput();
-    onSearch(val.trim());
+    onSearch(val);
   }
 
   function focusTextInput() {
@@ -132,7 +133,7 @@ function NxComboboxRender<T extends string | number = string>(
 
   function handleDropdownBtnClick({displayName}: DataItem<T, string>) {
     onChange(displayName);
-    onSearch(displayName.trim());
+    onSearch(displayName);
     focusTextInput();
     setFocusableBtnIndex(null);
   }
@@ -144,6 +145,7 @@ function NxComboboxRender<T extends string | number = string>(
 
         if (elToFocus) {
           setFocusableBtnIndex(newFocusableBtnIndex);
+          onChange(matches[newFocusableBtnIndex].displayName);
           elToFocus.scrollIntoView({ block: 'nearest' });
         }
       },
@@ -203,25 +205,52 @@ function NxComboboxRender<T extends string | number = string>(
     return input && document.activeElement === input;
   }
 
+  // When autocomplete occurs we want to update the value to match the case (e.g. uppercase/lowercase) of the
+  // corresponding part of the autocompleted option
+  function updateValueCase() {
+    if (focusableBtnIndex != null) {
+      onChange(matches[focusableBtnIndex].displayName.slice(0, value.length));
+    }
+  }
+
+  // We don't want to activate autocomplete when the user is backspacing or otherwise only deleting parts
+  // of the value, so we must check when a new value is the same as the old one except with parts missing
+  function isValueSameWithOmissions() {
+    if (previousValue == null) {
+      return false;
+    }
+
+    let remainingPrev = previousValue, remainingNew = value;
+    for (; remainingPrev.length && remainingNew.length; remainingPrev = tail(remainingPrev)) {
+      if (head(remainingNew) === head(remainingPrev)) {
+        remainingNew = tail(remainingNew);
+      }
+    }
+
+    return remainingNew.length === 0;
+  }
+
   useEffect(function() {
     // Highlight the portion of the selected suggestion that has not been typed by the user and display
     // a completion string inline after the input cursor in the input box.
     if (!loading && matches.length && autoComplete) {
-      if (isInputFocused()) {
-        const firstOptVal = matches[0].displayName;
+      if (isInputFocused() && focusableBtnIndex != null) {
+        const firstOptVal = matches[focusableBtnIndex].displayName;
         inputRef.current?.querySelector('input')?.setSelectionRange(value.length, firstOptVal.length);
+        updateValueCase();
       }
     }
-  }, [matches, value, autoComplete, loading, inputVal]);
+  }, [matches, value, autoComplete, loading, inputVal, focusableBtnIndex]);
 
   useEffect(function() {
     if (loading) {
       setFocusableBtnIndex(null);
     }
-    else if (value && matches.length && autoComplete) {
-      if (isInputFocused()) {
-        setFocusableBtnIndex(0);
-      }
+    else if (matches.length && autoComplete && !isValueSameWithOmissions() && isInputFocused()) {
+
+      // Note: this needs to use the function setter syntax so that this useEffect is not dependent on
+      // focusableBtnIndex - we don't want this logic executing every time focusableBtnIndex changes
+      setFocusableBtnIndex(focusableBtnIndex => focusableBtnIndex ?? 0);
     }
   }, [value, loading, matches, autoComplete]);
 
