@@ -18,5 +18,5 @@ export default function usePrevious<T>(currentValue: T) {
     currentValueRef.current = currentValue;
   }, [currentValue]);
 
-  return previousValueRef.current;
+  return currentValueRef.current === currentValue ? previousValueRef.current : currentValueRef.current;
 }
