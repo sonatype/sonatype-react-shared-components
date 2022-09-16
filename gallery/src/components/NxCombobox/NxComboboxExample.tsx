@@ -20,7 +20,7 @@ const items = prepend(
 // and typically this would be in another file outside of the react component
 function search(query: string): Promise<DataItem<number, string>[]> {
   const lowercaseQuery = query.toLowerCase(),
-      matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
+      matchingItems = filter(i => i.displayName.toLowerCase().indexOf(lowercaseQuery) === 0, items);
 
   return new Promise(resolve => {
     setTimeout(() => resolve(matchingItems), 3000);
@@ -35,7 +35,6 @@ export default function NxComboboxExample() {
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
-    latestExecutedQueryRef.current = query;
     search(query).then(matches => {
       // ensure that results from stale or out-of-order queries do not display
       if (latestExecutedQueryRef.current === query) {
@@ -50,6 +49,8 @@ export default function NxComboboxExample() {
   }
 
   function onSearch(query: string) {
+    latestExecutedQueryRef.current = query;
+
     if (query === '') {
       setMatches([]);
     }

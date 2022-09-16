@@ -13,6 +13,8 @@ describe('NxCombobox', function() {
     simpleTest,
     hoverTest,
     blurElement,
+    isFocused,
+    isVisible,
     focusAndHoverTest,
     disableLoadingSpinnerAnimation,
     checkScreenshot,
@@ -65,7 +67,7 @@ describe('NxCombobox', function() {
           [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
-      await getPage().keyboard.type('1');
+      await getPage().keyboard.type('i');
       await getPage().waitForSelector(dropdownButtonSelector);
     });
 
@@ -148,6 +150,7 @@ describe('NxCombobox', function() {
         await getPage().keyboard.type('a');
         await getPage().waitForSelector(dropdownButtonSelector);
         await getPage().keyboard.press('Backspace');
+        await blurElement(input);
       });
 
       it('has invalid validation styles when invalid', async function() {
@@ -182,20 +185,6 @@ describe('NxCombobox', function() {
     it('looks right', simpleTest(disabledExampleSelector));
   });
 
-  describe('close the dropdown when not focused', function() {
-    it('looks right', async function() {
-      const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
-          dropdownButtonSelector = `${basicExampleSelector} .nx-dropdown-button`,
-          [component, input] = await waitAndGetElements(basicExampleSelector, inputSelector);
-
-      await input.focus();
-      await getPage().keyboard.type('a');
-      await getPage().waitForSelector(dropdownButtonSelector);
-      await blurElement(input);
-      await checkScreenshot(component, 800, 55);
-    });
-  });
-
   describe('dropdown button', function() {
     beforeEach(async function() {
       const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
@@ -228,4 +217,18 @@ describe('NxCombobox', function() {
   });
 
   it('passes a11y checks', a11yTest());
+
+  it('shows the dropdown when focused and hides the dropdown when not focused', async function() {
+    const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
+        dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
+        [input, dropdownMenu] = await waitAndGetElements(inputSelector, dropdownMenuSelector);
+
+    await input.focus();
+    expect(await isFocused(input)).toBe(true);
+    expect(await isVisible(dropdownMenu)).toBe(true);
+
+    await blurElement(input);
+    expect(await isFocused(input)).toBe(false);
+    expect(await isVisible(dropdownMenu)).toBe(false);
+  });
 });

@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { NxCombobox, DataItem }
+import { NxCombobox, DataItem, nxTextInputStateHelpers }
   from '@sonatype/react-shared-components';
 
 const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
@@ -20,9 +20,11 @@ const items = prepend(
     { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
     map(i => ({ id: i, displayName: states[i - 1] }), range(1, states.length + 1)));
 
+const { initialState, userInput } = nxTextInputStateHelpers;
+
 function search(query: string):DataItem<number, string>[] {
   const lowercaseQuery = query.toLowerCase(),
-      matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), items);
+      matchingItems = filter(i => i.displayName.toLowerCase().indexOf(lowercaseQuery) === 0, items);
   return matchingItems;
 }
 
@@ -32,36 +34,21 @@ function validator(val: string) {
 
 export default function NxComboboxRequiredExample() {
   const [matches, setMatches] = useState<DataItem<number, string>[]>(items),
-      [query, setQuery] = useState(''),
-      [error, setError] = useState<string | null>(null),
-      [isPristine, setIsPristine] = useState(true);
+      [inputState, setInputState] = useState(initialState(''));
 
-  const executeQuery = useCallback(function executeQuery(query: string) {
+  const onSearch = useCallback((query: string) => {
     setMatches(search(query));
-  }, [query]);
+  }, [inputState.value]);
 
   function onChange(query: string) {
-    setQuery(query);
-    setIsPristine(false);
-    if (validator(query)) {
-      setError(validator(query));
-    }
-    else {
-      setError(null);
-    }
-  }
-
-  function onSearch(query: string) {
-    executeQuery(query);
+    setInputState(userInput(validator, query));
   }
 
   return (
     <NxCombobox className="nx-combobox--short"
-                isPristine={isPristine}
+                { ...inputState }
                 validatable={true}
-                validationErrors={error}
                 matches={matches}
-                value={query}
                 onChange={onChange}
                 onSearch={onSearch}
                 aria-label="combobox" />

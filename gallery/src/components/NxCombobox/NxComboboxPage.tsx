@@ -67,9 +67,9 @@ const NxComboboxPage = () =>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Callback that fires when a new search query should be performed. The <em>trimmed</em> value of the
+                Callback that fires when a new search query should be performed. The value of the
                 text input is passed as an argument. This callback is executed whenever the user changes
-                the trimmed value of the text input, whenever the error alert's Retry button is clicked, and whenever
+                the value of the text input, whenever the error alert's Retry button is clicked, and whenever
                 the component gains focus while in an error state (which is intended to automatically trigger a retry
                 attempt). The handler passed in for this prop should, in addition to performing the search, update
                 the <NxCode>loading</NxCode> prop. The handler receives the new value as its argument.
@@ -83,8 +83,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>
                 When <NxCode>autoComplete</NxCode> is set to true, it will highlight the first matching item from the
                 array of matches and provide an inline completion string, the portion of the selected suggestion that
-                has not been typed by the user. To follow this behavior, the search logic should only return the
-                matching items that start with the search text as suggestions.
+                has not been typed by the user.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -113,7 +112,8 @@ const NxComboboxPage = () =>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 The results of querying the current text input value, which are to be displayed in the
-                dropdown for user selection.
+                dropdown for user selection. The search logic should return all results that start with
+                the text the user specified, case-insensitive.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -122,7 +122,7 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                When set, this prop disables the text input input and the dropdown.
+                When set, this prop disables the text input and the dropdown.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>

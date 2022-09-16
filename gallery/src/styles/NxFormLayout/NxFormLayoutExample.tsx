@@ -20,6 +20,7 @@ import {
   NxInfoAlert,
   NxFormSelect,
   nxFormSelectStateHelpers,
+  nxTextInputStateHelpers,
   NxTransferList,
   NxStatefulForm,
   NxForm,
@@ -36,6 +37,8 @@ import {
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { map, range, prepend, filter } from 'ramda';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
 
 const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
   'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
@@ -115,17 +118,17 @@ export default function NxFormLayoutExample() {
       )) ? 'Required fields are missing' : null;
 
   const [matches, setMatches] = useState<DataItem<number, string>[]>(comboboxItems),
-      [query, setQuery] = useState(''),
-      onComboboxChange = (query: string) => setQuery(query),
+      [comboboxInputState, setComboboxInputState] = useState(initialState('')),
+      onComboboxChange = (query: string) => setComboboxInputState(userInput(validator, query)),
       search = function(query: string):DataItem<number, string>[] {
         const lowercaseQuery = query.toLowerCase(),
-            matchingItems = filter(i => i.displayName.toLowerCase().includes(lowercaseQuery), comboboxItems);
+            matchingItems = filter(i => i.displayName.toLowerCase().indexOf(lowercaseQuery) === 0, comboboxItems);
         return matchingItems;
       },
       executeQuery = useCallback(function executeQuery(query: string) {
         setMatches(search(query));
-      }, [query]),
-      onComboboxSearch = (query: string) => query ? executeQuery(query) : setMatches([]);
+      }, [comboboxInputState.value]),
+      onComboboxSearch = (query: string) => query ? executeQuery(query) : setMatches(comboboxItems);
 
   function onSubmit() {
     alert('Submitted!');
@@ -236,7 +239,8 @@ export default function NxFormLayoutExample() {
       </NxFormGroup>
       <NxFormGroup label="State" isRequired>
         <NxCombobox matches={matches}
-                    value={query}
+                    { ...comboboxInputState }
+                    validatable={true}
                     onChange={onComboboxChange}
                     onSearch={onComboboxSearch}/>
       </NxFormGroup>
