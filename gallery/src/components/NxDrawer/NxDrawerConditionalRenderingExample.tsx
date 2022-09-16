@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 
 import { NxDrawer,
   NxBackButton,
@@ -12,17 +12,16 @@ import { NxDrawer,
   NxH1,
   NxP,
   NxPageMain,
-  NxPageTitle,
-  useToggle
+  NxPageTitle
 } from '@sonatype/react-shared-components';
 
 export default function NxDrawerConditionalRenderingExample() {
-  const [mountDrawer, toggleMountDrawer] = useToggle(false);
-  const [open, toggleOpen, setOpen] = useToggle(true);
+  const [mountDrawer, setMountDrawer] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(true);
 
   const renderDrawer = () => {
     if (!mountDrawer) {
-      toggleMountDrawer();
+      setMountDrawer(true);
       setOpen(true);
     }
   };
@@ -36,8 +35,8 @@ export default function NxDrawerConditionalRenderingExample() {
       {mountDrawer && (
         <NxDrawer id="nx-drawer-default-open"
                   open={open}
-                  onClose={toggleOpen}
-                  onCancel={toggleMountDrawer}
+                  onClose={() => setOpen(false)}
+                  onCancel={() => setMountDrawer(false)}
                   aria-labelledby="drawer-default-open-title">
           <NxDrawer.Header>
             <NxDrawer.HeaderTitle id="drawer-default-open-title">
