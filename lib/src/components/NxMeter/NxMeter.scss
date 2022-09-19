@@ -1,0 +1,97 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use "sass:math";
+
+$-progress-background-color: var(--nx-swatch-indigo-95);
+$-progress-bar-color: var(--nx-swatch-teal-60);
+
+.nx-meter {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  // In many of the layout modes, there will be two grid cells: one for the bar and one for the label.
+  // However in some modes there is just the bar cell, and the location of the label cell (below or to the right)
+  // varies. Therefore only the bar cell is actually in the template. The label cell, when needed, is generated
+  // using grid auto-placement, controlled by the grid-auto-flow property
+  grid-template-areas: 'bar';
+  grid-auto-flow: row;
+
+  gap: var(--nx-spacing-2x);
+  justify-content: start;
+  margin: var(--nx-spacing-6x) 0;
+  width: min-content;
+
+  &--inline-counter {
+    grid-auto-flow: column;
+
+    .nx-progress-bar__counter {
+      margin: 0;
+    }
+  }
+
+  &--inline {
+    display: inline-grid;
+    margin: 0 var(--nx-spacing-6x);
+    vertical-align: middle;
+  }
+
+  &--success {
+    color: var(--nx-color-alert-success);
+
+    .nx-progress-bar__counter {
+      border-color: var(--nx-color-alert-success);
+      background-color: var(--nx-swatch-green-95);
+    }
+  }
+
+  &--error {
+    color: var(--nx-color-alert-error);
+
+    .nx-progress-bar__counter {
+      border-color: var(--nx-color-alert-error);
+      background-color: var(--nx-swatch-red-95);
+    }
+  }
+}
+
+.nx-progress-bar__progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border: 0;
+  grid-area: bar;
+  //height: $-normal-height;
+  width: 100%;
+
+  &,
+  &::-webkit-progress-bar {
+    background: $-progress-background-color;
+    //border-radius: math.div($-normal-height, 2);
+    //height: $-normal-height;
+    overflow: hidden;
+    width: 300px;
+  }
+
+  &::-moz-progress-bar {
+    background: $-progress-bar-color;
+  }
+
+  &::-webkit-progress-value {
+    background: $-progress-bar-color;
+  }
+}
+
+.nx-progress-bar--inline {
+  .nx-progress-bar__progress,
+  .nx-progress-bar__progress::-webkit-progress-bar {
+    $inline-height: 16px;
+    height: $inline-height;
+    border-radius: math.div($inline-height, 2);
+    width: 150px;
+  }
+}

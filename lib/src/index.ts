@@ -347,3 +347,5 @@ export {
   ButtonItemProps as NxDescriptionListButtonItemProps,
   LinkItemProps as NxDescriptionListLinkItemProps
 } from './components/NxDescriptionList/NxDescriptionList';
+
+export { default as NxMeter, Props as NxMeterProps } from './components/NxMeter/NxMeter';
