@@ -87,6 +87,8 @@ import {
   NxThreatCounter,
   NxThreatIndicator,
   NxThreatIndicatorLegend,
+  NxToast,
+  NxToastContainer,
   NxToggle,
   NxTooltip,
   NxTransferList,
@@ -319,6 +321,11 @@ const Home: NextPage = () => {
         <NxSmallThreatCounter criticalCount={2} />
         <NxThreatIndicator />
         <NxThreatIndicatorLegend critical />
+        <NxToastContainer>
+          <NxToast onClose={noop}>
+            <NxAlert icon={faEdit} />
+          </NxToast>
+        </NxToastContainer>
         <NxToggle isChecked={false} />
         <NxStatefulToggle defaultChecked={true} />
         <NxTooltip title="foo">

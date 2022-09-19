@@ -30,17 +30,19 @@ const NxLoadError = forwardRef<HTMLDivElement, Props>(
 
       return error != null && (
         <NxErrorAlert { ...otherProps } className={alertClasses} ref={ref}>
-          <span className="nx-load-error__message">
-            { titleMessage || 'An error occurred loading data.' }
-            {' '}
-            { error }
-          </span>
-          { retryHandler &&
-            <NxButton type="button" variant="error" onClick={retryHandler} className="nx-load-error__retry">
-              <NxFontAwesomeIcon icon={faSync} />
-              <span>Retry</span>
-            </NxButton>
-          }
+          <div className="nx-load-error__content">
+            <span className="nx-load-error__message">
+              { titleMessage || 'An error occurred loading data.' }
+              {' '}
+              { error }
+            </span>
+            { retryHandler &&
+              <NxButton type="button" variant="error" onClick={retryHandler} className="nx-load-error__retry">
+                <NxFontAwesomeIcon icon={faSync} />
+                <span>Retry</span>
+              </NxButton>
+            }
+          </div>
         </NxErrorAlert>
       ) || null;
     }

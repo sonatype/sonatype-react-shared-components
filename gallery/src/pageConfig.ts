@@ -144,7 +144,9 @@ import NxStatefulFilterDropdownPage from './components/NxStatefulFilterDropdown/
 import NxTransferListHalfPage from './components/NxTransferListHalf/NxTransferListHalfPage';
 import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
+import NxToastPage from './components/NxToast/NxToastPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
+import NxDrawerPage from './components/NxDrawer/NxDrawerPage';
 import NxComboboxPage from './components/NxCombobox/NxComboboxPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
 import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
@@ -171,6 +173,7 @@ const pageConfig: PageConfig = {
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
+    'Toast': { content: NxToastPage, type: 'react' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
     'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' }
   },
@@ -252,6 +255,7 @@ const pageConfig: PageConfig = {
     'Global Sidebar Footer': { content: NxGlobalSidebarFooterPage, type: 'react' },
     'Grid': { content: NxGridPage, type: 'html' },
     'Modal': { content: NxModalPage, type: 'react' },
+    'Drawer': { content: NxDrawerPage, type: 'react' },
     'Page Header': { content: NxPageHeaderPage, type: 'react' },
     'Page Title': { content: NxPageTitlePage, type: 'html' },
     'Read Only': { content: NxReadOnlyPage, type: 'html' },

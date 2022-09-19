@@ -12,7 +12,7 @@ import NxCollapsibleItems from '../NxCollapsibleItems/NxCollapsibleItems';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import { TooltipConfigProps } from '../../util/tooltipUtils';
-import { ensureElement } from '../../util/reactUtil';
+import { ensureStartEndElements } from '../../util/reactUtil';
 import { useUniqueId } from '../../util/idUtil';
 
 import { CommonProps } from './commonTypes';
@@ -75,7 +75,7 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
     ) : <NxCollapsibleItems.Child key={key}>{option}</NxCollapsibleItems.Child>;
   });
 
-  const wrappedTriggerContent = ensureElement(children);
+  const wrappedTriggerContent = ensureStartEndElements(children);
 
   const counter = renderCounter && renderCounter();
 
