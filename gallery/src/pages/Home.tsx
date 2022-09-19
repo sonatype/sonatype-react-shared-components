@@ -131,7 +131,7 @@ const Home = () =>
             Convenience components are not typically documented separated and are simply mentioned on these non-React
             pages. In some cases however, a component may have a simple form exposed as a base CSS class while
             also having a non-trivial React component implementing a certain amount of behavior which a non-React
-            application would have to manage themselves. In these cases, the React component is documented on a separate
+            application would have to manage itself. In these cases, the React component is documented on a separate
             page from the base CSS classes. Live examples on these pages are often implemented in bare HTML, though
             some are still implemented in React in order to simplify the inclusion of things such as icons.
           </NxDescriptionList.Description>
@@ -139,7 +139,7 @@ const Home = () =>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term><NxFontAwesomeIcon icon={faRulerCombined} fixedWidth /></NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            Complex, compound layout documentation. These pages feature combinations of RSC components that have
+            Complex, compound layout documentation. These pages feature combinations of RSC components that
             separately have their own documentation pages, but which must also be documented in unison in order to
             understand the full effect. For instance, one such page demonstrates the use
             of <NxCode>nx-read-only</NxCode>, <NxCode>nx-grid</NxCode>, and <NxCode>nx-tile</NxCode> together in order
@@ -152,7 +152,7 @@ const Home = () =>
           </NxDescriptionList.Term>
           <NxDescriptionList.Description>
             Documentation of CSS-based stylesheet utilities and helpers such as CSS custom properties (aka variables)
-            and general-purpose classes which may be applied to other RSC components or HTML elements in general.
+            and general-purpose classes which may be applied to other RSC components or to HTML elements in general.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
