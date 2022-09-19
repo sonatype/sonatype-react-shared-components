@@ -13,6 +13,7 @@ $-bar-background-color: var(--nx-swatch-teal-60);
 .nx-meter {
   width: 150px;
   margin: 0 var(--nx-spacing-6x);
+  vertical-align: -0.125em;
 
   &, &::-webkit-meter-bar {
     background: var(--nx-swatch-indigo-95);
