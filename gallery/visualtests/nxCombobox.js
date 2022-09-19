@@ -134,7 +134,7 @@ describe('NxCombobox', function() {
 
       it('has validation styles', async function() {
         const [component] = await waitAndGetElements(nonEmptinessExampleSelector);
-        await checkScreenshot(component, 150, 376);
+        await checkScreenshot(component, 150, 184);
       });
 
       it('passes a11Y checks', a11yTest());
