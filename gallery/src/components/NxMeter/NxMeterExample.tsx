@@ -11,28 +11,22 @@ export default function NxMeterExample() {
   return (
     <>
       <div>
-        Example of 0% measurement:{' '}
-        <NxMeter value={0} />
+        Fuel Level: <NxMeter value={0}>Empty!</NxMeter>
       </div>
       <div>
-        Example of 50% measurement:{' '}
-        <NxMeter value={50} />
+        Fuel Level: <NxMeter value={50}>50%</NxMeter>
       </div>
       <div>
-        Example of 100% measurement:{' '}
-        <NxMeter value={100} />
+        Fuel Level: <NxMeter value={100}>Full</NxMeter>
       </div>
       <div>
-        Example of 0% measurement with custom max:{' '}
-        <NxMeter value={0} max={5} />
+        Operable Engines: <NxMeter value={0} max={4}>0 out of 4</NxMeter>
       </div>
       <div>
-        Example of partial measurement with custom max:{' '}
-        <NxMeter value={3} max={5} />
+        Operable Engines: <NxMeter value={3} max={4}>3 out of 4</NxMeter>
       </div>
       <div>
-        Example of 100% measurement with custom max:{' '}
-        <NxMeter value={5} max={5} />
+        Operable Engines: <NxMeter value={4} max={4}>4 out of 4</NxMeter>
       </div>
     </>
   );
