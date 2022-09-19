@@ -6,7 +6,7 @@
  */
 // import React, { useState } from 'react';
 import React from 'react';
-import { render, waitFor, within } from '@testing-library/react';
+import { fireEvent, render, within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import userEvent from '@testing-library/user-event';
@@ -62,20 +62,22 @@ describe('NxCombobox', function() {
 
         expect(inputElement).toHaveAttribute('aria-autocomplete', 'list');
 
-        rerender(<NxCombobox { ...minimalProps } autoComplete={true}/>);
+        rerender(<NxCombobox { ...minimalProps } autoComplete={true} />);
         expect(inputElement).toHaveAttribute('aria-autocomplete', 'both');
       });
 
   it('sets a completion string of the selected suggestion from matches when `autoComplete` prop is set to true',
       async function() {
-        const user = userEvent.setup(),
-            { getByRole } = quickRender({
+        const props = {
               autoComplete: true,
-              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Fooo' }] }),
+              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Fooo' }]
+            },
+            { getByRole, rerender } = quickRender(props),
             inputElement = getByRole('combobox');
 
-        await user.type(inputElement, 'f');
-        await waitFor(() => expect(inputElement).toHaveValue('Foo'));
+        inputElement.focus();
+        rerender(<NxCombobox { ...minimalProps } { ...props } value="f" />);
+        expect(inputElement).toHaveValue('Foo');
       });
 
   it('sets aria-expanded on the input to true when focused',
@@ -101,25 +103,23 @@ describe('NxCombobox', function() {
   });
 
   it('does not call onSearch whenever the input\'s onChange event fires with a value that does not differ' +
-    'after trimming', async function() {
-    const user = userEvent.setup(),
-        onSearch = jest.fn(),
+    'after converting to lowercase value', async function() {
+    const onSearch = jest.fn(),
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
-    await user.type(inputElement, ' ');
+    fireEvent.change(inputElement, {target: {value: 'Foo'}});
     expect(onSearch).not.toHaveBeenCalled();
   });
 
-  it('calls onSearch whenever the input\'s onChange event fires with a value that differs after trimming, ' +
-    'passing the trimmed value', async function() {
-    const user = userEvent.setup(),
-        onSearch = jest.fn(),
+  it('calls onSearch whenever the input\'s onChange event fires with a value that differs after converting' +
+    'to lowercase value', async function() {
+    const onSearch = jest.fn(),
         { getByRole } = quickRender({ value: 'foo', onSearch }),
         inputElement = getByRole('combobox');
 
-    await user.type(inputElement, 'f');
-    expect(onSearch).toHaveBeenCalledWith('foof');
+    fireEvent.change(inputElement, {target: {value: 'boo'}});
+    expect(onSearch).toHaveBeenCalledWith('boo');
   });
 
   it('passes the disabled prop to the input', function() {
@@ -128,13 +128,13 @@ describe('NxCombobox', function() {
 
     expect(inputElement).not.toBeDisabled();
 
-    rerender(<NxCombobox { ...minimalProps } disabled={undefined}/>);
+    rerender(<NxCombobox { ...minimalProps } disabled={undefined} />);
     expect(inputElement).not.toBeDisabled();
 
-    rerender(<NxCombobox { ...minimalProps } disabled={false}/>);
+    rerender(<NxCombobox { ...minimalProps } disabled={false} />);
     expect(inputElement).not.toBeDisabled();
 
-    rerender(<NxCombobox { ...minimalProps } disabled={true}/>);
+    rerender(<NxCombobox { ...minimalProps } disabled={true} />);
     expect(inputElement).toBeDisabled();
   });
 
