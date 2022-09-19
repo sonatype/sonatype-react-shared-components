@@ -112,7 +112,7 @@ const Home = () =>
         In addition to the groupings within the sidebar, you will notice that each page entry has an icon which
         indicates the type of item documented on that page:
       </NxP>
-      <NxDescriptionList>
+      <NxDescriptionList className="gallery-icon-description-list">
         <NxDescriptionList.Item>
           <NxDescriptionList.Term><NxFontAwesomeIcon icon={faReact} fixedWidth /></NxDescriptionList.Term>
           <NxDescriptionList.Description>
