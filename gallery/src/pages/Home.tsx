@@ -50,7 +50,7 @@ const Home = () =>
           <NxDescriptionList.Term>Forms</NxDescriptionList.Term>
           <NxDescriptionList.Description>
             This sections includes all components that are typically used within a form. Components for forms themselves,
-            form structures such as fieldset, and for various kinds of form fields all fall within this section.
+            form structures such as fieldset, and various kinds of form fields all fall within this section.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
