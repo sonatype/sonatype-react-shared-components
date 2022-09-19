@@ -34,7 +34,7 @@ function validator(val: string) {
 
 export default function NxComboboxRequiredExample() {
   const [matches, setMatches] = useState<DataItem<number, string>[]>(items),
-      [inputState, setInputState] = useState(initialState(''));
+      [inputState, setInputState] = useState(initialState('', validator));
 
   const onSearch = useCallback((query: string) => {
     setMatches(search(query));
