@@ -7,7 +7,8 @@
 import React from 'react';
 import { faCode, faFile, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
 import { faJs, faReact, faSass } from '@fortawesome/free-brands-svg-icons';
-import { NxP, NxH3, NxCode, NxTile, NxTextLink, NxDescriptionList, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxP, NxH3, NxCode, NxTile, NxTextLink, NxDescriptionList, NxFontAwesomeIcon }
+  from '@sonatype/react-shared-components';
 
 import {GalleryTile} from '../gallery-components/GalleryTiles';
 import { GalleryNavIconCSS3 } from '../GalleryNav/GalleryNavIcons';
@@ -49,8 +50,8 @@ const Home = () =>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Forms</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            This sections includes all components that are typically used within a form. Components for forms themselves,
-            form structures such as fieldset, and various kinds of form fields all fall within this section.
+            This sections includes all components that are typically used within a form. Components for forms
+            themselves, form structures such as fieldset, and various kinds of form fields all fall within this section.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
@@ -63,9 +64,9 @@ const Home = () =>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Layout</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            Components which make up the "page skeleton" are included in this section. This includes page-level components
-            such as the global sidebar and also containers such as tiles and accordions. In addition, rich examples of
-            layouts incorporating multiple components working together are also found here.
+            Components which make up the "page skeleton" are included in this section. This includes page-level
+            components such as the global sidebar and also containers such as tiles and accordions. In addition, rich
+            examples of layouts incorporating multiple components working together are also found here.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
@@ -94,17 +95,17 @@ const Home = () =>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>JavaScript and TypeScript Utilities</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            This section includes utilities that can be useful when writing code that uses RSC components. No actual React
-            components are present in this section, however React hooks are documented here in addition to JavaScript
-            functions and TypeScript types.
+            This section includes utilities that can be useful when writing code that uses RSC components. No actual
+            React components are present in this section, however React hooks are documented here in addition to
+            JavaScript functions and TypeScript types.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Guidelines</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            Rather than documentation of specific components or usable pieces of code, this section includes higher level
-            descriptions, tutorials, and recommendations regarding usage of RSC components and web UI development in
-            general.
+            Rather than documentation of specific components or usable pieces of code, this section includes higher
+            level descriptions, tutorials, and recommendations regarding usage of RSC components and web UI development
+            in general.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
       </NxDescriptionList>
