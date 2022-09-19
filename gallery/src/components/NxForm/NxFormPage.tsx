@@ -180,11 +180,11 @@ const NxFormPage = () =>
             <NxTable.Cell>null</NxTable.Cell>
             <NxTable.Cell>
               If null, the submit mask is not shown. If false, the mask is shown in its "submitting" state. If
-              true, the mask is shown in its "success" state. The amount of time the success mask is shown
-              can be changed and is further described in{' '}
+              true, the mask is shown in its "success" state. The amount of time the success mask is shown should be
+              based on the <NxCode>SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS</NxCode> variable as described on the{' '}
               <NxTextLink href="#/pages/Submit%20Mask">
                 <NxCode>NxSubmitMask</NxCode>
-              </NxTextLink>.
+              </NxTextLink> page.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
