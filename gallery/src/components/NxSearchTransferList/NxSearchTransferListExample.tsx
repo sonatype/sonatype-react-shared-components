@@ -6,7 +6,7 @@
  */
 import React, { useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { DataItem, NxFontAwesomeIcon, NxSearchTransferList, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { DataItem, NxFontAwesomeIcon, NxSearchTransferList, NX_STANDARD_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
@@ -55,7 +55,7 @@ export default function NxSearchTransferListExample() {
             setLoading(false);
           }
         });
-      }, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+      }, NX_STANDARD_DEBOUNCE_TIME);
 
   function doSearch(query: string) {
     setLoading(true);

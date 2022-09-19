@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useState } from 'react';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { NxSearchDropdown, DataItem, NX_STANDARD_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 export default function NxSearchDropdownErrorExample() {
@@ -22,7 +22,7 @@ export default function NxSearchDropdownErrorExample() {
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
     setError(`Error executing query ${query}`);
     setLoading(false);
-  }, [query]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+  }, [query]), NX_STANDARD_DEBOUNCE_TIME);
 
   function onSearchTextChange(query: string) {
     setQuery(query);
