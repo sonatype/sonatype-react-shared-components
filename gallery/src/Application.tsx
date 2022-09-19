@@ -44,6 +44,13 @@ import NxGlobalSidebarFooterMinimalExample
 import NxGlobalSidebarFooterEmptyExample
   from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
 
+import NxDrawerEscExample from './components/NxDrawer/NxDrawerEscExample';
+import NxDrawerExample from './components/NxDrawer/NxDrawerExample';
+import NxDrawerVariantExample from './components/NxDrawer/NxDrawerVariantExample';
+import NxDrawerWithNxFormExample from './components/NxDrawer/NxDrawerWithNxFormExample';
+import NxDrawerWithSubtitleOrDescriptionExample from './components/NxDrawer/NxDrawerWithSubtitleOrDescriptionExample';
+import NxDrawerConditionalRenderingExample from './components/NxDrawer/NxDrawerConditionalRenderingExample';
+
 import NxToastSimpleLayoutExample from './components/NxToast/NxToastSimpleLayoutExample';
 import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayoutExample';
 import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
@@ -164,6 +171,36 @@ function Application() {
         <Route exact path="/NxGlobalSidebarFooterEmptyExample">
           <SectionScrollingWrapper>
             <NxGlobalSidebarFooterEmptyExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerVariantExample">
+          <SectionScrollingWrapper>
+            <NxDrawerVariantExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerWithNxFormExample">
+          <SectionScrollingWrapper>
+            <NxDrawerWithNxFormExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerEscExample">
+          <SectionScrollingWrapper>
+            <NxDrawerEscExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerWithSubtitleOrDescriptionExample">
+          <SectionScrollingWrapper>
+            <NxDrawerWithSubtitleOrDescriptionExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerConditionalRenderingExample">
+          <SectionScrollingWrapper>
+            <NxDrawerConditionalRenderingExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerExample">
+          <SectionScrollingWrapper>
+            <NxDrawerExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>
