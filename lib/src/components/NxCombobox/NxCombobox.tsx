@@ -6,7 +6,7 @@
  */
 import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
-import { always, dec, head, inc, tail } from 'ramda';
+import { always, dec, head, inc, tail, omit } from 'ramda';
 import usePrevious from '../../util/usePrevious';
 
 import './NxCombobox.scss';
@@ -40,8 +40,6 @@ function NxComboboxRender<T extends string | number = string>(
         autoComplete,
         validatable,
         isPristine,
-        /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-        trimmedValue,
         validationErrors,
         id,
         'aria-required': ariaRequired,
@@ -50,6 +48,7 @@ function NxComboboxRender<T extends string | number = string>(
         ...attrs
       } = props,
       previousValue = usePrevious(value),
+      newAttrs = omit(['trimmedValue'], attrs),
 
       isEmpty = !matches.length,
       isAlert = loading || loadError || isEmpty,
@@ -297,7 +296,7 @@ function NxComboboxRender<T extends string | number = string>(
          className={className}
          onFocus={handleComponentFocus}
          onBlur={handleComponentBlur}
-         { ...attrs }>
+         { ...newAttrs }>
       <NxTextInput role="combobox"
                    ref={div => inputRef.current = div?.querySelector('input')}
                    id={inputId}
