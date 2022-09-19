@@ -6,10 +6,10 @@
  */
 import React from 'react';
 import { faCode, faFile, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
+import { faJs, faReact, faSass } from '@fortawesome/free-brands-svg-icons';
 import { NxP, NxH3, NxCode, NxTile, NxTextLink, NxDescriptionList, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
 
 import {GalleryTile} from '../gallery-components/GalleryTiles';
-import { faJs, faReact, faSass } from '@fortawesome/free-brands-svg-icons';
 import { GalleryNavIconCSS3 } from '../GalleryNav/GalleryNavIcons';
 
 const Home = () =>
