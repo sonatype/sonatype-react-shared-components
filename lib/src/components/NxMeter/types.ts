@@ -9,8 +9,10 @@ import { MeterHTMLAttributes } from 'react';
 
 export interface Props extends Omit<MeterHTMLAttributes<HTMLMeterElement>, 'max' | 'min' | 'low' | 'high' | 'optimum'> {
   max?: number | null;
+  value: number;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  max: PropTypes.number
+  max: PropTypes.number,
+  value: PropTypes.number.isRequired
 };
