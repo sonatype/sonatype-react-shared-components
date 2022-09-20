@@ -17,7 +17,7 @@ describe('NxDrawer', function() {
     await waitAndGetElements(`#${drawerId}`);
 
     // Wait for animation.
-    await wait(200);
+    await wait(300);
   };
 
   describe('NxDrawer with Title, Footer, and non-overflowing Content', function() {
@@ -139,7 +139,7 @@ describe('NxDrawer', function() {
       getPage, isFocused, isInDocument, isVisible, waitAndGetElements, wait
     } = setupBrowser('#/NxDrawerEscExample', false);
 
-    const waitForAnimation = () => wait(200);
+    const waitForAnimation = () => wait(300);
 
     async function pressEsc() {
       const { keyboard } = getPage();
