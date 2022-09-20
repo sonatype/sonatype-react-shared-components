@@ -45,8 +45,7 @@ export default function NxDrawerWithNxFormExample() {
           <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
         </NxDrawer.Header>
 
-        <NxStatefulForm onSubmit={toggleDrawer}
-                onCancel={toggleDrawer}>
+        <NxStatefulForm onSubmit={toggleDrawer} onCancel={toggleDrawer}>
           <NxDrawer.Content>
             <NxFormGroup label="A Field to Fill in" isRequired>
               <NxStatefulTextInput />
@@ -77,8 +76,7 @@ export default function NxDrawerWithNxFormExample() {
           <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
         </NxDrawer.Header>
 
-        <NxStatefulForm onSubmit={toggleDrawerOverflowing}
-                onCancel={toggleDrawerOverflowing}>
+        <NxStatefulForm onSubmit={toggleDrawerOverflowing} onCancel={toggleDrawerOverflowing}>
           <NxDrawer.Content>
             <NxFormGroup label="Username" isRequired>
               <NxStatefulTextInput/>
