@@ -147,6 +147,7 @@ import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSide
 import NxToastPage from './components/NxToast/NxToastPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
 import NxDrawerPage from './components/NxDrawer/NxDrawerPage';
+import NxComboboxPage from './components/NxCombobox/NxComboboxPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
 import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
 import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
@@ -182,6 +183,7 @@ const pageConfig: PageConfig = {
     'Segmented Button': { content: NxSegmentedButtonPage, type: 'react' },
     'Stateful Segmented Button': { content: NxStatefulSegmentedButtonPage, type: 'react' },
     'Close Button': { content: NxCloseButtonPage, type: 'react' },
+    'Combobox': { content: NxComboboxPage, type: 'react' },
     'Dropdown': { content: NxDropdownPage, type: 'react' },
     'Stateful Dropdown': { content: NxStatefulDropdownPage, type: 'react' },
     'Filter Dropdown': { content: NxFilterDropdownPage, type: 'react' },
