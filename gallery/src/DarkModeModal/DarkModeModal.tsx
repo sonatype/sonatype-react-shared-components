@@ -18,7 +18,6 @@ import {
   NxP,
   NxCode
 } from '@sonatype/react-shared-components';
-import classnames from 'classnames';
 
 const DarkModeModal = () => {
   const [showModal, setShowModal] = useState(false);
@@ -28,47 +27,32 @@ const DarkModeModal = () => {
   const [mode, setMode] = useState<string | null>(null);
   const [radioDisabled, setRadioDisabled] = useState(true);
 
-  const htmlElement = document.documentElement;
-  const htmlClasses = classnames('nx-html', 'nx-html--page-scrolling',
-      {'nx-html--enable-color-schemes': enableModeChange,
-        'nx-html--light-mode': mode === 'light' && enableModeChange,
-        'nx-html--dark-mode': mode === 'dark' && enableModeChange
-      });
+  const { classList } = document.documentElement;
 
-  useEffect(()=> {
-    htmlElement.className = htmlClasses;
+  useEffect(()=>{
+    if (mode === 'light') {
+      classList.remove('nx-html--dark-mode');
+      classList.add('nx-html--light-mode');
+    }
+    else if (mode === 'dark') {
+      classList.remove('nx-html--light-mode');
+      classList.add('nx-html--dark-mode');
+    }
+    else {
+      classList.remove('nx-html--dark-mode', 'nx-html--light-mode');
+    }
   }, [enableModeChange, mode]);
 
   useEffect(()=> {
-    enableModeChange ? setRadioDisabled(false) : setRadioDisabled(true);
+    if (enableModeChange) {
+      classList.add('nx-html--enable-color-schemes');
+      setRadioDisabled(false);
+    }
+    else if (!enableModeChange) {
+      classList.remove('nx-html--enable-color-schemes', 'nx-html--dark-mode', 'nx-html--light-mode');
+      setRadioDisabled(true);
+    }
   }, [enableModeChange]);
-
-  // const { classList } = document.documentElement;
-
-  // useEffect(()=>{
-  //   if (mode === 'light') {
-  //     classList.remove('nx-html--dark-mode');
-  //     classList.add('nx-html--light-mode');
-  //   }
-  //   else if (mode === 'dark') {
-  //     classList.remove('nx-html--light-mode');
-  //     classList.add('nx-html--dark-mode');
-  //   }
-  //   else {
-  //     classList.remove('nx-html--dark-mode', 'nx-html--light-mode');
-  //   }
-  // }, [enableModeChange, mode]);
-
-  // useEffect(()=> {
-  //   if (enableModeChange) {
-  //     classList.add('nx-html--enable-color-schemes');
-  //     setRadioDisabled(false);
-  //   }
-  //   else if (!enableModeChange) {
-  //     classList.remove('nx-html--enable-color-schemes', 'nx-html--dark-mode', 'nx-html--light-mode');
-  //     setRadioDisabled(true);
-  //   }
-  // }, [enableModeChange]);
 
   return (
     <>
