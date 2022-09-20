@@ -17,7 +17,7 @@ describe('NxDrawer', function() {
     await waitAndGetElements(`#${drawerId}`);
 
     // Wait for animation and focus.
-    await wait(300);
+    await wait(500);
   };
 
   describe('NxDrawer with Title, Footer, and non-overflowing Content', function() {
