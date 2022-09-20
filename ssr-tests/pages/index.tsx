@@ -372,9 +372,8 @@ const Home: NextPage = () => {
           <NxDescriptionList.ButtonItem term="foo" description="bar" onClick={noop} />
           <NxDescriptionList.LinkItem term="foo" description="bar" href="" />
         </NxDescriptionList>
-        <NxCombobox searchText=""
-                    onSelect={noop}
-                    onSearchTextChange={noop}
+        <NxCombobox value=""
+                    onChange={noop}
                     onSearch={noop}
                     matches={[]}/>
       </NxPageMain>

@@ -8,7 +8,7 @@ import React, { createContext, FunctionComponent, useContext, useEffect, useRef,
 import classnames from 'classnames';
 import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
 
-import { NxModalContext } from '../NxModal/NxModal';
+import { DialogContext } from '../AbstractDialog/AbstractDialog';
 import { Props, propTypes, TooltipPlacement } from './types';
 export { Props, propTypes, TooltipPlacement } from './types';
 
@@ -59,7 +59,7 @@ const NxTooltip: FunctionComponent<Props> =
 
       const [initialized, setInitialized] = useState(false),
           tooltipClassName = classnames('nx-tooltip', className),
-          parentModal = useContext(NxModalContext),
+          parentModalContextValue = useContext(DialogContext),
           isUnmounted = useRef(false);
 
       useEffect(function() {
@@ -77,7 +77,7 @@ const NxTooltip: FunctionComponent<Props> =
           <Tooltip { ...fixOptional(otherProps) }
                    title={initialized && title || ''}
                    classes={{ tooltip: tooltipClassName }}
-                   PopperProps={{ container: parentModal }} />
+                   PopperProps={{ container: parentModalContextValue?.dialog }} />
         </TooltipContext.Provider>
       );
     };

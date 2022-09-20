@@ -231,7 +231,7 @@ describe('NxCombobox', function() {
     expect(emptyMessage).toHaveTextContent('asdfasdf');
   });
 
-  it('calls onSearch with the current trimmed search text if focus enters the component from elsewhere on the page ' +
+  it('calls onSearch with the current search text if focus enters the component from elsewhere on the page ' +
     'while there is an error', function() {
     const onSearch = jest.fn(),
         jsx =

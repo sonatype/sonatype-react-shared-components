@@ -49,6 +49,7 @@ export { default as NxThreatIndicator, Props as NxThreatIndicatorProps }
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
 
+// deprecated
 export {
   default as NxVulnerabilityDetails,
   vulnerabilityDetailsPropType,
@@ -119,9 +120,12 @@ export {
 
 export {
   default as NxDropdown,
-  NxDropdownDivider,
   Props as NxDropdownProps
 } from './components/NxDropdown/NxDropdown';
+
+// Deprecated: NxDropdownDivider alias for NxDropdown.Divider
+import NxDropdown from './components/NxDropdown/NxDropdown';
+export const NxDropdownDivider = NxDropdown.Divider;
 
 export { TooltipConfigProps } from './util/tooltipUtils';
 
@@ -337,6 +341,8 @@ export { default as NxToast, NxToastProps as NxToastProps } from './components/N
 export { default as NxCombobox, Props as NxComboboxProps } from './components/NxCombobox/NxCombobox';
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
+
+export { default as NxDrawer, Props as NxDrawerProps } from './components/NxDrawer/NxDrawer';
 
 export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';
 export { default as NxFileUpload, Props as NxFileUploadProps } from './components/NxFileUpload/NxFileUpload';
