@@ -45,7 +45,7 @@ const DarkModeModal = () => {
                   submitBtnText= "Save and Close">
             <header className="nx-modal-header">
               <h2 className="nx-h2" id="modal-form-header">
-                <span>Setting Preferences for Light or Dark Mode</span>
+                Setting Preferences for Light or Dark Mode
               </h2>
             </header>
             <div className="nx-modal-content">
