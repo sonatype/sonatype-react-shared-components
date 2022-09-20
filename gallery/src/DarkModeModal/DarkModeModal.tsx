@@ -75,9 +75,9 @@ const DarkModeModal = () => {
       <NxButton variant="tertiary" onClick={() => setShowModal(true)}>Theme Settings</NxButton>
       { showModal &&
         <NxModal id="nx-modal-dark-mode-example"
-                 role="alertdialog"
+                 role="dialog"
                  onCancel={modalCloseHandler}
-                 aria-label="NxModal to set light or dark mode">
+                 aria-labelledby="modal-form-header">
           <NxForm onSubmit={modalCloseHandler}
                   submitBtnText= "Save and Close">
             <header className="nx-modal-header">
