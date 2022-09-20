@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, {
+  ReactNode,
   useContext,
   useEffect,
   useRef,
@@ -23,6 +24,21 @@ import './NxDrawer.scss';
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {}
 });
+
+interface NxDrawerHeaderTitleProps {
+  children: ReactNode;
+}
+
+const NxDrawerHeaderTitle = (props: NxDrawerHeaderTitleProps) => {
+  const { children } = props;
+
+  const titleRef = useRef(null);
+  return (
+    <h2 className="nx-drawer-header__title">
+      {children}
+    </h2>
+  );
+};
 
 const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
   const {
@@ -132,7 +148,7 @@ export default Object.assign(
       propTypes,
       Header: NxDrawerHeader,
       Content: withClass('div', 'nx-drawer-content nx-scrollable nx-viewport-sized__scrollable'),
-      HeaderTitle: withClass('h2', 'nx-h2 nx-drawer-header__title'),
+      HeaderTitle: NxDrawerHeaderTitle,
       HeaderSubtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),
       HeaderDescription: withClass('p', 'nx-p nx-drawer-header__description')
     }
