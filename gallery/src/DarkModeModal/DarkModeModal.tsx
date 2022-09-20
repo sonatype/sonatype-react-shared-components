@@ -72,7 +72,7 @@ const DarkModeModal = () => {
 
   return (
     <>
-      <NxButton variant="tertiary" onClick={() => setShowModal(true)}>Light / Dark Mode</NxButton>
+      <NxButton variant="tertiary" onClick={() => setShowModal(true)}>Theme Settings</NxButton>
       { showModal &&
         <NxModal id="nx-modal-dark-mode-example"
                  role="alertdialog"
