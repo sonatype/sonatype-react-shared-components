@@ -172,7 +172,7 @@ const NxDropdownPage = () =>
           <NxH3>Auxiliary Components</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          An auxiliary component called <NxCode>NxDropdownDivider</NxCode> is available
+          An auxiliary component called <NxCode>NxDropdown.Divider</NxCode> is available
           to be used as separator between child elements.
         </NxP>
       </NxTile.Subsection>
@@ -276,11 +276,13 @@ const NxDropdownPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Navigation Example"
+                        id="nx-dropdown-example"
                         liveExample={NxDropdownNavigationExample}
                         codeExamples={nxDropdownNavigationExampleCode}>
       An example of an <NxCode>NxDropdown</NxCode> as it might be used to implement a navigation list.
       Note that the menu can contain either <NxCode>&lt;a&gt;</NxCode> or
-      {' '}<NxCode>&lt;button&gt;</NxCode> elements; this example contains both.
+      {' '}<NxCode>&lt;button&gt;</NxCode> elements; this example contains both. This example also includes a usage
+      of <NxCode>NxDropdown.Divider</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Short Example"

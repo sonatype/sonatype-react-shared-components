@@ -7,8 +7,8 @@
 import React from 'react';
 import {mount, shallow} from 'enzyme';
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import NxModal, {Props, NxModalContext} from '../NxModal';
+import { getMountedComponent } from '../../../__testutils__/enzymeUtils';
+import NxModal, { Props } from '../NxModal';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import NxButton from '../../NxButton/NxButton';
 import { Tooltip } from '@material-ui/core';
@@ -20,14 +20,12 @@ describe('NxModal', function() {
     onClose: dummyCloseHandler
   };
 
-  const getShallow = getShallowComponent<Props>(NxModal, minimalProps),
-      getModal = (props?: Partial<Props>) => getShallow(props).children();
+  const getMounted = getMountedComponent<Props>(NxModal, minimalProps),
+      getModal = (props?: Partial<Props>) => getMounted(props).find('dialog');
 
-  it('renders a context provider around an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
-    const contextProvider = getShallow(),
-        nxModal = contextProvider.children();
+  it('renders an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
+    const nxModal = getModal();
 
-    expect(contextProvider).toMatchSelector(NxModalContext.Provider);
     expect(nxModal).toMatchSelector('dialog.nx-modal-backdrop');
     expect(nxModal.children()).toMatchSelector('div.nx-modal');
   });

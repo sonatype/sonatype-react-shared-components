@@ -111,9 +111,7 @@ describe('Page Layout', function() {
         await checkFullPageScreenshot();
       });
 
-      it('passes a11y checks', async function() {
-        await a11yTest(null, true);
-      });
+      it('passes a11y checks', a11yTest(null, true));
     });
 
     describe('with sidebar, and section scrolling', function() {
@@ -171,9 +169,7 @@ describe('Page Layout', function() {
         await checkFullPageScreenshot();
       });
 
-      it('passes a11y checks', async function() {
-        await a11yTest(null, true);
-      });
+      it('passes a11y checks', a11yTest(null, true));
     });
 
     describe('with sidebar, and header', function() {

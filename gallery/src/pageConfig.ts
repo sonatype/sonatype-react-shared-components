@@ -142,6 +142,8 @@ import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxToastPage from './components/NxToast/NxToastPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
+import NxDrawerPage from './components/NxDrawer/NxDrawerPage';
+import NxComboboxPage from './components/NxCombobox/NxComboboxPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
 import NxStatefulFormPage from './components/NxStatefulForm/NxStatefulFormPage';
 import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
@@ -178,6 +180,7 @@ const pageConfig: PageConfig = {
     'Segmented Button': { content: NxSegmentedButtonPage, type: 'react' },
     'Stateful Segmented Button': { content: NxStatefulSegmentedButtonPage, type: 'react' },
     'Close Button': { content: NxCloseButtonPage, type: 'react' },
+    'Combobox': { content: NxComboboxPage, type: 'react' },
     'Dropdown': { content: NxDropdownPage, type: 'react' },
     'Stateful Dropdown': { content: NxStatefulDropdownPage, type: 'react' },
     'Filter Dropdown': { content: NxFilterDropdownPage, type: 'react' },
@@ -250,6 +253,7 @@ const pageConfig: PageConfig = {
     'Global Sidebar Footer': { content: NxGlobalSidebarFooterPage, type: 'react' },
     'Grid': { content: NxGridPage, type: 'html' },
     'Modal': { content: NxModalPage, type: 'react' },
+    'Drawer': { content: NxDrawerPage, type: 'react' },
     'Page Header': { content: NxPageHeaderPage, type: 'react' },
     'Page Title': { content: NxPageTitlePage, type: 'html' },
     'Read Only': { content: NxReadOnlyPage, type: 'html' },

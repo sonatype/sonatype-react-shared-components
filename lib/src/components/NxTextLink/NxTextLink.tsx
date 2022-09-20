@@ -8,7 +8,7 @@ import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { ensureElement } from '../../util/reactUtil';
+import { ensureStartEndElements } from '../../util/reactUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 
@@ -43,7 +43,7 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
           // this is an external link and the newTab prop isn't explicitly false
           target = specifiedTarget || (newTab || (external && newTab !== false) ? '_blank' : ''),
           wrappedChildren = truncate ?
-            <span className="nx-text-link__truncate-text">{children}</span> : ensureElement(children),
+            <span className="nx-text-link__truncate-text">{children}</span> : ensureStartEndElements(children),
           icon = <NxFontAwesomeIcon icon={faExternalLinkAlt} size="sm" />;
 
       return (

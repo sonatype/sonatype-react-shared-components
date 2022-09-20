@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, useCallback } from 'react';
 
 import {
   NxCheckbox,
@@ -20,23 +20,37 @@ import {
   NxInfoAlert,
   NxFormSelect,
   nxFormSelectStateHelpers,
+  nxTextInputStateHelpers,
   NxTransferList,
   NxStatefulForm,
   NxForm,
   NxReadOnly,
-  nxTextInputStateHelpers,
   NxTextInput,
   hasValidationErrors,
   nxFieldsetStateHelpers,
-  NxFileUpload
+  NxFileUpload,
+  NxCombobox,
+  DataItem
 } from '@sonatype/react-shared-components';
 
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { map, range } from 'ramda';
+import { map, range, prepend, filter } from 'ramda';
+
+const { initialState, userInput } = nxTextInputStateHelpers;
+
+const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
+  'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska',
+  'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
+  'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
+  'Vermont', 'Virginia', 'Washington', 'Washington DC', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 const { useCheckboxGroupState } = nxFieldsetStateHelpers;
 
 const transferListItems = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
+const comboboxItems = prepend(
+    { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
+    map(i => ({ id: i, displayName: states[i - 1] }), range(1, states.length + 1)));
 
 export default function NxFormLayoutExample() {
   function validator(val: string | null) {
@@ -101,6 +115,19 @@ export default function NxFormLayoutExample() {
           tagColorState.validationErrors,
           !files?.length ? 'A file is required' : null
       ) ? 'Required fields are missing' : null;
+
+  const [matches, setMatches] = useState<DataItem<number, string>[]>(comboboxItems),
+      [comboboxInputState, setComboboxInputState] = useState(initialState('', validator)),
+      onComboboxChange = (query: string) => setComboboxInputState(userInput(validator, query)),
+      search = function(query: string):DataItem<number, string>[] {
+        const lowercaseQuery = query.toLowerCase(),
+            matchingItems = filter(i => i.displayName.toLowerCase().indexOf(lowercaseQuery) === 0, comboboxItems);
+        return matchingItems;
+      },
+      executeQuery = useCallback(function executeQuery(query: string) {
+        setMatches(search(query));
+      }, [comboboxInputState.value]),
+      onComboboxSearch = (query: string) => query ? executeQuery(query) : setMatches(comboboxItems);
 
   function onSubmit() {
     alert('Submitted!');
@@ -208,6 +235,13 @@ export default function NxFormLayoutExample() {
       </NxFieldset>
       <NxFormGroup label="Upload a File" sublabel={<>Foo<br/>Bar</>} isRequired>
         <NxFileUpload files={files} isRequired isPristine={isFilePristine} onChange={onFileChange} />
+      </NxFormGroup>
+      <NxFormGroup label="State" isRequired>
+        <NxCombobox matches={matches}
+                    { ...comboboxInputState }
+                    validatable={true}
+                    onChange={onComboboxChange}
+                    onSearch={onComboboxSearch}/>
       </NxFormGroup>
       <NxReadOnly>
         <NxReadOnly.Label>
