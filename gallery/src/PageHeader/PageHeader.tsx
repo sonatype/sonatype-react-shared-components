@@ -30,9 +30,7 @@ const PageHeader = () => (
       <span className="gallery-page-header__name">
         React Shared Component Library
       </span>
-      <div className="gallery-page-header__display-mode-btn">
-        <DarkModeModal />
-      </div>
+      <DarkModeModal />
       <div className="gallery-page-header__version">
         <HostedVersionsSelect />
       </div>
