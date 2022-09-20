@@ -25,7 +25,6 @@ const DarkModeModal = () => {
 
   const [enableModeChange, toggleEnableModeChange] = useToggle(false);
   const [mode, setMode] = useState<string | null>(null);
-  const [radioDisabled, setRadioDisabled] = useState(true);
 
   const { classList } = document.documentElement;
 
@@ -46,11 +45,9 @@ const DarkModeModal = () => {
   useEffect(()=> {
     if (enableModeChange) {
       classList.add('nx-html--enable-color-schemes');
-      setRadioDisabled(false);
     }
     else if (!enableModeChange) {
       classList.remove('nx-html--enable-color-schemes', 'nx-html--dark-mode', 'nx-html--light-mode');
-      setRadioDisabled(true);
     }
   }, [enableModeChange]);
 
@@ -88,21 +85,21 @@ const DarkModeModal = () => {
                          value="browserChoice"
                          onChange={setMode}
                          isChecked={mode === 'browserChoice'}
-                         disabled = {radioDisabled}>
+                         disabled = {!enableModeChange}>
                   Let Your Browser Color Preference Decide
                 </NxRadio>
                 <NxRadio name="mode"
                          value="dark"
                          onChange={setMode}
                          isChecked={mode === 'dark'}
-                         disabled = {radioDisabled}>
+                         disabled = {!enableModeChange}>
                   Dark Mode
                 </NxRadio>
                 <NxRadio name="mode"
                          value="light"
                          onChange={setMode}
                          isChecked={mode === 'light'}
-                         disabled = {radioDisabled}>
+                         disabled = {!enableModeChange}>
                   Light Mode
                 </NxRadio>
               </NxFieldset>
