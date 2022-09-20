@@ -37,7 +37,7 @@ const Home = () =>
           <NxDescriptionList.Description>
             This section includes documentation regarding components which are intended to convey specific types of
             information to the user. For example, alert components for informing the user of events, and counters, tags,
-            and threat indicators for creating consistent ways of present particular aspects of a data entity.
+            and threat indicators for creating consistent ways of presenting particular aspects of a data entity.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
@@ -129,7 +129,7 @@ const Home = () =>
             are themselves a documented and stable part of the RSC API, allowing them to be used even in applications
             which do not use React. Many of these components are also exposed via React "convenience components"
             which simply pair the class in question with the HTML tag to which it is most typically applied.
-            Convenience components are not typically documented separated and are simply mentioned on these non-React
+            Convenience components are not typically documented separately and are simply mentioned on these non-React
             pages. In some cases however, a component may have a simple form exposed as a base CSS class while
             also having a non-trivial React component implementing a certain amount of behavior which a non-React
             application would have to manage itself. In these cases, the React component is documented on a separate
