@@ -94,7 +94,7 @@ const DarkModeModal = () => {
                 simultaneously will result in dark mode and is not recommended. If neither class is added,
                 prefers-color-scheme in the user’s settings will dictate the mode.
               </NxP>
-              <NxFormGroup label="Enable Changes">
+              <NxFormGroup label="Enable Theming">
                 <NxToggle onChange={toggleEnableModeChange} isChecked={enableModeChange}>
                   Opt-in to Allow Changes
                 </NxToggle>
