@@ -121,22 +121,16 @@ describe('NxDrawer', function() {
     const buttonId = 'nx-drawer-with-nx-toast-open-button';
     const drawerId = 'nx-drawer-with-nx-toast';
 
-    const launchToastsFromPage = async () => {
-
-      const [openToastBtn] = await waitAndGetElements('.nx-btn-bar .nx-btn--secondary');
-      await openToastBtn.click();
-
-      // wait for animation
-      await wait(500);
-
-      const [container] = await waitAndGetElements('.nx-toast-container');
-      return container;
-    };
-
     it('is positioned correctly', async function() {
       await getPage().setViewport(viewportSize);
+      const [openSuccessToastButton] = await waitAndGetElements(`#${'nx-toast-success-open-button'}`);
+      const [openErrorToastButton] = await waitAndGetElements(`#${'nx-toast-error-open-button'}`);
+
+      await openSuccessToastButton.click();
       await openDrawer(buttonId, drawerId);
-      await launchToastsFromPage();
+      await openErrorToastButton.click();
+
+      await wait(500);
       await checkFullPageScreenshot();
     });
   });

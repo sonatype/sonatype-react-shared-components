@@ -20,7 +20,7 @@ import {
   NxToastContainer,
   NxToast,
   NxErrorAlert,
-  NxButtonBar
+  NxSuccessAlert
 } from '@sonatype/react-shared-components';
 
 interface ToastModel {
@@ -78,11 +78,11 @@ export default function NxDrawerWithNxToastExample() {
             Wafer pastry sweet candy canes pie pie icing <strong>brownie</strong>. Wafer jelly cake bear claw I
             love caramels. Pie jelly-o candy jelly beans icing. Sweet gingerbread pastry jelly bonbon danish icing.
           </NxP>
-          <NxButtonBar>
-            <NxButton type="button" onClick={() => addToast(NxErrorAlert, 'Something went wrong!')}>
-              Open Error Toast
-            </NxButton>
-          </NxButtonBar>
+          <NxButton id="nx-toast-error-open-button"
+                    type="button"
+                    onClick={() => addToast(NxErrorAlert, 'Something went wrong!')}>
+            Open Error Toast
+          </NxButton>
           <NxP>
             Dragée pastry soufflé shortbread donut fruitcake. Ice cream tart bear claw I love
             cotton candy marzipan cotton candy cake danish. Pie gingerbread marshmallow bear claw
@@ -112,6 +112,11 @@ export default function NxDrawerWithNxToastExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
+          <NxButton id ="nx-toast-success-open-button"
+                    type="button"
+                    onClick={() => addToast(NxSuccessAlert, 'Success!')}>
+            Open Success Toast
+          </NxButton>
           <NxButton id="nx-drawer-with-nx-toast-open-button" onClick={toggleDrawer}>
             Open Drawer
           </NxButton>
