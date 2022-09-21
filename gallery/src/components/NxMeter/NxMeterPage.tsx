@@ -66,25 +66,25 @@ const NxMeterPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
-              <NxTable.Cell>
-                HTML <NxCode>&lt;meter&gt;</NxCode> Attributes Subset
-              </NxTable.Cell>
-              <NxTable.Cell>
-                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/meter">
-                  Meter Attributes
-                </NxTextLink>
-                , excluding <NxCode>min</NxCode>, <NxCode>low</NxCode>, <NxCode>high</NxCode>,
-                and <NxCode>optimum</NxCode>
-              </NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell />
-              <NxTable.Cell>
-                NxMeter supports any html attribute that are normally supported by HTML
-                <NxCode>&lt;meter&gt;</NxCode> elements, with the exception of <NxCode>min</NxCode>,
-                <NxCode>low</NxCode>, <NxCode>high</NxCode>, and <NxCode>optimum</NxCode>. These attributes may
-                become supported in the future.
-              </NxTable.Cell>
-            </NxTable.Row>
+            <NxTable.Cell>
+              HTML <NxCode>&lt;meter&gt;</NxCode> Attributes Subset
+            </NxTable.Cell>
+            <NxTable.Cell>
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/meter">
+                Meter Attributes
+              </NxTextLink>
+              , excluding <NxCode>min</NxCode>, <NxCode>low</NxCode>, <NxCode>high</NxCode>,
+              and <NxCode>optimum</NxCode>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell />
+            <NxTable.Cell>
+              NxMeter supports any html attribute that are normally supported by HTML
+              <NxCode>&lt;meter&gt;</NxCode> elements, with the exception of <NxCode>min</NxCode>,
+              <NxCode>low</NxCode>, <NxCode>high</NxCode>, and <NxCode>optimum</NxCode>. These attributes may
+              become supported in the future.
+            </NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
