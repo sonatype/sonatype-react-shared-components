@@ -100,3 +100,4 @@ const NxProgressBar = forwardRef<HTMLProgressElement, Props>(
 NxProgressBar.propTypes = propTypes;
 
 export default NxProgressBar;
+export { Props } from './types';

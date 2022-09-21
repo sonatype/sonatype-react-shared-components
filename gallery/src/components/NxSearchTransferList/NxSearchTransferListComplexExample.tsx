@@ -6,7 +6,7 @@
  */
 import React, { useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
-import { DataItem, NxSearchTransferList, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME } from '@sonatype/react-shared-components';
+import { DataItem, NxSearchTransferList, NX_STANDARD_DEBOUNCE_TIME } from '@sonatype/react-shared-components';
 import { useDebounceCallback } from '@react-hook/debounce';
 
 const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
@@ -68,7 +68,7 @@ export default function NxSearchTransferListExample() {
             .catch(err => {
               setError(err);
             });
-      }, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+      }, NX_STANDARD_DEBOUNCE_TIME);
 
   function doSearch(query: string) {
     setLoading(true);

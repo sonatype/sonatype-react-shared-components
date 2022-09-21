@@ -207,6 +207,9 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">
             The standard box-shadow to apply to focused elements in addition to a border or outline.
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-box-shadow-dropdown">
+            The standard box-shadow to apply to dropdown elements.
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-drop-shadow-focus">
             Again, the standard shadow to apply to focused elements in addition to a border or outline. On elements
             where <NxCode>box-shadow</NxCode> isn't supported, such as SVG elements, use this instead
