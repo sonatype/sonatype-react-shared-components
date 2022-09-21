@@ -113,9 +113,6 @@ export default function NxDrawerWithNxToastExample() {
         </NxP>
         <NxP>
           <NxButtonBar>
-            {/* <NxButton type="button" onClick={() => addToast(NxSuccessAlert, 'Success!')}>
-              Open Success Toast
-            </NxButton> */}
             <NxButton id="nx-drawer-with-nx-toast-open-button" onClick={toggleDrawer}>
               Open Drawer
             </NxButton>
