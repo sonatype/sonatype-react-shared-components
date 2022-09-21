@@ -44,7 +44,6 @@ const DarkModeModal = () => {
       <NxButton variant="tertiary" onClick={() => setShowModal(true)}>Theme Settings</NxButton>
       { showModal &&
         <NxModal id="nx-modal-dark-mode-example"
-                 role="dialog"
                  onCancel={modalCloseHandler}
                  aria-labelledby="modal-form-header">
           <NxForm onSubmit={modalCloseHandler}
