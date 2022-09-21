@@ -15,9 +15,11 @@ import {
   useToggle,
   NxFieldset,
   NxRadio,
-  NxP,
-  NxCode
+  NxTooltip,
+  NxFontAwesomeIcon
 } from '@sonatype/react-shared-components';
+
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const DarkModeModal = () => {
   const [showModal, setShowModal] = useState(false);
@@ -49,17 +51,14 @@ const DarkModeModal = () => {
               </h2>
             </header>
             <div className="nx-modal-content">
-              <NxP>
-                In order to enable dark mode, the class <NxCode>nx-html--enable-color-schemes</NxCode> must first
-                be added to the <NxCode>html</NxCode> element, as demonstrated by the toggle below. Additional
-                classes <NxCode>nx-html--dark-mode</NxCode> or <NxCode>nx-html--light-mode</NxCode> may also be added
-                to force either light or dark mode, as demonstrated by the radio buttons. However, using these
-                simultaneously will result in dark mode and is not recommended. If neither class is added,
-                prefers-color-scheme in the user’s settings will dictate the mode.
-              </NxP>
               <NxFormGroup label="Enable Theme Changes">
                 <NxToggle onChange={toggleEnableModeChange} isChecked={enableModeChange}>
                   Opt-in to Allow Theming
+                  <NxTooltip title="Opting in will allow you to make adjustments to the display theme. Failure
+                             to do so will always result in light mode. This can be done by adding the
+                             'nx-html--enable-color-schemes' class to the HTML element.">
+                    <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
+                  </NxTooltip>
                 </NxToggle>
               </NxFormGroup>
               <NxFieldset label="Choose Your Mode">
@@ -69,6 +68,11 @@ const DarkModeModal = () => {
                          isChecked={mode === 'browserChoice'}
                          disabled = {!enableModeChange}>
                   Let Your Browser Color Preference Decide
+                  <NxTooltip title="If theme changes are permitted, the default theme will be dictated by
+                             your browser or OS theme choice. The prefers-color-scheme media query registers
+                             this choice.">
+                    <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
+                  </NxTooltip>
                 </NxRadio>
                 <NxRadio name="mode"
                          value="dark"
@@ -76,6 +80,10 @@ const DarkModeModal = () => {
                          isChecked={mode === 'dark'}
                          disabled = {!enableModeChange}>
                   Dark Mode
+                  <NxTooltip title="Override the browser's default display theme to dark mode by adding the class
+                             'nx-html--dark-mode' to the HTML element.">
+                    <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
+                  </NxTooltip>
                 </NxRadio>
                 <NxRadio name="mode"
                          value="light"
@@ -83,6 +91,10 @@ const DarkModeModal = () => {
                          isChecked={mode === 'light'}
                          disabled = {!enableModeChange}>
                   Light Mode
+                  <NxTooltip title="Override the browser's default display theme to light mode by adding the class
+                             'nx-html--light-mode' to the HTML element.">
+                    <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
+                  </NxTooltip>
                 </NxRadio>
               </NxFieldset>
             </div>
