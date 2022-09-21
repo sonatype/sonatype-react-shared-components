@@ -14,6 +14,7 @@ import NxTileFormErrorExample from './NxTileFormErrorExample';
 import NxTileDropdownActionsExample from './NxTileDropdownActionsExample';
 import NxTileAccordionExample from './NxTileAccordionExample';
 import NxTilePolicyViolationIndicatorExample from './NxTilePolicyViolationIndicatorExample';
+import NxTileSimpleConvenienceComponentsExample from './NxTileSimpleConvenienceComponentsExample';
 
 const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
     NxTileHeaderlessCode = require('./NxTileHeaderlessExample.html'),
@@ -28,7 +29,8 @@ const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
     NxTileDropdownActionsCode = require('./NxTileDropdownActionsExample?raw'),
     NxTileAccordionCode = require('./NxTileAccordionExample?raw'),
     NxTileGridCode = require('./NxTileGridExample.html'),
-    NxTilePolicyViolationIndicatorCode = require('./NxTilePolicyViolationIndicatorExample?raw');
+    NxTilePolicyViolationIndicatorCode = require('./NxTilePolicyViolationIndicatorExample?raw'),
+    NxTileSimpleConvenienceComponentsCode = require('./NxTileSimpleConvenienceComponentsExample?raw');
 
 const NxTilesExamples = () =>
   <>
@@ -151,6 +153,14 @@ const NxTilesExamples = () =>
                         codeExamples={NxTileGridCode}>
       An example of a tile with an <NxCode>nx-grid</NxCode> as the content, demonstrating that the spacing comes
       out as expected.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Simple Convenience Components Example"
+                        id="nx-tile-simple-convenience-components-example"
+                        liveExample={NxTileSimpleConvenienceComponentsExample}
+                        codeExamples={NxTileSimpleConvenienceComponentsCode}>
+      An example of a tile built from convenience components, while also demonstrating the automatic inclusion of{' '}
+      <NxCode>NxOverflowingTooltip</NxCode> inside <NxCode>NxTile.HeaderTitle</NxCode>.
     </GalleryExampleTile>
   </>;
 
