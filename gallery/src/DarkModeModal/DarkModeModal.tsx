@@ -45,11 +45,11 @@ const DarkModeModal = () => {
       { showModal &&
         <NxModal id="nx-modal-dark-mode-example"
                  onCancel={modalCloseHandler}
-                 aria-labelledby="modal-form-header">
+                 aria-labelledby="nx-modal-dark-mode-form-header">
           <NxForm onSubmit={modalCloseHandler}
                   submitBtnText= "Save and Close">
             <header className="nx-modal-header">
-              <h2 className="nx-h2" id="modal-form-header">
+              <h2 className="nx-h2" id="nx-modal-dark-mode-form-header">
                 Setting Preferences for Light or Dark Mode
               </h2>
             </header>
