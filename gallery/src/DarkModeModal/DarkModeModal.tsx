@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   NxButton,
@@ -30,10 +30,14 @@ const DarkModeModal = () => {
 
   const { classList } = document.documentElement;
 
-  classList.toggle('nx-html--enable-color-schemes', enableModeChange);
+  useEffect(() => {
+    classList.toggle('nx-html--enable-color-schemes', enableModeChange);
+  }, [enableModeChange]);
 
-  classList.toggle('nx-html--dark-mode', mode === 'dark' && enableModeChange);
-  classList.toggle('nx-html--light-mode', mode === 'light' && enableModeChange);
+  useEffect(() => {
+    classList.toggle('nx-html--dark-mode', mode === 'dark' && enableModeChange);
+    classList.toggle('nx-html--light-mode', mode === 'light' && enableModeChange);
+  }, [enableModeChange, mode]);
 
   return (
     <>
