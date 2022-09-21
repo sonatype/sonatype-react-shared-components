@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, {
-  ReactNode,
   useContext,
   useEffect,
   useRef,
@@ -13,11 +12,19 @@ import React, {
 } from 'react';
 import classnames from 'classnames';
 
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import withClass from '../../util/withClass';
 
-import { Props, NxDrawerHeaderProps, NxDrawerContextValue, OpenState, propTypes } from './types';
+import {
+  NxDrawerContextValue,
+  NxDrawerHeaderProps,
+  NxDrawerHeaderTitleProps,
+  OpenState,
+  Props,
+  propTypes
+} from './types';
 
 import './NxDrawer.scss';
 
@@ -25,18 +32,21 @@ const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {}
 });
 
-interface NxDrawerHeaderTitleProps {
-  children: ReactNode;
-}
-
 const NxDrawerHeaderTitle = (props: NxDrawerHeaderTitleProps) => {
-  const { children } = props;
+  const {
+    className,
+    children,
+    ...attrs
+  } = props;
 
-  const titleRef = useRef(null);
+  const classes = classnames('nx-drawer-header__title', className);
+
   return (
-    <h2 className="nx-drawer-header__title">
-      {children}
-    </h2>
+    <NxOverflowTooltip>
+      <h2 className={classes} {...attrs}>
+        {children}
+      </h2>
+    </NxOverflowTooltip>
   );
 };
 
@@ -125,7 +135,7 @@ function NxDrawer(props: Props) {
     [`nx-drawer--${openState}`]: openState !== 'open'
   }, className);
 
-  const drawerContextValue = { closeDrawer, open };
+  const drawerContextValue = { closeDrawer };
 
   return (
     <NxDrawerContext.Provider value={drawerContextValue}>

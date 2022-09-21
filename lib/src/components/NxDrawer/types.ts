@@ -24,6 +24,10 @@ export interface NxDrawerHeaderProps extends HTMLAttributes<HTMLElement>{
   children: ReactNode;
 }
 
+export interface NxDrawerHeaderTitleProps extends HTMLAttributes<HTMLHeadingElement> {
+  children: ReactNode;
+}
+
 export interface NxDrawerContextValue {
   closeDrawer: () => void;
 }
