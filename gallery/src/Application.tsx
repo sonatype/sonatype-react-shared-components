@@ -48,6 +48,7 @@ import NxDrawerEscExample from './components/NxDrawer/NxDrawerEscExample';
 import NxDrawerExample from './components/NxDrawer/NxDrawerExample';
 import NxDrawerVariantExample from './components/NxDrawer/NxDrawerVariantExample';
 import NxDrawerWithNxFormExample from './components/NxDrawer/NxDrawerWithNxFormExample';
+import NxDrawerWithNxToastExample from './components/NxDrawer/NxDrawerWithNxToastExample';
 import NxDrawerWithSubtitleOrDescriptionExample from './components/NxDrawer/NxDrawerWithSubtitleOrDescriptionExample';
 import NxDrawerConditionalRenderingExample from './components/NxDrawer/NxDrawerConditionalRenderingExample';
 
@@ -181,6 +182,11 @@ function Application() {
         <Route exact path="/NxDrawerWithNxFormExample">
           <SectionScrollingWrapper>
             <NxDrawerWithNxFormExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerWithNxToastExample">
+          <SectionScrollingWrapper>
+            <NxDrawerWithNxToastExample />
           </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxDrawerEscExample">
