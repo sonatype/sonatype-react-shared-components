@@ -276,9 +276,7 @@ export default function NxDrawerPage() {
         <NxTile.Content>
           <NxP>
             An example of a <NxCode>NxDrawer</NxCode> with <NxCode>NxForm</NxCode>. This example
-            also shows <NxCode>NxDrawer</NxCode> with overflowing form content. Notice
-            that <NxCode>closeDrawer</NxCode> from <NxCode>NxDrawerRef</NxCode> was used to trigger
-            the slide-out animation when the form is submitted or canceled.
+            also shows <NxCode>NxDrawer</NxCode> with overflowing form content.
           </NxP>
           <NxP>
             <NxTextLink href="#/NxDrawerWithNxFormExample">
