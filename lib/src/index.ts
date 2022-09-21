@@ -286,7 +286,8 @@ export { default as NxThreatIndicatorLegend, NxThreatIndicatorLegendProps }
 export {
   default as NxSearchDropdown,
   Props as NxSearchDropdownProps,
-  SEARCH_DEBOUNCE_TIME as NX_SEARCH_DROPDOWN_DEBOUNCE_TIME
+  SEARCH_DEBOUNCE_TIME as NX_SEARCH_DROPDOWN_DEBOUNCE_TIME,
+  SEARCH_DEBOUNCE_TIME as NX_STANDARD_DEBOUNCE_TIME
 } from './components/NxSearchDropdown/NxSearchDropdown';
 
 export { default as NxStatefulSearchDropdown, Props as NxStatefulDropdownProps }
@@ -326,11 +327,13 @@ export { default as NxStatefulFilterDropdown, Props as NxStatefulFilterDropdownP
 
 export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemNotice';
 
-export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
+export { default as NxProgressBar, Props as NxProgressBarProps } from './components/NxProgressBar/NxProgressBar';
 
 export { default as NxToastContainer, NxToastContainerProps as NxToastContainerProps }
   from './components/NxToast/NxToastContainer';
 export { default as NxToast, NxToastProps as NxToastProps } from './components/NxToast/NxToast';
+
+export { default as NxCombobox, Props as NxComboboxProps } from './components/NxCombobox/NxCombobox';
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
 

@@ -7,51 +7,34 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxSearchDropdown, DataItem, NX_STANDARD_DEBOUNCE_TIME, NxFontAwesomeIcon }
+import { NxCombobox, DataItem, NX_STANDARD_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
-import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
 
-const items: DataItem<number>[] = prepend(
-    {
-      id: 0,
-      displayName: <><NxFontAwesomeIcon icon={faArrowsAltH} /><span>Loooooooooooooooooooooooooong Name</span></>
-    },
-    map<number, DataItem<number>>(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101))
+const items = prepend(
+    { id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
+    map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101))
 );
-
-function getDisplayNameString({ displayName }: DataItem<number>) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return typeof displayName === 'string' ? displayName : (displayName as any).props.children[1].props.children;
-}
 
 // This function simulates a backend query that takes 3 seconds to return results. In a real implementation
 // this would typically use window.fetch, axios, or a similar REST library rather than querying in-memory data,
 // and typically this would be in another file outside of the react component
-function search(query: string): Promise<DataItem<number>[]> {
+function search(query: string): Promise<DataItem<number, string>[]> {
   const lowercaseQuery = query.toLowerCase(),
-      matchingItems = filter(i => getDisplayNameString(i).toLowerCase().includes(lowercaseQuery), items);
+      matchingItems = filter(i => i.displayName.toLowerCase().indexOf(lowercaseQuery) === 0, items);
 
   return new Promise(resolve => {
     setTimeout(() => resolve(matchingItems), 3000);
   });
 }
 
-export default function NxSearchDropdownExample() {
-  const [matches, setMatches] = useState<DataItem<number>[]>([]),
+export default function NxComboboxExample() {
+  const [matches, setMatches] = useState<DataItem<number, string>[]>([]),
       [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
       latestExecutedQueryRef = useRef<string | null>(null);
 
-  function onSelect({ displayName }: DataItem<number>) {
-    alert('Selected ' + displayName);
-    setQuery('');
-    setMatches([]);
-  }
-
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
   const executeQuery = useDebounceCallback(useCallback(function executeQuery(query: string) {
-    latestExecutedQueryRef.current = query;
-
     search(query).then(matches => {
       // ensure that results from stale or out-of-order queries do not display
       if (latestExecutedQueryRef.current === query) {
@@ -61,11 +44,13 @@ export default function NxSearchDropdownExample() {
     });
   }, [matches, query]), NX_STANDARD_DEBOUNCE_TIME);
 
-  function onSearchTextChange(query: string) {
+  function onChange(query: string) {
     setQuery(query);
   }
 
   function onSearch(query: string) {
+    latestExecutedQueryRef.current = query;
+
     if (query === '') {
       setMatches([]);
     }
@@ -76,11 +61,12 @@ export default function NxSearchDropdownExample() {
   }
 
   return (
-    <NxSearchDropdown loading={loading}
-                      matches={matches}
-                      searchText={query}
-                      onSearchTextChange={onSearchTextChange}
-                      onSearch={onSearch}
-                      onSelect={onSelect} />
+    <NxCombobox loading={loading}
+                autoComplete={true}
+                matches={matches}
+                value={query}
+                onChange={onChange}
+                onSearch={onSearch}
+                aria-label="combobox" />
   );
 }
