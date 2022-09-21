@@ -24,7 +24,7 @@ const NxMeterPage = () =>
       <NxInfoAlert>
         There is a difference between meters and progress bars. While <NxCode>NxProgressBar</NxCode> is intended
         to show the current state of some process as it moves towards completion over time, <NxCode>NxMeter</NxCode>
-        is intended to show a static numeric value in relation to its known maximum.
+        {' '}is intended to show a static numeric value in relation to its known maximum.
       </NxInfoAlert>
       <NxTable>
         <NxTable.Head>
@@ -42,7 +42,7 @@ const NxMeterPage = () =>
             <NxTable.Cell>0 &ge; number &le; <NxCode>max</NxCode></NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell />
-            <NxTable.Cell>Value indicating progress. A number from  0 to <NxCode>max</NxCode>.</NxTable.Cell>
+            <NxTable.Cell>Value indicating the measurement. A number from 0 to <NxCode>max</NxCode>.</NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell><NxCode>max</NxCode></NxTable.Cell>
@@ -50,8 +50,8 @@ const NxMeterPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>100</NxTable.Cell>
             <NxTable.Cell>
-              The max that the value of the meter might reach. When <NxCode>value</NxCode> and <NxCode>max</NxCode> are
-              equal, the meter is portrayed as being full.
+              The maximum that the value of the meter might reach. When <NxCode>value</NxCode> and{' '}
+              <NxCode>max</NxCode> are equal, the meter is portrayed as being full.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
