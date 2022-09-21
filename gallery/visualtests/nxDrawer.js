@@ -125,7 +125,6 @@ describe('NxDrawer', function() {
 
       const [openToastBtn] = await waitAndGetElements('.nx-btn-bar .nx-btn--secondary');
       await openToastBtn.click();
-      await openToastBtn.click();
 
       // wait for animation
       await wait(500);
@@ -134,11 +133,8 @@ describe('NxDrawer', function() {
       return container;
     };
 
-    beforeEach(async function() {
-      await getPage().setViewport(viewportSize);
-    });
-
     it('is positioned correctly', async function() {
+      await getPage().setViewport(viewportSize);
       await openDrawer(buttonId, drawerId);
       await launchToastsFromPage();
       await checkFullPageScreenshot();
