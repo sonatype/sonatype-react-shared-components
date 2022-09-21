@@ -17,10 +17,10 @@ import {
   NxH1,
   NxPageMain,
   NxP,
-  NxSuccessAlert,
   NxToastContainer,
   NxToast,
-  NxErrorAlert
+  NxErrorAlert,
+  NxButtonBar
 } from '@sonatype/react-shared-components';
 
 interface ToastModel {
@@ -78,9 +78,11 @@ export default function NxDrawerWithNxToastExample() {
             Wafer pastry sweet candy canes pie pie icing <strong>brownie</strong>. Wafer jelly cake bear claw I
             love caramels. Pie jelly-o candy jelly beans icing. Sweet gingerbread pastry jelly bonbon danish icing.
           </NxP>
-          <NxButton type="button" onClick={() => addToast(NxErrorAlert, 'Something went wrong!')}>
-            Open Error Toast
-          </NxButton>
+          <NxButtonBar>
+            <NxButton type="button" onClick={() => addToast(NxErrorAlert, 'Something went wrong!')}>
+              Open Error Toast
+            </NxButton>
+          </NxButtonBar>
           <NxP>
             Dragée pastry soufflé shortbread donut fruitcake. Ice cream tart bear claw I love
             cotton candy marzipan cotton candy cake danish. Pie gingerbread marshmallow bear claw
@@ -110,12 +112,14 @@ export default function NxDrawerWithNxToastExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButton type="button" onClick={() => addToast(NxSuccessAlert, 'Success!')}>
-            Open Success Toast
-          </NxButton>
-          <NxButton id="nx-drawer-with-nx-toast-open-button" onClick={toggleDrawer}>
-            Open Drawer
-          </NxButton>
+          <NxButtonBar>
+            {/* <NxButton type="button" onClick={() => addToast(NxSuccessAlert, 'Success!')}>
+              Open Success Toast
+            </NxButton> */}
+            <NxButton id="nx-drawer-with-nx-toast-open-button" onClick={toggleDrawer}>
+              Open Drawer
+            </NxButton>
+          </NxButtonBar>
         </NxP>
         <NxP>
           Brownie dessert candy wafer macaroon. Marzipan dragée liquorice biscuit icing I love.

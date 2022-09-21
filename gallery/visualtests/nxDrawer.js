@@ -113,6 +113,38 @@ describe('NxDrawer', function() {
     });
   });
 
+  describe('NxDrawer with NxToast', function() {
+    const browserSetup = setupBrowser('#/NxDrawerWithNxToastExample', false);
+    const { getPage, checkFullPageScreenshot, waitAndGetElements, wait } = browserSetup;
+    const openDrawer = openDrawerFromPage(browserSetup);
+
+    const buttonId = 'nx-drawer-with-nx-toast-open-button';
+    const drawerId = 'nx-drawer-with-nx-toast';
+
+    const launchToastsFromPage = async () => {
+
+      const [openToastBtn] = await waitAndGetElements('.nx-btn-bar .nx-btn--secondary');
+      await openToastBtn.click();
+      await openToastBtn.click();
+
+      // wait for animation
+      await wait(500);
+
+      const [container] = await waitAndGetElements('.nx-toast-container');
+      return container;
+    };
+
+    beforeEach(async function() {
+      await getPage().setViewport(viewportSize);
+    });
+
+    it('is positioned correctly', async function() {
+      await openDrawer(buttonId, drawerId);
+      await launchToastsFromPage();
+      await checkFullPageScreenshot();
+    });
+  });
+
   describe('NxDrawer with Overflowing Form', function() {
     const browserSetup = setupBrowser('#/NxDrawerWithNxFormExample', false);
     const { getPage, checkFullPageScreenshot, a11yTest } = browserSetup;
