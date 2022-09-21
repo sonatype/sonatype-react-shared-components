@@ -112,11 +112,9 @@ export default function NxDrawerWithNxToastExample() {
           chocolate pie cupcake. I love pastry donut croissant macaroon chocolate cake icing macaroon marshmallow.
         </NxP>
         <NxP>
-          <NxButtonBar>
-            <NxButton id="nx-drawer-with-nx-toast-open-button" onClick={toggleDrawer}>
-              Open Drawer
-            </NxButton>
-          </NxButtonBar>
+          <NxButton id="nx-drawer-with-nx-toast-open-button" onClick={toggleDrawer}>
+            Open Drawer
+          </NxButton>
         </NxP>
         <NxP>
           Brownie dessert candy wafer macaroon. Marzipan dragée liquorice biscuit icing I love.
