@@ -28,13 +28,10 @@ const DarkModeModal = () => {
   const [enableModeChange, toggleEnableModeChange] = useToggle(false);
   const [mode, setMode] = useState<string | null>(null);
 
-  const { classList } = document.documentElement;
-
   useEffect(() => {
+    const { classList } = document.documentElement;
+
     classList.toggle('nx-html--enable-color-schemes', enableModeChange);
-  }, [enableModeChange]);
-
-  useEffect(() => {
     classList.toggle('nx-html--dark-mode', mode === 'dark' && enableModeChange);
     classList.toggle('nx-html--light-mode', mode === 'light' && enableModeChange);
   }, [enableModeChange, mode]);
