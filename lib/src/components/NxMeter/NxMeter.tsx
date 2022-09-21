@@ -15,14 +15,13 @@ import NxTooltip from '../NxTooltip/NxTooltip';
 export { Props };
 
 const NxMeter = forwardRef<HTMLMeterElement, Props>(function NxMeter(props, ref) {
-  const { className: classNameProp, max: maxProp, children, value, ...otherAttributes } = props,
+  const { className: classNameProp, max: maxProp, children, ...otherAttributes } = props,
       className = classnames('nx-meter', classNameProp),
       max: number = maxProp ?? 100;
 
   return (
     <NxTooltip title={children}>
-      <meter ref={ref} className={className} max={max} value={value} { ...otherAttributes }>
-        {/* <span className="nx-meter__bar" style={{ width: `${valuePercent}%` }} /> */}
+      <meter ref={ref} className={className} max={max} { ...otherAttributes }>
         <span className="nx-meter__content">{children}</span>
       </meter>
     </NxTooltip>
