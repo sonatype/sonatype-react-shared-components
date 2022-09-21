@@ -45,4 +45,9 @@ export default () =>
         with text inside <NxCode>NxTextLink</NxCode>
       </NxTextLink>
     </NxP>
+    <NxP>
+      <NxTextLink href="#/pages/Text%20Link" className="disabled" onClick={evt => evt.preventDefault()}>
+        This is an example of disabled NxTextLink
+      </NxTextLink>
+    </NxP>
   </>;

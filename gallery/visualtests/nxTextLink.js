@@ -33,6 +33,12 @@ describe('NxTextLink', function() {
     it('looks right', simpleTest(selector));
   });
 
+  describe('Disabled NxTextLink', function() {
+    const selector = '#nx-text-link-internal-example .nx-text-link.disabled';
+
+    it('looks disabled', simpleTest(selector));
+  });
+
   describe('button nx-text-link', function() {
     const selector = '#nx-text-link-button-example .nx-text-link';
 

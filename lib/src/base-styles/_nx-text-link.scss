@@ -54,6 +54,13 @@
   .nx-icon.fa-external-link-alt {
     margin-left: var(--nx-spacing-base);
   }
+
+  &.disabled, &[disabled] {
+    &, &:hover, &:focus {
+      color: var(--nx-color-text-disabled);
+      cursor: default;
+    }
+  }
 }
 
 button.nx-text-link {
