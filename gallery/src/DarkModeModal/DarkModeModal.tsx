@@ -79,7 +79,7 @@ const DarkModeModal = () => {
                          isChecked={mode === 'dark'}
                          disabled = {!enableModeChange}>
                   Dark Mode
-                  <NxTooltip title="Override the browser's default display theme to dark mode by adding the class
+                  <NxTooltip title="Overrides the browser's default display theme to dark mode by adding the class
                              'nx-html--dark-mode' to the HTML element.">
                     <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
                   </NxTooltip>
