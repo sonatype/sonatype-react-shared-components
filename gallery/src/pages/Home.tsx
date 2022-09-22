@@ -29,51 +29,53 @@ const Home = () =>
       </NxTile.SubsectionHeader>
       <NxP>
         The sidebar at left can be used to navigate to the various components, styles and utilities. The navigation
-        is grouped by general purpose, as follows:
+        is grouped by the purpose of each component, as follows:
       </NxP>
       <NxDescriptionList>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Alerts and Indicators</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            This section includes documentation regarding components which are intended to convey specific types of
-            information to the user. For example, alert components for informing the user of events, and counters, tags,
-            and threat indicators for creating consistent ways of presenting particular aspects of a data entity.
+            This section includes documentation on how to use different components in a consistent manner to present
+            contextual information to the user. For e.g. alert components that indicate events, counters, tags,
+            and threat indicators.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Buttons and Dropdowns</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            This section includes components that the user would activate in order to initiate some action – buttons,
-            dropdowns and other menus, and also links.
+            This section includes documentation on how to use "call to action" components in a consistent manner. These
+            include buttons, dropdowns, menus and links.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Forms</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            This sections includes all components that are typically used within a form. Components for forms
-            themselves, form structures such as fieldset, and various kinds of form fields all fall within this section.
+            This section includes documentation on how to use different form based components in a consistent manner.
+            These include form structures like fieldset, and form fields.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Data Presentation</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            This section groups together components which are intended for organizing and displaying data. This includes
-            views such as lists, tables, and trees, and also visualizations such as the donut chart.
+            This section includes documentation on how to use different components for data visualization in a
+            consistent manner to represent numerical and hierarchical data. These include lists, tables, trees and donut
+            charts.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Layout</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            Components which make up the "page skeleton" are included in this section. This includes page-level
-            components such as the global sidebar and also containers such as tiles and accordions. In addition, rich
-            examples of layouts incorporating multiple components working together are also found here.
+            This section includes documentation on how to use different page components that determine the look and feel
+            and the general navigation, in a consistent manner. It also contains example layouts composed of these
+            components. These include global sidebars and containers such as tiles and accordions.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Typography and Icons</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            This section includes semantic and typographic containers for text content, such as paragraphs and code
-            blocks.  It also includes utility components that facilitate the use of icons.
+            This section includes documentation on how to use semantic and typographic containers for text elements like
+            paragraphs and code blocks, in a consistent manner. It also includes utility components that facilitate the
+            use of icons.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
@@ -89,23 +91,22 @@ const Home = () =>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Mixins and Helpers</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            This section includes CSS and SCSS utilities such as helper classes, SCSS mixins, and CSS variables.
+            This section includes documentation on how to use CSS and SCSS utilities like helper classes, SCSS mixins
+            and CSS variables, in a consistent manner.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>JavaScript and TypeScript Utilities</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            This section includes utilities that can be useful when writing code that uses RSC components. No actual
-            React components are present in this section, however React hooks are documented here in addition to
-            JavaScript functions and TypeScript types.
+            This section includes utilities that can be useful when writing code that uses RSC components.  It contains
+            JavaScript functions, TypeScript types and React hooks. Actual React components are not included here.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term>Guidelines</NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            Rather than documentation of specific components or usable pieces of code, this section includes higher
-            level descriptions, tutorials, and recommendations regarding usage of RSC components and web UI development
-            in general.
+            This section covers general documentation on web UI development, and tutorials, recommendations for using
+            RSC components.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
       </NxDescriptionList>
@@ -117,8 +118,8 @@ const Home = () =>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term><NxFontAwesomeIcon icon={faReact} fixedWidth /></NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            Documentation for a React component or family of closely related React components. Typically includes
-            technical details about the props that may be passed to the component along with live examples of its use.
+            This section includes documentation for a React component or a family of related React components. It
+            contains technical details on the properties that can be passed to the component along with examples.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
@@ -152,23 +153,23 @@ const Home = () =>
             <GalleryNavIconCSS3 />
           </NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            Documentation of CSS-based stylesheet utilities and helpers such as CSS custom properties (aka variables)
-            and general-purpose classes which may be applied to other RSC components or to HTML elements in general.
+            This section contains documentation of CSS-based stylesheet utilities and helpers such as CSS custom
+            properties (aka variables) and general-purpose classes. The general purpose classes can be applied to
+            RSC components or HTML elements.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term><NxFontAwesomeIcon icon={faSass} fixedWidth /></NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            Documentation of SCSS-based stylesheet utilities and helpers such as mixins. While projects are not
-            required to use SCSS in order to use RSC, any projects which do not use SCSS cannot directly use these
-            helpers.
+            This section contains documentation of SCSS-based stylesheet utilities and helpers such as mixins. These can
+            only be used by projects that use SCSS based stylesheets.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
           <NxDescriptionList.Term><NxFontAwesomeIcon icon={faJs} fixedWidth /></NxDescriptionList.Term>
           <NxDescriptionList.Description>
-            JavaScript and TypeScript utilities. Documentation within these pages describes various functions,
-            data structures, and types that are available within RSC which can be valuable to a consuming application.
+            This section contains documentation on JavaScript and TypeScript Utlilites. It describes functions, data
+            structures, and types that are available within RSC, for use by applications.
           </NxDescriptionList.Description>
         </NxDescriptionList.Item>
         <NxDescriptionList.Item>
