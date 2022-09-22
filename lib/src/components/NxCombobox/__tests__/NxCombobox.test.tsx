@@ -799,10 +799,10 @@ describe('NxCombobox', function() {
             const singleError = singleRender(),
                 multiError = multiRender();
 
-            expect(singleError.getAllByRole('alert')[0]).toHaveTextContent('foo');
+            expect(singleError.getByRole('alert')).toHaveTextContent('foo');
             expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
 
-            expect(multiError.getAllByRole('alert')[0]).toHaveTextContent('bar');
+            expect(multiError.getByRole('alert')).toHaveTextContent('bar');
             expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
           });
 
@@ -873,10 +873,10 @@ describe('NxCombobox', function() {
           const singleError = within(singleRender() as HTMLElement),
               multiError = within(multiRender() as HTMLElement);
 
-          expect(singleError.getAllByRole('alert')[0]).toHaveTextContent('foo');
+          expect(singleError.getByRole('alert')).toHaveTextContent('foo');
           expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
 
-          expect(multiError.getAllByRole('alert')[0]).toHaveTextContent('bar');
+          expect(multiError.getByRole('alert')).toHaveTextContent('bar');
           expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
         });
 
@@ -908,10 +908,10 @@ describe('NxCombobox', function() {
             const singleError = singleRender(),
                 multiError = multiRender();
 
-            expect(singleError.getAllByRole('alert')[0]).toHaveTextContent('foo');
+            expect(singleError.getByRole('alert')).toHaveTextContent('foo');
             expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
 
-            expect(multiError.getAllByRole('alert')[0]).toHaveTextContent('bar');
+            expect(multiError.getByRole('alert')).toHaveTextContent('bar');
             expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
           });
 
