@@ -60,7 +60,7 @@ export default function NxTabsPage() {
                 <NxTable.Cell>
                   When set to true, the <NxCode>noreferrer</NxCode> rel is added to the link which
                   prevents certain properties from being passed through to the link target that can allow the target
-                  to discern what site was linked from, specificall, the <NxCode>Referer</NxCode> HTTP
+                  to discern what site was linked from, specifically, the <NxCode>Referer</NxCode> HTTP
                   header and the <NxCode>window.opener</NxCode> JavaScript property.
                 </NxTable.Cell>
               </NxTable.Row>
