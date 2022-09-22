@@ -68,9 +68,8 @@ const DarkModeModal = () => {
                          isChecked={mode === 'browserChoice'}
                          disabled = {!enableModeChange}>
                   Let Your Browser Color Preference Decide
-                  <NxTooltip title="If theme changes are permitted, the default theme will be dictated by
-                             your browser or OS theme choice. The prefers-color-scheme media query registers
-                             this choice.">
+                  <NxTooltip title="The default theme will be dictated by your browser or OS theme choice, which is
+                             communicated to the application via the 'prefers-color-scheme' media query.">
                     <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
                   </NxTooltip>
                 </NxRadio>
