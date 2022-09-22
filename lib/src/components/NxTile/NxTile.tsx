@@ -4,15 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import withClass from '../../util/withClass';
 
-import { NxTileHeaderTitleProps } from './types';
+import { NxTileHeaderTitleProps, nxTileHeaderTitlePropTypes } from './types';
 
-const NxTileHeaderTitle = (props: NxTileHeaderTitleProps) => {
+const NxTileHeaderTitle = forwardRef<HTMLDivElement, NxTileHeaderTitleProps>((props, ref) => {
   const {
     className,
     children,
@@ -23,12 +23,14 @@ const NxTileHeaderTitle = (props: NxTileHeaderTitleProps) => {
 
   return (
     <NxOverflowTooltip>
-      <div className={classes} {...attrs}>
+      <div className={classes} ref={ref} {...attrs}>
         {children}
       </div>
     </NxOverflowTooltip>
   );
-};
+});
+
+NxTileHeaderTitle.propTypes = nxTileHeaderTitlePropTypes;
 
 const NxTile = Object.assign(withClass('section', 'nx-tile'), {
   Header: withClass('header', 'nx-tile-header'),

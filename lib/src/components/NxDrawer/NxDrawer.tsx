@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, {
+  forwardRef,
   useContext,
   useEffect,
   useRef,
@@ -23,7 +24,8 @@ import {
   NxDrawerHeaderTitleProps,
   OpenState,
   Props,
-  propTypes
+  propTypes,
+  nxDrawerHeaderTitlePropTypes
 } from './types';
 
 import './NxDrawer.scss';
@@ -32,7 +34,7 @@ const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {}
 });
 
-const NxDrawerHeaderTitle = (props: NxDrawerHeaderTitleProps) => {
+const NxDrawerHeaderTitle = forwardRef<HTMLHeadingElement, NxDrawerHeaderTitleProps>((props, ref) => {
   const {
     className,
     children,
@@ -43,12 +45,14 @@ const NxDrawerHeaderTitle = (props: NxDrawerHeaderTitleProps) => {
 
   return (
     <NxOverflowTooltip>
-      <h2 className={classes} {...attrs}>
+      <h2 className={classes} {...attrs} ref={ref}>
         {children}
       </h2>
     </NxOverflowTooltip>
   );
-};
+});
+
+NxDrawerHeaderTitle.propTypes = nxDrawerHeaderTitlePropTypes;
 
 const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
   const {
