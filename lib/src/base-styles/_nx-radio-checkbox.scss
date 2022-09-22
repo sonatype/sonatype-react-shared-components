@@ -88,10 +88,6 @@ svg.nx-radio-checkbox__control {
 .nx-radio-checkbox__content {
   @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
-
-  .dark-mode-modal__info-icon {
-    margin-left: var(--nx-spacing-2x);
-  }
 }
 
 .nx-radio-checkbox--disabled {

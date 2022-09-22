@@ -67,7 +67,7 @@ const DarkModeModal = () => {
                          onChange={setMode}
                          isChecked={mode === 'browserChoice'}
                          disabled = {!enableModeChange}>
-                  Let Your Browser Color Preference Decide
+                  <span>Let Your Browser Color Preference Decide</span>
                   <NxTooltip title="The default theme will be dictated by your browser or OS theme choice, which is
                              communicated to the application via the 'prefers-color-scheme' media query.">
                     <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
@@ -78,7 +78,7 @@ const DarkModeModal = () => {
                          onChange={setMode}
                          isChecked={mode === 'dark'}
                          disabled = {!enableModeChange}>
-                  Dark Mode
+                  <span>Dark Mode</span>
                   <NxTooltip title="Overrides the browser's default display theme to dark mode by adding the class
                              'nx-html--dark-mode' to the HTML element.">
                     <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
@@ -89,7 +89,7 @@ const DarkModeModal = () => {
                          onChange={setMode}
                          isChecked={mode === 'light'}
                          disabled = {!enableModeChange}>
-                  Light Mode
+                  <span>Light Mode</span>
                   <NxTooltip title="Overrides the browser's default display theme to light mode by adding the class
                              'nx-html--light-mode' to the HTML element.">
                     <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
