@@ -530,7 +530,7 @@ describe('NxCombobox', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox data-testid="combobox" { ...nonValidatableMinimalProps } { ...extraProps } />
+                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
               </NxForm>
             );
 
@@ -583,7 +583,7 @@ describe('NxCombobox', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox data-testid="combobox" { ...nonValidatableMinimalProps } { ...extraProps } />
+                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
               </NxForm>
             );
 
@@ -628,7 +628,7 @@ describe('NxCombobox', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox data-testid="combobox" { ...nonValidatableMinimalProps } { ...extraProps } />
+                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
               </NxForm>
             );
 
@@ -681,7 +681,7 @@ describe('NxCombobox', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox data-testid="combobox" { ...nonValidatableMinimalProps } { ...extraProps } />
+                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
               </NxForm>
             );
 
@@ -730,7 +730,7 @@ describe('NxCombobox', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox data-testid="combobox" { ...validatableMinimalProps } { ...extraProps } />
+                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
               </NxForm>
             );
 
@@ -783,7 +783,7 @@ describe('NxCombobox', function() {
           function quickRender(extraProps?: Partial<Props<string | number>>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox data-testid="combobox" { ...validatableMinimalProps } { ...extraProps } />
+                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
               </NxForm>
             );
 
@@ -839,7 +839,7 @@ describe('NxCombobox', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox data-testid="combobox" { ...validatableMinimalProps } { ...extraProps } />
+                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
               </NxForm>
             );
 
@@ -892,7 +892,7 @@ describe('NxCombobox', function() {
           function quickRender(extraProps?: Partial<Props<string | number>>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox data-testid="combobox" { ...validatableMinimalProps } { ...extraProps } />
+                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
               </NxForm>
             );
 
