@@ -71,7 +71,7 @@ export default function NxTabsPage() {
                 <NxTable.Cell>false for internal links, true for external links</NxTable.Cell>
                 <NxTable.Cell>
                   Whether or not this link should open in a new tab/window. Note that this is accomplished via the
-                  link's <NxCode>target</NxCode> attribute, and any explictly
+                  link's <NxCode>target</NxCode> attribute, and any explicitly
                   set <NxCode>target</NxCode> will override this prop.
                 </NxTable.Cell>
               </NxTable.Row>
