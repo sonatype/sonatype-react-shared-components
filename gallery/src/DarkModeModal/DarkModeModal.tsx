@@ -55,8 +55,8 @@ const DarkModeModal = () => {
                 <NxToggle onChange={toggleEnableModeChange} isChecked={enableModeChange}>
                   Opt-in to Allow Theming
                   <NxTooltip title="Opting in will allow you to make adjustments to the display theme. Failure
-                             to do so will always result in light mode. This can be done by adding the
-                             'nx-html--enable-color-schemes' class to the HTML element.">
+                             to do so will always result in light mode. This operates by toggling the presence of
+                             the nx-html--enable-color-schemes class.">
                     <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
                   </NxTooltip>
                 </NxToggle>
