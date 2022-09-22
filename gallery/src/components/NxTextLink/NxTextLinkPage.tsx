@@ -83,7 +83,7 @@ export default function NxTabsPage() {
                 <NxTable.Cell>
                   When set, the link becomes a block element that constrains its text content to one line, and truncates
                   the text with an ellipsis when necessary. If used in conjunction with <NxCode>external</NxCode>, the
-                  external link icon will always be visible, with the text ellispsis truncation occurring before the
+                  external link icon will always be visible, with the text ellipsis truncation occurring before the
                   icon.
                 </NxTable.Cell>
               </NxTable.Row>
