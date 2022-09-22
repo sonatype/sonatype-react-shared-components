@@ -9,7 +9,6 @@ import classnames from 'classnames';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { ensureStartEndElements } from '../../util/reactUtil';
-import { includesDisabledClass } from '../../util/classUtil';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, propTypes } from './types';
 
@@ -23,6 +22,7 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
             noReferrer,
             newTab,
             truncate,
+            disabled,
             className: specifiedClassName,
             rel: specifiedRel,
             target: specifiedTarget,
@@ -31,9 +31,9 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
 
           className = classnames('nx-text-link', specifiedClassName, {
             'nx-text-link--external': external,
-            'nx-text-link--truncate': truncate
+            'nx-text-link--truncate': truncate,
+            'nx-text-link--disabled': disabled
           }),
-          isDisabled = includesDisabledClass(className),
 
           // add the noreferrer rel if `noReferrer` prop is explicitly true, or its an external link and
           // the `noReferrer` prop isn't explicitly false
@@ -49,7 +49,7 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
           icon = <NxFontAwesomeIcon icon={faExternalLinkAlt} size="sm" />;
 
       return (
-        <a { ...{ ref, className, rel, target } } { ...attrs } aria-disabled={isDisabled}>
+        <a { ...{ ref, className, rel, target } } { ...attrs } aria-disabled={!!disabled}>
           {wrappedChildren}
           { external &&
             (truncate ?

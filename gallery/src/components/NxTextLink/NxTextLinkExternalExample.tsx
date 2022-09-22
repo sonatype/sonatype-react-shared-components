@@ -47,10 +47,7 @@ export default () =>
       </NxTextLink>
     </NxP>
     <NxP>
-      <NxTextLink external
-                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"
-                  className="disabled"
-                  onClick={evt => evt.preventDefault()}>
+      <NxTextLink external role="link" disabled>
         This is an example of another disabled NxTextLink
       </NxTextLink>
     </NxP>

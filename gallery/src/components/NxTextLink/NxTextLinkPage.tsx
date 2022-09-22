@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTextLink, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
+import { NxTable, NxTextLink, NxP, NxCode, NxTile, NxH3, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -44,7 +44,7 @@ export default function NxTabsPage() {
               <NxTable.Row>
                 <NxTable.Cell>external</NxTable.Cell>
                 <NxTable.Cell>boolean</NxTable.Cell>
-                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
                   Whether or not this link is to an external page outside of the current web application. If true,
@@ -55,7 +55,7 @@ export default function NxTabsPage() {
               <NxTable.Row>
                 <NxTable.Cell>noReferrer</NxTable.Cell>
                 <NxTable.Cell>boolean</NxTable.Cell>
-                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>false for internal links, true for external links</NxTable.Cell>
                 <NxTable.Cell>
                   When set to true, the <NxCode>noreferrer</NxCode> rel is added to the link which
@@ -67,7 +67,7 @@ export default function NxTabsPage() {
               <NxTable.Row>
                 <NxTable.Cell>newTab</NxTable.Cell>
                 <NxTable.Cell>boolean</NxTable.Cell>
-                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>false for internal links, true for external links</NxTable.Cell>
                 <NxTable.Cell>
                   Whether or not this link should open in a new tab/window. Note that this is accomplished via the
@@ -78,13 +78,28 @@ export default function NxTabsPage() {
               <NxTable.Row>
                 <NxTable.Cell>truncate</NxTable.Cell>
                 <NxTable.Cell>boolean</NxTable.Cell>
-                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
                   When set, the link becomes a block element that constrains its text content to one line, and truncates
                   the text with an ellipsis when necessary. If used in conjunction with <NxCode>external</NxCode>, the
                   external link icon will always be visible, with the text ellipsis truncation occurring before the
                   icon.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>disabled</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
+                  When set, the text link is rendered as disabled and has <NxCode>aria-disabled="true"</NxCode>.
+                  <NxWarningAlert>
+                    Note: For accessibility purpose, the <NxCode>href</NxCode> attribute should be removed
+                    which will disable its hyperlink functionality and make it not focusable,
+                    without <NxCode>href</NxCode> attribute speicified, the <NxCode>role="link"</NxCode> needs to
+                    be applied to <NxCode>NxTextLink</NxCode> in order to expose it to screenreader as a link.
+                  </NxWarningAlert>
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -119,19 +134,12 @@ export default function NxTabsPage() {
             <NxTable.Body>
               <NxTable.Row>
                 <NxTable.Cell><NxCode>disabled</NxCode></NxTable.Cell>
-                <NxTable.Cell>Modifier on <NxCode>NxTextLink</NxCode></NxTable.Cell>
-                <NxTable.Cell>
-                  Makes text link disabled and adds <NxCode>aria-disabled=true</NxCode> to the text link.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell><NxCode>disabled</NxCode></NxTable.Cell>
                 <NxTable.Cell>Modifier on <NxCode>.nx-text-link</NxCode></NxTable.Cell>
                 <NxTable.Cell>
-                  This is for Buttons Styled as Links which may be disabled either via attribute or via this class.
-                  The attribute should be preferred, but the class may be used when mouse events are still desired on
-                  the button – buttons disabled via the attribute do not fire mouse events. When using this class,
-                  also use the <NxCode>aria-disabled</NxCode> attribute for accessibility.
+                  This is for <em>Buttons Styled as Links</em> which may be disabled either via attribute or via this
+                  class. The attribute should be preferred, but the class may be used when mouse events are still
+                  desired on the button – buttons disabled via the attribute do not fire mouse events. When using this
+                  class, also use the <NxCode>aria-disabled</NxCode> attribute for accessibility.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>

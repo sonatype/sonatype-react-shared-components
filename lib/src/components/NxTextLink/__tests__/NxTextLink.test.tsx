@@ -60,9 +60,9 @@ describe('NxTextLink', function() {
     expect(getShallow({ external: true, noReferrer: true, rel: 'foo' }).prop('rel')).toContain('foo');
   });
 
-  it('sets aria-disabled on the text link if the className includes a disabled class', function() {
+  it('sets aria-disabled on the text link when the disabled prop is set', function() {
     expect(getShallow()).toHaveProp('aria-disabled', false);
-    expect(getShallow({ className: 'disabled' })).toHaveProp('aria-disabled', true);
+    expect(getShallow({ disabled: true })).toHaveProp('aria-disabled', true);
   });
 
   it('sets the target to _blank if newTab is true, unless a different target is specified', function() {
