@@ -37,7 +37,11 @@ const DarkModeModal = () => {
 
   return (
     <>
-      <NxButton variant="tertiary" onClick={() => setShowModal(true)}>Theme Settings</NxButton>
+      <NxButton className="nx-btn--open-theme-settings"
+                variant="tertiary"
+                onClick={() => setShowModal(true)}>
+        Theme Settings
+      </NxButton>
       { showModal &&
         <NxModal id="nx-modal-dark-mode-example"
                  onCancel={modalCloseHandler}
