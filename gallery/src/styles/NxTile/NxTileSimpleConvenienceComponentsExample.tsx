@@ -7,16 +7,15 @@
 import React from 'react';
 import { NxTile, NxFooter, NxButtonBar, NxButton, NxH2 } from '@sonatype/react-shared-components';
 
-export default function NxTileAccordionExample() {
+export default function NxTileSimpleConvenienceComponentsExample() {
   return (
     <>
       <NxTile>
         <NxTile.Header>
           <NxTile.HeaderTitle>
             <NxH2>
-              This is a very looong title, maybe too long, a tooltip will show up if you hover this,{' '}
-              it will go on and on on and on and on and on and on and on and on and on and on and on and on{' '}
-              on and on and on and on and on and on and on and on and on and on and on
+              This is a very looong title, maybe too long, a tooltip will show up if you hover this and it goes{' '}
+              on and on and on and on and on and on and on and on
             </NxH2>
           </NxTile.HeaderTitle>
         </NxTile.Header>
