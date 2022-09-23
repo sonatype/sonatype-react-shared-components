@@ -31,6 +31,7 @@ const DarkModeModal = (props:Props) => {
   const { modalCloseHandler} = props;
 
   const [mode, setMode] = useState<themeMode>('disabled');
+  const [modeClassnames, setModeClassnames] = useState<string[]>([]);
 
   useEffect(()=> {
     const { classList } = document.documentElement;
@@ -56,9 +57,16 @@ const DarkModeModal = (props:Props) => {
     classList.toggle('nx-html--dark-mode', mode === 'dark');
     classList.toggle('nx-html--light-mode', mode === 'light');
 
+    const classesArray = Array.from(classList);
+    setModeClassnames(classesArray);
+
   }, [mode]);
 
   const handleThemeChange = () => setMode(mode !== 'disabled' ? 'disabled' : 'enabled');
+
+  useEffect(()=> {
+    localStorage.setItem('classes', JSON.stringify(modeClassnames));
+  }, [modeClassnames]);
 
   return (
     <NxModal id="nx-modal-dark-mode-example"
