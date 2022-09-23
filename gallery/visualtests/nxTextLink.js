@@ -33,15 +33,33 @@ describe('NxTextLink', function() {
     it('looks right', simpleTest(selector));
   });
 
-  describe('Disabled NxTextLink', function() {
-    const selector = '#nx-text-link-internal-example .nx-text-link.nx-text-link--disabled';
-
-    it('looks disabled', simpleTest(selector));
-  });
-
   describe('button nx-text-link', function() {
     const selector = '#nx-text-link-button-example .nx-text-link';
 
     it('looks right', simpleTest(selector));
+  });
+
+  describe('Disabled NxTextLink', function() {
+    const selector = '#nx-text-link-internal-example .nx-text-link.nx-text-link--disabled';
+
+    it('looks disabled', simpleTest(selector));
+    it('is not darker blue when hovered', hoverTest(selector));
+    it('is not lighter blue when clicked', clickTest(selector));
+  });
+
+  describe('Attribute-Disabled button nx-text-link', function() {
+    const selector = '#nx-text-link-button-example .nx-text-link[disabled]';
+
+    it('looks disabled', simpleTest(selector));
+    it('is not darker blue when hovered', hoverTest(selector));
+    it('is not lighter blue when clicked', clickTest(selector));
+  });
+
+  describe('Classname-Disabled button nx-text-link', function() {
+    const selector = '#nx-text-link-button-example .nx-text-link.disabled';
+
+    it('looks disabled', simpleTest(selector));
+    it('is not darker blue when hovered', hoverTest(selector));
+    it('is not lighter blue when clicked', clickTest(selector));
   });
 });
