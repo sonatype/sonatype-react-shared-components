@@ -47,7 +47,7 @@ export default () =>
       </NxTextLink>
     </NxP>
     <NxP>
-      <NxTextLink external role="link" disabled>
+      <NxTextLink external href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" disabled>
         This is an example of another disabled NxTextLink
       </NxTextLink>
     </NxP>

@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxTextLink, NxP, NxCode, NxTile, NxH3, NxWarningAlert } from '@sonatype/react-shared-components';
+import { NxTable, NxTextLink, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -93,13 +93,9 @@ export default function NxTabsPage() {
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
-                  When set, the text link is rendered as disabled and has <NxCode>aria-disabled="true"</NxCode>.
-                  <NxWarningAlert>
-                    Note: For accessibility purpose, the <NxCode>href</NxCode> attribute should be removed
-                    which will disable its hyperlink functionality and make it not focusable,
-                    without <NxCode>href</NxCode> attribute speicified, the <NxCode>role="link"</NxCode> needs to
-                    be applied to <NxCode>NxTextLink</NxCode> in order to expose it to screenreader as a link.
-                  </NxWarningAlert>
+                  When set, the text link is rendered as disabled and has <NxCode>aria-disabled="true"</NxCode>,
+                  for accessibility purpose, the <NxCode>href</NxCode> attribute will not be passd on and
+                  the <NxCode>role="link"</NxCode> will be added to the text link.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>

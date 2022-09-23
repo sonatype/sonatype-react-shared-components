@@ -46,7 +46,7 @@ export default () =>
       </NxTextLink>
     </NxP>
     <NxP>
-      <NxTextLink role="link" disabled>
+      <NxTextLink href="#/pages/Text%20Link" disabled>
         This is an example of disabled NxTextLink
       </NxTextLink>
     </NxP>

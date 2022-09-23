@@ -26,6 +26,7 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
             className: specifiedClassName,
             rel: specifiedRel,
             target: specifiedTarget,
+            href,
             ...attrs
           } = props,
 
@@ -49,7 +50,11 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
           icon = <NxFontAwesomeIcon icon={faExternalLinkAlt} size="sm" />;
 
       return (
-        <a { ...{ ref, className, rel, target } } { ...attrs } aria-disabled={!!disabled}>
+        <a { ...{ ref, className, rel, target } }
+           { ...attrs }
+           href={disabled ? undefined : href}
+           role={disabled ? 'link' : undefined}
+           aria-disabled={!!disabled}>
           {wrappedChildren}
           { external &&
             (truncate ?
