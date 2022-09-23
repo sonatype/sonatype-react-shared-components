@@ -7,7 +7,6 @@
 .nx-field-validation-message {
   color: var(--nx-color-validation-invalid);
   font-size: var(--nx-font-size-xs);
-  line-height: 16px;
   margin-top: var(--nx-spacing-2x);
 
   // this positions the invalid message inside the bottom margin of .nx-form-group or .nx-fieldset which allows
