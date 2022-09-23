@@ -79,6 +79,17 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
 }
 
 function Application() {
+
+  const { classList } = document.documentElement;
+  const storage = localStorage.getItem('classes');
+
+  if (storage) {
+    const documentElClasses = JSON.parse(storage);
+    for (const cls of documentElClasses) {
+      classList.add(cls);
+    }
+  }
+
   return (
     <Router>
       <Switch>
