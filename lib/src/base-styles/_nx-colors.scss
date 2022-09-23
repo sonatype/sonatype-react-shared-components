@@ -56,6 +56,8 @@
   --nx-color-text-dark: var(--nx-color-text-stark);
 
   @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-border: var(--nx-swatch-indigo-35);
+
     --nx-color-component-background: var(--nx-swatch-indigo-20);
 
     --nx-color-site-background: var(--nx-swatch-indigo-15);
