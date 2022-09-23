@@ -32,7 +32,7 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
           className = classnames('nx-text-link', specifiedClassName, {
             'nx-text-link--external': external,
             'nx-text-link--truncate': truncate,
-            'nx-text-link--disabled': disabled
+            disabled
           }),
 
           // add the noreferrer rel if `noReferrer` prop is explicitly true, or its an external link and

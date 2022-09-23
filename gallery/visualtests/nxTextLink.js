@@ -40,7 +40,7 @@ describe('NxTextLink', function() {
   });
 
   describe('Disabled NxTextLink', function() {
-    const selector = '#nx-text-link-internal-example .nx-text-link.nx-text-link--disabled';
+    const selector = '#nx-text-link-internal-example .nx-text-link.disabled';
 
     it('looks disabled', simpleTest(selector));
     it('is not darker blue when hovered', hoverTest(selector));

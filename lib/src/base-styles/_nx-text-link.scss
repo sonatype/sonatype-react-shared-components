@@ -55,7 +55,7 @@
     margin-left: var(--nx-spacing-base);
   }
 
-  &--disabled, &.disabled, &[disabled] {
+  &.disabled, &[disabled] {
     &, &:hover, &:focus {
       color: var(--nx-color-text-disabled);
       cursor: default;
