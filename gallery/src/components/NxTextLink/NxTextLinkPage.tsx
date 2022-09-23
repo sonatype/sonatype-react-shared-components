@@ -26,80 +26,121 @@ export default function NxTabsPage() {
         <NxP>
           A text hyperlink with standard styles and behaviors for both internal and external links.
         </NxP>
-
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>Prop</NxTable.Cell>
-              <NxTable.Cell>Type</NxTable.Cell>
-              <NxTable.Cell>Required</NxTable.Cell>
-              <NxTable.Cell>Default</NxTable.Cell>
-              <NxTable.Cell>Details</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body>
-            <NxTable.Row>
-              <NxTable.Cell>external</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>
-                Whether or not this link is to an external page outside of the current web application. If true,
-                the link text will be appended with an "external link" icon. This prop also affects the defaults of the
-                <NxCode>noReferrer</NxCode> and <NxCode>newTab</NxCode> props.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>noReferrer</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>false for internal links, true for external links</NxTable.Cell>
-              <NxTable.Cell>
-                When set to true, the <NxCode>noreferrer</NxCode> rel is added to the link which
-                prevents certain properties from being passed through to the link target that can allow the target
-                to discern what site was linked from, specificall, the <NxCode>Referer</NxCode> HTTP
-                header and the <NxCode>window.opener</NxCode> JavaScript property.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>newTab</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>false for internal links, true for external links</NxTable.Cell>
-              <NxTable.Cell>
-                Whether or not this link should open in a new tab/window. Note that this is accomplished via the
-                link's <NxCode>target</NxCode> attribute, and any explictly
-                set <NxCode>target</NxCode> will override this prop.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>truncate</NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>false</NxTable.Cell>
-              <NxTable.Cell>
-                When set, the link becomes a block element that constrains its text content to one line, and truncates
-                the text with an ellipsis when necessary. If used in conjunction with <NxCode>external</NxCode>, the
-                external link icon will always be visible, with the text ellispsis truncation occurring before the
-                icon.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>HTML <NxCode>&lt;a&gt;</NxCode> Attributes</NxTable.Cell>
-              <NxTable.Cell>
-                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/a">
-                  HTML a Attributes
-                </NxTextLink>
-              </NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell>N/A</NxTable.Cell>
-              <NxTable.Cell>
-                NxTextLink supports any HTML attribute that's normally supported
-                by <NxCode>&lt;a&gt;</NxCode>.
-              </NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Body>
-        </NxTable>
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>Props</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Prop</NxTable.Cell>
+                <NxTable.Cell>Type</NxTable.Cell>
+                <NxTable.Cell>Required</NxTable.Cell>
+                <NxTable.Cell>Default</NxTable.Cell>
+                <NxTable.Cell>Details</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell>external</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
+                  Whether or not this link is to an external page outside of the current web application. If true,
+                  the link text will be appended with an "external link" icon. This prop also affects the defaults of
+                  the <NxCode>noReferrer</NxCode> and <NxCode>newTab</NxCode> props.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>noReferrer</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>false for internal links, true for external links</NxTable.Cell>
+                <NxTable.Cell>
+                  When set to true, the <NxCode>noreferrer</NxCode> rel is added to the link which
+                  prevents certain properties from being passed through to the link target that can allow the target
+                  to discern what site was linked from, specifically, the <NxCode>Referer</NxCode> HTTP
+                  header and the <NxCode>window.opener</NxCode> JavaScript property.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>newTab</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>false for internal links, true for external links</NxTable.Cell>
+                <NxTable.Cell>
+                  Whether or not this link should open in a new tab/window. Note that this is accomplished via the
+                  link's <NxCode>target</NxCode> attribute, and any explicitly
+                  set <NxCode>target</NxCode> will override this prop.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>truncate</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
+                  When set, the link becomes a block element that constrains its text content to one line, and truncates
+                  the text with an ellipsis when necessary. If used in conjunction with <NxCode>external</NxCode>, the
+                  external link icon will always be visible, with the text ellipsis truncation occurring before the
+                  icon.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>disabled</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
+                  When set, the text link is rendered as disabled and has <NxCode>aria-disabled="true"</NxCode>,
+                  for accessibility purpose, the <NxCode>href</NxCode> attribute will not be passd on and
+                  the <NxCode>role="link"</NxCode> will be added to the text link.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>HTML <NxCode>&lt;a&gt;</NxCode> Attributes</NxTable.Cell>
+                <NxTable.Cell>
+                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/a">
+                    HTML a Attributes
+                  </NxTextLink>
+                </NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>N/A</NxTable.Cell>
+                <NxTable.Cell>
+                  NxTextLink supports any HTML attribute that's normally supported
+                  by <NxCode>&lt;a&gt;</NxCode>.
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
+        </NxTile.Subsection>
+        <NxTile.Subsection>
+          <NxTile.SubsectionHeader>
+            <NxH3>Classes</NxH3>
+          </NxTile.SubsectionHeader>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Class Name</NxTable.Cell>
+                <NxTable.Cell>Location</NxTable.Cell>
+                <NxTable.Cell>Description</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body>
+              <NxTable.Row>
+                <NxTable.Cell><NxCode>disabled</NxCode></NxTable.Cell>
+                <NxTable.Cell>Modifier on <NxCode>.nx-text-link</NxCode></NxTable.Cell>
+                <NxTable.Cell>
+                  This is for <em>Buttons Styled as Links</em> which may be disabled either via attribute or via this
+                  class. The attribute should be preferred, but the class may be used when mouse events are still
+                  desired on the button – buttons disabled via the attribute do not fire mouse events. When using this
+                  class, also use the <NxCode>aria-disabled</NxCode> attribute for accessibility.
+                </NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
+        </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
             <NxH3>Buttons Styled as Links</NxH3>
@@ -146,7 +187,7 @@ export default function NxTabsPage() {
                           liveExample={NxTextLinkButtonExample}
                           codeExamples={NxTextLinkButtonExampleCode}>
         An example of a <NxCode>&lt;button&gt;</NxCode> styled to look like a link using
-        the <NxCode>nx-text-link</NxCode> class
+        the <NxCode>nx-text-link</NxCode> class and examples of disabled state.
       </GalleryExampleTile>
 
       <GalleryExampleTile title="NxTextLink Wrapping and Truncation Example"
