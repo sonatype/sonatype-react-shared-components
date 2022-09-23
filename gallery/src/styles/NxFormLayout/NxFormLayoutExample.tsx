@@ -106,16 +106,6 @@ export default function NxFormLayoutExample() {
         setFilePristine(false);
       };
 
-  const formValidationErrors =
-      hasValidationErrors(
-          textInputState.validationErrors,
-          commentState.validationErrors,
-          colorValidationError,
-          selectState.validationErrors,
-          tagColorState.validationErrors,
-          !files?.length ? 'A file is required' : null
-      ) ? 'Required fields are missing' : null;
-
   const [matches, setMatches] = useState<DataItem<number, string>[]>(comboboxItems),
       [comboboxInputState, setComboboxInputState] = useState(initialState('', validator)),
       onComboboxChange = (query: string) => setComboboxInputState(userInput(validator, query)),
@@ -128,6 +118,17 @@ export default function NxFormLayoutExample() {
         setMatches(search(query));
       }, [comboboxInputState.value]),
       onComboboxSearch = (query: string) => query ? executeQuery(query) : setMatches(comboboxItems);
+
+  const formValidationErrors =
+      hasValidationErrors(
+          textInputState.validationErrors,
+          commentState.validationErrors,
+          colorValidationError,
+          selectState.validationErrors,
+          tagColorState.validationErrors,
+          !files?.length ? 'A file is required' : null,
+          comboboxInputState.validationErrors
+      ) ? 'Required fields are missing' : null;
 
   function onSubmit() {
     alert('Submitted!');
