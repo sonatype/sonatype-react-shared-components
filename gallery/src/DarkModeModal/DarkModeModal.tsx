@@ -21,6 +21,8 @@ import {
 
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
+import { themingEnabled, themeOverride, setThemingEnabled, setThemeOverride } from '../themeClassManager';
+
 type Props = {
   modalCloseHandler: () => void;
 };
@@ -30,43 +32,49 @@ type themeMode = 'enabled' | 'light' | 'dark'| 'disabled';
 const DarkModeModal = (props:Props) => {
   const { modalCloseHandler } = props;
 
-  const [mode, setMode] = useState<themeMode>('disabled');
-  const [modeClassnames, setModeClassnames] = useState<string[]>([]);
+  const [themingEnabledState, setThemingEnabledState] = useState(themingEnabled),
+      [themeOverrideState, setThemeOverrideState] = useState(themeOverride);
 
-  useEffect(() => {
-    const { classList } = document.documentElement;
+  useEffect(function() {
+    setThemingEnabled(themingEnabledState);
+  }, [themingEnabled]);
 
-    if (classList.contains('nx-html--enable-color-schemes')) {
-      setMode('enabled');
-      if (classList.contains('nx-html--dark-mode')) {
-        setMode('dark');
-      }
-      else if (classList.contains('nx-html--light-mode')) {
-        setMode('light');
-      }
-    }
-    else {
-      setMode('disabled');
-    }
-  }, []);
+  useEffect(function() {
+    setThemingEnabled(themingEnabledState);
+  }, [themingEnabled]);
 
-  useEffect(() => {
-    const { classList } = document.documentElement;
+  //const [mode, setMode] = useState<themeMode>('disabled');
+  //const [modeClassnames, setModeClassnames] = useState<string[]>([]);
 
-    classList.toggle('nx-html--enable-color-schemes', mode !== 'disabled');
-    classList.toggle('nx-html--dark-mode', mode === 'dark');
-    classList.toggle('nx-html--light-mode', mode === 'light');
+  //useEffect(() => {
+    //const { classList } = document.documentElement;
 
-    const classesArray = Array.from(classList);
-    setModeClassnames(classesArray);
+    //if (classList.contains('nx-html--enable-color-schemes')) {
+      //setMode('enabled');
+      //if (classList.contains('nx-html--dark-mode')) {
+        //setMode('dark');
+      //}
+      //else if (classList.contains('nx-html--light-mode')) {
+        //setMode('light');
+      //}
+    //}
+    //else {
+      //setMode('disabled');
+    //}
+  //}, []);
 
-  }, [mode]);
+  //useEffect(() => {
 
-  const handleThemeChange = () => setMode(mode !== 'disabled' ? 'disabled' : 'enabled');
+    //const classesArray = Array.from(classList);
+    //setModeClassnames(classesArray);
 
-  useEffect(() => {
-    localStorage.setItem('classes', JSON.stringify(modeClassnames));
-  }, [modeClassnames]);
+  //}, [mode]);
+
+  //const handleThemeChange = () => setMode(mode !== 'disabled' ? 'disabled' : 'enabled');
+
+  //useEffect(() => {
+    //localStorage.setItem('classes', JSON.stringify(modeClassnames));
+  //}, [modeClassnames]);
 
   return (
     <NxModal id="nx-modal-dark-mode-example"
