@@ -79,8 +79,8 @@ const NxMeterPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell />
             <NxTable.Cell>
-              NxMeter supports any html attribute that are normally supported by HTML
-              <NxCode>&lt;meter&gt;</NxCode> elements, with the exception of <NxCode>min</NxCode>,
+              NxMeter supports any html attribute that are normally supported by HTML{' '}
+              <NxCode>&lt;meter&gt;</NxCode> elements, with the exception of <NxCode>min</NxCode>,{' '}
               <NxCode>low</NxCode>, <NxCode>high</NxCode>, and <NxCode>optimum</NxCode>. These attributes may
               become supported in the future.
             </NxTable.Cell>
@@ -93,7 +93,7 @@ const NxMeterPage = () =>
                         id="nx-meter-example"
                         liveExample={NxMeterExample}
                         codeExamples={nxMeterExampleCode}>
-      Examples of <NxCode>NxMeter</NxCode> showing 0% measurements, 100% meaurements, and in-between measurements.
+      Examples of <NxCode>NxMeter</NxCode> showing 0% measurements, 100% measurements, and in-between measurements.
     </GalleryExampleTile>
   </>;
 
