@@ -158,7 +158,8 @@ const NxTilesExamples = () =>
     <GalleryExampleTile title="Simple Convenience Components Example"
                         id="nx-tile-simple-convenience-components-example"
                         liveExample={NxTileSimpleConvenienceComponentsExample}
-                        codeExamples={NxTileSimpleConvenienceComponentsCode}>
+                        codeExamples={NxTileSimpleConvenienceComponentsCode}
+                        defaultCheckeredBackground={true}>
       An example of a tile built from convenience components, while also demonstrating the automatic inclusion of{' '}
       <NxCode>NxOverflowingTooltip</NxCode> inside <NxCode>NxTile.HeaderTitle</NxCode>.
     </GalleryExampleTile>
