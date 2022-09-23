@@ -285,7 +285,7 @@ const pageConfig: PageConfig = {
     'Container Helpers': { content: NxContainerHelpersPage, type: 'sass' },
     'nx-scrollable': { content: NxScrollablePage, type: 'css' },
     'nx-viewport-sized': { content: NxViewportSizedPage, type: 'css' },
-    'Selectable Colors': { content: SelectableColorsPage, type: 'sass' },
+    'Selectable Colors': { content: SelectableColorsPage, type: 'css' },
     'Style Variables': { content: CssVariablesPage, type: 'css' }
   },
   'JavaScript & TypeScript Utilities': {
