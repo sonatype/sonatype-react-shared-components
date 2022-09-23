@@ -28,13 +28,14 @@ type Props = {
 type themeMode = 'enabled' | 'light' | 'dark'| 'disabled';
 
 const DarkModeModal = (props:Props) => {
-  const { modalCloseHandler} = props;
+  const { modalCloseHandler } = props;
 
   const [mode, setMode] = useState<themeMode>('disabled');
   const [modeClassnames, setModeClassnames] = useState<string[]>([]);
 
-  useEffect(()=> {
+  useEffect(() => {
     const { classList } = document.documentElement;
+
     if (classList.contains('nx-html--enable-color-schemes')) {
       setMode('enabled');
       if (classList.contains('nx-html--dark-mode')) {
@@ -47,10 +48,9 @@ const DarkModeModal = (props:Props) => {
     else {
       setMode('disabled');
     }
-
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
     const { classList } = document.documentElement;
 
     classList.toggle('nx-html--enable-color-schemes', mode !== 'disabled');
@@ -64,7 +64,7 @@ const DarkModeModal = (props:Props) => {
 
   const handleThemeChange = () => setMode(mode !== 'disabled' ? 'disabled' : 'enabled');
 
-  useEffect(()=> {
+  useEffect(() => {
     localStorage.setItem('classes', JSON.stringify(modeClassnames));
   }, [modeClassnames]);
 
@@ -95,7 +95,7 @@ const DarkModeModal = (props:Props) => {
                    value="browserChoice"
                    onChange={() => setMode('enabled')}
                    isChecked={mode === 'enabled'}
-                   disabled = {mode === 'disabled'}>
+                   disabled={mode === 'disabled'}>
             <span>Let Your Browser Color Preference Decide</span>
             <NxTooltip title={
               <>The default theme will be dictated by your browser or OS theme choice, which is
@@ -108,9 +108,9 @@ const DarkModeModal = (props:Props) => {
                    value="dark"
                    onChange={() => setMode('dark')}
                    isChecked={mode === 'dark'}
-                   disabled = {mode === 'disabled'}>
+                   disabled={mode === 'disabled'}>
             <span>Dark Mode</span>
-            <NxTooltip title= {
+            <NxTooltip title={
               <>Overrides the browser's default display theme to dark mode by adding the class
                 {' '}<NxCode>nx-html--dark-mode</NxCode> to the HTML element.
               </>}>
@@ -121,7 +121,7 @@ const DarkModeModal = (props:Props) => {
                    value="light"
                    onChange={() => setMode('light')}
                    isChecked={mode === 'light'}
-                   disabled = {mode === 'disabled'}>
+                   disabled={mode === 'disabled'}>
             <span>Light Mode</span>
             <NxTooltip title={
               <>Overrides the browser's default display theme to dark mode by adding the class
