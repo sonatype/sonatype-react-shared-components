@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { includes } from "ramda";
+import { includes } from 'ramda';
 
 const validThemeOverrides = [null, 'light', 'dark'] as const;
-type ThemeOverride = (typeof validThemeOverrides)[number]
+type ThemeOverride = (typeof validThemeOverrides)[number];
 
 export let themingEnabled: boolean = localStorage.getItem('theming-enabled') === 'true',
     themeOverride: ThemeOverride = getThemeOverride();
