@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxWarningAlert, NxInfoAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -29,6 +29,11 @@ const NxProgressBarPage = () =>
         of a task with support for labels and percentage counter.
         This component does not support indeterminate state.
       </NxP>
+      <NxInfoAlert>
+        There is a difference between meters and progress bars. While <NxCode>NxProgressBar</NxCode> is intended
+        to show the current state of some process as it moves towards completion over time, <NxCode>NxMeter</NxCode>
+        {' '}is intended to show a static numeric value in relation to its known maximum.
+      </NxInfoAlert>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>
@@ -110,6 +115,11 @@ const NxProgressBarPage = () =>
                 Width is set to 150px and height to 16px.
                 Both percentage counter and the label will be hidden.
               </NxP>
+              <NxWarningAlert>
+                Deprecation Warning: the inline variant of <NxCode>NxProgressBar</NxCode> is deprecated. This styling
+                was not truly intended for progress indicators but rather for meters. It has been replicated as a
+                separate component with the correct semantics for that use case: <NxCode>NxMeter</NxCode>.
+              </NxWarningAlert>
               <NxP>
                 <strong>"small": </strong>
                 The progress width is set to 100px.
@@ -194,7 +204,7 @@ const NxProgressBarPage = () =>
       a partial-progress, success (100% progress), and error state progress bar with and without inlineCounter.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NxProgressBar Inline Variant Example"
+    <GalleryExampleTile title="Deprecated NxProgressBar Inline Variant Example"
                         id="nx-progress-bar-inline-example"
                         liveExample={NxProgressBarInlineExample}
                         codeExamples={nxProgressBarInlineExampleCode}>
