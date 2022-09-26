@@ -36,6 +36,10 @@ const DarkModeModal = (props:Props) => {
     setThemingEnabled(themingEnabledState);
   }, [themingEnabled, themingEnabledState]);
 
+  useEffect(function() {
+    setThemeOverride(themeOverrideState);
+  }, [themeOverrideState]);
+
   return (
     <NxModal id="nx-modal-dark-mode-example"
              onCancel={modalCloseHandler}
@@ -61,9 +65,9 @@ const DarkModeModal = (props:Props) => {
         <NxFieldset label="Choose Your Mode">
           <NxRadio name="mode"
                    value="browserChoice"
-                   onChange={() => setMode('enabled')}
-                   isChecked={mode === 'enabled'}
-                   disabled={mode === 'disabled'}>
+                   onChange={() => setThemeOverrideState(null)}
+                   isChecked={themeOverrideState === null}
+                   disabled={!themingEnabledState}>
             <span>Let Your Browser Color Preference Decide</span>
             <NxTooltip title={
               <>The default theme will be dictated by your browser or OS theme choice, which is
@@ -74,9 +78,9 @@ const DarkModeModal = (props:Props) => {
           </NxRadio>
           <NxRadio name="mode"
                    value="dark"
-                   onChange={() => setMode('dark')}
-                   isChecked={mode === 'dark'}
-                   disabled={mode === 'disabled'}>
+                   onChange={() => setThemeOverrideState('dark')}
+                   isChecked={themeOverrideState === 'dark'}
+                   disabled={!themingEnabledState}>
             <span>Dark Mode</span>
             <NxTooltip title={
               <>Overrides the browser's default display theme to dark mode by adding the class
@@ -87,9 +91,9 @@ const DarkModeModal = (props:Props) => {
           </NxRadio>
           <NxRadio name="mode"
                    value="light"
-                   onChange={() => setMode('light')}
-                   isChecked={mode === 'light'}
-                   disabled={mode === 'disabled'}>
+                   onChange={() => setThemeOverrideState('light')}
+                   isChecked={themeOverrideState === 'light'}
+                   disabled={!themingEnabledState}>
             <span>Light Mode</span>
             <NxTooltip title={
               <>Overrides the browser's default display theme to dark mode by adding the class
