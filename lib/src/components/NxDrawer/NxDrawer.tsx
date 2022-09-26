@@ -90,7 +90,7 @@ function NxDrawer(props: Props) {
         if (
           dialogRef.current
           && !dialogRef.current.contains(targetElement)
-          && !(targetElement).closest('.nx-toast')
+          && !targetElement.closest('.nx-toast')
         ) {
           closeDrawer();
         }
