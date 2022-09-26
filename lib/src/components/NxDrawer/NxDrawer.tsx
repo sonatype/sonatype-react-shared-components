@@ -86,7 +86,12 @@ function NxDrawer(props: Props) {
       }
 
       const listener = (event: MouseEvent) => {
-        if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
+        const targetElement = event.target as Element;
+        if (
+          dialogRef.current
+          && !dialogRef.current.contains(targetElement)
+          && !(targetElement).closest('.nx-toast')
+        ) {
           closeDrawer();
         }
       };
