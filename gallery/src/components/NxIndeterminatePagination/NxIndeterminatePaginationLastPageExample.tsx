@@ -8,7 +8,8 @@ import React from 'react';
 import { NxIndeterminatePagination } from '@sonatype/react-shared-components';
 
 const NxIndeterminatePaginationLastPageExample = () =>
-  <NxIndeterminatePagination isLastPage={true}
+  <NxIndeterminatePagination aria-label="pagination - last page"
+                             isLastPage={true}
                              onPrevPageSelect={() => alert('Go to the previous page')}
                              onNextPageSelect={() => alert('Go to the next page')} />;
 

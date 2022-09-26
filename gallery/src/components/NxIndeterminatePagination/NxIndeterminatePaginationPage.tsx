@@ -112,7 +112,7 @@ const NxIndeterminatePaginationPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="First And Last Page Example"
-                        id="nx-indeterminate-pagination-example"
+                        id="nx-indeterminate-pagination-first-and-last-page-example"
                         liveExample={NxIndeterminatePaginationFirstAndLastPageExample}
                         codeExamples={nxIndeterminatePaginationFirstAndLastPageCode}>
       An <NxCode>NxIndeterminatePagination</NxCode> first and last page example.{' '}
