@@ -24,7 +24,8 @@ import CodeExample from '../../CodeExample';
 
 const NxToastComplexLayoutExampleCode = require('./NxToastComplexLayoutExample?raw'),
     NxToastSimpleLayoutExampleCode = require('./NxToastSimpleLayoutExample?raw'),
-    NxToastLegacyLayoutExampleCode = require('./NxToastLegacyLayoutExample?raw');
+    NxToastLegacyLayoutExampleCode = require('./NxToastLegacyLayoutExample?raw'),
+    NxDrawerWithNxToastExampleCode = require('../NxDrawer/NxDrawerWithNxToastExample?raw');
 
 const NxToastPage = () =>
   <>
@@ -249,6 +250,33 @@ const NxToastPage = () =>
           </NxAccordion.Header>
           <CodeExample content={NxToastLegacyLayoutExampleCode} />
           <GalleryTileFooter clipboardContent={NxToastLegacyLayoutExampleCode}/>
+        </NxStatefulAccordion>
+      </NxTile.Content>
+    </NxTile>
+
+    <NxTile>
+      <NxTile.HeaderTitle>
+        <NxH2>NxDrawer With NxToast Example</NxH2>
+      </NxTile.HeaderTitle>
+      <NxTile.Content>
+        <NxP>
+          An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxToast</NxCode>. If a toast is already open and
+          then a drawer is opened the toast appears on top of the drawer. This is the same if the toast is opened
+          from a button inside the drawer. Both the drawer and toast will close if a toast is closed.
+        </NxP>
+        <NxP>
+          <NxTextLink href="#/NxDrawerWithNxToastExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+      </NxTile.Content>
+      <NxTile.Content className= "nx-tile-content--accordion-container">
+        <NxStatefulAccordion>
+          <NxAccordion.Header>
+            <NxAccordion.Title>Example Code</NxAccordion.Title>
+          </NxAccordion.Header>
+          <CodeExample content={NxDrawerWithNxToastExampleCode} />
+          <GalleryTileFooter clipboardContent={NxDrawerWithNxToastExampleCode}/>
         </NxStatefulAccordion>
       </NxTile.Content>
     </NxTile>
