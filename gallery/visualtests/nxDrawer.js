@@ -115,7 +115,7 @@ describe('NxDrawer', function() {
 
   describe('NxDrawer with NxToast', function() {
     const browserSetup = setupBrowser('#/NxDrawerWithNxToastExample', false);
-    const { getPage, checkFullPageScreenshot, waitAndGetElements, wait } = browserSetup;
+    const { getPage, checkFullPageScreenshot, waitAndGetElements, wait, isVisible } = browserSetup;
     const openDrawer = openDrawerFromPage(browserSetup);
 
     const buttonId = 'nx-drawer-with-nx-toast-open-button';
@@ -132,6 +132,22 @@ describe('NxDrawer', function() {
 
       await wait(500);
       await checkFullPageScreenshot();
+    });
+
+    it('it stays open when the toast is closed', async function() {
+      await getPage().setViewport(viewportSize);
+      const [openErrorToastButton] = await waitAndGetElements('#nx-toast-error-open-button');
+      const drawer = await waitAndGetElements('#nx-drawer-with-nx-toast');
+
+      await openDrawer(buttonId, drawerId);
+      await openErrorToastButton.click();
+
+      const toast = await waitAndGetElements('.nx-toast-container .nx-toast');
+      const [closeToast] = await waitAndGetElements('.nx-toast .nx-btn--close');
+      await closeToast.click();
+
+      expect(await isVisible(drawer)).toBe(true);
+      expect(await isVisible(toast)).toBe(false);
     });
   });
 
