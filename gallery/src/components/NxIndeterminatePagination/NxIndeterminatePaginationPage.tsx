@@ -9,9 +9,15 @@ import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-compone
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
+import NxIndeterminatePaginationFirstPageExample from './NxIndeterminatePaginationFirstPageExample';
+import NxIndeterminatePaginationLastPageExample from './NxIndeterminatePaginationLastPageExample';
+import NxIndeterminatePaginationFirstAndLastPageExample from './NxIndeterminatePaginationFirstAndLastPageExample';
 import NxIndeterminatePaginationExample from './NxIndeterminatePaginationExample';
 
 const nxIndeterminatePaginationCode = require('./NxIndeterminatePaginationExample?raw');
+const nxIndeterminatePaginationFirstPageCode = require('./NxIndeterminatePaginationFirstPageExample?raw');
+const nxIndeterminatePaginationLastPageCode = require('./NxIndeterminatePaginationLastPageExample?raw');
+const nxIndeterminatePaginationFirstAndLastPageCode = require('./NxIndeterminatePaginationFirstAndLastPageExample?raw');
 
 const NxIndeterminatePaginationPage = () =>
   <>
@@ -49,6 +55,22 @@ const NxIndeterminatePaginationPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell><NxCode>isFirstPage</NxCode></NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              If this is set to true, the previous button is disabled.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell><NxCode>isLastPage</NxCode></NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              If this is set to true, the next button is disabled.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
             <NxTable.Cell>
               <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
@@ -71,6 +93,30 @@ const NxIndeterminatePaginationPage = () =>
                         liveExample={NxIndeterminatePaginationExample}
                         codeExamples={nxIndeterminatePaginationCode}>
       An <NxCode>NxIndeterminatePagination</NxCode> component.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="First Page Example"
+                        id="nx-indeterminate-pagination-first-page-example"
+                        liveExample={NxIndeterminatePaginationFirstPageExample}
+                        codeExamples={nxIndeterminatePaginationFirstPageCode}>
+      An<NxCode>NxIndeterminatePagination</NxCode> first page example.{' '}
+      The previous button is disabled.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Last Page Example"
+                        id="nx-indeterminate-pagination-last-page-example"
+                        liveExample={NxIndeterminatePaginationLastPageExample}
+                        codeExamples={nxIndeterminatePaginationLastPageCode}>
+      An <NxCode>NxIndeterminatePagination</NxCode> last page example.{' '}
+      The next button is disabled.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="First And Last Page Example"
+                        id="nx-indeterminate-pagination-example"
+                        liveExample={NxIndeterminatePaginationFirstAndLastPageExample}
+                        codeExamples={nxIndeterminatePaginationFirstAndLastPageCode}>
+      An <NxCode>NxIndeterminatePagination</NxCode> first and last page example.{' '}
+      Notice that both buttons are disabled.
     </GalleryExampleTile>
   </>;
 
