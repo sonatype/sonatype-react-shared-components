@@ -34,11 +34,7 @@ const DarkModeModal = (props:Props) => {
 
   useEffect(function() {
     setThemingEnabled(themingEnabledState);
-  }, [themingEnabled]);
-
-  useEffect(function() {
-    setThemingEnabled(themingEnabledState);
-  }, [themingEnabled]);
+  }, [themingEnabled, themingEnabledState]);
 
   return (
     <NxModal id="nx-modal-dark-mode-example"
@@ -51,7 +47,7 @@ const DarkModeModal = (props:Props) => {
       </header>
       <div className="nx-modal-content">
         <NxFormGroup label="Enable Theme Changes">
-          <NxToggle onChange={handleThemeChange} isChecked={mode !== 'disabled'}>
+          <NxToggle onChange={()=> setThemingEnabledState(!themingEnabledState)} isChecked={themingEnabledState}>
             Opt-in to Allow Theming
             <NxTooltip title={
               <>Opting in will allow you to make adjustments to the display theme. Failure
