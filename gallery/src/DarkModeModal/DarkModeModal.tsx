@@ -11,7 +11,6 @@ import {
   NxModal,
   NxFormGroup,
   NxToggle,
-  // useToggle,
   NxFieldset,
   NxRadio,
   NxTooltip,
@@ -27,8 +26,6 @@ type Props = {
   modalCloseHandler: () => void;
 };
 
-type themeMode = 'enabled' | 'light' | 'dark'| 'disabled';
-
 const DarkModeModal = (props:Props) => {
   const { modalCloseHandler } = props;
 
@@ -42,39 +39,6 @@ const DarkModeModal = (props:Props) => {
   useEffect(function() {
     setThemingEnabled(themingEnabledState);
   }, [themingEnabled]);
-
-  //const [mode, setMode] = useState<themeMode>('disabled');
-  //const [modeClassnames, setModeClassnames] = useState<string[]>([]);
-
-  //useEffect(() => {
-    //const { classList } = document.documentElement;
-
-    //if (classList.contains('nx-html--enable-color-schemes')) {
-      //setMode('enabled');
-      //if (classList.contains('nx-html--dark-mode')) {
-        //setMode('dark');
-      //}
-      //else if (classList.contains('nx-html--light-mode')) {
-        //setMode('light');
-      //}
-    //}
-    //else {
-      //setMode('disabled');
-    //}
-  //}, []);
-
-  //useEffect(() => {
-
-    //const classesArray = Array.from(classList);
-    //setModeClassnames(classesArray);
-
-  //}, [mode]);
-
-  //const handleThemeChange = () => setMode(mode !== 'disabled' ? 'disabled' : 'enabled');
-
-  //useEffect(() => {
-    //localStorage.setItem('classes', JSON.stringify(modeClassnames));
-  //}, [modeClassnames]);
 
   return (
     <NxModal id="nx-modal-dark-mode-example"
