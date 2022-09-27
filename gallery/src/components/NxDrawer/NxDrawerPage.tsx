@@ -337,7 +337,7 @@ export default function NxDrawerPage() {
           <NxP>
             An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxToast</NxCode>. If a toast is already open and
             then a drawer is opened the toast appears on top of the drawer. This is the same if the toast is opened
-            from a button inside the drawer. Both the drawer and toast will close if a toast is closed.
+            from a button inside the drawer. The drawer stays open if the toast is closed.
           </NxP>
           <NxP>
             <NxTextLink href="#/NxDrawerWithNxToastExample">
