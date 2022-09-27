@@ -7,7 +7,15 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-tile', function() {
-  const { simpleTest, waitAndGetElements, checkScreenshot, a11yTest } = setupBrowser('#/pages/Tile');
+  const {
+    simpleTest,
+    waitAndGetElements,
+    checkScreenshot,
+    checkScreenshotCoordinates,
+    a11yTest,
+    scrollIntoView,
+    wait
+  } = setupBrowser('#/pages/Tile');
 
   const simpleTileSelector = '#nx-tile-simple-example .nx-tile',
       headerlessTileSelector = '#nx-tile-headerless-example .nx-tile',
@@ -20,7 +28,9 @@ describe('nx-tile', function() {
       dropdownActionMenuTileSelector = '#nx-tile-dropdown-actions-example .nx-tile',
       accordionTileSelector = '#nx-tile-accordion-example .gallery-example-live',
       policyViolationIndicatorTileSelector = '#nx-tile-policy-violation-indicator-example .gallery-example-live',
-      alertChildTileSelector = '#nx-tile-form-error-example .gallery-example-live';
+      alertChildTileSelector = '#nx-tile-form-error-example .gallery-example-live',
+      simpleConvenienceComponentsSelector = '#nx-tile-simple-convenience-components-example .gallery-example-live',
+      simpleConvenienceComponentsTitleSelector = `${simpleConvenienceComponentsSelector} .nx-tile-header__title`;
 
   describe('Simple nx-tile', function() {
     it('looks right', simpleTest(simpleTileSelector));
@@ -85,6 +95,25 @@ describe('nx-tile', function() {
 
   describe('nx-tile with alert as only child', function() {
     it('looks right', simpleTest(alertChildTileSelector));
+  });
+
+  describe('nx-tile with convenience components', function() {
+    it('shows a tooltip when the truncated tile header title is hovered', async function() {
+      const [exampleElement, titleElement] = await waitAndGetElements(
+          simpleConvenienceComponentsSelector,
+          simpleConvenienceComponentsTitleSelector
+      );
+
+      await scrollIntoView(exampleElement);
+
+      await titleElement.hover();
+
+      await wait(500);
+
+      const { x, y, height, width } = await exampleElement.boundingBox();
+      const tooltipHeightOffset = 16;
+      await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
+    });
   });
 
   it('passes a11y checks', a11yTest());

@@ -22,7 +22,7 @@ describe('NxDrawer', function() {
 
   describe('NxDrawer with Title, Footer, and non-overflowing Content', function() {
     const browserSetup = setupBrowser('#/NxDrawerExample', false);
-    const { getPage, checkFullPageScreenshot, a11yTest } = browserSetup;
+    const { getPage, checkFullPageScreenshot, a11yTest, waitAndGetElements, wait } = browserSetup;
     const openDrawer = openDrawerFromPage(browserSetup);
 
     const buttonId = 'nx-drawer-with-footer-open-button';
@@ -31,6 +31,18 @@ describe('NxDrawer', function() {
     it('looks right', async function() {
       await getPage().setViewport(viewportSize);
       await openDrawer(buttonId, drawerId);
+      await checkFullPageScreenshot();
+    });
+
+    it('shows a tooltip when truncated drawer header title is hovered', async function() {
+      await getPage().setViewport(viewportSize);
+      await openDrawer('nx-drawer-truncated-open-button', 'nx-drawer-simple-truncated');
+
+      const headerTitleSelector = '#nx-drawer-simple-truncated .nx-drawer-header__title';
+      const [focusElement] = await waitAndGetElements(headerTitleSelector);
+
+      await focusElement.hover();
+      await wait(500);
       await checkFullPageScreenshot();
     });
 
