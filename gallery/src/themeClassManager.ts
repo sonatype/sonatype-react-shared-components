@@ -26,8 +26,6 @@ function updateHtmlClasses() {
   classList.toggle('nx-html--light-mode', themeOverride === 'light');
 }
 
-updateHtmlClasses();
-
 export function setThemingEnabled(newThemingEnabled: boolean) {
   localStorage.setItem('theming-enabled', newThemingEnabled.toString());
   themingEnabled = newThemingEnabled;
@@ -45,3 +43,5 @@ export function setThemeOverride(newThemeOverride: ThemeOverride) {
   themeOverride = newThemeOverride;
   updateHtmlClasses();
 }
+
+updateHtmlClasses();
