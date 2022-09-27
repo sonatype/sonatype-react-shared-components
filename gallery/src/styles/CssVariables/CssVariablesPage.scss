@@ -16,5 +16,9 @@
 }
 
 .nx-list__term {
-  font-weight: 400;
+  display: block;
+
+  .nx-code {
+    font-weight: 400;
+  }
 }
