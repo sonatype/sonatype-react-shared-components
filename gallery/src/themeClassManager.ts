@@ -22,8 +22,8 @@ function updateHtmlClasses() {
   const { classList } = document.documentElement;
 
   classList.toggle('nx-html--enable-color-schemes', themingEnabled);
-  classList.toggle('nx-html--dark-mode', themeOverride === 'dark');
-  classList.toggle('nx-html--light-mode', themeOverride === 'light');
+  classList.toggle('nx-html--dark-mode', themeOverride === 'dark' && themingEnabled);
+  classList.toggle('nx-html--light-mode', themeOverride === 'light' && themingEnabled);
 }
 
 export function setThemingEnabled(newThemingEnabled: boolean) {
