@@ -5,25 +5,24 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxTextLink, NxInfoAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxIndeterminatePaginationFirstPageExample from './NxIndeterminatePaginationFirstPageExample';
 import NxIndeterminatePaginationLastPageExample from './NxIndeterminatePaginationLastPageExample';
-import NxIndeterminatePaginationFirstAndLastPageExample from './NxIndeterminatePaginationFirstAndLastPageExample';
 import NxIndeterminatePaginationExample from './NxIndeterminatePaginationExample';
 
 const nxIndeterminatePaginationCode = require('./NxIndeterminatePaginationExample?raw');
 const nxIndeterminatePaginationFirstPageCode = require('./NxIndeterminatePaginationFirstPageExample?raw');
 const nxIndeterminatePaginationLastPageCode = require('./NxIndeterminatePaginationLastPageExample?raw');
-const nxIndeterminatePaginationFirstAndLastPageCode = require('./NxIndeterminatePaginationFirstAndLastPageExample?raw');
 
 const NxIndeterminatePaginationPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        A pagination control for use in cases where the current page number and total number of pages is indeterminate.
+        A pagination control for use in cases where the current page number{' '}
+        (except for if it is the first or last page) and the total number of pages is indeterminate.{' '}
         This component simply allows the user to navigate to the next and previous pages.
       </NxP>
       <NxTable>
@@ -59,7 +58,7 @@ const NxIndeterminatePaginationPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              If this is set to true, the previous button is disabled.
+              If this is set to true, the previous button is hidden.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -67,7 +66,7 @@ const NxIndeterminatePaginationPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              If this is set to true, the next button is disabled.
+              If this is set to true, the next button is hidden.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -85,7 +84,10 @@ const NxIndeterminatePaginationPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
-
+      <NxInfoAlert>
+        In the case that there is only one page (both being the first and last page),{' '}
+        the entire pagination should not be rendered.
+      </NxInfoAlert>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Default Example"
@@ -100,7 +102,7 @@ const NxIndeterminatePaginationPage = () =>
                         liveExample={NxIndeterminatePaginationFirstPageExample}
                         codeExamples={nxIndeterminatePaginationFirstPageCode}>
       An<NxCode>NxIndeterminatePagination</NxCode> first page example.{' '}
-      The previous button is disabled.
+      The previous button is hidden.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Last Page Example"
@@ -108,15 +110,7 @@ const NxIndeterminatePaginationPage = () =>
                         liveExample={NxIndeterminatePaginationLastPageExample}
                         codeExamples={nxIndeterminatePaginationLastPageCode}>
       An <NxCode>NxIndeterminatePagination</NxCode> last page example.{' '}
-      The next button is disabled.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="First And Last Page Example"
-                        id="nx-indeterminate-pagination-first-and-last-page-example"
-                        liveExample={NxIndeterminatePaginationFirstAndLastPageExample}
-                        codeExamples={nxIndeterminatePaginationFirstAndLastPageCode}>
-      An <NxCode>NxIndeterminatePagination</NxCode> first and last page example.{' '}
-      Notice that both buttons are disabled.
+      The next button is hidden.
     </GalleryExampleTile>
   </>;
 

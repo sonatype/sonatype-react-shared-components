@@ -12,15 +12,12 @@ describe('NxIndeterminatePagination', function() {
   const selector = '#nx-indeterminate-pagination-example .gallery-example-live';
   const firstPageSelector = '#nx-indeterminate-pagination-first-page-example .gallery-example-live';
   const lastPageSelector = '#nx-indeterminate-pagination-last-page-example .gallery-example-live';
-  const firstAndLastPageSelector = '#nx-indeterminate-pagination-first-and-last-page-example .gallery-example-live';
 
   it('looks right', simpleTest(selector));
 
   it('looks right on first page', simpleTest(firstPageSelector));
 
   it('looks right on last page', simpleTest(lastPageSelector));
-
-  it('looks right on first and last page', simpleTest(firstAndLastPageSelector));
 
   it('passes a11y checks', a11yTest());
 });
