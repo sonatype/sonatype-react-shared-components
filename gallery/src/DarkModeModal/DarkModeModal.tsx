@@ -34,7 +34,7 @@ const DarkModeModal = (props:Props) => {
 
   useEffect(function() {
     setThemingEnabled(themingEnabledState);
-  }, [themingEnabled, themingEnabledState]);
+  }, [themingEnabledState]);
 
   useEffect(function() {
     setThemeOverride(themeOverrideState);
