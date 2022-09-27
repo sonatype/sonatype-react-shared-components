@@ -67,8 +67,6 @@ describe('NxTag', function() {
         // expected distance from top of element to the top of its tooltip
         tooltipHeightOffset = 21;
 
-    it('looks right', simpleTest(selector));
-
     it('shows custom tooltip', async function() {
       const [exampleElement, tooltipTagElement] = await waitAndGetElements(selector, tagSelector);
 
