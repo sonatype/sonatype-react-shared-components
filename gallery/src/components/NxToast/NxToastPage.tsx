@@ -255,9 +255,11 @@ const NxToastPage = () =>
     </NxTile>
 
     <NxTile>
-      <NxTile.HeaderTitle>
-        <NxH2>NxDrawer With NxToast Example</NxH2>
-      </NxTile.HeaderTitle>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>NxDrawer With NxToast Example</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
       <NxTile.Content>
         <NxP>
           An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxToast</NxCode>. If a toast is already open and
