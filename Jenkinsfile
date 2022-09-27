@@ -11,6 +11,7 @@ def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
 
 dockerizedBuildPipeline(
   deployBranch: 'main',
+  agentLabel: 'ubuntu-zion-legacy',
   // expose gallery port and nextjs dev port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043 -p 3000:3000',
 
