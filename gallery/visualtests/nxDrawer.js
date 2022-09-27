@@ -134,17 +134,27 @@ describe('NxDrawer', function() {
       await checkFullPageScreenshot();
     });
 
-    it('it stays open when the toast is closed', async function() {
+    it('stays open when the toast is closed', async function() {
       await getPage().setViewport(viewportSize);
-      const [openErrorToastButton] = await waitAndGetElements('#nx-toast-error-open-button');
-      const drawer = await waitAndGetElements('#nx-drawer-with-nx-toast');
+
+      const [drawer] = await waitAndGetElements('#nx-drawer-with-nx-toast');
 
       await openDrawer(buttonId, drawerId);
+
+      const [openErrorToastButton] = await waitAndGetElements('#nx-toast-error-open-button');
+
       await openErrorToastButton.click();
 
-      const toast = await waitAndGetElements('.nx-toast-container .nx-toast');
+      const [toast] = await waitAndGetElements('.nx-toast');
+
+      await wait(500);
+
+      expect(await isVisible(toast)).toBe(true);
+
       const [closeToast] = await waitAndGetElements('.nx-toast .nx-btn--close');
       await closeToast.click();
+
+      await wait(500);
 
       expect(await isVisible(drawer)).toBe(true);
       expect(await isVisible(toast)).toBe(false);
