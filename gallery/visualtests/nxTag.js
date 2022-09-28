@@ -72,7 +72,6 @@ describe('NxTag', function() {
 
       // hover the tag to activate its tooltip.
       await scrollIntoView(exampleElement);
-
       await tooltipTagElement.hover();
       await wait(1500);
       const { x, y, height, width } = await exampleElement.boundingBox();
