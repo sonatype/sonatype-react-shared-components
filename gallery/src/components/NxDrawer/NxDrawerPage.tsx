@@ -335,9 +335,8 @@ export default function NxDrawerPage() {
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxToast</NxCode>. If a toast is already open and
-            then a drawer is opened the toast appears on top of the drawer. This is the same if the toast is opened
-            from a button inside the drawer. The drawer stays open if the toast is closed.
+            An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxToast</NxCode>.
+            The toast is always positioned above NxDrawer, no matter the order in which they are opened.
           </NxP>
           <NxP>
             <NxTextLink href="#/NxDrawerWithNxToastExample">
