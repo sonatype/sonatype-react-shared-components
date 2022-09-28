@@ -31,14 +31,14 @@ export default function NxIndeterminatePagination(props: Props) {
                 aria-label="previous page"
                 onClick={onPrevPageSelect}
                 variant="tertiary"
-                style={{ visibility: isFirstPage ? 'hidden' : 'visible' }}>
+                className={isFirstPage ? 'hidden' : ''}>
         <NxFontAwesomeIcon icon={faCaretLeft} size="lg" />
       </NxButton>
       <NxButton type="button"
                 aria-label="next page"
                 onClick={onNextPageSelect}
                 variant="tertiary"
-                style={{ visibility: isLastPage ? 'hidden' : 'visible' }}>
+                className={isLastPage ? 'hidden' : ''}>
         <NxFontAwesomeIcon icon={faCaretRight} size="lg" />
       </NxButton>
     </nav>
