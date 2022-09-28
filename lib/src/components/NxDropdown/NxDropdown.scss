@@ -13,10 +13,10 @@
   display: inline-block;
   position: relative;
   width: nx-dropdown-variables.$dropdown-width;
-}
 
-.nx-dropdown-icon {
-  color: var(--nx-swatch-grey-05);
+  .nx-icon:not(.nx-icon--colorful) {
+    color: var(--nx-swatch-grey-05); 
+  }
 }
 
 .nx-dropdown--short {

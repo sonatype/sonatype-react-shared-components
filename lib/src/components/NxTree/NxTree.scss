@@ -142,7 +142,7 @@
     margin-left: $item-label-left-margin;
     margin-right: var(--nx-spacing-base);
 
-    .nx-icon:not(.nx-tree__colored-icon) {
+    .nx-icon:not(.nx-tree__colored-icon, .nx-icon--colorful) {
       color: var(--nx-swatch-grey-05);
     }
 
