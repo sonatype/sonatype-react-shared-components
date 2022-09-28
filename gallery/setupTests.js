@@ -12,7 +12,8 @@ jest.retryTimes(3);
 
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   customDiffDir: path.join(__dirname, 'test-results'),
-  customSnapshotIdentifier: ({ defaultIdentifier }) => defaultIdentifier
+  // eslint-disable-next-line no-undef
+  customSnapshotIdentifier: ({ defaultIdentifier }) => defaultIdentifier + (process.env.THEME === 'DARK' ? '-dark' : '')
 });
 
 expect.extend({ toMatchImageSnapshot });

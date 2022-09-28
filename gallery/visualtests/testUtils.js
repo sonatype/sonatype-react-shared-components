@@ -56,6 +56,12 @@ module.exports = {
 
     beforeEach(async function() {
       page = await browser.newPage();
+
+      // eslint-disable-next-line no-undef
+      if (process.env.THEME === 'DARK') {
+        await page.emulateMediaFeatures([{name: 'prefers-color-scheme', value: 'dark'}]);
+      }
+
       await page.goto(pageUrl + pageFragmentIdentifier);
 
       if (ignoreVersionNumber) {
