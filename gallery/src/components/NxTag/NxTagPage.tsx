@@ -139,7 +139,7 @@ const NxTagPage = () =>
                         liveExample={NxTagWithTooltipExample}
                         codeExamples={NxTagWithTooltipExampleCode}>
       An example of <NxCode>NxTag</NxCode> wrapped inside <NxCode>NxTooltip</NxCode>.{' '}
-      Notice that <NxCode>NxTooltip</NxCode> title overrides the <NxCode>NxOverflowTooltip</NxCode>{' '}
+      Notice that the wrapping <NxCode>NxTooltip</NxCode> title overrides the <NxCode>NxOverflowTooltip</NxCode>{' '}
       generated when the label is truncated.
     </GalleryExampleTile>
 
@@ -148,7 +148,7 @@ const NxTagPage = () =>
                         liveExample={NxSelectableTagWithTooltipExample}
                         codeExamples={NxSelectableTagWithTooltipExampleCode}>
       An example of <NxCode>NxSelectableTag</NxCode> wrapped inside <NxCode>NxTooltip</NxCode>.{' '}
-      Notice that <NxCode>NxTooltip</NxCode> title overrides the <NxCode>NxOverflowTooltip</NxCode>{' '}
+      Notice that the wrapping <NxCode>NxTooltip</NxCode> title overrides the <NxCode>NxOverflowTooltip</NxCode>{' '}
       generated when the label is truncated.
     </GalleryExampleTile>
   </>;
