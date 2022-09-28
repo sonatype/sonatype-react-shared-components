@@ -337,6 +337,7 @@ export default function NxDrawerPage() {
           <NxP>
             An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxToast</NxCode>.
             The toast is always positioned above NxDrawer, no matter the order in which they are opened.
+            The drawer stays open if the toast is closed.
           </NxP>
           <NxP>
             <NxTextLink href="#/NxDrawerWithNxToastExample">
