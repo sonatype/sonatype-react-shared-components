@@ -13,11 +13,13 @@ import NxTagExample from './NxTagExample';
 import NxSelectableTagExample from './NxSelectableTagExample';
 import NxTagNarrowExample from './NxTagNarrowExample';
 import NxTagWithTooltipExample from './NxTagWithTooltipExample';
+import NxSelectableTagWithTooltipExample from './NxSelectableTagWithTooltipExample';
 
 const NxTagExampleCode = require('./NxTagExample?raw');
 const NxSelectableTagExampleCode = require('./NxSelectableTagExample?raw');
 const NxTagNarrowExampleCode = require('./NxTagNarrowExample?raw');
 const NxTagWithTooltipExampleCode = require('./NxTagWithTooltipExample?raw');
+const NxSelectableTagWithTooltipExampleCode = require('./NxSelectableTagWithTooltipExample?raw');
 
 const NxTagPage = () =>
   <>
@@ -137,6 +139,14 @@ const NxTagPage = () =>
                         liveExample={NxTagWithTooltipExample}
                         codeExamples={NxTagWithTooltipExampleCode}>
       An example of <NxCode>NxTag</NxCode> wrapped inside <NxCode>NxTooltip</NxCode>.{' '}
+      Notice that <NxCode>NxTooltip</NxCode> title overrides the tooltip generated when the text is truncated.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxSelectableTag With Tooltip"
+                        id="nx-selectable-tag-with-tooltip-example"
+                        liveExample={NxSelectableTagWithTooltipExample}
+                        codeExamples={NxSelectableTagWithTooltipExampleCode}>
+      An example of <NxCode>NxSelectableTag</NxCode> wrapped inside <NxCode>NxTooltip</NxCode>.{' '}
       Notice that <NxCode>NxTooltip</NxCode> title overrides the tooltip generated when the text is truncated.
     </GalleryExampleTile>
   </>;

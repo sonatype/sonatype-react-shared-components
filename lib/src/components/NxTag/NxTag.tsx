@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -23,7 +23,7 @@ const NxTag = forwardRef<HTMLLabelElement, Props>(function NxTag(props, ref) {
       });
 
   const label = (
-    <label className={tagClasses} title={title} {...attrs} ref={ref}>
+    <label className={tagClasses} title={title} ref={ref} {...attrs}>
       <span className="nx-tag__text">{children}</span>
       {selectedIcons}
     </label>
@@ -35,8 +35,8 @@ const NxTag = forwardRef<HTMLLabelElement, Props>(function NxTag(props, ref) {
 NxTag.propTypes = propTypes;
 export default NxTag;
 
-export const NxSelectableTag: FunctionComponent<SelectableProps> =
-    function NxSelectableTag(props) {
+export const NxSelectableTag = forwardRef<HTMLLabelElement, SelectableProps>(
+    function NxSelectableTag(props, ref) {
       const { children, className, selected, onSelect, ...attrs } = props,
           isSelected = selected,
           tagClasses = classnames('nx-tag--selectable', className, {
@@ -47,7 +47,7 @@ export const NxSelectableTag: FunctionComponent<SelectableProps> =
             <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} className="nx-tag__action" />;
 
       return (
-        <NxTag className={tagClasses} selectedIcons={tagIcons} {...attrs}>
+        <NxTag className={tagClasses} selectedIcons={tagIcons} ref={ref} {...attrs}>
           {children}
           <input type="checkbox"
                  className="nx-tag__input"
@@ -57,6 +57,7 @@ export const NxSelectableTag: FunctionComponent<SelectableProps> =
                  onChange={onSelect || undefined} />
         </NxTag>
       );
-    };
+    }
+);
 
 NxSelectableTag.propTypes = selectablePropTypes;
