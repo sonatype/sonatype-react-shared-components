@@ -101,7 +101,7 @@ const NxIndeterminatePaginationPage = () =>
                         id="nx-indeterminate-pagination-first-page-example"
                         liveExample={NxIndeterminatePaginationFirstPageExample}
                         codeExamples={nxIndeterminatePaginationFirstPageCode}>
-      An<NxCode>NxIndeterminatePagination</NxCode> first page example.{' '}
+      An <NxCode>NxIndeterminatePagination</NxCode> first page example.{' '}
       The previous button is hidden.
     </GalleryExampleTile>
 
