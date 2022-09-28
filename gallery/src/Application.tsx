@@ -55,6 +55,7 @@ import NxDrawerConditionalRenderingExample from './components/NxDrawer/NxDrawerC
 import NxToastSimpleLayoutExample from './components/NxToast/NxToastSimpleLayoutExample';
 import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayoutExample';
 import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
+import NxToastWithNxDrawerExample from './components/NxToast/NxToastWithNxDrawerExample';
 
 const pageMappings = mergeAll(values(pageConfig));
 
@@ -131,6 +132,11 @@ function Application() {
         <Route exact path="/NxToastSimpleLayoutExample">
           <SectionScrollingWrapper>
             <NxToastSimpleLayoutExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxToastWithNxDrawerExample">
+          <SectionScrollingWrapper>
+            <NxToastWithNxDrawerExample />
           </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxToastComplexLayoutExample">

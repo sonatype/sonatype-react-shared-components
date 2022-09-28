@@ -25,7 +25,7 @@ import CodeExample from '../../CodeExample';
 const NxToastComplexLayoutExampleCode = require('./NxToastComplexLayoutExample?raw'),
     NxToastSimpleLayoutExampleCode = require('./NxToastSimpleLayoutExample?raw'),
     NxToastLegacyLayoutExampleCode = require('./NxToastLegacyLayoutExample?raw'),
-    NxDrawerWithNxToastExampleCode = require('../NxDrawer/NxDrawerWithNxToastExample?raw');
+    NxToastWithNxDrawerExample = require('./NxToastWithNxDrawerExample?raw');
 
 const NxToastPage = () =>
   <>
@@ -257,7 +257,7 @@ const NxToastPage = () =>
     <NxTile>
       <NxTile.Header>
         <NxTile.HeaderTitle>
-          <NxH2>NxDrawer With NxToast Example</NxH2>
+          <NxH2>NxToast With NxDrawer Example</NxH2>
         </NxTile.HeaderTitle>
       </NxTile.Header>
       <NxTile.Content>
@@ -266,7 +266,7 @@ const NxToastPage = () =>
           The toast is always positioned above NxDrawer, no matter the order in which they are opened.
         </NxP>
         <NxP>
-          <NxTextLink href="#/NxDrawerWithNxToastExample">
+          <NxTextLink href="#/NxToastWithNxDrawerExample">
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
@@ -276,8 +276,8 @@ const NxToastPage = () =>
           <NxAccordion.Header>
             <NxAccordion.Title>Example Code</NxAccordion.Title>
           </NxAccordion.Header>
-          <CodeExample content={NxDrawerWithNxToastExampleCode} />
-          <GalleryTileFooter clipboardContent={NxDrawerWithNxToastExampleCode}/>
+          <CodeExample content={NxToastWithNxDrawerExample} />
+          <GalleryTileFooter clipboardContent={NxToastWithNxDrawerExample}/>
         </NxStatefulAccordion>
       </NxTile.Content>
     </NxTile>
