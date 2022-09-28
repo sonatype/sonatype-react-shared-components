@@ -231,6 +231,19 @@ You can execute the tests within the Docker container based on that image by run
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
 ```
+
+Note that by running this command, all visual tests will run in both light (default) and dark modes. To run tests for light mode only, run:
+
+```
+docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest test
+```
+
+To run tests for dark mode only, run: 
+
+```
+docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest-dark test
+```
+
 On some computers, visual testing may take more than 20 minutes, so let the tests run in the background. Note that the
 `yarn test` command will (re-)install the gallery dependencies, ensuring that puppeteer downloads the correct version
 of Chromium before running the gallery build and tests.
@@ -245,9 +258,14 @@ specifics of your system. If seemingly spurious diffs are detected, try running 
 ### Updating Visual Test Screenshots
 
 If running the tests results in differences that are expected/intended based on new changes to the library, then the
-baseline screenshots may be updated by running the following command:
+baseline screenshots may be updated. To update light mode screenshots, run the following command:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest -u
+```
+
+To update dark mode screenshots, run the following command:
+```
+docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest-dark -u
 ```
 
 The command above ensures you update the screenshots within the Docker container. The updates need be run within the
