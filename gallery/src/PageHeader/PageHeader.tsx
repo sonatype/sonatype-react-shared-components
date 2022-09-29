@@ -6,35 +6,49 @@
  */
 import React from 'react';
 
+import { NxButton, useToggle } from '@sonatype/react-shared-components';
+
 import HostedVersionsSelect from './HostedVersionsSelect';
+import ThemeSettingsModal from '../ThemeSettingsModal/ThemeSettingsModal';
 
 const plaidVillain = require('./plaid-villain.svg');
 const tartanLogotype = require('./tartan-logotype.svg');
 
 import './PageHeader.scss';
 
-const PageHeader = () => (
-  <header className="nx-page-header gallery-page-header">
-    <div className="nx-page-header__inner">
-      <a className="gallery-page-header__home-link"
-         href="#/">
-        <img className="gallery-page-header__logo-image"
-             src={plaidVillain}
-             alt="" />
-        <img className="gallery-page-header__logotype-image"
-             src={tartanLogotype}
-             alt="Sonatype Tartan" />
-      </a>
+const PageHeader = () => {
+  const [showThemeSettingsModal, toggleShowThemeSettingsModal] = useToggle(false);
 
-      <span className="gallery-page-header__name">
-        React Shared Component Library
-      </span>
+  return (
+    <header className="nx-page-header gallery-page-header">
+      <div className="nx-page-header__inner">
+        <a className="gallery-page-header__home-link"
+           href="#/">
+          <img className="gallery-page-header__logo-image"
+               src={plaidVillain}
+               alt="" />
+          <img className="gallery-page-header__logotype-image"
+               src={tartanLogotype}
+               alt="Sonatype Tartan" />
+        </a>
 
-      <div className="gallery-page-header__version">
-        <HostedVersionsSelect />
+        <span className="gallery-page-header__name">
+          React Shared Component Library
+        </span>
+        <NxButton className="gallery-page-header__theme-settings-button"
+                  variant="tertiary"
+                  onClick={toggleShowThemeSettingsModal}>
+          Theme Settings
+        </NxButton>
+        { showThemeSettingsModal &&
+          <ThemeSettingsModal onClose={toggleShowThemeSettingsModal} />
+        }
+        <div className="gallery-page-header__version">
+          <HostedVersionsSelect />
+        </div>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 export default PageHeader;
