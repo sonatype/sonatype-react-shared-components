@@ -27,7 +27,7 @@ type Props = {
   onClose: () => void;
 };
 
-const DarkModeModal = ({ onClose }: Props) => {
+const ThemeSettingsModal = ({ onClose }: Props) => {
   const [themingEnabledState, toggleThemingEnabledState] = useToggle(themingEnabled),
       [themeOverrideState, setThemeOverrideState] = useState(themeOverride);
 
@@ -112,4 +112,4 @@ const DarkModeModal = ({ onClose }: Props) => {
   );
 };
 
-export default DarkModeModal;
+export default ThemeSettingsModal;

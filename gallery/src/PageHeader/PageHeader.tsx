@@ -9,7 +9,7 @@ import React from 'react';
 import { NxButton, useToggle } from '@sonatype/react-shared-components';
 
 import HostedVersionsSelect from './HostedVersionsSelect';
-import DarkModeModal from '../DarkModeModal/DarkModeModal';
+import ThemeSettingsModal from '../ThemeSettingsModal/ThemeSettingsModal';
 
 const plaidVillain = require('./plaid-villain.svg');
 const tartanLogotype = require('./tartan-logotype.svg');
@@ -41,7 +41,7 @@ const PageHeader = () => {
           Theme Settings
         </NxButton>
         { showThemeSettingsModal &&
-          <DarkModeModal onClose={toggleShowThemeSettingsModal} />
+          <ThemeSettingsModal onClose={toggleShowThemeSettingsModal} />
         }
         <div className="gallery-page-header__version">
           <HostedVersionsSelect />
