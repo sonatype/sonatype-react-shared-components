@@ -43,4 +43,5 @@ function updateHtmlClasses() {
   classList.toggle('nx-html--dark-mode', themeOverride === 'dark' && themingEnabled);
   classList.toggle('nx-html--light-mode', themeOverride === 'light' && themingEnabled);
 }
+
 updateHtmlClasses();
