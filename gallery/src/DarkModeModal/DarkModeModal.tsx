@@ -58,7 +58,7 @@ const DarkModeModal = ({ onClose }: Props) => {
                 to do so will always result in light mode. This operates by toggling the presence of
                 the <NxCode>nx-html--enable-color-schemes</NxCode> class.
               </>}>
-              <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
+              <NxFontAwesomeIcon icon={faInfoCircle}/>
             </NxTooltip>
           </NxToggle>
         </NxFormGroup>
@@ -73,7 +73,7 @@ const DarkModeModal = ({ onClose }: Props) => {
               <>The default theme will be dictated by your browser or OS theme choice, which is
                 communicated to the application via the <NxCode>prefers-color-scheme</NxCode> media query
               </>}>
-              <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
+              <NxFontAwesomeIcon icon={faInfoCircle}/>
             </NxTooltip>
           </NxRadio>
           <NxRadio name="mode"
@@ -86,7 +86,7 @@ const DarkModeModal = ({ onClose }: Props) => {
               <>Overrides the browser's default display theme to dark mode by adding the class
                 {' '}<NxCode>nx-html--dark-mode</NxCode> to the HTML element.
               </>}>
-              <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
+              <NxFontAwesomeIcon icon={faInfoCircle}/>
             </NxTooltip>
           </NxRadio>
           <NxRadio name="mode"
@@ -99,7 +99,7 @@ const DarkModeModal = ({ onClose }: Props) => {
               <>Overrides the browser's default display theme to dark mode by adding the class
                 {' '}<NxCode>nx-html--light-mode</NxCode> to the HTML element.
               </>}>
-              <NxFontAwesomeIcon className="dark-mode-modal__info-icon" icon={faInfoCircle}/>
+              <NxFontAwesomeIcon icon={faInfoCircle}/>
             </NxTooltip>
           </NxRadio>
         </NxFieldset>
