@@ -12,20 +12,6 @@ type ThemeOverride = (typeof validThemeOverrides)[number];
 export let themingEnabled: boolean = localStorage.getItem('theming-enabled') === 'true',
     themeOverride: ThemeOverride = getThemeOverride();
 
-function getThemeOverride(): ThemeOverride {
-  const storedString = localStorage.getItem('theme-override');
-
-  return includes(storedString, validThemeOverrides) ? storedString as ThemeOverride : null;
-}
-
-function updateHtmlClasses() {
-  const { classList } = document.documentElement;
-
-  classList.toggle('nx-html--enable-color-schemes', themingEnabled);
-  classList.toggle('nx-html--dark-mode', themeOverride === 'dark' && themingEnabled);
-  classList.toggle('nx-html--light-mode', themeOverride === 'light' && themingEnabled);
-}
-
 export function setThemingEnabled(newThemingEnabled: boolean) {
   localStorage.setItem('theming-enabled', newThemingEnabled.toString());
   themingEnabled = newThemingEnabled;
@@ -44,4 +30,17 @@ export function setThemeOverride(newThemeOverride: ThemeOverride) {
   updateHtmlClasses();
 }
 
+function getThemeOverride(): ThemeOverride {
+  const storedString = localStorage.getItem('theme-override');
+
+  return includes(storedString, validThemeOverrides) ? storedString as ThemeOverride : null;
+}
+
+function updateHtmlClasses() {
+  const { classList } = document.documentElement;
+
+  classList.toggle('nx-html--enable-color-schemes', themingEnabled);
+  classList.toggle('nx-html--dark-mode', themeOverride === 'dark' && themingEnabled);
+  classList.toggle('nx-html--light-mode', themeOverride === 'light' && themingEnabled);
+}
 updateHtmlClasses();
