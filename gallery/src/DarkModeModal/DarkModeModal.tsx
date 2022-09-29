@@ -15,7 +15,8 @@ import {
   NxRadio,
   NxTooltip,
   NxFontAwesomeIcon,
-  NxCode
+  NxCode,
+  useToggle
 } from '@sonatype/react-shared-components';
 
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -28,7 +29,7 @@ type Props = {
 
 const DarkModeModal = ({ onClose }: Props) => {
 
-  const [themingEnabledState, setThemingEnabledState] = useState(themingEnabled),
+  const [themingEnabledState, toggleThemingEnabledState] = useToggle(themingEnabled),
       [themeOverrideState, setThemeOverrideState] = useState(themeOverride);
 
   useEffect(function() {
@@ -50,7 +51,7 @@ const DarkModeModal = ({ onClose }: Props) => {
       </header>
       <div className="nx-modal-content">
         <NxFormGroup label="Enable Theme Changes">
-          <NxToggle onChange={() => setThemingEnabledState(!themingEnabledState)} isChecked={themingEnabledState}>
+          <NxToggle onChange={toggleThemingEnabledState} isChecked={themingEnabledState}>
             Opt-in to Allow Theming
             <NxTooltip title={
               <>Opting in will allow you to make adjustments to the display theme. Failure
