@@ -40,11 +40,11 @@ const ThemeSettingsModal = ({ onClose }: Props) => {
   }, [themeOverrideState]);
 
   return (
-    <NxModal id="nx-modal-dark-mode-example"
+    <NxModal className="gallery-theme-settings-modal"
              onCancel={onClose}
-             aria-labelledby="nx-modal-dark-mode-header">
+             aria-labelledby="gallery-theme-settings-modal-header">
       <header className="nx-modal-header">
-        <h2 className="nx-h2" id="nx-modal-dark-mode-header">
+        <h2 className="nx-h2" id="gallery-theme-settings-modal-header">
           Setting Preferences for Light or Dark Mode
         </h2>
       </header>
