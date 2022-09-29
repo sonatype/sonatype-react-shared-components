@@ -35,7 +35,7 @@ const PageHeader = () => {
         <span className="gallery-page-header__name">
           React Shared Component Library
         </span>
-        <NxButton className="nx-btn--open-theme-settings"
+        <NxButton className="gallery-page-header__theme-settings-button"
                   variant="tertiary"
                   onClick={toggleShowThemeSettingsModal}>
           Theme Settings
