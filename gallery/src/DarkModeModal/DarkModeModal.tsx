@@ -26,8 +26,7 @@ type Props = {
   modalCloseHandler: () => void;
 };
 
-const DarkModeModal = (props:Props) => {
-  const { modalCloseHandler } = props;
+const DarkModeModal = ({ modalCloseHandler }: Props) => {
 
   const [themingEnabledState, setThemingEnabledState] = useState(themingEnabled),
       [themeOverrideState, setThemeOverrideState] = useState(themeOverride);
