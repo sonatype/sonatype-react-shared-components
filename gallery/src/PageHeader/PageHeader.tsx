@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { NxButton } from '@sonatype/react-shared-components';
+import { NxButton, useToggle } from '@sonatype/react-shared-components';
 
 import HostedVersionsSelect from './HostedVersionsSelect';
 import DarkModeModal from '../DarkModeModal/DarkModeModal';
@@ -17,8 +17,7 @@ const tartanLogotype = require('./tartan-logotype.svg');
 import './PageHeader.scss';
 
 const PageHeader = () => {
-  const [showModal, setShowModal] = useState(false);
-  const modalCloseHandler = () => setShowModal(false);
+  const [showThemeSettingsModal, toggleShowThemeSettingsModal] = useToggle(false);
 
   return (
     <header className="nx-page-header gallery-page-header">
@@ -38,11 +37,11 @@ const PageHeader = () => {
         </span>
         <NxButton className="nx-btn--open-theme-settings"
                   variant="tertiary"
-                  onClick={() => setShowModal(true)}>
+                  onClick={toggleShowThemeSettingsModal}>
           Theme Settings
         </NxButton>
-        { showModal &&
-          <DarkModeModal onClose={modalCloseHandler} />
+        { showThemeSettingsModal &&
+          <DarkModeModal onClose={toggleShowThemeSettingsModal} />
         }
         <div className="gallery-page-header__version">
           <HostedVersionsSelect />
