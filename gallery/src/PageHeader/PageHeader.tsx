@@ -42,7 +42,7 @@ const PageHeader = () => {
           Theme Settings
         </NxButton>
         { showModal &&
-          <DarkModeModal modalCloseHandler={modalCloseHandler} />
+          <DarkModeModal onClose={modalCloseHandler} />
         }
         <div className="gallery-page-header__version">
           <HostedVersionsSelect />

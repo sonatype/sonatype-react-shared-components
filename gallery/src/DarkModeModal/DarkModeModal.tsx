@@ -23,10 +23,10 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { themingEnabled, themeOverride, setThemingEnabled, setThemeOverride } from '../themeClassManager';
 
 type Props = {
-  modalCloseHandler: () => void;
+  onClose: () => void;
 };
 
-const DarkModeModal = ({ modalCloseHandler }: Props) => {
+const DarkModeModal = ({ onClose }: Props) => {
 
   const [themingEnabledState, setThemingEnabledState] = useState(themingEnabled),
       [themeOverrideState, setThemeOverrideState] = useState(themeOverride);
@@ -41,7 +41,7 @@ const DarkModeModal = ({ modalCloseHandler }: Props) => {
 
   return (
     <NxModal id="nx-modal-dark-mode-example"
-             onCancel={modalCloseHandler}
+             onCancel={onClose}
              aria-labelledby="nx-modal-dark-mode-header">
       <header className="nx-modal-header">
         <h2 className="nx-h2" id="nx-modal-dark-mode-header">
@@ -105,7 +105,7 @@ const DarkModeModal = ({ modalCloseHandler }: Props) => {
       </div>
       <footer className="nx-footer">
         <div className="nx-btn-bar">
-          <NxButton onClick={modalCloseHandler}>Close</NxButton>
+          <NxButton onClick={onClose}>Close</NxButton>
         </div>
       </footer>
     </NxModal>
