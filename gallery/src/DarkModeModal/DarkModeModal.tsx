@@ -50,7 +50,7 @@ const DarkModeModal = ({ modalCloseHandler }: Props) => {
       </header>
       <div className="nx-modal-content">
         <NxFormGroup label="Enable Theme Changes">
-          <NxToggle onChange={()=> setThemingEnabledState(!themingEnabledState)} isChecked={themingEnabledState}>
+          <NxToggle onChange={() => setThemingEnabledState(!themingEnabledState)} isChecked={themingEnabledState}>
             Opt-in to Allow Theming
             <NxTooltip title={
               <>Opting in will allow you to make adjustments to the display theme. Failure
