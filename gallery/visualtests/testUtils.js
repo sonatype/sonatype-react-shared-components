@@ -272,5 +272,11 @@ module.exports = {
         };
       }
     };
+  },
+
+  describeIf(envCondition) {
+    return (
+      envCondition ? describe : describe.skip
+    );
   }
 };

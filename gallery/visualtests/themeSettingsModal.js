@@ -5,9 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-const { setupBrowser } = require('./testUtils');
+const { setupBrowser, describeIf } = require('./testUtils');
 
-describe('ThemeSettingsModal', function() {
+// Tests for ThemeSettingsModal are only testing the functionality of the modal itself, so
+// it is unnecessary to run these tests in both light and dark modes
+
+// eslint-disable-next-line no-undef
+describeIf(process.env.THEME !== 'DARK')('ThemeSettingsModal', function() {
   const { waitAndGetElements, wait, getPage, checkFullPageScreenshot } = setupBrowser('#/');
 
   const openModalBtn = '.gallery-page-header__theme-settings-button',
@@ -60,5 +64,4 @@ describe('ThemeSettingsModal', function() {
   it('changes display theme to light when light mode radio is selected', async function() {
     await selectModeChoice(lightModeRadio);
   });
-
 });
