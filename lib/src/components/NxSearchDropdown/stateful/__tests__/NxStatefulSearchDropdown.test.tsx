@@ -24,7 +24,7 @@ describe('NxStatefulSearchDropdown', function() {
     expect(getShallow()).toMatchSelector(NxSearchDropdown);
   });
 
-  it('passes all props except defaultSearchText to the NxSearchDropdown', function() {
+  it('passes all props except defaultSearchText and onSelect to the NxSearchDropdown', function() {
     const onSearch = jest.fn(),
         onSelect = jest.fn(),
         props = {
@@ -40,7 +40,7 @@ describe('NxStatefulSearchDropdown', function() {
         },
         component = getShallow(props);
 
-    expect(component).toHaveProp(omit(['defaultSearchText'], props));
+    expect(component).toHaveProp(omit(['defaultSearchText', 'onSelect'], props));
     expect(component).not.toHaveProp('defaultSearchText');
   });
 
@@ -68,6 +68,20 @@ describe('NxStatefulSearchDropdown', function() {
 
     expect(ref.current).toBeDefined();
     expect(component.getDOMNode()).toBe(ref.current);
+  });
+
+  it('clears the searchText and fires its own onSelect when the NxSearchDropdown onSelect is fired', function() {
+    const onSelect = jest.fn(),
+        component = getShallow({ onSelect });
+
+    component.simulate('searchTextChange', '1');
+    expect(component).toHaveProp('searchText', '1');
+    expect(onSelect).not.toHaveBeenCalled();
+
+    component.simulate('select', { id: 1, displayName: 'item 1' });
+
+    expect(onSelect).toHaveBeenCalledWith({ id: 1, displayName: 'item 1' });
+    expect(component).toHaveProp('searchText', '');
   });
 
 });
