@@ -9,12 +9,16 @@ import * as PropTypes from 'prop-types';
 
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'className'> {
   className?: string | null;
+  isFirstPage?: boolean | null;
+  isLastPage?: boolean | null;
   onPrevPageSelect: ((evt: MouseEvent) => void);
   onNextPageSelect: ((evt: MouseEvent) => void);
 }
 
 export const propTypes: ValidationMap<Props> = {
   className: PropTypes.string,
+  isFirstPage: PropTypes.bool,
+  isLastPage: PropTypes.bool,
   onPrevPageSelect: PropTypes.func.isRequired,
   onNextPageSelect: PropTypes.func.isRequired
 };
