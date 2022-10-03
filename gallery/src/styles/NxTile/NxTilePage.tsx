@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode, NxTile, NxH3, NxH4, NxList } from '@sonatype/react-shared-components';
+import { NxInfoAlert, NxTable, NxP, NxCode, NxTile, NxH3, NxH4, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -67,9 +67,16 @@ const NxTilePage = () =>
               <NxTable.Cell><NxCode>NxTile.HeaderTitle</NxCode></NxTable.Cell>
               <NxTable.Cell>Nested inside <NxCode>.nx-tile-header</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                Used for the main title inside an <NxCode>.nx-tile-header</NxCode>.
-                In the event there's a <NxCode>.nx-tile-header__subtitle</NxCode> this should be
-                wrapped within an <NxCode>.nx-tile-header__headings</NxCode> (see above).
+                <NxP>
+                  Used for the main title inside an <NxCode>.nx-tile-header</NxCode>.
+                  In the event there's a <NxCode>.nx-tile-header__subtitle</NxCode> this should be
+                  wrapped within an <NxCode>.nx-tile-header__headings</NxCode> (see above).
+                </NxP>
+                <NxInfoAlert>
+                  If the <NxCode>NxTile.HeaderTitle</NxCode> convenience component is used and{' '}
+                  the title text is too long to be fully seen, it will be truncated and{' '}
+                  a tooltip will be visible when hovering over the title to read the full title.
+                </NxInfoAlert>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>

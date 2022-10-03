@@ -93,9 +93,9 @@ export default function NxTabsPage() {
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>false</NxTable.Cell>
                 <NxTable.Cell>
-                  When set, the text link is rendered as disabled and has <NxCode>aria-disabled="true"</NxCode>,
-                  for accessibility purpose, the <NxCode>href</NxCode> attribute will not be passd on and
-                  the <NxCode>role="link"</NxCode> will be added to the text link.
+                  When set, the text link is rendered as disabled and has <NxCode>aria-disabled="true"</NxCode>.
+                  For accessibility purpose, the <NxCode>href</NxCode> attribute will not be passed on
+                  and <NxCode>role="link"</NxCode> will be added to the text link.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
