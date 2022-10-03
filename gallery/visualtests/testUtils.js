@@ -57,12 +57,19 @@ module.exports = {
     beforeEach(async function() {
       page = await browser.newPage();
 
+      await page.goto(pageUrl + pageFragmentIdentifier);
+
       // eslint-disable-next-line no-undef
       if (process.env.THEME === 'DARK') {
-        await page.emulateMediaFeatures([{name: 'prefers-color-scheme', value: 'dark'}]);
-      }
+        // Because the default settings of the ThemeSettingsModal doesn't allow any changes in its
+        // theme settings, we need to set localStorage to allow for changes and set the theme to dark mode
+        await page.evaluate(() => {
+          localStorage.setItem('theming-enabled', 'true');
+          localStorage.setItem('theme-override', 'dark');
+        });
 
-      await page.goto(pageUrl + pageFragmentIdentifier);
+        await page.goto(pageUrl + pageFragmentIdentifier);
+      }
 
       if (ignoreVersionNumber) {
         await hideVersionNumber();
