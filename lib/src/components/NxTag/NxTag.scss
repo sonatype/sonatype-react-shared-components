@@ -67,6 +67,7 @@
   // This fixed the checkbox shifting the truncated text
   // to the left when focused on Chrome.
   position: absolute;
+  right: 0;
 }
 
 .nx-tag__text {
