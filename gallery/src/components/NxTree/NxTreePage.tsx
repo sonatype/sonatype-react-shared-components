@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-shared-components';
+import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -256,9 +256,13 @@ const NxTreePage = () =>
           color, the design intent is that it be the same color as dark text (<em>not</em> regular text). This intent
           is implemented within the <NxCode>NxTree</NxCode> styles so that this styling applies automatically when
           using RSC. However, when an icon is intended to have its own color, this style gets in the way. Therefore
-          a <NxCode>nx-tree__colored-icon</NxCode> class is available for icons which specify their own color which
+          a <NxCode>nx-icon--colorful</NxCode> class is available for icons which specify their own color which{' '}
           <NxCode>NxTree</NxCode> should not override.
         </NxP>
+        <NxWarningAlert>
+          The <NxCode>nx-tree__colored-icon</NxCode> class name has been deprecated.
+          Please use <NxCode><NxTextLink href="#/pages/Icon">nx-icon--colorful</NxTextLink></NxCode> instead.
+        </NxWarningAlert>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 

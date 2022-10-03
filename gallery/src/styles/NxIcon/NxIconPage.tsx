@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 const nxIconExampleCode = require('./NxIconExample.html');
@@ -24,6 +24,16 @@ const NxIconPage = () =>
         width need to be specified for Chrome and Firefox due to the instrinsic aspect ratio from
         the <NxCode>viewBox</NxCode>, while for IE, both the width and the height are necessary.
       </NxP>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Modifiers</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The <NxCode>nx-icon--colorful</NxCode> modifier class is available to be applied to icons that have
+          meaningful colors that shouldn't have their color overwritten in certain context. For example, some
+          components that allow custom icons would overrride the color. This modifier ensures the color is not replaced.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="General Example"

@@ -263,6 +263,32 @@ const NxDropdownPage = () =>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Custom Icons</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>
+                <NxCode><NxTextLink href="#/pages/Icon">nx-icon--colorful</NxTextLink></NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxIcon</NxCode> inside <NxCode>NxDropdown</NxCode>
+              </NxTable.Cell>
+              <NxTable.Cell>This modifier should be applied to icons that should retain their colors.</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Navigation Example"
