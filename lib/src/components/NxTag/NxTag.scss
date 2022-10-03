@@ -64,6 +64,8 @@
 
 .nx-tag__input {
   @include nx-hide-checkbox-helper.hide-checkbox;
+  // This fixed the checkbox shifting the truncated text
+  // to the left when focused on Chrome.
   position: absolute;
 }
 
