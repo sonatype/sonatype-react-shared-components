@@ -226,22 +226,16 @@ dockerfile to point to the public `node:12` base image instead of the copy hoste
 ```
 docker build -t rsc-visualtesting .
 ```
-You can execute the tests within the Docker container based on that image by running the following command:
+You can execute the tests for light mode (default) within the Docker container based on that image by running the following command:
 
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
 ```
 
-Note that by running this command, all visual tests will run in both light (default) and dark modes. To run tests for light mode only, run:
+To execute the tests for dark mode within the Docker container, run: 
 
 ```
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest test
-```
-
-To run tests for dark mode only, run: 
-
-```
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest-dark test
+docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test-dark
 ```
 
 On some computers, visual testing may take more than 20 minutes, so let the tests run in the background. Note that the
