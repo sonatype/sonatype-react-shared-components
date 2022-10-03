@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, WeakValidationMap } from 'react';
 import * as PropTypes from 'prop-types';
 
 export const NX_DRAWER_VARIANTS = ['normal', 'narrow'] as const;
@@ -20,9 +20,9 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   variant?: NX_DRAWER_VARIANT_TYPE | null;
 }
 
-export interface NxDrawerHeaderProps extends HTMLAttributes<HTMLElement>{
-  children: ReactNode;
-}
+export type NxDrawerHeaderProps = HTMLAttributes<HTMLElement>;
+
+export type NxDrawerHeaderTitleProps = HTMLAttributes<HTMLHeadingElement>;
 
 export interface NxDrawerContextValue {
   closeDrawer: () => void;
@@ -33,4 +33,9 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onClose: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   variant: PropTypes.oneOf(NX_DRAWER_VARIANTS)
+};
+
+export const nxDrawerHeaderTitlePropTypes: WeakValidationMap<NxDrawerHeaderTitleProps> = {
+  className: PropTypes.string,
+  children: PropTypes.node
 };

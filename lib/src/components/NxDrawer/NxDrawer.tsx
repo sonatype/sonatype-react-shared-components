@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, {
+  forwardRef,
   useContext,
   useEffect,
   useRef,
@@ -12,17 +13,46 @@ import React, {
 } from 'react';
 import classnames from 'classnames';
 
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import NxCloseButton from '../NxCloseButton/NxCloseButton';
 import withClass from '../../util/withClass';
 
-import { Props, NxDrawerHeaderProps, NxDrawerContextValue, OpenState, propTypes } from './types';
+import {
+  NxDrawerContextValue,
+  NxDrawerHeaderProps,
+  NxDrawerHeaderTitleProps,
+  OpenState,
+  Props,
+  propTypes,
+  nxDrawerHeaderTitlePropTypes
+} from './types';
 
 import './NxDrawer.scss';
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {}
 });
+
+const NxDrawerHeaderTitle = forwardRef<HTMLHeadingElement, NxDrawerHeaderTitleProps>((props, ref) => {
+  const {
+    className,
+    children,
+    ...attrs
+  } = props;
+
+  const classes = classnames('nx-drawer-header__title', className);
+
+  return (
+    <NxOverflowTooltip>
+      <h2 className={classes} {...attrs} ref={ref}>
+        {children}
+      </h2>
+    </NxOverflowTooltip>
+  );
+});
+
+NxDrawerHeaderTitle.propTypes = nxDrawerHeaderTitlePropTypes;
 
 const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
   const {
@@ -109,7 +139,7 @@ function NxDrawer(props: Props) {
     [`nx-drawer--${openState}`]: openState !== 'open'
   }, className);
 
-  const drawerContextValue = { closeDrawer, open };
+  const drawerContextValue = { closeDrawer };
 
   return (
     <NxDrawerContext.Provider value={drawerContextValue}>
@@ -132,7 +162,7 @@ export default Object.assign(
       propTypes,
       Header: NxDrawerHeader,
       Content: withClass('div', 'nx-drawer-content nx-scrollable nx-viewport-sized__scrollable'),
-      HeaderTitle: withClass('h2', 'nx-h2 nx-drawer-header__title'),
+      HeaderTitle: NxDrawerHeaderTitle,
       HeaderSubtitle: withClass('h3', 'nx-h3 nx-drawer-header__subtitle'),
       HeaderDescription: withClass('p', 'nx-p nx-drawer-header__description')
     }

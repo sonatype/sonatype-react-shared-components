@@ -152,6 +152,7 @@ import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipbo
 import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
 import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
 import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
+import NxMeterPage from './components/NxMeter/NxMeterPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -161,6 +162,7 @@ const pageConfig: PageConfig = {
     'Load Error': { content: NxLoadErrorPage, type: 'react' },
     'Load Wrapper': { content: NxLoadWrapperPage, type: 'react' },
     'Loading Spinner': { content: NxLoadingSpinnerPage, type: 'react' },
+    'Meter': { content: NxMeterPage, type: 'react' },
     'Policy Violation Indicator': { content: NxPolicyViolationIndicatorPage, type: 'react' },
     'Progress Bar': { content: NxProgressBarPage, type: 'react' },
     'Submit Mask': { content: NxSubmitMaskPage, type: 'react' },

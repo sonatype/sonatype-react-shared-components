@@ -28,18 +28,6 @@ export const NxDivider = withClass('hr', 'nx-divider');
 
 export const NxFormRow = withClass('div', 'nx-form-row');
 
-export const NxTile = Object.assign(withClass('section', 'nx-tile'), {
-  Header: withClass('header', 'nx-tile-header'),
-  Headings: withClass('hgroup', 'nx-tile-header__headings'),
-  HeaderTitle: withClass('div', 'nx-tile-header__title'),
-  HeaderSubtitle: withClass('h3', 'nx-tile-header__subtitle'),
-  HeaderActions: withClass('div', 'nx-tile__actions'),
-  Content: withClass('div', 'nx-tile-content'),
-  Subsection: withClass('section', 'nx-tile-subsection'),
-  SubsectionHeader: withClass('header', 'nx-tile-subsection__header'),
-  HeaderTags: withClass('div', 'nx-tile__tags')
-});
-
 export const NxCard = Object.assign(withClass('section', 'nx-card'), {
   Container: withClass('div', 'nx-card-container'),
   Header: withClass('header', 'nx-card__header'),
