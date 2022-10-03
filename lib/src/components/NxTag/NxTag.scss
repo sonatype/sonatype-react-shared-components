@@ -64,6 +64,7 @@
 
 .nx-tag__input {
   @include nx-hide-checkbox-helper.hide-checkbox;
+  position: absolute;
 }
 
 .nx-tag__text {
