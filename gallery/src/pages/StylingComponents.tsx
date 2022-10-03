@@ -89,6 +89,11 @@ const StylingRSCPage = () =>
             <NxCode>selected</NxCode> &amp; <NxCode>unselected</NxCode>
           </NxList.Text>
         </NxList.Item>
+        <NxList.Item>
+          <NxList.Text>
+            <NxCode>hidden</NxCode>
+          </NxList.Text>
+        </NxList.Item>
       </NxList>
       <NxP>
         These are commonly refered to as "utility classes". Utility classes usually describe a change in a components'
