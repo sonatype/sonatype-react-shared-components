@@ -32,7 +32,7 @@ const NxTag = forwardRef<HTMLLabelElement, Props>(function NxTag(props, ref) {
     </label>
   );
 
-  return !hasTooltip ? <NxOverflowTooltip>{label}</NxOverflowTooltip> : label;
+  return !hasTooltip ? <NxOverflowTooltip ref={ref}>{label}</NxOverflowTooltip> : label;
 });
 
 NxTag.propTypes = propTypes;
