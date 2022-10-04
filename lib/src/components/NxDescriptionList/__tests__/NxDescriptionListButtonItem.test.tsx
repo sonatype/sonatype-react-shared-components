@@ -228,9 +228,6 @@ describe('NxDescriptionList.ButtonItem', function() {
   });
 
   it('has the first button as its only tabstop', async function() {
-    // We apparently have two different eslint indentation rules, which happen to contradict
-    // one another about this statement for some reason. Disabling the one I disagree with.
-    /* eslint-disable @typescript-eslint/indent */
     const component = render(
       <>
         <button data-testid="before">Before</button>
