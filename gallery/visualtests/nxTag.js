@@ -123,6 +123,12 @@ describe('NxTag', function() {
 
       await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
     });
+
+    it('looks right when selected', async function() {
+      const [targetElement] = await waitAndGetElements(overflowingTagSelector);
+      await targetElement.click();
+      await checkScreenshot(targetElement);
+    });
   });
 
   it('passes a11y checks', a11yTest());
