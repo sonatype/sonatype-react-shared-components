@@ -282,7 +282,7 @@ const NxDropdownPage = () =>
                 <NxCode><NxTextLink href="#/pages/Icon">nx-icon--colorful</NxTextLink></NxCode>
               </NxTable.Cell>
               <NxTable.Cell>
-                <NxCode>NxIcon</NxCode> inside <NxCode>NxDropdown</NxCode>
+                <NxCode>NxFontAwesomeIcon</NxCode> inside <NxCode>NxDropdown</NxCode>
               </NxTable.Cell>
               <NxTable.Cell>This modifier should be applied to icons that should retain their colors.</NxTable.Cell>
             </NxTable.Row>
