@@ -46,11 +46,12 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
         'nx-collapsible-items--empty': isEmpty
       }),
       treeViewId = useUniqueId('nx-collapsible-items', id),
+      treeViewChildrenId = useUniqueId('nx-collapsible-items__children'),
       trigger = (
         <button type="button"
                 className="nx-collapsible-items__trigger"
                 onClick={onToggleCollapse || undefined}
-                aria-controls={treeViewId}
+                aria-controls={treeViewChildrenId}
                 aria-expanded={isExpanded}
                 disabled={disabled || isEmpty || undefined}>
           <NxFontAwesomeIcon className="nx-collapsible-items__twisty" icon={faCaretRight} />
@@ -79,7 +80,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
           </NxTooltip>
         ) : trigger
       }
-      <div className="nx-collapsible-items__children" role="group">
+      <div className="nx-collapsible-items__children" role="group" id={treeViewChildrenId}>
         {children}
       </div>
     </div>
