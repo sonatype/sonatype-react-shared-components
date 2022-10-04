@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useRef, useState, useEffect, useCallback, forwardRef } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import useResizeObserver from '@react-hook/resize-observer';
 import useMergedRef from '@react-hook/merged-ref';
 
@@ -27,40 +27,38 @@ function selfOrChildrenOverflowing(el: Element): boolean {
   return isOverflowing(el) || any(selfOrChildrenOverflowing, Array.from(el.children));
 }
 
-const NxOverflowTooltip = forwardRef<HTMLElement, OverflowTooltipProps>(
-    function NxOverflowTooltip({ title, children, ...otherProps }, forwardedRef) {
-      const computedTitle = title || textContent(children),
-          [needsTooltip, setNeedsTooltip] = useState(false),
-          ref = useRef<HTMLElement>(null),
-          isUnmounted = useRef(false),
-          mergedRef = useMergedRef(ref, forwardedRef),
-          childrenWithRef = React.cloneElement(children, { ref: mergedRef });
+export default function NxOverflowTooltip({ title, children, ...otherProps }: OverflowTooltipProps) {
+  const computedTitle = title || textContent(children),
+      [needsTooltip, setNeedsTooltip] = useState(false),
+      ref = useRef<HTMLElement>(null),
+      isUnmounted = useRef(false),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      childRef = (children as any).ref,
+      mergedRef = useMergedRef(ref, childRef),
+      childrenWithRef = React.cloneElement(children, { ref: mergedRef });
 
-      const updateNeedsTooltip = useCallback(function updateNeedsTooltip() {
-        const el = ref.current;
+  const updateNeedsTooltip = useCallback(function updateNeedsTooltip() {
+    const el = ref.current;
 
-        batch(() => {
-          if (!isUnmounted.current) {
-            setNeedsTooltip(!!el && selfOrChildrenOverflowing(el));
-          }
-        });
-      }, []);
+    batch(() => {
+      if (!isUnmounted.current) {
+        setNeedsTooltip(!!el && selfOrChildrenOverflowing(el));
+      }
+    });
+  }, []);
 
-      // check the width on initial layout and any time computedTitle changes
-      useEffect(updateNeedsTooltip, [computedTitle]);
-      useEffect(() => () => { isUnmounted.current = true; }, []);
+  // check the width on initial layout and any time computedTitle changes
+  useEffect(updateNeedsTooltip, [computedTitle]);
+  useEffect(() => () => { isUnmounted.current = true; }, []);
 
-      // check the width any time the element resizes
-      useResizeObserver(ref, updateNeedsTooltip);
+  // check the width any time the element resizes
+  useResizeObserver(ref, updateNeedsTooltip);
 
-      return (
-        <NxTooltip { ...otherProps } title={needsTooltip ? computedTitle : ''}>
-          {childrenWithRef}
-        </NxTooltip>
-      );
-    }
-);
+  return (
+    <NxTooltip { ...otherProps } title={needsTooltip ? computedTitle : ''}>
+      {childrenWithRef}
+    </NxTooltip>
+  );
+}
 
 NxOverflowTooltip.propTypes = overflowTooltipPropTypes;
-
-export default NxOverflowTooltip;

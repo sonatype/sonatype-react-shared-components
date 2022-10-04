@@ -6,7 +6,6 @@
  */
 import React from 'react';
 
-import { mount } from 'enzyme';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
 import NxOverflowTooltip, { OverflowTooltipProps as Props } from '../NxOverflowTooltip';
@@ -30,12 +29,6 @@ describe('NxOverflowTooltip', function() {
     const children = <div id="foo" className="bar">baz</div>;
 
     expect(getShallow({ children })).toContainReact(children);
-  });
-
-  it('forwards children ref', function() {
-    const ref = React.createRef<HTMLLabelElement>();
-    const wrapper = mount(<><NxOverflowTooltip ref={ref}><div className="hello">world</div></NxOverflowTooltip></>);
-    expect(wrapper.find('.hello').getDOMNode()).toBe(ref.current);
   });
 
   // the conditional behavior relies on browser layout which jsdom doesn't implement. We will test that
