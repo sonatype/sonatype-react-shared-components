@@ -30,7 +30,7 @@ const NxIconPage = () =>
         </NxTile.SubsectionHeader>
         <NxP>
           The <NxCode>nx-icon--colorful</NxCode> modifier class can be applied to icons that have context
-          sensitive color. Using this modifier will prevent the icon's color from changing even if a componentx
+          sensitive color. Using this modifier will prevent the icon's color from changing even if a component
           tries to override the color.
         </NxP>
       </NxTile.Subsection>
