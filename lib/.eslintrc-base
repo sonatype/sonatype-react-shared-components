@@ -34,7 +34,7 @@
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-inferrable-types": ["error", { "ignoreParameters": true }],
     "@typescript-eslint/indent": [
-      "error",
+      "warn",
       2,
       {
         "SwitchCase": 1,
@@ -135,13 +135,13 @@
       "error",
       "never"
     ],
-    "no-console": ["error", { "allow": ["warn", "error"] }],
-    "no-debugger": "error",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-debugger": "warn",
     "array-bracket-spacing": ["error", "never"],
     "object-property-newline": ["error", { "allowMultiplePropertiesPerLine": true }],
     "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
-    "react/jsx-indent": ["error", 2],
-    "react/jsx-indent-props": ["error", "first"],
+    "react/jsx-indent": ["warn", 2],
+    "react/jsx-indent-props": ["warn", "first"],
     "react/jsx-first-prop-new-line": ["error", "never"],
     "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "multiline" }],
     "react/jsx-closing-tag-location": ["error"],
