@@ -19,15 +19,15 @@ function NxDropdownActionsExample() {
                 onToggleCollapse={onToggleCollapse}>
       <a href="https://www.google.com/" className="nx-dropdown-link">
         <span>Go somewhere</span>
-        <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
+        <NxFontAwesomeIcon className="nx-icon--colorful" icon={faExternalLinkAlt}/>
       </a>
       <a href="https://www.sonatype.com/" className="nx-dropdown-link">
         <span>Go somewhere else</span>
-        <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
+        <NxFontAwesomeIcon className="nx-icon--colorful" icon={faExternalLinkAlt}/>
       </a>
       <a href="https://www.google.com/" className="nx-dropdown-link disabled" onClick={evt => evt.preventDefault()}>
         <span>Can't go here though</span>
-        <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
+        <NxFontAwesomeIcon className="nx-icon--colorful" icon={faExternalLinkAlt}/>
       </a>
       <a href="#/" className="nx-dropdown-link">
         <span>Go to homepage</span>
