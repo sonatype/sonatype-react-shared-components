@@ -135,8 +135,9 @@ describe('NxDrawer', function() {
 
     it('is positioned correctly', async function() {
       await getPage().setViewport(viewportSize);
-      const [openSuccessToastButton] = await waitAndGetElements('#nx-toast-success-open-button');
-      const [openErrorToastButton] = await waitAndGetElements('#nx-toast-error-open-button');
+      const [openSuccessToastButton, openErrorToastButton] = await waitAndGetElements(
+          '#nx-toast-success-open-button', '#nx-toast-error-open-button'
+      );
 
       await openSuccessToastButton.click();
       await openDrawer(buttonId, drawerId);
