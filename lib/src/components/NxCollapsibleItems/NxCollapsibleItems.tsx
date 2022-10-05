@@ -45,7 +45,6 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
         'nx-collapsible-items--disabled': disabled,
         'nx-collapsible-items--empty': isEmpty
       }),
-      treeViewId = useUniqueId('nx-collapsible-items', id),
       treeViewChildrenId = useUniqueId('nx-collapsible-items-children'),
       trigger = (
         <button type="button"
@@ -67,7 +66,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
   return (
     /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
     <div className={treeViewClasses}
-         id={treeViewId}
+         id={id}
          role="list"
          { ...otherProps }>
       {

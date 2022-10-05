@@ -39,11 +39,6 @@ describe('NxCollapsibleItems', function() {
     expect(getShallowComponent({ id: 'foo' })).toHaveProp('id', 'foo');
   });
 
-  it('sets an auto-generated id if one is not provided', function() {
-    expect(getShallowComponent()).toHaveProp('id');
-    expect(getShallowComponent().prop('id')).not.toEqual(getShallowComponent().prop('id'));
-  });
-
   it('sets the specified classnames', function() {
     const component = getShallowComponent({ className: 'foo' });
 
