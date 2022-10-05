@@ -33,7 +33,6 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
     triggerContent,
     triggerTooltip,
     className,
-    id,
     ...otherProps
   } = props;
 
@@ -66,7 +65,6 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
   return (
     /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
     <div className={treeViewClasses}
-         id={id}
          role="list"
          { ...otherProps }>
       {
