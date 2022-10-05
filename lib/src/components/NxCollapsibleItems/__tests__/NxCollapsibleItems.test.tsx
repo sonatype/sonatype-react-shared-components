@@ -119,7 +119,7 @@ describe('NxCollapsibleItems', function() {
       expect(component.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', childrenElId);
     });
 
-    it('sets aria-expanded if both the isOpen prop is true and there are children', function() {
+    it('sets aria-expanded iff both the isOpen prop is true and there are children', function() {
       expect(getShallowTrigger()).toHaveProp('aria-expanded', false);
       expect(getShallowTrigger({ isOpen: true })).toHaveProp('aria-expanded', false);
       expect(getShallowTrigger({ children: <span>child</span> })).toHaveProp('aria-expanded', false);
