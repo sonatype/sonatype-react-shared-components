@@ -125,6 +125,7 @@
 
   &__close-button {
     grid-area: close-button;
+    height: min-content;
   }
 
   &__title {
