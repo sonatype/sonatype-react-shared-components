@@ -30,6 +30,7 @@ const NxDrawerVariantSourceCode = require('./NxDrawerVariantExample?raw');
 const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubtitleOrDescriptionExample?raw');
 const NxDrawerEscSourceCode = require('./NxDrawerEscExample?raw');
 const NxDrawerWithNxFormSourceCode = require('./NxDrawerWithNxFormExample?raw');
+const NxDrawerWithNxToastSourceCode = require('./NxDrawerWithNxToastExample?raw');
 
 export default function NxDrawerPage() {
   return (
@@ -322,6 +323,35 @@ export default function NxDrawerPage() {
             </NxAccordion.Header>
             <CodeExample content={NxDrawerConditionalRenderingSourceCode} />
             <GalleryTileFooter clipboardContent={NxDrawerConditionalRenderingSourceCode}/>
+          </NxStatefulAccordion>
+        </NxTile.Content>
+      </NxTile>
+
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>NxDrawer With NxToast Example</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
+          <NxP>
+            An example of <NxCode>NxDrawer</NxCode> with <NxCode>NxToast</NxCode>.
+            The toast is always positioned above NxDrawer, no matter the order in which they are opened.
+            The drawer stays open if the toast is closed.
+          </NxP>
+          <NxP>
+            <NxTextLink href="#/NxDrawerWithNxToastExample">
+              Click here to navigate to the live example.
+            </NxTextLink>
+          </NxP>
+        </NxTile.Content>
+        <NxTile.Content className= "nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <NxAccordion.Title>Example Code</NxAccordion.Title>
+            </NxAccordion.Header>
+            <CodeExample content={NxDrawerWithNxToastSourceCode} />
+            <GalleryTileFooter clipboardContent={NxDrawerWithNxToastSourceCode}/>
           </NxStatefulAccordion>
         </NxTile.Content>
       </NxTile>
