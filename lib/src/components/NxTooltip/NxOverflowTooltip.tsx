@@ -33,7 +33,6 @@ export default function NxOverflowTooltip<C extends HTMLElement = HTMLElement>(p
       [needsTooltip, setNeedsTooltip] = useState(false),
       ref = useRef<C>(null),
       isUnmounted = useRef(false),
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       childRef = children.ref,
       mergedRef = useMergedRef(ref, childRef ?? null),
       childrenWithRef = React.cloneElement(children, { ref: mergedRef });
