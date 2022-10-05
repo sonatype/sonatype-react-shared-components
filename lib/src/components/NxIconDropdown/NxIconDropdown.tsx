@@ -47,7 +47,7 @@ const NxIconDropdown: FunctionComponent<Props> = function NxIconDropdown(props) 
               aria-haspopup="true"
               aria-expanded={isOpen}
               title={title}>
-      <NxFontAwesomeIcon className="nx-icon--colorful" icon={icon || faEllipsisV}/>
+      <NxFontAwesomeIcon icon={icon || faEllipsisV}/>
     </NxButton>
   );
 
