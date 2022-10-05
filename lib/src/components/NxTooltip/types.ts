@@ -17,7 +17,7 @@ const tooltipPlacements = [
 
 export type TooltipPlacement = (typeof tooltipPlacements)[number];
 
-export interface Props<C extends Element = Element> {
+export interface Props<C extends HTMLElement = HTMLElement> {
   className?: string | null;
   onOpen?: (() => void) | null;
   onClose?: (() => void) | null;
@@ -27,7 +27,7 @@ export interface Props<C extends Element = Element> {
   children: ReactElement & RefAttributes<C>;
 }
 
-export type OverflowTooltipProps<C extends Element = Element> = Omit<Props<C>, 'open'>;
+export type OverflowTooltipProps<C extends HTMLElement = HTMLElement> = Omit<Props<C>, 'open'>;
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   className: PropTypes.string,
