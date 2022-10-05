@@ -150,9 +150,10 @@ describe('NxDrawer', function() {
     it('stays open when the toast is closed', async function() {
       await getPage().setViewport(viewportSize);
       await openDrawer(buttonId, drawerId);
-      const [drawer] = await waitAndGetElements('#nx-drawer-with-nx-toast');
-
-      const [openErrorToastButton] = await waitAndGetElements('#nx-toast-error-open-button');
+      const [drawer, openErrorToastButton] = await waitAndGetElements(
+        '#nx-drawer-with-nx-toast',
+        '#nx-toast-error-open-button'
+      );
       await openErrorToastButton.click();
       await wait(500);
 
