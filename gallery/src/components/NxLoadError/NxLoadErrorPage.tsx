@@ -56,7 +56,17 @@ const NxLoadErrorPage = () =>
             <NxTable.Cell>Function</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              If this is defined, a Retry button will be rendered which executes this function when clicked
+              If this is defined, a Retry button will be rendered with type "button" or "submit" if
+              <NxCode>useSubmitRetry</NxCode> is also set to true,
+              which executes this function when clicked.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>useSubmitRetry</NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              If this is set to true, a Retry button will be rendered with type "submit".
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
