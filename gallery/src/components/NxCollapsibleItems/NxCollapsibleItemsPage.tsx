@@ -46,14 +46,6 @@ const NxCollapsibleItemsPage = () =>
         </NxTable.Head>
         <NxTable.Body>
           <NxTable.Row>
-            <NxTable.Cell>id</NxTable.Cell>
-            <NxTable.Cell>string</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Id to assign to the collapsible items element
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
             <NxTable.Cell>isOpen</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>

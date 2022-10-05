@@ -39,11 +39,6 @@ describe('NxCollapsibleItems', function() {
     expect(getShallowComponent({ id: 'foo' })).toHaveProp('id', 'foo');
   });
 
-  it('sets an auto-generated id if one is not provided', function() {
-    expect(getShallowComponent()).toHaveProp('id');
-    expect(getShallowComponent().prop('id')).not.toEqual(getShallowComponent().prop('id'));
-  });
-
   it('sets the specified classnames', function() {
     const component = getShallowComponent({ className: 'foo' });
 
@@ -111,13 +106,12 @@ describe('NxCollapsibleItems', function() {
       expect(getShallowTrigger()).toHaveProp('type', 'button');
     });
 
-    it('references the treeview using aria-controls', function() {
-      const explicitIdCollapsibleItems = getShallowComponent({ id: 'foo' }),
-          autoIdCollapsibleItems = getShallowComponent(),
-          autoId = autoIdCollapsibleItems.prop('id');
+    it('references the treeview children items using aria-controls', function() {
+      const component = getShallowComponent({ children: <span>foo</span> }),
+          childrenEl = component.find('.nx-collapsible-items__children'),
+          childrenElId = childrenEl.prop('id');
 
-      expect(explicitIdCollapsibleItems.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', 'foo');
-      expect(autoIdCollapsibleItems.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', autoId);
+      expect(component.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', childrenElId);
     });
 
     it('sets aria-expanded iff both the isOpen prop is true and there are children', function() {
