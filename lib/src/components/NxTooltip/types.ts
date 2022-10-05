@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, RefAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
 
@@ -17,17 +17,17 @@ const tooltipPlacements = [
 
 export type TooltipPlacement = (typeof tooltipPlacements)[number];
 
-export interface Props {
+export interface Props<C extends Element = Element> {
   className?: string | null;
   onOpen?: (() => void) | null;
   onClose?: (() => void) | null;
   open?: boolean | null;
   placement?: TooltipPlacement | null;
   title?: ReactNode;
-  children: ReactElement;
+  children: ReactElement & RefAttributes<C>;
 }
 
-export type OverflowTooltipProps = Omit<Props, 'open'>;
+export type OverflowTooltipProps<C extends Element = Element> = Omit<Props<C>, 'open'>;
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   className: PropTypes.string,

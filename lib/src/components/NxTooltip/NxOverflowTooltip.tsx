@@ -27,14 +27,15 @@ function selfOrChildrenOverflowing(el: Element): boolean {
   return isOverflowing(el) || any(selfOrChildrenOverflowing, Array.from(el.children));
 }
 
-export default function NxOverflowTooltip({ title, children, ...otherProps }: OverflowTooltipProps) {
-  const computedTitle = title || textContent(children),
+export default function NxOverflowTooltip<C extends HTMLElement = HTMLElement>(props: OverflowTooltipProps<C>) {
+  const { title, children, ...otherProps } = props,
+      computedTitle = title || textContent(children),
       [needsTooltip, setNeedsTooltip] = useState(false),
-      ref = useRef<HTMLElement>(null),
+      ref = useRef<C>(null),
       isUnmounted = useRef(false),
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      childRef = (children as any).ref,
-      mergedRef = useMergedRef(ref, childRef),
+      childRef = children.ref,
+      mergedRef = useMergedRef(ref, childRef ?? null),
       childrenWithRef = React.cloneElement(children, { ref: mergedRef });
 
   const updateNeedsTooltip = useCallback(function updateNeedsTooltip() {
