@@ -48,12 +48,14 @@ import NxDrawerEscExample from './components/NxDrawer/NxDrawerEscExample';
 import NxDrawerExample from './components/NxDrawer/NxDrawerExample';
 import NxDrawerVariantExample from './components/NxDrawer/NxDrawerVariantExample';
 import NxDrawerWithNxFormExample from './components/NxDrawer/NxDrawerWithNxFormExample';
+import NxDrawerWithNxToastExample from './components/NxDrawer/NxDrawerWithNxToastExample';
 import NxDrawerWithSubtitleOrDescriptionExample from './components/NxDrawer/NxDrawerWithSubtitleOrDescriptionExample';
 import NxDrawerConditionalRenderingExample from './components/NxDrawer/NxDrawerConditionalRenderingExample';
 
 import NxToastSimpleLayoutExample from './components/NxToast/NxToastSimpleLayoutExample';
 import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayoutExample';
 import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
+import NxToastWithNxDrawerExample from './components/NxToast/NxToastWithNxDrawerExample';
 
 const pageMappings = mergeAll(values(pageConfig));
 
@@ -66,10 +68,14 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
     handleQueryParams(queryString.parse(location.search));
   }, [location.search]);
 
+  // reset scroll position
+  useEffect(function() {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   if (Content) {
-    // Put a key on <main> so that it re-renders entirely on route change, resetting scroll position
     return (
-      <NxPageMain key={pageName || 'home'}>
+      <NxPageMain>
         <div className="nx-page-title">
           <h1 className="nx-h1">
             {pageHeader}
@@ -132,6 +138,11 @@ function Application() {
             <NxToastSimpleLayoutExample />
           </SectionScrollingWrapper>
         </Route>
+        <Route exact path="/NxToastWithNxDrawerExample">
+          <SectionScrollingWrapper>
+            <NxToastWithNxDrawerExample />
+          </SectionScrollingWrapper>
+        </Route>
         <Route exact path="/NxToastComplexLayoutExample">
           <SectionScrollingWrapper>
             <NxToastComplexLayoutExample />
@@ -181,6 +192,11 @@ function Application() {
         <Route exact path="/NxDrawerWithNxFormExample">
           <SectionScrollingWrapper>
             <NxDrawerWithNxFormExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerWithNxToastExample">
+          <SectionScrollingWrapper>
+            <NxDrawerWithNxToastExample />
           </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxDrawerEscExample">

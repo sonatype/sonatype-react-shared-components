@@ -59,5 +59,77 @@ describe('NxTag', function() {
     });
   });
 
+  describe('NxTag With Tooltip', function() {
+    const selector = '#nx-tag-with-tooltip-example .gallery-example-live',
+        tagSelector = `${selector} .nx-tag:first-child`,
+        overflowingTagSelector = `${selector} .nx-tag:last-child`,
+
+        // expected distance from top of element to the top of its tooltip
+        tooltipHeightOffset = 21;
+
+    it('shows custom tooltip', async function() {
+      const [exampleElement, tooltipTagElement] = await waitAndGetElements(selector, tagSelector);
+
+      // hover the tag to activate its tooltip.
+      await scrollIntoView(exampleElement);
+      await tooltipTagElement.hover();
+      await wait(1500);
+      const { x, y, height, width } = await exampleElement.boundingBox();
+
+      await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
+    });
+
+    it('shows custom tooltip that overrides overflowing tooltip', async function() {
+      const [exampleElement, tooltipTagElement] = await waitAndGetElements(selector, overflowingTagSelector);
+
+      // hover the tag to activate its tooltip.
+      await scrollIntoView(exampleElement);
+      await tooltipTagElement.hover();
+      await wait(1500);
+      const { x, y, height, width } = await exampleElement.boundingBox();
+
+      await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
+    });
+  });
+
+  describe('NxSelectableTag With Tooltip', function() {
+    const selector = '#nx-selectable-tag-with-tooltip-example .gallery-example-live',
+        tagSelector = `${selector} .nx-tag:first-child`,
+        overflowingTagSelector = `${selector} .nx-tag:last-child`,
+
+        // expected distance from top of element to the top of its tooltip
+        tooltipHeightOffset = 21;
+
+    it('shows custom tooltip', async function() {
+      const [exampleElement, tooltipTagElement] = await waitAndGetElements(selector, tagSelector);
+
+      // hover the tag to activate its tooltip.
+      await scrollIntoView(exampleElement);
+      await tooltipTagElement.hover();
+      await wait(1500);
+      const { x, y, height, width } = await exampleElement.boundingBox();
+
+      await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
+    });
+
+    it('shows custom tooltip that overrides overflowing tooltip', async function() {
+      const [exampleElement, tooltipTagElement] = await waitAndGetElements(selector, overflowingTagSelector);
+
+      // hover the tag to activate its tooltip.
+      await scrollIntoView(exampleElement);
+      await tooltipTagElement.hover();
+      await wait(1500);
+      const { x, y, height, width } = await exampleElement.boundingBox();
+
+      await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
+    });
+
+    it('looks right when selected', async function() {
+      const [targetElement] = await waitAndGetElements(overflowingTagSelector);
+      await targetElement.click();
+      await checkScreenshot(targetElement);
+    });
+  });
+
   it('passes a11y checks', a11yTest());
 });

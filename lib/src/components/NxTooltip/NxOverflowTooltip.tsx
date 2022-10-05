@@ -6,6 +6,7 @@
  */
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import useResizeObserver from '@react-hook/resize-observer';
+import useMergedRef from '@react-hook/merged-ref';
 
 import { textContent } from '../../util/childUtil';
 
@@ -26,12 +27,15 @@ function selfOrChildrenOverflowing(el: Element): boolean {
   return isOverflowing(el) || any(selfOrChildrenOverflowing, Array.from(el.children));
 }
 
-export default function NxOverflowTooltip({ title, children, ...otherProps }: OverflowTooltipProps) {
-  const computedTitle = title || textContent(children),
+export default function NxOverflowTooltip<C extends HTMLElement = HTMLElement>(props: OverflowTooltipProps<C>) {
+  const { title, children, ...otherProps } = props,
+      computedTitle = title || textContent(children),
       [needsTooltip, setNeedsTooltip] = useState(false),
-      ref = useRef<HTMLElement>(null),
+      ref = useRef<C>(null),
       isUnmounted = useRef(false),
-      childrenWithRef = React.cloneElement(children, { ref });
+      childRef = children.ref,
+      mergedRef = useMergedRef(ref, childRef ?? null),
+      childrenWithRef = React.cloneElement(children, { ref: mergedRef });
 
   const updateNeedsTooltip = useCallback(function updateNeedsTooltip() {
     const el = ref.current;
