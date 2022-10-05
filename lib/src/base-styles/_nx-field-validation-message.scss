@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+.nx-field-validation-message {
+  color: var(--nx-color-validation-invalid);
+  font-size: var(--nx-font-size-xs);
+  line-height: 16px;
+  margin-top: var(--nx-spacing-2x);
+
+  // this positions the invalid message inside the bottom margin of .nx-form-group or .nx-fieldset which allows
+  // us to maintain consistent spacing whether there is validation or not
+  position: absolute;
+}

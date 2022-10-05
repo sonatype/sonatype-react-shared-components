@@ -85,9 +85,8 @@ const NxTextInputPage = () =>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Only relevant when <NxCode>isRequired</NxCode> is true, this prop sets whether the input is currently
-                pristine (has not yet had its value adjusted by the user), in which case the validation error is not
-                shown.
+                Should be set to true when <NxCode>isRequired</NxCode> is true, but <NxCode>NxFileUpload</NxCode>
+                {' '}has not yet been modified by the user.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
