@@ -309,8 +309,9 @@ const NxTreePage = () =>
                         codeExamples={[noGutterCode]}>
       An example of a non-collapsible tree with a single top level element which has its left-most gutter space removed
       via the <NxCode>nx-tree--no-gutter</NxCode> class so that it aligns well with surrounding non-tree content. This
-      example also includes a colored icon (an <NxCode>NxThreatIndicator</NxCode> to be specific) demonstrating
-      the <NxCode>nx-tree__colored-icon</NxCode> class.
+      example also includes colored icons. Both of the icons demonstrate the <NxCode>nx-icon--colorful</NxCode> class.
+      The <NxCode>NxThreatIndicator</NxCode> sets the class internally so it is not specified, but for the key icon,
+      the <NxCode>nx-icon--colorful</NxCode> class needs to be set manually so the color is not modified.
     </GalleryExampleTile>
   </>;
 

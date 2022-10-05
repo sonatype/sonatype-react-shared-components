@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { NxFontAwesomeIcon, NxP, NxThreatIndicator, NxTree } from '@sonatype/react-shared-components';
-import { faFile, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faFolderOpen, faKey } from '@fortawesome/free-solid-svg-icons';
 
 export default function NxTreeCollapsibleExample() {
   return (
@@ -114,13 +114,16 @@ export default function NxTreeCollapsibleExample() {
                                 <NxTree.Item>
                                   <NxTree.ItemLabel>
                                     <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                                    <NxThreatIndicator threatLevelCategory="severe" className="nx-tree__colored-icon" />
+                                    <NxThreatIndicator threatLevelCategory="severe" />
                                     <span>keyboard1.webm</span>
                                   </NxTree.ItemLabel>
                                 </NxTree.Item>
                                 <NxTree.Item>
                                   <NxTree.ItemLabel>
                                     <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
+                                    <NxFontAwesomeIcon fixedWidth
+                                                       className="nx-tree-key-icon  nx-icon--colorful"
+                                                       icon={faKey} />
                                     <span>keyboard2.webm</span>
                                   </NxTree.ItemLabel>
                                 </NxTree.Item>
