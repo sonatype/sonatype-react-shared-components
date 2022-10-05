@@ -262,10 +262,6 @@ const NxDropdownPage = () =>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
-        <NxWarningAlert>
-          The <NxCode>nx-dropdown-icon</NxCode> class name has been deprecated.
-          Please use <NxCode><NxTextLink href="#/pages/Icon">nx-icon--colorful</NxTextLink></NxCode> instead.
-        </NxWarningAlert>
       </NxTile.Subsection>
 
       <NxTile.Subsection>
