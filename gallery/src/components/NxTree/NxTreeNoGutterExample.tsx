@@ -131,7 +131,7 @@ export default function NxTreeCollapsibleExample() {
                                   <NxTree.ItemLabel>
                                     <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
                                     <NxFontAwesomeIcon fixedWidth
-                                                       className="nx-tree-key-icon  nx-icon--colorful"
+                                                       className="gallery-example-custom-key-icon  nx-icon--colorful"
                                                        icon={faKey} />
                                     <span>keyboard2.webm</span>
                                   </NxTree.ItemLabel>

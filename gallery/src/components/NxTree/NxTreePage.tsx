@@ -16,6 +16,8 @@ import NonCollapsibleMultiTopExample from './NxTreeNonCollapsibleMultiTopExample
 import StatefulExample from './NxTreeStatefulExample';
 import NoGutterExample from './NxTreeNoGutterExample';
 
+import './NxTreeExample.scss';
+
 const collapsibleCode = require('./NxTreeCollapsibleExample?raw'),
     collapsibleMultiTopCode = require('./NxTreeCollapsibleMultiTopExample?raw'),
     nonCollapsibleCode = require('./NxTreeNonCollapsibleExample?raw'),

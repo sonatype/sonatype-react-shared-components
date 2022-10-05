@@ -145,10 +145,6 @@
     .nx-icon:not(.nx-tree__colored-icon, .nx-icon--colorful) {
       color: var(--nx-swatch-grey-05);
     }
-
-    .nx-tree-key-icon {
-      color: purple;
-    }
   }
 
   &--no-gutter > .nx-tree__item {
