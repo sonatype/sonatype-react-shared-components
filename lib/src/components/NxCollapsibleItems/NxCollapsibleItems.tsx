@@ -46,7 +46,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
         'nx-collapsible-items--empty': isEmpty
       }),
       treeViewId = useUniqueId('nx-collapsible-items', id),
-      treeViewChildrenId = useUniqueId('nx-collapsible-items__children'),
+      treeViewChildrenId = useUniqueId('nx-collapsible-items-children'),
       trigger = (
         <button type="button"
                 className="nx-collapsible-items__trigger"
