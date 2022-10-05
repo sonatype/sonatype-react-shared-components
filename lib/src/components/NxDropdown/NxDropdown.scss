@@ -145,7 +145,7 @@
   }
 }
 
-.nx-dropdown-link:not(.disabled) .nx-icon:not(.nx-icon--colorful) {
+.nx-dropdown-link:not([disabled], .disabled) .nx-icon:not(.nx-icon--colorful) {
   color: var(--nx-color-link);
 }
 
