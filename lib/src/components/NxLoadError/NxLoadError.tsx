@@ -42,7 +42,7 @@ const NxLoadError = forwardRef<HTMLDivElement, Props>(
             { (retryHandler || useSubmitRetry) &&
               <NxButton type={useSubmitRetry ? 'submit' : 'button'}
                         variant="error"
-                        {...(retryHandler ? { retryHandler } : {})}
+                        {...(retryHandler ? { onClick: retryHandler } : {})}
                         className="nx-load-error__retry">
                 <NxFontAwesomeIcon icon={faSync} />
                 <span>Retry</span>
