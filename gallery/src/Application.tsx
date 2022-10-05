@@ -48,12 +48,14 @@ import NxDrawerEscExample from './components/NxDrawer/NxDrawerEscExample';
 import NxDrawerExample from './components/NxDrawer/NxDrawerExample';
 import NxDrawerVariantExample from './components/NxDrawer/NxDrawerVariantExample';
 import NxDrawerWithNxFormExample from './components/NxDrawer/NxDrawerWithNxFormExample';
+import NxDrawerWithNxToastExample from './components/NxDrawer/NxDrawerWithNxToastExample';
 import NxDrawerWithSubtitleOrDescriptionExample from './components/NxDrawer/NxDrawerWithSubtitleOrDescriptionExample';
 import NxDrawerConditionalRenderingExample from './components/NxDrawer/NxDrawerConditionalRenderingExample';
 
 import NxToastSimpleLayoutExample from './components/NxToast/NxToastSimpleLayoutExample';
 import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayoutExample';
 import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
+import NxToastWithNxDrawerExample from './components/NxToast/NxToastWithNxDrawerExample';
 
 const pageMappings = mergeAll(values(pageConfig));
 
@@ -136,6 +138,11 @@ function Application() {
             <NxToastSimpleLayoutExample />
           </SectionScrollingWrapper>
         </Route>
+        <Route exact path="/NxToastWithNxDrawerExample">
+          <SectionScrollingWrapper>
+            <NxToastWithNxDrawerExample />
+          </SectionScrollingWrapper>
+        </Route>
         <Route exact path="/NxToastComplexLayoutExample">
           <SectionScrollingWrapper>
             <NxToastComplexLayoutExample />
@@ -185,6 +192,11 @@ function Application() {
         <Route exact path="/NxDrawerWithNxFormExample">
           <SectionScrollingWrapper>
             <NxDrawerWithNxFormExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxDrawerWithNxToastExample">
+          <SectionScrollingWrapper>
+            <NxDrawerWithNxToastExample />
           </SectionScrollingWrapper>
         </Route>
         <Route exact path="/NxDrawerEscExample">

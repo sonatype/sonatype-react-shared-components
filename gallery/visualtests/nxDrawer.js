@@ -125,6 +125,50 @@ describe('NxDrawer', function() {
     });
   });
 
+  describe('NxDrawer with NxToast', function() {
+    const browserSetup = setupBrowser('#/NxDrawerWithNxToastExample', false);
+    const { getPage, checkFullPageScreenshot, waitAndGetElements, wait, isVisible } = browserSetup;
+    const openDrawer = openDrawerFromPage(browserSetup);
+
+    const buttonId = 'nx-drawer-with-nx-toast-open-button';
+    const drawerId = 'nx-drawer-with-nx-toast';
+
+    it('is positioned correctly', async function() {
+      await getPage().setViewport(viewportSize);
+      const [openSuccessToastButton, openErrorToastButton] = await waitAndGetElements(
+          '#nx-toast-success-open-button', '#nx-toast-error-open-button'
+      );
+
+      await openSuccessToastButton.click();
+      await openDrawer(buttonId, drawerId);
+      await openErrorToastButton.click();
+
+      await wait(500);
+      await checkFullPageScreenshot();
+    });
+
+    it('stays open when the toast is closed', async function() {
+      await getPage().setViewport(viewportSize);
+      await openDrawer(buttonId, drawerId);
+      const [drawer, openErrorToastButton] = await waitAndGetElements(
+          '#nx-drawer-with-nx-toast',
+          '#nx-toast-error-open-button'
+      );
+      await openErrorToastButton.click();
+      await wait(500);
+
+      const [toast] = await waitAndGetElements('.nx-toast');
+      expect(await isVisible(toast)).toBe(true);
+
+      const [closeToast] = await waitAndGetElements('.nx-toast .nx-btn--close');
+      await closeToast.click();
+      await wait(500);
+
+      expect(await isVisible(drawer)).toBe(true);
+      expect(await isVisible(toast)).toBe(false);
+    });
+  });
+
   describe('NxDrawer with Overflowing Form', function() {
     const browserSetup = setupBrowser('#/NxDrawerWithNxFormExample', false);
     const { getPage, checkFullPageScreenshot, a11yTest } = browserSetup;
