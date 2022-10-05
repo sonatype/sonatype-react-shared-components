@@ -25,7 +25,7 @@ import './NxLoadError.scss';
  * @param retryHandler If this is defined, a Retry button will be rendered which executes this function when clicked
  */
 const NxLoadError = forwardRef<HTMLDivElement, Props>(
-    function NxLoadError({ error, titleMessage, retryHandler, className, ...otherProps }, ref) {
+    function NxLoadError({ error, titleMessage, retryHandler, className, useSubmitRetry, ...otherProps }, ref) {
       const alertClasses = classnames('nx-alert--load-error', className);
 
       return error != null && (
@@ -37,7 +37,10 @@ const NxLoadError = forwardRef<HTMLDivElement, Props>(
               { error }
             </span>
             { retryHandler &&
-              <NxButton type="button" variant="error" onClick={retryHandler} className="nx-load-error__retry">
+              <NxButton type={useSubmitRetry ? 'submit' : 'button'}
+                        variant="error"
+                        onClick={retryHandler}
+                        className="nx-load-error__retry">
                 <NxFontAwesomeIcon icon={faSync} />
                 <span>Retry</span>
               </NxButton>

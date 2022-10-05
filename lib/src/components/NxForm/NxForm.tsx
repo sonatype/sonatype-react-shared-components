@@ -63,7 +63,8 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
               { submitError &&
                 <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
                              error={submitError}
-                             retryHandler={onSubmitProp} />
+                             retryHandler={onSubmitProp}
+                             useSubmitRetry={true} />
               }
 
               <div className="nx-btn-bar">
