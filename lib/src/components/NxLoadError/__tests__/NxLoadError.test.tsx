@@ -62,7 +62,7 @@ describe('NxLoadError', function() {
   });
 
   it('sets the retry button type to "submit" when useSubmitRetry is set to true', function() {
-    const props = { error: 'Error!', useSubmitRetry: true, retryHandler: () => {} };
+    const props = { error: 'Error!', useSubmitRetry: true };
     const button = getShallowComponent(props).find(NxButton);
     expect(button).toHaveProp('type', 'submit');
   });

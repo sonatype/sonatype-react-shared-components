@@ -22,10 +22,13 @@ import './NxLoadError.scss';
  * @param error if defined/non-null, is a string error message
  * @param titleMessage An optional string to display before the actual error output.  If not defined, defaults
  * to "An error occurred loading data."
- * @param retryHandler If this is defined, a Retry button will be rendered which executes this function when clicked
+ * @param retryHandler If this is defined, a Retry button will be rendered with type button
+ * which executes this function when clicked
+ * @param useSubmitRetry If this is defined, a Retry button will be rendered with type submit.
+ * it will also set retryHandler if it is specified.
  */
 const NxLoadError = forwardRef<HTMLDivElement, Props>(
-    function NxLoadError({ error, titleMessage, retryHandler, className, useSubmitRetry, ...otherProps }, ref) {
+    function NxLoadError({ error, titleMessage, useSubmitRetry, retryHandler, className, ...otherProps }, ref) {
       const alertClasses = classnames('nx-alert--load-error', className);
 
       return error != null && (
@@ -36,10 +39,10 @@ const NxLoadError = forwardRef<HTMLDivElement, Props>(
               {' '}
               { error }
             </span>
-            { retryHandler &&
+            { (retryHandler || useSubmitRetry) &&
               <NxButton type={useSubmitRetry ? 'submit' : 'button'}
                         variant="error"
-                        onClick={retryHandler}
+                        {...(retryHandler ? { retryHandler } : {})}
                         className="nx-load-error__retry">
                 <NxFontAwesomeIcon icon={faSync} />
                 <span>Retry</span>
