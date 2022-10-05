@@ -14,7 +14,7 @@
   position: relative;
   width: nx-dropdown-variables.$dropdown-width;
 
-  .nx-icon:not(.nx-icon--colorful):not(.nx-dropdown-link .nx-icon):not(.nx-dropdown .disabled .nx-icon) {
+  .nx-icon:not(.nx-icon--colorful, .nx-dropdown-link .nx-icon, .nx-dropdown :is(.disabled, [disabled]) .nx-icon) {
     color: var(--nx-swatch-grey-05);
   }
 }
