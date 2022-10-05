@@ -66,10 +66,14 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
     handleQueryParams(queryString.parse(location.search));
   }, [location.search]);
 
+  // reset scroll position
+  useEffect(function() {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   if (Content) {
-    // Put a key on <main> so that it re-renders entirely on route change, resetting scroll position
     return (
-      <NxPageMain key={pageName || 'home'}>
+      <NxPageMain>
         <div className="nx-page-title">
           <h1 className="nx-h1">
             {pageHeader}
