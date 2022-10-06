@@ -24,6 +24,16 @@
   max-width: var(--nx-width-text-wrapping);
   min-height: calc(32px + 2 * (var(--nx-spacing-4x) + 1px));
 
+  > .nx-icon {
+    // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
+    // no effect here so we use relative positioning instead
+    bottom: -0.125em;
+    flex-shrink: 0;
+    height: 1em;
+    margin-right: var(--nx-spacing-4x);
+    position: relative;
+  }
+
   > .nx-btn--close {
     align-self: start;
     margin-left: 24px;
@@ -34,17 +44,6 @@
 
     flex-shrink: 0;
     margin-left: auto;
-  }
-
-  // NOTE: nested for specificity
-  .nx-alert__icon {
-    // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
-    // no effect here so we use relative positioning instead
-    bottom: -0.125em;
-    flex-shrink: 0;
-    height: 1em;
-    margin-right: var(--nx-spacing-4x);
-    position: relative;
   }
 
   // This "strut" has the same height as the close button and ensures that the alert content stays vertically centered
@@ -75,7 +74,7 @@
   background-color: var(--nx-swatch-orange-90);
   border-color: var(--nx-color-alert-warning);
 
-  .nx-alert__icon {
+  > .nx-icon {
     color: var(--nx-color-alert-warning);
   }
 }
@@ -84,7 +83,7 @@
   background-color: var(--nx-swatch-red-95);
   border-color: var(--nx-color-alert-error);
 
-  .nx-alert__icon {
+  > .nx-icon {
     color: var(--nx-color-alert-error);
   }
 }
@@ -93,7 +92,7 @@
   background-color: var(--nx-swatch-blue-95);
   border-color: var(--nx-color-alert-info);
 
-  .nx-alert__icon {
+  > .nx-icon {
     color: var(--nx-color-alert-info);
   }
 }
@@ -102,7 +101,7 @@
   background-color: var(--nx-swatch-green-95);
   border-color: var(--nx-color-alert-success);
 
-  .nx-alert__icon {
+  > .nx-icon {
     color: var(--nx-color-alert-success);
   }
 }
