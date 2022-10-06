@@ -84,7 +84,7 @@ dockerizedBuildPipeline(
 
         cd lib
         yarn install --registry "\${registry}" --frozen-lockfile
-        yarn test
+        yarn ci-test
         yarn build
         cd dist
         npm pack
@@ -93,7 +93,7 @@ dockerizedBuildPipeline(
         cd gallery
         yarn install --registry "\${registry}" --frozen-lockfile
 
-        yarn test
+        yarn ci-test
         yarn build
         cd ..
 
