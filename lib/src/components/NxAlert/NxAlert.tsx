@@ -28,11 +28,11 @@ const NxAlert = forwardRef<HTMLDivElement, NxAlertProps>(
 
       return (
         <div { ...otherProps } ref={ref} className={classes} aria-atomic={true}>
-          <div className="nx-alert__icon-and-content">
-            <NxFontAwesomeIcon className="nx-alert__icon"
-                               aria-label={iconLabel || undefined}
-                               aria-hidden={!iconLabel}
-                               icon={icon}/>
+          <NxFontAwesomeIcon className="nx-alert__icon"
+                             aria-label={iconLabel || undefined}
+                             aria-hidden={!iconLabel}
+                             icon={icon}/>
+          <div className="nx-alert__content-wrap">
             <div className="nx-alert__content">{children}</div>
           </div>
           { onClose && <NxCloseButton onClick={onClose} /> }

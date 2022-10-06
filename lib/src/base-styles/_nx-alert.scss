@@ -11,9 +11,8 @@
 */
 .nx-alert {
   @include nx-container-helpers.container-horizontal;
-  @include nx-container-helpers.container-vertical;
 
-  align-items: center;
+  align-items: first baseline;
   background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-swatch-grey-05);
   border-radius: var(--nx-border-radius);
@@ -36,26 +35,38 @@
     flex-shrink: 0;
     margin-left: auto;
   }
+
+  // NOTE: nested for specificity
+  .nx-alert__icon {
+    // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
+    // no effect here so we use relative positioning instead
+    bottom: -0.125em;
+    flex-shrink: 0;
+    height: 1em;
+    margin-right: var(--nx-spacing-4x);
+    position: relative;
+  }
+
+  // This "strut" has the same height as the close button and ensures that the alert content stays vertically centered
+  // when the close button is not present
+  &::before {
+    // zero-width space
+    content: '\200b';
+    margin: var(--nx-spacing-base) 0;
+  }
 }
 
-.nx-alert__icon-and-content {
-  align-items: first baseline;
+.nx-alert__content-wrap {
+  @include nx-container-helpers.container-horizontal;
+
+  align-items: center;
   display: flex;
   flex-grow: 1;
 }
 
-.nx-alert__icon {
-  // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
-  // no effect here so we use relative positioning instead
-  bottom: -0.125em;
-  flex-shrink: 0;
-  height: 1em;
-  margin-right: var(--nx-spacing-4x);
-  position: relative;
-}
-
-
 .nx-alert__content {
+  @include nx-container-helpers.container-vertical;
+
   flex-grow: 1;
   overflow-wrap: anywhere;
 }
