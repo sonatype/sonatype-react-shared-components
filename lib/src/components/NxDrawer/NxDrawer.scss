@@ -111,6 +111,7 @@
 .nx-drawer-header {
   @include nx-container-helpers.container-vertical;
 
+  align-items: start;
   border-bottom: 1px solid var(--nx-swatch-indigo-90);
   display: grid;
   column-gap: var(--nx-spacing-2x);
