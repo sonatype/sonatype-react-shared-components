@@ -13,29 +13,20 @@
   @include nx-container-helpers.container-horizontal;
   @include nx-container-helpers.container-vertical;
 
-  align-items: first baseline;
+  align-items: center;
   background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-swatch-grey-05);
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   display: flex;
   margin: 16px 0 24px 0;
-  max-width: 950px;
   padding: var(--nx-spacing-4x);
   text-align: initial;
   max-width: var(--nx-width-text-wrapping);
-
-  > .nx-icon {
-    // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
-    // no effect here so we use relative positioning instead
-    bottom: -0.125em;
-    flex-shrink: 0;
-    height: 1em;
-    margin-right: var(--nx-spacing-4x);
-    position: relative;
-  }
+  min-height: calc(32px + 2 * (var(--nx-spacing-4x) + 1px));
 
   > .nx-btn--close {
+    align-self: start;
     margin-left: 24px;
 
     &, &:hover, &:active, &:focus {
@@ -47,12 +38,25 @@
   }
 }
 
-.nx-alert__content {
+.nx-alert__icon-and-content {
+  align-items: first baseline;
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
-  justify-content: center;
-  min-height: 32px;
+}
+
+.nx-alert__icon {
+  // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
+  // no effect here so we use relative positioning instead
+  bottom: -0.125em;
+  flex-shrink: 0;
+  height: 1em;
+  margin-right: var(--nx-spacing-4x);
+  position: relative;
+}
+
+
+.nx-alert__content {
+  flex-grow: 1;
   overflow-wrap: anywhere;
 }
 
@@ -60,7 +64,7 @@
   background-color: var(--nx-swatch-orange-90);
   border-color: var(--nx-color-alert-warning);
 
-  > .nx-icon {
+  .nx-alert__icon {
     color: var(--nx-color-alert-warning);
   }
 }
@@ -69,7 +73,7 @@
   background-color: var(--nx-swatch-red-95);
   border-color: var(--nx-color-alert-error);
 
-  > .nx-icon {
+  .nx-alert__icon {
     color: var(--nx-color-alert-error);
   }
 }
@@ -78,7 +82,7 @@
   background-color: var(--nx-swatch-blue-95);
   border-color: var(--nx-color-alert-info);
 
-  > .nx-icon {
+  .nx-alert__icon {
     color: var(--nx-color-alert-info);
   }
 }
@@ -87,7 +91,7 @@
   background-color: var(--nx-swatch-green-95);
   border-color: var(--nx-color-alert-success);
 
-  > .nx-icon {
+  .nx-alert__icon {
     color: var(--nx-color-alert-success);
   }
 }
