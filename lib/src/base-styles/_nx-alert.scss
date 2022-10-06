@@ -22,7 +22,6 @@
   padding: var(--nx-spacing-4x);
   text-align: initial;
   max-width: var(--nx-width-text-wrapping);
-  min-height: calc(32px + 2 * (var(--nx-spacing-4x) + 1px));
 
   > .nx-icon {
     // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
@@ -35,7 +34,6 @@
   }
 
   > .nx-btn--close {
-    align-self: start;
     margin-left: 24px;
 
     &, &:hover, &:active, &:focus {
@@ -61,6 +59,7 @@
   align-items: center;
   display: flex;
   flex-grow: 1;
+  min-height: 32px;
 }
 
 .nx-alert__content {
