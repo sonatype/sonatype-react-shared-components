@@ -67,8 +67,6 @@ describe('NxTextInput', function() {
       await inputElement.press('Backspace');
       await inputElement.press('Backspace');
 
-      const { x, y } = await targetElement.boundingBox();
-
       await checkScreenshot(targetElement, 300, 74);
     });
   });
@@ -117,7 +115,6 @@ describe('NxTextInput', function() {
       await inputElement.press('Backspace');
       await inputElement.press('Backspace');
 
-      const { x, y } = await targetElement.boundingBox();
       await checkScreenshot(targetElement, 300, 300);
     });
   });
