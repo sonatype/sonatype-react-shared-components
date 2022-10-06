@@ -111,13 +111,13 @@
 .nx-drawer-header {
   @include nx-container-helpers.container-vertical;
 
+  align-items: start;
   border-bottom: 1px solid var(--nx-swatch-indigo-90);
   display: grid;
   column-gap: var(--nx-spacing-2x);
   grid-template: "title close-button"
                  "subtitle subtitle"
                  "description description" / auto min-content;
-  align-items: start;
   padding-bottom: var(--nx-spacing-6x);
 
   &__close-button, &__title {
