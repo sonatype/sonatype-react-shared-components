@@ -48,6 +48,7 @@
 
         // handled by jsx-indent and jsx-indent-props
         "ignoredNodes": [
+          "JSXFragment",
           "JSXElement",
           "JSXElement > *",
           "JSXAttribute",
