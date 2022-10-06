@@ -62,7 +62,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             <footer className="nx-footer">
               { submitError &&
                 <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
-                             useSubmitRetry={true}
+                             submitOnRetry={true}
                              error={submitError} />
               }
 
