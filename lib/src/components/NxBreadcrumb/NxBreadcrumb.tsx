@@ -37,17 +37,17 @@ function BreadcrumbDropdownLink({ name, href }: Crumb) {
   );
 }
 
-function BreadcrumbDropdown({ crumbs, isOpen }: DropdownProps) {
+function BreadcrumbDropdown({ crumbs, isOpen, onToggleCollapse }: DropdownProps) {
   return (
     <li className="nx-breadcrumb__list-item">
-      <NxIconDropdown isOpen={isOpen} icon={faEllipsisH} title="more…">
+      <NxIconDropdown isOpen={isOpen} onToggleCollapse={onToggleCollapse} icon={faEllipsisH} title="more…">
         {map(c => <BreadcrumbDropdownLink key={c.href} { ...c } />, crumbs)}
       </NxIconDropdown>
     </li>
   );
 }
 
-export default function NxBreadcrumb({ crumbs, isDropdownOpen, ...otherProps }: Props) {
+export default function NxBreadcrumb({ crumbs, isDropdownOpen, onToggleDropdown, ...otherProps }: Props) {
   const crumbBeforeDropdown = crumbs.length < 2 ? null : head(crumbs);
 
   if (crumbBeforeDropdown) {
@@ -57,7 +57,10 @@ export default function NxBreadcrumb({ crumbs, isDropdownOpen, ...otherProps }: 
         currentCrumb = last(crumbsAfterDropdown)!,
         currentCrumbRender = <CurrentBreadcrumb key={currentCrumb.href} { ...currentCrumb } />,
         rowLinks = map(c => <BreadcrumbLink key={c.href} { ...c } />, crumbsToBecomeLinks),
-        dropdown = dropdownCrumbs.length ? <BreadcrumbDropdown isOpen={isDropdownOpen} crumbs={dropdownCrumbs} /> :
+        dropdown = dropdownCrumbs.length ?
+            <BreadcrumbDropdown isOpen={isDropdownOpen}
+                                onToggleCollapse={onToggleDropdown}
+                                crumbs={dropdownCrumbs} /> :
             null,
         rowInteractiveParts = dropdown ? insert(1, dropdown, rowLinks) : rowLinks,
         rowItems = append(currentCrumbRender, rowInteractiveParts);

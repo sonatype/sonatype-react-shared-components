@@ -15,11 +15,13 @@ export interface Crumb {
 export interface DropdownProps {
   crumbs: Crumb[];
   isOpen: boolean;
+  onToggleCollapse: () => void;
 }
 
 export interface Props extends HTMLAttributes<HTMLElement> {
   crumbs: Crumb[];
   isDropdownOpen: boolean;
+  onToggleDropdown: () => void;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -27,5 +29,6 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
     name: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  isDropdownOpen: PropTypes.bool.isRequired
+  isDropdownOpen: PropTypes.bool.isRequired,
+  onToggleDropdown: PropTypes.func.isRequired
 };
