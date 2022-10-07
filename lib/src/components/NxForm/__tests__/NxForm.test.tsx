@@ -186,12 +186,11 @@ describe('NxForm', function() {
         expect(loadError).toHaveProp('error', 'BAAAAD');
       });
 
-      it('attaches the onSubmit function to the NxLoadError retryHandler', function() {
-        const onSubmit = jest.fn(),
-            errorComponent = getShallow({ submitError: 'BAAAAD', onSubmit }),
-            loadError = errorComponent.find('.nx-footer').find(NxLoadError);
-
-        expect(loadError).toHaveProp('retryHandler', onSubmit);
+      it('sets retry button type to "submit" inside NxLoadError', function() {
+        const errorComponent = mount(<NxForm {...minimalProps} submitError="BAAAAD" />),
+            retryButton = errorComponent.find('.nx-footer').find(NxLoadError).find(NxButton);
+        expect(retryButton).toExist();
+        expect(retryButton).toHaveProp('type', 'submit');
       });
 
       it('sets the NxLoadError titleMessage to the submitErrorTitleMessage prop if present', function() {
