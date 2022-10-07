@@ -97,10 +97,6 @@
   }
 }
 
-.nx-dropdown-link {
-  text-decoration: underline;
-}
-
 .nx-dropdown-button {
   background-color: transparent;
   border-radius: 0;
@@ -130,17 +126,13 @@
 
 .nx-dropdown-link {
   color: var(--nx-color-link);
-
-  &:hover {
-    color: var(--nx-color-link-hover);
-    text-decoration: underline;
-  }
+  text-decoration: underline;
 
   &.disabled {
     &, &:hover, &:focus {
       color: var(--nx-color-link-disabled);
       cursor: default;
-      text-decoration: none;
+      text-decoration: underline;
     }
   }
 }
