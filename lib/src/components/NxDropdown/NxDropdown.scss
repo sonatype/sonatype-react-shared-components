@@ -128,6 +128,10 @@
   color: var(--nx-color-link);
   text-decoration: underline;
 
+  &:hover {
+    color: var(--nx-color-link-hover);
+  }
+
   &.disabled {
     &, &:hover, &:focus {
       color: var(--nx-color-link-disabled);
