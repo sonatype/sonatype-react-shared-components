@@ -7,13 +7,22 @@
 import React from 'react';
 import { NxP } from '@sonatype/react-shared-components';
 
-import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
+import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+
+import NxBreadcrumbExample from './NxBreadcrumbExample';
+
+const exampleCode = require('./NxBreadcrumbExample?raw');
 
 const NxBreadcrumbPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP />
     </GalleryDescriptionTile>
+
+    <GalleryExampleTile title="Simple Example"
+                        liveExample={NxBreadcrumbExample}
+                        codeExamples={exampleCode}>
+    </GalleryExampleTile>
   </>;
 
 export default NxBreadcrumbPage;
