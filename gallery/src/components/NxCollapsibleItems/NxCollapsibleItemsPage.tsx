@@ -137,6 +137,16 @@ const NxCollapsibleItemsPage = () =>
           </li>
         </ul>
       </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Accessibility</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The <NxCode>NxCollapsibleItems</NxCode> role attribute will be applied to the children element instead of
+          the top-level element. By default the role for the children element is set to <NxCode>list</NxCode> and
+          the child element is set to <NxCode>listitem</NxCode> unless otherwise specified.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="NxCollapsibleItems Basic Example"
