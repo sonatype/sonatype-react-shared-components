@@ -353,3 +353,5 @@ export {
 
 export { default as NxTile } from './components/NxTile/NxTile';
 export { default as NxMeter, Props as NxMeterProps } from './components/NxMeter/NxMeter';
+
+export { default as NxBreadcrumb } from './components/NxBreadcrumb/NxBreadcrumb';

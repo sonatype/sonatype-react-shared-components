@@ -153,6 +153,7 @@ import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
 import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
 import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
 import NxMeterPage from './components/NxMeter/NxMeterPage';
+import NxBreadcrumbPage from './components/NxBreadcrumb/NxBreadcrumbPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -181,6 +182,7 @@ const pageConfig: PageConfig = {
   },
   'Buttons and Dropdowns': {
     'Back Button': { content: NxBackButtonPage, type: 'react' },
+    'Breadcrumb': { content: NxBreadcrumbPage, type: 'react' },
     'Button': { content: NxButtonPage, type: 'react' },
     'Segmented Button': { content: NxSegmentedButtonPage, type: 'react' },
     'Stateful Segmented Button': { content: NxStatefulSegmentedButtonPage, type: 'react' },
