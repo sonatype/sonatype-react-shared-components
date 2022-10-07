@@ -29,7 +29,7 @@
 
 .nx-read-only__label {
   @include nx-text-helpers.bold;
-  color: var(--nx-swatch-grey-05);
+  color: var(--nx-color-text-dark);
   margin: var(--nx-spacing-8x) 0 var(--nx-spacing-2x) 0;
   max-width: var(--nx-width-text-wrapping);
 }
