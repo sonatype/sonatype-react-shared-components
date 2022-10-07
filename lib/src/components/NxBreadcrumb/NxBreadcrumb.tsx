@@ -57,9 +57,9 @@ export default function NxBreadcrumb({ crumbs, isDropdownOpen, ...otherProps }: 
         currentCrumb = last(crumbsAfterDropdown)!,
         currentCrumbRender = <CurrentBreadcrumb key={currentCrumb.href} { ...currentCrumb } />,
         rowLinks = map(c => <BreadcrumbLink key={c.href} { ...c } />, crumbsToBecomeLinks),
-        dropdown = <BreadcrumbDropdown isOpen={isDropdownOpen} crumbs={dropdownCrumbs} />,
-        rowInteractiveParts = dropdownCrumbs ? insert(1, dropdown, rowLinks) :
-            rowLinks,
+        dropdown = dropdownCrumbs.length ? <BreadcrumbDropdown isOpen={isDropdownOpen} crumbs={dropdownCrumbs} /> :
+            null,
+        rowInteractiveParts = dropdown ? insert(1, dropdown, rowLinks) : rowLinks,
         rowItems = append(currentCrumbRender, rowInteractiveParts);
 
     // do not render anything when at the top level of the breadcrumb hiearchy
