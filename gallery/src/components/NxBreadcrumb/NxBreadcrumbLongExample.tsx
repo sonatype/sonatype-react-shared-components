@@ -11,10 +11,19 @@ import { NxBreadcrumb, useToggle } from '@sonatype/react-shared-components';
 const crumbs = [
   { name: 'Foo', href: 'foo' },
   { name: 'Bar', href: 'bar' },
+  { name: 'Baz', href: 'baz' },
+  { name: 'Foo', href: 'foo' },
+  { name: 'Bar', href: 'bar' },
+  { name: 'Baz', href: 'baz' },
+  { name: 'Foo', href: 'foo' },
+  { name: 'Bar', href: 'bar' },
+  { name: 'Baz', href: 'baz' },
+  { name: 'Foo', href: 'foo' },
+  { name: 'Bar', href: 'bar' },
   { name: 'Baz', href: 'baz' }
 ];
 
-export default function NxBreadcrumbExample() {
+export default function NxBreadcrumbLongExample() {
   const [isDropdownOpen, toggleIsDropdownOpen] = useToggle(false);
 
   return (
