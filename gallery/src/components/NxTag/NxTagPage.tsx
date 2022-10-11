@@ -12,10 +12,14 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxTagExample from './NxTagExample';
 import NxSelectableTagExample from './NxSelectableTagExample';
 import NxTagNarrowExample from './NxTagNarrowExample';
+import NxTagWithTooltipExample from './NxTagWithTooltipExample';
+import NxSelectableTagWithTooltipExample from './NxSelectableTagWithTooltipExample';
 
 const NxTagExampleCode = require('./NxTagExample?raw');
 const NxSelectableTagExampleCode = require('./NxSelectableTagExample?raw');
 const NxTagNarrowExampleCode = require('./NxTagNarrowExample?raw');
+const NxTagWithTooltipExampleCode = require('./NxTagWithTooltipExample?raw');
+const NxSelectableTagWithTooltipExampleCode = require('./NxSelectableTagWithTooltipExample?raw');
 
 const NxTagPage = () =>
   <>
@@ -130,6 +134,23 @@ const NxTagPage = () =>
       Light grey border added for clarity.
     </GalleryExampleTile>
 
+    <GalleryExampleTile title="NxTag With Tooltip"
+                        id="nx-tag-with-tooltip-example"
+                        liveExample={NxTagWithTooltipExample}
+                        codeExamples={NxTagWithTooltipExampleCode}>
+      An example of <NxCode>NxTag</NxCode> wrapped inside <NxCode>NxTooltip</NxCode>.{' '}
+      Notice that the wrapping <NxCode>NxTooltip</NxCode> title overrides the <NxCode>NxOverflowTooltip</NxCode>{' '}
+      generated when the label is truncated.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxSelectableTag With Tooltip"
+                        id="nx-selectable-tag-with-tooltip-example"
+                        liveExample={NxSelectableTagWithTooltipExample}
+                        codeExamples={NxSelectableTagWithTooltipExampleCode}>
+      An example of <NxCode>NxSelectableTag</NxCode> wrapped inside <NxCode>NxTooltip</NxCode>.{' '}
+      Notice that the wrapping <NxCode>NxTooltip</NxCode> title overrides the <NxCode>NxOverflowTooltip</NxCode>{' '}
+      generated when the label is truncated.
+    </GalleryExampleTile>
   </>;
 
 export default NxTagPage;

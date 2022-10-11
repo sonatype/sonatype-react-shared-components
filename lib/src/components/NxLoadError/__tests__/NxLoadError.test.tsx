@@ -61,6 +61,12 @@ describe('NxLoadError', function() {
     expect(button).toHaveProp('type', 'button');
   });
 
+  it('sets the retry button type to "submit" when submitOnRetry is set to true', function() {
+    const props = { error: 'Error!', submitOnRetry: true };
+    const button = getShallowComponent(props).find(NxButton);
+    expect(button).toHaveProp('type', 'submit');
+  });
+
   it('calls the retryHandler when the retry button is clicked', function() {
     const retryHandler = jest.fn(),
         props = { error: 'Error!', canRetry: true, retryHandler },

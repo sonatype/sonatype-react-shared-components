@@ -130,17 +130,16 @@
 
 .nx-dropdown-link {
   color: var(--nx-color-link);
+  text-decoration: underline;
 
   &:hover {
     color: var(--nx-color-link-hover);
-    text-decoration: underline;
   }
 
   &.disabled {
     &, &:hover, &:focus {
       color: var(--nx-color-link-disabled);
       cursor: default;
-      text-decoration: none;
     }
   }
 }

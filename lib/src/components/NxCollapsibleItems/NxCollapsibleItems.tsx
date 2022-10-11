@@ -33,7 +33,6 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
     triggerContent,
     triggerTooltip,
     className,
-    id,
     ...otherProps
   } = props;
 
@@ -45,12 +44,12 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
         'nx-collapsible-items--disabled': disabled,
         'nx-collapsible-items--empty': isEmpty
       }),
-      treeViewId = useUniqueId('nx-collapsible-items', id),
+      treeViewChildrenId = useUniqueId('nx-collapsible-items-children'),
       trigger = (
         <button type="button"
                 className="nx-collapsible-items__trigger"
                 onClick={onToggleCollapse || undefined}
-                aria-controls={treeViewId}
+                aria-controls={treeViewChildrenId}
                 aria-expanded={isExpanded}
                 disabled={disabled || isEmpty || undefined}>
           <NxFontAwesomeIcon className="nx-collapsible-items__twisty" icon={faCaretRight} />
@@ -66,7 +65,6 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
   return (
     /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
     <div className={treeViewClasses}
-         id={treeViewId}
          role="list"
          { ...otherProps }>
       {
@@ -79,7 +77,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
           </NxTooltip>
         ) : trigger
       }
-      <div className="nx-collapsible-items__children" role="group">
+      <div className="nx-collapsible-items__children" role="group" id={treeViewChildrenId}>
         {children}
       </div>
     </div>
