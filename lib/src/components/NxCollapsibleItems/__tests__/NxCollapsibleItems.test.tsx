@@ -30,9 +30,9 @@ describe('NxCollapsibleItems', function() {
     expect(NxCollapsibleItems.Child).toBe(NxTreeViewChild);
   });
 
-  it('renders a div with a list role and the nx-collapsible-items class', function() {
+  it('renders a div with a group role and the nx-collapsible-items class', function() {
     expect(getShallowComponent()).toMatchSelector('div.nx-collapsible-items');
-    expect(getShallowComponent()).toHaveProp('role', 'list');
+    expect(getShallowComponent()).toHaveProp('role', 'group');
   });
 
   it('sets the specified id', function() {
@@ -185,13 +185,21 @@ describe('NxCollapsibleItems', function() {
     });
   });
 
-  it('renders the children in an nx-collapsible-items__children element with role=group', function() {
+  it('renders the children in an nx-collapsible-items__children element with role=list', function() {
     const component = getShallowComponent({ children: <span>foo</span> }),
         childrenEl = component.find('.nx-collapsible-items__children');
 
     expect(childrenEl).toExist();
-    expect(childrenEl).toHaveProp('role', 'group');
+    expect(childrenEl).toHaveProp('role', 'list');
     expect(childrenEl).toContainReact(<span>foo</span>);
+  });
+
+  it('sets specified role on an nx-collapsible-items__children element', function() {
+    const component = getShallowComponent({ role: 'menu' }),
+        childrenEl = component.find('.nx-collapsible-items__children');
+
+    expect(childrenEl).toExist();
+    expect(childrenEl).toHaveProp('role', 'menu');
   });
 
   describe('NxCollapsibleItems.Child', function() {
