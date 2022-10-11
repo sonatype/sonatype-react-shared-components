@@ -127,7 +127,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       { showError &&
         // TODO confirm whether this text should be hard-coded
         <div id={validationErrorId} role="alert" className="nx-file-upload__validation-error">
-          This field is Required!
+          This field is required!
         </div>
       }
     </div>

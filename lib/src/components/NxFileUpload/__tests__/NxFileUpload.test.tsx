@@ -43,7 +43,7 @@ describe('NxFileUpload', function() {
     expect(render({ isRequired: true, isPristine: true }).queryByRole('alert')).not.toBeTruthy();
 
     expect(render({ isRequired: true, isPristine: false }).queryByRole('alert'))
-        .toHaveTextContent('This field is Required!');
+        .toHaveTextContent('This field is required!');
   });
 
   it('sets aria-required on the input if isRequired is true', function() {
@@ -65,7 +65,7 @@ describe('NxFileUpload', function() {
     expect(renderInput({ isPristine: true })).not.toHaveErrorMessage();
     expect(renderInput({ isRequired: true, isPristine: true })).not.toHaveErrorMessage();
 
-    expect(renderInput({ isRequired: true, isPristine: false })).toHaveErrorMessage('This field is Required!');
+    expect(renderInput({ isRequired: true, isPristine: false })).toHaveErrorMessage('This field is required!');
   });
 
   it('attaches a ref to the top-level element', function() {
