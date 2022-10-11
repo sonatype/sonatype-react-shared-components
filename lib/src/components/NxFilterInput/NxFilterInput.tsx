@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, KeyboardEventHandler, useRef } from 'react';
+import useMergedRef from '@react-hook/merged-ref';
 import { omit } from 'ramda';
 import classnames from 'classnames';
 import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,8 @@ import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 import './NxFilterInput.scss';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import Close from '../../icons/Close';
+import NxButton from '../NxButton/NxButton';
 import { Props, propTypes } from './types';
 import { PrivateNxTextInput } from '../NxTextInput/NxTextInput';
 export { Props } from './types';
@@ -23,16 +26,40 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
           className = classnames('nx-filter-input', classNameProp, {
             'nx-filter-input--empty': isEmpty
           }),
-
+          fieldRef = useRef<HTMLDivElement>(null),
+          mergedRef = useMergedRef(fieldRef, ref),
           // just in case these props get passed in, avoid passing them to NxTextInput as they would cause
           // malfunction
           cleanedProps = omit(['validatable', 'validationErrors', 'type'], otherProps),
           filterIcon = searchIcon ? faSearch : faFilter,
-          prefixContent = <NxFontAwesomeIcon icon={filterIcon} className="nx-icon--filter-icons" />;
+          prefixContent = <NxFontAwesomeIcon icon={filterIcon} className="nx-icon--filter-icons" />,
+          suffixContent = !isEmpty ?
+            <NxButton variant="icon-only"
+                      title="clear filter"
+                      onClick={clearInputText}
+                      tabIndex={-1}><Close/>
+            </NxButton> : undefined;
+
+      function clearInputText() {
+        if (fieldRef.current) {
+          const input = fieldRef.current.querySelector('input') as HTMLInputElement;
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!;
+          setter.call(input, '');
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+
+      const handleKeyDown: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
+        if (e.key === 'Escape') {
+          clearInputText();
+        }
+      };
 
       return <PrivateNxTextInput { ...cleanedProps }
-                                 { ...{ prefixContent, className } }
-                                 ref={ref}
+                                 { ...{ prefixContent, className, suffixContent } }
+                                 onKeyDown={handleKeyDown}
+                                 ref={mergedRef}
                                  isPristine={false} />;
     }
 );

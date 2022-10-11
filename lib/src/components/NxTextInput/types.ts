@@ -45,9 +45,11 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   onKeyPress?: ((keyCode: string) => void) | null;
   validatable?: boolean | null;
 
-  // For internal use only, this prop allows additional content to be inserted just before the
-  // <input>. This is used by NxFilterInput
+  // For internal use only, these props are used by NxFilterInput
+  // additional content to be inserted before the <input>
   prefixContent?: ReactNode | null;
+  // additional content to be inserted after the <input>
+  suffixContent?: ReactNode | null;
 };
 
 export interface PublicProps extends Omit<Props, 'prefixContent'> {
