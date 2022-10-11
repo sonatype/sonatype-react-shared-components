@@ -23,7 +23,8 @@ const collapsibleCode = require('./NxTreeCollapsibleExample?raw'),
     nonCollapsibleCode = require('./NxTreeNonCollapsibleExample?raw'),
     nonCollapsibleMultiTopCode = require('./NxTreeNonCollapsibleMultiTopExample?raw'),
     statefulCode = require('./NxTreeStatefulExample?raw'),
-    noGutterCode = require('./NxTreeNoGutterExample?raw');
+    noGutterCode = require('./NxTreeNoGutterExample?raw'),
+    exampleScss = require('./NxTreeExample.scss?raw');
 
 const NxTreePage = () =>
   <>
@@ -308,7 +309,7 @@ const NxTreePage = () =>
     <GalleryExampleTile title="Utility Class Example"
                         id="nx-tree-no-gutter-example"
                         liveExample={NoGutterExample}
-                        codeExamples={[noGutterCode]}>
+                        codeExamples={[noGutterCode, { content: exampleScss, language: 'scss' }]}>
       An example of a non-collapsible tree with a single top level element which has its left-most gutter space removed
       via the <NxCode>nx-tree--no-gutter</NxCode> class so that it aligns well with surrounding non-tree content. This
       example also includes colored icons. All of the icons demonstrate the <NxCode>nx-icon--colorful</NxCode> class.
