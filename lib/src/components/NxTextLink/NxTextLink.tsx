@@ -47,7 +47,7 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
           target = specifiedTarget || (newTab || (external && newTab !== false) ? '_blank' : ''),
           wrappedChildren = truncate ?
             <span className="nx-text-link__truncate-text">{children}</span> : ensureStartEndElements(children),
-          icon = <NxFontAwesomeIcon icon={faExternalLinkAlt} size="sm" />;
+          icon = <NxFontAwesomeIcon className="nx-icon--colorful" icon={faExternalLinkAlt} size="sm" />;
 
       return (
         <a { ...{ ref, className, rel, target } }
