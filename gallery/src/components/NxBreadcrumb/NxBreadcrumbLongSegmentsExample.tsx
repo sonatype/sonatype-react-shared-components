@@ -8,22 +8,18 @@ import React from 'react';
 
 import { NxBreadcrumb, useToggle } from '@sonatype/react-shared-components';
 
-const crumbs = [
-  { name: 'Foo', href: 'foo' },
-  { name: 'Bar', href: 'bar' },
-  { name: 'Baz', href: 'baz' },
-  { name: 'Foo', href: 'foo' },
-  { name: 'Bar', href: 'bar' },
-  { name: 'Baz', href: 'baz' },
-  { name: 'Foo', href: 'foo' },
-  { name: 'Bar', href: 'bar' },
-  { name: 'Baz', href: 'baz' },
-  { name: 'Foo', href: 'foo' },
-  { name: 'Bar', href: 'bar' },
-  { name: 'Baz', href: 'baz' }
-];
+const crumbs = [{
+  name: 'Colorado, the Centennial State',
+  href: 'https://www.mountainproject.com/area/105708956/colorado'
+}, {
+  name: 'San Luis Valley, home of the UFO Watchtower',
+  href: 'https://www.mountainproject.com/area/105800418/san-luis-valley'
+}, {
+  name: 'Penitente Canyon Rock Climbing Routes',
+  href: 'https://www.mountainproject.com/area/105744316/penitente-canyon'
+}];
 
-export default function NxBreadcrumbLongExample() {
+export default function NxBreadcrumbLongSegmentsExample() {
   const [isDropdownOpen, toggleIsDropdownOpen] = useToggle(false);
 
   return (
