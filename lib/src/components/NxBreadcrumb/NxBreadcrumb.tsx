@@ -56,14 +56,18 @@ export default function NxBreadcrumb({ crumbs, isDropdownOpen, onToggleDropdown,
     const dropdownCrumbs = crumbs.length < 5 ? [] : tail(dropLast(3, crumbs)),
         crumbsAfterDropdown = crumbs.length < 5 ? tail(crumbs) : takeLast(3, crumbs),
         crumbsToBecomeLinks = [crumbBeforeDropdown, ...init(crumbsAfterDropdown)],
+
+        // if we're in this block, the list was at least two items long so last on the "after" crumbs will
+        // always have a value
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
         currentCrumb = last(crumbsAfterDropdown)!,
         currentCrumbRender = <CurrentBreadcrumb key={currentCrumb.href} { ...currentCrumb } />,
         rowLinks = map(c => <BreadcrumbLink key={c.href} { ...c } />, crumbsToBecomeLinks),
         dropdown = dropdownCrumbs.length ?
-            <BreadcrumbDropdown isOpen={isDropdownOpen}
-                                onToggleCollapse={onToggleDropdown}
-                                crumbs={dropdownCrumbs} /> :
-            null,
+          <BreadcrumbDropdown isOpen={isDropdownOpen}
+                              onToggleCollapse={onToggleDropdown}
+                              crumbs={dropdownCrumbs} /> :
+          null,
         rowInteractiveParts = dropdown ? insert(1, dropdown, rowLinks) : rowLinks,
         rowItems = append(currentCrumbRender, rowInteractiveParts);
 
