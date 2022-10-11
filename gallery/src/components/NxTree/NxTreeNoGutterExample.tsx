@@ -108,7 +108,6 @@ export default function NxTreeCollapsibleExample() {
                             <NxTree.Item>
                               <NxTree.ItemLabel>
                                 <NxTextLink external
-                                            className="nx-dropdown-link"
                                             href="https://www.sonatype.com">
                                   Website Link
                                 </NxTextLink>
