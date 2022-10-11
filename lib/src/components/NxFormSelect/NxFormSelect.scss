@@ -1,0 +1,118 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../../scss-shared/nx-text-helpers';
+
+.nx-form-select {
+  $caret-right-spacing: var(--nx-spacing-4x);
+
+  // amount of space alotted to the top and bottom of the component outside of the text line box.
+  // Includes padding and border
+  $vertical-spacing: var(--nx-spacing-2x);
+
+  display: inline-block;
+  margin-bottom: var(--nx-spacing-8x);
+  position: relative;
+  width: var(--nx-width-form-element-normal);
+  max-width: 100%;
+
+  &__select {
+    @include nx-text-helpers.regular;
+    $icon-size: 15px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--nx-swatch-white);
+    border: 1px solid var(--nx-color-form-element-border);
+    border-radius: var(--nx-border-radius);
+    color: var(--nx-color-text);
+    font-size: var(--nx-font-size);
+    line-height: var(--nx-line-height);
+    text-overflow: ellipsis;
+    padding:
+      calc(#{$vertical-spacing} - 1px)
+      calc(var(--nx-spacing-4x) + #{$icon-size} + #{$caret-right-spacing} - 1px)
+      calc(#{$vertical-spacing} - 1px)
+      calc(var(--nx-spacing-4x) - 1px);
+    width: 100%;
+
+    &:hover {
+      border-color: var(--nx-color-form-element-border);
+    }
+
+    &:focus {
+      box-shadow: var(--nx-box-shadow-focus);
+      border-color: var(--nx-color-interactive-border-focus);
+      outline: none;
+    }
+  }
+
+  &__caret {
+    font-size: 24px; // gets the <path> element to a height a roughly 8px as specced
+    margin: $vertical-spacing 0;
+    position: absolute;
+    right: $caret-right-spacing;
+  }
+
+  &--long {
+    width: var(--nx-width-form-element-wide);
+  }
+
+  &--short {
+    width: var(--nx-width-form-element-short);
+  }
+
+  &, &.pristine, &.pristine.valid {
+    .nx-form-select__select {
+      &:hover {
+        border-color: var(--nx-color-interactive-border-hover);
+      }
+
+      &:focus {
+        border-color: var(--nx-color-interactive-border-focus);
+        box-shadow: var(--nx-box-shadow-focus);
+      }
+    }
+  }
+
+  // styles which must appear this far down to override some with equal precedence higher up
+  &__select[disabled] {
+    &, &:hover {
+      color: var(--nx-color-text-disabled);
+      background-color: var(--nx-color-interactive-background-disabled);
+      border-color: var(--nx-color-interactive-border-disabled);
+    }
+
+    + .nx-form-select__caret {
+      color: var(--nx-color-text-disabled);
+    }
+  }
+}
+
+.nx-form--show-validation-errors .nx-form-select, .nx-form-select:not(.pristine) {
+  &:not(.disabled) {
+    &.valid {
+      .nx-form-select__select {
+        border-color: var(--nx-color-validation-valid);
+      }
+
+      .nx-form-select__caret {
+        color: var(--nx-color-validation-valid);
+      }
+    }
+
+    &.invalid {
+      .nx-form-select__select {
+        border-color: var(--nx-color-validation-invalid);
+      }
+
+      .nx-form-select__caret {
+        color: var(--nx-color-validation-invalid);
+      }
+    }
+  }
+}

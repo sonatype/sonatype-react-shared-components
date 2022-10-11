@@ -31,7 +31,7 @@ module.exports = {
 
     beforeAll(async function() {
       browser = await puppeteer.launch({
-        defaultViewport: { width: 1366, height: 3000 },
+        defaultViewport: { width: 1366, height: 4000 },
         headless: true,
 
         // we trust the pages we'll be viewing, and this is needed to run in docker without hampering docker's own
@@ -202,6 +202,7 @@ module.exports = {
       simpleTest(selector) {
         return async function() {
           const [element] = await waitAndGetElements(selector);
+          await moveMouseAway();
           await checkScreenshot(element);
         };
       },
