@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, forwardRef, useEffect, useRef } from 'react';
+import React, { FormEvent, forwardRef, useEffect, useRef, useContext } from 'react';
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
@@ -13,6 +13,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxButton from '../NxButton/NxButton';
 import NxTooltip from '../NxTooltip/NxTooltip';
+import { FormAriaContext } from '../NxForm/context';
 import { useUniqueId } from '../../util/idUtil';
 import { Props, propTypes, SelectedFileProps } from './types';
 
@@ -56,7 +57,9 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       } = props,
       file = files?.item(0),
       isFileSelected = !!file,
-      showError = isRequired && !isPristine && !isFileSelected,
+      { showValidationErrors: formShowValidationErrors } = useContext(FormAriaContext),
+      showValidationErrors = formShowValidationErrors || !isPristine,
+      showError = isRequired && showValidationErrors && !isFileSelected,
       className = classnames('nx-file-upload', classNameProp),
       noFileMessageClassName = classnames('nx-file-upload__no-file-message', {
         'nx-file-upload__no-file-message--invalid': showError
@@ -126,7 +129,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       }
       { showError &&
         // TODO confirm whether this text should be hard-coded
-        <div id={validationErrorId} role="alert" className="nx-file-upload__validation-error">
+        <div id={validationErrorId} role="alert" className="nx-field-validation-message">
           This field is required!
         </div>
       }

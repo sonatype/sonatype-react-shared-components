@@ -12,11 +12,12 @@ import {
   NxButton,
   NxTextInput,
   NxFormGroup,
-  NxForm,
   nxTextInputStateHelpers,
   NxFieldset,
   NxCheckbox,
-  useToggle
+  useToggle,
+  NxStatefulForm,
+  NxForm
 } from '@sonatype/react-shared-components';
 import {faAngry} from '@fortawesome/free-solid-svg-icons';
 
@@ -53,17 +54,16 @@ export default function NxModalFormExample() {
       <NxButton onClick={openModal}>Open Modal with Form</NxButton>
       {showModal &&
         <NxModal id="nx-modal-form-example" onCancel={modalCloseHandler} aria-labelledby="modal-form-header">
-          <NxForm className="nx-form"
-                  onSubmit={modalCloseHandler}
-                  onCancel={modalCloseHandler}
-                  validationErrors={validationErrors}
-                  additionalFooterBtns={
-                    <NxButton type="button" onClick={modalCloseHandler} variant="tertiary">
-                      Tertiary
-                    </NxButton>
-                  }
-                  doLoad={() => {}}
-                  loading={loading}>
+          <NxStatefulForm onSubmit={modalCloseHandler}
+                          onCancel={modalCloseHandler}
+                          validationErrors={validationErrors}
+                          additionalFooterBtns={
+                            <NxButton type="button" onClick={modalCloseHandler} variant="tertiary">
+                              Tertiary
+                            </NxButton>
+                          }
+                          doLoad={() => {}}
+                          loading={loading}>
             <header className="nx-modal-header">
               <h2 className="nx-h2" id="modal-form-header">
                 <NxFontAwesomeIcon icon={faAngry} />
@@ -71,6 +71,7 @@ export default function NxModalFormExample() {
               </h2>
             </header>
             <div className="nx-modal-content">
+              <NxForm.RequiredFieldNotice />
               <NxFormGroup label="Username" isRequired>
                 <NxTextInput aria-required={true}
                              placeholder="Username"
@@ -90,7 +91,7 @@ export default function NxModalFormExample() {
                 <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
               </NxFieldset>
             </div>
-          </NxForm>
+          </NxStatefulForm>
         </NxModal>
       }
     </>
