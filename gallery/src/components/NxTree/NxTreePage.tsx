@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-shared-components';
+import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile, NxWarningAlert } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -16,12 +16,15 @@ import NonCollapsibleMultiTopExample from './NxTreeNonCollapsibleMultiTopExample
 import StatefulExample from './NxTreeStatefulExample';
 import NoGutterExample from './NxTreeNoGutterExample';
 
+import './NxTreeExample.scss';
+
 const collapsibleCode = require('./NxTreeCollapsibleExample?raw'),
     collapsibleMultiTopCode = require('./NxTreeCollapsibleMultiTopExample?raw'),
     nonCollapsibleCode = require('./NxTreeNonCollapsibleExample?raw'),
     nonCollapsibleMultiTopCode = require('./NxTreeNonCollapsibleMultiTopExample?raw'),
     statefulCode = require('./NxTreeStatefulExample?raw'),
-    noGutterCode = require('./NxTreeNoGutterExample?raw');
+    noGutterCode = require('./NxTreeNoGutterExample?raw'),
+    exampleScss = require('./NxTreeExample.scss?raw');
 
 const NxTreePage = () =>
   <>
@@ -256,9 +259,13 @@ const NxTreePage = () =>
           color, the design intent is that it be the same color as dark text (<em>not</em> regular text). This intent
           is implemented within the <NxCode>NxTree</NxCode> styles so that this styling applies automatically when
           using RSC. However, when an icon is intended to have its own color, this style gets in the way. Therefore
-          a <NxCode>nx-tree__colored-icon</NxCode> class is available for icons which specify their own color which
+          a <NxCode>nx-icon--colorful</NxCode> class is available for icons which specify their own color which{' '}
           <NxCode>NxTree</NxCode> should not override.
         </NxP>
+        <NxWarningAlert>
+          The <NxCode>nx-tree__colored-icon</NxCode> class name has been deprecated.
+          Please use <NxCode><NxTextLink href="#/pages/Icon">nx-icon--colorful</NxTextLink></NxCode> instead.
+        </NxWarningAlert>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 
@@ -302,11 +309,13 @@ const NxTreePage = () =>
     <GalleryExampleTile title="Utility Class Example"
                         id="nx-tree-no-gutter-example"
                         liveExample={NoGutterExample}
-                        codeExamples={[noGutterCode]}>
+                        codeExamples={[noGutterCode, { content: exampleScss, language: 'scss' }]}>
       An example of a non-collapsible tree with a single top level element which has its left-most gutter space removed
       via the <NxCode>nx-tree--no-gutter</NxCode> class so that it aligns well with surrounding non-tree content. This
-      example also includes a colored icon (an <NxCode>NxThreatIndicator</NxCode> to be specific) demonstrating
-      the <NxCode>nx-tree__colored-icon</NxCode> class.
+      example also includes colored icons. All of the icons demonstrate the <NxCode>nx-icon--colorful</NxCode> class.
+      The <NxCode>NxThreatIndicator</NxCode> and the external link icons set the class internally so it is not
+      specified, but for the key icon, the <NxCode>nx-icon--colorful</NxCode> class needs to be set manually so
+      the color is not modified.
     </GalleryExampleTile>
   </>;
 
