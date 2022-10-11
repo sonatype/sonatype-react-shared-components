@@ -12,21 +12,23 @@ import NxTextLink from '../NxTextLink/NxTextLink';
 import { Props, Crumb, DropdownProps, propTypes } from './types';
 import NxIconDropdown from '../NxIconDropdown/NxIconDropdown';
 
+import './NxBreadcrumb.scss';
+
 export { Props, Crumb };
 
 function CurrentBreadcrumb({ name }: Crumb) {
   return (
-    <li className="nx-breadcrumb__list-item">
+    <li className="nx-breadcrumb__list-item nx-breadcrumb__list-item--link-container">
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className="nx-breadcrumb__current" aria-current="page">{name}</a>
+      <a className="nx-breadcrumb__link nx-breadcrumb__link--current" aria-current="page">{name}</a>
     </li>
   );
 }
 
 function BreadcrumbLink({ name, href }: Crumb) {
   return (
-    <li className="nx-breadcrumb__list-item">
-      <NxTextLink href={href}>{name}</NxTextLink>
+    <li className="nx-breadcrumb__list-item nx-breadcrumb__list-item--link-container">
+      <NxTextLink className="nx-breadcrumb__link" href={href}>{name}</NxTextLink>
     </li>
   );
 }
