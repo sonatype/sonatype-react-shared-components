@@ -12,10 +12,13 @@ import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 import NxFilterInput, { Props } from '../NxFilterInput';
 import { PrivateNxTextInput } from '../../NxTextInput/NxTextInput';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import NxButton from '../../NxButton/NxButton';
+import Close from '../../../icons/Close';
 
 describe('NxFilterInput', function() {
   const minimalProps = { value: '' },
-      shallowComponent = enzymeUtils.getShallowComponent<Props>(NxFilterInput, minimalProps);
+      shallowComponent = enzymeUtils.getShallowComponent<Props>(NxFilterInput, minimalProps),
+      MountedComponent = enzymeUtils.getMountedComponent<Props>(NxFilterInput, minimalProps);
 
   it('renders a PrivateNxTextInput with the nx-filter-input class', function() {
     const component = shallowComponent();
@@ -94,6 +97,41 @@ describe('NxFilterInput', function() {
     expect(icon).toMatchSelector(NxFontAwesomeIcon);
     expect(icon).toHaveProp(icon, faSearch);
     expect(icon).toHaveClassName('nx-icon--filter-icons');
+  });
+
+  it('does not pass a button with the Close icon as the suffixContent when value is empty', function() {
+    expect(shallowComponent()).toHaveProp('suffixContent', undefined);
+  });
+
+  it('passes an NxButton with the Close icon as the suffixContent when value is not empty', function() {
+    const BtnFixture = function() {
+          return shallowComponent({ value: 'a' }).prop('suffixContent');
+        },
+        btn = shallow(<BtnFixture />);
+
+    expect(btn).toExist();
+    expect(btn).toMatchSelector(NxButton);
+    expect(btn.children()).toMatchSelector(Close);
+  });
+
+  it('clears input text when the Escape key is pressed', function() {
+    const onKeyDown = jest.fn(),
+        element = shallowComponent({ onKeyDown, value: 'a' });
+
+    element.simulate('keyDown', { key: 'Escape' });
+
+    expect(element).toHaveText('');
+  });
+
+  it('clears input text when the close icon button is clicked', function() {
+    const component = MountedComponent({ value: 'a' }),
+        btn = component.find('.nx-btn--icon-only');
+
+    expect(btn).toExist();
+
+    btn.simulate('click');
+
+    expect(component).toHaveText('');
   });
 
   it('sets the nx-filter-input--empty class if the value is empty or only whitespace', function() {

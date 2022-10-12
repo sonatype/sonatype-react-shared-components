@@ -43,10 +43,11 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
       function clearInputText() {
         if (fieldRef.current) {
           const input = fieldRef.current.querySelector('input') as HTMLInputElement;
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!;
-          setter.call(input, '');
-          input.dispatchEvent(new Event('change', { bubbles: true }));
+          const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+          if (setter) {
+            setter.call(input, '');
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+          }
         }
       }
 
