@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import classnames from 'classnames';
 import { append, dropLast, head, init, insert, last, map, tail, takeLast } from 'ramda';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
@@ -49,8 +50,9 @@ function BreadcrumbDropdown({ crumbs, isOpen, onToggleCollapse }: DropdownProps)
   );
 }
 
-export default function NxBreadcrumb({ crumbs, isDropdownOpen, onToggleDropdown, ...otherProps }: Props) {
-  const crumbBeforeDropdown = crumbs.length < 2 ? null : head(crumbs);
+export default function NxBreadcrumb(props: Props) {
+  const { crumbs, isDropdownOpen, onToggleDropdown, className: classNameProp, ...otherProps } = props,
+      crumbBeforeDropdown = crumbs.length < 2 ? null : head(crumbs);
 
   if (crumbBeforeDropdown) {
     const dropdownCrumbs = crumbs.length < 5 ? [] : tail(dropLast(3, crumbs)),
@@ -70,11 +72,12 @@ export default function NxBreadcrumb({ crumbs, isDropdownOpen, onToggleDropdown,
                               crumbs={dropdownCrumbs} /> :
           null,
         rowInteractiveParts = dropdown ? insert(1, dropdown, rowLinks) : rowLinks,
-        rowItems = append(currentCrumbRender, rowInteractiveParts);
+        rowItems = append(currentCrumbRender, rowInteractiveParts),
+        className = classnames('nx-breadcrumb', classNameProp);
 
     // do not render anything when at the top level of the breadcrumb hiearchy
     return (
-      <nav className="nx-breadcrumb" aria-label="breadcrumbs" { ...otherProps }>
+      <nav className={className} aria-label="breadcrumbs" { ...otherProps }>
         <ol className="nx-breadcrumb__list">
           {rowItems}
         </ol>
