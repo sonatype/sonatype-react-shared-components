@@ -4,15 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
- @use '../scss-shared/nx-dark-mode-helpers';
-
 .nx-divider {
-  background-color: var(--nx-swatch-indigo-90);
+  background-color: var(--nx-color-border);
   border-style: none;
   margin: var(--nx-spacing-6x) 0;
   height: 1px;
-
-  @include nx-dark-mode-helpers.dark-mode {
-    background-color: var(--nx-swatch-indigo-40);
-  }
 }
