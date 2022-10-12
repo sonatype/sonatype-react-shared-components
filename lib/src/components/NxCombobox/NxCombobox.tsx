@@ -352,7 +352,10 @@ function NxComboboxRender<T extends string | number = string>(
                       // causing the menu to hide while the user is in the middle of clicking,
                       // causing the click not to register at all.
                       // Using preventDefault on onMouseDown seem to have prevent the focus from going to the <body>.
-                      onMouseDown={(event) => event.preventDefault()}>
+                      onMouseDown={(event) => {
+                        event.preventDefault();
+                        event.currentTarget.focus();
+                      }}>
                 {match.displayName}
               </button>
             )
