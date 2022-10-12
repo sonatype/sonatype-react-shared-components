@@ -1,15 +1,20 @@
 {
   "extends": ["./.eslintrc-base", "plugin:jsx-a11y/recommended"],
   "plugins": ["jsx-a11y"],
-  "globals": {
-    "require": true
-  },
-  "env": {
-    "jest": true
-  },
   "rules": {
     "jsx-a11y/label-has-associated-control": [ 2, {
       "controlComponents": ["NxTextInput", "NxStatefulTextInput", "NxFilterInput"]
     }]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.test.tsx"],
+      "globals": {
+        "require": true
+      },
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
