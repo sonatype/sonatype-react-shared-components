@@ -7,7 +7,14 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTextInput', function() {
-  const { simpleTest, a11yTest } = setupBrowser('#/pages/Filter%20Input');
+  const {
+    simpleTest,
+    waitAndGetElements,
+    getPage,
+    clickTest,
+    hoverTest,
+    a11yTest
+  } = setupBrowser('#/pages/Filter%20Input');
 
   const simpleComponentSelector = '#nx-filter-input-simple-example .nx-filter-input',
       searchComponentSelector = '#nx-filter-input-search-example .nx-filter-input',
@@ -23,6 +30,29 @@ describe('NxTextInput', function() {
 
   describe('Disabled NxFilterInput', function() {
     it('looks disabled', simpleTest(disabledComponentSelector));
+  });
+
+  describe('Clear Button', function() {
+    beforeEach(async function() {
+      const inputSelector = `${simpleComponentSelector} .nx-text-input__input`,
+          clearButtonSelector = `${simpleComponentSelector} .nx-btn--icon-only`,
+          [input] = await waitAndGetElements(inputSelector);
+
+      await input.focus();
+      await getPage().keyboard.type('a');
+      await getPage().waitForSelector(clearButtonSelector);
+    });
+
+    it('looks right', simpleTest(simpleComponentSelector));
+    it('has a dark grey border when hovered', async function() {
+      const clearButtonSelector = `${simpleComponentSelector} .nx-btn--icon-only`;
+      await hoverTest(simpleComponentSelector, clearButtonSelector)();
+    });
+
+    it('has a dark grey border and light grey background when clicked', async function() {
+      const clearButtonSelector = `${simpleComponentSelector} .nx-btn--icon-only`;
+      await clickTest(simpleComponentSelector, clearButtonSelector)();
+    });
   });
 
   it('passes a11y checks', a11yTest());
