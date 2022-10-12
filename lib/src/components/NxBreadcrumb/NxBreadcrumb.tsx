@@ -64,7 +64,8 @@ export default function NxBreadcrumb({ crumbs, isDropdownOpen, onToggleDropdown,
         currentCrumbRender = <CurrentBreadcrumb key={currentCrumb.href} { ...currentCrumb } />,
         rowLinks = map(c => <BreadcrumbLink key={c.href} { ...c } />, crumbsToBecomeLinks),
         dropdown = dropdownCrumbs.length ?
-          <BreadcrumbDropdown isOpen={isDropdownOpen}
+          <BreadcrumbDropdown key="%%nx-breadcrumb-dropdown"
+                              isOpen={isDropdownOpen}
                               onToggleCollapse={onToggleDropdown}
                               crumbs={dropdownCrumbs} /> :
           null,
