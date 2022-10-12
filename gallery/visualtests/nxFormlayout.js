@@ -7,33 +7,26 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-form', function() {
-  const { simpleTest, a11yTest } = setupBrowser('#/pages/Form Layout Examples');
+  const { waitAndGetElements, checkScreenshot, simpleTest, a11yTest } = setupBrowser('#/pages/Form Layout Examples');
 
   const generalFormSelector = '#nx-form-layout-example .nx-form',
       horizontablFormSelector = '#nx-form-layout-horizontal-example .nx-form';
 
   describe('nx-form layout', function() {
     it('looks right', simpleTest(generalFormSelector));
+    it('looks right with form-wide validation errors', async function() {
+      const [form, submitBtn] = await waitAndGetElements(
+          generalFormSelector,
+          `${generalFormSelector} .nx-form__submit-btn`
+      );
+
+      await submitBtn.click();
+      await checkScreenshot(form);
+    });
   });
 
   describe('nx-form horizontal layout', function() {
     it('looks right', simpleTest(horizontablFormSelector));
-  });
-
-  describe('nx-form-group deprecated layout', function() {
-    const { simpleTest } = setupBrowser('#/pages/Form Group (HTML)');
-
-    const selector = '#nx-form-group-deprecated-example .nx-form-group';
-
-    it('looks right', simpleTest(selector));
-  });
-
-  describe('nx-fieldset deprecated layout', function() {
-    const { simpleTest } = setupBrowser('#/pages/Fieldset (HTML)');
-
-    const selector = '#nx-fieldset-deprecated-example .nx-fieldset';
-
-    it('looks right', simpleTest(selector));
   });
 
   // color-contrast rule doesn't work on elements with a background-image (such as nx-form-select)
