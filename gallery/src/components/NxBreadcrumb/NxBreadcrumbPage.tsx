@@ -124,14 +124,14 @@ const NxBreadcrumbPage = () =>
     <GalleryExampleTile title="Simple Example"
                         liveExample={NxBreadcrumbExample}
                         codeExamples={exampleCode}>
-      A simple example of <NxCode>NxBreadcrumb</NxCode> showing three path segments with short names
+      A simple example of <NxCode>NxBreadcrumb</NxCode> showing three path segments with short names.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Long Segments"
                         liveExample={NxBreadcrumbLongSegmentsExample}
                         codeExamples={longSegmentsExampleCode}>
       An example of <NxCode>NxBreadcrumb</NxCode> showing three path segments with long names which will truncate
-      proportionally such that the component maintains its default maximum width
+      proportionally such that the component maintains its default maximum width.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Constrained Width"
@@ -145,7 +145,7 @@ const NxBreadcrumbPage = () =>
     <GalleryExampleTile title="Example with Many Segments"
                         liveExample={NxBreadcrumbManySegmentsExample}
                         codeExamples={manySegmentsExampleCode}>
-      An example of <NxCode>NxBreadcrumb</NxCode> with many segments, such that it gets a dropdown menu
+      An example of <NxCode>NxBreadcrumb</NxCode> with many segments, such that it gets a dropdown menu.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Many Long Segments"
