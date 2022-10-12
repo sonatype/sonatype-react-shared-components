@@ -45,7 +45,7 @@ describe('NxFileUpload', function() {
     expect(quickRender({ isRequired: true, isPristine: true }).queryByRole('alert')).not.toBeTruthy();
 
     expect(quickRender({ isRequired: true, isPristine: false }).queryByRole('alert'))
-        .toHaveTextContent('This field is Required!');
+        .toHaveTextContent('This field is required!');
   });
 
   it('shows an error when in a form with showValidationErrors if it is isRequired and no file is selected', function() {
@@ -56,9 +56,9 @@ describe('NxFileUpload', function() {
     );
 
     expect(renderWithForm.queryByRole('alert')).toBeTruthy();
-    expect(renderWithForm.queryByRole('alert')).toHaveTextContent('This field is Required!');
+    expect(renderWithForm.queryByRole('alert')).toHaveTextContent('This field is required!');
     expect(renderWithForm.container.querySelector('input[type=file]')).toHaveAttribute('aria-invalid', 'true');
-    expect(renderWithForm.container.querySelector('input[type=file]')).toHaveErrorMessage('This field is Required!');
+    expect(renderWithForm.container.querySelector('input[type=file]')).toHaveErrorMessage('This field is required!');
   });
 
   it('sets aria-required on the input if isRequired is true', function() {
@@ -80,7 +80,7 @@ describe('NxFileUpload', function() {
     expect(renderInput({ isPristine: true })).not.toHaveErrorMessage();
     expect(renderInput({ isRequired: true, isPristine: true })).not.toHaveErrorMessage();
 
-    expect(renderInput({ isRequired: true, isPristine: false })).toHaveErrorMessage('This field is Required!');
+    expect(renderInput({ isRequired: true, isPristine: false })).toHaveErrorMessage('This field is required!');
   });
 
   it('attaches a ref to the top-level element', function() {
