@@ -13,6 +13,10 @@
   display: inline-block;
   position: relative;
   width: nx-dropdown-variables.$dropdown-width;
+
+  .nx-icon:not(.nx-icon--colorful, .nx-dropdown-link .nx-icon, .nx-dropdown :is(.disabled, [disabled]) .nx-icon) {
+    color: var(--nx-swatch-grey-05);
+  }
 }
 
 .nx-dropdown-icon {
@@ -126,17 +130,16 @@
 
 .nx-dropdown-link {
   color: var(--nx-color-link);
+  text-decoration: underline;
 
   &:hover {
     color: var(--nx-color-link-hover);
-    text-decoration: underline;
   }
 
   &.disabled {
     &, &:hover, &:focus {
       color: var(--nx-color-link-disabled);
       cursor: default;
-      text-decoration: none;
     }
   }
 }

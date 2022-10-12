@@ -9,13 +9,59 @@
 
 .nx-form {
   position: relative;
+
+  @include nx-container-helpers.container-vertical;
+
+  &__required-field-asterisk {
+    color: var(--nx-swatch-red-40);
+  }
+
+  &__required-field-notice {
+    font-weight: 600;
+    color: var(--nx-color-text-dark);
+  }
+
+  &__validation-errors {
+    display: none;
+
+    + .nx-btn-bar {
+      margin-top: 0;
+    }
+  }
+
+  &--show-validation-errors {
+    &.nx-form--has-validation-errors {
+      .nx-form__validation-errors {
+        display: flex;
+      }
+    }
+  }
+
+  &--has-submit-error {
+    .nx-form__validation-errors {
+      display: none;
+    }
+  }
+
+  &--has-submit-error, &--show-validation-errors.nx-form--has-validation-errors {
+    .nx-form__submit-btn {
+      display: none;
+    }
+
+    // remove right margin from the last _visible_ footer button
+    .nx-footer .nx-btn-bar > :nth-last-child(2) {
+      margin-right: 0;
+    }
+  }
+
 }
+
 
 // Basic form layout
 .nx-form-group {
   margin-bottom: var(--nx-spacing-8x);
 
-  .nx-text-input {
+  .nx-text-input, .nx-form-select {
     margin-bottom: 0;
   }
 }
@@ -62,17 +108,16 @@
   cursor: default;
   display: block;
   margin-bottom: var(--nx-spacing-2x);
+
+  &::after {
+    @extend .nx-form__required-field-asterisk;
+    content: ' *';
+  }
 }
 
 .nx-label--optional, .nx-legend--optional {
   .nx-label__text::after, .nx-legend__text::after {
-    @include nx-text-helpers.regular;
-
-    color: var(--nx-color-text);
-    content: "Optional";
-    font-size: var(--nx-font-size-xs);
-    font-style: italic;
-    margin-left: var(--nx-spacing-2x);
+    display: none;
   }
 }
 
@@ -90,17 +135,4 @@
   font-style: italic;
   margin-bottom: var(--nx-spacing-4x);
   max-width: var(--nx-width-text-wrapping);
-}
-
-// Defining labels for groups of radio buttons or checkboxes is tricky - each individual radio has a <label>
-// element, so it is inappropriate to use a <label> for the group as a whole.  Instead, a <fieldset> and <legend> can
-// be used, but you'll still typically want the <legend> styled the way a <label> on a text field would be using
-// .nx-label.
-.nx-fieldset {
-  @include nx-container-helpers.container-vertical;
-
-  border: 0;
-  margin: 0 0 var(--nx-spacing-8x) 0;
-  min-inline-size: auto;
-  padding: 0;
 }

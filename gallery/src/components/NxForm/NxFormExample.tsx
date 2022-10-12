@@ -4,11 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent, useRef } from 'react';
 
 import {
   NxCheckbox,
-  NxForm,
   NxRadio,
   NxFormGroup,
   NxTextInput,
@@ -16,10 +15,13 @@ import {
   NxFieldset,
   useToggle,
   NxFormSelect,
-  nxFormSelectStateHelpers
+  nxFormSelectStateHelpers,
+  NxForm,
+  combineValidationErrors,
+  hasValidationErrors,
+  ValidationErrors,
+  SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS
 } from '@sonatype/react-shared-components';
-import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
-import { combineValidationErrors, hasValidationErrors } from '@sonatype/react-shared-components/util/validationUtil';
 
 const { initialState, userInput } = nxTextInputStateHelpers;
 
@@ -39,17 +41,20 @@ export default function NxFormExample() {
       [redChecked, toggleRed] = useToggle(false),
       [blueChecked, toggleBlue] = useToggle(false),
       [greenChecked, toggleGreen] = useToggle(false),
+      [isFieldsetPristine, setIsFieldsetPristine] = useState(true),
       [radioColor, setRadioColor] = useState<string | null>(null),
       [loading, setLoading] = useState(true),
       [loadError, setLoadError] = useState<string | null>(null),
       [submitCount, setSubmitCount] = useState(0),
       [submitError, setSubmitError] = useState<string | null>(null),
       [submitMaskState, setSubmitMaskState] = useState<boolean | null>(null),
-      radioValidationErrors = (redChecked || blueChecked || greenChecked) ?
+      [showValidationErrors, setShowValidationErrors] = useState(false),
+      previousValidationErrors = useRef<ValidationErrors | undefined>(null),
+      checkboxValidationErrors = (redChecked || blueChecked || greenChecked) ?
         null : 'Please select at least one checkbox',
       requiredFieldValidationErrors = hasValidationErrors(usernameState.validationErrors) ?
         'Missing required fields' : null,
-      validationErrors = combineValidationErrors(requiredFieldValidationErrors, radioValidationErrors);
+      validationErrors = combineValidationErrors(requiredFieldValidationErrors, checkboxValidationErrors);
 
   function onUsernameChange(val: string) {
     setUsernameState(userInput(validator, val));
@@ -67,6 +72,21 @@ export default function NxFormExample() {
     }, 2500);
   }, []);
 
+  useEffect(function() {
+    if (submitMaskState === null) {
+      // reset pristine state after successful submission
+      setShowValidationErrors(false);
+    }
+  }, [submitMaskState]);
+
+  useEffect(function() {
+    if (!hasValidationErrors(validationErrors) && hasValidationErrors(previousValidationErrors.current)) {
+      setShowValidationErrors(false);
+    }
+
+    previousValidationErrors.current = validationErrors;
+  }, [validationErrors]);
+
   function doLoad() {
     setLoading(true);
     setLoadError(null);
@@ -79,27 +99,36 @@ export default function NxFormExample() {
   }
 
   function onSubmit() {
-    // For the sake of example, simulate that the submit fails the first time, and then upon retry
-    // succeeds after 3 seconds
-    if (submitCount < 1) {
-      setSubmitError('The form could not be saved!');
-    }
-    else {
-      setSubmitError(null);
+    setShowValidationErrors(true);
 
-      setSubmitMaskState(false);
+    if (!hasValidationErrors(validationErrors)) {
+      // For the sake of example, simulate that the submit fails the first time, and then upon retry
+      // succeeds after 3 seconds
+      if (submitCount < 1) {
+        setSubmitError('The form could not be saved!');
+      }
+      else {
+        setSubmitError(null);
 
-      setTimeout(function() {
-        setSubmitMaskState(true);
+        setSubmitMaskState(false);
 
         setTimeout(function() {
-          setSubmitMaskState(null);
-        }, SUCCESS_VISIBLE_TIME_MS);
-      }, 3000);
-    }
+          setSubmitMaskState(true);
 
-    setSubmitCount(submitCount + 1);
+          setTimeout(function() {
+            setSubmitMaskState(null);
+          }, SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS);
+        }, 3000);
+      }
+
+      setSubmitCount(submitCount + 1);
+    }
   }
+
+  const setColor = (setter: () => void) => () => {
+    setter();
+    setIsFieldsetPristine(false);
+  };
 
   return (
     <NxForm loading={loading}
@@ -108,17 +137,22 @@ export default function NxFormExample() {
             loadError={loadError}
             submitError={submitError}
             validationErrors={validationErrors}
+            showValidationErrors={showValidationErrors}
             submitMaskState={submitMaskState}>
+      <NxForm.RequiredFieldNotice />
       <NxFormGroup label="Username" isRequired>
         <NxTextInput { ...usernameState } onChange={onUsernameChange} validatable/>
       </NxFormGroup>
       <NxFormGroup label="Hostname">
         <NxTextInput { ...hostnameState } onChange={onHostnameChange} className="nx-text-input--long"/>
       </NxFormGroup>
-      <NxFieldset label="Colors" isRequired>
-        <NxCheckbox onChange={toggleRed} isChecked={redChecked}>Red</NxCheckbox>
-        <NxCheckbox onChange={toggleBlue} isChecked={blueChecked}>Blue</NxCheckbox>
-        <NxCheckbox onChange={toggleGreen} isChecked={greenChecked}>Green</NxCheckbox>
+      <NxFieldset label="Colors"
+                  isRequired
+                  isPristine={isFieldsetPristine}
+                  validationErrors={checkboxValidationErrors}>
+        <NxCheckbox onChange={setColor(toggleRed)} isChecked={redChecked}>Red</NxCheckbox>
+        <NxCheckbox onChange={setColor(toggleBlue)} isChecked={blueChecked}>Blue</NxCheckbox>
+        <NxCheckbox onChange={setColor(toggleGreen)} isChecked={greenChecked}>Green</NxCheckbox>
       </NxFieldset>
       <NxFieldset label="Primary Color" sublabel="Pick a single color">
         <NxRadio name="color"
