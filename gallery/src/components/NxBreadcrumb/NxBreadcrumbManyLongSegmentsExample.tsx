@@ -9,7 +9,7 @@ import React from 'react';
 import { NxBreadcrumb, useToggle } from '@sonatype/react-shared-components';
 
 const crumbs = [{
-  name: 'Universe, Everything everywhere',
+  name: 'Universe - Everything everywhere that we can observe',
   href: 'https://en.wikipedia.org/wiki/Universe'
 }, {
   name: 'Pisces–Cetus Supercluster Complex',
@@ -48,7 +48,7 @@ const crumbs = [{
   name: 'Penitente Canyon Rock Climbing Routes',
   href: 'https://www.mountainproject.com/area/105744316/penitente-canyon'
 }, {
-  name: 'Inner Canyon',
+  name: 'Penitente Canyon - Inner Canyon',
   href: 'https://www.mountainproject.com/area/105745468/penitente-inner-canyon'
 }, {
   name: 'Bullet the Blue Sky - 5.12c/d',
