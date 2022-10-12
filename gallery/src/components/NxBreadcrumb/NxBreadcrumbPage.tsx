@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxP } from '@sonatype/react-shared-components';
+import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -28,7 +28,82 @@ const exampleCode = require('./NxBreadcrumbExample?raw'),
 const NxBreadcrumbPage = () =>
   <>
     <GalleryDescriptionTile>
-      <NxP />
+      <NxP>
+        <NxCode>NxBreadcrumb</NxCode> constructs a breadcrumb-style navigation aid useful for hierarchical pages.
+        The component receives an ordered list of named pages, starting at the root of the hierarchy and traversing
+        down to the current page. Generally, for each of these "crumbs" the component renders a link. The last
+        crumb, which represents the current page, is not rendered as a link but rather as plain text. The component
+        renders up to four pages/links in a line of text. If there are more than four crumbs, then only the root
+        crumb and the final two crumbs are rendered inline, and the rest are populated into a dropdown menu.
+      </NxP>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Props</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>crumbs</NxTable.Cell>
+              <NxTable.Cell>
+                Array of objects each containing <NxCode>name</NxCode> and <NxCode>href</NxCode> strings
+              </NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                The sequence of ancestor pages in the hierarchy, ending in the final page. This list
+                must contain at least two entries in order for <NxCode>NxBreadcrumb</NxCode> to render anything at
+                all; if it contains one or zero entries, no breadcrumb DOM will be rendered. The first entry in this
+                list must represent the root page in the hierarchy. From there, each item must represent the next
+                ancestor down the chain on the way to the current page, and the last entry must represent the current
+                page. The <NxCode>name</NxCode> within each entry is the rendered label for the crumb, while
+                the <NxCode>href</NxCode> is the URL of the page in question.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>isDropdownOpen</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>Whether or not the dropdown (if present) is open or closed</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>onToggleDropdown</NxTable.Cell>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>The callback to execute when the user toggles the open state of the dropdown</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+            <NxTable.Cell>HTML <NxCode>&lt;nav&gt;</NxCode> Attributes</NxTable.Cell>
+            <NxTable.Cell>
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/nav">
+                HTML nav Attributes
+              </NxTextLink>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              <NxCode>NxBreadcrumb</NxCode> supports any HTML attribute that's normally
+              supported by <NxCode>&lt;nav&gt;</NxCode> elements.
+            </NxTable.Cell>
+          </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Semantics and Accessibility</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          <NxCode>NxBreadcrumb</NxCode> renders as a <NxCode>&lt;nav&gt;</NxCode> element with its default role
+          of <NxCode>navigation</NxCode>. It has a default accessible name of "breadcrumbs" which may be overridden
+          by specifying an alternative <NxCode>aria-label</NxCode> prop.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
