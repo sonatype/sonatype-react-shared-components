@@ -21,10 +21,52 @@ import { faArrowLeft, faArrowRight, faLink } from '@fortawesome/free-solid-svg-i
 
 const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
-const crumbs = [
-  { name: 'Colorado', href: 'https://www.mountainproject.com/area/105708956/colorado' },
-  { name: 'San Luis', href: 'https://www.mountainproject.com/area/105800418/san-luis-valley' },
-  { name: 'Penitente Canyon', href: 'https://www.mountainproject.com/area/105744316/penitente-canyon' }
+const crumbs = [{
+  name: 'Universe - Everything everywhere that we can observe',
+  href: 'https://en.wikipedia.org/wiki/Universe'
+}, {
+  name: 'Pisces–Cetus Supercluster Complex',
+  href: 'https://en.wikipedia.org/wiki/Pisces%E2%80%93Cetus_Supercluster_Complex'
+}, {
+  name: 'Laniakea Supercluster',
+  href: 'https://en.wikipedia.org/wiki/Laniakea_Supercluster'
+}, {
+  name: 'Virgo Supercluster',
+  href: 'https://en.wikipedia.org/wiki/Virgo_Supercluster'
+}, {
+  name: 'Local Group',
+  href: 'https://en.wikipedia.org/wiki/Local_Group'
+}, {
+  name: 'Milky Way, Our Home Galaxy',
+  href: 'https://en.wikipedia.org/wiki/Milky_Way'
+}, {
+  name: 'Solar System, The Star System centered on the Sun',
+  href: 'https://en.wikipedia.org/wiki/Solar_System'
+}, {
+  name: 'Earth, The Only Planet Regularly Inhabited by Humans',
+  href: 'https://en.wikipedia.org/wiki/Earth'
+}, {
+  name: 'North America, The Continent North of South America',
+  href: 'https://en.wikipedia.org/wiki/North_America'
+}, {
+  name: 'United States, The Third or Fourth Largest Country',
+  href: 'https://en.wikipedia.org/wiki/United_States'
+}, {
+  name: 'Colorado, the Centennial State',
+  href: 'https://www.mountainproject.com/area/105708956/colorado'
+}, {
+  name: 'San Luis Valley, home of the UFO Watchtower',
+  href: 'https://www.mountainproject.com/area/105800418/san-luis-valley'
+}, {
+  name: 'Penitente Canyon Rock Climbing Routes',
+  href: 'https://www.mountainproject.com/area/105744316/penitente-canyon'
+}, {
+  name: 'Penitente Canyon - Inner Canyon',
+  href: 'https://www.mountainproject.com/area/105745468/penitente-inner-canyon'
+}, {
+  name: 'Bullet the Blue Sky - 5.12c/d',
+  href: 'https://www.mountainproject.com/route/105753382/bullet-the-blue-sky'
+}
 ];
 
 export default function NxGlobalHeaderEmptyExample() {

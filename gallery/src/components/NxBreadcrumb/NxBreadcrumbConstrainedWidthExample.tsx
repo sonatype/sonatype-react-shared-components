@@ -24,7 +24,10 @@ export default function NxBreadcrumbConstrainedWidthExample() {
 
   return (
     <div style={{ border: '1px solid red', width: '500px' }}>
-      <NxBreadcrumb isDropdownOpen={isDropdownOpen} onToggleDropdown={toggleIsDropdownOpen} crumbs={crumbs} />
+      <NxBreadcrumb aria-label="constrained width breadcrumbs"
+                    isDropdownOpen={isDropdownOpen}
+                    onToggleDropdown={toggleIsDropdownOpen}
+                    crumbs={crumbs} />
     </div>
   );
 }

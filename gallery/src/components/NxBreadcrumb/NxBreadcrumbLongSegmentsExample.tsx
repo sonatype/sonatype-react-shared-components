@@ -23,6 +23,9 @@ export default function NxBreadcrumbLongSegmentsExample() {
   const [isDropdownOpen, toggleIsDropdownOpen] = useToggle(false);
 
   return (
-    <NxBreadcrumb isDropdownOpen={isDropdownOpen} onToggleDropdown={toggleIsDropdownOpen} crumbs={crumbs} />
+    <NxBreadcrumb aria-label="long segments breadcrumbs"
+                  isDropdownOpen={isDropdownOpen}
+                  onToggleDropdown={toggleIsDropdownOpen}
+                  crumbs={crumbs} />
   );
 }

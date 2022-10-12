@@ -19,6 +19,9 @@ export default function NxBreadcrumbManySegmentsExample() {
   const [isDropdownOpen, toggleIsDropdownOpen] = useToggle(false);
 
   return (
-    <NxBreadcrumb isDropdownOpen={isDropdownOpen} onToggleDropdown={toggleIsDropdownOpen} crumbs={crumbs} />
+    <NxBreadcrumb aria-label="four segments breadcrumbs"
+                  isDropdownOpen={isDropdownOpen}
+                  onToggleDropdown={toggleIsDropdownOpen}
+                  crumbs={crumbs} />
   );
 }

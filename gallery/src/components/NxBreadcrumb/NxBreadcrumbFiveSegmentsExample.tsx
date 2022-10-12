@@ -9,13 +9,6 @@ import React from 'react';
 import { NxBreadcrumb, useToggle } from '@sonatype/react-shared-components';
 
 const crumbs = [
-  { name: 'Universe', href: 'https://en.wikipedia.org/wiki/Universe' },
-  { name: 'Local Group', href: 'https://en.wikipedia.org/wiki/Local_Group' },
-  { name: 'Milky Way', href: 'https://en.wikipedia.org/wiki/Milky_Way' },
-  { name: 'Solar System', href: 'https://en.wikipedia.org/wiki/Solar_System' },
-  { name: 'Earth', href: 'https://en.wikipedia.org/wiki/Earth' },
-  { name: 'North America', href: 'https://en.wikipedia.org/wiki/North_America' },
-  { name: 'United States', href: 'https://en.wikipedia.org/wiki/United_States' },
   { name: 'Colorado', href: 'https://www.mountainproject.com/area/105708956/colorado' },
   { name: 'San Luis', href: 'https://www.mountainproject.com/area/105800418/san-luis-valley' },
   { name: 'Penitente Canyon', href: 'https://www.mountainproject.com/area/105744316/penitente-canyon' },
@@ -27,7 +20,7 @@ export default function NxBreadcrumbManySegmentsExample() {
   const [isDropdownOpen, toggleIsDropdownOpen] = useToggle(false);
 
   return (
-    <NxBreadcrumb aria-label="many segments breadcrumbs"
+    <NxBreadcrumb aria-label="five segments breadcrumbs"
                   isDropdownOpen={isDropdownOpen}
                   onToggleDropdown={toggleIsDropdownOpen}
                   crumbs={crumbs} />

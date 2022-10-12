@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxAccordion, NxCode, NxH2, NxH3, NxInfoAlert, NxP, NxStatefulAccordion, NxTable, NxTextLink, NxTile } from '@sonatype/react-shared-components';
+import { NxAccordion, NxCode, NxH2, NxH3, NxInfoAlert, NxP, NxStatefulAccordion, NxTable, NxTextLink, NxTile }
+  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -16,6 +17,7 @@ import NxBreadcrumbManySegmentsExample from './NxBreadcrumbManySegmentsExample';
 import NxBreadcrumbManyLongSegmentsExample from './NxBreadcrumbManyLongSegmentsExample';
 import NxBreadcrumbOneSegmentExample from './NxBreadcrumbOneSegmentExample';
 import NxBreadcrumbFourSegmentsExample from './NxBreadcrumbFourSegmentsExample';
+import NxBreadcrumbFiveSegmentsExample from './NxBreadcrumbFiveSegmentsExample';
 import CodeExample from '../../CodeExample';
 import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
@@ -26,6 +28,7 @@ const exampleCode = require('./NxBreadcrumbExample?raw'),
     manyLongSegmentsExampleCode = require('./NxBreadcrumbManyLongSegmentsExample?raw'),
     oneSegmentExampleCode = require('./NxBreadcrumbOneSegmentExample?raw'),
     fourSegmentsExampleCode = require('./NxBreadcrumbFourSegmentsExample?raw'),
+    fiveSegmentsExampleCode = require('./NxBreadcrumbFiveSegmentsExample?raw'),
     globalheaderExampleCode = require('./NxBreadcrumbGlobalHeaderExample?raw');
 
 const NxBreadcrumbPage = () =>
@@ -82,18 +85,18 @@ const NxBreadcrumbPage = () =>
               <NxTable.Cell>The callback to execute when the user toggles the open state of the dropdown</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-            <NxTable.Cell>HTML <NxCode>&lt;nav&gt;</NxCode> Attributes</NxTable.Cell>
-            <NxTable.Cell>
-              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/nav">
-                HTML nav Attributes
-              </NxTextLink>
-            </NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              <NxCode>NxBreadcrumb</NxCode> supports any HTML attribute that's normally
-              supported by <NxCode>&lt;nav&gt;</NxCode> elements.
-            </NxTable.Cell>
-          </NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;nav&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/nav">
+                  HTML nav Attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxBreadcrumb</NxCode> supports any HTML attribute that's normally
+                supported by <NxCode>&lt;nav&gt;</NxCode> elements.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
@@ -122,12 +125,14 @@ const NxBreadcrumbPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
+                        id="nx-breadcrumb-simple-example"
                         liveExample={NxBreadcrumbExample}
                         codeExamples={exampleCode}>
       A simple example of <NxCode>NxBreadcrumb</NxCode> showing three path segments with short names.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Long Segments"
+                        id="nx-breadcrumb-long-segments-example"
                         liveExample={NxBreadcrumbLongSegmentsExample}
                         codeExamples={longSegmentsExampleCode}>
       An example of <NxCode>NxBreadcrumb</NxCode> showing three path segments with long names which will truncate
@@ -135,6 +140,7 @@ const NxBreadcrumbPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Constrained Width"
+                        id="nx-breadcrumb-constrained-width-example"
                         liveExample={NxBreadcrumbConstrainedWidthExample}
                         codeExamples={constrainedWidthExampleCode}>
       An example of <NxCode>NxBreadcrumb</NxCode> within a container that is narrower
@@ -143,12 +149,14 @@ const NxBreadcrumbPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Many Segments"
+                        id="nx-breadcrumb-many-segments-example"
                         liveExample={NxBreadcrumbManySegmentsExample}
                         codeExamples={manySegmentsExampleCode}>
       An example of <NxCode>NxBreadcrumb</NxCode> with many segments, such that it gets a dropdown menu.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Many Long Segments"
+                        id="nx-breadcrumb-many-long-segments-example"
                         liveExample={NxBreadcrumbManyLongSegmentsExample}
                         codeExamples={manyLongSegmentsExampleCode}>
       An example of <NxCode>NxBreadcrumb</NxCode> with many segments with long names. In addition to the overflow and
@@ -156,6 +164,7 @@ const NxBreadcrumbPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with One Segment"
+                        id="nx-breadcrumb-one-segment-example"
                         liveExample={NxBreadcrumbOneSegmentExample}
                         codeExamples={oneSegmentExampleCode}>
       An example of <NxCode>NxBreadcrumb</NxCode> with only one segment. This is a special case in which the
@@ -163,10 +172,19 @@ const NxBreadcrumbPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Four Segments"
+                        id="nx-breadcrumb-four-segments-example"
                         liveExample={NxBreadcrumbFourSegmentsExample}
                         codeExamples={fourSegmentsExampleCode}>
       An example of <NxCode>NxBreadcrumb</NxCode> with exactly four segments. This is the largest number of segments
       that may be present before the dropdown will be rendered – the dropdown will always contain at least two items.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with Five Segments"
+                        id="nx-breadcrumb-five-segments-example"
+                        liveExample={NxBreadcrumbFiveSegmentsExample}
+                        codeExamples={fiveSegmentsExampleCode}>
+      An example of <NxCode>NxBreadcrumb</NxCode> with exactly five segments. This is the smallest number of segments
+      that will cause the dropdown to be rendered (containing two of the segments).
     </GalleryExampleTile>
 
     <NxTile>
