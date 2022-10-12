@@ -55,8 +55,8 @@ export default function NxBreadcrumb(props: Props) {
       crumbBeforeDropdown = crumbs.length < 2 ? null : head(crumbs);
 
   if (crumbBeforeDropdown) {
-    const dropdownCrumbs = crumbs.length < 5 ? [] : tail(dropLast(3, crumbs)),
-        crumbsAfterDropdown = crumbs.length < 5 ? tail(crumbs) : takeLast(3, crumbs),
+    const dropdownCrumbs = crumbs.length < 5 ? [] : tail(dropLast(2, crumbs)),
+        crumbsAfterDropdown = crumbs.length < 5 ? tail(crumbs) : takeLast(2, crumbs),
         crumbsToBecomeLinks = [crumbBeforeDropdown, ...init(crumbsAfterDropdown)],
 
         // if we're in this block, the list was at least two items long so last on the "after" crumbs will
