@@ -14,29 +14,36 @@ import { Props, Crumb, DropdownProps, propTypes } from './types';
 import NxIconDropdown from '../NxIconDropdown/NxIconDropdown';
 
 import './NxBreadcrumb.scss';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 export { Props, Crumb };
 
 function CurrentBreadcrumb({ name }: Crumb) {
   return (
-    <li className="nx-breadcrumb__list-item nx-breadcrumb__list-item--link-container">
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className="nx-breadcrumb__link nx-breadcrumb__link--current" aria-current="page">{name}</a>
-    </li>
+    <NxOverflowTooltip>
+      <li className="nx-breadcrumb__list-item nx-breadcrumb__list-item--link-container">
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a className="nx-breadcrumb__link nx-breadcrumb__link--current" aria-current="page">{name}</a>
+      </li>
+    </NxOverflowTooltip>
   );
 }
 
 function BreadcrumbLink({ name, href }: Crumb) {
   return (
-    <li className="nx-breadcrumb__list-item nx-breadcrumb__list-item--link-container">
-      <NxTextLink className="nx-breadcrumb__link" href={href}>{name}</NxTextLink>
-    </li>
+    <NxOverflowTooltip>
+      <li className="nx-breadcrumb__list-item nx-breadcrumb__list-item--link-container">
+        <NxTextLink className="nx-breadcrumb__link" href={href}>{name}</NxTextLink>
+      </li>
+    </NxOverflowTooltip>
   );
 }
 
 function BreadcrumbDropdownLink({ name, href }: Crumb) {
   return (
-    <NxTextLink className="nx-dropdown-link" href={href}>{name}</NxTextLink>
+    <NxOverflowTooltip>
+      <NxTextLink className="nx-dropdown-link" href={href}>{name}</NxTextLink>
+    </NxOverflowTooltip>
   );
 }
 
