@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxH3, NxP, NxTable, NxTextLink, NxTile } from '@sonatype/react-shared-components';
+import { NxAccordion, NxCode, NxH2, NxH3, NxInfoAlert, NxP, NxStatefulAccordion, NxTable, NxTextLink, NxTile } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -16,6 +16,8 @@ import NxBreadcrumbManySegmentsExample from './NxBreadcrumbManySegmentsExample';
 import NxBreadcrumbManyLongSegmentsExample from './NxBreadcrumbManyLongSegmentsExample';
 import NxBreadcrumbOneSegmentExample from './NxBreadcrumbOneSegmentExample';
 import NxBreadcrumbFourSegmentsExample from './NxBreadcrumbFourSegmentsExample';
+import CodeExample from '../../CodeExample';
+import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 const exampleCode = require('./NxBreadcrumbExample?raw'),
     longSegmentsExampleCode = require('./NxBreadcrumbLongSegmentsExample?raw'),
@@ -23,7 +25,8 @@ const exampleCode = require('./NxBreadcrumbExample?raw'),
     manySegmentsExampleCode = require('./NxBreadcrumbManySegmentsExample?raw'),
     manyLongSegmentsExampleCode = require('./NxBreadcrumbManyLongSegmentsExample?raw'),
     oneSegmentExampleCode = require('./NxBreadcrumbOneSegmentExample?raw'),
-    fourSegmentsExampleCode = require('./NxBreadcrumbFourSegmentsExample?raw');
+    fourSegmentsExampleCode = require('./NxBreadcrumbFourSegmentsExample?raw'),
+    globalheaderExampleCode = require('./NxBreadcrumbGlobalHeaderExample?raw');
 
 const NxBreadcrumbPage = () =>
   <>
@@ -104,6 +107,18 @@ const NxBreadcrumbPage = () =>
           by specifying an alternative <NxCode>aria-label</NxCode> prop.
         </NxP>
       </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>A Note about the Examples</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxInfoAlert>
+          <NxCode>NxBreadcrumb</NxCode> should only be used with links that navigate within the current application
+          in a hierarchical manner. Using it in such a way here, within the RSC gallery, is not feasible as there
+          are not deep hiearchies within the organization of the gallery. As a result, the examples below have
+          all been constructed using links to external, third-party websites. In practice, this is not how they
+          would be used.
+        </NxInfoAlert>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Simple Example"
@@ -153,6 +168,32 @@ const NxBreadcrumbPage = () =>
       An example of <NxCode>NxBreadcrumb</NxCode> with exactly four segments. This is the largest number of segments
       that may be present before the dropdown will be rendered – the dropdown will always contain at least two items.
     </GalleryExampleTile>
+
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>Example within Global Header</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          <NxCode>NxBreadcrumb</NxCode> would typically be used within <NxCode>NxGlobalHeader</NxCode> as depicted
+          here.
+        </NxP>
+        <NxP>
+          <NxTextLink href="#/NxBreadcrumbGlobalHeaderExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+        <NxStatefulAccordion>
+          <NxAccordion.Header>
+            <NxAccordion.Title>Example Code</NxAccordion.Title>
+          </NxAccordion.Header>
+          <CodeExample content={globalheaderExampleCode} />
+          <GalleryTileFooter clipboardContent={globalheaderExampleCode}/>
+        </NxStatefulAccordion>
+      </NxTile.Content>
+    </NxTile>
   </>;
 
 export default NxBreadcrumbPage;
