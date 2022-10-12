@@ -39,12 +39,12 @@
   right: 0;
   opacity: 1;
   margin-top: var(--nx-spacing-2x);
-  animation: animationIn 0.4s linear;
+  animation: animationIn 200ms ease-out forwards;
   overflow: hidden;
   pointer-events: auto;
 
   &.nx-toast--closing {
-    animation-name: animationOut;
+    animation: animationOut 180ms ease-in forwards;
   }
 }
 
