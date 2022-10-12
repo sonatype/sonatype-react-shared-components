@@ -1,11 +1,10 @@
 {
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:react/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "jsx-a11y"],
+  "plugins": ["@typescript-eslint"],
   "globals": {
     "module": true,
     "require": true,
@@ -16,9 +15,6 @@
     "es6": true
   },
   "rules": {
-    "jsx-a11y/label-has-associated-control": [ 2, {
-      "controlComponents": ["NxTextInput", "NxStatefulTextInput", "NxFilterInput"]
-    }],
     "camelcase": [
       "error",
       {
@@ -162,7 +158,18 @@
   },
   "overrides": [
     {
-      "files": ["*.test.tsx", "*.js", "*.ts"],
+      "files": ["*.tsx", "*.js", "*.ts"],
+      "excludedFiles": ["*.test.tsx"],
+      "extends": ["plugin:jsx-a11y/recommended"],
+      "plugins": ["jsx-a11y"],
+      "rules": {
+        "jsx-a11y/label-has-associated-control": [ 2, {
+          "controlComponents": ["NxTextInput", "NxStatefulTextInput", "NxFilterInput"]
+        }]
+      }
+    },
+    {
+      "files": ["*.test.tsx", "*.test.ts"],
       "globals": {
         "jest": true,
         "it": true,
@@ -170,12 +177,11 @@
         "beforeEach": true,
         "afterEach": true,
         "expect": true,
-        "require": true
+        "module": true
       },
       "env": {
         "jest": true
       },
-      "parserOptions": {"sourceType": "module"},
       "rules": {
         "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
