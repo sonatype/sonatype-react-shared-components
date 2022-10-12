@@ -12,6 +12,18 @@ const crumbs = [{
   name: 'Universe, Everything everywhere',
   href: 'https://en.wikipedia.org/wiki/Universe'
 }, {
+  name: 'Pisces–Cetus Supercluster Complex',
+  href: 'https://en.wikipedia.org/wiki/Pisces%E2%80%93Cetus_Supercluster_Complex'
+}, {
+  name: 'Laniakea Supercluster',
+  href: 'https://en.wikipedia.org/wiki/Laniakea_Supercluster'
+}, {
+  name: 'Virgo Supercluster',
+  href: 'https://en.wikipedia.org/wiki/Virgo_Supercluster'
+}, {
+  name: 'Local Group',
+  href: 'https://en.wikipedia.org/wiki/Local_Group'
+}, {
   name: 'Milky Way, Our Home Galaxy',
   href: 'https://en.wikipedia.org/wiki/Milky_Way'
 }, {

@@ -15,13 +15,15 @@ import NxBreadcrumbConstrainedWidthExample from './NxBreadcrumbConstrainedWidthE
 import NxBreadcrumbManySegmentsExample from './NxBreadcrumbManySegmentsExample';
 import NxBreadcrumbManyLongSegmentsExample from './NxBreadcrumbManyLongSegmentsExample';
 import NxBreadcrumbOneSegmentExample from './NxBreadcrumbOneSegmentExample';
+import NxBreadcrumbFourSegmentsExample from './NxBreadcrumbFourSegmentsExample';
 
 const exampleCode = require('./NxBreadcrumbExample?raw'),
     longSegmentsExampleCode = require('./NxBreadcrumbLongSegmentsExample?raw'),
     constrainedWidthExampleCode = require('./NxBreadcrumbConstrainedWidthExample?raw'),
     manySegmentsExampleCode = require('./NxBreadcrumbManySegmentsExample?raw'),
     manyLongSegmentsExampleCode = require('./NxBreadcrumbManyLongSegmentsExample?raw'),
-    oneSegmentExampleCode = require('./NxBreadcrumbOneSegmentExample?raw');
+    oneSegmentExampleCode = require('./NxBreadcrumbOneSegmentExample?raw'),
+    fourSegmentsExampleCode = require('./NxBreadcrumbFourSegmentsExample?raw');
 
 const NxBreadcrumbPage = () =>
   <>
@@ -68,6 +70,13 @@ const NxBreadcrumbPage = () =>
                         codeExamples={oneSegmentExampleCode}>
       An example of <NxCode>NxBreadcrumb</NxCode> with only one segment. This is a special case in which the
       component renders nothing at all – not even the one segment that it was given.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Example with Four Segments"
+                        liveExample={NxBreadcrumbFourSegmentsExample}
+                        codeExamples={fourSegmentsExampleCode}>
+      An example of <NxCode>NxBreadcrumb</NxCode> with exactly four segments. This is the largest number of segments
+      that may be present before the dropdown will be rendered – the dropdown will always contain at least two items.
     </GalleryExampleTile>
   </>;
 
