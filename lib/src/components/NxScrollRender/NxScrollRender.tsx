@@ -31,8 +31,8 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
       [parentHeight, setParentHeight] = useState<number | null>(null),
       [childHeight, setChildHeight] = useState<number | null>(null),
       normalizedChildHeight = childHeight ?? 0,
-      renderedChildCount = parentHeight == null || childHeight == null ? null :
-          Math.min(Math.ceil(divOrZero(parentHeight, childHeight)) + 2, childCount),
+      renderedChildCount = parentHeight == null || childHeight == null ?
+        null : Math.min(Math.ceil(divOrZero(parentHeight, childHeight)) + 2, childCount),
 
       cloneWithKey = (child: ReactElement, idx: number) =>
         React.cloneElement(child, { key: idx % (renderedChildCount as number) }),
