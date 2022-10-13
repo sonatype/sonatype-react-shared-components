@@ -127,6 +127,18 @@ const NxScrollRenderPage = () =>
                 expensive due to rendering an excessive number of children.
               </NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>spacerEl</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>string</NxCode></NxTable.Cell>
+              <NxTable.Cell>False</NxTable.Cell>
+              <NxTable.Cell><NxCode>div</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                The HTML tag name to use when rendering the spacer elements that <NxCode>NxScrollRender</NxCode> uses to
+                maintain scrollbar positioning. These elements should be valid as immediate children of the scrolling
+                container. For example, if the scrolling container is a <NxCode>&lt;ul&gt;</NxCode>, this prop should be
+                set to <NxCode>li</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>

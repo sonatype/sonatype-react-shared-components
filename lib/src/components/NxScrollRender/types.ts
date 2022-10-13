@@ -5,10 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import { ReactElement } from 'react';
+import { ReactElement, ReactHTML } from 'react';
 
 export interface Props {
   children: ReactElement;
   reuseChildren?: boolean | null;
   initialChildCount?: number | null;
+  spacerEl?: keyof ReactHTML | null;
 }

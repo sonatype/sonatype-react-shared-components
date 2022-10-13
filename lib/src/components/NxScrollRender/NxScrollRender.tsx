@@ -16,7 +16,7 @@ const divOrZero = (x: number, y: number) => x === 0 || y === 0 ? 0 : x / y;
 
 const DEFAULT_INITIAL_CHILD_COUNT = 40;
 
-export default function NxScrollRender({ children, reuseChildren, initialChildCount }: Props) {
+export default function NxScrollRender({ children, reuseChildren, initialChildCount, spacerEl }: Props) {
   const fullParent = children,
 
       childArray = useMemo(() => React.Children.toArray(fullParent.props.children) as ReactElement[],
@@ -25,8 +25,10 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
       childCount = childArray.length,
 
       parentRef = useRef<HTMLElement>(null),
-      leadingSpacerRef = useRef<HTMLDivElement>(null),
-      trailingSpacerRef = useRef<HTMLDivElement>(null),
+      leadingSpacerRef = useRef<HTMLElement | null>(null),
+      leadingSpacerRefFn = (e: HTMLElement | null) => { leadingSpacerRef.current = e; },
+      trailingSpacerRef = useRef<HTMLElement | null>(null),
+      trailingSpacerRefFn = (e: HTMLElement | null) => { trailingSpacerRef.current = e; },
 
       [parentHeight, setParentHeight] = useState<number | null>(null),
       [childHeight, setChildHeight] = useState<number | null>(null),
@@ -56,13 +58,19 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
 
   const renderedChildren = childCount ? (
     <>
-      <div ref={leadingSpacerRef}
-           className="nx-scroll-render__spacer"
-           style={{ height: leadingSpacerHeight }} />
+      {React.createElement(spacerEl ?? 'div', {
+        ref: leadingSpacerRefFn,
+        role: 'presentation',
+        className: 'nx-scroll-render__spacer',
+        style: { height: leadingSpacerHeight }
+      })}
       {renderedRealChildren}
-      <div ref={trailingSpacerRef}
-           className="nx-scroll-render__spacer"
-           style={{ height: trailingSpacerHeight }} />
+      {React.createElement(spacerEl ?? 'div', {
+        ref: trailingSpacerRefFn,
+        role: 'presentation',
+        className: 'nx-scroll-render__spacer',
+        style: { height: trailingSpacerHeight }
+      })}
     </>
   ) : null;
 

@@ -10,7 +10,7 @@ import { NxList, NxScrollRender } from '@sonatype/react-shared-components';
 
 export default function NxScrollRenderExample() {
   return (
-    <NxScrollRender initialChildCount={11}>
+    <NxScrollRender initialChildCount={11} spacerEl="li">
       <NxList className="nx-scrollable" emptyMessage="No Items." />
     </NxScrollRender>
   );
