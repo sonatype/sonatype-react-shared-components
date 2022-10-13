@@ -25,12 +25,17 @@
     margin-right: 8px;
   }
 
-  .nx-btn--icon-only {
+  .nx-btn--clear-filter-btn {
+    visibility: visible;
     margin: 0;
     padding-top: calc(var(--nx-spacing-base) - 1px);
     padding-bottom: calc(var(--nx-spacing-base) - 1px);
     position: absolute;
     right: var(--nx-spacing-2x);
     width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-base));
+
+    &.hidden {
+      visibility: hidden;
+    }
   }
 }

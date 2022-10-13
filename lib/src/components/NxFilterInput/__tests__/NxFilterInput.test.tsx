@@ -99,13 +99,9 @@ describe('NxFilterInput', function() {
     expect(icon).toHaveClassName('nx-icon--filter-icons');
   });
 
-  it('does not pass a button with the Close icon as the suffixContent when value is empty', function() {
-    expect(shallowComponent()).toHaveProp('suffixContent', undefined);
-  });
-
-  it('passes an NxButton with the Close icon as the suffixContent when value is not empty', function() {
+  it('passes an NxButton with the Close icon as the suffixContent', function() {
     const BtnFixture = function() {
-          return shallowComponent({ value: 'a' }).prop('suffixContent');
+          return shallowComponent().prop('suffixContent');
         },
         btn = shallow(<BtnFixture />);
 

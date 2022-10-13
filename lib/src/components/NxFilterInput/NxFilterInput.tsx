@@ -26,6 +26,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
           className = classnames('nx-filter-input', classNameProp, {
             'nx-filter-input--empty': isEmpty
           }),
+          btnClassName = classnames('nx-btn--clear-filter-btn', { 'hidden': isEmpty }),
           fieldRef = useRef<HTMLDivElement>(null),
           mergedRef = useMergedRef(fieldRef, ref),
           // just in case these props get passed in, avoid passing them to NxTextInput as they would cause
@@ -33,14 +34,15 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
           cleanedProps = omit(['validatable', 'validationErrors', 'type'], otherProps),
           filterIcon = searchIcon ? faSearch : faFilter,
           prefixContent = <NxFontAwesomeIcon icon={filterIcon} className="nx-icon--filter-icons" />,
-          suffixContent = !isEmpty ?
-            <NxButton variant="icon-only"
+          suffixContent =
+            <NxButton className={btnClassName}
+                      variant="icon-only"
                       title="clear filter"
-                      onClick={clearInputText}
+                      onClick={clearFilterInputText}
                       tabIndex={-1}><Close/>
-            </NxButton> : undefined;
+            </NxButton>;
 
-      function clearInputText() {
+      function clearFilterInputText() {
         if (fieldRef.current) {
           const input = fieldRef.current.querySelector('input') as HTMLInputElement;
           const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
@@ -53,7 +55,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
 
       const handleKeyDown: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
         if (e.key === 'Escape') {
-          clearInputText();
+          clearFilterInputText();
         }
       };
 
