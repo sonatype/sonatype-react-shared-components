@@ -6,9 +6,6 @@
  */
 const { setupBrowser } = require('./testUtils');
 
-function expectSameElement(page, e1, e2) {
-  expect(page.evaluate((e1, e2) => e1 === e2, e1, e2)).toBe(true);
-}
 
 describe('NxScrollRender', function() {
   const { waitAndGetElements, wait, checkScreenshot, getPage } = setupBrowser('#/pages/Scroll Render');
@@ -18,6 +15,25 @@ describe('NxScrollRender', function() {
       unfilledExample = '#nx-scroll-render-unfilled-example .nx-scrollable',
       emptyExample = '#nx-scroll-render-empty-example .nx-scrollable',
       emptyListExample = '#nx-scroll-render-empty-list-example .nx-scrollable';
+
+  async function expectSameElement(e1, e2, expectSame = true) {
+    expect(await getPage().evaluate((e1, e2) => e1 === e2, e1, e2)).toBe(expectSame);
+  }
+
+  async function expectElNotInList(el, list) {
+    for (const listEl of list) {
+      await expectSameElement(listEl, el, false);
+    }
+  }
+
+  async function scroll(container, scrollTop) {
+    await container.evaluate((e, scrollTop) => e.scrollTop = scrollTop, scrollTop);
+    await wait(500);
+  }
+
+  async function getTextContent(el) {
+    return el.evaluate(e => e.textContent);
+  }
 
   describe('when used on an empty container', function() {
     it('does nothing', async function() {
@@ -33,7 +49,7 @@ describe('NxScrollRender', function() {
           children = await container.$$(':scope > *');
 
       expect(children).toHaveLength(1);
-      expect(await children[0].evaluate(e => e.textContent)).toBe('No Items.');
+      expect(await getTextContent(children[0])).toBe('No Items.');
 
       await checkScreenshot(container);
     });
@@ -78,14 +94,14 @@ describe('NxScrollRender', function() {
       for (let i = 1; i < children.length - 1; i++) {
         expect(await children[i].evaluate(e => e.classList.contains('nx-scroll-render__spacer'))).toBe(false);
         expect(await children[i].evaluate(e => e.classList.contains('nx-list__item'))).toBe(true);
-        expect(await children[i].evaluate(e => e.textContent)).toBe(i.toString());
+        expect(await getTextContent(children[i])).toBe(i.toString());
       }
     });
 
     it('only renders visible elements after scrolling down', async function() {
       const [container] = await waitAndGetElements(selector);
 
-      await container.evaluate(e => e.scrollTop = 300);
+      await scroll(container, 300);
 
       let children = await container.$$(':scope > *');
 
@@ -99,12 +115,12 @@ describe('NxScrollRender', function() {
         expect(await children[i].evaluate(e => e.classList.contains('nx-list__item'))).toBe(true);
 
         // first rendered child at this point in scrolling should be "5"
-        expect(await children[i].evaluate(e => e.textContent)).toBe((i + 4).toString());
+        expect(await getTextContent(children[i])).toBe((i + 4).toString());
       }
 
-      await checkScreenshot();
+      await checkScreenshot(container);
 
-      await container.evaluate(e => e.scrollTop = 1234);
+      await scroll(container, 1234);
 
       children = await container.$$(':scope > *');
 
@@ -118,12 +134,12 @@ describe('NxScrollRender', function() {
         expect(await children[i].evaluate(e => e.classList.contains('nx-list__item'))).toBe(true);
 
         // first rendered child at this point in scrolling should be "21"
-        expect(await children[i].evaluate(e => e.textContent)).toBe((i + 20).toString());
+        expect(await getTextContent(children[i])).toBe((i + 20).toString());
       }
 
-      await checkScreenshot();
+      await checkScreenshot(container);
 
-      await container.evaluate(e => e.scrollTop = 406936);
+      await scroll(container, 406936);
 
       children = await container.$$(':scope > *');
 
@@ -136,13 +152,13 @@ describe('NxScrollRender', function() {
         expect(await children[i].evaluate(e => e.classList.contains('nx-scroll-render__spacer'))).toBe(false);
         expect(await children[i].evaluate(e => e.classList.contains('nx-list__item'))).toBe(true);
 
-        expect(await children[i].evaluate(e => e.textContent)).toBe((i + 7138).toString());
+        expect(await getTextContent(children[i])).toBe((i + 7138).toString());
       }
 
-      await checkScreenshot();
+      await checkScreenshot(container);
 
       // Not exact, just scroll all the way down
-      await container.evaluate(e => e.scrollTop = 1000000);
+      await scroll(container, 1000000);
 
       children = await container.$$(':scope > *');
 
@@ -155,16 +171,16 @@ describe('NxScrollRender', function() {
         expect(await children[i].evaluate(e => e.classList.contains('nx-scroll-render__spacer'))).toBe(false);
         expect(await children[i].evaluate(e => e.classList.contains('nx-list__item'))).toBe(true);
 
-        expect(await children[i].evaluate(e => e.textContent)).toBe((i + 9989).toString());
+        expect(await getTextContent(children[i])).toBe((i + 9989).toString());
       }
 
-      await checkScreenshot();
+      await checkScreenshot(container);
     });
 
     it('only renders visible elements after scrolling up', async function() {
       const [container] = await waitAndGetElements(selector);
 
-      await container.evaluate(e => e.scrollTop = 10000000);
+      await scroll(container, 10000000);
 
       let children = await container.$$(':scope > *');
 
@@ -177,12 +193,12 @@ describe('NxScrollRender', function() {
         expect(await children[i].evaluate(e => e.classList.contains('nx-scroll-render__spacer'))).toBe(false);
         expect(await children[i].evaluate(e => e.classList.contains('nx-list__item'))).toBe(true);
 
-        expect(await children[i].evaluate(e => e.textContent)).toBe((i + 9889).toString());
+        expect(await getTextContent(children[i])).toBe((i + 9989).toString());
       }
 
-      await checkScreenshot();
+      await checkScreenshot(container);
 
-      await container.evaluate(e => e.scrollTop = 1234);
+      await scroll(container, 1234);
 
       children = await container.$$(':scope > *');
 
@@ -196,12 +212,12 @@ describe('NxScrollRender', function() {
         expect(await children[i].evaluate(e => e.classList.contains('nx-list__item'))).toBe(true);
 
         // first rendered child at this point in scrolling should be "21"
-        expect(await children[i].evaluate(e => e.textContent)).toBe((i + 20).toString());
+        expect(await getTextContent(children[i])).toBe((i + 20).toString());
       }
 
-      await checkScreenshot();
+      await checkScreenshot(container);
 
-      await container.evaluate(e => e.scrollTop = 0);
+      await scroll(container, 0);
 
       children = await container.$$(':scope > *');
 
@@ -214,10 +230,10 @@ describe('NxScrollRender', function() {
         expect(await children[i].evaluate(e => e.classList.contains('nx-scroll-render__spacer'))).toBe(false);
         expect(await children[i].evaluate(e => e.classList.contains('nx-list__item'))).toBe(true);
 
-        expect(await children[i].evaluate(e => e.textContent)).toBe(i.toString());
+        expect(await getTextContent(children[i])).toBe(i.toString());
       }
 
-      await checkScreenshot();
+      await checkScreenshot(container);
     });
   }
 
@@ -228,38 +244,39 @@ describe('NxScrollRender', function() {
       const [container] = await waitAndGetElements(simpleExample),
           initialChildren = await container.$$(':scope > *');
 
-      await container.evaluate(e => e.scrollTop = 300);
+      await scroll(container, 300);
 
       const childrenAfterScroll = await container.$$(':scope > *');
 
-      expect(children.length).toBe(12);
+      expect(childrenAfterScroll.length).toBe(12);
 
       // spacers should be the same elements
-      expectSameElement(getPage(), initialChildren[0], childrenAfterScroll[0]);
-      expectSameElement(getPage(), initialChildren[11], childrenAfterScroll[11]);
+      await expectSameElement(initialChildren[0], childrenAfterScroll[0]);
+      await expectSameElement(initialChildren[11], childrenAfterScroll[11]);
 
       for (let i = 5; i < childrenAfterScroll.length - 1; i++) {
-        expect(initialChildren[i]).toBe(childrenAfterScroll[i - 4]);
+        await expectSameElement(initialChildren[i], childrenAfterScroll[i - 4]);
       }
 
       for (let i = 1; i < 5; i++) {
-        expect(initialChildren[i]).toBe(childrenAfterScroll[i + 5]);
-        expect(childrenAfterScroll[i + 5].evaluate(e => e.textContent)).toBe((i + 5).toString());
+        await expectSameElement(initialChildren[i], childrenAfterScroll[i + 6]);
       }
 
-      await container.evaluate(e => e.scrollTop = 1000000);
+      await scroll(container, 1000000);
 
       const childrenAtBottom = await container.$$(':scope > *');
 
-      expect(children.length).toBe(12);
+      expect(childrenAtBottom.length).toBe(12);
 
       // spacers should be the same elements
-      expectSameElement(getPage(), initialChildren[0], childrenAfterScroll[0]);
-      expectSameElement(getPage(), initialChildren[11], childrenAfterScroll[11]);
+      await expectSameElement(initialChildren[0], childrenAtBottom[0]);
+      await expectSameElement(initialChildren[11], childrenAtBottom[11]);
 
-      for (let i = 1; i < childrenAtBottom.length - 1; i++) {
-        expect(initialChildren[i]).toBe(childrenAtBottom[i]);
-        expect(childrenAtBottom[i + 5].evaluate(e => e.textContent)).toBe((i + 9990).toString());
+      // when at the bottom, 9990 is the first rendered row, which will use the
+      // same element that originally rendered 10
+      await expectSameElement(initialChildren[10], childrenAtBottom[1]);
+      for (let i = 2; i < childrenAtBottom.length - 1; i++) {
+        await expectSameElement(initialChildren[i - 1], childrenAtBottom[i]);
       }
     });
   });
@@ -272,36 +289,37 @@ describe('NxScrollRender', function() {
           page = getPage(),
           initialChildren = await container.$$(':scope > *');
 
-      await container.evaluate(e => e.scrollTop = 300);
+      await scroll(container, 300);
 
       const childrenAfterScroll = await container.$$(':scope > *');
 
       expect(childrenAfterScroll.length).toBe(12);
 
       // spacers should be the same elements
-      expectSameElement(getPage(), initialChildren[0], childrenAfterScroll[0]);
-      expectSameElement(getPage(), initialChildren[11], childrenAfterScroll[11]);
+      await expectSameElement(initialChildren[0], childrenAfterScroll[0]);
+      await expectSameElement(initialChildren[11], childrenAfterScroll[11]);
 
-      for (let i = 5; i < childrenAfterScroll.length - 1; i++) {
-        expect(initialChildren).not.toContain(childrenAfterScroll[i]);
+      for (let i = 7; i < childrenAfterScroll.length - 1; i++) {
+        await expectElNotInList(childrenAfterScroll[i], initialChildren);
       }
 
-      for (let i = 1; i < 5; i++) {
-        expect(initialChildren[i + 5]).toBe(childrenAfterScroll[i]);
+      // elements which haven't changed yet and so haven't been replaced
+      for (let i = 1; i < 7; i++) {
+        await expectSameElement(initialChildren[i + 4], childrenAfterScroll[i]);
       }
 
-      await container.evaluate(e => e.scrollTop = 1000000);
+      await scroll(container, 1000000);
 
       const childrenAtBottom = await container.$$(':scope > *');
 
-      expect(children.length).toBe(12);
+      expect(childrenAtBottom.length).toBe(12);
 
       // spacers should be the same elements
-      expectSameElement(getPage(), initialChildren[0], childrenAfterScroll[0]);
-      expectSameElement(getPage(), initialChildren[11], childrenAfterScroll[11]);
+      await expectSameElement(initialChildren[0], childrenAfterScroll[0]);
+      await expectSameElement(initialChildren[11], childrenAfterScroll[11]);
 
       for (let i = 1; i < childrenAtBottom.length - 1; i++) {
-        expect(initialChildren).not.toContain(childrenAtBottom[i]);
+        await expectElNotInList(childrenAtBottom[i], initialChildren);
       }
     });
   });
