@@ -137,8 +137,6 @@ describe('NxScrollRender', function() {
         expect(await getTextContent(children[i])).toBe((i + 20).toString());
       }
 
-      await checkScreenshot(container);
-
       await scroll(container, 406936);
 
       children = await container.$$(':scope > *');
@@ -154,8 +152,6 @@ describe('NxScrollRender', function() {
 
         expect(await getTextContent(children[i])).toBe((i + 7138).toString());
       }
-
-      await checkScreenshot(container);
 
       // Not exact, just scroll all the way down
       await scroll(container, 1000000);
@@ -195,8 +191,6 @@ describe('NxScrollRender', function() {
 
         expect(await getTextContent(children[i])).toBe((i + 9989).toString());
       }
-
-      await checkScreenshot(container);
 
       await scroll(container, 1234);
 
