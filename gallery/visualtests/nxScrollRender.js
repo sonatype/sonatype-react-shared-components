@@ -317,4 +317,31 @@ describe('NxScrollRender', function() {
       }
     });
   });
+
+  describe('when the container changes height', function() {
+    it('updates the visible elements', async function() {
+      const [container] = await waitAndGetElements(simpleExample);
+
+      await scroll(container, 300);
+      await container.evaluate(e => e.style.maxHeight = '800px');
+      await wait(100);
+
+      let children = await container.$$(':scope > *');
+
+      expect(children.length).toBe(19);
+
+      expect(await children[0].evaluate(e => e.classList.contains('nx-scroll-render__spacer'))).toBe(true);
+      expect(await children[18].evaluate(e => e.classList.contains('nx-scroll-render__spacer'))).toBe(true);
+
+      for (let i = 1; i < children.length - 1; i++) {
+        expect(await children[i].evaluate(e => e.classList.contains('nx-scroll-render__spacer'))).toBe(false);
+        expect(await children[i].evaluate(e => e.classList.contains('nx-list__item'))).toBe(true);
+
+        // first rendered child at this point in scrolling should be "5"
+        expect(await getTextContent(children[i])).toBe((i + 4).toString());
+      }
+
+      await checkScreenshot(container);
+    });
+  });
 });
