@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components",
-  "version": "11.2.2",
+  "version": "12.0.2",
   "description": "Sonatype shared UI components and utilities written in React",
   "main": "index.js",
   "repository": {
@@ -9,10 +9,12 @@
     "directory": "lib"
   },
   "scripts": {
-    "build": "npm-run-all -p lint compile-ts compile-scss copy-scss copy-package-json copy-assets",
+    "build": "npm-run-all -p ci-lint compile-ts compile-scss copy-scss copy-package-json copy-assets",
     "watch": "npm-run-all -p lint compile-ts-watch compile-scss-watch copy-scss-watch copy-package-json-watch copy-assets-watch",
     "lint": "eslint --ignore-pattern __tests__ --ignore-pattern __mocks__ --ignore-pattern __testutils__ \"./src/**/*.{js,ts}{,x}\"",
+    "ci-lint": "eslint --ignore-pattern __tests__ --ignore-pattern __mocks__ --ignore-pattern __testutils__ \"./src/**/*.{js,ts}{,x}\" --max-warnings=0",
     "lint-tests": "eslint --no-eslintrc -c .eslintrc-tests \"./src/**/{__tests__,__mocks__,__testutils__}/**/*.{js,ts}{,x}\"",
+    "ci-lint-tests": "eslint --no-eslintrc -c .eslintrc-tests \"./src/**/{__tests__,__mocks__,__testutils__}/**/*.{js,ts}{,x}\" --max-warnings=0",
     "compile-ts": "tsc --project tsconfig.build.json",
     "compile-scss": "webpack-cli --config=webpack.config.styles.js",
     "copy-scss": "cpx \"src/**/*.scss\" dist",
@@ -24,6 +26,7 @@
     "copy-assets-watch": "cpx -w \"src/assets/**/*\" dist/assets",
     "copy-package-json-watch": "cpx -w package.json dist",
     "test": "npm-run-all lint-tests jest",
+    "ci-test": "npm-run-all ci-lint-tests jest",
     "jest": "jest",
     "test-watch": "jest --watch",
     "test-watch-debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watchAll",

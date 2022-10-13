@@ -11,6 +11,7 @@
 .nx-file-upload {
   @include nx-container-helpers.container-horizontal;
 
+  position: relative; // correctly position validation error when scrolling
   margin-bottom: var(--nx-spacing-8x);
 
   &__input {
@@ -27,13 +28,6 @@
     // container-horizontal doesn't work here because the input is the first child
     margin-left: 0;
     margin-right: var(--nx-spacing-4x);
-  }
-
-  &__validation-error {
-    color: var(--nx-color-validation-invalid);
-    font-size: var(--nx-font-size-xs);
-    margin-top: var(--nx-spacing-2x);
-    position: absolute;
   }
 
   &__no-file-message {

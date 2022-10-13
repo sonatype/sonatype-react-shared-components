@@ -74,7 +74,7 @@ const NxTextInputPage = () =>
                 If true, this NxTextInput is subject to validation, the result of which should be passed in via
                 the <NxCode>validationErrors</NxCode> prop, resulting in validation CSS classes being
                 applied (see below). If false, the NxTextInput is not considered to be subject to validation, the
-                <NxCode>validationErrors</NxCode> prop is ignored, and validation-related CSS classes
+                {' '}<NxCode>validationErrors</NxCode> prop is ignored, and validation-related CSS classes
                 are never applied.
               </NxTable.Cell>
             </NxTable.Row>
@@ -180,10 +180,12 @@ const NxTextInputPage = () =>
           <NxTable.Body>
             <NxTable.Row>
               <NxTable.Cell>initialState</NxTable.Cell>
-              <NxTable.Cell>(initialValue: string)</NxTable.Cell>
+              <NxTable.Cell>(initialValue: string, validator)</NxTable.Cell>
               <NxTable.Cell>
-                Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>
-                set to true.
+                Returns an initialized state with the specified value and <NxCode>isPristine</NxCode>{' '}
+                set to true with validationErrors object set to null if validator is not specified.
+                The second argument is an optional validator function that receives the new input value (trimmed)
+                as a string and returns zero or more validation error messages.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -195,11 +197,11 @@ const NxTextInputPage = () =>
                   validator function that receives the new input value (trimmed) as a string and returns zero or more
                   validation error messages. The next argument is the new (raw, untrimmed) value of the text box after
                   the user's input.  Returns a state object that is not pristine, with the specified
-                  <NxCode>value</NxCode>, and with <NxCode>validationErrors</NxCode> as
+                  {' '}<NxCode>value</NxCode>, and with <NxCode>validationErrors</NxCode> as
                   computed by the validator function.
                 </NxP>
                 <NxP>
-                  This function is curried, so that it can be partially applied over the
+                  This function is curried, so that it can be partially applied over the{' '}
                   <NxCode>validator</NxCode>.
                 </NxP>
               </NxTable.Cell>

@@ -6,17 +6,23 @@
  */
 import React, { Ref, useState } from 'react';
 import NxSearchDropdown from '../NxSearchDropdown';
+import DataItem from '../../../util/DataItem';
 
 import forwardRef from '../../../util/genericForwardRef';
 import { StatefulProps as Props, statefulPropTypes as propTypes } from '../types';
 
 function NxStatefulSearchDropdownRender<T extends string | number = string>(
-  { defaultSearchText, ...otherProps }: Props<T>,
+  { defaultSearchText, onSelect: onSelectProp, ...otherProps }: Props<T>,
   ref: Ref<HTMLDivElement>
 ) {
   const [searchText, setSearchText] = useState(defaultSearchText || '');
 
-  return <NxSearchDropdown { ...{ ref, searchText, ...otherProps } } onSearchTextChange={setSearchText} />;
+  function onSelect(item: DataItem<T>) {
+    setSearchText('');
+    onSelectProp(item);
+  }
+
+  return <NxSearchDropdown { ...{ ref, searchText, onSelect, ...otherProps } } onSearchTextChange={setSearchText} />;
 }
 
 const NxStatefulSearchDropdown = Object.assign(forwardRef(NxStatefulSearchDropdownRender), { propTypes });

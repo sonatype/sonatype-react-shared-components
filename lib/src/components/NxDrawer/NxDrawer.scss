@@ -1,0 +1,147 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+ @use '../../scss-shared/nx-container-helpers';
+ @use '../../scss-shared/nx-text-helpers';
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.nx-drawer {
+  $padding: var(--nx-spacing-6x);
+
+  // Undo styles that chrome applies to <dialog> elements
+  border: initial;
+  height: initial;
+  left: initial;
+  margin: initial;
+  max-height: initial;
+  max-width: initial;
+  padding: initial;
+  width: initial;
+
+  &::backdrop {
+    // Chrome tries to add its own subtle mask here which doubles up with our own
+    display: none;
+    pointer-events: auto;
+  }
+
+  background-color: var(--nx-swatch-white);
+  box-shadow: -34px 0 50px -32px hsla(0, 0%, 50%, 0.5);
+  color: var(--nx-swatch-grey-30);
+
+  box-sizing: border-box;
+  grid-area: content;
+  justify-self: end;
+  position: relative;
+  z-index: var(--nx-z-index-drawer);
+  min-height: 0;
+  padding: $padding;
+  padding-bottom: 0;
+  width: 520px;
+
+  &--narrow {
+    width: 348px;
+  }
+
+  &--opening {
+    animation: slide-in 200ms ease-out forwards;
+  }
+
+  &--closing {
+    animation: slide-out 180ms ease-in forwards;
+  }
+
+  &--closed {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion) {
+    &, &--closing, &--opening {
+      // We are setting the duration to 1ms
+      // because 0 did not trigger the animationEnd event.
+      animation-duration: 1ms;
+    }
+  }
+
+  .nx-form {
+    display: contents;
+  }
+
+  .nx-drawer-content {
+    @include nx-container-helpers.container-vertical;
+
+    overflow: auto;
+    padding: $padding;
+    margin-right: calc(0px - #{$padding});
+    margin-left: calc(0px - #{$padding});
+    width: auto;
+  }
+
+  .nx-footer {
+    margin-top: 0;
+    padding-bottom: $padding;
+  }
+}
+
+.nx-drawer-header {
+  @include nx-container-helpers.container-vertical;
+
+  align-items: start;
+  border-bottom: 1px solid var(--nx-swatch-indigo-90);
+  display: grid;
+  column-gap: var(--nx-spacing-2x);
+  grid-template: "title close-button"
+                 "subtitle subtitle"
+                 "description description" / auto min-content;
+  padding-bottom: var(--nx-spacing-6x);
+
+  &__close-button, &__title {
+    margin: 0;
+  }
+
+  &__close-button {
+    grid-area: close-button;
+  }
+
+  &__title {
+    @include nx-text-helpers.truncate-ellipsis;
+
+    color: var(--nx-color-text-dark);
+    grid-area: title;
+  }
+
+  &__subtitle {
+    grid-area: subtitle;
+    margin: var(--nx-spacing-4x) 0 0 0;
+  }
+
+  &__description {
+    grid-area: description;
+    margin: var(--nx-spacing-4x) 0 0 0;
+  }
+}

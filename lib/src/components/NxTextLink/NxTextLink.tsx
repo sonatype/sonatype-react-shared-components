@@ -22,15 +22,18 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
             noReferrer,
             newTab,
             truncate,
+            disabled,
             className: specifiedClassName,
             rel: specifiedRel,
             target: specifiedTarget,
+            href,
             ...attrs
           } = props,
 
           className = classnames('nx-text-link', specifiedClassName, {
             'nx-text-link--external': external,
-            'nx-text-link--truncate': truncate
+            'nx-text-link--truncate': truncate,
+            disabled
           }),
 
           // add the noreferrer rel if `noReferrer` prop is explicitly true, or its an external link and
@@ -44,10 +47,14 @@ const NxTextLink = forwardRef<HTMLAnchorElement, Props>(
           target = specifiedTarget || (newTab || (external && newTab !== false) ? '_blank' : ''),
           wrappedChildren = truncate ?
             <span className="nx-text-link__truncate-text">{children}</span> : ensureStartEndElements(children),
-          icon = <NxFontAwesomeIcon icon={faExternalLinkAlt} size="sm" />;
+          icon = <NxFontAwesomeIcon className="nx-icon--colorful" icon={faExternalLinkAlt} size="sm" />;
 
       return (
-        <a { ...{ ref, className, rel, target } } { ...attrs }>
+        <a { ...{ ref, className, rel, target } }
+           { ...attrs }
+           href={disabled ? undefined : href}
+           role={disabled ? 'link' : undefined}
+           aria-disabled={!!disabled}>
           {wrappedChildren}
           { external &&
             (truncate ?

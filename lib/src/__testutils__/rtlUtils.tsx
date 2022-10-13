@@ -9,10 +9,17 @@ import { render, RenderResult } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
 import { path, pipe } from 'ramda';
+import { within } from '@testing-library/dom';
 
 export function rtlRender<P>(Component: ComponentType<P>, minimalProps: P) {
   return function renderWrapper(additionalProps?: Partial<P>): RenderResult {
-    return render(<Component { ...minimalProps } { ...additionalProps } />);
+    const renderResult = render(<Component { ...minimalProps } { ...additionalProps } />),
+        // counterintuitively, the Queries on the return value of `render` are NOT bound to the container
+        // of that render, but rather to the document. For our purposes it is much more helpful to
+        // have them on the render container
+        boundQueries = within(renderResult.container);
+
+    return { ...renderResult, ...boundQueries };
   };
 }
 
