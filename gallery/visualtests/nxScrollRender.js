@@ -6,7 +6,6 @@
  */
 const { setupBrowser } = require('./testUtils');
 
-
 describe('NxScrollRender', function() {
   const { waitAndGetElements, wait, checkScreenshot, getPage } = setupBrowser('#/pages/Scroll Render');
 
@@ -280,7 +279,6 @@ describe('NxScrollRender', function() {
 
     it('does not reuse the same elements after scrolling except for the spacers', async function() {
       const [container] = await waitAndGetElements(noReuseExample),
-          page = getPage(),
           initialChildren = await container.$$(':scope > *');
 
       await scroll(container, 300);
