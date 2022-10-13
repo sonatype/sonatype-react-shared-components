@@ -8,7 +8,7 @@ import React from 'react';
 
 import { NxScrollRender } from '@sonatype/react-shared-components';
 
-export default function NxScrollRenderExample() {
+export default function NxScrollRenderEmptyExample() {
   return (
     <NxScrollRender initialChildCount={11}>
       <div className="nx-scrollable" />

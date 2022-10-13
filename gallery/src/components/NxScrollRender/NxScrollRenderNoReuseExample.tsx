@@ -9,7 +9,7 @@ import { range } from 'ramda';
 
 import { NxList, NxScrollRender } from '@sonatype/react-shared-components';
 
-export default function NxScrollRenderExample() {
+export default function NxScrollRenderNoReuseExample() {
   return (
     <NxScrollRender reuseChildren={false} initialChildCount={11} spacerEl="li">
       <NxList className="nx-scrollable">
