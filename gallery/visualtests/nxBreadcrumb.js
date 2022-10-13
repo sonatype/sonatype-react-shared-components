@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxBreadcrumb', function() {
-  const { simpleTest, hoverTest, a11yTest, waitAndGetElements, checkScreenshot } =
+  const { simpleTest, hoverTest, a11yTest, waitAndGetElements, checkScreenshot, wait, checkScreenshotCoordinates } =
       setupBrowser('#/pages/Breadcrumb');
 
   const simpleExampleSelector = '#nx-breadcrumb-simple-example .gallery-example-live',
@@ -37,7 +37,7 @@ describe('NxBreadcrumb', function() {
 
     await dropdownBtn.click();
 
-    await checkScreenshot(example, 800, 364);
+    await checkScreenshot(example, 848, 364);
   });
 
   it('looks right with a wide dropdown', async function() {
@@ -48,10 +48,23 @@ describe('NxBreadcrumb', function() {
 
     await dropdownBtn.click();
 
-    await checkScreenshot(example, 800, 396);
+    await checkScreenshot(example, 848, 396);
   });
 
-  it('shows overflow tooltips on inline links', hoverTest(longSegmentsExample, `${longSegmentsExample} a`, true));
+  it('shows overflow tooltips on inline links', async function() {
+    const [example, link] = await waitAndGetElements(
+        longSegmentsExample,
+        `${longSegmentsExample} a`
+    );
+
+    await link.hover();
+    await wait(500);
+
+    const { x, y, width, height } = await example.boundingBox();
+
+    await checkScreenshotCoordinates(x, y - 21, width, height + 21);
+  });
+
   it('shows overflow tooltips on dropdown links', async function() {
     const [example, dropdownBtn] = await waitAndGetElements(
         manyLongSegmentsExample,
@@ -62,14 +75,16 @@ describe('NxBreadcrumb', function() {
 
     const [link] = await waitAndGetElements(`${manyLongSegmentsExample} .nx-dropdown-link`);
     await link.hover();
+    await wait(500);
 
-    await checkScreenshot(example, 800, 396);
+    await checkScreenshot(example, 848, 396);
   });
 
   describe('in NxGlobalHeader', function() {
-    const { checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxBreadcrumbGlobalHeaderExample', false);
+    const { checkFullPageScreenshot, a11yTest, getPage } = setupBrowser('#/NxBreadcrumbGlobalHeaderExample', false);
 
     it('looks right', async function() {
+      await getPage().setViewport({ width: 1366, height: 800 });
       await checkFullPageScreenshot();
     });
 
