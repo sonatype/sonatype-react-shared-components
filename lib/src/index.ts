@@ -361,3 +361,6 @@ export { default as NxMeter, Props as NxMeterProps } from './components/NxMeter/
 
 export { default as NxBreadcrumb, Props as NxBreadcrumbProps, Crumb as NxBreadcrumbCrumb }
   from './components/NxBreadcrumb/NxBreadcrumb';
+
+export { default as NxStatefulBreadcrumb, Props as NxStatefulBreadcrumbProps }
+  from './components/NxBreadcrumb/stateful/NxStatefulBreadcrumb';
