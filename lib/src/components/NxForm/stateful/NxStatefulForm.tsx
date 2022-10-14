@@ -14,7 +14,7 @@ export { Props };
 
 /* eslint-disable react/prop-types */
 const NxStatefulForm = forwardRef<HTMLFormElement, Props>(function NxStatefulForm(props, ref) {
-  const { onSubmit: onSubmitProp, submitMaskState, validationErrors } = props,
+  const { onSubmit: onSubmitProp, validationErrors } = props,
       [showValidationErrors, setShowValidationErrors] = useState(false),
       previousValidationErrors = useRef<ValidationErrors | undefined>(null);
 
