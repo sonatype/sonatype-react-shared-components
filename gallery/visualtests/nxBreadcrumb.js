@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxBreadcrumb', function() {
-  const { simpleTest, hoverTest, a11yTest, waitAndGetElements, checkScreenshot, wait, checkScreenshotCoordinates } =
+  const { simpleTest, a11yTest, waitAndGetElements, checkScreenshot, wait, checkScreenshotCoordinates } =
       setupBrowser('#/pages/Breadcrumb');
 
   const simpleExampleSelector = '#nx-breadcrumb-simple-example .gallery-example-live',

@@ -32,7 +32,7 @@ export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
     name: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired
   }).isRequired).isRequired
-}
+};
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   ...statefulPropTypes,
