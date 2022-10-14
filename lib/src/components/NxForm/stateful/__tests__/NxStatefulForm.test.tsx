@@ -320,76 +320,26 @@ describe('NxStatefulForm', function() {
     expect(within(renderEl({ children: <Fixture /> })!).getByTestId('foo')).toHaveTextContent('false');
   });
 
-  it('sets the value of the FormAriaContext showValidationErrors property to true on submit', async function() {
-    function Fixture() {
-      const { showValidationErrors } = useContext(FormAriaContext);
+  it('sets the value of the FormAriaContext showValidationErrors property to true on submit if there ' +
+      'are validationErrors', async function() {
+        function Fixture() {
+          const { showValidationErrors } = useContext(FormAriaContext);
 
-      return <span data-testid="foo">{showValidationErrors.toString()}</span>;
-    }
+          return <span data-testid="foo">{showValidationErrors.toString()}</span>;
+        }
 
-    const user = userEvent.setup();
+        const user = userEvent.setup();
 
-    quickRender({ children: <Fixture /> });
+        const errorView = quickRender({ validationErrors: 'bar', children: <Fixture /> }),
+            noErrorView = quickRender({ children: <Fixture /> });
 
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+        await user.click(errorView.getByRole('button', { name: 'Submit' }));
+        await user.click(noErrorView.getByRole('button', { name: 'Submit' }));
 
-    expect(screen.getByTestId('foo')).toHaveTextContent('true');
-  });
-
-  it('sets the value of the FormAriaContext showValidationErrors property to false when the submitMaskState ' +
-      'is changed to null or undefined', async function() {
-    function Fixture() {
-      const { showValidationErrors } = useContext(FormAriaContext);
-
-      return <span data-testid="foo">{showValidationErrors.toString()}</span>;
-    }
-
-    const user = userEvent.setup();
-
-    const { rerender } = quickRender({ children: <Fixture /> });
-
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
-
-    rerender(
-      <NxStatefulForm { ...minimalProps } submitMaskState={false}>
-        <Fixture />
-      </NxStatefulForm>
-    );
-
-    // still true from the click
-    expect(screen.getByTestId('foo')).toHaveTextContent('true');
-
-    rerender(
-      <NxStatefulForm { ...minimalProps } submitMaskState={true}>
-        <Fixture />
-      </NxStatefulForm>
-    );
-
-    // still true...
-    expect(screen.getByTestId('foo')).toHaveTextContent('true');
-
-    rerender(
-      <NxStatefulForm { ...minimalProps }>
-        <Fixture />
-      </NxStatefulForm>
-    );
-
-    expect(screen.getByTestId('foo')).toHaveTextContent('false');
-
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
-    rerender(
-      <NxStatefulForm { ...minimalProps } submitMaskState={true}>
-        <Fixture />
-      </NxStatefulForm>
-    );
-    rerender(
-      <NxStatefulForm { ...minimalProps } submitMaskState={null}>
-        <Fixture />
-      </NxStatefulForm>
-    );
-
-    expect(screen.getByTestId('foo')).toHaveTextContent('false');
-  });
+        expect(errorView.getByTestId('foo')).toHaveTextContent('true');
+        expect(noErrorView.getByTestId('foo')).toHaveTextContent('false');
+      }
+  );
 
   it('sets the value of the FormAriaContext showValidationErrors property to false when we go from having ' +
       'validationErrors to not', async function() {
@@ -405,14 +355,18 @@ describe('NxStatefulForm', function() {
 
     await user.click(screen.getByRole('button', { name: 'Submit' }));
 
+    expect(screen.getByTestId('foo')).toHaveTextContent('false');
+
     rerender(
       <NxStatefulForm { ...minimalProps } validationErrors={[]}>
         <Fixture />
       </NxStatefulForm>
     );
 
-    // changing from one kind of no-validationErrors to another doesn't count
-    expect(screen.getByTestId('foo')).toHaveTextContent('true');
+    await user.click(screen.getByRole('button', { name: 'Submit' }));
+
+    // changing from one kind of no-validationErrors to another
+    expect(screen.getByTestId('foo')).toHaveTextContent('false');
 
     rerender(
       <NxStatefulForm { ...minimalProps } validationErrors="foo">
@@ -420,7 +374,9 @@ describe('NxStatefulForm', function() {
       </NxStatefulForm>
     );
 
-    // changing from not having validation errors to having validation errors doesn't count
+    await user.click(screen.getByRole('button', { name: 'Submit' }));
+
+    // changing from not having validation errors to having validation errors
     expect(screen.getByTestId('foo')).toHaveTextContent('true');
 
     rerender(
@@ -441,12 +397,16 @@ describe('NxStatefulForm', function() {
     // only changing back to not having validationErrors counts
     expect(screen.getByTestId('foo')).toHaveTextContent('false');
 
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
     rerender(
       <NxStatefulForm { ...minimalProps } validationErrors="bar">
         <Fixture />
       </NxStatefulForm>
     );
+
+    await user.click(screen.getByRole('button', { name: 'Submit' }));
+
+    expect(screen.getByTestId('foo')).toHaveTextContent('true');
+
     rerender(
       <NxStatefulForm { ...minimalProps }>
         <Fixture />
