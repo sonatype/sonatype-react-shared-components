@@ -12,8 +12,8 @@ import useToggle from '../../../util/useToggle';
 import { StatefulProps } from '../types';
 export { StatefulProps as Props };
 
-export default function NxStatefulBreadcrumb({ defaultIsDropdownOpen, ...otherProps }: StatefulProps) {
-  const [isDropdownOpen, toggleIsDropdownOpen] = useToggle(!!defaultIsDropdownOpen);
+export default function NxStatefulBreadcrumb(props: StatefulProps) {
+  const [isDropdownOpen, toggleIsDropdownOpen] = useToggle(false);
 
-  return <NxBreadcrumb isDropdownOpen={isDropdownOpen} onToggleDropdown={toggleIsDropdownOpen} { ...otherProps } />;
+  return <NxBreadcrumb isDropdownOpen={isDropdownOpen} onToggleDropdown={toggleIsDropdownOpen} { ...props } />;
 }

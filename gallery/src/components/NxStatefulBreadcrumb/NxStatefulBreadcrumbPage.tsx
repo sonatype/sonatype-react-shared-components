@@ -26,10 +26,7 @@ const NxStatefulBreadcrumbPage = () =>
         </NxTile.SubsectionHeader>
         <NxP>
           <NxCode>NxStatefulBreadcrumb</NxCode> takes the same props as <NxCode>NxBreadcrumb</NxCode>, except that
-          it does not take <NxCode>isDropdownOpen</NxCode> or <NxCode>toggleIsDropdownOpen</NxCode> and instead
-          takes an optional <NxCode>defaultIsDropdownOpen</NxCode>. <NxCode>defaultIsDropdownOpen</NxCode> sets
-          whether or not the dropdown is open when the component first renders. If it is not specified, the dropdown
-          starts closed.
+          it does not take <NxCode>isDropdownOpen</NxCode> or <NxCode>toggleIsDropdownOpen</NxCode>.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
@@ -37,9 +34,7 @@ const NxStatefulBreadcrumbPage = () =>
     <GalleryExampleTile title="Example"
                         liveExample={NxStatefulBreadcrumbExample}
                         codeExamples={exampleCode}>
-      An example of <NxCode>NxStatefulBreadcrumb</NxCode> including usage of <NxCode>defaultIsDropdownOpen</NxCode> to
-      have the dropdown start open. Note that typically you would not want the dropdown to start open, and so that
-      prop would typically be omitted.
+      An example of <NxCode>NxStatefulBreadcrumb</NxCode> including a dropdown.
     </GalleryExampleTile>
   </>;
 

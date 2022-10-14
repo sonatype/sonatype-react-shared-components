@@ -25,6 +25,6 @@ const crumbs = [
 
 export default function NxStatefulBreadcrumbManySegmentsExample() {
   return (
-    <NxStatefulBreadcrumb defaultIsDropdownOpen crumbs={crumbs} />
+    <NxStatefulBreadcrumb crumbs={crumbs} />
   );
 }

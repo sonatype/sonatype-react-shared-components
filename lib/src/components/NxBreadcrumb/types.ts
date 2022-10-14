@@ -18,20 +18,16 @@ export interface DropdownProps {
   onToggleCollapse: () => void;
 }
 
-interface BaseProps extends HTMLAttributes<HTMLElement> {
+export interface StatefulProps extends HTMLAttributes<HTMLElement> {
   crumbs: Crumb[];
 }
 
-export interface Props extends BaseProps {
+export interface Props extends StatefulProps {
   isDropdownOpen: boolean;
   onToggleDropdown: () => void;
 }
 
-export interface StatefulProps extends BaseProps {
-  defaultIsDropdownOpen?: boolean | null;
-}
-
-const basePropTypes = {
+export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
   crumbs: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired
@@ -39,12 +35,7 @@ const basePropTypes = {
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  ...basePropTypes,
+  ...statefulPropTypes,
   isDropdownOpen: PropTypes.bool.isRequired,
   onToggleDropdown: PropTypes.func.isRequired
-};
-
-export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
-  ...basePropTypes,
-  defaultIsDropdownOpen: PropTypes.bool
 };
