@@ -50,6 +50,7 @@
   // Cover all columns and the third through last rows of the nx-page grid template
   grid-area: 3 / 1 / -1 / -1;
   max-width: var(--nx-width-page-max);
+  overflow-y: hidden;
   width: 100%;
 }
 
@@ -136,6 +137,7 @@
 
   .nx-page-content {
     margin: 0 auto;
+    overflow-y: visible;
   }
 
   .nx-page-main {
