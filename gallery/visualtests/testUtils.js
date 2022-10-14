@@ -31,7 +31,7 @@ module.exports = {
 
     beforeAll(async function() {
       browser = await puppeteer.launch({
-        defaultViewport: { width: 1366, height: 3000 },
+        defaultViewport: { width: 1366, height: 4000 },
         headless: true,
 
         // we trust the pages we'll be viewing, and this is needed to run in docker without hampering docker's own
@@ -77,6 +77,19 @@ module.exports = {
 
     async function isInDocument(el) {
       return el.evaluate(e => e.isConnected);
+    }
+
+    async function isVisible(el) {
+      return el.evaluate(e => {
+        const computedStyles = window.getComputedStyle(e);
+        const rect = e.getBoundingClientRect();
+        return !!(
+          computedStyles.display !== 'none'
+          && computedStyles.opacity !== '0'
+          && computedStyles.visibility !== 'hidden'
+          && !!(rect.bottom || rect.top || rect.height || rect.width)
+        );
+      });
     }
 
     async function waitForSelectors(...selectors) {
@@ -170,6 +183,7 @@ module.exports = {
 
       blurElement,
       isFocused,
+      isVisible,
       isInDocument,
       moveMouseAway,
       dismissResultingDialog,
@@ -188,6 +202,7 @@ module.exports = {
       simpleTest(selector) {
         return async function() {
           const [element] = await waitAndGetElements(selector);
+          await moveMouseAway();
           await checkScreenshot(element);
         };
       },
@@ -206,12 +221,17 @@ module.exports = {
         };
       },
 
-      hoverTest(elementSelector, hoverSelector = elementSelector) {
+      hoverTest(elementSelector, hoverSelector = elementSelector, waitForTooltip = false) {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
           await scrollIntoView(targetElement);
           await focusElement.hover();
+
+          if (waitForTooltip) {
+            await wait(500);
+          }
+
           await checkScreenshot(targetElement);
         };
       },

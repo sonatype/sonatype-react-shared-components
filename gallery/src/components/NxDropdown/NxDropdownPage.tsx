@@ -172,7 +172,7 @@ const NxDropdownPage = () =>
           <NxH3>Auxiliary Components</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          An auxiliary component called <NxCode>NxDropdownDivider</NxCode> is available
+          An auxiliary component called <NxCode>NxDropdown.Divider</NxCode> is available
           to be used as separator between child elements.
         </NxP>
       </NxTile.Subsection>
@@ -260,15 +260,31 @@ const NxDropdownPage = () =>
                 any <NxCode>.nx-dropdown-right-button</NxCode>s.
               </NxTable.Cell>
             </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Custom Icons</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
             <NxTable.Row>
-              <NxTable.Cell><NxCode>nx-dropdown-icon</NxCode></NxTable.Cell>
+              <NxTable.Cell>Class</NxTable.Cell>
+              <NxTable.Cell>Location</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
               <NxTable.Cell>
-                Set custom icons to the correct color.
+                <NxCode><NxTextLink href="#/pages/Icon">nx-icon--colorful</NxTextLink></NxCode>
               </NxTable.Cell>
               <NxTable.Cell>
-                This class should be applied to custom icons that do not have built-in color{' '}
-                so they are set to the correct <NxCode>NxDropdown</NxCode> icon color.
+                <NxCode>NxFontAwesomeIcon</NxCode> inside <NxCode>NxDropdown</NxCode>
               </NxTable.Cell>
+              <NxTable.Cell>This modifier should be applied to icons that should retain their colors.</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
         </NxTable>
@@ -276,11 +292,13 @@ const NxDropdownPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Navigation Example"
+                        id="nx-dropdown-example"
                         liveExample={NxDropdownNavigationExample}
                         codeExamples={nxDropdownNavigationExampleCode}>
       An example of an <NxCode>NxDropdown</NxCode> as it might be used to implement a navigation list.
       Note that the menu can contain either <NxCode>&lt;a&gt;</NxCode> or
-      {' '}<NxCode>&lt;button&gt;</NxCode> elements; this example contains both.
+      {' '}<NxCode>&lt;button&gt;</NxCode> elements; this example contains both. This example also includes a usage
+      of <NxCode>NxDropdown.Divider</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Short Example"
@@ -316,8 +334,6 @@ const NxDropdownPage = () =>
                         liveExample={NxDropdownCustomLabelExample}
                         codeExamples={nxDropdownCustomLabelExampleCode}>
       This dropdown contains more complex JSX in its label.
-      Notice that the added <NxCode>NxFontAwesome</NxCode> icons have <NxCode>nx-dropdown-icon</NxCode>{' '}
-      class applied to them, this is so they are set to the correct color.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Custom label with NxThreatIndicator example"
@@ -325,8 +341,6 @@ const NxDropdownPage = () =>
                         liveExample={NxDropdownWithNxThreatIndicatorExample}
                         codeExamples={nxDropdownWithNxThreatIndicatorExampleCode}>
       An example of a dropdown with <NxCode>NxThreatIndicator</NxCode>.
-      Notice that <NxCode>NxThreatIndicator</NxCode>s do not have <NxCode>nx-dropdown-icon</NxCode>{' '}
-      class applied to them because we don't want their colors to be overriden.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with right-floating buttons"

@@ -6,8 +6,16 @@
  */
 import React, { useState } from 'react';
 
-import { NxModal, NxFontAwesomeIcon, NxTextInput, NxButton, nxTextInputStateHelpers, NxFormGroup, NxForm }
-  from '@sonatype/react-shared-components';
+import {
+  NxModal,
+  NxFontAwesomeIcon,
+  NxTextInput,
+  NxButton,
+  nxTextInputStateHelpers,
+  NxFormGroup,
+  NxStatefulForm,
+  NxForm
+} from '@sonatype/react-shared-components';
 import { faAngry } from '@fortawesome/free-solid-svg-icons';
 
 const { initialState, userInput } = nxTextInputStateHelpers;
@@ -29,10 +37,9 @@ export default function NxModalFormErrorExample() {
         <NxModal id="nx-modal-form-error-example"
                  onCancel={modalCloseHandler}
                  aria-labelledby="modal-form-error-header">
-          <NxForm className="nx-form"
-                  onSubmit={modalCloseHandler}
-                  onCancel={modalCloseHandler}
-                  submitError={error}>
+          <NxStatefulForm onSubmit={modalCloseHandler}
+                          onCancel={modalCloseHandler}
+                          submitError={error}>
             <header className="nx-modal-header">
               <h2 className="nx-h2" id="modal-form-error-header">
                 <NxFontAwesomeIcon icon={faAngry} />
@@ -40,6 +47,7 @@ export default function NxModalFormErrorExample() {
               </h2>
             </header>
             <div className="nx-modal-content">
+              <NxForm.RequiredFieldNotice />
               <NxFormGroup label="Username" isRequired>
                 <NxTextInput { ...textFieldState } onChange={onChange} aria-required={true} />
               </NxFormGroup>
@@ -51,7 +59,7 @@ export default function NxModalFormErrorExample() {
                              { ...textFieldState }/>
               </NxFormGroup>
             </div>
-          </NxForm>
+          </NxStatefulForm>
         </NxModal>
       }
     </>

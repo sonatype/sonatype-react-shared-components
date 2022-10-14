@@ -1,0 +1,93 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../../scss-shared/nx-container-helpers';
+
+.nx-combobox {
+  display: inline-block;
+  position: relative;
+
+  &__menu {
+    display: none;
+    right: 100%;
+    width: 100%;
+  }
+
+  &__input {
+    margin-bottom: 0;
+  }
+
+  &__alert {
+    @include nx-container-helpers.container-vertical;
+    display: none;
+    right: 100%;
+    width: 100%;
+    border-radius: var(--nx-border-radius);
+    margin: var(--nx-spacing-base) 0 0 0;
+    padding: var(--nx-spacing-base) 0; 
+    background: var(--nx-swatch-white);
+    box-shadow: var(--nx-box-shadow-dropdown);
+    box-sizing: border-box;
+    max-height: 328px;
+    overflow-y: auto;
+    z-index: 1;
+
+    &--error {
+      padding: 0;
+    }
+  }
+
+  &__empty-message {
+    padding: var(--nx-spacing-base) var(--nx-spacing-4x);
+    text-align: center;
+  }
+
+  &--dropdown-showable {
+    @mixin show-dropdown {
+      .nx-combobox__menu {
+        display: block;
+        position: absolute;
+        right: initial;
+  
+        .nx-dropdown-button.selected {
+          background-color: var(--nx-swatch-blue-90);
+        }
+      }
+  
+      .nx-combobox__alert {
+        display: block;
+        position: absolute;
+        right: initial;
+      }
+    }
+
+    &:focus-within {
+      @include show-dropdown;
+    }
+  }
+
+  &--long{
+    .nx-combobox__input{
+      width: var(--nx-width-form-element-wide);
+    }
+  }
+
+  &--short{
+    .nx-combobox__input{
+      width: var(--nx-width-form-element-short);
+
+      .nx-text-input__input {
+        min-width: 0;
+      }
+    }
+  }
+
+  .nx-loading-spinner {
+    padding-top: var(--nx-spacing-6x);
+    padding-bottom: var(--nx-spacing-6x);
+    text-align: center;
+  }
+}

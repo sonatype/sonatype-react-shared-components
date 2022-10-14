@@ -16,7 +16,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 export { Props, NxCollapsibleItemsChildProps } from './types';
 
 import './NxCollapsibleItems.scss';
-import { ensureElement } from '../../util/reactUtil';
+import { ensureStartEndElements } from '../../util/reactUtil';
 
 type NxCollapsibleItemsFC =
   FC<Props> &
@@ -33,7 +33,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
     triggerContent,
     triggerTooltip,
     className,
-    id,
+    role,
     ...otherProps
   } = props;
 
@@ -45,17 +45,18 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
         'nx-collapsible-items--disabled': disabled,
         'nx-collapsible-items--empty': isEmpty
       }),
-      treeViewId = useUniqueId('nx-collapsible-items', id),
+      treeViewChildrenId = useUniqueId('nx-collapsible-items-children'),
+      treeViewChildrenRole = role ?? 'list',
       trigger = (
         <button type="button"
                 className="nx-collapsible-items__trigger"
                 onClick={onToggleCollapse || undefined}
-                aria-controls={treeViewId}
+                aria-controls={treeViewChildrenId}
                 aria-expanded={isExpanded}
                 disabled={disabled || isEmpty || undefined}>
           <NxFontAwesomeIcon className="nx-collapsible-items__twisty" icon={faCaretRight} />
           <span className="nx-collapsible-items__text">
-            {ensureElement(triggerContent)}
+            {ensureStartEndElements(triggerContent)}
           </span>
         </button>
       ),
@@ -66,8 +67,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
   return (
     /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
     <div className={treeViewClasses}
-         id={treeViewId}
-         role="list"
+         role="group"
          { ...otherProps }>
       {
         triggerTooltipProps ? (
@@ -79,7 +79,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
           </NxTooltip>
         ) : trigger
       }
-      <div className="nx-collapsible-items__children" role="group">
+      <div className="nx-collapsible-items__children" role={treeViewChildrenRole} id={treeViewChildrenId}>
         {children}
       </div>
     </div>

@@ -7,7 +7,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range, tail } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { NxSearchDropdown, DataItem, NX_STANDARD_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
@@ -44,7 +44,7 @@ export default function NxSearchDropdownExample() {
         setLoading(false);
       }
     });
-  }, [matches, query]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+  }, [matches, query]), NX_STANDARD_DEBOUNCE_TIME);
 
   function onSearchTextChange(query: string) {
     setQuery(query);

@@ -30,18 +30,13 @@ describe('NxCollapsibleItems', function() {
     expect(NxCollapsibleItems.Child).toBe(NxTreeViewChild);
   });
 
-  it('renders a div with a list role and the nx-collapsible-items class', function() {
+  it('renders a div with a group role and the nx-collapsible-items class', function() {
     expect(getShallowComponent()).toMatchSelector('div.nx-collapsible-items');
-    expect(getShallowComponent()).toHaveProp('role', 'list');
+    expect(getShallowComponent()).toHaveProp('role', 'group');
   });
 
   it('sets the specified id', function() {
     expect(getShallowComponent({ id: 'foo' })).toHaveProp('id', 'foo');
-  });
-
-  it('sets an auto-generated id if one is not provided', function() {
-    expect(getShallowComponent()).toHaveProp('id');
-    expect(getShallowComponent().prop('id')).not.toEqual(getShallowComponent().prop('id'));
   });
 
   it('sets the specified classnames', function() {
@@ -111,13 +106,12 @@ describe('NxCollapsibleItems', function() {
       expect(getShallowTrigger()).toHaveProp('type', 'button');
     });
 
-    it('references the treeview using aria-controls', function() {
-      const explicitIdCollapsibleItems = getShallowComponent({ id: 'foo' }),
-          autoIdCollapsibleItems = getShallowComponent(),
-          autoId = autoIdCollapsibleItems.prop('id');
+    it('references the treeview children items using aria-controls', function() {
+      const component = getShallowComponent({ children: <span>foo</span> }),
+          childrenEl = component.find('.nx-collapsible-items__children'),
+          childrenElId = childrenEl.prop('id');
 
-      expect(explicitIdCollapsibleItems.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', 'foo');
-      expect(autoIdCollapsibleItems.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', autoId);
+      expect(component.find('.nx-collapsible-items__trigger')).toHaveProp('aria-controls', childrenElId);
     });
 
     it('sets aria-expanded iff both the isOpen prop is true and there are children', function() {
@@ -191,13 +185,21 @@ describe('NxCollapsibleItems', function() {
     });
   });
 
-  it('renders the children in an nx-collapsible-items__children element with role=group', function() {
+  it('renders the children in an nx-collapsible-items__children element with role=list', function() {
     const component = getShallowComponent({ children: <span>foo</span> }),
         childrenEl = component.find('.nx-collapsible-items__children');
 
     expect(childrenEl).toExist();
-    expect(childrenEl).toHaveProp('role', 'group');
+    expect(childrenEl).toHaveProp('role', 'list');
     expect(childrenEl).toContainReact(<span>foo</span>);
+  });
+
+  it('sets specified role on an nx-collapsible-items__children element', function() {
+    const component = getShallowComponent({ role: 'menu' }),
+        childrenEl = component.find('.nx-collapsible-items__children');
+
+    expect(childrenEl).toExist();
+    expect(childrenEl).toHaveProp('role', 'menu');
   });
 
   describe('NxCollapsibleItems.Child', function() {

@@ -54,7 +54,6 @@ import NxOverflowTooltipPage from './components/NxOverflowTooltip/NxOverflowTool
 import NxFilterInputPage from './components/NxFilterInput/NxFilterInputPage';
 import NxPolicyThreatSliderPage from './components/NxPolicyThreatSlider/NxPolicyThreatSliderPage';
 import NxDropdownPage from './components/NxDropdown/NxDropdownPage';
-import FormValidationPage from './guidelines/FormValidation/FormValidationPage';
 import PageLayoutPage from './styles/PageLayout/PageLayoutPage';
 import NxStatefulDropdownPage from './components/NxStatefulDropdown/NxStatefulDropdownPage';
 import NxStatefulCheckboxPage from './components/NxStatefulCheckbox/NxStatefulCheckboxPage';
@@ -77,16 +76,13 @@ import NxPaginationPage from './components/NxPagination/NxPaginationPage';
 import NxIndeterminatePaginationPage
   from './components/NxIndeterminatePagination/NxIndeterminatePaginationPage';
 import NxBinaryDonutChartPage from './components/NxBinaryDonutChart/NxBinaryDonutChartPage';
-import NxFormSelectPage from './styles/NxFormSelect/NxFormSelectPage';
 import NxAccordionPage from './components/NxAccordion/NxAccordionPage';
 import NxStatefulAccordionPage from './components/NxStatefulAccordion/NxStatefulAccordionPage';
 import NxViewportSizedPage from './styles/NxViewportSized/NxViewportSizedPage';
 import NxPolicyViolationIndicatorPage from './components/NxPolicyViolationIndicator/NxPolicyViolationIndicatorPage';
 import NxReadOnlyPage from './styles/NxReadOnly/NxReadOnlyPage';
 import NxFormGroupPage from './components/NxFormGroup/NxFormGroupPage';
-import NxFormGroupStylePage from './styles/NxFormGroup/NxFormGroupStylePage';
 import NxFieldsetPage from './components/NxFieldset/NxFieldsetPage';
-import NxFieldsetStylePage from './styles/NxFieldset/NxFieldsetStylePage';
 import NxFormPage from './components/NxForm/NxFormPage';
 import NxTogglePage from './components/NxToggle/NxTogglePage';
 import NxStatefulTogglePage from './components/NxStatefulToggle/NxStatefulTogglePage';
@@ -146,10 +142,14 @@ import NxProgressBarPage from './components/NxProgressBar/NxProgressBarPage';
 import ServerSideRenderingPage from './guidelines/ServerSideRendering/ServerSideRenderingPage';
 import NxToastPage from './components/NxToast/NxToastPage';
 import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorPage';
+import NxDrawerPage from './components/NxDrawer/NxDrawerPage';
+import NxComboboxPage from './components/NxCombobox/NxComboboxPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
+import NxStatefulFormPage from './components/NxStatefulForm/NxStatefulFormPage';
 import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
 import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
 import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
+import NxMeterPage from './components/NxMeter/NxMeterPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -159,6 +159,7 @@ const pageConfig: PageConfig = {
     'Load Error': { content: NxLoadErrorPage, type: 'react' },
     'Load Wrapper': { content: NxLoadWrapperPage, type: 'react' },
     'Loading Spinner': { content: NxLoadingSpinnerPage, type: 'react' },
+    'Meter': { content: NxMeterPage, type: 'react' },
     'Policy Violation Indicator': { content: NxPolicyViolationIndicatorPage, type: 'react' },
     'Progress Bar': { content: NxProgressBarPage, type: 'react' },
     'Submit Mask': { content: NxSubmitMaskPage, type: 'react' },
@@ -181,6 +182,7 @@ const pageConfig: PageConfig = {
     'Segmented Button': { content: NxSegmentedButtonPage, type: 'react' },
     'Stateful Segmented Button': { content: NxStatefulSegmentedButtonPage, type: 'react' },
     'Close Button': { content: NxCloseButtonPage, type: 'react' },
+    'Combobox': { content: NxComboboxPage, type: 'react' },
     'Dropdown': { content: NxDropdownPage, type: 'react' },
     'Stateful Dropdown': { content: NxStatefulDropdownPage, type: 'react' },
     'Filter Dropdown': { content: NxFilterDropdownPage, type: 'react' },
@@ -210,6 +212,7 @@ const pageConfig: PageConfig = {
     'Stateful File Upload': { content: NxStatefulFileUploadPage, type: 'react' },
     'Filter Input': { content: NxFilterInputPage, type: 'react' },
     'Form': { content: NxFormPage, type: 'react' },
+    'Stateful Form': { content: NxStatefulFormPage, type: 'react' },
     'Form Group': { content: NxFormGroupPage, type: 'react' },
     'Form Select': { content: NxFormSelectComponentPage, type: 'react' },
     'Policy Threat Slider': { content: NxPolicyThreatSliderPage, type: 'react' },
@@ -252,6 +255,7 @@ const pageConfig: PageConfig = {
     'Global Sidebar Footer': { content: NxGlobalSidebarFooterPage, type: 'react' },
     'Grid': { content: NxGridPage, type: 'html' },
     'Modal': { content: NxModalPage, type: 'react' },
+    'Drawer': { content: NxDrawerPage, type: 'react' },
     'Page Header': { content: NxPageHeaderPage, type: 'react' },
     'Page Title': { content: NxPageTitlePage, type: 'html' },
     'Read Only': { content: NxReadOnlyPage, type: 'html' },
@@ -271,9 +275,6 @@ const pageConfig: PageConfig = {
   'HTML Variants': {
     'Alert (HTML)': { content: NxAlertPage, type: 'html' },
     'Button (HTML)': { content: NxBtnPage, type: 'html' },
-    'Fieldset (HTML)': { content: NxFieldsetStylePage, type: 'html' },
-    'Form Group (HTML)': { content: NxFormGroupStylePage, type: 'html' },
-    'Form Select (HTML)': { content: NxFormSelectPage, type: 'html' },
     'Icon': { content: NxIconPage, type: 'html' },
     'List (HTML)': { content: NxListPage, type: 'html' },
     'Table (HTML)': { content: NxTableStylePage, type: 'html' }
@@ -286,7 +287,7 @@ const pageConfig: PageConfig = {
     'Container Helpers': { content: NxContainerHelpersPage, type: 'sass' },
     'nx-scrollable': { content: NxScrollablePage, type: 'css' },
     'nx-viewport-sized': { content: NxViewportSizedPage, type: 'css' },
-    'Selectable Colors': { content: SelectableColorsPage, type: 'sass' },
+    'Selectable Colors': { content: SelectableColorsPage, type: 'css' },
     'Style Variables': { content: CssVariablesPage, type: 'css' }
   },
   'JavaScript & TypeScript Utilities': {
@@ -304,7 +305,6 @@ const pageConfig: PageConfig = {
     'Additional Resources': { content: AdditionalResourcePage, type: 'documentation' },
     'Contributing to the Gallery': { content: ContributingPage, type: 'documentation' },
     'Font-size and Line-height': { content: FontSizePage, type: 'documentation' },
-    'Form Validation Guidelines': { content: FormValidationPage, type: 'documentation' },
     'Styling Components': { content: StylingComponentsPage, type: 'documentation' },
     'Server Side Rendering': { content: ServerSideRenderingPage, type: 'documentation' }
   }

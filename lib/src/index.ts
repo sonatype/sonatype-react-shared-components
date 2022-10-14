@@ -49,6 +49,7 @@ export { default as NxThreatIndicator, Props as NxThreatIndicatorProps }
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
 
+// deprecated
 export {
   default as NxVulnerabilityDetails,
   vulnerabilityDetailsPropType,
@@ -119,9 +120,12 @@ export {
 
 export {
   default as NxDropdown,
-  NxDropdownDivider,
   Props as NxDropdownProps
 } from './components/NxDropdown/NxDropdown';
+
+// Deprecated: NxDropdownDivider alias for NxDropdown.Divider
+import NxDropdown from './components/NxDropdown/NxDropdown';
+export const NxDropdownDivider = NxDropdown.Divider;
 
 export { TooltipConfigProps } from './util/tooltipUtils';
 
@@ -184,6 +188,10 @@ export {
   default as NxForm,
   Props as NxFormProps
 } from './components/NxForm/NxForm';
+export {
+  default as NxStatefulForm,
+  Props as NxStatefulFormProps
+} from './components/NxForm/stateful/NxStatefulForm';
 
 export * from './util/threatLevels';
 export * from './util/validationUtil';
@@ -213,6 +221,7 @@ export { default as NxPolicyViolationIndicator, Props as NxPolicyViolationIndica
 
 export { default as NxFormGroup, Props as NxFormGroupProps } from './components/NxFormGroup/NxFormGroup';
 export { default as NxFieldset, Props as NxFieldsetProps } from './components/NxFieldset/NxFieldset';
+export * as nxFieldsetStateHelpers from './components/NxFieldset/stateHelpers';
 
 export { default as NxToggle, Props as NxToggleProps } from './components/NxToggle/NxToggle';
 export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
@@ -282,7 +291,8 @@ export { default as NxThreatIndicatorLegend, NxThreatIndicatorLegendProps }
 export {
   default as NxSearchDropdown,
   Props as NxSearchDropdownProps,
-  SEARCH_DEBOUNCE_TIME as NX_SEARCH_DROPDOWN_DEBOUNCE_TIME
+  SEARCH_DEBOUNCE_TIME as NX_SEARCH_DROPDOWN_DEBOUNCE_TIME,
+  SEARCH_DEBOUNCE_TIME as NX_STANDARD_DEBOUNCE_TIME
 } from './components/NxSearchDropdown/NxSearchDropdown';
 
 export { default as NxStatefulSearchDropdown, Props as NxStatefulDropdownProps }
@@ -322,13 +332,17 @@ export { default as NxStatefulFilterDropdown, Props as NxStatefulFilterDropdownP
 
 export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemNotice';
 
-export { default as NxProgressBar } from './components/NxProgressBar/NxProgressBar';
+export { default as NxProgressBar, Props as NxProgressBarProps } from './components/NxProgressBar/NxProgressBar';
 
 export { default as NxToastContainer, NxToastContainerProps as NxToastContainerProps }
   from './components/NxToast/NxToastContainer';
 export { default as NxToast, NxToastProps as NxToastProps } from './components/NxToast/NxToast';
 
+export { default as NxCombobox, Props as NxComboboxProps } from './components/NxCombobox/NxCombobox';
+
 export * from './components/NxStatusIndicator/NxStatusIndicator';
+
+export { default as NxDrawer, Props as NxDrawerProps } from './components/NxDrawer/NxDrawer';
 
 export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';
 export { default as NxFileUpload, Props as NxFileUploadProps } from './components/NxFileUpload/NxFileUpload';
@@ -341,3 +355,6 @@ export {
   ButtonItemProps as NxDescriptionListButtonItemProps,
   LinkItemProps as NxDescriptionListLinkItemProps
 } from './components/NxDescriptionList/NxDescriptionList';
+
+export { default as NxTile } from './components/NxTile/NxTile';
+export { default as NxMeter, Props as NxMeterProps } from './components/NxMeter/NxMeter';

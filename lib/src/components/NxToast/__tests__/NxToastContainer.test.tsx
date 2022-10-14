@@ -70,7 +70,6 @@ describe('NxToastContainer', function() {
   it('sets focus to previous focused element when the last remaining toast is closed',
       async function() {
         render(
-        /* eslint-disable-next-line @typescript-eslint/indent */
           <>
             <button type="button">Focus Me</button>
             <NxToastContainer>
@@ -78,7 +77,6 @@ describe('NxToastContainer', function() {
                 <NxAlert icon={faEye}>This is an Alert</NxAlert>
               </NxToast>
             </NxToastContainer>
-            {/* eslint-disable-next-line @typescript-eslint/indent */}
           </>
         );
 
@@ -97,13 +95,11 @@ describe('NxToastContainer', function() {
       async function() {
 
         const { rerender } = render(
-        /* eslint-disable-next-line @typescript-eslint/indent */
           <>
             <button type="button">Focus Me</button>
             <NxToastContainer>
               {}
             </NxToastContainer>
-            {/* eslint-disable-next-line @typescript-eslint/indent */}
           </>
         );
         const prevFocusBtn = screen.getByRole('button', {name: 'Focus Me'});
@@ -111,7 +107,6 @@ describe('NxToastContainer', function() {
         prevFocusBtn.focus();
 
         rerender(
-        /* eslint-disable-next-line @typescript-eslint/indent */
           <>
             <button type="button">Focus Me</button>
             <NxToastContainer>
@@ -119,7 +114,6 @@ describe('NxToastContainer', function() {
                 <NxAlert icon={faEye}>This is an Alert</NxAlert>
               </NxToast>
             </NxToastContainer>
-            {/* eslint-disable-next-line @typescript-eslint/indent */}
           </>
         );
 
