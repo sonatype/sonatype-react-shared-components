@@ -208,18 +208,18 @@ describe('NxStatefulBreadcrumb', function() {
     );
 
     it('gives the dropdown button an accessible name of "more…"', async function() {
-        const view = quickRender({
-              crumbs: [
-                { name: 'A', href: 'a' },
-                { name: 'B', href: 'b' },
-                { name: 'C', href: 'c' },
-                { name: 'D', href: 'd' },
-                { name: 'E', href: 'e' }
-              ]
-            }),
-            list = within(view.getByRole('navigation')).getByRole('list'),
-            listItems = within(list).getAllByRole('listitem'),
-            dropdownButton = within(listItems[1]).getByRole('button');
+      const view = quickRender({
+            crumbs: [
+              { name: 'A', href: 'a' },
+              { name: 'B', href: 'b' },
+              { name: 'C', href: 'c' },
+              { name: 'D', href: 'd' },
+              { name: 'E', href: 'e' }
+            ]
+          }),
+          list = within(view.getByRole('navigation')).getByRole('list'),
+          listItems = within(list).getAllByRole('listitem'),
+          dropdownButton = within(listItems[1]).getByRole('button');
 
       // tooltips initialize asynchronously
       await waitFor(() => expect(dropdownButton).toHaveAccessibleName('more…'));

@@ -181,78 +181,78 @@ describe('NxBreadcrumb', function() {
     );
 
     it('does not render the menu of the dropdown if isDropdownOpen is false', function() {
-        const view = quickRender({
-              crumbs: [
-                { name: 'A', href: 'a' },
-                { name: 'B', href: 'b' },
-                { name: 'C', href: 'c' },
-                { name: 'D', href: 'd' },
-                { name: 'E', href: 'e' }
-              ]
-            }),
-            list = within(view.getByRole('navigation')).getByRole('list'),
-            listItems = within(list).getAllByRole('listitem'),
-            firstLink = within(listItems[0]).getByRole('link'),
-            dropdownItem = listItems[1],
-            lastLink = within(listItems[2]).getByRole('link'),
-            finalItem = listItems[3];
+      const view = quickRender({
+            crumbs: [
+              { name: 'A', href: 'a' },
+              { name: 'B', href: 'b' },
+              { name: 'C', href: 'c' },
+              { name: 'D', href: 'd' },
+              { name: 'E', href: 'e' }
+            ]
+          }),
+          list = within(view.getByRole('navigation')).getByRole('list'),
+          listItems = within(list).getAllByRole('listitem'),
+          firstLink = within(listItems[0]).getByRole('link'),
+          dropdownItem = listItems[1],
+          lastLink = within(listItems[2]).getByRole('link'),
+          finalItem = listItems[3];
 
-        expect(listItems).toHaveLength(4);
+      expect(listItems).toHaveLength(4);
 
-        expect(firstLink).toHaveAccessibleName('A');
-        expect(firstLink).toHaveTextContent('A');
-        expect(firstLink).toHaveAttribute('href', 'a');
+      expect(firstLink).toHaveAccessibleName('A');
+      expect(firstLink).toHaveTextContent('A');
+      expect(firstLink).toHaveAttribute('href', 'a');
 
-        expect(lastLink).toHaveAccessibleName('D');
-        expect(lastLink).toHaveTextContent('D');
-        expect(lastLink).toHaveAttribute('href', 'd');
+      expect(lastLink).toHaveAccessibleName('D');
+      expect(lastLink).toHaveTextContent('D');
+      expect(lastLink).toHaveAttribute('href', 'd');
 
-        // NxDropdown does not currently have proper ARIA roles. Revisit and improve this test in RSC-989.
-        expect(within(dropdownItem).getByRole('button')).toBeInTheDocument();
-        expect(within(dropdownItem).queryByRole('link')).not.toBeInTheDocument();
+      // NxDropdown does not currently have proper ARIA roles. Revisit and improve this test in RSC-989.
+      expect(within(dropdownItem).getByRole('button')).toBeInTheDocument();
+      expect(within(dropdownItem).queryByRole('link')).not.toBeInTheDocument();
 
-        expect(within(finalItem).queryByRole('link')).not.toBeInTheDocument();
-        expect(finalItem).toHaveTextContent('E');
+      expect(within(finalItem).queryByRole('link')).not.toBeInTheDocument();
+      expect(finalItem).toHaveTextContent('E');
     });
 
     it('gives the dropdown button an accessible name of "more…"', async function() {
-        const view = quickRender({
-              crumbs: [
-                { name: 'A', href: 'a' },
-                { name: 'B', href: 'b' },
-                { name: 'C', href: 'c' },
-                { name: 'D', href: 'd' },
-                { name: 'E', href: 'e' }
-              ]
-            }),
-            list = within(view.getByRole('navigation')).getByRole('list'),
-            listItems = within(list).getAllByRole('listitem'),
-            dropdownButton = within(listItems[1]).getByRole('button');
+      const view = quickRender({
+            crumbs: [
+              { name: 'A', href: 'a' },
+              { name: 'B', href: 'b' },
+              { name: 'C', href: 'c' },
+              { name: 'D', href: 'd' },
+              { name: 'E', href: 'e' }
+            ]
+          }),
+          list = within(view.getByRole('navigation')).getByRole('list'),
+          listItems = within(list).getAllByRole('listitem'),
+          dropdownButton = within(listItems[1]).getByRole('button');
 
       // tooltips initialize asynchronously
       await waitFor(() => expect(dropdownButton).toHaveAccessibleName('more…'));
     });
 
     it('calls onToggleDropdown when the dropdown button is clicked', async function() {
-        const user = userEvents.setup(),
-            onToggleDropdown = jest.fn(),
-            view = quickRender({
-              crumbs: [
-                { name: 'A', href: 'a' },
-                { name: 'B', href: 'b' },
-                { name: 'C', href: 'c' },
-                { name: 'D', href: 'd' },
-                { name: 'E', href: 'e' }
-              ],
-              onToggleDropdown
-            }),
-            dropdownButton = await view.findByRole('button', { name: 'more…' });
+      const user = userEvents.setup(),
+          onToggleDropdown = jest.fn(),
+          view = quickRender({
+            crumbs: [
+              { name: 'A', href: 'a' },
+              { name: 'B', href: 'b' },
+              { name: 'C', href: 'c' },
+              { name: 'D', href: 'd' },
+              { name: 'E', href: 'e' }
+            ],
+            onToggleDropdown
+          }),
+          dropdownButton = await view.findByRole('button', { name: 'more…' });
 
-        expect(onToggleDropdown).not.toHaveBeenCalled();
+      expect(onToggleDropdown).not.toHaveBeenCalled();
 
-        await user.click(dropdownButton);
+      await user.click(dropdownButton);
 
-        expect(onToggleDropdown).toHaveBeenCalled();
+      expect(onToggleDropdown).toHaveBeenCalled();
     });
   });
 });
