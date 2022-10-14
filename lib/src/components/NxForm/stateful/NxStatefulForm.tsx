@@ -19,19 +19,13 @@ const NxStatefulForm = forwardRef<HTMLFormElement, Props>(function NxStatefulFor
       previousValidationErrors = useRef<ValidationErrors | undefined>(null);
 
   function onSubmit() {
-    setShowValidationErrors(true);
-
-    if (!hasValidationErrors(props.validationErrors)) {
+    if (hasValidationErrors(validationErrors)) {
+      setShowValidationErrors(true);
+    }
+    else {
       onSubmitProp();
     }
   }
-
-  useEffect(function() {
-    if (submitMaskState == null) {
-      // reset pristine state after successful submission
-      setShowValidationErrors(false);
-    }
-  }, [submitMaskState]);
 
   useEffect(function() {
     if (!hasValidationErrors(validationErrors) && hasValidationErrors(previousValidationErrors.current)) {
