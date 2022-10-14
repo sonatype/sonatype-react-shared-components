@@ -26,7 +26,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
           className = classnames('nx-filter-input', classNameProp, {
             'nx-filter-input--empty': isEmpty
           }),
-          btnClassName = classnames('nx-btn--clear-filter-btn', { 'hidden': isEmpty }),
+          btnClassName = classnames('nx-btn--clear', { 'hidden': isEmpty }),
           fieldRef = useRef<HTMLDivElement>(null),
           mergedRef = useMergedRef(fieldRef, ref),
           // just in case these props get passed in, avoid passing them to NxTextInput as they would cause

@@ -99,7 +99,7 @@ describe('NxFilterInput', function() {
     expect(icon).toHaveClassName('nx-icon--filter-icons');
   });
 
-  it('passes an NxButton with the Close icon as the suffixContent', function() {
+  it('passes an NxButton with the Close icon and nx-btn--clear classname as the suffixContent', function() {
     const BtnFixture = function() {
           return shallowComponent().prop('suffixContent');
         },
@@ -108,20 +108,21 @@ describe('NxFilterInput', function() {
     expect(btn).toExist();
     expect(btn).toMatchSelector(NxButton);
     expect(btn.children()).toMatchSelector(Close);
+    expect(btn).toHaveClassName('nx-btn--clear');
   });
 
   it('clears input text when the Escape key is pressed', function() {
     const onKeyDown = jest.fn(),
-        element = shallowComponent({ onKeyDown, value: 'a' });
+        component = shallowComponent({ onKeyDown, value: 'a' });
 
-    element.simulate('keyDown', { key: 'Escape' });
+    component.simulate('keyDown', { key: 'Escape' });
 
-    expect(element).toHaveText('');
+    expect(component).toHaveText('');
   });
 
-  it('clears input text when the close icon button is clicked', function() {
+  it('clears input text when the clear filter button is clicked', function() {
     const component = MountedComponent({ value: 'a' }),
-        btn = component.find('.nx-btn--icon-only');
+        btn = component.find('.nx-btn--clear').hostNodes();
 
     expect(btn).toExist();
 

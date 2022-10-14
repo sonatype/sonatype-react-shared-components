@@ -35,7 +35,7 @@ describe('NxTextInput', function() {
   describe('Clear Button', function() {
     beforeEach(async function() {
       const inputSelector = `${simpleComponentSelector} .nx-text-input__input`,
-          clearButtonSelector = `${simpleComponentSelector} .nx-btn--icon-only`,
+          clearButtonSelector = `${simpleComponentSelector} .nx-btn--clear`,
           [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
@@ -45,12 +45,12 @@ describe('NxTextInput', function() {
 
     it('looks right', simpleTest(simpleComponentSelector));
     it('has a dark grey border when hovered', async function() {
-      const clearButtonSelector = `${simpleComponentSelector} .nx-btn--icon-only`;
+      const clearButtonSelector = `${simpleComponentSelector} .nx-btn--clear`;
       await hoverTest(simpleComponentSelector, clearButtonSelector)();
     });
 
     it('has a dark grey border and light grey background when clicked', async function() {
-      const clearButtonSelector = `${simpleComponentSelector} .nx-btn--icon-only`;
+      const clearButtonSelector = `${simpleComponentSelector} .nx-btn--clear`;
       await clickTest(simpleComponentSelector, clearButtonSelector)();
     });
   });
