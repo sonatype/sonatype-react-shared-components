@@ -12,3 +12,5 @@ hasValidationErrors('too long'); // true
 hasValidationErrors([]); // false
 hasValidationErrors(['too short']); // true
 hasValidationErrors(['invalid date format', 'too long']); // true
+hasValidationErrors(['invalid date format', 'too long'], 'must be non-empty'); // true
+

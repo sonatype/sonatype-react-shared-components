@@ -6,35 +6,64 @@
  */
 const { setupBrowser } = require('./testUtils');
 
-describe('nx-form-select', function() {
-  const { focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Form Select');
-  const selector = '#nx-form-select-example .nx-form-select',
-      overflowSelector = '#nx-form-select-overflow-example .nx-form-select',
-      disabledSelector = '#nx-form-select-disabled-example .nx-form-select',
-      widthSelector = '#nx-form-select-widths-example .form-select-width-variants';
+describe('NxFormSelect', function() {
+  const { waitAndGetElements, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } =
+      setupBrowser('#/pages/Form Select');
 
-  describe('Simple NxFormSelect', function() {
+  const selector = '#nx-form-select-example .gallery-example-live',
+      validationSelector = '#nx-form-select-validation-example .gallery-example-live',
+      overflowSelector = '#nx-form-select-overflow-example .gallery-example-live',
+      disabledSelector = '#nx-form-select-disabled-example .gallery-example-live',
+      widthSelector = '#nx-form-select-widths-example .gallery-example-live';
+
+  describe('simple', function() {
     it('has a dark border by default', simpleTest(selector));
 
-    it('has a darker border when hovered', hoverTest(selector));
-    it('has a blue border when focused', focusTest(selector));
-    it('has a blue border when hovered and focused', focusAndHoverTest(selector));
+    it('has a darker border when hovered', hoverTest(selector, `${selector} select`));
+    it('has a blue border when focused', focusTest(selector, `${selector} select`));
+    it('has a blue border when hovered and focused', focusAndHoverTest(selector, `${selector} select`));
   });
 
-  describe('NxFormSelect with long overflowing text', function() {
-    it('it looks right and text is truncated', simpleTest(overflowSelector));
+  describe('with long overflowing text', function() {
+    it('looks right and text is truncated', simpleTest(overflowSelector));
   });
 
-  describe('Short and Long Variants of NxFormSelect', function() {
-    const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
-
+  describe('short and long variants', function() {
     it('looks shorter and longer', simpleTest(widthSelector));
   });
 
-  describe('Disabled NxFormSelect', function() {
-    const { simpleTest } = setupBrowser('#/pages/Form Select (HTML)');
-
+  describe('disabled', function() {
     it('looks disabled', simpleTest(disabledSelector));
+  });
+
+  describe('validatable', function() {
+    it('initially looks normal', simpleTest(validationSelector));
+
+    describe('when valid and non-pristine', function() {
+      beforeEach(async function() {
+        const [select] = await waitAndGetElements(`${validationSelector} .nx-form-select__select`);
+
+        await select.select('AU');
+      });
+
+      it('shows valid styling', simpleTest(validationSelector));
+
+      // color-contrast rule breaks in the presence of background-images
+      it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
+    });
+
+    describe('when invalid and non-pristine', function() {
+      beforeEach(async function() {
+        const [select] = await waitAndGetElements(`${validationSelector} .nx-form-select__select`);
+
+        await select.select('AU');
+        await select.select('');
+      });
+      it('shows invalid styling', simpleTest(validationSelector));
+
+      // color-contrast rule breaks in the presence of background-images
+      it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
+    });
   });
 
   // color-contrast rule breaks in the presence of background-images
