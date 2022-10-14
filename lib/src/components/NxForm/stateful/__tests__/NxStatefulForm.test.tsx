@@ -322,24 +322,23 @@ describe('NxStatefulForm', function() {
 
   it('sets the value of the FormAriaContext showValidationErrors property to true on submit if there ' +
       'are validationErrors', async function() {
-        function Fixture() {
-          const { showValidationErrors } = useContext(FormAriaContext);
+    function Fixture() {
+      const { showValidationErrors } = useContext(FormAriaContext);
 
-          return <span data-testid="foo">{showValidationErrors.toString()}</span>;
-        }
+      return <span data-testid="foo">{showValidationErrors.toString()}</span>;
+    }
 
-        const user = userEvent.setup();
+    const user = userEvent.setup();
 
-        const errorView = quickRender({ validationErrors: 'bar', children: <Fixture /> }),
-            noErrorView = quickRender({ children: <Fixture /> });
+    const errorView = quickRender({ validationErrors: 'bar', children: <Fixture /> }),
+        noErrorView = quickRender({ children: <Fixture /> });
 
-        await user.click(errorView.getByRole('button', { name: 'Submit' }));
-        await user.click(noErrorView.getByRole('button', { name: 'Submit' }));
+    await user.click(errorView.getByRole('button', { name: 'Submit' }));
+    await user.click(noErrorView.getByRole('button', { name: 'Submit' }));
 
-        expect(errorView.getByTestId('foo')).toHaveTextContent('true');
-        expect(noErrorView.getByTestId('foo')).toHaveTextContent('false');
-      }
-  );
+    expect(errorView.getByTestId('foo')).toHaveTextContent('true');
+    expect(noErrorView.getByTestId('foo')).toHaveTextContent('false');
+  });
 
   it('sets the value of the FormAriaContext showValidationErrors property to false when we go from having ' +
       'validationErrors to not', async function() {
