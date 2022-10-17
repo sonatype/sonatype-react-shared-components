@@ -385,7 +385,7 @@ const Home: NextPage = () => {
                         { name: 'D', href: 'd' },
                         { name: 'E', href: 'e' }
                       ]}
-                      isOpen={true}
+                      isDropdownOpen={true}
                       onToggleDropdown={noop} />
         <NxStatefulBreadcrumb crumbs={[
                         { name: 'A', href: 'a' },
