@@ -6,7 +6,7 @@
  */
 import React, { forwardRef, KeyboardEventHandler, useRef } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
-import { omit } from 'ramda';
+import { omit, partial } from 'ramda';
 import classnames from 'classnames';
 import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -44,13 +44,8 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
             </NxButton>;
 
       function clearFilterInputText() {
-        if (fieldRef.current) {
-          const input = fieldRef.current.querySelector('input') as HTMLInputElement;
-          const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
-          if (setter) {
-            setter.call(input, '');
-            input.dispatchEvent(new Event('change', { bubbles: true }));
-          }
+        if (props.onChange) {
+          partial(props.onChange, [])('');
         }
       }
 
