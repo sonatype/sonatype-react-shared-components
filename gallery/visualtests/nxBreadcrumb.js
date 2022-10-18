@@ -80,6 +80,20 @@ describe('NxBreadcrumb', function() {
     await checkScreenshot(example, 848, 396);
   });
 
+  it('shows a "more…" tooltip on the dropdown button', async function() {
+    const [example, dropdownBtn] = await waitAndGetElements(
+        manySegmentsExample,
+        `${manySegmentsExample} .nx-icon-dropdown__toggle`
+    );
+
+    await dropdownBtn.hover();
+    await wait(500);
+
+    const { x, y, width, height } = await example.boundingBox();
+
+    await checkScreenshotCoordinates(x, y - 21, width, height + 21);
+  });
+
   describe('in NxGlobalHeader', function() {
     const { checkFullPageScreenshot, a11yTest, getPage } = setupBrowser('#/NxBreadcrumbGlobalHeaderExample', false);
 
