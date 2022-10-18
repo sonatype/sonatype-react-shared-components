@@ -39,7 +39,8 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
                       variant="icon-only"
                       title="clear filter"
                       onClick={clearFilterInputText}
-                      tabIndex={-1}><Close/>
+                      tabIndex={-1}>
+              <Close/>
             </NxButton>;
 
       function clearFilterInputText() {
