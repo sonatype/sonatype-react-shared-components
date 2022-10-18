@@ -13,7 +13,7 @@
   },
   "overrides": [
     {
-      "files": ["*.tsx", "*.js", "*.ts"],
+      "files": ["visualtests/*.js"],
       "env": {
         "jest": true,
         "node": true
