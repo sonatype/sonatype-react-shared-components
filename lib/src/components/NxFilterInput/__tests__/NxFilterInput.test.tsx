@@ -18,7 +18,7 @@ import Close from '../../../icons/Close';
 describe('NxFilterInput', function() {
   const minimalProps = { value: '' },
       shallowComponent = enzymeUtils.getShallowComponent<Props>(NxFilterInput, minimalProps),
-      MountedComponent = enzymeUtils.getMountedComponent<Props>(NxFilterInput, minimalProps);
+      mountedComponent = enzymeUtils.getMountedComponent<Props>(NxFilterInput, minimalProps);
 
   it('renders a PrivateNxTextInput with the nx-filter-input class', function() {
     const component = shallowComponent();
