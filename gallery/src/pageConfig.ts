@@ -181,7 +181,7 @@ const pageConfig: PageConfig = {
   'Buttons and Dropdowns': {
     'Back Button': { content: NxBackButtonPage, type: 'react' },
     'Breadcrumb': { content: NxBreadcrumbPage, type: 'react' },
-    'StatefulBreadcrumb': { content: NxStatefulBreadcrumbPage, type: 'react' },
+    'Stateful Breadcrumb': { content: NxStatefulBreadcrumbPage, type: 'react' },
     'Button': { content: NxButtonPage, type: 'react' },
     'Segmented Button': { content: NxSegmentedButtonPage, type: 'react' },
     'Stateful Segmented Button': { content: NxStatefulSegmentedButtonPage, type: 'react' },
