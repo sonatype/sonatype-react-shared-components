@@ -203,6 +203,8 @@ const NxBreadcrumbPage = () =>
             Click here to navigate to the live example.
           </NxTextLink>
         </NxP>
+      </NxTile.Content>
+      <NxTile.Content className= "nx-tile-content--accordion-container">
         <NxStatefulAccordion>
           <NxAccordion.Header>
             <NxAccordion.Title>Example Code</NxAccordion.Title>
