@@ -99,7 +99,7 @@ describe('NxBreadcrumb', function() {
     expect(finalItem).toHaveTextContent('C');
   });
 
-  it('renders four crumbs in a list with the first two being links', function() {
+  it('renders four crumbs in a list with the first three being links', function() {
     const view = quickRender({
           crumbs: [
             { name: 'A', href: 'a' },
