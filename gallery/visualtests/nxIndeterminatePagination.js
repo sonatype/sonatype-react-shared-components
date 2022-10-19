@@ -10,8 +10,14 @@ describe('NxIndeterminatePagination', function() {
   const { simpleTest, a11yTest } = setupBrowser('#/pages/Indeterminate%20Pagination');
 
   const selector = '#nx-indeterminate-pagination-example .gallery-example-live';
+  const firstPageSelector = '#nx-indeterminate-pagination-first-page-example .gallery-example-live';
+  const lastPageSelector = '#nx-indeterminate-pagination-last-page-example .gallery-example-live';
 
   it('looks right', simpleTest(selector));
+
+  it('looks right on first page', simpleTest(firstPageSelector));
+
+  it('looks right on last page', simpleTest(lastPageSelector));
 
   it('passes a11y checks', a11yTest());
 });

@@ -34,7 +34,7 @@
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-inferrable-types": ["error", { "ignoreParameters": true }],
     "@typescript-eslint/indent": [
-      "error",
+      "warn",
       2,
       {
         "SwitchCase": 1,
@@ -48,6 +48,7 @@
 
         // handled by jsx-indent and jsx-indent-props
         "ignoredNodes": [
+          "JSXFragment",
           "JSXElement",
           "JSXElement > *",
           "JSXAttribute",
@@ -76,7 +77,7 @@
     "no-unused-vars": "off",
     "strict": "error",
     "no-mixed-spaces-and-tabs": "error",
-    "no-multiple-empty-lines": ["error", { "max": 1}],
+    "no-multiple-empty-lines": ["warn", { "max": 1}],
     "no-multi-spaces": "error",
     "no-nested-ternary": "off",
     "padded-blocks": "off",
@@ -114,8 +115,8 @@
       "error",
       "never"
     ],
-    "no-trailing-spaces": "error",
-    "eol-last": "error",
+    "no-trailing-spaces": "warn",
+    "eol-last": "warn",
     "semi": "off",
     "@typescript-eslint/semi": [
       "error",
@@ -135,13 +136,13 @@
       "error",
       "never"
     ],
-    "no-console": ["error", { "allow": ["warn", "error"] }],
-    "no-debugger": "error",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-debugger": "warn",
     "array-bracket-spacing": ["error", "never"],
     "object-property-newline": ["error", { "allowMultiplePropertiesPerLine": true }],
     "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
-    "react/jsx-indent": ["error", 2],
-    "react/jsx-indent-props": ["error", "first"],
+    "react/jsx-indent": ["warn", 2],
+    "react/jsx-indent-props": ["warn", "first"],
     "react/jsx-first-prop-new-line": ["error", "never"],
     "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "multiline" }],
     "react/jsx-closing-tag-location": ["error"],

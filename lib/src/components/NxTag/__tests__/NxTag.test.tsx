@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import NxTag, { NxSelectableTag } from '../NxTag';
@@ -16,7 +16,13 @@ describe('NxTag', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent(NxTag, { children: 'basic tag' });
 
   it('renders NxTag with the `nx-tag` class', function() {
-    expect(getShallowComponent().find('.nx-tag')).toExist();
+    expect(getShallowComponent().children().find('.nx-tag')).toExist();
+  });
+
+  it('forwards a ref', function() {
+    const ref = React.createRef<HTMLLabelElement>();
+    const component = mount(<><NxTag ref={ref}>Hello</NxTag></>);
+    expect(component.find('.nx-tag').getDOMNode()).toBe(ref.current);
   });
 
   it('correctly assigns supplied class', function() {
@@ -58,11 +64,17 @@ describe('NxTag', function() {
 });
 
 describe('NxSelectableTag', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag,
-      { children: 'selectable tag', selected: false, onSelect: jest.fn() });
+  const minimumProps = { children: 'selectable tag', selected: false, onSelect: jest.fn() };
+  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag, minimumProps);
 
   it('renders an NxTag', function() {
-    expect(getShallowComponent()).toMatchSelector('NxTag');
+    expect(getShallowComponent()).toMatchSelector('ForwardRef(NxTag)');
+  });
+
+  it('forwards a ref', function() {
+    const ref = React.createRef<HTMLLabelElement>(),
+        component = mount(<><NxSelectableTag {...minimumProps} ref={ref}>Hello</NxSelectableTag></>);
+    expect(component.find('.nx-tag').getDOMNode()).toBe(ref.current);
   });
 
   it('renders NxSelectableTag with the `nx-tag--selectable` class', function() {

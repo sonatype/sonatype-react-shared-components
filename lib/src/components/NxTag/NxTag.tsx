@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,32 +12,34 @@ import './NxTag.scss';
 import '../../util/selectableColors.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import { TooltipContext } from '../NxTooltip/NxTooltip';
 import { Props, propTypes, SelectableProps, selectablePropTypes } from './types';
 export { SelectableProps, PublicProps } from './types';
 
-const NxTag: FunctionComponent<Props> =
-    function NxTag(props) {
-      const { children, className, selectedIcons, color, ...attrs } = props,
-          tagClasses = classnames('nx-tag', className, {
-            'nx-selectable-color--indigo': !color, // the default
-            [`nx-selectable-color--${color}`]: color
-          });
+const NxTag = forwardRef<HTMLLabelElement, Props>(function NxTag(props, ref) {
+  const hasTooltip = useContext(TooltipContext);
 
-      return (
-        <NxOverflowTooltip>
-          <label className={tagClasses} {...attrs}>
-            <span className="nx-tag__text">{children}</span>
-            {selectedIcons}
-          </label>
-        </NxOverflowTooltip>
-      );
-    };
+  const { children, className, selectedIcons, color, title, ...attrs } = props,
+      tagClasses = classnames('nx-tag', className, {
+        'nx-selectable-color--indigo': !color, // the default
+        [`nx-selectable-color--${color}`]: color
+      });
+
+  const label = (
+    <label className={tagClasses} title={title} ref={ref} {...attrs}>
+      <span className="nx-tag__text">{children}</span>
+      {selectedIcons}
+    </label>
+  );
+
+  return !hasTooltip ? <NxOverflowTooltip>{label}</NxOverflowTooltip> : label;
+});
 
 NxTag.propTypes = propTypes;
 export default NxTag;
 
-export const NxSelectableTag: FunctionComponent<SelectableProps> =
-    function NxSelectableTag(props) {
+export const NxSelectableTag = forwardRef<HTMLLabelElement, SelectableProps>(
+    function NxSelectableTag(props, ref) {
       const { children, className, selected, onSelect, ...attrs } = props,
           isSelected = selected,
           tagClasses = classnames('nx-tag--selectable', className, {
@@ -48,7 +50,7 @@ export const NxSelectableTag: FunctionComponent<SelectableProps> =
             <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} className="nx-tag__action" />;
 
       return (
-        <NxTag className={tagClasses} selectedIcons={tagIcons} {...attrs}>
+        <NxTag className={tagClasses} selectedIcons={tagIcons} ref={ref} {...attrs}>
           {children}
           <input type="checkbox"
                  className="nx-tag__input"
@@ -58,6 +60,7 @@ export const NxSelectableTag: FunctionComponent<SelectableProps> =
                  onChange={onSelect || undefined} />
         </NxTag>
       );
-    };
+    }
+);
 
 NxSelectableTag.propTypes = selectablePropTypes;

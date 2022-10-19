@@ -46,14 +46,6 @@ const NxCollapsibleItemsPage = () =>
         </NxTable.Head>
         <NxTable.Body>
           <NxTable.Row>
-            <NxTable.Cell>id</NxTable.Cell>
-            <NxTable.Cell>string</NxTable.Cell>
-            <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>
-              Id to assign to the collapsible items element
-            </NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
             <NxTable.Cell>isOpen</NxTable.Cell>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
@@ -144,6 +136,17 @@ const NxCollapsibleItemsPage = () =>
             </span>
           </li>
         </ul>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Accessibility</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The <NxCode>NxCollapsibleItems</NxCode> role prop will be applied to the children element instead of
+          the top-level element. By default the role for the children element is set to <NxCode>list</NxCode> and
+          the roles for the individual child elements are set to <NxCode>listitem</NxCode> unless otherwise specified.
+          The component as a whole has a hardcoded role of <NxCode>group</NxCode>.
+        </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
 

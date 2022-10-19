@@ -7,7 +7,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxStatefulSearchDropdown, DataItem, NX_SEARCH_DROPDOWN_DEBOUNCE_TIME }
+import { NxStatefulSearchDropdown, DataItem, NX_STANDARD_DEBOUNCE_TIME }
   from '@sonatype/react-shared-components';
 
 const items = prepend({ id: 0, displayName: 'Loooooooooooooooooooooooooong Name' },
@@ -32,6 +32,7 @@ export default function NxSearchDropdownExample() {
 
   function onSelect({ displayName }: DataItem<number>) {
     alert('Selected ' + displayName);
+    setMatches([]);
   }
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
@@ -45,7 +46,7 @@ export default function NxSearchDropdownExample() {
         setLoading(false);
       }
     });
-  }, [matches]), NX_SEARCH_DROPDOWN_DEBOUNCE_TIME);
+  }, [matches]), NX_STANDARD_DEBOUNCE_TIME);
 
   function onSearch(query: string) {
     setLoading(true);

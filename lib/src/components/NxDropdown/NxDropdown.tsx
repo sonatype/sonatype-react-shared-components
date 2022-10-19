@@ -17,8 +17,9 @@ import './NxDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 import AbstractDropdown, { AbstractDropdownRenderToggleElement } from './AbstractDropdown';
+import withClass from '../../util/withClass';
 
-const NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props, ref) {
+const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props, ref) {
   const {
     children,
     className,
@@ -73,12 +74,12 @@ const NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props, 
   );
 });
 
-NxDropdown.propTypes = propTypes;
+_NxDropdown.propTypes = propTypes;
+
+const NxDropdown = Object.assign(_NxDropdown, {
+  Divider: withClass('hr', 'nx-dropdown__divider')
+});
 
 export default NxDropdown;
-
-export const NxDropdownDivider = () => (
-  <div className="nx-dropdown--divider"/>
-);
 
 export { Props, propTypes } from './types';

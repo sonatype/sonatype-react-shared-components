@@ -14,9 +14,22 @@ import NxButton from '../NxButton/NxButton';
 import NxSubmitMask from '../NxSubmitMask/NxSubmitMask';
 
 import { Props, propTypes } from './types';
+import { FormAriaContext } from './context';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
+import { NxErrorAlert } from '../NxAlert/NxAlert';
+import { NxP } from '../SimpleComponents';
 
-const NxForm = forwardRef<HTMLFormElement, Props>(
+function RequiredFieldNotice() {
+  return (
+    <NxP className="nx-form__required-field-notice">
+      <span className="nx-form__required-field-asterisk">*</span>
+      {' '}Required fields are marked with an asterisk.
+    </NxP>
+  );
+}
+
+/* eslint-disable react/prop-types */
+const _NxForm = forwardRef<HTMLFormElement, Props>(
     function NxForm(props, ref) {
       const {
             className,
@@ -35,37 +48,44 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
             submitMaskSuccessMessage,
             children,
             additionalFooterBtns,
+            showValidationErrors,
             ...formAttrs
           } = props,
-          formClasses = classnames('nx-form', className),
+          formHasValidationErrors = hasValidationErrors(validationErrors),
+          formClasses = classnames('nx-form', className, {
+            'nx-form--show-validation-errors': showValidationErrors,
+            'nx-form--has-validation-errors': formHasValidationErrors,
+            'nx-form--has-submit-error': !!submitError
+          }),
           getChildren = children instanceof Function ? children : always(children),
-          submitDisabled = hasValidationErrors(validationErrors),
-          submitBtnClasses = classnames('nx-form__submit-btn', submitBtnClassesProp, {
-            disabled: submitDisabled
-          });
+          submitBtnClasses = classnames('nx-form__submit-btn', submitBtnClassesProp);
+
+      if (showValidationErrors == null) {
+        throw new Error('showValidationErrors is strictly required!');
+      }
 
       function onSubmit(evt: FormEvent) {
         evt.preventDefault();
 
-        if (!submitDisabled) {
-          onSubmitProp();
-        }
+        onSubmitProp();
       }
 
       const renderForm = () => {
-        const submitValidationError = getFirstValidationError(validationErrors) || '',
-            submitAriaLabel = submitValidationError ? `Submit disabled: ${submitValidationError}` : undefined;
-
         return (
           <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
-            { getChildren() }
+            <FormAriaContext.Provider value={{ showValidationErrors }}>
+              {getChildren()}
+            </FormAriaContext.Provider>
             <footer className="nx-footer">
-              { submitError &&
-                <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
-                             error={submitError}
-                             retryHandler={onSubmitProp} />
+              <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
+                           error={submitError}
+                           submitOnRetry={true} />
+              { formHasValidationErrors && !submitError &&
+                <NxErrorAlert className="nx-form__validation-errors">
+                  There were validation errors.{' '}
+                  {getFirstValidationError(validationErrors)}
+                </NxErrorAlert>
               }
-
               <div className="nx-btn-bar">
                 { additionalFooterBtns }
                 { onCancel &&
@@ -73,14 +93,9 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
                     Cancel
                   </NxButton>
                 }
-                { !submitError &&
-                  <NxButton variant="primary"
-                            className={submitBtnClasses || 'nx-form__submit-btn'}
-                            title={submitValidationError}
-                            aria-label={submitAriaLabel}>
-                    {submitBtnText || 'Submit'}
-                  </NxButton>
-                }
+                <NxButton variant="primary" className={submitBtnClasses}>
+                  {submitBtnText || 'Submit'}
+                </NxButton>
               </div>
 
             </footer>
@@ -101,7 +116,7 @@ const NxForm = forwardRef<HTMLFormElement, Props>(
     }
 );
 
-NxForm.propTypes = propTypes;
+const NxForm = Object.assign(_NxForm, { propTypes, RequiredFieldNotice });
 
 export default NxForm;
 export { Props, propTypes };

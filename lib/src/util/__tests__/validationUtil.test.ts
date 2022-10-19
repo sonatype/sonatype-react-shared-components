@@ -25,6 +25,14 @@ describe('validationUtil', function() {
       expect(hasValidationErrors('')).toBe(true);
       expect(hasValidationErrors('this is a really big problem')).toBe(true);
     });
+
+    it('returns true iff any of its arguments is or contains a string', function() {
+      expect(hasValidationErrors(null, undefined, [])).toBe(false);
+      expect(hasValidationErrors('foo', [], undefined)).toBe(true);
+      expect(hasValidationErrors('foo', ['bar'])).toBe(true);
+      expect(hasValidationErrors(['foo', 'bar'], ['asdf'], [])).toBe(true);
+    });
+
   });
 
   describe('getFirstValidationError', function() {
