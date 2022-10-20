@@ -262,7 +262,7 @@ To update dark mode screenshots, run the following command:
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest-dark -u
 ```
 
-The command above ensures you update the screenshots within the Docker container. The updates need be run within the
+The commands above ensures you update the screenshots within the Docker container. The updates need be run within the
 Docker container or an equivalent environment to ensure that the updated baselines match on CI. Note that updating
 visual test screenshots take roughly the same amount of time as running the visual tests.
 
@@ -274,24 +274,40 @@ For you seemingly rare Windows (Windows 11 to be precise) users, you have a coup
 
 From simple command prompt
 
-Run tests:
+Run tests in light mode (default):
 ```
 docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn test
 ```
-Update screenshots:
+Run tests in dark mode:
+```
+docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn test-dark
+```
+Update screenshots in light mode (default):
 ```
 docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn jest -u
+```
+Update screenshots in dark mode:
+```
+docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn jest-dark -u
 ```
 
 And from PowerShell
 
-Run tests:
+Run tests in light mode (default):
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test
 ```
-Update screenshots:
+Run tests in dark mode:
+```
+docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test-dark
+```
+Update screenshots in light mode (default):
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn jest -u
+```
+Update screenshots in dark mode:
+```
+docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn jest-dark -u
 ```
 
 ---
