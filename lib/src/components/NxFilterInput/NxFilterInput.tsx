@@ -6,7 +6,7 @@
  */
 import React, { forwardRef, KeyboardEventHandler, useRef } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
-import { omit, partial } from 'ramda';
+import { omit } from 'ramda';
 import classnames from 'classnames';
 import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -45,7 +45,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
 
       function clearFilterInputText() {
         if (props.onChange) {
-          partial(props.onChange, [])('');
+          props.onChange('');
         }
       }
 

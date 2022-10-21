@@ -41,7 +41,7 @@ export type TextInputElement = HTMLInputElement | HTMLTextAreaElement;
 // Final Props are the HTMLProps & our re-definitions
 export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   type?: NxTextInputType | null;
-  onChange?: ((newVal: string, e: FormEvent<TextInputElement>) => void) | null;
+  onChange?: ((newVal: string, e?: FormEvent<TextInputElement>) => void) | null;
   onKeyPress?: ((keyCode: string) => void) | null;
   validatable?: boolean | null;
 
