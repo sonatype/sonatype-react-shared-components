@@ -9,7 +9,8 @@
 
 .nx-breadcrumb {
   align-items: baseline;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(auto, max-content));
   font-size: var(--nx-font-size-s);
   max-width: 800px;
 
