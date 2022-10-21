@@ -54,7 +54,7 @@ describe('NxBreadcrumb', function() {
   it('shows overflow tooltips on inline links', async function() {
     const [example, link] = await waitAndGetElements(
         longSegmentsExample,
-        `${longSegmentsExample} a`
+        `${longSegmentsExample} .nx-breadcrumb__list-item:nth-child(2) a`
     );
 
     await link.hover();
