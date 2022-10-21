@@ -10,6 +10,12 @@
 .nx-breadcrumb {
   align-items: baseline;
   display: grid;
+
+  // See Sections 7.2.1 (regarding auto), 12.4, and 12.5.1 of the [grid spec](https://www.w3.org/TR/css-grid-2/).
+  // Grid tracks start at their min size, which auto picks up from the children's min-width and is therefore
+  // 0 here. They then are grown equally until each one hits its maximum content size (thanks to the max-content part
+  // of our minmax) or the container is filled, resulting in the desired behavior of truncation applying only to
+  // the longest children as needed until all tracks are truncated to equal width.
   grid-template-columns: repeat(4, minmax(auto, max-content));
   font-size: var(--nx-font-size-s);
   max-width: 800px;
