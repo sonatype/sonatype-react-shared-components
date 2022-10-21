@@ -111,24 +111,29 @@ describe('NxFilterInput', function() {
     expect(btn).toHaveClassName('nx-btn--clear');
   });
 
-  it('clears input text when the Escape key is pressed', function() {
+  it('fires onChange with the empty string when the Escape key is pressed', function() {
     const onKeyDown = jest.fn(),
-        component = shallowComponent({ onKeyDown, value: 'a' });
+        onChange = jest.fn(),
+        component = shallowComponent({ onKeyDown, value: 'a', onChange });
+
+    expect(onChange).not.toHaveBeenCalled();
 
     component.simulate('keyDown', { key: 'Escape' });
 
-    expect(component).toHaveText('');
+    expect(onChange).toHaveBeenCalledWith('');
   });
 
-  it('clears input text when the clear filter button is clicked', function() {
-    const component = MountedComponent({ value: 'a' }),
+  it('fires onChange with the empty string when the clear filter button is clicked', function() {
+    const onChange = jest.fn(),
+        component = mountedComponent({ value: 'a', onChange }),
         btn = component.find('.nx-btn--clear').hostNodes();
 
     expect(btn).toExist();
+    expect(onChange).not.toHaveBeenCalled();
 
     btn.simulate('click');
 
-    expect(component).toHaveText('');
+    expect(onChange).toHaveBeenCalledWith('');
   });
 
   it('sets the nx-filter-input--empty class if the value is empty or only whitespace', function() {
