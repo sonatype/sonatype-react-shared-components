@@ -20,6 +20,10 @@
     }
   }
 
+  .nx-text-input__input::-webkit-calendar-picker-indicator {
+      display: none !important;
+  }
+
   .nx-icon--filter-icons {
     color: var(--nx-color-text-dark);
     margin-left: 0;
