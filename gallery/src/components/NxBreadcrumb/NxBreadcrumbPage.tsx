@@ -135,8 +135,11 @@ const NxBreadcrumbPage = () =>
                         id="nx-breadcrumb-long-segments-example"
                         liveExample={NxBreadcrumbLongSegmentsExample}
                         codeExamples={longSegmentsExampleCode}>
-      An example of <NxCode>NxBreadcrumb</NxCode> showing three path segments with long names which will truncate
-      proportionally such that the component maintains its default maximum width.
+      An example of <NxCode>NxBreadcrumb</NxCode> showing three path segments with long names. Truncation occurs
+      such that the longest name is truncated first, until it reaches the length of the second-longest name, after
+      which point those two truncate at equal lengths until reaching the length of the third-longest name, and so
+      on until all names are truncated to the equal lengths. In this example, there is enough space that only the
+      longest name truncates.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Constrained Width"
@@ -145,7 +148,7 @@ const NxBreadcrumbPage = () =>
                         codeExamples={constrainedWidthExampleCode}>
       An example of <NxCode>NxBreadcrumb</NxCode> within a container that is narrower
       than <NxCode>NxBreadcrumb</NxCode>'s maximum width. <NxCode>NxBreadcrumb</NxCode> shrinks to fit within the
-      container, and the truncation of the longs adjusts accordingly.
+      container, and all of the names must truncate in order to fit.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Many Segments"
