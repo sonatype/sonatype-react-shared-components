@@ -6,51 +6,89 @@
  */
 import React, { FormEvent, useState } from 'react';
 
-import { NxCheckbox, NxFormGroup, NxFieldset, useToggle, NxFormSelect, nxFormSelectStateHelpers }
-  from '@sonatype/react-shared-components';
-import { NxRadio } from '@sonatype/react-shared-components';
-import { NxButton } from '@sonatype/react-shared-components';
-import { NxStatefulTextInput } from '@sonatype/react-shared-components';
-import { NxInfoAlert } from '@sonatype/react-shared-components';
+import {
+  NxCheckbox,
+  NxFormGroup,
+  NxFieldset,
+  NxFormSelect,
+  nxFormSelectStateHelpers,
+  nxTextInputStateHelpers,
+  NxTextInput,
+  hasValidationErrors,
+  NxStatefulForm,
+  NxForm,
+  NxFormRow,
+  NxRadio,
+  NxStatefulTextInput,
+  nxFieldsetStateHelpers
+} from '@sonatype/react-shared-components';
+
+const { useRadioGroupState, useCheckboxGroupState } = nxFieldsetStateHelpers;
 
 export default function NxFormLayoutExample() {
   function validator(val: string) {
     return val.length ? null : 'Must be non-empty';
   }
 
-  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('');
+  const [textInputState, setTextInputState] = useState(nxTextInputStateHelpers.initialState('', validator));
+
+  function onTextInputChange(val: string) {
+    setTextInputState(nxTextInputStateHelpers.userInput(validator, val));
+  }
+
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('', validator);
 
   function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
     setSelectVal(evt.currentTarget.value);
   }
 
-  const [isRed, toggleRed] = useToggle(false),
-      [isBlue, toggleBlue] = useToggle(false),
-      [isGreen, toggleGreen] = useToggle(false);
+  const {
+    states: {
+      red: [isRed, toggleRed],
+      blue: [isBlue, toggleBlue],
+      green: [isGreen, toggleGreen]
+    },
+    isPristine: colorCheckboxIsPristine,
+    validationErrors: colorCheckboxValidationErrors
+  } = useCheckboxGroupState(
+      { red: false, blue: false, green: false },
+      selectedColors => selectedColors.length ? null : 'A color is required'
+  );
 
-  const [color, setColor] = useState<string | null>(null);
+  const [
+    { value: color, isPristine: colorRadioIsPristine, validationErrors: colorRadioValidationErrors },
+    setColor
+  ] = useRadioGroupState(undefined, c => c ? null : 'A color is required');
 
-  function onSubmit(evt: FormEvent) {
-    evt.preventDefault();
+  const formValidationErrors =
+      hasValidationErrors(
+          textInputState.validationErrors,
+          selectState.validationErrors,
+          colorCheckboxValidationErrors,
+          colorRadioValidationErrors
+      ) ? 'Required fields are missing' : null;
+
+  function onSubmit() {
     alert('Submitted!');
   }
 
   return (
-    <form className="nx-form" onSubmit={onSubmit} aria-label="Horizontal Layout Example">
-      <div className="nx-form-row">
+    <NxStatefulForm onSubmit={onSubmit} validationErrors={formValidationErrors} aria-label="Horizontal Layout Example">
+      <NxForm.RequiredFieldNotice />
+      <NxFormRow>
         <NxFormGroup label="Username" isRequired>
-          <NxStatefulTextInput aria-required={true} validator={validator}/>
+          <NxTextInput { ...textInputState } validatable onChange={onTextInputChange} />
         </NxFormGroup>
         <NxFormGroup label="Hostname">
           <NxStatefulTextInput/>
         </NxFormGroup>
-      </div>
-      <div className="nx-form-row">
+      </NxFormRow>
+      <NxFormRow>
         <NxFormGroup label="Label">
           <NxStatefulTextInput/>
         </NxFormGroup>
         <NxFormGroup label="Label" isRequired>
-          <NxFormSelect { ...selectState } onChange={onSelectChange}>
+          <NxFormSelect { ...selectState } validatable onChange={onSelectChange}>
             <option value="">Select an option</option>
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
@@ -59,13 +97,19 @@ export default function NxFormLayoutExample() {
             <option value="option5">Option 5</option>
           </NxFormSelect>
         </NxFormGroup>
-      </div>
-      <NxFieldset label="Colors" isRequired>
+      </NxFormRow>
+      <NxFieldset label="Colors"
+                  isRequired
+                  isPristine={colorCheckboxIsPristine}
+                  validationErrors={colorCheckboxValidationErrors}>
         <NxCheckbox onChange={toggleRed} isChecked={isRed}>Red</NxCheckbox>
         <NxCheckbox onChange={toggleBlue} isChecked={isBlue}>Blue</NxCheckbox>
         <NxCheckbox onChange={toggleGreen} isChecked={isGreen}>Green</NxCheckbox>
       </NxFieldset>
-      <NxFieldset label="Primary Color" isRequired>
+      <NxFieldset label="Primary Color"
+                  isRequired
+                  isPristine={colorRadioIsPristine}
+                  validationErrors={colorRadioValidationErrors}>
         <NxRadio name="color"
                  value="red"
                  onChange={setColor}
@@ -85,13 +129,6 @@ export default function NxFormLayoutExample() {
           Blue
         </NxRadio>
       </NxFieldset>
-      <footer className="nx-footer">
-        <NxInfoAlert>This is a sample alert message</NxInfoAlert>
-        <div className="nx-btn-bar">
-          <NxButton type="button">Cancel</NxButton>
-          <NxButton variant="primary" type="submit">Submit</NxButton>
-        </div>
-      </footer>
-    </form>
+    </NxStatefulForm>
   );
 }

@@ -10,5 +10,14 @@
   "rules": {
     "@typescript-eslint/no-var-requires": "off",
     "react/prop-types": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["visualtests/*.js"],
+      "env": {
+        "jest": true,
+        "node": true
+      }
+    }
+  ]
 }

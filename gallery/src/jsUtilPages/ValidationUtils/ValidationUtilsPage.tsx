@@ -36,8 +36,9 @@ const ValidationUtilsPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="hasValidationErrors" codeExamples={hasValidationErrorsExampleCode}>
-      <NxCode>hasValidationErrors</NxCode> is a function which returns whether
-      the specified <NxCode>ValidationErrors</NxCode> represents an error.
+      <NxCode>hasValidationErrors</NxCode> is a function that takes a series
+      of <NxCode>ValidationErrors</NxCode> objects as arguments and returns whether
+      any of these <NxCode>ValidationErrors</NxCode> represents an error.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="getFirstValidationError" codeExamples={getFirstValidationErrorExampleCode}>
