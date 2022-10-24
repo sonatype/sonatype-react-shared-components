@@ -15,6 +15,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean | null;
   triggerContent: ReactNode;
   triggerTooltip?: TooltipConfigProps | string | null;
+  rightContent?: ReactNode | null;
   children?: ReactNode;
 }
 

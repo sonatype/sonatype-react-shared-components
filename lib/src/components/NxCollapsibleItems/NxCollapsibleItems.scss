@@ -60,6 +60,16 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   }
 }
 
+.nx-collapsible-items__wrapper {
+  display: flex;
+}
+
+.nx-collapsible-items__right-content {
+  .nx-icon-dropdown {
+    margin: 0;
+  }
+}
+
 .nx-collapsible-items__trigger {
   @include nx-container-helpers.container-horizontal;
   align-items: center;

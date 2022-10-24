@@ -17,6 +17,7 @@ import NxCollapsibleItemsClickableSidebar from './NxCollapsibleItemsClickableSid
 import NxCollapsibleItemsCheckbox from './NxCollapsibleItemsCheckboxExample';
 import NxCollapsibleItemsEmpty from './NxCollapsibleItemsEmptyExample';
 import NxCollapsibleItemsDisabled from './NxCollapsibleItemsDisabledExample';
+import NxCollapsibleItemsRightContentExample from './NxCollapsibleItemsRightContentExample';
 
 const NxCollapsibleItemsCode = require('./NxCollapsibleItemsExample?raw'),
     NxCollapsibleItemsTooltipCode = require('./NxCollapsibleItemsTooltipExample?raw'),
@@ -25,7 +26,8 @@ const NxCollapsibleItemsCode = require('./NxCollapsibleItemsExample?raw'),
     NxCollapsibleItemsClickableSidebarCode = require('./NxCollapsibleItemsClickableSidebarExample?raw'),
     NxCollapsibleItemsCheckboxCode = require('./NxCollapsibleItemsCheckboxExample?raw'),
     NxCollapsibleItemsEmptyCode = require('./NxCollapsibleItemsEmptyExample?raw'),
-    NxCollapsibleItemsDisabledCode = require('./NxCollapsibleItemsDisabledExample?raw');
+    NxCollapsibleItemsDisabledCode = require('./NxCollapsibleItemsDisabledExample?raw'),
+    NxCollapsibleItemsRightContentCode = require('./NxCollapsibleItemsRightContentExample?raw');
 
 const NxCollapsibleItemsPage = () =>
   <>
@@ -211,6 +213,13 @@ const NxCollapsibleItemsPage = () =>
                         liveExample={NxCollapsibleItemsDisabled}
                         codeExamples={NxCollapsibleItemsDisabledCode}>
       Example of a disabled <NxCode>NxCollapsibleItems</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxCollapsibleItemsRightContent Example"
+                        id="nx-collapsible-items-right-content-example"
+                        liveExample={NxCollapsibleItemsRightContentExample}
+                        codeExamples={NxCollapsibleItemsRightContentCode}>
+      Example of a <NxCode>NxCollapsibleItemsRightContent</NxCode>.
     </GalleryExampleTile>
   </>;
 
