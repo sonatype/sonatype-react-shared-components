@@ -5,33 +5,23 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-const { setupBrowser, describeIf } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
-// Tests for ThemeSettingsModal are only testing the functionality of the modal itself, so
-// it is unnecessary to run these tests in both light and dark modes
-
-// eslint-disable-next-line no-undef
-describeIf(process.env.THEME !== 'DARK')('ThemeSettingsModal', function() {
-  const { waitAndGetElements, wait, getPage, checkFullPageScreenshot } = setupBrowser('#/');
+describe('Dark Mode Settings', function() {
+  const { waitAndGetElements,
+    getPage,
+    checkFullPageScreenshot,
+    overrideDisplayTheme,
+    removeThemeEnabling
+  } = setupBrowser('#/');
 
   const openModalBtn = '.gallery-page-header__theme-settings-button',
-      themeSettingsModal = '.gallery-theme-settings-modal',
-      enableChangesToggle = `${themeSettingsModal} .nx-form-group label:nth-of-type(2)`,
-      darkModeRadio = `${themeSettingsModal} .nx-radio:nth-of-type(2)`,
-      lightModeRadio = `${themeSettingsModal} .nx-radio:nth-of-type(3)`;
+      themeSettingsModal = '.gallery-theme-settings-modal';
 
   async function openThemeSettingsModal() {
     const [targetElement] = await waitAndGetElements(openModalBtn);
     await targetElement.click();
     await waitAndGetElements(themeSettingsModal);
-  }
-
-  async function selectModeChoice(radioElement) {
-    await openThemeSettingsModal();
-
-    const [targetElement] = await waitAndGetElements(radioElement);
-    targetElement.click();
-    await wait(400);
 
     await checkFullPageScreenshot();
   }
@@ -40,28 +30,23 @@ describeIf(process.env.THEME !== 'DARK')('ThemeSettingsModal', function() {
     await getPage().setViewport({ width: 1366, height: 1000 });
   });
 
-  it('disallows any theme changes by default', async function() {
+  it('sets display theme according to browser preference', async function() {
+    await overrideDisplayTheme(null);
     await openThemeSettingsModal();
-    await checkFullPageScreenshot();
   });
 
-  it('enables radios when opted in to theme changes',
-      async function() {
-        await openThemeSettingsModal();
-
-        const [toggle] = await waitAndGetElements(enableChangesToggle);
-        toggle.click();
-        await wait(400);
-
-        await checkFullPageScreenshot();
-      }
-  );
-
-  it('changes display theme to dark when dark mode radio is selected', async function() {
-    await selectModeChoice(darkModeRadio);
+  it('sets display theme to dark when themeOverride is set to dark', async function() {
+    await overrideDisplayTheme('dark');
+    await openThemeSettingsModal();
   });
 
-  it('changes display theme to light when light mode radio is selected', async function() {
-    await selectModeChoice(lightModeRadio);
+  it('sets display theme to light when themeOverride is set to light', async function() {
+    await overrideDisplayTheme('light');
+    await openThemeSettingsModal();
+  });
+
+  it('sets display theme to light mode when theme changes are disabled', async function() {
+    await removeThemeEnabling();
+    await openThemeSettingsModal();
   });
 });

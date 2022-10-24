@@ -75,6 +75,18 @@ module.exports = {
       await page.mouse.move(0, 0);
     });
 
+    async function overrideDisplayTheme(theme) {
+      await page.evaluate((t) => {
+        window.setThemeOverride(t);
+      }, theme);
+    }
+
+    async function removeThemeEnabling() {
+      await page.evaluate(() => {
+        window.setThemingEnabled(false);
+      });
+    }
+
     async function blurElement(element) {
       await page.evaluate(function(el) {
         el.blur();
@@ -199,6 +211,8 @@ module.exports = {
       dismissResultingDialog,
       disableLoadingSpinnerAnimation,
       scrollIntoView,
+      overrideDisplayTheme,
+      removeThemeEnabling,
 
       waitForSelectors,
       getElements,
