@@ -46,6 +46,10 @@
   }
 }
 
+.gallery-example > .nx-tile-header > .nx-tile-header__title > .nx-h2 {
+  display: inline;
+}
+
 // .nx-html added to this selector for specificity reasons
 .nx-html .gallery-example .nx-page-header {
   position: static;

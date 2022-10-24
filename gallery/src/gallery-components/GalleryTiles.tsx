@@ -6,6 +6,8 @@
  */
 import React, { FunctionComponent, JSXElementConstructor, ReactNode } from 'react';
 import classnames from 'classnames';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
+
 import { ensureArray } from '../util/jsUtil';
 
 import CodeExample, { Props as CodeExampleProps } from '../CodeExample';
@@ -13,13 +15,14 @@ import RawHtmlExample from '../RawHtmlExample';
 import {
   NxAccordion,
   NxCheckbox,
+  NxFontAwesomeIcon,
   NxStatefulAccordion,
   NxTile,
   useToggle
 } from '@sonatype/react-shared-components';
 import { GalleryTileFooter } from './GalleryTileFooter';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 interface PropsWithRequiredChildren {
   children: ReactNode;
@@ -49,12 +52,18 @@ interface GalleryExampleTileProps extends GalleryBaseProps {
 // Component for a simple nx-tile with a specified title and contents
 export const GalleryTile: FunctionComponent<GalleryTileProps> =
   function GalleryTile({ className, id, title, actionButtons, children }) {
-    const tileClasses = classnames('nx-tile', className);
+    const tileClasses = classnames('nx-tile', className),
+        routeParams = useParams<{ pageName: string }>();
 
     return (
       <div id={id} className={tileClasses}>
         <div className="nx-tile-header">
           <div className="nx-tile-header__title">
+            { id && (
+              <a className="gallery-tile-link" href={`#/pages/${routeParams.pageName}/${id}`}>
+                <NxFontAwesomeIcon icon={faLink} />
+              </a>
+            )}
             <h2 className="nx-h2">{title}</h2>
           </div>
           { actionButtons &&
