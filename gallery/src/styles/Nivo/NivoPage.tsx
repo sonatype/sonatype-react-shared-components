@@ -9,9 +9,13 @@ import { NxTable, NxCode, NxP, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-import NivoPageExample from './NivoPageExample';
+import NivoLineExample from './NivoLineExample';
+import NivoBarExample from './NivoBarExample';
+import NivoPieExample from './NivoPieExample';
 
-const NivoPageExampleCode = require('./NivoPageExample?raw');
+const NivoLineExampleCode = require('./NivoLineExample?raw');
+const NivoBarExampleCode = require('./NivoBarExample?raw');
+const NivoPieExampleCode = require('./NivoPieExample?raw');
 
 const NivoPage = () =>
   <>
@@ -65,10 +69,22 @@ const NivoPage = () =>
       </NxTable>
     </GalleryDescriptionTile>
 
-    <GalleryExampleTile title="Nivo Line Example"
+    <GalleryExampleTile title="Nivo Line Chart Example"
                         defaultCheckeredBackground={false}
-                        liveExample={NivoPageExample}
-                        codeExamples={NivoPageExampleCode}>
+                        liveExample={NivoLineExample}
+                        codeExamples={NivoLineExampleCode}>
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Nivo Bar Chart Example"
+                        defaultCheckeredBackground={false}
+                        liveExample={NivoBarExample}
+                        codeExamples={NivoBarExampleCode}>
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Nivo Pie Chart Example"
+                        defaultCheckeredBackground={false}
+                        liveExample={NivoPieExample}
+                        codeExamples={NivoPieExampleCode}>
     </GalleryExampleTile>
 
   </>;
