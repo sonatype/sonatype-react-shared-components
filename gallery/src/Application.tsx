@@ -59,8 +59,13 @@ import NxToastWithNxDrawerExample from './components/NxToast/NxToastWithNxDrawer
 
 const pageMappings = mergeAll(values(pageConfig));
 
-function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
-  const pageName = match ? match.params.pageName : null,
+interface RouteProps {
+  pageName: string;
+  elementId?: string;
+}
+
+function Page({ match, location }: RouteChildrenProps<RouteProps>) {
+  const { pageName, elementId } = match?.params ?? {},
       pageHeader = pageName || 'Home',
       Content = pageName ? pageMappings[pageName]?.content : Home;
 
@@ -70,8 +75,15 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
 
   // reset scroll position
   useEffect(function() {
-    window.scrollTo(0, 0);
-  }, [location]);
+    const el = elementId && document.getElementById(elementId);
+
+    if (el) {
+      el.scrollIntoView(true);
+    }
+    else {
+      window.scrollTo(0, 0);
+    }
+  }, [location, elementId]);
 
   if (Content) {
     return (
@@ -226,7 +238,7 @@ function Application() {
               <GalleryNav />
             </aside>
             <Switch>
-              <Route path="/pages/:pageName" component={Page} />
+              <Route path="/pages/:pageName/:elementId?" component={Page} />
               <Route exact path="/" component={Page} />
 
               {/* Special cases, these examples need their own page separate from their documentation */}
