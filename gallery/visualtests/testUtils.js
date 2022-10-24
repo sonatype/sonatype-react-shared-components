@@ -56,11 +56,17 @@ module.exports = {
 
     beforeEach(async function() {
       page = await browser.newPage();
+
       await page.goto(pageUrl + pageFragmentIdentifier);
+      await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'dark' }]);
 
       if (ignoreVersionNumber) {
         await hideVersionNumber();
       }
+
+      await page.evaluate(() => {
+        setThemingEnabled(true);
+      });
 
       await page.mouse.move(0, 0);
     });

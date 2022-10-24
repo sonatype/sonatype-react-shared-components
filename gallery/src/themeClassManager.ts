@@ -45,3 +45,6 @@ function updateHtmlClasses() {
 }
 
 updateHtmlClasses();
+
+// expose setters as globals so visual tests can call them
+Object.assign(window, { setThemeOverride, setThemingEnabled });
