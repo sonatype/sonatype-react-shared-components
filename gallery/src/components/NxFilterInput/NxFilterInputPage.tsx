@@ -145,13 +145,14 @@ const NxFilterInputPage = () =>
       A disabled <NxCode>NxFilterInput</NxCode>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NxFilterInput Datalist Example"
+    <GalleryExampleTile title="Deprecated: NxFilterInput Datalist Example"
                         id="nx-filter-input-datalist-example"
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputDataListExample}
                         codeExamples={nxFilterInputDataListExampleCode}>
-      An example using a <NxCode>datalist</NxCode> with
-      <NxCode>NxFilterInput</NxCode>.
+      An example using a <NxCode>datalist</NxCode> with <NxCode>NxFilterInput</NxCode>.
+      This is deprecated, use <NxCode>NxCombobox</NxCode> instead. It allows users to type a value and
+      select a value from a collection of possible values.
     </GalleryExampleTile>
   </>;
 
