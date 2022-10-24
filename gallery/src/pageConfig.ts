@@ -150,6 +150,7 @@ import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
 import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
 import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
 import NxMeterPage from './components/NxMeter/NxMeterPage';
+import NivoPage from './styles/Nivo/NivoPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -236,6 +237,7 @@ const pageConfig: PageConfig = {
     'Collapsible Items': { content: NxCollapsibleItemsPage, type: 'react' },
     'Description List': { content: NxDescriptionListPage, type: 'react' },
     'List': { content: NxListPageV2, type: 'react' },
+    'Nivo': { content: NivoPage, type: 'react' },
     'Table': { content: NxTablePage, type: 'react' },
     'Table Container': { content: NxTableContainerPage, type: 'html' },
     'Tree': { content: NxTreePage, type: 'react' },
