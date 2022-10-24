@@ -18,7 +18,7 @@
     "ci-test": "npm-run-all check-install ci-lint-tests build jest",
     "check-install": "yarn install --check-files --frozen-lockfile",
     "jest": "jest --testTimeout=120000",
-    "jest-dark": "THEME=DARK jest --testTimeout=120000",
+    "jest-dark": "RSC_GALLERY_THEME=DARK jest --testTimeout=120000",
     "clean": "rimraf dist webpack-modules test-results"
   },
   "repository": {

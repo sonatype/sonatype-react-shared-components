@@ -60,7 +60,7 @@ module.exports = {
       await page.goto(pageUrl + pageFragmentIdentifier);
 
       // eslint-disable-next-line no-undef
-      if (process.env.THEME === 'DARK') {
+      if (process.env.RSC_GALLERY_THEME === 'DARK') {
         await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'dark' }]);
       }
 

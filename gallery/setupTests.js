@@ -13,9 +13,11 @@ jest.retryTimes(3);
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   customDiffDir: path.join(__dirname, 'test-results'),
   // eslint-disable-next-line no-undef
-  customSnapshotsDir: process.env.THEME === 'DARK' && path.join(__dirname, 'visualtests', '__image_snapshots_dark__'),
-  // eslint-disable-next-line no-undef
-  customSnapshotIdentifier: ({ defaultIdentifier }) => defaultIdentifier + (process.env.THEME === 'DARK' ? '-dark' : '')
+  customSnapshotsDir: process.env.RSC_GALLERY_THEME === 'DARK'
+  && path.join(__dirname, 'visualtests', '__image_snapshots_dark__'),
+  customSnapshotIdentifier: ({ defaultIdentifier }) =>
+    // eslint-disable-next-line no-undef
+    defaultIdentifier + (process.env.RSC_GALLERY_THEME === 'DARK' ? '-dark' : '')
 });
 
 expect.extend({ toMatchImageSnapshot });
