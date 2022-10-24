@@ -58,6 +58,7 @@ module.exports = {
       page = await browser.newPage();
 
       await page.goto(pageUrl + pageFragmentIdentifier);
+      await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'dark' }]);
 
       // eslint-disable-next-line no-undef
       if (process.env.THEME === 'DARK') {
@@ -74,6 +75,10 @@ module.exports = {
       if (ignoreVersionNumber) {
         await hideVersionNumber();
       }
+
+      await page.evaluate(() => {
+        setThemingEnabled(true);
+      });
 
       await page.mouse.move(0, 0);
     });
