@@ -36,8 +36,7 @@ export default function NxFormLayoutExample() {
     setTextInputState(nxTextInputStateHelpers.userInput(validator, val));
   }
 
-  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>(''),
-      selectValidationErrors = selectState === null ? 'A selection is required' : null;
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('', validator);
 
   function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
     setSelectVal(evt.currentTarget.value);
@@ -64,7 +63,7 @@ export default function NxFormLayoutExample() {
   const formValidationErrors =
       hasValidationErrors(
           textInputState.validationErrors,
-          selectValidationErrors,
+          selectState.validationErrors,
           colorCheckboxValidationErrors,
           colorRadioValidationErrors
       ) ? 'Required fields are missing' : null;
@@ -89,7 +88,7 @@ export default function NxFormLayoutExample() {
           <NxStatefulTextInput/>
         </NxFormGroup>
         <NxFormGroup label="Label" isRequired>
-          <NxFormSelect { ...selectState } onChange={onSelectChange}>
+          <NxFormSelect { ...selectState } validatable onChange={onSelectChange}>
             <option value="">Select an option</option>
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
