@@ -20,8 +20,12 @@
     }
   }
 
-  .nx-text-input__input::-webkit-calendar-picker-indicator {
+  .nx-text-input__input {
+    margin-right: var(--nx-spacing-12x);
+
+    &::-webkit-calendar-picker-indicator {
       display: none !important;
+    }
   }
 
   .nx-icon--filter-icons {
