@@ -51,6 +51,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
 
       const handleKeyDown: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
         if (e.key === 'Escape') {
+          e.preventDefault();
           clearFilterInputText();
         }
       };
