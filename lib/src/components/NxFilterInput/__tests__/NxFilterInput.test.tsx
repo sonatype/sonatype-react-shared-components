@@ -111,6 +111,24 @@ describe('NxFilterInput', function() {
     expect(btn).toHaveClassName('nx-btn--clear');
   });
 
+  it('sets the title as "clear filter" to the Nxbutton when searchIcon is undefined', function() {
+    const BtnFixture = function() {
+          return shallowComponent().prop('suffixContent');
+        },
+        btn = shallow(<BtnFixture />);
+
+    expect(btn).toHaveProp('title', 'clear filter');
+  });
+
+  it('sets the title as "clear search" to the Nxbutton when searchIcon is true', function() {
+    const BtnFixture = function() {
+          return shallowComponent({ searchIcon: true }).prop('suffixContent');
+        },
+        btn = shallow(<BtnFixture />);
+
+    expect(btn).toHaveProp('title', 'clear search');
+  });
+
   it('fires onChange with the empty string when the Escape key is pressed', function() {
     const onKeyDown = jest.fn(),
         onChange = jest.fn(),
@@ -118,7 +136,7 @@ describe('NxFilterInput', function() {
 
     expect(onChange).not.toHaveBeenCalled();
 
-    component.simulate('keyDown', { key: 'Escape' });
+    component.simulate('keyDown', { key: 'Escape', preventDefault: jest.fn() });
 
     expect(onChange).toHaveBeenCalledWith('');
   });
