@@ -30,7 +30,7 @@ const country = [
   'Norway'
 ];
 
-export const generateStringData = (numberOfLines: number, [min, max]: [number, number]) =>
+const generateStringData = (numberOfLines: number, [min, max]: [number, number]) =>
   Array.from({ length: numberOfLines }).map((_, index) => ({
     id: country[index],
     data: transport.map(name => ({
@@ -45,43 +45,37 @@ const MyResponsiveLine = () => (
                   xScale={{ type: 'point' }}
                   yScale={{
                     type: 'linear',
-                    min: 'auto',
-                    max: 'auto',
                     stacked: true,
                     reverse: false
                   }}
-                  yFormat=" >-.2f"
-                  pointSize={10}
                   pointColor={{ theme: 'background' }}
                   pointBorderWidth={2}
                   pointBorderColor={{ from: 'serieColor' }}
-                  pointLabelYOffset={-12}
-                  useMesh={true}
                   colors={NIVO_COLORS}
+                  axisBottom={{
+                    legend: 'transportation',
+                    legendOffset: 40,
+                    legendPosition: 'middle'
+                  }}
+                  axisLeft={{
+                    legend: 'count',
+                    legendOffset: -40,
+                    legendPosition: 'middle'
+                  }}
+                  axisTop={{
+                    legend: 'Transportation in Different Countries',
+                    legendOffset: -40,
+                    legendPosition: 'middle'
+                  }}
                   legends={[
                     {
                       anchor: 'bottom-right',
                       direction: 'column',
-                      justify: false,
                       translateX: 100,
-                      translateY: 0,
-                      itemsSpacing: 0,
-                      itemDirection: 'left-to-right',
                       itemWidth: 80,
                       itemHeight: 20,
-                      itemOpacity: 0.75,
                       symbolSize: 12,
-                      symbolShape: 'circle',
-                      symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                      effects: [
-                        {
-                          on: 'hover',
-                          style: {
-                            itemBackground: 'rgba(0, 0, 0, .03)',
-                            itemOpacity: 1
-                          }
-                        }
-                      ]
+                      symbolShape: 'circle'
                     }
                   ]}
   />

@@ -29,25 +29,6 @@ const NivoPage = () =>
       <NxP>
         By default the CSS display property of <NxCode>Nivo</NxCode>
       </NxP>
-      <NxTable>
-        <NxTable.Head>
-          <NxTable.Row>
-            <NxTable.Cell>Prop</NxTable.Cell>
-            <NxTable.Cell>Type</NxTable.Cell>
-            <NxTable.Cell>Required</NxTable.Cell>
-            <NxTable.Cell>Details</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Head>
-        <NxTable.Body>
-          <NxTable.Row>
-            <NxTable.Cell></NxTable.Cell>
-            <NxTable.Cell></NxTable.Cell>
-            <NxTable.Cell></NxTable.Cell>
-            <NxTable.Cell>
-            </NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Body>
-      </NxTable>
       <NxH3>Accessibility</NxH3>
       <NxP>
         <NxCode>Nivo</NxCode>

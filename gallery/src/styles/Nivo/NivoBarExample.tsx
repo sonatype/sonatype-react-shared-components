@@ -15,23 +15,22 @@ const LEGENDS: BarLegendProps[] = [
     direction: 'column',
     itemWidth: 100,
     itemHeight: 20,
-    itemsSpacing: 0,
     translateX: 140
   }
 ];
 
 const rawBarData: [string, number][] = [
-  ['foxes', 102],
-  ['wolves', 134],
-  ['dogs', 24],
-  ['cats', 502],
-  ['penguins', 53],
-  ['chewbaccas', 1],
-  ['weasels', 164],
+  ['foxes', 10],
+  ['wolves', 34],
+  ['dogs', 1],
+  ['cats', 5],
+  ['penguins', 43],
+  ['chewbaccas', 89],
+  ['weasels', 64],
   ['raccons', 12],
-  ['pandas', 124],
-  ['deers', 332],
-  ['bears', 231]
+  ['pandas', 98],
+  ['deers', 27],
+  ['bears', 32]
 ];
 
 const barData = rawBarData.map(([id, value]) => ({ id, value }));
@@ -41,7 +40,6 @@ const MyResponsiveBar = () => (
     <ResponsiveBar data={barData}
                    layout="vertical"
                    colorBy="indexValue"
-                   groupMode="grouped"
                    enableLabel={false}
                    margin={{
                      top: 80,
@@ -52,6 +50,21 @@ const MyResponsiveBar = () => (
                    label={d => `${d.id}: ${d.value}`}
                    padding={0.15}
                    tooltipLabel={({ id }) => `${id}`}
+                   axisBottom={{
+                     legend: 'animals',
+                     legendPosition: 'middle',
+                     legendOffset: 40
+                   }}
+                   axisLeft={{
+                     legend: 'extinct (%)',
+                     legendPosition: 'middle',
+                     legendOffset: -40
+                   }}
+                   axisTop={{
+                     legend: 'Animals Extinction Rates',
+                     legendOffset: -40,
+                     legendPosition: 'middle'
+                   }}
                    legends={LEGENDS}
                    colors={NIVO_COLORS}
          />
