@@ -22,7 +22,8 @@ describe('NxCollapsibleItems', function() {
       clickableTreeViewSelector = '#nx-collapsible-items-clickable-example .nx-collapsible-items',
       clickableTreeViewSidebarSelector = '#nx-collapsible-items-clickable-sidebar-example .nx-collapsible-items',
       checkboxTreeViewSelector = '#nx-collapsible-items-checkbox-example .gallery-example-live',
-      emptyTreeViewSelector = '#nx-collapsible-items-empty-example .nx-collapsible-items';
+      emptyTreeViewSelector = '#nx-collapsible-items-empty-example .nx-collapsible-items',
+      actionContentCollapsibleItemsSelector = '#nx-collapsible-items-action-content-example .gallery-example-live';
 
   async function expandCollapsibleItems(selector) {
     const [targetElement] = await waitAndGetElements(selector);
@@ -104,6 +105,30 @@ describe('NxCollapsibleItems', function() {
 
   describe('Disabled NxCollapsibleItems', function() {
     it('looks right', simpleTest(disabledTreeViewSelector));
+  });
+
+  describe('NxCollapsibleItems with action content', function() {
+    it('looks right collapsed', simpleTest(actionContentCollapsibleItemsSelector));
+    it('looks right expanded', async function() {
+      const firstTreeSelector =
+        `${actionContentCollapsibleItemsSelector} .nx-collapsible-items:first-child .nx-collapsible-items__trigger`;
+      const secondTreeSelector =
+        `${actionContentCollapsibleItemsSelector} .nx-collapsible-items:nth-child(2) .nx-collapsible-items__trigger`;
+
+      const iconDropdownToggleSelector =
+        `${actionContentCollapsibleItemsSelector} .nx-collapsible-items:first-child .nx-icon-dropdown__toggle`;
+      const [firstTree, secondTree, iconDropdownToggle] =
+        await waitAndGetElements(firstTreeSelector, secondTreeSelector, iconDropdownToggleSelector);
+
+      await firstTree.click();
+      await secondTree.click();
+
+      await wait(350);
+
+      await iconDropdownToggle.click();
+
+      await simpleTest(actionContentCollapsibleItemsSelector)();
+    });
   });
 
   // aria-required-children gets tripped up by empty lists in this component, even though it seemingly shouldn't

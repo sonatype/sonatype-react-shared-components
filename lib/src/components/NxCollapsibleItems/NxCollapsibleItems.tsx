@@ -70,7 +70,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
     <div className={treeViewClasses}
          role="group"
          { ...otherProps }>
-      <div className="nx-collapsible-items__wrapper">
+      <div className="nx-collapsible-items__header">
         {
           triggerTooltipProps ? (
             // div necessary to avoid error message when tooltip is on disabled button
@@ -81,9 +81,11 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
             </NxTooltip>
           ) : trigger
         }
+        { actionContent && (
         <div className="nx-collapsible-items__action-content">
           {actionContent}
         </div>
+        )}
       </div>
       <div className="nx-collapsible-items__children" role={treeViewChildrenRole} id={treeViewChildrenId}>
         {children}
