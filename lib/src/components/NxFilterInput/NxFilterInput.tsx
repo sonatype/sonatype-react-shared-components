@@ -44,9 +44,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
             </NxButton>;
 
       function clearFilterInputText() {
-        if (props.onChange) {
-          props.onChange('');
-        }
+        props.onChange?.('');
       }
 
       const handleKeyDown: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
