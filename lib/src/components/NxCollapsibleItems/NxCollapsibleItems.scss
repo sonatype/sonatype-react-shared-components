@@ -64,9 +64,17 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   display: flex;
 }
 
-.nx-collapsible-items__right-content {
+.nx-collapsible-items__action-content {
+  margin-left: var(--nx-spacing-6x);
+
   .nx-icon-dropdown {
     margin: 0;
+  }
+
+  .nx-btn--icon-only {
+    margin: 0;
+    padding: calc(var(--nx-spacing-base) - 1px);
+    width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-base));
   }
 }
 

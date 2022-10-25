@@ -17,7 +17,7 @@ import NxCollapsibleItemsClickableSidebar from './NxCollapsibleItemsClickableSid
 import NxCollapsibleItemsCheckbox from './NxCollapsibleItemsCheckboxExample';
 import NxCollapsibleItemsEmpty from './NxCollapsibleItemsEmptyExample';
 import NxCollapsibleItemsDisabled from './NxCollapsibleItemsDisabledExample';
-import NxCollapsibleItemsRightContentExample from './NxCollapsibleItemsRightContentExample';
+import NxCollapsibleItemsActionContentExample from './NxCollapsibleItemsActionContentExample';
 
 const NxCollapsibleItemsCode = require('./NxCollapsibleItemsExample?raw'),
     NxCollapsibleItemsTooltipCode = require('./NxCollapsibleItemsTooltipExample?raw'),
@@ -27,7 +27,7 @@ const NxCollapsibleItemsCode = require('./NxCollapsibleItemsExample?raw'),
     NxCollapsibleItemsCheckboxCode = require('./NxCollapsibleItemsCheckboxExample?raw'),
     NxCollapsibleItemsEmptyCode = require('./NxCollapsibleItemsEmptyExample?raw'),
     NxCollapsibleItemsDisabledCode = require('./NxCollapsibleItemsDisabledExample?raw'),
-    NxCollapsibleItemsRightContentCode = require('./NxCollapsibleItemsRightContentExample?raw');
+    NxCollapsibleItemsActionContentCode = require('./NxCollapsibleItemsActionContentExample?raw');
 
 const NxCollapsibleItemsPage = () =>
   <>
@@ -93,6 +93,15 @@ const NxCollapsibleItemsPage = () =>
               the simpler way is to simply specify the tooltip text as a string.
               If control of more complex tooltip options is desired,
               an object can be passed which will serve as the props for NxTooltip
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>actionContent</NxTable.Cell>
+            <NxTable.Cell>VirtualDOM</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              You can specify one <NxCode>NxIconDropdown</NxCode> or <NxCode>NxIconButton</NxCode>{' '}
+              as a content for this attribute. It will be placed on the right side of the trigger content.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -215,11 +224,12 @@ const NxCollapsibleItemsPage = () =>
       Example of a disabled <NxCode>NxCollapsibleItems</NxCode>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NxCollapsibleItemsRightContent Example"
-                        id="nx-collapsible-items-right-content-example"
-                        liveExample={NxCollapsibleItemsRightContentExample}
-                        codeExamples={NxCollapsibleItemsRightContentCode}>
-      Example of a <NxCode>NxCollapsibleItemsRightContent</NxCode>.
+    <GalleryExampleTile title="NxCollapsibleItems Action Content Example"
+                        id="nx-collapsible-items-action-content-example"
+                        liveExample={NxCollapsibleItemsActionContentExample}
+                        codeExamples={NxCollapsibleItemsActionContentCode}>
+      Example of <NxCode>NxCollapsibleItems</NxCode> with <NxCode>NxIconDropdown</NxCode> and{' '}
+      <NxCode>NxIconButton</NxCode> specified as its action content.
     </GalleryExampleTile>
   </>;
 

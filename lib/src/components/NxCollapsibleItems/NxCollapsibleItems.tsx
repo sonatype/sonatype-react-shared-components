@@ -32,7 +32,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
     children,
     triggerContent,
     triggerTooltip,
-    rightContent,
+    actionContent,
     className,
     role,
     ...otherProps
@@ -81,8 +81,8 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
             </NxTooltip>
           ) : trigger
         }
-        <div className="nx-collapsible-items__right-content">
-          {rightContent}
+        <div className="nx-collapsible-items__action-content">
+          {actionContent}
         </div>
       </div>
       <div className="nx-collapsible-items__children" role={treeViewChildrenRole} id={treeViewChildrenId}>

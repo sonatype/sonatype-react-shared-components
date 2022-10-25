@@ -15,7 +15,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean | null;
   triggerContent: ReactNode;
   triggerTooltip?: TooltipConfigProps | string | null;
-  rightContent?: ReactNode | null;
+  actionContent?: ReactNode | null;
   children?: ReactNode;
 }
 
@@ -29,6 +29,10 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isOpen: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
   triggerContent: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  actionContent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
