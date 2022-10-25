@@ -10,14 +10,12 @@ const path = require('path');
 // To try to mitigate flaky tests due to blinking text carets and the like
 jest.retryTimes(3);
 
+const darkEnv = process.env.RSC_GALLERY_THEME === 'DARK';
+
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   customDiffDir: path.join(__dirname, 'test-results'),
-  // eslint-disable-next-line no-undef
-  customSnapshotsDir: process.env.RSC_GALLERY_THEME === 'DARK' && 
-      path.join(__dirname, 'visualtests', '__image_snapshots_dark__'),
-  customSnapshotIdentifier: ({ defaultIdentifier }) =>
-    // eslint-disable-next-line no-undef
-    defaultIdentifier + (process.env.RSC_GALLERY_THEME === 'DARK' ? '-dark' : '')
+  customSnapshotsDir: darkEnv && path.join(__dirname, 'visualtests', '__image_snapshots_dark__'),
+  customSnapshotIdentifier: ({ defaultIdentifier }) => defaultIdentifier + (darkEnv ? '-dark' : '')
 });
 
 expect.extend({ toMatchImageSnapshot });
