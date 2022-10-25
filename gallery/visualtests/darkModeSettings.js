@@ -11,8 +11,8 @@ describe('Dark Mode Settings', function() {
   const { waitAndGetElements,
     getPage,
     checkFullPageScreenshot,
-    overrideDisplayTheme,
-    removeThemeEnabling
+    setThemeOverride,
+    setThemingEnabled
   } = setupBrowser('#/');
 
   const openModalBtn = '.gallery-page-header__theme-settings-button',
@@ -31,22 +31,22 @@ describe('Dark Mode Settings', function() {
   });
 
   it('sets display theme according to browser preference', async function() {
-    await overrideDisplayTheme(null);
+    await setThemeOverride(null);
     await openThemeSettingsModal();
   });
 
   it('sets display theme to dark when themeOverride is set to dark', async function() {
-    await overrideDisplayTheme('dark');
+    await setThemeOverride('dark');
     await openThemeSettingsModal();
   });
 
   it('sets display theme to light when themeOverride is set to light', async function() {
-    await overrideDisplayTheme('light');
+    await setThemeOverride('light');
     await openThemeSettingsModal();
   });
 
   it('sets display theme to light mode when theme changes are disabled', async function() {
-    await removeThemeEnabling();
+    await setThemingEnabled();
     await openThemeSettingsModal();
   });
 });
