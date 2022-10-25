@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { chartColors } from './data';
 import { ResponsiveLine } from '@nivo/line';
+import { NIVO_COLORS } from '@sonatype/react-shared-components';
 
 const transport = [
   'plane',
@@ -57,7 +57,7 @@ const MyResponsiveLine = () => (
                   pointBorderColor={{ from: 'serieColor' }}
                   pointLabelYOffset={-12}
                   useMesh={true}
-                  colors={chartColors}
+                  colors={NIVO_COLORS}
                   legends={[
                     {
                       anchor: 'bottom-right',

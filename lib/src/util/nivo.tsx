@@ -5,7 +5,7 @@
   * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
   */
 
-export const chartColors = [
+export const NIVO_COLORS = [
   'var(--nx-swatch-teal-40)',
   'var(--nx-swatch-red-65)',
   'var(--nx-swatch-green-35)',

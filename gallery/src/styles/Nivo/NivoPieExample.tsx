@@ -6,8 +6,7 @@
  */
 import React from 'react';
 import { ResponsivePie } from '@nivo/pie';
-
-import { chartColors } from './data';
+import { NIVO_COLORS } from '@sonatype/react-shared-components';
 
 export const generateData = (numberOfItems: number, range: [number, number]) =>
   Array.from({ length: numberOfItems })
@@ -27,7 +26,7 @@ export default function NivoPieExample() {
                          bottom: 80,
                          left: 80
                        }}
-                       colors={chartColors}
+                       colors={NIVO_COLORS}
           />
       </div>
     </>

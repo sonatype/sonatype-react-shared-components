@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { chartColors } from './data';
 import { ResponsiveBar, BarLegendProps } from '@nivo/bar';
+import { NIVO_COLORS } from '@sonatype/react-shared-components';
 
 const LEGENDS: BarLegendProps[] = [
   {
@@ -53,7 +53,7 @@ const MyResponsiveBar = () => (
                    padding={0.15}
                    tooltipLabel={({ id }) => `${id}`}
                    legends={LEGENDS}
-                   colors={chartColors}
+                   colors={NIVO_COLORS}
          />
   </div>
 );

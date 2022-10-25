@@ -358,3 +358,5 @@ export {
 
 export { default as NxTile } from './components/NxTile/NxTile';
 export { default as NxMeter, Props as NxMeterProps } from './components/NxMeter/NxMeter';
+
+export * from './util/nivo';
