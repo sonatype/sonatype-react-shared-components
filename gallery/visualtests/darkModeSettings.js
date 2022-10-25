@@ -8,21 +8,14 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('Dark Mode Settings', function() {
-  const { waitAndGetElements,
-    getPage,
+  const { getPage,
     checkFullPageScreenshot,
     setThemeOverride,
     setThemingEnabled
   } = setupBrowser('#/');
 
-  const openModalBtn = '.gallery-page-header__theme-settings-button',
-      themeSettingsModal = '.gallery-theme-settings-modal';
-
-  async function openThemeSettingsModal() {
-    const [targetElement] = await waitAndGetElements(openModalBtn);
-    await targetElement.click();
-    await waitAndGetElements(themeSettingsModal);
-
+  async function themeOverrideTest(theme) {
+    await setThemeOverride(theme);
     await checkFullPageScreenshot();
   }
 
@@ -31,22 +24,36 @@ describe('Dark Mode Settings', function() {
   });
 
   it('sets display theme according to browser preference', async function() {
-    await setThemeOverride(null);
-    await openThemeSettingsModal();
+    await themeOverrideTest(null);
   });
 
   it('sets display theme to dark when themeOverride is set to dark', async function() {
-    await setThemeOverride('dark');
-    await openThemeSettingsModal();
+    await themeOverrideTest('dark');
   });
 
   it('sets display theme to light when themeOverride is set to light', async function() {
-    await setThemeOverride('light');
-    await openThemeSettingsModal();
+    await themeOverrideTest('light');
   });
 
-  it('sets display theme to light mode when theme changes are disabled', async function() {
-    await setThemingEnabled(false);
-    await openThemeSettingsModal();
+  describe('when theme changes are disabled', function() {
+    beforeEach(async function() {
+      await setThemingEnabled(false);
+    });
+
+    it('sets display theme to light mode', async function() {
+      await checkFullPageScreenshot();
+    });
+
+    it('disallows browser preference', async function() {
+      await themeOverrideTest(null);
+    });
+
+    it('disallows dark mode override', async function() {
+      await themeOverrideTest('dark');
+    });
+
+    it('disallows light mode override', async function() {
+      await themeOverrideTest('light');
+    });
   });
 });
