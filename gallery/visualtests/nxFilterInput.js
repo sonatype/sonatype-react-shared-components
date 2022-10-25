@@ -13,6 +13,8 @@ describe('NxTextInput', function() {
     getPage,
     clickTest,
     hoverTest,
+    checkScreenshotCoordinates,
+    wait,
     a11yTest
   } = setupBrowser('#/pages/Filter%20Input');
 
@@ -52,6 +54,20 @@ describe('NxTextInput', function() {
     it('has a dark grey border and light grey background when clicked', async function() {
       const clearButtonSelector = `${simpleComponentSelector} .nx-btn--clear`;
       await clickTest(simpleComponentSelector, clearButtonSelector)();
+    });
+
+    it('shows a "Clear filter" tooltip', async function() {
+      const [component, clearButton] = await waitAndGetElements(
+          simpleComponentSelector,
+          `${simpleComponentSelector} .nx-btn--clear`
+      );
+
+      await clearButton.hover();
+      await wait(500);
+
+      const { x, y, width, height } = await component.boundingBox();
+
+      await checkScreenshotCoordinates(x, y - 43, width + 70, height + 43);
     });
   });
 
