@@ -46,7 +46,7 @@ describe('Dark Mode Settings', function() {
   });
 
   it('sets display theme to light mode when theme changes are disabled', async function() {
-    await setThemingEnabled();
+    await setThemingEnabled(false);
     await openThemeSettingsModal();
   });
 });

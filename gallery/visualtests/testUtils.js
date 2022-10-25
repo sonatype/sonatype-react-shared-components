@@ -68,9 +68,7 @@ module.exports = {
         await hideVersionNumber();
       }
 
-      await page.evaluate(() => {
-        window.setThemingEnabled(true);
-      });
+      await setThemingEnabled(true);
 
       await page.mouse.move(0, 0);
     });
@@ -81,10 +79,10 @@ module.exports = {
       }, theme);
     }
 
-    async function setThemingEnabled() {
-      await page.evaluate(() => {
-        window.setThemingEnabled(false);
-      });
+    async function setThemingEnabled(newThemingEnabled) {
+      await page.evaluate((theme) => {
+        window.setThemingEnabled(theme);
+      }, newThemingEnabled);
     }
 
     async function blurElement(element) {
