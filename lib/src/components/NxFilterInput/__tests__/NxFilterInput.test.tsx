@@ -69,11 +69,18 @@ describe('NxFilterInput', function() {
     expect(icons[0]).toHaveAttribute('data-icon', 'search');
   });
 
-  it('renders a button with an accessible name of "clear filter"', async function() {
+  it('renders a button with an accessible name of "Clear filter" when searchIcon is undefined', async function() {
     const clearBtn = quickRender().getByRole('button');
 
     expect(clearBtn).toBeInTheDocument();
-    await waitFor(() => expect(clearBtn).toHaveAccessibleName('clear filter'));
+    await waitFor(() => expect(clearBtn).toHaveAccessibleName('Clear filter'));
+  });
+
+  it('renders a button with an accessible name of "Clear search" when searchIcon is true', async function() {
+    const clearBtn = quickRender({ searchIcon: true }).getByRole('button');
+
+    expect(clearBtn).toBeInTheDocument();
+    await waitFor(() => expect(clearBtn).toHaveAccessibleName('Clear search'));
   });
 
   it('fires onChange with the empty string when the Escape key is pressed', async function() {
