@@ -28,7 +28,8 @@ const NxFilterInputPage = () =>
         An input to be used for filtering purposes. After a user has text within the input field, a
         clear filter button appears within the component and is only visible/usable when there is text within
         the input field. Note: This button is for mouse use only and is therefore not focusable but still
-        hoverable and clickable.
+        hoverable and clickable. The clear filter functionality may be accessed by keyboard using the Escape
+        key.
       </NxP>
 
       <NxH3>NxFilterInput Props</NxH3>
