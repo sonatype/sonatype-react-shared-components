@@ -4,8 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, KeyboardEventHandler, useRef } from 'react';
-import useMergedRef from '@react-hook/merged-ref';
+import React, { forwardRef, KeyboardEventHandler } from 'react';
 import { omit } from 'ramda';
 import classnames from 'classnames';
 import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -27,8 +26,6 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
             'nx-filter-input--empty': isEmpty
           }),
           btnClassName = classnames('nx-btn--clear', { 'hidden': isEmpty }),
-          fieldRef = useRef<HTMLDivElement>(null),
-          mergedRef = useMergedRef(fieldRef, ref),
           // just in case these props get passed in, avoid passing them to NxTextInput as they would cause
           // malfunction
           cleanedProps = omit(['validatable', 'validationErrors', 'type'], otherProps),
@@ -57,7 +54,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
       return <PrivateNxTextInput { ...cleanedProps }
                                  { ...{ prefixContent, className, suffixContent } }
                                  onKeyDown={handleKeyDown}
-                                 ref={mergedRef}
+                                 ref={ref}
                                  isPristine={false} />;
     }
 );
