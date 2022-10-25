@@ -30,11 +30,12 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
           // malfunction
           cleanedProps = omit(['validatable', 'validationErrors', 'type'], otherProps),
           filterIcon = searchIcon ? faSearch : faFilter,
+          btnTitle = searchIcon ? 'clear search' : 'clear filter',
           prefixContent = <NxFontAwesomeIcon icon={filterIcon} className="nx-icon--filter-icons" />,
           suffixContent =
             <NxButton className={btnClassName}
                       variant="icon-only"
-                      title="clear filter"
+                      title={btnTitle}
                       onClick={clearFilterInputText}
                       tabIndex={-1}>
               <Close/>
