@@ -12,9 +12,9 @@ import userEvent from '@testing-library/user-event';
 import NxFilterInput, { Props } from '../NxFilterInput';
 
 describe('NxFilterInput', function() {
-  const minimalProps = { value: '' },
-      quickRender = rtlRender<Props>(NxFilterInput, minimalProps),
-      renderEl = rtlRenderElement<Props>(NxFilterInput, minimalProps);
+  const minimalProps: Props = { value: '' },
+      quickRender = rtlRender(NxFilterInput, minimalProps),
+      renderEl = rtlRenderElement(NxFilterInput, minimalProps);
 
   it('renders an Input', function() {
     expect(quickRender().getByRole('textbox').tagName).toBe('INPUT');
