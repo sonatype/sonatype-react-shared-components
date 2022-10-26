@@ -17,7 +17,9 @@ import {
   NxCheckbox,
   NxFontAwesomeIcon,
   NxStatefulAccordion,
+  NxTextLink,
   NxTile,
+  NxTooltip,
   useToggle
 } from '@sonatype/react-shared-components';
 import { GalleryTileFooter } from './GalleryTileFooter';
@@ -59,12 +61,14 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
       <div id={id} className={tileClasses}>
         <div className="nx-tile-header">
           <div className="nx-tile-header__title">
+            <h2 className="nx-h2">{title}</h2>{' '}
             { id && (
-              <a className="gallery-tile-link" href={`#/pages/${routeParams.pageName}/${id}`}>
-                <NxFontAwesomeIcon icon={faLink} />
-              </a>
+              <NxTooltip title={`Deep Link for ${title}`}>
+                <NxTextLink href={`#/pages/${routeParams.pageName}/${id}`}>
+                  <NxFontAwesomeIcon icon={faLink} />
+                </NxTextLink>
+              </NxTooltip>
             )}
-            <h2 className="nx-h2">{title}</h2>
           </div>
           { actionButtons &&
             <div className="nx-tile__actions gallery-checkered-background-toggle">{actionButtons}</div>
