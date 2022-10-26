@@ -17,11 +17,12 @@ import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFieldset from '../NxFieldset/NxFieldset';
 import { textContent } from '../../util/childUtil';
 
-import { Props, TransferListItemProps, propTypes } from './types';
+import { Props, TransferListItemProps, NxTransferListDataItem, propTypes } from './types';
 
 import './NxTransferListHalf.scss';
+import { wrapTooltipProps } from '../../util/tooltipUtils';
 
-export { Props };
+export { Props, NxTransferListDataItem };
 
 function _TransferListItem<T extends string | number = string>(props: TransferListItemProps<T>) {
   const {
@@ -33,7 +34,8 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
     onChange: onChangeProp,
     onReorderItem,
     isTopItem,
-    isBottomItem
+    isBottomItem,
+    tooltip
   } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
@@ -53,15 +55,18 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
   const moveUpButtonTitle = moveUpDisabled ? 'Move Up (disabled)' : 'Move Up';
   const moveDownButtonTitle = moveDownDisabled ? 'Move Down (disabled)' : 'Move Down';
 
+  const tooltipProps = tooltip && wrapTooltipProps(tooltip),
+      Tooltip = tooltipProps ? NxTooltip : NxOverflowTooltip;
+
   return (
     <div className={classes}>
-      <NxOverflowTooltip>
+      <Tooltip { ...tooltipProps }>
         <label className="nx-transfer-list__select">
           <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
           <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
           <span className="nx-transfer-list__display-name">{displayName}</span>
         </label>
-      </NxOverflowTooltip>
+      </Tooltip>
       { showReorderingButtons && (
         <NxTooltip title={isFilteredItem ? 'Reordering is disabled when filtered' : ''}>
           <div className="nx-btn-bar nx-transfer-list__button-bar">

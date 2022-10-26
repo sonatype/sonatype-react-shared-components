@@ -8,13 +8,14 @@ import { ReactNode, HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
-import DataItem from '../../util/DataItem';
+import { NxTransferListDataItem } from '../NxTransferListHalf/types';
 
-export type FilterFn<T extends string | number = string> = (d: DataItem<T>[]) => DataItem<T>[];
+export type FilterFn<T extends string | number = string> =
+    (d: NxTransferListDataItem<T>[]) => NxTransferListDataItem<T>[];
 
 export interface BaseStatefulProps<T extends string | number = string>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
-  allItems: DataItem<T>[];
+  allItems: NxTransferListDataItem<T>[];
   availableItemsLabel?: ReactNode;
   selectedItemsLabel?: ReactNode;
   availableItemsCountFormatter?: ((n: number) => string) | null;
