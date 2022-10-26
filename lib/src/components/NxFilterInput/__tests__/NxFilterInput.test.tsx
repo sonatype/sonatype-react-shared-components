@@ -85,9 +85,8 @@ describe('NxFilterInput', function() {
 
   it('fires onChange with the empty string when the Escape key is pressed', async function() {
     const user = userEvent.setup(),
-        onKeyDown = jest.fn(),
         onChange = jest.fn(),
-        el = quickRender({ onKeyDown, value: 'a', onChange }),
+        el = quickRender({ value: 'a', onChange }),
         input = el.getByRole('textbox');
 
     expect(onChange).not.toHaveBeenCalled();
