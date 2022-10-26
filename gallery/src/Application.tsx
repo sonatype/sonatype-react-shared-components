@@ -56,6 +56,7 @@ import NxToastSimpleLayoutExample from './components/NxToast/NxToastSimpleLayout
 import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayoutExample';
 import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
 import NxToastWithNxDrawerExample from './components/NxToast/NxToastWithNxDrawerExample';
+import NxBreadcrumbGlobalHeaderExample from './components/NxBreadcrumb/NxBreadcrumbGlobalHeaderExample';
 
 // number of pixels below the page header that deep links should scroll to
 const SCROLL_PAGE_HEADER_PAD = 8;
@@ -238,6 +239,11 @@ function Application() {
         <Route exact path="/NxDrawerExample">
           <SectionScrollingWrapper>
             <NxDrawerExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxBreadcrumbGlobalHeaderExample">
+          <SectionScrollingWrapper>
+            <NxBreadcrumbGlobalHeaderExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>
