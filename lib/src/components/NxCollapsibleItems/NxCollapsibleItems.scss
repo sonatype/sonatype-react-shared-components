@@ -6,6 +6,7 @@
  */
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-button-helpers';
 
 $-triangle-box-width: var(--nx-spacing-6x);
 $-trigger-side-padding: var(--nx-spacing-2x);
@@ -69,8 +70,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   @include nx-container-helpers.container-horizontal;
 
   .nx-btn--icon-only {
-    padding: calc(var(--nx-spacing-base) - 1px);
-    width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-base));
+    @include nx-button-helpers.small-icon-btn;
   }
 }
 
