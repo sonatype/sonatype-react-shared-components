@@ -98,7 +98,9 @@ import {
   NxFileUpload,
   NxStatefulFileUpload,
   NxDescriptionList,
-  useUniqueId
+  useUniqueId,
+  NxBreadcrumb,
+  NxStatefulBreadcrumb
 } from '@sonatype/react-shared-components';
 
 const vulnerabilityDetailsJson = require('../vulnerabilityDetailsJson.json');
@@ -219,7 +221,7 @@ const Home: NextPage = () => {
         <NxFieldset label="foo" />
         <NxFilterInput value="foo" />
         <NxFontAwesomeIcon icon={faEdit} />
-        <NxForm onSubmit={noop}>
+        <NxForm onSubmit={noop} showValidationErrors={false}>
           Foo
         </NxForm>
         <NxFormGroup label="foo">
@@ -376,6 +378,20 @@ const Home: NextPage = () => {
                     onChange={noop}
                     onSearch={noop}
                     matches={[]}/>
+        <NxBreadcrumb crumbs={[
+                        { name: 'A', href: 'a' },
+                        { name: 'B', href: 'b' },
+                        { name: 'C', href: 'c' },
+                        { name: 'D', href: 'd' },
+                        { name: 'E', href: 'e' }
+                      ]}
+                      isDropdownOpen={true}
+                      onToggleDropdown={noop} />
+        <NxStatefulBreadcrumb crumbs={[
+                        { name: 'A', href: 'a' },
+                        { name: 'B', href: 'b' },
+                        { name: 'C', href: 'c' }
+                      ]} />
       </NxPageMain>
     </div>
   )
