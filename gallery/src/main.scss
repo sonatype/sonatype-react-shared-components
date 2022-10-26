@@ -46,8 +46,22 @@
   }
 }
 
-.gallery-example > .nx-tile-header > .nx-tile-header__title > .nx-h2 {
-  display: inline;
+.gallery-example > .nx-tile-header > .nx-tile-header__title {
+  align-items: baseline;
+  display: flex;
+  overflow: visible;
+  gap: var(--nx-spacing-2x);
+  min-width: 0;
+
+  > .nx-h2 {
+    min-width: 0;
+  }
+}
+
+.gallery-tile__deep-link {
+  > .nx-icon {
+    vertical-align: baseline;
+  }
 }
 
 // .nx-html added to this selector for specificity reasons

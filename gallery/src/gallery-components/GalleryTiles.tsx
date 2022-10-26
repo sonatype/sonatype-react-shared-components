@@ -61,10 +61,10 @@ export const GalleryTile: FunctionComponent<GalleryTileProps> =
       <div id={id} className={tileClasses}>
         <div className="nx-tile-header">
           <div className="nx-tile-header__title">
-            <h2 className="nx-h2">{title}</h2>{' '}
+            <h2 className="nx-h2">{title}</h2>
             { id && (
               <NxTooltip title={`Deep Link for ${title}`}>
-                <NxTextLink href={`#/pages/${routeParams.pageName}/${id}`}>
+                <NxTextLink className="gallery-tile__deep-link" href={`#/pages/${routeParams.pageName}/${id}`}>
                   <NxFontAwesomeIcon icon={faLink} />
                 </NxTextLink>
               </NxTooltip>
