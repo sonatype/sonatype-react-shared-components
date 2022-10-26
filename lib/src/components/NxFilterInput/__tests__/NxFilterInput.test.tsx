@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { RefAttributes } from 'react';
 import { waitFor } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import userEvent from '@testing-library/user-event';
@@ -12,7 +12,7 @@ import userEvent from '@testing-library/user-event';
 import NxFilterInput, { Props } from '../NxFilterInput';
 
 describe('NxFilterInput', function() {
-  const minimalProps: Props = { value: '' },
+  const minimalProps: Props & RefAttributes<HTMLDivElement> = { value: '' },
       quickRender = rtlRender(NxFilterInput, minimalProps),
       renderEl = rtlRenderElement(NxFilterInput, minimalProps);
 
@@ -52,7 +52,7 @@ describe('NxFilterInput', function() {
 
   it('sets ref on the Input', function() {
     const ref = React.createRef<HTMLDivElement>(),
-        el = renderEl({ ref } as Partial<Props>);
+        el = renderEl({ ref });
 
     expect(ref.current).toBe(el);
   });
