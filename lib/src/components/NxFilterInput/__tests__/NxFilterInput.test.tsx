@@ -57,18 +57,6 @@ describe('NxFilterInput', function() {
     expect(ref.current).toBe(el);
   });
 
-  it('renders a filter icon when searchIcon is undefined', function() {
-    const icons = quickRender().getAllByRole('img', { hidden: true });
-
-    expect(icons[0]).toHaveAttribute('data-icon', 'filter');
-  });
-
-  it('renders a search icon when searchIcon is true', function() {
-    const icons = quickRender({ searchIcon: true }).getAllByRole('img', { hidden: true });
-
-    expect(icons[0]).toHaveAttribute('data-icon', 'search');
-  });
-
   it('renders a button with an accessible name of "Clear filter" when searchIcon is undefined', async function() {
     const clearBtn = quickRender().getByRole('button');
 
