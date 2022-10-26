@@ -111,13 +111,17 @@ describe('NxFilterInput', function() {
     expect(btn).toHaveClassName('nx-btn--clear');
   });
 
-  it('sets the title as "Clear filter" to the NxButton when searchIcon is undefined', function() {
-    const BtnFixture = function() {
-          return shallowComponent().prop('suffixContent');
+  it('sets the title as "Clear filter" to the NxButton when searchIcon is undefined, false or null', function() {
+    const suffixContent = function(searchIcon?: boolean | null) {
+          return shallow(shallowComponent({ searchIcon }).prop('suffixContent'));
         },
-        btn = shallow(<BtnFixture />);
+        btn = suffixContent(),
+        btnWithSearchIconFalse = suffixContent(false),
+        btnWithSearchIconNull = suffixContent(null);
 
     expect(btn).toHaveProp('title', 'Clear filter');
+    expect(btnWithSearchIconFalse).toHaveProp('title', 'Clear filter');
+    expect(btnWithSearchIconNull).toHaveProp('title', 'Clear filter');
   });
 
   it('sets the title as "Clear search" to the NxButton when searchIcon is true', function() {
