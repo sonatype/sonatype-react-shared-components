@@ -31,7 +31,7 @@ describe('NxFilterInput', function() {
     }
   });
 
-  it('passes additional props to the Input', function() {
+  it('passes additional attrs to the Input', function() {
     const input = quickRender({ id: 'foo', lang: 'en-US' }).getByRole('textbox');
 
     expect(input).toHaveAttribute('id', 'foo');
