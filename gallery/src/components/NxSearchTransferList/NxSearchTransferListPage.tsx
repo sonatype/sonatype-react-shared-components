@@ -11,9 +11,16 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import Example from './NxSearchTransferListExample';
 import ComplexExample from './NxSearchTransferListComplexExample';
+import CustomTooltipExample from './NxSearchTransferListCustomTooltipExample';
+
+import '../NxTooltip/NxTooltipExample.scss';
 
 const exampleCode = require('./NxSearchTransferListExample?raw'),
-    complexExampleCode = require('./NxSearchTransferListComplexExample?raw');
+    customTooltipExample = require('./NxSearchTransferListCustomTooltipExample?raw'),
+    complexExampleCode = require('./NxSearchTransferListComplexExample?raw'),
+    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw');
+
+const tooltipExampleCode = [customTooltipExample, { language: 'scss', content: tooltipScss }];
 
 const NxSearchTransferListPage = () =>
   <>
@@ -189,6 +196,62 @@ const NxSearchTransferListPage = () =>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Data Items</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          Each item in the <NxCode>searchMatches</NxCode> and <NxCode>addedItems</NxCode> lists is expected to
+          support the following interface:
+        </NxP>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Property</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>id</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>string | number</NxCode>, or some subclass thereof (<NxCode>string</NxCode> by default)
+              </NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>The unique identifier for this item</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>displayName</NxTable.Cell>
+              <NxTable.Cell><NxCode>ReactNode</NxCode></NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                The text to display in the UI for this item. In order for filtering to work properly, all text content
+                must be immediately present in the JSX itself, and not implemented by child components
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>tooltip</NxTable.Cell>
+              <NxTable.Cell>string | TooltipProps</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                Normally – when this property is <em>not</em> specified – the display text of a selected data item is
+                wrapped in an <NxCode>NxOverflowTooltip</NxCode>, such that if its <NxCode>displayName</NxCode>{' '}
+                overflows, it gets a tooltip displaying the full <NxCode>displayName</NxCode>. If
+                this <NxCode>tooltip</NxCode> property is specified however, instead of
+                an <NxCode>NxOverflowTooltip</NxCode> it gets a regular <NxCode>NxTooltip</NxCode> configured with the
+                specified props or, if the value of this property is a string, that string as the tooltip title. The
+                effect being that the properties specified here are used to construct a tooltip for the data item which
+                is active (on hover) regardless of whether the text is overflowing. Note that this replaces the default
+                overflow tooltip, and so must account the usability that would have been provided by that tooltip as
+                well, e.g. it should include the full <NxCode>displayName</NxCode> so that that value is still fully
+                visible in the event of overflow.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Basic Example"
@@ -204,6 +267,15 @@ const NxSearchTransferListPage = () =>
                         codeExamples={[complexExampleCode]}>
       An example of an <NxCode>NxSearchTransferList</NxCode> showing usage of the all props. In this contrived example,
       the asynchronous data store only queries successfully once, and errors out on successive queries.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Custom Tooltip Example"
+                        id="nx-search-transfer-list-custom-tooltip-example"
+                        codeExamples={tooltipExampleCode}
+                        liveExample={CustomTooltipExample}>
+      Demonstrates an <NxCode>NxSearchTransferList</NxCode> with custom tooltips on the data items. The first item
+      demonstrates how a tooltip props object can be passed as the <NxCode>tooltip</NxCode> parameter, while the
+      remaining items demonstrate the shorthand of passing a string as the <NxCode>tooltip</NxCode>.
     </GalleryExampleTile>
   </>;
 
