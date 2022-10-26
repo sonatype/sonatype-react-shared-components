@@ -244,7 +244,7 @@ const NxSearchTransferListPage = () =>
                 specified props or, if the value of this property is a string, that string as the tooltip title. The
                 effect being that the properties specified here are used to construct a tooltip for the data item which
                 is active (on hover) regardless of whether the text is overflowing. Note that this replaces the default
-                overflow tooltip, and so must account the usability that would have been provided by that tooltip as
+                overflow tooltip, and so must account for the usability that would have been provided by that tooltip as
                 well, e.g. it should include the full <NxCode>displayName</NxCode> so that that value is still fully
                 visible in the event of overflow.
               </NxTable.Cell>
