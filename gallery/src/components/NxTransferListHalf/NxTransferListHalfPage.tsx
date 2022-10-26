@@ -10,10 +10,17 @@ import { NxCode, NxTable, NxP, NxTile, NxH3 } from '@sonatype/react-shared-compo
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTransferListHalfExample from './NxTransferListHalfExample';
+import NxTransferListHalfCustomTooltipExample from './NxTransferListHalfCustomTooltipExample';
 import NxTransferListHalfOrderingExample from './NxTransferListHalfOrderingExample';
 
+import '../NxTooltip/NxTooltipExample.scss';
+
 const nxTransferListHalfExample = require('./NxTransferListHalfExample?raw'),
-    nxTransferListHalfOrderingExample = require('./NxTransferListHalfOrderingExample?raw');
+    nxTransferListHalfCustomTooltipExample = require('./NxTransferListHalfCustomTooltipExample?raw'),
+    nxTransferListHalfOrderingExample = require('./NxTransferListHalfOrderingExample?raw'),
+    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw');
+
+const tooltipExampleCode = [nxTransferListHalfCustomTooltipExample, { language: 'scss', content: tooltipScss }];
 
 const NxTransferListPage = () =>
   <>
@@ -154,6 +161,7 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell>Property</NxTable.Cell>
               <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
               <NxTable.Cell>Description</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Head>
@@ -163,14 +171,34 @@ const NxTransferListPage = () =>
               <NxTable.Cell>
                 <NxCode>string | number</NxCode>, or some subclass thereof (<NxCode>string</NxCode> by default)
               </NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>The unique identifier for this item</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>displayName</NxTable.Cell>
               <NxTable.Cell><NxCode>ReactNode</NxCode></NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
                 The text to display in the UI for this item. In order for filtering to work properly, all text content
                 must be immediately present in the JSX itself, and not implemented by child components
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>tooltip</NxTable.Cell>
+              <NxTable.Cell>string | TooltipProps</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                Normally – when this property is <em>not</em> specified – the display text of the data item is wrapped
+                in an <NxCode>NxOverflowTooltip</NxCode>, such that if its <NxCode>displayName</NxCode> overflows,
+                it gets a tooltip displaying the full <NxCode>displayName</NxCode>. If
+                this <NxCode>tooltip</NxCode> property is specified however, instead of
+                an <NxCode>NxOverflowTooltip</NxCode> it gets a regular <NxCode>NxTooltip</NxCode> configured with the
+                specified props or, if the value of this property is a string, that string as the tooltip title. The
+                effect being that the properties specified here are used to construct a tooltip for the data item which
+                is active (on hover) regardless of whether the text is overflowing. Note that this replaces the default
+                overflow tooltip, and so must account the usability that would have been provided by that tooltip as
+                well, e.g. it should include the full <NxCode>displayName</NxCode> so that that value is still fully
+                visible in the event of overflow.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
@@ -215,6 +243,15 @@ const NxTransferListPage = () =>
       Demonstrates an <NxCode>NxTransferListHalf</NxCode> with reordering. Additionally
       the <NxCode>isSelected</NxCode> and <NxCode>showMoveAll</NxCode> props demonstrate their opposite values
       compared to the example above, and the filterFn prop is also demonstrated
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Custom Tooltip Example"
+                        id="nx-transfer-list-half-custom-tooltip-example"
+                        codeExamples={tooltipExampleCode}
+                        liveExample={NxTransferListHalfCustomTooltipExample}>
+      Demonstrates an <NxCode>NxTransferListHalf</NxCode> with custom tooltips on the data items. The first item
+      demonstrates how a tooltip props object can be passed as the <NxCode>tooltip</NxCode> parameter, while the
+      remaining items demonstrate the shorthand of passing a string as the <NxCode>tooltip</NxCode>.
     </GalleryExampleTile>
   </>;
 
