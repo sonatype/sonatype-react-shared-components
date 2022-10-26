@@ -293,7 +293,7 @@ export {
 export { default as NxStatefulSearchDropdown, Props as NxStatefulDropdownProps }
   from './components/NxSearchDropdown/stateful/NxStatefulSearchDropdown';
 
-export { default as DataItem, default as NxTransferListDataItem } from './util/DataItem';
+export { default as DataItem } from './util/DataItem';
 
 export { default as NxSearchTransferList, Props as NxSearchTransferListProps }
   from './components/NxSearchTransferList/NxSearchTransferList';
@@ -301,7 +301,7 @@ export { default as NxSearchTransferList, Props as NxSearchTransferListProps }
 export { default as NxStatefulSearchTransferList, Props as NxStatefulSearchTransferListProps }
   from './components/NxSearchTransferList/stateful/NxStatefulSearchTransferList';
 
-export { default as NxTransferListHalf, Props as NxTransferListHalfProps }
+export { default as NxTransferListHalf, Props as NxTransferListHalfProps, NxTransferListDataItem }
   from './components/NxTransferListHalf/NxTransferListHalf';
 
 export {
