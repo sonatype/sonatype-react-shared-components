@@ -14,26 +14,22 @@ describe('Dark Mode Settings', function() {
     setThemingEnabled
   } = setupBrowser('#/');
 
-  async function themeOverrideTest(theme) {
-    await setThemeOverride(theme);
-    await checkFullPageScreenshot();
+  function themeOverrideTest(theme) {
+    return async function() {
+      await setThemeOverride(theme);
+      await checkFullPageScreenshot();
+    };
   }
 
   beforeEach(async function() {
     await getPage().setViewport({ width: 1366, height: 1000 });
   });
 
-  it('sets display theme according to browser preference', async function() {
-    await themeOverrideTest(null);
-  });
+  it('sets display theme according to browser preference', themeOverrideTest(null));
 
-  it('sets display theme to dark when themeOverride is set to dark', async function() {
-    await themeOverrideTest('dark');
-  });
+  it('sets display theme to dark when themeOverride is set to dark', themeOverrideTest('dark'));
 
-  it('sets display theme to light when themeOverride is set to light', async function() {
-    await themeOverrideTest('light');
-  });
+  it('sets display theme to light when themeOverride is set to light', themeOverrideTest('light'));
 
   describe('when theme changes are disabled', function() {
     beforeEach(async function() {
@@ -44,16 +40,10 @@ describe('Dark Mode Settings', function() {
       await checkFullPageScreenshot();
     });
 
-    it('disallows browser preference', async function() {
-      await themeOverrideTest(null);
-    });
+    it('disallows browser preference', themeOverrideTest(null));
 
-    it('disallows dark mode override', async function() {
-      await themeOverrideTest('dark');
-    });
+    it('disallows dark mode override', themeOverrideTest('dark'));
 
-    it('disallows light mode override', async function() {
-      await themeOverrideTest('light');
-    });
+    it('disallows light mode override', themeOverrideTest('light'));
   });
 });
