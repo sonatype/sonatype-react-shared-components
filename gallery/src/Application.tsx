@@ -57,6 +57,9 @@ import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayo
 import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
 import NxToastWithNxDrawerExample from './components/NxToast/NxToastWithNxDrawerExample';
 
+// number of pixels below the page header that deep links should scroll to
+const SCROLL_PAGE_HEADER_PAD = 8;
+
 const pageMappings = mergeAll(values(pageConfig));
 
 interface RouteProps {
@@ -78,7 +81,13 @@ function Page({ match, location }: RouteChildrenProps<RouteProps>) {
     const el = elementId && document.getElementById(elementId);
 
     if (el) {
-      el.scrollIntoView(true);
+      const { y: elCurrentY } = el.getBoundingClientRect(),
+          { scrollY } = window,
+          elDistanceFromTopOfDocument = scrollY + elCurrentY,
+          pageHeader = document.getElementById('gallery-page-header'),
+          pageHeaderHeight = pageHeader?.getBoundingClientRect()?.height ?? 0;
+
+      window.scrollTo(0, elDistanceFromTopOfDocument - (pageHeaderHeight + SCROLL_PAGE_HEADER_PAD));
     }
     else {
       window.scrollTo(0, 0);
