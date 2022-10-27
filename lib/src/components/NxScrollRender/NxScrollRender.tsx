@@ -38,10 +38,9 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
 
       cloneWithKey = (child: ReactElement, idx: number) =>
         React.cloneElement(child, { key: idx % (renderedChildCount as number) }),
-      keyedChildren = useMemo(() => {
-        return reuseChildren !== false && !isNil(renderedChildCount) ? childArray.map(cloneWithKey) : childArray;
-      },
-      [childArray, reuseChildren, renderedChildCount]
+      keyedChildren = useMemo(
+          () => reuseChildren === false || isNil(renderedChildCount) ? childArray : childArray.map(cloneWithKey),
+          [childArray, reuseChildren, renderedChildCount]
       ),
 
       sumChildHeight = normalizedChildHeight * childCount,
