@@ -14,24 +14,18 @@ export { Props };
 
 /* eslint-disable react/prop-types */
 const NxStatefulForm = forwardRef<HTMLFormElement, Props>(function NxStatefulForm(props, ref) {
-  const { onSubmit: onSubmitProp, submitMaskState, validationErrors } = props,
+  const { onSubmit: onSubmitProp, validationErrors } = props,
       [showValidationErrors, setShowValidationErrors] = useState(false),
       previousValidationErrors = useRef<ValidationErrors | undefined>(null);
 
   function onSubmit() {
-    setShowValidationErrors(true);
-
-    if (!hasValidationErrors(props.validationErrors)) {
+    if (hasValidationErrors(validationErrors)) {
+      setShowValidationErrors(true);
+    }
+    else {
       onSubmitProp();
     }
   }
-
-  useEffect(function() {
-    if (submitMaskState == null) {
-      // reset pristine state after successful submission
-      setShowValidationErrors(false);
-    }
-  }, [submitMaskState]);
 
   useEffect(function() {
     if (!hasValidationErrors(validationErrors) && hasValidationErrors(previousValidationErrors.current)) {
