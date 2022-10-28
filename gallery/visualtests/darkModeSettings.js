@@ -11,14 +11,12 @@ describe('Dark Mode Settings', function() {
   const { getPage,
     checkFullPageScreenshot,
     setThemeOverride,
-    setThemingEnabled,
-    wait
+    setThemingEnabled
   } = setupBrowser('#/');
 
   function themeOverrideTest(theme) {
     return async function() {
       await setThemeOverride(theme);
-      await wait(400);
       await checkFullPageScreenshot();
     };
   }

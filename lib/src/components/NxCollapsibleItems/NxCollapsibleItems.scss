@@ -95,7 +95,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   font-size: 22px;
   justify-self: center;
   margin: 0;
-  transition: all 300ms ease;
+  transition: transform 300ms ease;
 
   &.nx-collapsible-items--empty {
     visibility: hidden;
