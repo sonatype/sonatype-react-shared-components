@@ -50,7 +50,7 @@ const NxScrollRenderPage = () =>
         <NxList bulleted>
           <NxList.Item>
             <NxList.Text>
-              The immediate child of <NxCode>NxScrollRender</NxCode> must render an single container element, with
+              The immediate child of <NxCode>NxScrollRender</NxCode> must render a single container element, with
               scrolling styles defined. <NxCode>NxScrollRender</NxCode> does not create any container element
               itself nor add scrolling styles to its child.
             </NxList.Text>
