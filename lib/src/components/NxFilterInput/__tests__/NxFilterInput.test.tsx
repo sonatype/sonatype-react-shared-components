@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { RefAttributes } from 'react';
-import { waitFor } from '@testing-library/react';
+import { waitFor, screen } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import userEvent from '@testing-library/user-event';
 
@@ -39,15 +39,16 @@ describe('NxFilterInput', function() {
   });
 
   it('does not pass validatable, validationErrors, or type props to the Input', function() {
-    const input = quickRender({
+    quickRender({
       validatable: true,
       validationErrors: 'It\'s all wrong',
       type: 'textarea'
-    } as Partial<Props>).getByRole('textbox');
+    } as Partial<Props>);
 
-    expect(input).not.toHaveAttribute('validatable', true);
-    expect(input).not.toHaveAttribute('validationErrors', 'It\'s all wrong');
-    expect(input).not.toHaveAttribute('type', 'textarea');
+    expect(screen.getByRole('textbox')).not.toHaveAttribute('type', 'textarea');
+    expect(screen.getByRole('textbox')).not.toHaveAttribute('aria-invalid');
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByText('It\'s all wrong')).not.toBeInTheDocument();
   });
 
   it('sets ref on the Input', function() {
