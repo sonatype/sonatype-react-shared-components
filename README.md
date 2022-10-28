@@ -226,16 +226,10 @@ dockerfile to point to the public `node:12` base image instead of the copy hoste
 ```
 docker build -t rsc-visualtesting .
 ```
-You can execute the tests for light mode (default) within the Docker container based on that image by running the following command:
+You can execute the tests for both light mode (default) and dark mode within the Docker container based on that image by running the following command:
 
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
-```
-
-To execute the tests for dark mode within the Docker container, run: 
-
-```
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test-dark
 ```
 
 On some computers, visual testing may take more than 20 minutes, so let the tests run in the background. Note that the
@@ -274,18 +268,16 @@ For you seemingly rare Windows (Windows 11 to be precise) users, you have a coup
 
 From simple command prompt
 
-Run tests in light mode (default):
+Run tests:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn test
 ```
-Run tests in dark mode:
-```
-docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn test-dark
-```
+
 Update screenshots in light mode (default):
 ```
 docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn jest -u
 ```
+
 Update screenshots in dark mode:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn jest-dark -u
@@ -293,18 +285,16 @@ docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtes
 
 And from PowerShell
 
-Run tests in light mode (default):
+Run tests:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test
 ```
-Run tests in dark mode:
-```
-docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test-dark
-```
+
 Update screenshots in light mode (default):
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn jest -u
 ```
+
 Update screenshots in dark mode:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn jest-dark -u

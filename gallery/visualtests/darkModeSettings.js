@@ -18,7 +18,7 @@ describe('Dark Mode Settings', function() {
   function themeOverrideTest(theme) {
     return async function() {
       await setThemeOverride(theme);
-      await wait(200);
+      await wait(400);
       await checkFullPageScreenshot();
     };
   }
