@@ -58,12 +58,21 @@ describe('NxFilterInput', function() {
     expect(ref.current).toBe(el);
   });
 
-  it('renders a button with an accessible name of "Clear filter" when searchIcon is undefined', async function() {
-    const clearBtn = quickRender().getByRole('button');
+  it('renders a button with an accessible name of "Clear filter" when searchIcon is undefined, false or null',
+      async function() {
+        const clearBtn = quickRender().getByRole('button'),
+            clearBtnWithSearchIconFalse = quickRender({ searchIcon: false }).getByRole('button'),
+            clearBtnWithSearchIconNull = quickRender({ searchIcon: null }).getByRole('button');
 
-    expect(clearBtn).toBeInTheDocument();
-    await waitFor(() => expect(clearBtn).toHaveAccessibleName('Clear filter'));
-  });
+        expect(clearBtn).toBeInTheDocument();
+        await waitFor(() => expect(clearBtn).toHaveAccessibleName('Clear filter'));
+
+        expect(clearBtnWithSearchIconFalse).toBeInTheDocument();
+        await waitFor(() => expect(clearBtnWithSearchIconFalse).toHaveAccessibleName('Clear filter'));
+
+        expect(clearBtnWithSearchIconNull).toBeInTheDocument();
+        await waitFor(() => expect(clearBtnWithSearchIconNull).toHaveAccessibleName('Clear filter'));
+      });
 
   it('renders a button with an accessible name of "Clear search" when searchIcon is true', async function() {
     const clearBtn = quickRender({ searchIcon: true }).getByRole('button');
