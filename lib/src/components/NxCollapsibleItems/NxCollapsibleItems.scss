@@ -29,7 +29,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   }
 }
 
-.nx-collapsible-items--expanded .nx-collapsible-items__header {
+.nx-collapsible-items--expanded > .nx-collapsible-items__header {
   > .nx-collapsible-items__trigger, > .nx-collapsible-items__tooltip-wrapper > .nx-collapsible-items__trigger {
     > .nx-collapsible-items__twisty {
       transform: rotate(90deg);
