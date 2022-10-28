@@ -1,11 +1,2 @@
 gallery/visualtests/__image_snapshots__/* filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/dark-mode-settings-js-dark-mode-settings-sets-display-theme-according-to-browser-preference-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/dark-mode-settings-js-dark-mode-settings-when-theme-changes-are-disabled-disallows-browser-preference-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/dark-mode-settings-js-dark-mode-settings-when-theme-changes-are-disabled-disallows-light-mode-override-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/nx-tile-js-nx-tile-nx-tile-with-multiple-headers-looks-right-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/nx-tile-js-nx-tile-nx-tile-with-subsection-with-subtitle-looks-right-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/dark-mode-settings-js-dark-mode-settings-sets-display-theme-to-dark-when-theme-override-is-set-to-dark-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/dark-mode-settings-js-dark-mode-settings-sets-display-theme-to-light-when-theme-override-is-set-to-light-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/dark-mode-settings-js-dark-mode-settings-when-theme-changes-are-disabled-disallows-dark-mode-override-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/dark-mode-settings-js-dark-mode-settings-when-theme-changes-are-disabled-sets-display-theme-to-light-mode-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
-gallery/visualtests/__image_snapshots_dark__/nx-tile-js-nx-tile-nx-tile-with-no-header-looks-right-1-dark-snap.png filter=lfs diff=lfs merge=lfs -text
+gallery/visualtests/__image_snapshots_dark__/* filter=lfs diff=lfs merge=lfs -text
