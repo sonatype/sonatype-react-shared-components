@@ -38,10 +38,6 @@ describe('Dark Mode Settings', function() {
       await setThemingEnabled(false);
     });
 
-    it('sets display theme to light mode', async function() {
-      await checkFullPageScreenshot();
-    });
-
     it('disallows browser preference', themeOverrideTest(null));
 
     it('disallows dark mode override', themeOverrideTest('dark'));
