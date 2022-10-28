@@ -273,7 +273,7 @@ Run tests:
 docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn test
 ```
 
-Update screenshots in light mode (default):
+Update screenshots in light mode:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn jest -u
 ```
@@ -290,7 +290,7 @@ Run tests:
 docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test
 ```
 
-Update screenshots in light mode (default):
+Update screenshots in light mode:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn jest -u
 ```
