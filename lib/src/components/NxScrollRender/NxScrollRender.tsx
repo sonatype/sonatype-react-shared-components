@@ -11,6 +11,8 @@ import { useThrottleCallback } from '@react-hook/throttle';
 
 import { Props } from './types';
 
+export { Props };
+
 // intended to wrap division operations that may result in NaN, returns zero instead in that case
 const divOrZero = (x: number, y: number) => x === 0 || y === 0 ? 0 : x / y;
 
