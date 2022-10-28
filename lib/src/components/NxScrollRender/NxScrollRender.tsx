@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ReactElement, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { ReactElement, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { always, clamp, dec, identity, inc, isNil } from 'ramda';
 import useResizeObserver from '@react-hook/resize-observer';
 import { useThrottleCallback } from '@react-hook/throttle';
@@ -48,14 +48,18 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
       sumChildHeight = normalizedChildHeight * childCount,
       renderedChildHeight = renderedChildCount == null ? 0 : normalizedChildHeight * renderedChildCount,
 
-      [leadingSpacerHeight, setLeadingSpacerHeight] = useState(0),
-      [trailingSpacerHeight, setTrailingSpacerHeight] = useState(0),
-
       [firstRenderedChildIdx, setFirstRenderedChildIdx] = useState(0),
 
       renderedChildCountWithDefault = renderedChildCount ?? initialChildCount ?? DEFAULT_INITIAL_CHILD_COUNT,
       renderedRealChildren =
-          keyedChildren.slice(firstRenderedChildIdx, firstRenderedChildIdx + renderedChildCountWithDefault);
+          keyedChildren.slice(firstRenderedChildIdx, firstRenderedChildIdx + renderedChildCountWithDefault),
+
+      sumSpacerHeight = sumChildHeight - renderedChildHeight,
+      clampSpacerHeight = clamp(0, sumSpacerHeight),
+      leadingSpacerHeight = clampSpacerHeight(firstRenderedChildIdx * normalizedChildHeight),
+      trailingSpacerHeight = renderedChildCount == null ? 0 : clampSpacerHeight(
+          sumChildHeight - (leadingSpacerHeight + renderedChildCount * normalizedChildHeight)
+      );
 
   const renderedChildren = childCount ? (
     <>
@@ -86,21 +90,13 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
           topTooClose ? dec :
           topTooFar ? inc :
           identity,
-        sumSpacerHeight = sumChildHeight - renderedChildHeight,
         clampFirstRenderedChildIdx =
             renderedChildCount == null ? always(0) : clamp(0, childCount - renderedChildCount),
-        clampSpacerHeight = clamp(0, sumSpacerHeight),
         newFirstRenderedChildIdx = clampFirstRenderedChildIdx(
             adjust(Math.floor(divOrZero(scrollTop, normalizedChildHeight)) - 2)
-        ),
-        newLeadingSpacerHeight = clampSpacerHeight(newFirstRenderedChildIdx * normalizedChildHeight),
-        newTrailingSpacerHeight = renderedChildCount == null ? 0 : clampSpacerHeight(
-            sumChildHeight - (newLeadingSpacerHeight + renderedChildCount * normalizedChildHeight)
         );
 
     setFirstRenderedChildIdx(newFirstRenderedChildIdx);
-    setLeadingSpacerHeight(newLeadingSpacerHeight);
-    setTrailingSpacerHeight(newTrailingSpacerHeight);
   }, [childCount, normalizedChildHeight, renderedChildCount, renderedChildHeight, sumChildHeight]), 15);
 
   const adjustedParent = React.cloneElement(fullParent, {
@@ -132,8 +128,6 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
   useResizeObserver(parentRef, useCallback(function({ contentBoxSize: [{ blockSize }] }) {
     setParentHeight(blockSize);
   }, []));
-
-  useEffect(updateRendering, [updateRendering]);
 
   return adjustedParent;
 }
