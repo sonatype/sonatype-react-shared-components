@@ -52,17 +52,33 @@ function getContentBoxWidth(el: Element) {
   }
 }
 
+// Get the width of the bounding rectangle of all text content children of el
+function getTextBoundingRectWidth(el: Element) {
+  const nodeIterator = document.createNodeIterator(el, NodeFilter.SHOW_TEXT),
+      range = new Range();
+
+  try {
+    let node = nodeIterator.nextNode();
+    while (node) {
+      range.selectNode(node);
+      node = nodeIterator.nextNode();
+    }
+
+    return range.getBoundingClientRect().width;
+  }
+  finally {
+    nodeIterator.detach();
+    range.detach();
+  }
+}
+
 // Note: this won't detect overflowing non-text content, but for the purpose of an overflow tooltip we
 // only care about text content anyway
 function isOverflowing(el: Element) {
   const contentBoxWidth = getContentBoxWidth(el),
-      range = new Range();
+      textBoundingRectWidth = getTextBoundingRectWidth(el);
 
-  range.selectNode(el);
-  const contentBoundingRectWidth = range.getBoundingClientRect().width;
-  range.detach();
-
-  return contentBoxWidth < contentBoundingRectWidth;
+  return contentBoxWidth < textBoundingRectWidth;
 }
 
 function selfOrChildrenOverflowing(el: Element): boolean {
