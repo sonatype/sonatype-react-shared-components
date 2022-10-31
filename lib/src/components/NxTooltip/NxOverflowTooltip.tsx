@@ -58,13 +58,18 @@ function getTextBoundingRectWidth(el: Element) {
       range = new Range();
 
   try {
-    let node = nodeIterator.nextNode();
-    while (node) {
+    let left, right;
+    for (let node = nodeIterator.nextNode(); node != null; node = nodeIterator.nextNode()) {
       range.selectNode(node);
-      node = nodeIterator.nextNode();
+
+      const nodeBoundingBox = range.getBoundingClientRect();
+
+      // accumulate widest spread
+      left = left != null && left < nodeBoundingBox.left ? left : nodeBoundingBox.left;
+      right = right != null && right > nodeBoundingBox.right ? right : nodeBoundingBox.right;
     }
 
-    return range.getBoundingClientRect().width;
+    return right == null || left == null ? 0 : right - left;
   }
   finally {
     nodeIterator.detach();
