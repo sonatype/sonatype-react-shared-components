@@ -109,7 +109,21 @@ describe('NxCollapsibleItems', function() {
 
   describe('NxCollapsibleItems with action content', function() {
     it('looks right collapsed', simpleTest(actionContentCollapsibleItemsSelector));
-    it('looks right expanded', async function() {
+
+    it('looks right when the icon dropdown is expanded and the collapsible items is closed', async function() {
+      const iconDropdownToggleSelector =
+        `${actionContentCollapsibleItemsSelector} .nx-collapsible-items:first-child .nx-icon-dropdown__toggle`;
+      const [iconDropdownToggle] =
+        await waitAndGetElements(iconDropdownToggleSelector);
+
+      await wait(350);
+
+      await iconDropdownToggle.click();
+
+      await simpleTest(actionContentCollapsibleItemsSelector)();
+    });
+
+    it('does not close the collapsible items when the action content is expanded', async function() {
       const firstTreeSelector =
         `${actionContentCollapsibleItemsSelector} .nx-collapsible-items:first-child .nx-collapsible-items__trigger`;
       const secondTreeSelector =
