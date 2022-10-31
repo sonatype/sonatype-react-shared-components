@@ -16,11 +16,16 @@ describe('NxFilterInput', function() {
       quickRender = rtlRender(NxFilterInput, minimalProps),
       renderEl = rtlRenderElement(NxFilterInput, minimalProps);
 
-  it('renders an Input', function() {
+  it('renders an Input with type="text"', function() {
     expect(quickRender().getByRole('textbox').tagName).toBe('INPUT');
+    expect(quickRender().getByRole('textbox')).toHaveAttribute('type', 'text');
   });
 
-  it('adds additional specified classNames to the top-level element', function() {
+  it('sets the value to the Input as specified', function() {
+    expect(quickRender({ value: 'foo' }).getByRole('textbox')).toHaveAttribute('value', 'foo');
+  });
+
+  it('adds specified classNames to the top-level element in addition to the defaults', function() {
     const el = renderEl({ className: 'foo' }),
         defaultEl = renderEl()!;
 
@@ -55,6 +60,18 @@ describe('NxFilterInput', function() {
         el = renderEl({ ref });
 
     expect(ref.current).toBe(el);
+  });
+
+  it('calls onKeyPress with the key value whenever the input\'s onKeyPress event fires', async function() {
+    const user = userEvent.setup(),
+        onKeyPress = jest.fn(),
+        input = quickRender({ onKeyPress }).getByRole('textbox');
+
+    expect(onKeyPress).not.toHaveBeenCalled();
+
+    await user.type(input, 'a');
+
+    expect(onKeyPress).toHaveBeenCalledWith('a');
   });
 
   it('renders a button with an accessible name of "Clear filter" when searchIcon is undefined, false or null',
