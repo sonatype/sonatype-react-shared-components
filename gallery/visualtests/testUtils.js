@@ -56,14 +56,33 @@ module.exports = {
 
     beforeEach(async function() {
       page = await browser.newPage();
+
       await page.goto(pageUrl + pageFragmentIdentifier);
+
+      if (process.env.RSC_GALLERY_THEME === 'DARK') {
+        await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'dark' }]);
+      }
 
       if (ignoreVersionNumber) {
         await hideVersionNumber();
       }
 
+      await setThemingEnabled(true);
+
       await page.mouse.move(0, 0);
     });
+
+    async function setThemeOverride(theme) {
+      await page.evaluate((t) => {
+        window.setThemeOverride(t);
+      }, theme);
+    }
+
+    async function setThemingEnabled(newThemingEnabled) {
+      await page.evaluate((theme) => {
+        window.setThemingEnabled(theme);
+      }, newThemingEnabled);
+    }
 
     async function blurElement(element) {
       await page.evaluate(function(el) {
@@ -189,6 +208,8 @@ module.exports = {
       dismissResultingDialog,
       disableLoadingSpinnerAnimation,
       scrollIntoView,
+      setThemeOverride,
+      setThemingEnabled,
 
       waitForSelectors,
       getElements,
