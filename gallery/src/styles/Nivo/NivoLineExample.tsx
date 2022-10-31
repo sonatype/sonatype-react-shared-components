@@ -7,40 +7,10 @@
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import { NIVO_COLORS } from '@sonatype/react-shared-components';
-
-const transport = [
-  'plane',
-  'helicopter',
-  'boat',
-  'train',
-  'subway',
-  'bus',
-  'car',
-  'moto',
-  'bicycle',
-  'horse',
-  'other'
-];
-
-const country = [
-  'Japan',
-  'France',
-  'US',
-  'Germany',
-  'Norway'
-];
-
-const generateStringData = (numberOfLines: number, [min, max]: [number, number]) =>
-  Array.from({ length: numberOfLines }).map((_, index) => ({
-    id: country[index],
-    data: transport.map(name => ({
-      x: name,
-      y: Math.floor(Math.random() * (max - min + 1) + min)
-    }))
-  }));
+import { lineData } from './data';
 
 const MyResponsiveLine = () => (
-  <ResponsiveLine data={generateStringData(5, [0, 500])}
+  <ResponsiveLine data={lineData}
                   margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                   xScale={{ type: 'point' }}
                   yScale={{

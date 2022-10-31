@@ -7,30 +7,13 @@
 import React from 'react';
 import { ResponsivePie } from '@nivo/pie';
 import { NIVO_COLORS } from '@sonatype/react-shared-components';
-
-const food = [
-  'donuts',
-  'ice cream',
-  'pizza',
-  'fries',
-  'oreos',
-  'quesadilla',
-  'nachos',
-  'salad'
-];
-
-const generateData = (numberOfItems: number, range: [number, number]) =>
-  Array.from({ length: numberOfItems })
-      .map((_, index) => ({
-        id: food[index],
-        value: Math.floor(Math.random() * (range[1] - range[0] + 1) + range[0])
-      }));
+import { pieData } from './data';
 
 export default function NivoPieExample() {
   return (
     <>
       <div style={{ height: '400px' }}>
-        <ResponsivePie data={generateData(8, [1, 100])}
+        <ResponsivePie data={pieData}
                        margin={{
                          top: 40,
                          right: 80,

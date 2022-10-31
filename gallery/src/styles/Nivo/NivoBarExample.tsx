@@ -7,6 +7,7 @@
 import React from 'react';
 import { ResponsiveBar, BarLegendProps } from '@nivo/bar';
 import { NIVO_COLORS } from '@sonatype/react-shared-components';
+import { rawBarData } from './data';
 
 const LEGENDS: BarLegendProps[] = [
   {
@@ -17,20 +18,6 @@ const LEGENDS: BarLegendProps[] = [
     itemHeight: 20,
     translateX: 140
   }
-];
-
-const rawBarData: [string, number][] = [
-  ['foxes', 10],
-  ['wolves', 34],
-  ['dogs', 1],
-  ['cats', 5],
-  ['penguins', 43],
-  ['chewbaccas', 89],
-  ['weasels', 64],
-  ['raccons', 12],
-  ['pandas', 98],
-  ['deers', 27],
-  ['bears', 32]
 ];
 
 const barData = rawBarData.map(([id, value]) => ({ id, value }));
