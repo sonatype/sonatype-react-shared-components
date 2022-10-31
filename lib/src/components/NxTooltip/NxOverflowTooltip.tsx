@@ -30,6 +30,8 @@ function getContentBoxWidth(el: Element) {
         parsedSizes = map(parsePx, [paddingLeft, paddingRight, borderLeftWidth, borderRightWidth]),
         paddingBorderSum = sum(map(defaultTo(0), parsedSizes));
 
+    // I've seen cases where paddings defined in % units don't get converted to px on inline elements.
+    // This would be a very rare case where expected behavior is unclear, so just warn about it
     if (parsedSizes[0] == null) {
       console.warn('Got non-pixel computed value for padding-left, assuming 0');
     }
