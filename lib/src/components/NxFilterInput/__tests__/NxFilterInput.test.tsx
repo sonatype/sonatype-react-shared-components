@@ -62,18 +62,6 @@ describe('NxFilterInput', function() {
     expect(ref.current).toBe(el);
   });
 
-  it('calls onKeyPress with the key value whenever the input\'s onKeyPress event fires', async function() {
-    const user = userEvent.setup(),
-        onKeyPress = jest.fn(),
-        input = quickRender({ onKeyPress }).getByRole('textbox');
-
-    expect(onKeyPress).not.toHaveBeenCalled();
-
-    await user.type(input, 'a');
-
-    expect(onKeyPress).toHaveBeenCalledWith('a');
-  });
-
   it('renders a button with an accessible name of "Clear filter" when searchIcon is undefined, false or null',
       async function() {
         const clearBtn = quickRender().getByRole('button'),
