@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxH3 } from '@sonatype/react-shared-components';
+import { NxTable, NxCode, NxP, NxH3, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -21,30 +21,52 @@ const NivoPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        <NxCode>Nivo</NxCode>
-      </NxP>
-      <NxP>
-        The <NxCode>Nivo</NxCode>
-      </NxP>
-      <NxP>
-        By default the CSS display property of <NxCode>Nivo</NxCode>
+        <NxTextLink external href="https://nivo.rocks/components/">Nivo</NxTextLink> charts are
+        recommended for data visualization.
       </NxP>
       <NxH3>Accessibility</NxH3>
       <NxP>
-        <NxCode>Nivo</NxCode>
+        The color array show below is recommended for use in the Nivo charts.
       </NxP>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>
-            <NxTable.Cell>Attribute</NxTable.Cell>
-            <NxTable.Cell>Details</NxTable.Cell>
+            <NxTable.Cell>Priority </NxTable.Cell>
+            <NxTable.Cell>Color</NxTable.Cell>
           </NxTable.Row>
         </NxTable.Head>
         <NxTable.Body>
           <NxTable.Row>
-            <NxTable.Cell><NxCode></NxCode></NxTable.Cell>
-            <NxTable.Cell>
-            </NxTable.Cell>
+            <NxTable.Cell>First</NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-teal-40</NxCode></NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>Second</NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-red-65</NxCode></NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>Third</NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-green-80</NxCode></NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>Fourth</NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-purple-60</NxCode></NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>Fifth</NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-orange-40</NxCode></NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>Sixth</NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-pink-60</NxCode></NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>Seventh</NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-turquoise-30</NxCode></NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>Eight</NxTable.Cell>
+            <NxTable.Cell><NxCode>nx-indigo-60</NxCode></NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
@@ -52,18 +74,21 @@ const NivoPage = () =>
 
     <GalleryExampleTile title="Nivo Line Chart Example"
                         defaultCheckeredBackground={false}
+                        id="nivo-line-chart-example"
                         liveExample={NivoLineExample}
                         codeExamples={NivoLineExampleCode}>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nivo Bar Chart Example"
                         defaultCheckeredBackground={false}
+                        id="nivo-bar-chart-example"
                         liveExample={NivoBarExample}
                         codeExamples={NivoBarExampleCode}>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nivo Pie Chart Example"
                         defaultCheckeredBackground={false}
+                        id="nivo-pie-chart-example"
                         liveExample={NivoPieExample}
                         codeExamples={NivoPieExampleCode}>
     </GalleryExampleTile>

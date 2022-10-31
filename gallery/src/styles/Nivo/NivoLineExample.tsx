@@ -45,7 +45,7 @@ const MyResponsiveLine = () => (
                   xScale={{ type: 'point' }}
                   yScale={{
                     type: 'linear',
-                    stacked: true,
+                    stacked: false,
                     reverse: false
                   }}
                   pointColor={{ theme: 'background' }}
