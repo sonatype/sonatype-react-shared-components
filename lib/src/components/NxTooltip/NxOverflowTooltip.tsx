@@ -57,24 +57,18 @@ function getTextBoundingRectWidth(el: Element) {
   const nodeIterator = document.createNodeIterator(el, NodeFilter.SHOW_TEXT),
       range = new Range();
 
-  try {
-    let left, right;
-    for (let node = nodeIterator.nextNode(); node != null; node = nodeIterator.nextNode()) {
-      range.selectNode(node);
+  let left, right;
+  for (let node = nodeIterator.nextNode(); node != null; node = nodeIterator.nextNode()) {
+    range.selectNode(node);
 
-      const nodeBoundingBox = range.getBoundingClientRect();
+    const nodeBoundingBox = range.getBoundingClientRect();
 
-      // accumulate widest spread
-      left = left != null && left < nodeBoundingBox.left ? left : nodeBoundingBox.left;
-      right = right != null && right > nodeBoundingBox.right ? right : nodeBoundingBox.right;
-    }
-
-    return right == null || left == null ? 0 : right - left;
+    // accumulate widest spread
+    left = left != null && left < nodeBoundingBox.left ? left : nodeBoundingBox.left;
+    right = right != null && right > nodeBoundingBox.right ? right : nodeBoundingBox.right;
   }
-  finally {
-    nodeIterator.detach();
-    range.detach();
-  }
+
+  return right == null || left == null ? 0 : right - left;
 }
 
 // Note: this won't detect overflowing non-text content, but for the purpose of an overflow tooltip we
