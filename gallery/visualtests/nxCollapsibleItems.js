@@ -148,7 +148,7 @@ describe('NxCollapsibleItems', function() {
       const triggerSelector =
         `${actionContentCollapsibleItemsSelector} .nx-collapsible-items:first-child .nx-collapsible-items__trigger`;
 
-      await focusTest(actionContentCollapsibleItemsSelector, triggerSelector);
+      await focusTest(actionContentCollapsibleItemsSelector, triggerSelector)();
     });
   });
 
