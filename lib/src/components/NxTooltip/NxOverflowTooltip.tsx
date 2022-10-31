@@ -12,15 +12,55 @@ import { textContent } from '../../util/childUtil';
 
 import { OverflowTooltipProps, overflowTooltipPropTypes } from './types';
 import NxTooltip from './NxTooltip';
-import { any } from 'ramda';
+import { any, defaultTo, map, sum } from 'ramda';
 import batch from './updateBatcher';
 
 export { OverflowTooltipProps };
 
+function parsePx(pxStr: string) {
+  const unitStrippedStr = pxStr?.match(/(.*)px$/)?.[1];
+  return unitStrippedStr == null ? null : parseFloat(unitStrippedStr);
+}
+
+function getContentBoxWidth(el: Element) {
+  const boundingClientRect = el.getBoundingClientRect();
+
+  if (el instanceof HTMLElement) {
+    const { paddingLeft, paddingRight, borderLeftWidth, borderRightWidth } = getComputedStyle(el),
+        parsedSizes = map(parsePx, [paddingLeft, paddingRight, borderLeftWidth, borderRightWidth]),
+        paddingBorderSum = sum(map(defaultTo(0), parsedSizes));
+
+    if (parsedSizes[0] == null) {
+      console.warn('Got non-pixel computed value for padding-left, assuming 0');
+    }
+    if (parsedSizes[1] == null) {
+      console.warn('Got non-pixel computed value for padding-right, assuming 0');
+    }
+    if (parsedSizes[2] == null) {
+      console.warn('Got non-pixel computed value for border-left-width, assuming 0');
+    }
+    if (parsedSizes[2] == null) {
+      console.warn('Got non-pixel computed value for border-rigth-width, assuming 0');
+    }
+
+    return boundingClientRect.width - paddingBorderSum;
+  }
+  else {
+    return boundingClientRect.width;
+  }
+}
+
+// Note: this won't detect overflowing non-text content, but for the purpose of an overflow tooltip we
+// only care about text content anyway
 function isOverflowing(el: Element) {
-  // inline elements always report 0 clientWidth in standards-compliant browsers. At the same time, inline elements
-  // cannot (themselves) overflow.
-  return el.clientWidth < el.scrollWidth && getComputedStyle(el).display !== 'inline';
+  const contentBoxWidth = getContentBoxWidth(el),
+      range = new Range();
+
+  range.selectNode(el);
+  const contentBoundingRectWidth = range.getBoundingClientRect().width;
+  range.detach();
+
+  return contentBoxWidth < contentBoundingRectWidth;
 }
 
 function selfOrChildrenOverflowing(el: Element): boolean {
