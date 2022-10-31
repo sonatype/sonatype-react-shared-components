@@ -143,6 +143,13 @@ describe('NxCollapsibleItems', function() {
 
       await simpleTest(actionContentCollapsibleItemsSelector)();
     });
+
+    it('looks right when the trigger is focused next to the action content', async function() {
+      const triggerSelector =
+        `${actionContentCollapsibleItemsSelector} .nx-collapsible-items:first-child .nx-collapsible-items__trigger`;
+
+      await focusTest(actionContentCollapsibleItemsSelector, triggerSelector);
+    });
   });
 
   // aria-required-children gets tripped up by empty lists in this component, even though it seemingly shouldn't
