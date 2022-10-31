@@ -57,6 +57,8 @@ import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayo
 import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
 import NxToastWithNxDrawerExample from './components/NxToast/NxToastWithNxDrawerExample';
 
+import NxBreadcrumbGlobalHeaderExample from './components/NxBreadcrumb/NxBreadcrumbGlobalHeaderExample';
+
 const pageMappings = mergeAll(values(pageConfig));
 
 function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
@@ -217,6 +219,11 @@ function Application() {
         <Route exact path="/NxDrawerExample">
           <SectionScrollingWrapper>
             <NxDrawerExample />
+          </SectionScrollingWrapper>
+        </Route>
+        <Route exact path="/NxBreadcrumbGlobalHeaderExample">
+          <SectionScrollingWrapper>
+            <NxBreadcrumbGlobalHeaderExample />
           </SectionScrollingWrapper>
         </Route>
         <Route>
