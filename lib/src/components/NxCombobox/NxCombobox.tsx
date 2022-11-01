@@ -344,7 +344,18 @@ function NxComboboxRender<T extends string | number = string>(
                           { 'selected': i === focusableBtnIndex })}
                       tabIndex={-1}
                       key={match.id}
-                      onClick={() => handleDropdownBtnClick(match)}>
+                      onClick={() => handleDropdownBtnClick(match)}
+                      // In Safari, focus seems to be intended to strictly be a keyboard nav thing,
+                      // and when you click a button, focus does NOT go to that button, it goes to the <body>.
+                      // This messes up our idea of only showing the menu when something within the component has focus,
+                      // because this means that the component loses focus in the middle of the click,
+                      // causing the menu to hide while the user is in the middle of clicking,
+                      // causing the click not to register at all.
+                      // Using preventDefault on onMouseDown seem to have prevent the focus from going to the <body>.
+                      onMouseDown={(event) => {
+                        event.preventDefault();
+                        event.currentTarget.focus();
+                      }}>
                 {match.displayName}
               </button>
             )

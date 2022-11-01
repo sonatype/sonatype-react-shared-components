@@ -6,12 +6,18 @@
  */
 import { ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
+
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
 import DataItem from '../../util/DataItem';
+import { TooltipConfigProps } from '../../util/tooltipUtils';
 
 type SelectionChangeHandler<T> = (checked: boolean, id: T) => void;
 
-export interface TransferListItemProps<T extends string | number = string> extends DataItem<T> {
+export interface NxTransferListDataItem<T extends string | number = string> extends DataItem<T> {
+  tooltip?: TooltipConfigProps | string | null;
+}
+
+export interface TransferListItemProps<T extends string | number = string> extends NxTransferListDataItem<T> {
   checked: boolean;
   onChange: SelectionChangeHandler<T>;
   showReorderingButtons?: boolean | null;
@@ -27,7 +33,7 @@ export interface Props<T extends string | number = string> {
   onFilterChange: NxFilterInputProps['onChange'];
   showMoveAll: boolean;
   onMoveAll: (toMove: T[]) => void;
-  items: DataItem<T>[];
+  items: NxTransferListDataItem<T>[];
   isSelected: boolean;
   onItemChange: SelectionChangeHandler<T>;
   footerContent: ReactNode;

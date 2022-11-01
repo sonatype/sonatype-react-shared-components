@@ -145,11 +145,14 @@ import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorP
 import NxDrawerPage from './components/NxDrawer/NxDrawerPage';
 import NxComboboxPage from './components/NxCombobox/NxComboboxPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
+import NxScrollRenderPage from './components/NxScrollRender/NxScrollRenderPage';
 import NxStatefulFormPage from './components/NxStatefulForm/NxStatefulFormPage';
 import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
 import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
 import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
 import NxMeterPage from './components/NxMeter/NxMeterPage';
+import NxBreadcrumbPage from './components/NxBreadcrumb/NxBreadcrumbPage';
+import NxStatefulBreadcrumbPage from './components/NxStatefulBreadcrumb/NxStatefulBreadcrumbPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -178,6 +181,8 @@ const pageConfig: PageConfig = {
   },
   'Buttons and Dropdowns': {
     'Back Button': { content: NxBackButtonPage, type: 'react' },
+    'Breadcrumb': { content: NxBreadcrumbPage, type: 'react' },
+    'Stateful Breadcrumb': { content: NxStatefulBreadcrumbPage, type: 'react' },
     'Button': { content: NxButtonPage, type: 'react' },
     'Segmented Button': { content: NxSegmentedButtonPage, type: 'react' },
     'Stateful Segmented Button': { content: NxStatefulSegmentedButtonPage, type: 'react' },
@@ -288,7 +293,8 @@ const pageConfig: PageConfig = {
     'nx-scrollable': { content: NxScrollablePage, type: 'css' },
     'nx-viewport-sized': { content: NxViewportSizedPage, type: 'css' },
     'Selectable Colors': { content: SelectableColorsPage, type: 'css' },
-    'Style Variables': { content: CssVariablesPage, type: 'css' }
+    'Style Variables': { content: CssVariablesPage, type: 'css' },
+    'Scroll Render': { content: NxScrollRenderPage, type: 'react' }
   },
   'JavaScript & TypeScript Utilities': {
     'IDUtils': { content: IdUtilPage, type: 'js' },

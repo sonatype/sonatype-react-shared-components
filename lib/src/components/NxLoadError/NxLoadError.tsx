@@ -43,6 +43,12 @@ const NxLoadError = forwardRef<HTMLDivElement, Props>(
               <NxButton type={submitOnRetry ? 'submit' : 'button'}
                         variant="error"
                         onClick={retryHandler ?? undefined}
+                        // This is to prevent focus from going to the <body> in Safari
+                        // and closing the dropdown menu prematurely inside NxCombobox.
+                        onMouseDown={(event) => {
+                          event.preventDefault();
+                          event.currentTarget.focus();
+                        }}
                         className="nx-load-error__retry">
                 <NxFontAwesomeIcon icon={faSync} />
                 <span>Retry</span>
