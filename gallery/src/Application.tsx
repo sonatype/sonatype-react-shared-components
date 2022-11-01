@@ -93,6 +93,7 @@ function scrollTo(elementId: string | undefined): (() => void) | void {
       // happens _after_ the onload event and interferes with the programmatic scrolling in doElementScroll
       window.history.scrollRestoration = 'manual';
 
+      // wait for fonts and things to load before scrolling
       window.addEventListener('load', doElementScroll, { once: true });
       return () => { window.removeEventListener('load', doElementScroll); };
     }
