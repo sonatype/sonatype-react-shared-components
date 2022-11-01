@@ -45,9 +45,7 @@ export default function NivoLineExample() {
                           direction: 'column',
                           translateX: 100,
                           itemWidth: 80,
-                          itemHeight: 20,
-                          symbolSize: 12,
-                          symbolShape: 'circle'
+                          itemHeight: 20
                         }
                       ]}
         />
