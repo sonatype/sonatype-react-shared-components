@@ -68,6 +68,40 @@ interface RouteProps {
   elementId?: string;
 }
 
+function scrollTo(elementId: string | undefined): (() => void) | void {
+  const el = elementId ? document.getElementById(elementId) : null;
+
+  if (el) {
+    function doElementScroll() {
+      const { y: elCurrentY } = el!.getBoundingClientRect(),
+          { scrollY } = window,
+          elDistanceFromTopOfDocument = scrollY + elCurrentY,
+          pageHeader = document.getElementById('gallery-page-header'),
+          pageHeaderHeight = pageHeader?.getBoundingClientRect()?.height ?? 0;
+
+      window.scrollTo(0, elDistanceFromTopOfDocument - (pageHeaderHeight + SCROLL_PAGE_HEADER_PAD));
+
+      // re-enable scrollRestoration for future page loads
+      window.history.scrollRestoration = 'auto';
+    }
+
+    if (document.readyState === 'complete') {
+      doElementScroll();
+    }
+    else {
+      // disable the browser's automatic behavior of scrolling the user to their last known scroll position. This
+      // happens _after_ the onload event and interferes with the programmatic scrolling in doElementScroll
+      window.history.scrollRestoration = 'manual';
+
+      window.addEventListener('load', doElementScroll, { once: true });
+      return () => { window.removeEventListener('load', doElementScroll); };
+    }
+  }
+  else {
+    window.scrollTo(0, 0);
+  }
+}
+
 function Page({ match, location }: RouteChildrenProps<RouteProps>) {
   const { pageName, elementId } = match?.params ?? {},
       pageHeader = pageName || 'Home',
@@ -79,21 +113,9 @@ function Page({ match, location }: RouteChildrenProps<RouteProps>) {
 
   // reset scroll position
   useEffect(function() {
-    const el = elementId && document.getElementById(elementId);
-
-    if (el) {
-      const { y: elCurrentY } = el.getBoundingClientRect(),
-          { scrollY } = window,
-          elDistanceFromTopOfDocument = scrollY + elCurrentY,
-          pageHeader = document.getElementById('gallery-page-header'),
-          pageHeaderHeight = pageHeader?.getBoundingClientRect()?.height ?? 0;
-
-      window.scrollTo(0, elDistanceFromTopOfDocument - (pageHeaderHeight + SCROLL_PAGE_HEADER_PAD));
-    }
-    else {
-      window.scrollTo(0, 0);
-    }
-  }, [location, elementId]);
+    const tearDownScroll = scrollTo(elementId);
+    return tearDownScroll;
+  }, [elementId]);
 
   if (Content) {
     return (
