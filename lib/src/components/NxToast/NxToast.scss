@@ -39,18 +39,18 @@
   right: 0;
   opacity: 1;
   margin-top: var(--nx-spacing-2x);
-  animation: animationIn 0.4s linear;
+  animation: nx-toast-animation-in 0.4s linear;
   overflow: hidden;
   pointer-events: auto;
 
   &.nx-toast--closing {
-    animation-name: animationOut;
+    animation-name: nx-toast-animation-out;
   }
 }
 
 // Setting the max-height of each toast to $nx-toast-height in both animations allows for each 
 // subsequent toast to smoothly move up or down as toasts are added and removed
-@keyframes animationIn {
+@keyframes nx-toast-animation-in {
   0% {
     margin-top: 0;
     max-height: 0px;
@@ -65,7 +65,7 @@
   }
 }
 
-@keyframes animationOut {
+@keyframes nx-toast-animation-out {
   75% {
     margin-top: var(--nx-spacing-2x);
     max-height: $-toast-height;
@@ -86,21 +86,21 @@
 */
 @media (prefers-reduced-motion: reduce) {
   .nx-toast {
-    animation-name: reducedAnimationIn;
+    animation-name: nx-toast-reduced-animation-in;
 
     &.nx-toast--closing {
-      animation-name: reducedAnimationOut;
+      animation-name: nx-toast-reduced-animation-out;
     }
   }
 }
 
-@keyframes reducedAnimationIn {
+@keyframes nx-toast-reduced-animation-in {
   0% {
     opacity: 0;
   }
 }
 
-@keyframes reducedAnimationOut {
+@keyframes nx-toast-reduced-animation-out {
   100% {
     opacity: 0;
   }
