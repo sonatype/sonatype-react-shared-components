@@ -62,6 +62,37 @@ describe('NxFilterInput', function() {
     expect(ref.current).toBe(el);
   });
 
+  it('sets disabled on the Input when the disabled prop is true', function() {
+    expect(quickRender().getByRole('textbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: undefined }).getByRole('textbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: false }).getByRole('textbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: true }).getByRole('textbox')).toBeDisabled();
+  });
+
+  it('calls onKeyPress with the key value whenever the input\'s onKeyPress event fires', async function() {
+    const user = userEvent.setup(),
+        onKeyPress = jest.fn(),
+        input = quickRender({ onKeyPress }).getByRole('textbox');
+
+    expect(onKeyPress).not.toHaveBeenCalled();
+
+    await user.type(input, 'a');
+
+    expect(onKeyPress).toHaveBeenCalledWith('a');
+  });
+
+  it('calls onChange with the value whenever the input\'s onChange event fires', async function() {
+    const user = userEvent.setup(),
+        onChange = jest.fn(),
+        input = quickRender({ onChange }).getByRole('textbox');
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    await user.type(input, 'a');
+
+    expect(onChange).toHaveBeenCalledWith('a', expect.anything());
+  });
+
   it('renders a button with an accessible name of "Clear filter" when searchIcon is undefined, false or null',
       async function() {
         const clearBtn = quickRender().getByRole('button'),
