@@ -26,7 +26,6 @@ export default function NivoBarExample() {
                      }}
                      label={d => `${d.id}: ${d.value}`}
                      padding={0.15}
-                     tooltipLabel={({ id }) => `${id}`}
                      axisBottom={{
                        legend: 'animals',
                        legendPosition: 'middle',
