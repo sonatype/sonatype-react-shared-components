@@ -241,7 +241,7 @@ const pageConfig: PageConfig = {
     'Collapsible Items': { content: NxCollapsibleItemsPage, type: 'react' },
     'Description List': { content: NxDescriptionListPage, type: 'react' },
     'List': { content: NxListPageV2, type: 'react' },
-    'Nivo': { content: NivoPage, type: 'react' },
+    'Nivo Charts': { content: NivoPage, type: 'react' },
     'Table': { content: NxTablePage, type: 'react' },
     'Table Container': { content: NxTableContainerPage, type: 'html' },
     'Tree': { content: NxTreePage, type: 'react' },
