@@ -73,21 +73,18 @@ const NivoPage = () =>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Nivo Line Chart Example"
-                        defaultCheckeredBackground={false}
                         id="nivo-line-chart-example"
                         liveExample={NivoLineExample}
                         codeExamples={NivoLineExampleCode}>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nivo Bar Chart Example"
-                        defaultCheckeredBackground={false}
                         id="nivo-bar-chart-example"
                         liveExample={NivoBarExample}
                         codeExamples={NivoBarExampleCode}>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nivo Pie Chart Example"
-                        defaultCheckeredBackground={false}
                         id="nivo-pie-chart-example"
                         liveExample={NivoPieExample}
                         codeExamples={NivoPieExampleCode}>
