@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('Nivo', function() {
-  const { simpleTest } = setupBrowser('#/pages/Nivo');
+  const { simpleTest } = setupBrowser('#/pages/Nivo%20Charts');
 
   const lineSelector = '#nivo-line-chart-example',
       barSelector = '#nivo-bar-chart-example',
