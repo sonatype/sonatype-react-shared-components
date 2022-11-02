@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxP, NxH3, NxTextLink } from '@sonatype/react-shared-components';
+import { NxCode, NxP, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -25,10 +25,12 @@ const NivoPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         <NxTextLink external href="https://nivo.rocks/components/">Nivo</NxTextLink> charts are
-        recommended for data visualization. The charts should be within an element with a definite
+        recommended for data visualization.
+      </NxP>
+      <NxP>
+        The charts should be within an element with a definite
         height. If they do not, the chart will have a height of zero and will not be visible.
       </NxP>
-      <NxH3>Accessibility</NxH3>
       <NxP>
         The <NxCode>NIVO_COLORS</NxCode> array exported from RSC contains the recommended colors for
         use with Nivo charts in RSC-based applications. There are eight recommended colors
