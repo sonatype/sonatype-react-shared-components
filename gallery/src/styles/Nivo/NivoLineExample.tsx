@@ -7,7 +7,7 @@
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import { NIVO_COLORS } from '@sonatype/react-shared-components';
-import { lineData } from './data';
+import { lineData } from './lineData';
 
 export default function NivoLineExample() {
   return (

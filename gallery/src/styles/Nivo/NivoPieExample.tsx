@@ -7,7 +7,7 @@
 import React from 'react';
 import { ResponsivePie } from '@nivo/pie';
 import { NIVO_COLORS } from '@sonatype/react-shared-components';
-import { pieData } from './data';
+import { pieData } from './pieData';
 
 export default function NivoPieExample() {
   return (

@@ -16,6 +16,9 @@ import NivoPieExample from './NivoPieExample';
 const NivoLineExampleCode = require('./NivoLineExample?raw');
 const NivoBarExampleCode = require('./NivoBarExample?raw');
 const NivoPieExampleCode = require('./NivoPieExample?raw');
+const NivoLineExampleData = require('./lineData?raw');
+const NivoBarExampleData = require('./barData?raw');
+const NivoPieExampleData = require('./pieData?raw');
 
 const NivoPage = () =>
   <>
@@ -75,19 +78,19 @@ const NivoPage = () =>
     <GalleryExampleTile title="Nivo Line Chart Example"
                         id="nivo-line-chart-example"
                         liveExample={NivoLineExample}
-                        codeExamples={NivoLineExampleCode}>
+                        codeExamples={[NivoLineExampleCode, NivoLineExampleData]}>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nivo Bar Chart Example"
                         id="nivo-bar-chart-example"
                         liveExample={NivoBarExample}
-                        codeExamples={NivoBarExampleCode}>
+                        codeExamples={[NivoBarExampleCode, NivoBarExampleData]}>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nivo Pie Chart Example"
                         id="nivo-pie-chart-example"
                         liveExample={NivoPieExample}
-                        codeExamples={NivoPieExampleCode}>
+                        codeExamples={[NivoPieExampleCode, NivoPieExampleData]}>
     </GalleryExampleTile>
 
   </>;
