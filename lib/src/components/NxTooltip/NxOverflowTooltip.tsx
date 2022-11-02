@@ -57,7 +57,7 @@ function getTextBoundingRectRight(el: Element) {
 
     const nodeBoundingBox = range.getBoundingClientRect();
 
-    // accumulate widest spread
+    // accumulate farthest right
     right = right != null && right > nodeBoundingBox.right ? right : nodeBoundingBox.right;
   }
 
