@@ -30,8 +30,8 @@ const NivoPage = () =>
       </NxP>
       <NxH3>Accessibility</NxH3>
       <NxP>
-        The <NxCode>NIVO_COLORS</NxCode> array is recommended for use in the Nivo charts. The color
-        array is available to be imported from the React Shared Components. There are eight recommended colors
+        The <NxCode>NIVO_COLORS</NxCode> array exported from RSC contains the recommended colors for
+        use with Nivo charts in RSC-based applications. There are eight recommended colors
         that should be used in order by priority. The colors should be used with a white
         background, and dark text should not be displayed on top of the colors.
       </NxP>
