@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxCode, NxP, NxH3, NxTextLink } from '@sonatype/react-shared-components';
+import { NxCode, NxP, NxH3, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -30,50 +30,11 @@ const NivoPage = () =>
       </NxP>
       <NxH3>Accessibility</NxH3>
       <NxP>
-        The color array shown below is recommended for use in the Nivo charts.
+        The <NxCode>NIVO_COLORS</NxCode> array is recommended for use in the Nivo charts. The color
+        array is available to be imported from the React Shared Components. There are eight recommended colors
+        that should be used in order by priority. The colors should be used with a white
+        background, and dark text should not be displayed on top of the colors.
       </NxP>
-      <NxTable>
-        <NxTable.Head>
-          <NxTable.Row>
-            <NxTable.Cell>Priority </NxTable.Cell>
-            <NxTable.Cell>Color</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Head>
-        <NxTable.Body>
-          <NxTable.Row>
-            <NxTable.Cell>First</NxTable.Cell>
-            <NxTable.Cell><NxCode>nx-teal-40</NxCode></NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>Second</NxTable.Cell>
-            <NxTable.Cell><NxCode>nx-red-65</NxCode></NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>Third</NxTable.Cell>
-            <NxTable.Cell><NxCode>nx-green-80</NxCode></NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>Fourth</NxTable.Cell>
-            <NxTable.Cell><NxCode>nx-purple-60</NxCode></NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>Fifth</NxTable.Cell>
-            <NxTable.Cell><NxCode>nx-orange-40</NxCode></NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>Sixth</NxTable.Cell>
-            <NxTable.Cell><NxCode>nx-pink-60</NxCode></NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>Seventh</NxTable.Cell>
-            <NxTable.Cell><NxCode>nx-turquoise-30</NxCode></NxTable.Cell>
-          </NxTable.Row>
-          <NxTable.Row>
-            <NxTable.Cell>Eight</NxTable.Cell>
-            <NxTable.Cell><NxCode>nx-indigo-60</NxCode></NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Body>
-      </NxTable>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Nivo Line Chart Example"
