@@ -732,6 +732,13 @@
     "@types/raf-schd" "^4.0.0"
     raf-schd "^4.0.2"
 
+"@react-hook/throttle@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/@react-hook/throttle/-/throttle-2.2.0.tgz#d0402714a06e1ba0bc1da1fdf5c3c5cd0e08d45a"
+  integrity sha512-LJ5eg+yMV8lXtqK3lR+OtOZ2WH/EfWvuiEEu0M3bhR7dZRfTyEJKxH1oK9uyBxiXPtWXiQggWbZirMCXam51tg==
+  dependencies:
+    "@react-hook/latest" "^1.0.2"
+
 "@rooks/use-mutation-observer@^4.11.0":
   version "4.11.0"
   resolved "https://registry.npmjs.org/@rooks/use-mutation-observer/-/use-mutation-observer-4.11.0.tgz#2df8f9520c6c63041c02f2e66e091c2cf40a178d"
