@@ -18,6 +18,18 @@ describe('NxStatefulBreadcrumb', function() {
       quickRender = rtlRender(NxStatefulBreadcrumb, minimalProps),
       renderEl = rtlRenderElement(NxStatefulBreadcrumb, minimalProps);
 
+  beforeEach(function() {
+    // JSDOM is missing this function. https://github.com/jsdom/jsdom/issues/3002
+    Range.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+      bottom: 0,
+      height: 0,
+      left: 0,
+      right: 0,
+      top: 0,
+      width: 0
+    } as DOMRect);
+  });
+
   it('renders an element with a navigation role and an accessible name of "breadcrumbs"', function() {
     const view = quickRender(),
         nav = view.getByRole('navigation');
