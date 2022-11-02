@@ -5,16 +5,16 @@
    * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
    */
 
-export const rawBarData: [string, number][] = [
-  ['foxes', 10],
-  ['wolves', 34],
-  ['dogs', 1],
-  ['cats', 5],
-  ['penguins', 43],
-  ['chewbaccas', 89],
-  ['weasels', 64],
-  ['raccons', 12],
-  ['pandas', 98],
-  ['deers', 27],
-  ['bears', 32]
+export const barData = [
+  { id: 'foxes', value: 10},
+  { id: 'wolves', value: 34},
+  { id: 'dogs', value: 1},
+  { id: 'cats', value: 5},
+  { id: 'penguins', value: 43},
+  { id: 'chewbaccas', value: 89},
+  { id: 'weasels', value: 64},
+  { id: 'raccons', value: 12},
+  { id: 'pandas', value: 98},
+  { id: 'deers', value: 27},
+  { id: 'bears', value: 32}
 ];

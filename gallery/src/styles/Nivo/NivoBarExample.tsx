@@ -7,9 +7,7 @@
 import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import { NIVO_COLORS } from '@sonatype/react-shared-components';
-import { rawBarData } from './barData';
-
-const barData = rawBarData.map(([id, value]) => ({ id, value }));
+import { barData } from './barData';
 
 export default function NivoBarExample() {
   return (
