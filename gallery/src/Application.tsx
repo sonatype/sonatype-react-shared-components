@@ -73,6 +73,8 @@ function scrollTo(elementId: string | undefined): (() => void) | void {
 
   if (el) {
     function doElementScroll() {
+      // This function is only used within `if (el)` so it's not going to be null
+      /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
       const { y: elCurrentY } = el!.getBoundingClientRect(),
           { scrollY } = window,
           elDistanceFromTopOfDocument = scrollY + elCurrentY,
