@@ -41,7 +41,7 @@ function getContentBoxWidth(el: Element) {
     if (parsedSizes[2] == null) {
       console.warn('Got non-pixel computed value for border-left-width, assuming 0');
     }
-    if (parsedSizes[2] == null) {
+    if (parsedSizes[3] == null) {
       console.warn('Got non-pixel computed value for border-right-width, assuming 0');
     }
 
