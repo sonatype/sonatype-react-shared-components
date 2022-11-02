@@ -23,7 +23,9 @@ describe('NxCollapsibleItems', function() {
       clickableTreeViewSidebarSelector = '#nx-collapsible-items-clickable-sidebar-example .nx-collapsible-items',
       checkboxTreeViewSelector = '#nx-collapsible-items-checkbox-example .gallery-example-live',
       emptyTreeViewSelector = '#nx-collapsible-items-empty-example .nx-collapsible-items',
-      actionContentCollapsibleItemsSelector = '#nx-collapsible-items-action-content-example .gallery-example-live';
+      actionContentCollapsibleItemsSelector = '#nx-collapsible-items-action-content-example .gallery-example-live',
+      disabledWithactionContentCollapsibleItemsSelector
+        = '#nx-collapsible-items-disabled-with-action-content-example .gallery-example-live';
 
   async function expandCollapsibleItems(selector) {
     const [targetElement] = await waitAndGetElements(selector);
@@ -105,6 +107,10 @@ describe('NxCollapsibleItems', function() {
 
   describe('Disabled NxCollapsibleItems', function() {
     it('looks right', simpleTest(disabledTreeViewSelector));
+  });
+
+  describe('Disabled NxCollapsibleItems with actionContent', function() {
+    it('looks right', simpleTest(disabledWithactionContentCollapsibleItemsSelector));
   });
 
   describe('NxCollapsibleItems with action content', function() {
