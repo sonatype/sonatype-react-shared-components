@@ -22,62 +22,55 @@ function parsePx(pxStr: string) {
   return unitStrippedStr == null ? null : parseFloat(unitStrippedStr);
 }
 
-function getContentBoxWidth(el: Element) {
+function getContentBoxRight(el: Element) {
   const boundingClientRect = el.getBoundingClientRect();
 
   if (el instanceof HTMLElement) {
-    const { paddingLeft, paddingRight, borderLeftWidth, borderRightWidth } = getComputedStyle(el),
-        parsedSizes = map(parsePx, [paddingLeft, paddingRight, borderLeftWidth, borderRightWidth]),
+    const { paddingRight, borderRightWidth } = getComputedStyle(el),
+        parsedSizes = map(parsePx, [paddingRight, borderRightWidth]),
         paddingBorderSum = sum(map(defaultTo(0), parsedSizes));
 
     // I've seen cases where paddings defined in % units don't get converted to px on inline elements.
     // This would be a very rare case where expected behavior is unclear, so just warn about it
     if (parsedSizes[0] == null) {
-      console.warn('Got non-pixel computed value for padding-left, assuming 0');
-    }
-    if (parsedSizes[1] == null) {
       console.warn('Got non-pixel computed value for padding-right, assuming 0');
     }
-    if (parsedSizes[2] == null) {
-      console.warn('Got non-pixel computed value for border-left-width, assuming 0');
-    }
-    if (parsedSizes[3] == null) {
+    if (parsedSizes[1] == null) {
       console.warn('Got non-pixel computed value for border-right-width, assuming 0');
     }
 
-    return boundingClientRect.width - paddingBorderSum;
+    return boundingClientRect.right - paddingBorderSum;
   }
   else {
-    return boundingClientRect.width;
+    return boundingClientRect.right;
   }
 }
 
-// Get the width of the bounding rectangle of all text content children of el
-function getTextBoundingRectWidth(el: Element) {
+// Get the rightmost edge of the bounding rectangles of all text content children of el
+function getTextBoundingRectRight(el: Element) {
   const nodeIterator = document.createNodeIterator(el, NodeFilter.SHOW_TEXT),
       range = new Range();
 
-  let left, right;
+  let right;
   for (let node = nodeIterator.nextNode(); node != null; node = nodeIterator.nextNode()) {
     range.selectNode(node);
 
     const nodeBoundingBox = range.getBoundingClientRect();
 
     // accumulate widest spread
-    left = left != null && left < nodeBoundingBox.left ? left : nodeBoundingBox.left;
     right = right != null && right > nodeBoundingBox.right ? right : nodeBoundingBox.right;
   }
 
-  return right == null || left == null ? 0 : right - left;
+  return right;
 }
 
 // Note: this won't detect overflowing non-text content, but for the purpose of an overflow tooltip we
 // only care about text content anyway
 function isOverflowing(el: Element) {
-  const contentBoxWidth = getContentBoxWidth(el),
-      textBoundingRectWidth = getTextBoundingRectWidth(el);
+  const contentBoxRight = getContentBoxRight(el),
+      textBoundingRectRight = getTextBoundingRectRight(el);
 
-  return contentBoxWidth < textBoundingRectWidth;
+  return textBoundingRectRight ? contentBoxRight < textBoundingRectRight : false;
 }
 
 function selfOrChildrenOverflowing(el: Element): boolean {
