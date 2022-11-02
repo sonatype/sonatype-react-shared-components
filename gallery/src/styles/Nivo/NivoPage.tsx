@@ -79,18 +79,24 @@ const NivoPage = () =>
                         id="nivo-line-chart-example"
                         liveExample={NivoLineExample}
                         codeExamples={[NivoLineExampleCode, NivoLineExampleData]}>
+      Basic example of using a Nivo  <NxTextLink external href="https://nivo.rocks/line/">line</NxTextLink> chart
+      with the recommended color array.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nivo Bar Chart Example"
                         id="nivo-bar-chart-example"
                         liveExample={NivoBarExample}
                         codeExamples={[NivoBarExampleCode, NivoBarExampleData]}>
+      Basic example of using a Nivo  <NxTextLink external href="https://nivo.rocks/bar/">bar</NxTextLink> chart
+      with the recommended color array.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Nivo Pie Chart Example"
                         id="nivo-pie-chart-example"
                         liveExample={NivoPieExample}
                         codeExamples={[NivoPieExampleCode, NivoPieExampleData]}>
+      Basic example of using a Nivo  <NxTextLink external href="https://nivo.rocks/pie/">pie</NxTextLink> chart
+      with the recommended color array.
     </GalleryExampleTile>
 
   </>;
