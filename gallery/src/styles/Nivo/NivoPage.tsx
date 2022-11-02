@@ -26,7 +26,7 @@ const NivoPage = () =>
       </NxP>
       <NxH3>Accessibility</NxH3>
       <NxP>
-        The color array show below is recommended for use in the Nivo charts.
+        The color array shown below is recommended for use in the Nivo charts.
       </NxP>
       <NxTable>
         <NxTable.Head>
