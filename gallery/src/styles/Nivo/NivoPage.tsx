@@ -25,7 +25,8 @@ const NivoPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         <NxTextLink external href="https://nivo.rocks/components/">Nivo</NxTextLink> charts are
-        recommended for data visualization.
+        recommended for data visualization. The charts should be within an element with a definite
+        height. If they do not, the chart will have a height of zero and will not be visible.
       </NxP>
       <NxH3>Accessibility</NxH3>
       <NxP>
