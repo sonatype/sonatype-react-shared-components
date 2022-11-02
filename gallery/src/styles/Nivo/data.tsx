@@ -172,7 +172,6 @@ export const lineData = [
   },
   {
     'id': 'us',
-    'color': 'hsl(357, 70%, 50%)',
     'data': [
       {
         'x': 'plane',
@@ -226,7 +225,6 @@ export const lineData = [
   },
   {
     'id': 'germany',
-    'color': 'hsl(184, 70%, 50%)',
     'data': [
       {
         'x': 'plane',
@@ -280,7 +278,6 @@ export const lineData = [
   },
   {
     'id': 'norway',
-    'color': 'hsl(228, 70%, 50%)',
     'data': [
       {
         'x': 'plane',
