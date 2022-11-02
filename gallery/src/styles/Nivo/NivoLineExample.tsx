@@ -11,7 +11,7 @@ import { lineData } from './lineData';
 
 export default function NivoLineExample() {
   return (
-    <div style={{ height: 400 }} className="lineChart">
+    <div style={{ height: 400 }}>
       <ResponsiveLine data={lineData}
                       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                       xScale={{ type: 'point' }}
