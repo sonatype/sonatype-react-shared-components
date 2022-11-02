@@ -83,14 +83,14 @@ describe('NxFilterInput', function() {
 
   it('calls onChange with the value whenever the input\'s onChange event fires', async function() {
     const user = userEvent.setup(),
-        onChange = jest.fn(),
+        onChange = jest.fn().mockImplementation((_, evt) => { evt.persist(); }),
         input = quickRender({ onChange }).getByRole('textbox');
 
     expect(onChange).not.toHaveBeenCalled();
 
     await user.type(input, 'a');
 
-    expect(onChange).toHaveBeenCalledWith('a', expect.anything());
+    expect(onChange).toHaveBeenCalledWith('a', expect.objectContaining({ target: input }));
   });
 
   it('renders a button with an accessible name of "Clear filter" when searchIcon is undefined, false or null',
