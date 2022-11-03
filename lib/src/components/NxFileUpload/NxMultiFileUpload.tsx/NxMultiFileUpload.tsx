@@ -4,10 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, forwardRef, useEffect, useRef, useContext } from 'react';
+import React, { FormEvent, forwardRef, useEffect, useRef, useState, useContext } from 'react';
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
+import { concat } from 'ramda';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
@@ -15,7 +16,7 @@ import NxButton from '../../NxButton/NxButton';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import { FormAriaContext } from '../../NxForm/context';
 import { useUniqueId } from '../../../util/idUtil';
-import { Props, propTypes, SelectedFileProps } from '../types';
+import { Props, propTypes, SelectedFileProps } from './types';
 
 export { Props };
 
@@ -23,9 +24,10 @@ import '../NxFileUpload.scss';
 
 const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps) {
+function SelectedFile({ file, onDismiss }: SelectedFileProps) {
   // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
   const buttonLabel = 'Dismiss Upload';
+  const descriptionId = useUniqueId('nx-file-upload-description');
 
   return (
     <span className="nx-selected-file">
@@ -55,8 +57,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         disabled,
         ...attrs
       } = props,
-      file = files?.item(0),
-      isFileSelected = !!file,
+      isFileSelected = files?.length,
       { showValidationErrors: formShowValidationErrors } = useContext(FormAriaContext),
       showValidationErrors = formShowValidationErrors || !isPristine,
       showError = isRequired && showValidationErrors && !isFileSelected,
@@ -67,13 +68,21 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-file-upload-input', id),
       validationErrorId = useUniqueId('nx-file-upload-validation-error'),
-      descriptionId = useUniqueId('nx-file-upload-description');
+      [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
+
     const { files } = evt.currentTarget,
         normalizedFiles = !files?.length ? null : files;
 
+    //look into this - how and the array I made of selectedFiles - one to remove?
     onChangeProp(normalizedFiles);
+
+    if (normalizedFiles) {
+      const normalizedArray = Array.from(normalizedFiles);
+      const newArray = concat(selectedFiles, normalizedArray);
+      setSelectedFiles(newArray);
+    }
   }
 
   function openPicker() {
@@ -106,10 +115,11 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
              id={inputId}
              className="nx-file-upload__input"
              type="file"
-             aria-describedby={descriptionId}
+            //  aria-describedby={descriptionId}
              aria-required={isRequired ?? undefined}
              aria-invalid={showError || undefined}
-             aria-errormessage={showError ? validationErrorId : undefined} />
+             aria-errormessage={showError ? validationErrorId : undefined}
+             multiple/>
       {/* Keynav and screenreaders can ignore the button itself in favor of the <input> */}
       <NxButton type="button"
                 aria-hidden={true}
@@ -121,8 +131,13 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         Choose File
       </NxButton>
       { isFileSelected ?
-        <SelectedFile descriptionId={descriptionId} file={file} onDismiss={onDismiss} /> :
-        <span id={descriptionId} className={noFileMessageClassName}>
+        selectedFiles?.map((file) =>
+          <SelectedFile key= {file.name} file={file} onDismiss={onDismiss}/>
+        )
+        :
+        <span className={noFileMessageClassName}
+              // id={descriptionId}
+          >
           <span>No file selected</span>
           <NxFontAwesomeIcon icon={faExclamationCircle} />
         </span>

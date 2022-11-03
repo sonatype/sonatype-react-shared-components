@@ -8,7 +8,6 @@ import { InputHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface SelectedFileProps {
-  descriptionId: string;
   file: File;
   onDismiss: () => void;
 }
