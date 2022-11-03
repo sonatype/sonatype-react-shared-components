@@ -24,10 +24,14 @@ import '../NxFileUpload.scss';
 
 const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-function SelectedFile({ file, onDismiss }: SelectedFileProps) {
+function SelectedFile({ file, onDismiss: onDismissProp }: SelectedFileProps) {
   // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
   const buttonLabel = 'Dismiss Upload';
   const descriptionId = useUniqueId('nx-file-upload-description');
+
+  function onDismiss() {
+    onDismissProp(file);
+  }
 
   return (
     <span className="nx-selected-file">
@@ -89,9 +93,16 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
     inputRef.current?.click();
   }
 
-  function onDismiss() {
-    inputRef.current?.focus();
-    onChangeProp(null);
+  function onDismiss(file : File) {
+    // inputRef.current?.focus();
+    // onChangeProp(null);
+    const updatedFilesArray:File[] = [];
+    selectedFiles.map((f) => {
+      if (f !== file) {
+        updatedFilesArray.push(f);
+      }
+    });
+    setSelectedFiles(updatedFilesArray);
   }
 
   useEffect(function() {
