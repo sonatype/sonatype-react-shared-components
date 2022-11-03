@@ -219,6 +219,13 @@ describe('PrivateNxTextInput', function() {
     expect(component.find('.nx-text-input__box > .foo')).toExist();
     expect(component.find('.nx-text-input__box > .foo + .nx-text-input__input')).toExist();
   });
+
+  it('renders the suffixContent after the input element', function() {
+    const component = getShallowComponent({ suffixContent: <span className="foo"/> });
+
+    expect(component.find('.nx-text-input__box > .foo')).toExist();
+    expect(component.find('.nx-text-input__box > .nx-text-input__input + .foo')).toExist();
+  });
 });
 
 describe('NxTextInput', function() {
