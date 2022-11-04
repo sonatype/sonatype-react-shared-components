@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useEffect } from 'react';
+import React, { ComponentType, useEffect, useState } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { mergeAll, values } from 'ramda';
-import { NxPageMain } from '@sonatype/react-shared-components';
+import { NxH1, NxLoadingSpinner, NxPageMain, NxPageTitle } from '@sonatype/react-shared-components';
 
 // polyfill Array.prototype.includes which is used in query-string
 import 'core-js/features/array/includes';
@@ -108,7 +108,27 @@ function scrollTo(elementId: string | undefined): (() => void) | void {
 function Page({ match, location }: RouteChildrenProps<RouteProps>) {
   const { pageName, elementId } = match?.params ?? {},
       pageHeader = pageName || 'Home',
-      Content = pageName ? pageMappings[pageName]?.content : Home;
+      [PageImpl, setPageImpl] = useState<ComponentType | null>(null),
+      contentPath = pageName && pageMappings[pageName]?.content;
+
+  // Dynamically load the code for the page in question using ES6+ dynamic import
+  useEffect(() => {
+    if (contentPath) {
+      let cancelLoad;
+      const cancelPromise = new Promise((_, reject) => {
+            cancelLoad = reject;
+          }),
+          importPromise = import(/* webpackInclude: /Page(.tsx)?$/ */`${contentPath}`),
+          cancellableImportPromise = Promise.race([cancelPromise, importPromise]);
+
+      cancellableImportPromise.then(module => { setPageImpl(() => module.default); });
+
+      return cancelLoad;
+    }
+    else {
+      return undefined;
+    }
+  }, [contentPath]);
 
   useEffect(function() {
     handleQueryParams(queryString.parse(location.search));
@@ -120,21 +140,24 @@ function Page({ match, location }: RouteChildrenProps<RouteProps>) {
     return tearDownScroll;
   }, [elementId]);
 
-  if (Content) {
-    return (
-      <NxPageMain>
-        <div className="nx-page-title">
-          <h1 className="nx-h1">
-            {pageHeader}
-          </h1>
-        </div>
-        <Content/>
-      </NxPageMain>
-    );
+  if (pageName == null) {
+    return <Home />;
   }
-  else {
+  else if (contentPath == null) {
     // unknown page
     return <Redirect to="/" />;
+  }
+  else {
+    return (
+      <NxPageMain>
+        <NxPageTitle>
+          <NxH1>
+            {pageHeader}
+          </NxH1>
+        </NxPageTitle>
+        { PageImpl ? <PageImpl/> : <NxLoadingSpinner /> }
+      </NxPageMain>
+    );
   }
 }
 
