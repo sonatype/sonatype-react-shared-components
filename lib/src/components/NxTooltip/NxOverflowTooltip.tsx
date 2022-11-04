@@ -22,6 +22,10 @@ function parsePx(pxStr: string) {
   return unitStrippedStr == null ? null : parseFloat(unitStrippedStr);
 }
 
+function roundTo3Decimals(num: number) {
+  return Math.round(num * 1000) / 1000;
+}
+
 function getContentBoxRight(el: Element) {
   const boundingClientRect = el.getBoundingClientRect();
 
@@ -70,8 +74,8 @@ function isOverflowing(el: Element) {
   const contentBoxRight = getContentBoxRight(el),
       textBoundingRectRight = getTextBoundingRectRight(el);
 
-  // toPrecision calls are due to rounding discrepancies within the browser engine at non-100% zoom levels
-  return textBoundingRectRight ? contentBoxRight.toPrecision(3) < textBoundingRectRight.toPrecision(3) : false;
+  // rounding to three decimal places due to rounding discrepancies within the browser engine at non-100% zoom levels
+  return textBoundingRectRight ? roundTo3Decimals(contentBoxRight) < roundTo3Decimals(textBoundingRectRight) : false;
 }
 
 function selfOrChildrenOverflowing(el: Element): boolean {
