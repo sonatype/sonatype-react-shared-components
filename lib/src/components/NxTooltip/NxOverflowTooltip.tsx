@@ -70,7 +70,8 @@ function isOverflowing(el: Element) {
   const contentBoxRight = getContentBoxRight(el),
       textBoundingRectRight = getTextBoundingRectRight(el);
 
-  return textBoundingRectRight ? contentBoxRight < textBoundingRectRight : false;
+  // toPrecision calls are due to rounding discrepancies within the browser engine at non-100% zoom levels
+  return textBoundingRectRight ? contentBoxRight.toPrecision(3) < textBoundingRectRight.toPrecision(3) : false;
 }
 
 function selfOrChildrenOverflowing(el: Element): boolean {
