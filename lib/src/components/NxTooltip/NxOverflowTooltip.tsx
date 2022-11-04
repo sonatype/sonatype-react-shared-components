@@ -22,8 +22,11 @@ function parsePx(pxStr: string) {
   return unitStrippedStr == null ? null : parseFloat(unitStrippedStr);
 }
 
-function roundTo3Decimals(num: number) {
-  return Math.round(num * 1000) / 1000;
+// Rounding floats to a particular number of decimal places is an uncertain thing, since floats are internally
+// coded in base 2 and not base 10. So rather than rounding to the thousandths place (3 decimal places) we round
+// here to closest negative power of 2: the 1024ths place
+function roundTo10Bicemals(num: number) {
+  return Math.round(num * 1024) / 1024;
 }
 
 function getContentBoxRight(el: Element) {
@@ -74,8 +77,8 @@ function isOverflowing(el: Element) {
   const contentBoxRight = getContentBoxRight(el),
       textBoundingRectRight = getTextBoundingRectRight(el);
 
-  // rounding to three decimal places due to rounding discrepancies within the browser engine at non-100% zoom levels
-  return textBoundingRectRight ? roundTo3Decimals(contentBoxRight) < roundTo3Decimals(textBoundingRectRight) : false;
+  // rounding due to discrepancies within the browser engine at non-100% zoom levels
+  return textBoundingRectRight ? roundTo10Bicemals(contentBoxRight) < roundTo10Bicemals(textBoundingRectRight) : false;
 }
 
 function selfOrChildrenOverflowing(el: Element): boolean {
