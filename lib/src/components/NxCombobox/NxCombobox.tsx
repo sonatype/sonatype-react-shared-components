@@ -12,18 +12,19 @@ import usePrevious from '../../util/usePrevious';
 import './NxCombobox.scss';
 
 import forwardRef from '../../util/genericForwardRef';
-import { Props, propTypes } from './types';
+import { DataItemType, Props, propTypes } from './types';
 import NxTextInput from '../NxTextInput/NxTextInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadError from '../NxLoadError/NxLoadError';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import { useUniqueId } from '../../util/idUtil';
 import DataItem from '../../util/DataItem';
+import NxTooltip from '../NxTooltip/NxTooltip';
 export { Props } from './types';
 
 const SELECTION_POLL_INTERVAL = 100;
 
-function NxComboboxRender<T extends string | number = string>(
+function NxComboboxRender<T extends string | number | DataItem<string | number, string>>(
   props: Props<T>,
   ref: Ref<HTMLDivElement>
 ) {
@@ -35,6 +36,7 @@ function NxComboboxRender<T extends string | number = string>(
         value,
         onChange,
         onSearch,
+        itemTooltip,
         disabled,
         emptyMessage,
         autoComplete,
@@ -135,7 +137,7 @@ function NxComboboxRender<T extends string | number = string>(
     inputRef.current?.focus();
   }
 
-  function handleDropdownBtnClick(item: DataItem<T, string>) {
+  function handleDropdownBtnClick(item: DataItemType<T>) {
     const { displayName } = item;
 
     onChange(displayName, item);
@@ -343,28 +345,29 @@ function NxComboboxRender<T extends string | number = string>(
                         aria-label="listbox of combobox">
           {
             matches.length && matches.map((match, i) =>
-              <button type="button"
-                      id={getDropdownBtnIdForIndex(i)}
-                      role="option"
-                      aria-selected={i === focusableBtnIndex }
-                      className= {classnames('nx-dropdown-button',
-                          { 'selected': i === focusableBtnIndex })}
-                      tabIndex={-1}
-                      key={match.id}
-                      onClick={() => handleDropdownBtnClick(match)}
-                      // In Safari, focus seems to be intended to strictly be a keyboard nav thing,
-                      // and when you click a button, focus does NOT go to that button, it goes to the <body>.
-                      // This messes up our idea of only showing the menu when something within the component has focus,
-                      // because this means that the component loses focus in the middle of the click,
-                      // causing the menu to hide while the user is in the middle of clicking,
-                      // causing the click not to register at all.
-                      // Using preventDefault on onMouseDown seem to have prevent the focus from going to the <body>.
-                      onMouseDown={(event) => {
-                        event.preventDefault();
-                        event.currentTarget.focus();
-                      }}>
-                {match.displayName}
-              </button>
+              <NxTooltip key={match.id} title={itemTooltip?.(match) ?? ''}>
+                <button type="button"
+                        id={getDropdownBtnIdForIndex(i)}
+                        role="option"
+                        aria-selected={i === focusableBtnIndex }
+                        className= {classnames('nx-dropdown-button',
+                            { 'selected': i === focusableBtnIndex })}
+                        tabIndex={-1}
+                        onClick={() => handleDropdownBtnClick(match)}
+                        // In Safari, focus seems to be intended to strictly be a keyboard nav thing,
+                        // and when you click a button, focus does NOT go to that button, it goes to the <body>.
+                        // This messes up our idea of only showing the menu when something within the component has
+                        // focus, because this means that the component loses focus in the middle of the click,
+                        // causing the menu to hide while the user is in the middle of clicking,
+                        // causing the click not to register at all.
+                        // Using preventDefault on onMouseDown seem to have prevent the focus from going to the <body>.
+                        onMouseDown={(event) => {
+                          event.preventDefault();
+                          event.currentTarget.focus();
+                        }}>
+                  {match.displayName}
+                </button>
+              </NxTooltip>
             )
           }
         </NxDropdownMenu>

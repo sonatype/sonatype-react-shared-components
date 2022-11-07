@@ -8,14 +8,26 @@ import * as PropTypes from 'prop-types';
 import { HTMLAttributes, ReactNode } from 'react';
 import DataItem from '../../util/DataItem';
 
-export interface Props<T extends string | number = string>
+/*
+ * For backwards compatibility. Props originally had a type parameter that was passed to DataItem as its
+ * first type parameter (e.g. a subtype of `string | number`). When itemTooltip was added however, we now
+ * needed a type parameter for a subtype of the entire DataItem, a case which subsumes the old type parameter.
+ * To avoid needlessly having two type parameters, which tended to cause typescript to require callers to explicity
+ * specify the types when in the past they didn't need to, we use this conditional type to support both the new
+ * way and the old way with a single type parameter.
+ */
+export type DataItemType<T extends string | number | DataItem<string | number, string>> =
+  T extends string | number ? DataItem<T, string> : T;
+
+export interface Props<T extends string | number | DataItem<string | number, string>>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   value: string;
   loading?: boolean | null;
   loadError?: ReactNode;
-  matches: DataItem<T, string>[];
+  matches: DataItemType<T>[];
   onSearch: (s: string) => void;
-  onChange: (s: string, item?: DataItem<T, string>) => void;
+  onChange: (s: string, item?: DataItemType<T>) => void;
+  itemTooltip?: ((item: DataItemType<T>) => ReactNode) | null;
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
   autoComplete?: boolean | null;
@@ -31,9 +43,10 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   matches: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
     displayName: PropTypes.string.isRequired
-  }).isRequired).isRequired,
+  }).isRequired).isRequired as any,
   onSearch: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  itemTooltip: PropTypes.func,
   disabled: PropTypes.bool,
   emptyMessage: PropTypes.node,
   autoComplete: PropTypes.bool,
