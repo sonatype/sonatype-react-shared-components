@@ -36,7 +36,7 @@ export interface Props<T extends string | number | DataItem<string | number, str
   validationErrors?: string | string[] | null;
 }
 
-export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
+export const propTypes: PropTypes.ValidationMap<Props<DataItem<string | number, string>>> = {
   value: PropTypes.string.isRequired,
   loading: PropTypes.bool,
   loadError: PropTypes.node,

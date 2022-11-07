@@ -376,6 +376,11 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
   );
 }
 
-const NxCombobox = Object.assign(forwardRef(NxComboboxRender), { propTypes });
+const NxCombobox = Object.assign(forwardRef(NxComboboxRender), {
+  // propTypes types can actually effect the overall type of NxCombobox in ways we don't want, the cast
+  // to `any` prevents that
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  propTypes: propTypes as any
+});
 
 export default NxCombobox;
