@@ -212,16 +212,18 @@ describe('NxCombobox', function() {
     expect(onSearch).toHaveBeenCalledWith('f');
   });
 
-  it('fires onChange when the button with role option is clicked', async function() {
-    const user = userEvent.setup(),
-        onChange = jest.fn(),
-        { getAllByRole } = quickRender({
-          matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onChange }),
-        optionBtns = getAllByRole('option');
+  it('fires onChange when the button with role option is clicked and passes the DataItem as a second arg',
+      async function() {
+        const user = userEvent.setup(),
+            onChange = jest.fn(),
+            { getAllByRole } = quickRender({
+              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onChange }),
+            optionBtns = getAllByRole('option');
 
-    await user.click(optionBtns[1]);
-    expect(onChange).toHaveBeenCalledWith('Boo');
-  });
+        await user.click(optionBtns[1]);
+        expect(onChange).toHaveBeenCalledWith('Boo', { id: '2', displayName: 'Boo' });
+      }
+  );
 
   it('does not render the empty message if there are no results and the value is empty', function() {
     const { queryByRole } = quickRender(),
@@ -531,7 +533,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props>) {
+          function quickRender(extraProps?: Partial<Props<string | number>>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
@@ -584,7 +586,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props>) {
+          function quickRender(extraProps?: Partial<Props<string | number>>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
@@ -629,7 +631,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props>) {
+          function quickRender(extraProps?: Partial<Props<string | number>>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
@@ -682,7 +684,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props>) {
+          function quickRender(extraProps?: Partial<Props<string | number>>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
@@ -731,7 +733,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props>) {
+          function quickRender(extraProps?: Partial<Props<string | number>>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
@@ -840,7 +842,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props>) {
+          function quickRender(extraProps?: Partial<Props<string | number>>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
