@@ -16,6 +16,7 @@ export default function NivoBarExample() {
                      layout="vertical"
                      colorBy="indexValue"
                      enableLabel={false}
+                     animate={false}
                      margin={{
                        top: 80,
                        left: 60,
