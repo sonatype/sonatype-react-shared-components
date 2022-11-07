@@ -53,12 +53,15 @@ const NxComboboxPage = () =>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onChange</NxCode></NxTable.Cell>
-              <NxTable.Cell>Function (string =&gt; void)</NxTable.Cell>
+              <NxTable.Cell>Function ((string, DataItem?) =&gt; void)</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Callback that fires when the user changes the input value. The handler passed in for this prop should
-                update the <NxCode>value</NxCode> prop. The handler receives the new value as its argument.
+                update the <NxCode>value</NxCode> prop. The handler receives the new value as its first argument.
+                When the change is the result of the user selecting one of the matches displayed in the dropdown,
+                a second argument is passed to this function: the <NxCode>DataItem</NxCode> for the corresponding
+                entry in the <NxCode>matches</NxCode> prop.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -260,7 +263,10 @@ const NxComboboxPage = () =>
                         codeExamples={NxComboboxExampleCode}
                         liveExample={NxComboboxExample}>
       An example of an <NxCode>NxCombobox</NxCode> tied to a backend query and with <NxCode>autoComplete</NxCode>{' '}
-      set to true to provide an inline completion string.
+      set to true to provide an inline completion string. This example also demonstrates that
+      when <NxCode>onChange</NxCode> fires as a result of the user selecting an item from the dropdown (as opposed to
+      typing a string, even if that string matches an item in the dropdown), the corresponding item from
+      the <NxCode>matches</NxCode> list is passed as the second argument to <NxCode>onChange</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error Example"

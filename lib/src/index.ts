@@ -342,6 +342,8 @@ export { default as NxCombobox, Props as NxComboboxProps } from './components/Nx
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
 
+export { default as NxScrollRender, Props as NxScrollRenderProps } from './components/NxScrollRender/NxScrollRender';
+
 export { default as NxDrawer, Props as NxDrawerProps } from './components/NxDrawer/NxDrawer';
 
 export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';

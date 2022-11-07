@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, ReactChild, HTMLAttributes, WeakValidationMap} from 'react';
+import {ReactNode, ReactElement, ReactChild, HTMLAttributes, WeakValidationMap} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
@@ -15,6 +15,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean | null;
   triggerContent: ReactNode;
   triggerTooltip?: TooltipConfigProps | string | null;
+  actionContent?: ReactElement | null;
   children?: ReactNode;
 }
 
@@ -31,6 +32,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
+  actionContent: PropTypes.element,
   triggerTooltip: PropTypes.oneOfType([tooltipPropTypesShape, PropTypes.string]),
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

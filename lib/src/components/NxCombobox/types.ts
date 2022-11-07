@@ -15,7 +15,7 @@ export interface Props<T extends string | number = string>
   loadError?: ReactNode;
   matches: DataItem<T, string>[];
   onSearch: (s: string) => void;
-  onChange: (s: string) => void;
+  onChange: (s: string, item?: DataItem<T, string>) => void;
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
   autoComplete?: boolean | null;

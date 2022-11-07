@@ -145,6 +145,7 @@ import NxStatusIndicatorPage from './styles/NxStatusIndicator/NxStatusIndicatorP
 import NxDrawerPage from './components/NxDrawer/NxDrawerPage';
 import NxComboboxPage from './components/NxCombobox/NxComboboxPage';
 import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipboardPage';
+import NxScrollRenderPage from './components/NxScrollRender/NxScrollRenderPage';
 import NxStatefulFormPage from './components/NxStatefulForm/NxStatefulFormPage';
 import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
 import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
@@ -294,7 +295,8 @@ const pageConfig: PageConfig = {
     'nx-scrollable': { content: NxScrollablePage, type: 'css' },
     'nx-viewport-sized': { content: NxViewportSizedPage, type: 'css' },
     'Selectable Colors': { content: SelectableColorsPage, type: 'css' },
-    'Style Variables': { content: CssVariablesPage, type: 'css' }
+    'Style Variables': { content: CssVariablesPage, type: 'css' },
+    'Scroll Render': { content: NxScrollRenderPage, type: 'react' }
   },
   'JavaScript & TypeScript Utilities': {
     'IDUtils': { content: IdUtilPage, type: 'js' },

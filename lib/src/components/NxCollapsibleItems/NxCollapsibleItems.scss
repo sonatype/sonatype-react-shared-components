@@ -6,6 +6,7 @@
  */
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-button-helpers';
 
 $-triangle-box-width: var(--nx-spacing-6x);
 $-trigger-side-padding: var(--nx-spacing-2x);
@@ -28,7 +29,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   }
 }
 
-.nx-collapsible-items--expanded {
+.nx-collapsible-items--expanded > .nx-collapsible-items__header {
   > .nx-collapsible-items__trigger, > .nx-collapsible-items__tooltip-wrapper > .nx-collapsible-items__trigger {
     > .nx-collapsible-items__twisty {
       transform: rotate(90deg);
@@ -57,6 +58,19 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 
   .nx-collapsible-items__twisty {
     visibility: hidden;
+  }
+}
+
+.nx-collapsible-items__header {
+  display: flex;
+  gap: var(--nx-spacing-6x);
+}
+
+.nx-collapsible-items__action-content {
+  @include nx-container-helpers.container-horizontal;
+
+  .nx-btn--icon-only {
+    @include nx-button-helpers.small-icon-btn;
   }
 }
 
