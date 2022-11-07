@@ -54,6 +54,10 @@ describe('NxCombobox', function() {
     expect(quickRender({ value: 'foo' }).getByRole('combobox')).toHaveValue('foo');
   });
 
+  it('sets autocomplete="off" on the input', function() {
+    expect(quickRender().getByRole('combobox')).toHaveAttribute('autocomplete', 'off');
+  });
+
   it('sets aria-autocomplete on the input to list as default and to both if `autoComplete` prop is set to true',
       function() {
         const { getByRole, rerender } = quickRender(),
