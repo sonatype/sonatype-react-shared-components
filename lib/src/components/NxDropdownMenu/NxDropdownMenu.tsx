@@ -20,16 +20,16 @@ export { Props };
  */
 /* eslint-disable-next-line react/prop-types */
 const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu(props, ref) {
+  const { onClosing, className: classNameProp, children, disableMenuKeyNav, ...attrs } = props;
+
   const menuRef = useRef<HTMLDivElement>(null);
-  const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState<number>(0);
   const mergedRef = useMergedRef(menuRef, ref);
 
-  const focusableItemsSelector = 'a:not([disabled]):not(.disabled), '
-  + 'button:not([disabled]):not(disabled), '
-  + 'input:not([disabled]):not(.disabled)';
+  const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState<number>(0);
 
-  const { onClosing, className: classNameProp, children, disableMenuKeyNav, ...attrs } = props,
-      className = classnames('nx-dropdown-menu', classNameProp);
+  const focusableItemsSelector = 'a:not([disabled]):not(.disabled), '
+  + 'button:not([disabled]):not(.disabled), '
+  + 'input:not([disabled]):not(.disabled)';
 
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
@@ -40,49 +40,42 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
     }
   }, [disableMenuKeyNav]);
 
-  function setFocusToMenuItem(direction?: -1 | 0 | 1) {
+  function setFocusToMenuItem(direction: -1 | 1) {
     if (menuRef.current) {
+      const focusableEls = menuRef.current.querySelectorAll<HTMLElement>(focusableItemsSelector);
 
-      const elements = menuRef.current.querySelectorAll<HTMLAnchorElement | HTMLButtonElement>(focusableItemsSelector);
+      let newFocusedMenuItemIndex = 0;
 
-      let updatedFocusedIndex = 0;
-
-      if (typeof direction !== 'number' && direction !== 0) {
-        if (!elements[focusedMenuItemIndex]) {
-          menuRef.current.focus();
-        }
-        return;
-      }
-      else if (direction === -1) {
-        updatedFocusedIndex = (focusedMenuItemIndex - 1 >= 0) ? focusedMenuItemIndex - 1 : elements.length - 1;
+      if (direction === -1) {
+        newFocusedMenuItemIndex = (focusedMenuItemIndex - 1 >= 0) ? focusedMenuItemIndex - 1 : focusableEls.length - 1;
         if (document.activeElement === menuRef.current) {
-          updatedFocusedIndex = elements.length - 1;
+          newFocusedMenuItemIndex = focusableEls.length - 1;
         }
       }
       else if (direction === 1) {
-        updatedFocusedIndex = (focusedMenuItemIndex + 1 >= elements.length) ? 0 : focusedMenuItemIndex + 1;
+        newFocusedMenuItemIndex = (focusedMenuItemIndex + 1 >= focusableEls.length) ? 0 : focusedMenuItemIndex + 1;
         if (document.activeElement === menuRef.current) {
-          updatedFocusedIndex = 0;
+          newFocusedMenuItemIndex = 0;
         }
       }
 
-      setFocusedMenuItemIndex(updatedFocusedIndex);
-      elements[updatedFocusedIndex].focus();
+      setFocusedMenuItemIndex(newFocusedMenuItemIndex);
+      focusableEls[newFocusedMenuItemIndex].focus();
     }
   }
 
   function activateMenuItem(event: React.KeyboardEvent<HTMLElement>) {
     if (menuRef.current) {
-      const elements = menuRef.current.querySelectorAll<HTMLAnchorElement | HTMLButtonElement>(focusableItemsSelector);
-      const focusedElement = elements[focusedMenuItemIndex];
-      if (focusedElement.matches('a, button')) {
+      const focusableEls = menuRef.current.querySelectorAll<HTMLElement>(focusableItemsSelector);
+      const currentFocusedEl = focusableEls[focusedMenuItemIndex];
+      if (currentFocusedEl.matches('a, button')) {
         event.preventDefault();
-        focusedElement.click();
+        currentFocusedEl.click();
       }
     }
   }
 
-  const handleKeyDown: KeyboardEventHandler<HTMLElement> = (event) => {
+  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
     if (!disableMenuKeyNav) {
       switch (event.key) {
         case 'ArrowUp':
@@ -99,6 +92,8 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
       }
     }
   };
+
+  const className = classnames('nx-dropdown-menu', classNameProp);
 
   return (
     <div ref={mergedRef}
