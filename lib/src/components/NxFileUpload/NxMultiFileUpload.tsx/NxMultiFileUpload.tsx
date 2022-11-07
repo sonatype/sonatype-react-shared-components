@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, forwardRef, useEffect, useRef, useState, useContext } from 'react';
+import React, { FormEvent, forwardRef, useEffect, useRef, useContext } from 'react';
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
-import { concat } from 'ramda';
+// import { concat } from 'ramda';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
@@ -71,22 +71,28 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       }),
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-file-upload-input', id),
-      validationErrorId = useUniqueId('nx-file-upload-validation-error'),
-      [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+      validationErrorId = useUniqueId('nx-file-upload-validation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
+    const input = (document.getElementById(inputId)) as HTMLInputElement;
+    // get the previous files uploaded
+    const dataTransferObject = new DataTransfer();
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        dataTransferObject.items.add(files[i]);
+      }
+    }
 
-    const { files } = evt.currentTarget,
-        normalizedFiles = !files?.length ? null : files;
-
-    //look into this - how and the array I made of selectedFiles - one to remove?
-    onChangeProp(normalizedFiles);
+    const inputFiles = evt.currentTarget.files,
+        normalizedFiles = !inputFiles?.length ? null : inputFiles;
 
     if (normalizedFiles) {
-      const normalizedArray = Array.from(normalizedFiles);
-      const newArray = concat(selectedFiles, normalizedArray);
-      setSelectedFiles(newArray);
+      for (let i = 0; i < normalizedFiles.length; i++) {
+        dataTransferObject.items.add(normalizedFiles[i]);
+      }
     }
+    input.files = dataTransferObject.files;
+    onChangeProp(input.files);
   }
 
   function openPicker() {
@@ -94,15 +100,19 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
   }
 
   function onDismiss(file : File) {
-    // inputRef.current?.focus();
-    // onChangeProp(null);
-    const updatedFilesArray:File[] = [];
-    selectedFiles.map((f) => {
-      if (f !== file) {
-        updatedFilesArray.push(f);
+    const dataTransferObject = new DataTransfer();
+    const input = (document.getElementById(inputId)) as HTMLInputElement;
+    const { files } = input;
+
+    if (files) {
+      for (let i = 0; i < files?.length; i++) {
+        if (file !== files[i]) {
+          dataTransferObject.items.add(files[i]);
+        }
       }
-    });
-    setSelectedFiles(updatedFilesArray);
+      input.files = dataTransferObject.files;
+      onChangeProp(input.files);
+    }
   }
 
   useEffect(function() {
@@ -142,9 +152,12 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         Choose File
       </NxButton>
       { isFileSelected ?
-        selectedFiles?.map((file) =>
-          <SelectedFile key= {file.name} file={file} onDismiss={onDismiss}/>
-        )
+        Object.keys(files).map((fileKey) => {
+          const idx = parseInt(fileKey);
+          return (
+            <SelectedFile key= {`${idx}${files[idx].name}`} file={files[idx]} onDismiss={onDismiss}/>
+          );
+        })
         :
         <span className={noFileMessageClassName}
               // id={descriptionId}
