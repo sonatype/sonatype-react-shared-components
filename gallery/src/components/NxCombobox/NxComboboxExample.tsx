@@ -7,7 +7,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { filter, map, prepend, range } from 'ramda';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { NxCombobox, DataItem, NX_STANDARD_DEBOUNCE_TIME }
+import { NxCombobox, DataItem, NX_STANDARD_DEBOUNCE_TIME, NxP }
   from '@sonatype/react-shared-components';
 
 const items = prepend(
@@ -31,6 +31,7 @@ export default function NxComboboxExample() {
   const [matches, setMatches] = useState<DataItem<number, string>[]>([]),
       [loading, setLoading] = useState(false),
       [query, setQuery] = useState(''),
+      [selectedItem, setSelectedItem] = useState<DataItem<number, string> | null>(null),
       latestExecutedQueryRef = useRef<string | null>(null);
 
   // use debounce so that the backend query does not happen until the user has stopped typing for half a second
@@ -44,8 +45,9 @@ export default function NxComboboxExample() {
     });
   }, [matches, query]), NX_STANDARD_DEBOUNCE_TIME);
 
-  function onChange(query: string) {
+  function onChange(query: string, selectedItem?: DataItem<number, string>) {
     setQuery(query);
+    setSelectedItem(selectedItem ?? null);
   }
 
   function onSearch(query: string) {
@@ -61,12 +63,15 @@ export default function NxComboboxExample() {
   }
 
   return (
-    <NxCombobox loading={loading}
-                autoComplete={true}
-                matches={matches}
-                value={query}
-                onChange={onChange}
-                onSearch={onSearch}
-                aria-label="combobox" />
+    <div>
+      <NxP>{selectedItem ? `Selected Item with id ${selectedItem.id}` : 'No item selected'}</NxP>
+      <NxCombobox loading={loading}
+                  autoComplete={true}
+                  matches={matches}
+                  value={query}
+                  onChange={onChange}
+                  onSearch={onSearch}
+                  aria-label="combobox" />
+    </div>
   );
 }
