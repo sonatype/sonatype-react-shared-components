@@ -105,8 +105,8 @@ function NxComboboxRender<T extends string | number = string>(
       // The automatically selected suggestion becomes the value of the combobox
       // when the combobox loses focus.
       if (autoComplete && focusableBtnIndex !== null) {
-        const elToFocusText = matches[focusableBtnIndex].displayName;
-        onChange(elToFocusText);
+        const elToFocusMatch = matches[focusableBtnIndex];
+        onChange(elToFocusMatch.displayName, elToFocusMatch);
       }
       setFocusableBtnIndex(null);
     }
@@ -134,8 +134,10 @@ function NxComboboxRender<T extends string | number = string>(
     inputRef.current?.focus();
   }
 
-  function handleDropdownBtnClick({displayName}: DataItem<T, string>) {
-    onChange(displayName);
+  function handleDropdownBtnClick(item: DataItem<T, string>) {
+    const { displayName } = item;
+
+    onChange(displayName, item);
     onSearch(displayName);
     focusTextInput();
     setFocusableBtnIndex(null);
@@ -147,8 +149,10 @@ function NxComboboxRender<T extends string | number = string>(
             elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
 
         if (elToFocus) {
+          const match = matches[newFocusableBtnIndex];
+
           setFocusableBtnIndex(newFocusableBtnIndex);
-          onChange(matches[newFocusableBtnIndex].displayName);
+          onChange(match.displayName, match);
           elToFocus.scrollIntoView({ block: 'nearest' });
         }
       },
@@ -212,7 +216,10 @@ function NxComboboxRender<T extends string | number = string>(
   // corresponding part of the autocompleted option
   function updateValueCase() {
     if (focusableBtnIndex != null) {
-      onChange(matches[focusableBtnIndex].displayName.slice(0, value.length));
+      const newValue = matches[focusableBtnIndex].displayName.slice(0, value.length);
+      if (newValue !== value) {
+        onChange(newValue);
+      }
     }
   }
 

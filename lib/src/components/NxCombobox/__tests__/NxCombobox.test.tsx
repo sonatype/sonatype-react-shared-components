@@ -203,16 +203,18 @@ describe('NxCombobox', function() {
     expect(onSearch).toHaveBeenCalledWith('f');
   });
 
-  it('fires onChange when the button with role option is clicked', async function() {
-    const user = userEvent.setup(),
-        onChange = jest.fn(),
-        { getAllByRole } = quickRender({
-          matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onChange }),
-        optionBtns = getAllByRole('option');
+  it('fires onChange when the button with role option is clicked and passes the DataItem as a second arg',
+      async function() {
+        const user = userEvent.setup(),
+            onChange = jest.fn(),
+            { getAllByRole } = quickRender({
+              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onChange }),
+            optionBtns = getAllByRole('option');
 
-    await user.click(optionBtns[1]);
-    expect(onChange).toHaveBeenCalledWith('Boo');
-  });
+        await user.click(optionBtns[1]);
+        expect(onChange).toHaveBeenCalledWith('Boo', { id: '2', displayName: 'Boo' });
+      }
+  );
 
   it('renders empty message if there are no results', function() {
     const { getAllByRole } = quickRender(),
@@ -513,7 +515,6 @@ describe('NxCombobox', function() {
         it('does not set aria-invalid on the combobox', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
-
       });
 
       describe('when there are validation errors', function() {
@@ -542,7 +543,6 @@ describe('NxCombobox', function() {
           expect(singleError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
           expect(multiError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
-
       });
     });
 
@@ -563,7 +563,6 @@ describe('NxCombobox', function() {
         it('does not set aria-invalid on the combobox', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
-
       });
 
       describe('when there are validation errors', function() {
@@ -592,7 +591,6 @@ describe('NxCombobox', function() {
           expect(singleError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
           expect(multiError.getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
-
       });
     });
   });
@@ -617,7 +615,6 @@ describe('NxCombobox', function() {
         it('does not set aria-invalid on the combobox', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
-
       });
 
       describe('when there are validation errors', function() {
@@ -667,7 +664,6 @@ describe('NxCombobox', function() {
         it('does not set aria-invalid on the combobox', function() {
           expect(quickRender().getByRole('combobox')).not.toHaveAttribute('aria-invalid', 'true');
         });
-
       });
 
       describe('when there are validation errors', function() {
