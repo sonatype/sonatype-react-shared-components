@@ -17,22 +17,30 @@ function NxDropdownActionsExample() {
                 className="extra-class"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
-      <a href="https://www.google.com/" className="nx-dropdown-link">
+      <a href="https://www.google.com/" role="menuitem" className="nx-dropdown-link">
         <span>Go somewhere</span>
         <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
       </a>
-      <a href="https://www.sonatype.com/" className="nx-dropdown-link">
+      <a href="https://www.sonatype.com/" role="menuitem" className="nx-dropdown-link">
         <span>Go somewhere else</span>
         <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
       </a>
-      <a href="https://www.google.com/" className="nx-dropdown-link disabled" onClick={evt => evt.preventDefault()}>
+      <a href="https://www.google.com/"
+         role="menuitem"
+         className="nx-dropdown-link disabled"
+         onClick={evt => evt.preventDefault()}>
         <span>Can't go here though</span>
         <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
       </a>
-      <a href="#/" className="nx-dropdown-link">
+      <a href="#/"
+         className="nx-dropdown-link"
+         role="menuitem">
         <span>Go to homepage</span>
       </a>
-      <a href="#/" className="nx-dropdown-link disabled" onClick={evt => evt.preventDefault()}>
+      <a href="#/"
+         className="nx-dropdown-link disabled"
+         onClick={evt => evt.preventDefault()}
+         role="menuitem">
         <span>Can't go here either</span>
       </a>
     </NxDropdown>

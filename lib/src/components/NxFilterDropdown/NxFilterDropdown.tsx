@@ -68,12 +68,16 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
 
   function onResetClick() {
     onChange(new Set());
+    if (menuRef.current) {
+      menuRef.current.focus();
+    }
   }
 
   const renderOption = ({ id, displayName }: DataItem<T>) => (
     <NxCheckbox key={id}
                 onChange={() => toggle(id)}
-                isChecked={selectedIds.has(id)}>
+                isChecked={selectedIds.has(id)}
+                role="menuitemcheckbox">
       {displayName}
     </NxCheckbox>
   );
@@ -90,7 +94,8 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
     <button key="reset-btn"
             disabled={!hasSelection}
             className="nx-dropdown-link nx-filter-dropdown__reset"
-            onClick={onResetClick}>
+            onClick={onResetClick}
+            role="menuitem">
       <Close />
       <span>Reset</span>
     </button>

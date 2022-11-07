@@ -333,7 +333,8 @@ function NxComboboxRender<T extends string | number = string>(
                         ref={dropdownRef}
                         className='nx-combobox__menu'
                         onClosing={() => {}}
-                        aria-label="listbox of combobox">
+                        aria-label="listbox of combobox"
+                        disableMenuKeyNav={true}>
           {
             matches.length && matches.map((match, i) =>
               <button type="button"

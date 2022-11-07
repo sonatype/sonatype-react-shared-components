@@ -21,51 +21,80 @@ export { Props };
 /* eslint-disable-next-line react/prop-types */
 const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu(props, ref) {
   const menuRef = useRef<HTMLDivElement>(null);
-  const [focusedIndex, setFocusedIndex] = useState<number>(0);
+  const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState<number>(0);
   const mergedRef = useMergedRef(menuRef, ref);
 
-  const { onClosing, className: classNameProp, children, ...attrs } = props,
+  const focusableItemsSelector = 'a:not([disabled]):not(.disabled), '
+  + 'button:not([disabled]):not(disabled), '
+  + 'input:not([disabled]):not(.disabled)';
+
+  const { onClosing, className: classNameProp, children, disableMenuKeyNav, ...attrs } = props,
       className = classnames('nx-dropdown-menu', classNameProp);
 
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
 
   useEffect(() => {
-    // <a> or <button>
-    if (menuRef.current) {
+    if (!disableMenuKeyNav && menuRef.current) {
       menuRef.current.focus();
-      // const elements = menuRef.current.querySelectorAll<HTMLAnchorElement | HTMLButtonElement>('a, button');
     }
-  }, [menuRef]);
+  }, [disableMenuKeyNav]);
 
-  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
+  function setFocusToMenuItem(direction?: -1 | 0 | 1) {
     if (menuRef.current) {
-      const elements = menuRef.current.querySelectorAll<HTMLAnchorElement | HTMLButtonElement>('a, button');
 
+      const elements = menuRef.current.querySelectorAll<HTMLAnchorElement | HTMLButtonElement>(focusableItemsSelector);
+
+      let updatedFocusedIndex = 0;
+
+      if (typeof direction !== 'number' && direction !== 0) {
+        if (!elements[focusedMenuItemIndex]) {
+          menuRef.current.focus();
+        }
+        return;
+      }
+      else if (direction === -1) {
+        updatedFocusedIndex = (focusedMenuItemIndex - 1 >= 0) ? focusedMenuItemIndex - 1 : elements.length - 1;
+        if (document.activeElement === menuRef.current) {
+          updatedFocusedIndex = elements.length - 1;
+        }
+      }
+      else if (direction === 1) {
+        updatedFocusedIndex = (focusedMenuItemIndex + 1 >= elements.length) ? 0 : focusedMenuItemIndex + 1;
+        if (document.activeElement === menuRef.current) {
+          updatedFocusedIndex = 0;
+        }
+      }
+
+      setFocusedMenuItemIndex(updatedFocusedIndex);
+      elements[updatedFocusedIndex].focus();
+    }
+  }
+
+  function activateMenuItem(event: React.KeyboardEvent<HTMLElement>) {
+    if (menuRef.current) {
+      const elements = menuRef.current.querySelectorAll<HTMLAnchorElement | HTMLButtonElement>(focusableItemsSelector);
+      const focusedElement = elements[focusedMenuItemIndex];
+      if (focusedElement.matches('a, button')) {
+        event.preventDefault();
+        focusedElement.click();
+      }
+    }
+  }
+
+  const handleKeyDown: KeyboardEventHandler<HTMLElement> = (event) => {
+    if (!disableMenuKeyNav) {
       switch (event.key) {
         case 'ArrowUp':
           event.preventDefault();
-          if (document.activeElement === menuRef.current) {
-            setFocusedIndex(0);
-            elements[0].focus();
-          }
-          else {
-            const updatedFocusedIndex = (focusedIndex - 1 >= 0) ? focusedIndex - 1 : elements.length - 1;
-            setFocusedIndex(updatedFocusedIndex);
-            elements[updatedFocusedIndex].focus();
-          }
+          setFocusToMenuItem(-1);
           break;
         case 'ArrowDown':
           event.preventDefault();
-          if (document.activeElement === menuRef.current) {
-            setFocusedIndex(0);
-            elements[0].focus();
-          }
-          else {
-            const updatedFocusedIndex = (focusedIndex + 1 >= elements.length) ? 0 : focusedIndex + 1;
-            setFocusedIndex(updatedFocusedIndex);
-            elements[updatedFocusedIndex].focus();
-          }
+          setFocusToMenuItem(1);
+          break;
+        case ' ': case 'Enter':
+          activateMenuItem(event);
           break;
       }
     }

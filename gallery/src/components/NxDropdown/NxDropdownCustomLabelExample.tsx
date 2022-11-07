@@ -24,7 +24,7 @@ function NxDropdownCustomLabelExample() {
                 className="extra-class"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
-      <button onClick={onClick} className="nx-dropdown-button">
+      <button role="menuitem" onClick={onClick} className="nx-dropdown-button">
         <NxFontAwesomeIcon icon={faFrog}/>
         <span>Some Action</span>
       </button>
