@@ -24,10 +24,10 @@ export default function NxSegmentedButtonPrimaryExample() {
                          buttonContent="Click Here"
                          onCloseClick={(evt: MouseEvent) => evt.preventDefault()}
                          onCloseKeyDown={(evt: KeyboardEvent) => evt.preventDefault()}>
-        <button className="nx-dropdown-button">
+        <button className="nx-dropdown-button" role="menuitem">
           Dropdown item 1
         </button>
-        <button className="nx-dropdown-button">
+        <button className="nx-dropdown-button" role="menuitem">
           Dropdown item 2
         </button>
       </NxSegmentedButton>

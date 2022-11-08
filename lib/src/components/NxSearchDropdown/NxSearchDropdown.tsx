@@ -192,9 +192,11 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       className={menuClassName}
                       onClosing={() => {}}
                       onKeyDown={handleButtonKeyDown}
+                      disableMenuKeyNav={true}
                       aria-busy={!!loading}
                       aria-live="polite"
-                      aria-hidden={!showDropdown}>
+                      aria-hidden={!showDropdown}
+                      tabIndex={-1}>
         <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
           {
             matches.length ? matches.map((match, i) =>

@@ -151,6 +151,15 @@ const NxDropdownPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>menuId</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                By default aria-controls and the menu is given a unique id.{' '}
+                This prop allows you to override that id.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/element/div">

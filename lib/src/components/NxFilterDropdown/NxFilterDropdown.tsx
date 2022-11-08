@@ -77,7 +77,7 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
     <NxCheckbox key={id}
                 onChange={() => toggle(id)}
                 isChecked={selectedIds.has(id)}
-                role="menuitemcheckbox">
+                checkboxRole="menuitemcheckbox">
       {displayName}
     </NxCheckbox>
   );

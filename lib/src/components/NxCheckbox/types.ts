@@ -18,6 +18,7 @@ export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   disabled?: boolean | null;
   overflowTooltip?: boolean | null;
   inputAttributes?: InputAttributesProp;
+  checkboxRole?: string;
 };
 
 // In a strictly typescript environment, PropTypes are mostly redundant. However, they still provide safety when this

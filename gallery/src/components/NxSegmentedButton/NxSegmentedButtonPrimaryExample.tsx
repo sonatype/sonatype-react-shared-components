@@ -22,10 +22,10 @@ export default function NxSegmentedButtonPrimaryExample() {
                          onToggleOpen={onToggleOpen}
                          onClick={onMainClick}
                          buttonContent="Click Here">
-        <button className="nx-dropdown-button">
+        <button className="nx-dropdown-button" role="menuitem">
           Dropdown item 1
         </button>
-        <button className="nx-dropdown-button">
+        <button className="nx-dropdown-button" role="menuitem">
           Dropdown item 2
         </button>
       </NxSegmentedButton>
@@ -36,7 +36,7 @@ export default function NxSegmentedButtonPrimaryExample() {
                          onToggleOpen={onToggleOpen}
                          onClick={onMainClick}
                          buttonContent="Disabled Primary Button">
-        <button className="nx-dropdown-button">
+        <button className="nx-dropdown-button" role="menuitem">
           Dropdown item 1
         </button>
       </NxSegmentedButton>

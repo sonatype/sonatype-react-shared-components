@@ -35,6 +35,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
             checkboxId,
             overflowTooltip,
             children,
+            checkboxRole,
             inputAttributes = {},
             ...otherProps
           } = props,
@@ -63,6 +64,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
                  disabled={!!disabled}
                  checked={isChecked}
                  readOnly={!onChange}
+                 role={checkboxRole}
                  onChange={onChange || undefined}
                  { ...otherInputAttributes } />
           <span className="nx-radio-checkbox__control nx-checkbox__box">
