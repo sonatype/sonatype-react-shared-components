@@ -15,6 +15,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import './NxDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import { useUniqueId } from '../../util/idUtil';
 
 import AbstractDropdown, { AbstractDropdownRenderToggleElement } from './AbstractDropdown';
 import withClass from '../../util/withClass';
@@ -28,6 +29,7 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
     label,
     toggleTooltip,
     variant,
+    id: idProp,
     ...otherProps
   } = props;
 
@@ -36,6 +38,8 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
   const classes = classnames('nx-dropdown', className);
 
   const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
+
+  const id = useUniqueId('nx-dropdown', idProp || undefined);
 
   // Wrap .nx-dropdown-button and .nx-dropdown-link children in overflow tooltips
   const wrappedChildren = children && React.Children.map<ReactElement, ReactElement>(children, child => (
@@ -52,7 +56,8 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
                 className={buttonClasses}
                 onClick={!disabled && onToggleCollapse || undefined}
                 aria-haspopup="true"
-                aria-expanded={isOpen}>
+                aria-expanded={isOpen}
+                aria-controls={id}>
         <span className="nx-dropdown__toggle-label">{ label }</span>
         <NxFontAwesomeIcon className="nx-dropdown__toggle-caret" icon={isOpen ? faCaretUp : faCaretDown} size="lg" />
       </NxButton>
@@ -67,6 +72,7 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
                       disabled={disabled}
                       renderToggleElement={renderToggleElement}
                       ref={ref}
+                      menuId={id}
                       { ...otherProps }
     >
       { wrappedChildren }

@@ -22,6 +22,7 @@ export interface AbstractDropdownProps extends HTMLAttributes<HTMLDivElement> {
   onCloseKeyDown?: KeyboardEventHandler | null;
   onCloseClick?: ((e: MouseEvent) => void) | null;
   menuRef?: Ref<HTMLDivElement>;
+  menuId?: string;
 }
 
 export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
