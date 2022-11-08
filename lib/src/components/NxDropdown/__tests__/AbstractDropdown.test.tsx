@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import NxDropdownMenu from '../../NxDropdownMenu/NxDropdownMenu';
 
 import AbstractDropdown, {
   AbstractDropdownProps,
@@ -44,6 +45,13 @@ describe('AbstractDropdown', () => {
       Toggle
     </button>
   );
+
+  it('passes menuId to dropdown menu id', function() {
+    const menuId = 'foo';
+    const component = getShallowComponent({ renderToggleElement, isOpen: true, menuId });
+    const menu = component.find(NxDropdownMenu);
+    expect(menu).toHaveProp('id', menuId);
+  });
 
   it('renders toggleElement and calls onToggleCollapse when toggleElement is clicked', function() {
     const onToggleCollapse = jest.fn();

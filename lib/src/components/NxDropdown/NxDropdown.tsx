@@ -29,7 +29,7 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
     label,
     toggleTooltip,
     variant,
-    id: idProp,
+    menuId: menuIdProp,
     ...otherProps
   } = props;
 
@@ -39,7 +39,7 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
 
   const toggleTooltipProps = toggleTooltip && wrapTooltipProps(toggleTooltip);
 
-  const id = useUniqueId('nx-dropdown', idProp || undefined);
+  const menuId = useUniqueId('nx-dropdown', menuIdProp || undefined);
 
   // Wrap .nx-dropdown-button and .nx-dropdown-link children in overflow tooltips
   const wrappedChildren = children && React.Children.map<ReactElement, ReactElement>(children, child => (
@@ -57,7 +57,7 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
                 onClick={!disabled && onToggleCollapse || undefined}
                 aria-haspopup="true"
                 aria-expanded={isOpen}
-                aria-controls={id}>
+                aria-controls={menuId}>
         <span className="nx-dropdown__toggle-label">{ label }</span>
         <NxFontAwesomeIcon className="nx-dropdown__toggle-caret" icon={isOpen ? faCaretUp : faCaretDown} size="lg" />
       </NxButton>
@@ -72,7 +72,7 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
                       disabled={disabled}
                       renderToggleElement={renderToggleElement}
                       ref={ref}
-                      menuId={id}
+                      menuId={menuId}
                       { ...otherProps }
     >
       { wrappedChildren }

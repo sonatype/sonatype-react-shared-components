@@ -37,6 +37,7 @@ export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   onCloseClick?: ((e: MouseEvent) => void) | null;
   toggleTooltip?: TooltipConfigProps | string | null;
   menuRef?: Ref<HTMLDivElement>;
+  menuId?: string;
 };
 
 export const propTypes: WeakValidationMap<Props> = {
