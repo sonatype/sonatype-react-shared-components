@@ -13,6 +13,7 @@ import { NxTreeView, NxTreeViewChild } from '../../../index';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxTooltip from '../../NxTooltip/NxTooltip';
+import NxIconDropdown from '../../NxIconDropdown/NxIconDropdown';
 import { mount } from 'enzyme';
 
 describe('NxCollapsibleItems', function() {
@@ -200,6 +201,18 @@ describe('NxCollapsibleItems', function() {
 
     expect(childrenEl).toExist();
     expect(childrenEl).toHaveProp('role', 'menu');
+  });
+
+  describe('actionContent', function() {
+    it('renders specified actionContent and does not trigger onToggleCollapse when actionContent is clicked', () => {
+      const onToggleCollapse = jest.fn();
+      const component = getShallowComponent({ actionContent: <NxIconDropdown isOpen={false} />, onToggleCollapse });
+      const toggle = component.find(NxIconDropdown);
+      expect(toggle).toExist();
+      expect(onToggleCollapse).not.toHaveBeenCalled();
+      toggle.simulate('click');
+      expect(onToggleCollapse).not.toHaveBeenCalled();
+    });
   });
 
   describe('NxCollapsibleItems.Child', function() {

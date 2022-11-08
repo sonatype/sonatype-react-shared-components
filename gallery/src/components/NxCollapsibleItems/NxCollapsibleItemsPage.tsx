@@ -17,6 +17,8 @@ import NxCollapsibleItemsClickableSidebar from './NxCollapsibleItemsClickableSid
 import NxCollapsibleItemsCheckbox from './NxCollapsibleItemsCheckboxExample';
 import NxCollapsibleItemsEmpty from './NxCollapsibleItemsEmptyExample';
 import NxCollapsibleItemsDisabled from './NxCollapsibleItemsDisabledExample';
+import NxCollapsibleItemsActionContentExample from './NxCollapsibleItemsActionContentExample';
+import NxCollapsibleItemsDisabledWithActionContentExample from './NxCollapsibleItemsDisabledWithActionContentExample';
 
 const NxCollapsibleItemsCode = require('./NxCollapsibleItemsExample?raw'),
     NxCollapsibleItemsTooltipCode = require('./NxCollapsibleItemsTooltipExample?raw'),
@@ -25,7 +27,10 @@ const NxCollapsibleItemsCode = require('./NxCollapsibleItemsExample?raw'),
     NxCollapsibleItemsClickableSidebarCode = require('./NxCollapsibleItemsClickableSidebarExample?raw'),
     NxCollapsibleItemsCheckboxCode = require('./NxCollapsibleItemsCheckboxExample?raw'),
     NxCollapsibleItemsEmptyCode = require('./NxCollapsibleItemsEmptyExample?raw'),
-    NxCollapsibleItemsDisabledCode = require('./NxCollapsibleItemsDisabledExample?raw');
+    NxCollapsibleItemsDisabledCode = require('./NxCollapsibleItemsDisabledExample?raw'),
+    NxCollapsibleItemsActionContentCode = require('./NxCollapsibleItemsActionContentExample?raw'),
+    NxCollapsibleItemsDisabledWithActionContentCode
+      = require('./NxCollapsibleItemsDisabledWithActionContentExample?raw');
 
 const NxCollapsibleItemsPage = () =>
   <>
@@ -68,7 +73,9 @@ const NxCollapsibleItemsPage = () =>
             <NxTable.Cell>boolean</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Controls whether the collapsible items should be rendered as disabled or not. Default is false.
+              Controls whether the collapsible items should be rendered as disabled or not. Default is false.{' '}
+              It is important to set <NxCode>actionContent</NxCode> buttons, if specified, to disabled as well{' '}
+              when this is true.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -91,6 +98,15 @@ const NxCollapsibleItemsPage = () =>
               the simpler way is to simply specify the tooltip text as a string.
               If control of more complex tooltip options is desired,
               an object can be passed which will serve as the props for NxTooltip
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>actionContent</NxTable.Cell>
+            <NxTable.Cell>VirtualDOM</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              You can specify one <NxCode>NxIconDropdown</NxCode> or <NxCode>NxIconButton</NxCode>{' '}
+              as a content for this attribute. It will be placed on the right side of the trigger content.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -211,6 +227,24 @@ const NxCollapsibleItemsPage = () =>
                         liveExample={NxCollapsibleItemsDisabled}
                         codeExamples={NxCollapsibleItemsDisabledCode}>
       Example of a disabled <NxCode>NxCollapsibleItems</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxCollapsibleItems Action Content Example"
+                        id="nx-collapsible-items-action-content-example"
+                        liveExample={NxCollapsibleItemsActionContentExample}
+                        codeExamples={NxCollapsibleItemsActionContentCode}>
+      Example of <NxCode>NxCollapsibleItems</NxCode> with <NxCode>NxIconDropdown</NxCode> and{' '}
+      <NxCode>NxIconButton</NxCode> specified as its action content.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="NxCollapsibleItems Disabled Action Content Example"
+                        id="nx-collapsible-items-disabled-with-action-content-example"
+                        liveExample={NxCollapsibleItemsDisabledWithActionContentExample}
+                        codeExamples={NxCollapsibleItemsDisabledWithActionContentCode}>
+      Example of disabled <NxCode>NxCollapsibleItems</NxCode> with disabled <NxCode>NxIconDropdown</NxCode> and{' '}
+      disabled <NxCode>NxIconButton</NxCode> specified as its action content. It is recommended that{' '}
+      the buttons inside <NxCode>actionContent</NxCode> be disabled as well when the{' '}
+      <NxCode>NxCollapsibleItems</NxCode> is disabled.
     </GalleryExampleTile>
   </>;
 
