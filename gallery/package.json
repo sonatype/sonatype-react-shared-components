@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "12.3.8",
+  "version": "12.4.2",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -51,6 +51,10 @@
     "jest-image-snapshot": "^4.5.1",
     "jest-junit": "^12.3.0",
     "mini-css-extract-plugin": "^2.6.0",
+    "@nivo/core": "^0.80.0",
+    "@nivo/bar": "^0.80.0",
+    "@nivo/line": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
     "npm-run-all": "^4.1.5",
     "puppeteer": "^13",
     "resolve-url-loader": "^5.0.0",
