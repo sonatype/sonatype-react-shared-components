@@ -14,6 +14,10 @@ import './NxDropdownMenu.scss';
 
 export { Props };
 
+const FOCUSABLE_MENU_ITEMS_SELECTOR = 'a:not([disabled]):not(.disabled), '
++ 'button:not([disabled]):not(.disabled), '
++ 'input:not([disabled]):not(.disabled)';
+
 /**
  * This component is not currently intended for public export. It is a helper for NxDropdown and NxSegmentedButton
  * so they can reset focus when they close
@@ -27,10 +31,6 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
 
   const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState<number>(0);
 
-  const focusableItemsSelector = 'a:not([disabled]):not(.disabled), '
-  + 'button:not([disabled]):not(.disabled), '
-  + 'input:not([disabled]):not(.disabled)';
-
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
 
@@ -42,18 +42,20 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
 
   function setFocusToMenuItem(direction: -1 | 1) {
     if (menuRef.current) {
-      const focusableEls = menuRef.current.querySelectorAll<HTMLElement>(focusableItemsSelector);
+      const focusableEls = menuRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_MENU_ITEMS_SELECTOR);
 
       let newFocusedMenuItemIndex = 0;
 
       if (direction === -1) {
         newFocusedMenuItemIndex = (focusedMenuItemIndex - 1 >= 0) ? focusedMenuItemIndex - 1 : focusableEls.length - 1;
+
         if (document.activeElement === menuRef.current) {
           newFocusedMenuItemIndex = focusableEls.length - 1;
         }
       }
       else if (direction === 1) {
         newFocusedMenuItemIndex = (focusedMenuItemIndex + 1 >= focusableEls.length) ? 0 : focusedMenuItemIndex + 1;
+
         if (document.activeElement === menuRef.current) {
           newFocusedMenuItemIndex = 0;
         }
@@ -66,7 +68,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
 
   function activateMenuItem(event: React.KeyboardEvent<HTMLElement>) {
     if (menuRef.current) {
-      const focusableEls = menuRef.current.querySelectorAll<HTMLElement>(focusableItemsSelector);
+      const focusableEls = menuRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_MENU_ITEMS_SELECTOR);
       const currentFocusedEl = focusableEls[focusedMenuItemIndex];
       if (currentFocusedEl.matches('a, button')) {
         event.preventDefault();
