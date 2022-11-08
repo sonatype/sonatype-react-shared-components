@@ -10,7 +10,6 @@ import { screen, fireEvent, render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-
 import NxCombobox, { Props } from '../NxCombobox';
 import NxForm from '../../NxForm/NxForm';
 
