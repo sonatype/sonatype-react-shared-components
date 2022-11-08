@@ -324,7 +324,9 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                    aria-activedescendant={focusableBtnId}
                    aria-required={ariaRequired}
                    aria-describedby={inputDescribedby}
-                   aria-label={ariaLabel}/>
+                   aria-label={ariaLabel}
+                   // disable browser autocomplete
+                   autoComplete="off"/>
       { isAlert ?
         <div id={alertDropdownId}
              role="alert"

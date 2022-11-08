@@ -22,6 +22,14 @@ function parsePx(pxStr: string) {
   return unitStrippedStr == null ? null : parseFloat(unitStrippedStr);
 }
 
+// Rounding floats to a particular number of decimal places is an uncertain thing, since floats are internally
+// coded in base 2 and not base 10. So instead we round to a "bicemals" place (not sure if that's the real world)
+const ROUNDING_BICEMALS_PLACE = 5;
+function roundTo5Bicemals(num: number) {
+  const multiplier = 1 << ROUNDING_BICEMALS_PLACE;
+  return Math.round(num * multiplier) / multiplier;
+}
+
 function getContentBoxRight(el: Element) {
   const boundingClientRect = el.getBoundingClientRect();
 
@@ -70,7 +78,8 @@ function isOverflowing(el: Element) {
   const contentBoxRight = getContentBoxRight(el),
       textBoundingRectRight = getTextBoundingRectRight(el);
 
-  return textBoundingRectRight ? contentBoxRight < textBoundingRectRight : false;
+  // rounding due to discrepancies within the browser engine at non-100% zoom levels
+  return textBoundingRectRight ? roundTo5Bicemals(contentBoxRight) < roundTo5Bicemals(textBoundingRectRight) : false;
 }
 
 function selfOrChildrenOverflowing(el: Element): boolean {
