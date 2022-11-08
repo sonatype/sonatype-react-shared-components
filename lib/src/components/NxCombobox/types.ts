@@ -19,7 +19,7 @@ import DataItem from '../../util/DataItem';
 export type DataItemType<T extends string | number | DataItem<string | number, string>> =
   T extends string | number ? DataItem<T, string> : T;
 
-export interface Props<T extends string | number | DataItem<string | number, string>>
+export interface Props<T extends string | number | DataItem<string | number, string> = string>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   value: string;
   loading?: boolean | null;

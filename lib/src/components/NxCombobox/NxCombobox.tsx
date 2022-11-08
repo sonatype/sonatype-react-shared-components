@@ -24,7 +24,7 @@ export { Props } from './types';
 
 const SELECTION_POLL_INTERVAL = 100;
 
-function NxComboboxRender<T extends string | number | DataItem<string | number, string>>(
+function NxComboboxRender<T extends string | number | DataItem<string | number, string> = string>(
   props: Props<T>,
   ref: Ref<HTMLDivElement>
 ) {

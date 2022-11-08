@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 // import React, { useState } from 'react';
-import React from 'react';
+import React, { RefAttributes } from 'react';
 import { fireEvent, render, within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
@@ -15,14 +15,14 @@ import NxCombobox, { Props } from '../NxCombobox';
 import NxForm from '../../NxForm/NxForm';
 
 describe('NxCombobox', function() {
-  const minimalProps: Props<string | number> = {
+  const minimalProps: Props = {
         value: '',
         onChange: () => {},
         onSearch: () => {},
         matches: []
       },
-      quickRender = rtlRender<React.ComponentPropsWithRef<typeof NxCombobox>>(NxCombobox, minimalProps),
-      renderEl = rtlRenderElement<React.ComponentPropsWithRef<typeof NxCombobox>>(NxCombobox, minimalProps);
+      quickRender = rtlRender<Props & RefAttributes<HTMLDivElement>>(NxCombobox, minimalProps),
+      renderEl = rtlRenderElement<Props & RefAttributes<HTMLDivElement>>(NxCombobox, minimalProps);
 
   it('sets specified classNames and attributes on the top-level element', function() {
     const component = renderEl()!,
@@ -514,7 +514,7 @@ describe('NxCombobox', function() {
       const pristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: true };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:Props<string | number> = pristineMinimalProps,
+        const noValidationErrorsMinimalProps:Props = pristineMinimalProps,
             quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -529,7 +529,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
@@ -555,9 +555,9 @@ describe('NxCombobox', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:Props<string | number> =
+        const singleValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: 'foo', id: '1' },
-            multiValidationErrorsMinimalProps:Props<string | number> =
+            multiValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'], id: '2' },
             singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
             multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
@@ -582,7 +582,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
@@ -612,7 +612,7 @@ describe('NxCombobox', function() {
       const nonPristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: false };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:Props<string | number> = nonPristineMinimalProps,
+        const noValidationErrorsMinimalProps:Props = nonPristineMinimalProps,
             quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -627,7 +627,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
@@ -653,9 +653,9 @@ describe('NxCombobox', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:Props<string | number> =
+        const singleValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:Props<string | number> =
+            multiValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
             singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
             multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
@@ -680,7 +680,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
@@ -714,7 +714,7 @@ describe('NxCombobox', function() {
       const pristineMinimalProps = { ...validatableMinimalProps, isPristine: true };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:Props<string | number> = pristineMinimalProps,
+        const noValidationErrorsMinimalProps:Props = pristineMinimalProps,
             quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -729,7 +729,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
@@ -755,9 +755,9 @@ describe('NxCombobox', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:Props<string | number> =
+        const singleValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:Props<string | number> =
+            multiValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
             singleRender = rtlRender(NxCombobox, singleValidationErrorsMinimalProps),
             multiRender = rtlRender(NxCombobox, multiValidationErrorsMinimalProps);
@@ -782,7 +782,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
@@ -823,7 +823,7 @@ describe('NxCombobox', function() {
       const nonPristineMinimalProps = { ...validatableMinimalProps, isPristine: false };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:Props<string | number> = nonPristineMinimalProps,
+        const noValidationErrorsMinimalProps:Props = nonPristineMinimalProps,
             quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -838,7 +838,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
@@ -864,9 +864,9 @@ describe('NxCombobox', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:Props<string | number> =
+        const singleValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:Props<string | number> =
+            multiValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
             singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
             multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
@@ -891,7 +891,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
