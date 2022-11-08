@@ -43,7 +43,7 @@ export const propTypes: PropTypes.ValidationMap<Props<DataItem<string | number, 
   matches: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
     displayName: PropTypes.string.isRequired
-  }).isRequired).isRequired as any,
+  }).isRequired).isRequired,
   onSearch: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   itemTooltip: PropTypes.func,
