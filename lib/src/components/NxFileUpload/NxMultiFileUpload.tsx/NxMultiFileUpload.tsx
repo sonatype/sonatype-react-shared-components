@@ -27,7 +27,7 @@ const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 
 function SelectedFile({ file, onDismiss: onDismissProp }: SelectedFileProps) {
   // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
   const buttonLabel = 'Dismiss Upload';
-  const descriptionId = useUniqueId('nx-file-upload-description');
+  const descriptionId = useUniqueId('nx-multi-file-upload-description');
 
   function onDismiss() {
     onDismissProp(file);
@@ -65,13 +65,13 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       { showValidationErrors: formShowValidationErrors } = useContext(FormAriaContext),
       showValidationErrors = formShowValidationErrors || !isPristine,
       showError = isRequired && showValidationErrors && !isFileSelected,
-      className = classnames('nx-file-upload', classNameProp),
-      noFileMessageClassName = classnames('nx-file-upload__no-file-message', {
-        'nx-file-upload__no-file-message--invalid': showError
+      className = classnames('nx-multi-file-upload', classNameProp),
+      noFileMessageClassName = classnames('nx-multi-file-upload__no-file-message', {
+        'nx-multi-file-upload__no-file-message--invalid': showError
       }),
       inputRef = useRef<HTMLInputElement>(null),
-      inputId = useUniqueId('nx-file-upload-input', id),
-      validationErrorId = useUniqueId('nx-file-upload-validation-error');
+      inputId = useUniqueId('nx-multi-file-upload-input', id),
+      validationErrorId = useUniqueId('nx-multi-file-upload-validation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     const input = (document.getElementById(inputId)) as HTMLInputElement;
@@ -129,43 +129,48 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
 
   return (
     <div ref={ref} className={className} >
-      <input ref={inputRef}
-             { ...attrs }
-             disabled={disabled}
-             onChange={onChange}
-             id={inputId}
-             className="nx-file-upload__input"
-             type="file"
-            //  aria-describedby={descriptionId}
-             aria-required={isRequired ?? undefined}
-             aria-invalid={showError || undefined}
-             aria-errormessage={showError ? validationErrorId : undefined}
-             multiple/>
-      {/* Keynav and screenreaders can ignore the button itself in favor of the <input> */}
-      <NxButton type="button"
-                aria-hidden={true}
-                disabled={disabled}
-                variant="tertiary"
-                onClick={openPicker}
-                tabIndex={-1}
-                className="nx-file-upload__select-btn">
-        Choose File
-      </NxButton>
-      { isFileSelected ?
-        Object.keys(files).map((fileKey) => {
-          const idx = parseInt(fileKey);
-          return (
-            <SelectedFile key= {`${idx}${files[idx].name}`} file={files[idx]} onDismiss={onDismiss}/>
-          );
-        })
-        :
-        <span className={noFileMessageClassName}
-              // id={descriptionId}
-          >
-          <span>No file selected</span>
-          <NxFontAwesomeIcon icon={faExclamationCircle} />
-        </span>
-      }
+      <div className="nx-multi-file-upload__container">
+        <input ref={inputRef}
+               { ...attrs }
+               disabled={disabled}
+               onChange={onChange}
+               id={inputId}
+               className="nx-multi-file-upload__input"
+               type="file"
+               //  aria-describedby={descriptionId}
+               aria-required={isRequired ?? undefined}
+               aria-invalid={showError || undefined}
+               aria-errormessage={showError ? validationErrorId : undefined}
+               multiple/>
+        {/* Keynav and screenreaders can ignore the button itself in favor of the <input> */}
+        <NxButton type="button"
+                  aria-hidden={true}
+                  disabled={disabled}
+                  variant="tertiary"
+                  onClick={openPicker}
+                  tabIndex={-1}
+                  className="nx-multi-file-upload__select-btn">
+          Add Files
+        </NxButton>
+        <div className="nx-multi-file-upload__container__files nx-scrollable">
+          { isFileSelected ?
+            Object.keys(files).map((fileKey) => {
+              const idx = parseInt(fileKey);
+              return (
+                <SelectedFile key= {`${idx}${files[idx].name}`} file={files[idx]} onDismiss={onDismiss}/>
+              );
+            })
+            :
+            <span className={noFileMessageClassName}
+                  // id={descriptionId}
+              >
+              <span>No file selected</span>
+              <NxFontAwesomeIcon icon={faExclamationCircle} />
+            </span>
+          }
+        </div>
+      </div>
+
       { showError &&
         // TODO confirm whether this text should be hard-coded
         <div id={validationErrorId} role="alert" className="nx-field-validation-message">
