@@ -20,8 +20,9 @@ const NxTextInputPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         <NxCode>NxMultiFileUpload</NxCode> is an RSC user interface for a file-selection form field
-        (an <NxCode>&lt;input type="file"&gt;</NxCode>). Once a file is selected, the name and size
-        of the file is displayed along with a button to clear the selection.
+        (an <NxCode>&lt;input type="file"&gt;</NxCode>). Multiple files can be selected with multiple calls
+        to the <NxCode>onChange</NxCode> prop. Any selected files are displayed with the name and size of the
+        file, along with a button to remove the selection.
       </NxP>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
@@ -60,10 +61,11 @@ const NxTextInputPage = () =>
               <NxTable.Cell>true</NxTable.Cell>
               <NxTable.Cell/>
               <NxTable.Cell>
-                A callback which is called whenever the user changes their file selection. The new selection,
-                in the form of a <NxCode>FileList</NxCode>, is passed as the parameter. If the user has cleared their
-                selection, the callback will receive <NxCode>null</NxCode>. Otherwise, the <NxCode>FileList</NxCode>
-                {' '}will always contain a single <NxCode>File</NxCode>.
+                A callback which is called whenever the user updates their file selections. The new selection
+                {' '}/ selections, in the form of a <NxCode>FileList</NxCode>, is passed as the parameter, and
+                added to any existing file selections. If the user has removed all of their selections, the
+                callback will receive <NxCode>null</NxCode>. Otherwise, the <NxCode>FileList</NxCode>
+                {' '}will always contain at least a single <NxCode>File</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -81,7 +83,7 @@ const NxTextInputPage = () =>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Should be set to true when <NxCode>isRequired</NxCode> is true, but <NxCode>NxFileUpload</NxCode>
+                Should be set to true when <NxCode>isRequired</NxCode> is true, but <NxCode>NxMultiFileUpload</NxCode>
                 {' '}has not yet been modified by the user.
               </NxTable.Cell>
             </NxTable.Row>
@@ -91,9 +93,10 @@ const NxTextInputPage = () =>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell />
               <NxTable.Cell>
-                Like many React components, <NxCode>NxFileUpload</NxCode> can receive a <NxCode>className</NxCode>. Note
-                however that this <NxCode>className</NxCode> is applied to the top-level <NxCode>&lt;div&gt;</NxCode>
-                {' '}within the component, and not to the <NxCode>&lt;input&gt;</NxCode> like most other native props.
+                Like many React components, <NxCode>NxMultiFileUpload</NxCode> can receive a <NxCode>className</NxCode>.
+                {' '}Note however that this <NxCode>className</NxCode> is applied to the top-level
+                {' ' }<NxCode>&lt;div&gt;</NxCode> within the component, and not to the <NxCode>&lt;input&gt;</NxCode>
+                {' '}like most other native props.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -129,8 +132,8 @@ const NxTextInputPage = () =>
               <NxTable.Cell />
               <NxTable.Cell>
                 NxFileUpload supports any HTML attribute that's normally supported
-                by <NxCode>&lt;input type="file"&gt;</NxCode>, including <NxCode>multiple</NxCode>. Note however that
-                the <NxCode>input</NxCode> is not the top-level DOM element within this component
+                by <NxCode>&lt;input type="file"&gt;</NxCode>. Note however that the <NxCode>input</NxCode> is
+                not the top-level DOM element within this component
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
@@ -141,7 +144,7 @@ const NxTextInputPage = () =>
           <NxH3>State Helpers</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
-          Like <NxCode>NxTextInput</NxCode>, <NxCode>NxFileUpload</NxCode> comes with helper functions to more
+          Like <NxCode>NxTextInput</NxCode>, <NxCode>NxMultiFileUpload</NxCode> comes with helper functions to more
           conveniently manage its state. In this case, these helpers only manage the <NxCode>files</NxCode>
           and <NxCode>isPristine</NxCode> props – validation is not supported other than required value
           validation, which the component handles internally. The helper functions are available on
@@ -190,15 +193,15 @@ const NxTextInputPage = () =>
     <GalleryExampleTile title="Simple Example"
                         liveExample={NxMultiFileUploadExample}
                         codeExamples={nxMultiFileUploadCode}>
-      A basic example of an <NxCode>NxFileUpload</NxCode>.
+      A basic example of an <NxCode>NxMultiFileUpload</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Complex Example"
                         id="nx-file-upload-complex-example"
                         liveExample={NxMultiFileUploadComplexExample}
                         codeExamples={nxMultiFileUploadComplexCode}>
-      An example of <NxCode>NxFileUpload</NxCode> with required-field validation and various extra props. Notice that
-      while the <NxCode>id</NxCode> and <NxCode>accept</NxCode> get applied to the <NxCode>&lt;input&gt;</NxCode>,
+      An example of <NxCode>NxMultiFileUpload</NxCode> with required-field validation and various extra props. Notice
+      that while the <NxCode>id</NxCode> and <NxCode>accept</NxCode> get applied to the <NxCode>&lt;input&gt;</NxCode>,
       the <NxCode>className</NxCode> gets applied to the enclosing <NxCode>&lt;div&gt;</NxCode>.
     </GalleryExampleTile>
 
