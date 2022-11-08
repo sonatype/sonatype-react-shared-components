@@ -6,10 +6,10 @@
  */
 // import React, { useState } from 'react';
 import React, { RefAttributes } from 'react';
-import { fireEvent, render, within } from '@testing-library/react';
+import { screen, fireEvent, render, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import userEvent from '@testing-library/user-event';
 
 import NxCombobox, { Props } from '../NxCombobox';
 import NxForm from '../../NxForm/NxForm';
@@ -295,6 +295,33 @@ describe('NxCombobox', function() {
         inputElement.focus();
         expect(onSearch).not.toHaveBeenCalled();
       });
+
+  it('places tooltips on each dropdown item if itemTooltip is defined', async function() {
+    const user = userEvent.setup(),
+        view = quickRender({
+          itemTooltip: ({ displayName }) => `${displayName} tooltipp`,
+          matches: [{ id: '1', displayName: 'Foo' }]
+        }),
+        btn = view.getByRole('option');
+
+    await user.hover(btn);
+    const tooltip = await screen.findByRole('tooltip');
+
+    expect(tooltip).toHaveTextContent('Foo tooltipp');
+  });
+
+  it('does not put tooltips on the dropdown items if itemTooltip is not defined', async function() {
+    const user = userEvent.setup(),
+        view = quickRender({
+          matches: [{ id: '1', displayName: 'Foo' }]
+        }),
+        btn = view.getByRole('option');
+
+    await user.hover(btn);
+    const tooltipPromise = screen.findByRole('tooltip');
+
+    await expect(tooltipPromise).rejects.toBeTruthy();
+  });
 
   describe('Accessible Description', function() {
     it('sets alert message as the accessible description of the combobox when there is an alert with empty message',
