@@ -27,7 +27,6 @@ const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 
 function SelectedFile({ file, onDismiss: onDismissProp }: SelectedFileProps) {
   // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
   const buttonLabel = 'Dismiss Upload';
-  const descriptionId = useUniqueId('nx-multi-file-upload-description');
 
   function onDismiss() {
     onDismissProp(file);
@@ -35,7 +34,7 @@ function SelectedFile({ file, onDismiss: onDismissProp }: SelectedFileProps) {
 
   return (
     <span className="nx-selected-file">
-      <span className="nx-selected-file__info" id={descriptionId}>
+      <span className="nx-selected-file__info">
         <NxOverflowTooltip>
           <span className="nx-selected-file__name">{file.name}</span>
         </NxOverflowTooltip>
@@ -61,7 +60,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         disabled,
         ...attrs
       } = props,
-      isFileSelected = files?.length,
+      isFileSelected = !!files?.length,
       { showValidationErrors: formShowValidationErrors } = useContext(FormAriaContext),
       showValidationErrors = formShowValidationErrors || !isPristine,
       showError = isRequired && showValidationErrors && !isFileSelected,
@@ -137,7 +136,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
                id={inputId}
                className="nx-multi-file-upload__input"
                type="file"
-               //  aria-describedby={descriptionId}
+               aria-label={isFileSelected ? `${files.length} files selected` : 'No File Selected'}
                aria-required={isRequired ?? undefined}
                aria-invalid={showError || undefined}
                aria-errormessage={showError ? validationErrorId : undefined}
@@ -161,9 +160,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
               );
             })
             :
-            <span className={noFileMessageClassName}
-                  // id={descriptionId}
-              >
+            <span className={noFileMessageClassName}>
               <span>No file selected</span>
               <NxFontAwesomeIcon icon={faExclamationCircle} />
             </span>
