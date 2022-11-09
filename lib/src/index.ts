@@ -351,7 +351,7 @@ export { default as NxFileUpload, Props as NxFileUploadProps } from './component
 export { default as NxStatefulFileUpload, Props as NxStatefulFileUploadProps }
   from './components/NxFileUpload/stateful/NxStatefulFileUpload';
 export { default as NxMultiFileUpload, Props as NxMultiFileUploadProps }
-  from './components/NxFileUpload/NxMultiFileUpload.tsx/NxMultiFileUpload';
+  from './components/NxFileUpload/NxMultiFileUpload/NxMultiFileUpload';
 
 export {
   default as NxDescriptionList,
