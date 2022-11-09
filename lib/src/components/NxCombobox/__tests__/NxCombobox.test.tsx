@@ -317,7 +317,7 @@ describe('NxCombobox', function() {
         btn = view.getByRole('option');
 
     await user.hover(btn);
-    const tooltipPromise = screen.findByRole('tooltip');
+    const tooltipPromise = screen.findAllByRole('tooltip');
 
     await expect(tooltipPromise).rejects.toBeTruthy();
   });
