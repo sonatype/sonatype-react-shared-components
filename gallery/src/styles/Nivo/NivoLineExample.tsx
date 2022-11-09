@@ -24,6 +24,7 @@ export default function NivoLineExample() {
                       pointBorderWidth={2}
                       pointBorderColor={{ from: 'serieColor' }}
                       colors={NIVO_COLORS}
+                      useMesh={true}
                       axisBottom={{
                         legend: 'transportation',
                         legendOffset: 40,
