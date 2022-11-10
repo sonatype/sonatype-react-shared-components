@@ -14,9 +14,7 @@ import './NxDropdownMenu.scss';
 
 export { Props };
 
-const FOCUSABLE_MENU_ITEMS_SELECTOR = 'a:not([disabled]):not(.disabled), '
-+ 'button:not([disabled]):not(.disabled), '
-+ 'input:not([disabled]):not(.disabled)';
+const FOCUSABLE_MENU_ITEMS_SELECTOR = ':is(a, button, input):not([disabled], .disabled])';
 
 /**
  * This component is not currently intended for public export. It is a helper for NxDropdown and NxSegmentedButton
