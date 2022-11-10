@@ -14,18 +14,18 @@ function NxDropdownNavigationExample() {
 
   return (
     <NxDropdown className="nx-dropdown--short" label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
-      <button onClick={onClick} className="nx-dropdown-button" role="menuitem">
+      <NxDropdown.Button onClick={onClick}>
         Button Link 4 - this link should trigger truncation
-      </button>
-      <button onClick={onClick} className="nx-dropdown-button" role="menuitem">
+      </NxDropdown.Button>
+      <NxDropdown.Button onClick={onClick}>
         Button Link 5
-      </button>
-      <button onClick={onClick} className="nx-dropdown-button" role="menuitem">
+      </NxDropdown.Button>
+      <NxDropdown.Button onClick={onClick}>
         Button Link 6
-      </button>
-      <button className="disabled nx-dropdown-button" role="menuitem">
+      </NxDropdown.Button>
+      <NxDropdown.Button className="disabled">
         Button Link 7 Disabled
-      </button>
+      </NxDropdown.Button>
     </NxDropdown>
   );
 }

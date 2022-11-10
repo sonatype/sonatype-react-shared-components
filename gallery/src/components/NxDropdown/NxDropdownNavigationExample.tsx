@@ -14,28 +14,28 @@ function NxDropdownNavigationExample() {
 
   return (
     <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
-      <a onClick={onClick} href="#/pages/Dropdown" className="nx-dropdown-button" role="menuitem">
+      <NxDropdown.LinkButton onClick={onClick} href="#/pages/Dropdown">
         Text link 1
-      </a>
-      <a onClick={onClick} href="#/pages/Dropdown" className="nx-dropdown-button" role="menuitem">
+      </NxDropdown.LinkButton>
+      <NxDropdown.LinkButton onClick={onClick} href="#/pages/Dropdown">
         Text link 2
-      </a>
-      <a onClick={onClick} href="#/pages/Dropdown" className="nx-dropdown-button" role="menuitem">
+      </NxDropdown.LinkButton>
+      <NxDropdown.LinkButton onClick={onClick} href="#/pages/Dropdown">
         Text link 3 - this link should trigger truncation
-      </a>
-      <button onClick={onClick} className="nx-dropdown-button" role="menuitem">
+      </NxDropdown.LinkButton>
+      <NxDropdown.Button onClick={onClick}>
         Button Link 4 - this link should trigger truncation
-      </button>
-      <button onClick={onClick} className="nx-dropdown-button" role="menuitem">
+      </NxDropdown.Button>
+      <NxDropdown.Button onClick={onClick}>
         Button Link 5
-      </button>
+      </NxDropdown.Button>
       <NxDropdown.Divider />
-      <button onClick={onClick} className="nx-dropdown-button" role="menuitem">
+      <NxDropdown.Button onClick={onClick}>
         Button Link 6
-      </button>
-      <button className="disabled nx-dropdown-button" role="menuitem">
+      </NxDropdown.Button>
+      <NxDropdown.Button className="disabled">
         Button Link 7 Disabled
-      </button>
+      </NxDropdown.Button>
     </NxDropdown>
   );
 }

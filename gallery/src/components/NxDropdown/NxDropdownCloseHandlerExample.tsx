@@ -18,12 +18,12 @@ function NxDropdownCloseHandlerExample() {
                 onToggleCollapse={onToggleCollapse}
                 onCloseClick={(evt: MouseEvent) => evt.preventDefault()}
                 onCloseKeyDown={(evt: KeyboardEvent) => evt.preventDefault()}>
-      <a onClick={onClick} href="#/pages/Dropdown" role="menuitem" className="nx-dropdown-button">
+      <NxDropdown.LinkButton onClick={onClick} href="#/pages/Dropdown">
         Link
-      </a>
-      <button role="menuitem" onClick={onClick} className="nx-dropdown-button">
+      </NxDropdown.LinkButton>
+      <NxDropdown.Button onClick={onClick}>
         Button
-      </button>
+      </NxDropdown.Button>
     </NxDropdown>
   );
 }

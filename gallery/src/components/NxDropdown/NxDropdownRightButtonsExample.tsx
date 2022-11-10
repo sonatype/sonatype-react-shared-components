@@ -14,14 +14,14 @@ function NxDropdownRightButtonsExample() {
 
   return (
     <NxDropdown label="Navigation" isOpen={isOpen} onToggleCollapse={onToggleCollapse}>
-      <a href="#/" className="nx-dropdown-button" role="menuitem">
+      <NxDropdown.LinkButton href="#/">
         <span className="nx-dropdown-button-content">Text Link</span>
-      </a>
-      <a href="#/" className="nx-dropdown-button" role="menuitem">
+      </NxDropdown.LinkButton>
+      <NxDropdown.LinkButton href="#/">
         <span className="nx-dropdown-button-content">
           Text Link - this link should trigger truncation
         </span>
-      </a>
+      </NxDropdown.LinkButton>
       <NxButton onClick={() => alert('icon click')}
                 className="nx-dropdown-right-button"
                 variant="icon-only"
@@ -29,9 +29,9 @@ function NxDropdownRightButtonsExample() {
                 role="menuitem">
         <NxFontAwesomeIcon icon={faTrash}/>
       </NxButton>
-      <a href="#/" className="nx-dropdown-button" role="menuitem">
+      <NxDropdown.LinkButton href="#/">
         <span className="nx-dropdown-button-content">Button Link2</span>
-      </a>
+      </NxDropdown.LinkButton>
       <NxButton onClick={() => alert('icon click')}
                 className="nx-dropdown-right-button"
                 variant="icon-only"
@@ -39,9 +39,9 @@ function NxDropdownRightButtonsExample() {
                 role="menuitem">
         <NxFontAwesomeIcon icon={faTrash}/>
       </NxButton>
-      <a href="#/" className="nx-dropdown-button" role="menuitem">
+      <NxDropdown.LinkButton href="#/">
         <span className="nx-dropdown-button-content">Text Link3 - this link should trigger truncation</span>
-      </a>
+      </NxDropdown.LinkButton>
     </NxDropdown>
   );
 }

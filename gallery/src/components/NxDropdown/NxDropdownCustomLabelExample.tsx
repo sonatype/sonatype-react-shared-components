@@ -24,10 +24,10 @@ function NxDropdownCustomLabelExample() {
                 className="extra-class"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
-      <button role="menuitem" onClick={onClick} className="nx-dropdown-button">
+      <NxDropdown.Button onClick={onClick}>
         <NxFontAwesomeIcon icon={faFrog}/>
         <span>Some Action</span>
-      </button>
+      </NxDropdown.Button>
     </NxDropdown>
   );
 }
