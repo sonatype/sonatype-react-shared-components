@@ -214,6 +214,20 @@ describe('NxCombobox', function() {
 
       await clickTest(dropdownMenuSelector, buttonSelector)();
     });
+
+    it('has a tooltip when configured', async function() {
+      const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
+          dropdownButtonSelector = `${backendExampleSelector} .nx-dropdown-button`,
+          [input] = await waitAndGetElements(inputSelector);
+
+      await input.focus();
+      await getPage().keyboard.type('i');
+      await getPage().waitForSelector(dropdownButtonSelector);
+
+      const dropdownMenuSelector = `${backendExampleSelector} .nx-dropdown-menu`,
+          buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:nth-child(3)`;
+      await hoverTest(dropdownMenuSelector, buttonSelector, true)();
+    });
   });
 
   it('passes a11y checks', a11yTest());
