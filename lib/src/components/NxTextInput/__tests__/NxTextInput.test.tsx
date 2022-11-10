@@ -4,258 +4,518 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { createRef } from 'react';
-import { faCheck, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import React, { RefAttributes } from 'react';
+import { render, within } from '@testing-library/react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import userEvent from '@testing-library/user-event';
 
-import NxTextInput, { PrivateNxTextInput, Props } from '../NxTextInput';
-import { mount } from 'enzyme';
-import { FormAriaContext } from '../../NxForm/context';
+import NxTextInput, { PublicProps } from '../NxTextInput';
+import NxForm from '../../NxForm/NxForm';
 
 describe('PrivateNxTextInput', function() {
-  const minimalProps = {
+  const minimalProps: PublicProps & RefAttributes<HTMLDivElement> = {
         value: '',
         isPristine: false
       },
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(PrivateNxTextInput, minimalProps);
+      quickRender = rtlRender(NxTextInput, minimalProps),
+      renderEl = rtlRenderElement(NxTextInput, minimalProps);
 
-  it('renders an .nx-text-input div', function() {
-    expect(getShallowComponent()).toMatchSelector('div.nx-text-input');
-  });
-
-  it('contains an nx-text-input__box containing the input and validation icons', function() {
-    expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__box');
-    expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__box input.nx-text-input__input');
-    expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__box .nx-icon--valid');
-    expect(getShallowComponent()).toContainMatchingElement('.nx-text-input__box .nx-icon--invalid');
-  });
-
-  it('contains the first validation message if isPristine is not true', function() {
-    const validationErrorProps = { validatable: true, validationErrors: 'foo' },
-        multiErrorValidationProps = { validatable: true, validationErrors: ['asdf', 'foo'] },
-        pristineWithErrorsProps = { ...validationErrorProps, isPristine: true };
-
-    expect(getShallowComponent()).not.toContainMatchingElement('.nx-field-validation-message');
-    expect(getShallowComponent(validationErrorProps).find('.nx-field-validation-message')).toHaveText('foo');
-    expect(getShallowComponent(multiErrorValidationProps).find('.nx-field-validation-message')).toHaveText('asdf');
-    expect(getShallowComponent(pristineWithErrorsProps)).not.toContainMatchingElement('.nx-field-validation-message');
-  });
-
-  it('places the alert role on the invalid message and references it as aria-errormessage', function() {
-    const component = getShallowComponent({ validatable: true, validationErrors: 'foo' }),
-        invalidMessage = component.find('.nx-field-validation-message'),
-        invalidMessageId = invalidMessage.prop('id');
-
-    expect(invalidMessage).toHaveProp('role', 'alert');
-    expect(invalidMessageId).toBeTruthy();
-    expect(component.find('.nx-text-input__input')).toHaveProp('aria-errormessage', invalidMessageId);
-  });
-
-  it('sets aria-invalid to true if it is validatable and has validation errors, ' +
-      'and either isPristine is false or a surrounding FormAriaContext\'s showValidationErrors is true', function() {
-    expect(getShallowComponent().find('input')).not.toHaveProp('aria-invalid', true);
-    expect(getShallowComponent({ validatable: true }).find('input')).not.toHaveProp('aria-invalid', true);
-    expect(getShallowComponent({ validatable: true, validationErrors: 'foo' }).find('input'))
-        .toHaveProp('aria-invalid', true);
-
-    expect(getShallowComponent({ isPristine: true, validatable: true, validationErrors: 'foo' }).find('input'))
-        .not.toHaveProp('aria-invalid', true);
-
-    function getMountedWithContext(extraProps: Partial<Props> = {}) {
-      return mount(
-        <FormAriaContext.Provider value={{ showValidationErrors: true }}>
-          <PrivateNxTextInput { ...minimalProps } { ...extraProps } />
-        </FormAriaContext.Provider>
-      );
-    }
-
-    expect(getMountedWithContext().find('input')).not.toHaveProp('aria-invalid', true);
-    expect(getMountedWithContext({ validatable: true }).find('input')).not.toHaveProp('aria-invalid', true);
-    expect(getMountedWithContext({ validatable: true, validationErrors: 'foo' }).find('input'))
-        .toHaveProp('aria-invalid', true);
-
-    expect(getMountedWithContext({ isPristine: true, validatable: true, validationErrors: 'foo' }).find('input'))
-        .toHaveProp('aria-invalid', true);
-  });
-
-  it('renders a text input by default', function() {
-    expect(getShallowComponent().find('input')).toHaveProp('type', 'text');
+  it('renders an input with type="text" by default', function() {
+    expect(quickRender().getByRole('textbox').tagName).toBe('INPUT');
+    expect(quickRender().getByRole('textbox')).toHaveAttribute('type', 'text');
   });
 
   it('renders a password input if type is "password"', function() {
-    expect(getShallowComponent({ type: 'password' }).find('input')).toHaveProp('type', 'password');
-  });
+    // input type="password" don't have a role
+    const inputEl = quickRender({ type: 'password' }).container.querySelector('input');
 
-  it('renders a date input if type is "date"', function() {
-    expect(getShallowComponent({ type: 'date' }).find('input')).toHaveProp('type', 'date');
+    expect(inputEl).toHaveAttribute('type', 'password');
   });
 
   it('renders a textarea if type is "textarea"', function() {
-    expect(getShallowComponent({ type: 'textarea' })).not.toContainMatchingElement('input');
-    expect(getShallowComponent({ type: 'textarea' })).toContainMatchingElement('textarea');
-    expect(getShallowComponent({ type: 'textarea' }).find('textarea')).toHaveProp('type', undefined);
+    expect(quickRender({ type: 'textarea' }).getByRole('textbox').tagName).toBe('TEXTAREA');
+    expect(quickRender({ type: 'textarea' }).getByRole('textbox')).not.toHaveAttribute('type');
   });
 
-  it('adds the nx-text-input--textarea class if type is "textarea"', function() {
-    expect(getShallowComponent({ type: 'textarea' })).toHaveClassName('nx-text-input--textarea');
+  it('sets ref on the input', function() {
+    const ref = React.createRef<HTMLDivElement>(),
+        el = renderEl({ ref });
+
+    expect(ref.current).toBe(el);
   });
 
-  it('uses faCheck for the valid icon', function() {
-    expect(getShallowComponent().find('.nx-icon--valid')).toHaveProp('icon', faCheck);
+  it('adds specified classNames to the top-level element in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
+
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('uses faExclamationCircle for the invalid icon', function() {
-    expect(getShallowComponent().find('.nx-icon--invalid')).toHaveProp('icon', faExclamationCircle);
+  it('passes additional attrs to the input', function() {
+    const input = quickRender({ id: 'foo', lang: 'en-US' }).getByRole('textbox');
+
+    expect(input).toHaveAttribute('id', 'foo');
+    expect(input).toHaveAttribute('lang', 'en-US');
   });
 
   it('sets the value as specified', function() {
-    expect(getShallowComponent({ value: 'foo' }).find('input')).toHaveProp('value', 'foo');
-    expect(getShallowComponent({ type: 'textarea', value: 'foo' }).find('textarea')).toHaveProp('value', 'foo');
+    expect(quickRender({ value: 'boo' }).getByRole('textbox')).toHaveAttribute('value', 'boo');
   });
 
-  it('accepts custom classes', function() {
-    expect(getShallowComponent({ className: 'foo bar' })).toHaveClassName('foo');
-    expect(getShallowComponent({ className: 'foo bar' })).toHaveClassName('bar');
+  it('sets disabled on the input when the disabled prop is true', function() {
+    expect(quickRender().getByRole('textbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: undefined }).getByRole('textbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: false }).getByRole('textbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: true }).getByRole('textbox')).toBeDisabled();
   });
 
-  it('sets the pristine className iff isPristine is true', function() {
-    expect(getShallowComponent()).not.toHaveClassName('pristine');
-    expect(getShallowComponent({ isPristine: true })).toHaveClassName('pristine');
-  });
-
-  describe('when validatable is true', function() {
-    const validatable = { validatable: true };
-
-    it('sets the invalid className if there are validationErrors and isPristine is not true', function() {
-      expect(getShallowComponent({ ...validatable, validationErrors: 'bad' })).toHaveClassName('invalid');
-      expect(getShallowComponent({ ...validatable, validationErrors: ['baaad', 'asdf'] })).toHaveClassName('invalid');
-
-      expect(getShallowComponent({ ...validatable, validationErrors: 'bad' })).not.toHaveClassName('valid');
-      expect(getShallowComponent({ ...validatable, validationErrors: ['baaad', 'asdf'] }))
-          .not.toHaveClassName('valid');
-    });
-
-    it('sets the valid className if there are not validationErrors', function() {
-      expect(getShallowComponent({ ...validatable })).toHaveClassName('valid');
-      expect(getShallowComponent({ ...validatable, validationErrors: null })).toHaveClassName('valid');
-      expect(getShallowComponent({ ...validatable, validationErrors: [] })).toHaveClassName('valid');
-
-      expect(getShallowComponent({ ...validatable })).not.toHaveClassName('invalid');
-      expect(getShallowComponent({ ...validatable, validationErrors: null })).not.toHaveClassName('invalid');
-      expect(getShallowComponent({ ...validatable, validationErrors: [] })).not.toHaveClassName('invalid');
-    });
-
-    it('does not set the valid or invalid classes if isPristine is true', function() {
-      expect(getShallowComponent({ ...validatable, isPristine: true, validationErrors: ['baaad', 'asdf'] }))
-          .not.toHaveClassName('invalid');
-
-      expect(getShallowComponent({ ...validatable, isPristine: true })).not.toHaveClassName('valid');
-      expect(getShallowComponent({ ...validatable, isPristine: true, validationErrors: null }))
-          .not.toHaveClassName('valid');
-      expect(getShallowComponent({ ...validatable, isPristine: true, validationErrors: [] }))
-          .not.toHaveClassName('valid');
-    });
-  });
-
-  describe('when validatable is not true', function() {
-    const validatable = { validatable: false };
-
-    it('never sets the invalid className', function() {
-      expect(getShallowComponent()).not.toHaveClassName('invalid');
-      expect(getShallowComponent({ validationErrors: 'baad' })).not.toHaveClassName('invalid');
-      expect(getShallowComponent({ validationErrors: ['baaad'] })).not.toHaveClassName('invalid');
-
-      expect(getShallowComponent({ ...validatable, validationErrors: 'baad' })).not.toHaveClassName('invalid');
-      expect(getShallowComponent({ ...validatable, validationErrors: ['baaad'] })).not.toHaveClassName('invalid');
-    });
-
-    it('never sets the valid className', function() {
-      expect(getShallowComponent()).not.toHaveClassName('valid');
-      expect(getShallowComponent({ validationErrors: null })).not.toHaveClassName('valid');
-      expect(getShallowComponent({ validationErrors: [] })).not.toHaveClassName('valid');
-
-      expect(getShallowComponent({ ...validatable, validationErrors: null })).not.toHaveClassName('valid');
-      expect(getShallowComponent({ ...validatable, validationErrors: [] })).not.toHaveClassName('valid');
-    });
-  });
-
-  it('passes through html props to the input element', function() {
-    expect(getShallowComponent({ disabled: false }).find('input')).toHaveProp('disabled', false);
-    expect(getShallowComponent({ disabled: true }).find('input')).toHaveProp('disabled', true);
-    expect(getShallowComponent({ type: 'textarea', disabled: true }).find('textarea')).toHaveProp('disabled', true);
-    expect(getShallowComponent({ id: 'test-id'}).find('input')).toHaveProp('id', 'test-id');
-    expect(getShallowComponent({ placeholder: 'test placeholder'}).find('input'))
-        .toHaveProp('placeholder', 'test placeholder');
-    expect(getShallowComponent({ minLength: 4 }).find('input')).toHaveProp('minLength', 4);
-    expect(getShallowComponent({ name: 'a-name' }).find('input')).toHaveProp('name', 'a-name');
-  });
-
-  it('calls onChange with the new value of the input element and event that fired', function() {
-    const onChange = jest.fn(),
-        givenChangeEvent = { currentTarget: { value: 'foo' }},
-        element = getShallowComponent({ onChange }).find('input');
+  it('calls onChange with the value whenever the input\'s onChange event fires', async function() {
+    const user = userEvent.setup(),
+        onChange = jest.fn().mockImplementation((_, evt) => { evt.persist(); }),
+        input = quickRender({ onChange }).getByRole('textbox');
 
     expect(onChange).not.toHaveBeenCalled();
 
-    element.simulate('change', givenChangeEvent);
+    await user.type(input, 'a');
 
-    expect(onChange).toHaveBeenCalledWith('foo', givenChangeEvent);
+    expect(onChange).toHaveBeenCalledWith('a', expect.objectContaining({ target: input }));
   });
 
-  it('calls onKeyPress with the key value', function() {
-    const onKeyPress = jest.fn(),
-        element = getShallowComponent({ onKeyPress }).find('input');
+  it('calls onKeyPress with the key value whenever the input\'s onKeyPress event fires', async function() {
+    const user = userEvent.setup(),
+        onKeyPress = jest.fn(),
+        input = quickRender({ onKeyPress }).getByRole('textbox');
 
     expect(onKeyPress).not.toHaveBeenCalled();
 
-    element.simulate('keyPress', { key: 'a' });
+    await user.type(input, 'a');
 
     expect(onKeyPress).toHaveBeenCalledWith('a');
   });
 
-  it('renders the prefixContent just before the input element', function() {
-    const component = getShallowComponent({ prefixContent: <span className="foo"/> });
+  describe('when not validatable', function() {
+    const nonValidatableMinimalProps = { ...minimalProps, validatable: false };
 
-    expect(component.find('.nx-text-input__box > .foo')).toExist();
-    expect(component.find('.nx-text-input__box > .foo + .nx-text-input__input')).toExist();
+    describe('when pristine', function() {
+      const pristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: true };
+
+      describe('when there are no validation errors', function() {
+        const noValidationErrorsMinimalProps = pristineMinimalProps,
+            quickRender = rtlRender(NxTextInput, noValidationErrorsMinimalProps);
+
+        it('has no validation alert and no a11y error message', function() {
+          const component = quickRender();
+
+          expect(component.queryByRole('alert')).not.toBeInTheDocument();
+          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the input', function() {
+          expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<PublicProps>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has no validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.queryByRole('alert')).not.toBeInTheDocument();
+            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the input', function() {
+            expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
+      });
+
+      describe('when there are validation errors', function() {
+        const singleValidationErrorsMinimalProps:PublicProps =
+            { ...pristineMinimalProps, validationErrors: 'foo' },
+            multiValidationErrorsMinimalProps:PublicProps =
+            { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
+            singleRender = rtlRenderElement(NxTextInput, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement(NxTextInput, multiValidationErrorsMinimalProps);
+
+        it('has no validation alert and no a11y error message', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
+          expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
+
+          expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
+          expect(multiError.getByRole('textbox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the input', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+          expect(multiError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<PublicProps>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has no validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.queryByRole('alert')).not.toBeInTheDocument();
+            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the input', function() {
+            expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
+      });
+    });
+
+    describe('when not pristine', function() {
+      const nonPristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: false };
+
+      describe('when there are no validation errors', function() {
+        const noValidationErrorsMinimalProps:PublicProps = nonPristineMinimalProps,
+            quickRender = rtlRender(NxTextInput, noValidationErrorsMinimalProps);
+
+        it('has no validation alert and no a11y error message', function() {
+          const component = quickRender();
+
+          expect(component.queryByRole('alert')).not.toBeInTheDocument();
+          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the input', function() {
+          expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<PublicProps>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has no validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.queryByRole('alert')).not.toBeInTheDocument();
+            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the input', function() {
+            expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
+      });
+
+      describe('when there are validation errors', function() {
+        const singleValidationErrorsMinimalProps:PublicProps =
+            { ...nonPristineMinimalProps, validationErrors: 'foo' },
+            multiValidationErrorsMinimalProps:PublicProps =
+            { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
+            singleRender = rtlRenderElement(NxTextInput, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement(NxTextInput, multiValidationErrorsMinimalProps);
+
+        it('has no validation alert and no a11y error message', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
+          expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
+
+          expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
+          expect(multiError.getByRole('textbox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the input', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+          expect(multiError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<PublicProps>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has no validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.queryByRole('alert')).not.toBeInTheDocument();
+            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the input', function() {
+            expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
+      });
+    });
   });
 
-  it('renders the suffixContent after the input element', function() {
-    const component = getShallowComponent({ suffixContent: <span className="foo"/> });
+  describe('when validatable', function() {
+    const validatableMinimalProps = { ...minimalProps, validatable: true };
 
-    expect(component.find('.nx-text-input__box > .foo')).toExist();
-    expect(component.find('.nx-text-input__box > .nx-text-input__input + .foo')).toExist();
-  });
-});
+    describe('when pristine', function() {
+      const pristineMinimalProps = { ...validatableMinimalProps, isPristine: true };
 
-describe('NxTextInput', function() {
-  it('renders a PrivateNxTextInput with all of the same props and ref', function() {
-    const onKeyPress = jest.fn(),
-        onChange = jest.fn(),
-        ref = createRef<HTMLDivElement>(),
-        component = mount(
-          <NxTextInput ref={ref}
-                       type="textarea"
-                       validatable={true}
-                       isPristine={false}
-                       value="asdf"
-                       validationErrors="foo"
-                       id="bar"
-                       className="baz"
-                       onKeyPress={onKeyPress}
-                       onChange={onChange} />
-        ).children();
+      describe('when there are no validation errors', function() {
+        const noValidationErrorsMinimalProps:PublicProps = pristineMinimalProps,
+            quickRender = rtlRender(NxTextInput, noValidationErrorsMinimalProps);
 
-    expect(ref.current).toBe(component.getDOMNode());
-    expect(component).toMatchSelector(PrivateNxTextInput);
-    expect(component).toHaveProp('type', 'textarea');
-    expect(component).toHaveProp('validatable', true);
-    expect(component).toHaveProp('isPristine', false);
-    expect(component).toHaveProp('value', 'asdf');
-    expect(component).toHaveProp('validationErrors', 'foo');
-    expect(component).toHaveProp('id', 'bar');
-    expect(component).toHaveProp('className', 'baz');
-    expect(component).toHaveProp('onKeyPress', onKeyPress);
-    expect(component).toHaveProp('onChange', onChange);
+        it('has no validation alert and no a11y error message', function() {
+          const component = quickRender();
+
+          expect(component.queryByRole('alert')).not.toBeInTheDocument();
+          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the input', function() {
+          expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<PublicProps>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has no validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.queryByRole('alert')).not.toBeInTheDocument();
+            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the input', function() {
+            expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
+      });
+
+      describe('when there are validation errors', function() {
+        const singleValidationErrorsMinimalProps:PublicProps =
+            { ...pristineMinimalProps, validationErrors: 'foo' },
+            multiValidationErrorsMinimalProps:PublicProps =
+            { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
+            singleRender = rtlRender(NxTextInput, singleValidationErrorsMinimalProps),
+            multiRender = rtlRender(NxTextInput, multiValidationErrorsMinimalProps);
+
+        it('has no validation alert and no a11y error message', function() {
+          const singleError = singleRender(),
+              multiError = multiRender();
+
+          expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
+          expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
+
+          expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
+          expect(multiError.getByRole('textbox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the input', function() {
+          const singleError = singleRender(),
+              multiError = multiRender();
+
+          expect(singleError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+          expect(multiError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<PublicProps>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          const singleRender = () => quickRender(singleValidationErrorsMinimalProps),
+              multiRender = () => quickRender(multiValidationErrorsMinimalProps);
+
+          it('has non-empty validation alert and a11y error message based on the first error', function() {
+            const singleError = singleRender(),
+                multiError = multiRender();
+
+            expect(singleError.getByRole('alert')).toHaveTextContent('foo');
+            expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
+
+            expect(multiError.getByRole('alert')).toHaveTextContent('bar');
+            expect(multiError.getByRole('textbox')).toHaveErrorMessage('bar');
+          });
+
+          it('sets aria-invalid on the input', function() {
+            const singleError = singleRender(),
+                multiError = multiRender();
+
+            expect(singleError.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
+            expect(multiError.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
+          });
+        });
+      });
+    });
+
+    describe('when not pristine', function() {
+      const nonPristineMinimalProps = { ...validatableMinimalProps, isPristine: false };
+
+      describe('when there are no validation errors', function() {
+        const noValidationErrorsMinimalProps:PublicProps = nonPristineMinimalProps,
+            quickRender = rtlRender(NxTextInput, noValidationErrorsMinimalProps);
+
+        it('has no validation alert and no a11y error message', function() {
+          const component = quickRender();
+
+          expect(component.queryByRole('alert')).not.toBeInTheDocument();
+          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+        });
+
+        it('does not set aria-invalid on the input', function() {
+          expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+        });
+
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<PublicProps>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          it('has no validation alert and no a11y error message', function() {
+            const component = quickRender();
+
+            expect(component.queryByRole('alert')).not.toBeInTheDocument();
+            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          });
+
+          it('does not set aria-invalid on the input', function() {
+            expect(quickRender().getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
+          });
+        });
+      });
+
+      describe('when there are validation errors', function() {
+        const singleValidationErrorsMinimalProps:PublicProps =
+            { ...nonPristineMinimalProps, validationErrors: 'foo' },
+            multiValidationErrorsMinimalProps:PublicProps =
+            { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
+            singleRender = rtlRenderElement(NxTextInput, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement(NxTextInput, multiValidationErrorsMinimalProps);
+
+        it('has non-empty validation alert and a11y error message based on the first error', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getByRole('alert')).toHaveTextContent('foo');
+          expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
+
+          expect(multiError.getByRole('alert')).toHaveTextContent('bar');
+          expect(multiError.getByRole('textbox')).toHaveErrorMessage('bar');
+        });
+
+        it('sets aria-invalid on the input', function() {
+          const singleError = within(singleRender() as HTMLElement),
+              multiError = within(multiRender() as HTMLElement);
+
+          expect(singleError.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
+          expect(multiError.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
+        });
+
+        describe('when in a form with showValidationErrors', function() {
+          function quickRender(extraProps?: Partial<PublicProps>) {
+            const renderResult = render(
+              <NxForm showValidationErrors onSubmit={() => {}}>
+                <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
+              </NxForm>
+            );
+
+            const boundQueries = within(renderResult.container);
+
+            return { ...renderResult, ...boundQueries };
+          }
+
+          const singleRender = () => quickRender(singleValidationErrorsMinimalProps),
+              multiRender = () => quickRender(multiValidationErrorsMinimalProps);
+
+          it('has non-empty validation alert and a11y error message based on the first error', function() {
+            const singleError = singleRender(),
+                multiError = multiRender();
+
+            expect(singleError.getByRole('alert')).toHaveTextContent('foo');
+            expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
+
+            expect(multiError.getByRole('alert')).toHaveTextContent('bar');
+            expect(multiError.getByRole('textbox')).toHaveErrorMessage('bar');
+          });
+
+          it('sets aria-invalid on the input', function() {
+            const singleError = singleRender(),
+                multiError = multiRender();
+
+            expect(singleError.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
+            expect(multiError.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
+          });
+        });
+      });
+    });
   });
 });
