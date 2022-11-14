@@ -166,6 +166,17 @@ const NxComboboxPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell><NxCode>itemTooltip</NxCode></NxTable.Cell>
+              <NxTable.Cell>Function</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                An optional function which when specified causes tooltips to appear on each item in the dropdown.
+                The function should receive the corresponding data item from the <NxCode>matches</NxCode> array as its
+                parameter and should return a string or <NxCode>ReactNode</NxCode> specifying the tooltip content.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
@@ -229,6 +240,25 @@ const NxComboboxPage = () =>
       </NxTile.Subsection>
       <NxTile.Subsection>
         <NxTile.SubsectionHeader>
+          <NxH3>TypeScript Type Parameters</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The <NxCode>NxCombobox</NxCode> function has a generic type parameter. The purpose of this parameter has
+          changed over time but it is designed to currently handle both its original purpose and its current purpose.
+          Originally, it was a subtype of <NxCode>string | number</NxCode> which specified the type for the ID of
+          the items in the <NxCode>matches</NxCode>. More recently however, it has become the type for
+          the <NxCode>matches</NxCode> objects themselves so that the <NxCode>itemTooltip</NxCode> function can
+          be strongly typed against custom <NxCode>DataItem</NxCode> subclasses.
+        </NxP>
+        <NxP>
+          The type parameter uses conditional type logic so that both cases are supported, though the latter is
+          preferred in new code. That is, if the type passed in is a subtype of <NxCode>string | number</NxCode> it
+          will be interpreted as the type of the <NxCode>DataItem</NxCode> id, while if the type passed in is a
+          subtype of <NxCode>DataItem</NxCode>, it will be interpreted as the type for the each entire item.
+        </NxP>
+      </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
           <NxH3>Usage Notes</NxH3>
         </NxTile.SubsectionHeader>
         <NxP>
@@ -263,10 +293,12 @@ const NxComboboxPage = () =>
                         codeExamples={NxComboboxExampleCode}
                         liveExample={NxComboboxExample}>
       An example of an <NxCode>NxCombobox</NxCode> tied to a backend query and with <NxCode>autoComplete</NxCode>{' '}
-      set to true to provide an inline completion string. This example also demonstrates that
-      when <NxCode>onChange</NxCode> fires as a result of the user selecting an item from the dropdown (as opposed to
+      set to true to provide an inline completion string. This example demonstrates other advanced features as well.
+      When <NxCode>onChange</NxCode> fires as a result of the user selecting an item from the dropdown (as opposed to
       typing a string, even if that string matches an item in the dropdown), the corresponding item from
-      the <NxCode>matches</NxCode> list is passed as the second argument to <NxCode>onChange</NxCode>.
+      the <NxCode>matches</NxCode> list is passed as the second argument to <NxCode>onChange</NxCode>. This example
+      also includes a custom subtype of <NxCode>DataItem</NxCode> which is used in conjunction with
+      the <NxCode>itemTooltip</NxCode> prop to provide tooltips for each item.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error Example"
