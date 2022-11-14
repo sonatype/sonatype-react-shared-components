@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, forwardRef, useEffect, useRef, useContext } from 'react';
+import React, { FormEvent, forwardRef, useRef, useContext } from 'react';
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
@@ -73,7 +73,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       validationErrorId = useUniqueId('nx-multi-file-upload-validation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
-    const input = (document.getElementById(inputId)) as HTMLInputElement;
+
     const dataTransferObject = new DataTransfer();
 
     // get the previous files uploaded
@@ -91,8 +91,10 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         dataTransferObject.items.add(normalizedFiles[i]);
       }
     }
-    input.files = dataTransferObject.files;
-    onChangeProp(input.files);
+    if (inputRef.current) {
+      inputRef.current.files = dataTransferObject.files;
+      onChangeProp(inputRef.current.files);
+    }
   }
 
   function openPicker() {
@@ -101,31 +103,18 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
 
   function onDismiss(file : File) {
     const dataTransferObject = new DataTransfer();
-    const input = (document.getElementById(inputId)) as HTMLInputElement;
-    const { files } = input;
-
-    if (files) {
-      for (let i = 0; i < files?.length; i++) {
-        if (file !== files[i]) {
-          dataTransferObject.items.add(files[i]);
+    if (inputRef.current) {
+      if (files) {
+        for (let i = 0; i < files.length; i++) {
+          if (file !== files[i]) {
+            dataTransferObject.items.add(files[i]);
+          }
         }
+        inputRef.current.files = dataTransferObject.files;
+        onChangeProp(inputRef.current.files);
       }
-      input.files = dataTransferObject.files;
-      onChangeProp(input.files);
     }
   }
-
-  useEffect(function() {
-    if (inputRef.current) {
-      if (isFileSelected) {
-        inputRef.current.files = files;
-      }
-      else {
-        // there's no way to clear the list via the files prop, but this does it
-        inputRef.current.value = '';
-      }
-    }
-  }, [files]);
 
   return (
     <div ref={ref} className={className} >
