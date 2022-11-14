@@ -8,7 +8,7 @@ import React, { FormEvent, forwardRef, useEffect, useRef, useContext } from 'rea
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
-// import { concat } from 'ramda';
+import { values } from 'ramda';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
@@ -74,8 +74,9 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     const input = (document.getElementById(inputId)) as HTMLInputElement;
-    // get the previous files uploaded
     const dataTransferObject = new DataTransfer();
+
+    // get the previous files uploaded
     if (files) {
       for (let i = 0; i < files.length; i++) {
         dataTransferObject.items.add(files[i]);
@@ -153,13 +154,9 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         </NxButton>
         <div className="nx-multi-file-upload__container__files nx-scrollable">
           { isFileSelected ?
-            Object.keys(files).map((fileKey) => {
-              const idx = parseInt(fileKey);
-              return (
-                <SelectedFile key= {`${idx}${files[idx].name}`} file={files[idx]} onDismiss={onDismiss}/>
-              );
-            })
-            :
+            values(files).map((file, key) =>
+              <SelectedFile key= {`${key}__selected-file}`} file={file as File} onDismiss={onDismiss}/>
+            ) :
             <span className={noFileMessageClassName}>
               <span>No file selected</span>
               <NxFontAwesomeIcon icon={faExclamationCircle} />
