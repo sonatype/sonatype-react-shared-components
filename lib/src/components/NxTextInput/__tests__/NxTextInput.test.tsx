@@ -29,12 +29,12 @@ describe('PrivateNxTextInput', function() {
     // input type="password" don't have a role
     const inputEl = quickRender({ type: 'password' }).container.querySelector('input');
 
+    expect(inputEl).toBeInTheDocument();
     expect(inputEl).toHaveAttribute('type', 'password');
   });
 
   it('renders a textarea if type is "textarea"', function() {
     expect(quickRender({ type: 'textarea' }).getByRole('textbox').tagName).toBe('TEXTAREA');
-    expect(quickRender({ type: 'textarea' }).getByRole('textbox')).not.toHaveAttribute('type');
   });
 
   it('sets ref on the input', function() {
@@ -145,16 +145,16 @@ describe('PrivateNxTextInput', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:PublicProps =
+        const singleValidationErrorsMinimalProps =
             { ...pristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:PublicProps =
+            multiValidationErrorsMinimalProps =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRenderElement(NxTextInput, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement(NxTextInput, multiValidationErrorsMinimalProps);
+            singleRender = rtlRender(NxTextInput, singleValidationErrorsMinimalProps),
+            multiRender = rtlRender(NxTextInput, multiValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
-          const singleError = within(singleRender() as HTMLElement),
-              multiError = within(multiRender() as HTMLElement);
+          const singleError = singleRender(),
+              multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
           expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
@@ -164,8 +164,8 @@ describe('PrivateNxTextInput', function() {
         });
 
         it('does not set aria-invalid on the input', function() {
-          const singleError = within(singleRender() as HTMLElement),
-              multiError = within(multiRender() as HTMLElement);
+          const singleError = singleRender(),
+              multiError = multiRender();
 
           expect(singleError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
           expect(multiError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
@@ -202,7 +202,7 @@ describe('PrivateNxTextInput', function() {
       const nonPristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: false };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:PublicProps = nonPristineMinimalProps,
+        const noValidationErrorsMinimalProps = nonPristineMinimalProps,
             quickRender = rtlRender(NxTextInput, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -243,16 +243,16 @@ describe('PrivateNxTextInput', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:PublicProps =
+        const singleValidationErrorsMinimalProps =
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:PublicProps =
+            multiValidationErrorsMinimalProps =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRenderElement(NxTextInput, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement(NxTextInput, multiValidationErrorsMinimalProps);
+            singleRender = rtlRender(NxTextInput, singleValidationErrorsMinimalProps),
+            multiRender = rtlRender(NxTextInput, multiValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
-          const singleError = within(singleRender() as HTMLElement),
-              multiError = within(multiRender() as HTMLElement);
+          const singleError = singleRender(),
+              multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
           expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
@@ -262,8 +262,8 @@ describe('PrivateNxTextInput', function() {
         });
 
         it('does not set aria-invalid on the input', function() {
-          const singleError = within(singleRender() as HTMLElement),
-              multiError = within(multiRender() as HTMLElement);
+          const singleError = singleRender(),
+              multiError = multiRender();
 
           expect(singleError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
           expect(multiError.getByRole('textbox')).not.toHaveAttribute('aria-invalid', 'true');
@@ -304,7 +304,7 @@ describe('PrivateNxTextInput', function() {
       const pristineMinimalProps = { ...validatableMinimalProps, isPristine: true };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:PublicProps = pristineMinimalProps,
+        const noValidationErrorsMinimalProps = pristineMinimalProps,
             quickRender = rtlRender(NxTextInput, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -345,9 +345,9 @@ describe('PrivateNxTextInput', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:PublicProps =
+        const singleValidationErrorsMinimalProps =
             { ...pristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:PublicProps =
+            multiValidationErrorsMinimalProps =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
             singleRender = rtlRender(NxTextInput, singleValidationErrorsMinimalProps),
             multiRender = rtlRender(NxTextInput, multiValidationErrorsMinimalProps);
@@ -413,7 +413,7 @@ describe('PrivateNxTextInput', function() {
       const nonPristineMinimalProps = { ...validatableMinimalProps, isPristine: false };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:PublicProps = nonPristineMinimalProps,
+        const noValidationErrorsMinimalProps = nonPristineMinimalProps,
             quickRender = rtlRender(NxTextInput, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -454,16 +454,16 @@ describe('PrivateNxTextInput', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:PublicProps =
+        const singleValidationErrorsMinimalProps =
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:PublicProps =
+            multiValidationErrorsMinimalProps =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRenderElement(NxTextInput, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement(NxTextInput, multiValidationErrorsMinimalProps);
+            singleRender = rtlRender(NxTextInput, singleValidationErrorsMinimalProps),
+            multiRender = rtlRender(NxTextInput, multiValidationErrorsMinimalProps);
 
         it('has non-empty validation alert and a11y error message based on the first error', function() {
-          const singleError = within(singleRender() as HTMLElement),
-              multiError = within(multiRender() as HTMLElement);
+          const singleError = singleRender(),
+              multiError = multiRender();
 
           expect(singleError.getByRole('alert')).toHaveTextContent('foo');
           expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
@@ -473,8 +473,8 @@ describe('PrivateNxTextInput', function() {
         });
 
         it('sets aria-invalid on the input', function() {
-          const singleError = within(singleRender() as HTMLElement),
-              multiError = within(multiRender() as HTMLElement);
+          const singleError = singleRender(),
+              multiError = multiRender();
 
           expect(singleError.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
           expect(multiError.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
