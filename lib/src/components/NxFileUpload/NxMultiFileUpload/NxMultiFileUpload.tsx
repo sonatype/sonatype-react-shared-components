@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, forwardRef, useRef, useContext } from 'react';
+import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'react';
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
@@ -70,6 +70,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       }),
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-multi-file-upload-input', id),
+      selectedFilesContainerRef = useRef<HTMLDivElement>(null),
       validationErrorId = useUniqueId('nx-multi-file-upload-validation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
@@ -116,6 +117,13 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
     }
   }
 
+  useEffect(function() {
+    if (selectedFilesContainerRef.current) {
+      const lastSelectedFile = selectedFilesContainerRef.current.lastElementChild;
+      lastSelectedFile?.scrollIntoView({block: 'nearest'});
+    }
+  }, [files]);
+
   return (
     <div ref={ref} className={className} >
       <div className="nx-multi-file-upload__container">
@@ -141,7 +149,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
                   className="nx-multi-file-upload__select-btn">
           Add Files
         </NxButton>
-        <div className="nx-multi-file-upload__container__files nx-scrollable">
+        <div ref={selectedFilesContainerRef} className="nx-multi-file-upload__container__files nx-scrollable">
           { isFileSelected ?
             values(files).map((file, key) =>
               <SelectedFile key= {`${key}__selected-file}`} file={file as File} onDismiss={onDismiss}/>
