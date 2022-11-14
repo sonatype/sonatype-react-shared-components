@@ -8,8 +8,6 @@ import React from 'react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxTextLink from '../NxTextLink';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 describe('NxTextLink', function() {
   const quickRender = rtlRender(NxTextLink, {});
@@ -90,7 +88,6 @@ describe('NxTextLink', function() {
   it('sets the target to _blank if the external prop is true and newTab is not false, unless a different target is ' +
       'specified', function() {
     expect(renderEl({ external: true })).toHaveAttribute('target', '_blank');
-
     expect(renderEl({ external: true, target: 'asdf' })).toHaveAttribute('target', 'asdf');
 
     expect(renderEl({ external: true, newTab: true })).toHaveAttribute('target', '_blank');
@@ -99,28 +96,15 @@ describe('NxTextLink', function() {
     expect(renderEl({ external: true, noReferrer: true, target: 'asdf' })).toHaveAttribute('target', 'asdf');
   });
 
-  it('adds an icon after the children if external is true', function() {
-    expect(getShallow({ children: <span/> })).not.toContainMatchingElement(NxFontAwesomeIcon);
+  it('does not add an icon after the children if external is false', function() {
+    const { container } = quickRender({ children: <span/> });
 
-    const el = quickRender();
-    const s = screen.
-    expect(screen.querySelector('.nx-icon...`)).not.toBeInTheDocument();
-    expect(quickRender({ children: <span/>, external: true })).toContain(NxFontAwesomeIcon);
+    expect(container.querySelector('.nx-icon.fa-external-link-alt')).not.toBeInTheDocument();
   });
 
-  it('wraps non-element children in an element sibling to the icon', function() {
-    expect(quickRender({ children: 'foo', external: true })).toMatchElement(
-      <a>
-        <span>foo</span>
-        <NxFontAwesomeIcon icon={{} as IconProp} />
-      </a>
-    );
+  it('adds an icon after the children if external is true', function() {
+    const { container } = quickRender({ children: 'foo', external: true });
 
-    expect(quickRender({ children: <div>foo</div>, external: true })).toMatchElement(
-      <a>
-        <div>foo</div>
-        <NxFontAwesomeIcon icon={{} as IconProp} />
-      </a>
-    );
+    expect(container.querySelector('.nx-icon.fa-external-link-alt')).toBeInTheDocument();
   });
 });
