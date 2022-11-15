@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'react';
+import React, { FormEvent, forwardRef, useRef, useContext, useEffect, useState } from 'react';
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
@@ -72,7 +72,8 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-multi-file-upload-input', id),
       selectedFilesContainerRef = useRef<HTMLDivElement>(null),
-      validationErrorId = useUniqueId('nx-multi-file-upload-validation-error');
+      validationErrorId = useUniqueId('nx-multi-file-upload-validation-error'),
+      [previousFiles, setPreviousFiles] = useState<FileList | null>(null);
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
 
@@ -126,13 +127,18 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         onChangeProp(inputRef.current.files);
       }
     }
-
   }
 
+  // the container scrolls to the bottommost file only when new files are added
   useEffect(function() {
-    if (selectedFilesContainerRef.current) {
+    const newFilesAdded = previousFiles === null || (files && (files.length > previousFiles.length));
+
+    if (selectedFilesContainerRef.current && newFilesAdded) {
       const lastSelectedFile = selectedFilesContainerRef.current.lastElementChild;
       lastSelectedFile?.scrollIntoView({block: 'nearest'});
+    }
+    if (files) {
+      setPreviousFiles(files);
     }
   }, [files]);
 
