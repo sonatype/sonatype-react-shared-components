@@ -73,7 +73,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       inputId = useUniqueId('nx-multi-file-upload-input', id),
       selectedFilesContainerRef = useRef<HTMLDivElement>(null),
       validationErrorId = useUniqueId('nx-multi-file-upload-validation-error'),
-      [previousFiles, setPreviousFiles] = useState<FileList | null>(null);
+      [previousFiles, setPreviousFiles] = useState<FileList | null>(files);
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
 
@@ -125,7 +125,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
   useEffect(function() {
     const newFilesAdded = previousFiles === null || (files && (files.length > previousFiles.length));
 
-    if (selectedFilesContainerRef.current && newFilesAdded) {
+    if (selectedFilesContainerRef.current && newFilesAdded && files) {
       const lastSelectedFile = selectedFilesContainerRef.current.lastElementChild;
       lastSelectedFile?.scrollIntoView({block: 'nearest'});
     }
