@@ -8,11 +8,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
 import NxRadio, { Props } from '../NxRadio';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxRadio', function() {
-  const simpleProps: Props = {
+  const minimalProps: Props = {
     name: 'color',
     value: 'red',
     isChecked: false,
@@ -21,31 +23,34 @@ describe('NxRadio', function() {
     children: undefined
   };
 
-  const getShallow = getShallowComponent<Props>(NxRadio, simpleProps);
+  const getShallow = getShallowComponent<Props>(NxRadio, minimalProps);
+  const quickRender = rtlRender<Props>(NxRadio, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxRadio, minimalProps);
 
   it('renders a <label> containing a radio <input> and .nx-radio__circle and .nx-radio__outer-circle  elements',
       function() {
-        const shallowRender = getShallow();
+        const el = renderEl()!;
 
-        expect(shallowRender).toMatchSelector('label.nx-radio');
+        expect(el.tagName).toBe('LABEL');
+        expect(el).toHaveClass('nx-radio');
 
-        expect(shallowRender.find('input')).toHaveProp('name', 'color');
-        expect(shallowRender.find('input')).toHaveProp('type', 'radio');
-        expect(shallowRender.find('input')).toHaveProp('disabled', false);
-        expect(shallowRender.find('input')).toHaveProp('checked', false);
+        expect(el.querySelector('input')).toHaveAttribute('name', 'color');
+        expect(el.querySelector('input')).toHaveAttribute('type', 'radio');
+        expect(el.querySelector('input')).not.toHaveAttribute('disabled');
+        expect(el.querySelector('input')).not.toHaveAttribute('checked');
 
-        expect(shallowRender.find('input')).toHaveClassName('nx-radio__input');
+        expect(el.querySelector('input')).toHaveClass('nx-radio__input');
 
-        expect(shallowRender.find('svg.nx-radio__circle')).toExist();
-        expect(shallowRender.find('.nx-radio__circle .nx-radio__outer-circle')).toExist();
+        expect(el.querySelector('svg')).toHaveClass('nx-radio__circle');
+        expect(el.querySelector('circle')).toHaveClass('nx-radio__outer-circle');
       }
   );
 
   it('adds classes specified with the className prop', function() {
-    const component = getShallow({ className: 'foo' });
+    const component = renderEl({ className: 'foo' });
 
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-radio');
+    expect(component).toHaveClass('foo');
+    expect(component).toHaveClass('nx-radio');
   });
 
   it('renders .nx-radio__inner-circle iff it is checked', function() {
@@ -101,7 +106,7 @@ describe('NxRadio', function() {
   describe('children prop', function () {
     it('renders children nodes within an nx-radio__content <span>', function() {
       const render = shallow(
-        <NxRadio { ...simpleProps }>
+        <NxRadio { ...minimalProps }>
           <div className="bar"></div>
         </NxRadio>
       );
@@ -110,7 +115,7 @@ describe('NxRadio', function() {
     });
 
     it('does not render the .nx-radio__content element if there are no children', function() {
-      expect(getShallow()).not.toContainMatchingElement('.nx-radio__content');
+      expect(quickRender()).not.toContainMatchingElement('.nx-radio__content');
     });
 
     it('wraps the .nx-radio__content element in an NxOverflowTooltip unless overflowTooltip is set to false',
