@@ -8,7 +8,7 @@ import React, { FormEvent, forwardRef, useRef, useContext, useEffect, useState }
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
-import { last, values } from 'ramda';
+import { forEach, last, without } from 'ramda';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
@@ -81,19 +81,16 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
 
     // get the previous files uploaded
     if (files) {
-      for (let i = 0; i < files.length; i++) {
-        dataTransferObject.items.add(files[i]);
-      }
+      forEach((f) => dataTransferObject.items.add(f), Array.from(files));
     }
 
     const inputFiles = evt.currentTarget.files,
         normalizedFiles = !inputFiles?.length ? null : inputFiles;
 
     if (normalizedFiles) {
-      for (let i = 0; i < normalizedFiles.length; i++) {
-        dataTransferObject.items.add(normalizedFiles[i]);
-      }
+      forEach((f) => dataTransferObject.items.add(f), Array.from(normalizedFiles));
     }
+
     if (inputRef.current) {
       inputRef.current.files = dataTransferObject.files;
       onChangeProp(inputRef.current.files);
@@ -105,24 +102,19 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
   }
 
   function onDismiss(fileObj : File, selectedFile : HTMLElement | null) {
-    // if the selected file is either the last file on in the container or the last remaining file,
-    // set focus accordingly
+    // if the selected file is either the last file in the container or the last remaining file, set focus accordingly
     const closeBtns = Array.from(selectedFilesContainerRef.current?.
         querySelectorAll<HTMLButtonElement>('.nx-selected-file__dismiss-btn') ?? []);
-    closeBtns.forEach((btn)=> {
+    forEach((btn)=> {
       if (selectedFile?.contains(btn) && btn === last(closeBtns)) {
         closeBtns.length <= 1 ? inputRef.current?.focus() : closeBtns[closeBtns.length - 2].focus();
       }
-    });
+    }, closeBtns);
 
     const dataTransferObject = new DataTransfer();
     if (inputRef.current) {
       if (files) {
-        for (let i = 0; i < files.length; i++) {
-          if (fileObj !== files[i]) {
-            dataTransferObject.items.add(files[i]);
-          }
-        }
+        forEach((f: File) => dataTransferObject.items.add(f), without([fileObj], Array.from(files)));
         inputRef.current.files = dataTransferObject.files;
         onChangeProp(inputRef.current.files);
       }
@@ -169,8 +161,8 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         </NxButton>
         <div ref={selectedFilesContainerRef} className="nx-multi-file-upload__container__files nx-scrollable">
           { isFileSelected ?
-            values(files).map((file, key) =>
-              <SelectedFile key= {`${key}__selected-file}`} file={file as File} onDismiss={onDismiss}/>
+            Array.from(files).map((file, key) =>
+              <SelectedFile key= {`${key}__selected-file}`} file={file} onDismiss={onDismiss}/>
             ) :
             <span className={noFileMessageClassName}>
               <span>No file selected</span>
