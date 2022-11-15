@@ -10,6 +10,7 @@ import * as PropTypes from 'prop-types';
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   onClosing: () => void;
   disableMenuKeyNav?: boolean | null;
+  toggleElement?: HTMLElement | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

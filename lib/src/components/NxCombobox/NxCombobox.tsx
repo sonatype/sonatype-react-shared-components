@@ -185,23 +185,23 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         inputEle.setSelectionRange(endIndex, endIndex);
         evt.preventDefault();
         break;
-      case 'ArrowDown':
-        if (focusableBtnIndex === null || focusableBtnIndex === matches.length - 1) {
-          focusFirst();
-        }
-        else {
-          focusNext();
-        }
-        evt.preventDefault();
-        break;
-      case 'ArrowUp':
-        if (focusableBtnIndex) {
-          focusPrev();
-        }
-        else {
-          focusLast();
-        }
-        evt.preventDefault();
+      // case 'ArrowDown':
+      //   if (focusableBtnIndex === null || focusableBtnIndex === matches.length - 1) {
+      //     focusFirst();
+      //   }
+      //   else {
+      //     focusNext();
+      //   }
+      //   evt.preventDefault();
+      //   break;
+      // case 'ArrowUp':
+      //   if (focusableBtnIndex) {
+      //     focusPrev();
+      //   }
+      //   else {
+      //     focusLast();
+      //   }
+      //   evt.preventDefault();
         break;
       case 'Escape':
         handleOnChange('');
@@ -342,10 +342,11 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         <NxDropdownMenu id={dropdownId}
                         role='listbox'
                         ref={dropdownRef}
+                        toggleElement={inputRef.current}
                         className='nx-combobox__menu'
                         onClosing={() => {}}
                         aria-label="listbox of combobox"
-                        disableMenuKeyNav={true}>
+                        >
           {
             matches.length && matches.map((match, i) =>
               <NxTooltip key={match.id} title={itemTooltip?.(match) ?? ''}>
