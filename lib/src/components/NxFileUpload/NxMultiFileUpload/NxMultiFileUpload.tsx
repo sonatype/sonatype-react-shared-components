@@ -8,7 +8,7 @@ import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'rea
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
-import { values } from 'ramda';
+import { last, values } from 'ramda';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
@@ -27,13 +27,14 @@ const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 
 function SelectedFile({ file, onDismiss: onDismissProp }: SelectedFileProps) {
   // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
   const buttonLabel = 'Dismiss Upload';
+  const selectedFileRef = useRef(null);
 
   function onDismiss() {
-    onDismissProp(file);
+    onDismissProp(file, selectedFileRef.current);
   }
 
   return (
-    <span className="nx-selected-file">
+    <span className="nx-selected-file" ref={selectedFileRef}>
       <span className="nx-selected-file__info">
         <NxOverflowTooltip>
           <span className="nx-selected-file__name">{file.name}</span>
@@ -102,12 +103,22 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
     inputRef.current?.click();
   }
 
-  function onDismiss(file : File) {
+  function onDismiss(fileObj : File, selectedFile : HTMLElement | null) {
+    // if the selected file is either the last file on in the container or the last remaining file,
+    // set focus accordingly
+    const closeBtns = Array.from(selectedFilesContainerRef.current?.
+        querySelectorAll<HTMLButtonElement>('.nx-selected-file__dismiss-btn') ?? []);
+    closeBtns.forEach((btn)=> {
+      if (selectedFile?.contains(btn) && btn === last(closeBtns)) {
+        closeBtns.length <= 1 ? inputRef.current?.focus() : closeBtns[closeBtns.length - 2].focus();
+      }
+    });
+
     const dataTransferObject = new DataTransfer();
     if (inputRef.current) {
       if (files) {
         for (let i = 0; i < files.length; i++) {
-          if (file !== files[i]) {
+          if (fileObj !== files[i]) {
             dataTransferObject.items.add(files[i]);
           }
         }
@@ -115,6 +126,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         onChangeProp(inputRef.current.files);
       }
     }
+
   }
 
   useEffect(function() {

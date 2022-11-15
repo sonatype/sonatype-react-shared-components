@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 
 export interface SelectedFileProps {
   file: File;
-  onDismiss: (file: File) => void;
+  onDismiss: (fileObj: File, selectedFile: HTMLElement | null) => void;
 }
 
 // Props for NxStatefulFileUpload
