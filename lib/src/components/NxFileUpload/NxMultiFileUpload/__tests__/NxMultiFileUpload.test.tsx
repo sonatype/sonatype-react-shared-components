@@ -54,6 +54,13 @@ describe('NxMultiFileUpload', function() {
     expect(input).toHaveAttribute('lang', 'en');
   });
 
+  it('sets the multiple attribute on the input', function() {
+    const component = renderEl()!,
+        input = component.querySelector('input[type=file]');
+
+    expect(input).toHaveAttribute('multiple');
+  });
+
   it('renders a "No file selected" message if files is null', function() {
     expect(renderEl()).toHaveTextContent('No file selected');
   });
