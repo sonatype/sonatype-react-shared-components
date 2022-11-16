@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import userEvent from '@testing-library/user-event';
 
 import NxTextLink from '../NxTextLink';
 
@@ -60,9 +61,11 @@ describe('NxTextLink', function() {
     expect(quickRender({ disabled: true }).getByRole('link')).toBe;
   });
 
-  it('does not pass href value on the text link when the disabled prop is set', function() {
-    expect(renderEl({ href: '#/pages/Text%20Link' })?.getAttribute('href')).toContain('#/pages/Text%20Link');
-    expect(renderEl({ href: '#/pages/Text%20Link', disabled: true })?.getAttribute('href')).toBe(null);
+  it('does not pass href value on the text link when the disabled prop is set', async function() {
+    const user = userEvent.setup();
+    const el = quickRender({ href: '#/pages/Text%20Link', disabled: true });
+    await user.click(el.getByRole('link'));
+    expect(el.getByRole('link').getAttribute('href')).toBe(null);
   });
 
   it('sets the target to _blank if newTab is true, unless a different target is specified', function() {
