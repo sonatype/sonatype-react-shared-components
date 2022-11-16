@@ -15,7 +15,7 @@ const crumbs = [
   { name: 'Bullet the Blue Sky', href: 'https://www.mountainproject.com/route/105753382/bullet-the-blue-sky' }
 ];
 
-export default function NxBreadcrumbManySegmentsExample() {
+export default function NxBreadcrumbFourSegmentsExample() {
   const [isDropdownOpen, toggleIsDropdownOpen] = useToggle(false);
 
   return (
