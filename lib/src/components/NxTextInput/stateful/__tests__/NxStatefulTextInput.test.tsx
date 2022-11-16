@@ -89,6 +89,23 @@ describe('NxStatefulTextInput', function() {
     expect(onKeyPress).toHaveBeenCalledWith('a');
   });
 
+  it('updates the value and runs it through validator to update the validationErrors when value changes',
+      async function() {
+        const user = userEvent.setup(),
+            validator = jest.fn()
+                .mockReturnValue('expect boo'),
+            component = quickRender({ validator }),
+            input = component.getByRole('textbox');
+
+        await user.type(input, 'foo');
+
+        expect(input).toHaveValue('foo');
+        expect(validator).toHaveBeenCalledWith('foo');
+        expect(component.getByRole('alert')).toHaveTextContent('expect boo');
+        expect(input).toHaveErrorMessage('expect boo');
+      }
+  );
+
   describe('when not validatable', function() {
     const nonValidatableMinimalProps = { ...minimalProps, validatable: false };
 
