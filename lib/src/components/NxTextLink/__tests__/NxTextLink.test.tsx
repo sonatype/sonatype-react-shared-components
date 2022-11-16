@@ -14,7 +14,7 @@ describe('NxTextLink', function() {
   const renderEl = rtlRenderElement(NxTextLink, {});
 
   it('adds additional specified classes', function() {
-    const el = renderEl()!
+    const el = renderEl()!;
     const customEl = renderEl({ className: 'foo' })!;
 
     expect(customEl).toHaveClass('foo');
