@@ -12,7 +12,7 @@ import userEvent from '@testing-library/user-event';
 import NxTextInput, { PublicProps } from '../NxTextInput';
 import NxForm from '../../NxForm/NxForm';
 
-describe('PrivateNxTextInput', function() {
+describe('NxTextInput', function() {
   const minimalProps: PublicProps & RefAttributes<HTMLDivElement> = {
         value: '',
         isPristine: false
