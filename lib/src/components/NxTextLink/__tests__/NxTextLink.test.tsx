@@ -13,13 +13,6 @@ describe('NxTextLink', function() {
   const quickRender = rtlRender(NxTextLink, {});
   const renderEl = rtlRenderElement(NxTextLink, {});
 
-  it('adds additional specified classes', function() {
-    const el = renderEl({ className: 'foo' });
-
-    expect(el).toHaveClass('foo');
-    expect(el).toHaveClass('nx-text-link');
-  });
-
   it('adds additional specified props', function() {
     const el = renderEl({ id: 'foo', lang: 'en_US' });
 
