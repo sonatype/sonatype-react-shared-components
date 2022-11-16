@@ -89,4 +89,10 @@ describe('NxTextLink', function() {
 
     expect(renderEl({ external: true, noReferrer: true, target: 'asdf' })).toHaveAttribute('target', 'asdf');
   });
+
+  it('wraps non-element children in an element sibling to the icon', function() {
+    const el = renderEl({children: 'foo', external: true});
+
+    expect(el?.children[0].tagName).toBe('SPAN');
+  });
 });
