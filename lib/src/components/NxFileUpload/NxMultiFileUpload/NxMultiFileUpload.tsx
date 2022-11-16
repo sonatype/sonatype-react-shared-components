@@ -116,7 +116,9 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       if (files) {
         forEach((f: File) => dataTransferObject.items.add(f), without([fileObj], Array.from(files)));
         inputRef.current.files = dataTransferObject.files;
-        onChangeProp(inputRef.current.files);
+
+        const normalizedFiles = !inputRef.current.files.length ? null : inputRef.current.files;
+        onChangeProp(normalizedFiles);
       }
     }
   }
