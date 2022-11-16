@@ -63,7 +63,7 @@ describe('NxTextInput', function() {
   });
 
   it('sets the value as specified', function() {
-    expect(quickRender({ value: 'boo' }).getByRole('textbox')).toHaveAttribute('value', 'boo');
+    expect(quickRender({ value: 'boo' }).getByRole('textbox')).toHaveValue('boo');
   });
 
   it('sets disabled on the input when the disabled prop is true', function() {
