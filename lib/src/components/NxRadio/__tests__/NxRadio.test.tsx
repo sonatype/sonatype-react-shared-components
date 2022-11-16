@@ -4,10 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxRadio, { Props } from '../NxRadio';
 
@@ -22,6 +23,7 @@ describe('NxRadio', function() {
   };
 
   const renderEl = rtlRenderElement<Props>(NxRadio, minimalProps);
+  const quickRender = rtlRender<Props>(NxRadio, minimalProps);
 
   it('renders a <label> containing a radio <input> and .nx-radio__circle and .nx-radio__outer-circle  elements',
       function() {
@@ -49,12 +51,13 @@ describe('NxRadio', function() {
     expect(component).toHaveClass('nx-radio');
   });
 
-  // it('renders .nx-radio__inner-circle iff it is checked', function() {
-  //   expect(getShallow()).not.toContainMatchingElement('.nx-radio__inner-circle');
-  //   expect(getShallow({ isChecked: true })).toContainMatchingElement('.nx-radio__circle .nx-radio__inner-circle');
-  //   expect(getShallow({ isChecked: true, disabled: true }))
-  //       .toContainMatchingElement('.nx-radio__circle .nx-radio__inner-circle');
-  // });
+  it('renders .nx-radio__inner-circle if it is checked', function() {
+    expect(renderEl()?.querySelector('circle')).not.toHaveClass('nx-radio__inner-circle');
+
+    expect(renderEl({ isChecked: true })?.querySelector('circle')).toHaveClass('nx-radio__inner-circle');
+    expect(renderEl({ isChecked: true, disabled: true })?.querySelector('circle'))
+        .toHaveClass('nx-radio__inner-circle');
+  });
 
   it('uses null as the value passed to onChange', async function() {
     const onChange = jest.fn();
@@ -102,46 +105,49 @@ describe('NxRadio', function() {
   });
 
   describe('children prop', function () {
-    // it('renders children nodes within an nx-radio__content <span>', function() {
-    //   const { rerender } = quickRender();
-    //   rerender(
-    //     <NxRadio { ...minimalProps }>
-    //       <div className="bar"></div>
-    //     </NxRadio>
-    //   );
+    it('renders children nodes within an nx-radio__content <span>', function() {
+      const { container, rerender } = quickRender();
 
-    //   expect(rerender).toContainMatchingElement('label span.nx-radio__content .bar');
-    // });
+      rerender(
+        <NxRadio { ...minimalProps }>
+          <div className="bar"></div>
+        </NxRadio>
+      );
+
+      expect(container.querySelector('span.nx-radio__content .bar')).toBe;
+    });
 
     it('does not render the .nx-radio__content element if there are no children', function() {
       const el = renderEl()!;
       expect(el).not.toHaveClass('nx-radio__content');
     });
 
-    // it('wraps the .nx-radio__content element in an NxOverflowTooltip unless overflowTooltip is set to false',
-    //     function() {
-    //       expect(getShallow()).not.toContainMatchingElement(NxOverflowTooltip);
+    it('wraps the .nx-radio__content element in an NxOverflowTooltip unless overflowTooltip is set to false',
+        function() {
+          renderEl({ overflowTooltip: true });
+          screen.getByRole('tooltip');
+          // expect(getShallow()).not.toContainMatchingElement(NxOverflowTooltip);
 
-    //       expect(getShallow({ children: <div/> })).toContainMatchingElement(NxOverflowTooltip);
-    //       expect(getShallow({ children: <div/> }).find(NxOverflowTooltip))
-    //           .toContainMatchingElement('.nx-radio__content');
+          // expect(getShallow({ children: <div/> })).toContainMatchingElement(NxOverflowTooltip);
+          // expect(getShallow({ children: <div/> }).find(NxOverflowTooltip))
+          //     .toContainMatchingElement('.nx-radio__content');
 
-    //       expect(getShallow({ children: <div/>, overflowTooltip: true }))
-    //           .toContainMatchingElement(NxOverflowTooltip);
-    //       expect(getShallow({ children: <div/>, overflowTooltip: true }).find(NxOverflowTooltip))
-    //           .toContainMatchingElement('.nx-radio__content');
+          // expect(getShallow({ children: <div/>, overflowTooltip: true }))
+          //     .toContainMatchingElement(NxOverflowTooltip);
+          // expect(getShallow({ children: <div/>, overflowTooltip: true }).find(NxOverflowTooltip))
+          //     .toContainMatchingElement('.nx-radio__content');
 
-    //       expect(getShallow({ children: <div/>, overflowTooltip: null }))
-    //           .toContainMatchingElement(NxOverflowTooltip);
-    //       expect(getShallow({ children: <div/>, overflowTooltip: null }).find(NxOverflowTooltip))
-    //           .toContainMatchingElement('.nx-radio__content');
+          // expect(getShallow({ children: <div/>, overflowTooltip: null }))
+          //     .toContainMatchingElement(NxOverflowTooltip);
+          // expect(getShallow({ children: <div/>, overflowTooltip: null }).find(NxOverflowTooltip))
+          //     .toContainMatchingElement('.nx-radio__content');
 
-    //       expect(getShallow({ children: <div/>, overflowTooltip: false }))
-    //           .not.toContainMatchingElement(NxOverflowTooltip);
-    //       expect(getShallow({ children: <div/>, overflowTooltip: false }))
-    //           .toContainMatchingElement('.nx-radio__content');
-    //     }
-    // );
+          // expect(getShallow({ children: <div/>, overflowTooltip: false }))
+          //     .not.toContainMatchingElement(NxOverflowTooltip);
+          // expect(getShallow({ children: <div/>, overflowTooltip: false }))
+          //     .toContainMatchingElement('.nx-radio__content');
+        }
+    );
   });
 
   it('calls its onChange prop with value argument when the input fires a change event', async function() {
