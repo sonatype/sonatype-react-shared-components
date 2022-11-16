@@ -12,7 +12,7 @@ import userEvent from '@testing-library/user-event';
 import NxStatefulTextInput, { PublicProps } from '../NxStatefulTextInput';
 import NxForm from '../../../NxForm/NxForm';
 
-describe('PrivateNxStatefulTextInput', function() {
+describe('NxStatefulTextInput', function() {
   const minimalProps: PublicProps & RefAttributes<HTMLDivElement> = {
         defaultValue: ''
       },
