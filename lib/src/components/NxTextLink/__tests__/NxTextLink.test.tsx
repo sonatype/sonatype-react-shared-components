@@ -27,11 +27,6 @@ describe('NxTextLink', function() {
     expect(el).toHaveAttribute('lang', 'en_US');
   });
 
-  it('adds the nx-text-link--external class if external is true', function() {
-    expect(renderEl()).not.toHaveClass('nx-text-link--external');
-    expect(renderEl({ external: true })).toHaveClass('nx-text-link--external');
-  });
-
   it('adds the noreferrer rel if the noReferrer prop is true', function() {
     expect(renderEl()).toHaveAttribute('rel', '');
     expect(renderEl({ rel: 'foo' })).toHaveAttribute('rel', 'foo');
