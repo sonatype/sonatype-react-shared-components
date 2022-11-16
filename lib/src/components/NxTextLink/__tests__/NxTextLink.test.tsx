@@ -57,7 +57,7 @@ describe('NxTextLink', function() {
 
   it('sets link role on the text link when the disabled prop is set', function() {
     expect(renderEl()).not.toHaveAttribute('role', 'link');
-    expect(renderEl({ disabled: true })).toHaveAttribute('role', 'link');
+    expect(quickRender({ disabled: true }).getByRole('link')).toBe;
   });
 
   it('does not pass href value on the text link when the disabled prop is set', function() {
