@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import userEvent from '@testing-library/user-event';
 
@@ -85,17 +84,5 @@ describe('NxTextLink', function() {
     expect(renderEl({ external: true, newTab: false })).toHaveAttribute('target', '');
 
     expect(renderEl({ external: true, noReferrer: true, target: 'asdf' })).toHaveAttribute('target', 'asdf');
-  });
-
-  it('does not add an icon after the children if external is false', function() {
-    const { container } = quickRender({ children: <span/> });
-
-    expect(container.querySelector('.nx-icon.fa-external-link-alt')).not.toBeInTheDocument();
-  });
-
-  it('adds an icon after the children if external is true', function() {
-    const { container } = quickRender({ children: 'foo', external: true });
-
-    expect(container.querySelector('.nx-icon.fa-external-link-alt')).toBeInTheDocument();
   });
 });
