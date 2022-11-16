@@ -121,33 +121,6 @@ describe('NxRadio', function() {
       const el = renderEl()!;
       expect(el).not.toHaveClass('nx-radio__content');
     });
-
-    it('wraps the .nx-radio__content element in an NxOverflowTooltip unless overflowTooltip is set to false',
-        function() {
-          renderEl({ overflowTooltip: true });
-          screen.getByRole('tooltip');
-          // expect(getShallow()).not.toContainMatchingElement(NxOverflowTooltip);
-
-          // expect(getShallow({ children: <div/> })).toContainMatchingElement(NxOverflowTooltip);
-          // expect(getShallow({ children: <div/> }).find(NxOverflowTooltip))
-          //     .toContainMatchingElement('.nx-radio__content');
-
-          // expect(getShallow({ children: <div/>, overflowTooltip: true }))
-          //     .toContainMatchingElement(NxOverflowTooltip);
-          // expect(getShallow({ children: <div/>, overflowTooltip: true }).find(NxOverflowTooltip))
-          //     .toContainMatchingElement('.nx-radio__content');
-
-          // expect(getShallow({ children: <div/>, overflowTooltip: null }))
-          //     .toContainMatchingElement(NxOverflowTooltip);
-          // expect(getShallow({ children: <div/>, overflowTooltip: null }).find(NxOverflowTooltip))
-          //     .toContainMatchingElement('.nx-radio__content');
-
-          // expect(getShallow({ children: <div/>, overflowTooltip: false }))
-          //     .not.toContainMatchingElement(NxOverflowTooltip);
-          // expect(getShallow({ children: <div/>, overflowTooltip: false }))
-          //     .toContainMatchingElement('.nx-radio__content');
-        }
-    );
   });
 
   it('calls its onChange prop with value argument when the input fires a change event', async function() {
