@@ -8,7 +8,7 @@ import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'rea
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
-import { forEach, last, without } from 'ramda';
+import { forEach, without } from 'ramda';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
@@ -103,14 +103,15 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
   }
 
   function onDismiss(fileObj : File, selectedFile : HTMLElement | null) {
-    // if the selected file is either the last file in the container or the last remaining file, set focus accordingly
+    // if the selected file is the last file in the container, set the focus to the dismiss button of previous
+    // file's dismiss button
+    // if the selected file is the only file in the container, set the focus on the input
     const closeBtns = Array.from(selectedFilesContainerRef.current?.
         querySelectorAll<HTMLButtonElement>('.nx-selected-file__dismiss-btn') ?? []);
-    forEach((btn)=> {
-      if (selectedFile?.contains(btn) && btn === last(closeBtns)) {
-        closeBtns.length <= 1 ? inputRef.current?.focus() : closeBtns[closeBtns.length - 2].focus();
-      }
-    }, closeBtns);
+
+    if (selectedFile === selectedFilesContainerRef.current?.lastElementChild) {
+      closeBtns.length <= 1 ? inputRef.current?.focus() : closeBtns[closeBtns.length - 2].focus();
+    }
 
     const dataTransferObject = new DataTransfer();
     if (inputRef.current) {
