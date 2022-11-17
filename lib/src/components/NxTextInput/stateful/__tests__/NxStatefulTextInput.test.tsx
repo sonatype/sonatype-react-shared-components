@@ -93,16 +93,23 @@ describe('NxStatefulTextInput', function() {
       async function() {
         const user = userEvent.setup(),
             validator = jest.fn()
-                .mockReturnValue('expect boo'),
+                .mockImplementation(val => val === 'boo' ? null : 'expect boo'),
             component = quickRender({ validator }),
             input = component.getByRole('textbox');
 
-        await user.type(input, 'foo');
+        await user.type(input, 'b');
 
-        expect(input).toHaveValue('foo');
-        expect(validator).toHaveBeenCalledWith('foo');
+        expect(input).toHaveValue('b');
+        expect(validator).toHaveBeenCalledWith('b');
         expect(component.getByRole('alert')).toHaveTextContent('expect boo');
         expect(input).toHaveErrorMessage('expect boo');
+
+        await user.type(input, 'oo');
+
+        expect(input).toHaveValue('boo');
+        expect(validator).toHaveBeenCalledWith('boo');
+        expect(component.queryByRole('alert')).not.toBeInTheDocument();
+        expect(input).not.toHaveErrorMessage();
       }
   );
 
