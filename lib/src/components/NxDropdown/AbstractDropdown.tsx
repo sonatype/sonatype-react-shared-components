@@ -21,7 +21,6 @@ export {
  * @param isOpen - a boolean to indicate if the dropdown is open or not.
  * @param className - a classname string for the div containing the toggle and dropdown.
  * @param disabled - If true disables toggling of dropdown.
- * @param onToggleCollapse - The onToggleCollapse function that was provided from outside of the component
  * @param onCloseClick - A callback that should fire when a click
  *    is detected that would result in the dropdown getting closed. The Mouse event is passed to this handler,
  *    and if the handler calls `preventDefault` on it, the close is cancelled
@@ -142,14 +141,14 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
     /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
     <div ref={ref} className={className} onKeyDown={onKeyDown} {...attrs}>
       { renderToggleElement(toggleRef, onToggleCollapse) }
-      { isOpen &&
-        <NxDropdownMenu ref={mergedMenuRef}
-                        onClosing={onMenuClosing}
-                        toggleElement={toggleRef.current}
-                        id={menuId ?? undefined}>
-          { children }
-        </NxDropdownMenu>
-      }
+      <NxDropdownMenu ref={mergedMenuRef}
+                      onClosing={onMenuClosing}
+                      toggleElement={toggleRef.current}
+                      isOpen={isOpen}
+                      onToggleCollapse={onToggleCollapseProp ?? undefined}
+                      id={menuId ?? undefined}>
+        { children }
+      </NxDropdownMenu>
     </div>
   );
 });

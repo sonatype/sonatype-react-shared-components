@@ -7,7 +7,7 @@
 import React, { useLayoutEffect, forwardRef, useState, useEffect, useRef, KeyboardEventHandler } from 'react';
 import classnames from 'classnames';
 import useMergedRef from '@react-hook/merged-ref';
-import { always, dec, inc } from 'ramda';
+import { always, dec, inc, move, reduce } from 'ramda';
 
 import { Props, propTypes } from './types';
 
@@ -15,8 +15,9 @@ import './NxDropdownMenu.scss';
 
 export { Props };
 
-const FOCUSABLE_MENU_ITEMS_SELECTOR = ':is(a, button, input)';
-const ACTIVE_FOCUSABLE_MENU_ITEMS_SELECTOR = `${FOCUSABLE_MENU_ITEMS_SELECTOR}:not([disabled], .disabled)`;
+const FOCUSABLE_ELEMENTS = ['a', 'button', 'input'];
+const FOCUSABLE_MENU_ITEMS_SELECTOR = FOCUSABLE_ELEMENTS.join(', ');
+const ACTIVE_FOCUSABLE_MENU_ITEMS_SELECTOR = FOCUSABLE_ELEMENTS.join(':not([disabled], .disabled), ');
 
 /**
  * This component is not currently intended for public export. It is a helper for NxDropdown and NxSegmentedButton
@@ -32,6 +33,9 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
     children,
     disableMenuKeyNav,
     toggleElement,
+    isOpen,
+    onToggleCollapse,
+    onMenuItemFocus,
     ...attrs
   } = props;
 
@@ -40,9 +44,21 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
 
   const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState<number>(0);
 
+  // Move this to NxDropdown...
+  const getFocusableMenuItems = (selector: string) => {
+    if (menuRef.current) {
+      const focusableElements = Array.from(menuRef.current.querySelectorAll<HTMLElement>(selector));
+      const isRightButton = (element: Element) => element.classList.contains('nx-dropdown-right-button');
+      const indicesToSwap = focusableElements.reduce<number[]>((acc, element, i) =>
+        isRightButton(element) ? [...acc, i] : acc, []);
+      return reduce((els, i) => move(i, i + 1, els), focusableElements, indicesToSwap);
+    }
+    return [];
+  };
+
   const setMenuItemFocus = (adjust: (i: number) => number) => () => {
         if (menuRef.current) {
-          const focusableElements = menuRef.current.querySelectorAll<HTMLElement>(ACTIVE_FOCUSABLE_MENU_ITEMS_SELECTOR);
+          const focusableElements = getFocusableMenuItems(ACTIVE_FOCUSABLE_MENU_ITEMS_SELECTOR);
           const adjustedMenuItemIndex = adjust(focusedMenuItemIndex ?? 0);
 
           let newMenuItemIndex = adjustedMenuItemIndex;
@@ -56,8 +72,12 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
 
           const elementToFocus = focusableElements[newMenuItemIndex];
           if (elementToFocus) {
+            if (onMenuItemFocus) {
+              onMenuItemFocus(newMenuItemIndex, focusableElements);
+            }
             elementToFocus.focus();
             setFocusedMenuItemIndex(newMenuItemIndex);
+            elementToFocus.scrollIntoView({ block: 'nearest' });
           }
         }
       },
@@ -71,20 +91,28 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
 
   useEffect(() => {
     if (menuRef.current) {
-      const focusableElements = menuRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_MENU_ITEMS_SELECTOR);
+      const focusableElements = getFocusableMenuItems(FOCUSABLE_MENU_ITEMS_SELECTOR);
       focusableElements.forEach(menuItem => menuItem.tabIndex = -1);
     }
-  }, [menuRef]);
+  }, [menuRef, children]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      const toggleOpen = () => {
+        if (!isOpen && onToggleCollapse) {
+          onToggleCollapse();
+        }
+      };
+
       switch (event.key) {
         case 'ArrowUp':
           event.preventDefault();
+          toggleOpen();
           focusLast();
           break;
         case 'ArrowDown':
           event.preventDefault();
+          toggleOpen();
           focusFirst();
           break;
       }
@@ -99,7 +127,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
         toggleElement.removeEventListener('keydown', handleKeyDown);
       }
     };
-  }, [toggleElement, disableMenuKeyNav]);
+  }, [toggleElement, disableMenuKeyNav, isOpen, onToggleCollapse]);
 
   function activateMenuItem(event: React.KeyboardEvent<HTMLElement>) {
     if (menuRef.current) {
@@ -144,7 +172,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
 
   const className = classnames('nx-dropdown-menu', classNameProp);
 
-  return (
+  return isOpen ? (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus
     <div ref={mergedRef}
          onKeyDown={handleKeyDown}
@@ -152,7 +180,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
          { ...{ className, ...attrs } }>
       { children }
     </div>
-  );
+  ) : <></>;
 });
 
 NxDropdownMenu.propTypes = propTypes;

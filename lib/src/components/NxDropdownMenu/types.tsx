@@ -11,6 +11,9 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   onClosing: () => void;
   disableMenuKeyNav?: boolean | null;
   toggleElement?: HTMLElement | null;
+  onMenuItemFocus?: (index: number, focusableElements: HTMLElement[]) => void | null;
+  isOpen?: boolean;
+  onToggleCollapse?: () => void | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

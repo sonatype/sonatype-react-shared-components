@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useRef } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
-import { any, clamp, partial, pipe, prop } from 'ramda';
+import { any, partial, pipe, prop } from 'ramda';
 
 import './NxSearchDropdown.scss';
 
@@ -50,7 +50,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
       filterRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
 
-      [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
+      // [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
 
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
       dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'menu',
@@ -199,7 +199,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       tabIndex={-1}>
         <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
           {
-            matches.length ? matches.map((match, i) =>
+            matches.length ? matches.map((match) =>
               <button role="menuitem"
                       type="button"
                       className="nx-dropdown-button"
