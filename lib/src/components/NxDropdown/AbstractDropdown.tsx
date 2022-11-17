@@ -143,7 +143,6 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
       { renderToggleElement(toggleRef, onToggleCollapse) }
       <NxDropdownMenu ref={mergedMenuRef}
                       onClosing={onMenuClosing}
-                      toggleElement={toggleRef.current}
                       isOpen={isOpen}
                       onToggleCollapse={onToggleCollapseProp ?? undefined}
                       id={menuId ?? undefined}>

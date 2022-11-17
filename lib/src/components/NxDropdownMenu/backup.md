@@ -18,7 +18,7 @@ import React, {
 } from 'react';
 import classnames from 'classnames';
 import useMergedRef from '@react-hook/merged-ref';
-import { dec, inc, move, reduce } from 'ramda';
+import { always, dec, inc, move, reduce } from 'ramda';
 
 import { Props, propTypes } from './types';
 
@@ -36,9 +36,7 @@ interface NxDropdownMenuValue {
   focusLast: () => void,
   focusFirst: () => void,
   focusPrev: () => void,
-  setIsOpen: (v: boolean) => void,
-  focusedMenuItemIndex: number,
-  setFocusedMenuItemIndex: (v: number) => void
+  setIsOpen: () => void,
 }
 
 const NxDropdownMenuContext = createContext<NxDropdownMenuValue | null>(null);
@@ -52,13 +50,38 @@ const NxDropdownMenuRoot = (props: NxDropdownMenuRootProps) => {
     children
   } = props;
 
-  const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState<number>(0);
+  const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const focusNext = () => setFocusedMenuItemIndex(inc(focusedMenuItemIndex));
-  const focusPrev = () => setFocusedMenuItemIndex(dec(focusedMenuItemIndex));
-  const focusFirst = () => setFocusedMenuItemIndex(0);
-  const focusLast = () => setFocusedMenuItemIndex(-1);
+  const setMenuItemFocus = (adjust: (i: number) => number) => () => {
+    if (menuRef.current) {
+      const focusableElements = getFocusableMenuItems(ACTIVE_FOCUSABLE_MENU_ITEMS_SELECTOR);
+      const adjustedMenuItemIndex = adjust(focusedMenuItemIndex ?? 0);
+
+      let newMenuItemIndex = adjustedMenuItemIndex;
+
+      if (adjustedMenuItemIndex < 0) {
+        newMenuItemIndex = focusableElements.length - 1;
+      }
+      else if (adjustedMenuItemIndex >= focusableElements.length) {
+        newMenuItemIndex = 0;
+      }
+
+      const elementToFocus = focusableElements[newMenuItemIndex];
+      if (elementToFocus) {
+        if (onMenuItemFocus) {
+          onMenuItemFocus(newMenuItemIndex, focusableElements);
+        }
+        elementToFocus.focus();
+        setFocusedMenuItemIndex(newMenuItemIndex);
+        elementToFocus.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  };
+  const focusNext = setMenuItemFocus(inc);
+  const focusPrev = setMenuItemFocus(dec);
+  const focusFirst = setMenuItemFocus(always(0));
+  const focusLast = setMenuItemFocus(always(-1));
 
   return (
     <NxDropdownMenuContext.Provider value={{
@@ -67,9 +90,7 @@ const NxDropdownMenuRoot = (props: NxDropdownMenuRootProps) => {
       focusFirst,
       focusPrev,
       isOpen,
-      setIsOpen,
-      focusedMenuItemIndex,
-      setFocusedMenuItemIndex
+      setIsOpen
     }}>
       {children}
     </NxDropdownMenuContext.Provider>
@@ -87,7 +108,7 @@ interface NxDropdownMenuTriggerProps {
 
 const NxDropdownMenuTrigger = (props: NxDropdownMenuTriggerProps) => {
   const { renderTriggerElement, onToggleOpen } = props;
-  const { isOpen, focusLast, focusFirst } = useContext(NxDropdownMenuContext)!;
+  const { isOpen, focusLast, focusFirst } = useContext(NxDropdownMenuContext);
 
   const handleKeyDown: React.KeyboardEventHandler = (event) => {
     const toggleOpen = () => {
@@ -126,6 +147,8 @@ const NxDropdownMenuContent = forwardRef<HTMLDivElement, Props>(function NxDropd
     classNameProp,
     children,
     disableMenuKeyNav,
+    isOpen,
+    onToggleCollapse,
     onMenuItemFocus,
     ...attrs
   } = props;
@@ -133,19 +156,7 @@ const NxDropdownMenuContent = forwardRef<HTMLDivElement, Props>(function NxDropd
   const menuRef = useRef<HTMLDivElement>(null);
   const mergedRef = useMergedRef(menuRef, ref);
 
-  // const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState<number>(0);
-
-   const rootContext = useContext(NxDropdownMenuContext);
-
-   const {
-    isOpen,
-    focusedMenuItemIndex,
-    setFocusedMenuItemIndex,
-    focusFirst,
-    focusLast,
-    focusNext,
-    focusPrev
-  } = rootContext; 
+  const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState<number>(0);
 
   // Move this to NxDropdown...
   const getFocusableMenuItems = (selector: string) => {
@@ -162,13 +173,14 @@ const NxDropdownMenuContent = forwardRef<HTMLDivElement, Props>(function NxDropd
   useEffect(() => {
     if (menuRef.current) {
       const focusableElements = getFocusableMenuItems(ACTIVE_FOCUSABLE_MENU_ITEMS_SELECTOR);
+      const adjustedMenuItemIndex = adjust(focusedMenuItemIndex ?? 0);
 
-      let newMenuItemIndex = focusedMenuItemIndex;
+      let newMenuItemIndex = adjustedMenuItemIndex;
 
-      if (focusedMenuItemIndex < 0) {
+      if (adjustedMenuItemIndex < 0) {
         newMenuItemIndex = focusableElements.length - 1;
       }
-      else if (focusedMenuItemIndex >= focusableElements.length) {
+      else if (adjustedMenuItemIndex >= focusableElements.length) {
         newMenuItemIndex = 0;
       }
 
@@ -182,7 +194,7 @@ const NxDropdownMenuContent = forwardRef<HTMLDivElement, Props>(function NxDropd
         elementToFocus.scrollIntoView({ block: 'nearest' });
       }
     }
-  }, [focusedMenuItemIndex, setFocusedMenuItemIndex]);
+  })
 
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
@@ -251,10 +263,10 @@ const NxDropdownMenuContent = forwardRef<HTMLDivElement, Props>(function NxDropd
 NxDropdownMenuContent.propTypes = propTypes;
 
 const NxDropdownMenu = Object.assign(
-    NxDropdownMenuContent,
+    NxDropdownMenuRoot,
     {
       Trigger: NxDropdownMenuTrigger,
-      Root: NxDropdownMenuRoot
+      Content: NxDropdownMenuContent
     }
 );
 
