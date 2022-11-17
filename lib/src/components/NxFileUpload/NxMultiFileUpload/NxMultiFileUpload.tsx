@@ -95,10 +95,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       forEach((f) => dataTransferObject.items.add(f), Array.from(normalizedFiles));
     }
 
-    if (inputRef.current) {
-      inputRef.current.files = dataTransferObject.files;
-      onChangeProp(inputRef.current.files);
-    }
+    onChangeProp(dataTransferObject.files);
   }
 
   function openPicker() {
@@ -119,13 +116,24 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
     if (inputRef.current) {
       if (files) {
         forEach((f: File) => dataTransferObject.items.add(f), without([fileObj], Array.from(files)));
-        inputRef.current.files = dataTransferObject.files;
 
-        const normalizedFiles = !inputRef.current.files.length ? null : inputRef.current.files;
+        const normalizedFiles = !dataTransferObject.files.length ? null : dataTransferObject.files;
         onChangeProp(normalizedFiles);
       }
     }
   }
+
+  useEffect(function() {
+    if (inputRef.current) {
+      if (isFileSelected) {
+        inputRef.current.files = files;
+      }
+      else {
+        // there's no way to clear the list via the files prop, but this does it
+        inputRef.current.value = '';
+      }
+    }
+  }, [files]);
 
   return (
     <div ref={ref} className={className} >
