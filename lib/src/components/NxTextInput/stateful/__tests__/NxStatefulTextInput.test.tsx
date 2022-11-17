@@ -62,7 +62,7 @@ describe('NxStatefulTextInput', function() {
   });
 
   it('sets the value as specified', function() {
-    expect(quickRender({ defaultValue: 'boo' }).getByRole('textbox')).toHaveAttribute('value', 'boo');
+    expect(quickRender({ defaultValue: 'boo' }).getByRole('textbox')).toHaveValue('boo');
   });
 
   it('calls onChange with the value whenever the input\'s onChange event fires', async function() {
