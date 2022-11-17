@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, forwardRef, useRef, useContext, useEffect, useState } from 'react';
+import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'react';
 import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import prettyBytes from 'pretty-bytes';
@@ -27,11 +27,16 @@ const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 
 function SelectedFile({ file, onDismiss: onDismissProp }: SelectedFileProps) {
   // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
   const buttonLabel = 'Dismiss Upload';
-  const selectedFileRef = useRef(null);
+  const selectedFileRef = useRef<null | HTMLSpanElement>(null);
 
   function onDismiss() {
     onDismissProp(file, selectedFileRef.current);
   }
+  useEffect(() => {
+    if (selectedFileRef.current) {
+      selectedFileRef.current.scrollIntoView({block: 'nearest'});
+    }
+  }, []);
 
   return (
     <span className="nx-selected-file" ref={selectedFileRef}>
@@ -72,8 +77,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-multi-file-upload-input', id),
       selectedFilesContainerRef = useRef<HTMLDivElement>(null),
-      validationErrorId = useUniqueId('nx-multi-file-upload-validation-error'),
-      [previousFiles, setPreviousFiles] = useState<FileList | null>(files);
+      validationErrorId = useUniqueId('nx-multi-file-upload-validation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
 
@@ -122,19 +126,6 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       }
     }
   }
-
-  // the container scrolls to the bottommost file only when new files are added
-  useEffect(function() {
-    const newFilesAdded = previousFiles === null || (files && (files.length > previousFiles.length));
-
-    if (selectedFilesContainerRef.current && newFilesAdded && files) {
-      const lastSelectedFile = selectedFilesContainerRef.current.lastElementChild;
-      lastSelectedFile?.scrollIntoView({block: 'nearest'});
-    }
-    if (files) {
-      setPreviousFiles(files);
-    }
-  }, [files]);
 
   return (
     <div ref={ref} className={className} >
