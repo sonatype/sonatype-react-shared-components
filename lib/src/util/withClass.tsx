@@ -4,7 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, DetailedHTMLProps, SVGProps, ElementType } from 'react';
+import React, { forwardRef, DetailedHTMLProps, SVGProps } from 'react';
+import NxOverflowTooltip from '../components/NxTooltip/NxOverflowTooltip';
 import classnames from 'classnames';
 
 type NativeElType<E extends keyof JSX.IntrinsicElements> =
@@ -17,7 +18,7 @@ export default function withClass<E extends keyof JSX.IntrinsicElements>(
   El: E,
   withClassName: string,
   withRole?: string,
-  Wrapper?: ElementType
+  withOverflowToolip?: boolean
 ) {
   return forwardRef<NativeElType<E>, JSX.IntrinsicElements[E]>((props: JSX.IntrinsicElements[E], ref) => {
     const {
@@ -26,6 +27,6 @@ export default function withClass<E extends keyof JSX.IntrinsicElements>(
     } = props;
     const classes = classnames(withClassName, className);
     const el = React.createElement(El, { className: classes, role: withRole, ref, ...otherProps});
-    return Wrapper ? <Wrapper>{el}</Wrapper> : el;
+    return withOverflowToolip ? <NxOverflowTooltip>{el}</NxOverflowTooltip> : el;
   });
 }

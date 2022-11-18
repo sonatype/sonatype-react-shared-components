@@ -8,6 +8,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import withClass from '../withClass';
 import { getShallowComponent } from '../../__testutils__/enzymeUtils';
+import NxOverflowTooltip from '../../components/NxTooltip/NxOverflowTooltip';
 
 describe('withClass', function() {
   const ExampleComponent = withClass('hgroup', 'foo-bar'),
@@ -59,5 +60,11 @@ describe('withClass', function() {
 
     expect(component).toHaveProp('id', 'baz');
     expect(component).toHaveProp('lang', 'en_US');
+  });
+
+  it('creates a component wrapped with NxOverflowTooltip when withOverflowTooltip parameter is true', function() {
+    const ExampleComponentWithOverflowTooltip = withClass('button', 'foo', undefined, true),
+        component = shallow(<ExampleComponentWithOverflowTooltip />);
+    expect(component).toMatchSelector(NxOverflowTooltip);
   });
 });

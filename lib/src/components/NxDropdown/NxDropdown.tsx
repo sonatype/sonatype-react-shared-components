@@ -83,10 +83,10 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
 _NxDropdown.propTypes = propTypes;
 
 const NxDropdown = Object.assign(_NxDropdown, {
-  Divider: withClass('hr', 'nx-dropdown__divider'),
-  Button: withClass('button', 'nx-dropdown-button', 'menuitem', NxOverflowTooltip),
-  Link: withClass('a', 'nx-dropdown-link', 'menuitem', NxOverflowTooltip),
-  LinkButton: withClass('a', 'nx-dropdown-button', 'menuitem', NxOverflowTooltip)
+  Divider: withClass('hr', 'nx-dropdown__divider', 'separator'),
+  Button: withClass('button', 'nx-dropdown-button', 'menuitem', true),
+  Link: withClass('a', 'nx-dropdown-link', 'menuitem', true),
+  LinkButton: withClass('a', 'nx-dropdown-button', 'menuitem', true)
 });
 
 export default NxDropdown;
