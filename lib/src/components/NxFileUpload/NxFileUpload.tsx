@@ -23,12 +23,13 @@ import './NxFileUpload.scss';
 
 const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps) {
+const SelectedFile = forwardRef<HTMLSpanElement, SelectedFileProps>(function
+SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps, ref) {
   // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
   const buttonLabel = 'Dismiss Upload';
 
   return (
-    <span className="nx-selected-file">
+    <span className="nx-selected-file" ref={ref}>
       <span className="nx-selected-file__info" id={descriptionId}>
         <NxOverflowTooltip>
           <span className="nx-selected-file__name">{file.name}</span>
@@ -42,7 +43,7 @@ function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps) {
       </NxTooltip>
     </span>
   );
-}
+});
 
 const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(props, ref) {
   const {
@@ -139,3 +140,4 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
 
 NxFileUpload.propTypes = propTypes;
 export default NxFileUpload;
+export { SelectedFile };

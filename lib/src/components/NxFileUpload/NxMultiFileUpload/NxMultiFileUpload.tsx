@@ -5,15 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'react';
-import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-import prettyBytes from 'pretty-bytes';
 import { forEach, without } from 'ramda';
 
+import { SelectedFile } from '../NxFileUpload';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 import NxButton from '../../NxButton/NxButton';
-import NxTooltip from '../../NxTooltip/NxTooltip';
 import { FormAriaContext } from '../../NxForm/context';
 import { useUniqueId } from '../../../util/idUtil';
 import { Props, propTypes, SelectedFileProps } from './types';
@@ -22,36 +20,21 @@ export { Props };
 
 import '../NxFileUpload.scss';
 
-const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-
-function SelectedFile({ file, onDismiss: onDismissProp }: SelectedFileProps) {
-  // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
-  const buttonLabel = 'Dismiss Upload';
-  const selectedFileRef = useRef<null | HTMLSpanElement>(null);
+function SelectedFileWrapper({file, onDismiss: onDismissProp}: SelectedFileProps) {
+  const fileRef = useRef<HTMLSpanElement>(null);
 
   function onDismiss() {
-    onDismissProp(file, selectedFileRef.current);
+    onDismissProp(file);
   }
-  useEffect(() => {
-    if (selectedFileRef.current) {
-      selectedFileRef.current.scrollIntoView({block: 'nearest'});
+
+  useEffect(function() {
+    if (fileRef.current) {
+      fileRef.current.scrollIntoView({block: 'nearest'});
     }
   }, []);
 
   return (
-    <span className="nx-selected-file" ref={selectedFileRef}>
-      <span className="nx-selected-file__info">
-        <NxOverflowTooltip>
-          <span className="nx-selected-file__name">{file.name}</span>
-        </NxOverflowTooltip>
-        <span className="nx-selected-file__size">{formatSize(file.size)}</span>
-      </span>
-      <NxTooltip title={buttonLabel}>
-        <button type="button" aria-label={buttonLabel} className="nx-selected-file__dismiss-btn" onClick={onDismiss}>
-          <NxFontAwesomeIcon icon={faTimesCircle} />
-        </button>
-      </NxTooltip>
-    </span>
+    <SelectedFile file={file} onDismiss={onDismiss} ref={fileRef}/>
   );
 }
 
@@ -80,7 +63,6 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
       validationErrorId = useUniqueId('nx-multi-file-upload-validation-error');
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
-
     const dataTransferObject = new DataTransfer();
 
     // get the previous files uploaded
@@ -102,15 +84,17 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
     inputRef.current?.click();
   }
 
-  function onDismiss(fileObj : File, selectedFile : HTMLElement | null) {
+  function onDismiss(fileObj : File) {
     // if the selected file is the last file in the container, set the focus to the dismiss button of previous
     // file's dismiss button
     // if the selected file is the only file in the container, set the focus on the input
     const closeBtns = Array.from(selectedFilesContainerRef.current?.
         querySelectorAll<HTMLButtonElement>('.nx-selected-file__dismiss-btn') ?? []);
 
-    if (selectedFile === selectedFilesContainerRef.current?.lastElementChild) {
-      closeBtns.length <= 1 ? inputRef.current?.focus() : closeBtns[closeBtns.length - 2].focus();
+    if (files) {
+      if (fileObj === files[files.length - 1]) {
+        closeBtns.length <= 1 ? inputRef.current?.focus() : closeBtns[closeBtns.length - 2].focus();
+      }
     }
 
     const dataTransferObject = new DataTransfer();
@@ -164,7 +148,7 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
         <div ref={selectedFilesContainerRef} className="nx-multi-file-upload__container__files nx-scrollable">
           { isFileSelected ?
             Array.from(files).map((file, key) =>
-              <SelectedFile key= {`${key}__selected-file}`} file={file} onDismiss={onDismiss}/>
+              <SelectedFileWrapper key= {`${key}__selected-file}`} file={file} onDismiss={onDismiss}/>
             ) :
             <span className={noFileMessageClassName}>
               <span>No file selected</span>
