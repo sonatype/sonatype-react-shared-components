@@ -171,7 +171,7 @@ export {
 
 export {
   default as NxStatefulTextInput,
-  Props as NxStatefulTextInputProps
+  PublicProps as NxStatefulTextInputProps
 } from './components/NxTextInput/stateful/NxStatefulTextInput';
 
 export {
