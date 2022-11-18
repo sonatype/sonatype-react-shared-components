@@ -206,7 +206,7 @@ const NxDropdownMenuContent = forwardRef<HTMLDivElement, Props>(function NxDropd
     }
   }, [menuRef, children]);
 
-  function activateMenuItem(event: React.KeyboardEvent<HTMLElement>) {
+  function activateMenuItem(event: React.<HTMLElement>) {
     if (menuRef.current) {
       const focusableEls = menuRef.current.querySelectorAll<HTMLElement>(ACTIVE_FOCUSABLE_MENU_ITEMS_SELECTOR);
       const currentFocusedEl = focusableEls[focusedMenuItemIndex];
