@@ -68,9 +68,6 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
 
   function onResetClick() {
     onChange(new Set());
-    if (menuRef.current) {
-      menuRef.current.focus();
-    }
   }
 
   const renderOption = ({ id, displayName }: DataItem<T>) => (
