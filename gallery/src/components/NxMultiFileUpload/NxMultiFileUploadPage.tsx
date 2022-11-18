@@ -197,7 +197,7 @@ const NxTextInputPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Complex Example"
-                        id="nx-file-upload-complex-example"
+                        id="nx-multi-file-upload-complex-example"
                         liveExample={NxMultiFileUploadComplexExample}
                         codeExamples={nxMultiFileUploadComplexCode}>
       An example of <NxCode>NxMultiFileUpload</NxCode> with required-field validation and various extra props. Notice
