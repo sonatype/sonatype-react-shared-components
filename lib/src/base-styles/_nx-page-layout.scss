@@ -23,6 +23,8 @@
 }
 
 .nx-page {
+  $old-sidebar-col-width: min(var(--nx-width-sidebar), var(--nx-width-sidebar-max));
+
   display: grid;
   min-width: var(--nx-width-page-min);
   height: 100%;
@@ -37,7 +39,7 @@
     'global-sidebar   notices      notices' auto
     'global-sidebar   header        header' auto
     'global-sidebar old-sidebar    content' 1fr /
-      auto             auto            1fr;
+     auto    $old-sidebar-col-width    1fr;
 }
 
 .nx-page-content {
@@ -80,20 +82,21 @@
 
   // sizing properties for when in .nx-page-sidebar
   flex: 0 0 var(--nx-width-sidebar);
+  max-width: var(--nx-width-sidebar-max);
 
   // sizing properties for when in .nx-page-side--full-width or directly within .nx-page.
-  // Unfortunately we have to use vw units here because percent is taken relative to the grid cell
-  // not the entire container
   grid-area: old-sidebar;
-  width: calc((1 - var(--nx-width-content-proportion)) * 100vw);
-
-  // sizing properties used in all layouts
-  max-width: calc((1 - var(--nx-width-content-proportion)) * var(--nx-width-page-max));
+  width: 100%; // of the grid track
 
   overflow-x: hidden;
   padding: var(--nx-spacing-6x) var(--nx-spacing-6x) var(--nx-spacing-2x) var(--nx-spacing-6x);
   position: relative;
   white-space: normal;
+
+  + .nx-page-main {
+    // When inner sidebar is present, main should only be in the content area
+    grid-area: content;
+  }
 }
 
 .nx-page-main {
@@ -101,7 +104,9 @@
 
   box-sizing: border-box;
   flex: auto;
-  grid-area: content;
+
+  // When inner sidebar is not present, span the sidebar and content areas
+  grid-area: old-sidebar-start / old-sidebar-start / content-end / content-end;
   min-width: 0;
   overflow-x: hidden;
   overflow-y: auto;
