@@ -5,82 +5,66 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import { faCheck, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { waitFor, render } from '@testing-library/react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxButton from '../NxButton';
-import { TooltipContext } from '../../NxTooltip/NxTooltip';
 
 describe('NxButton', function() {
+  const quickRender = rtlRender(NxButton, {}),
+      renderEl = rtlRenderElement(NxButton, {});
+
   it('renders a button', function() {
-    const button = shallow(<NxButton />);
-
-    expect(button).toHaveClassName('nx-btn');
+    expect(quickRender().getByRole('button').tagName).toBe('BUTTON');
   });
 
-  it('renders a primary button', function() {
-    const button = shallow(<NxButton variant="primary">Primary Button</NxButton>);
+  it('sets ref on the button', function() {
+    const ref = React.createRef<HTMLButtonElement>(),
+        el = renderEl({ ref });
 
-    expect(button).toMatchSelector('button.nx-btn.nx-btn--primary');
-    expect(button).toHaveText('Primary Button');
+    expect(ref.current).toBe(el);
   });
 
-  it('renders a secondary button by default', function() {
-    const button = shallow(<NxButton>Secondary Button</NxButton>);
+  it('adds specified classNames to the element in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
 
-    expect(button).toHaveClassName('.nx-btn--secondary');
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('renders an icon-only button', function() {
-    const button = shallow(<NxButton title="Check" variant="icon-only"><NxFontAwesomeIcon icon={faCheck}/></NxButton>);
+  it('passes additional attrs to the button', function() {
+    const btn = quickRender({ id: 'foo', lang: 'en-US' }).getByRole('button');
 
-    expect(button.find('button')).toMatchSelector('.nx-btn.nx-btn--icon-only');
+    expect(btn).toHaveAttribute('id', 'foo');
+    expect(btn).toHaveAttribute('lang', 'en-US');
   });
 
-  it('passes the disabled attribute through', function() {
-    const button = shallow(<NxButton variant="error" disabled>Disabled Button</NxButton>);
-
-    expect(button).toMatchSelector('button.nx-btn.nx-btn--error');
-    expect(button).toBeDisabled();
+  it('sets disabled on the button when the disabled prop is true', function() {
+    expect(quickRender().getByRole('button')).not.toBeDisabled();
+    expect(quickRender({ disabled: undefined }).getByRole('button')).not.toBeDisabled();
+    expect(quickRender({ disabled: false }).getByRole('button')).not.toBeDisabled();
+    expect(quickRender({ disabled: true }).getByRole('button')).toBeDisabled();
   });
 
   it('disabled by class button has aria-disabled true', function() {
-    const button = shallow(<NxButton className="disabled">Disabled Button</NxButton>);
-
-    expect(button).toHaveProp('aria-disabled', true);
+    expect(quickRender().getByRole('button')).not.toBeDisabled();
+    expect(quickRender({ className: 'disabled' }).getByRole('button')).toHaveAttribute('aria-disabled', 'true');
   });
 
-  it('wraps the button in a tooltip if the title is set and the TooltipContext is not set to true', function() {
-    const noTitleNoContext = mount(<NxButton>foo</NxButton>).children(),
-        titleNoContext = mount(<NxButton title="bar">foo</NxButton>).children(),
-        noTitleContext = mount(
-          <TooltipContext.Provider value={true}>
-            <NxButton>foo</NxButton>
-          </TooltipContext.Provider>
-        ).children(),
-        titleContext = mount(
-          <TooltipContext.Provider value={true}>
-            <NxButton title="bar">foo</NxButton>
-          </TooltipContext.Provider>
-        ).children();
+  it('gives the icon-only button an accessible name when title prop is set', async function() {
+    const iconOnlyBtnNoTitle = quickRender({ variant: 'icon-only' }).getByRole('button'),
+        iconOnlyBtnTitle = quickRender({ variant: 'icon-only', title: 'Alert' }).getByRole('button');
 
-    expect(noTitleNoContext).toMatchSelector('button');
-    expect(noTitleNoContext).toHaveProp('title', undefined);
-
-    expect(titleContext).toMatchSelector('button');
-    expect(titleContext).toHaveProp('title', 'bar');
-
-    expect(noTitleContext).toMatchSelector('button');
-    expect(noTitleContext).toHaveProp('title', undefined);
-
-    expect(titleNoContext).toMatchSelector('NxTooltip');
-    expect(titleNoContext).toHaveProp('title', 'bar');
+    await waitFor(() => expect(iconOnlyBtnNoTitle).not.toHaveAccessibleName());
+    await waitFor(() => expect(iconOnlyBtnTitle).toHaveAccessibleName('Alert'));
   });
 
-  it('throws an error when it contains both disabled and title props', function() {
-    expect(() => {
-      shallow(<NxButton variant="icon-only" title="Delete" disabled><NxFontAwesomeIcon icon={faTrashAlt}/></NxButton>);
-    }).toThrow(TypeError);
+  it('throws an error when it contains both disabled and title props', async function() {
+    expect(() => render(<NxButton variant="icon-only" title="Save" disabled />))
+        .toThrow(TypeError);
   });
 });
