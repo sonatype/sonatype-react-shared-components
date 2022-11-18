@@ -33,14 +33,14 @@ const ACTIVE_FOCUSABLE_MENU_ITEMS_SELECTOR = FOCUSABLE_ELEMENTS.join(':not([disa
 /* eslint-disable-next-line react/prop-types */
 const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu(props, ref) {
   const {
-    onClosing,
-    onKeyDown: onKeyDownProp,
     className: classNameProp,
     children,
     disableMenuKeyNav,
     toggleElementRef,
     isOpen,
     onToggleCollapse,
+    onClosing,
+    onKeyDown: onKeyDownProp,
     onMenuItemFocus,
     ...attrs
   } = props;
@@ -114,17 +114,17 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
       }
     };
 
-    if (toggleElementRef && toggleElementRef.current) {
+    if (!disableMenuKeyNav && toggleElementRef && toggleElementRef.current) {
       toggleElementRef.current.removeEventListener('keydown', handleKeyDown);
       toggleElementRef.current.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
-      if (toggleElementRef && toggleElementRef.current) {
+      if (!disableMenuKeyNav && toggleElementRef && toggleElementRef.current) {
         toggleElementRef.current.removeEventListener('keydown', handleKeyDown);
       }
     };
-  }, [toggleElementRef]);
+  }, [toggleElementRef, disableMenuKeyNav]);
 
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
