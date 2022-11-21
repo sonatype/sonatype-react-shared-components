@@ -30,8 +30,8 @@ describe('NxRadio', function() {
         expect(renderEl()!.tagName).toBe('LABEL');
 
         expect(quickRender().getByRole('radio')).toHaveAttribute('name', 'color');
-        expect(quickRender().getByRole('input')).not.toBeDisabled();
-        expect(quickRender().getByRole('input')).not.toBeChecked();
+        expect(quickRender().getByRole('radio')).not.toBeDisabled();
+        expect(quickRender().getByRole('radio')).not.toBeChecked();
       }
   );
 
@@ -65,16 +65,16 @@ describe('NxRadio', function() {
 
   describe('when disabled prop is true', function () {
     it('disables the input', function() {
-      expect(quickRender().queryByRole('radio')).not.toBeDisabled();
-      expect(quickRender({ disabled: false })?.queryByRole('radio')).not.toBeDisabled();
-      expect(quickRender({ disabled: true })?.queryByRole('radio')).toBeDisabled();
+      expect(quickRender().getByRole('radio')).not.toBeDisabled();
+      expect(quickRender({ disabled: false })?.getByRole('radio')).not.toBeDisabled();
+      expect(quickRender({ disabled: true })?.getByRole('radio')).toBeDisabled();
     });
   });
 
   describe('isChecked prop', function () {
     it('sets the input to checked per the value of isChecked', function() {
-      expect(quickRender({ isChecked: false })?.queryByRole('radio')).not.toBeChecked();
-      expect(quickRender({ isChecked: true })?.queryByRole('radio')).toBeChecked();
+      expect(quickRender({ isChecked: false })?.getByRole('radio')).not.toBeChecked();
+      expect(quickRender({ isChecked: true })?.getByRole('radio')).toBeChecked();
     });
 
     it('adds the tm-checked class if isChecked is true, and the tm-unchecked class if it is false', function() {
@@ -112,13 +112,13 @@ describe('NxRadio', function() {
   });
 
   it('sets the input as readonly if there is no onChange handler', function() {
-    expect(quickRender().queryByRole('radio')).not.toHaveAttribute('readonly');
-    expect(quickRender({ onChange: undefined })?.queryByRole('radio')).toHaveAttribute('readonly');
-    expect(quickRender({ onChange: null })?.queryByRole('radio')).toHaveAttribute('readonly');
+    expect(quickRender().getByRole('radio')).not.toHaveAttribute('readonly');
+    expect(quickRender({ onChange: undefined })?.getByRole('radio')).toHaveAttribute('readonly');
+    expect(quickRender({ onChange: null })?.getByRole('radio')).toHaveAttribute('readonly');
   });
 
   it('adds id attribute to radio input when radioId prop is provided', function () {
-    expect(quickRender({radioId: 'color-red'}).queryByRole('radio')).toHaveAttribute('id', 'color-red');
+    expect(quickRender({radioId: 'color-red'}).getByRole('radio')).toHaveAttribute('id', 'color-red');
   });
 
   it('passes input attributes into the input element and does not clash with top-level attributes', function() {
@@ -137,9 +137,9 @@ describe('NxRadio', function() {
       } as Props['inputAttributes']
     });
 
-    expect(component.queryByRole('radio')).toHaveAttribute('id', 'garfield');
-    expect(component.queryByRole('radio')).toHaveAttribute('name', 'garfield');
-    expect(component.queryByRole('radio')).toBeDisabled();
-    expect(component.queryByRole('radio')).toBeChecked();
+    expect(component.getByRole('radio')).toHaveAttribute('id', 'garfield');
+    expect(component.getByRole('radio')).toHaveAttribute('name', 'garfield');
+    expect(component.getByRole('radio')).toBeDisabled();
+    expect(component.getByRole('radio')).toBeChecked();
   });
 });
