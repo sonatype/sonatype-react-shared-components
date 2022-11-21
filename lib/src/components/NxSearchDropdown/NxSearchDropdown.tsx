@@ -101,22 +101,6 @@ function NxSearchDropdownRender<T extends string | number = string>(
 
   function handleButtonKeyDown(evt: KeyboardEvent<HTMLElement>) {
     switch (evt.key) {
-      // case 'Home':
-      //   focusFirst();
-      //   evt.preventDefault();
-      //   break;
-      // case 'End':
-      //   focusLast();
-      //   evt.preventDefault();
-      //   break;
-      // case 'ArrowDown':
-      //   focusNext();
-      //   evt.preventDefault();
-      //   break;
-      // case 'ArrowUp':
-      //   focusPrev();
-      //   evt.preventDefault();
-      //   break;
       case 'Escape':
         focusTextInput();
         handleFilterChange('');
