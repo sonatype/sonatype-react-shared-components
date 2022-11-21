@@ -34,11 +34,6 @@ describe('NxRadio', function() {
         expect(quickRender().queryByRole('radio')).toHaveAttribute('name', 'color');
         expect(el.querySelector('input')).not.toBeDisabled();
         expect(el.querySelector('input')).not.toBeChecked();
-
-        expect(el.querySelector('input')).toHaveClass('nx-radio__input');
-
-        expect(el.querySelector('svg')).toHaveClass('nx-radio__circle');
-        expect(el.querySelector('circle')).toHaveClass('nx-radio__outer-circle');
       }
   );
 
