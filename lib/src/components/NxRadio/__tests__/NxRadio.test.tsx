@@ -100,11 +100,6 @@ describe('NxRadio', function() {
 
       expect(container.querySelector('.bar')).toBeInTheDocument();
     });
-
-    it('does not render the .nx-radio__content element if there are no children', function() {
-      const el = renderEl()!;
-      expect(el).not.toHaveClass('nx-radio__content');
-    });
   });
 
   it('calls its onChange prop with value argument when the input fires a change event', async function() {
