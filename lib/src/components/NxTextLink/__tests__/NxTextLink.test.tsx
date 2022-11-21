@@ -12,7 +12,7 @@ describe('NxTextLink', function() {
   const quickRender = rtlRender(NxTextLink, {});
   const renderEl = rtlRenderElement(NxTextLink, {});
 
-  it('renders an <a> with the nx-text-link', function() {
+  it('renders an <a>', function() {
     expect(renderEl()!.tagName).toBe('A');
   });
 
