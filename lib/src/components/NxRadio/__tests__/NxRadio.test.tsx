@@ -139,6 +139,8 @@ describe('NxRadio', function() {
 
     expect(component.getByRole('radio')).toHaveAttribute('id', 'garfield');
     expect(component.getByRole('radio')).toHaveAttribute('name', 'garfield');
+    expect(component.getByRole('radio')).toHaveClass('input-classname');
+    expect(component.getByRole('radio')).not.toHaveClass('label-classname');
     expect(component.getByRole('radio')).toBeDisabled();
     expect(component.getByRole('radio')).toBeChecked();
   });
