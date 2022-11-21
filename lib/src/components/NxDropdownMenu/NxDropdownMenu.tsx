@@ -126,6 +126,27 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
     };
   }, [toggleElementRef, disableMenuKeyNav]);
 
+  useEffect(() => {
+    // Trigger onToggleCollapse when focus goes outside the menu and toggle element.
+    const handleFocusIn = () => {
+      const currentlyFocusedElement = document.activeElement as HTMLElement;
+      if (
+        toggleElementRef
+        && menuRef
+        && menuRef.current
+        && toggleElementRef.current !== currentlyFocusedElement
+        && !menuRef.current.contains(document.activeElement)
+        && isOpen
+        && onToggleCollapse
+      ) {
+        onToggleCollapse();
+      }
+    };
+
+    document.addEventListener('focusin', handleFocusIn);
+    return () => document.removeEventListener('focusin', handleFocusIn);
+  }, [toggleElementRef, menuRef, isOpen, onToggleCollapse]);
+
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
 
@@ -147,7 +168,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
     }
   }
 
-  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
+  const handleMenuKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
     if (!disableMenuKeyNav) {
       switch (event.key) {
         case 'Home':
@@ -169,6 +190,15 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
         case ' ': case 'Enter':
           activateMenuItem(event);
           break;
+        case 'Escape':
+          event.preventDefault();
+          if (onToggleCollapse) {
+            onToggleCollapse();
+          }
+          if (toggleElementRef && toggleElementRef.current) {
+            toggleElementRef.current.focus();
+          }
+          break;
       }
     }
 
@@ -182,7 +212,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
   return isOpen ? (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus
     <div ref={mergedRef}
-         onKeyDown={handleKeyDown}
+         onKeyDown={handleMenuKeyDown}
          role="menu"
          { ...{ className, ...attrs } }>
       { children }

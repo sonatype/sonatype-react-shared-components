@@ -192,7 +192,8 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       className={menuClassName}
                       onClosing={() => {}}
                       onKeyDown={handleButtonKeyDown}
-                      toggleElement={filterRef.current}
+                      isOpen={true}
+                      toggleElementRef={filterRef}
                       aria-busy={!!loading}
                       aria-live="polite"
                       aria-hidden={!showDropdown}
