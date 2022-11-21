@@ -124,7 +124,7 @@ describe('NxRadio', function() {
   });
 
   it('passes input attributes into the input element and does not clash with top-level attributes', function() {
-    const component = renderEl({
+    const component = quickRender({
       radioId: 'not-garfield',
       disabled: true,
       isChecked: true,
@@ -139,11 +139,9 @@ describe('NxRadio', function() {
       } as Props['inputAttributes']
     });
 
-    expect(component?.querySelector('input')).toHaveAttribute('id', 'garfield');
-    expect(component?.querySelector('input')).toHaveAttribute('name', 'garfield');
-    expect(component?.querySelector('input')).toHaveAttribute('disabled');
-    expect(component?.querySelector('input')).toHaveClass('input-classname');
-    expect(component?.querySelector('input')).not.toHaveClass('label-classname');
-    expect(component?.querySelector('input')).toHaveAttribute('checked');
+    expect(component.queryByRole('radio')).toHaveAttribute('id', 'garfield');
+    expect(component.queryByRole('radio')).toHaveAttribute('name', 'garfield');
+    expect(component.queryByRole('radio')).toBeDisabled();
+    expect(component.queryByRole('radio')).toBeChecked();
   });
 });
