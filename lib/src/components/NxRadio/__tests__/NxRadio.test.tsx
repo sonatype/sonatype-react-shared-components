@@ -27,13 +27,11 @@ describe('NxRadio', function() {
 
   it('renders a <label> containing a radio <input> and .nx-radio__circle and .nx-radio__outer-circle  elements',
       function() {
-        const el = renderEl()!;
+        expect(renderEl()!.tagName).toBe('LABEL');
 
-        expect(el.tagName).toBe('LABEL');
-
-        expect(quickRender().queryByRole('radio')).toHaveAttribute('name', 'color');
-        expect(el.querySelector('input')).not.toBeDisabled();
-        expect(el.querySelector('input')).not.toBeChecked();
+        expect(quickRender().getByRole('radio')).toHaveAttribute('name', 'color');
+        expect(quickRender().getByRole('input')).not.toBeDisabled();
+        expect(quickRender().getByRole('input')).not.toBeChecked();
       }
   );
 
