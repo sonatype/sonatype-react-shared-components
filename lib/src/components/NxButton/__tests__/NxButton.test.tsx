@@ -64,6 +64,8 @@ describe('NxButton', function() {
   });
 
   it('throws an error when it contains both disabled and title props', async function() {
+    expect(() => render(<NxButton variant="icon-only" title="Save" className="disabled" />))
+        .not.toThrow(TypeError);
     expect(() => render(<NxButton variant="icon-only" title="Save" disabled />))
         .toThrow(TypeError);
   });
