@@ -89,7 +89,7 @@ describe('NxRadio', function() {
   });
 
   describe('children prop', function () {
-    it('renders children nodes within an nx-radio__content <span>', function() {
+    it('renders children with .bar as a descendent', function() {
       const { container, rerender } = quickRender();
 
       rerender(
@@ -98,7 +98,7 @@ describe('NxRadio', function() {
         </NxRadio>
       );
 
-      expect(container.querySelector('span.nx-radio__content .bar')).toBe;
+      expect(container.querySelector('.bar')).toBeInTheDocument();
     });
 
     it('does not render the .nx-radio__content element if there are no children', function() {
