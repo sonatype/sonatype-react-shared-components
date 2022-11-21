@@ -6,7 +6,7 @@
  */
 // import React, { useState } from 'react';
 import React, { RefAttributes } from 'react';
-import { screen, fireEvent, render, within } from '@testing-library/react';
+import { screen, fireEvent, render, within, createEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
@@ -522,6 +522,22 @@ describe('NxCombobox', function() {
       inputElement.focus();
       await user.keyboard('[Escape]');
       expect(onChange).toBeCalledWith('');
+    });
+
+    it('calls preventDefault on the event when Escape key is pressed', async function() {
+      const onChange = jest.fn(),
+          { getByRole } = quickRender({
+            value: 'a',
+            matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
+            onChange
+          }),
+          inputElement = getByRole('combobox'),
+          keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+      inputElement.focus();
+      fireEvent(inputElement, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(true);
     });
   });
 
