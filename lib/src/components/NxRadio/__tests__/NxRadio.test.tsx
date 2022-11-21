@@ -75,8 +75,8 @@ describe('NxRadio', function() {
 
   describe('isChecked prop', function () {
     it('sets the input to checked per the value of isChecked', function() {
-      expect(renderEl({ isChecked: false })?.querySelector('input')).not.toHaveAttribute('checked');
-      expect(renderEl({ isChecked: true })?.querySelector('input')).toHaveAttribute('checked');
+      expect(quickRender({ isChecked: false })?.queryByRole('radio')).not.toBeChecked();
+      expect(quickRender({ isChecked: true })?.queryByRole('radio')).toBeChecked();
     });
 
     it('adds the tm-checked class if isChecked is true, and the tm-unchecked class if it is false', function() {
