@@ -38,10 +38,14 @@ describe('NxRadio', function() {
   );
 
   it('adds classes specified with the className prop', function() {
-    const component = renderEl({ className: 'foo' });
+    const el = renderEl({ className: 'foo' })!,
+        defaultEl = renderEl()!;
 
-    expect(component).toHaveClass('foo');
-    expect(component).toHaveClass('nx-radio');
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
   it('renders .nx-radio__inner-circle if it is checked', function() {
