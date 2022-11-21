@@ -13,10 +13,7 @@ describe('NxButton', function() {
     focusAndHoverTest,
     hoverTest,
     simpleTest,
-    a11yTest,
-    checkScreenshot,
-    waitAndGetElements,
-    wait
+    a11yTest
   } = setupBrowser('#/pages/Button');
 
   describe('Default NxButton', function() {
@@ -97,16 +94,7 @@ describe('NxButton', function() {
 
     it('looks right', simpleTest(selector));
 
-    it('shows tooltips', async function() {
-      const [example, btn] = await waitAndGetElements(
-          iconOnlyBtnExample, selector
-      );
-
-      await btn.hover();
-      await wait(500);
-
-      await checkScreenshot(example);
-    });
+    it('shows tooltips', hoverTest(iconOnlyBtnExample, selector, true));
   });
 
   describe('nx-btn class on <a>', function() {
