@@ -48,7 +48,7 @@ describe('NxRadio', function() {
     }
   });
 
-  it('uses null as the value passed to onChange', async function() {
+  it('uses null as the value passed to onChange if the supplied value is null', async function() {
     const onChange = jest.fn();
     const user = userEvent.setup();
     renderEl({ name: 'somename', value: null, onChange });
