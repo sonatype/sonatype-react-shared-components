@@ -205,6 +205,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       case 'Escape':
         handleOnChange('');
         setFocusableBtnIndex(null);
+        evt.preventDefault();
         break;
     }
   }
