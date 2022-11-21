@@ -205,7 +205,11 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       case 'Escape':
         handleOnChange('');
         setFocusableBtnIndex(null);
-        evt.preventDefault();
+
+        if (value !== '') {
+          // only prevent default if the ESC actually made a difference here
+          evt.preventDefault();
+        }
         break;
     }
   }

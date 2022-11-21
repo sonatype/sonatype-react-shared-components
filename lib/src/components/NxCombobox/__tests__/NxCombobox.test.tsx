@@ -524,13 +524,8 @@ describe('NxCombobox', function() {
       expect(onChange).toBeCalledWith('');
     });
 
-    it('calls preventDefault on the event when Escape key is pressed', async function() {
-      const onChange = jest.fn(),
-          { getByRole } = quickRender({
-            value: 'a',
-            matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
-            onChange
-          }),
+    it('calls preventDefault on the event when Escape key is pressed and the value is not empty', async function() {
+      const { getByRole } = quickRender({ value: 'a' }),
           inputElement = getByRole('combobox'),
           keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
 
@@ -538,6 +533,17 @@ describe('NxCombobox', function() {
       fireEvent(inputElement, keyEvent);
 
       expect(keyEvent.defaultPrevented).toBe(true);
+    });
+
+    it('does not call preventDefault on the event when Escape key is pressed and the value is empty', async function() {
+      const { getByRole } = quickRender(),
+          inputElement = getByRole('combobox'),
+          keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+      inputElement.focus();
+      fireEvent(inputElement, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(false);
     });
   });
 
