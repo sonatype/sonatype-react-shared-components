@@ -48,14 +48,6 @@ describe('NxRadio', function() {
     }
   });
 
-  it('renders .nx-radio__inner-circle if it is checked', function() {
-    expect(renderEl()?.querySelector('circle')).not.toHaveClass('nx-radio__inner-circle');
-
-    expect(renderEl({ isChecked: true })?.querySelector('circle')).toHaveClass('nx-radio__inner-circle');
-    expect(renderEl({ isChecked: true, disabled: true })?.querySelector('circle'))
-        .toHaveClass('nx-radio__inner-circle');
-  });
-
   it('uses null as the value passed to onChange', async function() {
     const onChange = jest.fn();
     const user = userEvent.setup();
