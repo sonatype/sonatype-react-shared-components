@@ -114,9 +114,9 @@ describe('NxRadio', function() {
   });
 
   it('sets the input as readonly if there is no onChange handler', function() {
-    expect(renderEl()?.querySelector('input')).not.toHaveAttribute('readOnly');
-    expect(renderEl({ onChange: undefined })?.querySelector('input')).toHaveAttribute('readOnly');
-    expect(renderEl({ onChange: null })?.querySelector('input')).toHaveAttribute('readOnly');
+    expect(renderEl()?.querySelector('input')).not.toHaveAttribute('readonly');
+    expect(renderEl({ onChange: undefined })?.querySelector('input')).toHaveAttribute('readonly');
+    expect(renderEl({ onChange: null })?.querySelector('input')).toHaveAttribute('readonly');
   });
 
   it('adds id attribute to radio input when radioId prop is provided', function () {
