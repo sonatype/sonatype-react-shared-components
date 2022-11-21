@@ -796,7 +796,7 @@
     d3-time-format "^3.0.0"
     lodash "^4.17.21"
 
-"@nivo/tooltip@0.80.0":
+"@nivo/tooltip@0.80.0", "@nivo/tooltip@^0.80.0":
   version "0.80.0"
   resolved "https://registry.npmjs.org/@nivo/tooltip/-/tooltip-0.80.0.tgz#07ebef47eb708a0612bd6297d5ad156bbec19d34"
   integrity sha512-qGmrreRwnCsYjn/LAuwBtxBn/tvG8y+rwgd4gkANLBAoXd3bzJyvmkSe+QJPhUG64bq57ibDK+lO2pC48a3/fw==
@@ -865,6 +865,13 @@
     "@types/raf-schd" "^4.0.0"
     raf-schd "^4.0.2"
 
+"@react-hook/throttle@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/@react-hook/throttle/-/throttle-2.2.0.tgz#d0402714a06e1ba0bc1da1fdf5c3c5cd0e08d45a"
+  integrity sha512-LJ5eg+yMV8lXtqK3lR+OtOZ2WH/EfWvuiEEu0M3bhR7dZRfTyEJKxH1oK9uyBxiXPtWXiQggWbZirMCXam51tg==
+  dependencies:
+    "@react-hook/latest" "^1.0.2"
+
 "@react-spring/animated@~9.4.5":
   version "9.4.5"
   resolved "https://registry.npmjs.org/@react-spring/animated/-/animated-9.4.5.tgz#dd9921c716a4f4a3ed29491e0c0c9f8ca0eb1a54"
@@ -910,12 +917,6 @@
     "@react-spring/core" "~9.4.5"
     "@react-spring/shared" "~9.4.5"
     "@react-spring/types" "~9.4.5"
-"@react-hook/throttle@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/@react-hook/throttle/-/throttle-2.2.0.tgz#d0402714a06e1ba0bc1da1fdf5c3c5cd0e08d45a"
-  integrity sha512-LJ5eg+yMV8lXtqK3lR+OtOZ2WH/EfWvuiEEu0M3bhR7dZRfTyEJKxH1oK9uyBxiXPtWXiQggWbZirMCXam51tg==
-  dependencies:
-    "@react-hook/latest" "^1.0.2"
 
 "@rooks/use-mutation-observer@^4.11.0":
   version "4.11.0"
