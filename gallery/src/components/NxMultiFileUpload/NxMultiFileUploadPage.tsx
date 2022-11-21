@@ -11,9 +11,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxMultiFileUploadExample from './NxMultiFileUploadExample';
 import NxMultiFileUploadComplexExample from './NxMultiFileUploadComplexExample';
+import NxMultiFileUploadDisabledExample from './NxMultiFileUploadDisabledExample';
 
 const nxMultiFileUploadCode = require('./NxMultiFileUploadExample?raw');
 const nxMultiFileUploadComplexCode = require('./NxMultiFileUploadComplexExample?raw');
+const nxMultiFileUploadDisabledCode = require('./NxMultiFileUploadDisabledExample?raw');
 
 const NxTextInputPage = () =>
   <>
@@ -203,6 +205,12 @@ const NxTextInputPage = () =>
       An example of <NxCode>NxMultiFileUpload</NxCode> with required-field validation and various extra props. Notice
       that while the <NxCode>id</NxCode> and <NxCode>accept</NxCode> get applied to the <NxCode>&lt;input&gt;</NxCode>,
       the <NxCode>className</NxCode> gets applied to the enclosing <NxCode>&lt;div&gt;</NxCode>.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Disabled Example"
+                        liveExample={NxMultiFileUploadDisabledExample}
+                        codeExamples={nxMultiFileUploadDisabledCode}>
+      An example of <NxCode>NxMultiFileUpload</NxCode> with the disabled prop set to true.
     </GalleryExampleTile>
 
   </>;
