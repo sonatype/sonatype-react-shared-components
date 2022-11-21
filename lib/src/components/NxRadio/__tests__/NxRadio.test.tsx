@@ -31,8 +31,7 @@ describe('NxRadio', function() {
 
         expect(el.tagName).toBe('LABEL');
 
-        expect(el.querySelector('input')).toHaveAttribute('name', 'color');
-        expect(el.querySelector('input')).toHaveAttribute('type', 'radio');
+        expect(quickRender().queryByRole('radio')).toHaveAttribute('name', 'color');
         expect(el.querySelector('input')).not.toBeDisabled();
         expect(el.querySelector('input')).not.toBeChecked();
 
