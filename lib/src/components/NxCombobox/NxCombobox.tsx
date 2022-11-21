@@ -53,7 +53,8 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       newAttrs = omit(['trimmedValue'], attrs),
 
       isEmpty = !matches.length,
-      isAlert = loading || loadError || isEmpty,
+      showEmptyMessage = isEmpty && value.length,
+      isAlert = loading || loadError || showEmptyMessage,
       dropdownRef = useRef<HTMLDivElement>(null),
       inputRef = useRef<HTMLInputElement | null>(),
       alertRef = useRef<HTMLDivElement>(null),
@@ -338,9 +339,9 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
              aria-busy={!!loading}
              aria-live="polite"
              className={alertClassName}>
-          {loadError ? <NxLoadError error={loadError} retryHandler={() => doSearch(value)} /> :
+          {loadError ? <NxLoadError role="none" error={loadError} retryHandler={() => doSearch(value)} /> :
           loading ? <NxLoadingSpinner /> :
-          isEmpty && <div className="nx-combobox__empty-message">{emptyMessage || 'No Results Found'}</div>}
+          showEmptyMessage && <div className="nx-combobox__empty-message">{emptyMessage || 'No Results Found'}</div>}
         </div>
         :
         <NxDropdownMenu id={dropdownId}

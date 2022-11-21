@@ -7,7 +7,7 @@
  @use '../../scss-shared/nx-container-helpers';
  @use '../../scss-shared/nx-text-helpers';
 
-@keyframes slide-in {
+@keyframes nx-drawer-animation-in {
   0% {
     transform: translateX(100%);
     opacity: 0;
@@ -19,7 +19,7 @@
   }
 }
 
-@keyframes slide-out {
+@keyframes nx-drawer-animation-out {
   0% {
     transform: translateX(0);
     opacity: 1;
@@ -69,11 +69,11 @@
   }
 
   &--opening {
-    animation: slide-in 200ms ease-out forwards;
+    animation: nx-drawer-animation-in 200ms ease-out forwards;
   }
 
   &--closing {
-    animation: slide-out 180ms ease-in forwards;
+    animation: nx-drawer-animation-out 180ms ease-in forwards;
   }
 
   &--closed {

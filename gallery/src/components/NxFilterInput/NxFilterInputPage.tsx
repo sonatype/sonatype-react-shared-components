@@ -25,7 +25,11 @@ const NxFilterInputPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        An input to be used for filtering purposes
+        An input to be used for filtering purposes. After a user has text within the input field, a
+        clear filter button appears within the component and is only visible/usable when there is text within
+        the input field. Note: This button is for mouse use only and is therefore not focusable but still
+        hoverable and clickable. The clear filter functionality may be accessed by keyboard using the Escape
+        key.
       </NxP>
 
       <NxH3>NxFilterInput Props</NxH3>
@@ -142,13 +146,14 @@ const NxFilterInputPage = () =>
       A disabled <NxCode>NxFilterInput</NxCode>.
     </GalleryExampleTile>
 
-    <GalleryExampleTile title="NxFilterInput Datalist Example"
+    <GalleryExampleTile title="Deprecated: NxFilterInput Datalist Example"
                         id="nx-filter-input-datalist-example"
                         className="nx-filter-input-examples"
                         liveExample={NxFilterInputDataListExample}
                         codeExamples={nxFilterInputDataListExampleCode}>
-      An example using a <NxCode>datalist</NxCode> with
-      <NxCode>NxFilterInput</NxCode>.
+      An example using a <NxCode>datalist</NxCode> with <NxCode>NxFilterInput</NxCode>.
+      This is deprecated, use <NxCode>NxCombobox</NxCode> instead. It allows users to type a value and
+      select a value from a collection of possible values.
     </GalleryExampleTile>
   </>;
 

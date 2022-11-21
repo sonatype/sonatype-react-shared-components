@@ -12,15 +12,74 @@ import { textContent } from '../../util/childUtil';
 
 import { OverflowTooltipProps, overflowTooltipPropTypes } from './types';
 import NxTooltip from './NxTooltip';
-import { any } from 'ramda';
+import { any, defaultTo, map, sum } from 'ramda';
 import batch from './updateBatcher';
 
 export { OverflowTooltipProps };
 
+function parsePx(pxStr: string) {
+  const unitStrippedStr = pxStr?.match(/(.*)px$/)?.[1];
+  return unitStrippedStr == null ? null : parseFloat(unitStrippedStr);
+}
+
+// Rounding floats to a particular number of decimal places is an uncertain thing, since floats are internally
+// coded in base 2 and not base 10. So instead we round to a "bicemals" place (not sure if that's the real world)
+const ROUNDING_BICEMALS_PLACE = 5;
+function roundTo5Bicemals(num: number) {
+  const multiplier = 1 << ROUNDING_BICEMALS_PLACE;
+  return Math.round(num * multiplier) / multiplier;
+}
+
+function getContentBoxRight(el: Element) {
+  const boundingClientRect = el.getBoundingClientRect();
+
+  if (el instanceof HTMLElement) {
+    const { paddingRight, borderRightWidth } = getComputedStyle(el),
+        parsedSizes = map(parsePx, [paddingRight, borderRightWidth]),
+        paddingBorderSum = sum(map(defaultTo(0), parsedSizes));
+
+    // I've seen cases where paddings defined in % units don't get converted to px on inline elements.
+    // This would be a very rare case where expected behavior is unclear, so just warn about it
+    if (parsedSizes[0] == null) {
+      console.warn('Got non-pixel computed value for padding-right, assuming 0');
+    }
+    if (parsedSizes[1] == null) {
+      console.warn('Got non-pixel computed value for border-right-width, assuming 0');
+    }
+
+    return boundingClientRect.right - paddingBorderSum;
+  }
+  else {
+    return boundingClientRect.right;
+  }
+}
+
+// Get the rightmost edge of the bounding rectangles of all text content children of el
+function getTextBoundingRectRight(el: Element) {
+  const nodeIterator = document.createNodeIterator(el, NodeFilter.SHOW_TEXT),
+      range = new Range();
+
+  let right;
+  for (let node = nodeIterator.nextNode(); node != null; node = nodeIterator.nextNode()) {
+    range.selectNode(node);
+
+    const nodeBoundingBox = range.getBoundingClientRect();
+
+    // accumulate farthest right
+    right = right != null && right > nodeBoundingBox.right ? right : nodeBoundingBox.right;
+  }
+
+  return right;
+}
+
+// Note: this won't detect overflowing non-text content, but for the purpose of an overflow tooltip we
+// only care about text content anyway
 function isOverflowing(el: Element) {
-  // inline elements always report 0 clientWidth in standards-compliant browsers. At the same time, inline elements
-  // cannot (themselves) overflow.
-  return el.clientWidth < el.scrollWidth && getComputedStyle(el).display !== 'inline';
+  const contentBoxRight = getContentBoxRight(el),
+      textBoundingRectRight = getTextBoundingRectRight(el);
+
+  // rounding due to discrepancies within the browser engine at non-100% zoom levels
+  return textBoundingRectRight ? roundTo5Bicemals(contentBoxRight) < roundTo5Bicemals(textBoundingRectRight) : false;
 }
 
 function selfOrChildrenOverflowing(el: Element): boolean {

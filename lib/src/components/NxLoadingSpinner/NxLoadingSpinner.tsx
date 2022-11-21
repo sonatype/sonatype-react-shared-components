@@ -14,7 +14,7 @@ import './NxLoadingSpinner.scss';
 const NxLoadingSpinner: FunctionComponent =
   function NxLoadingSpinner({ children }) {
     return (
-      <div className="nx-loading-spinner">
+      <div role="status" className="nx-loading-spinner">
         <NxFontAwesomeIcon icon={faCircleNotch} className="fa-spin nx-loading-spinner__icon" />
         <span>{children || 'Loading…'}</span>
       </div>

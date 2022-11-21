@@ -32,7 +32,9 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
     children,
     triggerContent,
     triggerTooltip,
+    actionContent,
     className,
+    role,
     ...otherProps
   } = props;
 
@@ -45,6 +47,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
         'nx-collapsible-items--empty': isEmpty
       }),
       treeViewChildrenId = useUniqueId('nx-collapsible-items-children'),
+      treeViewChildrenRole = role ?? 'list',
       trigger = (
         <button type="button"
                 className="nx-collapsible-items__trigger"
@@ -65,19 +68,26 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
   return (
     /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
     <div className={treeViewClasses}
-         role="list"
+         role="group"
          { ...otherProps }>
-      {
-        triggerTooltipProps ? (
-          // div necessary to avoid error message when tooltip is on disabled button
-          <NxTooltip { ...triggerTooltipProps } >
-            <div className="nx-collapsible-items__tooltip-wrapper">
-              {trigger}
-            </div>
-          </NxTooltip>
-        ) : trigger
-      }
-      <div className="nx-collapsible-items__children" role="group" id={treeViewChildrenId}>
+      <div className="nx-collapsible-items__header">
+        {
+          triggerTooltipProps ? (
+            // div necessary to avoid error message when tooltip is on disabled button
+            <NxTooltip { ...triggerTooltipProps } >
+              <div className="nx-collapsible-items__tooltip-wrapper">
+                {trigger}
+              </div>
+            </NxTooltip>
+          ) : trigger
+        }
+        { actionContent && (
+        <div className="nx-collapsible-items__action-content">
+          {actionContent}
+        </div>
+        )}
+      </div>
+      <div className="nx-collapsible-items__children" role={treeViewChildrenRole} id={treeViewChildrenId}>
         {children}
       </div>
     </div>
