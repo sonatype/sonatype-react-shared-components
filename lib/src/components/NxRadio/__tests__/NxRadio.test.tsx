@@ -120,8 +120,7 @@ describe('NxRadio', function() {
   });
 
   it('adds id attribute to radio input when radioId prop is provided', function () {
-    const component = renderEl({ radioId: 'color-red'});
-    expect(component?.querySelector('input')).toHaveAttribute('id', 'color-red');
+    expect(quickRender({radioId: 'color-red'}).queryByRole('radio')).toHaveAttribute('id', 'color-red');
   });
 
   it('passes input attributes into the input element and does not clash with top-level attributes', function() {
