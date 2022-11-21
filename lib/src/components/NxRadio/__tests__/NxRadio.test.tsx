@@ -33,8 +33,8 @@ describe('NxRadio', function() {
 
         expect(el.querySelector('input')).toHaveAttribute('name', 'color');
         expect(el.querySelector('input')).toHaveAttribute('type', 'radio');
-        expect(el.querySelector('input')).not.toHaveAttribute('disabled');
-        expect(el.querySelector('input')).not.toHaveAttribute('checked');
+        expect(el.querySelector('input')).not.toBeDisabled();
+        expect(el.querySelector('input')).not.toBeChecked();
 
         expect(el.querySelector('input')).toHaveClass('nx-radio__input');
 
