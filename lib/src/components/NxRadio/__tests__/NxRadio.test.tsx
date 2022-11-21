@@ -66,11 +66,6 @@ describe('NxRadio', function() {
   });
 
   describe('when disabled prop is true', function () {
-    it('adds the nx-radio-checkbox--disabled class', function() {
-      expect(renderEl()).not.toHaveClass('nx-radio-checkbox--disabled');
-      expect(renderEl({ disabled: true })).toHaveClass('nx-radio-checkbox--disabled');
-    });
-
     it('disables the input', function() {
       expect(renderEl()?.querySelector('input')).not.toHaveAttribute('disabled');
       expect(renderEl({ disabled: false })?.querySelector('input')).not.toHaveAttribute('disabled');
