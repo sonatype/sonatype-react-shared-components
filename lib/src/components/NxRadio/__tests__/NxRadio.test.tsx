@@ -30,7 +30,6 @@ describe('NxRadio', function() {
         const el = renderEl()!;
 
         expect(el.tagName).toBe('LABEL');
-        expect(el).toHaveClass('nx-radio');
 
         expect(el.querySelector('input')).toHaveAttribute('name', 'color');
         expect(el.querySelector('input')).toHaveAttribute('type', 'radio');
