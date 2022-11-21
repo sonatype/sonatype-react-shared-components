@@ -16,8 +16,7 @@ describe('NxRadio', function() {
     moveMouseAway,
     blurElement,
     checkScreenshot,
-    a11yTest,
-    wait
+    a11yTest
   } = setupBrowser('#/pages/Radio');
 
   const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
@@ -78,15 +77,9 @@ describe('NxRadio', function() {
   });
 
   describe('Tooltip for NxRadio', function() {
-    it('has a tooltip on hover when set to true', async function() {
-      const fieldset = '#nx-radio-example .gallery-example-live',
-          hoverLabel = '#nx-radio-example .gallery-example-live label:nth-of-type(3)';
-      const [fullForm, radioButton] = await waitAndGetElements(fieldset, hoverLabel);
-
-      await radioButton.hover();
-      await wait(500);
-      await checkScreenshot(fullForm);
-    });
+    const selector = '#nx-radio-example .gallery-example-live',
+        hoverSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)';
+    it('has a tooltip on hover when set to true', hoverTest(selector, hoverSelector, true));
   });
 
   it('passes a11y checks', a11yTest());
