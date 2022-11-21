@@ -22,8 +22,8 @@ describe('NxRadio', function() {
     children: undefined
   };
 
-  const renderEl = rtlRenderElement<Props>(NxRadio, minimalProps);
-  const quickRender = rtlRender<Props>(NxRadio, minimalProps);
+  const renderEl = rtlRenderElement(NxRadio, minimalProps);
+  const quickRender = rtlRender(NxRadio, minimalProps);
 
   it('renders a <label> containing a radio <input> and .nx-radio__circle and .nx-radio__outer-circle  elements',
       function() {
