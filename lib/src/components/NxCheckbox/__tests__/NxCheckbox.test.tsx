@@ -71,6 +71,13 @@ describe('NxCheckbox', function() {
     expect(renderEl()).toHaveTextContent('');
   });
 
+  it('adds the tm-checked class if isChecked is true, and the tm-unchecked class if it is false', function() {
+    expect(renderEl()).toHaveClass('tm-unchecked');
+    expect(renderEl()).not.toHaveClass('tm-checked');
+    expect(renderEl({ isChecked: true })).toHaveClass('tm-checked');
+    expect(renderEl({ isChecked: true })).not.toHaveClass('tm-unchecked');
+  });
+
   it('sets the input to checked per the value of isChecked', function() {
     expect(quickRender({ isChecked: false }).getByRole('checkbox')).not.toBeChecked();
     expect(quickRender({ isChecked: true }).getByRole('checkbox')).toBeChecked();

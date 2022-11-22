@@ -70,6 +70,20 @@ describe('NxStatefulCheckbox', function() {
     expect(renderEl()).toHaveTextContent('');
   });
 
+  it('adds the tm-checked class when checked, and the tm-unchecked class when unchecked', async function() {
+    const user = userEvent.setup(),
+        el = renderEl({ children: 'foo' })!,
+        input = within(el).getByRole('checkbox');
+
+    expect(el).toHaveClass('tm-unchecked');
+    expect(el).not.toHaveClass('tm-checked');
+
+    await user.click(input);
+
+    expect(el).toHaveClass('tm-checked');
+    expect(el).not.toHaveClass('tm-unchecked');
+  });
+
   it('sets the input to checked per the value of defaultChecked', function() {
     expect(quickRender({ defaultChecked: false }).getByRole('checkbox')).not.toBeChecked();
     expect(quickRender({ defaultChecked: true }).getByRole('checkbox')).toBeChecked();
