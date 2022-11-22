@@ -51,7 +51,7 @@ describe('NxButton', function() {
   });
 
   it('disabled by class button has aria-disabled true', function() {
-    expect(quickRender().getByRole('button')).not.toBeDisabled();
+    expect(quickRender({ className: 'disabled' }).getByRole('button')).not.toBeDisabled();
     expect(quickRender({ className: 'disabled' }).getByRole('button')).toHaveAttribute('aria-disabled', 'true');
   });
 
