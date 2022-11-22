@@ -208,6 +208,7 @@ const NxTextInputPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Disabled Example"
+                        id="nx-multi-file-upload-disabled-example"
                         liveExample={NxMultiFileUploadDisabledExample}
                         codeExamples={nxMultiFileUploadDisabledCode}>
       An example of <NxCode>NxMultiFileUpload</NxCode> with the disabled prop set to true.

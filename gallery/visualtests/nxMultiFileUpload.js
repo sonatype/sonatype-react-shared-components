@@ -36,14 +36,21 @@ async function fillFile(path, numBytes) {
 
 describe('NxMultiFileUpload', function() {
   const {
-    getPage,
+    checkScreenshot,
     isInDocument,
-    isFocused,
     waitAndGetElements,
-    simpleTest
+    isFocused,
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    getPage,
+    hoverTest,
+    simpleTest,
+    a11yTest
   } = setupBrowser('#/pages/Multiple File Upload');
 
-  const complexExampleSelector = '#nx-multi-file-upload-complex-example .gallery-example-live';
+  const complexExampleSelector = '#nx-multi-file-upload-complex-example .gallery-example-live',
+      btnSelector = `${complexExampleSelector} .nx-multi-file-upload__select-btn`;
 
   // Files of varying sizes to test the file size display in the component.  Due to the size
   // of the largest of these files, there are problems with storing them in git so they
@@ -72,16 +79,57 @@ describe('NxMultiFileUpload', function() {
     await tmpDir.cleanup();
   });
 
-  describe('when a file is selected', function() {
+  it('looks right when pristine', simpleTest(complexExampleSelector));
+  it('has a blue glow around the button when focused', focusTest(complexExampleSelector, btnSelector));
+  it('has a dark border around the button when hovered', hoverTest(complexExampleSelector, btnSelector));
+  it('has a blue glow when focused and hovered', focusAndHoverTest(complexExampleSelector, btnSelector));
+  it('has a dark border and grey background when clicked', clickTest(complexExampleSelector, btnSelector));
 
-    it('testing uploadFiles', async function() {
+  it('passes a11y checks', a11yTest());
+
+  describe('when files are selected', function() {
+    async function displaySelectedFiles(...selectedFiles) {
       const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
+      await input.uploadFile(...selectedFiles);
+      const [complexExample] = await waitAndGetElements(complexExampleSelector);
+      await checkScreenshot(complexExample);
+    }
+    it('shows selected files', displaySelectedFiles(files.bytes, files.kilobytes));
 
-      // successful - uploadFile uploads the two separate files with their own info
-      const file = [files.gigabytes, files.kilobytes];
-      await input.uploadFile(...file);
-      simpleTest(complexExampleSelector);
+    it('shows scrolls to last file if number of files exceeds container\'s space',
+        displaySelectedFiles(files.bytes, files.kilobytes, files.megabytes, files.gigabytes));
+
+    it('passes a11y checks', async function() {
+      displaySelectedFiles(files.bytes, files.kilobytes);
+      a11yTest();
     });
+
+    describe('file dismiss button', function() {
+      beforeEach(displaySelectedFiles([files.bytes]));
+
+      const btnSelector = `${complexExampleSelector} .nx-selected-file__dismiss-btn`;
+
+      it('has a blue glow when focused when focused', focusTest(complexExampleSelector, btnSelector));
+      it('has a dark border when hovered', hoverTest(complexExampleSelector, btnSelector));
+      it('has a dark border and blue glow  when focused and hovered',
+          focusAndHoverTest(complexExampleSelector, btnSelector));
+      it('has a dark border and grey background when clicked', clickTest(complexExampleSelector, btnSelector));
+    });
+  });
+
+  describe('when required but empty and non-pristine', function() {
+    beforeEach(async function() {
+      const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
+      await input.uploadFile(files.bytes);
+
+      const [dismissBtn] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file__dismiss-btn`);
+      await dismissBtn.click();
+
+      expect(await isInDocument(dismissBtn)).toBe(false);
+    });
+
+    it('shows the validation error and the "No file selected" text turns red and gets and icon',
+        simpleTest(complexExampleSelector));
   });
 
   describe('functionality', function() {
@@ -271,5 +319,11 @@ describe('NxMultiFileUpload', function() {
         expect(await isFocused(input)).toBe(true);
       });
     });
+  });
+
+  describe('when disabled', function() {
+    const disabledExampleSelector = '#nx-multi-file-upload-disabled-example .gallery-example-live';
+
+    it('looks right', simpleTest(disabledExampleSelector));
   });
 });
