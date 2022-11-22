@@ -14,10 +14,6 @@ describe('NxButton', function() {
   const quickRender = rtlRender(NxButton, {}),
       renderEl = rtlRenderElement(NxButton, {});
 
-  it('renders a button', function() {
-    expect(quickRender().getByRole('button').tagName).toBe('BUTTON');
-  });
-
   it('sets ref on the button', function() {
     const ref = React.createRef<HTMLButtonElement>(),
         el = renderEl({ ref });
