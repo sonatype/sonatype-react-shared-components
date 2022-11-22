@@ -4,167 +4,92 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import { shallow } from 'enzyme';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import React, { RefAttributes } from 'react';
+import { within } from '@testing-library/react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import userEvent from '@testing-library/user-event';
 
 import NxCheckbox, { Props } from '../NxCheckbox';
-import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 
 describe('NxCheckbox', function() {
-  const simpleProps: Props = {
-    checkboxId: 'checkbox-id',
-    isChecked: false,
-    onChange: () => {},
-    disabled: undefined,
-    children: undefined
-  };
+  const minimalProps: Props & RefAttributes<HTMLLabelElement> = {
+        isChecked: false
+      },
+      quickRender = rtlRender(NxCheckbox, minimalProps),
+      renderEl = rtlRenderElement(NxCheckbox, minimalProps);
 
-  function getShallowComponent(additionalProps?: Partial<Props>) {
-    return shallow(<NxCheckbox { ...simpleProps } { ...additionalProps } />);
-  }
+  it('renders a <label> containing a checkbox role <input>', function() {
+    const component = renderEl()!,
+        input = within(component).getByRole('checkbox');
 
-  it('renders a <label> containing a checkbox <input> and visible box', function() {
-    const shallowRender = getShallowComponent();
-
-    expect(shallowRender).toMatchSelector('label.nx-checkbox');
-
-    expect(shallowRender.find('input')).toHaveProp('type', 'checkbox');
-    expect(shallowRender.find('input')).toHaveProp('id', 'checkbox-id');
-    expect(shallowRender.find('input')).toHaveClassName('nx-checkbox__input');
-
-    expect(shallowRender.find('.nx-checkbox__box')).toExist();
-
-    // space is nbsp for empty box
-    expect(shallowRender).toHaveText(' ');
+    expect(component.tagName).toBe('LABEL');
+    expect(component).toContainElement(input);
   });
 
-  it('adds classes specified with the className prop', function() {
-    const component = getShallowComponent({ className: 'foo' });
+  it('adds specified classNames to the top-level element in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
 
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-checkbox');
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('renders a faCheck FontAwesomeIcon inside the box when checked', function() {
-    expect(getShallowComponent()).not.toContainReact(<FontAwesomeIcon icon={faCheck} />);
+  it('passes additional attrs to the top-level element', function() {
+    const el = renderEl({ id: 'foo', lang: 'en-US' });
 
-    // icon and no nbsp when checked
-    expect(getShallowComponent({ isChecked: true }).find('.nx-checkbox__box'))
-        .toMatchElement(<span className="nx-checkbox__box"><FontAwesomeIcon icon={faCheck} /></span>);
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en-US');
   });
 
-  it('renders no label text if none is provided', function() {
-    // space is nbsp for empty box
-    expect(shallow(<NxCheckbox checkboxId="checkbox-id" isChecked={false} onChange={() => {}} />)).toHaveText(' ');
+  it('passes input attributes into the input', function() {
+    const input = quickRender({ inputAttributes: { id: 'boo', name: 'boo' } }).getByRole('checkbox');
+
+    expect(input).toHaveAttribute('id', 'boo');
+    expect(input).toHaveAttribute('name', 'boo');
   });
 
-  it('adds the nx-radio-checkbox--disabled class if disabled is set', function() {
-    expect(getShallowComponent()).not.toHaveClassName('nx-radio-checkbox--disabled');
-    expect(getShallowComponent({ disabled: true })).toHaveClassName('nx-radio-checkbox--disabled');
+  it('sets ref on the top-level element', function() {
+    const ref = React.createRef<HTMLLabelElement>(),
+        el = renderEl({ ref });
+
+    expect(ref.current).toBe(el);
   });
-
-  it('adds the tm-checked class if isChecked is true, and the tm-unchecked class if it is false', function() {
-    expect(getShallowComponent()).toHaveClassName('tm-unchecked');
-    expect(getShallowComponent()).not.toHaveClassName('tm-checked');
-
-    expect(getShallowComponent({ isChecked: true })).not.toHaveClassName('tm-unchecked');
-    expect(getShallowComponent({ isChecked: true })).toHaveClassName('tm-checked');
-  });
-
-  it('renders children nodes within an nx-checkbox__content <span>', function() {
-    const render = shallow(
-      <NxCheckbox { ...simpleProps }>
-        <div className="bar"></div>
-      </NxCheckbox>
-    );
-
-    expect(render).toContainMatchingElement('label .nx-checkbox__content .bar');
-  });
-
-  it('does not render the .nx-checkbox__content element if there are no children', function() {
-    expect(getShallowComponent()).not.toContainMatchingElement('.nx-checkbox__content');
-  });
-
-  it('wraps the .nx-checkbox__content element in an NxOverflowTooltip unless overflowTooltip is set to false',
-      function() {
-        expect(getShallowComponent()).not.toContainMatchingElement(NxOverflowTooltip);
-
-        expect(getShallowComponent({ children: <div/> })).toContainMatchingElement(NxOverflowTooltip);
-        expect(getShallowComponent({ children: <div/> }).find(NxOverflowTooltip))
-            .toContainMatchingElement('.nx-checkbox__content');
-
-        expect(getShallowComponent({ children: <div/>, overflowTooltip: true }))
-            .toContainMatchingElement(NxOverflowTooltip);
-        expect(getShallowComponent({ children: <div/>, overflowTooltip: true }).find(NxOverflowTooltip))
-            .toContainMatchingElement('.nx-checkbox__content');
-
-        expect(getShallowComponent({ children: <div/>, overflowTooltip: null }))
-            .toContainMatchingElement(NxOverflowTooltip);
-        expect(getShallowComponent({ children: <div/>, overflowTooltip: null }).find(NxOverflowTooltip))
-            .toContainMatchingElement('.nx-checkbox__content');
-
-        expect(getShallowComponent({ children: <div/>, overflowTooltip: false }))
-            .not.toContainMatchingElement(NxOverflowTooltip);
-        expect(getShallowComponent({ children: <div/>, overflowTooltip: false }))
-            .toContainMatchingElement('.nx-checkbox__content');
-      }
-  );
 
   it('disables the input iff disabled is set', function() {
-    expect(getShallowComponent().find('input')).toHaveProp('disabled', false);
-    expect(getShallowComponent({ disabled: false }).find('input')).toHaveProp('disabled', false);
-    expect(getShallowComponent({ disabled: true }).find('input')).toHaveProp('disabled', true);
+    expect(quickRender().getByRole('checkbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: undefined }).getByRole('checkbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: false }).getByRole('checkbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: true }).getByRole('checkbox')).toBeDisabled();
+  });
+
+  it('renders label text iff there are children', function() {
+    expect(renderEl({ children: 'foo' })).toHaveTextContent('foo');
+    expect(renderEl()).toHaveTextContent('');
   });
 
   it('sets the input to checked per the value of isChecked', function() {
-    expect(getShallowComponent({ isChecked: false }).find('input')).toHaveProp('checked', false);
-    expect(getShallowComponent({ isChecked: true }).find('input')).toHaveProp('checked', true);
+    expect(quickRender({ isChecked: false }).getByRole('checkbox')).not.toBeChecked();
+    expect(quickRender({ isChecked: true }).getByRole('checkbox')).toBeChecked();
   });
 
-  it('calls its onChange prop when the input fires a change event', function() {
-    const onChange = jest.fn(),
-        component = getShallowComponent({ onChange });
+  it('calls its onChange prop when the input fires a change event', async function() {
+    const user = userEvent.setup(),
+        onChange = jest.fn(),
+        input = quickRender({ onChange }).getByRole('checkbox');
 
     expect(onChange).not.toHaveBeenCalled();
-    component.find('input').simulate('change');
+
+    await user.click(input);
+
     expect(onChange).toHaveBeenCalled();
   });
 
   it('sets the input as readonly if there is no onChange handler', function() {
-    expect(getShallowComponent().find('input')).toHaveProp('readOnly', false);
-    expect(getShallowComponent({ onChange: undefined }).find('input')).toHaveProp('readOnly', true);
-    expect(getShallowComponent({ onChange: null }).find('input')).toHaveProp('readOnly', true);
-  });
-
-  it('passes unknown props to the label element', function() {
-    const component = getShallowComponent({ id: 'foo', htmlFor: 'baz' });
-
-    expect(component).toHaveProp('id', 'foo');
-    expect(component).toHaveProp('htmlFor', 'baz');
-  });
-
-  it('passes input attributes into the input element and does not clash with top-level attributes', function() {
-    const component = getShallowComponent({
-      checkboxId: 'not-garfield',
-      disabled: true,
-      isChecked: true,
-      className: 'label-classname',
-      inputAttributes: {
-        id: 'garfield',
-        name: 'garfield',
-        disabled: false,
-        className: 'input-classname',
-        checked: false
-      } as Props['inputAttributes']
-    });
-
-    expect(component.find('input')).toHaveProp('id', 'garfield');
-    expect(component.find('input')).toHaveProp('name', 'garfield');
-    expect(component.find('input')).toHaveProp('disabled', true);
-    expect(component.find('input')).toHaveClassName('input-classname');
-    expect(component.find('input')).not.toHaveClassName('label-classname');
-    expect(component.find('input')).toHaveProp('checked', true);
+    expect(quickRender().getByRole('checkbox')).toHaveAttribute('readOnly');
+    expect(quickRender({ onChange: undefined }).getByRole('checkbox')).toHaveAttribute('readOnly');
+    expect(quickRender({ onChange: null }).getByRole('checkbox')).toHaveAttribute('readOnly');
   });
 });
