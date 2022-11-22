@@ -19,11 +19,11 @@ describe('NxCheckbox', function() {
       renderEl = rtlRenderElement(NxCheckbox, minimalProps);
 
   it('renders a <label> as an accessible name and contains a checkbox role <input>', function() {
-    const component = renderEl({ children: 'foo' })!,
-        input = within(component).getByRole('checkbox');
+    const el = renderEl({ children: 'foo' })!,
+        input = within(el).getByRole('checkbox');
 
-    expect(component).toHaveTextContent('foo');
-    expect(component).toContainElement(input);
+    expect(el).toHaveTextContent('foo');
+    expect(el).toContainElement(input);
     expect(input).toHaveAccessibleName('foo');
   });
 

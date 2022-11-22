@@ -18,12 +18,13 @@ describe('NxStatefulCheckbox', function() {
       quickRender = rtlRender(NxStatefulCheckbox, minimalProps),
       renderEl = rtlRenderElement(NxStatefulCheckbox, minimalProps);
 
-  it('renders a <label> containing a checkbox role <input>', function() {
-    const component = renderEl()!,
-        input = within(component).getByRole('checkbox');
+  it('renders a <label> as an accessible name and contains a checkbox role <input>', function() {
+    const el = renderEl({ children: 'foo' })!,
+        input = within(el).getByRole('checkbox');
 
-    expect(component.tagName).toBe('LABEL');
-    expect(component).toContainElement(input);
+    expect(el).toHaveTextContent('foo');
+    expect(el).toContainElement(input);
+    expect(input).toHaveAccessibleName('foo');
   });
 
   it('adds specified classNames to the top-level element in addition to the defaults', function() {
