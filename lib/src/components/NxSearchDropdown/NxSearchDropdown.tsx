@@ -84,21 +84,6 @@ function NxSearchDropdownRender<T extends string | number = string>(
     }
   }
 
-  // // helper for focusing different buttons in the dropdown menu
-  // const adjustBtnFocus = (adjust: (i: number) => number) => () => {
-  //       const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
-  //           elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
-
-  //       if (elToFocus) {
-  //         elToFocus.focus();
-  //         setFocusableBtnIndex(newFocusableBtnIndex);
-  //       }
-  //     },
-  //     focusNext = adjustBtnFocus(inc),
-  //     focusPrev = adjustBtnFocus(dec),
-  //     focusFirst = adjustBtnFocus(always(0)),
-  //     focusLast = adjustBtnFocus(always(matches.length - 1));
-
   function handleButtonKeyDown(evt: KeyboardEvent<HTMLElement>) {
     switch (evt.key) {
       case 'Escape':
@@ -121,16 +106,6 @@ function NxSearchDropdownRender<T extends string | number = string>(
   function focusTextInput() {
     filterRef.current?.querySelector('input')?.focus();
   }
-
-  // // Clamp or nullify focusableBtnIndex whenever the number of matches changes
-  // useEffect(function() {
-  //   if (matches.length) {
-  //     setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex ?? 0));
-  //   }
-  //   else {
-  //     setFocusableBtnIndex(null);
-  //   }
-  // }, [matches]);
 
   /*
    * Horrible Hack: When an element within the dropdown is removed from the DOM while it is focused, we want
