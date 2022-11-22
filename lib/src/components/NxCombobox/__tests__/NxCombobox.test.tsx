@@ -6,7 +6,7 @@
  */
 // import React, { useState } from 'react';
 import React, { RefAttributes } from 'react';
-import { screen, fireEvent, render, within } from '@testing-library/react';
+import { screen, fireEvent, render, within, createEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
@@ -534,6 +534,28 @@ describe('NxCombobox', function() {
       inputElement.focus();
       await user.keyboard('[Escape]');
       expect(onChange).toBeCalledWith('');
+    });
+
+    it('calls preventDefault on the event when Escape key is pressed and the value is not empty', async function() {
+      const { getByRole } = quickRender({ value: 'a' }),
+          inputElement = getByRole('combobox'),
+          keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+      inputElement.focus();
+      fireEvent(inputElement, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(true);
+    });
+
+    it('does not call preventDefault on the event when Escape key is pressed and the value is empty', async function() {
+      const { getByRole } = quickRender(),
+          inputElement = getByRole('combobox'),
+          keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+      inputElement.focus();
+      fireEvent(inputElement, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(false);
     });
   });
 
