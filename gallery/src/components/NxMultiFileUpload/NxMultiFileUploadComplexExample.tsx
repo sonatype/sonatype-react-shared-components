@@ -17,8 +17,8 @@ export default function NxMultiFileUploadComplexExample() {
   return <NxMultiFileUpload { ...state }
                             isRequired
                             onChange={onChange}
-                            id="my-file-upload"
-                            className="file-upload-class"
+                            id="my-multi-file-upload"
+                            className="multi-file-upload-class"
                             aria-label="complex file upload"
                             accept="text/plain,image/png"/>;
 }

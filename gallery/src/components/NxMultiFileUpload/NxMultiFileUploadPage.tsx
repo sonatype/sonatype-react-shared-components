@@ -133,7 +133,7 @@ const NxTextInputPage = () =>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell />
               <NxTable.Cell>
-                NxFileUpload supports any HTML attribute that's normally supported
+                <NxCode>NxMultiFileUpload</NxCode> supports any HTML attribute that's normally supported
                 by <NxCode>&lt;input type="file"&gt;</NxCode>. Note however that the <NxCode>input</NxCode> is
                 not the top-level DOM element within this component
               </NxTable.Cell>
@@ -148,7 +148,7 @@ const NxTextInputPage = () =>
         <NxP>
           Like <NxCode>NxTextInput</NxCode>, <NxCode>NxMultiFileUpload</NxCode> comes with helper functions to more
           conveniently manage its state. In this case, these helpers only manage the <NxCode>files</NxCode>
-          and <NxCode>isPristine</NxCode> props – validation is not supported other than required value
+          {' '}and <NxCode>isPristine</NxCode> props – validation is not supported other than required value
           validation, which the component handles internally. The helper functions are available on
           the <NxCode>nxFileUploadStateHelpers</NxCode> export. Use of these helpers is not necessary
           on non-required file uploads, as the <NxCode>isPristine</NxCode> flag is not used there.
