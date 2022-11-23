@@ -7,7 +7,14 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxButton', function() {
-  const { clickTest, focusTest, focusAndHoverTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Button');
+  const {
+    clickTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    simpleTest,
+    a11yTest
+  } = setupBrowser('#/pages/Button');
 
   describe('Default NxButton', function() {
     const selector = '#nx-button-default-example .nx-btn:not([disabled]):not(.disabled)';
@@ -82,9 +89,12 @@ describe('NxButton', function() {
   });
 
   describe('NxButton with icon only', function() {
-    const selector = '#nx-button-icon-only-example .nx-btn:first-of-type';
+    const iconOnlyBtnExample = '#nx-button-icon-only-example .gallery-example-live',
+        selector = '#nx-button-icon-only-example .nx-btn:first-of-type';
 
     it('looks right', simpleTest(selector));
+
+    it('shows tooltips', hoverTest(iconOnlyBtnExample, selector, true));
   });
 
   describe('nx-btn class on <a>', function() {
