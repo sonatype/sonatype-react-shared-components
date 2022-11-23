@@ -35,7 +35,8 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
     onReorderItem,
     isTopItem,
     isBottomItem,
-    tooltip
+    tooltip,
+    hideMoveIcon
   } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
@@ -62,8 +63,12 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
     <div className={classes}>
       <Tooltip { ...tooltipProps }>
         <label className="nx-transfer-list__select">
-          <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
-          <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
+          { !hideMoveIcon &&
+            <>
+              <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
+              <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
+            </>
+          }
           <span className="nx-transfer-list__display-name">{displayName}</span>
         </label>
       </Tooltip>
@@ -111,7 +116,8 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         onItemChange,
         onReorderItem,
         footerContent,
-        filterFn: filterFnProp
+        filterFn: filterFnProp,
+        disableItemMove
       } = props,
       defaultFilterFn = pipe(toLower, includes(toLower(filterValue))),
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
@@ -144,6 +150,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         <div className="nx-transfer-list__item-list">
           { visibleItems.map(
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
+                                                 hideMoveIcon={disableItemMove}
                                                  isFilteredItem={!!filterValue}
                                                  key={i.id}
                                                  checked={isSelected}

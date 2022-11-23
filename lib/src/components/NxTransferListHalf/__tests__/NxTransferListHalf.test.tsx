@@ -27,7 +27,8 @@ describe('NxTransferListHalf', function() {
         items: [],
         isSelected: false,
         onItemChange: () => {},
-        footerContent: <div/>
+        footerContent: <div/>,
+        disableItemMove: false
       },
       getShallow = getShallowComponent<Props<number>>(NxTransferListHalf, minimalProps),
       getMounted = getMountedComponent<Props<number>>(NxTransferListHalf, minimalProps);
@@ -169,6 +170,19 @@ describe('NxTransferListHalf', function() {
     const otherItem = list.find('.nx-transfer-list__item').at(1);
 
     expect(otherItem).toHaveText('baz');
+  });
+
+  it('does not render move icon and checkbox input only if disableItemMove is true', function() {
+    const items = [{
+          id: 1,
+          displayName: 'foo'
+        }],
+        componentDisableItemMove = getMounted({ items, disableItemMove: true }),
+        select = componentDisableItemMove
+            .find('.nx-transfer-list__item-list .nx-transfer-list__item .nx-transfer-list__select');
+
+    expect(select.find(NxFontAwesomeIcon)).not.toExist();
+    expect(select.find('input.nx-transfer-list__checkbox')).not.toExist();
   });
 
   it('sets the item checked prop to isSelected', function() {

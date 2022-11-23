@@ -25,6 +25,7 @@ export interface TransferListItemProps<T extends string | number = string> exten
   onReorderItem?: (id: T, direction: 1 | -1) => void | null;
   isTopItem: boolean;
   isBottomItem: boolean;
+  hideMoveIcon?: boolean | null;
 }
 
 export interface Props<T extends string | number = string> {
@@ -40,6 +41,7 @@ export interface Props<T extends string | number = string> {
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
   onReorderItem?: (id: T, direction: -1 | 1) => void | null;
   allowReordering?: boolean | null;
+  disableItemMove?: boolean | null;
 }
 
 // generic props omitted due to type checking issues
@@ -53,5 +55,6 @@ export const propTypes = {
   filterFn: PropTypes.func,
   showMoveAll: PropTypes.bool.isRequired,
   allowReordering: PropTypes.bool,
-  onReorderItem: PropTypes.func
+  onReorderItem: PropTypes.func,
+  disableItemMove: PropTypes.bool
 };

@@ -109,6 +109,15 @@ const NxTransferListPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell><NxCode>disableItemMove</NxCode></NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>
+                Set to true to disable moving item feature and hide the move icon on each item.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell><NxCode>footerContent</NxCode></NxTable.Cell>
               <NxTable.Cell>ReactNode</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
