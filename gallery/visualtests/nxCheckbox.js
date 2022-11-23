@@ -63,6 +63,7 @@ describe('NxCheckbox', function() {
 
     it('has a light blue outer border and glow when focused', focusTest(selector));
     it('has a light blue outer border and a dark border when focused and hovered', focusAndHoverTest(selector));
+    it('shows overflow tooltips', hoverTest('#nx-checkbox-example .gallery-example-live', selector, true));
   });
 
   describe('Attribute-Disabled NxCheckbox', function() {
