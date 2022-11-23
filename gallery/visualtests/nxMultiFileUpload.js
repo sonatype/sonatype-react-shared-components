@@ -329,6 +329,214 @@ describe('NxMultiFileUpload', function() {
     });
   });
 
+  describe('stateful functionality', function() {
+    const { waitAndGetElements, isInDocument, dismissResultingDialog, getPage }
+    = setupBrowser('#/pages/Stateful Multiple File Upload');
+
+    const statefulExampleSelector = '#nx-multi-file-upload-stateful-example';
+
+    async function openFileChooser(files) {
+      const [button] = await waitAndGetElements(`${statefulExampleSelector} .nx-multi-file-upload__select-btn`);
+      const [fileChooser] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
+      await dismissResultingDialog(async () => {
+        await fileChooser.accept(files);
+      });
+    }
+
+    it('opens file picker when the select button is clicked, and displays all selected files', async function() {
+      await openFileChooser([files.bytes, files.kilobytes]);
+
+      const [selectedFile1] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(1)`)),
+          textContent1 = await selectedFile1.evaluate(e => e.textContent);
+
+      expect(textContent1).toMatch(path.basename(files.bytes));
+      expect(textContent1).not.toMatch(path.dirname(files.bytes));
+      expect(textContent1).toMatch('14.0 B');
+
+      const [selectedFile2] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(2)`)),
+          textContent2 = await selectedFile2.evaluate(e => e.textContent);
+
+      expect(textContent2).toMatch(path.basename(files.kilobytes));
+      expect(textContent2).not.toMatch(path.dirname(files.kilobytes));
+      expect(textContent2).toMatch('2.0 kB');
+    });
+
+    it('adds to selected files when file picker opened more than once', async function() {
+      await openFileChooser([files.bytes]);
+
+      const [selectedFile1] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(1)`)),
+          textContent1 = await selectedFile1.evaluate(e => e.textContent);
+
+      expect(textContent1).toMatch('14.0 B');
+
+      await openFileChooser([files.kilobytes]);
+
+      const [selectedFile2] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(2)`)),
+          textContent2 = await selectedFile2.evaluate(e => e.textContent);
+
+      expect(textContent2).toMatch('2.0 kB');
+    });
+
+    it('correctly displays varying file sizes', async function() {
+      await openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
+
+      const [selectedFile1] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(1)`)),
+          textContent1 = await selectedFile1.evaluate(e => e.textContent);
+
+      const [selectedFile2] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(2)`)),
+          textContent2 = await selectedFile2.evaluate(e => e.textContent);
+
+      const [selectedFile3] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(3)`)),
+          textContent3 = await selectedFile3.evaluate(e => e.textContent);
+
+      const [selectedFile4] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(4)`)),
+          textContent4 = await selectedFile4.evaluate(e => e.textContent);
+
+      expect(textContent1).toMatch('14.0 B');
+      expect(textContent2).toMatch('2.0 kB');
+      expect(textContent3).toMatch('1.5 MB');
+      expect(textContent4).toMatch('1.2 GB');
+    });
+
+    it('removes the selected file when the dismiss button is clicked', async function() {
+      await openFileChooser([files.bytes, files.kilobytes]);
+
+      let [selectedFile1, dismissBtn1] = await waitAndGetElements(
+              `${statefulExampleSelector} .nx-selected-file:nth-child(1)`,
+              `${statefulExampleSelector} .nx-selected-file:nth-child(1) .nx-selected-file__dismiss-btn`
+          ),
+          textContent1 = await selectedFile1.evaluate(e => e.textContent);
+
+      const [selectedFile2] = await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(2)`),
+          textContent2 = await selectedFile2.evaluate(e => e.textContent);
+
+      // confirm layout of selected files
+      expect(textContent1).toMatch('14.0 B');
+      expect(textContent2).toMatch('2.0 kB');
+
+      await dismissResultingDialog(async () => {
+        await dismissBtn1.click();
+      });
+
+      [selectedFile1] = await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(1)`);
+      textContent1 = await selectedFile1.evaluate(e => e.textContent);
+
+      // confirm the correct file was removed
+      expect(await isInDocument(selectedFile2)).toBe(false);
+      expect(await isInDocument(selectedFile1)).toBe(true);
+      expect(textContent1).toMatch('2.0 kB');
+    });
+
+    it('sets the no File Selected message when the last selected file is removed', async function() {
+      await openFileChooser([files.bytes]);
+
+      const [selectedFile, dismissBtn] = await waitAndGetElements(
+          `${statefulExampleSelector} .nx-selected-file`,
+          `${statefulExampleSelector} .nx-selected-file .nx-selected-file__dismiss-btn`
+      );
+
+      await dismissResultingDialog(async () => {
+        await dismissBtn.click();
+      });
+
+      const [noFileSelectedMessage] = await waitAndGetElements('.nx-multi-file-upload__no-file-message'),
+          textContent = await noFileSelectedMessage.evaluate(e => e.textContent);
+
+      expect(await isInDocument(selectedFile)).toBe(false);
+      expect(await isInDocument(noFileSelectedMessage)).toBe(true);
+      expect(textContent).toBe('No file selected');
+    });
+
+    describe('focus behavior', function() {
+      it('sets focus on the appropriate dismiss button once a file is removed', async function() {
+        await openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
+
+        let [selectedFile1, dismissBtn1] = await waitAndGetElements(
+            `${statefulExampleSelector} .nx-selected-file:nth-child(1)`,
+            `${statefulExampleSelector} .nx-selected-file:nth-child(1) .nx-selected-file__dismiss-btn`
+        );
+
+        let [selectedFile2, dismissBtn2] = await waitAndGetElements(
+            `${statefulExampleSelector} .nx-selected-file:nth-child(2)`,
+            `${statefulExampleSelector} .nx-selected-file:nth-child(2) .nx-selected-file__dismiss-btn`
+        );
+
+        let [selectedFile3, dismissBtn3] = await waitAndGetElements(
+            `${statefulExampleSelector} .nx-selected-file:nth-child(3)`,
+            `${statefulExampleSelector} .nx-selected-file:nth-child(3) .nx-selected-file__dismiss-btn`
+        );
+
+        const [selectedFile4] = await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(4)`);
+
+        // certify all 4 files are indeed uploaded
+        expect(await isInDocument(selectedFile1)).toBe(true);
+        expect(await isInDocument(selectedFile2)).toBe(true);
+        expect(await isInDocument(selectedFile3)).toBe(true);
+        expect(await isInDocument(selectedFile4)).toBe(true);
+
+        // remove the first file
+        await dismissResultingDialog(async () => {
+          await dismissBtn1.click();
+        });
+
+        [selectedFile1, dismissBtn1] = await waitAndGetElements(
+            `${statefulExampleSelector} .nx-selected-file:nth-child(1)`,
+            `${statefulExampleSelector} .nx-selected-file:nth-child(1) .nx-selected-file__dismiss-btn`
+        );
+        [selectedFile2, dismissBtn2] = await waitAndGetElements(
+            `${statefulExampleSelector} .nx-selected-file:nth-child(2)`,
+            `${statefulExampleSelector} .nx-selected-file:nth-child(2) .nx-selected-file__dismiss-btn`
+        );
+        [selectedFile3, dismissBtn3] = await waitAndGetElements(
+            `${statefulExampleSelector} .nx-selected-file:nth-child(3)`,
+            `${statefulExampleSelector} .nx-selected-file:nth-child(3) .nx-selected-file__dismiss-btn`
+        );
+
+        // confirm a file was removed
+        expect(await isInDocument(selectedFile1)).toBe(true);
+        expect(await isInDocument(selectedFile2)).toBe(true);
+        expect(await isInDocument(selectedFile3)).toBe(true);
+        expect(await isInDocument(selectedFile4)).toBe(false);
+
+        // focus has moved to subsequent dismiss button after file removed (now first)
+        expect(await isFocused(dismissBtn1)).toBe(true);
+
+        // remove the last file
+        await dismissResultingDialog(async () => {
+          await dismissBtn3.click();
+        });
+
+        // confirm a file was removed
+        expect(await isInDocument(selectedFile1)).toBe(true);
+        expect(await isInDocument(selectedFile2)).toBe(true);
+        expect(await isInDocument(selectedFile3)).toBe(false);
+
+        //focus has moved to the next last dismiss button
+        expect(await isFocused(dismissBtn2)).toBe(true);
+      });
+
+      it('sets focus on input when last file is removed', async function() {
+        await openFileChooser([files.bytes]);
+
+        const [input] = await waitAndGetElements(`${statefulExampleSelector} input[multiple]`);
+
+        const [selectedFile, dismissBtn] = await waitAndGetElements(
+            `${statefulExampleSelector} .nx-selected-file`,
+            `${statefulExampleSelector} .nx-selected-file .nx-selected-file__dismiss-btn`
+        );
+
+        expect(await isInDocument(selectedFile)).toBe(true);
+
+        await dismissResultingDialog(async () => {
+          await dismissBtn.click();
+        });
+
+        expect(await isInDocument(selectedFile)).toBe(false);
+        expect(await isFocused(input)).toBe(true);
+      });
+    });
+  });
+
   describe('when disabled', function() {
     const disabledExampleSelector = '#nx-multi-file-upload-disabled-example .gallery-example-live';
 
