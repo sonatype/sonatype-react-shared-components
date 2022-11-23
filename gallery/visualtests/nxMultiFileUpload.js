@@ -88,30 +88,36 @@ describe('NxMultiFileUpload', function() {
   it('passes a11y checks', a11yTest());
 
   describe('when files are selected', function() {
-    async function displaySelectedFiles(...selectedFiles) {
-      const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
-      await input.uploadFile(...selectedFiles);
-      const [complexExample] = await waitAndGetElements(complexExampleSelector);
-      await checkScreenshot(complexExample);
+    function displaySelectedFiles(...selectedFileSize) {
+      return async function() {
+        const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
+        await input.uploadFile(...selectedFileSize.map(type => files[type]));
+        const [complexExample] = await waitAndGetElements(complexExampleSelector);
+        await checkScreenshot(complexExample);
+      };
     }
-    it('shows selected files', displaySelectedFiles(files.bytes, files.kilobytes));
 
-    it('shows scrolls to last file if number of files exceeds container\'s space',
-        displaySelectedFiles(files.bytes, files.kilobytes, files.megabytes, files.gigabytes));
+    it('shows selected files', displaySelectedFiles('bytes', 'kilobytes'));
+
+    it('scrolls to last file if number of files exceeds container\'s space',
+        displaySelectedFiles('bytes', 'kilobytes', 'megabytes', 'gigabytes'));
 
     it('passes a11y checks', async function() {
-      displaySelectedFiles(files.bytes, files.kilobytes);
+      displaySelectedFiles('bytes', 'kilobytes');
       a11yTest();
     });
 
     describe('file dismiss button', function() {
-      beforeEach(displaySelectedFiles([files.bytes]));
+      beforeEach(async function() {
+        const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
+        await input.uploadFile(files.bytes);
+      });
 
       const btnSelector = `${complexExampleSelector} .nx-selected-file__dismiss-btn`;
 
-      it('has a blue glow when focused when focused', focusTest(complexExampleSelector, btnSelector));
+      it('has a blue glow when focused', focusTest(complexExampleSelector, btnSelector));
       it('has a dark border when hovered', hoverTest(complexExampleSelector, btnSelector));
-      it('has a dark border and blue glow  when focused and hovered',
+      it('has a dark border and blue glow when focused and hovered',
           focusAndHoverTest(complexExampleSelector, btnSelector));
       it('has a dark border and grey background when clicked', clickTest(complexExampleSelector, btnSelector));
     });
@@ -165,7 +171,7 @@ describe('NxMultiFileUpload', function() {
 
       expect(textContent1).toMatch('14.0 B');
 
-      openFileChooser([files.kilobytes]);
+      await openFileChooser([files.kilobytes]);
 
       const [selectedFile2] = (await waitAndGetElements(`${complexExampleSelector} .nx-selected-file:nth-child(2)`)),
           textContent2 = await selectedFile2.evaluate(e => e.textContent);
@@ -206,6 +212,7 @@ describe('NxMultiFileUpload', function() {
       const [selectedFile2] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file:nth-child(2)`),
           textContent2 = await selectedFile2.evaluate(e => e.textContent);
 
+      // confirm layout of selected files
       expect(textContent1).toMatch('14.0 B');
       expect(textContent2).toMatch('2.0 kB');
 
@@ -214,13 +221,14 @@ describe('NxMultiFileUpload', function() {
       [selectedFile1] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file:nth-child(1)`);
       textContent1 = await selectedFile1.evaluate(e => e.textContent);
 
+      // confirm the correct file was removed
       expect(await isInDocument(selectedFile2)).toBe(false);
       expect(await isInDocument(selectedFile1)).toBe(true);
       expect(textContent1).toMatch('2.0 kB');
     });
 
     it('sets the no File Selected message when the last selected file is removed', async function() {
-      openFileChooser([files.bytes]);
+      await openFileChooser([files.bytes]);
 
       const [selectedFile, dismissBtn] = await waitAndGetElements(
           `${complexExampleSelector} .nx-selected-file`,
@@ -239,7 +247,7 @@ describe('NxMultiFileUpload', function() {
 
     describe('focus behavior', function() {
       it('sets focus on the appropriate dismiss button once a file is removed', async function() {
-        openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
+        await openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
 
         let [selectedFile1, dismissBtn1] = await waitAndGetElements(
             `${complexExampleSelector} .nx-selected-file:nth-child(1)`,
@@ -302,7 +310,7 @@ describe('NxMultiFileUpload', function() {
       });
 
       it('sets focus on input when last file is removed', async function() {
-        openFileChooser([files.bytes]);
+        await openFileChooser([files.bytes]);
 
         const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
 
