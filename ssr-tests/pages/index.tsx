@@ -97,6 +97,8 @@ import {
   NxWarningAlert,
   NxFileUpload,
   NxStatefulFileUpload,
+  NxMultiFileUpload,
+  NxStatefulMultiFileUpload,
   NxDescriptionList,
   useUniqueId,
   NxBreadcrumb,
@@ -366,6 +368,8 @@ const Home: NextPage = () => {
                           onChange={noop} />
         <NxFileUpload files={null} onChange={() => {}} />
         <NxStatefulFileUpload />
+        <NxMultiFileUpload files={null} onCHange={() => {}}/>
+        <NxStatefulMultiFileUpload />
         <NxDescriptionList>
           <NxDescriptionList.Item>
             <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
