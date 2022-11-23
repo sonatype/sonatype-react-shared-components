@@ -99,6 +99,10 @@ describe('NxStatefulCheckbox', function() {
     await user.click(input);
 
     expect(input).toBeChecked();
+
+    await user.click(input);
+
+    expect(input).not.toBeChecked();
   });
 
   it('calls its onChange prop when the input fires a change event', async function() {
