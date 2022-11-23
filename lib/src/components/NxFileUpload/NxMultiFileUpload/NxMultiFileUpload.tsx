@@ -9,7 +9,7 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import { forEach, without } from 'ramda';
 
-import { SelectedFile } from '../NxFileUpload';
+import SelectedFile from '../SelectedFile';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxButton from '../../NxButton/NxButton';
 import { FormAriaContext } from '../../NxForm/context';
