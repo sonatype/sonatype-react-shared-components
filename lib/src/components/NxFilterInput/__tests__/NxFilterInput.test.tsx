@@ -4,103 +4,142 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import { mount, shallow } from 'enzyme';
-import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
+import React, { RefAttributes } from 'react';
+import { waitFor } from '@testing-library/react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import userEvent from '@testing-library/user-event';
 
 import NxFilterInput, { Props } from '../NxFilterInput';
-import { PrivateNxTextInput } from '../../NxTextInput/NxTextInput';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 describe('NxFilterInput', function() {
-  const minimalProps = { value: '' },
-      shallowComponent = enzymeUtils.getShallowComponent<Props>(NxFilterInput, minimalProps);
+  const minimalProps: Props & RefAttributes<HTMLDivElement> = { value: '' },
+      quickRender = rtlRender(NxFilterInput, minimalProps),
+      renderEl = rtlRenderElement(NxFilterInput, minimalProps);
 
-  it('renders a PrivateNxTextInput with the nx-filter-input class', function() {
-    const component = shallowComponent();
-    expect(component).toHaveClassName('nx-filter-input');
-    expect(component).toMatchSelector(PrivateNxTextInput);
+  it('renders an Input with type="text"', function() {
+    expect(quickRender().getByRole('textbox').tagName).toBe('INPUT');
+    expect(quickRender().getByRole('textbox')).toHaveAttribute('type', 'text');
   });
 
-  it('adds custom classnames as specified', function() {
-    const component = shallowComponent({ className: 'foo' });
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-filter-input');
+  it('sets the value to the Input as specified', function() {
+    expect(quickRender({ value: 'foo' }).getByRole('textbox')).toHaveAttribute('value', 'foo');
   });
 
-  it('passes misc props to the PrivateNxTextInput', function() {
-    const onChange = jest.fn(),
-        onKeyPress = jest.fn(),
-        component = shallowComponent({
-          value: 'foo',
-          onChange,
-          onKeyPress,
-          id: 'bar'
-        });
+  it('adds specified classNames to the top-level element in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
 
-    expect(component).toHaveProp('value', 'foo');
-    expect(component).toHaveProp('onChange', onChange);
-    expect(component).toHaveProp('onKeyPress', onKeyPress);
-    expect(component).toHaveProp('id', 'bar');
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('does not pass validatable, validationErrors, or type props to the PrivateNxTextInput', function() {
-    const component = shallowComponent({
+  it('passes additional attrs to the Input', function() {
+    const input = quickRender({ id: 'foo', lang: 'en-US' }).getByRole('textbox');
+
+    expect(input).toHaveAttribute('id', 'foo');
+    expect(input).toHaveAttribute('lang', 'en-US');
+  });
+
+  it('does not pass validatable, validationErrors, or type props to the Input', function() {
+    const input = quickRender({
       validatable: true,
       validationErrors: 'It\'s all wrong',
       type: 'textarea'
-    } as Partial<Props>);
+    } as Partial<Props>).getByRole('textbox');
 
-    expect(component).not.toHaveProp('validatable');
-    expect(component).not.toHaveProp('validationErrors');
-    expect(component).not.toHaveProp('type');
+    expect(input).not.toHaveAttribute('type', 'textarea');
+    expect(input).not.toHaveAttribute('aria-invalid');
+    expect(input).not.toHaveErrorMessage('It\'s all wrong');
   });
 
-  it('passes isPristine = false to the PrivateNxTextInput', function() {
-    expect(shallowComponent()).toHaveProp('isPristine', false);
-  });
-
-  it('puts the ref on the PrivateNxTextInput', function() {
+  it('sets ref on the Input', function() {
     const ref = React.createRef<HTMLDivElement>(),
+        el = renderEl({ ref });
 
-        // note: the fragment is necessary to get around an enzyme issue:
-        // https://github.com/enzymejs/enzyme/issues/1852#issuecomment-433145879
-        component = mount(<><NxFilterInput { ...minimalProps } ref={ref} /></>),
-        domNode = component.find('div.nx-filter-input').getDOMNode();
-
-    expect(ref.current).toBe(domNode);
+    expect(ref.current).toBe(el);
   });
 
-  it('passes an faFilter icon with nx-icon--filter-icons as the prefixContent when searchIcon is undefined',
-      function() {
-        const IconFixture = function() {
-              return shallowComponent().prop('prefixContent');
-            },
-            icon = shallow(<IconFixture />);
-
-        expect(icon).toMatchSelector(NxFontAwesomeIcon);
-        expect(icon).toHaveProp(icon, faFilter);
-        expect(icon).toHaveClassName('nx-icon--filter-icons');
-      }
-  );
-
-  it('passes an faSearch icon with nx-icon--filter-icons as the prefixContent when searchIcon is true', function() {
-    const IconFixture = function() {
-          return shallowComponent({ searchIcon: true }).prop('prefixContent');
-        },
-        icon = shallow(<IconFixture />);
-
-    expect(icon).toMatchSelector(NxFontAwesomeIcon);
-    expect(icon).toHaveProp(icon, faSearch);
-    expect(icon).toHaveClassName('nx-icon--filter-icons');
+  it('sets disabled on the Input when the disabled prop is true', function() {
+    expect(quickRender().getByRole('textbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: undefined }).getByRole('textbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: false }).getByRole('textbox')).not.toBeDisabled();
+    expect(quickRender({ disabled: true }).getByRole('textbox')).toBeDisabled();
   });
 
-  it('sets the nx-filter-input--empty class if the value is empty or only whitespace', function() {
-    expect(shallowComponent()).toHaveClassName('nx-filter-input--empty');
-    expect(shallowComponent({ value: '\n\t \u00A0' })).toHaveClassName('nx-filter-input--empty');
-    expect(shallowComponent({ value: 'a' })).not.toHaveClassName('nx-filter-input--empty');
-    expect(shallowComponent({ value: ' a ' })).not.toHaveClassName('nx-filter-input--empty');
-    expect(shallowComponent({ value: 'a b' })).not.toHaveClassName('nx-filter-input--empty');
+  it('calls onKeyPress with the key value whenever the input\'s onKeyPress event fires', async function() {
+    const user = userEvent.setup(),
+        onKeyPress = jest.fn(),
+        input = quickRender({ onKeyPress }).getByRole('textbox');
+
+    expect(onKeyPress).not.toHaveBeenCalled();
+
+    await user.type(input, 'a');
+
+    expect(onKeyPress).toHaveBeenCalledWith('a');
+  });
+
+  it('calls onChange with the value whenever the input\'s onChange event fires', async function() {
+    const user = userEvent.setup(),
+        onChange = jest.fn().mockImplementation((_, evt) => { evt.persist(); }),
+        input = quickRender({ onChange }).getByRole('textbox');
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    await user.type(input, 'a');
+
+    expect(onChange).toHaveBeenCalledWith('a', expect.objectContaining({ target: input }));
+  });
+
+  it('renders a button with an accessible name of "Clear filter" when searchIcon is undefined, false or null',
+      async function() {
+        const clearBtn = quickRender().getByRole('button'),
+            clearBtnWithSearchIconFalse = quickRender({ searchIcon: false }).getByRole('button'),
+            clearBtnWithSearchIconNull = quickRender({ searchIcon: null }).getByRole('button');
+
+        expect(clearBtn).toBeInTheDocument();
+        await waitFor(() => expect(clearBtn).toHaveAccessibleName('Clear filter'));
+
+        expect(clearBtnWithSearchIconFalse).toBeInTheDocument();
+        await waitFor(() => expect(clearBtnWithSearchIconFalse).toHaveAccessibleName('Clear filter'));
+
+        expect(clearBtnWithSearchIconNull).toBeInTheDocument();
+        await waitFor(() => expect(clearBtnWithSearchIconNull).toHaveAccessibleName('Clear filter'));
+      });
+
+  it('renders a button with an accessible name of "Clear search" when searchIcon is true', async function() {
+    const clearBtn = quickRender({ searchIcon: true }).getByRole('button');
+
+    expect(clearBtn).toBeInTheDocument();
+    await waitFor(() => expect(clearBtn).toHaveAccessibleName('Clear search'));
+  });
+
+  it('fires onChange with the empty string when the Escape key is pressed', async function() {
+    const user = userEvent.setup(),
+        onChange = jest.fn(),
+        el = quickRender({ value: 'a', onChange }),
+        input = el.getByRole('textbox');
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    input.focus();
+    await user.keyboard('[Escape]');
+
+    expect(onChange).toHaveBeenCalledWith('');
+  });
+
+  it('fires onChange with the empty string when the clear filter button is clicked', async function() {
+    const user = userEvent.setup(),
+        onChange = jest.fn(),
+        el = quickRender({ value: 'a', onChange }),
+        clearBtn = el.getByRole('button');
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    await user.click(clearBtn);
+
+    expect(onChange).toHaveBeenCalledWith('');
   });
 });
