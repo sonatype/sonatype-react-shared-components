@@ -13,6 +13,11 @@ export interface SelectedFileProps {
   onDismiss: () => void;
 }
 
+// Props for SelectedFile in NxMultiFileUpload
+export interface MultiSelectedFileProps extends Omit<SelectedFileProps, 'onDismiss'>{
+  onDismiss: (fileObj:File) => void;
+}
+
 // Props for NxStatefulFileUpload
 export interface StatefulProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'multiple'> {
   onChange?: ((files: FileList | null) => void) | null;

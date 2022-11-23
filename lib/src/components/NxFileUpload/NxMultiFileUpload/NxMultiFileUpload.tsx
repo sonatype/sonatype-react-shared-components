@@ -14,13 +14,13 @@ import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxButton from '../../NxButton/NxButton';
 import { FormAriaContext } from '../../NxForm/context';
 import { useUniqueId } from '../../../util/idUtil';
-import { Props, propTypes, SelectedFileProps } from './types';
+import { Props, propTypes, MultiSelectedFileProps } from '../types';
 
 export { Props };
 
 import '../NxFileUpload.scss';
 
-function SelectedFileWrapper({file, onDismiss: onDismissProp}: SelectedFileProps) {
+function SelectedFileWrapper({file, onDismiss: onDismissProp}: MultiSelectedFileProps) {
   const fileRef = useRef<HTMLSpanElement>(null);
 
   function onDismiss() {
