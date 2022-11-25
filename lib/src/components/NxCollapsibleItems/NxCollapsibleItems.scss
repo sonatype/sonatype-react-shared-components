@@ -74,6 +74,10 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   }
 }
 
+.nx-collapsible-items__tooltip-wrapper {
+  display: contents;
+}
+
 .nx-collapsible-items__trigger {
   @include nx-container-helpers.container-horizontal;
   align-items: center;
