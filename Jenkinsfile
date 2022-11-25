@@ -9,12 +9,16 @@
 def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
 def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
 
+def deployBranch = 'main'
+
 dockerizedBuildPipeline(
-  deployBranch: 'main',
+  deployBranch: deployBranch,
   // expose gallery port and nextjs dev port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043 -p 3000:3000',
 
   prepare: {
+    env['DEPLOY_BRANCH'] = deployBranch
+
     githubStatusUpdate('pending')
 
     withSonatypeDockerRegistry() {
@@ -30,7 +34,7 @@ dockerizedBuildPipeline(
     env['VERSION'] = sh(returnStdout: true, script: 'jq -r -e .version lib/package.json').trim()
   },
   buildAndTest: {
-    // In this repo, all PRs must bump the version number so that main builds can be automatically released.
+    // In this repo, all PRs must bump the version number so that the deploy branch builds can be automatically released.
     // This shell script enforces that
     sh '''
       # function that returns whether its first parameter is a versions string that is less than or equal to
@@ -40,25 +44,25 @@ dockerizedBuildPipeline(
           [  "$1" = "`/bin/echo -e "$1\\n$2" | sort -V | head -n1`" ]
       }
 
-      if [ "$BRANCH_NAME" != "main" ]; then
+      if [ "$BRANCH_NAME" != "$DEPLOY_BRANCH" ]; then
         version=$VERSION
-        mainVersion=$(git cat-file blob origin/main:./lib/package.json | jq -r .version)
+        deployBranchVersion=$(git cat-file blob origin/$DEPLOY_BRANCH:./lib/package.json | jq -r .version)
 
         galleryVersion=$(jq -r .version gallery/package.json)
-        mainGalleryVersion=$(git cat-file blob origin/main:./gallery/package.json | jq -r .version)
+        deployBranchGalleryVersion=$(git cat-file blob origin/$DEPLOY_BRANCH:./gallery/package.json | jq -r .version)
 
-        if [ -z "$version" ] || [ -z "$mainVersion" ] || [ -z "$galleryVersion" ] || [ -z "$mainGalleryVersion" ];
+        if [ -z "$version" ] || [ -z "$deployBranchVersion" ] || [ -z "$galleryVersion" ] || [ -z "$deployBranchGalleryVersion" ];
         then
           echo 'Version lookups failed!'
           exit 2
         elif [ "$version" != "$galleryVersion" ]; then
           echo 'Library and Gallery versions must match'
           exit 1
-        elif [ "$version" = "$mainVersion" ] || [ "$galleryVersion" = "$mainGalleryVersion" ]; then
-          echo 'Package versions must be updated from what is on main'
+        elif [ "$version" = "$deployBranchVersion" ] || [ "$galleryVersion" = "$deployBranchGalleryVersion" ]; then
+          echo "Package versions must be updated from what is on $DEPLOY_BRANCH"
           exit 1
-        elif verlte "$version" "$mainVersion" || verlte "$galleryVersion" "$mainGalleryVersion"; then
-          echo 'Package versions must be higher than what is on main'
+        elif verlte "$version" "$deployBranchVersion" || verlte "$galleryVersion" "$deployBranchGalleryVersion"; then
+          echo "Package versions must be higher than what is on $DEPLOY_BRANCH"
           exit 1
         fi
       fi
@@ -106,14 +110,12 @@ dockerizedBuildPipeline(
     }
   },
   vulnerabilityScan: {
-    if (env.BRANCH_NAME == 'main') {
-      nexusPolicyEvaluation(
-        iqStage: 'release',
-        iqApplication: 'sonatype-react-shared-components',
-        iqScanPatterns: [[scanPattern: 'gallery/webpack-modules']],
-        failBuildOnNetworkError: true
-      )
-    }
+    nexusPolicyEvaluation(
+      iqStage: (env.BRANCH_NAME == 'main') ? 'release' : 'develop',
+      iqApplication: 'sonatype-react-shared-components',
+      iqScanPatterns: [[scanPattern: 'gallery/webpack-modules']],
+      failBuildOnNetworkError: true
+    )
   },
   deploy: {
     withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
@@ -134,7 +136,7 @@ dockerizedBuildPipeline(
   testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
-    if (env.BRANCH_NAME == 'main') {
+    if (env.BRANCH_NAME == deployBranch) {
       build job:'/uxui/publish-gallery-with-versions-to-s3', propagate: false, wait: false, parameters: [
         [$class: 'StringParameterValue', name: 'RSC_VERSION', value: "${env.VERSION}"],
         run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
