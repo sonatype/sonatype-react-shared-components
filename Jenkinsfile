@@ -8,9 +8,9 @@
 
 def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
 def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
-
+def deployBranch = 'whateverBranchUWantToRelease'
 dockerizedBuildPipeline(
-  deployBranch: 'main',
+  deployBranch: deployBranch,
   // expose gallery port and nextjs dev port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043 -p 3000:3000',
 
@@ -40,12 +40,12 @@ dockerizedBuildPipeline(
           [  "$1" = "`/bin/echo -e "$1\\n$2" | sort -V | head -n1`" ]
       }
 
-      if [ "$BRANCH_NAME" != "main" ]; then
+      if [ "$BRANCH_NAME" != ${deployBranch} ]; then
         version=$VERSION
-        mainVersion=$(git cat-file blob origin/main:./lib/package.json | jq -r .version)
+        mainVersion=$(git cat-file blob origin/${deployBranch}:./lib/package.json | jq -r .version)
 
         galleryVersion=$(jq -r .version gallery/package.json)
-        mainGalleryVersion=$(git cat-file blob origin/main:./gallery/package.json | jq -r .version)
+        mainGalleryVersion=$(git cat-file blob origin/${deployBranch}:./gallery/package.json | jq -r .version)
 
         if [ -z "$version" ] || [ -z "$mainVersion" ] || [ -z "$galleryVersion" ] || [ -z "$mainGalleryVersion" ];
         then
@@ -106,9 +106,9 @@ dockerizedBuildPipeline(
     }
   },
   vulnerabilityScan: {
-    if (env.BRANCH_NAME == 'main') {
+    if (env.BRANCH_NAME == deployBranch) {
       nexusPolicyEvaluation(
-        iqStage: 'release',
+        iqStage: 'develop', //deliberately changed from release so as not to affect the tracked progress on main
         iqApplication: 'sonatype-react-shared-components',
         iqScanPatterns: [[scanPattern: 'gallery/webpack-modules']],
         failBuildOnNetworkError: true
@@ -134,7 +134,8 @@ dockerizedBuildPipeline(
   testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
-    if (env.BRANCH_NAME == 'main') {
+    if (env.BRANCH_NAME == deployBranch) {
+      // Not sure how downstream build will work with backports? 
       build job:'/uxui/publish-gallery-with-versions-to-s3', propagate: false, wait: false, parameters: [
         [$class: 'StringParameterValue', name: 'RSC_VERSION', value: "${env.VERSION}"],
         run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
