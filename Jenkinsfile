@@ -9,7 +9,7 @@
 def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
 def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
 
-def deployBranch = 'main'
+def deployBranch = '11.x-backports'
 
 dockerizedBuildPipeline(
   deployBranch: deployBranch,
@@ -136,7 +136,7 @@ dockerizedBuildPipeline(
   testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
-    if (env.BRANCH_NAME == deployBranch) {
+    if (env.BRANCH_NAME == 'main') {
       build job:'/uxui/publish-gallery-with-versions-to-s3', propagate: false, wait: false, parameters: [
         [$class: 'StringParameterValue', name: 'RSC_VERSION', value: "${env.VERSION}"],
         run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
