@@ -61,8 +61,6 @@ import NxBreadcrumbGlobalHeaderExample from './components/NxBreadcrumb/NxBreadcr
 // number of pixels below the page header that deep links should scroll to
 const SCROLL_PAGE_HEADER_PAD = 8;
 
-import NxBreadcrumbGlobalHeaderExample from './components/NxBreadcrumb/NxBreadcrumbGlobalHeaderExample';
-
 const pageMappings = mergeAll(values(pageConfig));
 
 interface RouteProps {
