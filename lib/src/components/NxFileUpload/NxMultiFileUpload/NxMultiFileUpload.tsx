@@ -84,17 +84,26 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
     inputRef.current?.click();
   }
 
-  function onDismiss(fileObj : File) {
-    // if the selected file is the last file in the container, set the focus to the dismiss button of previous
-    // file's dismiss button
-    // if the selected file is the only file in the container, set the focus on the input
+  function onDismiss(fileObj: File) {
     const closeBtns = Array.from(selectedFilesContainerRef.current?.
         querySelectorAll<HTMLButtonElement>('.nx-selected-file__dismiss-btn') ?? []);
 
     if (files) {
-      if (fileObj === files[files.length - 1]) {
-        closeBtns.length <= 1 ? inputRef.current?.focus() : closeBtns[closeBtns.length - 2].focus();
-      }
+      const filesArray = Array.from(files);
+      filesArray.map((f) => {
+        if (f === fileObj) {
+          const idx = filesArray.indexOf(f);
+          if (idx === files.length - 1) {
+            // if the selected file is the last in the container, set the focus to the next last dismiss button
+            // if selected file is only file, set focus on the input
+            closeBtns.length === 1 ? inputRef.current?.focus() : closeBtns[idx - 1].focus();
+          }
+          else {
+            // need to explicity set focus on next closeBtn for Safari
+            closeBtns[idx].focus();
+          }
+        }
+      });
     }
 
     const dataTransferObject = new DataTransfer();
@@ -148,7 +157,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
         <div ref={selectedFilesContainerRef} className="nx-multi-file-upload__container__files nx-scrollable">
           { isFileSelected ?
             Array.from(files).map((file, key) =>
-              <SelectedFileWrapper key= {`${key}__selected-file}`} file={file} onDismiss={onDismiss}/>
+              <SelectedFileWrapper key= {`selected-file-${key}`} file={file} onDismiss={onDismiss}/>
             ) :
             <span className={noFileMessageClassName}>
               <span>No file selected</span>
