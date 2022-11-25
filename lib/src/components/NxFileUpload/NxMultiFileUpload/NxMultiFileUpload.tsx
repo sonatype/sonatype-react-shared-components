@@ -38,7 +38,7 @@ function SelectedFileWrapper({file, onDismiss: onDismissProp}: MultiSelectedFile
   );
 }
 
-const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(props, ref) {
+const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFileUpload(props, ref) {
   const {
         className: classNameProp,
         onChange: onChangeProp,
@@ -167,5 +167,5 @@ const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(pro
   );
 });
 
-NxFileUpload.propTypes = propTypes;
-export default NxFileUpload;
+NxMultiFileUpload.propTypes = propTypes;
+export default NxMultiFileUpload;
