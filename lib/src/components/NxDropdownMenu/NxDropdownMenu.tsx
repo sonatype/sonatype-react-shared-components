@@ -46,7 +46,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
   } = props;
 
   const menuRef = useRef<HTMLDivElement>(null);
-  const mergedRef = useMergedRef(menuRef, ref);
+  const mergedRef = useMergedRef<HTMLDivElement>(menuRef, ref);
 
   const [focusedMenuItemIndex, setFocusedMenuItemIndex] = useState<number>(0);
 
@@ -217,7 +217,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
          { ...{ className, ...attrs } }>
       { children }
     </div>
-  ) : <></>;
+  ) : null;
 });
 
 NxDropdownMenu.propTypes = propTypes;

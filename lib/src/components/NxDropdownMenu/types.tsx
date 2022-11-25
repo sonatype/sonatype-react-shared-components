@@ -10,7 +10,7 @@ import * as PropTypes from 'prop-types';
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   onClosing: () => void;
   disableMenuKeyNav?: boolean | null;
-  toggleElementRef?: RefObject<HTMLElement> | null;
+  toggleElementRef?: RefObject<HTMLElement | null | undefined> | null;
   onMenuItemFocus?: (index: number, focusableElements: HTMLElement[]) => void | null;
   isOpen?: boolean;
   onToggleCollapse?: () => void | null;
