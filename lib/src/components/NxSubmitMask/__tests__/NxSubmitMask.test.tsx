@@ -4,53 +4,44 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import { shallow } from 'enzyme';
+import { within } from '@testing-library/dom';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import NxLoadingSpinner from '../../NxLoadingSpinner/NxLoadingSpinner';
 import NxSubmitMask from '../NxSubmitMask';
 
 describe('NxSubmitMask', function() {
-  it('renders a .nx-submit-mask div containing a .nx-submit-mask__message div containing a NxLoadingSpinner',
-      function() {
-        const component = shallow(<NxSubmitMask/>);
+  const quickRender = rtlRender(NxSubmitMask, {}),
+      renderEl = rtlRenderElement(NxSubmitMask, {});
 
-        expect(component).toMatchSelector('div.nx-submit-mask');
-        expect(component.find('.nx-submit-mask .nx-submit-mask__message').find(NxLoadingSpinner)).toExist();
-      }
-  );
+  it('renders a Submitting… status by default', function() {
+    const component = quickRender();
 
-  it('has Submitting… as the default message', function() {
-    expect(shallow(<NxSubmitMask />).find(NxLoadingSpinner).children()).toHaveText('Submitting…');
+    expect(component.getByRole('status')).toHaveTextContent('Submitting…');
   });
 
-  it('applies the nx-submit-mask--success class iff the success prop is set', function() {
-    expect(shallow(<NxSubmitMask/>)).not.toHaveClassName('nx-submit-mask--success');
-    expect(shallow(<NxSubmitMask success={false}/>)).not.toHaveClassName('nx-submit-mask--success');
-    expect(shallow(<NxSubmitMask success/>)).toHaveClassName('nx-submit-mask--success');
+  it('renders a Success! status when success is true', function() {
+    const component = quickRender({ success: true });
+
+    expect(component.getByRole('status')).toHaveTextContent('Success!');
   });
 
-  it('passes the message prop as the child of NxLoadingSpinner', function() {
-    expect(shallow(<NxSubmitMask message="foo" />).find(NxLoadingSpinner).children()).toHaveText('foo');
+  it('renders the message as the status text if it is specified and success is not true', function() {
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar' })!).getByRole('status')).toHaveTextContent('foo');
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: false })!).getByRole('status'))
+        .toHaveTextContent('foo');
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: null })!).getByRole('status'))
+        .toHaveTextContent('foo');
+    expect(within(renderEl({ message: 'foo', success: true })!).getByRole('status')).not.toHaveTextContent(/foo/);
   });
 
-  it('passes the successMessage prop as the success message text when the success prop is true', function() {
-    const spinnerChildren = shallow(<NxSubmitMask message="foo" successMessage="bar" success />)
-        .find('.nx-submit-mask__message .nx-submit-mask__message-text').children();
-
-    expect(spinnerChildren).toHaveText('bar');
-    expect(spinnerChildren).not.toHaveText('foo');
-  });
-
-  it('passes "Success!" as the child of NxLoadingSpinner when the success is true and successMessage is not specified',
-      function() {
-        expect(shallow(<NxSubmitMask success />).find('.nx-submit-mask__message-text')).toHaveText('Success!');
-        expect(shallow(<NxSubmitMask successMessage={null} success />)
-            .find('.nx-submit-mask__message-text')).toHaveText('Success!');
-      }
-  );
-
-  it('has the "status" role', function() {
-    expect(shallow(<NxSubmitMask />)).toHaveProp('role', 'status');
+  it('renders the successMessage as the status text if it is specified and success is true', function() {
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar' })!).getByRole('status'))
+        .not.toHaveTextContent(/bar/);
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: false })!).getByRole('status'))
+        .not.toHaveTextContent(/bar/);
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: null })!).getByRole('status'))
+        .not.toHaveTextContent(/bar/);
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: true })!).getByRole('status'))
+        .toHaveTextContent('bar');
   });
 });
