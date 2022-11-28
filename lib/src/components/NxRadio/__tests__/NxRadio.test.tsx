@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
@@ -25,9 +25,15 @@ describe('NxRadio', function() {
   const renderEl = rtlRenderElement(NxRadio, minimalProps);
   const quickRender = rtlRender(NxRadio, minimalProps);
 
-  it('renders a <label> containing a radio <input> and .nx-radio__circle and .nx-radio__outer-circle  elements',
+  it('renders a <label> containing a radio <input> and disabled and checked props',
       function() {
-        expect(renderEl()!.tagName).toBe('LABEL');
+
+        const el = renderEl({ children: 'foo' })!;
+        const input = within(el).getByRole('radio');
+
+        expect(el).toHaveTextContent('foo');
+        expect(el).toContainElement(input);
+        expect(input).toHaveAccessibleName('foo');
 
         expect(quickRender().getByRole('radio')).toHaveAttribute('name', 'color');
         expect(quickRender().getByRole('radio')).not.toBeDisabled();
