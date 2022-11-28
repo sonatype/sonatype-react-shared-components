@@ -25,8 +25,8 @@
 
     min-height: $height;
     box-sizing: border-box;
-    border: 1px solid var(--nx-swatch-indigo-90);
-    border-radius: 6px;
+    border: var(--nx-border-default);
+    border-radius: var(--nx-border-radius);
 
     &__files {
       padding: var(--nx-spacing-6x);
