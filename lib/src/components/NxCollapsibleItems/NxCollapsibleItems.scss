@@ -61,9 +61,14 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   }
 }
 
-.nx-collapsible-items__header {
+.nx-collapsible-items__header,
+.nx-collapsible-items__tooltip-wrapper {
   display: flex;
   gap: var(--nx-spacing-6x);
+}
+
+.nx-collapsible-items__tooltip-wrapper {
+  flex-grow: 1;
 }
 
 .nx-collapsible-items__action-content {
@@ -72,10 +77,6 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   .nx-btn--icon-only {
     @include nx-button-helpers.small-icon-btn;
   }
-}
-
-.nx-collapsible-items__tooltip-wrapper {
-  display: contents;
 }
 
 .nx-collapsible-items__trigger {
