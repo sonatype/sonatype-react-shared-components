@@ -12,12 +12,15 @@ export { ValidationErrors };
 /**
  * @return whether this ValidationErrors object contains an error
  */
-export const hasValidationErrors = (validationErrors: ValidationErrors | undefined) => {
-  if (validationErrors == null) {
+
+export const hasValidationErrors = (...validationErrors: (ValidationErrors | undefined)[]) => {
+  const combinedValidation = combineValidationErrors(...validationErrors);
+
+  if (combinedValidation == null) {
     return false;
   }
-  else if (Array.isArray(validationErrors)) {
-    return validationErrors.length !== 0;
+  else if (Array.isArray(combinedValidation)) {
+    return combinedValidation.length !== 0;
   }
   else {
     return true;

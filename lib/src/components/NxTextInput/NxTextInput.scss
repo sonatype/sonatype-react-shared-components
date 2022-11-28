@@ -4,10 +4,125 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@use '../../scss-shared/nx-form-validation-helpers';
+@use '../../scss-shared/nx-container-helpers';
 
 .nx-text-input {
+  display: inline-block;
+  position: relative;
+
+  width: var(--nx-width-form-element-normal);
+  max-width: 100%;
+
   margin-bottom: var(--nx-spacing-8x);
+
+  &__box {
+    @include nx-container-helpers.container-horizontal;
+
+    align-items: center;
+    background-color: var(--nx-swatch-white);
+    border: 1px solid var(--nx-color-form-element-border);
+    border-radius: var(--nx-border-radius);
+    display: flex;
+    padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
+
+    .nx-icon {
+      margin-right: 0;
+
+      + .nx-icon {
+        // normally .nx-icon + .nx-icon removes the left margin so that it doesn't double up between icons.
+        // In this case though the first icon isn't visible so we don't want that
+        margin-left: var(--nx-spacing-2x);
+      }
+    }
+
+    // the baseline of the text input ends up being the baseline of the box's first flex child. The NxFilterInput
+    // filter icon has a different baseline than the text, screwing up the input's overall baseline when it is first.
+    // So we stick this zero-width space before it. Additionally in safari the alignment of any empty text
+    // input is borked without this
+    &::before {
+      content: '\200B';
+    }
+  }
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    color: var(--nx-color-text);
+    flex-grow: 1;
+    font-size: var(--nx-font-size);
+    line-height: var(--nx-line-height);
+    margin: 0;
+    padding: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--nx-swatch-grey-50);
+    }
+  }
+
+  &--long {
+    width: var(--nx-width-form-element-wide);
+  }
+
+  &--short {
+    width: var(--nx-width-form-element-short);
+
+    .nx-text-input__input {
+      min-width: 0;
+    }
+  }
+
+  &--textarea {
+    .nx-text-input__box {
+      align-items: initial;
+      display: flex;
+      flex-direction: column;
+
+      &::before {
+        content: none;
+      }
+
+      .nx-icon {
+        align-self: flex-end;
+        margin: var(--nx-spacing-2x) 0 0 0;
+      }
+    }
+  }
+
+  &, &.pristine, &.pristine.valid {
+    &:hover {
+      .nx-text-input__box {
+        border-color: var(--nx-color-interactive-border-hover);
+      }
+    }
+
+    &:focus-within {
+      .nx-text-input__box {
+        border-color: var(--nx-color-interactive-border-focus);
+        box-shadow: var(--nx-box-shadow-focus);
+      }
+    }
+  }
+
+  &.disabled {
+    &, &:hover {
+      .nx-text-input__box {
+        background-color: var(--nx-color-interactive-background-disabled);
+        border-color: var(--nx-color-interactive-border-disabled);
+      }
+    }
+
+    .nx-icon {
+      display: none;
+    }
+  }
+
+  + .nx-text-input {
+    margin-left: var(--nx-spacing-4x);
+  }
 
   .nx-icon--invalid, .nx-icon--valid {
     display: none;
@@ -20,28 +135,44 @@
   .nx-icon--valid {
     color: var(--nx-color-validation-valid);
   }
+}
 
-  &.invalid {
-    @include nx-form-validation-helpers.invalid;
-  }
+textarea.nx-text-input__input {
+  min-height: 220px;
+  padding: 0;
+  resize: vertical;
 
-  &.pristine, &.pristine.valid {
-    .nx-icon--invalid, .nx-icon--valid {
-      display: none;
-    }
-  }
-
-  &.valid {
-    @include nx-form-validation-helpers.valid;
+  &[rows] {
+    min-height: unset;
+    resize: none;
+    // When the rows attribute is specified for a textarea, Firefox adds an additional empty row at
+    // the bottom of the textarea. Overflow-x:hidden resolves and removes the empty row
+    // https://stackoverflow.com/questions/46746887/textarea-extra-row-in-firefox-browser
+    overflow-x: hidden;
   }
 }
 
-.nx-text-input__invalid-message {
-  color: var(--nx-color-validation-invalid);
-  font-size: var(--nx-font-size-xs);
-  line-height: 16px;
-  margin-top: var(--nx-spacing-2x);
-  // this positions the invalid message inside the bottom padding of .nx-form-group which allows
-  // us to maintain consistent spacing whether there is validation or not
-  position: absolute;
+// validation messages should be shown in these cases
+.nx-form--show-validation-errors .nx-text-input, .nx-text-input:not(.pristine) {
+  &:not(.disabled) {
+    &.valid {
+      .nx-text-input__box {
+        border-color: var(--nx-color-validation-valid);
+      }
+
+      .nx-icon--valid {
+        display: inline-block;
+      }
+    }
+
+    &.invalid {
+      .nx-text-input__box {
+        border-color: var(--nx-color-validation-invalid);
+      }
+
+      .nx-icon--invalid {
+        display: inline-block;
+      }
+    }
+  }
 }

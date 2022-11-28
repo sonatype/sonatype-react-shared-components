@@ -14,7 +14,7 @@ function NxDropdownCustomLabelExample() {
       onClick = () => { alert('click'); },
       labelElement = (
         <>
-          <NxFontAwesomeIcon className="nx-dropdown-icon" icon={faCarCrash}/>
+          <NxFontAwesomeIcon icon={faCarCrash}/>
           <span>Beep Beep!</span>
         </>
       );
@@ -25,7 +25,7 @@ function NxDropdownCustomLabelExample() {
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
       <button onClick={onClick} className="nx-dropdown-button">
-        <NxFontAwesomeIcon className="nx-dropdown-icon" icon={faFrog}/>
+        <NxFontAwesomeIcon icon={faFrog}/>
         <span>Some Action</span>
       </button>
     </NxDropdown>
