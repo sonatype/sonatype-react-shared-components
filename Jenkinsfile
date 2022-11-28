@@ -11,6 +11,10 @@ def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
 
 def deployBranch = '11.x-backports'
 
+def isMainBranch() {
+  env.BRANCH_NAME == 'main'
+}
+
 dockerizedBuildPipeline(
   deployBranch: deployBranch,
   // expose gallery port and nextjs dev port on host so selenium container can hit it
@@ -111,7 +115,7 @@ dockerizedBuildPipeline(
   },
   vulnerabilityScan: {
     nexusPolicyEvaluation(
-      iqStage: (env.BRANCH_NAME == 'main') ? 'release' : 'develop',
+      iqStage: isMainBranch() ? 'release' : 'develop',
       iqApplication: 'sonatype-react-shared-components',
       iqScanPatterns: [[scanPattern: 'gallery/webpack-modules']],
       failBuildOnNetworkError: true
@@ -120,7 +124,11 @@ dockerizedBuildPipeline(
   deploy: {
     withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
       withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc') {
-        sh 'npm publish --access public lib/dist/sonatype-react-shared-components-$VERSION.tgz'
+        def version = env.VERSION
+        def majorVersion = version.substring(0, version.firstIndexOf('.'))
+        def tag = isMainBranch() ? null : "latest-$majorVersion"
+        def tagArg = tag ? "--tag $tag" : ''
+        sh "npm publish --access public $tagArg lib/dist/sonatype-react-shared-components-\$VERSION.tgz"
       }
     }
   },
@@ -136,7 +144,7 @@ dockerizedBuildPipeline(
   testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
-    if (env.BRANCH_NAME == 'main') {
+    if (isMainBranch()) {
       build job:'/uxui/publish-gallery-with-versions-to-s3', propagate: false, wait: false, parameters: [
         [$class: 'StringParameterValue', name: 'RSC_VERSION', value: "${env.VERSION}"],
         run(name: 'Producer', runId: "${currentBuild.fullProjectName}${currentBuild.displayName}")
