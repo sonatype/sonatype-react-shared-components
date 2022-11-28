@@ -30,7 +30,6 @@
 
     &__files {
       padding: var(--nx-spacing-6x);
-      padding-bottom: 0px;
       // total height of NxMultiFileUpload - total height of button with margin
       max-height: calc(#{$height} - 90px);
       box-sizing:border-box;
@@ -41,4 +40,8 @@
       margin: var(--nx-spacing-6x);
     }
   }
+}
+
+.nx-selected-file {
+  margin-bottom: var(--nx-spacing-2x);
 }
