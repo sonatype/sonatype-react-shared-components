@@ -24,7 +24,7 @@
     $height: 220px;
 
     min-height: $height;
-    box-sizing:border-box;
+    box-sizing: border-box;
     border: 1px solid var(--nx-swatch-indigo-90);
     border-radius: 6px;
 
@@ -32,7 +32,7 @@
       padding: var(--nx-spacing-6x);
       // total height of NxMultiFileUpload - total height of button with margin
       max-height: calc(#{$height} - 90px);
-      box-sizing:border-box;
+      box-sizing: border-box;
       border-top: 1px solid var(--nx-swatch-indigo-90);
     }
 
