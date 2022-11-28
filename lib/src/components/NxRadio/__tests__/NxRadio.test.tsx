@@ -25,7 +25,7 @@ describe('NxRadio', function() {
   const renderEl = rtlRenderElement(NxRadio, minimalProps);
   const quickRender = rtlRender(NxRadio, minimalProps);
 
-  it('renders a <label> containing a radio <input> and disabled and checked props',
+  it('renders radio <input> with an accessible name specified by the children and disabled and checked props',
       function() {
 
         const el = renderEl({ children: 'foo' })!;
