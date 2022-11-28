@@ -14,7 +14,7 @@ import {
   NxPageMain,
   NxPageTitle,
   NxH1,
-  NxForm,
+  NxStatefulForm,
   NxFormGroup,
   NxFieldset,
   NxCheckbox,
@@ -45,8 +45,7 @@ export default function NxDrawerWithNxFormExample() {
           <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
         </NxDrawer.Header>
 
-        <NxForm onSubmit={toggleDrawer}
-                onCancel={toggleDrawer}>
+        <NxStatefulForm onSubmit={toggleDrawer} onCancel={toggleDrawer}>
           <NxDrawer.Content>
             <NxFormGroup label="A Field to Fill in" isRequired>
               <NxStatefulTextInput />
@@ -64,7 +63,7 @@ export default function NxDrawerWithNxFormExample() {
               <NxStatefulTextInput/>
             </NxFormGroup>
           </NxDrawer.Content>
-        </NxForm>
+        </NxStatefulForm>
       </NxDrawer>
 
       <NxDrawer id="nx-drawer-with-nx-form-overflowing"
@@ -77,8 +76,7 @@ export default function NxDrawerWithNxFormExample() {
           <NxDrawer.HeaderDescription>Header Description</NxDrawer.HeaderDescription>
         </NxDrawer.Header>
 
-        <NxForm onSubmit={toggleDrawerOverflowing}
-                onCancel={toggleDrawerOverflowing}>
+        <NxStatefulForm onSubmit={toggleDrawerOverflowing} onCancel={toggleDrawerOverflowing}>
           <NxDrawer.Content>
             <NxFormGroup label="Username" isRequired>
               <NxStatefulTextInput/>
@@ -98,7 +96,7 @@ export default function NxDrawerWithNxFormExample() {
               <NxStatefulTextInput type="textarea" placeholder="placeholder" aria-required={true}/>
             </NxFormGroup>
           </NxDrawer.Content>
-        </NxForm>
+        </NxStatefulForm>
       </NxDrawer>
 
       <NxPageMain>

@@ -26,7 +26,7 @@ const NxThreatIndicator: FunctionComponent<Props> =
           policyThreatLevel != null ? categoryByPolicyThreatLevel[policyThreatLevel] :
           'unspecified',
 
-        className = classnames(classNameProp, `nx-threat-indicator nx-threat-indicator--${category}`),
+        className = classnames(classNameProp, `nx-threat-indicator nx-threat-indicator--${category} nx-icon--colorful`),
         label = `threat level ${category}`;
 
     const icon = (

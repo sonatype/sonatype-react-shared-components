@@ -171,7 +171,7 @@ export {
 
 export {
   default as NxStatefulTextInput,
-  Props as NxStatefulTextInputProps
+  PublicProps as NxStatefulTextInputProps
 } from './components/NxTextInput/stateful/NxStatefulTextInput';
 
 export {
@@ -188,6 +188,10 @@ export {
   default as NxForm,
   Props as NxFormProps
 } from './components/NxForm/NxForm';
+export {
+  default as NxStatefulForm,
+  Props as NxStatefulFormProps
+} from './components/NxForm/stateful/NxStatefulForm';
 
 export * from './util/threatLevels';
 export * from './util/validationUtil';
@@ -217,6 +221,7 @@ export { default as NxPolicyViolationIndicator, Props as NxPolicyViolationIndica
 
 export { default as NxFormGroup, Props as NxFormGroupProps } from './components/NxFormGroup/NxFormGroup';
 export { default as NxFieldset, Props as NxFieldsetProps } from './components/NxFieldset/NxFieldset';
+export * as nxFieldsetStateHelpers from './components/NxFieldset/stateHelpers';
 
 export { default as NxToggle, Props as NxToggleProps } from './components/NxToggle/NxToggle';
 export { default as NxStatefulToggle, Props as NxStatefulToggleProps }
@@ -337,6 +342,8 @@ export { default as NxCombobox, Props as NxComboboxProps } from './components/Nx
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
 
+export { default as NxScrollRender, Props as NxScrollRenderProps } from './components/NxScrollRender/NxScrollRender';
+
 export { default as NxDrawer, Props as NxDrawerProps } from './components/NxDrawer/NxDrawer';
 
 export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';
@@ -354,6 +361,7 @@ export {
 export { default as NxTile } from './components/NxTile/NxTile';
 export { default as NxMeter, Props as NxMeterProps } from './components/NxMeter/NxMeter';
 
+export * from './util/nivo';
 export { default as NxBreadcrumb, Props as NxBreadcrumbProps, Crumb as NxBreadcrumbCrumb }
   from './components/NxBreadcrumb/NxBreadcrumb';
 

@@ -50,10 +50,10 @@ dockerizedBuildPipeline(
 
       if [ "$BRANCH_NAME" != "$DEPLOY_BRANCH" ]; then
         version=$VERSION
-        deployBranchVersion=$(git cat-file blob origin/$DEPLOY_BRANCH:./lib/package.json | jq -r .version)
+        deployBranchVersion=$(git cat-file blob "origin/$DEPLOY_BRANCH:./lib/package.json" | jq -r .version)
 
         galleryVersion=$(jq -r .version gallery/package.json)
-        deployBranchGalleryVersion=$(git cat-file blob origin/$DEPLOY_BRANCH:./gallery/package.json | jq -r .version)
+        deployBranchGalleryVersion=$(git cat-file blob "origin/$DEPLOY_BRANCH:./gallery/package.json" | jq -r .version)
 
         if [ -z "$version" ] || [ -z "$deployBranchVersion" ] || [ -z "$galleryVersion" ] || [ -z "$deployBranchGalleryVersion" ];
         then

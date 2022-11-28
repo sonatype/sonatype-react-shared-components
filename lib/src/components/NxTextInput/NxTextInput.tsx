@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FormEvent, KeyboardEvent, useRef, MutableRefObject } from 'react';
+import React, { forwardRef, FormEvent, KeyboardEvent, useRef, MutableRefObject, useContext } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { Props, PublicProps, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 import { useUniqueId } from '../../util/idUtil';
+import { FormAriaContext } from '../NxForm/context';
 export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
 
 /*
@@ -49,11 +50,13 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
           typeAttr = isTextArea ? undefined : (type || 'text'),
-          isInvalid = validatable && hasValidationErrors(validationErrors),
+          { showValidationErrors: formShowValidationErrors } = useContext(FormAriaContext),
+          showValidationErrors = formShowValidationErrors || !isPristine,
+          isInvalid = validatable && showValidationErrors && hasValidationErrors(validationErrors),
           firstValidationError = validatable && getFirstValidationError(validationErrors),
           internalClassName = classnames('nx-text-input', className, {
             pristine: isPristine,
-            invalid: !isPristine && validatable && isInvalid,
+            invalid: isInvalid,
             valid: !isPristine && validatable && !isInvalid,
             disabled: disabled,
             'nx-text-input--textarea': isTextArea
@@ -105,9 +108,11 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
             <NxFontAwesomeIcon icon={faCheck} className="nx-icon nx-icon--valid"/>
             <NxFontAwesomeIcon icon={faExclamationCircle} className="nx-icon nx-icon--invalid"/>
           </div>
-          <div id={invalidMessageId} role="alert" className="nx-text-input__invalid-message">
-            {!isPristine && firstValidationError}
-          </div>
+          { isInvalid && !disabled &&
+            <div id={invalidMessageId} role="alert" className="nx-field-validation-message">
+              {firstValidationError}
+            </div>
+          }
         </div>
       );
     }

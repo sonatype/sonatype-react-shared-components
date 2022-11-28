@@ -8,7 +8,7 @@ import React from 'react';
 import { NxFormGroup, NxFormSelect } from '@sonatype/react-shared-components';
 
 const NxFormSelectOverflowExample = () => (
-  <NxFormGroup label="Overflowing Form Select" isRequired>
+  <NxFormGroup label="Overflowing Form Select">
     <NxFormSelect>
       <option value="1">Looooooooooooooooooong Option 1</option>
       <option value="2">Option 2</option>

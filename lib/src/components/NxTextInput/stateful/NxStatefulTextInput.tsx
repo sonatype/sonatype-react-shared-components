@@ -10,7 +10,7 @@ import { initialState, userInput } from '../stateHelpers';
 import { PrivateNxTextInput } from '../NxTextInput';
 
 import { Props, PublicProps, propTypes } from './types';
-export { Props, propTypes } from './types';
+export { Props, PublicProps, propTypes } from './types';
 
 /* eslint-disable react/prop-types */
 export const PrivateNxStatefulTextInput = forwardRef<HTMLDivElement, Props>(

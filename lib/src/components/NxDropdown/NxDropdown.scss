@@ -13,6 +13,10 @@
   display: inline-block;
   position: relative;
   width: nx-dropdown-variables.$dropdown-width;
+
+  .nx-icon:not(.nx-icon--colorful, .nx-dropdown-link .nx-icon, .nx-dropdown :is(.disabled, [disabled]) .nx-icon) {
+    color: var(--nx-swatch-grey-05);
+  }
 }
 
 .nx-dropdown-icon {
@@ -65,107 +69,5 @@
     &:focus {
       border-color: var(--nx-color-interactive-border-focus);
     }
-  }
-}
-
-.nx-dropdown-link, .nx-dropdown-button {
-  @include nx-container-helpers.container-horizontal;
-}
-
-.nx-dropdown-link, .nx-dropdown-button {
-  @include nx-text-helpers.truncate-ellipsis;
-  @include nx-text-helpers.regular;
-
-  background: none;
-  box-sizing: border-box;
-  border: none;
-  cursor: pointer;
-  display: block;
-  font-size: var(--nx-font-size);
-  line-height: var(--nx-line-height);
-  padding: var(--nx-spacing-base) var(--nx-spacing-4x);
-  text-align: left;
-  text-decoration: none;
-  width: 100%;
-
-  &:focus {
-    background-color: transparent;
-    border-radius: 0;
-    box-shadow: var(--nx-box-shadow-focus);
-    outline-offset: -1px;
-    outline: 1px solid var(--nx-color-interactive-border-focus);
-  }
-}
-
-.nx-dropdown-button {
-  background-color: transparent;
-  border-radius: 0;
-  box-sizing: border-box;
-  color: var(--nx-color-text);
-  outline: none;
-  text-align: left;
-  width: 100%;
-
-  &:hover {
-    background-color: var(--nx-color-interactive-background-hover);
-  }
-
-  &:active {
-    background-color: var(--nx-color-interactive-background-active);
-  }
-
-  &.disabled {
-    &, &:hover, &:focus {
-      background-color: transparent;
-      color: var(--nx-color-text-disabled);
-      cursor: default;
-      text-decoration: none;
-    }
-  }
-}
-
-.nx-dropdown-link {
-  color: var(--nx-color-link);
-  text-decoration: underline;
-
-  &:hover {
-    color: var(--nx-color-link-hover);
-  }
-
-  &.disabled {
-    &, &:hover, &:focus {
-      color: var(--nx-color-link-disabled);
-      cursor: default;
-    }
-  }
-}
-
-.nx-dropdown__divider {
-  background-color: var(--nx-color-border);
-  border: none;
-  height: 1px;
-  margin: var(--nx-spacing-2x) var(--nx-spacing-6x) var(--nx-spacing-2x) var(--nx-spacing-4x);
-}
-
-.nx-dropdown-button-content {
-  @include nx-text-helpers.truncate-ellipsis;
-  display: block;
-  line-height: var(--nx-spacing-8x);
-}
-
-.nx-dropdown-right-button {
-  @include nx-button-helpers.small-icon-btn;
-  float: right;
-  margin-right: var(--nx-spacing-2x);
-  margin-left: var(--nx-spacing-6x);
-
-  // take off a px to make room for the button border
-  margin-top: calc(var(--nx-spacing-base) - 1px);
-  margin-bottom: calc(var(--nx-spacing-base) - 1px);
-
-  + .nx-dropdown-button {
-    display: block;
-    padding-right: 0;
-    overflow: visible;
   }
 }
