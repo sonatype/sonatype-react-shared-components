@@ -18,7 +18,7 @@ import { Props, propTypes, MultiSelectedFileProps } from '../types';
 
 export { Props };
 
-import '../NxFileUpload.scss';
+import './NxMultiFileUpload.scss';
 
 function SelectedFileWrapper({file, onDismiss: onDismissProp}: MultiSelectedFileProps) {
   const fileRef = useRef<HTMLSpanElement>(null);
@@ -53,7 +53,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       { showValidationErrors: formShowValidationErrors } = useContext(FormAriaContext),
       showValidationErrors = formShowValidationErrors || !isPristine,
       showError = isRequired && showValidationErrors && !isFileSelected,
-      className = classnames('nx-multi-file-upload', classNameProp),
+      className = classnames('nx-multi-file-upload', 'nx-file-upload', classNameProp),
       noFileMessageClassName = classnames('nx-multi-file-upload__no-file-message', {
         'nx-multi-file-upload__no-file-message--invalid': showError
       }),
