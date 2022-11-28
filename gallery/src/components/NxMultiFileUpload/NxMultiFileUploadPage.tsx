@@ -63,10 +63,9 @@ const NxTextInputPage = () =>
               <NxTable.Cell>true</NxTable.Cell>
               <NxTable.Cell/>
               <NxTable.Cell>
-                A callback which is called whenever the user updates their file selections. The new selection
-                {' '}/ selections, in the form of a <NxCode>FileList</NxCode>, is passed as the parameter, and
-                added to any existing file selections. If the user has removed all of their selections, the
-                callback will receive <NxCode>null</NxCode>. Otherwise, the <NxCode>FileList</NxCode>
+                A callback which is called whenever the user updates their file selections. A <NxCode>Filelist</NxCode>
+                {' '} containing all current selections is passed as the parameter. If the user has removed all of their
+                selections, the callback will receive <NxCode>null</NxCode>. Otherwise, the <NxCode>FileList</NxCode>
                 {' '}will always contain at least a single <NxCode>File</NxCode>.
               </NxTable.Cell>
             </NxTable.Row>
