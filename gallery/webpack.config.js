@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyModulesPlugin = require('copy-modules-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const libImgDir = path.resolve(__dirname, 'node_modules/@sonatype/react-shared-components/assets/img');
 
@@ -109,7 +110,16 @@ module.exports = function(env = { production: false }) {
         type: 'asset/source'
       }]
     },
+    //optimization: {
+      //splitChunks: {
+        //cacheGroups: {
+          //default: false,
+          //defaultVendors: false
+        //}
+      //}
+    //},
     plugins: [
+      new BundleAnalyzerPlugin(),
 
       // Used in conjunction with the MiniCssExtractPlugin.loader to export styles as a separate file rather
       // than bundling them into the JavaScript
