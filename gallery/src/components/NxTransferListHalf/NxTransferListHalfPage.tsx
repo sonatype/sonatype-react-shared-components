@@ -12,13 +12,15 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxTransferListHalfExample from './NxTransferListHalfExample';
 import NxTransferListHalfCustomTooltipExample from './NxTransferListHalfCustomTooltipExample';
 import NxTransferListHalfOrderingExample from './NxTransferListHalfOrderingExample';
+import NxTransferListHalfDisableTransferExample from './NxTransferListHalfDisableTransferExample';
 
 import '../NxTooltip/NxTooltipExample.scss';
 
 const nxTransferListHalfExample = require('./NxTransferListHalfExample?raw'),
     nxTransferListHalfCustomTooltipExample = require('./NxTransferListHalfCustomTooltipExample?raw'),
     nxTransferListHalfOrderingExample = require('./NxTransferListHalfOrderingExample?raw'),
-    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw');
+    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw'),
+    nxTransferListHalfDisableTransferExample = require('./NxTransferListHalfDisableTransferExample?raw');
 
 const tooltipExampleCode = [nxTransferListHalfCustomTooltipExample, { language: 'scss', content: tooltipScss }];
 
@@ -261,6 +263,13 @@ const NxTransferListPage = () =>
       Demonstrates an <NxCode>NxTransferListHalf</NxCode> with custom tooltips on the data items. The first item
       demonstrates how a tooltip props object can be passed as the <NxCode>tooltip</NxCode> parameter, while the
       remaining items demonstrate the shorthand of passing a string as the <NxCode>tooltip</NxCode>.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="Disable Transfer Example"
+                        id="nx-transfer-list-half-disable-transfer-example"
+                        codeExamples={nxTransferListHalfDisableTransferExample}
+                        liveExample={NxTransferListHalfDisableTransferExample}>
+      Demonstrates an <NxCode>NxTransferListHalf</NxCode> with transfer feature disabled
+      when <NxCode>disableItemMove</NxCode> is set to true.
     </GalleryExampleTile>
   </>;
 
