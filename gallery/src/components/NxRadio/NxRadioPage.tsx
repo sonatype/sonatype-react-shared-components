@@ -160,6 +160,7 @@ const NxRadioPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Radio label does not wrap"
+                        id="nx-radio-no-wrap-example"
                         liveExample={NxRadioNowrapExample}
                         codeExamples={nowrapExampleCode}>
       This example includes a container around the radio buttons. This container is deliberately narrow and has a

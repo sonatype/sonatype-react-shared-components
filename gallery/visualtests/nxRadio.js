@@ -80,6 +80,14 @@ describe('NxRadio', function() {
     const selector = '#nx-radio-example .gallery-example-live',
         hoverSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)';
     it('has a tooltip on hover when set to true', hoverTest(selector, hoverSelector, true));
+
+    const wrapRedSelector = '#nx-radio-no-wrap-example .gallery-example-live',
+        wrapRedHoverSelector = '#nx-radio-no-wrap-example .gallery-example-live label:nth-of-type(1)';
+    it('does not have a tooltip on hover when set to false', hoverTest(wrapRedSelector, wrapRedHoverSelector, false));
+
+    const wrapGreenSelector = '#nx-radio-no-wrap-example .gallery-example-live',
+        wrapGreenHoverSelector = '#nx-radio-no-wrap-example .gallery-example-live label:nth-of-type(2)';
+    it('does have a tooltip on hover when set to true', hoverTest(wrapGreenSelector, wrapGreenHoverSelector, true));
   });
 
   it('passes a11y checks', a11yTest());
