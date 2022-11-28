@@ -116,7 +116,7 @@ const NxTransferListPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
-                Set to true to disable moving item feature and hide the move icon on each item.
+                When true it disables the ability to transfer items by hiding the item's icon.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
