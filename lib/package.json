@@ -1,6 +1,10 @@
 {
   "name": "@sonatype/react-shared-components",
+<<<<<<< HEAD
   "version": "12.5.10",
+=======
+  "version": "12.5.12",
+>>>>>>> main
   "description": "Sonatype shared UI components and utilities written in React",
   "main": "index.js",
   "repository": {

@@ -52,7 +52,7 @@ export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   suffixContent?: ReactNode | null;
 };
 
-export interface PublicProps extends Omit<Props, 'prefixContent'> {
+export interface PublicProps extends Omit<Props, 'prefixContent' | 'suffixContent'> {
   type?: PublicNxTextInputType | null;
 }
 
