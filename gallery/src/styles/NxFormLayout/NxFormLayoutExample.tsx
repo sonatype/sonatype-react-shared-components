@@ -245,7 +245,7 @@ export default function NxFormLayoutExample() {
       <NxFormGroup label="Upload a File" sublabel={<>Foo<br/>Bar</>} isRequired>
         <NxFileUpload files={files} isRequired isPristine={isFilePristine} onChange={onFileChange} />
       </NxFormGroup>
-      <NxFormGroup label="Upload Multiple Files" sublabel={'Add as many as you\'d like'} isRequired>
+      <NxFormGroup label="Upload Multiple Files" sublabel="Add as many as you'd like" isRequired>
         <NxMultiFileUpload files={multiFiles}
                            isRequired
                            isPristine={areMultiFilesPristine}
