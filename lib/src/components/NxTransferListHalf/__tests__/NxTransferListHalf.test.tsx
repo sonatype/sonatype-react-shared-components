@@ -26,9 +26,7 @@ describe('NxTransferListHalf', function() {
         onMoveAll: () => {},
         items: [],
         isSelected: false,
-        onItemChange: () => {},
-        footerContent: <div/>,
-        disableItemMove: false
+        footerContent: <div/>
       },
       getShallow = getShallowComponent<Props<number>>(NxTransferListHalf, minimalProps),
       getMounted = getMountedComponent<Props<number>>(NxTransferListHalf, minimalProps);
@@ -144,7 +142,8 @@ describe('NxTransferListHalf', function() {
           id: 3,
           displayName: 'baz'
         }],
-        component = getMounted({ items }),
+        onItemChange = jest.fn(),
+        component = getMounted({ items, onItemChange }),
         list = component.find('.nx-transfer-list__item-list');
 
     expect(list.children().length).toBe(2);
@@ -172,12 +171,12 @@ describe('NxTransferListHalf', function() {
     expect(otherItem).toHaveText('baz');
   });
 
-  it('does not render move icon and checkbox input only if disableItemMove is true', function() {
+  it('does not render move icon and checkbox input when onItemChange is not provided', function() {
     const items = [{
           id: 1,
           displayName: 'foo'
         }],
-        componentDisableItemMove = getMounted({ items, disableItemMove: true }),
+        componentDisableItemMove = getMounted({ items }),
         select = componentDisableItemMove
             .find('.nx-transfer-list__item-list .nx-transfer-list__item .nx-transfer-list__select');
 
@@ -186,8 +185,9 @@ describe('NxTransferListHalf', function() {
   });
 
   it('sets the item checked prop to isSelected', function() {
-    const withSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }], isSelected: true }),
-        withoutSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }] });
+    const onItemChange = jest.fn(),
+        withSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }], isSelected: true, onItemChange }),
+        withoutSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }], onItemChange });
 
     expect(withSelected.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', true);
     expect(withoutSelected.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', false);

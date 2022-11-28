@@ -102,21 +102,13 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onItemChange</NxCode></NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Handler function for the user activating an item in the list. This handler will be passed two
                 arguments: whether the item was currently selected (i.e. the value of
-                the <NxCode>isSelected</NxCode> prop) and the id of the item.
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>disableItemMove</NxCode></NxTable.Cell>
-              <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>
-                When true it disables the ability to transfer items by hiding the item's icon.
+                the <NxCode>isSelected</NxCode> prop) and the id of the item. When not provided, it disables
+                the ability to transfer items by hiding the item's icon.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -269,7 +261,7 @@ const NxTransferListPage = () =>
                         codeExamples={nxTransferListHalfDisableTransferExample}
                         liveExample={NxTransferListHalfDisableTransferExample}>
       Demonstrates an <NxCode>NxTransferListHalf</NxCode> with transfer feature disabled
-      when <NxCode>disableItemMove</NxCode> is set to true.
+      when <NxCode>onItemChange</NxCode> prop is not provided.
     </GalleryExampleTile>
   </>;
 

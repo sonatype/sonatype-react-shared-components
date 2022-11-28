@@ -35,13 +35,12 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
     onReorderItem,
     isTopItem,
     isBottomItem,
-    tooltip,
-    hideMoveIcon
+    tooltip
   } = props;
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     // NOTE: the `checked` property on the DOM node will have the new value, not the old
-    onChangeProp(evt.currentTarget.checked, id);
+    onChangeProp?.(evt.currentTarget.checked, id);
   }
 
   const classes = classnames(
@@ -63,7 +62,7 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
     <div className={classes}>
       <Tooltip { ...tooltipProps }>
         <label className="nx-transfer-list__select">
-          { !hideMoveIcon &&
+          { !!onChangeProp &&
             <>
               <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
               <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
@@ -116,8 +115,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         onItemChange,
         onReorderItem,
         footerContent,
-        filterFn: filterFnProp,
-        disableItemMove
+        filterFn: filterFnProp
       } = props,
       defaultFilterFn = pipe(toLower, includes(toLower(filterValue))),
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
@@ -150,7 +148,6 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         <div className="nx-transfer-list__item-list">
           { visibleItems.map(
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
-                                                 hideMoveIcon={disableItemMove}
                                                  isFilteredItem={!!filterValue}
                                                  key={i.id}
                                                  checked={isSelected}
