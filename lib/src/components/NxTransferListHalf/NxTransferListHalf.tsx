@@ -49,7 +49,7 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
         'nx-transfer-list__item--with-reordering': !!showReorderingButtons
       },
       {
-        'nx-transfer-list__moving--disabled': !onChangeProp
+        'nx-transfer-list__item--movable': !!onChangeProp
       }
   );
 
