@@ -23,6 +23,6 @@ export default function NxTransferListHalfDisableTransferExample() {
   return <NxTransferListHalf label="Example Items"
                              filterValue={filter}
                              onFilterChange={setFilter}
-                             items={Items}
-                             footerContent={`${Items.length} items`} />;
+                             items={items}
+                             footerContent={`${items.length} items`} />;
 }
