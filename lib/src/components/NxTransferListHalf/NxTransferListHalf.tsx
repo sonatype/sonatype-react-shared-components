@@ -150,7 +150,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
                                                  isFilteredItem={!!filterValue}
                                                  key={i.id}
-                                                 checked={isSelected}
+                                                 checked={!!isSelected}
                                                  onChange={onItemChange}
                                                  onReorderItem={onReorderItem}
                                                  isTopItem={index === 0}

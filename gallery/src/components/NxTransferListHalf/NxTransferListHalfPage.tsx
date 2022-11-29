@@ -95,7 +95,7 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>isSelected</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Whether this component represents selected or unselected items. This affects what icons are used and

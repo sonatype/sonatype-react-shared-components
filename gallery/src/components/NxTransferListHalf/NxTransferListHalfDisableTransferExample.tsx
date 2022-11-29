@@ -24,6 +24,5 @@ export default function NxTransferListHalfDisableTransferExample() {
                              filterValue={filter}
                              onFilterChange={setFilter}
                              items={Items}
-                             isSelected={true}
                              footerContent={`${Items.length} items`} />;
 }

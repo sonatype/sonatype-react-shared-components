@@ -23,7 +23,6 @@ describe('NxTransferListHalf', function() {
         filterValue: '',
         onFilterChange: () => {},
         items: [],
-        isSelected: false,
         footerContent: <div/>
       },
       getShallow = getShallowComponent<Props<number>>(NxTransferListHalf, minimalProps),

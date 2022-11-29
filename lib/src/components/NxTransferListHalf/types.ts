@@ -34,7 +34,7 @@ export interface Props<T extends string | number = string> {
   showMoveAll?: boolean | null;
   onMoveAll?: (toMove: T[]) => void | null;
   items: NxTransferListDataItem<T>[];
-  isSelected: boolean;
+  isSelected?: boolean | null;
   onItemChange?: SelectionChangeHandler<T> | null;
   footerContent: ReactNode;
   filterFn?: ((filterStr: string, itemDisplayName: string) => boolean) | null;
@@ -47,7 +47,7 @@ export const propTypes = {
   label: PropTypes.node.isRequired,
   filterValue: PropTypes.string.isRequired,
   onFilterChange: PropTypes.func.isRequired,
-  isSelected: PropTypes.bool.isRequired,
+  isSelected: PropTypes.bool,
   onItemChange: PropTypes.func,
   footerContent: PropTypes.node.isRequired,
   filterFn: PropTypes.func,
