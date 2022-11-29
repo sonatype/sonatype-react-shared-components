@@ -13,6 +13,8 @@ import NxTransferListHalfExample from './NxTransferListHalfExample';
 import NxTransferListHalfCustomTooltipExample from './NxTransferListHalfCustomTooltipExample';
 import NxTransferListHalfOrderingExample from './NxTransferListHalfOrderingExample';
 import NxTransferListHalfDisableTransferExample from './NxTransferListHalfDisableTransferExample';
+import NxTransferListHalfOrderingWithDisableTransferExample
+  from './NxTransferListHalfOrderingWithDisableTransferExample';
 
 import '../NxTooltip/NxTooltipExample.scss';
 
@@ -20,7 +22,9 @@ const nxTransferListHalfExample = require('./NxTransferListHalfExample?raw'),
     nxTransferListHalfCustomTooltipExample = require('./NxTransferListHalfCustomTooltipExample?raw'),
     nxTransferListHalfOrderingExample = require('./NxTransferListHalfOrderingExample?raw'),
     tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw'),
-    nxTransferListHalfDisableTransferExample = require('./NxTransferListHalfDisableTransferExample?raw');
+    nxTransferListHalfDisableTransferExample = require('./NxTransferListHalfDisableTransferExample?raw'),
+    nxTransferListHalfOrderingWithDisableTransferExample =
+      require('./NxTransferListHalfOrderingWithDisableTransferExample?raw');
 
 const tooltipExampleCode = [nxTransferListHalfCustomTooltipExample, { language: 'scss', content: tooltipScss }];
 
@@ -265,6 +269,12 @@ const NxTransferListPage = () =>
                         liveExample={NxTransferListHalfDisableTransferExample}>
       Demonstrates an <NxCode>NxTransferListHalf</NxCode> with transfer feature disabled
       when <NxCode>onItemChange</NxCode> prop is not provided.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="Ordering with Disable Transfer Example"
+                        id="nx-transfer-list-half-ordering-with-disable-transfer-example"
+                        codeExamples={nxTransferListHalfOrderingWithDisableTransferExample}
+                        liveExample={NxTransferListHalfOrderingWithDisableTransferExample}>
+      Demonstrates an ordering <NxCode>NxTransferListHalf</NxCode> with transfer feature disabled.
     </GalleryExampleTile>
   </>;
 

@@ -29,6 +29,8 @@ describe('NxTransferListHalf', function() {
       complexListFullSelector = '#nx-transfer-list-half-ordering-example .gallery-example-live',
       tooltipListSelector = '#nx-transfer-list-half-custom-tooltip-example .nx-transfer-list__half',
       disableTransferListSelector = '#nx-transfer-list-half-disable-transfer-example .nx-transfer-list__half',
+      orderingWithDisableTransferListSelector =
+       '#nx-transfer-list-half-ordering-with-disable-transfer-example .nx-transfer-list__half',
       itemsSelector = `${simpleListSelector} .nx-transfer-list__item`,
       tooltipItemsSelector = `${tooltipListSelector} .nx-transfer-list__item`,
       disableTransferItemSelector = `${disableTransferListSelector} .nx-transfer-list__item`,
@@ -117,13 +119,17 @@ describe('NxTransferListHalf', function() {
   describe('disable transfer', function() {
     it('looks right', simpleTest(disableTransferListSelector));
     it('does not put a dark border on hovered items',
-      hoverTest(disableTransferListSelector, secondDisableTransferItemSelector));
+        hoverTest(disableTransferListSelector, secondDisableTransferItemSelector));
     it('does not put a blue border and glow on focused items',
-      focusTest(disableTransferListSelector, secondDisableTransferItemSelector));
+        focusTest(disableTransferListSelector, secondDisableTransferItemSelector));
     it('does not put a blue border and blue glow on focused+hovered items',
-      focusAndHoverTest(disableTransferListSelector, secondDisableTransferItemSelector));
+        focusAndHoverTest(disableTransferListSelector, secondDisableTransferItemSelector));
     it('does not put a grey background on clicked items',
-      clickTest(disableTransferListSelector, secondDisableTransferItemSelector));
+        clickTest(disableTransferListSelector, secondDisableTransferItemSelector));
+  });
+
+  describe('ordering with disable transfer', function() {
+    it('looks right', simpleTest(orderingWithDisableTransferListSelector));
   });
 
   it('passes a11y checks', a11yTest());
