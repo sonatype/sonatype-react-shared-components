@@ -8,6 +8,6 @@ import React from 'react';
 
 import { NxLoadingSpinner } from '@sonatype/react-shared-components';
 
-const NxLoadingSpinnerExample = () => <NxLoadingSpinner>Foo</NxLoadingSpinner>;
+const NxLoadingSpinnerExample = () => <NxLoadingSpinner />;
 
 export default NxLoadingSpinnerExample;
