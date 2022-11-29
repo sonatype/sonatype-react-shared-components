@@ -109,10 +109,13 @@ describe('NxTransferListHalf', function() {
       function() {
         const withSelected = getShallow({ showMoveAll: true, isSelected: true })
                 .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon),
+            withSelectedFalse = getShallow({ showMoveAll: true, isSelected: false })
+                .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon),
             withoutSelected = getShallow({ showMoveAll: true })
                 .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon);
 
         expect(withSelected).toHaveProp('icon', faTimesCircle);
+        expect(withSelectedFalse).toHaveProp('icon', faPlusCircle);
         expect(withoutSelected).toHaveProp('icon', faPlusCircle);
       }
   );
@@ -120,10 +123,13 @@ describe('NxTransferListHalf', function() {
   it('sets the .nx-transfer-list__move-all text to "Remove All" when isSelected, otherwise "Transfer All"', function() {
     const withSelected = getShallow({ showMoveAll: true, isSelected: true })
             .find('.nx-transfer-list__move-all'),
+        withSelectedFalse = getShallow({ showMoveAll: true, isSelected: false })
+            .find('.nx-transfer-list__move-all'),
         withoutSelected = getShallow({ showMoveAll: true })
             .find('.nx-transfer-list__move-all');
 
     expect(withSelected).toIncludeText('Remove All');
+    expect(withSelectedFalse).toIncludeText('Transfer All');
     expect(withoutSelected).toIncludeText('Transfer All');
   });
 
@@ -184,9 +190,11 @@ describe('NxTransferListHalf', function() {
   it('sets the item checked prop to isSelected', function() {
     const onItemChange = jest.fn(),
         withSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }], isSelected: true, onItemChange }),
+        withSelectedFalse = getMounted({ items: [{ id: 1, displayName: 'foo' }], isSelected: false, onItemChange }),
         withoutSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }], onItemChange });
 
     expect(withSelected.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', true);
+    expect(withSelectedFalse.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', false);
     expect(withoutSelected.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', false);
   });
 
@@ -216,7 +224,7 @@ describe('NxTransferListHalf', function() {
         onItemChangeUnselected = jest.fn(),
         selectedComponent = getMounted({ items, onItemChange: onItemChangeSelected, isSelected: true },
             { attachTo: selectedContainer }),
-        unselectedComponent = getMounted({ items, onItemChange: onItemChangeUnselected },
+        unselectedComponent = getMounted({ items, onItemChange: onItemChangeUnselected, isSelected: false },
             { attachTo: unselectedContainer }),
         selectedList = selectedComponent.find('.nx-transfer-list__item-list'),
         unselectedList = unselectedComponent.find('.nx-transfer-list__item-list');
