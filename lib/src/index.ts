@@ -367,3 +367,5 @@ export { default as NxBreadcrumb, Props as NxBreadcrumbProps, Crumb as NxBreadcr
 
 export { default as NxStatefulBreadcrumb, Props as NxStatefulBreadcrumbProps }
   from './components/NxBreadcrumb/stateful/NxStatefulBreadcrumb';
+
+export { default as NxSkeletonLoader } from './components/NxSkeletonLoader/NxSkeletonLoader';

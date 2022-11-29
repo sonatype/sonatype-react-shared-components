@@ -154,6 +154,7 @@ import NxMeterPage from './components/NxMeter/NxMeterPage';
 import NivoPage from './styles/Nivo/NivoPage';
 import NxBreadcrumbPage from './components/NxBreadcrumb/NxBreadcrumbPage';
 import NxStatefulBreadcrumbPage from './components/NxStatefulBreadcrumb/NxStatefulBreadcrumbPage';
+import NxSkeletonLoaderPage from './components/NxSkeletonLoader/NxSkeletonLoaderPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -171,6 +172,7 @@ const pageConfig: PageConfig = {
     'System Notice': { content: NxSystemNoticePage, type: 'html' },
     'Tag': { content: NxTagPage, type: 'react' },
     'Threat Counter': { content: NxThreatCounterPage, type: 'react' },
+    'Skeleton Loader': { content: NxSkeletonLoaderPage, type: 'react' },
     'Small Threat Counter': { content: NxSmallThreatCounterPage, type: 'react' },
     'Status Indicator': { content: NxStatusIndicatorPage, type: 'html' },
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
