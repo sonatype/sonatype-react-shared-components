@@ -83,7 +83,9 @@ describe('NxRadio', function() {
         hoverSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)';
     it('has a tooltip on hover when set to true', hoverTest(selector, hoverSelector, true));
 
-    it('does have a tooltip only on hover when set to true', async function() {
+    it('does have a tooltip on hover only when set to true', async function() {
+      const wrapGreenHoverSelector = '#nx-radio-no-wrap-example .gallery-example-live label:nth-of-type(2)';
+      const [selectorGreen] = await waitAndGetElements(wrapGreenHoverSelector);
       const wrapRedHoverSelector = '#nx-radio-no-wrap-example .gallery-example-live label:nth-of-type(1)';
       const [selectorRed] = await waitAndGetElements(wrapRedHoverSelector);
 
@@ -95,6 +97,9 @@ describe('NxRadio', function() {
 
       await moveMouseAway();
       await wait(500);
+      expect(await isInDocument(tooltip)).toBe(false);
+
+      await selectorGreen.hover();
       expect(await isInDocument(tooltip)).toBe(false);
     });
   });
