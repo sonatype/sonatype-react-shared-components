@@ -18,12 +18,6 @@ describe('NxLoadingSpinner', function() {
     expect(container.querySelector('.nx-loading-spinner__icon')).toBeInTheDocument();
   });
 
-  it('renders the specified children', function() {
-    const el = renderEl({ children: 'Foo'});
-    expect(el).toHaveTextContent('Foo');
-    expect(el).not.toHaveTextContent('Loading');
-  });
-
   it('renders the text "Loading…" if no children are provided', function() {
     expect(renderEl(<NxLoadingSpinner />)).toHaveTextContent('Loading…');
   });
