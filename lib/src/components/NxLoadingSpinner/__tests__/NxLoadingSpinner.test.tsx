@@ -15,6 +15,7 @@ describe('NxLoadingSpinner', function() {
 
   it('renders an nx-loading-spinner__icon within a nx-loading-spinner', function() {
     const { container } = quickRender(<NxLoadingSpinner />);
+    expect(quickRender().getByRole('status')).toBeInTheDocument();
     expect(container.querySelector('.nx-loading-spinner__icon')).toBeInTheDocument();
   });
 
