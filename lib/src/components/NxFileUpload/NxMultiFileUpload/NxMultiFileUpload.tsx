@@ -54,8 +54,8 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       showValidationErrors = formShowValidationErrors || !isPristine,
       showError = isRequired && showValidationErrors && !isFileSelected,
       className = classnames('nx-multi-file-upload', 'nx-file-upload', classNameProp),
-      noFileMessageClassName = classnames('nx-multi-file-upload__no-file-message', {
-        'nx-multi-file-upload__no-file-message--invalid': showError
+      noFileMessageClassName = classnames('nx-file-upload__no-file-message', {
+        'nx-file-upload__no-file-message--invalid': showError
       }),
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-multi-file-upload-input', id),
@@ -137,7 +137,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
                disabled={disabled}
                onChange={onChange}
                id={inputId}
-               className="nx-multi-file-upload__input"
+               className="nx-file-upload__input"
                type="file"
                aria-label={isFileSelected ? `${files.length} files selected` : 'No File Selected'}
                aria-required={isRequired ?? undefined}
@@ -151,7 +151,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
                   variant="tertiary"
                   onClick={openPicker}
                   tabIndex={-1}
-                  className="nx-multi-file-upload__select-btn">
+                  className="nx-file-upload__select-btn">
           Add Files
         </NxButton>
         <div ref={selectedFilesContainerRef} className="nx-multi-file-upload__container__files nx-scrollable">

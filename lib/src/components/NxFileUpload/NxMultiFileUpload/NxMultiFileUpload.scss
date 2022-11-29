@@ -9,16 +9,7 @@
 
 .nx-multi-file-upload {
   width: 348px;
-
-  &__input {
-    @include nx-text-helpers.visually-hidden;
-
-    // focus styles must be reimplemented because it isn't the actual button that gets focus, it's the input
-    &:focus + .nx-btn {
-      border-color: var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
-    }
-  }
+  
   // need an enclosing div around NxMultiFileUpload that doesn't contain the validationError message
   &__container {
     $height: 220px;
