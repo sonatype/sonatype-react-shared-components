@@ -7,7 +7,7 @@
 import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'react';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-import { forEach, without } from 'ramda';
+import { without } from 'ramda';
 
 import SelectedFile from '../SelectedFile';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -62,22 +62,32 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       selectedFilesContainerRef = useRef<HTMLDivElement>(null),
       validationErrorId = useUniqueId('nx-multi-file-upload-validation-error');
 
-  function onChange(evt: FormEvent<HTMLInputElement>) {
-    const dataTransferObject = new DataTransfer();
+  // DataTransfer has the only known API in which FileLists can be programatically constructed from various Files.
+  const dataTransferObject = new DataTransfer();
 
+  function manageFiles(selectedFiles: File[]) {
+
+    for (const f of selectedFiles) {
+      dataTransferObject.items.add(f);
+    }
+
+    const normalizedFiles = !dataTransferObject.files.length ? null : dataTransferObject.files;
+    onChangeProp(normalizedFiles);
+  }
+
+  function onChange(evt: FormEvent<HTMLInputElement>) {
     // get the previous files uploaded
     if (files) {
-      forEach((f) => dataTransferObject.items.add(f), Array.from(files));
+      const filesArray = Array.from(files);
+      manageFiles(filesArray);
     }
 
-    const inputFiles = evt.currentTarget.files,
-        normalizedFiles = !inputFiles?.length ? null : inputFiles;
+    const inputFiles = evt.currentTarget.files;
 
-    if (normalizedFiles) {
-      forEach((f) => dataTransferObject.items.add(f), Array.from(normalizedFiles));
+    if (inputFiles) {
+      const inputFilesArray = Array.from(inputFiles);
+      manageFiles(inputFilesArray,);
     }
-
-    onChangeProp(dataTransferObject.files);
   }
 
   function openPicker() {
@@ -106,14 +116,9 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       });
     }
 
-    const dataTransferObject = new DataTransfer();
-    if (inputRef.current) {
-      if (files) {
-        forEach((f: File) => dataTransferObject.items.add(f), without([fileObj], Array.from(files)));
-
-        const normalizedFiles = !dataTransferObject.files.length ? null : dataTransferObject.files;
-        onChangeProp(normalizedFiles);
-      }
+    if (files) {
+      const updatedSelectedFiles = without([fileObj], Array.from(files));
+      manageFiles(updatedSelectedFiles);
     }
   }
 
