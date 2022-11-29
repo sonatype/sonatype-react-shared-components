@@ -72,7 +72,7 @@ const NxTransferListPage = () =>
               <NxTable.Cell><NxCode>showMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>Whether or not to show the "Remove All"/"Transfer All" button</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -96,7 +96,7 @@ const NxTransferListPage = () =>
               <NxTable.Cell><NxCode>isSelected</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
                 Whether this component represents selected or unselected items. This affects what icons are used and
                 the wording of the Move All button.
