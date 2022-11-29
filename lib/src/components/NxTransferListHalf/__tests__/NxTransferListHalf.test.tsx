@@ -22,8 +22,6 @@ describe('NxTransferListHalf', function() {
         label: 'Foo',
         filterValue: '',
         onFilterChange: () => {},
-        showMoveAll: false,
-        onMoveAll: () => {},
         items: [],
         isSelected: false,
         footerContent: <div/>

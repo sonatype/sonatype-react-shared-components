@@ -31,8 +31,8 @@ export interface Props<T extends string | number = string> {
   label: Exclude<ReactNode, null | undefined>;
   filterValue: string;
   onFilterChange: NxFilterInputProps['onChange'];
-  showMoveAll: boolean;
-  onMoveAll: (toMove: T[]) => void;
+  showMoveAll?: boolean | null;
+  onMoveAll?: (toMove: T[]) => void | null;
   items: NxTransferListDataItem<T>[];
   isSelected: boolean;
   onItemChange?: SelectionChangeHandler<T> | null;
@@ -51,7 +51,8 @@ export const propTypes = {
   onItemChange: PropTypes.func,
   footerContent: PropTypes.node.isRequired,
   filterFn: PropTypes.func,
-  showMoveAll: PropTypes.bool.isRequired,
+  showMoveAll: PropTypes.bool,
+  onMoveAll: PropTypes.func,
   allowReordering: PropTypes.bool,
   onReorderItem: PropTypes.func
 };

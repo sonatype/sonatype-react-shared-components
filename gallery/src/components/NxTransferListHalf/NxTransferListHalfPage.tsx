@@ -71,16 +71,19 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>showMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>Whether or not to show the "Remove All"/"Transfer All" button</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>Handler for the user activating the "Remove All"/"Transfer All" button</NxTable.Cell>
+              <NxTable.Cell>
+                Handler for the user activating the "Remove All"/"Transfer All" button.
+                It should be provided when <NxCode>showMoveAll</NxCode> is true.
+              </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>items</NxCode></NxTable.Cell>

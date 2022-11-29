@@ -129,7 +129,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
   function onMoveAllClick() {
     const idsToMove = map(prop('id'), visibleItems);
 
-    onMoveAll(idsToMove);
+    onMoveAll?.(idsToMove);
   }
 
   return (
