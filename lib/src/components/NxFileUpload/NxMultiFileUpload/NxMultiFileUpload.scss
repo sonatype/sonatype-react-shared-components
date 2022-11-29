@@ -8,6 +8,7 @@
  @use '../../../scss-shared/nx-text-helpers';
 
 .nx-multi-file-upload {
+  height: 220px;
   width: 348px;
 
   &__input {
@@ -21,19 +22,20 @@
   }
   // need an enclosing div around NxMultiFileUpload that doesn't contain the validationError message
   &__container {
-    $height: 220px;
-
-    min-height: $height;
+    align-items: flex-start;
     box-sizing: border-box;
     border: var(--nx-border-default);
     border-radius: var(--nx-border-radius);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
     &__files {
+      flex: 1;
       padding: var(--nx-spacing-6x);
-      // total height of NxMultiFileUpload - total height of button with margin
-      max-height: calc(#{$height} - 90px);
       box-sizing: border-box;
       border-top: 1px solid var(--nx-swatch-indigo-90);
+      width: 100%;
     }
 
     > .nx-btn {
