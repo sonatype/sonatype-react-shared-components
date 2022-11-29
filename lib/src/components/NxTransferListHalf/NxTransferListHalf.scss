@@ -130,6 +130,19 @@ $-visible-item-count: 10;
   }
 }
 
+.nx-transfer-list__moving--disabled {
+  .nx-transfer-list__select {
+    cursor: default;
+    padding-left: var(--nx-spacing-4x);
+
+    &:hover, &:active, &:focus-within {
+      background-color: inherit;
+      border-color: var(--nx-color-border);
+      box-shadow: none; 
+    }
+  }
+}
+
 .nx-transfer-list__display-name {
   @include nx-container-helpers.container-horizontal;
 }
