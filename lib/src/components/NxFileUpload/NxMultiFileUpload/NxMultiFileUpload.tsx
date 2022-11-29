@@ -95,8 +95,9 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
   }
 
   function onDismiss(fileObj: File) {
-    const closeBtns = Array.from(selectedFilesContainerRef.current?.
-        querySelectorAll<HTMLButtonElement>('.nx-selected-file__dismiss-btn') ?? []);
+    const closeBtns = Array.from(
+        selectedFilesContainerRef.current?.querySelectorAll<HTMLButtonElement>('.nx-selected-file__dismiss-btn') ?? []
+    );
 
     if (files) {
       const filesArray = Array.from(files);
