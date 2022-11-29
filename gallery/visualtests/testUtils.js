@@ -6,6 +6,10 @@
  */
 const puppeteer = require('puppeteer');
 
+const fs = require('fs');
+const path = require('path');
+const tmp = require('tmp-promise');
+
 const pageUrl = `file://${__dirname}/../dist/index.html`;
 
 const { AxePuppeteer } = require('@axe-core/puppeteer');
@@ -177,6 +181,56 @@ module.exports = {
       await page.mouse.move(0, 0);
     }
 
+    async function fillFile(path, numBytes) {
+      const MAX_BUFFER_SIZE = 1 << 20, // 1 MiB
+          writeStream = fs.createWriteStream(path);
+
+      let buffer;
+
+      for (let i = 0; i < numBytes; i += MAX_BUFFER_SIZE) {
+        const bufferSize = Math.min(MAX_BUFFER_SIZE, numBytes - i);
+
+        if (!(buffer && buffer.length === bufferSize)) {
+          buffer = await Buffer.alloc(bufferSize);
+        }
+
+        writeStream.write(buffer);
+      }
+
+      return new Promise((resolve, reject) => {
+        writeStream.on('finish', resolve);
+        writeStream.on('error', reject);
+
+        writeStream.end();
+      });
+    }
+
+    let files, tmpDir;
+
+    async function buildFiles() {
+      tmpDir = await tmp.dir({ unsafeCleanup: true });
+
+      files = {
+        bytes: path.join(tmpDir.path, 'bytes'),
+        kilobytes: path.join(tmpDir.path, 'kilobytes'),
+        megabytes: path.join(tmpDir.path, 'megabytes'),
+        gigabytes: path.join(tmpDir.path, 'gigabytes-gigalongname')
+      };
+
+      const bytesPromise = fillFile(files.bytes, 14),
+          kilobytesPromise = fillFile(files.kilobytes, 2000),
+          megabytesPromise = fillFile(files.megabytes, 1500100),
+          gigabytesPromise = fillFile(files.gigabytes, 1200000100);
+
+      await Promise.all([bytesPromise, kilobytesPromise, megabytesPromise, gigabytesPromise]);
+
+      return files;
+    }
+
+    async function cleanupFiles() {
+      await tmpDir.cleanup();
+    }
+
     return {
       getBrowser: () => browser,
       getPage: () => page,
@@ -188,6 +242,8 @@ module.exports = {
       moveMouseAway,
       dismissResultingDialog,
       disableLoadingSpinnerAnimation,
+      buildFiles,
+      cleanupFiles,
       scrollIntoView,
 
       waitForSelectors,

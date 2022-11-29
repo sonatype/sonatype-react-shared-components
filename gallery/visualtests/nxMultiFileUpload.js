@@ -4,38 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const fs = require('fs');
 const path = require('path');
-const tmp = require('tmp-promise');
 
 const { setupBrowser } = require('./testUtils');
 
-async function fillFile(path, numBytes) {
-  const MAX_BUFFER_SIZE = 1 << 20, // 1 MiB
-      writeStream = fs.createWriteStream(path);
-
-  let buffer;
-
-  for (let i = 0; i < numBytes; i += MAX_BUFFER_SIZE) {
-    const bufferSize = Math.min(MAX_BUFFER_SIZE, numBytes - i);
-
-    if (!(buffer && buffer.length === bufferSize)) {
-      buffer = await Buffer.alloc(bufferSize);
-    }
-
-    writeStream.write(buffer);
-  }
-
-  return new Promise((resolve, reject) => {
-    writeStream.on('finish', resolve);
-    writeStream.on('error', reject);
-
-    writeStream.end();
-  });
-}
-
 describe('NxMultiFileUpload', function() {
   const {
+    buildFiles,
+    cleanupFiles,
     checkScreenshot,
     isInDocument,
     waitAndGetElements,
@@ -50,33 +26,19 @@ describe('NxMultiFileUpload', function() {
   } = setupBrowser('#/pages/Multiple File Upload');
 
   const complexExampleSelector = '#nx-multi-file-upload-complex-example .gallery-example-live',
-      btnSelector = `${complexExampleSelector} .nx-multi-file-upload__select-btn`;
+      btnSelector = `${complexExampleSelector} .nx-file-upload__select-btn`;
 
   // Files of varying sizes to test the file size display in the component.  Due to the size
   // of the largest of these files, there are problems with storing them in git so they
   // are generated on the fly in beforeAll.
-  let files, tmpDir;
+  let files;
 
   beforeAll(async function() {
-    tmpDir = await tmp.dir({ unsafeCleanup: true });
-
-    files = {
-      bytes: path.join(tmpDir.path, 'bytes'),
-      kilobytes: path.join(tmpDir.path, 'kilobytes'),
-      megabytes: path.join(tmpDir.path, 'megabytes'),
-      gigabytes: path.join(tmpDir.path, 'gigabytes-gigalongname')
-    };
-
-    const bytesPromise = fillFile(files.bytes, 14),
-        kilobytesPromise = fillFile(files.kilobytes, 2000),
-        megabytesPromise = fillFile(files.megabytes, 1500100),
-        gigabytesPromise = fillFile(files.gigabytes, 1200000100);
-
-    await Promise.all([bytesPromise, kilobytesPromise, megabytesPromise, gigabytesPromise]);
+    files = await buildFiles();
   });
 
   afterAll(async function() {
-    await tmpDir.cleanup();
+    await cleanupFiles();
   });
 
   it('looks right when pristine', simpleTest(complexExampleSelector));
@@ -140,7 +102,7 @@ describe('NxMultiFileUpload', function() {
 
   describe('functionality', function() {
     async function openFileChooser(files) {
-      const [button] = await waitAndGetElements(`${complexExampleSelector} .nx-multi-file-upload__select-btn`);
+      const [button] = await waitAndGetElements(`${complexExampleSelector} .nx-file-upload__select-btn`);
       const [fileChooser] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
       await fileChooser.accept(files);
     }
@@ -237,7 +199,7 @@ describe('NxMultiFileUpload', function() {
 
       await dismissBtn.click();
 
-      const [noFileSelectedMessage] = await waitAndGetElements('.nx-multi-file-upload__no-file-message'),
+      const [noFileSelectedMessage] = await waitAndGetElements('.nx-file-upload__no-file-message'),
           textContent = await noFileSelectedMessage.evaluate(e => e.textContent);
 
       expect(await isInDocument(selectedFile)).toBe(false);
@@ -336,7 +298,7 @@ describe('NxMultiFileUpload', function() {
     const statefulExampleSelector = '#nx-multi-file-upload-stateful-example';
 
     async function openFileChooser(files) {
-      const [button] = await waitAndGetElements(`${statefulExampleSelector} .nx-multi-file-upload__select-btn`);
+      const [button] = await waitAndGetElements(`${statefulExampleSelector} .nx-file-upload__select-btn`);
       const [fileChooser] = await Promise.all([getPage().waitForFileChooser(), button.click()]);
       await dismissResultingDialog(async () => {
         await fileChooser.accept(files);
@@ -439,7 +401,7 @@ describe('NxMultiFileUpload', function() {
         await dismissBtn.click();
       });
 
-      const [noFileSelectedMessage] = await waitAndGetElements('.nx-multi-file-upload__no-file-message'),
+      const [noFileSelectedMessage] = await waitAndGetElements('.nx-file-upload__no-file-message'),
           textContent = await noFileSelectedMessage.evaluate(e => e.textContent);
 
       expect(await isInDocument(selectedFile)).toBe(false);
