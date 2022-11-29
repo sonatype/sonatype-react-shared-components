@@ -9,7 +9,7 @@ import { DataItem, NxFontAwesomeIcon, NxTransferListHalf } from '@sonatype/react
 import { map, range, prepend } from 'ramda';
 import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
 
-const Items: DataItem<number>[] = prepend(
+const items: DataItem<number>[] = prepend(
     {
       id: 0,
       displayName: <><NxFontAwesomeIcon icon={faArrowsAltH} /><span>Loooooooooooooooooooooooooong Name</span></>
