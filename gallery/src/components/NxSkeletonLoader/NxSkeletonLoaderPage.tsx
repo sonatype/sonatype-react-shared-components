@@ -12,7 +12,9 @@ export default function NxSkeletonLoaderPage() {
   return (
     <>
       <GalleryDescriptionTile>
-        <NxSkeletonLoader />
+        <NxSkeletonLoader style={{ height: '100px', width: '100px' }}/>
+        <NxSkeletonLoader style={{ marginLeft: '300px', height: '100px', width: '100px' }}/>
+        <NxSkeletonLoader style={{ height: '100px', width: '400px' }}/>
       </GalleryDescriptionTile>
     </>
   );

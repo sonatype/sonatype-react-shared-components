@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 
 import './NxSkeletonLoader.scss';
 
-export default function NxSkeletonLoader() {
+export default function NxSkeletonLoader(props: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div role="status" className="nx-skeleton-loader" />
+    <div role="status" className="nx-skeleton-loader" { ...props } />
   );
 }
