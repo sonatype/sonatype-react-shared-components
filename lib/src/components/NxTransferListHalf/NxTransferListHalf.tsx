@@ -148,7 +148,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
             <span>{isSelected ? 'Remove' : 'Transfer'} All</span>
           </button>
         }
-        <div className="nx-transfer-list__item-list">
+        <div className="nx-transfer-list__item-list" tabIndex={onItemChange || allowReordering ? undefined : 0}>
           { visibleItems.map(
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
                                                  isFilteredItem={!!filterValue}
