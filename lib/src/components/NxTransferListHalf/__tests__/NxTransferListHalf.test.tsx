@@ -109,10 +109,13 @@ describe('NxTransferListHalf', function() {
       function() {
         const withSelected = getShallow({ showMoveAll: true })
                 .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon),
+            withSelectedNull = getShallow({ showMoveAll: true, isSelected: null })
+                .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon),
             withSelectedFalse = getShallow({ showMoveAll: true, isSelected: false })
                 .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon);
 
         expect(withSelected).toHaveProp('icon', faTimesCircle);
+        expect(withSelectedNull).toHaveProp('icon', faTimesCircle);
         expect(withSelectedFalse).toHaveProp('icon', faPlusCircle);
       }
   );
@@ -120,10 +123,13 @@ describe('NxTransferListHalf', function() {
   it('sets the .nx-transfer-list__move-all text to "Remove All" when isSelected, otherwise "Transfer All"', function() {
     const withSelected = getShallow({ showMoveAll: true })
             .find('.nx-transfer-list__move-all'),
+        withSelectedNull = getShallow({ showMoveAll: true, isSelected: null })
+            .find('.nx-transfer-list__move-all'),
         withSelectedFalse = getShallow({ showMoveAll: true, isSelected: false })
             .find('.nx-transfer-list__move-all');
 
     expect(withSelected).toIncludeText('Remove All');
+    expect(withSelectedNull).toIncludeText('Remove All');
     expect(withSelectedFalse).toIncludeText('Transfer All');
   });
 
@@ -184,9 +190,11 @@ describe('NxTransferListHalf', function() {
   it('sets the item checked prop to isSelected', function() {
     const onItemChange = jest.fn(),
         withSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }], onItemChange }),
+        withSelectedNull = getMounted({ items: [{ id: 1, displayName: 'foo' }], isSelected: null, onItemChange }),
         withSelectedFalse = getMounted({ items: [{ id: 1, displayName: 'foo' }], isSelected: false, onItemChange });
 
     expect(withSelected.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', true);
+    expect(withSelectedNull.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', true);
     expect(withSelectedFalse.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', false);
   });
 

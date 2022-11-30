@@ -108,13 +108,14 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         onFilterChange,
         showMoveAll,
         onMoveAll,
-        isSelected = true,
+        isSelected: isSelectedProp,
         items,
         onItemChange,
         onReorderItem,
         footerContent,
         filterFn: filterFnProp
       } = props,
+      isSelected = isSelectedProp ?? true, 
       defaultFilterFn = pipe(toLower, includes(toLower(filterValue))),
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
       visibleItems = useMemo(
@@ -149,7 +150,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
                                                  isFilteredItem={!!filterValue}
                                                  key={i.id}
-                                                 checked={!!isSelected}
+                                                 checked={isSelected}
                                                  onChange={onItemChange}
                                                  onReorderItem={onReorderItem}
                                                  isTopItem={index === 0}
