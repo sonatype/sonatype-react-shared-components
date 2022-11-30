@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { createContext, HTMLAttributes, ReactNode } from 'react';
+import withClass from '../../util/withClass';
 
 import './NxSkeletonLoader.scss';
 
@@ -12,22 +13,16 @@ export const SkeletonContext = createContext(false);
 
 function _NxSkeletonLoader({ children }: { children: ReactNode }) {
   return (
-    <SkeletonContext.Provider value={true}>{children}</SkeletonContext.Provider>
+    <div className="nx-skeleton-loader" aria-busy="true">
+      <div className="nx-skeleton-loader__status" role="status">Loading…</div>
+      <SkeletonContext.Provider value={true}>{children}</SkeletonContext.Provider>
+    </div>
   );
 }
 
-function Block(props: HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div role="status" className="nx-skeleton-loader__block" { ...props } />
-  );
-}
-
-function Text(props: HTMLAttributes<HTMLSpanElement>) {
-  return (
-    <span className="nx-skeleton-loader__text" { ...props } />
-  );
-}
-
-const NxSkeletonLoader = Object.assign(_NxSkeletonLoader, { Block, Text });
+const NxSkeletonLoader = Object.assign(_NxSkeletonLoader, {
+  Block: withClass('div', 'nx-skeleton-loader__block'),
+  Text: withClass('span', 'nx-skeleton-loader__text')
+});
 
 export default NxSkeletonLoader;

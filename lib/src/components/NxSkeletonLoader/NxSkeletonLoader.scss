@@ -4,6 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../../scss-shared/nx-text-helpers';
+
+.nx-skeleton-loader__status {
+  @include nx-text-helpers.visually-hidden;
+}
 
 .nx-skeleton-loader__block {
   animation: 1.6s linear .25s infinite skeleton-animation;
