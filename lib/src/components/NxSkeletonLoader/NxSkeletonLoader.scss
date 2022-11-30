@@ -5,7 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-.nx-skeleton-loader {
+.nx-skeleton-loader__block {
+  animation: 1.6s linear .25s infinite skeleton-animation;
+
   background-image: repeating-linear-gradient(
     to right,
     var(--nx-swatch-indigo-90),
@@ -13,13 +15,15 @@
     var(--nx-swatch-indigo-80) 44.5%,
     var(--nx-swatch-indigo-90) 50%
   );
-
-  //background-repeat: repeat-x;
   background-size: 200% 100%;
 
-  animation: 1.6s linear .25s infinite skeleton-animation;
 
   border-radius: var(--nx-border-radius);
+  border: none;
+
+  > * {
+    visibility: hidden;
+  }
 }
 
 @keyframes skeleton-animation {

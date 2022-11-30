@@ -4,12 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { HTMLAttributes } from 'react';
+import React, { createContext, HTMLAttributes, ReactNode } from 'react';
 
 import './NxSkeletonLoader.scss';
 
-export default function NxSkeletonLoader(props: HTMLAttributes<HTMLDivElement>) {
+export const SkeletonContext = createContext(false);
+
+function _NxSkeletonLoader({ children }: { children: ReactNode }) {
   return (
-    <div role="status" className="nx-skeleton-loader" { ...props } />
+    <SkeletonContext.Provider value={true}>{children}</SkeletonContext.Provider>
   );
 }
+
+function Block(props: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div role="status" className="nx-skeleton-loader__block" { ...props } />
+  );
+}
+
+const NxSkeletonLoader = Object.assign(_NxSkeletonLoader, { Block });
+
+export default NxSkeletonLoader;
