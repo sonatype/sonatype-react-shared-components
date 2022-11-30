@@ -43,15 +43,10 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
     onChangeProp?.(evt.currentTarget.checked, id);
   }
 
-  const classes = classnames(
-      'nx-transfer-list__item',
-      {
-        'nx-transfer-list__item--with-reordering': !!showReorderingButtons
-      },
-      {
-        'nx-transfer-list__item--movable': !!onChangeProp
-      }
-  );
+  const classes = classnames('nx-transfer-list__item', {
+    'nx-transfer-list__item--with-reordering': !!showReorderingButtons,
+    'nx-transfer-list__item--movable': !!onChangeProp
+  });
 
   const moveUpDisabled = isFilteredItem || isTopItem;
   const moveDownDisabled = isFilteredItem || isBottomItem;
