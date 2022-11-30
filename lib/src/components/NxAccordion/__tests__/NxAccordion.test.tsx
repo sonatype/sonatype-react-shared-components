@@ -9,6 +9,8 @@ import { mount } from 'enzyme';
 import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 import { act } from 'react-dom/test-utils';
 
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxAccordion, { Props } from '../NxAccordion';
 import NxButton from '../../NxButton/NxButton';
@@ -19,44 +21,49 @@ function createClickEvent() {
 }
 
 describe('NxAccordion', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxAccordion, {}),
-      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxAccordion, {});
+  const getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxAccordion, {});
+  const quickRender = rtlRender(NxAccordion, {});
+  const renderEl = rtlRenderElement(NxAccordion, {});
 
   it('renders a <details> element with the provided props', function() {
-    const component = getShallowComponent({ id: 'foo', open: true, title: 'test title' });
-
-    expect(component).toMatchSelector('details#foo');
-    expect(component).toHaveProp('open', true);
-    expect(component).toHaveProp('title', 'test title');
+    expect(quickRender({ id: 'foo' }).getByRole('group')).toHaveAttribute('id', 'foo');
+    expect(renderEl({ open: true })).toHaveAttribute('open');
+    expect(renderEl({ title: 'test title' })).toHaveAttribute('title', 'test title');
   });
 
-  it('sets the nx-accordion class along with any provided className', function() {
-    expect(getShallowComponent()).toHaveClassName('nx-accordion');
-    expect(getShallowComponent({ className: 'foo' })).toHaveClassName('nx-accordion');
-    expect(getShallowComponent({ className: 'foo' })).toHaveClassName('foo');
+  it('sets the provided className', function() {
+    const el = renderEl()!;
+    const customEl = renderEl({ className: 'foo' })!;
+
+    expect(customEl).toHaveClass('foo');
+
+    for (const cls of Array.from(el.classList)) {
+      expect(customEl).toHaveClass(cls);
+    }
   });
 
   it('sets an id if none is specified', function() {
-    expect(getShallowComponent().prop('id')).toBeTruthy();
+    expect(quickRender().getByRole('group')).toHaveAttribute('id');
   });
 
   it('sets aria-expanded from the open prop', function() {
-    expect(getShallowComponent()).toHaveProp('aria-expanded', false);
-    expect(getShallowComponent({ open: false })).toHaveProp('aria-expanded', false);
-    expect(getShallowComponent({ open: true })).toHaveProp('aria-expanded', true);
+    expect(renderEl()).toHaveAttribute('aria-expanded', 'false');
+    expect(renderEl({ open: false })).toHaveAttribute('aria-expanded', 'false');
+    expect(renderEl({ open: true })).toHaveAttribute('aria-expanded', 'true');
   });
 
   it('renders non-header children in an nx-accordion__content wrapper', function() {
-    const component =
-        mount(
-          <NxAccordion>
-            <NxAccordion.Header>
-              <span>Foo</span>
-            </NxAccordion.Header>
-            <span>Bar</span>
-          </NxAccordion>
-        ),
-        childrenWrapper = component.find('.nx-accordion__content');
+    const { rerender, container } = quickRender();
+
+    rerender(
+      <NxAccordion>
+        <NxAccordion.Header>
+          <span>Foo</span>
+        </NxAccordion.Header>
+        <span>Bar</span>
+      </NxAccordion>
+    );
+    const childrenWrapper = container.querySelector('.nx-accordion__content');
 
     expect(childrenWrapper).toExist();
     expect(childrenWrapper).toContainReact(<span>Bar</span>);
