@@ -60,7 +60,26 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-multi-file-upload-input', id),
       selectedFilesContainerRef = useRef<HTMLDivElement>(null),
-      validationErrorId = useUniqueId('nx-multi-file-upload-validation-error');
+      validationErrorId = useUniqueId('nx-multi-file-upload-validation-error'),
+
+      // Stable React key values for each File object
+      fileKeys = useRef<WeakMap<File, number>>(new WeakMap()),
+      nextKey = useRef(0);
+
+  function getKey(file: File): number {
+    const existingKey = fileKeys.current.get(file);
+
+    if (existingKey) {
+      return existingKey;
+    }
+    else {
+      const newKey = nextKey.current;
+      nextKey.current++;
+      fileKeys.current.set(file, newKey);
+
+      return newKey;
+    }
+  }
 
   // DataTransfer has the only known API in which FileLists can be programatically constructed from various Files.
   const dataTransferObject = new DataTransfer();
@@ -162,8 +181,8 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
         </NxButton>
         <div ref={selectedFilesContainerRef} className="nx-multi-file-upload__container__files nx-scrollable">
           { isFileSelected ?
-            Array.from(files).map((file, key) =>
-              <SelectedFileWrapper key= {`selected-file-${key}`} file={file} onDismiss={onDismiss}/>
+            Array.from(files).map((file) =>
+              <SelectedFileWrapper key={getKey(file)} file={file} onDismiss={onDismiss}/>
             ) :
             <span className={noFileMessageClassName}>
               <span>No file selected</span>
