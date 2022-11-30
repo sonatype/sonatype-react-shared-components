@@ -125,7 +125,7 @@ dockerizedBuildPipeline(
     withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
       withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc') {
         def version = env.VERSION
-        def majorVersion = version.substring(0, version.firstIndexOf('.'))
+        def majorVersion = version.substring(0, version.indexOf('.'))
         def tag = isMainBranch() ? null : "latest-$majorVersion"
         def tagArg = tag ? "--tag $tag" : ''
         sh "npm publish --access public $tagArg lib/dist/sonatype-react-shared-components-\$VERSION.tgz"
