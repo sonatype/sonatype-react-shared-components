@@ -7,7 +7,7 @@
 import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'react';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-import { without } from 'ramda';
+import { without, findIndex, equals } from 'ramda';
 
 import SelectedFile from '../SelectedFile';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -113,22 +113,18 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
 
     if (files) {
       const filesArray = Array.from(files);
-      filesArray.map((f) => {
-        if (f === fileObj) {
-          const idx = filesArray.indexOf(f);
-          if (idx === files.length - 1) {
-            // if the selected file is the last in the container, set the focus to the next last dismiss button
-            // if selected file is only file, set focus on the input
-            closeBtns.length === 1 ? inputRef.current?.focus() : closeBtns[idx - 1].focus();
-          }
-          else {
-            // need to explicity set focus on next closeBtn for Safari
-            closeBtns[idx].focus();
-          }
-        }
-      });
+      const idx = findIndex((f) => equals(f, fileObj), filesArray);
 
-      const updatedSelectedFiles = without([fileObj], Array.from(files)),
+      if (idx === files.length - 1) {
+        // if the selected file is the last in the container, set the focus to the next last dismiss button
+        // if selected file is only file, set focus on the input
+        closeBtns.length === 1 ? inputRef.current?.focus() : closeBtns[idx - 1].focus();
+      }
+      else {
+        closeBtns[idx + 1].focus();
+      }
+
+      const updatedSelectedFiles = without([fileObj], filesArray),
           returnedFileList = combineFileLists(updatedSelectedFiles),
           normalizedFiles = returnedFileList.length ? returnedFileList : null;
 
