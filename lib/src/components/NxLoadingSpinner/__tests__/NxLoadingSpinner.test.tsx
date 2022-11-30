@@ -13,10 +13,8 @@ describe('NxLoadingSpinner', function() {
   const quickRender = rtlRender(NxLoadingSpinner, {}),
       renderEl = rtlRenderElement(NxLoadingSpinner, {});
 
-  it('renders an nx-loading-spinner__icon within a nx-loading-spinner', function() {
-    const { container } = quickRender(<NxLoadingSpinner />);
+  it('renders with the role of status', function() {
     expect(quickRender().getByRole('status')).toBeInTheDocument();
-    expect(container.querySelector('.nx-loading-spinner__icon')).toBeInTheDocument();
   });
 
   it('renders the text "Loading…" if no children are provided', function() {
