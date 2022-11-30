@@ -108,7 +108,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         onFilterChange,
         showMoveAll,
         onMoveAll,
-        isSelected,
+        isSelected = true,
         items,
         onItemChange,
         onReorderItem,

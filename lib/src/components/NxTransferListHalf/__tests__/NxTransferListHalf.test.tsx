@@ -107,30 +107,24 @@ describe('NxTransferListHalf', function() {
 
   it('sets the .nx-transfer-list__move-all icon to an x in a circle if isSelected, otherwise a plus in a circle',
       function() {
-        const withSelected = getShallow({ showMoveAll: true, isSelected: true })
+        const withSelected = getShallow({ showMoveAll: true })
                 .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon),
             withSelectedFalse = getShallow({ showMoveAll: true, isSelected: false })
-                .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon),
-            withoutSelected = getShallow({ showMoveAll: true })
                 .find('.nx-transfer-list__move-all').find(NxFontAwesomeIcon);
 
         expect(withSelected).toHaveProp('icon', faTimesCircle);
         expect(withSelectedFalse).toHaveProp('icon', faPlusCircle);
-        expect(withoutSelected).toHaveProp('icon', faPlusCircle);
       }
   );
 
   it('sets the .nx-transfer-list__move-all text to "Remove All" when isSelected, otherwise "Transfer All"', function() {
-    const withSelected = getShallow({ showMoveAll: true, isSelected: true })
+    const withSelected = getShallow({ showMoveAll: true })
             .find('.nx-transfer-list__move-all'),
         withSelectedFalse = getShallow({ showMoveAll: true, isSelected: false })
-            .find('.nx-transfer-list__move-all'),
-        withoutSelected = getShallow({ showMoveAll: true })
             .find('.nx-transfer-list__move-all');
 
     expect(withSelected).toIncludeText('Remove All');
     expect(withSelectedFalse).toIncludeText('Transfer All');
-    expect(withoutSelected).toIncludeText('Transfer All');
   });
 
   it('contains an .nx-transfer-list__item-list', function() {
@@ -164,7 +158,7 @@ describe('NxTransferListHalf', function() {
     expect(select).toHaveText('foo');
 
     expect(icon).toExist();
-    expect(icon).toHaveProp('icon', faPlusCircle);
+    expect(icon).toHaveProp('icon', faTimesCircle);
 
     expect(checkbox).toExist();
     expect(checkbox).toHaveProp('type', 'checkbox');
@@ -189,13 +183,11 @@ describe('NxTransferListHalf', function() {
 
   it('sets the item checked prop to isSelected', function() {
     const onItemChange = jest.fn(),
-        withSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }], isSelected: true, onItemChange }),
-        withSelectedFalse = getMounted({ items: [{ id: 1, displayName: 'foo' }], isSelected: false, onItemChange }),
-        withoutSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }], onItemChange });
+        withSelected = getMounted({ items: [{ id: 1, displayName: 'foo' }], onItemChange }),
+        withSelectedFalse = getMounted({ items: [{ id: 1, displayName: 'foo' }], isSelected: false, onItemChange });
 
     expect(withSelected.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', true);
     expect(withSelectedFalse.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', false);
-    expect(withoutSelected.find('input.nx-transfer-list__checkbox')).toHaveProp('checked', false);
   });
 
   it('contains an .nx-transfer-list__footer with the specified footerContent', function() {
@@ -222,7 +214,7 @@ describe('NxTransferListHalf', function() {
         }],
         onItemChangeSelected = jest.fn(),
         onItemChangeUnselected = jest.fn(),
-        selectedComponent = getMounted({ items, onItemChange: onItemChangeSelected, isSelected: true },
+        selectedComponent = getMounted({ items, onItemChange: onItemChangeSelected },
             { attachTo: selectedContainer }),
         unselectedComponent = getMounted({ items, onItemChange: onItemChangeUnselected, isSelected: false },
             { attachTo: unselectedContainer }),
