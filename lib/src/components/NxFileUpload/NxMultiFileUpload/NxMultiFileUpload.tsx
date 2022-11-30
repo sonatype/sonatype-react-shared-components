@@ -81,32 +81,25 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
     }
   }
 
-  // DataTransfer has the only known API in which FileLists can be programatically constructed from various Files.
-  const dataTransferObject = new DataTransfer();
-
-  function manageFiles(selectedFiles: File[]) {
-
-    for (const f of selectedFiles) {
-      dataTransferObject.items.add(f);
+  function combineFileLists(...fileLists: ArrayLike<File>[]) {
+    // DataTransfer has the only known API in which FileLists can be programatically constructed from various Files.
+    const dataTransferObject = new DataTransfer();
+    for (const list of fileLists) {
+      const listArray = Array.from(list);
+      for (const file of listArray) {
+        dataTransferObject.items.add(file);
+      }
     }
-
-    const normalizedFiles = !dataTransferObject.files.length ? null : dataTransferObject.files;
-    onChangeProp(normalizedFiles);
+    return dataTransferObject.files;
   }
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
-    // get the previous files uploaded
-    if (files) {
-      const filesArray = Array.from(files);
-      manageFiles(filesArray);
-    }
-
     const inputFiles = evt.currentTarget.files;
 
-    if (inputFiles) {
-      const inputFilesArray = Array.from(inputFiles);
-      manageFiles(inputFilesArray,);
-    }
+    // files refers to the previous file selection, which will be null the first time OnChange is called
+    const returnedFileList = inputFiles ? combineFileLists(files ?? [], inputFiles) : null;
+
+    onChangeProp(returnedFileList);
   }
 
   function openPicker() {
@@ -134,11 +127,12 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
           }
         }
       });
-    }
 
-    if (files) {
-      const updatedSelectedFiles = without([fileObj], Array.from(files));
-      manageFiles(updatedSelectedFiles);
+      const updatedSelectedFiles = without([fileObj], Array.from(files)),
+          returnedFileList = combineFileLists(updatedSelectedFiles),
+          normalizedFiles = returnedFileList.length ? returnedFileList : null;
+
+      onChangeProp(normalizedFiles);
     }
   }
 
