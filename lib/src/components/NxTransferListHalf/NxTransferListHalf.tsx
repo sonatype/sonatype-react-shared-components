@@ -143,6 +143,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
             <span>{isSelected ? 'Remove' : 'Transfer'} All</span>
           </button>
         }
+        {/* Add the tabIndex here to meet the a11y requirement that scrollable region must have keyboard access */}
         <div className="nx-transfer-list__item-list" tabIndex={onItemChange || allowReordering ? undefined : 0}>
           { visibleItems.map(
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
