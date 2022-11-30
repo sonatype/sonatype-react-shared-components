@@ -132,13 +132,12 @@ describe('NxMultiFileUpload', function() {
       const [selectedFile1] = (await waitAndGetElements(`${complexExampleSelector} .nx-selected-file:nth-child(1)`)),
           textContent1 = await selectedFile1.evaluate(e => e.textContent);
 
-      expect(textContent1).toMatch('14.0 B');
-
       await openFileChooser([files.kilobytes]);
 
       const [selectedFile2] = (await waitAndGetElements(`${complexExampleSelector} .nx-selected-file:nth-child(2)`)),
           textContent2 = await selectedFile2.evaluate(e => e.textContent);
 
+      expect(textContent1).toMatch('14.0 B');
       expect(textContent2).toMatch('2.0 kB');
     });
 
