@@ -120,10 +120,6 @@ describe('NxTransferListHalf', function() {
     it('looks right', simpleTest(disableTransferListSelector));
     it('does not put a dark border on hovered items',
         hoverTest(disableTransferListSelector, secondDisableTransferItemSelector));
-    it('does not put a blue border and glow on focused items',
-        focusTest(disableTransferListSelector, secondDisableTransferItemSelector));
-    it('does not put a blue border and blue glow on focused+hovered items',
-        focusAndHoverTest(disableTransferListSelector, secondDisableTransferItemSelector));
     it('does not put a grey background on clicked items',
         clickTest(disableTransferListSelector, secondDisableTransferItemSelector));
   });
