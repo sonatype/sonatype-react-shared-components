@@ -22,6 +22,12 @@ function Block(props: HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-const NxSkeletonLoader = Object.assign(_NxSkeletonLoader, { Block });
+function Text(props: HTMLAttributes<HTMLSpanElement>) {
+  return (
+    <span className="nx-skeleton-loader__text" { ...props } />
+  );
+}
+
+const NxSkeletonLoader = Object.assign(_NxSkeletonLoader, { Block, Text });
 
 export default NxSkeletonLoader;

@@ -11,6 +11,7 @@ import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import withClass from '../../util/withClass';
 
 import { NxTileHeaderTitleProps, nxTileHeaderTitlePropTypes } from './types';
+import NxSkeletonLoader from '../NxSkeletonLoader/NxSkeletonLoader';
 
 const NxTileHeaderTitle = forwardRef<HTMLDivElement, NxTileHeaderTitleProps>((props, ref) => {
   const {
@@ -36,7 +37,7 @@ const NxTile = Object.assign(withClass('section', 'nx-tile'), {
   Header: withClass('header', 'nx-tile-header'),
   Headings: withClass('hgroup', 'nx-tile-header__headings'),
   HeaderTitle: NxTileHeaderTitle,
-  HeaderSubtitle: withClass('h3', 'nx-tile-header__subtitle'),
+  HeaderSubtitle: withClass('h3', 'nx-tile-header__subtitle', undefined, <NxSkeletonLoader.Text />),
   HeaderActions: withClass('div', 'nx-tile__actions'),
   Content: withClass('div', 'nx-tile-content'),
   Subsection: withClass('section', 'nx-tile-subsection'),

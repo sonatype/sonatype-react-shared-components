@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import withClass from '../util/withClass';
+import NxSkeletonLoader from './NxSkeletonLoader/NxSkeletonLoader';
 
 // Simple convenience components that are just a particular tag with a particular classname, with the ability
 // to add all attrs that you would normally be able to add to that tag (including more classnames)
@@ -26,10 +27,10 @@ export const NxThreatNumber = withClass('span', 'nx-threat-number');
 export const NxPageMain = withClass('main', 'nx-page-main');
 export const NxPageSidebar = withClass('aside', 'nx-page-sidebar');
 
-export const NxH1 = withClass('h1', 'nx-h1');
-export const NxH2 = withClass('h2', 'nx-h2');
-export const NxH3 = withClass('h3', 'nx-h3');
-export const NxH4 = withClass('h4', 'nx-h4');
+export const NxH1 = withClass('h1', 'nx-h1', undefined, <NxSkeletonLoader.Text />);
+export const NxH2 = withClass('h2', 'nx-h2', undefined, <NxSkeletonLoader.Text />);
+export const NxH3 = withClass('h3', 'nx-h3', undefined, <NxSkeletonLoader.Text />);
+export const NxH4 = withClass('h4', 'nx-h4', undefined, <NxSkeletonLoader.Text />);
 
 export const NxDivider = withClass('hr', 'nx-divider');
 
