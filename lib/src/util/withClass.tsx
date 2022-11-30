@@ -4,8 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, DetailedHTMLProps, SVGProps } from 'react';
+import React, { forwardRef, DetailedHTMLProps, SVGProps, useContext, ReactNode } from 'react';
 import classnames from 'classnames';
+import { SkeletonContext } from '../components/NxSkeletonLoader/NxSkeletonLoader';
 
 type NativeElType<E extends keyof JSX.IntrinsicElements> =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,14 +17,24 @@ type NativeElType<E extends keyof JSX.IntrinsicElements> =
 export default function withClass<E extends keyof JSX.IntrinsicElements>(
   El: E,
   withClassName: string,
-  withRole?: string
+  withRole?: string,
+  skeletonElements?: ReactNode
 ) {
   return forwardRef<NativeElType<E>, JSX.IntrinsicElements[E]>((props: JSX.IntrinsicElements[E], ref) => {
     const {
       className,
+      children,
       ...otherProps
     } = props;
     const classes = classnames(withClassName, className);
-    return React.createElement(El, { className: classes, role: withRole, ref, ...otherProps});
+    const skeleton = useContext(SkeletonContext);
+
+    return React.createElement(El, {
+      className: classes,
+      role: withRole,
+      ref,
+      children: skeleton ? skeletonElements : children,
+      ...otherProps
+    });
   });
 }

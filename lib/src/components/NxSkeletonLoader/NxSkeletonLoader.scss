@@ -19,11 +19,19 @@
 
 
   border-radius: var(--nx-border-radius);
-  border: none;
+  border: none !important; // TODO figure out another way
 
   > * {
     visibility: hidden;
   }
+}
+
+.nx-skeleton-loader__text {
+  @extend .nx-skeleton-loader__block;
+
+  display: inline-block;
+  height: 1em;
+  vertical-align: text-bottom;
 }
 
 @keyframes skeleton-animation {

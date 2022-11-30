@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { NxSkeletonLoader, NxThreatCounter } from '@sonatype/react-shared-components';
+import { NxP, NxSkeletonLoader, NxThreatCounter } from '@sonatype/react-shared-components';
 import React from 'react';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -17,7 +17,9 @@ export default function NxSkeletonLoaderPage() {
         <NxSkeletonLoader.Block style={{ height: '100px', width: '400px' }}/>
         <NxSkeletonLoader>
           <NxThreatCounter criticalCount={1} severeCount={20} moderateCount={0} layout="grid" />
+          <NxP>Foo bar</NxP>
         </NxSkeletonLoader>
+        <NxP>Foo bar<br/>Aasdf<br/>qwerty</NxP>
       </GalleryDescriptionTile>
     </>
   );

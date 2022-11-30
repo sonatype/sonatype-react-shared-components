@@ -4,11 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
 import withClass from '../util/withClass';
 
 // Simple convenience components that are just a particular tag with a particular classname, with the ability
 // to add all attrs that you would normally be able to add to that tag (including more classnames)
-export const NxP = withClass('p', 'nx-p');
+export const NxP = withClass('p', 'nx-p', undefined,
+  <>
+    <span className="nx-skeleton-loader__text"/>
+    <span className="nx-skeleton-loader__text"/>
+    <span className="nx-skeleton-loader__text"/>
+  </>
+);
 export const NxCode = withClass('code', 'nx-code');
 export const NxBlockquote = withClass('blockquote', 'nx-blockquote');
 export const NxPre = withClass('pre', 'nx-pre');
