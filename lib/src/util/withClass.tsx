@@ -33,8 +33,7 @@ export default function withClass<E extends keyof JSX.IntrinsicElements>(
       className: classes,
       role: withRole,
       ref,
-      children: skeleton && skeletonElements || children,
       ...otherProps
-    });
+    }, skeleton && skeletonElements || children);
   });
 }

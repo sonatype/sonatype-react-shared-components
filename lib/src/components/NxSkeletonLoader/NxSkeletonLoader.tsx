@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { createContext, HTMLAttributes, ReactNode } from 'react';
+import React, { createContext, ReactNode } from 'react';
 import withClass from '../../util/withClass';
 
 import './NxSkeletonLoader.scss';
