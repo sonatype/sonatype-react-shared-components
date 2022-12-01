@@ -12,9 +12,9 @@ import NxSkeletonLoader from './NxSkeletonLoader/NxSkeletonLoader';
 // to add all attrs that you would normally be able to add to that tag (including more classnames)
 export const NxP = withClass('p', 'nx-p', undefined,
   <>
-    <span className="nx-skeleton-loader__text"/>
-    <span className="nx-skeleton-loader__text"/>
-    <span className="nx-skeleton-loader__text"/>
+    <NxSkeletonLoader.Text />
+    <NxSkeletonLoader.Text />
+    <NxSkeletonLoader.Text />
   </>
 );
 export const NxCode = withClass('code', 'nx-code');
