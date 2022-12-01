@@ -60,6 +60,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-multi-file-upload-input', id),
       selectedFilesContainerRef = useRef<HTMLDivElement>(null),
+      totalFilesSelectedId = useUniqueId('nx-multi-file-upload-file-count'),
       validationErrorId = useUniqueId('nx-multi-file-upload-validation-error'),
 
       // Stable React key values for each File object
@@ -154,7 +155,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
                id={inputId}
                className="nx-file-upload__input"
                type="file"
-               aria-label={isFileSelected ? `${files.length} files selected` : 'No File Selected'}
+               aria-describedby={totalFilesSelectedId}
                aria-required={isRequired ?? undefined}
                aria-invalid={showError || undefined}
                aria-errormessage={showError ? validationErrorId : undefined}
@@ -169,6 +170,9 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
                   className="nx-file-upload__select-btn">
           Add Files
         </NxButton>
+        <span id={totalFilesSelectedId} className="nx-multi-file-upload__file-count">
+          {isFileSelected ? `${files.length} files selected` : 'No File Selected'}
+        </span>
         <div ref={selectedFilesContainerRef} className="nx-multi-file-upload__container__files nx-scrollable">
           { isFileSelected ?
             Array.from(files).map((file) =>

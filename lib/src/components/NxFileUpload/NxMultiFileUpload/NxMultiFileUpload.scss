@@ -33,6 +33,10 @@
       margin: var(--nx-spacing-6x);
     }
   }
+
+  &__file-count {
+    display: none;
+  }
 }
 
 .nx-selected-file {
