@@ -99,9 +99,10 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
     const inputFiles = evt.currentTarget.files;
 
     // files refers to the previous file selection, which will be null the first time OnChange is called
-    const returnedFileList = inputFiles ? combineFileLists(files ?? [], inputFiles) : null;
+    const returnedFileList = inputFiles ? combineFileLists(files ?? [], inputFiles) : null,
+        normalizedFiles = returnedFileList?.length ? null : returnedFileList;
 
-    onChangeProp(returnedFileList);
+    onChangeProp(normalizedFiles);
   }
 
   function openPicker() {
