@@ -5,22 +5,19 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxLoadingSpinner from '../NxLoadingSpinner';
 
 describe('NxLoadingSpinner', function() {
-  it('renders an nx-loading-spinner__icon within a nx-loading-spinner', function() {
-    expect(shallow(<NxLoadingSpinner />)).toHaveClassName('.nx-loading-spinner');
-    expect(shallow(<NxLoadingSpinner />)).toContainMatchingElement('.nx-loading-spinner__icon');
-  });
+  const quickRender = rtlRender(NxLoadingSpinner, {}),
+      renderEl = rtlRenderElement(NxLoadingSpinner, {});
 
-  it('renders the specified children', function() {
-    expect(shallow(<NxLoadingSpinner>Foo</NxLoadingSpinner>)).toIncludeText('Foo');
-    expect(shallow(<NxLoadingSpinner>Foo</NxLoadingSpinner>)).not.toIncludeText('Loading');
+  it('renders with the role of status', function() {
+    expect(quickRender().getByRole('status')).toBeInTheDocument();
   });
 
   it('renders the text "Loading…" if no children are provided', function() {
-    expect(shallow(<NxLoadingSpinner />)).toIncludeText('Loading…');
+    expect(renderEl(<NxLoadingSpinner />)).toHaveTextContent('Loading…');
   });
 });
