@@ -44,7 +44,6 @@ export default function NxTransferListHalfCustomTooltipExample() {
                              showMoveAll={false}
                              onMoveAll={() => {}}
                              items={items}
-                             isSelected={true}
                              onItemChange={onItemChange}
                              footerContent={`${items.length} items`} />;
 }
