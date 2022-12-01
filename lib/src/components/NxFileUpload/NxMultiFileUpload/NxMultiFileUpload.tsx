@@ -100,7 +100,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
 
     // files refers to the previous file selection, which will be null the first time OnChange is called
     const returnedFileList = inputFiles ? combineFileLists(files ?? [], inputFiles) : null,
-        normalizedFiles = returnedFileList?.length ? null : returnedFileList;
+        normalizedFiles = !returnedFileList?.length ? null : returnedFileList;
 
     onChangeProp(normalizedFiles);
   }
