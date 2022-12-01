@@ -59,7 +59,8 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       }),
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-multi-file-upload-input', id),
-      selectedFilesContainerRef = useRef<HTMLDivElement>(null),
+      selectedFilesContainerRef = useRef<HTMLOListElement>(null),
+      selectedFilesContainerId = useUniqueId('nx-multi-file-upload-container-files'),
       totalFilesSelectedId = useUniqueId('nx-multi-file-upload-file-count'),
       validationErrorId = useUniqueId('nx-multi-file-upload-validation-error'),
 
@@ -159,6 +160,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
                aria-required={isRequired ?? undefined}
                aria-invalid={showError || undefined}
                aria-errormessage={showError ? validationErrorId : undefined}
+               aria-controls={selectedFilesContainerId}
                multiple/>
         {/* Keynav and screenreaders can ignore the button itself in favor of the <input> */}
         <NxButton type="button"
@@ -173,17 +175,21 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
         <span id={totalFilesSelectedId} className="nx-multi-file-upload__file-count">
           {isFileSelected ? `${files.length} files selected` : 'No File Selected'}
         </span>
-        <div ref={selectedFilesContainerRef} className="nx-multi-file-upload__container__files nx-scrollable">
+        <ol ref={selectedFilesContainerRef}
+            id={selectedFilesContainerId}
+            className="nx-multi-file-upload__container__files nx-scrollable">
           { isFileSelected ?
             Array.from(files).map((file) =>
-              <SelectedFileWrapper key={getKey(file)} file={file} onDismiss={onDismiss}/>
+              <li key={getKey(file)}>
+                <SelectedFileWrapper file={file} onDismiss={onDismiss}/>
+              </li>
             ) :
-            <span className={noFileMessageClassName}>
+            <li className={noFileMessageClassName}>
               <span>No file selected</span>
               <NxFontAwesomeIcon icon={faExclamationCircle} />
-            </span>
+            </li>
           }
-        </div>
+        </ol>
       </div>
 
       { showError &&
