@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useRef } from 'react';
+import React, { ReactElement, useContext, useRef } from 'react';
 
 import { NxTableBodyProps, nxTableBodyPropTypes } from './types';
 import NxTableRow from './NxTableRow';
@@ -64,13 +64,23 @@ const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
     </NxTableRow>
   );
 
-  const firstChild = React.Children.toArray(children)[0];
+  function makeSkeletonChildren() {
+    const firstChild = React.Children.toArray(children)[0] as ReactElement;
+
+    return (
+      <>
+        {React.cloneElement(firstChild, { key: 1 })}
+        {React.cloneElement(firstChild, { key: 2 })}
+        {React.cloneElement(firstChild, { key: 3 })}
+      </>
+    );
+  }
 
   return (
     <tbody ref={bodyRef} {...attrs}>
       {isLoading && loadingSpinnerRow}
       {!!error && !isLoading && errorRow}
-      {!isLoading && !error && skeleton && [firstChild, firstChild, firstChild]}
+      {!isLoading && !error && skeleton && makeSkeletonChildren()}
       {!isLoading && !error && !skeleton && children}
       {!(isLoading || error) && isEmpty && emptyMessageRow}
     </tbody>
