@@ -10,17 +10,19 @@
   @include nx-text-helpers.visually-hidden;
 }
 
+$-gradient-size: 3000px;
+
 .nx-skeleton-loader__block {
-  animation: 2.5s linear .25s infinite skeleton-animation;
+  animation: 1.6s linear .25s infinite skeleton-animation;
 
   background-image: repeating-linear-gradient(
     to right,
     var(--nx-swatch-indigo-90),
-    var(--nx-swatch-indigo-60) 41.5%,
-    var(--nx-swatch-indigo-80) 44.5%,
-    var(--nx-swatch-indigo-90) 50%
+    var(--nx-swatch-indigo-60) 83%,
+    var(--nx-swatch-indigo-80) 89%,
+    var(--nx-swatch-indigo-90)
   );
-  background-size: 5000px;
+  background-size: $-gradient-size;
 
 
   border-radius: var(--nx-border-radius);
@@ -46,6 +48,6 @@
   }
 
   100% {
-    background-position-x: 2500px;
+    background-position-x: $-gradient-size;
   }
 }
