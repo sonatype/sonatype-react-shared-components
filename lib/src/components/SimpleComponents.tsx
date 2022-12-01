@@ -74,3 +74,5 @@ export const NxTableContainer = Object.assign(withClass('div', 'nx-table-contain
 export const NxGlobalHeader = Object.assign(withClass('header', 'nx-global-header'), {
   Actions: withClass('div', 'nx-global-header__actions')
 });
+
+export const NxSpan = withClass('span', '', undefined, <NxSkeletonLoader.Text />);

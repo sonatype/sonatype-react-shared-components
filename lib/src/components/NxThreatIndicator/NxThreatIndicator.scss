@@ -7,11 +7,16 @@
 
 // eyeballed, assumes $nx-font-size surrounding text
 $-vertical-alignment: -0.1em;
+$-skeleton-vertical-alignment: -0.35em;
 
 .nx-threat-indicator {
   font-size: var(--nx-font-size-s);
   margin: 0 var(--nx-spacing-2x);
   vertical-align: $-vertical-alignment;
+
+  &.nx-skeleton-loader__text {
+    vertical-align: $-skeleton-vertical-alignment;
+  }
 }
 
 .nx-list__item {

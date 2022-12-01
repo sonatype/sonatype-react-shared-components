@@ -13,6 +13,7 @@ import { ColumnCountContext } from './contexts';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import NxLoadError from '../NxLoadError/NxLoadError';
 import useEmptyComponent from '../../util/useEmptyComponent';
+import { SkeletonContext } from '../NxSkeletonLoader/NxSkeletonLoader';
 export { NxTableBodyProps };
 
 const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
@@ -20,7 +21,8 @@ const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
       columns = useContext(ColumnCountContext),
       bodyRef = useRef<HTMLTableSectionElement>(null),
       emptyRowRef = useRef<HTMLTableRowElement>(null),
-      isEmpty = useEmptyComponent(bodyRef, emptyRowRef);
+      isEmpty = useEmptyComponent(bodyRef, emptyRowRef),
+      skeleton = useContext(SkeletonContext);
 
   if (isLoading && !columns) {
     console.warn('columns is required when isLoading is set, this should have been determined automatically');
@@ -62,11 +64,14 @@ const NxTableBody = function NxTableBody(props: NxTableBodyProps) {
     </NxTableRow>
   );
 
+  const firstChild = React.Children.toArray(children)[0];
+
   return (
     <tbody ref={bodyRef} {...attrs}>
       {isLoading && loadingSpinnerRow}
       {!!error && !isLoading && errorRow}
-      {!isLoading && !error && children}
+      {!isLoading && !error && skeleton && [firstChild, firstChild, firstChild]}
+      {!isLoading && !error && !skeleton && children}
       {!(isLoading || error) && isEmpty && emptyMessageRow}
     </tbody>
   );

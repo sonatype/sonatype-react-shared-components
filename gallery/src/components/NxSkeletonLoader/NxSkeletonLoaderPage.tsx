@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { NxH2, NxP, NxSkeletonLoader, NxThreatCounter, NxTile } from '@sonatype/react-shared-components';
+import { NxH2, NxP, NxSkeletonLoader, NxSpan, NxTable, NxThreatCounter, NxThreatIndicator, NxTile } from '@sonatype/react-shared-components';
 import React from 'react';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -30,6 +30,29 @@ export default function NxSkeletonLoaderPage() {
                 <NxTile.Content>
                   <NxP>Foo bar</NxP>
                   <NxThreatCounter criticalCount={1} severeCount={20} moderateCount={0} layout="grid" />
+                  <NxTable>
+                    <NxTable.Head>
+                      <NxTable.Row>
+                        <NxTable.Cell>Foo</NxTable.Cell>
+                        <NxTable.Cell>Bar</NxTable.Cell>
+                        <NxTable.Cell>Baz</NxTable.Cell>
+                      </NxTable.Row>
+                    </NxTable.Head>
+                    <NxTable.Body>
+                      <NxTable.Row>
+                        <NxTable.Cell>
+                          <NxThreatIndicator policyThreatLevel={8} />
+                          <NxSpan>Foo</NxSpan>
+                        </NxTable.Cell>
+                        <NxTable.Cell>
+                          <NxP>Bar</NxP>
+                        </NxTable.Cell>
+                        <NxTable.Cell>
+                          <NxSpan>Baz</NxSpan>
+                        </NxTable.Cell>
+                      </NxTable.Row>
+                    </NxTable.Body>
+                  </NxTable>
                 </NxTile.Content>
               </NxTile>
             </NxSkeletonLoader>
