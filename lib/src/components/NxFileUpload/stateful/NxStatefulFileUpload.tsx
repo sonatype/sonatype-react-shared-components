@@ -10,7 +10,7 @@ import { StatefulProps as Props, statefulPropTypes } from '../types';
 
 export { Props };
 
-const NxStatefulMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxStatefulMultiFileUpload(props, ref) {
+const NxStatefulFileUpload = forwardRef<HTMLDivElement, Props>(function NxStatefulFileUpload(props, ref) {
   const { onChange: onChangeProp, ...otherProps } = props,
       [files, setFiles] = useState<FileList | null>(null),
       [isPristine, setIsPristine] = useState(true);
@@ -24,6 +24,6 @@ const NxStatefulMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxS
   return <NxFileUpload ref={ref} { ...otherProps } { ...{ files, isPristine, onChange } } />;
 });
 
-NxStatefulMultiFileUpload.propTypes = statefulPropTypes;
+NxStatefulFileUpload.propTypes = statefulPropTypes;
 
-export default NxStatefulMultiFileUpload;
+export default NxStatefulFileUpload;
