@@ -11,7 +11,7 @@
 }
 
 .nx-skeleton-loader__block {
-  animation: 1.6s linear .25s infinite skeleton-animation;
+  animation: 2.5s linear .25s infinite skeleton-animation;
 
   background-image: repeating-linear-gradient(
     to right,
@@ -20,7 +20,7 @@
     var(--nx-swatch-indigo-80) 44.5%,
     var(--nx-swatch-indigo-90) 50%
   );
-  background-size: 200% 100%;
+  background-size: 5000px;
 
 
   border-radius: var(--nx-border-radius);
@@ -42,10 +42,10 @@
 
 @keyframes skeleton-animation {
   0% {
-    background-position-x: 100%;
+    background-position-x: 0px;
   }
 
   100% {
-    background-position-x: 0%;
+    background-position-x: 2500px;
   }
 }
