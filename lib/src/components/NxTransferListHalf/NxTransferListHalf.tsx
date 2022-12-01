@@ -115,7 +115,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         footerContent,
         filterFn: filterFnProp
       } = props,
-      isSelected = isSelectedProp ?? true, 
+      isSelected = isSelectedProp ?? true,
       defaultFilterFn = pipe(toLower, includes(toLower(filterValue))),
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
       visibleItems = useMemo(
