@@ -61,6 +61,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       inputId = useUniqueId('nx-multi-file-upload-input', id),
       selectedFilesContainerRef = useRef<HTMLOListElement>(null),
       selectedFilesContainerId = useUniqueId('nx-multi-file-upload-container-files'),
+      totalFilesSelected = isFileSelected ? `${files.length} selected files` : 'No file selected',
       totalFilesSelectedId = useUniqueId('nx-multi-file-upload-file-count'),
       validationErrorId = useUniqueId('nx-multi-file-upload-validation-error'),
 
@@ -174,7 +175,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
           Add Files
         </NxButton>
         <span id={totalFilesSelectedId} className="nx-multi-file-upload__file-count">
-          {isFileSelected ? `${files.length} files selected` : 'No File Selected'}
+          {totalFilesSelected}
         </span>
         <ol ref={selectedFilesContainerRef}
             id={selectedFilesContainerId}
@@ -186,7 +187,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
               </li>
             ) :
             <li className={noFileMessageClassName}>
-              <span>No file selected</span>
+              <span>{totalFilesSelected}</span>
               <NxFontAwesomeIcon icon={faExclamationCircle} />
             </li>
           }
