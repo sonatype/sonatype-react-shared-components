@@ -6,22 +6,21 @@
  */
 import React, { forwardRef, useState } from 'react';
 import NxMultiFileUpload from '../NxMultiFileUpload';
+import { initialState, userInput } from '../../stateHelpers';
 import { StatefulProps as Props, statefulPropTypes } from '../../types';
 
 export { Props };
 
 const NxStatefulMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxStatefulMultiFileUpload(props, ref) {
   const { onChange: onChangeProp, ...otherProps } = props,
-      [files, setFiles] = useState<FileList | null>(null),
-      [isPristine, setIsPristine] = useState(true);
+      [filesState, setFilesState] = useState(initialState(null));
 
   function onChange(files: FileList | null) {
-    setIsPristine(false);
-    setFiles(files);
+    setFilesState(userInput(files));
     onChangeProp?.(files);
   }
 
-  return <NxMultiFileUpload ref={ref} { ...otherProps } { ...{ files, isPristine, onChange } } />;
+  return <NxMultiFileUpload ref={ref} { ...otherProps } onChange={onChange} { ...filesState } />;
 });
 
 NxStatefulMultiFileUpload.propTypes = statefulPropTypes;
