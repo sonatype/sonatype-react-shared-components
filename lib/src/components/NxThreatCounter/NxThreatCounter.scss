@@ -20,6 +20,10 @@
   margin: 0;
   padding-right: var(--nx-spacing-4x);
   padding-left: var(--nx-spacing-4x);
+
+  &.nx-skeleton-loader__block {
+    border: none;
+  }
 }
 
 .nx-threat-counter__count {
