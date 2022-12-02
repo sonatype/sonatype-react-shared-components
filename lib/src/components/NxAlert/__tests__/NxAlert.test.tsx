@@ -71,7 +71,6 @@ describe('NxAlert', function() {
     });
   }
 
-
   const minimalProps = {
         children: 'A message to show in an alert',
         icon: faBiohazard
