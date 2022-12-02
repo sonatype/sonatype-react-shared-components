@@ -16,6 +16,7 @@ export default function NxSkeletonLoaderPage() {
         <NxSkeletonLoader.Block style={{ height: '100px', width: '100px' }}/>
         <NxSkeletonLoader.Block style={{ marginLeft: '300px', height: '100px', width: '100px' }}/>
         <NxSkeletonLoader.Block style={{ height: '100px', width: '400px' }}/>
+        <NxSkeletonLoader.Block style={{ height: '100px', width: '3000px' }}/>
         <div className="gallery-example--checkered-background">
           <div className="gallery-example-live">
             <NxSkeletonLoader>

@@ -10,13 +10,7 @@ import NxSkeletonLoader from './NxSkeletonLoader/NxSkeletonLoader';
 
 // Simple convenience components that are just a particular tag with a particular classname, with the ability
 // to add all attrs that you would normally be able to add to that tag (including more classnames)
-export const NxP = withClass('p', 'nx-p', undefined,
-  <>
-    <NxSkeletonLoader.Text />
-    <NxSkeletonLoader.Text />
-    <NxSkeletonLoader.Text />
-  </>
-);
+export const NxP = withClass('p', 'nx-p', undefined, <NxSkeletonLoader.MultiLineText />);
 export const NxCode = withClass('code', 'nx-code');
 export const NxBlockquote = withClass('blockquote', 'nx-blockquote');
 export const NxPre = withClass('pre', 'nx-pre');

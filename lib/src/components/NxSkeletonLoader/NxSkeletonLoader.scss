@@ -42,6 +42,16 @@ $-gradient-size: 3000px;
   vertical-align: text-bottom;
 }
 
+.nx-skeleton-loader__multiline-text {
+  > .nx-skeleton-loader__text {
+    width: 100%;
+
+    &:nth-child(3) {
+      width: 50%;
+    }
+  }
+}
+
 @keyframes skeleton-animation {
   0% {
     background-position-x: 0px;

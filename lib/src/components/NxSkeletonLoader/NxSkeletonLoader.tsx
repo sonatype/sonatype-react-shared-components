@@ -20,9 +20,22 @@ function _NxSkeletonLoader({ children }: { children: ReactNode }) {
   );
 }
 
+const Text = withClass('span', 'nx-skeleton-loader__text');
+
+function MultiLineText() {
+  return (
+    <span className="nx-skeleton-loader__multiline-text">
+      <NxSkeletonLoader.Text />
+      <NxSkeletonLoader.Text />
+      <NxSkeletonLoader.Text />
+    </span>
+  );
+}
+
 const NxSkeletonLoader = Object.assign(_NxSkeletonLoader, {
   Block: withClass('div', 'nx-skeleton-loader__block'),
-  Text: withClass('span', 'nx-skeleton-loader__text')
+  MultiLineText,
+  Text
 });
 
 export default NxSkeletonLoader;
