@@ -8,13 +8,13 @@ import { InputHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface SelectedFileProps {
-  descriptionId?: string;
+  descriptionId?: string | null;
   file: File;
   onDismiss: () => void;
 }
 
 // Props for SelectedFile in NxMultiFileUpload
-export interface MultiSelectedFileProps extends Omit<SelectedFileProps, 'onDismiss'>{
+export interface MultiSelectedFileProps extends Omit<SelectedFileProps, 'onDismiss'> {
   onDismiss: (fileObj:File) => void;
 }
 
@@ -45,4 +45,10 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onChange: PropTypes.func.isRequired,
   files: PropTypes.object as PropTypes.Validator<FileList | null>,
   isPristine: PropTypes.bool
+};
+
+export const selectedFilePropTypes: PropTypes.ValidationMap<SelectedFileProps> = {
+  descriptionId: PropTypes.string,
+  file: PropTypes.object.isRequired as PropTypes.Validator<File>,
+  onDismiss: PropTypes.func.isRequired
 };

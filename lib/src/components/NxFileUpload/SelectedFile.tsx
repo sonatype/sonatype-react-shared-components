@@ -12,20 +12,20 @@ import prettyBytes from 'pretty-bytes';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxTooltip from '../NxTooltip/NxTooltip';
-import { SelectedFileProps } from './types';
+import { SelectedFileProps, selectedFilePropTypes } from './types';
 
 export { SelectedFileProps };
 
 const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 const SelectedFile = forwardRef<HTMLSpanElement, SelectedFileProps>(
-    function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps, ref) {
+    function SelectedFile({ file, onDismiss, descriptionId }, ref) {
       // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
       const buttonLabel = 'Dismiss Upload';
 
       return (
         <span className="nx-selected-file" ref={ref}>
-          <span className="nx-selected-file__info" id={descriptionId}>
+          <span className="nx-selected-file__info" id={descriptionId ?? undefined}>
             <NxOverflowTooltip>
               <span className="nx-selected-file__name">{file.name}</span>
             </NxOverflowTooltip>
@@ -43,5 +43,7 @@ const SelectedFile = forwardRef<HTMLSpanElement, SelectedFileProps>(
       );
     }
 );
+
+SelectedFile.propTypes = selectedFilePropTypes;
 
 export default SelectedFile;
