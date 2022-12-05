@@ -125,7 +125,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
         closeBtns.length === 1 ? inputRef.current?.focus() : closeBtns[idx - 1].focus();
       }
       else {
-        closeBtns[idx + 1].focus();
+        closeBtns[idx + 1].focus({preventScroll: true});
       }
 
       const updatedSelectedFiles = without([fileObj], filesArray),
