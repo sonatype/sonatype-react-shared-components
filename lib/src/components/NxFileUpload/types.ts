@@ -8,7 +8,7 @@ import { InputHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface SelectedFileProps {
-  descriptionId?: string | null;
+  descriptionId?: string;
   file: File;
   onDismiss: () => void;
 }
@@ -45,10 +45,4 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onChange: PropTypes.func.isRequired,
   files: PropTypes.object as PropTypes.Validator<FileList | null>,
   isPristine: PropTypes.bool
-};
-
-export const selectedFilePropTypes: PropTypes.ValidationMap<SelectedFileProps> = {
-  descriptionId: PropTypes.string,
-  file: PropTypes.object.isRequired as PropTypes.Validator<File>,
-  onDismiss: PropTypes.func.isRequired
 };
