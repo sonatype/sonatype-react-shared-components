@@ -6,22 +6,18 @@
  */
 import React from 'react';
 import { mount } from 'enzyme';
-import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 import { act } from 'react-dom/test-utils';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxAccordion, { Props } from '../NxAccordion';
+import NxAccordion from '../NxAccordion';
 import NxButton from '../../NxButton/NxButton';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 function createClickEvent() {
   return new MouseEvent('click', { bubbles: true });
 }
 
 describe('NxAccordion', function() {
-  const getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxAccordion, {});
   const quickRender = rtlRender(NxAccordion, {});
   const renderEl = rtlRenderElement(NxAccordion, {});
 
@@ -58,133 +54,72 @@ describe('NxAccordion', function() {
     rerender(
       <NxAccordion>
         <NxAccordion.Header>
-          <span>Foo</span>
+          <span className='foo'>Foo</span>
         </NxAccordion.Header>
-        <span>Bar</span>
+        <span className='bar'>Bar</span>
       </NxAccordion>
     );
-    const childrenWrapper = container.querySelector('.nx-accordion__content');
 
-    expect(childrenWrapper).toExist();
-    expect(childrenWrapper).toContainReact(<span>Bar</span>);
-    expect(childrenWrapper).not.toContainReact(<span>Foo</span>);
+    expect(container.querySelector('.nx-accordion__header .foo')).toBeInTheDocument();
+    expect(container.querySelector('.nx-accordion__content .bar')).toBeInTheDocument();
   });
 
   describe('Header', function() {
     it('renders the NxAccordion.Header as a <summary> containing a nx-accordion__summary-wrapper', function() {
-      const component = getMountedComponent({
-            children: (
-              <NxAccordion.Header id="headerId">
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          header = component.find('summary'),
-          wrapper = header.children();
+      const { rerender, container } = quickRender();
 
-      expect(header).toExist();
-      expect(header).toMatchSelector('#headerId');
-      expect(wrapper).toHaveClassName('nx-accordion__summary-wrapper');
-      expect(wrapper).toContainReact(<span>Foo</span>);
+      rerender(
+        <NxAccordion.Header id="headerId">
+          <span>Foo</span>
+        </NxAccordion.Header>
+      );
+
+      expect(container.querySelector('#headerId')).toBeInTheDocument();
+      expect(container.querySelector('.nx-accordion__summary-wrapper')).toBeInTheDocument();
     });
 
     it('sets the nx-accordion__header class along with any provided className on the header', function() {
-      const component = getMountedComponent({
-            className: 'accordion-class',
-            children: (
-              <NxAccordion.Header className="header-class">
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          header = component.find('summary');
+      const { rerender, container } = quickRender();
 
-      expect(header).toHaveClassName('nx-accordion__header');
-      expect(header).toHaveClassName('header-class');
-      expect(getMountedComponent({ children: <NxAccordion.Header /> }).find('summary'))
-          .toHaveClassName('nx-accordion__header');
+      rerender(
+        <NxAccordion.Header className="header-class">
+          <span>Foo</span>
+        </NxAccordion.Header>
+      );
+
+      expect(container.querySelector('.nx-accordion__header')).toBeInTheDocument();
+      expect(container.querySelector('.nx-accordion__header')).toHaveClass('header-class');
+      expect(quickRender({ children: <NxAccordion.Header /> }).getByRole('button'))
+          .toHaveClass('nx-accordion__header');
     });
 
     it('renders an icon with nx-accordion__chevron class as the first child of the header wrapper', function() {
-      const component = getMountedComponent({
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-                <div className="nx-btn-bar">
-                  <NxButton />
-                </div>
-              </NxAccordion.Header>
-            )
-          }),
-          wrapper = component.find('summary').children();
+      const { rerender, container } = quickRender();
 
-      expect(wrapper.children().first()).toMatchSelector(NxFontAwesomeIcon);
-      expect(wrapper.children().at(1)).toMatchSelector('span');
-      expect(wrapper.children().last()).toMatchSelector('div');
+      rerender(
+        <NxAccordion.Header>
+          <span>Foo</span>
+          <div className="nx-btn-bar">
+            <NxButton />
+          </div>
+        </NxAccordion.Header>
+      );
 
-      expect(wrapper.find(NxFontAwesomeIcon)).toHaveClassName('nx-accordion__chevron');
-    });
-
-    it('uses faChevronCircleDown as the icon when the accordion is closed', function() {
-      const component = getMountedComponent({
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          header = component.find('summary');
-
-      expect(header.find(NxFontAwesomeIcon)).toHaveProp('icon', faChevronCircleDown);
-
-      const explicitOpenComponent = getMountedComponent({
-            open: false,
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          explicitOpenHeader = explicitOpenComponent.find('summary');
-
-      expect(explicitOpenHeader.find(NxFontAwesomeIcon)).toHaveProp('icon', faChevronCircleDown);
-    });
-
-    it('uses faChevronCircleUp as the icon when the accordion is open', function() {
-      const component = getMountedComponent({
-            open: true,
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          header = component.find('summary');
-
-      expect(header.find(NxFontAwesomeIcon)).toHaveProp('icon', faChevronCircleUp);
+      expect(container.querySelector('.nx-accordion__chevron')).toBeInTheDocument();
     });
 
     it('sets aria-controls to the accordion id', function() {
-      const explicitIdAccordion = getMountedComponent({
-            id: 'foo',
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          autoIdAccordion = getMountedComponent({
-            id: 'foo',
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          autoId = autoIdAccordion.prop('id');
+      const { rerender, container } = quickRender();
 
-      expect(explicitIdAccordion.find('summary')).toHaveProp('aria-controls', 'foo');
-      expect(autoIdAccordion.find('summary')).toHaveProp('aria-controls', autoId);
+      rerender(
+        <NxAccordion id='foo'>
+          <NxAccordion.Header>
+            <span>Foo</span>
+          </NxAccordion.Header>
+        </NxAccordion>
+      );
+
+      expect(container.querySelector('.nx-accordion__header')).toHaveAttribute('aria-controls', 'foo');
     });
   });
 
