@@ -65,8 +65,8 @@ describe('NxMultiFileUpload', function() {
     expect(renderEl()).toHaveTextContent('No file selected');
   });
 
-  it('render a "No File Selected" aria-label if files is null', function() {
-    expect(renderInput()?.getAttribute('aria-label')).toBe('No File Selected');
+  it('renders a "No file selected" aria description if files is null', function() {
+    expect(renderInput()).toHaveAccessibleDescription('No file selected');
   });
 
   it('shows an error when there is no file selected, if it isRequired is not isPristine', function() {
