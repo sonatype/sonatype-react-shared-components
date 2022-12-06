@@ -97,7 +97,7 @@ describe('NxMultiFileUpload', function() {
     expect(renderInput({ isRequired: true })?.getAttribute('aria-required')).toBe('true');
   });
 
-  it('sets aria-invalid on the input when there is no file selected, if it isRequired is not isPristine', function() {
+  it('sets aria-invalid on the input when there is no file selected, if it isRequired and is not isPristine', function() {
     expect(renderInput()?.getAttribute('aria-invalid')).not.toBe('true');
     expect(renderInput({ isPristine: true })?.getAttribute('aria-invalid')).not.toBe('true');
     expect(renderInput({ isRequired: true, isPristine: true })?.getAttribute('aria-invalid')).not.toBe('true');
