@@ -207,7 +207,7 @@ module.exports = {
 
     let files, tmpDir;
 
-    async function buildFiles() {
+    async function buildUploadableFiles() {
       tmpDir = await tmp.dir({ unsafeCleanup: true });
 
       files = {
@@ -242,7 +242,7 @@ module.exports = {
       moveMouseAway,
       dismissResultingDialog,
       disableLoadingSpinnerAnimation,
-      buildFiles,
+      buildUploadableFiles,
       cleanupFiles,
       scrollIntoView,
 

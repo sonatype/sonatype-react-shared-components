@@ -10,7 +10,7 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxMultiFileUpload', function() {
   const {
-    buildFiles,
+    buildUploadableFiles,
     cleanupFiles,
     checkScreenshot,
     isInDocument,
@@ -34,7 +34,7 @@ describe('NxMultiFileUpload', function() {
   let files;
 
   beforeAll(async function() {
-    files = await buildFiles();
+    files = await buildUploadableFiles();
   });
 
   afterAll(async function() {
