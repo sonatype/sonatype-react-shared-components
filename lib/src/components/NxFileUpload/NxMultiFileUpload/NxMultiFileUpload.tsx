@@ -55,14 +55,14 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       showError = isRequired && showValidationErrors && !isFileSelected,
       className = classnames('nx-multi-file-upload', 'nx-file-upload', classNameProp),
       noFileMessageClassName = classnames('nx-file-upload__no-file-message', {
-        'nx-file-upload__no-file-message--invalid': showError
+        'nx-file-upload__no-file-message--invalid': showError, 'hidden': isFileSelected
       }),
+      noFileMessageId = useUniqueId('nx-file-upload__no-file-message'),
       inputRef = useRef<HTMLInputElement>(null),
       inputId = useUniqueId('nx-multi-file-upload-input', id),
       selectedFilesContainerRef = useRef<HTMLOListElement>(null),
       selectedFilesContainerId = useUniqueId('nx-multi-file-upload-container-files'),
       totalFilesSelected = isFileSelected ? `${files.length} selected files` : 'No file selected',
-      totalFilesSelectedId = useUniqueId('nx-multi-file-upload-file-count'),
       validationErrorId = useUniqueId('nx-multi-file-upload-validation-error'),
 
       // Stable React key values for each File object
@@ -158,7 +158,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
                id={inputId}
                className="nx-file-upload__input"
                type="file"
-               aria-describedby={totalFilesSelectedId}
+               aria-describedby={noFileMessageId}
                aria-required={isRequired ?? undefined}
                aria-invalid={showError || undefined}
                aria-errormessage={showError ? validationErrorId : undefined}
@@ -174,23 +174,20 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
                   className="nx-file-upload__select-btn">
           Add Files
         </NxButton>
-        <span id={totalFilesSelectedId} className="nx-multi-file-upload__file-count">
-          {totalFilesSelected}
-        </span>
         <ol ref={selectedFilesContainerRef}
             id={selectedFilesContainerId}
             className="nx-multi-file-upload__container__files nx-scrollable">
-          { isFileSelected ?
+          { isFileSelected &&
             Array.from(files).map((file) =>
               <li key={getKey(file)}>
                 <SelectedFileWrapper file={file} onDismiss={onDismiss}/>
               </li>
-            ) :
-            <li className={noFileMessageClassName}>
-              <span>{totalFilesSelected}</span>
-              <NxFontAwesomeIcon icon={faExclamationCircle} />
-            </li>
+            )
           }
+          <li id={noFileMessageId} className={noFileMessageClassName}>
+            <span>{totalFilesSelected}</span>
+            <NxFontAwesomeIcon icon={faExclamationCircle} />
+          </li>
         </ol>
       </div>
 
