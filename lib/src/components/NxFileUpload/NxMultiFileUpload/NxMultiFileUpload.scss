@@ -39,8 +39,9 @@
   &__file-count {
     display: none;
   }
+
+  .nx-selected-file {
+    margin-bottom: var(--nx-spacing-2x);
+  }
 }
 
-.nx-selected-file {
-  margin-bottom: var(--nx-spacing-2x);
-}
