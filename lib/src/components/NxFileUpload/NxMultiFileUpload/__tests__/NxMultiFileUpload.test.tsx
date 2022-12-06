@@ -97,13 +97,14 @@ describe('NxMultiFileUpload', function() {
     expect(renderInput({ isRequired: true })?.getAttribute('aria-required')).toBe('true');
   });
 
-  it('sets aria-invalid on the input when there is no file selected, if it isRequired and is not isPristine', function() {
-    expect(renderInput()?.getAttribute('aria-invalid')).not.toBe('true');
-    expect(renderInput({ isPristine: true })?.getAttribute('aria-invalid')).not.toBe('true');
-    expect(renderInput({ isRequired: true, isPristine: true })?.getAttribute('aria-invalid')).not.toBe('true');
+  it('sets aria-invalid on the input when there is no file selected, if it isRequired and is not isPristine',
+      function() {
+        expect(renderInput()?.getAttribute('aria-invalid')).not.toBe('true');
+        expect(renderInput({ isPristine: true })?.getAttribute('aria-invalid')).not.toBe('true');
+        expect(renderInput({ isRequired: true, isPristine: true })?.getAttribute('aria-invalid')).not.toBe('true');
 
-    expect(renderInput({ isRequired: true, isPristine: false })?.getAttribute('aria-invalid')).toBe('true');
-  });
+        expect(renderInput({ isRequired: true, isPristine: false })?.getAttribute('aria-invalid')).toBe('true');
+      });
 
   it('sets aria-errormessage on the input to the id of the validation error, when present', function() {
     expect(renderInput()).not.toHaveErrorMessage();
