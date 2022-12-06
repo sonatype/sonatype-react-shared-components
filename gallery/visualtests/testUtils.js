@@ -148,7 +148,7 @@ module.exports = {
     }
 
     async function checkFullPageScreenshot() {
-      const screenshot = await page.screenshot({ fullPage: false });
+      const screenshot = await page.screenshot();
       expect(screenshot).toMatchImageSnapshot();
     }
 
