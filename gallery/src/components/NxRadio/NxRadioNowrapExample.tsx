@@ -22,7 +22,7 @@ export default function NxRadioNowrapExample() {
           Red color
         </NxRadio>
         {' '}
-        <NxRadio name="color3" value="green" onChange={setColor} isChecked={color === 'green'}>
+        <NxRadio name="color3" value="green" onChange={setColor} overflowTooltip={false} isChecked={color === 'green'}>
           Green color
         </NxRadio>
         {' '}
