@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { pipe } from 'ramda';
 
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
@@ -79,16 +79,27 @@ describe('NxMultiFileUpload', function() {
   });
 
   it('shows an error when in a form with showValidationErrors if it is isRequired and no file is selected', function() {
-    const renderWithForm = render(
+    const { rerender, container } = render(
       <NxForm onSubmit={() => {}} showValidationErrors={true}>
-        <NxMultiFileUpload { ...minimalProps } isRequired={true} />
+        <NxMultiFileUpload { ...minimalProps } isRequired={true} isPristine={false}/>
       </NxForm>
     );
 
-    expect(renderWithForm.queryByRole('alert')).toBeTruthy();
-    expect(renderWithForm.queryByRole('alert')).toHaveTextContent('This field is required!');
-    expect(renderWithForm.container.querySelector('input[type=file]')).toHaveAttribute('aria-invalid', 'true');
-    expect(renderWithForm.container.querySelector('input[type=file]')).toHaveErrorMessage('This field is required!');
+    expect(screen.queryByRole('alert')).toBeTruthy();
+    expect(screen.queryByRole('alert')).toHaveTextContent('This field is required!');
+    expect(container.querySelector('input[type=file]')).toHaveAttribute('aria-invalid', 'true');
+    expect(container.querySelector('input[type=file]')).toHaveErrorMessage('This field is required!');
+
+    rerender(
+      <NxForm onSubmit={() => {}} showValidationErrors={true}>
+        <NxMultiFileUpload { ...minimalProps } isRequired={true} isPristine={true}/>
+      </NxForm>
+    );
+
+    expect(screen.queryByRole('alert')).toBeTruthy();
+    expect(screen.queryByRole('alert')).toHaveTextContent('This field is required!');
+    expect(container.querySelector('input[type=file]')).toHaveAttribute('aria-invalid', 'true');
+    expect(container.querySelector('input[type=file]')).toHaveErrorMessage('This field is required!');
   });
 
   it('sets aria-required on the input if isRequired is true', function() {
