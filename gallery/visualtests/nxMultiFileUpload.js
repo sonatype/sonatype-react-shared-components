@@ -111,8 +111,8 @@ describe('NxMultiFileUpload', function() {
       await openFileChooser([files.bytes, files.kilobytes]);
 
       const [selectedFile1, selectedFile2] = await waitAndGetElements(
-          `${complexExampleSelector} .nx-selected-file:nth-child(1)`,
-          `${complexExampleSelector} .nx-selected-file:nth-child(2)`);
+          `${complexExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${complexExampleSelector} li:nth-child(2) .nx-selected-file`);
 
       const textContent1 = await selectedFile1.evaluate(e => e.textContent),
           textContent2 = await selectedFile2.evaluate(e => e.textContent);
@@ -128,13 +128,13 @@ describe('NxMultiFileUpload', function() {
 
     it('adds to selected files when file picker opened more than once', async function() {
       await openFileChooser([files.bytes]);
-
-      const [selectedFile1] = (await waitAndGetElements(`${complexExampleSelector} .nx-selected-file:nth-child(1)`)),
-          textContent1 = await selectedFile1.evaluate(e => e.textContent);
-
       await openFileChooser([files.kilobytes]);
 
-      const [selectedFile2] = (await waitAndGetElements(`${complexExampleSelector} .nx-selected-file:nth-child(2)`)),
+      const [selectedFile1, selectedFile2] = await waitAndGetElements(
+          `${complexExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${complexExampleSelector} li:nth-child(2) .nx-selected-file`);
+
+      const textContent1 = await selectedFile1.evaluate(e => e.textContent),
           textContent2 = await selectedFile2.evaluate(e => e.textContent);
 
       expect(textContent1).toMatch('14.0 B');
@@ -144,12 +144,12 @@ describe('NxMultiFileUpload', function() {
     it('correctly displays varying file sizes', async function() {
       await openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
 
-      const [selectedFile1, selectedFile2, selectedFile3, selectedFile4] = (await waitAndGetElements(
-          `${complexExampleSelector} .nx-selected-file:nth-child(1)`,
-          `${complexExampleSelector} .nx-selected-file:nth-child(2)`,
-          `${complexExampleSelector} .nx-selected-file:nth-child(3)`,
-          `${complexExampleSelector} .nx-selected-file:nth-child(4)`
-      ));
+      const [selectedFile1, selectedFile2, selectedFile3, selectedFile4] = await waitAndGetElements(
+          `${complexExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${complexExampleSelector} li:nth-child(2) .nx-selected-file`,
+          `${complexExampleSelector} li:nth-child(3) .nx-selected-file`,
+          `${complexExampleSelector} li:nth-child(4) .nx-selected-file`
+      );
 
       const textContent1 = await selectedFile1.evaluate(e => e.textContent),
           textContent2 = await selectedFile2.evaluate(e => e.textContent),
@@ -166,9 +166,9 @@ describe('NxMultiFileUpload', function() {
       await openFileChooser([files.bytes, files.kilobytes]);
 
       let [selectedFile1, dismissBtn1, selectedFile2] = await waitAndGetElements(
-          `${complexExampleSelector} .nx-selected-file:nth-child(1)`,
-          `${complexExampleSelector} .nx-selected-file:nth-child(1) .nx-selected-file__dismiss-btn`,
-          `${complexExampleSelector} .nx-selected-file:nth-child(2)`
+          `${complexExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${complexExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`,
+          `${complexExampleSelector} li:nth-child(2) .nx-selected-file`
       );
 
       let textContent1 = await selectedFile1.evaluate(e => e.textContent),
@@ -180,21 +180,28 @@ describe('NxMultiFileUpload', function() {
 
       await dismissBtn1.click();
 
-      [selectedFile1] = await waitAndGetElements(`${complexExampleSelector} .nx-selected-file:nth-child(1)`);
+      [selectedFile1] = await waitAndGetElements(`${complexExampleSelector} li:nth-child(1) .nx-selected-file`);
       textContent1 = await selectedFile1.evaluate(e => e.textContent);
+
+      // THIS TIMES-OUT / can't find selector
+      //await waitAndGetElements(`${complexExampleSelector} li:nth-child(2) .nx-selected-file`);
 
       // confirm the correct file was removed
       expect(await isInDocument(selectedFile2)).toBe(false);
       expect(await isInDocument(selectedFile1)).toBe(true);
       expect(textContent1).toMatch('2.0 kB');
+
+      // snapshot displays only one file (kilobytes)
+      // const [complexExample] = await waitAndGetElements(complexExampleSelector);
+      // await checkScreenshot(complexExample);
     });
 
     it('sets the no File Selected message when the last selected file is removed', async function() {
       await openFileChooser([files.bytes]);
 
       const [selectedFile, dismissBtn] = await waitAndGetElements(
-          `${complexExampleSelector} .nx-selected-file`,
-          `${complexExampleSelector} .nx-selected-file .nx-selected-file__dismiss-btn`
+          `${complexExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${complexExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`
       );
 
       await dismissBtn.click();
@@ -202,6 +209,7 @@ describe('NxMultiFileUpload', function() {
       const [noFileSelectedMessage] = await waitAndGetElements('.nx-file-upload__no-file-message'),
           textContent = await noFileSelectedMessage.evaluate(e => e.textContent);
 
+      // THIS test works, certifies selectdFile has been removed
       expect(await isInDocument(selectedFile)).toBe(false);
       expect(await isInDocument(noFileSelectedMessage)).toBe(true);
       expect(textContent).toBe('No file selected');
@@ -213,13 +221,13 @@ describe('NxMultiFileUpload', function() {
 
         let [selectedFile1, dismissBtn1, selectedFile2, dismissBtn2, selectedFile3, dismissBtn3, selectedFile4] =
           await waitAndGetElements(
-              `${complexExampleSelector} .nx-selected-file:nth-child(1)`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(1) .nx-selected-file__dismiss-btn`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(2)`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(2) .nx-selected-file__dismiss-btn`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(3)`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(3) .nx-selected-file__dismiss-btn`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(4)`
+              `${complexExampleSelector} li:nth-child(1) .nx-selected-file`,
+              `${complexExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${complexExampleSelector} li:nth-child(2) .nx-selected-file`,
+              `${complexExampleSelector} li:nth-child(2) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${complexExampleSelector} li:nth-child(3) .nx-selected-file`,
+              `${complexExampleSelector} li:nth-child(3) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${complexExampleSelector} li:nth-child(4) .nx-selected-file`
           );
 
         // certify all 4 files are indeed uploaded
@@ -233,12 +241,12 @@ describe('NxMultiFileUpload', function() {
 
         [selectedFile1, dismissBtn1, selectedFile2, dismissBtn2, selectedFile3, dismissBtn3] =
           await waitAndGetElements(
-              `${complexExampleSelector} .nx-selected-file:nth-child(1)`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(1) .nx-selected-file__dismiss-btn`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(2)`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(2) .nx-selected-file__dismiss-btn`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(3)`,
-              `${complexExampleSelector} .nx-selected-file:nth-child(3) .nx-selected-file__dismiss-btn`
+              `${complexExampleSelector} li:nth-child(1) .nx-selected-file`,
+              `${complexExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${complexExampleSelector} li:nth-child(2) .nx-selected-file`,
+              `${complexExampleSelector} li:nth-child(2) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${complexExampleSelector} li:nth-child(3) .nx-selected-file`,
+              `${complexExampleSelector} li:nth-child(3) .nx-selected-file .nx-selected-file__dismiss-btn`
           );
 
         // confirm a file was removed
@@ -260,6 +268,10 @@ describe('NxMultiFileUpload', function() {
 
         //focus has moved to the next last dismiss button
         expect(await isFocused(dismissBtn2)).toBe(true);
+
+        // final snapshot displays 2 files (when commenting out failing assertions)
+        // const [complexExample] = await waitAndGetElements(complexExampleSelector);
+        // await checkScreenshot(complexExample);
       });
 
       it('sets focus on input when last file is removed', async function() {
@@ -267,14 +279,15 @@ describe('NxMultiFileUpload', function() {
 
         const [input, selectedFile, dismissBtn] = await waitAndGetElements(
             `${complexExampleSelector} input[multiple]`,
-            `${complexExampleSelector} .nx-selected-file`,
-            `${complexExampleSelector} .nx-selected-file .nx-selected-file__dismiss-btn`
+            `${complexExampleSelector} li:nth-child(1) .nx-selected-file`,
+            `${complexExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`
         );
 
         expect(await isInDocument(selectedFile)).toBe(true);
 
         await dismissBtn.click();
 
+        // THIS test works, selectedFile removed
         expect(await isInDocument(selectedFile)).toBe(false);
         expect(await isFocused(input)).toBe(true);
       });
@@ -299,8 +312,8 @@ describe('NxMultiFileUpload', function() {
       await openFileChooser([files.bytes, files.kilobytes]);
 
       const [selectedFile1, selectedFile2] = await waitAndGetElements(
-          `${statefulExampleSelector} .nx-selected-file:nth-child(1)`,
-          `${statefulExampleSelector} .nx-selected-file:nth-child(2)`);
+          `${statefulExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${statefulExampleSelector} li:nth-child(2) .nx-selected-file`);
 
       const textContent1 = await selectedFile1.evaluate(e => e.textContent),
           textContent2 = await selectedFile2.evaluate(e => e.textContent);
@@ -316,29 +329,28 @@ describe('NxMultiFileUpload', function() {
 
     it('adds to selected files when file picker opened more than once', async function() {
       await openFileChooser([files.bytes]);
-
-      const [selectedFile1] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(1)`)),
-          textContent1 = await selectedFile1.evaluate(e => e.textContent);
-
-      expect(textContent1).toMatch('14.0 B');
-
       await openFileChooser([files.kilobytes]);
 
-      const [selectedFile2] = (await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(2)`)),
+      const [selectedFile1, selectedFile2] = await waitAndGetElements(
+          `${statefulExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${statefulExampleSelector} li:nth-child(2) .nx-selected-file`);
+
+      const textContent1 = await selectedFile1.evaluate(e => e.textContent),
           textContent2 = await selectedFile2.evaluate(e => e.textContent);
 
+      expect(textContent1).toMatch('14.0 B');
       expect(textContent2).toMatch('2.0 kB');
     });
 
     it('correctly displays varying file sizes', async function() {
       await openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
 
-      const [selectedFile1, selectedFile2, selectedFile3, selectedFile4] = (await waitAndGetElements(
-          `${statefulExampleSelector} .nx-selected-file:nth-child(1)`,
-          `${statefulExampleSelector} .nx-selected-file:nth-child(2)`,
-          `${statefulExampleSelector} .nx-selected-file:nth-child(3)`,
-          `${statefulExampleSelector} .nx-selected-file:nth-child(4)`
-      ));
+      const [selectedFile1, selectedFile2, selectedFile3, selectedFile4] = await waitAndGetElements(
+          `${statefulExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${statefulExampleSelector} li:nth-child(2) .nx-selected-file`,
+          `${statefulExampleSelector} li:nth-child(3) .nx-selected-file`,
+          `${statefulExampleSelector} li:nth-child(4) .nx-selected-file`
+      );
 
       const textContent1 = await selectedFile1.evaluate(e => e.textContent),
           textContent2 = await selectedFile2.evaluate(e => e.textContent),
@@ -355,9 +367,9 @@ describe('NxMultiFileUpload', function() {
       await openFileChooser([files.bytes, files.kilobytes]);
 
       let [selectedFile1, dismissBtn1, selectedFile2] = await waitAndGetElements(
-          `${statefulExampleSelector} .nx-selected-file:nth-child(1)`,
-          `${statefulExampleSelector} .nx-selected-file:nth-child(1) .nx-selected-file__dismiss-btn`,
-          `${statefulExampleSelector} .nx-selected-file:nth-child(2)`
+          `${statefulExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${statefulExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`,
+          `${statefulExampleSelector} li:nth-child(2) .nx-selected-file`
       );
 
       let textContent1 = await selectedFile1.evaluate(e => e.textContent),
@@ -371,7 +383,7 @@ describe('NxMultiFileUpload', function() {
         await dismissBtn1.click();
       });
 
-      [selectedFile1] = await waitAndGetElements(`${statefulExampleSelector} .nx-selected-file:nth-child(1)`);
+      [selectedFile1] = await waitAndGetElements(`${statefulExampleSelector} li:nth-child(1) .nx-selected-file`);
       textContent1 = await selectedFile1.evaluate(e => e.textContent);
 
       // confirm the correct file was removed
@@ -384,8 +396,8 @@ describe('NxMultiFileUpload', function() {
       await openFileChooser([files.bytes]);
 
       const [selectedFile, dismissBtn] = await waitAndGetElements(
-          `${statefulExampleSelector} .nx-selected-file`,
-          `${statefulExampleSelector} .nx-selected-file .nx-selected-file__dismiss-btn`
+          `${statefulExampleSelector} li:nth-child(1) .nx-selected-file`,
+          `${statefulExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`
       );
 
       await dismissResultingDialog(async () => {
@@ -406,13 +418,13 @@ describe('NxMultiFileUpload', function() {
 
         let [selectedFile1, dismissBtn1, selectedFile2, dismissBtn2, selectedFile3, dismissBtn3, selectedFile4] =
           await waitAndGetElements(
-              `${statefulExampleSelector} .nx-selected-file:nth-child(1)`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(1) .nx-selected-file__dismiss-btn`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(2)`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(2) .nx-selected-file__dismiss-btn`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(3)`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(3) .nx-selected-file__dismiss-btn`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(4)`
+              `${statefulExampleSelector} li:nth-child(1) .nx-selected-file`,
+              `${statefulExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${statefulExampleSelector} li:nth-child(2) .nx-selected-file`,
+              `${statefulExampleSelector} li:nth-child(2) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${statefulExampleSelector} li:nth-child(3) .nx-selected-file`,
+              `${statefulExampleSelector} li:nth-child(3) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${statefulExampleSelector} li:nth-child(4) .nx-selected-file`
           );
 
         // certify all 4 files are indeed uploaded
@@ -428,12 +440,12 @@ describe('NxMultiFileUpload', function() {
 
         [selectedFile1, dismissBtn1, selectedFile2, dismissBtn2, selectedFile3, dismissBtn3] =
           await waitAndGetElements(
-              `${statefulExampleSelector} .nx-selected-file:nth-child(1)`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(1) .nx-selected-file__dismiss-btn`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(2)`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(2) .nx-selected-file__dismiss-btn`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(3)`,
-              `${statefulExampleSelector} .nx-selected-file:nth-child(3) .nx-selected-file__dismiss-btn`
+              `${statefulExampleSelector} li:nth-child(1) .nx-selected-file`,
+              `${statefulExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${statefulExampleSelector} li:nth-child(2) .nx-selected-file`,
+              `${statefulExampleSelector} li:nth-child(2) .nx-selected-file .nx-selected-file__dismiss-btn`,
+              `${statefulExampleSelector} li:nth-child(3) .nx-selected-file`,
+              `${statefulExampleSelector} li:nth-child(3) .nx-selected-file .nx-selected-file__dismiss-btn`
           );
 
         // confirm a file was removed
@@ -464,8 +476,8 @@ describe('NxMultiFileUpload', function() {
 
         const [input, selectedFile, dismissBtn] = await waitAndGetElements(
             `${statefulExampleSelector} input[multiple]`,
-            `${statefulExampleSelector} .nx-selected-file`,
-            `${statefulExampleSelector} .nx-selected-file .nx-selected-file__dismiss-btn`
+            `${statefulExampleSelector} li:nth-child(1) .nx-selected-file`,
+            `${statefulExampleSelector} li:nth-child(1) .nx-selected-file .nx-selected-file__dismiss-btn`
         );
 
         expect(await isInDocument(selectedFile)).toBe(true);
