@@ -145,34 +145,34 @@ describe('NxTooltip', function() {
     );
 
     it('does not affect the accessible name of the child', async function() {
-        const user = userEvent.setup(),
-            children = <button>Foo</button>,
-            view = quickRender({ children }),
-            button = view.getByRole('button');
+      const user = userEvent.setup(),
+          children = <button>Foo</button>,
+          view = quickRender({ children }),
+          button = view.getByRole('button');
 
-        expect(button).toHaveAccessibleName('Foo');
+      expect(button).toHaveAccessibleName('Foo');
 
-        await user.hover(button);
+      await user.hover(button);
 
-        expect(button).toHaveAccessibleName('Foo');
+      expect(button).toHaveAccessibleName('Foo');
     });
 
     it('sets the title of the child when the tooltip is not active', async function() {
-        const children = <button>Foo</button>,
-            childrenWithOwnDescription = <button aria-describedby="descriptionId">Foo</button>,
-            view = quickRender({ children }),
-            viewWithOwnDescription = quickRender({ children: childrenWithOwnDescription }),
-            button = view.getByRole('button'),
-            buttonWithOwnDescription = viewWithOwnDescription.getByRole('button')
+      const children = <button>Foo</button>,
+          childrenWithOwnDescription = <button aria-describedby="descriptionId">Foo</button>,
+          view = quickRender({ children }),
+          viewWithOwnDescription = quickRender({ children: childrenWithOwnDescription }),
+          button = view.getByRole('button'),
+          buttonWithOwnDescription = viewWithOwnDescription.getByRole('button');
 
-        // When an element has no aria-describedby but does have a title (and that title isn't being used
-        // as the a11y name) the title is used as the a11y description.
-        // The waitFor is so the tooltips have time to asynchronously initialize
-        await waitFor(() => expect(button).toHaveAccessibleDescription('tip'));
-        expect(view.getByTitle('tip')).toBe(button);
+      // When an element has no aria-describedby but does have a title (and that title isn't being used
+      // as the a11y name) the title is used as the a11y description.
+      // The waitFor is so the tooltips have time to asynchronously initialize
+      await waitFor(() => expect(button).toHaveAccessibleDescription('tip'));
+      expect(view.getByTitle('tip')).toBe(button);
 
-        expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
-        expect(viewWithOwnDescription.getByTitle('tip')).toBe(buttonWithOwnDescription);
+      expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
+      expect(viewWithOwnDescription.getByTitle('tip')).toBe(buttonWithOwnDescription);
     });
 
     it('sets the accessible description but not the title of the child when the tooltip is active',
@@ -185,7 +185,7 @@ describe('NxTooltip', function() {
           await user.hover(button);
           await waitFor(() => expect(button).toHaveAccessibleDescription('tip'));
           expect(button).not.toHaveAttribute('title');
-      }
+        }
     );
 
     it('does not override the accessible description if it is already set',
@@ -193,12 +193,12 @@ describe('NxTooltip', function() {
           const user = userEvent.setup(),
               childrenWithOwnDescription = <button aria-describedby="descriptionId">Foo</button>,
               viewWithOwnDescription = quickRender({ children: childrenWithOwnDescription }),
-              buttonWithOwnDescription = viewWithOwnDescription.getByRole('button')
+              buttonWithOwnDescription = viewWithOwnDescription.getByRole('button');
 
           await user.hover(buttonWithOwnDescription);
           expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
           expect(buttonWithOwnDescription).not.toHaveAttribute('title');
-      }
+        }
     );
   });
 
@@ -222,33 +222,33 @@ describe('NxTooltip', function() {
     );
 
     it('does not affect the accessible name of the child', async function() {
-        const user = userEvent.setup(),
-            children = <button>Foo</button>,
-            title = <span data-testid="tooltip-content">tiptip</span>,
-            view = quickRender({ children, title }),
-            button = view.getByRole('button');
+      const user = userEvent.setup(),
+          children = <button>Foo</button>,
+          title = <span data-testid="tooltip-content">tiptip</span>,
+          view = quickRender({ children, title }),
+          button = view.getByRole('button');
 
-        expect(button).toHaveAccessibleName('Foo');
+      expect(button).toHaveAccessibleName('Foo');
 
-        await user.hover(button);
+      await user.hover(button);
 
-        expect(button).toHaveAccessibleName('Foo');
+      expect(button).toHaveAccessibleName('Foo');
     });
 
     it('does not set the title or accessible description of the child when not active', async function() {
-        const children = <button>Foo</button>,
-            title = <span data-testid="tooltip-content">tiptip</span>,
-            childrenWithOwnDescription = <button aria-describedby="descriptionId">Foo</button>,
-            view = quickRender({ children, title }),
-            viewWithOwnDescription = quickRender({ children: childrenWithOwnDescription, title }),
-            button = view.getByRole('button'),
-            buttonWithOwnDescription = viewWithOwnDescription.getByRole('button');
+      const children = <button>Foo</button>,
+          title = <span data-testid="tooltip-content">tiptip</span>,
+          childrenWithOwnDescription = <button aria-describedby="descriptionId">Foo</button>,
+          view = quickRender({ children, title }),
+          viewWithOwnDescription = quickRender({ children: childrenWithOwnDescription, title }),
+          button = view.getByRole('button'),
+          buttonWithOwnDescription = viewWithOwnDescription.getByRole('button');
 
-        expect(button).not.toHaveAccessibleDescription('tiptip');
-        expect(view.queryByTitle('tiptip')).not.toBeInTheDocument();
+      expect(button).not.toHaveAccessibleDescription('tiptip');
+      expect(view.queryByTitle('tiptip')).not.toBeInTheDocument();
 
-        expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
-        expect(viewWithOwnDescription.queryByTitle('tiptip')).not.toBeInTheDocument();
+      expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
+      expect(viewWithOwnDescription.queryByTitle('tiptip')).not.toBeInTheDocument();
     });
 
     it('sets the accessible description but not the title of the child when the tooltip is active',
@@ -262,7 +262,7 @@ describe('NxTooltip', function() {
           await user.hover(button);
           await waitFor(() => expect(button).toHaveAccessibleDescription('tiptip'));
           expect(button).not.toHaveAttribute('title');
-      }
+        }
     );
 
     it('does not override the accessible description if it is already set',
@@ -270,12 +270,12 @@ describe('NxTooltip', function() {
           const user = userEvent.setup(),
               childrenWithOwnDescription = <button aria-describedby="descriptionId">Foo</button>,
               viewWithOwnDescription = quickRender({ children: childrenWithOwnDescription }),
-              buttonWithOwnDescription = viewWithOwnDescription.getByRole('button')
+              buttonWithOwnDescription = viewWithOwnDescription.getByRole('button');
 
           await user.hover(buttonWithOwnDescription);
           expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
           expect(buttonWithOwnDescription).not.toHaveAttribute('title');
-      }
+        }
     );
   });
 });
