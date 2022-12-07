@@ -86,18 +86,6 @@ describe('NxAccordion', function() {
   });
 
   describe('onToggle', function() {
-    let divContainer: HTMLElement | null = null;
-
-    beforeEach(function() {
-      divContainer = document.createElement('div');
-      document.body.appendChild(divContainer);
-    });
-
-    afterEach(function() {
-      if (divContainer) {
-        document.body.removeChild(divContainer);
-      }
-    });
 
     describe('when the accordion is currently closed', function() {
       it('fires with true', async function() {
@@ -110,7 +98,6 @@ describe('NxAccordion', function() {
               <span>Foo</span>
             </NxAccordion.Header>
           </NxAccordion>,
-          { baseElement: divContainer as HTMLElement }
         );
 
         const header = container.querySelector<HTMLElement>('summary')!;
@@ -144,7 +131,6 @@ describe('NxAccordion', function() {
               <span>Foo</span>
             </NxAccordion.Header>
           </NxAccordion>,
-          { baseElement: divContainer as HTMLElement }
         );
 
         const header = container.querySelector<HTMLElement>('summary')!;
@@ -179,7 +165,6 @@ describe('NxAccordion', function() {
               <NxAccordion.Title onClick={titleOnClick}>Foo</NxAccordion.Title>
             </NxAccordion.Header>
           </NxAccordion>,
-          { baseElement: divContainer as HTMLElement }
         );
         const title = container.querySelector<HTMLElement>('.nx-accordion__header-title')!;
 
@@ -211,7 +196,6 @@ describe('NxAccordion', function() {
               </div>
             </NxAccordion.Header>
           </NxAccordion>,
-          { baseElement: divContainer as HTMLElement }
         );
         const btn1 = container.querySelector('button#btn1') as HTMLElement,
             btn2 = container.querySelector('button#btn2') as HTMLElement;
