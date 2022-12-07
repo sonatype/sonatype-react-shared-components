@@ -73,21 +73,6 @@ describe('NxAccordion', function() {
       expect(container.querySelector('#headerId')).toBeInTheDocument();
     });
 
-    it('renders an icon with nx-accordion__chevron class as the first child of the header wrapper', function() {
-      const { rerender, container } = quickRender();
-
-      rerender(
-        <NxAccordion.Header>
-          <span>Foo</span>
-          <div className="nx-btn-bar">
-            <NxButton />
-          </div>
-        </NxAccordion.Header>
-      );
-
-      expect(container.querySelector('.nx-accordion__chevron')).toBeInTheDocument();
-    });
-
     it('sets aria-controls to the accordion id', function() {
       const { container } = quickRender({ id: 'foo',
         children: (
