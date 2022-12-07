@@ -7,7 +7,7 @@
 import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'react';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-import { without, findIndex, equals } from 'ramda';
+import { without, indexOf } from 'ramda';
 
 import SelectedFile from '../SelectedFile';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -118,7 +118,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
 
     if (files) {
       const filesArray = Array.from(files);
-      const idx = findIndex((f) => equals(f, fileObj), filesArray);
+      const idx = indexOf(fileObj, filesArray);
 
       if (idx === files.length - 1) {
         // if the selected file is the last in the container, set the focus to the next last dismiss button
