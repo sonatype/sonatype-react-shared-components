@@ -69,15 +69,24 @@ describe('NxAlert', function() {
 
       expect(closeBtn).not.toBeInTheDocument();
     });
+
+    it('sets the specified role on its top-level element', function() {
+      expect(renderEl({ role: 'foo' })).toHaveAttribute('role', 'foo');
+    });
   }
 
   const minimalProps = {
         children: 'A message to show in an alert',
         icon: faBiohazard
       },
-      quickRender = rtlRender(NxAlert, minimalProps);
+      quickRender = rtlRender(NxAlert, minimalProps),
+      renderEl = rtlRenderElement(NxAlert, minimalProps);
 
   baseTests(NxAlert, minimalProps);
+
+  it('sets no default role on its top-level element', function() {
+    expect(renderEl()).not.toHaveAttribute('role');
+  });
 
   it('renders an img with the specified iconLabel if specified', function() {
     expect(quickRender({ iconLabel: 'foo' }).getByRole('img')).toHaveAccessibleName('foo');
@@ -112,12 +121,8 @@ describe('NxAlert', function() {
 
       const quickRender = rtlRender(NxInfoAlert, minimalProps);
 
-      it('sets the top-level element\'s role from the props', function() {
-        const view = quickRender(),
-            viewWithRole = quickRender({ role: 'foo' });
-
-        expect(view.container.firstElementChild).not.toHaveAttribute('role');
-        expect(viewWithRole.container.firstElementChild).toHaveAttribute('role', 'foo');
+      it('sets no default role on its top-level element', function() {
+        expect(renderEl()).not.toHaveAttribute('role');
       });
 
       it('renders an img with an accessible nameof "Info"', function() {
@@ -130,12 +135,8 @@ describe('NxAlert', function() {
 
       const quickRender = rtlRender(NxWarningAlert, minimalProps);
 
-      it('sets the top-level element\'s role from the props', function() {
-        const view = quickRender(),
-            viewWithRole = quickRender({ role: 'foo' });
-
-        expect(view.container.firstElementChild).not.toHaveAttribute('role');
-        expect(viewWithRole.container.firstElementChild).toHaveAttribute('role', 'foo');
+      it('sets no default role on its top-level element', function() {
+        expect(renderEl()).not.toHaveAttribute('role');
       });
 
       it('renders an img with an accessible nameof "Warning"', function() {
