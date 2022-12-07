@@ -6,10 +6,10 @@
  */
 import React, { useState } from 'react';
 import { DataItem, NxFontAwesomeIcon, NxTransferListHalf } from '@sonatype/react-shared-components';
-import { map, range, prepend, reject, propEq } from 'ramda';
+import { map, range, prepend } from 'ramda';
 import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
 
-const initialItems: DataItem<number>[] = prepend(
+const items: DataItem<number>[] = prepend(
     {
       id: 0,
       displayName: <><NxFontAwesomeIcon icon={faArrowsAltH} /><span>Loooooooooooooooooooooooooong Name</span></>
@@ -17,20 +17,12 @@ const initialItems: DataItem<number>[] = prepend(
     map<number, DataItem<number>>(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101))
 );
 
-export default function NxTransferListHalfExample() {
-  const [items, setItems] = useState<DataItem<number>[]>(initialItems),
-      [filter, setFilter] = useState('');
-
-  function onItemChange(_: boolean, id: number) {
-    setItems(reject(propEq('id', id), items));
-  }
+export default function NxTransferListHalfDisableTransferExample() {
+  const [filter, setFilter] = useState('');
 
   return <NxTransferListHalf label="Example Items"
                              filterValue={filter}
                              onFilterChange={setFilter}
-                             showMoveAll={false}
-                             onMoveAll={() => {}}
                              items={items}
-                             onItemChange={onItemChange}
                              footerContent={`${items.length} items`} />;
 }

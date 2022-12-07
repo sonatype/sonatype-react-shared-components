@@ -40,15 +40,13 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
 
   function onChange(evt: FormEvent<HTMLInputElement>) {
     // NOTE: the `checked` property on the DOM node will have the new value, not the old
-    onChangeProp(evt.currentTarget.checked, id);
+    onChangeProp?.(evt.currentTarget.checked, id);
   }
 
-  const classes = classnames(
-      'nx-transfer-list__item',
-      {
-        'nx-transfer-list__item--with-reordering': !!showReorderingButtons
-      },
-  );
+  const classes = classnames('nx-transfer-list__item', {
+    'nx-transfer-list__item--with-reordering': !!showReorderingButtons,
+    'nx-transfer-list__item--movable': !!onChangeProp
+  });
 
   const moveUpDisabled = isFilteredItem || isTopItem;
   const moveDownDisabled = isFilteredItem || isBottomItem;
@@ -62,8 +60,12 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
     <div className={classes}>
       <Tooltip { ...tooltipProps }>
         <label className="nx-transfer-list__select">
-          <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
-          <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
+          { !!onChangeProp &&
+            <>
+              <NxFontAwesomeIcon icon={checked ? faTimesCircle : faPlusCircle} />
+              <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
+            </>
+          }
           <span className="nx-transfer-list__display-name">{displayName}</span>
         </label>
       </Tooltip>
@@ -106,13 +108,14 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         onFilterChange,
         showMoveAll,
         onMoveAll,
-        isSelected,
+        isSelected: isSelectedProp,
         items,
         onItemChange,
         onReorderItem,
         footerContent,
         filterFn: filterFnProp
       } = props,
+      isSelected = isSelectedProp ?? true,
       defaultFilterFn = pipe(toLower, includes(toLower(filterValue))),
       filterFn = filterFnProp ? partial(filterFnProp, [filterValue]) : defaultFilterFn,
       visibleItems = useMemo(
@@ -125,7 +128,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
   function onMoveAllClick() {
     const idsToMove = map(prop('id'), visibleItems);
 
-    onMoveAll(idsToMove);
+    onMoveAll?.(idsToMove);
   }
 
   return (
@@ -141,7 +144,8 @@ export default function NxTransferListHalf<T extends string | number = string>(p
             <span>{isSelected ? 'Remove' : 'Transfer'} All</span>
           </button>
         }
-        <div className="nx-transfer-list__item-list">
+        {/* Add the tabIndex here to meet the a11y requirement that scrollable region must have keyboard access */}
+        <div className="nx-transfer-list__item-list" tabIndex={onItemChange || allowReordering ? undefined : 0}>
           { visibleItems.map(
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
                                                  isFilteredItem={!!filterValue}
