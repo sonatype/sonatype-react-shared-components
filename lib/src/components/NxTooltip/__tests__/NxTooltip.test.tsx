@@ -119,7 +119,7 @@ describe('NxTooltip', function() {
 
     it('does not affect the accessible name or description of the child', function() {
       const children = <button aria-describedby="descriptionId">Foo</button>,
-          view = quickRender({ children }),
+          view = quickRender({ title: '', children }),
           button = view.getByRole('button');
 
       expect(button).toHaveAccessibleName('Foo');
@@ -268,8 +268,9 @@ describe('NxTooltip', function() {
     it('does not override the accessible description if it is already set',
         async function() {
           const user = userEvent.setup(),
+              title = <span data-testid="tooltip-content">tiptip</span>,
               childrenWithOwnDescription = <button aria-describedby="descriptionId">Foo</button>,
-              viewWithOwnDescription = quickRender({ children: childrenWithOwnDescription }),
+              viewWithOwnDescription = quickRender({ title, children: childrenWithOwnDescription }),
               buttonWithOwnDescription = viewWithOwnDescription.getByRole('button');
 
           await user.hover(buttonWithOwnDescription);
