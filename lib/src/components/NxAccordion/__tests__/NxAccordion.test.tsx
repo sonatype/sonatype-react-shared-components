@@ -73,21 +73,6 @@ describe('NxAccordion', function() {
       expect(container.querySelector('#headerId')).toBeInTheDocument();
     });
 
-    it('sets the nx-accordion__header class along with any provided className on the header', function() {
-      const { rerender, container } = quickRender();
-
-      rerender(
-        <NxAccordion.Header className="header-class">
-          <span>Foo</span>
-        </NxAccordion.Header>
-      );
-
-      expect(container.querySelector('.nx-accordion__header')).toBeInTheDocument();
-      expect(container.querySelector('.nx-accordion__header')).toHaveClass('header-class');
-      expect(quickRender({ children: <NxAccordion.Header /> }).getByRole('button'))
-          .toHaveClass('nx-accordion__header');
-    });
-
     it('renders an icon with nx-accordion__chevron class as the first child of the header wrapper', function() {
       const { rerender, container } = quickRender();
 
