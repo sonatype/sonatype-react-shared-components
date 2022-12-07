@@ -55,7 +55,8 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       showError = isRequired && showValidationErrors && !isFileSelected,
       className = classnames('nx-multi-file-upload', 'nx-file-upload', classNameProp),
       noFileMessageClassName = classnames('nx-file-upload__no-file-message', {
-        'nx-file-upload__no-file-message--invalid': showError, 'hidden': isFileSelected
+        'nx-file-upload__no-file-message--invalid': showError,
+        'hidden': isFileSelected
       }),
       noFileMessageId = useUniqueId('nx-file-upload__no-file-message'),
       inputRef = useRef<HTMLInputElement>(null),
