@@ -51,13 +51,12 @@ describe('NxAccordion', function() {
     rerender(
       <NxAccordion>
         <NxAccordion.Header>
-          <span className='foo'>Foo</span>
+          <span>Foo</span>
         </NxAccordion.Header>
         <span className='bar'>Bar</span>
       </NxAccordion>
     );
 
-    expect(container.querySelector('.nx-accordion__header .foo')).toBeInTheDocument();
     expect(container.querySelector('.nx-accordion__content .bar')).toBeInTheDocument();
   });
 
@@ -145,7 +144,7 @@ describe('NxAccordion', function() {
           { baseElement: divContainer as HTMLElement }
         );
 
-        const header = container.querySelector<HTMLElement>('summary');
+        const header = container.querySelector<HTMLElement>('summary')!;
 
         expect(onToggle).not.toHaveBeenCalled();
 
@@ -179,7 +178,7 @@ describe('NxAccordion', function() {
           { baseElement: divContainer as HTMLElement }
         );
 
-        const header = container.querySelector('summary') as HTMLElement;
+        const header = container.querySelector<HTMLElement>('summary')!;
 
         expect(onToggle).not.toHaveBeenCalled();
 
@@ -213,7 +212,7 @@ describe('NxAccordion', function() {
           </NxAccordion>,
           { baseElement: divContainer as HTMLElement }
         );
-        const title = container.querySelector('.nx-accordion__header-title') as HTMLElement;
+        const title = container.querySelector<HTMLElement>('.nx-accordion__header-title')!;
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(titleOnClick).not.toHaveBeenCalled();
