@@ -57,7 +57,8 @@ describe('NxAccordion', function() {
       </NxAccordion>
     );
 
-    expect(container.querySelector('.nx-accordion__content .bar')).toBeInTheDocument();
+    expect(container.querySelector('summary .bar')).not.toBeInTheDocument();
+    expect(container.querySelector('.nx-accordion .bar')).toBeInTheDocument();
   });
 
   describe('Header', function() {
