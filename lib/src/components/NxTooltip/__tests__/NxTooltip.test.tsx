@@ -84,6 +84,8 @@ describe('NxTooltip', function() {
     quickRender({ open: true, onOpen });
 
     expect(onOpen).toHaveBeenCalledTimes(1);
+
+    await expect(waitFor(() => expect(onOpen).toHaveBeenCalledTimes(2))).rejects.toThrow('Expected number of calls');
   });
 
   it('calls onClose when the tooltip stops rendering by hover', async function() {
@@ -117,13 +119,19 @@ describe('NxTooltip', function() {
       await expect(screen.findByRole('tooltip')).rejects.toBeTruthy();
     });
 
-    it('does not affect the accessible name or description of the child', function() {
+    it('does not affect the accessible name or description of the child', async function() {
       const children = <button aria-describedby="descriptionId">Foo</button>,
           view = quickRender({ title: '', children }),
           button = view.getByRole('button');
 
       expect(button).toHaveAccessibleName('Foo');
       expect(button).toHaveAccessibleDescription('Description Text');
+
+      // Ensure that nothing changes after waiting for tooltip to initialize
+      await expect(waitFor(() => expect(button).not.toHaveAccessibleName('Foo')))
+          .rejects.toThrow('accessible name');
+      await expect(waitFor(() => expect(button).not.toHaveAccessibleDescription('Description Text')))
+          .rejects.toThrow('accessible description');
     });
   });
 
@@ -155,6 +163,10 @@ describe('NxTooltip', function() {
       await user.hover(button);
 
       expect(button).toHaveAccessibleName('Foo');
+
+      // Ensure that nothing changes after waiting for tooltip to initialize
+      await expect(waitFor(() => expect(button).not.toHaveAccessibleName('Foo')))
+          .rejects.toThrow('accessible name');
     });
 
     it('sets the title of the child when the tooltip is not active', async function() {
@@ -198,6 +210,12 @@ describe('NxTooltip', function() {
           await user.hover(buttonWithOwnDescription);
           expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
           expect(buttonWithOwnDescription).not.toHaveAttribute('title');
+
+          // Ensure that nothing changes after waiting for tooltip to initialize
+          await expect(waitFor(() => expect(buttonWithOwnDescription).not.toHaveAccessibleDescription('Description Text')))
+              .rejects.toThrow('accessible description');
+          await expect(waitFor(() => expect(buttonWithOwnDescription).toHaveAttribute('title')))
+              .rejects.toThrow('title');
         }
     );
   });
@@ -233,6 +251,10 @@ describe('NxTooltip', function() {
       await user.hover(button);
 
       expect(button).toHaveAccessibleName('Foo');
+
+      // Ensure that nothing changes after waiting for tooltip to initialize
+      await expect(waitFor(() => expect(button).not.toHaveAccessibleName('Foo')))
+          .rejects.toThrow('accessible name');
     });
 
     it('does not set the title or accessible description of the child when not active', async function() {
@@ -249,6 +271,17 @@ describe('NxTooltip', function() {
 
       expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
       expect(viewWithOwnDescription.queryByTitle('tiptip')).not.toBeInTheDocument();
+
+      // Ensure that nothing changes after waiting for tooltip to initialize
+      await expect(waitFor(() => expect(button).toHaveAccessibleDescription('tiptip')))
+          .rejects.toThrow('accessible description');
+      await expect(waitFor(() => expect(view.queryByTitle('tiptip')).toBeInTheDocument()))
+          .rejects.toThrow('null');
+
+      await expect(waitFor(() => expect(buttonWithOwnDescription).not.toHaveAccessibleDescription('Description Text')))
+          .rejects.toThrow('accessible description');
+      await expect(waitFor(() => expect(viewWithOwnDescription.queryByTitle('tiptip')).toBeInTheDocument()))
+          .rejects.toThrow('null');
     });
 
     it('sets the accessible description but not the title of the child when the tooltip is active',
@@ -276,6 +309,11 @@ describe('NxTooltip', function() {
           await user.hover(buttonWithOwnDescription);
           expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
           expect(buttonWithOwnDescription).not.toHaveAttribute('title');
+
+          await expect(waitFor(() => expect(buttonWithOwnDescription).not.toHaveAccessibleDescription('Description Text')))
+              .rejects.toThrow('accessible description');
+          await expect(waitFor(() => expect(buttonWithOwnDescription).toHaveAttribute('title')))
+              .rejects.toThrow('title');
         }
     );
   });
