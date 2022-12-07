@@ -145,7 +145,7 @@ describe('NxAccordion', function() {
           { baseElement: divContainer as HTMLElement }
         );
 
-        const header = container.querySelector('summary') as HTMLElement;
+        const header = container.querySelector<HTMLElement>('summary');
 
         expect(onToggle).not.toHaveBeenCalled();
 
