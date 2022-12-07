@@ -111,7 +111,7 @@ describe('NxAlert', function() {
         expect(view.container.firstElementChild).toBe(view.getByRole('alert'));
       });
 
-      it('renders an img with an accessible nameof "Error"', function() {
+      it('renders an img with an accessible name of "Error"', function() {
         expect(quickRender().getByRole('img')).toHaveAccessibleName('Error');
       });
     });
@@ -125,7 +125,7 @@ describe('NxAlert', function() {
         expect(renderEl()).not.toHaveAttribute('role');
       });
 
-      it('renders an img with an accessible nameof "Info"', function() {
+      it('renders an img with an accessible name of "Info"', function() {
         expect(quickRender().getByRole('img')).toHaveAccessibleName('Info');
       });
     });
@@ -139,7 +139,7 @@ describe('NxAlert', function() {
         expect(renderEl()).not.toHaveAttribute('role');
       });
 
-      it('renders an img with an accessible nameof "Warning"', function() {
+      it('renders an img with an accessible name of "Warning"', function() {
         expect(quickRender().getByRole('img')).toHaveAccessibleName('Warning');
       });
     });
@@ -155,7 +155,7 @@ describe('NxAlert', function() {
         expect(view.container.firstElementChild).toBe(view.getByRole('status'));
       });
 
-      it('renders an img with an accessible nameof "Success"', function() {
+      it('renders an img with an accessible name of "Success"', function() {
         expect(quickRender().getByRole('img')).toHaveAccessibleName('Success');
       });
     });
