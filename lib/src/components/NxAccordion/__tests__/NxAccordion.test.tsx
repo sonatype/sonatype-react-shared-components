@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
@@ -104,17 +103,13 @@ describe('NxAccordion', function() {
 
         expect(onToggle).not.toHaveBeenCalled();
 
-        await act(async function() {
-          await user.click(header);
-        });
+        await user.click(header);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
         expect(onToggle).toHaveBeenCalledWith(true);
 
-        await act(async function() {
-          // click the accordion outside of the header
-          await user.click(container);
-        });
+        // click the accordion outside of the header
+        await user.click(container);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
       });
@@ -137,17 +132,13 @@ describe('NxAccordion', function() {
 
         expect(onToggle).not.toHaveBeenCalled();
 
-        await act(async function() {
-          await user.click(header);
-        });
+        await user.click(header);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
         expect(onToggle).toHaveBeenCalledWith(false);
 
-        await act(async function() {
-          // click the accordion outside of the header
-          await user.click(container);
-        });
+        // click the accordion outside of the header
+        await user.click(container);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
       });
@@ -171,9 +162,7 @@ describe('NxAccordion', function() {
         expect(onToggle).not.toHaveBeenCalled();
         expect(titleOnClick).not.toHaveBeenCalled();
 
-        await act(async function() {
-          await user.click(title);
-        });
+        await user.click(title);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
         expect(titleOnClick).toHaveBeenCalledTimes(1);
@@ -200,16 +189,12 @@ describe('NxAccordion', function() {
         const btn1 = container.querySelector('button#btn1') as HTMLElement,
             btn2 = container.querySelector('button#btn2') as HTMLElement;
 
-        await act(async function() {
-          await user.click(btn1);
-        });
+        await user.click(btn1);
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(btnOnClick).not.toHaveBeenCalled();
 
-        await act(async function() {
-          await user.click(btn2);
-        });
+        await user.click(btn2);
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(btnOnClick).toHaveBeenCalled();
