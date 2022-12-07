@@ -63,16 +63,14 @@ describe('NxAccordion', function() {
 
   describe('Header', function() {
     it('renders the NxAccordion.Header as a <summary> containing a nx-accordion__summary-wrapper', function() {
-      const { rerender, container } = quickRender();
-
-      rerender(
-        <NxAccordion.Header id="headerId">
-          <span>Foo</span>
-        </NxAccordion.Header>
-      );
+      const { container } = quickRender({ children:
+        (
+          <NxAccordion.Header id="headerId">
+            <span>Foo</span>
+          </NxAccordion.Header>
+        )});
 
       expect(container.querySelector('#headerId')).toBeInTheDocument();
-      expect(container.querySelector('.nx-accordion__summary-wrapper')).toBeInTheDocument();
     });
 
     it('sets the nx-accordion__header class along with any provided className on the header', function() {
