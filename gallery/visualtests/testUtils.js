@@ -232,25 +232,18 @@ module.exports = {
     }
 
     function setupUploadableFiles() {
-      let uploadedFiles;
-
-      const obj = {
-        get getFiles() {
-          return uploadedFiles;
-        }
-      };
 
       beforeAll(async function() {
         const returnedFiles = await buildUploadableFiles();
-        uploadedFiles = returnedFiles;
-        return uploadedFiles;
+        files = returnedFiles;
+        return files;
       });
 
       afterAll(async function() {
         await cleanupUploadableFiles();
       });
 
-      return obj;
+      return () => files;
     }
 
     return {

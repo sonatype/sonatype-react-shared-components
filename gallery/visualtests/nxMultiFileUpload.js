@@ -30,7 +30,7 @@ describe('NxMultiFileUpload', function() {
   // Files of varying sizes to test the file size display in the component.  Due to the size
   // of the largest of these files, there are problems with storing them in git so they
   // are generated on the fly in beforeAll.
-  let files = setupUploadableFiles();
+  const getFiles = setupUploadableFiles();
 
   it('looks right when pristine', simpleTest(complexExampleSelector));
   it('has a blue glow around the button when focused', focusTest(complexExampleSelector, btnSelector));
@@ -41,28 +41,33 @@ describe('NxMultiFileUpload', function() {
   it('passes a11y checks', a11yTest());
 
   describe('when files are selected', function() {
-    files.getFiles;
-    function displaySelectedFiles(...selectedFileSize) {
-      return async function() {
-        const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
-        await input.uploadFile(...selectedFileSize.map(type => files[type]));
-        const [complexExample] = await waitAndGetElements(complexExampleSelector);
-        await checkScreenshot(complexExample);
-      };
+    async function displaySelectedFiles(...selectedFileSize) {
+      const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
+      await input.uploadFile(...selectedFileSize);
+      const [complexExample] = await waitAndGetElements(complexExampleSelector);
+      await checkScreenshot(complexExample);
     }
 
-    it('shows selected files', displaySelectedFiles('bytes', 'kilobytes'));
+    it('shows selected files', async function() {
+      const files = getFiles();
+      await displaySelectedFiles(files.bytes, files.kilobytes);
+    });
 
-    it('scrolls to last file if number of files exceeds container\'s space',
-        displaySelectedFiles('bytes', 'kilobytes', 'megabytes', 'gigabytes'));
+    it('scrolls to last file if number of files exceeds container\'s space', async function() {
+      const files = getFiles();
+      await displaySelectedFiles(files.bytes, files.kilobytes, files.megabytes, files.gigabytes);
+    });
 
     it('passes a11y checks', async function() {
-      displaySelectedFiles('bytes', 'kilobytes');
+      const files = getFiles();
+      const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
+      await input.uploadFile(files.bytes, files.kilobytes);
       a11yTest();
     });
 
     describe('file dismiss button', function() {
       beforeEach(async function() {
+        const files = getFiles();
         const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
         await input.uploadFile(files.bytes);
       });
@@ -78,7 +83,8 @@ describe('NxMultiFileUpload', function() {
   });
 
   describe('when required but empty and non-pristine', function() {
-    beforeEach(async function() {
+    it('shows the validation error and the "No file selected" text turns red and gets and icon', async function() {
+      const files = getFiles();
       const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
       await input.uploadFile(files.bytes);
 
@@ -86,10 +92,10 @@ describe('NxMultiFileUpload', function() {
       await dismissBtn.click();
 
       expect(await isInDocument(dismissBtn)).toBe(false);
-    });
 
-    it('shows the validation error and the "No file selected" text turns red and gets and icon',
-        simpleTest(complexExampleSelector));
+      const [complexExample] = await waitAndGetElements(complexExampleSelector);
+      await checkScreenshot(complexExample);
+    });
   });
 
   describe('functionality', function() {
@@ -100,6 +106,7 @@ describe('NxMultiFileUpload', function() {
     }
 
     it('opens file picker when the button is clicked, and displays all selected files', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes, files.kilobytes]);
 
       const [selectedFile1, selectedFile2] = await waitAndGetElements(
@@ -119,6 +126,7 @@ describe('NxMultiFileUpload', function() {
     });
 
     it('adds to selected files when file picker opened more than once', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes]);
       await openFileChooser([files.kilobytes]);
 
@@ -134,6 +142,7 @@ describe('NxMultiFileUpload', function() {
     });
 
     it('correctly displays varying file sizes', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
 
       const [selectedFile1, selectedFile2, selectedFile3, selectedFile4] = await waitAndGetElements(
@@ -155,6 +164,7 @@ describe('NxMultiFileUpload', function() {
     });
 
     it('removes the selected file when the dismiss button is clicked', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes, files.kilobytes]);
 
       const [selectedFile1, dismissBtn1, selectedFile2] = await waitAndGetElements(
@@ -179,6 +189,7 @@ describe('NxMultiFileUpload', function() {
     });
 
     it('sets the no File Selected message when the last selected file is removed', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes]);
 
       const [selectedFile, dismissBtn] = await waitAndGetElements(
@@ -198,6 +209,7 @@ describe('NxMultiFileUpload', function() {
 
     describe('focus behavior', function() {
       it('sets focus on the appropriate dismiss button once a file is removed', async function() {
+        const files = getFiles();
         await openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
 
         const [
@@ -251,6 +263,7 @@ describe('NxMultiFileUpload', function() {
       });
 
       it('sets focus on input when last file is removed', async function() {
+        const files = getFiles();
         await openFileChooser([files.bytes]);
 
         const [input, selectedFile, dismissBtn] = await waitAndGetElements(
@@ -284,6 +297,7 @@ describe('NxMultiFileUpload', function() {
     }
 
     it('opens file picker when the button is clicked, and displays all selected files', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes, files.kilobytes]);
 
       const [selectedFile1, selectedFile2] = await waitAndGetElements(
@@ -303,6 +317,7 @@ describe('NxMultiFileUpload', function() {
     });
 
     it('adds to selected files when file picker opened more than once', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes]);
       await openFileChooser([files.kilobytes]);
 
@@ -318,6 +333,7 @@ describe('NxMultiFileUpload', function() {
     });
 
     it('correctly displays varying file sizes', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
 
       const [selectedFile1, selectedFile2, selectedFile3, selectedFile4] = await waitAndGetElements(
@@ -339,6 +355,7 @@ describe('NxMultiFileUpload', function() {
     });
 
     it('removes the selected file when the dismiss button is clicked', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes, files.kilobytes]);
 
       const [selectedFile1, dismissBtn1, selectedFile2] = await waitAndGetElements(
@@ -365,6 +382,7 @@ describe('NxMultiFileUpload', function() {
     });
 
     it('sets the no File Selected message when the last selected file is removed', async function() {
+      const files = getFiles();
       await openFileChooser([files.bytes]);
 
       const [selectedFile, dismissBtn] = await waitAndGetElements(
@@ -386,6 +404,7 @@ describe('NxMultiFileUpload', function() {
 
     describe('focus behavior', function() {
       it('sets focus on the appropriate dismiss button once a file is removed', async function() {
+        const files = getFiles();
         await openFileChooser([files.bytes, files.kilobytes, files.megabytes, files.gigabytes]);
 
         const [
@@ -443,6 +462,7 @@ describe('NxMultiFileUpload', function() {
       });
 
       it('sets focus on input when last file is removed', async function() {
+        const files = getFiles();
         await openFileChooser([files.bytes]);
 
         const [input, selectedFile, dismissBtn] = await waitAndGetElements(
