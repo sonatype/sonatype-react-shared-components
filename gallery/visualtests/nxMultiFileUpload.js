@@ -66,19 +66,35 @@ describe('NxMultiFileUpload', function() {
     });
 
     describe('file dismiss button', function() {
-      beforeEach(async function() {
-        const files = getFiles();
+      async function uploadFiles(file) {
         const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
-        await input.uploadFile(files.bytes);
-      });
-
+        await input.uploadFile(file);
+      }
       const btnSelector = `${complexExampleSelector} .nx-selected-file__dismiss-btn`;
 
-      it('has a blue glow when focused', focusTest(complexExampleSelector, btnSelector));
-      it('has a dark border when hovered', hoverTest(complexExampleSelector, btnSelector));
-      it('has a dark border and blue glow when focused and hovered',
-          focusAndHoverTest(complexExampleSelector, btnSelector));
-      it('has a dark border and grey background when clicked', clickTest(complexExampleSelector, btnSelector));
+      it('has a blue glow when focused', async function() {
+        const files = getFiles();
+        await uploadFiles(files.bytes);
+        focusTest(complexExampleSelector, btnSelector);
+      });
+
+      it('has a dark border when hovered', async function() {
+        const files = getFiles();
+        await uploadFiles(files.bytes);
+        hoverTest(complexExampleSelector, btnSelector);
+      });
+
+      it('has a dark border and blue glow when focused and hovered', async function() {
+        const files = getFiles();
+        await uploadFiles(files.bytes);
+        focusAndHoverTest(complexExampleSelector, btnSelector);
+      });
+
+      it('has a dark border and grey background when clicked', async function() {
+        const files = getFiles();
+        await uploadFiles(files.bytes);
+        clickTest(complexExampleSelector, btnSelector);
+      });
     });
   });
 
