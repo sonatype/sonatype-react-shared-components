@@ -212,8 +212,9 @@ describe('NxTooltip', function() {
           expect(buttonWithOwnDescription).not.toHaveAttribute('title');
 
           // Ensure that nothing changes after waiting for tooltip to initialize
-          await expect(waitFor(() => expect(buttonWithOwnDescription).not.toHaveAccessibleDescription('Description Text')))
-              .rejects.toThrow('accessible description');
+          await expect(
+              waitFor(() => expect(buttonWithOwnDescription).not.toHaveAccessibleDescription('Description Text'))
+          ).rejects.toThrow('accessible description');
           await expect(waitFor(() => expect(buttonWithOwnDescription).toHaveAttribute('title')))
               .rejects.toThrow('title');
         }
@@ -310,8 +311,9 @@ describe('NxTooltip', function() {
           expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
           expect(buttonWithOwnDescription).not.toHaveAttribute('title');
 
-          await expect(waitFor(() => expect(buttonWithOwnDescription).not.toHaveAccessibleDescription('Description Text')))
-              .rejects.toThrow('accessible description');
+          await expect(
+              waitFor(() => expect(buttonWithOwnDescription).not.toHaveAccessibleDescription('Description Text'))
+          ).rejects.toThrow('accessible description');
           await expect(waitFor(() => expect(buttonWithOwnDescription).toHaveAttribute('title')))
               .rejects.toThrow('title');
         }
