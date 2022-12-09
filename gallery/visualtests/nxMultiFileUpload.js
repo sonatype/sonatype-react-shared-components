@@ -10,8 +10,7 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxMultiFileUpload', function() {
   const {
-    buildUploadableFiles,
-    cleanupFiles,
+    setupUploadableFiles,
     checkScreenshot,
     isInDocument,
     waitAndGetElements,
@@ -31,15 +30,7 @@ describe('NxMultiFileUpload', function() {
   // Files of varying sizes to test the file size display in the component.  Due to the size
   // of the largest of these files, there are problems with storing them in git so they
   // are generated on the fly in beforeAll.
-  let files;
-
-  beforeAll(async function() {
-    files = await buildUploadableFiles();
-  });
-
-  afterAll(async function() {
-    await cleanupFiles();
-  });
+  let files = setupUploadableFiles();
 
   it('looks right when pristine', simpleTest(complexExampleSelector));
   it('has a blue glow around the button when focused', focusTest(complexExampleSelector, btnSelector));
@@ -50,6 +41,7 @@ describe('NxMultiFileUpload', function() {
   it('passes a11y checks', a11yTest());
 
   describe('when files are selected', function() {
+    files.getFiles;
     function displaySelectedFiles(...selectedFileSize) {
       return async function() {
         const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);

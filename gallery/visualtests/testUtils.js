@@ -227,8 +227,30 @@ module.exports = {
       return files;
     }
 
-    async function cleanupFiles() {
+    async function cleanupUploadableFiles() {
       await tmpDir.cleanup();
+    }
+
+    function setupUploadableFiles() {
+      let uploadedFiles;
+
+      const obj = {
+        get getFiles() {
+          return uploadedFiles;
+        }
+      };
+
+      beforeAll(async function() {
+        const returnedFiles = await buildUploadableFiles();
+        uploadedFiles = returnedFiles;
+        return uploadedFiles;
+      });
+
+      afterAll(async function() {
+        await cleanupUploadableFiles();
+      });
+
+      return obj;
     }
 
     return {
@@ -242,8 +264,7 @@ module.exports = {
       moveMouseAway,
       dismissResultingDialog,
       disableLoadingSpinnerAnimation,
-      buildUploadableFiles,
-      cleanupFiles,
+      setupUploadableFiles,
       scrollIntoView,
 
       waitForSelectors,
