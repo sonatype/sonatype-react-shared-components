@@ -44,7 +44,7 @@ describe('NxAccordion', function() {
     expect(renderEl({ open: true })).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('renders non-header children in an nx-accordion__content wrapper', function() {
+  it('renders non-header children in content wrapper', function() {
     const { rerender, container } = quickRender();
 
     rerender(
@@ -57,7 +57,7 @@ describe('NxAccordion', function() {
     );
 
     expect(container.querySelector('summary .bar')).not.toBeInTheDocument();
-    expect(container.querySelector('.nx-accordion .bar')).toBeInTheDocument();
+    expect(container.querySelector('.bar')).toBeInTheDocument();
   });
 
   describe('Header', function() {
