@@ -32,10 +32,10 @@ function isSkeletonAnimation(animation: Animation) {
 }
 
 function _NxSkeletonLoader({ children }: { children: ReactNode }) {
-  // a unique object to identify this NxSkeletonLoader instance in the activeSkeletonLoaders set
-  const instance = {};
-
   useEffect(() => {
+    // a unique object to identify this NxSkeletonLoader instance in the activeSkeletonLoaders set
+    const instance = {};
+
     function handleAnimationStart({ animationName, target }: AnimationEvent) {
       if (animationName === ANIMATION_NAME) {
         const animation = target instanceof Element && find(isSkeletonAnimation, target.getAnimations());
