@@ -74,8 +74,6 @@ function _NxSkeletonLoader({ children }: { children: ReactNode }) {
   );
 }
 
-const Text = withClass('span', 'nx-skeleton-loader__text');
-
 function MultiLineText() {
   return (
     <span className="nx-skeleton-loader__multiline-text">
@@ -88,8 +86,8 @@ function MultiLineText() {
 
 const NxSkeletonLoader = Object.assign(_NxSkeletonLoader, {
   Block: withClass('div', 'nx-skeleton-loader__block'),
-  MultiLineText,
-  Text
+  Text: withClass('span', 'nx-skeleton-loader__text'),
+  MultiLineText
 });
 
 export default NxSkeletonLoader;
