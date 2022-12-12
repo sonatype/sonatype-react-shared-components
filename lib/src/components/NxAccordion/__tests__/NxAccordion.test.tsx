@@ -61,6 +61,22 @@ describe('NxAccordion', function() {
   });
 
   describe('Header', function() {
+    it('sets the provided className', function() {
+      const el = renderEl({children: (
+        <NxAccordion.Header></NxAccordion.Header>)})!;
+      const customEl = renderEl({ children: (
+        <NxAccordion.Header>
+          <span>foo</span>
+        </NxAccordion.Header>),
+      className: 'foo' })!;
+
+      expect(customEl).toHaveClass('foo');
+
+      for (const cls of Array.from(el.classList)) {
+        expect(customEl).toHaveClass(cls);
+      }
+    });
+
     it('renders the NxAccordion.Header as a <summary> containing a nx-accordion__summary-wrapper', function() {
       const { container } = quickRender({ children:
         (
