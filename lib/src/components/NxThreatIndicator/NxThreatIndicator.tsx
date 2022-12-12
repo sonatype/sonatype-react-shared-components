@@ -33,9 +33,7 @@ const NxThreatIndicator: FunctionComponent<Props> =
         className = classnames(
             classNameProp,
             `nx-threat-indicator nx-threat-indicator--${category} nx-icon--colorful`,
-            {
-              'nx-skeleton-loader__text': skeleton
-            }
+            { 'nx-skeleton-loader__text': skeleton }
         );
 
     const icon = (
