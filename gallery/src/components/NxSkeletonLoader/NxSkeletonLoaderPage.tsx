@@ -26,7 +26,9 @@ export default function NxSkeletonLoaderPage() {
         <NxSkeletonLoader.Block style={{ height: '100px', width: '400px' }}/>
         <NxSkeletonLoader.Block style={{ height: '100px', width: '3000px' }}/>
         */}
+        {/* Large skeleton block with icon that is wider than it is tall */}
         <NxSkeletonLoader.Block style={{ height: '300px', width: '300px' }} icon={faEdit} />
+        {/* Large skeleton block with icon that is taller than it is wide */}
         <NxSkeletonLoader.Block style={{ height: '300px', width: '300px' }} icon={faWalking} />
         <div className="gallery-example--checkered-background">
           <div className="gallery-example-live">
