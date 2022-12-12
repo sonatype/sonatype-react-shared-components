@@ -13,7 +13,7 @@
 $-gradient-size: 3000px;
 
 .nx-skeleton-loader__block {
-  animation: 1.6s linear .3s infinite skeleton-animation;
+  animation: 1.6s linear infinite skeleton-animation;
 
   background-image: repeating-linear-gradient(
     to right,

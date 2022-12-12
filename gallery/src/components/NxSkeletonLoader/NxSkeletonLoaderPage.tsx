@@ -6,17 +6,25 @@
  */
 import { NxH2, NxP, NxSkeletonLoader, NxSpan, NxTable, NxThreatCounter, NxThreatIndicator, NxTile }
   from '@sonatype/react-shared-components';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
 export default function NxSkeletonLoaderPage() {
+  const [showSecondTile, setShowSecondTile] = useState(false);
+
+  useEffect(function() {
+    setTimeout(() => { setShowSecondTile(true); }, 800);
+  }, []);
+
   return (
     <>
       <GalleryDescriptionTile>
+        {/*
         <NxSkeletonLoader.Block style={{ height: '100px', width: '100px' }}/>
         <NxSkeletonLoader.Block style={{ marginLeft: '300px', height: '100px', width: '100px' }}/>
         <NxSkeletonLoader.Block style={{ height: '100px', width: '400px' }}/>
         <NxSkeletonLoader.Block style={{ height: '100px', width: '3000px' }}/>
+        */}
         <div className="gallery-example--checkered-background">
           <div className="gallery-example-live">
             <NxSkeletonLoader>
@@ -57,6 +65,45 @@ export default function NxSkeletonLoaderPage() {
                   </NxTable>
                 </NxTile.Content>
               </NxTile>
+              { showSecondTile &&
+                <NxTile>
+                  <NxTile.Header>
+                    <NxTile.Headings>
+                      <NxTile.HeaderTitle>
+                        <NxH2>Foo Bar</NxH2>
+                      </NxTile.HeaderTitle>
+                      <NxTile.HeaderSubtitle>apgiadfpgnapogadopfjia</NxTile.HeaderSubtitle>
+                    </NxTile.Headings>
+                  </NxTile.Header>
+                  <NxTile.Content>
+                    <NxP>Foo bar</NxP>
+                    <NxThreatCounter criticalCount={1} severeCount={20} moderateCount={0} layout="grid" />
+                    <NxTable>
+                      <NxTable.Head>
+                        <NxTable.Row>
+                          <NxTable.Cell>Foo</NxTable.Cell>
+                          <NxTable.Cell>Bar</NxTable.Cell>
+                          <NxTable.Cell>Baz</NxTable.Cell>
+                        </NxTable.Row>
+                      </NxTable.Head>
+                      <NxTable.Body>
+                        <NxTable.Row>
+                          <NxTable.Cell>
+                            <NxThreatIndicator policyThreatLevel={8} />
+                            <NxSpan>Foo</NxSpan>
+                          </NxTable.Cell>
+                          <NxTable.Cell>
+                            <NxP>Bar</NxP>
+                          </NxTable.Cell>
+                          <NxTable.Cell>
+                            <NxSpan>Baz</NxSpan>
+                          </NxTable.Cell>
+                        </NxTable.Row>
+                      </NxTable.Body>
+                    </NxTable>
+                  </NxTile.Content>
+                </NxTile>
+              }
             </NxSkeletonLoader>
           </div>
         </div>
