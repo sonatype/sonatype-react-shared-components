@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use 'sass:list';
 @use '../../scss-shared/nx-text-helpers';
 
 .nx-skeleton-loader__status {
@@ -11,9 +12,14 @@
 }
 
 $-gradient-size: 3000px;
+$-icon-size: 148px;
 
 .nx-skeleton-loader__block {
   animation: 1.6s linear infinite skeleton-animation;
+  grid: list.slash($-icon-size, $-icon-size);
+
+  display: grid;
+  place-content: center; //shorthand for justify-content and align-content
 
   background-image: repeating-linear-gradient(
     to right,
@@ -31,6 +37,20 @@ $-gradient-size: 3000px;
 
   > * {
     visibility: hidden;
+  }
+
+  > .nx-icon {
+    color: var(--nx-swatch-indigo-97);
+    margin: 0;
+    visibility: visible;
+
+    // Icon should be 148px on its larger axis. This is implemented via a combination of several things:
+    // 1. The grid cell for the icon is 148x148
+    // 2. The icon svg is sized to fit the entire grid cell via these 100% width and height
+    // 3. svg's preserveAspectRatio setting defaults to 'xMidYMid meet' which, in the event that the svg
+    // has a different aspect ratio than its viewbox, centers the viewbox and scales it down until it fits.
+    height: 100%;
+    width: 100%;
   }
 }
 

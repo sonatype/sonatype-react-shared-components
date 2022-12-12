@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import { faEdit, faWalking } from '@fortawesome/free-solid-svg-icons';
 import { NxH2, NxP, NxSkeletonLoader, NxSpan, NxTable, NxThreatCounter, NxThreatIndicator, NxTile }
   from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
@@ -25,6 +26,8 @@ export default function NxSkeletonLoaderPage() {
         <NxSkeletonLoader.Block style={{ height: '100px', width: '400px' }}/>
         <NxSkeletonLoader.Block style={{ height: '100px', width: '3000px' }}/>
         */}
+        <NxSkeletonLoader.Block style={{ height: '300px', width: '300px' }} icon={faEdit} />
+        <NxSkeletonLoader.Block style={{ height: '300px', width: '300px' }} icon={faWalking} />
         <div className="gallery-example--checkered-background">
           <div className="gallery-example-live">
             <NxSkeletonLoader>

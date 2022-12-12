@@ -4,9 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { find } from 'ramda';
-import React, { createContext, ReactNode, useEffect } from 'react';
+import React, { createContext, HTMLAttributes, ReactNode, useEffect } from 'react';
 import withClass from '../../util/withClass';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import './NxSkeletonLoader.scss';
 
@@ -84,10 +86,18 @@ function MultiLineText() {
   );
 }
 
+function Block({ icon, ...props }: { icon: IconProp } & HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div className="nx-skeleton-loader__block" { ...props }>
+      { icon && <NxFontAwesomeIcon icon={icon} /> }
+    </div>
+  );
+}
+
 const NxSkeletonLoader = Object.assign(_NxSkeletonLoader, {
-  Block: withClass('div', 'nx-skeleton-loader__block'),
   Text: withClass('span', 'nx-skeleton-loader__text'),
-  MultiLineText
+  MultiLineText,
+  Block
 });
 
 export default NxSkeletonLoader;
