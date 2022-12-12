@@ -61,14 +61,11 @@ describe('NxAccordion', function() {
   });
 
   describe('Header', function() {
+    const renderEl = rtlRenderElement(NxAccordion.Header, {});
+
     it('sets the provided className', function() {
-      const el = renderEl({children: (
-        <NxAccordion.Header></NxAccordion.Header>)})!;
-      const customEl = renderEl({ children: (
-        <NxAccordion.Header>
-          <span>foo</span>
-        </NxAccordion.Header>),
-      className: 'foo' })!;
+      const el = renderEl()!;
+      const customEl = renderEl({ className: 'foo' })!;
 
       expect(customEl).toHaveClass('foo');
 
