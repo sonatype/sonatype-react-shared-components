@@ -26,7 +26,7 @@ module.exports = {
 
     async function hideVersionNumber() {
       const [versionEl] = await waitAndGetElements('.gallery-page-header__version');
-      await versionEl.evaluate(el => { el.style.visibility = 'hidden'; });
+      await versionEl.evaluate(el => { el.style.display = 'none'; });
     }
 
     beforeAll(async function() {
