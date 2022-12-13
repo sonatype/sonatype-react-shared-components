@@ -41,9 +41,9 @@ describe('NxMultiFileUpload', function() {
   it('passes a11y checks', a11yTest());
 
   describe('when files are selected', function() {
-    async function displaySelectedFiles(...selectedFileSize) {
+    async function displaySelectedFiles(...selectedFiles) {
       const [input] = await waitAndGetElements(`${complexExampleSelector} input[multiple]`);
-      await input.uploadFile(...selectedFileSize);
+      await input.uploadFile(...selectedFiles);
       const [complexExample] = await waitAndGetElements(complexExampleSelector);
       await checkScreenshot(complexExample);
     }
