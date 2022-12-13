@@ -50,16 +50,14 @@ describe('NxAccordion', function() {
   });
 
   it('renders non-header children in content wrapper', function() {
-    const { rerender, container } = quickRender();
-
-    rerender(
+    const { container } = quickRender({ children: (
       <NxAccordion>
         <NxAccordion.Header>
           <span>Foo</span>
         </NxAccordion.Header>
         <span className='bar'>Bar</span>
       </NxAccordion>
-    );
+    ) });
 
     expect(container.querySelector('summary .bar')).not.toBeInTheDocument();
     expect(container.querySelector('.bar')).toBeInTheDocument();
