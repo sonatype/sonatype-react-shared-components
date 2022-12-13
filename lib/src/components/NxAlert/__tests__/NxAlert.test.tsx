@@ -4,263 +4,159 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import {
-  faExclamationTriangle,
-  faBiohazard,
-  faCrow,
-  faInfoCircle,
-  faExclamationCircle,
-  faCheckCircle
-} from '@fortawesome/free-solid-svg-icons';
-import NxAlert, {
-  NxErrorAlert,
-  NxWarningAlert,
-  NxInfoAlert,
-  NxAlertProps,
-  Props,
-  NxSuccessAlert
-} from '../NxAlert';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import NxCloseButton from '../../NxCloseButton/NxCloseButton';
+import React, { ComponentType } from 'react';
+import { faBiohazard } from '@fortawesome/free-solid-svg-icons';
+
+import userEvent from '@testing-library/user-event';
+
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import NxAlert, { Props, NxErrorAlert, NxWarningAlert, NxInfoAlert, NxSuccessAlert } from '../NxAlert';
 
 describe('NxAlert', function() {
-  const minimalProps: NxAlertProps = {
-    children: 'A message to show in an alert',
-    icon: faBiohazard
-  };
+  function baseTests<P extends Props>(
+    AlertComponent: ComponentType<P>,
+    minimalProps: P
+  ) {
 
-  const getNxAlert = enzymeUtils.getShallowComponent<NxAlertProps>(NxAlert, minimalProps);
+    // unfortunate type hacks, otherwise it wouldn't accept things like the custom className below
+    // because P could conceivably only allow a restricted set of classNames
+    const quickRender = rtlRender(AlertComponent as ComponentType<Props>, minimalProps as Props),
+        renderEl = rtlRenderElement(AlertComponent as ComponentType<Props>, minimalProps as Props);
 
-  it('renders an alert', function() {
-    const nxAlert = getNxAlert();
-    expect(nxAlert).toMatchSelector('.nx-alert');
+    it('renders the classNames given to it', function() {
+      const el = renderEl({ className: 'foo' }),
+          defaultEl = renderEl()!;
+
+      expect(el).toHaveClass('foo');
+
+      for (const cls of Array.from(defaultEl.classList)) {
+        expect(el).toHaveClass(cls);
+      }
+    });
+
+    it('renders the children within the top-level element', function() {
+      const children = <div data-testid="test-container"/>;
+
+      expect(quickRender({ children }).getByTestId('test-container')).toBeInTheDocument();
+    });
+
+    it('sets aria-atomic on the top-level element', function() {
+      expect(renderEl()).toHaveAttribute('aria-atomic', 'true');
+    });
+
+    it('passes any other props to the top-level element', function() {
+      const el = renderEl({ id: 'foo', title: 'bar' });
+      expect(el).toHaveAttribute('id', 'foo');
+      expect(el).toHaveAttribute('title', 'bar');
+    });
+
+    it('renders a Close button if given an onClose prop', async function() {
+      const user = userEvent.setup(),
+          onClose = jest.fn(),
+          view = quickRender({ onClose }),
+          closeBtn = view.getByRole('button', { name: 'Close' });
+
+      expect(closeBtn).toBeInTheDocument();
+      expect(onClose).not.toHaveBeenCalled();
+
+      await user.click(closeBtn);
+      expect(onClose).toHaveBeenCalled();
+    });
+
+    it('does not render a Close button if not given an onClose prop', function() {
+      const view = quickRender(),
+          closeBtn = view.queryByRole('button', { name: 'Close' });
+
+      expect(closeBtn).not.toBeInTheDocument();
+    });
+
+    it('sets the specified role on its top-level element', function() {
+      expect(renderEl({ role: 'foo' })).toHaveAttribute('role', 'foo');
+    });
+  }
+
+  const minimalProps = {
+        children: 'A message to show in an alert',
+        icon: faBiohazard
+      },
+      quickRender = rtlRender(NxAlert, minimalProps),
+      renderEl = rtlRenderElement(NxAlert, minimalProps);
+
+  baseTests(NxAlert, minimalProps);
+
+  it('sets no default role on its top-level element', function() {
+    expect(renderEl()).not.toHaveAttribute('role');
   });
 
-  it('renders the classNames given to it', function() {
-    const extendedProps: Partial<NxAlertProps> = {
-      className: 'test-classname ufo'
-    };
-    const nxAlert = getNxAlert(extendedProps);
-    expect(nxAlert).toMatchSelector('.nx-alert.test-classname.ufo');
+  it('renders an img with the specified iconLabel if specified', function() {
+    expect(quickRender({ iconLabel: 'foo' }).getByRole('img')).toHaveAccessibleName('foo');
   });
 
-  it('renders the children in an .nx-alert__content', function() {
-    const children = [
-      <p key="1" className="test-paragraph">Test Paragraph</p>,
-      <div key="2" className="test-container"></div>
-    ];
-
-    const contentEl = getNxAlert({ children }).find('.nx-alert__content');
-
-    expect(contentEl).toExist();
-    expect(contentEl.find('.test-paragraph')).toExist();
-    expect(contentEl.find('.test-container')).toExist();
-  });
-
-  it('renders the icon passed to it', function() {
-    expect(getNxAlert().find(NxFontAwesomeIcon)).toExist();
-    expect(getNxAlert().find(NxFontAwesomeIcon)).toHaveProp('icon', faBiohazard);
-
-    expect(getNxAlert({icon: faCrow}).find(NxFontAwesomeIcon)).toExist();
-    expect(getNxAlert({icon: faCrow}).find(NxFontAwesomeIcon)).toHaveProp('icon', faCrow);
-  });
-
-  it('passes any other props to the div', function() {
-    const component = getNxAlert({ id: 'foo', title: 'baz' });
-    expect(component).toHaveProp('id', 'foo');
-    expect(component).toHaveProp('title', 'baz');
-  });
-
-  it('sets aria-atomic on the div', function() {
-    expect(getNxAlert()).toHaveProp('aria-atomic', true);
-  });
-
-  it('sets the icons\'s aria-label from the iconLabel prop', function() {
-    expect(getNxAlert({ iconLabel: 'foo' }).find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'foo');
-  });
-
-  it('sets the icons\'s aria-hidden to false if the iconLabel is defined', function() {
-    expect(getNxAlert({ iconLabel: 'foo' }).find(NxFontAwesomeIcon)).toHaveProp('aria-hidden', false);
-    expect(getNxAlert().find(NxFontAwesomeIcon)).toHaveProp('aria-hidden', true);
-  });
-
-  it('renders a Close button if given an onClose prop', function() {
-    const onClose = jest.fn(),
-        component = getNxAlert({ onClose });
-
-    expect(component).toContainMatchingElement(NxCloseButton);
-    expect(onClose).not.toHaveBeenCalled();
-
-    component.find(NxCloseButton).simulate('click');
-    expect(onClose).toHaveBeenCalled();
-  });
-
-  it('does not render a Close button if not given an onClose prop', function() {
-    expect(getNxAlert()).not.toContainMatchingElement(NxCloseButton);
+  it('renders an aria-hidden img if iconLabel is not specified', function() {
+    expect(quickRender().queryByRole('img')).not.toBeInTheDocument();
+    expect(quickRender().queryByRole('img', { hidden: true })).toBeInTheDocument();
   });
 
   describe('NxAlert variations', function() {
     const minimalProps = { children: <p>Hello</p> };
 
     describe('NxErrorAlert', function() {
-      const getNxErrorAlert = enzymeUtils.getShallowComponent<Props>(NxErrorAlert, minimalProps);
+      baseTests(NxErrorAlert, minimalProps);
 
-      it('renders an NxAlert', function() {
-        const nxErrorAlert = getNxErrorAlert();
-        expect(nxErrorAlert).toMatchSelector(NxAlert);
+      const quickRender = rtlRender(NxErrorAlert, minimalProps);
+
+      it('sets the top-level element\'s role to "alert"', function() {
+        const view = quickRender();
+
+        expect(view.container.firstElementChild).toBe(view.getByRole('alert'));
       });
 
-      it('sets the role to "alert"', function() {
-        expect(getNxErrorAlert()).toHaveProp('role', 'alert');
-      });
-
-      it('sets the iconLabel to "Error"', function() {
-        expect(getNxErrorAlert()).toHaveProp('iconLabel', 'Error');
-      });
-
-      it('uses the appropriate error classes', function() {
-        const nxErrorAlert = getNxErrorAlert();
-        expect(nxErrorAlert).toMatchSelector(NxAlert);
-        expect(nxErrorAlert).toHaveClassName('nx-alert--error');
-      });
-
-      it('renders the appropriate error icon', function() {
-        const nxErrorAlert = getNxErrorAlert();
-        expect(nxErrorAlert).toMatchSelector(NxAlert);
-        expect(nxErrorAlert).toHaveProp('icon', faExclamationCircle);
-      });
-
-      it('renders the children passed into it', function() {
-        const nxErrorAlert = getNxErrorAlert();
-        expect(nxErrorAlert).toContainReact(<p>Hello</p>);
-      });
-
-      it('passes any other props to the NxAlert', function() {
-        const onClose = jest.fn(),
-            component = getNxErrorAlert({ id: 'foo', title: 'baz', onClose });
-        expect(component).toHaveProp('id', 'foo');
-        expect(component).toHaveProp('title', 'baz');
-        expect(component).toHaveProp('onClose', onClose);
-      });
-    });
-
-    describe('NxWarningAlert', function() {
-      const getNxWarningAlert = enzymeUtils.getShallowComponent<Props>(NxWarningAlert, minimalProps);
-
-      it('renders an NxAlert', function() {
-        const nxWarningAlert = getNxWarningAlert();
-        expect(nxWarningAlert).toMatchSelector(NxAlert);
-      });
-
-      it('sets the iconLabel to "Warning"', function() {
-        expect(getNxWarningAlert()).toHaveProp('iconLabel', 'Warning');
-      });
-
-      it('renders the appropriate alert icon', function() {
-        const nxWarningAlert = getNxWarningAlert();
-        expect(nxWarningAlert).toMatchSelector(NxAlert);
-        expect(nxWarningAlert).toHaveProp('icon', faExclamationTriangle);
-      });
-
-      it('uses the appropriate warning classes', function() {
-        const nxWarningAlert = getNxWarningAlert();
-        expect(nxWarningAlert).toMatchSelector(NxAlert);
-        expect(nxWarningAlert).toHaveClassName('nx-alert--warning');
-      });
-
-      it('renders the children passed into it', function() {
-        const nxWarningAlert = getNxWarningAlert();
-        expect(nxWarningAlert).toContainReact(<p>Hello</p>);
-      });
-
-      it('passes any other props to the NxAlert', function() {
-        const onClose = jest.fn(),
-            component = getNxWarningAlert({ id: 'foo', title: 'baz', onClose });
-        expect(component).toHaveProp('id', 'foo');
-        expect(component).toHaveProp('title', 'baz');
-        expect(component).toHaveProp('onClose', onClose);
+      it('renders an img with an accessible name of "Error"', function() {
+        expect(quickRender().getByRole('img')).toHaveAccessibleName('Error');
       });
     });
 
     describe('NxInfoAlert', function() {
-      const getNxInfoAlert = enzymeUtils.getShallowComponent<Props>(NxInfoAlert, minimalProps);
+      baseTests(NxInfoAlert, minimalProps);
 
-      it('renders an NxAlert', function() {
-        const nxInfoAlert = getNxInfoAlert();
-        expect(nxInfoAlert).toMatchSelector(NxAlert);
+      const quickRender = rtlRender(NxInfoAlert, minimalProps);
+
+      it('sets no default role on its top-level element', function() {
+        expect(renderEl()).not.toHaveAttribute('role');
       });
 
-      it('sets the iconLabel to "Info"', function() {
-        expect(getNxInfoAlert()).toHaveProp('iconLabel', 'Info');
+      it('renders an img with an accessible name of "Info"', function() {
+        expect(quickRender().getByRole('img')).toHaveAccessibleName('Info');
+      });
+    });
+
+    describe('NxWarningAlert', function() {
+      baseTests(NxWarningAlert, minimalProps);
+
+      const quickRender = rtlRender(NxWarningAlert, minimalProps);
+
+      it('sets no default role on its top-level element', function() {
+        expect(renderEl()).not.toHaveAttribute('role');
       });
 
-      it('renders the appropriate info classes', function() {
-        const nxInfoAlert = getNxInfoAlert();
-        expect(nxInfoAlert).toMatchSelector(NxAlert);
-        expect(nxInfoAlert).toHaveClassName('nx-alert--info');
-      });
-
-      it('renders the appropriate info icon', function() {
-        const nxInfoAlert = getNxInfoAlert();
-        expect(nxInfoAlert).toMatchSelector(NxAlert);
-        expect(nxInfoAlert).toHaveProp('icon', faInfoCircle);
-      });
-
-      it('renders the children passed into it', function() {
-        const nxInfoAlert = getNxInfoAlert();
-        expect(nxInfoAlert).toContainReact(<p>Hello</p>);
-      });
-
-      it('passes any other props to the NxAlert', function() {
-        const onClose = jest.fn(),
-            component = getNxInfoAlert({ id: 'foo', title: 'baz', onClose });
-        expect(component).toHaveProp('id', 'foo');
-        expect(component).toHaveProp('title', 'baz');
-        expect(component).toHaveProp('onClose', onClose);
+      it('renders an img with an accessible name of "Warning"', function() {
+        expect(quickRender().getByRole('img')).toHaveAccessibleName('Warning');
       });
     });
 
     describe('NxSuccessAlert', function() {
-      const getNxSuccessAlert = enzymeUtils.getShallowComponent<Props>(NxSuccessAlert, minimalProps);
+      baseTests(NxSuccessAlert, minimalProps);
 
-      it('renders an NxAlert', function() {
-        const nxSuccessAlert = getNxSuccessAlert();
-        expect(nxSuccessAlert).toMatchSelector(NxAlert);
+      const quickRender = rtlRender(NxSuccessAlert, minimalProps);
+
+      it('sets the top-level element\'s role to "status"', function() {
+        const view = quickRender();
+
+        expect(view.container.firstElementChild).toBe(view.getByRole('status'));
       });
 
-      it('sets the role to "status"', function() {
-        expect(getNxSuccessAlert()).toHaveProp('role', 'status');
-      });
-
-      it('sets the iconLabel to "Success"', function() {
-        expect(getNxSuccessAlert()).toHaveProp('iconLabel', 'Success');
-      });
-
-      it('renders the appropriate info classes', function() {
-        const nxSuccessAlert = getNxSuccessAlert();
-        expect(nxSuccessAlert).toMatchSelector(NxAlert);
-        expect(nxSuccessAlert).toHaveClassName('nx-alert--success');
-      });
-
-      it('renders the appropriate info icon', function() {
-        const nxSuccessAlert = getNxSuccessAlert();
-        expect(nxSuccessAlert).toMatchSelector(NxAlert);
-        expect(nxSuccessAlert).toHaveProp('icon', faCheckCircle);
-      });
-
-      it('renders the children passed into it', function() {
-        const nxSuccessAlert = getNxSuccessAlert();
-        expect(nxSuccessAlert).toContainReact(<p>Hello</p>);
-      });
-
-      it('passes any other props to the NxAlert', function() {
-        const onClose = jest.fn(),
-            component = getNxSuccessAlert({ id: 'foo', title: 'baz', onClose });
-        expect(component).toHaveProp('id', 'foo');
-        expect(component).toHaveProp('title', 'baz');
-        expect(component).toHaveProp('onClose', onClose);
+      it('renders an img with an accessible name of "Success"', function() {
+        expect(quickRender().getByRole('img')).toHaveAccessibleName('Success');
       });
     });
   });

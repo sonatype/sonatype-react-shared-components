@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   NxDrawer,
@@ -19,7 +19,8 @@ import {
   NxFieldset,
   NxCheckbox,
   useToggle,
-  NxStatefulTextInput
+  NxStatefulTextInput,
+  NxFormSelect
 } from '@sonatype/react-shared-components';
 
 export default function NxDrawerWithNxFormExample() {
@@ -27,7 +28,8 @@ export default function NxDrawerWithNxFormExample() {
       [showDrawerOverflowing, toggleDrawerOverflowing] = useToggle(false),
       [isRed, toggleRed] = useToggle(false),
       [isBlue, toggleBlue] = useToggle(false),
-      [isGreen, toggleGreen] = useToggle(false);
+      [isGreen, toggleGreen] = useToggle(false),
+      [country, setCountry] = useState('');
 
   return (
     <>
@@ -51,13 +53,13 @@ export default function NxDrawerWithNxFormExample() {
               <NxStatefulTextInput />
             </NxFormGroup>
             <NxFormGroup label="Country" sublabel="Pick your favorite from the list">
-              <select className="nx-form-select">
+              <NxFormSelect value={country} onChange={evt => setCountry(evt.target.value)}>
                 <option value="">Pick a Country</option>
                 <option value="USA">USA</option>
                 <option value="GER">Canada</option>
                 <option value="CAN">Germany</option>
                 <option value="COL">Colombia</option>
-              </select>
+              </NxFormSelect>
             </NxFormGroup>
             <NxFormGroup label="Hostname">
               <NxStatefulTextInput/>
