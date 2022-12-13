@@ -80,15 +80,14 @@ describe('NxAccordion', function() {
     });
 
     it('renders the NxAccordion.Header as a <summary>', function() {
-      const { container } = quickRender({ children:
+      const el = renderEl({ children:
         (
           <NxAccordion.Header id="headerId">
             <span>Foo</span>
           </NxAccordion.Header>
-        )});
-
-      expect(container.querySelector('#headerId')).toBeInTheDocument();
-      expect(container.querySelector('summary')).toBeInTheDocument();
+        )})!;
+      expect(el.querySelector('#headerId')!.tagName).toBe('SUMMARY');
+      expect(el.querySelector('summary')).toBeInTheDocument();
     });
 
     it('sets aria-controls to the accordion id', function() {
