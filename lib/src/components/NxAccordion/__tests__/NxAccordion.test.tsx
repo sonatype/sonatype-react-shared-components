@@ -40,7 +40,7 @@ describe('NxAccordion', function() {
   });
 
   it('sets an id if none is specified', function() {
-    expect(quickRender().getByRole('group')).toHaveAttribute('id');
+    expect(renderEl()).toHaveAttribute('id');
   });
 
   it('sets aria-expanded from the open prop', function() {
