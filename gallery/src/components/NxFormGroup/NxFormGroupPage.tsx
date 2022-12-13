@@ -68,9 +68,8 @@ const NxFormGroupPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Sets whether the input should display the optional flag – the flag is present by default and
-                setting <NxCode>isRequired</NxCode> to true removes the flag. Also sets
-                the <NxCode>aria-required</NxCode> prop on the child if not already present.
+                Sets whether the input should display a red asterisk indicating that the field is required.
+                Also sets the <NxCode>aria-required</NxCode> prop on the child if not already present.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -119,7 +118,7 @@ const NxFormGroupPage = () =>
                         liveExample={NxFormGroupRequiredExample}
                         codeExamples={nxFormGroupRequiredExampleCode}>
       An example of an <NxCode>NxFormGroup</NxCode> wrapping
-      an <NxCode>NxTextInput</NxCode> which uses the isRequired flag to remove the "Optional"
+      an <NxCode>NxTextInput</NxCode> which uses the isRequired flag to add the red asterisk
       indicator.
     </GalleryExampleTile>
 
