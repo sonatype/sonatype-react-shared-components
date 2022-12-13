@@ -41,16 +41,18 @@ export type TextInputElement = HTMLInputElement | HTMLTextAreaElement;
 // Final Props are the HTMLProps & our re-definitions
 export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
   type?: NxTextInputType | null;
-  onChange?: ((newVal: string, e: FormEvent<TextInputElement>) => void) | null;
+  onChange?: ((newVal: string, e?: FormEvent<TextInputElement>) => void) | null;
   onKeyPress?: ((keyCode: string) => void) | null;
   validatable?: boolean | null;
 
-  // For internal use only, this prop allows additional content to be inserted just before the
-  // <input>. This is used by NxFilterInput
+  // For internal use only, these props are used by NxFilterInput
+  // additional content to be inserted before the <input>
   prefixContent?: ReactNode | null;
+  // additional content to be inserted after the <input>
+  suffixContent?: ReactNode | null;
 };
 
-export interface PublicProps extends Omit<Props, 'prefixContent'> {
+export interface PublicProps extends Omit<Props, 'prefixContent' | 'suffixContent'> {
   type?: PublicNxTextInputType | null;
 }
 

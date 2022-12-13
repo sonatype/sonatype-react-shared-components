@@ -16,7 +16,9 @@ describe('NxRadio', function() {
     moveMouseAway,
     blurElement,
     checkScreenshot,
-    a11yTest
+    a11yTest,
+    wait,
+    isInDocument
   } = setupBrowser('#/pages/Radio');
 
   const selector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
@@ -74,6 +76,38 @@ describe('NxRadio', function() {
   describe('Attribute-Disabled-Checked NxRadio', function() {
     it('looks disabled by default', simpleTest(disabledCheckedSelector));
     it('looks disabled when hovered', hoverTest(disabledCheckedSelector));
+  });
+
+  describe('Tooltip for NxRadio', function() {
+    const selector = '#nx-radio-example .gallery-example-live',
+        hoverSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)';
+    it('has a tooltip on hover when set to true', hoverTest(selector, hoverSelector, true));
+
+    it('does have a tooltip on hover when overflowTooltip is not false and the content is overflowing',
+        async function() {
+          const wrapGreenHoverSelector = '#nx-radio-no-wrap-example .gallery-example-live label:nth-of-type(2)',
+              [selectorGreen] = await waitAndGetElements(wrapGreenHoverSelector),
+              wrapRedHoverSelector = '#nx-radio-no-wrap-example .gallery-example-live label:nth-of-type(1)',
+              [selectorRed] = await waitAndGetElements(wrapRedHoverSelector),
+              redNoOverflow = '#nx-radio-example .gallery-example-live label:nth-of-type(2)',
+              [selectorNoOverflowRed] = await waitAndGetElements(redNoOverflow);
+
+          await selectorRed.hover();
+          await wait(500);
+
+          const [tooltip] = await waitAndGetElements('.nx-tooltip');
+          expect(await isInDocument(tooltip)).toBe(true);
+
+          await moveMouseAway();
+          await wait(500);
+          expect(await isInDocument(tooltip)).toBe(false);
+
+          await selectorGreen.hover();
+          expect(await isInDocument(tooltip)).toBe(false);
+
+          await selectorNoOverflowRed.hover();
+          expect(await isInDocument(tooltip)).toBe(false);
+        });
   });
 
   it('passes a11y checks', a11yTest());

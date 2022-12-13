@@ -11,9 +11,11 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxTooltipExample from './NxTooltipExample';
 import NxTooltipWrappingExample from './NxTooltipWrappingExample';
+import NxTooltipPlacementExample from './NxTooltipPlacementExample';
 
 const tooltipsExampleCode = require('./NxTooltipExample?raw'),
     wrappingTooltipsExampleCode = require('./NxTooltipWrappingExample?raw'),
+    placementTooltipsExampleCode = require('./NxTooltipPlacementExample?raw'),
     tooltipsExampleStyles = require('./NxTooltipExample.scss?raw');
 
 export default function NxTooltipPage() {
@@ -88,15 +90,23 @@ export default function NxTooltipPage() {
         </NxTable>
       </GalleryDescriptionTile>
       <GalleryExampleTile title="General Example"
+                          id="nx-tooltip-example"
                           codeExamples={codeExamples}
                           liveExample={NxTooltipExample}>
         This example demonstrates a series of components with tooltips using various
         configuration options.
       </GalleryExampleTile>
       <GalleryExampleTile title="Wrapping Example"
+                          id="nx-tooltip-wrapping-example"
                           codeExamples={wrappingTooltipsExampleCode}
                           liveExample={NxTooltipWrappingExample}>
         This example demonstrates a tooltip who's content is long enough to wrap. Wrapping occurs at 600px.
+      </GalleryExampleTile>
+      <GalleryExampleTile title="Placement Example"
+                          id="nx-tooltip-placement-example"
+                          codeExamples={placementTooltipsExampleCode}
+                          liveExample={NxTooltipPlacementExample}>
+        This example shows all possible placements for tooltips
       </GalleryExampleTile>
     </>
   );

@@ -7,11 +7,15 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxTooltip', function() {
-  const { waitAndGetElements, checkScreenshotCoordinates, wait, a11yTest } = setupBrowser('#/pages/Tooltip');
+  const { waitAndGetElements, checkScreenshotCoordinates, wait, a11yTest, simpleTest, hoverTest } =
+      setupBrowser('#/pages/Tooltip');
 
-  const selector = '.gallery-example .nx-btn-bar',
+  const selector = '#nx-tooltip-example .gallery-example .nx-btn-bar',
       firstBtnSelector = `${selector} button:first-child`,
       secondBtnSelector = `${selector} button:nth-child(2)`,
+      wrappingExampleSelector = '#nx-tooltip-wrapping-example',
+      wrappingExampleBtnSelector = `${wrappingExampleSelector} .nx-btn`,
+      placementExampleSelector = '#nx-tooltip-placement-example',
 
       // expected distance from top of element to the top of its tooltip
       tooltipHeightOffset = 45;
@@ -42,6 +46,12 @@ describe('NxTooltip', function() {
     await wait(1500);
 
     await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
+  });
+
+  it('wraps long text', hoverTest(wrappingExampleSelector, wrappingExampleBtnSelector, true));
+  it('looks right in all placements', async function() {
+    await wait(200);
+    await simpleTest(placementExampleSelector)();
   });
 
   //disabling the region rule to get around the "Some page content is not contained by landmarks" for tooltips

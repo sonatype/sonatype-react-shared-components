@@ -222,6 +222,7 @@ const NxCollapsibleMultiSelectPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="NxCollapsibleMultiSelect Disabled Example With Tooltip"
+                        id="nx-collapsible-multi-select-disabled-with-tooltip-example"
                         liveExample={NxCollapsibleMultiSelectDisabledExample}
                         codeExamples={NxCollapsibleMultiSelectDisabledExampleCode}>
       An example of an <NxCode>NxCollapsibleMultiSelect</NxCode> which is disabled and which displays

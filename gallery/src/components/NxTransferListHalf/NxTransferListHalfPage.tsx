@@ -10,10 +10,23 @@ import { NxCode, NxTable, NxP, NxTile, NxH3 } from '@sonatype/react-shared-compo
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxTransferListHalfExample from './NxTransferListHalfExample';
+import NxTransferListHalfCustomTooltipExample from './NxTransferListHalfCustomTooltipExample';
 import NxTransferListHalfOrderingExample from './NxTransferListHalfOrderingExample';
+import NxTransferListHalfDisableTransferExample from './NxTransferListHalfDisableTransferExample';
+import NxTransferListHalfOrderingWithDisableTransferExample
+  from './NxTransferListHalfOrderingWithDisableTransferExample';
+
+import '../NxTooltip/NxTooltipExample.scss';
 
 const nxTransferListHalfExample = require('./NxTransferListHalfExample?raw'),
-    nxTransferListHalfOrderingExample = require('./NxTransferListHalfOrderingExample?raw');
+    nxTransferListHalfCustomTooltipExample = require('./NxTransferListHalfCustomTooltipExample?raw'),
+    nxTransferListHalfOrderingExample = require('./NxTransferListHalfOrderingExample?raw'),
+    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw'),
+    nxTransferListHalfDisableTransferExample = require('./NxTransferListHalfDisableTransferExample?raw'),
+    nxTransferListHalfOrderingWithDisableTransferExample =
+      require('./NxTransferListHalfOrderingWithDisableTransferExample?raw');
+
+const tooltipExampleCode = [nxTransferListHalfCustomTooltipExample, { language: 'scss', content: tooltipScss }];
 
 const NxTransferListPage = () =>
   <>
@@ -62,16 +75,19 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>showMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>Whether or not to show the "Remove All"/"Transfer All" button</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>Handler for the user activating the "Remove All"/"Transfer All" button</NxTable.Cell>
+              <NxTable.Cell>
+                Handler for the user activating the "Remove All"/"Transfer All" button.
+                It should be provided when <NxCode>showMoveAll</NxCode> is true.
+              </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>items</NxCode></NxTable.Cell>
@@ -83,22 +99,23 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>isSelected</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>true</NxTable.Cell>
               <NxTable.Cell>
                 Whether this component represents selected or unselected items. This affects what icons are used and
-                the wording of the Move All button.
+                the wording of the Move All button. Defaults to true.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onItemChange</NxCode></NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Handler function for the user activating an item in the list. This handler will be passed two
                 arguments: whether the item was currently selected (i.e. the value of
-                the <NxCode>isSelected</NxCode> prop) and the id of the item.
+                the <NxCode>isSelected</NxCode> prop) and the id of the item. When not provided, it disables
+                the ability to transfer items by hiding the item's icon.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -154,6 +171,7 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell>Property</NxTable.Cell>
               <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
               <NxTable.Cell>Description</NxTable.Cell>
             </NxTable.Row>
           </NxTable.Head>
@@ -163,14 +181,34 @@ const NxTransferListPage = () =>
               <NxTable.Cell>
                 <NxCode>string | number</NxCode>, or some subclass thereof (<NxCode>string</NxCode> by default)
               </NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>The unique identifier for this item</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell>displayName</NxTable.Cell>
               <NxTable.Cell><NxCode>ReactNode</NxCode></NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
                 The text to display in the UI for this item. In order for filtering to work properly, all text content
                 must be immediately present in the JSX itself, and not implemented by child components
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>tooltip</NxTable.Cell>
+              <NxTable.Cell>string | TooltipProps</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                Normally – when this property is <em>not</em> specified – the display text of the data item is wrapped
+                in an <NxCode>NxOverflowTooltip</NxCode>, such that if its <NxCode>displayName</NxCode> overflows,
+                it gets a tooltip displaying the full <NxCode>displayName</NxCode>. If
+                this <NxCode>tooltip</NxCode> property is specified however, instead of
+                an <NxCode>NxOverflowTooltip</NxCode> it gets a regular <NxCode>NxTooltip</NxCode> configured with the
+                specified props or, if the value of this property is a string, that string as the tooltip title. The
+                effect being that the properties specified here are used to construct a tooltip for the data item which
+                is active (on hover) regardless of whether the text is overflowing. Note that this replaces the default
+                overflow tooltip, and so must account for the usability that would have been provided by that tooltip as
+                well, e.g. it should include the full <NxCode>displayName</NxCode> so that that value is still fully
+                visible in the event of overflow.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>
@@ -215,6 +253,28 @@ const NxTransferListPage = () =>
       Demonstrates an <NxCode>NxTransferListHalf</NxCode> with reordering. Additionally
       the <NxCode>isSelected</NxCode> and <NxCode>showMoveAll</NxCode> props demonstrate their opposite values
       compared to the example above, and the filterFn prop is also demonstrated
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Custom Tooltip Example"
+                        id="nx-transfer-list-half-custom-tooltip-example"
+                        codeExamples={tooltipExampleCode}
+                        liveExample={NxTransferListHalfCustomTooltipExample}>
+      Demonstrates an <NxCode>NxTransferListHalf</NxCode> with custom tooltips on the data items. The first item
+      demonstrates how a tooltip props object can be passed as the <NxCode>tooltip</NxCode> parameter, while the
+      remaining items demonstrate the shorthand of passing a string as the <NxCode>tooltip</NxCode>.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="Disable Transfer Example"
+                        id="nx-transfer-list-half-disable-transfer-example"
+                        codeExamples={nxTransferListHalfDisableTransferExample}
+                        liveExample={NxTransferListHalfDisableTransferExample}>
+      Demonstrates an <NxCode>NxTransferListHalf</NxCode> with transfer feature disabled
+      when <NxCode>onItemChange</NxCode> prop is not provided.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="Ordering with Disable Transfer Example"
+                        id="nx-transfer-list-half-ordering-with-disable-transfer-example"
+                        codeExamples={nxTransferListHalfOrderingWithDisableTransferExample}
+                        liveExample={NxTransferListHalfOrderingWithDisableTransferExample}>
+      Demonstrates an ordering <NxCode>NxTransferListHalf</NxCode> with transfer feature disabled.
     </GalleryExampleTile>
   </>;
 

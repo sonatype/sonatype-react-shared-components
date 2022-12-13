@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "12.0.5",
+  "version": "12.5.19",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -74,6 +74,11 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.18",
+    "@nivo/core": "^0.80.0",
+    "@nivo/bar": "^0.80.0",
+    "@nivo/line": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
+    "@nivo/tooltip": "^0.80.0",
     "@react-hook/debounce": "^4.0.0",
     "@sonatype/react-shared-components": "link:../lib/dist",
     "axios": "^0.21.1",
@@ -82,6 +87,7 @@
     "core-js": "^3.8.3",
     "es6-object-assign": "^1.1.0",
     "es6-set": "^0.1.5",
+    "prop-types": "^15.7.2",
     "query-string": "^6.13.8",
     "ramda": "^0.28.0",
     "react": "^16.14.0",

@@ -18,7 +18,8 @@ describe('NxTransferListHalf', function() {
     simpleTest,
     a11yTest,
     waitForSelectors,
-    checkScreenshot
+    checkScreenshot,
+    checkScreenshotCoordinates
   } = setupBrowser('#/pages/Transfer List Half');
 
   const wait1Sec = () => wait(1000);
@@ -26,15 +27,23 @@ describe('NxTransferListHalf', function() {
   const simpleListSelector = '#nx-transfer-list-half-example .nx-transfer-list__half',
       complexListSelector = '#nx-transfer-list-half-ordering-example .nx-transfer-list__half',
       complexListFullSelector = '#nx-transfer-list-half-ordering-example .gallery-example-live',
-      itemsSelector =
-        `${simpleListSelector} .nx-transfer-list__item`,
+      tooltipListSelector = '#nx-transfer-list-half-custom-tooltip-example .nx-transfer-list__half',
+      disableTransferListSelector = '#nx-transfer-list-half-disable-transfer-example .nx-transfer-list__half',
+      orderingWithDisableTransferListSelector =
+       '#nx-transfer-list-half-ordering-with-disable-transfer-example .nx-transfer-list__half',
+      itemsSelector = `${simpleListSelector} .nx-transfer-list__item`,
+      tooltipItemsSelector = `${tooltipListSelector} .nx-transfer-list__item`,
+      disableTransferItemSelector = `${disableTransferListSelector} .nx-transfer-list__item`,
       firstItemSelector = `${itemsSelector}:first-child .nx-transfer-list__select`,
       secondItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
       transferAllSelector = `${complexListSelector} .nx-transfer-list__move-all`,
       complexFirstItemSelector = `${complexListSelector} .nx-transfer-list__item:first-child`,
       moveUpSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :first-child`,
       moveDownSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :last-child`,
-      filterBoxSelector = `${complexListSelector} .nx-text-input__input`;
+      filterBoxSelector = `${complexListSelector} .nx-text-input__input`,
+      firstTooltipItemSelector = `${tooltipItemsSelector}:first-child .nx-transfer-list__select`,
+      secondTooltipItemSelector = `${tooltipItemsSelector}:nth-child(2) .nx-transfer-list__select`,
+      secondDisableTransferItemSelector = `${disableTransferItemSelector}:nth-child(2) .nx-transfer-list__select`;
 
   it('looks right', simpleTest(simpleListSelector));
   it('looks right with complex options', simpleTest(complexListSelector));
@@ -46,7 +55,7 @@ describe('NxTransferListHalf', function() {
 
     await waitForSelectors('.nx-tooltip');
 
-    // give toolttip time to fully appear
+    // give tooltip time to fully appear
     await wait1Sec();
 
     await checkScreenshot(list);
@@ -73,6 +82,50 @@ describe('NxTransferListHalf', function() {
 
     it('gives the move up button no tooltip of its own', hoverTest(complexListFullSelector, moveUpSelector, true));
     it('gives the move down button no tooltip of its own', hoverTest(complexListFullSelector, moveDownSelector, true));
+  });
+
+  describe('explicit tooltip', function() {
+    it('creates a tooltip', async function() {
+      const [list, secondItem] = await waitAndGetElements(tooltipListSelector, secondTooltipItemSelector);
+
+      await scrollIntoView(list);
+      await secondItem.hover();
+
+      await waitForSelectors('.nx-tooltip');
+
+      // give tooltip time to fully appear
+      await wait1Sec();
+
+      await checkScreenshot(list);
+    });
+
+    it('replaces overflow tooltip and receives custom props', async function() {
+      const [list, firstItem] = await waitAndGetElements(tooltipListSelector, firstTooltipItemSelector);
+
+      await scrollIntoView(list);
+      await firstItem.hover();
+
+      await waitForSelectors('.nx-tooltip');
+
+      // give tooltip time to fully appear
+      await wait1Sec();
+
+      const { x, y, width, height } = await list.boundingBox();
+
+      await checkScreenshotCoordinates(x - 297, y, width + 297, height);
+    });
+  });
+
+  describe('disable transfer', function() {
+    it('looks right', simpleTest(disableTransferListSelector));
+    it('does not put a dark border on hovered items',
+        hoverTest(disableTransferListSelector, secondDisableTransferItemSelector));
+    it('does not put a grey background on clicked items',
+        clickTest(disableTransferListSelector, secondDisableTransferItemSelector));
+  });
+
+  describe('ordering with disable transfer', function() {
+    it('looks right', simpleTest(orderingWithDisableTransferListSelector));
   });
 
   it('passes a11y checks', a11yTest());

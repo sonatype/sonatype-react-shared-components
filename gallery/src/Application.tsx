@@ -56,11 +56,57 @@ import NxToastSimpleLayoutExample from './components/NxToast/NxToastSimpleLayout
 import NxToastComplexLayoutExample from './components/NxToast/NxToastComplexLayoutExample';
 import NxToastLegacyLayoutExample from './components/NxToast/NxToastLegacyLayoutExample';
 import NxToastWithNxDrawerExample from './components/NxToast/NxToastWithNxDrawerExample';
+import NxBreadcrumbGlobalHeaderExample from './components/NxBreadcrumb/NxBreadcrumbGlobalHeaderExample';
+
+// number of pixels below the page header that deep links should scroll to
+const SCROLL_PAGE_HEADER_PAD = 8;
 
 const pageMappings = mergeAll(values(pageConfig));
 
-function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
-  const pageName = match ? match.params.pageName : null,
+interface RouteProps {
+  pageName: string;
+  elementId?: string;
+}
+
+function scrollTo(elementId: string | undefined): (() => void) | void {
+  const el = elementId ? document.getElementById(elementId) : null;
+
+  if (el) {
+    function doElementScroll() {
+      // This function is only used within `if (el)` so it's not going to be null
+      /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+      const { y: elCurrentY } = el!.getBoundingClientRect(),
+          { scrollY } = window,
+          elDistanceFromTopOfDocument = scrollY + elCurrentY,
+          pageHeader = document.getElementById('gallery-page-header'),
+          pageHeaderHeight = pageHeader?.getBoundingClientRect()?.height ?? 0;
+
+      window.scrollTo(0, elDistanceFromTopOfDocument - (pageHeaderHeight + SCROLL_PAGE_HEADER_PAD));
+
+      // re-enable scrollRestoration for future page loads
+      window.history.scrollRestoration = 'auto';
+    }
+
+    if (document.readyState === 'complete') {
+      doElementScroll();
+    }
+    else {
+      // disable the browser's automatic behavior of scrolling the user to their last known scroll position. This
+      // happens _after_ the onload event and interferes with the programmatic scrolling in doElementScroll
+      window.history.scrollRestoration = 'manual';
+
+      // wait for fonts and things to load before scrolling
+      window.addEventListener('load', doElementScroll, { once: true });
+      return () => { window.removeEventListener('load', doElementScroll); };
+    }
+  }
+  else {
+    window.scrollTo(0, 0);
+  }
+}
+
+function Page({ match, location }: RouteChildrenProps<RouteProps>) {
+  const { pageName, elementId } = match?.params ?? {},
       pageHeader = pageName || 'Home',
       Content = pageName ? pageMappings[pageName]?.content : Home;
 
@@ -70,8 +116,9 @@ function Page({ match, location }: RouteChildrenProps<{ pageName: string }>) {
 
   // reset scroll position
   useEffect(function() {
-    window.scrollTo(0, 0);
-  }, [location]);
+    const tearDownScroll = scrollTo(elementId);
+    return tearDownScroll;
+  }, [elementId]);
 
   if (Content) {
     return (
@@ -219,6 +266,11 @@ function Application() {
             <NxDrawerExample />
           </SectionScrollingWrapper>
         </Route>
+        <Route exact path="/NxBreadcrumbGlobalHeaderExample">
+          <SectionScrollingWrapper>
+            <NxBreadcrumbGlobalHeaderExample />
+          </SectionScrollingWrapper>
+        </Route>
         <Route>
           <PageHeader />
           <div className="nx-page-content">
@@ -226,7 +278,7 @@ function Application() {
               <GalleryNav />
             </aside>
             <Switch>
-              <Route path="/pages/:pageName" component={Page} />
+              <Route path="/pages/:pageName/:elementId?" component={Page} />
               <Route exact path="/" component={Page} />
 
               {/* Special cases, these examples need their own page separate from their documentation */}

@@ -11,6 +11,7 @@
   --nx-width-content-proportion: 0.76;
   --nx-width-content: calc(100% * var(--nx-width-content-proportion));
   --nx-width-sidebar: calc(100% - var(--nx-width-content));
+  --nx-width-sidebar-max: calc((1 - var(--nx-width-content-proportion)) * var(--nx-width-page-max));
   --nx-width-scrollbar: 15px;
   --nx-width-form-element-normal: 300px;
   --nx-width-form-element-wide: 800px;
@@ -34,6 +35,8 @@
   --nx-font-size-heading-2: 22px;
   --nx-font-size-heading-3: 16px;
   --nx-font-size-heading-4: 14px;
+
+  --nx-font-family: Open Sans, sans-serif;
 
   --nx-line-height: 1.5;
 

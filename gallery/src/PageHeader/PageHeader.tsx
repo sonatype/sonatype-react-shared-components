@@ -20,7 +20,7 @@ const PageHeader = () => {
   const [showThemeSettingsModal, toggleShowThemeSettingsModal] = useToggle(false);
 
   return (
-    <header className="nx-page-header gallery-page-header">
+    <header id="gallery-page-header" className="nx-page-header gallery-page-header">
       <div className="nx-page-header__inner">
         <a className="gallery-page-header__home-link"
            href="#/">

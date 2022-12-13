@@ -171,7 +171,7 @@ export {
 
 export {
   default as NxStatefulTextInput,
-  Props as NxStatefulTextInputProps
+  PublicProps as NxStatefulTextInputProps
 } from './components/NxTextInput/stateful/NxStatefulTextInput';
 
 export {
@@ -298,7 +298,7 @@ export {
 export { default as NxStatefulSearchDropdown, Props as NxStatefulDropdownProps }
   from './components/NxSearchDropdown/stateful/NxStatefulSearchDropdown';
 
-export { default as DataItem, default as NxTransferListDataItem } from './util/DataItem';
+export { default as DataItem } from './util/DataItem';
 
 export { default as NxSearchTransferList, Props as NxSearchTransferListProps }
   from './components/NxSearchTransferList/NxSearchTransferList';
@@ -306,7 +306,7 @@ export { default as NxSearchTransferList, Props as NxSearchTransferListProps }
 export { default as NxStatefulSearchTransferList, Props as NxStatefulSearchTransferListProps }
   from './components/NxSearchTransferList/stateful/NxStatefulSearchTransferList';
 
-export { default as NxTransferListHalf, Props as NxTransferListHalfProps }
+export { default as NxTransferListHalf, Props as NxTransferListHalfProps, NxTransferListDataItem }
   from './components/NxTransferListHalf/NxTransferListHalf';
 
 export {
@@ -342,6 +342,8 @@ export { default as NxCombobox, Props as NxComboboxProps } from './components/Nx
 
 export * from './components/NxStatusIndicator/NxStatusIndicator';
 
+export { default as NxScrollRender, Props as NxScrollRenderProps } from './components/NxScrollRender/NxScrollRender';
+
 export { default as NxDrawer, Props as NxDrawerProps } from './components/NxDrawer/NxDrawer';
 
 export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';
@@ -358,3 +360,10 @@ export {
 
 export { default as NxTile } from './components/NxTile/NxTile';
 export { default as NxMeter, Props as NxMeterProps } from './components/NxMeter/NxMeter';
+
+export * from './util/nivo';
+export { default as NxBreadcrumb, Props as NxBreadcrumbProps, Crumb as NxBreadcrumbCrumb }
+  from './components/NxBreadcrumb/NxBreadcrumb';
+
+export { default as NxStatefulBreadcrumb, Props as NxStatefulBreadcrumbProps }
+  from './components/NxBreadcrumb/stateful/NxStatefulBreadcrumb';

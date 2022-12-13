@@ -5,24 +5,23 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 // import React, { useState } from 'react';
-import React from 'react';
-import { fireEvent, render, within } from '@testing-library/react';
-import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
-
+import React, { RefAttributes } from 'react';
+import { screen, fireEvent, render, within, createEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxCombobox, { Props } from '../NxCombobox';
 import NxForm from '../../NxForm/NxForm';
 
 describe('NxCombobox', function() {
-  const minimalProps: Props<string | number> = {
+  const minimalProps: Props = {
         value: '',
         onChange: () => {},
         onSearch: () => {},
         matches: []
       },
-      quickRender = rtlRender<React.ComponentPropsWithRef<typeof NxCombobox>>(NxCombobox, minimalProps),
-      renderEl = rtlRenderElement<React.ComponentPropsWithRef<typeof NxCombobox>>(NxCombobox, minimalProps);
+      quickRender = rtlRender<Props & RefAttributes<HTMLDivElement>>(NxCombobox, minimalProps),
+      renderEl = rtlRenderElement<Props & RefAttributes<HTMLDivElement>>(NxCombobox, minimalProps);
 
   it('sets specified classNames and attributes on the top-level element', function() {
     const component = renderEl()!,
@@ -53,6 +52,10 @@ describe('NxCombobox', function() {
 
   it('sets the value as the value of the input', function() {
     expect(quickRender({ value: 'foo' }).getByRole('combobox')).toHaveValue('foo');
+  });
+
+  it('sets autocomplete="off" on the input', function() {
+    expect(quickRender().getByRole('combobox')).toHaveAttribute('autocomplete', 'off');
   });
 
   it('sets aria-autocomplete on the input to list as default and to both if `autoComplete` prop is set to true',
@@ -208,16 +211,18 @@ describe('NxCombobox', function() {
     expect(onSearch).toHaveBeenCalledWith('f');
   });
 
-  it('fires onChange when the button with role option is clicked', async function() {
-    const user = userEvent.setup(),
-        onChange = jest.fn(),
-        { getAllByRole } = quickRender({
-          matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onChange }),
-        optionBtns = getAllByRole('option');
+  it('fires onChange when the button with role option is clicked and passes the DataItem as a second arg',
+      async function() {
+        const user = userEvent.setup(),
+            onChange = jest.fn(),
+            { getAllByRole } = quickRender({
+              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }], onChange }),
+            optionBtns = getAllByRole('option');
 
-    await user.click(optionBtns[1]);
-    expect(onChange).toHaveBeenCalledWith('Boo');
-  });
+        await user.click(optionBtns[1]);
+        expect(onChange).toHaveBeenCalledWith('Boo', { id: '2', displayName: 'Boo' });
+      }
+  );
 
   it('does not render the empty message if there are no results and the value is empty', function() {
     const { queryByRole } = quickRender(),
@@ -289,6 +294,33 @@ describe('NxCombobox', function() {
         inputElement.focus();
         expect(onSearch).not.toHaveBeenCalled();
       });
+
+  it('places tooltips on each dropdown item if itemTooltip is defined', async function() {
+    const user = userEvent.setup(),
+        view = quickRender({
+          itemTooltip: ({ displayName }) => `${displayName} tooltipp`,
+          matches: [{ id: '1', displayName: 'Foo' }]
+        }),
+        btn = view.getByRole('option');
+
+    await user.hover(btn);
+    const tooltip = await screen.findByRole('tooltip');
+
+    expect(tooltip).toHaveTextContent('Foo tooltipp');
+  });
+
+  it('does not put tooltips on the dropdown items if itemTooltip is not defined', async function() {
+    const user = userEvent.setup(),
+        view = quickRender({
+          matches: [{ id: '1', displayName: 'Foo' }]
+        }),
+        btn = view.getByRole('option');
+
+    await user.hover(btn);
+    const tooltipPromise = screen.findAllByRole('tooltip');
+
+    await expect(tooltipPromise).rejects.toBeTruthy();
+  });
 
   describe('Accessible Description', function() {
     it('sets alert message as the accessible description of the combobox when there is an alert with empty message',
@@ -503,6 +535,28 @@ describe('NxCombobox', function() {
       await user.keyboard('[Escape]');
       expect(onChange).toBeCalledWith('');
     });
+
+    it('calls preventDefault on the event when Escape key is pressed and the value is not empty', async function() {
+      const { getByRole } = quickRender({ value: 'a' }),
+          inputElement = getByRole('combobox'),
+          keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+      inputElement.focus();
+      fireEvent(inputElement, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(true);
+    });
+
+    it('does not call preventDefault on the event when Escape key is pressed and the value is empty', async function() {
+      const { getByRole } = quickRender(),
+          inputElement = getByRole('combobox'),
+          keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+      inputElement.focus();
+      fireEvent(inputElement, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(false);
+    });
   });
 
   describe('when not validatable', function() {
@@ -512,7 +566,7 @@ describe('NxCombobox', function() {
       const pristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: true };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:Props<string | number> = pristineMinimalProps,
+        const noValidationErrorsMinimalProps:Props = pristineMinimalProps,
             quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -553,9 +607,9 @@ describe('NxCombobox', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:Props<string | number> =
+        const singleValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: 'foo', id: '1' },
-            multiValidationErrorsMinimalProps:Props<string | number> =
+            multiValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'], id: '2' },
             singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
             multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
@@ -610,7 +664,7 @@ describe('NxCombobox', function() {
       const nonPristineMinimalProps = { ...nonValidatableMinimalProps, isPristine: false };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:Props<string | number> = nonPristineMinimalProps,
+        const noValidationErrorsMinimalProps:Props = nonPristineMinimalProps,
             quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -651,9 +705,9 @@ describe('NxCombobox', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:Props<string | number> =
+        const singleValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:Props<string | number> =
+            multiValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
             singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
             multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
@@ -712,7 +766,7 @@ describe('NxCombobox', function() {
       const pristineMinimalProps = { ...validatableMinimalProps, isPristine: true };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:Props<string | number> = pristineMinimalProps,
+        const noValidationErrorsMinimalProps:Props = pristineMinimalProps,
             quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -753,9 +807,9 @@ describe('NxCombobox', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:Props<string | number> =
+        const singleValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:Props<string | number> =
+            multiValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
             singleRender = rtlRender(NxCombobox, singleValidationErrorsMinimalProps),
             multiRender = rtlRender(NxCombobox, multiValidationErrorsMinimalProps);
@@ -780,7 +834,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
@@ -821,7 +875,7 @@ describe('NxCombobox', function() {
       const nonPristineMinimalProps = { ...validatableMinimalProps, isPristine: false };
 
       describe('when there are no validation errors', function() {
-        const noValidationErrorsMinimalProps:Props<string | number> = nonPristineMinimalProps,
+        const noValidationErrorsMinimalProps:Props = nonPristineMinimalProps,
             quickRender = rtlRender(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
@@ -862,9 +916,9 @@ describe('NxCombobox', function() {
       });
 
       describe('when there are validation errors', function() {
-        const singleValidationErrorsMinimalProps:Props<string | number> =
+        const singleValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
-            multiValidationErrorsMinimalProps:Props<string | number> =
+            multiValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
             singleRender = rtlRenderElement(NxCombobox, singleValidationErrorsMinimalProps),
             multiRender = rtlRenderElement(NxCombobox, multiValidationErrorsMinimalProps);
@@ -889,7 +943,7 @@ describe('NxCombobox', function() {
         });
 
         describe('when in a form with showValidationErrors', function() {
-          function quickRender(extraProps?: Partial<Props<string | number>>) {
+          function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
               <NxForm showValidationErrors onSubmit={() => {}}>
                 <NxCombobox { ...validatableMinimalProps } { ...extraProps } />

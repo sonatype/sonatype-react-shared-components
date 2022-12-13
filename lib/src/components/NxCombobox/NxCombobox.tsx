@@ -12,18 +12,19 @@ import usePrevious from '../../util/usePrevious';
 import './NxCombobox.scss';
 
 import forwardRef from '../../util/genericForwardRef';
-import { Props, propTypes } from './types';
+import { DataItemType, Props, propTypes } from './types';
 import NxTextInput from '../NxTextInput/NxTextInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadError from '../NxLoadError/NxLoadError';
 import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import { useUniqueId } from '../../util/idUtil';
 import DataItem from '../../util/DataItem';
+import NxTooltip from '../NxTooltip/NxTooltip';
 export { Props } from './types';
 
 const SELECTION_POLL_INTERVAL = 100;
 
-function NxComboboxRender<T extends string | number = string>(
+function NxComboboxRender<T extends string | number | DataItem<string | number, string> = string>(
   props: Props<T>,
   ref: Ref<HTMLDivElement>
 ) {
@@ -35,6 +36,7 @@ function NxComboboxRender<T extends string | number = string>(
         value,
         onChange,
         onSearch,
+        itemTooltip,
         disabled,
         emptyMessage,
         autoComplete,
@@ -106,8 +108,8 @@ function NxComboboxRender<T extends string | number = string>(
       // The automatically selected suggestion becomes the value of the combobox
       // when the combobox loses focus.
       if (autoComplete && focusableBtnIndex !== null) {
-        const elToFocusText = matches[focusableBtnIndex].displayName;
-        onChange(elToFocusText);
+        const elToFocusMatch = matches[focusableBtnIndex];
+        onChange(elToFocusMatch.displayName, elToFocusMatch);
       }
       setFocusableBtnIndex(null);
     }
@@ -135,8 +137,10 @@ function NxComboboxRender<T extends string | number = string>(
     inputRef.current?.focus();
   }
 
-  function handleDropdownBtnClick({displayName}: DataItem<T, string>) {
-    onChange(displayName);
+  function handleDropdownBtnClick(item: DataItemType<T>) {
+    const { displayName } = item;
+
+    onChange(displayName, item);
     onSearch(displayName);
     focusTextInput();
     setFocusableBtnIndex(null);
@@ -148,8 +152,10 @@ function NxComboboxRender<T extends string | number = string>(
             elToFocus = dropdownRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
 
         if (elToFocus) {
+          const match = matches[newFocusableBtnIndex];
+
           setFocusableBtnIndex(newFocusableBtnIndex);
-          onChange(matches[newFocusableBtnIndex].displayName);
+          onChange(match.displayName, match);
           elToFocus.scrollIntoView({ block: 'nearest' });
         }
       },
@@ -200,6 +206,11 @@ function NxComboboxRender<T extends string | number = string>(
       case 'Escape':
         handleOnChange('');
         setFocusableBtnIndex(null);
+
+        if (value !== '') {
+          // only prevent default if the ESC actually made a difference here
+          evt.preventDefault();
+        }
         break;
     }
   }
@@ -213,7 +224,10 @@ function NxComboboxRender<T extends string | number = string>(
   // corresponding part of the autocompleted option
   function updateValueCase() {
     if (focusableBtnIndex != null) {
-      onChange(matches[focusableBtnIndex].displayName.slice(0, value.length));
+      const newValue = matches[focusableBtnIndex].displayName.slice(0, value.length);
+      if (newValue !== value) {
+        onChange(newValue);
+      }
     }
   }
 
@@ -315,7 +329,9 @@ function NxComboboxRender<T extends string | number = string>(
                    aria-activedescendant={focusableBtnId}
                    aria-required={ariaRequired}
                    aria-describedby={inputDescribedby}
-                   aria-label={ariaLabel}/>
+                   aria-label={ariaLabel}
+                   // disable browser autocomplete
+                   autoComplete="off"/>
       { isAlert ?
         <div id={alertDropdownId}
              role="alert"
@@ -336,28 +352,29 @@ function NxComboboxRender<T extends string | number = string>(
                         aria-label="listbox of combobox">
           {
             matches.length && matches.map((match, i) =>
-              <button type="button"
-                      id={getDropdownBtnIdForIndex(i)}
-                      role="option"
-                      aria-selected={i === focusableBtnIndex }
-                      className= {classnames('nx-dropdown-button',
-                          { 'selected': i === focusableBtnIndex })}
-                      tabIndex={-1}
-                      key={match.id}
-                      onClick={() => handleDropdownBtnClick(match)}
-                      // In Safari, focus seems to be intended to strictly be a keyboard nav thing,
-                      // and when you click a button, focus does NOT go to that button, it goes to the <body>.
-                      // This messes up our idea of only showing the menu when something within the component has focus,
-                      // because this means that the component loses focus in the middle of the click,
-                      // causing the menu to hide while the user is in the middle of clicking,
-                      // causing the click not to register at all.
-                      // Using preventDefault on onMouseDown seem to have prevent the focus from going to the <body>.
-                      onMouseDown={(event) => {
-                        event.preventDefault();
-                        event.currentTarget.focus();
-                      }}>
-                {match.displayName}
-              </button>
+              <NxTooltip key={match.id} title={itemTooltip?.(match) ?? ''}>
+                <button type="button"
+                        id={getDropdownBtnIdForIndex(i)}
+                        role="option"
+                        aria-selected={i === focusableBtnIndex }
+                        className= {classnames('nx-dropdown-button',
+                            { 'selected': i === focusableBtnIndex })}
+                        tabIndex={-1}
+                        onClick={() => handleDropdownBtnClick(match)}
+                        // In Safari, focus seems to be intended to strictly be a keyboard nav thing,
+                        // and when you click a button, focus does NOT go to that button, it goes to the <body>.
+                        // This messes up our idea of only showing the menu when something within the component has
+                        // focus, because this means that the component loses focus in the middle of the click,
+                        // causing the menu to hide while the user is in the middle of clicking,
+                        // causing the click not to register at all.
+                        // Using preventDefault on onMouseDown seem to have prevent the focus from going to the <body>.
+                        onMouseDown={(event) => {
+                          event.preventDefault();
+                          event.currentTarget.focus();
+                        }}>
+                  {match.displayName}
+                </button>
+              </NxTooltip>
             )
           }
         </NxDropdownMenu>
@@ -366,6 +383,11 @@ function NxComboboxRender<T extends string | number = string>(
   );
 }
 
-const NxCombobox = Object.assign(forwardRef(NxComboboxRender), { propTypes });
+const NxCombobox = Object.assign(forwardRef(NxComboboxRender), {
+  // propTypes types can actually effect the overall type of NxCombobox in ways we don't want, the cast
+  // to `any` prevents that
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  propTypes: propTypes as any
+});
 
 export default NxCombobox;
