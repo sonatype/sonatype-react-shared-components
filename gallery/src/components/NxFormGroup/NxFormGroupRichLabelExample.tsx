@@ -8,7 +8,7 @@ import React, { useState, ChangeEvent } from 'react';
 
 import { faGlobeEurope, faFlag } from '@fortawesome/free-solid-svg-icons';
 
-import { NxFormGroup, NxFontAwesomeIcon } from '@sonatype/react-shared-components';
+import { NxFormGroup, NxFontAwesomeIcon, NxFormSelect } from '@sonatype/react-shared-components';
 
 export default function NxFormGroupRichLabelExample() {
   const [val, setVal] = useState('');
@@ -33,13 +33,13 @@ export default function NxFormGroupRichLabelExample() {
 
   return (
     <NxFormGroup { ...{ label, sublabel } }>
-      <select className="nx-form-select" value={val} onChange={onChange}>
+      <NxFormSelect value={val} onChange={onChange}>
         <option value="">Pick a Country</option>
         <option value="USA">USA</option>
         <option value="GER">Canada</option>
         <option value="CAN">Germany</option>
         <option value="COL">Colombia</option>
-      </select>
+      </NxFormSelect>
     </NxFormGroup>
   );
 }
