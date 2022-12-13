@@ -121,12 +121,6 @@
   }
 }
 
-.nx-form-group--hide-optional {
-  .nx-label--optional .nx-label__text::after {
-    display: none;
-  }
-}
-
 .nx-sub-label {
   @include nx-container-helpers.container-horizontal;
 

@@ -106,31 +106,6 @@ const NxFormGroupPage = () =>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
-      <NxTile.Subsection>
-        <NxTile.SubsectionHeader>
-          <NxH3>Style Variations</NxH3>
-        </NxTile.SubsectionHeader>
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>Class</NxTable.Cell>
-              <NxTable.Cell>Description</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body>
-            <NxTable.Row>
-              <NxTable.Cell><NxCode>nx-form-group--hide-optional</NxCode></NxTable.Cell>
-              <NxTable.Cell>
-                Hides the "optional" text <strong>even on optional labels</strong>. This is intended for cases where
-                the field is in fact optional yet the optional flag does not need to be displayed. The more
-                typical <NxCode>isRequired</NxCode> prop is inappropriate in this case. An example of when to use this
-                class is when constructing a label for an <NxCode>NxFilterDropdown</NxCode> – as a filter it does not
-                need to be explicitly shown as "optional".
-              </NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Body>
-        </NxTable>
-      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Basic Example"
