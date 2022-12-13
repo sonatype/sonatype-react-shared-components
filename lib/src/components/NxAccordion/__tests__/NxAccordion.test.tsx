@@ -24,6 +24,8 @@ describe('NxAccordion', function() {
 
     expect(renderEl({ open: true })).toHaveAttribute('open');
     expect(renderEl({ title: 'test title' })).toHaveAttribute('title', 'test title');
+
+    expect(quickRender({ open: true }).getByRole('group').tagName).toBe('DETAILS');
   });
 
   it('sets the provided className', function() {
