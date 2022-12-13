@@ -18,7 +18,10 @@ describe('NxAccordion', function() {
   const renderEl = rtlRenderElement(NxAccordion, {});
 
   it('renders a <details> element with the provided props', function() {
-    expect(quickRender({ id: 'foo' }).getByRole('group')).toHaveAttribute('id', 'foo');
+    const el = quickRender({ id: 'foo' });
+    expect(el.getByRole('group')).toBe(el.container.firstChild);
+    expect(el.getByRole('group')).toHaveAttribute('id', 'foo');
+
     expect(renderEl({ open: true })).toHaveAttribute('open');
     expect(renderEl({ title: 'test title' })).toHaveAttribute('title', 'test title');
   });
