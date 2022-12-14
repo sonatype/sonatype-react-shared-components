@@ -41,10 +41,6 @@ describe('NxAccordion', function() {
     }
   });
 
-  it('sets an id if none is specified', function() {
-    expect(renderEl()).toHaveAttribute('id');
-  });
-
   it('sets aria-expanded from the open prop', function() {
     expect(renderEl()).toHaveAttribute('aria-expanded', 'false');
     expect(renderEl({ open: false })).toHaveAttribute('aria-expanded', 'false');
@@ -84,7 +80,16 @@ describe('NxAccordion', function() {
       expect(el).toHaveAttribute('id', 'foo');
     });
 
-    it('sets aria-controls to the accordion id', function() {
+    it('sets aria-controls to the accordion id when id is not specified', function() {
+      const { container } = quickRender({
+        children: (
+          <NxAccordion.Header></NxAccordion.Header>
+        )
+      });
+      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', 'nx-accordion-15');
+    });
+
+    it('sets aria-controls to the specified accordion id', function() {
       const { container } = quickRender({
         id: 'foo',
         children: (
