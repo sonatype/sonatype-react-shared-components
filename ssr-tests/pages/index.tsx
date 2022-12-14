@@ -368,7 +368,7 @@ const Home: NextPage = () => {
                           onChange={noop} />
         <NxFileUpload files={null} onChange={() => {}} />
         <NxStatefulFileUpload />
-        <NxMultiFileUpload files={null} onCHange={() => {}}/>
+        <NxMultiFileUpload files={null} onChange={() => {}}/>
         <NxStatefulMultiFileUpload />
         <NxDescriptionList>
           <NxDescriptionList.Item>
