@@ -34,6 +34,9 @@ function isSkeletonAnimation(animation: Animation) {
 }
 
 function _NxSkeletonLoader({ children }: { children: ReactNode }) {
+  /*
+   * Synchronize all skeleton animations
+   */
   useEffect(() => {
     // a unique object to identify this NxSkeletonLoader instance in the activeSkeletonLoaders set
     const instance = {};
@@ -70,8 +73,12 @@ function _NxSkeletonLoader({ children }: { children: ReactNode }) {
 
   return (
     <div className="nx-skeleton-loader" aria-busy="true">
-      <div className="nx-skeleton-loader__status" role="status">Loading…</div>
-      <SkeletonContext.Provider value={true}>{children}</SkeletonContext.Provider>
+      <div className="nx-skeleton-loader__status" role="status">Loading. Please Wait.</div>
+      <SkeletonContext.Provider value={true}>
+        <div className="nx-skeleton-loader__contents" aria-hidden="true">
+          {children}
+        </div>
+      </SkeletonContext.Provider>
     </div>
   );
 }

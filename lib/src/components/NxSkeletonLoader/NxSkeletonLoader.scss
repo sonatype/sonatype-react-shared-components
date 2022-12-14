@@ -11,6 +11,10 @@
   @include nx-text-helpers.visually-hidden;
 }
 
+.nx-skeleton-loader__contents {
+  display: contents;
+}
+
 $-gradient-size: 3000px;
 $-icon-size: 148px;
 
