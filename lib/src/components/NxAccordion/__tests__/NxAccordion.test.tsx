@@ -18,14 +18,11 @@ describe('NxAccordion', function() {
   const renderEl = rtlRenderElement(NxAccordion, {});
 
   it('renders a <details> element with the provided props', function() {
-    const el = quickRender({ id: 'foo' });
-    expect(el.getByRole('group')).toBe(el.container.firstChild);
-    expect(el.getByRole('group')).toHaveAttribute('id', 'foo');
+    expect(renderEl({ open: true })?.tagName).toBe('DETAILS');
+    expect(renderEl({ id: 'foo' })).toHaveAttribute('id', 'foo');
 
     expect(renderEl({ open: true })).toHaveAttribute('open');
     expect(renderEl({ title: 'test title' })).toHaveAttribute('title', 'test title');
-
-    expect(quickRender({ open: true }).getByRole('group').tagName).toBe('DETAILS');
   });
 
   it('sets the provided className', function() {
@@ -51,13 +48,12 @@ describe('NxAccordion', function() {
 
   it('renders non-header children in content wrapper', function() {
     const { container } = quickRender({ children: (
-      <NxAccordion>
-        <NxAccordion.Header>
-          <span>Foo</span>
-        </NxAccordion.Header>
-        <span className='bar'>Bar</span>
-      </NxAccordion>
-    ) });
+      <NxAccordion.Header>
+        <span>Foo</span>
+      </NxAccordion.Header>
+
+    ),
+    className: 'bar' });
 
     expect(container.querySelector('summary .bar')).not.toBeInTheDocument();
     expect(container.querySelector('.bar')).toBeInTheDocument();
