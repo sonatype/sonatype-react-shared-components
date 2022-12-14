@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import { pick, omit } from 'ramda';
 
@@ -17,28 +17,31 @@ import './NxModal.scss';
 
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */
-const _NxModal: FunctionComponent<Props> = ({ className, onClose, onCancel = onClose, variant, role, ...attrs }) => {
-  const modalClasses = classnames('nx-modal', className, {
-    'nx-modal--wide': variant === 'wide',
-    'nx-modal--narrow': variant === 'narrow'
-  });
+const _NxModal = forwardRef<HTMLDialogElement, Props>(
+    function NxModal({ className, onClose, onCancel = onClose, variant, role, ...attrs }, ref) {
+      const modalClasses = classnames('nx-modal', className, {
+        'nx-modal--wide': variant === 'wide',
+        'nx-modal--narrow': variant === 'narrow'
+      });
 
-  const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
-      ariaLabels = pick(ariaLabelAttrNames, attrs),
-      attrsWithoutLabels = omit(ariaLabelAttrNames, attrs);
+      const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
+          ariaLabels = pick(ariaLabelAttrNames, attrs),
+          attrsWithoutLabels = omit(ariaLabelAttrNames, attrs);
 
-  return (
-    <AbstractDialog role={role}
-                    className="nx-modal-backdrop"
-                    tabIndex={-1}
-                    onCancel={onCancel as CloseHandler}
-                    useNativeCancelOnEscape={true}
-                    isModal={true}
-                    {...ariaLabels}>
-      <div className={modalClasses} {...attrsWithoutLabels}/>
-    </AbstractDialog>
-  );
-};
+      return (
+        <AbstractDialog ref={ref}
+                        role={role}
+                        className="nx-modal-backdrop"
+                        tabIndex={-1}
+                        onCancel={onCancel as CloseHandler}
+                        useNativeCancelOnEscape={true}
+                        isModal={true}
+                        {...ariaLabels}>
+          <div className={modalClasses} {...attrsWithoutLabels}/>
+        </AbstractDialog>
+      );
+    }
+);
 
 const NxModal = Object.assign(_NxModal, {
   propTypes,
