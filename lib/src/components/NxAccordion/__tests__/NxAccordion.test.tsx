@@ -18,10 +18,16 @@ describe('NxAccordion', function() {
   const renderEl = rtlRenderElement(NxAccordion, {});
 
   it('renders a <details> element with the provided props', function() {
-    const el = renderEl({ id: 'foo', open: true })!;
+    const el = renderEl({ id: 'foo'})!;
     expect(el.tagName).toBe('DETAILS');
     expect(el).toHaveAttribute('id', 'foo');
-    expect(el).toHaveAttribute('open');
+  });
+
+  it('sets the open attribute as specified', function() {
+    expect(renderEl()).not.toHaveAttribute('open');
+    expect(renderEl({ open: true })).toHaveAttribute('open');
+    expect(renderEl({ open: false })).not.toHaveAttribute('open');
+    expect(renderEl({ open: undefined })).not.toHaveAttribute('open');
   });
 
   it('sets the provided className', function() {
@@ -79,13 +85,13 @@ describe('NxAccordion', function() {
     });
 
     it('sets aria-controls to the accordion id', function() {
-      const { container } = quickRender({ 
+      const { container } = quickRender({
         id: 'foo',
         children: (
           <NxAccordion.Header>
             <span>Foo</span>
           </NxAccordion.Header>
-        ) 
+        )
       });
 
       expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', 'foo');
