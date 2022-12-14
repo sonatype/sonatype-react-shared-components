@@ -148,6 +148,8 @@ import NxCopyToClipboardPage from './components/NxCopyToClipboard/NxCopyToClipbo
 import NxScrollRenderPage from './components/NxScrollRender/NxScrollRenderPage';
 import NxStatefulFormPage from './components/NxStatefulForm/NxStatefulFormPage';
 import NxFileUploadPage from './components/NxFileUpload/NxFileUploadPage';
+import NxMultiFileUploadPage from './components/NxMultiFileUpload/NxMultiFileUploadPage';
+import NxStatefulMultiFileUploadPage from './components/NxStatefulMultiFileUpload/NxStatefulMultiFileUploadPage';
 import NxStatefulFileUploadPage from './components/NxStatefulFileUpload/NxStatefulFileUploadPage';
 import NxDescriptionListPage from './components/NxDescriptionList/NxDescriptionListPage';
 import NxMeterPage from './components/NxMeter/NxMeterPage';
@@ -223,6 +225,8 @@ const pageConfig: PageConfig = {
     'Stateful Form': { content: NxStatefulFormPage, type: 'react' },
     'Form Group': { content: NxFormGroupPage, type: 'react' },
     'Form Select': { content: NxFormSelectComponentPage, type: 'react' },
+    'Multiple File Upload': { content: NxMultiFileUploadPage, type: 'react' },
+    'Stateful Multiple File Upload': { content: NxStatefulMultiFileUploadPage, type: 'react' },
     'Policy Threat Slider': { content: NxPolicyThreatSliderPage, type: 'react' },
     'Radio': { content: NxRadioPage, type: 'react' },
     'Search Transfer List': { content: NxSearchTransferListPage, type: 'react' },
