@@ -18,11 +18,10 @@ describe('NxAccordion', function() {
   const renderEl = rtlRenderElement(NxAccordion, {});
 
   it('renders a <details> element with the provided props', function() {
-    expect(renderEl({ open: true })?.tagName).toBe('DETAILS');
-    expect(renderEl({ id: 'foo' })).toHaveAttribute('id', 'foo');
-
-    expect(renderEl({ open: true })).toHaveAttribute('open');
-    expect(renderEl({ title: 'test title' })).toHaveAttribute('title', 'test title');
+    const el = renderEl({ id: 'foo', open: true })!;
+    expect(el.tagName).toBe('DETAILS');
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('open');
   });
 
   it('sets the provided className', function() {
