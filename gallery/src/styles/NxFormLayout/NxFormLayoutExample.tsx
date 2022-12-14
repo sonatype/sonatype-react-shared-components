@@ -29,6 +29,8 @@ import {
   hasValidationErrors,
   nxFieldsetStateHelpers,
   NxFileUpload,
+  NxMultiFileUpload,
+  nxFileUploadStateHelpers,
   NxCombobox,
   DataItem
 } from '@sonatype/react-shared-components';
@@ -104,6 +106,11 @@ export default function NxFormLayoutExample() {
       onFileChange = (files: FileList | null) => {
         setFiles(files);
         setFilePristine(false);
+      };
+
+  const [multiFilesState, setMultiFilesState] = useState(nxFileUploadStateHelpers.initialState(null)),
+      onMultiFileChange = (files: FileList | null) => {
+        setMultiFilesState(nxFileUploadStateHelpers.userInput(files));
       };
 
   const [matches, setMatches] = useState<DataItem<number, string>[]>(comboboxItems),
@@ -236,6 +243,11 @@ export default function NxFormLayoutExample() {
       </NxFieldset>
       <NxFormGroup label="Upload a File" sublabel={<>Foo<br/>Bar</>} isRequired>
         <NxFileUpload files={files} isRequired isPristine={isFilePristine} onChange={onFileChange} />
+      </NxFormGroup>
+      <NxFormGroup label="Upload Multiple Files" sublabel="Add as many as you'd like" isRequired>
+        <NxMultiFileUpload {...multiFilesState}
+                           isRequired
+                           onChange={onMultiFileChange} />
       </NxFormGroup>
       <NxFormGroup label="State" isRequired>
         <NxCombobox matches={matches}

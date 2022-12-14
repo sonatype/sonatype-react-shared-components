@@ -8,9 +8,14 @@ import { InputHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface SelectedFileProps {
-  descriptionId: string;
+  descriptionId?: string;
   file: File;
   onDismiss: () => void;
+}
+
+// Props for SelectedFile in NxMultiFileUpload
+export interface MultiSelectedFileProps extends Omit<SelectedFileProps, 'onDismiss'> {
+  onDismiss: (fileObj:File) => void;
 }
 
 // Props for NxStatefulFileUpload
