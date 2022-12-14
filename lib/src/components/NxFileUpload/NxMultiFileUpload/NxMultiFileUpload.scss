@@ -1,0 +1,46 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+ @use '../../../scss-shared/nx-text-helpers';
+
+.nx-multi-file-upload {
+  height: 220px;
+  width: 348px;
+
+  // need an enclosing div around NxMultiFileUpload that doesn't contain the validationError message
+  &__container {
+    align-items: flex-start;
+    box-sizing: border-box;
+    border: var(--nx-border-default);
+    border-radius: var(--nx-border-radius);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &__files {
+      box-sizing: border-box;
+      border-top: var(--nx-border-default);
+      flex: 1;
+      list-style-type: none;
+      margin: 0;
+      padding: var(--nx-spacing-6x);
+      width: 100%;
+    }
+
+    > .nx-btn {
+      margin: var(--nx-spacing-6x);
+    }
+  }
+
+  &__file-count {
+    display: none;
+  }
+
+  .nx-selected-file {
+    margin-bottom: var(--nx-spacing-2x);
+  }
+}
