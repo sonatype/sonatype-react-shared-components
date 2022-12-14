@@ -6,7 +6,10 @@
  */
 import React, { forwardRef, DetailedHTMLProps, SVGProps, useContext, ReactNode } from 'react';
 import classnames from 'classnames';
-import { SkeletonContext } from '../components/NxSkeletonLoader/NxSkeletonLoader';
+
+// Note: this must be imported directly from SkeletonContext.ts to avoid creating a circular dependency,
+// since NxSkeletonLoader depends on withClass
+import SkeletonContext from '../components/NxSkeletonLoader/SkeletonContext';
 
 type NativeElType<E extends keyof JSX.IntrinsicElements> =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

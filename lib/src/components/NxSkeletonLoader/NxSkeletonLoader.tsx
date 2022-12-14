@@ -1,18 +1,13 @@
-/*
- * Copyright (c) 2019-present Sonatype, Inc.
- * This program and the accompanying materials are made available under
- * the terms of the Eclipse Public License 2.0 which accompanies this
- * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
- */
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { find } from 'ramda';
-import React, { createContext, HTMLAttributes, ReactNode, useEffect } from 'react';
+import React, { HTMLAttributes, ReactNode, useEffect } from 'react';
 import withClass from '../../util/withClass';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import SkeletonContext from './SkeletonContext';
 
 import './NxSkeletonLoader.scss';
 
-export const SkeletonContext = createContext(false);
+export { SkeletonContext };
 
 const ANIMATION_NAME = 'skeleton-animation';
 
