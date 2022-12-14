@@ -22,8 +22,8 @@ const NxFontAwesomeIcon = forwardRef((props: Props, ref) => {
       isSkeleton = useContext(SkeletonContext);
 
   return isSkeleton ?
-      <NxSkeletonLoader.Text className={className} /> :
-      <FontAwesomeIcon forwardedRef={ref} { ...otherProps } { ...props } className={className} />;
+    <NxSkeletonLoader.Text className={className} /> :
+    <FontAwesomeIcon forwardedRef={ref} { ...otherProps } { ...props } className={className} />;
 });
 
 export default NxFontAwesomeIcon;
