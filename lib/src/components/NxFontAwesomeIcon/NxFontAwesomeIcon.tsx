@@ -4,10 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import { FontAwesomeIcon, FontAwesomeIconProps as Props } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
 import { useUniqueId } from '../../util/idUtil';
+import NxSkeletonLoader, { SkeletonContext } from '../NxSkeletonLoader/NxSkeletonLoader';
 
 export { Props } from '@fortawesome/react-fontawesome';
 
@@ -15,11 +16,14 @@ export { Props } from '@fortawesome/react-fontawesome';
  * A wrapper component around FontAwesomeIcon that adds our nx-icon css class. Takes the same props as FontAwesomeIcon
  */
 const NxFontAwesomeIcon = forwardRef((props: Props, ref) => {
-  const className = classnames(props.className, 'nx-icon'),
-      titleId = useUniqueId(''), // FA adds its own prefix to this, no need for us to add one too
-      otherProps = props.title ? { titleId } as Partial<Props> : undefined;
+  const titleId = useUniqueId(''), // FA adds its own prefix to this, no need for us to add one too
+      otherProps = props.title ? { titleId } as Partial<Props> : undefined,
+      isSkeleton = useContext(SkeletonContext),
+      className = classnames(props.className, 'nx-icon');
 
-  return <FontAwesomeIcon forwardedRef={ref} { ...otherProps } { ...props } className={className} />;
+  return isSkeleton ?
+      <NxSkeletonLoader.Text className={className} /> :
+      <FontAwesomeIcon forwardedRef={ref} { ...otherProps } { ...props } className={className} />;
 });
 
 export default NxFontAwesomeIcon;

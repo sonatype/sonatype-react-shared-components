@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { faEdit, faWalking } from '@fortawesome/free-solid-svg-icons';
-import { NxH2, NxP, NxSkeletonLoader, NxSpan, NxTable, NxThreatCounter, NxThreatIndicator, NxTile }
+import { NxFontAwesomeIcon, NxH2, NxP, NxSkeletonLoader, NxSpan, NxTable, NxThreatCounter, NxThreatIndicator, NxTile }
   from '@sonatype/react-shared-components';
 import React, { useEffect, useState } from 'react';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
@@ -101,6 +101,7 @@ export default function NxSkeletonLoaderPage() {
                             <NxP>Bar</NxP>
                           </NxTable.Cell>
                           <NxTable.Cell>
+                            <NxFontAwesomeIcon icon={faEdit} />
                             <NxSpan>Baz</NxSpan>
                           </NxTable.Cell>
                         </NxTable.Row>
