@@ -79,12 +79,14 @@ describe('NxAccordion', function() {
     });
 
     it('sets aria-controls to the accordion id', function() {
-      const { container } = quickRender({ id: 'foo',
+      const { container } = quickRender({ 
+        id: 'foo',
         children: (
           <NxAccordion.Header>
             <span>Foo</span>
           </NxAccordion.Header>
-        ) });
+        ) 
+      });
 
       expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', 'foo');
     });
