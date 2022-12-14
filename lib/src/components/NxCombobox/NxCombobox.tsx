@@ -20,6 +20,7 @@ import NxLoadingSpinner from '../NxLoadingSpinner/NxLoadingSpinner';
 import { useUniqueId } from '../../util/idUtil';
 import DataItem from '../../util/DataItem';
 import NxTooltip from '../NxTooltip/NxTooltip';
+import NxFilterInput from '../NxFilterInput/NxFilterInput';
 export { Props } from './types';
 
 const SELECTION_POLL_INTERVAL = 100;
@@ -43,6 +44,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         validatable,
         isPristine,
         validationErrors,
+        filterInput,
         id,
         'aria-required': ariaRequired,
         'aria-describedby': ariaDescribedBy,
@@ -82,7 +84,9 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       }),
       inputDescribedby = classnames(ariaDescribedBy, {
         [alertDropdownId]: showAlert
-      });
+      }),
+      TextInput = filterInput ? NxFilterInput : NxTextInput,
+      filterInputProps = filterInput === 'search' ? { searchIcon: true } : null;
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
@@ -312,26 +316,27 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
          onFocus={handleComponentFocus}
          onBlur={handleComponentBlur}
          { ...newAttrs }>
-      <NxTextInput role="combobox"
-                   ref={div => inputRef.current = div?.querySelector('input')}
-                   id={inputId}
-                   validationErrors={validationErrors}
-                   validatable={validatable}
-                   isPristine={!!isPristine}
-                   className="nx-combobox__input"
-                   value={inputVal}
-                   onChange={handleOnChange}
-                   disabled={disabled || undefined}
-                   onKeyDown={handleKeyDown}
-                   aria-autocomplete={autoComplete ? 'both' : 'list'}
-                   aria-expanded={showDropdown && inputIsFocused}
-                   aria-controls={showDropdown && inputIsFocused ? dropdownId : undefined}
-                   aria-activedescendant={focusableBtnId}
-                   aria-required={ariaRequired}
-                   aria-describedby={inputDescribedby}
-                   aria-label={ariaLabel}
-                   // disable browser autocomplete
-                   autoComplete="off"/>
+      <TextInput role="combobox"
+                 ref={(div: HTMLElement | null) => inputRef.current = div?.querySelector('input')}
+                 id={inputId}
+                 validationErrors={validationErrors}
+                 validatable={validatable}
+                 isPristine={!!isPristine}
+                 className="nx-combobox__input"
+                 value={inputVal}
+                 onChange={handleOnChange}
+                 disabled={disabled || undefined}
+                 onKeyDown={handleKeyDown}
+                 aria-autocomplete={autoComplete ? 'both' : 'list'}
+                 aria-expanded={showDropdown && inputIsFocused}
+                 aria-controls={showDropdown && inputIsFocused ? dropdownId : undefined}
+                 aria-activedescendant={focusableBtnId}
+                 aria-required={ariaRequired}
+                 aria-describedby={inputDescribedby}
+                 aria-label={ariaLabel}
+                 // disable browser autocomplete
+                 autoComplete="off"
+                 { ...filterInputProps } />
       { isAlert ?
         <div id={alertDropdownId}
              role="alert"
