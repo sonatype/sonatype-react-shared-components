@@ -186,14 +186,21 @@ const NxComboboxPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>
-                Normally, <NxCode>NxCombobox</NxCode> uses a plain <NxCode>NxTextInput</NxCode> for its text input.
-                However, <NxCode>NxCombobox</NxCode>'s functionality can also be useful in places where the styling of
-                a filter input is desired – cases where <NxCode>NxFilterInput</NxCode>'s <NxCode>datalist</NxCode> prop
-                would have formerly been used. To enable use of <NxCode>NxCombobox</NxCode> in such cases, it has
-                a <NxCode>filterInput</NxCode> prop which causes it to use an <NxCode>NxFilterInput</NxCode> internally
-                rather than in <NxCode>NxTextInput</NxCode>. When this prop is true, an <NxCode>NxFilterInput</NxCode>
-                with the default "filter" icon is rendered. When this prop is instead set to "search",
-                an <NxCode>NxFilterInput</NxCode> with a "search" icon is rendered instead.
+                <NxP>
+                  Normally, <NxCode>NxCombobox</NxCode> uses a plain <NxCode>NxTextInput</NxCode> for its text input.
+                  However, <NxCode>NxCombobox</NxCode>'s functionality can also be useful in places where the styling of
+                  a filter input is desired – cases where <NxCode>NxFilterInput</NxCode>'s <NxCode>datalist</NxCode> prop
+                  would have formerly been used. To enable use of <NxCode>NxCombobox</NxCode> in such cases, it has
+                  a <NxCode>filterInput</NxCode> prop which causes it to use an <NxCode>NxFilterInput</NxCode> internally
+                  rather than in <NxCode>NxTextInput</NxCode>. When this prop is true, an <NxCode>NxFilterInput</NxCode>
+                  with the default "filter" icon is rendered. When this prop is instead set to "search",
+                  an <NxCode>NxFilterInput</NxCode> with a "search" icon is rendered instead.
+                </NxP>
+                <NxWarningAlert>
+                  <NxCode>NxFilterInput</NxCode> does not support validation. Therefore,
+                  the <NxCode>validatable</NxCode>, <NxCode>validationErrors</NxCode>,
+                  and <NxCode>isPristine</NxCode> prop should not be used in conjunction with this prop.
+                </NxWarningAlert>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
