@@ -10,12 +10,16 @@ import { NxTable, NxCode, NxP, NxH3, NxTile, NxTextLink, NxWarningAlert } from '
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxComboboxExample from './NxComboboxExample';
+import NxComboboxFilterInputExample from './NxComboboxFilterInputExample';
+import NxComboboxFilterInputSearchExample from './NxComboboxFilterInputSearchExample';
 import NxComboboxPredeterminedListExample from './NxComboboxPredeterminedListExample';
 import NxComboboxDisabledExample from './NxComboboxDisabledExample';
 import NxComboboxValidationExample from './NxComboboxValidationExample';
 import NxComboboxErrorExample from './NxComboboxErrorExample';
 
 const NxComboboxExampleCode = require('./NxComboboxExample?raw');
+const NxComboboxFilterInputExampleCode = require('./NxComboboxFilterInputExample?raw');
+const NxComboboxFilterInputSearchExampleCode = require('./NxComboboxFilterInputSearchExample?raw');
 const NxComboboxPredeterminedListExampleCode = require('./NxComboboxPredeterminedListExample?raw');
 const NxComboboxDisabledExampleCode = require('./NxComboboxDisabledExample?raw');
 const NxComboboxValidationExampleCode = require('./NxComboboxValidationExample?raw');
@@ -299,6 +303,22 @@ const NxComboboxPage = () =>
       the <NxCode>matches</NxCode> list is passed as the second argument to <NxCode>onChange</NxCode>. This example
       also includes a custom subtype of <NxCode>DataItem</NxCode> which is used in conjunction with
       the <NxCode>itemTooltip</NxCode> prop to provide tooltips for each item.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Filter Input Examples"
+                        id="nx-combobox-filter-input-examples"
+                        codeExamples={NxComboboxFilterInputExampleCode}
+                        liveExample={NxComboboxFilterInputExample}>
+      Examples of an <NxCode>NxCombobox</NxCode> using <NxCode>NxFilterInput</NxCode> as its text input, adding an
+      icon and clear button.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Filter Input Search Icon Example"
+                        id="nx-combobox-filter-input-examples"
+                        codeExamples={NxComboboxFilterInputSearchExampleCode}
+                        liveExample={NxComboboxFilterInputSearchExample}>
+      Another Example of <NxCode>NxCombobox</NxCode> using <NxCode>NxFilterInput</NxCode> as its text input, but this
+      time with the "search" icon specified rather than the default "filter" icon.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error Example"
