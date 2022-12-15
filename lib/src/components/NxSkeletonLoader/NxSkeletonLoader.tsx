@@ -21,8 +21,8 @@ const ANIMATION_NAME = 'skeleton-animation';
 // is present on the page, any additional skeleton loaders should synchronize with it. Once all skeleton loaders
 // are removed, that synchronization state should be cleared so that a future skeleton loader added later will
 // start its animation cleanly at the beginning and not based on the original skeleton loader's time
-const activeSkeletonLoaders = new Set();
-let animationStartTime: number | null = null;
+let numActiveSkeletonLoaders = 0,
+    animationStartTime: number | null = null;
 
 /*
  * According to the spec, animations have an id property (that is presumably supposed
@@ -39,9 +39,6 @@ function _NxSkeletonLoader({ children }: { children: ReactNode }) {
    * Synchronize all skeleton animations
    */
   useEffect(() => {
-    // a unique object to identify this NxSkeletonLoader instance in the activeSkeletonLoaders set
-    const instance = {};
-
     function handleAnimationStart({ animationName, target }: AnimationEvent) {
       if (animationName === ANIMATION_NAME) {
         const animation = target instanceof Element && find(isSkeletonAnimation, target.getAnimations());
@@ -57,15 +54,15 @@ function _NxSkeletonLoader({ children }: { children: ReactNode }) {
       }
     }
 
-    if (!activeSkeletonLoaders.size) {
+    if (!numActiveSkeletonLoaders) {
       window.addEventListener('animationstart', handleAnimationStart);
     }
 
-    activeSkeletonLoaders.add(instance);
+    numActiveSkeletonLoaders++;
 
     return () => {
-      activeSkeletonLoaders.delete(instance);
-      if (!activeSkeletonLoaders.size) {
+      numActiveSkeletonLoaders--;
+      if (!numActiveSkeletonLoaders) {
         animationStartTime = null;
         window.removeEventListener('animationstart', handleAnimationStart);
       }
