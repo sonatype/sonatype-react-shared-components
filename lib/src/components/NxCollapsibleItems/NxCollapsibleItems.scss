@@ -230,7 +230,7 @@ button, a {
   }
 
   .nx-collapsible-items__trigger {
-    &:hover {
+    &:hover:not([disabled]) {
       background-color: var(--nx-swatch-indigo-90);
     }
   }
