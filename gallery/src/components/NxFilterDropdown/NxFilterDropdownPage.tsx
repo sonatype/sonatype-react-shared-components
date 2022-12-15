@@ -152,10 +152,7 @@ const NxFilterDropdownPage = () =>
                         id="nx-filter-dropdown-example"
                         liveExample={NxFilterDropdownExample}
                         codeExamples={nxFilterDropdownCode}>
-      An <NxCode>NxFilterDropdown</NxCode> wrapped in an <NxCode>NxFormGroup</NxCode> in order to render
-      a label. Note the use of the <NxCode>nx-form-group--hide-optional</NxCode> class in order to hide the
-      "optional" text which would normally appear on a non-required <NxCode>NxFormGroup</NxCode>. This text is
-      unnecessary in the context of a filter.
+      An <NxCode>NxFilterDropdown</NxCode> wrapped in an <NxCode>NxFormGroup</NxCode> in order to render a label.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Filter Dropdown Non-default Example"
