@@ -87,7 +87,8 @@ describe('NxAccordion', function() {
           <NxAccordion.Header></NxAccordion.Header>
         )
       });
-      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', 'nx-accordion-15');
+      const id = container.querySelector('DETAILS')?.getAttribute('id');
+      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', id);
     });
 
     it('sets aria-controls to the specified accordion id', function() {
