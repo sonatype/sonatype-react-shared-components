@@ -224,6 +224,18 @@ describe('NxCombobox', function() {
       }
   );
 
+  it('closes the dropdown when a button with the role option is selected', async function() {
+    const user = userEvent.setup(),
+        { getAllByRole, getByRole } = quickRender({
+          matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }]}),
+        optionBtns = getAllByRole('option'),
+        dropdown = getByRole('listbox');
+
+    expect(dropdown).toBeInTheDocument();
+    await user.click(optionBtns[1]);
+    expect(dropdown).not.toBeInTheDocument();
+  });
+
   it('does not render the empty message if there are no results and the value is empty', function() {
     const { queryByRole } = quickRender(),
         emptyMessage = queryByRole('alert');
@@ -520,6 +532,23 @@ describe('NxCombobox', function() {
       inputElement.setSelectionRange(1, 2);
       await user.keyboard('[Backspace]');
       expect(onChange).toHaveBeenCalledWith('fo');
+    });
+
+    it('closes the dropdown when a selection is made by the pressing Enter key', async function() {
+      const user = userEvent.setup(),
+          { getAllByRole, getByRole } = quickRender({
+            matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }]}),
+          inputElement = getByRole('combobox'),
+          firstOptBtn = getAllByRole('option')[0],
+          dropdown = getByRole('listbox');
+
+      expect(dropdown).toBeInTheDocument();
+
+      inputElement.focus();
+      await user.keyboard('[ArrowDown]');
+      expect(firstOptBtn).toHaveAttribute('aria-selected', 'true');
+      await user.keyboard('[Enter]');
+      expect(dropdown).not.toBeInTheDocument();
     });
 
     it('should clear input text if dropdown is close when Escape key is pressed', async function() {
