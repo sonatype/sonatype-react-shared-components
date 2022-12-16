@@ -99,7 +99,9 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         doSearch(value);
       }
     }
-    setOpenState('open');
+    if (matches.length || value) {
+      setOpenState('open');
+    }
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
