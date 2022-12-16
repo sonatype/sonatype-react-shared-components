@@ -12,7 +12,7 @@ import usePrevious from '../../util/usePrevious';
 import './NxCombobox.scss';
 
 import forwardRef from '../../util/genericForwardRef';
-import { DataItemType, Props, propTypes } from './types';
+import { DataItemType, OpenState, Props, propTypes } from './types';
 import NxTextInput from '../NxTextInput/NxTextInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadError from '../NxLoadError/NxLoadError';
@@ -51,14 +51,14 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       } = props,
       previousValue = usePrevious(value),
       newAttrs = omit(['trimmedValue'], attrs),
-
+      [openState, setOpenState] = useState<OpenState>('initial'),
       isEmpty = !matches.length,
       showEmptyMessage = isEmpty && value.length,
-      isAlert = loading || loadError || showEmptyMessage,
+      isAlert = (loading || loadError || showEmptyMessage) && openState !== 'closed',
       dropdownRef = useRef<HTMLDivElement>(null),
       inputRef = useRef<HTMLInputElement | null>(),
       alertRef = useRef<HTMLDivElement>(null),
-      showDropdown = !disabled && !isEmpty,
+      showDropdown = !disabled && !isEmpty && openState !== 'closed',
       showAlert = !!(!disabled && isAlert && value),
 
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
@@ -99,6 +99,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         doSearch(value);
       }
     }
+    setOpenState('open');
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
@@ -112,6 +113,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         onChange(elToFocusMatch.displayName, elToFocusMatch);
       }
       setFocusableBtnIndex(null);
+      setOpenState('closed');
     }
   }
 
@@ -122,7 +124,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
   function handleOnChange(newVal: string) {
     setFocusableBtnIndex(null);
     onChange(newVal);
-
+    setOpenState('open');
     if (newVal.toLowerCase() !== value.toLowerCase()) {
       doSearch(newVal);
     }
@@ -144,6 +146,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
     onSearch(displayName);
     focusTextInput();
     setFocusableBtnIndex(null);
+    setOpenState('closed');
   }
 
   // helper for focusing different buttons in the dropdown menu
@@ -344,6 +347,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
           showEmptyMessage && <div className="nx-combobox__empty-message">{emptyMessage || 'No Results Found'}</div>}
         </div>
         :
+        showDropdown &&
         <NxDropdownMenu id={dropdownId}
                         role='listbox'
                         ref={dropdownRef}
@@ -378,7 +382,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
             )
           }
         </NxDropdownMenu>
-        }
+      }
     </div>
   );
 }

@@ -16,6 +16,9 @@ import DataItem from '../../util/DataItem';
  * specify the types when in the past they didn't need to, we use this conditional type to support both the new
  * way and the old way with a single type parameter.
  */
+
+export type OpenState = 'open' | 'closed' | 'initial';
+
 export type DataItemType<T extends string | number | DataItem<string | number, string>> =
   T extends string | number ? DataItem<T, string> : T;
 
