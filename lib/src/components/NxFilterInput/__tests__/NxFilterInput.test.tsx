@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { RefAttributes } from 'react';
-import { waitFor } from '@testing-library/react';
+import { createEvent, fireEvent, waitFor } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import userEvent from '@testing-library/user-event';
 
@@ -141,5 +141,27 @@ describe('NxFilterInput', function() {
     await user.click(clearBtn);
 
     expect(onChange).toHaveBeenCalledWith('');
+  });
+
+  it('calls preventDefault on the event when Escape key is pressed and the value is not empty', function() {
+    const { getByRole } = quickRender({ value: 'a' }),
+        inputElement = getByRole('textbox'),
+        keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+    inputElement.focus();
+    fireEvent(inputElement, keyEvent);
+
+    expect(keyEvent.defaultPrevented).toBe(true);
+  });
+
+  it('does not call preventDefault on the event when Escape key is pressed and the value is empty', () => {
+    const { getByRole } = quickRender(),
+        inputElement = getByRole('textbox'),
+        keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+    inputElement.focus();
+    fireEvent(inputElement, keyEvent);
+
+    expect(keyEvent.defaultPrevented).toBe(false);
   });
 });
