@@ -330,7 +330,7 @@ const NxComboboxPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Filter Input Examples"
-                        id="nx-combobox-filter-input-examples"
+                        id="nx-combobox-filter-input-example"
                         codeExamples={NxComboboxFilterInputExampleCode}
                         liveExample={NxComboboxFilterInputExample}>
       Examples of an <NxCode>NxCombobox</NxCode> using <NxCode>NxFilterInput</NxCode> as its text input, adding an
@@ -338,7 +338,7 @@ const NxComboboxPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Filter Input Search Icon Example"
-                        id="nx-combobox-filter-input-examples"
+                        id="nx-combobox-filter-input-search-example"
                         codeExamples={NxComboboxFilterInputSearchExampleCode}
                         liveExample={NxComboboxFilterInputSearchExample}>
       Another Example of <NxCode>NxCombobox</NxCode> using <NxCode>NxFilterInput</NxCode> as its text input, but this
