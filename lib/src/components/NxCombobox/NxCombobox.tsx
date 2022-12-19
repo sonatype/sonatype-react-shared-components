@@ -329,8 +329,8 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
                    aria-autocomplete={autoComplete ? 'both' : 'list'}
-                   aria-expanded={showDropdown && inputIsFocused}
-                   aria-controls={showDropdown && inputIsFocused ? dropdownId : undefined}
+                   aria-expanded={!hiddenBySelection && inputIsFocused}
+                   aria-controls={!hiddenBySelection && inputIsFocused ? dropdownId : undefined}
                    aria-activedescendant={focusableBtnId}
                    aria-required={ariaRequired}
                    aria-describedby={inputDescribedby}
