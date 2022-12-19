@@ -4,46 +4,66 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { act } from 'react-dom/test-utils';
+import userEvent from '@testing-library/user-event';
 
-import NxStatefulAccordion, { Props } from '../NxStatefulAccordion';
-import NxAccordion from '../../NxAccordion';
-import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
+import NxStatefulAccordion from '../NxStatefulAccordion';
+
+import { rtlRenderElement } from '../../../../__testutils__/rtlUtils';
+//import { fireEvent } from '@testing-library/react';
 
 describe('NxStatefulAccordion', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulAccordion, {});
+
+  //const quickRender = rtlRender(NxStatefulAccordion, {});
+  const renderEl = rtlRenderElement(NxStatefulAccordion, {});
 
   it('renders an NxAccordion with the specified props', function() {
     const onToggle = jest.fn(),
-        component = getShallowComponent({ onToggle, className: 'foo', id: 'bar' });
+        component = renderEl({ onToggle, className: 'foo', id: 'bar' });
 
-    expect(component).toMatchSelector(NxAccordion);
-    expect(component).toHaveProp('onToggle', onToggle);
-    expect(component).toHaveProp('className', 'foo');
-    expect(component).toHaveProp('id', 'bar');
+    expect(component!.tagName).toBe('DETAILS');
+    expect(component).toHaveAttribute('id', 'bar');
+  });
+
+  it('sets the provided className', function() {
+    const el = renderEl()!;
+    const customEl = renderEl({ className: 'foo' })!;
+
+    expect(customEl).toHaveClass('foo');
+
+    for (const cls of Array.from(el.classList)) {
+      expect(customEl).toHaveClass(cls);
+    }
   });
 
   it('sets the NxAccordion open prop to the defaultOpen prop initially', function() {
-    expect(getShallowComponent()).toHaveProp('open', false);
-    expect(getShallowComponent({ defaultOpen: false })).toHaveProp('open', false);
-    expect(getShallowComponent({ defaultOpen: true })).toHaveProp('open', true);
+    expect(renderEl()).not.toHaveAttribute('open');
+    expect(renderEl({ defaultOpen: false })).not.toHaveAttribute('open');
+    expect(renderEl({ defaultOpen: true })).toHaveAttribute('open');
   });
 
-  it('toggles the NxAccordion open prop when the NxAccordion onToggle callback is called', function() {
-    const component = getShallowComponent();
+  it('toggles the NxAccordion open prop when the NxAccordion onToggle callback is called', async function() {
+    const user = userEvent.setup();
+    const mockOnToggle = jest.fn();
+    const el = renderEl({ onToggle: mockOnToggle, defaultOpen: false })!;
 
-    expect(component).toHaveProp('open', false);
+    expect(el).not.toHaveAttribute('open');
 
-    act(function() {
-      component.simulate('toggle');
-    });
+    const open = el.querySelector('.nx-accordion')!;
 
-    expect(component).toHaveProp('open', true);
+    await user.click(open);
 
-    act(function() {
-      component.simulate('toggle');
-    });
+    //await fireEvent.change(mockOnToggle);
 
-    expect(component).toHaveProp('open', false);
+    expect(mockOnToggle).toHaveBeenCalledTimes(1);
+
+    // act(function() {
+    //   component.simulate('toggle');
+    // });
+
+    // act(function() {
+    //   component.simulate('toggle');
+    // });
+
+    expect(el).toHaveAttribute('open');
   });
 });
