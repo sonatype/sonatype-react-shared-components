@@ -17,8 +17,6 @@ import DataItem from '../../util/DataItem';
  * way and the old way with a single type parameter.
  */
 
-export type OpenState = 'open' | 'closed' | 'initial';
-
 export type DataItemType<T extends string | number | DataItem<string | number, string>> =
   T extends string | number ? DataItem<T, string> : T;
 
