@@ -208,12 +208,16 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         evt.preventDefault();
         break;
       case 'Escape':
-        handleOnChange('');
         setFocusableBtnIndex(null);
 
-        if (value !== '') {
-          // only prevent default if the ESC actually made a difference here
-          evt.preventDefault();
+        // NxFilterInput handles this itself
+        if (!filterInput) {
+          handleOnChange('');
+
+          if (value !== '') {
+            // only prevent default if the ESC actually made a difference here
+            evt.preventDefault();
+          }
         }
         break;
     }

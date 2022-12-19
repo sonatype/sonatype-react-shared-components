@@ -20,8 +20,8 @@ export { Props } from './types';
 
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
     function NxFilterInput(props, ref) {
-      const { className: classNameProp, searchIcon, onKeyDown, ...otherProps } = props,
-          isEmpty = props.value.trim() === '',
+      const { className: classNameProp, searchIcon, onKeyDown, value, ...otherProps } = props,
+          isEmpty = value.trim() === '',
           className = classnames('nx-filter-input', classNameProp, {
             'nx-filter-input--empty': isEmpty
           }),
@@ -47,8 +47,12 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
 
       const handleKeyDown: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
         if (e.key === 'Escape') {
-          e.preventDefault();
           clearFilterInputText();
+
+          if (value !== '') {
+            // only prevent default if the ESC actually made a difference here
+            e.preventDefault();
+          }
         }
 
         // NxFilterInput always uses <input> and not <textarea>
@@ -57,6 +61,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
 
       return <PrivateNxTextInput { ...cleanedProps }
                                  { ...{ prefixContent, className, suffixContent } }
+                                 value={value}
                                  onKeyDown={handleKeyDown}
                                  ref={ref}
                                  isPristine={false} />;
