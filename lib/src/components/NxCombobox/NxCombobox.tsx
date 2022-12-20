@@ -51,6 +51,9 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       } = props,
       previousValue = usePrevious(value),
       newAttrs = omit(['trimmedValue'], attrs),
+
+      // A state variable tracking when a selection is made from the dropdown. This state helps close the dropdown
+      // when a selection is made, and re-open when the input receives focus
       [hiddenBySelection, setHiddenBySelection] = useState(false),
       isEmpty = !matches.length,
       showEmptyMessage = isEmpty && value.length,
