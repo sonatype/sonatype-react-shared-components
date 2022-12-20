@@ -10,10 +10,9 @@ FROM docker-all.repo.sonatype.com/node@sha256:dd04637efe3c13087c25a3e6049b6d6076
 RUN apt-get update && \
     apt-get autoremove -y && apt-get clean -y && \
     apt-get install jq -y && \
-    apt-get install chromium=104.0.5112.79-1~deb11u1 chromium-common=104.0.5112.79-1~deb11u1 \
-        libatk-bridge2.0-0 libxkbcommon0 libgbm1 -y
+    apt-get install libatk-bridge2.0-0 libxkbcommon0 libgbm1 libnss3 libcups2 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libasound2 -y
 
-ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium
+# ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium
 
 RUN useradd -u 1002 -g 100 jenkins
 RUN mkdir -p /home/jenkins/.npm
