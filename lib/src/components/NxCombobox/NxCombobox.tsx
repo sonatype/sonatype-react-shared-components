@@ -113,10 +113,9 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       // when the combobox loses focus.
       if (autoComplete && focusableBtnIndex !== null) {
         const elToFocusMatch = matches[focusableBtnIndex];
-        onChange(elToFocusMatch.displayName, elToFocusMatch);
+        handleSelection(elToFocusMatch.displayName, elToFocusMatch, true);
       }
       setFocusableBtnIndex(null);
-      setHiddenBySelection(true);
     }
   }
 
@@ -142,14 +141,20 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
     inputRef.current?.focus();
   }
 
+  function handleSelection(displayName: string, dataItem:DataItemType<T>, selectionState?:boolean) {
+    onChange(displayName, dataItem);
+    if (selectionState) {
+      setHiddenBySelection(selectionState);
+    }
+  }
+
   function handleDropdownBtnClick(item: DataItemType<T>) {
     const { displayName } = item;
 
-    onChange(displayName, item);
-    onSearch(displayName);
     focusTextInput();
+    handleSelection(displayName, item, true);
+    onSearch(displayName);
     setFocusableBtnIndex(null);
-    setHiddenBySelection(true);
   }
 
   // helper for focusing different buttons in the dropdown menu
@@ -161,7 +166,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
           const match = matches[newFocusableBtnIndex];
 
           setFocusableBtnIndex(newFocusableBtnIndex);
-          onChange(match.displayName, match);
+          handleSelection(match.displayName, match);
           elToFocus.scrollIntoView({ block: 'nearest' });
         }
       },
