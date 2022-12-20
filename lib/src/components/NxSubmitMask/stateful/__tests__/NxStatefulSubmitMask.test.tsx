@@ -44,28 +44,28 @@ describe('NxStatefulSubmitMask', function() {
     expect(getShallowComponent({ success: false })).toHaveProp('success', false);
   });
 
-  function runAllTimers(component: ReturnType<typeof mount>) {
-    act(function() {
-      jest.runAllTimers();
+  async function runAllTimers(component: ReturnType<typeof mount>) {
+    await act(async function() {
+      await jest.runAllTimers();
       component.update();
     });
   }
 
   it('briefly renders the NxSubmitMask with success=true when its success prop is true and then renders nothing',
-      function() {
+      async function() {
         const component = getMountedComponent({ success: true });
 
         // we have to use mount due to the use of useEffect, and that means we only see the actual DOM nodes
         // not the shallow children
         expect(component).toContainExactlyOneMatchingElement('.nx-submit-mask--success');
 
-        runAllTimers(component);
+        await runAllTimers(component);
 
         expect(component).toBeEmptyRender();
       }
   );
 
-  it('does not disappear if set back to pending from success', function() {
+  it('does not disappear if set back to pending from success', async function() {
     const component = getMountedComponent({ success: true});
 
     expect(component).toContainExactlyOneMatchingElement('.nx-submit-mask--success');
@@ -75,17 +75,17 @@ describe('NxStatefulSubmitMask', function() {
     expect(component).toContainExactlyOneMatchingElement('.nx-submit-mask');
     expect(component.find('.nx-submit-mask')).not.toHaveClassName('nx-submit-mask--success');
 
-    runAllTimers(component);
+    await runAllTimers(component);
 
     expect(component.find('.nx-submit-mask')).not.toHaveClassName('nx-submit-mask--success');
   });
 
-  it('reappears if set back to pending from success after it disappears', function() {
+  it('reappears if set back to pending from success after it disappears', async function() {
     const component = getMountedComponent({ success: true});
 
     expect(component.find('.nx-submit-mask')).toHaveClassName('nx-submit-mask--success');
 
-    runAllTimers(component);
+    await runAllTimers(component);
 
     expect(component).toBeEmptyRender();
 
@@ -94,7 +94,7 @@ describe('NxStatefulSubmitMask', function() {
     expect(component.find('.nx-submit-mask')).not.toHaveClassName('nx-submit-mask--success');
   });
 
-  it('disappears after a time when passed success=true multiple times', function() {
+  it('disappears after a time when passed success=true multiple times', async function() {
     const component = getMountedComponent({ success: true });
 
     expect(component.find('.nx-submit-mask')).toHaveClassName('nx-submit-mask--success');
@@ -103,7 +103,7 @@ describe('NxStatefulSubmitMask', function() {
 
     expect(component.find('.nx-submit-mask')).toHaveClassName('nx-submit-mask--success');
 
-    runAllTimers(component);
+    await runAllTimers(component);
 
     expect(component).toBeEmptyRender();
   });
