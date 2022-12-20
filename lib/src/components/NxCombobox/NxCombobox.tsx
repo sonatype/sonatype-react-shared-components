@@ -102,9 +102,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         doSearch(value);
       }
     }
-    if (matches.length || value) {
-      setHiddenBySelection(false);
-    }
+    setHiddenBySelection(false);
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
