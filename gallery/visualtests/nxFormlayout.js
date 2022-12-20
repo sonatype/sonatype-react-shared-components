@@ -7,7 +7,8 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-form', function() {
-  const { waitAndGetElements, checkScreenshot, scrollIntoView, simpleTest, a11yTest } = setupBrowser('#/pages/Form Layout Examples');
+  const { waitAndGetElements, checkScreenshot, scrollIntoView, simpleTest, a11yTest } =
+      setupBrowser('#/pages/Form Layout Examples');
 
   const generalFormSelector = '#nx-form-layout-example .nx-form',
       horizontablFormSelector = '#nx-form-layout-horizontal-example .nx-form';
