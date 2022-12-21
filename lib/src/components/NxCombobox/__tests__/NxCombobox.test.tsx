@@ -83,30 +83,80 @@ describe('NxCombobox', function() {
         expect(inputElement).toHaveValue('Foo');
       });
 
-  it('sets aria-expanded on the input according to if the input is focused and when an option is selected',
-      async function() {
-        const user = userEvent.setup(),
-            { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
-            inputElement = getByRole('combobox'),
-            optionBtn = getByRole('option');
+  it('sets aria-expanded to true on the input when initially focused', async function() {
+    const { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+        inputElement = getByRole('combobox');
 
-        expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
 
-        // initial focus of the input
-        inputElement.focus();
-        expect(inputElement).toHaveAttribute('aria-expanded', 'true');
+    // initial focus of the input
+    inputElement.focus();
+    expect(inputElement).toHaveAttribute('aria-expanded', 'true');
 
-        // selection is made
-        await user.click(optionBtn);
-        expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+  // visibility of dropdown when focused is tested in visual tests
+  });
 
-        // input is refocused after selection
-        inputElement.blur();
-        inputElement.focus();
-        expect(inputElement).toHaveAttribute('aria-expanded', 'true');
+  it('sets aria-expanded to false when input loses focus without selection', async function() {
+    const { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+        inputElement = getByRole('combobox');
 
-      // visibility of dropdown when focused is tested in visual tests
-      });
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+
+    // initial focus of the input
+    inputElement.focus();
+    expect(inputElement).toHaveAttribute('aria-expanded', 'true');
+
+    //force input to lose focus
+    inputElement.blur();
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+
+  });
+
+  it('sets aria-expanded to false when a dropdown item is selected by click', async function() {
+    const user = userEvent.setup(),
+        { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+        inputElement = getByRole('combobox'),
+        optionBtn = getByRole('option');
+
+    await user.click(inputElement);
+    expect(inputElement).toHaveAttribute('aria-expanded', 'true');
+
+    // selection is made via click
+    await user.click(optionBtn);
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('sets aria-expanded to true when the input is refocused after dropdown selection and blur', async function() {
+    const user = userEvent.setup();
+    render(
+      <div>
+        <div>Outside Combobox</div>
+        <NxCombobox matches= {[{ id: '1', displayName: 'Foo' }]}
+                    value= '' 
+                    onChange= {() => {}}
+                    onSearch= {() => {}} />
+      </div>
+    );
+
+    const inputElement = screen.getByRole('combobox'),
+        optionBtn = screen.getByRole('option'),
+        outsideDiv = screen.getByText('Outside Combobox');
+
+    // selection is made via click
+    await user.click(optionBtn);
+    expect(inputElement).toHaveFocus();
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+
+    // click outside of input to lose focus
+    await user.click(outsideDiv);
+    expect(inputElement).not.toHaveFocus();
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+
+    // focus input again
+    await user.click(inputElement);
+    expect(inputElement).toHaveFocus();
+    expect(inputElement).toHaveAttribute('aria-expanded', 'true');
+  });
 
   it('calls onChange whenever the input\'s onChange event fires', async function() {
     const user = userEvent.setup(),
@@ -389,6 +439,46 @@ describe('NxCombobox', function() {
       await user.keyboard('[ArrowDown]');
       const optionBtns = getAllByRole('option');
       expect(inputElement).toHaveAttribute('aria-activedescendant', optionBtns[0].id);
+    });
+
+    it('sets aria-expanded to false when a dropdown item is selected by Enter key', async function() {
+      const user = userEvent.setup(),
+          { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+          inputElement = getByRole('combobox'),
+          optionBtn = getByRole('option');
+
+      // initial focus of the input
+      await user.keyboard('[Tab]');
+      expect(inputElement).toHaveAttribute('aria-expanded', 'true');
+
+      // selection is made with Enter key
+      await user.keyboard('[ArrowDown]');
+      expect(optionBtn).toHaveAttribute('aria-selected', 'true');
+      await user.keyboard('[Enter]');
+      expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    it('sets aria-expanded to true when the input receives focus after dropdown selection and blur', async function() {
+      const user = userEvent.setup(),
+          { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
+          inputElement = getByRole('combobox');
+
+      await user.keyboard('[Tab]');
+      await user.keyboard('[ArrowDown]');
+      await user.keyboard('[Enter]');
+
+      expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+      expect(inputElement).toHaveFocus();
+
+      // force input to lose focus
+      await user.keyboard('[Tab]');
+      expect(inputElement).not.toHaveFocus();
+      expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+
+      // focus input again
+      await user.keyboard('[Shift][Tab]');
+      expect(inputElement).toHaveFocus();
+      expect(inputElement).toHaveAttribute('aria-expanded', 'true');
     });
 
     it('places the editing cursor at the begining of the input field when Home key is pressed with focus in combobox',
