@@ -9,6 +9,7 @@ const { setupBrowser } = require('./testUtils');
 describe('NxCombobox', function() {
   const {
     waitAndGetElements,
+    isInDocument,
     getPage,
     simpleTest,
     hoverTest,
@@ -232,7 +233,7 @@ describe('NxCombobox', function() {
 
   it('passes a11y checks', a11yTest());
 
-  describe('dropdown display behavior', function() {
+  describe('dropdown display behavior with predetermined list', function() {
     it('shows the dropdown when initially focused', async function() {
       const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
           dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
@@ -243,7 +244,19 @@ describe('NxCombobox', function() {
       expect(await isVisible(dropdownMenu)).toBe(true);
     });
 
-    it('closes dropdown when a selection is made', async function() {
+    it('close the dropdown when the input loses focus', async function() {
+      const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
+          dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
+          [input, dropdownMenu] = await waitAndGetElements(inputSelector, dropdownMenuSelector);
+
+      await input.focus();
+      expect(await isVisible(dropdownMenu)).toBe(true);
+
+      await blurElement(input);
+      expect(await isVisible(dropdownMenu)).toBe(false);
+    });
+
+    it('closes dropdown when a selection is made via click', async function() {
       const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
           dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
           buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`,
@@ -252,6 +265,18 @@ describe('NxCombobox', function() {
 
       await input.focus();
       await firstOptBtn.click();
+      expect(await isVisible(dropdownMenu)).toBe(false);
+    });
+
+    it('closes dropdown when a selection is made by hitting "Enter"', async function() {
+      const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
+          dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
+          [input, dropdownMenu] = await waitAndGetElements(inputSelector, dropdownMenuSelector);
+
+      await input.focus();
+
+      await getPage().keyboard.press('ArrowDown');
+      await getPage().keyboard.press('Enter');
       expect(await isVisible(dropdownMenu)).toBe(false);
     });
 
@@ -269,6 +294,25 @@ describe('NxCombobox', function() {
       await blurElement(input);
       expect(await isFocused(input)).toBe(false);
       await input.focus();
+      expect(await isVisible(dropdownMenu)).toBe(true);
+    });
+
+    it('reopens dropdown after selection when clicking back into the input', async function() {
+      const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
+          dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
+          buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`,
+          example = '#nx-combobox-basic-example',
+          [input, dropdownMenu, firstOptBtn, basicExample] = await waitAndGetElements(
+              inputSelector, dropdownMenuSelector, buttonSelector, example);
+
+      await input.click();
+      await firstOptBtn.click();
+      expect(await isVisible(dropdownMenu)).toBe(false);
+
+      await basicExample.click();
+      expect(await isFocused(input)).toBe(false);
+      await input.click();
+      expect(await isFocused(input)).toBe(true);
       expect(await isVisible(dropdownMenu)).toBe(true);
     });
   });
