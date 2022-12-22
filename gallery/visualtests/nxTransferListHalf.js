@@ -128,5 +128,9 @@ describe('NxTransferListHalf', function() {
     it('looks right', simpleTest(orderingWithDisableTransferListSelector));
   });
 
-  it('passes a11y checks', a11yTest());
+  it('passes a11y checks', async function() {
+    // wait for tooltips to initialize
+    await wait(500);
+    await a11yTest()();
+  });
 });
