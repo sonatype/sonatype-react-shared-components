@@ -57,7 +57,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
                 d={`M 0 -14.5
                       a 14.5 14.5 0 1 1 0 29
                       a 14.5 14.5 0 1 1 0 -29
-                    ${innerBorderRadius > 0 &&
+                    ${innerBorderRadius <= 0 ? '' :
                       `M 0 ${-innerBorderRadius}
                         a ${innerBorderRadius} ${innerBorderRadius} 0 1 1 0 ${innerBorderRadius * 2}
                         a ${innerBorderRadius} ${innerBorderRadius} 0 1 1 0 ${-innerBorderRadius * 2}`}`} />
