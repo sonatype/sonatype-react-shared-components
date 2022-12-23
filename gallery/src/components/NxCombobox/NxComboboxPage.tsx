@@ -193,7 +193,7 @@ const NxComboboxPage = () =>
                   <NxCode>datalist</NxCode> prop would have formerly been used. To enable use
                   of <NxCode>NxCombobox</NxCode> in such cases, it has a <NxCode>filterInput</NxCode> prop which causes
                   it to use an <NxCode>NxFilterInput</NxCode> internally rather than
-                  in <NxCode>NxTextInput</NxCode>. When this prop is true, an <NxCode>NxFilterInput</NxCode> with the
+                  an <NxCode>NxTextInput</NxCode>. When this prop is true, an <NxCode>NxFilterInput</NxCode> with the
                   default "filter" icon is rendered. When this prop is instead set to "search",{' '}
                   an <NxCode>NxFilterInput</NxCode> with a "search" icon is rendered instead.
                 </NxP>
