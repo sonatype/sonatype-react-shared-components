@@ -55,20 +55,20 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       // A state variable tracking when a selection is made from the dropdown. This state helps close the dropdown
       // when a selection is made, and re-open when the input receives focus
       [hiddenBySelection, setHiddenBySelection] = useState(false),
-      isEmpty = !matches.length,
-      showEmptyMessage = isEmpty && value.length,
-      isAlert = (loading || loadError || showEmptyMessage) && !hiddenBySelection,
-      dropdownRef = useRef<HTMLDivElement>(null),
-      inputRef = useRef<HTMLInputElement | null>(),
-      alertRef = useRef<HTMLDivElement>(null),
-      showDropdown = !disabled && !isEmpty && !hiddenBySelection,
-      showAlert = !!(!disabled && isAlert && value),
-
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
       [inputIsFocused, setInputIsFocused] = useState(false),
       inputVal = autoComplete && focusableBtnIndex !== null && matches.length
         ? matches[focusableBtnIndex].displayName
         : value,
+
+      isEmpty = !matches.length,
+      showEmptyMessage = isEmpty && value.length,
+      isAlert = (loading || loadError || showEmptyMessage) && !hiddenBySelection && inputIsFocused,
+      dropdownRef = useRef<HTMLDivElement>(null),
+      inputRef = useRef<HTMLInputElement | null>(),
+      alertRef = useRef<HTMLDivElement>(null),
+      showDropdown = !disabled && !isEmpty && !hiddenBySelection && inputIsFocused,
+      showAlert = !!(!disabled && isAlert && value),
 
       inputId = useUniqueId('nx-combobox-input', id),
       alertDropdownId = useUniqueId('nx-combobox-alert-dropdown'),
@@ -77,9 +77,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       focusableBtnId = focusableBtnIndex !== null ?
         getDropdownBtnIdForIndex(focusableBtnIndex) : undefined,
 
-      className = classnames('nx-combobox', classNameProp, {
-        'nx-combobox--dropdown-showable': showDropdown || showAlert
-      }),
+      className = classnames('nx-combobox', classNameProp),
       alertClassName = classnames('nx-combobox__alert', {
         'nx-combobox__alert--error': !!loadError
       }),
@@ -336,8 +334,8 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
                    aria-autocomplete={autoComplete ? 'both' : 'list'}
-                   aria-expanded={showDropdown && inputIsFocused}
-                   aria-controls={showDropdown && inputIsFocused ? dropdownId : undefined}
+                   aria-expanded={showDropdown}
+                   aria-controls={showDropdown ? dropdownId : undefined}
                    aria-activedescendant={focusableBtnId}
                    aria-required={ariaRequired}
                    aria-describedby={inputDescribedby}
@@ -355,7 +353,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
           loading ? <NxLoadingSpinner /> :
           showEmptyMessage && <div className="nx-combobox__empty-message">{emptyMessage || 'No Results Found'}</div>}
         </div>
-        :
+        : showDropdown &&
         <NxDropdownMenu id={dropdownId}
                         role='listbox'
                         ref={dropdownRef}
