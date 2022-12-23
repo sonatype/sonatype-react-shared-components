@@ -11,14 +11,22 @@ export type InputAttributesProp =
   Omit<InputHTMLAttributes<HTMLInputElement>,
   'disabled' | 'checked' | 'readOnly' | 'onChange'>;
 
-export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
+interface BaseProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> {
   checkboxId?: string | null;
-  onChange?: (() => void) | null;
-  isChecked: boolean;
   disabled?: boolean | null;
   overflowTooltip?: boolean | null;
   inputAttributes?: InputAttributesProp;
+}
+
+export interface Props extends BaseProps {
+  onChange?: (() => void) | null;
+  isChecked: boolean;
 };
+
+export interface StatefulProps extends BaseProps {
+  onChange?: ((isChecked: boolean) => void) | null;
+  defaultChecked: boolean;
+}
 
 // In a strictly typescript environment, PropTypes are mostly redundant. However, they still provide safety when this
 // project is consumed by javascript projects
@@ -26,6 +34,15 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   checkboxId: PropTypes.string,
   onChange: PropTypes.func,
   isChecked: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
+  overflowTooltip: PropTypes.bool,
+  inputAttributes: PropTypes.object as Validator<InputAttributesProp>
+};
+
+export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
+  checkboxId: PropTypes.string,
+  onChange: PropTypes.func,
+  defaultChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
   overflowTooltip: PropTypes.bool,
   inputAttributes: PropTypes.object as Validator<InputAttributesProp>
