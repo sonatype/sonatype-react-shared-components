@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "12.7.2",
+  "version": "12.7.4",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -27,7 +27,7 @@
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",
   "devDependencies": {
-    "@axe-core/puppeteer": "^4.4.3",
+    "@axe-core/puppeteer": "^4.5.2",
     "@babel/runtime": "^7.20.6",
     "@types/classnames": "^2.2.11",
     "@types/debounce": "^1.2.0",
@@ -52,7 +52,7 @@
     "jest-junit": "^15.0.0",
     "mini-css-extract-plugin": "^2.6.0",
     "npm-run-all": "^4.1.5",
-    "puppeteer": "^13",
+    "puppeteer": "^19.4.1",
     "resolve-url-loader": "^5.0.0",
     "rimraf": "^3.0.2",
     "sass": "^1.37.5",

@@ -22,7 +22,8 @@ module.exports = {
       // This ought to be possible with browser.defaultBrowserContext().overridePermissions but that doesn't
       // seem to work right for enabling clipboard-write.  See
       // https://github.com/puppeteer/puppeteer/issues/3241#issuecomment-751489962
-      await browser._connection.send('Browser.grantPermissions', {
+      const session = await browser.target().createCDPSession();
+      await session.send('Browser.grantPermissions', {
         origin: pageUrl,
         permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite']
       });
