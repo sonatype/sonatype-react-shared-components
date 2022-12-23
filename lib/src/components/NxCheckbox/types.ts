@@ -28,8 +28,6 @@ export interface StatefulProps extends BaseProps {
   defaultChecked: boolean;
 }
 
-// In a strictly typescript environment, PropTypes are mostly redundant. However, they still provide safety when this
-// project is consumed by javascript projects
 export const propTypes: PropTypes.ValidationMap<Props> = {
   checkboxId: PropTypes.string,
   onChange: PropTypes.func,
