@@ -10,12 +10,16 @@ import { NxTable, NxCode, NxP, NxH3, NxTile, NxTextLink, NxWarningAlert } from '
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxComboboxExample from './NxComboboxExample';
+import NxComboboxFilterInputExample from './NxComboboxFilterInputExample';
+import NxComboboxFilterInputSearchExample from './NxComboboxFilterInputSearchExample';
 import NxComboboxPredeterminedListExample from './NxComboboxPredeterminedListExample';
 import NxComboboxDisabledExample from './NxComboboxDisabledExample';
 import NxComboboxValidationExample from './NxComboboxValidationExample';
 import NxComboboxErrorExample from './NxComboboxErrorExample';
 
 const NxComboboxExampleCode = require('./NxComboboxExample?raw');
+const NxComboboxFilterInputExampleCode = require('./NxComboboxFilterInputExample?raw');
+const NxComboboxFilterInputSearchExampleCode = require('./NxComboboxFilterInputSearchExample?raw');
 const NxComboboxPredeterminedListExampleCode = require('./NxComboboxPredeterminedListExample?raw');
 const NxComboboxDisabledExampleCode = require('./NxComboboxDisabledExample?raw');
 const NxComboboxValidationExampleCode = require('./NxComboboxValidationExample?raw');
@@ -177,6 +181,30 @@ const NxComboboxPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell><NxCode>filterInput</NxCode></NxTable.Cell>
+              <NxTable.Cell><NxCode>true</NxCode> | <NxCode>false</NxCode> | <NxCode>"search"</NxCode></NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                <NxP>
+                  Normally, <NxCode>NxCombobox</NxCode> uses a plain <NxCode>NxTextInput</NxCode> for its text input.
+                  However, <NxCode>NxCombobox</NxCode>'s functionality can also be useful in places where the styling of
+                  a filter input is desired – cases where <NxCode>NxFilterInput</NxCode>'s{' '}
+                  <NxCode>datalist</NxCode> prop would have formerly been used. To enable use
+                  of <NxCode>NxCombobox</NxCode> in such cases, it has a <NxCode>filterInput</NxCode> prop which causes
+                  it to use an <NxCode>NxFilterInput</NxCode> internally rather than
+                  in <NxCode>NxTextInput</NxCode>. When this prop is true, an <NxCode>NxFilterInput</NxCode> with the
+                  default "filter" icon is rendered. When this prop is instead set to "search",{' '}
+                  an <NxCode>NxFilterInput</NxCode> with a "search" icon is rendered instead.
+                </NxP>
+                <NxWarningAlert>
+                  <NxCode>NxFilterInput</NxCode> does not support validation. Therefore,
+                  the <NxCode>validatable</NxCode>, <NxCode>validationErrors</NxCode>,
+                  and <NxCode>isPristine</NxCode> prop should not be used in conjunction with this prop.
+                </NxWarningAlert>
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
@@ -299,6 +327,22 @@ const NxComboboxPage = () =>
       the <NxCode>matches</NxCode> list is passed as the second argument to <NxCode>onChange</NxCode>. This example
       also includes a custom subtype of <NxCode>DataItem</NxCode> which is used in conjunction with
       the <NxCode>itemTooltip</NxCode> prop to provide tooltips for each item.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Filter Input Examples"
+                        id="nx-combobox-filter-input-example"
+                        codeExamples={NxComboboxFilterInputExampleCode}
+                        liveExample={NxComboboxFilterInputExample}>
+      Examples of an <NxCode>NxCombobox</NxCode> using <NxCode>NxFilterInput</NxCode> as its text input, adding an
+      icon and clear button.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Filter Input Search Icon Example"
+                        id="nx-combobox-filter-input-search-example"
+                        codeExamples={NxComboboxFilterInputSearchExampleCode}
+                        liveExample={NxComboboxFilterInputSearchExample}>
+      Another Example of <NxCode>NxCombobox</NxCode> using <NxCode>NxFilterInput</NxCode> as its text input, but this
+      time with the "search" icon specified rather than the default "filter" icon.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Error Example"
