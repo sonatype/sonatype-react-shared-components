@@ -332,6 +332,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                    className="nx-combobox__input"
                    value={inputVal}
                    onChange={handleOnChange}
+                   onClick={() => setHiddenBySelection(false)}
                    disabled={disabled || undefined}
                    onKeyDown={handleKeyDown}
                    aria-autocomplete={autoComplete ? 'both' : 'list'}

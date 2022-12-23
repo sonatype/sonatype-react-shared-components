@@ -10,6 +10,7 @@ describe('NxCombobox', function() {
   const {
     waitAndGetElements,
     isInDocument,
+    wait,
     getPage,
     simpleTest,
     hoverTest,
@@ -297,7 +298,7 @@ describe('NxCombobox', function() {
       expect(await isVisible(dropdownMenu)).toBe(true);
     });
 
-    it('reopens dropdown after selection when clicking back into the input', async function() {
+    it('reopens dropdown after selection when the input is clicked on', async function() {
       const inputSelector = `${basicExampleSelector} .nx-combobox__input input`,
           dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
           buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`,
@@ -309,8 +310,15 @@ describe('NxCombobox', function() {
       await firstOptBtn.click();
       expect(await isVisible(dropdownMenu)).toBe(false);
 
+      // check the dropdown opens with the input having never lost focus
+      expect(await isFocused(input)).toBe(true);
+      await input.click();
+      expect(await isVisible(dropdownMenu)).toBe(true);
+
+      // check the dropdown opens after refocusing the input
       await basicExample.click();
       expect(await isFocused(input)).toBe(false);
+      expect(await isVisible(dropdownMenu)).toBe(false);
       await input.click();
       expect(await isFocused(input)).toBe(true);
       expect(await isVisible(dropdownMenu)).toBe(true);
