@@ -181,7 +181,7 @@ describe('NxCombobox', function() {
   });
 
   describe('when using a search input', function() {
-    it('has a filter icon', simpleTest(searchExampleSelector));
+    it('has a search icon', simpleTest(searchExampleSelector));
 
     it('has a clear button when it has content', async function() {
       const inputSelector = `${searchExampleSelector} .nx-combobox__input input`,
