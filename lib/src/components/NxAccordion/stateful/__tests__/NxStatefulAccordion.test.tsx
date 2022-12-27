@@ -41,7 +41,7 @@ describe('NxStatefulAccordion', function() {
     expect(renderEl({ defaultOpen: true })).toHaveAttribute('open');
   });
 
-  it('toggles the NxAccordion open prop when the NxAccordion onToggle callback is called', async function() {
+  it('toggles the NxAccordion open prop when the header is clicked', async function() {
     const user = userEvent.setup(),
         onToggle = jest.fn(),
         el = quickRender({ onToggle,
