@@ -17,7 +17,7 @@ describe('NxTooltip updateBatcher', function() {
     batch(work);
     expect(work).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(99);
+    jest.advanceTimersByTime(100);
     expect(work).not.toHaveBeenCalled();
 
     jest.advanceTimersByTime(1);
@@ -33,7 +33,7 @@ describe('NxTooltip updateBatcher', function() {
 
     expect(work).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(99);
+    jest.advanceTimersByTime(100);
     expect(work).not.toHaveBeenCalled();
 
     jest.advanceTimersByTime(1);
@@ -80,14 +80,14 @@ describe('NxTooltip updateBatcher', function() {
     // 190 units submitted, no time elapsed
     expect(work).toHaveBeenCalledTimes(100);
 
-    jest.advanceTimersByTime(100);
+    jest.advanceTimersByTime(101);
 
-    // 190 units submitted, 100 ms elapsed
+    // 190 units submitted, 101 ms elapsed
     expect(work).toHaveBeenCalledTimes(190);
 
     jest.advanceTimersByTime(50);
 
-    // 190 units submitted, 150 ms elapsed
+    // 190 units submitted, 151 ms elapsed
     expect(work).toHaveBeenCalledTimes(190);
 
     for (let i = 0; i < 5; i++) {
@@ -96,12 +96,12 @@ describe('NxTooltip updateBatcher', function() {
 
     jest.advanceTimersByTime(50);
 
-    // 195 units submitted, 200 ms elapsed (50 ms since most recent units added)
+    // 195 units submitted, 201 ms elapsed (50 ms since most recent units added)
     expect(work).toHaveBeenCalledTimes(190);
 
-    jest.advanceTimersByTime(50);
+    jest.advanceTimersByTime(51);
 
-    // 195 units submitted, 250 ms elapsed (100 ms since most recent units added)
+    // 195 units submitted, 252 ms elapsed (101 ms since most recent units added)
     expect(work).toHaveBeenCalledTimes(195);
 
     for (let i = 0; i < 120; i++) {
@@ -110,12 +110,12 @@ describe('NxTooltip updateBatcher', function() {
 
     jest.advanceTimersByTime(0);
 
-    // 315 units submitted, 250 ms elapsed (since last empty: 120 units, 0 ms)
+    // 315 units submitted, 252 ms elapsed (since last empty: 120 units, 0 ms)
     expect(work).toHaveBeenCalledTimes(295);
 
-    jest.advanceTimersByTime(100);
+    jest.advanceTimersByTime(101);
 
-    // 315 units submitted, 350 ms elapsed (since last empty: 120 units, 100 ms)
+    // 315 units submitted, 353 ms elapsed (since last empty: 120 units, 101 ms)
     expect(work).toHaveBeenCalledTimes(315);
   });
 });
