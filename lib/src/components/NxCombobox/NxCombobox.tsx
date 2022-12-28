@@ -100,13 +100,14 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         doSearch(value);
       }
     }
+
     setHiddenBySelection(false);
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
-    setInputIsFocused(false);
 
     if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget))) {
+      setInputIsFocused(false);
       // The automatically selected suggestion becomes the value of the combobox
       // when the combobox loses focus.
       if (autoComplete && focusableBtnIndex !== null) {
