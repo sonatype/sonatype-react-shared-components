@@ -105,7 +105,7 @@ describe('NxStatefulAccordion', function() {
 
   describe('onToggle', function() {
     describe('when the accordion is currently closed', function() {
-      it('toggles the accordion open prop when the accordion onToggle callback is called', async function() {
+      it('toggles the accordion open prop when the header is clicked', async function() {
         const user = userEvent.setup(),
             onToggle = jest.fn(),
             el = quickRender({ onToggle,
