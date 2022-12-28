@@ -43,12 +43,6 @@
     text-align: center;
   }
 
-  &:focus-within {
-    .nx-dropdown-button.selected {
-      background-color: var(--nx-swatch-blue-90);
-    }
-  }
-
   &--long{
     .nx-combobox__input{
       width: var(--nx-width-form-element-wide);
@@ -65,6 +59,10 @@
     }
   }
 
+  .nx-dropdown-button.selected {
+    background-color: var(--nx-swatch-blue-90);
+  }
+  
   .nx-loading-spinner {
     padding-top: var(--nx-spacing-6x);
     padding-bottom: var(--nx-spacing-6x);
