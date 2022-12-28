@@ -448,7 +448,7 @@ describe('NxCombobox', function() {
           optionBtn = getByRole('option');
 
       // initial focus of the input
-      await user.keyboard('[Tab]');
+      await user.tab();
       expect(inputElement).toHaveAttribute('aria-expanded', 'true');
 
       // selection is made with Enter key
@@ -463,7 +463,7 @@ describe('NxCombobox', function() {
           { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
           inputElement = getByRole('combobox');
 
-      await user.keyboard('[Tab]');
+      await user.tab();
       await user.keyboard('[ArrowDown]');
       await user.keyboard('[Enter]');
 
@@ -471,12 +471,12 @@ describe('NxCombobox', function() {
       expect(inputElement).toHaveFocus();
 
       // force input to lose focus
-      await user.keyboard('[Tab]');
+      await user.tab();
       expect(inputElement).not.toHaveFocus();
       expect(inputElement).toHaveAttribute('aria-expanded', 'false');
 
       // focus input again
-      await user.keyboard('[Shift][Tab]');
+      await user.tab({ shift: true });
       expect(inputElement).toHaveFocus();
       expect(inputElement).toHaveAttribute('aria-expanded', 'true');
     });
