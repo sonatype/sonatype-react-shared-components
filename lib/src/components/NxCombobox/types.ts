@@ -20,6 +20,8 @@ import DataItem from '../../util/DataItem';
 export type DataItemType<T extends string | number | DataItem<string | number, string>> =
   T extends string | number ? DataItem<T, string> : T;
 
+type FilterInputType = boolean | 'search';
+
 export interface Props<T extends string | number | DataItem<string | number, string> = string>
   extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   value: string;
@@ -35,6 +37,7 @@ export interface Props<T extends string | number | DataItem<string | number, str
   validatable?: boolean | null;
   isPristine?: boolean | null;
   validationErrors?: string | string[] | null;
+  filterInput?: FilterInputType | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props<DataItem<string | number, string>>> = {
@@ -53,5 +56,6 @@ export const propTypes: PropTypes.ValidationMap<Props<DataItem<string | number, 
   autoComplete: PropTypes.bool,
   validatable: PropTypes.bool,
   isPristine: PropTypes.bool,
-  validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string])
+  validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string]),
+  filterInput: PropTypes.oneOf([true, false, 'search'])
 };

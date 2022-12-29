@@ -25,6 +25,8 @@ describe('NxCombobox', function() {
   const basicExampleSelector = '#nx-combobox-basic-example .nx-combobox',
       nonEmptinessExampleSelector = '#nx-combobox-non-emptiness-example .nx-combobox',
       backendExampleSelector = '#nx-combobox-backend-example .nx-combobox',
+      filterExampleSelector = '#nx-combobox-filter-input-example .nx-combobox',
+      searchExampleSelector = '#nx-combobox-filter-input-search-example .nx-combobox',
       errorExampleSelector = '#nx-combobox-error-example .nx-combobox',
       disabledExampleSelector = '#nx-combobox-disabled-example .nx-combobox';
 
@@ -159,6 +161,38 @@ describe('NxCombobox', function() {
       });
 
       it('passes a11Y checks', a11yTest());
+    });
+  });
+
+  describe('when using a filter input', function() {
+    it('has a filter icon', simpleTest(filterExampleSelector));
+
+    it('has a clear button when it has content', async function() {
+      const inputSelector = `${filterExampleSelector} .nx-combobox__input input`,
+          dropdownButtonSelector = `${filterExampleSelector} .nx-dropdown-button`,
+          [component, input] = await waitAndGetElements(filterExampleSelector, inputSelector);
+
+      await input.focus();
+      await getPage().keyboard.type('a');
+      await getPage().waitForSelector(dropdownButtonSelector);
+
+      await checkScreenshot(component, 300, 184);
+    });
+  });
+
+  describe('when using a search input', function() {
+    it('has a search icon', simpleTest(searchExampleSelector));
+
+    it('has a clear button when it has content', async function() {
+      const inputSelector = `${searchExampleSelector} .nx-combobox__input input`,
+          dropdownButtonSelector = `${searchExampleSelector} .nx-dropdown-button`,
+          [component, input] = await waitAndGetElements(searchExampleSelector, inputSelector);
+
+      await input.focus();
+      await getPage().keyboard.type('a');
+      await getPage().waitForSelector(dropdownButtonSelector);
+
+      await checkScreenshot(component, 300, 184);
     });
   });
 

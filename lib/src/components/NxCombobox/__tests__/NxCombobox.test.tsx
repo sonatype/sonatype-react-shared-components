@@ -6,7 +6,7 @@
  */
 // import React, { useState } from 'react';
 import React, { RefAttributes } from 'react';
-import { screen, fireEvent, render, within, createEvent } from '@testing-library/react';
+import { screen, fireEvent, render, within, createEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
@@ -1150,6 +1150,229 @@ describe('NxCombobox', function() {
             expect(multiError.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
           });
         });
+      });
+    });
+  });
+
+  describe('filterInput prop', function() {
+    beforeEach(function() {
+      // fixes "An update to ForwardRef(Tooltip) inside a test was not wrapped in act" errors
+      jest.useFakeTimers();
+    });
+
+    afterEach(runTimers);
+
+    async function runTimers() {
+      await act(async () => { await jest.runAllTimers(); });
+    }
+
+    async function advanceTimers(time: number) {
+      await act(async () => { await jest.advanceTimersByTime(time); });
+    }
+
+    describe('when false, null, or undefined', function() {
+      it('does not render a clear button', async function() {
+        const unsetNoValue = quickRender(),
+            unsetWithValue = quickRender({ value: 'a' }),
+            undefinedNoValue = quickRender({ filterInput: undefined }),
+            undefinedWithValue = quickRender({ filterInput: undefined, value: 'a' }),
+            nullNoValue = quickRender({ filterInput: null }),
+            nullWithValue = quickRender({ filterInput: null, value: 'a' }),
+            falseNoValue = quickRender({ filterInput: false }),
+            falseWithValue = quickRender({ filterInput: false, value: 'a' });
+
+        await runTimers();
+
+        expect(unsetNoValue.queryByRole('button', { name: /clear/i })).not.toBeInTheDocument();
+        expect(unsetWithValue.queryByRole('button', { name: /clear/i })).not.toBeInTheDocument();
+
+        expect(undefinedNoValue.queryByRole('button', { name: /clear/i })).not.toBeInTheDocument();
+        expect(undefinedWithValue.queryByRole('button', { name: /clear/i })).not.toBeInTheDocument();
+
+        expect(nullNoValue.queryByRole('button', { name: /clear/i })).not.toBeInTheDocument();
+        expect(nullWithValue.queryByRole('button', { name: /clear/i })).not.toBeInTheDocument();
+
+        expect(falseNoValue.queryByRole('button', { name: /clear/i })).not.toBeInTheDocument();
+        expect(falseWithValue.queryByRole('button', { name: /clear/i })).not.toBeInTheDocument();
+      });
+    });
+
+    describe('when true', function() {
+      const quickRender = rtlRender(NxCombobox, { ...minimalProps, filterInput: true });
+
+      // Note: the button only being visible when a value is entered is implemented in CSS and so not
+      // tested here
+
+      it('renders a clear button with "Clear filter" as the tooltip and a11y name', async function() {
+        const user = userEvent.setup({ advanceTimers }),
+            view = quickRender({ value: 'a' });
+
+        await runTimers();
+
+        const clearButton = await view.findByRole('button', { name: 'Clear filter' });
+
+        expect(clearButton).toBeInTheDocument();
+
+        await user.hover(clearButton);
+        await runTimers();
+
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Clear filter');
+      });
+
+      it('still clears the input and triggers a search on the empty string when Escape key is pressed', async () => {
+        const user = userEvent.setup({ advanceTimers }),
+            onChange = jest.fn(),
+            onSearch = jest.fn(),
+            { getByRole } = quickRender({
+              value: 'a',
+              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
+              onChange,
+              onSearch
+            }),
+            inputElement = getByRole('combobox');
+
+        await runTimers();
+
+        inputElement.focus();
+        await user.keyboard('[Escape]');
+        expect(onChange).toBeCalledWith('');
+        expect(onChange).toBeCalledTimes(1);
+
+        expect(onSearch).toBeCalledWith('');
+        expect(onSearch).toBeCalledTimes(1);
+      });
+
+      it('clears the input when the clear button is clicked', async function() {
+        const user = userEvent.setup({ advanceTimers }),
+            onChange = jest.fn(),
+            onSearch = jest.fn(),
+            view = quickRender({
+              value: 'a',
+              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
+              onChange,
+              onSearch
+            });
+
+        await runTimers();
+
+        const clearButton = view.getByRole('button', { name: /clear/i });
+
+        await user.click(clearButton);
+        expect(onChange).toBeCalledWith('');
+        expect(onChange).toBeCalledTimes(1);
+
+        expect(onSearch).toBeCalledWith('');
+        expect(onSearch).toBeCalledTimes(1);
+      });
+
+      it('calls preventDefault on the event when Escape key is pressed and the value is not empty', function() {
+        const { getByRole } = quickRender({ value: 'a' }),
+            inputElement = getByRole('combobox'),
+            keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+        inputElement.focus();
+        fireEvent(inputElement, keyEvent);
+
+        expect(keyEvent.defaultPrevented).toBe(true);
+      });
+
+      it('does not call preventDefault on the event when Escape key is pressed and the value is empty', () => {
+        const { getByRole } = quickRender(),
+            inputElement = getByRole('combobox'),
+            keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+        inputElement.focus();
+        fireEvent(inputElement, keyEvent);
+
+        expect(keyEvent.defaultPrevented).toBe(false);
+      });
+    });
+
+    describe('when set to "search"', function() {
+      const quickRender = rtlRender<Props>(NxCombobox, { ...minimalProps, filterInput: 'search' });
+
+      it('renders a clear button with "Clear search" as the tooltip and a11y name', async function() {
+        const user = userEvent.setup({ advanceTimers }),
+            view = quickRender({ value: 'a' });
+
+        await runTimers();
+
+        const clearButton = await view.findByRole('button', { name: 'Clear search' });
+
+        expect(clearButton).toBeInTheDocument();
+
+        await user.hover(clearButton);
+        await runTimers();
+
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Clear search');
+      });
+
+      it('still clears the input and triggers a search on the empty string when Escape key is pressed', async () => {
+        const user = userEvent.setup({ advanceTimers }),
+            onChange = jest.fn(),
+            onSearch = jest.fn(),
+            { getByRole } = quickRender({
+              value: 'a',
+              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
+              onChange,
+              onSearch
+            }),
+            inputElement = getByRole('combobox');
+
+        await runTimers();
+
+        inputElement.focus();
+        await user.keyboard('[Escape]');
+        expect(onChange).toBeCalledWith('');
+        expect(onChange).toBeCalledTimes(1);
+
+        expect(onSearch).toBeCalledWith('');
+        expect(onSearch).toBeCalledTimes(1);
+      });
+
+      it('clears the input when the clear button is clicked', async function() {
+        const user = userEvent.setup({ advanceTimers }),
+            onChange = jest.fn(),
+            onSearch = jest.fn(),
+            view = quickRender({
+              value: 'a',
+              matches: [{ id: '1', displayName: 'Foo' }, { id: '2', displayName: 'Boo' }],
+              onChange,
+              onSearch
+            });
+
+        await runTimers();
+
+        const clearButton = view.getByRole('button', { name: /clear/i });
+
+        await user.click(clearButton);
+        expect(onChange).toBeCalledWith('');
+        expect(onChange).toBeCalledTimes(1);
+
+        expect(onSearch).toBeCalledWith('');
+        expect(onSearch).toBeCalledTimes(1);
+      });
+
+      it('calls preventDefault on the event when Escape key is pressed and the value is not empty', function() {
+        const { getByRole } = quickRender({ value: 'a' }),
+            inputElement = getByRole('combobox'),
+            keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+        inputElement.focus();
+        fireEvent(inputElement, keyEvent);
+
+        expect(keyEvent.defaultPrevented).toBe(true);
+      });
+
+      it('does not call preventDefault on the event when Escape key is pressed and the value is empty', () => {
+        const { getByRole } = quickRender(),
+            inputElement = getByRole('combobox'),
+            keyEvent = createEvent.keyDown(inputElement, { cancelable: true, key: 'Escape' });
+
+        inputElement.focus();
+        fireEvent(inputElement, keyEvent);
+
+        expect(keyEvent.defaultPrevented).toBe(false);
       });
     });
   });
