@@ -333,4 +333,115 @@ describe('NxCombobox', function() {
       expect(await isVisible(dropdownMenu)).toBe(true);
     });
   });
+
+  describe('dropdown display behavior with backend query', function() {
+    it('shows the dropdown when focused and the user has typed a value', async function() {
+      const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
+          dropdownMenuSelector = `${backendExampleSelector} .nx-dropdown-menu`,
+          [input] = await waitAndGetElements(inputSelector);
+
+      await input.focus();
+      await getPage().keyboard.type('i');
+
+      const [dropdownMenu] = await waitAndGetElements(dropdownMenuSelector);
+      expect(await isVisible(dropdownMenu)).toBe(true);
+    });
+
+    it('close the dropdown when the input loses focus', async function() {
+      const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
+          dropdownMenuSelector = `${backendExampleSelector} .nx-dropdown-menu`,
+          [input] = await waitAndGetElements(inputSelector);
+
+      await input.focus();
+      await getPage().keyboard.type('i');
+
+      const [dropdownMenu] = await waitAndGetElements(dropdownMenuSelector);
+      expect(await isVisible(dropdownMenu)).toBe(true);
+
+      await blurElement(input);
+      expect(await isVisible(dropdownMenu)).toBe(false);
+    });
+
+    it('closes dropdown when a selection is made via click', async function() {
+      const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
+          dropdownMenuSelector = `${backendExampleSelector} .nx-dropdown-menu`,
+          buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`,
+          [input] = await waitAndGetElements(inputSelector);
+
+      await input.focus();
+      await getPage().keyboard.type('i');
+
+      const [dropdownMenu, firstOptBtn] = await waitAndGetElements(dropdownMenuSelector, buttonSelector);
+      expect(await isVisible(dropdownMenu)).toBe(true);
+
+      await firstOptBtn.click();
+      expect(await isVisible(dropdownMenu)).toBe(false);
+    });
+
+    it('closes dropdown when a selection is made by hitting "Enter"', async function() {
+      const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
+          dropdownMenuSelector = `${backendExampleSelector} .nx-dropdown-menu`,
+          [input] = await waitAndGetElements(inputSelector);
+
+      await input.focus();
+      await getPage().keyboard.type('i');
+
+      const [dropdownMenu] = await waitAndGetElements(dropdownMenuSelector);
+      expect(await isVisible(dropdownMenu)).toBe(true);
+
+      await getPage().keyboard.press('ArrowDown');
+      await getPage().keyboard.press('Enter');
+      expect(await isVisible(dropdownMenu)).toBe(false);
+    });
+
+    it('reopens dropdown after selection when input is refocused', async function() {
+      const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
+          dropdownMenuSelector = `${backendExampleSelector} .nx-dropdown-menu`,
+          buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`,
+          [input] = await waitAndGetElements(inputSelector);
+
+      await input.focus();
+      await getPage().keyboard.type('i');
+
+      let [dropdownMenu, firstOptBtn] = await waitAndGetElements(dropdownMenuSelector, buttonSelector);
+      await firstOptBtn.click();
+      expect(await isVisible(dropdownMenu)).toBe(false);
+
+      await blurElement(input);
+      await input.focus();
+
+      [dropdownMenu] = await waitAndGetElements(dropdownMenuSelector);
+      expect(await isVisible(dropdownMenu)).toBe(true);
+    });
+
+    it('reopens dropdown after selection when the input is clicked on', async function() {
+      const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
+          dropdownMenuSelector = `${backendExampleSelector} .nx-dropdown-menu`,
+          buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`,
+          example = '#nx-combobox-backend-example',
+          [input, backendExample] = await waitAndGetElements(inputSelector, example);
+
+      await input.click();
+      await getPage().keyboard.type('i');
+
+      let [dropdownMenu, firstOptBtn] = await waitAndGetElements(dropdownMenuSelector, buttonSelector);
+      await firstOptBtn.click();
+      expect(await isVisible(dropdownMenu)).toBe(false);
+
+      // check the dropdown opens with the input having never lost focus
+      expect(await isFocused(input)).toBe(true);
+      await input.click();
+      [dropdownMenu] = await waitAndGetElements(dropdownMenuSelector);
+      expect(await isVisible(dropdownMenu)).toBe(true);
+
+      // check the dropdown opens after refocusing the input
+      await backendExample.click();
+      expect(await isFocused(input)).toBe(false);
+      expect(await isVisible(dropdownMenu)).toBe(false);
+      await input.click();
+      [dropdownMenu] = await waitAndGetElements(dropdownMenuSelector);
+      expect(await isFocused(input)).toBe(true);
+      expect(await isVisible(dropdownMenu)).toBe(true);
+    });
+  });
 });
