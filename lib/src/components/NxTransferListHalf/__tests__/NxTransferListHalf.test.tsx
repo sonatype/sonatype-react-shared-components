@@ -8,7 +8,7 @@
 // import { includes } from 'ramda';
 import React from 'react';
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import {within} from '@testing-library/react';
+import { within, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 // import NxTooltip from '../../NxTooltip/NxTooltip';
@@ -28,7 +28,6 @@ describe('NxTransferListHalf', function() {
       },
       quickRender = rtlRender(NxTransferListHalf, minimalProps),
       renderEl = rtlRenderElement(NxTransferListHalf, minimalProps);
-      // IF ERRORS - look at NxAlert to see if that works
 
   it('renders a fieldset as top-level element', function() {
     const el = renderEl()!;
@@ -41,24 +40,12 @@ describe('NxTransferListHalf', function() {
     expect(el).toHaveTextContent('Foo');
   });
 
-  // MAYBE NOT NEED THIS ONE- IMPLEMENTATION DETAIL?
-  it('renders a child div with class nx-transfer-list__control-box', function() {
-    const el = quickRender(),
-        controlBox = el.container.querySelector('.nx-transfer-list__control-box');
-
-    expect(controlBox).toBeInTheDocument();
-  });
-
-  it('renders an input with type="text" inside of nx-transfer-list__control-box', function() {
-    const el = quickRender(),
-        controlBox = el.container.querySelector('.nx-transfer-list__control-box')!,
-        input = within(controlBox as HTMLElement).getByRole('textbox');
+  it('renders an input with type="text" within NxTransferListHalf', function() {
+    const el = renderEl()!,
+        input = within(el).getByRole('textbox');
 
     expect(input).toBeInTheDocument();
     expect(input).toHaveAttribute('type', 'text');
-    //OPTION 2 IF WE DON'T NEED TO PROVE WHERE ITEM IS RENDERED
-    // expect(quickRender().getByRole('textbox')).toBeInTheDocument();
-    // expect(quickRender().getByRole('textbox')).toHaveAttribute('type', 'text');
   });
 
   it('sets the filter inputs placeholder to "filter', function() {
@@ -70,14 +57,6 @@ describe('NxTransferListHalf', function() {
   });
 
   it('calls onFilterChange when the filterValue is updated', async function() {
-    // const user = userEvent.setup();
-    // const onFilterChange = jest.fn();
-    // const input = quickRender({onFilterChange}).getByRole('textbox');
-
-    // expect(onFilterChange).not.toHaveBeenCalled();
-    // await user.type(input, 'a');
-    // expect(onFilterChange).toHaveBeenCalledTimes(1);
-    // expect(input).toHaveValue('a');
     const user = userEvent.setup(),
         onFilterChange = jest.fn().mockImplementation((_, evt) => { evt.persist(); }),
         input = quickRender({ onFilterChange }).getByRole('textbox');
@@ -137,6 +116,89 @@ describe('NxTransferListHalf', function() {
 
     expect(onMoveAll).toHaveBeenCalledWith(['1', '2', '3', '4', '5', '6']);
   });
+
+  it('sets the .nx-transfer-list__move-all text to "Transfer All" when isSelected is false, otherwise "Remove All"',
+      function() {
+        expect(quickRender({ showMoveAll: true, isSelected: true })
+            .queryAllByRole('button')[1]).toHaveTextContent('Remove All');
+        expect(quickRender({ showMoveAll: true, isSelected: undefined })
+            .queryAllByRole('button')[1]).toHaveTextContent('Remove All');
+        expect(quickRender({ showMoveAll: true, isSelected: null })
+            .queryAllByRole('button')[1]).toHaveTextContent('Remove All');
+        expect(quickRender({ showMoveAll: true, isSelected: false })
+            .queryAllByRole('button')[1]).toHaveTextContent('Transfer All');
+      });
+
+  it('renders items into the .nx-transfer-list__item-list', function() {
+    const dataItems = [{
+      id: '1',
+      displayName: 'foo'
+    }, {
+      id: '2',
+      displayName: 'baz'
+    }];
+
+    const {container} = quickRender({items: dataItems}),
+        itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
+        items = itemList.querySelectorAll('.nx-transfer-list__item');
+
+    expect(items.length).toBe(2);
+    expect(items[0]).toBeInTheDocument();
+    expect(items[0]).toHaveTextContent('foo');
+    expect(items[1]).toBeInTheDocument();
+    expect(items[1]).toHaveTextContent('baz');
+  });
+
+  it('renders a move icon and checkbox input when onItemChange is provided', function() {
+    const onItemChange = jest.fn(),
+        {container} = quickRender({items: [{id: '1', displayName: 'foo'}], onItemChange}),
+        dataItem = container.querySelector('.nx-transfer-list__item') as HTMLElement,
+        icon = within(dataItem).getByRole('img', {hidden: true}),
+        checkbox = within(dataItem).getByRole('checkbox');
+
+    expect(dataItem).toBeInTheDocument();
+    expect(icon).toBeInTheDocument();
+    expect(checkbox).toBeInTheDocument();
+  });
+
+  it('sets the item checked prop to isSelected', function() {
+    const onItemChange = jest.fn(),
+        withSelected = quickRender({ items: [{ id: '1', displayName: 'foo' }], isSelected: true, onItemChange }),
+        withSelectedNull = quickRender({ items: [{ id: '1', displayName: 'foo' }], isSelected: null, onItemChange }),
+        withSelectedFalse = quickRender({ items: [{ id: '1', displayName: 'foo' }], isSelected: false, onItemChange });
+
+    expect(withSelected.getByRole('checkbox')).toBeChecked();
+    expect(withSelectedNull.getByRole('checkbox')).toBeChecked();
+    expect(withSelectedFalse.getByRole('checkbox')).not.toBeChecked();
+  });
+
+  it('calls onItemChange when an item checkbox is toggled, passing the new boolean state and the item id',
+      async function() {
+        const dataItems = [{
+          id: '1',
+          displayName: 'foo'
+        }, {
+          id: '3',
+          displayName: 'baz'
+        }];
+
+        const user = userEvent.setup(),
+            onItemChangeSelected = jest.fn(),
+            onItemChangeUnselected = jest.fn(),
+            selectedEl = quickRender({ items: dataItems, onItemChange: onItemChangeSelected }),
+            unselectedEl = quickRender({ items: dataItems, onItemChange: onItemChangeUnselected, isSelected: false }),
+            selectedItem = selectedEl.getAllByRole('checkbox'),
+            unselectedItem = unselectedEl.getAllByRole('checkbox');
+
+        expect(onItemChangeSelected).not.toHaveBeenCalled();
+        expect(onItemChangeUnselected).not.toHaveBeenCalled();
+
+        await act(async () => { await user.click(selectedItem[0]); });
+        expect(onItemChangeSelected).toHaveBeenCalledWith(false, '1');
+
+        await user.click(unselectedItem[1]);
+        expect(onItemChangeUnselected).toHaveBeenCalledWith(true, '3');
+      });
 });
 
 // describe('NxTransferListHalf', function() {
