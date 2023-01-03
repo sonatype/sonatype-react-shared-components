@@ -18,7 +18,7 @@ describe('NxStatefulAccordion', function() {
   const quickRender = rtlRender(NxStatefulAccordion, {});
   const renderEl = rtlRenderElement(NxStatefulAccordion, {});
 
-  it('renders an NxAccordion with the specified props', function() {
+  it('renders a <details> with the specified props', function() {
     const onToggle = jest.fn(),
         component = renderEl({ onToggle, className: 'foo', id: 'bar' });
 
@@ -108,7 +108,8 @@ describe('NxStatefulAccordion', function() {
       it('toggles the accordion open prop when the header is clicked', async function() {
         const user = userEvent.setup(),
             onToggle = jest.fn(),
-            el = quickRender({ onToggle,
+            el = quickRender({
+              onToggle,
               children: (
                 <NxAccordion.Header>
                   <NxAccordion.Title>Foo</NxAccordion.Title>
@@ -156,7 +157,7 @@ describe('NxStatefulAccordion', function() {
     });
 
     describe('when a non-button element in the header with its own onClick handler is clicked', function() {
-      it('fires', async function() {
+      it('changes the open state and fires onToggle', async function() {
         const user = userEvent.setup();
         const titleOnClick = jest.fn(),
             onToggle = jest.fn();
@@ -181,7 +182,7 @@ describe('NxStatefulAccordion', function() {
     });
 
     describe('when a button element in the header is clicked', function() {
-      it('does not fire', async function() {
+      it('does not change the open state or fire onToggle', async function() {
         const user = userEvent.setup();
         const btnOnClick = jest.fn(),
             onToggle = jest.fn();
