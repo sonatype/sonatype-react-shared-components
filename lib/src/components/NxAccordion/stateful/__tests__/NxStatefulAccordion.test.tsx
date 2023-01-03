@@ -18,7 +18,7 @@ describe('NxStatefulAccordion', function() {
   const quickRender = rtlRender(NxStatefulAccordion, {});
   const renderEl = rtlRenderElement(NxStatefulAccordion, {});
 
-  it('renders an NxAccordion with the specified props', function() {
+  it('renders a <details> with the specified props', function() {
     const onToggle = jest.fn(),
         component = renderEl({ onToggle, className: 'foo', id: 'bar' });
 
