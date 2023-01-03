@@ -181,7 +181,7 @@ describe('NxStatefulAccordion', function() {
     });
 
     describe('when a button element in the header is clicked', function() {
-      it('does not fire', async function() {
+      it('does not change the open state or fire onToggle', async function() {
         const user = userEvent.setup();
         const btnOnClick = jest.fn(),
             onToggle = jest.fn();
