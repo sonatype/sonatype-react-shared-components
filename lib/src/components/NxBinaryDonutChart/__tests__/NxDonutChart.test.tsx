@@ -151,8 +151,19 @@ describe('NxBinaryDonutChart', function() {
       expect(withZeroInnerRadiusAnd100Percent.find('.nx-binary-donut-chart__arc')).toHaveProp('strokeWidth', 14);
       expect(with100InnerRadiusAnd100Percent.find('.nx-binary-donut-chart__arc')).toHaveProp('r', 14);
       expect(with100InnerRadiusAnd100Percent.find('.nx-binary-donut-chart__arc')).toHaveProp('strokeWidth', 0);
-    });
 
+      // Check that the background path is constructed correctly when innerBorderRadius is zero (RSC-1329)
+      expect(withZeroInnerRadius.find('.nx-binary-donut-chart__background')).toHaveProp('d', `M 0 -14.5
+                      a 14.5 14.5 0 1 1 0 29
+                      a 14.5 14.5 0 1 1 0 -29
+                    `);
+      expect(with100InnerRadius.find('.nx-binary-donut-chart__background')).toHaveProp('d', `M 0 -14.5
+                      a 14.5 14.5 0 1 1 0 29
+                      a 14.5 14.5 0 1 1 0 -29
+                    M 0 -13.5
+                        a 13.5 13.5 0 1 1 0 27
+                        a 13.5 13.5 0 1 1 0 -27`);
+    });
     it('clamps the innerRadiusPercent between zero and 100', function() {
       const withNegativeInnerRadius = getShallowComponent({ innerRadiusPercent: -50, value: 50 }),
           withExcessInnerRadius = getShallowComponent({ innerRadiusPercent: 150, value: 50 }),
