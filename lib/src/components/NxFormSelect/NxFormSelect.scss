@@ -55,6 +55,7 @@
     font-size: 24px; // gets the <path> element to a height a roughly 8px as specced
     margin: $vertical-spacing 0;
     position: absolute;
+    pointer-events: none;
     right: $caret-right-spacing;
   }
 
