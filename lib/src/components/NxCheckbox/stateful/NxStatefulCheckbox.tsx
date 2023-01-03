@@ -7,9 +7,9 @@
 import React, { forwardRef } from 'react';
 
 import NxCheckbox from '../NxCheckbox';
-import { Props, propTypes } from './types';
+import { StatefulProps as Props, statefulPropTypes as propTypes } from '../types';
 import useToggle from '../../../util/useToggle';
-export { Props } from './types';
+export { Props };
 
 /**
  * A stateful component for rendering a checkbox with a label

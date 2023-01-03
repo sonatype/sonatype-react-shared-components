@@ -7,6 +7,7 @@
 import * as PropTypes from 'prop-types';
 import { ValidationMap, HTMLAttributes, AnchorHTMLAttributes, Validator, ReactNode } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import RequiredReactNode from '../../util/RequiredReactNode';
 
 export interface Props {
   isOpen: boolean;
@@ -43,14 +44,14 @@ export const nxGlobalSidebarNavigationPropTypes = {
 export interface NxGlobalSidebarNavigationLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   isSelected?: boolean | null;
   icon: IconDefinition;
-  text: string;
+  text: RequiredReactNode;
   href: string;
 }
 
 export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSidebarNavigationLinkProps> = {
   isSelected: PropTypes.bool,
   icon: PropTypes.object.isRequired as Validator<IconDefinition>,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired
 };
 
