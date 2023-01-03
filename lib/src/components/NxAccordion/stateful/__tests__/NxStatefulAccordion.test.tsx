@@ -157,7 +157,7 @@ describe('NxStatefulAccordion', function() {
     });
 
     describe('when a non-button element in the header with its own onClick handler is clicked', function() {
-      it('fires', async function() {
+      it('changes the open state and fires onToggle', async function() {
         const user = userEvent.setup();
         const titleOnClick = jest.fn(),
             onToggle = jest.fn();
