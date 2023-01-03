@@ -71,10 +71,10 @@
 
 .nx-alert--warning {
   background-color: var(--nx-swatch-orange-97);
-  border-color: var(--nx-color-alert-warning);
+  border-color: var(--nx-swatch-orange-40);
 
   > .nx-icon {
-    color: var(--nx-color-alert-warning-icon);
+    color: var(--nx-color-alert-warning);
   }
 }
 
