@@ -20,7 +20,7 @@ describe('NxStatefulAccordion', function() {
 
   it('renders a <details> with the specified props', function() {
     const onToggle = jest.fn(),
-        component = renderEl({ onToggle, className: 'foo', id: 'bar' });
+        component = renderEl({ onToggle, id: 'bar' });
 
     expect(component!.tagName).toBe('DETAILS');
     expect(component).toHaveAttribute('id', 'bar');
