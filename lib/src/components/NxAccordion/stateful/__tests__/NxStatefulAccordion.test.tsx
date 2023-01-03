@@ -108,7 +108,8 @@ describe('NxStatefulAccordion', function() {
       it('toggles the accordion open prop when the header is clicked', async function() {
         const user = userEvent.setup(),
             onToggle = jest.fn(),
-            el = quickRender({ onToggle,
+            el = quickRender({
+              onToggle,
               children: (
                 <NxAccordion.Header>
                   <NxAccordion.Title>Foo</NxAccordion.Title>
