@@ -10,21 +10,21 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import NxTooltip from '../NxTooltip/NxTooltip';
 import { useUniqueId } from '../../util/idUtil';
-import { Props, NxCollapsibleItemsChildProps, propTypes, childPropTypes } from './types';
+import { Props, PublicProps, NxCollapsibleItemsChildProps, propTypes, childPropTypes } from './types';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
-export { Props, NxCollapsibleItemsChildProps } from './types';
+export { Props, PublicProps, NxCollapsibleItemsChildProps } from './types';
 
 import './NxCollapsibleItems.scss';
 import { ensureStartEndElements } from '../../util/reactUtil';
 
 type NxCollapsibleItemsFC =
-  FC<Props> &
+  FC<PublicProps> &
   {
     Child: React.ForwardRefExoticComponent<NxCollapsibleItemsChildProps & React.RefAttributes<Element>>
   };
 
-const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(props: Props) {
+function PrivateNxCollapsibleItems(props: Props) {
   const {
     onToggleCollapse,
     isOpen,
@@ -35,6 +35,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
     actionContent,
     className,
     role,
+    contentBeforeChildren,
     ...otherProps
   } = props;
 
@@ -63,10 +64,7 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
       ),
       triggerTooltipProps = typeof triggerTooltip === 'string' ? { title: triggerTooltip } : triggerTooltip;
 
-  // There is a bug in role-supports-aria-props that it restricts aria-disabled even though it shouldn't.
-  // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/805
   return (
-    /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
     <div className={treeViewClasses}
          role="group"
          { ...otherProps }>
@@ -87,14 +85,13 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = function NxCollapsibleItems(pro
         </div>
         )}
       </div>
+      {contentBeforeChildren}
       <div className="nx-collapsible-items__children" role={treeViewChildrenRole} id={treeViewChildrenId}>
         {children}
       </div>
     </div>
   );
-};
-
-NxCollapsibleItems.propTypes = propTypes;
+}
 
 /**
  * All individual treeview children should be wrapped in this component. When the child is an element,
@@ -122,10 +119,13 @@ const NxCollapsibleItemsChild = forwardRef<Element, NxCollapsibleItemsChildProps
     }
 );
 
-NxCollapsibleItemsChild.propTypes = childPropTypes;
+const NxCollapsibleItems: NxCollapsibleItemsFC = Object.assign(PrivateNxCollapsibleItems, {
+  Child: NxCollapsibleItemsChild,
+  propTypes: propTypes
+});
 
-NxCollapsibleItems.Child = NxCollapsibleItemsChild;
+NxCollapsibleItemsChild.propTypes = childPropTypes;
 
 export default NxCollapsibleItems;
 
-export { NxCollapsibleItemsChild };
+export { NxCollapsibleItemsChild, PrivateNxCollapsibleItems };
