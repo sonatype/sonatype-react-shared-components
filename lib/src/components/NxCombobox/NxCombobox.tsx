@@ -147,7 +147,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
   // A function that listens for when a selection is made, therefore passing both the displayName and DataItem to the
   // onChange function, and closing the dropdown menu. This function should only be used when a selection is made,
   // either by direct selection or when autocomplete triggers a selection from the input losing focus.
-  function handleSelection(displayName: string, dataItem:DataItemType<T>) {
+  function handleSelection(displayName: string, dataItem: DataItemType<T>) {
     onChange(displayName, dataItem);
     setHiddenBySelection(true);
   }
