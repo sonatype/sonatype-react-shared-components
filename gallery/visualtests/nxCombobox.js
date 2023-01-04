@@ -375,6 +375,8 @@ describe('NxCombobox', function() {
           [input] = await waitAndGetElements(inputSelector);
 
       await input.focus();
+      // confirm dropdown is not open prior to user typing a value
+      expect(await getPage().$(dropdownMenuSelector)).toBe(null);
       await getPage().keyboard.type('i');
 
       const [dropdownMenu] = await waitAndGetElements(dropdownMenuSelector);
