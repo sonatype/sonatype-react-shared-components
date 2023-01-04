@@ -5,16 +5,17 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 // import { faArrowDown, faArrowUp, faEdit, faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-// import { includes } from 'ramda';
+import { includes } from 'ramda';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import { within, act } from '@testing-library/react';
+import { within, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 // import NxTooltip from '../../NxTooltip/NxTooltip';
 // import NxFieldset from '../../NxFieldset/NxFieldset';
 // import NxFilterInput from '../../NxFilterInput/NxFilterInput';
-// import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import NxTransferListHalf, { Props } from '../NxTransferListHalf';
 
@@ -178,27 +179,200 @@ describe('NxTransferListHalf', function() {
           id: '1',
           displayName: 'foo'
         }, {
-          id: '3',
+          id: '2',
           displayName: 'baz'
         }];
 
         const user = userEvent.setup(),
-            onItemChangeSelected = jest.fn(),
-            onItemChangeUnselected = jest.fn(),
-            selectedEl = quickRender({ items: dataItems, onItemChange: onItemChangeSelected }),
-            unselectedEl = quickRender({ items: dataItems, onItemChange: onItemChangeUnselected, isSelected: false }),
-            selectedItem = selectedEl.getAllByRole('checkbox'),
-            unselectedItem = unselectedEl.getAllByRole('checkbox');
+            onItemChange = jest.fn(),
+            { rerender, getAllByRole } = render(
+              <div>
+                <NxTransferListHalf {...minimalProps} items={dataItems} onItemChange= {onItemChange}/>
+              </div>
+            ),
+            selectedItem = getAllByRole('checkbox');
+        expect(onItemChange).not.toHaveBeenCalled();
 
-        expect(onItemChangeSelected).not.toHaveBeenCalled();
-        expect(onItemChangeUnselected).not.toHaveBeenCalled();
+        await user.click(selectedItem[0]);
+        expect(onItemChange).toHaveBeenCalledWith(false, '1');
 
-        await act(async () => { await user.click(selectedItem[0]); });
-        expect(onItemChangeSelected).toHaveBeenCalledWith(false, '1');
+        rerender(
+          <div>
+            <NxTransferListHalf {...minimalProps} items={dataItems} onItemChange= {onItemChange} isSelected= {false}/>
+          </div>
+        );
 
-        await user.click(unselectedItem[1]);
-        expect(onItemChangeUnselected).toHaveBeenCalledWith(true, '3');
+        await user.click(selectedItem[1]);
+        expect(onItemChange).toHaveBeenCalledWith(true, '2');
       });
+
+//   it('contains an .nx-transfer-list__footer with the specified footerContent', function() {
+//     const component = getShallow({ footerContent: <div id="foo" /> }),
+//         footer = component.find('.nx-transfer-list__footer');
+
+//     expect(footer).toExist();
+//     expect(footer.children()).toMatchSelector('div#foo');
+//   });
+
+  describe('filtering', function() {
+    const items = [{
+      id: '1',
+      displayName: 'foo'
+    }, {
+      id: '2',
+      displayName: 'Foo'
+    }, {
+      id: '3',
+      displayName: 'bar'
+    }, {
+      id: '4',
+      displayName: <><NxFontAwesomeIcon icon={faEdit} />foo</>
+    }, {
+      id: '5',
+      displayName: <><NxFontAwesomeIcon icon={faEdit} />Foo</>
+    }, {
+      id: '6',
+      displayName: <><NxFontAwesomeIcon icon={faEdit} />bar</>
+    }];
+
+    const getComponent = (moreProps: Partial<Props<string>>) => renderEl({items, ...moreProps})!;
+
+    it('renders only items which contain the filterValue case-insensitively', function() {
+      const component = getComponent({ filterValue: 'fo' }),
+          items = component.querySelectorAll('.nx-transfer-list__item');
+
+      expect(items.length).toBe(4);
+      expect(items[0]).toHaveTextContent('foo');
+      expect(items[1]).toHaveTextContent('Foo');
+      expect(items[2]).toHaveTextContent('foo');
+      expect(items[3]).toHaveTextContent('Foo');
+    });
+
+    it('renders only items that match the filterValue according to the filterFn when specified', function() {
+      const component = getComponent({
+            filterValue: 'fo',
+            filterFn: includes // case sensitive inclusion
+          }),
+          items = component.querySelectorAll('.nx-transfer-list__item');
+
+      expect(items.length).toBe(2);
+      expect(items[0]).toHaveTextContent('foo');
+      expect(items[1]).toHaveTextContent('foo');
+    });
+
+    it('passes onMoveAll a set containing ids of visible items if filterValue is set', async function() {
+      const user = userEvent.setup(),
+          onMoveAll = jest.fn(),
+          { getByRole } = quickRender({ items: items, filterValue: 'fo', onMoveAll, showMoveAll: true });
+
+      expect(onMoveAll).not.toHaveBeenCalled();
+
+      const button = getByRole('button', {name: /remove all/i});
+      await user.click(button);
+
+      expect(onMoveAll).toHaveBeenCalledWith(['1', '2', '4', '5']);
+    });
+  });
+
+  describe('reordering', function() {
+    it('renders move up and down buttons inside .nx-transfer-list__item in the correct state', async function() {
+      const dataItems = [{
+        id: '1',
+        displayName: 'top'
+      }, {
+        id: '2',
+        displayName: 'bottom'
+      }];
+
+      const component = renderEl({allowReordering: true, items: dataItems})!,
+          topItem = component.querySelectorAll('.nx-transfer-list__item')[0] as HTMLElement,
+          topButtons = within(topItem).getAllByRole('button', {hidden: true}),
+          bottomItem = component.querySelectorAll('.nx-transfer-list__item')[1] as HTMLElement,
+          bottomButtons = within(bottomItem).getAllByRole('button', {hidden: true});
+
+      // assert there are two buttons present in each item
+      expect(topButtons.length).toBe(2);
+      expect(bottomButtons.length).toBe(2);
+
+      //HOW TO QUERY FOR TITLES HERE? NEED TOOLTIP
+      // tooltips initialize asynchronously
+      // await waitFor(() => expect(topButtons[0]).toHaveAccessibleDescription('Move Up (Disabled)'));
+
+      // assert the topmost item's moveUp button and bottommost item's moveDown button are disabled
+      expect(topButtons[0]).toHaveAttribute('aria-disabled', 'true');
+      expect(topButtons[1]).not.toHaveAttribute('aria-disabled', 'true');
+      expect(bottomButtons[0]).not.toHaveAttribute('aria-disabled', 'true');
+      expect(bottomButtons[1]).toHaveAttribute('aria-disabled', 'true');
+    });
+
+    it('passes onReorderItem with id and direction when move up or down button is clicked', async function() {
+      const dataItems = [{
+        id: '1',
+        displayName: 'a'
+      }, {
+        id: '2',
+        displayName: 'b'
+      }, {
+        id: '3',
+        displayName: 'c'
+      }];
+
+      const user = userEvent.setup(),
+          onReorderItem = jest.fn(),
+          component = renderEl({allowReordering: true, items: dataItems, onReorderItem})!,
+          topItem = component.querySelectorAll('.nx-transfer-list__item')[0] as HTMLElement,
+          bottomItem = component.querySelectorAll('.nx-transfer-list__item')[2] as HTMLElement,
+          moveDownButton = within(topItem).getAllByRole('button', {hidden: true})[1],
+          moveUpButton = within(bottomItem).getAllByRole('button', {hidden: true})[0];
+
+      expect(onReorderItem).not.toHaveBeenCalled();
+
+      await user.click(moveDownButton);
+      expect(onReorderItem).toHaveBeenCalledWith('1', 1);
+
+      await user.click(moveUpButton);
+      expect(onReorderItem).toHaveBeenCalledWith('3', -1);
+    });
+
+    it('sets move up and down buttons to disabled state when items are filtered', async function() {
+      const dataItems = [{
+        id: '1',
+        displayName: 'foo'
+      }, {
+        id: '2',
+        displayName: 'bar'
+      }, {
+        id: '3',
+        displayName: 'foobar'
+      }];
+
+      const user = userEvent.setup(),
+          onReorderItem = jest.fn(),
+          component = renderEl({items: dataItems, filterValue: 'fo', allowReordering: true, onReorderItem})!,
+          items = component.querySelectorAll('.nx-transfer-list__item');
+
+      // confirm filtering
+      expect(items.length).toBe(2);
+      expect(items[0]).toHaveTextContent('foo');
+      expect(items[1]).toHaveTextContent('foobar');
+
+      const topItem = items[0] as HTMLElement,
+          bottomItem = items[1] as HTMLElement,
+          topItemButtons = within(topItem).getAllByRole('button', {hidden: true}),
+          bottomItemButtons = within(bottomItem).getAllByRole('button', {hidden: true});
+
+      expect(onReorderItem).not.toHaveBeenCalled();
+      expect(topItemButtons[0]).toHaveAttribute('aria-disabled', 'true');
+      expect(topItemButtons[1]).toHaveAttribute('aria-disabled', 'true');
+      expect(bottomItemButtons[0]).toHaveAttribute('aria-disabled', 'true');
+      expect(bottomItemButtons[1]).toHaveAttribute('aria-disabled', 'true');
+
+      await user.click(topItemButtons[1]);
+      expect(onReorderItem).not.toHaveBeenCalled();
+      await user.click(topItemButtons[0]);
+      expect(onReorderItem).not.toHaveBeenCalled();
+    });
+  });
 });
 
 // describe('NxTransferListHalf', function() {
