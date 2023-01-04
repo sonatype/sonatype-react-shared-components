@@ -103,9 +103,9 @@ describe('NxStatefulAccordion', function() {
     });
   });
 
-  describe('onToggle', function() {
+  describe('accordion header click', function() {
     describe('when the accordion is currently closed', function() {
-      it('toggles the accordion open prop when the header is clicked', async function() {
+      it('calls onToggle', async function() {
         const user = userEvent.setup(),
             onToggle = jest.fn(),
             el = quickRender({
@@ -115,25 +115,41 @@ describe('NxStatefulAccordion', function() {
                   <NxAccordion.Title>Foo</NxAccordion.Title>
                 </NxAccordion.Header>
               )});
-
         const header = el.getByRole('button')!;
-
         expect(onToggle).not.toHaveBeenCalled();
-        expect(el.getByRole('group')).not.toHaveAttribute('open');
 
         await user.click(header);
 
         expect(onToggle).toHaveBeenCalled();
+      });
+
+      it('toggles the accordion open prop', async function() {
+        const user = userEvent.setup(),
+            onToggle = jest.fn(),
+            el = quickRender({
+              onToggle,
+              children: (
+                <NxAccordion.Header>
+                  <NxAccordion.Title>Foo</NxAccordion.Title>
+                </NxAccordion.Header>
+              )});
+        const header = el.getByRole('button')!;
+        expect(el.getByRole('group')).not.toHaveAttribute('open');
+
+        await user.click(header);
+
         expect(el.getByRole('group')).toHaveAttribute('open');
       });
     });
 
     describe('when the accordion is currently open', function() {
-      it('fires with false', async function() {
+      it('onToggle is called', async function() {
         const user = userEvent.setup();
         const onToggle = jest.fn();
 
-        const { container } = quickRender({ onToggle,
+        const { container } = quickRender({
+          onToggle,
+          defaultOpen: true,
           children: (
             <NxAccordion.Header>
               <span>Foo</span>
@@ -147,12 +163,32 @@ describe('NxStatefulAccordion', function() {
         await user.click(header);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
-        expect(onToggle).toHaveBeenCalledWith(true);
 
-        // click the accordion outside of the header
         await user.click(container);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
+      });
+
+      it('toggles the accordion open prop', async function() {
+        const user = userEvent.setup();
+        const onToggle = jest.fn();
+
+        const el = quickRender({
+          onToggle,
+          defaultOpen: true,
+          children: (
+            <NxAccordion.Header>
+              <span>Foo</span>
+            </NxAccordion.Header>
+          )});
+
+        const header = el.getByRole('button')!;
+
+        expect(el.getByRole('group')).toHaveAttribute('open');
+
+        await user.click(header);
+
+        expect(el.getByRole('group')).not.toHaveAttribute('open');
       });
     });
 
