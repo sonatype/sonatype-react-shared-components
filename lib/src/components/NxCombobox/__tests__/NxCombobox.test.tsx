@@ -83,7 +83,7 @@ describe('NxCombobox', function() {
         expect(inputElement).toHaveValue('Foo');
       });
 
-  it('sets aria-expanded to true on the input when initially focused', async function() {
+  it('sets aria-expanded to true on the input when initially focused and there are matches', async function() {
     const { getByRole } = quickRender({ matches: [{ id: '1', displayName: 'Foo' }] }),
         inputElement = getByRole('combobox');
 
@@ -94,6 +94,25 @@ describe('NxCombobox', function() {
     expect(inputElement).toHaveAttribute('aria-expanded', 'true');
 
   // visibility of dropdown when focused is tested in visual tests
+  });
+
+  it('set aria-expanded to false on the input if there are no matches, even if focused', async function() {
+    const { rerender, getByRole } = quickRender(),
+        inputElement = getByRole('combobox');
+
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+
+    inputElement.focus();
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+
+    rerender(<NxCombobox {...minimalProps} value= {'foo'}/>);
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+
+    rerender(<NxCombobox {...minimalProps} loading={true}/>);
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
+
+    rerender(<NxCombobox { ...minimalProps } loadError={'boo'} />);
+    expect(inputElement).toHaveAttribute('aria-expanded', 'false');
   });
 
   it('sets aria-expanded to false when input loses focus without selection', async function() {
