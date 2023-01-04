@@ -18,6 +18,5 @@ describe('NxCollapsibleRadioSelect', function() {
     it('has an offsetted blue outer border outline and glow when focused', focusTest(selector, radioSelector));
   });
 
-  // TODO: Fix aria-required-children in RSC-1328
-  it('passes a11y checks', a11yTest(builder => builder.disableRules('aria-required-children')));
+  it('passes a11y checks', a11yTest());
 });
