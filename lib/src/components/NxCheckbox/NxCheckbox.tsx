@@ -67,11 +67,11 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
                  { ...otherInputAttributes } />
           <span className="nx-radio-checkbox__control nx-checkbox__box">
             { isChecked ?
-                // The undefined aria attrs are to work around an issue with the axe a11y checker in
-                // NxCollapsibleMultiSelect
-                <FontAwesomeIcon role={undefined} aria-hidden={undefined} icon={faCheck} /> :
-                // Put a space in the box if not checked, in order to provide a consistent vertical-align baseline
-                '\u00A0'
+              // The undefined aria attrs are to work around an issue with the axe a11y checker in
+              // NxCollapsibleMultiSelect
+              <FontAwesomeIcon role={undefined} aria-hidden={undefined} icon={faCheck} /> :
+              // Put a space in the box if not checked, in order to provide a consistent vertical-align baseline
+              '\u00A0'
             }
           </span>
           { content &&
