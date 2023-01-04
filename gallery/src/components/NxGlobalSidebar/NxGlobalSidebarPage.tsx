@@ -198,9 +198,11 @@ export default function NxGlobalSidebarPage() {
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>text</NxTable.Cell>
-                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>ReactNode</NxTable.Cell>
                 <NxTable.Cell>Yes</NxTable.Cell>
-                <NxTable.Cell>The text that should appear in the navigation link</NxTable.Cell>
+                <NxTable.Cell>
+                  The text/content that should appear in the navigation link. May be a string or JSX.
+                </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>href</NxTable.Cell>
