@@ -20,7 +20,7 @@ $-active-color: var(--nx-swatch-indigo-70);
 $-selected-color: var(--nx-swatch-indigo-30);
 $-hover-color: var(--nx-swatch-indigo-50);
 
-$-focus-border: 1px solid var(--nx-color-interactive-border-focus);
+$-button-border-width: 2px;
 
 $-separator-color: var(--nx-swatch-indigo-40);
 
@@ -62,10 +62,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
   margin: 0;
 
   &:focus {
-    border-width: 2px;
+    border-width: $-button-border-width;
     border-color: var(--nx-color-interactive-border-focus);
-    padding-top: calc(var(--nx-spacing-base) - 2px);
-    padding-bottom: calc(var(--nx-spacing-base) - 2px);
+    padding-top: calc(var(--nx-spacing-base) - #{$-button-border-width});
+    padding-bottom: calc(var(--nx-spacing-base) - #{$-button-border-width});
   }
 
   &:active {
@@ -97,14 +97,14 @@ $-separator-color: var(--nx-swatch-indigo-40);
   @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
 
-  border: 2px solid transparent;
+  border: $-button-border-width solid transparent;
   display: block;
-  padding: calc(var(--nx-spacing-base) - 1px)
-           calc(#{$-left-right-spacing} - 1px)
-           calc(var(--nx-spacing-base) - 1px)
+  padding: calc(var(--nx-spacing-base) - #{$-button-border-width})
+           calc(#{$-left-right-spacing} - #{$-button-border-width})
+           calc(var(--nx-spacing-base) - #{$-button-border-width})
            // We need to add an extra pixel to the left to properly centre
            // the icons when the sidebar is collapsed
-           $-left-right-spacing;
+           calc(#{$-left-right-spacing} - #{$-button-border-width} + 1px);
   text-decoration: none;
 
   .nx-icon {
