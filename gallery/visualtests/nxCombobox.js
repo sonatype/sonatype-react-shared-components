@@ -368,7 +368,7 @@ describe('NxCombobox', function() {
     });
   });
 
-  describe('dropdown display behavior with backend query', function() {
+  describe('dropdown display behavior with initially unpopulated list', function() {
     it('shows the dropdown when focused and the user has typed a value', async function() {
       const inputSelector = `${backendExampleSelector} .nx-combobox__input input`,
           dropdownMenuSelector = `${backendExampleSelector} .nx-dropdown-menu`,
