@@ -26,6 +26,18 @@ describe('NxTransferListHalf', function() {
       quickRender = rtlRender(NxTransferListHalf, minimalProps),
       renderEl = rtlRenderElement(NxTransferListHalf, minimalProps);
 
+  beforeEach(function() {
+    // JSDOM is missing this function. https://github.com/jsdom/jsdom/issues/3002
+    Range.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+      bottom: 0,
+      height: 0,
+      left: 0,
+      right: 0,
+      top: 0,
+      width: 0
+    } as DOMRect);
+  });
+
   it('renders a fieldset as top-level element', function() {
     const el = renderEl()!;
     expect(el.tagName).toBe('FIELDSET');
@@ -320,7 +332,7 @@ describe('NxTransferListHalf', function() {
     });
 
     it('sets aria-disabled to true on the top item\'s move up button, and the bottom item\'s move down button',
-        async function() {
+        function() {
           const dataItems = [{
             id: '1',
             displayName: 'top'
@@ -330,8 +342,6 @@ describe('NxTransferListHalf', function() {
           }];
 
           const component = renderEl({ allowReordering: true, items: dataItems })!;
-
-          await runTimers();
 
           const topItem = component.querySelectorAll<HTMLElement>('.nx-transfer-list__item')[0],
               topButtons = within(topItem).getAllByRole('button', { hidden: true }),
