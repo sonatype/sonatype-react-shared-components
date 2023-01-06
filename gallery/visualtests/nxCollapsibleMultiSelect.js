@@ -21,7 +21,7 @@ describe('NxCollapsibleMultiSelect', function() {
   });
 
   describe('NxCollapsibleMultiSelect checkbox', function() {
-    const checkboxSelector = selector + ' .nx-collapsible-items__child:nth-child(2) .nx-radio-checkbox__input';
+    const checkboxSelector = selector + ' .nx-collapsible-items__child:first-child .nx-radio-checkbox__input';
     it('has an offsetted blue outer border outline and glow when focused', focusTest(selector, checkboxSelector));
   });
 
