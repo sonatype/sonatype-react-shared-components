@@ -9,7 +9,7 @@ import { includes } from 'ramda';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import { within, render, act } from '@testing-library/react';
+import { within, render, act, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -234,7 +234,7 @@ describe('NxTransferListHalf', function() {
   });
 
   describe('filtering', function() {
-    const items = [{
+    const dataItems = [{
       id: '1',
       displayName: 'foo'
     }, {
@@ -254,7 +254,7 @@ describe('NxTransferListHalf', function() {
       displayName: <><NxFontAwesomeIcon icon={faEdit} />bar</>
     }];
 
-    const getComponent = (moreProps: Partial<Props<string>>) => renderEl({items, ...moreProps})!;
+    const getComponent = (moreProps: Partial<Props<string>>) => renderEl({items: dataItems, ...moreProps})!;
 
     it('renders only items which contain the filterValue case-insensitively', function() {
       const component = getComponent({ filterValue: 'fo' }),
@@ -282,7 +282,7 @@ describe('NxTransferListHalf', function() {
     it('passes onMoveAll a set containing ids of visible items if filterValue is set', async function() {
       const user = userEvent.setup(),
           onMoveAll = jest.fn(),
-          { getByRole } = quickRender({ items: items, filterValue: 'fo', onMoveAll, showMoveAll: true });
+          { getByRole } = quickRender({ items: dataItems, filterValue: 'fo', onMoveAll, showMoveAll: true });
 
       expect(onMoveAll).not.toHaveBeenCalled();
 
@@ -309,36 +309,52 @@ describe('NxTransferListHalf', function() {
       await act(async () => { await jest.advanceTimersByTime(time); });
     }
 
-    it('renders move up and down buttons inside .nx-transfer-list__item when allowReordering is true', function() {
-      const { container, rerender } = quickRender({ allowReordering: true, items: [{id: '1', displayName: 'foo'}]}),
-          item = container.querySelector('.nx-transfer-list__item') as HTMLElement,
-          buttons = within(item).getAllByRole('button', { hidden: true });
+    it('renders move up and down buttons inside .nx-transfer-list__item when allowReordering is true',
+        async function() {
+          jest.useRealTimers();
+          const dataItems = [{
+            id: '1',
+            displayName: 'foo'
+          }, {
+            id: '2',
+            displayName: 'bar'
+          }, {
+            id: '3',
+            displayName: 'foobar'
+          }];
 
-      expect(buttons.length).toBe(2);
+          const { container, rerender } = quickRender({ allowReordering: true, items: dataItems}),
+              middleItem = container.querySelectorAll<HTMLElement>('.nx-transfer-list__item')[1],
+              buttons = within(middleItem).getAllByRole('button', { hidden: true });
 
-      rerender(<NxTransferListHalf {...minimalProps} allowReordering={false} items={[{id: '1', displayName: 'foo'}]}/>);
-      expect(buttons[0]).not.toBeInTheDocument();
-      expect(buttons[1]).not.toBeInTheDocument();
+          // assert both a move up and move down button are present
+          expect(buttons.length).toBe(2);
+          await waitFor(() => expect(buttons[0]).toHaveAccessibleName('Move Up'));
+          await waitFor(() => expect(buttons[1]).toHaveAccessibleName('Move Down'));
 
-      rerender(<NxTransferListHalf {...minimalProps} allowReordering={null} items={[{id: '1', displayName: 'foo'}]}/>);
-      expect(buttons[0]).not.toBeInTheDocument();
-      expect(buttons[1]).not.toBeInTheDocument();
+          rerender(<NxTransferListHalf {...minimalProps} allowReordering={false} items={dataItems}/>);
+          expect(buttons[0]).not.toBeInTheDocument();
+          expect(buttons[1]).not.toBeInTheDocument();
 
-      rerender(
-        <NxTransferListHalf {...minimalProps} allowReordering={undefined} items={[{id: '1', displayName: 'foo'}]}/>
-      );
-      expect(buttons[0]).not.toBeInTheDocument();
-      expect(buttons[1]).not.toBeInTheDocument();
-    });
+          rerender(<NxTransferListHalf {...minimalProps} allowReordering={null} items={dataItems}/>);
+          expect(buttons[0]).not.toBeInTheDocument();
+          expect(buttons[1]).not.toBeInTheDocument();
+
+          rerender(
+            <NxTransferListHalf {...minimalProps} allowReordering={undefined} items={dataItems}/>
+          );
+          expect(buttons[0]).not.toBeInTheDocument();
+          expect(buttons[1]).not.toBeInTheDocument();
+        });
 
     it('sets aria-disabled to true on the top item\'s move up button, and the bottom item\'s move down button',
         function() {
           const dataItems = [{
             id: '1',
-            displayName: 'top'
+            displayName: 'foo'
           }, {
             id: '2',
-            displayName: 'bottom'
+            displayName: 'bar'
           }];
 
           const component = renderEl({ allowReordering: true, items: dataItems })!;
@@ -359,23 +375,66 @@ describe('NxTransferListHalf', function() {
           expect(bottomButtons[1]).toHaveAttribute('aria-disabled', 'true');
         });
 
+    it('sets the correct title on tooltip based on button\'s location and direction', async function() {
+      const dataItems = [{
+        id: '1',
+        displayName: 'foo'
+      }, {
+        id: '2',
+        displayName: 'bar'
+      }, {
+        id: '3',
+        displayName: 'foobar'
+      }];
+
+      const user = userEvent.setup({advanceTimers}),
+          onReorderItem = jest.fn(),
+          component = renderEl({items: dataItems, allowReordering: true, onReorderItem})!,
+          items = component.querySelectorAll<HTMLElement>('.nx-transfer-list__item'),
+          firstItemBtns = within(items[0]).getAllByRole('button', { hidden: true }),
+          lastItemBtns = within(items[2]).getAllByRole('button', { hidden: true });
+
+      // first item move up button
+      await user.hover(firstItemBtns[0]);
+      await runTimers();
+      let tooltip = await screen.findByRole('tooltip');
+      expect(tooltip).toBeInTheDocument();
+      expect(tooltip).toHaveTextContent('Move Up (disabled)');
+
+      // first item move down button
+      await user.hover(firstItemBtns[1]);
+      await runTimers();
+      tooltip = await screen.findByRole('tooltip');
+      expect(tooltip).toHaveTextContent('Move Down');
+
+      // last item move up button
+      await user.hover(lastItemBtns[0]);
+      await runTimers();
+      tooltip = await screen.findByRole('tooltip');
+      expect(tooltip).toHaveTextContent('Move Up');
+
+      // last item move down button
+      await user.hover(lastItemBtns[1]);
+      await runTimers();
+      tooltip = await screen.findByRole('tooltip');
+      expect(tooltip).toHaveTextContent('Move Down (disabled)');
+    });
+
     it('passes onReorderItem the item id and direction when move up or down button is clicked', async function() {
       const dataItems = [{
         id: '1',
-        displayName: 'a'
+        displayName: 'foo'
       }, {
         id: '2',
-        displayName: 'b'
+        displayName: 'bar'
       }, {
         id: '3',
-        displayName: 'c'
+        displayName: 'foobar'
       }];
 
       const user = userEvent.setup({advanceTimers}),
           onReorderItem = jest.fn(),
           component = renderEl({ allowReordering: true, items: dataItems, onReorderItem })!;
-
-      await runTimers();
 
       const topItem = component.querySelectorAll('.nx-transfer-list__item')[0] as HTMLElement,
           bottomItem = component.querySelectorAll('.nx-transfer-list__item')[2] as HTMLElement,
@@ -391,93 +450,91 @@ describe('NxTransferListHalf', function() {
       expect(onReorderItem).toHaveBeenCalledWith('3', -1);
     });
 
-    it('disables move up and down buttons when items are filtered', async function() {
-      const dataItems = [{
-        id: '1',
-        displayName: 'foo'
-      }, {
-        id: '2',
-        displayName: 'bar'
-      }, {
-        id: '3',
-        displayName: 'foobar'
-      }];
+    describe('when filtered', function() {
+      it('disables move up and down buttons', async function() {
+        const dataItems = [{
+          id: '1',
+          displayName: 'foo'
+        }, {
+          id: '2',
+          displayName: 'bar'
+        }, {
+          id: '3',
+          displayName: 'foobar'
+        }];
 
-      const user = userEvent.setup({advanceTimers}),
-          onReorderItem = jest.fn(),
-          component = renderEl({ items: dataItems, filterValue: 'fo', allowReordering: true, onReorderItem })!;
+        const user = userEvent.setup({advanceTimers}),
+            onReorderItem = jest.fn(),
+            component = renderEl({ items: dataItems, filterValue: 'fo', allowReordering: true, onReorderItem })!,
+            items = component.querySelectorAll<HTMLElement>('.nx-transfer-list__item');
 
-      await runTimers();
+        // confirm filtering
+        expect(items.length).toBe(2);
+        expect(items[0]).toHaveTextContent('foo');
+        expect(items[1]).toHaveTextContent('foobar');
 
-      // confirm filtering
-      const items = component.querySelectorAll<HTMLElement>('.nx-transfer-list__item');
-      expect(items.length).toBe(2);
-      expect(items[0]).toHaveTextContent('foo');
-      expect(items[1]).toHaveTextContent('foobar');
+        const topItem = items[0],
+            bottomItem = items[1],
+            topItemButtons = within(topItem).getAllByRole('button', { hidden: true }),
+            bottomItemButtons = within(bottomItem).getAllByRole('button', { hidden: true });
 
-      const topItem = items[0],
-          bottomItem = items[1],
-          topItemButtons = within(topItem).getAllByRole('button', { hidden: true }),
-          bottomItemButtons = within(bottomItem).getAllByRole('button', { hidden: true });
+        expect(onReorderItem).not.toHaveBeenCalled();
+        expect(topItemButtons[0]).toHaveAttribute('aria-disabled', 'true');
+        expect(topItemButtons[1]).toHaveAttribute('aria-disabled', 'true');
+        expect(bottomItemButtons[0]).toHaveAttribute('aria-disabled', 'true');
+        expect(bottomItemButtons[1]).toHaveAttribute('aria-disabled', 'true');
 
-      expect(onReorderItem).not.toHaveBeenCalled();
-      expect(topItemButtons[0]).toHaveAttribute('aria-disabled', 'true');
-      expect(topItemButtons[1]).toHaveAttribute('aria-disabled', 'true');
-      expect(bottomItemButtons[0]).toHaveAttribute('aria-disabled', 'true');
-      expect(bottomItemButtons[1]).toHaveAttribute('aria-disabled', 'true');
+        await user.click(topItemButtons[1]);
+        expect(onReorderItem).not.toHaveBeenCalled();
 
-      await user.click(topItemButtons[1]);
-      expect(onReorderItem).not.toHaveBeenCalled();
+        await user.click(topItemButtons[0]);
+        expect(onReorderItem).not.toHaveBeenCalled();
+      });
 
-      await user.click(topItemButtons[0]);
-      expect(onReorderItem).not.toHaveBeenCalled();
+      it('sets the correct title on tooltip', async function() {
+        const dataItems = [{
+          id: '1',
+          displayName: 'foo'
+        }, {
+          id: '2',
+          displayName: 'bar'
+        }, {
+          id: '3',
+          displayName: 'foobar'
+        }];
+
+        const user = userEvent.setup({advanceTimers}),
+            onReorderItem = jest.fn(),
+            component = renderEl({items: dataItems, filterValue: 'fo', allowReordering: true, onReorderItem})!,
+            items = component.querySelectorAll<HTMLElement>('.nx-transfer-list__item'),
+            firstItemBtns = within(items[0]).getAllByRole('button', { hidden: true }),
+            lastItemBtns = within(items[1]).getAllByRole('button', { hidden: true });
+
+        // first item move up button
+        await user.hover(firstItemBtns[0]);
+        await runTimers();
+        let tooltip = await screen.findByRole('tooltip');
+        expect(tooltip).toBeInTheDocument();
+        expect(tooltip).toHaveTextContent('Reordering is disabled when filtered');
+
+        // first item move down button
+        await user.hover(firstItemBtns[1]);
+        await runTimers();
+        tooltip = await screen.findByRole('tooltip');
+        expect(tooltip).toHaveTextContent('Reordering is disabled when filtered');
+
+        // last item move up button
+        await user.hover(lastItemBtns[0]);
+        await runTimers();
+        tooltip = await screen.findByRole('tooltip');
+        expect(tooltip).toHaveTextContent('Reordering is disabled when filtered');
+
+        // last item move down button
+        await user.hover(lastItemBtns[1]);
+        await runTimers();
+        tooltip = await screen.findByRole('tooltip');
+        expect(tooltip).toHaveTextContent('Reordering is disabled when filtered');
+      });
     });
-
-    // it('sets the correct button title based on location, direction, and when filtered', async function() {
-    //   const dataItems = [{
-    //     id: '1',
-    //     displayName: 'a1'
-    //   }, {
-    //     id: '2',
-    //     displayName: 'b1'
-    //   }, {
-    //     id: '3',
-    //     displayName: 'c1'
-    //   }, {
-    //     id: '4',
-    //     displayName: 'c'
-    //   }];
-
-    //   const user = userEvent.setup(),
-    //       onReorderItem = jest.fn(),
-    //       component = renderEl({items: dataItems, filterValue: '1', allowReordering: true, onReorderItem})!,
-    //       // filteredComponent = renderEl({items: dataItems, allowReordering: true, onReorderItem})!,
-    //       items = component.querySelectorAll('.nx-transfer-list__item'),
-    //       // filteredItems = filteredComponent.querySelectorAll('.nx-transfer-list__item'),
-    //       secondItemBtns = within(items[0] as HTMLElement).getAllByRole('button', {hidden: true});
-
-      
-    //   //     const moveUpButtonTooltip = secondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(0);
-    //   //     const moveDownButtonTooltip = secondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(1);
-      
-    //   //     const filteredMoveUpButtonTooltip = filteredSecondItem.find(
-    //   //        '.nx-transfer-list__button-bar').find(NxTooltip).at(0);
-    //   //     const filteredMoveDownButtonTooltip =
-    //   //         filteredSecondItem.find('.nx-transfer-list__button-bar').find(NxTooltip).at(1);
-      
-    //   //     const itemTooltip = secondItem.find(NxTooltip).at(1);
-    //   //     const filteredItemTooltip = filteredSecondItem.find(NxTooltip).at(1);
-    //       await user.hover(secondItemBtns[0]);
-    //       const tooltip = component.querySelector('.MuiTooltip-popper');
-    //       expect(tooltip).toBeInTheDocument();
-    //       expect(tooltip).toHaveTextContent('Move Up');
-    //       // expect(moveDownBtnTooltip).toHaveTextContent('Move Down');
-      
-    //   //     expect(filteredMoveUpButtonTooltip).toHaveProp('title', '');
-    //   //     expect(filteredMoveDownButtonTooltip).toHaveProp('title', '');
-      
-    //   //     expect(filteredItemTooltip).toHaveProp('title', 'Reordering is disabled when filtered');
-    //   //     expect(itemTooltip).toHaveProp('title', '');
-    // });
   });
 });
