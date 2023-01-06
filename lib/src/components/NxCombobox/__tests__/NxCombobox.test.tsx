@@ -93,7 +93,7 @@ describe('NxCombobox', function() {
     inputElement.focus();
     expect(inputElement).toHaveAttribute('aria-expanded', 'true');
 
-  // visibility of dropdown when focused is tested in visual tests
+    // visibility of dropdown when focused is tested in visual tests
   });
 
   it('set aria-expanded to false on the input if there are no matches, even if focused', async function() {
