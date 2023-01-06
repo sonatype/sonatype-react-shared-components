@@ -41,7 +41,9 @@ export default function NxGlobalSidebarExample() {
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxModal" href="#/pages/Modal"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/Page%20Header"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/Page%20Header"/>
-          <NxGlobalSidebarNavigationLink icon={faLink} text="NxPageHeader" href="#/pages/Page%20Header"/>
+          <NxGlobalSidebarNavigationLink icon={faLink}
+                                         text={<>Nx<b>Page</b><i>Header</i></>}
+                                         href="#/pages/Page%20Header"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
                                          text="NxPagination"
                                          href="#/pages/Pagination"/>

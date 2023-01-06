@@ -43,6 +43,13 @@ describe('NxModal', function() {
     expect(nxModalDiv).toHaveClassName('test');
   });
 
+  it('fowards a ref to the dialog', function() {
+    const ref = React.createRef<HTMLDialogElement>(),
+        component = mount(<><NxModal { ...minimalProps } ref={ref} /></>);
+
+    expect(component.getDOMNode()).toBe(ref.current);
+  });
+
   it('includes any passed in attributes to the nx-modal div', function() {
     const nxModal = getModal({ id: 'modal-id', lang: 'en_US' });
 

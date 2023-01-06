@@ -5,278 +5,187 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { mount } from 'enzyme';
-import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
-import { act } from 'react-dom/test-utils';
+import userEvent from '@testing-library/user-event';
 
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxAccordion, { Props } from '../NxAccordion';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
+import NxAccordion from '../NxAccordion';
 import NxButton from '../../NxButton/NxButton';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-
-function createClickEvent() {
-  return new MouseEvent('click', { bubbles: true });
-}
+import { render } from '@testing-library/react';
 
 describe('NxAccordion', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxAccordion, {}),
-      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxAccordion, {});
+  const quickRender = rtlRender(NxAccordion, {});
+  const renderEl = rtlRenderElement(NxAccordion, {});
 
   it('renders a <details> element with the provided props', function() {
-    const component = getShallowComponent({ id: 'foo', open: true, title: 'test title' });
-
-    expect(component).toMatchSelector('details#foo');
-    expect(component).toHaveProp('open', true);
-    expect(component).toHaveProp('title', 'test title');
+    const el = renderEl({ id: 'foo'})!;
+    expect(el.tagName).toBe('DETAILS');
+    expect(el).toHaveAttribute('id', 'foo');
   });
 
-  it('sets the nx-accordion class along with any provided className', function() {
-    expect(getShallowComponent()).toHaveClassName('nx-accordion');
-    expect(getShallowComponent({ className: 'foo' })).toHaveClassName('nx-accordion');
-    expect(getShallowComponent({ className: 'foo' })).toHaveClassName('foo');
+  it('sets the open attribute as specified', function() {
+    expect(renderEl()).not.toHaveAttribute('open');
+    expect(renderEl({ open: true })).toHaveAttribute('open');
+    expect(renderEl({ open: false })).not.toHaveAttribute('open');
+    expect(renderEl({ open: undefined })).not.toHaveAttribute('open');
   });
 
-  it('sets an id if none is specified', function() {
-    expect(getShallowComponent().prop('id')).toBeTruthy();
+  it('sets the provided className', function() {
+    const el = renderEl()!;
+    const customEl = renderEl({ className: 'foo' })!;
+
+    expect(customEl).toHaveClass('foo');
+
+    for (const cls of Array.from(el.classList)) {
+      expect(customEl).toHaveClass(cls);
+    }
   });
 
   it('sets aria-expanded from the open prop', function() {
-    expect(getShallowComponent()).toHaveProp('aria-expanded', false);
-    expect(getShallowComponent({ open: false })).toHaveProp('aria-expanded', false);
-    expect(getShallowComponent({ open: true })).toHaveProp('aria-expanded', true);
+    expect(renderEl()).toHaveAttribute('aria-expanded', 'false');
+    expect(renderEl({ open: false })).toHaveAttribute('aria-expanded', 'false');
+    expect(renderEl({ open: true })).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('renders non-header children in an nx-accordion__content wrapper', function() {
-    const component =
-        mount(
-          <NxAccordion>
-            <NxAccordion.Header>
-              <span>Foo</span>
-            </NxAccordion.Header>
-            <span>Bar</span>
-          </NxAccordion>
-        ),
-        childrenWrapper = component.find('.nx-accordion__content');
+  it('renders non-header children in content wrapper', function() {
+    const { container } = quickRender({
+      children: (
+        <>
+          <NxAccordion.Header>
+            <span>Foo</span>
+          </NxAccordion.Header>
+          <span className="bar">Bar</span>
+        </>
+      )
+    });
 
-    expect(childrenWrapper).toExist();
-    expect(childrenWrapper).toContainReact(<span>Bar</span>);
-    expect(childrenWrapper).not.toContainReact(<span>Foo</span>);
+    expect(container.querySelector('summary .bar')).not.toBeInTheDocument();
+    expect(container.querySelector('.bar')).toBeInTheDocument();
   });
 
   describe('Header', function() {
-    it('renders the NxAccordion.Header as a <summary> containing a nx-accordion__summary-wrapper', function() {
-      const component = getMountedComponent({
-            children: (
-              <NxAccordion.Header id="headerId">
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          header = component.find('summary'),
-          wrapper = header.children();
+    const renderEl = rtlRenderElement(NxAccordion.Header, {});
 
-      expect(header).toExist();
-      expect(header).toMatchSelector('#headerId');
-      expect(wrapper).toHaveClassName('nx-accordion__summary-wrapper');
-      expect(wrapper).toContainReact(<span>Foo</span>);
+    it('sets the provided className', function() {
+      const el = renderEl()!;
+      const customEl = renderEl({ className: 'foo' })!;
+
+      expect(customEl).toHaveClass('foo');
+
+      for (const cls of Array.from(el.classList)) {
+        expect(customEl).toHaveClass(cls);
+      }
     });
 
-    it('sets the nx-accordion__header class along with any provided className on the header', function() {
-      const component = getMountedComponent({
-            className: 'accordion-class',
-            children: (
-              <NxAccordion.Header className="header-class">
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          header = component.find('summary');
-
-      expect(header).toHaveClassName('nx-accordion__header');
-      expect(header).toHaveClassName('header-class');
-      expect(getMountedComponent({ children: <NxAccordion.Header /> }).find('summary'))
-          .toHaveClassName('nx-accordion__header');
+    it('renders the NxAccordion.Header as a <summary>', function() {
+      const el = renderEl({ id: 'foo' })!;
+      expect(el.tagName).toBe('SUMMARY');
+      expect(el).toHaveAttribute('id', 'foo');
     });
 
-    it('renders an icon with nx-accordion__chevron class as the first child of the header wrapper', function() {
-      const component = getMountedComponent({
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-                <div className="nx-btn-bar">
-                  <NxButton />
-                </div>
-              </NxAccordion.Header>
-            )
-          }),
-          wrapper = component.find('summary').children();
-
-      expect(wrapper.children().first()).toMatchSelector(NxFontAwesomeIcon);
-      expect(wrapper.children().at(1)).toMatchSelector('span');
-      expect(wrapper.children().last()).toMatchSelector('div');
-
-      expect(wrapper.find(NxFontAwesomeIcon)).toHaveClassName('nx-accordion__chevron');
+    it('sets aria-controls to the accordion id when id is not specified', function() {
+      const { container } = quickRender({
+        children: (
+          <NxAccordion.Header></NxAccordion.Header>
+        )
+      });
+      const id = container.querySelector('DETAILS')?.getAttribute('id');
+      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', id);
     });
 
-    it('uses faChevronCircleDown as the icon when the accordion is closed', function() {
-      const component = getMountedComponent({
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          header = component.find('summary');
+    it('sets aria-controls to the specified accordion id', function() {
+      const { container } = quickRender({
+        id: 'foo',
+        children: (
+          <NxAccordion.Header>
+            <span>Foo</span>
+          </NxAccordion.Header>
+        )
+      });
 
-      expect(header.find(NxFontAwesomeIcon)).toHaveProp('icon', faChevronCircleDown);
-
-      const explicitOpenComponent = getMountedComponent({
-            open: false,
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          explicitOpenHeader = explicitOpenComponent.find('summary');
-
-      expect(explicitOpenHeader.find(NxFontAwesomeIcon)).toHaveProp('icon', faChevronCircleDown);
-    });
-
-    it('uses faChevronCircleUp as the icon when the accordion is open', function() {
-      const component = getMountedComponent({
-            open: true,
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          header = component.find('summary');
-
-      expect(header.find(NxFontAwesomeIcon)).toHaveProp('icon', faChevronCircleUp);
-    });
-
-    it('sets aria-controls to the accordion id', function() {
-      const explicitIdAccordion = getMountedComponent({
-            id: 'foo',
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          autoIdAccordion = getMountedComponent({
-            id: 'foo',
-            children: (
-              <NxAccordion.Header>
-                <span>Foo</span>
-              </NxAccordion.Header>
-            )
-          }),
-          autoId = autoIdAccordion.prop('id');
-
-      expect(explicitIdAccordion.find('summary')).toHaveProp('aria-controls', 'foo');
-      expect(autoIdAccordion.find('summary')).toHaveProp('aria-controls', autoId);
+      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', 'foo');
     });
   });
 
   describe('onToggle', function() {
-    let mountContainer: HTMLElement | null = null;
-
-    beforeEach(function() {
-      mountContainer = document.createElement('div');
-      document.body.appendChild(mountContainer);
-    });
-
-    afterEach(function() {
-      if (mountContainer) {
-        document.body.removeChild(mountContainer);
-      }
-    });
 
     describe('when the accordion is currently closed', function() {
-      it('fires with true', function() {
-        const onToggle = jest.fn(),
-            component = mount(
-              <NxAccordion onToggle={onToggle} open={false}>
-                <NxAccordion.Header>
-                  <span>Foo</span>
-                </NxAccordion.Header>
-              </NxAccordion>,
-              { attachTo: mountContainer }
-            ),
-            header = component.find('summary');
+      it('fires with true', async function() {
+        const user = userEvent.setup();
+        const onToggle = jest.fn();
+
+        const { container } = render(
+          <NxAccordion onToggle={onToggle} open={false}>
+            <NxAccordion.Header>
+              <span>Foo</span>
+            </NxAccordion.Header>
+          </NxAccordion>,
+        );
+
+        const header = container.querySelector<HTMLElement>('summary')!;
 
         expect(onToggle).not.toHaveBeenCalled();
 
-        act(function() {
-          header.getDOMNode().dispatchEvent(createClickEvent());
-        });
+        await user.click(header);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
         expect(onToggle).toHaveBeenCalledWith(true);
 
-        act(function() {
-          // click the accordion outside of the header
-          component.getDOMNode().dispatchEvent(createClickEvent());
-        });
+        // click the accordion outside of the header
+        await user.click(container);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
       });
     });
 
     describe('when the accordion is currently open', function() {
-      it('fires with false', function() {
-        const onToggle = jest.fn(),
-            component = mount(
-              <NxAccordion onToggle={onToggle} open={true}>
-                <NxAccordion.Header>
-                  <span>Foo</span>
-                </NxAccordion.Header>
-              </NxAccordion>,
-              { attachTo: mountContainer }
-            ),
-            header = component.find('summary');
+      it('fires with false', async function() {
+        const user = userEvent.setup();
+        const onToggle = jest.fn();
+
+        const { container } = render(
+          <NxAccordion onToggle={onToggle} open={true}>
+            <NxAccordion.Header>
+              <span>Foo</span>
+            </NxAccordion.Header>
+          </NxAccordion>,
+        );
+
+        const header = container.querySelector<HTMLElement>('summary')!;
 
         expect(onToggle).not.toHaveBeenCalled();
 
-        act(function() {
-          header.getDOMNode().dispatchEvent(createClickEvent());
-        });
+        await user.click(header);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
         expect(onToggle).toHaveBeenCalledWith(false);
 
-        act(function() {
-          // click the accordion outside of the header
-          component.getDOMNode().dispatchEvent(createClickEvent());
-        });
+        // click the accordion outside of the header
+        await user.click(container);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
       });
     });
 
     describe('when a non-button element in the header with its own onClick handler is clicked', function() {
-      it('fires', function() {
+      it('fires', async function() {
+        const user = userEvent.setup();
         const titleOnClick = jest.fn(),
-            onToggle = jest.fn(),
-            component = mount(
-              <NxAccordion onToggle={onToggle}>
-                <NxAccordion.Header>
-                  <NxAccordion.Title onClick={titleOnClick}>Foo</NxAccordion.Title>
-                </NxAccordion.Header>
-              </NxAccordion>,
-              { attachTo: mountContainer }
-            ),
-            title = component.find(NxAccordion.Title);
+            onToggle = jest.fn();
+
+        const { container } = render(
+          <NxAccordion onToggle={onToggle}>
+            <NxAccordion.Header>
+              <NxAccordion.Title onClick={titleOnClick}>Foo</NxAccordion.Title>
+            </NxAccordion.Header>
+          </NxAccordion>,
+        );
+        const title = container.querySelector<HTMLElement>('.nx-accordion__header-title')!;
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(titleOnClick).not.toHaveBeenCalled();
 
-        act(function() {
-          title.getDOMNode().dispatchEvent(createClickEvent());
-        });
+        await user.click(title);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
         expect(titleOnClick).toHaveBeenCalledTimes(1);
@@ -284,34 +193,31 @@ describe('NxAccordion', function() {
     });
 
     describe('when a button element in the header is clicked', function() {
-      it('does not fire', function() {
+      it('does not fire', async function() {
+        const user = userEvent.setup();
         const btnOnClick = jest.fn(),
-            onToggle = jest.fn(),
-            component = mount(
-              <NxAccordion onToggle={onToggle}>
-                <NxAccordion.Header>
-                  <NxAccordion.Title>Foo</NxAccordion.Title>
-                  <div className="nx-btn-bar">
-                    <NxButton id="btn1" />
-                    <NxButton id="btn2" onClick={btnOnClick} />
-                  </div>
-                </NxAccordion.Header>
-              </NxAccordion>,
-              { attachTo: mountContainer }
-            ),
-            btn1 = component.find('button#btn1'),
-            btn2 = component.find('button#btn2');
+            onToggle = jest.fn();
 
-        act(function() {
-          btn1.getDOMNode().dispatchEvent(createClickEvent());
-        });
+        const { container } = render(
+          <NxAccordion onToggle={onToggle}>
+            <NxAccordion.Header>
+              <NxAccordion.Title>Foo</NxAccordion.Title>
+              <div className="nx-btn-bar">
+                <NxButton id="btn1" />
+                <NxButton id="btn2" onClick={btnOnClick} />
+              </div>
+            </NxAccordion.Header>
+          </NxAccordion>,
+        );
+        const btn1 = container.querySelector('button#btn1') as HTMLElement,
+            btn2 = container.querySelector('button#btn2') as HTMLElement;
+
+        await user.click(btn1);
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(btnOnClick).not.toHaveBeenCalled();
 
-        act(function() {
-          btn2.getDOMNode().dispatchEvent(createClickEvent());
-        });
+        await user.click(btn2);
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(btnOnClick).toHaveBeenCalled();

@@ -13,7 +13,7 @@
   @include nx-container-helpers.container-vertical;
 
   &__required-field-asterisk {
-    color: var(--nx-swatch-red-40);
+    color: var(--nx-color-validation-invalid);
   }
 
   &__required-field-notice {
@@ -117,12 +117,6 @@
 
 .nx-label--optional, .nx-legend--optional {
   .nx-label__text::after, .nx-legend__text::after {
-    display: none;
-  }
-}
-
-.nx-form-group--hide-optional {
-  .nx-label--optional .nx-label__text::after {
     display: none;
   }
 }

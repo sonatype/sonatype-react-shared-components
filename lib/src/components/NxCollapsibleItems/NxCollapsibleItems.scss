@@ -98,8 +98,8 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   padding: calc(var(--nx-spacing-base) - 1px) calc(#{$-trigger-side-padding} - 1px);
   width: 100%;
 
-  &:hover, &:focus {
-    text-decoration: none;
+  &:hover:not([disabled]) {
+    background-color: var(--nx-swatch-indigo-95);
   }
 
   &:focus {
@@ -228,4 +228,11 @@ button, a {
       }
     }
   }
+
+  .nx-collapsible-items__trigger {
+    &:hover:not([disabled]) {
+      background-color: var(--nx-swatch-indigo-90);
+    }
+  }
+
 }
