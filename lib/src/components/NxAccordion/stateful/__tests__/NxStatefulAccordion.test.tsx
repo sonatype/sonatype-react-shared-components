@@ -143,7 +143,7 @@ describe('NxStatefulAccordion', function() {
     });
 
     describe('when the accordion is currently open', function() {
-      it('onToggle is called', async function() {
+      it('calls onToggle', async function() {
         const user = userEvent.setup();
         const onToggle = jest.fn();
 
