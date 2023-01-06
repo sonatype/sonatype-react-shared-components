@@ -10,7 +10,7 @@ import userEvent from '@testing-library/user-event';
 import NxStatefulAccordion from '../NxStatefulAccordion';
 import NxAccordion from '../../NxAccordion';
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import NxButton from '../../../NxButton/NxButton';
 
 describe('NxStatefulAccordion', function() {
@@ -209,11 +209,13 @@ describe('NxStatefulAccordion', function() {
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(titleOnClick).not.toHaveBeenCalled();
+        expect(screen.getByRole('group')).not.toHaveAttribute('open');
 
         await user.click(title);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
         expect(titleOnClick).toHaveBeenCalledTimes(1);
+        expect(screen.getByRole('group')).toHaveAttribute('open');
       });
     });
 
@@ -237,15 +239,18 @@ describe('NxStatefulAccordion', function() {
         const btn1 = container.querySelector('button#btn1') as HTMLElement,
             btn2 = container.querySelector('button#btn2') as HTMLElement;
 
+        expect(screen.getByRole('group')).not.toHaveAttribute('open');
         await user.click(btn1);
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(btnOnClick).not.toHaveBeenCalled();
+        expect(screen.getByRole('group')).not.toHaveAttribute('open');
 
         await user.click(btn2);
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(btnOnClick).toHaveBeenCalled();
+        expect(screen.getByRole('group')).not.toHaveAttribute('open');
       });
     });
   });
