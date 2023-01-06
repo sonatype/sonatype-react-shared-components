@@ -4,22 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-// import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
-// import { screen } from '@testing-library/react';
 import { screen } from '@testing-library/react';
 import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
-
-// import userEvent from '@testing-library/user-event';
-// import NxButton from '../../NxButton/NxButton';
-// import { logDOM } from '@testing-library/react';
-// import NxLoadError, { Props } from '../NxLoadError';
+import userEvent from '@testing-library/user-event';
 import NxLoadError from '../NxLoadError';
-// import NxButton from '../././NxButton/NxButton';
-// import { NxErrorAlert } from '../../NxAlert/NxAlert';
-// import { screen } from '@testing-library/react';
 
 describe('NxLoadError', function() {
-  // const quickRender = rtlRender(NxLoadError, {});
   const renderEl = rtlRenderElement(NxLoadError, {});
 
   it('does not render anything if error is unset', function() {
@@ -70,32 +60,43 @@ describe('NxLoadError', function() {
     expect(retryButton).toHaveAttribute('type', 'button');
   });
 
-  // it('sets the retry button type to "submit" when submitOnRetry is set to true', function() {
-  //   const props = { error: 'Error!', submitOnRetry: true };
-  //   const button = renderEl(props).find(NxButton);
-  //   expect(button).toHaveProp('type', 'submit');
+  it('sets the retry button type to "submit" when submitOnRetry is set to true', function() {
+    renderEl({ error: 'Error', submitOnRetry: true });
+    const retryButton = screen.getByRole('button', {name: 'Retry'});
+    expect(retryButton).toBeInTheDocument();
+    expect(retryButton).toHaveAttribute('type', 'submit');
+  });
 
-  // const text = screen.getByText('dfgdgdgd');
-  // expect(text).toBeInTheDocument();
-  // });
+  it('calls the retryHandler when the retry button is clicked', async function() {
+    const user = userEvent.setup();
+    const retryHandler = jest.fn();
+    renderEl({ error: 'Error!', retryHandler });
+    expect(retryHandler).not.toHaveBeenCalled();
+    const retryButton = screen.getByRole('button', {name: 'Retry'});
+    expect(retryButton).toBeInTheDocument();
+    await user.click(retryButton);
+    expect(retryHandler).toHaveBeenCalled();
+  });
 
-  // it('calls the retryHandler when the retry button is clicked', function() {
-  //   const retryHandler = jest.fn(),
-  //       props = { error: 'Error!', canRetry: true, retryHandler },
-  //       component = renderEl(props);
+  it('calls the onClose function when the "X" button is clicked (to dismiss alert)', async function() {
+    const user = userEvent.setup();
+    const onClose = jest.fn();
+    renderEl({ error: 'Error!', onClose });
+    expect(onClose).not.toHaveBeenCalled();
+    const closeButton = screen.getByRole('button', { name: 'Close' });
+    expect(closeButton).toBeInTheDocument();
+    await user.click(closeButton);
+    expect(onClose).toHaveBeenCalled();
+  });
 
-  //   expect(retryHandler).not.toHaveBeenCalled();
-
-  //   component.find(NxButton).simulate('click');
-
-  //   expect(retryHandler).toHaveBeenCalled();
-  // });
-
-  // it('passes unknown props to the NxErrorAlert element', function() {
-  //   const onClick = jest.fn(),
-  //       component = renderEl({ error: 'err', id: 'foo', onClick });
-
-  //   expect(component).toHaveProp('id', 'foo');
-  //   expect(component).toHaveProp('onClick', onClick);
-  // });
+  it('passes unknown props to the NxErrorAlert element', async function() {
+    const user = userEvent.setup();
+    const onClick = jest.fn();
+    renderEl({ error: 'err', id: 'foo', onClick });
+    expect(onClick).not.toHaveBeenCalled();
+    const alert = screen.getByRole('alert');
+    expect(alert).toHaveAttribute('id', 'foo');
+    await user.click(alert);
+    expect(onClick).toHaveBeenCalled();
+  });
 });
