@@ -105,7 +105,7 @@ describe('NxCombobox', function() {
     inputElement.focus();
     expect(inputElement).toHaveAttribute('aria-expanded', 'false');
 
-    rerender(<NxCombobox {...minimalProps} value= {'foo'}/>);
+    rerender(<NxCombobox {...minimalProps} value="foo" />);
     expect(inputElement).toHaveAttribute('aria-expanded', 'false');
 
     rerender(<NxCombobox {...minimalProps} loading={true}/>);
