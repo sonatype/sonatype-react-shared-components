@@ -28,7 +28,7 @@ describe('NxLoadError', function() {
 
   it('uses the specified title message instead of the default', function() {
     const el = renderEl({ error: '', titleMessage: 'This is bad!' });
-    expect(el?.textContent).not.toBe('An error occurred loading data. ');
+    expect(el?.textContent).not.toContain('An error occurred loading data. ');
     expect(el?.textContent).toContain('This is bad! ');
 
   });
