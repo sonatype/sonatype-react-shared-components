@@ -70,7 +70,7 @@ describe('NxLoadError', function() {
     const retryHandler = jest.fn();
     renderEl({ error: 'Error!', retryHandler });
     expect(retryHandler).not.toHaveBeenCalled();
-    const retryButton = screen.getByRole('button', {name: 'Retry'});
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
     expect(retryButton).toBeInTheDocument();
     await user.click(retryButton);
     expect(retryHandler).toHaveBeenCalled();
