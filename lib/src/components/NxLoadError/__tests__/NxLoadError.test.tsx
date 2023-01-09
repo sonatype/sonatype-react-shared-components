@@ -44,7 +44,7 @@ describe('NxLoadError', function() {
     expect(el?.textContent).toEqual('This is bad! Server Error');
   });
 
-  it('renders a retry button if there is an error and retryHandler is set', async function() {
+  it('renders a retry button if there is an error and retryHandler is set', function() {
     const elWithoutRetryButton = renderEl({ error: 'Error' });
     expect(elWithoutRetryButton?.textContent).not.toContain('Retry');
     expect(quickRender({ error: 'Error', retryHandler: () => {} }).getByRole('button', { name: 'Retry' }))
