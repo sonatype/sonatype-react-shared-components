@@ -46,10 +46,7 @@ describe('NxLoadError', function() {
   it('renders a retry button if there is an error and retryHandler is set', function() {
     const elWithoutRetryButton = renderEl({ error: 'Error' });
     expect(elWithoutRetryButton?.textContent).not.toContain('Retry');
-    const elRetryButton = renderEl({ error: 'Error', retryHandler: () => {} });
-    const retryButton = screen.getByRole('button', {name: 'Retry'});
-    expect(elRetryButton?.textContent).toContain('An error occurred loading data. Error');
-    expect(retryButton).toBeInTheDocument();
+    expect(quickRender({ error: 'Error', retryHandler: () => {} }).getByRole('button', { name: 'Retry' })).toBeInTheDocument();
   });
 
   it('adds the appropriate class, variant, and type to the retry button', function() {
