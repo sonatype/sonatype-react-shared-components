@@ -4,11 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-
-import { ReactNode } from 'react';
+import RequiredReactNode from './RequiredReactNode';
 
 // Common interface for items which need to have text to display in the UI and a unique id
-type RequiredReactNode = Exclude<ReactNode, null | undefined>;
 export default interface DataItem<I extends string | number = string, D extends RequiredReactNode = RequiredReactNode> {
   id: I;
   displayName: D;

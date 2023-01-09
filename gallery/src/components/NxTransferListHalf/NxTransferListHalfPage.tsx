@@ -12,13 +12,19 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxTransferListHalfExample from './NxTransferListHalfExample';
 import NxTransferListHalfCustomTooltipExample from './NxTransferListHalfCustomTooltipExample';
 import NxTransferListHalfOrderingExample from './NxTransferListHalfOrderingExample';
+import NxTransferListHalfDisableTransferExample from './NxTransferListHalfDisableTransferExample';
+import NxTransferListHalfOrderingWithDisableTransferExample
+  from './NxTransferListHalfOrderingWithDisableTransferExample';
 
 import '../NxTooltip/NxTooltipExample.scss';
 
 const nxTransferListHalfExample = require('./NxTransferListHalfExample?raw'),
     nxTransferListHalfCustomTooltipExample = require('./NxTransferListHalfCustomTooltipExample?raw'),
     nxTransferListHalfOrderingExample = require('./NxTransferListHalfOrderingExample?raw'),
-    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw');
+    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw'),
+    nxTransferListHalfDisableTransferExample = require('./NxTransferListHalfDisableTransferExample?raw'),
+    nxTransferListHalfOrderingWithDisableTransferExample =
+      require('./NxTransferListHalfOrderingWithDisableTransferExample?raw');
 
 const tooltipExampleCode = [nxTransferListHalfCustomTooltipExample, { language: 'scss', content: tooltipScss }];
 
@@ -69,16 +75,19 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>showMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
               <NxTable.Cell>Whether or not to show the "Remove All"/"Transfer All" button</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onMoveAll</NxCode></NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
-              <NxTable.Cell>Handler for the user activating the "Remove All"/"Transfer All" button</NxTable.Cell>
+              <NxTable.Cell>
+                Handler for the user activating the "Remove All"/"Transfer All" button.
+                It should be provided when <NxCode>showMoveAll</NxCode> is true.
+              </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>items</NxCode></NxTable.Cell>
@@ -90,22 +99,23 @@ const NxTransferListPage = () =>
             <NxTable.Row>
               <NxTable.Cell><NxCode>isSelected</NxCode></NxTable.Cell>
               <NxTable.Cell>boolean</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
-              <NxTable.Cell></NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>true</NxTable.Cell>
               <NxTable.Cell>
                 Whether this component represents selected or unselected items. This affects what icons are used and
-                the wording of the Move All button.
+                the wording of the Move All button. Defaults to true.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
               <NxTable.Cell><NxCode>onItemChange</NxCode></NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell></NxTable.Cell>
               <NxTable.Cell>
                 Handler function for the user activating an item in the list. This handler will be passed two
                 arguments: whether the item was currently selected (i.e. the value of
-                the <NxCode>isSelected</NxCode> prop) and the id of the item.
+                the <NxCode>isSelected</NxCode> prop) and the id of the item. When not provided, it disables
+                the ability to transfer items by hiding the item's icon.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -252,6 +262,19 @@ const NxTransferListPage = () =>
       Demonstrates an <NxCode>NxTransferListHalf</NxCode> with custom tooltips on the data items. The first item
       demonstrates how a tooltip props object can be passed as the <NxCode>tooltip</NxCode> parameter, while the
       remaining items demonstrate the shorthand of passing a string as the <NxCode>tooltip</NxCode>.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="Disable Transfer Example"
+                        id="nx-transfer-list-half-disable-transfer-example"
+                        codeExamples={nxTransferListHalfDisableTransferExample}
+                        liveExample={NxTransferListHalfDisableTransferExample}>
+      Demonstrates an <NxCode>NxTransferListHalf</NxCode> with transfer feature disabled
+      when <NxCode>onItemChange</NxCode> prop is not provided.
+    </GalleryExampleTile>
+    <GalleryExampleTile title="Ordering with Disable Transfer Example"
+                        id="nx-transfer-list-half-ordering-with-disable-transfer-example"
+                        codeExamples={nxTransferListHalfOrderingWithDisableTransferExample}
+                        liveExample={NxTransferListHalfOrderingWithDisableTransferExample}>
+      Demonstrates an ordering <NxCode>NxTransferListHalf</NxCode> with transfer feature disabled.
     </GalleryExampleTile>
   </>;
 

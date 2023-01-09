@@ -28,8 +28,12 @@ describe('NxTransferListHalf', function() {
       complexListSelector = '#nx-transfer-list-half-ordering-example .nx-transfer-list__half',
       complexListFullSelector = '#nx-transfer-list-half-ordering-example .gallery-example-live',
       tooltipListSelector = '#nx-transfer-list-half-custom-tooltip-example .nx-transfer-list__half',
+      disableTransferListSelector = '#nx-transfer-list-half-disable-transfer-example .nx-transfer-list__half',
+      orderingWithDisableTransferListSelector =
+       '#nx-transfer-list-half-ordering-with-disable-transfer-example .nx-transfer-list__half',
       itemsSelector = `${simpleListSelector} .nx-transfer-list__item`,
       tooltipItemsSelector = `${tooltipListSelector} .nx-transfer-list__item`,
+      disableTransferItemSelector = `${disableTransferListSelector} .nx-transfer-list__item`,
       firstItemSelector = `${itemsSelector}:first-child .nx-transfer-list__select`,
       secondItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
       transferAllSelector = `${complexListSelector} .nx-transfer-list__move-all`,
@@ -38,7 +42,8 @@ describe('NxTransferListHalf', function() {
       moveDownSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :last-child`,
       filterBoxSelector = `${complexListSelector} .nx-text-input__input`,
       firstTooltipItemSelector = `${tooltipItemsSelector}:first-child .nx-transfer-list__select`,
-      secondTooltipItemSelector = `${tooltipItemsSelector}:nth-child(2) .nx-transfer-list__select`;
+      secondTooltipItemSelector = `${tooltipItemsSelector}:nth-child(2) .nx-transfer-list__select`,
+      secondDisableTransferItemSelector = `${disableTransferItemSelector}:nth-child(2) .nx-transfer-list__select`;
 
   it('looks right', simpleTest(simpleListSelector));
   it('looks right with complex options', simpleTest(complexListSelector));
@@ -111,5 +116,21 @@ describe('NxTransferListHalf', function() {
     });
   });
 
-  it('passes a11y checks', a11yTest());
+  describe('disable transfer', function() {
+    it('looks right', simpleTest(disableTransferListSelector));
+    it('does not put a dark border on hovered items',
+        hoverTest(disableTransferListSelector, secondDisableTransferItemSelector));
+    it('does not put a grey background on clicked items',
+        clickTest(disableTransferListSelector, secondDisableTransferItemSelector));
+  });
+
+  describe('ordering with disable transfer', function() {
+    it('looks right', simpleTest(orderingWithDisableTransferListSelector));
+  });
+
+  it('passes a11y checks', async function() {
+    // wait for tooltips to initialize
+    await wait(500);
+    await a11yTest()();
+  });
 });

@@ -5,44 +5,19 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FormEvent, forwardRef, useEffect, useRef, useContext } from 'react';
-import { faExclamationCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-import prettyBytes from 'pretty-bytes';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxButton from '../NxButton/NxButton';
-import NxTooltip from '../NxTooltip/NxTooltip';
+import SelectedFile from './SelectedFile';
 import { FormAriaContext } from '../NxForm/context';
 import { useUniqueId } from '../../util/idUtil';
-import { Props, propTypes, SelectedFileProps } from './types';
+import { Props, propTypes } from './types';
 
 export { Props };
 
 import './NxFileUpload.scss';
-
-const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-
-function SelectedFile({ file, onDismiss, descriptionId }: SelectedFileProps) {
-  // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
-  const buttonLabel = 'Dismiss Upload';
-
-  return (
-    <span className="nx-selected-file">
-      <span className="nx-selected-file__info" id={descriptionId}>
-        <NxOverflowTooltip>
-          <span className="nx-selected-file__name">{file.name}</span>
-        </NxOverflowTooltip>
-        <span className="nx-selected-file__size">{formatSize(file.size)}</span>
-      </span>
-      <NxTooltip title={buttonLabel}>
-        <button type="button" aria-label={buttonLabel} className="nx-selected-file__dismiss-btn" onClick={onDismiss}>
-          <NxFontAwesomeIcon icon={faTimesCircle} />
-        </button>
-      </NxTooltip>
-    </span>
-  );
-}
 
 const NxFileUpload = forwardRef<HTMLDivElement, Props>(function NxFileUpload(props, ref) {
   const {
