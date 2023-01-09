@@ -21,10 +21,9 @@ describe('NxCollapsibleMultiSelect', function() {
   });
 
   describe('NxCollapsibleMultiSelect checkbox', function() {
-    const checkboxSelector = selector + ' .nx-collapsible-items__child:nth-child(2) .nx-radio-checkbox__input';
+    const checkboxSelector = selector + ' .nx-collapsible-items__child:first-child .nx-radio-checkbox__input';
     it('has an offsetted blue outer border outline and glow when focused', focusTest(selector, checkboxSelector));
   });
 
-  // TODO: Fix aria-required-children in RSC-1328
-  it('passes a11y checks', a11yTest(builder => builder.disableRules('aria-required-children')));
+  it('passes a11y checks', a11yTest());
 });

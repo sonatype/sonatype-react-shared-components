@@ -10,7 +10,8 @@ import {times} from 'ramda';
 import {getShallowComponent} from '../../../__testutils__/enzymeUtils';
 import AbstractCollapsibleItemsSelect, {Props} from '../AbstractCollapsibleItemsSelect';
 import {Option} from '../commonTypes';
-import NxCollapsibleItems from '../../NxCollapsibleItems/NxCollapsibleItems';
+import NxCollapsibleItems, { PrivateNxCollapsibleItems } from '../../NxCollapsibleItems/NxCollapsibleItems';
+import { shallow } from 'enzyme';
 
 describe('AbstractCollapsibleItemsSelect', function() {
   const requiredProps: Props = {
@@ -33,7 +34,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
       expect(shallowRender).toHaveClassName('nx-collapsible-items--select');
 
       // test NxCollapsibleItems props
-      const nxCollapsibleItems = shallowRender.find('NxCollapsibleItems');
+      const nxCollapsibleItems = shallowRender.find('PrivateNxCollapsibleItems');
       expect(nxCollapsibleItems).toHaveProp('isOpen', false);
       expect(nxCollapsibleItems).toHaveProp('disabled', false);
       expect(nxCollapsibleItems).toHaveProp('triggerTooltip', null);
@@ -59,7 +60,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
     const getShallow = getShallowComponent<Props>(AbstractCollapsibleItemsSelect, requiredProps);
 
     it('wraps children in <span> if provided children is string', function () {
-      expect(getShallow().find('NxCollapsibleItems')).toHaveProp('triggerContent', <span>Foobar</span>);
+      expect(getShallow().find('PrivateNxCollapsibleItems')).toHaveProp('triggerContent', <span>Foobar</span>);
     });
 
     it('does not wrap children in <span> if provided children is react node', function () {
@@ -67,7 +68,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
         children: <b>Foobar</b>
       });
 
-      expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('triggerContent', <b>Foobar</b>);
+      expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('triggerContent', <b>Foobar</b>);
     });
   });
 
@@ -80,7 +81,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
         onToggleCollapse: onToggleCollapseSpy
       });
       expect(onToggleCollapseSpy).not.toHaveBeenCalled();
-      shallowRender.find('NxCollapsibleItems').simulate('toggleCollapse');
+      shallowRender.find('PrivateNxCollapsibleItems').simulate('toggleCollapse');
       expect(onToggleCollapseSpy).toHaveBeenCalled();
     });
   });
@@ -103,19 +104,19 @@ describe('AbstractCollapsibleItemsSelect', function() {
       it('renders filter input if filterThreshold is less than amount of options', function () {
         const shallowRender = getShallow();
 
-        const nxCollapsibleItems = shallowRender.find('NxCollapsibleItems');
-        expect(nxCollapsibleItems.children().length).toBe(4);
+        const nxCollapsibleItems = shallowRender.find('PrivateNxCollapsibleItems');
+        expect(nxCollapsibleItems.children().length).toBe(3);
 
-        const filterInput = nxCollapsibleItems.childAt(0);
+        const filterInput = shallow(<div>{nxCollapsibleItems.prop('contentBeforeChildren')}</div>).children();
         expect(filterInput).toHaveDisplayName('ForwardRef(NxFilterInput)');
         expect(filterInput).toHaveProp('id', 'nx-collapsible-items-select-foobar-filter-input');
       });
 
       it('sets the aria-controls on the filter to the collapsible items id', function() {
         const shallowRender = getShallow(),
-            nxCollapsibleItems = shallowRender.find(NxCollapsibleItems),
+            nxCollapsibleItems = shallowRender.find(PrivateNxCollapsibleItems),
             id = nxCollapsibleItems.prop('id'),
-            filterInput = nxCollapsibleItems.childAt(0);
+            filterInput = shallow(<div>{nxCollapsibleItems.prop('contentBeforeChildren')}</div>).children();
 
         expect(id).toBeTruthy();
         expect(filterInput).toHaveProp('aria-controls', id);
@@ -126,7 +127,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
           filterThreshold: 3
         });
 
-        const nxCollapsibleItems = shallowRender.find('NxCollapsibleItems');
+        const nxCollapsibleItems = shallowRender.find('PrivateNxCollapsibleItems');
         expect(nxCollapsibleItems.children().length).toBe(3);
         expect(nxCollapsibleItems.childAt(0)).toMatchSelector(NxCollapsibleItems.Child);
         expect(nxCollapsibleItems.childAt(0)).toContainReact(<span>Foo</span>);
@@ -141,10 +142,10 @@ describe('AbstractCollapsibleItemsSelect', function() {
             options: times<Option>(generateOption, 11)
           });
 
-          const nxCollapsibleItems = shallowRender.find('NxCollapsibleItems');
-          expect(nxCollapsibleItems.children().length).toBe(12);
+          const nxCollapsibleItems = shallowRender.find('PrivateNxCollapsibleItems');
+          expect(nxCollapsibleItems.children().length).toBe(11);
 
-          const filterInput = nxCollapsibleItems.childAt(0);
+          const filterInput = shallow(<div>{nxCollapsibleItems.prop('contentBeforeChildren')}</div>).children();
           expect(filterInput).toHaveDisplayName('ForwardRef(NxFilterInput)');
           expect(filterInput).toHaveProp('id', 'nx-collapsible-items-select-foobar-filter-input');
         });
@@ -156,7 +157,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
                 options: times<Option>(generateOption, 10)
               });
 
-              const nxCollapsibleItems = shallowRender.find('NxCollapsibleItems');
+              const nxCollapsibleItems = shallowRender.find('PrivateNxCollapsibleItems');
               expect(nxCollapsibleItems.children().length).toBe(10);
               expect(nxCollapsibleItems.childAt(0)).toMatchSelector(NxCollapsibleItems.Child);
               expect(nxCollapsibleItems.childAt(0)).toContainReact(<span>0</span>);
@@ -174,7 +175,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
           onFilterChange: onChangeSpy
         });
 
-        const filterInput = shallowRender.find('ForwardRef(NxFilterInput)');
+        const filterInput = shallow(<div>{shallowRender.prop('contentBeforeChildren')}</div>).children();
         expect(onChangeSpy).not.toHaveBeenCalled();
         filterInput.simulate('change', 'bla');
         expect(onChangeSpy).toHaveBeenCalledWith('bla');
@@ -189,11 +190,14 @@ describe('AbstractCollapsibleItemsSelect', function() {
           filter: 'ba'
         });
 
-        expect(shallowRender.find('ForwardRef(NxFilterInput)')).toHaveProp('value', 'ba');
+        const filterInput = shallow(<div>{shallowRender.prop('contentBeforeChildren')}</div>).children();
+
+        expect(filterInput).toHaveProp('value', 'ba');
       });
 
       it('defaults to empty string', function () {
-        expect(getShallow().find('ForwardRef(NxFilterInput)')).toHaveProp('value', '');
+        const filterInput = shallow(<div>{getShallow().prop('contentBeforeChildren')}</div>).children();
+        expect(filterInput).toHaveProp('value', '');
       });
     });
 
@@ -205,11 +209,14 @@ describe('AbstractCollapsibleItemsSelect', function() {
           filterPlaceholder: 'options filter'
         });
 
-        expect(shallowRender.find('ForwardRef(NxFilterInput)')).toHaveProp('placeholder', 'options filter');
+        const filterInput = shallow(<div>{shallowRender.prop('contentBeforeChildren')}</div>).children();
+
+        expect(filterInput).toHaveProp('placeholder', 'options filter');
       });
 
       it('defaults to "filter"', function () {
-        expect(getShallow().find('ForwardRef(NxFilterInput)')).toHaveProp('placeholder', 'filter');
+        const filterInput = shallow(<div>{getShallow().prop('contentBeforeChildren')}</div>).children();
+        expect(filterInput).toHaveProp('placeholder', 'filter');
       });
     });
 
@@ -228,11 +235,10 @@ describe('AbstractCollapsibleItemsSelect', function() {
         const shallowRender = getShallow();
 
         const options = shallowRender.children();
-        expect(options.length).toBe(3);
+        expect(options.length).toBe(2);
 
-        // first one is the filter itself
-        expect(options.at(1)).toHaveText('Bar');
-        expect(options.at(2)).toHaveText('Baz');
+        expect(options.at(0)).toHaveText('Bar');
+        expect(options.at(1)).toHaveText('Baz');
       });
 
       it('renders all options if filteredOptions prop is not provided', function () {
@@ -241,12 +247,11 @@ describe('AbstractCollapsibleItemsSelect', function() {
         });
 
         const options = shallowRender.children();
-        expect(options.length).toBe(4);
+        expect(options.length).toBe(3);
 
-        // first one is the filter itself
-        expect(options.at(1)).toHaveText('Foo');
-        expect(options.at(2)).toHaveText('Bar');
-        expect(options.at(3)).toHaveText('Baz');
+        expect(options.at(0)).toHaveText('Foo');
+        expect(options.at(1)).toHaveText('Bar');
+        expect(options.at(2)).toHaveText('Baz');
       });
     });
   });
@@ -279,7 +284,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
           <div>Counter</div>
         </>
       );
-      expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('triggerContent', expectedTriggerContent);
+      expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('triggerContent', expectedTriggerContent);
     });
   });
 
@@ -287,7 +292,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
     const getShallow = getShallowComponent<Props>(AbstractCollapsibleItemsSelect, requiredProps);
 
     it('defaults to false if disabled prop is not provided', function () {
-      expect(getShallow().find('NxCollapsibleItems')).toHaveProp('disabled', false);
+      expect(getShallow().find('PrivateNxCollapsibleItems')).toHaveProp('disabled', false);
     });
 
     it('disables NxCollapsibleItems', function () {
@@ -295,7 +300,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
         disabled: true
       });
 
-      expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('disabled', true);
+      expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('disabled', true);
     });
 
     it('does not disable options filter', function () {
@@ -305,7 +310,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
         filterThreshold: 1
       });
 
-      expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('disabled', true);
+      expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('disabled', true);
       expect(shallowRender.find('.nx-collapsible-items__filter input')).not.toHaveProp('disabled');
     });
 
@@ -315,7 +320,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
           disabledTooltip: 'Disabled Tooltip Test'
         });
 
-        expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('triggerTooltip', null);
+        expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('triggerTooltip', null);
       });
 
       it('does not render tooltip if component is disabled but disabledTooltip prop is not provided', function () {
@@ -323,7 +328,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
           disabled: true
         });
 
-        expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('triggerTooltip', null);
+        expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('triggerTooltip', null);
       });
 
       it('renders tooltip if disabledTooltip prop is provided and component is disabled', function () {
@@ -332,7 +337,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
           disabledTooltip: 'Disabled Tooltip Test'
         });
 
-        expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('triggerTooltip', {
+        expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('triggerTooltip', {
           title: 'Disabled Tooltip Test',
           placement: 'top'
         });
@@ -345,7 +350,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
           tooltipModifierClass: 'test-tooltip-modifier'
         });
 
-        expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('triggerTooltip', {
+        expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('triggerTooltip', {
           title: 'Disabled Tooltip Test',
           placement: 'top',
           className: 'test-tooltip-modifier'
@@ -361,11 +366,11 @@ describe('AbstractCollapsibleItemsSelect', function() {
       const shallowRender = getShallow({
         isOpen: true
       });
-      expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('isOpen', true);
+      expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('isOpen', true);
     });
 
     it('defaults to false', function () {
-      expect(getShallow().find('NxCollapsibleItems')).toHaveProp('isOpen', false);
+      expect(getShallow().find('PrivateNxCollapsibleItems')).toHaveProp('isOpen', false);
     });
   });
 
@@ -376,12 +381,12 @@ describe('AbstractCollapsibleItemsSelect', function() {
       const shallowRender = getShallow({
         id: 'someid'
       });
-      expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('id', 'someid');
+      expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('id', 'someid');
     });
 
     it('assigns a random id if not supplied', function() {
-      const id1 = getShallow().find(NxCollapsibleItems).prop('id'),
-          id2 = getShallow().find(NxCollapsibleItems).prop('id');
+      const id1 = getShallow().find(PrivateNxCollapsibleItems).prop('id'),
+          id2 = getShallow().find(PrivateNxCollapsibleItems).prop('id');
 
       expect(id1).toBeTruthy();
       expect(id2).toBeTruthy();
@@ -436,7 +441,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
     const getShallow = getShallowComponent<Props>(AbstractCollapsibleItemsSelect, props);
 
     it('disables NxCollapsibleItems when there are no options', function () {
-      expect(getShallow().find('NxCollapsibleItems')).toHaveProp('disabled', true);
+      expect(getShallow().find('PrivateNxCollapsibleItems')).toHaveProp('disabled', true);
     });
 
     it('disables NxCollapsibleItems when there are no options even if you pass disabled = false',
@@ -444,16 +449,16 @@ describe('AbstractCollapsibleItemsSelect', function() {
           const shallowRender = getShallow({
             disabled: false
           });
-          expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('disabled', true);
+          expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('disabled', true);
         }
     );
 
     it('collapses NxCollapsibleItems when there are no options', function () {
-      expect(getShallow().find('NxCollapsibleItems')).toHaveProp('isOpen', false);
+      expect(getShallow().find('PrivateNxCollapsibleItems')).toHaveProp('isOpen', false);
     });
 
     it('generates trigger tooltip using name prop when there are no options', function () {
-      expect(getShallow().find('NxCollapsibleItems')).toHaveProp('triggerTooltip', {
+      expect(getShallow().find('PrivateNxCollapsibleItems')).toHaveProp('triggerTooltip', {
         title: 'There are no foobar options',
         placement: 'top'
       });
@@ -464,7 +469,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
           const shallowRender = getShallow({
             disabledTooltip: 'disabled tooltip'
           });
-          expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('triggerTooltip', {
+          expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('triggerTooltip', {
             title: 'disabled tooltip',
             placement: 'top'
           });
@@ -476,7 +481,7 @@ describe('AbstractCollapsibleItemsSelect', function() {
           const shallowRender = getShallow({
             tooltipModifierClass: 'test-tooltip-modifier'
           });
-          expect(shallowRender.find('NxCollapsibleItems')).toHaveProp('triggerTooltip', {
+          expect(shallowRender.find('PrivateNxCollapsibleItems')).toHaveProp('triggerTooltip', {
             title: 'There are no foobar options',
             placement: 'top',
             className: 'test-tooltip-modifier'
