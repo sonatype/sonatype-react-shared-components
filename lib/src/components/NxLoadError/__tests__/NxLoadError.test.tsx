@@ -99,7 +99,7 @@ describe('NxLoadError', function() {
     });
   });
 
-  it('passes unknown props to the NxErrorAlert element', async function() {
+  it('passes unknown props to the alert element', async function() {
     const user = userEvent.setup();
     const onClick = jest.fn();
     renderEl({ error: 'err', id: 'foo', onClick });
