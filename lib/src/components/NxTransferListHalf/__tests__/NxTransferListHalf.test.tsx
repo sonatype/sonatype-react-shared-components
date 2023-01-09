@@ -49,7 +49,7 @@ describe('NxTransferListHalf', function() {
     expect(quickRender().getByRole('textbox')).toHaveAttribute('placeholder', 'Filter');
   });
 
-  it('sets the filterValue as the value of the NxFilterInput', function() {
+  it('sets the filterValue as the value of the filter input', function() {
     expect(quickRender({ filterValue: 'foo' }).getByRole('textbox')).toHaveValue('foo');
   });
 
