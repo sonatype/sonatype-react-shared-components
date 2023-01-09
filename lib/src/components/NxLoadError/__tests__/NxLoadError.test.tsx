@@ -33,7 +33,7 @@ describe('NxLoadError', function() {
 
   });
 
-  it('Uses the error as children', function() {
+  it('renders the error as part of the text content', function() {
     const el = renderEl({ error: 'Server Error', titleMessage: 'This is bad Error!' });
     expect(el?.textContent).toContain('Server Error');
   });
