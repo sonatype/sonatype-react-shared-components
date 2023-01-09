@@ -147,6 +147,8 @@ describe('NxTransferListHalf', function() {
       displayName: 'baz'
     }];
 
+    // At this time, there are ARIA roles assigned to either .nx-transfer-list__item-list or .nx-transfer-list__item.
+    // Revisit and improve these tests in RSC-998 (Improve Transfer List Keyboard Navigation)
     const { container } = quickRender({ items: dataItems }),
         itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
         items = itemList.querySelectorAll('.nx-transfer-list__item');
