@@ -12,3 +12,13 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
+
+// JSDOM is missing this function. https://github.com/jsdom/jsdom/issues/3002
+Range.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+  bottom: 0,
+  height: 0,
+  left: 0,
+  right: 0,
+  top: 0,
+  width: 0
+} as DOMRect);

@@ -26,18 +26,6 @@ describe('NxTransferListHalf', function() {
       quickRender = rtlRender(NxTransferListHalf, minimalProps),
       renderEl = rtlRenderElement(NxTransferListHalf, minimalProps);
 
-  beforeEach(function() {
-    // JSDOM is missing this function. https://github.com/jsdom/jsdom/issues/3002
-    Range.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
-      bottom: 0,
-      height: 0,
-      left: 0,
-      right: 0,
-      top: 0,
-      width: 0
-    } as DOMRect);
-  });
-
   it('renders a fieldset as top-level element', function() {
     const el = renderEl()!;
     expect(el.tagName).toBe('FIELDSET');

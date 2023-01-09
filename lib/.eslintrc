@@ -169,7 +169,7 @@
       }
     },
     {
-      "files": ["*.test.tsx", "*.test.ts"],
+      "files": ["*.test.tsx", "*.test.ts", "setupTests.ts"],
       "globals": {
         "jest": true,
         "it": true,
