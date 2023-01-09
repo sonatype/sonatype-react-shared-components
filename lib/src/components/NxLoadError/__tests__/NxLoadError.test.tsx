@@ -77,7 +77,7 @@ describe('NxLoadError', function() {
   });
 
   describe('when onClose is defined', ()=> {
-    it('if onClose function is defined then the "X" button is appear', function() {
+    it('the "X" button appears', function() {
       const onClose = jest.fn();
       renderEl({ error: 'Error!' });
       const closeButton = screen.queryByRole('button', { name: 'Close' });
