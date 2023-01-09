@@ -8,6 +8,7 @@ import React from 'react';
 import { faSort, faSortDown, faSortUp, faChevronRight, faEdit } from '@fortawesome/free-solid-svg-icons';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { mount } from 'enzyme';
+import 'jest-enzyme';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxTableCell from '../NxTableCell';

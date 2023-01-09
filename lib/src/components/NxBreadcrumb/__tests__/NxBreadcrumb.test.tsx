@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { render, waitFor, within } from '@testing-library/react';
-import userEvents from '@testing-library/user-event';
+import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxBreadcrumb, { Props } from '../NxBreadcrumb';
@@ -246,7 +246,7 @@ describe('NxBreadcrumb', function() {
     });
 
     it('calls onToggleDropdown when the dropdown button is clicked', async function() {
-      const user = userEvents.setup(),
+      const user = userEvent.setup(),
           onToggleDropdown = jest.fn(),
           view = quickRender({
             crumbs: [

@@ -63,6 +63,7 @@ function execute(queue: Queue) {
 function requestIdleCallback(fn: () => void) {
   // requestIdleCallback is not available in Safari
   if (typeof window !== 'undefined' && window.requestIdleCallback) {
+    console.log('requestIdleCallback calling native');
     window.requestIdleCallback(fn);
   }
   else {

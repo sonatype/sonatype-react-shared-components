@@ -159,7 +159,7 @@
   "overrides": [
     {
       "files": ["*.tsx", "*.js", "*.ts"],
-      "excludedFiles": ["*.test.tsx"],
+      "excludedFiles": ["*.test.tsx", "src/__testutils__/*"],
       "extends": ["plugin:jsx-a11y/recommended"],
       "plugins": ["jsx-a11y"],
       "rules": {
@@ -169,7 +169,7 @@
       }
     },
     {
-      "files": ["*.test.tsx", "*.test.ts"],
+      "files": ["*.test.tsx", "*.test.ts", "src/__testutils__/*"],
       "globals": {
         "jest": true,
         "it": true,

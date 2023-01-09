@@ -7,7 +7,7 @@
 // import React, { useState } from 'react';
 import React, { RefAttributes } from 'react';
 import { screen, fireEvent, render, within, createEvent, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '../../../__testutils__/rtlUtils';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxCombobox, { Props } from '../NxCombobox';

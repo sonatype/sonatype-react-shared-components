@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { act, render, waitFor, within } from '@testing-library/react';
-import userEvents from '@testing-library/user-event';
+import { userEvent } from '../../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
 import NxStatefulBreadcrumb, { Props } from '../NxStatefulBreadcrumb';
@@ -145,7 +145,7 @@ describe('NxStatefulBreadcrumb', function() {
 
   describe('five or more crumbs', function() {
     it('initially renders the dropdown closed, and toggles it when its button is clicked', async function() {
-      const user = userEvents.setup(),
+      const user = userEvent.setup(),
           view = quickRender({
             crumbs: [
               { name: 'A', href: 'a' },
@@ -173,7 +173,7 @@ describe('NxStatefulBreadcrumb', function() {
 
     it('renders the first and last two crumbs in the list and the rest in a dropdown placed after the first crumb',
         async function() {
-          const user = userEvents.setup(),
+          const user = userEvent.setup(),
               view = quickRender({
                 crumbs: [
                   { name: 'A', href: 'a' },
