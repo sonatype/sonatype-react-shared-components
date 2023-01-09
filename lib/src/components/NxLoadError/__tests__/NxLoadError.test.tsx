@@ -53,7 +53,7 @@ describe('NxLoadError', function() {
 
   it('adds the appropriate class, variant, and type to the retry button', function() {
     renderEl({ error: 'Error', retryHandler: () => {} });
-    const retryButton = screen.getByRole('button', {name: 'Retry'});
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
     expect(retryButton).toBeInTheDocument();
     expect(retryButton).toHaveAttribute('type', 'button');
   });
