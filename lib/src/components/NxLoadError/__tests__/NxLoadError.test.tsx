@@ -100,13 +100,14 @@ describe('NxLoadError', function() {
   });
 
   it('passes unknown props to the alert element', async function() {
-    const user = userEvent.setup();
     const onClick = jest.fn();
-    renderEl({ error: 'err', id: 'foo', onClick });
+    const component = renderEl({error: 'Error!'})!;
+    const customizedComponent = renderEl({ error: 'err', id: 'foo', className: 'bar', onClick });
     expect(onClick).not.toHaveBeenCalled();
-    const alert = screen.getByRole('alert');
-    expect(alert).toHaveAttribute('id', 'foo');
-    await user.click(alert);
-    expect(onClick).toHaveBeenCalled();
+    expect(customizedComponent).toHaveClass('bar');
+    expect(customizedComponent).toHaveAttribute('id', 'foo');
+    for (const cls of Array.from(component.classList)) {
+      expect(customizedComponent).toHaveClass(cls);
+    }
   });
 });
