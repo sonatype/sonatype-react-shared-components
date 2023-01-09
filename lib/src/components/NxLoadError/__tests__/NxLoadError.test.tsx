@@ -60,7 +60,7 @@ describe('NxLoadError', function() {
 
   it('sets the retry button type to "submit" when submitOnRetry is set to true', function() {
     renderEl({ error: 'Error', submitOnRetry: true });
-    const retryButton = screen.getByRole('button', {name: 'Retry'});
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
     expect(retryButton).toBeInTheDocument();
     expect(retryButton).toHaveAttribute('type', 'submit');
   });
