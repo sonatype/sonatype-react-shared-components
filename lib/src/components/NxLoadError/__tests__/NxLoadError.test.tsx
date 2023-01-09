@@ -53,14 +53,14 @@ describe('NxLoadError', function() {
 
   it('adds the appropriate type to the retry button', function() {
     renderEl({ error: 'Error', retryHandler: () => {} });
-    const retryButton = screen.getByRole('button', {name: 'Retry'});
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
     expect(retryButton).toBeInTheDocument();
     expect(retryButton).toHaveAttribute('type', 'button');
   });
 
   it('sets the retry button type to "submit" when submitOnRetry is set to true', function() {
     renderEl({ error: 'Error', submitOnRetry: true });
-    const retryButton = screen.getByRole('button', {name: 'Retry'});
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
     expect(retryButton).toBeInTheDocument();
     expect(retryButton).toHaveAttribute('type', 'submit');
   });
@@ -70,14 +70,14 @@ describe('NxLoadError', function() {
     const retryHandler = jest.fn();
     renderEl({ error: 'Error!', retryHandler });
     expect(retryHandler).not.toHaveBeenCalled();
-    const retryButton = screen.getByRole('button', {name: 'Retry'});
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
     expect(retryButton).toBeInTheDocument();
     await user.click(retryButton);
     expect(retryHandler).toHaveBeenCalled();
   });
 
   describe('when onClose is defined', ()=> {
-    it('if onClose function is defined then the "X" button is appear', function() {
+    it('the "X" button appears', function() {
       const onClose = jest.fn();
       renderEl({ error: 'Error!' });
       const closeButton = screen.queryByRole('button', { name: 'Close' });
