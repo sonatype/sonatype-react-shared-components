@@ -5,12 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { screen } from '@testing-library/react';
-import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
 import userEvent from '@testing-library/user-event';
 import NxLoadError from '../NxLoadError';
 
 describe('NxLoadError', function() {
   const renderEl = rtlRenderElement(NxLoadError, {});
+  const quickRender = rtlRender(NxLoadError, {});
 
   it('does not render anything if error is unset', function() {
     expect(renderEl()).not.toBeInTheDocument();
@@ -43,10 +44,11 @@ describe('NxLoadError', function() {
     expect(el?.textContent).toEqual('This is bad! Server Error');
   });
 
-  it('renders a retry button if there is an error and retryHandler is set', function() {
+  it('renders a retry button if there is an error and retryHandler is set', async function() {
     const elWithoutRetryButton = renderEl({ error: 'Error' });
     expect(elWithoutRetryButton?.textContent).not.toContain('Retry');
-    expect(quickRender({ error: 'Error', retryHandler: () => {} }).getByRole('button', { name: 'Retry' })).toBeInTheDocument();
+    expect(quickRender({ error: 'Error', retryHandler: () => {} }).getByRole('button', { name: 'Retry' }))
+        .toBeInTheDocument();
   });
 
   it('adds the appropriate class, variant, and type to the retry button', function() {
