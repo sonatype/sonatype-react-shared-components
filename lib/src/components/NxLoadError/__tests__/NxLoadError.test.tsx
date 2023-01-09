@@ -77,15 +77,26 @@ describe('NxLoadError', function() {
     expect(retryHandler).toHaveBeenCalled();
   });
 
-  it('calls the onClose function when the "X" button is clicked (to dismiss alert)', async function() {
-    const user = userEvent.setup();
-    const onClose = jest.fn();
-    renderEl({ error: 'Error!', onClose });
-    expect(onClose).not.toHaveBeenCalled();
-    const closeButton = screen.getByRole('button', { name: 'Close' });
-    expect(closeButton).toBeInTheDocument();
-    await user.click(closeButton);
-    expect(onClose).toHaveBeenCalled();
+  describe('when onClose is defined', ()=> {
+    it('if onClose function is defined then the "X" button is appear', function() {
+      const onClose = jest.fn();
+      renderEl({ error: 'Error!' });
+      const closeButton = screen.queryByRole('button', { name: 'Close' });
+      expect(closeButton).not.toBeInTheDocument();
+      renderEl({ error: 'Error!', onClose });
+      expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument();
+    });
+
+    it('calls the onClose function when the "X" button is clicked (to dismiss alert)', async function() {
+      const user = userEvent.setup();
+      const onClose = jest.fn();
+      renderEl({ error: 'Error!', onClose });
+      expect(onClose).not.toHaveBeenCalled();
+      const closeButton = screen.getByRole('button', { name: 'Close' });
+      expect(closeButton).toBeInTheDocument();
+      await user.click(closeButton);
+      expect(onClose).toHaveBeenCalled();
+    });
   });
 
   it('passes unknown props to the NxErrorAlert element', async function() {
