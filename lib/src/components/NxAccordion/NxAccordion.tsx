@@ -83,7 +83,7 @@ export default function NxAccordion(props: Props) {
     open: !!open,
     accordionId
   };
-
+  console.log(otherChildren);
   return (
     // By the standards, this role shouldn't be here explicitly and aria-expanded isn't valid.
     // But real-world screenreaders need them

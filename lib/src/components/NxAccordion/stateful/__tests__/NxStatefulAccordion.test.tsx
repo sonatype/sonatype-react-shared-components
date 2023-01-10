@@ -10,7 +10,7 @@ import userEvent from '@testing-library/user-event';
 import NxStatefulAccordion from '../NxStatefulAccordion';
 import NxAccordion from '../../NxAccordion';
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import NxButton from '../../../NxButton/NxButton';
 
 describe('NxStatefulAccordion', function() {
@@ -198,24 +198,24 @@ describe('NxStatefulAccordion', function() {
         const titleOnClick = jest.fn(),
             onToggle = jest.fn();
 
-        const { container } = render(
+        const component = render(
           <NxStatefulAccordion onToggle={onToggle}>
             <NxAccordion.Header>
-              <NxAccordion.Title onClick={titleOnClick}>Foo</NxAccordion.Title>
+              <span data-testid="foo" onClick={titleOnClick}>Foo</span>
             </NxAccordion.Header>
           </NxStatefulAccordion>,
         );
-        const title = container.querySelector<HTMLElement>('.nx-accordion__header-title')!;
+        const title = component.getByTestId('foo');
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(titleOnClick).not.toHaveBeenCalled();
-        expect(screen.getByRole('group')).not.toHaveAttribute('open');
+        expect(component.getByRole('group')).not.toHaveAttribute('open');
 
         await user.click(title);
 
         expect(onToggle).toHaveBeenCalledTimes(1);
         expect(titleOnClick).toHaveBeenCalledTimes(1);
-        expect(screen.getByRole('group')).toHaveAttribute('open');
+        expect(component.getByRole('group')).toHaveAttribute('open');
       });
     });
 
@@ -225,32 +225,32 @@ describe('NxStatefulAccordion', function() {
         const btnOnClick = jest.fn(),
             onToggle = jest.fn();
 
-        const { container } = render(
+        const component = render(
           <NxStatefulAccordion onToggle={onToggle}>
             <NxAccordion.Header>
               <NxAccordion.Title>Foo</NxAccordion.Title>
               <div className="nx-btn-bar">
-                <NxButton id="btn1" />
-                <NxButton id="btn2" onClick={btnOnClick} />
+                <NxButton data-testid="btn1"/>
+                <NxButton data-testid="btn2" onClick={btnOnClick} />
               </div>
             </NxAccordion.Header>
           </NxStatefulAccordion>,
         );
-        const btn1 = container.querySelector('button#btn1') as HTMLElement,
-            btn2 = container.querySelector('button#btn2') as HTMLElement;
+        const btn1 = component.getByTestId('btn1'),
+            btn2 = component.getByTestId('btn2');
 
-        expect(screen.getByRole('group')).not.toHaveAttribute('open');
+        expect(component.getByRole('group')).not.toHaveAttribute('open');
         await user.click(btn1);
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(btnOnClick).not.toHaveBeenCalled();
-        expect(screen.getByRole('group')).not.toHaveAttribute('open');
+        expect(component.getByRole('group')).not.toHaveAttribute('open');
 
         await user.click(btn2);
 
         expect(onToggle).not.toHaveBeenCalled();
         expect(btnOnClick).toHaveBeenCalled();
-        expect(screen.getByRole('group')).not.toHaveAttribute('open');
+        expect(component.getByRole('group')).not.toHaveAttribute('open');
       });
     });
   });
