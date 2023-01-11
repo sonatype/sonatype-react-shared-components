@@ -44,19 +44,17 @@ describe('NxStatefulAccordion', function() {
   });
 
   it('renders non-header children in content wrapper', function() {
-    const el = renderEl({
-      children: (
-        <>
-          <NxAccordion.Header>
-            <span>Foo</span>
-          </NxAccordion.Header>
-          <span className="bar">Bar</span>
-        </>
-      )
-    })!;
+    const { container } = render(
+      <NxAccordion>
+        <NxAccordion.Header>
+          <span>Foo</span>
+        </NxAccordion.Header>
+        <span className="bar">Bar</span>
+      </NxAccordion>
+    );
 
-    expect(el.querySelector('summary .bar')).not.toBeInTheDocument();
-    expect(el.querySelector('.bar')).toBeInTheDocument();
+    expect(container.querySelector('summary .bar')).not.toBeInTheDocument();
+    expect(container.querySelector('.bar')).toBeInTheDocument();
   });
 
   describe('Header', function() {
