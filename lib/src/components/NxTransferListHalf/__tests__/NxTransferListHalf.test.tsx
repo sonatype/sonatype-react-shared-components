@@ -146,21 +146,18 @@ describe('NxTransferListHalf', function() {
     expect(items[1]).toHaveTextContent('baz');
   });
 
-  it('renders a move icon and checkbox input only when onItemChange is provided', function() {
+  it('renders a checkbox input only when onItemChange is provided', function() {
     const onItemChange = jest.fn(),
         { container, rerender } = quickRender({ items: [{id: '1', displayName: 'foo'}], onItemChange }),
         item = container.querySelector('.nx-transfer-list__item') as HTMLElement,
-        icon = within(item).getByRole('img', { hidden: true }),
         checkbox = within(item).getByRole('checkbox');
 
     expect(item).toBeInTheDocument();
-    expect(icon).toBeInTheDocument();
     expect(checkbox).toBeInTheDocument();
 
     rerender(
       <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
     );
-    expect(icon).not.toBeInTheDocument();
     expect(checkbox).not.toBeInTheDocument();
   });
 
