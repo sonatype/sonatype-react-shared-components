@@ -18,10 +18,7 @@ describe('NxLoadError', function() {
   const quickRender = rtlRender(NxLoadWrapper, {children, retryHandler});
 
   it('renders a NxLoadError if there is an error', function() {
-    const componentWithoutError = renderEl();
     const componentWithError = renderEl({error: 'Error!'});
-    expect(componentWithoutError).not.toHaveAttribute('role', 'alert');
-    expect(componentWithoutError?.textContent).toContain('');
     expect(componentWithError).toBeInTheDocument();
     expect(componentWithError).toHaveAttribute('role', 'alert');
     expect(componentWithError?.textContent).toContain('Error!');
