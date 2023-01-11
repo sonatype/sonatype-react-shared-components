@@ -76,7 +76,7 @@ describe('NxLoadError', function() {
     expect(withFuncChild.textContent).toContain('Foo');
   });
 
-  it('passes the retryHandler to component and check that Retry button was ckicked', async function () {
+  it('passes the retryHandler to component and check that Retry button was clicked', async function () {
     const user = userEvent.setup();
     const elWithoutRetryButton = renderEl();
     expect(elWithoutRetryButton?.textContent).not.toContain('Retry');
