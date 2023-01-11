@@ -38,6 +38,10 @@
   --nx-color-tertiary-button-text: var(--nx-color-text-stark);
   --nx-color-tertiary-button-background-focus: transparent;
   --nx-color-tertiary-button-background-active: var(--nx-swatch-indigo-97);
+  --nx-color-error-button-background: var(--nx-color-alert-error);
+  --nx-color-error-button-background-hover: var(--nx-swatch-red-35);
+  --nx-color-error-button-background-active: var(--nx-swatch-pink-40);
+  --nx-color-error-button-text: var(--nx-swatch-white);
 
   --nx-color-text-stark: var(--nx-swatch-grey-05);
   --nx-color-text: var(--nx-swatch-grey-30);
@@ -78,9 +82,9 @@
     --nx-color-interactive-background-selected: var(--nx-swatch-blue-90);
     --nx-color-interactive-background-active: var(--nx-swatch-blue-95);
     --nx-color-interactive-background-hover: var(--nx-swatch-indigo-95);
-    --nx-color-interactive-background-disabled: var(--nx-swatch-grey-95);
+    --nx-color-interactive-background-disabled: var(--nx-swatch-indigo-40);
     --nx-color-interactive-border-hover: var(--nx-swatch-indigo-90);
-    --nx-color-interactive-border-disabled: var(--nx-swatch-grey-60);
+    --nx-color-interactive-border-disabled: transparent;
     --nx-color-interactive-border-focus: var(--nx-swatch-indigo-90); // NOTE: often overridden in dark mode
     --nx-color-interactive-shadow-focus: var(--nx-swatch-pink-90);
 
@@ -97,11 +101,16 @@
     --nx-color-tertiary-button-text: var(--nx-color-text);
     --nx-color-tertiary-button-background-focus: var(--nx-swatch-indigo-25);
     --nx-color-tertiary-button-background-active: var(--nx-swatch-indigo-20);
+    --nx-color-error-button-background-hover: var(--nx-swatch-red-25);
+    --nx-color-error-button-text: var(--nx-swatch-red-95);
 
     --nx-color-text-stark: var(--nx-swatch-indigo-90);
     --nx-color-text: var(--nx-swatch-indigo-80);
+    --nx-color-text-disabled: var(--nx-swatch-indigo-20);
 
     --nx-color-link: var(--nx-swatch-teal-75);
+
+    --nx-color-alert-error: var(--nx-swatch-red-35);
 
     --nx-color-validation-invalid: var(--nx-swatch-red-75);
   }

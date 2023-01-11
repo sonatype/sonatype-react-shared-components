@@ -92,27 +92,18 @@
 }
 
 .nx-btn--error {
-  background-color: var(--nx-color-alert-error);
+  background-color: var(--nx-color-error-button-background);
   border-color: transparent;
-  color: var(--nx-swatch-white);
+  color: var(--nx-color-error-button-text);
 
-  &:focus {
-    background-color: var(--nx-swatch-red-35);
-  }
-
-  &:hover {
-    background-color: var(--nx-swatch-red-35);
+  &:focus, &:hover {
+    background-color: var(--nx-color-error-button-background-hover);
   }
 
   &:active {
-    background-color: var(--nx-swatch-pink-40);
+    background-color: var(--nx-color-error-button-background-active);
     border-color: transparent;
     box-shadow: none;
-  }
-
-  .nx-icon {
-    color: var(--nx-swatch-white);
-    height: 16px;
   }
 }
 
