@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-dark-mode-helpers';
+
 :root {
   // page dimensions
   --nx-width-page-max: 1600px;
@@ -51,9 +53,11 @@
   --nx-border-2x: 2px solid var(--nx-color-border);
   --nx-border-secondary: 1px solid var(--nx-color-border-secondary);
 
+  --nx-border-width-button: 1px;
+
   --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
 
-  // for dropdown 
+  // for dropdown
   --nx-box-shadow-dropdown: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
                             0 1px 2px 0 rgba(91, 95, 141, 0.2),
                             0 1px 1px 0 rgba(124, 128, 179, 0.2);
@@ -63,4 +67,10 @@
 
   // Deprecated variables
   --nx-border-subsection: 1px solid var(--nx-color-subsection-border);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-border-width-button: 2px;
+
+    --nx-box-shadow-focus: 0 0 3px 2px var(--nx-color-interactive-shadow-focus);
+  }
 }
