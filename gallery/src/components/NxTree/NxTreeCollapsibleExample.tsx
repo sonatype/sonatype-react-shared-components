@@ -63,7 +63,7 @@ export default function NxTreeCollapsibleExample() {
                                    onActivate={() => document.getElementById('images-link')?.click()}>
                         <NxTree.ItemLabel>
                           <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
-                          <NxTextLink id="images-link" onClick={() => { alert('images'); }}>
+                          <NxTextLink href={catImagePath} id="images-link" tabIndex={-1}>
                             images
                           </NxTextLink>
                         </NxTree.ItemLabel>
