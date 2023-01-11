@@ -82,13 +82,13 @@ export { default as NxTabPanel, NxTabPanelProps } from './components/NxTabs/NxTa
 export {
   default as NxTreeView,
   NxCollapsibleItemsChild as NxTreeViewChild,
-  Props as NxTreeViewProps,
+  PublicProps as NxTreeViewProps,
   NxCollapsibleItemsChildProps as NxTreeViewChildProps
 } from './components/NxCollapsibleItems/NxCollapsibleItems';
 
 export {
   default as NxCollapsibleItems,
-  Props as NxCollapsibleItemsProps,
+  PublicProps as NxCollapsibleItemsProps,
   NxCollapsibleItemsChildProps
 } from './components/NxCollapsibleItems/NxCollapsibleItems';
 
