@@ -368,6 +368,8 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         <NxDropdownMenu id={dropdownId}
                         role='listbox'
                         ref={dropdownRef}
+                        isOpen={true}
+                        disableMenuKeyNav={true}
                         className='nx-combobox__menu'
                         onClosing={() => {}}
                         aria-label="listbox of combobox">

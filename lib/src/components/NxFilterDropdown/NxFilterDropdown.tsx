@@ -7,6 +7,7 @@
 import React, { Ref, useRef } from 'react';
 import { propEq, any } from 'ramda';
 import classnames from 'classnames';
+import useMergedRef from '@react-hook/merged-ref';
 
 import { Props, propTypes } from './types';
 import NxCheckbox from '../NxCheckbox/NxCheckbox';
@@ -36,7 +37,9 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
       } = props,
       menuRef = useRef<HTMLDivElement>(null),
       className = classnames('nx-filter-dropdown', classNameProp),
-      hasSelection = !!selectedIds.size;
+      hasSelection = !!selectedIds.size,
+      containerRef = useRef<HTMLDivElement>(null),
+      mergedRef = useMergedRef(containerRef, ref);
 
   // Throw an error if one of the selectedIds is not part of the available options
   selectedIds.forEach(itemId => {
@@ -68,12 +71,21 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
 
   function onResetClick() {
     onChange(new Set());
+    if (containerRef && containerRef.current) {
+      const toggleEl = containerRef.current.querySelector('.nx-dropdown__toggle');
+      if (toggleEl) {
+        (toggleEl as HTMLElement).focus();
+      }
+    }
   }
 
   const renderOption = ({ id, displayName }: DataItem<T>) => (
     <NxCheckbox key={id}
                 onChange={() => toggle(id)}
-                isChecked={selectedIds.has(id)}>
+                isChecked={selectedIds.has(id)}
+                inputAttributes={{
+                  role: 'menuitemcheckbox'
+                }}>
       {displayName}
     </NxCheckbox>
   );
@@ -90,7 +102,8 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
     <button key="reset-btn"
             disabled={!hasSelection}
             className="nx-dropdown-link nx-filter-dropdown__reset"
-            onClick={onResetClick}>
+            onClick={onResetClick}
+            role="menuitem">
       <Close />
       <span>Reset</span>
     </button>
@@ -106,7 +119,7 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
                 onToggleCollapse={onToggleCollapse}
                 onCloseClick={onCloseClick}
                 menuRef={menuRef}
-                ref={ref}
+                ref={mergedRef}
                 { ...attrs }>
       {children}
     </NxDropdown>

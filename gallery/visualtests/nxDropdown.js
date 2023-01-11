@@ -16,7 +16,8 @@ describe('NxDropdown', function() {
     waitAndGetElements,
     moveMouseAway,
     checkScreenshot,
-    a11yTest
+    a11yTest,
+    getPage
   } = setupBrowser('#/pages/Dropdown');
 
   const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown',
@@ -83,6 +84,16 @@ describe('NxDropdown', function() {
       const [targetElement] = await waitAndGetElements(selector);
 
       await moveMouseAway();
+
+      await checkScreenshot(targetElement, 251, 218);
+    });
+
+    it('looks right when focused via keyboard', async function() {
+      const [targetElement] = await waitAndGetElements(selector);
+      const page = getPage();
+
+      await moveMouseAway();
+      await page.keyboard.press('ArrowLeft');
 
       await checkScreenshot(targetElement, 251, 218);
     });

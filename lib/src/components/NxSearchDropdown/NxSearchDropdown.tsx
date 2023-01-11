@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useRef } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
-import { always, any, clamp, dec, inc, partial, pipe, prop } from 'ramda';
+import { any, partial, pipe, prop } from 'ramda';
 
 import './NxSearchDropdown.scss';
 
@@ -50,7 +50,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
       filterRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
 
-      [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
+      // [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
 
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
       dropdownMenuRole = error || loading || isEmpty ? 'alert' : 'menu',
@@ -84,39 +84,8 @@ function NxSearchDropdownRender<T extends string | number = string>(
     }
   }
 
-  // helper for focusing different buttons in the dropdown menu
-  const adjustBtnFocus = (adjust: (i: number) => number) => () => {
-        const newFocusableBtnIndex = adjust(focusableBtnIndex ?? 0),
-            elToFocus = menuRef.current?.children[newFocusableBtnIndex] as HTMLElement | null;
-
-        if (elToFocus) {
-          elToFocus.focus();
-          setFocusableBtnIndex(newFocusableBtnIndex);
-        }
-      },
-      focusNext = adjustBtnFocus(inc),
-      focusPrev = adjustBtnFocus(dec),
-      focusFirst = adjustBtnFocus(always(0)),
-      focusLast = adjustBtnFocus(always(matches.length - 1));
-
   function handleButtonKeyDown(evt: KeyboardEvent<HTMLElement>) {
     switch (evt.key) {
-      case 'Home':
-        focusFirst();
-        evt.preventDefault();
-        break;
-      case 'End':
-        focusLast();
-        evt.preventDefault();
-        break;
-      case 'ArrowDown':
-        focusNext();
-        evt.preventDefault();
-        break;
-      case 'ArrowUp':
-        focusPrev();
-        evt.preventDefault();
-        break;
       case 'Escape':
         focusTextInput();
         handleFilterChange('');
@@ -137,16 +106,6 @@ function NxSearchDropdownRender<T extends string | number = string>(
   function focusTextInput() {
     filterRef.current?.querySelector('input')?.focus();
   }
-
-  // Clamp or nullify focusableBtnIndex whenever the number of matches changes
-  useEffect(function() {
-    if (matches.length) {
-      setFocusableBtnIndex(clamp(0, matches.length - 1, focusableBtnIndex ?? 0));
-    }
-    else {
-      setFocusableBtnIndex(null);
-    }
-  }, [matches]);
 
   /*
    * Horrible Hack: When an element within the dropdown is removed from the DOM while it is focused, we want
@@ -192,20 +151,24 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       className={menuClassName}
                       onClosing={() => {}}
                       onKeyDown={handleButtonKeyDown}
+                      isOpen={true}
+                      toggleElementRef={filterRef}
                       aria-busy={!!loading}
                       aria-live="polite"
-                      aria-hidden={!showDropdown}>
+                      aria-hidden={!showDropdown}
+                      tabIndex={-1}>
         <NxLoadWrapper { ...{ loading, error } } retryHandler={() => doSearch(searchText)}>
           {
-            matches.length ? matches.map((match, i) =>
+            matches.length ? matches.map((match) =>
               <button role="menuitem"
                       type="button"
                       className="nx-dropdown-button"
                       disabled={disabled || undefined}
                       key={match.id}
-                      tabIndex={i === focusableBtnIndex ? 0 : -1}
+                      // tabIndex={i === focusableBtnIndex ? 0 : -1}
                       onClick={partial(onSelect, [match])}
-                      onFocus={() => setFocusableBtnIndex(i)}>
+                      // onFocus={() => setFocusableBtnIndex(i)}>
+                      >
                 {match.displayName}
               </button>
             ) :

@@ -15,10 +15,10 @@ export default function NxStatefulSegmentedButtonPrimaryExample() {
 
   return (
     <NxStatefulSegmentedButton variant="primary" onClick={onMainClick} buttonContent="Click Here">
-      <button className="nx-dropdown-button">
+      <button className="nx-dropdown-button" role="menuitem">
         Dropdown item 1
       </button>
-      <button className="nx-dropdown-button">
+      <button className="nx-dropdown-button" role="menuitem">
         Dropdown item 2
       </button>
     </NxStatefulSegmentedButton>

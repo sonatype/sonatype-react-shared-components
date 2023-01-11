@@ -56,6 +56,26 @@ describe('NxDropdown', () => {
     expect(icon).toHaveProp('icon', faCaretDown);
   });
 
+  it('sets toggle button aria-controls and menu id with unique id if menuId is not specified', function () {
+    const component = getMountedComponent({ isOpen: true });
+    const dropdown = component.find(AbstractDropdown);
+    const button = dropdown.find(NxButton);
+
+    const menuId = component.find(NxDropdownMenu).prop('id');
+    expect(button).toHaveProp('aria-controls', menuId);
+  });
+
+  it('sets toggle button aria-controls and menu id with specified menuId', function() {
+    const menuId = 'foo';
+    const component = getMountedComponent({ isOpen: true, menuId });
+    const dropdown = component.find(AbstractDropdown);
+    const button = dropdown.find(NxButton);
+    const menu = component.find(NxDropdownMenu);
+
+    expect(button).toHaveProp('aria-controls', menuId);
+    expect(menu).toHaveProp('id', menuId);
+  });
+
   it('renders the button according to the supplied variant', function() {
     let component = getMountedComponent();
     expect(component.find(NxButton)).toHaveProp('variant', 'tertiary');
