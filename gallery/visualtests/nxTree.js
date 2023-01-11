@@ -14,6 +14,7 @@ describe('NxTree', function() {
     waitAndGetElements,
     getPage,
     isFocused,
+    scrollPage,
     a11yTest
   } = setupBrowser('#/pages/Tree');
 
@@ -78,6 +79,23 @@ describe('NxTree', function() {
 
     await imagesCollapse.click();
     await simpleTest(collapsibleExampleSelector)();
+  });
+
+  // Check for RSC-1342
+  it('does not scroll when a partially out-of-view tree\'s label is clicked', async function() {
+    const [tree] = await waitAndGetElements(collapsibleExampleSelector),
+        images = await itemWithText(tree, 'images');
+
+    await scrollPage(0);
+
+    const imagesLowerBound = await images.evaluate(e => e.getBoundingClientRect().bottom),
+        viewportHeight = await getPage().evaluate(() => window.innerHeight),
+        desiredScroll = imagesLowerBound - viewportHeight - 50;
+
+    await scrollPage(desiredScroll);
+    await (await clickTarget(images)).click();
+
+    expect(await getPage().evaluate(() => window.scrollY)).toBe(desiredScroll);
   });
 
   describe('keyboard navigation', function() {
