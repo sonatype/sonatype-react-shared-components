@@ -4,11 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-// import React, { useState } from 'react';
 import React, { RefAttributes } from 'react';
-import { screen, fireEvent, render, within, createEvent, act } from '@testing-library/react';
-import { userEvent } from '../../../__testutils__/rtlUtils';
-import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import { screen, fireEvent, render, within, createEvent } from '@testing-library/react';
+import { runTimers, userEvent, rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxCombobox, { Props } from '../NxCombobox';
 import NxForm from '../../NxForm/NxForm';
@@ -1175,21 +1173,6 @@ describe('NxCombobox', function() {
   });
 
   describe('filterInput prop', function() {
-    beforeEach(function() {
-      // fixes "An update to ForwardRef(Tooltip) inside a test was not wrapped in act" errors
-      jest.useFakeTimers();
-    });
-
-    afterEach(runTimers);
-
-    async function runTimers() {
-      await act(async () => { await jest.runAllTimers(); });
-    }
-
-    async function advanceTimers(time: number) {
-      await act(async () => { await jest.advanceTimersByTime(time); });
-    }
-
     describe('when false, null, or undefined', function() {
       it('does not render a clear button', async function() {
         const unsetNoValue = quickRender(),
@@ -1224,7 +1207,7 @@ describe('NxCombobox', function() {
       // tested here
 
       it('renders a clear button with "Clear filter" as the tooltip and a11y name', async function() {
-        const user = userEvent.setup({ advanceTimers }),
+        const user = userEvent.setup(),
             view = quickRender({ value: 'a' });
 
         await runTimers();
@@ -1240,7 +1223,7 @@ describe('NxCombobox', function() {
       });
 
       it('still clears the input and triggers a search on the empty string when Escape key is pressed', async () => {
-        const user = userEvent.setup({ advanceTimers }),
+        const user = userEvent.setup(),
             onChange = jest.fn(),
             onSearch = jest.fn(),
             { getByRole } = quickRender({
@@ -1263,7 +1246,7 @@ describe('NxCombobox', function() {
       });
 
       it('clears the input when the clear button is clicked', async function() {
-        const user = userEvent.setup({ advanceTimers }),
+        const user = userEvent.setup(),
             onChange = jest.fn(),
             onSearch = jest.fn(),
             view = quickRender({
@@ -1312,7 +1295,7 @@ describe('NxCombobox', function() {
       const quickRender = rtlRender<Props>(NxCombobox, { ...minimalProps, filterInput: 'search' });
 
       it('renders a clear button with "Clear search" as the tooltip and a11y name', async function() {
-        const user = userEvent.setup({ advanceTimers }),
+        const user = userEvent.setup(),
             view = quickRender({ value: 'a' });
 
         await runTimers();
@@ -1328,7 +1311,7 @@ describe('NxCombobox', function() {
       });
 
       it('still clears the input and triggers a search on the empty string when Escape key is pressed', async () => {
-        const user = userEvent.setup({ advanceTimers }),
+        const user = userEvent.setup(),
             onChange = jest.fn(),
             onSearch = jest.fn(),
             { getByRole } = quickRender({
@@ -1351,7 +1334,7 @@ describe('NxCombobox', function() {
       });
 
       it('clears the input when the clear button is clicked', async function() {
-        const user = userEvent.setup({ advanceTimers }),
+        const user = userEvent.setup(),
             onChange = jest.fn(),
             onSearch = jest.fn(),
             view = quickRender({
