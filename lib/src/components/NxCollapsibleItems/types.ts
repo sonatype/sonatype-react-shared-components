@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface PublicProps extends HTMLAttributes<HTMLDivElement> {
   onToggleCollapse?: (() => void) | null;
   isOpen: boolean;
   disabled?: boolean | null;
@@ -19,12 +19,16 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
+export interface Props extends PublicProps {
+  contentBeforeChildren?: ReactNode;
+}
+
 // NxCollapsibleItemsChild takes exactly one child element
 export interface NxCollapsibleItemsChildProps extends HTMLAttributes<Element> {
   children: ReactChild;
 }
 
-export const propTypes: PropTypes.ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<PublicProps> = {
   onToggleCollapse: PropTypes.func,
   isOpen: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,

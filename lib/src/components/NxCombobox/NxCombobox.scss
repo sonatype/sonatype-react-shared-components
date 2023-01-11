@@ -11,8 +11,7 @@
   position: relative;
 
   &__menu {
-    display: none;
-    right: 100%;
+    position: absolute;
     width: 100%;
   }
 
@@ -22,8 +21,7 @@
 
   &__alert {
     @include nx-container-helpers.container-vertical;
-    display: none;
-    right: 100%;
+    position: absolute;
     width: 100%;
     border-radius: var(--nx-border-radius);
     margin: var(--nx-spacing-base) 0 0 0;
@@ -45,30 +43,6 @@
     text-align: center;
   }
 
-  &--dropdown-showable {
-    @mixin show-dropdown {
-      .nx-combobox__menu {
-        display: block;
-        position: absolute;
-        right: initial;
-  
-        .nx-dropdown-button.selected {
-          background-color: var(--nx-swatch-blue-90);
-        }
-      }
-  
-      .nx-combobox__alert {
-        display: block;
-        position: absolute;
-        right: initial;
-      }
-    }
-
-    &:focus-within {
-      @include show-dropdown;
-    }
-  }
-
   &--long{
     .nx-combobox__input{
       width: var(--nx-width-form-element-wide);
@@ -85,6 +59,10 @@
     }
   }
 
+  .nx-dropdown-button.selected {
+    background-color: var(--nx-swatch-blue-90);
+  }
+  
   .nx-loading-spinner {
     padding-top: var(--nx-spacing-6x);
     padding-bottom: var(--nx-spacing-6x);

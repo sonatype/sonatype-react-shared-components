@@ -8,7 +8,7 @@
 import React, { ReactElement } from 'react';
 
 import { Option } from './commonTypes';
-import NxCollapsibleItems from '../NxCollapsibleItems/NxCollapsibleItems';
+import NxCollapsibleItems, { PrivateNxCollapsibleItems } from '../NxCollapsibleItems/NxCollapsibleItems';
 import NxTooltip from '../NxTooltip/NxTooltip';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import { TooltipConfigProps } from '../../util/tooltipUtils';
@@ -110,19 +110,19 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
   };
 
   return (
-    <NxCollapsibleItems onToggleCollapse={onToggleCollapse}
-                        isOpen={isOpen && options.length > 0}
-                        id={id}
-                        role="menu"
-                        triggerContent={triggerWithCounter}
-                        triggerTooltip={getTriggerTooltip()}
-                        disabled={disabled}
-                        className="nx-collapsible-items--select"
-                        aria-describedby={counter && counter.props.id}>
-      {filterContent}
+    <PrivateNxCollapsibleItems onToggleCollapse={onToggleCollapse}
+                               isOpen={isOpen && options.length > 0}
+                               contentBeforeChildren={filterContent}
+                               id={id}
+                               role="menu"
+                               triggerContent={triggerWithCounter}
+                               triggerTooltip={getTriggerTooltip()}
+                               disabled={disabled}
+                               className="nx-collapsible-items--select"
+                               aria-describedby={counter && counter.props.id}>
       { selectAllOption && <NxCollapsibleItems.Child>{selectAllOption}</NxCollapsibleItems.Child> }
       {renderedOptions}
-    </NxCollapsibleItems>
+    </PrivateNxCollapsibleItems>
   );
 }
 
