@@ -655,14 +655,14 @@ describe('NxTree', function() {
       expect(await hasClass(images, 'open')).toBe(true);
       await imagesClick.click();
 
-      const sawAlert = new Promise(resolve => {
-        page.once('dialog', dialog => {
-          dialog.dismiss().then(resolve);
+      const sawSecondPopup = new Promise(resolve => {
+        page.once('popup', newTab => {
+          newTab.close().then(resolve);
         });
       });
 
       await page.keyboard.press('Enter');
-      await sawAlert;
+      await sawSecondPopup;
 
       expect(await hasClass(images, 'open')).toBe(true);
     });
