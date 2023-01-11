@@ -12,10 +12,13 @@ import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxLoadWrapper from '../NxLoadWrapper';
 
 describe('NxLoadError', function() {
-  const children = <div className="children"/>,
-      retryHandler = jest.fn();
-  const renderEl = rtlRenderElement(NxLoadWrapper, {children, retryHandler});
-  const quickRender = rtlRender(NxLoadWrapper, {children, retryHandler});
+  const children = <div className="children">Foo</div>;
+  const minimalProps = {
+    children,
+    retryHandler: () => {}
+  };
+  const renderEl = rtlRenderElement(NxLoadWrapper, minimalProps);
+  const quickRender = rtlRender(NxLoadWrapper, minimalProps);
 
   it('renders a component and checked if there was an error', function() {
     const componentWithError = renderEl({error: 'Error!'});
@@ -27,33 +30,23 @@ describe('NxLoadError', function() {
   it('passes the retryHandler to component', function () {
     const elWithoutRetryButton = renderEl();
     expect(elWithoutRetryButton?.textContent).not.toContain('Retry');
-    expect(quickRender({ error: 'Error', retryHandler: () => {} }).getByRole('button', { name: 'Retry' }))
+    expect(quickRender({ error: 'Error' }).getByRole('button', { name: 'Retry' }))
         .toBeInTheDocument();
   });
 
   it('renders a loading spinner if error is not set and loading is true', function() {
     const elWithoutRetryButton = renderEl();
     expect(elWithoutRetryButton?.textContent).not.toContain('Loading…');
-    expect(quickRender({ loading: true, retryHandler: () => {} }).container.textContent).toContain('Loading…');
+    expect(quickRender({ loading: true }).container.textContent).toContain('Loading…');
   });
 
   it('renders provided children if loading is false and error is unset', function() {
-    const { container: withChildren } = quickRender({
-      children: (
-        <div id='childrenId'>Foo</div>
-      )
-    });
+    const { container: withChildren } = quickRender();
     const { container: withLoading } = quickRender({
-      children: (
-        <div id='childrenId'>Foo</div>
-      ),
       loading: true,
       error: ''
     });
     const { container: withError } = quickRender({
-      children: (
-        <div id='childrenId'>Foo</div>
-      ),
       loading: false,
       error: 'Error'
     });
@@ -64,7 +57,7 @@ describe('NxLoadError', function() {
   });
 
   it('renders children provided by a function if loading is false and error is unset', function() {
-    const childrenFn = () => (<div id='childrenId'>Foo</div>);
+    const childrenFn = () => children;
     const { container: withFuncChild } = quickRender({
       children: childrenFn,
       loading: false,
@@ -75,6 +68,7 @@ describe('NxLoadError', function() {
 
   it('passes the retryHandler to component and check that Retry button was clicked', async function () {
     const user = userEvent.setup();
+    const retryHandler = jest.fn();
     const elWithoutRetryButton = renderEl();
     expect(elWithoutRetryButton?.textContent).not.toContain('Retry');
     expect(quickRender({ error: 'Error', retryHandler }).getByRole('button', { name: 'Retry' }))
