@@ -45,12 +45,12 @@ describe('NxStatefulAccordion', function() {
 
   it('renders non-header children in content wrapper', function() {
     const { container } = render(
-      <NxAccordion>
+      <NxStatefulAccordion>
         <NxAccordion.Header>
           <span>Foo</span>
         </NxAccordion.Header>
         <span className="bar">Bar</span>
-      </NxAccordion>
+      </NxStatefulAccordion>
     );
 
     expect(container.querySelector('summary .bar')).not.toBeInTheDocument();
