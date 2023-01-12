@@ -19,8 +19,8 @@ export default function NxAccordionButtonHeaderExample() {
           ellipsis truncation.
         </NxAccordion.Title>
         <div className="nx-btn-bar">
-          <NxButton variant="tertiary" onClick={() => { alert('Edit click'); }}>
-            Edit
+          <NxButton variant="tertiary" onClick={() => { alert('Tertiary Button clicked'); }}>
+            Tertiary Button
           </NxButton>
         </div>
       </NxAccordion.Header>

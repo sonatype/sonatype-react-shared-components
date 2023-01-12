@@ -145,3 +145,28 @@
     }
   }
 }
+
+.nx-html--dark-mode{
+  .nx-accordion__summary-wrapper {
+    .nx-btn--tertiary {
+      border-color: var(--nx-swatch-indigo-60);
+      color: var( --nx-swatch-indigo-80);    
+    
+      &:hover {
+        background-color: transparent;
+        border-color: var(--nx-color-interactive-border-hover);
+      }
+    
+      &:focus {
+        background-color: transparent;
+        border-color: var(--nx-color-interactive-border-focus);
+      }
+    
+      &:active {
+        background-color: var(--nx-swatch-indigo-97);
+        border-color: var(--nx-color-interactive-border-hover);
+        box-shadow: none;
+      }
+    }
+  }
+}
