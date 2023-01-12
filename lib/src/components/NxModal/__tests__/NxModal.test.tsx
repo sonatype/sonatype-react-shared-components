@@ -6,12 +6,14 @@
  */
 import React from 'react';
 import {mount, shallow} from 'enzyme';
+import 'jest-enzyme';
 
 import { getMountedComponent } from '../../../__testutils__/enzymeUtils';
 import NxModal, { Props } from '../NxModal';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import NxButton from '../../NxButton/NxButton';
 import { Tooltip } from '@material-ui/core';
+import { runTimers } from '../../../__testutils__/rtlUtils';
 
 describe('NxModal', function() {
   const dummyCloseHandler = jest.fn();
@@ -176,7 +178,7 @@ describe('NxModal', function() {
     expect(tooltip.prop('PopperProps')!.container).toBe(nxModal.getDOMNode());
   });
 
-  it('moves focus back to the previously focused element when closed', function(done) {
+  it('moves focus back to the previously focused element when closed', async function() {
     function Fixture({ modalOpen }: { modalOpen: boolean }) {
       return (
         <>
@@ -204,10 +206,9 @@ describe('NxModal', function() {
     expect(component).not.toContainMatchingElement(NxModal);
 
     // The focus is moved asynchronously
-    setTimeout(() => {
-      expect(document.activeElement === externalBtn).toBe(true);
-      done();
-    }, 100);
+    await runTimers();
+
+    expect(document.activeElement === externalBtn).toBe(true);
   });
 });
 

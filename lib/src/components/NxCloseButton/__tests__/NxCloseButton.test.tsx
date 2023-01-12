@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { mount } from 'enzyme';
+import 'jest-enzyme';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxCloseButton from '../NxCloseButton';
