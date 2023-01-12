@@ -28,7 +28,7 @@
     background-color: var(--nx-swatch-blue-90);
   }
 
-  &:focus {
+  &:focus:not(:active) {
     border: 1px solid var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
     outline: 0;
