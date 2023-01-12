@@ -4,13 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-// import { faArrowDown, faArrowUp, faEdit, faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+
 import { includes } from 'ramda';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import { within, render, act, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { rtlRenderElement, rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import { within, render, screen, waitFor } from '@testing-library/react';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxTransferListHalf, { Props } from '../NxTransferListHalf';
@@ -281,24 +280,8 @@ describe('NxTransferListHalf', function() {
   });
 
   describe('reordering', function() {
-    beforeEach(function() {
-      // fixes "An update to ForwardRef(Tooltip) inside a test was not wrapped in act" errors
-      jest.useFakeTimers();
-    });
-
-    afterEach(runTimers);
-
-    async function runTimers() {
-      await act(async () => { await jest.runAllTimers(); });
-    }
-
-    async function advanceTimers(time: number) {
-      await act(async () => { await jest.advanceTimersByTime(time); });
-    }
-
     it('renders move up and down buttons inside .nx-transfer-list__item when allowReordering is true',
         async function() {
-          jest.useRealTimers();
           const dataItems = [{
             id: '1',
             displayName: 'foo'
@@ -374,7 +357,7 @@ describe('NxTransferListHalf', function() {
         displayName: 'foobar'
       }];
 
-      const user = userEvent.setup({advanceTimers}),
+      const user = userEvent.setup(),
           onReorderItem = jest.fn(),
           component = renderEl({items: dataItems, allowReordering: true, onReorderItem})!,
           items = component.querySelectorAll<HTMLElement>('.nx-transfer-list__item'),
@@ -419,7 +402,7 @@ describe('NxTransferListHalf', function() {
         displayName: 'foobar'
       }];
 
-      const user = userEvent.setup({advanceTimers}),
+      const user = userEvent.setup(),
           onReorderItem = jest.fn(),
           component = renderEl({ allowReordering: true, items: dataItems, onReorderItem })!;
 
@@ -450,7 +433,7 @@ describe('NxTransferListHalf', function() {
           displayName: 'foobar'
         }];
 
-        const user = userEvent.setup({advanceTimers}),
+        const user = userEvent.setup(),
             onReorderItem = jest.fn(),
             component = renderEl({ items: dataItems, filterValue: 'fo', allowReordering: true, onReorderItem })!,
             items = component.querySelectorAll<HTMLElement>('.nx-transfer-list__item');
@@ -490,7 +473,7 @@ describe('NxTransferListHalf', function() {
           displayName: 'foobar'
         }];
 
-        const user = userEvent.setup({advanceTimers}),
+        const user = userEvent.setup(),
             onReorderItem = jest.fn(),
             component = renderEl({items: dataItems, filterValue: 'fo', allowReordering: true, onReorderItem})!,
             items = component.querySelectorAll<HTMLElement>('.nx-transfer-list__item'),
