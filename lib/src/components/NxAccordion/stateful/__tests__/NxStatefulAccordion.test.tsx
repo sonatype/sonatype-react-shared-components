@@ -5,11 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import userEvent from '@testing-library/user-event';
 
 import NxStatefulAccordion from '../NxStatefulAccordion';
 import NxAccordion from '../../NxAccordion';
-import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
 import { render } from '@testing-library/react';
 import NxButton from '../../../NxButton/NxButton';
 
