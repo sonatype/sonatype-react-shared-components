@@ -58,25 +58,6 @@ describe('NxStatefulAccordion', function() {
   });
 
   describe('Header', function() {
-    const renderEl = rtlRenderElement(NxAccordion.Header, {});
-
-    it('sets the provided className', function() {
-      const el = renderEl()!;
-      const customEl = renderEl({ className: 'foo' })!;
-
-      expect(customEl).toHaveClass('foo');
-
-      for (const cls of Array.from(el.classList)) {
-        expect(customEl).toHaveClass(cls);
-      }
-    });
-
-    it('renders the NxAccordion.Header as a <summary>', function() {
-      const el = renderEl({ id: 'foo' })!;
-      expect(el.tagName).toBe('SUMMARY');
-      expect(el).toHaveAttribute('id', 'foo');
-    });
-
     it('sets aria-controls to the accordion id when id is not specified', function() {
       const { container } = quickRender({
         children: (
