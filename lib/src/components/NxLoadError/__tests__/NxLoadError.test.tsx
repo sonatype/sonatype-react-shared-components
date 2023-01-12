@@ -4,86 +4,108 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import NxLoadError, { Props } from '../NxLoadError';
-import NxButton from '../../NxButton/NxButton';
-import { NxErrorAlert } from '../../NxAlert/NxAlert';
+import { screen } from '@testing-library/react';
+import { userEvent, rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
+import NxLoadError from '../NxLoadError';
 
 describe('NxLoadError', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxLoadError, {});
+  const renderEl = rtlRenderElement(NxLoadError, {});
+  const quickRender = rtlRender(NxLoadError, {});
 
   it('does not render anything if error is unset', function() {
-    expect(getShallowComponent()).toBeEmptyRender();
+    expect(renderEl()).not.toBeInTheDocument();
   });
 
   it('renders an error alert when error is set', function() {
-    expect(getShallowComponent({ error: 'Error!' }))
-        .toContainMatchingElement(NxErrorAlert);
+    const el = renderEl({ error: 'Error!' });
+    expect(el).toHaveAttribute('role', 'alert');
   });
 
   it('passes a default title message if there is an error', function() {
-    expect(getShallowComponent({ error: 'Error!' }).render().text())
-        .toContain('An error occurred loading data');
+    const el = renderEl({ error: '' });
+    expect(el?.textContent).toContain('An error occurred loading data. ');
   });
 
   it('uses the specified title message instead of the default', function() {
-    expect(getShallowComponent({ error: 'Error!', titleMessage: 'This is bad' }).render().text())
-        .not.toContain('An error occurred loading data');
+    const el = renderEl({ error: '', titleMessage: 'This is bad!' });
+    expect(el?.textContent).not.toContain('An error occurred loading data. ');
+    expect(el?.textContent).toContain('This is bad! ');
 
-    expect(getShallowComponent({ error: 'Error!', titleMessage: 'This is bad' }).render().text())
-        .toContain('This is bad');
   });
 
-  it('Uses the error as children', function() {
-    expect(getShallowComponent({ error: 'Server Error', titleMessage: 'This is bad!' }).render().text())
-        .toContain('Server Error');
+  it('renders the error as part of the text content', function() {
+    const el = renderEl({ error: 'Server Error', titleMessage: 'This is bad Error!' });
+    expect(el?.textContent).toContain('Server Error');
   });
 
   it('renders the full error message', function() {
-    const shallowComponent = getShallowComponent({ error: 'Server Error', titleMessage: 'This is bad!' }),
-        childrenText = shallowComponent.render().text();
-
-    expect(childrenText).toEqual('This is bad! Server Error');
+    const el = renderEl({ error: 'Server Error', titleMessage: 'This is bad!' });
+    expect(el?.textContent).toEqual('This is bad! Server Error');
   });
 
   it('renders a retry button if there is an error and retryHandler is set', function() {
-    expect(getShallowComponent({ error: 'Error!' })).not.toContainMatchingElement(NxButton);
-
-    expect(getShallowComponent({ error: 'Error!', retryHandler: () => {} })).toContainMatchingElement(NxButton);
-    expect(getShallowComponent({ error: 'Error!', retryHandler: () => {} }).find(NxButton)).toIncludeText('Retry');
+    const elWithoutRetryButton = renderEl({ error: 'Error' });
+    expect(elWithoutRetryButton?.textContent).not.toContain('Retry');
+    expect(quickRender({ error: 'Error', retryHandler: () => {} }).getByRole('button', { name: 'Retry' }))
+        .toBeInTheDocument();
   });
 
-  it('adds the appropriate class, variant, and type to the retry button', function() {
-    const button = getShallowComponent({ error: 'Error!', retryHandler: () => {} }).find(NxButton);
-
-    expect(button).toHaveClassName('nx-load-error__retry');
-    expect(button).toHaveProp('variant', 'error');
-    expect(button).toHaveProp('type', 'button');
+  it('adds the appropriate type to the retry button', function() {
+    renderEl({ error: 'Error', retryHandler: () => {} });
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
+    expect(retryButton).toBeInTheDocument();
+    expect(retryButton).toHaveAttribute('type', 'button');
   });
 
   it('sets the retry button type to "submit" when submitOnRetry is set to true', function() {
-    const props = { error: 'Error!', submitOnRetry: true };
-    const button = getShallowComponent(props).find(NxButton);
-    expect(button).toHaveProp('type', 'submit');
+    renderEl({ error: 'Error', submitOnRetry: true });
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
+    expect(retryButton).toBeInTheDocument();
+    expect(retryButton).toHaveAttribute('type', 'submit');
   });
 
-  it('calls the retryHandler when the retry button is clicked', function() {
-    const retryHandler = jest.fn(),
-        props = { error: 'Error!', canRetry: true, retryHandler },
-        component = getShallowComponent(props);
-
+  it('calls the retryHandler when the retry button is clicked', async function() {
+    const user = userEvent.setup();
+    const retryHandler = jest.fn();
+    renderEl({ error: 'Error!', retryHandler });
     expect(retryHandler).not.toHaveBeenCalled();
-
-    component.find(NxButton).simulate('click');
-
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
+    expect(retryButton).toBeInTheDocument();
+    await user.click(retryButton);
     expect(retryHandler).toHaveBeenCalled();
   });
 
-  it('passes unknown props to the NxErrorAlert element', function() {
-    const onClick = jest.fn(),
-        component = getShallowComponent({ error: 'err', id: 'foo', onClick });
+  describe('when onClose is defined', ()=> {
+    it('the "X" button appears', function() {
+      const onClose = jest.fn();
+      renderEl({ error: 'Error!' });
+      const closeButton = screen.queryByRole('button', { name: 'Close' });
+      expect(closeButton).not.toBeInTheDocument();
+      renderEl({ error: 'Error!', onClose });
+      expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument();
+    });
 
-    expect(component).toHaveProp('id', 'foo');
-    expect(component).toHaveProp('onClick', onClick);
+    it('calls the onClose function when the "X" button is clicked (to dismiss alert)', async function() {
+      const user = userEvent.setup();
+      const onClose = jest.fn();
+      renderEl({ error: 'Error!', onClose });
+      expect(onClose).not.toHaveBeenCalled();
+      const closeButton = screen.getByRole('button', { name: 'Close' });
+      expect(closeButton).toBeInTheDocument();
+      await user.click(closeButton);
+      expect(onClose).toHaveBeenCalled();
+    });
+  });
+
+  it('passes unknown props to the alert element', async function() {
+    const onClick = jest.fn();
+    const component = renderEl({error: 'Error!'})!;
+    const customizedComponent = renderEl({ error: 'err', id: 'foo', className: 'bar', onClick });
+    expect(onClick).not.toHaveBeenCalled();
+    expect(customizedComponent).toHaveClass('bar');
+    expect(customizedComponent).toHaveAttribute('id', 'foo');
+    for (const cls of Array.from(component.classList)) {
+      expect(customizedComponent).toHaveClass(cls);
+    }
   });
 });

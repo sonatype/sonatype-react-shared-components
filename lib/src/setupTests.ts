@@ -6,19 +6,26 @@
  */
 /// <reference types="./__testutils__/jest-enzyme-overrides" />
 
-import 'jest-enzyme';
-
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { runTimers } from './__testutils__/rtlUtils';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-// JSDOM is missing this function. https://github.com/jsdom/jsdom/issues/3002
-Range.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
-  bottom: 0,
-  height: 0,
-  left: 0,
-  right: 0,
-  top: 0,
-  width: 0
-} as DOMRect);
+beforeEach(function() {
+  // because so many of our components rely on NxTooltip which initializes asynchronously. If some tests
+  // use fake timers and some don't it can cause weird inter-test timing bugs
+  jest.useFakeTimers();
+
+  // JSDOM is missing this function. https://github.com/jsdom/jsdom/issues/3002
+  Range.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 0,
+    height: 0,
+    left: 0,
+    right: 0,
+    top: 0,
+    width: 0
+  } as DOMRect);
+});
+
+afterEach(runTimers);

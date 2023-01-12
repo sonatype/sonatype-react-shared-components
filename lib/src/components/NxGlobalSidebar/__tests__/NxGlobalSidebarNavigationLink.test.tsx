@@ -8,6 +8,7 @@
 import { faCrow, faBiohazard } from '@fortawesome/free-solid-svg-icons';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 import NxGlobalSidebarNavigationLink, { NxGlobalSidebarNavigationLinkProps as Props }

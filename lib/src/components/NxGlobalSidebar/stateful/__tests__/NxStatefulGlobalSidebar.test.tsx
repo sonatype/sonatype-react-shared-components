@@ -8,6 +8,7 @@ import React from 'react';
 import { faCrow, faBiohazard } from '@fortawesome/free-solid-svg-icons';
 
 import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import NxStatefulGlobalSidebar, { Props } from '../NxStatefulGlobalSidebar';
 import NxGlobalSidebar from '../../NxGlobalSidebar';
 

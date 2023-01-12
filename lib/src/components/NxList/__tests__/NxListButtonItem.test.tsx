@@ -8,6 +8,7 @@ import React from 'react';
 import { NxListButtonItemProps } from '../types';
 import NxList from '../NxList';
 import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 
 describe('NxListButtonItem', function() {
 

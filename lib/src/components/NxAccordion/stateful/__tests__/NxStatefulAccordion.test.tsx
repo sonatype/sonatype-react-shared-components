@@ -9,6 +9,7 @@ import { act } from 'react-dom/test-utils';
 import NxStatefulAccordion, { Props } from '../NxStatefulAccordion';
 import NxAccordion from '../../NxAccordion';
 import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 
 describe('NxStatefulAccordion', function() {
   const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulAccordion, {});
