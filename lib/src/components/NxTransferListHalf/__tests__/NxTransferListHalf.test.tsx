@@ -9,7 +9,7 @@ import { includes } from 'ramda';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { rtlRenderElement, rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
-import { within, render, screen, waitFor } from '@testing-library/react';
+import { within, render, screen } from '@testing-library/react';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxTransferListHalf, { Props } from '../NxTransferListHalf';
@@ -297,10 +297,12 @@ describe('NxTransferListHalf', function() {
               middleItem = container.querySelectorAll<HTMLElement>('.nx-transfer-list__item')[1],
               buttons = within(middleItem).getAllByRole('button', { hidden: true });
 
+          await runTimers();
+
           // assert both a move up and move down button are present
           expect(buttons.length).toBe(2);
-          await waitFor(() => expect(buttons[0]).toHaveAccessibleName('Move Up'));
-          await waitFor(() => expect(buttons[1]).toHaveAccessibleName('Move Down'));
+          expect(buttons[0]).toHaveAccessibleName('Move Up');
+          expect(buttons[1]).toHaveAccessibleName('Move Down');
 
           rerender(<NxTransferListHalf {...minimalProps} allowReordering={false} items={dataItems}/>);
           expect(buttons[0]).not.toBeInTheDocument();
