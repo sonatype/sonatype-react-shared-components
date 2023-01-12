@@ -29,7 +29,7 @@
   }
 
   &:focus:not(:active) {
-    border: 1px solid var(--nx-color-interactive-border-focus);
+    border-color: var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
     outline: 0;
   }
