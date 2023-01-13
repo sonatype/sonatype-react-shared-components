@@ -77,6 +77,8 @@ describe('NxLoadError', function() {
         error: ''
       });
       expect(withFuncChild.textContent).toContain('Foo');
+      expect(withFuncChild.textContent).not.toContain('Loading…');
+      expect(withFuncChild).not.toHaveAttribute('role', 'alert');
     });
   });
 });
