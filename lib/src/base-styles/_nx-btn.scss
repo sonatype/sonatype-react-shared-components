@@ -100,6 +100,10 @@
     background-color: var(--nx-color-error-button-background-hover);
   }
 
+  &:focus:not(:active) {
+    border-color: var(--nx-color-error-button-border-focus);
+  }
+
   &:active {
     background-color: var(--nx-color-error-button-background-active);
     border-color: transparent;
