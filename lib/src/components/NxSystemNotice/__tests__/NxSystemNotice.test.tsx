@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { shallow } from 'enzyme';
+import 'jest-enzyme';
 import NxSystemNotice from '../NxSystemNotice';
 
 describe('NxSystemNotice', function() {

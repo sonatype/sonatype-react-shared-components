@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { shallow } from 'enzyme';
+import 'jest-enzyme';
 import React from 'react';
 
 import {

@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { shallow } from 'enzyme';
+import 'jest-enzyme';
 import NxTabList from '../NxTabList';
 
 describe('NxTabList', function () {

@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { ShallowWrapper } from 'enzyme';
+import 'jest-enzyme';
 import { always } from 'ramda';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';

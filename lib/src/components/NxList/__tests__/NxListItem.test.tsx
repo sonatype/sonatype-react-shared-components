@@ -7,6 +7,7 @@
 import React from 'react';
 import NxList from '../NxList';
 import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 
 describe('NxListItem', function() {
 

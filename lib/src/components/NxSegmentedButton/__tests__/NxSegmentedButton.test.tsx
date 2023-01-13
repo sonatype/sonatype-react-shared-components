@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { mount } from 'enzyme';
+import 'jest-enzyme';
 import { act } from 'react-dom/test-utils';
 
 import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';

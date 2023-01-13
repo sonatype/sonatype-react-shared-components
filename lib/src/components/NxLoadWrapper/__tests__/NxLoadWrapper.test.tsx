@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import NxLoadWrapper, { Props } from '../NxLoadWrapper';
 import NxLoadError from '../../NxLoadError/NxLoadError';
 import NxLoadingSpinner from '../../NxLoadingSpinner/NxLoadingSpinner';
