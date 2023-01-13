@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 
 import NxThreatCounter, { Props } from '../NxThreatCounter';
 

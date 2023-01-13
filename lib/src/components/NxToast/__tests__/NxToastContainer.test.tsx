@@ -8,7 +8,7 @@
 import React from 'react';
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
 import { screen, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxToastContainer from '../NxToastContainer';
 import { NxToastContainerProps } from '../types';
@@ -69,6 +69,7 @@ describe('NxToastContainer', function() {
 
   it('sets focus to previous focused element when the last remaining toast is closed',
       async function() {
+        const user = userEvent.setup();
         render(
           <>
             <button type="button">Focus Me</button>
@@ -86,7 +87,7 @@ describe('NxToastContainer', function() {
         prevFocusBtn.focus();
 
         closeBtn.focus();
-        await userEvent.click(closeBtn);
+        await user.click(closeBtn);
 
         expect(prevFocusBtn).toHaveFocus();
       });
@@ -94,6 +95,7 @@ describe('NxToastContainer', function() {
   it('sets focus to previous focused element (before any toasts rendered) when the last remaining toast is closed',
       async function() {
 
+        const user = userEvent.setup();
         const { rerender } = render(
           <>
             <button type="button">Focus Me</button>
@@ -120,7 +122,7 @@ describe('NxToastContainer', function() {
         const closeBtn = screen.getByRole('button', {name: 'Close'});
 
         closeBtn.focus();
-        await userEvent.click(closeBtn);
+        await user.click(closeBtn);
 
         expect(prevFocusBtn).toHaveFocus();
       });
