@@ -148,7 +148,7 @@
 
 .nx-html--dark-mode{
   .nx-accordion__summary-wrapper {
-    .nx-btn--tertiary {
+    .nx-btn--tertiary:not( .nx-btn--icon-only ) {
       border-color: var(--nx-swatch-indigo-60);
       color: var( --nx-swatch-indigo-80);    
     
