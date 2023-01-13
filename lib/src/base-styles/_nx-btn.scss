@@ -30,7 +30,7 @@
     background-color: var(--nx-color-secondary-button-background-hover);
   }
 
-  &:focus {
+  &:focus:not(:active) {
     border-color: var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
     outline: 0;

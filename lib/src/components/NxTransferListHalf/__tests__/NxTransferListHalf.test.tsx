@@ -9,6 +9,7 @@ import { includes } from 'ramda';
 import React from 'react';
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import NxTooltip from '../../NxTooltip/NxTooltip';
 import NxFieldset from '../../NxFieldset/NxFieldset';
 import NxFilterInput from '../../NxFilterInput/NxFilterInput';

@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { render, waitFor, within } from '@testing-library/react';
-import userEvents from '@testing-library/user-event';
+import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxBreadcrumb, { Props } from '../NxBreadcrumb';
@@ -19,18 +19,6 @@ describe('NxBreadcrumb', function() {
       },
       quickRender = rtlRender(NxBreadcrumb, minimalProps),
       renderEl = rtlRenderElement(NxBreadcrumb, minimalProps);
-
-  beforeEach(function() {
-    // JSDOM is missing this function. https://github.com/jsdom/jsdom/issues/3002
-    Range.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
-      bottom: 0,
-      height: 0,
-      left: 0,
-      right: 0,
-      top: 0,
-      width: 0
-    } as DOMRect);
-  });
 
   it('renders an element with a navigation role and an accessible name of "breadcrumbs"', function() {
     const view = quickRender(),
@@ -246,7 +234,7 @@ describe('NxBreadcrumb', function() {
     });
 
     it('calls onToggleDropdown when the dropdown button is clicked', async function() {
-      const user = userEvents.setup(),
+      const user = userEvent.setup(),
           onToggleDropdown = jest.fn(),
           view = quickRender({
             crumbs: [
