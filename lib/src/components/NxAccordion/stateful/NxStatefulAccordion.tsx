@@ -12,10 +12,18 @@ import { Props, propTypes } from './types';
 import useToggle from '../../../util/useToggle';
 export { Props };
 
-export default function NxStatefulAccordion({ defaultOpen, ...otherProps }: Props) {
+export default function NxStatefulAccordion({defaultOpen, onToggle, ...otherProps }: Props) {
   const [open, toggleOpen] = useToggle(defaultOpen || false);
 
-  return <NxAccordion open={open} onToggle={toggleOpen} { ...otherProps } />;
+  function openHandler() {
+    const newStatus = toggleOpen();
+
+    if (onToggle) {
+      onToggle(newStatus);
+    }
+  }
+
+  return <NxAccordion open={open} onToggle={openHandler} { ...otherProps } />;
 }
 
 NxStatefulAccordion.propTypes = propTypes;
