@@ -9,6 +9,8 @@ import { NxTable, NxCode, NxP, NxTextLink, NxH3, NxWarningAlert } from '@sonatyp
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
+import { themingEnabled } from '../../themeClassManager';
+
 import NxBinaryDonutChartMinimalExample from './NxBinaryDonutChartMinimalExample';
 import NxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample';
 import NxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample';
@@ -89,10 +91,11 @@ const NxBinaryDonutChartPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
               The size of the hole in the donut, as a percentage of the donut's overall size.  The default value is 50.
-              The computation and use of this prop ignores the 1px white borders on the inside and outside of the donut.
-              That is, when the component is rendered at its default 30px width, a value of 50 on this prop corresponds
-              to 14px (<NxCode>((30px - (1px * 2)) * 50%)</NxCode>). That 14px is the radius of the inside of the actual
-              donut value arc and background, with the inner border being 1px further inside.
+              The computation and use of this prop ignores the 1px {themingEnabled ? 'dark blue' : 'white'} borders on
+              the inside and outside of the donut. That is, when the component is rendered at its default 30px width, a
+              value of 50 on this prop correspondsto 14px (<NxCode>((30px - (1px * 2)) * 50%)</NxCode>). That 14px is
+              the  radius of the inside of the actual donut value arc and background, with the inner border being 1px
+              further inside.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -172,8 +175,8 @@ const NxBinaryDonutChartPage = () =>
                         codeExamples={nxBinaryDonutChartBackgroundColorExample}
                         liveExample={NxBinaryDonutChartBackgroundColorExample}>
       Examples of <NxCode>NxBinaryDonutChart</NxCode>s on containers that have background colors which match parts
-      of the chart. This example shows that the chart is still discernable in this case due to the white borders
-      on the inside and outside of the donut.
+      of the chart. This example shows that the chart is still discernable in this case due to
+      the {themingEnabled ? 'dark blue' : 'white'} borders on the inside and outside of the donut.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Custom CSS Properties"
