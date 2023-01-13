@@ -38,6 +38,8 @@ describe('NxTransferListHalf', function() {
       secondItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
       transferAllSelector = `${complexListSelector} .nx-transfer-list__move-all`,
       complexFirstItemSelector = `${complexListSelector} .nx-transfer-list__item:first-child`,
+      complexSecondItemSelector
+          = `${complexListSelector} .nx-transfer-list__item:nth-child(2) .nx-transfer-list__select`,
       moveUpSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :first-child`,
       moveDownSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :last-child`,
       filterBoxSelector = `${complexListSelector} .nx-text-input__input`,
@@ -132,5 +134,12 @@ describe('NxTransferListHalf', function() {
     // wait for tooltips to initialize
     await wait(500);
     await a11yTest()();
+  });
+
+  describe('move icons', function() {
+    it('renders an x icon when onItemChange is provided and isSelected is true', simpleTest(secondItemSelector));
+    it('renders a plus icon when onItemChange is provided but isSelected is false',
+        simpleTest(complexSecondItemSelector));
+    it('doesn\'t render a move icon when onItemChange is not provided', simpleTest(secondDisableTransferItemSelector));
   });
 });
