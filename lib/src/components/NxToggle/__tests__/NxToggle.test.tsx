@@ -8,7 +8,7 @@
 import * as rtlUtils from '../../../__testutils__/rtlUtils';
 
 import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxToggle, { Props } from '../NxToggle';
 

@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { shallow } from 'enzyme';
+import 'jest-enzyme';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxPageHeader from '../NxPageHeader';

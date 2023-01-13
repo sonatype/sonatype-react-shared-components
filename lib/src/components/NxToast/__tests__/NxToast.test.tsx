@@ -9,7 +9,7 @@ import React from 'react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import { fireEvent, screen } from '@testing-library/react';
 
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxToast from '../NxToast';
 import { NxToastProps } from '../types';
