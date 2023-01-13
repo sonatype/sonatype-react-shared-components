@@ -150,6 +150,7 @@
   .nx-accordion__summary-wrapper {
     .nx-btn--tertiary:not( .nx-btn--icon-only ) {
       border-color: var(--nx-swatch-indigo-60);
+      border-width: 2px;
       color: var( --nx-swatch-indigo-80);    
     
       &:hover {
