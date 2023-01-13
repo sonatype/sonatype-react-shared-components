@@ -67,6 +67,8 @@ describe('NxLoadError', function() {
     it('renders provided children if loading is false and error is unset', ()=> {
       const { container: withChildren } = quickRender();
       expect(withChildren.textContent).toContain('Foo');
+      expect(withChildren.textContent).not.toContain('Loading…');
+      expect(withChildren).not.toHaveAttribute('role', 'alert');
     });
 
     it('renders children provided by a function if loading is false and error is unset', ()=> {
