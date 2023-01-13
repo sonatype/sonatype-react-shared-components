@@ -56,9 +56,11 @@ describe('NxLoadError', function() {
 
   });
 
-  describe('when it is loading', ()=> {
+  it('when it is loading', ()=> {
     expect(renderEl()?.textContent).not.toContain('Loading…');
     expect(quickRender({ loading: true }).container.textContent).toContain('Loading…');
+    expect(quickRender({ loading: true }).container.textContent).not.toContain('Foo');
+    expect(quickRender({ loading: true }).container.textContent).not.toContain('Error');
   });
 
   describe('renders provided children', ()=> {
