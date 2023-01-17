@@ -9,6 +9,10 @@
     display: block;
     height: 45px;
     .nx-binary-donut-chart__arc {
-      stroke: var(--nx-swatch-purple-70) !important;
+      stroke: var(--nx-swatch-purple-70);
+
+      @include nx-dark-mode-helpers.dark-mode {
+        stroke: var(--nx-swatch-purple-70);
+      }
     }
   }
