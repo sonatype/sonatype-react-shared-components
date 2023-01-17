@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-segmented-btn {
   display: inline-flex;
@@ -27,10 +26,8 @@
 .nx-segmented-btn__main-btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-right-width: var(--nx-border-width-segmented-button-divider);
-
   // overlap the segment borders
-  margin: 0 calc(-1 * var(--nx-border-width-segmented-button-divider)) 0 0;
+  margin: 0 -1px 0 0;
 
   &:focus, &:hover, &:active {
     // make sure the overlapped border between the segments shows up no matter which side is being interacted
@@ -42,13 +39,12 @@
 .nx-segmented-btn__dropdown-btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left-width: var(--nx-border-width-segmented-button-divider);
 
   // lock the line-height here so that it is not affected by the font-size increase on the icon
   line-height: 1em;
   margin: 0;
-  padding-left: calc(var(--nx-spacing-3x) - var(--nx-border-width-segmented-button-divider));
-  padding-right: calc(var(--nx-spacing-3x) - var(--nx-border-width-button));
+  padding-left: calc(var(--nx-spacing-3x) - 1px);
+  padding-right: calc(var(--nx-spacing-3x) - 1px);
 
   > .nx-icon {
     font-size: 1.2em;
@@ -56,29 +52,15 @@
 }
 
 .nx-btn--primary:not([disabled]) {
-  // Unlike other segmented buttons, primary segmented buttons always have a 1px divider regardless
-  // of theme
-  --nx-border-width-segmented-button-divider: 1px;
-
   &.nx-segmented-btn__main-btn {
-    border-right-color: var(--nx-color-primary-button-segment-border);
+    border-right-color: var(--nx-swatch-blue-60);
 
     &:hover {
       border-right-color: var(--nx-swatch-blue-10);
-
-      @include nx-dark-mode-helpers.dark-mode {
-        border-right-color: var(--nx-color-primary-button-segment-border);
-      }
     }
 
     &:focus {
       border-right-color: var(--nx-color-interactive-border-focus);
-    }
-
-    &:active {
-      @include nx-dark-mode-helpers.dark-mode {
-        border-right-color: var(--nx-color-primary-button-segment-border);
-      }
     }
 
     // get fancy to prevent mitred corners on the inner border
@@ -94,7 +76,7 @@
   }
 
   &.nx-segmented-btn__dropdown-btn {
-    border-left-color: var(--nx-color-primary-button-segment-border);
+    border-left-color: var(--nx-swatch-blue-60);
 
     &:hover {
       border-left-color: var(--nx-swatch-blue-10);
@@ -120,19 +102,15 @@
 .nx-segmented-btn--open {
   > .nx-segmented-btn__dropdown-btn {
     &.nx-btn--primary {
-      background-color: var(--nx-color-primary-button-background-active);
-
-      @include nx-dark-mode-helpers.dark-mode {
-        background-color: var(--nx-color-primary-button-background-hover);
-      }
+      background-color: var(--nx-swatch-blue-60);
     }
 
     &.nx-btn--secondary {
-      background-color: var(--nx-color-secondary-button-background-active);
+      background-color: var(--nx-swatch-blue-90);
     }
 
     &.nx-btn--tertiary {
-      background-color: var(--nx-color-tertiary-button-background-active);
+      background-color: var(--nx-swatch-grey-90);
     }
   }
 }
