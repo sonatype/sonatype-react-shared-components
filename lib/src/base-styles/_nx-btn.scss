@@ -32,12 +32,9 @@
 
   &:focus:not(:active) {
     border-color: var(--nx-color-interactive-border-focus);
+    border-style: var(--nx-border-style-focus);
     box-shadow: var(--nx-box-shadow-focus);
     outline: 0;
-
-    @include nx-dark-mode-helpers.dark-mode {
-      border-style: dashed;
-    }
   }
 
   &:active {

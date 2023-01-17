@@ -54,6 +54,7 @@
   --nx-border-secondary: 1px solid var(--nx-color-border-secondary);
 
   --nx-border-width-button: 1px;
+  --nx-border-style-focus: solid;
 
   --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
 
@@ -70,6 +71,7 @@
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-border-width-button: 2px;
+    --nx-border-style-focus: dashed;
 
     --nx-box-shadow-focus: 0 0 3px 2px var(--nx-color-interactive-shadow-focus);
   }

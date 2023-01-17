@@ -208,6 +208,9 @@ const CssVariablesPage = () => {
             The width of borders on <NxCode>nx-btn</NxCode>. Note that in some variants and states the border may be
             transparent.
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-style-focus">
+            The <NxCode>border-style</NxCode> used on most interactive element focus borders
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">
             The standard box-shadow to apply to focused elements in addition to a border or outline.
           </PropertyDocItem>
