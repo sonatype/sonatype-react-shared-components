@@ -27,6 +27,19 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
     // adjacent treeviews should be 16px apart rather than the 24 that they are from everything else
     margin-top: calc(0px - var(--nx-spacing-2x));
   }
+
+  .nx-text-input {
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    padding:
+      var(--nx-spacing-3x)
+      var(--nx-spacing-2x)
+      var(--nx-spacing-3x)
+      $-form-child-left-padding;
+
+    width: 100%;
+  }
 }
 
 .nx-collapsible-items--expanded > .nx-collapsible-items__header {
@@ -170,21 +183,6 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
       var(--nx-spacing-2x)
       var(--nx-spacing-base)
       $-form-child-left-padding;
-  }
-}
-
-.nx-collapsible-items__children {
-  .nx-text-input {
-    box-sizing: border-box;
-    border: none;
-    margin: 0;
-    padding:
-      var(--nx-spacing-3x)
-      var(--nx-spacing-2x)
-      var(--nx-spacing-3x)
-      $-form-child-left-padding;
-
-    width: 100%;
   }
 }
 

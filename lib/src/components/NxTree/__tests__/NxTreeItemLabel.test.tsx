@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { mount } from 'enzyme';
+import 'jest-enzyme';
 
 import TreeKeyNavContext from '../TreeKeyNavContext';
 import NxTreeItemLabel from '../NxTreeItemLabel';

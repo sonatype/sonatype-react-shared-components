@@ -9,6 +9,7 @@ import React, {FunctionComponent} from 'react';
 import Fuse from 'fuse.js';
 
 import {getShallowComponent} from '../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import useFuzzyFilter from '../useFuzzyFilter';
 
 interface Entry {

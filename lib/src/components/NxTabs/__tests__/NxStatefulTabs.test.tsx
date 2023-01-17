@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { shallow } from 'enzyme';
+import 'jest-enzyme';
 import NxStatefulTabs from '../stateful/NxStatefulTabs';
 import NxTabList from '../NxTabList';
 import NxTab from '../NxTab';

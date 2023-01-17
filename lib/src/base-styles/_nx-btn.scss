@@ -28,8 +28,8 @@
     background-color: var(--nx-swatch-blue-90);
   }
 
-  &:focus {
-    border: 1px solid var(--nx-color-interactive-border-focus);
+  &:focus:not(:active) {
+    border-color: var(--nx-color-interactive-border-focus);
     box-shadow: var(--nx-box-shadow-focus);
     outline: 0;
   }
@@ -55,11 +55,11 @@
   color: var(--nx-swatch-white);
 
   &:hover, &:focus {
-    background-color: var(--nx-swatch-blue-20);
+    background-color: var(--nx-swatch-blue-30);
   }
 
   &:active {
-    background-color:  var(--nx-swatch-blue-60);
+    background-color:  var(--nx-swatch-blue-50);
   }
 }
 

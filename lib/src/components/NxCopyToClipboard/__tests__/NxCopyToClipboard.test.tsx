@@ -6,11 +6,13 @@
  */
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import { default as NxCopyToClipboard, Props } from '../NxCopyToClipboard';
 import NxButton from '../../NxButton/NxButton';
 import NxFormGroup from '../../NxFormGroup/NxFormGroup';
 import NxTextInput from '../../NxTextInput/NxTextInput';
 import { NxCodeSnippet } from '../../../index';
+import { runTimers } from '../../../__testutils__/rtlUtils';
 
 describe('NxCopyToClipboard', function() {
   const minimalProps: Props = {
@@ -129,7 +131,7 @@ describe('NxCopyToClipboard', function() {
         expect(window.navigator.clipboard.writeText).toHaveBeenCalledWith('Lorem Ipsum');
       });
 
-      it('calls onCopyUsingBtn after writing the text to the clipboard', function(done) {
+      it('calls onCopyUsingBtn after writing the text to the clipboard', async function() {
         const onCopyUsingBtn = jest.fn(),
             component = getMounted({ onCopyUsingBtn }, { attachTo: container });
 
@@ -141,31 +143,29 @@ describe('NxCopyToClipboard', function() {
 
         // the promise then() is called asynchronously so we must do our expectation of its result asynchronously
         // as well
-        setTimeout(function() {
-          expect(onCopyUsingBtn).toHaveBeenCalled();
-          done();
-        }, 0);
+        await runTimers();
+        expect(onCopyUsingBtn).toHaveBeenCalled();
       });
 
-      it('sets the text selection to the textarea\'s contents after writing the text to the clipboard', function(done) {
-        const component = getMounted({}, { attachTo: container }),
-            textarea = component.find('textarea').getDOMNode() as HTMLTextAreaElement;
+      it('sets the text selection to the textarea\'s contents after writing the text to the clipboard',
+          async function() {
+            const component = getMounted({}, { attachTo: container }),
+                textarea = component.find('textarea').getDOMNode() as HTMLTextAreaElement;
 
-        expect(getElementSelection(textarea)).toBe('');
+            expect(getElementSelection(textarea)).toBe('');
 
-        component.find(NxButton).simulate('click');
+            component.find(NxButton).simulate('click');
 
-        expect(getElementSelection(textarea)).toBe('');
+            expect(getElementSelection(textarea)).toBe('');
 
-        resolveClipboardPromise!();
+            resolveClipboardPromise!();
 
-        setTimeout(function() {
-          expect(getElementSelection(textarea)).toBe('Lorem Ipsum');
-          done();
-        }, 0);
-      });
+            await runTimers();
+            expect(getElementSelection(textarea)).toBe('Lorem Ipsum');
+          }
+      );
 
-      it('does not call onCopyUsingBtn or set the text selection if the copy fails', function(done) {
+      it('does not call onCopyUsingBtn or set the text selection if the copy fails', async function() {
         const onCopyUsingBtn = jest.fn(),
             component = getMounted({ onCopyUsingBtn }, { attachTo: container }),
             textarea = component.find('textarea').getDOMNode() as HTMLTextAreaElement;
@@ -174,12 +174,9 @@ describe('NxCopyToClipboard', function() {
 
         rejectClipboardPromise!('This is expected to be logged');
 
-        setTimeout(function() {
-          expect(getElementSelection(textarea)).toBe('');
-
-          expect(onCopyUsingBtn).not.toHaveBeenCalled();
-          done();
-        }, 0);
+        await runTimers();
+        expect(getElementSelection(textarea)).toBe('');
+        expect(onCopyUsingBtn).not.toHaveBeenCalled();
       });
     });
 

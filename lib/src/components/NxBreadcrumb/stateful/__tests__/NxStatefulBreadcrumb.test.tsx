@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { act, render, waitFor, within } from '@testing-library/react';
-import userEvents from '@testing-library/user-event';
+import { userEvent } from '../../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
 import NxStatefulBreadcrumb, { Props } from '../NxStatefulBreadcrumb';
@@ -17,18 +17,6 @@ describe('NxStatefulBreadcrumb', function() {
       },
       quickRender = rtlRender(NxStatefulBreadcrumb, minimalProps),
       renderEl = rtlRenderElement(NxStatefulBreadcrumb, minimalProps);
-
-  beforeEach(function() {
-    // JSDOM is missing this function. https://github.com/jsdom/jsdom/issues/3002
-    Range.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
-      bottom: 0,
-      height: 0,
-      left: 0,
-      right: 0,
-      top: 0,
-      width: 0
-    } as DOMRect);
-  });
 
   it('renders an element with a navigation role and an accessible name of "breadcrumbs"', function() {
     const view = quickRender(),
@@ -145,7 +133,7 @@ describe('NxStatefulBreadcrumb', function() {
 
   describe('five or more crumbs', function() {
     it('initially renders the dropdown closed, and toggles it when its button is clicked', async function() {
-      const user = userEvents.setup(),
+      const user = userEvent.setup(),
           view = quickRender({
             crumbs: [
               { name: 'A', href: 'a' },
@@ -173,7 +161,7 @@ describe('NxStatefulBreadcrumb', function() {
 
     it('renders the first and last two crumbs in the list and the rest in a dropdown placed after the first crumb',
         async function() {
-          const user = userEvents.setup(),
+          const user = userEvent.setup(),
               view = quickRender({
                 crumbs: [
                   { name: 'A', href: 'a' },
