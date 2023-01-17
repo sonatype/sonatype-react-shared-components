@@ -288,6 +288,57 @@ const CssVariablesPage = () => {
               The standard color for the box-shadow/drop-shadow of interactive elements (such as clickable list rows and
               form fields) when they are focused.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-background">
+              The background color of primary buttons
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-background-hover">
+              The background color of primary buttons on hover and focus
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-background-active">
+              The background color of primary buttons on activation (click)
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-text">
+              The text color of primary buttons
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background">
+              The background color of secondary buttons
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background-hover">
+              The background color of secondary buttons on hover and focus
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background-active">
+              The background color of secondary buttons on activation (click)
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-background-hover">
+              The background color of tertiary buttons on hover and focus
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-background-active">
+              The background color of tertiary buttons on activation (click)
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-border">
+              The default border color of tertiary buttons. Tertiary buttons
+              use <NxCode>--nx-color-interactive-border-hover</NxCode>{' '}
+              and <NxCode>--nx-color-interactive-border-focus</NxCode> for their focus and hover border colors
+              respectively.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-text">
+              The text color of tertiary buttons
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-background">
+              The background color of error buttons
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-background-hover">
+              The background color of error buttons on hover and focus
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-background-active">
+              The background color of error buttons on activation (click)
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-border-focus">
+              The color of the focus border for error buttons
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-text">
+              The text color of error buttons
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-text">The standard text color within RSC.</ColorDocRow>
             <ColorDocRow colorVar="--nx-color-text-dark">
               The standard dark variant of the text color within RSC.
