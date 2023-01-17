@@ -69,7 +69,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
             { isChecked ?
               // The undefined aria attrs are to work around an issue with the axe a11y checker in
               // NxCollapsibleMultiSelect
-              <FontAwesomeIcon role={undefined} aria-hidden={undefined} icon={faCheck} /> :
+              <FontAwesomeIcon role="none" aria-hidden={undefined} icon={faCheck} /> :
               // Put a space in the box if not checked, in order to provide a consistent vertical-align baseline
               '\u00A0'
             }
