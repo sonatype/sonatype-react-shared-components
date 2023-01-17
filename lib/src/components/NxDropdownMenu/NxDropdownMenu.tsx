@@ -238,7 +238,6 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
           break;
         case 'ArrowDown':
           focusNext();
-          console.log('DOWN_0');
           event.preventDefault();
           break;
         case ' ': case 'Enter':

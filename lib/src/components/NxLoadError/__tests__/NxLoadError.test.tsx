@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import { screen } from '@testing-library/react';
-import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import userEvent from '@testing-library/user-event';
+import { userEvent, rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
 import NxLoadError from '../NxLoadError';
 
 describe('NxLoadError', function() {

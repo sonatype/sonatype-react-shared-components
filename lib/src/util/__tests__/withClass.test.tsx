@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
+import 'jest-enzyme';
 import withClass from '../withClass';
 import { getShallowComponent } from '../../__testutils__/enzymeUtils';
 import NxOverflowTooltip from '../../components/NxTooltip/NxOverflowTooltip';

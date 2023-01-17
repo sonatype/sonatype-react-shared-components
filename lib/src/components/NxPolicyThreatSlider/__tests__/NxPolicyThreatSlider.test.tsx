@@ -8,6 +8,7 @@ import React, { FunctionComponent } from 'react';
 import { Slider } from '@material-ui/core';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import NxPolicyThreatSlider, { Props } from '../NxPolicyThreatSlider';
 import { LabelDisplayProps } from '../types';
 

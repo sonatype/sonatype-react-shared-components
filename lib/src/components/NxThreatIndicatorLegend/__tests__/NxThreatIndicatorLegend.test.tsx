@@ -9,6 +9,7 @@ import React from 'react';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import { mount } from 'enzyme';
 
 import NxThreatIndicatorLegend from '../NxThreatIndicatorLegend';
