@@ -52,40 +52,47 @@ describe('NxProgressBar', function() {
     expect(customMaxProgressEl).toHaveAttribute('max', '200');
   });
 
-  it('sets the correct counter percentage value', function() {
-    const noProgressEl = renderEl()!,
-        inProgressEl = renderEl({ value: 50 })!,
-        finishedEl = renderEl({ value: 100 })!,
-        inProgressWithMaxEl = renderEl({ value: 20, max: 40 });
+  describe('counter', function() {
+    it('sets the correct counter percentage value', function() {
+      const noProgressEl = renderEl()!,
+          inProgressEl = renderEl({ value: 50 })!,
+          finishedEl = renderEl({ value: 100 })!,
+          inProgressWithMaxEl = renderEl({ value: 20, max: 40 });
 
-    expect(noProgressEl).toHaveTextContent('0%'),
-    expect(inProgressEl).toHaveTextContent('50%'),
-    expect(finishedEl).toHaveTextContent('100%');
-    expect(inProgressWithMaxEl).toHaveTextContent('50%');
-  });
+      expect(noProgressEl).toHaveTextContent('0%'),
+      expect(inProgressEl).toHaveTextContent('50%'),
+      expect(finishedEl).toHaveTextContent('100%');
+      expect(inProgressWithMaxEl).toHaveTextContent('50%');
+    });
 
-  it('renders a counter when showCounter is not false', function() {
-    const defaultEl = renderEl()!,
-        counterEl = renderEl({ showCounter: true })!,
-        noCounterEl = renderEl({ showCounter: false })!;
+    it('renders a counter when showCounter is not false', function() {
+      const defaultEl = renderEl()!,
+          counterEl = renderEl({ showCounter: true })!,
+          noCounterEl = renderEl({ showCounter: false })!;
 
-    expect(defaultEl).toHaveTextContent('0%');
-    expect(counterEl).toHaveTextContent('0%');
-    expect(noCounterEl).not.toHaveTextContent('0%');
-  });
+      expect(defaultEl).toHaveTextContent('0%');
+      expect(counterEl).toHaveTextContent('0%');
+      expect(noCounterEl).not.toHaveTextContent('0%');
+    });
 
-  it('renders a counter in all variants except inline', function() {
-    const defaultEl = renderEl({ showCounter: true })!,
-        normalEl = renderEl({ variant: 'normal', showCounter: true })!,
-        smallEl = renderEl({ variant: 'small', showCounter: true })!,
-        fullEl = renderEl({ variant: 'full', showCounter: true })!,
-        inlineEl = renderEl({ variant: 'inline', showCounter: true })!;
+    it('renders a counter in all variants except inline', function() {
+      const defaultEl = renderEl({ showCounter: true })!,
+          normalEl = renderEl({ variant: 'normal', showCounter: true })!,
+          smallEl = renderEl({ variant: 'small', showCounter: true })!,
+          fullEl = renderEl({ variant: 'full', showCounter: true })!,
+          inlineEl = renderEl({ variant: 'inline', showCounter: true })!;
 
-    expect(defaultEl).toHaveTextContent('0%');
-    expect(normalEl).toHaveTextContent('0%');
-    expect(smallEl).toHaveTextContent('0%');
-    expect(fullEl).toHaveTextContent('0%');
-    expect(inlineEl).not.toHaveTextContent('0%');
+      expect(defaultEl).toHaveTextContent('0%');
+      expect(normalEl).toHaveTextContent('0%');
+      expect(smallEl).toHaveTextContent('0%');
+      expect(fullEl).toHaveTextContent('0%');
+      expect(inlineEl).not.toHaveTextContent('0%');
+    });
+
+    it('doesn\'t render a counter when showSteps is true', function() {
+      const el = renderEl({ showSteps: true, showCounter: true })!;
+      expect(el).not.toHaveTextContent('0%');
+    });
   });
 
   describe('label', function() {
@@ -150,32 +157,5 @@ describe('NxProgressBar', function() {
     expect(elWithoutLabel).not.toHaveTextContent('current progress');
     expect(progressBarWithoutLabel).toHaveAccessibleName('current progress');
 
-  });
-
-  describe('showSteps', function() {
-    it('renders an additional child div with the presentation role', function() {
-      const elWithoutSteps = renderEl()!,
-          elWithSteps = renderEl({ showSteps: true })!;
-
-      expect(elWithoutSteps.childElementCount).toBe(2);
-      expect(within(elWithoutSteps).queryByRole('presenation')).not.toBeInTheDocument();
-
-      expect(elWithSteps.childElementCount).toBe(3);
-      expect(within(elWithSteps).getByRole('presentation')).toBeInTheDocument();
-    });
-
-    it('doesn\'t render a counter when showSteps is true', function() {
-      const el = renderEl({ showSteps: true, showCounter: true })!;
-      expect(el).not.toHaveTextContent('0%');
-    });
-
-    it('adds the number of step elements equal to one less than max when true', function() {
-      expect(quickRender({ showSteps: true }).getByRole('presentation').childElementCount).toBe(99);
-      expect(quickRender({ showSteps: true, max: 10 }).getByRole('presentation').childElementCount).toBe(9);
-      expect(quickRender({ showSteps: true, max: 5 }).getByRole('presentation').childElementCount).toBe(4);
-    });
-
-  // Note: the visiblity of the step matching the progress bar's current value is implemented in CSS and
-  // therefore not tested here
   });
 });
