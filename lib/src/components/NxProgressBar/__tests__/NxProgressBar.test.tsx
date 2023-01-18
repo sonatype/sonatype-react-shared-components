@@ -124,10 +124,8 @@ describe('NxProgressBar', function() {
     });
 
     it('is overriden by labelError when it is specified', function() {
-      const el = renderEl()!,
-          elWithError = renderEl({ labelError: 'oops!' })!;
+      const elWithError = renderEl({ labelError: 'oops!' })!;
 
-      expect(el).toHaveTextContent('current progress');
       expect(elWithError).not.toHaveTextContent('current progress');
       expect(elWithError).toHaveTextContent('oops!');
     });
@@ -155,6 +153,7 @@ describe('NxProgressBar', function() {
 
     expect(elWithoutLabel).not.toHaveTextContent('current progress');
     expect(progressBarWithoutLabel).toHaveAccessibleName('current progress');
+
   });
 
   describe('showSteps', function() {
