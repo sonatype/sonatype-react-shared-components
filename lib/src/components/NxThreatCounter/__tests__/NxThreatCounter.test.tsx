@@ -4,22 +4,26 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
+import { RenderResult } from '@testing-library/react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import NxThreatCounter, { Props }  from '../NxThreatCounter';
 
-import NxThreatCounter, { Props } from '../NxThreatCounter';
-
+// NOTE: <dl> and friends have no roles, so none of this test can follow RTL best practices
 describe('NxThreatCounter', function() {
-  const minimalProps = {},
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxThreatCounter, minimalProps);
+  const quickRender = rtlRender<Props>(NxThreatCounter, {}),
+      renderEl = rtlRenderElement<Props>(NxThreatCounter, {});
+
+  function getCounter(view: RenderResult, name: string) {
+    return view.getByText((_, e) =>
+        !!(e?.parentElement?.tagName === 'DL' && e?.textContent?.toLowerCase()?.includes(name)));
+  }
 
   it('renders nothing if all six indicators are undefined', function() {
-    const component = getShallowComponent();
-    expect(component).toBeEmptyRender();
+    expect(renderEl()).not.toBeInTheDocument();
   });
 
   it('renders nothing if all six indicators are null', function() {
-    const component = getShallowComponent({
+    const el = renderEl({
       criticalCount: null,
       severeCount: null,
       moderateCount: null,
@@ -27,75 +31,65 @@ describe('NxThreatCounter', function() {
       noneCount: null,
       unspecifiedCount: null
     });
-    expect(component).toBeEmptyRender();
+    expect(el).not.toBeInTheDocument();
   });
 
-  it('renders the container with the expected default classes', function() {
-    expect(getShallowComponent({criticalCount: 0}).find('.nx-threat-counter-container')).toExist();
+  it('renders a <dl> if at least one count is specified', function() {
+    const el = renderEl({criticalCount: 0});
+    expect(el).toBeInTheDocument();
+    expect(el!.tagName).toBe('DL');
   });
 
-  it('renders an .nx-threat-counter--critical when criticalCount is specified', function() {
-    const component = getShallowComponent({criticalCount: 0});
-    const container = component.find('.nx-threat-counter-container');
-    expect(container).toExist();
-    expect(container.find('div').length).toBe(1);
-    const criticalCounter = component.find('.nx-threat-counter--critical');
-    expect(criticalCounter.find('.nx-threat-counter__count')).toHaveText('0');
-    expect(criticalCounter.find('.nx-threat-counter__text')).toHaveText('Critical');
+  it('renders a count with a critical label when criticalCount is specified', function() {
+    const view = quickRender({criticalCount: 0}),
+        counter = getCounter(view, 'critical');
+
+    expect(counter).toBeInTheDocument();
+    expect(counter).toHaveTextContent('0');
   });
 
-  it('renders an .nx-threat-counter--severe when severeCount is specified', function() {
-    const component = getShallowComponent({severeCount: 0});
-    const container = component.find('.nx-threat-counter-container');
-    expect(container).toExist();
-    expect(container.find('div').length).toBe(1);
-    const severeCounter = component.find('.nx-threat-counter--severe');
-    expect(severeCounter.find('.nx-threat-counter__count')).toHaveText('0');
-    expect(severeCounter.find('.nx-threat-counter__text')).toHaveText('Severe');
+  it('renders a count with a severe label when severeCount is specified', function() {
+    const view = quickRender({severeCount: 0}),
+        counter = getCounter(view, 'severe');
+
+    expect(counter).toBeInTheDocument();
+    expect(counter).toHaveTextContent('0');
   });
 
-  it('renders an .nx-threat-counter--moderate when moderateCount is specified', function() {
-    const component = getShallowComponent({moderateCount: 0});
-    const container = component.find('.nx-threat-counter-container');
-    expect(container).toExist();
-    expect(container.find('div').length).toBe(1);
-    const moderateCounter = component.find('.nx-threat-counter--moderate');
-    expect(moderateCounter.find('.nx-threat-counter__count')).toHaveText('0');
-    expect(moderateCounter.find('.nx-threat-counter__text')).toHaveText('Moderate');
+  it('renders a count with a moderate label when moderateCount is specified', function() {
+    const view = quickRender({moderateCount: 0}),
+        counter = getCounter(view, 'moderate');
+
+    expect(counter).toBeInTheDocument();
+    expect(counter).toHaveTextContent('0');
   });
 
-  it('renders an .nx-threat-counter--low when lowCount is specified', function() {
-    const component = getShallowComponent({lowCount: 0});
-    const container = component.find('.nx-threat-counter-container');
-    expect(container).toExist();
-    expect(container.find('div').length).toBe(1);
-    const lowCounter = component.find('.nx-threat-counter--low');
-    expect(lowCounter.find('.nx-threat-counter__count')).toHaveText('0');
-    expect(lowCounter.find('.nx-threat-counter__text')).toHaveText('Low');
+  it('renders a count with a low label when lowCount is specified', function() {
+    const view = quickRender({lowCount: 0}),
+        counter = getCounter(view, 'low');
+
+    expect(counter).toBeInTheDocument();
+    expect(counter).toHaveTextContent('0');
   });
 
-  it('renders an .nx-threat-counter--none when noneCount is specified', function() {
-    const component = getShallowComponent({noneCount: 0});
-    const container = component.find('.nx-threat-counter-container');
-    expect(container).toExist();
-    expect(container.find('div').length).toBe(1);
-    const noneCounter = component.find('.nx-threat-counter--none');
-    expect(noneCounter.find('.nx-threat-counter__count')).toHaveText('0');
-    expect(noneCounter.find('.nx-threat-counter__text')).toHaveText('None');
+  it('renders a count with a none label when noneCount is specified', function() {
+    const view = quickRender({noneCount: 0}),
+        counter = getCounter(view, 'none');
+
+    expect(counter).toBeInTheDocument();
+    expect(counter).toHaveTextContent('0');
   });
 
-  it('renders an .nx-threat-counter--unspecified when unspecifiedCount is specified', function() {
-    const component = getShallowComponent({unspecifiedCount: 0});
-    const container = component.find('.nx-threat-counter-container');
-    expect(container).toExist();
-    expect(container.find('div').length).toBe(1);
-    const unspecifiedCounter = component.find('.nx-threat-counter--unspecified');
-    expect(unspecifiedCounter.find('.nx-threat-counter__count')).toHaveText('0');
-    expect(unspecifiedCounter.find('.nx-threat-counter__text')).toHaveText('Unspecified');
+  it('renders a count with a unspecified label when unspecifiedCount is specified', function() {
+    const view = quickRender({unspecifiedCount: 0}),
+        counter = getCounter(view, 'unspecified');
+
+    expect(counter).toBeInTheDocument();
+    expect(counter).toHaveTextContent('0');
   });
 
   it('renders all six indicators', function() {
-    const component = getShallowComponent({
+    const view = quickRender({
       criticalCount: 66,
       severeCount: 55,
       moderateCount: 44,
@@ -103,45 +97,33 @@ describe('NxThreatCounter', function() {
       noneCount: 22,
       unspecifiedCount: 42
     });
-    const criticalCount = component.find('.nx-threat-counter--critical'),
-        severeCount = component.find('.nx-threat-counter--severe'),
-        moderateCount = component.find('.nx-threat-counter--moderate'),
-        lowCount = component.find('.nx-threat-counter--low'),
-        noneCount = component.find('.nx-threat-counter--none'),
-        unspecifiedCount = component.find('.nx-threat-counter--unspecified');
-    expect(criticalCount.find('.nx-threat-counter__count')).toHaveText('66');
-    expect(criticalCount.find('.nx-threat-counter__text')).toHaveText('Critical');
-    expect(severeCount.find('.nx-threat-counter__count')).toHaveText('55');
-    expect(severeCount.find('.nx-threat-counter__text')).toHaveText('Severe');
-    expect(moderateCount.find('.nx-threat-counter__count')).toHaveText('44');
-    expect(moderateCount.find('.nx-threat-counter__text')).toHaveText('Moderate');
-    expect(lowCount.find('.nx-threat-counter__count')).toHaveText('33');
-    expect(lowCount.find('.nx-threat-counter__text')).toHaveText('Low');
-    expect(noneCount.find('.nx-threat-counter__count')).toHaveText('22');
-    expect(noneCount.find('.nx-threat-counter__text')).toHaveText('None');
-    expect(unspecifiedCount.find('.nx-threat-counter__count')).toHaveText('42');
-    expect(unspecifiedCount.find('.nx-threat-counter__text')).toHaveText('Unspecified');
+    const criticalCount = getCounter(view, 'critical'),
+        severeCount = getCounter(view, 'severe'),
+        moderateCount = getCounter(view, 'moderate'),
+        lowCount = getCounter(view, 'low'),
+        noneCount = getCounter(view, 'none'),
+        unspecifiedCount = getCounter(view, 'unspecified');
+
+    expect(criticalCount).toHaveTextContent('66');
+    expect(severeCount).toHaveTextContent('55');
+    expect(moderateCount).toHaveTextContent('44');
+    expect(lowCount).toHaveTextContent('33');
+    expect(noneCount).toHaveTextContent('22');
+    expect(unspecifiedCount).toHaveTextContent('42');
   });
 
-  it('correctly assigns supplied class', function() {
-    const classComponent = getShallowComponent({ criticalCount: 0, className: 'test-class' });
-    expect(classComponent.find('.nx-threat-counter-container')).toHaveClassName('test-class');
+  it('adds specified classes and attributes to the top-level element', function() {
+    const el = renderEl({ criticalCount: 0, id: 'foo', className: 'bar', lang: 'en' }),
+        defaultEl = renderEl({ criticalCount: 0 })!;
+
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en');
+    expect(el).toHaveClass('bar');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('correctly assigns supplied id', function() {
-    const idComponent = getShallowComponent({ criticalCount: 0, id: 'test-id' });
-    expect(idComponent.find('.nx-threat-counter-container')).toHaveProp('id', 'test-id');
-  });
-
-  it('correctly applies the column modifier', function() {
-    const idComponent = getShallowComponent({ criticalCount: 0, layout: 'column' });
-    expect(idComponent.find('.nx-threat-counter-container'))
-        .toHaveClassName('nx-threat-counter-container--column');
-  });
-
-  it('correctly applies the grid modifier', function() {
-    const idComponent = getShallowComponent({ criticalCount: 0, layout: 'grid' });
-    expect(idComponent.find('.nx-threat-counter-container'))
-        .toHaveClassName('nx-threat-counter-container--grid');
-  });
+  // layout prop only affects visuals
 });
