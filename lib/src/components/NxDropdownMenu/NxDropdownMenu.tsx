@@ -84,9 +84,15 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
           onMenuItemFocus(newMenuItemIndex, focusableElements);
         }
 
+        console.log(useActiveDescendant);
         if (useActiveDescendant) {
           focusableElements.forEach(el => el.classList.remove('selected'));
+          focusableElements.forEach(el => {
+            el.getAttribute('id');
+            el.removeAttribute('id');
+          });
           elementToFocus.classList.add('selected');
+          elementToFocus.setAttribute('id', 'dropdownmenu-selected');
         }
         else {
           elementToFocus.focus();

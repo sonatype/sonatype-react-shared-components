@@ -346,7 +346,8 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                  aria-autocomplete={autoComplete ? 'both' : 'list'}
                  aria-expanded={showDropdown}
                  aria-controls={showDropdown ? dropdownId : undefined}
-                 aria-activedescendant={focusableBtnId}
+                 //  aria-activedescendant={focusableBtnId}
+                 aria-activedescendant="dropdownmenu-selected"
                  aria-required={ariaRequired}
                  aria-describedby={inputDescribedby}
                  aria-label={ariaLabel}
