@@ -22,13 +22,13 @@ describe('NxProgressBar', function() {
     expect(renderEl()!.tagName).toBe('LABEL');
   });
 
-  it('renders a <progress> element as a child', function() {
+  it('renders an element with a role of "progressbar"', function() {
     const el = renderEl()!,
         progressBar = within(el).getByRole('progressbar');
     expect(progressBar).toBeInTheDocument();
   });
 
-  it('forwards its ref to the <progress> element', function() {
+  it('forwards its ref to the progressbar', function() {
     const ref = React.createRef<HTMLProgressElement>(),
         el = quickRender({ ref: ref } as Partial<Props>),
         progressBar = el.getByRole('progressbar');
@@ -36,7 +36,7 @@ describe('NxProgressBar', function() {
     expect(ref.current).toBe(progressBar);
   });
 
-  it('passes the value prop to the progress element', function() {
+  it('passes the value prop to the progressbar', function() {
     const noProgressEl = quickRender(),
         partialProgressEl = quickRender({ value: 50 }),
         noProgressBar = noProgressEl.getByRole('progressbar'),
@@ -46,7 +46,7 @@ describe('NxProgressBar', function() {
     expect(partialProgressBar).toHaveAttribute('value', '50');
   });
 
-  it('sets the max prop to 100 when unspecified and passes it to the progress element', function() {
+  it('sets the max prop to 100 when unspecified and passes it to the progressbar', function() {
     const defaultEl = quickRender(),
         customMaxEl = quickRender({ max: 200 }),
         progressEl = defaultEl.getByRole('progressbar'),
