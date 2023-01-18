@@ -107,7 +107,7 @@ describe('NxCollapsibleItems', function() {
           onToggleCollapseNoChildren = jest.fn(),
           onToggleCollapseChildren = jest.fn(),
           noChildrenTrigger = renderAndGetTrigger({
-            onToggleCollapse: onToggleCollapseNoChildren,
+            onToggleCollapse: onToggleCollapseNoChildren
           }),
           childrenTrigger = renderAndGetTrigger({
             onToggleCollapse: onToggleCollapseChildren,
