@@ -18,8 +18,8 @@ describe('NxProgressBar', function() {
       quickRender = rtlRender<Props>(NxProgressBar, minimalProps),
       renderEl = rtlRenderElement<Props>(NxProgressBar, minimalProps);
 
-  it('render a <label> as the top level element', function() {
-    expect(renderEl()!.tagName).toBe('LABEL');
+  it('renders the label text', function() {
+    expect(quickRender().getByText('current progress')).toBeInTheDocument();
   });
 
   it('renders an element with a role of "progressbar"', function() {
@@ -139,13 +139,22 @@ describe('NxProgressBar', function() {
     expect(elWithError).toHaveTextContent('0%');
   });
 
-  it('assigns an aria-label when component\'s label text is not rendered', function() {
-    const progressBarWithLabel = quickRender().getByRole('progressbar');
-    const progressBarWithoutLabel = quickRender({ inlineCounter: true }).getByRole('progressbar');
+  it('assigns an accessible name to the progressbar regardless of if the label text is rendered', function() {
+    const elWithLabelAndCounter = renderEl()!,
+        progressBarWithLabelAndCounter = within(elWithLabelAndCounter).getByRole('progressbar'),
+        elWithLabelAndNoCounter = renderEl({ showCounter: false })!,
+        progressBarWithLabelAndNoCounter = within(elWithLabelAndNoCounter).getByRole('progressbar'),
+        elWithoutLabel = renderEl({ inlineCounter: true})!,
+        progressBarWithoutLabel = within(elWithoutLabel).getByRole('progressbar');
 
-    expect(progressBarWithLabel).not.toHaveAttribute('aria-label', 'current progress');
-    expect(progressBarWithoutLabel).not.toHaveTextContent('current progress');
-    expect(progressBarWithoutLabel).toHaveAttribute('aria-label', 'current progress');
+    expect(elWithLabelAndCounter).toHaveTextContent('current progress');
+    expect(progressBarWithLabelAndCounter).toHaveAccessibleName('0% current progress');
+
+    expect(elWithLabelAndNoCounter).toHaveTextContent('current progress');
+    expect(progressBarWithLabelAndNoCounter).toHaveAccessibleName('current progress');
+
+    expect(elWithoutLabel).not.toHaveTextContent('current progress');
+    expect(progressBarWithoutLabel).toHaveAccessibleName('current progress');
   });
 
   describe('showSteps', function() {
