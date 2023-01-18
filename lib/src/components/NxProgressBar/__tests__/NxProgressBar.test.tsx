@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { within, render } from '@testing-library/react';
+import { within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxProgressBar, { Props } from '../NxProgressBar';
 
@@ -22,7 +22,7 @@ describe('NxProgressBar', function() {
     expect(renderEl()!.tagName).toBe('LABEL');
   });
 
-  it('renders a <progress> as a child', function() {
+  it('renders a <progress> element as a child', function() {
     const el = renderEl()!,
         progressBar = within(el).getByRole('progressbar');
     expect(progressBar).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('NxProgressBar', function() {
 
   it('forwards its ref to the <progress> element', function() {
     const ref = React.createRef<HTMLProgressElement>(),
-        el = render(<NxProgressBar {...minimalProps} ref={ref}/>),
+        el = quickRender({ ref: ref } as Partial<Props>),
         progressBar = el.getByRole('progressbar');
 
     expect(ref.current).toBe(progressBar);
@@ -46,7 +46,7 @@ describe('NxProgressBar', function() {
     expect(partialProgressBar).toHaveAttribute('value', '50');
   });
 
-  it('sets the max prop to 100 when unspecified and passes to progress element', function() {
+  it('sets the max prop to 100 when unspecified and passes it to the progress element', function() {
     const defaultEl = quickRender(),
         customMaxEl = quickRender({ max: 200 }),
         progressEl = defaultEl.getByRole('progressbar'),
@@ -69,8 +69,8 @@ describe('NxProgressBar', function() {
   });
 
   it('renders a counter when showCounter is not false', function() {
-    const counterSelector = '.nx-progress-bar__counter';
-    const defaultEl = renderEl()!,
+    const counterSelector = '.nx-progress-bar__counter',
+        defaultEl = renderEl()!,
         counterEl = renderEl({ showCounter: true })!,
         noCounterEl = renderEl({ showCounter: false })!;
 
@@ -79,16 +79,26 @@ describe('NxProgressBar', function() {
     expect(noCounterEl.querySelector(counterSelector)).not.toBeInTheDocument();
   });
 
-  it('doesn\'t render a counter for the inline variant, even if showCounter is true', function() {
-    const inlineEl = renderEl({ variant: 'inline', showCounter: true})!;
-    expect(inlineEl.querySelector('.nx-progress-bar__counter')).not.toBeInTheDocument();
+  it('renders a counter in all variants except inline', function() {
+    const counterSelector = '.nx-progress-bar__counter',
+        defaultEl = renderEl({ showCounter: true })!,
+        normalEl = renderEl({ variant: 'normal', showCounter: true })!,
+        smallEl = renderEl({ variant: 'small', showCounter: true })!,
+        fullEl = renderEl({ variant: 'full', showCounter: true })!,
+        inlineEl = renderEl({ variant: 'inline', showCounter: true })!;
+
+    expect(defaultEl.querySelector(counterSelector)).toBeInTheDocument();
+    expect(normalEl.querySelector(counterSelector)).toBeInTheDocument();
+    expect(smallEl.querySelector(counterSelector)).toBeInTheDocument();
+    expect(fullEl.querySelector(counterSelector)).toBeInTheDocument();
+    expect(inlineEl.querySelector(counterSelector)).not.toBeInTheDocument();
   });
 
   describe('label', function() {
-    it('renders only for normal and full variants', function() {
+    it('renders only for normal(default) and full variants', function() {
       expect(quickRender().queryByText('current progress')).toBeInTheDocument();
-      expect(quickRender({ variant: 'normal' }).queryByText('current progress')).toBeInTheDocument();
-      expect(quickRender({ variant: 'full' }).queryByText('current progress')).toBeInTheDocument();
+      expect(quickRender({ variant: 'normal' }).getByText('current progress')).toBeInTheDocument();
+      expect(quickRender({ variant: 'full' }).getByText('current progress')).toBeInTheDocument();
       expect(quickRender({ variant: 'small' }).queryByText('current progress')).not.toBeInTheDocument();
       expect(quickRender({ variant: 'inline' }).queryByText('current progress'))
           .not.toBeInTheDocument();
@@ -96,7 +106,7 @@ describe('NxProgressBar', function() {
 
     it('doesn\'t render when inlineCounter is set to true', function() {
       expect(quickRender().queryByText('current progress')).toBeInTheDocument();
-      expect(quickRender({ inlineCounter: false }).queryByText('current progress')).toBeInTheDocument();
+      expect(quickRender({ inlineCounter: false }).getByText('current progress')).toBeInTheDocument();
       expect(quickRender({ inlineCounter: true }).queryByText('current progress'))
           .not.toBeInTheDocument();
     });
@@ -136,6 +146,7 @@ describe('NxProgressBar', function() {
     const progressBarWithoutLabel = quickRender({ inlineCounter: true }).getByRole('progressbar');
 
     expect(progressBarWithLabel).not.toHaveAttribute('aria-label', 'current progress');
+    expect(progressBarWithoutLabel).not.toHaveTextContent('current progress');
     expect(progressBarWithoutLabel).toHaveAttribute('aria-label', 'current progress');
   });
 
@@ -148,7 +159,7 @@ describe('NxProgressBar', function() {
       expect(within(elWithoutSteps).queryByRole('presenation')).not.toBeInTheDocument();
 
       expect(elWithSteps.childElementCount).toBe(3);
-      expect(within(elWithSteps).queryByRole('presentation')).toBeInTheDocument();
+      expect(within(elWithSteps).getByRole('presentation')).toBeInTheDocument();
     });
 
     it('doesn\'t render a counter when showSteps is true', function() {
@@ -166,55 +177,3 @@ describe('NxProgressBar', function() {
   // therefore not tested here
   });
 });
-
-//   describe('showSteps', function() {
-////////DONE?
-//     it('adds an .nx-progress-bar__step-container when true', function() {
-//       expect(getMountedComponent()).not.toContainMatchingElement('.nx-progress-bar__step-container');
-//       expect(getMountedComponent({ showSteps: true })).toContainMatchingElement('.nx-progress-bar__step-container');
-//     });
-/////// DONE
-//     it('removes the .nx-progress-bar__counter when true', function() {
-//       expect(getMountedComponent({ showSteps: true })).not.toContainMatchingElement('.nx-progress-bar__counter');
-//     });
-////// DONE
-//     it('adds a number of .nx-progress-bar__step elements equal to one less than the max when true', function() {
-//       expect(getMountedComponent()).not.toContainMatchingElement('.nx-progress-bar__step');
-//       expect(getMountedComponent({ showSteps: true }).find('.nx-progress-bar__step').length).toBe(99);
-//       expect(getMountedComponent({ showSteps: true, max: 12 }).find('.nx-progress-bar__step').length).toBe(11);
-//       expect(getMountedComponent({ showSteps: true, max: 1 }).find('.nx-progress-bar__step').length).toBe(0);
-//     });
-
-//     it('adds the appropriate modifier class to each step depending on whether it is above, below, or at the ' +
-//          'current value', function() {
-//       const zeroBar = getMountedComponent({ showSteps: true, max: 12, value: 0 }),
-//           partialBar = getMountedComponent({ showSteps: true, max: 12, value: 3 }),
-//           fullBar = getMountedComponent({ showSteps: true, max: 12, value: 12 });
-
-//       expect(zeroBar.find('.nx-progress-bar__step--below-value')).not.toExist();
-//       expect(zeroBar.find('.nx-progress-bar__step--at-value')).not.toExist();
-//       expect(zeroBar.find('.nx-progress-bar__step--above-value').length).toBe(11);
-
-//       expect(partialBar.find('.nx-progress-bar__step--below-value').length).toBe(2);
-//       expect(partialBar.find('.nx-progress-bar__step--at-value').length).toBe(1);
-//       expect(partialBar.find('.nx-progress-bar__step--above-value').length).toBe(8);
-
-//       // ensure correct ordering
-//       expect(partialBar.find('.nx-progress-bar__step--at-value ~ .nx-progress-bar__step--below-value')).not.toExist()
-//       expect(partialBar.find('.nx-progress-bar__step--above-value ~ .nx-progress-bar__step--at-value')).not.toExist()
-
-//       expect(fullBar.find('.nx-progress-bar__step--below-value').length).toBe(11);
-//       expect(fullBar.find('.nx-progress-bar__step--at-value')).not.toExist();
-//       expect(fullBar.find('.nx-progress-bar__step--above-value')).not.toExist();
-//     });
-
-//     it('renders all .nx-progress-bar__step elements with .nx-progress-bar__ste--above-value when labelError is set',
-//         function() {
-//           expect(
-//               getMountedComponent({ showSteps: true, max: 12, value: 3, labelError: 'asdf' })
-//                   .find('.nx-progress-bar__step--above-value').length
-//           ).toBe(11);
-//         }
-//     );
-//   });
-// });
