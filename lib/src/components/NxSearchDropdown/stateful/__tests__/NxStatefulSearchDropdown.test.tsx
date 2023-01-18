@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { mount } from 'enzyme';
+import 'jest-enzyme';
 import { omit } from 'ramda';
 import { getShallowComponent } from '../../../../__testutils__/enzymeUtils';
 import NxSearchDropdown from '../../NxSearchDropdown';

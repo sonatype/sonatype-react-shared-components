@@ -9,6 +9,7 @@ import { NxLoadError, NxLoadingSpinner } from '../../..';
 import NxList from '../NxList';
 import { NxListProps } from '../types';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import { act } from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import NxListButtonItem from '../NxListButtonItem';

@@ -14,10 +14,12 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   onMenuItemFocus?: (index: number, focusableElements: HTMLElement[]) => void | null;
   isOpen?: boolean;
   onToggleCollapse?: () => void | null;
+  useActiveDescendant?: boolean | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   onClosing: PropTypes.func.isRequired,
   children: PropTypes.node,
-  disableMenuKeyNav: PropTypes.bool
+  disableMenuKeyNav: PropTypes.bool,
+  useActiveDescendant: PropTypes.bool
 };

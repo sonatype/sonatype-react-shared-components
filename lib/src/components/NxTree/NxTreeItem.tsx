@@ -66,6 +66,10 @@ export default function NxTreeItem(props: ItemProps) {
         focusedChild: (focusState === 'children') && ref.current?.querySelector('.nx-tree') || null
       };
 
+  function getLabelElement() {
+    return ref.current?.querySelector(':scope > .nx-tree__item-label');
+  }
+
   function focusSelf() {
     setFocusState('self');
 
@@ -73,7 +77,8 @@ export default function NxTreeItem(props: ItemProps) {
     // leave actual focus alone and just make this item the part of the tree that is _focusable_
     const treeRoot = parentKeyNavContext?.getTreeRoot();
     if (treeRoot?.contains(document.activeElement)) {
-      ref.current?.focus();
+      ref.current?.focus({ preventScroll: true });
+      getLabelElement()?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     }
   }
 
@@ -125,7 +130,7 @@ export default function NxTreeItem(props: ItemProps) {
 
   // Establish a11y label for this item
   useEffect(function() {
-    setLabelId(ref.current?.querySelector(':scope > .nx-tree__item-label')?.id || null);
+    setLabelId(getLabelElement()?.id || null);
   }, []);
 
   function onKeyDown(evt: KeyboardEvent<HTMLLIElement>) {

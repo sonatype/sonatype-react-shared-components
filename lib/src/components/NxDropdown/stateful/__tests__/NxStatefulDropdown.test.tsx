@@ -7,6 +7,7 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
+import 'jest-enzyme';
 import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
 
 import NxButton from '../../../NxButton/NxButton';

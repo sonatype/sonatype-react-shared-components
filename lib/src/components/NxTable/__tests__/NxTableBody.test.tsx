@@ -6,6 +6,7 @@
  */
 import React, { ReactElement } from 'react';
 import { shallow, mount, ReactWrapper } from 'enzyme';
+import 'jest-enzyme';
 import { act } from 'react-dom/test-utils';
 import NxTableBody from '../NxTableBody';
 import NxTableCell from '../NxTableCell';

@@ -7,6 +7,7 @@
 import NxToggle from '../../NxToggle';
 import NxStatefulToggle, { Props } from '../NxStatefulToggle';
 import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 
 describe('NxStatefulToggle', function() {
   const simpleProps: Props = {

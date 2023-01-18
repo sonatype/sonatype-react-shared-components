@@ -7,6 +7,7 @@
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 
 import NxThreatIndicator from '../NxThreatIndicator';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';

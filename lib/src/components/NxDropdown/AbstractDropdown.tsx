@@ -146,7 +146,8 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
                       toggleElementRef={toggleRef}
                       isOpen={isOpen}
                       onToggleCollapse={onToggleCollapseProp ?? undefined}
-                      id={menuId ?? undefined}>
+                      id={menuId ?? undefined}
+                      useActiveDescendant={true}>
         { children }
       </NxDropdownMenu>
     </div>

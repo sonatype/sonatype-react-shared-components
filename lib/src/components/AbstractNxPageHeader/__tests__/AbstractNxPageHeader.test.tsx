@@ -7,6 +7,7 @@
 import React from 'react';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import AbstractNxPageHeader, { Props, HeaderLink, HeaderLinkProps } from '../AbstractNxPageHeader';
 
 describe('AbstractNxPageHeader', function() {

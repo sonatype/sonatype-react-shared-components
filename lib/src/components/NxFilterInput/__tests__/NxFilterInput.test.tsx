@@ -7,7 +7,7 @@
 import React, { RefAttributes } from 'react';
 import { createEvent, fireEvent, waitFor } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxFilterInput, { Props } from '../NxFilterInput';
 

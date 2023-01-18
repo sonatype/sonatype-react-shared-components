@@ -6,6 +6,7 @@
  */
 import React, { ReactElement, ReactNode } from 'react';
 import { shallow } from 'enzyme';
+import 'jest-enzyme';
 
 import { ensureElement, ensureStartEndElements } from '../reactUtil';
 

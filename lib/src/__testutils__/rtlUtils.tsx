@@ -5,11 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { ComponentType } from 'react';
-import { render, RenderResult } from '@testing-library/react';
+import { act, render, RenderResult } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
+import realUserEvent from '@testing-library/user-event';
 import { path, pipe } from 'ramda';
 import { within } from '@testing-library/dom';
+import { Options } from '@testing-library/user-event/dist/types/options';
 
 export function rtlRender<P>(Component: ComponentType<P>, minimalProps: P) {
   return function renderWrapper(additionalProps?: Partial<P>): RenderResult {
@@ -27,3 +29,18 @@ type RenderElementRetval<P> = (additionalProps?: Partial<P>) => HTMLElement | un
 export function rtlRenderElement<P>(Component: ComponentType<P>, minimalProps: P): RenderElementRetval<P> {
   return pipe(rtlRender(Component, minimalProps), path(['container', 'firstElementChild']));
 }
+
+export async function runTimers() {
+  await act(async () => { await jest.runAllTimers(); });
+}
+
+export async function advanceTimers(time: number) {
+  await act(async () => { await jest.advanceTimersByTime(time); });
+}
+
+export const userEvent = {
+  ...realUserEvent,
+  setup(options?: Options) {
+    return realUserEvent.setup({ advanceTimers, ...options });
+  }
+};

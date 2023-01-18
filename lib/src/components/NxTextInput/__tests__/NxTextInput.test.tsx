@@ -7,7 +7,7 @@
 import React, { RefAttributes } from 'react';
 import { render, within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxTextInput, { PublicProps } from '../NxTextInput';
 import NxForm from '../../NxForm/NxForm';

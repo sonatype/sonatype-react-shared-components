@@ -153,6 +153,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       onKeyDown={handleButtonKeyDown}
                       isOpen={true}
                       toggleElementRef={filterRef}
+                      useActiveDescendant={true}
                       aria-busy={!!loading}
                       aria-live="polite"
                       aria-hidden={!showDropdown}

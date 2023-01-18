@@ -6,6 +6,7 @@
  */
 import NxList from '../NxList';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 
 describe('NxListSubtext', function() {
 

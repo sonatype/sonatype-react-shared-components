@@ -7,6 +7,7 @@
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import NxStatefulAlert, {
   NxStatefulInfoAlert,
   NxStatefulErrorAlert,

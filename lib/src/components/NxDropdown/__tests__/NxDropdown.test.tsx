@@ -7,6 +7,7 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import { faCaretDown, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import NxDropdown, { Props } from '../NxDropdown';

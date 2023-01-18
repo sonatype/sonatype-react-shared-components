@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { ShallowWrapper } from 'enzyme';
+import 'jest-enzyme';
 import { faCrow, faBiohazard } from '@fortawesome/free-solid-svg-icons';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';

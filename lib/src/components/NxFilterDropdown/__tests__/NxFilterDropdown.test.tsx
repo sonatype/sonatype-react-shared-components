@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { shallow } from 'enzyme';
+import 'jest-enzyme';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 import NxFilterDropdown, { Props } from '../NxFilterDropdown';

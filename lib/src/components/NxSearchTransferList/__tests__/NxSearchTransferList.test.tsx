@@ -7,6 +7,7 @@
 
 import DataItem from '../../../util/DataItem';
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import NxSearchDropdown from '../../NxSearchDropdown/NxSearchDropdown';
 import NxTransferListHalf from '../../NxTransferListHalf/NxTransferListHalf';
 import NxSearchTransferList, { Props } from '../NxSearchTransferList';

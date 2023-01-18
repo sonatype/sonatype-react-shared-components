@@ -8,6 +8,7 @@
 import React from 'react';
 
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import NxCollapsibleItems, { Props } from '../NxCollapsibleItems';
 import { NxTreeView, NxTreeViewChild } from '../../../index';
 

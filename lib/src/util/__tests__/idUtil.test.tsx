@@ -10,6 +10,7 @@ import ReactDOMServer from 'react-dom/server';
 import { getUniqueId, useUniqueId } from '../idUtil';
 import { times } from 'ramda';
 import { shallow } from 'enzyme';
+import 'jest-enzyme';
 import NxStableUniqueIdContext from '../../components/NxStableUniqueIdContext/NxStableUniqueIdContext';
 
 describe('idUtil', function() {

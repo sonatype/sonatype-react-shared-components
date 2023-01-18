@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { mount } from 'enzyme';
+import 'jest-enzyme';
 
 import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
 import NxFilterInput from '../../NxFilterInput/NxFilterInput';

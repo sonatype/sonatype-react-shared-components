@@ -78,21 +78,14 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
       }
 
       const elementToFocus = focusableElements[newMenuItemIndex];
-
       if (elementToFocus) {
         if (onMenuItemFocus) {
           onMenuItemFocus(newMenuItemIndex, focusableElements);
         }
 
-        console.log(useActiveDescendant);
         if (useActiveDescendant) {
           focusableElements.forEach(el => el.classList.remove('selected'));
-          focusableElements.forEach(el => {
-            el.getAttribute('id');
-            el.removeAttribute('id');
-          });
           elementToFocus.classList.add('selected');
-          elementToFocus.setAttribute('id', 'dropdownmenu-selected');
         }
         else {
           elementToFocus.focus();
@@ -126,29 +119,22 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
           event.preventDefault();
           toggleOpen();
           focusFirst();
+          console.log('help');
           break;
       }
     };
 
     if (!disableMenuKeyNav && toggleElementRef && toggleElementRef.current) {
       toggleElementRef.current.removeEventListener('keydown', handleKeyDown);
-      toggleElementRef.current.removeEventListener('keydown', handleToggleKeyDown);
-
-      if (useActiveDescendant && isOpen) {
-        toggleElementRef.current.addEventListener('keydown', handleToggleKeyDown);
-      }
-      else {
-        toggleElementRef.current.addEventListener('keydown', handleKeyDown);
-      }
+      toggleElementRef.current.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
-      if (toggleElementRef && toggleElementRef.current) {
+      if (!disableMenuKeyNav && toggleElementRef && toggleElementRef.current) {
         toggleElementRef.current.removeEventListener('keydown', handleKeyDown);
-        toggleElementRef.current.removeEventListener('keydown', handleToggleKeyDown);
       }
     };
-  }, [isOpen, toggleElementRef, disableMenuKeyNav, useActiveDescendant, focusedMenuItemIndex]);
+  }, [toggleElementRef, disableMenuKeyNav]);
 
   useEffect(() => {
     // Trigger onToggleCollapse when focus goes outside the menu and toggle element.
@@ -181,7 +167,7 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
     }
   }, [menuRef, children]);
 
-  function activateMenuItem(event: React.KeyboardEvent<HTMLElement> | KeyboardEvent) {
+  function activateMenuItem(event: React.KeyboardEvent<HTMLElement>) {
     if (menuRef.current) {
       const focusableEls = menuRef.current.querySelectorAll<HTMLElement>(ACTIVE_FOCUSABLE_MENU_ITEMS_SELECTOR);
       const currentFocusedEl = focusableEls[focusedMenuItemIndex];
@@ -192,43 +178,8 @@ const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu
     }
   }
 
-  function handleToggleKeyDown(event: KeyboardEvent) {
-    if (!disableMenuKeyNav) {
-      switch (event.key) {
-        case 'Home':
-          focusFirst();
-          event.preventDefault();
-          break;
-        case 'End':
-          focusLast();
-          event.preventDefault();
-          break;
-        case 'ArrowUp':
-          focusPrev();
-          event.preventDefault();
-          break;
-        case 'ArrowDown':
-          focusNext();
-          event.preventDefault();
-          break;
-        case ' ': case 'Enter':
-          activateMenuItem(event);
-          break;
-        case 'Escape':
-          event.preventDefault();
-          if (onToggleCollapse) {
-            onToggleCollapse();
-          }
-          // if (toggleElementRef && toggleElementRef.current) {
-          //   toggleElementRef.current.focus();
-          // }
-          break;
-      }
-    }
-  }
-
   const handleMenuKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
-    if (!disableMenuKeyNav && !useActiveDescendant) {
+    if (!disableMenuKeyNav) {
       switch (event.key) {
         case 'Home':
           focusFirst();

@@ -8,6 +8,7 @@ import React from 'react';
 import {times} from 'ramda';
 
 import {getShallowComponent} from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import AbstractCollapsibleItemsSelect, {Props} from '../AbstractCollapsibleItemsSelect';
 import {Option} from '../commonTypes';
 import NxCollapsibleItems, { PrivateNxCollapsibleItems } from '../../NxCollapsibleItems/NxCollapsibleItems';

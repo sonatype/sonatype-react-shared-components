@@ -6,6 +6,7 @@
  */
 import React, { useContext } from 'react';
 import { mount } from 'enzyme';
+import 'jest-enzyme';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
 import NxTableRow from '../NxTableRow';

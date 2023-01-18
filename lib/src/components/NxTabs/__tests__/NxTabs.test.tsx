@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
+import 'jest-enzyme';
 import NxTabs from '../NxTabs';
 import NxTabList from '../NxTabList';
 import NxTab from '../NxTab';

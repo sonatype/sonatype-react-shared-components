@@ -7,6 +7,7 @@
 import React from 'react';
 
 import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import NxCollapsibleRadioSelect, {Option, Props} from '../NxCollapsibleRadioSelect';
 import Counter from '../../../Counter/Counter';
 

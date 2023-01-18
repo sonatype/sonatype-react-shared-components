@@ -7,6 +7,7 @@
 import React from 'react';
 
 import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 
 import NxOverflowTooltip, { OverflowTooltipProps as Props } from '../NxOverflowTooltip';
 

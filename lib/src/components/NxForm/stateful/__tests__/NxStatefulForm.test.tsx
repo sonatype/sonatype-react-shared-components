@@ -6,7 +6,7 @@
  */
 import React, { useContext } from 'react';
 import { within, fireEvent, screen } from '@testing-library/dom';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '../../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
 import NxStatefulForm from '../NxStatefulForm';

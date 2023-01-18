@@ -7,6 +7,7 @@
  */
 import React from 'react';
 import { mount } from 'enzyme';
+import 'jest-enzyme';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';

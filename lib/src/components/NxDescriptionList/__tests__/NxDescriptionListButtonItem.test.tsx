@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { zip } from 'ramda';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '../../../__testutils__/rtlUtils';
 import { render, within } from '@testing-library/react';
 
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';

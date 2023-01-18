@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import { shallow, mount } from 'enzyme';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 

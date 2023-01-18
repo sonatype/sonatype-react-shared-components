@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import 'jest-enzyme';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 

@@ -178,6 +178,10 @@ module.exports = {
       await el.evaluate(e => e.scrollIntoView({ block: 'center' }));
     }
 
+    async function scrollPage(y) {
+      await page.evaluate((y) => window.scrollTo(0, y), y);
+    }
+
     async function moveMouseAway() {
       await page.mouse.move(0, 0);
     }
@@ -260,6 +264,7 @@ module.exports = {
       disableLoadingSpinnerAnimation,
       setupUploadableFiles,
       scrollIntoView,
+      scrollPage,
 
       waitForSelectors,
       getElements,

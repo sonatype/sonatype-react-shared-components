@@ -47,7 +47,7 @@
   text-decoration: none;
   width: 100%;
 
-  &:focus {
+  &:focus, &.selected {
     background-color: transparent;
     border-radius: 0;
     box-shadow: var(--nx-box-shadow-focus);
