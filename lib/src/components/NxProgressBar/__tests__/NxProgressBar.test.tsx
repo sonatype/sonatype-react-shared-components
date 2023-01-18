@@ -38,7 +38,7 @@ describe('NxProgressBar', function() {
 
   it('passes the value prop to the progress element', function() {
     const noProgressEl = quickRender(),
-        partialProgressEl = quickRender({value: 50}),
+        partialProgressEl = quickRender({ value: 50 }),
         noProgressBar = noProgressEl.getByRole('progressbar'),
         partialProgressBar = partialProgressEl.getByRole('progressbar');
 
@@ -58,19 +58,21 @@ describe('NxProgressBar', function() {
 
   it('sets the correct counter percentage value', function() {
     const noProgressEl = renderEl()!,
-        inProgressEl = renderEl({ value: 50})!,
-        finishedEl = renderEl({value: 100})!;
+        inProgressEl = renderEl({ value: 50 })!,
+        finishedEl = renderEl({ value: 100 })!,
+        inProgressWithMaxEl = renderEl({ value: 20, max: 40 });
 
     expect(noProgressEl).toHaveTextContent('0%'),
     expect(inProgressEl).toHaveTextContent('50%'),
     expect(finishedEl).toHaveTextContent('100%');
+    expect(inProgressWithMaxEl).toHaveTextContent('50%');
   });
 
-  it('renders a counter when showCounter is true', function() {
+  it('renders a counter when showCounter is not false', function() {
     const counterSelector = '.nx-progress-bar__counter';
     const defaultEl = renderEl()!,
-        counterEl = renderEl({showCounter: true})!,
-        noCounterEl = renderEl({ showCounter: false})!;
+        counterEl = renderEl({ showCounter: true })!,
+        noCounterEl = renderEl({ showCounter: false })!;
 
     expect(defaultEl.querySelector(counterSelector)).toBeInTheDocument();
     expect(counterEl.querySelector(counterSelector)).toBeInTheDocument();
@@ -85,38 +87,48 @@ describe('NxProgressBar', function() {
   describe('label', function() {
     it('renders only for normal and full variants', function() {
       expect(quickRender().queryByText('current progress')).toBeInTheDocument();
-      expect(quickRender({variant: 'full'}).queryByText('current progress')).toBeInTheDocument();
-      expect(quickRender({variant: 'small'}).queryByText('current progress')).not.toBeInTheDocument();
-      expect(quickRender({variant: 'inline'}).queryByText('current progress'))
+      expect(quickRender({ variant: 'normal' }).queryByText('current progress')).toBeInTheDocument();
+      expect(quickRender({ variant: 'full' }).queryByText('current progress')).toBeInTheDocument();
+      expect(quickRender({ variant: 'small' }).queryByText('current progress')).not.toBeInTheDocument();
+      expect(quickRender({ variant: 'inline' }).queryByText('current progress'))
           .not.toBeInTheDocument();
     });
 
     it('doesn\'t render when inlineCounter is set to true', function() {
       expect(quickRender().queryByText('current progress')).toBeInTheDocument();
-      expect(quickRender({inlineCounter: false}).queryByText('current progress')).toBeInTheDocument();
-      expect(quickRender({inlineCounter: true}).queryByText('current progress'))
+      expect(quickRender({ inlineCounter: false }).queryByText('current progress')).toBeInTheDocument();
+      expect(quickRender({ inlineCounter: true }).queryByText('current progress'))
           .not.toBeInTheDocument();
     });
 
     it('is overridden by labelSuccess when it is specified and progress reaches 100%', function() {
-      const inProgressEl = renderEl({labelSuccess: 'complete', value: 50})!,
-          finishedEl = renderEl({value: 100})!,
-          finishedElWithProp = renderEl({labelSuccess: 'complete', value: 100})!;
+      const inProgressEl = renderEl({ labelSuccess: 'complete', value: 50 })!,
+          finishedEl = renderEl({ value: 100 })!,
+          finishedElWithProp = renderEl({ labelSuccess: 'complete', value: 100 })!,
+          finishedElWithPropAndMax = renderEl({ labelSuccess: 'complete', value: 10, max: 10 });
 
       expect(inProgressEl).toHaveTextContent('current progress');
       expect(finishedEl).toHaveTextContent('current progress');
       expect(finishedElWithProp).not.toHaveTextContent('current progress');
       expect(finishedElWithProp).toHaveTextContent('complete');
+      expect(finishedElWithPropAndMax).not.toHaveTextContent('current progress');
+      expect(finishedElWithPropAndMax).toHaveTextContent('complete');
     });
 
     it('is overriden by labelError when it is specified', function() {
       const el = renderEl()!,
-          elWithError = renderEl({labelError: 'ERROR!'})!;
+          elWithError = renderEl({ labelError: 'oops!' })!;
 
       expect(el).toHaveTextContent('current progress');
       expect(elWithError).not.toHaveTextContent('current progress');
-      expect(elWithError).toHaveTextContent('ERROR!');
+      expect(elWithError).toHaveTextContent('oops!');
     });
+  });
+
+  it('sets progress to 0 when labelError is defined', function() {
+    const elWithError = renderEl({ labelError: 'oops!', value: 50 })!;
+    expect(within(elWithError).getByRole('progressbar')).toHaveAttribute('value', '0');
+    expect(elWithError).toHaveTextContent('0%');
   });
 
   it('assigns an aria-label when component\'s label text is not rendered', function() {
@@ -129,152 +141,31 @@ describe('NxProgressBar', function() {
 
   describe('showSteps', function() {
     it('renders an additional child div with the presentation role', function() {
-      const elWithoutSteps = quickRender(),
-          elWithSteps = quickRender({showSteps: true});
+      const elWithoutSteps = renderEl()!,
+          elWithSteps = renderEl({ showSteps: true })!;
 
-      // expect(elWithoutSteps.childElementCount).toBe(2);
-      expect(elWithoutSteps).queryByRole('presenation').not.toBeInTheDocument();
-      expect(elWithSteps.queryByRole('presentation')).toBeInTheDocument();
+      expect(elWithoutSteps.childElementCount).toBe(2);
+      expect(within(elWithoutSteps).queryByRole('presenation')).not.toBeInTheDocument();
+
+      expect(elWithSteps.childElementCount).toBe(3);
+      expect(within(elWithSteps).queryByRole('presentation')).toBeInTheDocument();
     });
 
     it('doesn\'t render a counter when showSteps is true', function() {
-      const el = renderEl({ showSteps: true, showCounter: true})!;
+      const el = renderEl({ showSteps: true, showCounter: true })!;
       expect(el.querySelector('.nx-progress-bar__counter')).not.toBeInTheDocument();
     });
 
     it('adds the number of step elements equal to one less than max when true', function() {
-      expect(quickRender({showSteps: true}).getByRole('presentation').childElementCount).toBe(99);
-      expect(quickRender({showSteps: true, max: 10}).getByRole('presentation').childElementCount).toBe(9);
-      expect(quickRender({showSteps: true, max: 5}).getByRole('presentation').childElementCount).toBe(4);
+      expect(quickRender({ showSteps: true }).getByRole('presentation').childElementCount).toBe(99);
+      expect(quickRender({ showSteps: true, max: 10 }).getByRole('presentation').childElementCount).toBe(9);
+      expect(quickRender({ showSteps: true, max: 5 }).getByRole('presentation').childElementCount).toBe(4);
     });
 
   // Note: the visiblity of the step matching the progress bar's current value is implemented in CSS and
   // therefore not tested here
   });
 });
-
-/////// MAYBE DONE?
-//   it('displays the correct className and hides label when inlineCounter is set to true',
-//       function() {
-//         const component = getShallowComponent({ value: 100, label: 'hello' });
-//         const inlineCounterComponent = getShallowComponent({ value: 50, inlineCounter: true, label: 'hello' });
-//         const successCounterComponent = getShallowComponent({ value: 100, inlineCounter: true, label: 'hello' });
-//         const errorCounterComponent = getShallowComponent({
-//           value: 50, inlineCounter: true, labelError: 'error', label: 'hello'
-//         });
-
-//         const labelTextSelector = '.nx-progress-bar__label-text';
-
-//         expect(component).not.toHaveClassName('nx-progress-bar--inline-counter');
-//         expect(component.find(labelTextSelector)).toExist();
-//         expect(component.find(labelTextSelector)).toHaveText('hello');
-
-//         expect(inlineCounterComponent).toHaveClassName('nx-progress-bar--inline-counter');
-//         expect(inlineCounterComponent.find(labelTextSelector)).not.toExist();
-//         expect(successCounterComponent.find(labelTextSelector)).not.toExist();
-//         expect(errorCounterComponent.find(labelTextSelector)).not.toExist();
-//       }
-//   );
-
-////// DONE
-//   it('sets the correct counter percentage value',
-//       function() {
-//         const counterSelector = '.nx-progress-bar__counter';
-
-//         expect(getShallowComponent({ value: 20, max: 40 }).find(counterSelector)).toHaveText('50%');
-//         expect(getShallowComponent({ value: 0 }).find(counterSelector)).toHaveText('0%');
-//         expect(getShallowComponent({ value: 50 }).find(counterSelector)).toHaveText('50%');
-//         expect(getShallowComponent({ value: 100 }).find(counterSelector)).toHaveText('100%');
-//       }
-//   );
-
-//////// IMPLEMENTATION
-//   it('sets the correct success className when progress is 100%',
-//       function() {
-//         const component = getShallowComponent({ value: 0 });
-//         const successComponent = getShallowComponent({ value: 100 });
-//         const successComponentWithCustomMax = getShallowComponent({ value: 50, max: 50 });
-//         expect(component).not.toHaveClassName('nx-progress-bar--success');
-//         expect(successComponent).toHaveClassName('nx-progress-bar--success');
-//         expect(successComponentWithCustomMax).toHaveClassName('nx-progress-bar--success');
-//       }
-//   );
-
-////////// DONE
-//   it('shows the correct label and icon when progress is 100%',
-//       function() {
-//         const component = getShallowComponent({ value: 100, label: 'normal label' });
-//         const successLabelComponent = getShallowComponent({ value: 100, label: 'success label' });
-
-//         const labelTextSelector = '.nx-progress-bar__label-text';
-
-//         expect(component).toContainMatchingElement(NxFontAwesomeIcon);
-//         expect(component.find(labelTextSelector)).toHaveText('normal label');
-
-//         expect(successLabelComponent).toContainMatchingElement(NxFontAwesomeIcon);
-//         expect(successLabelComponent.find(labelTextSelector)).toHaveText('success label');
-//       }
-//   );
-
-////// IMPLEMENTATION
-//   it('sets the correct error className when labelError is set',
-//       function() {
-//         const component = getShallowComponent({ value: 100 });
-//         const errorComponent = getShallowComponent({ labelError: 'Something went wrong!' });
-//         expect(component).not.toHaveClassName('nx-progress-bar--error');
-//         expect(errorComponent).toHaveClassName('nx-progress-bar--error');
-//       }
-//   );
-////// DONE
-//   it('shows the correct label and icon when labelError is set',
-//       function() {
-//         const TEST_ERROR_LABEL = 'error label';
-
-//         const component = getShallowComponent({ value: 100, label: 'normal label', labelError: TEST_ERROR_LABEL });
-
-//         const labelTextSelector = '.nx-progress-bar__label-text';
-//         expect(component).toContainMatchingElement(NxFontAwesomeIcon);
-//         expect(component.find(labelTextSelector)).toHaveText(TEST_ERROR_LABEL);
-//       }
-//   );
-//////// DONE
-//   it('sets the correct classname and displays the correct element based on the variant',
-//       function() {
-//         const defaultComponent = getShallowComponent({ showCounter: true, label: 'label' });
-//         const normalComponent = getShallowComponent({ variant: 'normal', showCounter: true, label: 'label' });
-//         const inlineComponent = getShallowComponent({ variant: 'inline', showCounter: true, label: 'label' });
-//         const smallComponent = getShallowComponent({ variant: 'small', showCounter: true, label: 'label' });
-//         const fullComponent = getShallowComponent({ variant: 'full', showCounter: true, label: 'label' });
-
-//         const counterSelector = '.nx-progress-bar__counter';
-//         const labelTextSelector = '.nx-progress-bar__label-text';
-
-//         expect(defaultComponent).toHaveClassName('nx-progress-bar--normal');
-//         expect(defaultComponent).not.toHaveClassName('nx-progress-bar--undefined');
-//         expect(defaultComponent.find(counterSelector)).toExist();
-//         expect(defaultComponent.find(labelTextSelector)).toExist();
-
-//         expect(normalComponent).toHaveClassName('nx-progress-bar--normal');
-//         expect(normalComponent).not.toHaveClassName('nx-progress-bar--undefined');
-//         expect(normalComponent.find(counterSelector)).toExist();
-//         expect(normalComponent.find(labelTextSelector)).toExist();
-
-//         expect(inlineComponent).toHaveClassName('nx-progress-bar--inline');
-//         expect(inlineComponent).not.toHaveClassName('nx-progress-bar--undefined');
-//         expect(inlineComponent.find(counterSelector)).not.toExist();
-//         expect(inlineComponent.find(labelTextSelector)).not.toExist();
-
-//         expect(smallComponent).toHaveClassName('nx-progress-bar--small');
-//         expect(smallComponent).not.toHaveClassName('nx-progress-bar--undefined');
-//         expect(smallComponent.find(counterSelector)).toExist();
-//         expect(smallComponent.find(labelTextSelector)).not.toExist();
-
-//         expect(fullComponent).toHaveClassName('nx-progress-bar--full');
-//         expect(fullComponent).not.toHaveClassName('nx-progress-bar--undefined');
-//         expect(fullComponent.find(counterSelector)).toExist();
-//         expect(fullComponent.find(labelTextSelector)).toExist();
-//       }
-//   );
 
 //   describe('showSteps', function() {
 ////////DONE?
