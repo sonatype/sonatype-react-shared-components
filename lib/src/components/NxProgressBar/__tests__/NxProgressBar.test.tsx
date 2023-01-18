@@ -69,29 +69,27 @@ describe('NxProgressBar', function() {
   });
 
   it('renders a counter when showCounter is not false', function() {
-    const counterSelector = '.nx-progress-bar__counter',
-        defaultEl = renderEl()!,
+    const defaultEl = renderEl()!,
         counterEl = renderEl({ showCounter: true })!,
         noCounterEl = renderEl({ showCounter: false })!;
 
-    expect(defaultEl.querySelector(counterSelector)).toBeInTheDocument();
-    expect(counterEl.querySelector(counterSelector)).toBeInTheDocument();
-    expect(noCounterEl.querySelector(counterSelector)).not.toBeInTheDocument();
+    expect(defaultEl).toHaveTextContent('0%');
+    expect(counterEl).toHaveTextContent('0%');
+    expect(noCounterEl).not.toHaveTextContent('0%');
   });
 
   it('renders a counter in all variants except inline', function() {
-    const counterSelector = '.nx-progress-bar__counter',
-        defaultEl = renderEl({ showCounter: true })!,
+    const defaultEl = renderEl({ showCounter: true })!,
         normalEl = renderEl({ variant: 'normal', showCounter: true })!,
         smallEl = renderEl({ variant: 'small', showCounter: true })!,
         fullEl = renderEl({ variant: 'full', showCounter: true })!,
         inlineEl = renderEl({ variant: 'inline', showCounter: true })!;
 
-    expect(defaultEl.querySelector(counterSelector)).toBeInTheDocument();
-    expect(normalEl.querySelector(counterSelector)).toBeInTheDocument();
-    expect(smallEl.querySelector(counterSelector)).toBeInTheDocument();
-    expect(fullEl.querySelector(counterSelector)).toBeInTheDocument();
-    expect(inlineEl.querySelector(counterSelector)).not.toBeInTheDocument();
+    expect(defaultEl).toHaveTextContent('0%');
+    expect(normalEl).toHaveTextContent('0%');
+    expect(smallEl).toHaveTextContent('0%');
+    expect(fullEl).toHaveTextContent('0%');
+    expect(inlineEl).not.toHaveTextContent('0%');
   });
 
   describe('label', function() {
@@ -164,7 +162,7 @@ describe('NxProgressBar', function() {
 
     it('doesn\'t render a counter when showSteps is true', function() {
       const el = renderEl({ showSteps: true, showCounter: true })!;
-      expect(el.querySelector('.nx-progress-bar__counter')).not.toBeInTheDocument();
+      expect(el).not.toHaveTextContent('0%');
     });
 
     it('adds the number of step elements equal to one less than max when true', function() {
