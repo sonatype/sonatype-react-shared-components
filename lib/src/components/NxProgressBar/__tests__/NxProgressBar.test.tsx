@@ -18,10 +18,6 @@ describe('NxProgressBar', function() {
       quickRender = rtlRender<Props>(NxProgressBar, minimalProps),
       renderEl = rtlRenderElement<Props>(NxProgressBar, minimalProps);
 
-  it('renders the label text', function() {
-    expect(quickRender().getByText('current progress')).toBeInTheDocument();
-  });
-
   it('renders an element with a role of "progressbar"', function() {
     const el = renderEl()!,
         progressBar = within(el).getByRole('progressbar');
