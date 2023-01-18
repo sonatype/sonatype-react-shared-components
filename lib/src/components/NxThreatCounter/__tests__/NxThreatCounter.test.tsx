@@ -6,7 +6,7 @@
  */
 import { RenderResult } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
-import NxThreatCounter, { Props }  from '../NxThreatCounter';
+import NxThreatCounter, { Props } from '../NxThreatCounter';
 
 // NOTE: <dl> and friends have no roles, so none of this test can follow RTL best practices
 describe('NxThreatCounter', function() {
@@ -15,7 +15,7 @@ describe('NxThreatCounter', function() {
 
   function getCounter(view: RenderResult, name: string) {
     return view.getByText((_, e) =>
-        !!(e?.parentElement?.tagName === 'DL' && e?.textContent?.toLowerCase()?.includes(name)));
+      !!(e?.parentElement?.tagName === 'DL' && e?.textContent?.toLowerCase()?.includes(name)));
   }
 
   it('renders nothing if all six indicators are undefined', function() {
