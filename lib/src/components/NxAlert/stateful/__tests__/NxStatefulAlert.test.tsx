@@ -7,9 +7,7 @@
 import React, { ComponentType } from 'react';
 import { faBiohazard } from '@fortawesome/free-solid-svg-icons';
 
-import { userEvent } from '../../../../__testutils__/rtlUtils';
-
-import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
 import NxStatefulAlert,
 { NxStatefulErrorAlert,
   NxStatefulWarningAlert,
