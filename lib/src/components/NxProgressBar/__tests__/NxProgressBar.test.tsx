@@ -140,22 +140,36 @@ describe('NxProgressBar', function() {
     expect(elWithError).toHaveTextContent('0%');
   });
 
-  it('assigns an accessible name to the progressbar regardless of if the label text is rendered', function() {
-    const elWithLabelAndCounter = renderEl()!,
-        progressBarWithLabelAndCounter = within(elWithLabelAndCounter).getByRole('progressbar'),
-        elWithLabelAndNoCounter = renderEl({ showCounter: false })!,
-        progressBarWithLabelAndNoCounter = within(elWithLabelAndNoCounter).getByRole('progressbar'),
-        elWithoutLabel = renderEl({ inlineCounter: true})!,
-        progressBarWithoutLabel = within(elWithoutLabel).getByRole('progressbar');
+  it('assigns an accessible name to the progressbar', function() {
+    const defaultProgress = quickRender().getByRole('progressbar'),
+        progressWithoutCounter = quickRender({ showCounter: false}).getByRole('progressbar'),
+        progressWithInlineCounter = quickRender({ inlineCounter: true }).getByRole('progressbar'),
+        progressWithLabelSuccess = quickRender({ value: 100, labelSuccess: 'complete'}).getByRole('progressbar'),
+        progressWithoutLabelSuccess = quickRender({value: 100 }).getByRole('progressbar'),
+        progressWithLabelSuccessAndInlineCounter =
+            quickRender({ inlineCounter: true, value: 100, labelSuccess: 'complete'}).getByRole('progressbar'),
+        progresswithLabelError = quickRender({ labelError: 'oops'}).getByRole('progressbar'),
+        progressWithLabelErrorAndInlineCounter =
+            quickRender({ inlineCounter: true, labelError: 'oops'}).getByRole('progressbar'),
+        progressWithSteps = quickRender({ showSteps: true }).getByRole('progressbar'),
+        progressInlineVariant = quickRender({ variant: 'inline' }).getByRole('progressbar'),
+        progressInlineVariantAndSuccess = quickRender({ variant: 'inline', value: 100 }).getByRole('progressbar'),
+        progressInlieVariantWithLabelSuccess =
+            quickRender({ variant: 'inline', value: 100, labelSuccess: 'complete'}).getByRole('progressbar'),
+        progressInlineVariantAndError = quickRender({ variant: 'inline', labelError: 'oops'}).getByRole('progressbar');
 
-    expect(elWithLabelAndCounter).toHaveTextContent('current progress');
-    expect(progressBarWithLabelAndCounter).toHaveAccessibleName('0% current progress');
-
-    expect(elWithLabelAndNoCounter).toHaveTextContent('current progress');
-    expect(progressBarWithLabelAndNoCounter).toHaveAccessibleName('current progress');
-
-    expect(elWithoutLabel).not.toHaveTextContent('current progress');
-    expect(progressBarWithoutLabel).toHaveAccessibleName('current progress');
-
+    expect(defaultProgress).toHaveAccessibleName('0% current progress');
+    expect(progressWithoutCounter).toHaveAccessibleName('current progress');
+    expect(progressWithInlineCounter).toHaveAccessibleName('current progress');
+    expect(progressWithLabelSuccess).toHaveAccessibleName('100% complete');
+    expect(progressWithoutLabelSuccess).toHaveAccessibleName('100% current progress');
+    expect(progressWithLabelSuccessAndInlineCounter).toHaveAccessibleName('complete');
+    expect(progresswithLabelError).toHaveAccessibleName('0% oops');
+    expect(progressWithLabelErrorAndInlineCounter).toHaveAccessibleName('oops');
+    expect(progressWithSteps).toHaveAccessibleName('current progress');
+    expect(progressInlineVariant).toHaveAccessibleName('current progress');
+    expect(progressInlineVariantAndSuccess).toHaveAccessibleName('current progress');
+    expect(progressInlieVariantWithLabelSuccess).toHaveAccessibleName('complete');
+    expect(progressInlineVariantAndError).toHaveAccessibleName('oops');
   });
 });
