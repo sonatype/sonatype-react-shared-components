@@ -5,8 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
+
+import { screen, render } from '@testing-library/react';
+import { rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 import AbstractDropdown, {
   AbstractDropdownProps,
@@ -14,70 +15,58 @@ import AbstractDropdown, {
 } from '../AbstractDropdown';
 
 describe('AbstractDropdown', () => {
-  let container: HTMLDivElement | null;
-
   const minimalProps = {
     isOpen: false,
     renderToggleElement: () => <button>Toggle</button>,
     onToggleCollapse: () => {}
   };
 
-  const getShallowComponent = enzymeUtils.getShallowComponent<AbstractDropdownProps>(AbstractDropdown, minimalProps);
-
-  beforeEach(function() {
-    // Avoid rendering directly on the body.
-    container = document.createElement('div');
-    document.body.appendChild(container);
-  });
-
-  afterEach(function() {
-    if (container) {
-      document.body.removeChild(container);
-      container = null;
-    }
-  });
+  const renderEl = rtlRenderElement<AbstractDropdownProps>(AbstractDropdown, minimalProps);
 
   const renderToggleElement: AbstractDropdownRenderToggleElement = (toggleRef, onToggleCollapse) => (
     <button type="button"
-            id="toggle-element"
+            data-testid="toggle-element"
             ref={toggleRef}
             onClick={onToggleCollapse}>
       Toggle
     </button>
   );
 
-  it('renders toggleElement and calls onToggleCollapse when toggleElement is clicked', function() {
+  it('renders toggleElement and calls onToggleCollapse when toggleElement is clicked', async function() {
+    const user = userEvent.setup();
+
     const onToggleCollapse = jest.fn();
 
-    const component = getShallowComponent({ renderToggleElement, onToggleCollapse });
-    const button = component.find('#toggle-element');
+    renderEl({ renderToggleElement, onToggleCollapse });
 
-    expect(button).toExist();
+    const button = screen.getByTestId('toggle-element');
+
+    expect(button).toBeInTheDocument();
 
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
-    button.simulate('click');
+    await user.click(button);
 
     expect(onToggleCollapse).toHaveBeenCalled();
   });
 
   it('renders children inside NxDropdownMenu when isOpen is true', function() {
-    const childrenElement = <div id="dropdown-menu-children">Hello</div>;
+    const childrenElement = <div data-testid="dropdown-menu-children">Hello</div>;
 
-    const component = getShallowComponent({
+    const dropdownProps = {
       renderToggleElement,
       children: childrenElement,
       isOpen: true
-    });
+    };
 
-    let child = component.find('#dropdown-menu-children');
+    const { rerender } = render(<AbstractDropdown {...dropdownProps} />, {});
 
-    expect(child).toExist();
-    expect(child).toMatchElement(childrenElement);
+    const child = screen.getByTestId('dropdown-menu-children');
 
-    component.setProps({ isOpen: false });
+    expect(child).toBeInTheDocument();
 
-    child = component.find('#dropdown-menu-children');
-    expect(child).not.toExist();
+    rerender(<AbstractDropdown {...dropdownProps} isOpen={false} />);
+
+    expect(child).not.toBeInTheDocument();
   });
 });

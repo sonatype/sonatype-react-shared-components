@@ -5,25 +5,19 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { mount } from 'enzyme';
-import 'jest-enzyme';
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
+import { render, within } from '@testing-library/react';
+import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxDropdownMenu, { Props } from '../NxDropdownMenu';
 
 describe('NxDropdownMenu', function() {
-  const minimalProps = { onClosing: () => {} },
-      getShallow = getShallowComponent<Props>(NxDropdownMenu, minimalProps);
+  const minimalProps = { onClosing: () => {} };
+  const renderEl = rtlRenderElement<Props>(NxDropdownMenu, minimalProps);
 
-  it('renders a div with the nx-dropdown-menu class name', function() {
-    expect(getShallow()).toMatchSelector('div.nx-dropdown-menu');
-  });
-
-  it('renders its children into the div', function() {
-    const children = <div className="foo" />;
-
-    expect(getShallow({ children }).children()).toMatchSelector('div.foo');
+  it('renders its children into the menu', function() {
+    const dropdownMenu = renderEl({ children: <div data-testid="foo"/> })!;
+    expect(within(dropdownMenu).getByTestId('foo')).toBeInTheDocument();
   });
 
   // NOTE: this test seems to be of limited usefulness because different behavior is observed here vs in
@@ -33,23 +27,24 @@ describe('NxDropdownMenu', function() {
   it('calls onClosing when being removed, before it is actually removed from DOM', function() {
     let attachedWhenOnClosing: boolean | undefined = undefined;
 
-    const container = document.createElement('div'),
+    const divContainer = document.createElement('div'),
         onClosing = jest.fn(() => {
-          attachedWhenOnClosing = container.contains(component.getDOMNode());
+          attachedWhenOnClosing = divContainer.contains(component);
         });
 
     function Fixture({ hasMenu }: { hasMenu: boolean }) {
-      return hasMenu ? <NxDropdownMenu onClosing={onClosing} /> : null;
+      return hasMenu ? <NxDropdownMenu data-testid="menu" onClosing={onClosing} /> : null;
     }
 
-    const component = mount(<Fixture hasMenu={true} />, { attachTo: container });
+    const { rerender, getByTestId } = render(<Fixture hasMenu={true} />, { container: divContainer });
+    const component = getByTestId('menu');
 
-    expect(component).toContainMatchingElement('.nx-dropdown-menu');
+    expect(component).toHaveClass('nx-dropdown-menu');
     expect(onClosing).not.toHaveBeenCalled();
 
-    component.setProps({ hasMenu: false });
+    rerender(<Fixture hasMenu={false} />);
 
-    expect(component).toBeEmptyRender();
+    expect(component).not.toBeInTheDocument();
     expect(onClosing).toHaveBeenCalledTimes(1);
     expect(attachedWhenOnClosing).toBe(true);
   });
