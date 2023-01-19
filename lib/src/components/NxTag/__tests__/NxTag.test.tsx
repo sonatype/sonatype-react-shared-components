@@ -105,12 +105,22 @@ describe('NxSelectableTag', function() {
     expect(icon).toHaveClass('fa-times-circle nx-tag__action');
   });
 
+  it('checks the children appear in the correct order, text then the icon', function() {
+    const el = quickRender(),
+        tagEl = el.container.querySelector('.nx-tag'),
+        textEl = el.container.querySelector('span'),
+        iconEl = el.getByRole('img', { hidden: true });
+
+    expect(tagEl?.firstChild).toContainElement(textEl);
+    expect(tagEl?.lastChild).toContainElement(iconEl);
+  });
+
   it('fires the components onSelect when clicked', async function() {
     const user = userEvent.setup(),
         onSelect = jest.fn(),
-        view = quickRender({ onSelect });
+        { container } = quickRender({ onSelect });
 
-    const tag = view.container.querySelector<HTMLElement>('label')!;
+    const tag = container.querySelector<HTMLElement>('label')!;
     expect(onSelect).not.toHaveBeenCalled();
     await user.click(tag);
     expect(onSelect).toHaveBeenCalled();
