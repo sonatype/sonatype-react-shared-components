@@ -29,5 +29,3 @@ beforeEach(function() {
 });
 
 afterEach(runTimers);
-
-jest.setTimeout(60000);
