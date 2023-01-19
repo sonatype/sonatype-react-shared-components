@@ -4,124 +4,115 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-import { shallow, mount } from 'enzyme';
-import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import React, { RefAttributes } from 'react';
 
-import NxTag, { NxSelectableTag } from '../NxTag';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import NxTag, { NxSelectableTag, PublicProps, SelectableProps } from '../NxTag';
+
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 describe('NxTag', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxTag, { children: 'basic tag' });
+  type PropsWithRef = PublicProps & RefAttributes<HTMLLabelElement>;
+  const renderEl = rtlRenderElement<PropsWithRef>(NxTag, { children: 'basic tag '});
 
   it('renders NxTag with the `nx-tag` class', function() {
-    expect(getShallowComponent().children().find('.nx-tag')).toExist();
-  });
-
-  it('forwards a ref', function() {
-    const ref = React.createRef<HTMLLabelElement>();
-    const component = mount(<><NxTag ref={ref}>Hello</NxTag></>);
-    expect(component.find('.nx-tag').getDOMNode()).toBe(ref.current);
-  });
-
-  it('correctly assigns supplied class', function() {
-    const classComponent = getShallowComponent({ className: 'foo' });
-    expect(classComponent.find('.nx-tag')).toHaveClassName('foo');
-  });
-
-  it('correctly assigns supplied id', function() {
-    const idComponent = getShallowComponent({ id: 'test-id' });
-    expect(idComponent.find('.nx-tag')).toHaveProp('id', 'test-id');
-  });
-
-  it('renders the supplied text inside .nx-tag__text', function() {
-    const tagChildren = getShallowComponent({ children: 'tag text' });
-    expect(tagChildren.find('.nx-tag__text')).toHaveText('tag text');
-
-    expect(tagChildren.children().first()).toMatchSelector('label');
-    // expect(tagChildren.children().at(1)).toMatchSelector('span');
-  });
-
-  it('sets the nx-selectable-color--indigo class if no color prop is passed', function() {
-    expect(getShallowComponent().find('.nx-selectable-color--indigo')).toExist();
-  });
-
-  it('sets the color class using the color if it is provided', function() {
-    const colorComponent = getShallowComponent({ color: 'orange' });
-    expect(colorComponent.find('.nx-selectable-color--orange')).toExist();
-  });
-
-  it('checks the children appear in the correct order, text then the icon', function() {
-    const getSelectedComponent = getShallowComponent({
-      children: 'foo bar',
-      selectedIcons: <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
-    });
-
-    expect(getSelectedComponent.find('.nx-tag').children().first()).toMatchSelector('span');
-    expect(getSelectedComponent.find('.nx-tag').children().last()).toHaveClassName('nx-tag__action');
-  });
-});
-
-describe('NxSelectableTag', function() {
-  const minimumProps = { children: 'selectable tag', selected: false, onSelect: jest.fn() };
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag, minimumProps);
-
-  it('renders an NxTag', function() {
-    expect(getShallowComponent()).toMatchSelector('ForwardRef(NxTag)');
+    const el = renderEl()!;
+    expect(el.tagName).toBe('LABEL');
+    expect(el).toHaveClass('nx-tag');
   });
 
   it('forwards a ref', function() {
     const ref = React.createRef<HTMLLabelElement>(),
-        component = mount(<><NxSelectableTag {...minimumProps} ref={ref}>Hello</NxSelectableTag></>);
-    expect(component.find('.nx-tag').getDOMNode()).toBe(ref.current);
+        renderedEl = renderEl({ ref });
+
+    expect(ref.current).toBe(renderedEl);
+  });
+
+  it('correctly assigns supplied class', function() {
+    const el = renderEl()!;
+    const customEl = renderEl({ className: 'foo' })!;
+
+    expect(customEl).toHaveClass('foo');
+
+    for (const cls of Array.from(el.classList)) {
+      expect(customEl).toHaveClass(cls);
+    }
+  });
+
+  it('correctly assigns supplied id', function() {
+    const el = renderEl({ id: 'test-id' });
+    expect(el).toHaveAttribute('id', 'test-id');
+  });
+
+  it('renders the supplied text inside .nx-tag__text', function() {
+    const el = renderEl({ children: 'tag text' });
+    expect(el).toHaveTextContent('tag text');
+  });
+
+  it('sets the nx-selectable-color--indigo class if no color prop is passed', function() {
+    const el = renderEl();
+    expect(el).toHaveClass('nx-selectable-color--indigo');
+  });
+
+  it('sets the color class using the color if it is provided', function() {
+    const el = renderEl({ color: 'orange' });
+    expect(el).toHaveClass('nx-selectable-color--orange');
+  });
+});
+
+describe('NxSelectableTag', function() {
+  type PropsWithRef = SelectableProps & RefAttributes<HTMLLabelElement>;
+
+  const minimalProps = { children: 'selectable tag', selected: false, onSelect: jest.fn() },
+      quickRender = rtlRender<PropsWithRef>(NxSelectableTag, minimalProps),
+      renderEl = rtlRenderElement<PropsWithRef>(NxSelectableTag, minimalProps);
+
+  it('renders an NxTag', function() {
+    const el = renderEl()!;
+    expect(el.tagName).toBe('LABEL');
+    expect(el).toHaveClass('nx-tag');
+  });
+
+  it('forwards a ref', function() {
+    const ref = React.createRef<HTMLLabelElement>(),
+        renderedEl = renderEl({ ref });
+    expect(ref.current).toBe(renderedEl);
   });
 
   it('renders NxSelectableTag with the `nx-tag--selectable` class', function() {
-    expect(getShallowComponent()).toMatchSelector('.nx-tag--selectable');
+    const el = renderEl();
+    expect(el).toHaveClass('nx-tag--selectable');
   });
 
   it('renders the `nx-tag--unselected` class when not selected', function() {
-    expect(getShallowComponent()).toMatchSelector('.nx-tag--unselected');
+    const el = renderEl();
+    expect(el).toHaveClass('nx-tag--unselected');
   });
 
   it('renders the `nx-tag--selected` class when selected and appears before the icon', function() {
-    const getSelectedComponent = getShallowComponent({ selected: true, children: 'foo bar' });
-    expect(getSelectedComponent).toMatchSelector('.nx-tag--selected');
+    const el = renderEl({ selected: true, children: 'foo bar' });
+    expect(el).toHaveClass('nx-tag--selected');
   });
 
   it('renders the plus icon and action class when not selected', function() {
-    const SelectableTagIcons = function() {
-          return getShallowComponent().prop('selectedIcons');
-        },
-        icon = shallow(<SelectableTagIcons />);
-
-    expect(icon).toMatchSelector(NxFontAwesomeIcon);
-    expect(icon).toHaveProp(icon, faPlusCircle);
-    expect(icon).toHaveClassName('nx-tag__action');
+    const el = quickRender(),
+        icon = el.getByRole('img', { hidden: true });
+    expect(icon).toHaveClass('fa-plus-circle nx-tag__action');
   });
 
   it('renders the times icon when selected', function() {
-    const getSelectedComponent = enzymeUtils.getShallowComponent(NxSelectableTag,
-        { children: 'selectable tag', selected: true, onSelect: jest.fn() });
-
-    const SelectableTagIcons = function() {
-          return getSelectedComponent().prop('selectedIcons');
-        },
-        icon = shallow(<SelectableTagIcons />);
-
-    expect(icon).toMatchSelector(NxFontAwesomeIcon);
-    expect(icon).toHaveProp(icon, faTimesCircle);
-    expect(icon).toHaveClassName('nx-tag__action');
+    const el = quickRender({ selected: true }),
+        icon = el.getByRole('img', { hidden: true });
+    expect(icon).toHaveClass('fa-times-circle nx-tag__action');
   });
 
-  it('fires the components onSelect when clicked', function() {
-    const onSelect = jest.fn(),
-        trigger = getShallowComponent({ onSelect });
+  it('fires the components onSelect when clicked', async function() {
+    const user = userEvent.setup(),
+        onSelect = jest.fn(),
+        view = quickRender({ onSelect });
 
+    const tag = view.container.querySelector<HTMLElement>('label')!;
     expect(onSelect).not.toHaveBeenCalled();
-    trigger.find('input').simulate('change');
+    await user.click(tag);
     expect(onSelect).toHaveBeenCalled();
   });
 });
