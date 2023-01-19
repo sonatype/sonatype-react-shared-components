@@ -55,14 +55,16 @@ describe('NxStatefulAlert', function() {
       expect(el).toHaveAttribute('title', 'bar');
     });
 
-    it('renders a Close button', async function() {
+    it('renders a Close button even though the onClose prop is not specified', async function() {
       const user = userEvent.setup(),
           view = quickRender(),
           closeBtn = view.getByRole('button', { name: 'Close' });
 
+      expect(view.container.querySelector('.nx-alert')).toBeInTheDocument();
       expect(closeBtn).toBeInTheDocument();
 
       await user.click(closeBtn);
+      expect(view.container.querySelector('.nx-alert')).not.toBeInTheDocument();
       expect(closeBtn).not.toBeInTheDocument();
     });
 
