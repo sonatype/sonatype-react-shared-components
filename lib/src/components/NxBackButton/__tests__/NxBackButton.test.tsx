@@ -4,37 +4,47 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
+
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import { within } from '@testing-library/react';
+
 import NxBackButton, { Props } from '../NxBackButton';
 
 describe('NxBackButton', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxBackButton, { href: '/foo' });
+  const quickRender = rtlRender<Props>(NxBackButton, { href: '/foo' }),
+      renderEl = rtlRenderElement<Props>(NxBackButton, { href: '/foo' });
 
-  it('renders a <div> with nx-back-button and tm-back-button classes containing an <a>', function() {
-    expect(getShallowComponent()).toMatchSelector('div.nx-back-button.tm-back-button');
-    expect(getShallowComponent().find('a')).toExist();
+  it('renders a child with the role of link', function() {
+    const el = renderEl()!;
+    expect(within(el).getByRole('link')).toBeInTheDocument();
   });
 
-  it('renders the link with the nx-text-link class', function() {
-    expect(getShallowComponent().find('a')).toHaveProp('href', '/foo');
-    expect(getShallowComponent().find('a')).toHaveClassName('nx-text-link');
+  it('renders "Back" as default text', function() {
+    expect(renderEl()!).toHaveTextContent('Back');
   });
 
-  it('renders the specified text within the link', function() {
-    expect(getShallowComponent({ text: 'Link Text' }).find('a').render().text()).toBe('Link Text');
+  it('overrides the default text if text prop is provided', function() {
+    const el = renderEl({ text: 'foo' })!;
+    expect(el).toHaveTextContent('foo');
+    expect(el).not.toHaveTextContent('Back');
   });
 
-  it('ignores the targetPageTitle when the text prop is set', function() {
-    expect(getShallowComponent({ text: 'Link Text', targetPageTitle: 'BarBaz' }).find('a').render().text())
-        .toBe('Link Text');
+  it('renders text based on the targetPageTitle if it is provided', function() {
+    const el = renderEl({ targetPageTitle: 'foo' })!;
+    expect(el).toHaveTextContent('Back to foo');
   });
 
-  it('renders text based on the targetPageTitle if no text was specified', function() {
-    expect(getShallowComponent({ targetPageTitle: 'BarBaz' }).find('a').render().text()).toBe('Back to BarBaz');
+  it('ignores the targetPageTitle when the text prop is provided', function() {
+    const el = renderEl({ targetPageTitle: 'foo', text: 'bar'});
+    expect(el).toHaveTextContent('bar');
+    expect(el).not.toHaveTextContent('foo');
   });
 
-  it('renders just the word "Back" if no text was specified and the state does not have a title', function() {
-    expect(getShallowComponent().find('a').render().text()).toBe('Back');
+  it('renders an accessible name according to visible text', function() {
+    expect(quickRender().getByRole('link')).toHaveAccessibleName('Back');
+    expect(quickRender({ targetPageTitle: 'foo'}).getByRole('link')).toHaveAccessibleName('Back to foo');
+    expect(quickRender({ text: 'bar' }).getByRole('link')).toHaveAccessibleName('bar');
+    expect(quickRender({ targetPageTitle: 'foo', text: 'bar'}).getByRole('link')).toHaveAccessibleName('bar');
   });
 });
+
