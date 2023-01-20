@@ -157,9 +157,12 @@ describe('NxDropdown', () => {
   });
 
   it('calls onToggleCollapse if ESC is pressed within the component while the dropdown is open', async function() {
+    const user = userEvent.setup();
     const onToggleCollapse = jest.fn();
     const component = renderEl({ onToggleCollapse, isOpen: true })!;
-    fireEvent.keyDown(component, { key: 'Escape' });
+    const toggle = within(component).getByRole('button', { name: 'dropdown-toggle' });
+    toggle.focus();
+    await user.keyboard('{Escape}');
     expect(onToggleCollapse).toHaveBeenCalled();
   });
 
@@ -176,41 +179,46 @@ describe('NxDropdown', () => {
     expect(escapeEvent.defaultPrevented).toBe(true);
   });
 
-  it('does not call onToggleCollapse if ESC is pressed within the component when the dropdown is closed', function() {
+  it('does not call onToggleCollapse if ESC is pressed within the component'
+  + 'when the dropdown is closed', async function() {
+    const user = userEvent.setup();
     const onToggleCollapse = jest.fn();
     const component = renderEl({ onToggleCollapse })!;
+    const toggle = within(component).getByRole('button', { name: 'dropdown-toggle' });
 
     expect(onToggleCollapse).not.toHaveBeenCalled();
-    fireEvent.keyDown(component, { key: 'Escape' });
+    toggle.focus();
+    await user.keyboard('{Escape}');
     expect(onToggleCollapse).not.toHaveBeenCalled();
   });
 
   it('does not call onToggleCollapse if ESC is pressed within the component when the component is disabled',
-      function() {
+      async function() {
+        const user = userEvent.setup();
         const onToggleCollapse = jest.fn();
         const component = renderEl({ onToggleCollapse, isOpen: true, disabled: true })!;
+        const toggle = within(component).getByRole('button', { name: 'dropdown-toggle' });
 
         expect(onToggleCollapse).not.toHaveBeenCalled();
-        fireEvent.keyDown(component, { key: 'Escape' });
+        toggle.focus();
+        await user.keyboard('{Escape}');
         expect(onToggleCollapse).not.toHaveBeenCalled();
       }
   );
 
   it('does not call onToggleCollapse if ESC is pressed within the component and onCloseKeyDown preventsDefault',
-      function() {
+      async function() {
+        const user = userEvent.setup();
         const onToggleCollapse = jest.fn();
-
-        const props: Partial<Props> = {
+        const component = renderEl({
           onToggleCollapse,
           isOpen: true,
           onCloseKeyDown: e => e.preventDefault()
-        };
+        })!;
+        const toggle = within(component).getByRole('button', { name: 'dropdown-toggle' });
 
-        quickRender(props);
-
-        const button = screen.getByRole('button');
-        fireEvent.keyDown(button, { key: 'Escape', bubbles: true });
-
+        toggle.focus();
+        await user.keyboard('{Escape}');
         expect(onToggleCollapse).not.toHaveBeenCalled();
       }
   );
@@ -243,7 +251,8 @@ describe('NxDropdown', () => {
     expect(onToggleCollapse).not.toHaveBeenCalled();
   });
 
-  it('provides onCloseClick with an event object where the typical properties work correctly', function() {
+  it('provides onCloseClick with an event object where the typical properties work correctly', async function() {
+    const user = userEvent.setup();
     let evt: MouseEvent | undefined,
         // currentTarget is only set on the event object during the event handler, so to keep it around for assertions
         // we need to store it in a separate variable
@@ -258,7 +267,7 @@ describe('NxDropdown', () => {
 
     expect(evt).toBeUndefined();
 
-    fireEvent.click(component);
+    await user.click(component);
 
     expect(evt).toBeDefined();
 
