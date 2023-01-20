@@ -133,7 +133,7 @@ describe('NxOverflowTooltip', function() {
       await user.hover(child);
       await runTimers();
 
-      expect(screen.getByRole('tooltip')).toHaveTextContent(/^Bar$/);
+      expect(screen.getByRole('tooltip')).toHaveTextContent('Bar');
     });
 
     it('does not affect the accessible name of the child', async function() {
