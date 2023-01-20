@@ -4,9 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { shallow } from 'enzyme';
-import 'jest-enzyme';
-import React from 'react';
+import React, { ComponentType } from 'react';
+import { render } from '@testing-library/react';
 
 import {
   NxP,
@@ -33,254 +32,187 @@ import {
   NxFormRow
 } from '../SimpleComponents';
 
+function test(Component: ComponentType<{}>, tagName: string, ...classNames: string[]) {
+  return () => {
+    const el = render(<Component/>).container.firstElementChild!;
+    expect(el.tagName).toBe(tagName.toUpperCase());
+
+    for (const className of classNames) {
+      expect(el).toHaveClass(className);
+    }
+  };
+}
+
 describe('NxP', function() {
-  it('makes a <p> tag with an nx-p class', function() {
-    expect(shallow(<NxP/>)).toMatchSelector('p.nx-p');
-  });
+  it('makes a <p> tag with an nx-p class', test(NxP, 'p', 'nx-p'));
 });
 
 describe('NxCode', function() {
-  it('makes a <code> tag with an nx-code class', function() {
-    expect(shallow(<NxCode/>)).toMatchSelector('code.nx-code');
-  });
+  it('makes a <code> tag with an nx-code class', test(NxCode, 'code', 'nx-code'));
 });
 
 describe('NxBlockquote', function() {
-  it('makes a <blockquote> tag with an nx-blockquote class', function() {
-    expect(shallow(<NxBlockquote/>)).toMatchSelector('blockquote.nx-blockquote');
-  });
+  it('makes a <blockquote> tag with an nx-blockquote class', test(NxBlockquote, 'blockquote', 'nx-blockquote'));
 });
 
 describe('NxPre', function() {
-  it('makes a <pre> tag with an nx-pre class', function() {
-    expect(shallow(<NxPre/>)).toMatchSelector('pre.nx-pre');
-  });
+  it('makes a <pre> tag with an nx-pre class', test(NxPre, 'pre', 'nx-pre'));
 });
 
 describe('NxFooter', function() {
-  it('makes a <footer> tag with an nx-footer class', function() {
-    expect(shallow(<NxFooter/>)).toMatchSelector('footer.nx-footer');
-  });
+  it('makes a <footer> tag with an nx-footer class', test(NxFooter, 'footer', 'nx-footer'));
 });
 
 describe('NxButtonBar', function() {
-  it('makes a <div> tag with an nx-btn class', function() {
-    expect(shallow(<NxButtonBar/>)).toMatchSelector('div.nx-btn-bar');
-  });
+  it('makes a <div> tag with an nx-btn class', test(NxButtonBar, 'div', 'nx-btn-bar'));
 });
 
 describe('NxCounter', function() {
-  it('makes a <span> tag with an nx-counter class', function() {
-    expect(shallow(<NxCounter/>)).toMatchSelector('span.nx-counter');
-  });
+  it('makes a <span> tag with an nx-counter class', test(NxCounter, 'span', 'nx-counter'));
 });
 
 describe('NxThreatNumber', function() {
-  it('makes a <span> tag with an nx-threat-number class', function() {
-    expect(shallow(<NxThreatNumber/>)).toMatchSelector('span.nx-threat-number');
-  });
+  it('makes a <span> tag with an nx-threat-number class', test(NxThreatNumber, 'span', 'nx-threat-number'));
 });
 
 describe('NxPageMain', function() {
-  it('makes a <main> tag with an nx-page-main class', function() {
-    expect(shallow(<NxPageMain/>)).toMatchSelector('main.nx-page-main');
-  });
+  it('makes a <main> tag with an nx-page-main class', test(NxPageMain, 'main', 'nx-page-main'));
 });
 
 describe('NxPageSidebar', function() {
-  it('makes a <aside> tag with an nx-page-sidebar class', function() {
-    expect(shallow(<NxPageSidebar/>)).toMatchSelector('aside.nx-page-sidebar');
-  });
+  it('makes a <aside> tag with an nx-page-sidebar class', test(NxPageSidebar, 'aside', 'nx-page-sidebar'));
 });
 
 describe('NxH1', function() {
-  it('makes a <h1> tag with an nx-h1 class', function() {
-    expect(shallow(<NxH1/>)).toMatchSelector('h1.nx-h1');
-  });
+  it('makes a <h1> tag with an nx-h1 class', test(NxH1, 'h1', 'nx-h1'));
 });
 
 describe('NxH2', function() {
-  it('makes a <h2> tag with an nx-h2 class', function() {
-    expect(shallow(<NxH2/>)).toMatchSelector('h2.nx-h2');
-  });
+  it('makes a <h2> tag with an nx-h2 class', test(NxH2, 'h2', 'nx-h2'));
 });
 
 describe('NxH3', function() {
-  it('makes a <h3> tag with an nx-h3 class', function() {
-    expect(shallow(<NxH3/>)).toMatchSelector('h3.nx-h3');
-  });
+  it('makes a <h3> tag with an nx-h3 class', test(NxH3, 'h3', 'nx-h3'));
 });
 
 describe('NxH4', function() {
-  it('makes a <h4> tag with an nx-h4 class', function() {
-    expect(shallow(<NxH4/>)).toMatchSelector('h4.nx-h4');
-  });
+  it('makes a <h4> tag with an nx-h4 class', test(NxH4, 'h4', 'nx-h4'));
 });
 
 describe('NxCard', function() {
-  it('makes a <section> tag with an nx-card class', function() {
-    expect(shallow(<NxCard/>)).toMatchSelector('section.nx-card');
-  });
+  it('makes a <section> tag with an nx-card class', test(NxCard, 'section', 'nx-card'));
 });
 
 describe('NxCard.Container', function() {
-  it('makes a <div> tag with an nx-card-container class', function() {
-    expect(shallow(<NxCard.Container/>)).toMatchSelector('div.nx-card-container');
-  });
+  it('makes a <div> tag with an nx-card-container class', test(NxCard.Container, 'div', 'nx-card-container'));
 });
 
 describe('NxCard.Header', function() {
-  it('makes a <header> tag with an nx-card__header class', function() {
-    expect(shallow(<NxCard.Header/>)).toMatchSelector('header.nx-card__header');
-  });
+  it('makes a <header> tag with an nx-card__header class', test(NxCard.Header, 'header', 'nx-card__header'));
 });
 
 describe('NxCard.Footer', function() {
-  it('makes a <footer> tag with an nx-card__footer class', function() {
-    expect(shallow(<NxCard.Footer/>)).toMatchSelector('footer.nx-card__footer');
-  });
+  it('makes a <footer> tag with an nx-card__footer class', test(NxCard.Footer, 'footer', 'nx-card__footer'));
 });
 
 describe('NxCard.Content', function() {
-  it('makes a <div> tag with an nx-card__content class', function() {
-    expect(shallow(<NxCard.Content/>)).toMatchSelector('div.nx-card__content');
-  });
+  it('makes a <div> tag with an nx-card__content class', test(NxCard.Content, 'div', 'nx-card__content'));
 });
 
 describe('NxCard.CallOut', function() {
-  it('makes a <div> tag with an nx-card__call-out class', function() {
-    expect(shallow(<NxCard.CallOut/>)).toMatchSelector('div.nx-card__call-out');
-  });
+  it('makes a <div> tag with an nx-card__call-out class', test(NxCard.CallOut, 'div', 'nx-card__call-out'));
 });
 
 describe('NxCard.Text', function() {
-  it('makes a <div> tag with an nx-card__text class', function() {
-    expect(shallow(<NxCard.Text/>)).toMatchSelector('div.nx-card__text');
-  });
+  it('makes a <div> tag with an nx-card__text class', test(NxCard.Text, 'div', 'nx-card__text'));
 });
 
 describe('NxGrid.Row', function() {
-  it('makes a <div> tag with an nx-grid-row class', function() {
-    expect(shallow(<NxGrid.Row/>)).toMatchSelector('div.nx-grid-row');
-  });
+  it('makes a <div> tag with an nx-grid-row class', test(NxGrid.Row, 'div', 'nx-grid-row'));
 });
 
 describe('NxGrid.Column', function() {
-  it('makes a <section> tag with an nx-grid-column class', function() {
-    expect(shallow(<NxGrid.Column/>)).toMatchSelector('section.nx-grid-col');
-  });
+  it('makes a <section> tag with an nx-grid-column class', test(NxGrid.Column, 'section', 'nx-grid-col'));
 });
 
 describe('NxGrid.ColumnSection', function() {
-  it('makes a <section> tag with an nx-grid-column__section class', function() {
-    expect(shallow(<NxGrid.ColumnSection/>)).toMatchSelector('section.nx-grid-col__section');
-  });
+  it('makes a <section> tag with an nx-grid-column__section class',
+      test(NxGrid.ColumnSection, 'section', 'nx-grid-col__section'));
 });
 
 describe('NxGrid.HorizontalKeyline', function() {
-  it('makes a <div> tag with an nx-grid-h-keyline class', function() {
-    expect(shallow(<NxGrid.HorizontalKeyline/>)).toMatchSelector('div.nx-grid-h-keyline');
-  });
+  it('makes a <div> tag with an nx-grid-h-keyline class', test(NxGrid.HorizontalKeyline, 'div', 'nx-grid-h-keyline'));
 });
 
 describe('NxGrid.Header', function() {
-  it('makes a <div> tag with an nx-grid-header class', function() {
-    expect(shallow(<NxGrid.Header/>)).toMatchSelector('div.nx-grid-header');
-  });
+  it('makes a <div> tag with an nx-grid-header class', test(NxGrid.Header, 'div', 'nx-grid-header'));
 });
 
 describe('NxGrid.HeaderHrule', function() {
-  it('makes a <hr> tag with an nx-grid-header__hrule class', function() {
-    expect(shallow(<NxGrid.HeaderHrule/>)).toMatchSelector('hr.nx-grid-header__hrule');
-  });
+  it('makes a <hr> tag with an nx-grid-header__hrule class', test(NxGrid.HeaderHrule, 'hr', 'nx-grid-header__hrule'));
 });
 
 describe('NxPageTitle', function() {
-  it('makes a <div> tag with an nx-page-title class', function() {
-    expect(shallow(<NxPageTitle/>)).toMatchSelector('div.nx-page-title');
-  });
+  it('makes a <div> tag with an nx-page-title class', test(NxPageTitle, 'div', 'nx-page-title'));
 });
 
 describe('NxPageTitle.Headings', function() {
-  it('makes a <hgroup> tag with an nx-page-title__headings class', function() {
-    expect(shallow(<NxPageTitle.Headings/>)).toMatchSelector('hgroup.nx-page-title__headings');
-  });
+  it('makes a <hgroup> tag with an nx-page-title__headings class',
+      test(NxPageTitle.Headings, 'hgroup', 'nx-page-title__headings'));
 });
 
 describe('NxPageTitle.Subtitle', function() {
-  it('makes a <h2> tag with nx-h2 and nx-page-title__sub-title classes', function() {
-    expect(shallow(<NxPageTitle.Subtitle/>)).toMatchSelector('h2.nx-h2.nx-page-title__sub-title');
-  });
+  it('makes a <h2> tag with nx-h2 and nx-page-title__sub-title classes',
+      test(NxPageTitle.Subtitle, 'h2', 'nx-h2', 'nx-page-title__sub-title'));
 });
 
 describe('NxPageTitle.Description', function() {
-  it('makes a <div> tag with an nx-page-title__description class', function() {
-    expect(shallow(<NxPageTitle.Description/>)).toMatchSelector('div.nx-page-title__description');
-  });
+  it('makes a <div> tag with an nx-page-title__description class',
+      test(NxPageTitle.Description, 'div', 'nx-page-title__description'));
 });
 
 describe('NxPageTitle.Tags', function() {
-  it('makes a <div> tag with an nx-page-title__tags class', function() {
-    expect(shallow(<NxPageTitle.Tags/>)).toMatchSelector('div.nx-page-title__tags');
-  });
+  it('makes a <div> tag with an nx-page-title__tags class', test(NxPageTitle.Tags, 'div', 'nx-page-title__tags'));
 });
 
 describe('NxReadOnly', function() {
-  it('makes a <dl> tag with an nx-read-only class', function() {
-    expect(shallow(<NxReadOnly/>)).toMatchSelector('dl.nx-read-only');
-  });
+  it('makes a <dl> tag with an nx-read-only class', test(NxReadOnly, 'dl', 'nx-read-only'));
 });
 
 describe('NxReadOnly.Label', function() {
-  it('makes a <dt> tag with an nx-read-only__label class', function() {
-    expect(shallow(<NxReadOnly.Label/>)).toMatchSelector('dt.nx-read-only__label');
-  });
+  it('makes a <dt> tag with an nx-read-only__label class', test(NxReadOnly.Label, 'dt', 'nx-read-only__label'));
 });
 
 describe('NxReadOnly.Data', function() {
-  it('makes a <dd> tag with an nx-read-only__data class', function() {
-    expect(shallow(<NxReadOnly.Data/>)).toMatchSelector('dd.nx-read-only__data');
-  });
+  it('makes a <dd> tag with an nx-read-only__data class', test(NxReadOnly.Data, 'dd', 'nx-read-only__data'));
 });
 
 describe('NxReadOnly.Item', function() {
-  it('makes a <div> tag with an nx-read-only__item class', function() {
-    expect(shallow(<NxReadOnly.Item/>)).toMatchSelector('div.nx-read-only__item');
-  });
+  it('makes a <div> tag with an nx-read-only__item class', test(NxReadOnly.Item, 'div', 'nx-read-only__item'));
 });
 
 describe('NxTableContainer', function() {
-  it('makes a <div> tag with an nx-table-container class', function() {
-    expect(shallow(<NxTableContainer/>)).toMatchSelector('div.nx-table-container');
-  });
+  it('makes a <div> tag with an nx-table-container class', test(NxTableContainer, 'div', 'nx-table-container'));
 });
 
 describe('NxTableContainer.Footer', function() {
-  it('makes a <div> tag with an nx-table-container__footer class', function() {
-    expect(shallow(<NxTableContainer.Footer/>)).toMatchSelector('div.nx-table-container__footer');
-  });
+  it('makes a <div> tag with an nx-table-container__footer class',
+      test(NxTableContainer.Footer, 'div', 'nx-table-container__footer'));
 });
 
 describe('NxGlobalHeader', function() {
-  it('makes a <header> with an nx-global-header class', function() {
-    expect(shallow(<NxGlobalHeader/>)).toMatchSelector('header.nx-global-header');
-  });
+  it('makes a <header> with an nx-global-header class', test(NxGlobalHeader, 'header', 'nx-global-header'));
 });
 
 describe('NxGlobalHeader.Actions', function() {
-  it('makes an <div> with an nx-global-header__actions class', function() {
-    expect(shallow(<NxGlobalHeader.Actions/>)).toMatchSelector('div.nx-global-header__actions');
-  });
+  it('makes an <div> with an nx-global-header__actions class',
+      test(NxGlobalHeader.Actions, 'div', 'nx-global-header__actions'));
 });
 
 describe('NxDivider', function() {
-  it('makes a <hr> tag with an nx-divider class', function() {
-    expect(shallow(<NxDivider/>)).toMatchSelector('hr.nx-divider');
-  });
+  it('makes a <hr> tag with an nx-divider class', test(NxDivider, 'hr', 'nx-divider'));
 });
 
 describe('NxFormRow', function() {
-  it('makes a <div> tag with the nx-form-row class', function() {
-    expect(shallow(<NxFormRow/>)).toMatchSelector('div.nx-form-row');
-  });
+  it('makes a <div> tag with the nx-form-row class', test(NxFormRow, 'div', 'nx-form-row'));
 });
