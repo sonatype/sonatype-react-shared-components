@@ -114,7 +114,7 @@ describe('NxDropdown', () => {
     expect(onToggleCollapse).toHaveBeenCalled();
   });
 
-  it('does not call onToggleCollapse if a click happens anywhere when the dropdown is closed', async function() {
+  it('does not call onToggleCollapse if a click happens anywhere aside from the toggle button when the dropdown is closed', async function() {
     const user = userEvent.setup();
     const onToggleCollapse = jest.fn();
     quickRender({ onToggleCollapse });
