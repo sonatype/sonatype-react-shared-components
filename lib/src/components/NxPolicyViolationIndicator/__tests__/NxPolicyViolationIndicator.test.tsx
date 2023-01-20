@@ -58,7 +58,7 @@ describe('NxPolicyViolationIndicator', function() {
     expect(unspecifiedEl).toHaveTextContent('unspecified');
   });
 
-  it('sets the threatLevelCategory by converting policyThreatLevel if it is provided',
+  it('sets the text content to the the threat level category corresponding to the provided policyThreatLevel',
       function() {
         expect(renderEl({ policyThreatLevel: 0})!).toHaveTextContent('none');
         expect(renderEl({ policyThreatLevel: 1})!).toHaveTextContent('low');
@@ -69,8 +69,8 @@ describe('NxPolicyViolationIndicator', function() {
         expect(renderEl()!).toHaveTextContent('unspecified');
       });
 
-  it('renders an indicator according to threatLevelCategory over policyThreatNumber of both are provided', function() {
-    expect(renderEl({ policyThreatLevel: 9, threatLevelCategory: 'low'})).toHaveTextContent('low');
+  it('renders an indicator according to threatLevelCategory over policyThreatNumber if both are provided', function() {
+    expect(renderEl({ policyThreatLevel: 9, threatLevelCategory: 'low' })).toHaveTextContent('low');
   });
 
   it('adds aria-label to icon', function() {
