@@ -59,7 +59,6 @@ describe('NxOverflowTooltip', function() {
     descriptionEl.remove();
   });
 
-
   it('renders the children', function() {
     expect(quickRender().getByTestId('child')).toBeInTheDocument();
   });
