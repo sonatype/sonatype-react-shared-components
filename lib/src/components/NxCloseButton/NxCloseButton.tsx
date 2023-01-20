@@ -14,14 +14,12 @@ import { includesDisabledClass } from '../../util/classUtil';
 import './NxCloseButton.scss';
 
 const NxCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>(
-    function NxCloseButton({ className, onClick, ...otherProps }, ref) {
-      const btnClasses = classnames('nx-btn nx-btn--icon-only nx-btn--close', className),
-          disabledByClass = includesDisabledClass(className);
+    function NxCloseButton({ className, ...otherProps }, ref) {
+      const btnClasses = classnames('nx-btn nx-btn--icon-only nx-btn--close', className);
 
       // NOTE: not using NxButton because we don't want the tooltip that icon-only NxButtons require
       return (
-        <button aria-disabled={disabledByClass}
-                onClick={disabledByClass ? undefined : onClick}
+        <button aria-disabled={includesDisabledClass(className)}
                 ref={ref}
                 type="button"
                 className={btnClasses}
