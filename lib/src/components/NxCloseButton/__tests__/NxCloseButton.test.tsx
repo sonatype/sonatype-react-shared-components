@@ -5,52 +5,84 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { mount } from 'enzyme';
-import 'jest-enzyme';
 
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 import NxCloseButton from '../NxCloseButton';
-import Close from '../../../icons/Close';
 
 describe('NxCloseButton', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxCloseButton, {});
+  const quickRender = rtlRender(NxCloseButton, {}),
+      renderEl = rtlRenderElement(NxCloseButton, {});
 
-  it('renders a button with type=button with aria-label "Close"', function() {
-    expect(getShallowComponent()).toMatchSelector('button');
-    expect(getShallowComponent()).toHaveProp('aria-label', 'Close');
-    expect(getShallowComponent()).toHaveProp('type', 'button');
+  it('renders a button with type=button with accessible name "Close"', function() {
+    const view = quickRender(),
+        btn = view.getByRole('button', { name: 'Close' });
+
+    expect(btn).toBe(view.container.firstElementChild);
+    expect(btn).toHaveAccessibleName('Close');
+    expect(btn).toHaveAttribute('type', 'button');
   });
 
-  it('adds the nx-btn, nx-btn--icon-only, and nx-btn-close classes', function() {
-    const component = getShallowComponent();
+  it('passes the specified classes and attributes to the button', function() {
+    const el = renderEl({ className: 'foo', id: 'bar', lang: 'en' }),
+        defaultEl = renderEl()!;
 
-    expect(component).toHaveClassName('nx-btn');
-    expect(component).toHaveClassName('nx-btn--icon-only');
-    expect(component).toHaveClassName('nx-btn--close');
+    expect(el).toHaveClass('foo');
+    expect(el).toHaveAttribute('id', 'bar');
+    expect(el).toHaveAttribute('lang', 'en');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('passes the specified classes to the button', function() {
-    expect(getShallowComponent({ className: 'foo' })).toHaveClassName('foo');
-    expect(getShallowComponent({ className: 'foo' })).toHaveClassName('nx-btn--close');
+  it('sets aria-disabled on the button if the className includes a disabled class', function() {
+    expect(renderEl()).not.toHaveAttribute('aria-disabled', 'true');
+    expect(renderEl({ className: 'disabled' })).toHaveAttribute('aria-disabled', 'true');
+    expect(renderEl({ className: 'disabled foo' })).toHaveAttribute('aria-disabled', 'true');
   });
 
-  it('passes other props on to the NxButton', function() {
-    expect(getShallowComponent({ id: 'foo' })).toHaveProp('id', 'foo');
-  });
+  describe('onClick', function() {
+    it('fires when the button is clicked', async function() {
+      const user = userEvent.setup(),
+          onClick = jest.fn(),
+          el = renderEl({ onClick })!;
 
-  it('contains a Close icon', function() {
-    expect(getShallowComponent().children()).toMatchSelector(Close);
-  });
+      expect(onClick).not.toHaveBeenCalled();
 
-  it('sets aria-disabled if the className includes a disabled class', function() {
-    expect(getShallowComponent()).toHaveProp('aria-disabled', false);
-    expect(getShallowComponent({ className: 'disabled foo' })).toHaveProp('aria-disabled', true);
+      await user.click(el);
+
+      expect(onClick).toHaveBeenCalled();
+    });
+
+    it('does not fire on click if the button is disabled by attribute', async function() {
+      const user = userEvent.setup(),
+          onClick = jest.fn(),
+          el = renderEl({ onClick, disabled: true })!;
+
+      expect(onClick).not.toHaveBeenCalled();
+
+      await user.click(el);
+
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it('does not fire on click if the button is disabled by class', async function() {
+      const user = userEvent.setup(),
+          onClick = jest.fn(),
+          el = renderEl({ onClick, className: 'disabled' })!;
+
+      expect(onClick).not.toHaveBeenCalled();
+
+      await user.click(el);
+
+      expect(onClick).not.toHaveBeenCalled();
+    });
   });
 
   it('fowards a ref to the button', function() {
     const ref = React.createRef<HTMLButtonElement>(),
-        component = mount(<><NxCloseButton ref={ref} /></>);
+        el = renderEl({ ref });
 
-    expect(component.getDOMNode()).toBe(ref.current);
+    expect(ref.current).toBe(el);
   });
 });
