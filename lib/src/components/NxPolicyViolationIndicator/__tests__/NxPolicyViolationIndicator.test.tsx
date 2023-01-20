@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import { render } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxPolicyViolationIndicator from '../NxPolicyViolationIndicator';
 
@@ -45,12 +44,10 @@ describe('NxPolicyViolationIndicator', function() {
   });
 
   it('overrides the default threatLevelCategory text if text is provided', function() {
-    const { container } = render(
-      <NxPolicyViolationIndicator threatLevelCategory='low'>Foo</NxPolicyViolationIndicator>
-    );
+    const el = renderEl({ threatLevelCategory: 'low', children: 'Foo' })!;
 
-    expect(container).not.toHaveTextContent('low');
-    expect(container).toHaveTextContent('Foo');
+    expect(el).not.toHaveTextContent('low');
+    expect(el).toHaveTextContent('Foo');
   });
 
   it('sets text content to unspecified if not defined', function() {
