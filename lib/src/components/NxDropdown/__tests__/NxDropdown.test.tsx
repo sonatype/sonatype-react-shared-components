@@ -6,11 +6,9 @@
  */
 import React from 'react';
 
-import { render, screen, fireEvent, createEvent } from '@testing-library/react';
+import { render, screen, fireEvent, createEvent, within } from '@testing-library/react';
 import { rtlRenderElement, rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
 
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import NxDropdown, { Props } from '../NxDropdown';
 
 describe('NxDropdown', () => {
@@ -71,10 +69,9 @@ describe('NxDropdown', () => {
   });
 
   it('renders react element as label if supplied', function() {
-    const label = <NxFontAwesomeIcon icon={faTrash} />;
-    const { container } = quickRender({ label });
-
-    expect(container.querySelector('.nx-icon.fa-trash')).toBeInTheDocument();
+    const view = quickRender({ label: <span data-testid="foo" /> });
+    const toggle = view.getByRole('button');
+    expect(within(toggle).getByTestId('foo')).toBeInTheDocument();
   });
 
   it('renders provided attributes', function() {
@@ -91,7 +88,7 @@ describe('NxDropdown', () => {
       <button data-testid="menu-child" id="link4" className="nx-dropdown-right-button" key="4">Link4</button>
     ];
 
-    const { queryAllByTestId } = quickRender({ children, isOpen: true });
+    const { getAllByTestId } = quickRender({ children, isOpen: true });
 
     const menuChildren = getAllByTestId('menu-child');
 
@@ -114,7 +111,8 @@ describe('NxDropdown', () => {
     expect(onToggleCollapse).toHaveBeenCalledTimes(1);
   });
 
-  it('does not call onToggleCollapse if a click happens anywhere aside from the toggle button when the dropdown is closed', async function() {
+  it('does not call onToggleCollapse if a click happens anywhere aside from the'
+    + 'toggle button when the dropdown is closed', async function() {
     const user = userEvent.setup();
     const onToggleCollapse = jest.fn();
     quickRender({ onToggleCollapse });
