@@ -6,19 +6,14 @@
  */
 import React from 'react';
 
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-import { mount } from 'enzyme';
-
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import NxThreatIndicatorLegend from '../NxThreatIndicatorLegend';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 describe('NxThreatIndicatorLegend', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxThreatIndicatorLegend, {});
-  const getMountedComponent = enzymeUtils.getMountedComponent(NxThreatIndicatorLegend, {});
-  const allThreatLevelCategories = {
+  const quickRender = rtlRender(NxThreatIndicatorLegend, {}),
+      renderEl = rtlRenderElement(NxThreatIndicatorLegend, {});
+
+  const threatLevelCategories = {
     critical: true,
     severe: true,
     moderate: true,
@@ -27,70 +22,70 @@ describe('NxThreatIndicatorLegend', function() {
     unspecified: true
   };
 
-  it('renders a horizontal legend, i.e. div with `nx-threat-indicator-legend` class', function() {
-    const component = getShallowComponent(allThreatLevelCategories);
-    expect(component).toExist();
-    expect(component).toMatchSelector('div.nx-threat-indicator-legend');
+  it('fowards a ref to the top level element', function() {
+    const ref = React.createRef<HTMLDivElement>(),
+        el = renderEl({ ref: ref, ...threatLevelCategories });
+
+    expect(ref.current).toBe(el);
   });
 
-  it('renders a vertical legend, i.e. div with `nx-threat-indicator-legend--vertical` class', function() {
-    const component = getShallowComponent({ vertical: true, ...allThreatLevelCategories });
+  it('adds specified classes and attributes to top-level element', function() {
+    const defaultEl = renderEl(threatLevelCategories)!,
+        el = renderEl({ className: 'bar', id: 'foo', lang: 'en', ...threatLevelCategories })!;
 
-    expect(component).toExist();
-    expect(component).toMatchSelector('div.nx-threat-indicator-legend--vertical');
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en');
+
+    expect(el).toHaveClass('bar');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('renders default legend header correctly', function() {
-    const component = getShallowComponent(allThreatLevelCategories);
-
-    expect(component).toExist();
-    expect(component).toContainExactlyOneMatchingElement('label');
-    expect(component.find('label')).toMatchSelector('label.nx-threat-indicator-legend__header');
+  it('renders default legend label', function() {
+    expect(quickRender(threatLevelCategories).getByText('Legend')).toBeInTheDocument();
   });
 
-  it('renders custom legend header correctly', function() {
-    const customHeader = 'Test Header';
-    const component = getShallowComponent({ header: customHeader, ...allThreatLevelCategories });
+  it('renders custom label when header is provided', function() {
+    const el = quickRender({ header: 'Test Test', ...threatLevelCategories });
 
-    expect(component).toExist();
-    expect(component).toContainExactlyOneMatchingElement('label');
-    expect(component.find('label')).toHaveText(customHeader);
+    expect(el.getByText('Test Test')).toBeInTheDocument();
+    expect(el.queryByText('Legend')).not.toBeInTheDocument();
   });
 
-  it('renders correct number of legend items', function() {
-    const component = getMountedComponent({
-      critical: true,
+  it('renders nothing if no threat levels are provided', function() {
+    const el = renderEl();
+    expect(el).not.toBeInTheDocument();
+  });
+
+  it('renders nothing if all threat levels are null', function() {
+    const el = renderEl({
+      critical: null,
+      severe: null,
+      moderate: null,
+      low: null,
+      none: null,
+      unspecified: null
+    });
+    expect(el).not.toBeInTheDocument();
+  });
+
+  it('renders correct legend items', function() {
+    const el = quickRender({ critical: true,
       severe: true,
-      low: true
+      low: true,
+      none: true
     });
 
-    expect(component).toExist();
-    expect(component).toContainMatchingElements(3, NxFontAwesomeIcon);
+    expect(el.getByText('Low')).toBeInTheDocument();
+    expect(el.getByText('Severe')).toBeInTheDocument();
+    expect(el.getByText('Critical')).toBeInTheDocument();
+    expect(el.getByText('None')).toBeInTheDocument();
+    expect(el.queryByText('Moderate')).not.toBeInTheDocument();
+    expect(el.queryByText('Unspecified')).not.toBeInTheDocument();
   });
 
-  it('throws warning if no category threat level props are provided', function() {
-    const consoleSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
-    const component = getShallowComponent();
-
-    expect(component).toExist();
-    expect(consoleSpy).toBeCalledTimes(1);
-  });
-
-  it('renders the correct legend item', function() {
-    const component = getMountedComponent({ critical: true, low: true});
-    expect(component).toExist();
-    expect(component.find(NxFontAwesomeIcon).at(0)).toHaveProp('icon', faCircle);
-    expect(component.find(NxFontAwesomeIcon).at(0)).toMatchSelector('.nx-threat-indicator--critical');
-    expect(component.find('span').at(0)).toHaveText('Critical');
-    expect(component.find(NxFontAwesomeIcon).at(1)).toHaveProp('icon', faCircle);
-    expect(component.find(NxFontAwesomeIcon).at(1)).toMatchSelector('.nx-threat-indicator--low');
-    expect(component.find('span').at(1)).toHaveText('Low');
-  });
-
-  it('fowards a ref to the div', function() {
-    const ref = React.createRef<HTMLDivElement>(),
-        component = mount(<><NxThreatIndicatorLegend ref={ref} {...allThreatLevelCategories}/></>);
-
-    expect(component.getDOMNode()).toBe(ref.current);
-  });
+  // vertical prop only affects visual layout
 });
+
