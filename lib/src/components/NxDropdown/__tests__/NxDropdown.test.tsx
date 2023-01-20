@@ -285,7 +285,7 @@ describe('NxDropdown', () => {
     const { rerender } = quickRender(props);
 
     const menuBtn = screen.getByTestId('dropdown-button');
-    const toggleBtn = screen.getByRole('button', { name: 'dropdown-toggle'});
+    const toggleBtn = screen.getByRole('button', { name: 'dropdown-toggle' });
 
     menuBtn.focus();
 
