@@ -71,14 +71,8 @@ describe('NxPolicyViolationIndicator', function() {
   });
 
   it('adds aria-label to icon', function() {
-    expect(quickRender().getByRole('img')).toHaveAttribute('aria-label', 'threat level unspecified');
-    expect(quickRender({ threatLevelCategory: 'low' }).getByRole('img'))
-        .toHaveAttribute('aria-label', 'threat level low');
-    expect(quickRender({ threatLevelCategory: 'severe'}).getByRole('img'))
-        .toHaveAttribute('aria-label', 'threat level severe');
-  });
-
-  it('sets aria-hidden to false on icon', function() {
-    expect(quickRender().getByRole('img')).toHaveAttribute('aria-hidden', 'false');
+    expect(quickRender().getByRole('img')).toHaveAccessibleName('threat level unspecified');
+    expect(quickRender({ threatLevelCategory: 'low' }).getByRole('img')).toHaveAccessibleName('threat level low');
+    expect(quickRender({ threatLevelCategory: 'severe'}).getByRole('img')).toHaveAccessibleName('threat level severe');
   });
 });
