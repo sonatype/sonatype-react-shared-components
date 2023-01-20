@@ -11,8 +11,11 @@ import { within } from '@testing-library/react';
 import NxBackButton, { Props } from '../NxBackButton';
 
 describe('NxBackButton', function() {
-  const quickRender = rtlRender<Props>(NxBackButton, { href: '/foo' }),
-      renderEl = rtlRenderElement<Props>(NxBackButton, { href: '/foo' });
+  const minimalProps = {
+        href: '/foo'
+      },
+      quickRender = rtlRender<Props>(NxBackButton, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxBackButton, minimalProps);
 
   it('renders a child with the role of link', function() {
     const el = renderEl()!;
