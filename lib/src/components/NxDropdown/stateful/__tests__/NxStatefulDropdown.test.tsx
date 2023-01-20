@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { act, render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { rtlRender, userEvent } from '../../../../__testutils__/rtlUtils';
 
 import NxStatefulDropdown, { Props } from '../NxStatefulDropdown';
@@ -48,9 +48,7 @@ describe('NxStatefulDropdown', () => {
     menu = container.querySelector('.nx-dropdown-menu');
     expect(menu).toBeInTheDocument();
 
-    await act(async () => {
-      await user.click(toggleButton);
-    });
+    await user.click(toggleButton);
 
     menu = container.querySelector('.nx-dropdown-menu');
     expect(menu).not.toBeInTheDocument();
