@@ -50,6 +50,7 @@ describe('NxDropdown', () => {
     renderEl({ onToggleCollapse: toggleFn, disabled: true });
     const button = screen.getByRole('button');
     expect(button).toHaveClass('disabled');
+    expect(button).toHaveAttribute('aria-disabled');
 
     await user.click(button);
 

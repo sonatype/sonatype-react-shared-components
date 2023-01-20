@@ -33,6 +33,7 @@ describe('NxStatefulDropdown', () => {
     expect(dropdown).toHaveClass('extra-class');
     expect(toggleButton).toHaveClass('nx-btn--tertiary');
     expect(toggleButton).toHaveClass('disabled');
+    expect(toggleButton).toHaveAttribute('aria-disabled');
   });
 
   it('toggles the menu open and close when toggle is clicked', async function() {
