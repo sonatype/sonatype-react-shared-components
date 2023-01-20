@@ -53,7 +53,7 @@ describe('NxPolicyViolationIndicator', function() {
     expect(container).toHaveTextContent('Foo');
   });
 
-  it('sets threatLevelCategory to unspecified if not defined', function() {
+  it('sets text content to unspecified if not defined', function() {
     const unspecifiedEl = renderEl()!;
     expect(unspecifiedEl).toHaveTextContent('unspecified');
   });
