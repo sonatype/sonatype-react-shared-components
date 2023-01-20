@@ -302,7 +302,7 @@ describe('NxDropdown', () => {
   describe('Divider', function() {
     it('renders an element', function() {
       render(<NxDropdown.Divider />);
-      expect(screen.queryByRole('separator')).toBeInTheDocument();
+      expect(screen.getByRole('separator')).toBeInTheDocument();
     });
   });
 });
