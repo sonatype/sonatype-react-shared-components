@@ -22,6 +22,10 @@ describe('NxBackButton', function() {
     expect(within(el).getByRole('link')).toBeInTheDocument();
   });
 
+  it('renders a link with provided href', function() {
+    expect(quickRender().getByRole('link')).toHaveAttribute('href', '/foo');
+  });
+
   it('renders "Back" as default text', function() {
     expect(renderEl()!).toHaveTextContent('Back');
   });
