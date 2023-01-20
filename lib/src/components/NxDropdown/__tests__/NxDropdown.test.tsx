@@ -93,7 +93,7 @@ describe('NxDropdown', () => {
 
     const { queryAllByTestId } = quickRender({ children, isOpen: true });
 
-    const menuChildren = queryAllByTestId('menu-child');
+    const menuChildren = getAllByTestId('menu-child');
 
     expect(menuChildren[0] as HTMLElement).toHaveTextContent('Link1');
     expect(menuChildren[1] as HTMLElement).toHaveTextContent('Link2');
