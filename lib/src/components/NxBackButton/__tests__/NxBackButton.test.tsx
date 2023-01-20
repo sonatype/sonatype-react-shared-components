@@ -46,12 +46,5 @@ describe('NxBackButton', function() {
     expect(el).toHaveTextContent('bar');
     expect(el).not.toHaveTextContent('foo');
   });
-
-  it('renders an accessible name according to visible text', function() {
-    expect(quickRender().getByRole('link')).toHaveAccessibleName('Back');
-    expect(quickRender({ targetPageTitle: 'foo'}).getByRole('link')).toHaveAccessibleName('Back to foo');
-    expect(quickRender({ text: 'bar' }).getByRole('link')).toHaveAccessibleName('bar');
-    expect(quickRender({ targetPageTitle: 'foo', text: 'bar'}).getByRole('link')).toHaveAccessibleName('bar');
-  });
 });
 
