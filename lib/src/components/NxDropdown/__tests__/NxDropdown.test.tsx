@@ -39,7 +39,7 @@ describe('NxDropdown', () => {
   });
 
   it('correctly renders the menu based on isOpen prop', function() {
-    const { container, rerender } = quickRender({ ...minimalProps, isOpen: true });
+    const { container, rerender } = quickRender({ isOpen: true });
     const menu = container.querySelector('.nx-dropdown-menu');
 
     expect(menu).toBeInTheDocument();
