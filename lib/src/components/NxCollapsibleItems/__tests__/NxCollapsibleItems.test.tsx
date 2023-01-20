@@ -223,6 +223,13 @@ describe('NxCollapsibleItems', function() {
         expect(view.getByRole('listitem')).toBe(view.container.firstChild);
       });
 
+      it('renders a top-level element with the specified role', function() {
+        const view = quickRender({ role: 'menuitem' });
+
+        expect(view.queryByRole('listitem')).not.toBeInTheDocument();
+        expect(view.getByRole('menuitem')).toBe(view.container.firstChild);
+      });
+
       it('sets the specified classnames', function() {
         const el = renderEl({ className: 'foo' }),
             defaultEl = renderEl()!;
@@ -257,6 +264,7 @@ describe('NxCollapsibleItems', function() {
       const minimalProps = {
             children: <div id="test-id" className="bar" lang="en">foo</div>
           },
+          quickRender = rtlRender(NxCollapsibleItems.Child, minimalProps),
           renderEl = rtlRenderElement(NxCollapsibleItems.Child, minimalProps);
 
       it('renders an element like the children', function() {
@@ -277,6 +285,27 @@ describe('NxCollapsibleItems', function() {
       it('adds the listitem role', function() {
         const el = renderEl();
         expect(el).toHaveAttribute('role', 'listitem');
+      });
+
+      it('adds the specified role if there is one', function() {
+        const view = quickRender({ role: 'menuitem' });
+
+        expect(view.queryByRole('listitem')).not.toBeInTheDocument();
+        expect(view.getByRole('menuitem')).toBe(view.container.firstChild);
+      });
+
+      it('allows the child element to keep its explicit role if specified', function() {
+        const view = quickRender({ children: <input role="menuitemcheckbox" type="checkbox" /> });
+
+        expect(view.queryByRole('listitem')).not.toBeInTheDocument();
+        expect(view.getByRole('menuitemcheckbox')).toBe(view.container.firstChild);
+      });
+
+      it('allows the child element to keep its default role if it is set to the empty string', function() {
+        const view = quickRender({ children: <input role="" type="checkbox" /> });
+
+        expect(view.queryByRole('listitem')).not.toBeInTheDocument();
+        expect(view.getByRole('checkbox')).toBe(view.container.firstChild);
       });
 
       it('forwards a ref to the element', function() {
