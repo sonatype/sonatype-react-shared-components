@@ -91,9 +91,7 @@ describe('NxStatefulDropdown', () => {
     let menu = container.querySelector('.nx-dropdown-menu');
     expect(menu).toBeInTheDocument();
 
-    await act(async () => {
-      await user.click(screen.getByTestId('test-btn'));
-    });
+    await user.click(screen.getByTestId('test-btn'));
 
     menu = container.querySelector('.nx-dropdown-menu');
     expect(menu).not.toBeInTheDocument();
@@ -119,9 +117,7 @@ describe('NxStatefulDropdown', () => {
     let menu = container.querySelector('.nx-dropdown-menu');
     expect(menu).toBeInTheDocument();
 
-    await act(async () => {
-      await user.click(screen.getByTestId('child'));
-    });
+    await user.click(screen.getByTestId('child'));
 
     expect(childClickSpy).toHaveBeenCalled();
     menu = container.querySelector('.nx-dropdown-menu');
