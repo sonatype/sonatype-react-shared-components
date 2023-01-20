@@ -108,13 +108,11 @@ describe('NxStatefulDropdown', () => {
 
     const childClickSpy = jest.fn();
 
-    const { container } = render(
-      <NxStatefulDropdown label="label">
-        <a data-testid="child" onClick={childClickSpy}>Hello</a>
-      </NxStatefulDropdown>
-    );
+    const { container } = quickRender({
+      children: <a data-testid="child" onClick={childClickSpy}>Hello</a>
+    });
 
-    const toggleButton = screen.getByRole('button', { name: 'label' });
+    const toggleButton = screen.getByRole('button', { name: 'dropdown' });
 
     await user.click(toggleButton);
 
