@@ -36,7 +36,7 @@ describe('NxStatefulDropdown', () => {
     expect(toggleButton).toHaveAttribute('aria-disabled');
   });
 
-  it('toggles the menu open and close when toggle is clicked', async function() {
+  it('toggles the menu open and closed when toggle is clicked', async function() {
     const user = userEvent.setup();
 
     const { container } = quickRender();
