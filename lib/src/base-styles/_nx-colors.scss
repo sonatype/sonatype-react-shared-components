@@ -33,6 +33,7 @@
   --nx-color-secondary-button: var(--nx-swatch-blue-40); //border and text
   --nx-color-secondary-button-background: var(--nx-swatch-white);
   --nx-color-secondary-button-background-hover: var(--nx-swatch-blue-90);
+  --nx-color-secondary-button-background-focus: transparent;
   --nx-color-secondary-button-background-active: var(--nx-swatch-blue-95);
   --nx-color-tertiary-button-border: var(--nx-swatch-grey-50);
   --nx-color-tertiary-button-text: var(--nx-color-text-stark);
@@ -96,6 +97,7 @@
     --nx-color-secondary-button: var(--nx-swatch-purple-80);
     --nx-color-secondary-button-background: var(--nx-swatch-indigo-20);
     --nx-color-secondary-button-background-hover: var(--nx-swatch-purple-20);
+    --nx-color-secondary-button-background-focus: var(--nx-swatch-indigo-25);
     --nx-color-secondary-button-background-active: var(--nx-swatch-purple-30);
     --nx-color-secondary-button: var(--nx-swatch-purple-80);
     --nx-color-tertiary-button-border: var(--nx-swatch-indigo-60);

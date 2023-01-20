@@ -31,6 +31,7 @@
   }
 
   &:focus:not(:active) {
+    background-color: var(--nx-color-secondary-button-background-focus);
     border-color: var(--nx-color-interactive-border-focus);
     border-style: var(--nx-border-style-focus);
     box-shadow: var(--nx-box-shadow-focus);
