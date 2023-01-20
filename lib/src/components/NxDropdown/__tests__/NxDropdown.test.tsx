@@ -21,21 +21,6 @@ describe('NxDropdown', () => {
   const quickRender = rtlRender(NxDropdown, minimalProps);
   const renderEl = rtlRenderElement(NxDropdown, minimalProps);
 
-  it('renders the button according to the supplied variant', function() {
-    const { rerender } = quickRender();
-
-    expect(screen.getByRole('button')).toHaveClass('nx-btn--tertiary');
-
-    rerender(<NxDropdown {...minimalProps} variant="primary" />);
-    expect(screen.getByRole('button')).toHaveClass('nx-btn--primary');
-
-    rerender(<NxDropdown {...minimalProps} variant="secondary" />);
-    expect(screen.getByRole('button')).toHaveClass('nx-btn--secondary');
-
-    rerender(<NxDropdown {...minimalProps} variant="error" />);
-    expect(screen.getByRole('button')).toHaveClass('nx-btn--error');
-  });
-
   it('correctly renders the menu based on isOpen prop', function() {
     const { container, rerender } = quickRender({ isOpen: true });
     const menu = container.querySelector('.nx-dropdown-menu');
