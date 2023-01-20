@@ -63,7 +63,7 @@ describe('NxDropdown', () => {
     const toggleFn = jest.fn();
     renderEl({ onToggleCollapse: toggleFn, disabled: true });
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('disabled');
+    expect(button).toBeDisabled();
 
     await user.click(button);
 
