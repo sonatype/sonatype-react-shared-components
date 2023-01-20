@@ -68,6 +68,11 @@ describe('NxDropdown', () => {
     expect(toggleFn).not.toHaveBeenCalled();
   });
 
+  it('renders string label when supplied', function() {
+    const view = quickRender();
+    expect(view.getByRole('button')).toHaveTextContent('dropdown-toggle');
+  });
+
   it('renders react element as label if supplied', function() {
     const view = quickRender({ label: <span data-testid="foo" /> });
     const toggle = view.getByRole('button');
@@ -82,20 +87,19 @@ describe('NxDropdown', () => {
 
   it('renders the children within the NxDropdownMenu in the specified order', async function() {
     const children = [
-      <a data-testid="menu-child" id="link1" key="1">Link1</a>,
-      <a data-testid="menu-child" id="link2" className="nx-dropdown-link" key="2">Link2</a>,
-      <button data-testid="menu-child" id="link3" className="nx-dropdown-button" key="3">Link3</button>,
-      <button data-testid="menu-child" id="link4" className="nx-dropdown-right-button" key="4">Link4</button>
+      <a data-testid="menu-child" key="1">Link1</a>,
+      <a data-testid="menu-child" key="2">Link2</a>,
+      <button data-testid="menu-child" key="3">Link3</button>,
+      <button data-testid="menu-child" key="4">Link4</button>
     ];
 
     const { getAllByTestId } = quickRender({ children, isOpen: true });
-
     const menuChildren = getAllByTestId('menu-child');
 
-    expect(menuChildren[0] as HTMLElement).toHaveTextContent('Link1');
-    expect(menuChildren[1] as HTMLElement).toHaveTextContent('Link2');
-    expect(menuChildren[2] as HTMLElement).toHaveTextContent('Link3');
-    expect(menuChildren[3] as HTMLElement).toHaveTextContent('Link4');
+    expect(menuChildren[0]).toHaveTextContent('Link1');
+    expect(menuChildren[1]).toHaveTextContent('Link2');
+    expect(menuChildren[2]).toHaveTextContent('Link3');
+    expect(menuChildren[3]).toHaveTextContent('Link4');
   });
 
   it('calls onToggleCollapse if a click happens anywhere when the dropdown is already open', async function() {
