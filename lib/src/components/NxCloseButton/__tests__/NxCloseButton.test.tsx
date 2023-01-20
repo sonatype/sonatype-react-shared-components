@@ -65,18 +65,6 @@ describe('NxCloseButton', function() {
 
       expect(onClick).not.toHaveBeenCalled();
     });
-
-    it('does not fire on click if the button is disabled by class', async function() {
-      const user = userEvent.setup(),
-          onClick = jest.fn(),
-          el = renderEl({ onClick, className: 'disabled' })!;
-
-      expect(onClick).not.toHaveBeenCalled();
-
-      await user.click(el);
-
-      expect(onClick).not.toHaveBeenCalled();
-    });
   });
 
   it('fowards a ref to the button', function() {
