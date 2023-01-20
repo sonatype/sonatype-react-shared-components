@@ -105,12 +105,11 @@ describe('NxDropdown', () => {
   it('calls onToggleCollapse if a click happens anywhere when the dropdown is already open', async function() {
     const user = userEvent.setup();
     const onToggleCollapse = jest.fn();
-    const { rerender } = quickRender({ onToggleCollapse, isOpen: true });
+    quickRender({ onToggleCollapse, isOpen: true });
 
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     await user.click(document.body);
-    rerender(<NxDropdown {...minimalProps} onToggleCollapse={onToggleCollapse} isOpen={true} />);
 
     expect(onToggleCollapse).toHaveBeenCalledTimes(1);
   });
@@ -157,7 +156,7 @@ describe('NxDropdown', () => {
     expect(onToggleCollapse).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onToggleCollapse if ESC is pressed within the component while the dropdown is open', function() {
+  it('calls onToggleCollapse if ESC is pressed within the component while the dropdown is open', async function() {
     const onToggleCollapse = jest.fn();
     const component = renderEl({ onToggleCollapse, isOpen: true })!;
     fireEvent.keyDown(component, { key: 'Escape' });
@@ -207,12 +206,10 @@ describe('NxDropdown', () => {
           onCloseKeyDown: e => e.preventDefault()
         };
 
-        const { rerender } = quickRender(props);
+        quickRender(props);
 
         const button = screen.getByRole('button');
         fireEvent.keyDown(button, { key: 'Escape', bubbles: true });
-
-        rerender(<NxDropdown {...minimalProps} {...props} />);
 
         expect(onToggleCollapse).not.toHaveBeenCalled();
       }
@@ -229,25 +226,20 @@ describe('NxDropdown', () => {
       onCloseClick: e => e.preventDefault()
     };
 
-    const { rerender } = quickRender(props);
+    quickRender(props);
 
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     await user.click(document.body);
-    rerender(<NxDropdown {...minimalProps} {...props} />);
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     const dropdownButton = screen.getByTestId('dropdown-button');
     const toggleButton = screen.getByRole('button', { name: 'dropdown-toggle'});
 
     await user.click(dropdownButton);
-    rerender(<NxDropdown {...minimalProps} {...props} />);
-
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     await user.click(toggleButton);
-    rerender(<NxDropdown {...minimalProps} {...props} />);
-
     expect(onToggleCollapse).not.toHaveBeenCalled();
   });
 
