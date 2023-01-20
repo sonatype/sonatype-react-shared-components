@@ -40,13 +40,8 @@ describe('NxPolicyViolationIndicator', function() {
   });
 
   it('sets the text according to threatLevelCategory if no text is provided', function() {
-    const { container, rerender } = render(
-      <NxPolicyViolationIndicator threatLevelCategory='none'></NxPolicyViolationIndicator>
-    );
-    expect(container).toHaveTextContent('none');
-
-    rerender(<NxPolicyViolationIndicator threatLevelCategory='moderate'></NxPolicyViolationIndicator>);
-    expect(container).toHaveTextContent('moderate');
+    expect(renderEl({ threatLevelCategory: 'none' })).toHaveTextContent('none');
+    expect(renderEl({ threatLevelCategory: 'moderate' })).toHaveTextContent('moderate');
   });
 
   it('overrides the default threatLevelCategory text if text is provided', function() {
