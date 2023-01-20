@@ -23,6 +23,9 @@ describe('NxDropdown', () => {
 
   it('correctly renders the menu based on isOpen prop', function() {
     const { container, rerender } = quickRender({ isOpen: true });
+    // Currently, the dropdown menu does not have the proper aria role set.
+    // This will be addressed in this ticket:
+    // https://issues.sonatype.org/browse/RSC-989
     const menu = container.querySelector('.nx-dropdown-menu');
 
     expect(menu).toBeInTheDocument();
