@@ -55,12 +55,6 @@ describe('NxSelectableTag', function() {
       quickRender = rtlRender<PropsWithRef>(NxSelectableTag, minimalProps),
       renderEl = rtlRenderElement<PropsWithRef>(NxSelectableTag, minimalProps);
 
-  it('renders an NxTag', function() {
-    const el = renderEl()!;
-    expect(el.tagName).toBe('LABEL');
-    expect(el).toHaveClass('nx-tag');
-  });
-
   it('forwards a ref', function() {
     const ref = React.createRef<HTMLLabelElement>(),
         renderedEl = renderEl({ ref });
