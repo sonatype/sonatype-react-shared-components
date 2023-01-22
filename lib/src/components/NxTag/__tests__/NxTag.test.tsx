@@ -62,7 +62,7 @@ describe('NxTag', function() {
 describe('NxSelectableTag', function() {
   type PropsWithRef = SelectableProps & RefAttributes<HTMLLabelElement>;
 
-  const minimalProps = { children: 'selectable tag', selected: false, onSelect: jest.fn() },
+  const minimalProps = { children: 'selectable tag', selected: false, onSelect: () => {} },
       quickRender = rtlRender<PropsWithRef>(NxSelectableTag, minimalProps),
       renderEl = rtlRenderElement<PropsWithRef>(NxSelectableTag, minimalProps);
 
