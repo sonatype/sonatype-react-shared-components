@@ -43,7 +43,7 @@ describe('NxTag', function() {
     expect(el).toHaveAttribute('id', 'test-id');
   });
 
-  it('renders the supplied text inside .nx-tag__text', function() {
+  it('renders the supplied text', function() {
     const el = renderEl({ children: 'tag text' });
     expect(el).toHaveTextContent('tag text');
   });
