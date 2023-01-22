@@ -118,9 +118,8 @@ describe('NxSelectableTag', function() {
   it('fires the components onSelect when clicked', async function() {
     const user = userEvent.setup(),
         onSelect = jest.fn(),
-        { container } = quickRender({ onSelect });
+        tag = renderEl({ onSelect })!;
 
-    const tag = container.querySelector<HTMLElement>('label')!;
     expect(onSelect).not.toHaveBeenCalled();
     await user.click(tag);
     expect(onSelect).toHaveBeenCalled();
