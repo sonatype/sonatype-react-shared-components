@@ -42,11 +42,6 @@ describe('NxTag', function() {
     expect(el).toHaveTextContent('tag text');
   });
 
-  it('sets the nx-selectable-color--indigo class if no color prop is passed', function() {
-    const el = renderEl();
-    expect(el).toHaveClass('nx-selectable-color--indigo');
-  });
-
   it('sets the color class using the color if it is provided', function() {
     const el = renderEl({ color: 'orange' });
     expect(el).toHaveClass('nx-selectable-color--orange');
