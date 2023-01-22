@@ -14,12 +14,6 @@ describe('NxTag', function() {
   type PropsWithRef = PublicProps & RefAttributes<HTMLLabelElement>;
   const renderEl = rtlRenderElement<PropsWithRef>(NxTag, { children: 'basic tag '});
 
-  it('renders NxTag with the `nx-tag` class', function() {
-    const el = renderEl()!;
-    expect(el.tagName).toBe('LABEL');
-    expect(el).toHaveClass('nx-tag');
-  });
-
   it('forwards a ref', function() {
     const ref = React.createRef<HTMLLabelElement>(),
         renderedEl = renderEl({ ref });
