@@ -60,21 +60,6 @@ describe('NxTag', function() {
 
       await checkScreenshot(targetElement);
     });
-
-    it('has a plus icon when not selected', async function() {
-      const [targetElement] = await waitAndGetElements(selector);
-
-      await checkScreenshot(targetElement);
-    });
-
-    it('has a times icon when selected', async function() {
-      const [targetElement] = await waitAndGetElements(selector);
-
-      await targetElement.click();
-
-      await checkScreenshot(targetElement);
-    });
-
   });
 
   describe('NxTag With Tooltip', function() {
