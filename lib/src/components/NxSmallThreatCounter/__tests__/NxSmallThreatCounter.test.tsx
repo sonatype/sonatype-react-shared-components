@@ -148,7 +148,7 @@ describe('NxSmallThreatCounter', function() {
   it('displays maxDigits\' nines and a plus sign for any counts that go over the max when maxDigits is specified' +
     'default is three digits', async function() {
     const twoDigitMaxComponent = quickRender({ criticalCount: 100000, maxDigits: 2 }),
-        fiveDigitDefaultComponent = quickRender({ moderateCount: 1000000 });
+        fiveDigitDefaultComponent = quickRender({ moderateCount: 10000 });
 
     await runTimers();
 
