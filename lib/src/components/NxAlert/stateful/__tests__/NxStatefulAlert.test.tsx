@@ -60,11 +60,11 @@ describe('NxStatefulAlert', function() {
           view = quickRender(),
           closeBtn = view.getByRole('button', { name: 'Close' });
 
-      expect(view.container.querySelector('.nx-alert')).toBeInTheDocument();
+      expect(view.container.children.length).toBe(1);
       expect(closeBtn).toBeInTheDocument();
 
       await user.click(closeBtn);
-      expect(view.container.querySelector('.nx-alert')).not.toBeInTheDocument();
+      expect(view.container.children.length).toBe(0);
       expect(closeBtn).not.toBeInTheDocument();
     });
 
