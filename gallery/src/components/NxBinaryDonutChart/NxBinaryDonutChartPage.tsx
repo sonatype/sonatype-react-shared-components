@@ -176,7 +176,7 @@ const NxBinaryDonutChartPage = () =>
                         liveExample={NxBinaryDonutChartBackgroundColorExample}>
       Examples of <NxCode>NxBinaryDonutChart</NxCode>s on containers that have background colors which match parts
       of the chart. This example shows that the chart is still discernable in this case due to
-      the {themingEnabled ? 'dark blue' : 'white'} borders on the inside and outside of the donut.
+      the borders on the inside and outside of the donut.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Example with Custom CSS Properties"
