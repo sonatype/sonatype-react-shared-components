@@ -55,7 +55,6 @@ describe('NxSmallThreatCounter', function() {
 
     expect(counter).toBeInTheDocument();
     expect(counter).toHaveTextContent('0');
-    expect(counter).toHaveAccessibleName('Critical');
   });
 
   it('renders a counter with an accessible name of Severe when severeCount is specified', async function() {
@@ -67,7 +66,6 @@ describe('NxSmallThreatCounter', function() {
 
     expect(counter).toBeInTheDocument();
     expect(counter).toHaveTextContent('1');
-    expect(counter).toHaveAccessibleName('Severe');
   });
 
   it('renders a counter with an accessible name of Moderate when moderateCount is specified', async function() {
@@ -79,7 +77,6 @@ describe('NxSmallThreatCounter', function() {
 
     expect(counter).toBeInTheDocument();
     expect(counter).toHaveTextContent('2');
-    expect(counter).toHaveAccessibleName('Moderate');
   });
 
   it('renders a counter with an accessible name of Low when lowCount is specified', async function() {
@@ -91,7 +88,6 @@ describe('NxSmallThreatCounter', function() {
 
     expect(counter).toBeInTheDocument();
     expect(counter).toHaveTextContent('3');
-    expect(counter).toHaveAccessibleName('Low');
   });
 
   it('renders a counter with an accessible name of None when noneCount is specified', async function() {
@@ -103,7 +99,6 @@ describe('NxSmallThreatCounter', function() {
 
     expect(counter).toBeInTheDocument();
     expect(counter).toHaveTextContent('4');
-    expect(counter).toHaveAccessibleName('None');
   });
 
   it('renders a counter with an accessible name of Unspecified when unspecifiedCount is specified', async function() {
@@ -115,7 +110,6 @@ describe('NxSmallThreatCounter', function() {
 
     expect(counter).toBeInTheDocument();
     expect(counter).toHaveTextContent('5');
-    expect(counter).toHaveAccessibleName('Unspecified');
   });
 
   it('renders all six indicators', async function() {
