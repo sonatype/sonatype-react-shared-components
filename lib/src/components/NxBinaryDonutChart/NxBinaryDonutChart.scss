@@ -12,21 +12,12 @@
 }
 
 .nx-binary-donut-chart__background {
-  fill: var(--nx-swatch-indigo-95);
+  fill: var(--nx-color-binary-donut-chart-background-fill);
   fill-rule: evenodd;
-  stroke: var(--nx-swatch-white);
+  stroke: var(--nx-color-binary-donut-chart-background-stroke);
   stroke-width: 1;
-
-  @include nx-dark-mode-helpers.dark-mode {
-    fill: var(--nx-swatch-indigo-30);
-    stroke: var(--nx-swatch-indigo-20);
-  }
 }
 
 .nx-binary-donut-chart__arc {
-  stroke: var(--nx-swatch-teal-60);
-
-  @include nx-dark-mode-helpers.dark-mode {
-    stroke: var(--nx-swatch-pink-80);
-  }
+  stroke: var(--nx-color-binary-donut-chart-arc-stroke);
 }
