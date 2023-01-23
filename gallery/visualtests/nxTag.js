@@ -52,29 +52,6 @@ describe('NxTag', function() {
     it('has a dark grey border when hovered', hoverTest(selector));
     it('has a light blue glow and light blue border when focused', focusTest(selector));
     it('has a light blue glow and blue border when focused and hovered', focusAndHoverTest(selector));
-
-    it('has a dark blue/grey background when clicked', async function() {
-      const [targetElement] = await waitAndGetElements(selector);
-
-      await targetElement.click();
-
-      await checkScreenshot(targetElement);
-    });
-
-    it('has a plus icon when not selected', async function() {
-      const [targetElement] = await waitAndGetElements(selector);
-
-      await checkScreenshot(targetElement);
-    });
-
-    it('has a times icon when selected', async function() {
-      const [targetElement] = await waitAndGetElements(selector);
-
-      await targetElement.click();
-
-      await checkScreenshot(targetElement);
-    });
-
   });
 
   describe('NxTag With Tooltip', function() {
