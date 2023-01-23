@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
+import { render } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxIndeterminatePagination, { Props } from '../NxIndeterminatePagination';
@@ -15,6 +17,24 @@ describe('NxIndeterminatePagination', function() {
       },
       quickRender = rtlRender(NxIndeterminatePagination, minimalProps),
       renderEl = rtlRenderElement(NxIndeterminatePagination, minimalProps);
+
+  it('renders a top-level navigation element with an accessible name of "pagination"', function() {
+    const component = quickRender(),
+        nav = component.getByRole('navigation');
+
+    expect(nav).toBe(component.container.firstElementChild);
+    expect(nav).toHaveAccessibleName('pagination');
+  });
+
+  it('allows the navigation accessible name to be overridden via aria-label or aria-labelledby', function() {
+    render(<div id="label-el">Labelled By</div>);
+
+    const labelComponent = quickRender({ 'aria-label': 'Label' }),
+        labelledByComponent = quickRender({ 'aria-labelledby': 'label-el' });
+
+    expect(labelComponent.getByRole('navigation')).toHaveAccessibleName('Label');
+    expect(labelledByComponent.getByRole('navigation')).toHaveAccessibleName('Labelled By');
+  });
 
   it('renders a button with type="button" and accessible name of previous page', function() {
     const component = quickRender(),
