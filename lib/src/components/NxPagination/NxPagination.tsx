@@ -49,12 +49,12 @@ function getCurrentPageRangeBounds(pageCount: number, currentPage: number) {
       currentPage + 1 === pageCount && pageCount % PAGE_RANGE_SIZE === 1;
 
   const currentPageRangeStart = isFinalPageAndFirstPageOfGroup ?
-      currentPage - PAGE_RANGE_SIZE :
-      currentPage - (currentPage % PAGE_RANGE_SIZE);
+    currentPage - PAGE_RANGE_SIZE :
+    currentPage - (currentPage % PAGE_RANGE_SIZE);
 
   const currentPageRangeEnd = isFinalPageAndFirstPageOfGroup ?
-      currentPage + 1 :
-      min(currentPageRangeStart + PAGE_RANGE_SIZE, pageCount)
+    currentPage + 1 :
+    min(currentPageRangeStart + PAGE_RANGE_SIZE, pageCount);
 
   return [currentPageRangeStart, currentPageRangeEnd];
 }
