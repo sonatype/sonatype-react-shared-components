@@ -70,6 +70,7 @@ describe('NxStatefulDropdown', () => {
   });
 
   it('does not open when Escape key is pressed and NxStatefulDropdown is closed', async function() {
+    const user = userEvent.setup();
     const { container } = quickRender();
 
     let menu = container.querySelector('.nx-dropdown-menu');
@@ -77,7 +78,7 @@ describe('NxStatefulDropdown', () => {
     menu = container.querySelector('.nx-dropdown-menu');
     expect(menu).not.toBeInTheDocument();
 
-    await fireEvent.keyDown(container, { key: 'Escape' });
+    await user.keyboard('{Escape}');
 
     menu = container.querySelector('.nx-dropdown-menu');
     expect(menu).not.toBeInTheDocument();
