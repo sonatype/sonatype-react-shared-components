@@ -31,15 +31,6 @@ describe('NxStatefulDropdown', () => {
     }
   });
 
-  it('renders an NxStatefulDropdown toggle element disabled state', function() {
-    quickRender({ disabled: true });
-
-    const toggleButton = screen.getByRole('button', { name: 'dropdown-toggle'});
-
-    expect(toggleButton).toHaveClass('disabled');
-    expect(toggleButton).toHaveAttribute('aria-disabled');
-  });
-
   it('toggles the menu open and closed when toggle is clicked', async function() {
     const user = userEvent.setup();
 
@@ -160,6 +151,7 @@ describe('NxStatefulDropdown', () => {
 
     const button = screen.getByRole('button');
     expect(button).toHaveClass('disabled');
+    expect(button).toHaveAttribute('aria-disabled');
 
     await user.click(button);
 
