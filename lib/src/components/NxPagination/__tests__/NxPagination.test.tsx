@@ -134,7 +134,6 @@ describe('NxPagination', function() {
       expect(buttons5Page1[6]).not.toHaveAttribute('aria-current', 'page');
       expect(buttons5Page1[2]).toHaveAttribute('aria-disabled', 'true');
 
-
       const buttons3Page2 = quickRender({ pageCount: 3, currentPage: 2 }).getAllByRole('button');
       expect(buttons3Page2[0]).toHaveAccessibleName('goto previous page');
       expect(buttons3Page2[1]).toHaveAccessibleName('goto first page');
