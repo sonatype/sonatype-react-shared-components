@@ -81,12 +81,8 @@ describe('NxStatefulDropdown', () => {
   it('closes the dropdown when an outside click happens', async function() {
     const user = userEvent.setup();
 
-    const { container } = render(
-      <div>
-        <NxStatefulDropdown label="label" />
-        <button data-testid="test-btn">click</button>
-      </div>
-    );
+    const { container } = quickRender({ label: 'label' });
+    render(<button data-testid="test-btn">click</button>);
 
     const toggleButton = screen.getByRole('button', { name: 'label' });
 
