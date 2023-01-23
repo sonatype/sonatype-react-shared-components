@@ -38,18 +38,25 @@ function validate(pageCount: number, currentPage: number | null | undefined) {
 }
 
 /**
- * @return the index of the first page in the current page range
+ * @return a tuple containing the index of the first page in the current page range
+ * and the index one beyond that of the last page in this range
  */
-function getCurrentPageRangeStart(pageCount: number, currentPage: number) {
+function getCurrentPageRangeBounds(pageCount: number, currentPage: number) {
   // special case: we are on the last page which also happens to be the first
   // page of a new group/range. In this case we want to actually show the previous range, along with the
   // always-visible final page button
-  if (currentPage && currentPage + 1 === pageCount && pageCount % PAGE_RANGE_SIZE === 1) {
-    return currentPage - PAGE_RANGE_SIZE;
-  }
-  else {
-    return currentPage - (currentPage % PAGE_RANGE_SIZE);
-  }
+  const isFinalPageAndFirstPageOfGroup = currentPage &&
+      currentPage + 1 === pageCount && pageCount % PAGE_RANGE_SIZE === 1;
+
+  const currentPageRangeStart = isFinalPageAndFirstPageOfGroup ?
+      currentPage - PAGE_RANGE_SIZE :
+      currentPage - (currentPage % PAGE_RANGE_SIZE);
+
+  const currentPageRangeEnd = isFinalPageAndFirstPageOfGroup ?
+      currentPage + 1 :
+      min(currentPageRangeStart + PAGE_RANGE_SIZE, pageCount)
+
+  return [currentPageRangeStart, currentPageRangeEnd];
 }
 
 const getBtnClasses = (selected: boolean = false) => classnames('nx-btn--pagination', { selected });
@@ -68,8 +75,7 @@ export default function NxPagination({ className, pageCount, currentPage, onChan
 
         onFirstPage = currentPage === 0,
         onLastPage = currentPage === pageCount - 1,
-        currentPageRangeStart = getCurrentPageRangeStart(pageCount, currentPage),
-        currentPageRangeEnd = min(currentPageRangeStart + PAGE_RANGE_SIZE, pageCount),
+        [currentPageRangeStart, currentPageRangeEnd] = getCurrentPageRangeBounds(pageCount, currentPage),
         currentPageRange = range(currentPageRangeStart, currentPageRangeEnd),
         numPagesBelowRange = currentPageRangeStart,
         numPagesAboveRange = pageCount - currentPageRangeEnd,
