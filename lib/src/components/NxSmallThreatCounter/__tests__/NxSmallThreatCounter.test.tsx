@@ -148,15 +148,15 @@ describe('NxSmallThreatCounter', function() {
   it('displays maxDigits\' nines and a plus sign for any counts that go over the max when maxDigits is specified. ' +
     'default is three digits', async function() {
     const twoDigitMaxComponent = quickRender({ criticalCount: 100000, maxDigits: 2 }),
-        fiveDigitDefaultComponent = quickRender({ moderateCount: 10000 });
+        threeDigitDefaultComponent = quickRender({ moderateCount: 10000 });
 
     await runTimers();
 
     const twoDigitMaxCounter = twoDigitMaxComponent.getByTitle('Critical'),
-        fiveDigitDefaultCounter = fiveDigitDefaultComponent.getByTitle('Moderate');
+        threeDigitDefaultCounter = threeDigitDefaultComponent.getByTitle('Moderate');
 
     expect(twoDigitMaxCounter).toHaveTextContent('99+');
-    expect(fiveDigitDefaultCounter).toHaveTextContent('999+');
+    expect(threeDigitDefaultCounter).toHaveTextContent('999+');
   });
 
   it('does not cut off the displayed number when maxDigits is Infinity', async function() {
