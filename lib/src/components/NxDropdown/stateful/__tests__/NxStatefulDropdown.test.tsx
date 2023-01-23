@@ -20,18 +20,22 @@ describe('NxStatefulDropdown', () => {
   const renderEl = rtlRenderElement<Props>(NxStatefulDropdown, minimalProps);
   const quickRender = rtlRender<Props>(NxStatefulDropdown, minimalProps);
 
-  it('renders an NxStatefulDropdown toggle element correctly with the given props', function() {
-    const { container } = quickRender({
-      variant: 'tertiary',
-      className: 'extra-class',
-      disabled: true
-    });
+  it('sets the provided className', function() {
+    const el = renderEl()!;
+    const customEl = renderEl({ className: 'foo' })!;
 
-    const dropdown = container.querySelector('.nx-dropdown');
+    expect(customEl).toHaveClass('foo');
+
+    for (const cls of Array.from(el.classList)) {
+      expect(customEl).toHaveClass(cls);
+    }
+  });
+
+  it('renders an NxStatefulDropdown toggle element disabled state', function() {
+    quickRender({ disabled: true });
+
     const toggleButton = screen.getByRole('button', { name: 'dropdown-toggle'});
 
-    expect(dropdown).toHaveClass('extra-class');
-    expect(toggleButton).toHaveClass('nx-btn--tertiary');
     expect(toggleButton).toHaveClass('disabled');
     expect(toggleButton).toHaveAttribute('aria-disabled');
   });
