@@ -20,7 +20,6 @@ describe('NxStatefulDateInput', function() {
       renderEl = rtlRenderElement(NxStatefulDateInput, minimalProps);
 
   it('renders an input with type="date" by default', function() {
-    expect(quickRender().container.querySelector('input')!.tagName).toBe('INPUT');
     expect(quickRender().container.querySelector('input')).toHaveAttribute('type', 'date');
   });
 
