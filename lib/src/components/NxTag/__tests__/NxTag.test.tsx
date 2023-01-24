@@ -8,7 +8,7 @@ import React, { RefAttributes } from 'react';
 
 import NxTag, { NxSelectableTag, PublicProps, SelectableProps } from '../NxTag';
 
-import { rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 describe('NxTag', function() {
   type PropsWithRef = PublicProps & RefAttributes<HTMLLabelElement>;
@@ -47,6 +47,7 @@ describe('NxSelectableTag', function() {
   type PropsWithRef = SelectableProps & RefAttributes<HTMLLabelElement>;
 
   const minimalProps = { children: 'selectable tag', selected: false, onSelect: () => {} },
+      quickRender = rtlRender<PropsWithRef>(NxSelectableTag, minimalProps),
       renderEl = rtlRenderElement<PropsWithRef>(NxSelectableTag, minimalProps);
 
   it('renders the supplied text', function() {
@@ -68,5 +69,25 @@ describe('NxSelectableTag', function() {
     expect(onSelect).not.toHaveBeenCalled();
     await user.click(tag);
     expect(onSelect).toHaveBeenCalled();
+  });
+
+  describe('includes a checkbox that', function () {
+    it('is checked if selected prop is true', function() {
+      const el = quickRender({ selected: true }),
+          checkbox = el.getByRole('switch');
+      expect(checkbox).toBeChecked();
+    });
+
+    it('is unchecked if selected prop is false', function() {
+      const el = quickRender({ selected: false }),
+          checkbox = el.getByRole('switch');
+      expect(checkbox).not.toBeChecked();
+    });
+
+    it('has an accessible name equal to the tag text', function() {
+      const el = quickRender(),
+          checkbox = el.getByRole('switch');
+      expect(checkbox).toHaveAccessibleName('selectable tag');
+    });
   });
 });
