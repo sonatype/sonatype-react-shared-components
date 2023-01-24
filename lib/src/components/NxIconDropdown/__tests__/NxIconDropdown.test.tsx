@@ -161,6 +161,25 @@ describe('NxIconDropdown', () => {
     expect(onToggleCollapse).toHaveBeenCalledTimes(1);
   });
 
+  it('calls onToggleCollapse when a child is clicked - after calling the child\'s click handler', async function() {
+    const user = userEvent.setup(),
+        onToggleCollapse = jest.fn(),
+        childClickSpy = jest.fn(),
+        { getByTestId } = quickRender({
+          onToggleCollapse,
+          children: <a data-testid="child" onClick={childClickSpy}>Hello</a>,
+          isOpen: true
+        }),
+        children = getByTestId('child');
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+
+    await user.click(children);
+
+    expect(childClickSpy).toHaveBeenCalled();
+    expect(onToggleCollapse).toHaveBeenCalled();
+  });
+
   it('calls onToggleCollapse if ESC is pressed within the component while the dropdown is open', async function() {
     const user = userEvent.setup(),
         onToggleCollapse = jest.fn(),
