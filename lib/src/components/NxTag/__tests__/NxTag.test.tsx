@@ -71,7 +71,7 @@ describe('NxSelectableTag', function() {
     expect(onSelect).toHaveBeenCalled();
   });
 
-  describe('includes a checkbox that', function () {
+  describe('includes a checkbox with role=switch that', function () {
     it('is checked if selected prop is true', function() {
       const el = quickRender({ selected: true }),
           checkbox = el.getByRole('switch');
