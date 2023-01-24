@@ -72,8 +72,8 @@ describe('NxSegmentedButton', function() {
       const user = userEvent.setup(),
           onClick = jest.fn(),
           component = quickRender({onClick}),
-          mainBtn = component.getByRole('button', { name: 'Click Me'}),
-          dropdownToggleBtn = component.getByRole('button', { name: 'more options'});
+          mainBtn = component.getByRole('button', { name: 'Click Me' }),
+          dropdownToggleBtn = component.getByRole('button', { name: 'more options' });
 
       expect(onClick).not.toHaveBeenCalled();
 
@@ -115,7 +115,7 @@ describe('NxSegmentedButton', function() {
     // Currently, the dropdown menu does not have the proper aria role set.
     // This will be addressed in this ticket:
     // https://issues.sonatype.org/browse/RSC-989
-    const { container, rerender } = quickRender({ isOpen: true}),
+    const { container, rerender } = quickRender({ isOpen: true }),
         dropdown = container.querySelector('.nx-dropdown-menu');
 
     expect(dropdown).toBeInTheDocument();
