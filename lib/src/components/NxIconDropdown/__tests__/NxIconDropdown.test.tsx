@@ -222,7 +222,7 @@ describe('NxIconDropdown', () => {
             toggleBtn = quickRender({
               onToggleCollapse,
               isOpen: true,
-              onCloseKeyDown: e => e.preventDefault() 
+              onCloseKeyDown: e => e.preventDefault()
             }).getByRole('button');
 
         toggleBtn.focus();
@@ -239,7 +239,7 @@ describe('NxIconDropdown', () => {
           children: <a data-testid="child">Foo</a>,
           onToggleCollapse,
           isOpen: true,
-          onCloseClick: e => e.preventDefault() 
+          onCloseClick: e => e.preventDefault()
         }),
         children = getByTestId('child'),
         toggleBtn = getByRole('button');
