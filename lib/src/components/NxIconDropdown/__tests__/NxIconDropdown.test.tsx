@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
-import { createEvent, fireEvent, waitFor, within } from '@testing-library/react';
+import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../__testutils__/rtlUtils';
+import { createEvent, fireEvent, within } from '@testing-library/react';
 
 import NxIconDropdown, { Props } from '../NxIconDropdown';
 
@@ -28,8 +28,10 @@ describe('NxIconDropdown', () => {
 
   it('correctly renders the menu based on isOpen prop', function() {
     const { rerender, container } = quickRender({ isOpen: true })!,
-        // dropdown menu does't have a role
-        menu = container.querySelector('div.nx-dropdown-menu');
+        // Currently, the dropdown menu does not have the proper aria role set.
+        // This will be addressed in this ticket:
+        // https://issues.sonatype.org/browse/RSC-989
+        menu = container.querySelector('.nx-dropdown-menu');
 
     expect(menu).toBeInTheDocument();
 
@@ -49,19 +51,6 @@ describe('NxIconDropdown', () => {
     }
   });
 
-  it('disables the button (and the toggle fn) when the disabled prop is supplied', async function() {
-    const user = userEvent.setup(),
-        toggleFn = jest.fn(),
-        component = quickRender({ onToggleCollapse: toggleFn, disabled: true }),
-        toggleBtn = component.getByRole('button');
-
-    expect(toggleBtn).toHaveAttribute('aria-disabled', 'true');
-
-    await user.click(toggleBtn);
-
-    expect(toggleFn).not.toHaveBeenCalled();
-  });
-
   it('passes extra attrs', function() {
     const el = renderEl({ id: 'some-id', lang: 'en' });
 
@@ -69,22 +58,47 @@ describe('NxIconDropdown', () => {
     expect(el).toHaveAttribute('lang', 'en');
   });
 
-  it('renders the children within the dropdown menu', function() {
-    const el = renderEl({ children: <a id="boo" className="nx-dropdown-link" href='#'>boo</a>, isOpen: true })!,
-        menu = el.querySelector('div.nx-dropdown-menu'),
-        link = within(el).getByRole('link');
+  it('disables the button (and the toggle fn) when the disabled prop is supplied', async function() {
+    const user = userEvent.setup(),
+        toggleFn = jest.fn(),
+        component = quickRender({ onToggleCollapse: toggleFn, disabled: true }),
+        toggleBtn = component.getByRole('button');
 
-    expect(menu).toBeInTheDocument();
-    expect(link).toBeInTheDocument();
-    expect(menu).toContainElement(link);
-    expect(link).toHaveTextContent('boo');
+    expect(toggleBtn).toHaveClass('disabled');
+    expect(toggleBtn).toHaveAttribute('aria-disabled', 'true');
+
+    await user.click(toggleBtn);
+
+    expect(toggleFn).not.toHaveBeenCalled();
   });
 
   it('renders a button with an accessible name when title prop is supplied', async function() {
     const toggleBtn = quickRender().getByRole('button');
 
     expect(toggleBtn).toBeInTheDocument();
-    await waitFor(() => expect(toggleBtn).toHaveAccessibleName('Test tooltip'));
+
+    await runTimers();
+
+    expect(toggleBtn).toHaveAccessibleName('Test tooltip');
+  });
+
+  it('renders the children within the dropdown menu in the specified order', function() {
+    const children = [
+      <a data-testid="menu-child" key="1">Link1</a>,
+      <a data-testid="menu-child" key="2">Link2</a>,
+      <button data-testid="menu-child" key="3">Link3</button>,
+      <button data-testid="menu-child" key="4">Link4</button>
+    ];
+
+    const el = renderEl({ children, isOpen: true })!,
+        menu = el.querySelector('.nx-dropdown-menu'),
+        menuChildren = within(el).getAllByTestId('menu-child');
+
+    expect(menu).toBeInTheDocument();
+    expect(menuChildren[0]).toHaveTextContent('Link1');
+    expect(menuChildren[1]).toHaveTextContent('Link2');
+    expect(menuChildren[2]).toHaveTextContent('Link3');
+    expect(menuChildren[3]).toHaveTextContent('Link4');
   });
 
   it('calls onToggleCollapse if a click happens anywhere when the dropdown is already open', async function() {
@@ -100,7 +114,8 @@ describe('NxIconDropdown', () => {
     expect(onToggleCollapse).toHaveBeenCalled();
   });
 
-  it('does not call onToggleCollapse if a click happens anywhere when the dropdown is closed', async function() {
+  it('does not call onToggleCollapse if a click happens anywhere aside from the'
+    + 'toggle button when the dropdown is closed', async function() {
     const user = userEvent.setup(),
         onToggleCollapse = jest.fn();
 
@@ -160,14 +175,14 @@ describe('NxIconDropdown', () => {
   });
 
   it('calls preventDefault on Escape keydown', function() {
-    const toggleBtn = quickRender({ onToggleCollapse: jest.fn(), isOpen: true }).getByRole('button'),
-        esckeyEvent = createEvent.keyDown(toggleBtn, { key: 'Escape' }),
-        otherKeyEvent = createEvent.keyDown(toggleBtn, { key: 'Q' });
+    const el = renderEl({ onToggleCollapse: jest.fn(), isOpen: true })!,
+        esckeyEvent = createEvent.keyDown(el, { key: 'Escape' }),
+        otherKeyEvent = createEvent.keyDown(el, { key: 'Q' });
 
-    fireEvent(toggleBtn, esckeyEvent);
+    fireEvent(el, esckeyEvent);
     expect(esckeyEvent.defaultPrevented).toBe(true);
 
-    fireEvent(toggleBtn, otherKeyEvent);
+    fireEvent(el, otherKeyEvent);
     expect(otherKeyEvent.defaultPrevented).toBe(false);
   });
 
@@ -176,6 +191,8 @@ describe('NxIconDropdown', () => {
         const user = userEvent.setup(),
             onToggleCollapse = jest.fn(),
             toggleBtn = quickRender({ onToggleCollapse }).getByRole('button');
+
+        expect(onToggleCollapse).not.toHaveBeenCalled();
 
         toggleBtn.focus();
         await user.keyboard('[Escape]');
@@ -188,6 +205,8 @@ describe('NxIconDropdown', () => {
         const user = userEvent.setup(),
             onToggleCollapse = jest.fn(),
             toggleBtn = quickRender({ onToggleCollapse, disabled: true }).getByRole('button');
+
+        expect(onToggleCollapse).not.toHaveBeenCalled();
 
         toggleBtn.focus();
         await user.keyboard('[Escape]');
@@ -203,7 +222,7 @@ describe('NxIconDropdown', () => {
             toggleBtn = quickRender({
               onToggleCollapse,
               isOpen: true,
-              onCloseKeyDown: jest.fn().mockImplementation((e) => { e.preventDefault(); }) })
+              onCloseKeyDown: e => e.preventDefault() })
                 .getByRole('button');
 
         toggleBtn.focus();
@@ -216,18 +235,20 @@ describe('NxIconDropdown', () => {
   it('does not call onToggleCollapse if a click happens when onCloseClick preventsDefault', async function() {
     const user = userEvent.setup(),
         onToggleCollapse = jest.fn(),
-        { getByRole, findByRole } = quickRender({
-          children: <button className="nx-dropdown-button">Foo</button>,
+        { getByRole, getByTestId } = quickRender({
+          children: <a data-testid="child">Foo</a>,
           onToggleCollapse,
           isOpen: true,
-          onCloseClick: jest.fn().mockImplementation((e) => { e.preventDefault(); }) }),
-        menuBtn = getByRole('button', { name: 'Foo' }),
-        toggleBtn = await findByRole('button', { name: 'Test tooltip' });
+          onCloseClick: e => e.preventDefault() }),
+        children = getByTestId('child'),
+        toggleBtn = getByRole('button');
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
 
     await user.click(document.body);
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
-    await user.click(menuBtn);
+    await user.click(children);
     expect(onToggleCollapse).not.toHaveBeenCalled();
 
     await user.click(toggleBtn);
@@ -242,20 +263,19 @@ describe('NxIconDropdown', () => {
         currentTarget: EventTarget | undefined;
 
     const user = userEvent.setup(),
-        onCloseClick = jest.fn().mockImplementation((event: MouseEvent) => {
+        onCloseClick = (event: MouseEvent) => {
           evt = event;
           currentTarget = evt.currentTarget || undefined;
-        });
-
-    quickRender({ isOpen: true, onCloseClick });
+        },
+        component = renderEl({ isOpen: true, onCloseClick })!;
 
     expect(evt).toBeUndefined();
 
-    await user.click(document.body);
+    await user.click(component);
 
     expect(evt).toBeDefined();
     expect(evt).toBeInstanceOf(MouseEvent);
-    expect(evt!.target).toBe(document.body);
+    expect(evt!.target).toBe(component);
     expect(currentTarget).toBe(document);
     expect(evt!.clientX).toBeDefined();
     expect(evt!.button).toBeDefined();
@@ -263,23 +283,20 @@ describe('NxIconDropdown', () => {
 
   it('moves focus to the dropdown toggle button if a menu item is focused when the dropdown is closed',
       async function() {
-        const { getByRole, findByRole, rerender} = quickRender({
-              children: <button className="nx-dropdown-button">Foo</button>,
+        const props: Partial<Props> = {
+              children: <button>Foo</button>,
               isOpen: true
-            }),
+            },
+            { getByRole, findByRole, rerender} = quickRender(props),
             menuBtn = getByRole('button', { name: 'Foo' }),
             toggleBtn = await findByRole('button', { name: 'Test tooltip' });
 
         menuBtn.focus();
 
-        expect(menuBtn).toHaveFocus();
+        expect(document.activeElement).toBe(menuBtn);
 
-        rerender(
-          <NxIconDropdown { ...minimalProps } isOpen={false}>
-            <button className="nx-dropdown-button">Foo</button>
-          </NxIconDropdown>
-        );
+        rerender(<NxIconDropdown { ...minimalProps } {...props} isOpen={false} />);
 
-        expect(toggleBtn).toHaveFocus();
+        expect(document.activeElement).toBe(toggleBtn);
       });
 });
