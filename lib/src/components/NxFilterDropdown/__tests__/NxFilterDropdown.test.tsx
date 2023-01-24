@@ -250,7 +250,7 @@ describe('NxFilterDropdown', function() {
     expect(onToggleCollapse).toHaveBeenCalled();
   });
 
-  it('calls preventDefault on Escape keydown', function() {
+  it('calls preventDefault on Escape keydown when open', function() {
     const component = renderEl({ onToggleCollapse: jest.fn(), isOpen: true })!;
 
     const escapeEvent = createEvent.keyDown(component, { key: 'Escape' });
@@ -261,6 +261,19 @@ describe('NxFilterDropdown', function() {
 
     fireEvent(component, escapeEvent);
     expect(escapeEvent.defaultPrevented).toBe(true);
+  });
+
+  it('does not call preventDefault on Escape keydown when closed', function() {
+    const component = renderEl({ onToggleCollapse: jest.fn() })!;
+
+    const escapeEvent = createEvent.keyDown(component, { key: 'Escape' });
+    const otherEvent = createEvent.keyDown(component, { key: 'Q' });
+
+    fireEvent(component, otherEvent);
+    expect(otherEvent.defaultPrevented).toBe(false);
+
+    fireEvent(component, escapeEvent);
+    expect(escapeEvent.defaultPrevented).toBe(false);
   });
 
   it('does not call onToggleCollapse if ESC is pressed within the component'
