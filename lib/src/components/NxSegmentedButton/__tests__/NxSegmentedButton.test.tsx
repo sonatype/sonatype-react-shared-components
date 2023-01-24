@@ -186,7 +186,7 @@ describe('NxSegmentedButton', function() {
     expect(onToggleOpen).not.toHaveBeenCalled();
   });
 
-  it('does not call onToggleOpen if a click happens anywhere when the dropdown is disabled', async function() {
+  it('does not call onToggleOpen if a click happens anywhere when the element is disabled', async function() {
     const user = userEvent.setup(),
         onToggleOpen = jest.fn();
 
