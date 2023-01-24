@@ -10,6 +10,6 @@ import { NxStatefulDateInput } from '@sonatype/react-shared-components';
 
 export default function NxStatefulDateInputSimpleExample() {
   return (
-    <NxStatefulDateInput onChange={(e) => console.log(e)} />
+    <NxStatefulDateInput />
   );
 }
