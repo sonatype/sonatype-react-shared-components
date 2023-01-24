@@ -5,215 +5,294 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow } from 'enzyme';
-import 'jest-enzyme';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { createEvent, fireEvent } from '@testing-library/react';
 
 import NxFilterDropdown, { Props } from '../NxFilterDropdown';
-import NxDropdown from '../../NxDropdown/NxDropdown';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import MultiSelectCounter from '../../Counter/MultiSelectCounter';
-import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
-import NxCheckbox from '../../NxCheckbox/NxCheckbox';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 describe('NxFilterDropdown', function() {
-  const minimalProps: Props = {
+  const minimalProps: Props<number> = {
         options: [],
         isOpen: false,
         onToggleCollapse: () => {},
         selectedIds: new Set(),
         onChange: () => {}
       },
-      getShallow = getShallowComponent(NxFilterDropdown, minimalProps),
-      getMounted = getMountedComponent(NxFilterDropdown, minimalProps);
+      // some options used in various tests but not in the minimalProps
+      options = [
+        { id: 1, displayName: 'One' },
+        { id: 2, displayName: 'Two' },
+        { id: 3, displayName: 'Three' }
+      ],
+      quickRender = rtlRender(NxFilterDropdown, minimalProps),
+      renderEl = rtlRenderElement(NxFilterDropdown, minimalProps);
 
-  it('renders an NxDropdown', function() {
-    expect(getShallow()).toMatchSelector(NxDropdown);
+  it('correctly renders the menu based on isOpen prop', function() {
+    const { container, rerender } = quickRender({ isOpen: true });
+    // Currently, the dropdown menu does not have the proper aria role set.
+    // This will be addressed in this ticket:
+    // https://issues.sonatype.org/browse/RSC-989
+    const menu = container.querySelector('.nx-dropdown-menu');
+
+    expect(menu).toBeInTheDocument();
+    rerender(<NxFilterDropdown {...minimalProps} isOpen={false} />);
+    expect(menu).not.toBeInTheDocument();
   });
 
-  it('sets the nx-filter-dropdown classname on the dropdown', function() {
-    expect(getShallow()).toHaveClassName('nx-filter-dropdown');
-  });
+  it('sets the provided className', function() {
+    const el = renderEl()!;
+    const customEl = renderEl({ className: 'foo' })!;
 
-  it('adds classnames specified in props', function() {
-    const component = getShallow({ className: 'foo' });
+    expect(customEl).toHaveClass('foo');
 
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-filter-dropdown');
-  });
-
-  it('passes the isOpen prop to the dropdown', function() {
-    expect(getShallow()).toHaveProp('isOpen', false);
-    expect(getShallow({ isOpen: true })).toHaveProp('isOpen', true);
-  });
-
-  it('passes the onToggleCollapse prop to the dropdown', function() {
-    const onToggleCollapse = jest.fn();
-
-    expect(getShallow({ onToggleCollapse })).toHaveProp('onToggleCollapse', onToggleCollapse);
-  });
-
-  it('throws an error if selectedIds includes an id not present in options', function() {
-    let caught;
-    try {
-      getShallow({ selectedIds: new Set(['foo']) });
+    for (const cls of Array.from(el.classList)) {
+      expect(customEl).toHaveClass(cls);
     }
-    catch (e: any) {
-      expect(e.message).toMatch('foo');
-      caught = true;
-    }
-
-    expect(caught).toBe(true);
   });
 
-  it('renders a filter icon and the word "Filter" in the toggle, when selectedIds is empty', function() {
-    const component = getMounted(),
-        toggleLabel = component.find('.nx-dropdown__toggle-label'),
-        icon = toggleLabel.find(NxFontAwesomeIcon);
-
-    expect(icon).not.toMatchSelector('.nx-icon--colorful');
-    expect(icon).toHaveProp('icon', faFilter);
-
-    expect(toggleLabel).toHaveText('Filter');
+  it('renders provided attributes', function() {
+    const component = renderEl({ id: 'some-id', title: 'title-prop' });
+    expect(component).toHaveAttribute('id', 'some-id');
+    expect(component).toHaveAttribute('title', 'title-prop');
   });
 
-  it('renders the placeholder instead of the word "Filter" if provided', function() {
-    const component = getMounted({ placeholder: 'foo' }),
-        toggleLabel = component.find('.nx-dropdown__toggle-label');
+  describe('toggle label', function() {
+    const quickRender = rtlRender(NxFilterDropdown, { ...minimalProps, options });
 
-    expect(toggleLabel).toHaveText('foo');
-  });
+    describe('when no options are selected', function() {
+      it('says "Filter" by default', function() {
+        const view = quickRender(),
+            toggle = view.getByRole('button');
 
-  it('renders a filter icon and a counter when selectedIds is not empty', function() {
-    const props = {
-          options: [{ id: '1', displayName: 'one' }, { id: '2', displayName: 'two' }],
-          selectedIds: new Set(['2'])
-        },
-        component = getMounted(props),
-        toggleLabel = component.find('.nx-dropdown__toggle-label'),
-        icon = toggleLabel.find(NxFontAwesomeIcon),
-        counter = toggleLabel.find(MultiSelectCounter);
+        expect(toggle).toHaveTextContent('Filter');
+        expect(toggle).toHaveAccessibleName('Filter');
+      });
 
-    expect(icon).not.toMatchSelector('.nx-icon--colorful');
-    expect(icon).toHaveProp('icon', faFilter);
+      it('contains the value of the placeholder prop if specified', function() {
+        const view = quickRender({ placeholder: 'foo' }),
+            toggle = view.getByRole('button');
 
-    expect(counter).toHaveProp('options', props.options);
-    expect(counter).toHaveProp('selectedIds', props.selectedIds);
-  });
-
-  describe('Reset button', function() {
-    it('is present in the dropdown menu unless the showReset prop is false', function() {
-      const defaultComponent = getShallow(),
-          withExplicitReset = getShallow({ showReset: true }),
-          withExplicitNoReset = getShallow({ showReset: false });
-
-      expect(defaultComponent).toContainMatchingElement('.nx-filter-dropdown__reset');
-      expect(withExplicitReset).toContainMatchingElement('.nx-filter-dropdown__reset');
-      expect(withExplicitNoReset).not.toContainMatchingElement('.nx-filter-dropdown__reset');
+        expect(toggle).toHaveTextContent('foo');
+        expect(toggle).toHaveAccessibleName('foo');
+        expect(toggle).not.toHaveTextContent('Filter');
+      });
     });
 
-    it('is a button with the nx-dropdown-link and nx-filter-dropdown__reset classes', function() {
-      const component = getShallow(),
-          resetBtn = component.find('button.nx-dropdown-link.nx-filter-dropdown__reset');
+    describe('when options are selected', function() {
+      it('displays "x of y" where x is the number of selected options and y is the total', function() {
+        const view = quickRender({ placeholder: 'foo', selectedIds: new Set([1, 3]) }),
+            toggle = view.getByRole('button');
 
-      expect(resetBtn).toExist();
+        expect(toggle).toHaveTextContent('2 of 3');
+        expect(toggle).toHaveAccessibleName('2 of 3');
+        expect(toggle).not.toHaveTextContent('foo');
+        expect(toggle).not.toHaveTextContent('Filter');
+      });
+    });
+  });
+
+  it('renders a checkbox in the dropdown menu for each option', async function() {
+    const view = quickRender({ options, isOpen: true }),
+        menuChildren = view.getAllByRole('checkbox');
+
+    expect(menuChildren[0]).toHaveAccessibleName('One');
+    expect(menuChildren[1]).toHaveAccessibleName('Two');
+    expect(menuChildren[2]).toHaveAccessibleName('Three');
+  });
+
+  describe('reset button', function() {
+    const quickRender = rtlRender(NxFilterDropdown, { ...minimalProps, options, isOpen: true });
+
+    it('is only visible when the dropdown is open', function() {
+      const closedView = quickRender({ isOpen: false }),
+          openView = quickRender();
+
+      expect(closedView.queryByRole('button', { name: 'Reset' })).not.toBeInTheDocument();
+      expect(openView.getByRole('button', { name: 'Reset' })).toBeInTheDocument();
     });
 
-    it('fires onChange with an empty set when clicked', function() {
-      const onChange = jest.fn(),
-          props = {
-            options: [{ id: '1', displayName: 'one' }, { id: '2', displayName: 'two' }],
-            selectedIds: new Set(['2']),
-            onChange
-          },
-          component = getShallow(props),
-          resetBtn = component.find('.nx-filter-dropdown__reset');
+    it('is not visible iff showReset is false', function() {
+      expect(quickRender({ showReset: null }).getByRole('button', { name: 'Reset' })).toBeInTheDocument();
+      expect(quickRender({ showReset: true }).getByRole('button', { name: 'Reset' })).toBeInTheDocument();
+      expect(quickRender({ showReset: undefined }).getByRole('button', { name: 'Reset' })).toBeInTheDocument();
+      expect(quickRender({ showReset: false }).queryByRole('button', { name: 'Reset' })).not.toBeInTheDocument();
+    });
+
+    it('is enabled iff options are selected', function() {
+      expect(quickRender().getByRole('button', { name: 'Reset' })).toBeDisabled();
+      expect(quickRender({ selectedIds: new Set([3]) }).getByRole('button', { name: 'Reset' })).toBeEnabled();
+    });
+
+    it('fires onChange with an empty set and no second parameter when clicked', async function() {
+      const user = userEvent.setup(),
+          onChange = jest.fn(),
+          view = quickRender({ selectedIds: new Set([3]), onChange });
 
       expect(onChange).not.toHaveBeenCalled();
-      resetBtn.simulate('click');
+
+      await user.click(view.getByRole('button', { name: 'Reset' }));
+
       expect(onChange).toHaveBeenCalledWith(new Set());
     });
+  });
 
-    it('disables the Reset button when there is no selection', function() {
-      const component = getShallow({
-            isOpen: true,
-            options: [{ id: '1', displayName: 'one' }, { id: '2', displayName: 'two' }]
-          }),
-          componentWithSelected = getShallow({
-            isOpen: true,
-            selectedIds: new Set(['1']),
-            options: [{ id: '1', displayName: 'one' }, { id: '2', displayName: 'two' }]
-          }),
-          resetBtn = component.find('.nx-filter-dropdown__reset'),
-          selectedComponentResetBtn = componentWithSelected.find('.nx-filter-dropdown__reset');
+  describe('exceptions', function() {
+    beforeEach(function() {
+      // prevent RTL logging thrown exceptions
+      jest.spyOn(console, 'error').mockImplementation(() => {});
+    });
 
-      expect(resetBtn).toBeDisabled();
-      expect(selectedComponentResetBtn).not.toBeDisabled();
+    it('throws an error if the selectedIds includes ids not present in the options', function() {
+      expect(() => quickRender({ selectedIds: new Set() })).not.toThrow();
+      expect(() => quickRender({ selectedIds: new Set([1]) })).toThrow(Error);
+      expect(() => quickRender({ options, selectedIds: new Set([1]) })).not.toThrow();
+      expect(() => quickRender({ options, selectedIds: new Set([1, 4]) })).toThrow(Error);
+      expect(() => quickRender({ options, selectedIds: new Set([4]) })).toThrow(Error);
     });
   });
 
-  it('renders an NxCheckbox for each option, checked based on selectedIds', function() {
-    const props = {
-          options: [{ id: '1', displayName: 'one' }, { id: '2', displayName: 'two' }],
-          selectedIds: new Set(['2'])
-        },
-        component = getShallow(props),
-        checkboxes = component.find(NxCheckbox);
+  it('calls onToggleCollapse if a click happens anywhere other than a descendant checkbox when the dropdown ' +
+    'is already open', async function() {
+    const user = userEvent.setup();
+    const onToggleCollapse = jest.fn();
+    quickRender({ onToggleCollapse, isOpen: true });
 
-    expect(checkboxes).toHaveLength(2);
-    expect(checkboxes.at(0)).toHaveText('one');
-    expect(checkboxes.at(0)).toHaveProp('isChecked', false);
-    expect(checkboxes.at(1)).toHaveText('two');
-    expect(checkboxes.at(1)).toHaveProp('isChecked', true);
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+
+    await user.click(document.body);
+
+    expect(onToggleCollapse).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onChange with with the id added to the selectedIds when an unselected checkbox is clicked', function() {
-    const onChange = jest.fn(),
-        props = {
-          options: [{ id: '1', displayName: 'one' }, { id: '2', displayName: 'two' }],
-          selectedIds: new Set(['2']),
-          onChange
-        },
-        component = getShallow(props),
-        checkboxes = component.find(NxCheckbox);
+  describe('when a checkbox is clicked', function() {
+    it('does not fire onToggleCollapse', async function() {
+      const user = userEvent.setup(),
+          onToggleCollapse = jest.fn(),
+          view = quickRender({ onToggleCollapse, isOpen: true, options }),
+          checkbox = view.getAllByRole('checkbox')[0];
 
-    expect(onChange).not.toHaveBeenCalled();
-    checkboxes.at(0).simulate('change');
-    expect(onChange).toHaveBeenCalledWith(new Set(['1', '2']), '1');
-
-    // ensure prop Set not mutated
-    expect(props.selectedIds).toEqual(new Set(['2']));
-  });
-
-  it('calls onChange with with the id removed from the selectedIds when a selected checkbox is clicked', function() {
-    const onChange = jest.fn(),
-        props = {
-          options: [{ id: '1', displayName: 'one' }, { id: '2', displayName: 'two' }],
-          selectedIds: new Set(['2']),
-          onChange
-        },
-        component = getShallow(props),
-        checkboxes = component.find(NxCheckbox);
-
-    expect(onChange).not.toHaveBeenCalled();
-    checkboxes.at(1).simulate('change');
-    expect(onChange).toHaveBeenCalledWith(new Set([]), '2');
-
-    // ensure prop Set not mutated
-    expect(props.selectedIds).toEqual(new Set(['2']));
-  });
-
-  describe('with numeric ids', function() {
-    it('type checks', function() {
-      const options = [{ id: 1, displayName: 'one' }, { id: 2, displayName: 'two' }],
-          selectedIds = new Set([2]);
-
-      expect(shallow(<NxFilterDropdown options={options}
-                                       selectedIds={selectedIds}
-                                       isOpen={false}
-                                       onToggleCollapse={() => {}}
-                                       onChange={() => {}} />
-      )).toExist();
+      await user.click(checkbox);
+      expect(onToggleCollapse).not.toHaveBeenCalled();
     });
+
+    it('fires onChange with the new set of selectedIds and the id of the clicked checkbox', async function() {
+      const user = userEvent.setup(),
+          onChange = jest.fn(),
+          view = quickRender({ onChange, isOpen: true, options }),
+          checkboxes = view.getAllByRole('checkbox');
+
+      // initially no boxes are checked; check the first one
+      await user.click(checkboxes[0]);
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith(new Set([1]), 1);
+
+      view.rerender(<NxFilterDropdown { ...minimalProps }
+                                      { ...{ onChange, options } }
+                                      isOpen={true}
+                                      selectedIds={new Set([1])} />);
+
+      // now the first box is checked; also check the second one
+      await user.click(checkboxes[1]);
+      expect(onChange).toHaveBeenCalledTimes(2);
+      expect(onChange).toHaveBeenCalledWith(new Set([1, 2]), 2);
+
+      view.rerender(<NxFilterDropdown { ...minimalProps }
+                                      { ...{ onChange, options } }
+                                      isOpen={true}
+                                      selectedIds={new Set([1, 2])} />);
+
+      // now the first two boxes are checked; uncheck the first one
+      await user.click(checkboxes[0]);
+      expect(onChange).toHaveBeenCalledTimes(3);
+      expect(onChange).toHaveBeenCalledWith(new Set([2]), 1);
+    });
+  });
+
+  it('does not call onToggleCollapse if a click happens anywhere aside from the'
+    + 'toggle button when the dropdown is closed', async function() {
+    const user = userEvent.setup();
+    const onToggleCollapse = jest.fn();
+    quickRender({ onToggleCollapse });
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+    await user.click(document.body);
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+  });
+
+  it('calls onToggleCollapse once when clicking to open the dropdown', async function() {
+    const user = userEvent.setup();
+    const onToggleCollapse = jest.fn();
+
+    const view = quickRender({ onToggleCollapse });
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+    await user.click(view.getByRole('button'));
+    expect(onToggleCollapse).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onToggleCollapse once when clicking to close the dropdown', async function() {
+    const user = userEvent.setup();
+    const onToggleCollapse = jest.fn();
+    const view = quickRender({ onToggleCollapse, isOpen: true });
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+    await user.click(view.getByRole('button', { name: 'Filter' }));
+    expect(onToggleCollapse).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onToggleCollapse if ESC is pressed within the component while the dropdown is open', async function() {
+    const user = userEvent.setup();
+    const onToggleCollapse = jest.fn();
+    const view = quickRender({ onToggleCollapse, isOpen: true })!;
+    const toggle = view.getByRole('button', { name: 'Filter' });
+    toggle.focus();
+    await user.keyboard('{Escape}');
+    expect(onToggleCollapse).toHaveBeenCalled();
+  });
+
+  it('calls preventDefault on Escape keydown', function() {
+    const component = renderEl({ onToggleCollapse: jest.fn(), isOpen: true })!;
+
+    const escapeEvent = createEvent.keyDown(component, { key: 'Escape' });
+    const otherEvent = createEvent.keyDown(component, { key: 'Q' });
+
+    fireEvent(component, otherEvent);
+    expect(otherEvent.defaultPrevented).toBe(false);
+
+    fireEvent(component, escapeEvent);
+    expect(escapeEvent.defaultPrevented).toBe(true);
+  });
+
+  it('does not call onToggleCollapse if ESC is pressed within the component'
+  + 'when the dropdown is closed', async function() {
+    const user = userEvent.setup();
+    const onToggleCollapse = jest.fn();
+    const view = quickRender({ onToggleCollapse })!;
+    const toggle = view.getByRole('button', { name: 'Filter' });
+
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+    toggle.focus();
+    await user.keyboard('{Escape}');
+    expect(onToggleCollapse).not.toHaveBeenCalled();
+  });
+
+  it('moves focus to the dropdown toggle button if a menu item is focused when the dropdown is closed', function() {
+    const props: Partial<Props<number>> = {
+      options: [{ id: 1, displayName: 'One' }],
+      isOpen: true
+    };
+
+    const view = quickRender(props);
+
+    const checkbox = view.getByRole('checkbox');
+    const toggleBtn = view.getByRole('button', { name: 'Filter' });
+
+    checkbox.focus();
+
+    expect(document.activeElement).toBe(checkbox);
+
+    view.rerender(<NxFilterDropdown {...minimalProps} {...props} isOpen={false} />);
+
+    expect(document.activeElement).toBe(toggleBtn);
   });
 });
