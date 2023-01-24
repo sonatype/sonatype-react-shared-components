@@ -126,7 +126,7 @@ describe('NxStatefulIconDropdown', () => {
     expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
   });
 
-  it('does not open the dropdown if a click happens anywhere aside from the'
+  it('does not open the dropdown if a click happens anywhere aside from the '
     + 'toggle button when the dropdown is closed', async function() {
     const user = userEvent.setup(),
         el = renderEl()!;
