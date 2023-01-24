@@ -222,8 +222,8 @@ describe('NxIconDropdown', () => {
             toggleBtn = quickRender({
               onToggleCollapse,
               isOpen: true,
-              onCloseKeyDown: e => e.preventDefault() })
-                .getByRole('button');
+              onCloseKeyDown: e => e.preventDefault() 
+            }).getByRole('button');
 
         toggleBtn.focus();
         await user.keyboard('[Escape]');
