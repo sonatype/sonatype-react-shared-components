@@ -11,11 +11,9 @@ import { act, within } from '@testing-library/react';
 import NxStatefulIconDropdown, { Props } from '../NxStatefulIconDropdown';
 
 describe('NxStatefulIconDropdown', () => {
-  const childClickSpy = jest.fn();
-
   const minimalProps: Props = {
         title: 'stateful dropdown',
-        children: <a data-testid="child" onClick={childClickSpy}>Hello</a>
+        children: <a>Hello</a>
       },
       quickRender = rtlRender(NxStatefulIconDropdown, minimalProps),
       renderEl = rtlRenderElement(NxStatefulIconDropdown, minimalProps);
@@ -152,7 +150,10 @@ describe('NxStatefulIconDropdown', () => {
 
   it('closes the dropdown when a child is clicked - after calling the child\'s click handler', async function() {
     const user = userEvent.setup(),
-        { container, getByRole, getByTestId } = quickRender(),
+        childClickSpy = jest.fn(),
+        { container, getByRole, getByTestId } = quickRender({
+          children: <a data-testid="child" onClick={childClickSpy}>Hello</a>
+        }),
         toggleBtn = getByRole('button');
 
     await user.click(toggleBtn);
