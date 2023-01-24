@@ -18,7 +18,7 @@ describe('NxFontAwesomeIcon', function() {
     const component = renderEl();
 
     expect(component).toHaveAttribute('role','img');
-    expect(component).toHaveClass('nx-icon');
+    expect(component).toHaveAttribute('data-icon', 'check');
   });
 
   it('renders passed props correctly', function() {
@@ -28,7 +28,6 @@ describe('NxFontAwesomeIcon', function() {
     expect(component).toHaveClass('fa-spin');
     expect(component).toHaveClass('fa-flip-horizontal');
     expect(component).toHaveClass('fa-flip-vertical');
-    expect(component).toHaveAttribute('data-icon', 'check');
   });
 
   it('merges any passed in className to rendered SVG', function() {
