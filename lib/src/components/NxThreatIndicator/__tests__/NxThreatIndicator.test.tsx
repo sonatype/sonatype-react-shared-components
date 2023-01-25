@@ -6,7 +6,7 @@
  */
 import NxThreatIndicator, { Props } from '../NxThreatIndicator';
 import { rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
-import { screen } from '@testing-library/react';
+import { RenderResult, screen } from '@testing-library/react';
 import {
   allThreatLevelCategories,
   allThreatLevelNumbers,
@@ -83,27 +83,36 @@ describe('NxThreatIndicator', function() {
     expect(tooltip).toHaveTextContent('Extinction Level Threat');
   });
 
-  it('should hide tooltip when presentational prop is set true', async function() {
-    const el = quickRender({ presentational: true }),
-        user = userEvent.setup(),
-        threatIndicator = el.getByRole('presentation', { hidden: true });
+  describe('when presentational prop is set to true', function() {
+    let el: RenderResult;
 
-    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
-    await user.hover(threatIndicator);
-    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
-  });
+    beforeEach(() => {
+      el = quickRender({ presentational: true });
+    });
 
-  it('should set the role to "presentation" when presentational prop is true', function() {
-    const el = quickRender({ presentational: true }),
-        threatIndicator = el.getByRole('presentation', { hidden: true });
+    it('should hide tooltip', async function() {
+      const user = userEvent.setup(),
+          threatIndicator = el.getByRole('presentation', { hidden: true, queryFallbacks: true });
 
-    expect(threatIndicator).toBeInTheDocument();
-  });
+      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+      await user.hover(threatIndicator);
+      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+    });
 
-  it('should set aria-label to undefined when presentational prop is true', function() {
-    const el = quickRender({ presentational: true }),
-        threatIndicator = el.getByRole('presentation', { hidden: true });
+    it('should set the role to "presentation"', function() {
+      const threatIndicator = el.getByRole('presentation', { hidden: true, queryFallbacks: true });
 
-    expect(threatIndicator).not.toHaveAttribute('aria-label');
+      expect(threatIndicator).toBeInTheDocument();
+    });
+
+    it('should not set the role to "img"', function() {
+      expect(el.queryByRole('img', { hidden: true, queryFallbacks: true })).not.toBeInTheDocument();
+    });
+
+    it('should set aria-label to undefined', function() {
+      const threatIndicator = el.getByRole('presentation', { hidden: true, queryFallbacks: true });
+
+      expect(threatIndicator).not.toHaveAttribute('aria-label');
+    });
   });
 });
