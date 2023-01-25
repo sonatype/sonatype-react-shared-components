@@ -208,7 +208,7 @@ describe('NxSegmentedButton', function() {
     expect(onToggleOpen).toHaveBeenCalled();
   });
 
-  it('calls preventDefault on Escape keydown', function() {
+  it('calls preventDefault on Escape keydown when open', function() {
     const component = renderEl({ onToggleOpen: jest.fn(), isOpen: true })!,
         escapeEvent = createEvent.keyDown(component, { key: 'Escape' }),
         otherEvent = createEvent.keyDown(component, { key: 'Q' });
@@ -218,6 +218,18 @@ describe('NxSegmentedButton', function() {
 
     fireEvent(component, escapeEvent);
     expect(escapeEvent.defaultPrevented).toBe(true);
+  });
+
+  it('does not call preventDefault on Escape keydown when closed', function() {
+    const component = renderEl({ onToggleOpen: jest.fn(), isOpen: false })!,
+        escapeEvent = createEvent.keyDown(component, { key: 'Escape' }),
+        otherEvent = createEvent.keyDown(component, { key: 'Q' });
+
+    fireEvent(component, otherEvent);
+    expect(otherEvent.defaultPrevented).toBe(false);
+
+    fireEvent(component, escapeEvent);
+    expect(escapeEvent.defaultPrevented).toBe(false);
   });
 
   it('does not call onToggleOpen if ESC is pressed within the component when the dropdown is closed',

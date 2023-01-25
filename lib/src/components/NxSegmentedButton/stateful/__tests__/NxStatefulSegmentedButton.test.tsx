@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { within, screen, createEvent, fireEvent, render } from '@testing-library/react';
+import { within, screen, createEvent, fireEvent } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
 import NxStatefulSegmentedButton, { Props } from '../NxStatefulSegmentedButton';
 import { act } from 'react-dom/test-utils';
@@ -222,7 +222,7 @@ describe('NxSegmentedButton', function() {
     expect(menu).not.toBeInTheDocument();
   });
 
-  it('calls preventDefault on Escape keydown', async function() {
+  it('calls preventDefault on Escape keydown when open', async function() {
     const user = userEvent.setup(),
         component = renderEl()!,
         dropdownToggleBtn = screen.getByRole('button', { name: 'more options' });
@@ -237,6 +237,18 @@ describe('NxSegmentedButton', function() {
 
     fireEvent(component, escapeEvent);
     expect(escapeEvent.defaultPrevented).toBe(true);
+  });
+
+  it('calls preventDefault on Escape keydown when closed', async function() {
+    const component = renderEl()!,
+        escapeEvent = createEvent.keyDown(component, { key: 'Escape' }),
+        otherEvent = createEvent.keyDown(component, { key: 'Q' });
+
+    fireEvent(component, otherEvent);
+    expect(otherEvent.defaultPrevented).toBe(false);
+
+    fireEvent(component, escapeEvent);
+    expect(escapeEvent.defaultPrevented).toBe(false);
   });
 
   it('does not open when ESC is pressed and the dropdown is closed', async function() {
