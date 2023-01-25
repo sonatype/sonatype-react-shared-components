@@ -7,7 +7,11 @@
 import NxThreatIndicator, { Props } from '../NxThreatIndicator';
 import { rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
 import { screen } from '@testing-library/react';
-import { allThreatLevelCategories } from '../../../util/threatLevels';
+import {
+  allThreatLevelCategories,
+  allThreatLevelNumbers,
+  categoryByPolicyThreatLevel
+} from '../../../util/threatLevels';
 
 describe('NxThreatIndicator', function() {
   const quickRender = rtlRender<Props>(NxThreatIndicator, {});
@@ -57,16 +61,34 @@ describe('NxThreatIndicator', function() {
   });
 
   describe('should have default tooltips', function() {
-    allThreatLevelCategories.forEach(category => {
-      it(`for ${category} category`, async function() {
-        const { container } = quickRender({ threatLevelCategory: category }),
-            user = userEvent.setup(),
-            threatIndicator = container.querySelector('svg')!,
-            categoryTitleCase = category[0].toUpperCase() + category.slice(1);
+    describe('when policyThreatLevel prop is provided', function() {
+      allThreatLevelNumbers.forEach(threatNumber => {
+        it(`for policy threat level ${threatNumber}`, async function() {
+          const el = quickRender({ policyThreatLevel: threatNumber })!,
+              user = userEvent.setup(),
+              category = categoryByPolicyThreatLevel[threatNumber],
+              categoryTitleCase = category[0].toUpperCase() + category.slice(1),
+              threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true });
 
-        await user.hover(threatIndicator);
-        const tooltip = await screen.findByRole('tooltip');
-        expect(tooltip).toHaveTextContent(categoryTitleCase);
+          await user.hover(threatIndicator);
+          const tooltip = await screen.findByRole('tooltip');
+          expect(tooltip).toHaveTextContent(categoryTitleCase);
+        });
+      });
+    });
+
+    describe('when threatLevelCategory prop is provided', function() {
+      allThreatLevelCategories.forEach(category => {
+        it(`for threat level category ${category}`, async function() {
+          const el = quickRender({ threatLevelCategory: category })!,
+              user = userEvent.setup(),
+              threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true }),
+              categoryTitleCase = category[0].toUpperCase() + category.slice(1);
+
+          await user.hover(threatIndicator);
+          const tooltip = await screen.findByRole('tooltip');
+          expect(tooltip).toHaveTextContent(categoryTitleCase);
+        });
       });
     });
   });
