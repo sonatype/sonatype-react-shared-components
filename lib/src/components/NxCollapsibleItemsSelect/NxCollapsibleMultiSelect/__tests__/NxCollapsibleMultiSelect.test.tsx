@@ -99,23 +99,22 @@ describe('NxCollapsibleMultiSelect', function() {
 
     it('fires the component\'s onToggleCollapse when clicked if there are options', async function() {
       const user = userEvent.setup(),
-          onToggleCollapseOptions = jest.fn(),
-          onToggleCollapseNoOptions = jest.fn(),
+          onToggleCollapse = jest.fn(),
           optionsTrigger = renderAndGetTrigger({
-            onToggleCollapse: onToggleCollapseOptions
+            onToggleCollapse
           }),
           noOptionsTrigger = renderAndGetTrigger({
-            onToggleCollapse: onToggleCollapseNoOptions,
+            onToggleCollapse,
             options: []
           });
 
-      expect(onToggleCollapseNoOptions).not.toHaveBeenCalled();
-      await user.click(noOptionsTrigger);
-      expect(onToggleCollapseNoOptions).not.toHaveBeenCalled();
+      expect(onToggleCollapse).not.toHaveBeenCalled();
 
-      expect(onToggleCollapseOptions).not.toHaveBeenCalled();
+      await user.click(noOptionsTrigger);
+      expect(onToggleCollapse).not.toHaveBeenCalled();
+
       await user.click(optionsTrigger);
-      expect(onToggleCollapseOptions).toHaveBeenCalled();
+      expect(onToggleCollapse).toHaveBeenCalled();
     });
 
     describe('tooltip', function() {
