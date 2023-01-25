@@ -222,10 +222,16 @@ describe('NxCollapsibleMultiSelect', function() {
   });
 
   describe('filter', function() {
-    const filterView = (props?: Partial<Props>) => quickRender({
-      ...props,
-      filterThreshold: 2,
-      onFilterChange: jest.fn()
+    let onFilterChange: jest.Mock,
+        filterView: Function;
+
+    beforeEach(() => {
+      onFilterChange = jest.fn();
+      filterView = (props?: Partial<Props>) => quickRender({
+        ...props,
+        filterThreshold: 2,
+        onFilterChange
+      });
     });
 
     it('renders an input with type="text" iff when the number of options ' +
@@ -257,12 +263,7 @@ describe('NxCollapsibleMultiSelect', function() {
 
     it('clears the input when the clear button is clicked', async function() {
       const user = userEvent.setup(),
-          onFilterChange = jest.fn(),
-          view = quickRender({
-            filter: 'f',
-            filterThreshold: 2,
-            onFilterChange
-          });
+          view = filterView();
 
       await runTimers();
 
@@ -275,12 +276,7 @@ describe('NxCollapsibleMultiSelect', function() {
 
     it('clears the input when Escape key is pressed', async function() {
       const user = userEvent.setup(),
-          onFilterChange = jest.fn(),
-          view = quickRender({
-            filter: 'f',
-            filterThreshold: 2,
-            onFilterChange
-          }),
+          view = filterView(),
           inputEl = view.getByRole('textbox');
 
       inputEl.focus();
