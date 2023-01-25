@@ -64,18 +64,18 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       expect(renderAndGetTrigger()).toHaveAttribute('type', 'button');
     });
 
-    it('references the children items using aria-controls', function() {
+    it('references the children items with menu role using aria-controls', function() {
       const view = quickRender(),
           trigger = view.getByRole('button'),
           childrenElId = trigger.getAttribute('aria-controls')!;
 
       expect(childrenElId).toBeDefined();
 
-      const childrenEl = document.getElementById(childrenElId)!,
-          childEl = view.getByRole('menu');
+      const childrenEl = document.getElementById(childrenElId);
 
-      expect(view.container).toContainElement(childrenEl);
-      expect(childrenEl).toContainElement(childEl);
+      expect(childrenEl).toBeInTheDocument;
+      expect(childrenEl).toHaveAttribute('role', 'menu');
+      expect(trigger).toHaveAttribute('aria-controls', childrenElId);
     });
 
     it('sets aria-expanded iff isOpen prop is true and there are options', function() {
