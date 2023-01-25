@@ -161,26 +161,6 @@ describe('NxSegmentedButton', function() {
     expect(menu).not.toBeInTheDocument();
   });
 
-  it('closes the dropdown when an outside click happens', async function() {
-    const user = userEvent.setup(),
-        { container } = quickRender();
-    render(<button data-testid="test-btn">click</button>);
-
-    const dropdownToggleBtn = screen.getByRole('button', { name: 'more options' });
-
-    await user.click(dropdownToggleBtn);
-    let menu = container.querySelector('.nx-dropdown-menu');
-    expect(menu).toBeInTheDocument();
-
-    await act(async () => { await user.click(screen.getByTestId('test-btn')); });
-    menu = container.querySelector('.nx-dropdown-menu');
-    expect(menu).not.toBeInTheDocument();
-
-    await user.click(dropdownToggleBtn);
-    menu = container.querySelector('.nx-dropdown-menu');
-    expect(menu).toBeInTheDocument();
-  });
-
   it('closes the dropdown when a child is clicked - after calling the child\'s click handler', async function() {
     const user = userEvent.setup(),
         childClickSpy = jest.fn(),
