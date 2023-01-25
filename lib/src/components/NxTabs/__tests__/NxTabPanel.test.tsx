@@ -5,8 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { mount } from 'enzyme';
-import 'jest-enzyme';
+
+import { render } from '@testing-library/react';
+
 import NxTabPanel from '../NxTabPanel';
 import TabContext from '../TabContext';
 
@@ -20,34 +21,34 @@ describe('NxTabPanel', function () {
   }
 
   it('renders nothing when inactive', () => {
-    const component = mount(
+    const { queryByRole } = render(
       <TabContext.Provider value={testContext({ activeTab: -1, index: 0 })}>
         <NxTabPanel>Content</NxTabPanel>
       </TabContext.Provider>
     );
 
-    expect(component).toBeEmptyRender();
+    expect(queryByRole('tabpanel', { hidden: true })).not.toBeInTheDocument();
   });
 
   it('renders when active', () => {
-    const component = mount(
+    const { getByRole } = render(
       <TabContext.Provider value={testContext({ activeTab: 0, index: 0 })}>
         <NxTabPanel>Content</NxTabPanel>
       </TabContext.Provider>
     );
 
-    expect(component.find('[role="tabpanel"]')).not.toBeEmptyRender();
+    expect(getByRole('tabpanel', { hidden: true })).toBeInTheDocument();
   });
 
-  it('generates the correct props from the context', () => {
-    const component = mount(
+  it('generates the correct attributes from the context', () => {
+    const { getByRole } = render(
       <TabContext.Provider value={testContext({ activeTab: 1, index: 1 })}>
         <NxTabPanel>Content</NxTabPanel>
       </TabContext.Provider>
     );
 
-    const tabpanel = component.find('[role="tabpanel"]');
-    expect(tabpanel).toHaveProp('id', 'nx-tabs-0-tabpanel-1');
-    expect(tabpanel).toHaveProp('aria-labelledby', 'nx-tabs-0-tab-1');
+    const tabpanel = getByRole('tabpanel');
+    expect(tabpanel).toHaveAttribute('id', 'nx-tabs-0-tabpanel-1');
+    expect(tabpanel).toHaveAttribute('aria-labelledby', 'nx-tabs-0-tab-1');
   });
 });

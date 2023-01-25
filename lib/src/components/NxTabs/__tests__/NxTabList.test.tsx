@@ -4,15 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import { shallow } from 'enzyme';
-import 'jest-enzyme';
+import { rtlRender } from '../../../__testutils__/rtlUtils';
+
 import NxTabList from '../NxTabList';
 
 describe('NxTabList', function () {
-  it('renders an NxTabList', function () {
-    const component = shallow(<NxTabList />);
+  const quickRender = rtlRender(NxTabList, {});
 
-    expect(component).toMatchSelector('ul.nx-tab-list[role="tablist"]');
+  it('renders an NxTabList', function () {
+    expect(quickRender().getByRole('tablist')).toBeInTheDocument();
   });
 });
