@@ -60,7 +60,7 @@ describe('NxSegmentedButton', function() {
 
     it('passes the type to the main btn if specified', function() {
       const defaultBtn = quickRender().getByRole('button', { name: 'Click Me' }),
-          customBtn = quickRender({ type: 'button'}).getByRole('button', { name: 'Click Me' }),
+          customBtn = quickRender({ type: 'button' }).getByRole('button', { name: 'Click Me' }),
           customSubmitBtn = quickRender({ type: 'submit' }).getByRole('button', { name: 'Click Me' });
 
       expect(defaultBtn).not.toHaveAttribute('type', 'button');
@@ -174,7 +174,7 @@ describe('NxSegmentedButton', function() {
     expect(onToggleOpen).toHaveBeenCalledTimes(1);
   });
 
-  it('does not call onToggleOpen if a click happens anywhere aside from the'
+  it('does not call onToggleOpen if a click happens anywhere aside from the '
     + 'toggle button when the dropdown is closed', async function() {
     const user = userEvent.setup(),
         onToggleOpen = jest.fn();

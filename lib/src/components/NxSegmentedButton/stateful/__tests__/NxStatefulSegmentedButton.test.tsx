@@ -203,7 +203,7 @@ describe('NxSegmentedButton', function() {
     expect(menu).toBeInTheDocument();
   });
 
-  it('does not open when a click happens anywhere aside from the dropdown toggle button'
+  it('does not open when a click happens anywhere aside from the dropdown toggle button '
   + 'when the dropdown is closed', async function() {
     const user = userEvent.setup(),
         component = renderEl()!,
