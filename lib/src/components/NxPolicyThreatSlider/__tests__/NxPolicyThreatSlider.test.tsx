@@ -247,7 +247,7 @@ describe('NxPolicyThreatSlider', function() {
   });
 
   describe('keyboard interactions', function() {
-    it('fires onChange with a decreased first value when the min slider receives an ArrowLeft key press', 
+    it('fires onChange with a decreased first value when the min slider receives an ArrowLeft key press',
         async function() {
           const user = userEvent.setup(),
               onChange = jest.fn(),
@@ -330,7 +330,7 @@ describe('NxPolicyThreatSlider', function() {
     );
 
     describe('when the sliders are initially equal', function() {
-      it('fires onChange with a decreased first value when the min slider receives an ArrowLeft key press', 
+      it('fires onChange with a decreased first value when the min slider receives an ArrowLeft key press',
           async function() {
             const user = userEvent.setup(),
                 onChange = jest.fn(),
