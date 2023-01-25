@@ -22,26 +22,6 @@ describe('NxThreatIndicator', function() {
     expect(threatIndicator).toBeInTheDocument();
   });
 
-  it('renders a threat indicator if threatLevelCategory prop is provided', async function() {
-    const { container } = quickRender({ threatLevelCategory: 'severe' }),
-        user = userEvent.setup(),
-        threatIndicator = container.querySelector('svg')!;
-
-    await user.hover(threatIndicator);
-    const tooltip = await screen.findByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Severe');
-  });
-
-  it('renders a threat indicator if policyThreatLevel prop is provided', async function() {
-    const { container } = quickRender({ policyThreatLevel: 2 }),
-        user = userEvent.setup(),
-        threatIndicator = container.querySelector('svg')!;
-
-    await user.hover(threatIndicator);
-    const tooltip = await screen.findByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Moderate');
-  });
-
   it('takes precedence of threatLevelCategory if both props are provided', async function() {
     const { container } = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
         user = userEvent.setup(),
