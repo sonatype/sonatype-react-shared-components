@@ -149,14 +149,16 @@ describe('NxTabs', function() {
     const user = userEvent.setup();
     const onTabSelect = jest.fn();
 
-    const { getAllByRole } = render(
-      <NxTabs activeTab={0} onTabSelect={onTabSelect}>
+    const { getAllByRole } = quickRender({
+      activeTab: 0,
+      onTabSelect,
+      children: (
         <NxTabList>
           <NxTab>Tab 0</NxTab>
           <NxTab>Tab 1</NxTab>
         </NxTabList>
-      </NxTabs>
-    );
+      )
+    });
 
     const firstTab = getAllByRole('tab')[0];
 
