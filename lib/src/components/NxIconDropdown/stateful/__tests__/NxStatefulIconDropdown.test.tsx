@@ -231,7 +231,7 @@ describe('NxStatefulIconDropdown', () => {
 
         expect(document.activeElement).toBe(menuBtn);
 
-        await act(async () => { await user.click(toggleBtn); });
+        await user.keyboard('[Escape]');
 
         expect(document.activeElement).toBe(toggleBtn);
       });
