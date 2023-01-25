@@ -12,7 +12,7 @@ import useToggle from '../../../util/useToggle';
 
 export { Props } from './types';
 
-export default function NxStatefulFilterDropdown(props: Props) {
+export default function NxStatefulFilterDropdown<T extends string | number = string>(props: Props<T>) {
   const [isOpen, onToggleCollapse] = useToggle(false);
 
   return <NxFilterDropdown { ...{ isOpen, onToggleCollapse } } {...props} />;
