@@ -23,6 +23,7 @@ describe('NxTag', function() {
   describe('Basic NxTag', function() {
     const selector = '#nx-tag-example .gallery-example-live',
         tagSelector = `${selector} .nx-selectable-color--pink`,
+        indigoTagSelector = `${selector} .nx-selectable-color--indigo:first-child`,
 
         // expected distance from top of element to the top of its tooltip
         tooltipHeightOffset = 21;
@@ -40,6 +41,8 @@ describe('NxTag', function() {
 
       await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
     });
+
+    it('renders a default, Indigo colored NxTag if no color prop is passed', simpleTest(indigoTagSelector));
   });
 
   describe('NxSelectableTag', function() {
