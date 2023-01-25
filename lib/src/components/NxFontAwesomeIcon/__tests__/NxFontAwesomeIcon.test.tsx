@@ -12,12 +12,12 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon';
 
 describe('NxFontAwesomeIcon', function() {
   const minimalProps = { icon: faCheck },
-    renderEl = rtlRenderElement(NxFontAwesomeIcon, minimalProps);
+      renderEl = rtlRenderElement(NxFontAwesomeIcon, minimalProps);
 
   it('renders a FontAwesomeIcon', function () {
     const component = renderEl();
 
-    expect(component).toHaveAttribute('role','img');
+    expect(component).toHaveAttribute('role', 'img');
     expect(component).toHaveAttribute('data-icon', 'check');
   });
 
@@ -32,7 +32,7 @@ describe('NxFontAwesomeIcon', function() {
 
   it('merges any passed in className to rendered SVG', function() {
     const component = renderEl()!,
-      componentWithClassName = renderEl({ className: 'foo' })!;
+        componentWithClassName = renderEl({ className: 'foo' })!;
 
     expect(componentWithClassName).toHaveClass('foo');
 
