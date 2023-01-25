@@ -4,93 +4,543 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {getShallowComponent} from '../../../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-import NxStatefulCollapsibleMultiSelect, {Props, Option} from '../NxStatefulCollapsibleMultiSelect';
+import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../../../__testutils__/rtlUtils';
+import { screen, createEvent, fireEvent, within } from '@testing-library/react';
+
+import NxStatefulCollapsibleMultiSelect, { Props } from '../NxStatefulCollapsibleMultiSelect';
 import { NxStatefulTreeViewMultiSelect } from '../../../../../index';
 
 describe('NxStatefulCollapsibleMultiSelect', function() {
-  const requiredProps: Props = {
-    options: [
-      {id: 'foo', name: 'Foo'},
-      {id: 'bar', name: 'Bar'}
-    ],
-    children: 'Foobar',
-    name: 'foobar',
-    onChange: () => {}
-  };
-
-  const getShallow = getShallowComponent<Props>(NxStatefulCollapsibleMultiSelect, requiredProps);
+  const minimalProps: Props = {
+        options: [
+          {id: 'foo', name: 'Foo'},
+          {id: 'boo', name: 'Boo'}
+        ],
+        children: 'Foobar',
+        name: 'foobar',
+        onChange: () => {}
+      },
+      quickRender = rtlRender(NxStatefulCollapsibleMultiSelect, minimalProps),
+      renderEl = rtlRenderElement(NxStatefulCollapsibleMultiSelect, minimalProps);
 
   it('is aliased as NxStatefulTreeViewMultiSelect', function() {
     expect(NxStatefulCollapsibleMultiSelect).toBe(NxStatefulTreeViewMultiSelect);
   });
 
-  it('properly renders component using only required props', function() {
-    const shallowRender = getShallow();
+  it('renders a top-level element with a group role', function() {
+    const view = quickRender();
 
-    expect(shallowRender).toHaveDisplayName('NxCollapsibleMultiSelect');
-    expect(shallowRender).toHaveProp('name', 'foobar');
-    expect(shallowRender).toHaveProp('children', 'Foobar');
-    expect(shallowRender).toHaveProp('options', [
-      {id: 'foo', name: 'Foo'},
-      {id: 'bar', name: 'Bar'}
-    ]);
+    expect(view.getByRole('group')).toBe(view.container.firstChild);
   });
 
-  it('passes props to NxCollapsibleMultiSelect', function() {
-    const optionalProps = {
-      id: 'someid',
-      isOpen: true,
-      disabled: true,
-      disabledTooltip: 'test disabled tooltip',
-      optionTooltipGenerator: (option: Option) => option.name,
-      tooltipModifierClass: 'tooltip-test-class',
-      filterPlaceholder: 'test filter placeholder',
+  it('sets the specified id', function() {
+    expect(renderEl({ id: 'foo' })).toHaveAttribute('id', 'foo');
+  });
+
+  describe('exceptions', function() {
+    beforeEach(function() {
+      // prevent RTL logging thrown exceptions
+      jest.spyOn(console, 'error').mockImplementation(() => {});
+    });
+
+    it('throws an error if a selectedId is supplied that is not part of the options', function() {
+      const expectedErr = 'You are attempting to select "ufo", but it is not part of the available options';
+
+      expect(() => quickRender({ selectedIds: new Set() })).not.toThrow();
+      expect(() => {
+        quickRender({ selectedIds: new Set(['ufo']) });
+      }).toThrow(expectedErr);
+    });
+  });
+
+  describe('trigger', function() {
+    const renderAndGetTrigger = (props?: Partial<Props>) => quickRender(props).getByRole('button');
+
+    it('is a button', function() {
+      expect(renderAndGetTrigger()).toBeInTheDocument();
+    });
+
+    it('has type="button"', function() {
+      expect(renderAndGetTrigger()).toHaveAttribute('type', 'button');
+    });
+
+    it('references the children items using aria-controls', function() {
+      const view = quickRender(),
+          trigger = view.getByRole('button'),
+          childrenElId = trigger.getAttribute('aria-controls')!;
+
+      expect(childrenElId).toBeDefined();
+
+      const childrenEl = document.getElementById(childrenElId)!,
+          childEl = view.getByRole('menu');
+
+      expect(view.container).toContainElement(childrenEl);
+      expect(childrenEl).toContainElement(childEl);
+    });
+
+    it('sets aria-expanded iff isOpen prop is true and there are options', function() {
+      expect(renderAndGetTrigger()).toHaveAttribute('aria-expanded', 'false');
+      expect(renderAndGetTrigger({ options: [] })).toHaveAttribute('aria-expanded', 'false');
+      expect(renderAndGetTrigger({ isOpen: true })).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    it('sets disabled if the disabled prop is true or there are no options', function() {
+      expect(renderAndGetTrigger()).toBeEnabled();
+      expect(renderAndGetTrigger({ disabled: true })).toBeDisabled();
+      expect(renderAndGetTrigger({ disabled: null })).toBeEnabled();
+      expect(renderAndGetTrigger({ disabled: undefined })).toBeEnabled();
+
+      expect(renderAndGetTrigger({ options: [] })).toBeDisabled();
+      expect(renderAndGetTrigger({ options: [], disabled: true })).toBeDisabled();
+      expect(renderAndGetTrigger({ options: [], disabled: null })).toBeDisabled();
+      expect(renderAndGetTrigger({ options: [], disabled: undefined })).toBeDisabled();
+    });
+
+    it('toggle the collapsible items open and closed when clicked if there are options', async function() {
+      const user = userEvent.setup(),
+          optionsTrigger = renderAndGetTrigger(),
+          noOptionsTrigger = renderAndGetTrigger({ options: [] });
+
+      expect(noOptionsTrigger).toHaveAttribute('aria-expanded', 'false');
+      await user.click(noOptionsTrigger);
+      expect(noOptionsTrigger).toHaveAttribute('aria-expanded', 'false');
+
+      expect(optionsTrigger).toHaveAttribute('aria-expanded', 'false');
+      await user.click(optionsTrigger);
+      expect(optionsTrigger).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    describe('tooltip', function() {
+      describe('when component is disabled due to no options', function() {
+        it('has a default text constructed with the name prop', async function() {
+          const trigger = renderAndGetTrigger({ options: [] });
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          fireEvent.mouseOver(trigger);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('There are no foobar options');
+        });
+
+        it('has a customized text as specified by disabledTooltip prop', async function() {
+          const trigger = renderAndGetTrigger({
+            options: [],
+            disabledTooltip: 'No options'
+          });
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          fireEvent.mouseOver(trigger);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('No options');
+        });
+
+        it('has specified classname when tooltipModifierClass prop is provided', async function() {
+          const trigger = renderAndGetTrigger({
+            options: [],
+            tooltipModifierClass: 'tooltipClass'
+          });
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          fireEvent.mouseOver(trigger);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('There are no foobar options');
+          expect(tooltip.querySelector('.tooltipClass')).toBeInTheDocument();
+        });
+      });
+
+      describe('when component is disabled explicitly', function() {
+        it('has a customized text as specified by disabledTooltip prop', async function() {
+          const trigger = renderAndGetTrigger({
+            disabled: true,
+            disabledTooltip: 'No options'
+          });
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          fireEvent.mouseOver(trigger);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('No options');
+        });
+
+        it('has specified classname when tooltipModifierClass prop is provided', async function() {
+          const trigger = renderAndGetTrigger({
+            disabled: true,
+            disabledTooltip: 'No options',
+            tooltipModifierClass: 'tooltipClass'
+          });
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          fireEvent.mouseOver(trigger);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('No options');
+          expect(tooltip.querySelector('.tooltipClass')).toBeInTheDocument();
+        });
+
+        it('does not show when disabledTooltip prop is not provided', async function() {
+          const trigger = renderAndGetTrigger({ disabled: true });
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          fireEvent.mouseOver(trigger);
+          await runTimers();
+
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+        });
+      });
+    });
+  });
+
+  describe('filter', function() {
+    const filterView = (props?: Partial<Props>) => quickRender({
+      ...props,
       filterThreshold: 1
-    };
-
-    const shallowRender = getShallow(optionalProps);
-    expect(shallowRender).toHaveDisplayName('NxCollapsibleMultiSelect');
-    expect(shallowRender).toHaveProp(optionalProps);
-  });
-
-  it('renders collapsed items by default', function() {
-    expect(getShallow()).toHaveProp('isOpen', false);
-  });
-
-  it('expands items when toggled', function() {
-    const shallowRender = getShallow();
-    expect(getShallow()).toHaveProp('isOpen', false);
-    shallowRender.simulate('toggleCollapse');
-    expect(shallowRender).toHaveProp('isOpen', true);
-  });
-
-  it('collapses items when toggled', function() {
-    const shallowRender = getShallow({
-      isOpen: true
-    });
-    expect(shallowRender).toHaveProp('isOpen', true);
-    shallowRender.simulate('toggleCollapse');
-    expect(shallowRender).toHaveProp('isOpen', false);
-  });
-
-  it('filters options', function () {
-    const shallowRender = getShallow();
-    expect(shallowRender).toHaveProp({
-      filter: '',
-      filteredOptions: [
-        {id: 'foo', name: 'Foo'},
-        {id: 'bar', name: 'Bar'}
-      ]
     });
 
-    shallowRender.simulate('filterChange', 'fo');
-    expect(shallowRender).toHaveProp({
-      filter: 'fo',
-      filteredOptions: [
-        {id: 'foo', name: 'Foo'}
-      ]
+    it('renders an input with type="text" iff when the number of options ' +
+      'is greater than filterThreshold', function() {
+      expect(quickRender().queryByRole('textbox')).not.toBeInTheDocument();
+      expect(filterView().getByRole('textbox')).toHaveAttribute('type', 'text');
+    });
+
+    it('sets the filter input placeholder as specified by filterPlaceholder, ' +
+      'default is "filter"', function() {
+      const viewWithPlaceholder = filterView({ filterPlaceholder: 'filter cats' });
+
+      expect(filterView().getByRole('textbox')).toHaveAttribute('placeholder', 'filter');
+      expect(viewWithPlaceholder.getByRole('textbox')).toHaveAttribute('placeholder', 'filter cats');
+    });
+
+    it('renders a button with an accessible name of "Clear filter"', async function() {
+      const view = filterView();
+
+      await runTimers();
+      const clearBtn = view.getByRole('button', { name: 'Clear filter' });
+
+      expect(clearBtn).toBeInTheDocument();
+      expect(clearBtn).toHaveAccessibleName('Clear filter');
+    });
+
+    it('clears the input when the clear button is clicked', async function() {
+      const user = userEvent.setup(),
+          view = filterView(),
+          inputEl = view.getByRole('textbox');
+
+      await runTimers();
+
+      const clearBtn = view.getByRole('button', { name: 'Clear filter' });
+
+      await user.click(clearBtn);
+      expect(inputEl).toHaveValue('');
+    });
+
+    it('clears the input when Escape key is pressed', async function() {
+      const user = userEvent.setup(),
+          view = filterView(),
+          inputEl = view.getByRole('textbox');
+
+      await user.type(inputEl, 'f');
+
+      expect(inputEl).toHaveValue('f');
+
+      await user.keyboard('[Escape]');
+
+      expect(inputEl).toHaveValue('');
+    });
+
+    it('calls preventDefault on the event when Escape key is pressed and the value is not empty', async function() {
+      const user = userEvent.setup(),
+          { getByRole } = filterView(),
+          inputEl = getByRole('textbox'),
+          keyEvent = createEvent.keyDown(inputEl, { key: 'Escape' });
+
+      await user.type(inputEl, 'f');
+      expect(inputEl).toHaveValue('f');
+
+      fireEvent(inputEl, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(true);
+    });
+
+    it('does not call preventDefault on the event when Escape key is pressed and the value is empty', () => {
+      const { getByRole } = filterView(),
+          inputEl = getByRole('textbox'),
+          keyEvent = createEvent.keyDown(inputEl, { key: 'Escape' });
+
+      expect(inputEl).toHaveValue('');
+
+      inputEl.focus();
+      fireEvent(inputEl, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(false);
+    });
+  });
+
+  describe('collapsible items', function() {
+    it('renders an element with menu role containing the options with menuitemcheckbox role', function() {
+      const view = quickRender(),
+          childrenEl = view.getByRole('menu'),
+          childEl = within(childrenEl).getAllByRole('menuitemcheckbox');
+
+      expect(childrenEl).toBeInTheDocument();
+      expect(childEl).toHaveLength(3); // includes the toggle all option
+    });
+
+    describe('options', function () {
+      it('has labeled text as specified in name of the option', function () {
+        const view = quickRender(),
+            options = view.getAllByRole('menuitemcheckbox');
+
+        expect(options).toHaveLength(3);
+        expect(options[0]).toHaveAccessibleName('all/none');
+        expect(options[1]).toHaveAccessibleName('Foo');
+        expect(options[2]).toHaveAccessibleName('Boo');
+      });
+
+      it('renders checked option when selected', function () {
+        const view = quickRender({
+              selectedIds: new Set(['foo'])
+            }),
+            options = view.getAllByRole('menuitemcheckbox');
+
+        expect(options[0]).not.toBeChecked();
+        expect(options[1]).toBeChecked();
+        expect(options[2]).not.toBeChecked();
+      });
+
+      it('renders all unchecked options if selectedIds is not provided', function () {
+        const view = quickRender(),
+            options = view.getAllByRole('menuitemcheckbox');
+
+        expect(options[0]).not.toBeChecked();
+        expect(options[1]).not.toBeChecked();
+        expect(options[2]).not.toBeChecked();
+      });
+
+      it('calls component\'s onChange callback when an option is toggled', async function() {
+        const user = userEvent.setup(),
+            onChange = jest.fn(),
+            view = quickRender({ onChange }),
+            options = view.getAllByRole('menuitemcheckbox');
+
+        expect(onChange).not.toHaveBeenCalled();
+
+        await user.click(options[1]);
+
+        expect(onChange).toHaveBeenCalledWith(new Set(['foo']), 'foo');
+
+        await user.click(options[2]);
+
+        expect(onChange).toHaveBeenCalledWith(new Set(['boo']), 'boo');
+
+        await user.click(options[1]);
+
+        expect(onChange).toHaveBeenCalledWith(new Set(['foo']), 'foo');
+      });
+
+      describe('tooltip', function() {
+        it('sets customized text if optionTooltipGenerator is defined', async function() {
+          const user = userEvent.setup(),
+              optionTooltipGenerator = jest.fn().mockReturnValue('customized-tooltip'),
+              view = quickRender({ optionTooltipGenerator }),
+              options = view.getAllByRole('menuitemcheckbox');
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          await user.hover(options[1]);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('customized-tooltip');
+        });
+
+        it('has specified classname when tooltipModifierClass prop is provided', async function() {
+          const user = userEvent.setup(),
+              optionTooltipGenerator = jest.fn().mockReturnValue('customized-tooltip'),
+              view = quickRender({
+                optionTooltipGenerator,
+                tooltipModifierClass: 'tooltipClass'
+              }),
+              options = view.getAllByRole('menuitemcheckbox');
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          await user.hover(options[1]);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('customized-tooltip');
+          expect(tooltip.querySelector('.tooltipClass')).toBeInTheDocument();
+        });
+      });
+    });
+
+    describe('toggle all option', function () {
+      it('renders unchecked toggle all option if not all options are selected', function () {
+        const view = quickRender({
+              selectedIds: new Set(['foo'])
+            }),
+            toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
+
+        expect(toggleAllOption).not.toBeChecked();
+      });
+
+      it('renders checked toggle all option if all options are selected', function () {
+        const view = quickRender({
+              selectedIds: new Set(['foo', 'boo'])
+            }),
+            toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
+
+        expect(toggleAllOption).toBeChecked();
+      });
+
+      it('selects all options when no options are selected', async function() {
+        const user = userEvent.setup(),
+            onChange = jest.fn(),
+            view = quickRender({ onChange }),
+            toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
+
+        expect(onChange).not.toHaveBeenCalled();
+
+        await user.click(toggleAllOption);
+
+        expect(onChange).toHaveBeenCalledWith(new Set(['foo', 'boo']));
+      });
+
+      it('selects all options when not all options are selected', async function() {
+        const user = userEvent.setup(),
+            onChange = jest.fn(),
+            view = quickRender({
+              onChange,
+              selectedIds: new Set(['foo'])
+            }),
+            toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
+
+        expect(onChange).not.toHaveBeenCalled();
+
+        await user.click(toggleAllOption);
+
+        expect(onChange).toHaveBeenCalledWith(new Set(['foo', 'boo']));
+      });
+
+      it('un-selects all options when all options are selected', async function() {
+        const user = userEvent.setup(),
+            onChange = jest.fn(),
+            view = quickRender({
+              onChange,
+              selectedIds: new Set(['foo', 'boo'])
+            }),
+            toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
+
+        expect(onChange).not.toHaveBeenCalled();
+
+        await user.click(toggleAllOption);
+
+        expect(onChange).toHaveBeenCalledWith(new Set([]));
+      });
+
+      describe('when options are filtered', function () {
+        it('renders unchecked toggle all option if not all filtered options are selected', async function () {
+          const user = userEvent.setup(),
+              view = quickRender({ filterThreshold: 1 }),
+              toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' }),
+              inputEl = view.getByRole('textbox');
+
+          await user.type(inputEl, 'f');
+
+          expect(toggleAllOption).not.toBeChecked();
+        });
+
+        it('renders checked toggle all option if all filtered options are selected', async function () {
+          const user = userEvent.setup(),
+              view = quickRender({
+                filterThreshold: 1,
+                selectedIds: new Set(['foo', 'boo']) }),
+              toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' }),
+              inputEl = view.getByRole('textbox');
+
+          await user.type(inputEl, 'o');
+
+          expect(toggleAllOption).toBeChecked();
+        });
+
+        it('renders nothing if no options are displayed due to filter', async function () {
+          const user = userEvent.setup(),
+              view = quickRender({
+                filterThreshold: 1
+              }),
+              inputEl = view.getByRole('textbox');
+
+          await user.type(inputEl, 'z');
+
+          expect(view.queryAllByRole('menuitemcheckbox')).toHaveLength(0);
+        });
+
+        it('selects all filtered options in addition to already selected options', async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({
+                onChange,
+                filterThreshold: 1,
+                selectedIds: new Set(['foo'])
+              }),
+              inputEl = view.getByRole('textbox'),
+              toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await user.type(inputEl, 'b');
+          await user.click(toggleAllOption);
+
+          expect(onChange).toHaveBeenCalledWith(new Set(['foo', 'boo']));
+        });
+
+        it('unselected only filtered options', async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({
+                onChange,
+                filterThreshold: 1,
+                selectedIds: new Set(['foo', 'boo'])
+              }),
+              inputEl = view.getByRole('textbox'),
+              toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await user.type(inputEl, 'f');
+          await user.click(toggleAllOption);
+
+          expect(onChange).toHaveBeenCalledWith(new Set(['boo']));
+        });
+      });
     });
   });
 });
