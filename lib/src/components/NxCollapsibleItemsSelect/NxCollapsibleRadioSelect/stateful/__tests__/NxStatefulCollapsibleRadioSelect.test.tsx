@@ -4,96 +4,510 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {getShallowComponent} from '../../../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-import NxStatefulCollapsibleRadioSelect, {Props, Option} from '../NxStatefulCollapsibleRadioSelect';
+
+import React from 'react';
+import { fireEvent, screen, createEvent, within } from '@testing-library/react';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../../../__testutils__/rtlUtils';
+import NxStatefulCollapsibleRadioSelect, { Props } from '../NxStatefulCollapsibleRadioSelect';
 import { NxStatefulTreeViewRadioSelect } from '../../../../../index';
 
 describe('NxStatefulCollapsibleRadioSelect', function() {
-  const requiredProps: Props = {
-    options: [
-      {id: 'foo', name: 'Foo'},
-      {id: 'bar', name: 'Bar'},
-      {id: null, name: 'Null'}
-    ],
-    children: 'Foobar',
-    name: 'foobar',
-    onChange: () => {}
-  };
+  const minimalProps: Props = {
+        options: [
+          {id: 'foo', name: 'Foo'},
+          {id: 'bar', name: 'Bar'},
+          {id: null, name: 'Null'}
+        ],
+        children: <span data-testid ="trigger-content">Trigger Content</span>,
+        name: 'foobar',
+        onChange: () => {}
+      },
+      quickRender = rtlRender(NxStatefulCollapsibleRadioSelect, minimalProps),
+      renderEl = rtlRenderElement(NxStatefulCollapsibleRadioSelect, minimalProps);
 
-  const getShallow = getShallowComponent<Props>(NxStatefulCollapsibleRadioSelect, requiredProps);
-
-  it('is aliased as NxStatefulTreeViewRadioSelect', function() {
+  it('is aliased as NxTreeViewRadioSelect', function() {
     expect(NxStatefulCollapsibleRadioSelect).toBe(NxStatefulTreeViewRadioSelect);
   });
 
-  it('properly renders component using only required props', function() {
-    const shallowRender = getShallow();
+  it('renders a top-level element with a group role', function() {
+    const view = quickRender();
 
-    expect(shallowRender).toHaveDisplayName('NxCollapsibleRadioSelect');
-    expect(shallowRender).toHaveProp('name', 'foobar');
-    expect(shallowRender).toHaveProp('children', 'Foobar');
-    expect(shallowRender).toHaveProp('options', [
-      {id: 'foo', name: 'Foo'},
-      {id: 'bar', name: 'Bar'},
-      {id: null, name: 'Null'}
-    ]);
+    expect(view.getByRole('group')).toBe(view.container.firstChild);
   });
 
-  it('passes props to NxCollapsibleRadioSelect', function() {
-    const optionalProps = {
-      id: 'someid',
-      isOpen: true,
-      disabled: true,
-      disabledTooltip: 'test disabled tooltip',
-      optionTooltipGenerator: (option: Option) => option.name,
-      tooltipModifierClass: 'tooltip-test-class',
-      filterPlaceholder: 'test filter placeholder',
-      filterThreshold: 1
-    };
-
-    const shallowRender = getShallow(optionalProps);
-    expect(shallowRender).toHaveDisplayName('NxCollapsibleRadioSelect');
-    expect(shallowRender).toHaveProp(optionalProps);
+  it('sets the specified id', function() {
+    expect(renderEl({ id: 'foo' })).toHaveAttribute('id', 'foo');
   });
 
-  it('renders collapsed CollapsibleItems by default', function() {
-    expect(getShallow()).toHaveProp('isOpen', false);
-  });
+  describe('trigger', function() {
+    const renderAndGetTrigger = (props?: Partial<Props>) => quickRender(props).getByRole('button');
 
-  it('expands CollapsibleItems when toggled', function() {
-    const shallowRender = getShallow();
-    expect(getShallow()).toHaveProp('isOpen', false);
-    shallowRender.simulate('toggleCollapse');
-    expect(shallowRender).toHaveProp('isOpen', true);
-  });
-
-  it('collapses CollapsibleItems when toggled', function() {
-    const shallowRender = getShallow({
-      isOpen: true
-    });
-    expect(shallowRender).toHaveProp('isOpen', true);
-    shallowRender.simulate('toggleCollapse');
-    expect(shallowRender).toHaveProp('isOpen', false);
-  });
-
-  it('filters options', function () {
-    const shallowRender = getShallow();
-    expect(shallowRender).toHaveProp({
-      filter: '',
-      filteredOptions: [
-        {id: 'foo', name: 'Foo'},
-        {id: 'bar', name: 'Bar'},
-        {id: null, name: 'Null'}
-      ]
+    it('is a button', function() {
+      expect(renderAndGetTrigger()).toBeInTheDocument();
     });
 
-    shallowRender.simulate('filterChange', 'fo');
-    expect(shallowRender).toHaveProp({
-      filter: 'fo',
-      filteredOptions: [
-        {id: 'foo', name: 'Foo'}
-      ]
+    it('has type="button"', function() {
+      expect(renderAndGetTrigger()).toHaveAttribute('type', 'button');
+    });
+
+    it('references the children items using aria-controls', function() {
+      const view = quickRender(),
+          trigger = view.getByRole('button'),
+          childrenElId = trigger.getAttribute('aria-controls')!;
+
+      expect(childrenElId).toBeDefined();
+
+      const childrenEl = document.getElementById(childrenElId)!,
+          childEl = screen.getByText('Foo');
+
+      expect(view.container).toContainElement(childrenEl);
+      expect(childrenEl).toContainElement(childEl);
+    });
+
+    it('sets aria-expanded iff both the isOpen prop is true and options is populated', function() {
+      expect(renderAndGetTrigger({ options: [] })).toHaveAttribute('aria-expanded', 'false');
+      expect(renderAndGetTrigger({ options: [], isOpen: true })).toHaveAttribute('aria-expanded', 'false');
+      expect(renderAndGetTrigger({ options: [], isOpen: false })).toHaveAttribute('aria-expanded', 'false');
+      expect(renderAndGetTrigger()).toHaveAttribute('aria-expanded', 'false');
+      expect(renderAndGetTrigger({ isOpen: false })).toHaveAttribute('aria-expanded', 'false');
+      expect(renderAndGetTrigger({ isOpen: true })).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    it('sets disabled if the disabled prop is set to true or options is an empty array', function() {
+      expect(renderAndGetTrigger()).toBeEnabled();
+      expect(renderAndGetTrigger({ disabled: false })).toBeEnabled();
+      expect(renderAndGetTrigger({ disabled: null })).toBeEnabled();
+      expect(renderAndGetTrigger({ disabled: true })).toBeDisabled();
+
+      expect(renderAndGetTrigger({ options: [] })).toBeDisabled();
+      expect(renderAndGetTrigger({ options: [], disabled: true })).toBeDisabled();
+      expect(renderAndGetTrigger({ options: [], disabled: false })).toBeDisabled();
+      expect(renderAndGetTrigger({ options: [], disabled: null })).toBeDisabled();
+    });
+
+    it('toggles the collapsible items open and closed when clicked if there are options', async function() {
+      const user = userEvent.setup(),
+          noOptionsTrigger = renderAndGetTrigger({ options: [] }),
+          optionsTrigger = renderAndGetTrigger();
+
+      expect(noOptionsTrigger).toHaveAttribute('aria-expanded', 'false');
+      await user.click(noOptionsTrigger);
+      expect(noOptionsTrigger).toHaveAttribute('aria-expanded', 'false');
+
+      expect(optionsTrigger).toHaveAttribute('aria-expanded', 'false');
+      await user.click(optionsTrigger);
+      expect(optionsTrigger).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    it('does not open collapsible items when clicked and the element is disabled', async function() {
+      const user = userEvent.setup(),
+          trigger = renderAndGetTrigger({ disabled: true });
+
+      expect(trigger).toHaveAttribute('aria-expanded', 'false');
+      await user.click(trigger);
+      expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    it('renders children prop into trigger', function() {
+      const trigger = renderAndGetTrigger(),
+          triggerContent = screen.getByTestId('trigger-content');
+
+      expect(trigger).toContainElement(triggerContent);
+    });
+
+    describe('disabledTooltip', function() {
+      it('render a default tooltip when disabledTooltip is not provided and there are no options',
+          async function() {
+            const trigger = renderAndGetTrigger({ options: [], name: 'Example Name'});
+
+            fireEvent.mouseOver(trigger);
+            await runTimers();
+            expect(screen.getByRole('tooltip')).toBeInTheDocument();
+            expect(screen.getByRole('tooltip')).toHaveTextContent('There are no Example Name options');
+          });
+
+      it('renders a custom tooltip as specified by the disabledTooltip prop when there are no options',
+          async function() {
+            const trigger = renderAndGetTrigger({ options: [], disabledTooltip: 'tip'});
+
+            fireEvent.mouseOver(trigger);
+            await runTimers();
+            expect(screen.getByRole('tooltip')).toBeInTheDocument();
+            expect(screen.getByRole('tooltip')).toHaveTextContent('tip');
+          });
+
+      it('renders a custom tooltip as specified by the disabledTooltip prop when the element is disabled',
+          async function() {
+            const trigger = renderAndGetTrigger({ disabled: true, disabledTooltip: 'tip' });
+
+            fireEvent.mouseOver(trigger);
+            await runTimers();
+            expect(screen.getByRole('tooltip')).toBeInTheDocument();
+            expect(screen.getByRole('tooltip')).toHaveTextContent('tip');
+          });
+
+      it('doesn\'t render a tooltip when the component is disabled and no disabledTooltip prop is provided',
+          async function() {
+            const trigger = renderAndGetTrigger({ disabled: true });
+
+            fireEvent.mouseOver(trigger);
+            await runTimers();
+            expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+          });
+
+      it('doesn\'t render a tooltip when disabledTooltip prop is provided but the element is not disabled',
+          async function() {
+            const trigger = renderAndGetTrigger({ disabledTooltip: 'tip' });
+
+            fireEvent.mouseOver(trigger);
+            await runTimers();
+            expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+          });
+
+      it('has a specified classname when the tooltipModifierClass prop is provided', async function() {
+        const trigger = renderAndGetTrigger({
+          disabled: true,
+          disabledTooltip: 'tip',
+          tooltipModifierClass: 'customClass'
+        });
+
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        fireEvent.mouseOver(trigger);
+        await runTimers();
+
+        const tooltip = screen.getByRole('tooltip');
+        expect(tooltip.querySelector('.customClass')).toBeInTheDocument();
+      });
+    });
+  });
+
+  it('calls onChange with options\'s id when an option is toggled', async function() {
+    const user = userEvent.setup(),
+        onChange = jest.fn(),
+        view = quickRender({ onChange }),
+        radios = view.getAllByRole('menuitemradio');
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    await user.click(radios[0]);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith('foo');
+
+    await user.click(radios[1]);
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenCalledWith('bar');
+
+    await user.click(radios[2]);
+    expect(onChange).toHaveBeenCalledTimes(3);
+    expect(onChange).toHaveBeenCalledWith(null);
+  });
+
+  it('doesn\'t call onChange when options are disabled', async function() {
+    const user = userEvent.setup(),
+        onChange = jest.fn(),
+        view = quickRender({ onChange, disabled: true }),
+        radios = view.getAllByRole('menuitemradio');
+
+    expect(onChange).not.toHaveBeenCalled();
+    expect(radios[0]).toBeDisabled();
+
+    await user.click(radios[0]);
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  describe('collapsible items', function() {
+    it('renders options with role=menuitemradio in an element with role=menu', function() {
+      const view = quickRender(),
+          menu = view.getByRole('menu'),
+          options = within(menu).getAllByRole('menuitemradio');
+
+      expect(menu).toBeInTheDocument();
+      expect(options.length).toBe(3);
+    });
+
+    it('renders text content according to option\'s name prop', function() {
+      const options = quickRender().getByRole('menu').children;
+
+      expect(options[0]).toHaveTextContent('Foo');
+      expect(options[1]).toHaveTextContent('Bar');
+      expect(options[2]).toHaveTextContent('Null');
+    });
+
+    it('renders accessible name according to option\'s name prop', function() {
+      const options = quickRender().getAllByRole('menuitemradio');
+
+      expect(options[0]).toHaveAccessibleName('Foo');
+      expect(options[1]).toHaveAccessibleName('Bar');
+      expect(options[2]).toHaveAccessibleName('Null');
+    });
+
+    it('renders an unchecked radio if option is not selected', function() {
+      expect(quickRender({ selectedId: 'bar' }).getAllByRole('menuitemradio')[0]).not.toBeChecked();
+    });
+
+    it('renders a checked radio if option is selected', function() {
+      expect(quickRender({ selectedId: 'bar' }).getAllByRole('menuitemradio')[1]).toBeChecked();
+    });
+
+    it('renders all unchecked radios if no selectedId is provided', function() {
+      const options = quickRender().getAllByRole('menuitemradio');
+
+      expect(options[0]).not.toBeChecked();
+      expect(options[1]).not.toBeChecked();
+      expect(options[2]).not.toBeChecked();
+    });
+
+    it('render all radios as disabled if disabled prop is true', function() {
+      const view = quickRender({ disabled: true }),
+          options = view.getAllByRole('menuitemradio');
+
+      expect(options[0]).toBeDisabled();
+      expect(options[1]).toBeDisabled();
+      expect(options[2]).toBeDisabled();
+    });
+
+    describe('tooltip', function() {
+      it('adds a tooltip for each option when optionTooltipGenerator prop is provided', async function() {
+        const user = userEvent.setup(),
+            view = quickRender({ optionTooltipGenerator: option => option.name }),
+            options = view.getByRole('menu').children;
+
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(options[0]);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toBeInTheDocument();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Foo');
+
+        await user.hover(options[1]);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toBeInTheDocument();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Bar');
+
+        await user.hover(options[2]);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toBeInTheDocument();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Null');
+      });
+
+      it('passes the option to optionTooltipGenerator each time it is called', async function() {
+        const optionTooltipGenerator = jest.fn();
+        quickRender({ optionTooltipGenerator });
+
+        expect(optionTooltipGenerator).toHaveBeenCalledTimes(3);
+        expect(optionTooltipGenerator).toHaveBeenNthCalledWith(1, minimalProps.options[0]);
+        expect(optionTooltipGenerator).toHaveBeenNthCalledWith(2, minimalProps.options[1]);
+        expect(optionTooltipGenerator).toHaveBeenNthCalledWith(3, minimalProps.options[2]);
+      });
+
+      it('has a specified classname when the tooltipModifierClass prop is provided', async function() {
+        const user = userEvent.setup(),
+            optionTooltipGenerator = jest.fn().mockReturnValue('tip'),
+            view = quickRender({ optionTooltipGenerator, tooltipModifierClass: 'customClass' }),
+            options = view.getAllByRole('menuitemradio');
+
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(options[0]);
+        await runTimers();
+
+        const tooltip = screen.getByRole('tooltip');
+        expect(tooltip.querySelector('.customClass')).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('filtering', function() {
+    const filterProps: Props = {
+          ...minimalProps,
+          options: [
+            {id: 'foo', name: 'Foo'},
+            {id: 'bar', name: 'Bar'},
+            {id: 'baz', name: 'Baz'},
+            {id: 'boo', name: 'Boo'}
+          ],
+          filterThreshold: 2
+        },
+        quickFilterRender = rtlRender(NxStatefulCollapsibleRadioSelect, filterProps);
+
+    it('renders an input child with the textbox role iff filterThreshold is greater than', function() {
+      const view = quickFilterRender(),
+          viewNoInput = quickFilterRender({ filterThreshold: 5 });
+
+      expect(view.getByRole('textbox')).toBeInTheDocument();
+      expect(view.getByRole('textbox').tagName).toBe('INPUT');
+
+      expect(viewNoInput.queryByRole('textbox')).not.toBeInTheDocument();
+
+    });
+
+    it('renders a button with an accessible name of "Clear filter"', async function() {
+      const view = quickFilterRender();
+
+      await runTimers();
+      const clearBtn = view.getByRole('button', { name: 'Clear filter' });
+
+      expect(clearBtn).toBeInTheDocument();
+      expect(clearBtn).toHaveAccessibleName('Clear filter');
+    });
+
+    it('sets the aria-controls on the input to the element id', function() {
+      const view = quickFilterRender(),
+          id = view.getByRole('group').getAttribute('id'),
+          inputEl = view.getByRole('textbox');
+
+      expect(inputEl).toHaveAttribute('aria-controls', id);
+    });
+
+    it('sets the default value of the input to an empty string', function() {
+      expect(quickFilterRender().getByRole('textbox')).toHaveValue('');
+    });
+
+    it('renders a default placeholder "Filter" unless filterPlaceholder prop is provided', function() {
+      const inputEl = quickFilterRender().getByRole('textbox'),
+          inputElWithPlaceholder = quickFilterRender({ filterPlaceholder: 'placeholder text' }).getByRole('textbox');
+
+      expect(inputEl).toHaveAttribute('placeholder', 'filter');
+      expect(inputElWithPlaceholder).toHaveAttribute('placeholder', 'placeholder text');
+    });
+
+    it('clears the input when the Escape key is pressed', async function() {
+      const user = userEvent.setup(),
+          inputEl = quickFilterRender().getByRole('textbox');
+
+      inputEl.focus();
+      await user.keyboard('b');
+      expect(inputEl).toHaveValue('b');
+
+      await user.keyboard('[Escape]');
+      expect(inputEl).toHaveValue('');
+    });
+
+    it('clears the input when clear filter button is clicked', async function() {
+      const user = userEvent.setup(),
+          view = quickFilterRender(),
+          inputEl = view.getByRole('textbox');
+
+      inputEl.focus();
+      await user.keyboard('b');
+      await runTimers();
+      expect(inputEl).toHaveValue('b');
+
+      const clearBtn = view.getByRole('button', { name: 'Clear filter' });
+      await user.click(clearBtn);
+
+      expect(inputEl).toHaveValue('');
+    });
+
+    it('calls preventDefault when the ESC is pressed and filter value is not empty', async function() {
+      const user = userEvent.setup(),
+          inputEl = quickFilterRender().getByRole('textbox'),
+          keyEvent = createEvent.keyDown(inputEl, { key: 'Escape' });
+
+      inputEl.focus();
+      await user.keyboard('b');
+
+      fireEvent(inputEl, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(true);
+    });
+
+    it('doesn\'t call preventDefault when the ESC is pressed and filter value is empty', async function() {
+      const inputEl = quickFilterRender().getByRole('textbox'),
+          keyEvent = createEvent.keyDown(inputEl, { key: 'Escape' });
+
+      inputEl.focus();
+      fireEvent(inputEl, keyEvent);
+
+      expect(keyEvent.defaultPrevented).toBe(false);
+    });
+
+    describe('when options are filtered', function() {
+      it('renders all options if the text input value is an empty string', function() {
+        const view = quickFilterRender(),
+            inputEl = view.getByRole('textbox'),
+            options = view.getByRole('menu').children;
+
+        expect(inputEl).toHaveValue('');
+        expect(options.length).toBe(4);
+
+        expect(options[0]).toHaveTextContent('Foo');
+        expect(options[1]).toHaveTextContent('Bar');
+        expect(options[2]).toHaveTextContent('Baz');
+        expect(options[3]).toHaveTextContent('Boo');
+      });
+
+      it('renders filtered options when the text input value changes, ignoring case sensitivity', async function() {
+        const user = userEvent.setup(),
+            view = quickFilterRender(),
+            inputEl = view.getByRole('textbox'),
+            options = view.getByRole('menu').children;
+
+        expect(options.length).toBe(4);
+
+        inputEl.focus();
+        await user.keyboard('ba');
+
+        expect(options.length).toBe(2);
+        expect(options[0]).toHaveTextContent('Bar');
+        expect(options[1]).toHaveTextContent('Baz');
+
+        await user.keyboard('[Escape]');
+        expect(inputEl).toHaveValue('');
+
+        await user.keyboard('BA');
+
+        expect(options.length).toBe(2);
+        expect(options[0]).toHaveTextContent('Bar');
+        expect(options[1]).toHaveTextContent('Baz');
+      });
+
+      it('renders filtered options that match any part of option\'s text content', async function() {
+        const user = userEvent.setup(),
+            view = quickFilterRender(),
+            inputEl = view.getByRole('textbox'),
+            options = view.getByRole('menu').children;
+
+        expect(options.length).toBe(4);
+
+        inputEl.focus();
+        await user.keyboard('az');
+
+        expect(options.length).toBe(1);
+        expect(options[0]).toHaveTextContent('Baz');
+      });
+
+      it('renders filtered options according to the input\'s trimmed value', async function() {
+        const user = userEvent.setup(),
+            view = quickFilterRender(),
+            inputEl = view.getByRole('textbox'),
+            options = view.getByRole('menu').children;
+
+        expect(options.length).toBe(4);
+
+        inputEl.focus();
+        await user.keyboard('[Space]f');
+
+        expect(options.length).toBe(1);
+        expect(options[0]).toHaveTextContent('Foo');
+      });
+
+      it('renders all options if input\'s value is only spaces', async function() {
+        const user = userEvent.setup(),
+            view = quickFilterRender(),
+            inputEl = view.getByRole('textbox'),
+            options = view.getByRole('menu').children;
+
+        expect(options.length).toBe(4);
+
+        inputEl.focus();
+        await user.keyboard('[Space][Space]');
+        expect(options.length).toBe(4);
+      });
     });
   });
 });
