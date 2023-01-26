@@ -267,6 +267,9 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
 
       const clearBtn = view.getByRole('button', { name: 'Clear filter' });
 
+      await user.type(inputEl, 'f');
+      expect(inputEl).toHaveValue('f');
+
       await user.click(clearBtn);
       expect(inputEl).toHaveValue('');
     });
