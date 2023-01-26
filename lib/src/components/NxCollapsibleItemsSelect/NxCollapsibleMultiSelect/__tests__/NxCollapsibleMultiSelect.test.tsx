@@ -278,7 +278,7 @@ describe('NxCollapsibleMultiSelect', function() {
       expect(onFilterChange).toHaveBeenCalledWith('a', expect.objectContaining({ target: inputEl }));
     });
 
-    it('clears the input when the clear button is clicked', async function() {
+    it('calls onFilterChange with the empty string when the clear button is clicked', async function() {
       const user = userEvent.setup(),
           view = filterView();
 
@@ -291,7 +291,7 @@ describe('NxCollapsibleMultiSelect', function() {
       expect(onFilterChange).toBeCalledTimes(1);
     });
 
-    it('clears the input when Escape key is pressed', async function() {
+    it('calls onFilterChange with the empty string when Escape key is pressed', async function() {
       const user = userEvent.setup(),
           view = filterView(),
           inputEl = view.getByRole('textbox');
