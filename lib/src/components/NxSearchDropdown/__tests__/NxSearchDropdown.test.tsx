@@ -222,24 +222,26 @@ describe('NxSearchDropdown', function() {
     expect(within(dropdown).getByRole('menuitem', { name: 'Two' })).toHaveAttribute('type', 'button');
   });
 
-  //TODO
-  // it('sets an onClick handler on the menu button that fires onSelect with the match object', async function() {
-  //   const onSelect = jest.fn().mockImplementation((_, evt) => { evt.persist(); }),
-  //       matches = [
-  //         { id: '1', displayName: 'One' },
-  //         { id: '2', displayName: 'Two' }
-  //       ],
-  //       user = userEvent.setup(),
-  //       el = quickRender({ matches, onSelect, searchText: 'foo' });
+  it('sets an onClick handler on the menu button that fires onSelect with the match object', async function() {
+    const onSelect = jest.fn().mockImplementation((_, evt) => { evt.persist(); }),
+        matches = [
+          { id: '1', displayName: 'One' },
+          { id: '2', displayName: 'Two' }
+        ],
+        user = userEvent.setup(),
+        el = quickRender({ matches, onSelect, searchText: 'foo' });
 
-  //   expect(onSelect).not.toHaveBeenCalled();
+    expect(onSelect).not.toHaveBeenCalled();
 
-  //   const menuItem = el.getByRole('menuitem', { name: 'Two' });
+    const menuItem = el.getByRole('menuitem', { name: 'Two' });
 
-  //   await user.click(menuItem);
+    await user.click(menuItem);
 
-  //   expect(onSelect).toHaveBeenCalledWith({ id: '2', displayName: 'Two' });
-  // });
+    expect(onSelect).toHaveBeenCalledWith(
+        { id: '2', displayName: 'Two' },
+        expect.objectContaining({ target: menuItem })
+    );
+  });
 
   it('sets the load wrapper contents to an empty message if there are no results', function() {
     const el = quickRender({ searchText: 'foo' });
@@ -253,7 +255,8 @@ describe('NxSearchDropdown', function() {
     expect(el.getByRole('alert')).toHaveTextContent('asdfasdf');
   });
 
-  it('calls onSearch with the current trimmed ', function() {
+  it('calls onSearch with the current trimmed searchText if focus enters the component from elsewhere on the page ' +
+      'while there is an error', function() {
     const onSearch = jest.fn(),
         el = quickRender({ searchText: 'foo ', error: 'bar', onSearch }),
         input = el.getByRole('searchbox');
