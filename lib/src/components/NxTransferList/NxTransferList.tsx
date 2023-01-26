@@ -129,7 +129,7 @@ export default function NxTransferList<T extends string | number = string>(props
   }, [handleOnChangeProp]);
 
   return (
-    <div className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
+    <div role="group" className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
       <NxTransferListHalf<T> label={availableItemsLabel || 'Available Items'}
                              filterValue={availableItemsFilter}
                              onFilterChange={onAvailableItemsFilterChange}

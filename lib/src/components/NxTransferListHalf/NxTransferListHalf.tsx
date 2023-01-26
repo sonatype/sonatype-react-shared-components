@@ -57,7 +57,7 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
       Tooltip = tooltipProps ? NxTooltip : NxOverflowTooltip;
 
   return (
-    <div className={classes}>
+    <div role="group" aria-label={displayName} className={classes}>
       <Tooltip { ...tooltipProps }>
         <label className="nx-transfer-list__select">
           { !!onChangeProp &&
