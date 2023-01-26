@@ -299,6 +299,20 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
 
       expect(keyEvent.defaultPrevented).toBe(false);
     });
+
+    it('filters options when value of text input changed', async function() {
+      const user = userEvent.setup(),
+          view = filterView(),
+          inputEl = view.getByRole('textbox');
+
+      expect(view.getAllByRole('menuitemcheckbox')).toHaveLength(3);
+
+      await user.type(inputEl, 'f');
+      expect(view.getAllByRole('menuitemcheckbox')).toHaveLength(2);
+
+      await user.keyboard('[Escape]');
+      expect(view.getAllByRole('menuitemcheckbox')).toHaveLength(3);
+    });
   });
 
   describe('collapsible items', function() {
