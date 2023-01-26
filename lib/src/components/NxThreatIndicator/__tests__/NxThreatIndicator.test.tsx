@@ -109,10 +109,10 @@ describe('NxThreatIndicator', function() {
       expect(el.queryByRole('img', { hidden: true, queryFallbacks: true })).not.toBeInTheDocument();
     });
 
-    it('should set aria-label to undefined', function() {
+    it('should not have an accessible name', function() {
       const threatIndicator = el.getByRole('presentation', { hidden: true, queryFallbacks: true });
 
-      expect(threatIndicator).not.toHaveAttribute('aria-label');
+      expect(threatIndicator).not.toHaveAccessibleName();
     });
   });
 });
