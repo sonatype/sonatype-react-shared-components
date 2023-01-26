@@ -261,6 +261,23 @@ describe('NxCollapsibleMultiSelect', function() {
       expect(clearBtn).toHaveAccessibleName('Clear filter');
     });
 
+    it('calls onFilterChange with the value when the input\'s onChange event fires', async function() {
+      const user = userEvent.setup(),
+          onFilterChange = jest.fn().mockImplementation((_, evt) => { evt.persist(); }),
+          view = quickRender({
+            filterThreshold: 2,
+            onFilterChange
+          }),
+          inputEl = view.getByRole('textbox');
+
+      expect(onFilterChange).not.toHaveBeenCalled();
+
+      inputEl.focus();
+      await user.type(inputEl, 'a');
+
+      expect(onFilterChange).toHaveBeenCalledWith('a', expect.objectContaining({ target: inputEl }));
+    });
+
     it('clears the input when the clear button is clicked', async function() {
       const user = userEvent.setup(),
           view = filterView();
