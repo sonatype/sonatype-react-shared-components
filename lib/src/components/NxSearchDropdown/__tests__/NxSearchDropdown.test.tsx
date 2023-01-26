@@ -110,34 +110,32 @@ describe('NxSearchDropdown', function() {
     expect(el.getByRole('menuitem', { name: /1/i, hidden: true })).not.toBeDisabled();
   });
 
-  //TODO
-  // it('renders an NxDropdownMenu', function() {
-  //   const el = quickRender({ disabled: true, matches: [{ id: '1', displayName: '1' }]}),
-  //       input = el.queryByRole('searchbox');
+  it('renders dropdown with role="alert" if there are no matching elements', function() {
+    const el = quickRender({ searchText: 'foo', matches: []});
 
-  //   input?.focus();
+    expect(el.getByRole('alert')).toBeInTheDocument();
+    expect(el.getByRole('alert')).toHaveTextContent('No Results Found');
+  });
 
-  //   expect(el.getByRole('menu')).toBeInTheDocument();
+  it('renders dropdown with role="menu" if there are matching elements', function() {
+    const el = quickRender({ searchText: 'foo', matches: [{ id: '1', displayName: '1' }]});
 
-  //   // expect(quickRender({ searchText: 'foo', disabled: false }).getByRole('menu')).toBeInTheDocument();
-  //   // expect(getShallow({ searchText: 'foo', disabled: true })).toContainMatchingElement(NxDropdownMenu);
-  //   // expect(getShallow({ searchText: 'foo', disabled: false })).toContainMatchingElement(NxDropdownMenu);
-  //   // expect(getShallow({ searchText: 'foo', disabled: undefined })).toContainMatchingElement(NxDropdownMenu);
-  //   // expect(getShallow({ searchText: 'foo', disabled: null })).toContainMatchingElement(NxDropdownMenu);
-  //   // expect(getShallow({ searchText: 'foo' })).toContainMatchingElement(NxDropdownMenu);
-  // });
+    expect(el.getByRole('menu')).toBeInTheDocument();
+  });
 
-  //TODO
-  // it('sets aria-hidden to true on the dropdown menu if the searchText is empty or disabled is true', function() {
-  //   expect(quickRender().getByRole('menu', { hidden: true })).toHaveAttribute('aria-hidden', true);
-  //   expect(quickRender({ searchText: 'foo', disabled: true }).getByRole('menu', { hidden: true }))
-  //       .toHaveAttribute('aria-hidden', true);
-  //   expect(getShallow({ searchText: 'foo', disabled: false }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
-  //   expect(getShallow({ searchText: 'foo', disabled: undefined }).find(NxDropdownMenu))
-  //       .toHaveProp('aria-hidden', false);
-  //   expect(getShallow({ searchText: 'foo', disabled: null }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
-  //   expect(getShallow({ searchText: 'foo' }).find(NxDropdownMenu)).toHaveProp('aria-hidden', false);
-  // });
+  it('sets aria-hidden to true on the dropdown menu if the searchText is empty or disabled is true', function() {
+    expect(quickRender().getByRole('alert', { hidden: true })).toHaveAttribute('aria-hidden', 'true');
+    expect(quickRender({ searchText: 'foo', disabled: true }).getByRole('alert', { hidden: true }))
+        .toHaveAttribute('aria-hidden', 'true');
+    expect(quickRender({ searchText: 'foo', disabled: false }).getByRole('alert'))
+        .toHaveAttribute('aria-hidden', 'false');
+    expect(quickRender({ searchText: 'foo', disabled: undefined }).getByRole('alert'))
+        .toHaveAttribute('aria-hidden', 'false');
+    expect(quickRender({ searchText: 'foo', disabled: null }).getByRole('alert'))
+        .toHaveAttribute('aria-hidden', 'false');
+    expect(quickRender({ searchText: 'foo' }).getByRole('alert'))
+        .toHaveAttribute('aria-hidden', 'false');
+  });
 
   it('sets aria-live on the dropdown menu to "polite"', function() {
     expect(quickRender().getByRole('alert', { hidden: true })).toHaveAttribute('aria-live', 'polite');
@@ -273,29 +271,28 @@ describe('NxSearchDropdown', function() {
     anotherElement.remove();
   });
 
-  // //TODO
-  // it('does not call onSearch if focus moves within the component while there is an error', function() {
-  //   const onSearch = jest.fn(),
-  //       el = quickRender({ searchText: 'foo', onSearch }),
-  //       filterInput = el.getByRole('searchbox');
+  it('does not call onSearch if focus moves within the component while there is an error', function() {
+    const onSearch = jest.fn(),
+        props = { searchText: 'foo', onSearch },
+        el = quickRender(props),
+        filterInput = el.getByRole('searchbox');
 
-  //   expect(onSearch).not.toHaveBeenCalled();
+    expect(onSearch).not.toHaveBeenCalled();
 
-  //   // get focus into the component before we set the error
-  //   filterInput.focus();
-  //   expect(onSearch).not.toHaveBeenCalled();
+    // get focus into the component before we set the error
+    filterInput.focus();
+    expect(onSearch).not.toHaveBeenCalled();
 
-  //   // component.setProps({ error: 'err' });
-  //   el.rerender(<NxSearchDropdown { ...minimalProps } error={'err'} />);
-  //   expect(onSearch).not.toHaveBeenCalled();
+    el.rerender(<NxSearchDropdown { ...minimalProps } { ...props} error={'err'} />);
+    expect(onSearch).not.toHaveBeenCalled();
 
-  //   const retryButton = el.getByRole('button', { name: /retry/i });
-  //   retryButton.focus();
-  //   expect(onSearch).not.toHaveBeenCalled();
+    const retryButton = el.getByRole('button', { name: /retry/i });
+    retryButton.focus();
+    expect(onSearch).not.toHaveBeenCalled();
 
-  //   filterInput.focus();
-  //   expect(onSearch).not.toHaveBeenCalled();
-  // });
+    filterInput.focus();
+    expect(onSearch).not.toHaveBeenCalled();
+  });
 
   it('does not call onSearch if focus moves into the component from an outside window while there is an error',
       function() {
