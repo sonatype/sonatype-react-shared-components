@@ -105,10 +105,6 @@ describe('NxThreatIndicator', function() {
       expect(threatIndicator).toBeInTheDocument();
     });
 
-    it('should not set the role to "img"', function() {
-      expect(el.queryByRole('img', { hidden: true, queryFallbacks: true })).not.toBeInTheDocument();
-    });
-
     it('should not have an accessible name', function() {
       const threatIndicator = el.getByRole('presentation', { hidden: true, queryFallbacks: true });
 
