@@ -116,11 +116,17 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
     });
 
     describe('disabledTooltip', function() {
+      // the user API does not trigger mouseenter / mouseover events on disabled elements, so need to hover on
+      // the wrapper div to trigger the tooltip
+      const renderAndGetTriggerWrapper = (props?: Partial<Props>) =>
+        renderEl(props)!.querySelector('.nx-collapsible-items__tooltip-wrapper');
+
       it('render a default tooltip when disabledTooltip is not provided and there are no options',
           async function() {
-            const trigger = renderAndGetTrigger({ options: [], name: 'Example Name'});
+            const user = userEvent.setup(),
+                trigger = renderAndGetTriggerWrapper({ options: [], name: 'Example Name'})!;
 
-            fireEvent.mouseOver(trigger);
+            await user.hover(trigger);
             await runTimers();
             expect(screen.getByRole('tooltip')).toBeInTheDocument();
             expect(screen.getByRole('tooltip')).toHaveTextContent('There are no Example Name options');
@@ -128,9 +134,10 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
 
       it('renders a custom tooltip as specified by the disabledTooltip prop when there are no options',
           async function() {
-            const trigger = renderAndGetTrigger({ options: [], disabledTooltip: 'tip'});
+            const user = userEvent.setup(),
+                trigger = renderAndGetTriggerWrapper({ options: [], disabledTooltip: 'tip'})!;
 
-            fireEvent.mouseOver(trigger);
+            await user.hover(trigger);
             await runTimers();
             expect(screen.getByRole('tooltip')).toBeInTheDocument();
             expect(screen.getByRole('tooltip')).toHaveTextContent('tip');
@@ -138,9 +145,10 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
 
       it('renders a custom tooltip as specified by the disabledTooltip prop when the element is disabled',
           async function() {
-            const trigger = renderAndGetTrigger({ disabled: true, disabledTooltip: 'tip' });
+            const user = userEvent.setup(),
+                trigger = renderAndGetTriggerWrapper({ disabled: true, disabledTooltip: 'tip' })!;
 
-            fireEvent.mouseOver(trigger);
+            await user.hover(trigger);
             await runTimers();
             expect(screen.getByRole('tooltip')).toBeInTheDocument();
             expect(screen.getByRole('tooltip')).toHaveTextContent('tip');
@@ -148,33 +156,36 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
 
       it('doesn\'t render a tooltip when the component is disabled and no disabledTooltip prop is provided',
           async function() {
-            const trigger = renderAndGetTrigger({ disabled: true });
+            const user = userEvent.setup(),
+                trigger = renderAndGetTriggerWrapper({ disabled: true })!;
 
-            fireEvent.mouseOver(trigger);
+            await user.hover(trigger);
             await runTimers();
             expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
           });
 
       it('doesn\'t render a tooltip when disabledTooltip prop is provided but the element is not disabled',
           async function() {
-            const trigger = renderAndGetTrigger({ disabledTooltip: 'tip' });
+            const user = userEvent.setup(),
+                trigger = renderAndGetTriggerWrapper({ disabledTooltip: 'tip' })!;
 
-            fireEvent.mouseOver(trigger);
+            await user.hover(trigger);
             await runTimers();
             expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
           });
 
       it('has a specified classname when the tooltipModifierClass prop is provided', async function() {
-        const trigger = renderAndGetTrigger({
-          disabled: true,
-          disabledTooltip: 'tip',
-          tooltipModifierClass: 'customClass'
-        });
+        const user = userEvent.setup(),
+            trigger = renderAndGetTriggerWrapper({
+              disabled: true,
+              disabledTooltip: 'tip',
+              tooltipModifierClass: 'customClass'
+            })!;
 
         await runTimers();
         expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-        fireEvent.mouseOver(trigger);
+        await user.hover(trigger);
         await runTimers();
 
         const tooltip = screen.getByRole('tooltip');
