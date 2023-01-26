@@ -19,28 +19,13 @@ describe('NxTabs', function() {
     onTabSelect: () => {},
     children: (
       <NxTabList>
-        <NxTab>Tabs 0 Tab 0</NxTab>
+        <NxTab>Tabs 0</NxTab>
       </NxTabList>
     )
   };
 
   const quickRender = rtlRender<NxTabsProps>(NxTabs, minimumProps);
   const renderEl = rtlRenderElement<NxTabsProps>(NxTabs, minimumProps);
-
-  it('renders with a unique id each time', function() {
-    const firstTabs = renderEl({ activeTab: 0 })!;
-
-    const secondTabs = renderEl({
-      activeTab: 0,
-      children: (
-        <NxTabList>
-          <NxTab>Tabs 1 Tab 0</NxTab>
-        </NxTabList>
-      )
-    })!;
-
-    expect(firstTabs.id).not.toEqual(secondTabs.id);
-  });
 
   it('merges any passed in className', function() {
     const tabsWithAddedClassName = renderEl({ activeTab: -1, className: 'foo' });
@@ -53,55 +38,35 @@ describe('NxTabs', function() {
     }
   });
 
-  it('renders a generated id', function() {
-    const { container } = render(
-      <NxTabs activeTab={-1} onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxTabs>
-    );
+  it('renders with a unique id each time', function() {
+    const firstTabs = renderEl({ activeTab: 0 })!;
+    const secondTabs = renderEl({ activeTab: 0 })!;
 
-    expect(container.firstElementChild!.id).toMatch(/^nx-tabs-\d+$/);
+    expect(firstTabs.id).not.toEqual(secondTabs.id);
+  });
+
+  it('renders a generated id', function() {
+    const component = renderEl({ activeTab: -1 })!;
+    expect(component.id).toMatch(/^nx-tabs-\d+$/);
   });
 
   it('renders using as specific id', function() {
-    const { container } = render(
-      <NxTabs id="my-tabs" activeTab={-1} onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxTabs>
-    );
-
-    expect(container.firstElementChild!.id).toMatch('my-tabs');
+    const commponent = renderEl({
+      id: 'my-tabs',
+      activeTab: -1
+    })!;
+    expect(commponent.id).toMatch('my-tabs');
   });
 
   it('renders no tab contents when none are active', function() {
-    const { getByRole, queryByRole } = render(
-      <NxTabs activeTab={-1} onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxTabs>
-    );
+    const { getByRole, queryByRole } = quickRender({ activeTab: -1 });
 
     expect(getByRole('tab').classList.contains('active')).toBeFalsy();
     expect(queryByRole('tabpanel')).not.toBeInTheDocument();
   });
 
   it('renders no tab contents when no active tab is specified', function() {
-    const { getByRole, queryByRole } = render(
-      <NxTabs onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxTabs>
-    );
+    const { getByRole, queryByRole } = quickRender();
 
     expect(getByRole('tab').classList.contains('active')).toBeFalsy();
     expect(queryByRole('tabpanel')).not.toBeInTheDocument();
@@ -132,12 +97,7 @@ describe('NxTabs', function() {
 
     const { getByRole } = quickRender({
       activeTab: 0,
-      onTabSelect,
-      children: (
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-      )
+      onTabSelect
     });
 
     await user.click(getByRole('tab'));
