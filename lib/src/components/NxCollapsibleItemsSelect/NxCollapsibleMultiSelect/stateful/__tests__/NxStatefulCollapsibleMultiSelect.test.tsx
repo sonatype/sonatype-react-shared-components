@@ -376,10 +376,15 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       });
 
       describe('tooltip', function() {
-        it('sets customized text if optionTooltipGenerator is defined', async function() {
+        it('calles optionTooltipGenerator with each option when provided ' +
+          'and sets the customized text', async function() {
           const user = userEvent.setup(),
               optionTooltipGenerator = jest.fn().mockReturnValue('customized-tooltip'),
-              view = quickRender({ optionTooltipGenerator }),
+              optionsProp = [
+                {id: 'cat', name: 'Cat'},
+                {id: 'dog', name: 'Dog'}
+              ],
+              view = quickRender({ options: optionsProp, optionTooltipGenerator }),
               options = view.getAllByRole('menuitemcheckbox');
 
           await runTimers();
@@ -390,6 +395,9 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
 
           const tooltip = screen.getByRole('tooltip');
 
+          // pass each option to the optionTooltipGenerator
+          expect(optionTooltipGenerator).toHaveBeenCalledWith(optionsProp[0]);
+          expect(optionTooltipGenerator).toHaveBeenCalledWith(optionsProp[1]);
           expect(tooltip).toHaveTextContent('customized-tooltip');
         });
 
