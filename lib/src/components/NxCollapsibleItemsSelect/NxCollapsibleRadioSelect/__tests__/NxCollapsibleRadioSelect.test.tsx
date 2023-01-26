@@ -50,7 +50,7 @@ describe('NxCollapsibleRadioSelect', function() {
       expect(renderAndGetTrigger()).toHaveAttribute('type', 'button');
     });
 
-    it('references the treeview children items using aria-controls', function() {
+    it('references the children items using aria-controls', function() {
       const view = quickRender(),
           trigger = view.getByRole('button'),
           childrenElId = trigger.getAttribute('aria-controls')!;
@@ -141,7 +141,7 @@ describe('NxCollapsibleRadioSelect', function() {
 
       it('renders a custom tooltip as specified by the disabledTooltip prop when the element is disabled',
           async function() {
-            const trigger = renderAndGetTrigger({ disabled: true, disabledTooltip: 'tip'});
+            const trigger = renderAndGetTrigger({ disabled: true, disabledTooltip: 'tip' });
 
             fireEvent.mouseOver(trigger);
             await runTimers();
@@ -166,6 +166,23 @@ describe('NxCollapsibleRadioSelect', function() {
             await runTimers();
             expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
           });
+
+      it('has a specified classname when the tooltipModifierClass prop is provided', async function() {
+        const trigger = renderAndGetTrigger({
+          disabled: true,
+          disabledTooltip: 'tip',
+          tooltipModifierClass: 'customClass'
+        });
+
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        fireEvent.mouseOver(trigger);
+        await runTimers();
+
+        const tooltip = screen.getByRole('tooltip');
+        expect(tooltip.querySelector('.customClass')).toBeInTheDocument();
+      });
     });
   });
 
@@ -213,48 +230,51 @@ describe('NxCollapsibleRadioSelect', function() {
       expect(options.length).toBe(3);
     });
 
-    it('renders text content and accessible name according to option\'s name prop', function() {
+    it('renders text content according to option\'s name prop', function() {
       const options = quickRender().getByRole('menu').children;
 
       expect(options[0]).toHaveTextContent('Foo');
-      // expect(options[0]).toHaveAccessibleName('Foo');
-
       expect(options[1]).toHaveTextContent('Bar');
-      // expect(options[1]).toHaveAccessibleName('Bar');
-
       expect(options[2]).toHaveTextContent('Null');
-      // expect(options[2]).toHaveAccessibleName('Null');
+    });
+
+    it('renders accessible name according to option\'s name prop', function() {
+      const options = quickRender().getAllByRole('menuitemradio');
+
+      expect(options[0]).toHaveAccessibleName('Foo');
+      expect(options[1]).toHaveAccessibleName('Bar');
+      expect(options[2]).toHaveAccessibleName('Null');
     });
 
     it('renders an unchecked radio if option is not selected', function() {
-      expect(quickRender({ selectedId: 'bar'}).getAllByRole('menuitemradio')[0]).not.toBeChecked();
+      expect(quickRender({ selectedId: 'bar' }).getAllByRole('menuitemradio')[0]).not.toBeChecked();
     });
 
     it('renders a checked radio if option is selected', function() {
-      expect(quickRender({ selectedId: 'bar'}).getAllByRole('menuitemradio')[1]).toBeChecked();
+      expect(quickRender({ selectedId: 'bar' }).getAllByRole('menuitemradio')[1]).toBeChecked();
     });
 
     it('renders all unchecked radios if no selectedId is provided', function() {
-      const radios = quickRender().getAllByRole('menuitemradio');
+      const options = quickRender().getAllByRole('menuitemradio');
 
-      expect(radios[0]).not.toBeChecked();
-      expect(radios[1]).not.toBeChecked();
-      expect(radios[2]).not.toBeChecked();
+      expect(options[0]).not.toBeChecked();
+      expect(options[1]).not.toBeChecked();
+      expect(options[2]).not.toBeChecked();
     });
 
     it('render all radios as disabled if disabled prop is true', function() {
       const view = quickRender({ disabled: true }),
-          radios = view.getAllByRole('menuitemradio');
+          options = view.getAllByRole('menuitemradio');
 
-      expect(radios[0]).toBeDisabled();
-      expect(radios[1]).toBeDisabled();
-      expect(radios[2]).toBeDisabled();
+      expect(options[0]).toBeDisabled();
+      expect(options[1]).toBeDisabled();
+      expect(options[2]).toBeDisabled();
     });
 
     describe('tooltip', function() {
       it('adds a tooltip for each option when optionTooltipGenerator prop is provided', async function() {
         const user = userEvent.setup(),
-            view = quickRender({ optionTooltipGenerator: option => option.name}),
+            view = quickRender({ optionTooltipGenerator: option => option.name }),
             options = view.getByRole('menu').children;
 
         await runTimers();
@@ -289,7 +309,7 @@ describe('NxCollapsibleRadioSelect', function() {
       it('has a specified classname when the tooltipModifierClass prop is provided', async function() {
         const user = userEvent.setup(),
             optionTooltipGenerator = jest.fn().mockReturnValue('tip'),
-            view = quickRender({ optionTooltipGenerator, tooltipModifierClass: 'customClass'}),
+            view = quickRender({ optionTooltipGenerator, tooltipModifierClass: 'customClass' }),
             options = view.getAllByRole('menuitemradio');
 
         await runTimers();
@@ -329,7 +349,7 @@ describe('NxCollapsibleRadioSelect', function() {
     it('does not render an input when onFilterChange is not provided or filterThreshold is greater than options',
         function() {
           const onFilterChange = jest.fn(),
-              noOnFilterChange = quickRender({ filterThreshold: 2}),
+              noOnFilterChange = quickRender({ filterThreshold: 2 }),
               highFilterThreshold = quickRender({ onFilterChange, filterThreshold: 5 });
 
           expect(noOnFilterChange.queryByRole('textbox')).not.toBeInTheDocument();
@@ -340,10 +360,18 @@ describe('NxCollapsibleRadioSelect', function() {
       const view = quickFilterRender();
 
       await runTimers();
-      const clearBtn = view.getByRole('button', { name: 'Clear filter'});
+      const clearBtn = view.getByRole('button', { name: 'Clear filter' });
 
       expect(clearBtn).toBeInTheDocument();
       expect(clearBtn).toHaveAccessibleName('Clear filter');
+    });
+
+    it('sets the aria-controls on the input to the element id', function() {
+      const view = quickFilterRender(),
+          id = view.getByRole('group').getAttribute('id'),
+          inputEl = view.getByRole('textbox');
+
+      expect(inputEl).toHaveAttribute('aria-controls', id);
     });
 
     it('defaults filter prop to an empty string', function() {
@@ -428,7 +456,7 @@ describe('NxCollapsibleRadioSelect', function() {
 
     describe('when options are filtered', function() {
       it('renders all options if filteredOptions prop is not provided', function() {
-        const view = quickFilterRender({ filteredOptions: null}),
+        const view = quickFilterRender({ filteredOptions: null }),
             options = view.getByRole('menu').children;
 
         expect(options.length).toBe(4);
@@ -440,7 +468,7 @@ describe('NxCollapsibleRadioSelect', function() {
       });
 
       it('renders no options if filteredOptions prop is an empty array', function() {
-        const view = quickFilterRender({filteredOptions: []});
+        const view = quickFilterRender({ filteredOptions: [] });
         expect(view.queryByRole('menuitemradio')).not.toBeInTheDocument();
       });
 
@@ -457,172 +485,3 @@ describe('NxCollapsibleRadioSelect', function() {
     });
   });
 });
-
-// import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
-// import 'jest-enzyme';
-// import NxCollapsibleRadioSelect, {Option, Props} from '../NxCollapsibleRadioSelect';
-// import Counter from '../../../Counter/Counter';
-
-// import { NxTreeViewRadioSelect } from '../../../../index';
-
-// describe('NxCollapsibleRadioSelect', function() {
-//   const requiredProps: Props = {
-//     options: [
-//       {id: 'foo', name: 'Foo'},
-//       {id: 'bar', name: 'Bar'},
-//       {id: null, name: 'Null'}
-//     ],
-//     children: 'Foobar',
-//     name: 'foobar',
-//     onChange: () => {}
-//   };
-
-//   const getShallow = getShallowComponent<Props>(NxCollapsibleRadioSelect, requiredProps);
-
-//   it('is aliased as NxTreeViewRadioSelect', function() {
-//     expect(NxCollapsibleRadioSelect).toBe(NxTreeViewRadioSelect);
-//   });
-
-//   it('properly renders component using only required props', function() {
-//     const shallowRender = getShallow();
-
-//     expect(shallowRender).toHaveDisplayName('AbstractCollapsibleItemsSelect');
-//     expect(shallowRender).toHaveProp('name', 'foobar');
-//     expect(shallowRender).toHaveProp('children', 'Foobar');
-//     expect(shallowRender).toHaveProp('options', [
-//       {id: 'foo', name: 'Foo'},
-//       {id: 'bar', name: 'Bar'},
-//       {id: null, name: 'Null'}
-//     ]);
-//   });
-
-//   it('passes props to AbstractCollapsibleItemsSelect', function() {
-//     const optionalProps = {
-//       isOpen: true,
-//       id: 'someid',
-//       disabled: true,
-//       onToggleCollapse: jest.fn(),
-//       disabledTooltip: 'test disabled tooltip',
-//       optionTooltipGenerator: (option: Option) => option.name,
-//       tooltipModifierClass: 'tooltip-test-class',
-//       onFilterChange: jest.fn(),
-//       filter: 'filter term',
-//       filteredOptions: [{id: 'bar', name: 'Bar'}],
-//       filterPlaceholder: 'test filter placeholder',
-//       filterThreshold: 1
-//     };
-
-//     const shallowRender = getShallow(optionalProps);
-//     expect(shallowRender).toHaveDisplayName('AbstractCollapsibleItemsSelect');
-//     expect(shallowRender).toHaveProp(optionalProps);
-//   });
-
-//   describe('renderOption prop', function () {
-//     it('renders unchecked <NxRadio> if option is not selected', function () {
-//       const shallowRender = getShallow({selectedId: 'foo'});
-//       const optionWrapper = shallowRender.renderProp('renderOption')({id: 'bar', name: 'Bar'});
-
-//       expect(optionWrapper).toHaveDisplayName('ForwardRef(NxRadio)');
-//       expect(optionWrapper).toHaveProp('isChecked', false);
-//     });
-
-//     it('renders checked <NxRadio> if option is selected', function () {
-//       const shallowRender = getShallow({selectedId: 'foo'});
-//       const optionWrapper = shallowRender.renderProp('renderOption')({id: 'foo', name: 'Foo'});
-
-//       expect(optionWrapper).toHaveDisplayName('ForwardRef(NxRadio)');
-//       expect(optionWrapper).toHaveProp('isChecked', true);
-//     });
-
-//     it('renders unchecked <NxRadio> for all options if selectedId prop is not provided', function () {
-//       const shallowRender = getShallow();
-//       const renderOption = shallowRender.renderProp('renderOption');
-
-//       expect(renderOption({id: 'foo', name: 'Foo'})).toHaveProp('isChecked', false);
-//       expect(renderOption({id: 'bar', name: 'Bar'})).toHaveProp('isChecked', false);
-//       expect(renderOption({id: null, name: 'Null'})).toHaveProp('isChecked', false);
-//     });
-
-//     it('renders enabled <NxRadio> for all options if component is not disabled', function () {
-//       const renderOption = getShallow().renderProp('renderOption');
-
-//       expect(renderOption({id: 'foo', name: 'Foo'})).toHaveProp('disabled', false);
-//       expect(renderOption({id: 'bar', name: 'Bar'})).toHaveProp('disabled', false);
-//       expect(renderOption({id: null, name: 'Null'})).toHaveProp('disabled', false);
-//     });
-
-//     it('renders disabled <NxRadio> for all options if component is disabled', function () {
-//       const shallowRender = getShallow({disabled: true});
-//       const renderOption = shallowRender.renderProp('renderOption');
-
-//       expect(renderOption({id: 'foo', name: 'Foo'})).toHaveProp('disabled', true);
-//       expect(renderOption({id: 'bar', name: 'Bar'})).toHaveProp('disabled', true);
-//       expect(renderOption({id: null, name: 'Null'})).toHaveProp('disabled', true);
-//     });
-
-//     it('uses option name as radio label', function () {
-//       const renderOption = getShallow().renderProp('renderOption');
-
-//       expect(renderOption({id: 'foo', name: 'Foo'})).toHaveProp('children', 'Foo');
-//       expect(renderOption({id: 'bar', name: 'Bar'})).toHaveProp('children', 'Bar');
-//       expect(renderOption({id: null, name: 'Null'})).toHaveProp('children', 'Null');
-//     });
-
-//     it('generates radioId using name prop and option name', function () {
-//       const shallowRender = getShallow();
-//       const renderOption = shallowRender.renderProp('renderOption');
-
-//       expect(renderOption({id: 'foo', name: 'Foo'})).toHaveProp('radioId', 'nx-collapsible-items-select-foobar-foo');
-//       expect(renderOption({id: 'bar', name: 'Bar'})).toHaveProp('radioId', 'nx-collapsible-items-select-foobar-bar');
-//       expect(renderOption({id: null,name: 'Null'})).toHaveProp('radioId', 'nx-collapsible-items-select-foobar-null');
-//     });
-
-//     describe('onChange callback', function () {
-//       it('properly calls component\'s onChange callback when an option is toggled', function() {
-//         const onChangeSpy = jest.fn();
-//         const shallowRender = getShallow({
-//           onChange: onChangeSpy,
-//           selectedId: 'bar'
-//         });
-//         const renderOption = shallowRender.renderProp('renderOption');
-
-//         expect(onChangeSpy).not.toHaveBeenCalled();
-//         renderOption({id: 'foo', name: 'Foo'}).simulate('change', 'foo');
-//         expect(onChangeSpy).toHaveBeenCalledWith('foo');
-
-//         renderOption({id: 'bar', name: 'Bar'}).simulate('change', 'bar');
-//         expect(onChangeSpy).toHaveBeenCalledWith('bar');
-
-//         renderOption({id: null, name: 'Null'}).simulate('change', null);
-//         expect(onChangeSpy).toHaveBeenCalledWith(null);
-//       });
-//     });
-
-//     it('sets overflowTooltip to false if optionTooltipGenerator is defined', function() {
-//       const shallowRenderNoTooltipGen = getShallow(),
-//           shallowRenderTooltipGen = getShallow({ optionTooltipGenerator: opt => opt.name }),
-//           renderOptionNoTooltipGen = shallowRenderNoTooltipGen.renderProp('renderOption'),
-//           renderOptionTooltipGen = shallowRenderTooltipGen.renderProp('renderOption');
-
-//       expect(renderOptionNoTooltipGen({ id: 'foo', name: 'Foo' })).toHaveProp('overflowTooltip', true);
-//       expect(renderOptionTooltipGen({ id: 'foo', name: 'Foo' })).toHaveProp('overflowTooltip', false);
-//     });
-//   });
-
-//   describe('renderCounter prop', function () {
-//     it('renders nothing if selectedId prop is not provided', function () {
-//       const renderPropWrapper = getShallow().renderProp('renderCounter')();
-//       expect(renderPropWrapper).toBeEmptyRender();
-//     });
-
-//     it('renders <Counter> with selected option name if selectedId prop is provided', function () {
-//       const renderPropWrapper = getShallow({selectedId: 'bar'}).renderProp('renderCounter')();
-//       expect(renderPropWrapper).toContainReact(<Counter>Bar</Counter>);
-//     });
-
-//     it('renders <Counter> with selected option name even if the option id is null', function () {
-//       const renderPropWrapper = getShallow({selectedId: null}).renderProp('renderCounter')();
-//       expect(renderPropWrapper).toContainReact(<Counter>Null</Counter>);
-//     });
-//   });
-// });
