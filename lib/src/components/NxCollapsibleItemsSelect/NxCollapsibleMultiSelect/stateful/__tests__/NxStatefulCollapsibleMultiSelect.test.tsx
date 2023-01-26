@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
+
 import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../../../__testutils__/rtlUtils';
 import { screen, createEvent, fireEvent, within } from '@testing-library/react';
 
@@ -340,7 +342,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
         expect(options[2]).not.toBeChecked();
       });
 
-      it('calls component\'s onChange callback when an option is toggled', async function() {
+      it('fires onChange with the new set of selectedIds and the id of the clicked option ' +
+        'when an option is clicked', async function() {
         const user = userEvent.setup(),
             onChange = jest.fn(),
             view = quickRender({ onChange }),
@@ -348,17 +351,28 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
 
         expect(onChange).not.toHaveBeenCalled();
 
+        // initially no options are checked; check the first one
         await user.click(options[1]);
-
+        expect(onChange).toHaveBeenCalledTimes(1);
         expect(onChange).toHaveBeenCalledWith(new Set(['foo']), 'foo');
 
+        view.rerender(<NxStatefulCollapsibleMultiSelect { ...minimalProps }
+                                                        onChange={onChange}
+                                                        selectedIds={new Set(['foo'])}/>);
+
+        // now the first option is checked; also check the second one
         await user.click(options[2]);
+        expect(onChange).toHaveBeenCalledTimes(2);
+        expect(onChange).toHaveBeenCalledWith(new Set(['foo', 'boo']), 'boo');
 
-        expect(onChange).toHaveBeenCalledWith(new Set(['boo']), 'boo');
+        view.rerender(<NxStatefulCollapsibleMultiSelect { ...minimalProps }
+                                                        onChange={onChange}
+                                                        selectedIds={new Set(['foo', 'boo'])}/>);
 
+        // now the first two optoins are checked; uncheck the first one
         await user.click(options[1]);
-
-        expect(onChange).toHaveBeenCalledWith(new Set(['foo']), 'foo');
+        expect(onChange).toHaveBeenCalledTimes(3);
+        expect(onChange).toHaveBeenCalledWith(new Set(['boo']), 'foo');
       });
 
       describe('tooltip', function() {
