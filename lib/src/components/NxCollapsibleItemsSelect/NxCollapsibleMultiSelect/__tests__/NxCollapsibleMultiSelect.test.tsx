@@ -122,12 +122,14 @@ describe('NxCollapsibleMultiSelect', function() {
     describe('tooltip', function() {
       describe('when component is disabled due to no options', function() {
         it('has a default text constructed with the name prop', async function() {
-          const trigger = renderAndGetTrigger({ options: [] });
+          const user = userEvent.setup(),
+              trigger = renderAndGetTrigger({ options: [] }),
+              triggerWrapper = trigger.parentElement!;
 
           await runTimers();
           expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-          fireEvent.mouseOver(trigger);
+          await user.hover(triggerWrapper);
           await runTimers();
 
           const tooltip = screen.getByRole('tooltip');
@@ -136,15 +138,17 @@ describe('NxCollapsibleMultiSelect', function() {
         });
 
         it('has a customized text as specified by disabledTooltip prop', async function() {
-          const trigger = renderAndGetTrigger({
-            options: [],
-            disabledTooltip: 'No options'
-          });
+          const user = userEvent.setup(),
+              trigger = renderAndGetTrigger({
+                options: [],
+                disabledTooltip: 'No options'
+              }),
+              triggerWrapper = trigger.parentElement!;
 
           await runTimers();
           expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-          fireEvent.mouseOver(trigger);
+          await user.hover(triggerWrapper);
           await runTimers();
 
           const tooltip = screen.getByRole('tooltip');
@@ -153,15 +157,17 @@ describe('NxCollapsibleMultiSelect', function() {
         });
 
         it('has specified classname when tooltipModifierClass prop is provided', async function() {
-          const trigger = renderAndGetTrigger({
-            options: [],
-            tooltipModifierClass: 'tooltipClass'
-          });
+          const user = userEvent.setup(),
+              trigger = renderAndGetTrigger({
+                options: [],
+                tooltipModifierClass: 'tooltipClass'
+              }),
+              triggerWrapper = trigger.parentElement!;
 
           await runTimers();
           expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-          fireEvent.mouseOver(trigger);
+          await user.hover(triggerWrapper);
           await runTimers();
 
           const tooltip = screen.getByRole('tooltip');
@@ -173,15 +179,17 @@ describe('NxCollapsibleMultiSelect', function() {
 
       describe('when component is disabled explicitly', function() {
         it('has a customized text as specified by disabledTooltip prop', async function() {
-          const trigger = renderAndGetTrigger({
-            disabled: true,
-            disabledTooltip: 'No options'
-          });
+          const user = userEvent.setup(),
+              trigger = renderAndGetTrigger({
+                disabled: true,
+                disabledTooltip: 'No options'
+              }),
+              triggerWrapper = trigger.parentElement!;
 
           await runTimers();
           expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-          fireEvent.mouseOver(trigger);
+          await user.hover(triggerWrapper);
           await runTimers();
 
           const tooltip = screen.getByRole('tooltip');
@@ -190,16 +198,18 @@ describe('NxCollapsibleMultiSelect', function() {
         });
 
         it('has specified classname when tooltipModifierClass prop is provided', async function() {
-          const trigger = renderAndGetTrigger({
-            disabled: true,
-            disabledTooltip: 'No options',
-            tooltipModifierClass: 'tooltipClass'
-          });
+          const user = userEvent.setup(),
+              trigger = renderAndGetTrigger({
+                disabled: true,
+                disabledTooltip: 'No options',
+                tooltipModifierClass: 'tooltipClass'
+              }),
+              triggerWrapper = trigger.parentElement!;
 
           await runTimers();
           expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-          fireEvent.mouseOver(trigger);
+          await user.hover(triggerWrapper);
           await runTimers();
 
           const tooltip = screen.getByRole('tooltip');
@@ -209,12 +219,14 @@ describe('NxCollapsibleMultiSelect', function() {
         });
 
         it('does not show when disabledTooltip prop is not provided', async function() {
-          const trigger = renderAndGetTrigger({ disabled: true });
+          const user = userEvent.setup(),
+              trigger = renderAndGetTrigger({ disabled: true }),
+              triggerWrapper = trigger.parentElement!;
 
           await runTimers();
           expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-          fireEvent.mouseOver(trigger);
+          await user.hover(triggerWrapper);
           await runTimers();
 
           expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
