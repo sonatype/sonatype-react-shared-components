@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../../../__testutils__/rtlUtils';
-import { screen, createEvent, fireEvent, within } from '@testing-library/react';
+import { screen, createEvent, fireEvent, within, RenderResult } from '@testing-library/react';
 
 import NxStatefulCollapsibleMultiSelect, { Props } from '../NxStatefulCollapsibleMultiSelect';
 import { NxStatefulTreeViewMultiSelect } from '../../../../../index';
@@ -312,18 +312,91 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       expect(keyEvent.defaultPrevented).toBe(false);
     });
 
-    it('filters options when value of text input changed', async function() {
-      const user = userEvent.setup(),
-          view = filterView(),
-          inputEl = view.getByRole('textbox');
+    describe('filtering', function() {
+      let view: RenderResult,
+          inputEl: HTMLElement;
 
-      expect(view.getAllByRole('menuitemcheckbox')).toHaveLength(3);
+      // for test filtering
+      const options = [
+        {id: 'foo', name: 'Foo'},
+        {id: 'bobcat', name: 'Bobcat'},
+        {id: 'catlover', name: 'Cat Lover'}
+      ];
 
-      await user.type(inputEl, 'f');
-      expect(view.getAllByRole('menuitemcheckbox')).toHaveLength(2);
+      beforeEach(() => {
+        view = filterView({ options }),
+        inputEl = view.getByRole('textbox');
+      });
 
-      await user.keyboard('[Escape]');
-      expect(view.getAllByRole('menuitemcheckbox')).toHaveLength(3);
+      function getOptions(view: RenderResult) {
+        return view.getAllByRole('menuitemcheckbox');
+      }
+
+      it('is not case-sensitive', async function() {
+        const user = userEvent.setup();
+
+        await user.type(inputEl, 'c');
+        const options = getOptions(view);
+        expect(options).toHaveLength(3);
+        expect(options[0]).toHaveAccessibleName('all/none');
+        expect(options[1]).toHaveAccessibleName('Bobcat');
+        expect(options[2]).toHaveAccessibleName('Cat Lover');
+      });
+
+      it('filters options with trimmed value', async function() {
+        const user = userEvent.setup();
+
+        await user.type(inputEl, ' f');
+        const options = getOptions(view);
+
+        expect(options).toHaveLength(2);
+        expect(options[0]).toHaveAccessibleName('all/none');
+        expect(options[1]).toHaveAccessibleName('Foo');
+      });
+
+      it('does not filter options when typing only spaces', async function() {
+        let options;
+        const user = userEvent.setup();
+
+        options = getOptions(view);
+
+        expect(options).toHaveLength(4);
+        expect(options[0]).toHaveAccessibleName('all/none');
+        expect(options[1]).toHaveAccessibleName('Foo');
+        expect(options[2]).toHaveAccessibleName('Bobcat');
+        expect(options[3]).toHaveAccessibleName('Cat Lover');
+
+        await user.type(inputEl, ' ');
+        options = getOptions(view);
+        expect(options).toHaveLength(4);
+        expect(options).toEqual(options);
+      });
+
+      it('filters options when value of text input changed', async function() {
+        let options;
+        const user = userEvent.setup();
+
+        options = getOptions(view);
+        expect(options).toHaveLength(4);
+
+        // matching the begining of the string
+        await user.type(inputEl, 'f');
+        options = getOptions(view);
+        expect(options).toHaveLength(2);
+        expect(options[0]).toHaveAccessibleName('all/none');
+        expect(options[1]).toHaveAccessibleName('Foo');
+
+        // to clear input
+        await user.keyboard('[Escape]');
+
+        // matching the other parts of string
+        await user.type(inputEl, 'c');
+        options = getOptions(view);
+        expect(options).toHaveLength(3);
+        expect(options[0]).toHaveAccessibleName('all/none');
+        expect(options[1]).toHaveAccessibleName('Bobcat');
+        expect(options[2]).toHaveAccessibleName('Cat Lover');
+      });
     });
   });
 
