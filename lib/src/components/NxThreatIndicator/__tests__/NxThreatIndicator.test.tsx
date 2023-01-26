@@ -7,11 +7,6 @@
 import NxThreatIndicator, { Props } from '../NxThreatIndicator';
 import { rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
 import { screen } from '@testing-library/react';
-import {
-  allThreatLevelCategories,
-  allThreatLevelNumbers,
-  categoryByPolicyThreatLevel
-} from '../../../util/threatLevels';
 
 describe('NxThreatIndicator', function() {
   const quickRender = rtlRender<Props>(NxThreatIndicator, {});
@@ -41,34 +36,70 @@ describe('NxThreatIndicator', function() {
   });
 
   describe('should have default tooltips', function() {
-    describe('when policyThreatLevel prop is provided', function() {
-      allThreatLevelNumbers.forEach(threatNumber => {
-        it(`for policy threat level ${threatNumber}`, async function() {
-          const el = quickRender({ policyThreatLevel: threatNumber })!,
-              user = userEvent.setup(),
-              category = categoryByPolicyThreatLevel[threatNumber],
-              categoryTitleCase = category[0].toUpperCase() + category.slice(1),
-              threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true });
+    const getTooltipTextForProps = async (threat: Props) => {
+      const el = quickRender(threat)!,
+          user = userEvent.setup(),
+          threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true });
 
-          await user.hover(threatIndicator);
-          const tooltip = await screen.findByRole('tooltip');
-          expect(tooltip).toHaveTextContent(categoryTitleCase);
-        });
+      await user.hover(threatIndicator);
+      const tooltip = await screen.findByRole('tooltip');
+      return tooltip.textContent;
+    };
+
+    describe('when policyThreatLevel prop is provided', function() {
+      it('for policyThreatLevel 0', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 0 })).toBe('None');
+      });
+      it('for policyThreatLevel 1', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 1 })).toBe('Low');
+      });
+      it('for policyThreatLevel 2', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 2 })).toBe('Moderate');
+      });
+      it('for policyThreatLevel 3', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 3 })).toBe('Moderate');
+      });
+      it('for policyThreatLevel 4', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 4 })).toBe('Severe');
+      });
+      it('for policyThreatLevel 5', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 5 })).toBe('Severe');
+      });
+      it('for policyThreatLevel 6', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 6 })).toBe('Severe');
+      });
+      it('for policyThreatLevel 7', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 7 })).toBe('Severe');
+      });
+      it('for policyThreatLevel 8', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 8 })).toBe('Critical');
+      });
+      it('for policyThreatLevel 9', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 9 })).toBe('Critical');
+      });
+      it('for policyThreatLevel 10', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 10 })).toBe('Critical');
       });
     });
 
     describe('when threatLevelCategory prop is provided', function() {
-      allThreatLevelCategories.forEach(category => {
-        it(`for threat level category ${category}`, async function() {
-          const el = quickRender({ threatLevelCategory: category })!,
-              user = userEvent.setup(),
-              threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true }),
-              categoryTitleCase = category[0].toUpperCase() + category.slice(1);
-
-          await user.hover(threatIndicator);
-          const tooltip = await screen.findByRole('tooltip');
-          expect(tooltip).toHaveTextContent(categoryTitleCase);
-        });
+      it('for threatLevelCategory unspecified', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'unspecified' })).toBe('Unspecified');
+      });
+      it('for threatLevelCategory none', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'none' })).toBe('None');
+      });
+      it('for threatLevelCategory low', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'low' })).toBe('Low');
+      });
+      it('for threatLevelCategory moderate', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'moderate' })).toBe('Moderate');
+      });
+      it('for threatLevelCategory severe', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'severe' })).toBe('Severe');
+      });
+      it('for threatLevelCategory critical', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'critical' })).toBe('Critical');
       });
     });
   });
