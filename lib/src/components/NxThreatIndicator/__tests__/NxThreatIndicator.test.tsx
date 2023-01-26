@@ -6,7 +6,7 @@
  */
 import NxThreatIndicator, { Props } from '../NxThreatIndicator';
 import { rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
-import { RenderResult, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import {
   allThreatLevelCategories,
   allThreatLevelNumbers,
@@ -84,15 +84,11 @@ describe('NxThreatIndicator', function() {
   });
 
   describe('when presentational prop is set to true', function() {
-    let el: RenderResult;
-
-    beforeEach(() => {
-      el = quickRender({ presentational: true });
-    });
+    const quickRender = rtlRender(NxThreatIndicator, { presentational: true });
 
     it('should hide tooltip', async function() {
       const user = userEvent.setup(),
-          threatIndicator = el.getByRole('presentation', { hidden: true, queryFallbacks: true });
+          threatIndicator = quickRender().getByRole('presentation', { hidden: true, queryFallbacks: true });
 
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
       await user.hover(threatIndicator);
@@ -100,13 +96,13 @@ describe('NxThreatIndicator', function() {
     });
 
     it('should set the role to "presentation"', function() {
-      const threatIndicator = el.getByRole('presentation', { hidden: true, queryFallbacks: true });
+      const threatIndicator = quickRender().getByRole('presentation', { hidden: true, queryFallbacks: true });
 
       expect(threatIndicator).toBeInTheDocument();
     });
 
     it('should not have an accessible name', function() {
-      const threatIndicator = el.getByRole('presentation', { hidden: true, queryFallbacks: true });
+      const threatIndicator = quickRender().getByRole('presentation', { hidden: true, queryFallbacks: true });
 
       expect(threatIndicator).not.toHaveAccessibleName();
     });
