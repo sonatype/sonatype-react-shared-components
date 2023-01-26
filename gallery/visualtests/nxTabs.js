@@ -17,7 +17,8 @@ describe('NxTabs', function() {
     waitAndGetElements,
     checkScreenshot,
     getPage,
-    a11yTest
+    a11yTest,
+    wait
   } = setupBrowser('#/pages/Tabs?noCheckeredBackground');
 
   function hasClass(element, cls) {
@@ -60,6 +61,16 @@ describe('NxTabs', function() {
         focusAndHoverTest(
             tabSimpleExampleSelector,
             `${tabSimpleExampleSelector} .nx-tab:nth-child(2)`));
+  });
+
+  it('shows tooltip when text is truncated', async function() {
+    const targetSelector = tabTileExampleSelector + ' .nx-tab:nth-child(3)';
+    const [targetElement, hoverElement] = await waitAndGetElements(tabTileExampleSelector, targetSelector);
+
+    await hoverElement.hover();
+    await wait(500);
+
+    await checkScreenshot(targetElement);
   });
 
   describe('Check tab panel', function() {
