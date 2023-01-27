@@ -13,14 +13,14 @@ describe('NxThreatIndicator', function() {
 
   it('renders a threat indicator', function() {
     const el = quickRender(),
-        threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true });
+        threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true });
     expect(threatIndicator).toBeInTheDocument();
   });
 
   it('takes precedence of threatLevelCategory if both props are provided', async function() {
     const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
         user = userEvent.setup(),
-        threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true })!;
+        threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true })!;
 
     await user.hover(threatIndicator);
     const tooltip = await screen.findByRole('tooltip');
@@ -29,7 +29,7 @@ describe('NxThreatIndicator', function() {
 
   it('adds aria attrs to help the icon show up for screen readers', function() {
     const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
-        threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true })!;
+        threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true })!;
 
     expect(threatIndicator).toHaveAttribute('aria-label', 'threat level low');
     expect(threatIndicator).not.toHaveAttribute('aria-hidden', true);
@@ -39,7 +39,7 @@ describe('NxThreatIndicator', function() {
     const getTooltipTextForProps = async (threat: Props) => {
       const el = quickRender(threat)!,
           user = userEvent.setup(),
-          threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true });
+          threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true });
 
       await user.hover(threatIndicator);
       const tooltip = await screen.findByRole('tooltip');
@@ -107,7 +107,7 @@ describe('NxThreatIndicator', function() {
   it('should show custom tooltip title', async function() {
     const el = quickRender({ title: 'Extinction Level Threat' }),
         user = userEvent.setup(),
-        threatIndicator = el.getByRole('img', { hidden: true, queryFallbacks: true })!;
+        threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true })!;
 
     await user.hover(threatIndicator);
     const tooltip = await screen.findByRole('tooltip');
