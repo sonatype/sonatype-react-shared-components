@@ -59,16 +59,16 @@ describe('NxTabs', function() {
   });
 
   it('renders no tab contents when none are active', function() {
-    const { getByRole, queryByRole } = quickRender({ activeTab: -1 });
+    const { queryByRole } = quickRender({ activeTab: -1 });
 
-    expect(getByRole('tab').classList.contains('active')).toBeFalsy();
+    expect(queryByRole('tab', { selected: true })).not.toBeInTheDocument();
     expect(queryByRole('tabpanel')).not.toBeInTheDocument();
   });
 
   it('renders no tab contents when no active tab is specified', function() {
-    const { getByRole, queryByRole } = quickRender();
+    const { queryByRole } = quickRender();
 
-    expect(getByRole('tab').classList.contains('active')).toBeFalsy();
+    expect(queryByRole('tab', { selected: true })).not.toBeInTheDocument();
     expect(queryByRole('tabpanel')).not.toBeInTheDocument();
   });
 
@@ -84,10 +84,9 @@ describe('NxTabs', function() {
       </NxTabs>
     );
 
-    const tabs = getAllByRole('tab');
-    expect(tabs[1]).toHaveTextContent('Tab 1');
-    expect(tabs[0].classList.contains('active')).toBe(false);
-    expect(tabs[1].classList.contains('active')).toBe(true);
+    const selectedTabs = getAllByRole('tab', { selected: true });
+    expect(selectedTabs.length).toBe(1);
+    expect(selectedTabs[0]).toHaveTextContent('Tab 1');
     expect(getByRole('tabpanel')).toHaveTextContent('Content 1');
   });
 
