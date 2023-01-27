@@ -21,6 +21,7 @@ import { Props, TransferListItemProps, NxTransferListDataItem, propTypes } from 
 
 import './NxTransferListHalf.scss';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
+import { useUniqueId } from '../../util/idUtil';
 
 export { Props, NxTransferListDataItem };
 
@@ -56,8 +57,10 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
   const tooltipProps = tooltip && wrapTooltipProps(tooltip),
       Tooltip = tooltipProps ? NxTooltip : NxOverflowTooltip;
 
+  const displayNameId = useUniqueId('nx-transfer-list-item-name');
+
   return (
-    <div role="group" aria-label={displayName} className={classes}>
+    <div role="group" aria-labelledby={displayNameId} className={classes}>
       <Tooltip { ...tooltipProps }>
         <label className="nx-transfer-list__select">
           { !!onChangeProp &&
@@ -66,7 +69,7 @@ function _TransferListItem<T extends string | number = string>(props: TransferLi
               <input className="nx-transfer-list__checkbox" type="checkbox" checked={checked} onChange={onChange} />
             </>
           }
-          <span className="nx-transfer-list__display-name">{displayName}</span>
+          <span id={displayNameId} className="nx-transfer-list__display-name">{displayName}</span>
         </label>
       </Tooltip>
       { showReorderingButtons && (
@@ -136,6 +139,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
       <div className="nx-transfer-list__control-box">
         <NxFilterInput className="nx-transfer-list__filter"
                        placeholder="Filter"
+                       aria-label="Filter"
                        value={filterValue}
                        onChange={onFilterChange} />
         { showMoveAll &&
