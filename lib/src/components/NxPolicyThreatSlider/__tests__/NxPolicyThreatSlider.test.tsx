@@ -152,6 +152,30 @@ describe('NxPolicyThreatSlider', function() {
       expect(onChange).toHaveBeenCalledWith([2, 10]);
     });
 
+    it('does not fire onChange when a min value less than zero when the slider is dragged beyond the left edge',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [3, 4] }),
+              slider = view.getByRole('slider', { name: 'threat level min' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await act(async () => {
+            await user.pointer([
+              { target: slider, coords: { x: 30, y: 5 }, keys: '[MouseLeft>]' },
+              { target: slider, coords: { x: -20, y: 5 } },
+              '[/MouseLeft]'
+            ]);
+          });
+
+          const onChangeMinVals = onChange.mock.calls.map(([[minVal]]) => minVal),
+              minMinVal = Math.min(...onChangeMinVals);
+
+          expect(minMinVal).toBe(0);
+        }
+    );
+
     it('fires onChange with the new value range when the max slider is dragged', async function() {
       const user = userEvent.setup(),
           onChange = jest.fn(),
@@ -170,6 +194,30 @@ describe('NxPolicyThreatSlider', function() {
 
       expect(onChange).toHaveBeenCalledWith([0, 2]);
     });
+
+    it('does not fire onChange when a max value greater than 10 when the slider is dragged beyond the right edge',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [3, 4] }),
+              slider = view.getByRole('slider', { name: 'threat level max' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await act(async () => {
+            await user.pointer([
+              { target: slider, coords: { x: 40, y: 5 }, keys: '[MouseLeft>]' },
+              { target: slider, coords: { x: 150, y: 5 } },
+              '[/MouseLeft]'
+            ]);
+          });
+
+          const onChangeMaxVals = onChange.mock.calls.map(([[, maxVal]]) => maxVal),
+              maxMaxVal = Math.max(...onChangeMaxVals);
+
+          expect(maxMaxVal).toBe(10);
+        }
+    );
 
     it('fires onChange with the values ordered from least to greatest when the sliders cross over one another',
         async function() {
