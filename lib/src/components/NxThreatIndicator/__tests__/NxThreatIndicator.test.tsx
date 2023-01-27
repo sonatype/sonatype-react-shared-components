@@ -13,14 +13,14 @@ describe('NxThreatIndicator', function() {
 
   it('renders a threat indicator', function() {
     const el = quickRender(),
-        threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true });
+        threatIndicator = el.getByRole('graphics-symbol', { queryFallbacks: true });
     expect(threatIndicator).toBeInTheDocument();
   });
 
   it('takes precedence of threatLevelCategory if both props are provided', async function() {
     const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
         user = userEvent.setup(),
-        threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true })!;
+        threatIndicator = el.getByRole('graphics-symbol', { queryFallbacks: true })!;
 
     await user.hover(threatIndicator);
     const tooltip = await screen.findByRole('tooltip');
@@ -29,7 +29,7 @@ describe('NxThreatIndicator', function() {
 
   it('adds aria attrs to help the icon show up for screen readers', function() {
     const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
-        threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true })!;
+        threatIndicator = el.getByRole('graphics-symbol', { queryFallbacks: true })!;
 
     expect(threatIndicator).toHaveAttribute('aria-label', 'threat level low');
     expect(threatIndicator).not.toHaveAttribute('aria-hidden', true);
@@ -39,7 +39,7 @@ describe('NxThreatIndicator', function() {
     const getTooltipTextForProps = async (threat: Props) => {
       const el = quickRender(threat)!,
           user = userEvent.setup(),
-          threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true });
+          threatIndicator = el.getByRole('graphics-symbol', { queryFallbacks: true });
 
       await user.hover(threatIndicator);
       const tooltip = await screen.findByRole('tooltip');
@@ -107,7 +107,7 @@ describe('NxThreatIndicator', function() {
   it('should show custom tooltip title', async function() {
     const el = quickRender({ title: 'Extinction Level Threat' }),
         user = userEvent.setup(),
-        threatIndicator = el.getByRole('graphics-symbol', { hidden: true, queryFallbacks: true })!;
+        threatIndicator = el.getByRole('graphics-symbol', { queryFallbacks: true })!;
 
     await user.hover(threatIndicator);
     const tooltip = await screen.findByRole('tooltip');
@@ -119,7 +119,7 @@ describe('NxThreatIndicator', function() {
 
     it('should hide tooltip', async function() {
       const user = userEvent.setup(),
-          threatIndicator = quickRender().getByRole('presentation', { hidden: true, queryFallbacks: true });
+          threatIndicator = quickRender().getByRole('presentation', { queryFallbacks: true });
 
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
       await user.hover(threatIndicator);
@@ -127,13 +127,13 @@ describe('NxThreatIndicator', function() {
     });
 
     it('should set the role to "presentation"', function() {
-      const threatIndicator = quickRender().getByRole('presentation', { hidden: true, queryFallbacks: true });
+      const threatIndicator = quickRender().getByRole('presentation', { queryFallbacks: true });
 
       expect(threatIndicator).toBeInTheDocument();
     });
 
     it('should not have an accessible name', function() {
-      const threatIndicator = quickRender().getByRole('presentation', { hidden: true, queryFallbacks: true });
+      const threatIndicator = quickRender().getByRole('presentation', { queryFallbacks: true });
 
       expect(threatIndicator).not.toHaveAccessibleName();
     });
