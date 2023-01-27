@@ -20,6 +20,12 @@ describe('NxToggle', function() {
   const quickRender = rtlRender<Props>(NxToggle, simpleProps);
   const renderEl = rtlRenderElement(NxToggle, simpleProps);
 
+  it('passes general attributes to top-level element', function() {
+    const component = renderEl({ id: 'dolphin', lang: 'en-CA' });
+    expect(component).toHaveAttribute('id', 'dolphin');
+    expect(component).toHaveAttribute('lang', 'en-CA');
+  });
+
   it('renders a switch with the correct label', function() {
     const checkbox = quickRender().getByRole('switch', { name: 'Enables whales' });
     expect(checkbox).toBeInTheDocument();

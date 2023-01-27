@@ -31,6 +31,12 @@ describe('NxStatefulToggle', function() {
     expect(checkbox).toHaveAttribute('id', 'toggle-id');
   });
 
+  it('passes general attributes to top-level element', function() {
+    const component = renderEl({ id: 'dolphin', lang: 'en-CA' });
+    expect(component).toHaveAttribute('id', 'dolphin');
+    expect(component).toHaveAttribute('lang', 'en-CA');
+  });
+
   it('merges any passed in className', function() {
     const componentWithAddedClass = renderEl({ className: 'foo' });
     const component = renderEl()!;
