@@ -66,6 +66,14 @@ describe('NxBinaryDonutChart', function() {
           + ' ' + (-10.5 * Math.sin(1.5 * Math.PI)));
     });
 
+    it('renders a circle when value is maxVal', function() {
+      expect(renderArc({ value: 200, maxVal: 200 })!.tagName).toBe('circle');
+    });
+
+    it('renders a circle when value is greater than maxVal', function() {
+      expect(renderArc({ value: 300, maxVal: 200 })!.tagName).toBe('circle');
+    });
+
     it('renders a correct arc path when 0 < value < maxVal', function() {
       const arc = renderArc({ value: 100, maxVal: 200 })!;
 
@@ -175,6 +183,14 @@ describe('NxBinaryDonutChart', function() {
 
       expect(arc).toHaveAttribute('d', 'M 0 -10.5 A 10.5 10.5 0 0 1 ' + (-10.5 * Math.cos(1.5 * Math.PI))
           + ' ' + (-10.5 * Math.sin(1.5 * Math.PI)));
+    });
+
+    it('renders a circle when percent is 100', function() {
+      expect(renderArc({ percent: 100 })!.tagName).toBe('circle');
+    });
+
+    it('renders a circle when percent is greater than 100', function() {
+      expect(renderArc({ value: 300, maxVal: 200 })!.tagName).toBe('circle');
     });
 
     it('adjusts the arc based on the innerRadiusPercent', function() {
