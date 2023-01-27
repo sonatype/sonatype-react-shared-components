@@ -5,187 +5,234 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { act } from 'react-dom/test-utils';
-import { mount, ReactWrapper } from 'enzyme';
-import 'jest-enzyme';
-import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
+import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../../__testutils__/rtlUtils';
+import { act, within } from '@testing-library/react';
 
-import NxButton from '../../../NxButton/NxButton';
-import NxIconDropdown from '../../NxIconDropdown';
 import NxStatefulIconDropdown, { Props } from '../NxStatefulIconDropdown';
 
 describe('NxStatefulIconDropdown', () => {
-  let container: HTMLDivElement | null;
-
-  const minimalProps = {
+  const minimalProps: Props = {
         title: 'stateful dropdown',
         children: <a>Hello</a>
       },
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulIconDropdown, minimalProps),
-      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxStatefulIconDropdown, minimalProps);
+      quickRender = rtlRender(NxStatefulIconDropdown, minimalProps),
+      renderEl = rtlRenderElement(NxStatefulIconDropdown, minimalProps);
 
-  beforeEach(function() {
-    // Avoid rendering directly on the body.
-    container = document.createElement('div');
-    document.body.appendChild(container);
+  it('renders a button with type=button', function() {
+    const toggleBtn = quickRender().getByRole('button');
+
+    expect(toggleBtn).toBeInTheDocument();
+    expect(toggleBtn).toHaveAttribute('type', 'button');
   });
 
-  afterEach(function() {
-    if (container) {
-      document.body.removeChild(container);
-      container = null;
+  it('adds specified classNames to the element in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
+
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
     }
   });
 
-  it('renders an NxIconDropdown component', function() {
-    const component = getShallowComponent();
-    expect(component).toMatchSelector(NxIconDropdown);
-    expect(component).toHaveProp('title', 'stateful dropdown');
+  it('passes extra attrs', function() {
+    const el = renderEl({ id: 'some-id', lang: 'en' });
+
+    expect(el).toHaveAttribute('id', 'some-id');
+    expect(el).toHaveAttribute('lang', 'en');
   });
 
-  it('renders an NxIconDropdown component passing on the given props', function() {
-    const component = getShallowComponent({
-      className: 'extra-class',
-      disabled: true
-    });
-    const statelessDropdown = component.find(NxIconDropdown);
+  it('disables the button (and the toggle fn) when the disabled prop is supplied', async function() {
+    const user = userEvent.setup(),
+        { container, getByRole } = quickRender({ disabled: true }),
+        toggleBtn = getByRole('button');
 
-    expect(component).toMatchSelector(NxIconDropdown);
-    expect(statelessDropdown).toHaveProp('title', 'stateful dropdown');
-    expect(statelessDropdown).toHaveProp('disabled', true);
-    expect(statelessDropdown).toHaveProp('children', (<a>Hello</a>));
+    expect(toggleBtn).toHaveClass('disabled');
+    expect(toggleBtn).toHaveAttribute('aria-disabled', 'true');
+
+    await user.click(toggleBtn);
+    // Currently, the dropdown menu does not have the proper aria role set.
+    // This will be addressed in this ticket:
+    // https://issues.sonatype.org/browse/RSC-989
+    const menu = container.querySelector('.nx-dropdown-menu');
+
+    expect(menu).not.toBeInTheDocument();
   });
 
-  it('opens the dropdown when the toggle is clicked', function() {
-    const mounted = getMountedComponent(undefined, { attachTo: container });
+  it('renders a button with an accessible name when title prop is supplied', async function() {
+    const toggleBtn = quickRender().getByRole('button');
 
-    expect(mounted.find('.nx-dropdown-menu')).not.toExist();
+    expect(toggleBtn).toBeInTheDocument();
 
-    mounted.find(NxButton).simulate('click');
-    expect(mounted.find('.nx-dropdown-menu')).toExist();
-    mounted.unmount();
+    await runTimers();
+
+    expect(toggleBtn).toHaveAccessibleName('stateful dropdown');
   });
 
-  it('closes the dropdown if the menu is open and the toggle is clicked', function() {
-    const mounted = getMountedComponent(undefined, { attachTo: container });
+  it('renders the children within the dropdown menu in the specified order', async function() {
+    const children = [
+      <a data-testid="menu-child" key="1">Link1</a>,
+      <a data-testid="menu-child" key="2">Link2</a>,
+      <button data-testid="menu-child" key="3">Link3</button>,
+      <button data-testid="menu-child" key="4">Link4</button>
+    ];
 
-    act(() => {
-      mounted.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(
-          new MouseEvent('click', { bubbles: true }));
-    });
-    mounted.update();
-    expect(mounted.find('.nx-dropdown-menu')).toExist();
+    const user = userEvent.setup(),
+        el = renderEl({ children })!,
+        toggleBtn = within(el).getByRole('button');
 
-    act(() => {
-      mounted.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(
-          new MouseEvent('click', { bubbles: true }));
-    });
-    mounted.update();
-    expect(mounted.find('.nx-dropdown-menu')).not.toExist();
-    mounted.unmount();
+    await user.click(toggleBtn);
+
+    const menu = el.querySelector('.nx-dropdown-menu'),
+        menuChildren = within(el).getAllByTestId('menu-child');
+
+    expect(menu).toBeInTheDocument();
+    expect(menuChildren[0]).toHaveTextContent('Link1');
+    expect(menuChildren[1]).toHaveTextContent('Link2');
+    expect(menuChildren[2]).toHaveTextContent('Link3');
+    expect(menuChildren[3]).toHaveTextContent('Link4');
   });
 
-  it('closes the dropdown when the Escape key is pressed on this component', function() {
-    const page = (
-      <div>
-        <NxStatefulIconDropdown title="stateful dropdown" />
-      </div>
-    );
-    const element = mount(page, { attachTo: container });
-    element.find(NxButton).simulate('click');
-    expect(element.find('.nx-dropdown-menu')).toExist();
+  it('toggles the dropdown open and closed when the toggle button is clicked', async function() {
+    const user = userEvent.setup(),
+        { container, getByRole } = quickRender(),
+        toggleBtn = getByRole('button');
 
-    element.find(NxIconDropdown).simulate('keyDown', {key: 'Escape'});
-    expect(element.find('.nx-dropdown-menu')).not.toExist();
+    expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
 
-    element.unmount();
+    await user.click(toggleBtn);
+
+    expect(container.querySelector('.nx-dropdown-menu')).toBeInTheDocument();
+
+    await act(async () => { await user.click(toggleBtn); });
+
+    expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
   });
 
-  it('closes the dropdown when an outside click happens', function() {
-    let element: ReactWrapper;
+  it('closes the dropdown if a click happens anywhere when the dropdown is already open', async function() {
+    const user = userEvent.setup(),
+        { container, getByRole } = quickRender(),
+        toggleBtn = getByRole('button');
 
-    // `act` ensures that updates related to “units” of interaction with a user interface have been processed
-    // and applied to the DOM before you make any assertions.
-    // See https://reactjs.org/blog/2019/02/06/react-v16.8.0.html#testing-hooks
-    // and https://reactjs.org/docs/testing-recipes.html#act
-    act(() => {
-      element = mount(
-        <div>
-          <NxStatefulIconDropdown title="stateful dropdown" />
-          <button id="test-btn">click</button>
-        </div>,
-        { attachTo: container }
-      );
-    });
+    await user.click(toggleBtn);
 
-    act(() => {
-      // Jest/JSDom need actual events to be able to trigger effects properly
-      // See https://stackoverflow.com/questions/27557624/simulating-click-on-document-reactjs-jsdom
-      element.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
-        bubbles: true
-      }));
-    });
-    element!.update();
-    expect(element!.find('.nx-dropdown-menu')).toExist();
+    expect(container.querySelector('.nx-dropdown-menu')).toBeInTheDocument();
 
-    act(() => {
-      element!.find('#test-btn').getDOMNode().dispatchEvent(new MouseEvent('click', {
-        bubbles: true
-      }));
-    });
-    element!.update();
-    expect(element!.find('.nx-dropdown-menu')).not.toExist();
+    await act(async () => { await user.click(document.body); });
 
-    act(() => {
-      element!.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
-        bubbles: true
-      }));
-    });
-    element!.update();
-    expect(element!.find('.nx-dropdown-menu')).toExist();
-
-    element!.unmount();
+    expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
   });
 
-  it('closes the dropdown when a child is clicked - after calling the child\'s click handler', function() {
-    let element: ReactWrapper;
+  it('does not open the dropdown if a click happens anywhere aside from the '
+    + 'toggle button when the dropdown is closed', async function() {
+    const user = userEvent.setup(),
+        el = renderEl()!;
 
-    const childClickSpy = jest.fn();
-    act(() => {
-      element = mount(
-        <NxStatefulIconDropdown title="stateful dropdown">
-          <a id="child" onClick={childClickSpy}>Hello</a>
-        </NxStatefulIconDropdown>,
-        { attachTo: container }
-      );
-    });
+    expect(el.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
 
-    act(() => {
-      element.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
-        bubbles: true
-      }));
-    });
-    element!.update();
-    expect(element!.find('.nx-dropdown-menu')).toExist();
+    await user.click(document.body);
 
-    act(() => {
-      element!.find('#child').getDOMNode().dispatchEvent(new MouseEvent('click', {
-        bubbles: true
-      }));
-    });
-    element!.update();
+    expect(el.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
+  });
+
+  it('does not open the dropdown if a click happens anywhere when the dropdown is disabled', async function() {
+    const user = userEvent.setup(),
+        { container, getByRole } = quickRender({ disabled: true }),
+        toggleBtn = getByRole('button');
+
+    expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
+
+    await user.click(toggleBtn);
+
+    expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
+  });
+
+  it('closes the dropdown when a child is clicked - after calling the child\'s click handler', async function() {
+    const user = userEvent.setup(),
+        childClickSpy = jest.fn(),
+        { container, getByRole, getByTestId } = quickRender({
+          children: <a data-testid="child" onClick={childClickSpy}>Hello</a>
+        }),
+        toggleBtn = getByRole('button');
+
+    await user.click(toggleBtn);
+
+    const menu = container.querySelector('.nx-dropdown-menu'),
+        children = getByTestId('child');
+
+    expect(menu).toBeInTheDocument();
+
+    await act(async () => { await user.click(children); });
 
     expect(childClickSpy).toHaveBeenCalled();
-    expect(element!.find('.nx-dropdown-menu')).not.toExist();
-
-    act(() => {
-      element!.find('button.nx-icon-dropdown__toggle').getDOMNode().dispatchEvent(new MouseEvent('click', {
-        bubbles: true
-      }));
-    });
-    element!.update();
-    expect(element!.find('.nx-dropdown-menu')).toExist();
-
-    element!.unmount();
+    expect(menu).not.toBeInTheDocument();
   });
+
+  it('closes the dropdown when the Escape key is pressed and dropdown is open', async function() {
+    const user = userEvent.setup(),
+        { container, getByRole } = quickRender(),
+        toggleBtn = getByRole('button');
+
+    await user.click(toggleBtn);
+
+    expect(container.querySelector('.nx-dropdown-menu')).toBeInTheDocument();
+
+    toggleBtn.focus();
+    await user.keyboard('[Escape]');
+
+    expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
+  });
+
+  it('does not open the dropdown when the Escape key is pressed and dropdown is closed', async function() {
+    const user = userEvent.setup(),
+        { container, getByRole } = quickRender(),
+        toggleBtn = getByRole('button');
+
+    expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
+
+    toggleBtn.focus();
+    await user.keyboard('[Escape]');
+
+    expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
+  });
+
+  it('does not close the dropdown when the Escape key is pressed and dropdown is disabled', async function() {
+    const user = userEvent.setup(),
+        { container, getByRole, rerender } = quickRender(),
+        toggleBtn = getByRole('button');
+
+    await user.click(toggleBtn);
+
+    expect(container.querySelector('.nx-dropdown-menu')).toBeInTheDocument();
+
+    rerender(<NxStatefulIconDropdown {...minimalProps} disabled={true}/>);
+
+    toggleBtn.focus();
+    await user.keyboard('[Escape]');
+
+    expect(container.querySelector('.nx-dropdown-menu')).toBeInTheDocument();
+  });
+
+  it('moves focus to the dropdown toggle button if a menu item is focused when the dropdown is closed',
+      async function() {
+        const props: Partial<Props> = {
+              children: <button data-testid="dropdown-button">Foo</button>
+            },
+            user = userEvent.setup(),
+            { getByTestId, getByRole } = quickRender(props),
+            toggleBtn = getByRole('button');
+
+        await user.click(toggleBtn);
+
+        const menuBtn = getByTestId('dropdown-button');
+
+        menuBtn.focus();
+
+        expect(document.activeElement).toBe(menuBtn);
+
+        await user.keyboard('[Escape]');
+
+        expect(document.activeElement).toBe(toggleBtn);
+      });
 });
