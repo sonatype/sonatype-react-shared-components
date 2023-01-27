@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { render, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import NxTransferList, { Props } from '../NxTransferList';
@@ -532,7 +532,7 @@ describe('NxTransferList', function() {
       const user = userEvent.setup(),
           onAvailableItemsFilterChange = jest.fn(),
           onSelectedItemsFilterChange = jest.fn(),
-          view = quickRender({ onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
+          view = quickRender({ availableItemsFilter: 'a', onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
           availableGroup = view.getByRole('group', { name: 'Available Items' });
 
       await runTimers();
@@ -542,6 +542,27 @@ describe('NxTransferList', function() {
       expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
 
       await user.click(clearFilterBtn);
+
+      expect(onAvailableItemsFilterChange).toHaveBeenCalledWith('');
+      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
+    });
+
+    it('fires onAvailableItemsFilterChange with the new empty string when ESC is pressed within the available ' +
+        'items filter', async function() {
+      const user = userEvent.setup(),
+          onAvailableItemsFilterChange = jest.fn(),
+          onSelectedItemsFilterChange = jest.fn(),
+          view = quickRender({ availableItemsFilter: 'a', onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
+          availableGroup = view.getByRole('group', { name: 'Available Items' });
+
+      await runTimers();
+      const filterInput = within(availableGroup).getByRole('textbox');
+
+      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
+      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
+
+      filterInput.focus();
+      await user.keyboard('[Escape]');
 
       expect(onAvailableItemsFilterChange).toHaveBeenCalledWith('');
       expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
@@ -574,7 +595,7 @@ describe('NxTransferList', function() {
       const user = userEvent.setup(),
           onAvailableItemsFilterChange = jest.fn(),
           onSelectedItemsFilterChange = jest.fn(),
-          view = quickRender({ onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
+          view = quickRender({ selectedItemsFilter: 'a', onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
           selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
 
       await runTimers();
@@ -584,6 +605,27 @@ describe('NxTransferList', function() {
       expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
 
       await user.click(clearFilterBtn);
+
+      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
+      expect(onSelectedItemsFilterChange).toHaveBeenCalledWith('');
+    });
+
+    it('fires onSelectedItemsFilterChange with the new empty string when ESC is pressed within the transferred ' +
+        'items filter', async function() {
+      const user = userEvent.setup(),
+          onAvailableItemsFilterChange = jest.fn(),
+          onSelectedItemsFilterChange = jest.fn(),
+          view = quickRender({ selectedItemsFilter: 'a', onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
+          selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
+
+      await runTimers();
+      const filterInput = within(selectedGroup).getByRole('textbox');
+
+      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
+      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
+
+      filterInput.focus();
+      await user.keyboard('[Escape]');
 
       expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
       expect(onSelectedItemsFilterChange).toHaveBeenCalledWith('');
@@ -741,6 +783,74 @@ describe('NxTransferList', function() {
         expect(onChange).not.toHaveBeenCalled();
       });
 
+      it('adds tooltips to each reordering button matching its name', async function() {
+        const user = userEvent.setup(),
+            allItems = [
+              { id: 1, displayName: 'One' },
+              { id: 2, displayName: 'Two' },
+              { id: 3, displayName: 'Theo' }
+            ],
+            view = quickRender({ allItems, selectedItems: [1, 2, 3] }),
+            group1 = view.getByRole('group', { name: 'One' }),
+            group2 = view.getByRole('group', { name: 'Two' }),
+            group3 = view.getByRole('group', { name: 'Theo' });
+
+        await runTimers();
+        const [up1Btn, down1Btn] = within(group1).getAllByRole('button'),
+            [up2Btn, down2Btn] = within(group2).getAllByRole('button'),
+            [up3Btn, down3Btn] = within(group3).getAllByRole('button');
+
+        await runTimers();
+
+        await user.hover(up1Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Move Up (disabled)');
+
+        await user.unhover(up1Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(up2Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Move Up');
+
+        await user.unhover(up2Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(up3Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Move Up');
+
+        await user.unhover(up3Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(down1Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Move Down');
+
+        await user.unhover(down1Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(down2Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Move Down');
+
+        await user.unhover(down2Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(down3Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Move Down (disabled)');
+
+        await user.unhover(down3Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+      });
+
       it('fires onChange with the newly ordered array when Move Up is clicked', async function() {
         const user = userEvent.setup(),
             onChange = jest.fn(),
@@ -896,6 +1006,75 @@ describe('NxTransferList', function() {
         }
 
         expect(onChange).not.toHaveBeenCalled();
+      });
+
+      it('adds a "Reordering is disabled with filtered" tooltip on the buttons when selectedItemsFilters is ' +
+          'a non-empty string', async function() {
+        const user = userEvent.setup(),
+            allItems = [
+              { id: 1, displayName: 'One' },
+              { id: 2, displayName: 'Two' },
+              { id: 3, displayName: 'Theo' }
+            ],
+            view = quickRender({ allItems, selectedItemsFilter: 'o', selectedItems: [1, 2, 3] }),
+            group1 = view.getByRole('group', { name: 'One' }),
+            group2 = view.getByRole('group', { name: 'Two' }),
+            group3 = view.getByRole('group', { name: 'Theo' });
+
+        await runTimers();
+        const [up1Btn, down1Btn] = within(group1).getAllByRole('button'),
+            [up2Btn, down2Btn] = within(group2).getAllByRole('button'),
+            [up3Btn, down3Btn] = within(group3).getAllByRole('button');
+
+        await runTimers();
+
+        await user.hover(up1Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Reordering is disabled when filtered');
+
+        await user.unhover(up1Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(up2Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Reordering is disabled when filtered');
+
+        await user.unhover(up2Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(up3Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Reordering is disabled when filtered');
+
+        await user.unhover(up3Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(down1Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Reordering is disabled when filtered');
+
+        await user.unhover(down1Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(down2Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Reordering is disabled when filtered');
+
+        await user.unhover(down2Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+        await user.hover(down3Btn);
+        await runTimers();
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Reordering is disabled when filtered');
+
+        await user.unhover(down3Btn);
+        await runTimers();
+        expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
       });
     });
   });
