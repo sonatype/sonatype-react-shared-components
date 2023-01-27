@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import NxToggle from '../../NxToggle';
+import { screen, within } from '@testing-library/react';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
+
 import NxStatefulToggle, { Props } from '../NxStatefulToggle';
-import {getShallowComponent} from '../../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
 
 describe('NxStatefulToggle', function() {
   const simpleProps: Props = {
@@ -18,44 +18,43 @@ describe('NxStatefulToggle', function() {
     children: 'Enables whales'
   };
 
-  const getShallow = getShallowComponent<Props>(NxStatefulToggle, {defaultChecked: false});
-
-  it('renders a NxToggle with the provided properties', function() {
-    const shallowRender = getShallow(simpleProps);
-
-    expect(shallowRender).toMatchSelector(NxToggle);
-
-    expect(shallowRender).toHaveProp('inputId', 'toggle-id');
-    expect(shallowRender).toHaveProp('isChecked', simpleProps.defaultChecked);
-    expect(shallowRender).toHaveProp('onChange');
-  });
+  const quickRender = rtlRender<Props>(NxStatefulToggle, { defaultChecked: false });
+  const renderEl = rtlRenderElement<Props>(NxStatefulToggle, simpleProps);
 
   it('sets the initial value of isChecked to the value of defaultChecked prop', function() {
-    const shallowRenderWithDefaultCheckedFalse = getShallow({defaultChecked: false});
-    expect(shallowRenderWithDefaultCheckedFalse).toHaveProp('isChecked', false);
+    const switchWithDefaultCheckedFalse =
+      within(renderEl({ defaultChecked: false })!).getByRole('switch') as HTMLInputElement;
+    expect(switchWithDefaultCheckedFalse.checked).toBe(false);
 
-    const shallowRenderWithDefaultCheckedTrue = getShallow({defaultChecked: true});
-    expect(shallowRenderWithDefaultCheckedTrue).toHaveProp('isChecked', true);
+    const switchWithDefaultCheckedTrue =
+      within(renderEl({ defaultChecked: true })!).getByRole('switch') as HTMLInputElement;
+    expect(switchWithDefaultCheckedTrue.checked).toBe(true);
   });
 
-  it('adds the nx-toggle--disabled class if disabled is set', function() {
-    expect(getShallow()).not.toHaveProp('disabled');
-    expect(getShallow({ disabled: true })).toHaveProp('disabled');
+  it('disables switch when disabled prop is true', function() {
+    expect(quickRender().getByRole('switch')).not.toBeDisabled();
+    expect(quickRender({ disabled: true }).getByRole('switch')).toBeDisabled();
   });
 
-  it('updates isChecked prop on NxToggle when the control is toggled', function() {
-    const component = getShallow(simpleProps);
-    expect(component).toHaveProp('isChecked', false);
-    component.simulate('change');
-    expect(component).toHaveProp('isChecked', true);
+  it('updates isChecked prop on NxToggle when the control is toggled', async function() {
+    const user = userEvent.setup();
+    quickRender(simpleProps);
+    const switchEl = screen.getByRole('switch') as HTMLInputElement;
+    expect(switchEl.checked).toBe(false);
+    await user.click(switchEl);
+    expect(switchEl.checked).toBe(true);
   });
 
-  it('calls its onChange prop when the input fires a change event', function() {
-    const onChange = jest.fn(),
-        component = getShallow({ onChange });
+  it('calls its onChange prop when the input fires a change event', async function() {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+
+    quickRender({ onChange });
+
+    const switchEl = screen.getByRole('switch') as HTMLInputElement;
 
     expect(onChange).not.toHaveBeenCalled();
-    component.simulate('change', true);
+    await user.click(switchEl);
     expect(onChange).toHaveBeenCalledWith(true);
   });
 });
