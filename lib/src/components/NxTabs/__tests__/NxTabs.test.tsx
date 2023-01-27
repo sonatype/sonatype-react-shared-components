@@ -95,7 +95,7 @@ describe('NxTabs', function() {
     const onTabSelect = jest.fn();
 
     const { getByRole } = quickRender({
-      activeTab: 0,
+      activeTab: -1,
       onTabSelect
     });
 
