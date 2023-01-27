@@ -65,13 +65,6 @@ describe('NxTabs', function() {
     expect(queryByRole('tabpanel')).not.toBeInTheDocument();
   });
 
-  it('renders no tab contents when no active tab is specified', function() {
-    const { queryByRole } = quickRender();
-
-    expect(queryByRole('tab', { selected: true })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel')).not.toBeInTheDocument();
-  });
-
   it('activates the active tab', function() {
     const { getAllByRole, getByRole } = render(
       <NxTabs activeTab={1} onTabSelect={() => {}}>
