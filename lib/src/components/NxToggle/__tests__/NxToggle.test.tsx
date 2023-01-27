@@ -4,8 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-
-import { screen } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxToggle, { Props } from '../NxToggle';
@@ -23,16 +21,13 @@ describe('NxToggle', function() {
   const renderEl = rtlRenderElement(NxToggle, simpleProps);
 
   it('renders a swith with the correct label', function() {
-    quickRender();
-
-    const checkbox = screen.getByRole('switch', { name: 'Enables whales' });
+    const checkbox = quickRender().getByRole('switch', { name: 'Enables whales' });
     expect(checkbox).toBeInTheDocument();
   });
 
   it('renders an input element with role=switch with the correct attributes', function() {
-    quickRender();
-
-    const checkbox = screen.getByRole('switch');
+    const checkbox = quickRender().getByRole('switch');
+    expect(checkbox).toBeInTheDocument();
     expect(checkbox).toHaveAttribute('id', 'toggle-id');
   });
 
@@ -64,13 +59,13 @@ describe('NxToggle', function() {
     const user = userEvent.setup();
     const onChange = jest.fn();
 
-    quickRender({ onChange });
-
-    const checkbox = screen.getByRole('switch');
+    const checkbox = quickRender({ onChange }).getByRole('switch');
 
     expect(onChange).not.toHaveBeenCalled();
+
     await checkbox.focus();
-    await user.keyboard('{Space}');
+    await user.keyboard(' ');
+
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -87,9 +82,7 @@ describe('NxToggle', function() {
       }
     };
 
-    quickRender(props);
-
-    const checkbox = screen.getByRole('switch');
+    const checkbox = quickRender(props).getByRole('switch');
 
     expect(checkbox).toHaveAttribute('id', 'garfield');
     expect(checkbox).toHaveAttribute('name', 'garfield');

@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { screen, within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
 
 import NxStatefulToggle, { Props } from '../NxStatefulToggle';
@@ -18,17 +17,37 @@ describe('NxStatefulToggle', function() {
     children: 'Enables whales'
   };
 
-  const quickRender = rtlRender<Props>(NxStatefulToggle, { defaultChecked: false });
-  const renderEl = rtlRenderElement<Props>(NxStatefulToggle, simpleProps);
+  const quickRender = rtlRender<Props>(NxStatefulToggle, simpleProps);
+  const renderEl = rtlRenderElement(NxStatefulToggle, simpleProps);
+
+  it('renders a swith with the correct label', function() {
+    const checkbox = quickRender().getByRole('switch', { name: 'Enables whales' });
+    expect(checkbox).toBeInTheDocument();
+  });
+
+  it('renders an input element with role=switch with the correct attributes', function() {
+    const checkbox = quickRender().getByRole('switch');
+    expect(checkbox).toBeInTheDocument();
+    expect(checkbox).toHaveAttribute('id', 'toggle-id');
+  });
+
+  it('merges any passed in className', function() {
+    const componentWithAddedClass = renderEl({ className: 'foo' });
+    const component = renderEl()!;
+
+    expect(componentWithAddedClass).toHaveClass('foo');
+
+    for (const cls of Array.from(component.classList)) {
+      expect(componentWithAddedClass).toHaveClass(cls);
+    }
+  });
 
   it('sets the initial value of isChecked to the value of defaultChecked prop', function() {
-    const switchWithDefaultCheckedFalse =
-      within(renderEl({ defaultChecked: false })!).getByRole('switch') as HTMLInputElement;
-    expect(switchWithDefaultCheckedFalse.checked).toBe(false);
+    const swithWithDefaultNotChecked = quickRender({ defaultChecked: false })!.queryByRole('switch', { checked: true });
+    expect(swithWithDefaultNotChecked).not.toBeInTheDocument();
 
-    const switchWithDefaultCheckedTrue =
-      within(renderEl({ defaultChecked: true })!).getByRole('switch') as HTMLInputElement;
-    expect(switchWithDefaultCheckedTrue.checked).toBe(true);
+    const switchWithDefaultChecked = quickRender({ defaultChecked: true })!.getByRole('switch', { checked: true });
+    expect(switchWithDefaultChecked).toBeInTheDocument();
   });
 
   it('disables switch when disabled prop is true', function() {
@@ -38,23 +57,70 @@ describe('NxStatefulToggle', function() {
 
   it('updates isChecked prop on NxToggle when the control is toggled', async function() {
     const user = userEvent.setup();
-    quickRender(simpleProps);
-    const switchEl = screen.getByRole('switch') as HTMLInputElement;
-    expect(switchEl.checked).toBe(false);
-    await user.click(switchEl);
-    expect(switchEl.checked).toBe(true);
+
+    const checkbox = quickRender(simpleProps).getByRole('switch')!;
+
+    expect(checkbox).not.toBeChecked();
+    await user.click(checkbox);
+    expect(checkbox).toBeChecked();
   });
 
   it('calls its onChange prop when the input fires a change event', async function() {
     const user = userEvent.setup();
     const onChange = jest.fn();
 
-    quickRender({ onChange });
-
-    const switchEl = screen.getByRole('switch') as HTMLInputElement;
+    const checkbox = quickRender({ onChange }).getByRole('switch');
 
     expect(onChange).not.toHaveBeenCalled();
-    await user.click(switchEl);
+    await user.click(checkbox);
     expect(onChange).toHaveBeenCalledWith(true);
+  });
+
+  it('calls its onChange prop when the label is clicked', async function() {
+    const user = userEvent.setup();
+
+    const onChange = jest.fn();
+
+    const { container } = quickRender({ onChange });
+    const label = container.querySelector('label')!;
+
+    expect(onChange).not.toHaveBeenCalled();
+    await user.click(label);
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls its onChange prop when the input is focused and space key is pressed', async function() {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+
+    const checkbox = quickRender({ onChange }).getByRole('switch');
+
+    expect(onChange).not.toHaveBeenCalled();
+    await checkbox.focus();
+    await user.keyboard(' ');
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('passes input attributes into the input element and does not clash with top-level attributes', function() {
+    const props: Props = {
+      inputId: 'not-garfield',
+      disabled: true,
+      defaultChecked: true,
+      className: 'label-classname',
+      inputAttributes: {
+        id: 'garfield',
+        name: 'garfield',
+        className: 'input-classname'
+      }
+    };
+
+    const checkbox = quickRender(props).getByRole('switch');
+
+    expect(checkbox).toHaveAttribute('id', 'garfield');
+    expect(checkbox).toHaveAttribute('name', 'garfield');
+    expect(checkbox).toBeDisabled();
+    expect(checkbox).toHaveClass('input-classname');
+    expect(checkbox).not.toHaveClass('label-classname');
+    expect(checkbox).toBeChecked();
   });
 });
