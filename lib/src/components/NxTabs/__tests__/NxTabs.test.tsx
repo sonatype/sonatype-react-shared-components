@@ -51,11 +51,18 @@ describe('NxTabs', function() {
   });
 
   it('renders using as specific id', function() {
-    const commponent = renderEl({
-      id: 'my-tabs',
-      activeTab: -1
-    })!;
-    expect(commponent.id).toMatch('my-tabs');
+    const { container, getByRole } = render(
+      <NxTabs activeTab={0} id="my-tabs" onTabSelect={() => {}}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+      </NxTabs>
+    );
+
+    expect(container.firstElementChild!.id).toMatch('my-tabs');
+    expect(getByRole('tab')!.id).toMatch('my-tabs');
+    expect(getByRole('tabpanel')!.id).toMatch('my-tabs');
   });
 
   it('renders no tab contents when none are active', function() {
