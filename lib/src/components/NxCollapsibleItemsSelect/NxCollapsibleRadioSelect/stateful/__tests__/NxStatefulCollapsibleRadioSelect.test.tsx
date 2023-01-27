@@ -247,11 +247,11 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
     });
 
     it('renders an unchecked radio if option is not selected', function() {
-      expect(quickRender({ selectedId: 'bar' }).getAllByRole('menuitemradio')[0]).not.toBeChecked();
+      expect(quickRender({ selectedId: 'bar' }).getByRole('menuitemradio', { name: 'Foo' })).not.toBeChecked();
     });
 
     it('renders a checked radio if option is selected', function() {
-      expect(quickRender({ selectedId: 'bar' }).getAllByRole('menuitemradio')[1]).toBeChecked();
+      expect(quickRender({ selectedId: 'bar' }).getByRole('menuitemradio', { name: 'Bar' })).toBeChecked();
     });
 
     it('renders all unchecked radios if no selectedId is provided', function() {
