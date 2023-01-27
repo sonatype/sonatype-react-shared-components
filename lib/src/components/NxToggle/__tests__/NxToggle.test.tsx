@@ -20,7 +20,7 @@ describe('NxToggle', function() {
   const quickRender = rtlRender<Props>(NxToggle, simpleProps);
   const renderEl = rtlRenderElement(NxToggle, simpleProps);
 
-  it('renders a swith with the correct label', function() {
+  it('renders a switch with the correct label', function() {
     const checkbox = quickRender().getByRole('switch', { name: 'Enables whales' });
     expect(checkbox).toBeInTheDocument();
   });
