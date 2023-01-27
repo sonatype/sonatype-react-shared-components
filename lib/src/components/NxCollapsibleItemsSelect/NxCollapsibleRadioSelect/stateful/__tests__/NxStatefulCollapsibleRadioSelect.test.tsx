@@ -462,6 +462,8 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
         await user.keyboard('[Escape]');
         expect(inputEl).toHaveValue('');
 
+        expect(options.length).toBe(4);
+
         await user.keyboard('BA');
 
         expect(options.length).toBe(2);
