@@ -358,10 +358,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       });
 
       it('does not filter options when typing only spaces', async function() {
-        let options;
-        const user = userEvent.setup();
-
-        options = getOptions(view);
+        const user = userEvent.setup(),
+            options = getOptions(view);
 
         expect(options).toHaveLength(4);
         expect(options[0]).toHaveAccessibleName('all/none');
