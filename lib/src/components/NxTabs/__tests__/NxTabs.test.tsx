@@ -28,8 +28,8 @@ describe('NxTabs', function() {
   const renderEl = rtlRenderElement<NxTabsProps>(NxTabs, minimumProps);
 
   it('merges any passed in className', function() {
-    const tabsWithAddedClassName = renderEl({ activeTab: -1, className: 'foo' });
-    const tabs = renderEl({ activeTab: -1 })!;
+    const tabsWithAddedClassName = renderEl({ className: 'foo' });
+    const tabs = renderEl()!;
 
     expect(tabsWithAddedClassName).toHaveClass('foo');
 
