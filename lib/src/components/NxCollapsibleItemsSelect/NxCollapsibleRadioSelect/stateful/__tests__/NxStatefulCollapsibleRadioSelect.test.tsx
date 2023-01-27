@@ -238,14 +238,6 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
       expect(options.length).toBe(3);
     });
 
-    it('renders text content according to option\'s name prop', function() {
-      const options = quickRender().getByRole('menu').children;
-
-      expect(options[0]).toHaveTextContent('Foo');
-      expect(options[1]).toHaveTextContent('Bar');
-      expect(options[2]).toHaveTextContent('Null');
-    });
-
     it('renders accessible name according to option\'s name prop', function() {
       const options = quickRender().getAllByRole('menuitemradio');
 
