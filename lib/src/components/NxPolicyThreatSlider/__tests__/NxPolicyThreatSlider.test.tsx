@@ -183,8 +183,8 @@ describe('NxPolicyThreatSlider', function() {
           await act(async () => {
             await user.pointer([
               { target: slider, coords: { x: 40, y: 5 }, keys: '[MouseLeft>]' },     // mouse down on slider
-              { target: slider, coords: { x: 20, y: 5 } },                            // drag to (20, 5)
-              '[/MouseLeft]'                                                          // mouse up
+              { target: slider, coords: { x: 20, y: 5 } },                           // drag to (20, 5)
+              '[/MouseLeft]'                                                         // mouse up
             ]);
           });
 
