@@ -39,11 +39,6 @@ describe('NxStatefulTabs', function() {
     }
   });
 
-  it('selects no tab when none is provided', function() {
-    const { getByRole } = quickRender();
-    expect(getByRole('tab')).not.toHaveClass('active');
-  });
-
   it('renders with a unique id each time', function() {
     const firstTabs = renderEl({ defaultActiveTab: 0 })!;
     const secondTabs = renderEl({ defaultActiveTab: 0 })!;
@@ -57,29 +52,29 @@ describe('NxStatefulTabs', function() {
   });
 
   it('renders using as specific id', function() {
-    const commponent = renderEl({
-      id: 'my-tabs',
-      defaultActiveTab: -1
-    })!;
-    expect(commponent.id).toMatch('my-tabs');
+    const { container, getByRole } = render(
+      <NxStatefulTabs defaultActiveTab={0} id="my-tabs" onTabSelect={() => {}}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+      </NxStatefulTabs>
+    );
+
+    expect(container.firstElementChild!.id).toMatch('my-tabs');
+    expect(getByRole('tab')!.id).toMatch('my-tabs');
+    expect(getByRole('tabpanel')!.id).toMatch('my-tabs');
   });
 
   it('renders no tab contents when none are active', function() {
-    const { getByRole, queryByRole } = quickRender({ defaultActiveTab: -1 });
+    const { queryByRole } = quickRender({ defaultActiveTab: -1 });
 
-    expect(getByRole('tab').classList.contains('active')).toBeFalsy();
-    expect(queryByRole('tabpanel')).not.toBeInTheDocument();
-  });
-
-  it('renders no tab contents when no active tab is specified', function() {
-    const { getByRole, queryByRole } = quickRender();
-
-    expect(getByRole('tab').classList.contains('active')).toBeFalsy();
+    expect(queryByRole('tab', { selected: true })).not.toBeInTheDocument();
     expect(queryByRole('tabpanel')).not.toBeInTheDocument();
   });
 
   it('selects the default tab initially', function() {
-    const { getAllByRole } = render(
+    const { getByRole } = render(
       <NxStatefulTabs defaultActiveTab={1}>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
@@ -90,14 +85,14 @@ describe('NxStatefulTabs', function() {
       </NxStatefulTabs>
     );
 
-    const secondTab = getAllByRole('tab')[1];
-    expect(secondTab).toHaveClass('active');
+    const activeTab = getByRole('tab', { selected: true });
+    expect(activeTab).toHaveAccessibleName('Tab 1 Tab 1');
   });
 
   it('selects the second tab on click', async function() {
     const user = userEvent.setup();
 
-    const { getAllByRole } = render(
+    const { getAllByRole, getByRole, queryByRole } = render(
       <NxStatefulTabs>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
@@ -108,11 +103,10 @@ describe('NxStatefulTabs', function() {
       </NxStatefulTabs>
     );
 
-    const secondTab = getAllByRole('tab')[1];
-    expect(secondTab).not.toHaveClass('active');
-    await user.click(secondTab);
+    expect(queryByRole('tab', { selected: true })).not.toBeInTheDocument();
+    await user.click(getAllByRole('tab')[1]);
 
-    expect(secondTab).toHaveClass('active');
+    expect(getByRole('tab', { selected: true })).toHaveAccessibleName('Tab 1 Tab 1');
   });
 
   it('calls custom onTabSelect when a tab is selected', async function() {
@@ -157,5 +151,29 @@ describe('NxStatefulTabs', function() {
     await user.keyboard('{ArrowRight}{Enter}');
 
     expect(onTabSelect).toHaveBeenCalledWith(1);
+  });
+
+  it('sets id and aria labelledby to panel to reference active tab aria-controls', async function() {
+    const user = userEvent.setup();
+
+    const { getByRole } = render(
+      <NxStatefulTabs defaultActiveTab={0}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
+      </NxStatefulTabs>
+    );
+    const getActiveTabControls = () => getByRole('tab', { selected: true }).getAttribute('aria-controls');
+
+    expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
+    expect(getByRole('tabpanel')).toHaveAccessibleName('Tab 0 Tab 0');
+
+    await user.click(getByRole('tab', { selected: false }));
+
+    expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
+    expect(getByRole('tabpanel')).toHaveAccessibleName('Tab 1 Tab 1');
   });
 });
