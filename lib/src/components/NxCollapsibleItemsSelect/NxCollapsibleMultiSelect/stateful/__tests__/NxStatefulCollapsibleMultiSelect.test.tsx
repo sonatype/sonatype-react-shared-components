@@ -370,9 +370,9 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
         expect(options[3]).toHaveAccessibleName('Cat Lover');
 
         await user.type(inputEl, ' ');
-        options = getOptions(view);
-        expect(options).toHaveLength(4);
-        expect(options).toEqual(options);
+        const optionsAfterTyping = getOptions(view);
+        expect(optionsAfterTyping).toHaveLength(4);
+        expect(optionsAfterTyping).toEqual(options);
       });
 
       it('filters options when value of text input changed', async function() {
