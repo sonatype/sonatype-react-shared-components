@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
-import NxStatefulToggle, { Props } from '../NxStatefulToggle';
+import NxStatefulToggle, { Props } from '../stateful/NxStatefulToggle';
 
 describe('NxStatefulToggle', function() {
   const simpleProps: Props = {
