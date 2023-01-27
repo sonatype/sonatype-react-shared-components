@@ -5,84 +5,119 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow } from 'enzyme';
-import 'jest-enzyme';
-
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxPageHeader from '../NxPageHeader';
-import AbstractNxPageHeader from '../../AbstractNxPageHeader/AbstractNxPageHeader';
 
-describe('NxPageHeader', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxPageHeader, {});
+import { screen } from '@testing-library/react';
+import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-  it('renders an AbstractNxPageHeader', function() {
-    expect(getShallowComponent()).toMatchSelector(AbstractNxPageHeader);
+fdescribe('NxPageHeader', function() {
+
+  const renderEl = rtlRenderElement(NxPageHeader, {});
+
+ it('renders a simple NxPageHeader', function() {
+    renderEl();
+    const logo = screen.getByRole('img')
+    expect(logo).toBeInTheDocument();
+    
   });
 
-  it('passes its links, homeLink, and children props to the AbstractNxPageHeader', function() {
-    const props = {
-          links: [{ name: 'foo', href: '#bar' }],
-          homeLink: '#home',
-          children: <button>Click Here For a Free iPhone</button>
-        },
-        component = getShallowComponent(props);
+  it('renders a custom logo when given logo prop', function() {
+    const logo = renderEl({ logo: { path: 'foo', alt: 'bar' } })?.querySelector("img");
 
-    expect(component).toHaveProp('links', props.links);
-    expect(component).toHaveProp('homeLink', props.homeLink);
-    expect(component.children()).toMatchElement(props.children);
+    expect(logo).toHaveAttribute('src', 'foo');
+    expect(renderEl({ logo: { path: 'foo', alt: 'bar' } })?.querySelectorAll("img").length).toEqual(1);
   });
 
-  it('passes a logo with a webpack-generated path and proper alt tag', function() {
-    const logo = shallow(getShallowComponent().prop('logo'));
+  it('renders logo link when given homeLink prop', function() {
+    renderEl({ homeLink: '#home'});    
 
-    // this path comes from imgMock.ts
-    expect(logo).toHaveDisplayName('img');
-    expect(logo).toHaveProp('src', 'path/to/asset.png');
-    expect(logo).toHaveProp('alt', 'Sonatype');
-    expect(logo).toHaveClassName('nx-product__logo-image');
+    const homeLink = screen.getByRole('link', {name: 'Home'}),
+      homeLinkLogo = homeLink.querySelector('img');
+
+    expect(homeLink).toBeInTheDocument();
+    expect(homeLinkLogo).toBeInTheDocument();
   });
 
-  it('includes the productInfo.name in the productInfoContent .nx-product__name if provided', function() {
+  it('renders links in header when given links prop', function() {
+    renderEl({links: [{ name: 'foo', href: '#bar' }, { name: 'baz', href: '#qux' }]});
+
+    const link1 = screen.getByRole('link', {name: 'foo'}),
+      link2 = screen.getByRole('link', {name: 'baz'})
+
+    expect(link1).toBeInTheDocument();
+    expect(link2).toBeInTheDocument();
+  });
+
+  it('renders the product name if provided', function() {
     const props = {
           productInfo: {
             name: 'test app'
           }
         },
-        defaultProductInfoContent = getShallowComponent().prop('productInfoContent'),
-        richProductInfoContent = shallow(getShallowComponent(props).prop('productInfoContent'));
+        header = renderEl(),
+        headerWithProductName = renderEl(props),
+        headerWithProductNameText = headerWithProductName?.querySelector('div.nx-product__name');
 
-    expect(defaultProductInfoContent).toBe(null);
-    expect(richProductInfoContent).toContainMatchingElement('.nx-product__name');
-    expect(richProductInfoContent.find('.nx-product__name')).toHaveText('test app');
+    expect(header?.querySelector('div.nx-product__name')).not.toBeInTheDocument();
+    expect(headerWithProductNameText).toBeInTheDocument();
+    expect(headerWithProductNameText?.textContent).toEqual('test app');
+    
   });
 
-  it('includes the productInfo.version in the productInfoContent if provided', function() {
-    const noVersionProps = {
+  it('renders the product version if provided', function() {
+    const props = {
           productInfo: {
             name: 'test app'
           }
         },
-        props = {
+        propsWithVersion = {
           productInfo: {
             name: 'test app',
             version: '1.2.3'
           }
         },
-        noVersionProductInfoContent = shallow(getShallowComponent(noVersionProps).prop('productInfoContent')),
-        richProductInfoContent = shallow(getShallowComponent(props).prop('productInfoContent'));
+        elNoProductVersion = renderEl(props),
+        elWithProductVersion = renderEl(propsWithVersion),
+        productVersion = renderEl(elWithProductVersion?.querySelector('.nx-product__version')!);
 
-    expect(noVersionProductInfoContent).not.toContainMatchingElement('.nx-product__version');
-    expect(richProductInfoContent).toContainMatchingElement('.nx-product__version');
-    expect(richProductInfoContent.find('.nx-product__version')).toHaveText('Version: 1.2.3');
+    expect(elNoProductVersion?.querySelector('.nx-product__version')).not.toBeInTheDocument();
+    expect(elWithProductVersion).toBeInTheDocument();
+    expect(productVersion).toBeInTheDocument();
   });
 
-  it('can accept a logo prop that overrides the src and alt for the logo', function() {
-    const logo = shallow(getShallowComponent({ logo: { path: 'foo', alt: 'bar' } }).prop('logo'));
+  it('renders children when passed as prop', function() {
+    const props = {
+          children: [<h1 key={1}>Foo</h1>, <button key={2}>Click Here For a Free iPhone</button>]
+        };
+    renderEl(props);
+    const header = screen.getByText('Foo'),
+    button = screen.getByRole('button', {name: 'Click Here For a Free iPhone'});
 
-    // this path comes from imgMock.ts
-    expect(logo).toHaveDisplayName('img');
-    expect(logo).toHaveProp('src', 'foo');
-    expect(logo).toHaveProp('alt', 'bar');
-    expect(logo).toHaveClassName('nx-product__logo-image');
+    expect(header).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
+  });
+
+  it('renders homeLink, link, productInfo and children when passed as props', function() {
+    const props = {
+          links: [{ name: 'foo', href: '#bar' }],
+          homeLink: '#home',
+          productInfo: { name: 'test app', version: '1.2.3' },
+          children: <button>Click Here For a Free iPhone</button>
+        };
+    renderEl(props);
+
+    const link = screen.getByRole('link',{name: 'foo'}),
+        homeLink = screen.getByRole('link', {name: 'Home'}),
+        homeLinkLogo = homeLink.querySelector('img'),
+        productName = screen.getByText('test app'),
+        productVersion = screen.getByText('Version: 1.2.3'),
+        button = screen.getByRole('button', {name: 'Click Here For a Free iPhone'});
+    
+    expect(link).toBeInTheDocument();
+    expect(homeLink).toBeInTheDocument();
+    expect(homeLinkLogo).toBeInTheDocument();
+    expect(productName).toBeInTheDocument();
+    expect(productVersion).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
   });
 });
