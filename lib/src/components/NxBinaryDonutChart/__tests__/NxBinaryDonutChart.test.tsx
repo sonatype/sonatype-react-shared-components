@@ -163,22 +163,22 @@ describe('NxBinaryDonutChart', function() {
       expect(renderEl({percent: 30, maxVal: 90})).toHaveAttribute('aria-valuenow', '27');
     });
 
-    it('does not render an arc when value is zero', function() {
+    it('does not render an arc when percent is zero', function() {
       expect(renderArc()).not.toBeInTheDocument();
     });
 
-    it('does not render an arc when value is negative', function() {
+    it('does not render an arc when percent is negative', function() {
       expect(renderArc({ percent: -50 })).not.toBeInTheDocument();
     });
 
-    it('renders a correct arc path when 0 < value < 100', function() {
+    it('renders a correct arc path when 0 < percent < 100', function() {
       const arc = renderArc({ percent: 50 })!;
 
       expect(arc).toHaveAttribute('d', 'M 0 -10.5 A 10.5 10.5 0 0 1 ' + (-10.5 * Math.cos(1.5 * Math.PI))
           + ' ' + (-10.5 * Math.sin(1.5 * Math.PI)));
     });
 
-    it('renders a correct arc path when 0 < value < maxVal', function() {
+    it('renders a correct arc path when 0 < percent < 100 with maxVal', function() {
       const arc = renderArc({ percent: 50, maxVal: 200 })!;
 
       expect(arc).toHaveAttribute('d', 'M 0 -10.5 A 10.5 10.5 0 0 1 ' + (-10.5 * Math.cos(1.5 * Math.PI))
