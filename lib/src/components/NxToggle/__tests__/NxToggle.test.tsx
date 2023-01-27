@@ -42,16 +42,14 @@ describe('NxToggle', function() {
     }
   });
 
-  it('calls its onChange prop when the label is clicked', async function() {
+  it('calls its onChange prop when the checkbox is clicked', async function() {
     const user = userEvent.setup();
-
     const onChange = jest.fn();
 
-    const { container } = quickRender({ onChange });
-    const label = container.querySelector('label')!;
+    const checkbox = quickRender({ onChange }).getByRole('switch');
 
     expect(onChange).not.toHaveBeenCalled();
-    await user.click(label);
+    await user.click(checkbox);
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 

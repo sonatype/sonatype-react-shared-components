@@ -20,7 +20,7 @@ describe('NxStatefulToggle', function() {
   const quickRender = rtlRender<Props>(NxStatefulToggle, simpleProps);
   const renderEl = rtlRenderElement(NxStatefulToggle, simpleProps);
 
-  it('renders a swith with the correct label', function() {
+  it('renders a switch with the correct label', function() {
     const checkbox = quickRender().getByRole('switch', { name: 'Enables whales' });
     expect(checkbox).toBeInTheDocument();
   });
@@ -43,8 +43,9 @@ describe('NxStatefulToggle', function() {
   });
 
   it('sets the initial value of isChecked to the value of defaultChecked prop', function() {
-    const swithWithDefaultNotChecked = quickRender({ defaultChecked: false })!.queryByRole('switch', { checked: true });
-    expect(swithWithDefaultNotChecked).not.toBeInTheDocument();
+    const switchWithDefaultNotChecked = quickRender({ defaultChecked: false })!
+        .queryByRole('switch', { checked: true });
+    expect(switchWithDefaultNotChecked).not.toBeInTheDocument();
 
     const switchWithDefaultChecked = quickRender({ defaultChecked: true })!.getByRole('switch', { checked: true });
     expect(switchWithDefaultChecked).toBeInTheDocument();
@@ -76,16 +77,14 @@ describe('NxStatefulToggle', function() {
     expect(onChange).toHaveBeenCalledWith(true);
   });
 
-  it('calls its onChange prop when the label is clicked', async function() {
+  it('calls its onChange prop when the checkbox is clicked', async function() {
     const user = userEvent.setup();
-
     const onChange = jest.fn();
 
-    const { container } = quickRender({ onChange });
-    const label = container.querySelector('label')!;
+    const checkbox = quickRender({ onChange }).getByRole('switch');
 
     expect(onChange).not.toHaveBeenCalled();
-    await user.click(label);
+    await user.click(checkbox);
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
