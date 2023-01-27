@@ -278,7 +278,7 @@ describe('NxCollapsibleRadioSelect', function() {
       it('adds a tooltip for each option when optionTooltipGenerator prop is provided', async function() {
         const user = userEvent.setup(),
             view = quickRender({ optionTooltipGenerator: option => option.name }),
-            options = view.getByRole('menu').children;
+            options = view.getAllByRole('menuitemradio');
 
         await runTimers();
         expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
@@ -460,14 +460,14 @@ describe('NxCollapsibleRadioSelect', function() {
     describe('when options are filtered', function() {
       it('renders all options if filteredOptions prop is not provided', function() {
         const view = quickFilterRender({ filteredOptions: null }),
-            options = view.getByRole('menu').children;
+            options = view.getAllByRole('menuitemradio');
 
         expect(options.length).toBe(4);
 
-        expect(options[0]).toHaveTextContent('Foo');
-        expect(options[1]).toHaveTextContent('Bar');
-        expect(options[2]).toHaveTextContent('Baz');
-        expect(options[3]).toHaveTextContent('Boo');
+        expect(options[0]).toHaveAccessibleName('Foo');
+        expect(options[1]).toHaveAccessibleName('Bar');
+        expect(options[2]).toHaveAccessibleName('Baz');
+        expect(options[3]).toHaveAccessibleName('Boo');
       });
 
       it('renders no options if filteredOptions prop is an empty array', function() {
@@ -479,11 +479,11 @@ describe('NxCollapsibleRadioSelect', function() {
         const view = quickFilterRender({
               filteredOptions: [{id: 'bar', name: 'Bar'}, {id: 'baz', name: 'Baz'}]
             }),
-            options = view.getByRole('menu').children;
+            options = view.getAllByRole('menuitemradio');
 
         expect(options.length).toBe(2);
-        expect(options[0]).toHaveTextContent('Bar');
-        expect(options[1]).toHaveTextContent('Baz');
+        expect(options[0]).toHaveAccessibleName('Bar');
+        expect(options[1]).toHaveAccessibleName('Baz');
       });
     });
   });

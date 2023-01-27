@@ -275,7 +275,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
       it('adds a tooltip for each option when optionTooltipGenerator prop is provided', async function() {
         const user = userEvent.setup(),
             view = quickRender({ optionTooltipGenerator: option => option.name }),
-            options = view.getByRole('menu').children;
+            options = view.getAllByRole('menuitemradio');
 
         await runTimers();
         expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
@@ -433,84 +433,91 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
       it('renders all options if the text input value is an empty string', function() {
         const view = quickFilterRender(),
             inputEl = view.getByRole('textbox'),
-            options = view.getByRole('menu').children;
+            options = view.getAllByRole('menuitemradio');
 
         expect(inputEl).toHaveValue('');
         expect(options.length).toBe(4);
 
-        expect(options[0]).toHaveTextContent('Foo');
-        expect(options[1]).toHaveTextContent('Bar');
-        expect(options[2]).toHaveTextContent('Baz');
-        expect(options[3]).toHaveTextContent('Boo');
+        expect(options[0]).toHaveAccessibleName('Foo');
+        expect(options[1]).toHaveAccessibleName('Bar');
+        expect(options[2]).toHaveAccessibleName('Baz');
+        expect(options[3]).toHaveAccessibleName('Boo');
       });
 
       it('renders filtered options when the text input value changes, ignoring case sensitivity', async function() {
         const user = userEvent.setup(),
             view = quickFilterRender(),
-            inputEl = view.getByRole('textbox'),
-            options = view.getByRole('menu').children;
+            inputEl = view.getByRole('textbox');
 
+        let options = view.getAllByRole('menuitemradio');
         expect(options.length).toBe(4);
 
         inputEl.focus();
         await user.keyboard('ba');
 
+        options = view.getAllByRole('menuitemradio');
         expect(options.length).toBe(2);
-        expect(options[0]).toHaveTextContent('Bar');
-        expect(options[1]).toHaveTextContent('Baz');
+        expect(options[0]).toHaveAccessibleName('Bar');
+        expect(options[1]).toHaveAccessibleName('Baz');
 
         await user.keyboard('[Escape]');
         expect(inputEl).toHaveValue('');
 
+        options = view.getAllByRole('menuitemradio');
         expect(options.length).toBe(4);
 
         await user.keyboard('BA');
 
+        options = view.getAllByRole('menuitemradio');
         expect(options.length).toBe(2);
-        expect(options[0]).toHaveTextContent('Bar');
-        expect(options[1]).toHaveTextContent('Baz');
+        expect(options[0]).toHaveAccessibleName('Bar');
+        expect(options[1]).toHaveAccessibleName('Baz');
       });
 
       it('renders filtered options that match any part of option\'s text content', async function() {
         const user = userEvent.setup(),
             view = quickFilterRender(),
-            inputEl = view.getByRole('textbox'),
-            options = view.getByRole('menu').children;
+            inputEl = view.getByRole('textbox');
+        let options = view.getAllByRole('menuitemradio');
 
         expect(options.length).toBe(4);
 
         inputEl.focus();
         await user.keyboard('az');
 
+        options = view.getAllByRole('menuitemradio');
         expect(options.length).toBe(1);
-        expect(options[0]).toHaveTextContent('Baz');
+        expect(options[0]).toHaveAccessibleName('Baz');
       });
 
       it('renders filtered options according to the input\'s trimmed value', async function() {
         const user = userEvent.setup(),
             view = quickFilterRender(),
-            inputEl = view.getByRole('textbox'),
-            options = view.getByRole('menu').children;
+            inputEl = view.getByRole('textbox');
+        let options = view.getAllByRole('menuitemradio');
 
         expect(options.length).toBe(4);
 
         inputEl.focus();
         await user.keyboard('[Space]f');
 
+        options = view.getAllByRole('menuitemradio');
         expect(options.length).toBe(1);
-        expect(options[0]).toHaveTextContent('Foo');
+        expect(options[0]).toHaveAccessibleName('Foo');
       });
 
       it('renders all options if input\'s value is only spaces', async function() {
         const user = userEvent.setup(),
             view = quickFilterRender(),
-            inputEl = view.getByRole('textbox'),
-            options = view.getByRole('menu').children;
+            inputEl = view.getByRole('textbox');
+        let options = view.getAllByRole('menuitemradio');
 
         expect(options.length).toBe(4);
 
         inputEl.focus();
         await user.keyboard('[Space][Space]');
+
+        options = view.getAllByRole('menuitemradio');
         expect(options.length).toBe(4);
       });
     });
