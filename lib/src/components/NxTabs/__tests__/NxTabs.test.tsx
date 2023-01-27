@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 
 import { render } from '@testing-library/react';
 import { rtlRenderElement, rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
@@ -118,5 +118,57 @@ describe('NxTabs', function() {
     await user.keyboard('{ArrowRight}{Enter}');
 
     expect(onTabSelect).toHaveBeenCalledWith(1);
+  });
+
+  it('calls onTabSelect when a tab is selected via keyboard', async function() {
+    const user = userEvent.setup();
+    const onTabSelect = jest.fn();
+
+    const { getAllByRole } = quickRender({
+      activeTab: 0,
+      onTabSelect,
+      children: (
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+      )
+    });
+
+    const firstTab = getAllByRole('tab')[0];
+
+    firstTab.focus();
+    await user.keyboard('{ArrowRight}{Enter}');
+
+    expect(onTabSelect).toHaveBeenCalledWith(1);
+  });
+
+  it('sets id and aria labelledby to panel to reference active tab aria-controls', async function() {
+    const user = userEvent.setup();
+
+    const Fixture = () => {
+      const [activeTab, setActiveTab] = useState<number>(0);
+      return (
+        <NxTabs activeTab={activeTab} onTabSelect={setActiveTab}>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+            <NxTab>Tab 1</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+          <NxTabPanel>Content 1</NxTabPanel>
+        </NxTabs>
+      );
+    };
+
+    const { getByRole } = render(<Fixture />);
+    const getActiveTabControls = () => getByRole('tab', { selected: true }).getAttribute('aria-controls');
+
+    expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
+    expect(getByRole('tabpanel')).toHaveAccessibleName('Tab 0 Tab 0');
+
+    await user.click(getByRole('tab', { selected: false }));
+
+    expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
+    expect(getByRole('tabpanel')).toHaveAccessibleName('Tab 1 Tab 1');
   });
 });
