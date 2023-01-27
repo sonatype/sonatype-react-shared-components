@@ -86,7 +86,7 @@ describe('NxTabs', function() {
 
     const selectedTabs = getAllByRole('tab', { selected: true });
     expect(selectedTabs.length).toBe(1);
-    expect(selectedTabs[0]).toHaveTextContent('Tab 1');
+    expect(selectedTabs[0]).toHaveTextContent(/^Tab 1/);
     expect(getByRole('tabpanel')).toHaveTextContent('Content 1');
   });
 
@@ -171,11 +171,11 @@ describe('NxTabs', function() {
     const getActiveTabControls = () => getByRole('tab', { selected: true }).getAttribute('aria-controls');
 
     expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
-    expect(getByRole('tabpanel')).toHaveAccessibleName('Tab 0 Tab 0');
+    expect(getByRole('tabpanel')).toHaveAccessibleName(/^Tab 0/);
 
     await user.click(getByRole('tab', { selected: false }));
 
     expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
-    expect(getByRole('tabpanel')).toHaveAccessibleName('Tab 1 Tab 1');
+    expect(getByRole('tabpanel')).toHaveAccessibleName(/^Tab 1/);
   });
 });

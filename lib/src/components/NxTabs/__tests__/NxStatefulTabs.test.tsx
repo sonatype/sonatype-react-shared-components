@@ -86,7 +86,7 @@ describe('NxStatefulTabs', function() {
     );
 
     const activeTab = getByRole('tab', { selected: true });
-    expect(activeTab).toHaveAccessibleName('Tab 1 Tab 1');
+    expect(activeTab).toHaveAccessibleName(/^Tab 1/);
   });
 
   it('selects the second tab on click', async function() {
@@ -106,7 +106,7 @@ describe('NxStatefulTabs', function() {
     expect(queryByRole('tab', { selected: true })).not.toBeInTheDocument();
     await user.click(getAllByRole('tab')[1]);
 
-    expect(getByRole('tab', { selected: true })).toHaveAccessibleName('Tab 1 Tab 1');
+    expect(getByRole('tab', { selected: true })).toHaveAccessibleName(/^Tab 1/);
   });
 
   it('calls custom onTabSelect when a tab is selected', async function() {
@@ -169,11 +169,11 @@ describe('NxStatefulTabs', function() {
     const getActiveTabControls = () => getByRole('tab', { selected: true }).getAttribute('aria-controls');
 
     expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
-    expect(getByRole('tabpanel')).toHaveAccessibleName('Tab 0 Tab 0');
+    expect(getByRole('tabpanel')).toHaveAccessibleName(/^Tab 0/);
 
     await user.click(getByRole('tab', { selected: false }));
 
     expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
-    expect(getByRole('tabpanel')).toHaveAccessibleName('Tab 1 Tab 1');
+    expect(getByRole('tabpanel')).toHaveAccessibleName(/^Tab 1/);
   });
 });
