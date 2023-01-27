@@ -4,11 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React, { RefAttributes } from 'react';
 import NxSearchDropdown, { Props } from '../NxSearchDropdown';
 import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
-import React, { RefAttributes } from 'react';
-import { fireEvent } from '@testing-library/dom';
-import { within } from '@testing-library/react';
+import { fireEvent, within } from '@testing-library/react';
 
 describe('NxSearchDropdown', function() {
   type PropsWithRef = Props<string | number> & RefAttributes<HTMLDivElement>;
@@ -20,7 +19,7 @@ describe('NxSearchDropdown', function() {
         onSelect: () => {}
       },
       renderEl = rtlRenderElement<PropsWithRef>(NxSearchDropdown, minimalProps),
-      quickRender = rtlRender(NxSearchDropdown, minimalProps);
+      quickRender = rtlRender<PropsWithRef>(NxSearchDropdown, minimalProps);
 
   it('adds additional specified classnames', function() {
     const el = renderEl()!;
@@ -72,7 +71,7 @@ describe('NxSearchDropdown', function() {
     expect(onSearchTextChange).toHaveBeenCalledWith('aasd');
   });
 
-  it('calls onSearch whenver the input\'s onChange event fires with a value that differs after trimming, ' +
+  it('calls onSearch whenever the input\'s onChange event fires with a value that differs after trimming, ' +
       'passing the trimmed value', async function() {
     const onSearch = jest.fn(),
         el = quickRender({ searchText: 'foo ', onSearch }),
@@ -110,11 +109,17 @@ describe('NxSearchDropdown', function() {
     expect(el.getByRole('menuitem', { name: /1/i, hidden: true })).not.toBeDisabled();
   });
 
-  it('renders dropdown with role="alert" if there are no matching elements', function() {
+  it('renders dropdown with role="alert" and empty text if there are no matching elements', function() {
     const el = quickRender({ searchText: 'foo', matches: []});
 
     expect(el.getByRole('alert')).toBeInTheDocument();
     expect(el.getByRole('alert')).toHaveTextContent('No Results Found');
+  });
+
+  it('sets the empty message from the emptyMessage prop', function() {
+    const el = quickRender({ searchText: 'foo', emptyMessage: 'asdfasdf' });
+
+    expect(el.getByRole('alert')).toHaveTextContent('asdfasdf');
   });
 
   it('renders dropdown with role="menu" if there are matching elements', function() {
@@ -146,11 +151,6 @@ describe('NxSearchDropdown', function() {
     expect(quickRender({ loading: true }).getByRole('alert', { hidden: true })).toHaveAttribute('aria-busy', 'true');
   });
 
-  it('sets the menu role on the dropdown when it contains results', function() {
-    expect(quickRender({ searchText: 'asdf', matches: [{ id: 'foo', displayName: 'bar' }] }).getByRole('menu'))
-        .toBeInTheDocument();
-  });
-
   it('sets the alert role on the dropdown menu when it is in loading, error, or empty states', function() {
     expect(quickRender({ searchText: 'asdf', matches: [] }).getByRole('alert')).toBeInTheDocument();
     expect(quickRender({ searchText: 'asdf', loading: true }).getByRole('alert')).toBeInTheDocument();
@@ -162,7 +162,7 @@ describe('NxSearchDropdown', function() {
     expect(errorAlert).toBeInTheDocument();
   });
 
-  it('sets an id on the NxDropdownMenu and references it in the search boxes aria-controls', function() {
+  it('sets an id on the dropdown and references it in the search boxe\'s aria-controls', function() {
     const el = quickRender({ searchText: 'foo' }),
         filterInput = el.getByRole('searchbox'),
         dropdown = el.getByRole('alert');
@@ -178,11 +178,7 @@ describe('NxSearchDropdown', function() {
     expect(filterInput).toHaveAttribute('aria-haspopup', 'menu');
   });
 
-  it('renders an NxLoadWrapper within the dropdown menu', function() {
-    expect(quickRender({ searchText: 'foo', loading: true }).getByRole('status')).toBeInTheDocument();
-  });
-
-  it('shows loading text when loading prop is true', function() {
+  it('shows loading text on the dropdown when loading prop is true', function() {
     const el = quickRender({ searchText: 'foo', loading: true });
 
     expect(el.getByRole('status')).toHaveTextContent('Loading…');
@@ -241,18 +237,6 @@ describe('NxSearchDropdown', function() {
         { id: '2', displayName: 'Two' },
         expect.objectContaining({ target: menuItem })
     );
-  });
-
-  it('sets the load wrapper contents to an empty message if there are no results', function() {
-    const el = quickRender({ searchText: 'foo' });
-
-    expect(el.getByRole('alert')).toHaveTextContent('No Results Found');
-  });
-
-  it('sets the empty message from the emptyMessage prop', function() {
-    const el = quickRender({ searchText: 'foo', emptyMessage: 'asdfasdf' });
-
-    expect(el.getByRole('alert')).toHaveTextContent('asdfasdf');
   });
 
   it('calls onSearch with the current trimmed searchText if focus enters the component from elsewhere on the page ' +
