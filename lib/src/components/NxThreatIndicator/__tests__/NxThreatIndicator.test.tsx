@@ -31,8 +31,7 @@ describe('NxThreatIndicator', function() {
     const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
         threatIndicator = el.getByRole('graphics-symbol', { queryFallbacks: true })!;
 
-    expect(threatIndicator).toHaveAttribute('aria-label', 'threat level low');
-    expect(threatIndicator).not.toHaveAttribute('aria-hidden', true);
+    expect(threatIndicator).toHaveAccessibleName('threat level low');
   });
 
   describe('should have default tooltips', function() {
