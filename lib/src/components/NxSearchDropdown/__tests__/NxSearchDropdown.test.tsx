@@ -6,7 +6,7 @@
  */
 import React, { RefAttributes } from 'react';
 import NxSearchDropdown, { Props } from '../NxSearchDropdown';
-import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import { fireEvent, within } from '@testing-library/react';
 
 describe('NxSearchDropdown', function() {
@@ -57,14 +57,14 @@ describe('NxSearchDropdown', function() {
     expect(input).toBeInTheDocument();
   });
 
-  it('sets the searchText as the value of the input', function() {
+  it('sets the search text as the value of the searchbox', function() {
     const el = quickRender({ searchText: 'foo' }),
         input = el.getByRole('searchbox');
 
     expect(input).toHaveAttribute('value', 'foo');
   });
 
-  it('calls onSearchTextChange whenver the input\'s onChange event fires', async function() {
+  it('searches for the text when user types in the searchbox', async function() {
     const onSearchTextChange = jest.fn(),
         el = quickRender({ searchText: '', onSearchTextChange }),
         input = el.getByRole('searchbox');
@@ -75,8 +75,9 @@ describe('NxSearchDropdown', function() {
     expect(onSearchTextChange).toHaveBeenCalledWith('aasd');
   });
 
-  it('calls onSearch whenever the input\'s onChange event fires with a value that differs after trimming, ' +
-      'passing the trimmed value', async function() {
+  it('searches for the searchbox text that differs after trimming, passing the trimmed value ' +
+    'when the text in the searchbox is changed'
+  , async function() {
     const onSearch = jest.fn(),
         el = quickRender({ searchText: 'foo ', onSearch }),
         input = el.getByRole('searchbox');
@@ -95,7 +96,7 @@ describe('NxSearchDropdown', function() {
     expect(onSearch).toHaveBeenCalledWith('fo');
   });
 
-  it('passes the disabled prop to the input and buttons', async function() {
+  it('passes the disabled prop to the searchbox and buttons', async function() {
     expect(quickRender().getByRole('searchbox')).not.toBeDisabled();
     expect(quickRender({ disabled: undefined }).getByRole('searchbox')).not.toBeDisabled();
     expect(quickRender({ disabled: null }).getByRole('searchbox')).not.toBeDisabled();
@@ -166,7 +167,7 @@ describe('NxSearchDropdown', function() {
     expect(errorAlert).toBeInTheDocument();
   });
 
-  it('sets an id on the dropdown and references it in the search boxe\'s aria-controls', function() {
+  it('sets an id on the dropdown and references it in the searchbox\'s aria-controls', function() {
     const el = quickRender({ searchText: 'foo' }),
         filterInput = el.getByRole('searchbox'),
         dropdown = el.getByRole('alert');
@@ -175,7 +176,7 @@ describe('NxSearchDropdown', function() {
     expect(filterInput).toHaveAttribute('aria-controls', dropdown.getAttribute('id'));
   });
 
-  it('sets aria-haspopup on the filter input', function() {
+  it('sets aria-haspopup on the searchbox', function() {
     const el = quickRender({ searchText: 'foo' }),
         filterInput = el.getByRole('searchbox');
 
@@ -195,7 +196,7 @@ describe('NxSearchDropdown', function() {
     expect(within(dropdownMenu).getByRole('alert')).toHaveTextContent('bar');
   });
 
-  it('fires onSearch with the searchText when the load wrappers retryHandler is triggered', async function() {
+  it('searches with the searchbox text when the retry button is clicked', async function() {
     const onSearch = jest.fn(),
         user = userEvent.setup(),
         error = quickRender({ searchText: 'foo', error: 'bar', onSearch });
@@ -209,7 +210,7 @@ describe('NxSearchDropdown', function() {
     expect(onSearch).toHaveBeenCalledWith('foo');
   });
 
-  it('sets the load wrapper contents to buttons with type "button" for each match', function() {
+  it('renders buttons with type "button" for each match', function() {
     const matches = [
           { id: '1', displayName: 'One' },
           { id: '2', displayName: 'Two' }
@@ -243,7 +244,7 @@ describe('NxSearchDropdown', function() {
     );
   });
 
-  it('calls onSearch with the current trimmed searchText if focus enters the component from elsewhere on the page ' +
+  it('searches with the current trimmed searchbox text if focus enters the component from elsewhere on the page ' +
       'while there is an error', function() {
     const onSearch = jest.fn(),
         el = quickRender({ searchText: 'foo ', error: 'bar', onSearch }),
@@ -262,7 +263,7 @@ describe('NxSearchDropdown', function() {
     anotherElement.remove();
   });
 
-  it('does not call onSearch if focus moves within the component while there is an error', function() {
+  it('does not search if focus moves within the component while there is an error', function() {
     const onSearch = jest.fn(),
         props = { searchText: 'foo', onSearch },
         el = quickRender(props),
@@ -285,7 +286,7 @@ describe('NxSearchDropdown', function() {
     expect(onSearch).not.toHaveBeenCalled();
   });
 
-  it('does not call onSearch if focus moves into the component from an outside window while there is an error',
+  it('does not search if focus moves into the component from an outside window while there is an error',
       function() {
         const onSearch = jest.fn(),
             el = quickRender({ searchText: 'foo', onSearch }),
@@ -308,7 +309,7 @@ describe('NxSearchDropdown', function() {
       }
   );
 
-  it('should clear search when Escape key is pressed on filterInput or dropdownMenu', async function() {
+  it('should clear search when Escape key is pressed on searchbox or dropdown menu', async function() {
     const matches = [
       { id: '1', displayName: 'One' },
       { id: '2', displayName: 'OneTwo' }
@@ -331,6 +332,26 @@ describe('NxSearchDropdown', function() {
 
     dropdownMenu.focus();
     await user.keyboard('{Escape}');
+
+    expect(onSearchTextChange).toHaveBeenCalledWith('');
+  });
+
+  it('should clear search when close button on searchbox is clicked', async function() {
+    const matches = [
+      { id: '1', displayName: 'One' },
+      { id: '2', displayName: 'OneTwo' }
+    ];
+
+    const onSearchTextChange = jest.fn(),
+        el = quickRender({ searchText: 'One', matches, onSearchTextChange });
+
+    await runTimers();
+
+    const closeButton = el.getByRole('button', { name: /clear search/i }),
+        user = userEvent.setup();
+
+    expect(onSearchTextChange).not.toHaveBeenCalled();
+    await user.click(closeButton);
 
     expect(onSearchTextChange).toHaveBeenCalledWith('');
   });
