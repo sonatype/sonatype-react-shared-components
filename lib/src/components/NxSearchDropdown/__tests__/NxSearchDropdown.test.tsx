@@ -67,12 +67,13 @@ describe('NxSearchDropdown', function() {
   it('searches for the text when user types in the searchbox', async function() {
     const onSearchTextChange = jest.fn(),
         el = quickRender({ searchText: '', onSearchTextChange }),
-        input = el.getByRole('searchbox');
+        input = el.getByRole('searchbox'),
+        user = userEvent.setup();
 
     expect(onSearchTextChange).not.toHaveBeenCalled();
 
-    fireEvent.change(input, { target: { value: 'aasd' }});
-    expect(onSearchTextChange).toHaveBeenCalledWith('aasd');
+    await user.type(input, 'a');
+    expect(onSearchTextChange).toHaveBeenCalledWith('a');
   });
 
   it('searches for the searchbox text that differs after trimming, passing the trimmed value ' +
