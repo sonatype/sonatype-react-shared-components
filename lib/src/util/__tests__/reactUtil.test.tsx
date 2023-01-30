@@ -58,7 +58,7 @@ describe('reactUtil', function() {
           result = ensureStartEndElements(arr) as ReactElement,
           renderResult = renderEl(result);
 
-      expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>')
+      expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>');
 
       // ensure key is preserved
       expect(result.props.children[1].key).toBe('baz');
@@ -69,7 +69,7 @@ describe('reactUtil', function() {
           result = ensureStartEndElements(arr) as ReactElement,
           renderResult = renderEl(result);
 
-      expect(renderResult).toContainHTML('<span>5<span>baz</span></span>')
+      expect(renderResult).toContainHTML('<span>5<span>baz</span></span>');
 
       // ensure key is preserved
       expect(result.props.children[1].key).toBe('baz');
@@ -80,7 +80,7 @@ describe('reactUtil', function() {
           result = ensureStartEndElements(arr) as ReactElement,
           renderResult = renderEl(result);
 
-      expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>')
+      expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>');
 
       // ensure key is preserved
       expect(result.props.children[0].key).toBe('foo');
@@ -91,7 +91,7 @@ describe('reactUtil', function() {
           result = ensureStartEndElements(arr) as ReactElement,
           renderResult = renderEl(result);
 
-      expect(renderResult).toContainHTML('<span><span>foo</span>5</span>')
+      expect(renderResult).toContainHTML('<span><span>foo</span>5</span>');
 
       // ensure key is preserved
       expect(result.props.children[0].key).toBe('foo');
@@ -103,7 +103,7 @@ describe('reactUtil', function() {
             result = ensureStartEndElements(arr) as ReactElement,
             renderResult = renderEl(result);
 
-        expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>')
+        expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>');
 
         // ensure key is preserved
         expect(result.props.children[2].key).toBe('baz');
@@ -116,7 +116,7 @@ describe('reactUtil', function() {
             result = ensureStartEndElements(arr) as ReactElement,
             renderResult = renderEl(result);
 
-        expect(renderResult).toContainHTML('<span>5<span>baz</span></span>')
+        expect(renderResult).toContainHTML('<span>5<span>baz</span></span>');
 
         // ensure key is preserved
         expect(result.props.children[2].key).toBe('baz');
@@ -129,7 +129,7 @@ describe('reactUtil', function() {
             result = ensureStartEndElements(arr) as ReactElement,
             renderResult = renderEl(result);
 
-        expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>')
+        expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>');
 
         // ensure key is preserved
         expect(result.props.children[0].key).toBe('foo');
@@ -142,7 +142,7 @@ describe('reactUtil', function() {
             result = ensureStartEndElements(arr) as ReactElement,
             renderResult = renderEl(result);
 
-        expect(renderResult).toContainHTML('<span><span>foo</span>5</span>')
+        expect(renderResult).toContainHTML('<span><span>foo</span>5</span>');
 
         // ensure key is preserved
         expect(result.props.children[0].key).toBe('foo');
@@ -168,7 +168,6 @@ describe('reactUtil', function() {
       expect(ensureElement(div)).toBe(div);
     });
 
-
     it('wraps strings and numbers in a span', function() {
       const wrappedString = renderEl(ensureElement('foo') as ReactElement)!,
           wrappedNumber = renderEl(ensureElement(5) as ReactElement)!;
@@ -183,8 +182,8 @@ describe('reactUtil', function() {
     // The key difference from ensureStartEndElements
     it('wraps arrays that start and end with elements', function() {
       const arr = [<span key="foo">foo</span>, 'bar', null, false, <span key="baz">baz</span>],
-            result = ensureElement(arr) as ReactElement,
-            renderResult = renderEl(result);
+          result = ensureElement(arr) as ReactElement,
+          renderResult = renderEl(result);
 
       expect(renderResult)
           .toContainHTML('<span><span>foo</span>bar<span>baz</span></span>');
@@ -204,7 +203,7 @@ describe('reactUtil', function() {
           result = ensureStartEndElements(arr) as ReactElement,
           renderResult = renderEl(result);
 
-      expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>')
+      expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>');
 
       // ensure key is preserved
       expect(result.props.children[1].key).toBe('baz');
@@ -215,7 +214,7 @@ describe('reactUtil', function() {
           result = ensureStartEndElements(arr) as ReactElement,
           renderResult = renderEl(result);
 
-      expect(renderResult).toContainHTML('<span>5<span>baz</span></span>')
+      expect(renderResult).toContainHTML('<span>5<span>baz</span></span>');
 
       // ensure key is preserved
       expect(result.props.children[1].key).toBe('baz');
@@ -226,7 +225,7 @@ describe('reactUtil', function() {
           result = ensureStartEndElements(arr) as ReactElement,
           renderResult = renderEl(result);
 
-      expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>')
+      expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>');
 
       // ensure key is preserved
       expect(result.props.children[0].key).toBe('foo');
@@ -237,7 +236,7 @@ describe('reactUtil', function() {
           result = ensureStartEndElements(arr) as ReactElement,
           renderResult = renderEl(result);
 
-      expect(renderResult).toContainHTML('<span><span>foo</span>5</span>')
+      expect(renderResult).toContainHTML('<span><span>foo</span>5</span>');
 
       // ensure key is preserved
       expect(result.props.children[0].key).toBe('foo');
@@ -249,7 +248,7 @@ describe('reactUtil', function() {
             result = ensureStartEndElements(arr) as ReactElement,
             renderResult = renderEl(result);
 
-        expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>')
+        expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>');
 
         // ensure key is preserved
         expect(result.props.children[2].key).toBe('baz');
@@ -262,7 +261,7 @@ describe('reactUtil', function() {
             result = ensureStartEndElements(arr) as ReactElement,
             renderResult = renderEl(result);
 
-        expect(renderResult).toContainHTML('<span>5<span>baz</span></span>')
+        expect(renderResult).toContainHTML('<span>5<span>baz</span></span>');
 
         // ensure key is preserved
         expect(result.props.children[2].key).toBe('baz');
@@ -275,7 +274,7 @@ describe('reactUtil', function() {
             result = ensureStartEndElements(arr) as ReactElement,
             renderResult = renderEl(result);
 
-        expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>')
+        expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>');
 
         // ensure key is preserved
         expect(result.props.children[0].key).toBe('foo');
@@ -288,7 +287,7 @@ describe('reactUtil', function() {
             result = ensureStartEndElements(arr) as ReactElement,
             renderResult = renderEl(result);
 
-        expect(renderResult).toContainHTML('<span><span>foo</span>5</span>')
+        expect(renderResult).toContainHTML('<span><span>foo</span>5</span>');
 
         // ensure key is preserved
         expect(result.props.children[0].key).toBe('foo');
