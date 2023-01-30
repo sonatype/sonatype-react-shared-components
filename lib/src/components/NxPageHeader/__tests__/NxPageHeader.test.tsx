@@ -27,10 +27,12 @@ describe('NxPageHeader', function() {
   });
 
   it('renders a custom logo when given logo prop', function() {
-    const logo = renderEl({ logo: { path: 'foo', alt: 'bar' } })?.querySelector("img");
+    renderEl({ logo: { path: 'foo', alt: 'bar' } });
+    const logo = screen.getByRole('img');
 
     expect(logo).toHaveAttribute('src', 'foo');
-    expect(renderEl({ logo: { path: 'foo', alt: 'bar' } })?.querySelectorAll("img").length).toEqual(1);
+    // ensures there is only one logo
+    expect(screen.getAllByRole('img').length).toEqual(1);
   });
 
   it('renders logo link when given homeLink prop', function() {
