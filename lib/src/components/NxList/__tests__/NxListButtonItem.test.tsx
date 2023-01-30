@@ -5,76 +5,119 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxListButtonItemProps } from '../types';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
 import NxList from '../NxList';
-import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
+import { NxListButtonItemProps } from '../types';
 
-describe('NxListButtonItem', function() {
+describe('NxList.ButtonItem', function() {
+  const quickRender = rtlRender(NxList.ButtonItem, {}),
+      renderEl = rtlRenderElement(NxList.ButtonItem, {});
 
-  const minimalProps: NxListButtonItemProps = {};
-  const getShallow = getShallowComponent(NxList.ButtonItem, minimalProps);
-  const getMounted = getMountedComponent(NxList.ButtonItem, minimalProps);
+  it('renders a list containing a button', function() {
+    const view = quickRender(),
+        listItem = view.getByRole('listitem'),
+        btn = view.getByRole('button');
 
-  it('renders a correctly structured element - a button within an li', function() {
-    const contentEl = getShallow();
-
-    expect(contentEl).toExist();
-    expect(contentEl).toMatchSelector('.nx-list__item.nx-list__item--clickable');
-    expect(contentEl.find('button')).toMatchSelector('.nx-list__btn');
-    expect(contentEl.find('button').parent().is('li'));
+    expect(listItem).toBeInTheDocument();
+    expect(btn).toBeInTheDocument();
+    expect(listItem).toContainElement(btn);
   });
 
-  it('renders the classNames given to both the li and the button', function() {
-    const contentEl = getShallow({className: 'customClassLi', buttonClassName: 'customClassBtn'});
+  it('sets a ref to the element', function() {
+    const ref = React.createRef<HTMLLIElement>(),
+        el = renderEl({ ref });
 
-    expect(contentEl).toExist();
-    expect(contentEl).toMatchSelector('.nx-list__item.nx-list__item--clickable.customClassLi');
-    expect(contentEl.find('button')).toMatchSelector('.nx-list__btn.customClassBtn');
+    expect(ref.current).toBe(el);
   });
 
-  it('renders a clickable list whose list item element has prop disabled and is disabled', function() {
-    const contentEl = getMounted({disabled: true});
+  it('sets the specified classnames to the list in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
 
-    expect(contentEl).toExist();
-    expect(contentEl).toHaveProp('disabled');
-    expect(contentEl).toBeDisabled();
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('renders a clickable list whose list item element has prop selected and is selected', function() {
-    const contentEl = getMounted({selected: true});
+  it('sets the specified attrs to the list', function() {
+    const el = renderEl({ id: 'foo', lang: 'en' });
 
-    expect(contentEl).toExist();
-    expect(contentEl).toHaveProp('selected');
-    expect(contentEl.find('button')).toHaveClassName('selected');
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en');
+  });
+
+  it('sets the specified classnames to the button in addition to the defaults ' +
+    'when buttonClassName prop is provided', function() {
+    const btn = quickRender({ buttonClassName: 'boo' }).getByRole('button'),
+        defaultBtn = quickRender().getByRole('button');
+
+    expect(btn).toHaveClass('boo');
+
+    for (const cls of Array.from(defaultBtn.classList)) {
+      expect(btn).toHaveClass(cls);
+    }
+  });
+
+  it('sets the specified attrs to the button ' +
+    'when buttonAttributes prop is provided', function() {
+    const buttonAttributes = { id: 'boo', value: 'test' },
+        btn = quickRender({ buttonAttributes }).getByRole('button');
+
+    expect(btn).toHaveAttribute('id', 'boo');
+    expect(btn).toHaveAttribute('value', 'test');
+  });
+
+  it('sets disabled and aria-disabled="true" to the button ' +
+    'iff disabled prop is set to true', function() {
+    const renderAndGetBtn = (props?: Partial<NxListButtonItemProps>) => quickRender(props).getByRole('button');
+
+    expect(renderAndGetBtn()).toBeEnabled();
+    expect(renderAndGetBtn()).toHaveAttribute('aria-disabled', 'false');
+
+    expect(renderAndGetBtn({ disabled: false })).toBeEnabled();
+    expect(renderAndGetBtn({ disabled: false })).toHaveAttribute('aria-disabled', 'false');
+
+    expect(renderAndGetBtn({ disabled: null })).toBeEnabled();
+    expect(renderAndGetBtn({ disabled: null })).toHaveAttribute('aria-disabled', 'false');
+
+    expect(renderAndGetBtn({ disabled: true })).toBeDisabled();
+    expect(renderAndGetBtn({ disabled: true })).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  it('sets aria-selected and aria-current="true" to the list ' +
+    'iff selected prop is set to true', function() {
+    const renderAndGetList = (props?: Partial<NxListButtonItemProps>) => quickRender(props).getByRole('listitem');
+
+    expect(renderAndGetList()).not.toHaveAttribute('aria-selected');
+    expect(renderAndGetList()).not.toHaveAttribute('aria-current');
+
+    expect(renderAndGetList({ selected: false })).toHaveAttribute('aria-selected', 'false');
+    expect(renderAndGetList({ selected: false })).toHaveAttribute('aria-current', 'false');
+
+    expect(renderAndGetList({ selected: null })).not.toHaveAttribute('aria-selected');
+    expect(renderAndGetList({ selected: null })).not.toHaveAttribute('aria-current');
+
+    expect(renderAndGetList({ selected: true })).toHaveAttribute('aria-selected', 'true');
+    expect(renderAndGetList({ selected: true })).toHaveAttribute('aria-current', 'true');
   });
 
   it('renders children correctly', function() {
     const children = [
-      <NxList.Text key="1">Test Item 1 Text</NxList.Text>,
-      <NxList.Subtext key="2">Test Item 1 Subtext</NxList.Subtext>
-    ];
-    const contentEl = getMounted({children});
+      <NxList.Text data-testid="text" key="1">Test Item 1 Text</NxList.Text>,
+      <NxList.Subtext data-testid="subtext" key="2">Test Item 1 Subtext</NxList.Subtext>
+        ],
+        view = quickRender({ children }),
+        btn = view.getByRole('button'),
+        childrenText = view.getByTestId('text'),
+        childrenSubtext = view.getByTestId('subtext');
 
-    expect(contentEl).toExist();
-    expect(contentEl.find('span').at(0)).toMatchSelector('span.nx-list__text');
-    expect(contentEl.find('span').at(0)).toHaveText('Test Item 1 Text');
-    expect(contentEl.find('span').at(1)).toMatchSelector('span.nx-list__subtext');
-    expect(contentEl.find('span').at(1)).toHaveText('Test Item 1 Subtext');
-
-  });
-
-  it('sets aria-selected and aria-current to true iff selected is true', function() {
-    expect(getShallow()).toHaveProp('aria-selected', undefined);
-    expect(getShallow()).toHaveProp('aria-current', undefined);
-
-    expect(getShallow({ selected: true })).toHaveProp('aria-selected', true);
-    expect(getShallow({ selected: true })).toHaveProp('aria-current', true);
-
-    expect(getShallow({ selected: false })).toHaveProp('aria-selected', false);
-    expect(getShallow({ selected: false })).toHaveProp('aria-current', false);
-
-    expect(getShallow({ selected: null })).toHaveProp('aria-selected', undefined);
-    expect(getShallow({ selected: null })).toHaveProp('aria-current', undefined);
+    expect(btn).toBeInTheDocument();
+    expect(btn).toContainElement(childrenText);
+    expect(childrenText).toHaveTextContent('Test Item 1 Text');
+    expect(btn).toContainElement(childrenSubtext);
+    expect(childrenSubtext).toHaveTextContent('Test Item 1 Subtext');
   });
 });

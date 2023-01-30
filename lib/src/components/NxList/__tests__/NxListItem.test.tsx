@@ -5,35 +5,48 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
 import NxList from '../NxList';
-import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
 
-describe('NxListItem', function() {
+describe('NxList.Item', function() {
+  const quickRender = rtlRender(NxList.Item, {}),
+      renderEl = rtlRenderElement(NxList.Item, {});
 
-  const minimalProps = {};
-  const getShallow = getShallowComponent(NxList.Item, minimalProps);
-  const getMounted = getMountedComponent(NxList.Item, minimalProps);
+  it('sets the specified classnames in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
 
-  it('renders the children in an .nx-list__item', function() {
-    const children = [
-      <NxList.Text key="1">Test Item 1 Text</NxList.Text>,
-      <NxList.Subtext key="2">Test Item 1 Subtext</NxList.Subtext>
-    ];
-    const contentEl = getMounted({children});
-    expect(contentEl).toExist();
-    expect(contentEl).toContainMatchingElements(2, 'span');
-    expect(contentEl.find('li')).toHaveClassName('nx-list__item');
-    expect(contentEl.find('span').at(0)).toHaveText('Test Item 1 Text');
-    expect(contentEl.find('span').at(0)).toHaveClassName('nx-list__text');
-    expect(contentEl.find('span').at(1)).toHaveText('Test Item 1 Subtext');
-    expect(contentEl.find('span').at(1)).toHaveClassName('nx-list__subtext');
+    expect(el).toHaveClass('foo');
 
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('renders the classNames given to it', function() {
-    const contentEl = getShallow({className: 'customClassName'});
-    expect(contentEl).toExist();
-    expect(contentEl).toMatchSelector('.nx-list__item.customClassName');
+  it('sets the specified attrs', function() {
+    const el = renderEl({ id: 'foo', lang: 'en' });
+
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en');
+  });
+
+  it('sets a ref to the element', function() {
+    const ref = React.createRef<HTMLLIElement>(),
+        el = renderEl({ ref });
+
+    expect(ref.current).toBe(el);
+  });
+
+  it('renders children correctly', function() {
+    const children = <NxList.Text data-testid="boo">Boo</NxList.Text>,
+        view = quickRender({ children }),
+        el = view.getByRole('listitem'),
+        childrenEl = view.getByTestId('boo');
+
+    expect(el).toBeInTheDocument();
+    expect(childrenEl).toBeInTheDocument();
+    expect(el).toContainElement(childrenEl);
+    expect(childrenEl).toHaveTextContent('Boo');
   });
 });

@@ -4,192 +4,216 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ReactElement } from 'react';
-import { NxLoadError, NxLoadingSpinner } from '../../..';
+import React from 'react';
+import { within } from '@testing-library/react';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+
 import NxList from '../NxList';
-import { NxListProps } from '../types';
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-import { act } from 'react-dom/test-utils';
-import { mount, ReactWrapper } from 'enzyme';
-import NxListButtonItem from '../NxListButtonItem';
 
 describe('NxList', function() {
+  const quickRender = rtlRender(NxList, {}),
+      renderEl = rtlRenderElement(NxList, {});
 
-  let mountContainers: HTMLElement[] = [];
-
-  function getMountContainer() {
-    const newContainer = document.createElement('div');
-    mountContainers.push(newContainer);
-    document.body.append(newContainer);
-
-    return newContainer;
-  }
-
-  // create a mounted wrapper that is attached to the document, and deal with the timing complexities
-  // triggered by NxList's MutationObserver usage
-  async function mountAttached(jsx: ReactElement) {
-    let retval: ReactWrapper;
-    await act(async () => {
-      retval = mount(jsx, { attachTo: getMountContainer() });
-    });
-    retval!.update();
-
-    return retval!;
-  }
-
-  afterEach(function() {
-    mountContainers.forEach(container => document.body.removeChild(container));
-    mountContainers = [];
+  // prevent RTL logging thrown warnings
+  beforeAll(function() {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
   });
 
-  const minimalProps: NxListProps = {};
-  const getShallow = getShallowComponent(NxList, minimalProps);
+  it('renders a list', async function() {
+    const view = quickRender();
 
-  it('renders a list', function() {
-    const nxList = getShallow();
-    expect(nxList).toMatchSelector('.nx-list');
+    // Make sure the component is updated as the isEmpty state
+    // was updated during initially rendering which triggered act() error
+    await runTimers();
+
+    expect(view.getByRole('list')).toBeInTheDocument();
   });
 
-  it('renders the classNames given to it', function() {
-    const extendedProps: Partial<NxListProps> = {
-      className: 'test-classname ufo'
-    };
-    const nxList = getShallow(extendedProps);
-    expect(nxList).toMatchSelector('.nx-list.test-classname.ufo');
+  it('sets the specified classnames in addition to the defaults', async function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
+
+    await runTimers();
+
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('renders a bulleted list correctly', function() {
-    const contentEl = getShallow({bulleted: true});
-    expect(contentEl).toHaveClassName('nx-list--bulleted');
-  });
-  it('shows the emptyMessage when there are no children', async function() {
-    const component = await mountAttached(
-      <NxList emptyMessage="Empty message">
-      </NxList>
-    );
+  it('sets the specified attrs', async function() {
+    const el = renderEl({ id: 'foo', lang: 'en' });
 
-    expect(component.find('span')).toHaveText('Empty message');
+    await runTimers();
+
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en');
   });
 
-  it('shows the emptyMessage when the children are removed after the existing', async function() {
-    const component = await mountAttached(
-      <NxList emptyMessage="Empty message">
-        <NxList.Item>
-          <NxList.Text>Test 1</NxList.Text>
-        </NxList.Item>
-        <NxList.Item>
-          <NxList.Text>Test 2</NxList.Text>
-        </NxList.Item>
-      </NxList>
-    );
+  it('sets a ref to the element', async function() {
+    const ref = React.createRef<HTMLUListElement>(),
+        el = renderEl({ ref });
 
-    await act(async () => {
-      component.setProps({ children: [] });
-    });
-    component.update();
+    await runTimers();
 
-    expect(component.find('span')).toHaveText('Empty message');
+    expect(ref.current).toBe(el);
   });
 
-  it('shows the emptyMessage when there are no children, no error, and not loading', async function() {
+  it('renders children correctly', function() {
+    const children = <NxList.Item>Cat</NxList.Item>,
+        view = quickRender({ children }),
+        list = view.getByRole('list'),
+        listItem = view.getByRole('listitem');
 
-    const trulyEmptyComponent = await mountAttached(<NxList emptyMessage="Empty message"></NxList>),
-        emptyListComponent = await mountAttached(<NxList emptyMessage="Empty message">{[]}</NxList>);
-
-    // the enzyme wrapper contains the <NxList> as its top element, the native el is one level down
-    expect(trulyEmptyComponent.children()).toMatchSelector('ul');
-    expect(trulyEmptyComponent).toContainExactlyOneMatchingElement('li.nx-list__item');
-    expect(trulyEmptyComponent.find('span')).toHaveText('Empty message');
-
-    expect(emptyListComponent.children()).toMatchSelector('ul');
-    expect(emptyListComponent).toContainExactlyOneMatchingElement('li.nx-list__item');
-    expect(emptyListComponent.find('span')).toHaveText('Empty message');
+    expect(list).toBeInTheDocument();
+    expect(listItem).toBeInTheDocument();
+    expect(list).toContainElement(listItem);
+    expect(listItem).toHaveTextContent('Cat');
   });
 
-  it('does not show the emptyMessage when there are children', async function() {
-    const component = await mountAttached(
-      <NxList emptyMessage="Empty message">
-        <NxList.Item>
-          <NxList.Text>Foo</NxList.Text>
-        </NxList.Item>
-      </NxList>
-    );
+  describe('emptyMessage', function() {
+    describe('when not provided', function() {
+      it('shows the default empty message when there are no children, ' +
+        'no error, and not loading', function() {
+        // truly empty component
+        const { getByRole, rerender } = quickRender();
 
-    expect(component).not.toIncludeText('Empty message');
-  });
+        expect(getByRole('list')).toHaveTextContent('This list is empty.');
+        expect(getByRole('listitem')).toHaveTextContent('This list is empty.');
 
-  it('does not show the emptyMessage when isLoading', async function() {
-    const component = await mountAttached(<NxList emptyMessage="Empty message" isLoading />);
+        // empty list component
+        rerender(<NxList>{[]}</NxList>);
 
-    expect(component).not.toIncludeText('Empty message');
-  });
+        expect(getByRole('list')).toHaveTextContent('This list is empty.');
+        expect(getByRole('listitem')).toHaveTextContent('This list is empty.');
+      });
 
-  it('does not show the emptyMessage when in error', async function() {
-    const component = await mountAttached(
-      <NxList emptyMessage="Empty message" error="Errr" retryHandler={() => {}}>
-      </NxList>
-    );
+      it('does not show the default empty message when there are children', function() {
+        const children = <NxList.Item>Cat</NxList.Item>,
+            { getByRole } = quickRender({ children });
 
-    expect(component).not.toIncludeText('Empty message');
-  });
+        expect(getByRole('list')).not.toHaveTextContent('This list is empty.');
+        expect(getByRole('listitem')).not.toHaveTextContent('This list is empty.');
+      });
 
-  it('removes the emptyMessage when children are added', async function() {
-    const component = await mountAttached(
-      <NxList emptyMessage="Empty message"></NxList>
-    );
+      it('does not show the default empty message when loading', function() {
+        const { getByRole } = quickRender({ isLoading: true });
 
-    await act(async () => {
-      component.setProps({
-        children: (
-          <>
-            <NxList.Item key="1">
-              <NxList.Text>Foo</NxList.Text>
-            </NxList.Item>
-            <NxList.Item key="2">
-              <NxList.Text>Bar</NxList.Text>
-            </NxList.Item>
-          </>
-        )
+        expect(getByRole('list')).not.toHaveTextContent('This list is empty.');
+        expect(getByRole('listitem')).not.toHaveTextContent('This list is empty.');
+      });
+
+      it('does not show the default empty message when error', function() {
+        const retryHandler = jest.fn(),
+            { getByRole } = quickRender({ error: 'Error message', retryHandler });
+
+        expect(getByRole('list')).not.toHaveTextContent('This list is empty.');
+        expect(getByRole('listitem')).not.toHaveTextContent('This list is empty.');
       });
     });
-    component.update();
 
-    expect(component.find('li').length).toBe(2);
-    expect(component).not.toIncludeText('Empty message');
+    describe('when provided', function() {
+      it('shows the empty message when there are no children, ' +
+        'no error, and not loading', function() {
+        // truly empty component
+        const { getByRole, rerender } = quickRender({ emptyMessage: 'Empty message' });
+
+        expect(getByRole('list')).toHaveTextContent('Empty message');
+        expect(getByRole('listitem')).toHaveTextContent('Empty message');
+
+        // empty list component
+        rerender(<NxList emptyMessage={'Empty message'}>{[]}</NxList>);
+
+        expect(getByRole('list')).toHaveTextContent('Empty message');
+        expect(getByRole('listitem')).toHaveTextContent('Empty message');
+      });
+
+      it('does not show the empty message when there are children', function() {
+        const children = <NxList.Item>Cat</NxList.Item>,
+            { getByRole } = quickRender({ children, emptyMessage: 'Empty message' });
+
+        expect(getByRole('list')).not.toHaveTextContent('Empty message');
+        expect(getByRole('listitem')).not.toHaveTextContent('Empty message');
+      });
+
+      it('does not show the empty message when loading', function() {
+        const { getByRole } = quickRender({
+          emptyMessage: 'Empty message',
+          isLoading: true
+        });
+
+        expect(getByRole('list')).not.toHaveTextContent('Empty message');
+        expect(getByRole('listitem')).not.toHaveTextContent('Empty message');
+      });
+
+      it('does not show the empty message when error', function() {
+        const retryHandler = jest.fn(),
+            { getByRole } = quickRender({
+              emptyMessage: 'Empty message',
+              error: 'Error message',
+              retryHandler
+            });
+
+        expect(getByRole('list')).not.toHaveTextContent('Empty message');
+        expect(getByRole('listitem')).not.toHaveTextContent('Empty message');
+      });
+    });
   });
 
-  it('renders an empty list', async function() {
-    const component = await mountAttached(
-      <NxList emptyMessage="Empty message"></NxList>
-    );
+  it('renders the loading spinner when isLoading is set', function() {
+    const view = quickRender({ isLoading: true }),
+        list = view.getByRole('list'),
+        listItem = within(list).getByRole('listitem'),
+        spinner = within(listItem).getByRole('status');
 
-    expect(component.find('li').length).toBe(1);
-    expect(component).toIncludeText('Empty message');
+    expect(spinner).toBeInTheDocument();
+    expect(spinner).toHaveTextContent('Loading…');
   });
 
-  it('shows the loading spinner when isLoading is set', function() {
-    const component = getShallow({isLoading: true});
+  describe('error', function() {
+    it('renders an error with role="alert" along with default text content', function() {
+      const retryHandler = jest.fn(),
+          view = quickRender({
+            emptyMessage: 'Empty message',
+            error: 'Error message',
+            retryHandler
+          }),
+          list = view.getByRole('list'),
+          listItem = within(list).getByRole('listitem'),
+          error = within(listItem).getByRole('alert');
 
-    expect(component.children()).toMatchSelector('li');
-    expect(component).toContainExactlyOneMatchingElement('li.nx-list__item');
-    expect(component.find('li').children()).toMatchSelector(NxLoadingSpinner);
-  });
+      expect(error).toBeInTheDocument();
+      expect(error).toHaveTextContent('An error occurred loading data. Error message');
+    });
 
-  it('shows the error when error is set', async function() {
-    const retryHandler = jest.fn(),
-        component = getShallow({error: 'Error message', retryHandler: retryHandler});
+    it('renders a retry button if there is an error and retryHandler is set', function() {
+      const retryHandler = jest.fn(),
+          withoutRetryView = quickRender({ error: 'Error' }),
+          withRetryView = quickRender({
+            error: 'Error message',
+            retryHandler
+          });
 
-    expect(component.children()).toMatchSelector('li');
-    expect(component).toContainExactlyOneMatchingElement('li.nx-list__item');
-    expect(component.find('li').children()).toMatchSelector(NxLoadError);
-    expect(component.find(NxLoadError)).toHaveProp('error', 'Error message');
-    expect(component.find(NxLoadError)).toHaveProp('retryHandler', retryHandler);
-  });
+      expect(withoutRetryView.queryByRole('button', { name: /retry/i })).not.toBeInTheDocument();
+      expect(withRetryView.getByRole('button', { name: /retry/i })).toBeInTheDocument();
+    });
 
-  it('renders children correctly', async function() {
-    const component = getShallow({ children: <NxList.ButtonItem>Test</NxList.ButtonItem> });
+    it('calls the retryHandler when the retry button is clicked', async function() {
+      const user = userEvent.setup(),
+          retryHandler = jest.fn(),
+          view = quickRender({
+            error: 'Error message',
+            retryHandler
+          }),
+          retryButton = view.getByRole('button', { name: /retry/i });
 
-    expect(component.children()).toContainExactlyOneMatchingElement(NxListButtonItem);
+      expect(retryButton).toBeInTheDocument();
+      expect(retryHandler).not.toHaveBeenCalled();
+
+      await user.click(retryButton);
+
+      expect(retryHandler).toHaveBeenCalled();
+    });
   });
 });
