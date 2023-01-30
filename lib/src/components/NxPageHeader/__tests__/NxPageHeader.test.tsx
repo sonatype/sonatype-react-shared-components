@@ -54,7 +54,9 @@ describe('NxPageHeader', function() {
       link2 = screen.getByRole('link', {name: 'baz'})
 
     expect(link1).toBeInTheDocument();
+    expect(link1).toHaveAttribute('href', '#bar');
     expect(link2).toBeInTheDocument();
+    expect(link1).toHaveAttribute('href', '#qux');
   });
 
   it('renders the product name if provided', function() {
