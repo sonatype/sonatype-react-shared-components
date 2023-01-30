@@ -5,27 +5,30 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import NxThreatIndicator, { Props } from '../NxThreatIndicator';
-import { rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
+import { rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import { screen } from '@testing-library/react';
 
 describe('NxThreatIndicator', function() {
   const quickRender = rtlRender<Props>(NxThreatIndicator, {});
 
-  it('renders an element with a role of graphics-symbol', function() {
-    const el = quickRender(),
-        threatIndicator = el.getByRole('graphics-symbol');
+  it('renders an element with a role of graphics-symbol', async function() {
+    const el = quickRender();
+    await runTimers();
+    const threatIndicator = el.getByRole('graphics-symbol');
     expect(threatIndicator).toBeInTheDocument();
   });
 
-  it('has a fallback role of img', function() {
-    const el = quickRender(),
-        threatIndicator = el.getByRole('img', { queryFallbacks: true });
+  it('has a fallback role of img', async function() {
+    const el = quickRender();
+    await runTimers();
+    const threatIndicator = el.getByRole('img', { queryFallbacks: true });
     expect(threatIndicator).toBeInTheDocument();
   });
 
   it('takes precedence of threatLevelCategory if both props are provided', async function() {
-    const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
-        user = userEvent.setup(),
+    const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' });
+    await runTimers();
+    const user = userEvent.setup(),
         threatIndicator = el.getByRole('graphics-symbol')!;
 
     await user.hover(threatIndicator);
@@ -33,17 +36,19 @@ describe('NxThreatIndicator', function() {
     expect(tooltip).toHaveTextContent('Low');
   });
 
-  it('sets the accessible name based on the threat level category', function() {
-    const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
-        threatIndicator = el.getByRole('graphics-symbol')!;
+  it('sets the accessible name based on the threat level category', async function() {
+    const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' });
+    await runTimers();
+    const threatIndicator = el.getByRole('graphics-symbol')!;
 
-    expect(threatIndicator).toHaveAccessibleName('threat level low');
+    expect(threatIndicator).toHaveAccessibleName('Low');
   });
 
   describe('should have default tooltips', function() {
     const getTooltipTextForProps = async (threat: Props) => {
-      const el = quickRender(threat)!,
-          user = userEvent.setup(),
+      const el = quickRender(threat)!;
+      await runTimers();
+      const user = userEvent.setup(),
           threatIndicator = el.getByRole('graphics-symbol');
 
       await user.hover(threatIndicator);
@@ -110,8 +115,9 @@ describe('NxThreatIndicator', function() {
   });
 
   it('should show custom tooltip title', async function() {
-    const el = quickRender({ title: 'Extinction Level Threat' }),
-        user = userEvent.setup(),
+    const el = quickRender({ title: 'Extinction Level Threat' });
+    await runTimers();
+    const user = userEvent.setup(),
         threatIndicator = el.getByRole('graphics-symbol')!;
 
     await user.hover(threatIndicator);
@@ -124,7 +130,7 @@ describe('NxThreatIndicator', function() {
 
     it('should hide tooltip', async function() {
       const user = userEvent.setup(),
-          threatIndicator = quickRender().getByRole('presentation');
+          threatIndicator = quickRender().getByRole('presentation', { hidden: true });
 
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
       await user.hover(threatIndicator);
@@ -132,13 +138,13 @@ describe('NxThreatIndicator', function() {
     });
 
     it('should set the role to "presentation"', function() {
-      const threatIndicator = quickRender().getByRole('presentation');
+      const threatIndicator = quickRender().getByRole('presentation', { hidden: true });
 
       expect(threatIndicator).toBeInTheDocument();
     });
 
     it('should not have an accessible name', function() {
-      const threatIndicator = quickRender().getByRole('presentation');
+      const threatIndicator = quickRender().getByRole('presentation', { hidden: true });
 
       expect(threatIndicator).not.toHaveAccessibleName();
     });
