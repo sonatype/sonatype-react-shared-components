@@ -174,7 +174,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
   useMutationObserver(menuRef, checkForRemovedFocusedEl, { childList: true });
 
   return (
-    <div ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
+    <div role="group" ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
       <NxFilterInput role="searchbox"
                      ref={filterRef}
                      className={filterClassName}

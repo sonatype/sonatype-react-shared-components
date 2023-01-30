@@ -21,6 +21,10 @@ describe('NxSearchDropdown', function() {
       renderEl = rtlRenderElement<PropsWithRef>(NxSearchDropdown, minimalProps),
       quickRender = rtlRender<PropsWithRef>(NxSearchDropdown, minimalProps);
 
+  it('renders a top-level element with role="group"', function () {
+    expect(renderEl()).toHaveAttribute('role', 'group');
+  });
+
   it('adds additional specified classnames', function() {
     const el = renderEl()!;
     const customEl = renderEl({ className: 'foo' });
