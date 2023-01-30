@@ -4,41 +4,41 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import 'jest-enzyme';
+import React, { useContext } from 'react';
+
+import { render, screen, within, waitFor } from '@testing-library/react';
+import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
+import { RowContext } from '../contexts';
+
 import NxTable from '../NxTable';
 import NxTableHead from '../NxTableHead';
 import NxTableRow from '../NxTableRow';
 import NxTableCell from '../NxTableCell';
 import NxTableBody from '../NxTableBody';
-import { act } from 'react-dom/test-utils';
 
 describe('NxTable', function() {
-  let mountContainer: HTMLElement;
+  const renderEl = rtlRenderElement(NxTable, {});
 
-  beforeEach(function() {
-    mountContainer = document.createElement('div');
-    document.body.append(mountContainer);
+  it('passes general attributes to top-level element', function() {
+    const component = renderEl({ id: 'dolphin', lang: 'en-CA' });
+    expect(component).toHaveAttribute('id', 'dolphin');
+    expect(component).toHaveAttribute('lang', 'en-CA');
   });
 
-  afterEach(function() {
-    document.body.removeChild(mountContainer);
+  it('merges any passed in className', function() {
+    const componentWithAddedClass = renderEl({ className: 'foo' });
+    const component = renderEl()!;
+
+    expect(componentWithAddedClass).toHaveClass('foo');
+
+    for (const cls of Array.from(component.classList)) {
+      expect(componentWithAddedClass).toHaveClass(cls);
+    }
   });
 
-  it('renders a table with the expected class names and id', function() {
-    const component = shallow(<NxTable id="test" className="test" />);
-
-    expect(component).toMatchSelector('table.nx-table.test#test');
-  });
-
-  /*
-   * How exactly the header and colSpan things work (using Context currently) is an implementation detail
-   * and so is best tested at this level rather than testing each part of it in the subcomponents
-   */
-
-  it('renders children as table with correct classes and element types for headers', function() {
-    const component = mount(
+  it('renders children of table with correct element types', function() {
+    render(
       <NxTable>
         <NxTableHead>
           <NxTableRow>
@@ -55,25 +55,30 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(component.find('thead th').length).toBe(2);
-    expect(component.find('thead td')).not.toExist();
-    expect(component.find('tbody td').length).toBe(2);
-    expect(component.find('tbody th')).not.toExist();
+    const table = screen.getByRole('table');
+    const rowGroups = within(table).getAllByRole('rowgroup');
+    const headerRows = within(rowGroups[0]).getAllByRole('row');
+    const headerColumnHeaders = within(headerRows[0]).getAllByRole('columnheader');
+    const headerCells = within(headerRows[0]).queryAllByRole('cell');
+    const bodyRows = within(rowGroups[1]).getAllByRole('row');
+    const bodyColumnHeaders = within(bodyRows[0]).queryAllByRole('columnheader');
+    const bodyCells = within(bodyRows[0]).getAllByRole('cell');
 
-    expect(component.find('thead tr')).toHaveClassName('nx-table-row--header');
-    expect(component.find('thead tr')).toHaveClassName('nx-table-row');
+    expect(table).toBeInTheDocument();
+    expect(rowGroups.length).toBe(2);
+    expect(headerRows.length).toBe(1);
+    expect(headerColumnHeaders.length).toBe(2);
+    expect(headerCells.length).toBe(0);
+    expect(bodyRows.length).toBe(1);
+    expect(bodyColumnHeaders.length).toBe(0);
+    expect(bodyCells.length).toBe(2);
 
-    expect(component.find('th.nx-cell.nx-cell--header').length).toBe(2);
-
-    expect(component.find('tbody tr')).not.toHaveClassName('nx-table-row--header');
-    expect(component.find('td.nx-cell--header')).not.toExist();
-
-    // colSpan should not be getting set on table cells
-    expect(component.find('td').findWhere(td => td.prop('colSpan') != null)).not.toExist();
+    expect(bodyCells[0]).not.toHaveAttribute('colSpan');
+    expect(bodyCells[1]).not.toHaveAttribute('colSpan');
   });
 
   it('Puts the correct colSpan on a loading meta-info cell', function() {
-    const component = mount(
+    render(
       <NxTable>
         <NxTableHead>
           <NxTableRow>
@@ -85,34 +90,12 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(component.find('td')).toHaveProp('colSpan', 2);
-    expect(component.find('td')).toHaveClassName('nx-cell--meta-info');
+    expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '2');
+    expect(screen.getByRole('cell')).toHaveClass('nx-cell--meta-info');
   });
 
   it('Puts the correct colSpan on an emptyMessage meta-info cell', async function() {
-    let component: ReactWrapper;
-    await act(async () => {
-      component = mount(
-        <NxTable>
-          <NxTableHead>
-            <NxTableRow>
-              <NxTableCell>Foo</NxTableCell>
-              <NxTableCell>Bar</NxTableCell>
-            </NxTableRow>
-          </NxTableHead>
-          <NxTableBody emptyMessage="Empty" />
-        </NxTable>
-      );
-    });
-    component!.update();
-
-    expect(component!.find('td')).toHaveProp('colSpan', 2);
-    expect(component!.find('td')).toHaveClassName('nx-cell--meta-info');
-    expect(component!.find('td')).toHaveText('Empty');
-  });
-
-  it('Puts the correct colSpan on an error meta-info cell', function() {
-    const component = mount(
+    render(
       <NxTable>
         <NxTableHead>
           <NxTableRow>
@@ -120,17 +103,17 @@ describe('NxTable', function() {
             <NxTableCell>Bar</NxTableCell>
           </NxTableRow>
         </NxTableHead>
-        <NxTableBody error="Error!"/>
+        <NxTableBody emptyMessage="Empty" />
       </NxTable>
     );
 
-    expect(component.find('td')).toHaveProp('colSpan', 2);
-    expect(component.find('td')).toHaveClassName('nx-cell--meta-info');
-    expect(component.find('td')).toIncludeText('Error!');
+    expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '2');
+    expect(screen.getByRole('cell')).toHaveClass('nx-cell--meta-info');
+    expect(screen.getByRole('cell')).toHaveTextContent('Empty');
   });
 
-  it('correctly updates the colspan if the number of columns changes', async function() {
-    const component = mount(
+  it('Puts the correct colSpan on an error meta-info cell', function() {
+    render(
       <NxTable>
         <NxTableHead>
           <NxTableRow>
@@ -138,29 +121,209 @@ describe('NxTable', function() {
             <NxTableCell>Bar</NxTableCell>
           </NxTableRow>
         </NxTableHead>
-        <NxTableBody error="Error!"/>
-      </NxTable>,
-      { attachTo: mountContainer }
+        <NxTableBody error="Error!" />
+      </NxTable>
     );
 
-    await act(async () => {
-      component.setProps({
-        children: (
-          <>
-            <NxTableHead>
-              <NxTableRow>
-                <NxTableCell>Foo</NxTableCell>
-              </NxTableRow>
-            </NxTableHead>
-            <NxTableBody error="Error!"/>
-          </>
-        )
-      });
-    });
-    component.update();
+    expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '2');
+    expect(screen.getByRole('cell')).toHaveClass('nx-cell--meta-info');
+    expect(screen.getByRole('cell')).toHaveTextContent('Error!');
+  });
 
-    expect(component.find('td')).toHaveProp('colSpan', 1);
-    expect(component.find('td')).toHaveClassName('nx-cell--meta-info');
-    expect(component.find('td')).toIncludeText('Error!');
+  it('correctly updates the colspan if the number of columns changes', async function() {
+    const { rerender } = render(
+      <NxTable>
+        <NxTableHead>
+          <NxTableRow>
+            <NxTableCell>Foo</NxTableCell>
+            <NxTableCell>Bar</NxTableCell>
+          </NxTableRow>
+        </NxTableHead>
+        <NxTableBody error="Error!" />
+      </NxTable>
+    );
+
+    expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '2');
+
+    rerender(
+      <NxTable>
+        <NxTableHead>
+          <NxTableRow>
+            <NxTableCell>Foo</NxTableCell>
+          </NxTableRow>
+        </NxTableHead>
+        <NxTableBody error="Error!" />
+      </NxTable>
+    );
+
+    await waitFor(() => expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '1'));
+
+    expect(screen.getByRole('cell')).toHaveClass('nx-cell--meta-info');
+    expect(screen.getByRole('cell')).toHaveTextContent('Error!');
+  });
+
+  describe('NxTableBody', function() {
+    it('does not show the emptyMessage when there are children', async function() {
+      render(
+        <NxTable>
+          <NxTableBody emptyMessage="Empty message">
+            <NxTableRow>
+              <NxTableCell>Foo</NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
+      );
+
+      expect(screen.getByRole('rowgroup')).not.toHaveTextContent('Empty message');
+    });
+
+    it('does not show the emptyMessage when isLoading', function() {
+      render(<NxTableBody emptyMessage="Empty message" isLoading />);
+      expect(screen.getByRole('rowgroup')).not.toHaveTextContent('Empty message');
+    });
+
+    it('does not show the emptyMessage when in error', function() {
+      render(<NxTableBody emptyMessage="Empty message" error="Errr" retryHandler={() => { }} />);
+
+      expect(screen.getByRole('rowgroup')).not.toHaveTextContent('Empty message');
+    });
+
+    it('removes the emptyMessage when children are added', async function() {
+      const { rerender } = render(<NxTableBody emptyMessage="Empty message"></NxTableBody>);
+
+      expect(screen.getByRole('rowgroup')).toHaveTextContent('Empty message');
+
+      rerender(
+        <NxTable>
+          <NxTableBody emptyMessage="Empty message">
+            <NxTableRow>
+              <NxTableCell />
+            </NxTableRow>
+            <NxTableRow>
+              <NxTableCell />
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
+      );
+
+      await waitFor(() => expect(screen.getByRole('rowgroup')).not.toHaveTextContent('Empty message'));
+    });
+  });
+
+  describe('NxTableRow', function() {
+    it('sets the rendered text content into RowContext provider label with cells separated by semi-colons', function() {
+      function ContextDependentChild() {
+        const { label } = useContext(RowContext);
+        return <span data-testid="context-dependent" aria-label={label} />;
+      }
+
+      render(
+        <NxTable>
+          <NxTableBody>
+            <NxTableRow>
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+              <NxTableCell />
+              <NxTableCell>Baz</NxTableCell>
+              <NxTableCell><ContextDependentChild /></NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
+      );
+
+      expect(screen.getByTestId('context-dependent')).toHaveAccessibleName('Foo; Bar; Baz');
+    });
+
+    it('sets the clickAccessbleLabel into the RowContext provider label if it is defined', function() {
+      function ContextDependentChild() {
+        const { label } = useContext(RowContext);
+        return <span data-testid="context-dependent" aria-label={label} />;
+      }
+
+      render(
+        <NxTable>
+          <NxTableBody>
+            <NxTableRow clickAccessibleLabel="asdf">
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+              <NxTableCell />
+              <NxTableCell>Baz</NxTableCell>
+              <NxTableCell><ContextDependentChild /></NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
+      );
+
+      expect(screen.getByTestId('context-dependent')).toHaveAccessibleName('asdf');
+    });
+
+    it('sets the isFilterHeader flag into the RowContext, normalized to a boolean', function() {
+      function ContextDependentChild() {
+        const { isFilterHeader } = useContext(RowContext);
+        return <span data-testid="context-dependent">{isFilterHeader.toString()}</span>;
+      }
+
+      const { rerender } = render(
+        <NxTable>
+          <NxTableRow isFilterHeader={true}>
+            <NxTableCell>Foo</NxTableCell>
+            <NxTableCell>Bar</NxTableCell>
+            <NxTableCell />
+            <NxTableCell>Baz</NxTableCell>
+            <NxTableCell><ContextDependentChild /></NxTableCell>
+          </NxTableRow>
+        </NxTable>
+      );
+
+      expect(screen.getByTestId('context-dependent')).toHaveTextContent('true');
+
+      rerender(
+        <NxTable>
+          <NxTableBody>
+            <NxTableRow isFilterHeader={false}>
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+              <NxTableCell />
+              <NxTableCell>Baz</NxTableCell>
+              <NxTableCell><ContextDependentChild /></NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
+      );
+
+      expect(screen.getByTestId('context-dependent')).toHaveTextContent('false');
+
+      rerender(
+        <NxTable>
+          <NxTableBody>
+            <NxTableRow isFilterHeader={null}>
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+              <NxTableCell />
+              <NxTableCell>Baz</NxTableCell>
+              <NxTableCell><ContextDependentChild /></NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
+      );
+
+      expect(screen.getByTestId('context-dependent')).toHaveTextContent('false');
+
+      rerender(
+        <NxTable>
+          <NxTableBody>
+            <NxTableRow>
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+              <NxTableCell />
+              <NxTableCell>Baz</NxTableCell>
+              <NxTableCell><ContextDependentChild /></NxTableCell>
+            </NxTableRow>
+          </NxTableBody>
+        </NxTable>
+      );
+
+      expect(screen.getByTestId('context-dependent')).toHaveTextContent('false');
+    });
   });
 });
