@@ -90,7 +90,6 @@ describe('NxSearchDropdown', function() {
 
     expect(onSearch).not.toHaveBeenCalled();
 
-    input.focus();
     await user.type(input, '[Backspace]', { initialSelectionStart: 5, initialSelectionEnd: 5  });
     await user.type(input, '[Backspace]', { initialSelectionStart: 1, initialSelectionEnd: 1 });
     await user.type(input, '[Space]', { initialSelectionStart: 0, initialSelectionEnd: 0 });
