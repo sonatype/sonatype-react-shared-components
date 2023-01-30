@@ -33,7 +33,7 @@ describe('NxThreatIndicator', function() {
     expect(tooltip).toHaveTextContent('Low');
   });
 
-  it('adds aria attrs to help the icon show up for screen readers', function() {
+  it('sets the accessible name based on the threat level category', function() {
     const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
         threatIndicator = el.getByRole('graphics-symbol')!;
 
