@@ -16,13 +16,13 @@ describe('NxPageHeader', function() {
 
  it('renders a top-level header element', function() {
     renderEl();
-    const header = screen.getByRole('banner')
+    const header = screen.getByRole('banner');
     expect(header).toBeInTheDocument();
   });
 
   it('renders the default logo within the header', function() {
     renderEl();
-    const logo = screen.getByRole('img')
+    const logo = screen.getByRole('img');
     expect(logo).toBeInTheDocument();
   });
 
@@ -38,18 +38,16 @@ describe('NxPageHeader', function() {
 
   it('renders logo link when given homeLink prop', function() {
     renderEl({ homeLink: '#home'});    
-
     const homeLink = screen.getByRole('link', {name: 'Home'}),
       homeLinkLogo = screen.getByRole('img');
 
     expect(homeLink).toBeInTheDocument();
-    expect(homeLink).toHaveAttribute('href','#home')
+    expect(homeLink).toHaveAttribute('href','#home');
     expect(homeLinkLogo).toBeInTheDocument();
   });
 
   it('renders links in header when given links prop', function() {
     renderEl({links: [{ name: 'foo', href: '#bar' }, { name: 'baz', href: '#qux', current: true }]});
-
     const link1 = screen.getByRole('link', {name: 'foo'}),
       link2 = screen.getByRole('link', {name: 'baz'})
 
@@ -80,7 +78,7 @@ describe('NxPageHeader', function() {
           }
         };
     renderEl(props);
-    const version = screen.getByText('Version: 1.2.3')
+    const version = screen.getByText('Version: 1.2.3');
 
     expect(version).toBeInTheDocument();
   });
