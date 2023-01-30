@@ -162,7 +162,7 @@ describe('NxSearchDropdown', function() {
     expect(errorAlert).toBeInTheDocument();
   });
 
-  it('sets an id on the dropdown and references it in the search boxe\'s aria-controls', function() {
+  it('sets an id on the dropdown and references it in the search box\'s aria-controls', function() {
     const el = quickRender({ searchText: 'foo' }),
         filterInput = el.getByRole('searchbox'),
         dropdown = el.getByRole('alert');
