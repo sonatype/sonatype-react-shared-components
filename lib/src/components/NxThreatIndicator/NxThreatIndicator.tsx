@@ -14,11 +14,7 @@ export { Props } from './types';
 import './NxThreatIndicator.scss';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { config } from '@fortawesome/fontawesome-svg-core';
 import classnames from 'classnames';
-
-// Disable auto accessibility feature that adds aria-hidden=true on NxFontAwesomeIcon
-config.autoA11y = false;
 
 const capitalize = (string: string) => string.charAt(0).toUpperCase() + string.slice(1);
 
