@@ -40,9 +40,10 @@ describe('NxPageHeader', function() {
     renderEl({ homeLink: '#home'});    
 
     const homeLink = screen.getByRole('link', {name: 'Home'}),
-      homeLinkLogo = homeLink.querySelector('img');
+      homeLinkLogo = screen.getByRole('img');
 
     expect(homeLink).toBeInTheDocument();
+    expect(homeLink).toHaveAttribute('href','#home')
     expect(homeLinkLogo).toBeInTheDocument();
   });
 
