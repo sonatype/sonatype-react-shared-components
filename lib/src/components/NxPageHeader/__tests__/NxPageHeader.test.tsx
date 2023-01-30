@@ -48,7 +48,7 @@ describe('NxPageHeader', function() {
   });
 
   it('renders links in header when given links prop', function() {
-    renderEl({links: [{ name: 'foo', href: '#bar' }, { name: 'baz', href: '#qux' }]});
+    renderEl({links: [{ name: 'foo', href: '#bar' }, { name: 'baz', href: '#qux', current: true }]});
 
     const link1 = screen.getByRole('link', {name: 'foo'}),
       link2 = screen.getByRole('link', {name: 'baz'})
@@ -57,6 +57,7 @@ describe('NxPageHeader', function() {
     expect(link1).toHaveAttribute('href', '#bar');
     expect(link2).toBeInTheDocument();
     expect(link2).toHaveAttribute('href', '#qux');
+    expect(link2).toHaveAttribute('aria-current', 'page');
   });
 
   it('renders the product name if provided', function() {
