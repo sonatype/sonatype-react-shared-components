@@ -191,7 +191,7 @@ describe('NxSearchDropdown', function() {
     expect(within(dropdownMenu).getByRole('alert')).toHaveTextContent('bar');
   });
 
-  it('fires onSearch with the searchText when the load wrappers retryHandler is triggered', async function() {
+  it('fires onSearch with the searchText when the retry button is clicked', async function() {
     const onSearch = jest.fn(),
         user = userEvent.setup(),
         error = quickRender({ searchText: 'foo', error: 'bar', onSearch });
