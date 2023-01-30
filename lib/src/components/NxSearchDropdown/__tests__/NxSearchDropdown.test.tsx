@@ -144,8 +144,15 @@ describe('NxSearchDropdown', function() {
   });
 
   it('sets aria-busy on the dropdown menu if loading is true', function() {
-    expect(quickRender().getByRole('alert', { hidden: true })).toHaveAttribute('aria-busy', 'false');
-    expect(quickRender({ loading: true }).getByRole('alert', { hidden: true })).toHaveAttribute('aria-busy', 'true');
+    const matches = [
+      { id: '1', displayName: 'One' },
+      { id: '2', displayName: 'Two' }
+    ];
+
+    expect(quickRender({ searchText: 'test', matches }).getByRole('menu'))
+        .toHaveAttribute('aria-busy', 'false');
+    expect(quickRender({ searchText: 'test', matches, loading: true }).getByRole('alert'))
+        .toHaveAttribute('aria-busy', 'true');
   });
 
   it('sets the alert role on the dropdown menu when it is in loading, error, or empty states', function() {
