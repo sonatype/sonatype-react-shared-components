@@ -11,7 +11,7 @@ import { screen } from '@testing-library/react';
 describe('NxThreatIndicator', function() {
   const quickRender = rtlRender<Props>(NxThreatIndicator, {});
 
-  it('renders a threat indicator', function() {
+  it('renders an element with a role of graphics-symbol', function() {
     const el = quickRender(),
         threatIndicator = el.getByRole('graphics-symbol', { queryFallbacks: true });
     expect(threatIndicator).toBeInTheDocument();
