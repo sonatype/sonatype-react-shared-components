@@ -304,7 +304,7 @@ describe('NxStatefulTransferList', function() {
                 const charToFilterOn = String.fromCharCode(filterChar.charCodeAt(0) - 1).toLowerCase();
                 return displayName.toLowerCase().includes(charToFilterOn);
               },
-              defaultFilterView = quickRender({ allItems, onChange, }),
+              defaultFilterView = quickRender({ allItems, onChange }),
               defaultAvailableGroup = defaultFilterView.getByRole('group', { name: 'Available Items' }),
               defaultFilterInput = within(defaultAvailableGroup).getByRole('textbox', { name: 'Filter' }),
               defaultFilterTransferBtn = defaultFilterView.getByRole('button', { name: 'Transfer All' }),
@@ -949,7 +949,6 @@ describe('NxStatefulTransferList', function() {
           expect(btn).toHaveAttribute('aria-disabled', 'true');
           await user.click(btn);
         }
-
 
         await user.click(clearFilterBtn);
         expect(onChange).not.toHaveBeenCalled();
