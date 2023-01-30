@@ -60,7 +60,7 @@ describe('NxTabs', function() {
       </NxTabs>
     );
 
-    expect(container.firstElementChild!.id).toMatch(/^my-tabs/);
+    expect(container.firstElementChild!.id).toEqual('my-tabs');
     expect(getByRole('tab')!.id).toMatch(/^my-tabs/);
     expect(getByRole('tabpanel')!.id).toMatch(/^my-tabs/);
 
