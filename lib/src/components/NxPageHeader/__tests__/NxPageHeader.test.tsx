@@ -26,7 +26,7 @@ describe('NxPageHeader', function() {
     expect(logo).toBeInTheDocument();
   });
 
-  it('renders a custom logo when given logo prop', function() {
+  it('renders a custom logo instead of the default one when given logo prop', function() {
     renderEl({ logo: { path: 'foo', alt: 'bar' } });
     const logo = screen.getByRole('img');
 
