@@ -70,17 +70,8 @@ describe('NxStatefulToggle', function() {
     expect(checkbox).not.toBeChecked();
     await user.click(checkbox);
     expect(checkbox).toBeChecked();
-  });
-
-  it('calls its onChange prop when the input fires a change event', async function() {
-    const user = userEvent.setup();
-    const onChange = jest.fn();
-
-    const checkbox = quickRender({ onChange }).getByRole('switch');
-
-    expect(onChange).not.toHaveBeenCalled();
     await user.click(checkbox);
-    expect(onChange).toHaveBeenCalledWith(true);
+    expect(checkbox).not.toBeChecked();
   });
 
   it('calls its onChange prop when the checkbox is clicked', async function() {
@@ -91,7 +82,7 @@ describe('NxStatefulToggle', function() {
 
     expect(onChange).not.toHaveBeenCalled();
     await user.click(checkbox);
-    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(true);
   });
 
   it('calls its onChange prop when the input is focused and space key is pressed', async function() {
