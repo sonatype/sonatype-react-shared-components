@@ -119,7 +119,7 @@ describe('NxPageHeader', function() {
 
     const link = screen.getByRole('link',{name: 'foo'}),
         homeLink = screen.getByRole('link', {name: 'Home'}),
-        homeLinkLogo = homeLink.querySelector('img'),
+        homeLinkLogo = screen.getByRole('img'),
         productName = screen.getByText('test app'),
         productVersion = screen.getByText('Version: 1.2.3'),
         button = screen.getByRole('button', {name: 'Click Here For a Free iPhone'});
