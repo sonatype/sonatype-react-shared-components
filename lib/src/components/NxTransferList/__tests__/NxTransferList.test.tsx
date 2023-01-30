@@ -168,18 +168,19 @@ describe('NxTransferList', function() {
         }
     );
 
-    it('fires onChange with the checkbox\'s corresponding id added to the end of the list when a selected ' +
-        'checkbox is clicked', async function() {
-      const user = userEvent.setup(),
-          onChange = jest.fn(),
-          view = quickRender({ allItems, selectedItems: new Set([3, 2]), showMoveAll: true, onChange }),
-          checkbox1 = view.getByRole('checkbox', { name: 'One' });
+    it('fires onChange with the checkbox\'s corresponding id added to the set when an unselected checkbox is clicked',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ allItems, selectedItems: new Set([3, 2]), showMoveAll: true, onChange }),
+              checkbox1 = view.getByRole('checkbox', { name: 'One' });
 
-      await user.click(checkbox1);
+          await user.click(checkbox1);
 
-      expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenCalledWith(new Set([3, 2, 1]));
-    });
+          expect(onChange).toHaveBeenCalledTimes(1);
+          expect(onChange).toHaveBeenCalledWith(new Set([3, 2, 1]));
+        }
+    );
   });
 
   describe('count texts', function() {
