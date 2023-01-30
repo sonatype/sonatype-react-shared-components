@@ -134,18 +134,9 @@ describe('NxSearchDropdown', function() {
     expect(el.getByRole('menu')).toBeInTheDocument();
   });
 
-  it('sets aria-hidden to true on the dropdown menu if the searchText is empty or disabled is true', function() {
-    expect(quickRender().getByRole('alert', { hidden: true })).toHaveAttribute('aria-hidden', 'true');
-    expect(quickRender({ searchText: 'foo', disabled: true }).getByRole('alert', { hidden: true }))
-        .toHaveAttribute('aria-hidden', 'true');
-    expect(quickRender({ searchText: 'foo', disabled: false }).getByRole('alert'))
-        .toHaveAttribute('aria-hidden', 'false');
-    expect(quickRender({ searchText: 'foo', disabled: undefined }).getByRole('alert'))
-        .toHaveAttribute('aria-hidden', 'false');
-    expect(quickRender({ searchText: 'foo', disabled: null }).getByRole('alert'))
-        .toHaveAttribute('aria-hidden', 'false');
-    expect(quickRender({ searchText: 'foo' }).getByRole('alert'))
-        .toHaveAttribute('aria-hidden', 'false');
+  it('does not render a menu if search text is empty or disabled is true', function() {
+    expect(quickRender().queryByRole('menu')).not.toBeInTheDocument();
+    expect(quickRender({ searchText: 'foo', disabled: true }).queryByRole('menu')).not.toBeInTheDocument();
   });
 
   it('sets aria-live on the dropdown menu to "polite"', function() {
