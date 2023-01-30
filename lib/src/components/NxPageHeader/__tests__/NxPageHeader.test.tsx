@@ -56,7 +56,7 @@ describe('NxPageHeader', function() {
     expect(link1).toBeInTheDocument();
     expect(link1).toHaveAttribute('href', '#bar');
     expect(link2).toBeInTheDocument();
-    expect(link1).toHaveAttribute('href', '#qux');
+    expect(link2).toHaveAttribute('href', '#qux');
   });
 
   it('renders the product name if provided', function() {
