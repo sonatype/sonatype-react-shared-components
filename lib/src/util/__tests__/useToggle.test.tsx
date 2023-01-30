@@ -52,33 +52,33 @@ describe('useToggle', function() {
     expect(el).toHaveTextContent('false');
   });
 
-  it('returns a tuple who\'s second value is a function that returns the new state value after toggling', 
+  it('returns a tuple who\'s second value is a function that returns the new state value after toggling',
       async function() {
-      function Fixture({ onToggle }: { onToggle: (newVal: boolean) => void }) {
-        const [val, toggle] = useToggle(false);
+        function Fixture({ onToggle }: { onToggle: (newVal: boolean) => void }) {
+          const [val, toggle] = useToggle(false);
 
-        function onClick() {
-          const newVal = toggle();
-          onToggle(newVal);
+          function onClick() {
+            const newVal = toggle();
+            onToggle(newVal);
+          }
+
+          return <button onClick={onClick}>{val.toString()}</button>;
         }
 
-        return <button onClick={onClick}>{val.toString()}</button>;
+        const user = userEvent.setup(),
+            onToggle = jest.fn();
+
+        render(<Fixture onToggle={onToggle} />);
+
+        const button = screen.getByRole('button');
+
+        await user.click(button);
+        expect(onToggle).toHaveBeenCalledWith(true);
+        expect(onToggle).not.toHaveBeenCalledWith(false);
+
+        await user.click(button);
+        expect(onToggle).toHaveBeenCalledWith(false);
       }
-
-      const user = userEvent.setup(),
-          onToggle = jest.fn();
-
-      render(<Fixture onToggle={onToggle} />);
-
-      const button = screen.getByRole('button');
-
-      await user.click(button);
-      expect(onToggle).toHaveBeenCalledWith(true);
-      expect(onToggle).not.toHaveBeenCalledWith(false);
-
-      await user.click(button);
-      expect(onToggle).toHaveBeenCalledWith(false);
-    }
   );
 
   it('returns a tuple who\'s third value is a function that sets the state to the specified value', async function() {
