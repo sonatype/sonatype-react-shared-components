@@ -19,7 +19,11 @@ describe('NxSearchDropdown', function() {
         onSelect: () => {}
       },
       renderEl = rtlRenderElement<PropsWithRef>(NxSearchDropdown, minimalProps),
-      quickRender = rtlRender<PropsWithRef>(NxSearchDropdown, minimalProps);
+      quickRender = rtlRender<PropsWithRef>(NxSearchDropdown, minimalProps),
+      matches = [
+        { id: '1', displayName: 'One' },
+        { id: '2', displayName: 'Two' }
+      ];
 
   it('renders a top-level element with role="group"', function () {
     expect(renderEl()).toHaveAttribute('role', 'group');
@@ -144,11 +148,6 @@ describe('NxSearchDropdown', function() {
   });
 
   it('sets aria-busy on the dropdown menu if loading is true', function() {
-    const matches = [
-      { id: '1', displayName: 'One' },
-      { id: '2', displayName: 'Two' }
-    ];
-
     expect(quickRender({ searchText: 'test', matches }).getByRole('menu'))
         .toHaveAttribute('aria-busy', 'false');
     expect(quickRender({ searchText: 'test', matches, loading: true }).getByRole('alert'))
@@ -211,11 +210,7 @@ describe('NxSearchDropdown', function() {
   });
 
   it('renders buttons with type "button" for each match', function() {
-    const matches = [
-          { id: '1', displayName: 'One' },
-          { id: '2', displayName: 'Two' }
-        ],
-        el = quickRender({ matches, searchText: 'foo' }),
+    const el = quickRender({ matches, searchText: 'foo' }),
         dropdown = el.getByRole('menu');
 
     expect(within(dropdown).getAllByRole('menuitem').length).toBe(2);
@@ -225,10 +220,6 @@ describe('NxSearchDropdown', function() {
 
   it('sets an onClick handler on the menu button that fires onSelect with the match object', async function() {
     const onSelect = jest.fn().mockImplementation((_, evt) => { evt.persist(); }),
-        matches = [
-          { id: '1', displayName: 'One' },
-          { id: '2', displayName: 'Two' }
-        ],
         user = userEvent.setup(),
         el = quickRender({ matches, onSelect, searchText: 'foo' });
 
@@ -310,11 +301,6 @@ describe('NxSearchDropdown', function() {
   );
 
   it('should clear search when Escape key is pressed on searchbox or dropdown menu', async function() {
-    const matches = [
-      { id: '1', displayName: 'One' },
-      { id: '2', displayName: 'OneTwo' }
-    ];
-
     const onSearchTextChange = jest.fn(),
         el = quickRender({ searchText: 'One', matches, onSearchTextChange }),
         filterInput = el.getByRole('searchbox'),
@@ -337,11 +323,6 @@ describe('NxSearchDropdown', function() {
   });
 
   it('should clear search when close button on searchbox is clicked', async function() {
-    const matches = [
-      { id: '1', displayName: 'One' },
-      { id: '2', displayName: 'OneTwo' }
-    ];
-
     const onSearchTextChange = jest.fn(),
         el = quickRender({ searchText: 'One', matches, onSearchTextChange });
 
