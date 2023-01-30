@@ -369,9 +369,9 @@ describe('NxCollapsibleRadioSelect', function() {
       expect(clearBtn).toHaveAccessibleName('Clear filter');
     });
 
-    it('sets the aria-controls on the input to the element id', function() {
+    it('sets the aria-controls on the input to the menu id', function() {
       const view = quickFilterRender(),
-          id = view.getByRole('group').getAttribute('id'),
+          id = view.getByRole('menu').getAttribute('id'),
           inputEl = view.getByRole('textbox');
 
       expect(inputEl).toHaveAttribute('aria-controls', id);
