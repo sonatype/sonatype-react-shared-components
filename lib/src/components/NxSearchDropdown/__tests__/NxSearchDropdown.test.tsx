@@ -7,7 +7,7 @@
 import React, { RefAttributes } from 'react';
 import NxSearchDropdown, { Props } from '../NxSearchDropdown';
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
-import { fireEvent, within } from '@testing-library/react';
+import { within } from '@testing-library/react';
 
 describe('NxSearchDropdown', function() {
   type PropsWithRef = Props<string | number> & RefAttributes<HTMLDivElement>;
@@ -83,22 +83,28 @@ describe('NxSearchDropdown', function() {
   it('searches for the searchbox text that differs after trimming, passing the trimmed value ' +
     'when the text in the searchbox is changed'
   , async function() {
-    const onSearch = jest.fn(),
-        el = quickRender({ searchText: 'foo ', onSearch }),
-        input = el.getByRole('searchbox');
+    const user = userEvent.setup(),
+        onSearch = jest.fn(),
+        el = quickRender({ searchText: ' foo ', onSearch }),
+        input = el.getByRole('searchbox') as HTMLInputElement;
 
     expect(onSearch).not.toHaveBeenCalled();
 
-    fireEvent.change(input, { target: { value: 'foo' }});
-    fireEvent.change(input, { target: { value: ' foo' }});
-    fireEvent.change(input, { target: { value: ' foo ' }});
-    fireEvent.change(input, { target: { value: 'foo ' }});
+    input.focus();
+    await user.type(input, '[Backspace]', { initialSelectionStart: 5, initialSelectionEnd: 5  });
+    await user.type(input, '[Backspace]', { initialSelectionStart: 1, initialSelectionEnd: 1 });
+    await user.type(input, '[Space]', { initialSelectionStart: 0, initialSelectionEnd: 0 });
+    await user.type(input, '[Space]', { initialSelectionStart: 1, initialSelectionEnd: 1 });
+    await user.type(input, '[Space]', { initialSelectionStart: 4, initialSelectionEnd: 4 });
+    await user.type(input, '[Space]', { initialSelectionStart: 5, initialSelectionEnd: 5 });
 
     expect(onSearch).not.toHaveBeenCalled();
 
-    fireEvent.change(input, { target: { value: 'fo ' }});
+    await user.type(input, '[Backspace]', { initialSelectionStart: 1, initialSelectionEnd: 2 });
+    expect(onSearch).toHaveBeenCalledWith('oo');
 
-    expect(onSearch).toHaveBeenCalledWith('fo');
+    await user.type(input, 'o', { initialSelectionStart: 5, initialSelectionEnd: 5 });
+    expect(onSearch).toHaveBeenCalledWith('foo o');
   });
 
   it('passes the disabled prop to the searchbox and buttons', async function() {
