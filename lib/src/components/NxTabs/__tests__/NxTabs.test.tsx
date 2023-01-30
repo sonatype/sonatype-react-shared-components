@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { rtlRenderElement, rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxTabs, { NxTabsProps } from '../NxTabs';
@@ -157,31 +157,34 @@ describe('NxTabs', function() {
   });
 
   it('sets id and aria labelledby to panel to reference active tab aria-controls', async function() {
-    const user = userEvent.setup();
+    const { rerender } = render(
+      <NxTabs activeTab={0} onTabSelect={() => {}}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
+      </NxTabs>
+    );
 
-    const Fixture = () => {
-      const [activeTab, setActiveTab] = useState<number>(0);
-      return (
-        <NxTabs activeTab={activeTab} onTabSelect={setActiveTab}>
-          <NxTabList>
-            <NxTab>Tab 0</NxTab>
-            <NxTab>Tab 1</NxTab>
-          </NxTabList>
-          <NxTabPanel>Content 0</NxTabPanel>
-          <NxTabPanel>Content 1</NxTabPanel>
-        </NxTabs>
-      );
-    };
+    const getActiveTabControls = () => screen.getByRole('tab', { selected: true }).getAttribute('aria-controls');
 
-    const { getByRole } = render(<Fixture />);
-    const getActiveTabControls = () => getByRole('tab', { selected: true }).getAttribute('aria-controls');
+    expect(screen.getByRole('tabpanel').id).toEqual(getActiveTabControls());
+    expect(screen.getByRole('tabpanel')).toHaveAccessibleName(/^Tab 0/);
 
-    expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
-    expect(getByRole('tabpanel')).toHaveAccessibleName(/^Tab 0/);
+    rerender(
+      <NxTabs activeTab={1} onTabSelect={() => {}}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
+      </NxTabs>
+    );
 
-    await user.click(getByRole('tab', { selected: false }));
-
-    expect(getByRole('tabpanel').id).toEqual(getActiveTabControls());
-    expect(getByRole('tabpanel')).toHaveAccessibleName(/^Tab 1/);
+    expect(screen.getByRole('tabpanel').id).toEqual(getActiveTabControls());
+    expect(screen.getByRole('tabpanel')).toHaveAccessibleName(/^Tab 1/);
   });
 });
