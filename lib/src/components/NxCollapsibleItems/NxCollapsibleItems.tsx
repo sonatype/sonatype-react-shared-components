@@ -36,6 +36,7 @@ function PrivateNxCollapsibleItems(props: Props) {
     className,
     role,
     contentBeforeChildren,
+    collapsibleChildrenId,
     ...otherProps
   } = props;
 
@@ -47,7 +48,7 @@ function PrivateNxCollapsibleItems(props: Props) {
         'nx-collapsible-items--disabled': disabled,
         'nx-collapsible-items--empty': isEmpty
       }),
-      treeViewChildrenId = useUniqueId('nx-collapsible-items-children'),
+      treeViewChildrenId = collapsibleChildrenId ?? useUniqueId('nx-collapsible-items-children'),
       treeViewChildrenRole = role ?? 'list',
       trigger = (
         <button type="button"
