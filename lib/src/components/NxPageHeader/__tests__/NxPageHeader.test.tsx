@@ -14,10 +14,10 @@ describe('NxPageHeader', function() {
 
   const renderEl = rtlRenderElement(NxPageHeader, {});
 
- it('renders a simple NxPageHeader', function() {
+ it('renders a top-level header element', function() {
     renderEl();
-    const logo = screen.getByRole('img')
-    expect(logo).toBeInTheDocument();
+    const header = screen.getByRole('banner')
+    expect(header).toBeInTheDocument();
     
   });
 
