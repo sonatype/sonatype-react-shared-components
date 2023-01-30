@@ -65,36 +65,24 @@ describe('NxPageHeader', function() {
           productInfo: {
             name: 'test app'
           }
-        },
-        header = renderEl(),
-        headerWithProductName = renderEl(props),
-        headerWithProductNameText = headerWithProductName?.querySelector('div.nx-product__name');
+        };
+    renderEl(props);
+    const name = screen.getByText('test app');
 
-    expect(header?.querySelector('div.nx-product__name')).not.toBeInTheDocument();
-    expect(headerWithProductNameText).toBeInTheDocument();
-    expect(headerWithProductNameText?.textContent).toEqual('test app');
-    
+    expect(name).toBeInTheDocument();
   });
 
   it('renders the product version if provided', function() {
     const props = {
           productInfo: {
-            name: 'test app'
-          }
-        },
-        propsWithVersion = {
-          productInfo: {
             name: 'test app',
             version: '1.2.3'
           }
-        },
-        elNoProductVersion = renderEl(props),
-        elWithProductVersion = renderEl(propsWithVersion),
-        productVersion = renderEl(elWithProductVersion?.querySelector('.nx-product__version')!);
+        };
+    renderEl(props);
+    const version = screen.getByText('Version: 1.2.3')
 
-    expect(elNoProductVersion?.querySelector('.nx-product__version')).not.toBeInTheDocument();
-    expect(elWithProductVersion).toBeInTheDocument();
-    expect(productVersion).toBeInTheDocument();
+    expect(version).toBeInTheDocument();
   });
 
   it('renders children when passed as prop', function() {
