@@ -4,16 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
-
-import { getUniqueId, useUniqueId } from '../idUtil';
+import { render, screen } from '@testing-library/react';
 import { times } from 'ramda';
-import { shallow } from 'enzyme';
-import 'jest-enzyme';
+
+import { userEvent } from '../../__testutils__/rtlUtils';
+import { getUniqueId, useUniqueId } from '../idUtil';
 import NxStableUniqueIdContext from '../../components/NxStableUniqueIdContext/NxStableUniqueIdContext';
 
 describe('idUtil', function() {
+  function renderEl(node: ReactElement) {
+    return render(node).container.firstElementChild!;
+  }
+
+  function renderAndGetId(node: ReactElement) {
+    return renderEl(node).getAttribute('id')!;
+  }
+
   describe('getUniqueId', function() {
     it('returns a string that starts with the argument passed in', function() {
       expect(getUniqueId('foo')).toMatch(/^foo/);
@@ -32,7 +40,7 @@ describe('idUtil', function() {
         return <div id={useUniqueId('foo')} />;
       }
 
-      const id = shallow(<Fixture />).prop('id');
+      const id = renderAndGetId(<Fixture />);
 
       expect(id).toMatch(/^foo/);
       expect(id.length).toBeGreaterThan(3);
@@ -43,8 +51,8 @@ describe('idUtil', function() {
         return <div id={useUniqueId('foo')} />;
       }
 
-      const id1 = shallow(<Fixture />).prop('id'),
-          id2 = shallow(<Fixture />).prop('id');
+      const id1 = renderAndGetId(<Fixture />),
+          id2 = renderAndGetId(<Fixture />);
 
       expect(id1).not.toEqual(id2);
     });
@@ -54,8 +62,8 @@ describe('idUtil', function() {
         return <div id={useUniqueId('foo', 'bar')} />;
       }
 
-      const id1 = shallow(<Fixture />).prop('id'),
-          id2 = shallow(<Fixture />).prop('id');
+      const id1 = renderAndGetId(<Fixture />),
+          id2 = renderAndGetId(<Fixture />);
 
       expect(id1).toBe('bar');
       expect(id2).toBe('bar');
@@ -66,14 +74,16 @@ describe('idUtil', function() {
         return <div id={useUniqueId('foo', '')} />;
       }
 
-      const id1 = shallow(<Fixture />).prop('id'),
-          id2 = shallow(<Fixture />).prop('id');
+      const id1 = renderAndGetId(<Fixture />),
+          id2 = renderAndGetId(<Fixture />);
 
       expect(id1).toBe('');
       expect(id2).toBe('');
     });
 
-    it('returns the same id for multiple renders of the same component instance', function() {
+    it('returns the same id for multiple renders of the same component instance', async function() {
+      const user = userEvent.setup();
+
       function Fixture() {
         const [val, setVal] = useState('');
 
@@ -89,13 +99,14 @@ describe('idUtil', function() {
         );
       }
 
-      const component = shallow(<Fixture/>),
-          initialId = component.prop('id');
+      const view = render(<Fixture/>),
+          el = view.container.firstElementChild!,
+          initialId = el.getAttribute('id');
 
       // update state to trigger re-render
-      component.find('button').simulate('click');
+      await user.click(screen.getByRole('button'));
 
-      expect(component).toHaveProp('id', initialId);
+      expect(el).toHaveAttribute('id', initialId);
     });
 
     it('returns the same id for multiple renders of the same component across prop changes', function () {
@@ -107,13 +118,13 @@ describe('idUtil', function() {
         );
       }
 
-      const component = shallow(<Fixture val="asdf"/>),
-          initialId = component.prop('id');
+      const view = render(<Fixture val="asdf"/>),
+          el = view.container.firstElementChild!,
+          initialId = el.getAttribute('id');
 
-      // update props
-      component.setProps({ val: 'bar' });
+      view.rerender(<Fixture val="bar"/>);
 
-      expect(component).toHaveProp('id', initialId);
+      expect(el).toHaveAttribute('id', initialId);
     });
 
     it('returns the same id per time that it is called within a separate NxStableUniqueIdContext', function() {
