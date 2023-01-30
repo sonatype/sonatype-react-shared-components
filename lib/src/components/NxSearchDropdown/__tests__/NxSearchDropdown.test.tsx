@@ -183,9 +183,10 @@ describe('NxSearchDropdown', function() {
   });
 
   it('shows loading text on the dropdown when loading prop is true', function() {
-    const el = quickRender({ searchText: 'foo', loading: true });
+    const el = quickRender({ searchText: 'foo', loading: true }),
+        alert = el.getByRole('alert');
 
-    expect(el.getByRole('status')).toHaveTextContent('Loading…');
+    expect(within(alert).getByRole('status')).toHaveTextContent('Loading…');
   });
 
   it('shows error text when the error prop is provided', function() {
