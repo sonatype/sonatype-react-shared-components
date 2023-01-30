@@ -17,6 +17,12 @@ describe('NxThreatIndicator', function() {
     expect(threatIndicator).toBeInTheDocument();
   });
 
+  it('has a fallback role of img', function() {
+    const el = quickRender(),
+        threatIndicator = el.getByRole('img', { queryFallbacks: true });
+    expect(threatIndicator).toBeInTheDocument();
+  });
+
   it('takes precedence of threatLevelCategory if both props are provided', async function() {
     const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' }),
         user = userEvent.setup(),
