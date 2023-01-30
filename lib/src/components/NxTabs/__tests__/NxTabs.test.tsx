@@ -50,7 +50,7 @@ describe('NxTabs', function() {
     expect(component.id).toMatch(/^nx-tabs-\d+$/);
   });
 
-  it('renders using as specific id', function() {
+  it('renders tab elements with unique id based on the parent id', function() {
     const { container, getByRole } = render(
       <NxTabs activeTab={0} id="my-tabs" onTabSelect={() => {}}>
         <NxTabList>
@@ -60,9 +60,15 @@ describe('NxTabs', function() {
       </NxTabs>
     );
 
-    expect(container.firstElementChild!.id).toMatch('my-tabs');
-    expect(getByRole('tab')!.id).toMatch('my-tabs');
-    expect(getByRole('tabpanel')!.id).toMatch('my-tabs');
+    expect(container.firstElementChild!.id).toMatch(/^my-tabs/);
+    expect(getByRole('tab')!.id).toMatch(/^my-tabs/);
+    expect(getByRole('tabpanel')!.id).toMatch(/^my-tabs/);
+
+    expect(new Set([
+      container.firstElementChild!.id,
+      getByRole('tab')!.id,
+      getByRole('tabpanel')!.id
+    ]).size).toBe(3);
   });
 
   it('renders no tab contents when none are active', function() {
