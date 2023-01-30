@@ -10,7 +10,7 @@ import NxPageHeader from '../NxPageHeader';
 import { screen } from '@testing-library/react';
 import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-fdescribe('NxPageHeader', function() {
+describe('NxPageHeader', function() {
 
   const renderEl = rtlRenderElement(NxPageHeader, {});
 
