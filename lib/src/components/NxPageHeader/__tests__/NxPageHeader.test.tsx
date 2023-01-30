@@ -21,6 +21,13 @@ describe('NxPageHeader', function() {
     
   });
 
+  it('renders the default logo within the header', function() {
+    renderEl();
+    const logo = screen.getByRole('img')
+    expect(logo).toBeInTheDocument();
+    
+  });
+
   it('renders a custom logo when given logo prop', function() {
     const logo = renderEl({ logo: { path: 'foo', alt: 'bar' } })?.querySelector("img");
 
