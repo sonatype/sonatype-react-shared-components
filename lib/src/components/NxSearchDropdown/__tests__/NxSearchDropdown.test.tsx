@@ -218,7 +218,7 @@ describe('NxSearchDropdown', function() {
         el = quickRender({ matches, searchText: 'foo' }),
         dropdown = el.getByRole('menu');
 
-    expect(dropdown.children.length).toBe(2);
+    expect(within(dropdown).getAllByRole('menuitem').length).toBe(2);
     expect(within(dropdown).getByRole('menuitem', { name: 'One' })).toHaveAttribute('type', 'button');
     expect(within(dropdown).getByRole('menuitem', { name: 'Two' })).toHaveAttribute('type', 'button');
   });
