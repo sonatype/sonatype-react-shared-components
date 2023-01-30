@@ -18,14 +18,12 @@ describe('NxPageHeader', function() {
     renderEl();
     const header = screen.getByRole('banner')
     expect(header).toBeInTheDocument();
-    
   });
 
   it('renders the default logo within the header', function() {
     renderEl();
     const logo = screen.getByRole('img')
     expect(logo).toBeInTheDocument();
-    
   });
 
   it('renders a custom logo when given logo prop', function() {
