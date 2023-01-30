@@ -31,6 +31,7 @@ describe('NxPageHeader', function() {
     const logo = screen.getByRole('img');
 
     expect(logo).toHaveAttribute('src', 'foo');
+    expect(logo).toHaveAttribute('alt', 'bar');
     // ensures there is only one logo
     expect(screen.getAllByRole('img').length).toEqual(1);
   });
