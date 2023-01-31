@@ -61,14 +61,14 @@ describe('NxSearchDropdown', function() {
     expect(input).toBeInTheDocument();
   });
 
-  it('sets the search text as the value of the searchbox', function() {
+  it('sets the searchText as the value of the searchbox', function() {
     const el = quickRender({ searchText: 'foo' }),
         input = el.getByRole('searchbox');
 
     expect(input).toHaveAttribute('value', 'foo');
   });
 
-  it('searches for the text when user types in the searchbox', async function() {
+  it('calls onSearchTextChange whenver the user types in the searchbox', async function() {
     const onSearchTextChange = jest.fn(),
         el = quickRender({ searchText: '', onSearchTextChange }),
         input = el.getByRole('searchbox'),
@@ -80,8 +80,8 @@ describe('NxSearchDropdown', function() {
     expect(onSearchTextChange).toHaveBeenCalledWith('a');
   });
 
-  it('searches for the searchbox text that differs after trimming, passing the trimmed value ' +
-    'when the text in the searchbox is changed'
+  it('calls onSearch whenever the searchbox text changes with a value that differs after trimming, ' +
+    'passing the trimmed value '
   , async function() {
     const user = userEvent.setup(),
         onSearch = jest.fn(),
@@ -200,7 +200,7 @@ describe('NxSearchDropdown', function() {
     expect(within(dropdownMenu).getByRole('alert')).toHaveTextContent('bar');
   });
 
-  it('searches with the searchbox text when the retry button is clicked', async function() {
+  it('fires onSearch with the searchText when the retry button is clicked', async function() {
     const onSearch = jest.fn(),
         user = userEvent.setup(),
         error = quickRender({ searchText: 'foo', error: 'bar', onSearch });
@@ -240,8 +240,8 @@ describe('NxSearchDropdown', function() {
     );
   });
 
-  it('searches with the current trimmed searchbox text if focus enters the component from elsewhere on the page ' +
-      'while there is an error', function() {
+  it('calls onSearch with the current trimmed searchbox text if focus enters the component  ' +
+      'from elsewhere on the page while there is an error', function() {
     const onSearch = jest.fn(),
         el = quickRender({ searchText: 'foo ', error: 'bar', onSearch }),
         input = el.getByRole('searchbox');
@@ -259,7 +259,7 @@ describe('NxSearchDropdown', function() {
     anotherElement.remove();
   });
 
-  it('does not search if focus moves within the component while there is an error', function() {
+  it('does not call onSearch if focus moves within the component while there is an error', function() {
     const onSearch = jest.fn(),
         props = { searchText: 'foo', onSearch },
         el = quickRender(props),
@@ -282,7 +282,7 @@ describe('NxSearchDropdown', function() {
     expect(onSearch).not.toHaveBeenCalled();
   });
 
-  it('does not search if focus moves into the component from an outside window while there is an error',
+  it('does not call onSearch if focus moves into the component from an outside window while there is an error',
       function() {
         const onSearch = jest.fn(),
             el = quickRender({ searchText: 'foo', onSearch }),
