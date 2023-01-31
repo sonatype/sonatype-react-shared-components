@@ -163,7 +163,7 @@ describe('NxSearchDropdown', function() {
     expect(quickRender({ searchText: 'asdf', matches: [] }).getByRole('alert')).toBeInTheDocument();
     expect(quickRender({ searchText: 'asdf', loading: true }).getByRole('alert')).toBeInTheDocument();
 
-    const dropdownMenu = quickRender({ searchText: 'asdf', error: 'foo' }).getAllByRole('alert')[0];
+    const dropdownMenu = quickRender({ searchText: 'asdf', error: 'foo' }).getByRole('menu');
     expect(dropdownMenu).toBeInTheDocument();
 
     const errorAlert = within(dropdownMenu).getByRole('alert');
@@ -196,7 +196,7 @@ describe('NxSearchDropdown', function() {
   it('shows error text when the error prop is provided', function() {
     const el = quickRender({ searchText: 'foo', error: 'bar' });
 
-    const dropdownMenu = el.getAllByRole('alert')[0];
+    const dropdownMenu = el.getByRole('menu');
     expect(within(dropdownMenu).getByRole('alert')).toHaveTextContent('bar');
   });
 
