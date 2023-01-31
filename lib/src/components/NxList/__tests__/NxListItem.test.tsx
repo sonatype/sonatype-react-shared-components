@@ -39,14 +39,20 @@ describe('NxList.Item', function() {
   });
 
   it('renders children correctly', function() {
-    const children = <NxList.Text data-testid="boo">Boo</NxList.Text>,
+    const children =
+        [
+          <NxList.Text data-testid="text" key="1">Test Item 1 Text</NxList.Text>,
+          <NxList.Subtext data-testid="subtext" key="2">Test Item 1 Subtext</NxList.Subtext>
+        ],
         view = quickRender({ children }),
         el = view.getByRole('listitem'),
-        childrenEl = view.getByTestId('boo');
+        childrenText = view.getByTestId('text'),
+        childrenSubtext = view.getByTestId('subtext');
 
     expect(el).toBeInTheDocument();
-    expect(childrenEl).toBeInTheDocument();
-    expect(el).toContainElement(childrenEl);
-    expect(childrenEl).toHaveTextContent('Boo');
+    expect(el).toContainElement(childrenText);
+    expect(childrenText).toHaveTextContent('Test Item 1 Text');
+    expect(el).toContainElement(childrenSubtext);
+    expect(childrenSubtext).toHaveTextContent('Test Item 1 Subtext');
   });
 });
