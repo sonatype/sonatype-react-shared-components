@@ -15,9 +15,9 @@ describe('NxPageHeader', function() {
   const renderEl = rtlRenderElement(NxPageHeader, {});
 
  it('renders a top-level banner element', function() {
-    renderEl();
+    const el = renderEl();
     const header = screen.getByRole('banner');
-    expect(header).toBeInTheDocument();
+    expect(header).toBe(el);
   });
 
   it('renders the default logo within the header', function() {
