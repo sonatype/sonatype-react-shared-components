@@ -5,98 +5,101 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { ShallowWrapper } from 'enzyme';
-import 'jest-enzyme';
-import { faCrow, faBiohazard } from '@fortawesome/free-solid-svg-icons';
-
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
 import NxGlobalSidebar, { Props } from '../NxGlobalSidebar';
-import NxButton from '../../NxButton/NxButton';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import { faBiohazard, faCrow } from '@fortawesome/free-solid-svg-icons';
+import { rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import { screen } from '@testing-library/react';
 
 describe('NxGlobalSidebar', function() {
-  let minimalProps: Props,
-      toggleOpenSpy: () => void,
-      getShallowComponent: (optionalProps?: Partial<Props>) => ShallowWrapper;
+  const minimalProps: Props = {
+    isOpen: false,
+    toggleOpenIcon: faCrow,
+    toggleCloseIcon: faBiohazard,
+    onToggleClick: jest.fn,
+    logoImg: 'logoImg',
+    logoAltText: 'alt text',
+    logoLink: '/ref'
+  };
 
-  beforeEach(function() {
-    toggleOpenSpy = jest.fn();
-    minimalProps = {
-      isOpen: false,
-      toggleOpenIcon: faCrow,
-      toggleCloseIcon: faBiohazard,
-      onToggleClick: toggleOpenSpy,
-      logoImg: 'logoImg',
-      logoAltText: 'alt text',
-      logoLink: '/ref'
-    };
-    getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxGlobalSidebar, minimalProps);
-  });
+  const quickRender = rtlRender<Props>(NxGlobalSidebar, minimalProps);
 
-  it('renders an aside with nx-global-sidebar class', function() {
-    expect(getShallowComponent()).toMatchSelector('aside.nx-global-sidebar');
-  });
-
-  it('adds classes based on isOpen state', function() {
-    expect(getShallowComponent({ isOpen: true })).toMatchSelector('.nx-global-sidebar.open');
-    expect(getShallowComponent({ isOpen: false })).toMatchSelector('.nx-global-sidebar.closed');
+  it('renders a top-level element with role="complementary"', function() {
+    expect(quickRender().getByRole('complementary')).toBeInTheDocument();
   });
 
   it('renders a link to `logoLink` with the `logoImg` and the `altLogoText`', function() {
-    const component = getShallowComponent(),
-        link = component.find('.nx-global-sidebar__product-info'),
-        logo = link.find('.nx-global-sidebar__logo');
+    const view = quickRender(),
+        link = view.getByRole('link'),
+        logo = view.getByRole('img');
 
-    expect(link).toHaveProp('href', '/ref');
-    expect(logo).toHaveProp('src', 'logoImg');
-    expect(logo).toHaveProp('alt', 'alt text');
+    expect(link).toHaveAttribute('href', '/ref');
+    expect(logo).toHaveAttribute('src', 'logoImg');
+    expect(logo).toHaveAttribute('alt', 'alt text');
   });
 
-  it('renders a button with toggleOpenIcon if isOpen is true', function() {
-    const component = getShallowComponent({ isOpen: true }),
-        toggleBtn = component.find(NxButton),
-        sidebarId = component.prop('id');
+  it('renders an icon-only button with tooltip "Collapse Sidebar" if isOpen is true', async function() {
+    const view = quickRender({ isOpen: true }),
+        sidebarId = view.container.firstElementChild?.getAttribute('id'),
+        user = userEvent.setup();
 
-    expect(toggleBtn).toMatchSelector('.nx-global-sidebar__toggle');
-    expect(toggleBtn).toHaveProp('variant', 'icon-only');
-    expect(toggleBtn).toHaveProp('title', 'Collapse Sidebar');
-    expect(toggleBtn).toHaveProp('aria-expanded', true);
-    expect(toggleBtn).toHaveProp('aria-controls', sidebarId);
-    expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faCrow);
+    await runTimers();
+
+    const toggleBtn = view.getByRole('button', { name: /collapse sidebar/i });
+
+    expect(toggleBtn).toHaveAccessibleName('Collapse Sidebar');
+    expect(toggleBtn).toHaveAttribute('aria-expanded', 'true');
+    expect(toggleBtn).toHaveAttribute('aria-controls', sidebarId);
+
+    await user.hover(toggleBtn);
+
+    const tooltip = await screen.findByRole('tooltip');
+    expect(tooltip).toBeInTheDocument();
+    expect(tooltip).toHaveTextContent('Collapse Sidebar');
   });
 
-  it('renders a button with toggleCloseIcon if isOpen is false', function() {
-    const component = getShallowComponent({ isOpen: false }),
-        toggleBtn = component.find(NxButton),
-        sidebarId = component.prop('id');
+  it('renders an icon-only button with tooltip "Expand Sidebar" if isOpen is false', async function() {
+    const view = quickRender({ isOpen: false }),
+        sidebarId = view.container.firstElementChild?.getAttribute('id'),
+        user = userEvent.setup();
 
-    expect(toggleBtn).toMatchSelector('.nx-global-sidebar__toggle');
-    expect(toggleBtn).toHaveProp('variant', 'icon-only');
-    expect(toggleBtn).toHaveProp('title', 'Expand Sidebar');
-    expect(toggleBtn).toHaveProp('aria-expanded', false);
-    expect(toggleBtn).toHaveProp('aria-controls', sidebarId);
-    expect(toggleBtn.find(NxFontAwesomeIcon)).toHaveProp('icon', faBiohazard);
+    await runTimers();
+
+    const toggleBtn = view.getByRole('button', { name: /expand sidebar/i });
+
+    expect(toggleBtn).toHaveAccessibleName('Expand Sidebar');
+    expect(toggleBtn).toHaveAttribute('aria-expanded', 'false');
+    expect(toggleBtn).toHaveAttribute('aria-controls', sidebarId);
+
+    await user.hover(toggleBtn);
+
+    const tooltip = await screen.findByRole('tooltip');
+    expect(tooltip).toBeInTheDocument();
+    expect(tooltip).toHaveTextContent('Expand Sidebar');
   });
 
   it('renders passed in children', function() {
     const children = (
       <>
-        <div className="child-1">
-          <p>I am children</p>
+        <div className="child-1" data-testid="div1">
+          <p data-testid="p1">I am children</p>
         </div>
-        <div className="child-2"></div>
+        <div className="child-2" data-testid="div2"></div>
       </>
     );
-    const component = getShallowComponent({ children });
-    expect(component.find('.child-1')).toExist();
-    expect(component.find('.child-2')).toExist();
+    const view = quickRender({ children });
+    expect(view.getByTestId('div1')).toBeInTheDocument();
+    expect(view.getByTestId('p1')).toBeInTheDocument();
+    expect(view.getByTestId('div2')).toBeInTheDocument();
   });
 
-  it('calls onToggleClick when toggle button is pressed', function() {
-    const component = getShallowComponent(),
-        btn = component.find(NxButton);
+  it('calls onToggleClick when toggle button is pressed', async function() {
+    const onToggleClick = jest.fn(() => {}),
+        user = userEvent.setup(),
+        view = quickRender({ ...minimalProps, onToggleClick }),
+        btn = view.getByRole('button');
 
-    btn.simulate('click');
-    expect(toggleOpenSpy).toHaveBeenCalled();
+    await user.click(btn);
+
+    expect(onToggleClick).toHaveBeenCalled();
   });
 });
