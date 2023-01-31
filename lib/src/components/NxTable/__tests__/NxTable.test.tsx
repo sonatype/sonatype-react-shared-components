@@ -339,7 +339,7 @@ describe('NxTable', function() {
       });
 
       describe('when isHeader', function() {
-        it('renders a visually hidden header cell with the text "Select Row"', function() {
+        it('renders a header cell with the text "Select Row"', function() {
           const component = renderColumnHeader({
             chevron: true,
             sortDir: 'asc',
