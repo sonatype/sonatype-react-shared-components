@@ -34,7 +34,8 @@ const NxListLinkItem = forwardRef<HTMLLIElement, NxListLinkItemProps>(
         <li ref={ref} className={liClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <a aria-disabled={includesDisabledClass(aClassNames)}
              className={aClassNames}
-             href={href}
+             href={disabled ? undefined : href}
+             role={disabled ? 'link' : undefined}
              {...anchorAttributes}
           >
             {children}
