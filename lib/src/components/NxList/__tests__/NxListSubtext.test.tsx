@@ -41,7 +41,7 @@ describe('NxList.Subtext', function() {
   it('renders children correctly', function() {
     const children = 'Book',
         view = quickRender({ children }),
-        el = view.container.querySelector('span.nx-list__subtext');
+        el = view.container.firstElementChild;
 
     expect(el).toBeInTheDocument();
     expect(el).toHaveTextContent('Book');

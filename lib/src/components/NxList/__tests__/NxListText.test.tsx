@@ -41,7 +41,7 @@ describe('NxList.Text', function() {
   it('renders children correctly', function() {
     const children = 'Pen',
         view = quickRender({ children }),
-        el = view.container.querySelector('span.nx-list__text');
+        el = view.container.firstElementChild;
 
     expect(el).toBeInTheDocument();
     expect(el).toHaveTextContent('Pen');
