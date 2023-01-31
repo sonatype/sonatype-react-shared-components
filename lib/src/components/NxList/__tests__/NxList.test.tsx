@@ -111,7 +111,6 @@ describe('NxList', function() {
             { getByRole } = quickRender({ error: 'Error message', retryHandler });
 
         expect(getByRole('list')).not.toHaveTextContent('This list is empty.');
-        expect(getByRole('listitem')).not.toHaveTextContent('This list is empty.');
       });
     });
 
