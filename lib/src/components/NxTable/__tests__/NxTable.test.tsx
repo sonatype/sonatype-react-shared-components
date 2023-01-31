@@ -66,13 +66,13 @@ describe('NxTable', function() {
     const bodyCells = within(bodyRows[0]).getAllByRole('cell');
 
     expect(table).toBeInTheDocument();
-    expect(rowGroups.length).toBe(2);
-    expect(headerRows.length).toBe(1);
-    expect(headerColumnHeaders.length).toBe(2);
-    expect(headerCells.length).toBe(0);
-    expect(bodyRows.length).toBe(1);
-    expect(bodyColumnHeaders.length).toBe(0);
-    expect(bodyCells.length).toBe(2);
+    expect(rowGroups).toHaveLength(2);
+    expect(headerRows).toHaveLength(1);
+    expect(headerColumnHeaders).toHaveLength(2);
+    expect(headerCells).toHaveLength(0);
+    expect(bodyRows).toHaveLength(1);
+    expect(bodyColumnHeaders).toHaveLength(0);
+    expect(bodyCells).toHaveLength(2);
 
     expect(bodyCells[0]).not.toHaveAttribute('colSpan');
     expect(bodyCells[1]).not.toHaveAttribute('colSpan');
