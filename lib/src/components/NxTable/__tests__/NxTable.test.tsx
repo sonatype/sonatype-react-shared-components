@@ -6,6 +6,8 @@
  */
 import React, { useContext } from 'react';
 
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+
 import { render, screen, within, waitFor } from '@testing-library/react';
 import { rtlRenderElement, userEvent, runTimers } from '../../../__testutils__/rtlUtils';
 
@@ -351,84 +353,150 @@ describe('NxTable', function() {
       });
     });
 
-    describe('when the rowBtnIcon prop is set', function() {
+    describe('when the rowBtnIcon is set', function() {
+      const renderTableCell = (extraProps?: NxTableCellProps, isHeader?: boolean) => {
+        const children = (
+          <NxTableRow isClickable={true} clickAccessibleLabel="dolphin">
+            <NxTableCell>Foo</NxTableCell>
+            <NxTableCell { ...extraProps } />
+          </NxTableRow>
+        );
+
+        return render(
+          <NxTable>
+            { isHeader ? <NxTableHead>{children}</NxTableHead>
+            : <NxTableBody>{children}</NxTableBody>
+            }
+          </NxTable>
+        ).getAllByRole(isHeader ? 'columnheader' : 'cell')[1] as HTMLElement;
+      };
+
       describe('when isHeader', function() {
-        it('sets default aria-sort', function() {
-          expect(renderColumnHeader({ isSortable: true })).toHaveAttribute('aria-sort', 'none');
+        it('renders a header cell with the text "Select Row"', function() {
+          const component = renderTableCell({
+            rowBtnIcon: faEdit,
+            sortDir: 'asc',
+            children: <span>foo</span>
+          }, true)!;
+
+          expect(component).toHaveTextContent('Select Row');
+        });
+      });
+
+      describe('when not isHeader', function() {
+        it('does not show button when rowBtnIcon is undefined', function() {
+          expect(within(renderTableCell({ rowBtnIcon: undefined })).queryByRole('button')).not.toBeInTheDocument();
         });
 
-        it('sets ascending aria-sort', function() {
-          expect(renderColumnHeader({ isSortable: true, sortDir: 'asc' })).toHaveAttribute('aria-sort', 'ascending');
+        it('does not show button when rowBtnIcon is null', function() {
+          expect(within(renderTableCell({ rowBtnIcon: null })).queryByRole('button')).not.toBeInTheDocument();
         });
 
-        it('sets descending aria-sort', function() {
-          expect(
-              renderColumnHeader({ isSortable: true, sortDir: 'desc' })
-          ).toHaveAttribute('aria-sort', 'descending');
+        it('show button when rowBtnIcon faEdit is set', function() {
+          expect(within(renderTableCell({ rowBtnIcon: faEdit })).getByRole('button')).toBeInTheDocument();
         });
 
-        it('renders default tooltip and content', async function() {
-          const user = userEvent.setup();
+        it('ignores the children and sort settings and adds the icon child wrapped in a nx-cell__row-btn',
+            function() {
+              const cell = renderTableCell({
+                rowBtnIcon: faEdit,
+                sortDir: 'asc',
+                children: <span>foo</span>
+              });
 
-          const sortDefault = within(
-              renderColumnHeader({ isSortable: true, children: 'foo' })!
-          ).getByRole('button');
+              expect(within(cell).getByRole('button')).toBeInTheDocument();
+              expect(cell.innerHTML).not.toEqual('<span>foo</span>');
+            }
+        );
 
-          await user.hover(sortDefault);
-          await runTimers();
-          const tooltip = await screen.findByRole('tooltip');
-          expect(tooltip).toBeInTheDocument();
-          expect(tooltip).toHaveTextContent('foo unsorted');
+        it('sets the nx-cell__row-btn aria-label from the RowContext', function() {
+          const cell = renderTableCell({
+            rowBtnIcon: faEdit,
+            sortDir: 'asc',
+            children: <span>foo</span>
+          });
+
+          expect(within(cell).getByRole('button')).toHaveAccessibleName('dolphin');
         });
+      });
+    });
 
-        it('renders ascending tooltip and content', async function() {
-          const user = userEvent.setup();
+    describe('When isSortable is true', function() {
+      it('sets default aria-sort', function() {
+        expect(renderColumnHeader({ isSortable: true })).toHaveAttribute('aria-sort', 'none');
+      });
 
-          const sortAsc = within(
-              renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'asc' })!
-          ).getByRole('button');
+      it('sets ascending aria-sort', function() {
+        expect(renderColumnHeader({ isSortable: true, sortDir: 'asc' })).toHaveAttribute('aria-sort', 'ascending');
+      });
 
-          await user.hover(sortAsc);
-          await runTimers();
-          const tooltip = await screen.findByRole('tooltip');
-          expect(tooltip).toBeInTheDocument();
-          expect(tooltip).toHaveTextContent('foo ascending');
-        });
+      it('sets descending aria-sort', function() {
+        expect(
+            renderColumnHeader({ isSortable: true, sortDir: 'desc' })
+        ).toHaveAttribute('aria-sort', 'descending');
+      });
 
-        it('renders ascending tooltip and content', async function() {
-          const user = userEvent.setup();
+      it('renders default tooltip and content', async function() {
+        const user = userEvent.setup();
 
-          const sortDesc = within(
-              renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'desc' })!
-          ).getByRole('button');
+        const sortDefault = within(
+            renderColumnHeader({ isSortable: true, children: 'foo' })!
+        ).getByRole('button');
 
-          await user.hover(sortDesc);
-          await runTimers();
-          const tooltip = await screen.findByRole('tooltip');
-          expect(tooltip).toBeInTheDocument();
-          expect(tooltip).toHaveTextContent('foo descending');
-        });
+        await user.hover(sortDefault);
+        await runTimers();
+        const tooltip = await screen.findByRole('tooltip');
+        expect(tooltip).toBeInTheDocument();
+        expect(tooltip).toHaveTextContent('foo unsorted');
+      });
 
-        it('sets default button accessible name to match the tooltip', function() {
-          expect(
-              within(renderColumnHeader({ isSortable: true, children: 'foo' })
-              ).getByRole('button'))
-              .toHaveAccessibleName('foo unsorted');
-        });
+      it('renders ascending tooltip and content', async function() {
+        const user = userEvent.setup();
 
-        it('sets ascending button accessible name to match the tooltip', function() {
-          expect(
-              within(renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'asc' })
-              ).getByRole('button'))
-              .toHaveAccessibleName('foo ascending');
-        });
+        const sortAsc = within(
+            renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'asc' })!
+        ).getByRole('button');
 
-        it('sets descending button accessible name to match the tooltip', function() {
-          expect(
-              within(renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'desc' })
-              ).getByRole('button'))
-              .toHaveAccessibleName('foo descending');
-        });
+        await user.hover(sortAsc);
+        await runTimers();
+        const tooltip = await screen.findByRole('tooltip');
+        expect(tooltip).toBeInTheDocument();
+        expect(tooltip).toHaveTextContent('foo ascending');
+      });
+
+      it('renders ascending tooltip and content', async function() {
+        const user = userEvent.setup();
+
+        const sortDesc = within(
+            renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'desc' })!
+        ).getByRole('button');
+
+        await user.hover(sortDesc);
+        await runTimers();
+        const tooltip = await screen.findByRole('tooltip');
+        expect(tooltip).toBeInTheDocument();
+        expect(tooltip).toHaveTextContent('foo descending');
+      });
+
+      it('sets default button accessible name to match the tooltip', function() {
+        expect(
+            within(renderColumnHeader({ isSortable: true, children: 'foo' })
+            ).getByRole('button'))
+            .toHaveAccessibleName('foo unsorted');
+      });
+
+      it('sets ascending button accessible name to match the tooltip', function() {
+        expect(
+            within(renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'asc' })
+            ).getByRole('button'))
+            .toHaveAccessibleName('foo ascending');
+      });
+
+      it('sets descending button accessible name to match the tooltip', function() {
+        expect(
+            within(renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'desc' })
+            ).getByRole('button'))
+            .toHaveAccessibleName('foo descending');
       });
     });
   });
