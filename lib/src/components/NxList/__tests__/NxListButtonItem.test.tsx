@@ -14,7 +14,7 @@ describe('NxList.ButtonItem', function() {
   const quickRender = rtlRender(NxList.ButtonItem, {}),
       renderEl = rtlRenderElement(NxList.ButtonItem, {});
 
-  it('renders a list containing a button', function() {
+  it('renders a listitem containing a button', function() {
     const view = quickRender(),
         listItem = view.getByRole('listitem'),
         btn = view.getByRole('button');
