@@ -15,7 +15,7 @@ describe('NxGlobalSidebar', function() {
     isOpen: false,
     toggleOpenIcon: faCrow,
     toggleCloseIcon: faBiohazard,
-    onToggleClick: jest.fn,
+    onToggleClick: () => {},
     logoImg: 'logoImg',
     logoAltText: 'alt text',
     logoLink: '/ref'
