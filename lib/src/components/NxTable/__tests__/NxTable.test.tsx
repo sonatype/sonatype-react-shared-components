@@ -9,7 +9,7 @@ import React, { useContext } from 'react';
 import { render, screen, within, waitFor } from '@testing-library/react';
 import { rtlRenderElement, userEvent, runTimers } from '../../../__testutils__/rtlUtils';
 
-import { HeaderContext, RowContext } from '../contexts';
+import { RowContext } from '../contexts';
 import { NxTableCellProps } from '../types';
 
 import NxTable from '../NxTable';
@@ -311,13 +311,11 @@ describe('NxTable', function() {
   });
 
   describe('NxTableCell', function() {
-    const renderHeaderComponent = (extraProps?: NxTableCellProps) => render(
+    const renderColumnHeader = (extraProps?: NxTableCellProps) => render(
       <NxTable>
         <NxTableHead>
           <NxTableRow>
-            <HeaderContext.Provider value={true}>
-              <NxTableCell { ...extraProps }/>
-            </HeaderContext.Provider>
+            <NxTableCell { ...extraProps }/>
           </NxTableRow>
         </NxTableHead>
       </NxTable>
@@ -342,7 +340,7 @@ describe('NxTable', function() {
 
       describe('when isHeader', function() {
         it('renders a visually hidden header cell with the text "Select Row"', function() {
-          const component = renderHeaderComponent({
+          const component = renderColumnHeader({
             chevron: true,
             sortDir: 'asc',
             children: <span>foo</span>
@@ -356,16 +354,16 @@ describe('NxTable', function() {
     describe('when the rowBtnIcon prop is set', function() {
       describe('when isHeader', function() {
         it('sets default aria-sort', function() {
-          expect(renderHeaderComponent({ isSortable: true })).toHaveAttribute('aria-sort', 'none');
+          expect(renderColumnHeader({ isSortable: true })).toHaveAttribute('aria-sort', 'none');
         });
 
         it('sets ascending aria-sort', function() {
-          expect(renderHeaderComponent({ isSortable: true, sortDir: 'asc' })).toHaveAttribute('aria-sort', 'ascending');
+          expect(renderColumnHeader({ isSortable: true, sortDir: 'asc' })).toHaveAttribute('aria-sort', 'ascending');
         });
 
         it('sets descending aria-sort', function() {
           expect(
-              renderHeaderComponent({ isSortable: true, sortDir: 'desc' })
+              renderColumnHeader({ isSortable: true, sortDir: 'desc' })
           ).toHaveAttribute('aria-sort', 'descending');
         });
 
@@ -373,7 +371,7 @@ describe('NxTable', function() {
           const user = userEvent.setup();
 
           const sortDefault = within(
-              renderHeaderComponent({ isSortable: true, children: 'foo' })!
+              renderColumnHeader({ isSortable: true, children: 'foo' })!
           ).getByRole('button');
 
           await user.hover(sortDefault);
@@ -387,7 +385,7 @@ describe('NxTable', function() {
           const user = userEvent.setup();
 
           const sortAsc = within(
-              renderHeaderComponent({ isSortable: true, children: 'foo', sortDir: 'asc' })!
+              renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'asc' })!
           ).getByRole('button');
 
           await user.hover(sortAsc);
@@ -401,7 +399,7 @@ describe('NxTable', function() {
           const user = userEvent.setup();
 
           const sortDesc = within(
-              renderHeaderComponent({ isSortable: true, children: 'foo', sortDir: 'desc' })!
+              renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'desc' })!
           ).getByRole('button');
 
           await user.hover(sortDesc);
@@ -413,21 +411,21 @@ describe('NxTable', function() {
 
         it('sets default button accessible name to match the tooltip', function() {
           expect(
-              within(renderHeaderComponent({ isSortable: true, children: 'foo' })
+              within(renderColumnHeader({ isSortable: true, children: 'foo' })
               ).getByRole('button'))
               .toHaveAccessibleName('foo unsorted');
         });
 
         it('sets ascending button accessible name to match the tooltip', function() {
           expect(
-              within(renderHeaderComponent({ isSortable: true, children: 'foo', sortDir: 'asc' })
+              within(renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'asc' })
               ).getByRole('button'))
               .toHaveAccessibleName('foo ascending');
         });
 
         it('sets descending button accessible name to match the tooltip', function() {
           expect(
-              within(renderHeaderComponent({ isSortable: true, children: 'foo', sortDir: 'desc' })
+              within(renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'desc' })
               ).getByRole('button'))
               .toHaveAccessibleName('foo descending');
         });
