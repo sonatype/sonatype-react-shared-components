@@ -14,7 +14,7 @@ describe('NxList', function() {
   const quickRender = rtlRender(NxList, {}),
       renderEl = rtlRenderElement(NxList, {});
 
-  // prevent RTL logging thrown warnings
+  // silence no emptyMessage prop warnings
   beforeAll(function() {
     jest.spyOn(console, 'warn').mockImplementation(() => {});
   });
