@@ -13,6 +13,12 @@ describe('NxList.Item', function() {
   const quickRender = rtlRender(NxList.Item, {}),
       renderEl = rtlRenderElement(NxList.Item, {});
 
+  it('renders the top-level element of listitem', function() {
+    const view = quickRender();
+
+    expect(view.container.firstElementChild).toBe(view.getByRole('listitem'));
+  });
+
   it('sets the specified classnames in addition to the defaults', function() {
     const el = renderEl({ className: 'foo' }),
         defaultEl = renderEl()!;
