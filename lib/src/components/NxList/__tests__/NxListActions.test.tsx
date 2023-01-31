@@ -42,7 +42,7 @@ describe('NxList.Actions', function() {
   it('renders children correctly', function() {
     const children = <NxButton>Foo</NxButton>,
         view = quickRender({ children }),
-        el = view.container.querySelector('div.nx-list__actions'),
+        el = view.container.firstElementChild,
         childrenEl = view.getByRole('button');
 
     expect(el).toBeInTheDocument();
