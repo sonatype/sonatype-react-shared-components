@@ -53,7 +53,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
       [focusableBtnIndex, setFocusableBtnIndex] = useState<number | null>(null),
 
       dropdownMenuId = useUniqueId('nx-search-dropdown-menu'),
-      dropdownMenuRole = error ? 'menu' : (loading || isEmpty) ? 'alert' : 'menu',
+      dropdownMenuRole = error ? undefined : (loading || isEmpty) ? 'alert' : 'menu',
 
       filterClassName = classnames('nx-search-dropdown__input', { 'nx-text-input--long': long }),
       className = classnames('nx-search-dropdown', classNameProp, {

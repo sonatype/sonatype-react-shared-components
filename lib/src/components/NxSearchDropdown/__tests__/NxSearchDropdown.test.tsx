@@ -161,12 +161,6 @@ describe('NxSearchDropdown', function() {
   it('sets the alert role on the dropdown menu when it is in loading or empty states', function() {
     expect(quickRender({ searchText: 'asdf', matches: [] }).getByRole('alert')).toBeInTheDocument();
     expect(quickRender({ searchText: 'asdf', loading: true }).getByRole('alert')).toBeInTheDocument();
-
-    const dropdownMenu = quickRender({ searchText: 'asdf', error: 'foo' }).getByRole('menu');
-    expect(dropdownMenu).toBeInTheDocument();
-
-    const errorAlert = within(dropdownMenu).getByRole('alert');
-    expect(errorAlert).toBeInTheDocument();
   });
 
   it('sets an id on the dropdown and references it in the searchbox\'s aria-controls', function() {
@@ -192,11 +186,16 @@ describe('NxSearchDropdown', function() {
     expect(within(alert).getByRole('status')).toHaveTextContent('Loading…');
   });
 
+  it('does not set a role on dropdown menu when error prop is provided', function() {
+    const el = quickRender({ searchText: 'foo', error: 'bar' });
+
+    expect(el.getByRole('alert').parentElement).not.toHaveAttribute('role');
+  });
+
   it('shows error text when the error prop is provided', function() {
     const el = quickRender({ searchText: 'foo', error: 'bar' });
 
-    const dropdownMenu = el.getByRole('menu');
-    expect(within(dropdownMenu).getByRole('alert')).toHaveTextContent('bar');
+    expect(el.getByRole('alert')).toHaveTextContent('bar');
   });
 
   it('fires onSearch with the searchText when the retry button is clicked', async function() {
