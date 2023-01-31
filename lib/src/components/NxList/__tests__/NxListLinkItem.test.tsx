@@ -82,6 +82,9 @@ describe('NxList.LinkItem', function() {
     expect(renderAndGetAnchor({ disabled: false })).toHaveAttribute('href', 'www.sonatype.com');
     expect(renderAndGetAnchor({ disabled: false })).toHaveAttribute('aria-disabled', 'false');
 
+    expect(renderAndGetAnchor({ disabled: undefined })).toHaveAttribute('href', 'www.sonatype.com');
+    expect(renderAndGetAnchor({ disabled: undefined })).toHaveAttribute('aria-disabled', 'false');
+
     expect(renderAndGetAnchor({ disabled: null })).toHaveAttribute('href', 'www.sonatype.com');
     expect(renderAndGetAnchor({ disabled: null })).toHaveAttribute('aria-disabled', 'false');
 
@@ -98,6 +101,9 @@ describe('NxList.LinkItem', function() {
 
     expect(renderAndGetList({ selected: false })).toHaveAttribute('aria-selected', 'false');
     expect(renderAndGetList({ selected: false })).toHaveAttribute('aria-current', 'false');
+
+    expect(renderAndGetList({ selected: undefined })).not.toHaveAttribute('aria-selected');
+    expect(renderAndGetList({ selected: undefined })).not.toHaveAttribute('aria-current');
 
     expect(renderAndGetList({ selected: null })).not.toHaveAttribute('aria-selected');
     expect(renderAndGetList({ selected: null })).not.toHaveAttribute('aria-current');

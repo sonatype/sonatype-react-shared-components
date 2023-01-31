@@ -95,6 +95,9 @@ describe('NxList.ButtonItem', function() {
     expect(renderAndGetList({ selected: false })).toHaveAttribute('aria-selected', 'false');
     expect(renderAndGetList({ selected: false })).toHaveAttribute('aria-current', 'false');
 
+    expect(renderAndGetList({ selected: undefined })).not.toHaveAttribute('aria-selected');
+    expect(renderAndGetList({ selected: undefined })).not.toHaveAttribute('aria-current');
+
     expect(renderAndGetList({ selected: null })).not.toHaveAttribute('aria-selected');
     expect(renderAndGetList({ selected: null })).not.toHaveAttribute('aria-current');
 
