@@ -47,7 +47,7 @@ fdescribe('NxPageHeader', function() {
 
   it('renders links in header when given links prop', function() {
     const view = quickRender({
-        links: [{ name: 'foo', href: '#bar' }, { name: 'baz', href: '#qux', current: true }]
+        links: [{ name: 'foo', href: '#bar' }, { name: 'baz', href: '#qux' }]
     }),
       link1 = view.getByRole('link', {name: 'foo'}),
       link2 = view.getByRole('link', {name: 'baz'})
@@ -56,7 +56,23 @@ fdescribe('NxPageHeader', function() {
     expect(link1).toHaveAttribute('href', '#bar');
     expect(link2).toBeInTheDocument();
     expect(link2).toHaveAttribute('href', '#qux');
-    expect(link2).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('only adds the \'aria-current\' attribute to the current link', function() {
+    const view = quickRender({
+        links: [
+          { name: 'foo', href: '#bar', current: true },
+          { name: 'baz', href: '#qux' },
+          { name: 'quux', href: '#garply', current: false },
+        ]
+    }),
+      link1 = view.getByRole('link', {name: 'foo'}),
+      link2 = view.getByRole('link', {name: 'baz'}),
+      link3 = view.getByRole('link', {name: 'quux'});
+
+      expect(link1).toHaveAttribute('aria-current', 'page');
+      expect(link2).not.toHaveAttribute('aria-current');
+      expect(link3).not.toHaveAttribute('aria-current');
   });
 
   it('renders the product name if provided', function() {
