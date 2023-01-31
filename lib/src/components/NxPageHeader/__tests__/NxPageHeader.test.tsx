@@ -35,7 +35,7 @@ describe('NxPageHeader', function() {
   });
 
   it('renders logo link when given homeLink prop', function() {
-    renderEl({ homeLink: '#home'});    
+    renderEl({ homeLink: '#home' });
     const homeLink = screen.getByRole('link', {name: 'Home'}),
       homeLinkLogo = screen.getByRole('img');
 
