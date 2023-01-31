@@ -15,9 +15,20 @@ import { RowContext } from '../contexts';
 import { NxTableCellProps } from '../types';
 
 import NxTable from '../NxTable';
+import NxTableHead from '../NxTableHead';
+import NxTableRow from '../NxTableRow';
+import NxTableCell from '../NxTableCell';
+import NxTableBody from '../NxTableBody';
 
 describe('NxTable', function() {
   const renderEl = rtlRenderElement(NxTable, {});
+
+  it('match subcomponents to its deprecated counterpart', function() {
+    expect(NxTable.Head).toBe(NxTableHead);
+    expect(NxTable.Row).toBe(NxTableRow);
+    expect(NxTable.Cell).toBe(NxTableCell);
+    expect(NxTable.Body).toBe(NxTableBody);
+  });
 
   it('passes general attributes to top-level element', function() {
     const component = renderEl({ id: 'dolphin', lang: 'en-CA' });
