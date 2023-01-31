@@ -24,7 +24,11 @@ describe('NxGlobalSidebar', function() {
   const quickRender = rtlRender<Props>(NxGlobalSidebar, minimalProps);
 
   it('renders a top-level element with role="complementary"', function() {
-    expect(quickRender().getByRole('complementary')).toBeInTheDocument();
+    const view = quickRender(),
+        complementary = view.getByRole('complementary');
+
+    expect(complementary).toHaveAccessibleName('global sidebar');
+    expect(complementary).toBe(view.container.firstElementChild);
   });
 
   it('renders a link to `logoLink` with the `logoImg` and the `altLogoText`', function() {
