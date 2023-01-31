@@ -32,7 +32,7 @@ describe('NxPageHeader', function() {
       logo = view.getByRole('img');
 
     expect(logo).toHaveAttribute('src', 'foo');
-    expect(logo).toHaveAttribute('alt', 'bar');
+    expect(logo).toHaveAccessibleName('bar')
   });
 
   it('renders logo link when given homeLink prop', function() {
