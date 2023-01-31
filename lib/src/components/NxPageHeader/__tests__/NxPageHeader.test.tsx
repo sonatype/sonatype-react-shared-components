@@ -41,7 +41,7 @@ describe('NxPageHeader', function() {
 
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute('href','#home');
-    expect(homeLinkLogo).toBeInTheDocument();
+    expect(homeLink).toContainElement(homeLinkLogo);
   });
 
   it('renders links in header when given links prop', function() {
