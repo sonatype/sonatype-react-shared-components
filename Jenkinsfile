@@ -131,7 +131,7 @@ dockerizedBuildPipeline(
       sh "npm publish --access public $tagArg lib/dist/sonatype-react-shared-components-\$VERSION.tgz"
     }
 
-    // publish to repo.s.c.  We must do this in addition to publishing to npmjs.com because of the
+    // publish to repo.s.c. We must do this in addition to publishing to npmjs.com because of the
     // namespace confusion protection feature of Nexus Firewall. See RSC-1430 and the slack conversation
     // linked therein
     doPublish()
