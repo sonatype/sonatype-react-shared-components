@@ -98,7 +98,6 @@ describe('NxList', function() {
             { getByRole } = quickRender({ children });
 
         expect(getByRole('list')).not.toHaveTextContent('This list is empty.');
-        expect(getByRole('listitem')).not.toHaveTextContent('This list is empty.');
       });
 
       it('does not show the default empty message when loading', function() {
