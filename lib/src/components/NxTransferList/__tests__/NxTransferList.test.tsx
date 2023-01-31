@@ -971,7 +971,7 @@ describe('NxTransferList', function() {
           }
       );
 
-      it('fires onChange with the checkbox\'s corresponding id added to the end of the list when a selected ' +
+      it('fires onChange with the checkbox\'s corresponding id added to the end of the list when an unselected ' +
           'checkbox is clicked', async function() {
         const user = userEvent.setup(),
             onChange = jest.fn(),
