@@ -38,7 +38,7 @@ describe('NxGlobalSidebar', function() {
 
     expect(link).toHaveAttribute('href', '/ref');
     expect(logo).toHaveAttribute('src', 'logoImg');
-    expect(logo).toHaveAttribute('alt', 'alt text');
+    expect(logo).toHaveAccessibleName('alt text');
   });
 
   it('renders an icon-only button with tooltip "Collapse Sidebar" if isOpen is true', async function() {
