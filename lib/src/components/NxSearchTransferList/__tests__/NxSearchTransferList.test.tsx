@@ -172,15 +172,14 @@ describe('NxSearchTransferList', function() {
       describe('when there are no matches', function() {
         const viewNoMatches = (props?: Partial<Props>) => quickRender({searchText: 'i', ...props});
 
-        it('renders a dropdown with role=alert when in empty, loading, or error states', function() {
+        it('renders a dropdown with role=alert when in empty, or loading states', function() {
           expect(viewNoMatches().getByRole('alert')).toBeInTheDocument();
           expect(viewNoMatches({ loading: true}).getByRole('alert')).toBeInTheDocument();
-          // an alert state renders the dropdown with role=alert AND the message itself as role=alert
-          expect(viewNoMatches({ loadError: 'oops' }).getAllByRole('alert')[0]).toBeInTheDocument();
-          expect(quickRender({
-            searchText: 'i',
-            searchMatches: [{ id: '1', displayName: 'Item 1'}]
-          }).queryByRole('alert')).not.toBeInTheDocument();
+        });
+
+        it('renders a dropdown with no role when in an error state', function() {
+          const dropdown = renderEl({ loadError: 'oops' })!.querySelector('.nx-search-dropdown__menu--error');
+          expect(dropdown).not.toHaveAttribute('role');
         });
 
         it('sets aria-busy on the dropdown menu if loading is true', function() {
@@ -197,25 +196,20 @@ describe('NxSearchTransferList', function() {
           expect(viewNoMatches({ loading: true }).getByRole('status')).toHaveTextContent('Loading');
         });
 
-        it('renders a dropdown with "No Results Found" text if not loading or in error state', function() {
-          expect(viewNoMatches().getByRole('alert')).toHaveTextContent('No Results Found');
+        it('renders a dropdown with the loadError prop text when in an error state', function() {
+          expect(viewNoMatches({ loadError: 'oops'}).getByRole('alert')).toHaveTextContent('oops');
         });
 
-        it('renders an element in the dropdown with role=alert and text from loadError prop when in an error state',
-            function() {
-              const dropdownMenu = viewNoMatches({ loadError: 'oops' }).getAllByRole('alert')[0],
-                  alertEl = within(dropdownMenu).getByRole('alert');
-
-              expect(alertEl).toBeInTheDocument();
-              expect(alertEl).toHaveTextContent('oops');
-            });
-
         it('renders a retry button and error text when the error prop is provided', function() {
-          const dropdownMenu = viewNoMatches({ loadError: 'oops' }).getAllByRole('alert')[0],
-              alertEl = within(dropdownMenu).getByRole('alert');
+          const alertEl = viewNoMatches({ loadError: 'oops' }).getByRole('alert');
 
           expect(alertEl).toHaveTextContent('oops');
           expect(within(alertEl).getByRole('button', { name: 'Retry'})).toBeInTheDocument();
+        });
+
+        it('renders a dropdown with "No Results Found" text there are no matching elements and not in error' + 
+        'or loading state', function() {
+          expect(viewNoMatches().getByRole('alert')).toHaveTextContent('No Results Found');
         });
       });
     });
