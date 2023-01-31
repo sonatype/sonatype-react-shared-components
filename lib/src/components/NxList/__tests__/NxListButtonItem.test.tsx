@@ -70,21 +70,19 @@ describe('NxList.ButtonItem', function() {
     expect(btn).toHaveAttribute('value', 'test');
   });
 
-  it('sets disabled and aria-disabled="true" to the button ' +
-    'iff disabled prop is set to true', function() {
+  it('sets disabled to the button iff disabled prop is set to true', function() {
     const renderAndGetBtn = (props?: Partial<NxListButtonItemProps>) => quickRender(props).getByRole('button');
 
     expect(renderAndGetBtn()).toBeEnabled();
-    expect(renderAndGetBtn()).toHaveAttribute('aria-disabled', 'false');
-
+    expect(renderAndGetBtn({ disabled: undefined })).toBeEnabled();
     expect(renderAndGetBtn({ disabled: false })).toBeEnabled();
-    expect(renderAndGetBtn({ disabled: false })).toHaveAttribute('aria-disabled', 'false');
-
     expect(renderAndGetBtn({ disabled: null })).toBeEnabled();
-    expect(renderAndGetBtn({ disabled: null })).toHaveAttribute('aria-disabled', 'false');
-
     expect(renderAndGetBtn({ disabled: true })).toBeDisabled();
-    expect(renderAndGetBtn({ disabled: true })).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  it('sets aria-disabled="true" to the button when disabled buttonClassName is provided', function() {
+    expect(quickRender().getByRole('button')).toHaveAttribute('aria-disabled', 'false');
+    expect(quickRender({ buttonClassName: 'disabled' }).getByRole('button')).toHaveAttribute('aria-disabled', 'true');
   });
 
   it('sets aria-selected and aria-current="true" to the list ' +
