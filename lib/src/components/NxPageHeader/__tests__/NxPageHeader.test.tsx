@@ -15,7 +15,7 @@ describe('NxPageHeader', function() {
   const renderEl = rtlRenderElement(NxPageHeader, {});
   const quickRender = rtlRender(NxPageHeader, {});
 
- it('renders a top-level banner element', function() {
+  it('renders a top-level banner element', function() {
     const el = renderEl();
     const header = screen.getByRole('banner');
     expect(header).toBe(el);
@@ -23,34 +23,34 @@ describe('NxPageHeader', function() {
 
   it('renders the default logo within the header', function() {
     const view = quickRender(),
-      logo = view.getByRole('img');
+        logo = view.getByRole('img');
     expect(logo).toBeInTheDocument();
   });
 
   it('renders a custom logo instead of the default one when given logo prop', function() {
     const view = quickRender({ logo: { path: 'foo', alt: 'bar' } }),
-      logo = view.getByRole('img');
+        logo = view.getByRole('img');
 
     expect(logo).toHaveAttribute('src', 'foo');
-    expect(logo).toHaveAccessibleName('bar')
+    expect(logo).toHaveAccessibleName('bar');
   });
 
   it('renders logo link when given homeLink prop', function() {
     const view = quickRender({ homeLink: '#home' }),
-      homeLink = view.getByRole('link', {name: 'Home'}),
-      homeLinkLogo = view.getByRole('img');
+        homeLink = view.getByRole('link', {name: 'Home'}),
+        homeLinkLogo = view.getByRole('img');
 
     expect(homeLink).toBeInTheDocument();
-    expect(homeLink).toHaveAttribute('href','#home');
+    expect(homeLink).toHaveAttribute('href', '#home');
     expect(homeLink).toContainElement(homeLinkLogo);
   });
 
   it('renders links in header when given links prop', function() {
     const view = quickRender({
-        links: [{ name: 'foo', href: '#bar' }, { name: 'baz', href: '#qux' }]
-    }),
-      link1 = view.getByRole('link', {name: 'foo'}),
-      link2 = view.getByRole('link', {name: 'baz'})
+          links: [{ name: 'foo', href: '#bar' }, { name: 'baz', href: '#qux' }]
+        }),
+        link1 = view.getByRole('link', {name: 'foo'}),
+        link2 = view.getByRole('link', {name: 'baz'});
 
     expect(link1).toBeInTheDocument();
     expect(link1).toHaveAttribute('href', '#bar');
@@ -60,19 +60,19 @@ describe('NxPageHeader', function() {
 
   it('only adds the \'aria-current\' attribute to the current link', function() {
     const view = quickRender({
-        links: [
-          { name: 'foo', href: '#bar', current: true },
-          { name: 'baz', href: '#qux' },
-          { name: 'quux', href: '#garply', current: false },
-        ]
-    }),
-      link1 = view.getByRole('link', {name: 'foo'}),
-      link2 = view.getByRole('link', {name: 'baz'}),
-      link3 = view.getByRole('link', {name: 'quux'});
+          links: [
+            { name: 'foo', href: '#bar', current: true },
+            { name: 'baz', href: '#qux' },
+            { name: 'quux', href: '#garply', current: false }
+          ]
+        }),
+        link1 = view.getByRole('link', {name: 'foo'}),
+        link2 = view.getByRole('link', {name: 'baz'}),
+        link3 = view.getByRole('link', {name: 'quux'});
 
-      expect(link1).toHaveAttribute('aria-current', 'page');
-      expect(link2).not.toHaveAttribute('aria-current');
-      expect(link3).not.toHaveAttribute('aria-current');
+    expect(link1).toHaveAttribute('aria-current', 'page');
+    expect(link2).not.toHaveAttribute('aria-current');
+    expect(link3).not.toHaveAttribute('aria-current');
   });
 
   it('renders the product name if provided', function() {
@@ -81,8 +81,8 @@ describe('NxPageHeader', function() {
             name: 'test app'
           }
         },
-      view = quickRender(props),
-      name = view.getByText('test app');
+        view = quickRender(props),
+        name = view.getByText('test app');
 
     expect(name).toBeInTheDocument();
   });
@@ -94,8 +94,8 @@ describe('NxPageHeader', function() {
             version: '1.2.3'
           }
         },
-      view = quickRender(props),
-      version = view.getByText('Version: 1.2.3');
+        view = quickRender(props),
+        version = view.getByText('Version: 1.2.3');
 
     expect(version).toBeInTheDocument();
   });
@@ -104,9 +104,9 @@ describe('NxPageHeader', function() {
     const props = {
           children: [<h1 key={1}>Foo</h1>, <button key={2}>Click Here For a Free iPhone</button>]
         },
-      view = quickRender(props),
-      header = view.getByText('Foo'),
-      button = view.getByRole('button', {name: 'Click Here For a Free iPhone'});
+        view = quickRender(props),
+        header = view.getByText('Foo'),
+        button = view.getByRole('button', {name: 'Click Here For a Free iPhone'});
 
     expect(header).toBeInTheDocument();
     expect(button).toBeInTheDocument();
@@ -119,13 +119,13 @@ describe('NxPageHeader', function() {
           productInfo: { name: 'test app', version: '1.2.3' },
           children: <button>Click Here For a Free iPhone</button>
         },
-      view = quickRender(props),
-      link = view.getByRole('link',{name: 'foo'}),
-      homeLink = view.getByRole('link', {name: 'Home'}),
-      homeLinkLogo = view.getByRole('img'),
-      productName = view.getByText('test app'),
-      productVersion = view.getByText('Version: 1.2.3'),
-      button = view.getByRole('button', {name: 'Click Here For a Free iPhone'});
+        view = quickRender(props),
+        link = view.getByRole('link', {name: 'foo'}),
+        homeLink = view.getByRole('link', {name: 'Home'}),
+        homeLinkLogo = view.getByRole('img'),
+        productName = view.getByText('test app'),
+        productVersion = view.getByText('Version: 1.2.3'),
+        button = view.getByRole('button', {name: 'Click Here For a Free iPhone'});
 
     expect(link).toBeInTheDocument();
     expect(homeLink).toBeInTheDocument();
