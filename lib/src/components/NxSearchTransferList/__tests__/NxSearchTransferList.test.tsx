@@ -278,11 +278,11 @@ describe('NxSearchTransferList', function() {
     it('does not call onSearch if the focus moves inside the component while in an error state', function() {
       const onSearch = jest.fn(),
           view = quickRender({ searchText: 'foo', onSearch, loadError: 'oops' }),
-          filterInput = view.getByRole('searchbox'),
+          searchInput = view.getByRole('searchbox'),
           retryBtn = view.getByRole('button', { name: 'Retry' });
 
       expect(onSearch).not.toHaveBeenCalled();
-      filterInput.focus();
+      searchInput.focus();
       expect(onSearch).not.toHaveBeenCalled();
       retryBtn.focus();
       expect(onSearch).not.toHaveBeenCalled();
@@ -417,7 +417,7 @@ describe('NxSearchTransferList', function() {
         expect(items[1]).toHaveAccessibleName('item 2');
       });
 
-      it('filters items that match the addedItemsFiler according to the filterFn when specified', function() {
+      it('filters items that match the addedItemsFilter according to the filterFn when specified', function() {
         const view = quickRender({
               addedItems,
               addedItemsFilter: 'item',
