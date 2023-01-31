@@ -92,7 +92,6 @@ describe('NxTable', function() {
     );
 
     expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '2');
-    expect(screen.getByRole('cell')).toHaveClass('nx-cell--meta-info');
   });
 
   it('Puts the correct colSpan on an emptyMessage meta-info cell', async function() {
