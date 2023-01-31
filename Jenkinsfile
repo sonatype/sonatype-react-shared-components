@@ -127,14 +127,18 @@ dockerizedBuildPipeline(
     def tag = isMainBranch() ? null : "latest-$majorVersion"
     def tagArg = tag ? "--tag $tag" : ''
 
-    def doPublish = {
-      sh "npm publish --access public $tagArg lib/dist/sonatype-react-shared-components-\$VERSION.tgz"
+    def doPublish = { registry ->
+      def registryArg = registry ? "--registry $registry" : ''
+
+      sh "npm publish --access public $tagArg $registryArg lib/dist/sonatype-react-shared-components-\$VERSION.tgz"
     }
 
     // publish to repo.s.c. We must do this in addition to publishing to npmjs.com because of the
     // namespace confusion protection feature of Nexus Firewall. See RSC-1430 and the slack conversation
     // linked therein
-    withDockerImage(env.DOCKER_IMAGE_ID, 'rsc-internal-write-npmrc', doPublish)
+    withDockerImage(env.DOCKER_IMAGE_ID, 'rsc-internal-write-npmrc') {
+      doPublish('https://repo.sonatype.com/repository/npm-internal/')
+    }
 
     // publish to npmjs.com
     withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
