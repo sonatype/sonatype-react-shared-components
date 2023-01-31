@@ -74,12 +74,12 @@ describe('NxTable', function() {
     expect(bodyColumnHeaders).toHaveLength(0);
     expect(bodyCells).toHaveLength(2);
 
-    expect(bodyCells[0]).not.toHaveAttribute('colSpan');
-    expect(bodyCells[1]).not.toHaveAttribute('colSpan');
+    expect(bodyCells[0]).not.toHaveAttribute('colspan');
+    expect(bodyCells[1]).not.toHaveAttribute('colspan');
   });
 
   it('Puts the correct colSpan on a loading meta-info cell', function() {
-    render(
+    const {debug} = render(
       <NxTable>
         <NxTableHead>
           <NxTableRow>
@@ -91,7 +91,8 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '2');
+    debug();
+    expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
   });
 
   it('Puts the correct colSpan on an emptyMessage meta-info cell', async function() {
@@ -107,7 +108,7 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '2');
+    expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
     expect(screen.getByRole('cell')).toHaveTextContent('Empty');
   });
 
@@ -124,7 +125,7 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '2');
+    expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
     expect(screen.getByRole('cell')).toHaveTextContent('Error!');
   });
 
@@ -141,7 +142,7 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '2');
+    expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
 
     rerender(
       <NxTable>
@@ -154,7 +155,7 @@ describe('NxTable', function() {
       </NxTable>
     );
 
-    await waitFor(() => expect(screen.getByRole('cell')).toHaveAttribute('colSpan', '1'));
+    await waitFor(() => expect(screen.getByRole('cell')).toHaveAttribute('colspan', '1'));
 
     expect(screen.getByRole('cell')).toHaveClass('nx-cell--meta-info');
     expect(screen.getByRole('cell')).toHaveTextContent('Error!');
