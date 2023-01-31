@@ -61,15 +61,19 @@ describe('NxList', function() {
   });
 
   it('renders children correctly', function() {
-    const children = <NxList.Item>Cat</NxList.Item>,
+    const children =
+        [
+          <NxList.Item key="1">Cat</NxList.Item>,
+          <NxList.Item key="2">Dog</NxList.Item>
+        ],
         view = quickRender({ children }),
         list = view.getByRole('list'),
-        listItem = view.getByRole('listitem');
+        listItems = within(list).getAllByRole('listitem');
 
     expect(list).toBeInTheDocument();
-    expect(listItem).toBeInTheDocument();
-    expect(list).toContainElement(listItem);
-    expect(listItem).toHaveTextContent('Cat');
+    expect(listItems).toHaveLength(2);
+    expect(listItems[0]).toHaveTextContent('Cat');
+    expect(listItems[1]).toHaveTextContent('Dog');
   });
 
   describe('emptyMessage', function() {
