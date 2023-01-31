@@ -78,90 +78,90 @@ describe('NxTable', function() {
     expect(bodyCells[1]).not.toHaveAttribute('colspan');
   });
 
-  it('Puts the correct colSpan on a loading meta-info cell', function() {
-    const {debug} = render(
-      <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Foo</NxTableCell>
-            <NxTableCell>Bar</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody isLoading />
-      </NxTable>
-    );
-
-    debug();
-    expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
-  });
-
-  it('Puts the correct colSpan on an emptyMessage meta-info cell', async function() {
-    render(
-      <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Foo</NxTableCell>
-            <NxTableCell>Bar</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody emptyMessage="Empty" />
-      </NxTable>
-    );
-
-    expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
-    expect(screen.getByRole('cell')).toHaveTextContent('Empty');
-  });
-
-  it('Puts the correct colSpan on an error meta-info cell', function() {
-    render(
-      <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Foo</NxTableCell>
-            <NxTableCell>Bar</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody error="Error!" />
-      </NxTable>
-    );
-
-    expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
-    expect(screen.getByRole('cell')).toHaveTextContent('Error!');
-  });
-
-  it('correctly updates the colspan if the number of columns changes', async function() {
-    const { rerender } = render(
-      <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Foo</NxTableCell>
-            <NxTableCell>Bar</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody error="Error!" />
-      </NxTable>
-    );
-
-    expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
-
-    rerender(
-      <NxTable>
-        <NxTableHead>
-          <NxTableRow>
-            <NxTableCell>Foo</NxTableCell>
-          </NxTableRow>
-        </NxTableHead>
-        <NxTableBody error="Error!" />
-      </NxTable>
-    );
-
-    await waitFor(() => expect(screen.getByRole('cell')).toHaveAttribute('colspan', '1'));
-
-    expect(screen.getByRole('cell')).toHaveClass('nx-cell--meta-info');
-    expect(screen.getByRole('cell')).toHaveTextContent('Error!');
-  });
-
   describe('NxTableBody', function() {
+    it('Puts the correct colSpan on a loading meta-info cell', function() {
+      const {debug} = render(
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody isLoading />
+        </NxTable>
+      );
+
+      debug();
+      expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
+    });
+
+    it('Puts the correct colSpan on an emptyMessage meta-info cell', async function() {
+      render(
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody emptyMessage="Empty" />
+        </NxTable>
+      );
+
+      expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
+      expect(screen.getByRole('cell')).toHaveTextContent('Empty');
+    });
+
+    it('Puts the correct colSpan on an error meta-info cell', function() {
+      render(
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody error="Error!" />
+        </NxTable>
+      );
+
+      expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
+      expect(screen.getByRole('cell')).toHaveTextContent('Error!');
+    });
+
+    it('correctly updates the colspan if the number of columns changes', async function() {
+      const { rerender } = render(
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Foo</NxTableCell>
+              <NxTableCell>Bar</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody error="Error!" />
+        </NxTable>
+      );
+
+      expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
+
+      rerender(
+        <NxTable>
+          <NxTableHead>
+            <NxTableRow>
+              <NxTableCell>Foo</NxTableCell>
+            </NxTableRow>
+          </NxTableHead>
+          <NxTableBody error="Error!" />
+        </NxTable>
+      );
+
+      await waitFor(() => expect(screen.getByRole('cell')).toHaveAttribute('colspan', '1'));
+
+      expect(screen.getByRole('cell')).toHaveClass('nx-cell--meta-info');
+      expect(screen.getByRole('cell')).toHaveTextContent('Error!');
+    });
+
     it('does not show the emptyMessage when there are children', async function() {
       render(
         <NxTable>
