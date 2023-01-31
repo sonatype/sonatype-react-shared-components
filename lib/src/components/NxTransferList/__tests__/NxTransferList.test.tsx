@@ -570,7 +570,7 @@ describe('NxTransferList', function() {
     });
 
     it('fires onSelectedItemsFilterChange with the new text value and event when the user types into the ' +
-        'available items filter', async function() {
+        'transferred items filter', async function() {
       const user = userEvent.setup(),
           onAvailableItemsFilterChange = jest.fn(),
           onSelectedItemsFilterChange = jest.fn().mockImplementation((_, evt) => evt.persist()),
