@@ -7,8 +7,8 @@
 import React, { RefAttributes } from 'react';
 import NxStatefulSearchDropdown from '../NxStatefulSearchDropdown';
 import { StatefulProps } from '../../types';
-import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
-import { fireEvent, within } from '@testing-library/react';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../../__testutils__/rtlUtils';
+import { within } from '@testing-library/react';
 
 describe('NxStatefulSearchDropdown', function() {
   type PropsWithRef = StatefulProps<string | number> & RefAttributes<HTMLDivElement>;
@@ -19,7 +19,15 @@ describe('NxStatefulSearchDropdown', function() {
         onSelect: () => {}
       },
       renderEl = rtlRenderElement<PropsWithRef>(NxStatefulSearchDropdown, minimalProps),
-      quickRender = rtlRender<PropsWithRef>(NxStatefulSearchDropdown, minimalProps);
+      quickRender = rtlRender<PropsWithRef>(NxStatefulSearchDropdown, minimalProps),
+      matches = [
+        { id: '1', displayName: 'One' },
+        { id: '2', displayName: 'Two' }
+      ];
+
+  it('renders a top-level element with role="group"', function () {
+    expect(renderEl()).toHaveAttribute('role', 'group');
+  });
 
   it('adds additional specified classnames', function() {
     const el = renderEl()!;
@@ -53,17 +61,17 @@ describe('NxStatefulSearchDropdown', function() {
     expect(input).toBeInTheDocument();
   });
 
-  it('initially passes the defaultSearchText as the searchText', function() {
+  it('initially passes the searchbox text value as the searchText', function() {
     const el = quickRender({ defaultSearchText: 'foo' });
     expect(el.getByRole('searchbox')).toHaveValue('foo');
   });
 
-  it('passes the empty string as the searchText if defaultSearchText is not specified', function() {
+  it('passes the empty string as the searchText if searchbox text value is not specified', function() {
     const el = quickRender();
     expect(el.getByRole('searchbox')).toHaveValue('');
   });
 
-  it('sets the searchText as the value of the input', async function() {
+  it('sets the searchText as the value of the searchbox', async function() {
     const component = quickRender(),
         input = component.getByRole('searchbox'),
         user = userEvent.setup();
@@ -97,25 +105,29 @@ describe('NxStatefulSearchDropdown', function() {
 
   it('calls onSearch whenever the input\'s onChange event fires with a value that differs after trimming, ' +
   'passing the trimmed value', async function() {
-    const onSearch = jest.fn(),
-        el = quickRender({ defaultSearchText: 'foo ', onSearch }),
-        input = el.getByRole('searchbox');
+    const user = userEvent.setup(),
+        onSearch = jest.fn(),
+        el = quickRender({ defaultSearchText: ' foo ', onSearch }),
+        input = el.getByRole('searchbox') as HTMLInputElement;
 
     expect(onSearch).not.toHaveBeenCalled();
 
-    fireEvent.change(input, { target: { value: 'foo' }});
-    fireEvent.change(input, { target: { value: ' foo' }});
-    fireEvent.change(input, { target: { value: ' foo ' }});
-    fireEvent.change(input, { target: { value: 'foo ' }});
+    await user.type(input, '[Backspace]', { initialSelectionStart: 5, initialSelectionEnd: 5 });
+    await user.type(input, '[Backspace]', { initialSelectionStart: 1, initialSelectionEnd: 1 });
+    await user.type(input, '[Space]', { initialSelectionStart: 0, initialSelectionEnd: 0 });
+    await user.type(input, '[Space]', { initialSelectionStart: 1, initialSelectionEnd: 1 });
+    await user.type(input, '[Space]', { initialSelectionStart: 5, initialSelectionEnd: 5 });
 
     expect(onSearch).not.toHaveBeenCalled();
 
-    fireEvent.change(input, { target: { value: 'fo ' }});
+    await user.type(input, '[Backspace]', { initialSelectionStart: 1, initialSelectionEnd: 3 });
+    expect(onSearch).toHaveBeenCalledWith('oo');
 
-    expect(onSearch).toHaveBeenCalledWith('fo');
+    await user.type(input, 'o', { initialSelectionStart: 5, initialSelectionEnd: 5 });
+    expect(onSearch).toHaveBeenCalledWith('oo o');
   });
 
-  it('passes the disabled prop to the input and buttons', async function() {
+  it('passes the disabled prop to the searchbox and buttons', async function() {
     expect(quickRender().getByRole('searchbox')).not.toBeDisabled();
     expect(quickRender({ disabled: undefined }).getByRole('searchbox')).not.toBeDisabled();
     expect(quickRender({ disabled: null }).getByRole('searchbox')).not.toBeDisabled();
@@ -152,18 +164,9 @@ describe('NxStatefulSearchDropdown', function() {
     expect(el.getByRole('menu')).toBeInTheDocument();
   });
 
-  it('sets aria-hidden to true on the dropdown menu if the defaultSearchText is empty or disabled is true', function() {
-    expect(quickRender().getByRole('alert', { hidden: true })).toHaveAttribute('aria-hidden', 'true');
-    expect(quickRender({ defaultSearchText: 'foo', disabled: true }).getByRole('alert', { hidden: true }))
-        .toHaveAttribute('aria-hidden', 'true');
-    expect(quickRender({ defaultSearchText: 'foo', disabled: false }).getByRole('alert'))
-        .toHaveAttribute('aria-hidden', 'false');
-    expect(quickRender({ defaultSearchText: 'foo', disabled: undefined }).getByRole('alert'))
-        .toHaveAttribute('aria-hidden', 'false');
-    expect(quickRender({ defaultSearchText: 'foo', disabled: null }).getByRole('alert'))
-        .toHaveAttribute('aria-hidden', 'false');
-    expect(quickRender({ defaultSearchText: 'foo' }).getByRole('alert'))
-        .toHaveAttribute('aria-hidden', 'false');
+  it('does not render a menu if search text is empty or disabled is true', function() {
+    expect(quickRender().queryByRole('menu')).not.toBeInTheDocument();
+    expect(quickRender({ defaultSearchText: 'foo', disabled: true }).queryByRole('menu')).not.toBeInTheDocument();
   });
 
   it('sets aria-live on the dropdown menu to "polite"', function() {
@@ -171,22 +174,18 @@ describe('NxStatefulSearchDropdown', function() {
   });
 
   it('sets aria-busy on the dropdown menu if loading is true', function() {
-    expect(quickRender().getByRole('alert', { hidden: true })).toHaveAttribute('aria-busy', 'false');
-    expect(quickRender({ loading: true }).getByRole('alert', { hidden: true })).toHaveAttribute('aria-busy', 'true');
+    expect(quickRender({ defaultSearchText: 'test', matches }).getByRole('menu'))
+        .toHaveAttribute('aria-busy', 'false');
+    expect(quickRender({ defaultSearchText: 'test', matches, loading: true }).getByRole('alert'))
+        .toHaveAttribute('aria-busy', 'true');
   });
 
-  it('sets the alert role on the dropdown menu when it is in loading, error, or empty states', function() {
+  it('sets the alert role on the dropdown menu when it is in loading or empty states', function() {
     expect(quickRender({ defaultSearchText: 'asdf', matches: [] }).getByRole('alert')).toBeInTheDocument();
     expect(quickRender({ defaultSearchText: 'asdf', loading: true }).getByRole('alert')).toBeInTheDocument();
-
-    const dropdownMenu = quickRender({ defaultSearchText: 'asdf', error: 'foo' }).getAllByRole('alert')[0];
-    expect(dropdownMenu).toBeInTheDocument();
-
-    const errorAlert = within(dropdownMenu).getByRole('alert');
-    expect(errorAlert).toBeInTheDocument();
   });
 
-  it('sets an id on the dropdown and references it in the search box\'s aria-controls', function() {
+  it('sets an id on the dropdown and references it in the searchbox\'s aria-controls', function() {
     const el = quickRender({ defaultSearchText: 'foo' }),
         filterInput = el.getByRole('searchbox'),
         dropdown = el.getByRole('alert');
@@ -195,7 +194,7 @@ describe('NxStatefulSearchDropdown', function() {
     expect(filterInput).toHaveAttribute('aria-controls', dropdown.getAttribute('id'));
   });
 
-  it('sets aria-haspopup on the filter input', function() {
+  it('sets aria-haspopup on the searchbox', function() {
     const el = quickRender({ defaultSearchText: 'foo' }),
         filterInput = el.getByRole('searchbox');
 
@@ -203,38 +202,46 @@ describe('NxStatefulSearchDropdown', function() {
   });
 
   it('shows loading text on the dropdown when loading prop is true', function() {
-    const el = quickRender({ defaultSearchText: 'foo', loading: true });
+    const el = quickRender({ defaultSearchText: 'foo', loading: true }),
+        alert = el.getByRole('alert');
 
-    expect(el.getByRole('status')).toHaveTextContent('Loading…');
+    expect(within(alert).getByRole('status')).toHaveTextContent('Loading…');
+  });
+
+  it('does not set a role on dropdown menu when error prop is provided', function() {
+    const el = quickRender({ defaultSearchText: 'foo', error: 'bar' });
+
+    expect(el.getByRole('alert').parentElement).not.toHaveAttribute('role');
   });
 
   it('shows error text when the error prop is provided', function() {
     const el = quickRender({ defaultSearchText: 'foo', error: 'bar' });
 
-    const dropdownMenu = el.getAllByRole('alert')[0];
-    expect(within(dropdownMenu).getByRole('alert')).toHaveTextContent('bar');
+    expect(el.getByRole('alert')).toHaveTextContent('bar');
   });
 
-  it('fires onSearch with the defaultSearchText when the load wrappers retryHandler is triggered', async function() {
+  it('fires onSearch with the trimmed searchbox text value', async function() {
     const onSearch = jest.fn(),
         user = userEvent.setup(),
-        error = quickRender({ defaultSearchText: 'foo', error: 'bar', onSearch });
+        el = quickRender({ defaultSearchText: 'foo', error: 'bar', onSearch }),
+        input = el.getByRole('searchbox'),
+        retryButton = el.getByRole('button', { name: 'Retry' });
 
     expect(onSearch).not.toHaveBeenCalled();
-
-    const retryButton = error.getByRole('button', { name: 'Retry' });
 
     await user.click(retryButton);
 
     expect(onSearch).toHaveBeenCalledWith('foo');
+
+    await user.clear(input);
+    await user.type(input, ' a ');
+    await user.click(retryButton);
+
+    expect(onSearch).toHaveBeenCalledWith('a');
   });
 
-  it('sets the load wrapper contents to buttons with type "button" for each match', function() {
-    const matches = [
-          { id: '1', displayName: 'One' },
-          { id: '2', displayName: 'Two' }
-        ],
-        el = quickRender({ matches, defaultSearchText: 'foo' }),
+  it('renders buttons with type "button" for each match', function() {
+    const el = quickRender({ matches, defaultSearchText: 'foo' }),
         dropdown = el.getByRole('menu');
 
     expect(dropdown.children.length).toBe(2);
@@ -244,10 +251,6 @@ describe('NxStatefulSearchDropdown', function() {
 
   it('sets an onClick handler on the menu button that fires onSelect with the match object', async function() {
     const onSelect = jest.fn(),
-        matches = [
-          { id: '1', displayName: 'One' },
-          { id: '2', displayName: 'Two' }
-        ],
         user = userEvent.setup(),
         el = quickRender({ matches, onSelect, defaultSearchText: 'foo' });
 
@@ -260,7 +263,7 @@ describe('NxStatefulSearchDropdown', function() {
     expect(onSelect).toHaveBeenCalledWith({ id: '2', displayName: 'Two' });
   });
 
-  it('calls onSearch with the current trimmed defaultSearchText if focus enters the  ' +
+  it('calls onSearch with the current trimmed searchbox text if focus enters the  ' +
       'component from elsewhere on the page while there is an error', function() {
     const onSearch = jest.fn(),
         el = quickRender({ defaultSearchText: 'foo ', error: 'bar', onSearch }),
@@ -325,12 +328,7 @@ describe('NxStatefulSearchDropdown', function() {
       }
   );
 
-  it('should clear search when Escape key is pressed on filterInput or dropdownMenu', async function() {
-    const matches = [
-      { id: '1', displayName: 'One' },
-      { id: '2', displayName: 'OneTwo' }
-    ];
-
+  it('should clear search when Escape key is pressed on searchbox or dropdownMenu', async function() {
     const props = { defaultSearchText: 'One', matches },
         el = quickRender(props),
         filterInput = el.getByRole('searchbox'),
@@ -348,5 +346,20 @@ describe('NxStatefulSearchDropdown', function() {
     await user.keyboard('{Escape}');
 
     expect(filterInput).toHaveValue('');
+  });
+
+  it('should clear search when close button on searchbox is clicked', async function() {
+    const onSearch = jest.fn(),
+        el = quickRender({ defaultSearchText: 'One', matches, onSearch });
+
+    await runTimers();
+
+    const closeButton = el.getByRole('button', { name: /clear search/i }),
+        user = userEvent.setup();
+
+    expect(onSearch).not.toHaveBeenCalled();
+    await user.click(closeButton);
+
+    expect(onSearch).toHaveBeenCalledWith('');
   });
 });
