@@ -32,10 +32,11 @@ describe('NxList.ButtonItem', function() {
   });
 
   it('sets the specified classnames to the list in addition to the defaults', function() {
-    const el = renderEl({ className: 'foo' }),
+    const el = renderEl({ className: 'foo', buttonClassName: 'boo' }),
         defaultEl = renderEl()!;
 
     expect(el).toHaveClass('foo');
+    expect(el).not.toHaveClass('boo');
 
     for (const cls of Array.from(defaultEl.classList)) {
       expect(el).toHaveClass(cls);
@@ -43,18 +44,23 @@ describe('NxList.ButtonItem', function() {
   });
 
   it('sets the specified attrs to the list', function() {
-    const el = renderEl({ id: 'foo', lang: 'en' });
+    const buttonAttributes = { id: 'boo', value: 'test' },
+        el = renderEl({ id: 'foo', lang: 'en', buttonAttributes });
 
     expect(el).toHaveAttribute('id', 'foo');
     expect(el).toHaveAttribute('lang', 'en');
+
+    expect(el).not.toHaveAttribute('id', 'boo');
+    expect(el).not.toHaveAttribute('value', 'test');
   });
 
   it('sets the specified classnames to the button in addition to the defaults ' +
     'when buttonClassName prop is provided', function() {
-    const btn = quickRender({ buttonClassName: 'boo' }).getByRole('button'),
+    const btn = quickRender({ className: 'foo', buttonClassName: 'boo' }).getByRole('button'),
         defaultBtn = quickRender().getByRole('button');
 
     expect(btn).toHaveClass('boo');
+    expect(btn).not.toHaveClass('foo');
 
     for (const cls of Array.from(defaultBtn.classList)) {
       expect(btn).toHaveClass(cls);
@@ -64,10 +70,13 @@ describe('NxList.ButtonItem', function() {
   it('sets the specified attrs to the button ' +
     'when buttonAttributes prop is provided', function() {
     const buttonAttributes = { id: 'boo', value: 'test' },
-        btn = quickRender({ buttonAttributes }).getByRole('button');
+        btn = quickRender({ id: 'foo', lang: 'en', buttonAttributes }).getByRole('button');
 
     expect(btn).toHaveAttribute('id', 'boo');
     expect(btn).toHaveAttribute('value', 'test');
+
+    expect(btn).not.toHaveAttribute('id', 'foo');
+    expect(btn).not.toHaveAttribute('lang', 'en');
   });
 
   it('sets disabled to the button iff disabled prop is set to true', function() {

@@ -35,10 +35,11 @@ describe('NxList.LinkItem', function() {
   });
 
   it('sets the specified classnames to the list in addition to the defaults', function() {
-    const el = renderEl({ className: 'foo' }),
+    const el = renderEl({ className: 'foo', anchorClassName: 'boo' }),
         defaultEl = renderEl()!;
 
     expect(el).toHaveClass('foo');
+    expect(el).not.toHaveClass('boo');
 
     for (const cls of Array.from(defaultEl.classList)) {
       expect(el).toHaveClass(cls);
@@ -46,18 +47,23 @@ describe('NxList.LinkItem', function() {
   });
 
   it('sets the specified attrs to the list', function() {
-    const el = renderEl({ id: 'foo', lang: 'en' });
+    const anchorAttributes = { id: 'boo', hrefLang: 'en' },
+        el = renderEl({ id: 'foo', lang: 'en', anchorAttributes });
 
     expect(el).toHaveAttribute('id', 'foo');
     expect(el).toHaveAttribute('lang', 'en');
+
+    expect(el).not.toHaveAttribute('id', 'boo');
+    expect(el).not.toHaveAttribute('hrefLang', 'en');
   });
 
   it('sets the specified classnames to the anchor in addition to the defaults ' +
   'when anchorClassName prop is provided', function() {
-    const anchor = quickRender({ anchorClassName: 'boo' }).getByRole('link'),
+    const anchor = quickRender({ className: 'foo', anchorClassName: 'boo' }).getByRole('link'),
         defaultAnchor = quickRender().getByRole('link');
 
     expect(anchor).toHaveClass('boo');
+    expect(anchor).not.toHaveClass('foo');
 
     for (const cls of Array.from(defaultAnchor.classList)) {
       expect(anchor).toHaveClass(cls);
@@ -66,10 +72,13 @@ describe('NxList.LinkItem', function() {
 
   it('sets the specified attrs to the anchor when anchorAttributes prop is provided', function() {
     const anchorAttributes = { id: 'boo', hrefLang: 'en' },
-        anchor = quickRender({ anchorAttributes }).getByRole('link');
+        anchor = quickRender({ id: 'foo', lang: 'en', anchorAttributes }).getByRole('link');
 
     expect(anchor).toHaveAttribute('id', 'boo');
     expect(anchor).toHaveAttribute('hrefLang', 'en');
+
+    expect(anchor).not.toHaveAttribute('id', 'foo');
+    expect(anchor).not.toHaveAttribute('lang', 'en');
   });
 
   it('sets aria-disabled="true" and does not pass href value on the anchor ' +
