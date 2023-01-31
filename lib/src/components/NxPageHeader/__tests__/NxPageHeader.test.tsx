@@ -10,14 +10,14 @@ import NxPageHeader from '../NxPageHeader';
 import { screen } from '@testing-library/react';
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
 
-describe('NxPageHeader', function() {
+fdescribe('NxPageHeader', function() {
 
-  const renderEl = rtlRenderElement(NxPageHeader, {});
-  const quickRender = rtlRender(NxPageHeader, {});
+  const renderEl = rtlRenderElement(NxPageHeader, {}),
+      quickRender = rtlRender(NxPageHeader, {});
 
   it('renders a top-level banner element', function() {
-    const el = renderEl();
-    const header = screen.getByRole('banner');
+    const el = renderEl(),
+        header = screen.getByRole('banner');
     expect(header).toBe(el);
   });
 
