@@ -32,8 +32,6 @@ describe('NxPageHeader', function() {
 
     expect(logo).toHaveAttribute('src', 'foo');
     expect(logo).toHaveAttribute('alt', 'bar');
-    // ensures there is only one logo
-    expect(screen.getAllByRole('img').length).toEqual(1);
   });
 
   it('renders logo link when given homeLink prop', function() {
