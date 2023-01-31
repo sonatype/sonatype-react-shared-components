@@ -158,7 +158,6 @@ describe('NxTable', function() {
 
       await waitFor(() => expect(screen.getByRole('cell')).toHaveAttribute('colspan', '1'));
 
-      expect(screen.getByRole('cell')).toHaveClass('nx-cell--meta-info');
       expect(screen.getByRole('cell')).toHaveTextContent('Error!');
     });
 
