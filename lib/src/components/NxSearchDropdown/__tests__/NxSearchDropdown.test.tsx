@@ -189,7 +189,7 @@ describe('NxSearchDropdown', function() {
   it('does not set a role on dropdown menu when error prop is provided', function() {
     const el = quickRender({ searchText: 'foo', error: 'bar' });
 
-    expect(el.getByRole('alert').parentElement).not.toHaveAttribute('role');
+    expect(el.queryByRole('menu')).not.toBeInTheDocument();
   });
 
   it('shows error text when the error prop is provided', function() {
