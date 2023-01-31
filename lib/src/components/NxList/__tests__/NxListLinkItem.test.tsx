@@ -17,7 +17,7 @@ describe('NxList.LinkItem', function() {
       quickRender = rtlRender(NxList.LinkItem, minimalProps),
       renderEl = rtlRenderElement(NxList.LinkItem, minimalProps);
 
-  it('renders a list containing an anchor', function() {
+  it('renders a listitem containing a link', function() {
     const view = quickRender(),
         listItem = view.getByRole('listitem'),
         anchor = view.getByRole('link');
