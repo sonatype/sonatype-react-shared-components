@@ -14,7 +14,7 @@ describe('NxPageHeader', function() {
 
   const renderEl = rtlRenderElement(NxPageHeader, {});
 
- it('renders a top-level header element', function() {
+ it('renders a top-level banner element', function() {
     renderEl();
     const header = screen.getByRole('banner');
     expect(header).toBeInTheDocument();
