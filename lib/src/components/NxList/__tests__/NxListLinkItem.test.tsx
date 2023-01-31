@@ -107,9 +107,10 @@ describe('NxList.LinkItem', function() {
   });
 
   it('renders children correctly', function() {
-    const children = [
-      <NxList.Text data-testid="text" key="1">Test Item 1 Text</NxList.Text>,
-      <NxList.Subtext data-testid="subtext" key="2">Test Item 1 Subtext</NxList.Subtext>
+    const children =
+        [
+          <NxList.Text data-testid="text" key="1">Test Item 1 Text</NxList.Text>,
+          <NxList.Subtext data-testid="subtext" key="2">Test Item 1 Subtext</NxList.Subtext>
         ],
         view = quickRender({ children }),
         anchor = view.getByRole('link'),
