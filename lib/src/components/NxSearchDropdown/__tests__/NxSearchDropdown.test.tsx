@@ -68,7 +68,7 @@ describe('NxSearchDropdown', function() {
     expect(input).toHaveAttribute('value', 'foo');
   });
 
-  it('calls onSearchTextChange whenver the user types in the searchbox', async function() {
+  it('calls onSearchTextChange whenever the user types in the searchbox', async function() {
     const onSearchTextChange = jest.fn(),
         el = quickRender({ searchText: '', onSearchTextChange }),
         input = el.getByRole('searchbox'),
@@ -81,8 +81,7 @@ describe('NxSearchDropdown', function() {
   });
 
   it('calls onSearch whenever the searchbox text changes with a value that differs after trimming, ' +
-    'passing the trimmed value '
-  , async function() {
+    'passing the trimmed value', async function() {
     const user = userEvent.setup(),
         onSearch = jest.fn(),
         el = quickRender({ searchText: ' foo ', onSearch }),
@@ -159,7 +158,7 @@ describe('NxSearchDropdown', function() {
         .toHaveAttribute('aria-busy', 'true');
   });
 
-  it('sets the alert role on the dropdown menu when it is in loading, error, or empty states', function() {
+  it('sets the alert role on the dropdown menu when it is in loading or empty states', function() {
     expect(quickRender({ searchText: 'asdf', matches: [] }).getByRole('alert')).toBeInTheDocument();
     expect(quickRender({ searchText: 'asdf', loading: true }).getByRole('alert')).toBeInTheDocument();
 
