@@ -209,50 +209,33 @@ describe('NxTable', function() {
   });
 
   describe('NxTableRow', function() {
-    it('sets the rendered text content into RowContext provider label with cells separated by semi-colons', function() {
-      function ContextDependentChild() {
-        const { label } = useContext(RowContext);
-        return <span data-testid="context-dependent" aria-label={label} />;
-      }
-
+    it('renders cell instead of columnheader when isFilterHeader is set to true', function() {
       render(
         <NxTable>
-          <NxTableBody>
-            <NxTableRow>
+          <NxTableHead>
+            <NxTableRow isFilterHeader={true}>
               <NxTableCell>Foo</NxTableCell>
-              <NxTableCell>Bar</NxTableCell>
-              <NxTableCell />
-              <NxTableCell>Baz</NxTableCell>
-              <NxTableCell><ContextDependentChild /></NxTableCell>
             </NxTableRow>
-          </NxTableBody>
+          </NxTableHead>
         </NxTable>
       );
 
-      expect(screen.getByTestId('context-dependent')).toHaveAccessibleName('Foo; Bar; Baz');
+      expect(screen.getByRole('cell')).toBeInTheDocument();
     });
 
-    it('sets the clickAccessbleLabel into the RowContext provider label if it is defined', function() {
-      function ContextDependentChild() {
-        const { label } = useContext(RowContext);
-        return <span data-testid="context-dependent" aria-label={label} />;
-      }
-
+    it('sets the clickable row accessible name based on the text of its cells', function() {
       render(
         <NxTable>
           <NxTableBody>
-            <NxTableRow clickAccessibleLabel="asdf">
+            <NxTableRow isClickable={true}>
               <NxTableCell>Foo</NxTableCell>
               <NxTableCell>Bar</NxTableCell>
-              <NxTableCell />
-              <NxTableCell>Baz</NxTableCell>
-              <NxTableCell><ContextDependentChild /></NxTableCell>
             </NxTableRow>
           </NxTableBody>
         </NxTable>
       );
 
-      expect(screen.getByTestId('context-dependent')).toHaveAccessibleName('asdf');
+      expect(screen.getByRole('row')).toHaveAccessibleName('Foo Bar');
     });
 
     it('sets the isFilterHeader flag into the RowContext, normalized to a boolean', function() {
@@ -342,20 +325,18 @@ describe('NxTable', function() {
 
     describe('when the chevron prop is true', function() {
       describe('when not isHeader', function() {
-        it('sets the button accessible name from the RowContext', function() {
+        it('sets the button accessible name from the row clickAccessibleLabel', function() {
           render(
             <NxTable>
               <NxTableBody>
-                <NxTableRow>
-                  <RowContext.Provider value={{ label: 'foobar', isFilterHeader: false }}>
-                    <NxTableCell chevron/>
-                  </RowContext.Provider>
+                <NxTableRow clickAccessibleLabel="dolphin">
+                  <NxTableCell chevron/>
                 </NxTableRow>
               </NxTableBody>
             </NxTable>
           );
 
-          expect(screen.getByRole('button')).toHaveAccessibleName('foobar');
+          expect(screen.getByRole('button')).toHaveAccessibleName('dolphin');
         });
       });
 
