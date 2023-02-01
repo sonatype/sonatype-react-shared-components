@@ -97,8 +97,7 @@ describe('NxSearchTransferList', function() {
 
       expect(onSearchTextChange).not.toHaveBeenCalled();
 
-      searchInput.focus();
-      await user.keyboard('[Escape]');
+      await user.type(searchInput, '[Escape]');
 
       expect(onSearchTextChange).toHaveBeenLastCalledWith('');
     });
@@ -125,23 +124,22 @@ describe('NxSearchTransferList', function() {
 
       describe('when there are matches', function() {
         const propsWithMatches = {
-              ...minimalProps,
               searchText: 'Item',
               searchMatches: [
-                { id: '1', displayName: 'Item 1'},
-                { id: '2', displayName: 'Item 2'}
+                { id: '1', displayName: 'Item 1' },
+                { id: '2', displayName: 'Item 2' }
               ]
             },
-            viewWithMatches = (props?: Partial<Props>) => quickRender({...propsWithMatches, ...props});
+            viewWithMatches = (props?: Partial<Props>) => quickRender({ ...propsWithMatches, ...props });
 
         it('renders a dropdown with role=menu with matches as role=menuitem', function() {
           const dropdownEl = viewWithMatches().getByRole('menu'),
               matches = within(dropdownEl).getAllByRole('menuitem');
 
           expect(dropdownEl).toBeInTheDocument();
+          expect(matches).toHaveLength(2);
           expect(matches[0]).toBeInTheDocument();
           expect(matches[1]).toBeInTheDocument();
-          expect(matches).toHaveLength(2);
         });
 
         it('renders matches as type="button" and an accessible name', function() {
@@ -170,11 +168,11 @@ describe('NxSearchTransferList', function() {
       });
 
       describe('when there are no matches', function() {
-        const viewNoMatches = (props?: Partial<Props>) => quickRender({searchText: 'i', ...props});
+        const viewNoMatches = (props?: Partial<Props>) => quickRender({ searchText: 'i', ...props });
 
         it('renders a dropdown with role=alert when in empty, or loading states', function() {
           expect(viewNoMatches().getByRole('alert')).toBeInTheDocument();
-          expect(viewNoMatches({ loading: true}).getByRole('alert')).toBeInTheDocument();
+          expect(viewNoMatches({ loading: true }).getByRole('alert')).toBeInTheDocument();
         });
 
         it('renders a dropdown with no role when in an error state', function() {
@@ -197,103 +195,103 @@ describe('NxSearchTransferList', function() {
         });
 
         it('renders a dropdown with the loadError prop text when in an error state', function() {
-          expect(viewNoMatches({ loadError: 'oops'}).getByRole('alert')).toHaveTextContent('oops');
+          expect(viewNoMatches({ loadError: 'oops' }).getByRole('alert')).toHaveTextContent('oops');
         });
 
         it('renders a retry button and error text when the error prop is provided', function() {
           const alertEl = viewNoMatches({ loadError: 'oops' }).getByRole('alert');
 
           expect(alertEl).toHaveTextContent('oops');
-          expect(within(alertEl).getByRole('button', { name: 'Retry'})).toBeInTheDocument();
+          expect(within(alertEl).getByRole('button', { name: 'Retry' })).toBeInTheDocument();
         });
 
-        it('renders a dropdown with "No Results Found" text there are no matching elements and not in error' + 
+        it('renders a dropdown with "No Results Found" text there are no matching elements and not in error' +
         'or loading state', function() {
           expect(viewNoMatches().getByRole('alert')).toHaveTextContent('No Results Found');
         });
       });
-    });
 
-    it('calls onSearch whenever the searchbox text changes with a value that differs after trimming' +
-    'and passes the trimmed value', async function() {
-      const user = userEvent.setup(),
-          onSearch = jest.fn(),
-          searchInput = quickRender({ searchText: ' foo ', onSearch }).getByRole('searchbox');
+      it('calls onSearch whenever the searchbox text changes with a value that differs after trimming' +
+      'and passes the trimmed value', async function() {
+        const user = userEvent.setup(),
+            onSearch = jest.fn(),
+            searchInput = quickRender({ searchText: ' foo ', onSearch }).getByRole('searchbox');
 
-      expect(onSearch).not.toHaveBeenCalled();
+        expect(onSearch).not.toHaveBeenCalled();
 
-      await user.type(searchInput, '[Backspace]', { initialSelectionStart: 5, initialSelectionEnd: 5 });
-      await user.type(searchInput, '[Backspace]', { initialSelectionStart: 1, initialSelectionEnd: 1 });
-      await user.type(searchInput, '[Space]', { initialSelectionStart: 0, initialSelectionEnd: 0 });
-      await user.type(searchInput, '[Space]', { initialSelectionStart: 1, initialSelectionEnd: 1 });
-      await user.type(searchInput, '[Space]', { initialSelectionStart: 4, initialSelectionEnd: 4 });
-      await user.type(searchInput, '[Space]', { initialSelectionStart: 5, initialSelectionEnd: 5 });
+        await user.type(searchInput, '[Backspace]', { initialSelectionStart: 5, initialSelectionEnd: 5 });
+        await user.type(searchInput, '[Backspace]', { initialSelectionStart: 1, initialSelectionEnd: 1 });
+        await user.type(searchInput, '[Space]', { initialSelectionStart: 0, initialSelectionEnd: 0 });
+        await user.type(searchInput, '[Space]', { initialSelectionStart: 1, initialSelectionEnd: 1 });
+        await user.type(searchInput, '[Space]', { initialSelectionStart: 4, initialSelectionEnd: 4 });
+        await user.type(searchInput, '[Space]', { initialSelectionStart: 5, initialSelectionEnd: 5 });
 
-      expect(onSearch).not.toHaveBeenCalled();
+        expect(onSearch).not.toHaveBeenCalled();
 
-      await user.type(searchInput, '[Backspace]', { initialSelectionStart: 1, initialSelectionEnd: 2 });
-      expect(onSearch).toHaveBeenCalledWith('oo');
+        await user.type(searchInput, '[Backspace]', { initialSelectionStart: 1, initialSelectionEnd: 2 });
+        expect(onSearch).toHaveBeenCalledWith('oo');
 
-      await user.type(searchInput, 'o', { initialSelectionStart: 5, initialSelectionEnd: 5 });
-      expect(onSearch).toHaveBeenCalledWith('foo o');
-    });
+        await user.type(searchInput, 'o', { initialSelectionStart: 5, initialSelectionEnd: 5 });
+        expect(onSearch).toHaveBeenCalledWith('foo o');
+      });
 
-    it('calls onSearch with the searchText when the retry button is clicked', async function() {
-      const user = userEvent.setup(),
-          onSearch = jest.fn(),
-          retryBtn = quickRender({ loadError: 'oops', onSearch, searchText: 'item' })
-              .getByRole('button', { name: 'Retry' });
+      it('calls onSearch with the searchText when the retry button is clicked', async function() {
+        const user = userEvent.setup(),
+            onSearch = jest.fn(),
+            retryBtn = quickRender({ loadError: 'oops', onSearch, searchText: 'item' })
+                .getByRole('button', { name: 'Retry' });
 
-      expect(onSearch).not.toHaveBeenCalled();
+        expect(onSearch).not.toHaveBeenCalled();
 
-      await user.click(retryBtn);
-      expect(onSearch).toHaveBeenCalledWith('item');
-    });
+        await user.click(retryBtn);
+        expect(onSearch).toHaveBeenCalledWith('item');
+      });
 
-    it('calls onSearch with the searchText when the dropdown or searchbox regain focus from elsewhere on the page' +
-    'while in an error state', function() {
-      const onSearch = jest.fn(),
-          outsideView = render(
-            <>
-              <NxSearchTransferList {...minimalProps} onSearch= {onSearch} searchText="i" loadError="oops" />
-              <button>Click Me</button>
-            </>
-          ),
-          searchbox = outsideView.getByRole('searchbox'),
-          retryBtn = outsideView.getByRole('button', { name: 'Retry' }),
-          outsideBtn = outsideView.getByRole('button', { name: 'Click Me' });
+      it('calls onSearch with the searchText when the dropdown or searchbox regain focus from elsewhere on the page' +
+      'while in an error state', function() {
+        const onSearch = jest.fn(),
+            outsideView = render(
+              <>
+                <NxSearchTransferList {...minimalProps} onSearch= {onSearch} searchText="i" loadError="oops" />
+                <button>Click Me</button>
+              </>
+            ),
+            searchbox = outsideView.getByRole('searchbox'),
+            retryBtn = outsideView.getByRole('button', { name: 'Retry' }),
+            outsideBtn = outsideView.getByRole('button', { name: 'Click Me' });
 
-      outsideBtn.focus();
-      expect(onSearch).not.toHaveBeenCalled();
+        outsideBtn.focus();
+        expect(onSearch).not.toHaveBeenCalled();
 
-      retryBtn.focus();
-      expect(onSearch).toHaveBeenNthCalledWith(1, 'i');
+        retryBtn.focus();
+        expect(onSearch).toHaveBeenNthCalledWith(1, 'i');
 
-      outsideBtn.focus();
+        outsideBtn.focus();
 
-      searchbox.focus();
-      expect(onSearch).toHaveBeenNthCalledWith(2, 'i');
-    });
+        searchbox.focus();
+        expect(onSearch).toHaveBeenNthCalledWith(2, 'i');
+      });
 
-    it('does not call onSearch if the focus moves inside the component while in an error state', function() {
-      const onSearch = jest.fn(),
-          view = quickRender({ searchText: 'foo', onSearch, loadError: 'oops' }),
-          searchInput = view.getByRole('searchbox'),
-          retryBtn = view.getByRole('button', { name: 'Retry' });
+      it('does not call onSearch if the focus moves inside the component while in an error state', function() {
+        const onSearch = jest.fn(),
+            view = quickRender({ searchText: 'foo', onSearch, loadError: 'oops' }),
+            searchInput = view.getByRole('searchbox'),
+            retryBtn = view.getByRole('button', { name: 'Retry' });
 
-      expect(onSearch).not.toHaveBeenCalled();
-      searchInput.focus();
-      expect(onSearch).not.toHaveBeenCalled();
-      retryBtn.focus();
-      expect(onSearch).not.toHaveBeenCalled();
+        expect(onSearch).not.toHaveBeenCalled();
+        searchInput.focus();
+        expect(onSearch).not.toHaveBeenCalled();
+        retryBtn.focus();
+        expect(onSearch).not.toHaveBeenCalled();
+      });
     });
   });
 
   describe('transfer list', function() {
     const addedItems = [
-      { id: '1', displayName: 'Item 1'},
-      { id: '2', displayName: 'item 2'},
-      { id: '3', displayName: 'Match 3'}
+      { id: '1', displayName: 'Item 1' },
+      { id: '2', displayName: 'item 2' },
+      { id: '3', displayName: 'Match 3' }
     ];
 
     it('renders a fieldset element with role=group named "Items Added"', function() {
@@ -304,7 +302,7 @@ describe('NxSearchTransferList', function() {
     });
 
     it('renders a default label of "Items Added" unless addedItemsLabel specified', function() {
-      const defaultTransferListEl = quickRender().getByRole('group', { name: 'Items Added'}),
+      const defaultTransferListEl = quickRender().getByRole('group', { name: 'Items Added' }),
           customTransferListEl = quickRender({ addedItemsLabel: 'New Label' }).getByRole('group', { name: 'New Label'});
 
       expect(defaultTransferListEl).toHaveAccessibleName('Items Added');
@@ -352,7 +350,7 @@ describe('NxSearchTransferList', function() {
       it('calls onRemove and passes the remaining addedItems when an addedItem is clicked', async function() {
         const user = userEvent.setup(),
             onRemove = jest.fn(),
-            item2 = quickRender({ addedItems, onRemove }).getByRole('checkbox', { name: 'item 2'});
+            item2 = quickRender({ addedItems, onRemove }).getByRole('checkbox', { name: 'item 2' });
 
         expect(onRemove).not.toHaveBeenCalled();
 
@@ -422,14 +420,14 @@ describe('NxSearchTransferList', function() {
               addedItems,
               addedItemsFilter: 'item',
               filterFn: includes // case sensitive inclusion
-            })!,
+            }),
             items = view.getAllByRole('checkbox');
 
         expect(items.length).toBe(1);
         expect(items[0]).toHaveAccessibleName('item 2');
       });
 
-      it('calls onAddedItemsFilterChange when the value in the items added filter is changed', async function() {
+      it('calls onAddedItemsFilterChange when the value in the filter input is changed', async function() {
         const user = userEvent.setup(),
             onAddedItemsFilterChange = jest.fn().mockImplementation((_, evt) => { evt.persist(); }),
             filterInput = quickRender({ onAddedItemsFilterChange }).getByRole('textbox');
@@ -459,10 +457,10 @@ describe('NxSearchTransferList', function() {
             const user = userEvent.setup(),
                 onAddedItemsFilterChange = jest.fn(),
                 transferListEl = quickRender({ addedItemsFilter: 'b', onAddedItemsFilterChange })
-                    .getByRole('group', { name: 'Items Added'});
+                    .getByRole('group', { name: 'Items Added' });
 
             await runTimers();
-            const clearBtn = within(transferListEl).getByRole('button', { name: 'Clear filter'});
+            const clearBtn = within(transferListEl).getByRole('button', { name: 'Clear filter' });
 
             expect(onAddedItemsFilterChange).not.toHaveBeenCalled();
 
@@ -473,11 +471,11 @@ describe('NxSearchTransferList', function() {
     });
 
     it('renders text indicating how many items are added', function() {
-      expect(quickRender({ addedItems }).getByRole('group', { name: 'Items Added'}))
+      expect(quickRender({ addedItems }).getByRole('group', { name: 'Items Added' }))
           .toHaveTextContent('3 items Added');
-      expect(quickRender({ addedItems: [{ id: '1', displayName: 'one' }] }).getByRole('group', { name: 'Items Added'}))
+      expect(quickRender({ addedItems: [{ id: '1', displayName: 'one' }] }).getByRole('group', { name: 'Items Added' }))
           .toHaveTextContent('1 item Added');
-      expect(quickRender({ addedItems: [] }).getByRole('group', { name: 'Items Added'}))
+      expect(quickRender({ addedItems: [] }).getByRole('group', { name: 'Items Added' }))
           .toHaveTextContent('0 items Added');
     });
 
@@ -485,7 +483,7 @@ describe('NxSearchTransferList', function() {
       const addedItemsCountFormatter = jest.fn().mockImplementation(x => `foo ${x}`),
           viewNoItems = quickRender({ addedItems: [], addedItemsCountFormatter }),
           viewWithOneItem = quickRender({ addedItems: [{ id: '1', displayName: 'Item 1' }], addedItemsCountFormatter }),
-          viewWithThreeItems = quickRender({ addedItems, addedItemsCountFormatter});
+          viewWithThreeItems = quickRender({ addedItems, addedItemsCountFormatter });
 
       expect(viewNoItems.getByRole('group', { name: 'Items Added' })).toHaveTextContent('foo 0');
       expect(viewWithOneItem.getByRole('group', { name: 'Items Added' })).toHaveTextContent('foo 1');

@@ -13,14 +13,10 @@ import NxStatefulSearchTransferList, { Props } from '../NxStatefulSearchTransfer
 
 describe('NxSearchTransferList', function() {
   const minimalProps: Props = {
-        // searchText: '',
-        // onSearchTextChange: () => {},
         onSearch: () => {},
         loading: false,
         searchMatches: [],
         onSearchMatchSelect: () => {},
-        // addedItemsFilter: '',
-        // onAddedItemsFilterChange: () => {},
         addedItems: [],
         onRemove: () => {}
       },
@@ -65,16 +61,6 @@ describe('NxSearchTransferList', function() {
       expect(searchInput).toHaveAttribute('type', 'text');
     });
 
-    // it('sets value of the input according to the searchText prop', async function() {
-    //   const user = userEvent.setup(),
-    //       searchInput = quickRender().getByRole('searchbox');
-
-    //   expect(searchInput).toHaveValue('');
-
-    //   await user.type(searchInput, 'b');
-    //   expect(searchInput).toHaveValue('b');
-    // });
-
     it('sets the aria-controls on the input to the dropdown id', function() {
       const view = quickRender(),
           searchInput = view.getByRole('searchbox'),
@@ -104,7 +90,7 @@ describe('NxSearchTransferList', function() {
       await runTimers();
       expect(searchInput).toHaveValue('b');
 
-      const clearBtn = view.getByRole('button', { name: 'Clear search'});
+      const clearBtn = view.getByRole('button', { name: 'Clear search' });
       await user.click(clearBtn);
 
       expect(searchInput).toHaveValue('');
@@ -124,7 +110,7 @@ describe('NxSearchTransferList', function() {
         // in order for the dropdown to not be aria-hidden, need to have text within the searchbox
         async function viewWithMatches(props?: Partial<Props>) {
           const user = userEvent.setup(),
-              view = quickRender({searchMatches, ...props}),
+              view = quickRender({ searchMatches, ...props }),
               searchInput = view.getByRole('searchbox');
 
           await user.type(searchInput, 'b');
@@ -164,7 +150,7 @@ describe('NxSearchTransferList', function() {
 
           await user.click(matches[0]);
 
-          expect(onSearchMatchSelect).toHaveBeenCalledWith({ id: '1', displayName: 'Item 1'});
+          expect(onSearchMatchSelect).toHaveBeenCalledWith({ id: '1', displayName: 'Item 1' });
         });
       });
 
@@ -220,7 +206,7 @@ describe('NxSearchTransferList', function() {
           const alertEl = (await viewNoMatches({ loadError: 'oops' })).getByRole('alert');
 
           expect(alertEl).toHaveTextContent('oops');
-          expect(within(alertEl).getByRole('button', { name: 'Retry'})).toBeInTheDocument();
+          expect(within(alertEl).getByRole('button', { name: 'Retry' })).toBeInTheDocument();
         });
 
         it('renders a dropdown with "No Results Found" text there are no matching elements and not in error' + 
@@ -325,9 +311,9 @@ describe('NxSearchTransferList', function() {
 
   describe('transfer list', function() {
     const addedItems = [
-      { id: '1', displayName: 'Item 1'},
-      { id: '2', displayName: 'item 2'},
-      { id: '3', displayName: 'Match 3'}
+      { id: '1', displayName: 'Item 1' },
+      { id: '2', displayName: 'item 2' },
+      { id: '3', displayName: 'Match 3' }
     ];
 
     it('renders a fieldset element with role=group named "Items Added"', function() {
@@ -338,7 +324,7 @@ describe('NxSearchTransferList', function() {
     });
 
     it('renders a default label of "Items Added" unless addedItemsLabel specified', function() {
-      const defaultTransferListEl = quickRender().getByRole('group', { name: 'Items Added'}),
+      const defaultTransferListEl = quickRender().getByRole('group', { name: 'Items Added' }),
           customTransferListEl = quickRender({ addedItemsLabel: 'New Label' }).getByRole('group', { name: 'New Label'});
 
       expect(defaultTransferListEl).toHaveAccessibleName('Items Added');
@@ -430,6 +416,7 @@ describe('NxSearchTransferList', function() {
 
           let items = view.getAllByRole('checkbox');
           expect(items.length).toBe(3);
+
           await user.type(filterInput, 'i');
 
           // confirm filtering
@@ -453,6 +440,7 @@ describe('NxSearchTransferList', function() {
         let items = view.getAllByRole('checkbox');
 
         expect(items.length).toBe(3);
+
         await user.type(filterInput, 'item');
 
         items = view.getAllByRole('checkbox');
@@ -466,11 +454,12 @@ describe('NxSearchTransferList', function() {
             view = quickRender({
               addedItems,
               filterFn: includes // case sensitive inclusion
-            })!,
+            }),
             filterInput = view.getByRole('textbox');
         let items = view.getAllByRole('checkbox');
 
         expect(items.length).toBe(3);
+
         await user.type(filterInput, 'item');
 
         items = view.getAllByRole('checkbox');
@@ -499,7 +488,7 @@ describe('NxSearchTransferList', function() {
         expect(filterInput).toHaveValue('b');
 
         await runTimers();
-        const clearBtn = view.getByRole('button', { name: 'Clear filter'});
+        const clearBtn = view.getByRole('button', { name: 'Clear filter' });
         await user.click(clearBtn);
 
         expect(filterInput).toHaveValue('');
@@ -507,11 +496,11 @@ describe('NxSearchTransferList', function() {
     });
 
     it('renders text indicating how many items are added', function() {
-      expect(quickRender({ addedItems }).getByRole('group', { name: 'Items Added'}))
+      expect(quickRender({ addedItems }).getByRole('group', { name: 'Items Added' }))
           .toHaveTextContent('3 items Added');
-      expect(quickRender({ addedItems: [{ id: '1', displayName: 'one' }] }).getByRole('group', { name: 'Items Added'}))
+      expect(quickRender({ addedItems: [{ id: '1', displayName: 'one' }] }).getByRole('group', { name: 'Items Added' }))
           .toHaveTextContent('1 item Added');
-      expect(quickRender({ addedItems: [] }).getByRole('group', { name: 'Items Added'}))
+      expect(quickRender({ addedItems: [] }).getByRole('group', { name: 'Items Added' }))
           .toHaveTextContent('0 items Added');
     });
 
