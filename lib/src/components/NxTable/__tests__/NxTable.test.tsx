@@ -16,7 +16,7 @@ import { NxTableCellProps } from '../types';
 
 import NxTable from '../NxTable';
 import NxTableHead from '../NxTableHead';
-import NxTableRow from '../NxTableRow';
+import NxTableRow, { NxTableRowProps } from '../NxTableRow';
 import NxTableCell from '../NxTableCell';
 import NxTableBody from '../NxTableBody';
 
@@ -360,12 +360,13 @@ describe('NxTable', function() {
       });
     });
 
-    describe('when the rowBtnIcon is set', function() {
-      const renderTableCell = (extraProps?: NxTableCellProps, isHeader?: boolean) => {
+    describe('when clickable and the rowBtnIcon is set', function() {
+      const renderTableCell = (cellProps?: NxTableCellProps, rowProps?: NxTableRowProps, isHeader?: boolean) => {
         const children = (
-          <NxTable.Row isClickable={true} clickAccessibleLabel="dolphin">
+          <NxTable.Row isClickable={true} { ...rowProps }>
             <NxTable.Cell>Foo</NxTable.Cell>
-            <NxTable.Cell { ...extraProps } />
+            <NxTable.Cell>Bar</NxTable.Cell>
+            <NxTable.Cell { ...cellProps }>Boo</NxTable.Cell>
           </NxTable.Row>
         );
 
@@ -375,16 +376,15 @@ describe('NxTable', function() {
             : <NxTable.Body>{children}</NxTable.Body>
             }
           </NxTable>
-        ).getAllByRole(isHeader ? 'columnheader' : 'cell')[1] as HTMLElement;
+        ).getAllByRole(isHeader ? 'columnheader' : 'cell')[2] as HTMLElement;
       };
 
       describe('when isHeader', function() {
         it('renders a header cell with the text "Select Row"', function() {
           const component = renderTableCell({
             rowBtnIcon: faEdit,
-            sortDir: 'asc',
-            children: <span>foo</span>
-          }, true)!;
+            sortDir: 'asc'
+          }, undefined, true)!;
 
           expect(component).toHaveTextContent('Select Row');
         });
@@ -403,27 +403,37 @@ describe('NxTable', function() {
           expect(within(renderTableCell({ rowBtnIcon: faEdit })).getByRole('button')).toBeInTheDocument();
         });
 
-        it('ignores the children and sort settings and adds the icon child wrapped in a nx-cell__row-btn',
+        it('ignores the children and sort settings and renders a button instead',
             function() {
               const cell = renderTableCell({
                 rowBtnIcon: faEdit,
-                sortDir: 'asc',
-                children: <span>foo</span>
+                sortDir: 'asc'
               });
 
-              expect(within(cell).getByRole('button')).toBeInTheDocument();
-              expect(cell.innerHTML).not.toEqual('<span>foo</span>');
+              const button = within(cell).getByRole('button');
+              expect(button).toBeInTheDocument();
+              expect(cell).not.toContainHTML('<span>foo</span>');
             }
         );
 
-        it('sets the nx-cell__row-btn aria-label from the RowContext', function() {
+        it('sets the accessible name from the row clickAccessibleLabel', function() {
           const cell = renderTableCell({
             rowBtnIcon: faEdit,
-            sortDir: 'asc',
-            children: <span>foo</span>
+            sortDir: 'asc'
+          }, {
+            clickAccessibleLabel: 'dolphin'
           });
 
           expect(within(cell).getByRole('button')).toHaveAccessibleName('dolphin');
+        });
+
+        it('sets the accessible name from the row cell contents, separated by a semi-colon', function() {
+          const cell = renderTableCell({
+            rowBtnIcon: faEdit,
+            sortDir: 'asc'
+          });
+
+          expect(within(cell).getByRole('button')).toHaveAccessibleName('Foo; Bar');
         });
       });
     });
