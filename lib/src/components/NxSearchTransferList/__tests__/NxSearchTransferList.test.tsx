@@ -79,7 +79,7 @@ describe('NxSearchTransferList', function() {
       expect(searchInput).toHaveAttribute('aria-controls', dropdownId);
     });
 
-    it('calls onSearchTextChange when the value in the search box is changed', async function() {
+    it('calls onSearchTextChange when the value in the searchbox is changed', async function() {
       const user = userEvent.setup(),
           onSearchTextChange = jest.fn(),
           searchInput = quickRender({ onSearchTextChange }).getByRole('searchbox');
@@ -91,7 +91,7 @@ describe('NxSearchTransferList', function() {
       expect(onSearchTextChange).toHaveBeenLastCalledWith('b');
     });
 
-    it('calls onSearchTextChange when the ESC is pressed', async function() {
+    it('calls onSearchTextChange when the ESC key is pressed', async function() {
       const user = userEvent.setup(),
           onSearchTextChange = jest.fn(),
           searchInput = quickRender({ searchText: 'b', onSearchTextChange }).getByRole('searchbox');
@@ -206,7 +206,7 @@ describe('NxSearchTransferList', function() {
           expect(within(alertEl).getByRole('button', { name: 'Retry' })).toBeInTheDocument();
         });
 
-        it('renders a dropdown with "No Results Found" text there are no matching elements and not in error' +
+        it('renders a dropdown with "No Results Found" text if there are no matching elements and not in error' +
         'or loading state', function() {
           expect(viewNoMatches().getByRole('alert')).toHaveTextContent('No Results Found');
         });
@@ -248,7 +248,7 @@ describe('NxSearchTransferList', function() {
         expect(onSearch).toHaveBeenCalledWith('item');
       });
 
-      it('calls onSearch with the searchText when the dropdown or searchbox regain focus from elsewhere on the page' +
+      it('calls onSearch with the searchText when the dropdown or searchbox regain focus from elsewhere on the page ' +
       'while in an error state', function() {
         const onSearch = jest.fn(),
             outsideView = render(
@@ -302,7 +302,7 @@ describe('NxSearchTransferList', function() {
       expect(transferListEl.tagName).toBe('FIELDSET');
     });
 
-    it('renders a default label of "Items Added" unless addedItemsLabel specified', function() {
+    it('renders a default label of "Items Added" unless addedItemsLabel is specified', function() {
       const defaultTransferListEl = quickRender().getByRole('group', { name: 'Items Added' }),
           customTransferListEl = quickRender({ addedItemsLabel: 'New Label' }).getByRole('group', { name: 'New Label'});
 
@@ -407,7 +407,7 @@ describe('NxSearchTransferList', function() {
         expect(quickRender({ addedItemsFilter: 'b' }).getByRole('textbox')).toHaveValue('b');
       });
 
-      it('filter items which contain the addedItemsFiler value by case-insensitive substrintg match', function() {
+      it('filter items which contain the addedItemsFiler value by case-insensitive substring match', function() {
         const view = quickRender({ addedItems, addedItemsFilter: 'item'}),
             items = view.getAllByRole('checkbox');
 
@@ -440,7 +440,7 @@ describe('NxSearchTransferList', function() {
         expect(onAddedItemsFilterChange).toHaveBeenLastCalledWith('b', expect.objectContaining({ target: filterInput}));
       });
 
-      it('calls onAddedItemsFilterChange with an empty string when the ESC is pressed', async function() {
+      it('calls onAddedItemsFilterChange with an empty string when the ESC key is pressed', async function() {
         const user = userEvent.setup(),
             onAddedItemsFilterChange = jest.fn(),
             filterInput = quickRender({ addedItemsFilter: 'b', onAddedItemsFilterChange }).getByRole('textbox');
