@@ -177,8 +177,7 @@ describe('NxSearchTransferList', function() {
         });
 
         it('renders a dropdown with no role when in an error state', function() {
-          const dropdown = renderEl({ loadError: 'oops' })!.querySelector('.nx-search-dropdown__menu--error');
-          expect(dropdown).not.toHaveAttribute('role');
+          expect(viewNoMatches({ loadError: 'oops' }).queryByRole('menu')).not.toBeInTheDocument();
         });
 
         it('sets aria-busy on the dropdown menu if loading is true', function() {
