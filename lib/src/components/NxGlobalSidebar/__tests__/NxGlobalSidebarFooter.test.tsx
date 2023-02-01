@@ -29,23 +29,32 @@ describe('NxGlobalSidebarFooter', function() {
   });
 
   it('renders the Support div with a link with the passed href and text and does not render when empty', function() {
-    const view = quickRender({ supportText: 'Support for RSC', supportLink: '#supporturl' }),
-        supportLink = view.getByRole('link');
+    const { container: viewWithoutSupportText} = quickRender(),
+        viewWithSupportText = quickRender({ supportText: 'Support for RSC', supportLink: '#supporturl' }),
+        supportLink = viewWithSupportText.getByRole('link');
 
-    expect(view.getByText('Support for RSC')).toBeVisible();
+    expect(viewWithSupportText.getByText('Support for RSC')).toBeVisible();
     expect(supportLink).toHaveAttribute('href', '#supporturl');
+
+    expect(viewWithoutSupportText.querySelector('.nx-global-sidebar__support')).not.toBeInTheDocument();
   });
 
   it('renders the Release div with a text and version number and does not render when empty', function() {
-    const view = quickRender({ releaseText: 'React Shared Components: 3.1.4' });
+    const { container: viewWithoutReleaseText} = quickRender(),
+        viewWithReleaseText = quickRender({ releaseText: 'React Shared Components: 3.1.4' });
 
-    expect(view.getByText('React Shared Components: 3.1.4')).toBeVisible();
+    expect(viewWithReleaseText.getByText('React Shared Components: 3.1.4')).toBeVisible();
+
+    expect(viewWithoutReleaseText.querySelector('.nx-global-sidebar__release')).not.toBeInTheDocument();
   });
 
   it('renders the Powered By div with text and does not render when empty', function() {
-    const view = quickRender({ productTagLine: 'Powered by PLAID VILLAIN' });
+    const { container: viewWithoutPoweredByDiv } = quickRender(),
+        viewWithPoweredByDiv = quickRender({ productTagLine: 'Powered by PLAID VILLAIN' });
 
-    expect(view.getByText('Powered by PLAID VILLAIN')).toBeVisible();
+    expect(viewWithPoweredByDiv.getByText('Powered by PLAID VILLAIN')).toBeVisible();
+
+    expect(viewWithoutPoweredByDiv.querySelector('.nx-global-sidebar__product-name')).not.toBeInTheDocument();
   });
 
   it('renders the Created By text by default and does not render when set to false', function() {
