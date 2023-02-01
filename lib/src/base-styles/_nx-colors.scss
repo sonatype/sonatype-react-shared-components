@@ -51,6 +51,10 @@
   --nx-color-alert-warning: var(--nx-swatch-orange-50);
   --nx-color-alert-error: var(--nx-swatch-red-40);
 
+  //NxBinaryDonutChart variables
+  --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-95);
+  --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-teal-60);
+
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
   --nx-color-text-dark: var(--nx-color-text-stark);
@@ -68,5 +72,9 @@
     --nx-color-link: var(--nx-swatch-teal-75);
 
     --nx-color-validation-invalid: var(--nx-swatch-red-75);
+
+    //NxBinaryDonutChart variables
+    --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-30);
+    --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-pink-80);
   }
 }
