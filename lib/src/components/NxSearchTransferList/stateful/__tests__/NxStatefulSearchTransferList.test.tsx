@@ -35,7 +35,8 @@ describe('NxSearchTransferList', function() {
   });
 
   it('adds additional attributes to the top-level element', function() {
-    const el = renderEl({ id: 'foo', lang: 'en' });
+    const view = quickRender({ id: 'foo', lang: 'en' }),
+        el = view.container.firstElementChild;
 
     expect(el).toHaveAttribute('id', 'foo');
     expect(el).toHaveAttribute('lang', 'en');
