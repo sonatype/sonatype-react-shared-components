@@ -109,7 +109,7 @@ describe('NxSearchTransferList', function() {
           view = quickRender({ searchText: 'b', onSearchTextChange });
 
       await runTimers();
-      const clearBtn = view.getByRole('button', { name: 'Clear search'});
+      const clearBtn = view.getByRole('button', { name: 'Clear search' });
 
       expect(onSearchTextChange).not.toHaveBeenCalled();
 
