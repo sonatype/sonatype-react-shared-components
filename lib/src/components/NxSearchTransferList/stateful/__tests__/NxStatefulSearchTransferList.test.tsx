@@ -70,7 +70,7 @@ describe('NxSearchTransferList', function() {
       expect(searchInput).toHaveAttribute('aria-controls', dropdownId);
     });
 
-    it('clears the search input when the ESC is pressed', async function() {
+    it('clears the search input when the ESC key is pressed', async function() {
       const user = userEvent.setup(),
           searchInput = quickRender().getByRole('searchbox');
 
@@ -195,7 +195,7 @@ describe('NxSearchTransferList', function() {
 
         it('renders "Loading" text in the dropdown when loading is true', async function() {
           const loadingDropdown = (await viewNoMatches({ loading: true })).getByRole('status');
-          expect(loadingDropdown).toHaveTextContent('Loading');
+          expect(loadingDropdown).toHaveTextContent('Loading…');
         });
 
         it('renders a dropdown with the loadError prop text when in an error state', async function() {
@@ -210,7 +210,7 @@ describe('NxSearchTransferList', function() {
           expect(within(alertEl).getByRole('button', { name: 'Retry' })).toBeInTheDocument();
         });
 
-        it('renders a dropdown with "No Results Found" text there are no matching elements and not in error' + 
+        it('renders a dropdown with "No Results Found" text if there are no matching elements and not in error' +
         'or loading state', async function() {
           const emptyDropdown = (await viewNoMatches()).getByRole('alert');
           expect(emptyDropdown).toHaveTextContent('No Results Found');
@@ -324,9 +324,10 @@ describe('NxSearchTransferList', function() {
       expect(transferListEl.tagName).toBe('FIELDSET');
     });
 
-    it('renders a default label of "Items Added" unless addedItemsLabel specified', function() {
+    it('renders a default label of "Items Added" unless addedItemsLabel isspecified', function() {
       const defaultTransferListEl = quickRender().getByRole('group', { name: 'Items Added' }),
-          customTransferListEl = quickRender({ addedItemsLabel: 'New Label' }).getByRole('group', { name: 'New Label'});
+          customTransferListEl = quickRender({ addedItemsLabel: 'New Label' })
+              .getByRole('group', { name: 'New Label' });
 
       expect(defaultTransferListEl).toHaveAccessibleName('Items Added');
       expect(defaultTransferListEl).toHaveTextContent('Items Added');
@@ -434,7 +435,7 @@ describe('NxSearchTransferList', function() {
     });
 
     describe('filtering', function() {
-      it('filter items according to filter input value by case-insensitive substrintg match', async function() {
+      it('filter items according to filter input value by case-insensitive substring match', async function() {
         const user = userEvent.setup(),
             view = quickRender({ addedItems }),
             filterInput = view.getByRole('textbox');
@@ -468,7 +469,7 @@ describe('NxSearchTransferList', function() {
         expect(items[0]).toHaveAccessibleName('item 2');
       });
 
-      it('clears the filter input when the ESC is pressed', async function() {
+      it('clears the filter input when the ESC key is pressed', async function() {
         const user = userEvent.setup(),
             filterInput = quickRender().getByRole('textbox');
 
