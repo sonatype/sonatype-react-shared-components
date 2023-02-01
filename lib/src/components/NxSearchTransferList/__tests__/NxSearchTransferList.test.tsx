@@ -192,7 +192,7 @@ describe('NxSearchTransferList', function() {
         });
 
         it('renders "Loading" text in the dropdown when loading is true', function() {
-          expect(viewNoMatches({ loading: true }).getByRole('status')).toHaveTextContent('Loading');
+          expect(viewNoMatches({ loading: true }).getByRole('status')).toHaveTextContent('Loading…');
         });
 
         it('renders a dropdown with the loadError prop text when in an error state', function() {
@@ -304,7 +304,8 @@ describe('NxSearchTransferList', function() {
 
     it('renders a default label of "Items Added" unless addedItemsLabel is specified', function() {
       const defaultTransferListEl = quickRender().getByRole('group', { name: 'Items Added' }),
-          customTransferListEl = quickRender({ addedItemsLabel: 'New Label' }).getByRole('group', { name: 'New Label'});
+          customTransferListEl = quickRender({ addedItemsLabel: 'New Label' })
+              .getByRole('group', { name: 'New Label' });
 
       expect(defaultTransferListEl).toHaveAccessibleName('Items Added');
       expect(defaultTransferListEl).toHaveTextContent('Items Added');
