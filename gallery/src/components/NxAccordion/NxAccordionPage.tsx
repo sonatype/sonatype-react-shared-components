@@ -103,7 +103,8 @@ const NxAccordionPage = () => {
           </NxTile.SubsectionHeader>
           <NxP>
             <NxCode>NxAccordion.Header</NxCode> can receive standard
-            HTML <NxCode>&lt;summary&gt;</NxCode> attributes.
+            HTML <NxCode>&lt;summary&gt;</NxCode> attributes. Note that the header must be a direct child of {' '}
+            <NxCode>NxAccordion</NxCode> to ensure it renders correctly.
           </NxP>
         </NxTile.Subsection>
         <NxTile.Subsection>
