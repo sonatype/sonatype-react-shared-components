@@ -339,7 +339,7 @@ describe('NxTable', function() {
 
               const button = within(cell).getByRole('button');
               expect(button).toBeInTheDocument();
-              expect(cell).not.toHaveTextContent('foo');
+              expect(cell).not.toHaveTextContent('Boo');
             }
         );
 
