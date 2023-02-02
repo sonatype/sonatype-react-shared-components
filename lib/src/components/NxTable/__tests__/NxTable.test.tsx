@@ -330,7 +330,7 @@ describe('NxTable', function() {
           expect(within(renderTableCell({ rowBtnIcon: faEdit })).getByRole('button')).toBeInTheDocument();
         });
 
-        it('ignores the JSX children and sort settings and renders a button instead',
+        it('ignores the JSX children and sort settings and renders a button that is not a sort button',
             function() {
               const cell = renderTableCell({
                 rowBtnIcon: faEdit,
@@ -340,6 +340,7 @@ describe('NxTable', function() {
               const button = within(cell).getByRole('button');
               expect(button).toBeInTheDocument();
               expect(cell).not.toHaveTextContent('Boo');
+              expect(button).not.toHaveAccessibleName(/(Boo|ascending)/);
             }
         );
 
