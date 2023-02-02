@@ -5,30 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import NxList from '../NxList';
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
+import NxDescriptionList from '../../NxDescriptionList/NxDescriptionList';
 
-describe('NxListDescriptionTerm', function() {
-
-  const minimalProps = {};
-  const getShallow = getShallowComponent(NxList.DescriptionTerm, minimalProps);
-
-  it('renders children correctly', function() {
-    const children = ['Test Description Term'];
-    const contentEl = getShallow({children});
-    expect(contentEl).toExist();
-    expect(contentEl).toContainExactlyOneMatchingElement('dt');
-    expect(contentEl).toMatchSelector('.nx-list__term');
-    expect(contentEl).toHaveText('Test Description Term');
-  });
-
-  it('adds extra classes correctly', function() {
-    const children = ['Test Description Term'];
-    const contentEl = getShallow({children, className: 'customClassName'});
-    expect(contentEl).toExist();
-    expect(contentEl).toContainExactlyOneMatchingElement('dt');
-    expect(contentEl).toMatchSelector('.nx-list__term');
-    expect(contentEl).toHaveClassName('customClassName');
-    expect(contentEl).toHaveText('Test Description Term');
+describe('NxList.DescriptionTerm', function() {
+  it('is aliased as NxDescriptionList.Term', function() {
+    expect(NxList.DescriptionTerm).toBe(NxDescriptionList.Term);
   });
 });

@@ -4,13 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import { shallow } from 'enzyme';
-import 'jest-enzyme';
+import { render, screen } from '@testing-library/react';
+import React, { ReactElement } from 'react';
+import { userEvent } from '../../__testutils__/rtlUtils';
 
 import useToggle from '../useToggle';
 
 describe('useToggle', function() {
+  function renderEl(node: ReactElement) {
+    return render(node).container.firstElementChild;
+  }
+
   it('initially returns the specified initial value', function() {
     function FixtureTrue() {
       const [val] = useToggle(true);
@@ -24,78 +28,92 @@ describe('useToggle', function() {
       return <div>{val.toString()}</div>;
     }
 
-    expect(shallow(<FixtureTrue />)).toHaveText('true');
-    expect(shallow(<FixtureFalse />)).toHaveText('false');
+    expect(renderEl(<FixtureTrue />)).toHaveTextContent('true');
+    expect(renderEl(<FixtureFalse />)).toHaveTextContent('false');
   });
 
-  it('returns a tuple who\'s second value is a function that toggles the state', function() {
+  it('returns a tuple who\'s second value is a function that toggles the state', async function() {
     function Fixture() {
       const [val, toggle] = useToggle(false);
 
       return <button onClick={toggle}>{val.toString()}</button>;
     }
 
-    const component = shallow(<Fixture />);
+    const user = userEvent.setup(),
+        el = renderEl(<Fixture />),
+        button = screen.getByRole('button');
 
-    expect(component).toHaveText('false');
+    expect(el).toHaveTextContent('false');
 
-    component.simulate('click');
-    expect(component).toHaveText('true');
+    await user.click(button);
+    expect(el).toHaveTextContent('true');
 
-    component.simulate('click');
-    expect(component).toHaveText('false');
+    await user.click(button);
+    expect(el).toHaveTextContent('false');
   });
 
-  it('returns a tuple who\'s second value is a function that returns the new state value after toggling', function() {
-    function Fixture({ onToggle }: { onToggle: (newVal: boolean) => void }) {
-      const [val, toggle] = useToggle(false);
+  it('returns a tuple who\'s second value is a function that returns the new state value after toggling',
+      async function() {
+        function Fixture({ onToggle }: { onToggle: (newVal: boolean) => void }) {
+          const [val, toggle] = useToggle(false);
 
-      function onClick() {
-        const newVal = toggle();
-        onToggle(newVal);
+          function onClick() {
+            const newVal = toggle();
+            onToggle(newVal);
+          }
+
+          return <button onClick={onClick}>{val.toString()}</button>;
+        }
+
+        const user = userEvent.setup(),
+            onToggle = jest.fn();
+
+        render(<Fixture onToggle={onToggle} />);
+
+        const button = screen.getByRole('button');
+
+        await user.click(button);
+        expect(onToggle).toHaveBeenCalledWith(true);
+        expect(onToggle).not.toHaveBeenCalledWith(false);
+
+        await user.click(button);
+        expect(onToggle).toHaveBeenCalledWith(false);
       }
+  );
 
-      return <button onClick={onClick}>{val.toString()}</button>;
-    }
-
-    const onToggle = jest.fn(),
-        component = shallow(<Fixture onToggle={onToggle} />);
-
-    component.simulate('click');
-    expect(onToggle).toHaveBeenCalledWith(true);
-    expect(onToggle).not.toHaveBeenCalledWith(false);
-
-    component.simulate('click');
-    expect(onToggle).toHaveBeenCalledWith(false);
-  });
-
-  it('returns a tuple who\'s third value is a function that sets the state to the specified value', function() {
+  it('returns a tuple who\'s third value is a function that sets the state to the specified value', async function() {
     function Fixture() {
       const [val, , set] = useToggle(false);
 
       return (
         <>
-          <p>{val.toString()}</p>
-          <button id="set-true" onClick={() => set(true)} />
-          <button id="set-false" onClick={() => set(false)} />
+          <p data-testid="output">{val.toString()}</p>
+          <button data-testid="set-true" onClick={() => set(true)} />
+          <button data-testid="set-false" onClick={() => set(false)} />
         </>
       );
     }
 
-    const component = shallow(<Fixture />);
+    const user = userEvent.setup();
 
-    expect(component.find('p')).toHaveText('false');
+    render(<Fixture />);
 
-    component.find('#set-false').simulate('click');
-    expect(component.find('p')).toHaveText('false');
+    const p = screen.getByTestId('output'),
+        setFalse = screen.getByTestId('set-false'),
+        setTrue = screen.getByTestId('set-true');
 
-    component.find('#set-true').simulate('click');
-    expect(component.find('p')).toHaveText('true');
+    expect(p).toHaveTextContent('false');
 
-    component.find('#set-true').simulate('click');
-    expect(component.find('p')).toHaveText('true');
+    await user.click(setFalse);
+    expect(p).toHaveTextContent('false');
 
-    component.find('#set-false').simulate('click');
-    expect(component.find('p')).toHaveText('false');
+    await user.click(setTrue);
+    expect(p).toHaveTextContent('true');
+
+    await user.click(setTrue);
+    expect(p).toHaveTextContent('true');
+
+    await user.click(setFalse);
+    expect(p).toHaveTextContent('false');
   });
 });
