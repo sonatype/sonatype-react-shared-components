@@ -7,7 +7,7 @@
 
 import { faCrow } from '@fortawesome/free-solid-svg-icons';
 import { screen, within } from '@testing-library/react';
-import { rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxGlobalSidebarNavigationLink, { NxGlobalSidebarNavigationLinkProps as Props }
   from '../NxGlobalSidebarNavigationLink';
@@ -18,7 +18,8 @@ describe('NxGlobalSidebarNavigationLink', function() {
         text: 'textLink',
         href: '#someurl'
       },
-      quickRender = rtlRender<Props>(NxGlobalSidebarNavigationLink, minimalProps);
+      quickRender = rtlRender<Props>(NxGlobalSidebarNavigationLink, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxGlobalSidebarNavigationLink, minimalProps);
 
   describe('tooltips', function () {
     it('renders a tooltip on hover if link text overflow occurs', async function() {
@@ -74,9 +75,16 @@ describe('NxGlobalSidebarNavigationLink', function() {
   });
 
   it('renders an <a> with the passed href and classes', function() {
-    const link = quickRender({ className: 'extra-class' }).getByRole('link');
-    expect(link).toHaveClass('extra-class');
-    expect(link).toHaveAttribute('href', '#someurl');
+    const el = renderEl({ className: 'extra-class' }),
+        defaultEl = renderEl()!;
+
+    expect(el).toHaveClass('extra-class');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
+
+    expect(el).toHaveAttribute('href', '#someurl');
   });
 
   it('passes additional specified attrs to the <a>', function() {
