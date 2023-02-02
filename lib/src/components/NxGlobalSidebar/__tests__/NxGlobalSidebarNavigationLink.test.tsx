@@ -74,7 +74,7 @@ describe('NxGlobalSidebarNavigationLink', function() {
 
   });
 
-  it('renders an <a> with the passed href and classes', function() {
+  it('renders a link with the passed href and classes', function() {
     const el = renderEl({ className: 'extra-class' }),
         defaultEl = renderEl()!;
 

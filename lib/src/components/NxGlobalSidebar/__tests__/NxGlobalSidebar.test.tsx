@@ -97,7 +97,7 @@ describe('NxGlobalSidebar', function() {
   });
 
   it('calls onToggleClick when toggle button is pressed', async function() {
-    const onToggleClick = jest.fn(() => {}),
+    const onToggleClick = jest.fn(),
         user = userEvent.setup(),
         view = quickRender({ ...minimalProps, onToggleClick }),
         btn = view.getByRole('button');
