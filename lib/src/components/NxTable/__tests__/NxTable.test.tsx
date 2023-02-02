@@ -423,24 +423,29 @@ describe('NxTable', function() {
       });
 
       it('sets default button accessible name to match the tooltip', function() {
-        expect(
-            within(renderColumnHeader({ isSortable: true, children: 'foo' })
-            ).getByRole('button'))
-            .toHaveAccessibleName('foo unsorted');
+        const button = within(renderColumnHeader({ isSortable: true, children: 'foo' })).getByRole('button');
+
+        expect(button).toHaveAccessibleName('foo unsorted');
       });
 
       it('sets ascending button accessible name to match the tooltip', function() {
-        expect(
-            within(renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'asc' })
-            ).getByRole('button'))
-            .toHaveAccessibleName('foo ascending');
+        const button = within(renderColumnHeader({
+          isSortable: true,
+          children: 'foo',
+          sortDir: 'asc'
+        })).getByRole('button');
+
+        expect(button).toHaveAccessibleName('foo ascending');
       });
 
       it('sets descending button accessible name to match the tooltip', function() {
-        expect(
-            within(renderColumnHeader({ isSortable: true, children: 'foo', sortDir: 'desc' })
-            ).getByRole('button'))
-            .toHaveAccessibleName('foo descending');
+        const button = within(renderColumnHeader({
+          isSortable: true,
+          children: 'foo',
+          sortDir: 'desc'
+        })).getByRole('button');
+
+        expect(button).toHaveAccessibleName('foo descending');
       });
     });
   });
