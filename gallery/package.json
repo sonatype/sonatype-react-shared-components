@@ -17,7 +17,9 @@
     "ci-test": "npm-run-all check-install ci-lint-tests build jest",
     "check-install": "yarn install --check-files --frozen-lockfile",
     "jest": "jest --testTimeout=120000",
-    "clean": "rimraf dist webpack-modules test-results"
+    "clean": "rimraf dist webpack-modules test-results",
+    "start-vite": "vite --debug",
+    "build-vite": "vite build"
   },
   "repository": {
     "type": "git",
@@ -62,6 +64,7 @@
     "ts-jest": "^29.0.3",
     "ts-loader": "^9.2.8",
     "typescript": "^4.5.5",
+    "vite": "^4.1.1",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^3.11.2"

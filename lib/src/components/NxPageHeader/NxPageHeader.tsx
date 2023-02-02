@@ -8,13 +8,14 @@ import React from 'react';
 
 import AbstractNxPageHeader from '../AbstractNxPageHeader/AbstractNxPageHeader';
 import { Props, ProductInfo, LogoProps, propTypes } from './types';
-import importImage from '../../util/importImage';
+//import importImage from '../../util/importImage';
 
 export { Props };
 
-const defaultLogoImg = importImage('sonatype-logo-with-hexagon.png'),
+const //defaultLogoImg = importImage('sonatype-logo-with-hexagon.png'),
     defaultLogoProps = {
-      path: defaultLogoImg,
+      // TODO this probably doesn't work
+      path: '../../assets/img/sonatype-logo-with-hexagon.png',
       alt: 'Sonatype'
     };
 
