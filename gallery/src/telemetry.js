@@ -6,9 +6,9 @@
  */
 
 export function init() {
-  // Filled in via the webpack EnvironmentPlugin
+  // Filled in via the vite define config
   /* eslint-disable-next-line no-undef */
-  const apiKey = process.env.PX_API_KEY;
+  const apiKey = PX_API_KEY;
 
   if (apiKey) {
     // This blob of code is provided by the gainsight admin interface to initialize PX. For legal reasons, it
