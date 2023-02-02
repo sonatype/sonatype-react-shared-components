@@ -5,11 +5,16 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import NxGlobalSidebarNavigation, { NxGlobalSidebarNavigationProps as Props } from '../NxGlobalSidebarNavigation';
-import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 describe('NxGlobalSidebarNavigation', function() {
   const minimalProps: Props = {},
+      quickRender = rtlRender<Props>(NxGlobalSidebarNavigation, minimalProps),
       renderEl = rtlRenderElement<Props>(NxGlobalSidebarNavigation, minimalProps);
+
+  it('has a role=navigation', function() {
+    expect(quickRender().getByRole('navigation')).toBeInTheDocument();
+  });
 
   it('passes additional classes specified as props to <nav>', function() {
     const el = renderEl({ className: 'class-A' }),
