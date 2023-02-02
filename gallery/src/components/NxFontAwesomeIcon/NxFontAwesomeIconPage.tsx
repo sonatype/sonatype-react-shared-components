@@ -11,8 +11,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxFontAwesomeIconExample from './NxFontAwesomeIconExample';
 
-const nxFontAwesomeIconExampleCode = require('./NxFontAwesomeIconExample?raw'),
-    nxFontAwesomeIconExampleScssCode = require('./NxFontAwesomeIconExample.scss?raw');
+import nxFontAwesomeIconExampleCode from './NxFontAwesomeIconExample?raw';
+import nxFontAwesomeIconExampleScssCode from './NxFontAwesomeIconExample.scss?raw';
 
 const NxFontAwesomeIconPage = () => {
   const codeExamples = [

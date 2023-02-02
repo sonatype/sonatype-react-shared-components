@@ -14,10 +14,10 @@ import NxTextLinkExternalExample from './NxTextLinkExternalExample';
 import NxTextLinkTruncationExample from './NxTextLinkTruncationExample';
 import NxTextLinkButtonExample from './NxTextLinkButtonExample';
 
-const NxTextLinkInternalExampleCode = require('./NxTextLinkInternalExample?raw'),
-    NxTextLinkExternalExampleCode = require('./NxTextLinkExternalExample?raw'),
-    NxTextLinkTruncationExampleCode = require('./NxTextLinkTruncationExample?raw'),
-    NxTextLinkButtonExampleCode = require('./NxTextLinkButtonExample?raw');
+import NxTextLinkInternalExampleCode from './NxTextLinkInternalExample?raw';
+import NxTextLinkExternalExampleCode from './NxTextLinkExternalExample?raw';
+import NxTextLinkTruncationExampleCode from './NxTextLinkTruncationExample?raw';
+import NxTextLinkButtonExampleCode from './NxTextLinkButtonExample?raw';
 
 export default function NxTabsPage() {
   return (

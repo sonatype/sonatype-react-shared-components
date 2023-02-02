@@ -18,13 +18,13 @@ import NoGutterExample from './NxTreeNoGutterExample';
 
 import './NxTreeExample.scss';
 
-const collapsibleCode = require('./NxTreeCollapsibleExample?raw'),
-    collapsibleMultiTopCode = require('./NxTreeCollapsibleMultiTopExample?raw'),
-    nonCollapsibleCode = require('./NxTreeNonCollapsibleExample?raw'),
-    nonCollapsibleMultiTopCode = require('./NxTreeNonCollapsibleMultiTopExample?raw'),
-    statefulCode = require('./NxTreeStatefulExample?raw'),
-    noGutterCode = require('./NxTreeNoGutterExample?raw'),
-    exampleScss = require('./NxTreeExample.scss?raw');
+import collapsibleCode from './NxTreeCollapsibleExample?raw';
+import collapsibleMultiTopCode from './NxTreeCollapsibleMultiTopExample?raw';
+import nonCollapsibleCode from './NxTreeNonCollapsibleExample?raw';
+import nonCollapsibleMultiTopCode from './NxTreeNonCollapsibleMultiTopExample?raw';
+import statefulCode from './NxTreeStatefulExample?raw';
+import noGutterCode from './NxTreeNoGutterExample?raw';
+import exampleScss from './NxTreeExample.scss?raw';
 
 const NxTreePage = () =>
   <>

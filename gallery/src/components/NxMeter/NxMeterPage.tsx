@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxMeterExample from './NxMeterExample';
 
-const nxMeterExampleCode = require('./NxMeterExample?raw');
+import nxMeterExampleCode from './NxMeterExample?raw';
 
 const NxMeterPage = () =>
   <>

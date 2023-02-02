@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulMultiFileUploadExample from './NxStatefulMultiFileUploadExample';
 
-const nxStatefulMultiFileUploadCode = require('./NxStatefulMultiFileUploadExample?raw');
+import nxStatefulMultiFileUploadCode from './NxStatefulMultiFileUploadExample?raw';
 
 const NxStatefulMultiFileUploadPage = () =>
   <>

@@ -14,7 +14,7 @@ import {
   NxPageMain }
   from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
-const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
+import logoImg from '../../assets/images/logo-plaid-villain-text.png';
 
 export default function NxStatefulGlobalSidebarExample() {
   return (

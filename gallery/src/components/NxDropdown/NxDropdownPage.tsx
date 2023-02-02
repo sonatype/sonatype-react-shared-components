@@ -19,15 +19,15 @@ import NxDropdownLinksExample from './NxDropdownLinksExample';
 import NxDropdownCloseHandlerExample from './NxDropdownCloseHandlerExample';
 import NxDropdownWithNxThreatIndicatorExample from './NxDropdownWithNxThreatIndicatorExample';
 
-const nxDropdownNavigationExampleCode = require('./NxDropdownNavigationExample?raw'),
-    nxDropdownShortExampleCode = require('./NxDropdownShortExample?raw'),
-    nxDropdownScrollingExampleCode = require('./NxDropdownScrollingExample?raw'),
-    nxDropdownDisabledExampleCode = require('./NxDropdownDisabledExample?raw'),
-    nxDropdownCustomLabelExampleCode = require('./NxDropdownCustomLabelExample?raw'),
-    nxDropdownRightButtonsExampleCode = require('./NxDropdownRightButtonsExample?raw'),
-    nxDropdownLinksExampleCode = require('./NxDropdownLinksExample?raw'),
-    nxDropdownCloseHandlerExampleCode = require('./NxDropdownCloseHandlerExample?raw'),
-    nxDropdownWithNxThreatIndicatorExampleCode = require('./NxDropdownWithNxThreatIndicatorExample?raw');
+import nxDropdownNavigationExampleCode from './NxDropdownNavigationExample?raw';
+import nxDropdownShortExampleCode from './NxDropdownShortExample?raw';
+import nxDropdownScrollingExampleCode from './NxDropdownScrollingExample?raw';
+import nxDropdownDisabledExampleCode from './NxDropdownDisabledExample?raw';
+import nxDropdownCustomLabelExampleCode from './NxDropdownCustomLabelExample?raw';
+import nxDropdownRightButtonsExampleCode from './NxDropdownRightButtonsExample?raw';
+import nxDropdownLinksExampleCode from './NxDropdownLinksExample?raw';
+import nxDropdownCloseHandlerExampleCode from './NxDropdownCloseHandlerExample?raw';
+import nxDropdownWithNxThreatIndicatorExampleCode from './NxDropdownWithNxThreatIndicatorExample?raw';
 
 const NxDropdownPage = () =>
   <>

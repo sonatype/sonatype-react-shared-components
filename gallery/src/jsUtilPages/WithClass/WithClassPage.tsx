@@ -12,8 +12,8 @@ import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-compon
 import WithClassExample from './WithClassExample';
 import './WithClassExample.scss';
 
-const withClassExampleCode = require('./WithClassExample?raw'),
-    withClassExampleScss = require('./WithClassExample.scss?raw');
+import withClassExampleCode from './WithClassExample?raw';
+import withClassExampleScss from './WithClassExample.scss?raw';
 
 const WithClassPage = () =>
   <>

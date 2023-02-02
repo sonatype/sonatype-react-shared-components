@@ -13,10 +13,9 @@ import NxCollapsibleMultiSelectExample from './NxCollapsibleMultiSelectExample';
 import NxCollapsibleMultiSelectCustomTooltipExample from './NxCollapsibleMultiSelectCustomTooltipExample';
 import NxCollapsibleMultiSelectDisabledExample from './NxCollapsibleMultiSelectDisabledExample';
 
-const NxCollapsibleMultiSelectExampleCode = require('./NxCollapsibleMultiSelectExample?raw'),
-    NxCollapsibleMultiSelectDisabledExampleCode = require('./NxCollapsibleMultiSelectDisabledExample?raw'),
-    NxCollapsibleMultiSelectCustomTooltipExampleCode =
-        require('./NxCollapsibleMultiSelectCustomTooltipExample?raw');
+import NxCollapsibleMultiSelectExampleCode from './NxCollapsibleMultiSelectExample?raw';
+import NxCollapsibleMultiSelectDisabledExampleCode from './NxCollapsibleMultiSelectDisabledExample?raw';
+import NxCollapsibleMultiSelectCustomTooltipExampleCode from './NxCollapsibleMultiSelectCustomTooltipExample?raw';
 
 const NxCollapsibleMultiSelectPage = () =>
   <>

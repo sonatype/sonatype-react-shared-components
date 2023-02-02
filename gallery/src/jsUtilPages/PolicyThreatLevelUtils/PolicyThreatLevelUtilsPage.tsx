@@ -9,9 +9,9 @@ import { NxP, NxCode, NxList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const threatLevelNumberExampleCode = require('./ThreatLevelNumberExample?raw'),
-    threatLevelCategoryExampleCode = require('./ThreatLevelCategoryExample?raw'),
-    categoryByPolicyThreatLevelExampleCode = require('./CategoryByPolicyThreatLevelExample?raw');
+import threatLevelNumberExampleCode from './ThreatLevelNumberExample?raw';
+import threatLevelCategoryExampleCode from './ThreatLevelCategoryExample?raw';
+import categoryByPolicyThreatLevelExampleCode from './CategoryByPolicyThreatLevelExample?raw';
 
 const PolicyThreatLevelUtilsPage = () =>
   <>

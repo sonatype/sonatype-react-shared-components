@@ -16,12 +16,12 @@ import NxButtonErrorExample from './NxButtonErrorExample';
 import NxButtonIconExample from './NxButtonIconExample';
 import NxButtonIconOnlyExample from './NxButtonIconOnlyExample';
 
-const NxButtonDefaultCode = require('./NxButtonDefaultExample?raw'),
-    nxButtonPrimaryCode = require('./NxButtonPrimaryExample?raw'),
-    nxButtonTertiaryCode = require('./NxButtonTertiaryExample?raw'),
-    nxButtonErrorCode = require('./NxButtonErrorExample?raw'),
-    nxButtonIconCode = require('./NxButtonIconExample?raw'),
-    nxButtonIconOnlyCode = require('./NxButtonIconOnlyExample?raw');
+import NxButtonDefaultCode from './NxButtonDefaultExample?raw';
+import nxButtonPrimaryCode from './NxButtonPrimaryExample?raw';
+import nxButtonTertiaryCode from './NxButtonTertiaryExample?raw';
+import nxButtonErrorCode from './NxButtonErrorExample?raw';
+import nxButtonIconCode from './NxButtonIconExample?raw';
+import nxButtonIconOnlyCode from './NxButtonIconOnlyExample?raw';
 
 export default function NxButtonPage() {
   return (

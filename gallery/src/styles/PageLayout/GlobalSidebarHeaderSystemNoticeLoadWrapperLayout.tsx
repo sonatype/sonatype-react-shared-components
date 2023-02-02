@@ -23,8 +23,8 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
-const exampleCode = require('./GlobalSidebarHeaderSystemNoticeLoadWrapperLayout?raw');
+import logoImg from '../../assets/images/logo-plaid-villain-text.png';
+import exampleCode from './GlobalSidebarHeaderSystemNoticeLoadWrapperLayout?raw';
 
 export default function GlobalSidebarHeaderSystemNoticeLoadWrapperLayout() {
   const [loading, setLoading] = useState(true),

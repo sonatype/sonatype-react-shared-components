@@ -12,8 +12,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxStatefulSubmitMaskExample from './NxStatefulSubmitMaskExample';
 import NxStatefulSubmitMaskCustomMessageExample from './NxStatefulSubmitMaskCustomMessageExample';
 
-const NxStatefulSubmitMaskCode = require('./NxStatefulSubmitMaskExample?raw'),
-    NxStatefulSubmitMaskCustomMessageCode = require('./NxStatefulSubmitMaskCustomMessageExample?raw');
+import NxStatefulSubmitMaskCode from './NxStatefulSubmitMaskExample?raw';
+import NxStatefulSubmitMaskCustomMessageCode from './NxStatefulSubmitMaskCustomMessageExample?raw';
 
 const NxStatefulSubmitMaskPage = () =>
   <>

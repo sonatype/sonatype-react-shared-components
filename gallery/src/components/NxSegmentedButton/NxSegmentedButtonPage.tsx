@@ -14,10 +14,10 @@ import NxSegmentedButtonSecondaryExample from './NxSegmentedButtonSecondaryExamp
 import NxSegmentedButtonTertiaryExample from './NxSegmentedButtonTertiaryExample';
 import NxSegmentedButtonCloseHandlerExample from './NxSegmentedButtonCloseHandlerExample';
 
-const nxSegmentedButtonPrimaryCode = require('./NxSegmentedButtonPrimaryExample?raw'),
-    nxSegmentedButtonSecondaryCode = require('./NxSegmentedButtonSecondaryExample?raw'),
-    nxSegmentedButtonTertiaryCode = require('./NxSegmentedButtonTertiaryExample?raw'),
-    nxSegmentedButtonCloseHandlerExampleCode = require('./NxSegmentedButtonCloseHandlerExample?raw');
+import nxSegmentedButtonPrimaryCode from './NxSegmentedButtonPrimaryExample?raw';
+import nxSegmentedButtonSecondaryCode from './NxSegmentedButtonSecondaryExample?raw';
+import nxSegmentedButtonTertiaryCode from './NxSegmentedButtonTertiaryExample?raw';
+import nxSegmentedButtonCloseHandlerExampleCode from './NxSegmentedButtonCloseHandlerExample?raw';
 
 export default function NxSegmentedButtonPage() {
   return (

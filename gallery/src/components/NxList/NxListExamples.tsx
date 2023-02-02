@@ -17,14 +17,14 @@ import NxListErrorExample from './examples/NxListError';
 import NxListLoadingExample from './examples/NxListLoading';
 import { NxCode } from '@sonatype/react-shared-components';
 
-const NxListSimpleExampleCode = require('./examples/NxListSimple?raw'),
-    NxListClickableExampleCode = require('./examples/NxListClickable?raw'),
-    NxListClickableLinkExampleCode = require('./examples/NxListClickableLink?raw'),
-    NxListBulletedExampleCode = require('./examples/NxListBulleted?raw'),
-    NxListActionsExampleCode = require('./examples/NxListActions?raw'),
-    NxListEmptyExampleCode = require('./examples/NxListEmpty?raw'),
-    NxListErrorExampleCode = require('./examples/NxListError?raw'),
-    NxListLoadingExampleCode = require('./examples/NxListLoading?raw');
+import NxListSimpleExampleCode from './examples/NxListSimple?raw';
+import NxListClickableExampleCode from './examples/NxListClickable?raw';
+import NxListClickableLinkExampleCode from './examples/NxListClickableLink?raw';
+import NxListBulletedExampleCode from './examples/NxListBulleted?raw';
+import NxListActionsExampleCode from './examples/NxListActions?raw';
+import NxListEmptyExampleCode from './examples/NxListEmpty?raw';
+import NxListErrorExampleCode from './examples/NxListError?raw';
+import NxListLoadingExampleCode from './examples/NxListLoading?raw';
 
 const NxListsExamples = () =>
   <>

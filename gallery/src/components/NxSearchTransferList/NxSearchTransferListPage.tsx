@@ -15,10 +15,10 @@ import CustomTooltipExample from './NxSearchTransferListCustomTooltipExample';
 
 import '../NxTooltip/NxTooltipExample.scss';
 
-const exampleCode = require('./NxSearchTransferListExample?raw'),
-    customTooltipExample = require('./NxSearchTransferListCustomTooltipExample?raw'),
-    complexExampleCode = require('./NxSearchTransferListComplexExample?raw'),
-    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw');
+import exampleCode from './NxSearchTransferListExample?raw';
+import customTooltipExample from './NxSearchTransferListCustomTooltipExample?raw';
+import complexExampleCode from './NxSearchTransferListComplexExample?raw';
+import tooltipScss from '../NxTooltip/NxTooltipExample.scss?raw';
 
 const tooltipExampleCode = [customTooltipExample, { language: 'scss', content: tooltipScss }];
 

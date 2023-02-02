@@ -13,9 +13,9 @@ import NxRadioExample from './NxRadioExample';
 import NxRadioNowrapExample from './NxRadioNowrapExample';
 import NxRadioDisabledExample from './NxRadioDisabledExample';
 
-const exampleCode = require('./NxRadioExample?raw');
-const nowrapExampleCode = require('./NxRadioNowrapExample?raw');
-const disabledExampleCode = require('./NxRadioDisabledExample?raw');
+import exampleCode from './NxRadioExample?raw';
+import nowrapExampleCode from './NxRadioNowrapExample?raw';
+import disabledExampleCode from './NxRadioDisabledExample?raw';
 
 const NxRadioPage = () =>
   <>

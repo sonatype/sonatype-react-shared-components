@@ -19,7 +19,7 @@ import {
 } from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink } from '@fortawesome/free-solid-svg-icons';
 
-const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
+import sidebarLogoPath from '../../assets/images/logo-plaid-villain-text.png';
 
 const crumbs = [{
   name: 'Universe - Everything everywhere that we can observe',

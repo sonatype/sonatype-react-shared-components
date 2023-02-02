@@ -21,15 +21,15 @@ import NxBreadcrumbFiveSegmentsExample from './NxBreadcrumbFiveSegmentsExample';
 import CodeExample from '../../CodeExample';
 import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
-const exampleCode = require('./NxBreadcrumbExample?raw'),
-    longSegmentsExampleCode = require('./NxBreadcrumbLongSegmentsExample?raw'),
-    constrainedWidthExampleCode = require('./NxBreadcrumbConstrainedWidthExample?raw'),
-    manySegmentsExampleCode = require('./NxBreadcrumbManySegmentsExample?raw'),
-    manyLongSegmentsExampleCode = require('./NxBreadcrumbManyLongSegmentsExample?raw'),
-    oneSegmentExampleCode = require('./NxBreadcrumbOneSegmentExample?raw'),
-    fourSegmentsExampleCode = require('./NxBreadcrumbFourSegmentsExample?raw'),
-    fiveSegmentsExampleCode = require('./NxBreadcrumbFiveSegmentsExample?raw'),
-    globalheaderExampleCode = require('./NxBreadcrumbGlobalHeaderExample?raw');
+import exampleCode from './NxBreadcrumbExample?raw';
+import longSegmentsExampleCode from './NxBreadcrumbLongSegmentsExample?raw';
+import constrainedWidthExampleCode from './NxBreadcrumbConstrainedWidthExample?raw';
+import manySegmentsExampleCode from './NxBreadcrumbManySegmentsExample?raw';
+import manyLongSegmentsExampleCode from './NxBreadcrumbManyLongSegmentsExample?raw';
+import oneSegmentExampleCode from './NxBreadcrumbOneSegmentExample?raw';
+import fourSegmentsExampleCode from './NxBreadcrumbFourSegmentsExample?raw';
+import fiveSegmentsExampleCode from './NxBreadcrumbFiveSegmentsExample?raw';
+import globalheaderExampleCode from './NxBreadcrumbGlobalHeaderExample?raw';
 
 const NxBreadcrumbPage = () =>
   <>

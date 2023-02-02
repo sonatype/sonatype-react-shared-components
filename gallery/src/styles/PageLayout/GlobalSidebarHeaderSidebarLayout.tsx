@@ -21,8 +21,8 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
-const exampleCode = require('./GlobalSidebarHeaderSidebarLayout?raw');
+import logoImg from '../../assets/images/logo-plaid-villain-text.png';
+import exampleCode from './GlobalSidebarHeaderSidebarLayout?raw';
 
 export default function GlobalSidebarHeaderSidebarLayout() {
   return (

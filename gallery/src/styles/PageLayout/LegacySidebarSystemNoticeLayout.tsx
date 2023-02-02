@@ -9,7 +9,7 @@ import { NxPageHeader, NxSystemNotice, NxP, NxPageSidebar, NxPageMain, NxTile, N
   from '@sonatype/react-shared-components';
 import CodeExample from '../../CodeExample';
 
-const exampleCode = require('./LegacySidebarSystemNoticeLayout?raw');
+import exampleCode from './LegacySidebarSystemNoticeLayout?raw';
 
 export default function LegacySidebarSystemNoticeLayout() {
   return (

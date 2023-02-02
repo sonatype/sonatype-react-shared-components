@@ -16,12 +16,12 @@ import NxInfoAlertExample from './NxInfoAlertExample';
 import NxSuccessAlertExample from './NxSuccessAlertExample';
 import NxNoCloseAlertExample from './NxNoCloseAlertExample';
 
-const nxErrorAlertExampleCode = require('./NxErrorAlertExample?raw'),
-    nxInfoAlertExampleCode = require('./NxInfoAlertExample?raw'),
-    nxSuccessAlertExampleCode = require('./NxSuccessAlertExample?raw'),
-    nxNoCloseAlertExampleCode = require('./NxNoCloseAlertExample?raw'),
-    nxWarningAlertExampleCode = require('./NxWarningAlertExample?raw'),
-    nxAlertExampleCode = require('./NxAlertExample?raw');
+import nxErrorAlertExampleCode from './NxErrorAlertExample?raw';
+import nxInfoAlertExampleCode from './NxInfoAlertExample?raw';
+import nxSuccessAlertExampleCode from './NxSuccessAlertExample?raw';
+import nxNoCloseAlertExampleCode from './NxNoCloseAlertExample?raw';
+import nxWarningAlertExampleCode from './NxWarningAlertExample?raw';
+import nxAlertExampleCode from './NxAlertExample?raw';
 
 const NxAlertPage = () =>
   <>

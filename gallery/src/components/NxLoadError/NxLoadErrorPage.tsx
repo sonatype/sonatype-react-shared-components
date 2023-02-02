@@ -14,10 +14,10 @@ import NxLoadErrorNoCloseExample from './NxLoadErrorNoCloseExample';
 import NxLoadErrorRetryExample from './NxLoadErrorRetryExample';
 import NxLoadErrorRetryLongMessageExample from './NxLoadErrorRetryLongMessageExample';
 
-const simpleSourceCode = require('./NxLoadErrorSimpleExample?raw');
-const noCloseSourceCode = require('./NxLoadErrorNoCloseExample?raw');
-const retrySourceCode = require('./NxLoadErrorRetryExample?raw');
-const retryLongMessageSourceCode = require('./NxLoadErrorRetryExample?raw');
+import simpleSourceCode from './NxLoadErrorSimpleExample?raw';
+import noCloseSourceCode from './NxLoadErrorNoCloseExample?raw';
+import retrySourceCode from './NxLoadErrorRetryExample?raw';
+import retryLongMessageSourceCode from './NxLoadErrorRetryExample?raw';
 
 const NxLoadErrorPage = () =>
   <>

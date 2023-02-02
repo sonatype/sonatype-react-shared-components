@@ -9,7 +9,7 @@ import { NxTable, NxCode, NxP, NxH3, NxTile, NxInfoAlert, NxTextLink } from '@so
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxDividerCode = require('./NxDividerExample.html');
+import nxDividerCode from './NxDividerExample.html?raw';
 
 const NxDividerPage = () =>
   <>

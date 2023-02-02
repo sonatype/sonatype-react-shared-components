@@ -8,7 +8,7 @@ import React from 'react';
 import { NxPageHeader, NxSystemNotice, NxP, NxPageMain, NxTile, NxH2 } from '@sonatype/react-shared-components';
 import CodeExample from '../../CodeExample';
 
-const exampleCode = require('./LegacySystemNoticeLayout?raw');
+import exampleCode from './LegacySystemNoticeLayout?raw';
 
 export default function LegacySystemNoticeLayout() {
   return (

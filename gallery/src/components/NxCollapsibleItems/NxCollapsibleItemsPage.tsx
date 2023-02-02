@@ -20,17 +20,16 @@ import NxCollapsibleItemsDisabled from './NxCollapsibleItemsDisabledExample';
 import NxCollapsibleItemsActionContentExample from './NxCollapsibleItemsActionContentExample';
 import NxCollapsibleItemsDisabledWithActionContentExample from './NxCollapsibleItemsDisabledWithActionContentExample';
 
-const NxCollapsibleItemsCode = require('./NxCollapsibleItemsExample?raw'),
-    NxCollapsibleItemsTooltipCode = require('./NxCollapsibleItemsTooltipExample?raw'),
-    NxCollapsibleItemsExtrasCode = require('./NxCollapsibleItemsExtrasExample?raw'),
-    NxCollapsibleItemsClickableCode = require('./NxCollapsibleItemsClickableExample?raw'),
-    NxCollapsibleItemsClickableSidebarCode = require('./NxCollapsibleItemsClickableSidebarExample?raw'),
-    NxCollapsibleItemsCheckboxCode = require('./NxCollapsibleItemsCheckboxExample?raw'),
-    NxCollapsibleItemsEmptyCode = require('./NxCollapsibleItemsEmptyExample?raw'),
-    NxCollapsibleItemsDisabledCode = require('./NxCollapsibleItemsDisabledExample?raw'),
-    NxCollapsibleItemsActionContentCode = require('./NxCollapsibleItemsActionContentExample?raw'),
-    NxCollapsibleItemsDisabledWithActionContentCode
-      = require('./NxCollapsibleItemsDisabledWithActionContentExample?raw');
+import NxCollapsibleItemsCode from './NxCollapsibleItemsExample?raw';
+import NxCollapsibleItemsTooltipCode from './NxCollapsibleItemsTooltipExample?raw';
+import NxCollapsibleItemsExtrasCode from './NxCollapsibleItemsExtrasExample?raw';
+import NxCollapsibleItemsClickableCode from './NxCollapsibleItemsClickableExample?raw';
+import NxCollapsibleItemsClickableSidebarCode from './NxCollapsibleItemsClickableSidebarExample?raw';
+import NxCollapsibleItemsCheckboxCode from './NxCollapsibleItemsCheckboxExample?raw';
+import NxCollapsibleItemsEmptyCode from './NxCollapsibleItemsEmptyExample?raw';
+import NxCollapsibleItemsDisabledCode from './NxCollapsibleItemsDisabledExample?raw';
+import NxCollapsibleItemsActionContentCode from './NxCollapsibleItemsActionContentExample?raw';
+import NxCollapsibleItemsDisabledWithActionContentCode from './NxCollapsibleItemsDisabledWithActionContentExample?raw';
 
 const NxCollapsibleItemsPage = () =>
   <>

@@ -19,14 +19,14 @@ import NxTextInputLongExample from './NxTextInputLongExample';
 import NxTextInputShortExample from './NxTextInputShortExample';
 import NxTextInputDisabledExample from './NxTextInputDisabledExample';
 
-const simpleSourceCode = require('./NxTextInputSimpleExample?raw');
-const validationSourceCode = require('./NxTextInputValidationExample?raw');
-const passwordSourceCode = require('./NxTextInputPasswordExample?raw');
-const textAreaSourceCode = require('./NxTextInputTextAreaExample?raw');
-const textAreaValidationSourceCode = require('./NxTextInputTextAreaValidationExample?raw');
-const longSourceCode = require('./NxTextInputLongExample?raw');
-const shortSourceCode = require('./NxTextInputShortExample?raw');
-const disabledSourceCode = require('./NxTextInputDisabledExample?raw');
+import simpleSourceCode from './NxTextInputSimpleExample?raw';
+import validationSourceCode from './NxTextInputValidationExample?raw';
+import passwordSourceCode from './NxTextInputPasswordExample?raw';
+import textAreaSourceCode from './NxTextInputTextAreaExample?raw';
+import textAreaValidationSourceCode from './NxTextInputTextAreaValidationExample?raw';
+import longSourceCode from './NxTextInputLongExample?raw';
+import shortSourceCode from './NxTextInputShortExample?raw';
+import disabledSourceCode from './NxTextInputDisabledExample?raw';
 
 const NxTextInputPage = () =>
   <>

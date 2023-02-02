@@ -13,9 +13,8 @@ import NxStatefulCollapsibleMultiSelectExample from './NxStatefulCollapsibleMult
 import NxStatefulCollapsibleMultiSelectDisabledExample
   from './NxStatefulCollapsibleMultiSelectDisabledExample';
 
-const nxStatefulCollapsibleItemsMultiSelectExampleCode = require('./NxStatefulCollapsibleMultiSelectExample?raw'),
-    nxStatefulCollapsibleItemsMultiSelectDisabledExampleCode =
-        require('./NxStatefulCollapsibleMultiSelectDisabledExample?raw');
+import nxStatefulCollapsibleItemsMultiSelectExampleCode from './NxStatefulCollapsibleMultiSelectExample?raw';
+import nxStatefulCollapsibleItemsMultiSelectDisabledExampleCode from './NxStatefulCollapsibleMultiSelectDisabledExample?raw';
 
 const NxStatefulCollapsibleMultiSelectPage = () =>
   <>

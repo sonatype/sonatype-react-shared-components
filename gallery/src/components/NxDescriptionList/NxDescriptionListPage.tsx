@@ -13,10 +13,10 @@ import NxDescriptionListButtonExample from './NxDescriptionListButtonExample';
 import NxDescriptionListLinkExample from './NxDescriptionListLinkExample';
 import NxDescriptionListEmptyExample from './NxDescriptionListEmptyExample';
 
-const nxDescriptionListNonInteractiveCode = require('./NxDescriptionListNonInteractiveExample?raw'),
-    nxDescriptionListButtonCode = require('./NxDescriptionListButtonExample?raw'),
-    nxDescriptionListLinkCode = require('./NxDescriptionListLinkExample?raw'),
-    nxDescriptionListEmptyCode = require('./NxDescriptionListEmptyExample?raw');
+import nxDescriptionListNonInteractiveCode from './NxDescriptionListNonInteractiveExample?raw';
+import nxDescriptionListButtonCode from './NxDescriptionListButtonExample?raw';
+import nxDescriptionListLinkCode from './NxDescriptionListLinkExample?raw';
+import nxDescriptionListEmptyCode from './NxDescriptionListEmptyExample?raw';
 
 const NxDescriptionListPage = () =>
   <>

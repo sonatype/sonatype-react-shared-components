@@ -13,12 +13,12 @@ import NivoLineExample from './NivoLineExample';
 import NivoBarExample from './NivoBarExample';
 import NivoPieExample from './NivoPieExample';
 
-const NivoLineExampleCode = require('./NivoLineExample?raw');
-const NivoBarExampleCode = require('./NivoBarExample?raw');
-const NivoPieExampleCode = require('./NivoPieExample?raw');
-const NivoLineExampleData = require('./lineData?raw');
-const NivoBarExampleData = require('./barData?raw');
-const NivoPieExampleData = require('./pieData?raw');
+import NivoLineExampleCode from './NivoLineExample?raw';
+import NivoBarExampleCode from './NivoBarExample?raw';
+import NivoPieExampleCode from './NivoPieExample?raw';
+import NivoLineExampleData from './lineData?raw';
+import NivoBarExampleData from './barData?raw';
+import NivoPieExampleData from './pieData?raw';
 
 const NivoPage = () =>
   <>

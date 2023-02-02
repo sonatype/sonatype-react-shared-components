@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulFormExample from './NxStatefulFormExample';
 
-const NxStatefulFormExampleCode = require('./NxStatefulFormExample?raw');
+import NxStatefulFormExampleCode from './NxStatefulFormExample?raw';
 
 const NxStatefulFormPage = () =>
   <>

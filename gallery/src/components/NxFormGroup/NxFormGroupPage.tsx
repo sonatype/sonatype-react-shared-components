@@ -14,11 +14,11 @@ import NxFormGroupSublabelExample from './NxFormGroupSublabelExample';
 import NxFormGroupRichLabelExample from './NxFormGroupRichLabelExample';
 import NxFormGroupExistingAriaExample from './NxFormGroupExistingAriaExample';
 
-const nxFormGroupExampleCode = require('./NxFormGroupExample?raw'),
-    nxFormGroupSublabelExampleCode = require('./NxFormGroupSublabelExample?raw'),
-    nxFormGroupRichLabelExampleCode = require('./NxFormGroupRichLabelExample?raw'),
-    nxFormGroupExistingAriaExampleCode = require('./NxFormGroupExistingAriaExample?raw'),
-    nxFormGroupRequiredExampleCode = require('./NxFormGroupRequiredExample?raw');
+import nxFormGroupExampleCode from './NxFormGroupExample?raw';
+import nxFormGroupSublabelExampleCode from './NxFormGroupSublabelExample?raw';
+import nxFormGroupRichLabelExampleCode from './NxFormGroupRichLabelExample?raw';
+import nxFormGroupExistingAriaExampleCode from './NxFormGroupExistingAriaExample?raw';
+import nxFormGroupRequiredExampleCode from './NxFormGroupRequiredExample?raw';
 
 const NxFormGroupPage = () =>
   <>

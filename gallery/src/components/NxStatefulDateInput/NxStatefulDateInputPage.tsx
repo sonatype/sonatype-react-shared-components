@@ -13,9 +13,9 @@ import NxStatefulDateInputSimpleExample from './NxStatefulDateInputSimpleExample
 import NxStatefulDateInputValidationExample from './NxStatefulDateInputValidationExample';
 import NxStatefulDateInputDisabledExample from './NxStatefulDateInputDisabledExample';
 
-const simpleSourceCode = require('./NxStatefulDateInputSimpleExample?raw');
-const validationSourceCode = require('./NxStatefulDateInputValidationExample?raw');
-const disabledSourceCode = require('./NxStatefulDateInputDisabledExample?raw');
+import simpleSourceCode from './NxStatefulDateInputSimpleExample?raw';
+import validationSourceCode from './NxStatefulDateInputValidationExample?raw';
+import disabledSourceCode from './NxStatefulDateInputDisabledExample?raw';
 
 const NxStatefulDateInputPage = () =>
   <>

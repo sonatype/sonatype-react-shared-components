@@ -11,10 +11,10 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
 import CodeExample from '../../CodeExample';
 
-const nxGlobalHeaderFullExampleCode = require('./NxGlobalHeaderFullExample?raw'),
-    nxGlobalHeaderNoBackButtonExampleCode = require('./NxGlobalHeaderNoBackButtonExample?raw'),
-    nxGlobalHeaderNoActionsExampleCode = require('./NxGlobalHeaderNoActionsExample?raw'),
-    nxGlobalHeaderEmptyExampleCode = require('./NxGlobalHeaderEmptyExample?raw');
+import nxGlobalHeaderFullExampleCode from './NxGlobalHeaderFullExample?raw';
+import nxGlobalHeaderNoBackButtonExampleCode from './NxGlobalHeaderNoBackButtonExample?raw';
+import nxGlobalHeaderNoActionsExampleCode from './NxGlobalHeaderNoActionsExample?raw';
+import nxGlobalHeaderEmptyExampleCode from './NxGlobalHeaderEmptyExample?raw';
 
 const NxGlobalHeaderPage = () =>
   <>

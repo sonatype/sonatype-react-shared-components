@@ -16,21 +16,21 @@ import NxTileAccordionExample from './NxTileAccordionExample';
 import NxTilePolicyViolationIndicatorExample from './NxTilePolicyViolationIndicatorExample';
 import NxTileSimpleConvenienceComponentsExample from './NxTileSimpleConvenienceComponentsExample';
 
-const NxSimpleTileCode = require('./NxSimpleTileExample.html'),
-    NxTileHeaderlessCode = require('./NxTileHeaderlessExample.html'),
-    NxTileMultiHeaderCode = require('./NxTileMultiHeaderExample.html'),
-    NxTileWithActionsCode = require('./NxTileWithActionsExample.html'),
-    NxTileWithSubtitleCode = require('./NxTileWithSubtitleExample.html'),
-    NxTileSubsectionCode = require('./NxTileSubsectionExample.html'),
-    NxTileSubsectionWithPrecedingCode = require('./NxTileSubsectionWithPrecedingExample.html'),
-    NxTileSubsectionWithSubtitleCode = require('./NxTileSubsectionWithSubtitleExample.html'),
-    NxTileFormCode = require('./NxTileFormExample.tsx?raw'),
-    NxTileFormErrorCode = require('./NxTileFormErrorExample.tsx?raw'),
-    NxTileDropdownActionsCode = require('./NxTileDropdownActionsExample?raw'),
-    NxTileAccordionCode = require('./NxTileAccordionExample?raw'),
-    NxTileGridCode = require('./NxTileGridExample.html'),
-    NxTilePolicyViolationIndicatorCode = require('./NxTilePolicyViolationIndicatorExample?raw'),
-    NxTileSimpleConvenienceComponentsCode = require('./NxTileSimpleConvenienceComponentsExample?raw');
+import NxSimpleTileCode from './NxSimpleTileExample.html?raw';
+import NxTileHeaderlessCode from './NxTileHeaderlessExample.html?raw';
+import NxTileMultiHeaderCode from './NxTileMultiHeaderExample.html?raw';
+import NxTileWithActionsCode from './NxTileWithActionsExample.html?raw';
+import NxTileWithSubtitleCode from './NxTileWithSubtitleExample.html?raw';
+import NxTileSubsectionCode from './NxTileSubsectionExample.html?raw';
+import NxTileSubsectionWithPrecedingCode from './NxTileSubsectionWithPrecedingExample.html?raw';
+import NxTileSubsectionWithSubtitleCode from './NxTileSubsectionWithSubtitleExample.html?raw';
+import NxTileFormCode from './NxTileFormExample.tsx?raw';
+import NxTileFormErrorCode from './NxTileFormErrorExample.tsx?raw';
+import NxTileDropdownActionsCode from './NxTileDropdownActionsExample?raw';
+import NxTileAccordionCode from './NxTileAccordionExample?raw';
+import NxTileGridCode from './NxTileGridExample.html?raw';
+import NxTilePolicyViolationIndicatorCode from './NxTilePolicyViolationIndicatorExample?raw';
+import NxTileSimpleConvenienceComponentsCode from './NxTileSimpleConvenienceComponentsExample?raw';
 
 const NxTilesExamples = () =>
   <>

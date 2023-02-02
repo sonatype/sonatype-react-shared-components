@@ -21,9 +21,9 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxFormExample from './NxFormExample';
 import NxFormCustomizedExample from './NxFormCustomizedExample';
 
-const NxFormExampleCode = require('./NxFormExample?raw'),
-    NxFormCustomizedExampleCode = require('./NxFormCustomizedExample?raw'),
-    NxFormCustomizedExampleScss = require('./NxFormCustomizedExample.scss?raw');
+import NxFormExampleCode from './NxFormExample?raw';
+import NxFormCustomizedExampleCode from './NxFormCustomizedExample?raw';
+import NxFormCustomizedExampleScss from './NxFormCustomizedExample.scss?raw';
 
 import './NxFormCustomizedExample.scss';
 

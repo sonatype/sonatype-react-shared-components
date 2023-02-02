@@ -15,17 +15,17 @@ import BlockLayoutExample from './BlockLayoutExample';
 import FallbackFontExample from './FallbackFontExample';
 import BadLineHeightExample from './BadLineHeightExample';
 
-const openSansEmSquareImg = require('./opensans-emsquare.png');
-const openSansLineSpacingImg = require('./opensans-line-spacing.png');
+import openSansEmSquareImg from './opensans-emsquare.png';
+import openSansLineSpacingImg from './opensans-line-spacing.png';
 
-const FontLayoutExampleCode = require('./FontLayoutExample?raw');
-const FontLayoutExampleStyles = require('./FontLayoutExample.scss?raw');
-const BlockLayoutExampleCode = require('./BlockLayoutExample?raw');
-const BlockLayoutExampleStyles = require('./BlockLayoutExample.scss?raw');
-const FallbackFontExampleCode = require('./FallbackFontExample?raw');
-const FallbackFontExampleStyles = require('./FallbackFontExample.scss?raw');
-const BadLineHeightExampleCode = require('./BadLineHeightExample?raw');
-const BadLineHeightExampleStyles = require('./BadLineHeightExample.scss?raw');
+import FontLayoutExampleCode from './FontLayoutExample?raw';
+import FontLayoutExampleStyles from './FontLayoutExample.scss?raw';
+import BlockLayoutExampleCode from './BlockLayoutExample?raw';
+import BlockLayoutExampleStyles from './BlockLayoutExample.scss?raw';
+import FallbackFontExampleCode from './FallbackFontExample?raw';
+import FallbackFontExampleStyles from './FallbackFontExample.scss?raw';
+import BadLineHeightExampleCode from './BadLineHeightExample?raw';
+import BadLineHeightExampleStyles from './BadLineHeightExample.scss?raw';
 
 const firstReferenceUrl = 'https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align',
     css2SpecUrl = 'https://www.w3.org/TR/CSS2/visudet.html#inline-box-height';

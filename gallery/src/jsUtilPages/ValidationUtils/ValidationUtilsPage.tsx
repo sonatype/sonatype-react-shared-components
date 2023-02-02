@@ -9,10 +9,10 @@ import { NxP, NxCode, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
-const validationErrorsExampleCode = require('./ValidationErrorsExample?raw'),
-    hasValidationErrorsExampleCode = require('./HasValidationErrorsExample?raw'),
-    getFirstValidationErrorExampleCode = require('./GetFirstValidationErrorExample?raw'),
-    combineValidationErrorsExampleCode = require('./CombineValidationErrorsExample?raw');
+import validationErrorsExampleCode from './ValidationErrorsExample?raw';
+import hasValidationErrorsExampleCode from './HasValidationErrorsExample?raw';
+import getFirstValidationErrorExampleCode from './GetFirstValidationErrorExample?raw';
+import combineValidationErrorsExampleCode from './CombineValidationErrorsExample?raw';
 
 const ValidationUtilsPage = () =>
   <>

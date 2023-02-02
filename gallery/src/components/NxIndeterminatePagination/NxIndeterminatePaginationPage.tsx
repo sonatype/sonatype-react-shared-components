@@ -13,9 +13,9 @@ import NxIndeterminatePaginationFirstPageExample from './NxIndeterminatePaginati
 import NxIndeterminatePaginationLastPageExample from './NxIndeterminatePaginationLastPageExample';
 import NxIndeterminatePaginationExample from './NxIndeterminatePaginationExample';
 
-const nxIndeterminatePaginationCode = require('./NxIndeterminatePaginationExample?raw');
-const nxIndeterminatePaginationFirstPageCode = require('./NxIndeterminatePaginationFirstPageExample?raw');
-const nxIndeterminatePaginationLastPageCode = require('./NxIndeterminatePaginationLastPageExample?raw');
+import nxIndeterminatePaginationCode from './NxIndeterminatePaginationExample?raw';
+import nxIndeterminatePaginationFirstPageCode from './NxIndeterminatePaginationFirstPageExample?raw';
+import nxIndeterminatePaginationLastPageCode from './NxIndeterminatePaginationLastPageExample?raw';
 
 const NxIndeterminatePaginationPage = () =>
   <>

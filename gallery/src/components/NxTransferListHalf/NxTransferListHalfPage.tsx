@@ -18,13 +18,12 @@ import NxTransferListHalfOrderingWithDisableTransferExample
 
 import '../NxTooltip/NxTooltipExample.scss';
 
-const nxTransferListHalfExample = require('./NxTransferListHalfExample?raw'),
-    nxTransferListHalfCustomTooltipExample = require('./NxTransferListHalfCustomTooltipExample?raw'),
-    nxTransferListHalfOrderingExample = require('./NxTransferListHalfOrderingExample?raw'),
-    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw'),
-    nxTransferListHalfDisableTransferExample = require('./NxTransferListHalfDisableTransferExample?raw'),
-    nxTransferListHalfOrderingWithDisableTransferExample =
-      require('./NxTransferListHalfOrderingWithDisableTransferExample?raw');
+import nxTransferListHalfExample from './NxTransferListHalfExample?raw';
+import nxTransferListHalfCustomTooltipExample from './NxTransferListHalfCustomTooltipExample?raw';
+import nxTransferListHalfOrderingExample from './NxTransferListHalfOrderingExample?raw';
+import tooltipScss from '../NxTooltip/NxTooltipExample.scss?raw';
+import nxTransferListHalfDisableTransferExample from './NxTransferListHalfDisableTransferExample?raw';
+import nxTransferListHalfOrderingWithDisableTransferExample from './NxTransferListHalfOrderingWithDisableTransferExample?raw';
 
 const tooltipExampleCode = [nxTransferListHalfCustomTooltipExample, { language: 'scss', content: tooltipScss }];
 

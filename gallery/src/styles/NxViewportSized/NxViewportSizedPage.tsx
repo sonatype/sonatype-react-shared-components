@@ -21,10 +21,10 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const NxViewportSizedExample = require('./NxViewportSizedExample.tsx?raw'),
-    NxViewportSizedExpandingExample = require('./NxViewportSizedExpandingExample.tsx?raw'),
-    NxViewportSizedAdjacentExample = require('./NxViewportSizedAdjacentExample.tsx?raw'),
-    NxViewportSizedAdjacentStyles = require('./NxViewportSizedAdjacentExample.scss?raw');
+import NxViewportSizedExample from './NxViewportSizedExample.tsx?raw';
+import NxViewportSizedExpandingExample from './NxViewportSizedExpandingExample.tsx?raw';
+import NxViewportSizedAdjacentExample from './NxViewportSizedAdjacentExample.tsx?raw';
+import NxViewportSizedAdjacentStyles from './NxViewportSizedAdjacentExample.scss?raw';
 
 export default function NxViewportSizedPage() {
   return (

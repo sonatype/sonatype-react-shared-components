@@ -12,12 +12,11 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxPageTitlePolicyViolationIndicatorExample from './NxPageTitlePolicyViolationIndicatorExample';
 import NxPageTitleEverythingExample from './NxPageTitleEverythingExample';
 
-const nxPageTitleCode = require('./NxPageTitleExample.html'),
-    nxPageTitleActionsCode = require('./NxPageTitleActionsExample.html'),
-    nxPageTitleSubtitleCode = require('./NxPageTitleSubtitleExample.html'),
-    nxPageTitlePolicyViolationIndicatorCode =
-      require('./NxPageTitlePolicyViolationIndicatorExample.tsx?raw'),
-    nxPageTitleEverythingCode = require('./NxPageTitleEverythingExample.tsx?raw');
+import nxPageTitleCode from './NxPageTitleExample.html?raw';
+import nxPageTitleActionsCode from './NxPageTitleActionsExample.html?raw';
+import nxPageTitleSubtitleCode from './NxPageTitleSubtitleExample.html?raw';
+import nxPageTitlePolicyViolationIndicatorCode from './NxPageTitlePolicyViolationIndicatorExample.tsx?raw';
+import nxPageTitleEverythingCode from './NxPageTitleEverythingExample.tsx?raw';
 
 const NxPageTitlePage = () =>
   <>

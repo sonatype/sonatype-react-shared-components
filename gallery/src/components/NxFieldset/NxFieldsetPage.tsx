@@ -15,11 +15,11 @@ import NxFieldsetRequiredPureStateHelperExample from './NxFieldsetRequiredPureSt
 import NxFieldsetSublabelExample from './NxFieldsetSublabelExample';
 import NxFieldsetRichLabelExample from './NxFieldsetRichLabelExample';
 
-const nxFieldsetExampleCode = require('./NxFieldsetExample?raw'),
-    nxFieldsetSublabelExampleCode = require('./NxFieldsetSublabelExample?raw'),
-    nxFieldsetRichLabelExampleCode = require('./NxFieldsetRichLabelExample?raw'),
-    nxFieldsetRequiredExampleCode = require('./NxFieldsetRequiredExample?raw'),
-    nxFieldsetRequiredPureStateHelperExampleCode = require('./NxFieldsetRequiredPureStateHelperExample?raw');
+import nxFieldsetExampleCode from './NxFieldsetExample?raw';
+import nxFieldsetSublabelExampleCode from './NxFieldsetSublabelExample?raw';
+import nxFieldsetRichLabelExampleCode from './NxFieldsetRichLabelExample?raw';
+import nxFieldsetRequiredExampleCode from './NxFieldsetRequiredExample?raw';
+import nxFieldsetRequiredPureStateHelperExampleCode from './NxFieldsetRequiredPureStateHelperExample?raw';
 
 const NxFieldsetPage = () =>
   <>

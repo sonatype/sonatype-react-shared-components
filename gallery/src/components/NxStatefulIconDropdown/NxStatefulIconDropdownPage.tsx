@@ -11,7 +11,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxStatefulIconDropdownExample from './NxStatefulIconDropdownExample';
 
-const nxStatefulIconDropdownExampleCode = require('./NxStatefulIconDropdownExample?raw');
+import nxStatefulIconDropdownExampleCode from './NxStatefulIconDropdownExample?raw';
 
 const NxStatefulIconDropdownPage = () =>
   <>

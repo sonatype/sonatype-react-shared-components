@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulBreadcrumbExample from './NxStatefulBreadcrumbExample';
 
-const exampleCode = require('./NxStatefulBreadcrumbExample?raw');
+import exampleCode from './NxStatefulBreadcrumbExample?raw';
 
 const NxStatefulBreadcrumbPage = () =>
   <>

@@ -14,10 +14,10 @@ import NxAlertSuccessExample from './NxAlertSuccessExample';
 import NxAlertWarningExample from './NxAlertWarningExample';
 import NxAlertErrorExample from './NxAlertErrorExample';
 
-const nxAlertInfoCode = require('./NxAlertInfoExample?raw'),
-    nxAlertSuccessCode = require('./NxAlertSuccessExample?raw'),
-    nxAlertWarningCode = require('./NxAlertWarningExample?raw'),
-    nxAlertErrorCode = require('./NxAlertErrorExample?raw');
+import nxAlertInfoCode from './NxAlertInfoExample?raw';
+import nxAlertSuccessCode from './NxAlertSuccessExample?raw';
+import nxAlertWarningCode from './NxAlertWarningExample?raw';
+import nxAlertErrorCode from './NxAlertErrorExample?raw';
 
 const NxAlertPage = () =>
   <>

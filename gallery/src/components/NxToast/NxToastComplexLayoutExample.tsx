@@ -35,7 +35,7 @@ import {
   faLink
 } from '@fortawesome/free-solid-svg-icons';
 
-const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
+import sidebarLogoPath from '../../assets/images/logo-plaid-villain-text.png';
 
 interface ToastModel {
   id: number;

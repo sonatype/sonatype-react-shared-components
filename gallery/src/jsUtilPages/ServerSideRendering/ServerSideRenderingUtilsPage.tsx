@@ -11,7 +11,7 @@ import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-compon
 
 import NxStableUniqueIdContextExample from './NxStableUniqueIdContextExample';
 
-const nxStableUniqueIdContextCode = require('./NxStableUniqueIdContextExample?raw');
+import nxStableUniqueIdContextCode from './NxStableUniqueIdContextExample?raw';
 
 const ServerSideRenderingUtilsPage = () =>
   <>

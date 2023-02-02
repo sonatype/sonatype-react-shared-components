@@ -17,13 +17,13 @@ import NxThreatCounterSmallColumnExample from './NxThreatCounterSmallColumnExamp
 import NxThreatCounterGridExample from './NxThreatCounterGridExample';
 import NxThreatCounterSmallGridExample from './NxThreatCounterSmallGridExample';
 
-const NxThreatCounterCode = require('./NxThreatCounterExample?raw'),
-    NxThreatCounterWrappingCode = require('./NxThreatCounterWrappingExample?raw'),
-    NxThreatCounterSmallCode = require('./NxThreatCounterSmallExample?raw'),
-    NxThreatCounterColumnCode = require('./NxThreatCounterColumnExample?raw'),
-    NxThreatCounterSmallColumnCode = require('./NxThreatCounterSmallColumnExample?raw'),
-    NxThreatCounterGridCode = require('./NxThreatCounterGridExample?raw'),
-    NxThreatCounterSmallGridCode = require('./NxThreatCounterSmallGridExample?raw');
+import NxThreatCounterCode from './NxThreatCounterExample?raw';
+import NxThreatCounterWrappingCode from './NxThreatCounterWrappingExample?raw';
+import NxThreatCounterSmallCode from './NxThreatCounterSmallExample?raw';
+import NxThreatCounterColumnCode from './NxThreatCounterColumnExample?raw';
+import NxThreatCounterSmallColumnCode from './NxThreatCounterSmallColumnExample?raw';
+import NxThreatCounterGridCode from './NxThreatCounterGridExample?raw';
+import NxThreatCounterSmallGridCode from './NxThreatCounterSmallGridExample?raw';
 
 const NxThreatCounterPage = () =>
   <>

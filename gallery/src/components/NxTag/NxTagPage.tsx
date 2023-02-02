@@ -15,11 +15,11 @@ import NxTagNarrowExample from './NxTagNarrowExample';
 import NxTagWithTooltipExample from './NxTagWithTooltipExample';
 import NxSelectableTagWithTooltipExample from './NxSelectableTagWithTooltipExample';
 
-const NxTagExampleCode = require('./NxTagExample?raw');
-const NxSelectableTagExampleCode = require('./NxSelectableTagExample?raw');
-const NxTagNarrowExampleCode = require('./NxTagNarrowExample?raw');
-const NxTagWithTooltipExampleCode = require('./NxTagWithTooltipExample?raw');
-const NxSelectableTagWithTooltipExampleCode = require('./NxSelectableTagWithTooltipExample?raw');
+import NxTagExampleCode from './NxTagExample?raw';
+import NxSelectableTagExampleCode from './NxSelectableTagExample?raw';
+import NxTagNarrowExampleCode from './NxTagNarrowExample?raw';
+import NxTagWithTooltipExampleCode from './NxTagWithTooltipExample?raw';
+import NxSelectableTagWithTooltipExampleCode from './NxSelectableTagWithTooltipExample?raw';
 
 const NxTagPage = () =>
   <>

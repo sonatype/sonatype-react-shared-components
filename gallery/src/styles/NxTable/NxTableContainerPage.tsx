@@ -11,10 +11,10 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxTableScrollingExample from './NxTableScrollingExample';
 
-const NxTableFooterCode = require('./NxTableFooterExample.html'),
-    NxTableScrollingCode = require('./NxTableScrollingExample.tsx?raw'),
-    NxTableUnfilledScrollContainerCode = require('./NxTableUnfilledScrollContainerExample.html'),
-    NxTableUnfilledContainerWithFooterCode = require('./NxTableUnfilledContainerWithFooterExample.html');
+import NxTableFooterCode from './NxTableFooterExample.html?raw';
+import NxTableScrollingCode from './NxTableScrollingExample.tsx?raw';
+import NxTableUnfilledScrollContainerCode from './NxTableUnfilledScrollContainerExample.html?raw';
+import NxTableUnfilledContainerWithFooterCode from './NxTableUnfilledContainerWithFooterExample.html?raw';
 
 const NxTableContainerPage = () =>
   <>

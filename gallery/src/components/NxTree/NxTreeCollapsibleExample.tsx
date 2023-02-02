@@ -8,7 +8,7 @@ import React from 'react';
 import { NxFontAwesomeIcon, NxTextLink, NxTree, useToggle } from '@sonatype/react-shared-components';
 import { faFile, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
-const catImagePath = require('../../assets/images/cat1.jpg');
+import catImagePath from '../../assets/images/cat1.jpg';
 
 export default function NxTreeCollapsibleExample() {
   const [rootOpen, toggleRootOpen] = useToggle(true),

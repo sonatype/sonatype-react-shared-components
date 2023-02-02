@@ -15,9 +15,9 @@ import NxOverflowTooltipDynamicExample from './NxOverflowTooltipDynamicExample';
 
 import './NxOverflowTooltipExample.scss';
 
-const overflowTooltipsExampleCode = require('./NxOverflowTooltipExample?raw');
-const overflowTooltipsDescendantExampleCode = require('./NxOverflowTooltipDescendantExample?raw');
-const overflowTooltipsDynamicExampleCode = require('./NxOverflowTooltipDynamicExample?raw');
+import overflowTooltipsExampleCode from './NxOverflowTooltipExample?raw';
+import overflowTooltipsDescendantExampleCode from './NxOverflowTooltipDescendantExample?raw';
+import overflowTooltipsDynamicExampleCode from './NxOverflowTooltipDynamicExample?raw';
 
 export default function NxOverflowTooltipPage() {
   return (

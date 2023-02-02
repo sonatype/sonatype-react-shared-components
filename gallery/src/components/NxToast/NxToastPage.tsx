@@ -22,10 +22,10 @@ import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 import CodeExample from '../../CodeExample';
 
-const NxToastComplexLayoutExampleCode = require('./NxToastComplexLayoutExample?raw'),
-    NxToastSimpleLayoutExampleCode = require('./NxToastSimpleLayoutExample?raw'),
-    NxToastLegacyLayoutExampleCode = require('./NxToastLegacyLayoutExample?raw'),
-    NxToastWithNxDrawerExample = require('./NxToastWithNxDrawerExample?raw');
+import NxToastComplexLayoutExampleCode from './NxToastComplexLayoutExample?raw';
+import NxToastSimpleLayoutExampleCode from './NxToastSimpleLayoutExample?raw';
+import NxToastLegacyLayoutExampleCode from './NxToastLegacyLayoutExample?raw';
+import NxToastWithNxDrawerExample from './NxToastWithNxDrawerExample?raw';
 
 const NxToastPage = () =>
   <>

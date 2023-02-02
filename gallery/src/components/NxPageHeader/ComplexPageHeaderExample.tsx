@@ -8,7 +8,7 @@ import React from 'react';
 
 import { NxButton, NxPageHeader } from '@sonatype/react-shared-components';
 
-const customLogo = require('../../assets/images/custom-logo.png');
+import customLogo from '../../assets/images/custom-logo.png';
 
 const ComplexPageHeaderExample = () => {
   const links = [{

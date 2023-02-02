@@ -17,11 +17,11 @@ import NxAccordionIconButtonHeaderExample from './NxAccordionIconButtonHeaderExa
 import NxAccordionWithNxListExample from './NxAccordionWithNxListExample';
 import { useLocation } from 'react-router';
 
-const NxAccordionSimpleCode = require('./NxAccordionExample?raw'),
-    NxAccordionComplexCode = require('./NxAccordionComplexExample?raw'),
-    NxAccordionButtonHeaderCode = require('./NxAccordionButtonHeaderExample?raw'),
-    NxAccordionIconButtonHeaderCode = require('./NxAccordionIconButtonHeaderExample?raw'),
-    NxAccordionWithNxListCode = require('./NxAccordionWithNxListExample?raw');
+import NxAccordionSimpleCode from './NxAccordionExample?raw';
+import NxAccordionComplexCode from './NxAccordionComplexExample?raw';
+import NxAccordionButtonHeaderCode from './NxAccordionButtonHeaderExample?raw';
+import NxAccordionIconButtonHeaderCode from './NxAccordionIconButtonHeaderExample?raw';
+import NxAccordionWithNxListCode from './NxAccordionWithNxListExample?raw';
 
 const NxAccordionPage = () => {
   const { search } = useLocation(),

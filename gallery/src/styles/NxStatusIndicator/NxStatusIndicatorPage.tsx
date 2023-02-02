@@ -11,8 +11,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatusIndicatorComponentExample from './NxStatusIndicatorComponentExample';
 
-const nxStatusIndicatorExampleCode = require('./NxStatusIndicatorExample.html'),
-    nxStatusIndicatorComponentExampleCode = require('./NxStatusIndicatorComponentExample?raw');
+import nxStatusIndicatorExampleCode from './NxStatusIndicatorExample.html?raw';
+import nxStatusIndicatorComponentExampleCode from './NxStatusIndicatorComponentExample?raw';
 
 const NxThreatIndicatorPage = () =>
   <>

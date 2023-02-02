@@ -24,13 +24,13 @@ import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
-const NxDrawerConditionalRenderingSourceCode = require('./NxDrawerConditionalRenderingExample?raw');
-const NxDrawerSourceCode = require('./NxDrawerExample?raw');
-const NxDrawerVariantSourceCode = require('./NxDrawerVariantExample?raw');
-const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubtitleOrDescriptionExample?raw');
-const NxDrawerEscSourceCode = require('./NxDrawerEscExample?raw');
-const NxDrawerWithNxFormSourceCode = require('./NxDrawerWithNxFormExample?raw');
-const NxDrawerWithNxToastSourceCode = require('./NxDrawerWithNxToastExample?raw');
+import NxDrawerConditionalRenderingSourceCode from './NxDrawerConditionalRenderingExample?raw';
+import NxDrawerSourceCode from './NxDrawerExample?raw';
+import NxDrawerVariantSourceCode from './NxDrawerVariantExample?raw';
+import NxDrawerWithSubtitleOrDescriptionSourceCode from './NxDrawerWithSubtitleOrDescriptionExample?raw';
+import NxDrawerEscSourceCode from './NxDrawerEscExample?raw';
+import NxDrawerWithNxFormSourceCode from './NxDrawerWithNxFormExample?raw';
+import NxDrawerWithNxToastSourceCode from './NxDrawerWithNxToastExample?raw';
 
 export default function NxDrawerPage() {
   return (

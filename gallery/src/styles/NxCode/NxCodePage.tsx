@@ -9,7 +9,7 @@ import { NxCode, NxP } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxCodeExampleCode = require('./NxCodeExample.html');
+import nxCodeExampleCode from './NxCodeExample.html?raw';
 
 const NxCodePage = () => {
   return (

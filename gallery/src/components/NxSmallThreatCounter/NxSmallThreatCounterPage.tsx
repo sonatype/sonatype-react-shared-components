@@ -13,9 +13,9 @@ import NxSmallThreatCounterExample from './NxSmallThreatCounterExample';
 import NxSmallThreatCounterCustomExample from './NxSmallThreatCounterCustomExample';
 import NxSmallThreatCounterInfiniteMaxDigitsExample from './NxSmallThreatCounterInfiniteMaxDigitsExample';
 
-const NxSmallThreatCounterCode = require('./NxSmallThreatCounterExample?raw');
-const NxSmallThreatCounterCustomCode = require('./NxSmallThreatCounterCustomExample?raw');
-const NxSmallThreatCounterInfiniteMaxDigitsCode = require('./NxSmallThreatCounterInfiniteMaxDigitsExample?raw');
+import NxSmallThreatCounterCode from './NxSmallThreatCounterExample?raw';
+import NxSmallThreatCounterCustomCode from './NxSmallThreatCounterCustomExample?raw';
+import NxSmallThreatCounterInfiniteMaxDigitsCode from './NxSmallThreatCounterInfiniteMaxDigitsExample?raw';
 
 const NxSmallThreatCounterPage = () =>
   <>

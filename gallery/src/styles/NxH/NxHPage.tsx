@@ -9,10 +9,10 @@ import { NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxH1ExampleCode = require('./NxH1Example.html'),
-    nxH2ExampleCode = require('./NxH2Example.html'),
-    nxH3ExampleCode = require('./NxH3Example.html'),
-    nxH4ExampleCode = require('./NxH4Example.html');
+import nxH1ExampleCode from './NxH1Example.html?raw';
+import nxH2ExampleCode from './NxH2Example.html?raw';
+import nxH3ExampleCode from './NxH3Example.html?raw';
+import nxH4ExampleCode from './NxH4Example.html?raw';
 
 const NxHPage = () => {
   return (

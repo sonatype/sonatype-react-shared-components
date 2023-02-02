@@ -13,9 +13,9 @@ import NxFormLayoutExample from './NxFormLayoutExample';
 import NxFormHorizontalLayoutExample from './NxFormHorizontalLayoutExample';
 import NxFormInlineLayoutExample from './NxFormInlineLayoutExample';
 
-const NxFormLayoutCode = require('./NxFormLayoutExample?raw');
-const NxFormHorizontalLayoutCode = require('./NxFormHorizontalLayoutExample?raw');
-const NxFormInlineLayoutCode = require('./NxFormInlineLayoutExample?raw');
+import NxFormLayoutCode from './NxFormLayoutExample?raw';
+import NxFormHorizontalLayoutCode from './NxFormHorizontalLayoutExample?raw';
+import NxFormInlineLayoutCode from './NxFormInlineLayoutExample?raw';
 
 const NxFormLayoutPage = () =>
   <>

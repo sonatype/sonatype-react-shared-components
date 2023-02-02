@@ -15,11 +15,11 @@ import NxSearchDropdownErrorExample from './NxSearchDropdownErrorExample';
 import NxSearchDropdownLongErrorExample from './NxSearchDropdownLongErrorExample';
 import NxSearchDropdownDisabledExample from './NxSearchDropdownDisabledExample';
 
-const nxSearchDropdownExampleCode = require('./NxSearchDropdownExample?raw'),
-    nxSearchDropdownWideExampleCode = require('./NxSearchDropdownWideExample?raw'),
-    nxSearchDropdownErrorExampleCode = require('./NxSearchDropdownErrorExample?raw'),
-    nxSearchDropdownLongErrorExampleCode = require('./NxSearchDropdownLongErrorExample?raw'),
-    nxSearchDropdownDisabledExampleCode = require('./NxSearchDropdownDisabledExample?raw');
+import nxSearchDropdownExampleCode from './NxSearchDropdownExample?raw';
+import nxSearchDropdownWideExampleCode from './NxSearchDropdownWideExample?raw';
+import nxSearchDropdownErrorExampleCode from './NxSearchDropdownErrorExample?raw';
+import nxSearchDropdownLongErrorExampleCode from './NxSearchDropdownLongErrorExample?raw';
+import nxSearchDropdownDisabledExampleCode from './NxSearchDropdownDisabledExample?raw';
 
 const NxSearchDropdownPage = () =>
   <>

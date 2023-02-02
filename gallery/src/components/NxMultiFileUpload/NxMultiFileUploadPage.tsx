@@ -13,9 +13,9 @@ import NxMultiFileUploadExample from './NxMultiFileUploadExample';
 import NxMultiFileUploadComplexExample from './NxMultiFileUploadComplexExample';
 import NxMultiFileUploadDisabledExample from './NxMultiFileUploadDisabledExample';
 
-const nxMultiFileUploadCode = require('./NxMultiFileUploadExample?raw');
-const nxMultiFileUploadComplexCode = require('./NxMultiFileUploadComplexExample?raw');
-const nxMultiFileUploadDisabledCode = require('./NxMultiFileUploadDisabledExample?raw');
+import nxMultiFileUploadCode from './NxMultiFileUploadExample?raw';
+import nxMultiFileUploadComplexCode from './NxMultiFileUploadComplexExample?raw';
+import nxMultiFileUploadDisabledCode from './NxMultiFileUploadDisabledExample?raw';
 
 const NxTextInputPage = () =>
   <>

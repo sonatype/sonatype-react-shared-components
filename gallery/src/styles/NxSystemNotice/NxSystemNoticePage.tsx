@@ -11,9 +11,9 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
 import CodeExample from '../../CodeExample';
 
-const nxSystemNoticeGlobalSidebarExampleCode = require('./NxSystemNoticeGlobalSidebarExample?raw'),
-    nxSystemNoticeTraditionalPageExampleCode = require('./NxSystemNoticeTraditionalPageExample?raw'),
-    nxSystemNoticeMultipleExampleCode = require('./NxSystemNoticeMultipleExample?raw');
+import nxSystemNoticeGlobalSidebarExampleCode from './NxSystemNoticeGlobalSidebarExample?raw';
+import nxSystemNoticeTraditionalPageExampleCode from './NxSystemNoticeTraditionalPageExample?raw';
+import nxSystemNoticeMultipleExampleCode from './NxSystemNoticeMultipleExample?raw';
 
 const NxSystemNoticePage = () =>
   <>

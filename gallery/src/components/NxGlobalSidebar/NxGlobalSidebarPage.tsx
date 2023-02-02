@@ -10,8 +10,8 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert, NxTextLink, NxList }
   from '@sonatype/react-shared-components';
 
-const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw'),
-    NxGlobalSidebarScrollingExample = require('./NxGlobalSidebarScrollingExample.tsx?raw');
+import NxGlobalSidebarExample from './NxGlobalSidebarExample.tsx?raw';
+import NxGlobalSidebarScrollingExample from './NxGlobalSidebarScrollingExample.tsx?raw';
 
 export default function NxGlobalSidebarPage() {
   return (

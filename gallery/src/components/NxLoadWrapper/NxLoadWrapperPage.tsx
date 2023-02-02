@@ -13,9 +13,9 @@ import NxLoadWrapperErrorRetryExample from './NxLoadWrapperErrorRetryExample';
 import NxLoadWrapperLoadingExample from './NxLoadWrapperLoadingExample';
 import NxLoadWrapperChildrenExample from './NxLoadWrapperChildrenExample';
 
-const childrenSourceCode = require('./NxLoadWrapperChildrenExample?raw');
-const loadingSourceCode = require('./NxLoadWrapperLoadingExample?raw');
-const errorRetrySourceCode = require('./NxLoadWrapperErrorRetryExample?raw');
+import childrenSourceCode from './NxLoadWrapperChildrenExample?raw';
+import loadingSourceCode from './NxLoadWrapperLoadingExample?raw';
+import errorRetrySourceCode from './NxLoadWrapperErrorRetryExample?raw';
 
 const NxLoadWrapperPage = () =>
   <>

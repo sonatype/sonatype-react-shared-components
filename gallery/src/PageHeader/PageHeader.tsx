@@ -8,8 +8,8 @@ import React from 'react';
 
 import HostedVersionsSelect from './HostedVersionsSelect';
 
-const plaidVillain = require('./plaid-villain.svg');
-const tartanLogotype = require('./tartan-logotype.svg');
+import plaidVillain from './plaid-villain.svg';
+import tartanLogotype from './tartan-logotype.svg';
 
 import './PageHeader.scss';
 

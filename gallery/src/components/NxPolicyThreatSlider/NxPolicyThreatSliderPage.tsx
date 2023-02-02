@@ -12,8 +12,8 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxPolicyThreatSliderExample from './NxPolicyThreatSliderExample';
 import NxPolicyThreatSliderDisabledExample from './NxPolicyThreatSliderDisabledExample';
 
-const NxPolicyThreatSliderCode = require('./NxPolicyThreatSliderExample?raw');
-const NxPolicyThreatSliderDisabledCode = require('./NxPolicyThreatSliderDisabledExample?raw');
+import NxPolicyThreatSliderCode from './NxPolicyThreatSliderExample?raw';
+import NxPolicyThreatSliderDisabledCode from './NxPolicyThreatSliderDisabledExample?raw';
 
 export default function NxPolicyThreatSliderPage() {
   return (

@@ -15,11 +15,11 @@ import NxThreatIndicatorListExample from './NxThreatIndicatorListExample';
 import NxThreatIndicatorTableExample from './NxThreatIndicatorTableExample';
 import NxThreatIndicatorWithTitleExample from './NxThreatIndicatorWithTitleExample';
 
-const nxThreatIndicatorByCategoryCode = require('./NxThreatIndicatorByCategoryExample?raw'),
-    nxThreatIndicatorByPolicyNumberCode = require('./NxThreatIndicatorByPolicyNumberExample?raw'),
-    nxThreatIndicatorListCode = require('./NxThreatIndicatorListExample?raw'),
-    nxThreatIndicatorTableCode = require('./NxThreatIndicatorTableExample?raw'),
-    nxThreatIndicatorWithTitleCode = require('./NxThreatIndicatorWithTitleExample?raw');
+import nxThreatIndicatorByCategoryCode from './NxThreatIndicatorByCategoryExample?raw';
+import nxThreatIndicatorByPolicyNumberCode from './NxThreatIndicatorByPolicyNumberExample?raw';
+import nxThreatIndicatorListCode from './NxThreatIndicatorListExample?raw';
+import nxThreatIndicatorTableCode from './NxThreatIndicatorTableExample?raw';
+import nxThreatIndicatorWithTitleCode from './NxThreatIndicatorWithTitleExample?raw';
 
 const NxThreatIndicatorPage = () =>
   <>

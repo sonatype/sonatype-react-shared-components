@@ -11,8 +11,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import './NxReadOnlyGridTileExample.scss';
 
-const nxReadOnlyGridTileExampleCode = require('./NxReadOnlyGridTileExample.html'),
-    nxReadOnlyGridTileExampleStyles = require('./NxReadOnlyGridTileExample.scss?raw');
+import nxReadOnlyGridTileExampleCode from './NxReadOnlyGridTileExample.html?raw';
+import nxReadOnlyGridTileExampleStyles from './NxReadOnlyGridTileExample.scss?raw';
 
 const gridCode = [nxReadOnlyGridTileExampleCode, { content: nxReadOnlyGridTileExampleStyles, language: 'scss' }];
 

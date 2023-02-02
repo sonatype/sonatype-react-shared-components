@@ -22,8 +22,8 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
-const exampleCode = require('./GlobalSidebarHeaderLoadWrapperLayout?raw');
+import logoImg from '../../assets/images/logo-plaid-villain-text.png';
+import exampleCode from './GlobalSidebarHeaderLoadWrapperLayout?raw';
 
 export default function GlobalSidebarHeaderLoadWrapperLayout() {
   const [loading, setLoading] = useState(true),

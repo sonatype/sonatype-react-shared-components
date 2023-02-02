@@ -13,9 +13,8 @@ import NxStatefulCollapsibleRadioSelectExample from './NxStatefulCollapsibleRadi
 import NxStatefulCollapsibleRadioSelectDisabledExample
   from './NxStatefulCollapsibleRadioSelectDisabledExample';
 
-const nxStatefulCollapsibleItemsRadioSelectExampleCode = require('./NxStatefulCollapsibleRadioSelectExample?raw'),
-    nxStatefulCollapsibleItemsRadioSelectDisabledExampleCode =
-        require('./NxStatefulCollapsibleRadioSelectDisabledExample?raw');
+import nxStatefulCollapsibleItemsRadioSelectExampleCode from './NxStatefulCollapsibleRadioSelectExample?raw';
+import nxStatefulCollapsibleItemsRadioSelectDisabledExampleCode from './NxStatefulCollapsibleRadioSelectDisabledExample?raw';
 
 const NxStatefulCollapsibleRadioSelectPage = () =>
   <>

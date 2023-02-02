@@ -11,8 +11,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import './NxFontSizeScssExample.scss';
 
-const nxFontSizeHtmlExampleCode = require('./NxFontSizeHtmlExample.html');
-const nxFontSizeScssExampleCode = require('./NxFontSizeScssExample.scss?raw');
+import nxFontSizeHtmlExampleCode from './NxFontSizeHtmlExample.html?raw';
+import nxFontSizeScssExampleCode from './NxFontSizeScssExample.scss?raw';
 
 const NxFontSizePage = () =>
   <>

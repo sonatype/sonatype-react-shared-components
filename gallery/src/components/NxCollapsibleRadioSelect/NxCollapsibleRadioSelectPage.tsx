@@ -13,10 +13,9 @@ import NxCollapsibleRadioSelectExample from './NxCollapsibleRadioSelectExample';
 import NxCollapsibleRadioSelectCustomTooltipExample from './NxCollapsibleRadioSelectCustomTooltipExample';
 import NxCollapsibleRadioSelectDisabledExample from './NxCollapsibleRadioSelectDisabledExample';
 
-const NxCollapsibleRadioSelectExampleCode = require('./NxCollapsibleRadioSelectExample?raw'),
-    NxCollapsibleRadioSelectDisabledExampleCode = require('./NxCollapsibleRadioSelectDisabledExample?raw'),
-    NxCollapsibleRadioSelectCustomTooltipExampleCode =
-        require('./NxCollapsibleRadioSelectCustomTooltipExample?raw');
+import NxCollapsibleRadioSelectExampleCode from './NxCollapsibleRadioSelectExample?raw';
+import NxCollapsibleRadioSelectDisabledExampleCode from './NxCollapsibleRadioSelectDisabledExample?raw';
+import NxCollapsibleRadioSelectCustomTooltipExampleCode from './NxCollapsibleRadioSelectCustomTooltipExample?raw';
 
 const NxCollapsibleRadioSelectPage = () =>
   <>

@@ -12,9 +12,9 @@ import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-compon
 import UseUniqueIdUniqueExample from './UseUniqueIdUniqueExample';
 import UseUniqueIdExplicitExample from './UseUniqueIdExplicitExample';
 
-const getUniqueIdExampleCode = require('./GetUniqueIdExample?raw'),
-    useUniqueIdUniqueExampleCode = require('./UseUniqueIdUniqueExample?raw'),
-    useUniqueIdExplicitExampleCode = require('./UseUniqueIdExplicitExample?raw');
+import getUniqueIdExampleCode from './GetUniqueIdExample?raw';
+import useUniqueIdUniqueExampleCode from './UseUniqueIdUniqueExample?raw';
+import useUniqueIdExplicitExampleCode from './UseUniqueIdExplicitExample?raw';
 
 const IdUtilPage = () =>
   <>

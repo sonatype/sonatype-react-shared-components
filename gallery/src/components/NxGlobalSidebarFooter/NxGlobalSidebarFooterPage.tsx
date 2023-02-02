@@ -11,8 +11,8 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
 import CodeExample from '../../CodeExample';
 
-const NxGlobalSidebarFooterExample = require('./NxGlobalSidebarFooterExample.tsx?raw'),
-    NxGlobalSidebarFooterMinimalExample = require('./NxGlobalSidebarFooterMinimalExample.tsx?raw');
+import NxGlobalSidebarFooterExample from './NxGlobalSidebarFooterExample.tsx?raw';
+import NxGlobalSidebarFooterMinimalExample from './NxGlobalSidebarFooterMinimalExample.tsx?raw';
 
 export default function NxGlobalSidebarFooterPage() {
   return (

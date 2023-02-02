@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import Example from './NxStatefulSearchTransferListExample';
 
-const exampleCode = require('./NxStatefulSearchTransferListExample?raw');
+import exampleCode from './NxStatefulSearchTransferListExample?raw';
 
 const NxStatefulSearchTransferListPage = () =>
   <>

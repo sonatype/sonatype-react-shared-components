@@ -11,7 +11,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxStatefulSegmentedButtonExample from './NxStatefulSegmentedButtonExample';
 
-const nxStatefulSegmentedButtonCode = require('./NxStatefulSegmentedButtonExample?raw');
+import nxStatefulSegmentedButtonCode from './NxStatefulSegmentedButtonExample?raw';
 
 export default function NxStatefulSegmentedButtonPage() {
   return (

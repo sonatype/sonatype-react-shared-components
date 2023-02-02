@@ -15,11 +15,11 @@ import NxScrollRenderUnfilledContainerExample from './NxScrollRenderUnfilledCont
 import NxScrollRenderEmptyExample from './NxScrollRenderEmptyExample';
 import NxScrollRenderEmptyListExample from './NxScrollRenderEmptyListExample';
 
-const NxScrollRenderExampleCode = require('./NxScrollRenderExample?raw'),
-    NxScrollRenderNoReuseExampleCode = require('./NxScrollRenderNoReuseExample?raw'),
-    NxScrollRenderUnfilledContainerExampleCode = require('./NxScrollRenderUnfilledContainerExample?raw'),
-    NxScrollRenderEmptyExampleCode = require('./NxScrollRenderEmptyExample?raw'),
-    NxScrollRenderEmptyListExampleCode = require('./NxScrollRenderEmptyListExample?raw');
+import NxScrollRenderExampleCode from './NxScrollRenderExample?raw';
+import NxScrollRenderNoReuseExampleCode from './NxScrollRenderNoReuseExample?raw';
+import NxScrollRenderUnfilledContainerExampleCode from './NxScrollRenderUnfilledContainerExample?raw';
+import NxScrollRenderEmptyExampleCode from './NxScrollRenderEmptyExample?raw';
+import NxScrollRenderEmptyListExampleCode from './NxScrollRenderEmptyListExample?raw';
 
 const NxScrollRenderPage = () =>
   <>

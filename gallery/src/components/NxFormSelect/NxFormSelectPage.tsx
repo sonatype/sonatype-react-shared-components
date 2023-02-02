@@ -15,11 +15,11 @@ import NxFormSelectOverflowExample from './NxFormSelectOverflowExample';
 import NxFormSelectWidthsExample from './NxFormSelectWidthsExample';
 import NxFormSelectDisabledExample from './NxFormSelectDisabledExample';
 
-const nxFormSelectExampleSourceCode = require('./NxFormSelectExample?raw');
-const nxFormSelectValidationExampleSourceCode = require('./NxFormSelectValidationExample?raw');
-const nxFormSelectOverflowExampleSourceCode = require('./NxFormSelectOverflowExample?raw');
-const nxFormSelectWidthsExampleSourceCode = require('./NxFormSelectWidthsExample?raw');
-const nxFormSelectDisabledExampleSourceCode = require('./NxFormSelectDisabledExample?raw');
+import nxFormSelectExampleSourceCode from './NxFormSelectExample?raw';
+import nxFormSelectValidationExampleSourceCode from './NxFormSelectValidationExample?raw';
+import nxFormSelectOverflowExampleSourceCode from './NxFormSelectOverflowExample?raw';
+import nxFormSelectWidthsExampleSourceCode from './NxFormSelectWidthsExample?raw';
+import nxFormSelectDisabledExampleSourceCode from './NxFormSelectDisabledExample?raw';
 
 const NxFormSelectPage = () =>
   <>

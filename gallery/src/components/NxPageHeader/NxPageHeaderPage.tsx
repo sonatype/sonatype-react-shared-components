@@ -18,15 +18,14 @@ import LinksPageHeaderExample from './LinksPageHeaderExample';
 import ExtraContentPageHeaderExample from './ExtraContentPageHeaderExample';
 import ComplexPageHeaderExample from './ComplexPageHeaderExample';
 
-const simplePageHeaderExampleCode = require('./SimplePageHeaderExample?raw'),
-    customLogoPageHeaderExampleCode = require('./CustomLogoPageHeaderExample?raw'),
-    productNamePageHeaderExampleCode = require('./ProductNamePageHeaderExample?raw'),
-    productNameAndVersionPageHeaderExampleCode =
-        require('./ProductNameAndVersionPageHeaderExample?raw'),
-    homeLinkPageHeaderExampleCode = require('./HomeLinkPageHeaderExample?raw'),
-    linksPageHeaderExampleCode = require('./LinksPageHeaderExample?raw'),
-    extraContentPageHeaderExampleCode = require('./ExtraContentPageHeaderExample?raw'),
-    complexPageHeaderExampleCode = require('./ComplexPageHeaderExample?raw');
+import simplePageHeaderExampleCode from './SimplePageHeaderExample?raw';
+import customLogoPageHeaderExampleCode from './CustomLogoPageHeaderExample?raw';
+import productNamePageHeaderExampleCode from './ProductNamePageHeaderExample?raw';
+import productNameAndVersionPageHeaderExampleCode from './ProductNameAndVersionPageHeaderExample?raw';
+import homeLinkPageHeaderExampleCode from './HomeLinkPageHeaderExample?raw';
+import linksPageHeaderExampleCode from './LinksPageHeaderExample?raw';
+import extraContentPageHeaderExampleCode from './ExtraContentPageHeaderExample?raw';
+import complexPageHeaderExampleCode from './ComplexPageHeaderExample?raw';
 
 const NxPageHeaderPage = () =>
   <>

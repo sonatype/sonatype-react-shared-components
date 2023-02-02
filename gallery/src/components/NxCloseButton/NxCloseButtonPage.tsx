@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxCloseButtonExample from './NxCloseButtonExample';
 
-const nxCloseButtonExampleCode = require('./NxCloseButtonExample?raw');
+import nxCloseButtonExampleCode from './NxCloseButtonExample?raw';
 
 const NxCloseButtonPage = () =>
   <>

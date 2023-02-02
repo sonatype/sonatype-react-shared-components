@@ -12,10 +12,8 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import NxPolicyViolationIndicatorByCategoryExample from './NxPolicyViolationIndicatorByCategoryExample';
 import NxPolicyViolationIndicatorByPolicyNumberExample from './NxPolicyViolationIndicatorByPolicyNumberExample';
 
-const nxPolicyViolationIndicatorByCategoryCode =
-          require('./NxPolicyViolationIndicatorByCategoryExample?raw'),
-    nxPolicyViolationIndicatorByPolicyNumberCode =
-        require('./NxPolicyViolationIndicatorByPolicyNumberExample?raw');
+import nxPolicyViolationIndicatorByCategoryCode from './NxPolicyViolationIndicatorByCategoryExample?raw';
+import nxPolicyViolationIndicatorByPolicyNumberCode from './NxPolicyViolationIndicatorByPolicyNumberExample?raw';
 
 const NxPolicyViolationIndicatorPage = () =>
   <>

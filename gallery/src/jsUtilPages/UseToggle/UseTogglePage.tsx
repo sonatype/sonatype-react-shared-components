@@ -12,8 +12,8 @@ import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-compon
 import UseToggleExample from './UseToggleExample';
 import UseToggleThirdItemExample from './UseToggleThirdItemExample';
 
-const useToggleExampleCode = require('./UseToggleExample?raw'),
-    useToggleThirdItemExampleCode = require('./UseToggleThirdItemExample?raw');
+import useToggleExampleCode from './UseToggleExample?raw';
+import useToggleThirdItemExampleCode from './UseToggleThirdItemExample?raw';
 
 const UseTogglePage = () =>
   <>

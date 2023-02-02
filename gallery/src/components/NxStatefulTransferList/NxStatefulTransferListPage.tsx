@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulTransferListExample from './NxStatefulTransferListExample';
 
-const nxStatefulTransferListExample = require('./NxStatefulTransferListExample?raw');
+import nxStatefulTransferListExample from './NxStatefulTransferListExample?raw';
 
 const NxTransferListPage = () =>
   <>

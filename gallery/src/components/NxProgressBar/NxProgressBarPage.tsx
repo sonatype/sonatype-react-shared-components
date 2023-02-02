@@ -15,11 +15,11 @@ import NxProgressBarSmallExample from './NxProgressBarSmallExample';
 import NxProgressBarNormalExample from './NxProgressBarNormalExample';
 import NxProgressBarFullExample from './NxProgressBarFullExample';
 
-const nxProgressBarInlineExampleCode = require('./NxProgressBarInlineExample?raw');
-const nxProgressBarStepsExampleCode = require('./NxProgressBarStepsExample?raw');
-const nxProgressBarSmallExampleCode = require('./NxProgressBarSmallExample?raw');
-const nxProgressBarNormalExampleCode = require('./NxProgressBarNormalExample?raw');
-const nxProgressBarFullExampleCode = require('./NxProgressBarFullExample?raw');
+import nxProgressBarInlineExampleCode from './NxProgressBarInlineExample?raw';
+import nxProgressBarStepsExampleCode from './NxProgressBarStepsExample?raw';
+import nxProgressBarSmallExampleCode from './NxProgressBarSmallExample?raw';
+import nxProgressBarNormalExampleCode from './NxProgressBarNormalExample?raw';
+import nxProgressBarFullExampleCode from './NxProgressBarFullExample?raw';
 
 const NxProgressBarPage = () =>
   <>

@@ -9,7 +9,7 @@ import { NxP, NxCode } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxBlockquoteExampleCode = require('./NxBlockquoteExample.html');
+import nxBlockquoteExampleCode from './NxBlockquoteExample.html?raw';
 
 const NxBlockquotePage = () => {
   return (

@@ -9,7 +9,7 @@ import { NxP, NxCode, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
-const nxScrollableExampleCode = require('./NxScrollableExample.html');
+import nxScrollableExampleCode from './NxScrollableExample.html?raw';
 
 const NxScrollablePage = () =>
   <>

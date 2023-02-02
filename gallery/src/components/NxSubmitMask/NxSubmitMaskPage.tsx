@@ -14,10 +14,10 @@ import NxSubmitMaskSuccessExample from './NxSubmitMaskSuccessExample';
 import NxSubmitMaskCustomSuccessMessageExample from './NxSubmitMaskCustomSuccessMessageExample';
 import NxSubmitMaskFullscreenExample from './NxSubmitMaskFullscreenExample';
 
-const NxSubmitMaskCustomMessageCode = require('./NxSubmitMaskCustomMessageExample?raw'),
-    NxSubmitMaskSuccessCode = require('./NxSubmitMaskSuccessExample?raw'),
-    NxSubmitMaskCustomSuccessMessageCode = require('./NxSubmitMaskCustomSuccessMessageExample?raw'),
-    NxSubmitMaskFullscreenCode = require('./NxSubmitMaskFullscreenExample?raw');
+import NxSubmitMaskCustomMessageCode from './NxSubmitMaskCustomMessageExample?raw';
+import NxSubmitMaskSuccessCode from './NxSubmitMaskSuccessExample?raw';
+import NxSubmitMaskCustomSuccessMessageCode from './NxSubmitMaskCustomSuccessMessageExample?raw';
+import NxSubmitMaskFullscreenCode from './NxSubmitMaskFullscreenExample?raw';
 
 const NxSubmitMaskPage = () =>
   <>

@@ -17,7 +17,7 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const exampleCode = require('./LegacyLoadWrapperLayout?raw');
+import exampleCode from './LegacyLoadWrapperLayout?raw';
 
 export default function LegacyLoadWrapperLayout() {
   const [loading, setLoading] = useState(true),

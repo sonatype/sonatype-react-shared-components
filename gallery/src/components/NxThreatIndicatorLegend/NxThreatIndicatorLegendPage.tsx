@@ -14,10 +14,10 @@ import NxThreatIndicatorLegendHorizontalExampleHalf from './NxThreatIndicatorLeg
 import NxThreatIndicatorLegendVerticalExample from './NxThreatIndicatorLegendVerticalExample';
 import NxThreatIndicatorLegendVerticalExampleHalf from './NxThreatIndicatorLegendVerticalExampleHalf';
 
-const NxThreatIndicatorLegendHorizontalExampleCode = require('./NxThreatIndicatorLegendHorizontalExample?raw'),
-    NxThreatIndicatorLegendHorizontalExampleHalfCode = require('./NxThreatIndicatorLegendHorizontalExampleHalf?raw'),
-    NxThreatIndicatorLegendVerticalExampleCode = require('./NxThreatIndicatorLegendVerticalExample?raw'),
-    NxThreatIndicatorLegendVerticalExampleHalfCode = require('./NxThreatIndicatorLegendVerticalExampleHalf?raw');
+import NxThreatIndicatorLegendHorizontalExampleCode from './NxThreatIndicatorLegendHorizontalExample?raw';
+import NxThreatIndicatorLegendHorizontalExampleHalfCode from './NxThreatIndicatorLegendHorizontalExampleHalf?raw';
+import NxThreatIndicatorLegendVerticalExampleCode from './NxThreatIndicatorLegendVerticalExample?raw';
+import NxThreatIndicatorLegendVerticalExampleHalfCode from './NxThreatIndicatorLegendVerticalExampleHalf?raw';
 
 const NxThreatIndicatorLegendPage = () =>
   <>

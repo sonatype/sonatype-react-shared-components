@@ -21,8 +21,8 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
-const exampleCode = require('./GlobalSidebarSystemNoticeLoadWrapperLayout?raw');
+import logoImg from '../../assets/images/logo-plaid-villain-text.png';
+import exampleCode from './GlobalSidebarSystemNoticeLoadWrapperLayout?raw';
 
 export default function GlobalSidebarSystemNoticeLoadWrapperLayout() {
   const [loading, setLoading] = useState(true),

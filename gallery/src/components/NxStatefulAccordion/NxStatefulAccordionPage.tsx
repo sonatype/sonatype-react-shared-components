@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulAccordionExample from './NxStatefulAccordionExample';
 
-const NxStatefulAccordionCode = require('./NxStatefulAccordionExample?raw');
+import NxStatefulAccordionCode from './NxStatefulAccordionExample?raw';
 
 const NxStatefulAccordionPage = () =>
   <>

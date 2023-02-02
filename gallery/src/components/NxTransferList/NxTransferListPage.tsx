@@ -17,12 +17,12 @@ import NxTransferListCustomTooltipExample from './NxTransferListCustomTooltipExa
 
 import '../NxTooltip/NxTooltipExample.scss';
 
-const nxTransferListExample = require('./NxTransferListExample?raw'),
-    nxTransferListComplexExample = require('./NxTransferListComplexExample?raw'),
-    nxTransferListFullWidthExample = require('./NxTransferListFullWidthExample?raw'),
-    nxTransferListCustomTooltipExample = require('./NxTransferListCustomTooltipExample?raw'),
-    nxTransferListWithReorderingExample = require('./NxTransferListWithReorderingExample?raw'),
-    tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw');
+import nxTransferListExample from './NxTransferListExample?raw';
+import nxTransferListComplexExample from './NxTransferListComplexExample?raw';
+import nxTransferListFullWidthExample from './NxTransferListFullWidthExample?raw';
+import nxTransferListCustomTooltipExample from './NxTransferListCustomTooltipExample?raw';
+import nxTransferListWithReorderingExample from './NxTransferListWithReorderingExample?raw';
+import tooltipScss from '../NxTooltip/NxTooltipExample.scss?raw';
 
 const tooltipExampleCode = [nxTransferListCustomTooltipExample, { language: 'scss', content: tooltipScss }];
 

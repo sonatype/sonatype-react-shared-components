@@ -14,9 +14,9 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 import SelectableColorNxTagExample from './SelectableColorNxTagExample';
 import SelectableColorCustomExample from './SelectableColorCustomExample';
 
-const selectableColorNxTagExampleCode = require('./SelectableColorNxTagExample?raw'),
-    selectableColorCustomExampleCode = require('./SelectableColorCustomExample?raw'),
-    selectableColorCustomExampleStyles = require('./SelectableColorCustomExample.scss?raw');
+import selectableColorNxTagExampleCode from './SelectableColorNxTagExample?raw';
+import selectableColorCustomExampleCode from './SelectableColorCustomExample?raw';
+import selectableColorCustomExampleStyles from './SelectableColorCustomExample.scss?raw';
 
 const customExampleCode =
     [selectableColorCustomExampleCode, { content: selectableColorCustomExampleStyles, language: 'scss' }];

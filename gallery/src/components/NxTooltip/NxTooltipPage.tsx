@@ -13,10 +13,10 @@ import NxTooltipExample from './NxTooltipExample';
 import NxTooltipWrappingExample from './NxTooltipWrappingExample';
 import NxTooltipPlacementExample from './NxTooltipPlacementExample';
 
-const tooltipsExampleCode = require('./NxTooltipExample?raw'),
-    wrappingTooltipsExampleCode = require('./NxTooltipWrappingExample?raw'),
-    placementTooltipsExampleCode = require('./NxTooltipPlacementExample?raw'),
-    tooltipsExampleStyles = require('./NxTooltipExample.scss?raw');
+import tooltipsExampleCode from './NxTooltipExample?raw';
+import wrappingTooltipsExampleCode from './NxTooltipWrappingExample?raw';
+import placementTooltipsExampleCode from './NxTooltipPlacementExample?raw';
+import tooltipsExampleStyles from './NxTooltipExample.scss?raw';
 
 export default function NxTooltipPage() {
   const codeExamples = [tooltipsExampleCode, { content: tooltipsExampleStyles, language: 'scss' }];

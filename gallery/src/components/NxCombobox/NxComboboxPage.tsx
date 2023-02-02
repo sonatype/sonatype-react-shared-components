@@ -17,13 +17,13 @@ import NxComboboxDisabledExample from './NxComboboxDisabledExample';
 import NxComboboxValidationExample from './NxComboboxValidationExample';
 import NxComboboxErrorExample from './NxComboboxErrorExample';
 
-const NxComboboxExampleCode = require('./NxComboboxExample?raw');
-const NxComboboxFilterInputExampleCode = require('./NxComboboxFilterInputExample?raw');
-const NxComboboxFilterInputSearchExampleCode = require('./NxComboboxFilterInputSearchExample?raw');
-const NxComboboxPredeterminedListExampleCode = require('./NxComboboxPredeterminedListExample?raw');
-const NxComboboxDisabledExampleCode = require('./NxComboboxDisabledExample?raw');
-const NxComboboxValidationExampleCode = require('./NxComboboxValidationExample?raw');
-const NxComboboxErrorExampleCode = require('./NxComboboxErrorExample?raw');
+import NxComboboxExampleCode from './NxComboboxExample?raw';
+import NxComboboxFilterInputExampleCode from './NxComboboxFilterInputExample?raw';
+import NxComboboxFilterInputSearchExampleCode from './NxComboboxFilterInputSearchExample?raw';
+import NxComboboxPredeterminedListExampleCode from './NxComboboxPredeterminedListExample?raw';
+import NxComboboxDisabledExampleCode from './NxComboboxDisabledExample?raw';
+import NxComboboxValidationExampleCode from './NxComboboxValidationExample?raw';
+import NxComboboxErrorExampleCode from './NxComboboxErrorExample?raw';
 
 const NxComboboxPage = () =>
   <>

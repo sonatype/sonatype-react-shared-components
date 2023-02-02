@@ -12,9 +12,9 @@ import NxIconDropdownExample from './NxIconDropdownExample';
 import NxIconDropdownButtonsExample from './NxIconDropdownButtonsExample';
 import NxIconDropdownDisabledExample from './NxIconDropdownDisabledExample';
 
-const nxIconDropdownExampleCode = require('./NxIconDropdownExample?raw'),
-    nxIconDropdownButtonsExampleCode = require('./NxIconDropdownButtonsExample?raw'),
-    nxIconDropdownDisabledExampleCode = require('./NxIconDropdownDisabledExample?raw');
+import nxIconDropdownExampleCode from './NxIconDropdownExample?raw';
+import nxIconDropdownButtonsExampleCode from './NxIconDropdownButtonsExample?raw';
+import nxIconDropdownDisabledExampleCode from './NxIconDropdownDisabledExample?raw';
 
 const NxIconDropdownPage = () =>
   <>

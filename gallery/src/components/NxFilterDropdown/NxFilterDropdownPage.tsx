@@ -15,11 +15,11 @@ import NxFilterDropdownShortExample from './NxFilterDropdownShortExample';
 import NxFilterDropdownTableExample from './NxFilterDropdownTableExample';
 import './NxFilterDropdownTableExample.scss';
 
-const nxFilterDropdownCode = require('./NxFilterDropdownExample?raw'),
-    nxFilterDropdownNonDefaultCode = require('./NxFilterDropdownNonDefaultExample?raw'),
-    nxFilterDropdownShortCode = require('./NxFilterDropdownShortExample?raw'),
-    nxFilterDropdownTableCode = require('./NxFilterDropdownTableExample?raw'),
-    nxFilterDropdownTableStyles = require('./NxFilterDropdownTableExample.scss?raw');
+import nxFilterDropdownCode from './NxFilterDropdownExample?raw';
+import nxFilterDropdownNonDefaultCode from './NxFilterDropdownNonDefaultExample?raw';
+import nxFilterDropdownShortCode from './NxFilterDropdownShortExample?raw';
+import nxFilterDropdownTableCode from './NxFilterDropdownTableExample?raw';
+import nxFilterDropdownTableStyles from './NxFilterDropdownTableExample.scss?raw';
 
 const tableExampleCode = [nxFilterDropdownTableCode, { language: 'scss', content: nxFilterDropdownTableStyles }];
 

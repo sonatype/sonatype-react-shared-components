@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulTabsSimpleExample from './NxStatefulTabsSimpleExample';
 
-const NxStatefulTabsSimpleCode = require('./NxStatefulTabsSimpleExample?raw');
+import NxStatefulTabsSimpleCode from './NxStatefulTabsSimpleExample?raw';
 
 export default function NxStatefulTabsPage() {
   return (

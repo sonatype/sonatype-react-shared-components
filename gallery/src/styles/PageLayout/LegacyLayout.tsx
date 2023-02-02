@@ -8,7 +8,7 @@ import React from 'react';
 import { NxPageHeader, NxP, NxPageMain, NxTile, NxH2 } from '@sonatype/react-shared-components';
 import CodeExample from '../../CodeExample';
 
-const exampleCode = require('./LegacyLayout?raw');
+import exampleCode from './LegacyLayout?raw';
 
 export default function LegacyLayout() {
   return (

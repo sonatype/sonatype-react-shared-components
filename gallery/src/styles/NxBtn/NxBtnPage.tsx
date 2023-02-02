@@ -9,12 +9,12 @@ import { NxCode, NxTable, NxTile, NxH3, NxP, NxTextLink } from '@sonatype/react-
 
 import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-components/GalleryTiles';
 
-const nxBtnPrimaryCode = require('./NxBtnPrimaryExample.html'),
-    nxBtnDefaultCode = require('./NxBtnDefaultExample.html'),
-    nxBtnTertiaryCode = require('./NxBtnTertiaryExample.html'),
-    nxBtnErrorCode = require('./NxBtnErrorExample.html'),
-    nxBtnIconCode = require('./NxBtnIconExample.html'),
-    nxBtnLinkCode = require('./NxBtnLinkExample.html');
+import nxBtnPrimaryCode from './NxBtnPrimaryExample.html?raw';
+import nxBtnDefaultCode from './NxBtnDefaultExample.html?raw';
+import nxBtnTertiaryCode from './NxBtnTertiaryExample.html?raw';
+import nxBtnErrorCode from './NxBtnErrorExample.html?raw';
+import nxBtnIconCode from './NxBtnIconExample.html?raw';
+import nxBtnLinkCode from './NxBtnLinkExample.html?raw';
 
 const NxBtnPage = () =>
   <>

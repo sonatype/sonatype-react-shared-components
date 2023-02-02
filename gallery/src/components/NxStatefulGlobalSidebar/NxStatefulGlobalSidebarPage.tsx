@@ -12,7 +12,7 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import CodeExample from '../../CodeExample';
 import './NxStatefulGlobalSidebarPage.scss';
 
-const NxStatefulGlobalSidebarExample = require('./NxStatefulGlobalSidebarExample.tsx?raw');
+import NxStatefulGlobalSidebarExample from './NxStatefulGlobalSidebarExample.tsx?raw';
 
 export default function NxStatefulGlobalSidebarPage() {
   return (

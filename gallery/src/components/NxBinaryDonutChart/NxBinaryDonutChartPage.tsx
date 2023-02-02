@@ -18,12 +18,12 @@ import NxBinaryDonutChartCustomExample from './NxBinaryDonutChartCustomExample';
 import './NxBinaryDonutChartBackgroundColorExample.scss';
 import './NxBinaryDonutChartCustomExample.scss';
 
-const nxBinaryDonutChartMinimalExampleCode = require('./NxBinaryDonutChartMinimalExample?raw');
-const nxBinaryDonutChartNoHoleExample = require('./NxBinaryDonutChartNoHoleExample?raw');
-const nxBinaryDonutChartLargeHoleExample = require('./NxBinaryDonutChartLargeHoleExample?raw');
-const nxBinaryDonutChartBackgroundColorExample = require('./NxBinaryDonutChartBackgroundColorExample?raw');
-const nxBinaryDonutChartCustomExample = require('./NxBinaryDonutChartCustomExample?raw');
-const nxBinaryDonutChartCustomExampleScss = require('./NxBinaryDonutChartCustomExample.scss?raw');
+import nxBinaryDonutChartMinimalExampleCode from './NxBinaryDonutChartMinimalExample?raw';
+import nxBinaryDonutChartNoHoleExample from './NxBinaryDonutChartNoHoleExample?raw';
+import nxBinaryDonutChartLargeHoleExample from './NxBinaryDonutChartLargeHoleExample?raw';
+import nxBinaryDonutChartBackgroundColorExample from './NxBinaryDonutChartBackgroundColorExample?raw';
+import nxBinaryDonutChartCustomExample from './NxBinaryDonutChartCustomExample?raw';
+import nxBinaryDonutChartCustomExampleScss from './NxBinaryDonutChartCustomExample.scss?raw';
 
 const NxBinaryDonutChartPage = () =>
   <>

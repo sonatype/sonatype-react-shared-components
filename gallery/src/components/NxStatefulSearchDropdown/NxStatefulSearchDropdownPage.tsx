@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulSearchDropdownExample from './NxStatefulSearchDropdownExample';
 
-const nxStatefulSearchDropdownExampleCode = require('./NxStatefulSearchDropdownExample?raw');
+import nxStatefulSearchDropdownExampleCode from './NxStatefulSearchDropdownExample?raw';
 
 const NxSearchDropdownPage = () =>
   <>

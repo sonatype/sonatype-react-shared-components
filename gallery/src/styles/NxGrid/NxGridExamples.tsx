@@ -11,9 +11,9 @@ import { NxCode } from '@sonatype/react-shared-components';
 
 import './CustomWidthExample.scss';
 
-const NxGridCode = require('./NxGridExample.html'),
-    NxGridScrollingCode = require('./NxGridScrollingExample.html'),
-    NxGridMixinUsageCode = require('./CustomWidthExample.scss?raw');
+import NxGridCode from './NxGridExample.html?raw';
+import NxGridScrollingCode from './NxGridScrollingExample.html?raw';
+import NxGridMixinUsageCode from './CustomWidthExample.scss?raw';
 
 const NxGridExamples = () =>
   <>

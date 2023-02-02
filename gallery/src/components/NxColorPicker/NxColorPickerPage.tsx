@@ -13,9 +13,9 @@ import NxColorPickerExample from './NxColorPickerExample';
 import NxColorPickerRequiredExample from './NxColorPickerRequiredExample';
 import NxColorPickerRequiredPureStateHelperExample from './NxColorPickerRequiredPureStateHelperExample';
 
-const NxColorPickerExampleCode = require('./NxColorPickerExample?raw'),
-    NxColorPickerRequiredExampleCode = require('./NxColorPickerRequiredExample?raw'),
-    NxColorPickerRequiredPureStateHelperExampleCode = require('./NxColorPickerRequiredPureStateHelperExample?raw');
+import NxColorPickerExampleCode from './NxColorPickerExample?raw';
+import NxColorPickerRequiredExampleCode from './NxColorPickerRequiredExample?raw';
+import NxColorPickerRequiredPureStateHelperExampleCode from './NxColorPickerRequiredPureStateHelperExample?raw';
 
 const NxColorPickerPage = () =>
   <>

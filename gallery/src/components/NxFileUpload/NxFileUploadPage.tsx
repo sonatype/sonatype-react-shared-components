@@ -13,9 +13,9 @@ import NxFileUploadExample from './NxFileUploadExample';
 import NxFileUploadComplexExample from './NxFileUploadComplexExample';
 import NxFileUploadDisabledExample from './NxFileUploadDisabledExample';
 
-const nxFileUploadCode = require('./NxFileUploadExample?raw');
-const nxFileUploadComplexCode = require('./NxFileUploadComplexExample?raw');
-const nxFileUploadDisabledCode = require('./NxFileUploadDisabledExample?raw');
+import nxFileUploadCode from './NxFileUploadExample?raw';
+import nxFileUploadComplexCode from './NxFileUploadComplexExample?raw';
+import nxFileUploadDisabledCode from './NxFileUploadDisabledExample?raw';
 
 const NxTextInputPage = () =>
   <>

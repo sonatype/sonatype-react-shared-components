@@ -13,9 +13,9 @@ import NxBackButtonSimpleExample from './NxBackButtonSimpleExample';
 import NxBackButtonTitleExample from './NxBackButtonTitleExample';
 import NxBackButtonTextExample from './NxBackButtonTextExample';
 
-const simpleSourceCode = require('./NxBackButtonSimpleExample?raw');
-const titleSourceCode = require('./NxBackButtonTitleExample?raw');
-const textSourceCode = require('./NxBackButtonTextExample?raw');
+import simpleSourceCode from './NxBackButtonSimpleExample?raw';
+import titleSourceCode from './NxBackButtonTitleExample?raw';
+import textSourceCode from './NxBackButtonTextExample?raw';
 
 const NxBackButtonPage = () =>
   <>

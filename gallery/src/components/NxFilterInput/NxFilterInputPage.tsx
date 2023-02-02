@@ -16,10 +16,10 @@ import NxFilterInputDataListExample from './NxFilterInputDataListExample';
 
 import './NxFilterInputPage.scss';
 
-const nxFilterInputFullExampleCode = require('./NxFilterInputFullExample?raw'),
-    nxFilterInputSearchExampleCode = require('./NxFilterInputSearchExample?raw'),
-    nxFilterInputDisabledExampleCode = require('./NxFilterInputDisabledExample?raw'),
-    nxFilterInputDataListExampleCode = require('./NxFilterInputDataListExample?raw');
+import nxFilterInputFullExampleCode from './NxFilterInputFullExample?raw';
+import nxFilterInputSearchExampleCode from './NxFilterInputSearchExample?raw';
+import nxFilterInputDisabledExampleCode from './NxFilterInputDisabledExample?raw';
+import nxFilterInputDataListExampleCode from './NxFilterInputDataListExample?raw';
 
 const NxFilterInputPage = () =>
   <>

@@ -8,7 +8,7 @@ import React from 'react';
 import { NxPageHeader, NxP, NxPageSidebar, NxPageMain, NxTile, NxH2 } from '@sonatype/react-shared-components';
 import CodeExample from '../../CodeExample';
 
-const exampleCode = require('./LegacySidebarLayout?raw');
+import exampleCode from './LegacySidebarLayout?raw';
 
 export default function LegacySidebarLayout() {
   return (

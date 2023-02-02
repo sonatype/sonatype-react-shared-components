@@ -11,7 +11,7 @@ import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-compon
 
 import NxStatefulFileUploadExample from './NxStatefulFileUploadExample';
 
-const nxStatefulFileUploadCode = require('./NxStatefulFileUploadExample?raw');
+import nxStatefulFileUploadCode from './NxStatefulFileUploadExample?raw';
 
 const NxTextInputPage = () =>
   <>

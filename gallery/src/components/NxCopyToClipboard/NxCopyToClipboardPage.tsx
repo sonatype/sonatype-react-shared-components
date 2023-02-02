@@ -13,9 +13,9 @@ import NxCopyToClipboardExample from './NxCopyToClipboardExample';
 import NxCopyToClipboardComplexExample from './NxCopyToClipboardComplexExample';
 import NxCopyToClipboardSizingExample from './NxCopyToClipboardSizingExample';
 
-const nxCopyToClipabordCode = require('./NxCopyToClipboardExample?raw'),
-    nxCopyToClipboardComplexCode = require('./NxCopyToClipboardComplexExample?raw'),
-    nxCopyToClipboardSizingCode = require('./NxCopyToClipboardSizingExample?raw');
+import nxCopyToClipabordCode from './NxCopyToClipboardExample?raw';
+import nxCopyToClipboardComplexCode from './NxCopyToClipboardComplexExample?raw';
+import nxCopyToClipboardSizingCode from './NxCopyToClipboardSizingExample?raw';
 
 export default function NxCopyToClipboardPage() {
   return (

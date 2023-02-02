@@ -16,12 +16,12 @@ import NxTabsModalExample from './NxTabsModalExample';
 import NxTabsModalNoHeaderExample from './NxTabsModalNoHeaderExample';
 import NxTabsSimpleExample from './NxTabsSimpleExample';
 
-const NxTabsTileHeaderExampleCode = require('./NxTabsTileHeaderExample?raw');
-const NxTabsOutsideTileExampleCode = require('./NxTabsOutsideTileExample?raw');
-const NxTabsTileNoHeaderExampleCode = require('./NxTabsTileNoHeaderExample?raw');
-const NxTabsModalExampleCode = require('./NxTabsModalExample?raw');
-const NxTabsModalNoHeaderExampleCode = require('./NxTabsModalNoHeaderExample?raw');
-const NxTabsSimpleExampleCode = require('./NxTabsSimpleExample?raw');
+import NxTabsTileHeaderExampleCode from './NxTabsTileHeaderExample?raw';
+import NxTabsOutsideTileExampleCode from './NxTabsOutsideTileExample?raw';
+import NxTabsTileNoHeaderExampleCode from './NxTabsTileNoHeaderExample?raw';
+import NxTabsModalExampleCode from './NxTabsModalExample?raw';
+import NxTabsModalNoHeaderExampleCode from './NxTabsModalNoHeaderExample?raw';
+import NxTabsSimpleExampleCode from './NxTabsSimpleExample?raw';
 
 export default function NxTabsPage() {
   return (

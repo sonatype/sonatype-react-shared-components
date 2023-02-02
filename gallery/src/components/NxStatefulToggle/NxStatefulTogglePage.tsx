@@ -11,7 +11,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxStatefulToggleExample from './NxStatefulToggleExample';
 
-const exampleCode = require('./NxStatefulToggleExample?raw');
+import exampleCode from './NxStatefulToggleExample?raw';
 
 const NxStatefulTogglePage = () =>
   <>

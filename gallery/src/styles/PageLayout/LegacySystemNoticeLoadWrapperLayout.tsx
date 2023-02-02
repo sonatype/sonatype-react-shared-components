@@ -18,7 +18,7 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const exampleCode = require('./LegacySystemNoticeLoadWrapperLayout?raw');
+import exampleCode from './LegacySystemNoticeLoadWrapperLayout?raw';
 
 export default function LegacySystemNoticeLoadWrapperLayout() {
   const [loading, setLoading] = useState(true),

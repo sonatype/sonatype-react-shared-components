@@ -19,17 +19,17 @@ import NxTableFilterExample from './NxTableFilterExample';
 import './NxTableTruncationAndWrappingExample.scss';
 import './NxTableFixedLayoutExample.scss';
 
-const NxTableSimpleCode = require('./NxTableDefaultExample.html'),
-    NxTableClickableCode = require('./NxTableClickableExample?raw'),
-    NxTableIconButtonCode = require('./NxTableIconButtonExample?raw'),
-    NxTableEmptyCode = require('./NxTableEmptyExample.html'),
-    NxTableErrorStateCode = require('./NxTableErrorStateExample?raw'),
-    NxTableTruncationAndWrappingCode = require('./NxTableTruncationAndWrappingExample.html'),
-    NxTableFixedLayoutCode = require('./NxTableFixedLayoutExample?raw'),
-    NxTableTruncationAndWrappingScss = require('./NxTableTruncationAndWrappingExample.scss?raw'),
-    NxTableFixedLayoutScss = require('./NxTableFixedLayoutExample.scss?raw'),
-    NxTableFilterCode = require('./NxTableFilterExample?raw'),
-    NxTableSortableCode = require('./NxTableSortableExample?raw');
+import NxTableSimpleCode from './NxTableDefaultExample.html?raw';
+import NxTableClickableCode from './NxTableClickableExample?raw';
+import NxTableIconButtonCode from './NxTableIconButtonExample?raw';
+import NxTableEmptyCode from './NxTableEmptyExample.html?raw';
+import NxTableErrorStateCode from './NxTableErrorStateExample?raw';
+import NxTableTruncationAndWrappingCode from './NxTableTruncationAndWrappingExample.html?raw';
+import NxTableFixedLayoutCode from './NxTableFixedLayoutExample?raw';
+import NxTableTruncationAndWrappingScss from './NxTableTruncationAndWrappingExample.scss?raw';
+import NxTableFixedLayoutScss from './NxTableFixedLayoutExample.scss?raw';
+import NxTableFilterCode from './NxTableFilterExample?raw';
+import NxTableSortableCode from './NxTableSortableExample?raw';
 
 const truncationAndWrappingCodeExamples = [
       NxTableTruncationAndWrappingCode,
