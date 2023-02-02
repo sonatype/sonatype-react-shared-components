@@ -101,7 +101,6 @@ describe('NxTable', function() {
         </NxTable>
       );
 
-      debug();
       expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
     });
 
