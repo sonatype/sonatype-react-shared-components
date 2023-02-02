@@ -4,14 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 import { render, screen, within, waitFor } from '@testing-library/react';
 import { rtlRenderElement, userEvent, runTimers } from '../../../__testutils__/rtlUtils';
 
-import { RowContext } from '../contexts';
 import { NxTableCellProps } from '../types';
 
 import NxTable from '../NxTable';
@@ -89,7 +88,7 @@ describe('NxTable', function() {
 
   describe('NxTable.Body', function() {
     it('Puts the correct colSpan on a loading meta-info cell', function() {
-      const {debug} = render(
+      render(
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
