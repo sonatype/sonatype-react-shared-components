@@ -73,7 +73,7 @@ describe('NxGlobalSidebarNavigationLink', function() {
 
   });
 
-  it('renders an <a> with the passed href and classes', function() {
+  it('renders a link with the passed href and classes', function() {
     const link = quickRender({ className: 'extra-class' }).getByRole('link');
     expect(link).toHaveClass('extra-class');
     expect(link).toHaveAttribute('href', '#someurl');
