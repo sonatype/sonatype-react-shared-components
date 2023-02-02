@@ -29,14 +29,14 @@ describe('NxGlobalSidebarFooter', function() {
   });
 
   it('renders the Support div with a link with the passed href and text and does not render when empty', function() {
-    const { container: viewWithoutSupportText} = quickRender(),
+    const viewWithoutSupportText = quickRender(),
         viewWithSupportText = quickRender({ supportText: 'Support for RSC', supportLink: '#supporturl' }),
         supportLink = viewWithSupportText.getByRole('link');
 
     expect(viewWithSupportText.getByText('Support for RSC')).toBeVisible();
     expect(supportLink).toHaveAttribute('href', '#supporturl');
 
-    expect(viewWithoutSupportText.querySelector('.nx-global-sidebar__support')).not.toBeInTheDocument();
+    expect(viewWithoutSupportText.queryByRole('link')).not.toBeInTheDocument();
   });
 
   it('renders the Release div with a text and version number and does not render when empty', function() {
