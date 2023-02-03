@@ -124,6 +124,7 @@ describe('NxGlobalSidebarFooter', function() {
       expect(view.getByRole('link')).toHaveTextContent(/^Support for RSC$/);
       expect(view.getByText('React Shared Components: 3.1.4')).toBeVisible();
       expect(view.getByText('Powered by PLAID VILLAIN')).toBeVisible();
+      expect(view.getByText('Created by Sonatype')).toBeVisible();
     });
 
     it('renders the Created By text by default and does not render when set to false', function() {
