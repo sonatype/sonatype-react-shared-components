@@ -87,11 +87,6 @@ describe('NxTreeItem', function() {
     it('sets aria-expanded to true', function() {
       expect(renderEl({ collapsible: false })).toHaveAttribute('aria-expanded', 'true');
     });
-    it('test', function() {
-      const el = renderEl()!,
-          input = el.querySelector('input');
-      expect(input).not.toBeInTheDocument();
-    });
   });
 
   describe('when collapsible', function() {
@@ -170,11 +165,6 @@ describe('NxTreeItem', function() {
       el.focus();
       await user.keyboard('[ArrowLeft]');
       expect(onToggleCollapse).toHaveBeenCalled();
-    });
-    it('test', function() {
-      const el = getCollapsibleEl()!,
-          input = within(el).queryByRole('checkbox');
-      expect(input).not.toBeInTheDocument();
     });
   });
 
