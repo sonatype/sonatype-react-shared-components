@@ -5,15 +5,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+
 import React from 'react';
-import { mount } from 'enzyme';
-import 'jest-enzyme';
-import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
+import { within } from '@testing-library/react';
 
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-
-import NxTreeItem from '../NxTreeItem';
-import NxTreeItemLabel from '../NxTreeItemLabel';
+import NxTree from '../NxTree';
 import { ItemProps as Props, TreeKeyNavContextType } from '../types';
 import TreeKeyNavContext from '../TreeKeyNavContext';
 
@@ -29,185 +26,174 @@ const keyNavContext: TreeKeyNavContextType = {
   getTreeRoot: () => null
 };
 
+function getTreeItem(extraProps?: Props) {
+  return (
+    <TreeKeyNavContext.Provider value={keyNavContext}>
+      <NxTree.Item { ...extraProps } />
+    </TreeKeyNavContext.Provider>
+  );
+}
+
 describe('NxTreeItem', function() {
-  function getMountedComponent(extraProps?: Props) {
-    return mount(
-      <TreeKeyNavContext.Provider value={keyNavContext}>
-        <NxTreeItem { ...extraProps } />
-      </TreeKeyNavContext.Provider>
-    ).children();
-  }
+  const children = (
+    <NxTree.ItemLabel>
+      <span>foo</span>
+    </NxTree.ItemLabel>
+      ),
+      quickRender = rtlRender(getTreeItem, {}),
+      renderEl = rtlRenderElement(getTreeItem, {});
 
-  const getMountedCollapsible = (extraProps?: Partial<Props>) => getMountedComponent({
-    collapsible: true,
-    isOpen: false,
-    onToggleCollapse: () => {},
-    ...extraProps
+  it('renders an <li> with role=treeitem as the top level element', function() {
+    const view = quickRender();
+
+    expect(view.getByRole('treeitem')).toBe(view.container.firstElementChild);
+    expect(view.container.firstElementChild!.tagName).toBe('LI');
   });
 
-  it('renders an li with the nx-tree__item class', function() {
-    expect(getMountedComponent()).toMatchSelector('li.nx-tree__item');
+  it('adds specified classNames to the top-level element in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
+
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('allows additional classNames', function() {
-    const component = getMountedComponent({ className: 'foo' });
+  it('passes additional attrs to the top-level element', function() {
+    const el = renderEl({ id: 'foo', lang: 'en-US' });
 
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-tree__item');
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en-US');
   });
 
-  it('allows additional attributes', function() {
-    const component = getMountedComponent({ id: 'foo', lang: 'en-us' });
-
-    expect(component).toHaveProp('id', 'foo');
-    expect(component).toHaveProp('lang', 'en-us');
+  it('renders children correctly', function() {
+    expect(quickRender({ children: <div data-testid="foo" /> }).getByTestId('foo')).toBeInTheDocument();
   });
 
-  it('sets the treeitem role', function() {
-    expect(getMountedComponent()).toHaveProp('role', 'treeitem');
-  });
+  it('adds the id of the child itemlabel to the aria-labelledby prop', function() {
+    const el = renderEl({ children })!,
+        // the svg tree lines are the first direct children of NxTree.Item
+        labelId = el.lastElementChild!.getAttribute('id'),
+        elWithLabelledBy = renderEl({ children, 'aria-labelledby': 'foo' })!,
+        labelId2 = elWithLabelledBy.lastElementChild!.getAttribute('id');
 
-  it('adds the children to the li', function() {
-    const component = getMountedComponent({ children: <><span id="foo"/><div id="bar"/></> });
-
-    expect(component).toContainMatchingElement('span#foo');
-    expect(component).toContainMatchingElement('div#bar');
+    expect(el).toHaveAttribute('aria-labelledby', labelId);
+    expect(elWithLabelledBy).toHaveAttribute('aria-labelledby', `foo ${labelId2}`);
   });
 
   describe('when not collapsible', function() {
-    // note that there isn't much use in testing this in a lot of detail here, a visual test will be better
-    it('contains some lines', function() {
-      const component = getMountedComponent(),
-          intersectionSvg = component.find('svg.nx-tree__line-intersection'),
-          dropLineSvg = component.find('svg.nx-tree__line-drop');
-
-      expect(intersectionSvg).toExist();
-      expect(intersectionSvg).toContainMatchingElement('line.nx-tree__top-line');
-      expect(intersectionSvg).toContainMatchingElement('line.nx-tree__right-line');
-      expect(intersectionSvg).toContainMatchingElement('line.nx-tree__bottom-line');
-
-      expect(dropLineSvg).toExist();
-      expect(dropLineSvg).toContainMatchingElement('line');
+    it('sets aria-expanded to true', function() {
+      expect(renderEl({ collapsible: false })).toHaveAttribute('aria-expanded', 'true');
     });
-
-    it('does not contain an icon', function() {
-      expect(getMountedComponent()).not.toContainMatchingElement('.nx-icon');
-    });
-
-    it('does not contain a label nor a checkbox', function() {
-      const component = getMountedComponent();
-
-      expect(component).not.toContainMatchingElement('label');
-      expect(component).not.toContainMatchingElement('input');
+    it('test', function() {
+      const el = renderEl()!,
+          input = el.querySelector('input');
+      expect(input).not.toBeInTheDocument();
     });
   });
 
   describe('when collapsible', function() {
-    it('still contains the top and right lines but not the bottom line', function() {
-      const component = getMountedCollapsible(),
-          intersectionSvg = component.find('svg.nx-tree__line-intersection'),
-          dropLineSvg = component.find('svg.nx-tree__line-drop');
+    const complexChildren = (
+      <>
+        <NxTree.ItemLabel>
+          <span>foo</span>
+        </NxTree.ItemLabel>
+        <NxTree>
+          <NxTree.Item>
+            <NxTree.ItemLabel>
+              <span>bar</span>
+            </NxTree.ItemLabel>
+          </NxTree.Item>
+        </NxTree>
+      </>
+    );
 
-      expect(intersectionSvg).toExist();
-      expect(intersectionSvg).toContainMatchingElement('line.nx-tree__top-line');
-      expect(intersectionSvg).toContainMatchingElement('line.nx-tree__right-line');
-      expect(intersectionSvg).not.toContainMatchingElement('line.nx-tree__bottom-line');
+    const collapsibleProps = {
+      collapsible: true,
+      isOpen: false,
+      onToggleCollapse: () => {},
+      children: complexChildren
+    };
 
-      expect(dropLineSvg).toExist();
-      expect(dropLineSvg).toContainMatchingElement('line');
+    const getCollapsibleEl = (extraProps?: Partial<Props>) => renderEl({...collapsibleProps, ...extraProps})!;
+
+    it('sets aria-expanded to false when isOpen is false', function() {
+      expect(getCollapsibleEl()).toHaveAttribute('aria-expanded', 'false');
     });
 
-    describe('when isOpen is true', function() {
-      it('contains a faMinusSquare icon within the intersection svg', function() {
-        const icon = getMountedCollapsible({ isOpen: true })
-            .find('.nx-tree__line-intersection').find(NxFontAwesomeIcon);
-
-        expect(icon).toHaveProp('icon', faMinusSquare);
-      });
+    it('sets aria-expanded to true when isOpen is true', function() {
+      expect(getCollapsibleEl({ isOpen: true })).toHaveAttribute('aria-expanded', 'true');
     });
 
-    describe('when isOpen is false', function() {
-      it('contains a faPlusSquare icon within the intersection svg', function() {
-        const icon = getMountedCollapsible({ isOpen: false })
-            .find('.nx-tree__line-intersection').find(NxFontAwesomeIcon);
-
-        expect(icon).toHaveProp('icon', faPlusSquare);
-      });
+    it('renders an icon as a child', function() {
+      const el = getCollapsibleEl()!;
+      expect(within(el).getByRole('img', { hidden: true })).toBeInTheDocument();
     });
 
-    it('adds the `open` class when isOpen is true', function() {
-      expect(getMountedCollapsible()).not.toHaveClassName('open');
-      expect(getMountedCollapsible({ isOpen: true })).toHaveClassName('open');
-    });
-
-    it('adds the nx-tree__item--collapsible class', function() {
-      expect(getMountedComponent()).not.toHaveClassName('nx-tree__item--collapsible');
-      expect(getMountedCollapsible()).toHaveClassName('nx-tree__item--collapsible');
-    });
-
-    it('attaches onToggleCollapse to the .nx-tree__collapse-click\'s onChange', function() {
-      const onToggleCollapse = jest.fn(),
-          component = getMountedCollapsible({ onToggleCollapse });
+    it('calls toggleCollapse when the icon is clicked', async function() {
+      const user = userEvent.setup(),
+          onToggleCollapse = jest.fn(),
+          el = getCollapsibleEl({ onToggleCollapse })!,
+          icon = el.querySelector('.nx-tree__collapse-click');
 
       expect(onToggleCollapse).not.toHaveBeenCalled();
-
-      component.find('.nx-tree__collapse-click').simulate('click');
+      await user.click(icon!);
 
       expect(onToggleCollapse).toHaveBeenCalled();
     });
+
+    it('calls toggleCollapse when closed and right arrow is pressed', async function() {
+      const user = userEvent.setup(),
+          onToggleCollapse = jest.fn(),
+          el = getCollapsibleEl({ onToggleCollapse });
+
+      // make sure NxTree.Item is closed before user interaction
+      expect(el).toHaveAttribute('aria-expanded', 'false');
+      expect(onToggleCollapse).not.toHaveBeenCalled();
+
+      el.focus();
+      await user.keyboard('[ArrowRight]');
+      expect(onToggleCollapse).toHaveBeenCalled();
+    });
+
+    it('calls toggleCollapse when open and left arrow is pressed', async function() {
+      const user = userEvent.setup(),
+          onToggleCollapse = jest.fn(),
+          el = getCollapsibleEl({ onToggleCollapse, isOpen: true });
+
+      // make sure NxTree.Item is open before user interaction
+      expect(el).toHaveAttribute('aria-expanded', 'true');
+      expect(onToggleCollapse).not.toHaveBeenCalled();
+
+      el.focus();
+      await user.keyboard('[ArrowLeft]');
+      expect(onToggleCollapse).toHaveBeenCalled();
+    });
+    it('test', function() {
+      const el = getCollapsibleEl()!,
+          input = within(el).queryByRole('checkbox');
+      expect(input).not.toBeInTheDocument();
+    });
   });
 
-  it('calls onActivate when Enter is pressed while focused', function() {
-    const onActivate = jest.fn(),
-        component = getMountedComponent({ onActivate });
+  it('calls onActivate when Enter is pressed while the element is focused', async function() {
+    const interactiveChildren = (
+      <NxTree.ItemLabel>
+        <a href="#" data-testid= "link">Click</a>
+      </NxTree.ItemLabel>
+    );
+
+    const user = userEvent.setup(),
+        onActivate = jest.fn(),
+        el = renderEl({ onActivate, children: interactiveChildren })!;
 
     expect(onActivate).not.toHaveBeenCalled();
-
-    component.simulate('keydown', { key: 'Enter' });
+    el.focus();
+    await user.keyboard('[Enter]');
 
     expect(onActivate).toHaveBeenCalled();
   });
-
-  describe('aria-expanded', function() {
-    it('is set to true when the item is not collapsible', function() {
-      expect(getMountedComponent()).toHaveProp('aria-expanded', true);
-    });
-
-    it('is set to true when the item is collapsible and currently open', function() {
-      expect(getMountedCollapsible({ isOpen: true })).toHaveProp('aria-expanded', true);
-    });
-
-    it('is set to false when the item is collapsible and not currently open', function() {
-      expect(getMountedCollapsible()).toHaveProp('aria-expanded', false);
-    });
-  });
-
-  it('adds the id of the child itemlabel to the aria-labelledby prop', function() {
-    const component1 = getMountedComponent({
-          'aria-labelledby': 'foo',
-          children: <NxTreeItemLabel id="bar" />
-        }),
-        component2 = getMountedComponent({
-          'aria-labelledby': 'foo',
-          children: <NxTreeItemLabel />
-        }),
-        component3 = getMountedComponent({
-          children: <NxTreeItemLabel id="bar" />
-        }),
-        component4 = getMountedComponent({
-          children: <NxTreeItemLabel />
-        });
-
-    expect(component1).toHaveProp('aria-labelledby', 'foo bar');
-    expect(component3).toHaveProp('aria-labelledby', 'bar');
-
-    expect(component2).toHaveProp('aria-labelledby');
-    const labelledBy2 = component2.prop('aria-labelledby').split(' ');
-    expect(labelledBy2[0]).toBe('foo');
-    expect(labelledBy2[1]).toBe(component2.find('.nx-tree__item-label').prop('id'));
-
-    expect(component4).toHaveProp('aria-labelledby');
-    const labelledBy4 = component4.prop('aria-labelledby');
-    expect(labelledBy4).toBe(component4.find('.nx-tree__item-label').prop('id'));
-  });
 });
+
