@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-
 import React from 'react';
 import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
 import { within } from '@testing-library/react';
@@ -35,13 +34,15 @@ function getStatefulTreeItem(extraProps?: Props) {
 }
 
 describe('NxTreeStatefulItem', function() {
-  const children = (
-    <NxTree.ItemLabel>
-      <span>foo</span>
-    </NxTree.ItemLabel>
-      ),
-      quickRender = rtlRender(getStatefulTreeItem, {}),
-      renderEl = rtlRenderElement(getStatefulTreeItem, {});
+  const minimalProps: Props = {
+        children: (
+          <NxTree.ItemLabel>
+            <span>foo</span>
+          </NxTree.ItemLabel>
+        )
+      },
+      quickRender = rtlRender(getStatefulTreeItem, minimalProps),
+      renderEl = rtlRenderElement(getStatefulTreeItem, minimalProps);
 
   it('renders an <li> with role=treeitem as the top level element', function() {
     const view = quickRender();
@@ -73,10 +74,10 @@ describe('NxTreeStatefulItem', function() {
   });
 
   it('adds the id of the child itemlabel to the aria-labelledby prop', function() {
-    const el = renderEl({ children })!,
-        // the svg tree lines are the first direct children of NxTree.Item
+    const el = renderEl()!,
+        elWithLabelledBy = renderEl({ 'aria-labelledby': 'foo' })!,
+        // the svg tree lines are the first direct children of NxTree.StatefulItem
         labelId = el.lastElementChild!.getAttribute('id'),
-        elWithLabelledBy = renderEl({ children, 'aria-labelledby': 'foo' })!,
         labelId2 = elWithLabelledBy.lastElementChild!.getAttribute('id');
 
     expect(el).toHaveAttribute('aria-labelledby', labelId);
@@ -110,15 +111,15 @@ describe('NxTreeStatefulItem', function() {
       children: complexChildren
     };
 
-    const getCollapsibleEl = (extraProps?: Partial<Props>) => renderEl({...collapsibleProps, ...extraProps})!;
+    const getCollapsibleEl = (extraProps?: Partial<Props>) => renderEl({ ...collapsibleProps, ...extraProps })!;
 
     it('sets aria-expanded to true when defaultOpen is true or unspecified', function() {
       expect(getCollapsibleEl()).toHaveAttribute('aria-expanded', 'true');
       expect(getCollapsibleEl({ defaultOpen: null })).toHaveAttribute('aria-expanded', 'true');
-      expect(getCollapsibleEl({ defaultOpen: true})).toHaveAttribute('aria-expanded', 'true');
+      expect(getCollapsibleEl({ defaultOpen: true })).toHaveAttribute('aria-expanded', 'true');
     });
 
-    it('sets aria-expanded to false when isOpen is false', function() {
+    it('sets aria-expanded to false when defaultOpen is false', function() {
       expect(getCollapsibleEl({ defaultOpen: false })).toHaveAttribute('aria-expanded', 'false');
     });
 
@@ -130,6 +131,7 @@ describe('NxTreeStatefulItem', function() {
     it('toggles the subtree when the icon is clicked', async function() {
       const user = userEvent.setup(),
           el = getCollapsibleEl({ defaultOpen: false })!,
+          // can't select the img, since onToggleCollapse is assigned to the <rect> element
           icon = el.querySelector('.nx-tree__collapse-click')!;
 
       expect(el).toHaveAttribute('aria-expanded', 'false');
@@ -158,7 +160,7 @@ describe('NxTreeStatefulItem', function() {
       const user = userEvent.setup(),
           el = getCollapsibleEl();
 
-      // make sure NxTree.Item is open before user interaction
+      // make sure NxTree.StatefulItem is open before user interaction
       expect(el).toHaveAttribute('aria-expanded', 'true');
 
       el.focus();

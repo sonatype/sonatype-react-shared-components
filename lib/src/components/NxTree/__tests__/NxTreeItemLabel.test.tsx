@@ -53,13 +53,8 @@ describe('NxTree.ItemLabel', function() {
     expect(el).toHaveAttribute('lang', 'en-US');
   });
 
-  it('renders text content of the child element', function() {
-    const el = renderEl({ children: <span>foo</span> });
-    expect(el).toHaveTextContent('foo');
-  });
-
   it('sets a random id on the span if none is provided', function() {
-    const {container, rerender} = quickRender(),
+    const { container, rerender } = quickRender(),
         firstItemLabel = container.firstElementChild!,
         firstItemLabelId = firstItemLabel.getAttribute('id');
 
@@ -75,5 +70,10 @@ describe('NxTree.ItemLabel', function() {
     expect(firstItemLabel).toHaveAttribute('id');
     expect(secondItemLabel).toHaveAttribute('id');
     expect(firstItemLabelId).not.toBe(secondItemLabelId);
+  });
+
+  it('renders text content of the child element', function() {
+    const el = renderEl({ children: <span>foo</span> });
+    expect(el).toHaveTextContent('foo');
   });
 });

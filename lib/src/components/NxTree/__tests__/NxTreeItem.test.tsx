@@ -35,13 +35,15 @@ function getTreeItem(extraProps?: Props) {
 }
 
 describe('NxTreeItem', function() {
-  const children = (
-    <NxTree.ItemLabel>
-      <span>foo</span>
-    </NxTree.ItemLabel>
-      ),
-      quickRender = rtlRender(getTreeItem, {}),
-      renderEl = rtlRenderElement(getTreeItem, {});
+  const minimalProps = {
+        children: (
+          <NxTree.ItemLabel>
+            <span>foo</span>
+          </NxTree.ItemLabel>
+        )
+      },
+      quickRender = rtlRender<Props>(getTreeItem, minimalProps),
+      renderEl = rtlRenderElement<Props>(getTreeItem, minimalProps);
 
   it('renders an <li> with role=treeitem as the top level element', function() {
     const view = quickRender();
@@ -73,10 +75,10 @@ describe('NxTreeItem', function() {
   });
 
   it('adds the id of the child itemlabel to the aria-labelledby prop', function() {
-    const el = renderEl({ children })!,
+    const el = renderEl()!,
+        elWithLabelledBy = renderEl({ 'aria-labelledby': 'foo' })!,
         // the svg tree lines are the first direct children of NxTree.Item
         labelId = el.lastElementChild!.getAttribute('id'),
-        elWithLabelledBy = renderEl({ children, 'aria-labelledby': 'foo' })!,
         labelId2 = elWithLabelledBy.lastElementChild!.getAttribute('id');
 
     expect(el).toHaveAttribute('aria-labelledby', labelId);
@@ -112,7 +114,7 @@ describe('NxTreeItem', function() {
       children: complexChildren
     };
 
-    const getCollapsibleEl = (extraProps?: Partial<Props>) => renderEl({...collapsibleProps, ...extraProps})!;
+    const getCollapsibleEl = (extraProps?: Partial<Props>) => renderEl({ ...collapsibleProps, ...extraProps })!;
 
     it('sets aria-expanded to false when isOpen is false', function() {
       expect(getCollapsibleEl()).toHaveAttribute('aria-expanded', 'false');
@@ -131,6 +133,7 @@ describe('NxTreeItem', function() {
       const user = userEvent.setup(),
           onToggleCollapse = jest.fn(),
           el = getCollapsibleEl({ onToggleCollapse })!,
+          // can't select the img, since onToggleCollapse is assigned to the <rect> element
           icon = el.querySelector('.nx-tree__collapse-click');
 
       expect(onToggleCollapse).not.toHaveBeenCalled();
