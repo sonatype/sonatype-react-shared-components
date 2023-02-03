@@ -51,7 +51,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 }
 
 .nx-collapsible-items--collapsed {
-  .nx-collapsible-items__children{
+  .nx-collapsible-items__children, .nx-filter-input {
     display: none;
   }
 }
