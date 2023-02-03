@@ -16,7 +16,7 @@ describe('NxGlobalSidebarNavigation', function() {
     expect(quickRender().getByRole('navigation')).toBeInTheDocument();
   });
 
-  it('passes additional classes specified as props to <nav>', function() {
+  it('passes additional classes specified as props', function() {
     const el = renderEl({ className: 'class-A' }),
         defaultEl = renderEl()!;
 
@@ -27,7 +27,7 @@ describe('NxGlobalSidebarNavigation', function() {
     }
   });
 
-  it('passes additional attributes to <nav>', function() {
+  it('passes additional attributes', function() {
     expect(renderEl({ title: 'a-title' })).toHaveAttribute('title', 'a-title');
     expect(renderEl({ id: 'some-id' })).toHaveAttribute('id', 'some-id');
   });
