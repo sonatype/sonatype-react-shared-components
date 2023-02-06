@@ -34,7 +34,7 @@ describe('NxGlobalSidebar', function() {
     expect(group).toBe(view.container.firstElementChild);
   });
 
-  describe('NxGlobalSidebarNavigation and NxGlobalSidebarFooter', function() {
+  describe('children', function() {
     describe('when only the NxGlobalSidebarNavigation is a provided as a child', function () {
       it('renders an element with role="navigation" within an element with role="complementary"', function() {
         const children =
@@ -70,7 +70,28 @@ describe('NxGlobalSidebar', function() {
       });
     });
 
-    describe('when both NxGlobalSidebarNavigation and NxGlobalSidebarFooter are provided as children', function () {
+    describe('when only extra content is a provided as a child', function () {
+      it('renders the extra content within an element with role="complementary"', function() {
+        const children =
+          <section key="1" className="gallery-custom-sidebar-content nx-global-sidebar__other-content nx-scrollable">
+            <div className="nx-global-sidebar__expanded-content">
+              <span data-testid="testspan">myspan</span>
+            </div>
+          </section>,
+            view = quickRender({ ...minimalProps, children }),
+            group = view.getByRole('group'),
+            complementary = within(group).getByRole('complementary'),
+            extraContent = within(complementary).getByTestId('testspan');
+
+        expect(group).toBeInTheDocument();
+        expect(complementary).toBeInTheDocument();
+        expect(complementary).toBe(group.firstElementChild);
+        expect(extraContent).toBeInTheDocument();
+      });
+    });
+
+    describe('when NxGlobalSidebarNavigation, NxGlobalSidebarFooter, and extra content ' +
+    'are provided as children', function () {
       it('renders an element with role="navigation" within an element with role="complementary" ' +
        'and a footer with role="contentinfo"', function() {
         const children =
@@ -78,6 +99,11 @@ describe('NxGlobalSidebar', function() {
             <NxGlobalSidebarNavigation>
               <NxGlobalSidebarNavigationLink icon={faCrow} text="testLink" href="testLink"/>
             </NxGlobalSidebarNavigation>
+            <section key="2" className="gallery-custom-sidebar-content nx-global-sidebar__other-content nx-scrollable">
+              <div className="nx-global-sidebar__expanded-content">
+                <span data-testid="testspan">myspan</span>
+              </div>
+            </section>
             <NxGlobalSidebarFooter supportText="Support for RSC"
                                    supportLink="https://github.com/sonatype/sonatype-react-shared-components"
                                    releaseText="Release 3.1.4"
@@ -87,12 +113,14 @@ describe('NxGlobalSidebar', function() {
             group = view.getByRole('group'),
             complementary = within(group).getByRole('complementary'),
             nav = within(complementary).getByRole('navigation'),
+            extraContent = within(complementary).getByTestId('testspan'),
             footer = within(group).getByRole('contentinfo');
 
         expect(group).toBeInTheDocument();
         expect(complementary).toBeInTheDocument();
         expect(complementary).toBe(group.firstElementChild);
         expect(nav).toBeInTheDocument();
+        expect(extraContent).toBeInTheDocument();
         expect(footer).toBeInTheDocument();
       });
     });
