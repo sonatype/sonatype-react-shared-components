@@ -53,8 +53,8 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
       [footer, otherChildren] = splitOutFirst(NxGlobalSidebarFooter, children);
 
   return (
-    <aside className={classes} id={id} aria-label="global sidebar" role="group">
-      <div role="complementary">
+    <div className={classes} id={id} aria-label="global sidebar" role="group">
+      <aside>
         <div className="nx-global-sidebar__header">
           <a className="nx-global-sidebar__product-info nx-global-sidebar__expanded-content"
              href={logoLink}>
@@ -63,9 +63,9 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
           { toggleButton }
         </div>
         {otherChildren}
-      </div>
+      </aside>
       { footer }
-    </aside>
+    </div>
   );
 };
 
