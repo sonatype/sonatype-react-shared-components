@@ -17,7 +17,7 @@ function HeaderLink({ name, href, current }: HeaderLinkProps) {
   });
 
   return (
-    <a className={classes} href={href} data-text={name}>{name}</a>
+    <a className={classes} href={href} data-text={name} aria-current={current ? 'page' : undefined}>{name}</a>
   );
 }
 

@@ -11,11 +11,13 @@ describe('NxThreatIndicator', function() {
 
   const threatIndicatorsListExampleSelector = '#nx-threat-indicator-list-example .nx-list',
       threatIndicatorsTableExampleSelector = '#nx-threat-indicator-table-example .nx-table',
-      threatIndicatorsSimpleExampleSelector = '#nx-threat-indicator-simple-example .gallery-example-live';
+      threatIndicatorsSimpleExampleSelector = '#nx-threat-indicator-simple-example .gallery-example-live',
+      threatIndicatorsPolicyNumberExampleSelector = '#nx-threat-indicator-policy-number-example .gallery-example-live';
 
   it('looks right', simpleTest(threatIndicatorsSimpleExampleSelector));
   it('looks right in a list', simpleTest(threatIndicatorsListExampleSelector));
   it('looks right in a table', simpleTest(threatIndicatorsTableExampleSelector));
+  it('looks right when policyThreatLevel prop is provided', simpleTest(threatIndicatorsPolicyNumberExampleSelector));
 
   it('passes a11y checks', a11yTest());
 });
