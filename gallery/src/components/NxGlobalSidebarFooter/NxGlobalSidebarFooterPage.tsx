@@ -5,7 +5,16 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxTextLink } from '@sonatype/react-shared-components';
+import {
+  NxP,
+  NxCode,
+  NxTable,
+  NxTile,
+  NxH2,
+  NxH3,
+  NxTextLink,
+  NxWarningAlert
+} from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -23,6 +32,10 @@ export default function NxGlobalSidebarFooterPage() {
           {' '}<NxCode>NxGlobalSidebar</NxCode>. It appears at the bottom of the sidebar and displays meta-information
           about the application such as links to documentation, versions, and branding.
         </NxP>
+        <NxWarningAlert>
+          Note that <NxCode>NxGlobalSidebarFooter</NxCode> has to appear as a direct child
+          of <NxCode>NxGlobalSidebar</NxCode> in order to render with the correct layout.
+        </NxWarningAlert>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
             <NxH3><NxCode>NxGlobalSidebarFooter</NxCode> Props</NxH3>
