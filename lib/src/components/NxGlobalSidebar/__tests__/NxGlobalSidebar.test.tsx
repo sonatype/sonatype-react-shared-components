@@ -63,10 +63,12 @@ describe('NxGlobalSidebar', function() {
                                  productTagLine="Powered by PLAID VILLAIN" />,
             view = quickRender({ ...minimalProps, children }),
             group = view.getByRole('group'),
+            complementary = within(group).getByRole('complementary'),
             footer = within(group).getByRole('contentinfo');
 
         expect(group).toBeInTheDocument();
         expect(footer).toBeInTheDocument();
+        expect(within(complementary).queryByRole('contentinfo')).not.toBeInTheDocument();
       });
     });
 
