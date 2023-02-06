@@ -50,10 +50,7 @@ describe('NxGlobalSidebarFooter', function() {
 
       it('renders the Support div with a link with the passed href and jsx ' +
       'if supportText and supportLink props are provided', function() {
-        const jsx =
-          <>
-            <span data-testid="spantext">TestSpan</span>
-          </>,
+        const jsx = <span data-testid="spantext">TestSpan</span>,
             view = quickRender({ supportText: jsx, supportLink: '#supporturl' }),
             supportLink = view.getByRole('link');
 
@@ -89,10 +86,7 @@ describe('NxGlobalSidebarFooter', function() {
       });
 
       it('renders the Release div with a text and version number if releaseText is jsx', function() {
-        const jsx =
-          <>
-            <span data-testid="spantext">TestSpan 3.1.4</span>
-          </>,
+        const jsx = <span data-testid="spantext">TestSpan 3.1.4</span>,
             view = quickRender({ releaseText: jsx });
 
         expect(view.getByTestId('spantext')).toBeInTheDocument();
@@ -108,10 +102,7 @@ describe('NxGlobalSidebarFooter', function() {
       });
 
       it('renders the Product name div with text if productTagLine is jsx', function() {
-        const jsx =
-          <>
-            <span data-testid="spantext">Powered by JSX</span>
-          </>,
+        const jsx = <span data-testid="spantext">Powered by JSX</span>,
             view = quickRender({ productTagLine: jsx });
 
         expect(view.getByTestId('spantext')).toBeInTheDocument();
