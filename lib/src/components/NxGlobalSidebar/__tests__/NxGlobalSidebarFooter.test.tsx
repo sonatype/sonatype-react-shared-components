@@ -13,6 +13,14 @@ describe('NxGlobalSidebarFooter', function() {
       quickRender = rtlRender<Props>(NxGlobalSidebarFooter, minimalProps),
       renderEl = rtlRenderElement<Props>(NxGlobalSidebarFooter, minimalProps);
 
+  it('renders a top-level <footer> element with role="contentinfo"', function() {
+    const view = quickRender(),
+        group = view.getByRole('contentinfo');
+
+    expect(group.tagName).toBe('FOOTER');
+    expect(group).toBe(view.container.firstElementChild);
+  });
+
   it('passes additional classes specified as props to <footer>', function() {
     const el = renderEl({ className: 'test-class' }),
         defaultEl = renderEl()!;

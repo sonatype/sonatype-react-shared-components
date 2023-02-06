@@ -8,7 +8,10 @@ import React from 'react';
 import NxGlobalSidebar, { Props } from '../NxGlobalSidebar';
 import { faBiohazard, faCrow } from '@fortawesome/free-solid-svg-icons';
 import { rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
+import NxGlobalSidebarNavigation from '../NxGlobalSidebarNavigation';
+import NxGlobalSidebarNavigationLink from '../NxGlobalSidebarNavigationLink';
+import NxGlobalSidebarFooter from '../NxGlobalSidebarFooter';
 
 describe('NxGlobalSidebar', function() {
   const minimalProps: Props = {
@@ -23,12 +26,76 @@ describe('NxGlobalSidebar', function() {
 
   const quickRender = rtlRender<Props>(NxGlobalSidebar, minimalProps);
 
-  it('renders a top-level element with role="complementary"', function() {
+  it('renders a top-level element with role="group"', function() {
     const view = quickRender(),
-        complementary = view.getByRole('complementary');
+        group = view.getByRole('group');
 
-    expect(complementary).toHaveAccessibleName('global sidebar');
-    expect(complementary).toBe(view.container.firstElementChild);
+    expect(group).toHaveAccessibleName('global sidebar');
+    expect(group).toBe(view.container.firstElementChild);
+  });
+
+  describe('NxGlobalSidebarNavigation and NxGlobalSidebarFooter', function() {
+    describe('when only the NxGlobalSidebarNavigation is a provided as a child', function () {
+      it('renders an element with role="navigation" within an element with role="complementary"', function() {
+        const children =
+          <NxGlobalSidebarNavigation key="1">
+            <NxGlobalSidebarNavigationLink icon={faCrow} text="testLink" href="testLink"/>
+          </NxGlobalSidebarNavigation>,
+            view = quickRender({ ...minimalProps, children }),
+            group = view.getByRole('group'),
+            complementary = within(group).getByRole('complementary'),
+            nav = within(complementary).getByRole('navigation');
+
+        expect(group).toBeInTheDocument();
+        expect(complementary).toBeInTheDocument();
+        expect(complementary).toBe(group.firstElementChild);
+        expect(nav).toBeInTheDocument();
+      });
+    });
+
+    describe('when only the NxGlobalSidebarFooter is a provided as a child', function () {
+      it('renders a footer with role="contentinfo"', function() {
+        const children =
+          <NxGlobalSidebarFooter key="1"
+                                 supportText="Support for RSC"
+                                 supportLink="https://github.com/sonatype/sonatype-react-shared-components"
+                                 releaseText="Release 3.1.4"
+                                 productTagLine="Powered by PLAID VILLAIN" />,
+            view = quickRender({ ...minimalProps, children }),
+            group = view.getByRole('group'),
+            footer = within(group).getByRole('contentinfo');
+
+        expect(group).toBeInTheDocument();
+        expect(footer).toBeInTheDocument();
+      });
+    });
+
+    describe('when both NxGlobalSidebarNavigation and NxGlobalSidebarFooter are provided as children', function () {
+      it('renders an element with role="navigation" within an element with role="complementary" ' +
+       'and a footer with role="contentinfo"', function() {
+        const children =
+          <React.Fragment key="1">
+            <NxGlobalSidebarNavigation>
+              <NxGlobalSidebarNavigationLink icon={faCrow} text="testLink" href="testLink"/>
+            </NxGlobalSidebarNavigation>
+            <NxGlobalSidebarFooter supportText="Support for RSC"
+                                   supportLink="https://github.com/sonatype/sonatype-react-shared-components"
+                                   releaseText="Release 3.1.4"
+                                   productTagLine="Powered by PLAID VILLAIN" />
+          </React.Fragment>,
+            view = quickRender({ ...minimalProps, children }),
+            group = view.getByRole('group'),
+            complementary = within(group).getByRole('complementary'),
+            nav = within(complementary).getByRole('navigation'),
+            footer = within(group).getByRole('contentinfo');
+
+        expect(group).toBeInTheDocument();
+        expect(complementary).toBeInTheDocument();
+        expect(complementary).toBe(group.firstElementChild);
+        expect(nav).toBeInTheDocument();
+        expect(footer).toBeInTheDocument();
+      });
+    });
   });
 
   it('renders a link to `logoLink` with the `logoImg` and the `altLogoText`', function() {
@@ -83,12 +150,12 @@ describe('NxGlobalSidebar', function() {
 
   it('renders passed in children', function() {
     const children = (
-      <>
+      <React.Fragment key="1">
         <div className="child-1" data-testid="div1">
           <p data-testid="p1">I am children</p>
         </div>
         <div className="child-2" data-testid="div2"></div>
-      </>
+      </React.Fragment>
     );
     const view = quickRender({ children });
     expect(view.getByTestId('div1')).toBeInTheDocument();
