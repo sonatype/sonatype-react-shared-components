@@ -68,7 +68,7 @@ describe('NxGlobalSidebar', function() {
 
         expect(group).toBeInTheDocument();
         expect(footer).toBeInTheDocument();
-        expect(within(complementary).queryByRole('contentinfo')).not.toBeInTheDocument();
+        expect(complementary).not.toContainElement(footer);
       });
     });
 
