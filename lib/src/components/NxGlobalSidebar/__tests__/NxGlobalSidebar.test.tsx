@@ -80,7 +80,7 @@ describe('NxGlobalSidebar', function() {
           </section>,
             view = quickRender({ ...minimalProps, children }),
             group = view.getByRole('group'),
-            complementary = within(group).getByRole('complementary'),
+            complementary = view.getByRole('complementary'),
             extraContent = within(complementary).getByTestId('testspan');
 
         expect(group).toBeInTheDocument();
@@ -111,7 +111,7 @@ describe('NxGlobalSidebar', function() {
           </React.Fragment>,
             view = quickRender({ ...minimalProps, children }),
             group = view.getByRole('group'),
-            complementary = within(group).getByRole('complementary'),
+            complementary = view.getByRole('complementary'),
             nav = within(complementary).getByRole('navigation'),
             extraContent = within(complementary).getByTestId('testspan'),
             footer = within(group).getByRole('contentinfo');
