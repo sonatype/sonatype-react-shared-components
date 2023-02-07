@@ -90,10 +90,10 @@ describe('NxModal', function() {
 
     it('executes onClose method with a cancel event when pressing ESC key', async function () {
       const mockCallBack = jest.fn(),
-          component = quickRender({ onClose: mockCallBack }),
+          view = quickRender({ onClose: mockCallBack }),
           user = userEvent.setup();
 
-      expect(component.getByRole('dialog')).toBeInTheDocument();
+      expect(view.getByRole('dialog')).toBeInTheDocument();
       expect(mockCallBack).not.toHaveBeenCalled();
       await user.keyboard('[Escape]');
       expect(mockCallBack).toHaveBeenCalledTimes(1);
@@ -102,10 +102,10 @@ describe('NxModal', function() {
 
     it('executes onCancel method with a cancel event when pressing ESC key', async function () {
       const mockCallBack = jest.fn(),
-          component = quickRender({ onCancel: mockCallBack }),
+          view = quickRender({ onCancel: mockCallBack }),
           user = userEvent.setup();
 
-      expect(component.getByRole('dialog')).toBeInTheDocument();
+      expect(view.getByRole('dialog')).toBeInTheDocument();
       expect(mockCallBack).not.toHaveBeenCalled();
       await user.keyboard('[Escape]');
       expect(mockCallBack).toHaveBeenCalledTimes(1);
@@ -114,10 +114,10 @@ describe('NxModal', function() {
 
     it('executes onClose method ONLY when pressing ESC key', async function () {
       const mockCallBack = jest.fn(),
-          component = quickRender({ onClose: mockCallBack }),
+          view = quickRender({ onClose: mockCallBack }),
           user = userEvent.setup();
 
-      expect(component.getByRole('dialog')).toBeInTheDocument();
+      expect(view.getByRole('dialog')).toBeInTheDocument();
 
       await user.keyboard('[Tab]');
       await user.keyboard('[Enter]');
@@ -129,10 +129,10 @@ describe('NxModal', function() {
 
     it('executes onCancel method ONLY when pressing ESC key', async function () {
       const mockCallBack = jest.fn(),
-          component = quickRender({ onCancel: mockCallBack }),
+          view = quickRender({ onCancel: mockCallBack }),
           user = userEvent.setup();
 
-      expect(component.getByRole('dialog')).toBeInTheDocument();
+      expect(view.getByRole('dialog')).toBeInTheDocument();
 
       await user.keyboard('[Tab]');
       await user.keyboard('[Enter]');
@@ -176,20 +176,20 @@ describe('NxModal', function() {
     const container = document.createElement('div');
     document.body.append(container);
 
-    const component = render(<Fixture modalOpen={false} />),
-        externalBtn = component.getByTestId('test-btn');
+    const view = render(<Fixture modalOpen={false} />),
+        externalBtn = view.getByTestId('test-btn');
 
     externalBtn.focus();
-    expect(component.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(view.queryByRole('dialog')).not.toBeInTheDocument();
     expect(document.activeElement === externalBtn).toBe(true);
 
-    component.rerender(<Fixture modalOpen={true} />);
-    const dialog = component.getByRole('dialog');
+    view.rerender(<Fixture modalOpen={true} />);
+    const dialog = view.getByRole('dialog');
     expect(dialog).toBeInTheDocument();
     expect(document.activeElement === dialog).toBe(true);
 
-    component.rerender(<Fixture modalOpen={false} />);
-    expect(component.queryByRole('dialog')).not.toBeInTheDocument();
+    view.rerender(<Fixture modalOpen={false} />);
+    expect(view.queryByRole('dialog')).not.toBeInTheDocument();
 
     // The focus is moved asynchronously
     await runTimers();
@@ -201,7 +201,7 @@ describe('NxModal', function() {
   describe('NxModal.Header', function() {
     it('makes a <header> tag with the nx-modal-header class', function() {
       const view = render(
-        <NxModal { ...minimalProps }><NxModal.Header>Test</NxModal.Header> </NxModal>
+        <NxModal { ...minimalProps }><NxModal.Header>Test</NxModal.Header></NxModal>
       );
       expect(view.getByRole('banner')).toBeInTheDocument();
       expect(view.getByRole('banner')).toHaveTextContent('Test');
