@@ -6,8 +6,9 @@
  */
 import React, { RefAttributes } from 'react';
 import NxSearchDropdown, { Props } from '../NxSearchDropdown';
+import NxForm from '../../NxForm/NxForm';
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
-import { within } from '@testing-library/react';
+import { within, render } from '@testing-library/react';
 
 describe('NxSearchDropdown', function() {
   type PropsWithRef = Props<string | number> & RefAttributes<HTMLDivElement>;
@@ -338,5 +339,24 @@ describe('NxSearchDropdown', function() {
     await user.click(closeButton);
 
     expect(onSearchTextChange).toHaveBeenCalledWith('');
+  });
+
+  it('does not submit form when close button on searchbox is clicked', async function() {
+    const onSubmit = jest.fn(),
+        view = render(
+          <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+            <NxSearchDropdown { ...minimalProps } searchText="One" />
+          </NxForm>
+        );
+
+    await runTimers();
+
+    const clearBtn = view.getByRole('button', { name: /clear search/i }),
+        user = userEvent.setup();
+
+    expect(onSubmit).not.toHaveBeenCalled();
+
+    await user.click(clearBtn);
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 });

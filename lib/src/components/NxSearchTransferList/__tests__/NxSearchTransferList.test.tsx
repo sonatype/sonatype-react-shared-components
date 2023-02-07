@@ -10,6 +10,7 @@ import { includes } from 'ramda';
 import { within, render } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../__testutils__/rtlUtils';
 import NxSearchTransferList, { Props } from '../NxSearchTransferList';
+import NxForm from '../../NxForm/NxForm';
 
 describe('NxSearchTransferList', function() {
   const minimalProps: Props = {
@@ -116,6 +117,25 @@ describe('NxSearchTransferList', function() {
       await user.click(clearBtn);
 
       expect(onSearchTextChange).toHaveBeenLastCalledWith('');
+    });
+
+    it('does not submit form when Clear Search button is clicked', async function() {
+      const user = userEvent.setup(),
+          onSubmit = jest.fn(),
+          view = render(
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxSearchTransferList { ...minimalProps } searchText="b" />
+            </NxForm>
+          );
+
+      await runTimers();
+      const clearBtn = view.getByRole('button', { name: 'Clear search' });
+
+      expect(onSubmit).not.toHaveBeenCalled();
+
+      await user.click(clearBtn);
+
+      expect(onSubmit).not.toHaveBeenCalled();
     });
 
     describe('search dropdown menu', function() {
@@ -469,6 +489,25 @@ describe('NxSearchTransferList', function() {
 
             expect(onAddedItemsFilterChange).toHaveBeenLastCalledWith('');
           });
+
+      it('does not submit the form when the "Clear filter" button is clicked', async function() {
+        const user = userEvent.setup(),
+            onSubmit = jest.fn(),
+            view = render(
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxSearchTransferList {...minimalProps} addedItemsFilter="b" />
+              </NxForm>
+            );
+
+        await runTimers();
+        const clearBtn = view.getByRole('button', { name: 'Clear search' });
+
+        expect(onSubmit).not.toHaveBeenCalled();
+
+        await user.click(clearBtn);
+
+        expect(onSubmit).not.toHaveBeenCalled();
+      });
     });
 
     it('renders text indicating how many items are added', function() {
