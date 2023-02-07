@@ -188,7 +188,7 @@ describe('NxModal', function() {
   });
 
   describe('NxModal.Header', function() {
-    it('makes a <header> tag with the nx-modal-header class', function() {
+    it('renders an element with role="banner"', function() {
       const view = render(
         <NxModal { ...minimalProps }><NxModal.Header>Test</NxModal.Header></NxModal>
       );
