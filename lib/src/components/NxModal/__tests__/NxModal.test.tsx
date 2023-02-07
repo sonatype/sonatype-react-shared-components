@@ -163,22 +163,6 @@ describe('NxModal', function() {
     // });
   });
 
-  // it('renders descendant tooltips attached to the backdrop rather than the document body', function() {
-  //   const nxModal = mount(
-  //     <NxModal onClose={() => {}}>
-  //       <div id="test-div">
-  //         <NxTooltip title="foo">
-  //           <NxButton>Foo</NxButton>
-  //         </NxTooltip>
-  //       </div>
-  //     </NxModal>
-  //   );
-
-  //   const tooltip = nxModal.find(Tooltip).at(0);
-
-  //   expect(tooltip.prop('PopperProps')!.container).toBe(nxModal.getDOMNode());
-  // });
-
   it('moves focus back to the previously focused element when closed', async function() {
     function Fixture({ modalOpen }: { modalOpen: boolean }) {
       return (
