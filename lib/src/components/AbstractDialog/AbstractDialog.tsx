@@ -15,7 +15,8 @@ import useMergedRef from '@react-hook/merged-ref';
 
 import { Props, DialogContextValue } from './types';
 
-const FOCUSABLE_ELEMENTS_SELECTOR = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE_ELEMENTS_SELECTOR
+  = 'button, [href], input, select, textarea, object, [tabindex]:not([tabindex="-1"])';
 
 // https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element
 export const DialogContext = React.createContext<DialogContextValue | null>(null);
@@ -91,8 +92,9 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       previouslyFocusedElementRef.current = document.activeElement as HTMLElement;
 
       // Use dialog method
-      // We do not use showModal because the top-level it overlaps
-      // popovers from password managers.
+      // We do not use showModal because it moves
+      // the dialog to top-level and it overlaps
+      // popovers generated from password managers.
       if (hasNativeModalSupport) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (dialogEl as any).show();
@@ -104,7 +106,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
       const autofocusEl = dialogEl.querySelector('[autofocus]') as HTMLElement | null;
 
-      // Only focus on autofocus element when it is modal.
+      // Only focus on autofocus element when it is a modal.
       if (autofocusEl && isModal) {
         autofocusEl.focus();
       }
