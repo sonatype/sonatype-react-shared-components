@@ -122,7 +122,6 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
           // still exists, the document is still "blocked by the modal dialog" so trying to focus elements outside of
           // it won't work. So we have to wait until the next cycle of the event loop when it's gone
           Promise.resolve().then(() => {
-            console.log(previouslyFocusedElementRef.current);
             if (previouslyFocusedElementRef.current) {
               previouslyFocusedElementRef.current.focus();
               previouslyFocusedElementRef.current = null;
