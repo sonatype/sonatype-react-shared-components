@@ -16,9 +16,9 @@ import useMergedRef from '@react-hook/merged-ref';
 import { Props, DialogContextValue } from './types';
 
 const FOCUSABLE_ELEMENTS_SELECTOR
-  = '[tabindex]:not([tabindex="-1"], [href]:not([disabled]), button:not([disabled]), '
+  = '[href]:not([disabled]), button:not([disabled]), '
   + 'input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [contenteditable], '
-  + 'object, iframe';
+  + 'object, iframe, [tabindex]:not([tabindex="-1"])';
 
 // https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element
 export const DialogContext = React.createContext<DialogContextValue | null>(null);
