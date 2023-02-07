@@ -20,17 +20,18 @@ describe('NxModal', function() {
       renderEl = rtlRenderElement<PropsWithRef>(NxModal, minimalProps);
 
   it('renders a top-level element with role="dialog"', function () {
-    const view = quickRender();
+    const view = quickRender(),
+        dialog = view.getByRole('dialog');
 
-    expect(view.getByRole('dialog')).toBeInTheDocument();
-    expect(view.getByRole('dialog')).toBe(view.container.firstElementChild);
+    expect(dialog).toBeInTheDocument();
+    expect(dialog).toBe(view.container.firstElementChild);
   });
 
   it('renders children nodes within the modal', function() {
     const view = quickRender({ children: <div className="bar" data-testid="test-div" /> }),
-        modal = view.getByRole('dialog');
+        dialog = view.getByRole('dialog');
 
-    expect(within(modal).getByTestId('test-div')).toBeInTheDocument();
+    expect(within(dialog).getByTestId('test-div')).toBeInTheDocument();
   });
 
   it('merges any passed in className to the modal', function() {
@@ -80,44 +81,37 @@ describe('NxModal', function() {
       }
     });
 
-    // const createEvent = (key = 'Escape') => ({
-    //   key,
-    //   stopPropagation: jest.fn(),
-    //   nativeEvent: {
-    //     stopImmediatePropagation: jest.fn()
-    //   }
-    // });
-
     it('executes onClose method with a cancel event when pressing ESC key', async function () {
       const mockCallBack = jest.fn(),
-          view = quickRender({ onClose: mockCallBack }),
           user = userEvent.setup();
 
-      expect(view.getByRole('dialog')).toBeInTheDocument();
+      quickRender({ onClose: mockCallBack });
       expect(mockCallBack).not.toHaveBeenCalled();
+
       await user.keyboard('[Escape]');
+
       expect(mockCallBack).toHaveBeenCalledTimes(1);
       expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
     });
 
     it('executes onCancel method with a cancel event when pressing ESC key', async function () {
       const mockCallBack = jest.fn(),
-          view = quickRender({ onCancel: mockCallBack }),
           user = userEvent.setup();
 
-      expect(view.getByRole('dialog')).toBeInTheDocument();
+      quickRender({ onCancel: mockCallBack });
       expect(mockCallBack).not.toHaveBeenCalled();
+
       await user.keyboard('[Escape]');
+
       expect(mockCallBack).toHaveBeenCalledTimes(1);
       expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
     });
 
     it('executes onClose method ONLY when pressing ESC key', async function () {
       const mockCallBack = jest.fn(),
-          view = quickRender({ onClose: mockCallBack }),
           user = userEvent.setup();
 
-      expect(view.getByRole('dialog')).toBeInTheDocument();
+      quickRender({ onClose: mockCallBack });
 
       await user.keyboard('[Tab]');
       await user.keyboard('[Enter]');
@@ -129,10 +123,9 @@ describe('NxModal', function() {
 
     it('executes onCancel method ONLY when pressing ESC key', async function () {
       const mockCallBack = jest.fn(),
-          view = quickRender({ onCancel: mockCallBack }),
           user = userEvent.setup();
 
-      expect(view.getByRole('dialog')).toBeInTheDocument();
+      quickRender({ onCancel: mockCallBack });
 
       await user.keyboard('[Tab]');
       await user.keyboard('[Enter]');
@@ -142,25 +135,22 @@ describe('NxModal', function() {
       expect(mockCallBack).not.toHaveBeenCalled();
     });
 
-    // it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
-    //   const component = renderEl({ onClose: jest.fn() })!,
-    //       escapeEvent = createEvent.keyDown(component, {
-    //         key: 'Escape',
-    //         stopPropagation: jest.fn(),
-    //         nativeEvent: {
-    //           stopImmediatePropagation: jest.fn()
-    //         }
-    //       }),
-    //       otherEvent = createEvent.keyDown(component, { key: 'Q' });
+    it('does not bubble escape to outside listener', async function() {
+      const wrapperKeyDownListener = jest.fn(),
+          user = userEvent.setup();
 
-    //   fireEvent(component, escapeEvent);
-    //   fireEvent(component, otherEvent);
-    //   expect(escapeEvent.stopPropagation).toHaveBeenCalled();
-    //   expect(escapeEvent.nativeEvent.stopImmediatePropagation).toHaveBeenCalled();
+      render(
+        <div onKeyDown={wrapperKeyDownListener}>
+          <NxModal onClose={jest.fn()}>Hello</NxModal>
+        </div>
+      );
 
-    //   expect(otherEvent.stopPropagation).toBe(false);
-    //   expect(otherEvent.nativeEvent.stopImmediatePropagation).toBe(false);
-    // });
+      await user.keyboard('[Escape]');
+      expect(wrapperKeyDownListener).not.toHaveBeenCalled();
+
+      await user.keyboard('Q');
+      expect(wrapperKeyDownListener).toHaveBeenCalled();
+    });
   });
 
   it('moves focus back to the previously focused element when closed', async function() {
@@ -196,13 +186,13 @@ describe('NxModal', function() {
 
     expect(document.activeElement === externalBtn).toBe(true);
   });
-  // });
 
   describe('NxModal.Header', function() {
     it('makes a <header> tag with the nx-modal-header class', function() {
       const view = render(
         <NxModal { ...minimalProps }><NxModal.Header>Test</NxModal.Header></NxModal>
       );
+
       expect(view.getByRole('banner')).toBeInTheDocument();
       expect(view.getByRole('banner')).toHaveTextContent('Test');
     });
