@@ -6,18 +6,16 @@
  */
 import React, {
   forwardRef,
+  KeyboardEvent,
   useEffect,
   useRef,
   useState
 } from 'react';
-import { find, findLast } from 'ramda';
+
 import useMergedRef from '@react-hook/merged-ref';
 
 import { Props, DialogContextValue } from './types';
 
-const FOCUSABLE_ELEMENTS_SELECTOR = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-
-// https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element
 export const DialogContext = React.createContext<DialogContextValue | null>(null);
 
 // Typescript has rather obnoxiously partially removed support for HTMLDialogElement.
@@ -28,23 +26,11 @@ export const DialogContext = React.createContext<DialogContextValue | null>(null
 const hasWindow = typeof window !== 'undefined',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dynamicallyTypedWindow = hasWindow && window as any,
-    hasNativeModalSupport = !!(hasWindow && dynamicallyTypedWindow.HTMLDialogElement
+    hasNativeModalSupport = !!(hasWindow && dynamicallyTypedWindow.HTMLDialogElement &&
+      dynamicallyTypedWindow.HTMLDialogElement.prototype.showModal
       && dynamicallyTypedWindow.HTMLDialogElement.prototype.show);
 
 const createCancelEvent = () => new Event('cancel', { cancelable: true });
-
-const isVisible = (element: HTMLElement | null) =>
-  !!(element && (element.offsetWidth || element.offsetHeight || element.getClientRects().length
-  && window.getComputedStyle(element).visibility !== 'hidden'));
-
-const getFocusableElements = (element: HTMLElement) =>
-  Array.from(element.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR)) as HTMLElement[];
-
-const getFirstVisibleFocusableElement = (element: HTMLElement) =>
-  find(isVisible)(getFocusableElements(element));
-
-const getLastVisibleFocusableElement = (element: HTMLElement) =>
-  findLast(isVisible)(getFocusableElements(element));
 
 /**
  * Abstracted Dialog element implementation and behaviors.
@@ -76,102 +62,11 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   // value has updated, and refs aren't tracked like state values. So we have to copy the ref value into a state
   // value in order for it to be tracked.
   const [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
-  const previouslyFocusedElementRef = useRef<HTMLElement | null>(null);
 
   const mergedRef = useMergedRef(dialogRef, ref);
 
-  // Handle open and close logic.
-  useEffect(function() {
-    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-    const dialogEl = dialogRef.current!;
-    setDialogRefState(dialogEl);
-
-    // Open Dialog
-    if (open == null || open) {
-      previouslyFocusedElementRef.current = document.activeElement as HTMLElement;
-
-      // Use dialog method
-      // We do not use showModal because the top-level it overlaps
-      // popovers from password managers.
-      if (hasNativeModalSupport) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (dialogEl as any).show();
-      }
-      else { // Use attribute
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (dialogEl as any).open = true;
-      }
-
-      const autofocusEl = dialogEl.querySelector('[autofocus]') as HTMLElement | null;
-
-      // Only focus on autofocus element when it is modal.
-      if (autofocusEl && isModal) {
-        autofocusEl.focus();
-      }
-      else {
-        const dialogFocusableElements = getFirstVisibleFocusableElement(dialogEl);
-        if (dialogFocusableElements) {
-          dialogFocusableElements.focus();
-        }
-      }
-
-      // Focus on previously focused element.
-      return () => {
-        if (previouslyFocusedElementRef.current && previouslyFocusedElementRef.current instanceof HTMLElement) {
-          // The useEffect cleanup executes while the dialog is still present (in React 16 at least). While the dialog
-          // still exists, the document is still "blocked by the modal dialog" so trying to focus elements outside of
-          // it won't work. So we have to wait until the next cycle of the event loop when it's gone
-          Promise.resolve().then(() => {
-            console.log(previouslyFocusedElementRef.current);
-            if (previouslyFocusedElementRef.current) {
-              previouslyFocusedElementRef.current.focus();
-              previouslyFocusedElementRef.current = null;
-            }
-          });
-        }
-      };
-    }
-    // Close Dialog
-    else if (open === false) {
-      if (hasNativeModalSupport) { // Use dialog method
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (dialogEl as any).close();
-      }
-      else { // Use open attribute
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (dialogEl as any).open = false;
-      }
-      return undefined;
-    }
-    else {
-      return undefined;
-    }
-  }, [open, isModal]);
-
-  function dialogKeydownListener(event: React.KeyboardEvent<HTMLDialogElement>) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const dialogEl = dialogRef.current!;
-
-    if (isModal) { // modal focus trapping
-      const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
-      const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
-      if (event.key === 'Tab') {
-        if (event.shiftKey) {
-          if (document.activeElement === firstFocusableElement && lastFocusableElement) {
-            lastFocusableElement.focus();
-            event.preventDefault();
-          }
-        }
-        else {
-          if (document.activeElement === lastFocusableElement && firstFocusableElement) {
-            firstFocusableElement.focus();
-            event.preventDefault();
-          }
-        }
-      }
-    }
-
-    if (event.key === 'Escape' || event.key === 'Esc') {
+  function dialogKeydownListener(evt: KeyboardEvent<HTMLDialogElement>) {
+    if (evt.key === 'Escape' || evt.key === 'Esc') {
       // HACK for backwards compatibility: it is known that some downstream uses of NxModal do not provide
       // the onCancel/onCancel handler despite it being required. It is also known that these downstream uses
       // have some logic which globally manages ESC handlers for a variety of things including modals. To keep that
@@ -180,16 +75,20 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       if (onCancel) {
         // prevent visibility of the keydown outside of the dialog, so that global ESC listeners on the
         // document don't pick it up
-        event.stopPropagation();
+        evt.stopPropagation();
 
         // prevent visibility to manually-registered native event listeners on the document too.
         // NOTE: this only works on listeners added after this one, which is believed to include any
         // registered in useEffect calls on components rendered simultaneously with the dialog
-        event.nativeEvent.stopImmediatePropagation();
+        evt.nativeEvent.stopImmediatePropagation();
 
-        if (!event.defaultPrevented) {
-          if (!useNativeCancelOnEscape || isModal) {
-            event.preventDefault();
+        if (!evt.defaultPrevented) {
+          if (!useNativeCancelOnEscape) {
+            evt.preventDefault();
+            onCancel(createCancelEvent());
+          }
+          else if (!hasNativeModalSupport) {
+            // emulate cancel-on-esc behavior in browsers which don't do it natively
             onCancel(createCancelEvent());
           }
         }
@@ -197,8 +96,74 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     }
   }
 
-  // Listen to the native HTMLDialogElement cancel event
-  // which supporting browsers fire when the dialog is closed via ESC
+  useEffect(function() {
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+    const el = dialogRef.current!,
+        // HTML <dialog> elements are supposed to remember what element was focused before they were opened,
+        // and restore focus to that element when they are closed. No browsers appear to implement this currently,
+        // so we do it ourselves
+        previouslyFocusedEl = document.activeElement;
+
+    setDialogRefState(el);
+
+    // if the open attr isn't being explicitly controlled at all, or is being passed as explictly open, use the
+    // show(Modal) methods to open it, getting all the built-in browser behavior around focus
+    if (open == null || open) {
+      if (hasNativeModalSupport) {
+        if (isModal) {
+          /*
+          * This will cause the document to become "blocked by the modal dialog"
+          * (https://html.spec.whatwg.org/multipage/interaction.html#blocked-by-a-modal-dialog)
+          * meaning that only the modal and its contents are interactable/focusable.
+          *
+          * Note: not supported in safari, which is why the conditional is here. Once safari gets
+          * it together, we should be able to take advantage of the "top layer" functionality built into
+          * the browser around modals to simplify the dialog styling around z-index handling
+          */
+
+          // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1029#issuecomment-968299542
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (el as any).showModal();
+        }
+        else {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (el as any).show();
+        }
+      }
+      else {
+        // without native support we don't trap focus in the dialog, but we can at least start it off there
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (el as any).open = true;
+        el.focus();
+      }
+
+      return () => {
+        if (previouslyFocusedEl && previouslyFocusedEl instanceof HTMLElement) {
+          // The useEffect cleanup executes while the dialog is still present (in React 16 at least). While the dialog
+          // still exists, the document is still "blocked by the modal dialog" so trying to focus elements outside of
+          // it won't work. So we have to wait until the next cycle of the event loop when it's gone
+          Promise.resolve().then(() => previouslyFocusedEl.focus());
+        }
+      };
+    }
+    else if (open === false) {
+      if (hasNativeModalSupport) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (el as any).close();
+      }
+      else {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (el as any).open = false;
+      }
+      return undefined;
+    }
+    else {
+      return undefined;
+    }
+  }, [open]);
+
+  // listen to the native HTMLDialogElement cancel event which supporting browsers fire when the dialog is closed
+  // via ESC
   useEffect(function() {
     const dialog = dialogRef.current;
 
