@@ -17,7 +17,7 @@ describe('NxTree', function() {
   const quickRender = rtlRender(NxTree, {}),
       renderEl = rtlRenderElement(NxTree, {});
 
-  it('renders a <ul> with role=tree as the top level element', function() {
+  it('renders a <ul> with role=tree as the top-level element', function() {
     const view = quickRender();
 
     expect(view.getByRole('tree')).toBe(view.container.firstElementChild);

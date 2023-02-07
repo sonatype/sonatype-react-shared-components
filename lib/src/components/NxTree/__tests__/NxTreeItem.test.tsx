@@ -45,7 +45,7 @@ describe('NxTreeItem', function() {
       quickRender = rtlRender<Props>(getTreeItem, minimalProps),
       renderEl = rtlRenderElement<Props>(getTreeItem, minimalProps);
 
-  it('renders an <li> with role=treeitem as the top level element', function() {
+  it('renders an <li> with role=treeitem as the top-level element', function() {
     const view = quickRender();
 
     expect(view.getByRole('treeitem')).toBe(view.container.firstElementChild);
