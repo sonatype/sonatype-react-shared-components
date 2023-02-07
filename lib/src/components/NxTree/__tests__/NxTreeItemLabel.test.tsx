@@ -34,6 +34,11 @@ const quickRender = rtlRender(getTreeItemLabel, {}),
     renderEl = rtlRenderElement(getTreeItemLabel, {});
 
 describe('NxTree.ItemLabel', function() {
+  it('renders a <span> as the top-level element', function() {
+    const view = quickRender();
+    expect(view.container.firstElementChild!.tagName).toBe('SPAN');
+  });
+
   it('adds specified classes and attrs to the top-level element', function() {
     const el = renderEl({ className: 'foo', lang: 'en-US' }),
         defaultEl = renderEl()!;
