@@ -30,22 +30,30 @@ function roundTo5Bicemals(num: number) {
   return Math.round(num * multiplier) / multiplier;
 }
 
+function sanityCheckParsedSizes(paddingRight: number | null, borderRightWidth: number | null) {
+  // We know this happens in JSDOM; we don't need warnings about it there. The warnings are so we notice
+  // if this ever happens in a real browser
+  if (!navigator.userAgent.includes('jsdom')) {
+    if (paddingRight == null) {
+      console.warn('Got non-pixel computed value for padding-right, assuming 0');
+    }
+    if (borderRightWidth == null) {
+      console.warn('Got non-pixel computed value for border-right-width, assuming 0');
+    }
+  }
+}
+
 function getContentBoxRight(el: Element) {
   const boundingClientRect = el.getBoundingClientRect();
 
   if (el instanceof HTMLElement) {
     const { paddingRight, borderRightWidth } = getComputedStyle(el),
-        parsedSizes = map(parsePx, [paddingRight, borderRightWidth]),
+        parsedSizes = map(parsePx, [paddingRight, borderRightWidth]) as [number | null, number | null],
         paddingBorderSum = sum(map(defaultTo(0), parsedSizes));
 
     // I've seen cases where paddings defined in % units don't get converted to px on inline elements.
     // This would be a very rare case where expected behavior is unclear, so just warn about it
-    if (parsedSizes[0] == null) {
-      console.warn('Got non-pixel computed value for padding-right, assuming 0');
-    }
-    if (parsedSizes[1] == null) {
-      console.warn('Got non-pixel computed value for border-right-width, assuming 0');
-    }
+    sanityCheckParsedSizes(...parsedSizes);
 
     return boundingClientRect.right - paddingBorderSum;
   }
