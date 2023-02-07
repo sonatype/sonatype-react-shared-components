@@ -16,7 +16,9 @@ import useMergedRef from '@react-hook/merged-ref';
 import { Props, DialogContextValue } from './types';
 
 const FOCUSABLE_ELEMENTS_SELECTOR
-  = 'button, [href], input, select, textarea, object, [tabindex]:not([tabindex="-1"])';
+  = '[tabindex]:not([tabindex="-1"], [href]:not([disabled]), button:not([disabled]), '
+  + 'input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [contenteditable], '
+  + 'object, iframe';
 
 // https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element
 export const DialogContext = React.createContext<DialogContextValue | null>(null);
@@ -149,29 +151,49 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     }
   }, [open, isModal]);
 
-  function dialogKeydownListener(event: React.KeyboardEvent<HTMLDialogElement>) {
+  // Focus trapping
+  useEffect(() => {
+    const keydownListener = (event: KeyboardEvent) => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const dialogEl = dialogRef.current!;
+      const dialogEl = dialogRef.current!;
 
-    if (isModal) { // modal focus trapping
-      const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
-      const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
       if (event.key === 'Tab') {
+        const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
+        const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
+        const nullOrDialogActiveFocus = [document.body, dialogEl, null].includes(document.activeElement as HTMLElement);
+
+        if (nullOrDialogActiveFocus) {
+          event.preventDefault();
+        }
+
         if (event.shiftKey) {
-          if (document.activeElement === firstFocusableElement && lastFocusableElement) {
+          if (
+            (nullOrDialogActiveFocus || document.activeElement === firstFocusableElement)
+            && lastFocusableElement
+          ) {
             lastFocusableElement.focus();
             event.preventDefault();
           }
         }
         else {
-          if (document.activeElement === lastFocusableElement && firstFocusableElement) {
+          if (
+            (nullOrDialogActiveFocus || document.activeElement === lastFocusableElement)
+            && firstFocusableElement
+          ) {
             firstFocusableElement.focus();
             event.preventDefault();
           }
         }
       }
-    }
+    };
 
+    if (isModal) {
+      document.addEventListener('keydown', keydownListener);
+    }
+    return () => document.removeEventListener('keydown', keydownListener);
+  }, [isModal]);
+
+  function dialogKeydownListener(event: React.KeyboardEvent<HTMLDialogElement>) {
     if (event.key === 'Escape' || event.key === 'Esc') {
       // HACK for backwards compatibility: it is known that some downstream uses of NxModal do not provide
       // the onCancel/onCancel handler despite it being required. It is also known that these downstream uses
