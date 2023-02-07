@@ -193,6 +193,22 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     return () => document.removeEventListener('keydown', keydownListener);
   }, [isModal]);
 
+  // Listen to the native HTMLDialogElement cancel event
+  // which supporting browsers fire when the dialog is closed via ESC
+  useEffect(function() {
+    const dialog = dialogRef.current;
+
+    if (dialog && hasNativeModalSupport) {
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      dialog.addEventListener('cancel', onCancel!);
+      return () => { dialog.removeEventListener('cancel', onCancel!); };
+      /* eslint-enable @typescript-eslint/no-non-null-assertion */
+    }
+    else {
+      return undefined;
+    }
+  }, [onCancel]);
+
   function dialogKeydownListener(event: React.KeyboardEvent<HTMLDialogElement>) {
     if (event.key === 'Escape' || event.key === 'Esc') {
       // HACK for backwards compatibility: it is known that some downstream uses of NxModal do not provide
@@ -219,22 +235,6 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       }
     }
   }
-
-  // Listen to the native HTMLDialogElement cancel event
-  // which supporting browsers fire when the dialog is closed via ESC
-  useEffect(function() {
-    const dialog = dialogRef.current;
-
-    if (dialog && hasNativeModalSupport) {
-      /* eslint-disable @typescript-eslint/no-non-null-assertion */
-      dialog.addEventListener('cancel', onCancel!);
-      return () => { dialog.removeEventListener('cancel', onCancel!); };
-      /* eslint-enable @typescript-eslint/no-non-null-assertion */
-    }
-    else {
-      return undefined;
-    }
-  }, [onCancel]);
 
   const dialogContextValue = {
     dialog: dialogRefState
