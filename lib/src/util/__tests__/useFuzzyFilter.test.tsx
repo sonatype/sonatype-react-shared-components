@@ -83,12 +83,13 @@ describe('useFuzzyFilter', function () {
     expect(outputItems[3]).toHaveTextContent('Moped');
   });
 
-  it('returns unchanged input if filter was set to empty string', async function () {
+  it('returns unchanged input if filter was set to empty string', function () {
     const view = renderWithFilter(),
         outputItems = view.getAllByTestId('result'),
         inputEl = view.getByRole('textbox');
 
     expect(inputEl).toHaveValue('');
+
     expect(outputItems.length).toBe(4);
     expect(outputItems[0]).toHaveTextContent('Bicycle');
     expect(outputItems[1]).toHaveTextContent('Motorcycle');
@@ -100,12 +101,13 @@ describe('useFuzzyFilter', function () {
     const user = userEvent.setup(),
         view = renderWithFilter(),
         inputEl = view.getByRole('textbox');
+    let outputItems = view.getAllByTestId('result');
 
+    expect(outputItems.length).toBe(4);
     await user.type(inputEl, '[Space]');
 
-    const outputItems = view.getAllByTestId('result');
+    outputItems = view.getAllByTestId('result');
     expect(outputItems.length).toBe(4);
-    expect(inputEl).toHaveValue(' ');
   });
 
   it('filters input and returns new filter term', async function() {
@@ -147,11 +149,25 @@ describe('useFuzzyFilter', function () {
     let outputItems = view.getAllByTestId('result');
 
     expect(outputItems.length).toBe(4);
-    await user.type(inputEl, ' scooter');
+    await user.type(inputEl, 'scooter');
 
     outputItems = view.getAllByTestId('result');
     expect(outputItems.length).toBe(1);
     expect(outputItems[0]).toHaveTextContent('Moped or Scooter');
-    expect(inputEl).toHaveValue(' scooter');
+    expect(inputEl).toHaveValue('scooter');
+  });
+
+  it('does not sort filtered entries', async function() {
+    const user = userEvent.setup(),
+        view = renderWithFilter(),
+        inputEl = view.getByRole('textbox');
+
+    await user.type(inputEl, 'e');
+
+    const outputItems = view.getAllByTestId('result');
+
+    for (let i = 0; i < outputItems.length; i++) {
+      expect(outputItems[i].textContent).toEqual(input[i].name);
+    }
   });
 });
