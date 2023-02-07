@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import Fuse from 'fuse.js';
 
 import { render } from '@testing-library/react';
@@ -49,7 +49,7 @@ describe('useFuzzyFilter', function () {
   function FixtureWithFilter({ input, options }: Props) {
     const [output, filterTerm, setFilterTerm] = useFuzzyFilter(input, options);
 
-    function onChange(e:any) {
+    function onChange(e: ChangeEvent<HTMLInputElement>) {
       setFilterTerm(e.target.value);
     }
 
