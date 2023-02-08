@@ -12,7 +12,7 @@ import { render, within } from '@testing-library/react';
 describe('NxModal', function() {
   const minimalProps: Props = {
     children: 'A message to show in a modal',
-    onClose: jest.fn()
+    onClose: () => {}
   };
 
   type PropsWithRef = Props & RefAttributes<HTMLDialogElement>;
