@@ -28,7 +28,7 @@ describe('NxModal', function() {
   });
 
   it('renders children nodes within the modal', function() {
-    const view = quickRender({ children: <div className="bar" data-testid="test-div" /> }),
+    const view = quickRender({ children: <div data-testid="test-div" /> }),
         dialog = view.getByRole('dialog');
 
     expect(within(dialog).getByTestId('test-div')).toBeInTheDocument();
