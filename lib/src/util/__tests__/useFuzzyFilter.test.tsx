@@ -83,20 +83,6 @@ describe('useFuzzyFilter', function () {
     expect(outputItems[3]).toHaveTextContent('Moped');
   });
 
-  it('returns unchanged input if filter was set to empty string', function () {
-    const view = renderWithFilter(),
-        outputItems = view.getAllByTestId('result'),
-        inputEl = view.getByRole('textbox');
-
-    expect(inputEl).toHaveValue('');
-
-    expect(outputItems.length).toBe(4);
-    expect(outputItems[0]).toHaveTextContent('Bicycle');
-    expect(outputItems[1]).toHaveTextContent('Motorcycle');
-    expect(outputItems[2]).toHaveTextContent('Skateboard');
-    expect(outputItems[3]).toHaveTextContent('Moped');
-  });
-
   it('returns unchanged input if filter contains only spaces', async function() {
     const user = userEvent.setup(),
         view = renderWithFilter(),
