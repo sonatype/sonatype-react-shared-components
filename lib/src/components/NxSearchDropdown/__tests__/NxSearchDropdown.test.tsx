@@ -351,7 +351,7 @@ describe('NxSearchDropdown', function() {
 
     await runTimers();
 
-    const clearBtn = view.getByRole('button', { name: /clear search/i }),
+    const clearBtn = view.getByRole('button', { name: 'Clear search' }),
         user = userEvent.setup();
 
     expect(onSubmit).not.toHaveBeenCalled();

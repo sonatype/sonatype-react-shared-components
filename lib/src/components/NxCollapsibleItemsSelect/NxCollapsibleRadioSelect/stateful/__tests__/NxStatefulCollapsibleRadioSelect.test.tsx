@@ -441,8 +441,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
           inputEl = view.getByRole('textbox');
 
       await runTimers();
-      inputEl.focus();
-      await user.keyboard('b');
+      await user.type(inputEl, 'b');
 
       expect(onSubmit).not.toHaveBeenCalled();
 
