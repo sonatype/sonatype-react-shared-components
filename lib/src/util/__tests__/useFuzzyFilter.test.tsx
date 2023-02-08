@@ -61,7 +61,7 @@ describe('useFuzzyFilter', function () {
     );
   }
 
-  const renderWithFilter = rtlRender<Props>(FixtureWithFilter, {input, options});
+  const renderWithFilter = rtlRender<Props>(FixtureWithFilter, { input, options });
 
   it('returns unchanged input if filter was not set', function () {
     function FixtureNoFilter() {
