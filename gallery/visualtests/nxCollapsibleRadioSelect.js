@@ -13,6 +13,7 @@ describe('NxCollapsibleRadioSelect', function() {
     a11yTest,
     wait,
     waitAndGetElements,
+    moveMouseAway,
     blurElement,
     checkScreenshot
   } = setupBrowser('#/pages/Collapsible Radio-Select');
@@ -30,6 +31,8 @@ describe('NxCollapsibleRadioSelect', function() {
 
     // wait for animation
     await wait(500);
+
+    await moveMouseAway();
 
     await blurElement(targetElement);
 

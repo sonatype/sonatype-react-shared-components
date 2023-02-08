@@ -14,6 +14,7 @@ describe('NxCollapsibleMultiSelect', function() {
     a11yTest,
     wait,
     waitAndGetElements,
+    moveMouseAway,
     blurElement,
     checkScreenshot
   } = setupBrowser('#/pages/Collapsible Multi-Select');
@@ -34,6 +35,8 @@ describe('NxCollapsibleMultiSelect', function() {
 
     // wait for animation
     await wait(500);
+
+    await moveMouseAway();
 
     await blurElement(targetElement);
 
