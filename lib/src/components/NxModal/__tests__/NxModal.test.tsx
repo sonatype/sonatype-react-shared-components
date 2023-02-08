@@ -54,7 +54,7 @@ describe('NxModal', function() {
   });
 
   it('includes any passed in attributes to the modal div', function() {
-    const el = renderEl({ id: 'modal-id', lang: 'en_US' })?.firstElementChild;
+    const el = renderEl({ id: 'modal-id', lang: 'en_US' })!.firstElementChild;
 
     expect(el).toHaveAttribute('id', 'modal-id');
     expect(el).toHaveAttribute('lang', 'en_US');
