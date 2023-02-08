@@ -6,10 +6,11 @@
  */
 
 import React from 'react';
-import { fireEvent, screen, createEvent, within } from '@testing-library/react';
+import { fireEvent, screen, createEvent, within, render } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../../__testutils__/rtlUtils';
-import NxCollapsibleRadiosSelect, { Props } from '../NxCollapsibleRadioSelect';
+import NxCollapsibleRadioSelect, { Props } from '../NxCollapsibleRadioSelect';
 import { NxTreeViewRadioSelect } from '../../../../index';
+import NxForm from '../../../NxForm/NxForm';
 
 describe('NxCollapsibleRadioSelect', function() {
   const minimalProps: Props = {
@@ -22,11 +23,11 @@ describe('NxCollapsibleRadioSelect', function() {
         name: 'foobar',
         onChange: () => {}
       },
-      quickRender = rtlRender(NxCollapsibleRadiosSelect, minimalProps),
-      renderEl = rtlRenderElement(NxCollapsibleRadiosSelect, minimalProps);
+      quickRender = rtlRender(NxCollapsibleRadioSelect, minimalProps),
+      renderEl = rtlRenderElement(NxCollapsibleRadioSelect, minimalProps);
 
   it('is aliased as NxTreeViewRadioSelect', function() {
-    expect(NxCollapsibleRadiosSelect).toBe(NxTreeViewRadioSelect);
+    expect(NxCollapsibleRadioSelect).toBe(NxTreeViewRadioSelect);
   });
 
   it('renders a top-level element with a group role', function() {
@@ -339,7 +340,7 @@ describe('NxCollapsibleRadioSelect', function() {
           onFilterChange: () => {},
           filterThreshold: 2
         },
-        quickFilterRender = rtlRender(NxCollapsibleRadiosSelect, filterProps);
+        quickFilterRender = rtlRender(NxCollapsibleRadioSelect, filterProps);
 
     it('renders an input child with the textbox role', function() {
       const view = quickFilterRender(),
@@ -455,6 +456,29 @@ describe('NxCollapsibleRadioSelect', function() {
       fireEvent(inputEl, keyEvent);
 
       expect(keyEvent.defaultPrevented).toBe(false);
+    });
+
+    it('does not submit the form when the clear filter button is clicked', async function() {
+      const user = userEvent.setup(),
+          onSubmit = jest.fn(),
+          onFilterChange = jest.fn(),
+          view = render(
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxCollapsibleRadioSelect { ...minimalProps }
+                                        filter="f"
+                                        onFilterChange={onFilterChange}
+                                        filterThreshold={2} />
+            </NxForm>
+          );
+
+      await runTimers();
+      const clearBtn = view.getByRole('button', { name: 'Clear filter' });
+
+      expect(onSubmit).not.toHaveBeenCalled();
+
+      await user.click(clearBtn);
+
+      expect(onSubmit).not.toHaveBeenCalled();
     });
 
     describe('when options are filtered', function() {

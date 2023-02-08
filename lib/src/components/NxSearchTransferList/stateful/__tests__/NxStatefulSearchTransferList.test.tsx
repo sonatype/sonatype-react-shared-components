@@ -10,6 +10,7 @@ import { includes } from 'ramda';
 import { within, render } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../../__testutils__/rtlUtils';
 import NxStatefulSearchTransferList, { Props } from '../NxStatefulSearchTransferList';
+import NxForm from '../../../NxForm/NxForm';
 
 describe('NxSearchTransferList', function() {
   const minimalProps: Props = {
@@ -95,6 +96,27 @@ describe('NxSearchTransferList', function() {
       await user.click(clearBtn);
 
       expect(searchInput).toHaveValue('');
+    });
+
+    it('does not submit the form when the Clear Search button is clicked', async function() {
+      const user = userEvent.setup(),
+          onSubmit = jest.fn(),
+          view = render(
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxStatefulSearchTransferList { ...minimalProps } />
+            </NxForm>
+          ),
+          searchInput = view.getByRole('searchbox');
+
+      await user.type(searchInput, 'b');
+      await runTimers();
+
+      expect(onSubmit).not.toHaveBeenCalled();
+
+      const clearBtn = view.getByRole('button', { name: 'Clear search' });
+      await user.click(clearBtn);
+
+      expect(onSubmit).not.toHaveBeenCalled();
     });
 
     describe('search dropdown menu', function() {
@@ -493,6 +515,27 @@ describe('NxSearchTransferList', function() {
         await user.click(clearBtn);
 
         expect(filterInput).toHaveValue('');
+      });
+
+      it('does not submit the form when the "Clear filter" button is clicked', async function() {
+        const user = userEvent.setup(),
+            onSubmit = jest.fn(),
+            view = render(
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxStatefulSearchTransferList {...minimalProps} />
+              </NxForm>
+            ),
+            filterInput = view.getByRole('searchbox');
+
+        await user.type(filterInput, 'b');
+        await runTimers();
+
+        expect(onSubmit).not.toHaveBeenCalled();
+
+        const clearBtn = view.getByRole('button', { name: 'Clear filter' });
+        await user.click(clearBtn);
+
+        expect(onSubmit).not.toHaveBeenCalled();
       });
     });
 

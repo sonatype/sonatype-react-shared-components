@@ -9,6 +9,7 @@ import { render, screen, within } from '@testing-library/react';
 
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../../__testutils__/rtlUtils';
 import NxStatefulTransferList, { Props } from '../NxStatefulTransferList';
+import NxForm from '../../../NxForm/NxForm';
 
 describe('NxStatefulTransferList', function() {
   const minimalProps = {
@@ -571,6 +572,50 @@ describe('NxStatefulTransferList', function() {
       await user.keyboard('[Escape]');
 
       expect(within(selectedGroup).queryAllByRole('checkbox')).toHaveLength(3);
+    });
+
+    it('does not submit the form when the available items "Clear filter" button is pressed', async function() {
+      const user = userEvent.setup(),
+          onSubmit = jest.fn(),
+          view = render(
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxStatefulTransferList { ...minimalProps } />
+            </NxForm>
+          ),
+          availableGroup = view.getByRole('group', { name: 'Available Items' }),
+          availableFilterInput = within(availableGroup).getByRole('textbox', { name: 'Filter' });
+
+      await runTimers();
+
+      await user.type(availableFilterInput, 'asdf');
+      expect(onSubmit).not.toHaveBeenCalled();
+
+      const clearFilterBtn = within(availableGroup).getByRole('button', { name: 'Clear filter' });
+      await user.click(clearFilterBtn);
+
+      expect(onSubmit).not.toHaveBeenCalled();
+    });
+
+    it('does not submit the form when the transferred items "Clear filter" button is pressed', async function() {
+      const user = userEvent.setup(),
+          onSubmit = jest.fn(),
+          view = render(
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxStatefulTransferList { ...minimalProps } />
+            </NxForm>
+          ),
+          selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
+          selectedFilterInput = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
+
+      await runTimers();
+
+      await user.type(selectedFilterInput, 'asdf');
+      expect(onSubmit).not.toHaveBeenCalled();
+
+      const clearFilterBtn = within(selectedGroup).getByRole('button', { name: 'Clear filter' });
+      await user.click(clearFilterBtn);
+
+      expect(onSubmit).not.toHaveBeenCalled();
     });
   });
 

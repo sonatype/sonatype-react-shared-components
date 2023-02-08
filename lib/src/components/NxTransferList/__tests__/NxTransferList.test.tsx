@@ -9,6 +9,7 @@ import { render, screen, within } from '@testing-library/react';
 
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import NxTransferList, { Props } from '../NxTransferList';
+import NxForm from '../../NxForm/NxForm';
 
 describe('NxTransferList', function() {
   const minimalProps = {
@@ -630,6 +631,44 @@ describe('NxTransferList', function() {
 
       expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
       expect(onSelectedItemsFilterChange).toHaveBeenCalledWith('');
+    });
+
+    it('does not submit the form when the available items "Clear filter" button is pressed', async function() {
+      const user = userEvent.setup(),
+          onSubmit = jest.fn(),
+          view = render(
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxTransferList { ...minimalProps } availableItemsFilter="a" />
+            </NxForm>
+          ),
+          selectedGroup = view.getByRole('group', { name: 'Available Items' });
+
+      await runTimers();
+      expect(onSubmit).not.toHaveBeenCalled();
+
+      const clearFilterBtn = within(selectedGroup).getByRole('button', { name: 'Clear filter' });
+      await user.click(clearFilterBtn);
+
+      expect(onSubmit).not.toHaveBeenCalled();
+    });
+
+    it('does not submit the form when the transferred items "Clear filter" button is pressed', async function() {
+      const user = userEvent.setup(),
+          onSubmit = jest.fn(),
+          view = render(
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxTransferList { ...minimalProps } selectedItemsFilter="a" />
+            </NxForm>
+          ),
+          selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
+
+      await runTimers();
+      expect(onSubmit).not.toHaveBeenCalled();
+
+      const clearFilterBtn = within(selectedGroup).getByRole('button', { name: 'Clear filter' });
+      await user.click(clearFilterBtn);
+
+      expect(onSubmit).not.toHaveBeenCalled();
     });
   });
 
