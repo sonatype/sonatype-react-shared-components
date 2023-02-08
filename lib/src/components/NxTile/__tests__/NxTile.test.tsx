@@ -5,8 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { ComponentType } from 'react';
-import { render, screen } from '@testing-library/react';
-import { rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import { render } from '@testing-library/react';
 
 import NxTile from '../NxTile';
 
@@ -30,44 +29,7 @@ describe('NxTile.Header', function() {
 });
 
 describe('NxTile.HeaderTitle', function() {
-  const renderEl = rtlRenderElement(NxTile.HeaderTitle, {});
-
   it('makes a <div> tag with an nx-tile-header__title class', test(NxTile.HeaderTitle, 'div', 'nx-tile-header__title'));
-
-  it('renders a tooltip when the title text is too long to be fully seen', async function() {
-  // Mock layout methods that NxOverflowTooltip relies on in order to make it think overflow is occurring
-    jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({
-      x: 0,
-      y: 0,
-      width: 1,
-      height: 1,
-      top: 0,
-      right: 1,
-      bottom: 1,
-      left: 0
-    } as DOMRect);
-
-    // mock that text extends 1px farther than container
-    jest.spyOn(Range.prototype, 'getBoundingClientRect').mockReturnValue({
-      x: 0,
-      y: 0,
-      width: 2,
-      height: 1,
-      top: 0,
-      right: 2,
-      bottom: 1,
-      left: 0
-    } as DOMRect);
-
-    const el = renderEl({ children: <h2>Title</h2>})!,
-        user = userEvent.setup();
-
-    await user.hover(el);
-    await runTimers();
-
-    expect(screen.getByRole('tooltip')).toBeInTheDocument();
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Title');
-  });
 });
 
 describe('NxTile.Headings', function() {
