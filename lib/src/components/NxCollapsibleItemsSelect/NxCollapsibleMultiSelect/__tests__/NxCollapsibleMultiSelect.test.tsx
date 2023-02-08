@@ -343,7 +343,7 @@ describe('NxCollapsibleMultiSelect', function() {
           onSubmit = jest.fn(),
           onFilterChange = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={ false } >
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
               <NxCollapsibleMultiSelect { ...minimalProps }
                                         filter="f"
                                         onFilterChange={onFilterChange}
