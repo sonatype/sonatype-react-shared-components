@@ -31,8 +31,12 @@ describe('NxCollapsibleMultiSelect', function() {
     const [targetElement] = await waitAndGetElements(triggerSelector);
 
     await targetElement.click();
-    await blurElement(targetElement);
+
+    // wait for animation
     await wait(500);
+
+    await blurElement(targetElement);
+
     await checkScreenshot(targetElement);
   });
 
