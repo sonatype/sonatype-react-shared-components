@@ -7,7 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxCollapsibleMultiSelect', function() {
-  const { focusTest, hoverTest, simpleTest, a11yTest } = setupBrowser('#/pages/Collapsible Multi-Select');
+  const {
+    focusTest,
+    hoverTest,
+    simpleTest,
+    a11yTest,
+    wait,
+    waitAndGetElements,
+    blurElement,
+    checkScreenshot
+  } = setupBrowser('#/pages/Collapsible Multi-Select');
 
   const selector = '#nx-collapsible-multi-select-example .nx-collapsible-items--select';
   const disabledWithTooltipSelector
@@ -15,6 +24,17 @@ describe('NxCollapsibleMultiSelect', function() {
   const disabledWithTooltipHoverElementSelector = disabledWithTooltipSelector + ' .nx-collapsible-items__trigger';
 
   it('looks right', simpleTest(selector));
+
+  it('looks right when collapsed', async () => {
+    const triggerSelector = `${selector} .nx-collapsible-items__trigger`;
+
+    const [targetElement] = await waitAndGetElements(triggerSelector);
+
+    await targetElement.click();
+    await blurElement(targetElement);
+    await wait(500);
+    await checkScreenshot(targetElement);
+  });
 
   describe('NxCollapsibleMultiSelect Disabled With Tooltip', function() {
     it('looks right', hoverTest(disabledWithTooltipSelector, disabledWithTooltipHoverElementSelector, true));
