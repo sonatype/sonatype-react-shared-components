@@ -158,7 +158,7 @@ describe('NxModal', function() {
       return (
         <>
           <button data-testid="test-btn">Test</button>
-          { modalOpen && <NxModal onCancel={jest.fn()}><button id="cancel-btn">Close</button></NxModal> }
+          { modalOpen && <NxModal onCancel={jest.fn()}><button>Close</button></NxModal> }
         </>
       );
     }
