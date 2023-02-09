@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, MouseEvent, Ref, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { always, dec, head, inc, tail, omit } from 'ramda';
 import usePrevious from '../../util/usePrevious';
@@ -89,29 +89,41 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       TextInput = filterInput ? NxFilterInput : NxTextInput,
       filterInputProps = filterInput === 'search' ? { searchIcon: true } : null;
 
+  const activeRef = useRef<HTMLElement | null>(null);
+
+  function updateActiveRef() {
+    const body = document.body;
+    if (document.activeElement !== body || !body?.contains(document.activeElement)) {
+      activeRef.current = null;
+    }
+    else {
+      activeRef.current = document.activeElement as HTMLElement;
+    }
+  }
+
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
-  function handleComponentFocus(evt: FocusEvent<HTMLDivElement>) {
+  function handleComponentFocus(evt: MouseEvent<HTMLDivElement> | FocusEvent<HTMLDivElement>) {
     setInputIsFocused(true);
 
     if (loadError) {
       // check if this is focus coming into the component from somewhere else on the page, not just moving between
       // children of this component and not from focus coming into the browser from some other window
-      const comingFromOutsidePage = evt.relatedTarget === null,
+      const comingFromOutsidePage = activeRef.current === null,
           comingFromChildNode = evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget);
 
       if (!(comingFromOutsidePage || comingFromChildNode)) {
         doSearch(value);
       }
     }
-
+    updateActiveRef();
     setHiddenBySelection(false);
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
-
     if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget))) {
       setInputIsFocused(false);
+      updateActiveRef();
       // The automatically selected suggestion becomes the value of the combobox
       // when the combobox loses focus.
       if (autoComplete && focusableBtnIndex !== null) {
