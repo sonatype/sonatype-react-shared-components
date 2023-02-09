@@ -79,7 +79,7 @@ describe('NxTile.SubsectionHeader', function() {
     expect(subsectionHeader).toBeInTheDocument();
   });
 
-  it('madds specified classnames in addition to the defaults',
+  it('adds specified classnames in addition to the defaults',
       testMergedClassNames(NxTile.SubsectionHeader));
 });
 
