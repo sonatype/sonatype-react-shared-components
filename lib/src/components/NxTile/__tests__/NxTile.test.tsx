@@ -4,62 +4,92 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ComponentType } from 'react';
-import { render } from '@testing-library/react';
+import { ComponentType } from 'react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxTile from '../NxTile';
 
-function test(Component: ComponentType<{}>, tagName: string, ...classNames: string[]) {
+function testMergedClassNames(Component: ComponentType<{}>) {
   return () => {
-    const el = render(<Component/>).container.firstElementChild!;
-    expect(el.tagName).toBe(tagName.toUpperCase());
+    const renderEl = rtlRenderElement(Component, {});
 
-    for (const className of classNames) {
-      expect(el).toHaveClass(className);
+    const defaultEl = renderEl()!,
+        customEl = renderEl({ className: 'foo' });
+
+    expect(customEl).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(customEl).toHaveClass(cls);
     }
   };
 }
 
+function quickRender(Component: ComponentType<{}>) {
+  const quickView = rtlRender(Component, {});
+  return quickView();
+}
+
 describe('NxTile', function() {
-  it('makes a <section> tag with an nx-tile class', test(NxTile, 'section', 'nx-tile'));
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile));
 });
 
 describe('NxTile.Header', function() {
-  it('makes a <header> tag with an nx-tile-header class', test(NxTile.Header, 'header', 'nx-tile-header'));
+  it('renders a top level element with role=banner', function() {
+    const view = quickRender(NxTile.Header),
+        header = view.getByRole('banner');
+
+    expect(header).toBeInTheDocument();
+    expect(header).toBe(view.container.firstElementChild);
+  });
+
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.Header));
 });
 
 describe('NxTile.HeaderTitle', function() {
-  it('makes a <div> tag with an nx-tile-header__title class', test(NxTile.HeaderTitle, 'div', 'nx-tile-header__title'));
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.HeaderTitle));
 });
 
 describe('NxTile.Headings', function() {
-  it('makes a <hgroup> tag with an nx-tile-header__headings class',
-      test(NxTile.Headings, 'hgroup', 'nx-tile-header__headings'));
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.Headings));
 });
 
 describe('NxTile.HeaderSubtitle', function() {
-  it('makes a <h3> tag with an nx-tile-header__subtitle class',
-      test(NxTile.HeaderSubtitle, 'h3', 'nx-tile-header__subtitle'));
+  it('renders a top level element with role=heading', function() {
+    const view = quickRender(NxTile.HeaderSubtitle),
+        subtitle = view.getByRole('heading');
+
+    expect(subtitle).toBeInTheDocument();
+    expect(subtitle).toBe(view.container.firstElementChild);
+  });
+
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.HeaderSubtitle));
 });
 
 describe('NxTile.HeaderActions', function() {
-  it('makes a <div> tag with an nx-tile__actions class', test(NxTile.HeaderActions, 'div', 'nx-tile__actions'));
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.HeaderActions));
 });
 
 describe('NxTile.Content', function() {
-  it('makes a <div> tag with an nx-tile-content class', test(NxTile.Content, 'div', 'nx-tile-content'));
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.Content));
 });
 
 describe('NxTile.Subsection', function() {
-  it('makes a <section> tag with an nx-tile-subsection class',
-      test(NxTile.Subsection, 'section', 'nx-tile-subsection'));
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.Subsection));
 });
 
 describe('NxTile.SubsectionHeader', function() {
-  it('makes a <header> tag with an nx-tile-subsection__header class',
-      test(NxTile.SubsectionHeader, 'header', 'nx-tile-subsection__header'));
+  it('renders a top level element with role=banner', function() {
+    const view = quickRender(NxTile.SubsectionHeader),
+        subsectionHeader = view.getByRole('banner');
+
+    expect(subsectionHeader).toBeInTheDocument();
+    expect(subsectionHeader).toBe(view.container.firstElementChild);
+  });
+
+  it('madds specified classnames in addition to the defaults',
+      testMergedClassNames(NxTile.SubsectionHeader));
 });
 
 describe('NxTile.HeaderTags', function() {
-  it('makes a <div> tag with an nx-tile__tags class', test(NxTile.HeaderTags, 'div', 'nx-tile__tags'));
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.HeaderTags));
 });
