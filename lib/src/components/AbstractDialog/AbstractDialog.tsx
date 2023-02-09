@@ -151,7 +151,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     }
   }, [open, isModal]);
 
-  // Focus trapping
+  // Focus Trapping
   useEffect(() => {
     const keydownListener = (event: KeyboardEvent) => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -160,15 +160,16 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       if (event.key === 'Tab') {
         const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
         const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
-        const nullOrDialogActiveFocus = [document.body, dialogEl, null].includes(document.activeElement as HTMLElement);
+        const activeFocusIsNullOrOnDialog
+          = [document.body, dialogEl, null].includes(document.activeElement as HTMLElement);
 
-        if (nullOrDialogActiveFocus) {
+        if (activeFocusIsNullOrOnDialog) {
           event.preventDefault();
         }
 
         if (event.shiftKey) {
           if (
-            (nullOrDialogActiveFocus || document.activeElement === firstFocusableElement)
+            (activeFocusIsNullOrOnDialog || document.activeElement === firstFocusableElement)
             && lastFocusableElement
           ) {
             lastFocusableElement.focus();
@@ -177,7 +178,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         }
         else {
           if (
-            (nullOrDialogActiveFocus || document.activeElement === lastFocusableElement)
+            (activeFocusIsNullOrOnDialog || document.activeElement === lastFocusableElement)
             && firstFocusableElement
           ) {
             firstFocusableElement.focus();
