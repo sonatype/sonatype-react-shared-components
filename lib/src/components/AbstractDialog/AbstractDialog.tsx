@@ -106,18 +106,16 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         (dialogEl as any).open = true;
       }
 
-      // Only focus on autofocus element when it is a modal.
-      if (isModal) {
-        const autofocusEl = dialogEl.querySelector('[autofocus]') as HTMLElement | null;
+      const autofocusEl = dialogEl.querySelector<HTMLElement>('[autofocus]');
 
-        if (autofocusEl) {
-          autofocusEl.focus();
-        }
+      // Only focus on autofocus element when it is a modal.
+      if (isModal && autofocusEl) {
+        autofocusEl.focus();
       }
       else {
-        const dialogFocusableElements = getFirstVisibleFocusableElement(dialogEl);
-        if (dialogFocusableElements) {
-          dialogFocusableElements.focus();
+        const firstVisibleFocusableElement = getFirstVisibleFocusableElement(dialogEl);
+        if (firstVisibleFocusableElement) {
+          firstVisibleFocusableElement.focus();
         }
       }
 
