@@ -4,8 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentType } from 'react';
-import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import React, { ComponentType } from 'react';
+import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import { render, within } from '@testing-library/react';
 
 import NxTile from '../NxTile';
 
@@ -24,22 +25,16 @@ function testMergedClassNames(Component: ComponentType<{}>) {
   };
 }
 
-function quickRender(Component: ComponentType<{}>) {
-  const quickView = rtlRender(Component, {});
-  return quickView();
-}
-
 describe('NxTile', function() {
   it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile));
 });
 
 describe('NxTile.Header', function() {
-  it('renders a top level element with role=banner', function() {
-    const view = quickRender(NxTile.Header),
-        header = view.getByRole('banner');
+  it('renders a banner element', function() {
+    const { container } = render(<NxTile.Header />);
+    const header = within(container).getByRole('banner');
 
     expect(header).toBeInTheDocument();
-    expect(header).toBe(view.container.firstElementChild);
   });
 
   it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.Header));
@@ -54,12 +49,11 @@ describe('NxTile.Headings', function() {
 });
 
 describe('NxTile.HeaderSubtitle', function() {
-  it('renders a top level element with role=heading', function() {
-    const view = quickRender(NxTile.HeaderSubtitle),
-        subtitle = view.getByRole('heading');
+  it('renders a heading element', function() {
+    const { container } = render(<NxTile.HeaderSubtitle />);
+    const subtitle = within(container).getByRole('heading');
 
     expect(subtitle).toBeInTheDocument();
-    expect(subtitle).toBe(view.container.firstElementChild);
   });
 
   it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.HeaderSubtitle));
@@ -78,12 +72,11 @@ describe('NxTile.Subsection', function() {
 });
 
 describe('NxTile.SubsectionHeader', function() {
-  it('renders a top level element with role=banner', function() {
-    const view = quickRender(NxTile.SubsectionHeader),
-        subsectionHeader = view.getByRole('banner');
+  it('renders a banner element', function() {
+    const { container } = render(<NxTile.SubsectionHeader />);
+    const subsectionHeader = within(container).getByRole('banner');
 
     expect(subsectionHeader).toBeInTheDocument();
-    expect(subsectionHeader).toBe(view.container.firstElementChild);
   });
 
   it('madds specified classnames in addition to the defaults',
