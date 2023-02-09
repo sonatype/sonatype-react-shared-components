@@ -10,7 +10,7 @@ import { render, within } from '@testing-library/react';
 
 import NxTile from '../NxTile';
 
-function testMergedClassNames(Component: ComponentType<{}>) {
+function testMergedClassNames(Component: ComponentType) {
   return () => {
     const renderEl = rtlRenderElement(Component, {});
 
