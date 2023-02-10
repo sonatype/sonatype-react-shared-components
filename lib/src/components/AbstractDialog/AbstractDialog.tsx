@@ -54,9 +54,6 @@ const getLastVisibleFocusableElement = (element: HTMLElement) =>
  * Abstracted Dialog element implementation and behaviors.
  * @param className - A classname string for the dialog element.
  * @param onCancel - A callback function that gets called when the dialog is canceled.
- * @param useNativeCancelOnEscape - If this is set to true, it will attempt to use native dialog element
- *    cancel behavior when escape is pressed. By default this is set to false, which means it uses event.preventDefault
- *    and calls onCancel callback when escape is pressed.
  * @return - Abstracted dialog element.
  */
 
@@ -67,7 +64,6 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     className,
     children,
     onCancel,
-    useNativeCancelOnEscape,
     role,
     isModal,
     open,
@@ -166,14 +162,15 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
         const activeFocusIsNullOrDialog
           = [document.body, dialogEl, null].includes(document.activeElement as HTMLElement);
+        const activeFocusIsInDialog = !activeFocusIsNullOrDialog && dialogEl.contains(document.activeElement);
 
-        if (activeFocusIsNullOrDialog) {
+        if (!activeFocusIsInDialog) {
           event.preventDefault();
         }
 
         if (event.shiftKey) {
-          if (
-            (activeFocusIsNullOrDialog || document.activeElement === firstFocusableElement)
+          if ( 
+            (!activeFocusIsInDialog || document.activeElement === firstFocusableElement)
             && lastFocusableElement
           ) {
             lastFocusableElement.focus();
@@ -182,7 +179,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         }
         else {
           if (
-            (activeFocusIsNullOrDialog || document.activeElement === lastFocusableElement)
+            (!activeFocusIsInDialog || document.activeElement === lastFocusableElement)
             && firstFocusableElement
           ) {
             firstFocusableElement.focus();
@@ -232,10 +229,8 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         event.nativeEvent.stopImmediatePropagation();
 
         if (!event.defaultPrevented) {
-          if (!useNativeCancelOnEscape || isModal) {
-            event.preventDefault();
-            onCancel(createCancelEvent());
-          }
+          event.preventDefault();
+          onCancel(createCancelEvent());
         }
       }
     }
