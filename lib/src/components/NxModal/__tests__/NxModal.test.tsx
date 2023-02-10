@@ -289,8 +289,5 @@ describe('NxModal', function() {
       await user.tab({ shift: true });
       expect(buttons[0]).toHaveFocus();
     });
-
-    // Issue with autofocus.
-    // https://stackoverflow.com/questions/60216787/react-autofocus-attribute-is-not-rendered
   });
 });
