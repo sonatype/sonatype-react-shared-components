@@ -234,8 +234,8 @@ describe('NxModal', function() {
           <div data-testid="tabbable" tabIndex={0}>Foo</div>
           <div tabIndex={-1}>bar</div>
 
-          <button data-testid="tabbable">Last</button>
-          <button disabled>Last</button>
+          <button data-testid="tabbable">Foo</button>
+          <button disabled>Bar</button>
         </NxModal>
       );
 
@@ -289,5 +289,8 @@ describe('NxModal', function() {
       await user.tab({ shift: true });
       expect(buttons[0]).toHaveFocus();
     });
+
+    // Issue with autofocus.
+    // https://stackoverflow.com/questions/60216787/react-autofocus-attribute-is-not-rendered
   });
 });
