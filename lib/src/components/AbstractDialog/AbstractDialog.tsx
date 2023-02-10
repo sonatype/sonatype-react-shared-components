@@ -36,7 +36,8 @@ const hasWindow = typeof window !== 'undefined',
 
 const createCancelEvent = () => new Event('cancel', { cancelable: true });
 
-const isVisible = (element: HTMLElement | null) =>
+// Exported for testing
+export const isVisible = (element: HTMLElement | null) =>
   !!(element && (element.offsetWidth || element.offsetHeight || element.getClientRects().length
   && window.getComputedStyle(element).visibility !== 'hidden'));
 
