@@ -5,18 +5,21 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { RefAttributes } from 'react';
-import NxModal, { Props } from '../NxModal';
-import * as AbstractDialogAll from '../../AbstractDialog/AbstractDialog';
-import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import { render, within } from '@testing-library/react';
+
+import * as AbstractDialogAll from '../../AbstractDialog/AbstractDialog';
+import NxModal, { Props } from '../NxModal';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 
 describe('NxModal', function() {
   beforeAll(() => {
+    // js-dom doesn't work with isVisible method in AbstractDialog
+    // so we're going to mock it to always return true.
     jest.spyOn(AbstractDialogAll, 'isVisible').mockReturnValue(true);
   });
 
   const minimalProps: Props = {
-    children: 'A message to show in a modal',
+    children: <button>Foo</button>,
     onClose: () => {}
   };
 
@@ -146,7 +149,7 @@ describe('NxModal', function() {
 
       render(
         <div onKeyDown={wrapperKeyDownListener}>
-          <NxModal onClose={jest.fn()}>Hello</NxModal>
+          <NxModal onClose={jest.fn()}><button>Hello</button></NxModal>
         </div>
       );
 
@@ -175,23 +178,28 @@ describe('NxModal', function() {
       function Fixture({ modalOpen }: { modalOpen: boolean }) {
         return (
           <>
-            <button data-testid="test-btn">Test</button>
-            { modalOpen && <NxModal onCancel={jest.fn()}><button>Close</button></NxModal> }
+            <button data-testid="external-button">Test</button>
+            {
+              modalOpen && <NxModal onCancel={jest.fn()}><button data-testid="internal-button">Close</button></NxModal>
+            }
           </>
         );
       }
 
       const view = render(<Fixture modalOpen={false} />),
-          externalBtn = view.getByTestId('test-btn');
+          externalBtn = view.getByTestId('external-button');
 
       externalBtn.focus();
       expect(view.queryByRole('dialog')).not.toBeInTheDocument();
       expect(document.activeElement === externalBtn).toBe(true);
 
       view.rerender(<Fixture modalOpen={true} />);
+
+      const internalBtn = view.getByTestId('internal-button');
       const dialog = view.getByRole('dialog');
+
       expect(dialog).toBeInTheDocument();
-      expect(document.activeElement === dialog).toBe(true);
+      expect(document.activeElement === internalBtn).toBe(true);
 
       view.rerender(<Fixture modalOpen={false} />);
       expect(view.queryByRole('dialog')).not.toBeInTheDocument();
