@@ -263,7 +263,6 @@ describe('NxSearchTransferList', function() {
           expect(onSearch).toHaveBeenNthCalledWith(5, 'oo o');
         });
 
-
         it('calls onSearch with the searchText when the retry button is clicked', async function() {
           const user = userEvent.setup(),
               onSearch = jest.fn(),
