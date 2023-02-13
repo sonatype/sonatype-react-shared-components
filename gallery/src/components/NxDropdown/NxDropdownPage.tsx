@@ -85,6 +85,10 @@ const NxDropdownPage = () =>
               <NxTable.Cell>
                 What type of button to render for the dropdown.
                 Defaults to <NxCode>"tertiary"</NxCode>
+                <NxWarningAlert>
+                  Deprecated: This prop should not be used.
+                  It produces button styling that does not comply with design standards.
+                </NxWarningAlert>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
