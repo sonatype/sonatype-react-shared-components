@@ -359,7 +359,8 @@ const NxFormPage = () =>
           "* Required fields are marked with an asterisk.". This component is to be used when it is important to convey
           to users that the form fields marked with an asterisk are required in order to submit the form. If used, this
           component needs to be placed within an <NxCode>NxForm</NxCode>, before any <NxCode>NxFormGroup</NxCode>,
-          {' '}<NxCode>NxFieldset</NxCode>, <NxCode>NxFormRow</NxCode>, or any other form elements.
+          {' '}<NxCode>NxFieldset</NxCode>, <NxCode>NxFormRow</NxCode>, or any other form elements, so that the text
+          appears on top of the form.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
