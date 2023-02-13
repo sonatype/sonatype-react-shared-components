@@ -97,9 +97,19 @@ export default function NxFormLayoutExample() {
 
   const [tagColorState, setTagColor] = nxFieldsetStateHelpers.useRadioGroupState<SelectableColor>(undefined, validator);
 
-  const [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
+  const [transferItemsIsPristine, setTransferItemsIsPristine] = useState<boolean>(true),
+      [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
       [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
-      [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState('');
+      [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState(''),
+      [transferItemsValidationErrors, setTransferItemsValidationErrors] = useState<string | null>(null);
+
+  function transferItemsOnChange(selectedItems: Set<number>) {
+    setTransferItemsIsPristine(false);
+    setSelectedTransferItems(selectedItems);
+    setTransferItemsValidationErrors(
+        !selectedItems.size ? 'At least one transfer item is required to be selected.' : null
+    );
+  }
 
   const [files, setFiles] = useState<FileList | null>(null),
       [isFilePristine, setFilePristine] = useState(true),
@@ -133,6 +143,7 @@ export default function NxFormLayoutExample() {
           colorValidationError,
           selectState.validationErrors,
           tagColorState.validationErrors,
+          transferItemsValidationErrors,
           !files?.length ? 'A file is required' : null,
           comboboxInputState.validationErrors
       ) ? 'Required fields are missing' : null;
@@ -232,14 +243,17 @@ export default function NxFormLayoutExample() {
                      onChange={onCommentChange} />
       </NxFormGroup>
       <NxColorPicker label="Tag Color" isRequired { ...tagColorState } onChange={setTagColor} />
-      <NxFieldset label="Numbered Items">
+      <NxFieldset label="Numbered Items"
+                  isRequired
+                  isPristine={transferItemsIsPristine}
+                  validationErrors={transferItemsValidationErrors}>
         <NxTransferList allItems={transferListItems}
                         selectedItems={selectedTransferItems}
                         availableItemsFilter={availableTransferItemsFilter}
                         selectedItemsFilter={selectedTransferItemsFilter}
                         onAvailableItemsFilterChange={setAvailableTransferItemsFilter}
                         onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
-                        onChange={setSelectedTransferItems} />
+                        onChange={transferItemsOnChange} />
       </NxFieldset>
       <NxFormGroup label="Upload a File" sublabel={<>Foo<br/>Bar</>} isRequired>
         <NxFileUpload files={files} isRequired isPristine={isFilePristine} onChange={onFileChange} />

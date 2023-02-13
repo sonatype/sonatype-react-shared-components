@@ -300,7 +300,8 @@ const NxTransferListPage = () =>
         <NxP>
           <NxCode>NxTransferList</NxCode> would typically be used within a form, and should typically be wrapped
           in an <NxCode>NxFieldset</NxCode> in order to provide a label and spacing for the form field represented
-          by this component. See the <NxTextLink>Form Layout Page</NxTextLink> for an example.
+          by this component.
+          See the <NxTextLink href="#/pages/Form%20Layout%20Examples">Form Layout Page</NxTextLink> for an example.
         </NxP>
       </NxTile.Subsection>
     </GalleryDescriptionTile>
