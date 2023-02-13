@@ -53,8 +53,8 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
       [footer, otherChildren] = splitOutFirst(NxGlobalSidebarFooter, children);
 
   return (
-    <div className={classes} id={id} aria-label="global sidebar" role="group">
-      <aside>
+    <div className={classes} id={id}>
+      <aside aria-label="global sidebar">
         <div className="nx-global-sidebar__header">
           <a className="nx-global-sidebar__product-info nx-global-sidebar__expanded-content"
              href={logoLink}>

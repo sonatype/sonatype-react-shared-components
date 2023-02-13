@@ -26,14 +26,6 @@ describe('NxGlobalSidebar', function() {
 
   const quickRender = rtlRender<Props>(NxGlobalSidebar, minimalProps);
 
-  it('renders a top-level element with role="group"', function() {
-    const view = quickRender(),
-        group = view.getByRole('group');
-
-    expect(group).toHaveAccessibleName('global sidebar');
-    expect(group).toBe(view.container.firstElementChild);
-  });
-
   describe('children', function() {
     describe('when only the NxGlobalSidebarNavigation is a provided as a child', function () {
       it('renders an element with role="navigation" within an element with role="complementary"', function() {
@@ -42,13 +34,10 @@ describe('NxGlobalSidebar', function() {
             <NxGlobalSidebarNavigationLink icon={faCrow} text="testLink" href="testLink"/>
           </NxGlobalSidebarNavigation>,
             view = quickRender({ ...minimalProps, children }),
-            group = view.getByRole('group'),
-            complementary = within(group).getByRole('complementary'),
+            complementary = view.getByRole('complementary'),
             nav = within(complementary).getByRole('navigation');
 
-        expect(group).toBeInTheDocument();
         expect(complementary).toBeInTheDocument();
-        expect(complementary).toBe(group.firstElementChild);
         expect(nav).toBeInTheDocument();
       });
     });
@@ -62,11 +51,9 @@ describe('NxGlobalSidebar', function() {
                                  releaseText="Release 3.1.4"
                                  productTagLine="Powered by PLAID VILLAIN" />,
             view = quickRender({ ...minimalProps, children }),
-            group = view.getByRole('group'),
-            complementary = within(group).getByRole('complementary'),
-            footer = within(group).getByRole('contentinfo');
+            complementary = view.getByRole('complementary'),
+            footer = view.getByRole('contentinfo');
 
-        expect(group).toBeInTheDocument();
         expect(footer).toBeInTheDocument();
         expect(complementary).not.toContainElement(footer);
       });
@@ -81,13 +68,10 @@ describe('NxGlobalSidebar', function() {
             </div>
           </section>,
             view = quickRender({ ...minimalProps, children }),
-            group = view.getByRole('group'),
             complementary = view.getByRole('complementary'),
             extraContent = within(complementary).getByTestId('testspan');
 
-        expect(group).toBeInTheDocument();
         expect(complementary).toBeInTheDocument();
-        expect(complementary).toBe(group.firstElementChild);
         expect(extraContent).toBeInTheDocument();
       });
     });
@@ -112,15 +96,12 @@ describe('NxGlobalSidebar', function() {
                                    productTagLine="Powered by PLAID VILLAIN" />
           </React.Fragment>,
             view = quickRender({ ...minimalProps, children }),
-            group = view.getByRole('group'),
             complementary = view.getByRole('complementary'),
             nav = within(complementary).getByRole('navigation'),
             extraContent = within(complementary).getByTestId('testspan'),
-            footer = within(group).getByRole('contentinfo');
+            footer = view.getByRole('contentinfo');
 
-        expect(group).toBeInTheDocument();
         expect(complementary).toBeInTheDocument();
-        expect(complementary).toBe(group.firstElementChild);
         expect(nav).toBeInTheDocument();
         expect(extraContent).toBeInTheDocument();
         expect(footer).toBeInTheDocument();
