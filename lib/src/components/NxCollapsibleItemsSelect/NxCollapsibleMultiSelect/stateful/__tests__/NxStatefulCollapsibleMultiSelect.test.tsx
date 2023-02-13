@@ -7,10 +7,11 @@
 import React from 'react';
 
 import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../../../__testutils__/rtlUtils';
-import { screen, createEvent, fireEvent, within, RenderResult } from '@testing-library/react';
+import { screen, createEvent, fireEvent, within, RenderResult, render } from '@testing-library/react';
 
 import NxStatefulCollapsibleMultiSelect, { Props } from '../NxStatefulCollapsibleMultiSelect';
 import { NxStatefulTreeViewMultiSelect } from '../../../../../index';
+import NxForm from '../../../../NxForm/NxForm';
 
 describe('NxStatefulCollapsibleMultiSelect', function() {
   const minimalProps: Props = {
@@ -313,6 +314,27 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       fireEvent(inputEl, keyEvent);
 
       expect(keyEvent.defaultPrevented).toBe(false);
+    });
+
+    it('does not submit the form when the "Clear filter" button is clicked', async function() {
+      const user = userEvent.setup(),
+          onSubmit = jest.fn(),
+          view = render(
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxStatefulCollapsibleMultiSelect { ...minimalProps } filterThreshold={1} />
+            </NxForm>
+          ),
+          inputEl = view.getByRole('textbox');
+
+      await runTimers();
+      await user.type(inputEl, 'f');
+
+      expect(onSubmit).not.toHaveBeenCalled();
+      const clearBtn = view.getByRole('button', { name: 'Clear filter' });
+
+      await user.click(clearBtn);
+
+      expect(onSubmit).not.toHaveBeenCalled();
     });
 
     describe('filtering', function() {
