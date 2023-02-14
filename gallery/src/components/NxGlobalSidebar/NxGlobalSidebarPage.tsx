@@ -68,8 +68,14 @@ export default function NxGlobalSidebarPage() {
               <NxTable.Row>
                 <NxTable.Cell>isOpen</NxTable.Cell>
                 <NxTable.Cell>Boolean</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>This value determines whether the sidebar is open or closed.</NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>onToggleClick</NxTable.Cell>
+                <NxTable.Cell>Function (() =&gt; void)</NxTable.Cell>
+                <NxTable.Cell>Yes</NxTable.Cell>
+                <NxTable.Cell> A callback that fires when the sidebar's open/close toggle is clicked.</NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
                 <NxTable.Cell>toggleOpenIcon</NxTable.Cell>
