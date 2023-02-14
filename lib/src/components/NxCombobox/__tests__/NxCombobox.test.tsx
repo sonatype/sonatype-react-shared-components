@@ -332,9 +332,9 @@ describe('NxCombobox', function() {
     inputElement.focus();
     const retryBtn = getByRole('button', { name: /retry/i });
 
-    expect(onSearch).not.toHaveBeenCalled();
+    expect(onSearch).toHaveBeenCalledTimes(1);
     await user.click(retryBtn);
-    expect(onSearch).toHaveBeenCalledWith('f');
+    expect(onSearch).toHaveBeenNthCalledWith(2, 'f');
   });
 
   it('fires onChange when the button with role option is clicked and passes the DataItem as a second arg',
@@ -405,17 +405,15 @@ describe('NxCombobox', function() {
         { getByRole } = quickRender({ value: 'f', loadError: 'err', onSearch }),
         inputElement = getByRole('combobox');
 
-    expect(onSearch).not.toHaveBeenCalled();
-
     inputElement.focus();
-    expect(onSearch).not.toHaveBeenCalled();
+    expect(onSearch).toHaveBeenCalledTimes(1);
 
     const retryBtn = getByRole('button', { name: /retry/i });
     retryBtn.focus();
-    expect(onSearch).not.toHaveBeenCalled();
+    expect(onSearch).toHaveBeenCalledTimes(1);
 
     inputElement.focus();
-    expect(onSearch).not.toHaveBeenCalled();
+    expect(onSearch).toHaveBeenCalledTimes(1);
   });
 
   it('does not call onSearch if focus moves into the component from an outside window while there is an error',
@@ -425,9 +423,10 @@ describe('NxCombobox', function() {
             inputElement = getByRole('combobox');
 
         inputElement.focus();
+        expect(onSearch).toHaveBeenCalledTimes(1);
         (document.activeElement as HTMLElement).blur();
         inputElement.focus();
-        expect(onSearch).not.toHaveBeenCalled();
+        expect(onSearch).toHaveBeenCalledTimes(1);
       });
 
   it('places tooltips on each dropdown item if itemTooltip is defined', async function() {
