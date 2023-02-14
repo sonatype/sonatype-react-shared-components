@@ -68,7 +68,7 @@ export default function NxGlobalSidebarPage() {
               <NxTable.Row>
                 <NxTable.Cell>isOpen</NxTable.Cell>
                 <NxTable.Cell>Boolean</NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>This value determines whether the sidebar is open or closed.</NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
