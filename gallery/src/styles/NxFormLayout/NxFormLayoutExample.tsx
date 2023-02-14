@@ -47,7 +47,7 @@ const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California
   'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
   'Vermont', 'Virginia', 'Washington', 'Washington DC', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
-const { useCheckboxGroupState } = nxFieldsetStateHelpers;
+const { useCheckboxGroupState, useTransferListState } = nxFieldsetStateHelpers;
 
 const transferListItems = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 const comboboxItems = prepend(
@@ -97,19 +97,17 @@ export default function NxFormLayoutExample() {
 
   const [tagColorState, setTagColor] = nxFieldsetStateHelpers.useRadioGroupState<SelectableColor>(undefined, validator);
 
-  const [transferItemsIsPristine, setTransferItemsIsPristine] = useState<boolean>(true),
-      [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
-      [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
-      [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState(''),
-      [transferItemsValidationErrors, setTransferItemsValidationErrors] = useState<string | null>(null);
+  const {
+    state: [selectedTransferItems, setSelectedTransferItems],
+    isPristine: transferItemsIsPristine,
+    validationErrors: transferItemsValidationErrors
+  } = useTransferListState<Set<number>>(
+      new Set(),
+      (selectedItems) => !selectedItems.size ? 'At least one transfer item is required to be selected.' : null
+  );
 
-  function transferItemsOnChange(selectedItems: Set<number>) {
-    setTransferItemsIsPristine(false);
-    setSelectedTransferItems(selectedItems);
-    setTransferItemsValidationErrors(
-        !selectedItems.size ? 'At least one transfer item is required to be selected.' : null
-    );
-  }
+  const [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
+      [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState('');
 
   const [files, setFiles] = useState<FileList | null>(null),
       [isFilePristine, setFilePristine] = useState(true),
@@ -253,7 +251,7 @@ export default function NxFormLayoutExample() {
                         selectedItemsFilter={selectedTransferItemsFilter}
                         onAvailableItemsFilterChange={setAvailableTransferItemsFilter}
                         onSelectedItemsFilterChange={setSelectedTransferItemsFilter}
-                        onChange={transferItemsOnChange} />
+                        onChange={setSelectedTransferItems} />
       </NxFieldset>
       <NxFormGroup label="Upload a File" sublabel={<>Foo<br/>Bar</>} isRequired>
         <NxFileUpload files={files} isRequired isPristine={isFilePristine} onChange={onFileChange} />

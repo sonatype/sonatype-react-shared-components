@@ -331,6 +331,37 @@ const NxFieldsetPage = () =>
                 any validation errors based on those values, and whether the checkbox group is pristine.
               </NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>useTransferListState</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                <NxList className="nx-list--bulleted">
+                  <NxList.Item>
+                    <NxList.Text>
+                      <NxCode>initialValue</NxCode> initial <NxCode>NxTransferList</NxCode> selectedItems value
+                    </NxList.Text>
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxList.Text>
+                      <NxCode>validator</NxCode> function which will be run on each change in
+                      <NxCode>NxTransferList</NxCode> selectedItems
+                      in order to update the <NxCode>validationErrors</NxCode>; optional
+                    </NxList.Text>
+                  </NxList.Item>
+                </NxList>
+              </NxTable.Cell>
+              <NxTable.Cell>
+                Object containing <NxCode>validationErrors</NxCode>, <NxCode>isPristine</NxCode>{' '}
+                and <NxCode>state</NxCode>. <NxCode>state</NxCode> is a two value tuple.
+                The first value is the selectedItems value for <NxCode>NxTransferList</NxCode>, and the
+                second value is the setter function that updates the selectedItems value.
+                When called, that function will update the state, the validation errors, and the pristine flag.
+              </NxTable.Cell>
+              <NxTable.Cell>
+                This hook tracks all of the state needed for an <NxCode>NxTransferList</NxCode> fieldset:
+                the current selectedItems, any validation errors based on the selectedItems,
+                and whether the <NxCode>NxTransferList</NxCode> is pristine.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>

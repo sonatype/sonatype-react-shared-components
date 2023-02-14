@@ -11,25 +11,29 @@ import useToggle from '../../util/useToggle';
 import {
   RadioValidator,
   CheckboxValidator,
+  TransferListValidator,
   RadioSetter,
   CheckboxState,
   CheckboxInitValues,
   CheckboxStates,
   RadioStateProps,
   CheckboxStateProps,
-  CheckboxGroupHookReturnValue
+  CheckboxGroupHookReturnValue,
+  TransferListHookReturnValue
 } from './types';
 
 export {
   RadioValidator,
   CheckboxValidator,
+  TransferListValidator,
   RadioSetter,
   CheckboxState,
   CheckboxInitValues,
   CheckboxStates,
   RadioStateProps,
   CheckboxStateProps,
-  CheckboxGroupHookReturnValue
+  CheckboxGroupHookReturnValue,
+  TransferListHookReturnValue
 };
 
 /**
@@ -143,5 +147,24 @@ export function useCheckboxGroupState<K extends string>(
     isPristine,
     validationErrors: validator ? validator(values) : null,
     states: map<CheckboxStates<K>, CheckboxStates<K>>(wrapState, rawStates)
+  };
+}
+
+export function useTransferListState<K>(
+  initialValue: K,
+  validator?: TransferListValidator<K>
+): TransferListHookReturnValue<K> {
+  const [isPristine, setIsPristine] = useState(true);
+  const [selectedItems, _setSelectedItems] = useState(initialValue);
+
+  const setSelectedItems = (value: K) => {
+    setIsPristine(false);
+    _setSelectedItems(value);
+  };
+
+  return {
+    isPristine,
+    validationErrors: validator ? validator(selectedItems) : null,
+    state: [selectedItems, setSelectedItems]
   };
 }

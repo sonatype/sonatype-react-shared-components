@@ -15,12 +15,14 @@ import {
   radioGroupUserInput,
   useRadioGroupState,
   useCheckboxGroupState,
+  useTransferListState,
   checkboxGroupInitialState,
   checkboxGroupUserInput,
   RadioValidator,
   CheckboxValidator,
   CheckboxInitValues,
-  CheckboxState
+  CheckboxState,
+  TransferListValidator
 } from '../stateHelpers';
 
 describe('NxFieldset stateHelpers', function() {
@@ -400,6 +402,107 @@ describe('NxFieldset stateHelpers', function() {
           expect(component.queryByTestId('validationErrors')).toHaveTextContent('cannot bar');
           expect(new Set(validator.mock.calls[3][0])).toEqual(new Set(['foo', 'bar']));
         });
+      });
+    });
+  });
+
+  describe('useTransferListState', function() {
+    interface FixtureProps<K> {
+      initialValue: K;
+      validator?: TransferListValidator<K>;
+    }
+
+    function Fixture({ initialValue, validator }: FixtureProps<number[]>) {
+      const {
+        isPristine,
+        validationErrors,
+        state: [selectedItems, setSelectedItems]
+      } = useTransferListState<number[]>(initialValue, validator);
+
+      return (
+        <>
+          <span data-testid="isPristine">{isPristine.toString()}</span>
+          <span data-testid="validationErrors">{JSON.stringify(validationErrors)}</span>
+          <span data-testid="selectedItems">{JSON.stringify(selectedItems)}</span>
+          <button data-testid="triggerSetSelectedItems0" onClick={() => setSelectedItems([1, 2])}></button>
+          <button data-testid="triggerSetSelectedItems1" onClick={() => setSelectedItems([1, 2, 3])}></button>
+          <button data-testid="triggerSetSelectedItems2" onClick={() => setSelectedItems([1, 2, 3, 4])}></button>
+        </>
+      );
+    }
+
+    describe('when called with one argument', function() {
+      it('intially returns an object with state value equal to the given initialValue, ' +
+          'isPristine is set to true and validationErrors set to null', function() {
+        const component = render(<Fixture initialValue={[1]} />);
+
+        expect(component.queryByTestId('selectedItems')).toHaveTextContent('[1]');
+        expect(component.queryByTestId('isPristine')).toHaveTextContent('true');
+        expect(component.queryByTestId('validationErrors')).toHaveTextContent('null');
+      });
+    });
+
+    describe('when called with two arguments', function() {
+      it('intially returns the selectedItems to the initialValue, isPristine to true, ' +
+         'and sets validationErrors value when it is specified', function() {
+        const validator = jest.fn().mockReturnValue('qwerty'),
+            component = render(<Fixture initialValue={[1]} validator={validator} />);
+
+        expect(component.queryByTestId('selectedItems')).toHaveTextContent('[1]');
+        expect(component.queryByTestId('isPristine')).toHaveTextContent('true');
+        expect(component.queryByTestId('validationErrors')).toHaveTextContent('qwerty');
+      });
+    });
+
+    describe('when setSelectedItems is triggered', function() {
+      it('intially returns an object with state value equal to the initialValue, ' +
+         'isPristine is true, then sets it to the setSelectedItems value, isPristine to false, ' +
+         'when it is triggered', async function() {
+        const user = userEvent.setup(),
+            component = render(<Fixture initialValue={[1]} />);
+
+        expect(component.queryByTestId('selectedItems')).toHaveTextContent('[1]');
+        expect(component.queryByTestId('isPristine')).toHaveTextContent('true');
+        expect(component.queryByTestId('validationErrors')).toHaveTextContent('null');
+
+        await user.click(component.queryByTestId('triggerSetSelectedItems1')!);
+
+        expect(component.queryByTestId('selectedItems')).toHaveTextContent('[1,2,3]');
+        expect(component.queryByTestId('isPristine')).toHaveTextContent('false');
+        expect(component.queryByTestId('validationErrors')).toHaveTextContent('null');
+      });
+    });
+
+    describe('when a validator is specified', function() {
+      it('updates the state object with the selectedItems value, isPristine false, ' +
+         'and validation errors according to the validator function', async function() {
+        const user = userEvent.setup(),
+            validator = jest.fn()
+                .mockImplementation((values: number[]) => values.includes(3) ? '3 is not allowed' : null),
+            component = render(<Fixture initialValue={[1]} validator={validator} />);
+
+        await user.click(component.queryByTestId('triggerSetSelectedItems0')!);
+
+        expect(component.queryByTestId('selectedItems')).toHaveTextContent('[1,2]');
+        expect(component.queryByTestId('isPristine')).toHaveTextContent('false');
+        expect(component.queryByTestId('validationErrors')).toHaveTextContent('null');
+        expect(validator).toHaveBeenCalledWith([1, 2]);
+
+        await user.click(component.queryByTestId('triggerSetSelectedItems1')!);
+
+        expect(component.queryByTestId('selectedItems')).toHaveTextContent('[1,2,3]');
+        expect(component.queryByTestId('isPristine')).toHaveTextContent('false');
+        expect(component.queryByTestId('validationErrors')).toHaveTextContent('3 is not allowed');
+
+        expect(validator).toHaveBeenCalledWith([1, 2, 3]);
+
+        await user.click(component.queryByTestId('triggerSetSelectedItems2')!);
+
+        expect(component.queryByTestId('selectedItems')).toHaveTextContent('[1,2,3,4]');
+        expect(component.queryByTestId('isPristine')).toHaveTextContent('false');
+        expect(component.queryByTestId('validationErrors')).toHaveTextContent('3 is not allowed');
+
+        expect(validator).toHaveBeenCalledWith([1, 2, 3, 4]);
       });
     });
   });
