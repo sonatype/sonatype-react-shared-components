@@ -4,79 +4,72 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import {mount, shallow} from 'enzyme';
-import 'jest-enzyme';
+import React, { RefAttributes } from 'react';
+import { render, within } from '@testing-library/react';
 
-import { getMountedComponent } from '../../../__testutils__/enzymeUtils';
+import * as AbstractDialogAll from '../../AbstractDialog/AbstractDialog';
 import NxModal, { Props } from '../NxModal';
-import NxTooltip from '../../NxTooltip/NxTooltip';
-import NxButton from '../../NxButton/NxButton';
-import { Tooltip } from '@material-ui/core';
-import { runTimers } from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 
 describe('NxModal', function() {
-  const dummyCloseHandler = jest.fn();
+  beforeAll(() => {
+    // js-dom doesn't work with isVisible method in AbstractDialog
+    // so we're going to mock it to always return true.
+    jest.spyOn(AbstractDialogAll, 'isVisible').mockReturnValue(true);
+  });
+
   const minimalProps: Props = {
-    children: 'A message to show in a modal',
-    onClose: dummyCloseHandler
+    children: <button>Foo</button>,
+    onClose: () => {}
   };
 
-  const getMounted = getMountedComponent<Props>(NxModal, minimalProps),
-      getModal = (props?: Partial<Props>) => getMounted(props).find('dialog');
+  type PropsWithRef = Props & RefAttributes<HTMLDialogElement>;
+  const quickRender = rtlRender<PropsWithRef>(NxModal, minimalProps),
+      renderEl = rtlRenderElement<PropsWithRef>(NxModal, minimalProps);
 
-  it('renders an nx-modal-backdrop <dialog> containing an nx-modal <div>', function () {
-    const nxModal = getModal();
+  it('renders a top-level element with role="dialog"', function () {
+    const view = quickRender(),
+        dialog = view.getByRole('dialog');
 
-    expect(nxModal).toMatchSelector('dialog.nx-modal-backdrop');
-    expect(nxModal.children()).toMatchSelector('div.nx-modal');
+    expect(dialog).toBeInTheDocument();
+    expect(dialog).toBe(view.container.firstElementChild);
   });
 
   it('renders children nodes within the modal', function() {
-    const nxModal = getModal({ children: <div className="bar"/> });
+    const view = quickRender({ children: <div data-testid="test-div" /> }),
+        dialog = view.getByRole('dialog');
 
-    expect(nxModal.find('.nx-modal')).toContainMatchingElement('div.bar');
+    expect(within(dialog).getByTestId('test-div')).toBeInTheDocument();
   });
 
-  it('merges any passed in className to the nx-modal div', function() {
-    const nxModal = getModal({ className: 'test' });
+  it('merges any passed in className to the modal', function() {
+    const el = renderEl({ className: 'test' })!,
+        defaultEl = renderEl()!,
+        defaultElChild = defaultEl.firstElementChild!;
 
-    const nxModalDiv = nxModal.find('.nx-modal');
-    expect(nxModalDiv).toHaveClassName('test');
+    expect(el.firstElementChild).toHaveClass('test');
+
+    for (const cls of Array.from(defaultElChild.classList)) {
+      expect(el.firstElementChild).toHaveClass(cls);
+    }
   });
 
   it('fowards a ref to the dialog', function() {
     const ref = React.createRef<HTMLDialogElement>(),
-        component = mount(<><NxModal { ...minimalProps } ref={ref} /></>);
+        el = renderEl({ ref });
 
-    expect(component.getDOMNode()).toBe(ref.current);
+    expect(ref.current).toBe(el);
   });
 
-  it('includes any passed in attributes to the nx-modal div', function() {
-    const nxModal = getModal({ id: 'modal-id', lang: 'en_US' });
+  it('includes any passed in attributes to the modal div', function() {
+    const el = renderEl({ id: 'modal-id', lang: 'en_US' })!.firstElementChild;
 
-    expect(nxModal.find('.nx-modal').prop('id')).toEqual('modal-id');
-    expect(nxModal.find('.nx-modal').prop('lang')).toEqual('en_US');
-  });
-
-  it('sets the dialog role on the backdrop by default', function() {
-    expect(getModal()).toHaveProp('role', 'dialog');
+    expect(el).toHaveAttribute('id', 'modal-id');
+    expect(el).toHaveAttribute('lang', 'en_US');
   });
 
   it('sets the specified role on the backdrop', function() {
-    expect(getModal({ role: 'asdf' })).toHaveProp('role', 'asdf');
-  });
-
-  it('adds the nx-modal--wide class when the wide variant is specified', function() {
-    const nxModal = getModal({ variant: 'wide' });
-
-    expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--wide');
-  });
-
-  it('adds the nx-modal--narrow class when the narrow variant is specified', function() {
-    const nxModal = getModal({ variant: 'narrow' });
-
-    expect(nxModal.find('.nx-modal')).toHaveClassName('nx-modal--narrow');
+    expect(renderEl({ role: 'asdf' })).toHaveAttribute('role', 'asdf');
   });
 
   describe('NxModal event listener support', () => {
@@ -96,130 +89,205 @@ describe('NxModal', function() {
       }
     });
 
-    const createEvent = (key = 'Escape') => ({
-      key,
-      stopPropagation: jest.fn(),
-      nativeEvent: {
-        stopImmediatePropagation: jest.fn()
+    it('executes onClose method with a cancel event when pressing ESC key', async function () {
+      const mockCallBack = jest.fn(),
+          user = userEvent.setup();
+
+      quickRender({ onClose: mockCallBack });
+      expect(mockCallBack).not.toHaveBeenCalled();
+
+      await user.keyboard('[Escape]');
+
+      expect(mockCallBack).toHaveBeenCalledTimes(1);
+      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
+    });
+
+    it('executes onCancel method with a cancel event when pressing ESC key', async function () {
+      const mockCallBack = jest.fn(),
+          user = userEvent.setup();
+
+      quickRender({ onCancel: mockCallBack });
+      expect(mockCallBack).not.toHaveBeenCalled();
+
+      await user.keyboard('[Escape]');
+
+      expect(mockCallBack).toHaveBeenCalledTimes(1);
+      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
+    });
+
+    it('executes onClose method ONLY when pressing ESC key', async function () {
+      const mockCallBack = jest.fn(),
+          user = userEvent.setup();
+
+      quickRender({ onClose: mockCallBack });
+
+      await user.keyboard('[Tab]');
+      await user.keyboard('[Enter]');
+      await user.keyboard('q');
+      await user.keyboard('Q');
+
+      expect(mockCallBack).not.toHaveBeenCalled();
+    });
+
+    it('executes onCancel method ONLY when pressing ESC key', async function () {
+      const mockCallBack = jest.fn(),
+          user = userEvent.setup();
+
+      quickRender({ onCancel: mockCallBack });
+
+      await user.keyboard('[Tab]');
+      await user.keyboard('[Enter]');
+      await user.keyboard('q');
+      await user.keyboard('Q');
+
+      expect(mockCallBack).not.toHaveBeenCalled();
+    });
+
+    it('does not bubble escape to outside listener', async function() {
+      const wrapperKeyDownListener = jest.fn(),
+          user = userEvent.setup();
+
+      render(
+        <div onKeyDown={wrapperKeyDownListener}>
+          <NxModal onClose={jest.fn()}><button>Hello</button></NxModal>
+        </div>
+      );
+
+      await user.keyboard('[Escape]');
+      expect(wrapperKeyDownListener).not.toHaveBeenCalled();
+
+      await user.keyboard('Q');
+      expect(wrapperKeyDownListener).toHaveBeenCalled();
+    });
+  });
+
+  describe('NxModal.Header', function() {
+    it('renders an element with role="banner"', function() {
+      const view = render(
+        <NxModal { ...minimalProps }><NxModal.Header>Test</NxModal.Header></NxModal>
+      );
+
+      expect(view.getByRole('banner')).toBeInTheDocument();
+      expect(view.getByRole('banner')).toHaveTextContent('Test');
+    });
+  });
+
+  // Assuming all focusable elements are visible.
+  describe('NxModal focus', function () {
+    it('moves focus back to the previously focused element when closed', async function() {
+      function Fixture({ modalOpen }: { modalOpen: boolean }) {
+        return (
+          <>
+            <button data-testid="external-button">Test</button>
+            {
+              modalOpen && <NxModal onCancel={jest.fn()}><button data-testid="internal-button">Close</button></NxModal>
+            }
+          </>
+        );
+      }
+
+      const view = render(<Fixture modalOpen={false} />),
+          externalBtn = view.getByTestId('external-button');
+
+      externalBtn.focus();
+      expect(view.queryByRole('dialog')).not.toBeInTheDocument();
+      expect(document.activeElement === externalBtn).toBe(true);
+
+      view.rerender(<Fixture modalOpen={true} />);
+
+      const internalBtn = view.getByTestId('internal-button');
+      const dialog = view.getByRole('dialog');
+
+      expect(dialog).toBeInTheDocument();
+      expect(document.activeElement === internalBtn).toBe(true);
+
+      view.rerender(<Fixture modalOpen={false} />);
+      expect(view.queryByRole('dialog')).not.toBeInTheDocument();
+
+      // The focus is moved asynchronously
+      await runTimers();
+
+      expect(document.activeElement === externalBtn).toBe(true);
+    });
+
+    it('should tab through only tabbable elements', async function() {
+      const user = userEvent.setup();
+
+      const { getAllByTestId } = render(
+        <NxModal {...minimalProps}>
+          <a data-testid="tabbable" href="#">foo</a>
+          <a>bar</a>
+
+          <input data-testid="tabbable" type="text" />
+          <input type="text" disabled />
+
+          <textarea data-testid="tabbable" />
+          <textarea disabled />
+
+          <select data-testid="tabbable">
+            <option>foo</option>
+          </select>
+          <select disabled>
+            <option>bar</option>
+          </select>
+
+          <div data-testid="tabbable" tabIndex={0}>Foo</div>
+          <div tabIndex={-1}>bar</div>
+
+          <button data-testid="tabbable">Foo</button>
+          <button disabled>Bar</button>
+        </NxModal>
+      );
+
+      const tabbables = getAllByTestId('tabbable');
+      for (let i = 0; i < tabbables.length; i++) {
+        expect(tabbables[i]).toHaveFocus();
+        await user.tab();
       }
     });
 
-    it('executes onClose method with a cancel event when pressing ESC key', function () {
-      const mockCallBack = jest.fn();
-      const component = getModal({ onClose: mockCallBack });
+    it('should cycle forward when tab key is pressed', async function() {
+      const user = userEvent.setup();
 
-      expect(mockCallBack).not.toHaveBeenCalled();
-      component.simulate('keyDown', createEvent());
-      expect(mockCallBack).toHaveBeenCalledTimes(1);
-      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
-    });
-
-    it('executes onCancel method with a cancel event when pressing ESC key', function () {
-      const mockCallBack = jest.fn();
-      const component = getModal({ onCancel: mockCallBack });
-
-      expect(mockCallBack).not.toHaveBeenCalled();
-      component.simulate('keyDown', createEvent());
-      expect(mockCallBack).toHaveBeenCalledTimes(1);
-      expect(mockCallBack.mock.calls[0][0].type).toBe('cancel');
-    });
-
-    it('executes onClose method ONLY when pressing ESC key', function () {
-      const mockCallBack = jest.fn();
-      const component = getModal({ onClose: mockCallBack });
-
-      component.simulate('keyDown', createEvent('Tab'));
-      component.simulate('keyDown', createEvent('Enter'));
-      component.simulate('keyDown', createEvent('q'));
-      component.simulate('keyDown', createEvent('Q'));
-      expect(mockCallBack).not.toHaveBeenCalled();
-    });
-
-    it('executes onCancel method ONLY when pressing ESC key', function () {
-      const mockCallBack = jest.fn();
-      const component = getModal({ onCancel: mockCallBack });
-
-      component.simulate('keyDown', createEvent('Tab'));
-      component.simulate('keyDown', createEvent('Enter'));
-      component.simulate('keyDown', createEvent('q'));
-      component.simulate('keyDown', createEvent('Q'));
-      expect(mockCallBack).not.toHaveBeenCalled();
-    });
-
-    it('calls stopPropagation and stopImmediatePropagation on Escape keydowns', function() {
-      const component = getModal({ onClose: jest.fn() }),
-          escEvent = createEvent(),
-          otherEvent = createEvent('q');
-
-      component.simulate('keyDown', escEvent);
-      component.simulate('keyDown', otherEvent);
-
-      expect(escEvent.stopPropagation).toHaveBeenCalled();
-      expect(escEvent.nativeEvent.stopImmediatePropagation).toHaveBeenCalled();
-
-      expect(otherEvent.stopPropagation).not.toHaveBeenCalled();
-      expect(otherEvent.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
-    });
-  });
-
-  it('renders descendant tooltips attached to the backdrop rather than the document body', function() {
-    const nxModal = mount(
-      <NxModal onClose={() => {}}>
-        <div id="test-div">
-          <NxTooltip title="foo">
-            <NxButton>Foo</NxButton>
-          </NxTooltip>
-        </div>
-      </NxModal>
-    );
-
-    const tooltip = nxModal.find(Tooltip).at(0);
-
-    expect(tooltip.prop('PopperProps')!.container).toBe(nxModal.getDOMNode());
-  });
-
-  it('moves focus back to the previously focused element when closed', async function() {
-    function Fixture({ modalOpen }: { modalOpen: boolean }) {
-      return (
-        <>
-          <button id="test-btn">Test</button>
-          { modalOpen && <NxModal onCancel={jest.fn()}><button id="cancel-btn">Close</button></NxModal> }
-        </>
+      const { getAllByRole } = render(
+        <NxModal {...minimalProps}>
+          <button>First</button>
+          <button>Middle</button>
+          <button>Last</button>
+        </NxModal>
       );
-    }
 
-    const container = document.createElement('div');
-    document.body.append(container);
+      const buttons = getAllByRole('button');
 
-    const component = mount(<Fixture modalOpen={false} />, { attachTo: container }),
-        externalBtn = component.find('#test-btn').getDOMNode() as HTMLElement;
+      expect(buttons[0]).toHaveFocus();
+      await user.tab();
+      expect(buttons[1]).toHaveFocus();
+      await user.tab();
+      expect(buttons[2]).toHaveFocus();
+      await user.tab();
+      expect(buttons[0]).toHaveFocus();
+    });
 
-    externalBtn.focus();
-    expect(component).not.toContainMatchingElement(NxModal);
-    expect(document.activeElement === externalBtn).toBe(true);
+    it('should cycle backward with shift + tab', async function() {
+      const user = userEvent.setup();
 
-    component.setProps({ modalOpen: true });
-    expect(component).toContainMatchingElement(NxModal);
-    expect(document.activeElement === component.find(NxModal).getDOMNode()).toBe(true);
+      const { getAllByRole } = render(
+        <NxModal {...minimalProps}>
+          <button>First</button>
+          <button>Middle</button>
+          <button>Last</button>
+        </NxModal>
+      );
 
-    component.setProps({ modalOpen: false });
-    expect(component).not.toContainMatchingElement(NxModal);
+      const buttons = getAllByRole('button');
 
-    // The focus is moved asynchronously
-    await runTimers();
-
-    expect(document.activeElement === externalBtn).toBe(true);
-  });
-});
-
-describe('NxModal.Header', function() {
-  it('makes a <header> tag with the nx-modal-header class', function() {
-    expect(shallow(<NxModal.Header/>)).toMatchSelector('header.nx-modal-header');
-  });
-});
-
-describe('NxModal.Content', function() {
-  it('makes a <div> tag with the nx-modal-content class', function() {
-    expect(shallow(<NxModal.Content/>)).toMatchSelector('div.nx-modal-content');
+      expect(buttons[0]).toHaveFocus();
+      await user.tab({ shift: true });
+      expect(buttons[2]).toHaveFocus();
+      await user.tab({ shift: true });
+      expect(buttons[1]).toHaveFocus();
+      await user.tab({ shift: true });
+      expect(buttons[0]).toHaveFocus();
+    });
   });
 });
