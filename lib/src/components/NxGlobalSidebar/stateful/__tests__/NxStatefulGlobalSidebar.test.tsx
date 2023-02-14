@@ -158,6 +158,34 @@ describe('NxStatefulGlobalSidebar', function() {
     expect(tooltip).toHaveTextContent('Expand Sidebar');
   });
 
+  it('clicking on icon-only toggle button "Collapse Sidebar" collapses sidebar ' +
+  'when isDefaultOpen is true', async function() {
+    const view = quickRender({ isDefaultOpen: true }),
+        user = userEvent.setup();
+
+    await runTimers();
+
+    const toggleBtn = view.getByRole('button', { name: /collapse sidebar/i });
+
+    expect(toggleBtn).toHaveAttribute('aria-expanded', 'true');
+    await user.click(toggleBtn);
+    expect(toggleBtn).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('clicking on icon-only toggle button "Expand Sidebar" expands sidebar ' +
+  'when isDefaultOpen is false', async function() {
+    const view = quickRender({ isDefaultOpen: false }),
+        user = userEvent.setup();
+
+    await runTimers();
+
+    const toggleBtn = view.getByRole('button', { name: /expand sidebar/i });
+
+    expect(toggleBtn).toHaveAttribute('aria-expanded', 'false');
+    await user.click(toggleBtn);
+    expect(toggleBtn).toHaveAttribute('aria-expanded', 'true');
+  });
+
   it('renders passed in children', function() {
     const children = (
       <React.Fragment key="1">
