@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode } from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode, NxTile, NxH3 } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -147,6 +147,20 @@ const NxCardPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>Accessibility Considerations</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The <NxCode>NxCard</NxCode> convenience component renders a <NxCode>&lt;section&gt;</NxCode> element.
+          A <NxCode>&lt;section&gt;</NxCode> element will have a role of <NxCode>region</NxCode> if an accessible
+          name is provided. If an accessible name is not provided, no role will be assigned. Since the
+          {' '}<NxCode>region</NxCode> role is a landmark, and landmarks need to be unique, the accessible name
+          provided to <NxCode>NxCard</NxCode> therefore needs to be unique as well. In layouts that contain
+          multiple <NxCode>NxCard</NxCode> components that have accessible names, it is important to make sure that
+          each <NxCode>NxCard</NxCode> has a unique accessible name.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Card Row Layout"
