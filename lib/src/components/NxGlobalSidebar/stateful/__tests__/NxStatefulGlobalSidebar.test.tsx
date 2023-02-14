@@ -118,7 +118,7 @@ describe('NxStatefulGlobalSidebar', function() {
     expect(logo).toHaveAccessibleName('alt text');
   });
 
-  it('renders an icon-only button with tooltip "Collapse Sidebar" if isOpen is true', async function() {
+  it('renders an icon-only button with tooltip "Collapse Sidebar" if isDefaultOpen is true', async function() {
     const view = quickRender({ isDefaultOpen: true }),
         sidebarId = view.container.firstElementChild?.getAttribute('id'),
         user = userEvent.setup();
@@ -138,7 +138,7 @@ describe('NxStatefulGlobalSidebar', function() {
     expect(tooltip).toHaveTextContent('Collapse Sidebar');
   });
 
-  it('renders an icon-only button with tooltip "Expand Sidebar" if isOpen is false', async function() {
+  it('renders an icon-only button with tooltip "Expand Sidebar" if isDefaultOpen is false', async function() {
     const view = quickRender({ isDefaultOpen: false }),
         sidebarId = view.container.firstElementChild?.getAttribute('id'),
         user = userEvent.setup();
