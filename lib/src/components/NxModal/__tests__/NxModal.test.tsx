@@ -246,7 +246,7 @@ describe('NxModal', function() {
       }
     });
 
-    it('should cycle tabs forward', async function() {
+    it('should cycle forward when tab key is pressed', async function() {
       const user = userEvent.setup();
 
       const { getAllByRole } = render(
@@ -268,7 +268,7 @@ describe('NxModal', function() {
       expect(buttons[0]).toHaveFocus();
     });
 
-    it('should cycle tabs backward', async function() {
+    it('should cycle backward with shift + tab', async function() {
       const user = userEvent.setup();
 
       const { getAllByRole } = render(
