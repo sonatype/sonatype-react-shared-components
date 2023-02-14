@@ -29,7 +29,7 @@ $-width: 44px;
         border-color: var(--nx-color-interactive-border-disabled);
       }
       .nx-toggle__indicator, .nx-toggle__input:checked + .nx-toggle__control .nx-toggle__indicator {
-        background-color: var(--nx-color-interactive-border-disabled);
+      color: var(--nx-color-interactive-border-disabled);
       }
     }
   }
@@ -73,7 +73,7 @@ $-width: 44px;
       background-color: var(--nx-swatch-blue-40);
 
       .nx-toggle__indicator {
-        background-color: var(--nx-swatch-white);
+        color: var(--nx-swatch-white);
         margin-left: 20px;
       }
     }
@@ -97,11 +97,9 @@ $-width: 44px;
 }
 
 .nx-toggle__indicator {
-  background-color: var(--nx-swatch-blue-40);
+  color: var(--nx-swatch-blue-40);
   border-radius: 8px;
-  height: 16px;
   margin-left: 0;
-  width: 16px;
   transition: margin-left 0.35s;
 }
 
