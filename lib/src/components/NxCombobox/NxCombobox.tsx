@@ -90,11 +90,6 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       filterInputProps = filterInput === 'search' ? { searchIcon: true } : null,
       [pageIsFocused, setPageIsFocused] = useState(true);
 
-  function handlePageFocus() {
-    const onPage = document.hasFocus();
-    onPage ? setPageIsFocused(true) : setPageIsFocused(false);
-  }
-
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
   function handleComponentFocus(evt: FocusEvent<HTMLDivElement>) {
@@ -110,13 +105,13 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         doSearch(value);
       }
     }
-    handlePageFocus();
+    setPageIsFocused(document.hasFocus());
     setHiddenBySelection(false);
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
 
-    handlePageFocus();
+    setPageIsFocused(document.hasFocus());
     if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget))) {
       setInputIsFocused(false);
       // The automatically selected suggestion becomes the value of the combobox
