@@ -4,20 +4,31 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
 import NxGlobalSidebarNavigation, { NxGlobalSidebarNavigationProps as Props } from '../NxGlobalSidebarNavigation';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 describe('NxGlobalSidebarNavigation', function() {
   const minimalProps: Props = {},
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxGlobalSidebarNavigation, minimalProps);
+      quickRender = rtlRender<Props>(NxGlobalSidebarNavigation, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxGlobalSidebarNavigation, minimalProps);
 
-  it('renders a <nav> with nx-global-sidebar__navigation class and those passed as props', function() {
-    expect(getShallowComponent({ className: 'class-A' })).toMatchSelector('nav.nx-global-sidebar__navigation.class-A');
+  it('has a role=navigation', function() {
+    expect(quickRender().getByRole('navigation')).toBeInTheDocument();
   });
 
-  it('passes any prop that <nav> handles', function() {
-    expect(getShallowComponent({ title: 'a-title' })).toHaveProp('title', 'a-title');
-    expect(getShallowComponent({ id: 'some-id' })).toHaveProp('id', 'some-id');
+  it('passes additional classes specified as props', function() {
+    const el = renderEl({ className: 'class-A' }),
+        defaultEl = renderEl()!;
+
+    expect(el).toHaveClass('class-A');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
+  });
+
+  it('passes additional attributes', function() {
+    expect(renderEl({ title: 'a-title' })).toHaveAttribute('title', 'a-title');
+    expect(renderEl({ id: 'some-id' })).toHaveAttribute('id', 'some-id');
   });
 });
