@@ -342,7 +342,7 @@ const NxFieldsetPage = () =>
                   </NxList.Item>
                   <NxList.Item>
                     <NxList.Text>
-                      <NxCode>validator</NxCode> function which will be run on each change in
+                      <NxCode>validator</NxCode> function which will be run on each change in{' '}
                       <NxCode>NxTransferList</NxCode> selectedItems
                       in order to update the <NxCode>validationErrors</NxCode>; optional
                     </NxList.Text>
