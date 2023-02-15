@@ -4,76 +4,138 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { RefAttributes } from 'react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
 import NxList from '../NxList';
 import { NxListLinkItemProps } from '../types';
-import { getMountedComponent, getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
 
-describe('NxListLinkItem', function() {
+describe('NxList.LinkItem', function() {
+  const minimalProps: NxListLinkItemProps & RefAttributes<HTMLLIElement> = {
+        href: 'www.sonatype.com'
+      },
+      quickRender = rtlRender(NxList.LinkItem, minimalProps),
+      renderEl = rtlRenderElement(NxList.LinkItem, minimalProps);
 
-  const minimalProps: NxListLinkItemProps = { href: 'www.sonatype.com' };
-  const getShallow = getShallowComponent(NxList.LinkItem, minimalProps);
-  const getMounted = getMountedComponent(NxList.LinkItem, minimalProps);
+  it('renders a listitem containing a link', function() {
+    const view = quickRender(),
+        listItem = view.getByRole('listitem'),
+        anchor = view.getByRole('link');
 
-  it('renders a correctly structured element - an a within an li', function() {
-    const contentEl = getShallow();
-
-    expect(contentEl).toExist();
-    expect(contentEl).toMatchSelector('.nx-list__item.nx-list__item--clickable');
-    expect(contentEl.find('a')).toMatchSelector('.nx-list__link');
-    expect(contentEl.find('a').parent().is('li'));
+    expect(listItem).toBeInTheDocument();
+    expect(anchor).toBeInTheDocument();
+    expect(listItem).toContainElement(anchor);
   });
 
-  it('renders the classNames given to both the li and the a', function() {
-    const contentEl = getShallow({className: 'customClassLi', anchorClassName: 'customClassAnchor'});
+  it('sets a ref to the element', function() {
+    const ref = React.createRef<HTMLLIElement>(),
+        el = renderEl({ ref });
 
-    expect(contentEl).toExist();
-    expect(contentEl).toMatchSelector('.nx-list__item.nx-list__item--clickable.customClassLi');
-    expect(contentEl.find('a')).toMatchSelector('.nx-list__link.customClassAnchor');
+    expect(ref.current).toBe(el);
   });
 
-  it('renders a clickable link whose list item element has prop disabled and is disabled', function() {
-    const contentEl = getMounted({disabled: true});
+  it('sets the specified classnames to the list in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo', anchorClassName: 'boo' }),
+        defaultEl = renderEl()!;
 
-    expect(contentEl).toExist();
-    expect(contentEl).toHaveProp('href');
-    expect(contentEl).toHaveProp('disabled');
-    expect(contentEl).toBeDisabled();
+    expect(el).toHaveClass('foo');
+    expect(el).not.toHaveClass('boo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('renders a clickable link whose list item element has prop selected and is selected', function() {
-    const contentEl = getMounted({selected: true});
+  it('sets the specified attrs to the list', function() {
+    const anchorAttributes = { id: 'boo', hrefLang: 'en' },
+        el = renderEl({ id: 'foo', lang: 'en', anchorAttributes });
 
-    expect(contentEl).toExist();
-    expect(contentEl).toHaveProp('href');
-    expect(contentEl.find('a')).toHaveClassName('selected');
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en');
+
+    expect(el).not.toHaveAttribute('id', 'boo');
+    expect(el).not.toHaveAttribute('hrefLang', 'en');
+  });
+
+  it('sets the specified classnames to the anchor in addition to the defaults ' +
+  'when anchorClassName prop is provided', function() {
+    const anchor = quickRender({ className: 'foo', anchorClassName: 'boo' }).getByRole('link'),
+        defaultAnchor = quickRender().getByRole('link');
+
+    expect(anchor).toHaveClass('boo');
+    expect(anchor).not.toHaveClass('foo');
+
+    for (const cls of Array.from(defaultAnchor.classList)) {
+      expect(anchor).toHaveClass(cls);
+    }
+  });
+
+  it('sets the specified attrs to the anchor when anchorAttributes prop is provided', function() {
+    const anchorAttributes = { id: 'boo', hrefLang: 'en' },
+        anchor = quickRender({ id: 'foo', lang: 'en', anchorAttributes }).getByRole('link');
+
+    expect(anchor).toHaveAttribute('id', 'boo');
+    expect(anchor).toHaveAttribute('hrefLang', 'en');
+
+    expect(anchor).not.toHaveAttribute('id', 'foo');
+    expect(anchor).not.toHaveAttribute('lang', 'en');
+  });
+
+  it('sets aria-disabled="true" and does not pass href value on the anchor ' +
+  'iff disabled prop is set to true', function() {
+    const renderAndGetAnchor = (props?: Partial<NxListLinkItemProps>) => quickRender(props).getByRole('link');
+
+    expect(renderAndGetAnchor()).toHaveAttribute('href', 'www.sonatype.com');
+    expect(renderAndGetAnchor()).toHaveAttribute('aria-disabled', 'false');
+
+    expect(renderAndGetAnchor({ disabled: false })).toHaveAttribute('href', 'www.sonatype.com');
+    expect(renderAndGetAnchor({ disabled: false })).toHaveAttribute('aria-disabled', 'false');
+
+    expect(renderAndGetAnchor({ disabled: undefined })).toHaveAttribute('href', 'www.sonatype.com');
+    expect(renderAndGetAnchor({ disabled: undefined })).toHaveAttribute('aria-disabled', 'false');
+
+    expect(renderAndGetAnchor({ disabled: null })).toHaveAttribute('href', 'www.sonatype.com');
+    expect(renderAndGetAnchor({ disabled: null })).toHaveAttribute('aria-disabled', 'false');
+
+    expect(renderAndGetAnchor({ disabled: true })).not.toHaveAttribute('href');
+    expect(renderAndGetAnchor({ disabled: true })).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  it('sets aria-selected and aria-current="true" to the list ' +
+    'iff selected prop is set to true', function() {
+    const renderAndGetList = (props?: Partial<NxListLinkItemProps>) => quickRender(props).getByRole('listitem');
+
+    expect(renderAndGetList()).not.toHaveAttribute('aria-selected');
+    expect(renderAndGetList()).not.toHaveAttribute('aria-current');
+
+    expect(renderAndGetList({ selected: false })).toHaveAttribute('aria-selected', 'false');
+    expect(renderAndGetList({ selected: false })).toHaveAttribute('aria-current', 'false');
+
+    expect(renderAndGetList({ selected: undefined })).not.toHaveAttribute('aria-selected');
+    expect(renderAndGetList({ selected: undefined })).not.toHaveAttribute('aria-current');
+
+    expect(renderAndGetList({ selected: null })).not.toHaveAttribute('aria-selected');
+    expect(renderAndGetList({ selected: null })).not.toHaveAttribute('aria-current');
+
+    expect(renderAndGetList({ selected: true })).toHaveAttribute('aria-selected', 'true');
+    expect(renderAndGetList({ selected: true })).toHaveAttribute('aria-current', 'true');
   });
 
   it('renders children correctly', function() {
-    const children = [
-      <NxList.Text key="1">Test Item 1 Text</NxList.Text>,
-      <NxList.Subtext key="2">Test Item 1 Subtext</NxList.Subtext>
-    ];
-    const contentEl = getMounted({children});
-    expect(contentEl).toExist();
-    expect(contentEl.find('span').at(0)).toMatchSelector('span.nx-list__text');
-    expect(contentEl.find('span').at(0)).toHaveText('Test Item 1 Text');
-    expect(contentEl.find('span').at(1)).toMatchSelector('span.nx-list__subtext');
-    expect(contentEl.find('span').at(0)).toHaveText('Test Item 1 Text');
-  });
+    const children =
+        [
+          <NxList.Text data-testid="text" key="1">Test Item 1 Text</NxList.Text>,
+          <NxList.Subtext data-testid="subtext" key="2">Test Item 1 Subtext</NxList.Subtext>
+        ],
+        view = quickRender({ children }),
+        anchor = view.getByRole('link'),
+        childrenText = view.getByTestId('text'),
+        childrenSubtext = view.getByTestId('subtext');
 
-  it('sets aria-selected and aria-current to true iff selected is true', function() {
-    expect(getShallow()).toHaveProp('aria-selected', undefined);
-    expect(getShallow()).toHaveProp('aria-current', undefined);
-
-    expect(getShallow({ selected: true })).toHaveProp('aria-selected', true);
-    expect(getShallow({ selected: true })).toHaveProp('aria-current', true);
-
-    expect(getShallow({ selected: false })).toHaveProp('aria-selected', false);
-    expect(getShallow({ selected: false })).toHaveProp('aria-current', false);
-
-    expect(getShallow({ selected: null })).toHaveProp('aria-selected', undefined);
-    expect(getShallow({ selected: null })).toHaveProp('aria-current', undefined);
+    expect(anchor).toBeInTheDocument();
+    expect(anchor).toContainElement(childrenText);
+    expect(childrenText).toHaveTextContent('Test Item 1 Text');
+    expect(anchor).toContainElement(childrenSubtext);
+    expect(childrenSubtext).toHaveTextContent('Test Item 1 Subtext');
   });
 });

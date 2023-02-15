@@ -13,6 +13,8 @@ import { useUniqueId } from '../../util/idUtil';
 import { Props, propTypes } from './types';
 
 import './NxGlobalSidebar.scss';
+import { splitOutFirst } from '../../util/childUtil';
+import NxGlobalSidebarFooter from './NxGlobalSidebarFooter';
 
 const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props) {
   const {
@@ -47,19 +49,23 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
     </NxButton>
   );
 
-  const logo = <img src={logoImg} alt={logoAltText} className="nx-global-sidebar__logo" />;
+  const logo = <img src={logoImg} alt={logoAltText} className="nx-global-sidebar__logo" />,
+      [footer, otherChildren] = splitOutFirst(NxGlobalSidebarFooter, children);
 
   return (
-    <aside className={classes} id={id} aria-label="global sidebar">
-      <div className="nx-global-sidebar__header">
-        <a className="nx-global-sidebar__product-info nx-global-sidebar__expanded-content"
-           href={logoLink}>
-          { logo }
-        </a>
-        { toggleButton }
-      </div>
-      { children }
-    </aside>
+    <div className={classes} id={id}>
+      <aside aria-label="global sidebar">
+        <div className="nx-global-sidebar__header">
+          <a className="nx-global-sidebar__product-info nx-global-sidebar__expanded-content"
+             href={logoLink}>
+            { logo }
+          </a>
+          { toggleButton }
+        </div>
+        {otherChildren}
+      </aside>
+      { footer }
+    </div>
   );
 };
 

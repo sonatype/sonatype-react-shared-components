@@ -4,61 +4,63 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import { render } from '@testing-library/react';
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import 'jest-enzyme';
+
+import { rtlRenderElement } from '../../__testutils__/rtlUtils';
 import withClass from '../withClass';
-import { getShallowComponent } from '../../__testutils__/enzymeUtils';
 
 describe('withClass', function() {
   const ExampleComponent = withClass('hgroup', 'foo-bar'),
-      getShallow = getShallowComponent(ExampleComponent, {});
+      renderEl = rtlRenderElement(ExampleComponent, {});
 
   it('forwards a ref to the element', function() {
     const ExampleLabelComponent = withClass('label', 'foo-bar');
     const ref = React.createRef<HTMLLabelElement>();
 
-    // note: the fragment is necessary to get around an enzyme issue:
-    // https://github.com/enzymejs/enzyme/issues/1852#issuecomment-433145879
-    const label = mount(<><ExampleLabelComponent ref={ref}>foo</ExampleLabelComponent></>);
+    const label = render(<ExampleLabelComponent ref={ref}>foo</ExampleLabelComponent>).container.firstElementChild;
 
-    expect(ref.current).toBe(label.getDOMNode());
+    expect(label).toBeInTheDocument();
+    expect(ref.current).toBe(label);
   });
 
   it('creates a component constructor that makes an element with the specified tag and class', function() {
-    expect(getShallow()).toMatchSelector('hgroup.foo-bar');
+    const el = renderEl()!;
+
+    expect(el.tagName).toBe('HGROUP');
+    expect(el).toHaveClass('foo-bar');
   });
 
   it('creates a component constructor that makes an element with the specified role', function() {
     const ExampleComponentWithRole = withClass('span', 'baz', 'status'),
-        component = shallow(<ExampleComponentWithRole />);
+        el = render(<ExampleComponentWithRole />).container.firstElementChild;
 
-    expect(component).toHaveProp('role', 'status');
+    expect(el).toHaveAttribute('role', 'status');
   });
 
   it('creates a component which can take classNames to add to the return element', function() {
-    const component = getShallow({ className: 'baz' });
+    const el = renderEl({ className: 'baz' });
 
-    expect(component).toHaveClassName('baz');
-    expect(component).toHaveClassName('foo-bar');
+    expect(el).toHaveClass('baz');
+    expect(el).toHaveClass('foo-bar');
   });
 
   it('creates a component which can take a role which overrides the role specified in the withClass invocation',
       function() {
-        const componentWithNoDefaultRole = getShallow({ className: 'baz', role: 'modal' });
-        expect(componentWithNoDefaultRole).toHaveProp('role', 'modal');
+        const elWithNoDefaultRole = renderEl({ className: 'baz', role: 'modal' });
+        expect(elWithNoDefaultRole).toHaveAttribute('role', 'modal');
 
         const ExampleComponentWithRole = withClass('span', 'baz', 'status'),
-            componentWithDefaultRole = shallow(<ExampleComponentWithRole role="modal" />);
+            elWithDefaultRole = render(<ExampleComponentWithRole role="modal" />).container.firstElementChild;
 
-        expect(componentWithDefaultRole).toHaveProp('role', 'modal');
+        expect(elWithDefaultRole).toHaveAttribute('role', 'modal');
       }
   );
 
   it('creates a component which can take additional props for its native element', function() {
-    const component = getShallow({ id: 'baz', lang: 'en_US' });
+    const el = renderEl({ id: 'baz', lang: 'en_US' });
 
-    expect(component).toHaveProp('id', 'baz');
-    expect(component).toHaveProp('lang', 'en_US');
+    expect(el).toHaveAttribute('id', 'baz');
+    expect(el).toHaveAttribute('lang', 'en_US');
   });
 });

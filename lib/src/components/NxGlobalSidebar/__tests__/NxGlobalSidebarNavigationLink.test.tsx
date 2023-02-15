@@ -5,12 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import { faCrow, faBiohazard } from '@fortawesome/free-solid-svg-icons';
+import { faCrow } from '@fortawesome/free-solid-svg-icons';
+import { screen, within } from '@testing-library/react';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import NxOverflowTooltip from '../../NxTooltip/NxOverflowTooltip';
 import NxGlobalSidebarNavigationLink, { NxGlobalSidebarNavigationLinkProps as Props }
   from '../NxGlobalSidebarNavigationLink';
 
@@ -20,33 +18,88 @@ describe('NxGlobalSidebarNavigationLink', function() {
         text: 'textLink',
         href: '#someurl'
       },
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxGlobalSidebarNavigationLink, minimalProps);
+      quickRender = rtlRender<Props>(NxGlobalSidebarNavigationLink, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxGlobalSidebarNavigationLink, minimalProps);
 
-  it('renders an NxOverflowTooltip as container', function () {
-    expect(getShallowComponent()).toMatchSelector(NxOverflowTooltip);
+  describe('tooltips', function () {
+    it('renders a tooltip on hover if link text overflow occurs', async function() {
+      // Supress overflow tooltip warnings
+      jest.spyOn(console, 'warn').mockImplementation(() => {});
+
+      // Mock layout methods imported from NxOverflowTooltip RTL test.
+      jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({
+        x: 0,
+        y: 0,
+        width: 1,
+        height: 1,
+        top: 0,
+        right: 1,
+        bottom: 1,
+        left: 0
+      } as DOMRect);
+
+      // mock that text extends 1px farther than container
+      jest.spyOn(Range.prototype, 'getBoundingClientRect').mockReturnValue({
+        x: 0,
+        y: 0,
+        width: 2,
+        height: 1,
+        top: 0,
+        right: 2,
+        bottom: 1,
+        left: 0
+      } as DOMRect);
+
+      const view = quickRender(),
+          link = view.getByRole('link'),
+          user = userEvent.setup();
+
+      await user.hover(link);
+
+      const tooltip = await screen.findByRole('tooltip');
+
+      expect(tooltip).toBeInTheDocument();
+      expect(tooltip).toHaveTextContent('textLink');
+    });
+
+    it('does not render a tooltip on hover if link text overflow doesn\'t occur', async function() {
+      const view = quickRender(),
+          link = view.getByRole('link'),
+          user = userEvent.setup();
+
+      await user.hover(link);
+
+      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+    });
+
   });
 
-  it('renders an <a> with the passed href and classes', function() {
-    const link = getShallowComponent({ className: 'extra-class' }).find('a');
-    expect(link).toMatchSelector('a.nx-global-sidebar__navigation-link.nx-text-link');
-    expect(link).toMatchSelector('.extra-class');
-    expect(link).toHaveProp('href', '#someurl');
+  it('renders a link with the passed href and classes', function() {
+    const el = renderEl({ className: 'extra-class' }),
+        defaultEl = renderEl()!;
+
+    expect(el).toHaveClass('extra-class');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
+
+    expect(el).toHaveAttribute('href', '#someurl');
   });
 
   it('passes additional specified attrs to the <a>', function() {
-    const link = getShallowComponent({ id: 'foo', lang: 'en_US' }).find('a');
+    const link = quickRender({ id: 'foo', lang: 'en_US' }).getByRole('link');
 
-    expect(link).toHaveProp('id', 'foo');
-    expect(link).toHaveProp('lang', 'en_US');
+    expect(link).toHaveAttribute('id', 'foo');
+    expect(link).toHaveAttribute('lang', 'en_US');
   });
 
   it('renders the specified text inside the link', function () {
-    expect(getShallowComponent().find('.nx-global-sidebar__navigation-text')).toHaveText('textLink');
+    expect(quickRender().getByRole('link')).toHaveTextContent('textLink');
   });
 
   it('renders the specified icon inside the link', function() {
-    expect(getShallowComponent().find(NxFontAwesomeIcon)).toHaveProp('icon', faCrow);
-    expect(getShallowComponent({ icon: faBiohazard }).find(NxFontAwesomeIcon))
-        .toHaveProp('icon', faBiohazard);
+    const link = quickRender().getByRole('link');
+    expect(within(link).getByRole('img', { hidden: true })).toBeInTheDocument();
   });
 });
