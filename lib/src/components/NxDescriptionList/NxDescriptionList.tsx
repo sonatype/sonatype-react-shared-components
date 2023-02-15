@@ -6,6 +6,7 @@
  */
 import React, { forwardRef, useRef } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
+import classnames from 'classnames';
 
 import withClass from '../../util/withClass';
 import useEmptyComponent from '../../util/useEmptyComponent';
@@ -17,24 +18,26 @@ import { Props, propTypes } from './types';
 
 export { Props, ButtonItemProps, LinkItemProps } from './types';
 
-const _NxDescriptionList = forwardRef<HTMLElement, Props>(function({ emptyMessage, ...otherProps }, externalRef) {
-  const emptyChildRef = useRef<HTMLLIElement>(null),
-      listRef = useRef<HTMLElement>(null),
-      ref = useMergedRef(externalRef, listRef),
-      isEmpty = useEmptyComponent(listRef, emptyChildRef);
+const _NxDescriptionList = forwardRef<HTMLElement, Props>(
+    function({ emptyMessage, className, ...otherProps }, externalRef) {
+      const classNames = classnames(className, 'nx-list'),
+          emptyChildRef = useRef<HTMLLIElement>(null),
+          listRef = useRef<HTMLElement>(null),
+          ref = useMergedRef(externalRef, listRef),
+          isEmpty = useEmptyComponent(listRef, emptyChildRef);
 
-  const emptyList = (
-    <ul className="nx-list" ref={ref} { ...otherProps }>
-      <li ref={emptyChildRef} className="nx-list__item nx-list__item--empty">
-        <span className="nx-list__text">
-          {emptyMessage || 'This list is empty.'}
-        </span>
-      </li>
-    </ul>
-  );
+      const emptyList = (
+        <ul className={classNames} ref={ref} { ...otherProps }>
+          <li ref={emptyChildRef} className="nx-list__item nx-list__item--empty">
+            <span className="nx-list__text">
+              {emptyMessage || 'This list is empty.'}
+            </span>
+          </li>
+        </ul>
+      );
 
-  return isEmpty ? emptyList : <dl ref={ref} className="nx-list nx-list--description-list" { ...otherProps } />;
-});
+      return isEmpty ? emptyList : <dl ref={ref} className="nx-list nx-list--description-list" { ...otherProps } />;
+    });
 
 _NxDescriptionList.propTypes = propTypes;
 

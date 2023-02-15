@@ -9,6 +9,17 @@ import { render } from '@testing-library/react';
 import NxDescriptionList from '../NxDescriptionList';
 
 describe('NxDescriptionList', function() {
+  it('adds specified classNames to the element in addition to the defaults', function() {
+    const el = render(<NxDescriptionList className="foo" />).container.firstElementChild,
+        defaultEl = render(<NxDescriptionList />).container.firstElementChild!;
+
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
+  });
+
   it('renders a ul with a default empty message when empty', function() {
     const reallyEmpty = render(<NxDescriptionList />),
         reallyEmptyList = reallyEmpty.getByRole('list'),
