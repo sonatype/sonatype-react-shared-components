@@ -5,12 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { mount } from 'enzyme';
-import 'jest-enzyme';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
+import NxTree from '../NxTree';
+import { ItemLabelProps as Props, TreeKeyNavContextType } from '../types';
 import TreeKeyNavContext from '../TreeKeyNavContext';
-import NxTreeItemLabel from '../NxTreeItemLabel';
-import { TreeKeyNavContextType } from '../types';
 
 const keyNavContext: TreeKeyNavContextType = {
   focusedChild: null,
@@ -23,43 +22,62 @@ const keyNavContext: TreeKeyNavContextType = {
   setNavigationDirection: () => {},
   getTreeRoot: () => null
 };
+function getTreeItemLabel(extraProps?: Props) {
+  return (
+    <TreeKeyNavContext.Provider value={keyNavContext}>
+      <NxTree.ItemLabel { ...extraProps } />
+    </TreeKeyNavContext.Provider>
+  );
+}
+
+const quickRender = rtlRender(getTreeItemLabel, {}),
+    renderEl = rtlRenderElement(getTreeItemLabel, {});
 
 describe('NxTree.ItemLabel', function() {
-  it('makes a <span> tag with an nx-tree__item-label class', function() {
-    const component = mount(
-      <TreeKeyNavContext.Provider value={keyNavContext}>
-        <NxTreeItemLabel />
-      </TreeKeyNavContext.Provider>
-    ).children();
-
-    expect(component).toMatchSelector('span.nx-tree__item-label');
+  it('renders a <span> as the top-level element', function() {
+    const view = quickRender();
+    expect(view.container.firstElementChild!.tagName).toBe('SPAN');
   });
 
-  it('sets the provided id on the span', function() {
-    const component = mount(
-      <TreeKeyNavContext.Provider value={keyNavContext}>
-        <NxTreeItemLabel id="foo" />
-      </TreeKeyNavContext.Provider>
-    ).children();
+  it('adds specified classes and attrs to the top-level element', function() {
+    const el = renderEl({ className: 'foo', lang: 'en-US' }),
+        defaultEl = renderEl()!;
 
-    expect(component).toHaveProp('id', 'foo');
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
+  });
+
+  it('passes additional attrs to the top-level element', function() {
+    const el = renderEl({ id: 'foo', lang: 'en-US' });
+
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en-US');
   });
 
   it('sets a random id on the span if none is provided', function() {
-    const component1 = mount(
-      <TreeKeyNavContext.Provider value={keyNavContext}>
-        <NxTreeItemLabel />
-      </TreeKeyNavContext.Provider>
-    ).children();
+    const { container, rerender } = quickRender(),
+        firstItemLabel = container.firstElementChild!,
+        firstItemLabelId = firstItemLabel.getAttribute('id');
 
-    const component2 = mount(
+    rerender(
       <TreeKeyNavContext.Provider value={keyNavContext}>
-        <NxTreeItemLabel />
+        <NxTree.ItemLabel />
       </TreeKeyNavContext.Provider>
-    ).children();
+    );
 
-    expect(component1).toHaveProp('id');
-    expect(component2).toHaveProp('id');
-    expect(component1.prop('id')).not.toEqual(component2.prop('id'));
+    const secondItemLabel = container.firstElementChild!,
+        secondItemLabelId = secondItemLabel.getAttribute('id');
+
+    expect(firstItemLabel).toHaveAttribute('id');
+    expect(secondItemLabel).toHaveAttribute('id');
+    expect(firstItemLabelId).not.toBe(secondItemLabelId);
+  });
+
+  it('renders text content of the child element', function() {
+    const el = renderEl({ children: <span>foo</span> });
+    expect(el).toHaveTextContent('foo');
   });
 });

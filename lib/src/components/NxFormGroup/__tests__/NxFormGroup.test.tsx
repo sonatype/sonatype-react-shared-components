@@ -5,10 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { render } from '@testing-library/react';
 
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-import NxFormGroup, { Props } from '../NxFormGroup';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import NxFormGroup from '../NxFormGroup';
 import NxStatefulTextInput from '../../NxTextInput/stateful/NxStatefulTextInput';
 
 describe('NxFormGroup', function() {
@@ -16,358 +16,93 @@ describe('NxFormGroup', function() {
         label: 'foo',
         children: <NxStatefulTextInput/>
       },
-      getShallow = getShallowComponent<Props>(NxFormGroup, minimalProps);
+      quickRender = rtlRender(NxFormGroup, minimalProps),
+      renderEl = rtlRenderElement(NxFormGroup, minimalProps);
 
-  it('renders a .nx-form-group div with the specified attributes', function() {
-    const component = getShallow({ id: 'groupId', lang: 'en_US' });
+  it('renders a top-level element with the specified attributes and classnames', function() {
+    const el = renderEl({ id: 'groupId', lang: 'en_US', className: 'asdf' }),
+        defaultEl = renderEl()!;
 
-    expect(component).toMatchSelector('div.nx-form-group');
-    expect(component).toHaveProp('id', 'groupId');
-    expect(component).toHaveProp('lang', 'en_US');
-  });
+    expect(el).toHaveAttribute('id', 'groupId');
+    expect(el).toHaveAttribute('lang', 'en_US');
+    expect(el).toHaveClass('asdf');
 
-  it('adds nx-form-group to the specified classnames', function() {
-    const component = getShallow({ className: 'asdf' });
-
-    expect(component).toHaveClassName('asdf');
-    expect(component).toHaveClassName('nx-form-group');
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
   it('contains the specified child', function() {
-    const input = <NxStatefulTextInput className="foo" />,
-        component = getShallow({ children: input });
+    const input = <input type="text" data-testid="child" />,
+        view = quickRender({ children: input });
 
-    expect(component).toContainMatchingElement(NxStatefulTextInput);
-    expect(component.find(NxStatefulTextInput)).toHaveClassName('foo');
+    expect(view.getByTestId('child')).toBeInTheDocument();
   });
 
-  describe('nx-label', function() {
-    it('is a <label> child of NxFormGroup', function() {
-      expect(getShallow()).toContainMatchingElement('label.nx-label');
-    });
+  it('includes the label in the text content and as the name of the child form field', function() {
+    const input = <input type="text" />,
+        inputWithId = <input type="text" id="child-id" />,
+        view = quickRender({ children: input }),
+        viewWithId = quickRender({ children: inputWithId });
 
-    it('contains an nx-label__text populated from the label prop', function() {
-      expect(getShallow().find('.nx-label')).toContainMatchingElement('.nx-label__text');
-      expect(getShallow().find('.nx-label__text')).toHaveText('foo');
+    expect(view.container).toHaveTextContent('foo');
+    expect(view.getByRole('textbox')).toHaveAccessibleName('foo');
 
-      expect(getShallow({ label: <span className="foo">bar</span> }).find('.nx-label__text')).toContainReact(
-        <span className="foo">bar</span>
-      );
-    });
-
-    it('has the nx-label--optional class unless the isRequired prop is true', function() {
-      expect(getShallow().find('.nx-label')).toHaveClassName('nx-label--optional');
-      expect(getShallow({ isRequired: undefined }).find('.nx-label')).toHaveClassName('nx-label--optional');
-      expect(getShallow({ isRequired: null }).find('.nx-label')).toHaveClassName('nx-label--optional');
-      expect(getShallow({ isRequired: false }).find('.nx-label')).toHaveClassName('nx-label--optional');
-      expect(getShallow({ isRequired: true }).find('.nx-label')).not.toHaveClassName('nx-label--optional');
-    });
+    expect(viewWithId.container).toHaveTextContent('foo');
+    expect(viewWithId.getByRole('textbox')).toHaveAccessibleName('foo');
   });
 
-  describe('nx-sub-label', function() {
-    it('is not present by default', function() {
-      expect(getShallow()).not.toContainMatchingElement('.nx-sub-label');
-    });
+  it('does not override the id of the child', function() {
+    const children = <input type="text" id="child-id" />,
+        view = quickRender({ children });
 
-    it('is populated with the sublabel content', function() {
-      expect(getShallow({ sublabel: 'qwerty' })).toContainMatchingElement('.nx-sub-label');
-      expect(getShallow({ sublabel: 'qwerty' }).find('.nx-sub-label')).toHaveText('qwerty');
-
-      expect(getShallow({ sublabel: <span className="foo">bar</span> }).find('.nx-sub-label')).toContainReact(
-        <span className="foo">bar</span>
-      );
-    });
+    expect(view.getByRole('textbox')).toHaveAttribute('id', 'child-id');
   });
 
-  /*
-   * the tests in this group represent every combination of the following options
-   * 1. child does or doesn't have an explicit id
-   * 2. child does or doesn't have an existing aria-describedby
-   * 3. sublabel is or isn't specified
-   */
-  describe('id handling', function() {
-    describe('when the child has an explicit id', function() {
-      const childIdProps = { id: 'foo' };
+  it('includes the sublabel in the text content and as the description of the child form field', function() {
+    const input = <input type="text" />,
+        view = quickRender({ children: input, sublabel: 'bar' }),
+        viewWithoutSublabel = quickRender({ children: input });
 
-      describe('when the child has an existing aria-describedby', function() {
-        const childProps = { ...childIdProps, 'aria-describedby': 'bar' };
+    expect(view.container).toHaveTextContent('bar');
+    expect(view.getByRole('textbox')).toHaveAccessibleDescription('bar');
 
-        describe('when there is a sublabel', function() {
-          const props = { sublabel: 'asdf', children: <NxStatefulTextInput { ...childProps } /> };
-
-          it('sets the child id in the htmlFor of the label', function() {
-            expect(getShallow(props).find('.nx-label')).toHaveProp('htmlFor', 'foo');
-          });
-
-          it('keeps the explicit id on the child', function() {
-            expect(getShallow(props).find(NxStatefulTextInput)).toHaveProp('id', 'foo');
-          });
-
-          it('generates a unique id for the sublabel', function() {
-            const component1 = getShallow(props),
-                component2 = getShallow(props),
-                id1 = component1.find('.nx-sub-label').prop('id'),
-                id2 = component2.find('.nx-sub-label').prop('id');
-
-            expect(id1).toMatch(/^nx-sub-label.+/);
-            expect(id2).toMatch(/^nx-sub-label.+/);
-            expect(id1).not.toBe(id2);
-          });
-
-          it('adds the id for the sublabel to the child aria-describedby', function() {
-            const component = getShallow(props),
-                sublabelId = component.find('.nx-sub-label').prop('id');
-
-            expect(component.find(NxStatefulTextInput)).toHaveProp('aria-describedby', `bar ${sublabelId}`);
-          });
-        });
-
-        describe('when there is not a sublabel', function() {
-          const props = { children: <NxStatefulTextInput { ...childProps } /> };
-
-          it('sets the child id in the htmlFor of the label', function() {
-            expect(getShallow(props).find('.nx-label')).toHaveProp('htmlFor', 'foo');
-          });
-
-          it('keeps the explicit id on the child', function() {
-            expect(getShallow(props).find(NxStatefulTextInput)).toHaveProp('id', 'foo');
-          });
-
-          it('keeps the child aria-describedby', function() {
-            const component = getShallow(props);
-            expect(component.find(NxStatefulTextInput)).toHaveProp('aria-describedby', 'bar');
-          });
-        });
-      });
-
-      describe('when the child does not have an existing aria-describedby', function() {
-        const childProps = childIdProps;
-
-        describe('when there is a sublabel', function() {
-          const props = { sublabel: 'asdf', children: <NxStatefulTextInput { ...childProps } /> };
-
-          it('sets the child id in the htmlFor of the label', function() {
-            expect(getShallow(props).find('.nx-label')).toHaveProp('htmlFor', 'foo');
-          });
-
-          it('keeps the explicit id on the child', function() {
-            expect(getShallow(props).find(NxStatefulTextInput)).toHaveProp('id', 'foo');
-          });
-
-          it('generates a unique id for the sublabel', function() {
-            const component1 = getShallow(props),
-                component2 = getShallow(props),
-                id1 = component1.find('.nx-sub-label').prop('id'),
-                id2 = component2.find('.nx-sub-label').prop('id');
-
-            expect(id1).toMatch(/^nx-sub-label.+/);
-            expect(id2).toMatch(/^nx-sub-label.+/);
-            expect(id1).not.toBe(id2);
-          });
-
-          it('sets the id for the sublabel as the child aria-describedby', function() {
-            const component = getShallow(props),
-                sublabelId = component.find('.nx-sub-label').prop('id');
-
-            expect(component.find(NxStatefulTextInput)).toHaveProp('aria-describedby', sublabelId);
-          });
-        });
-
-        describe('when there is not a sublabel', function() {
-          const props = { children: <NxStatefulTextInput { ...childProps } /> };
-
-          it('sets the child id in the htmlFor of the label', function() {
-            expect(getShallow(props).find('.nx-label')).toHaveProp('htmlFor', 'foo');
-          });
-
-          it('keeps the explicit id on the child', function() {
-            expect(getShallow(props).find(NxStatefulTextInput)).toHaveProp('id', 'foo');
-          });
-
-          it('does not set any ids in the child aria-describedby', function() {
-            const component = getShallow(props);
-
-            expect(component.find(NxStatefulTextInput)).not.toHaveProp('aria-describedby');
-          });
-        });
-      });
-    });
-
-    describe('when the child does not have an explicit id', function() {
-      describe('when the child has an existing aria-describedby', function() {
-        const childProps = { 'aria-describedby': 'bar' };
-
-        describe('when there is a sublabel', function() {
-          const props = { sublabel: 'asdf', children: <NxStatefulTextInput { ...childProps } /> };
-
-          it('generates a unique id on the child', function() {
-            const component1 = getShallow(props),
-                component2 = getShallow(props),
-                id1 = component1.find(NxStatefulTextInput).prop('id'),
-                id2 = component2.find(NxStatefulTextInput).prop('id');
-
-            expect(id1).toMatch(/^nx-form-group-child.+/);
-            expect(id2).toMatch(/^nx-form-group-child.+/);
-            expect(id1).not.toBe(id2);
-          });
-
-          it('sets the child id in the htmlFor of the label', function() {
-            const component = getShallow(props),
-                inputId = component.find(NxStatefulTextInput).prop('id');
-
-            expect(component.find('.nx-label')).toHaveProp('htmlFor', inputId);
-          });
-
-          it('generates a unique id for the sublabel', function() {
-            const component1 = getShallow(props),
-                component2 = getShallow(props),
-                id1 = component1.find('.nx-sub-label').prop('id'),
-                id2 = component2.find('.nx-sub-label').prop('id');
-
-            expect(id1).toMatch(/^nx-sub-label.+/);
-            expect(id2).toMatch(/^nx-sub-label.+/);
-            expect(id1).not.toBe(id2);
-          });
-
-          it('adds the id for the sublabel to the child aria-describedby', function() {
-            const component = getShallow(props),
-                sublabelId = component.find('.nx-sub-label').prop('id');
-
-            expect(component.find(NxStatefulTextInput)).toHaveProp('aria-describedby', `bar ${sublabelId}`);
-          });
-        });
-
-        describe('when there is not a sublabel', function() {
-          const props = { children: <NxStatefulTextInput { ...childProps } /> };
-
-          it('generates a unique id on the child', function() {
-            const component1 = getShallow(props),
-                component2 = getShallow(props),
-                id1 = component1.find(NxStatefulTextInput).prop('id'),
-                id2 = component2.find(NxStatefulTextInput).prop('id');
-
-            expect(id1).toMatch(/^nx-form-group-child.+/);
-            expect(id2).toMatch(/^nx-form-group-child.+/);
-            expect(id1).not.toBe(id2);
-          });
-
-          it('sets the child id in the htmlFor of the label', function() {
-            const component = getShallow(props),
-                inputId = component.find(NxStatefulTextInput).prop('id');
-
-            expect(component.find('.nx-label')).toHaveProp('htmlFor', inputId);
-          });
-
-          it('keeps the child aria-describedby', function() {
-            const component = getShallow(props);
-            expect(component.find(NxStatefulTextInput)).toHaveProp('aria-describedby', 'bar');
-          });
-        });
-      });
-
-      describe('when the child does not have an existing aria-describedby', function() {
-        describe('when there is a sublabel', function() {
-          const props = { sublabel: 'asdf', children: <NxStatefulTextInput /> };
-
-          it('generates a unique id on the child', function() {
-            const component1 = getShallow(props),
-                component2 = getShallow(props),
-                id1 = component1.find(NxStatefulTextInput).prop('id'),
-                id2 = component2.find(NxStatefulTextInput).prop('id');
-
-            expect(id1).toMatch(/^nx-form-group-child.+/);
-            expect(id2).toMatch(/^nx-form-group-child.+/);
-            expect(id1).not.toBe(id2);
-          });
-
-          it('sets the child id in the htmlFor of the label', function() {
-            const component = getShallow(props),
-                inputId = component.find(NxStatefulTextInput).prop('id');
-
-            expect(component.find('.nx-label')).toHaveProp('htmlFor', inputId);
-          });
-
-          it('generates a unique id for the sublabel', function() {
-            const component1 = getShallow(props),
-                component2 = getShallow(props),
-                id1 = component1.find('.nx-sub-label').prop('id'),
-                id2 = component2.find('.nx-sub-label').prop('id');
-
-            expect(id1).toMatch(/^nx-sub-label.+/);
-            expect(id2).toMatch(/^nx-sub-label.+/);
-            expect(id1).not.toBe(id2);
-          });
-
-          it('sets the id for the sublabel as the child aria-describedby', function() {
-            const component = getShallow(props),
-                sublabelId = component.find('.nx-sub-label').prop('id');
-
-            expect(component.find(NxStatefulTextInput)).toHaveProp('aria-describedby', sublabelId);
-          });
-        });
-
-        describe('when there is not a sublabel', function() {
-          const props = { children: <NxStatefulTextInput /> };
-
-          it('generates a unique id on the child', function() {
-            const component1 = getShallow(props),
-                component2 = getShallow(props),
-                id1 = component1.find(NxStatefulTextInput).prop('id'),
-                id2 = component2.find(NxStatefulTextInput).prop('id');
-
-            expect(id1).toMatch(/^nx-form-group-child.+/);
-            expect(id2).toMatch(/^nx-form-group-child.+/);
-            expect(id1).not.toBe(id2);
-          });
-
-          it('sets the child id in the htmlFor of the label', function() {
-            const component = getShallow(props),
-                inputId = component.find(NxStatefulTextInput).prop('id');
-
-            expect(component.find('.nx-label')).toHaveProp('htmlFor', inputId);
-          });
-
-          it('does not set any ids in the child aria-describedby', function() {
-            const component = getShallow(props);
-
-            expect(component.find(NxStatefulTextInput)).toHaveProp('aria-describedby', '');
-          });
-        });
-      });
-    });
+    expect(viewWithoutSublabel.getByRole('textbox')).not.toHaveAccessibleDescription();
   });
 
-  describe('aria-required', function() {
-    it('is unset or false on the child if the child does not specify it and isRequired is not true', function() {
-      expect(getShallow().find(NxStatefulTextInput)).toHaveProp('aria-required', undefined);
-      expect(getShallow({ isRequired: false }).find(NxStatefulTextInput)).toHaveProp('aria-required', false);
-      expect(getShallow({ isRequired: null }).find(NxStatefulTextInput)).toHaveProp('aria-required', null);
-    });
+  it('appends the sublabel to any already-existing description of the form field', function() {
+    render(<div id="description">Explicit Description</div>);
 
-    it('is set to true if the child does not specify it and isRequired is true', function() {
-      expect(getShallow({ isRequired: true }).find(NxStatefulTextInput)).toHaveProp('aria-required', true);
-    });
+    const input = <input aria-describedby="description" type="text" />,
+        view = quickRender({ children: input, sublabel: 'bar' }),
+        viewWithoutSublabel = quickRender({ children: input });
 
-    it('keeps the value specified on the child if already set', function() {
-      expect(
-          getShallow({ isRequired: true, children: <NxStatefulTextInput aria-required={false} /> })
-              .find(NxStatefulTextInput)
-      ).toHaveProp('aria-required', false);
+    expect(view.container).toHaveTextContent('bar');
+    expect(view.getByRole('textbox')).toHaveAccessibleDescription('Explicit Description bar');
 
-      expect(
-          getShallow({ isRequired: false, children: <NxStatefulTextInput aria-required={true} /> })
-              .find(NxStatefulTextInput)
-      ).toHaveProp('aria-required', true);
+    expect(viewWithoutSublabel.getByRole('textbox')).toHaveAccessibleDescription('Explicit Description');
+  });
 
-      expect(
-          getShallow({ isRequired: true, children: <NxStatefulTextInput aria-required={true} /> })
-              .find(NxStatefulTextInput)
-      ).toHaveProp('aria-required', true);
+  it('sets aria-required on the child to the value of isRequired', function() {
+    const children = <input type="text" />;
 
-      expect(
-          getShallow({ children: <NxStatefulTextInput aria-required={false} /> })
-              .find(NxStatefulTextInput)
-      ).toHaveProp('aria-required', false);
-    });
+    expect(quickRender({ children }).getByRole('textbox')).not.toBeRequired();
+    expect(quickRender({ children, isRequired: undefined }).getByRole('textbox')).not.toBeRequired();
+    expect(quickRender({ children, isRequired: null }).getByRole('textbox')).not.toBeRequired();
+    expect(quickRender({ children, isRequired: false }).getByRole('textbox')).not.toBeRequired();
+    expect(quickRender({ children, isRequired: true }).getByRole('textbox')).toBeRequired();
+  });
+
+  it('does not override aria-required if already set on the child', function() {
+    const childrenWithRequired = <input type="text" aria-required="true" />,
+        childrenWithoutRequired = <input type="text" aria-required="false" />;
+
+    expect(quickRender({ children: childrenWithRequired }).getByRole('textbox')).toBeRequired();
+    expect(quickRender({ children: childrenWithRequired, isRequired: undefined }).getByRole('textbox')).toBeRequired();
+    expect(quickRender({ children: childrenWithRequired, isRequired: null }).getByRole('textbox')).toBeRequired();
+    expect(quickRender({ children: childrenWithRequired, isRequired: false }).getByRole('textbox')).toBeRequired();
+    expect(quickRender({ children: childrenWithoutRequired, isRequired: true }).getByRole('textbox'))
+        .not.toBeRequired();
+
   });
 });

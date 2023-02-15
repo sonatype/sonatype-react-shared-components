@@ -34,7 +34,6 @@ const _NxModal = forwardRef<HTMLDialogElement, Props>(
                         className="nx-modal-backdrop"
                         tabIndex={-1}
                         onCancel={onCancel as CloseHandler}
-                        useNativeCancelOnEscape={true}
                         isModal={true}
                         {...ariaLabels}>
           <div className={modalClasses} {...attrsWithoutLabels}/>

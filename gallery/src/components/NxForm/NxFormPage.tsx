@@ -350,6 +350,19 @@ const NxFormPage = () =>
           form-level validation errors are appropriate even in the absence of any field validation errors.
         </NxP>
       </NxTile.Subsection>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxForm.RequiredFieldNotice</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxP>
+          The <NxCode>NxForm.RequiredFieldNotice</NxCode> is an optional convenience component that renders the text
+          "* Required fields are marked with an asterisk.". This component is to be used when it is important to convey
+          to users that the form fields marked with an asterisk are required in order to submit the form. If used, this
+          component needs to be placed within an <NxCode>NxForm</NxCode>, before any <NxCode>NxFormGroup</NxCode>,
+          {' '}<NxCode>NxFieldset</NxCode>, <NxCode>NxFormRow</NxCode>, or any other form elements, so that the text
+          appears on top of the form.
+        </NxP>
+      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Asynchronous Example"

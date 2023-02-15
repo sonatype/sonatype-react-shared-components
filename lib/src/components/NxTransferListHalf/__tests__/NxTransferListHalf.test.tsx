@@ -12,6 +12,7 @@ import { rtlRenderElement, rtlRender, runTimers, userEvent } from '../../../__te
 import { within, render, screen } from '@testing-library/react';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import NxForm from '../../NxForm/NxForm';
 import NxTransferListHalf, { Props } from '../NxTransferListHalf';
 
 describe('NxTransferListHalf', function() {
@@ -62,6 +63,25 @@ describe('NxTransferListHalf', function() {
     await user.type(input, 'a');
 
     expect(onFilterChange).toHaveBeenCalledWith('a', expect.objectContaining({ target: input }));
+  });
+
+  it('does not submit the form when the filter input\'s "Clear filter" button is clicked', async function() {
+    const user = userEvent.setup(),
+        onSubmit = jest.fn(),
+        view = render(
+          <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+            <NxTransferListHalf { ...minimalProps } filterValue="foo" />
+          </NxForm>
+        );
+
+    await runTimers();
+    const clearBtn = view.getByRole('button', { name: 'Clear filter' });
+
+    expect(onSubmit).not.toHaveBeenCalled();
+
+    await user.click(clearBtn);
+
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 
   it('only renders a "Remove All"/ "Transfer All" button when showMoveAll is true', function() {
