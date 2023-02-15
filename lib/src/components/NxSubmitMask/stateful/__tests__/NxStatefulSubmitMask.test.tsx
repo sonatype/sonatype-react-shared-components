@@ -4,108 +4,104 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
-import 'jest-enzyme';
 
-import * as enzymeUtils from '../../../../__testutils__/enzymeUtils';
+import React from 'react';
+import { rtlRender, rtlRenderElement, runTimers } from '../../../../__testutils__/rtlUtils';
+import { within } from '@testing-library/react';
+
 import NxStatefulSubmitMask from '../NxStatefulSubmitMask';
-import NxSubmitMask, { Props } from '../../NxSubmitMask';
 
 describe('NxStatefulSubmitMask', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxStatefulSubmitMask, {}),
-      getMountedComponent = enzymeUtils.getMountedComponent<Props>(NxStatefulSubmitMask, {});
+  const quickRender = rtlRender(NxStatefulSubmitMask, {}),
+      renderEl = rtlRenderElement(NxStatefulSubmitMask, {});
 
-  beforeEach(function() {
-    jest.useFakeTimers();
+  it('renders a Submitting… status by default', function() {
+    const component = quickRender();
+
+    expect(component.getByRole('status')).toHaveTextContent('Submitting…');
   });
 
-  it('renders a NxSubmitMask, passing on its message and successMessage props', function() {
-    const defaultPropsComponent = getShallowComponent();
+  it('renders a Success! status when success is true', function() {
+    const component = quickRender({ success: true });
 
-    expect(defaultPropsComponent).toMatchSelector(NxSubmitMask);
-    expect(defaultPropsComponent).not.toHaveProp('fullscreen');
-    expect(defaultPropsComponent).not.toHaveProp('message');
-    expect(defaultPropsComponent).not.toHaveProp('successMessage');
-
-    const nonDefaultPropsComponent = getShallowComponent({
-      message: 'foo',
-      successMessage: 'bar',
-      success: false
-    });
-
-    expect(nonDefaultPropsComponent).toMatchSelector(NxSubmitMask);
-    expect(nonDefaultPropsComponent).toHaveProp('message', 'foo');
-    expect(nonDefaultPropsComponent).toHaveProp('successMessage', 'bar');
-    expect(nonDefaultPropsComponent).toHaveProp('success', false);
+    expect(component.getByRole('status')).toHaveTextContent('Success!');
   });
 
-  it('renders the NxSubmitMask with success=false when its success prop is not true', function() {
-    expect(getShallowComponent()).toHaveProp('success', false);
-    expect(getShallowComponent({ success: false })).toHaveProp('success', false);
+  it('renders the message as the status text if it is specified and success is not true', function() {
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar' })!).getByRole('status')).toHaveTextContent('foo');
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: false })!).getByRole('status'))
+        .toHaveTextContent('foo');
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: null })!).getByRole('status'))
+        .toHaveTextContent('foo');
+    expect(within(renderEl({ message: 'foo', success: true })!).getByRole('status')).not.toHaveTextContent(/foo/);
   });
 
-  async function runAllTimers(component: ReturnType<typeof mount>) {
-    await act(async function() {
-      await jest.runAllTimers();
-      component.update();
-    });
-  }
+  it('renders the successMessage as the status text if it is specified and success is true', function() {
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar' })!).getByRole('status'))
+        .not.toHaveTextContent(/bar/);
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: false })!).getByRole('status'))
+        .not.toHaveTextContent(/bar/);
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: null })!).getByRole('status'))
+        .not.toHaveTextContent(/bar/);
+    expect(within(renderEl({ message: 'foo', successMessage: 'bar', success: true })!).getByRole('status'))
+        .toHaveTextContent('bar');
+  });
 
-  it('briefly renders the NxSubmitMask with success=true when its success prop is true and then renders nothing',
+  it('briefly renders the NxSubmitMask when its success prop is true and then renders nothing',
       async function() {
-        const component = getMountedComponent({ success: true });
+        const component = quickRender({ success: true });
 
-        // we have to use mount due to the use of useEffect, and that means we only see the actual DOM nodes
-        // not the shallow children
-        expect(component).toContainExactlyOneMatchingElement('.nx-submit-mask--success');
+        expect(component.getByRole('status')).toBeInTheDocument();
 
-        await runAllTimers(component);
-
-        expect(component).toBeEmptyRender();
+        await runTimers();
+        expect(component.queryByRole('status')).not.toBeInTheDocument();
       }
   );
 
   it('does not disappear if set back to pending from success', async function() {
-    const component = getMountedComponent({ success: true});
+    const { container, rerender } = quickRender({ success: true });
 
-    expect(component).toContainExactlyOneMatchingElement('.nx-submit-mask--success');
+    expect(within(container).getByRole('status')).toHaveTextContent('Success!');
 
-    component.setProps({ success: false, fullscreen: false, message: null, successMessage: null });
+    rerender(<NxStatefulSubmitMask success={false} message={null} successMessage={null}/>);
 
-    expect(component).toContainExactlyOneMatchingElement('.nx-submit-mask');
-    expect(component.find('.nx-submit-mask')).not.toHaveClassName('nx-submit-mask--success');
+    const el = within(container).getByRole('status');
 
-    await runAllTimers(component);
+    expect(el).not.toHaveTextContent('Success!');
+    expect(el).toHaveTextContent('Submitting…');
 
-    expect(component.find('.nx-submit-mask')).not.toHaveClassName('nx-submit-mask--success');
+    await runTimers();
+
+    expect(el).not.toHaveTextContent('Success!');
+    expect(el).toHaveTextContent('Submitting…');
   });
 
   it('reappears if set back to pending from success after it disappears', async function() {
-    const component = getMountedComponent({ success: true});
+    const { container, rerender } = quickRender({ success: true });
 
-    expect(component.find('.nx-submit-mask')).toHaveClassName('nx-submit-mask--success');
+    expect(within(container).getByRole('status')).toHaveTextContent('Success!');
 
-    await runAllTimers(component);
+    await runTimers();
 
-    expect(component).toBeEmptyRender();
+    expect(within(container).queryByRole('status')).not.toBeInTheDocument();
 
-    component.setProps({ success: false, fullscreen: false, message: null, successMessage: null });
+    rerender(<NxStatefulSubmitMask success={false} message={null} successMessage={null}/>);
 
-    expect(component.find('.nx-submit-mask')).not.toHaveClassName('nx-submit-mask--success');
+    expect(within(container).getByRole('status')).not.toHaveTextContent('Success!');
+    expect(within(container).getByRole('status')).toHaveTextContent('Submitting…');
   });
 
   it('disappears after a time when passed success=true multiple times', async function() {
-    const component = getMountedComponent({ success: true });
+    const { container, rerender } = quickRender({ success: true });
 
-    expect(component.find('.nx-submit-mask')).toHaveClassName('nx-submit-mask--success');
+    expect(within(container).getByRole('status')).toHaveTextContent('Success!');
 
-    component.setProps({ success: true, fullscreen: false, message: null, successMessage: null });
+    rerender(<NxStatefulSubmitMask success={true} message={null} successMessage={null}/>);
 
-    expect(component.find('.nx-submit-mask')).toHaveClassName('nx-submit-mask--success');
+    expect(within(container).getByRole('status')).toHaveTextContent('Success!');
 
-    await runAllTimers(component);
+    await runTimers();
 
-    expect(component).toBeEmptyRender();
+    expect(within(container).queryByRole('status')).not.toBeInTheDocument();
   });
 });

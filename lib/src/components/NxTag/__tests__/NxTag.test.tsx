@@ -4,124 +4,90 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-import { shallow, mount } from 'enzyme';
-import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import React, { RefAttributes } from 'react';
 
-import NxTag, { NxSelectableTag } from '../NxTag';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import NxTag, { NxSelectableTag, PublicProps, SelectableProps } from '../NxTag';
+
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 describe('NxTag', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxTag, { children: 'basic tag' });
-
-  it('renders NxTag with the `nx-tag` class', function() {
-    expect(getShallowComponent().children().find('.nx-tag')).toExist();
-  });
+  type PropsWithRef = PublicProps & RefAttributes<HTMLLabelElement>;
+  const renderEl = rtlRenderElement<PropsWithRef>(NxTag, { children: 'basic tag '});
 
   it('forwards a ref', function() {
-    const ref = React.createRef<HTMLLabelElement>();
-    const component = mount(<><NxTag ref={ref}>Hello</NxTag></>);
-    expect(component.find('.nx-tag').getDOMNode()).toBe(ref.current);
+    const ref = React.createRef<HTMLLabelElement>(),
+        renderedEl = renderEl({ ref });
+
+    expect(ref.current).toBe(renderedEl);
   });
 
   it('correctly assigns supplied class', function() {
-    const classComponent = getShallowComponent({ className: 'foo' });
-    expect(classComponent.find('.nx-tag')).toHaveClassName('foo');
+    const el = renderEl()!;
+    const customEl = renderEl({ className: 'foo' })!;
+
+    expect(customEl).toHaveClass('foo');
+
+    for (const cls of Array.from(el.classList)) {
+      expect(customEl).toHaveClass(cls);
+    }
   });
 
   it('correctly assigns supplied id', function() {
-    const idComponent = getShallowComponent({ id: 'test-id' });
-    expect(idComponent.find('.nx-tag')).toHaveProp('id', 'test-id');
+    const el = renderEl({ id: 'test-id' });
+    expect(el).toHaveAttribute('id', 'test-id');
   });
 
-  it('renders the supplied text inside .nx-tag__text', function() {
-    const tagChildren = getShallowComponent({ children: 'tag text' });
-    expect(tagChildren.find('.nx-tag__text')).toHaveText('tag text');
-
-    expect(tagChildren.children().first()).toMatchSelector('label');
-    // expect(tagChildren.children().at(1)).toMatchSelector('span');
-  });
-
-  it('sets the nx-selectable-color--indigo class if no color prop is passed', function() {
-    expect(getShallowComponent().find('.nx-selectable-color--indigo')).toExist();
-  });
-
-  it('sets the color class using the color if it is provided', function() {
-    const colorComponent = getShallowComponent({ color: 'orange' });
-    expect(colorComponent.find('.nx-selectable-color--orange')).toExist();
-  });
-
-  it('checks the children appear in the correct order, text then the icon', function() {
-    const getSelectedComponent = getShallowComponent({
-      children: 'foo bar',
-      selectedIcons: <NxFontAwesomeIcon icon={faPlusCircle} className="nx-tag__action" />
-    });
-
-    expect(getSelectedComponent.find('.nx-tag').children().first()).toMatchSelector('span');
-    expect(getSelectedComponent.find('.nx-tag').children().last()).toHaveClassName('nx-tag__action');
+  it('renders the supplied text', function() {
+    const el = renderEl({ children: 'tag text' });
+    expect(el).toHaveTextContent('tag text');
   });
 });
 
 describe('NxSelectableTag', function() {
-  const minimumProps = { children: 'selectable tag', selected: false, onSelect: jest.fn() };
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxSelectableTag, minimumProps);
+  type PropsWithRef = SelectableProps & RefAttributes<HTMLLabelElement>;
 
-  it('renders an NxTag', function() {
-    expect(getShallowComponent()).toMatchSelector('ForwardRef(NxTag)');
+  const minimalProps = { children: 'selectable tag', selected: false, onSelect: () => {} },
+      quickRender = rtlRender<PropsWithRef>(NxSelectableTag, minimalProps),
+      renderEl = rtlRenderElement<PropsWithRef>(NxSelectableTag, minimalProps);
+
+  it('renders the supplied text', function() {
+    const el = renderEl();
+    expect(el).toHaveTextContent('selectable tag');
   });
 
   it('forwards a ref', function() {
     const ref = React.createRef<HTMLLabelElement>(),
-        component = mount(<><NxSelectableTag {...minimumProps} ref={ref}>Hello</NxSelectableTag></>);
-    expect(component.find('.nx-tag').getDOMNode()).toBe(ref.current);
+        renderedEl = renderEl({ ref });
+    expect(ref.current).toBe(renderedEl);
   });
 
-  it('renders NxSelectableTag with the `nx-tag--selectable` class', function() {
-    expect(getShallowComponent()).toMatchSelector('.nx-tag--selectable');
-  });
-
-  it('renders the `nx-tag--unselected` class when not selected', function() {
-    expect(getShallowComponent()).toMatchSelector('.nx-tag--unselected');
-  });
-
-  it('renders the `nx-tag--selected` class when selected and appears before the icon', function() {
-    const getSelectedComponent = getShallowComponent({ selected: true, children: 'foo bar' });
-    expect(getSelectedComponent).toMatchSelector('.nx-tag--selected');
-  });
-
-  it('renders the plus icon and action class when not selected', function() {
-    const SelectableTagIcons = function() {
-          return getShallowComponent().prop('selectedIcons');
-        },
-        icon = shallow(<SelectableTagIcons />);
-
-    expect(icon).toMatchSelector(NxFontAwesomeIcon);
-    expect(icon).toHaveProp(icon, faPlusCircle);
-    expect(icon).toHaveClassName('nx-tag__action');
-  });
-
-  it('renders the times icon when selected', function() {
-    const getSelectedComponent = enzymeUtils.getShallowComponent(NxSelectableTag,
-        { children: 'selectable tag', selected: true, onSelect: jest.fn() });
-
-    const SelectableTagIcons = function() {
-          return getSelectedComponent().prop('selectedIcons');
-        },
-        icon = shallow(<SelectableTagIcons />);
-
-    expect(icon).toMatchSelector(NxFontAwesomeIcon);
-    expect(icon).toHaveProp(icon, faTimesCircle);
-    expect(icon).toHaveClassName('nx-tag__action');
-  });
-
-  it('fires the components onSelect when clicked', function() {
-    const onSelect = jest.fn(),
-        trigger = getShallowComponent({ onSelect });
+  it('fires the components onSelect when clicked', async function() {
+    const user = userEvent.setup(),
+        onSelect = jest.fn(),
+        tag = renderEl({ onSelect })!;
 
     expect(onSelect).not.toHaveBeenCalled();
-    trigger.find('input').simulate('change');
+    await user.click(tag);
     expect(onSelect).toHaveBeenCalled();
+  });
+
+  describe('includes a checkbox with role=switch that', function () {
+    it('is checked if selected prop is true', function() {
+      const el = quickRender({ selected: true }),
+          checkbox = el.getByRole('switch');
+      expect(checkbox).toBeChecked();
+    });
+
+    it('is unchecked if selected prop is false', function() {
+      const el = quickRender({ selected: false }),
+          checkbox = el.getByRole('switch');
+      expect(checkbox).not.toBeChecked();
+    });
+
+    it('has an accessible name equal to the tag text', function() {
+      const el = quickRender(),
+          checkbox = el.getByRole('switch');
+      expect(checkbox).toHaveAccessibleName('selectable tag');
+    });
   });
 });
