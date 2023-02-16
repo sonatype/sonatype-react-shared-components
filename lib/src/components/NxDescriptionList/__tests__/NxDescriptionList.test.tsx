@@ -9,9 +9,41 @@ import { render } from '@testing-library/react';
 import NxDescriptionList from '../NxDescriptionList';
 
 describe('NxDescriptionList', function() {
-  it('adds specified classNames to the element in addition to the defaults', function() {
-    const el = render(<NxDescriptionList className="foo" />).container.firstElementChild,
-        defaultEl = render(<NxDescriptionList />).container.firstElementChild!;
+  it('adds specified classNames to the element in addition to the defaults when component is empty', function() {
+    function EmptyComponent() {
+      return null;
+    }
+
+    const el = render(<NxDescriptionList className="foo"><EmptyComponent /></NxDescriptionList>)
+            .container.firstElementChild,
+        defaultEl = render(<NxDescriptionList><EmptyComponent /></NxDescriptionList>)
+            .container.firstElementChild!;
+
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
+  });
+
+  it('adds specified classNames to the element in addition to the defaults when not empty', function() {
+    const el = render(
+      <NxDescriptionList className="foo">
+        <NxDescriptionList.Item>
+          <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
+          <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
+        </NxDescriptionList.Item>
+      </NxDescriptionList>
+    ).container.firstElementChild;
+
+    const defaultEl = render(
+      <NxDescriptionList>
+        <NxDescriptionList.Item>
+          <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
+          <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
+        </NxDescriptionList.Item>
+      </NxDescriptionList>
+    ).container.firstElementChild!;
 
     expect(el).toHaveClass('foo');
 
