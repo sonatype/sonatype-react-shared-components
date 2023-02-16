@@ -22,7 +22,9 @@ import {
   CheckboxValidator,
   CheckboxInitValues,
   CheckboxState,
-  TransferListValidator
+  TransferListValidator,
+  transferListInitialState,
+  transferListUserInput
 } from '../stateHelpers';
 
 describe('NxFieldset stateHelpers', function() {
@@ -402,6 +404,72 @@ describe('NxFieldset stateHelpers', function() {
           expect(component.queryByTestId('validationErrors')).toHaveTextContent('cannot bar');
           expect(new Set(validator.mock.calls[3][0])).toEqual(new Set(['foo', 'bar']));
         });
+      });
+    });
+  });
+
+  describe('transferListInitialState', function() {
+    describe('when called with one argument', function() {
+      it('returns an object with the selectedItems, isPristine set to true, and null validationErrors', function() {
+        expect(transferListInitialState(new Set([1]))).toEqual({
+          selectedItems: new Set([1]),
+          isPristine: true,
+          validationErrors: null
+        });
+
+        expect(transferListInitialState(new Set()))
+            .toEqual({ selectedItems: new Set(), isPristine: true, validationErrors: null });
+      });
+    });
+
+    describe('when called with two arguments', function() {
+      it('returns an object with the selectedItems, isPristine set to true, and validationErrors according to the ' +
+         'validator function when given the selectedItems value', function() {
+        const validator = jest.fn().mockReturnValue('qwerty');
+
+        expect(transferListInitialState(new Set([1, 2]), validator)).toEqual({
+          selectedItems: new Set([1, 2]),
+          isPristine: true,
+          validationErrors: 'qwerty'
+        });
+
+        expect(validator).toHaveBeenCalledWith(new Set([1, 2]));
+
+        expect(transferListInitialState(new Set(), validator)).toEqual({
+          selectedItems: new Set(),
+          isPristine: true,
+          validationErrors: 'qwerty'
+        });
+
+        expect(validator).toHaveBeenCalledWith(new Set());
+      });
+
+    });
+  });
+
+  describe('transferListUserInput', function() {
+    describe('when called with one arguments', function() {
+      it('returns an object with the new selectedItems value, isPristine set to false, and null ' +
+        'validationErrors', function() {
+        const retval = transferListUserInput(new Set([1]));
+
+        expect(retval.isPristine).toBe(false);
+        expect(retval.validationErrors).toBe(null);
+        expect(retval.selectedItems).toEqual(new Set([1]));
+      });
+    });
+
+    describe('when called with three arguments', function() {
+      it('returns an object with the new selectedItems value, isPristine set to false, and ' +
+          'validationErrors according to the validator function when given the new selectedItems value', function() {
+        const validator = jest.fn().mockReturnValue('qwerty');
+
+        const retval = transferListUserInput(new Set([1, 2, 3]), validator);
+
+        expect(retval.isPristine).toBe(false);
+        expect(retval.validationErrors).toBe('qwerty');
+        expect(new Set(retval.selectedItems)).toEqual(new Set([1, 2, 3]));
+        expect(new Set(validator.mock.calls[0][0])).toEqual(new Set([1, 2, 3]));
       });
     });
   });

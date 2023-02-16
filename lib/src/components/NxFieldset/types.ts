@@ -45,6 +45,12 @@ export interface CheckboxStateProps<T extends string = string> {
   validationErrors: ValidationErrors;
 }
 
+export interface TransferListProps<K> {
+  selectedItems: K;
+  isPristine: boolean;
+  validationErrors: ValidationErrors;
+}
+
 export interface CheckboxGroupHookReturnValue<K extends string | number> {
   states: CheckboxStates<K>;
   isPristine: boolean;

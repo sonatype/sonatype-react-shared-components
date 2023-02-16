@@ -18,6 +18,7 @@ import {
   CheckboxStates,
   RadioStateProps,
   CheckboxStateProps,
+  TransferListProps,
   CheckboxGroupHookReturnValue,
   TransferListHookReturnValue
 } from './types';
@@ -32,6 +33,7 @@ export {
   CheckboxStates,
   RadioStateProps,
   CheckboxStateProps,
+  TransferListProps,
   CheckboxGroupHookReturnValue,
   TransferListHookReturnValue
 };
@@ -147,6 +149,36 @@ export function useCheckboxGroupState<K extends string>(
     isPristine,
     validationErrors: validator ? validator(values) : null,
     states: map<CheckboxStates<K>, CheckboxStates<K>>(wrapState, rawStates)
+  };
+}
+
+/**
+ * Create a TransferListProps representing the initial state, selectedItem value,
+ * and validated according to the specified validator
+ */
+export function transferListInitialState<K>(
+  selectedItems: K,
+  validator?: TransferListValidator<K>
+): TransferListProps<K> {
+  return {
+    selectedItems,
+    isPristine: true,
+    validationErrors: validator ? validator(selectedItems) : null
+  };
+}
+
+/**
+ * Create a TransferListProps representing a non-initial selectedItems value
+ * and validated according to the specified validator
+ */
+export function transferListUserInput<K>(
+  newSelectedItems: K,
+  validator?: TransferListValidator<K>
+): TransferListProps<K> {
+  return {
+    selectedItems: newSelectedItems,
+    isPristine: false,
+    validationErrors: validator ? validator(newSelectedItems) : null
   };
 }
 
