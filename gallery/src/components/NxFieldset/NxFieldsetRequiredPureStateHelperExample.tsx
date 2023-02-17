@@ -5,48 +5,87 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useReducer } from 'react';
+import {
+  NxCheckbox,
+  NxFieldset,
+  NxRadio,
+  NxTransferList,
+  nxFieldsetStateHelpers,
+  DataItem
+} from '@sonatype/react-shared-components';
 
-import { NxCheckbox, NxFieldset, NxRadio, nxFieldsetStateHelpers } from '@sonatype/react-shared-components';
-const { radioGroupInitialState, checkboxGroupInitialState, radioGroupUserInput, checkboxGroupUserInput} =
-    nxFieldsetStateHelpers;
+const {
+  radioGroupInitialState,
+  checkboxGroupInitialState,
+  transferListInitialState,
+  radioGroupUserInput,
+  checkboxGroupUserInput,
+  transferListUserInput
+} = nxFieldsetStateHelpers;
 
 interface State {
   color: nxFieldsetStateHelpers.RadioStateProps;
   direction: nxFieldsetStateHelpers.CheckboxStateProps;
+  selectedColors: nxFieldsetStateHelpers.TransferListStateProps<Set<string>>;
+  allColors: DataItem<string>[];
+  availableColorsFilter: string;
+  selectedColorsFilter: string;
 }
 
 const requiredMessage = 'At least one color must be selected',
     radioValidator = (v: string | null) => v ? null : requiredMessage,
-    checkboxValidator = (selectedDirs: string[]) => selectedDirs.length ? null : requiredMessage;
+    checkboxValidator = (selectedDirs: string[]) => selectedDirs.length ? null : requiredMessage,
+    transferListValidator = (selectedItems: Set<string>) => selectedItems ? null : requiredMessage;
 
 const initialState = {
   color: radioGroupInitialState(undefined, radioValidator),
-  direction: checkboxGroupInitialState(undefined, checkboxValidator)
+  direction: checkboxGroupInitialState(undefined, checkboxValidator),
+  selectedColors: transferListInitialState(new Set<string>(), transferListValidator),
+  allColors: ['Red', 'Blue', 'Yellow', 'Purple', 'Pink'].map(color => ({ id: color, displayName: `Color: ${color}` })),
+  availableColorsFilter: '',
+  selectedColorsFilter: ''
 };
 
 /**
  * Normally these stateHelpers would be used when the state management is done entirely outside of the React
  * component file. For simplicity however this example just uses a simple reducer defined here
  */
-function reducer(state: State, { type, payload }: { type: string, payload: string }) {
+function reducer(state: State, { type, payload }: { type: string, payload: string | Set<string> }) {
   switch (type) {
     case 'setColor':
-      return { ...state, color: radioGroupUserInput(payload, radioValidator) };
+      return (typeof payload === 'string') ?
+        { ...state, color: radioGroupUserInput(payload, radioValidator) } :
+        state;
     case 'toggleDirection':
-      return { ...state, direction: checkboxGroupUserInput(state.direction, payload, checkboxValidator) };
+      return (typeof payload === 'string') ?
+        { ...state, direction: checkboxGroupUserInput(state.direction, payload, checkboxValidator) } :
+        state;
+    case 'selectColors':
+      return (payload instanceof Set) ?
+        { ...state, selectedColors: transferListUserInput(payload, transferListValidator)} :
+        state;
+    case 'setAvailableColorsFilter':
+      return (typeof payload === 'string') ? { ...state, availableColorsFilter: payload } : state;
+    case 'setSelectedColorsFilter':
+      return (typeof payload === 'string') ? { ...state, selectedColorsFilter: payload } : state;
     default:
       return state;
   }
 }
 
 export default function NxFieldsetRequiredPureStateHelperExample() {
-  const [{ color, direction }, dispatch] = useReducer(reducer, initialState),
+  const [
+        { color, direction, selectedColors, allColors, availableColorsFilter, selectedColorsFilter }, dispatch
+      ] = useReducer(reducer, initialState),
       setColor = (color: string | null) => {
         if (color) {
           dispatch({ type: 'setColor', payload: color });
         }
       },
-      toggleDirection = (d: string) => () => { dispatch({ type: 'toggleDirection', payload: d }); };
+      toggleDirection = (d: string) => () => { dispatch({ type: 'toggleDirection', payload: d }); },
+      setSelectedColors = (c: Set<string>) => dispatch({ type: 'selectColors', payload: c }),
+      setAvailableColorsFilter = (f: string) => dispatch({ type: 'setAvailableColorsFilter', payload: f }),
+      setSelectedColorsFilter = (f: string) => dispatch({ type: 'setSelectedColorsFilter', payload: f });
 
   return (
     <>
@@ -83,6 +122,18 @@ export default function NxFieldsetRequiredPureStateHelperExample() {
         <NxCheckbox isChecked={direction.values.includes('west')} onChange={toggleDirection('west')}>
           West
         </NxCheckbox>
+      </NxFieldset>
+      <NxFieldset label="Selected Colors"
+                  isRequired
+                  isPristine={selectedColors.isPristine}
+                  validationErrors={selectedColors.validationErrors}>
+        <NxTransferList allItems={allColors}
+                        selectedItems={selectedColors.selectedItems}
+                        availableItemsFilter={availableColorsFilter}
+                        selectedItemsFilter={selectedColorsFilter}
+                        onAvailableItemsFilterChange={setAvailableColorsFilter}
+                        onSelectedItemsFilterChange={setSelectedColorsFilter}
+                        onChange={setSelectedColors} />
       </NxFieldset>
     </>
   );
