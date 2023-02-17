@@ -5,36 +5,54 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import 'jest-enzyme';
-import NxTabs from '../NxTabs';
+
+import { render, screen } from '@testing-library/react';
+import { rtlRenderElement, rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
+
+import NxTabs, { NxTabsProps } from '../NxTabs';
 import NxTabList from '../NxTabList';
 import NxTab from '../NxTab';
 import NxTabPanel from '../NxTabPanel';
 
-describe('NxTabs', function () {
-  it('renders with a unique id each time', function () {
-    const firstTabs = shallow(
-      <NxTabs onTabSelect={() => {}} activeTab={0}>
-        <NxTabList>
-          <NxTab>Tabs 0 Tab 0</NxTab>
-        </NxTabList>
-      </NxTabs>
-    );
-    const secondTabs = shallow(
-      <NxTabs onTabSelect={() => {}} activeTab={0}>
-        <NxTabList>
-          <NxTab>Tabs 1 Tab 0</NxTab>
-        </NxTabList>
-      </NxTabs>
-    );
+describe('NxTabs', function() {
+  const minimumProps = {
+    onTabSelect: () => {},
+    children: (
+      <NxTabList>
+        <NxTab>Tabs 0</NxTab>
+      </NxTabList>
+    )
+  };
 
-    expect(firstTabs).not.toHaveProp('id', secondTabs.prop('id'));
+  const quickRender = rtlRender<NxTabsProps>(NxTabs, minimumProps);
+  const renderEl = rtlRenderElement<NxTabsProps>(NxTabs, minimumProps);
+
+  it('merges any passed in className', function() {
+    const tabsWithAddedClassName = renderEl({ className: 'foo' });
+    const tabs = renderEl()!;
+
+    expect(tabsWithAddedClassName).toHaveClass('foo');
+
+    for (const cls of Array.from(tabs.classList)) {
+      expect(tabsWithAddedClassName).toHaveClass(cls);
+    }
   });
 
-  it('renders with the correct classnames', function () {
-    const component = shallow(
-      <NxTabs onTabSelect={() => {}} activeTab={-1} className="test">
+  it('renders with a unique id each time', function() {
+    const firstTabs = renderEl({ activeTab: 0 })!;
+    const secondTabs = renderEl({ activeTab: 0 })!;
+
+    expect(firstTabs.id).not.toEqual(secondTabs.id);
+  });
+
+  it('renders a generated id', function() {
+    const component = renderEl({ activeTab: -1 })!;
+    expect(component.id).toMatch(/^nx-tabs-\d+$/);
+  });
+
+  it('renders tab elements with unique id based on the parent id', function() {
+    const { container, getByRole } = render(
+      <NxTabs activeTab={0} id="my-tabs" onTabSelect={() => {}}>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
         </NxTabList>
@@ -42,66 +60,27 @@ describe('NxTabs', function () {
       </NxTabs>
     );
 
-    expect(component).toHaveClassName('nx-tabs test');
+    expect(container.firstElementChild!.id).toEqual('my-tabs');
+    expect(getByRole('tab')!.id).toMatch(/^my-tabs/);
+    expect(getByRole('tabpanel')!.id).toMatch(/^my-tabs/);
+
+    expect(new Set([
+      container.firstElementChild!.id,
+      getByRole('tab')!.id,
+      getByRole('tabpanel')!.id
+    ]).size).toBe(3);
   });
 
-  it('renders a generated id', function () {
-    const component = shallow(
-      <NxTabs onTabSelect={() => {}} activeTab={-1}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxTabs>
-    );
+  it('renders no tab contents when none are active', function() {
+    const { queryByRole } = quickRender({ activeTab: -1 });
 
-    expect(component.prop('id')).toMatch(/^nx-tabs-\d+$/);
+    expect(queryByRole('tab', { selected: true })).not.toBeInTheDocument();
+    expect(queryByRole('tabpanel')).not.toBeInTheDocument();
   });
 
-  it('renders using as specific id', function () {
-    const component = shallow(
-      <NxTabs onTabSelect={() => {}} activeTab={-1} id="my-tabs">
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxTabs>
-    );
-
-    expect(component.prop('id')).toMatch('my-tabs');
-  });
-
-  it('renders no tab contents when none are active', function () {
-    const component = mount(
-      <NxTabs onTabSelect={() => {}} activeTab={-1}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxTabs>
-    );
-
-    expect(component.find(NxTab)).not.toHaveClassName('active');
-    expect(component.find(NxTabPanel)).toBeEmptyRender();
-  });
-
-  it('renders no tab contents when no active tab is specified', function () {
-    const component = mount(
-      <NxTabs onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxTabs>
-    );
-
-    expect(component.find(NxTab)).not.toHaveClassName('active');
-    expect(component.find(NxTabPanel)).toBeEmptyRender();
-  });
-
-  it('activates the active tab', function () {
-    const component = mount(
-      <NxTabs onTabSelect={() => {}} activeTab={1}>
+  it('activates the active tab', function() {
+    const { getAllByRole, getByRole } = render(
+      <NxTabs activeTab={1} onTabSelect={() => {}}>
         <NxTabList>
           <NxTab>Tab 0</NxTab>
           <NxTab>Tab 1</NxTab>
@@ -111,38 +90,101 @@ describe('NxTabs', function () {
       </NxTabs>
     );
 
-    expect(component.find('[role="tab"]').first()).not.toHaveClassName('active');
-    expect(component.find('[role="tab"]').last()).toHaveClassName('active');
-    expect(component.find('[role="tabpanel"]')).toHaveText('Content 1');
+    const selectedTabs = getAllByRole('tab', { selected: true });
+    expect(selectedTabs.length).toBe(1);
+    expect(selectedTabs[0]).toHaveTextContent(/^Tab 1/);
+    expect(getByRole('tabpanel')).toHaveTextContent('Content 1');
   });
 
-  it('calls onTabSelect when a tab is clicked', function () {
+  it('calls onTabSelect when a tab is clicked', async function() {
+    const user = userEvent.setup();
     const onTabSelect = jest.fn();
-    const component = mount(
-      <NxTabs activeTab={0} onTabSelect={onTabSelect}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-      </NxTabs>
-    );
 
-    component.find('[role="tab"]').simulate('click');
+    const { getByRole } = quickRender({
+      activeTab: -1,
+      onTabSelect
+    });
+
+    await user.click(getByRole('tab'));
 
     expect(onTabSelect).toHaveBeenCalledWith(0);
   });
 
-  it('calls onTabSelect when a tab is selected via keyboard', function () {
+  it('calls onTabSelect when a tab is selected via keyboard', async function() {
+    const user = userEvent.setup();
     const onTabSelect = jest.fn();
-    const component = mount(
-      <NxTabs activeTab={0} onTabSelect={onTabSelect}>
+
+    const { getAllByRole } = quickRender({
+      activeTab: 0,
+      onTabSelect,
+      children: (
         <NxTabList>
           <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
         </NxTabList>
+      )
+    });
+
+    const firstTab = getAllByRole('tab')[0];
+
+    firstTab.focus();
+    await user.keyboard('{ArrowRight}{Enter}');
+
+    expect(onTabSelect).toHaveBeenCalledWith(1);
+  });
+
+  it('calls onTabSelect when a tab is selected via keyboard', async function() {
+    const user = userEvent.setup();
+    const onTabSelect = jest.fn();
+
+    const { getAllByRole } = quickRender({
+      activeTab: 0,
+      onTabSelect,
+      children: (
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+      )
+    });
+
+    const firstTab = getAllByRole('tab')[0];
+
+    firstTab.focus();
+    await user.keyboard('{ArrowRight}{Enter}');
+
+    expect(onTabSelect).toHaveBeenCalledWith(1);
+  });
+
+  it('sets id and aria labelledby to panel to reference active tab aria-controls', async function() {
+    const { rerender } = render(
+      <NxTabs activeTab={0} onTabSelect={() => {}}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
       </NxTabs>
     );
 
-    component.find('[role="tab"]').simulate('keypress', { key: ' ' });
+    const getActiveTabControls = () => screen.getByRole('tab', { selected: true }).getAttribute('aria-controls');
 
-    expect(onTabSelect).toHaveBeenCalledWith(0);
+    expect(screen.getByRole('tabpanel').id).toEqual(getActiveTabControls());
+    expect(screen.getByRole('tabpanel')).toHaveAccessibleName(/^Tab 0/);
+
+    rerender(
+      <NxTabs activeTab={1} onTabSelect={() => {}}>
+        <NxTabList>
+          <NxTab>Tab 0</NxTab>
+          <NxTab>Tab 1</NxTab>
+        </NxTabList>
+        <NxTabPanel>Content 0</NxTabPanel>
+        <NxTabPanel>Content 1</NxTabPanel>
+      </NxTabs>
+    );
+
+    expect(screen.getByRole('tabpanel').id).toEqual(getActiveTabControls());
+    expect(screen.getByRole('tabpanel')).toHaveAccessibleName(/^Tab 1/);
   });
 });

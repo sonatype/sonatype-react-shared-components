@@ -17,7 +17,8 @@ describe('NxIconDropdown', function() {
     moveMouseAway,
     checkScreenshotCoordinates,
     getPage,
-    a11yTest
+    a11yTest,
+    wait
   } = setupBrowser('#/pages/Icon%20Dropdown');
 
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
@@ -56,6 +57,23 @@ describe('NxIconDropdown', function() {
           pageScrollX = await page.evaluate(() => window.scrollX);
 
       await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 251, 346);
+    });
+
+    it('shows overflow tooltip on dropdown menu item', async function() {
+      const [example, menuItem] = await waitAndGetElements(
+              defaultSelector,
+              `${defaultSelector} .nx-dropdown-link:nth-child(2)`
+          ),
+          page = getPage();
+
+      await menuItem.hover();
+      await wait(500);
+
+      const { x, y } = await example.boundingBox(),
+          pageScrollY = await page.evaluate(() => window.scrollY),
+          pageScrollX = await page.evaluate(() => window.scrollX);
+
+      await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 350, 346);
     });
   });
 

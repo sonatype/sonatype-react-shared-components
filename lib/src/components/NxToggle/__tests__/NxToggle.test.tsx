@@ -4,11 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-
-import * as rtlUtils from '../../../__testutils__/rtlUtils';
-
-import { screen } from '@testing-library/react';
-import { userEvent } from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxToggle, { Props } from '../NxToggle';
 
@@ -21,64 +17,59 @@ describe('NxToggle', function() {
     children: 'Enables whales'
   };
 
-  const rtlRender = rtlUtils.rtlRender<Props>(NxToggle, simpleProps);
+  const quickRender = rtlRender<Props>(NxToggle, simpleProps);
+  const renderEl = rtlRenderElement(NxToggle, simpleProps);
 
-  it('renders a <label> with an <input>', function() {
-    rtlRender();
-
-    const checkbox = screen.getByRole<HTMLInputElement>('switch', { name: 'Enables whales' });
-
-    expect(checkbox.tagName).toEqual('INPUT');
-
-    const label = checkbox.labels?.[0];
-
-    expect(label?.textContent).toEqual('Enables whales');
+  it('passes general attributes to top-level element', function() {
+    const component = renderEl({ id: 'dolphin', lang: 'en-CA' });
+    expect(component).toHaveAttribute('id', 'dolphin');
+    expect(component).toHaveAttribute('lang', 'en-CA');
   });
 
-  it('renders an input element with role switch with the correct attributes and classname', function() {
-    rtlRender();
+  it('renders a switch with the correct label', function() {
+    const checkbox = quickRender().getByRole('switch', { name: 'Enables whales' });
+    expect(checkbox).toBeInTheDocument();
+  });
 
-    const checkbox = screen.getByRole('switch');
-
-    expect(checkbox).toHaveAttribute('type', 'checkbox');
+  it('renders an input element with role=switch with the correct attributes', function() {
+    const checkbox = quickRender().getByRole('switch');
+    expect(checkbox).toBeInTheDocument();
     expect(checkbox).toHaveAttribute('id', 'toggle-id');
-    expect(checkbox).toHaveClass('nx-toggle__input');
   });
 
-  it('adds classes specified with the className prop', function() {
-    const { container } = rtlRender({ className: 'foo' });
+  it('merges any passed in className', function() {
+    const componentWithAddedClass = renderEl({ className: 'foo' });
+    const component = renderEl()!;
 
-    const root = container.children[0];
+    expect(componentWithAddedClass).toHaveClass('foo');
 
-    expect(root).toHaveClass('foo');
-    expect(root).toHaveClass('nx-toggle');
+    for (const cls of Array.from(component.classList)) {
+      expect(componentWithAddedClass).toHaveClass(cls);
+    }
   });
 
-  it('calls its onChange prop when the label is clicked', async function() {
+  it('calls its onChange prop when the checkbox is clicked', async function() {
     const user = userEvent.setup();
-
     const onChange = jest.fn();
 
-    const { container } = rtlRender({ onChange });
-    const label = container.querySelector('label') as HTMLLabelElement;
+    const checkbox = quickRender({ onChange }).getByRole('switch');
 
     expect(onChange).not.toHaveBeenCalled();
-    await user.click(label);
+    await user.click(checkbox);
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('calls its onChange prop when the input is focused and space key is pressed', async function() {
     const user = userEvent.setup();
-
     const onChange = jest.fn();
 
-    rtlRender({ onChange });
-
-    const checkbox = screen.getByRole('switch');
+    const checkbox = quickRender({ onChange }).getByRole('switch');
 
     expect(onChange).not.toHaveBeenCalled();
+
     await checkbox.focus();
     await user.keyboard(' ');
+
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -95,9 +86,7 @@ describe('NxToggle', function() {
       }
     };
 
-    rtlRender(props);
-
-    const checkbox = screen.getByRole('switch');
+    const checkbox = quickRender(props).getByRole('switch');
 
     expect(checkbox).toHaveAttribute('id', 'garfield');
     expect(checkbox).toHaveAttribute('name', 'garfield');

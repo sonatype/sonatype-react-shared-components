@@ -7,7 +7,6 @@
 import React, { ComponentType } from 'react';
 import { act, render, RenderResult } from '@testing-library/react';
 
-import '@testing-library/jest-dom';
 import realUserEvent from '@testing-library/user-event';
 import { path, pipe } from 'ramda';
 import { within } from '@testing-library/dom';
