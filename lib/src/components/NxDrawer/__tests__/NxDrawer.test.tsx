@@ -103,6 +103,7 @@ describe('NxDrawer', function() {
 
       expect(mockOnClose).not.toHaveBeenCalled();
 
+      dialog.focus();
       await user.keyboard('{Escape}');
 
       expect(mockOnClose).toHaveBeenCalled();

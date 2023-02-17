@@ -5,8 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import 'jest-enzyme';
+import { render } from '@testing-library/react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxTree from '../NxTree';
 import NxTreeItem from '../NxTreeItem';
@@ -14,22 +14,60 @@ import NxTreeItemLabel from '../NxTreeItemLabel';
 import NxTreeStatefulItem from '../stateful/NxTreeStatefulItem';
 
 describe('NxTree', function() {
-  it('makes a <ul> tag with an nx-tree class', function() {
-    expect(shallow(<NxTree/>).children()).toMatchSelector('ul.nx-tree');
+  const quickRender = rtlRender(NxTree, {}),
+      renderEl = rtlRenderElement(NxTree, {});
+
+  it('renders a <ul> with role=tree as the top-level element', function() {
+    const view = quickRender();
+
+    expect(view.getByRole('tree')).toBe(view.container.firstElementChild);
+    expect(view.container.firstElementChild!.tagName).toBe('UL');
   });
 
-  it('adds the tree role when it is the top-level tree, and the group role otherwise', function() {
-    const component = mount(
+  it('renders any subtrees with a role of group', function() {
+    const view = render(
       <NxTree>
         <NxTree.Item>
           <NxTree.ItemLabel>Foo</NxTree.ItemLabel>
           <NxTree />
         </NxTree.Item>
       </NxTree>
-    ).children();
+        ),
+        tree = view.getByRole('tree'),
+        subtree = view.getByRole('group');
 
-    expect(component).toHaveProp('role', 'tree');
-    expect(component.find('.nx-tree__item .nx-tree')).toHaveProp('role', 'group');
+    expect(subtree).toBeInTheDocument();
+    expect(tree).toContainElement(subtree);
+  });
+
+  it('adds specified classNames to the top-level element in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
+
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
+  });
+
+  it('passes additional attrs to the top-level element', function() {
+    const el = renderEl({ id: 'foo', lang: 'en-US' });
+
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en-US');
+  });
+
+  it('allows the a11y name of the top-level element to be set via aria-label or aria-labelledby', function() {
+    render(<div id="label">bar</div>);
+
+    const elWithNoLabel = renderEl(),
+        elWithLabel = renderEl({ 'aria-label': 'foo' }),
+        elWithLabelledBy = renderEl({ 'aria-labelledby': 'label' });
+
+    expect(elWithNoLabel).not.toHaveAccessibleName();
+    expect(elWithLabel).toHaveAccessibleName('foo');
+    expect(elWithLabelledBy).toHaveAccessibleName('bar');
   });
 });
 

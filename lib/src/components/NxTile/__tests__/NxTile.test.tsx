@@ -4,68 +4,85 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
-import { shallow } from 'enzyme';
-import 'jest-enzyme';
+import React, { ComponentType } from 'react';
+import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
+import { render, within } from '@testing-library/react';
 
 import NxTile from '../NxTile';
 
+function testMergedClassNames(Component: ComponentType) {
+  return () => {
+    const renderEl = rtlRenderElement(Component, {});
+
+    const defaultEl = renderEl()!,
+        customEl = renderEl({ className: 'foo' });
+
+    expect(customEl).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(customEl).toHaveClass(cls);
+    }
+  };
+}
+
 describe('NxTile', function() {
-  it('makes a <section> tag with an nx-tile class', function() {
-    expect(shallow(<NxTile/>)).toMatchSelector('section.nx-tile');
-  });
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile));
 });
 
 describe('NxTile.Header', function() {
-  it('makes a <header> tag with an nx-tile-header class', function() {
-    expect(shallow(<NxTile.Header/>)).toMatchSelector('header.nx-tile-header');
+  it('renders a banner element', function() {
+    const { container } = render(<NxTile.Header />);
+    const header = within(container).getByRole('banner');
+
+    expect(header).toBeInTheDocument();
   });
+
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.Header));
 });
 
 describe('NxTile.HeaderTitle', function() {
-  it('makes a <div> tag with an nx-tile-header__title class', function() {
-    expect(shallow(<NxTile.HeaderTitle/>).children()).toMatchSelector('div.nx-tile-header__title');
-  });
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.HeaderTitle));
 });
 
 describe('NxTile.Headings', function() {
-  it('makes a <hgroup> tag with an nx-tile-header__headings class', function() {
-    expect(shallow(<NxTile.Headings/>)).toMatchSelector('hgroup.nx-tile-header__headings');
-  });
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.Headings));
 });
 
 describe('NxTile.HeaderSubtitle', function() {
-  it('makes a <h3> tag with an nx-tile-header__subtitle class', function() {
-    expect(shallow(<NxTile.HeaderSubtitle/>)).toMatchSelector('h3.nx-tile-header__subtitle');
+  it('renders a heading element', function() {
+    const { container } = render(<NxTile.HeaderSubtitle />);
+    const subtitle = within(container).getByRole('heading');
+
+    expect(subtitle).toBeInTheDocument();
   });
+
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.HeaderSubtitle));
 });
 
 describe('NxTile.HeaderActions', function() {
-  it('makes a <div> tag with an nx-tile__actions class', function() {
-    expect(shallow(<NxTile.HeaderActions/>)).toMatchSelector('div.nx-tile__actions');
-  });
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.HeaderActions));
 });
 
 describe('NxTile.Content', function() {
-  it('makes a <div> tag with an nx-tile-content class', function() {
-    expect(shallow(<NxTile.Content/>)).toMatchSelector('div.nx-tile-content');
-  });
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.Content));
 });
 
 describe('NxTile.Subsection', function() {
-  it('makes a <section> tag with an nx-tile-subsection class', function() {
-    expect(shallow(<NxTile.Subsection/>)).toMatchSelector('section.nx-tile-subsection');
-  });
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.Subsection));
 });
 
 describe('NxTile.SubsectionHeader', function() {
-  it('makes a <header> tag with an nx-tile-subsection__header class', function() {
-    expect(shallow(<NxTile.SubsectionHeader/>)).toMatchSelector('header.nx-tile-subsection__header');
+  it('renders a banner element', function() {
+    const { container } = render(<NxTile.SubsectionHeader />);
+    const subsectionHeader = within(container).getByRole('banner');
+
+    expect(subsectionHeader).toBeInTheDocument();
   });
+
+  it('adds specified classnames in addition to the defaults',
+      testMergedClassNames(NxTile.SubsectionHeader));
 });
 
 describe('NxTile.HeaderTags', function() {
-  it('makes a <div> tag with an nx-tile__tags class', function() {
-    expect(shallow(<NxTile.HeaderTags/>)).toMatchSelector('div.nx-tile__tags');
-  });
+  it('adds specified classnames in addition to the defaults', testMergedClassNames(NxTile.HeaderTags));
 });

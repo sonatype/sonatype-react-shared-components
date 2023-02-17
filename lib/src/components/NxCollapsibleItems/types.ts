@@ -21,6 +21,7 @@ export interface PublicProps extends HTMLAttributes<HTMLDivElement> {
 
 export interface Props extends PublicProps {
   contentBeforeChildren?: ReactNode;
+  collapsibleChildrenId?: string | null;
 }
 
 // NxCollapsibleItemsChild takes exactly one child element

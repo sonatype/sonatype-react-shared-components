@@ -6,7 +6,7 @@
  */
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import classnames from 'classnames';
-import { chain, groupBy, indexOf, reject, without } from 'ramda';
+import { chain, groupBy, indexOf, reject, uniq, without } from 'ramda';
 
 import { Props, propTypes } from './types';
 import NxTransferListHalf from '../NxTransferListHalf/NxTransferListHalf';
@@ -45,7 +45,7 @@ export default function NxTransferList<T extends string | number = string>(props
   }
 
   const selectedItemsArray = useMemo(
-      () => selectedItems instanceof Array ? selectedItems : Array.from(selectedItems),
+      () => selectedItems instanceof Array ? uniq(selectedItems) : Array.from(selectedItems),
       [selectedItems]
   );
 
@@ -129,7 +129,7 @@ export default function NxTransferList<T extends string | number = string>(props
   }, [handleOnChangeProp]);
 
   return (
-    <div className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
+    <div role="group" className={classnames('nx-transfer-list', classNameProp)} { ...attrs }>
       <NxTransferListHalf<T> label={availableItemsLabel || 'Available Items'}
                              filterValue={availableItemsFilter}
                              onFilterChange={onAvailableItemsFilterChange}

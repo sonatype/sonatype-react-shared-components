@@ -4,24 +4,50 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import React from 'react';
+import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
+
 import NxList from '../NxList';
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
+import NxButton from '../../NxButton/NxButton';
 
-describe('NxListActions', function() {
+describe('NxList.Actions', function() {
+  const quickRender = rtlRender(NxList.Actions, {}),
+      renderEl = rtlRenderElement(NxList.Actions, {});
 
-  const minimalProps = {};
-  const getShallow = getShallowComponent(NxList.Actions, minimalProps);
+  it('sets the specified classnames in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
 
-  it('renders a div with class nx-list__actions', function() {
-    const contentEl = getShallow();
-    expect(contentEl).toExist();
-    expect(contentEl.find('div')).toHaveClassName('.nx-list__actions');
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('renders the classNames given to it', function() {
-    const contentEl = getShallow({className: 'customClassName'});
-    expect(contentEl).toExist();
-    expect(contentEl.find('div')).toMatchSelector('.nx-list__actions.customClassName');
+  it('sets the specified attrs', function() {
+    const el = renderEl({ id: 'foo', lang: 'en' });
+
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en');
+  });
+
+  it('sets a ref to the element', function() {
+    const ref = React.createRef<HTMLDivElement>(),
+        el = renderEl({ ref });
+
+    expect(ref.current).toBe(el);
+  });
+
+  it('renders children correctly', function() {
+    const children = <NxButton>Foo</NxButton>,
+        view = quickRender({ children }),
+        el = view.container.firstElementChild,
+        childrenEl = view.getByRole('button');
+
+    expect(el).toBeInTheDocument();
+    expect(childrenEl).toBeInTheDocument();
+    expect(el).toContainElement(childrenEl);
+    expect(childrenEl).toHaveTextContent('Foo');
   });
 });
