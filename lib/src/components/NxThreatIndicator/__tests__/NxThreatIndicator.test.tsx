@@ -4,116 +4,149 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-
-import NxThreatIndicator from '../NxThreatIndicator';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import NxToolip from '../../NxTooltip/NxTooltip';
+import NxThreatIndicator, { Props } from '../NxThreatIndicator';
+import { rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import { screen } from '@testing-library/react';
 
 describe('NxThreatIndicator', function() {
-  const getShallowComponent = enzymeUtils.getShallowComponent(NxThreatIndicator, {});
+  const quickRender = rtlRender<Props>(NxThreatIndicator, {});
 
-  it('renders an faCircle NxFontAwesomeIcon with the `nx-threat-indicator` class', function() {
-    const icon = getShallowComponent().find(NxFontAwesomeIcon);
-
-    expect(icon).toHaveClassName('nx-threat-indicator');
-    expect(icon).toExist();
-    expect(icon).toHaveProp('icon', faCircle);
+  it('renders an element with a role of graphics-symbol', async function() {
+    const el = quickRender();
+    await runTimers();
+    const threatIndicator = el.getByRole('graphics-symbol');
+    expect(threatIndicator).toBeInTheDocument();
   });
 
-  it('sets the nx-threat-indicator--unspecified class if no props are passed', function() {
-    const icon = getShallowComponent().find(NxFontAwesomeIcon);
-
-    expect(icon).toMatchSelector('.nx-threat-indicator--unspecified');
+  it('has a fallback role of img', async function() {
+    const el = quickRender();
+    await runTimers();
+    const threatIndicator = el.getByRole('img', { queryFallbacks: true });
+    expect(threatIndicator).toBeInTheDocument();
   });
 
-  it('sets the modifier class using the threatLevelCategory if it is provided', function() {
-    const icon = getShallowComponent({ threatLevelCategory: 'low' }).find(NxFontAwesomeIcon);
+  it('takes precedence of threatLevelCategory if both props are provided', async function() {
+    const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' });
+    await runTimers();
+    const user = userEvent.setup(),
+        threatIndicator = el.getByRole('graphics-symbol')!;
 
-    expect(icon).toMatchSelector('.nx-threat-indicator--low');
-    expect(icon).not.toMatchSelector('.nx-threat-indicator--unspecified');
+    await user.hover(threatIndicator);
+    const tooltip = await screen.findByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Low');
   });
 
-  it('sets the modifier class by converting the policyThreatLevel if it is provided', function() {
-    expect(getShallowComponent({ policyThreatLevel: 0 }).find('.nx-threat-indicator'))
-        .toMatchSelector('.nx-threat-indicator--none');
-    expect(getShallowComponent({ policyThreatLevel: 1 }).find('.nx-threat-indicator'))
-        .toMatchSelector('.nx-threat-indicator--low');
-    expect(getShallowComponent({ policyThreatLevel: 3 }).find('.nx-threat-indicator'))
-        .toMatchSelector('.nx-threat-indicator--moderate');
-    expect(getShallowComponent({ policyThreatLevel: 5 }).find('.nx-threat-indicator'))
-        .toMatchSelector('.nx-threat-indicator--severe');
-    expect(getShallowComponent({ policyThreatLevel: 9 }).find('.nx-threat-indicator'))
-        .toMatchSelector('.nx-threat-indicator--critical');
-    expect(getShallowComponent({ policyThreatLevel: 9 }).find('.nx-threat-indicator'))
-        .not.toMatchSelector('.nx-threat-indicator--unspecified');
+  it('sets the accessible name based on the threat level category', async function() {
+    const el = quickRender({ policyThreatLevel: 9, threatLevelCategory: 'low' });
+    await runTimers();
+    const threatIndicator = el.getByRole('graphics-symbol')!;
+
+    expect(threatIndicator).toHaveAccessibleName('Low');
   });
 
-  it('sets the modifier class using the threatLevelCategory if both props are provided', function() {
-    const component = getShallowComponent({ policyThreatLevel: 9, threatLevelCategory: 'low' });
-    const icon = component.find(NxFontAwesomeIcon);
+  describe('should have default tooltips', function() {
+    const getTooltipTextForProps = async (threat: Props) => {
+      const el = quickRender(threat)!;
+      await runTimers();
+      const user = userEvent.setup(),
+          threatIndicator = el.getByRole('graphics-symbol');
 
-    expect(icon).toMatchSelector('.nx-threat-indicator--low');
-    expect(icon).not.toMatchSelector('.nx-threat-indicator--critical');
-    expect(icon).not.toMatchSelector('.nx-threat-indicator--unspecified');
+      await user.hover(threatIndicator);
+      const tooltip = await screen.findByRole('tooltip');
+      return tooltip.textContent;
+    };
+
+    describe('when policyThreatLevel prop is provided', function() {
+      it('for policyThreatLevel 0', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 0 })).toBe('None');
+      });
+      it('for policyThreatLevel 1', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 1 })).toBe('Low');
+      });
+      it('for policyThreatLevel 2', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 2 })).toBe('Moderate');
+      });
+      it('for policyThreatLevel 3', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 3 })).toBe('Moderate');
+      });
+      it('for policyThreatLevel 4', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 4 })).toBe('Severe');
+      });
+      it('for policyThreatLevel 5', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 5 })).toBe('Severe');
+      });
+      it('for policyThreatLevel 6', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 6 })).toBe('Severe');
+      });
+      it('for policyThreatLevel 7', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 7 })).toBe('Severe');
+      });
+      it('for policyThreatLevel 8', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 8 })).toBe('Critical');
+      });
+      it('for policyThreatLevel 9', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 9 })).toBe('Critical');
+      });
+      it('for policyThreatLevel 10', async function() {
+        expect(await getTooltipTextForProps({ policyThreatLevel: 10 })).toBe('Critical');
+      });
+    });
+
+    describe('when threatLevelCategory prop is provided', function() {
+      it('for threatLevelCategory unspecified', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'unspecified' })).toBe('Unspecified');
+      });
+      it('for threatLevelCategory none', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'none' })).toBe('None');
+      });
+      it('for threatLevelCategory low', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'low' })).toBe('Low');
+      });
+      it('for threatLevelCategory moderate', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'moderate' })).toBe('Moderate');
+      });
+      it('for threatLevelCategory severe', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'severe' })).toBe('Severe');
+      });
+      it('for threatLevelCategory critical', async function() {
+        expect(await getTooltipTextForProps({ threatLevelCategory: 'critical' })).toBe('Critical');
+      });
+    });
   });
 
-  it('adds aria attrs to help the icon show up for screen readers', function() {
-    const component = getShallowComponent({ policyThreatLevel: 9, threatLevelCategory: 'low' });
+  it('should show custom tooltip title', async function() {
+    const el = quickRender({ title: 'Extinction Level Threat' });
+    await runTimers();
+    const user = userEvent.setup(),
+        threatIndicator = el.getByRole('graphics-symbol')!;
 
-    expect(component.find(NxFontAwesomeIcon)).toHaveProp('aria-label', 'threat level low');
-    expect(component.find(NxFontAwesomeIcon)).not.toHaveProp('aria-hidden');
+    await user.hover(threatIndicator);
+    const tooltip = await screen.findByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Extinction Level Threat');
   });
 
-  it('should have the correct default tooltip title', function() {
-    const none = getShallowComponent({ threatLevelCategory: 'none' }).find(NxToolip);
-    const low = getShallowComponent({ threatLevelCategory: 'low' }).find(NxToolip);
-    const moderate = getShallowComponent({ threatLevelCategory: 'moderate' }).find(NxToolip);
-    const severe = getShallowComponent({ threatLevelCategory: 'severe' }).find(NxToolip);
-    const critical = getShallowComponent({ threatLevelCategory: 'critical' }).find(NxToolip);
+  describe('when presentational prop is set to true', function() {
+    const quickRender = rtlRender(NxThreatIndicator, { presentational: true });
 
-    expect(none).toHaveProp('title', 'None');
-    expect(low).toHaveProp('title', 'Low');
-    expect(moderate).toHaveProp('title', 'Moderate');
-    expect(severe).toHaveProp('title', 'Severe');
-    expect(critical).toHaveProp('title', 'Critical');
-  });
+    it('should hide tooltip', async function() {
+      const user = userEvent.setup(),
+          threatIndicator = quickRender().getByRole('presentation', { hidden: true });
 
-  it('should show custom tooltip title', function() {
-    const tooltip = getShallowComponent({ title: 'Extinction Level Threat' }).find(NxToolip);
+      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+      await user.hover(threatIndicator);
+      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+    });
 
-    expect(tooltip).toHaveProp('title', 'Extinction Level Threat');
-  });
+    it('should set the role to "presentation"', function() {
+      const threatIndicator = quickRender().getByRole('presentation', { hidden: true });
 
-  it('adds specified class names to the element', function() {
-    const icon = getShallowComponent({ className: 'foo', threatLevelCategory: 'low' }).find(NxFontAwesomeIcon);
+      expect(threatIndicator).toBeInTheDocument();
+    });
 
-    expect(icon).toHaveClassName('foo');
-    expect(icon).toHaveClassName('nx-threat-indicator');
-    expect(icon).toHaveClassName('nx-threat-indicator--low');
-  });
+    it('should not have an accessible name', function() {
+      const threatIndicator = quickRender().getByRole('presentation', { hidden: true });
 
-  it('should hide tooltip when presentational prop is set true', function() {
-    const component = getShallowComponent({ presentational: true });
-    const tooltip = component.find(NxToolip);
-    const icon = component.find(NxFontAwesomeIcon);
-
-    expect(tooltip).not.toExist();
-    expect(icon).toExist();
-  });
-
-  it('should set the role to "presentation" when presentational prop is true', function() {
-    const icon = getShallowComponent({ presentational: true }).find(NxFontAwesomeIcon);
-
-    expect(icon).toHaveProp('role', 'presentation');
-  });
-
-  it('should set aria-label to undefined when presentational prop is true', function() {
-    const icon = getShallowComponent({ presentational: true }).find(NxFontAwesomeIcon);
-
-    expect(icon).toHaveProp('aria-label', undefined);
+      expect(threatIndicator).not.toHaveAccessibleName();
+    });
   });
 });

@@ -7,18 +7,14 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 
-import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
-import NxTransferList, { Props } from '../NxTransferList';
-import NxForm from '../../NxForm/NxForm';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../../__testutils__/rtlUtils';
+import NxStatefulTransferList, { Props } from '../NxStatefulTransferList';
+import NxForm from '../../../NxForm/NxForm';
 
-describe('NxTransferList', function() {
+describe('NxStatefulTransferList', function() {
   const minimalProps = {
         allItems: [],
         selectedItems: new Set<number>(),
-        availableItemsFilter: '',
-        selectedItemsFilter: '',
-        onAvailableItemsFilterChange: () => {},
-        onSelectedItemsFilterChange: () => {},
         onChange: () => {}
       },
       // some items used in tests though not in minimalProps
@@ -27,8 +23,8 @@ describe('NxTransferList', function() {
         { id: 2, displayName: 'Two' },
         { id: 3, displayName: 'Three' }
       ],
-      quickRender = rtlRender<Props<number>>(NxTransferList, minimalProps),
-      renderEl = rtlRenderElement<Props<number>>(NxTransferList, minimalProps);
+      quickRender = rtlRender<Props<number>>(NxStatefulTransferList, minimalProps),
+      renderEl = rtlRenderElement<Props<number>>(NxStatefulTransferList, minimalProps);
 
   beforeEach(function() {
     // silence overflow tooltip warnings
@@ -275,7 +271,7 @@ describe('NxTransferList', function() {
     });
 
     describe('when showMoveAll is true', function() {
-      const quickRender = rtlRender<Props<number>>(NxTransferList, { ...minimalProps, showMoveAll: true });
+      const quickRender = rtlRender<Props<number>>(NxStatefulTransferList, { ...minimalProps, showMoveAll: true });
 
       describe('Transfer All button', function() {
         it('is rendered within the "Available Items" group', function() {
@@ -299,8 +295,8 @@ describe('NxTransferList', function() {
           expect(onChange).toHaveBeenCalledWith(new Set([1, 2, 3]));
         });
 
-        it('fires onChange with all item ids except those filtered out from the available options using ' +
-            'availableItemsFilter and optionally filterFn', async function() {
+        it('fires onChange with all item ids except those filtered out from the available options by user input ' +
+            'in the available filter and optionally filterFn', async function() {
           const user = userEvent.setup(),
               onChange = jest.fn(),
 
@@ -310,10 +306,17 @@ describe('NxTransferList', function() {
                 const charToFilterOn = String.fromCharCode(filterChar.charCodeAt(0) - 1).toLowerCase();
                 return displayName.toLowerCase().includes(charToFilterOn);
               },
-              defaultFilterView = quickRender({ allItems, onChange, availableItemsFilter: 'o' }),
+              defaultFilterView = quickRender({ allItems, onChange }),
+              defaultAvailableGroup = defaultFilterView.getByRole('group', { name: 'Available Items' }),
+              defaultFilterInput = within(defaultAvailableGroup).getByRole('textbox', { name: 'Filter' }),
               defaultFilterTransferBtn = defaultFilterView.getByRole('button', { name: 'Transfer All' }),
-              customFilterView = quickRender({ allItems, onChange, availableItemsFilter: 'o', filterFn }),
+              customFilterView = quickRender({ allItems, onChange, filterFn }),
+              customAvailableGroup = customFilterView.getByRole('group', { name: 'Available Items' }),
+              customFilterInput = within(customAvailableGroup).getByRole('textbox', { name: 'Filter' }),
               customFilterTransferBtn = customFilterView.getByRole('button', { name: 'Transfer All' });
+
+          await user.type(defaultFilterInput, 'o');
+          await user.type(customFilterInput, 'o');
 
           expect(onChange).not.toHaveBeenCalled();
 
@@ -349,8 +352,8 @@ describe('NxTransferList', function() {
           expect(onChange).toHaveBeenCalledWith(new Set());
         });
 
-        it('fires onChange with only item ids filtered out from the available options using ' +
-            'selectedItemsFilter and optionally filterFn', async function() {
+        it('fires onChange with only item ids filtered out from the available options by user input  in the ' +
+            'selected filter and optionally filterFn', async function() {
           const user = userEvent.setup(),
               onChange = jest.fn(),
 
@@ -363,18 +366,23 @@ describe('NxTransferList', function() {
               defaultFilterView = quickRender({
                 allItems,
                 selectedItems: new Set([1, 2, 3]),
-                onChange,
-                selectedItemsFilter: 'o'
+                onChange
               }),
+              defaultSelectedGroup = defaultFilterView.getByRole('group', { name: 'Transferred Items' }),
+              defaultFilterInput = within(defaultSelectedGroup).getByRole('textbox', { name: 'Filter' }),
               defaultFilterRemoveBtn = defaultFilterView.getByRole('button', { name: 'Remove All' }),
               customFilterView = quickRender({
                 allItems,
                 selectedItems: new Set([1, 2, 3]),
                 onChange,
-                selectedItemsFilter: 'o',
                 filterFn
               }),
+              customSelectedGroup = customFilterView.getByRole('group', { name: 'Transferred Items' }),
+              customFilterInput = within(customSelectedGroup).getByRole('textbox', { name: 'Filter' }),
               customFilterRemoveBtn = customFilterView.getByRole('button', { name: 'Remove All' });
+
+          await user.type(defaultFilterInput, 'o');
+          await user.type(customFilterInput, 'o');
 
           expect(onChange).not.toHaveBeenCalled();
 
@@ -404,13 +412,18 @@ describe('NxTransferList', function() {
       expect(filterInputs).toHaveLength(2);
     });
 
-    describe('availableItemsFilter', function() {
+    describe('available items filtering', function() {
       it('filters the visible list of checkboxes in the Available Items group by case-insensitive substring match',
-          function() {
-            const view = quickRender({ allItems, selectedItems: new Set([3]), availableItemsFilter: 'N'}),
+          async function() {
+            const user = userEvent.setup(),
+                view = quickRender({ allItems, selectedItems: new Set([3]) }),
                 availableGroup = view.getByRole('group', { name: 'Available Items' }),
                 selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
-                availableCheckboxes = within(availableGroup).getAllByRole('checkbox'),
+                availableFilterInput = within(availableGroup).getByRole('textbox', { name: 'Filter' });
+
+            await user.type(availableFilterInput, 'N');
+
+            const availableCheckboxes = within(availableGroup).getAllByRole('checkbox'),
                 selectedCheckboxes = within(selectedGroup).getAllByRole('checkbox');
 
             // Two should be filtered out
@@ -424,213 +437,141 @@ describe('NxTransferList', function() {
       );
 
       it('filters the visible list of checkboxes in the Available Items group by the filterFn if specified',
-          function() {
+          async function() {
             // a silly filter function that filters by the character _before_ (alphabetically) the character
             // that the user entered
-            const filterFn = (filterChar: string, displayName: string) => {
+            const user = userEvent.setup(),
+                filterFn = (filterChar: string, displayName: string) => {
                   const charToFilterOn = String.fromCharCode(filterChar.charCodeAt(0) - 1).toLowerCase();
                   return displayName.toLowerCase().includes(charToFilterOn);
                 },
-                view = quickRender({ allItems, availableItemsFilter: 'o', filterFn }),
+                view = quickRender({ allItems, filterFn }),
                 availableGroup = view.getByRole('group', { name: 'Available Items' }),
-                availableCheckboxes = within(availableGroup).getAllByRole('checkbox');
+                availableFilterInput = within(availableGroup).getByRole('textbox', { name: 'Filter' });
+
+            await user.type(availableFilterInput, 'o');
+
+            const availableCheckboxes = within(availableGroup).getAllByRole('checkbox');
 
             expect(availableCheckboxes).toHaveLength(1);
             expect(availableCheckboxes[0]).toHaveAccessibleName('One');
           }
       );
-
-      it('is the value of the Available Items filter textbox', function() {
-        const view = quickRender({ allItems, availableItemsFilter: 'N'}),
-            availableGroup = view.getByRole('group', { name: 'Available Items' }),
-            selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
-            availableFilter = within(availableGroup).getByRole('textbox', { name: 'Filter' }),
-            selectedFilter = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
-
-        expect(availableFilter).toHaveValue('N');
-        expect(selectedFilter).toHaveValue('');
-      });
     });
 
-    describe('selectedItemsFilter', function() {
+    describe('selected items filtering', function() {
       it('filters the visible list of checkboxes in the Transferred Items group by case-insensitive substring match',
-          function() {
-            const view = quickRender({ allItems, selectedItems: new Set([2, 3]), selectedItemsFilter: 'W' }),
+          async function() {
+            const user = userEvent.setup(),
+                view = quickRender({ allItems, selectedItems: new Set([1, 2]) }),
                 availableGroup = view.getByRole('group', { name: 'Available Items' }),
                 selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
-                availableCheckboxes = within(availableGroup).getAllByRole('checkbox'),
+                selectedFilterInput = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
+
+            await user.type(selectedFilterInput, 'N');
+
+            const availableCheckboxes = within(availableGroup).getAllByRole('checkbox'),
                 selectedCheckboxes = within(selectedGroup).getAllByRole('checkbox');
 
-            // One should not be filtered out because it's in the other column
-            expect(availableCheckboxes).toHaveLength(1);
-            expect(availableCheckboxes[0]).toHaveAccessibleName('One');
-
-            // Three should be filtered out
+            // Two should be filtered out
             expect(selectedCheckboxes).toHaveLength(1);
-            expect(selectedCheckboxes[0]).toHaveAccessibleName('Two');
+            expect(selectedCheckboxes[0]).toHaveAccessibleName('One');
+
+            // Three should not be filtered out because it's in the other column
+            expect(availableCheckboxes).toHaveLength(1);
+            expect(availableCheckboxes[0]).toHaveAccessibleName('Three');
           }
       );
 
       it('filters the visible list of checkboxes in the Transferred Items group by the filterFn if specified',
-          function() {
+          async function() {
             // a silly filter function that filters by the character _before_ (alphabetically) the character
             // that the user entered
-            const filterFn = (filterChar: string, displayName: string) => {
+            const user = userEvent.setup(),
+                filterFn = (filterChar: string, displayName: string) => {
                   const charToFilterOn = String.fromCharCode(filterChar.charCodeAt(0) - 1).toLowerCase();
                   return displayName.toLowerCase().includes(charToFilterOn);
                 },
-                view = quickRender({
-                  allItems,
-                  selectedItems: new Set([1, 2, 3]),
-                  selectedItemsFilter: 'o',
-                  filterFn
-                }),
+                view = quickRender({ allItems, filterFn, selectedItems: new Set([1, 2, 3]) }),
                 selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
-                selectedCheckboxes = within(selectedGroup).getAllByRole('checkbox');
+                selectedFilterInput = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
+
+            await user.type(selectedFilterInput, 'o');
+
+            const selectedCheckboxes = within(selectedGroup).getAllByRole('checkbox');
 
             expect(selectedCheckboxes).toHaveLength(1);
             expect(selectedCheckboxes[0]).toHaveAccessibleName('One');
           }
       );
-
-      it('is the value of the Transferred Items filter textbox', async function() {
-        const view = quickRender({ allItems, selectedItemsFilter: 'N' }),
-            availableGroup = view.getByRole('group', { name: 'Available Items' }),
-            selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
-
-        await runTimers();
-        const availableFilter = within(availableGroup).getByRole('textbox', { name: 'Filter' }),
-            selectedFilter = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
-
-        expect(availableFilter).toHaveValue('');
-        expect(selectedFilter).toHaveValue('N');
-      });
     });
 
-    it('fires onAvailableItemsFilterChange with the new text value and event when the user types into the ' +
-        'available items filter', async function() {
+    it('unfilters the available items when the available items "Clear filter" button is pressed', async function() {
       const user = userEvent.setup(),
-          onAvailableItemsFilterChange = jest.fn().mockImplementation((_, evt) => evt.persist()),
-          onSelectedItemsFilterChange = jest.fn(),
-          view = quickRender({ onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
-          availableGroup = view.getByRole('group', { name: 'Available Items' });
-
-      await runTimers();
-      const availableFilter = within(availableGroup).getByRole('textbox', { name: 'Filter' });
-
-      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
-      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
-
-      await user.type(availableFilter, 'a');
-
-      expect(onAvailableItemsFilterChange)
-          .toHaveBeenCalledWith('a', expect.objectContaining({ target: availableFilter }));
-
-      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
-    });
-
-    it('fires onAvailableItemsFilterChange with the new empty string when the available items "Clear filter" ' +
-        'button is pressed', async function() {
-      const user = userEvent.setup(),
-          onAvailableItemsFilterChange = jest.fn(),
-          onSelectedItemsFilterChange = jest.fn(),
-          view = quickRender({ availableItemsFilter: 'a', onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
-          availableGroup = view.getByRole('group', { name: 'Available Items' });
+          view = quickRender({ allItems }),
+          availableGroup = view.getByRole('group', { name: 'Available Items' }),
+          availableFilterInput = within(availableGroup).getByRole('textbox', { name: 'Filter' });
 
       await runTimers();
       const clearFilterBtn = within(availableGroup).getByRole('button', { name: 'Clear filter' });
 
-      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
-      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
+      await user.type(availableFilterInput, 'asdf');
+      expect(within(availableGroup).queryAllByRole('checkbox')).toHaveLength(0);
 
       await user.click(clearFilterBtn);
 
-      expect(onAvailableItemsFilterChange).toHaveBeenCalledWith('');
-      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
+      expect(within(availableGroup).queryAllByRole('checkbox')).toHaveLength(3);
     });
 
-    it('fires onAvailableItemsFilterChange with the new empty string when ESC is pressed within the available ' +
-        'items filter', async function() {
+    it('unfilters the available items when ESC is pressed within the available items filter', async function() {
       const user = userEvent.setup(),
-          onAvailableItemsFilterChange = jest.fn(),
-          onSelectedItemsFilterChange = jest.fn(),
-          view = quickRender({ availableItemsFilter: 'a', onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
-          availableGroup = view.getByRole('group', { name: 'Available Items' });
+          view = quickRender({ allItems }),
+          availableGroup = view.getByRole('group', { name: 'Available Items' }),
+          availableFilterInput = within(availableGroup).getByRole('textbox', { name: 'Filter' });
 
       await runTimers();
-      const filterInput = within(availableGroup).getByRole('textbox');
 
-      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
-      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
+      await user.type(availableFilterInput, 'asdf');
+      expect(within(availableGroup).queryAllByRole('checkbox')).toHaveLength(0);
 
-      filterInput.focus();
+      availableFilterInput.focus();
       await user.keyboard('[Escape]');
 
-      expect(onAvailableItemsFilterChange).toHaveBeenCalledWith('');
-      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
+      expect(within(availableGroup).queryAllByRole('checkbox')).toHaveLength(3);
     });
 
-    it('fires onSelectedItemsFilterChange with the new text value and event when the user types into the ' +
-        'transferred items filter', async function() {
+    it('unfilters the selected items when the selected items "Clear filter" button is pressed', async function() {
       const user = userEvent.setup(),
-          onAvailableItemsFilterChange = jest.fn(),
-          onSelectedItemsFilterChange = jest.fn().mockImplementation((_, evt) => evt.persist()),
-          view = quickRender({ onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
-          selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
-
-      await runTimers();
-      const selectedFilter = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
-
-      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
-      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
-
-      await user.type(selectedFilter, 'a');
-
-      expect(onSelectedItemsFilterChange)
-          .toHaveBeenCalledWith('a', expect.objectContaining({ target: selectedFilter }));
-
-      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
-    });
-
-    it('fires onSelectedItemsFilterChange with the new empty string when the transferred items "Clear filter" ' +
-        'button is pressed', async function() {
-      const user = userEvent.setup(),
-          onAvailableItemsFilterChange = jest.fn(),
-          onSelectedItemsFilterChange = jest.fn(),
-          view = quickRender({ selectedItemsFilter: 'a', onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
-          selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
+          view = quickRender({ allItems, selectedItems: new Set([1, 2, 3]) }),
+          selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
+          selectedFilterInput = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
 
       await runTimers();
       const clearFilterBtn = within(selectedGroup).getByRole('button', { name: 'Clear filter' });
 
-      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
-      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
+      await user.type(selectedFilterInput, 'asdf');
+      expect(within(selectedGroup).queryAllByRole('checkbox')).toHaveLength(0);
 
       await user.click(clearFilterBtn);
 
-      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
-      expect(onSelectedItemsFilterChange).toHaveBeenCalledWith('');
+      expect(within(selectedGroup).queryAllByRole('checkbox')).toHaveLength(3);
     });
 
-    it('fires onSelectedItemsFilterChange with the new empty string when ESC is pressed within the transferred ' +
-        'items filter', async function() {
+    it('unfilters the selected items when ESC is pressed within the selected items filter', async function() {
       const user = userEvent.setup(),
-          onAvailableItemsFilterChange = jest.fn(),
-          onSelectedItemsFilterChange = jest.fn(),
-          view = quickRender({ selectedItemsFilter: 'a', onAvailableItemsFilterChange, onSelectedItemsFilterChange }),
-          selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
+          view = quickRender({ allItems, selectedItems: new Set([1, 2, 3]) }),
+          selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
+          selectedFilterInput = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
 
       await runTimers();
-      const filterInput = within(selectedGroup).getByRole('textbox');
 
-      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
-      expect(onSelectedItemsFilterChange).not.toHaveBeenCalled();
+      await user.type(selectedFilterInput, 'asdf');
+      expect(within(selectedGroup).queryAllByRole('checkbox')).toHaveLength(0);
 
-      filterInput.focus();
+      selectedFilterInput.focus();
       await user.keyboard('[Escape]');
 
-      expect(onAvailableItemsFilterChange).not.toHaveBeenCalled();
-      expect(onSelectedItemsFilterChange).toHaveBeenCalledWith('');
+      expect(within(selectedGroup).queryAllByRole('checkbox')).toHaveLength(3);
     });
 
     it('does not submit the form when the available items "Clear filter" button is pressed', async function() {
@@ -638,15 +579,18 @@ describe('NxTransferList', function() {
           onSubmit = jest.fn(),
           view = render(
             <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxTransferList { ...minimalProps } availableItemsFilter="a" />
+              <NxStatefulTransferList { ...minimalProps } />
             </NxForm>
           ),
-          selectedGroup = view.getByRole('group', { name: 'Available Items' });
+          availableGroup = view.getByRole('group', { name: 'Available Items' }),
+          availableFilterInput = within(availableGroup).getByRole('textbox', { name: 'Filter' });
 
       await runTimers();
+
+      await user.type(availableFilterInput, 'asdf');
       expect(onSubmit).not.toHaveBeenCalled();
 
-      const clearFilterBtn = within(selectedGroup).getByRole('button', { name: 'Clear filter' });
+      const clearFilterBtn = within(availableGroup).getByRole('button', { name: 'Clear filter' });
       await user.click(clearFilterBtn);
 
       expect(onSubmit).not.toHaveBeenCalled();
@@ -657,12 +601,15 @@ describe('NxTransferList', function() {
           onSubmit = jest.fn(),
           view = render(
             <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxTransferList { ...minimalProps } selectedItemsFilter="a" />
+              <NxStatefulTransferList { ...minimalProps } />
             </NxForm>
           ),
-          selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
+          selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
+          selectedFilterInput = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
 
       await runTimers();
+
+      await user.type(selectedFilterInput, 'asdf');
       expect(onSubmit).not.toHaveBeenCalled();
 
       const clearFilterBtn = within(selectedGroup).getByRole('button', { name: 'Clear filter' });
@@ -685,7 +632,7 @@ describe('NxTransferList', function() {
     });
 
     describe('when true', function() {
-      const quickRender = rtlRender<Props<number>>(NxTransferList, {
+      const quickRender = rtlRender<Props<number>>(NxStatefulTransferList, {
         ...minimalProps,
         selectedItems: [],
         allowReordering: true
@@ -909,24 +856,24 @@ describe('NxTransferList', function() {
         await user.click(up3Btn);
         expect(onChange).toHaveBeenCalledWith([1, 3, 2]);
 
-        view.rerender(<NxTransferList { ...minimalProps }
-                                      { ...{ allItems, onChange } }
-                                      allowReordering={true}
-                                      selectedItems={[1, 3, 2]} />);
+        view.rerender(<NxStatefulTransferList { ...minimalProps }
+                                              { ...{ allItems, onChange } }
+                                              allowReordering={true}
+                                              selectedItems={[1, 3, 2]} />);
         await user.click(up3Btn);
         expect(onChange).toHaveBeenCalledWith([3, 1, 2]);
 
-        view.rerender(<NxTransferList { ...minimalProps }
-                                      { ...{ allItems, onChange } }
-                                      allowReordering={true}
-                                      selectedItems={[3, 1, 2]} />);
+        view.rerender(<NxStatefulTransferList { ...minimalProps }
+                                              { ...{ allItems, onChange } }
+                                              allowReordering={true}
+                                              selectedItems={[3, 1, 2]} />);
         await user.click(up1Btn);
         expect(onChange).toHaveBeenCalledWith([1, 3, 2]);
 
-        view.rerender(<NxTransferList { ...minimalProps }
-                                      { ...{ allItems, onChange } }
-                                      allowReordering={true}
-                                      selectedItems={[1, 3, 2]} />);
+        view.rerender(<NxStatefulTransferList { ...minimalProps }
+                                              { ...{ allItems, onChange } }
+                                              allowReordering={true}
+                                              selectedItems={[1, 3, 2]} />);
         await user.click(up2Btn);
         expect(onChange).toHaveBeenCalledWith([1, 2, 3]);
       });
@@ -949,24 +896,24 @@ describe('NxTransferList', function() {
         await user.click(down1Btn);
         expect(onChange).toHaveBeenCalledWith([2, 1, 3]);
 
-        view.rerender(<NxTransferList { ...minimalProps }
-                                      { ...{ allItems, onChange } }
-                                      allowReordering={true}
-                                      selectedItems={[2, 1, 3]} />);
+        view.rerender(<NxStatefulTransferList { ...minimalProps }
+                                              { ...{ allItems, onChange } }
+                                              allowReordering={true}
+                                              selectedItems={[2, 1, 3]} />);
         await user.click(down1Btn);
         expect(onChange).toHaveBeenCalledWith([2, 3, 1]);
 
-        view.rerender(<NxTransferList { ...minimalProps }
-                                      { ...{ allItems, onChange } }
-                                      allowReordering={true}
-                                      selectedItems={[2, 3, 1]} />);
+        view.rerender(<NxStatefulTransferList { ...minimalProps }
+                                              { ...{ allItems, onChange } }
+                                              allowReordering={true}
+                                              selectedItems={[2, 3, 1]} />);
         await user.click(down3Btn);
         expect(onChange).toHaveBeenCalledWith([2, 1, 3]);
 
-        view.rerender(<NxTransferList { ...minimalProps }
-                                      { ...{ allItems, onChange } }
-                                      allowReordering={true}
-                                      selectedItems={[2, 1, 3]} />);
+        view.rerender(<NxStatefulTransferList { ...minimalProps }
+                                              { ...{ allItems, onChange } }
+                                              allowReordering={true}
+                                              selectedItems={[2, 1, 3]} />);
         await user.click(down2Btn);
         expect(onChange).toHaveBeenCalledWith([1, 2, 3]);
       });
@@ -1023,7 +970,7 @@ describe('NxTransferList', function() {
         expect(onChange).toHaveBeenCalledWith([3, 2, 1]);
       });
 
-      it('disables all reordering buttons if selectedItemsFilters is a non-empty string', async function() {
+      it('disables all reordering buttons when the selected items filter is non-empty', async function() {
         const user = userEvent.setup(),
             allItems = [
               { id: 1, displayName: 'One' },
@@ -1031,13 +978,17 @@ describe('NxTransferList', function() {
               { id: 3, displayName: 'Theo' }
             ],
             onChange = jest.fn(),
-            view = quickRender({ onChange, allItems, selectedItemsFilter: 'o', selectedItems: [1, 2, 3] }),
-            selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
+            view = quickRender({ onChange, allItems, selectedItems: [1, 2, 3] }),
+            selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
+            selectedFilter = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
+
+        await user.type(selectedFilter, 'o');
 
         await runTimers();
 
         // these button don't have an a11y name when they are disabled this way
-        const orderingBtns = within(selectedGroup).getAllByRole('button', { name: '' });
+        const orderingBtns = within(selectedGroup).getAllByRole('button', { name: '' }),
+            clearFilterBtn = within(selectedGroup).getByRole('button', { name: 'Clear filter' });
 
         expect(orderingBtns).toHaveLength(6);
         for (const btn of orderingBtns) {
@@ -1045,7 +996,20 @@ describe('NxTransferList', function() {
           await user.click(btn);
         }
 
+        await user.click(clearFilterBtn);
         expect(onChange).not.toHaveBeenCalled();
+
+        // first and last buttons should still be disabled as always but others should now be enabled
+        expect(orderingBtns[0]).toHaveAttribute('aria-disabled', 'true');
+        expect(orderingBtns[1]).not.toHaveAttribute('aria-disabled', 'true');
+        expect(orderingBtns[2]).not.toHaveAttribute('aria-disabled', 'true');
+        expect(orderingBtns[3]).not.toHaveAttribute('aria-disabled', 'true');
+        expect(orderingBtns[4]).not.toHaveAttribute('aria-disabled', 'true');
+        expect(orderingBtns[5]).toHaveAttribute('aria-disabled', 'true');
+
+        await user.click(orderingBtns[1]);
+
+        expect(onChange).toHaveBeenCalled();
       });
 
       it('adds a "Reordering is disabled with filtered" tooltip on the buttons when selectedItemsFilters is ' +
@@ -1056,10 +1020,14 @@ describe('NxTransferList', function() {
               { id: 2, displayName: 'Two' },
               { id: 3, displayName: 'Theo' }
             ],
-            view = quickRender({ allItems, selectedItemsFilter: 'o', selectedItems: [1, 2, 3] }),
+            view = quickRender({ allItems, selectedItems: [1, 2, 3] }),
+            selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
+            selectedFilterInput = within(selectedGroup).getByRole('textbox', { name: 'Filter' }),
             group1 = view.getByRole('group', { name: 'One' }),
             group2 = view.getByRole('group', { name: 'Two' }),
             group3 = view.getByRole('group', { name: 'Theo' });
+
+        await user.type(selectedFilterInput, 'o');
 
         await runTimers();
         const [up1Btn, down1Btn] = within(group1).getAllByRole('button'),

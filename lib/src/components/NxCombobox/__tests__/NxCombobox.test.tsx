@@ -1222,6 +1222,23 @@ describe('NxCombobox', function() {
         expect(screen.getByRole('tooltip')).toHaveTextContent('Clear filter');
       });
 
+      it('does not submit the form when the clear button is clicked', async function() {
+        const user = userEvent.setup(),
+            onSubmit = jest.fn(),
+            view = render(
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxCombobox {...minimalProps} filterInput={true} value="a" />
+              </NxForm>
+            );
+
+        await runTimers();
+        const clearBtn = view.getByRole('button', { name: /clear/i });
+        expect(onSubmit).not.toHaveBeenCalled();
+
+        await user.click(clearBtn);
+        expect(onSubmit).not.toHaveBeenCalled();
+      });
+
       it('still clears the input and triggers a search on the empty string when Escape key is pressed', async () => {
         const user = userEvent.setup(),
             onChange = jest.fn(),
@@ -1308,6 +1325,23 @@ describe('NxCombobox', function() {
         await runTimers();
 
         expect(screen.getByRole('tooltip')).toHaveTextContent('Clear search');
+      });
+
+      it('does not submit the form when the clear button is clicked', async function() {
+        const user = userEvent.setup(),
+            onSubmit = jest.fn(),
+            view = render(
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxCombobox {...minimalProps} filterInput={true} value="a"/>
+              </NxForm>
+            );
+
+        await runTimers();
+        const clearBtn = view.getByRole('button', { name: /clear/i });
+        expect(onSubmit).not.toHaveBeenCalled();
+
+        await user.click(clearBtn);
+        expect(onSubmit).not.toHaveBeenCalled();
       });
 
       it('still clears the input and triggers a search on the empty string when Escape key is pressed', async () => {

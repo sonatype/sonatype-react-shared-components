@@ -4,121 +4,476 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
-import { Slider } from '@material-ui/core';
-
-import { getShallowComponent } from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
+import { act } from '@testing-library/react';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 import NxPolicyThreatSlider, { Props } from '../NxPolicyThreatSlider';
-import { LabelDisplayProps } from '../types';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 describe('NxPolicyThreatSlider', function() {
   const minimalProps: Props = { value: [0, 10] },
-      getSlider = getShallowComponent(NxPolicyThreatSlider, minimalProps);
+      quickRender = rtlRender(NxPolicyThreatSlider, minimalProps),
+      renderEl = rtlRenderElement(NxPolicyThreatSlider, minimalProps);
 
-  it('renders a .nx-policy-threat-slider div containing a MUI Slider', function() {
-    expect(getSlider()).toMatchSelector('div.nx-policy-threat-slider');
-    expect(getSlider().find(Slider)).toExist();
+  it('renders two slider elements', function() {
+    const view = quickRender(),
+        sliders = view.getAllByRole('slider');
+
+    expect(sliders).toHaveLength(2);
   });
 
-  it('adds any specified class name to the top div', function() {
-    expect(getSlider({ className: 'foo' })).toHaveClassName('foo');
-    expect(getSlider({ className: 'foo' })).toHaveClassName('nx-policy-threat-slider');
+  it('adds any specified class name to the top-level element', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
+
+    expect(el).toHaveClass('foo');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('configures the Slider with the appopriate min, max, and marks configurations', function() {
-    const component = getSlider().find(Slider);
-    expect(component).toHaveProp('min', 0);
-    expect(component).toHaveProp('max', 10);
-    expect(component).toHaveProp('marks', true);
+  it('sets the accessible name of the first slider to "threat level min"', function() {
+    const sliders = quickRender().getAllByRole('slider'),
+        backwardsValueSliders = quickRender({ value: [10, 0] }).getAllByRole('slider');
+
+    expect(sliders[0]).toHaveAccessibleName('threat level min');
+    expect(backwardsValueSliders[0]).toHaveAccessibleName('threat level min');
   });
 
-  it('passes the value from the Slider\'s onChange to its own onChange', function() {
-    const onChange = jest.fn(),
-        component = getSlider({ onChange }).find(Slider);
+  it('sets the accessible name of the second slider to "threat level max"', function() {
+    const sliders = quickRender().getAllByRole('slider'),
+        backwardsValueSliders = quickRender({ value: [10, 0] }).getAllByRole('slider');
 
-    component.simulate('change', {}, [3, 4]);
-
-    expect(onChange).toHaveBeenCalledWith([3, 4]);
+    expect(sliders[1]).toHaveAccessibleName('threat level max');
+    expect(backwardsValueSliders[1]).toHaveAccessibleName('threat level max');
   });
 
-  describe('NxPolicyThreatSliderValueLabelDisplay', function() {
-    const NxPolicyThreatSliderValueLabelDisplay = getSlider().find(Slider).prop('ValueLabelComponent') as
-          FunctionComponent<LabelDisplayProps>,
-        minimalProps: LabelDisplayProps = {
-          value: 0,
-          open: false,
-          children: <div className="foo" />
-        },
-        getValueLabelDisplay = getShallowComponent(NxPolicyThreatSliderValueLabelDisplay, minimalProps);
+  it('sets aria-valuemin to 0 and aria-valuemax to 10 on both sliders', function() {
+    const sliders = quickRender().getAllByRole('slider');
 
-    it('is the Component passed in as the Slider\'s ValueLabelComponent', function() {
-      expect(NxPolicyThreatSliderValueLabelDisplay).toBeDefined();
-      expect(NxPolicyThreatSliderValueLabelDisplay.name).toBe('NxPolicyThreatSliderValueLabelDisplay');
+    expect(sliders[0]).toHaveAttribute('aria-valuemin', '0');
+    expect(sliders[1]).toHaveAttribute('aria-valuemin', '0');
+
+    expect(sliders[0]).toHaveAttribute('aria-valuemax', '10');
+    expect(sliders[1]).toHaveAttribute('aria-valuemax', '10');
+  });
+
+  it('sets the aria-valuenow of the min slider to the smaller value in the value prop', function() {
+    expect(quickRender().getByRole('slider', { name: 'threat level min' })).toHaveAttribute('aria-valuenow', '0');
+    expect(quickRender({ value: [1, 8] }).getByRole('slider', { name: 'threat level min' }))
+        .toHaveAttribute('aria-valuenow', '1');
+    expect(quickRender({ value: [5, 5] }).getByRole('slider', { name: 'threat level min' }))
+        .toHaveAttribute('aria-valuenow', '5');
+    expect(quickRender({ value: [5, 2] }).getByRole('slider', { name: 'threat level min' }))
+        .toHaveAttribute('aria-valuenow', '2');
+  });
+
+  it('sets the aria-valuetext of the min slider to the smaller value in the value prop along with ' +
+      'its threat level category', function() {
+    expect(quickRender().getByRole('slider', { name: 'threat level min' }))
+        .toHaveAttribute('aria-valuetext', '0 (none)');
+    expect(quickRender({ value: [1, 8] }).getByRole('slider', { name: 'threat level min' }))
+        .toHaveAttribute('aria-valuetext', '1 (low)');
+    expect(quickRender({ value: [3, 3] }).getByRole('slider', { name: 'threat level min' }))
+        .toHaveAttribute('aria-valuetext', '3 (moderate)');
+    expect(quickRender({ value: [10, 7] }).getByRole('slider', { name: 'threat level min' }))
+        .toHaveAttribute('aria-valuetext', '7 (severe)');
+    expect(quickRender({ value: [10, 10] }).getByRole('slider', { name: 'threat level min' }))
+        .toHaveAttribute('aria-valuetext', '10 (critical)');
+  });
+
+  it('sets the aria-valuenow of the max slider to the larger value in the value prop', function() {
+    expect(quickRender().getByRole('slider', { name: 'threat level max' })).toHaveAttribute('aria-valuenow', '10');
+    expect(quickRender({ value: [1, 8] }).getByRole('slider', { name: 'threat level max' }))
+        .toHaveAttribute('aria-valuenow', '8');
+    expect(quickRender({ value: [5, 5] }).getByRole('slider', { name: 'threat level max' }))
+        .toHaveAttribute('aria-valuenow', '5');
+    expect(quickRender({ value: [5, 2] }).getByRole('slider', { name: 'threat level max' }))
+        .toHaveAttribute('aria-valuenow', '5');
+  });
+
+  it('sets the aria-valuetext of the max slider to the larger value in the value prop along with ' +
+      'its threat level category', function() {
+    expect(quickRender().getByRole('slider', { name: 'threat level max' }))
+        .toHaveAttribute('aria-valuetext', '10 (critical)');
+    expect(quickRender({ value: [1, 7] }).getByRole('slider', { name: 'threat level max' }))
+        .toHaveAttribute('aria-valuetext', '7 (severe)');
+    expect(quickRender({ value: [3, 3] }).getByRole('slider', { name: 'threat level max' }))
+        .toHaveAttribute('aria-valuetext', '3 (moderate)');
+    expect(quickRender({ value: [1, 0] }).getByRole('slider', { name: 'threat level max' }))
+        .toHaveAttribute('aria-valuetext', '1 (low)');
+    expect(quickRender({ value: [0, 0] }).getByRole('slider', { name: 'threat level max' }))
+        .toHaveAttribute('aria-valuetext', '0 (none)');
+  });
+
+  it('sets aria-disabled to true on the sliders when they are disabled', function() {
+    const disabledSliders = quickRender({ disabled: true }).getAllByRole('slider'),
+        enabledSliders = quickRender().getAllByRole('slider');
+
+    for (const slider of disabledSliders) {
+      expect(slider).toHaveAttribute('aria-disabled', 'true');
+    }
+
+    for (const slider of enabledSliders) {
+      expect(slider).not.toHaveAttribute('aria-disabled', 'true');
+    }
+  });
+
+  describe('mouse interactions', function() {
+    beforeAll(function() {
+      // The slider must have some semblance of layout for mouse moves to work
+      jest.spyOn(Element.prototype, 'getBoundingClientRect').mockImplementation(() => ({
+        width: 100,
+        right: 100,
+        height: 10,
+        bottom: 10,
+        top: 0,
+        y: 0,
+        left: 0,
+        x: 0
+      } as DOMRect));
     });
 
-    it('renders a span with the nx-policy-threat-slider__value-label class', function() {
-      expect(getValueLabelDisplay()).toMatchSelector('span.nx-policy-threat-slider__value-label');
+    it('fires onChange with the new value range when the min slider is dragged', async function() {
+      const user = userEvent.setup(),
+          onChange = jest.fn(),
+          view = quickRender({ onChange }),
+          slider = view.getByRole('slider', { name: 'threat level min' });
+
+      expect(onChange).not.toHaveBeenCalled();
+
+      await act(async () => {
+        await user.pointer([
+          { target: slider, coords: { x: 0, y: 5 }, keys: '[MouseLeft>]' },   // mouse down on slider
+          { target: slider, coords: { x: 20, y: 5 } },                        // drag to (20, 5)
+          '[/MouseLeft]'                                                      // mouse up
+        ]);
+      });
+
+      expect(onChange).toHaveBeenCalledWith([2, 10]);
     });
 
-    it('adds specified classNames', function() {
-      const component = getValueLabelDisplay({ className: 'bar' });
+    it('does not fire onChange when a min value less than zero when the slider is dragged beyond the left edge',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [3, 4] }),
+              slider = view.getByRole('slider', { name: 'threat level min' });
 
-      expect(component).toHaveClassName('bar');
-      expect(component).toHaveClassName('nx-policy-threat-slider__value-label');
+          expect(onChange).not.toHaveBeenCalled();
+
+          await act(async () => {
+            await user.pointer([
+              { target: slider, coords: { x: 30, y: 5 }, keys: '[MouseLeft>]' },
+              { target: slider, coords: { x: -20, y: 5 } },
+              '[/MouseLeft]'
+            ]);
+          });
+
+          const onChangeMinVals = onChange.mock.calls.map(([[minVal]]) => minVal),
+              minMinVal = Math.min(...onChangeMinVals);
+
+          expect(minMinVal).toBe(0);
+        }
+    );
+
+    it('fires onChange with the new value range when the max slider is dragged', async function() {
+      const user = userEvent.setup(),
+          onChange = jest.fn(),
+          view = quickRender({ onChange }),
+          slider = view.getByRole('slider', { name: 'threat level max' });
+
+      expect(onChange).not.toHaveBeenCalled();
+
+      await act(async () => {
+        await user.pointer([
+          { target: slider, coords: { x: 100, y: 5 }, keys: '[MouseLeft>]' },     // mouse down on slider
+          { target: slider, coords: { x: 20, y: 5 } },                            // drag to (20, 5)
+          '[/MouseLeft]'                                                          // mouse up
+        ]);
+      });
+
+      expect(onChange).toHaveBeenCalledWith([0, 2]);
     });
 
-    it('adds a modifier class name for the appropriate threat level category', function() {
-      expect(getValueLabelDisplay({ value: 0 })).toHaveClassName('nx-policy-threat-slider__value-label--none');
-      expect(getValueLabelDisplay({ value: 1 })).toHaveClassName('nx-policy-threat-slider__value-label--low');
-      expect(getValueLabelDisplay({ value: 2 })).toHaveClassName('nx-policy-threat-slider__value-label--moderate');
-      expect(getValueLabelDisplay({ value: 3 })).toHaveClassName('nx-policy-threat-slider__value-label--moderate');
-      expect(getValueLabelDisplay({ value: 4 })).toHaveClassName('nx-policy-threat-slider__value-label--severe');
-      expect(getValueLabelDisplay({ value: 5 })).toHaveClassName('nx-policy-threat-slider__value-label--severe');
-      expect(getValueLabelDisplay({ value: 6 })).toHaveClassName('nx-policy-threat-slider__value-label--severe');
-      expect(getValueLabelDisplay({ value: 7 })).toHaveClassName('nx-policy-threat-slider__value-label--severe');
-      expect(getValueLabelDisplay({ value: 8 })).toHaveClassName('nx-policy-threat-slider__value-label--critical');
-      expect(getValueLabelDisplay({ value: 9 })).toHaveClassName('nx-policy-threat-slider__value-label--critical');
-      expect(getValueLabelDisplay({ value: 10 })).toHaveClassName('nx-policy-threat-slider__value-label--critical');
+    it('does not fire onChange when a max value greater than 10 when the slider is dragged beyond the right edge',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [3, 4] }),
+              slider = view.getByRole('slider', { name: 'threat level max' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await act(async () => {
+            await user.pointer([
+              { target: slider, coords: { x: 40, y: 5 }, keys: '[MouseLeft>]' },
+              { target: slider, coords: { x: 150, y: 5 } },
+              '[/MouseLeft]'
+            ]);
+          });
+
+          const onChangeMaxVals = onChange.mock.calls.map(([[, maxVal]]) => maxVal),
+              maxMaxVal = Math.max(...onChangeMaxVals);
+
+          expect(maxMaxVal).toBe(10);
+        }
+    );
+
+    it('fires onChange with the values ordered from least to greatest when the sliders cross over one another',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [3, 4] }),
+              slider = view.getByRole('slider', { name: 'threat level max' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await act(async () => {
+            await user.pointer([
+              { target: slider, coords: { x: 40, y: 5 }, keys: '[MouseLeft>]' },     // mouse down on slider
+              { target: slider, coords: { x: 20, y: 5 } },                           // drag to (20, 5)
+              '[/MouseLeft]'                                                         // mouse up
+            ]);
+          });
+
+          expect(onChange).toHaveBeenCalledWith([2, 3]);
+        }
+    );
+
+    it('fires onChange with the the same value twice when the slider are set to the same value',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [3, 4] }),
+              slider = view.getByRole('slider', { name: 'threat level max' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await act(async () => {
+            await user.pointer([
+              { target: slider, coords: { x: 40, y: 5 }, keys: '[MouseLeft>]' },      // mouse down on slider
+              { target: slider, coords: { x: 30, y: 5 } },                            // drag to (30, 5)
+              '[/MouseLeft]'                                                          // mouse up
+            ]);
+          });
+
+          expect(onChange).toHaveBeenCalledWith([3, 3]);
+        }
+    );
+
+    it('does not fire onChange in response to mouse events when disabled', async function() {
+      const user = userEvent.setup(),
+          onChange = jest.fn(),
+          view = quickRender({ disabled: true, onChange }),
+          sliders = view.getAllByRole('slider');
+
+      // user.pointer throws an exception when used on an element with pointer-events: none.
+      // This is the recommended recourse.
+      // See https://github.com/testing-library/user-event/issues/708#issuecomment-889953363
+      await expect(async () => {
+        await act(async () => {
+          await user.pointer([
+            { target: sliders[0], coords: { x: 0, y: 5 }, keys: '[MouseLeft>]' },
+            { target: sliders[0], coords: { x: 20, y: 5 } },
+            '[/MouseLeft]'
+          ]);
+        });
+      }).rejects.toThrow();
+
+      await expect(async () => {
+        await act(async () => {
+          await user.pointer([
+            { target: sliders[1], coords: { x: 100, y: 5 }, keys: '[MouseLeft>]' },
+            { target: sliders[1], coords: { x: 90, y: 5 } },
+            '[/MouseLeft]'
+          ]);
+        });
+      }).rejects.toThrow();
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('keyboard interactions', function() {
+    it('fires onChange with a decreased first value when the min slider receives an ArrowLeft key press',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [3, 4] }),
+              slider = view.getByRole('slider', { name: 'threat level min' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await user.tab();
+          expect(document.activeElement).toBe(slider);
+
+          await user.keyboard('[ArrowLeft]');
+
+          // no change in focus
+          expect(document.activeElement).toBe(slider);
+          expect(onChange).toHaveBeenCalledWith([2, 4]);
+        }
+    );
+
+    it('fires onChange with an increased first value when the min slider receives an ArrowRight key press',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [3, 5] }),
+              slider = view.getByRole('slider', { name: 'threat level min' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await user.tab();
+          expect(document.activeElement).toBe(slider);
+
+          await user.keyboard('[ArrowRight]');
+
+          // no change in focus
+          expect(document.activeElement).toBe(slider);
+          expect(onChange).toHaveBeenCalledWith([4, 5]);
+        }
+    );
+
+    it('fires onChange with a decreased second value when the max slider receives an ArrowLeft key press',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [2, 4] }),
+              slider = view.getByRole('slider', { name: 'threat level max' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await user.tab();
+          await user.tab();
+          expect(document.activeElement).toBe(slider);
+
+          await user.keyboard('[ArrowLeft]');
+
+          // no change in focus
+          expect(document.activeElement).toBe(slider);
+          expect(onChange).toHaveBeenCalledWith([2, 3]);
+        }
+    );
+
+    it('fires onChange with an increased second value when the max slider receives an ArrowRight key press',
+        async function() {
+          const user = userEvent.setup(),
+              onChange = jest.fn(),
+              view = quickRender({ onChange, value: [3, 5] }),
+              slider = view.getByRole('slider', { name: 'threat level max' });
+
+          expect(onChange).not.toHaveBeenCalled();
+
+          await user.tab();
+          await user.tab();
+          expect(document.activeElement).toBe(slider);
+
+          await user.keyboard('[ArrowRight]');
+
+          // no change in focus
+          expect(document.activeElement).toBe(slider);
+          expect(onChange).toHaveBeenCalledWith([3, 6]);
+        }
+    );
+
+    describe('when the sliders are initially equal', function() {
+      it('fires onChange with a decreased first value when the min slider receives an ArrowLeft key press',
+          async function() {
+            const user = userEvent.setup(),
+                onChange = jest.fn(),
+                view = quickRender({ onChange, value: [5, 5] }),
+                slider = view.getByRole('slider', { name: 'threat level min' });
+
+            expect(onChange).not.toHaveBeenCalled();
+
+            await user.tab();
+            expect(document.activeElement).toBe(slider);
+
+            await user.keyboard('[ArrowLeft]');
+
+            // no change in focus
+            expect(document.activeElement).toBe(slider);
+            expect(onChange).toHaveBeenCalledWith([4, 5]);
+          }
+      );
+
+      it('fires onChange with an increased second value when the min slider receives an ArrowRight key press',
+          async function() {
+            const user = userEvent.setup(),
+                onChange = jest.fn(),
+                view = quickRender({ onChange, value: [5, 5] }),
+                minSlider = view.getByRole('slider', { name: 'threat level min' }),
+                maxSlider = view.getByRole('slider', { name: 'threat level max' });
+
+            expect(onChange).not.toHaveBeenCalled();
+
+            await user.tab();
+            expect(document.activeElement).toBe(minSlider);
+
+            await user.keyboard('[ArrowRight]');
+
+            // focus should be on the slider representing the increase, which is the max slider
+            expect(document.activeElement).toBe(maxSlider);
+            expect(onChange).toHaveBeenCalledWith([5, 6]);
+          }
+      );
+
+      it('fires onChange with a decreased first value when the max slider receives an ArrowLeft key press',
+          async function() {
+            const user = userEvent.setup(),
+                onChange = jest.fn(),
+                view = quickRender({ onChange, value: [5, 5] }),
+                minSlider = view.getByRole('slider', { name: 'threat level min' }),
+                maxSlider = view.getByRole('slider', { name: 'threat level max' });
+
+            expect(onChange).not.toHaveBeenCalled();
+
+            await user.tab();
+            await user.tab();
+            expect(document.activeElement).toBe(maxSlider);
+
+            await user.keyboard('[ArrowLeft]');
+
+            // focus should be on the slider representing the decrease, which is the min slider
+            expect(document.activeElement).toBe(minSlider);
+            expect(onChange).toHaveBeenCalledWith([4, 5]);
+          }
+      );
+
+      it('fires onChange with an increased second value when the max slider receives an ArrowRight key press',
+          async function() {
+            const user = userEvent.setup(),
+                onChange = jest.fn(),
+                view = quickRender({ onChange, value: [5, 5] }),
+                slider = view.getByRole('slider', { name: 'threat level max' });
+
+            expect(onChange).not.toHaveBeenCalled();
+
+            await user.tab();
+            await user.tab();
+            expect(document.activeElement).toBe(slider);
+
+            await user.keyboard('[ArrowRight]');
+
+            // no change in focus
+            expect(document.activeElement).toBe(slider);
+            expect(onChange).toHaveBeenCalledWith([5, 6]);
+          }
+      );
     });
 
-    it('sets the value as the children of its child', function() {
-      expect(getValueLabelDisplay({ value: 5 }).find('.foo').children()).toHaveText('5');
-    });
+    it('is not included in the tab order if disabled', async function() {
+      const user = userEvent.setup(),
+          onChange = jest.fn(),
+          view = quickRender({ disabled: true, onChange }),
+          sliders = view.getAllByRole('slider');
 
-    it('sets the aria-valuetext of its child to include the numeric threat level and category', function() {
-      const component = getValueLabelDisplay({ value: 5 }).find('.foo'),
-          valueText = component.prop('aria-valuetext');
+      await user.tab();
+      expect(sliders).not.toContain(document.activeElement);
 
-      expect(valueText).toContain('5');
-      expect(valueText).toContain('severe');
-    });
-
-    it('sets the aria-disabled of its child based on its disabled prop', function() {
-      expect(getValueLabelDisplay({ value: 5 }).find('.foo')).toHaveProp('aria-disabled', undefined);
-      expect(getValueLabelDisplay({ value: 5, disabled: null }).find('.foo')).toHaveProp('aria-disabled', null);
-      expect(getValueLabelDisplay({ value: 5, disabled: false }).find('.foo')).toHaveProp('aria-disabled', false);
-      expect(getValueLabelDisplay({ value: 5, disabled: true }).find('.foo')).toHaveProp('aria-disabled', true);
-    });
-
-    it('passes other props except open, valueLabelFormat, and valueLabelDisplay to the span', function() {
-      const onClick = jest.fn(),
-          props: any = {
-            id: 'foo',
-            onClick,
-
-            open: true,
-            valueLabelFormat: (x: any) => x,
-            valueLabelDisplay: 'on'
-          },
-          component = getValueLabelDisplay(props);
-
-      expect(component).toHaveProp('id', 'foo');
-      expect(component).toHaveProp('onClick', onClick);
-      expect(component).not.toHaveProp('open');
-      expect(component).not.toHaveProp('valueLabelFormat');
-      expect(component).not.toHaveProp('valueLabelDisplay');
+      await user.tab();
+      expect(sliders).not.toContain(document.activeElement);
     });
   });
 });

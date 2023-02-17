@@ -5,89 +5,94 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import * as enzymeUtils from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { render } from '@testing-library/react';
+import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxIndeterminatePagination, { Props } from '../NxIndeterminatePagination';
-import NxButton from '../../NxButton/NxButton';
-import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 describe('NxIndeterminatePagination', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         onPrevPageSelect: () => {},
         onNextPageSelect: () => {}
       },
-      getShallowComponent = enzymeUtils.getShallowComponent<Props>(NxIndeterminatePagination, minimalProps);
+      quickRender = rtlRender(NxIndeterminatePagination, minimalProps),
+      renderEl = rtlRenderElement(NxIndeterminatePagination, minimalProps);
 
-  it('renders an nx-btn-bar with back and forwards buttons', function() {
-    const component = getShallowComponent();
+  it('renders a top-level navigation element with an accessible name of "pagination"', function() {
+    const component = quickRender(),
+        nav = component.getByRole('navigation');
 
-    expect(component).toHaveClassName('nx-btn-bar');
-    expect(component).toMatchElement(
-      <nav>
-        <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-        <NxButton><NxFontAwesomeIcon icon={{} as IconProp} /></NxButton>
-      </nav>
-    );
-
-    expect(component.find(NxButton).first()).toHaveProp('aria-label', 'previous page');
-    expect(component.find(NxButton).last()).toHaveProp('aria-label', 'next page');
-
-    expect(component.find(NxFontAwesomeIcon).first()).toHaveProp('icon', faCaretLeft);
-    expect(component.find(NxFontAwesomeIcon).last()).toHaveProp('icon', faCaretRight);
+    expect(nav).toBe(component.container.firstElementChild);
+    expect(nav).toHaveAccessibleName('pagination');
   });
 
-  it('adds custom class names to the btn bar', function() {
-    const component = getShallowComponent({ className: 'foo' });
+  it('allows the navigation accessible name to be overridden via aria-label or aria-labelledby', function() {
+    render(<div id="label-el">Labelled By</div>);
 
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-btn-bar');
+    const labelComponent = quickRender({ 'aria-label': 'Label' }),
+        labelledByComponent = quickRender({ 'aria-labelledby': 'label-el' });
+
+    expect(labelComponent.getByRole('navigation')).toHaveAccessibleName('Label');
+    expect(labelledByComponent.getByRole('navigation')).toHaveAccessibleName('Labelled By');
   });
 
-  it('adds native div attrs to the btn bar', function() {
-    const component = getShallowComponent({ id: 'foo', spellCheck: true });
+  it('renders a button with type="button" and accessible name of previous page', function() {
+    const component = quickRender(),
+        button = component.getByRole('button', { name: 'previous page' });
 
-    expect(component).toHaveProp('id', 'foo');
-    expect(component).toHaveProp('spellCheck', true);
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute('type', 'button');
+    expect(button).toHaveAccessibleName('previous page');
   });
 
-  it('puts type="button" on both buttons', function() {
-    const buttons = getShallowComponent().find(NxButton);
+  it('renders a button with type="button" and accessible name of next page', function() {
+    const component = quickRender(),
+        button = component.getByRole('button', { name: 'next page' });
 
-    buttons.forEach(btn => {
-      expect(btn).toHaveProp('type', 'button');
-    });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute('type', 'button');
+    expect(button).toHaveAccessibleName('next page');
   });
 
-  it('fires onPrevPageSelect when the back button is clicked', function() {
-    const prevHandler = jest.fn(),
-        nextHandler = jest.fn(),
-        evt = { foo: 'bar' },
-        component = getShallowComponent({
-          onPrevPageSelect: prevHandler,
-          onNextPageSelect: nextHandler
-        });
+  it('adds specified classNames to the element in addition to the defaults', function() {
+    const el = renderEl({ className: 'foo' }),
+        defaultEl = renderEl()!;
 
-    component.find(NxButton).first().simulate('click', evt);
+    expect(el).toHaveClass('foo');
 
-    expect(prevHandler).toHaveBeenCalledWith(evt);
-    expect(nextHandler).not.toHaveBeenCalled();
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('fires onNextPageSelect when the back button is clicked', function() {
-    const prevHandler = jest.fn(),
-        nextHandler = jest.fn(),
-        evt = { foo: 'bar' },
-        component = getShallowComponent({
-          onPrevPageSelect: prevHandler,
-          onNextPageSelect: nextHandler
-        });
+  it('adds specified attrs', function() {
+    const el = renderEl({ id: 'foo', lang: 'en' });
 
-    component.find(NxButton).last().simulate('click', evt);
+    expect(el).toHaveAttribute('id', 'foo');
+    expect(el).toHaveAttribute('lang', 'en');
+  });
 
-    expect(nextHandler).toHaveBeenCalledWith(evt);
-    expect(prevHandler).not.toHaveBeenCalled();
+  it('fires onPrevPageSelect when the prev page button is clicked', async function() {
+    const user = userEvent.setup(),
+        onPrevPageSelect = jest.fn(),
+        prevPageBtn = quickRender({ onPrevPageSelect }).getByRole('button', { name: 'previous page' });
+
+    expect(onPrevPageSelect).not.toHaveBeenCalled();
+
+    await user.click(prevPageBtn);
+
+    expect(onPrevPageSelect).toHaveBeenCalled();
+  });
+
+  it('fires onNextPageSelect when the next page button is clicked', async function() {
+    const user = userEvent.setup(),
+        onNextPageSelect = jest.fn(),
+        nextPageBtn = quickRender({ onNextPageSelect }).getByRole('button', { name: 'next page' });
+
+    expect(onNextPageSelect).not.toHaveBeenCalled();
+
+    await user.click(nextPageBtn);
+
+    expect(onNextPageSelect).toHaveBeenCalled();
   });
 });

@@ -7,7 +7,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { NxFormGroup, NxTextInput, NxButton, nxTextInputStateHelpers, NxForm } from '@sonatype/react-shared-components';
-import { SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components/components/NxSubmitMask/NxSubmitMask';
+import { SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS } from '@sonatype/react-shared-components';
 
 const { initialState, userInput } = nxTextInputStateHelpers;
 
@@ -59,7 +59,7 @@ export default function NxFormCustomizedExample() {
 
         setTimeout(function() {
           setSubmitMaskState(null);
-        }, SUCCESS_VISIBLE_TIME_MS);
+        }, SUBMIT_MASK_SUCCESS_VISIBLE_TIME_MS);
       }, 3000);
     }
 
