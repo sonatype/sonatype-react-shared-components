@@ -29,7 +29,7 @@ $-width: 44px;
         border-color: var(--nx-color-interactive-border-disabled);
       }
       .nx-toggle__indicator, .nx-toggle__input:checked + .nx-toggle__control .nx-toggle__indicator {
-      color: var(--nx-color-interactive-border-disabled);
+        color: var(--nx-color-interactive-border-disabled);
       }
     }
   }
