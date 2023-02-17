@@ -46,7 +46,7 @@ export default function NxFieldsetRequiredExample() {
     validationErrors: selectedItemsValidationErrors
   } = useTransferListState(
       new Set<number>(),
-      (selectedItems) => selectedItems.size ? 'At least one item must be selected' : null
+      (selectedItems) => !selectedItems.size ? 'At least one item must be selected' : null
   );
 
   const [availableItemsFilter, setAvailableItemsFilter] = useState(''),
