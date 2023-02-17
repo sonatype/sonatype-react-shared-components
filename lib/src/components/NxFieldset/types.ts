@@ -45,7 +45,7 @@ export interface CheckboxStateProps<T extends string = string> {
   validationErrors: ValidationErrors;
 }
 
-export interface TransferListProps<K> {
+export interface TransferListStateProps<K> {
   selectedItems: K;
   isPristine: boolean;
   validationErrors: ValidationErrors;
