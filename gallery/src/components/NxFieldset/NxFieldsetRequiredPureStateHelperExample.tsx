@@ -35,7 +35,7 @@ interface State {
 const requiredMessage = 'At least one color must be selected',
     radioValidator = (v: string | null) => v ? null : requiredMessage,
     checkboxValidator = (selectedDirs: string[]) => selectedDirs.length ? null : requiredMessage,
-    transferListValidator = (selectedItems: Set<string>) => selectedItems ? null : requiredMessage;
+    transferListValidator = (selectedItems: Set<string>) => selectedItems.size ? null : requiredMessage;
 
 const initialState = {
   color: radioGroupInitialState(undefined, radioValidator),
