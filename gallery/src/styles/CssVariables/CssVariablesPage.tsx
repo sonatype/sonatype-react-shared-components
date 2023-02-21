@@ -349,9 +349,6 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-binary-donut-chart-arc-stroke">
               The color used on the <NxCode>NxBinaryDonutChart</NxCode> arc color.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-header-background">
-              The background color used on the <NxCode>NxGlobalHeader</NxCode>.
-            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-header-border">
               The border color used on the <NxCode>NxGlobalHeader</NxCode>.
             </ColorDocRow>
