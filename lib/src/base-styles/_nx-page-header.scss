@@ -7,6 +7,7 @@
 @use '../scss-shared/nx-header-variables';
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-button-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
 
 // You will see many one-off sizes for top-margins throughout this file. This is intentional in order
 // to accomplish a subjectively pleasing "centered" look amongst the header's parts. Actually centering them
@@ -16,7 +17,7 @@
 .nx-page-header {
   box-sizing: content-box;
 
-  background-color: var(--nx-swatch-white);
+  background-color: var(--nx-color-page-header-background);
   border-bottom: 1px solid var(--nx-swatch-grey-90);
   grid-area: old-header; // see nx-page's grid template
   height: nx-header-variables.$main-header-height;
@@ -108,7 +109,7 @@
 }
 
 .nx-product__divider {
-  color: var(--nx-swatch-black);
+  color: var(--nx-color-page-header-divider);
   font-size: 21px;
   line-height: 1;
   margin-top: 21px;
@@ -118,6 +119,7 @@
 
 .nx-product__name {
   align-items: flex-start;
+  color: var( --nx-color-page-header-product-name);
   display: flex;
   font-size: 26px;
   margin-top: 13px;
@@ -125,6 +127,7 @@
 }
 
 .nx-product__version {
+  color: var( --nx-color-page-header-product-version);
   display: block;
   font-size: var(--nx-font-size-xs);
   margin-top: 27px;
