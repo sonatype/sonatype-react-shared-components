@@ -7,6 +7,7 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-button-helpers';
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
 
 .nx-global-header {
   align-items: center;
@@ -16,6 +17,11 @@
   grid-area: header; // see nx-page's grid-template
   height: 42px;
   padding: 0 var(--nx-spacing-6x);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    background-color: var(--nx-swatch-indigo-20);
+    border-bottom: 2px solid var(--nx-swatch-indigo-15);
+  }
 
   .nx-back-button {
     @include nx-text-helpers.truncate-ellipsis;
