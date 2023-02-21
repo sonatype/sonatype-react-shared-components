@@ -20,7 +20,6 @@
   padding: 0 var(--nx-spacing-6x);
 
   @include nx-dark-mode-helpers.dark-mode {
-    background-color: var(--nx-color-global-header-background);
     border-width: 2px;
     border-color: var(--nx-color-global-header-border);
   }
