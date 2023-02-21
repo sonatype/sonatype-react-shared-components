@@ -13,7 +13,7 @@
   align-items: center;
   background-color: var(--nx-color-global-header-background);
   border-bottom: 1px solid;
-  border-color: var(--nx-color-global-header-border-color);
+  border-color: var(--nx-color-global-header-border);
   display: flex;
   grid-area: header; // see nx-page's grid-template
   height: 42px;
@@ -22,7 +22,7 @@
   @include nx-dark-mode-helpers.dark-mode {
     background-color: var(--nx-color-global-header-background);
     border-width: 2px;
-    border-color: var(--nx-color-global-header-border-color);
+    border-color: var(--nx-color-global-header-border);
   }
 
   .nx-back-button {

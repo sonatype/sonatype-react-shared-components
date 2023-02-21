@@ -61,7 +61,7 @@
 
   // NxGlobalHeader
   --nx-color-global-header-background: var(--nx-swatch-white);
-  --nx-color-global-header-border-color: var(--nx-color-border);
+  --nx-color-global-header-border: var(--nx-color-border);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-35);
@@ -83,6 +83,6 @@
 
     // NxGlobalHeader
     --nx-color-global-header-background: var(--nx-swatch-indigo-20);
-    --nx-color-global-header-border-color: var(--nx-swatch-indigo-15);
+    --nx-color-global-header-border: var(--nx-swatch-indigo-15);
   }
 }
