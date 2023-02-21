@@ -353,7 +353,7 @@ const CssVariablesPage = () => {
               The background color used on the <NxCode>NxTooltip</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-tooltip-text">
-              The color used on the <NxCode>NxTooltip</NxCode> text.
+              The text color used on the <NxCode>NxTooltip</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
