@@ -47,7 +47,7 @@ const states:string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California
   'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
   'Vermont', 'Virginia', 'Washington', 'Washington DC', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
-const { useCheckboxGroupState } = nxFieldsetStateHelpers;
+const { useCheckboxGroupState, useTransferListState } = nxFieldsetStateHelpers;
 
 const transferListItems = map(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
 const comboboxItems = prepend(
@@ -97,8 +97,16 @@ export default function NxFormLayoutExample() {
 
   const [tagColorState, setTagColor] = nxFieldsetStateHelpers.useRadioGroupState<SelectableColor>(undefined, validator);
 
-  const [selectedTransferItems, setSelectedTransferItems] = useState<Set<number>>(new Set()),
-      [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
+  const {
+    state: [selectedTransferItems, setSelectedTransferItems],
+    isPristine: transferItemsIsPristine,
+    validationErrors: transferItemsValidationErrors
+  } = useTransferListState<Set<number>>(
+      new Set(),
+      (selectedItems) => !selectedItems.size ? 'At least one transfer item is required to be selected.' : null
+  );
+
+  const [availableTransferItemsFilter, setAvailableTransferItemsFilter] = useState(''),
       [selectedTransferItemsFilter, setSelectedTransferItemsFilter] = useState('');
 
   const [files, setFiles] = useState<FileList | null>(null),
@@ -133,6 +141,7 @@ export default function NxFormLayoutExample() {
           colorValidationError,
           selectState.validationErrors,
           tagColorState.validationErrors,
+          transferItemsValidationErrors,
           !files?.length ? 'A file is required' : null,
           comboboxInputState.validationErrors
       ) ? 'Required fields are missing' : null;
@@ -232,7 +241,10 @@ export default function NxFormLayoutExample() {
                      onChange={onCommentChange} />
       </NxFormGroup>
       <NxColorPicker label="Tag Color" isRequired { ...tagColorState } onChange={setTagColor} />
-      <NxFieldset label="Numbered Items">
+      <NxFieldset label="Numbered Items"
+                  isRequired
+                  isPristine={transferItemsIsPristine}
+                  validationErrors={transferItemsValidationErrors}>
         <NxTransferList allItems={transferListItems}
                         selectedItems={selectedTransferItems}
                         availableItemsFilter={availableTransferItemsFilter}

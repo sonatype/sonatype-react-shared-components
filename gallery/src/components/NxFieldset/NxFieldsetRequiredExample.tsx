@@ -4,10 +4,19 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
+import { map, range } from 'ramda';
 
-import { NxCheckbox, NxFieldset, NxRadio, nxFieldsetStateHelpers } from '@sonatype/react-shared-components';
-const { useRadioGroupState, useCheckboxGroupState } = nxFieldsetStateHelpers;
+import {
+  NxCheckbox,
+  NxFieldset,
+  NxTransferList,
+  NxRadio,
+  nxFieldsetStateHelpers,
+  DataItem
+} from '@sonatype/react-shared-components';
+
+const { useRadioGroupState, useCheckboxGroupState, useTransferListState } = nxFieldsetStateHelpers;
 
 const requiredMessage = 'At least one color must be selected';
 
@@ -29,6 +38,19 @@ export default function NxFieldsetRequiredExample() {
     east: false,
     west: false
   }, selectedDirs => selectedDirs.length ? null : requiredMessage);
+
+  const items = map<number, DataItem<number>>(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101));
+  const {
+    state: [selectedItems, setSelectedItems],
+    isPristine: selectedItemsIsPristine,
+    validationErrors: selectedItemsValidationErrors
+  } = useTransferListState(
+      new Set<number>(),
+      (selectedItems) => !selectedItems.size ? 'At least one item must be selected' : null
+  );
+
+  const [availableItemsFilter, setAvailableItemsFilter] = useState(''),
+      [selectedItemsFilter, setSelectedItemsFilter] = useState('');
 
   return (
     <>
@@ -57,6 +79,18 @@ export default function NxFieldsetRequiredExample() {
         <NxCheckbox isChecked={west} onChange={toggleWest}>
           West
         </NxCheckbox>
+      </NxFieldset>
+      <NxFieldset label="Select Items"
+                  isRequired
+                  isPristine={selectedItemsIsPristine}
+                  validationErrors={selectedItemsValidationErrors}>
+        <NxTransferList allItems={items}
+                        selectedItems={selectedItems}
+                        availableItemsFilter={availableItemsFilter}
+                        selectedItemsFilter={selectedItemsFilter}
+                        onAvailableItemsFilterChange={setAvailableItemsFilter}
+                        onSelectedItemsFilterChange={setSelectedItemsFilter}
+                        onChange={setSelectedItems} />
       </NxFieldset>
     </>
   );
