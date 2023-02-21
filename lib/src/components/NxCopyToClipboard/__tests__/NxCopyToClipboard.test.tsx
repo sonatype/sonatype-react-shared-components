@@ -4,138 +4,115 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 
-import { getShallowComponent, getMountedComponent } from '../../../__testutils__/enzymeUtils';
-import 'jest-enzyme';
 import { default as NxCopyToClipboard, Props } from '../NxCopyToClipboard';
-import NxButton from '../../NxButton/NxButton';
-import NxFormGroup from '../../NxFormGroup/NxFormGroup';
-import NxTextInput from '../../NxTextInput/NxTextInput';
 import { NxCodeSnippet } from '../../../index';
-import { runTimers } from '../../../__testutils__/rtlUtils';
+import { UserEvent } from '@testing-library/user-event/dist/types/setup';
 
 describe('NxCopyToClipboard', function() {
   const minimalProps: Props = {
         label: 'Foo',
         content: 'Lorem Ipsum'
       },
-      getShallow = getShallowComponent(NxCopyToClipboard, minimalProps),
-      getMounted = getMountedComponent(NxCopyToClipboard, minimalProps);
+      quickRender = rtlRender(NxCopyToClipboard, minimalProps),
+      renderEl = rtlRenderElement(NxCopyToClipboard, minimalProps);
 
   it('is aliased as NxCodeSnippet', function() {
     expect(NxCopyToClipboard).toBe(NxCodeSnippet);
   });
 
-  it('renders a div with the nx-copy-to-clipboard class', function() {
-    expect(getShallow()).toMatchSelector('div.nx-copy-to-clipboard');
+  it('adds specified classes and attrs to the top-level element', function() {
+    const el = renderEl({ className: 'foo', id: 'bar', lang: 'en' }),
+        defaultEl = renderEl()!;
+
+    expect(el).toHaveClass('foo');
+    expect(el).toHaveAttribute('id', 'bar');
+    expect(el).toHaveAttribute('lang', 'en');
+
+    for (const cls of Array.from(defaultEl.classList)) {
+      expect(el).toHaveClass(cls);
+    }
   });
 
-  it('adds specified classes to the div', function() {
-    const component = getShallow({ className: 'foo' });
-
-    expect(component).toHaveClassName('foo');
-    expect(component).toHaveClassName('nx-copy-to-clipboard');
+  it('renders a "Copy to Clipboard" button', function() {
+    expect(quickRender().getByRole('button', { name: 'Copy to Clipboard' })).toBeInTheDocument();
   });
 
-  it('adds specified extra attributes to the div', function() {
-    const component = getShallow({ id: 'foo', lang: 'en_US' });
-
-    expect(component).toHaveProp('id', 'foo');
-    expect(component).toHaveProp('lang', 'en_US');
+  it('renders a textbox', function() {
+    expect(quickRender().getByRole('textbox')).toBeInTheDocument();
   });
 
-  it('renders a tertiary button child', function() {
-    expect(getShallow().find(NxButton)).toHaveProp('variant', 'tertiary');
+  it('labels and names the textbox from its label prop', function() {
+    const view = quickRender();
+
+    expect(view.getByRole('textbox')).toHaveAccessibleName('Foo');
+    expect(view.container).toHaveTextContent('Foo');
   });
 
-  it('renders a NxFormGroup child with a textarea NxTextInput', function() {
-    const component = getShallow(),
-        formGroup = component.find(NxFormGroup),
-        input = formGroup.find(NxTextInput);
+  it('sets the accessible description of the textbox from the sublabel prop and includes it in the render',
+      function() {
+        const noSublabelView = quickRender(),
+            sublabelView = quickRender({ sublabel: 'BARRRR' });
 
-    expect(formGroup).toExist();
-    expect(input).toExist();
-    expect(input).toHaveProp('type', 'textarea');
+        expect(noSublabelView.getByRole('textbox')).not.toHaveAccessibleDescription();
+        expect(sublabelView.getByRole('textbox')).toHaveAccessibleDescription('BARRRR');
+        expect(sublabelView.container).toHaveTextContent('BARRRR');
+      }
+  );
+
+  it('sets the textbox value to the content', function() {
+    expect(quickRender().getByRole('textbox')).toHaveValue('Lorem Ipsum');
   });
 
-  it('sets the label and sublabel on the form group from its props', function() {
-    expect(getShallow().find(NxFormGroup)).toHaveProp('label', 'Foo');
-    expect(getShallow().find(NxFormGroup)).toHaveProp('sublabel', undefined);
-
-    expect(getShallow({ sublabel: 'Bar' }).find(NxFormGroup)).toHaveProp('label', 'Foo');
-    expect(getShallow({ sublabel: 'Bar' }).find(NxFormGroup)).toHaveProp('sublabel', 'Bar');
+  it('sets readonly on the textbox', function() {
+    expect(quickRender().getByRole('textbox')).toHaveAttribute('readonly');
   });
 
-  it('sets the NxTextInput value to the content', function() {
-    expect(getShallow().find(NxTextInput)).toHaveProp('value', 'Lorem Ipsum');
-  });
+  it('adds inputProps to the textbox', function() {
+    const textbox = quickRender({ inputProps: { rows: 1, id: 'foo' } }).getByRole('textbox');
 
-  it('sets readOnly on the NxTextInput', function() {
-    expect(getShallow().find(NxTextInput)).toHaveProp('readOnly', true);
-  });
-
-  it('adds inputProps to the NxTextInput', function() {
-    const textarea = getShallow({ inputProps: { rows: 1, id: 'foo' } }).find(NxTextInput);
-
-    expect(textarea).toHaveProp('id', 'foo');
-    expect(textarea).toHaveProp('rows', 1);
+    expect(textbox).toHaveAttribute('id', 'foo');
+    expect(textbox).toHaveAttribute('rows', '1');
   });
 
   describe('when the button is clicked', function() {
-    let container: HTMLElement | null = null;
-
-    beforeEach(function() {
-      container = document.createElement('div');
-      document.body.appendChild(container);
-    });
-
-    afterEach(function() {
-      if (container) {
-        document.body.removeChild(container);
-      }
-    });
-
     function getElementSelection(element: HTMLTextAreaElement | null) {
       return element && element.value.slice(element.selectionStart, element.selectionEnd);
     }
 
     describe('when navigator.clipboard is available', function() {
       let resolveClipboardPromise: Function | null,
-          rejectClipboardPromise: Function | null;
+          rejectClipboardPromise: Function | null,
+          user: UserEvent;
 
       beforeEach(function() {
-        Object.defineProperty(window.navigator, 'clipboard', {
-          value: {
-            writeText: jest.fn(() => {
-              return new Promise((resolve, reject) => {
-                resolveClipboardPromise = resolve;
-                rejectClipboardPromise = reject;
-              });
-            })
-          },
-          configurable: true
-        });
+        // NOTE: userEvent does its own mocking of the clipboard object, which our mocking has to be done after
+        user = userEvent.setup();
+
+        jest.spyOn(navigator.clipboard, 'writeText').mockImplementation(() =>
+          new Promise((resolve, reject) => {
+            resolveClipboardPromise = resolve;
+            rejectClipboardPromise = reject;
+          })
+        );
       });
 
-      afterEach(function() {
-        delete (window.navigator as any).clipboard;
-      });
-
-      it('copies the text using navigator.writeText', function() {
-        const component = getMounted({}, { attachTo: container });
+      it('copies the text using navigator.writeText', async function() {
+        const view = quickRender();
 
         expect(window.navigator.clipboard.writeText).not.toHaveBeenCalled();
 
-        component.find(NxButton).simulate('click');
+        await user.click(view.getByRole('button'));
 
         expect(window.navigator.clipboard.writeText).toHaveBeenCalledWith('Lorem Ipsum');
       });
 
       it('calls onCopyUsingBtn after writing the text to the clipboard', async function() {
         const onCopyUsingBtn = jest.fn(),
-            component = getMounted({ onCopyUsingBtn }, { attachTo: container });
+            view = quickRender({ onCopyUsingBtn });
 
-        component.find(NxButton).simulate('click');
+        await user.click(view.getByRole('button'));
 
         expect(onCopyUsingBtn).not.toHaveBeenCalled();
 
@@ -147,35 +124,35 @@ describe('NxCopyToClipboard', function() {
         expect(onCopyUsingBtn).toHaveBeenCalled();
       });
 
-      it('sets the text selection to the textarea\'s contents after writing the text to the clipboard',
+      it('sets the text selection to the textbox\'s contents after writing the text to the clipboard',
           async function() {
-            const component = getMounted({}, { attachTo: container }),
-                textarea = component.find('textarea').getDOMNode() as HTMLTextAreaElement;
+            const view = quickRender(),
+                textbox = view.getByRole('textbox') as HTMLTextAreaElement;
 
-            expect(getElementSelection(textarea)).toBe('');
+            expect(getElementSelection(textbox)).toBe('');
 
-            component.find(NxButton).simulate('click');
+            await user.click(view.getByRole('button'));
 
-            expect(getElementSelection(textarea)).toBe('');
+            expect(getElementSelection(textbox)).toBe('');
 
             resolveClipboardPromise!();
-
             await runTimers();
-            expect(getElementSelection(textarea)).toBe('Lorem Ipsum');
+
+            expect(getElementSelection(textbox)).toBe('Lorem Ipsum');
           }
       );
 
       it('does not call onCopyUsingBtn or set the text selection if the copy fails', async function() {
         const onCopyUsingBtn = jest.fn(),
-            component = getMounted({ onCopyUsingBtn }, { attachTo: container }),
-            textarea = component.find('textarea').getDOMNode() as HTMLTextAreaElement;
+            view = quickRender({ onCopyUsingBtn }),
+            textbox = view.getByRole('textbox') as HTMLTextAreaElement;
 
-        component.find(NxButton).simulate('click');
+        await user.click(view.getByRole('button'));
 
         rejectClipboardPromise!('This is expected to be logged');
-
         await runTimers();
-        expect(getElementSelection(textarea)).toBe('');
+
+        expect(getElementSelection(textbox)).toBe('');
         expect(onCopyUsingBtn).not.toHaveBeenCalled();
       });
     });
@@ -187,26 +164,32 @@ describe('NxCopyToClipboard', function() {
         }
       });
 
-      it('copies the text using document.execCommand', function() {
+      it('copies the text using document.execCommand', async function() {
+
+        const user = userEvent.setup();
+
+        delete (window.navigator as any).clipboard;
         Object.defineProperty(document, 'execCommand', {
           value: jest.fn().mockImplementation(function() {
-            expect(getElementSelection(document.querySelector('textarea'))).toBe('Lorem Ipsum');
+            expect(getElementSelection(view.getByRole('textbox') as HTMLTextAreaElement)).toBe('Lorem Ipsum');
           }),
           configurable: true
         });
 
-        const component = getMounted({}, { attachTo: container });
+        const view = quickRender();
 
         expect(document.execCommand).not.toHaveBeenCalled();
 
-        component.find(NxButton).simulate('click');
+        await user.click(view.getByRole('button'));
 
         expect(document.execCommand).toHaveBeenCalledWith('copy');
       });
 
-      it('calls onCopyUsingBtn after writing the text to the clipboard', function() {
-        const onCopyUsingBtn = jest.fn();
+      it('calls onCopyUsingBtn after writing the text to the clipboard', async function() {
+        const user = userEvent.setup(),
+            onCopyUsingBtn = jest.fn();
 
+        delete (window.navigator as any).clipboard;
         Object.defineProperty(document, 'execCommand', {
           value: jest.fn().mockImplementation(function() {
             // shouldn't be called until after this
@@ -216,24 +199,26 @@ describe('NxCopyToClipboard', function() {
           configurable: true
         });
 
-        const component = getMounted({ onCopyUsingBtn }, { attachTo: container });
+        const view = quickRender({ onCopyUsingBtn });
 
-        component.find(NxButton).simulate('click');
+        await user.click(view.getByRole('button'));
 
         expect(onCopyUsingBtn).toHaveBeenCalled();
       });
 
-      it('does not call onCopyUsingBtn if the copy fails', function() {
-        const onCopyUsingBtn = jest.fn();
+      it('does not call onCopyUsingBtn if the copy fails', async function() {
+        const user = userEvent.setup(),
+            onCopyUsingBtn = jest.fn();
 
+        delete (window.navigator as any).clipboard;
         Object.defineProperty(document, 'execCommand', {
           value: jest.fn().mockImplementation(() => false),
           configurable: true
         });
 
-        const component = getMounted({ onCopyUsingBtn }, { attachTo: container });
+        const view = quickRender({ onCopyUsingBtn });
 
-        component.find(NxButton).simulate('click');
+        await user.click(view.getByRole('button'));
 
         expect(onCopyUsingBtn).not.toHaveBeenCalled();
       });

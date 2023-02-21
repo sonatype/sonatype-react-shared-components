@@ -130,6 +130,7 @@ const NxThreatIndicatorPage = () =>
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Threat Indicators by Policy Number"
+                        id="nx-threat-indicator-policy-number-example"
                         liveExample={NxThreatIndicatorByPolicyNumberExample}
                         codeExamples={nxThreatIndicatorByPolicyNumberCode}>
       A series of lines of text, each beginning with an <NxCode>NxThreatIndicator</NxCode> whose

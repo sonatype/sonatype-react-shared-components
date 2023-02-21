@@ -352,6 +352,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-global-header-border">
               The border color used on the <NxCode>NxGlobalHeader</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tooltip-background">
+              The background color used on the <NxCode>NxTooltip</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tooltip-text">
+              The text color used on the <NxCode>NxTooltip</NxCode>.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>

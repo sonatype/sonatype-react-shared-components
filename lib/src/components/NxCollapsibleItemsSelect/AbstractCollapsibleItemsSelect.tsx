@@ -49,6 +49,7 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
       isOpen = !!props.isOpen,
       disabled = !!props.disabled || !options.length,
       id = useUniqueId('nx-collapsible-items-select', idProp || undefined),
+      menuId = useUniqueId('nx-collapsible-items-children'),
       filteredOptions = props.filteredOptions || options;
 
   function getTooltipProps(title: string) {
@@ -90,7 +91,7 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
     <NxFilterInput disabled={disabled}
                    placeholder={filterPlaceholder || 'filter'}
                    id={generateId(name, 'filter-input')}
-                   aria-controls={id}
+                   aria-controls={menuId}
                    onChange={onFilterChange}
                    value={filter || ''}/>
   );
@@ -119,7 +120,8 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
                                triggerTooltip={getTriggerTooltip()}
                                disabled={disabled}
                                className="nx-collapsible-items--select"
-                               aria-describedby={counter && counter.props.id}>
+                               aria-describedby={counter && counter.props.id}
+                               collapsibleChildrenId= {menuId}>
       { selectAllOption && <NxCollapsibleItems.Child>{selectAllOption}</NxCollapsibleItems.Child> }
       {renderedOptions}
     </PrivateNxCollapsibleItems>

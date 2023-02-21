@@ -55,6 +55,10 @@
   --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-95);
   --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-teal-60);
 
+  //NxTooltip variables
+  --nx-color-tooltip-background: var(--nx-swatch-grey-20);
+  --nx-color-tooltip-text: var(--nx-swatch-white);
+
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
   --nx-color-text-dark: var(--nx-color-text-stark);
@@ -82,5 +86,9 @@
 
     // NxGlobalHeader
     --nx-color-global-header-border: var(--nx-color-site-background);
+
+    //NxTooltip variables
+    --nx-color-tooltip-background: var(--nx-swatch-indigo-80);
+    --nx-color-tooltip-text: var(--nx-swatch-indigo-05);
   }
 }
