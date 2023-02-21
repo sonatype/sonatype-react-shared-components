@@ -132,10 +132,10 @@ export default function NxGlobalSidebarFooterPage() {
         <NxTile.Header>
           <NxTile.HeaderTitle>
             <NxH2>Minimal Global Sidebar Example</NxH2>
-            <NxP>In its most minimal layout the footer shows only the "Created by Sonatype" text.</NxP>
           </NxTile.HeaderTitle>
         </NxTile.Header>
         <NxTile.Content>
+          <NxP>In its most minimal layout the footer shows only the "Created by Sonatype" text.</NxP>
           <NxP>
             <NxTextLink href="#/NxGlobalSidebarFooterMinimalExample">
               Click here to navigate to the live example.
