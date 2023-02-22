@@ -33,7 +33,7 @@ function HeaderProductInfo({ name, version }: ProductInfo) {
 function LogoImg({ path, alt, darkModePath }: LogoProps) {
   return (
     <>
-      <img src={darkModePath}
+      <img src={darkModePath ?? defaultLogoProps.darkModePath}
            className="nx-product__logo-image nx-product__logo-image--dark"
            alt={alt} />
       <img src={path}

@@ -9,7 +9,6 @@ import React from 'react';
 import { NxButton, NxPageHeader } from '@sonatype/react-shared-components';
 
 const customLogo = require('../../assets/images/custom-logo.png');
-const customDarkLogo = require('../../assets/images/custom-logo-dark-mode.png');
 
 const ComplexPageHeaderExample = () => {
   const links = [{
@@ -26,7 +25,7 @@ const ComplexPageHeaderExample = () => {
   }
 
   return (
-    <NxPageHeader logo={{ path: customLogo, alt: 'Custom Logo', darkModePath: customDarkLogo }}
+    <NxPageHeader logo={{ path: customLogo, alt: 'Custom Logo' }}
                   productInfo={{ name: 'Product', version: '1.0' }}
                   homeLink="#"
                   links={links}>

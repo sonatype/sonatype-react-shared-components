@@ -145,34 +145,3 @@
   margin-top: 27px;
   margin-left: var(--nx-spacing-3x);
 }
-
-// .nx-product__logo-image {
-//   background: url('../assets/img/sonatype-logo-with-hexagon.png') no-repeat;
-
-//   @include nx-dark-mode-helpers.dark-mode {
-//     background: url('../assets/img/logo-plaid-villain-text.png') no-repeat;
-//       background-size: contain;
-//   }
-// }
-
-// .nx-product__logo-image--dark {
-  
-// }
-
-// .nx-product__logo-image--light {
-  
-// }
-
-// .nx-product__logo-image--custom-dark {
-//   display: none;
-//   @include nx-dark-mode-helpers.dark-mode {
-//     display: block
-//   }
-// }
-
-// .nx-product__logo-image--custom-light {
-//   display: block;
-//   @include nx-dark-mode-helpers.dark-mode {
-//     display: none
-//   }
-// }
