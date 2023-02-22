@@ -17,11 +17,9 @@ export interface ProductInfo {
 }
 
 export interface LogoProps {
-  path: string;
-  alt: string;
-
-  // Once dark mode is supported, add this
-  //darkModePath?: string | null;
+  path?: string;
+  alt?: string;
+  darkModePath?: string | null;
 }
 
 export interface Props extends Omit<AbstractNxPageHeaderProps, 'logo' | 'productInfoContent'> {
