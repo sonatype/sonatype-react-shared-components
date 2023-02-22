@@ -21,7 +21,6 @@
 
   @include nx-dark-mode-helpers.dark-mode {
     border-width: 2px;
-    border-color: var(--nx-color-global-header-border);
   }
 
   .nx-back-button {
