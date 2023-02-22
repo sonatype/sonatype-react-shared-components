@@ -17,9 +17,9 @@ export interface ProductInfo {
 }
 
 export interface LogoProps {
-  path?: string;
-  alt?: string;
-  darkModePath?: string | null;
+  path: string;
+  alt: string;
+  darkModePath: string;
 }
 
 export interface Props extends Omit<AbstractNxPageHeaderProps, 'logo' | 'productInfoContent'> {
@@ -35,6 +35,7 @@ export const propTypes: ValidationMap<Props> = {
   }),
   logo: PropTypes.shape({
     path: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired
+    alt: PropTypes.string.isRequired,
+    darkModePath: PropTypes.string.isRequired
   })
 };
