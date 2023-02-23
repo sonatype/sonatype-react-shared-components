@@ -17,7 +17,7 @@
   box-sizing: content-box;
 
   background-color: var(--nx-swatch-white);
-  border-bottom: 1px solid var(--nx-swatch-grey-90);
+  border-bottom: 1px solid var(--nx-color-border);
   grid-area: old-header; // see nx-page's grid template
   height: nx-header-variables.$main-header-height;
 }
@@ -63,7 +63,7 @@
   }
 
   &:active, &.nx-page-header__link--current {
-    border-bottom-color: var(--nx-swatch-teal-60);
+    border-bottom-color: var(--nx-color-link);
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
@@ -108,7 +108,7 @@
 }
 
 .nx-product__divider {
-  color: var(--nx-swatch-black);
+  color: var(--nx-swatch-grey-30);
   font-size: 21px;
   line-height: 1;
   margin-top: 21px;
