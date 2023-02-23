@@ -25,7 +25,7 @@ describe('NxToggle', function() {
 
   describe('Default NxToggle', function() {
     it('has a blue border, blue indicator, and white background by default', simpleTest(selector));
-    it('has a black border when hovered', hoverTest(selector));
+    it('has a black border and off-white background when hovered', hoverTest(selector));
 
     it('has a blue background and white indicator when clicked', async function() {
       const blurSelector = `${selector} input`,
@@ -41,7 +41,7 @@ describe('NxToggle', function() {
       await checkScreenshot(targetElement);
     });
 
-    it(`has a blue background, white indicator, light outer blue border and glow
+    it(`has a blue background, white indicator, and a blue border
       when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement] = await waitAndGetElements(selector, focusSelector);
@@ -55,7 +55,7 @@ describe('NxToggle', function() {
       await checkScreenshot(targetElement);
     });
 
-    it(`dark border, blue background and white indicator with light outer blue border
+    it(`has a black border, darker blue background and white indicator with outer blue border
       when clicked, focused, and hovered`, async function() {
       const inputSelector = `${selector} input`,
           [targetElement] = await waitAndGetElements(selector, inputSelector);
@@ -69,8 +69,9 @@ describe('NxToggle', function() {
       await checkScreenshot(targetElement);
     });
 
-    it('has a light blue outer border and glow when focused', focusTest(selector));
-    it('has a dark border and a light blue outer border when focused and hovered', focusAndHoverTest(selector));
+    it('has a blue outer border when focused', focusTest(selector));
+    it(`has a dark border and a blue outer border and off-white background
+      when focused and hovered`, focusAndHoverTest(selector));
   });
 
   describe('Attribute-Disabled NxToggle', function() {
