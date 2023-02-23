@@ -18,7 +18,7 @@
   box-sizing: content-box;
 
   background-color: var(--nx-color-page-header-background);
-  border-bottom: 1px solid var(--nx-swatch-grey-90);
+  border-bottom: 1px solid var(--nx-color-page-header-border-bottom);
   grid-area: old-header; // see nx-page's grid template
   height: nx-header-variables.$main-header-height;
 }
@@ -44,7 +44,7 @@
 .nx-page-header__link {
   border-bottom: 2px solid transparent;
 
-  color: var(--nx-swatch-grey-10);
+  color: var(--nx-color-page-header-link);
   display: inline-block;
   font-size: var(--nx-font-size-s);
   margin-right: var(--nx-spacing-6x);
@@ -64,7 +64,7 @@
   }
 
   &:active, &.nx-page-header__link--current {
-    border-bottom-color: var(--nx-color-link);
+    border-bottom-color: var(--nx-page-header-link-border-bottom);
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
@@ -139,7 +139,6 @@
 }
 
 .nx-product__version {
-  color: var( --nx-color-page-header-product-version);
   display: block;
   font-size: var(--nx-font-size-xs);
   margin-top: 27px;

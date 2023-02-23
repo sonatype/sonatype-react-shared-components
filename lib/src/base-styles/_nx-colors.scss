@@ -56,10 +56,12 @@
   --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-teal-60);
 
   //NxPageHeader variables
-  --nx-color-page-header-background: var(--nx-swatch-white);
+  --nx-color-page-header-background: var(--nx-color-component-background);
+  --nx-color-page-header-border-bottom: var(--nx-color-border);
   --nx-color-page-header-divider: var(--nx-swatch-grey-30);
-  --nx-color-page-header-product-name: var(--nx-swatch-grey-30);
-  --nx-color-page-header-product-version: var(--nx-swatch-grey-30);
+  --nx-color-page-header-product-name: var(--nx-color-text);
+  --nx-color-page-header-link: var(--nx-swatch-grey-10);
+  --nx-page-header-link-border-bottom : var(--nx-color-link);
   
   //NxTooltip variables
   --nx-color-tooltip-background: var(--nx-swatch-grey-20);
@@ -91,10 +93,12 @@
     --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-pink-80);
 
     //NxPageHeader variables
-    --nx-color-page-header-background: var(--nx-swatch-indigo-15);
+    --nx-color-page-header-background: var(--nx-color-site-background);
+    --nx-color-page-header-border-bottom: var(--nx-swatch-indigo-25);
     --nx-color-page-header-divider: var(--nx-swatch-indigo-25);
-    --nx-color-page-header-product-name: var(--nx-swatch-indigo-90);
-    --nx-color-page-header-product-version: var(--nx-swatch-indigo-80);
+    --nx-color-page-header-product-name: var(--nx-color-text-stark);
+    --nx-color-page-header-link: var(--nx-color-link);
+    --nx-page-header-link-border-bottom: var(--nx-swatch-teal-60);
 
     //NxTooltip variables
     --nx-color-tooltip-background: var(--nx-swatch-indigo-80);
