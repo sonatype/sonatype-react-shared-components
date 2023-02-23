@@ -80,7 +80,8 @@ const NxFormLayoutPage = () =>
               <NxTable.Cell>Descendant of <NxCode>NxForm</NxCode>.</NxTable.Cell>
               <NxTable.Cell>
                 A fieldset styled similarly to <NxCode>NxFormGroup</NxCode>, intended as a wrapper for groups of{' '}
-                <NxCode>NxCheckbox</NxCode>es, <NxCode>NxRadio</NxCode>s, or <NxCode>NxToggle</NxCode>s.
+                <NxCode>NxCheckbox</NxCode>es, <NxCode>NxRadio</NxCode>s, <NxCode>NxTransferList</NxCode>s,{' '}
+                or <NxCode>NxToggle</NxCode>s.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>

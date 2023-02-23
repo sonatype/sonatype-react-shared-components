@@ -13,16 +13,13 @@
     @include nx-text-helpers.semi-bold;
 
     box-sizing: border-box;
-    background-color: var(--nx-swatch-grey-20);
+    background-color: var( --nx-color-tooltip-background);
     border-radius: var(--nx-border-radius);
+    color: var(--nx-color-tooltip-text);
     font-size: var(--nx-font-size-s);
     line-height: var(--nx-line-height);
     max-width: 600px;
     padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
-
-    @include nx-dark-mode-helpers.dark-mode {
-      color: var(--nx-swatch-indigo-05);
-    }
   }
 
   &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {

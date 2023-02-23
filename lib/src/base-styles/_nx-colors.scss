@@ -60,10 +60,17 @@
   --nx-color-page-header-divider: var(--nx-swatch-grey-30);
   --nx-color-page-header-product-name: var(--nx-swatch-grey-30);
   --nx-color-page-header-product-version: var(--nx-swatch-grey-30);
+  
+  //NxTooltip variables
+  --nx-color-tooltip-background: var(--nx-swatch-grey-20);
+  --nx-color-tooltip-text: var(--nx-swatch-white);
 
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
   --nx-color-text-dark: var(--nx-color-text-stark);
+
+  // NxGlobalHeader
+  --nx-color-global-header-border: var(--nx-color-border);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-35);
@@ -88,5 +95,13 @@
     --nx-color-page-header-divider: var(--nx-swatch-indigo-25);
     --nx-color-page-header-product-name: var(--nx-swatch-indigo-90);
     --nx-color-page-header-product-version: var(--nx-swatch-indigo-80);
+
+    //NxTooltip variables
+    --nx-color-tooltip-background: var(--nx-swatch-indigo-80);
+    --nx-color-tooltip-text: var(--nx-swatch-indigo-05);
+
+     // NxGlobalHeader
+     --nx-color-global-header-border: var(--nx-color-site-background);
+
   }
 }

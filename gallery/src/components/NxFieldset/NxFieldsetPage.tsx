@@ -260,6 +260,60 @@ const NxFieldsetPage = () =>
                 group upon user input.
               </NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>transferListInitialState</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                <NxList className="nx-list--bulleted">
+                  <NxList.Item>
+                    <NxList.Text>
+                      <NxCode>selectedItems</NxCode> (a Set or an array, corresponding with{' '}
+                      <NxCode>NxTransferList</NxCode>'s selectedItems)
+                    </NxList.Text>
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxList.Text>
+                      <NxCode>validator</NxCode> function which accepts the current values and returns
+                      a <NxCode>ValidationErrors</NxCode> indicating whether they are valid; optional
+                    </NxList.Text>
+                  </NxList.Item>
+                </NxList>
+              </NxTable.Cell>
+              <NxTable.Cell>
+                Object containing the <NxCode>selectedItems</NxCode>, <NxCode>validationErrors</NxCode>{' '}
+                as determined by the validator function, and <NxCode>isPristine</NxCode> set to true
+              </NxTable.Cell>
+              <NxTable.Cell>
+                Creates an object representing the initial state of <NxCode>NxTransferList</NxCode>{' '}
+                based on the specified initial <NxCode>selectedItems</NxCode>,{' '}
+                and validated according to the specified validator
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>transferListUserInput</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                <NxList className="nx-list--bulleted">
+                  <NxList.Item>
+                    <NxList.Text><NxCode>selectedItems</NxCode> (A Set or Array of new selected items)</NxList.Text>
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxList.Text>
+                      <NxCode>validator</NxCode> function which accepts the new selected items and returns
+                      a <NxCode>ValidationErrors</NxCode> indicating whether they are valid; optional
+                    </NxList.Text>
+                  </NxList.Item>
+                </NxList>
+              </NxTable.Cell>
+              <NxTable.Cell>
+                Object containing the <NxCode>selectedItems</NxCode>, <NxCode>validationErrors</NxCode>{' '}
+                as determined by the validator function, and <NxCode>isPristine</NxCode> set to false
+              </NxTable.Cell>
+              <NxTable.Cell>
+                Creates an object representing the state of <NxCode>NxTransferList</NxCode> based on the
+                specified user-selected items, and validated according to the specified validator.
+                This function can be used to update the pieces of state needed for a fieldset containing a{' '}
+                <NxCode>NxTransferList</NxCode> upon user input.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
         <NxH4>React Hooks</NxH4>
@@ -329,6 +383,37 @@ const NxFieldsetPage = () =>
               <NxTable.Cell>
                 This hook tracks all of the state needed for a checkbox fieldset: the current value of each checkbox,
                 any validation errors based on those values, and whether the checkbox group is pristine.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>useTransferListState</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                <NxList className="nx-list--bulleted">
+                  <NxList.Item>
+                    <NxList.Text>
+                      <NxCode>initialValue</NxCode> initial <NxCode>NxTransferList</NxCode> selectedItems value
+                    </NxList.Text>
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxList.Text>
+                      <NxCode>validator</NxCode> function which will be run on each change in{' '}
+                      <NxCode>NxTransferList</NxCode> selectedItems
+                      in order to update the <NxCode>validationErrors</NxCode>; optional
+                    </NxList.Text>
+                  </NxList.Item>
+                </NxList>
+              </NxTable.Cell>
+              <NxTable.Cell>
+                Object containing <NxCode>validationErrors</NxCode>, <NxCode>isPristine</NxCode>{' '}
+                and <NxCode>state</NxCode>. <NxCode>state</NxCode> is a two value tuple.
+                The first value is the selectedItems value for <NxCode>NxTransferList</NxCode>, and the
+                second value is the setter function that updates the selectedItems value.
+                When called, that function will update the state, the validation errors, and the pristine flag.
+              </NxTable.Cell>
+              <NxTable.Cell>
+                This hook tracks all of the state needed for an <NxCode>NxTransferList</NxCode> fieldset:
+                the current selectedItems, any validation errors based on the selectedItems,
+                and whether the <NxCode>NxTransferList</NxCode> is pristine.
               </NxTable.Cell>
             </NxTable.Row>
           </NxTable.Body>

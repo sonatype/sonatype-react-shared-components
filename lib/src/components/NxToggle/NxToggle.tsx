@@ -7,6 +7,8 @@
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './NxToggle.scss';
 import { Props, propTypes } from './types';
@@ -41,6 +43,9 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
           unfilteredInputAttributes
       );
 
+      const toggleIndicator =
+        <NxFontAwesomeIcon icon={isChecked ? faCheckCircle : faTimesCircle} className="nx-toggle__indicator" />;
+
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
@@ -53,7 +58,9 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
                  role="switch"
                  aria-checked={isChecked}
                  { ...otherInputAttributes } />
-          <div className="nx-toggle__control"><div className="nx-toggle__indicator"/></div>
+          <div className="nx-toggle__control">
+            {toggleIndicator}
+          </div>
           { children && <span className="nx-toggle__content">{children}</span> }
         </label>
       );
