@@ -11,25 +11,31 @@ import useToggle from '../../util/useToggle';
 import {
   RadioValidator,
   CheckboxValidator,
+  TransferListValidator,
   RadioSetter,
   CheckboxState,
   CheckboxInitValues,
   CheckboxStates,
   RadioStateProps,
   CheckboxStateProps,
-  CheckboxGroupHookReturnValue
+  TransferListStateProps,
+  CheckboxGroupHookReturnValue,
+  TransferListHookReturnValue
 } from './types';
 
 export {
   RadioValidator,
   CheckboxValidator,
+  TransferListValidator,
   RadioSetter,
   CheckboxState,
   CheckboxInitValues,
   CheckboxStates,
   RadioStateProps,
   CheckboxStateProps,
-  CheckboxGroupHookReturnValue
+  TransferListStateProps,
+  CheckboxGroupHookReturnValue,
+  TransferListHookReturnValue
 };
 
 /**
@@ -143,5 +149,54 @@ export function useCheckboxGroupState<K extends string>(
     isPristine,
     validationErrors: validator ? validator(values) : null,
     states: map<CheckboxStates<K>, CheckboxStates<K>>(wrapState, rawStates)
+  };
+}
+
+/**
+ * Create a TransferListStateProps representing the initial state, selectedItem value,
+ * and validated according to the specified validator
+ */
+export function transferListInitialState<K>(
+  selectedItems: K,
+  validator?: TransferListValidator<K>
+): TransferListStateProps<K> {
+  return {
+    selectedItems,
+    isPristine: true,
+    validationErrors: validator ? validator(selectedItems) : null
+  };
+}
+
+/**
+ * Create a TransferListStateProps representing a non-initial selectedItems value
+ * and validated according to the specified validator
+ */
+export function transferListUserInput<K>(
+  newSelectedItems: K,
+  validator?: TransferListValidator<K>
+): TransferListStateProps<K> {
+  return {
+    selectedItems: newSelectedItems,
+    isPristine: false,
+    validationErrors: validator ? validator(newSelectedItems) : null
+  };
+}
+
+export function useTransferListState<K>(
+  initialValue: K,
+  validator?: TransferListValidator<K>
+): TransferListHookReturnValue<K> {
+  const [isPristine, setIsPristine] = useState(true);
+  const [selectedItems, _setSelectedItems] = useState(initialValue);
+
+  const setSelectedItems = (value: K) => {
+    setIsPristine(false);
+    _setSelectedItems(value);
+  };
+
+  return {
+    isPristine,
+    validationErrors: validator ? validator(selectedItems) : null,
+    state: [selectedItems, setSelectedItems]
   };
 }

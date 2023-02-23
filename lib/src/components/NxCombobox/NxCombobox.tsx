@@ -87,29 +87,31 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         [alertDropdownId]: showAlert
       }),
       TextInput = filterInput ? NxFilterInput : NxTextInput,
-      filterInputProps = filterInput === 'search' ? { searchIcon: true } : null;
+      filterInputProps = filterInput === 'search' ? { searchIcon: true } : null,
+      [pageIsFocused, setPageIsFocused] = useState(true);
 
   // There is a requirement that when there is an error querying the data, if the user navigates away from
   // the component and then comes back to it the search should be retried automatically
   function handleComponentFocus(evt: FocusEvent<HTMLDivElement>) {
-    setInputIsFocused(true);
 
+    setInputIsFocused(true);
     if (loadError) {
       // check if this is focus coming into the component from somewhere else on the page, not just moving between
       // children of this component and not from focus coming into the browser from some other window
-      const comingFromOutsidePage = evt.relatedTarget === null,
+      const comingFromOutsidePage = pageIsFocused === false,
           comingFromChildNode = evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget);
 
       if (!(comingFromOutsidePage || comingFromChildNode)) {
         doSearch(value);
       }
     }
-
+    setPageIsFocused(document.hasFocus());
     setHiddenBySelection(false);
   }
 
   function handleComponentBlur(evt: FocusEvent<HTMLDivElement>) {
 
+    setPageIsFocused(document.hasFocus());
     if (!(evt.relatedTarget instanceof Node && evt.currentTarget.contains(evt.relatedTarget))) {
       setInputIsFocused(false);
       // The automatically selected suggestion becomes the value of the combobox

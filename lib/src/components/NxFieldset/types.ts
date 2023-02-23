@@ -27,6 +27,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
 // The following are for the state helpers
 export type RadioValidator = (value: string | null) => ValidationErrors;
 export type CheckboxValidator = (values: string[]) => ValidationErrors;
+export type TransferListValidator<T> = (selectedItems: T) => ValidationErrors;
 export type RadioSetter<T extends string = string> = (v: T | null) => void;
 export type CheckboxState = [boolean, () => void];
 export type CheckboxInitValues<K extends string | number> = Record<K, boolean>;
@@ -44,8 +45,20 @@ export interface CheckboxStateProps<T extends string = string> {
   validationErrors: ValidationErrors;
 }
 
+export interface TransferListStateProps<K> {
+  selectedItems: K;
+  isPristine: boolean;
+  validationErrors: ValidationErrors;
+}
+
 export interface CheckboxGroupHookReturnValue<K extends string | number> {
   states: CheckboxStates<K>;
+  isPristine: boolean;
+  validationErrors: ValidationErrors;
+}
+
+export interface TransferListHookReturnValue<K> {
+  state: [K, (selectedItems: K) => void];
   isPristine: boolean;
   validationErrors: ValidationErrors;
 }
