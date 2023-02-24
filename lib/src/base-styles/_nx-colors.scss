@@ -55,13 +55,16 @@
   --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-95);
   --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-teal-60);
 
+  // NxGlobalHeader
+  --nx-color-global-header-border: var(--nx-color-border);
+
   //NxPageHeader variables
   --nx-color-page-header-background: var(--nx-color-component-background);
   --nx-color-page-header-border-bottom: var(--nx-color-border);
   --nx-color-page-header-divider: var(--nx-swatch-grey-30);
   --nx-color-page-header-product-name: var(--nx-color-text);
   --nx-color-page-header-link: var(--nx-swatch-grey-10);
-  --nx-page-header-link-border-bottom : var(--nx-color-link);
+  --nx-color-page-header-active-link-border-bottom: var(--nx-color-link);
   
   //NxTooltip variables
   --nx-color-tooltip-background: var(--nx-swatch-grey-20);
@@ -70,9 +73,6 @@
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
   --nx-color-text-dark: var(--nx-color-text-stark);
-
-  // NxGlobalHeader
-  --nx-color-global-header-border: var(--nx-color-border);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-35);
@@ -92,20 +92,19 @@
     --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-30);
     --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-pink-80);
 
+    // NxGlobalHeader
+    --nx-color-global-header-border: var(--nx-color-site-background);
+
     //NxPageHeader variables
     --nx-color-page-header-background: var(--nx-color-site-background);
     --nx-color-page-header-border-bottom: var(--nx-swatch-indigo-25);
     --nx-color-page-header-divider: var(--nx-swatch-indigo-25);
     --nx-color-page-header-product-name: var(--nx-color-text-stark);
     --nx-color-page-header-link: var(--nx-color-link);
-    --nx-page-header-link-border-bottom: var(--nx-swatch-teal-60);
+    --nx-color-page-header-active-link-border-bottom: var(--nx-swatch-teal-60);
 
     //NxTooltip variables
     --nx-color-tooltip-background: var(--nx-swatch-indigo-80);
     --nx-color-tooltip-text: var(--nx-swatch-indigo-05);
-
-     // NxGlobalHeader
-     --nx-color-global-header-border: var(--nx-color-site-background);
-
   }
 }
