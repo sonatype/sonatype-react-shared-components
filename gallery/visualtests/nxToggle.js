@@ -8,13 +8,13 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxToggle', function() {
   const {
-    focusTest,
-    focusAndHoverTest,
+    scrollIntoView,
     hoverTest,
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
     checkScreenshot,
+    checkScreenshotCoordinates,
     blurElement,
     wait,
     a11yTest
@@ -23,9 +23,15 @@ describe('NxToggle', function() {
   const selector = '#nx-toggle-example .gallery-example-live label:nth-of-type(2)',
       disabledSelector = '#nx-toggle-example .gallery-example-live label:nth-of-type(4)';
 
+  const checkCustomScreenshot = async (targetElement) => {
+    const { x, y, width, height } = await targetElement.boundingBox();
+
+    await checkScreenshotCoordinates(x - 5, y - 5, width + 10, height + 10);
+  };
+
   describe('Default NxToggle', function() {
     it('has a blue border, blue indicator, and white background by default', simpleTest(selector));
-    it('has a black border when hovered', hoverTest(selector));
+    it('has a black border and off-white background when hovered', hoverTest(selector));
 
     it('has a blue background and white indicator when clicked', async function() {
       const blurSelector = `${selector} input`,
@@ -41,7 +47,23 @@ describe('NxToggle', function() {
       await checkScreenshot(targetElement);
     });
 
-    it(`has a blue background, white indicator, light outer blue border and glow
+    it('has a blue background, white indicator and a black border when clicked and hovered', async function() {
+      const blurSelector = `${selector} input`,
+          [targetElement, inputElement] = await waitAndGetElements(selector, blurSelector);
+
+      await targetElement.click();
+
+      // wait for animation
+      await wait(400);
+
+      await moveMouseAway();
+      await blurElement(inputElement);
+      await targetElement.hover();
+
+      await checkScreenshot(targetElement);
+    });
+
+    it(`has a blue background, white indicator, and a blue border
       when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement] = await waitAndGetElements(selector, focusSelector);
@@ -52,10 +74,10 @@ describe('NxToggle', function() {
       // wait for animation
       await wait(400);
 
-      await checkScreenshot(targetElement);
+      await checkCustomScreenshot(targetElement);
     });
 
-    it(`dark border, blue background and white indicator with light outer blue border
+    it(`has a black border, darker blue background and white indicator with outer blue border
       when clicked, focused, and hovered`, async function() {
       const inputSelector = `${selector} input`,
           [targetElement] = await waitAndGetElements(selector, inputSelector);
@@ -66,11 +88,29 @@ describe('NxToggle', function() {
       // wait for animation
       await wait(400);
 
-      await checkScreenshot(targetElement);
+      await checkCustomScreenshot(targetElement);
     });
 
-    it('has a light blue outer border and glow when focused', focusTest(selector));
-    it('has a dark border and a light blue outer border when focused and hovered', focusAndHoverTest(selector));
+    it('has a blue outer border when focused', async function() {
+      const inputSelector = `${selector} input`,
+          [targetElement] = await waitAndGetElements(selector, inputSelector);
+
+      await targetElement.focus();
+
+      await checkCustomScreenshot(targetElement);
+    });
+
+    it(`has a dark border and a blue outer border and off-white background
+      when focused and hovered`, async function() {
+      const inputSelector = `${selector} input`,
+          [targetElement] = await waitAndGetElements(selector, inputSelector);
+
+      await scrollIntoView(targetElement);
+      await targetElement.focus();
+      await targetElement.hover();
+
+      await checkCustomScreenshot(targetElement);
+    });
   });
 
   describe('Attribute-Disabled NxToggle', function() {
