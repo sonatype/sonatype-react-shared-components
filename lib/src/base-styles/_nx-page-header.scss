@@ -18,7 +18,7 @@
   box-sizing: content-box;
 
   background-color: var(--nx-color-page-header-background);
-  border-bottom: 1px solid var(--nx-color-page-header-border-bottom);
+  border-bottom: 1px solid var(--nx-color-page-header-border);
   grid-area: old-header; // see nx-page's grid template
   height: nx-header-variables.$main-header-height;
 }
@@ -131,7 +131,7 @@
 
 .nx-product__name {
   align-items: flex-start;
-  color: var( --nx-color-page-header-product-name);
+  color: var(--nx-color-page-header-product-name-text);
   display: flex;
   font-size: 26px;
   margin-top: 13px;
