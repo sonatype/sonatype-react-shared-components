@@ -47,6 +47,22 @@ describe('NxToggle', function() {
       await checkScreenshot(targetElement);
     });
 
+    it('has a blue background, white indicator and a black border when clicked and hovered', async function() {
+      const blurSelector = `${selector} input`,
+          [targetElement, inputElement] = await waitAndGetElements(selector, blurSelector);
+
+      await targetElement.click();
+
+      // wait for animation
+      await wait(400);
+
+      await moveMouseAway();
+      await blurElement(inputElement);
+      await targetElement.hover();
+
+      await checkScreenshot(targetElement);
+    });
+
     it(`has a blue background, white indicator, and a blue border
       when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
