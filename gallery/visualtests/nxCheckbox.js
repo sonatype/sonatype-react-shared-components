@@ -37,8 +37,8 @@ describe('NxCheckbox', function() {
       await checkScreenshot(targetElement);
     });
 
-    it(`has a blue background, white checkmark, a light blue outer border,
-      and glow when clicked and focused`, async function() {
+    it(`has a blue background, white checkmark, a blue outer border 
+      when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
 
@@ -49,7 +49,7 @@ describe('NxCheckbox', function() {
       await checkScreenshot(targetElement);
     });
 
-    it(`has a blue background and white checkmark with a light blue outer border
+    it(`has a blue background and white checkmark with a blue outer border
       when clicked, focused, and hovered`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
@@ -61,8 +61,8 @@ describe('NxCheckbox', function() {
       await checkScreenshot(targetElement);
     });
 
-    it('has a light blue outer border and glow when focused', focusTest(selector));
-    it('has a light blue outer border and a dark border when focused and hovered', focusAndHoverTest(selector));
+    it('has a blue outer border when focused', focusTest(selector));
+    it('has a blue outer border and a dark border when focused and hovered', focusAndHoverTest(selector));
     it('shows overflow tooltips', hoverTest('#nx-checkbox-example .gallery-example-live', selector, true));
   });
 

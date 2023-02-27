@@ -40,8 +40,8 @@ describe('NxRadio', function() {
       await checkScreenshot(targetElement);
     });
 
-    it(`has a thick blue border, white background, with a light blue outer border and glow
-      when clicked and focused`, async function() {
+    it(`has a thick blue border, white background, blue outer border '
+    + 'when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
 
@@ -52,7 +52,7 @@ describe('NxRadio', function() {
       await checkScreenshot(targetElement);
     });
 
-    it(`has a thick blue border and white background with a light blue outer border
+    it(`has a thick blue border and white background with a blue outer border
       when clicked, focused, and hovered`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
@@ -64,8 +64,8 @@ describe('NxRadio', function() {
       await checkScreenshot(targetElement);
     });
 
-    it('has a light blue outer border and glow when focused', focusTest(selector));
-    it('has a light blue outer border and a dark border when focused and hovered', focusAndHoverTest(selector));
+    it('has a blue outer border when focused', focusTest(selector));
+    it('has a blue outer border and a dark border when focused and hovered', focusAndHoverTest(selector));
   });
 
   describe('Attribute-Disabled NxRadio', function() {
