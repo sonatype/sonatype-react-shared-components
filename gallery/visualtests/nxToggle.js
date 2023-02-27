@@ -30,7 +30,7 @@ describe('NxToggle', function() {
   };
 
   describe('Default NxToggle', function() {
-    it('has a blue border, blue indicator, and white background by default', simpleTest(selector));
+    it('has a light black border, blue indicator, and white background by default', simpleTest(selector));
     it('has a black border and off-white background when hovered', hoverTest(selector));
 
     it('has a blue background and white indicator when clicked', async function() {
