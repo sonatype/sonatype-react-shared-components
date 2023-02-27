@@ -289,8 +289,13 @@ const CssVariablesPage = () => {
               form fields) when they are focused.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-text">The standard text color within RSC.</ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-text-dark">
+            <ColorDocRow colorVar="--nx-color-text-stark">
               The standard dark variant of the text color within RSC.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-text-dark">
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-text-stark</NxCode>.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-text-disabled">
               The standard color for text within disabled elements in RSC.
