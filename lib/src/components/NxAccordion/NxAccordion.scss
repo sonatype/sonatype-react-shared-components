@@ -47,9 +47,9 @@
     outline: none;
 
     > .nx-accordion__summary-wrapper {
-      outline: 1px solid var(--nx-color-interactive-border-focus);
-      outline-offset: -1px;
-      box-shadow: var(--nx-box-shadow-focus);
+      border-radius: var(--nx-border-radius);
+      outline: 2px solid var(--nx-color-interactive-border-focus);
+      outline-offset: -4px;
     }
   }
 }
