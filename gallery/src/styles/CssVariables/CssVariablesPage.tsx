@@ -367,7 +367,7 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-page-header-link">
               The text color used on the <NxCode>NxPageHeader</NxCode> links.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-page-header-active-link-border-bottom">
+            <ColorDocRow colorVar="--nx-color-page-header-active-link-border">
               The bottom border color used on the <NxCode>NxPageHeader</NxCode> currently active link.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-tooltip-background">
