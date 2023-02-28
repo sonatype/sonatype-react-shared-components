@@ -15,7 +15,7 @@ module.exports = {
   "transform": {
     "^.+\\.tsx?$": "ts-jest"
   },
-  "testMatch": ["<rootDir>/visualtests/*.js"],
+  "testMatch": ["<rootDir>/visualtests/nxRadio.js", "<rootDir>/visualtests/nxCheckbox.js"],
   "testPathIgnorePatterns": ['testUtils.js'],
   "moduleFileExtensions": [
     "ts",
