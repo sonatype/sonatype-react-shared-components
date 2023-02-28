@@ -24,8 +24,9 @@
   text-align: center;
   text-decoration: none;
 
-  &:hover {
+  &.nx-btn--secondary:hover {
     background-color: var(--nx-swatch-blue-90);
+    color: var(--nx-swatch-blue-30);
   }
 
   &:focus:not(:active) {
@@ -41,6 +42,7 @@
     visibility: hidden;
   }
 }
+
 
 .nx-btn, .nx-segmented-btn, .nx-icon-dropdown {
   + .nx-btn, + .nx-segmented-btn, + .nx-icon-dropdown {
