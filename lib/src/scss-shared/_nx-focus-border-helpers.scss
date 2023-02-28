@@ -15,3 +15,8 @@
     height: calc(#{$height} + 6px);
     width: calc(#{$width} + 6px);
 }
+
+%button-focus-outline {
+    outline-offset: -5px;
+    outline: 2px solid;
+}
