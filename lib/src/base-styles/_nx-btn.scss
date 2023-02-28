@@ -6,7 +6,11 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
-@use '../scss-shared/nx-focus-border-helpers';
+
+%button-focus-outline {
+  outline-offset: -5px;
+  outline: 2px solid;
+}
 
 .nx-btn {
   @include nx-text-helpers.semi-bold;
