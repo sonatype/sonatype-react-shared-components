@@ -312,7 +312,7 @@ module.exports = {
         };
       },
 
-      focusAndHoverTest(elementSelector, hoverSelector = elementSelector, ...checkScreenshotParams) {
+      focusAndHoverTest(elementSelector, hoverSelector = elementSelector) {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
@@ -320,7 +320,7 @@ module.exports = {
             await scrollIntoView(targetElement);
             await focusElement.focus();
             await focusElement.hover();
-            await checkScreenshot(targetElement, ...checkScreenshotParams);
+            await checkScreenshot(targetElement);
           }
           finally {
             await blurElement(focusElement);
