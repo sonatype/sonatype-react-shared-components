@@ -37,7 +37,7 @@ describe('NxCheckbox', function() {
       await checkScreenshot(targetElement);
     });
 
-    it(`has a blue background, white checkmark, a blue outer border 
+    it(`has a blue background, white checkmark, with a blue outer border 
       when clicked and focused`, async function() {
       const focusSelector = `${selector} input`,
           [targetElement, focusElement] = await waitAndGetElements(selector, focusSelector);
