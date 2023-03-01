@@ -152,7 +152,7 @@ module.exports = {
       expect(image).toMatchImageSnapshot();
     }
 
-    async function checkOutsetScreenshot(element, outset = 0) {
+    async function checkScreenshotWithOutset(element, outset = 0) {
       const { x, y, width, height } = await element.boundingBox();
       await checkScreenshotCoordinates(x - outset, y - outset, width + outset * 2, height + outset * 2);
     }
@@ -284,7 +284,7 @@ module.exports = {
         return async function() {
           const [element] = await waitAndGetElements(selector);
           await moveMouseAway();
-          await checkOutsetScreenshot(element, outset);
+          await checkScreenshotWithOutset(element, outset);
         };
       },
 
@@ -294,7 +294,7 @@ module.exports = {
 
           try {
             await focusElement.focus();
-            await checkOutsetScreenshot(targetElement, outset);
+            await checkScreenshotWithOutset(targetElement, outset);
           }
           finally {
             await blurElement(focusElement);
@@ -313,7 +313,7 @@ module.exports = {
             await wait(500);
           }
 
-          await checkOutsetScreenshot(targetElement, outset);
+          await checkScreenshotWithOutset(targetElement, outset);
         };
       },
 
@@ -325,7 +325,7 @@ module.exports = {
             await scrollIntoView(targetElement);
             await focusElement.focus();
             await focusElement.hover();
-            await checkOutsetScreenshot(targetElement, outset);
+            await checkScreenshotWithOutset(targetElement, outset);
           }
           finally {
             await blurElement(focusElement);
@@ -345,7 +345,7 @@ module.exports = {
 
           await dismissResultingDialog(async () => {
             await page.mouse.down();
-            await checkOutsetScreenshot(targetElement, outset);
+            await checkScreenshotWithOutset(targetElement, outset);
           }, 300);
         };
       },
