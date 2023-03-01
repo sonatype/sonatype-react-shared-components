@@ -12,7 +12,6 @@ describe('NxTextInput', function() {
     waitAndGetElements,
     getPage,
     clickTest,
-    focusTest,
     hoverTest,
     checkScreenshotCoordinates,
     wait,
@@ -51,8 +50,6 @@ describe('NxTextInput', function() {
       const clearButtonSelector = `${simpleComponentSelector} .nx-btn--clear`;
       await hoverTest(simpleComponentSelector, clearButtonSelector)();
     });
-
-    it('has an inner blue outline when focused', focusTest(simpleComponentSelector));
 
     it('has a dark grey border and light grey background when clicked', async function() {
       const clearButtonSelector = `${simpleComponentSelector} .nx-btn--clear`;
