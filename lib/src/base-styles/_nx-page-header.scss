@@ -64,7 +64,7 @@
   }
 
   &:active, &.nx-page-header__link--current {
-    border-color: var(--nx-color-page-header-active-link-border);
+    border-color: var(--nx-color-link);
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width
