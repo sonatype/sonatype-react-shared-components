@@ -11,7 +11,7 @@ import { NxButton, NxButtonBar } from '@sonatype/react-shared-components';
 const NxButtonPrimaryExample = () =>
   <NxButtonBar>
     <NxButton variant="primary">Primary button</NxButton>
-    <NxButton variant="primary" disabled>Primary disabled by class</NxButton>
+    <NxButton variant="primary" className="disabled">Primary disabled by class</NxButton>
   </NxButtonBar>;
 
 export default NxButtonPrimaryExample;
