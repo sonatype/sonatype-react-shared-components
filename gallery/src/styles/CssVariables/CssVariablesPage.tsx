@@ -289,8 +289,13 @@ const CssVariablesPage = () => {
               form fields) when they are focused.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-text">The standard text color within RSC.</ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-text-dark">
+            <ColorDocRow colorVar="--nx-color-text-stark">
               The standard dark variant of the text color within RSC.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-text-dark">
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-text-stark</NxCode>.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-text-disabled">
               The standard color for text within disabled elements in RSC.
@@ -372,6 +377,15 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-tooltip-text">
               The text color used on the <NxCode>NxTooltip</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-code-background">
+              The background color used on the <NxCode>NxCode</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-code-border">
+              The border color used on the <NxCode>NxCode</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-code-text">
+              The text color used on the <NxCode>NxCode</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>

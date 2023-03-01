@@ -73,6 +73,11 @@
   --nx-color-subsection-border: var(--nx-color-border);
   --nx-color-text-dark: var(--nx-color-text-stark);
 
+  // NxCode
+  --nx-color-code-background: var(--nx-swatch-pink-97);
+  --nx-color-code-border: var(--nx-swatch-pink-95);
+  --nx-color-code-text: var(--nx-swatch-grey-20);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-35);
 
@@ -104,5 +109,10 @@
     //NxTooltip variables
     --nx-color-tooltip-background: var(--nx-swatch-indigo-80);
     --nx-color-tooltip-text: var(--nx-swatch-indigo-05);
+
+    // NxCode
+    --nx-color-code-background: var(--nx-swatch-grey-10);
+    --nx-color-code-border: var(--nx-swatch-grey-30);
+    --nx-color-code-text: var(--nx-swatch-green-85);
   }
 }
