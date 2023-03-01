@@ -357,6 +357,21 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-global-header-border">
               The border color used on the <NxCode>NxGlobalHeader</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-page-header-background">
+              The background color used on the <NxCode>NxPageHeader</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-page-header-border">
+              The bottom border color used on the <NxCode>NxPageHeader</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-page-header-divider">
+              The color used on the <NxCode>NxPageHeader</NxCode> vertical divider.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-page-header-product-name-text">
+              The text color used on the <NxCode>NxPageHeader</NxCode> Product Name.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-page-header-link">
+              The text color used on the <NxCode>NxPageHeader</NxCode> links.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-tooltip-background">
               The background color used on the <NxCode>NxTooltip</NxCode>.
             </ColorDocRow>

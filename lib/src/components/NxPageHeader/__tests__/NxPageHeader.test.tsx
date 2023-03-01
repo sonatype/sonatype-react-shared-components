@@ -23,13 +23,13 @@ describe('NxPageHeader', function() {
 
   it('renders the default logo within the header', function() {
     const view = quickRender(),
-        logo = view.getByRole('img');
+        logo = view.getAllByRole('img')[0];
     expect(logo).toBeInTheDocument();
   });
 
   it('renders a custom logo instead of the default one when given logo prop', function() {
     const view = quickRender({ logo: { path: 'foo', alt: 'bar' } }),
-        logo = view.getByRole('img');
+        logo = view.getAllByRole('img')[0];
 
     expect(logo).toHaveAttribute('src', 'foo');
     expect(logo).toHaveAccessibleName('bar');
@@ -38,7 +38,7 @@ describe('NxPageHeader', function() {
   it('renders logo link when given homeLink prop', function() {
     const view = quickRender({ homeLink: '#home' }),
         homeLink = view.getByRole('link', {name: 'Home'}),
-        homeLinkLogo = view.getByRole('img');
+        homeLinkLogo = view.getAllByRole('img')[0];
 
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute('href', '#home');
@@ -122,7 +122,7 @@ describe('NxPageHeader', function() {
         view = quickRender(props),
         link = view.getByRole('link', {name: 'foo'}),
         homeLink = view.getByRole('link', {name: 'Home'}),
-        homeLinkLogo = view.getByRole('img'),
+        homeLinkLogo = view.getAllByRole('img')[0],
         productName = view.getByText('test app'),
         productVersion = view.getByText('Version: 1.2.3'),
         button = view.getByRole('button', {name: 'Click Here For a Free iPhone'});

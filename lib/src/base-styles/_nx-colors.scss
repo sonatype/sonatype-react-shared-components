@@ -55,6 +55,16 @@
   --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-95);
   --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-teal-60);
 
+  // NxGlobalHeader
+  --nx-color-global-header-border: var(--nx-color-border);
+
+  //NxPageHeader variables
+  --nx-color-page-header-background: var(--nx-color-component-background);
+  --nx-color-page-header-border: var(--nx-color-border);
+  --nx-color-page-header-divider: var(--nx-swatch-grey-30);
+  --nx-color-page-header-product-name-text: var(--nx-color-text);
+  --nx-color-page-header-link: var(--nx-swatch-grey-10);
+  
   //NxTooltip variables
   --nx-color-tooltip-background: var(--nx-swatch-grey-20);
   --nx-color-tooltip-text: var(--nx-swatch-white);
@@ -62,9 +72,6 @@
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
   --nx-color-text-dark: var(--nx-color-text-stark);
-
-  // NxGlobalHeader
-  --nx-color-global-header-border: var(--nx-color-border);
 
   // NxCode
   --nx-color-code-background: var(--nx-swatch-pink-97);
@@ -81,7 +88,7 @@
     --nx-color-text-stark: var(--nx-swatch-indigo-90);
     --nx-color-text: var(--nx-swatch-indigo-80);
 
-    --nx-color-link: var(--nx-swatch-teal-75);
+    --nx-color-link: var(--nx-swatch-purple-80);
 
     --nx-color-validation-invalid: var(--nx-swatch-red-75);
 
@@ -91,6 +98,13 @@
 
     // NxGlobalHeader
     --nx-color-global-header-border: var(--nx-color-site-background);
+
+    //NxPageHeader variables
+    --nx-color-page-header-background: var(--nx-color-site-background);
+    --nx-color-page-header-border: var(--nx-swatch-indigo-25);
+    --nx-color-page-header-divider: var(--nx-swatch-indigo-25);
+    --nx-color-page-header-product-name-text: var(--nx-color-text-stark);
+    --nx-color-page-header-link: var(--nx-color-link);
 
     //NxTooltip variables
     --nx-color-tooltip-background: var(--nx-swatch-indigo-80);
