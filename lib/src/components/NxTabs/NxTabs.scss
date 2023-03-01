@@ -24,7 +24,6 @@
   @include nx-container-helpers.container-vertical;
 
   &:focus {
-    box-shadow: var(--nx-box-shadow-focus);
     outline: solid 1px var(--nx-color-interactive-border-focus);
     outline-offset: -1px;
   }
@@ -47,7 +46,19 @@
   min-width: 80px;
   max-width: 240px;
   background-color: transparent;
-  opacity: 99%;
+  z-index: 0;
+
+  &::before {
+    box-sizing: border-box;
+    border-radius: 6px;
+    content: '';
+    height: calc(100% - 8px);
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 100%;
+    z-index: -1;
+  }
 
   &.active {
     @include nx-text-helpers.semi-bold;
@@ -60,35 +71,14 @@
     @include nx-text-helpers.semi-bold;
     color: var(--nx-color-text-dark);
 
-    &:before {
-      content: '';
-      position: absolute;
-      top: 4px;
-      left: 0;
-      height: calc(100% - 8px);
-      width: 100%;
-      border-radius: 6px;
+    &::before { 
       background-color: var(--nx-swatch-grey-97);
-      z-index: -1;
     }
   }
 
   &:focus {
-    // border-bottom-width: 1px;
-    // box-shadow: var(--nx-box-shadow-focus);
-    // margin-bottom: 0;
-    &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -4px;
-      height: 100%;
-      // can't control the outline's offset top/bottom with left/right, so need to make the width
-      // larger so outline-offset meets the element's edge
-      width: calc(100% + 8px);
-      outline: 1px solid var(--nx-swatch-blue-40);
-      outline-offset: -5px;
-      border-radius: 6px;
+    &::before {
+      border: 1px solid var(--nx-swatch-blue-40);
     }
   }
 
