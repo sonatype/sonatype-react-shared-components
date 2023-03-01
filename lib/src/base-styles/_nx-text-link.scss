@@ -37,8 +37,8 @@
     // was changed to 4px to get it visually close to
     // var(--nx-border-radius) or (6px).
     border-radius: 4px;
-    outline: 1px solid var(--nx-color-interactive-border-focus);
-    outline-offset: 1px;
+    outline: 2px solid var(--nx-color-interactive-border-focus);
+    outline-offset: 2px;
 
     &, .nx-code {
       color: var(--nx-color-link-focus);
