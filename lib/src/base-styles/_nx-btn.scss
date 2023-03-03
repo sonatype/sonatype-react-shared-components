@@ -140,7 +140,7 @@
   color: var(--nx-color-text-dark);
 
   &:hover {
-    background-color: var(--nx-swatch-grey-90);
+    background-color: var(--nx-color-interactive-background-hover);
   }
 
   &:focus:not(:active) {
