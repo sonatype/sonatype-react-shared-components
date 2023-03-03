@@ -92,11 +92,16 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   }
 }
 
+%collapsible-items-focus-style {
+  outline: 2px solid var(--nx-color-interactive-border-focus);
+  outline-offset: -2px;
+}
+
 .nx-collapsible-items__trigger {
   @include nx-container-helpers.container-horizontal;
   align-items: center;
   background: none;
-  border: 1px solid transparent;
+  border: 0;
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   color: var(--nx-color-text-dark);
@@ -112,13 +117,17 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   width: 100%;
 
   &:hover:not([disabled]) {
-    background-color: var(--nx-swatch-indigo-95);
+    background-color: var(--nx-color-interactive-background-hover);
   }
 
   &:focus {
-    border-color: var(--nx-color-interactive-border-focus);
-    box-shadow: var(--nx-box-shadow-focus);
-    outline: none;
+    @extend %collapsible-items-focus-style;
+  }
+
+  &:active:not([disabled]),
+  &:active:not([disabled]):focus {
+    background-color: var(--nx-swatch-grey-97);
+    border-color: transparent;
   }
 }
 
@@ -187,7 +196,8 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 }
 
 button, a {
-  &.nx-collapsible-items__child {
+  &.nx-collapsible-items__child,
+  &.nx-btn.nx-collapsible-items__child {
     background-color: transparent;
     font-weight: normal;
     margin: 0;
@@ -196,41 +206,44 @@ button, a {
     width: 100%;
 
     &:hover {
-      background-color: var(--nx-swatch-indigo-95);
+      background-color: var(--nx-color-interactive-background-hover);
     }
 
     &.selected {
-      background-color: var(--nx-swatch-blue-90);
+      background-color: var(--nx-color-interactive-background-selected);
       font-weight: 600;
     }
 
     &:focus {
-      border-color: var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
-      outline: none;
+      @extend %collapsible-items-focus-style;
     }
   }
 }
 
 // sidebars don't typically have the white background and so warrant different highlight colors
+$-sidebar-interactive-background-hover: var(--nx-swatch-indigo-90);
 .nx-page-sidebar {
   button, a {
     &.nx-collapsible-items__child {
       &:hover {
-        background-color: var(--nx-swatch-indigo-90);
+        background-color: $-sidebar-interactive-background-hover;
       }
 
       &.selected {
-        background-color: var(--nx-swatch-blue-10);
-        color: var(--nx-swatch-white);
+        background-color: var(--nx-color-interactive-background-selected);
       }
     }
   }
 
   .nx-collapsible-items__trigger {
     &:hover:not([disabled]) {
-      background-color: var(--nx-swatch-indigo-90);
+      background-color: $-sidebar-interactive-background-hover;
+    }
+
+    &:active:not([disabled]),
+    &:active:not([disabled]):focus {
+      background-color: var(--nx-swatch-indigo-95);
+      border-color: transparent;
     }
   }
-
 }
