@@ -94,7 +94,7 @@ describe('NxSegmentedButton', function() {
       it('has a darker blue inner outline when focused', focusTest(selector, dropdownBtnSelector));
       it('has a light blue background and darker blue inner outline when opened',
           openedTest(selector, dropdownBtnSelector));
-      it('has a lighter blue background when opened and not focused',
+      it('has a light blue background when opened and not focused',
           openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector));
     });
   });
