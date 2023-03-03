@@ -9,6 +9,11 @@
 @use '../scss-shared/nx-button-helpers';
 @use '../scss-shared/_nx-table-variables';
 
+%table-outline {
+  outline-offset: -2px;
+  outline: 2px solid;
+}
+
 .nx-table {
   background-color: var(--nx-color-component-background);
   border-spacing: 0;
@@ -75,6 +80,9 @@
 
     &.nx-clickable {
       &:hover {
+        @extend %table-outline;
+        outline-color: var(--nx-swatch-indigo-90);
+
         > .nx-cell {
           background-color: var(--nx-color-interactive-background-hover);
         }
@@ -87,18 +95,15 @@
       }
 
       &:active {
+        outline: 0;
         > .nx-cell {
-          background-color: var(--nx-color-interactive-background-active);
+          background-color: var(--nx-swatch-grey-97);
         }
       }
 
       &:focus-within {
-        box-shadow: var(--nx-box-shadow-focus);
-        outline: none;
-
-        > .nx-cell {
-          border-color: var(--nx-color-interactive-border-focus);
-        }
+        @extend %table-outline;
+        outline-color: var(--nx-color-interactive-border-focus);
       }
     }
   }
