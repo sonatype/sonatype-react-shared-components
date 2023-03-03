@@ -44,7 +44,9 @@
     }
   }
 
-  &:active {
+  &:active, &:active:focus {
+    outline: none;
+
     &, .nx-code {
       color: var(--nx-color-link-active);
     }
