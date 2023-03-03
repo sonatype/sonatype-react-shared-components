@@ -149,7 +149,7 @@
   }
 
   &:active {
-    background-color: var(--nx-swatch-grey-95);
+    background-color: var(--nx-color-interactive-background-active);
   }
 
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out
