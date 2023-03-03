@@ -81,7 +81,7 @@
     &.nx-clickable {
       &:hover {
         @extend %table-outline;
-        outline-color: var(--nx-swatch-indigo-90);
+        outline-color: var(--nx-color-border);
 
         > .nx-cell {
           background-color: var(--nx-color-interactive-background-hover);
