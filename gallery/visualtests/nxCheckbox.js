@@ -21,7 +21,8 @@ describe('NxCheckbox', function() {
     checkScreenshotWithOutset
   } = setupBrowser('#/pages/Checkbox');
 
-  const labelSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(3)',
+  const exampleSelector = '#nx-checkbox-example .gallery-example-live',
+      labelSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(3)',
       disabledSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(4)';
 
   describe('Default NxCheckbox', function() {
@@ -67,7 +68,7 @@ describe('NxCheckbox', function() {
     it('has a blue outer border when focused', focusTest(labelSelector, undefined, OUTSET));
     it('has a blue outer border and a dark border when focused and hovered',
         focusAndHoverTest(labelSelector, undefined, OUTSET));
-    it('shows overflow tooltips', hoverTest(labelSelector, undefined, true, OUTSET));
+    it('shows overflow tooltips', hoverTest(exampleSelector, labelSelector, true, OUTSET));
   });
 
   describe('Attribute-Disabled NxCheckbox', function() {

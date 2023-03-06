@@ -23,7 +23,8 @@ describe('NxRadio', function() {
     checkScreenshotWithOutset
   } = setupBrowser('#/pages/Radio');
 
-  const simpleExampleLabelSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
+  const simpleExampleSelector = '#nx-radio-example .gallery-example-live',
+      simpleExampleLabelSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
       disabledExampleLabelSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(1)',
       disabledExampleLabelCheckedSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(2)';
 
@@ -79,21 +80,18 @@ describe('NxRadio', function() {
   });
 
   describe('Attribute-Disabled NxRadio', function() {
-    it(
-        'looks disabled when hovered',
-        hoverTest(disabledExampleLabelSelector, undefined, undefined, OUTSET)
-    );
+    it('looks disabled when hovered', hoverTest(disabledExampleLabelSelector, undefined, undefined, OUTSET));
   });
 
   describe('Attribute-Disabled-Checked NxRadio', function() {
-    it(
-        'looks disabled when hovered',
-        hoverTest(disabledExampleLabelCheckedSelector, undefined, undefined, OUTSET)
-    );
+    it('looks disabled when hovered', hoverTest(disabledExampleLabelCheckedSelector, undefined, undefined, OUTSET));
   });
 
   describe('Tooltip for NxRadio', function() {
-    it('has a tooltip on hover when set to true', hoverTest(simpleExampleLabelSelector, undefined, true, OUTSET));
+    it(
+        'has a tooltip on hover when set to true',
+        hoverTest(simpleExampleSelector, simpleExampleLabelSelector, true, OUTSET)
+    );
 
     it('does have a tooltip on hover when overflowTooltip is not false and the content is overflowing',
         async function() {
