@@ -6,6 +6,8 @@
  */
 const { setupBrowser } = require('./testUtils');
 
+const OUTSET = 8;
+
 describe('NxCheckbox', function() {
   const {
     focusTest,
@@ -16,24 +18,16 @@ describe('NxCheckbox', function() {
     waitAndGetElements,
     moveMouseAway,
     blurElement,
-    checkScreenshot,
-    checkScreenshotCoordinates
+    checkScreenshotWithOutset
   } = setupBrowser('#/pages/Checkbox');
 
-  const exampleSelector = '#nx-checkbox-example .gallery-example-live',
-      labelSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(3)',
+  const labelSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(3)',
       disabledSelector = '#nx-checkbox-example .gallery-example-live label:nth-of-type(4)';
 
-  const checkCustomScreenshot = async (targetElement) => {
-    const { x, y, width, height } = await targetElement.boundingBox();
-    await checkScreenshotCoordinates(x - 8, y - 4, width + 16, height + 8);
-  };
-
   describe('Default NxCheckbox', function() {
-    it('has a light grey border and white background by default '
-    + 'and default disabled looks good', simpleTest(exampleSelector));
+    it('has a light grey border and white background by default', simpleTest(labelSelector, OUTSET));
 
-    it('has a black border when hovered', hoverTest(exampleSelector, labelSelector));
+    it('has a black border when hovered', hoverTest(labelSelector, undefined, undefined, OUTSET));
 
     it('has a blue background and white checkmark when clicked', async function() {
       const inputSelector = `${labelSelector} input`;
@@ -43,7 +37,7 @@ describe('NxCheckbox', function() {
       await targetElement.click();
       await blurElement(inputElement);
 
-      await checkCustomScreenshot(targetElement);
+      await checkScreenshotWithOutset(targetElement, OUTSET);
     });
 
     it(`has a blue background, white checkmark, with a blue outer border 
@@ -55,7 +49,7 @@ describe('NxCheckbox', function() {
       await moveMouseAway();
       await focusElement.focus();
 
-      await checkCustomScreenshot(targetElement);
+      await checkScreenshotWithOutset(targetElement, OUTSET);
     });
 
     it(`has a blue background and white checkmark with a blue outer border
@@ -67,17 +61,18 @@ describe('NxCheckbox', function() {
       await focusElement.focus();
       await targetElement.hover();
 
-      await checkCustomScreenshot(targetElement);
+      await checkScreenshotWithOutset(targetElement, OUTSET);
     });
 
-    it('has a blue outer border when focused', focusTest(exampleSelector, labelSelector));
+    it('has a blue outer border when focused', focusTest(labelSelector, undefined, OUTSET));
     it('has a blue outer border and a dark border when focused and hovered',
-        focusAndHoverTest(exampleSelector, labelSelector));
-    it('shows overflow tooltips', hoverTest(exampleSelector, labelSelector, true));
+        focusAndHoverTest(labelSelector, undefined, OUTSET));
+    it('shows overflow tooltips', hoverTest(labelSelector, undefined, true, OUTSET));
   });
 
   describe('Attribute-Disabled NxCheckbox', function() {
-    it('looks disabled when hovered', hoverTest(exampleSelector, disabledSelector));
+    it('looks disabled', simpleTest(disabledSelector, OUTSET));
+    it('looks disabled when hovered', hoverTest(disabledSelector, undefined, undefined, OUTSET));
   });
 
   it('passes a11y checks', a11yTest());

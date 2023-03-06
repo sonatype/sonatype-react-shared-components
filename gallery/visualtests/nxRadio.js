@@ -6,6 +6,8 @@
  */
 const { setupBrowser } = require('./testUtils');
 
+const OUTSET = 8;
+
 describe('NxRadio', function() {
   const {
     focusTest,
@@ -18,25 +20,19 @@ describe('NxRadio', function() {
     a11yTest,
     wait,
     isInDocument,
-    checkScreenshotCoordinates
+    checkScreenshotWithOutset
   } = setupBrowser('#/pages/Radio');
 
-  const simpleExampleSelector = '#nx-radio-example .gallery-example-live',
-      simpleExampleLabelSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
-      disabledExampleSelector = '#nx-radio-disabled-example .gallery-example-live',
+  const simpleExampleLabelSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
       disabledExampleLabelSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(1)',
       disabledExampleLabelCheckedSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(2)';
 
-  const checkCustomScreenshot = async (targetElement) => {
-    const { x, y, width, height } = await targetElement.boundingBox();
-    await checkScreenshotCoordinates(x - 8, y - 4, width + 16, height + 8);
-  };
-
   describe('Default NxRadio', function() {
 
-    it('has a light grey border and white background by default', simpleTest(simpleExampleSelector));
+    it('has a light grey border and white background by default', simpleTest(simpleExampleLabelSelector, OUTSET));
 
-    it('has a black border when hovered', hoverTest(simpleExampleSelector, simpleExampleLabelSelector));
+    it('has a black border when hovered', hoverTest(simpleExampleLabelSelector, undefined, undefined, OUTSET));
+
     it('has a thick blue border and white background when clicked', async function() {
       const inputSelector = `${simpleExampleLabelSelector} input`;
 
@@ -45,7 +41,7 @@ describe('NxRadio', function() {
       await targetElement.click();
       await blurElement(inputElement);
 
-      await checkCustomScreenshot(targetElement);
+      await checkScreenshotWithOutset(targetElement, OUTSET);
     });
 
     it(`has a thick blue border, white background, with a blue outer border '
@@ -57,7 +53,7 @@ describe('NxRadio', function() {
       await moveMouseAway();
       await focusElement.focus();
 
-      await checkCustomScreenshot(targetElement);
+      await checkScreenshotWithOutset(targetElement, OUTSET);
     });
 
     it(`has a thick blue border and white background with a blue outer border
@@ -69,31 +65,35 @@ describe('NxRadio', function() {
       await focusElement.focus();
       await targetElement.hover();
 
-      await checkCustomScreenshot(targetElement);
+      await checkScreenshotWithOutset(targetElement, OUTSET);
     });
 
-    it('has a blue outer border when focused', focusTest(simpleExampleSelector, simpleExampleLabelSelector));
+    it('has a blue outer border when focused', focusTest(simpleExampleLabelSelector, undefined, OUTSET));
     it('has a blue outer border and a dark border when focused and hovered',
-        focusAndHoverTest(simpleExampleSelector, simpleExampleLabelSelector)
+        focusAndHoverTest(simpleExampleLabelSelector, undefined, OUTSET)
     );
   });
 
   describe('Attribute-Disabled NxRadio and Attribute-Disabled-Checked', function() {
-    it('looks disabled by default', simpleTest(disabledExampleSelector));
+    it('looks disabled by default', simpleTest(disabledExampleLabelSelector, OUTSET));
   });
 
   describe('Attribute-Disabled NxRadio', function() {
-    it('looks disabled when hovered', hoverTest(disabledExampleSelector, disabledExampleLabelSelector));
+    it(
+        'looks disabled when hovered',
+        hoverTest(disabledExampleLabelSelector, undefined, undefined, OUTSET)
+    );
   });
 
   describe('Attribute-Disabled-Checked NxRadio', function() {
-    it('looks disabled when hovered', hoverTest(disabledExampleSelector, disabledExampleLabelCheckedSelector));
+    it(
+        'looks disabled when hovered',
+        hoverTest(disabledExampleLabelCheckedSelector, undefined, undefined, OUTSET)
+    );
   });
 
   describe('Tooltip for NxRadio', function() {
-    const simpleExampleLabelSelector = '#nx-radio-example .gallery-example-live',
-        hoverSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)';
-    it('has a tooltip on hover when set to true', hoverTest(simpleExampleLabelSelector, hoverSelector, true));
+    it('has a tooltip on hover when set to true', hoverTest(simpleExampleLabelSelector, undefined, true, OUTSET));
 
     it('does have a tooltip on hover when overflowTooltip is not false and the content is overflowing',
         async function() {
