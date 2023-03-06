@@ -50,9 +50,8 @@
   &:focus {
     background-color: transparent;
     border-radius: 0;
-    box-shadow: var(--nx-box-shadow-focus);
-    outline-offset: -1px;
-    outline: 1px solid var(--nx-color-interactive-border-focus);
+    outline-offset: -2px;
+    outline: 2px solid var(--nx-color-interactive-border-focus);
   }
 }
 
@@ -70,7 +69,7 @@
   }
 
   &:active {
-    background-color: var(--nx-color-interactive-background-active);
+    background-color: var(--nx-swatch-grey-95);
   }
 
   &.disabled {
