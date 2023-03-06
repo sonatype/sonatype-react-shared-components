@@ -279,6 +279,7 @@ module.exports = {
       checkScreenshot,
       checkFullPageScreenshot,
       checkScreenshotCoordinates,
+      checkScreenshotWithOutset,
 
       simpleTest(selector, outset) {
         return async function() {
