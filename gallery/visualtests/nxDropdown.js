@@ -49,7 +49,7 @@ describe('NxDropdown', function() {
       await checkScreenshot(targetElement, 251, 376);
     });
 
-    it('has a dark grey border when not foucsed with expanded menu', async function() {
+    it('has a dark grey border when not focused with expanded menu', async function() {
       const [targetElement, dropdownMenuItem] = await waitAndGetElements(defaultSelector, dropdownMenuItemSelector);
 
       dropdownMenuItem.focus();
