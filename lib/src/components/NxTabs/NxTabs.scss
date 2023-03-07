@@ -52,7 +52,7 @@
     box-sizing: border-box;
     border-radius: 6px;
     content: '';
-    height: calc(100% - 8px);
+    height: calc(100% - 6px);
     position: absolute;
     left: 0;
     top: 4px;
@@ -63,8 +63,8 @@
   &.active {
     @include nx-text-helpers.semi-bold;
 
-    border-bottom: 2px solid var(--nx-swatch-blue-40);
-    color: var(--nx-swatch-blue-40);
+    border-bottom: 2px solid var(--nx-color-interactive-border-focus);
+    color: var(--nx-color-interactive-border-focus);
   }
 
   &:hover:not(.active) {
@@ -78,7 +78,7 @@
 
   &:focus {
     &::before {
-      border: 1px solid var(--nx-swatch-blue-40);
+      border: 1px solid var(--nx-color-interactive-border-focus);
     }
   }
 
