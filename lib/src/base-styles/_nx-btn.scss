@@ -18,7 +18,7 @@
 
   background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-swatch-blue-40);
-  border-radius: 6px;
+  border-radius: var(--nx-border-radius);
   color: var(--nx-swatch-blue-40);
   cursor: pointer;
   display: inline-block;
@@ -135,9 +135,22 @@
 }
 
 .nx-btn--icon-only {
-  @extend .nx-btn--tertiary;
-
+  background-color: transparent;
   border-color: transparent;
+  color: var(--nx-color-text-dark);
+
+  &:hover {
+    background-color: var(--nx-color-interactive-background-hover);
+  }
+
+  &:focus:not(:active) {
+    outline: 2px solid var(--nx-color-interactive-border-focus);
+    outline-offset: -2px;
+  }
+
+  &:active {
+    background-color: var(--nx-color-interactive-background-active);
+  }
 
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out
   padding-left: 0;
@@ -154,6 +167,7 @@
     &, &:hover, &:focus {
       background-color: transparent;
       border-color: transparent;
+      outline: none;
     }
   }
 }

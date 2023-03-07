@@ -6,12 +6,12 @@
  */
 
 // For dynamically calculating focus border styles based on height and width
-// Border size is 1px border and 6px here represents total space in each axis
+// Border size is 2px border and 4px here represents total space in each axis
 // between border and control elements. Values are based on RSC design spec.
 
 // For correct positioning of focus borders, NxRadio and NxCheckbox additionally require
 // the left and top properties (currently specified in their respective .scss files)
 @mixin radio-checkbox-focus-border($height, $width) {
-    height: calc(#{$height} + 6px);
-    width: calc(#{$width} + 6px);
+    height: calc(#{$height} + 4px);
+    width: calc(#{$width} + 4px);
 }

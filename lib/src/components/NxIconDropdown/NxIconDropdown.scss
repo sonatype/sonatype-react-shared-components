@@ -21,7 +21,6 @@
   margin-left: 0;
 
   &.open {
-    background-color: var(--nx-swatch-grey-95);
-    border-color: var(--nx-color-interactive-border-hover);
+    background-color: var(--nx-color-interactive-background-selected);
   }
 }
