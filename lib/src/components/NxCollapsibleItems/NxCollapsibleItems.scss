@@ -113,7 +113,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   grid-template-columns: $-triangle-box-width 1fr;
   text-align: left;
   // subtract 1 from all sides to make room for focus border
-  padding: calc(var(--nx-spacing-base) - 1px) calc(#{$-trigger-side-padding} - 1px);
+  padding: var(--nx-spacing-base) $-trigger-side-padding;
   width: 100%;
 
   &:hover:not([disabled]) {
@@ -127,7 +127,6 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   &:active:not([disabled]),
   &:active:not([disabled]):focus {
     background-color: var(--nx-swatch-grey-97);
-    border-color: transparent;
   }
 }
 
