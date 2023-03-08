@@ -27,9 +27,9 @@ describe('NxPagination', function() {
     describe('when not selected', function() {
       it('has a grey background when hovered', hoverTest(selector, btnSelector));
       it('has a blue border when focused', focusTest(selector, btnSelector));
-      it('has a blue border and grey background when focused and hovered', 
+      it('has a blue border and grey background when focused and hovered',
           focusAndHoverTest(selector, btnSelector));
-      it('has a light grey background when clicked', clickTest(selector, currentBtnSelector));
+      it('has a light grey background when clicked', clickTest(selector, btnSelector));
     });
 
     describe('when selected', function() {
