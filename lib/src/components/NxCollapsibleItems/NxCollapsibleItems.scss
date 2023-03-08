@@ -112,7 +112,6 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 
   grid-template-columns: $-triangle-box-width 1fr;
   text-align: left;
-  // subtract 1 from all sides to make room for focus border
   padding: var(--nx-spacing-base) $-trigger-side-padding;
   width: 100%;
 
@@ -164,19 +163,18 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 }
 
 .nx-collapsible-items__child {
-  border: 1px solid transparent;
+  border: 0;
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   color: var(--nx-color-text-dark);
   display: block;
   overflow: hidden;
 
-  // subtract 1 from all sides to make room for focus border
   padding:
-    calc(var(--nx-spacing-base) - 1px)
-    calc(var(--nx-spacing-6x) - 1px)
-    calc(var(--nx-spacing-base) - 1px)
-    calc(#{$-trigger-side-padding} + #{$-triangle-box-width} + var(--nx-spacing-3x) - 1px);
+    var(--nx-spacing-base)
+    var(--nx-spacing-6x)
+    var(--nx-spacing-base)
+    calc(#{$-trigger-side-padding} + #{$-triangle-box-width} + var(--nx-spacing-3x));
 
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -242,8 +240,7 @@ $-sidebar-interactive-background-hover: var(--nx-swatch-indigo-90);
 
     &:active:not([disabled]),
     &:active:not([disabled]):focus {
-      background-color: var(--nx-swatch-indigo-95);
-      border-color: transparent;
+      background-color: var(--nx-swatch-indigo-95);;
     }
   }
 }
