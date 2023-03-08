@@ -16,9 +16,9 @@ $-left-right-spacing: var(--nx-spacing-6x);
 $-text-color: var(--nx-swatch-white);
 $-background-color: var(--nx-swatch-blue-10);
 
-$-active-color: var(--nx-swatch-indigo-70);
-$-selected-color: var(--nx-swatch-indigo-30);
-$-hover-color: var(--nx-swatch-indigo-50);
+$-active-color: var(--nx-swatch-indigo-50);
+$-focus-color: var(--nx-swatch-blue-95);
+$-hover-color: var(--nx-swatch-indigo-30);
 
 $-button-border-width: 2px;
 
@@ -61,9 +61,8 @@ $-separator-color: var(--nx-swatch-indigo-40);
   flex: none;
   margin: 0;
 
-  &:focus {
-    border-width: $-button-border-width;
-    border-color: var(--nx-color-interactive-border-focus);
+  &:focus:not(:active) {
+    outline-color: $-focus-color;
     padding-top: calc(var(--nx-spacing-base) - #{$-button-border-width});
     padding-bottom: calc(var(--nx-spacing-base) - #{$-button-border-width});
   }
@@ -113,9 +112,9 @@ $-separator-color: var(--nx-swatch-indigo-40);
   }
 
   &:focus {
-    border-color: var(--nx-color-interactive-border-focus);
-    box-shadow: var(--nx-box-shadow-focus);
-    outline: none;
+    border-radius: 0;
+    outline: 2px solid $-focus-color;
+    outline-offset: -2px;
   }
 
   &:hover {
@@ -127,8 +126,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
   }
 
   &.selected {
-    @include nx-text-helpers.semi-bold;
-    background-color: $-selected-color;
+    background-color: var(--nx-swatch-blue-40);
   }
 }
 
