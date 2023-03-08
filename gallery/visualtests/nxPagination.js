@@ -18,15 +18,32 @@ describe('NxPagination', function() {
 
   const selector = '#nx-pagination-example .gallery-example-live',
       btnSelector = `${selector} .nx-btn--pagination:nth-child(4)`,
-      currentBtnSelector = `${selector} .nx-btn--pagination:nth-child(6)`;
+      currentBtnSelector = `${selector} .nx-btn--pagination:nth-child(6)`,
+      arrowBtnSelector = `${selector} .nx-btn:first-child`;
 
   it('looks right', simpleTest(selector));
-  it('puts a border on a hovered button', hoverTest(selector, btnSelector));
-  it('puts a blue border and glow on a focused button', focusTest(selector, btnSelector));
-  it('puts a blue border and glow on a focused+hovered button', focusAndHoverTest(selector, btnSelector));
-  it('puts a dark border and grey background on a clicked button', clickTest(selector, btnSelector));
 
-  it('focus button stays blue on click', clickTest(selector, currentBtnSelector));
+  describe('numbered button', function() {
+    describe('when not selected', function() {
+      it('has a grey background when hovered', hoverTest(selector, btnSelector));
+      it('has a blue border when focused', focusTest(selector, btnSelector));
+      it('has a blue border and grey background when focused and hovered', 
+          focusAndHoverTest(selector, btnSelector));
+      it('has a light grey background when clicked', clickTest(selector, currentBtnSelector));
+    });
+
+    describe('when selected', function() {
+      it('has a white inner outline when focused', focusTest(selector, currentBtnSelector));
+    });
+  });
+
+  describe('arrow button', function() {
+    it('has a grey background and dark grey border when hovered', hoverTest(selector, arrowBtnSelector));
+    it('has a light grey background and dark grey border when clicked', clickTest(selector, arrowBtnSelector));
+    it('has a blue inner outline when focused', focusTest(selector, arrowBtnSelector));
+    it('has a blue inner outline, dark grey border and grey background when focused and hovered',
+        focusAndHoverTest(selector, arrowBtnSelector));
+  });
 
   it('passes a11y checks', a11yTest());
 });
