@@ -38,7 +38,7 @@ describe('NxCombobox', function() {
     it('has a darker border when hovered',
         hoverTest(basicExampleSelector, inputSelector));
 
-    it('has a blue border and glow when hovered and focused',
+    it('has a blue inner outline when hovered and focused',
         focusAndHoverTest(basicExampleSelector, inputSelector));
   });
 
