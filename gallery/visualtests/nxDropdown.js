@@ -8,6 +8,7 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxDropdown', function() {
   const {
+    blurElement,
     clickTest,
     focusTest,
     focusAndHoverTest,
@@ -50,12 +51,28 @@ describe('NxDropdown', function() {
     });
 
     it('has a dark grey border when not focused with expanded menu', async function() {
-      const [targetElement, dropdownMenuItem] = await waitAndGetElements(defaultSelector, dropdownMenuItemSelector);
+      const [targetElement, button] = await waitAndGetElements(defaultSelector, buttonSelector);
 
-      dropdownMenuItem.focus();
+      await blurElement(button);
       await moveMouseAway();
 
       await checkScreenshot(targetElement, 251, 376);
+    });
+
+    describe('menu item', function() {
+      it('has a grey background and dark text on hover', async function() {
+        const [targetElement, dropdownMenuItem] = await waitAndGetElements(defaultSelector, dropdownMenuItemSelector);
+
+        await dropdownMenuItem.hover();
+        await checkScreenshot(targetElement, 251, 376);
+      });
+
+      it('has a blue border when focused', async function() {
+        const [targetElement, dropdownMenuItem] = await waitAndGetElements(defaultSelector, dropdownMenuItemSelector);
+
+        await dropdownMenuItem.focus();
+        await checkScreenshot(targetElement, 251, 376);
+      });
     });
   });
 
