@@ -19,7 +19,9 @@
 
     // focus styles must be reimplemented because it isn't the actual button that gets focus, it's the input
     &:focus + .nx-btn {
-      border-color: var(--nx-color-interactive-border-focus);
+      outline-offset: -5px;
+      outline: 2px solid;
+      outline-color: var(--nx-swatch-grey-40);
     }
   }
 
