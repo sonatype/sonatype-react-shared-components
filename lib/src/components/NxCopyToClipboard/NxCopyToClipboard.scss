@@ -42,13 +42,5 @@
   .nx-text-input {
     grid-area: textarea;
     width: 100%;
-
-    .nx-text-input__box {
-      border-color: var(--nx-color-form-element-border);
-    }
-
-    .nx-text-input__box:focus-within {
-      border-color: var(--nx-color-interactive-border-focus);
-    }
   }
 }
