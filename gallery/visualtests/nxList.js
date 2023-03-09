@@ -51,7 +51,7 @@ describe('nx-list', function() {
         focusTest(clickableLinksSelector, `${clickableLinksSelector} li:first-child a`));
 
     it('looks right with a row clicked',
-        focusTest(clickableLinksSelector, `${clickableLinksSelector} li:first-child a`));
+        clickTest(clickableLinksSelector, `${clickableLinksSelector} li:first-child a`));
 
     it('looks right with a row selected',
         simpleTest(`${clickableLinksSelector} li:nth-of-type(2) a`));
