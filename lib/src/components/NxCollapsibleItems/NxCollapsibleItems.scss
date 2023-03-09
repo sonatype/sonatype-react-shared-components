@@ -126,6 +126,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   &:active:not([disabled]),
   &:active:not([disabled]):focus {
     background-color: var(--nx-swatch-grey-97);
+    outline: none;
   }
 }
 
@@ -215,6 +216,10 @@ button, a {
     &:focus {
       @extend %collapsible-items-focus-style;
     }
+
+    &:active:focus {
+      outline: none;
+    }
   }
 }
 
@@ -240,7 +245,8 @@ $-sidebar-interactive-background-hover: var(--nx-swatch-indigo-90);
 
     &:active:not([disabled]),
     &:active:not([disabled]):focus {
-      background-color: var(--nx-swatch-indigo-95);;
+      background-color: var(--nx-swatch-indigo-95);
+      outline: none;
     }
   }
 }
