@@ -34,9 +34,10 @@
       &:active {
         background-color: var(--nx-swatch-grey-97);
         border-color: var(--nx-swatch-grey-20);
+        outline: none;
       }
 
-      &:focus:not(:active) {
+      &:focus {
         @extend %btn-focus-outline;
       }
     }
@@ -71,10 +72,13 @@
   }
 
   &.selected {
-    background-color: var(--nx-swatch-blue-40);
-    color: var(--nx-color-component-background);
-    cursor: default;
-
+    &, &:hover {
+      background-color: var(--nx-swatch-blue-40);
+      border-color: transparent;
+      color: var(--nx-color-component-background);
+      cursor: default;
+    }
+    
     &:focus {
       @extend %btn-focus-outline;
       outline-color: var(--nx-color-component-background);
