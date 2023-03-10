@@ -6,6 +6,8 @@
  */
 const { setupBrowser } = require('./testUtils');
 
+const OUTSET = 6;
+
 describe('NxTag', function() {
   const {
     focusTest,
@@ -13,8 +15,9 @@ describe('NxTag', function() {
     hoverTest,
     simpleTest,
     waitAndGetElements,
-    checkScreenshotCoordinates,
     checkScreenshot,
+    checkScreenshotCoordinates,
+    moveMouseAway,
     scrollIntoView,
     wait,
     a11yTest
@@ -46,17 +49,22 @@ describe('NxTag', function() {
   });
 
   describe('NxSelectableTag', function() {
-    const selector = '#nx-selectable-tag-example .nx-tag:first-child';
+    const selector = '#nx-selectable-tag-example .nx-tag:first-child',
+        lastTagSelector = '#nx-selectable-tag-example .nx-tag:last-child';
 
-    it('has a blue/grey border and lighter blue/grey background by default', simpleTest(selector));
+    it('has a lighter background and darker border by default', simpleTest(selector));
     it('has a dark grey border when hovered', hoverTest(selector));
-    it('has a light blue glow and light blue border when focused', focusTest(selector));
-    it('has a light blue glow and blue border when focused and hovered', focusAndHoverTest(selector));
+    it('has a blue outline when focused', focusTest(selector, undefined, OUTSET));
+    it('has a blue outline and dark grey border when focused and hovered',
+        focusAndHoverTest(selector, undefined, OUTSET));
 
-    it('has a dark blue/grey background when clicked', async function() {
-      const [targetElement] = await waitAndGetElements(selector);
+    it('has a darker background and no border when selected', async function() {
+      const [targetElement, lastElement] = await waitAndGetElements(selector, lastTagSelector);
 
       await targetElement.click();
+      //remove focus from tag for snapshot
+      await lastElement.click();
+      await moveMouseAway();
 
       await checkScreenshot(targetElement);
     });
@@ -125,12 +133,6 @@ describe('NxTag', function() {
       const { x, y, height, width } = await exampleElement.boundingBox();
 
       await checkScreenshotCoordinates(x, y - tooltipHeightOffset, width, height + tooltipHeightOffset);
-    });
-
-    it('looks right when selected', async function() {
-      const [targetElement] = await waitAndGetElements(overflowingTagSelector);
-      await targetElement.click();
-      await checkScreenshot(targetElement);
     });
   });
 
