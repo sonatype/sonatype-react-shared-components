@@ -128,6 +128,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
   &.selected {
     background-color: var(--nx-swatch-blue-40);
   }
+
+  &:active:focus {
+    color: $-text-color;
+  }
 }
 
 .nx-global-sidebar__navigation-text {
