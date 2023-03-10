@@ -198,13 +198,6 @@
   > .nx-list__term, > .nx-list__description {
     display: contents;
   }
-
-  // only applies in description lists. In normal lists this element has display: contents set
-  &:focus-within {
-    box-shadow: var(--nx-box-shadow-focus);
-    border-color: var(--nx-color-interactive-border-focus);
-    outline: none;
-  }
 }
 
 .nx-list__item--clickable, // preferred
@@ -214,16 +207,17 @@
   &, > .nx-list__term, > .nx-list__description, > .nx-list__link, > .nx-list__btn {
     &:hover {
       background-color: var(--nx-color-interactive-background-hover);
+      color: var(--nx-color-text-dark);
     }
 
     &:active {
       background-color: var(--nx-color-interactive-background-active);
+      color: var(--nx-color-text-dark);
     }
 
     &:focus, &:focus-within {
-      box-shadow: var(--nx-box-shadow-focus);
-      border-color: var(--nx-color-interactive-border-focus);
-      outline: none;
+      outline: 2px solid var(--nx-color-interactive-border-focus);
+      outline-offset: -2px;
       position: relative;
       z-index: 1;
     }
@@ -264,6 +258,7 @@
     &.selected {
       &, &:hover {
         background-color: var(--nx-color-interactive-background-selected);
+        color: var(--nx-color-text-dark);
       }
     }
   }
@@ -309,11 +304,7 @@
 
   .nx-list__item--clickable {
     &:focus-within {
-      border-color: var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
-
       .nx-list__link, .nx-list__btn {
-        box-shadow: none;
         outline: none;
       }
     }
