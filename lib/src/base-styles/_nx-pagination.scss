@@ -7,6 +7,11 @@
 @use '../scss-shared/_nx-pagination-variables';
 @use '../scss-shared/nx-text-helpers';
 
+%btn-focus-outline {
+  outline: 2px solid var(--nx-color-interactive-border-focus);
+  outline-offset: -5px;
+}
+
 .nx-btn-bar--pagination {
   justify-content: center;
 
@@ -32,8 +37,7 @@
       }
 
       &:focus:not(:active) {
-        outline: 2px solid var(--nx-color-interactive-border-focus);
-        outline-offset: -5px;
+        @extend %btn-focus-outline;
       }
     }
   }
@@ -55,14 +59,15 @@
     color: var(--nx-color-text-dark);
   }
 
-  &:focus:not(:active) {
-    outline: 2px solid var(--nx-color-interactive-border-focus);
+  &:focus {
+    @extend %btn-focus-outline;
     outline-offset: -2px;
   }
 
   &:active {
     background-color: var(--nx-swatch-grey-97);
     color: var(--nx-color-text);
+    outline: none;
   }
 
   &.selected {
@@ -71,8 +76,8 @@
     cursor: default;
 
     &:focus {
-      outline: 2px solid var(--nx-color-component-background);
-      outline-offset: -5px;
+      @extend %btn-focus-outline;
+      outline-color: var(--nx-color-component-background);
     }
   }
 }
