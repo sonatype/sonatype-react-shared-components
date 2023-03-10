@@ -207,10 +207,12 @@
   &, > .nx-list__term, > .nx-list__description, > .nx-list__link, > .nx-list__btn {
     &:hover {
       background-color: var(--nx-color-interactive-background-hover);
+      color: var(--nx-color-text-dark);
     }
 
     &:active {
       background-color: var(--nx-color-interactive-background-active);
+      color: var(--nx-color-text-dark);
     }
 
     &:focus, &:focus-within {
@@ -256,6 +258,7 @@
     &.selected {
       &, &:hover {
         background-color: var(--nx-color-interactive-background-selected);
+        color: var(--nx-color-text-dark);
       }
     }
   }
