@@ -242,7 +242,7 @@ describe('NxCombobox', function() {
       await hoverTest(dropdownMenuSelector, buttonSelector)();
     });
 
-    it('has a light blue border and light blue background when clicked', async function() {
+    it('has a light grey background when clicked', async function() {
       const dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
           buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`;
 
