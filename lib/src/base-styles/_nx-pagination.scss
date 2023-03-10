@@ -80,8 +80,8 @@
     }
     
     &:focus {
-      @extend %btn-focus-outline;
-      outline-color: var(--nx-color-component-background);
+      outline: 2px solid var(--nx-color-component-background);
+      outline-offset: -4px;
     }
   }
 }
