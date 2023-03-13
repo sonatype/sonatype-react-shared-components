@@ -41,8 +41,13 @@
   }
 
   &:focus-within {
-    outline: 2px solid var(--nx-color-interactive-border-focus);
-    outline-offset: 2px;
+    &::before {
+      border: 2px solid var(--nx-color-interactive-border-focus);
+      border-radius: 20px;
+      content: '';
+      inset: calc(0px - (var(--nx-spacing-base) + 1px));
+      position: absolute;
+    }
   }
 }
 
