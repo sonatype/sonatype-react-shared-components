@@ -115,12 +115,14 @@ $-visible-item-count: 10;
     padding-left: var(--nx-spacing-2x);
 
     &:hover {
+      background-color: var(--nx-color-interactive-background-hover);
       border-color: var(--nx-color-interactive-border-hover);
     }
   
-    &:focus-within {
-      border-color: var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
+    &:focus-within:not(:active) {
+      outline: 2px solid var(--nx-color-interactive-border-focus);
+      outline-offset: -2px;
+      border-color: transparent;
     }
   
     &:active {
