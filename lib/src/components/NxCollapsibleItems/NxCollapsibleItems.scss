@@ -206,6 +206,7 @@ button, a {
     &:hover {
       background-color: var(--nx-color-interactive-background-hover);
       color: var(--nx-color-text-dark);
+      font-weight: 600;
     }
 
     &.selected {
