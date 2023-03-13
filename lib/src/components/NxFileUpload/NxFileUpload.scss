@@ -19,8 +19,9 @@
 
     // focus styles must be reimplemented because it isn't the actual button that gets focus, it's the input
     &:focus + .nx-btn {
-      border-color: var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
+      outline-offset: -5px;
+      outline: 2px solid;
+      outline-color: var(--nx-swatch-grey-40);
     }
   }
 
@@ -103,22 +104,31 @@
     font-size: var(--nx-font-size);
     height: inherit;
     margin-left: auto;
-    margin-right: -1px; // border should overlap with parent border
-    padding: 0 calc(var(--nx-spacing-3x) - 1px);
+    margin-right: -1px; // outline to overlap with parent border
+    padding: 0 var(--nx-spacing-3x);
 
-    &:focus {
-      border-color: var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
-      outline: none;
+    outline: 1px solid transparent;
+    outline-offset: -1px;
+
+    &:hover {
+      outline-color: var(--nx-color-interactive-border-hover);
     }
 
-    &:hover, &:active {
-      border-color: var(--nx-swatch-grey-05);
-    }
-
-    &:active {
+    &:hover {
       background-color: var(--nx-swatch-indigo-90);
-      box-shadow: none;
+    }
+
+    &:focus,
+    &:hover:focus {
+      outline: 2px solid var(--nx-color-interactive-border-focus);
+      outline-offset: -2px;
+    }
+
+    &:active,
+    &:active:focus {
+      outline: 1px solid var(--nx-swatch-indigo-60);
+      outline-offset: -1px;
+      background-color: var(--nx-swatch-white);
     }
   }
 }
