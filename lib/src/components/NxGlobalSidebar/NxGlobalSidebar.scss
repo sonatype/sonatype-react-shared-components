@@ -67,12 +67,12 @@ $-separator-color: var(--nx-swatch-indigo-40);
     padding-bottom: calc(var(--nx-spacing-base) - #{$-button-border-width});
   }
 
-  &:active {
-    background-color: $-active-color;
-  }
-
   &:hover {
     background-color: $-hover-color;
+  }
+
+  &:active {
+    background-color: $-active-color;
   }
 }
 

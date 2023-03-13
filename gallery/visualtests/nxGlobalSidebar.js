@@ -40,7 +40,7 @@ describe('nx-global-sidebar', function() {
     const defaultLink = '.nx-global-sidebar__navigation-link:nth-of-type(1)',
         selectedLink = '.nx-global-sidebar__navigation-link:nth-of-type(4)';
 
-    fit('looks right', simpleTest(defaultLink));
+    it('looks right', simpleTest(defaultLink));
     it('has a dark indigo background when hovered', hoverTest(defaultLink));
     it('has a light indigo background when clicked', clickTest(defaultLink));
     it('has a white outline when focused', focusTest(defaultLink));
