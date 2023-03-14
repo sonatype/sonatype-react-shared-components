@@ -9,6 +9,15 @@
 /*
   #Alerts
 */
+@mixin close-btn-interaction-state($color, $hover-value: 80, $active-value: 90) {
+  &:hover {
+    background-color: var(--nx-swatch-#{$color}-#{$hover-value});
+  }
+  &:active {
+    background-color: var(--nx-swatch-#{$color}-#{$active-value});
+  }
+}
+
 .nx-alert {
   @include nx-container-helpers.container-horizontal;
 
@@ -23,6 +32,11 @@
   text-align: initial;
   max-width: var(--nx-width-text-wrapping);
 
+  @each $type in warning, error, info, success {
+    &--#{$type} > .nx-icon {
+      color: var(--nx-color-alert-#{$type});
+    }
+  }
   > .nx-icon {
     // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
     // no effect here so we use relative positioning instead
@@ -34,12 +48,6 @@
   }
 
   > .nx-btn--close {
-    margin-left: 24px;
-
-    &, &:hover, &:active, &:focus {
-      background-color: transparent;
-    }
-
     flex-shrink: 0;
     margin-left: auto;
   }
@@ -73,8 +81,8 @@
   background-color: var(--nx-swatch-orange-97);
   border-color: var(--nx-swatch-orange-40);
 
-  > .nx-icon {
-    color: var(--nx-color-alert-warning);
+  > .nx-btn--close {
+    @include close-btn-interaction-state('orange');
   }
 }
 
@@ -82,8 +90,8 @@
   background-color: var(--nx-swatch-red-95);
   border-color: var(--nx-color-alert-error);
 
-  > .nx-icon {
-    color: var(--nx-color-alert-error);
+  > .nx-btn--close {
+    @include close-btn-interaction-state('red');
   }
 }
 
@@ -91,8 +99,8 @@
   background-color: var(--nx-swatch-blue-95);
   border-color: var(--nx-color-alert-info);
 
-  > .nx-icon {
-    color: var(--nx-color-alert-info);
+  > .nx-btn--close {
+    @include close-btn-interaction-state('blue');
   }
 }
 
@@ -100,8 +108,8 @@
   background-color: var(--nx-swatch-green-95);
   border-color: var(--nx-color-alert-success);
 
-  > .nx-icon {
-    color: var(--nx-color-alert-success);
+  > .nx-btn--close {
+    @include close-btn-interaction-state('blue', 75, 85);
   }
 }
 
