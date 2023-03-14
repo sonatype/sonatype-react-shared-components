@@ -41,25 +41,18 @@
   }
 
   &:focus-within {
-    outline: none;
-
     &::before {
+      border: 2px solid var(--nx-color-interactive-border-focus);
+      border-radius: 20px;
       content: '';
       inset: calc(0px - (var(--nx-spacing-base) + 1px));
       position: absolute;
-      border: 1px solid var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
-      border-radius: 20px;
     }
   }
 }
 
 .nx-tag--selected {
   background-color: var(--nx-selectable-color-dark);
-
-  &:hover {
-    border-color: transparent;
-  }
 }
 
 .nx-tag__input {
@@ -76,4 +69,5 @@
 
 .nx-tag__action {
   margin-left: var(--nx-spacing-4x);
+  font-size: var(--nx-font-size);
 }
