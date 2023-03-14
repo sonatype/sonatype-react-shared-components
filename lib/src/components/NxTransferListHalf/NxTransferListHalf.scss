@@ -105,7 +105,7 @@ $-visible-item-count: 10;
   border-radius: var(--nx-border-radius);
   border: var(--nx-border-default);
   flex: auto;
-  padding: var(--nx-spacing-2x);
+  padding: calc(var(--nx-spacing-2x) - 1px);
   padding-left: var(--nx-spacing-4x);
 }
 
