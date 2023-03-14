@@ -67,7 +67,7 @@ describe('NxTransferListHalf', function() {
   it('puts a blue border on focused items', focusTest(simpleListSelector, secondItemSelector));
   it('puts a blue border on focused+hovered items',
       focusAndHoverTest(simpleListSelector, secondItemSelector));
-  it('puts a grey background on clicked items', clickTest(simpleListSelector, secondItemSelector));
+  it('puts a light grey background on clicked items', clickTest(simpleListSelector, secondItemSelector));
 
   it('makes the move all button dark blue when hovered', hoverTest(complexListSelector, transferAllSelector));
   it('makes the move all button light blue when clicked', clickTest(complexListSelector, transferAllSelector));
