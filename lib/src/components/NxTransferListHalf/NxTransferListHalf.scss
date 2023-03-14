@@ -126,8 +126,17 @@ $-visible-item-count: 10;
     }
   
     &:active {
-      background-color: var(--nx-swatch-indigo-97);
-      border-color: var(--nx-color-interactive-border-hover);
+      background-color: var(--nx-swatch-grey-97);
+      border-color: var(--nx-swatch-grey-30);
+    }
+
+    &:hover,
+    &:active {
+      color: var(--nx-color-text-dark);
+    }
+
+    .nx-icon {
+      color: var(--nx-color-text-dark);
     }
   }
 }
