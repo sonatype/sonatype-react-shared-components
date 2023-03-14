@@ -109,7 +109,7 @@
   border-color: var(--nx-color-alert-success);
 
   > .nx-btn--close {
-    @include close-btn-interaction-state('blue', 75, 85);
+    @include close-btn-interaction-state('green', 75, 85);
   }
 }
 
