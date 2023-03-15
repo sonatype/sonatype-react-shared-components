@@ -82,7 +82,7 @@
   border-color: var(--nx-swatch-orange-40);
 
   > .nx-btn--close {
-    @include close-btn-interaction-state('orange');
+    @include close-btn-interaction-state("orange");
   }
 }
 
@@ -91,7 +91,7 @@
   border-color: var(--nx-color-alert-error);
 
   > .nx-btn--close {
-    @include close-btn-interaction-state('red');
+    @include close-btn-interaction-state("red");
   }
 }
 
@@ -100,7 +100,7 @@
   border-color: var(--nx-color-alert-info);
 
   > .nx-btn--close {
-    @include close-btn-interaction-state('blue');
+    @include close-btn-interaction-state("blue");
   }
 }
 
@@ -109,7 +109,7 @@
   border-color: var(--nx-color-alert-success);
 
   > .nx-btn--close {
-    @include close-btn-interaction-state('green', 75, 85);
+    @include close-btn-interaction-state("green", 75, 85);
   }
 }
 
