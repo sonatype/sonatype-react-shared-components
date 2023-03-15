@@ -46,6 +46,11 @@ describe('NxTable', function() {
     }
   });
 
+  it('renders a <caption> when caption prop is provided', function() {
+    render(<NxTable caption="table-title"></NxTable>);
+    expect(screen.getByRole('table', { name: 'table-title'})).toBeInTheDocument();
+  });
+
   it('renders children of table with correct element types', function() {
     render(
       <NxTable>

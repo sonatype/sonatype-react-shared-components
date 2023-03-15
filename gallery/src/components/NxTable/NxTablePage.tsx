@@ -87,6 +87,14 @@ export default function NxTablePage() {
                   supported by <NxCode>&lt;table&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>caption</NxTable.Cell>
+                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  Used to render a <NxCode>&lt;caption&gt;</NxCode> that acts as a title/header on the table.
+                </NxTable.Cell>
+              </NxTable.Row>
             </NxTable.Body>
           </NxTable>
         </NxTile.Subsection>

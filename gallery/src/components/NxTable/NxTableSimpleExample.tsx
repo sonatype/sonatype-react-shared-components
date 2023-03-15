@@ -11,7 +11,7 @@ import { faAtom, faBatteryEmpty, faCarBattery } from '@fortawesome/free-solid-sv
 
 const NxTableSimpleExample = () => {
   return (
-    <NxTable>
+    <NxTable caption={'Test Heading'}>
       <NxTable.Head>
         <NxTable.Row>
           <NxTable.Cell>Header 1</NxTable.Cell>
