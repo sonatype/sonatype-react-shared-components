@@ -7,6 +7,13 @@
 @use 'sass:math';
 @use '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 
+// JASON - Basic gallery styling
+
+// to edit the whole gallery example tile, need to go to _nx-tile.scss inside of 'base-styles' folder in library and
+// find '.nx-tile'
+// .gallery-example-live = actual component inside of each nx-tile
+// .gallery-example > .nx-tile-header > .nx-tile-header__title = the title of each tile
+
 .gallery-example-section {
   margin: 15px 0;
 }
@@ -52,9 +59,10 @@
   overflow: visible;
   gap: var(--nx-spacing-2x);
   min-width: 0;
-
+  
   > .nx-h2 {
     min-width: 0;
+    color: blue;
   }
 }
 

@@ -10,6 +10,13 @@
 /*
   #Layout
 */
+
+//JASON - some basic page layout styling
+// .nx-body = can affect the entire site's background colour 
+// .nx-page-content = the gallery page minus the header (so main & sidebar)
+// .nx-page-main = the gallery page minus the sidebar & header
+// .nx-page-sidebar = the gallery sidebar
+
 .nx-html, .nx-body {
   box-sizing: border-box;
   height: 100%;

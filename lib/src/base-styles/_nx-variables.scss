@@ -18,6 +18,7 @@
   --nx-width-form-element-short: 150px;
   --nx-width-text-wrapping: 800px;
 
+  // JASON- Margin/Padding - the basic variables we use in increments of 4px
   --nx-spacing-base: 4px; // formerly nx-spacing-xxs
   --nx-spacing-2x: calc(var(--nx-spacing-base) * 2); // formerly nx-spacing-xs
   --nx-spacing-3x: calc(var(--nx-spacing-base) * 3); // formerly nx-spacing-sm
@@ -28,6 +29,7 @@
   --nx-spacing-16x: calc(var(--nx-spacing-base) * 16); // formerly nx-spacing-xxxl
   --nx-spacing-20x: calc(var(--nx-spacing-base) * 20);
 
+  // JASON- Font- change font-sizes here (heading-1 etc refers to H1, H2, etc)
   --nx-font-size: 16px;
   --nx-font-size-s: 14px;
   --nx-font-size-xs: 12px;
@@ -36,6 +38,7 @@
   --nx-font-size-heading-3: 16px;
   --nx-font-size-heading-4: 14px;
 
+  // JASON- Font- change this to whatever Google specifies if importing fonts
   --nx-font-family: Open Sans, sans-serif;
 
   --nx-line-height: 1.5;
@@ -45,6 +48,7 @@
   --nx-z-index-drawer: 1040;
   --nx-z-index-toast: 1060;
 
+  // JASON- Border-radius -- can change this individually in scss files by finding the 'border-radius' property
   --nx-border-radius: 6px;
 
   --nx-border-default: 1px solid var(--nx-color-border);

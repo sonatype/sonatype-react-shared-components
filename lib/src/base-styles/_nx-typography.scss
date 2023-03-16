@@ -7,6 +7,10 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
 
+// JASON - Font- if DOWNLOADING fonts, change the 'src' property below to the new font
+// ie. src: url("../assets/fonts/the-font-name.ttf") format("TrueType")
+// https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face - this wil show what to type into the format() portion
+
 @font-face {
   font-family: "Open Sans";
   src: url("../assets/fonts/open-sans-v18-latin-regular.woff") format("woff");
@@ -77,6 +81,8 @@
   font-style: italic;
 }
 
+// JASON - Font- here setting up the basic font properties for the entire library if 
+// nothing else is specified
 .nx-body {
   @include nx-text-helpers.regular;
 

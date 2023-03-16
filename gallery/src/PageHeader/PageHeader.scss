@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+
+ // JASON- Gallery header
 .gallery-page-header {
   $logo-image-size: 40px;
 
@@ -29,6 +31,7 @@
     height: $logo-image-size;
   }
 
+  // this is the 'React Shared Component Library' title
   &__name {
     color: var(--nx-swatch-grey-30);
     font-size: 18px;
