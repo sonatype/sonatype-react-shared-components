@@ -46,9 +46,21 @@ describe('NxTable', function() {
     }
   });
 
-  it('renders a <caption> when caption prop is provided', function() {
-    render(<NxTable caption="table-title"></NxTable>);
-    expect(screen.getByRole('table', { name: 'table-title'})).toBeInTheDocument();
+  describe('caption prop', function() {
+    it('renders a <caption> immediately after <table> when caption prop is provided', function() {
+      const component = renderEl({ caption: 'table-title' })!;
+      expect(component.firstElementChild?.tagName).toBe('CAPTION');
+    });
+
+    it('assigns the accessible-name of the table when caption prop is provided', function() {
+      render(<NxTable caption="table-title"></NxTable>);
+      expect(screen.getByRole('table', { name: 'table-title'})).toBeInTheDocument();
+    });
+
+    it('does not render a <caption> when caption prop is not provided', function() {
+      render(<NxTable></NxTable>);
+      expect(document.querySelectorAll('caption').length).toBe(0);
+    });
   });
 
   it('renders children of table with correct element types', function() {
