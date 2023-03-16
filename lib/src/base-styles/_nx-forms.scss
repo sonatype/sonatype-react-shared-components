@@ -61,7 +61,7 @@
 .nx-form-group {
   margin-bottom: var(--nx-spacing-8x);
 
-  .nx-text-input, .nx-form-select {
+  .nx-text-input, .nx-form-select, .nx-file-upload, .nx-multi-file-upload {
     margin-bottom: 0;
   }
 }
