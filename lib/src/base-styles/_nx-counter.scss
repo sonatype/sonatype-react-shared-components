@@ -5,14 +5,15 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
 
 .nx-counter {
   @include nx-text-helpers.semi-bold;
 
-  background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-swatch-blue-10);
+  background-color: var(--nx-color-component-background);
+  border: 1px solid var(--nx-color-counter);
   border-radius: 12px;
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   display: inline-block;
   font-size: 14px;
   line-height: var(--nx-line-height);
@@ -22,8 +23,8 @@
   min-width: 8px;
 
   &.nx-counter--active {
-    background-color: var(--nx-swatch-blue-10);
-    border-color: var(--nx-swatch-blue-10);
-    color: var(--nx-swatch-white);
+    background-color: var(--nx-color-counter);
+    border-color: var(--nx-color-counter);
+    color: var(--nx-color-counter-active-text);
   }
 }
