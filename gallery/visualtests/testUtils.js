@@ -186,8 +186,8 @@ module.exports = {
       await page.mouse.move(0, 0);
     }
 
-    async function typeOnKeyboard(text, element) {
-      await page.focus(element);
+    async function typeOnKeyboard(text, selector) {
+      await page.focus(selector);
       await page.keyboard.type(text);
     }
 
