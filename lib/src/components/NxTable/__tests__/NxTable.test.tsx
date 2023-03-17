@@ -58,8 +58,8 @@ describe('NxTable', function() {
     });
 
     it('does not render a <caption> when caption prop is not provided', function() {
-      render(<NxTable></NxTable>);
-      expect(document.querySelectorAll('caption').length).toBe(0);
+      const { container } = render(<NxTable></NxTable>);
+      expect(container.querySelector('caption')).not.toBeInTheDocument();
     });
   });
 
