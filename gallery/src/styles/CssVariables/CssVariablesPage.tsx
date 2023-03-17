@@ -390,8 +390,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-threat-indicator-legend-header-text">
               The text color used on the <NxCode>NxThreatIndicatorLegend</NxCode> header.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-threat-indicator-legend-item-text">
-              The text color used on the <NxCode>NxThreatIndicatorLegend</NxCode> items.
+            <ColorDocRow colorVar="--nx-color-threat-level-text">
+              The text color used on <NxCode>NxThreatCounter</NxCode> and
+              the <NxCode>NxThreatIndicatorLegend</NxCode> items.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>

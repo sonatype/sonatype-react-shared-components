@@ -26,7 +26,7 @@
   .nx-threat-indicator-legend__threat-container {
     @include nx-container-helpers.container-horizontal;
     @include nx-text-helpers.semi-bold;
-    color: var(--nx-color-threat-indicator-legend-item-text);
+    color: var(--nx-color-threat-level-text);
   }
 }
 

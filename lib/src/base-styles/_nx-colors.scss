@@ -43,7 +43,7 @@
   --nx-color-threat-severe: var(--nx-swatch-orange-50);
   --nx-color-threat-critical: var(--nx-swatch-red-40);
   --nx-color-threat-indicator-legend-header-text: var(--nx-color-text-stark);
-  --nx-color-threat-indicator-legend-item-text: var(--nx-color-text);
+  --nx-color-threat-level-text: var(--nx-color-text);
 
   --nx-color-validation-valid: var(--nx-swatch-green-25);
   --nx-color-validation-invalid: var(--nx-swatch-red-40);
@@ -116,7 +116,7 @@
     --nx-color-threat-severe: var(--nx-swatch-orange-55);
     --nx-color-threat-critical: var(--nx-swatch-red-65);
     --nx-color-threat-indicator-legend-header-text: var(--nx-swatch-indigo-95);
-    --nx-color-threat-indicator-legend-item-text: var(--nx-swatch-indigo-95);
+    --nx-color-threat-level-text: var(--nx-swatch-indigo-95);
 
     //NxTooltip variables
     --nx-color-tooltip-background: var(--nx-swatch-indigo-80);
