@@ -41,16 +41,11 @@ describe('NxCollapsibleRadioSelect', function() {
   });
 
   it('looks right with clear button', async () => {
-    const triggerSelector = `${selector} .nx-collapsible-items__trigger`,
-        inputSelector = `${selector} .nx-text-input__input`;
+    const inputSelector = `${selector} .nx-text-input__input`;
 
-    const [targetElement, fullElement] = await waitAndGetElements(triggerSelector, selector);
+    const [fullElement] = await waitAndGetElements(selector);
 
     await typeOnKeyboard('bicycle', inputSelector);
-
-    await moveMouseAway();
-
-    await blurElement(targetElement);
 
     await checkScreenshot(fullElement);
   });
