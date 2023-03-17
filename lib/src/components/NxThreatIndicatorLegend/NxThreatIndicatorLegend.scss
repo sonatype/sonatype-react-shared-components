@@ -6,6 +6,7 @@
  */
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-threat-indicator-legend {
   $max-grid-columns: 6;
@@ -18,13 +19,14 @@
 
   .nx-threat-indicator-legend__header {
     @include nx-text-helpers.bold;
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-threat-indicator-legend-header-text);
     grid-column: span $max-grid-columns;
   }
 
   .nx-threat-indicator-legend__threat-container {
     @include nx-container-helpers.container-horizontal;
     @include nx-text-helpers.semi-bold;
+    color: var(--nx-color-threat-indicator-legend-item-text);
   }
 }
 
