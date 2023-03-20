@@ -61,8 +61,7 @@
     }
 
     &:focus::before {
-      outline: 2px solid var(--nx-color-interactive-border-focus);
-      outline-offset: -2px;
+      box-shadow: inset 0 0 0 2px var(--nx-color-interactive-border-focus);
       border-radius: 10px;
       content: '';
 

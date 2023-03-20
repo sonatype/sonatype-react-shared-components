@@ -98,20 +98,18 @@
     border-style: inherit;
     border-width: inherit;
     border-radius: inherit;
+    border: none;
     color: var(--nx-swatch-indigo-30);
     cursor: pointer;
     display: inline-flex;
     font-size: var(--nx-font-size);
     height: inherit;
     margin-left: auto;
-    margin-right: -1px; // outline to overlap with parent border
+    margin-right: -1px; // "outline" to overlap with parent border
     padding: 0 var(--nx-spacing-3x);
 
-    outline: 1px solid transparent;
-    outline-offset: -1px;
-
     &:hover {
-      outline-color: var(--nx-color-interactive-border-hover);
+      box-shadow: inset 0 0 0 1px var(--nx-color-interactive-border-hover);
     }
 
     &:hover {
@@ -120,14 +118,13 @@
 
     &:focus,
     &:hover:focus {
-      outline: 2px solid var(--nx-color-interactive-border-focus);
-      outline-offset: -2px;
+      outline: none;
+      box-shadow: inset 0 0 0 2px var(--nx-color-interactive-border-focus);
     }
 
     &:active,
     &:active:focus {
-      outline: 1px solid var(--nx-swatch-indigo-60);
-      outline-offset: -1px;
+      box-shadow: inset 0 0 0 1px var(--nx-swatch-indigo-60);
       background-color: var(--nx-swatch-white);
     }
   }
