@@ -267,9 +267,8 @@
   vertical-align: middle;
 
   &:focus {
-    outline: 1px solid var(--nx-color-interactive-border-focus);
-    outline-offset: -1px;
-    box-shadow: var(--nx-box-shadow-focus);
+    outline: 2px solid var(--nx-color-interactive-border-focus);
+    outline-offset: -2px;
   }
 }
 
