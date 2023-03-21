@@ -4,17 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+import { ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props {
-  message?: string | null;
-  successMessage?: string | null;
-  success?: boolean | null;
+export type Props = {
+  children?: ReactNode;
   'aria-label'?: string;
-}
+};
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  message: PropTypes.string,
-  successMessage: PropTypes.string,
-  success: PropTypes.bool
+  children: PropTypes.node
 };
