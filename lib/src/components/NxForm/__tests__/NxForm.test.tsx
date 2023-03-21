@@ -125,7 +125,7 @@ describe('NxForm', function() {
 
       it('renders a load alert with an accessible name', function() {
         const errorComponent = renderEl({ submitError: 'BAAAAD' })!,
-            loadError = within(errorComponent).getByRole('alert', { name: 'form load errors' });
+            loadError = within(errorComponent).getByRole('alert', { name: 'form saving errors' });
         expect(loadError).toBeInTheDocument();
       });
 
@@ -200,7 +200,7 @@ describe('NxForm', function() {
 
       describe('when submitMaskState is false', function() {
         it('renders with an accessible name', function() {
-          const status = quickRender({ submitMaskState: false }).queryByRole('status', { name: 'form submit message' });
+          const status = quickRender({ submitMaskState: false }).queryByRole('status', { name: 'form submit status' });
           expect(status).toBeInTheDocument();
         });
 
@@ -224,7 +224,7 @@ describe('NxForm', function() {
 
       describe('when submitMaskState is true', function() {
         it('renders with an accessible name', function() {
-          const status = quickRender({ submitMaskState: true }).queryByRole('status', { name: 'form submit message' });
+          const status = quickRender({ submitMaskState: true }).queryByRole('status', { name: 'form submit status' });
           expect(status).toBeInTheDocument();
         });
 

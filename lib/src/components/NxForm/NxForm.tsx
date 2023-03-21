@@ -80,7 +80,7 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
               <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
                            error={submitError}
                            submitOnRetry={true}
-                           aria-label="form load errors"/>
+                           aria-label="form saving errors"/>
               { formHasValidationErrors && !submitError &&
                 <NxErrorAlert className="nx-form__validation-errors" aria-label="form validation errors">
                   There were validation errors.{' '}
@@ -104,7 +104,7 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
               <NxSubmitMask success={submitMaskState}
                             message={submitMaskMessage}
                             successMessage={submitMaskSuccessMessage}
-                            aria-label="form submit message" />
+                            aria-label="form submit status" />
             }
           </form>
         );
