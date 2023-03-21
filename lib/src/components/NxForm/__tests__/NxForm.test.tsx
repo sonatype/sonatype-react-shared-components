@@ -258,6 +258,11 @@ describe('NxForm', function() {
             .toBeInTheDocument();
       });
 
+      it('renders an alert with an accessible name', function() {
+        const alert = quickRender({ validationErrors: 'foo'}).queryByRole('alert', { name: 'form validation errors' });
+        expect(alert).toBeInTheDocument();
+      });
+
       it('includes the first validation error within the alert content', function() {
         expect(within(renderEl({ validationErrors: 'foo' })!).getByRole('alert')).toHaveTextContent(/foo/);
         expect(within(renderEl({ validationErrors: ['foo', 'bar'] })!).getByRole('alert')).toHaveTextContent(/foo/);
@@ -267,6 +272,11 @@ describe('NxForm', function() {
       it('does not render when there is a submitError', function() {
         expect(quickRender({ submitError: 'bar', validationErrors: 'foo' }).getByRole('alert'))
             .toHaveTextContent(/bar/);
+      });
+
+      it('renders with an accessible name', function() {
+        const status = quickRender({ submitMaskState: true }).queryByRole('status', { name: 'form submit status' });
+        expect(status).toBeInTheDocument();
       });
     });
   });
