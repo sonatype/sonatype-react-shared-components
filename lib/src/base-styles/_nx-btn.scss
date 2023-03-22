@@ -29,8 +29,11 @@
   text-align: center;
   text-decoration: none;
 
-  &.nx-btn--secondary:hover {
+  &:hover {
     background-color: var(--nx-swatch-blue-90);
+  }
+
+  &.nx-btn--secondary:hover {
     color: var(--nx-swatch-blue-30);
   }
 

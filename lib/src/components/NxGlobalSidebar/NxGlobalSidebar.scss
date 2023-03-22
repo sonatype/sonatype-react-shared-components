@@ -79,6 +79,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
 .nx-global-sidebar__product-info {
   flex: 1 1 auto;
   display: flex;
+
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 .nx-global-sidebar__logo {
