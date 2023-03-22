@@ -7,8 +7,17 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('nx-global-sidebar', function() {
-  const { getPage, waitAndGetElements, checkFullPageScreenshot, a11yTest } =
-      setupBrowser('#/NxGlobalSidebarExample', false);
+  const {
+    getPage,
+    waitAndGetElements,
+    checkFullPageScreenshot,
+    a11yTest,
+    hoverTest,
+    clickTest,
+    focusTest,
+    simpleTest,
+    focusAndHoverTest
+  } = setupBrowser('#/NxGlobalSidebarExample', false);
 
   beforeEach(async function() {
     await getPage().setViewport({ width: 1366, height: 1000 });
@@ -25,6 +34,18 @@ describe('nx-global-sidebar', function() {
     await targetElement.click();
 
     await checkFullPageScreenshot();
+  });
+
+  describe('navigation link', function() {
+    const defaultLink = '.nx-global-sidebar__navigation-link:nth-of-type(1)',
+        selectedLink = '.nx-global-sidebar__navigation-link:nth-of-type(4)';
+
+    it('looks right', simpleTest(defaultLink));
+    it('has a dark indigo background when hovered', hoverTest(defaultLink));
+    it('has a light indigo background when clicked', clickTest(defaultLink));
+    it('has a white outline when focused', focusTest(defaultLink));
+    it('has a white outline and dark indigo background when hovered and focused', focusAndHoverTest(defaultLink));
+    it('has a blue background when selected', simpleTest(selectedLink));
   });
 
   it('passes a11y checks', a11yTest(null, true));

@@ -59,8 +59,8 @@ function ColorRadio({ pickerLabel, color, value, onChange, name }: ColorRadioPro
                checked={color === value}
                onChange={inputOnChange} />
         <svg className="nx-color-picker__circles" viewBox="-16 -16 32 32">
-          <circle className="nx-color-picker__outline" r="15.5" />
-          <circle className="nx-color-picker__color" r={selected ? 14 : 12} />
+          <circle className="nx-color-picker__outline" r="15" />
+          <circle className="nx-color-picker__color" r={selected ? 13.5 : 11.5} />
           { selected &&
             <NxFontAwesomeIcon className="nx-color-picker__check"
                                width="16"

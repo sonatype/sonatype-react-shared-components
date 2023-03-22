@@ -36,6 +36,7 @@ export default function NxGlobalSidebarExample() {
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt} text="NxLoadError" href="#/pages/Load%20Error"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxLoadWrapper" href="#/pages/Load%20Wrapper"/>
           <NxGlobalSidebarNavigationLink icon={faExternalLinkSquareAlt}
+                                         isSelected
                                          text="NxLoadingSpinner"
                                          href="#/pages/Loading%20Spinner"/>
           <NxGlobalSidebarNavigationLink icon={faLink} text="NxModal" href="#/pages/Modal"/>

@@ -38,7 +38,7 @@ describe('NxCombobox', function() {
     it('has a darker border when hovered',
         hoverTest(basicExampleSelector, inputSelector));
 
-    it('has a blue border and glow when hovered and focused',
+    it('has a blue inner outline when hovered and focused',
         focusAndHoverTest(basicExampleSelector, inputSelector));
   });
 
@@ -242,7 +242,7 @@ describe('NxCombobox', function() {
       await hoverTest(dropdownMenuSelector, buttonSelector)();
     });
 
-    it('has a light blue border and light blue background when clicked', async function() {
+    it('has a light grey background when clicked', async function() {
       const dropdownMenuSelector = `${basicExampleSelector} .nx-dropdown-menu`,
           buttonSelector = `${dropdownMenuSelector} .nx-dropdown-button:first-child`;
 

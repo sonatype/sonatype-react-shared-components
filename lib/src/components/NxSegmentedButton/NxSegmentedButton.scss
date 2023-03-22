@@ -55,14 +55,6 @@
   &.nx-segmented-btn__main-btn {
     border-right-color: var(--nx-swatch-blue-60);
 
-    &:hover {
-      border-right-color: var(--nx-swatch-blue-10);
-    }
-
-    &:focus {
-      border-right-color: var(--nx-color-interactive-border-focus);
-    }
-
     // get fancy to prevent mitred corners on the inner border
     &:not(:focus) {
       border-top-style: none;
@@ -77,14 +69,6 @@
 
   &.nx-segmented-btn__dropdown-btn {
     border-left-color: var(--nx-swatch-blue-60);
-
-    &:hover {
-      border-left-color: var(--nx-swatch-blue-10);
-    }
-
-    &:focus {
-      border-left-color: var(--nx-color-interactive-border-focus);
-    }
 
     // get fancy to prevent mitred corners on the inner border
     &:not(:focus) {
@@ -106,11 +90,11 @@
     }
 
     &.nx-btn--secondary {
-      background-color: var(--nx-swatch-blue-90);
+      background-color: var(--nx-swatch-blue-95);
     }
 
     &.nx-btn--tertiary {
-      background-color: var(--nx-swatch-grey-90);
+      background-color: var(--nx-swatch-indigo-97);
     }
   }
 }
