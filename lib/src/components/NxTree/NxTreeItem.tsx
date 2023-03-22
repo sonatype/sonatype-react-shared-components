@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent, SyntheticEvent } from 'react';
+import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
@@ -98,11 +98,6 @@ export default function NxTreeItem(props: ItemProps) {
     return !!ref.current?.querySelector('.nx-tree__item');
   }
 
-  function stopPropAndPreventDefault(evt: SyntheticEvent) {
-    evt.stopPropagation();
-    evt.preventDefault();
-  }
-
   // handle parent focusing or unfocusing of the subtree rooted at this item
   useEffect(function() {
     if (parentsFocusedChild && parentsFocusedChild === ref.current) {
@@ -136,12 +131,12 @@ export default function NxTreeItem(props: ItemProps) {
   function onKeyDown(evt: KeyboardEvent<HTMLLIElement>) {
     switch (evt.key) {
       case 'ArrowUp':
-        stopPropAndPreventDefault(evt);
+        evt.stopPropagation();
         parentKeyNavContext.setNavigationDirection('up');
         parentKeyNavContext.focusPrev();
         break;
       case 'ArrowDown':
-        stopPropAndPreventDefault(evt);
+        evt.stopPropagation();
 
         parentKeyNavContext.setNavigationDirection('down');
 
@@ -153,7 +148,7 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'ArrowRight':
-        stopPropAndPreventDefault(evt);
+        evt.stopPropagation();
 
         parentKeyNavContext.setNavigationDirection('down');
 
@@ -171,7 +166,7 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'ArrowLeft':
-        stopPropAndPreventDefault(evt);
+        evt.stopPropagation();
 
         parentKeyNavContext.setNavigationDirection('down');
 
@@ -183,15 +178,15 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'Home':
-        stopPropAndPreventDefault(evt);
+        evt.stopPropagation();
         focusFirst();
         break;
       case 'End':
-        stopPropAndPreventDefault(evt);
+        evt.stopPropagation();
         focusLast();
         break;
       case 'Enter':
-        stopPropAndPreventDefault(evt);
+        evt.stopPropagation();
         if (onActivate) {
           onActivate();
         }

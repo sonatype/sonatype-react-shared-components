@@ -78,7 +78,6 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     const nextElement = getNextElementFromEventKey(event.key);
 
     if (nextElement) {
-      event.preventDefault();
       (nextElement as HTMLElement).focus();
     }
   }
