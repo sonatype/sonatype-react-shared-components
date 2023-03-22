@@ -21,16 +21,15 @@ describe('NxIconDropdown', function() {
     wait
   } = setupBrowser('#/pages/Icon%20Dropdown');
 
-  const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown';
+  const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown',
+      iconBtnSelector = `${defaultSelector} .nx-icon-dropdown__toggle`;
 
   describe('Default NxIconDropdown when closed', function() {
-    it('has no border by default', simpleTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
-    it('has a dark grey border when hovered', hoverTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
-    it('has a light blue border when focused', focusTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
-    it('has a blue border and blue glow when focused and hovered',
-        focusAndHoverTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
-    it('has a dark grey border and light grey background when clicked',
-        clickTest(defaultSelector + ' .nx-icon-dropdown__toggle'));
+    it('has no border or background by default', simpleTest(iconBtnSelector));
+    it('has a grey background when hovered', hoverTest(iconBtnSelector));
+    it('has a blue border when focused', focusTest(iconBtnSelector));
+    it('has a blue border and grey background when focused and hovered', focusAndHoverTest(iconBtnSelector));
+    it('has a light grey background when clicked', clickTest(iconBtnSelector));
   });
 
   describe('Default NxIconDropdown when open', function() {
@@ -46,10 +45,25 @@ describe('NxIconDropdown', function() {
       await sidebar.evaluate(el => { el.style.visibility = 'hidden'; });
     });
 
-    it('has a dark grey button border with expanded menu', async function() {
+    it('has a blue border and light blue background with expanded menu', async function() {
       const [targetElement] = await waitAndGetElements(defaultSelector),
           page = getPage();
 
+      await moveMouseAway();
+
+      const { x, y } = await targetElement.boundingBox(),
+          pageScrollY = await page.evaluate(() => window.scrollY),
+          pageScrollX = await page.evaluate(() => window.scrollX);
+
+      await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 251, 346);
+    });
+
+    it('has a light blue background with expanded menu when not focused', async function() {
+      const dropdownMenuItemSelector = `${defaultSelector} .nx-dropdown-menu .nx-dropdown-link:first-child`,
+          [targetElement, dropdownMenuItem] = await waitAndGetElements(defaultSelector, dropdownMenuItemSelector),
+          page = getPage();
+
+      dropdownMenuItem.focus();
       await moveMouseAway();
 
       const { x, y } = await targetElement.boundingBox(),

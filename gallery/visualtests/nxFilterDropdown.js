@@ -11,7 +11,6 @@ describe('NxFilterDropdown', function() {
     waitAndGetElements,
     moveMouseAway,
     scrollIntoView,
-    blurElement,
     getPage,
     clickTest,
     focusTest,
@@ -31,14 +30,16 @@ describe('NxFilterDropdown', function() {
       toggleSelector = `${dropdownSelector} .nx-dropdown__toggle`,
       shortDropdownSelector = '#nx-filter-dropdown-short-example .nx-filter-dropdown',
       nonDefaultDropdownSelector = '#nx-filter-dropdown-non-default-example .nx-filter-dropdown',
-      labelledDropdownSelector = '#nx-filter-dropdown-example .nx-form-group';
+      labelledDropdownSelector = '#nx-filter-dropdown-example .nx-form-group',
+      dropdownMenuItemSelector = `${dropdownSelector} .nx-radio-checkbox:first-child .nx-checkbox__input`;
 
   describe('NxFilterDropdown when closed', function() {
 
     it('has a light grey border by default', simpleTest(tableExampleSelector));
     it('has a dark grey border when hovered', hoverTest(tableExampleSelector, toggleSelector));
-    it('has a light blue border when focused', focusTest(tableExampleSelector, toggleSelector));
-    it('has a light blue border when focused and hovered', focusAndHoverTest(tableExampleSelector, toggleSelector));
+    it('has a blue inner outline when focused', focusTest(tableExampleSelector, toggleSelector));
+    it('has a blue inner outline and dark grey border when focused and hovered',
+        focusAndHoverTest(tableExampleSelector, toggleSelector));
     it('has a dark grey border when clicked', clickTest(tableExampleSelector, toggleSelector));
   });
 
@@ -49,11 +50,19 @@ describe('NxFilterDropdown', function() {
       await button.click();
     });
 
-    it('has a dark button border with expanded menu', async function() {
-      const [targetElement, toggleElement] = await waitAndGetElements(dropdownSelector, toggleSelector);
+    it('has a blue inner outline when focused with expanded menu', async function() {
+      const [targetElement] = await waitAndGetElements(dropdownSelector);
 
       await moveMouseAway();
-      await blurElement(toggleElement);
+
+      await checkScreenshot(targetElement, 251, 376);
+    });
+
+    it('has a dark grey border when not focused with expanded menu', async function() {
+      const [targetElement, dropdownMenuItem] = await waitAndGetElements(dropdownSelector, dropdownMenuItemSelector);
+
+      dropdownMenuItem.focus();
+      await moveMouseAway();
 
       await checkScreenshot(targetElement, 251, 376);
     });
@@ -93,7 +102,7 @@ describe('NxFilterDropdown', function() {
         it('looks like a link', simpleTest(tableExampleSelector));
         it('has lighter blue text when clicked', clickTest(tableExampleSelector, resetBtnSelector));
         it('has darker text when hovered', hoverTest(tableExampleSelector, resetBtnSelector));
-        it('has a focus border around the Reset icon and text when focused',
+        it('has a blue border when focused',
             focusTest(tableExampleSelector, resetBtnSelector));
       });
     });

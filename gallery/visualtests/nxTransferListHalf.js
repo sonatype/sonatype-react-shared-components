@@ -63,11 +63,11 @@ describe('NxTransferListHalf', function() {
     await checkScreenshot(list);
   });
 
-  it('puts a dark border on hovered items', hoverTest(simpleListSelector, secondItemSelector));
-  it('puts a blue border and glow on focused items', focusTest(simpleListSelector, secondItemSelector));
-  it('puts a blue border and blue glow on focused+hovered items',
+  it('puts a dark border and grey background on hovered items', hoverTest(simpleListSelector, secondItemSelector));
+  it('puts a blue border on focused items', focusTest(simpleListSelector, secondItemSelector));
+  it('puts a blue border and grey background on focused+hovered items',
       focusAndHoverTest(simpleListSelector, secondItemSelector));
-  it('puts a grey background on clicked items', clickTest(simpleListSelector, secondItemSelector));
+  it('puts a light grey background on clicked items', clickTest(simpleListSelector, secondItemSelector));
 
   it('makes the move all button dark blue when hovered', hoverTest(complexListSelector, transferAllSelector));
   it('makes the move all button light blue when clicked', clickTest(complexListSelector, transferAllSelector));
@@ -120,9 +120,9 @@ describe('NxTransferListHalf', function() {
 
   describe('disable transfer', function() {
     it('looks right', simpleTest(disableTransferListSelector));
-    it('does not put a dark border on hovered items',
+    it('looks right when disabled',
         hoverTest(disableTransferListSelector, secondDisableTransferItemSelector));
-    it('does not put a grey background on clicked items',
+    it('looks right when clicked',
         clickTest(disableTransferListSelector, secondDisableTransferItemSelector));
   });
 

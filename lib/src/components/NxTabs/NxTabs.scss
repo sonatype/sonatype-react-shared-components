@@ -24,7 +24,6 @@
   @include nx-container-helpers.container-vertical;
 
   &:focus {
-    box-shadow: var(--nx-box-shadow-focus);
     outline: solid 1px var(--nx-color-interactive-border-focus);
     outline-offset: -1px;
   }
@@ -42,26 +41,49 @@
   margin: 0 var(--nx-spacing-4x) -1px 0;
   // subtract border thickness for consistent spacing
   padding: var(--nx-spacing-4x) var(--nx-spacing-6x) calc(var(--nx-spacing-4x) - 2px) var(--nx-spacing-6x);
+  position: relative;
   text-align: center;
   min-width: 80px;
   max-width: 240px;
+  background-color: transparent;
+  z-index: 0;
+
+  &::before {
+    box-sizing: border-box;
+    border-radius: 6px;
+    content: '';
+    height: calc(100% - 6px);
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 100%;
+    z-index: -1;
+  }
 
   &.active {
     @include nx-text-helpers.semi-bold;
 
-    border-bottom-color: var(--nx-swatch-blue-40);
-    color: var(--nx-swatch-blue-40);
+    border-bottom: 2px solid var(--nx-color-interactive-border-focus);
+    color: var(--nx-color-interactive-border-focus);
   }
 
-  &:hover {
+  &:hover:not(.active) {
     @include nx-text-helpers.semi-bold;
+    color: var(--nx-color-text-dark);
+
+    &::before { 
+      background-color: var(--nx-swatch-grey-97);
+    }
   }
 
   &:focus {
-    border-bottom-width: 1px;
-    box-shadow: var(--nx-box-shadow-focus);
-    margin-bottom: 0;
-    outline: solid 1px var(--nx-color-interactive-border-focus);
+    &::before {
+      border: 1px solid var(--nx-color-interactive-border-focus);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
   }
 
   // a hidden copy of the text, always at semi-bold weight, to enfore consistent element width

@@ -20,8 +20,8 @@ describe('NxFormSelect', function() {
     it('has a dark border by default', simpleTest(selector));
 
     it('has a darker border when hovered', hoverTest(selector, `${selector} select`));
-    it('has a blue border when focused', focusTest(selector, `${selector} select`));
-    it('has a blue border when hovered and focused', focusAndHoverTest(selector, `${selector} select`));
+    it('has a blue inner outline when focused', focusTest(selector, `${selector} select`));
+    it('has a blue inner outline when hovered and focused', focusAndHoverTest(selector, `${selector} select`));
   });
 
   describe('with long overflowing text', function() {
