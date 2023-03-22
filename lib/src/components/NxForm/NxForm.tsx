@@ -79,9 +79,10 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
             <footer className="nx-footer">
               <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
                            error={submitError}
-                           submitOnRetry={true} />
+                           submitOnRetry={true}
+                           aria-label="form saving errors"/>
               { formHasValidationErrors && !submitError &&
-                <NxErrorAlert className="nx-form__validation-errors">
+                <NxErrorAlert className="nx-form__validation-errors" aria-label="form validation errors">
                   There were validation errors.{' '}
                   {getFirstValidationError(validationErrors)}
                 </NxErrorAlert>
@@ -102,7 +103,8 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
             { submitMaskState != null &&
               <NxSubmitMask success={submitMaskState}
                             message={submitMaskMessage}
-                            successMessage={submitMaskSuccessMessage} />
+                            successMessage={submitMaskSuccessMessage}
+                            aria-label="form submit status" />
             }
           </form>
         );

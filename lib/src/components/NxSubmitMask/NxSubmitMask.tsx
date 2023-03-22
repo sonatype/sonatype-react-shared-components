@@ -19,7 +19,7 @@ import './NxSubmitMask.scss';
 export const SUCCESS_VISIBLE_TIME_MS = 800;
 
 const NxSubmitMask: FunctionComponent<Props> =
-  function NxSubmitMask({ message, successMessage, success }) {
+  function NxSubmitMask({ message, successMessage, success, 'aria-label': ariaLabel }) {
     const classes = classnames('nx-submit-mask', {
       'nx-submit-mask--success': !!success
     });
@@ -30,9 +30,11 @@ const NxSubmitMask: FunctionComponent<Props> =
           { success ?
             <>
               <NxFontAwesomeIcon icon={faCheckCircle} className="nx-loading-spinner__icon" />
-              <span role="status" className="nx-submit-mask__message-text">{successMessage || 'Success!'}</span>
+              <span role="status" className="nx-submit-mask__message-text" aria-label={ariaLabel}>
+                {successMessage || 'Success!'}
+              </span>
             </> :
-            <NxLoadingSpinner>{message || 'Submitting…'}</NxLoadingSpinner>
+            <NxLoadingSpinner aria-label={ariaLabel}>{message || 'Submitting…'}</NxLoadingSpinner>
           }
         </div>
       </div>
