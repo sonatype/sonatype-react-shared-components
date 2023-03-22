@@ -78,10 +78,13 @@ describe('NxFileUpload', function() {
   });
 
   it('looks right when pristine', simpleTest(complexExampleSelector));
-  it('has a blue glow around the button when focused', focusTest(complexExampleSelector, btnSelector));
-  it('has a dark border around the button when hovered', hoverTest(complexExampleSelector, btnSelector));
-  it('has a blue glow when focused and hovered', focusAndHoverTest(complexExampleSelector, btnSelector));
-  it('has a dark border and grey background when clicked', clickTest(complexExampleSelector, btnSelector));
+
+  describe('select button', function() {
+    it('looks right when focused', focusTest(complexExampleSelector, btnSelector));
+    it('looks right when hovered', hoverTest(complexExampleSelector, btnSelector));
+    it('looks right when focused and hovered', focusAndHoverTest(complexExampleSelector, btnSelector));
+    it('looks right when clicked', clickTest(complexExampleSelector, btnSelector));
+  });
 
   it('passes a11y checks', a11yTest());
 
@@ -100,11 +103,11 @@ describe('NxFileUpload', function() {
     describe('file dismiss button', function() {
       const btnSelector = `${complexExampleSelector} .nx-selected-file__dismiss-btn`;
 
-      it('has a blue glow when focused when focused', focusTest(complexExampleSelector, btnSelector));
-      it('has a dark border when hovered', hoverTest(complexExampleSelector, btnSelector));
-      it('has a dark border and blue glow  when focused and hovered',
+      it('has thick blue outline when focused', focusTest(complexExampleSelector, btnSelector));
+      it('has dark outline and dark background when hovered', hoverTest(complexExampleSelector, btnSelector));
+      it('has thick blue outline and dark background when hovered and focused',
           focusAndHoverTest(complexExampleSelector, btnSelector));
-      it('has a dark border and grey background when clicked', clickTest(complexExampleSelector, btnSelector));
+      it('has normal outline and white background when clicked', clickTest(complexExampleSelector, btnSelector));
     });
   });
 

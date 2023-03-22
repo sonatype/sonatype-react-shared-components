@@ -21,16 +21,12 @@
 
     &:focus-within {
       .nx-color-picker__outline {
-        stroke: var(--nx-color-interactive-border-focus);
-      }
-
-      .nx-color-picker__circles {
-        box-shadow: var(--nx-box-shadow-focus);
+        stroke: var(--nx-swatch-teal-35);
       }
     }
 
     &:hover {
-      .nx-color-picker__outline {
+      .nx-color-picker__color {
         stroke: var(--nx-color-interactive-border-hover);
       }
     }
@@ -43,14 +39,15 @@
   }
 
   &__color {
-    stroke: none;
     fill: var(--nx-selectable-color-dark);
+    stroke: var(--nx-selectable-color-dark);
+    stroke-width: 1px;
   }
 
   &__outline {
-    stroke-width: 1px;
-    stroke: none;
     fill: none;
+    stroke: none;
+    stroke-width: 2px;
   }
 
   &__check {
