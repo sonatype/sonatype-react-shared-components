@@ -61,9 +61,8 @@
     }
 
     &:focus::before {
-      border: 1px solid var(--nx-color-interactive-border-focus);
-      border-radius: var(--nx-border-radius);
-      box-shadow: var(--nx-box-shadow-focus);
+      box-shadow: inset 0 0 0 2px var(--nx-color-interactive-border-focus);
+      border-radius: 10px;
       content: '';
 
       // this is a new shorthand for top, bottom, left, and right.

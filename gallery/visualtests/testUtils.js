@@ -152,6 +152,11 @@ module.exports = {
       expect(image).toMatchImageSnapshot();
     }
 
+    async function checkScreenshotWithOutset(element, outset = 0) {
+      const { x, y, width, height } = await element.boundingBox();
+      await checkScreenshotCoordinates(x - outset, y - outset, width + outset * 2, height + outset * 2);
+    }
+
     async function checkFullPageScreenshot() {
       const screenshot = await page.screenshot();
       expect(screenshot).toMatchImageSnapshot();
@@ -280,22 +285,23 @@ module.exports = {
       checkScreenshot,
       checkFullPageScreenshot,
       checkScreenshotCoordinates,
+      checkScreenshotWithOutset,
 
-      simpleTest(selector) {
+      simpleTest(selector, outset) {
         return async function() {
           const [element] = await waitAndGetElements(selector);
           await moveMouseAway();
-          await checkScreenshot(element);
+          await checkScreenshotWithOutset(element, outset);
         };
       },
 
-      focusTest(elementSelector, focusSelector = elementSelector) {
+      focusTest(elementSelector, focusSelector = elementSelector, outset) {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, focusSelector);
 
           try {
             await focusElement.focus();
-            await checkScreenshot(targetElement);
+            await checkScreenshotWithOutset(targetElement, outset);
           }
           finally {
             await blurElement(focusElement);
@@ -303,7 +309,7 @@ module.exports = {
         };
       },
 
-      hoverTest(elementSelector, hoverSelector = elementSelector, waitForTooltip = false) {
+      hoverTest(elementSelector, hoverSelector = elementSelector, waitForTooltip = false, outset) {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
@@ -314,11 +320,11 @@ module.exports = {
             await wait(500);
           }
 
-          await checkScreenshot(targetElement);
+          await checkScreenshotWithOutset(targetElement, outset);
         };
       },
 
-      focusAndHoverTest(elementSelector, hoverSelector = elementSelector) {
+      focusAndHoverTest(elementSelector, hoverSelector = elementSelector, outset) {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
@@ -326,7 +332,7 @@ module.exports = {
             await scrollIntoView(targetElement);
             await focusElement.focus();
             await focusElement.hover();
-            await checkScreenshot(targetElement);
+            await checkScreenshotWithOutset(targetElement, outset);
           }
           finally {
             await blurElement(focusElement);
@@ -334,7 +340,7 @@ module.exports = {
         };
       },
 
-      clickTest(elementSelector, clickSelector = elementSelector) {
+      clickTest(elementSelector, clickSelector = elementSelector, outset) {
         return async () => {
           const [targetElement, clickElement] = await waitAndGetElements(elementSelector, clickSelector);
 
@@ -346,7 +352,7 @@ module.exports = {
 
           await dismissResultingDialog(async () => {
             await page.mouse.down();
-            await checkScreenshot(targetElement);
+            await checkScreenshotWithOutset(targetElement, outset);
           }, 300);
         };
       },

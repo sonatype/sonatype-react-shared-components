@@ -205,15 +205,21 @@ const CssVariablesPage = () => {
             </NxWarningAlert>
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">
-            The standard box-shadow to apply to focused elements in addition to a border or outline.
+            <NxWarningAlert>
+              Deprecated: We no longer use a box-shadow when elements are focused.
+              The standard box-shadow to apply to focused elements in addition to a border or outline.
+            </NxWarningAlert>
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-dropdown">
             The standard box-shadow to apply to dropdown elements.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-drop-shadow-focus">
-            Again, the standard shadow to apply to focused elements in addition to a border or outline. On elements
-            where <NxCode>box-shadow</NxCode> isn't supported, such as SVG elements, use this instead
-            as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
+            <NxWarningAlert>
+              Deprecated: We no longer use a drop-shadow/box-shadow when elements are focused.
+              Again, the standard shadow to apply to focused elements in addition to a border or outline. On elements
+              where <NxCode>box-shadow</NxCode> isn't supported, such as SVG elements, use this instead
+              as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
+            </NxWarningAlert>
           </PropertyDocItem>
         </dl>
       </GalleryTile>
@@ -285,8 +291,11 @@ const CssVariablesPage = () => {
               form fields) when they are focused.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-interactive-shadow-focus">
-              The standard color for the box-shadow/drop-shadow of interactive elements (such as clickable list rows and
-              form fields) when they are focused.
+              <NxWarningAlert>
+                Deprecated: We no longer use a box-shadow/drop-shadow when elements are focused.
+                The standard color for the box-shadow/drop-shadow of interactive elements (such as clickable list rows
+                and form fields) when they are focused.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-text">The standard text color within RSC.</ColorDocRow>
             <ColorDocRow colorVar="--nx-color-text-dark">

@@ -102,8 +102,8 @@
 
     &:focus-within {
       .nx-text-input__box {
-        border-color: var(--nx-color-interactive-border-focus);
-        box-shadow: var(--nx-box-shadow-focus);
+        outline: 2px solid var(--nx-color-interactive-border-focus);
+        outline-offset: -5px;
       }
     }
   }
