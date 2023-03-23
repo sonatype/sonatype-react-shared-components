@@ -24,6 +24,11 @@
   overflow: hidden;
   width: 100%;
 
+  > .nx-h2 {
+    text-align: left;
+    margin: var(--nx-spacing-3x) 0 var(--nx-spacing-6x) 0;
+  }
+
   > tbody > .nx-table-row {
     > .nx-cell {
       $border-width: 1px;
