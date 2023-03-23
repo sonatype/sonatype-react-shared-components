@@ -10,6 +10,7 @@ export interface Props {
   message?: string | null;
   successMessage?: string | null;
   success?: boolean | null;
+  'aria-label'?: string;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

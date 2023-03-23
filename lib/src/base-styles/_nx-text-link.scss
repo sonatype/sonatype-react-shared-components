@@ -26,26 +26,27 @@
     color: var(--nx-color-link);
   }
 
-  &:hover {
-    &, .nx-code {
-      color: var(--nx-color-link-hover);
-    }
-  }
-
   &:focus {
     // outline-offset scales the border-radius so this
     // was changed to 4px to get it visually close to
     // var(--nx-border-radius) or (6px).
     border-radius: 4px;
-    outline: 1px solid var(--nx-color-interactive-border-focus);
-    outline-offset: 1px;
+    outline: 2px solid var(--nx-color-interactive-border-focus);
 
     &, .nx-code {
       color: var(--nx-color-link-focus);
     }
   }
 
-  &:active {
+  &:hover {
+    &, .nx-code {
+      color: var(--nx-color-link-hover);
+    }
+  }
+
+  &:active, &:active:focus {
+    outline: none;
+
     &, .nx-code {
       color: var(--nx-color-link-active);
     }

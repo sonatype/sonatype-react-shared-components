@@ -8,7 +8,9 @@ import { TableHTMLAttributes, HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes
 import PropTypes from 'prop-types';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-export type NxTableProps = TableHTMLAttributes<HTMLTableElement>;
+export type NxTableProps = TableHTMLAttributes<HTMLTableElement> & {
+  caption?: string | null,
+};
 
 export const nxTablePropTypes: PropTypes.ValidationMap<NxTableProps> = {
   children: PropTypes.node
