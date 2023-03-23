@@ -19,7 +19,7 @@
     @include nx-container-helpers.container-horizontal;
 
     align-items: center;
-    background-color: var(--nx-swatch-white);
+    background-color: var(--nx-color-component-background);
     border: 1px solid var(--nx-color-form-element-border);
     border-radius: var(--nx-border-radius);
     display: flex;
@@ -47,7 +47,7 @@
   &__input {
     background-color: transparent;
     border: none;
-    color: var(--nx-color-text);
+    color: var(--nx-color-input-text);
     flex-grow: 1;
     font-size: var(--nx-font-size);
     line-height: var(--nx-line-height);
@@ -59,7 +59,7 @@
     }
 
     &::placeholder {
-      color: var(--nx-swatch-grey-50);
+      color: var(--nx-color-text-placeholder);
     }
   }
 
@@ -129,11 +129,11 @@
   }
 
   .nx-icon--invalid {
-    color: var(--nx-color-validation-invalid);
+    color: var(--nx-color-validation-invalid-icon);
   }
 
   .nx-icon--valid {
-    color: var(--nx-color-validation-valid);
+    color: var(--nx-color-validation-valid-icon);
   }
 }
 
