@@ -10,20 +10,20 @@
   @include nx-text-helpers.semi-bold;
 
   background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-swatch-blue-10);
+  border: 1px solid var(--nx-swatch-grey-05);
   border-radius: 12px;
   color: var(--nx-color-text-dark);
   display: inline-block;
   font-size: 14px;
   line-height: var(--nx-line-height);
   margin-left: var(--nx-spacing-6x);
-  padding: 1px calc(var(--nx-spacing-2x) - 1px);
+  padding: 0 calc(var(--nx-spacing-2x) - 1px) 1px calc(var(--nx-spacing-2x) - 1px);
   text-align: center;
   min-width: 8px;
 
   &.nx-counter--active {
-    background-color: var(--nx-swatch-blue-10);
-    border-color: var(--nx-swatch-blue-10);
+    background-color: var(--nx-swatch-grey-05);
+    border-color: var(--nx-swatch-grey-05);
     color: var(--nx-swatch-white);
   }
 }
