@@ -33,13 +33,13 @@ describe('NxDescriptionList', function() {
     it('does not give hovered disabled rows a grey background',
         hoverTest(buttonExampleSelector, disabledButtonSelector));
 
-    it('gives focused rows a blue border and glow', focusTest(buttonExampleSelector, buttonSelector));
+    it('gives focused rows a blue border', focusTest(buttonExampleSelector, buttonSelector));
 
-    it('gives hovered and focused rows a grey background and blue border and glow',
+    it('gives hovered and focused rows a grey background and blue border',
         focusAndHoverTest(buttonExampleSelector, buttonSelector));
 
-    it('gives clicked rows a blue background', clickTest(buttonExampleSelector, buttonSelector));
-    it('does not give clicked disabled rows a blue background',
+    it('gives clicked rows a light grey background', clickTest(buttonExampleSelector, buttonSelector));
+    it('does not give clicked disabled rows a grey background',
         clickTest(buttonExampleSelector, disabledButtonSelector));
   });
 
@@ -52,13 +52,13 @@ describe('NxDescriptionList', function() {
     it('gives hovered rows a grey background', hoverTest(linkExampleSelector, linkSelector));
     it('does not give hovered disabled rows a grey background', hoverTest(linkExampleSelector, disabledLinkSelector));
 
-    it('gives focused rows a blue border and glow', focusTest(linkExampleSelector, linkSelector));
+    it('gives focused rows a blue border', focusTest(linkExampleSelector, linkSelector));
 
-    it('gives hovered and focused rows a grey background and blue border and glow',
+    it('gives hovered and focused rows a grey background and blue border',
         focusAndHoverTest(linkExampleSelector, linkSelector));
 
-    it('gives clicked rows a blue background', clickTest(linkExampleSelector, linkSelector));
-    it('does not give clicked disabled rows a blue background', clickTest(linkExampleSelector, disabledLinkSelector));
+    it('gives clicked rows a grey background', clickTest(linkExampleSelector, linkSelector));
+    it('does not give clicked disabled rows a grey background', clickTest(linkExampleSelector, disabledLinkSelector));
   });
 
   // see comment in the NxListButtonItem source code about aria-selected

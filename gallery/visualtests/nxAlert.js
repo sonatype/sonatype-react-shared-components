@@ -7,7 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxAlert', function() {
-  const { simpleTest, hoverTest, a11yTest } = setupBrowser('#/pages/Alert');
+  const { simpleTest, clickTest, focusTest, focusAndHoverTest, hoverTest, a11yTest } = setupBrowser('#/pages/Alert');
 
   const simpleSelector = '#nx-alert-custom-example .nx-alert',
       successSelector = '#nx-alert-success-example .nx-alert',
@@ -27,6 +27,10 @@ describe('NxAlert', function() {
   describe('NxErrorAlert', function() {
     it('looks right', simpleTest(errorSelector));
     it('looks right with the close button hovered', hoverTest(errorSelector, `${errorSelector} .nx-btn--close`));
+    it('looks right with the close button focused', focusTest(errorSelector, `${errorSelector} .nx-btn--close`));
+    it('looks right with the close button clicked', clickTest(errorSelector, `${errorSelector} .nx-btn--close`));
+    it('looks right with the close button focused and hovered',
+        focusAndHoverTest(errorSelector, `${errorSelector} .nx-btn--close`));
   });
 
   describe('NxInfoAlert', function() {

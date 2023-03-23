@@ -123,6 +123,12 @@ describe('NxForm', function() {
         expect(loadError).toHaveTextContent(/BAAAAD/);
       });
 
+      it('renders a load alert with an accessible name', function() {
+        const errorComponent = renderEl({ submitError: 'BAAAAD' })!,
+            loadError = within(errorComponent).getByRole('alert', { name: 'form saving errors' });
+        expect(loadError).toBeInTheDocument();
+      });
+
       it('calls the onSubmit function when the submit error\'s retry button is clicked', async function() {
         const user = userEvent.setup(),
             onSubmit = jest.fn(),
@@ -193,6 +199,11 @@ describe('NxForm', function() {
       });
 
       describe('when submitMaskState is false', function() {
+        it('renders with an accessible name', function() {
+          const status = quickRender({ submitMaskState: false }).queryByRole('status', { name: 'form submit status' });
+          expect(status).toBeInTheDocument();
+        });
+
         it('renders a status of "Submitting…" when submitMaskMessage is not defined', function() {
           const status = quickRender({ submitMaskState: false }).getByRole('status');
           expect(status).toBeInTheDocument();
@@ -211,7 +222,12 @@ describe('NxForm', function() {
         });
       });
 
-      describe('when submitMaskState is false', function() {
+      describe('when submitMaskState is true', function() {
+        it('renders with an accessible name', function() {
+          const status = quickRender({ submitMaskState: true }).queryByRole('status', { name: 'form submit status' });
+          expect(status).toBeInTheDocument();
+        });
+
         it('renders a status of "Success!" when submitMaskSuccessMessage is not defined', function() {
           const status = quickRender({ submitMaskState: true }).getByRole('status');
           expect(status).toBeInTheDocument();
@@ -242,6 +258,11 @@ describe('NxForm', function() {
             .toBeInTheDocument();
       });
 
+      it('renders an alert with an accessible name', function() {
+        const alert = quickRender({ validationErrors: 'foo'}).queryByRole('alert', { name: 'form validation errors' });
+        expect(alert).toBeInTheDocument();
+      });
+
       it('includes the first validation error within the alert content', function() {
         expect(within(renderEl({ validationErrors: 'foo' })!).getByRole('alert')).toHaveTextContent(/foo/);
         expect(within(renderEl({ validationErrors: ['foo', 'bar'] })!).getByRole('alert')).toHaveTextContent(/foo/);
@@ -251,6 +272,11 @@ describe('NxForm', function() {
       it('does not render when there is a submitError', function() {
         expect(quickRender({ submitError: 'bar', validationErrors: 'foo' }).getByRole('alert'))
             .toHaveTextContent(/bar/);
+      });
+
+      it('renders with an accessible name', function() {
+        const status = quickRender({ submitMaskState: true }).queryByRole('status', { name: 'form submit status' });
+        expect(status).toBeInTheDocument();
       });
     });
   });

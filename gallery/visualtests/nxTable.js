@@ -13,6 +13,7 @@ describe('NxTable', function() {
     checkScreenshot,
     getPage,
     disableLoadingSpinnerAnimation,
+    clickTest,
     a11yTest
   } = setupBrowser('#/pages/Table');
 
@@ -24,12 +25,30 @@ describe('NxTable', function() {
       loadingTableSelector = '#nx-table-loading-example .nx-table',
       errorTableSelector = '#nx-table-error-example .nx-table';
 
-  it('looks right with a hovered row', async function() {
-    const middleRowSelector = `${clickableTableSelector} tbody tr:nth-of-type(1)`,
-        [table, row] = await waitAndGetElements(clickableTableSelector, middleRowSelector);
+  describe('Clickable Row', function() {
+    it('has a grey background and light indigo outline when hovered', async function() {
+      const clickableRowSelector = `${clickableTableSelector} tbody tr:nth-of-type(1)`,
+          [table, row] = await waitAndGetElements(clickableTableSelector, clickableRowSelector);
 
-    await row.hover();
-    await checkScreenshot(table);
+      await row.hover();
+      await checkScreenshot(table);
+    });
+
+    it('has a blue outline when focused', async function() {
+      const clickableRowSelector = `${clickableTableSelector} tbody tr:nth-of-type(1) button`,
+          [table, row] = await waitAndGetElements(clickableTableSelector, clickableRowSelector);
+
+      await row.focus();
+      await checkScreenshot(table);
+    });
+
+    it('has a grey background when clicked', async function() {
+      const clickableRowSelector = `${clickableTableSelector} tbody tr:nth-of-type(1) button`;
+
+      await clickTest(clickableTableSelector, clickableRowSelector)();
+    });
+
+    it('has a blue background when selected', simpleTest(clickableTableSelector));
   });
 
   it('looks right with a custom clickable row icon', simpleTest(clickableCustomIconTableSelector));

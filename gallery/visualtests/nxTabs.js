@@ -44,19 +44,19 @@ describe('NxTabs', function() {
     const selector = '#nx-tab-tile-example .nx-tab:nth-child(2)';
 
     it('has regular text and no border by default', simpleTest(selector));
-    it('has semi-bold text when hovered',
+    it('has semi-bold text and a light grey background when hovered',
         hoverTest(
             tabSimpleExampleSelector,
             `${tabSimpleExampleSelector} .nx-tab:nth-child(2)`));
-    it('has a light blue border and semi-bold text when clicked',
+    it('has a light blue border, light grey background and semi-bold text when clicked',
         clickTest(
             tabSimpleExampleSelector,
             `${tabSimpleExampleSelector} .nx-tab:nth-child(2)`));
-    it('has a light blue border when focused',
+    it('has a blue border when focused',
         focusTest(
             tabSimpleExampleSelector,
             `${tabSimpleExampleSelector} .nx-tab:nth-child(2)`));
-    it('has a light blue border and semi-bold text when focused and hovered',
+    it('has a blue border, light grey background and semi-bold text when focused and hovered',
         focusAndHoverTest(
             tabSimpleExampleSelector,
             `${tabSimpleExampleSelector} .nx-tab:nth-child(2)`));
@@ -68,7 +68,7 @@ describe('NxTabs', function() {
   );
 
   describe('Check tab panel', function() {
-    it('has a light blue border when focused',
+    it('has a blue border when focused',
         focusTest(
             tabSimpleExampleSelector,
             `${tabSimpleExampleSelector} .nx-tab-panel`));

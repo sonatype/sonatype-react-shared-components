@@ -7,13 +7,18 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
 
+%button-focus-outline {
+  outline-offset: -5px;
+  outline: 2px solid;
+}
+
 .nx-btn {
   @include nx-text-helpers.semi-bold;
   @include nx-container-helpers.container-horizontal;
 
   background-color: var(--nx-swatch-white);
   border: 1px solid var(--nx-swatch-blue-40);
-  border-radius: 6px;
+  border-radius: var(--nx-border-radius);
   color: var(--nx-swatch-blue-40);
   cursor: pointer;
   display: inline-block;
@@ -28,10 +33,17 @@
     background-color: var(--nx-swatch-blue-90);
   }
 
+  &.nx-btn--secondary:hover {
+    color: var(--nx-swatch-blue-30);
+  }
+
   &:focus:not(:active) {
-    border-color: var(--nx-color-interactive-border-focus);
-    box-shadow: var(--nx-box-shadow-focus);
-    outline: 0;
+    @extend %button-focus-outline;
+    outline-color: var(--nx-swatch-blue-30);
+  }
+
+  &:focus-visible {
+    outline: none;
   }
 
   &:active {
@@ -42,6 +54,7 @@
     visibility: hidden;
   }
 }
+
 
 .nx-btn, .nx-segmented-btn, .nx-icon-dropdown {
   + .nx-btn, + .nx-segmented-btn, + .nx-icon-dropdown {
@@ -54,8 +67,13 @@
   border-color: transparent;
   color: var(--nx-swatch-white);
 
-  &:hover, &:focus {
+  &:hover {
     background-color: var(--nx-swatch-blue-30);
+  }
+
+  &:focus:not(:active) {
+    @extend %button-focus-outline;
+    outline-color: var(--nx-swatch-white);
   }
 
   &:active {
@@ -69,19 +87,17 @@
   color: var(--nx-color-text-dark);
 
   &:hover {
-    background-color: transparent;
-    border-color: var(--nx-color-interactive-border-hover);
+    background-color: var(--nx-swatch-indigo-90);
   }
 
-  &:focus {
-    background-color: transparent;
-    border-color: var(--nx-color-interactive-border-focus);
+  &:focus:not(:active) {
+    @extend %button-focus-outline;
+    outline-color: var(--nx-swatch-grey-40);
   }
 
   &:active {
     background-color: var(--nx-swatch-indigo-97);
-    border-color: var(--nx-color-interactive-border-hover);
-    box-shadow: none;
+    border-color: var(--nx-swatch-grey-60);
   }
 }
 
@@ -90,18 +106,17 @@
   border-color: transparent;
   color: var(--nx-swatch-white);
 
-  &:focus {
-    background-color: var(--nx-swatch-red-35);
+  &:hover {
+    background-color: var(--nx-swatch-red-30);
   }
 
-  &:hover {
-    background-color: var(--nx-swatch-red-35);
+  &:focus:not(:active) {
+    @extend %button-focus-outline;
+    outline-color: var(--nx-swatch-white);
   }
 
   &:active {
     background-color: var(--nx-swatch-pink-40);
-    border-color: transparent;
-    box-shadow: none;
   }
 
   .nx-icon {
@@ -115,6 +130,7 @@
     &, &:hover, &:focus {
       background-color: var(--nx-color-interactive-background-disabled);
       border-color: var(--nx-color-interactive-border-disabled);
+      outline: 0;
       color: var(--nx-color-text-disabled);
       cursor: default;
     }
@@ -122,9 +138,22 @@
 }
 
 .nx-btn--icon-only {
-  @extend .nx-btn--tertiary;
-
+  background-color: transparent;
   border-color: transparent;
+  color: var(--nx-color-text-dark);
+
+  &:hover {
+    background-color: var(--nx-color-interactive-background-hover);
+  }
+
+  &:focus:not(:active) {
+    outline: 2px solid var(--nx-color-interactive-border-focus);
+    outline-offset: -2px;
+  }
+
+  &:active {
+    background-color: var(--nx-color-interactive-background-active);
+  }
 
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out
   padding-left: 0;
@@ -141,7 +170,7 @@
     &, &:hover, &:focus {
       background-color: transparent;
       border-color: transparent;
-      box-shadow: none;
+      outline: none;
     }
   }
 }
