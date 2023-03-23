@@ -16,7 +16,7 @@
   @include nx-text-helpers.semi-bold;
   @include nx-container-helpers.container-horizontal;
 
-  background-color: var(--nx-swatch-white);
+  background-color: var(--nx-color-component-background);
   border: 1px solid var(--nx-swatch-blue-40);
   border-radius: var(--nx-border-radius);
   color: var(--nx-swatch-blue-40);
@@ -63,21 +63,21 @@
 }
 
 .nx-btn--primary {
-  background-color: var(--nx-swatch-blue-40);
+  background-color: var(--nx-color-primary-button-background);
   border-color: transparent;
-  color: var(--nx-swatch-white);
+  color: var(--nx-color-primary-button-text);
 
   &:hover {
-    background-color: var(--nx-swatch-blue-30);
+    background-color: var(--nx-color-primary-button-background-hover);
   }
 
   &:focus:not(:active) {
     @extend %button-focus-outline;
-    outline-color: var(--nx-swatch-white);
+    outline-color: var(--nx-color-primary-button-focus-outline);
   }
 
   &:active {
-    background-color:  var(--nx-swatch-blue-50);
+    background-color:  var(--nx-swatch-purple-90);
   }
 }
 
