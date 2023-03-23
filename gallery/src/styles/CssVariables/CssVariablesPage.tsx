@@ -257,7 +257,10 @@ const CssVariablesPage = () => {
               The background color of the page as a whole within RSC styles.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border">
-              The standard color for the borders of form fields (such as text inputs) in their default state.
+              <NxWarningAlert>
+                Deprecated: This variable is now replaced by <NxCode>--nx-code-interactive-border</NxCode>
+                The standard color for the borders of form fields (such as text inputs) in their default state.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border-pristine">
               <NxWarningAlert>
@@ -281,6 +284,10 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-interactive-background-disabled">
               The standard color for the backgrounds of interactive elements (such as clickable list rows and form
               fields) when they are disabled.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-interactive-border">
+              The standard color for the borders of interactive elements (such as clickable list rows and form fields)
+              in their default state.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-interactive-border-disabled">
               The standard color for the borders of interactive elements (such as clickable list rows and form fields)

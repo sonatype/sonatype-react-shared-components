@@ -14,12 +14,12 @@
 
   --nx-color-site-background: var(--nx-swatch-indigo-97);
 
-  --nx-color-form-element-border: var(--nx-swatch-grey-50);
-
   --nx-color-interactive-background-selected: var(--nx-swatch-blue-90);
   --nx-color-interactive-background-active: var(--nx-swatch-grey-95);
   --nx-color-interactive-background-hover: var(--nx-swatch-grey-90);
   --nx-color-interactive-background-disabled: var(--nx-swatch-grey-90);
+
+  --nx-color-interactive-border: var(--nx-swatch-grey-50);
   --nx-color-interactive-border-hover: var(--nx-swatch-grey-05);
   --nx-color-interactive-border-disabled: var(--nx-swatch-grey-60);
   --nx-color-interactive-border-focus: var(--nx-swatch-blue-40);
@@ -88,6 +88,11 @@
 
     --nx-color-validation-invalid: var(--nx-swatch-red-75);
 
+    --nx-color-interactive-border: var(--nx-swatch-indigo-70);
+
+    // Interaction States
+    --nx-color-interactive-border-focus: var(--nx-swatch-purple-80);
+
     //NxBinaryDonutChart variables
     --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-30);
     --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-pink-80);
@@ -120,11 +125,15 @@
     --nx-color-code-background: var(--nx-swatch-grey-10);
     --nx-color-code-border: var(--nx-swatch-grey-30);
     --nx-color-code-text: var(--nx-swatch-green-85);
+
+    // NxDropdown
+    --nx-color-dropdown-background: var(--nx-indigo-20);
   }
 
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
   --nx-color-text-dark: var(--nx-color-text-stark);
-  --nx-color-form-element-border-pristine: var(--nx-swatch-indigo-90);
+  --nx-color-form-element-border: var(--nx-swatch-grey-50); // form - element - border
+  --nx-color-interactive-border-pristine: var(--nx-swatch-indigo-90);
   --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 35%, 0.5);
 }
