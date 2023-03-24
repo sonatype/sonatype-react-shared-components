@@ -327,7 +327,6 @@ describe('NxModal', function() {
     const modal1Tabbables = getAllByTestId('tabbable-modal-1');
     const openModal2Button = getByTestId('open-modal-2');
 
-    // modal 1 should cycle properly
     expect(modal1Tabbables[0]).toHaveFocus();
     await user.tab();
     expect(modal1Tabbables[1]).toHaveFocus();
@@ -339,6 +338,7 @@ describe('NxModal', function() {
     await user.click(openModal2Button);
     await runTimers();
 
+    // should cycle tabbable elements in modal 2 properly
     const modal2Tabbables = getAllByTestId('tabbable-modal-2');
     expect(modal2Tabbables[0]).toHaveFocus();
     await user.tab();
