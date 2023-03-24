@@ -313,7 +313,7 @@ const CssVariablesPage = () => {
               The standard color for placeholder text within a text input.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-input-text">
-              The text color used for the <NxCode>NxTextInput</NxCode> value.
+              The text color used for an input field's value.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-link">
               The standard color for hyperlink text within RSC.
