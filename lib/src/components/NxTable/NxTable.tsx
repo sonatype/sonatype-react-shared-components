@@ -20,7 +20,7 @@ export { NxTableProps };
 const mutationObserverConfig = { subtree: true, childList: true, attributes: false, characterData: false };
 
 const NxTable = function NxTableElement(props: NxTableProps) {
-  const {className, children, ...attrs} = props,
+  const {className, children, caption, ...attrs} = props,
       tableRef = useRef<HTMLTableElement>(null),
       [columnCount, setColumnCount] = useState(1),
       updateColumnCount = useCallback(function updateColumnCount() {
@@ -34,6 +34,7 @@ const NxTable = function NxTableElement(props: NxTableProps) {
 
   return (
     <table ref={tableRef} className={classnames('nx-table', className)} {...attrs}>
+      {caption && <caption className='nx-h2'>{caption}</caption>}
       <ColumnCountContext.Provider value={columnCount}>
         {children}
       </ColumnCountContext.Provider>

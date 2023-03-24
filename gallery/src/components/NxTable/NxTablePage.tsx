@@ -75,6 +75,14 @@ export default function NxTablePage() {
             </NxTable.Head>
             <NxTable.Body>
               <NxTable.Row>
+                <NxTable.Cell>caption</NxTable.Cell>
+                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>
+                  Used to render a <NxCode>&lt;caption&gt;</NxCode> that acts as a title/header on the table.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
                 <NxTable.Cell>HTML <NxCode>&lt;table&gt;</NxCode> Attributes</NxTable.Cell>
                 <NxTable.Cell>
                   <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/table">

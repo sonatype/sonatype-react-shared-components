@@ -18,7 +18,7 @@
   font-size: 14px;
   line-height: var(--nx-line-height);
   margin-left: var(--nx-spacing-6x);
-  padding: 1px calc(var(--nx-spacing-2x) - 1px);
+  padding: 0 calc(var(--nx-spacing-2x) - 1px) 1px calc(var(--nx-spacing-2x) - 1px);
   text-align: center;
   min-width: 8px;
 
