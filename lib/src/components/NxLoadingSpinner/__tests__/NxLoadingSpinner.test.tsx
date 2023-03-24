@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxLoadingSpinner from '../NxLoadingSpinner';
@@ -18,6 +17,6 @@ describe('NxLoadingSpinner', function() {
   });
 
   it('renders the text "Loading…" if no children are provided', function() {
-    expect(renderEl(<NxLoadingSpinner />)).toHaveTextContent('Loading…');
+    expect(renderEl()).toHaveTextContent('Loading…');
   });
 });

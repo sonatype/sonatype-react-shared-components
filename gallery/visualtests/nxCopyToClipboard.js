@@ -29,9 +29,9 @@ describe('NxCopyToClipboard', function() {
   describe('with rows=1', function() {
     it('renders with a single-line textarea', simpleTest(sizingCopySelector));
   });
-  it('looks no different when the text area is hovered', hoverTest(complexCopyExample, textareaSelector));
-  it('has a blue border around the text area when it is focused', focusTest(complexCopyExample, textareaSelector));
-  it('has a blue border around the text area when it is focused and hovered',
+  it('has a dark grey border when the text area is hovered', hoverTest(complexCopyExample, textareaSelector));
+  it('has a blue inner outline around the text area when focused', focusTest(complexCopyExample, textareaSelector));
+  it('has a dark grey border and blue inner outline when focused and hovered',
       focusAndHoverTest(complexCopyExample, textareaSelector));
 
   it('selects the text when the button is clicked', async function() {

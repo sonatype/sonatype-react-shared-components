@@ -40,17 +40,16 @@ $-width: 44px;
         border-color: var(--nx-color-interactive-border-hover);
       }
 
-      &::after{
-        border: 1px solid var(--nx-color-interactive-border-focus);
+      &::after {
         border-radius: 16px;
-        box-shadow: var(--nx-box-shadow-focus);
         content: '';
         display: block;
-        height: calc(#{$-height} + 6px);
+        height: calc(#{$-height} + 4px);
+        outline: 2px solid var(--nx-color-interactive-border-focus);
         position: absolute;
-        left: -4px;
-        top: -4px;
-        width: calc(#{$-width} + 6px);
+        left: -2px;
+        top: -2px;
+        width: calc(#{$-width} + 4px);
       }
     }
   }
@@ -59,7 +58,17 @@ $-width: 44px;
     cursor: pointer;
 
     .nx-toggle__control {
+      background-color: var(--nx-swatch-indigo-95);
       border-color: var(--nx-color-interactive-border-hover);
+    }
+
+    .nx-toggle__input {
+      &:checked {
+        + .nx-toggle__control {
+          border-color: var(--nx-color-interactive-border-hover);
+          background-color: var(--nx-swatch-blue-30);
+        }
+      }
     }
   }
 }
@@ -71,6 +80,7 @@ $-width: 44px;
   &:checked {
     + .nx-toggle__control {
       background-color: var(--nx-swatch-blue-40);
+      border-color: var(--nx-swatch-blue-40);
 
       .nx-toggle__indicator {
         color: var(--nx-swatch-white);
@@ -86,7 +96,7 @@ $-width: 44px;
 
 .nx-toggle__control {
   background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-swatch-blue-40);
+  border: 1px solid var(--nx-swatch-grey-30);
   border-radius: 12px;
   box-sizing: border-box;
   display: flex;

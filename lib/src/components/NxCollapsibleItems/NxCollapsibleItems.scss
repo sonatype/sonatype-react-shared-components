@@ -92,11 +92,16 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   }
 }
 
+%collapsible-items-focus-style {
+  outline: 2px solid var(--nx-color-interactive-border-focus);
+  outline-offset: -2px;
+}
+
 .nx-collapsible-items__trigger {
   @include nx-container-helpers.container-horizontal;
   align-items: center;
   background: none;
-  border: 1px solid transparent;
+  border: 0;
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   color: var(--nx-color-text-dark);
@@ -107,17 +112,20 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 
   grid-template-columns: $-triangle-box-width 1fr;
   text-align: left;
-  // subtract 1 from all sides to make room for focus border
-  padding: calc(var(--nx-spacing-base) - 1px) calc(#{$-trigger-side-padding} - 1px);
+  padding: var(--nx-spacing-base) $-trigger-side-padding;
   width: 100%;
 
   &:hover:not([disabled]) {
-    background-color: var(--nx-swatch-indigo-95);
+    background-color: var(--nx-color-interactive-background-hover);
   }
 
   &:focus {
-    border-color: var(--nx-color-interactive-border-focus);
-    box-shadow: var(--nx-box-shadow-focus);
+    @extend %collapsible-items-focus-style;
+  }
+
+  &:active:not([disabled]),
+  &:active:not([disabled]):focus {
+    background-color: var(--nx-swatch-grey-97);
     outline: none;
   }
 }
@@ -156,19 +164,18 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 }
 
 .nx-collapsible-items__child {
-  border: 1px solid transparent;
+  border: 0;
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
   color: var(--nx-color-text-dark);
   display: block;
   overflow: hidden;
 
-  // subtract 1 from all sides to make room for focus border
   padding:
-    calc(var(--nx-spacing-base) - 1px)
-    calc(var(--nx-spacing-6x) - 1px)
-    calc(var(--nx-spacing-base) - 1px)
-    calc(#{$-trigger-side-padding} + #{$-triangle-box-width} + var(--nx-spacing-3x) - 1px);
+    var(--nx-spacing-base)
+    var(--nx-spacing-6x)
+    var(--nx-spacing-base)
+    calc(#{$-trigger-side-padding} + #{$-triangle-box-width} + var(--nx-spacing-3x));
 
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -187,7 +194,8 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 }
 
 button, a {
-  &.nx-collapsible-items__child {
+  &.nx-collapsible-items__child,
+  &.nx-btn.nx-collapsible-items__child {
     background-color: transparent;
     font-weight: normal;
     margin: 0;
@@ -196,41 +204,50 @@ button, a {
     width: 100%;
 
     &:hover {
-      background-color: var(--nx-swatch-indigo-95);
+      background-color: var(--nx-color-interactive-background-hover);
+      color: var(--nx-color-text-dark);
+      font-weight: 600;
     }
 
     &.selected {
-      background-color: var(--nx-swatch-blue-90);
+      background-color: var(--nx-color-interactive-background-selected);
       font-weight: 600;
     }
 
     &:focus {
-      border-color: var(--nx-color-interactive-border-focus);
-      box-shadow: var(--nx-box-shadow-focus);
+      @extend %collapsible-items-focus-style;
+    }
+
+    &:active:focus {
       outline: none;
     }
   }
 }
 
 // sidebars don't typically have the white background and so warrant different highlight colors
+$-sidebar-interactive-background-hover: var(--nx-swatch-indigo-90);
 .nx-page-sidebar {
   button, a {
     &.nx-collapsible-items__child {
       &:hover {
-        background-color: var(--nx-swatch-indigo-90);
+        background-color: $-sidebar-interactive-background-hover;
       }
 
       &.selected {
-        background-color: var(--nx-swatch-blue-10);
-        color: var(--nx-swatch-white);
+        background-color: var(--nx-color-interactive-background-selected);
       }
     }
   }
 
   .nx-collapsible-items__trigger {
     &:hover:not([disabled]) {
-      background-color: var(--nx-swatch-indigo-90);
+      background-color: $-sidebar-interactive-background-hover;
+    }
+
+    &:active:not([disabled]),
+    &:active:not([disabled]):focus {
+      background-color: var(--nx-swatch-indigo-95);
+      outline: none;
     }
   }
-
 }

@@ -21,9 +21,10 @@ describe('NxButton', function() {
 
     it('has a blue border and white background by default', simpleTest(selector));
     it('has a blue background when hovered', hoverTest(selector));
-    it('has a light blue border and light blue background when clicked', clickTest(selector));
-    it('has a light blue border when focused', focusTest(selector));
-    it('has a light blue border and blue background when focused and hovered', focusAndHoverTest(selector));
+    it('has a blue border and light blue background when clicked', clickTest(selector));
+    it('has a blue border and darker blue inner outline when focused', focusTest(selector));
+    it('has a blue border, darker blue inner outline and blue background when focused and hovered',
+        focusAndHoverTest(selector));
   });
 
   describe('nx-btn-bar', function() {
@@ -57,19 +58,20 @@ describe('NxButton', function() {
 
     it('has a bold blue background by default', simpleTest(selector));
     it('has a dark background when hovered', hoverTest(selector));
-    it('has a light blue border and light blue background when clicked', clickTest(selector));
-    it('has a light blue border when focused', focusTest(selector));
-    it('has a light blue border and dark blue background when focused and hovered', focusAndHoverTest(selector));
+    it('has a light blue background when clicked', clickTest(selector));
+    it('has a white inner outline when focused', focusTest(selector));
+    it('has a white inner outline and dark blue background when focused and hovered', focusAndHoverTest(selector));
   });
 
   describe('Tertiary NxButton', function() {
     const selector = '#nx-button-tertiary-example .nx-btn:not([disabled]):not(.disabled)';
 
     it('has a grey border by default', simpleTest(selector));
-    it('has a dark grey border when hovered', hoverTest(selector));
-    it('has a dark grey border and light grey background when clicked', clickTest(selector));
-    it('has a light blue border when focused', focusTest(selector));
-    it('has a blue border and blue glow when focused and hovered', focusAndHoverTest(selector));
+    it('has a light indigo background when hovered', hoverTest(selector));
+    it('has a light grey border and light indigo background when clicked', clickTest(selector));
+    it('has a darker grey inner outline when focused', focusTest(selector));
+    it('has a darker grey inner outline and light indigo background when focused and hovered',
+        focusAndHoverTest(selector));
   });
 
   describe('Error NxButton', function() {
@@ -78,8 +80,8 @@ describe('NxButton', function() {
     it('has a red background by default', simpleTest(selector));
     it('has a dark red background when hovered', hoverTest(selector));
     it('has a pink background when clicked', clickTest(selector));
-    it('has a light blue border when focused', focusTest(selector));
-    it('has a red background and blue border when focused and hovered', focusAndHoverTest(selector));
+    it('has a white inner outline when focused', focusTest(selector));
+    it('has a dark red background and white inner outline when focused and hovered', focusAndHoverTest(selector));
   });
 
   describe('NxButton with icon', function() {

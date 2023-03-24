@@ -58,14 +58,18 @@ describe('NxTransferList', function() {
     await checkScreenshot(list);
   });
 
-  it('puts a dark border on hovered items', hoverTest(simpleListSelector, secondItemSelector));
-  it('puts a blue border and glow on focused items', focusTest(simpleListSelector, secondItemSelector));
-  it('puts a blue border and blue glow on focused+hovered items',
-      focusAndHoverTest(simpleListSelector, secondItemSelector));
-  it('puts a grey background on clicked items', clickTest(simpleListSelector, secondItemSelector));
+  describe('Items', function() {
+    it('looks right when hovered', hoverTest(simpleListSelector, secondItemSelector));
+    it('looks right when focused', focusTest(simpleListSelector, secondItemSelector));
+    it('looks right when focused + hovered',
+        focusAndHoverTest(simpleListSelector, secondItemSelector));
+    it('looks right when clicked', clickTest(simpleListSelector, secondItemSelector));
+  });
 
-  it('makes the move all button dark blue when hovered', hoverTest(complexListSelector, transferAllSelector));
-  it('makes the move all button light blue when clicked', clickTest(complexListSelector, transferAllSelector));
+  describe('Move All Button', function() {
+    it('looks right when hovered', hoverTest(complexListSelector, transferAllSelector));
+    it('looks right when clicked', clickTest(complexListSelector, transferAllSelector));
+  });
 
   it('passes a11y checks', a11yTest());
 });
