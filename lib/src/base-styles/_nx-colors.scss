@@ -75,7 +75,7 @@
   --nx-color-code-text: var(--nx-swatch-grey-20);
 
   // NxCounter
-  --nx-color-counter: var(--nx-swatch-blue-10);
+  --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
 
   @include nx-dark-mode-helpers.dark-mode {
