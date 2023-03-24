@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent } from 'react';
+import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent, SyntheticEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
@@ -98,6 +98,19 @@ export default function NxTreeItem(props: ItemProps) {
     return !!ref.current?.querySelector('.nx-tree__item');
   }
 
+  const IGNORED_MODIFIER_KEYS = ['Alt', 'AltGraph', 'Control', 'Meta', 'OS', 'Shift'];
+
+  function modifierWasPressed(evt: KeyboardEvent) {
+    return IGNORED_MODIFIER_KEYS.some((key) => evt.getModifierState(key));
+  }
+
+  function stopPropAndPreventDefault(evt: KeyboardEvent) {
+    evt.stopPropagation();
+    if (!modifierWasPressed(evt)) {
+      evt.preventDefault();
+    }
+  }
+
   // handle parent focusing or unfocusing of the subtree rooted at this item
   useEffect(function() {
     if (parentsFocusedChild && parentsFocusedChild === ref.current) {
@@ -131,12 +144,12 @@ export default function NxTreeItem(props: ItemProps) {
   function onKeyDown(evt: KeyboardEvent<HTMLLIElement>) {
     switch (evt.key) {
       case 'ArrowUp':
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
         parentKeyNavContext.setNavigationDirection('up');
         parentKeyNavContext.focusPrev();
         break;
       case 'ArrowDown':
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
 
         parentKeyNavContext.setNavigationDirection('down');
 
@@ -148,7 +161,7 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'ArrowRight':
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
 
         parentKeyNavContext.setNavigationDirection('down');
 
@@ -166,7 +179,7 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'ArrowLeft':
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
 
         parentKeyNavContext.setNavigationDirection('down');
 
@@ -178,15 +191,15 @@ export default function NxTreeItem(props: ItemProps) {
         }
         break;
       case 'Home':
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
         focusFirst();
         break;
       case 'End':
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
         focusLast();
         break;
       case 'Enter':
-        evt.stopPropagation();
+        stopPropAndPreventDefault(evt);
         if (onActivate) {
           onActivate();
         }
