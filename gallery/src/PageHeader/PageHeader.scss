@@ -21,7 +21,7 @@
     padding-right: var(--nx-spacing-6x);
     margin-right: var(--nx-spacing-6x);
     @include nx-dark-mode-helpers.dark-mode {
-      border-color: var(--nx-swatch-indigo-25);
+      border-color: var(--nx-color-page-header-border);
     }
   }
 
