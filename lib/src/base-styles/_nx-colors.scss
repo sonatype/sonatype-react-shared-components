@@ -73,17 +73,21 @@
   --nx-color-secondary-button-focus-outline: var(--nx-swatch-blue-30);
   --nx-color-secondary-button-text: var(--nx-color-secondary-button-border);
   --nx-color-secondary-button-text-hover: var(--nx-swatch-blue-30);
-  --nx-color-tertiary-button-background: var(--nx-swatch-white);
   --nx-color-tertiary-button-background-hover: var(--nx-swatch-indigo-90);
   --nx-color-tertiary-button-background-active: var(--nx-swatch-indigo-97);
   --nx-color-tertiary-button-border: var(--nx-swatch-grey-50);
+  --nx-color-tertiary-button-border-active: var(--nx-swatch-grey-60);
   --nx-color-tertiary-button-focus-outline: var(--nx-swatch-grey-40);
   --nx-color-tertiary-button-text: var(--nx-color-text-stark);
   --nx-color-error-button-background: var(--nx-color-alert-error);
   --nx-color-error-button-background-hover: var(--nx-swatch-red-30);
-  --nx-color-error-button-background-active: var(--nx-swatch-pink-30);
+  --nx-color-error-button-background-active: var(--nx-swatch-pink-40);
+  //BELOW COULD BE DELETED?
   --nx-color-error-button-focus-outline: var(--nx-swatch-white);
   --nx-color-error-button-text: var(--nx-swatch-white);
+  --nx-color-disabled-button-background: var(--nx-color-interactive-background-disabled);
+  --nx-color-disabled-button-border: var(--nx-color-interactive-border-disabled);
+  --nx-color-disabled-button-text: var(--nx-color-text-disabled);
 
   // NxGlobalHeader
   --nx-color-global-header-border: var(--nx-color-border);
@@ -156,18 +160,19 @@
     --nx-color-secondary-button-focus-outline: var(--nx-swatch-purple-80);
     --nx-color-secondary-button-text: var(--nx-swatch-purple-80);
     --nx-color-secondary-button-text-hover: var(--nx-color-secondary-button-text);
-    --nx-color-tertiary-button-background: var(--nx-swatch-indigo-20);
     --nx-color-tertiary-button-background-hover: var(--nx-swatch-indigo-15);
     --nx-color-tertiary-button-background-active: var(--nx-swatch-indigo-25);
     --nx-color-tertiary-button-border: var(--nx-swatch-indigo-60);
     --nx-color-tertiary-button-border-active: var(--nx-swatch-indigo-90);
-    --nx-color-tertiary-button-focus-outline: var(--nx-swatch-grey-40);
+    --nx-color-tertiary-button-focus-outline: var(--nx-color-tertiary-button-border);
     --nx-color-tertiary-button-text: var(--nx-color-text);
-    --nx-color-error-button-background: var(--nx-color-red-35);
+    --nx-color-error-button-background: var(--nx-swatch-red-35);
     --nx-color-error-button-background-hover: var(--nx-swatch-red-25);
     --nx-color-error-button-background-active: var(--nx-swatch-pink-40);
-    --nx-color-error-button-focus-outline: var(--nx-swatch-white);
     --nx-color-error-button-text: var(--nx-swatch-red-95);
+    --nx-color-disabled-button-background: var(--nx-color-interactive-border-disabled);
+    --nx-color-disabled-button-border: var(--nx-color-interactive-border-disabled);
+    --nx-color-disabled-button-text: var(--nx-color-interactive-background-disabled);
     
     // NxGlobalHeader
     --nx-color-global-header-border: var(--nx-color-site-background);
