@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent, SyntheticEvent } from 'react';
+import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
@@ -13,6 +13,8 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { TreeItemFocusState, TreeKeyNavContextType, ItemProps, itemPropTypes } from './types';
 import TreeKeyNavContext from './TreeKeyNavContext';
+
+const MODIFIER_KEYS = ['Alt', 'AltGraph', 'Control', 'Meta', 'OS', 'Shift'];
 
 export default function NxTreeItem(props: ItemProps) {
   const {
@@ -98,15 +100,11 @@ export default function NxTreeItem(props: ItemProps) {
     return !!ref.current?.querySelector('.nx-tree__item');
   }
 
-  const IGNORED_MODIFIER_KEYS = ['Alt', 'AltGraph', 'Control', 'Meta', 'OS', 'Shift'];
-
-  function modifierWasPressed(evt: KeyboardEvent) {
-    return IGNORED_MODIFIER_KEYS.some((key) => evt.getModifierState(key));
-  }
-
   function stopPropAndPreventDefault(evt: KeyboardEvent) {
     evt.stopPropagation();
-    if (!modifierWasPressed(evt)) {
+
+    const modifierKeyIsPressed = MODIFIER_KEYS.some((key) => evt.getModifierState(key));
+    if (!modifierKeyIsPressed) {
       evt.preventDefault();
     }
   }

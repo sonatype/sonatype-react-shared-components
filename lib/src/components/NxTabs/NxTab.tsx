@@ -13,6 +13,7 @@ import { NxTabProps, nxTabPropTypes } from './types';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 export { NxTabProps };
 
+const MODIFIER_KEYS = ['Alt', 'AltGraph', 'Control', 'Meta', 'OS', 'Shift'];
 const SPACE = ' ';
 
 const NxTab = function NxTabElement(props: NxTabProps) {
@@ -43,6 +44,13 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     }
     if (!event.isDefaultPrevented()) {
       onTabSelect(index);
+    }
+  }
+
+  function preventDefaultWhenModifierKeyIsNotPressed(evt: KeyboardEvent) {
+    const modifierKeyIsPressed = MODIFIER_KEYS.some((key) => evt.getModifierState(key));
+    if (!modifierKeyIsPressed) {
+      evt.preventDefault();
     }
   }
 
@@ -78,6 +86,7 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     const nextElement = getNextElementFromEventKey(event.key);
 
     if (nextElement) {
+      preventDefaultWhenModifierKeyIsNotPressed(event.nativeEvent);
       (nextElement as HTMLElement).focus();
     }
   }
