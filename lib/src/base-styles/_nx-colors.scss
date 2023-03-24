@@ -78,6 +78,10 @@
   --nx-color-code-border: var(--nx-swatch-pink-95);
   --nx-color-code-text: var(--nx-swatch-grey-20);
 
+  // NxCounter
+  --nx-color-counter: var(--nx-swatch-grey-05);
+  --nx-color-counter-active-text: var(--nx-swatch-white);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-35);
 
@@ -141,6 +145,10 @@
     --nx-color-code-background: var(--nx-swatch-grey-10);
     --nx-color-code-border: var(--nx-swatch-grey-30);
     --nx-color-code-text: var(--nx-swatch-green-85);
+
+    // NxCounter
+    --nx-color-counter: var(--nx-swatch-indigo-90);
+    --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
   }
 
   // Deprecated variables
