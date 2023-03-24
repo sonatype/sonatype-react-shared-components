@@ -10,6 +10,7 @@ import { render, within } from '@testing-library/react';
 import * as AbstractDialogAll from '../../AbstractDialog/AbstractDialog';
 import NxModal, { Props } from '../NxModal';
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import useToggle from '../../../util/useToggle';
 
 describe('NxModal', function() {
   beforeAll(() => {
@@ -289,5 +290,60 @@ describe('NxModal', function() {
       await user.tab({ shift: true });
       expect(buttons[0]).toHaveFocus();
     });
+  });
+
+  it('should cycle through focusable elements inside stacked modals', async function() {
+    const user = userEvent.setup();
+
+    const Fixture = () => {
+      const [showModal, toggleModal] = useToggle(false);
+      const [showModal2, toggleModal2] = useToggle(false);
+      return (
+        <>
+          <button data-testid="open-modal-1" onClick={toggleModal}>Open</button>
+          { showModal &&
+            <NxModal onClose={toggleModal}>
+              <button data-testid="tabbable-modal-1">Modal1</button>
+              <button data-testid="tabbable-modal-1">Modal1</button>
+              <button data-testid="open-modal-2" onClick={toggleModal2}>Open</button>
+            </NxModal>
+          }
+          { showModal2 &&
+            <NxModal onClose={toggleModal2}>
+              <button data-testid="tabbable-modal-2">Modal2</button>
+              <button data-testid="tabbable-modal-2">Modal2</button>
+            </NxModal>
+          }
+        </>
+      );
+    };
+
+    const { getByTestId, getAllByTestId } = render(<Fixture />);
+    const openModal1Button = getByTestId('open-modal-1');
+
+    await user.click(openModal1Button);
+    await runTimers();
+
+    const modal1Tabbables = getAllByTestId('tabbable-modal-1');
+    const openModal2Button = getByTestId('open-modal-2');
+
+    // modal 1 should cycle properly
+    expect(modal1Tabbables[0]).toHaveFocus();
+    await user.tab();
+    expect(modal1Tabbables[1]).toHaveFocus();
+    await user.tab();
+    expect(openModal2Button).toHaveFocus();
+    await user.tab();
+    expect(modal1Tabbables[0]).toHaveFocus();
+
+    await user.click(openModal2Button);
+    await runTimers();
+
+    const modal2Tabbables = getAllByTestId('tabbable-modal-2');
+    expect(modal2Tabbables[0]).toHaveFocus();
+    await user.tab();
+    expect(modal2Tabbables[1]).toHaveFocus();
+    await user.tab();
+    expect(modal2Tabbables[0]).toHaveFocus();
   });
 });
