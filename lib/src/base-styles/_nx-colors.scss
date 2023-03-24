@@ -85,10 +85,18 @@
 
     --nx-color-site-background: var(--nx-swatch-indigo-15);
 
+    --nx-color-interactive-border-disabled: var(--nx-swatch-indigo-40);
+    --nx-color-interactive-border-focus: var(--nx-swatch-purple-80);
+
     --nx-color-text-stark: var(--nx-swatch-indigo-90);
     --nx-color-text: var(--nx-swatch-indigo-80);
+    --nx-color-text-disabled: var(--nx-color-interactive-border-disabled); // match disabled text and border
 
     --nx-color-link: var(--nx-swatch-purple-80);
+    --nx-color-link-focus: var(--nx-color-link);
+    --nx-color-link-active: var(--nx-swatch-purple-90);
+    --nx-color-link-hover: var(--nx-swatch-purple-70);
+    --nx-color-link-disabled: var(--nx-color-text-disabled);
 
     --nx-color-validation-invalid: var(--nx-swatch-red-75);
 
