@@ -27,7 +27,7 @@
   display: inline-flex;
 
   .nx-icon {
-    color: var(--nx-swatch-white);
+    color: var(--nx-color-policy-indicator-icon-background);
   }
 }
 
@@ -35,6 +35,7 @@
   @include nx-text-helpers.semi-bold;
   @include nx-text-helpers.truncate-ellipsis;
 
+  color: var(--nx-color-policy-indicator-text);
   font-size: var(--nx-font-size-s);
   margin: 0 var(--nx-spacing-4x);
   text-transform: uppercase;
