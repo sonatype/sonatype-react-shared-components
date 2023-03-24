@@ -55,7 +55,7 @@ export default function NxModalStackedExample() {
           </div>
           <footer className="nx-footer">
             <div className="nx-btn-bar">
-              <NxButton onClick={modal2CloseHandler} variant="primary">Another Button</NxButton>
+              <NxButton onClick={() => alert('Boo!')} variant="secondary">Another Button</NxButton>
               <NxButton onClick={modal2CloseHandler} variant="primary">Close</NxButton>
             </div>
           </footer>
