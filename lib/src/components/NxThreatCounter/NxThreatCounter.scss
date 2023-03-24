@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-threat-counter {
   align-items: center;
@@ -12,6 +13,7 @@
   border: 1px solid;
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);
+  color: var(--nx-color-threat-level-text);
   display: inline-flex;
   flex-direction: row-reverse;
   font-size: var(--nx-font-size-s);
