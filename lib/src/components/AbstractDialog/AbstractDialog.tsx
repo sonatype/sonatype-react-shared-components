@@ -149,7 +149,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       const dialogEl = dialogRef.current!;
 
       // Ignore managed tab focus when the focus is not within the dialog
-      // so that there is no key nav conflict when modals are stacked.
+      // so that there is no key nav conflict when another modal is open.
       if (!dialogEl.contains(document.activeElement)) {
         return;
       }
@@ -189,10 +189,29 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       }
     };
 
+    // Prevent leak when focus goes out of the dialog modal.
+    const handleFocusIn = () => {
+      const dialogEl = dialogRef.current;
+      if (dialogEl && document.activeElement) {
+        const focusIsInsideDialogModal = document.activeElement.closest('dialog[aria-modal="true"][open]');
+        if (!focusIsInsideDialogModal) {
+          const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
+          if (firstFocusableElement) {
+            firstFocusableElement.focus();
+          }
+        }
+      }
+    };
+
     if (isModal) {
       document.addEventListener('keydown', keydownListener);
+      document.addEventListener('focusin', handleFocusIn);
     }
-    return () => document.removeEventListener('keydown', keydownListener);
+
+    return () => {
+      document.removeEventListener('keydown', keydownListener);
+      document.removeEventListener('focusin', handleFocusIn);
+    };
   }, [isModal]);
 
   // Listen to the native HTMLDialogElement cancel event
