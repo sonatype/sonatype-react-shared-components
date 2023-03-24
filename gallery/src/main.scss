@@ -116,6 +116,10 @@
   flex-shrink: 0;
   height: 64px;
   width: 64px;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --shadow-color: var(--nx-swatch-indigo-05);
+  }
 }
 
 .gallery-color-sample__selectable-light {
@@ -171,19 +175,19 @@
       display: none;
     }
   }
-  
+
   &.gallery-aa-hidden {
     .gallery-level-aa {
       display: none;
     }
   }
-  
+
   &.gallery-aaa-hidden {
     .gallery-level-aaa {
       display: none;
     }
   }
-  
+
   &.gallery-reco-hidden {
     .gallery-level-reco {
       display: none;
