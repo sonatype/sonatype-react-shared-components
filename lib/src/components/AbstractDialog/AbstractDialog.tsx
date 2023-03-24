@@ -148,7 +148,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const dialogEl = dialogRef.current!;
 
-      // Ignore managed tab focus when the focus is not within the dialog
+      // Don't manage tab cycling when the focus is not within the dialog
       // so that there is no key nav conflict when another modal is open.
       if (!dialogEl.contains(document.activeElement)) {
         return;
