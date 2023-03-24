@@ -312,9 +312,6 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-text-placeholder">
               The standard color for placeholder text within a text input.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-input-text">
-              The text color used for an input field's value.
-            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-link">
               The standard color for hyperlink text within RSC.
             </ColorDocRow>

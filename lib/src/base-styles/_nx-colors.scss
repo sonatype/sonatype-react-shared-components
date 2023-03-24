@@ -27,7 +27,7 @@
   --nx-color-text-stark: var(--nx-swatch-grey-05);
   --nx-color-text: var(--nx-swatch-grey-30);
   --nx-color-text-disabled: var(--nx-color-interactive-border-disabled); // match disabled text and border
-  --nx-color-text-placeholder: var(--nx-swatch-grey-50);
+  --nx-color-text-placeholder: var(--nx-swatch-grey-60);
 
   --nx-color-link: var(--nx-swatch-blue-40);
   --nx-color-link-focus: var(--nx-color-link);
@@ -62,9 +62,6 @@
   // NxGlobalHeader
   --nx-color-global-header-border: var(--nx-color-border);
 
-  //Input variables
-  --nx-color-input-text: var(--nx-color-text);
-
   //NxPageHeader variables
   --nx-color-page-header-background: var(--nx-color-component-background);
   --nx-color-page-header-border: var(--nx-color-border);
@@ -98,7 +95,7 @@
     --nx-color-text-stark: var(--nx-swatch-indigo-90);
     --nx-color-text: var(--nx-swatch-indigo-80);
     --nx-color-text-disabled: var(--nx-color-interactive-border-disabled);
-    --nx-color-text-placeholder: var( --nx-color-interactive-border-disabled);
+    --nx-color-text-placeholder: var(--nx-color-indigo-70);
 
     --nx-color-link: var(--nx-swatch-purple-80);
 
@@ -114,9 +111,6 @@
 
     // NxGlobalHeader
     --nx-color-global-header-border: var(--nx-color-site-background);
-
-    //Input variables
-    --nx-color-input-text: var(--nx-swatch-indigo-70);
 
     //NxPageHeader variables
     --nx-color-page-header-background: var(--nx-color-site-background);

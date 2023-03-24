@@ -48,7 +48,7 @@
   &__input {
     background-color: transparent;
     border: none;
-    color: var(--nx-color-input-text);
+    color: var(--nx-color-text);
     flex-grow: 1;
     font-size: var(--nx-font-size);
     line-height: var(--nx-line-height);
@@ -109,6 +109,11 @@
   }
 
   &.disabled {
+    .nx-text-input__input {
+      &::placeholder {
+        color: var(--nx-color-interactive-border-disabled);
+      }
+    }
     &, &:hover {
       .nx-text-input__box {
         background-color: var(--nx-color-interactive-background-disabled);
