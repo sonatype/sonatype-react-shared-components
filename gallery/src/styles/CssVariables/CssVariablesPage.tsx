@@ -309,6 +309,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-text-disabled">
               The standard color for text within disabled elements in RSC.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-text-placeholder">
+              The standard color for placeholder text within a text input.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-link">
               The standard color for hyperlink text within RSC.
             </ColorDocRow>
@@ -399,8 +402,16 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-threat-indicator-legend-header-text">
               The text color used on the <NxCode>NxThreatIndicatorLegend</NxCode> header.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-threat-indicator-legend-item-text">
-              The text color used on the <NxCode>NxThreatIndicatorLegend</NxCode> items.
+            <ColorDocRow colorVar="--nx-color-threat-level-text">
+              The text color used on <NxCode>NxThreatCounter</NxCode> and
+              the <NxCode>NxThreatIndicatorLegend</NxCode> items.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-counter">
+              The border color used on the default state and the background-color used on the active state
+              of elements with the <NxCode>nx-counter</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-counter-active-text">
+              The text color used on the active state of elements with the <NxCode>nx-counter</NxCode> class.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
