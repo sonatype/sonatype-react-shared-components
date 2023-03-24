@@ -74,6 +74,11 @@
   --nx-color-code-border: var(--nx-swatch-pink-95);
   --nx-color-code-text: var(--nx-swatch-grey-20);
 
+  // NxDropdown
+  // NxDropdownMenu
+  --nx-color-dropdown-menu-background: var(--nx-swatch-white);
+  --nx-color-dropdown-menu-background-hover: var(--nx-color-interactive-background-hover);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-35);
 
@@ -128,6 +133,10 @@
 
     // NxDropdown
     --nx-color-dropdown-background: var(--nx-indigo-20);
+
+    // NxDropdownMenu
+    --nx-color-dropdown-menu-background: var(--nx-indigo-25);
+    --nx-color-dropdown-menu-background-hover: var(--nx-indigo-15);
   }
 
   // Deprecated variables
