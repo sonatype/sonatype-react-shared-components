@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-text-input {
   display: inline-block;
@@ -19,7 +20,7 @@
     @include nx-container-helpers.container-horizontal;
 
     align-items: center;
-    background-color: var(--nx-swatch-white);
+    background-color: var(--nx-color-component-background);
     border: 1px solid var(--nx-color-interactive-border);
     border-radius: var(--nx-border-radius);
     display: flex;
@@ -59,7 +60,7 @@
     }
 
     &::placeholder {
-      color: var(--nx-swatch-grey-50);
+      color: var(--nx-color-text-placeholder);
     }
   }
 
@@ -108,6 +109,11 @@
   }
 
   &.disabled {
+    .nx-text-input__input {
+      &::placeholder {
+        color: var(--nx-color-interactive-border-disabled);
+      }
+    }
     &, &:hover {
       .nx-text-input__box {
         background-color: var(--nx-color-interactive-background-disabled);
@@ -129,11 +135,11 @@
   }
 
   .nx-icon--invalid {
-    color: var(--nx-color-validation-invalid);
+    color: var(--nx-color-validation-invalid-icon);
   }
 
   .nx-icon--valid {
-    color: var(--nx-color-validation-valid);
+    color: var(--nx-color-validation-valid-icon);
   }
 }
 
