@@ -69,6 +69,10 @@
   --nx-color-page-header-product-name-text: var(--nx-color-text);
   --nx-color-page-header-link: var(--nx-swatch-grey-10);
 
+  //NxPolicyViolationIndicator variables
+  --nx-color-policy-indicator-icon-background: var(--nx-swatch-white);
+  --nx-color-policy-indicator-text: var(--nx-color-text);
+
   //NxTooltip variables
   --nx-color-tooltip-background: var(--nx-swatch-grey-20);
   --nx-color-tooltip-text: var(--nx-swatch-white);
@@ -126,6 +130,10 @@
     --nx-color-page-header-divider: var(--nx-swatch-indigo-25);
     --nx-color-page-header-product-name-text: var(--nx-color-text-stark);
     --nx-color-page-header-link: var(--nx-color-link);
+
+    //NxPolicyViolationIndicator variables
+    --nx-color-policy-indicator-icon: var(--nx-swatch-blue-10);
+    --nx-color-policy-indicator-text: var(--nx-swatch-indigo-97);
 
     //NxThreatIndicator variables
     --nx-color-threat-unspecified: var(--nx-swatch-grey-60);

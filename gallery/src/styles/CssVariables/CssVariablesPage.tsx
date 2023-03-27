@@ -406,6 +406,12 @@ const CssVariablesPage = () => {
               The text color used on <NxCode>NxThreatCounter</NxCode> and
               the <NxCode>NxThreatIndicatorLegend</NxCode> items.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-indicator-icon">
+              The color for the threat level icon on <NxCode>NxPolicyViolationIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-indicator-text">
+              The text color used for <NxCode>NxPolicyViolationIndicator</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-counter">
               The border color used on the default state and the background-color used on the active state
               of elements with the <NxCode>nx-counter</NxCode> class.
