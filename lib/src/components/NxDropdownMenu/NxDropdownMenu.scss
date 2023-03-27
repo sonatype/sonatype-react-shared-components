@@ -12,7 +12,7 @@
 .nx-dropdown-menu {
   @include nx-container-helpers.container-vertical;
 
-  background: var(--nx-swatch-white);
+  background: var(--nx-color-dropdown-menu-background);
   border-radius: var(--nx-border-radius);
   box-shadow: var(--nx-box-shadow-dropdown);
   box-sizing: border-box;
@@ -62,7 +62,7 @@
   width: 100%;
 
   &:hover {
-    background-color: var(--nx-color-interactive-background-hover);
+    background-color: var(--nx-color-dropdown-menu-background-hover);
     color: var(--nx-color-text-dark);
   }
 

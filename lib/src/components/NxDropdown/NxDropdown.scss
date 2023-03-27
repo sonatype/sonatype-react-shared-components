@@ -15,12 +15,12 @@
   width: nx-dropdown-variables.$dropdown-width;
 
   .nx-icon:not(.nx-icon--colorful, .nx-dropdown-link .nx-icon, .nx-dropdown :is(.disabled, [disabled]) .nx-icon) {
-    color: var(--nx-swatch-grey-05);
+    color: var(--nx-color-text-stark);
   }
 }
 
 .nx-dropdown-icon {
-  color: var(--nx-swatch-grey-05);
+  color: var(--nx-color-text-stark);
 }
 
 .nx-dropdown--short {
