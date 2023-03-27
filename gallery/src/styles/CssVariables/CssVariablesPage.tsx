@@ -413,6 +413,90 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-counter-active-text">
               The text color used on the active state of elements with the <NxCode>nx-counter</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-background">
+              The background color of primary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-background-hover">
+              The background color of primary buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-background-active">
+              The background color of primary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-focus-outline">
+              The color of the focus outline for primary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-text">
+              The text color of primary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background">
+              The background color of secondary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background-hover">
+              The background color of secondary buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background-active">
+              The background color of secondary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-border">
+              The border color of secondary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-border-active">
+              The border color of secondary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-focus-outline">
+              The color of the focus outline for secondary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-text">
+              The text color of secondary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-text-hover">
+              The text color of secondary buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-background-hover">
+              The background color of tertiary buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-background-active">
+              The background color of tertiary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-border">
+              The border color of tertiary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-border-active">
+              The border color of tertiary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-focus-outline">
+              The color of the focus outline for tertiary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-text">
+              The text color of tertiary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background">
+              The background color of secondary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-background">
+              The background color of error buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-background-hover">
+              The background color of error buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-background-active">
+              The background color of error buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-focus-outline">
+              The color of the focus outline for error buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-text">
+              The text color of error buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-disabled-button-background">
+              The background color of disabled buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-disabled-button-border">
+              The border color of disabled buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-disabled-button-text">
+              The text color of disabled buttons.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
