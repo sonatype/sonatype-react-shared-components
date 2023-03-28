@@ -71,14 +71,14 @@
     @include nx-text-helpers.semi-bold;
     color: var(--nx-color-text-dark);
 
-    &::before { 
-      background-color: var(--nx-swatch-grey-97);
+    &::before {
+      background-color: var(--nx-color-tab-background-hover);
     }
   }
 
   &:focus {
     &::before {
-      border: 1px solid var(--nx-color-interactive-border-focus);
+      border: var(--nx-border-width-tab) solid var(--nx-color-interactive-border-focus);
     }
   }
 

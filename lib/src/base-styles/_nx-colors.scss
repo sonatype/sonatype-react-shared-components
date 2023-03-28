@@ -86,6 +86,9 @@
   --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
 
+  // NxTab
+  --nx-color-tab-background-hover: var(--nx-swatch-grey-97);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-35);
 
@@ -157,6 +160,9 @@
     // NxCounter
     --nx-color-counter: var(--nx-swatch-indigo-90);
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
+
+    // NxTabs
+    --nx-color-tab-background-hover: var(--nx-swatch-indigo-15);
   }
 
   // Deprecated variables

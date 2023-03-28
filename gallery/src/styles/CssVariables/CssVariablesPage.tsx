@@ -221,6 +221,9 @@ const CssVariablesPage = () => {
               as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
             </NxWarningAlert>
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-width-tab">
+            The border-width used for borders of a tab in <NxCode>NxTabs</NxCode>.
+          </PropertyDocItem>
         </dl>
       </GalleryTile>
       <GalleryTile title="Semantic Color Properties">
@@ -418,6 +421,9 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-counter-active-text">
               The text color used on the active state of elements with the <NxCode>nx-counter</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tab-background-hover">
+              The background color used on the hover state of a tab in <NxCode>NxTabs</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
