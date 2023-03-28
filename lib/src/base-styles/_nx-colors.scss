@@ -82,6 +82,7 @@
   // NxDropdownMenu
   --nx-color-dropdown-menu-background: var(--nx-swatch-white);
   --nx-color-dropdown-menu-background-hover: var(--nx-color-interactive-background-hover);
+  --nx-color-dropdown-menu-background-active: var(--nx-color-interactive-background-active);
 
   // NxCounter
   --nx-color-counter: var(--nx-swatch-grey-05);
@@ -162,6 +163,7 @@
     // NxDropdownMenu
     --nx-color-dropdown-menu-background: var(--nx-swatch-indigo-25);
     --nx-color-dropdown-menu-background-hover: var(--nx-swatch-indigo-15);
+    --nx-color-dropdown-menu-background-active: var(--nx-swatch-indigo-35);
 
     // NxCounter
     --nx-color-counter: var(--nx-swatch-indigo-90);
