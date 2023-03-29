@@ -83,6 +83,7 @@
   --nx-color-code-text: var(--nx-swatch-grey-20);
 
   // NxDropdownMenu
+  --nx-color-dropdown-menu-text-hover: var(--nx-color-text-stark);
   --nx-color-dropdown-menu-background: var(--nx-swatch-white);
   --nx-color-dropdown-menu-background-hover: var(--nx-color-interactive-background-hover);
   --nx-color-dropdown-menu-background-active: var(--nx-color-interactive-background-active);
@@ -98,8 +99,9 @@
 
     --nx-color-site-background: var(--nx-swatch-indigo-15);
 
-    --nx-color-interactive-border: var(--nx-swatch-indigo-70);
     --nx-color-interactive-background-disabled: var(--nx-swatch-indigo-20);
+
+    --nx-color-interactive-border: var(--nx-swatch-indigo-70);
     --nx-color-interactive-border-hover: var(--nx-swatch-indigo-60);
     --nx-color-interactive-border-disabled: var(--nx-swatch-indigo-40);
     --nx-color-interactive-border-focus: var(--nx-swatch-purple-80);
@@ -120,11 +122,6 @@
     --nx-color-validation-invalid: var(--nx-swatch-red-70);
     --nx-color-validation-invalid-icon: var(--nx-swatch-red-60);
     --nx-color-validation-invalid-message: var(--nx-swatch-red-80);
-
-    --nx-color-interactive-border: var(--nx-swatch-indigo-70);
-
-    // Interaction States
-    --nx-color-interactive-border-focus: var(--nx-swatch-purple-80);
 
     //NxBinaryDonutChart variables
     --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-30);
@@ -164,6 +161,7 @@
     --nx-color-code-text: var(--nx-swatch-green-85);
 
     // NxDropdownMenu
+    --nx-color-dropdown-menu-text-hover: var(--nx-swatch-indigo-90);
     --nx-color-dropdown-menu-background: var(--nx-swatch-indigo-25);
     --nx-color-dropdown-menu-background-hover: var(--nx-swatch-indigo-15);
     --nx-color-dropdown-menu-background-active: var(--nx-swatch-indigo-35);
