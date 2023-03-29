@@ -426,6 +426,15 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-counter-active-text">
               The text color used on the active state of elements with the <NxCode>nx-counter</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-dropdown-menu-background">
+              The default background color of <NxCode>nx-dropdown-menu</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-dropdown-menu-background-hover">
+              The default hover state background color of <NxCode>nx-dropdown-menu</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-dropdown-menu-background-active">
+              The default active state background color of <NxCode>nx-dropdown-menu</NxCode> class.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
