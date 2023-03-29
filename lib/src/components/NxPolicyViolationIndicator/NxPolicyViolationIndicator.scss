@@ -10,11 +10,11 @@
 .nx-policy-violation-indicator {
   --policy-indicator-highlight-color: var(--nx-color-threat-unspecified);
   align-items: center;
-  box-sizing: content-box;
-  border: 1px solid var(--policy-indicator-highlight-color);
+  box-sizing: border-box;
+  border: 2px solid var(--policy-indicator-highlight-color);
   border-radius: var(--nx-border-radius);
   display: inline-flex;
-  height: 30px;
+  height: 32px;
   margin: 0 var(--nx-spacing-4x) var(--nx-spacing-2x) 0;
   overflow: hidden;
   width: max-content;
