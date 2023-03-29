@@ -140,19 +140,19 @@
 .nx-btn--icon-only {
   background-color: transparent;
   border-color: transparent;
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
 
   &:hover {
     background-color: var(--nx-color-interactive-background-hover);
   }
 
   &:focus:not(:active) {
-    outline: 2px solid var(--nx-color-interactive-border-focus);
+    outline: 2px solid var(--nx-color-button-icon-only-border-focus);
     outline-offset: -2px;
   }
 
   &:active {
-    background-color: var(--nx-color-interactive-background-active);
+    background-color: var(--nx-color-button-icon-only-background-active);
   }
 
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out

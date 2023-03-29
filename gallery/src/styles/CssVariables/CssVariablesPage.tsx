@@ -419,6 +419,15 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-counter-active-text">
               The text color used on the active state of elements with the <NxCode>nx-counter</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-button-icon-only-background-active">
+              The background color of icon only buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-button-icon-only-background-selected">
+              The background color of icon only buttons in <NxCode>NxIconDropdown</NxCode> when the dropdown is open.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-button-icon-only-border-focus">
+              The border color of icon only buttons on focus.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
