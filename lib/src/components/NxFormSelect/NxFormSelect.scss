@@ -104,7 +104,7 @@
       }
 
       .nx-form-select__caret {
-        color: var(--nx-color-validation-valid);
+        color: var(--nx-color-validation-valid-icon);
       }
     }
 
@@ -114,7 +114,7 @@
       }
 
       .nx-form-select__caret {
-        color: var(--nx-color-validation-invalid);
+        color: var(--nx-color-validation-invalid-icon);
       }
     }
   }
