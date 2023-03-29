@@ -86,6 +86,11 @@
   --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
 
+  // NxCollapsibleItems
+  --nx-color-collapsible-items-background-active: var(--nx-swatch-grey-97);
+  --nx-color-collapsible-items-sidebar-background-hover: var(--nx-swatch-indigo-90);
+  --nx-color-collapsible-items-sidebar-background-active: var(--nx-swatch-indigo-95);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-35);
 
@@ -95,6 +100,8 @@
 
     --nx-color-form-element-border: var(--nx-swatch-indigo-70);
 
+    --nx-color-interactive-background-hover: var(--nx-swatch-indigo-10);
+    --nx-color-interactive-background-selected: var(--nx-swatch-purple-30);
     --nx-color-interactive-background-disabled: var(--nx-swatch-indigo-20);
     --nx-color-interactive-border-hover: var(--nx-swatch-indigo-60);
     --nx-color-interactive-border-disabled: var(--nx-swatch-indigo-40);
@@ -157,6 +164,11 @@
     // NxCounter
     --nx-color-counter: var(--nx-swatch-indigo-90);
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
+
+    // NxCollapsibleItems
+    --nx-color-collapsible-items-background-active: var(--nx-swatch-indigo-30);
+    --nx-color-collapsible-items-sidebar-background-hover: var(--nx-swatch-indigo-05);
+    --nx-color-collapsible-items-sidebar-background-active: var(--nx-swatch-indigo-25);
   }
 
   // Deprecated variables
