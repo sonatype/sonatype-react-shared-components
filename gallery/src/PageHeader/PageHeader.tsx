@@ -13,6 +13,7 @@ import ThemeSettingsModal from '../ThemeSettingsModal/ThemeSettingsModal';
 
 const plaidVillain = require('./plaid-villain.svg');
 const tartanLogotype = require('./tartan-logotype.svg');
+const tartanLogotypeDark = require('./tartan-logotype-dm.svg');
 
 import './PageHeader.scss';
 
@@ -27,7 +28,10 @@ const PageHeader = () => {
           <img className="gallery-page-header__logo-image"
                src={plaidVillain}
                alt="" />
-          <img className="gallery-page-header__logotype-image"
+          <img className="gallery-page-header__logotype-image gallery-page-header__logotype-image--dark"
+               src={tartanLogotypeDark}
+               alt="Sonatype Tartan" />
+          <img className="gallery-page-header__logotype-image gallery-page-header__logotype-image--light"
                src={tartanLogotype}
                alt="Sonatype Tartan" />
         </a>
