@@ -258,7 +258,7 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border">
               <NxWarningAlert>
-                Deprecated: This variable is now replaced by <NxCode>--nx-code-interactive-border</NxCode>
+                Deprecated: This variable is now replaced by <NxCode>--nx-color-interactive-border</NxCode>
                 The standard color for the borders of form fields (such as text inputs) in their default state.
               </NxWarningAlert>
             </ColorDocRow>
