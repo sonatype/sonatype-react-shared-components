@@ -257,7 +257,10 @@ const CssVariablesPage = () => {
               The background color of the page as a whole within RSC styles.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border">
-              The standard color for the borders of form fields (such as text inputs) in their default state.
+              <NxWarningAlert>
+                Deprecated: This variable is now replaced by <NxCode>--nx-color-interactive-border</NxCode>
+                The standard color for the borders of form fields (such as text inputs) in their default state.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border-pristine">
               <NxWarningAlert>
@@ -281,6 +284,10 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-interactive-background-disabled">
               The standard color for the backgrounds of interactive elements (such as clickable list rows and form
               fields) when they are disabled.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-interactive-border">
+              The standard color for the borders of interactive elements (such as clickable list rows and form fields)
+              in their default state.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-interactive-border-disabled">
               The standard color for the borders of interactive elements (such as clickable list rows and form fields)
@@ -406,6 +413,12 @@ const CssVariablesPage = () => {
               The text color used on <NxCode>NxThreatCounter</NxCode> and
               the <NxCode>NxThreatIndicatorLegend</NxCode> items.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-indicator-icon">
+              The color for the threat level icon on <NxCode>NxPolicyViolationIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-indicator-text">
+              The text color used for <NxCode>NxPolicyViolationIndicator</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-counter">
               The border color used on the default state and the background-color used on the active state
               of elements with the <NxCode>nx-counter</NxCode> class.
@@ -496,6 +509,18 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-disabled-button-text">
               The text color of disabled buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-dropdown-menu-text-hover">
+              The text color of <NxCode>nx-dropdown-menu</NxCode> item when hovered.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-dropdown-menu-background">
+              The default background color of <NxCode>nx-dropdown-menu</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-dropdown-menu-background-hover">
+              The default hover state background color of <NxCode>nx-dropdown-menu</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-dropdown-menu-background-active">
+              The default active state background color of <NxCode>nx-dropdown-menu</NxCode> class.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>

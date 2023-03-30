@@ -5,15 +5,16 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-policy-violation-indicator {
   --policy-indicator-highlight-color: var(--nx-color-threat-unspecified);
   align-items: center;
-  box-sizing: content-box;
-  border: 1px solid var(--policy-indicator-highlight-color);
+  box-sizing: border-box;
+  border: 2px solid var(--policy-indicator-highlight-color);
   border-radius: var(--nx-border-radius);
   display: inline-flex;
-  height: 30px;
+  height: 32px;
   margin: 0 var(--nx-spacing-4x) var(--nx-spacing-2x) 0;
   overflow: hidden;
   width: max-content;
@@ -27,7 +28,7 @@
   display: inline-flex;
 
   .nx-icon {
-    color: var(--nx-swatch-white);
+    color: var(--nx-color-policy-indicator-icon);
   }
 }
 
@@ -35,6 +36,7 @@
   @include nx-text-helpers.semi-bold;
   @include nx-text-helpers.truncate-ellipsis;
 
+  color: var(--nx-color-policy-indicator-text);
   font-size: var(--nx-font-size-s);
   margin: 0 var(--nx-spacing-4x);
   text-transform: uppercase;
