@@ -15,12 +15,12 @@
   width: nx-dropdown-variables.$dropdown-width;
 
   .nx-icon:not(.nx-icon--colorful, .nx-dropdown-link .nx-icon, .nx-dropdown :is(.disabled, [disabled]) .nx-icon) {
-    color: var(--nx-swatch-grey-05);
+    color: var(--nx-color-text-stark);
   }
 }
 
 .nx-dropdown-icon {
-  color: var(--nx-swatch-grey-05);
+  color: var(--nx-color-text-stark);
 }
 
 .nx-dropdown--short {
@@ -32,6 +32,7 @@
 }
 
 .nx-dropdown__toggle {
+  border: 1px solid var(--nx-color-interactive-border);
   color: var(--nx-color-text);
   display: flex;
   margin: 0;
@@ -76,7 +77,7 @@
     border-color: var(--nx-color-interactive-border-hover);
 
     &:focus {
-      border-color: var(--nx-color-form-element-border);
+      border-color: var(--nx-color-interactive-border);
     }
   }
 }
