@@ -62,6 +62,10 @@
     &::placeholder {
       color: var(--nx-color-text-placeholder);
     }
+
+    &[disabled] {
+      color: var(--nx-color-text-disabled);
+    }
   }
 
   &--long {
@@ -111,7 +115,7 @@
   &.disabled {
     .nx-text-input__input {
       &::placeholder {
-        color: var(--nx-color-interactive-border-disabled);
+        color: var(--nx-color-text-disabled);
       }
     }
     &, &:hover {
