@@ -149,7 +149,8 @@
   }
 
   &:active {
-    background-color: var(--nx-color-button-icon-only-background-active);
+    background-color: var(--nx-color-interactive-background-active);
+    border-color: transparent;
   }
 
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out
@@ -167,6 +168,7 @@
     &, &:hover, &:focus {
       background-color: transparent;
       border-color: transparent;
+      color: var(--nx-color-text-disabled);
       outline: none;
     }
   }
