@@ -55,7 +55,7 @@
   }
 
   &__caret {
-    color: var(--nx-color-text-stark);
+    color: var(--nx-color-text-dark);
     font-size: 24px; // gets the <path> element to a height a roughly 8px as specced
     margin: $vertical-spacing 0;
     position: absolute;
