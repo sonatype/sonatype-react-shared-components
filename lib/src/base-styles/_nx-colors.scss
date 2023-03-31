@@ -87,6 +87,7 @@
   --nx-color-disabled-button-background: var(--nx-color-interactive-background-disabled);
   --nx-color-disabled-button-border: var(--nx-color-interactive-border-disabled);
   --nx-color-disabled-button-text: var(--nx-color-text-disabled);
+  --nx-color-primary-segmented-button-divider: var(--nx-swatch-blue-60);
 
   // NxGlobalHeader
   --nx-color-global-header-border: var(--nx-color-border);
@@ -167,7 +168,6 @@
     --nx-color-secondary-button-border: var(--nx-swatch-purple-80);
     --nx-color-secondary-button-border-active: var(--nx-swatch-purple-90);
     --nx-color-secondary-button-focus-outline: var(--nx-swatch-purple-80);
-    --nx-color-secondary-button-text: var(--nx-swatch-purple-80);
     --nx-color-secondary-button-text-hover: var(--nx-color-secondary-button-text);
     --nx-color-tertiary-button-background-hover: var(--nx-swatch-indigo-15);
     --nx-color-tertiary-button-background-active: var(--nx-swatch-indigo-25);
@@ -181,6 +181,7 @@
     --nx-color-disabled-button-background: var(--nx-color-interactive-border-disabled); // inverted disabled colors in dark mode
     --nx-color-disabled-button-border: var(--nx-color-interactive-border-disabled);
     --nx-color-disabled-button-text: var(--nx-color-interactive-background-disabled);
+    --nx-color-primary-segmented-button-divider: var(--nx-swatch-indigo-25);
     
     // NxGlobalHeader
     --nx-color-global-header-border: var(--nx-color-site-background);

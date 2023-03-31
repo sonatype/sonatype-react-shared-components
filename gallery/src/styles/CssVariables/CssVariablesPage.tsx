@@ -204,6 +204,9 @@ const CssVariablesPage = () => {
               Deprecated. Standard border styles for lower-level elements such as tile subsections.
             </NxWarningAlert>
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-width-button">
+            The border-width of <NxCode>NxButton</NxCode>.
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">
             <NxWarningAlert>
               Deprecated: We no longer use a box-shadow when elements are focused.
@@ -440,6 +443,9 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-primary-button-text">
               The text color of primary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-segmented-button-divider">
+              The color of the divider for primary segmented buttons.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-secondary-button-background">
               The background color of secondary buttons.

@@ -6,6 +6,7 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
 
 %transparent-button-focus-outline {
   outline-offset: calc(0px - var(--nx-border-width-button) - 4px);
