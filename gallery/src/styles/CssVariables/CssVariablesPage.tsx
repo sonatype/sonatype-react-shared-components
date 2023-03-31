@@ -516,6 +516,15 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-disabled-button-text">
               The text color of disabled buttons.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-button-icon-only-background-active">
+              The background color of icon only buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-button-icon-only-background-selected">
+              The background color of icon only buttons in <NxCode>NxIconDropdown</NxCode> when the dropdown is open.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-button-icon-only-border-focus">
+              The border color of icon only buttons on focus.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-dropdown-menu-text-hover">
               The text color of <NxCode>nx-dropdown-menu</NxCode> item when hovered.
             </ColorDocRow>
