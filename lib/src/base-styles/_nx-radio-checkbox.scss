@@ -6,6 +6,19 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
+
+:root {
+  --nx-radio-checkbox-border-width: 1px;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-radio-checkbox-border-width: 2px;
+  }
+}
+
+@mixin inset-box-shadow-border($color) {
+  box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) #{$color};
+}
 
 .nx-radio-checkbox {
   $max-width: 562px;
@@ -30,7 +43,7 @@
     cursor: pointer;
 
     .nx-radio-checkbox__control {
-      border-color: var(--nx-color-interactive-border-hover);
+      @include inset-box-shadow-border(var(--nx-color-interactive-border-hover));
       stroke: var(--nx-color-interactive-border-hover);
     }
   }
@@ -38,9 +51,11 @@
   &:focus-within {
     .nx-checkbox__box, .nx-radio__focus {
       position: relative;
+
       &::after {
         border: 2px solid var(--nx-color-interactive-border-focus);
         content: '';
+        box-sizing: border-box;
         display: block;
         position: absolute;
       }
@@ -52,9 +67,14 @@
       }
 
       .nx-radio-checkbox__input:checked + .nx-radio-checkbox__control {
-        border-color: var(--nx-swatch-blue-40);
+        @include inset-box-shadow-border(var(--nx-swatch-blue-40));
         stroke: var(--nx-swatch-blue-40);
         filter: none;
+
+        @include nx-dark-mode-helpers.dark-mode {
+          @include inset-box-shadow-border(var(--nx-swatch-purple-80));
+          stroke: var(--nx-swatch-purple-80);
+        }
       }
     }
 
@@ -70,32 +90,13 @@
   }
 }
 
-.nx-radio-checkbox__control {
-  background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-color-interactive-border);
-  flex-shrink: 0;
-  margin-right: var(--nx-spacing-2x);
-}
-
-svg.nx-radio-checkbox__control {
-  border-style: none;
-  background: none;
-  fill: var(--nx-swatch-white);
-  stroke: var(--nx-color-interactive-border);
-}
-
-.nx-radio-checkbox__content {
-  @include nx-container-helpers.container-horizontal;
-  @include nx-text-helpers.truncate-ellipsis;
-}
-
 .nx-radio-checkbox--disabled {
   &, &:hover {
     cursor: default;
 
     .nx-radio-checkbox__control {
-      background-color:var(--nx-color-interactive-background-disabled);
-      border-color: var(--nx-color-interactive-border-disabled);
+      @include inset-box-shadow-border(var(--nx-color-interactive-border-disabled));
+      background-color: var(--nx-color-disabled);
     }
 
     svg.nx-radio-checkbox__control {
@@ -104,6 +105,27 @@ svg.nx-radio-checkbox__control {
       stroke: var(--nx-color-interactive-border-disabled);
     }
   }
+}
+
+.nx-radio-checkbox__control {
+  @include inset-box-shadow-border(var(--nx-color-interactive-border));
+
+  background-color: var(--nx-color-component-background);
+  border: 0;
+  flex-shrink: 0;
+  margin-right: var(--nx-spacing-2x);
+}
+
+svg.nx-radio-checkbox__control {
+  border-style: none;
+  background: none;
+  fill: var(--nx-color-component-background);
+  stroke: var(--nx-color-interactive-border);
+}
+
+.nx-radio-checkbox__content {
+  @include nx-container-helpers.container-horizontal;
+  @include nx-text-helpers.truncate-ellipsis;
 }
 
 .nx-radio-checkbox__input {
@@ -124,21 +146,38 @@ svg.nx-radio-checkbox__control {
 
   &:checked {
     + .nx-radio-checkbox__control {
+      @include inset-box-shadow-border(var(--nx-swatch-blue-40));
       background-color: var(--nx-swatch-blue-40);
-      border-color: var(--nx-swatch-blue-40);
 
       &:hover {
-        border-color: var(--nx-swatch-blue-40);
+        @include inset-box-shadow-border(var(--nx-swatch-blue-40));
+      }
+
+      @include nx-dark-mode-helpers.dark-mode {
+        @include inset-box-shadow-border(var(--nx-swatch-purple-80));
+        background-color: var(--nx-swatch-purple-80);
+
+        &:hover {
+          @include inset-box-shadow-border(var(--nx-swatch-purple-80));
+        }
       }
     }
 
     + svg.nx-radio-checkbox__control {
       background: none;
-      fill: var(--nx-swatch-blue-40);
+      fill: var(--nx-color-component-background);
       stroke: var(--nx-swatch-blue-40);
 
       &:hover {
         stroke: var(--nx-swatch-blue-40);
+      }
+
+      @include nx-dark-mode-helpers.dark-mode {
+        stroke: var(--nx-swatch-purple-80);
+
+        &:hover {
+          stroke: var(--nx-swatch-purple-80);
+        }
       }
     }
   }

@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-focus-border-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 $-height: 16px;
 $-width: 16px;
@@ -21,24 +22,34 @@ $-width: 16px;
     @include nx-focus-border-helpers.radio-checkbox-focus-border($-height, $-width);
 
     border-radius: 4px;
-    left: -5px;
-    top: -5px;
+    left: -4px;
+    top: -4px;
   }
 
   .fa-check {
-    color: var(--nx-swatch-white);
+    color: var(--nx-color-component-background);
     font-size: var(--nx-font-size-s);
-    vertical-align: 4px;
+    vertical-align: 3px;
+    margin-left: 1px;
   }
 }
 
 .nx-checkbox__input:checked:disabled {
   + .nx-checkbox__box {
-    background-color:var(--nx-color-interactive-background-disabled);
-    border-color: var(--nx-color-interactive-border-disabled);
+    background-color:var(--nx-color-disabled);
+    box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) var(--nx-color-interactive-border-disabled);
+
+    @include nx-dark-mode-helpers.dark-mode {
+      background-color:var(--nx-color-disabled);
+      box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) var(--nx-color-interactive-border-disabled);
+    }
 
     .fa-check {
       color: var(--nx-color-text-disabled);
+
+      @include nx-dark-mode-helpers.dark-mode {
+        color: var(--nx-color-component-background);
+      }
     }
   }
 }

@@ -6,12 +6,13 @@
  */
 @use '../../scss-shared/nx-focus-border-helpers';
 
-$-height: 16px;
-$-width: 16px;
+$-size: 16px;
 
 .nx-radio__circle {
-  height: $-height;
-  width: $-width;
+  height: $-size;
+  width: $-size;
+
+  border-radius: $-size;
 }
 
 .nx-radio__inner-circle {
@@ -39,7 +40,7 @@ $-width: 16px;
 // Pseudo-element style is for the focus border
 .nx-radio__focus {
   &::after{
-    @include nx-focus-border-helpers.radio-checkbox-focus-border($-height, $-width);
+    @include nx-focus-border-helpers.radio-checkbox-focus-border($-size, $-size);
 
     border-radius: 12px;
     left: -28px;
