@@ -53,30 +53,60 @@
 }
 
 .nx-btn--primary:not([disabled]) {
+  &.nx-segmented-btn__main-btn, &.nx-segmented-btn__dropdown-btn {
+    border-color: var(--nx-color-primary-segmented-button-divider);
+    position: relative;
+
+    &::after {
+      border: 2px solid transparent;
+      border-radius: 4px;
+      box-sizing: border-box;
+      content: '';
+      height: calc(100% - 4px);
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: calc(100% - 4px);
+    }
+
+    &:focus:not(:active) {
+      outline: none;
+      &::after {
+        border-color: var(--nx-color-primary-button-focus-outline);
+      }
+    }
+  }
+
   &.nx-segmented-btn__main-btn {
-    border-right-color: var(--nx-color-primary-segmented-button-divider);
-
     // get fancy to prevent mitred corners on the inner border
-      border-top-style: none;
-      border-bottom-style: none;
-      border-left-style: none;
+    border-top-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
 
-      padding-top: var(--nx-spacing-2x);
-      padding-bottom: var(--nx-spacing-2x);
-      padding-left: var(--nx-spacing-6x);
+    padding-top: var(--nx-spacing-2x);
+    padding-bottom: var(--nx-spacing-2x);
+    padding-left: var(--nx-spacing-6x);
+
+    &::after {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
   &.nx-segmented-btn__dropdown-btn {
-    border-left-color: var(--nx-color-primary-segmented-button-divider);
-
     // get fancy to prevent mitred corners on the inner border
-      border-top-style: none;
-      border-right-style: none;
-      border-bottom-style: none;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
 
-      padding-top: var(--nx-spacing-2x);
-      padding-right: var(--nx-spacing-3x);
-      padding-bottom: var(--nx-spacing-2x);
+    padding-top: var(--nx-spacing-2x);
+    padding-right: var(--nx-spacing-3x);
+    padding-bottom: var(--nx-spacing-2x);
+        
+    &::after {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 }
 
