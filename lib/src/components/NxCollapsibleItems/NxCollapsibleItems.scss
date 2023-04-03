@@ -104,7 +104,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   border: 0;
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   cursor: pointer;
   display: grid;
   font: inherit;
@@ -167,7 +167,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   border: 0;
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   display: block;
   overflow: hidden;
 
