@@ -5,11 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use "sass:math";
-
-$-progress-background-color: var(--nx-swatch-indigo-95);
-$-progress-bar-color: var(--nx-swatch-teal-60);
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-progress-bar {
+  
   display: grid;
   grid-template-columns: 1fr;
 
@@ -40,25 +39,36 @@ $-progress-bar-color: var(--nx-swatch-teal-60);
   }
 
   &--success {
-    color: var(--nx-color-alert-success);
+    color: var(--nx-color-progress-bar-text-success);
+
+    .nx-icon {
+      color: var(--nx-color-progress-bar-icon-success);
+    }
 
     .nx-progress-bar__counter {
-      border-color: var(--nx-color-alert-success);
-      background-color: var(--nx-swatch-green-95);
+      border-color: var(--nx-color-progress-bar-counter-border-success);
+      background-color: var(--nx-color-progress-bar-counter-background-success);
     }
   }
 
   &--error {
-    color: var(--nx-color-alert-error);
+    color: var(--nx-color-progress-bar-text-error);
+
+    .nx-icon {
+      color: var(--nx-color-progress-bar-icon-error);
+    }
 
     .nx-progress-bar__counter {
-      border-color: var(--nx-color-alert-error);
-      background-color: var(--nx-swatch-red-95);
+      border-color: var(--nx-color-progress-bar-counter-border-error);
+      background-color: var(--nx-color-progress-bar-counter-background-error);
     }
   }
 }
 
 .nx-progress-bar__counter {
+  background-color: var(--nx-color-progress-bar-counter-background);
+  border-color: var(--nx-color-progress-bar-counter-border);
+  color: var(--nx-color-progress-bar-counter-percent);
   margin: 0 var(--nx-spacing-2x) 0 0;
 }
 
@@ -92,7 +102,7 @@ $-progress-bar-color: var(--nx-swatch-teal-60);
   width: 2px;
 
   &--below-value {
-    background-color: $-progress-background-color;
+    background-color: var(--nx-color-progress-bar-background);
   }
 
   &--at-value {
@@ -100,7 +110,7 @@ $-progress-bar-color: var(--nx-swatch-teal-60);
   }
 
   &--above-value {
-    background-color: $-progress-bar-color;
+    background-color: var(--nx-color-progress-bar-progress);
   }
 }
 
@@ -118,7 +128,7 @@ $-normal-height: 25px;
 
   &,
   &::-webkit-progress-bar {
-    background: $-progress-background-color;
+    background: var(--nx-color-progress-bar-background);
     border-radius: math.div($-normal-height, 2);
     height: $-normal-height;
     overflow: hidden;
@@ -126,11 +136,11 @@ $-normal-height: 25px;
   }
 
   &::-moz-progress-bar {
-    background: $-progress-bar-color;
+    background: var(--nx-color-progress-bar-progress);
   }
 
   &::-webkit-progress-value {
-    background: $-progress-bar-color;
+    background: var(--nx-color-progress-bar-progress);
   }
 }
 
