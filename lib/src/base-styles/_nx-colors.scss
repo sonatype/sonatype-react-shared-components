@@ -14,12 +14,12 @@
 
   --nx-color-site-background: var(--nx-swatch-indigo-97);
 
-  --nx-color-form-element-border: var(--nx-swatch-grey-50);
-
   --nx-color-interactive-background-selected: var(--nx-swatch-blue-90);
   --nx-color-interactive-background-active: var(--nx-swatch-grey-95);
   --nx-color-interactive-background-hover: var(--nx-swatch-grey-90);
   --nx-color-interactive-background-disabled: var(--nx-swatch-grey-90);
+
+  --nx-color-interactive-border: var(--nx-swatch-grey-50);
   --nx-color-interactive-border-hover: var(--nx-swatch-grey-05);
   --nx-color-interactive-border-disabled: var(--nx-swatch-grey-60);
   --nx-color-interactive-border-focus: var(--nx-swatch-blue-40);
@@ -70,7 +70,7 @@
   --nx-color-page-header-link: var(--nx-swatch-grey-10);
 
   //NxPolicyViolationIndicator variables
-  --nx-color-policy-indicator-icon-background: var(--nx-swatch-white);
+  --nx-color-policy-indicator-icon: var(--nx-swatch-white);
   --nx-color-policy-indicator-text: var(--nx-color-text);
 
   //NxTooltip variables
@@ -82,6 +82,12 @@
   --nx-color-code-border: var(--nx-swatch-pink-95);
   --nx-color-code-text: var(--nx-swatch-grey-20);
 
+  // NxDropdownMenu
+  --nx-color-dropdown-menu-text-hover: var(--nx-color-text-stark);
+  --nx-color-dropdown-menu-background: var(--nx-swatch-white);
+  --nx-color-dropdown-menu-background-hover: var(--nx-color-interactive-background-hover);
+  --nx-color-dropdown-menu-background-active: var(--nx-color-interactive-background-active);
+
   // NxCounter
   --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
@@ -92,17 +98,18 @@
   --nx-color-collapsible-items-sidebar-background-active: var(--nx-swatch-indigo-95);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-border: var(--nx-swatch-indigo-35);
+    --nx-color-border: var(--nx-swatch-indigo-40);
+    --nx-color-border-secondary: var(--nx-swatch-indigo-35);
 
     --nx-color-component-background: var(--nx-swatch-indigo-20);
 
     --nx-color-site-background: var(--nx-swatch-indigo-15);
 
-    --nx-color-form-element-border: var(--nx-swatch-indigo-70);
-
     --nx-color-interactive-background-hover: var(--nx-swatch-indigo-10);
     --nx-color-interactive-background-selected: var(--nx-swatch-purple-30);
     --nx-color-interactive-background-disabled: var(--nx-swatch-indigo-20);
+
+    --nx-color-interactive-border: var(--nx-swatch-indigo-70);
     --nx-color-interactive-border-hover: var(--nx-swatch-indigo-60);
     --nx-color-interactive-border-disabled: var(--nx-swatch-indigo-40);
     --nx-color-interactive-border-focus: var(--nx-swatch-purple-80);
@@ -161,6 +168,12 @@
     --nx-color-code-border: var(--nx-swatch-grey-30);
     --nx-color-code-text: var(--nx-swatch-green-85);
 
+    // NxDropdownMenu
+    --nx-color-dropdown-menu-text-hover: var(--nx-swatch-indigo-90);
+    --nx-color-dropdown-menu-background: var(--nx-swatch-indigo-25);
+    --nx-color-dropdown-menu-background-hover: var(--nx-swatch-indigo-15);
+    --nx-color-dropdown-menu-background-active: var(--nx-swatch-indigo-35);
+
     // NxCounter
     --nx-color-counter: var(--nx-swatch-indigo-90);
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
@@ -174,6 +187,7 @@
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
   --nx-color-text-dark: var(--nx-color-text-stark);
-  --nx-color-form-element-border-pristine: var(--nx-swatch-indigo-90);
+  --nx-color-form-element-border: var(--nx-swatch-grey-50); // form - element - border
+  --nx-color-interactive-border-pristine: var(--nx-swatch-indigo-90);
   --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 35%, 0.5);
 }

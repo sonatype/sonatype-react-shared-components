@@ -31,8 +31,8 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: var(--nx-swatch-white);
-    border: 1px solid var(--nx-color-form-element-border);
+    background-color: var(--nx-color-component-background);
+    border: 1px solid var(--nx-color-interactive-border);
     border-radius: var(--nx-border-radius);
     color: var(--nx-color-text);
     font-size: var(--nx-font-size);
@@ -46,7 +46,7 @@
     width: 100%;
 
     &:hover {
-      border-color: var(--nx-color-form-element-border);
+      border-color: var(--nx-color-interactive-border);
     }
 
     &:focus {
@@ -105,7 +105,7 @@
       }
 
       .nx-form-select__caret {
-        color: var(--nx-color-validation-valid);
+        color: var(--nx-color-validation-valid-icon);
       }
     }
 
@@ -115,7 +115,7 @@
       }
 
       .nx-form-select__caret {
-        color: var(--nx-color-validation-invalid);
+        color: var(--nx-color-validation-invalid-icon);
       }
     }
   }
