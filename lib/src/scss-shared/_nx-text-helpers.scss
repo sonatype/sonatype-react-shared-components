@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use 'nx-container-helpers';
+@use 'nx-dark-mode-helpers';
 
 // Deprecated. Now using variable --nx-font-family
 @mixin nx-font-family() {
@@ -122,7 +123,7 @@
 
 %nx-blockquote {
   @include nx-container-helpers.container-vertical;
-  background-color: var(--nx-swatch-indigo-95);
+  background-color: var(--nx-color-blockquote-background);
   border: var(--nx-border-default);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);
