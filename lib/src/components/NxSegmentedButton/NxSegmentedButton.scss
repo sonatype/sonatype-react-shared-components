@@ -58,7 +58,7 @@
     position: relative;
 
     &::after {
-      border: 2px solid transparent;
+      border: var(--nx-focus-outline-width) solid transparent;
       border-radius: 4px;
       box-sizing: border-box;
       content: '';

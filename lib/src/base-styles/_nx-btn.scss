@@ -25,7 +25,7 @@ $transparent-button-outline-offset: calc(0px - var(--nx-border-width-button) - 4
   }
 
   &:active {
-    background-color:  var(--nx-color-#{$variant}-button-background-active);
+    background-color: var(--nx-color-#{$variant}-button-background-active);
     border-color: transparent;
   }
 }
@@ -56,7 +56,7 @@ $transparent-button-outline-offset: calc(0px - var(--nx-border-width-button) - 4
   }
 
   &:focus:not(:active) {
-    outline: 2px solid var(--nx-color-secondary-button-focus-outline);
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-secondary-button-focus-outline);
     outline-offset: $transparent-button-outline-offset;
   }
 
@@ -135,7 +135,7 @@ $transparent-button-outline-offset: calc(0px - var(--nx-border-width-button) - 4
   }
 
   &:focus:not(:active) {
-    outline: 2px solid var(--nx-color-button-icon-only-border-focus);
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-button-icon-only-border-focus);
     outline-offset: -2px;
   }
 

@@ -207,6 +207,9 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-border-width-button">
             The border-width of <NxCode>NxButton</NxCode>.
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-focus-outline-width">
+            The width of the outline when an element is focused.
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">
             <NxWarningAlert>
               Deprecated: We no longer use a box-shadow when elements are focused.
