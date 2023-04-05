@@ -6,8 +6,6 @@
  */
  @use '../../scss-shared/nx-dark-mode-helpers';
 
- $-primary-btn-focus-outline-spacing: 2px;
-
  @mixin base-btn-styling {
   // get fancy to prevent mitred corners on the inner border
   border-top-style: none;
@@ -88,11 +86,11 @@
         border-radius: 4px;
         box-sizing: border-box;
         content: '';
-        height: calc(100% - #{$-primary-btn-focus-outline-spacing} - var(--nx-focus-outline-width));
+        height: calc(100% - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
         position: absolute;
-        left: $-primary-btn-focus-outline-spacing;
-        top: $-primary-btn-focus-outline-spacing;
-        width: calc(100% - #{$-primary-btn-focus-outline-spacing} - var(--nx-focus-outline-width));
+        left: var(--nx-focus-outline-inset);
+        top: var(--nx-focus-outline-inset);
+        width: calc(100% - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
       }
     }
   }

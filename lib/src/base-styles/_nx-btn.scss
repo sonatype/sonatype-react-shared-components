@@ -20,8 +20,7 @@
 
   &:focus:not(:active) {
     outline-color: var(--nx-color-#{$variant}-button-focus-outline);
-    // provide 2px of spacing between the edge and the focus outline
-    outline-offset: calc(0px - 2px - var(--nx-focus-outline-width));
+    outline-offset: calc(0px - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
   }
 
   &:active {
@@ -54,7 +53,7 @@
 
   &:focus:not(:active) {
     outline: var(--nx-focus-outline-width) solid var(--nx-color-secondary-button-focus-outline);
-    outline-offset: calc(0px - var(--nx-border-width-button) - 4px);
+    outline-offset: calc(0px - var(--nx-border-width-button) - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
   }
 
   &:focus-visible {
