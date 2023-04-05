@@ -444,6 +444,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-blockquote-background">
               The default background color of <NxCode>nx-blockquote</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-pre-border">
+              The default border color of <NxCode>nx-pre</NxCode> class.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>

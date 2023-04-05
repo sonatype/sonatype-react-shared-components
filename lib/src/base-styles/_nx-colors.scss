@@ -95,6 +95,9 @@
   // NxBlockQuote
   --nx-color-blockquote-background: var(--nx-swatch-indigo-95);
 
+  // NxPre
+  --nx-color-pre-border: var(--nx-swatch-indigo-10);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-40);
     --nx-color-border-secondary: var(--nx-swatch-indigo-35);
@@ -176,6 +179,9 @@
 
     // NxBlockQuote
     --nx-color-blockquote-background: var(--nx-swatch-indigo-25);
+
+    // NxPre
+    --nx-color-pre-border: var(--nx-swatch-indigo-90);
   }
 
   // Deprecated variables
