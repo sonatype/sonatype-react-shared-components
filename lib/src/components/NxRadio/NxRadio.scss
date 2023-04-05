@@ -15,9 +15,13 @@ $-size: 16px;
   border-radius: $-size;
 }
 
+.nx-radio__outer-circle {
+  stroke-width: var(--nx-radio-checkbox-border-width);
+}
+
 .nx-radio__inner-circle {
-  fill: var(--nx-swatch-white);
-  stroke: var(--nx-swatch-blue-40);
+  fill: var(--nx-color-component-background);
+  stroke: var(--nx-color-radio-checkbox-selected);
 }
 
 .nx-radio__input:checked {
@@ -28,10 +32,11 @@ $-size: 16px;
   &:disabled {
     + svg.nx-radio__circle {
       stroke: var(--nx-color-interactive-border-disabled);
+      box-shadow: none;
 
-      .nx-radio__inner-circle {
+      .nx-radio__outer-circle {
         stroke: var(--nx-color-interactive-background-disabled);
-        fill: var(--nx-color-text-disabled);
+        fill: var(--nx-color-disabled);
       }
     }
   }

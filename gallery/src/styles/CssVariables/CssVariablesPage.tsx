@@ -221,6 +221,9 @@ const CssVariablesPage = () => {
               as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
             </NxWarningAlert>
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-radio-checkbox-border-width">
+            The standard checkbox border width, or radio stroke-width.
+          </PropertyDocItem>
         </dl>
       </GalleryTile>
       <GalleryTile title="Semantic Color Properties">
@@ -237,6 +240,9 @@ const CssVariablesPage = () => {
             </NxTable.Row>
           </NxTable.Head>
           <NxTable.Body>
+            <ColorDocRow colorVar="--nx-color-disabled">
+              Generic disabled color.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-border">
               Color for standard higher-level borders
             </ColorDocRow>

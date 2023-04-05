@@ -94,6 +94,9 @@
   --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
 
+  // Radio Checkbox
+  --nx-color-radio-checkbox-selected: var(--nx-swatch-blue-40);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
@@ -174,6 +177,9 @@
     // NxCounter
     --nx-color-counter: var(--nx-swatch-indigo-90);
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
+
+    // Radio Checkbox
+    --nx-color-radio-checkbox-selected: var(--nx-swatch-purple-80);
   }
 
   // Deprecated variables
