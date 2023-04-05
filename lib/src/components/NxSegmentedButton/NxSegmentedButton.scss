@@ -18,7 +18,8 @@
  @mixin dropdown-btn-styling {
    @include base-btn-styling;
    border-right-style: none;
-   padding-right: var(--nx-spacing-4x);
+   padding-left: calc(var(--nx-spacing-3x) - var(--nx-border-width-button));
+   padding-right: calc(var(--nx-spacing-3x));
  }
 
  @mixin main-btn-styling {
@@ -65,8 +66,8 @@
   // lock the line-height here so that it is not affected by the font-size increase on the icon
   line-height: 1em;
   margin: 0;
-  padding-left: calc(var(--nx-spacing-3x) - 1px);
-  padding-right: calc(var(--nx-spacing-3x) - 1px);
+  padding-left: calc(var(--nx-spacing-3x) - var(--nx-border-width-button));
+  padding-right: calc(var(--nx-spacing-3x) - var(--nx-border-width-button));
 
   > .nx-icon {
     font-size: 1.2em;
