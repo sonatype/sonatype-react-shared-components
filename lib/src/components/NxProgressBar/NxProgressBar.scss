@@ -102,7 +102,7 @@
   width: 2px;
 
   &--below-value {
-    background-color: var(--nx-color-progress-bar-background);
+    background-color: var(--nx-color-progress-background);
   }
 
   &--at-value {
@@ -110,7 +110,7 @@
   }
 
   &--above-value {
-    background-color: var(--nx-color-progress-bar-progress);
+    background-color: var(--nx-color-progress-fill);
   }
 }
 
@@ -128,7 +128,7 @@ $-normal-height: 25px;
 
   &,
   &::-webkit-progress-bar {
-    background: var(--nx-color-progress-bar-background);
+    background: var(--nx-color-progress-background);
     border-radius: math.div($-normal-height, 2);
     height: $-normal-height;
     overflow: hidden;
@@ -136,11 +136,11 @@ $-normal-height: 25px;
   }
 
   &::-moz-progress-bar {
-    background: var(--nx-color-progress-bar-progress);
+    background: var(--nx-color-progress-fill);
   }
 
   &::-webkit-progress-value {
-    background: var(--nx-color-progress-bar-progress);
+    background: var(--nx-color-progress-fill);
   }
 }
 
