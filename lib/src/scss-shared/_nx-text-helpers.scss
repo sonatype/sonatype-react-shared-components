@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use 'nx-container-helpers';
-@use 'nx-dark-mode-helpers';
 
 // Deprecated. Now using variable --nx-font-family
 @mixin nx-font-family() {
