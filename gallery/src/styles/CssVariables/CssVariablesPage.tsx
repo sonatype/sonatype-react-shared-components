@@ -495,9 +495,6 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-tertiary-button-text">
               The text color of tertiary buttons.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-secondary-button-background">
-              The background color of secondary buttons.
-            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-error-button-background">
               The background color of error buttons.
             </ColorDocRow>
