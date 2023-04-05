@@ -36,13 +36,8 @@ $-width: 16px;
 
 .nx-checkbox__input:checked:disabled {
   + .nx-checkbox__box {
-    background-color:var(--nx-color-disabled);
+    background-color: var(--nx-color-disabled);
     box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) var(--nx-color-interactive-border-disabled);
-
-    @include nx-dark-mode-helpers.dark-mode {
-      background-color:var(--nx-color-disabled);
-      box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) var(--nx-color-interactive-border-disabled);
-    }
 
     .fa-check {
       color: var(--nx-color-text-disabled);
