@@ -8,14 +8,6 @@
 @use '../scss-shared/nx-text-helpers';
 @use '../scss-shared/nx-dark-mode-helpers';
 
-:root {
-  --nx-radio-checkbox-border-width: 1px;
-
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-radio-checkbox-border-width: 2px;
-  }
-}
-
 @mixin inset-box-shadow-border($color) {
   box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) #{$color};
 }
