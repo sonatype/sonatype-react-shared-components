@@ -8,6 +8,27 @@
 
  $-primary-btn-focus-outline-spacing: 2px;
 
+ @mixin base-btn-styling {
+  // get fancy to prevent mitred corners on the inner border
+  border-top-style: none;
+  border-bottom-style: none;
+
+  padding-top: var(--nx-spacing-2x);
+  padding-bottom: var(--nx-spacing-2x);
+ }
+
+ @mixin dropdown-btn-styling {
+   @include base-btn-styling;
+   border-right-style: none;
+   padding-right: var(--nx-spacing-4x);
+ }
+
+ @mixin main-btn-styling {
+  @include base-btn-styling;
+  border-left-style: none;
+  padding-left: var(--nx-spacing-6x);
+}
+
 .nx-segmented-btn {
   display: inline-flex;
 
@@ -77,34 +98,24 @@
   }
 
   &.nx-segmented-btn__main-btn {
-    // get fancy to prevent mitred corners on the inner border
-    border-top-style: none;
-    border-bottom-style: none;
-    border-left-style: none;
+    @include main-btn-styling;
 
-    padding-top: var(--nx-spacing-2x);
-    padding-bottom: var(--nx-spacing-2x);
-    padding-left: var(--nx-spacing-6x);
-
-    &::after {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+    &:focus:not(:active) {
+      &::after {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
   }
 
   &.nx-segmented-btn__dropdown-btn {
-    // get fancy to prevent mitred corners on the inner border
-    border-top-style: none;
-    border-right-style: none;
-    border-bottom-style: none;
-
-    padding-top: var(--nx-spacing-2x);
-    padding-right: var(--nx-spacing-3x);
-    padding-bottom: var(--nx-spacing-2x);
-        
-    &::after {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+    @include dropdown-btn-styling;
+    
+    &:focus:not(:active) {
+      &::after {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
     }
   }
 }
@@ -115,14 +126,7 @@
       border-right-color: var(--nx-color-disabled-button-text);
 
       @include nx-dark-mode-helpers.dark-mode {
-        // get fancy to prevent mitred corners on the inner border
-        border-top-style: none;
-        border-bottom-style: none;
-        border-left-style: none;
-  
-        padding-top: var(--nx-spacing-2x);
-        padding-bottom: var(--nx-spacing-2x);
-        padding-left: var(--nx-spacing-6x);
+       @include main-btn-styling;
       }
     }
 
@@ -130,14 +134,7 @@
       border-left-color: var(--nx-color-disabled-button-text);
 
       @include nx-dark-mode-helpers.dark-mode {
-        // get fancy to prevent mitred corners on the inner border
-        border-top-style: none;
-        border-bottom-style: none;
-        border-right-style: none;
-
-        padding-top: var(--nx-spacing-2x);
-        padding-right: var(--nx-spacing-3x);
-        padding-bottom: var(--nx-spacing-2x);
+        @include dropdown-btn-styling;
       }
     }
   }
