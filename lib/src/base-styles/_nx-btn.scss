@@ -15,6 +15,7 @@
 
   &:hover {
     background-color: var(--nx-color-#{$variant}-button-background-hover);
+    color: var(--nx-color-#{$variant}-button-text);
   }
 
   &:focus:not(:active) {
@@ -48,9 +49,6 @@
 
   &:hover {
     background-color: var(--nx-color-secondary-button-background-hover);
-  }
-
-  &.nx-btn--secondary:hover {
     color: var(--nx-color-secondary-button-text-hover);
   }
 
@@ -91,6 +89,7 @@
 
   &:hover {
     background-color: var(--nx-color-tertiary-button-background-hover);
+    color: var(--nx-color-tertiary-button-text);
   }
 
   &:focus:not(:active) {
@@ -131,6 +130,7 @@
 
   &:hover {
     background-color: var(--nx-color-interactive-background-hover);
+    color: var(--nx-color-text-stark);
   }
 
   &:focus:not(:active) {
