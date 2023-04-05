@@ -92,6 +92,9 @@
   --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
 
+  // NxBlockQuote
+  --nx-color-blockquote-background: var(--nx-swatch-indigo-95);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-40);
     --nx-color-border-secondary: var(--nx-swatch-indigo-35);
@@ -170,6 +173,9 @@
     // NxCounter
     --nx-color-counter: var(--nx-swatch-indigo-90);
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
+
+    // NxBlockQuote
+    --nx-color-blockquote-background: var(--nx-swatch-indigo-25);
   }
 
   // Deprecated variables

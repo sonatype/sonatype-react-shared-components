@@ -122,7 +122,7 @@
 
 %nx-blockquote {
   @include nx-container-helpers.container-vertical;
-  background-color: var(--nx-swatch-indigo-95);
+  background-color: var(--nx-color-blockquote-background);
   border: var(--nx-border-default);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);

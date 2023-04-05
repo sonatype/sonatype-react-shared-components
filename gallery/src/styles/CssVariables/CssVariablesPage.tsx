@@ -438,6 +438,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-dropdown-menu-background-active">
               The default active state background color of <NxCode>nx-dropdown-menu</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-blockquote-background">
+              The default background color of <NxCode>nx-blockquote</NxCode> class.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
