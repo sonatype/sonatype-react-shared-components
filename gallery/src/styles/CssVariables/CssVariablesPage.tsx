@@ -222,7 +222,7 @@ const CssVariablesPage = () => {
             </NxWarningAlert>
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-grid">
-            The standard border style for <NxCode>nx-grid</NxCode> borders.
+            The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
           </PropertyDocItem>
         </dl>
       </GalleryTile>
