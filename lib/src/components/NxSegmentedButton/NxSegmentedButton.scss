@@ -84,7 +84,7 @@
 
       &::after {
         border: var(--nx-focus-outline-width) solid var(--nx-color-primary-button-focus-outline);
-        border-radius: 4px;
+        border-radius: calc(var(--nx-border-radius) - var(--nx-focus-outline-inset));
         box-sizing: border-box;
         content: '';
         height: calc(100% - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
