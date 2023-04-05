@@ -6,6 +6,8 @@
  */
  @use '../../scss-shared/nx-dark-mode-helpers';
 
+ $primary-btn-focus-outline-spacing: 2px;
+
 .nx-segmented-btn {
   display: inline-flex;
 
@@ -62,11 +64,11 @@
       border-radius: 4px;
       box-sizing: border-box;
       content: '';
-      height: calc(100% - 4px);
+      height: calc(100% - #{$primary-btn-focus-outline-spacing} - var(--nx-focus-outline-width));
       position: absolute;
-      left: 2px;
-      top: 2px;
-      width: calc(100% - 4px);
+      left: $primary-btn-focus-outline-spacing;
+      top: $primary-btn-focus-outline-spacing;
+      width: calc(100% - #{$primary-btn-focus-outline-spacing} - var(--nx-focus-outline-width));
     }
 
     &:focus:not(:active) {
