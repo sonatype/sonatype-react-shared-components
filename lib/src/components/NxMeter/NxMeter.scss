@@ -6,9 +6,9 @@
  */
 @use "sass:math";
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 $-height: 16px;
-$-bar-background-color: var(--nx-swatch-teal-60);
 
 .nx-meter {
   width: 150px;
@@ -16,7 +16,7 @@ $-bar-background-color: var(--nx-swatch-teal-60);
   vertical-align: -0.125em;
 
   &, &::-webkit-meter-bar {
-    background: var(--nx-swatch-indigo-95);
+    background: var(--nx-color-progress-background);
     border: none;
     border-radius: math.div($-height, 2);
     height: $-height;
@@ -26,13 +26,13 @@ $-bar-background-color: var(--nx-swatch-teal-60);
   &::-webkit-meter-optimum-value,
   &::-webkit-meter-suboptimum-value,
   &::-webkit-meter-even-less-good-value {
-    background: $-bar-background-color;
+    background: var(--nx-color-progress-fill);
   }
 
   // Note: Firefox and Chrome psuedo-elements must be in separate declarations, as the browser invalidates the
   // entire thing if it doesn't recognize one psuedo-element
   &::-moz-meter-bar {
-    background: $-bar-background-color;
+    background: var(--nx-color-progress-fill);
   }
 
   &__content {
