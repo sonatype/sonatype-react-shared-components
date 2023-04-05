@@ -8,9 +8,6 @@
 @use '../scss-shared/nx-text-helpers';
 @use '../scss-shared/nx-dark-mode-helpers';
 
-$transparent-button-outline-offset: calc(0px - var(--nx-border-width-button) - 4px);
-$solid-btn-focus-outline-spacing: 2px;
-
 @mixin solid-btn-styling($variant) {
   background-color: var(--nx-color-#{$variant}-button-background);
   border-color: transparent;
@@ -22,7 +19,8 @@ $solid-btn-focus-outline-spacing: 2px;
 
   &:focus:not(:active) {
     outline-color: var(--nx-color-#{$variant}-button-focus-outline);
-    outline-offset: calc(0px - #{$solid-btn-focus-outline-spacing} - var(--nx-focus-outline-width));
+    // provide 2px of spacing between the edge and the focus outline
+    outline-offset: calc(0px - 2px - var(--nx-focus-outline-width));
   }
 
   &:active {
@@ -58,7 +56,7 @@ $solid-btn-focus-outline-spacing: 2px;
 
   &:focus:not(:active) {
     outline: var(--nx-focus-outline-width) solid var(--nx-color-secondary-button-focus-outline);
-    outline-offset: $transparent-button-outline-offset;
+    outline-offset: calc(0px - var(--nx-border-width-button) - 4px);
   }
 
   &:focus-visible {
