@@ -59,22 +59,19 @@
     border-color: var(--nx-color-primary-segmented-button-divider);
     position: relative;
 
-    &::after {
-      border: var(--nx-focus-outline-width) solid transparent;
-      border-radius: 4px;
-      box-sizing: border-box;
-      content: '';
-      height: calc(100% - #{$-primary-btn-focus-outline-spacing} - var(--nx-focus-outline-width));
-      position: absolute;
-      left: $-primary-btn-focus-outline-spacing;
-      top: $-primary-btn-focus-outline-spacing;
-      width: calc(100% - #{$-primary-btn-focus-outline-spacing} - var(--nx-focus-outline-width));
-    }
-
     &:focus:not(:active) {
       outline: none;
+
       &::after {
-        border-color: var(--nx-color-primary-button-focus-outline);
+        border: var(--nx-focus-outline-width) solid var(--nx-color-primary-button-focus-outline);
+        border-radius: 4px;
+        box-sizing: border-box;
+        content: '';
+        height: calc(100% - #{$-primary-btn-focus-outline-spacing} - var(--nx-focus-outline-width));
+        position: absolute;
+        left: $-primary-btn-focus-outline-spacing;
+        top: $-primary-btn-focus-outline-spacing;
+        width: calc(100% - #{$-primary-btn-focus-outline-spacing} - var(--nx-focus-outline-width));
       }
     }
   }
