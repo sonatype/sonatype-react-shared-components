@@ -224,6 +224,9 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-radio-checkbox-border-width">
             The standard checkbox border width, or radio stroke-width.
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-grid">
+            The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
+          </PropertyDocItem>
         </dl>
       </GalleryTile>
       <GalleryTile title="Semantic Color Properties">
@@ -443,6 +446,12 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-dropdown-menu-background-active">
               The default active state background color of <NxCode>nx-dropdown-menu</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-blockquote-background">
+              The default background color of <NxCode>nx-blockquote</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-pre-border">
+              The default border color of <NxCode>nx-pre</NxCode> class.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
