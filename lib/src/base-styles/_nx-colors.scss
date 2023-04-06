@@ -58,9 +58,8 @@
   --nx-color-progress-background: var(--nx-swatch-indigo-95);
   --nx-color-progress-fill: var(--nx-swatch-teal-60);
 
-  //NxBinaryDonutChart variables
-  --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-95);
-  --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-teal-60);
+  //NxBinaryDonutChart
+  --nx-color-binary-donut-chart-outline: var(--nx-color-component-background);
 
   // NxGlobalHeader
   --nx-color-global-header-border: var(--nx-color-border);
@@ -144,8 +143,7 @@
     --nx-color-progress-fill: var(--nx-swatch-pink-85);
 
     //NxBinaryDonutChart variables
-    --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-30);
-    --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-pink-80);
+    --nx-color-binary-donut-chart-outline: var(--nx-color-component-background);
 
     // NxGlobalHeader
     --nx-color-global-header-border: var(--nx-color-site-background);
