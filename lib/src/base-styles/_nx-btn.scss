@@ -13,7 +13,7 @@
   border-color: transparent;
   color: var(--nx-color-#{$variant}-button-text);
 
-  &:hover {
+  &:hover:not(:active) {
     background-color: var(--nx-color-#{$variant}-button-background-hover);
     color: var(--nx-color-#{$variant}-button-text);
   }
@@ -46,7 +46,7 @@
   text-align: center;
   text-decoration: none;
 
-  &:hover {
+  &:hover:not(:active) {
     background-color: var(--nx-color-secondary-button-background-hover);
     color: var(--nx-color-secondary-button-text-hover);
   }
@@ -86,7 +86,7 @@
   border-color: var(--nx-color-tertiary-button-border);
   color: var(--nx-color-tertiary-button-text);
 
-  &:hover {
+  &:hover:not(:active) {
     background-color: var(--nx-color-tertiary-button-background-hover);
     color: var(--nx-color-tertiary-button-text);
   }
@@ -127,7 +127,7 @@
   border-color: transparent;
   color: var(--nx-color-text-stark);
 
-  &:hover {
+  &:hover:not(:active) {
     background-color: var(--nx-color-interactive-background-hover);
     color: var(--nx-color-text-stark);
   }
