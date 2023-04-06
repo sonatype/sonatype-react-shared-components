@@ -15,11 +15,11 @@
   @include nx-container-helpers.container-horizontal;
 
   align-items: first baseline;
-  background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-swatch-grey-05);
+  background-color: var(--nx-color-component-background);
+  border: 1px solid var(--nx-color-text-stark);
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
-  color: var(--nx-color-alert-text);
+  color: var(--nx-color-text);
   display: flex;
   margin: 16px 0 24px 0;
   padding: var(--nx-spacing-4x);
@@ -30,14 +30,18 @@
     &--#{$type} {
       border-color: var(--nx-color-alert-#{$type}-border);
       background-color: var(--nx-color-alert-#{$type}-background);
+      color: var(--nx-color-alert-text);
 
       > .nx-icon {
         color: var(--nx-color-alert-#{$type}-icon);
       }
 
       > .nx-btn--close {
+        color: var(--nx-color-alert-close-btn);
+
         &:hover {
           background-color: var(--nx-color-alert-#{$type}-close-btn-hover);
+          color: var(--nx-color-alert-close-btn);
         }
 
         &:focus:not(:active) {
@@ -46,12 +50,12 @@
 
         &:active {
           background-color: var(--nx-color-alert-#{$type}-close-btn-active);
+          color: var(--nx-color-alert-close-btn);
         }
       }
     }
-
-
   }
+
   > .nx-icon {
     // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
     // no effect here so we use relative positioning instead
@@ -63,7 +67,6 @@
   }
 
   > .nx-btn--close {
-    color: var(--nx-color-alert-close-btn);
     flex-shrink: 0;
     margin-left: auto;
   }

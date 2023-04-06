@@ -546,6 +546,75 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-pre-border">
               The default border color of <NxCode>nx-pre</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-text">
+              The text color used on <NxCode>NxAlert</NxCode>s.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-close-btn">
+              The color of the<NxCode>NxAlert</NxCode> close button.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-close-btn-focus">
+              The focus outline color of the <NxCode>NxAlert</NxCode> close button.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-info-background">
+              The background color of the <NxCode>NxInfoAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-info-border">
+              The border color of the <NxCode>NxInfoAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-info-icon">
+              The color of the <NxCode>NxInfoAlert</NxCode> icon.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-info-close-btn-active">
+              The color of the <NxCode>NxInfoAlert</NxCode> close button on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-info-close-btn-hover">
+              The color of the <NxCode>NxInfoAlert</NxCode> close button on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-success-background">
+              The background color of the <NxCode>NxSuccessAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-success-border">
+              The border color of the <NxCode>NxSuccessAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-success-icon">
+              The color of the <NxCode>NxSuccessAlert</NxCode> icon.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-success-close-btn-active">
+              The color of the <NxCode>NxSuccessAlert</NxCode> close button on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-success-close-btn-hover">
+              The color of the <NxCode>NxSuccessAlert</NxCode> close button on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-warning-background">
+              The background color of the <NxCode>NxWarningAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-warning-border">
+              The border color of the <NxCode>NxWarningAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-warning-icon">
+              The color of the <NxCode>NxWarningAlert</NxCode> icon.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-warning-close-btn-active">
+              The color of the <NxCode>NxWarningAlert</NxCode> close button on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-warning-close-btn-hover">
+              The color of the <NxCode>NxWarningAlert</NxCode> close button on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-error-background">
+              The background color of the <NxCode>NxErrorAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-error-border">
+              The border color of the <NxCode>NxErrorAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-error-icon">
+              The color of the <NxCode>NxErrorAlert</NxCode> icon.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-error-close-btn-active">
+              The color of the <NxCode>NxErrorAlert</NxCode> close button on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-error-close-btn-hover">
+              The color of the <NxCode>NxErrorAlert</NxCode> close button on hover.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
