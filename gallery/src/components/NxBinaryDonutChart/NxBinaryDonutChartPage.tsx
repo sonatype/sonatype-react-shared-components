@@ -43,6 +43,12 @@ const NxBinaryDonutChartPage = () =>
         the element to create vertical stacking within the parent container. This can be done by applying a new class
         to the element with the display property's value set to block.
       </NxP>
+      <NxWarningAlert>
+        Deprecated CSS variables: <NxCode>--nx-color-binary-donut-chart-background-fill</NxCode> and
+        {' '}<NxCode>--nx-color-binary-donut-chart-arc-stroke</NxCode> are deprecated. For
+        {' '}<NxCode>NxBinaryDonutChart</NxCode>'s background and fill colors, use
+        {' '}<NxCode>--nx-color-progress-background</NxCode> and <NxCode>--nx-color-progress-fill</NxCode>.
+      </NxWarningAlert>
       <NxTable>
         <NxTable.Head>
           <NxTable.Row>
