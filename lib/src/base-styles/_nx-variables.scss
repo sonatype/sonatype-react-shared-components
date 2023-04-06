@@ -52,6 +52,10 @@
   --nx-border-default: 1px solid var(--nx-color-border);
   --nx-border-2x: 2px solid var(--nx-color-border);
   --nx-border-secondary: 1px solid var(--nx-color-border-secondary);
+  --nx-border-width-button: 1px;
+
+  --nx-focus-outline-width: 2px;
+  --nx-focus-outline-inset: 2px;
 
   // for nx-grid
   --nx-border-grid: var(--nx-border-2x);
@@ -70,4 +74,8 @@
   --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
   // similar to box-shadow-focus listed above, but for use in drop-shadow filters rather than box-shadow properties
   --nx-drop-shadow-focus: 0 0 3px var(--nx-color-interactive-shadow-focus);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-border-width-button: 2px;
+  }
 }
