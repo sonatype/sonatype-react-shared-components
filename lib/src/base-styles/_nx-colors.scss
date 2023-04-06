@@ -98,6 +98,12 @@
   // NxPre
   --nx-color-pre-border: var(--nx-swatch-indigo-10);
 
+  // NxPolicyThreatSlider
+  --nx-color-policy-threat-slider-border-disabled: var(--nx-color-interactive-border-disabled);
+  --nx-color-policy-threat-slider-background-disabled: var(--nx-color-interactive-background-disabled);
+  --nx-color-policy-threat-slider-text-disabled: var(--nx-color-text-disabled);
+  --nx-color-policy-threat-slider-text: var(--nx-color-text);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-40);
     --nx-color-border-secondary: var(--nx-swatch-indigo-35);
@@ -182,6 +188,12 @@
 
     // NxPre
     --nx-color-pre-border: var(--nx-swatch-indigo-90);
+
+    // NxPolicyThreatSlider
+    --nx-color-policy-threat-slider-border-disabled: var(--nx-color-interactive-background-disabled);
+    --nx-color-policy-threat-slider-background-disabled: var(--nx-color-interactive-border-disabled);
+    --nx-color-policy-threat-slider-text-disabled: var(--nx-color-policy-threat-slider-border-disabled);
+    --nx-color-policy-threat-slider-text: var(--nx-swatch-indigo-97);
   }
 
   // Deprecated variables
