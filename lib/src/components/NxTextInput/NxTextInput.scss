@@ -25,6 +25,7 @@
     border-radius: var(--nx-border-radius);
     display: flex;
     padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
+    position: relative;
 
     .nx-icon {
       margin-right: 0;
@@ -125,6 +126,11 @@
       }
     }
 
+    .nx-text-input__input {
+      &::placeholder {
+        color: var(--nx-color-text-disabled);
+      }
+    }
     .nx-icon {
       display: none;
     }

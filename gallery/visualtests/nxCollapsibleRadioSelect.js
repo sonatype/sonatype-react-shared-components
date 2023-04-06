@@ -14,6 +14,7 @@ describe('NxCollapsibleRadioSelect', function() {
     wait,
     waitAndGetElements,
     moveMouseAway,
+    typeOnKeyboard,
     blurElement,
     checkScreenshot
   } = setupBrowser('#/pages/Collapsible Radio-Select');
@@ -37,6 +38,16 @@ describe('NxCollapsibleRadioSelect', function() {
     await blurElement(targetElement);
 
     await checkScreenshot(targetElement);
+  });
+
+  it('looks right with clear button', async () => {
+    const inputSelector = `${selector} .nx-text-input__input`;
+
+    const [fullElement] = await waitAndGetElements(selector);
+
+    await typeOnKeyboard('bicycle', inputSelector);
+
+    await checkScreenshot(fullElement);
   });
 
   describe('NxCollapsibleRadioSelect radio', function() {

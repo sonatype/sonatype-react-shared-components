@@ -210,6 +210,11 @@ module.exports = {
       await page.mouse.move(0, 0);
     }
 
+    async function typeOnKeyboard(text, selector) {
+      await page.focus(selector);
+      await page.keyboard.type(text);
+    }
+
     async function fillFile(path, numBytes) {
       const MAX_BUFFER_SIZE = 1 << 20, // 1 MiB
           writeStream = fs.createWriteStream(path);
@@ -291,6 +296,7 @@ module.exports = {
       setThemeOverride,
       setThemingEnabled,
       scrollPage,
+      typeOnKeyboard,
 
       waitForSelectors,
       getElements,
