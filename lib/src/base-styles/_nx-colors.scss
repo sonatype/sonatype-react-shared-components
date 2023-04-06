@@ -50,10 +50,35 @@
   --nx-color-validation-invalid-icon: var(--nx-color-validation-invalid);
   --nx-color-validation-invalid-message: var(--nx-color-validation-invalid);
 
-  --nx-color-alert-info: var(--nx-swatch-blue-40);
   --nx-color-alert-success: var(--nx-swatch-green-25);
-  --nx-color-alert-warning: var(--nx-swatch-orange-50);
   --nx-color-alert-error: var(--nx-swatch-red-40);
+
+  //NxAlert variables
+  --nx-color-alert-text: var(--nx-color-text);
+  --nx-color-alert-close-btn: var(--nx-color-text-stark);
+  --nx-color-alert-close-btn-focus: var(--nx-color-interactive-border-focus);
+  --nx-color-alert-info-background: var(--nx-swatch-blue-95);
+  --nx-color-alert-info-border: var(--nx-swatch-blue-40);
+  --nx-color-alert-info-icon: var(--nx-swatch-blue-40);
+  --nx-color-alert-info-close-btn-active: var(--nx-swatch-blue-90);
+  --nx-color-alert-info-close-btn-hover: var(--nx-swatch-blue-80);
+  --nx-color-alert-success-background: var(--nx-swatch-green-95);
+  --nx-color-alert-success-border: var(--nx-swatch-green-25);
+  --nx-color-alert-success-icon: var(--nx-color-alert-success);
+  --nx-color-alert-success-close-btn-active: var(--nx-swatch-green-85);
+  --nx-color-alert-success-close-btn-hover: var(--nx-swatch-green-75);
+  --nx-color-alert-warning-background: var(--nx-swatch-orange-97);
+  --nx-color-alert-warning-border: var(--nx-swatch-orange-40);
+  --nx-color-alert-warning-icon: var(--nx-swatch-orange-50);
+  --nx-color-alert-warning-close-btn-active: var(--nx-swatch-orange-90);
+  --nx-color-alert-warning-close-btn-hover: var(--nx-swatch-orange-80);
+  --nx-color-alert-info-background: var(--nx-swatch-blue-95);
+  --nx-color-alert-info-border: var(--nx-swatch-blue-40);
+  --nx-color-alert-error-background: var(--nx-swatch-red-95);
+  --nx-color-alert-error-border: var(--nx-swatch-red-40);
+  --nx-color-alert-error-icon: var(--nx-color-alert-error);
+  --nx-color-alert-error-close-btn-active: var(--nx-swatch-red-90);
+  --nx-color-alert-error-close-btn-hover: var(--nx-swatch-red-80);
 
   //NxBinaryDonutChart variables
   --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-95);
@@ -129,6 +154,34 @@
     --nx-color-validation-invalid: var(--nx-swatch-red-70);
     --nx-color-validation-invalid-icon: var(--nx-swatch-red-60);
     --nx-color-validation-invalid-message: var(--nx-swatch-red-80);
+
+    --nx-color-alert-success: var(--nx-swatch-green-60);
+    --nx-color-alert-error: var(--nx-swatch-red-60);
+
+    //NxAlert variables
+    --nx-color-alert-text: var(--nx-swatch-blue-10);
+    --nx-color-alert-close-btn: var(--nx-color-alert-text);
+    --nx-color-alert-close-btn-focus: var(--nx-swatch-purple-40);
+    --nx-color-alert-info-background: var(--nx-swatch-blue-85);
+    --nx-color-alert-info-border: var(--nx-color-alert-info-background);
+    --nx-color-alert-info-icon: var(--nx-color-alert-text);
+    --nx-color-alert-info-close-btn-active: var(--nx-swatch-blue-95);
+    --nx-color-alert-info-close-btn-hover: var(--nx-swatch-blue-75);
+    --nx-color-alert-success-background: var(--nx-swatch-green-85);
+    --nx-color-alert-success-border: var(--nx-color-alert-sucess-background);
+    --nx-color-alert-success-icon: var(--nx-color-alert-text);
+    --nx-color-alert-success-close-btn-active: var(--nx-swatch-green-95);
+    --nx-color-alert-success-close-btn-hover: var(--nx-swatch-green-75);
+    --nx-color-alert-warning-background: var(--nx-swatch-yellow-80);
+    --nx-color-alert-warning-border: var(--nx-color-alert-warning-background);
+    --nx-color-alert-warning-icon: var(--nx-color-alert-text);
+    --nx-color-alert-warning-close-btn-active: var(--nx-swatch-yellow-65);
+    --nx-color-alert-warning-close-btn-hover: var(--nx-swatch-yellow-95);
+    --nx-color-alert-error-background: var(--nx-swatch-red-85);
+    --nx-color-alert-error-border: var(--nx-color-alert-error-background);
+    --nx-color-alert-error-icon: var(--nx-color-alert-text);
+    --nx-color-alert-error-close-btn-active: var(--nx-swatch-red-95);
+    --nx-color-alert-error-close-btn-hover: var(--nx-swatch-red-75);
 
     //NxBinaryDonutChart variables
     --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-30);
