@@ -138,6 +138,12 @@
   --nx-color-file-upload-selected-dismiss-background-hover: var(--nx-swatch-indigo-90);
   --nx-color-file-upload-selected-dismiss-background-active: var(--nx-swatch-white);
 
+  // NxPolicyThreatSlider
+  --nx-color-policy-threat-slider-border-disabled: var(--nx-color-interactive-border-disabled);
+  --nx-color-policy-threat-slider-background-disabled: var(--nx-color-interactive-background-disabled);
+  --nx-color-policy-threat-slider-text-disabled: var(--nx-color-text-disabled);
+  --nx-color-policy-threat-slider-text: var(--nx-color-text);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-40);
     --nx-color-border-secondary: var(--nx-swatch-indigo-35);
@@ -260,6 +266,12 @@
     --nx-color-file-upload-selected-dismiss-text: var(--nx-swatch-indigo-90);
     --nx-color-file-upload-selected-dismiss-background-hover: var(--nx-swatch-indigo-05);
     --nx-color-file-upload-selected-dismiss-background-active: var(--nx-swatch-indigo-25);
+
+    // NxPolicyThreatSlider
+    --nx-color-policy-threat-slider-border-disabled: var(--nx-color-interactive-background-disabled);
+    --nx-color-policy-threat-slider-background-disabled: var(--nx-color-interactive-border-disabled);
+    --nx-color-policy-threat-slider-text-disabled: var(--nx-color-policy-threat-slider-border-disabled);
+    --nx-color-policy-threat-slider-text: var(--nx-swatch-indigo-97);
   }
 
   // Deprecated variables
