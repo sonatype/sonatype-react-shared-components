@@ -7,6 +7,7 @@
 @use 'sass:math';
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-button-helpers';
 
 .nx-file-upload {
   @include nx-container-helpers.container-horizontal;
@@ -19,9 +20,7 @@
 
     // focus styles must be reimplemented because it isn't the actual button that gets focus, it's the input
     &:focus + .nx-btn {
-      outline-offset: -5px;
-      outline: 2px solid;
-      outline-color: var(--nx-swatch-grey-40);
+      @include nx-button-helpers.bordered-btn-focus-outline("tertiary");
     }
   }
 
