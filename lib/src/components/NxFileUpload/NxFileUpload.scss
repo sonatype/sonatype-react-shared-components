@@ -38,9 +38,10 @@
     }
 
     &--invalid {
-      color: var(--nx-color-validation-invalid);
+      color: var(--nx-color-validation-invalid-message);
 
       > .nx-icon {
+        color: var(--nx-color-validation-invalid-icon);
         display: inline;
       }
     }
