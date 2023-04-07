@@ -447,6 +447,18 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-pre-border">
               The default border color of <NxCode>nx-pre</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-threat-slider-border-disabled">
+              The disabled border color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-threat-slider-background-disabled">
+              The disabled background color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-threat-slider-text-disabled">
+              The disabled text color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
+              The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
