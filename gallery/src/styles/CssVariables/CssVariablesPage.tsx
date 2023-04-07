@@ -368,10 +368,14 @@ const CssVariablesPage = () => {
               The color used on the <NxCode>NxAlert</NxCode> error icon and for other equivalent icons and purposes.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-binary-donut-chart-background-fill">
-              The color used on the <NxCode>NxBinaryDonutChart</NxCode> background.
+              <NxWarningAlert>
+                Deprecated. Use <NxCode>--nx-color-progress-background</NxCode> instead.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-binary-donut-chart-arc-stroke">
-              The color used on the <NxCode>NxBinaryDonutChart</NxCode> arc color.
+              <NxWarningAlert>
+                Deprecated. Use <NxCode>--nx-color-progress-fill</NxCode> instead.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-header-border">
               The border color used on the <NxCode>NxGlobalHeader</NxCode>.
@@ -437,6 +441,45 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-dropdown-menu-background-active">
               The default active state background color of <NxCode>nx-dropdown-menu</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-background">
+              The background color for <NxCode>NxMeter</NxCode>, <NxCode>NxProgressBar</NxCode> and
+              {' '}<NxCode>NxBinaryDonutChart</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-fill">
+              The fill color for <NxCode>NxMeter</NxCode>, <NxCode>NxProgressBar</NxCode> and
+              {' '}<NxCode>NxBinaryDonutChart</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-text-success">
+              The text color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> is at 100%.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-text-error">
+              The text color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> has an
+              error.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-icon-error">
+              The icon color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> has an
+              error. This color differs from <NxCode>--nx-color-progress-bar-text-error</NxCode> in dark mode.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-text-outcome">
+              The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is either
+              in the success or error states.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-background-success">
+              The background color used by <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode>
+              {' '}is at 100%.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-border-success">
+              The border color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is at
+              100%. In dark mode, the border is the same color as the counter's background.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-background-error">
+              The background color used by <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode>
+              {' '}has an error.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-border-error">
+              The border color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> has an
+              error. In dark mode, the border is the same color as the counter's background.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
