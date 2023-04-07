@@ -55,8 +55,8 @@
   $height: 36px;
 
   align-items: center;
-  background-color: var(--nx-swatch-indigo-97);
-  border: 1px solid var(--nx-swatch-indigo-60);
+  background-color: var(--nx-color-file-upload-selected-background);
+  border: 1px solid var(--nx-color-file-upload-selected-border);
   border-radius: math.div($height, 2);
   box-sizing: border-box;
   display: inline-flex;
@@ -76,7 +76,7 @@
   &__name {
     @include nx-text-helpers.truncate-ellipsis;
 
-    color: var(--nx-swatch-indigo-30);
+    color: var(--nx-color-file-upload-selected-text);
     flex: 0 1 auto;
     font-weight: bold;
     margin-right: var(--nx-spacing-3x);
@@ -98,7 +98,7 @@
     border-width: inherit;
     border-radius: inherit;
     border: none;
-    color: var(--nx-swatch-indigo-30);
+    color: var(--nx-color-file-upload-selected-text);
     cursor: pointer;
     display: inline-flex;
     font-size: var(--nx-font-size);
@@ -112,7 +112,7 @@
     }
 
     &:hover {
-      background-color: var(--nx-swatch-indigo-90);
+      background-color: var(--nx-color-file-upload-selected-dismiss-background-hover);
     }
 
     &:focus,
@@ -123,8 +123,8 @@
 
     &:active,
     &:active:focus {
-      box-shadow: inset 0 0 0 1px var(--nx-swatch-indigo-60);
-      background-color: var(--nx-swatch-white);
+      box-shadow: inset 0 0 0 1px var(--nx-color-file-upload-selected-border);
+      background-color: var(--nx-color-file-upload-selected-dismiss-background-active);
     }
   }
 }
