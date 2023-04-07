@@ -97,7 +97,6 @@
 
   //NxProgressBar
   --nx-color-progress-bar-text-success: var(--nx-color-alert-success);
-  --nx-color-progress-bar-icon-success: var(--nx-color-alert-success);
   --nx-color-progress-bar-text-error: var(--nx-color-alert-error);
   --nx-color-progress-bar-icon-error: var(--nx-color-alert-error);
   --nx-color-progress-bar-counter-text-outcome: var(--nx-color-counter);
@@ -189,8 +188,7 @@
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
 
     //NxProgressBar
-    --nx-color-progress-bar-text-success: var(--nx-swatch-green-50);
-    --nx-color-progress-bar-icon-success: var(--nx-swatch-green-60);
+    --nx-color-progress-bar-text-success: var(--nx-swatch-green-60);
     --nx-color-progress-bar-text-error: var(--nx-swatch-red-80);
     --nx-color-progress-bar-icon-error: var(--nx-swatch-red-60);
     --nx-color-progress-bar-counter-text-outcome: var(--nx-swatch-indigo-05);
