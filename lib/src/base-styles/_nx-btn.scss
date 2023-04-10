@@ -13,7 +13,7 @@
   border-color: transparent;
   color: var(--nx-color-#{$variant}-button-text);
 
-  &:hover:not(:active) {
+  &:hover {
     background-color: var(--nx-color-#{$variant}-button-background-hover);
     color: var(--nx-color-#{$variant}-button-text);
   }
@@ -26,6 +26,7 @@
   &:active {
     background-color: var(--nx-color-#{$variant}-button-background-active);
     border-color: transparent;
+    color: var(--nx-color-#{$variant}-button-text);
   }
 }
 
@@ -46,7 +47,7 @@
   text-align: center;
   text-decoration: none;
 
-  &:hover:not(:active) {
+  &:hover {
     background-color: var(--nx-color-secondary-button-background-hover);
     color: var(--nx-color-secondary-button-text-hover);
   }
@@ -63,6 +64,7 @@
   &:active {
     background-color: var(--nx-color-secondary-button-background-active);
     border-color: var(--nx-color-secondary-button-border-active);
+    color: var(--nx-color-secondary-button-text);
   }
 
   &.hidden {
@@ -86,7 +88,7 @@
   border-color: var(--nx-color-tertiary-button-border);
   color: var(--nx-color-tertiary-button-text);
 
-  &:hover:not(:active) {
+  &:hover {
     background-color: var(--nx-color-tertiary-button-background-hover);
     color: var(--nx-color-tertiary-button-text);
   }
@@ -98,6 +100,7 @@
   &:active {
     background-color: var(--nx-color-tertiary-button-background-active);
     border-color: var(--nx-color-tertiary-button-border-active);
+    color: var(--nx-color-tertiary-button-text);
   }
 }
 
@@ -127,7 +130,7 @@
   border-color: transparent;
   color: var(--nx-color-text-stark);
 
-  &:hover:not(:active) {
+  &:hover {
     background-color: var(--nx-color-interactive-background-hover);
     color: var(--nx-color-text-stark);
   }
@@ -140,6 +143,7 @@
   &:active {
     background-color: var(--nx-color-interactive-background-active);
     border-color: transparent;
+    color: var(--nx-color-text-stark);
   }
 
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out
