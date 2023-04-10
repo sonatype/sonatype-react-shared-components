@@ -45,10 +45,15 @@
   &:hover {
     background: transparent;
     border-color: var(--nx-color-interactive-border-hover);
+    color: var(--nx-color-text);
   }
 
   &:focus:not(:active) {
     outline-color: var(--nx-color-interactive-border-focus);
+  }
+
+  &:active {
+    color: var(--nx-color-text);
   }
 
   .nx-dropdown__toggle-label {
