@@ -58,10 +58,6 @@
   --nx-color-progress-background: var(--nx-swatch-indigo-95);
   --nx-color-progress-fill: var(--nx-swatch-teal-60);
 
-  //NxBinaryDonutChart - deprecated, use --nx-color-progress instead
-  --nx-color-binary-donut-chart-background-fill: var(--nx-color-progress-background);
-  --nx-color-binary-donut-chart-arc-stroke: var(--nx-color-progress-fill);
-
   //NxButton variables
   --nx-color-primary-button-background: var(--nx-swatch-blue-40);
   --nx-color-primary-button-background-hover: var(--nx-swatch-blue-30);
@@ -194,10 +190,6 @@
     --nx-color-progress-background: var(--nx-swatch-indigo-35);
     --nx-color-progress-fill: var(--nx-swatch-pink-85);
 
-    //NxBinaryDonutChart - deprecated, use --nx-color-progress instead
-    --nx-color-binary-donut-chart-background-fill: var(--nx-color-progress-background);
-    --nx-color-binary-donut-chart-arc-stroke: var(--nx-color-progress-fill);
-
     //NxButton variables
     --nx-color-primary-button-background: var(--nx-swatch-purple-80);
     --nx-color-primary-button-background-hover: var(--nx-swatch-purple-70);
@@ -306,4 +298,6 @@
   --nx-color-form-element-border: var(--nx-swatch-grey-50); // form - element - border
   --nx-color-interactive-border-pristine: var(--nx-swatch-indigo-90);
   --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 35%, 0.5);
+  --nx-color-binary-donut-chart-background-fill: var(--nx-color-progress-background);
+  --nx-color-binary-donut-chart-arc-stroke: var(--nx-color-progress-fill);
 }
