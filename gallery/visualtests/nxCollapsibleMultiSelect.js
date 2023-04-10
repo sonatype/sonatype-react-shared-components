@@ -15,6 +15,7 @@ describe('NxCollapsibleMultiSelect', function() {
     wait,
     waitAndGetElements,
     moveMouseAway,
+    typeOnKeyboard,
     blurElement,
     checkScreenshot
   } = setupBrowser('#/pages/Collapsible Multi-Select');
@@ -41,6 +42,16 @@ describe('NxCollapsibleMultiSelect', function() {
     await blurElement(targetElement);
 
     await checkScreenshot(targetElement);
+  });
+
+  it('looks right with clear button', async () => {
+    const inputSelector = `${selector} .nx-text-input__input`;
+
+    const [fullElement] = await waitAndGetElements(selector);
+
+    await typeOnKeyboard('bicycle', inputSelector);
+
+    await checkScreenshot(fullElement);
   });
 
   describe('NxCollapsibleMultiSelect Disabled With Tooltip', function() {
