@@ -564,6 +564,30 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
               The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-checkbox-selected">
+              The default selected color for radios and checkboxes.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-border">
+              The default border color for disabled <NxCode>NxRadio</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-box-shadow">
+              The default inset box-shadow color for disabled <NxCode>NxRadio</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-background">
+              The default background color for disabled <NxCode>NxRadio</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-checkbox-disabled-background">
+              The default background color for disabled <NxCode>NxCheckbox</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-checked-background">
+              The default background color for disabled and checked <NxCode>NxRadio</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-checkbox-disabled-box-shadow">
+              The default box-shadow color for disabled <NxCode>NxCheckbox</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-checkbox-disabled-icon">
+              The default checkmark icon color for disabled <NxCode>NxCheckbox</NxCode>.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>

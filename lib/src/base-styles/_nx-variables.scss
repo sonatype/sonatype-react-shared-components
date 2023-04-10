@@ -66,11 +66,13 @@
                             0 1px 1px 0 rgba(124, 128, 179, 0.2);
 
   --nx-radio-checkbox-border-width: 1px;
+  --nx-radio-checkbox-border-width-disabled: 1px;
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-border-grid: var(--nx-border-default);
 
     --nx-radio-checkbox-border-width: 2px;
+    --nx-radio-checkbox-border-width-disabled: 4px;
   }
 
   // Deprecated variables
