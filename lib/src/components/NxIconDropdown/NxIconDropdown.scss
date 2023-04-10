@@ -21,6 +21,10 @@
   margin-left: 0;
 
   &.open {
-    background-color: var(--nx-color-interactive-background-selected);
+    background-color: var(--nx-color-button-icon-only-background-selected);
+
+    &:focus:not(:active) {
+      outline-color: var(--nx-color-interactive-border-focus);
+    }
   }
 }

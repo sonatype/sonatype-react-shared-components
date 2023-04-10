@@ -204,6 +204,15 @@ const CssVariablesPage = () => {
               Deprecated. Standard border styles for lower-level elements such as tile subsections.
             </NxWarningAlert>
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-width-button">
+            The border-width of <NxCode>NxButton</NxCode>.
+          </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-focus-outline-width">
+            The width of the outline when an element is focused.
+          </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-focus-outline-inset">
+            The spacing between the focus outline and the element's border or outer edge (if no border is present).
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">
             <NxWarningAlert>
               Deprecated: We no longer use a box-shadow when elements are focused.
@@ -435,6 +444,96 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-counter-active-text">
               The text color used on the active state of elements with the <NxCode>nx-counter</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-background">
+              The background color of primary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-background-hover">
+              The background color of primary buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-background-active">
+              The background color of primary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-focus-outline">
+              The color of the focus outline for primary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-button-text">
+              The text color of primary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-primary-segmented-button-divider">
+              The color of the divider for primary segmented buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background">
+              The background color of secondary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background-hover">
+              The background color of secondary buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-background-active">
+              The background color of secondary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-border">
+              The border color of secondary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-border-active">
+              The border color of secondary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-focus-outline">
+              The color of the focus outline for secondary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-text">
+              The text color of secondary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-secondary-button-text-hover">
+              The text color of secondary buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-background-hover">
+              The background color of tertiary buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-background-active">
+              The background color of tertiary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-border">
+              The border color of tertiary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-border-active">
+              The border color of tertiary buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-focus-outline">
+              The color of the focus outline for tertiary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tertiary-button-text">
+              The text color of tertiary buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-background">
+              The background color of error buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-background-hover">
+              The background color of error buttons on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-background-active">
+              The background color of error buttons on activation/click.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-focus-outline">
+              The color of the focus outline for error buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error-button-text">
+              The text color of error buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-disabled-button-background">
+              The background color of disabled buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-disabled-button-border">
+              The border color of disabled buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-disabled-button-text">
+              The text color of disabled buttons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-button-icon-only-background-selected">
+              The background color of icon only buttons in <NxCode>NxIconDropdown</NxCode> when the dropdown is open.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-button-icon-only-border-focus">
+              The border color of icon only buttons on focus.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-dropdown-menu-text-hover">
               The text color of <NxCode>nx-dropdown-menu</NxCode> item when hovered.
             </ColorDocRow>
@@ -452,6 +551,18 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-pre-border">
               The default border color of <NxCode>nx-pre</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-threat-slider-border-disabled">
+              The disabled border color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-threat-slider-background-disabled">
+              The disabled background color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-threat-slider-text-disabled">
+              The disabled text color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
+              The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
