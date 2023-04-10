@@ -379,6 +379,10 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-alert-error">
               The color used on the <NxCode>NxAlert</NxCode> error icon and for other equivalent icons and purposes.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-background-mask">
+              The color of the viewport-wide mask that falls behind elements such as <NxCode>NxModal</NxCode> and{' '}
+              <NxCode>NxSubmitMask</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-binary-donut-chart-background-fill">
               The color used on the <NxCode>NxBinaryDonutChart</NxCode> background.
             </ColorDocRow>
