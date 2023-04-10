@@ -379,16 +379,6 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-alert-error">
               The color used on the <NxCode>NxAlert</NxCode> error icon and for other equivalent icons and purposes.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-binary-donut-chart-background-fill">
-              <NxWarningAlert>
-                Deprecated. Use <NxCode>--nx-color-progress-background</NxCode> instead.
-              </NxWarningAlert>
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-binary-donut-chart-arc-stroke">
-              <NxWarningAlert>
-                Deprecated. Use <NxCode>--nx-color-progress-fill</NxCode> instead.
-              </NxWarningAlert>
-            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-header-border">
               The border color used on the <NxCode>NxGlobalHeader</NxCode>.
             </ColorDocRow>
