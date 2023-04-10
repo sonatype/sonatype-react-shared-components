@@ -553,9 +553,9 @@ const CssVariablesPage = () => {
               The icon color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> has an
               error. This color differs from <NxCode>--nx-color-progress-bar-text-error</NxCode> in dark mode.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-progress-bar-counter-text-outcome">
-              The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is either
-              in the success or error states.
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-text-success">
+              The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is at
+              100%.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-progress-bar-counter-background-success">
               The background color used by <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode>
@@ -564,6 +564,10 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-progress-bar-counter-border-success">
               The border color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is at
               100%. In dark mode, the border is the same color as the counter's background.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-text-error">
+              The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> has an
+              error.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-progress-bar-counter-background-error">
               The background color used by <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode>

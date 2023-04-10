@@ -42,7 +42,7 @@
     .nx-progress-bar__counter {
       border-color: var(--nx-color-progress-bar-counter-border-success);
       background-color: var(--nx-color-progress-bar-counter-background-success);
-      color: var(--nx-color-progress-bar-counter-text-outcome);
+      color: var(--nx-color-progress-bar-counter-text-success);
     }
   }
 
@@ -56,7 +56,7 @@
     .nx-progress-bar__counter {
       border-color: var(--nx-color-progress-bar-counter-border-error);
       background-color: var(--nx-color-progress-bar-counter-background-error);
-      color: var(--nx-color-progress-bar-counter-text-outcome);
+      color: var(--nx-color-progress-bar-counter-text-error);
     }
   }
 }
