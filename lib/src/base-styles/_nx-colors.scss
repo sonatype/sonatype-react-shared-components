@@ -130,6 +130,14 @@
   // NxPre
   --nx-color-pre-border: var(--nx-swatch-indigo-10);
 
+  //NxFileUpload
+  --nx-color-file-upload-selected-background: var(--nx-swatch-indigo-97);
+  --nx-color-file-upload-selected-border: var(--nx-swatch-indigo-60);
+  --nx-color-file-upload-selected-text: var(--nx-swatch-indigo-30);
+  --nx-color-file-upload-selected-dismiss-text: var(--nx-color-file-upload-selected-text);
+  --nx-color-file-upload-selected-dismiss-background-hover: var(--nx-swatch-indigo-90);
+  --nx-color-file-upload-selected-dismiss-background-active: var(--nx-swatch-white);
+
   // NxPolicyThreatSlider
   --nx-color-policy-threat-slider-border-disabled: var(--nx-color-interactive-border-disabled);
   --nx-color-policy-threat-slider-background-disabled: var(--nx-color-interactive-background-disabled);
@@ -250,6 +258,14 @@
 
     // NxPre
     --nx-color-pre-border: var(--nx-swatch-indigo-90);
+
+    //NxFileUpload
+    --nx-color-file-upload-selected-background: var(--nx-swatch-indigo-15);
+    // --nx-color-file-upload-selected-border is the same as light mode
+    --nx-color-file-upload-selected-text: var(--nx-swatch-indigo-80);
+    --nx-color-file-upload-selected-dismiss-text: var(--nx-swatch-indigo-90);
+    --nx-color-file-upload-selected-dismiss-background-hover: var(--nx-swatch-indigo-05);
+    --nx-color-file-upload-selected-dismiss-background-active: var(--nx-swatch-indigo-25);
 
     // NxPolicyThreatSlider
     --nx-color-policy-threat-slider-border-disabled: var(--nx-color-interactive-background-disabled);

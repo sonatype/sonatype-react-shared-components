@@ -546,6 +546,24 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-pre-border">
               The default border color of <NxCode>nx-pre</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-file-upload-selected-background">
+              The background color of the selected file section of <NxCode>NxFileUpload</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-file-upload-selected-border">
+              The border color of the selected file section of <NxCode>NxFileUpload</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-file-upload-selected-text">
+              The text color of the selected file section of <NxCode>NxFileUpload</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-text">
+              The text/icon color of the dismiss button of <NxCode>NxFileUpload</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-background-hover">
+              The background color of the dismiss button of <NxCode>NxFileUpload</NxCode> on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-background-active">
+              The background color of the dismiss button of <NxCode>NxFileUpload</NxCode> on click.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-policy-threat-slider-border-disabled">
               The disabled border color of <NxCode>NxPolicyThreatSlider</NxCode>.
             </ColorDocRow>
