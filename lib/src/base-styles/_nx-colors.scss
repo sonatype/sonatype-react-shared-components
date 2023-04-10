@@ -55,6 +55,9 @@
   --nx-color-alert-warning: var(--nx-swatch-orange-50);
   --nx-color-alert-error: var(--nx-swatch-red-40);
 
+  // note: function name must be at least partially uppercase so scss doesn't think we mean the scss hsla function
+  --nx-color-background-mask: Hsla(var(--nx-swatch-grey-hs), 30%, 75%);
+
   //NxBinaryDonutChart variables
   --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-95);
   --nx-color-binary-donut-chart-arc-stroke: var(--nx-swatch-teal-60);
@@ -165,6 +168,8 @@
     --nx-color-validation-invalid-message: var(--nx-swatch-red-80);
 
     --nx-color-alert-success: var(--nx-swatch-green-60);
+
+    --nx-color-background-mask: Hsla(var(--nx-swatch-indigo-hs), 5%, 70%);
 
     //NxBinaryDonutChart variables
     --nx-color-binary-donut-chart-background-fill: var(--nx-swatch-indigo-30);
