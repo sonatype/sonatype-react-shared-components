@@ -368,13 +368,17 @@ const CssVariablesPage = () => {
               The color used on validatable form fields when they are invalid.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-info">
-              The color used on the <NxCode>NxAlert</NxCode> info icon and for other equivalent icons and purposes.
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-alert-info-icon</NxCode>.
+              </NxWarningAlert>
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-warning">
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-alert-warning-icon</NxCode>.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-success">
               The color used on the <NxCode>NxAlert</NxCode> success icon and for other equivalent icons and purposes.
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-alert-warning">
-              The color used on the <NxCode>NxAlert</NxCode> warning icon and for other equivalent icons and purposes.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-error">
               The color used on the <NxCode>NxAlert</NxCode> error icon and for other equivalent icons and purposes.
