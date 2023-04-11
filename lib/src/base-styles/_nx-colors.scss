@@ -155,10 +155,10 @@
   // Radio Checkbox
   --nx-color-radio-checkbox-selected: var(--nx-swatch-blue-40);
   --nx-color-checkbox-disabled-background: var(--nx-color-interactive-background-disabled);
-  --nx-color-checkbox-disabled-box-shadow: var(--nx-color-disabled);
+  --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
   --nx-color-checkbox-disabled-icon: var(--nx-color-disabled);
   --nx-color-radio-disabled-border: var(--nx-color-disabled);
-  --nx-color-radio-disabled-box-shadow: var(--nx-color-interactive-background-disabled);
+  --nx-color-radio-disabled-inner-border: var(--nx-color-interactive-background-disabled);
   --nx-color-radio-disabled-background: var(--nx-color-interactive-background-disabled);
   --nx-color-radio-disabled-checked-background: var(--nx-color-disabled);
 
@@ -348,11 +348,11 @@
 
     // Radio Checkbox
     --nx-color-radio-disabled-border: var(--nx-color-disabled);
-    --nx-color-radio-disabled-box-shadow: var(--nx-color-disabled);
+    --nx-color-radio-disabled-inner-border: var(--nx-color-disabled);
     --nx-color-radio-disabled-background: var(--nx-color-disabled);
     --nx-color-radio-disabled-checked-background: var(--nx-color-component-background);
     --nx-color-checkbox-disabled-background: var(--nx-color-disabled);
-    --nx-color-checkbox-disabled-box-shadow: var(--nx-color-disabled);
+    --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-icon: var(--nx-color-component-background);
   }
 
