@@ -5,13 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-focus-border-helpers';
+@use '../../scss-shared/nx-radio-checkbox-helpers';
 
 $-height: 16px;
 $-width: 16px;
-
-@mixin -inset-box-shadow($color) {
-  box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) #{$color};
-}
 
 .nx-checkbox__box {
   align-items: center;
@@ -42,7 +39,7 @@ $-width: 16px;
   &:disabled {
     &, &:hover {
       + .nx-checkbox__box {
-        @include -inset-box-shadow(var(--nx-color-checkbox-disabled-inner-border));
+        @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-checkbox-disabled-inner-border));
         background-color: var(--nx-color-checkbox-disabled-background);
       }
     }
@@ -50,18 +47,18 @@ $-width: 16px;
 
   &:checked {
     + .nx-checkbox__box {
-      @include -inset-box-shadow(var(--nx-color-radio-checkbox-selected));
+      @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-radio-checkbox-selected));
       background-color: var(--nx-color-radio-checkbox-selected);
 
       &:hover {
-        @include -inset-box-shadow(var(--nx-color-radio-checkbox-selected));
+        @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-radio-checkbox-selected));
       }
     }
 
     &:disabled {
       &, &:hover {
         + .nx-checkbox__box {
-          @include -inset-box-shadow(var(--nx-color-checkbox-disabled-inner-border));
+          @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-checkbox-disabled-inner-border));
           background-color: var(--nx-color-checkbox-disabled-background);
     
           .fa-check {

@@ -5,15 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-focus-border-helpers';
+@use '../../scss-shared/nx-radio-checkbox-helpers';
 
 $-size: 16px;
 $-checked-border-width: 4px;
-
-@mixin -inset-multi-box-shadow() {
-  box-shadow:
-    inset 0 0 0 1px var(--nx-color-radio-disabled-border),
-    inset 0 0 0 #{$-checked-border-width} var(--nx-color-radio-disabled-inner-border);
-}
 
 .nx-radio__circle {
   background-color: var(--nx-color-component-background);
@@ -25,7 +20,7 @@ $-checked-border-width: 4px;
 .nx-radio__input {
   &:disabled {
     + .nx-radio__circle {
-      @include -inset-multi-box-shadow();
+      @include nx-radio-checkbox-helpers.multi-inset-box-shadow($-checked-border-width);
 
       background-color: var(--nx-color-radio-disabled-background);
     }
@@ -34,13 +29,13 @@ $-checked-border-width: 4px;
   &:checked {
     &, &:hover {
       + .nx-radio__circle {
-        box-shadow: inset 0 0 0 #{$-checked-border-width} var(--nx-color-radio-checkbox-selected);
+        @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-radio-checkbox-selected), $-checked-border-width);
       }    
     }
 
     &:disabled {
       + .nx-radio__circle {
-        @include -inset-multi-box-shadow();
+        @include nx-radio-checkbox-helpers.multi-inset-box-shadow($-checked-border-width);
 
         background-color: var(--nx-color-radio-disabled-checked-background);
       }
