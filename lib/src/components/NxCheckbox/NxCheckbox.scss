@@ -25,7 +25,7 @@ $-width: 16px;
     @include nx-focus-border-helpers.radio-checkbox-focus-border($-height, $-width);
 
     border-radius: 4px;
-    left: -4px;
+    left: calc(var(--nx-focus-outline-offset) + var(--nx-focus-outline-width));
     top: -4px;
   }
 
