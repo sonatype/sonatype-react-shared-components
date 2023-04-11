@@ -18,26 +18,23 @@ $-checked-border-width: 4px;
 }
 
 .nx-radio__input {
-  &:disabled {
-    + .nx-radio__circle {
-      @include nx-radio-checkbox-helpers.multi-inset-box-shadow($-checked-border-width);
-
-      background-color: var(--nx-color-radio-disabled-dot);
-    }
-  }
-
   &:checked {
     &, &:hover {
       + .nx-radio__circle {
         @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-radio-checkbox-selected), $-checked-border-width);
       }
-    }
 
-    &:disabled {
+      &:disabled + .nx-radio__circle {
+        background-color: var(--nx-color-radio-disabled-checked-dot);
+      }
+    }
+  }
+
+  &:disabled {
+    &, &:hover {
       + .nx-radio__circle {
         @include nx-radio-checkbox-helpers.multi-inset-box-shadow($-checked-border-width);
-
-        background-color: var(--nx-color-radio-disabled-checked-dot);
+        background-color: var(--nx-color-radio-disabled-dot);
       }
     }
   }
