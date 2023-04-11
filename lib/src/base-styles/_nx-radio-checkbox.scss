@@ -7,6 +7,7 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
 @use '../scss-shared/nx-dark-mode-helpers';
+@use '../scss-shared/nx-radio-checkbox-helpers';
 
 // We are using box-shadow below instead of border
 // so we do not have to re-calculate the focus Pseudo-element in NxRadio and NxCheckbox
@@ -38,7 +39,7 @@
     cursor: pointer;
 
     .nx-radio-checkbox__control {
-      @include -inset-box-shadow(var(--nx-color-interactive-border-hover));
+      @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-interactive-border-hover));
     }
   }
 
@@ -80,7 +81,7 @@
 }
 
 .nx-radio-checkbox__control {
-  @include -inset-box-shadow(var(--nx-color-interactive-border));
+  @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-interactive-border));
 
   background-color: var(--nx-color-component-background);
   border: 0;
