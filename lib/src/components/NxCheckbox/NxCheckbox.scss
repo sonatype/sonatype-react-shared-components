@@ -9,6 +9,10 @@
 $-height: 16px;
 $-width: 16px;
 
+@mixin -inset-box-shadow($color) {
+  box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) #{$color};
+}
+
 .nx-checkbox__box {
   align-items: center;
   border-radius: 2px;
@@ -38,27 +42,27 @@ $-width: 16px;
   &:disabled {
     &, &:hover {
       + .nx-checkbox__box {
+        @include -inset-box-shadow(var(--nx-color-checkbox-disabled-inner-border));
         background-color: var(--nx-color-checkbox-disabled-background);
-        box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) var(--nx-color-checkbox-disabled-inner-border);
       }
     }
   }
 
   &:checked {
     + .nx-checkbox__box {
+      @include -inset-box-shadow(var(--nx-color-radio-checkbox-selected));
       background-color: var(--nx-color-radio-checkbox-selected);
-      box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) var(--nx-color-radio-checkbox-selected);
 
       &:hover {
-        box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) var(--nx-color-radio-checkbox-selected);
+        @include -inset-box-shadow(var(--nx-color-radio-checkbox-selected));
       }
     }
 
     &:disabled {
       &, &:hover {
         + .nx-checkbox__box {
+          @include -inset-box-shadow(var(--nx-color-checkbox-disabled-inner-border));
           background-color: var(--nx-color-checkbox-disabled-background);
-          box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) var(--nx-color-checkbox-disabled-inner-border);
     
           .fa-check {
             color: var(--nx-color-checkbox-disabled-icon);
