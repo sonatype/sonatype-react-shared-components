@@ -230,8 +230,11 @@ const CssVariablesPage = () => {
               as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
             </NxWarningAlert>
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-radio-checkbox-border-width">
-            The standard checkbox border width, or radio stroke-width.
+          <PropertyDocItem propertyVar="--nx-border-width-radio-checkbox">
+            The standard radio or checkbox border width.
+          </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-width-radio-checkbox-disabled">
+            The standard radio or checkbox border width when disabled.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
