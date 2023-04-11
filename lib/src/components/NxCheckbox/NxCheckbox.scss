@@ -10,9 +10,12 @@ $-height: 16px;
 $-width: 16px;
 
 .nx-checkbox__box {
+  align-items: center;
   border-radius: 2px;
   box-sizing: border-box;
+  display: inline-flex;
   height: $-height;
+  justify-content: center;
   position: relative;
   width: $-width;
 
@@ -28,8 +31,6 @@ $-width: 16px;
   .fa-check {
     color: var(--nx-color-component-background);
     font-size: var(--nx-font-size-s);
-    vertical-align: 3px;
-    margin-left: 1px;
   }
 }
 
@@ -38,7 +39,7 @@ $-width: 16px;
     &, &:hover {
       + .nx-checkbox__box {
         background-color: var(--nx-color-checkbox-disabled-background);
-        box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) var(--nx-color-checkbox-disabled-inner-border);
+        box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) var(--nx-color-checkbox-disabled-inner-border);
       }
     }
   }
@@ -46,10 +47,10 @@ $-width: 16px;
   &:checked {
     + .nx-checkbox__box {
       background-color: var(--nx-color-radio-checkbox-selected);
-      box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) var(--nx-color-radio-checkbox-selected);
+      box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) var(--nx-color-radio-checkbox-selected);
 
       &:hover {
-        box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) var(--nx-color-radio-checkbox-selected);
+        box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) var(--nx-color-radio-checkbox-selected);
       }
     }
 
@@ -57,7 +58,7 @@ $-width: 16px;
       &, &:hover {
         + .nx-checkbox__box {
           background-color: var(--nx-color-checkbox-disabled-background);
-          box-shadow: inset 0 0 0 var(--nx-radio-checkbox-border-width) var(--nx-color-checkbox-disabled-inner-border);
+          box-shadow: inset 0 0 0 var(--nx-border-width-radio-checkbox) var(--nx-color-checkbox-disabled-inner-border);
     
           .fa-check {
             color: var(--nx-color-checkbox-disabled-icon);

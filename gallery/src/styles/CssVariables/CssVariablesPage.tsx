@@ -233,9 +233,6 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-border-width-radio-checkbox">
             The standard radio or checkbox border width.
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-width-radio-checkbox-disabled">
-            The standard radio or checkbox border width when disabled.
-          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
           </PropertyDocItem>
