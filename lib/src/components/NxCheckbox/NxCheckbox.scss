@@ -36,15 +36,6 @@ $-width: 16px;
 }
 
 .nx-checkbox__input {
-  &:disabled {
-    &, &:hover {
-      + .nx-checkbox__box {
-        @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-checkbox-disabled-inner-border));
-        background-color: var(--nx-color-checkbox-disabled-background);
-      }
-    }
-  }
-
   &:checked {
     + .nx-checkbox__box {
       @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-radio-checkbox-selected));
@@ -54,16 +45,16 @@ $-width: 16px;
         @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-radio-checkbox-selected));
       }
     }
+  }
 
-    &:disabled {
-      &, &:hover {
-        + .nx-checkbox__box {
-          @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-checkbox-disabled-inner-border));
-          background-color: var(--nx-color-checkbox-disabled-background);
-    
-          .fa-check {
-            color: var(--nx-color-checkbox-disabled-icon);
-          }
+  &:disabled {
+    &, &:hover {
+      + .nx-checkbox__box {
+        @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-checkbox-disabled-inner-border));
+        background-color: var(--nx-color-checkbox-disabled-background);
+
+        .fa-check {
+          color: var(--nx-color-checkbox-disabled-icon);
         }
       }
     }
