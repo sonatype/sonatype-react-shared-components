@@ -15,5 +15,5 @@
 @mixin multi-inset-box-shadow($border-width) {
   box-shadow:
     inset 0 0 0 1px var(--nx-color-radio-disabled-border),
-    inset 0 0 0 #{$border-width} var(--nx-color-radio-disabled-inner-border);
+    inset 0 0 0 #{$border-width} var(--nx-color-radio-disabled-ring);
 }

@@ -22,7 +22,7 @@ $-checked-border-width: 4px;
     + .nx-radio__circle {
       @include nx-radio-checkbox-helpers.multi-inset-box-shadow($-checked-border-width);
 
-      background-color: var(--nx-color-radio-disabled-background);
+      background-color: var(--nx-color-radio-disabled-dot);
     }
   }
 
@@ -37,7 +37,7 @@ $-checked-border-width: 4px;
       + .nx-radio__circle {
         @include nx-radio-checkbox-helpers.multi-inset-box-shadow($-checked-border-width);
 
-        background-color: var(--nx-color-radio-disabled-checked-background);
+        background-color: var(--nx-color-radio-disabled-checked-dot);
       }
     }
   }

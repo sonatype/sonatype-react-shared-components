@@ -158,9 +158,9 @@
   --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
   --nx-color-checkbox-disabled-icon: var(--nx-color-disabled);
   --nx-color-radio-disabled-border: var(--nx-color-disabled);
-  --nx-color-radio-disabled-inner-border: var(--nx-color-interactive-background-disabled);
-  --nx-color-radio-disabled-background: var(--nx-color-interactive-background-disabled);
-  --nx-color-radio-disabled-checked-background: var(--nx-color-disabled);
+  --nx-color-radio-disabled-ring: var(--nx-color-interactive-background-disabled);
+  --nx-color-radio-disabled-dot: var(--nx-color-interactive-background-disabled);
+  --nx-color-radio-disabled-checked-dot: var(--nx-color-disabled);
 
   // NxBlockQuote
   --nx-color-blockquote-background: var(--nx-swatch-indigo-95);
@@ -346,9 +346,9 @@
     --nx-color-policy-threat-slider-text: var(--nx-swatch-indigo-97);
 
     // Radio Checkbox
-    --nx-color-radio-disabled-inner-border: var(--nx-color-disabled);
-    --nx-color-radio-disabled-background: var(--nx-color-disabled);
-    --nx-color-radio-disabled-checked-background: var(--nx-color-component-background);
+    --nx-color-radio-disabled-ring: var(--nx-color-disabled);
+    --nx-color-radio-disabled-dot: var(--nx-color-disabled);
+    --nx-color-radio-disabled-checked-dot: var(--nx-color-component-background);
     --nx-color-checkbox-disabled-background: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-icon: var(--nx-color-component-background);

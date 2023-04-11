@@ -665,16 +665,16 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-radio-disabled-border">
               The default border color for disabled <NxCode>NxRadio</NxCode>.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-radio-disabled-inner-border">
-              The default inner border color for disabled <NxCode>NxRadio</NxCode>.
+            <ColorDocRow colorVar="--nx-color-radio-disabled-ring">
+              The default ring color for disabled <NxCode>NxRadio</NxCode>.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-radio-disabled-background">
-              The default background color for disabled <NxCode>NxRadio</NxCode>.
+            <ColorDocRow colorVar="--nx-color-radio-disabled-dot">
+              The default dot color for disabled <NxCode>NxRadio</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-checkbox-disabled-background">
               The default background color for disabled <NxCode>NxCheckbox</NxCode>.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-radio-disabled-checked-background">
+            <ColorDocRow colorVar="--nx-color-radio-disabled-checked-dot">
               The default background color for disabled and checked <NxCode>NxRadio</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-checkbox-disabled-inner-border">
