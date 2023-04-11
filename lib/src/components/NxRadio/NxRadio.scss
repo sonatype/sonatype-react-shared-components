@@ -30,7 +30,7 @@ $-checked-border-width: 4px;
     &, &:hover {
       + .nx-radio__circle {
         @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-radio-checkbox-selected), $-checked-border-width);
-      }    
+      }
     }
 
     &:disabled {
