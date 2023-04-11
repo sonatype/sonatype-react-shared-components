@@ -268,6 +268,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-site-background">
               The background color of the page as a whole within RSC styles.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-background-success">
+              The background color used by certain components to signify success.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-background-error">
+              The background color used by certain components to signify an error.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border">
               <NxWarningAlert>
                 Deprecated: This variable is now replaced by <NxCode>--nx-color-interactive-border</NxCode>
@@ -571,10 +577,6 @@ const CssVariablesPage = () => {
               The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is at
               100%.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-progress-bar-counter-background-success">
-              The background color used by <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode>
-              {' '}is at 100%.
-            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-progress-bar-counter-border-success">
               The border color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is at
               100%. In dark mode, the border is the same color as the counter's background.
@@ -582,10 +584,6 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-progress-bar-counter-text-error">
               The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> has an
               error.
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-progress-bar-counter-background-error">
-              The background color used by <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode>
-              {' '}has an error.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-progress-bar-counter-border-error">
               The border color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> has an
