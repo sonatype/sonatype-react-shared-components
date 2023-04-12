@@ -172,6 +172,7 @@
   --nx-color-file-upload-selected-text: var(--nx-swatch-indigo-30);
   --nx-color-file-upload-selected-dismiss-text: var(--nx-color-file-upload-selected-text);
   --nx-color-file-upload-selected-dismiss-background-hover: var(--nx-swatch-indigo-90);
+  --nx-color-file-upload-selected-dismiss-border-hover: var(--nx-color-interactive-border-hover);
   --nx-color-file-upload-selected-dismiss-background-active: var(--nx-swatch-white);
 
   // NxPolicyThreatSlider
@@ -337,6 +338,7 @@
     --nx-color-file-upload-selected-text: var(--nx-swatch-indigo-80);
     --nx-color-file-upload-selected-dismiss-text: var(--nx-swatch-indigo-90);
     --nx-color-file-upload-selected-dismiss-background-hover: var(--nx-swatch-indigo-05);
+    --nx-color-file-upload-selected-dismiss-border-hover: var(--nx-swatch-indigo-30);
     --nx-color-file-upload-selected-dismiss-background-active: var(--nx-swatch-indigo-25);
 
     // NxPolicyThreatSlider

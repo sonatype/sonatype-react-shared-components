@@ -99,7 +99,7 @@
     border-width: inherit;
     border-radius: inherit;
     border: none;
-    color: var(--nx-color-file-upload-selected-text);
+    color: var(--nx-color-file-upload-selected-dismiss-text);
     cursor: pointer;
     display: inline-flex;
     font-size: var(--nx-font-size);
@@ -111,7 +111,7 @@
     padding: 0 var(--nx-spacing-3x);
 
     &:hover {
-      box-shadow: inset 0 0 0 var(--nx-border-width-file-upload-selected-file) var(--nx-color-interactive-border-hover);
+      box-shadow: inset 0 0 0 var(--nx-border-width-file-upload-selected-file) var(--nx-color-file-upload-selected-dismiss-border-hover);
     }
 
     &:hover {

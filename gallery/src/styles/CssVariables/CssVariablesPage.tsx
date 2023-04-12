@@ -679,6 +679,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-background-hover">
               The background color of the dismiss button of <NxCode>NxFileUpload</NxCode> on hover.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-border-hover">
+              The border color of the dismiss button of <NxCode>NxFileUpload</NxCode> on hover.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-background-active">
               The background color of the dismiss button of <NxCode>NxFileUpload</NxCode> on click.
             </ColorDocRow>
