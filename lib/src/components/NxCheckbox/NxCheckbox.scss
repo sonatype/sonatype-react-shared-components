@@ -38,10 +38,9 @@ $-width: 16px;
 .nx-checkbox__input {
   &:checked {
     + .nx-checkbox__box {
-      @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-radio-checkbox-selected));
       background-color: var(--nx-color-radio-checkbox-selected);
 
-      &:hover {
+      &, &:hover {
         @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-radio-checkbox-selected));
       }
     }
