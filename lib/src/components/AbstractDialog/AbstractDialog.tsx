@@ -20,6 +20,8 @@ const FOCUSABLE_ELEMENTS_SELECTOR
   + 'input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [contenteditable], '
   + 'object, iframe, [tabindex]:not([tabindex="-1"])';
 
+const DIALOG_MODAL_SELECTOR = 'dialog[aria-modal="true"]';
+
 // https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element
 export const DialogContext = React.createContext<DialogContextValue | null>(null);
 
@@ -180,13 +182,13 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         const departingFocusIsInsideDialog = !!(
           event.target
           && dialogEl.contains(event.target as HTMLElement)
-          && (event.target as HTMLElement).closest('dialog[aria-modal="true"]') === dialogEl
+          && (event.target as HTMLElement).closest(DIALOG_MODAL_SELECTOR) === dialogEl
         );
         const receivingFocusIsInsideDialog
           = !!(
             event.relatedTarget
             && dialogEl.contains(event.relatedTarget as HTMLElement)
-            && (event.relatedTarget as HTMLElement).closest('dialog[aria-modal="true"]') === dialogEl
+            && (event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR) === dialogEl
           );
         const focusIsLeavingDialog = departingFocusIsInsideDialog && !receivingFocusIsInsideDialog;
         if (focusIsLeavingDialog) {
