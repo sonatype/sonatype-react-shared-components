@@ -130,6 +130,10 @@
   // NxPre
   --nx-color-pre-border: var(--nx-swatch-indigo-10);
 
+  // NxPagination
+  --nx-color-pagination-background-active: var(--nx-swatch-grey-97);
+  --nx-color-pagination-focus-selected: var(--nx-swatch-white);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-40);
     --nx-color-border-secondary: var(--nx-swatch-indigo-35);
@@ -139,6 +143,7 @@
     --nx-color-site-background: var(--nx-swatch-indigo-15);
 
     --nx-color-interactive-background-active: var(--nx-swatch-indigo-30);
+    --nx-color-interactive-background-active-secondary: var(--nx-swatch-indigo-30);
     --nx-color-interactive-background-hover: var(--nx-swatch-indigo-10);
     --nx-color-interactive-background-disabled: var(--nx-swatch-indigo-20);
 
@@ -244,6 +249,10 @@
 
     // NxPre
     --nx-color-pre-border: var(--nx-swatch-indigo-90);
+
+    // NxPagination
+    --nx-color-pagination-background-active: var(--nx-swatch-indigo-30);
+    --nx-color-pagination-focus-selected: var(--nx-swatch-indigo-05);
   }
 
   // Deprecated variables

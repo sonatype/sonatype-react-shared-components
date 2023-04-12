@@ -16,6 +16,7 @@
   justify-content: center;
 
   .nx-btn {
+    border: 1px solid var(--nx-color-tertiary-button-border);
     min-width: nx-pagination-variables.$pagination-button-height;
     margin: 0 var(--nx-spacing-2x) 0 0;
     padding-left: calc(var(--nx-spacing-4x) - 1px);
@@ -57,7 +58,7 @@
 
   &:hover {
     background-color: var(--nx-color-interactive-background-hover);
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-text);
   }
 
   &:focus {
@@ -66,21 +67,22 @@
   }
 
   &:active {
-    background-color: var(--nx-swatch-grey-97);
-    color: var(--nx-color-text);
+    background-color: var(--nx-color-pagination-background-active);
+    color: var(--nx-color-text-stark);
     outline: none;
   }
 
   &.selected {
     &, &:hover {
-      background-color: var(--nx-swatch-blue-40);
+      background-color: var(--nx-color-primary-button-background);
       border-color: transparent;
-      color: var(--nx-color-component-background);
+      color: var(--nx-color-pagination-focus-selected);
       cursor: default;
+      font-weight: 600;
     }
-    
+
     &:focus {
-      outline: 2px solid var(--nx-color-component-background);
+      outline: 2px solid var(--nx-color-pagination-focus-selected);
       outline-offset: -4px;
     }
   }
