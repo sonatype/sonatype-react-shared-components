@@ -190,11 +190,12 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     };
 
     // Prevent leak when focus goes out of the dialog modal.
-    const handleFocusIn = () => {
+    const handleFocusOut = (event: FocusEvent) => {
       const dialogEl = dialogRef.current;
-      if (dialogEl && document.activeElement) {
-        const focusIsInsideDialogModal = document.activeElement.closest('dialog[aria-modal="true"][open]');
-        if (!focusIsInsideDialogModal) {
+      if (dialogEl) {
+        const receivingFocusIsInsideDialog
+          = !!(event.relatedTarget && (event.relatedTarget as HTMLElement).closest('dialog[aria-modal="true"][open]'));
+        if (!receivingFocusIsInsideDialog) {
           const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
           if (firstFocusableElement) {
             firstFocusableElement.focus();
@@ -205,12 +206,12 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
     if (isModal) {
       document.addEventListener('keydown', keydownListener);
-      document.addEventListener('focusin', handleFocusIn);
+      document.addEventListener('focusout', handleFocusOut);
     }
 
     return () => {
       document.removeEventListener('keydown', keydownListener);
-      document.removeEventListener('focusin', handleFocusIn);
+      document.removeEventListener('focusout', handleFocusOut);
     };
   }, [isModal]);
 
