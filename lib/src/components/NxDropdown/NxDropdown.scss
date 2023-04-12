@@ -37,9 +37,8 @@
   display: flex;
   margin: 0;
   outline: none;
+  padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
   text-align: left;
-  padding-right: var(--nx-spacing-4x);
-  padding-left: var(--nx-spacing-4x);
   width: 100%;
 
   &:hover {
@@ -65,11 +64,11 @@
 
   .nx-dropdown__toggle-caret {
     align-self: center;
-    color: var(--nx-swatch-grey-05);
   }
 
   &.disabled {
-    .nx-dropdown__toggle-caret {
+    &, &:hover, &:focus {
+      background-color: var(--nx-color-interactive-background-disabled);
       color: var(--nx-color-text-disabled);
     }
   }
