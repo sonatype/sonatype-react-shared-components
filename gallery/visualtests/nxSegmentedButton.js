@@ -37,7 +37,7 @@ describe('NxSegmentedButton', function() {
         menuItem.focus();
       }
 
-      await checkScreenshotCoordinates(x - 82, y, 250, 122);
+      await checkScreenshotCoordinates(x - 90, y, 255, 122);
     };
   }
 

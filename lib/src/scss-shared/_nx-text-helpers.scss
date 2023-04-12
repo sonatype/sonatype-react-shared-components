@@ -99,8 +99,8 @@
 
 %nx-pre {
   @include monospace;
-  background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-swatch-grey-10);
+  background-color: var(--nx-color-component-background);
+  border: 1px solid var(--nx-color-pre-border);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);
   font-size: var(--nx-font-size);
