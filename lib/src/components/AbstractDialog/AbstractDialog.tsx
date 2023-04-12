@@ -154,22 +154,24 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         return;
       }
 
-      // When tab key is pressed,
+      // When the tab key is pressed,
       // cycle focus on the first or last focusable item (if exists).
       // Do the same if focus is NOT in the dialog to ensure that the focus is trapped within.
       if (event.key === 'Tab') {
         const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
         const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
-        const focusIsNullOrDialog = [document.body, null, dialogEl].includes(document.activeElement as HTMLElement);
-        const focusIsInDialog = !focusIsNullOrDialog && dialogEl.contains(document.activeElement);
+        const focusIsDialogElement = document.activeElement === dialogEl;
 
-        if (!focusIsInDialog) {
+        // Prevent native tab cycling
+        // when focus is the dialog element, so it does not leak
+        // (In the case where there is no focusable elements inside the dialog)
+        if (focusIsDialogElement) {
           event.preventDefault();
         }
 
         if (event.shiftKey) {
           if (
-            (!focusIsInDialog || document.activeElement === firstFocusableElement)
+            (focusIsDialogElement || document.activeElement === firstFocusableElement)
             && lastFocusableElement
           ) {
             lastFocusableElement.focus();
@@ -178,7 +180,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         }
         else {
           if (
-            (!focusIsInDialog || document.activeElement === lastFocusableElement)
+            (focusIsDialogElement || document.activeElement === lastFocusableElement)
             && firstFocusableElement
           ) {
             firstFocusableElement.focus();
