@@ -181,6 +181,9 @@
   --nx-color-policy-threat-slider-text-disabled: var(--nx-color-text-disabled);
   --nx-color-policy-threat-slider-text: var(--nx-color-text);
 
+  // NxTree
+  --nx-color-tree-line: var(--nx-swatch-grey-50);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-40);
     --nx-color-border-secondary: var(--nx-swatch-indigo-35);
@@ -346,6 +349,9 @@
     --nx-color-policy-threat-slider-background-disabled: var(--nx-color-interactive-border-disabled);
     --nx-color-policy-threat-slider-text-disabled: var(--nx-color-policy-threat-slider-border-disabled);
     --nx-color-policy-threat-slider-text: var(--nx-swatch-indigo-97);
+
+    // NxTree
+    --nx-color-tree-line: var(--nx-swatch-indigo-70);
   }
 
   // Deprecated variables
