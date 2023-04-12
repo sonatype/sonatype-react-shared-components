@@ -667,9 +667,11 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-radio-disabled-ring">
               The default ring color for disabled <NxCode>NxRadio</NxCode>.
+              The ring is the annulus between the dot and the border of the radio.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-radio-disabled-dot">
               The default dot color for disabled <NxCode>NxRadio</NxCode>.
+              The dot is the innermost circle in the concentric circles of the radio.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-checkbox-disabled-background">
               The default background color for disabled <NxCode>NxCheckbox</NxCode>.
