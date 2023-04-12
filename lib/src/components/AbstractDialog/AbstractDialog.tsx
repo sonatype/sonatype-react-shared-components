@@ -193,9 +193,11 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     const handleFocusOut = (event: FocusEvent) => {
       const dialogEl = dialogRef.current;
       if (dialogEl) {
+        const departingFocusIsInsideDialog = !!(event.target && dialogEl.contains(event.target as HTMLElement));
         const receivingFocusIsInsideDialog
-          = !!(event.relatedTarget && (event.relatedTarget as HTMLElement).closest('dialog[aria-modal="true"][open]'));
-        if (!receivingFocusIsInsideDialog) {
+          = !!(event.relatedTarget && dialogEl.contains(event.relatedTarget as HTMLElement));
+        const focusIsLeavingDialog = departingFocusIsInsideDialog && !receivingFocusIsInsideDialog;
+        if (focusIsLeavingDialog) {
           const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
           if (firstFocusableElement) {
             firstFocusableElement.focus();
