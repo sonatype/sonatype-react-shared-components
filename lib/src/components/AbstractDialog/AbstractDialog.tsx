@@ -157,9 +157,11 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
           const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
           const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
 
-          if (event.shiftKey && document.activeElement === firstFocusableElement && lastFocusableElement) {
-            lastFocusableElement.focus();
-            event.preventDefault();
+          if (event.shiftKey) {
+            if (document.activeElement === firstFocusableElement && lastFocusableElement) {
+              lastFocusableElement.focus();
+              event.preventDefault();
+            }
           }
           else if (document.activeElement === lastFocusableElement && firstFocusableElement) {
             firstFocusableElement.focus();

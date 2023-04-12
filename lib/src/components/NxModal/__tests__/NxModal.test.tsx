@@ -346,4 +346,13 @@ describe('NxModal', function() {
     await user.tab();
     expect(modal2Tabbables[0]).toHaveFocus();
   });
+
+  it('should focus on the dialog element when there is no focusable element', function() {
+    const { getByRole } = render(
+      <NxModal onClose={() => {}}>
+        <h1>Hi</h1>
+      </NxModal>
+    );
+    expect(getByRole('dialog')).toHaveFocus();
+  });
 });
