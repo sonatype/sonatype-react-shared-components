@@ -105,10 +105,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
       // Modal autofocus is not implemented because of:
       // https://stackoverflow.com/questions/60216787/react-autofocus-attribute-is-not-rendered
-      const firstVisibleFocusableElement = getFirstVisibleFocusableElement(dialogEl);
-      if (firstVisibleFocusableElement) {
-        firstVisibleFocusableElement.focus();
-      }
+      getFirstVisibleFocusableElement(dialogEl).focus();
 
       // Focus on previously focused element.
       return () => {
@@ -158,12 +155,12 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
           const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
 
           if (event.shiftKey) {
-            if (document.activeElement === firstFocusableElement && lastFocusableElement) {
+            if (document.activeElement === firstFocusableElement) {
               lastFocusableElement.focus();
               event.preventDefault();
             }
           }
-          else if (document.activeElement === lastFocusableElement && firstFocusableElement) {
+          else if (document.activeElement === lastFocusableElement) {
             firstFocusableElement.focus();
             event.preventDefault();
           }
@@ -180,10 +177,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
           = !!(event.relatedTarget && dialogEl.contains(event.relatedTarget as HTMLElement));
         const focusIsLeavingDialog = departingFocusIsInsideDialog && !receivingFocusIsInsideDialog;
         if (focusIsLeavingDialog) {
-          const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
-          if (firstFocusableElement) {
-            firstFocusableElement.focus();
-          }
+          getFirstVisibleFocusableElement(dialogEl).focus();
         }
       }
     };

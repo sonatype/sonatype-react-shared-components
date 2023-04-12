@@ -292,6 +292,15 @@ describe('NxModal', function() {
     });
   });
 
+  it('should focus on the dialog element when there is no focusable element', function() {
+    const { getByRole } = render(
+      <NxModal onClose={() => {}}>
+        <h1>Hi</h1>
+      </NxModal>
+    );
+    expect(getByRole('dialog')).toHaveFocus();
+  });
+
   it('should cycle through focusable elements inside stacked modals', async function() {
     const user = userEvent.setup();
 
@@ -347,12 +356,37 @@ describe('NxModal', function() {
     expect(modal2Tabbables[0]).toHaveFocus();
   });
 
-  it('should focus on the dialog element when there is no focusable element', function() {
-    const { getByRole } = render(
-      <NxModal onClose={() => {}}>
-        <h1>Hi</h1>
-      </NxModal>
-    );
-    expect(getByRole('dialog')).toHaveFocus();
+  it('should focus first item after tabbing when the currently focused element is removed', async function() {
+    const user = userEvent.setup();
+
+    const Fixture = () => {
+      const [showButton, toggleButton] = useToggle(true);
+      return (
+        <NxModal onClose={() => {}}>
+          <button>First</button>
+          {
+            showButton &&
+            <button onClick={toggleButton}>
+              Boom
+            </button>
+          }
+        </NxModal>
+      );
+    };
+
+    const { getAllByRole } = render(<Fixture />);
+    const buttons = getAllByRole('button');
+
+    expect(buttons[0]).toHaveFocus();
+
+    await user.tab();
+    expect(buttons[1]).toHaveFocus();
+    await user.click(buttons[1]);
+
+    // Focus is removed
+    expect(document.activeElement).toBe(document.body);
+
+    await user.tab();
+    expect(buttons[0]).toHaveFocus();
   });
 });
