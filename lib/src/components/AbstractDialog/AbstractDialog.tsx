@@ -149,28 +149,27 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       const dialogEl = dialogRef.current!;
 
       // Don't manage tab cycling when the focus is not within the dialog
-      // so that there is no key nav conflict when another modal is open.
+      // so that there is no keynav conflict when another modal is open.
       if (!dialogEl.contains(document.activeElement)) {
         return;
       }
 
-      // When tab key is pressed
-      // cycles focus on first or last focusable item (if exists)
-      // Do the same if focus is not IN the dialog to ensure focus is trapped within.
+      // When tab key is pressed,
+      // cycle focus on the first or last focusable item (if exists).
+      // Do the same if focus is NOT in the dialog to ensure that the focus is trapped within.
       if (event.key === 'Tab') {
         const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
         const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
-        const activeFocusIsNullOrDialog
-          = [document.body, dialogEl, null].includes(document.activeElement as HTMLElement);
-        const activeFocusIsInDialog = !activeFocusIsNullOrDialog && dialogEl.contains(document.activeElement);
+        const focusIsNullOrDialog = [document.body, null, dialogEl].includes(document.activeElement as HTMLElement);
+        const focusIsInDialog = !focusIsNullOrDialog && dialogEl.contains(document.activeElement);
 
-        if (!activeFocusIsInDialog) {
+        if (!focusIsInDialog) {
           event.preventDefault();
         }
 
         if (event.shiftKey) {
           if (
-            (!activeFocusIsInDialog || document.activeElement === firstFocusableElement)
+            (!focusIsInDialog || document.activeElement === firstFocusableElement)
             && lastFocusableElement
           ) {
             lastFocusableElement.focus();
@@ -179,7 +178,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
         }
         else {
           if (
-            (!activeFocusIsInDialog || document.activeElement === lastFocusableElement)
+            (!focusIsInDialog || document.activeElement === lastFocusableElement)
             && firstFocusableElement
           ) {
             firstFocusableElement.focus();
