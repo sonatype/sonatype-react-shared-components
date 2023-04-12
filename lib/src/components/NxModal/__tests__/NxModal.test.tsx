@@ -356,7 +356,62 @@ describe('NxModal', function() {
     expect(modal2Tabbables[0]).toHaveFocus();
   });
 
-  it('should focus first item after tabbing when the currently focused element is removed', async function() {
+  it('should cycle through focusable elements inside nested modals', async function() {
+    const user = userEvent.setup();
+
+    const Fixture = () => {
+      const [showModal, toggleModal] = useToggle(false);
+      const [showModal2, toggleModal2] = useToggle(false);
+      return (
+        <>
+          <button data-testid="open-modal-1" onClick={toggleModal}>Open</button>
+          { showModal &&
+            <NxModal onClose={toggleModal}>
+              { showModal2 &&
+                <NxModal onClose={toggleModal2}>
+                  <button data-testid="tabbable-modal-2">Modal2</button>
+                  <button data-testid="tabbable-modal-2">Modal2</button>
+                </NxModal>
+              }
+              <button data-testid="tabbable-modal-1">Modal1</button>
+              <button data-testid="tabbable-modal-1">Modal1</button>
+              <button data-testid="open-modal-2" onClick={toggleModal2}>Open</button>
+            </NxModal>
+          }
+        </>
+      );
+    };
+
+    const { getByTestId, getAllByTestId } = render(<Fixture />);
+    const openModal1Button = getByTestId('open-modal-1');
+
+    await user.click(openModal1Button);
+    await runTimers();
+
+    const modal1Tabbables = getAllByTestId('tabbable-modal-1');
+    const openModal2Button = getByTestId('open-modal-2');
+
+    expect(modal1Tabbables[0]).toHaveFocus();
+    await user.tab();
+    expect(modal1Tabbables[1]).toHaveFocus();
+    await user.tab();
+    expect(openModal2Button).toHaveFocus();
+    await user.tab();
+    expect(modal1Tabbables[0]).toHaveFocus();
+
+    await user.click(openModal2Button);
+    await runTimers();
+
+    // should cycle tabbable elements in modal 2 properly
+    const modal2Tabbables = getAllByTestId('tabbable-modal-2');
+    expect(modal2Tabbables[0]).toHaveFocus();
+    await user.tab();
+    expect(modal2Tabbables[1]).toHaveFocus();
+    await user.tab();
+    expect(modal2Tabbables[0]).toHaveFocus();
+  });
+
+  it('should focus on the first item after tabbing when the currently focused element is removed', async function() {
     const user = userEvent.setup();
 
     const Fixture = () => {
