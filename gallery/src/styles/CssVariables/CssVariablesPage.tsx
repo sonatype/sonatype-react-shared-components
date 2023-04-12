@@ -274,6 +274,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-site-background">
               The background color of the page as a whole within RSC styles.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-background-success">
+              The background color used by certain components to signify success.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-background-error">
+              The background color used by certain components to signify an error.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border">
               <NxWarningAlert>
                 Deprecated: This variable is now replaced by <NxCode>--nx-color-interactive-border</NxCode>
@@ -554,6 +560,41 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-dropdown-menu-background-active">
               The default active state background color of <NxCode>nx-dropdown-menu</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-background">
+              The background color for <NxCode>NxMeter</NxCode>, <NxCode>NxProgressBar</NxCode> and
+              {' '}<NxCode>NxBinaryDonutChart</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-fill">
+              The fill color for <NxCode>NxMeter</NxCode>, <NxCode>NxProgressBar</NxCode> and
+              {' '}<NxCode>NxBinaryDonutChart</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-text-success">
+              The text color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> is at 100%.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-text-error">
+              The text color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> has an
+              error.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-icon-error">
+              The icon color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> has an
+              error. This color differs from <NxCode>--nx-color-progress-bar-text-error</NxCode> in dark mode.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-text-success">
+              The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is at
+              100%.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-border-success">
+              The border color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is at
+              100%. In dark mode, the border is the same color as the counter's background.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-text-error">
+              The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> has an
+              error.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-border-error">
+              The border color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> has an
+              error. In dark mode, the border is the same color as the counter's background.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-blockquote-background">
               The default background color of <NxCode>nx-blockquote</NxCode> class.
             </ColorDocRow>
@@ -643,6 +684,9 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-background-hover">
               The background color of the dismiss button of <NxCode>NxFileUpload</NxCode> on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-border-hover">
+              The border color of the dismiss button of <NxCode>NxFileUpload</NxCode> on hover.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-background-active">
               The background color of the dismiss button of <NxCode>NxFileUpload</NxCode> on click.
