@@ -148,26 +148,23 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const dialogEl = dialogRef.current!;
 
-      // Don't manage tab cycling when the focus is not within the dialog
+      // Only manage tab cycling when the focus is within the dialog
       // so that there is no keynav conflict when another modal is open.
-      if (!dialogEl.contains(document.activeElement)) {
-        return;
-      }
+      if (dialogEl.contains(document.activeElement)) {
+        // cycle focus on the first or last focusable item (if exists).
+        // Do the same if focus is NOT in the dialog to ensure that the focus is trapped within.
+        if (event.key === 'Tab') {
+          const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
+          const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
 
-      // When the tab key is pressed,
-      // cycle focus on the first or last focusable item (if exists).
-      // Do the same if focus is NOT in the dialog to ensure that the focus is trapped within.
-      if (event.key === 'Tab') {
-        const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
-        const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
-
-        if (event.shiftKey && document.activeElement === firstFocusableElement && lastFocusableElement) {
-          lastFocusableElement.focus();
-          event.preventDefault();
-        }
-        else if (document.activeElement === lastFocusableElement && firstFocusableElement) {
-          firstFocusableElement.focus();
-          event.preventDefault();
+          if (event.shiftKey && document.activeElement === firstFocusableElement && lastFocusableElement) {
+            lastFocusableElement.focus();
+            event.preventDefault();
+          }
+          else if (document.activeElement === lastFocusableElement && firstFocusableElement) {
+            firstFocusableElement.focus();
+            event.preventDefault();
+          }
         }
       }
     };
