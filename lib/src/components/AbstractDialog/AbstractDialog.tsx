@@ -45,10 +45,10 @@ const getFocusableElements = (element: HTMLElement) =>
   Array.from(element.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR)) as HTMLElement[];
 
 const getFirstVisibleFocusableElement = (element: HTMLElement) =>
-  find(isVisible)(getFocusableElements(element));
+  find(isVisible)(getFocusableElements(element)) || element;
 
 const getLastVisibleFocusableElement = (element: HTMLElement) =>
-  findLast(isVisible)(getFocusableElements(element));
+  findLast(isVisible)(getFocusableElements(element)) || element;
 
 /**
  * Abstracted Dialog element implementation and behaviors.
@@ -160,32 +160,14 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       if (event.key === 'Tab') {
         const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
         const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
-        const focusIsDialogElement = document.activeElement === dialogEl;
 
-        // Prevent native tab cycling
-        // when focus is the dialog element, so it does not leak
-        // (In the case where there is no focusable elements inside the dialog)
-        if (focusIsDialogElement) {
+        if (event.shiftKey && document.activeElement === firstFocusableElement && lastFocusableElement) {
+          lastFocusableElement.focus();
           event.preventDefault();
         }
-
-        if (event.shiftKey) {
-          if (
-            (focusIsDialogElement || document.activeElement === firstFocusableElement)
-            && lastFocusableElement
-          ) {
-            lastFocusableElement.focus();
-            event.preventDefault();
-          }
-        }
-        else {
-          if (
-            (focusIsDialogElement || document.activeElement === lastFocusableElement)
-            && firstFocusableElement
-          ) {
-            firstFocusableElement.focus();
-            event.preventDefault();
-          }
+        else if (document.activeElement === lastFocusableElement && firstFocusableElement) {
+          firstFocusableElement.focus();
+          event.preventDefault();
         }
       }
     };
