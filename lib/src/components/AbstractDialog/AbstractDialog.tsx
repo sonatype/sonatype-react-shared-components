@@ -146,9 +146,14 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       const dialogEl = dialogRef.current!;
 
       // Only manage tab cycling when the focus is within the dialog
+      // and not nested inside another dialog
       // so that there is no keynav conflict when another modal is open.
-      if (dialogEl.contains(document.activeElement)) {
-        // cycle focus on the first or last focusable item (if exists).
+      if (
+        document.activeElement
+        && dialogEl.contains(document.activeElement)
+        && document.activeElement.closest('dialog[aria-modal="true"]') === dialogEl
+      ) {
+        // Cycle focus on the first or last focusable item (if exists).
         // Do the same if focus is NOT in the dialog to ensure that the focus is trapped within.
         if (event.key === 'Tab') {
           const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
@@ -172,9 +177,17 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     const handleFocusOut = (event: FocusEvent) => {
       const dialogEl = dialogRef.current;
       if (dialogEl) {
-        const departingFocusIsInsideDialog = !!(event.target && dialogEl.contains(event.target as HTMLElement));
+        const departingFocusIsInsideDialog = !!(
+          event.target
+          && dialogEl.contains(event.target as HTMLElement)
+          && (event.target as HTMLElement).closest('dialog[aria-modal="true"]') === dialogEl
+        );
         const receivingFocusIsInsideDialog
-          = !!(event.relatedTarget && dialogEl.contains(event.relatedTarget as HTMLElement));
+          = !!(
+            event.relatedTarget
+            && dialogEl.contains(event.relatedTarget as HTMLElement)
+            && (event.relatedTarget as HTMLElement).closest('dialog[aria-modal="true"]') === dialogEl
+          );
         const focusIsLeavingDialog = departingFocusIsInsideDialog && !receivingFocusIsInsideDialog;
         if (focusIsLeavingDialog) {
           getFirstVisibleFocusableElement(dialogEl).focus();
