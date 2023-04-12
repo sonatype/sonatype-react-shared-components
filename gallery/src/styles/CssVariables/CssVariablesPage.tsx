@@ -697,6 +697,15 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
               The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-pagination-background-active">
+              The background color used on the active state of buttons in <NxCode>NxPagination</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-pagination-focus-selected">
+              The focus border and text color used on the focused state of buttons in <NxCode>NxPagination</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-pagination-tertiary-border-active">
+              The border color of tertiary buttons in <NxCode>NxPagination</NxCode>.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
