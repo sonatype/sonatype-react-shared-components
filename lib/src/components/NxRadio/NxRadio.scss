@@ -33,8 +33,10 @@ $-checked-border-width: 4px;
   &:disabled {
     &, &:hover {
       + .nx-radio__circle {
-        @include nx-radio-checkbox-helpers.multi-inset-box-shadow($-checked-border-width);
         background-color: var(--nx-color-radio-disabled-dot);
+        box-shadow:
+          inset 0 0 0 1px var(--nx-color-radio-disabled-border),
+          inset 0 0 0 #{$border-width} var(--nx-color-radio-disabled-ring);
       }
     }
   }
