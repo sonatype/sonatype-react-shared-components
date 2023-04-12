@@ -57,10 +57,7 @@ const NxRadio = forwardRef<HTMLLabelElement, Props>(
                  onChange={() => onChange && onChange(value)}
                  readOnly={!onChange}
                  { ...otherInputAttributes } />
-          <svg className="nx-radio-checkbox__control nx-radio__circle" viewBox="-8 -8 16 16" focusable={false}>
-            { isChecked && <circle r="6" strokeWidth="4" className="nx-radio__inner-circle"/> }
-            <circle r="7.5" strokeWidth="1" className="nx-radio__outer-circle"/>
-          </svg>
+          <span className="nx-radio-checkbox__control nx-radio__circle"></span>
           <span className="nx-radio__focus"></span>
           { content &&
             (overflowTooltip !== false ? <NxOverflowTooltip>{content}</NxOverflowTooltip> : content)
