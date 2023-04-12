@@ -27,14 +27,18 @@
     }
 
     &:last-child, &:first-child {
+      .nx-icon {
+        color: var(--nx-color-text-stark);
+      }
+
       &:hover {
         background-color: var(--nx-color-interactive-background-hover);
         border-color: var(--nx-color-interactive-border-hover);
       }
 
       &:active {
-        background-color: var(--nx-swatch-grey-97);
-        border-color: var(--nx-swatch-grey-20);
+        background-color: var(--nx-color-pagination-background-active);
+        border-color: var(--nx-color-pagination-tertiary-border-active);
         outline: none;
       }
 
