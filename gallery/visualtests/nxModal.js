@@ -22,6 +22,7 @@ describe('NxModal', function() {
       narrowExampleSelector = '#nx-modal-narrow-example',
       wideExampleSelector = '#nx-modal-wide-example',
       stackedExampleSelector = '#nx-modal-stacked-example',
+      nestedExampleSelector = '#nx-modal-nested-example',
       escClosingExampleSelector = '#nx-modal-esc-example';
 
   async function openModal(exampleSelector) {
@@ -139,6 +140,35 @@ describe('NxModal', function() {
       await waitAndGetElements(closeSecondModalBtnSelector);
 
       await checkFullPageScreenshot();
+    });
+  });
+
+  describe('Nested NxModal', function() {
+    it('focuses on first focusable element, when focused element is hidden in css', async function() {
+      const openModalButtonSelector = `${nestedExampleSelector} button`,
+          firstHideButtonSelector = `${nestedExampleSelector} #hide-button`,
+          openNestedButtonSelector = `${nestedExampleSelector} #open-nested-modal`,
+          secondHideButtonSelector = `${nestedExampleSelector} #hide-button-2`,
+          secondButtonSelector = `${nestedExampleSelector} #second-button`;
+
+      const [openModalButton] = await waitAndGetElements(openModalButtonSelector);
+      await openModalButton.click();
+
+      const [firstHideButton, openNestedButton] = await waitAndGetElements(
+          firstHideButtonSelector, openNestedButtonSelector
+      );
+
+      expect(await isFocused(firstHideButton)).toBe(true);
+      await openNestedButton.click();
+
+      const [secondHideButton, secondButton] = await waitAndGetElements(
+          secondHideButtonSelector, secondButtonSelector
+      );
+
+      expect(await isFocused(secondHideButton)).toBe(true);
+      await secondHideButton.click();
+
+      expect(await isFocused(secondButton)).toBe(true);
     });
   });
 
