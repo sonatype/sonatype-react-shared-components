@@ -83,7 +83,7 @@ describe('NxModal', function() {
     it('shows the tooltip in front of the modal', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
           submitBtnSelector =
-          `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__submit-btn`;
+            `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__submit-btn`;
 
       const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
@@ -127,7 +127,7 @@ describe('NxModal', function() {
           openFirstModalBtnSelector = `${exampleSelector} button`,
           openSecondModalBtnSelector = `${exampleSelector} .nx-modal-backdrop .nx-btn--primary`,
           closeSecondModalBtnSelector =
-          `${exampleSelector} .nx-modal-backdrop + .nx-modal-backdrop .nx-footer .nx-btn-bar .nx-btn`;
+            `${exampleSelector} .nx-modal-backdrop + .nx-modal-backdrop .nx-footer .nx-btn-bar .nx-btn`;
 
       const [openFirstModalBtn] = await waitAndGetElements(openFirstModalBtnSelector);
 
