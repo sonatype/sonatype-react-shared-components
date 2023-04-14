@@ -28,7 +28,7 @@ describe('NxModal', function() {
   async function openModal(exampleSelector) {
     const openModalBtnSelector = `${exampleSelector} button`,
         closeModalBtnSelector =
-        `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`;
+          `${exampleSelector} .nx-footer .nx-btn-bar .nx-btn:not(.nx-btn--primary):not(.nx-btn-tertiary)`;
 
     const [openModalBtn] = await waitAndGetElements(openModalBtnSelector);
 
