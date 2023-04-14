@@ -47,7 +47,7 @@ const getFocusableElements = (element: HTMLElement) =>
   Array.from(element.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR)) as HTMLElement[];
 
 const getFirstVisibleFocusableElement = (element: HTMLElement) =>
-  find(isVisible)(getFocusableElements(element)) || element;
+  find(isVisible, getFocusableElements(element)) || element;
 
 const getLastVisibleFocusableElement = (element: HTMLElement) =>
   findLast(isVisible)(getFocusableElements(element)) || element;
