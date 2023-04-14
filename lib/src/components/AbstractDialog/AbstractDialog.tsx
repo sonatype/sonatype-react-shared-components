@@ -182,11 +182,10 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
           event.target
           && (event.target as HTMLElement).closest(DIALOG_MODAL_SELECTOR) === dialogEl
         );
-        const receivingFocusIsInsideDialog
-          = !!(
-            event.relatedTarget
-            && (event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR)
-          );
+        const receivingFocusIsInsideDialog = !!(
+          event.relatedTarget
+          && (event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR)
+        );
         const focusIsLeavingDialog = departingFocusIsInsideDialog && !receivingFocusIsInsideDialog;
         if (focusIsLeavingDialog) {
           getFirstVisibleFocusableElement(dialogEl).focus();
