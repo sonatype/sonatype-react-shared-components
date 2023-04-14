@@ -301,26 +301,30 @@ describe('NxModal', function() {
     expect(getByRole('dialog')).toHaveFocus();
   });
 
-  it('should cycle through focusable elements inside stacked modals', async function() {
+  it('should have proper tab focus cycling when modals are stacked', async function() {
     const user = userEvent.setup();
 
     const Fixture = () => {
       const [showModal, toggleModal] = useToggle(false);
-      const [showModal2, toggleModal2] = useToggle(false);
+      const [showStackedModal, toggleStackedModal] = useToggle(false);
       return (
         <>
-          <button data-testid="open-modal-1" onClick={toggleModal}>Open</button>
+          <button data-testid="open-modal-button" onClick={toggleModal}>Open</button>
+
           { showModal &&
             <NxModal onClose={toggleModal}>
-              <button data-testid="tabbable-modal-1">Modal1</button>
-              <button data-testid="tabbable-modal-1">Modal1</button>
-              <button data-testid="open-modal-2" onClick={toggleModal2}>Open</button>
+              <button data-testid="tabbable-item">First</button>
+              <button data-testid="tabbable-item">Second</button>
+              <button data-testid="open-stacked-modal-button" onClick={toggleStackedModal}>Open</button>
+              <button data-testid="close-modal-button"onClick={toggleModal}>Close</button>
             </NxModal>
           }
-          { showModal2 &&
-            <NxModal onClose={toggleModal2}>
-              <button data-testid="tabbable-modal-2">Modal2</button>
-              <button data-testid="tabbable-modal-2">Modal2</button>
+
+          { showStackedModal &&
+            <NxModal onClose={toggleStackedModal}>
+              <button data-testid="stacked-tabbable-item">First</button>
+              <button data-testid="stacked-tabbable-item">Second</button>
+              <button data-testid="close-stacked-modal-button" onClick={toggleStackedModal}>Close</button>
             </NxModal>
           }
         </>
@@ -328,54 +332,97 @@ describe('NxModal', function() {
     };
 
     const { getByTestId, getAllByTestId } = render(<Fixture />);
-    const openModal1Button = getByTestId('open-modal-1');
+    const openModal1Button = getByTestId('open-modal-button');
 
     await user.click(openModal1Button);
     await runTimers();
 
-    const modal1Tabbables = getAllByTestId('tabbable-modal-1');
-    const openModal2Button = getByTestId('open-modal-2');
+    const tabbableItems = getAllByTestId('tabbable-item');
+    const openStackedModalButton = getByTestId('open-stacked-modal-button');
+    const closeModalButton = getByTestId('close-modal-button');
 
-    expect(modal1Tabbables[0]).toHaveFocus();
+    // Tab cycling should work.
+    expect(tabbableItems[0]).toHaveFocus();
     await user.tab();
-    expect(modal1Tabbables[1]).toHaveFocus();
+    expect(tabbableItems[1]).toHaveFocus();
     await user.tab();
-    expect(openModal2Button).toHaveFocus();
+    expect(openStackedModalButton).toHaveFocus();
     await user.tab();
-    expect(modal1Tabbables[0]).toHaveFocus();
+    expect(closeModalButton).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(openStackedModalButton).toHaveFocus();
 
-    await user.click(openModal2Button);
+    await user.click(openStackedModalButton);
     await runTimers();
 
-    // should cycle tabbable elements in modal 2 properly
-    const modal2Tabbables = getAllByTestId('tabbable-modal-2');
-    expect(modal2Tabbables[0]).toHaveFocus();
+    const stackedTabbableItems = getAllByTestId('stacked-tabbable-item');
+    const closeStackedModalButton = getByTestId('close-stacked-modal-button');
+
+    // Should cycle tabbable elements in stacked modal properly
+    expect(stackedTabbableItems[0]).toHaveFocus();
     await user.tab();
-    expect(modal2Tabbables[1]).toHaveFocus();
+    expect(stackedTabbableItems[1]).toHaveFocus();
     await user.tab();
-    expect(modal2Tabbables[0]).toHaveFocus();
+    expect(closeStackedModalButton).toHaveFocus();
+    await user.tab();
+    expect(stackedTabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeStackedModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(stackedTabbableItems[1]).toHaveFocus();
+
+    await user.click(closeStackedModalButton);
+    await runTimers();
+
+    // Should focus on previously focused element
+    expect(openStackedModalButton).toHaveFocus();
+
+    // Focus cycling should still work
+    await user.tab();
+    expect(closeModalButton).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(openStackedModalButton).toHaveFocus();
+
+    await user.click(closeModalButton);
+    await runTimers();
+
+    // Should focus on previously focused element
+    expect(openModal1Button).toHaveFocus();
   });
 
-  it('should cycle through focusable elements inside nested modals', async function() {
+  it('should have proper tab focus cycling when modals are nested', async function() {
     const user = userEvent.setup();
 
     const Fixture = () => {
       const [showModal, toggleModal] = useToggle(false);
-      const [showModal2, toggleModal2] = useToggle(false);
+      const [showNestedModal, toggleNestedModal] = useToggle(false);
+
       return (
         <>
-          <button data-testid="open-modal-1" onClick={toggleModal}>Open</button>
+          <button data-testid="open-modal-button" onClick={toggleModal}>Open</button>
+
           { showModal &&
             <NxModal onClose={toggleModal}>
-              { showModal2 &&
-                <NxModal onClose={toggleModal2}>
-                  <button data-testid="tabbable-modal-2">Modal2</button>
-                  <button data-testid="tabbable-modal-2">Modal2</button>
+              { showNestedModal &&
+                <NxModal onClose={toggleNestedModal}>
+                  <button data-testid="nested-tabbable-item">First</button>
+                  <button data-testid="nested-tabbable-item">Second</button>
+                  <button data-testid="close-nested-modal-button" onClick={toggleNestedModal}>Close</button>
                 </NxModal>
               }
-              <button data-testid="tabbable-modal-1">Modal1</button>
-              <button data-testid="tabbable-modal-1">Modal1</button>
-              <button data-testid="open-modal-2" onClick={toggleModal2}>Open</button>
+
+              <button data-testid="tabbable-item">First</button>
+              <button data-testid="tabbable-item">Second</button>
+              <button data-testid="open-nested-modal-button" onClick={toggleNestedModal}>Open</button>
+              <button data-testid="close-modal-button" onClick={toggleModal}>Close</button>
             </NxModal>
           }
         </>
@@ -383,32 +430,70 @@ describe('NxModal', function() {
     };
 
     const { getByTestId, getAllByTestId } = render(<Fixture />);
-    const openModal1Button = getByTestId('open-modal-1');
+    const openModalButton = getByTestId('open-modal-button');
 
-    await user.click(openModal1Button);
+    await user.click(openModalButton);
     await runTimers();
 
-    const modal1Tabbables = getAllByTestId('tabbable-modal-1');
-    const openModal2Button = getByTestId('open-modal-2');
+    const tabbableItems = getAllByTestId('tabbable-item');
+    const openNestedModalButton = getByTestId('open-nested-modal-button');
+    const closeModalButton = getByTestId('close-modal-button');
 
-    expect(modal1Tabbables[0]).toHaveFocus();
+    // Tab cycling should work.
+    expect(tabbableItems[0]).toHaveFocus();
     await user.tab();
-    expect(modal1Tabbables[1]).toHaveFocus();
+    expect(tabbableItems[1]).toHaveFocus();
     await user.tab();
-    expect(openModal2Button).toHaveFocus();
+    expect(openNestedModalButton).toHaveFocus();
     await user.tab();
-    expect(modal1Tabbables[0]).toHaveFocus();
+    expect(closeModalButton).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(openNestedModalButton).toHaveFocus();
 
-    await user.click(openModal2Button);
+    await user.click(openNestedModalButton);
     await runTimers();
 
-    // should cycle tabbable elements in modal 2 properly
-    const modal2Tabbables = getAllByTestId('tabbable-modal-2');
-    expect(modal2Tabbables[0]).toHaveFocus();
+    const nestedTabbableItems = getAllByTestId('nested-tabbable-item');
+    const closeNestedModalButton = getByTestId('close-nested-modal-button');
+
+    // Should cycle tabbable elements in nested modal properly
+    expect(nestedTabbableItems[0]).toHaveFocus();
     await user.tab();
-    expect(modal2Tabbables[1]).toHaveFocus();
+    expect(nestedTabbableItems[1]).toHaveFocus();
     await user.tab();
-    expect(modal2Tabbables[0]).toHaveFocus();
+    expect(closeNestedModalButton).toHaveFocus();
+    await user.tab();
+    expect(nestedTabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeNestedModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(nestedTabbableItems[1]).toHaveFocus();
+
+    await user.click(closeNestedModalButton);
+    await runTimers();
+
+    // Should focus on previously focused element
+    expect(openNestedModalButton).toHaveFocus();
+
+    // Focus cycling should still work
+    await user.tab();
+    expect(closeModalButton).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(openNestedModalButton).toHaveFocus();
+
+    await user.click(closeModalButton);
+    await runTimers();
+
+    // Should focus on previously focused element
+    expect(openModalButton).toHaveFocus();
   });
 
   it('should focus on the first item after tabbing when the currently focused element is removed', async function() {
