@@ -50,7 +50,7 @@ const getFirstVisibleFocusableElement = (element: HTMLElement) =>
   find(isVisible, getFocusableElements(element)) || element;
 
 const getLastVisibleFocusableElement = (element: HTMLElement) =>
-  findLast(isVisible)(getFocusableElements(element)) || element;
+  findLast(isVisible, getFocusableElements(element)) || element;
 
 /**
  * Abstracted Dialog element implementation and behaviors.
