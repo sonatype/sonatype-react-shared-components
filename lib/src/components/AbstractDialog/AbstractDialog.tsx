@@ -152,7 +152,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       // so that there is no keynav conflict when another modal is open.
       if (
         document.activeElement
-        && document.activeElement.closest('dialog[aria-modal="true"]') === dialogEl
+        && document.activeElement.closest(DIALOG_MODAL_SELECTOR) === dialogEl
       ) {
         // Cycle focus on the first or last focusable item (if exists).
         // Do the same if focus is NOT in the dialog to ensure that the focus is trapped within.
