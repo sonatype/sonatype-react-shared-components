@@ -206,6 +206,7 @@ describe('NxModal', function() {
         await keyboard.press('Escape');
       }
 
+      expect(await isInDocument(modal2CloseBtn)).toBe(true);
       expect(await isFocused(modal2CloseBtn)).toBe(true);
 
       // close second modal
