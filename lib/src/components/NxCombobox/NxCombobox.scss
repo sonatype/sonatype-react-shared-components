@@ -26,7 +26,7 @@
     border-radius: var(--nx-border-radius);
     margin: var(--nx-spacing-base) 0 0 0;
     padding: var(--nx-spacing-base) 0;
-    background: var(--nx-swatch-white);
+    background: var(--nx-color-dropdown-menu-background);
     box-shadow: var(--nx-box-shadow-dropdown);
     box-sizing: border-box;
     max-height: 328px;
@@ -60,7 +60,7 @@
   }
 
   .nx-dropdown-button.selected {
-    background-color: var(--nx-swatch-blue-90);
+    background-color: var(--nx-color-interactive-background-selected);
     color: var(--nx-color-text-dark);
   }
 
