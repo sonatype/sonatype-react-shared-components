@@ -74,7 +74,7 @@ $-visible-item-count: 10;
 
   @include nx-container-helpers.container-vertical;
 
-  background-color: var(--nx-swatch-indigo-97);
+  background-color: var(--nx-color-transfer-list-item-list-background);
   border-top: var(--nx-border-default);
   border-bottom: var(--nx-border-default);
 
@@ -92,8 +92,9 @@ $-visible-item-count: 10;
 }
 
 .nx-transfer-list__item {
-  background-color: var(--nx-swatch-white);
+  background-color: var(--nx-color-transfer-list-item-background);
   border-radius: var(--nx-border-radius);
+  color: var(--nx-color-transfer-list-item-text);
   display: flex;
   margin: var(--nx-spacing-2x) 0;
 }
@@ -103,7 +104,7 @@ $-visible-item-count: 10;
   @include nx-text-helpers.truncate-ellipsis;
 
   border-radius: var(--nx-border-radius);
-  border: var(--nx-border-default);
+  border: 1px solid var(--nx-color-transfer-list-item-border);
   flex: auto;
   padding: calc(var(--nx-spacing-2x) - 1px);
   padding-left: var(--nx-spacing-4x);
@@ -115,28 +116,28 @@ $-visible-item-count: 10;
     padding-left: var(--nx-spacing-2x);
 
     &:hover {
-      background-color: var(--nx-color-interactive-background-hover);
-      border-color: var(--nx-color-interactive-border-hover);
+      background-color: var(--nx-color-transfer-list-item-background-hover);
+      border-color: var(--nx-color-transfer-list-item-border-hover);
     }
-  
+
     &:focus-within:not(:active) {
       outline: 2px solid var(--nx-color-interactive-border-focus);
       outline-offset: -2px;
       border-color: transparent;
     }
-  
+
     &:active {
-      background-color: var(--nx-swatch-grey-97);
-      border-color: var(--nx-swatch-grey-30);
+      background-color: var(--nx-color-transfer-list-item-background-active);
+      border-color: var(--nx-color-transfer-list-item-border-active);
     }
 
     &:hover,
     &:active {
-      color: var(--nx-color-text-dark);
+      color: var(--nx-color-transfer-list-item-text-hover-active);
     }
 
     .nx-icon {
-      color: var(--nx-color-text-dark);
+      color: var(--nx-color-text-stark);
     }
   }
 }
