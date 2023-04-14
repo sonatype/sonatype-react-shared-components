@@ -5,24 +5,23 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FunctionComponent } from 'react';
-import * as PropTypes from 'prop-types';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+
+import { Props, propTypes } from './types';
+export { Props, propTypes } from './types';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import './NxLoadingSpinner.scss';
 
-const NxLoadingSpinner: FunctionComponent =
-  function NxLoadingSpinner({ children }) {
+const NxLoadingSpinner: FunctionComponent<Props> =
+  function NxLoadingSpinner({ children, 'aria-label': ariaLabel }) {
     return (
-      <div role="status" className="nx-loading-spinner">
+      <div role="status" className="nx-loading-spinner" aria-label={ariaLabel}>
         <NxFontAwesomeIcon icon={faCircleNotch} className="fa-spin nx-loading-spinner__icon" />
         <span>{children || 'Loading…'}</span>
       </div>
     );
   };
 
-NxLoadingSpinner.propTypes = {
-  children: PropTypes.node
-};
-
+NxLoadingSpinner.propTypes = propTypes;
 export default NxLoadingSpinner;

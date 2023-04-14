@@ -8,6 +8,7 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxDropdown', function() {
   const {
+    blurElement,
     clickTest,
     focusTest,
     focusAndHoverTest,
@@ -21,14 +22,16 @@ describe('NxDropdown', function() {
 
   const defaultSelector = '#nx-dropdown-scrolling-example .nx-dropdown',
       buttonSelector = `${defaultSelector} .nx-dropdown__toggle`,
-      exampleWithDividerSelector = '#nx-dropdown-example .nx-dropdown';
+      exampleWithDividerSelector = '#nx-dropdown-example .nx-dropdown',
+      dropdownMenuItemSelector = `${defaultSelector} .nx-dropdown-menu .nx-dropdown-button:first-child`;
 
   describe('Default NxDropdown when closed', function() {
 
     it('has a light grey border by default', simpleTest(defaultSelector));
     it('has a dark grey border when hovered', hoverTest(defaultSelector, buttonSelector));
-    it('has a light blue border and glow when focused', focusTest(defaultSelector, buttonSelector));
-    it('has a light blue border and glow when focused and hovered', focusAndHoverTest(defaultSelector, buttonSelector));
+    it('has a blue inner outline when focused', focusTest(defaultSelector, buttonSelector));
+    it('has a blue inner outline and dark grey border when focused and hovered',
+        focusAndHoverTest(defaultSelector, buttonSelector));
     it('has a dark grey border when clicked', clickTest(defaultSelector, buttonSelector));
   });
 
@@ -39,12 +42,37 @@ describe('NxDropdown', function() {
       await button.click();
     });
 
-    it('has a dark blue button border with expanded menu', async function() {
+    it('has a blue inner outline when focused with expanded menu', async function() {
       const [targetElement] = await waitAndGetElements(defaultSelector);
 
       await moveMouseAway();
 
       await checkScreenshot(targetElement, 251, 376);
+    });
+
+    it('has a dark grey border when not focused with expanded menu', async function() {
+      const [targetElement, button] = await waitAndGetElements(defaultSelector, buttonSelector);
+
+      await blurElement(button);
+      await moveMouseAway();
+
+      await checkScreenshot(targetElement, 251, 376);
+    });
+
+    describe('menu item', function() {
+      it('has a grey background and dark text on hover', async function() {
+        const [targetElement, dropdownMenuItem] = await waitAndGetElements(defaultSelector, dropdownMenuItemSelector);
+
+        await dropdownMenuItem.hover();
+        await checkScreenshot(targetElement, 251, 376);
+      });
+
+      it('has a blue border when focused', async function() {
+        const [targetElement, dropdownMenuItem] = await waitAndGetElements(defaultSelector, dropdownMenuItemSelector);
+
+        await dropdownMenuItem.focus();
+        await checkScreenshot(targetElement, 251, 376);
+      });
     });
   });
 

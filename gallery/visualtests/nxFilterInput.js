@@ -46,12 +46,12 @@ describe('NxTextInput', function() {
     });
 
     it('looks right', simpleTest(simpleComponentSelector));
-    it('has a dark grey border when hovered', async function() {
+    it('has a grey background when hovered', async function() {
       const clearButtonSelector = `${simpleComponentSelector} .nx-btn--clear`;
       await hoverTest(simpleComponentSelector, clearButtonSelector)();
     });
 
-    it('has a dark grey border and light grey background when clicked', async function() {
+    it('has a lighter grey background when clicked', async function() {
       const clearButtonSelector = `${simpleComponentSelector} .nx-btn--clear`;
       await clickTest(simpleComponentSelector, clearButtonSelector)();
     });

@@ -13,16 +13,14 @@
   --nx-color-site-background: var(--nx-swatch-indigo-97);
 
   --nx-color-form-element-border: var(--nx-swatch-grey-50);
-  --nx-color-form-element-border-pristine: var(--nx-swatch-indigo-90);
 
   --nx-color-interactive-background-selected: var(--nx-swatch-blue-90);
-  --nx-color-interactive-background-active: var(--nx-swatch-blue-95);
-  --nx-color-interactive-background-hover: var(--nx-swatch-indigo-95);
-  --nx-color-interactive-background-disabled: var(--nx-swatch-grey-95);
+  --nx-color-interactive-background-active: var(--nx-swatch-grey-95);
+  --nx-color-interactive-background-hover: var(--nx-swatch-grey-90);
+  --nx-color-interactive-background-disabled: var(--nx-swatch-grey-90);
   --nx-color-interactive-border-hover: var(--nx-swatch-grey-05);
   --nx-color-interactive-border-disabled: var(--nx-swatch-grey-60);
-  --nx-color-interactive-border-focus: var(--nx-swatch-teal-35);
-  --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 35%, 0.5);
+  --nx-color-interactive-border-focus: var(--nx-swatch-blue-40);
 
   --nx-color-text-dark: var(--nx-swatch-grey-05);
   --nx-color-text: var(--nx-swatch-grey-30);
@@ -51,4 +49,6 @@
 
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
+  --nx-color-form-element-border-pristine: var(--nx-swatch-indigo-90);
+  --nx-color-interactive-shadow-focus: hsla(var(--nx-swatch-teal-hs), 35%, 0.5);
 }

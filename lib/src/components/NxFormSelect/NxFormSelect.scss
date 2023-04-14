@@ -6,6 +6,11 @@
  */
 @use '../../scss-shared/nx-text-helpers';
 
+%focus-outline {
+  outline: 2px solid var(--nx-color-interactive-border-focus);
+  outline-offset: -5px;
+}
+
 .nx-form-select {
   $caret-right-spacing: var(--nx-spacing-4x);
 
@@ -45,13 +50,12 @@
     }
 
     &:focus {
-      box-shadow: var(--nx-box-shadow-focus);
-      border-color: var(--nx-color-interactive-border-focus);
-      outline: none;
+      @extend %focus-outline;
     }
   }
 
   &__caret {
+    color: var(--nx-color-text-dark);
     font-size: 24px; // gets the <path> element to a height a roughly 8px as specced
     margin: $vertical-spacing 0;
     position: absolute;
@@ -74,8 +78,7 @@
       }
 
       &:focus {
-        border-color: var(--nx-color-interactive-border-focus);
-        box-shadow: var(--nx-box-shadow-focus);
+        @extend %focus-outline;
       }
     }
   }
