@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 const { setupBrowser } = require('./testUtils');
-describe('NxModal', function () {
+describe('NxModal', function() {
   const {
     waitAndGetElements,
     checkFullPageScreenshot,
@@ -38,7 +38,7 @@ describe('NxModal', function () {
   }
 
   function simpleModalTest(exampleSelector) {
-    return async function () {
+    return async function() {
       await openModal(exampleSelector);
 
       // take image of entire viewport in order to capture the backdrop color
@@ -47,26 +47,26 @@ describe('NxModal', function () {
   }
 
   function modalA11yTest(exampleSelector) {
-    return async function () {
+    return async function() {
       await openModal(exampleSelector);
       await a11yTest()();
     };
   }
 
-  beforeEach(async function () {
+  beforeEach(async function() {
     await getPage().setViewport({ width: 1366, height: 1000 });
   });
 
-  describe('Simple NxModal', function () {
+  describe('Simple NxModal', function() {
     it('looks right', simpleModalTest(simpleExampleSelector));
 
     it('passes a11y checks', modalA11yTest(simpleExampleSelector));
   });
 
-  describe('Form NxModal', function () {
+  describe('Form NxModal', function() {
     it('looks right', simpleModalTest(formWithAlertExampleSelector));
 
-    it('correctly renders its loading spinner', async function () {
+    it('correctly renders its loading spinner', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
           modalSelector = '#nx-modal-form-example';
 
@@ -80,7 +80,7 @@ describe('NxModal', function () {
       await checkFullPageScreenshot();
     });
 
-    it('shows the tooltip in front of the modal', async function () {
+    it('shows the tooltip in front of the modal', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
           submitBtnSelector =
           `${formExampleSelector} .nx-footer .nx-btn-bar .nx-form__submit-btn`;
@@ -95,7 +95,7 @@ describe('NxModal', function () {
       await checkFullPageScreenshot();
     });
 
-    it('does not cut off overflowing focus borders in the content area', async function () {
+    it('does not cut off overflowing focus borders in the content area', async function() {
       const openModalBtnSelector = `${formExampleSelector} button`,
           modalSelector = `${formExampleSelector} .nx-modal`,
           checkboxSelector = `${formExampleSelector} fieldset .nx-checkbox:first-of-type`;
@@ -113,16 +113,16 @@ describe('NxModal', function () {
     it('passes a11y checks', modalA11yTest(formWithAlertExampleSelector));
   });
 
-  describe('Narrow NxModal', function () {
+  describe('Narrow NxModal', function() {
     it('looks right', simpleModalTest(narrowExampleSelector));
   });
 
-  describe('Wide NxModal', function () {
+  describe('Wide NxModal', function() {
     it('looks right', simpleModalTest(wideExampleSelector));
   });
 
-  describe('Stacked NxModals', function () {
-    it('looks right', async function () {
+  describe('Stacked NxModals', function() {
+    it('looks right', async function() {
       const exampleSelector = stackedExampleSelector,
           openFirstModalBtnSelector = `${exampleSelector} button`,
           openSecondModalBtnSelector = `${exampleSelector} .nx-modal-backdrop .nx-btn--primary`,
@@ -143,8 +143,8 @@ describe('NxModal', function () {
     });
   });
 
-  describe('Nested NxModal', function () {
-    it('looks right', async function () {
+  describe('Nested NxModal', function() {
+    it('looks right', async function() {
       const openModalButtonSelector = `${nestedExampleSelector} button`,
           openNestedButtonSelector = `${nestedExampleSelector} #open-nested-modal`;
 
@@ -156,7 +156,7 @@ describe('NxModal', function () {
       await checkFullPageScreenshot();
     });
 
-    it('focuses on first focusable element, when focused element is hidden in css', async function () {
+    it('focuses on first focusable element, when focused element is hidden in css', async function() {
       const openModalButtonSelector = `${nestedExampleSelector} button`,
           firstHideButtonSelector = `${nestedExampleSelector} #hide-button`,
           openNestedButtonSelector = `${nestedExampleSelector} #open-nested-modal`,
@@ -185,8 +185,8 @@ describe('NxModal', function () {
     });
   });
 
-  describe('NxModal + NxDropdown ESC Closing behavior', function () {
-    it('closes one layer per ESC press', async function () {
+  describe('NxModal + NxDropdown ESC Closing behavior', function() {
+    it('closes one layer per ESC press', async function() {
       const [initialBtn] = await waitAndGetElements(`${escClosingExampleSelector} #esc-example-initial-btn`);
       await initialBtn.click();
 
