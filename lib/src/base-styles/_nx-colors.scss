@@ -7,6 +7,8 @@
 @use '../scss-shared/nx-dark-mode-helpers';
 
 :root {
+  --nx-color-disabled: var(--nx-swatch-grey-60);
+
   --nx-color-border: var(--nx-swatch-indigo-90);
   --nx-color-border-secondary: var(--nx-swatch-indigo-95);
 
@@ -24,19 +26,19 @@
 
   --nx-color-interactive-border: var(--nx-swatch-grey-50);
   --nx-color-interactive-border-hover: var(--nx-swatch-grey-05);
-  --nx-color-interactive-border-disabled: var(--nx-swatch-grey-60);
+  --nx-color-interactive-border-disabled: var(--nx-color-disabled);
   --nx-color-interactive-border-focus: var(--nx-swatch-blue-40);
 
   --nx-color-text-stark: var(--nx-swatch-grey-05);
   --nx-color-text: var(--nx-swatch-grey-30);
-  --nx-color-text-disabled: var(--nx-color-interactive-border-disabled); // match disabled text and border
+  --nx-color-text-disabled: var(--nx-color-disabled); // match disabled text and border
   --nx-color-text-placeholder: var(--nx-swatch-grey-40);
 
   --nx-color-link: var(--nx-swatch-blue-40);
   --nx-color-link-focus: var(--nx-color-link);
   --nx-color-link-active: var(--nx-swatch-blue-50);
   --nx-color-link-hover: var(--nx-swatch-blue-30);
-  --nx-color-link-disabled: var(--nx-color-text-disabled);
+  --nx-color-link-disabled: var(--nx-color-disabled);
 
   --nx-color-threat-unspecified: var(--nx-swatch-grey-40);
   --nx-color-threat-none: var(--nx-swatch-indigo-50);
@@ -151,6 +153,16 @@
   --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
 
+  // Radio Checkbox
+  --nx-color-radio-checkbox-selected: var(--nx-swatch-blue-40);
+  --nx-color-checkbox-disabled-background: var(--nx-color-interactive-background-disabled);
+  --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
+  --nx-color-checkbox-disabled-icon: var(--nx-color-disabled);
+  --nx-color-radio-disabled-border: var(--nx-color-disabled);
+  --nx-color-radio-disabled-ring: var(--nx-color-interactive-background-disabled);
+  --nx-color-radio-disabled-dot: var(--nx-color-interactive-background-disabled);
+  --nx-color-radio-disabled-checked-dot: var(--nx-color-disabled);
+
   //NxProgressBar
   --nx-color-progress-bar-text-success: var(--nx-color-alert-success);
   --nx-color-progress-bar-text-error: var(--nx-color-alert-error);
@@ -185,6 +197,8 @@
   --nx-color-tree-line: var(--nx-swatch-grey-50);
 
   @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-disabled: var(--nx-swatch-indigo-40);
+
     --nx-color-border: var(--nx-swatch-indigo-40);
     --nx-color-border-secondary: var(--nx-swatch-indigo-35);
 
@@ -201,19 +215,16 @@
 
     --nx-color-interactive-border: var(--nx-swatch-indigo-70);
     --nx-color-interactive-border-hover: var(--nx-swatch-indigo-60);
-    --nx-color-interactive-border-disabled: var(--nx-swatch-indigo-40);
     --nx-color-interactive-border-focus: var(--nx-swatch-purple-80);
 
     --nx-color-text-stark: var(--nx-swatch-indigo-90);
     --nx-color-text: var(--nx-swatch-indigo-80);
-    --nx-color-text-disabled: var(--nx-color-interactive-border-disabled);
     --nx-color-text-placeholder: var(--nx-color-indigo-70);
 
     --nx-color-link: var(--nx-swatch-purple-80);
     --nx-color-link-focus: var(--nx-color-link);
     --nx-color-link-active: var(--nx-swatch-purple-90);
     --nx-color-link-hover: var(--nx-swatch-purple-70);
-    --nx-color-link-disabled: var(--nx-color-text-disabled);
 
     --nx-color-validation-valid: var(--nx-swatch-green-70);
     --nx-color-validation-valid-icon: var(--nx-swatch-green-60);
@@ -322,6 +333,9 @@
     --nx-color-counter: var(--nx-swatch-indigo-90);
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
 
+    // Radio Checkbox
+    --nx-color-radio-checkbox-selected: var(--nx-swatch-purple-80);
+
     //NxProgressBar
     --nx-color-progress-bar-text-error: var(--nx-swatch-red-80);
     --nx-color-progress-bar-counter-text-success: var(--nx-swatch-indigo-05);
@@ -352,6 +366,14 @@
 
     // NxTree
     --nx-color-tree-line: var(--nx-swatch-indigo-70);
+
+    // Radio Checkbox
+    --nx-color-radio-disabled-ring: var(--nx-color-disabled);
+    --nx-color-radio-disabled-dot: var(--nx-color-disabled);
+    --nx-color-radio-disabled-checked-dot: var(--nx-color-component-background);
+    --nx-color-checkbox-disabled-background: var(--nx-color-disabled);
+    --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
+    --nx-color-checkbox-disabled-icon: var(--nx-color-component-background);
   }
 
   // Deprecated variables

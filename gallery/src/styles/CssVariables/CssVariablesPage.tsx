@@ -230,6 +230,9 @@ const CssVariablesPage = () => {
               as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
             </NxWarningAlert>
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-width-radio-checkbox">
+            The standard radio or checkbox border width.
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
           </PropertyDocItem>
@@ -249,6 +252,9 @@ const CssVariablesPage = () => {
             </NxTable.Row>
           </NxTable.Head>
           <NxTable.Body>
+            <ColorDocRow colorVar="--nx-color-disabled">
+              Generic disabled color.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-border">
               Color for standard higher-level borders
             </ColorDocRow>
@@ -699,6 +705,32 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-tree-line">
               The color of the lines which connect items within <NxCode>NxTree</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-checkbox-selected">
+              The default selected color for radios and checkboxes.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-border">
+              The default border color for disabled <NxCode>NxRadio</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-ring">
+              The default ring color for disabled <NxCode>NxRadio</NxCode>.
+              The ring is the annulus between the dot and the border of the radio.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-dot">
+              The default dot color for disabled <NxCode>NxRadio</NxCode>.
+              The dot is the innermost circle in the concentric circles of the radio.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-checkbox-disabled-background">
+              The default background color for disabled <NxCode>NxCheckbox</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-checked-dot">
+              The default background color for disabled and checked <NxCode>NxRadio</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-checkbox-disabled-inner-border">
+              The default inner border color for disabled <NxCode>NxCheckbox</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-checkbox-disabled-icon">
+              The default checkmark icon color for disabled <NxCode>NxCheckbox</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
