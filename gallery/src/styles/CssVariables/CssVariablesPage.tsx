@@ -230,6 +230,9 @@ const CssVariablesPage = () => {
               as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
             </NxWarningAlert>
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-width-radio-checkbox">
+            The standard radio or checkbox border width.
+          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
           </PropertyDocItem>
@@ -249,6 +252,9 @@ const CssVariablesPage = () => {
             </NxTable.Row>
           </NxTable.Head>
           <NxTable.Body>
+            <ColorDocRow colorVar="--nx-color-disabled">
+              Generic disabled color.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-border">
               Color for standard higher-level borders
             </ColorDocRow>
@@ -267,6 +273,12 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-site-background">
               The background color of the page as a whole within RSC styles.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-background-success">
+              The background color used by certain components to signify success.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-background-error">
+              The background color used by certain components to signify an error.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-form-element-border">
               <NxWarningAlert>
@@ -548,6 +560,41 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-dropdown-menu-background-active">
               The default active state background color of <NxCode>nx-dropdown-menu</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-background">
+              The background color for <NxCode>NxMeter</NxCode>, <NxCode>NxProgressBar</NxCode> and
+              {' '}<NxCode>NxBinaryDonutChart</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-fill">
+              The fill color for <NxCode>NxMeter</NxCode>, <NxCode>NxProgressBar</NxCode> and
+              {' '}<NxCode>NxBinaryDonutChart</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-text-success">
+              The text color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> is at 100%.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-text-error">
+              The text color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> has an
+              error.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-icon-error">
+              The icon color for <NxCode>NxProgressBar</NxCode>'s label when <NxCode>NxProgressBar</NxCode> has an
+              error. This color differs from <NxCode>--nx-color-progress-bar-text-error</NxCode> in dark mode.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-text-success">
+              The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is at
+              100%.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-border-success">
+              The border color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> is at
+              100%. In dark mode, the border is the same color as the counter's background.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-text-error">
+              The text color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> has an
+              error.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-progress-bar-counter-border-error">
+              The border color for <NxCode>NxProgressBar</NxCode>'s counter when <NxCode>NxProgressBar</NxCode> has an
+              error. In dark mode, the border is the same color as the counter's background.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-blockquote-background">
               The default background color of <NxCode>nx-blockquote</NxCode> class.
             </ColorDocRow>
@@ -638,6 +685,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-background-hover">
               The background color of the dismiss button of <NxCode>NxFileUpload</NxCode> on hover.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-border-hover">
+              The border color of the dismiss button of <NxCode>NxFileUpload</NxCode> on hover.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-file-upload-selected-dismiss-background-active">
               The background color of the dismiss button of <NxCode>NxFileUpload</NxCode> on click.
             </ColorDocRow>
@@ -652,6 +702,35 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
               The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tree-line">
+              The color of the lines which connect items within <NxCode>NxTree</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-checkbox-selected">
+              The default selected color for radios and checkboxes.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-border">
+              The default border color for disabled <NxCode>NxRadio</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-ring">
+              The default ring color for disabled <NxCode>NxRadio</NxCode>.
+              The ring is the annulus between the dot and the border of the radio.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-dot">
+              The default dot color for disabled <NxCode>NxRadio</NxCode>.
+              The dot is the innermost circle in the concentric circles of the radio.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-checkbox-disabled-background">
+              The default background color for disabled <NxCode>NxCheckbox</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-radio-disabled-checked-dot">
+              The default background color for disabled and checked <NxCode>NxRadio</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-checkbox-disabled-inner-border">
+              The default inner border color for disabled <NxCode>NxCheckbox</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-checkbox-disabled-icon">
+              The default checkmark icon color for disabled <NxCode>NxCheckbox</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
