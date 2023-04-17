@@ -732,6 +732,66 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-checkbox-disabled-icon">
               The default checkmark icon color for disabled <NxCode>NxCheckbox</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-negative-background">
+              The default background color of a negative <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-negative-border">
+              The default border color of a negative <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-negative-text">
+              The default text color of a negative <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-negative-icon-background">
+              The default background color of the status icon of a negative <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-negative-icon-border">
+              The default border color of the status icon of a negative <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-intermediate-background">
+              The default background color of an intermediate <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-intermediate-border">
+              The default border color of an intermediate <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-intermediate-text">
+              The default text color of an intermediate <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-intermediate-icon-background">
+              The default background color of the status icon of an intermediate <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-intermediate-icon-border">
+              The default border color of the status icon of an intermediate <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-positive-background">
+              The default background color of a positive <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-positive-border">
+              The default border color of a positive <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-positive-text">
+              The default text color of a positive <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-positive-icon-background">
+              The default background color of the status icon of a positive <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-positive-icon-border">
+              The default border color of the status icon of a positive <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-error-background">
+              The default background color of an error <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-error-border">
+              The default border color of an error <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-error-text">
+              The default text color of an error <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-error-icon-background">
+              The default background color of the status icon of an error <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-status-indicator-error-icon-border">
+              The default border color of the status icon of an error <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
