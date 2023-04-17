@@ -35,10 +35,9 @@
   }
 
   .nx-btn--clear {
-    @include nx-button-helpers.small-icon-btn;
+    @include nx-button-helpers.small-icon-btn("1px");
 
     margin: 0;
-    padding: calc(var(--nx-spacing-base) - var(--nx-padding-offset-filter-clear-button)) 0;
     position: absolute;
     right: 6px;
 
