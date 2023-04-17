@@ -27,6 +27,8 @@
   padding: var(--nx-spacing-6x);
 }
 
+// this is the example's code that is found inside of the accordion- most of its styling is under nx-pre 
+// (lib > src > scss-shared > _nx-text-helpers.scss under %nx-pre and code)
 .gallery-example-code code {
   // Our current react-syntax-highlighter theme specifies various OS-specific fonts, which cause visual test
   // discrepancies, so we override with an open source font that we provide
@@ -65,6 +67,7 @@
   }
 }
 
+// the link icon beside the title
 .gallery-tile__deep-link {
   > .nx-icon {
     vertical-align: baseline;

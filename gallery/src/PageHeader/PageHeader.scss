@@ -5,10 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
- // JASON- Gallery header
+ // JASON- Gallery page header - if you wanted to play around with it. The logo svgs are located in this PageHeader folder
+ // as well, but would need to be changed inside of PageHeader.tsx (also inside this folder, which I can show you if needed)
 .gallery-page-header {
   $logo-image-size: 40px;
 
+  // styles that would affecte the entire header (ie. background color, text color, etc)
   > .nx-page-header__inner {
     align-items: center;
   }
