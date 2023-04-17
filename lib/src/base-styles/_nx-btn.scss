@@ -6,40 +6,55 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
+@use '../scss-shared/nx-button-helpers';
 
-%button-focus-outline {
-  outline-offset: -5px;
-  outline: 2px solid;
+@mixin solid-btn-styling($variant) {
+  background-color: var(--nx-color-#{$variant}-button-background);
+  border-color: transparent;
+  color: var(--nx-color-#{$variant}-button-text);
+
+  &:hover {
+    background-color: var(--nx-color-#{$variant}-button-background-hover);
+    color: var(--nx-color-#{$variant}-button-text);
+  }
+
+  &:focus:not(:active) {
+    outline-color: var(--nx-color-#{$variant}-button-focus-outline);
+    outline-offset: calc(0px - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
+  }
+
+  &:active {
+    background-color: var(--nx-color-#{$variant}-button-background-active);
+    border-color: transparent;
+    color: var(--nx-color-#{$variant}-button-text);
+  }
 }
 
 .nx-btn {
   @include nx-text-helpers.semi-bold;
   @include nx-container-helpers.container-horizontal;
 
-  background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-swatch-blue-40);
+  background-color: var(--nx-color-secondary-button-background);
+  border: var(--nx-border-width-button) solid var(--nx-color-secondary-button-border);
   border-radius: var(--nx-border-radius);
-  color: var(--nx-swatch-blue-40);
+  color: var(--nx-color-secondary-button-text);
   cursor: pointer;
   display: inline-block;
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
   margin: 0 var(--nx-spacing-6x);
-  padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-6x) - 1px);
+  padding: calc(var(--nx-spacing-2x) - var(--nx-border-width-button)) calc(var(--nx-spacing-6x) - var(--nx-border-width-button));
   text-align: center;
   text-decoration: none;
 
   &:hover {
-    background-color: var(--nx-swatch-blue-90);
-  }
-
-  &.nx-btn--secondary:hover {
-    color: var(--nx-swatch-blue-30);
+    background-color: var(--nx-color-secondary-button-background-hover);
+    color: var(--nx-color-secondary-button-text-hover);
   }
 
   &:focus:not(:active) {
-    @extend %button-focus-outline;
-    outline-color: var(--nx-swatch-blue-30);
+    @include nx-button-helpers.bordered-btn-focus-outline("secondary");
   }
 
   &:focus-visible {
@@ -47,7 +62,9 @@
   }
 
   &:active {
-    background-color: var(--nx-swatch-blue-95);
+    background-color: var(--nx-color-secondary-button-background-active);
+    border-color: var(--nx-color-secondary-button-border-active);
+    color: var(--nx-color-secondary-button-text);
   }
 
   &.hidden {
@@ -63,64 +80,35 @@
 }
 
 .nx-btn--primary {
-  background-color: var(--nx-swatch-blue-40);
-  border-color: transparent;
-  color: var(--nx-swatch-white);
-
-  &:hover {
-    background-color: var(--nx-swatch-blue-30);
-  }
-
-  &:focus:not(:active) {
-    @extend %button-focus-outline;
-    outline-color: var(--nx-swatch-white);
-  }
-
-  &:active {
-    background-color:  var(--nx-swatch-blue-50);
-  }
+  @include solid-btn-styling("primary");
 }
 
 .nx-btn--tertiary {
   background-color: transparent;
-  border-color: var(--nx-swatch-grey-50);
-  color: var(--nx-color-text-dark);
+  border-color: var(--nx-color-tertiary-button-border);
+  color: var(--nx-color-tertiary-button-text);
 
   &:hover {
-    background-color: var(--nx-swatch-indigo-90);
+    background-color: var(--nx-color-tertiary-button-background-hover);
+    color: var(--nx-color-tertiary-button-text);
   }
 
   &:focus:not(:active) {
-    @extend %button-focus-outline;
-    outline-color: var(--nx-swatch-grey-40);
+    outline-color: var(--nx-color-tertiary-button-focus-outline);
   }
 
   &:active {
-    background-color: var(--nx-swatch-indigo-97);
-    border-color: var(--nx-swatch-grey-60);
+    background-color: var(--nx-color-tertiary-button-background-active);
+    border-color: var(--nx-color-tertiary-button-border-active);
+    color: var(--nx-color-tertiary-button-text);
   }
 }
 
 .nx-btn--error {
-  background-color: var(--nx-color-alert-error);
-  border-color: transparent;
-  color: var(--nx-swatch-white);
-
-  &:hover {
-    background-color: var(--nx-swatch-red-30);
-  }
-
-  &:focus:not(:active) {
-    @extend %button-focus-outline;
-    outline-color: var(--nx-swatch-white);
-  }
-
-  &:active {
-    background-color: var(--nx-swatch-pink-40);
-  }
+  @include solid-btn-styling("error");
 
   .nx-icon {
-    color: var(--nx-swatch-white);
+    color: var(--nx-color-error-button-text);
     height: 16px;
   }
 }
@@ -128,10 +116,10 @@
 .nx-btn {
   &.disabled, &[disabled] {
     &, &:hover, &:focus {
-      background-color: var(--nx-color-interactive-background-disabled);
-      border-color: var(--nx-color-interactive-border-disabled);
+      background-color: var(--nx-color-disabled-button-background);
+      border-color: var(--nx-color-disabled-button-border);
       outline: 0;
-      color: var(--nx-color-text-disabled);
+      color: var(--nx-color-disabled-button-text);
       cursor: default;
     }
   }
@@ -140,19 +128,22 @@
 .nx-btn--icon-only {
   background-color: transparent;
   border-color: transparent;
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
 
   &:hover {
     background-color: var(--nx-color-interactive-background-hover);
+    color: var(--nx-color-text-stark);
   }
 
   &:focus:not(:active) {
-    outline: 2px solid var(--nx-color-interactive-border-focus);
-    outline-offset: -2px;
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-button-icon-only-border-focus);
+    outline-offset: calc(0px - var(--nx-focus-outline-width));
   }
 
   &:active {
     background-color: var(--nx-color-interactive-background-active);
+    border-color: transparent;
+    color: var(--nx-color-text-stark);
   }
 
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out
@@ -170,6 +161,7 @@
     &, &:hover, &:focus {
       background-color: transparent;
       border-color: transparent;
+      color: var(--nx-color-text-disabled);
       outline: none;
     }
   }

@@ -52,6 +52,10 @@
   --nx-border-default: 1px solid var(--nx-color-border);
   --nx-border-2x: 2px solid var(--nx-color-border);
   --nx-border-secondary: 1px solid var(--nx-color-border-secondary);
+  --nx-border-width-button: 1px;
+
+  --nx-focus-outline-width: 2px;
+  --nx-focus-outline-inset: 2px;
 
   // for nx-grid
   --nx-border-grid: var(--nx-border-2x);
@@ -61,8 +65,19 @@
                             0 1px 2px 0 rgba(91, 95, 141, 0.2),
                             0 1px 1px 0 rgba(124, 128, 179, 0.2);
 
+  // Radios and Checkboxes
+  --nx-border-width-radio-checkbox: 1px;
+
+  //NxFileUpload
+  --nx-border-width-file-upload-selected-file: 1px;
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-border-grid: var(--nx-border-default);
+    --nx-border-width-button: 2px;
+    --nx-border-width-file-upload-selected-file: 2px;
+
+    // Radios and Checkboxes
+    --nx-border-width-radio-checkbox: 2px;
   }
 
   // Deprecated variables

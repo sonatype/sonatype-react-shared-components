@@ -8,6 +8,7 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxDateInput', function() {
   const {
+    blurElement,
     focusTest,
     focusAndHoverTest,
     hoverTest,
@@ -49,8 +50,8 @@ describe('NxDateInput', function() {
               validatableComponentSelector,
               inputSelector
           );
-
-      await inputElement.evaluate(e => { e.value = '2019-01-01'; });
+      await inputElement.type('01-01-2021');
+      await blurElement(inputElement);
       await checkScreenshot(targetElement);
     });
 
@@ -61,8 +62,8 @@ describe('NxDateInput', function() {
               inputSelector
           );
 
-      await inputElement.evaluate(e => { e.value = '2019-01-01'; });
-
+      await inputElement.type('01-01-2019');
+      await blurElement(inputElement);
       await checkScreenshot(targetElement, 300, 74);
     });
   });
