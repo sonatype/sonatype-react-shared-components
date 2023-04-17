@@ -236,10 +236,6 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-padding-offset-filter-clear-button">
-            The padding offset used to calculate the correct height of the clear button
-            in <NxCode>NxFilterInput</NxCode>.
-          </PropertyDocItem>
         </dl>
       </GalleryTile>
       <GalleryTile title="Semantic Color Properties">
