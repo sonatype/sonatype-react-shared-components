@@ -108,6 +108,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       // Modal autofocus is not implemented because of:
       // https://stackoverflow.com/questions/60216787/react-autofocus-attribute-is-not-rendered
       getFirstVisibleFocusableElement(dialogEl).focus();
+      console.log('Focus on Load');
 
       // Focus on previously focused element.
       return () => {
@@ -174,20 +175,23 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       }
     };
 
-    // Prevent leak when focus goes out of the dialog modal.
+    // Prevent leak when focus goes out of the dialog modal:
+    // Set focus to first focusable element in this dialog if and only if
+    // the focus is leaving from this dialog to something that is not inside a dialog modal.
     const handleFocusOut = (event: FocusEvent) => {
       const dialogEl = dialogRef.current;
       if (dialogEl) {
-        const departingFocusIsInsideDialog = !!(
+        const departingFocusIsInsideThisDialog = !!(
           event.target
           && (event.target as HTMLElement).closest(DIALOG_MODAL_SELECTOR) === dialogEl
         );
-        const receivingFocusIsInsideDialog = !!(
+        const receivingFocusIsInsideAnotherDialogModal = !!(
           event.relatedTarget
-          && (event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR)
+          && (event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR) === dialogEl
         );
-        const focusIsLeavingDialog = departingFocusIsInsideDialog && !receivingFocusIsInsideDialog;
-        if (focusIsLeavingDialog) {
+        // Focus is leaving from this dialog to something that is not inside a dialog modal.
+        const focusIsLeaving = departingFocusIsInsideThisDialog && !receivingFocusIsInsideAnotherDialogModal;
+        if (focusIsLeaving) {
           getFirstVisibleFocusableElement(dialogEl).focus();
         }
       }
