@@ -11,9 +11,9 @@ import TabContext from './TabContext';
 
 import { NxTabProps, nxTabPropTypes } from './types';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import { modifierKeyIsPressed } from '../../util/keyboardUtil';
 export { NxTabProps };
 
-const MODIFIER_KEYS = ['Alt', 'AltGraph', 'Control', 'Meta', 'OS', 'Shift'];
 const SPACE = ' ';
 
 const NxTab = function NxTabElement(props: NxTabProps) {
@@ -47,15 +47,8 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     }
   }
 
-  function preventDefaultWhenModifierKeyIsNotPressed(evt: KeyboardEvent) {
-    const modifierKeyIsPressed = MODIFIER_KEYS.some((key) => evt.getModifierState(key));
-    if (!modifierKeyIsPressed) {
-      evt.preventDefault();
-    }
-  }
-
   function handleKeyDown(event: React.KeyboardEvent<HTMLLIElement>) {
-    if (event.isDefaultPrevented()) {
+    if (event.isDefaultPrevented() || modifierKeyIsPressed(event)) {
       return;
     }
 
@@ -86,7 +79,7 @@ const NxTab = function NxTabElement(props: NxTabProps) {
     const nextElement = getNextElementFromEventKey(event.key);
 
     if (nextElement) {
-      preventDefaultWhenModifierKeyIsNotPressed(event.nativeEvent);
+      event.preventDefault();
       (nextElement as HTMLElement).focus();
     }
   }

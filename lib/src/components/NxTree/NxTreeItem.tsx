@@ -13,8 +13,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { TreeItemFocusState, TreeKeyNavContextType, ItemProps, itemPropTypes } from './types';
 import TreeKeyNavContext from './TreeKeyNavContext';
-
-const MODIFIER_KEYS = ['Alt', 'AltGraph', 'Control', 'Meta', 'OS', 'Shift'];
+import { modifierKeyIsPressed } from '../../util/keyboardUtil';
 
 export default function NxTreeItem(props: ItemProps) {
   const {
@@ -102,11 +101,7 @@ export default function NxTreeItem(props: ItemProps) {
 
   function stopPropAndPreventDefault(evt: KeyboardEvent) {
     evt.stopPropagation();
-
-    const modifierKeyIsPressed = MODIFIER_KEYS.some((key) => evt.getModifierState(key));
-    if (!modifierKeyIsPressed) {
-      evt.preventDefault();
-    }
+    evt.preventDefault();
   }
 
   // handle parent focusing or unfocusing of the subtree rooted at this item
@@ -140,6 +135,10 @@ export default function NxTreeItem(props: ItemProps) {
   }, []);
 
   function onKeyDown(evt: KeyboardEvent<HTMLLIElement>) {
+    if (modifierKeyIsPressed(evt)) {
+      return;
+    }
+
     switch (evt.key) {
       case 'ArrowUp':
         stopPropAndPreventDefault(evt);
