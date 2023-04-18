@@ -49,6 +49,7 @@
 
   &:focus:not(:active) {
     outline-color: var(--nx-color-interactive-border-focus);
+    outline-offset: calc(0px - 1px - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
   }
 
   &:active {
