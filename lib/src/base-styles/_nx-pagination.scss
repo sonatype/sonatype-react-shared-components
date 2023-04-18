@@ -37,7 +37,7 @@
       }
 
       &:active {
-        background-color: var(--nx-color-pagination-background-active);
+        background-color: var(--nx-color-tertiary-button-background-active);
         border-color: var(--nx-color-pagination-tertiary-border-active);
         outline: none;
       }
@@ -71,7 +71,7 @@
   }
 
   &:active {
-    background-color: var(--nx-color-pagination-background-active);
+    background-color: var(--nx-color-tertiary-button-background-active);
     color: var(--nx-color-text-stark);
     outline: none;
   }
@@ -80,13 +80,13 @@
     &, &:hover {
       background-color: var(--nx-color-primary-button-background);
       border-color: transparent;
-      color: var(--nx-color-pagination-focus-selected);
+      color: var(--nx-color-primary-button-text);
       cursor: default;
       font-weight: 600;
     }
 
     &:focus {
-      outline: 2px solid var(--nx-color-pagination-focus-selected);
+      outline: 2px solid var(--nx-color-primary-button-focus-outline);
       outline-offset: -4px;
     }
   }
