@@ -706,6 +706,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-pagination-tertiary-border-active">
               The border color of tertiary buttons in <NxCode>NxPagination</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tree-line">
+              The color of the lines which connect items within <NxCode>NxTree</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-radio-checkbox-selected">
               The default selected color for radios and checkboxes.
             </ColorDocRow>

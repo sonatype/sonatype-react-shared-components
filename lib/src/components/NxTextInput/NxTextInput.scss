@@ -126,7 +126,12 @@
       &::placeholder {
         color: var(--nx-color-text-disabled);
       }
+
+      &::-webkit-datetime-edit {
+        color: var(--nx-color-text-disabled);
+      }
     }
+
     .nx-icon {
       display: none;
     }
