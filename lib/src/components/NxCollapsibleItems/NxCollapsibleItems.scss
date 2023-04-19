@@ -125,7 +125,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 
   &:active:not([disabled]),
   &:active:not([disabled]):focus {
-    background-color: var(--nx-color-collapsible-items-background-active);
+    background-color: var(--nx-swatch-grey-95);
     outline: none;
   }
 }
