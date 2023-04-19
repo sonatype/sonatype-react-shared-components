@@ -258,6 +258,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-disabled">
               Generic disabled color.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-disabled-background">
+              Generic disabled background color.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-border">
               Color for standard higher-level borders
             </ColorDocRow>
