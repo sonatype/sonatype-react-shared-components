@@ -86,7 +86,7 @@
     }
 
     &:focus {
-      outline: 2px solid var(--nx-color-primary-button-focus-outline);
+      outline: var(--nx-focus-outline-width) solid var(--nx-color-primary-button-focus-outline);
       outline-offset: -4px;
     }
   }
