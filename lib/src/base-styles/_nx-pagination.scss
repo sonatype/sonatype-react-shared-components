@@ -32,7 +32,7 @@
       }
 
       &:active {
-        background-color: var(--nx-swatch-grey-97);
+        background-color: var(--nx-swatch-grey-95);
         border-color: var(--nx-swatch-grey-20);
         outline: none;
       }
@@ -66,7 +66,7 @@
   }
 
   &:active {
-    background-color: var(--nx-swatch-grey-97);
+    background-color: var(--nx-swatch-grey-95);
     color: var(--nx-color-text);
     outline: none;
   }
@@ -78,7 +78,7 @@
       color: var(--nx-color-component-background);
       cursor: default;
     }
-    
+
     &:focus {
       outline: 2px solid var(--nx-color-component-background);
       outline-offset: -4px;
