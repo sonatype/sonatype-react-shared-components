@@ -10,11 +10,6 @@
 @use '../scss-shared/_nx-table-variables';
 @use '../scss-shared/nx-dark-mode-helpers';
 
-// %table-outline {
-//   outline-offset: -2px;
-//   outline: 2px solid;
-// }
-
 .nx-table {
   background-color: var(--nx-color-component-background);
   border-spacing: 0;
@@ -86,9 +81,9 @@
 
     &.nx-clickable {
       &:hover {
+        color: var(--nx-color-table-row-text-interactive);
         outline: var(--nx-outline-width-table-row-hover) solid var(--nx-color-border);
         outline-offset: calc(0px - var(--nx-focus-outline-inset));
-        color: var(--nx-color-table-row-text-interactive);
         > .nx-cell {
           background-color: var(--nx-color-table-row-background-hover);
         }
