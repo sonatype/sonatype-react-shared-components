@@ -37,8 +37,8 @@
       }
 
       &:active {
-        background-color: var(--nx-color-tertiary-button-background-active);
-        border-color: var(--nx-color-pagination-tertiary-border-active);
+        background-color: var(--nx-swatch-grey-95);
+        border-color: var(--nx-swatch-grey-20);
         outline: none;
       }
 
@@ -71,8 +71,8 @@
   }
 
   &:active {
-    background-color: var(--nx-color-tertiary-button-background-active);
-    color: var(--nx-color-text-stark);
+    background-color: var(--nx-swatch-grey-95);
+    color: var(--nx-color-text);
     outline: none;
   }
 
