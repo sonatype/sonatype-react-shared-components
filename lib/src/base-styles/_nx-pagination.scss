@@ -62,7 +62,7 @@
 
   &:hover {
     background-color: var(--nx-color-interactive-background-hover);
-    color: var(--nx-color-text);
+    color: var(--nx-color-pagination-tertiary-text-hover);
   }
 
   &:focus {
@@ -72,7 +72,7 @@
 
   &:active {
     background-color: var(--nx-color-interactive-background-active);
-    color: var(--nx-color-text-stark);
+    color: var(--nx-color-pagination-tertiary-text-active);
     outline: none;
   }
 

@@ -180,7 +180,9 @@
 
   // NxPagination
   --nx-color-pagination-tertiary-border-hover: var(--nx-color-interactive-border-hover);
+  --nx-color-pagination-tertiary-text-hover: var(--nx-color-text-stark);
   --nx-color-pagination-tertiary-border-active: var(--nx-swatch-grey-20);
+  --nx-color-pagination-tertiary-text-active: var(--nx-color-text);
 
   //NxFileUpload
   --nx-color-file-upload-selected-background: var(--nx-swatch-indigo-97);
@@ -355,7 +357,9 @@
 
     // NxPagination
     --nx-color-pagination-tertiary-border-hover: var(--nx-swatch-indigo-40);
+    --nx-color-pagination-tertiary-text-hover: var(--nx-color-text);
     --nx-color-pagination-tertiary-border-active: var(--nx-swatch-indigo-65);
+    --nx-color-pagination-tertiary-text-active: var(--nx-color-text-stark);
 
     //NxFileUpload
     --nx-color-file-upload-selected-background: var(--nx-swatch-indigo-15);
