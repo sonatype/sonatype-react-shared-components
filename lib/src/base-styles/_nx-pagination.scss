@@ -33,12 +33,12 @@
 
       &:hover {
         background-color: var(--nx-color-interactive-background-hover);
-        border-color: var(--nx-color-interactive-border-hover);
+        border-color: var(--nx-color-pagination-tertiary-border-hover);
       }
 
       &:active {
-        background-color: var(--nx-swatch-grey-95);
-        border-color: var(--nx-swatch-grey-20);
+        background-color: var(--nx-color-interactive-background-active);
+        border-color: var(--nx-color-pagination-tertiary-border-active);
         outline: none;
       }
 
@@ -71,8 +71,8 @@
   }
 
   &:active {
-    background-color: var(--nx-swatch-grey-95);
-    color: var(--nx-color-text);
+    background-color: var(--nx-color-interactive-background-active);
+    color: var(--nx-color-text-stark);
     outline: none;
   }
 
