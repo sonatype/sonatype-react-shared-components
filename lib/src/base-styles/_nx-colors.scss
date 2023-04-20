@@ -206,6 +206,31 @@
   // NxTree
   --nx-color-tree-line: var(--nx-swatch-grey-50);
 
+  // NxStatusIndicator
+  --nx-color-status-indicator-negative-background: var(--nx-swatch-grey-95);
+  --nx-color-status-indicator-negative-border: var(--nx-swatch-grey-30);
+  --nx-color-status-indicator-negative-text: var(--nx-swatch-grey-10);
+  --nx-color-status-indicator-negative-icon-background: var(--nx-swatch-grey-60);
+  --nx-color-status-indicator-negative-icon-border: var(--nx-swatch-grey-20);
+
+  --nx-color-status-indicator-intermediate-background: var(--nx-swatch-blue-95);
+  --nx-color-status-indicator-intermediate-border: var(--nx-swatch-blue-30);
+  --nx-color-status-indicator-intermediate-text: var(--nx-swatch-blue-10);
+  --nx-color-status-indicator-intermediate-icon-background: var(--nx-swatch-blue-60);
+  --nx-color-status-indicator-intermediate-icon-border: var(--nx-swatch-blue-30);
+
+  --nx-color-status-indicator-positive-background: var(--nx-swatch-green-95);
+  --nx-color-status-indicator-positive-border: var(--nx-color-alert-success);
+  --nx-color-status-indicator-positive-text: var(--nx-swatch-green-10);
+  --nx-color-status-indicator-positive-icon-background: var(--nx-swatch-green-45);
+  --nx-color-status-indicator-positive-icon-border: var(--nx-color-alert-success);
+
+  --nx-color-status-indicator-error-background: var(--nx-swatch-red-95);
+  --nx-color-status-indicator-error-border: var(--nx-color-alert-error);
+  --nx-color-status-indicator-error-text: var(--nx-swatch-red-10);
+  --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-65);
+  --nx-color-status-indicator-error-icon-border: var(--nx-color-alert-error);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
@@ -395,6 +420,31 @@
     --nx-color-checkbox-disabled-background: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-icon: var(--nx-color-component-background);
+
+    // NxStatusIndicator
+    --nx-color-status-indicator-negative-background: var(--nx-swatch-grey-80);
+    --nx-color-status-indicator-negative-border: var(--nx-color-status-indicator-negative-background);
+    --nx-color-status-indicator-negative-text: var(--nx-swatch-indigo-10);
+    --nx-color-status-indicator-negative-icon-background: var(--nx-swatch-grey-30);
+    --nx-color-status-indicator-negative-icon-border: var(--nx-color-status-indicator-negative-icon-background);
+
+    --nx-color-status-indicator-intermediate-background: var(--nx-swatch-blue-80);
+    --nx-color-status-indicator-intermediate-border: var(--nx-color-status-indicator-intermediate-background);
+    --nx-color-status-indicator-intermediate-text: var(--nx-swatch-indigo-10);
+    --nx-color-status-indicator-intermediate-icon-background: var(--nx-swatch-blue-30);
+    --nx-color-status-indicator-intermediate-icon-border: var(--nx-color-status-indicator-intermediate-icon-background);
+
+    --nx-color-status-indicator-positive-background: var(--nx-swatch-green-85);
+    --nx-color-status-indicator-positive-border: var(--nx-color-status-indicator-positive-background);
+    --nx-color-status-indicator-positive-text: var(--nx-swatch-indigo-10);
+    --nx-color-status-indicator-positive-icon-background: var(--nx-swatch-green-30);
+    --nx-color-status-indicator-positive-icon-border: var(--nx-color-status-indicator-positive-icon-background);
+
+    --nx-color-status-indicator-error-background: var(--nx-swatch-red-85);
+    --nx-color-status-indicator-error-border: var(--nx-color-status-indicator-error-background);
+    --nx-color-status-indicator-error-text: var(--nx-swatch-indigo-10);
+    --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-40);
+    --nx-color-status-indicator-error-icon-border: var(--nx-color-status-indicator-error-icon-background);
   }
 
   // Deprecated variables
