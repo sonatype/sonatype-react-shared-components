@@ -7,6 +7,7 @@
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-hide-checkbox-helper';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-tag {
   @include nx-text-helpers.semi-bold;
@@ -14,10 +15,10 @@
 
   align-items: center;
   background-color: var(--nx-selectable-color-dark);
-  border: 1px solid var(--nx-selectable-color-dark);
+  border: var(--nx-border-width-tag) solid var(--nx-selectable-color-dark);
   border-radius: 16px;
   box-sizing: border-box;
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-tag-text);
   cursor: default;
   display: inline-flex;
   font-size: var(--nx-font-size-s);
@@ -37,7 +38,8 @@
   background-color: var(--nx-selectable-color-light);
 
   &:hover {
-    border-color: var(--nx-color-interactive-border-hover);
+    border-color: var(--nx-selectable-color-hover-border);
+    background-color: var(--nx-selectable-color-hover-background);
   }
 
   &:focus-within {

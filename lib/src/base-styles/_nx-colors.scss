@@ -231,6 +231,49 @@
   --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-65);
   --nx-color-status-indicator-error-icon-border: var(--nx-color-alert-error);
 
+  // NxSelectableColors
+  --nx-color-tag-text: var(--nx-color-text-stark);
+  --nx-color-selectable-color-sky-dark: var(--nx-swatch-blue-80);
+  --nx-color-selectable-color-sky-light: var(--nx-swatch-blue-90);
+  --nx-color-selectable-color-sky-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-sky-hover-background: var(--nx-color-selectable-color-sky-light);
+  --nx-color-selectable-color-purple-dark: var(--nx-swatch-purple-80);
+  --nx-color-selectable-color-purple-light: var(--nx-swatch-purple-95);
+  --nx-color-selectable-color-purple-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-purple-hover-background: var(--nx-color-selectable-color-purple-light);
+  --nx-color-selectable-color-pink-dark: var(--nx-swatch-pink-80);
+  --nx-color-selectable-color-pink-light: var(--nx-swatch-pink-95);
+  --nx-color-selectable-color-pink-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-pink-hover-background: var(--nx-color-selectable-color-pink-light);
+  --nx-color-selectable-color-blue-dark: var(--nx-swatch-teal-45);
+  --nx-color-selectable-color-blue-light: var(--nx-swatch-teal-90);
+  --nx-color-selectable-color-blue-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-blue-hover-background: var(--nx-color-selectable-color-blue-light);
+  --nx-color-selectable-color-red-dark: var(--nx-swatch-red-75);
+  --nx-color-selectable-color-red-light: var(--nx-swatch-red-90);
+  --nx-color-selectable-color-red-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-red-hover-background: var(--nx-color-selectable-color-red-light);
+  --nx-color-selectable-color-turquoise-dark: var(--nx-swatch-turquoise-40);
+  --nx-color-selectable-color-turquoise-light: var(--nx-swatch-turquoise-95);
+  --nx-color-selectable-color-turquoise-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-turquoise-hover-background: var(--nx-color-selectable-color-turqyoise-light);
+  --nx-color-selectable-color-orange-dark: var(--nx-swatch-orange-55);
+  --nx-color-selectable-color-orange-light: var(--nx-swatch-orange-95);
+  --nx-color-selectable-color-orange-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-orange-hover-background: var(--nx-color-selectable-color-orange-light);
+  --nx-color-selectable-color-yellow-dark: var(--nx-swatch-yellow-60);
+  --nx-color-selectable-color-yellow-light: var(--nx-swatch-yellow-95);
+  --nx-color-selectable-color-yellow-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-yellow-hover-background: var(--nx-color-selectable-color-yellow-light);
+  --nx-color-selectable-color-kiwi-dark: var(--nx-swatch-green-80);
+  --nx-color-selectable-color-kiwi-light: var(--nx-swatch-green-95);
+  --nx-color-selectable-color-kiwi-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-kiwi-hover-background: var(--nx-color-selectable-color-kiwi-light);
+  --nx-color-selectable-color-indigo-dark: var(--nx-swatch-indigo-70);
+  --nx-color-selectable-color-indigo-light: var(--nx-swatch-indigo-95);
+  --nx-color-selectable-color-indigo-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-selectable-color-indigo-hover-background: var(--nx-color-selectable-color-indigo-light);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
@@ -445,6 +488,49 @@
     --nx-color-status-indicator-error-text: var(--nx-swatch-indigo-10);
     --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-40);
     --nx-color-status-indicator-error-icon-border: var(--nx-color-status-indicator-error-icon-background);
+
+    // NxSelectableColors
+    --nx-color-tag-text: var(--nx-swatch-indigo-10);
+    --nx-color-selectable-color-sky-dark: var(--nx-swatch-blue-80);
+    --nx-color-selectable-color-sky-light: var(--nx-swatch-blue-95);
+    --nx-color-selectable-color-sky-hover-border: var(--nx-swatch-blue-75);
+    --nx-color-selectable-color-sky-hover-background: var(--nx-color-selectable-color-sky-hover-border);
+    --nx-color-selectable-color-purple-dark: var(--nx-swatch-purple-80);
+    --nx-color-selectable-color-purple-light: var(--nx-swatch-purple-95);
+    --nx-color-selectable-color-purple-hover-border: var(--nx-swatch-purple-75);
+    --nx-color-selectable-color-purple-hover-background: var(--nx-color-selectable-color-purple-hover-border);
+    --nx-color-selectable-color-pink-dark: var(--nx-swatch-pink-80);
+    --nx-color-selectable-color-pink-light: var(--nx-swatch-pink-95);
+    --nx-color-selectable-color-pink-hover-border: var(--nx-swatch-pink-75);
+    --nx-color-selectable-color-pink-hover-background: var(--nx-color-selectable-color-pink-hover-border);
+    --nx-color-selectable-color-blue-dark: var(--nx-swatch-teal-45);
+    --nx-color-selectable-color-blue-light: var(--nx-swatch-teal-90);
+    --nx-color-selectable-color-blue-hover-border: var(--nx-swatch-teal-40);
+    --nx-color-selectable-color-blue-hover-background: var(--nx-color-selectable-color-blue-hover-border);
+    --nx-color-selectable-color-red-dark: var(--nx-swatch-red-70);
+    --nx-color-selectable-color-red-light: var(--nx-swatch-red-90);
+    --nx-color-selectable-color-red-hover-border: var(--nx-swatch-red-65);
+    --nx-color-selectable-color-red-hover-background: var(--nx-color-selectable-color-red-hover-border);
+    --nx-color-selectable-color-turquoise-dark: var(--nx-swatch-turquoise-40);
+    --nx-color-selectable-color-turquoise-light: var(--nx-swatch-turquoise-90);
+    --nx-color-selectable-color-turquoise-hover-border: var(--nx-swatch-turquoise-35);
+    --nx-color-selectable-color-turquoise-hover-background: var(--nx-color-selectable-color-turquoise-hover-border);
+    --nx-color-selectable-color-orange-dark: var(--nx-swatch-orange-65);
+    --nx-color-selectable-color-orange-light: var(--nx-swatch-orange-90);
+    --nx-color-selectable-color-orange-hover-border: var(--nx-swatch-orange-60);
+    --nx-color-selectable-color-orange-hover-background: var(--nx-color-selectable-color-orange-hover-border);
+    --nx-color-selectable-color-yellow-dark: var(--nx-swatch-yellow-70);
+    --nx-color-selectable-color-yellow-light: var(--nx-swatch-yellow-90);
+    --nx-color-selectable-color-yellow-hover-border: var(--nx-swatch-yellow-60);
+    --nx-color-selectable-color-yellow-hover-background: var(--nx-color-selectable-color-yellow-hover-border);
+    --nx-color-selectable-color-kiwi-dark: var(--nx-swatch-green-80);
+    --nx-color-selectable-color-kiwi-light: var(--nx-swatch-green-95);
+    --nx-color-selectable-color-kiwi-hover-border: var(--nx-swatch-green-75);
+    --nx-color-selectable-color-kiwi-hover-background: var(--nx-color-selectable-color-kiwi-hover-border);
+    --nx-color-selectable-color-indigo-dark: var(--nx-swatch-indigo-70);
+    --nx-color-selectable-color-indigo-light: var(--nx-swatch-indigo-95);
+    --nx-color-selectable-color-indigo-hover-border: var(--nx-swatch-indigo-65);
+    --nx-color-selectable-color-indigo-hover-background: var(--nx-color-selectable-color-indigo-hover-border);
   }
 
   // Deprecated variables
