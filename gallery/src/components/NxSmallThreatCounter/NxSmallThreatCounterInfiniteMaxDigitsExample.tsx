@@ -15,15 +15,15 @@ export default function NxSmallThreatCounterInfiniteMaxDigitsExample() {
                               criticalCount={1234567890}
                               severeCount={5}
                               moderateCount={1337}
-                              lowCount={0}
-                              noneCount={2353}
+                              lowCount={2352}
+                              noneCount={0}
                               unspecifiedCount={1} />
       </div>
       <div style={{ marginTop: '16px' }}>
         <NxSmallThreatCounter maxDigits={Infinity}
                               criticalCount={2}
                               severeCount={50}
-                              noneCount={23}
+                              noneCount={0}
                               unspecifiedCount={1} />
       </div>
     </>

@@ -19,13 +19,18 @@
   &--unspecified {
     color: var(--nx-swatch-white);
   }
+
+  &--severe,
+  &--moderate,
+  &--none {
+    color: var(--nx-color-text-dark);
+  }
 }
 
 .nx-small-threat-counter {
   $height: 25px;
   position: relative;
   border-radius: math.div($height, 2);
-  color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-s);
   font-weight: bold;
   height: $height;
