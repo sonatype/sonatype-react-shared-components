@@ -104,7 +104,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   border: 0;
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   cursor: pointer;
   display: grid;
   font: inherit;
@@ -125,7 +125,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 
   &:active:not([disabled]),
   &:active:not([disabled]):focus {
-    background-color: var(--nx-swatch-grey-95);
+    background-color: var(--nx-color-interactive-background-active);
     outline: none;
   }
 }
@@ -167,7 +167,7 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
   border: 0;
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   display: block;
   overflow: hidden;
 
@@ -205,7 +205,7 @@ button, a {
 
     &:hover {
       background-color: var(--nx-color-interactive-background-hover);
-      color: var(--nx-color-text-dark);
+      color: var(--nx-color-text-stark);
       font-weight: 600;
     }
 
@@ -218,6 +218,10 @@ button, a {
       @extend %collapsible-items-focus-style;
     }
 
+    &:active {
+      color: var(--nx-color-text-stark);
+    }
+
     &:active:focus {
       outline: none;
     }
@@ -225,12 +229,11 @@ button, a {
 }
 
 // sidebars don't typically have the white background and so warrant different highlight colors
-$-sidebar-interactive-background-hover: var(--nx-swatch-indigo-90);
 .nx-page-sidebar {
   button, a {
     &.nx-collapsible-items__child {
       &:hover {
-        background-color: $-sidebar-interactive-background-hover;
+        background-color: var(--nx-color-collapsible-items-sidebar-background-hover);
       }
 
       &.selected {
@@ -241,12 +244,12 @@ $-sidebar-interactive-background-hover: var(--nx-swatch-indigo-90);
 
   .nx-collapsible-items__trigger {
     &:hover:not([disabled]) {
-      background-color: $-sidebar-interactive-background-hover;
+      background-color: var(--nx-color-collapsible-items-sidebar-background-hover);
     }
 
     &:active:not([disabled]),
     &:active:not([disabled]):focus {
-      background-color: var(--nx-swatch-indigo-95);
+      background-color: var(--nx-color-collapsible-items-sidebar-background-active);
       outline: none;
     }
   }
