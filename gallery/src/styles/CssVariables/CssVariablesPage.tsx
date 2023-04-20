@@ -703,6 +703,18 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
               The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-pagination-tertiary-border-active">
+              The border color of tertiary buttons in <NxCode>NxPagination</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-pagination-tertiary-border-hover">
+              The hover border color of tertiary buttons in <NxCode>NxPagination</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-pagination-tertiary-text-hover">
+              The hover text color of tertiary buttons in <NxCode>NxPagination</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-pagination-tertiary-text-active">
+              The active text color of tertiary buttons in <NxCode>NxPagination</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-tree-line">
               The color of the lines which connect items within <NxCode>NxTree</NxCode>.
             </ColorDocRow>
@@ -791,6 +803,14 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-status-indicator-error-icon-border">
               The default border color of the status icon of an error <NxCode>NxStatusIndicator</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-collapsible-items-sidebar-background-hover">
+              The default hover background color of <NxCode>NxCollapsibleItem</NxCode> when placed
+              within <NxCode>.nx-page-sidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-collapsible-items-sidebar-background-active">
+              The default active background color of <NxCode>NxCollapsibleItem</NxCode> when placed
+              within <NxCode>.nx-page-sidebar</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>

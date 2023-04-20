@@ -37,9 +37,8 @@
   display: flex;
   margin: 0;
   outline: none;
+  padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
   text-align: left;
-  padding-right: var(--nx-spacing-4x);
-  padding-left: var(--nx-spacing-4x);
   width: 100%;
 
   &:hover {
@@ -50,6 +49,7 @@
 
   &:focus:not(:active) {
     outline-color: var(--nx-color-interactive-border-focus);
+    outline-offset: calc(0px - 1px - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
   }
 
   &:active {
@@ -65,11 +65,11 @@
 
   .nx-dropdown__toggle-caret {
     align-self: center;
-    color: var(--nx-swatch-grey-05);
   }
 
   &.disabled {
-    .nx-dropdown__toggle-caret {
+    &, &:hover, &:focus {
+      background-color: var(--nx-color-interactive-background-disabled);
       color: var(--nx-color-text-disabled);
     }
   }
