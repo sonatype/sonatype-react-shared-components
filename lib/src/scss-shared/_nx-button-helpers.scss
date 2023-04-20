@@ -6,9 +6,9 @@
  */
 
 // Icon buttons should appear smaller in certain contexts such as lists and table rows
-@mixin small-icon-btn {
-  padding-top: calc(var(--nx-spacing-base) - 1px);
-  padding-bottom: calc(var(--nx-spacing-base) - 1px);
+@mixin small-icon-btn($extra-vertical-padding: 0px) {
+  padding-top: calc(var(--nx-spacing-base) - var(--nx-border-width-button) - #{$extra-vertical-padding});
+  padding-bottom: calc(var(--nx-spacing-base) - var(--nx-border-width-button) - #{$extra-vertical-padding});
   width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-base));
 }
 
