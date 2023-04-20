@@ -732,6 +732,14 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-checkbox-disabled-icon">
               The default checkmark icon color for disabled <NxCode>NxCheckbox</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-collapsible-items-sidebar-background-hover">
+              The default hover background color of <NxCode>NxCollapsibleItem</NxCode> when placed
+              within <NxCode>.nx-page-sidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-collapsible-items-sidebar-background-active">
+              The default active background color of <NxCode>NxCollapsibleItem</NxCode> when placed
+              within <NxCode>.nx-page-sidebar</NxCode>.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
