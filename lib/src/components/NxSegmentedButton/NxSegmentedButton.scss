@@ -18,7 +18,7 @@
  @mixin dropdown-btn-styling {
    @include base-btn-styling;
    border-right-style: none;
-   padding-left: calc(var(--nx-spacing-3x) - var(--nx-border-width-button));
+   padding-left: calc(var(--nx-spacing-3x) - var(--nx-border-width));
    padding-right: calc(var(--nx-spacing-3x));
  }
 
@@ -50,7 +50,7 @@
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   // overlap the segment borders
-  margin: 0 calc(var(--nx-border-width-button) * -1) 0 0;
+  margin: 0 calc(var(--nx-border-width) * -1) 0 0;
 
   &:focus, &:hover, &:active {
     // make sure the overlapped border between the segments shows up no matter which side is being interacted
@@ -66,8 +66,8 @@
   // lock the line-height here so that it is not affected by the font-size increase on the icon
   line-height: 1em;
   margin: 0;
-  padding-left: calc(var(--nx-spacing-3x) - var(--nx-border-width-button));
-  padding-right: calc(var(--nx-spacing-3x) - var(--nx-border-width-button));
+  padding-left: calc(var(--nx-spacing-3x) - var(--nx-border-width));
+  padding-right: calc(var(--nx-spacing-3x) - var(--nx-border-width));
 
   > .nx-icon {
     font-size: 1.2em;

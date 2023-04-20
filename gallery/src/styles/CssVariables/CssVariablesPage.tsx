@@ -204,11 +204,8 @@ const CssVariablesPage = () => {
               Deprecated. Standard border styles for lower-level elements such as tile subsections.
             </NxWarningAlert>
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-width-button">
-            The border-width of <NxCode>NxButton</NxCode>.
-          </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-width-toggle">
-            The border-width of <NxCode>NxToggle</NxCode>.
+          <PropertyDocItem propertyVar="--nx-border-width">
+            Standard border-width value used across multiple elements.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-focus-outline-width">
             The width of the outline when an element is focused.
@@ -232,9 +229,6 @@ const CssVariablesPage = () => {
               where <NxCode>box-shadow</NxCode> isn't supported, such as SVG elements, use this instead
               as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
             </NxWarningAlert>
-          </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-width-radio-checkbox">
-            The standard radio or checkbox border width.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.

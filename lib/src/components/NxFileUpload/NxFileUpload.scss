@@ -57,7 +57,7 @@
 
   align-items: center;
   background-color: var(--nx-color-file-upload-selected-background);
-  border: var(--nx-border-width-file-upload-selected-file) solid var(--nx-color-file-upload-selected-border);
+  border: var(--nx-border-width) solid var(--nx-color-file-upload-selected-border);
   border-radius: math.div($height, 2);
   box-sizing: border-box;
   display: inline-flex;
@@ -107,11 +107,11 @@
     margin-left: auto;
 
     // "outline" to overlap with parent border
-    margin-right: calc(0px - var(--nx-border-width-file-upload-selected-file));
+    margin-right: calc(0px - var(--nx-border-width));
     padding: 0 var(--nx-spacing-3x);
 
     &:hover {
-      box-shadow: inset 0 0 0 var(--nx-border-width-file-upload-selected-file) var(--nx-color-file-upload-selected-dismiss-border-hover);
+      box-shadow: inset 0 0 0 var(--nx-border-width) var(--nx-color-file-upload-selected-dismiss-border-hover);
     }
 
     &:hover {
@@ -126,7 +126,7 @@
 
     &:active,
     &:active:focus {
-      box-shadow: inset 0 0 0 var(--nx-border-width-file-upload-selected-file)
+      box-shadow: inset 0 0 0 var(--nx-border-width)
           var(--nx-color-file-upload-selected-border);
       background-color: var(--nx-color-file-upload-selected-dismiss-background-active);
     }
