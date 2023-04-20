@@ -79,6 +79,9 @@
 
     // Radios and Checkboxes
     --nx-border-width-radio-checkbox: 2px;
+
+    // NxTab
+    --nx-border-width-tab: 2px;
   }
 
   // Deprecated variables
@@ -86,8 +89,4 @@
   --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
   // similar to box-shadow-focus listed above, but for use in drop-shadow filters rather than box-shadow properties
   --nx-drop-shadow-focus: 0 0 3px var(--nx-color-interactive-shadow-focus);
-
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-border-width-tab: 2px;
-  }
 }
