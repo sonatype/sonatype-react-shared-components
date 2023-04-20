@@ -69,7 +69,7 @@
 
   &:hover:not(.active) {
     @include nx-text-helpers.semi-bold;
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-text-stark);
 
     &::before {
       background-color: var(--nx-color-tab-background-hover);
