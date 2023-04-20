@@ -193,6 +193,12 @@
   --nx-color-policy-threat-slider-text-disabled: var(--nx-color-text-disabled);
   --nx-color-policy-threat-slider-text: var(--nx-color-text);
 
+  // NxList
+  --nx-color-list-background-selected: var(--nx-color-interactive-background-selected);
+  --nx-color-list-background-hover: var(--nx-color-interactive-background-hover);
+  --nx-color-list-text: var(--nx-color-text-stark);
+  --nx-color-list-icon: var(--nx-color-text-stark);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
@@ -360,6 +366,12 @@
     --nx-color-policy-threat-slider-background-disabled: var(--nx-color-interactive-border-disabled);
     --nx-color-policy-threat-slider-text-disabled: var(--nx-color-policy-threat-slider-border-disabled);
     --nx-color-policy-threat-slider-text: var(--nx-swatch-indigo-97);
+
+    // NxList
+    --nx-color-list-background-selected: var(--nx-swatch-purple-30);
+    --nx-color-list-background-hover: var(--nx-color-site-background);
+    --nx-color-list-text: var(--nx-color-text);
+    --nx-color-list-icon: var(--nx-color-text);
 
     // Radio Checkbox
     --nx-color-radio-disabled-ring: var(--nx-color-disabled);
