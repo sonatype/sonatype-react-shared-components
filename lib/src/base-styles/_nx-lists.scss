@@ -260,7 +260,7 @@
     &.selected {
       &, &:hover {
         background-color: var(--nx-color-list-background-selected);
-        color: var(--nx-color-list-text);
+        color: var(--nx-color-list-text-selected);
       }
     }
   }
