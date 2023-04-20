@@ -55,7 +55,7 @@ describe('NxIconDropdown', function() {
           pageScrollY = await page.evaluate(() => window.scrollY),
           pageScrollX = await page.evaluate(() => window.scrollX);
 
-      await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 251, 346);
+      await checkScreenshotCoordinates(x + pageScrollX - 212, y + pageScrollY, 255, 346);
     });
 
     it('has a light blue background with expanded menu when not focused', async function() {
@@ -70,7 +70,7 @@ describe('NxIconDropdown', function() {
           pageScrollY = await page.evaluate(() => window.scrollY),
           pageScrollX = await page.evaluate(() => window.scrollX);
 
-      await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 251, 346);
+      await checkScreenshotCoordinates(x + pageScrollX - 212, y + pageScrollY, 255, 346);
     });
 
     it('shows overflow tooltip on dropdown menu item', async function() {
@@ -87,7 +87,7 @@ describe('NxIconDropdown', function() {
           pageScrollY = await page.evaluate(() => window.scrollY),
           pageScrollX = await page.evaluate(() => window.scrollX);
 
-      await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 350, 346);
+      await checkScreenshotCoordinates(x + pageScrollX - 212, y + pageScrollY, 350, 346);
     });
   });
 

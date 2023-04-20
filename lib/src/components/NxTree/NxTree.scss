@@ -105,7 +105,7 @@
   }
 
   &__collapse-icon path {
-    fill: var(--nx-swatch-grey-05);
+    fill: var(--nx-color-text-stark);
   }
 
   &__collapse-click {
@@ -129,7 +129,7 @@
 
   &__line-intersection, &__line-drop {
     width: 100%;
-    stroke: var(--nx-swatch-grey-50);
+    stroke: var(--nx-color-tree-line);
     stroke-width: 1px;
   }
 
@@ -142,7 +142,7 @@
     margin-right: var(--nx-spacing-base);
 
     .nx-icon:not(.nx-tree__colored-icon, .nx-icon--colorful) {
-      color: var(--nx-swatch-grey-05);
+      color: var(--nx-color-text-stark);
     }
   }
 

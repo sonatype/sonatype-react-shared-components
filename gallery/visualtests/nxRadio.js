@@ -25,8 +25,9 @@ describe('NxRadio', function() {
 
   const simpleExampleSelector = '#nx-radio-example .gallery-example-live',
       simpleExampleLabelSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
-      disabledExampleLabelSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(1)',
-      disabledExampleLabelCheckedSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(2)';
+      disabledExampleSelector = '#nx-radio-disabled-example .gallery-example-live',
+      disabledExampleLabelSelector = `${disabledExampleSelector} label:nth-of-type(1)`,
+      disabledExampleLabelCheckedSelector = `${disabledExampleSelector} label:nth-of-type(2)`;
 
   describe('Default NxRadio', function() {
 
@@ -76,7 +77,7 @@ describe('NxRadio', function() {
   });
 
   describe('Attribute-Disabled NxRadio and Attribute-Disabled-Checked', function() {
-    it('looks disabled by default', simpleTest(disabledExampleLabelSelector, OUTSET));
+    it('looks disabled by default', simpleTest(disabledExampleSelector, OUTSET));
   });
 
   describe('Attribute-Disabled NxRadio', function() {
