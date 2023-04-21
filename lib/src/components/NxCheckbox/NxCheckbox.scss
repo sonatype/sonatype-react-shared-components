@@ -17,11 +17,10 @@ $-width: 16px;
   display: inline-flex;
   height: $-height;
   justify-content: center;
-  position: relative;
   width: $-width;
 
   // Pseudo-element style is for the focus border
-  &::after{
+  &::after {
     @include nx-focus-border-helpers.radio-checkbox-focus-border($-height, $-width);
     border-radius: 4px;
   }
