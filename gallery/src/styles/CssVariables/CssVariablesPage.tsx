@@ -812,6 +812,18 @@ const CssVariablesPage = () => {
               The default active background color of <NxCode>NxCollapsibleItem</NxCode> when placed
               within <NxCode>.nx-page-sidebar</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-text">
+              The default text color of <NxCode>NxSmallThreatCounter</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-text-secondary">
+              The secondary text color of <NxCode>NxSmallThreatCounter</NxCode> (same as default in dark mode).
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-background">
+              The background color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-text">
+              The text color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
