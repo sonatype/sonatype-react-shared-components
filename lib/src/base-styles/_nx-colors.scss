@@ -153,6 +153,10 @@
   --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
 
+  // NxCollapsibleItems
+  --nx-color-collapsible-items-sidebar-background-hover: var(--nx-swatch-indigo-90);
+  --nx-color-collapsible-items-sidebar-background-active: var(--nx-swatch-indigo-95);
+
   // Radio Checkbox
   --nx-color-radio-checkbox-selected: var(--nx-swatch-blue-40);
   --nx-color-checkbox-disabled-background: var(--nx-color-interactive-background-disabled);
@@ -178,6 +182,12 @@
   // NxPre
   --nx-color-pre-border: var(--nx-swatch-indigo-10);
 
+  // NxPagination
+  --nx-color-pagination-tertiary-border-hover: var(--nx-color-interactive-border-hover);
+  --nx-color-pagination-tertiary-text-hover: var(--nx-color-text-stark);
+  --nx-color-pagination-tertiary-border-active: var(--nx-swatch-grey-20);
+  --nx-color-pagination-tertiary-text-active: var(--nx-color-text);
+
   //NxFileUpload
   --nx-color-file-upload-selected-background: var(--nx-swatch-indigo-97);
   --nx-color-file-upload-selected-border: var(--nx-swatch-indigo-60);
@@ -200,6 +210,34 @@
   --nx-color-list-text-selected: var(--nx-color-list-text);
   --nx-color-list-icon: var(--nx-color-list-text);
 
+  // NxTree
+  --nx-color-tree-line: var(--nx-swatch-grey-50);
+
+  // NxStatusIndicator
+  --nx-color-status-indicator-negative-background: var(--nx-swatch-grey-95);
+  --nx-color-status-indicator-negative-border: var(--nx-swatch-grey-30);
+  --nx-color-status-indicator-negative-text: var(--nx-swatch-grey-10);
+  --nx-color-status-indicator-negative-icon-background: var(--nx-swatch-grey-60);
+  --nx-color-status-indicator-negative-icon-border: var(--nx-swatch-grey-20);
+
+  --nx-color-status-indicator-intermediate-background: var(--nx-swatch-blue-95);
+  --nx-color-status-indicator-intermediate-border: var(--nx-swatch-blue-30);
+  --nx-color-status-indicator-intermediate-text: var(--nx-swatch-blue-10);
+  --nx-color-status-indicator-intermediate-icon-background: var(--nx-swatch-blue-60);
+  --nx-color-status-indicator-intermediate-icon-border: var(--nx-swatch-blue-30);
+
+  --nx-color-status-indicator-positive-background: var(--nx-swatch-green-95);
+  --nx-color-status-indicator-positive-border: var(--nx-color-alert-success);
+  --nx-color-status-indicator-positive-text: var(--nx-swatch-green-10);
+  --nx-color-status-indicator-positive-icon-background: var(--nx-swatch-green-45);
+  --nx-color-status-indicator-positive-icon-border: var(--nx-color-alert-success);
+
+  --nx-color-status-indicator-error-background: var(--nx-swatch-red-95);
+  --nx-color-status-indicator-error-border: var(--nx-color-alert-error);
+  --nx-color-status-indicator-error-text: var(--nx-swatch-red-10);
+  --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-65);
+  --nx-color-status-indicator-error-icon-border: var(--nx-color-alert-error);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
@@ -213,6 +251,7 @@
     --nx-color-background-success: var(--nx-swatch-green-85);
     --nx-color-background-error: var(--nx-swatch-red-85);
 
+    --nx-color-interactive-background-selected: var(--nx-swatch-purple-30);
     --nx-color-interactive-background-active: var(--nx-swatch-indigo-30);
     --nx-color-interactive-background-hover: var(--nx-swatch-indigo-10);
     --nx-color-interactive-background-disabled: var(--nx-swatch-indigo-20);
@@ -223,7 +262,7 @@
 
     --nx-color-text-stark: var(--nx-swatch-indigo-90);
     --nx-color-text: var(--nx-swatch-indigo-80);
-    --nx-color-text-placeholder: var(--nx-color-indigo-70);
+    --nx-color-text-placeholder: var(--nx-swatch-indigo-70);
 
     --nx-color-link: var(--nx-swatch-purple-80);
     --nx-color-link-focus: var(--nx-color-link);
@@ -337,6 +376,10 @@
     --nx-color-counter: var(--nx-swatch-indigo-90);
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
 
+    // NxCollapsibleItems
+    --nx-color-collapsible-items-sidebar-background-hover: var(--nx-swatch-indigo-05);
+    --nx-color-collapsible-items-sidebar-background-active: var(--nx-swatch-indigo-25);
+
     // Radio Checkbox
     --nx-color-radio-checkbox-selected: var(--nx-swatch-purple-80);
 
@@ -352,6 +395,12 @@
 
     // NxPre
     --nx-color-pre-border: var(--nx-swatch-indigo-90);
+
+    // NxPagination
+    --nx-color-pagination-tertiary-border-hover: var(--nx-swatch-indigo-40);
+    --nx-color-pagination-tertiary-text-hover: var(--nx-color-text);
+    --nx-color-pagination-tertiary-border-active: var(--nx-swatch-indigo-65);
+    --nx-color-pagination-tertiary-text-active: var(--nx-color-text-stark);
 
     //NxFileUpload
     --nx-color-file-upload-selected-background: var(--nx-swatch-indigo-15);
@@ -375,6 +424,9 @@
     --nx-color-list-text-selected: var(--nx-swatch-indigo-97);
     --nx-color-list-icon: var(--nx-color-list-text);
 
+    // NxTree
+    --nx-color-tree-line: var(--nx-swatch-indigo-70);
+
     // Radio Checkbox
     --nx-color-radio-disabled-ring: var(--nx-color-disabled);
     --nx-color-radio-disabled-dot: var(--nx-color-disabled);
@@ -382,6 +434,31 @@
     --nx-color-checkbox-disabled-background: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-icon: var(--nx-color-component-background);
+
+    // NxStatusIndicator
+    --nx-color-status-indicator-negative-background: var(--nx-swatch-grey-80);
+    --nx-color-status-indicator-negative-border: var(--nx-color-status-indicator-negative-background);
+    --nx-color-status-indicator-negative-text: var(--nx-swatch-indigo-10);
+    --nx-color-status-indicator-negative-icon-background: var(--nx-swatch-grey-30);
+    --nx-color-status-indicator-negative-icon-border: var(--nx-color-status-indicator-negative-icon-background);
+
+    --nx-color-status-indicator-intermediate-background: var(--nx-swatch-blue-80);
+    --nx-color-status-indicator-intermediate-border: var(--nx-color-status-indicator-intermediate-background);
+    --nx-color-status-indicator-intermediate-text: var(--nx-swatch-indigo-10);
+    --nx-color-status-indicator-intermediate-icon-background: var(--nx-swatch-blue-30);
+    --nx-color-status-indicator-intermediate-icon-border: var(--nx-color-status-indicator-intermediate-icon-background);
+
+    --nx-color-status-indicator-positive-background: var(--nx-swatch-green-85);
+    --nx-color-status-indicator-positive-border: var(--nx-color-status-indicator-positive-background);
+    --nx-color-status-indicator-positive-text: var(--nx-swatch-indigo-10);
+    --nx-color-status-indicator-positive-icon-background: var(--nx-swatch-green-30);
+    --nx-color-status-indicator-positive-icon-border: var(--nx-color-status-indicator-positive-icon-background);
+
+    --nx-color-status-indicator-error-background: var(--nx-swatch-red-85);
+    --nx-color-status-indicator-error-border: var(--nx-color-status-indicator-error-background);
+    --nx-color-status-indicator-error-text: var(--nx-swatch-indigo-10);
+    --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-40);
+    --nx-color-status-indicator-error-icon-border: var(--nx-color-status-indicator-error-icon-background);
   }
 
   // Deprecated variables
