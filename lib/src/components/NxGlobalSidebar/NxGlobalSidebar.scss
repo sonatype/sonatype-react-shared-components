@@ -10,7 +10,8 @@
 
 $-width-open: 250px;
 $-width-closed: 72px;
-$-logo-height: 34px;
+$-max-logo-height: 43px;
+$-min-logo-height: 34px;
 $-left-right-spacing: var(--nx-spacing-6x);
 
 $-text-color: var(--nx-swatch-white);
@@ -48,7 +49,8 @@ $-separator-color: var(--nx-swatch-indigo-40);
 .nx-global-sidebar__header {
   align-items: center;
   display: flex;
-  height: $-logo-height;
+  max-height: $-max-logo-height;
+  min-height: $-min-logo-height;
   margin-bottom: var(--nx-spacing-8x);
   padding: 0 $-left-right-spacing;
 }
@@ -86,7 +88,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
 }
 
 .nx-global-sidebar__logo {
-  height: $-logo-height;
+  // a temporary stop gap to ensure no logos break the header container - matches plaid-villain logo width
+  max-width: 155px;
+  max-height: $-max-logo-height;
+  min-height: $-min-logo-height;
 }
 
 .nx-global-sidebar__navigation {
