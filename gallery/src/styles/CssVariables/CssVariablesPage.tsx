@@ -706,9 +706,6 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-list-background-hover">
               The background color of the list item of <NxCode>NxList</NxCode> on hover.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-list-background-selected">
-              The background color of the list item of <NxCode>NxList</NxCode> on selected.
-            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-list-text">
               The text color of the list item of <NxCode>NxList</NxCode>.
             </ColorDocRow>

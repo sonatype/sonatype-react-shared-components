@@ -259,7 +259,7 @@
 
     &.selected {
       &, &:hover {
-        background-color: var(--nx-color-list-background-selected);
+        background-color: var(--nx-color-interactive-background-selected);
         color: var(--nx-color-list-text-selected);
       }
     }
