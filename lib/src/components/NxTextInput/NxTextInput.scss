@@ -114,11 +114,6 @@
   }
 
   &.disabled {
-    .nx-text-input__input {
-      &::placeholder {
-        color: var(--nx-color-text-disabled);
-      }
-    }
     &, &:hover {
       .nx-text-input__box {
         background-color: var(--nx-color-interactive-background-disabled);
