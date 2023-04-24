@@ -38,8 +38,8 @@
   background-color: var(--nx-selectable-color-light);
 
   &:hover {
-    border-color: var(--nx-selectable-color-hover-border);
-    background-color: var(--nx-selectable-color-hover-background);
+    border-color: var(--nx-selectable-color-unselected-hover-border);
+    background-color: var(--nx-selectable-color-unselected-hover-background);
   }
 
   &:focus-within {
@@ -55,6 +55,11 @@
 
 .nx-tag--selected {
   background-color: var(--nx-selectable-color-dark);
+
+  &:hover {
+    border-color: var(--nx-selectable-color-selected-hover-border);
+    background-color: var(--nx-selectable-color-selected-hover-background);
+  }
 }
 
 .nx-tag__input {
