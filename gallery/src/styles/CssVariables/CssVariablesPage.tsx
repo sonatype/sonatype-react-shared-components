@@ -204,8 +204,8 @@ const CssVariablesPage = () => {
               Deprecated. Standard border styles for lower-level elements such as tile subsections.
             </NxWarningAlert>
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-width-button">
-            The border-width of <NxCode>NxButton</NxCode>.
+          <PropertyDocItem propertyVar="--nx-border-width">
+            Standard border-width value used across multiple elements.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-focus-outline-width">
             The width of the outline when an element is focused.
@@ -230,12 +230,6 @@ const CssVariablesPage = () => {
               as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
             </NxWarningAlert>
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-width-tab">
-            The border-width used for borders of a tab in <NxCode>NxTabs</NxCode>.
-          </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-width-radio-checkbox">
-            The standard radio or checkbox border width.
-          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
           </PropertyDocItem>
@@ -257,6 +251,9 @@ const CssVariablesPage = () => {
           <NxTable.Body>
             <ColorDocRow colorVar="--nx-color-disabled">
               Generic disabled color.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-disabled-background">
+              Generic disabled background color.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-border">
               Color for standard higher-level borders
@@ -749,6 +746,45 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-checkbox-disabled-icon">
               The default checkmark icon color for disabled <NxCode>NxCheckbox</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-track-disabled">
+              The default track color for disabled <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-handle-disabled">
+              The default handle color for disabled <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-border">
+              The default border color for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-border-hover">
+              The default border color when hovered for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-track">
+              The default track color for <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-track-hover">
+              The default track color when hovered for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-handle">
+              The default handle color for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-handle-hover">
+              The default handle color when hovered for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-border">
+              The default border color for on <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-border-hover">
+              The default border color when hovered for on <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-track">
+              The default track color for on <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-track-hover">
+              The default track color when hovered for on <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-handle">
+              The default handle color for on <NxCode>NxToggle</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-status-indicator-negative-background">
               The default background color of a negative <NxCode>NxStatusIndicator</NxCode>.
