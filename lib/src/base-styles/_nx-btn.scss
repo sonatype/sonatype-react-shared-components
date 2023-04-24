@@ -36,7 +36,7 @@
   @include nx-container-helpers.container-horizontal;
 
   background-color: var(--nx-color-secondary-button-background);
-  border: var(--nx-border-width-button) solid var(--nx-color-secondary-button-border);
+  border: var(--nx-border-width) solid var(--nx-color-secondary-button-border);
   border-radius: var(--nx-border-radius);
   color: var(--nx-color-secondary-button-text);
   cursor: pointer;
@@ -44,7 +44,7 @@
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
   margin: 0 var(--nx-spacing-6x);
-  padding: calc(var(--nx-spacing-2x) - var(--nx-border-width-button)) calc(var(--nx-spacing-6x) - var(--nx-border-width-button));
+  padding: calc(var(--nx-spacing-2x) - var(--nx-border-width)) calc(var(--nx-spacing-6x) - var(--nx-border-width));
   text-align: center;
   text-decoration: none;
 
