@@ -458,6 +458,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-counter-active-text">
               The text color used on the active state of elements with the <NxCode>nx-counter</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tab-background-hover">
+              The background color used on the hover state of a tab in <NxCode>NxTabs</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-primary-button-background">
               The background color of primary buttons.
             </ColorDocRow>

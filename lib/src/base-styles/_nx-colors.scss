@@ -154,6 +154,9 @@
   --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
 
+  // NxTab
+  --nx-color-tab-background-hover: var(--nx-swatch-grey-95);
+
   // NxCollapsibleItems
   --nx-color-collapsible-items-sidebar-background-hover: var(--nx-swatch-indigo-90);
   --nx-color-collapsible-items-sidebar-background-active: var(--nx-swatch-indigo-95);
@@ -390,6 +393,9 @@
     // NxCounter
     --nx-color-counter: var(--nx-swatch-indigo-90);
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
+
+    // NxTabs
+    --nx-color-tab-background-hover: var(--nx-swatch-indigo-15);
 
     // NxCollapsibleItems
     --nx-color-collapsible-items-sidebar-background-hover: var(--nx-swatch-indigo-05);
