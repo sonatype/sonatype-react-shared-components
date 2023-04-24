@@ -5,9 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
+import { without } from 'ramda';
+
 import { rtlRender } from '../../__testutils__/rtlUtils';
 import { userEvent } from '../../__testutils__/rtlUtils';
-import { modifierKeyIsPressed } from '../keyboardUtil';
+import { modifierKeyIsPressed, MODIFIER_KEYS } from '../keyboardUtil';
 
 describe('modifierKeyIsPressed', function () {
   const Fixture = () => {
@@ -29,31 +31,25 @@ describe('modifierKeyIsPressed', function () {
     expect(targetEl).toHaveTextContent('false');
     targetEl.focus();
 
-    await user.keyboard('{ArrowRight}');
-    expect(targetEl).toHaveTextContent('false');
+    // "OS" is not playing nicely with js-dom
+    for (const modifier of without(['OS'], MODIFIER_KEYS)) {
+      await user.keyboard(`{${modifier}}`);
+      expect(targetEl).toHaveTextContent('true');
+      await user.keyboard('A');
+      expect(targetEl).toHaveTextContent('false');
 
-    await user.keyboard('{Control}');
-    expect(targetEl).toHaveTextContent('true');
-
-    await user.keyboard('{ArrowUp}');
-    expect(targetEl).toHaveTextContent('false');
-
-    await user.keyboard('{Shift}');
-    expect(targetEl).toHaveTextContent('true');
-
-    await user.keyboard('{ArrowDown}');
-    expect(targetEl).toHaveTextContent('false');
-
-    await user.keyboard('{Meta}');
-    expect(targetEl).toHaveTextContent('true');
-
-    await user.keyboard('{Enter}');
-    expect(targetEl).toHaveTextContent('false');
-
-    await user.keyboard('{Escape}');
-    expect(targetEl).toHaveTextContent('false');
-
-    await user.keyboard('A');
-    expect(targetEl).toHaveTextContent('false');
+      await user.keyboard(`{${modifier}>}`);
+      await user.keyboard('{ArrowUp}');
+      expect(targetEl).toHaveTextContent('true');
+      await user.keyboard('{ArrowLeft}');
+      expect(targetEl).toHaveTextContent('true');
+      await user.keyboard('{ArrowRight}');
+      expect(targetEl).toHaveTextContent('true');
+      await user.keyboard('{ArrowDown}');
+      expect(targetEl).toHaveTextContent('true');
+      await user.keyboard('A');
+      expect(targetEl).toHaveTextContent('true');
+      await user.keyboard(`{/${modifier}}`);
+    }
   });
 });

@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-const MODIFIER_KEYS = ['Alt', 'AltGraph', 'Control', 'Meta', 'OS', 'Shift'];
+export const MODIFIER_KEYS = ['Alt', 'AltGraph', 'Control', 'Meta', 'OS', 'Shift'];
 
 export function modifierKeyIsPressed(event: React.KeyboardEvent | KeyboardEvent) {
   return MODIFIER_KEYS.some((key) => event.getModifierState(key));
