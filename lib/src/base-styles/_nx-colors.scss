@@ -98,6 +98,9 @@
   // NxPre
   --nx-color-pre-border: var(--nx-swatch-indigo-10);
 
+  // nx-read-only
+  --nx-color-read-only-text: var(--nx-color-text);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-border: var(--nx-swatch-indigo-40);
     --nx-color-border-secondary: var(--nx-swatch-indigo-35);
@@ -182,6 +185,9 @@
 
     // NxPre
     --nx-color-pre-border: var(--nx-swatch-indigo-90);
+
+    // nx-read-only
+    --nx-color-read-only-text: var(--nx-swatch-indigo-75);
   }
 
   // Deprecated variables

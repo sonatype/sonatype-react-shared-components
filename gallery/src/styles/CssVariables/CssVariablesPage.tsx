@@ -447,6 +447,9 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-pre-border">
               The default border color of <NxCode>nx-pre</NxCode> class.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-read-only-text">
+              The text color of <NxCode>nx-read-only__data</NxCode> class.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
