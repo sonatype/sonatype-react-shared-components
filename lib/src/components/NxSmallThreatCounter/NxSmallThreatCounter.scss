@@ -17,13 +17,13 @@
   &--critical,
   &--low,
   &--unspecified {
-    color: var(--nx-swatch-white);
+    color: var(--nx-color-small-threat-counter-text-secondary);
   }
 
   &--severe,
   &--moderate,
   &--none {
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-small-threat-counter-text);
   }
 }
 
@@ -55,8 +55,8 @@
   }
 
   &--zero {
-    background-color: var(--nx-swatch-grey-90);
-    color: var(--nx-swatch-grey-40);
+    background-color: var(--nx-color-small-threat-counter-zero-background);
+    color: var(--nx-color-small-threat-counter-zero-text);
   }
 }
 
