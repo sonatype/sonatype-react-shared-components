@@ -78,7 +78,7 @@
 
   &:focus {
     &::before {
-      border: var(--nx-border-width-tab) solid var(--nx-color-interactive-border-focus);
+      border: var(--nx-border-width) solid var(--nx-color-interactive-border-focus);
     }
   }
 
