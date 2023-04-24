@@ -19,8 +19,7 @@
     border: 1px solid var(--nx-color-tertiary-button-border);
     min-width: nx-pagination-variables.$pagination-button-height;
     margin: 0 var(--nx-spacing-2x) 0 0;
-    padding-left: calc(var(--nx-spacing-4x) - 1px);
-    padding-right: calc(var(--nx-spacing-4x) - 1px);
+    padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
 
     &:last-child {
       margin-right: 0;
