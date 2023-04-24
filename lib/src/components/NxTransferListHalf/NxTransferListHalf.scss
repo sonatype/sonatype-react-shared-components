@@ -121,7 +121,7 @@ $-visible-item-count: 10;
     }
 
     &:focus-within:not(:active) {
-      outline: var(--focus-outline-width) solid var(--nx-color-interactive-border-focus);
+      outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
       outline-offset: calc(0 - var(--nx-focus-outline-inset));
       border-color: transparent;
     }
