@@ -798,6 +798,33 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-toggle-on-handle">
               The default handle color for on <NxCode>NxToggle</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-transfer-list-item-list-background">
+              The background color of the list section of a transfer list.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-transfer-list-item-background">
+              The default background color of a transfer list item.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-transfer-list-item-background-hover">
+              The hover background color of a transfer list item.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-transfer-list-item-background-active">
+              The active background color of a transfer list item.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-transfer-list-item-border">
+              The default border color of a transfer list item.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-transfer-list-item-border-hover">
+              The hover border color of a transfer list item.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-transfer-list-item-border-active">
+              The active border color of a transfer list item.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-transfer-list-item-text">
+              The default text color of a transfer list item.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-transfer-list-item-text-hover-active">
+              The text color of a transfer list item on hover or activation.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-status-indicator-negative-background">
               The default background color of a negative <NxCode>NxStatusIndicator</NxCode>.
             </ColorDocRow>

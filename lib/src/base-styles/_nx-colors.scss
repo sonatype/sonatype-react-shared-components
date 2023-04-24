@@ -213,6 +213,17 @@
   --nx-color-policy-threat-slider-text-disabled: var(--nx-color-text-disabled);
   --nx-color-policy-threat-slider-text: var(--nx-color-text);
 
+  // NxTransferList
+  --nx-color-transfer-list-item-list-background: var(--nx-color-site-background);
+  --nx-color-transfer-list-item-background: var(--nx-swatch-white);
+  --nx-color-transfer-list-item-background-hover: var(--nx-swatch-grey-90);
+  --nx-color-transfer-list-item-background-active: var(--nx-swatch-grey-97);
+  --nx-color-transfer-list-item-border: var(--nx-swatch-indigo-90);
+  --nx-color-transfer-list-item-border-hover: var(--nx-swatch-grey-05);
+  --nx-color-transfer-list-item-border-active: var(--nx-swatch-grey-30);
+  --nx-color-transfer-list-item-text: var(--nx-color-text);
+  --nx-color-transfer-list-item-text-hover-active: var(--nx-color-text-stark);
+
   // NxList
   --nx-color-list-background-hover: var(--nx-color-interactive-background-hover);
   --nx-color-list-text: var(--nx-color-text-stark);
@@ -473,6 +484,15 @@
     --nx-color-checkbox-disabled-background: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-icon: var(--nx-color-component-background);
+
+    // NxTransferList
+    --nx-color-transfer-list-item-background: var(--nx-swatch-indigo-20);
+    --nx-color-transfer-list-item-background-hover: var(--nx-swatch-indigo-10);
+    --nx-color-transfer-list-item-background-active: var(--nx-swatch-indigo-30);
+    --nx-color-transfer-list-item-border: var(--nx-swatch-indigo-40);
+    --nx-color-transfer-list-item-border-hover: var(--nx-color-transfer-list-item-border);
+    --nx-color-transfer-list-item-border-active: var(--nx-swatch-indigo-50);
+    --nx-color-transfer-list-item-text-hover-active: var(--nx-color-transfer-list-item-text);
 
     // NxToggle
     --nx-color-toggle-track-disabled: var(--nx-color-disabled);
