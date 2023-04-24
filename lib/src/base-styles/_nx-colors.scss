@@ -8,6 +8,7 @@
 
 :root {
   --nx-color-disabled: var(--nx-swatch-grey-60);
+  --nx-color-disabled-background: var(--nx-swatch-grey-90);
 
   --nx-color-border: var(--nx-swatch-indigo-90);
   --nx-color-border-secondary: var(--nx-swatch-indigo-95);
@@ -22,7 +23,7 @@
   --nx-color-interactive-background-selected: var(--nx-swatch-blue-90);
   --nx-color-interactive-background-active: var(--nx-swatch-grey-95);
   --nx-color-interactive-background-hover: var(--nx-swatch-grey-90);
-  --nx-color-interactive-background-disabled: var(--nx-swatch-grey-90);
+  --nx-color-interactive-background-disabled: var(--nx-color-disabled-background);
 
   --nx-color-interactive-border: var(--nx-swatch-grey-50);
   --nx-color-interactive-border-hover: var(--nx-swatch-grey-05);
@@ -134,6 +135,12 @@
   --nx-color-policy-indicator-icon: var(--nx-swatch-white);
   --nx-color-policy-indicator-text: var(--nx-color-text);
 
+  //NxSmallThreatCounter
+  --nx-color-small-threat-counter-text: var(--nx-color-text-stark);
+  --nx-color-small-threat-counter-text-secondary: var(--nx-swatch-white);
+  --nx-color-small-threat-counter-zero-background: var(--nx-color-interactive-background-disabled);
+  --nx-color-small-threat-counter-zero-text: var(--nx-swatch-grey-40);
+
   //NxTooltip variables
   --nx-color-tooltip-background: var(--nx-swatch-grey-20);
   --nx-color-tooltip-text: var(--nx-swatch-white);
@@ -152,6 +159,9 @@
   // NxCounter
   --nx-color-counter: var(--nx-swatch-grey-05);
   --nx-color-counter-active-text: var(--nx-swatch-white);
+
+  // NxTab
+  --nx-color-tab-background-hover: var(--nx-swatch-grey-95);
 
   // NxCollapsibleItems
   --nx-color-collapsible-items-sidebar-background-hover: var(--nx-swatch-indigo-90);
@@ -203,8 +213,35 @@
   --nx-color-policy-threat-slider-text-disabled: var(--nx-color-text-disabled);
   --nx-color-policy-threat-slider-text: var(--nx-color-text);
 
+  // NxList
+  --nx-color-list-background-hover: var(--nx-color-interactive-background-hover);
+  --nx-color-list-text: var(--nx-color-text-stark);
+  --nx-color-list-text-selected: var(--nx-color-list-text);
+  --nx-color-list-icon: var(--nx-color-list-text);
+
   // NxTree
   --nx-color-tree-line: var(--nx-swatch-grey-50);
+
+  // NxToggle
+  --nx-color-toggle-track-disabled: var(--nx-color-disabled-background);
+  --nx-color-toggle-handle-disabled: var(--nx-color-disabled);
+
+  --nx-color-toggle-off-border: var(--nx-swatch-grey-30);
+  --nx-color-toggle-off-border-hover: var(--nx-swatch-grey-05);
+
+  --nx-color-toggle-off-track: var(--nx-color-component-background);
+  --nx-color-toggle-off-track-hover: var(--nx-swatch-indigo-95);
+
+  --nx-color-toggle-off-handle: var(--nx-swatch-blue-40);
+  --nx-color-toggle-off-handle-hover: var(--nx-swatch-blue-30);
+
+  --nx-color-toggle-on-border: var(--nx-swatch-blue-40);
+  --nx-color-toggle-on-border-hover: var(--nx-swatch-grey-05);
+
+  --nx-color-toggle-on-track: var(--nx-swatch-blue-40);
+  --nx-color-toggle-on-track-hover: var(--nx-swatch-blue-30);
+
+  --nx-color-toggle-on-handle: var(--nx-color-component-background);
 
   // NxStatusIndicator
   --nx-color-status-indicator-negative-background: var(--nx-swatch-grey-95);
@@ -261,6 +298,13 @@
     --nx-color-link-focus: var(--nx-color-link);
     --nx-color-link-active: var(--nx-swatch-purple-90);
     --nx-color-link-hover: var(--nx-swatch-purple-70);
+
+    --nx-color-threat-unspecified: var(--nx-swatch-indigo-97);
+    --nx-color-threat-none: var(--nx-swatch-blue-75);
+    --nx-color-threat-low: var(--nx-swatch-indigo-65);
+    --nx-color-threat-moderate: var(--nx-swatch-yellow-65);
+    --nx-color-threat-severe: var(--nx-swatch-orange-55);
+    --nx-color-threat-critical: var(--nx-swatch-red-65);
 
     --nx-color-validation-valid: var(--nx-swatch-green-70);
     --nx-color-validation-valid-icon: var(--nx-swatch-green-60);
@@ -340,13 +384,13 @@
     --nx-color-policy-indicator-icon: var(--nx-swatch-blue-10);
     --nx-color-policy-indicator-text: var(--nx-swatch-indigo-97);
 
+    //NxSmallThreatCounter
+    --nx-color-small-threat-counter-text: var(--nx-swatch-blue-10);
+    --nx-color-small-threat-counter-text-secondary: var(--nx-color-small-threat-counter-text);
+    --nx-color-small-threat-counter-zero-background: var(--nx-color-disabled);
+    --nx-color-small-threat-counter-zero-text: var(--nx-swatch-indigo-20);
+
     //NxThreatIndicator variables
-    --nx-color-threat-unspecified: var(--nx-swatch-grey-60);
-    --nx-color-threat-none: var(--nx-swatch-indigo-65);
-    --nx-color-threat-low: var(--nx-swatch-blue-75);
-    --nx-color-threat-moderate: var(--nx-swatch-yellow-65);
-    --nx-color-threat-severe: var(--nx-swatch-orange-55);
-    --nx-color-threat-critical: var(--nx-swatch-red-65);
     --nx-color-threat-indicator-legend-header-text: var(--nx-swatch-indigo-95);
     --nx-color-threat-level-text: var(--nx-swatch-indigo-95);
 
@@ -368,6 +412,9 @@
     // NxCounter
     --nx-color-counter: var(--nx-swatch-indigo-90);
     --nx-color-counter-active-text: var(--nx-swatch-indigo-05);
+
+    // NxTabs
+    --nx-color-tab-background-hover: var(--nx-swatch-indigo-15);
 
     // NxCollapsibleItems
     --nx-color-collapsible-items-sidebar-background-hover: var(--nx-swatch-indigo-05);
@@ -410,6 +457,12 @@
     --nx-color-policy-threat-slider-text-disabled: var(--nx-color-policy-threat-slider-border-disabled);
     --nx-color-policy-threat-slider-text: var(--nx-swatch-indigo-97);
 
+    // NxList
+    --nx-color-list-background-hover: var(--nx-color-site-background);
+    --nx-color-list-text: var(--nx-color-text);
+    --nx-color-list-text-selected: var(--nx-swatch-indigo-97);
+    --nx-color-list-icon: var(--nx-color-list-text);
+
     // NxTree
     --nx-color-tree-line: var(--nx-swatch-indigo-70);
 
@@ -420,6 +473,27 @@
     --nx-color-checkbox-disabled-background: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-inner-border: var(--nx-color-disabled);
     --nx-color-checkbox-disabled-icon: var(--nx-color-component-background);
+
+    // NxToggle
+    --nx-color-toggle-track-disabled: var(--nx-color-disabled);
+    --nx-color-toggle-handle-disabled: var(--nx-color-component-background);
+
+    --nx-color-toggle-off-border: var(--nx-swatch-indigo-70);
+    --nx-color-toggle-off-border-hover: var(--nx-swatch-indigo-60);
+  
+    --nx-color-toggle-off-track: var(--nx-color-component-background);
+    --nx-color-toggle-off-track-hover: var(--nx-color-site-background);
+  
+    --nx-color-toggle-off-handle: var(--nx-swatch-purple-80);
+    --nx-color-toggle-off-handle-hover: var(--nx-swatch-purple-70);
+  
+    --nx-color-toggle-on-border: var(--nx-swatch-purple-80);
+    --nx-color-toggle-on-border-hover: var(--nx-swatch-purple-70);
+  
+    --nx-color-toggle-on-track: var(--nx-swatch-purple-80);
+    --nx-color-toggle-on-track-hover: var(--nx-swatch-purple-70);
+    
+    --nx-color-toggle-on-handle: var(--nx-color-component-background);
 
     // NxStatusIndicator
     --nx-color-status-indicator-negative-background: var(--nx-swatch-grey-80);

@@ -204,8 +204,8 @@ const CssVariablesPage = () => {
               Deprecated. Standard border styles for lower-level elements such as tile subsections.
             </NxWarningAlert>
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-width-button">
-            The border-width of <NxCode>NxButton</NxCode>.
+          <PropertyDocItem propertyVar="--nx-border-width">
+            Standard border-width value used across multiple elements.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-focus-outline-width">
             The width of the outline when an element is focused.
@@ -230,9 +230,6 @@ const CssVariablesPage = () => {
               as the value of a <NxCode>filter</NxCode> <NxCode>drop-shadow</NxCode>.
             </NxWarningAlert>
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-border-width-radio-checkbox">
-            The standard radio or checkbox border width.
-          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
           </PropertyDocItem>
@@ -254,6 +251,9 @@ const CssVariablesPage = () => {
           <NxTable.Body>
             <ColorDocRow colorVar="--nx-color-disabled">
               Generic disabled color.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-disabled-background">
+              Generic disabled background color.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-border">
               Color for standard higher-level borders
@@ -457,6 +457,9 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-counter-active-text">
               The text color used on the active state of elements with the <NxCode>nx-counter</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-tab-background-hover">
+              The background color used on the hover state of a tab in <NxCode>NxTabs</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-primary-button-background">
               The background color of primary buttons.
@@ -703,6 +706,18 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
               The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-list-background-hover">
+              The background color of the list item of <NxCode>NxList</NxCode> on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-list-text">
+              The text color of the list item of <NxCode>NxList</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-list-text-selected">
+              The selected text color of the list item of <NxCode>NxList</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-list-icon">
+              The icon color of the list item of <NxCode>NxList</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-pagination-tertiary-border-active">
               The border color of tertiary buttons in <NxCode>NxPagination</NxCode>.
             </ColorDocRow>
@@ -743,6 +758,45 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-checkbox-disabled-icon">
               The default checkmark icon color for disabled <NxCode>NxCheckbox</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-track-disabled">
+              The default track color for disabled <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-handle-disabled">
+              The default handle color for disabled <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-border">
+              The default border color for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-border-hover">
+              The default border color when hovered for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-track">
+              The default track color for <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-track-hover">
+              The default track color when hovered for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-handle">
+              The default handle color for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-off-handle-hover">
+              The default handle color when hovered for off <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-border">
+              The default border color for on <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-border-hover">
+              The default border color when hovered for on <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-track">
+              The default track color for on <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-track-hover">
+              The default track color when hovered for on <NxCode>NxToggle</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-toggle-on-handle">
+              The default handle color for on <NxCode>NxToggle</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-status-indicator-negative-background">
               The default background color of a negative <NxCode>NxStatusIndicator</NxCode>.
@@ -811,6 +865,18 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-collapsible-items-sidebar-background-active">
               The default active background color of <NxCode>NxCollapsibleItem</NxCode> when placed
               within <NxCode>.nx-page-sidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-text">
+              The default text color of <NxCode>NxSmallThreatCounter</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-text-secondary">
+              The secondary text color of <NxCode>NxSmallThreatCounter</NxCode> (same as default in dark mode).
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-background">
+              The background color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-text">
+              The text color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>

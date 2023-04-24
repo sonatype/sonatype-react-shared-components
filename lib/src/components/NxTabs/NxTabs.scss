@@ -69,16 +69,16 @@
 
   &:hover:not(.active) {
     @include nx-text-helpers.semi-bold;
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-text-stark);
 
     &::before {
-      background-color: var(--nx-swatch-grey-95);
+      background-color: var(--nx-color-tab-background-hover);
     }
   }
 
   &:focus {
     &::before {
-      border: 1px solid var(--nx-color-interactive-border-focus);
+      border: var(--nx-border-width) solid var(--nx-color-interactive-border-focus);
     }
   }
 
