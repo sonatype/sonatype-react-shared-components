@@ -136,8 +136,12 @@
   --nx-color-policy-indicator-text: var(--nx-color-text);
 
   //NxSmallThreatCounter
-  --nx-color-small-threat-counter-text: var(--nx-color-text-stark);
-  --nx-color-small-threat-counter-text-secondary: var(--nx-swatch-white);
+  --nx-color-small-threat-counter-critical-text: var(--nx-swatch-white);
+  --nx-color-small-threat-counter-severe-text: var(--nx-color-text-stark);
+  --nx-color-small-threat-counter-moderate-text: var(--nx-color-text-stark);
+  --nx-color-small-threat-counter-low-text: var(--nx-swatch-white);
+  --nx-color-small-threat-counter-none-text: var(--nx-color-text-stark);
+  --nx-color-small-threat-counter-unspecified-text: var(--nx-swatch-white);
   --nx-color-small-threat-counter-zero-background: var(--nx-color-interactive-background-disabled);
   --nx-color-small-threat-counter-zero-text: var(--nx-swatch-grey-40);
 
@@ -396,8 +400,12 @@
     --nx-color-policy-indicator-text: var(--nx-swatch-indigo-97);
 
     //NxSmallThreatCounter
-    --nx-color-small-threat-counter-text: var(--nx-swatch-blue-10);
-    --nx-color-small-threat-counter-text-secondary: var(--nx-color-small-threat-counter-text);
+    --nx-color-small-threat-counter-critical-text: var(--nx-swatch-blue-10);
+    --nx-color-small-threat-counter-severe-text: var(--nx-swatch-blue-10);
+    --nx-color-small-threat-counter-moderate-text: var(--nx-swatch-blue-10);
+    --nx-color-small-threat-counter-low-text: var(--nx-swatch-blue-10);
+    --nx-color-small-threat-counter-none-text: var(--nx-swatch-blue-10);
+    --nx-color-small-threat-counter-unspecified-text: var(--nx-swatch-blue-10);
     --nx-color-small-threat-counter-zero-background: var(--nx-color-disabled);
     --nx-color-small-threat-counter-zero-text: var(--nx-swatch-indigo-20);
 

@@ -893,11 +893,23 @@ const CssVariablesPage = () => {
               The default active background color of <NxCode>NxCollapsibleItem</NxCode> when placed
               within <NxCode>.nx-page-sidebar</NxCode>.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-small-threat-counter-text">
-              The default text color of <NxCode>NxSmallThreatCounter</NxCode>.
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-critical-text">
+              The default text color of <NxCode>NxSmallThreatCounter</NxCode> with threat level critical.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-small-threat-counter-text-secondary">
-              The secondary text color of <NxCode>NxSmallThreatCounter</NxCode> (same as default in dark mode).
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-severe-text">
+              The default text color of <NxCode>NxSmallThreatCounter</NxCode> with threat level severe.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-moderate-text">
+              The default text color of <NxCode>NxSmallThreatCounter</NxCode> with threat level moderate.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-low-text">
+              The default text color of <NxCode>NxSmallThreatCounter</NxCode> with threat level low.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-none-text">
+              The default text color of <NxCode>NxSmallThreatCounter</NxCode> with threat level none.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-small-threat-counter-unspecified-text">
+              The default text color of <NxCode>NxSmallThreatCounter</NxCode> with an unspecified threat level.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-background">
               The background color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
