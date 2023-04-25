@@ -310,6 +310,13 @@
         outline: none;
       }
     }
+
+    &.disabled, &[disabled] {
+      .nx-list__link, .nx-list__btn {
+        color: var(--nx-color-text-disabled);
+        cursor: default;
+      }
+    }
   }
 }
 
