@@ -60,19 +60,34 @@ $-separator-color: var(--nx-swatch-indigo-40);
   color: $-text-color;
   flex: none;
   margin: 0;
+  position: relative;
 
   &:focus:not(:active) {
-    outline-color: $-focus-color;
-    padding-top: calc(var(--nx-spacing-base) - #{$-button-border-width});
-    padding-bottom: calc(var(--nx-spacing-base) - #{$-button-border-width});
+    outline-color: var(--nx-color-global-sidebar-menu-icon-border-focus);
+    padding-top: calc(var(--nx-spacing-base) - var(--nx-border-width));
+    padding-bottom: calc(var(--nx-spacing-base) - var(--nx-border-width));
   }
 
   &:hover {
-    background-color: $-hover-color;
+    background-color: var(--nx-color-global-sidebar-menu-icon-background);
+    .nx-icon {
+      color: var(--nx-color-global-sidebar-menu-icon-color);
+    }
+  }
+
+  &:hover:focus:not(:active)::before {
+    content: "";
+    border: 2px solid var(--nx-color-component-background);
+    border-radius: 50%;
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    top: 0px;
+    left: 0px;
   }
 
   &:active {
-    background-color: $-active-color;
+    background-color: var(--nx-color-global-sidebar-menu-icon-background-active);
   }
 }
 
