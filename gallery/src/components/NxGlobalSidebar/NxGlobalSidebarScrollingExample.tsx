@@ -21,7 +21,7 @@ import {
   from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
 
-const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
+const logoImg = require('../../assets/images/logo-plaid-villain-text-narrow.png');
 
 export default function NxGlobalSidebarScrollingExample() {
   const [sidebarOpen, onToggleCollapse] = useToggle(true),

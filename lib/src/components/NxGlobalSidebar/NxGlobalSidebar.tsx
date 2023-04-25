@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useRef } from 'react';
 import classnames from 'classnames';
 
 import NxButton from '../NxButton/NxButton';
@@ -29,7 +29,8 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
     logoLink
   } = props;
 
-  const id = useUniqueId('nx-global-sidebar');
+  const id = useUniqueId('nx-global-sidebar'),
+      headerRef = useRef<HTMLDivElement>(null);
 
   const classes = classnames(className, 'nx-global-sidebar', {
     'open': isOpen,
@@ -55,7 +56,7 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
   return (
     <div className={classes} id={id}>
       <aside aria-label="global sidebar">
-        <div className="nx-global-sidebar__header">
+        <div className="nx-global-sidebar__header" ref={headerRef} style={{height: headerRef?.current?.clientHeight}}>
           <a className="nx-global-sidebar__product-info nx-global-sidebar__expanded-content"
              href={logoLink}>
             { logo }
