@@ -13,10 +13,7 @@ import { modifierKeyIsPressed } from '../keyboardUtil';
 describe('modifierKeyIsPressed', function () {
   const Fixture = () => {
     const [isPressed, setIsPressed] = useState(false);
-    const handleKeyDown = (event: React.KeyboardEvent) => {
-      event.preventDefault();
-      setIsPressed(modifierKeyIsPressed(event));
-    };
+    const handleKeyDown = (event: React.KeyboardEvent) => setIsPressed(modifierKeyIsPressed(event));
     return <div tabIndex={1} data-testid="target" onKeyDown={handleKeyDown}>{isPressed.toString()}</div>;
   };
 
