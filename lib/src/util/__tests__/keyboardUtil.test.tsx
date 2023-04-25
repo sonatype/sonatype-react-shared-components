@@ -5,11 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { without } from 'ramda';
 
 import { rtlRender } from '../../__testutils__/rtlUtils';
 import { userEvent } from '../../__testutils__/rtlUtils';
-import { modifierKeyIsPressed, MODIFIER_KEYS } from '../keyboardUtil';
+import { modifierKeyIsPressed } from '../keyboardUtil';
 
 describe('modifierKeyIsPressed', function () {
   const Fixture = () => {
@@ -31,8 +30,7 @@ describe('modifierKeyIsPressed', function () {
     expect(targetEl).toHaveTextContent('false');
     targetEl.focus();
 
-    // "OS" is not playing nicely with js-dom
-    for (const modifier of without(['OS'], MODIFIER_KEYS)) {
+    for (const modifier of ['Alt', 'AltGraph', 'Control', 'Meta', 'Shift']) {
       await user.keyboard(`{${modifier}}`);
       expect(targetEl).toHaveTextContent('true');
       await user.keyboard('A');
