@@ -10,7 +10,7 @@
 .nx-threat-counter {
   align-items: center;
   box-sizing: content-box;
-  border: 2px solid var(--nx-color-threat-unspecified);
+  border: 1px solid var(--nx-color-threat-unspecified);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);
   color: var(--nx-color-threat-level-text);
@@ -18,7 +18,7 @@
   flex-direction: row-reverse;
   font-size: var(--nx-font-size-s);
   justify-content: flex-end;
-  height: 28px;
+  height: 30px;
   margin: 0;
   padding-right: var(--nx-spacing-4x);
   padding-left: var(--nx-spacing-4x);
