@@ -7,6 +7,7 @@
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
 @use '../scss-shared/nx-dark-mode-helpers';
+@use '../scss-shared/nx-button-helpers';
 
 @mixin solid-btn-styling($variant) {
   background-color: var(--nx-color-#{$variant}-button-background);
@@ -26,6 +27,7 @@
   &:active {
     background-color: var(--nx-color-#{$variant}-button-background-active);
     border-color: transparent;
+    color: var(--nx-color-#{$variant}-button-text);
   }
 }
 
@@ -34,7 +36,7 @@
   @include nx-container-helpers.container-horizontal;
 
   background-color: var(--nx-color-secondary-button-background);
-  border: var(--nx-border-width-button) solid var(--nx-color-secondary-button-border);
+  border: var(--nx-border-width) solid var(--nx-color-secondary-button-border);
   border-radius: var(--nx-border-radius);
   color: var(--nx-color-secondary-button-text);
   cursor: pointer;
@@ -42,7 +44,7 @@
   font-size: var(--nx-font-size);
   line-height: var(--nx-line-height);
   margin: 0 var(--nx-spacing-6x);
-  padding: calc(var(--nx-spacing-2x) - var(--nx-border-width-button)) calc(var(--nx-spacing-6x) - var(--nx-border-width-button));
+  padding: calc(var(--nx-spacing-2x) - var(--nx-border-width)) calc(var(--nx-spacing-6x) - var(--nx-border-width));
   text-align: center;
   text-decoration: none;
 
@@ -52,8 +54,7 @@
   }
 
   &:focus:not(:active) {
-    outline: var(--nx-focus-outline-width) solid var(--nx-color-secondary-button-focus-outline);
-    outline-offset: calc(0px - var(--nx-border-width-button) - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
+    @include nx-button-helpers.bordered-btn-focus-outline("secondary");
   }
 
   &:focus-visible {
@@ -63,6 +64,7 @@
   &:active {
     background-color: var(--nx-color-secondary-button-background-active);
     border-color: var(--nx-color-secondary-button-border-active);
+    color: var(--nx-color-secondary-button-text);
   }
 
   &.hidden {
@@ -98,6 +100,7 @@
   &:active {
     background-color: var(--nx-color-tertiary-button-background-active);
     border-color: var(--nx-color-tertiary-button-border-active);
+    color: var(--nx-color-tertiary-button-text);
   }
 }
 
@@ -140,6 +143,7 @@
   &:active {
     background-color: var(--nx-color-interactive-background-active);
     border-color: transparent;
+    color: var(--nx-color-text-stark);
   }
 
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out

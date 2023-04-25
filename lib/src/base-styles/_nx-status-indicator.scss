@@ -5,6 +5,18 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
+@mixin status-indicator-styling($variant) {
+  background-color: var(--nx-color-status-indicator-#{$variant}-background);
+  color: var(--nx-color-status-indicator-#{$variant}-text);
+  &::before {
+    background-color: var(--nx-color-status-indicator-#{$variant}-icon-background);
+    border-color: var(--nx-color-status-indicator-#{$variant}-icon-border);
+  }
+  &::after {
+    border-color: var(--nx-color-status-indicator-#{$variant}-border);
+  }
+}
+
 .nx-status-indicator {
   $height: calc(var(--nx-line-height) * var(--nx-font-size));
   $border-radius: calc(#{$height} * 0.5);
@@ -45,49 +57,17 @@
   }
 
   // negative styles (default)
-  background-color: var(--nx-swatch-grey-95);
-  color: var(--nx-swatch-grey-10);
-  &::before {
-    background-color: var(--nx-swatch-grey-60);
-    border-color: var(--nx-swatch-grey-20);
-  }
-  &::after {
-    border-color: var(--nx-swatch-grey-30);
-  }
+  @include status-indicator-styling("negative");
 
   &--intermediate {
-    background-color: var(--nx-swatch-blue-95);
-    color: var(--nx-swatch-blue-10);
-    &::before {
-      background-color: var(--nx-swatch-blue-30);
-      border-color: var(--nx-swatch-blue-30);
-    }
-    &::after {
-      border-color: var(--nx-swatch-blue-30);
-    }
+    @include status-indicator-styling("intermediate");
   }
 
   &--positive {
-    background-color: var(--nx-swatch-green-95);
-    color: var(--nx-swatch-green-10);
-    &::before {
-      background-color: var(--nx-swatch-green-45);
-      border-color: var(--nx-color-alert-success);
-    }
-    &::after {
-      border-color: var(--nx-color-alert-success);
-    }
+    @include status-indicator-styling("positive");
   }
 
   &--error {
-    background-color: var(--nx-swatch-red-95);
-    color: var(--nx-swatch-red-10);
-    &::before {
-      background-color: var(--nx-swatch-red-65);
-      border-color: var(--nx-color-alert-error);
-    }
-    &::after {
-      border-color: var(--nx-color-alert-error);
-    }
+    @include status-indicator-styling("error");
   }
 }

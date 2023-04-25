@@ -12,12 +12,12 @@
 }
 
 .nx-binary-donut-chart__background {
-  fill: var(--nx-color-binary-donut-chart-background-fill);
+  fill: var(--nx-color-progress-background);
   fill-rule: evenodd;
   stroke: var(--nx-color-component-background);
   stroke-width: 1;
 }
 
 .nx-binary-donut-chart__arc {
-  stroke: var(--nx-color-binary-donut-chart-arc-stroke);
+  stroke: var(--nx-color-progress-fill);
 }

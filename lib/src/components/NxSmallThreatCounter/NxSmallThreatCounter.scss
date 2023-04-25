@@ -15,9 +15,15 @@
   }
 
   &--critical,
-  &--none,
+  &--low,
   &--unspecified {
-    color: var(--nx-swatch-white);
+    color: var(--nx-color-small-threat-counter-text-secondary);
+  }
+
+  &--severe,
+  &--moderate,
+  &--none {
+    color: var(--nx-color-small-threat-counter-text);
   }
 }
 
@@ -25,7 +31,6 @@
   $height: 25px;
   position: relative;
   border-radius: math.div($height, 2);
-  color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-s);
   font-weight: bold;
   height: $height;
@@ -50,8 +55,8 @@
   }
 
   &--zero {
-    background-color: var(--nx-swatch-grey-90);
-    color: var(--nx-swatch-grey-40);
+    background-color: var(--nx-color-small-threat-counter-zero-background);
+    color: var(--nx-color-small-threat-counter-zero-text);
   }
 }
 
