@@ -279,6 +279,10 @@
   --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-65);
   --nx-color-status-indicator-error-icon-border: var(--nx-color-alert-error);
 
+  --nx-color-system-notice-background: var(--nx-swatch-indigo-95);
+  --nx-color-system-notice-background-alert: var(--nx-swatch-orange-95);
+  --nx-color-system-notice-text: var(--nx-color-text);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
@@ -539,6 +543,10 @@
     --nx-color-status-indicator-error-text: var(--nx-swatch-indigo-10);
     --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-40);
     --nx-color-status-indicator-error-icon-border: var(--nx-color-status-indicator-error-icon-background);
+
+    --nx-color-system-notice-background: var(--nx-swatch-indigo-30);
+    --nx-color-system-notice-background-alert: var(--nx-swatch-pink-30);
+    --nx-color-system-notice-text: var(--nx-swatch-indigo-95);
   }
 
   // Deprecated variables
