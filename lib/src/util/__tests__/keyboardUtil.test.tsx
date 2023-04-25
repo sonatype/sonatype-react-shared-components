@@ -27,7 +27,7 @@ describe('modifierKeyIsPressed', function () {
     expect(targetEl).toHaveTextContent('false');
     targetEl.focus();
 
-    // "OS" is omitted because jest-dom does not recognize it.
+    // "OS" is omitted because jest-dom is not recognizing it.
     for (const modifier of ['Alt', 'AltGraph', 'Control', 'Meta', 'Shift']) {
       await user.keyboard(`{${modifier}}`);
       expect(targetEl).toHaveTextContent('true');
