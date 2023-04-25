@@ -11,7 +11,7 @@
   @each $category in critical, severe, moderate, low, none, unspecified {
     &--#{$category} {
       background-color: var(--nx-color-threat-#{$category});
-      color: var(--nx-color-small-threat-counter-#{$category}-text);
+      color: var(--nx-color-threat-#{$category}-text);
     }
   }
 }

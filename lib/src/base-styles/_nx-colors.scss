@@ -50,6 +50,13 @@
   --nx-color-threat-indicator-legend-header-text: var(--nx-color-text-stark);
   --nx-color-threat-level-text: var(--nx-color-text);
 
+  --nx-color-threat-critical-text: var(--nx-swatch-white);
+  --nx-color-threat-severe-text: var(--nx-color-text-stark);
+  --nx-color-threat-moderate-text: var(--nx-color-text-stark);
+  --nx-color-threat-low-text: var(--nx-swatch-white);
+  --nx-color-threat-none-text: var(--nx-color-text-stark);
+  --nx-color-threat-unspecified-text: var(--nx-swatch-white);
+
   --nx-color-validation-valid: var(--nx-swatch-green-25);
   --nx-color-validation-valid-icon: var(--nx-color-validation-valid);
   --nx-color-validation-invalid: var(--nx-swatch-red-40);
@@ -136,12 +143,6 @@
   --nx-color-policy-indicator-text: var(--nx-color-text);
 
   //NxSmallThreatCounter
-  --nx-color-small-threat-counter-critical-text: var(--nx-swatch-white);
-  --nx-color-small-threat-counter-severe-text: var(--nx-color-text-stark);
-  --nx-color-small-threat-counter-moderate-text: var(--nx-color-text-stark);
-  --nx-color-small-threat-counter-low-text: var(--nx-swatch-white);
-  --nx-color-small-threat-counter-none-text: var(--nx-color-text-stark);
-  --nx-color-small-threat-counter-unspecified-text: var(--nx-swatch-white);
   --nx-color-small-threat-counter-zero-background: var(--nx-color-interactive-background-disabled);
   --nx-color-small-threat-counter-zero-text: var(--nx-swatch-grey-40);
 
@@ -321,6 +322,13 @@
     --nx-color-threat-severe: var(--nx-swatch-orange-55);
     --nx-color-threat-critical: var(--nx-swatch-red-65);
 
+    --nx-color-threat-critical-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-severe-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-moderate-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-low-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-none-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-unspecified-text: var(--nx-swatch-blue-10);
+
     --nx-color-validation-valid: var(--nx-swatch-green-70);
     --nx-color-validation-valid-icon: var(--nx-swatch-green-60);
     --nx-color-validation-invalid: var(--nx-swatch-red-70);
@@ -400,12 +408,6 @@
     --nx-color-policy-indicator-text: var(--nx-swatch-indigo-97);
 
     //NxSmallThreatCounter
-    --nx-color-small-threat-counter-critical-text: var(--nx-swatch-blue-10);
-    --nx-color-small-threat-counter-severe-text: var(--nx-swatch-blue-10);
-    --nx-color-small-threat-counter-moderate-text: var(--nx-swatch-blue-10);
-    --nx-color-small-threat-counter-low-text: var(--nx-swatch-blue-10);
-    --nx-color-small-threat-counter-none-text: var(--nx-swatch-blue-10);
-    --nx-color-small-threat-counter-unspecified-text: var(--nx-swatch-blue-10);
     --nx-color-small-threat-counter-zero-background: var(--nx-color-disabled);
     --nx-color-small-threat-counter-zero-text: var(--nx-swatch-indigo-20);
 
