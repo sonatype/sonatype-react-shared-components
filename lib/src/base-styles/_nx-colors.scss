@@ -288,6 +288,9 @@
   --nx-color-system-notice-background-alert: var(--nx-swatch-orange-95);
   --nx-color-system-notice-text: var(--nx-color-text);
 
+  --nx-color-chart-line: var(--nx-swatch-grey-40);
+  --nx-color-chart-text: var(--nx-color-text-dark);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
