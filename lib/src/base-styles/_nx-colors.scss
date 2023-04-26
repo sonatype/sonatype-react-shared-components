@@ -284,6 +284,7 @@
   --nx-color-global-sidebar-menu-icon-color: var(--nx-swatch-white);
   --nx-color-global-sidebar-menu-icon-background: var(--nx-swatch-indigo-30);
   --nx-color-global-sidebar-menu-icon-background-active: var(--nx-swatch-indigo-50);
+  --nx-color-global-sidebar-menu-icon-inner-outline: var(--nx-color-global-sidebar-menu-icon-background);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
@@ -551,6 +552,7 @@
     --nx-color-global-sidebar-menu-icon-color: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-menu-icon-background: var(--nx-color-interactive-border-focus);
     --nx-color-global-sidebar-menu-icon-background-active: var(--nx-swatch-purple-90);
+    --nx-color-global-sidebar-menu-icon-inner-outline: var(--nx-color-component-background);
   }
 
   // Deprecated variables

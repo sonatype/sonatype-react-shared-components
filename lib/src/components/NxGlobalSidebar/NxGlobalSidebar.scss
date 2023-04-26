@@ -77,13 +77,12 @@ $-separator-color: var(--nx-swatch-indigo-40);
 
   &:hover:focus:not(:active)::before {
     content: "";
-    border: 2px solid var(--nx-color-component-background);
+    border: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-menu-icon-inner-outline);
     border-radius: 50%;
     position: absolute;
-    height: 24px;
-    width: 24px;
-    top: 0px;
-    left: 0px;
+    padding: calc(var(--nx-spacing-base) * 3);
+    top: calc(2px - var(--nx-border-width));
+    left: calc(2px - var(--nx-border-width));
   }
 
   &:active {
