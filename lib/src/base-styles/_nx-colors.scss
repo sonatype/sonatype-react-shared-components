@@ -254,7 +254,6 @@
   --nx-color-status-indicator-error-icon-border: var(--nx-color-alert-error);
 
   // NxSelectableColors
-  --nx-color-tag-text: var(--nx-color-text-stark);
   --nx-color-selectable-color-sky-dark: var(--nx-swatch-blue-80);
   --nx-color-selectable-color-sky-light: var(--nx-swatch-blue-90);
 
@@ -286,6 +285,8 @@
   --nx-color-selectable-color-indigo-light: var(--nx-swatch-indigo-95);
 
   // NxTag
+  --nx-color-tag-text: var(--nx-color-text-stark);
+
   --nx-color-tag-sky-selected-hover-border: var(--nx-color-interactive-border-hover);
   --nx-color-tag-sky-selected-hover-background: var(--nx-color-selectable-color-sky-dark);
   --nx-color-tag-sky-unselected-hover-border: var(--nx-color-interactive-border-hover);
@@ -573,7 +574,6 @@
     --nx-color-status-indicator-error-icon-border: var(--nx-color-status-indicator-error-icon-background);
 
     // NxSelectableColors
-    --nx-color-tag-text: var(--nx-swatch-indigo-10);
     --nx-color-selectable-color-sky-dark: var(--nx-swatch-blue-80);
     --nx-color-selectable-color-sky-light: var(--nx-swatch-blue-95);
 
@@ -605,6 +605,8 @@
     --nx-color-selectable-color-indigo-light: var(--nx-swatch-indigo-95);
 
     // NxTag
+    --nx-color-tag-text: var(--nx-swatch-indigo-10);
+
     --nx-color-tag-sky-selected-hover-border: var(--nx-color-tag-sky-selected-hover-background);
     --nx-color-tag-sky-selected-hover-background: var(--nx-swatch-blue-75);
     --nx-color-tag-sky-unselected-hover-border: var(--nx-color-selectable-color-sky-dark);
