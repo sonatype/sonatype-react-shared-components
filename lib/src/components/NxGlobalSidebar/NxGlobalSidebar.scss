@@ -81,6 +81,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
 .nx-global-sidebar__product-info {
   flex: 1 1 auto;
   display: flex;
+  overflow: hidden;
 
   &:focus-visible {
     outline: none;
@@ -165,6 +166,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
   .nx-global-sidebar__hide-when-collapsed {
     visibility: hidden;
     white-space: nowrap;
+  }
+
+  .nx-global-sidebar__product-info {
+    width: 0;
   }
 
   .nx-global-sidebar__header {
