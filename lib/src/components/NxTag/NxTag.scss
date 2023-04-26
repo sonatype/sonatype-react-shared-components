@@ -8,6 +8,7 @@
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-hide-checkbox-helper';
 @use '../../scss-shared/nx-dark-mode-helpers';
+@use '../../scss-shared/nx-tag-variables';
 
 .nx-tag {
   @include nx-text-helpers.semi-bold;
