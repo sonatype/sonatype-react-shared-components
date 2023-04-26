@@ -917,6 +917,16 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-text">
               The text color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-system-notice-background">
+              The default background color for <NxCode>NxSystemNotice</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-system-notice-background-alert">
+              The background color for <NxCode>NxSystemNotice</NxCode>s using
+              the <NxCode>nx-system-notice--alert</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-system-notice-text">
+              The text color for <NxCode>NxSystemNotice</NxCode>.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
