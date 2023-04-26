@@ -15,3 +15,31 @@ export const NIVO_COLORS = [
   'var(--nx-swatch-turquoise-30)',
   'var(--nx-swatch-indigo-60)'
 ];
+
+export const NIVO_THEME = {
+  background: 'var(--nx-color-component-background)',
+  axis: {
+    domain: {
+      line: { stroke: 'var(--nx-color-chart-line)' }
+    },
+    legend: {
+      text: { fill: 'var(--nx-color-chart-text)' }
+    },
+    ticks: {
+      line: { stroke: 'var(--nx-color-chart-line)' },
+      text: { fill: 'var(--nx-color-chart-text)' }
+    }
+  },
+  grid: {
+    line: { stroke: 'var(--nx-color-chart-line)' }
+  },
+  legends: {
+    title: {
+      text: { fill: 'var(--nx-color-chart-text)' }
+    },
+    text: { fill: 'var(--nx-color-chart-text)' }
+  },
+  tooltip: {
+    container: { color: 'var(--nx-color-chart-text)' }
+  }
+};
