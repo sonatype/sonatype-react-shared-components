@@ -374,22 +374,22 @@ const CssVariablesPage = () => {
               The color associated with threats of critical severity.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-threat-unspecified-text">
-              The text color on an unspecified threat level background.
+              The text color for use on a threat level "unspecified" background.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-threat-none-text">
-              The text color on a threat level none background.
+              The text color for use on a threat level "none" background.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-threat-low-text">
-              The text color on a threat level low background.
+              The text color for use on a threat level "low" background.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-threat-moderate-text">
-              The text color on a threat level moderate background.
+              The text color for use on a threat level "moderate" background.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-threat-severe-text">
-              The text color on a threat level severe background.
+              The text color for use on a threat level "severe" background.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-threat-critical-text">
-              The text color on a threat level critical background.
+              The text color for use on a threat level "critical" background.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-validation-valid">
               The color used on validatable form fields when they are valid.
