@@ -71,8 +71,13 @@
 
 .nx-selectable-color--lime, // deprecated
 .nx-selectable-color--kiwi {
-  --nx-selectable-color-dark: var(--nx-swatch-green-80);
-  --nx-selectable-color-light: var(--nx-swatch-green-95);
+  --nx-selectable-color-dark: var(--nx-swatch-green-35);
+  --nx-selectable-color-light: var(--nx-swatch-green-90);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-selectable-color-dark: var(--nx-swatch-green-80);
+    --nx-selectable-color-light: var(--nx-swatch-green-95);
+  }
 }
 
 .nx-selectable-color--indigo {
@@ -80,7 +85,7 @@
   --nx-selectable-color-light: var(--nx-swatch-indigo-95);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-selectable-color-dark: var(--nx-swatch-indigo-80);
-    --nx-selectable-color-light: var(--nx-swatch-indigo-90);
+    --nx-selectable-color-dark: var(--nx-swatch-indigo-70);
+    --nx-selectable-color-light: var(--nx-swatch-indigo-95);
   }
 }
