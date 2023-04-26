@@ -18,6 +18,7 @@ export const NIVO_COLORS = [
 
 export const NIVO_THEME = {
   background: 'var(--nx-color-component-background)',
+  textColor: 'var(--nx-color-chart-text)',
   axis: {
     domain: {
       line: { stroke: 'var(--nx-color-chart-line)' }
