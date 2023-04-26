@@ -352,6 +352,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-alert-error">
               The color used on the <NxCode>NxAlert</NxCode> error icon and for other equivalent icons and purposes.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-line">
+              The value used for line colors within the <NxCode>NIVO_THEME</NxCode> export.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-text">
+              The value used for text colors within the <NxCode>NIVO_THEME</NxCode> export.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
