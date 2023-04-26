@@ -80,7 +80,7 @@
   --nx-selectable-color-light: var(--nx-swatch-indigo-95);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-selectable-color-dark: var(--nx-swatch-blue-80);
-    --nx-selectable-color-light: var(--nx-swatch-blue-90);
+    --nx-selectable-color-dark: var(--nx-swatch-indigo-80);
+    --nx-selectable-color-light: var(--nx-swatch-indigo-90);
   }
 }
