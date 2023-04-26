@@ -6,13 +6,14 @@
  */
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line';
-import { NIVO_COLORS } from '@sonatype/react-shared-components';
+import { NIVO_COLORS, NIVO_THEME } from '@sonatype/react-shared-components';
 import { lineData } from './lineData';
 
 export default function NivoLineExample() {
   return (
     <div style={{ height: 400 }}>
       <ResponsiveLine data={lineData}
+                      theme={NIVO_THEME}
                       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                       xScale={{ type: 'point' }}
                       yScale={{

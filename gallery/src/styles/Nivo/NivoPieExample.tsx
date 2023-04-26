@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { ResponsivePie } from '@nivo/pie';
-import { NIVO_COLORS } from '@sonatype/react-shared-components';
+import { NIVO_COLORS, NIVO_THEME } from '@sonatype/react-shared-components';
 import { pieData } from './pieData';
 
 export default function NivoPieExample() {
@@ -14,6 +14,7 @@ export default function NivoPieExample() {
     <>
       <div style={{ height: '400px' }}>
         <ResponsivePie data={pieData}
+                       theme={NIVO_THEME}
                        margin={{
                          top: 40,
                          right: 80,
