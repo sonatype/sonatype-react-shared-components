@@ -50,9 +50,9 @@
     pointer-events: auto;
   }
 
-  background-color: var(--nx-swatch-white);
-  box-shadow: -34px 0 50px -32px hsla(0, 0%, 50%, 0.5);
-  color: var(--nx-swatch-grey-30);
+  background-color: var(--nx-color-drawer-background);
+  box-shadow: var(--nx-box-shadow-drawer);
+  color: var(--nx-color-text);
 
   box-sizing: border-box;
   grid-area: content;
@@ -112,7 +112,7 @@
   @include nx-container-helpers.container-vertical;
 
   align-items: start;
-  border-bottom: 1px solid var(--nx-swatch-indigo-90);
+  border-bottom: var(--nx-border-default);
   display: grid;
   column-gap: var(--nx-spacing-2x);
   grid-template: "title close-button"
