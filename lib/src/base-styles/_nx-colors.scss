@@ -290,6 +290,14 @@
 
   --nx-color-chart-line: var(--nx-swatch-grey-40);
   --nx-color-chart-text: var(--nx-color-text-stark);
+  --nx-color-chart-data-1: var(--nx-swatch-teal-40);
+  --nx-color-chart-data-2: var(--nx-swatch-red-65);
+  --nx-color-chart-data-3: var(--nx-swatch-green-35);
+  --nx-color-chart-data-4: var(--nx-swatch-purple-60);
+  --nx-color-chart-data-5: var(--nx-swatch-orange-40);
+  --nx-color-chart-data-6: var(--nx-swatch-pink-60);
+  --nx-color-chart-data-7: var(--nx-swatch-turquoise-30);
+  --nx-color-chart-data-8: var(--nx-swatch-indigo-60);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
@@ -562,6 +570,14 @@
     --nx-color-system-notice-text: var(--nx-swatch-indigo-95);
 
     --nx-color-chart-line: var(--nx-swatch-indigo-70);
+    --nx-color-chart-data-1: var(--nx-swatch-yellow-60);
+    --nx-color-chart-data-2: var(--nx-swatch-pink-70);
+    --nx-color-chart-data-3: var(--nx-swatch-turquoise-40);
+    --nx-color-chart-data-4: var(--nx-swatch-purple-70);
+    --nx-color-chart-data-5: var(--nx-swatch-red-65);
+    --nx-color-chart-data-6: var(--nx-swatch-grey-97);
+    --nx-color-chart-data-7: var(--nx-swatch-indigo-60);
+    --nx-color-chart-data-8: var(--nx-swatch-teal-90);
   }
 
   // Deprecated variables
