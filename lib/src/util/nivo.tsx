@@ -23,24 +23,11 @@ export const NIVO_THEME = {
     domain: {
       line: { stroke: 'var(--nx-color-chart-line)' }
     },
-    legend: {
-      text: { fill: 'var(--nx-color-chart-text)' }
-    },
     ticks: {
-      line: { stroke: 'var(--nx-color-chart-line)' },
-      text: { fill: 'var(--nx-color-chart-text)' }
+      line: { stroke: 'var(--nx-color-chart-line)' }
     }
   },
   grid: {
     line: { stroke: 'var(--nx-color-chart-line)' }
-  },
-  legends: {
-    title: {
-      text: { fill: 'var(--nx-color-chart-text)' }
-    },
-    text: { fill: 'var(--nx-color-chart-text)' }
-  },
-  tooltip: {
-    container: { color: 'var(--nx-color-chart-text)' }
   }
 };
