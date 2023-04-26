@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent, SyntheticEvent } from 'react';
+import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEvent } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
@@ -13,6 +13,7 @@ import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
 import { TreeItemFocusState, TreeKeyNavContextType, ItemProps, itemPropTypes } from './types';
 import TreeKeyNavContext from './TreeKeyNavContext';
+import { modifierKeyIsPressed } from '../../util/keyboardUtil';
 
 export default function NxTreeItem(props: ItemProps) {
   const {
@@ -98,7 +99,7 @@ export default function NxTreeItem(props: ItemProps) {
     return !!ref.current?.querySelector('.nx-tree__item');
   }
 
-  function stopPropAndPreventDefault(evt: SyntheticEvent) {
+  function stopPropAndPreventDefault(evt: KeyboardEvent) {
     evt.stopPropagation();
     evt.preventDefault();
   }
@@ -134,6 +135,10 @@ export default function NxTreeItem(props: ItemProps) {
   }, []);
 
   function onKeyDown(evt: KeyboardEvent<HTMLLIElement>) {
+    if (modifierKeyIsPressed(evt)) {
+      return;
+    }
+
     switch (evt.key) {
       case 'ArrowUp':
         stopPropAndPreventDefault(evt);
