@@ -86,6 +86,7 @@
     &.nx-clickable {
       &:hover {
         @extend %table-outline;
+        color: var(--nx-color-text-dark);
         outline-color: var(--nx-color-border);
 
         > .nx-cell {
@@ -94,12 +95,14 @@
       }
 
       &.selected {
+        color: var(--nx-color-text-dark);
         > .nx-cell {
-          background-color: var(--nx-swatch-blue-95);
+          background-color: var(--nx-color-interactive-background-selected);
         }
       }
 
       &:active {
+        color: var(--nx-color-text-dark);
         outline: 0;
         > .nx-cell {
           background-color: var(--nx-color-interactive-background-active);
