@@ -25,7 +25,7 @@
   height: 32px;
   line-height: 30px;
   margin: 0 var(--nx-spacing-2x) var(--nx-spacing-2x) 0;
-  padding: 0 calc(var(--nx-spacing-4x) - 1px) 0 calc(var(--nx-spacing-4x) - 1px);
+  padding: 0 calc(var(--nx-spacing-4x) - var(--nx-border-width)) 0 calc(var(--nx-spacing-4x) - var(--nx-border-width));
   position: relative;
   user-select: none;
   // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
