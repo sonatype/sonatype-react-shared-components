@@ -48,6 +48,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
 .nx-global-sidebar__header {
   align-items: center;
   display: flex;
+  justify-content: space-between;
   max-height: $-max-logo-height;
   margin-bottom: var(--nx-spacing-8x);
   padding: 0 $-left-right-spacing;
@@ -80,6 +81,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
   flex: 1 1 auto;
   display: flex;
   overflow: hidden;
+  padding-right: var(--nx-spacing-3x);
 
   &:focus-visible {
     outline: none;
@@ -87,8 +89,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
 }
 
 .nx-global-sidebar__logo {
-  // a temporary stop gap to ensure no logos break the header container - matches plaid-villain logo width
-  max-width: 155px;
+  max-width: 100%;
   max-height: $-max-logo-height;
 }
 
@@ -167,6 +168,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
 
   .nx-global-sidebar__product-info {
     width: 0;
+    padding-right: 0;
   }
 
   .nx-global-sidebar__header {
