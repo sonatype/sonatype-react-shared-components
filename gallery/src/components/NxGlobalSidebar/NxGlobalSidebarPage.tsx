@@ -291,7 +291,7 @@ export default function NxGlobalSidebarPage() {
         <NxTile.Content>
           <NxP>
             This example shows 10 nav items (the maximum), a middle content area with enough content to trigger
-            scrolling, all footer options enabled.
+            scrolling, and all footer options enabled.
           </NxP>
           <NxP>
             <NxTextLink href="#/NxGlobalSidebarScrollingExample">

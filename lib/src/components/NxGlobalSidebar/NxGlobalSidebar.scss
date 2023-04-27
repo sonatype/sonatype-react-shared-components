@@ -48,7 +48,6 @@ $-separator-color: var(--nx-swatch-indigo-40);
 .nx-global-sidebar__header {
   align-items: center;
   display: flex;
-  justify-content: space-between;
   max-height: $-max-logo-height;
   margin-bottom: var(--nx-spacing-8x);
   padding: 0 $-left-right-spacing;
@@ -89,7 +88,6 @@ $-separator-color: var(--nx-swatch-indigo-40);
 }
 
 .nx-global-sidebar__logo {
-  max-width: 100%;
   max-height: $-max-logo-height;
 }
 
