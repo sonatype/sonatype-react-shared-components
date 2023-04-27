@@ -70,7 +70,7 @@ $-width: 44px;
         content: '';
         display: block;
         height: calc(#{$-height} + 4px);
-        outline: 2px solid var(--nx-color-interactive-border-focus);
+        box-shadow: 0 0 0 2px var(--nx-color-interactive-border-focus);
         position: absolute;
         left: -2px;
         top: -2px;

@@ -373,6 +373,24 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-threat-critical">
               The color associated with threats of critical severity.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-threat-unspecified-text">
+              The text color for use on a threat level "unspecified" background.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-threat-none-text">
+              The text color for use on a threat level "none" background.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-threat-low-text">
+              The text color for use on a threat level "low" background.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-threat-moderate-text">
+              The text color for use on a threat level "moderate" background.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-threat-severe-text">
+              The text color for use on a threat level "severe" background.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-threat-critical-text">
+              The text color for use on a threat level "critical" background.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-validation-valid">
               The color used on validatable form fields when they are valid.
             </ColorDocRow>
@@ -893,17 +911,21 @@ const CssVariablesPage = () => {
               The default active background color of <NxCode>NxCollapsibleItem</NxCode> when placed
               within <NxCode>.nx-page-sidebar</NxCode>.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-small-threat-counter-text">
-              The default text color of <NxCode>NxSmallThreatCounter</NxCode>.
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-small-threat-counter-text-secondary">
-              The secondary text color of <NxCode>NxSmallThreatCounter</NxCode> (same as default in dark mode).
-            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-background">
               The background color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-text">
               The text color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-system-notice-background">
+              The default background color for <NxCode>NxSystemNotice</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-system-notice-background-alert">
+              The background color for <NxCode>NxSystemNotice</NxCode>s using
+              the <NxCode>nx-system-notice--alert</NxCode> class.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-system-notice-text">
+              The text color for <NxCode>NxSystemNotice</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>

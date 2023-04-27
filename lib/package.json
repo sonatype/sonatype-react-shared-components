@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components",
-  "version": "12.11.7",
+  "version": "12.11.10",
   "description": "Sonatype shared UI components and utilities written in React",
   "main": "index.js",
   "repository": {
@@ -39,7 +39,7 @@
     "@testing-library/dom": "^8.16.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.0.4",
-    "@testing-library/user-event": "^14.1.1",
+    "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.2.4",
     "@types/react": "^16.0.0",
     "@types/react-dom": "^16.0.0",

@@ -50,6 +50,13 @@
   --nx-color-threat-indicator-legend-header-text: var(--nx-color-text-stark);
   --nx-color-threat-level-text: var(--nx-color-text);
 
+  --nx-color-threat-critical-text: var(--nx-swatch-white);
+  --nx-color-threat-severe-text: var(--nx-color-text-stark);
+  --nx-color-threat-moderate-text: var(--nx-color-text-stark);
+  --nx-color-threat-low-text: var(--nx-swatch-white);
+  --nx-color-threat-none-text: var(--nx-color-text-stark);
+  --nx-color-threat-unspecified-text: var(--nx-swatch-white);
+
   --nx-color-validation-valid: var(--nx-swatch-green-25);
   --nx-color-validation-valid-icon: var(--nx-color-validation-valid);
   --nx-color-validation-invalid: var(--nx-swatch-red-40);
@@ -136,8 +143,6 @@
   --nx-color-policy-indicator-text: var(--nx-color-text);
 
   //NxSmallThreatCounter
-  --nx-color-small-threat-counter-text: var(--nx-color-text-stark);
-  --nx-color-small-threat-counter-text-secondary: var(--nx-swatch-white);
   --nx-color-small-threat-counter-zero-background: var(--nx-color-interactive-background-disabled);
   --nx-color-small-threat-counter-zero-text: var(--nx-swatch-grey-40);
 
@@ -295,6 +300,10 @@
   --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-blue-95);
   --nx-color-global-sidebar-link-icon-color: var(--nx-swatch-white);
 
+  --nx-color-system-notice-background: var(--nx-swatch-indigo-95);
+  --nx-color-system-notice-background-alert: var(--nx-swatch-orange-95);
+  --nx-color-system-notice-text: var(--nx-color-text);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
@@ -332,6 +341,13 @@
     --nx-color-threat-moderate: var(--nx-swatch-yellow-65);
     --nx-color-threat-severe: var(--nx-swatch-orange-55);
     --nx-color-threat-critical: var(--nx-swatch-red-65);
+
+    --nx-color-threat-critical-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-severe-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-moderate-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-low-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-none-text: var(--nx-swatch-blue-10);
+    --nx-color-threat-unspecified-text: var(--nx-swatch-blue-10);
 
     --nx-color-validation-valid: var(--nx-swatch-green-70);
     --nx-color-validation-valid-icon: var(--nx-swatch-green-60);
@@ -412,8 +428,6 @@
     --nx-color-policy-indicator-text: var(--nx-swatch-indigo-97);
 
     //NxSmallThreatCounter
-    --nx-color-small-threat-counter-text: var(--nx-swatch-blue-10);
-    --nx-color-small-threat-counter-text-secondary: var(--nx-color-small-threat-counter-text);
     --nx-color-small-threat-counter-zero-background: var(--nx-color-disabled);
     --nx-color-small-threat-counter-zero-text: var(--nx-swatch-indigo-20);
 
@@ -571,6 +585,10 @@
     --nx-color-global-sidebar-link-text-interactive: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-link-icon-color: var(--nx-swatch-indigo-10);
+
+    --nx-color-system-notice-background: var(--nx-swatch-indigo-30);
+    --nx-color-system-notice-background-alert: var(--nx-swatch-pink-30);
+    --nx-color-system-notice-text: var(--nx-swatch-indigo-95);
   }
 
   // Deprecated variables

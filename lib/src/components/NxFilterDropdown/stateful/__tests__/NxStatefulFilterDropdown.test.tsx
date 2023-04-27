@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { createEvent, fireEvent } from '@testing-library/react';
-import { UserEvent } from '@testing-library/user-event/dist/types/setup';
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
 
 import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
 import NxStatefulFilterDropdown, { Props } from '../NxStatefulFilterDropdown';
