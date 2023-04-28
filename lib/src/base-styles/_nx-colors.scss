@@ -32,9 +32,9 @@
   --nx-color-link-hover: var(--nx-swatch-blue-30);
   --nx-color-link-disabled: var(--nx-color-text-disabled);
 
-  --nx-color-threat-unspecified: var(--nx-swatch-grey-40);
-  --nx-color-threat-none: var(--nx-swatch-indigo-50);
-  --nx-color-threat-low: var(--nx-swatch-teal-50);
+  --nx-color-threat-unspecified: var(--nx-swatch-grey-05);
+  --nx-color-threat-none: var(--nx-swatch-teal-50);
+  --nx-color-threat-low: var(--nx-swatch-indigo-50);
   --nx-color-threat-moderate: var(--nx-swatch-yellow-60);
   --nx-color-threat-severe: var(--nx-swatch-orange-50);
   --nx-color-threat-critical: var(--nx-swatch-red-40);
@@ -46,6 +46,9 @@
   --nx-color-alert-success: var(--nx-swatch-green-25);
   --nx-color-alert-warning: var(--nx-swatch-orange-50);
   --nx-color-alert-error: var(--nx-swatch-red-40);
+
+  --nx-color-chart-line: var(--nx-swatch-grey-40);
+  --nx-color-chart-text: var(--nx-color-text-dark);
 
   // Deprecated variables
   --nx-color-subsection-border: var(--nx-color-border);
