@@ -34,7 +34,7 @@
 
 .nx-tag--selectable {
   cursor: pointer;
-  padding-right: var(--nx-spacing-2x);
+  padding-right: calc(var(--nx-spacing-2x) - calc(var(--nx-border-width) - 1px));
   background-color: var(--nx-selectable-color-light);
 
   &:hover {
