@@ -56,7 +56,7 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
     <div className={classes} id={id}>
       <aside aria-label="global sidebar">
         <div className="nx-global-sidebar__header">
-          <a className="nx-global-sidebar__product-info nx-global-sidebar__expanded-content"
+          <a className="nx-global-sidebar__product-info"
              href={logoLink}>
             { logo }
           </a>

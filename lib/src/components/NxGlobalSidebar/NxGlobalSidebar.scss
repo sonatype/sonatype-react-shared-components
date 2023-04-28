@@ -10,7 +10,7 @@
 
 $-width-open: 250px;
 $-width-closed: 72px;
-$-logo-height: 34px;
+$-max-logo-height: 43px;
 $-left-right-spacing: var(--nx-spacing-6x);
 
 $-text-color: var(--nx-swatch-white);
@@ -48,7 +48,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
 .nx-global-sidebar__header {
   align-items: center;
   display: flex;
-  height: $-logo-height;
+  max-height: $-max-logo-height;
   margin-bottom: var(--nx-spacing-8x);
   padding: 0 $-left-right-spacing;
 }
@@ -79,6 +79,8 @@ $-separator-color: var(--nx-swatch-indigo-40);
 .nx-global-sidebar__product-info {
   flex: 1 1 auto;
   display: flex;
+  overflow: hidden;
+  margin-right: var(--nx-spacing-3x);
 
   &:focus-visible {
     outline: none;
@@ -86,7 +88,9 @@ $-separator-color: var(--nx-swatch-indigo-40);
 }
 
 .nx-global-sidebar__logo {
-  height: $-logo-height;
+  max-height: $-max-logo-height;
+  // calculate the available space, subtracting all padding & collapse button width
+  max-width: calc(#{$-width-open} - calc(#{$-left-right-spacing} * 2) - var(--nx-spacing-3x) - 32px);
 }
 
 .nx-global-sidebar__navigation {
@@ -160,6 +164,11 @@ $-separator-color: var(--nx-swatch-indigo-40);
   .nx-global-sidebar__hide-when-collapsed {
     visibility: hidden;
     white-space: nowrap;
+  }
+
+  .nx-global-sidebar__product-info {
+    width: 0;
+    margin-right: 0;
   }
 
   .nx-global-sidebar__header {
