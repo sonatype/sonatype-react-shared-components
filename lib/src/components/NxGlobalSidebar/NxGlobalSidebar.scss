@@ -89,6 +89,8 @@ $-separator-color: var(--nx-swatch-indigo-40);
 
 .nx-global-sidebar__logo {
   max-height: $-max-logo-height;
+  // calculate the available space, subtracting all padding & collapse button width
+  max-width: calc(#{$-width-open} - calc(#{$-left-right-spacing} * 2) - var(--nx-spacing-3x) - 32px);
 }
 
 .nx-global-sidebar__navigation {
