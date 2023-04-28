@@ -65,8 +65,6 @@ $-button-border-width: 2px;
 
   &:focus:not(:active) {
     outline-color: var(--nx-color-global-sidebar-toggle-border-focus);
-    padding-top: calc(var(--nx-spacing-base) - var(--nx-border-width));
-    padding-bottom: calc(var(--nx-spacing-base) - var(--nx-border-width));
   }
 
   &:hover {
