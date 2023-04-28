@@ -81,7 +81,7 @@
 
     &.nx-clickable {
       &:hover {
-        color: var(--nx-color-table-row-text-interactive);
+        color: var(--nx-color-text-stark);
         outline: var(--nx-outline-width-table-row-hover) solid var(--nx-color-border);
         outline-offset: calc(0px - var(--nx-focus-outline-inset));
         > .nx-cell {
@@ -90,9 +90,9 @@
       }
 
       &.selected {
-        color: var(--nx-color-table-row-text-interactive);
+        color: var(--nx-color-text-stark);
         > .nx-cell {
-          background-color: var(--nx-color-table-row-background-selected);
+          background-color: var(--nx-color-interactive-background-selected);
         }
       }
 
@@ -102,7 +102,7 @@
       }
       
       &:active {
-        color: var(--nx-color-table-row-text-interactive);
+        color: var(--nx-color-text-stark);
         outline: 0;
         > .nx-cell {
           background-color: var(--nx-color-interactive-background-active);
