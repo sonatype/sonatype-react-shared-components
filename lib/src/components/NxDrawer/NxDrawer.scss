@@ -131,7 +131,7 @@
   &__title {
     @include nx-text-helpers.truncate-ellipsis;
 
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-text-stark);
     grid-area: title;
   }
 

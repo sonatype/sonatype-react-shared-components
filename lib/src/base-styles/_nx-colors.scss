@@ -285,7 +285,7 @@
   --nx-color-status-indicator-error-icon-border: var(--nx-color-alert-error);
 
   // NxDrawer
-  --nx-color-drawer-background: var(--nx-swatch-white);
+  --nx-color-drawer-background: var(--nx-color-component-background);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
