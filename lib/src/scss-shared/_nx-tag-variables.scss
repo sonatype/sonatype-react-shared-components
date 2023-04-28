@@ -8,144 +8,144 @@
 
 .nx-selectable-color--light-blue, // deprecated
 .nx-selectable-color--sky {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-blue-75);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-blue-90);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-blue-75);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-blue-90);
   }
 }
 
 .nx-selectable-color--purple {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-purple-75);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-purple-90);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-purple-75);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-purple-90);
   }
 }
 
 .nx-selectable-color--pink {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-pink-75);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-pink-90);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-pink-75);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-pink-90);
   }
 }
 
 .nx-selectable-color--blue {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-teal-40);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-teal-85);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-teal-40);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-teal-85);
   }
 }
 
 .nx-selectable-color--red {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-red-65);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-red-85);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-red-65);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-red-85);
   }
 }
 
 .nx-selectable-color--green, // deprecated
 .nx-selectable-color--turquoise {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-turquoise-35);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-turquoise-80);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-turquoise-35);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-turquoise-80);
   }
 }
 
 .nx-selectable-color--orange {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-orange-60);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-orange-80);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-orange-60);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-orange-80);
   }
 }
 
 .nx-selectable-color--yellow {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-yellow-60);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-yellow-80);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-yellow-60);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-yellow-80);
   }
 
 }
 
 .nx-selectable-color--lime, // deprecated
 .nx-selectable-color--kiwi {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-green-75);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-green-90);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-green-75);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-green-90);
   }
 }
 
 .nx-selectable-color--indigo {
-  --nx-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-selected-hover-background: var(--nx-selectable-color-dark);
-  --nx-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
-  --nx-tag-unselected-hover-background: var(--nx-selectable-color-light);
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
 
   @include nx-dark-mode-helpers.dark-mode {
-    --nx-tag-selected-hover-border: var(--nx-tag-selected-hover-background);
-    --nx-tag-selected-hover-background: var(--nx-swatch-indigo-65);
-    --nx-tag-unselected-hover-border: var(--nx-selectable-color-dark);
-    --nx-tag-unselected-hover-background: var(--nx-swatch-indigo-85);
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-indigo-65);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-indigo-85);
   }
 }
