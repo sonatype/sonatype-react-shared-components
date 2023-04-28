@@ -55,8 +55,6 @@ describe('nx-global-sidebar', function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
       await checkFullPageScreenshot();
     });
-
-    it('passes a11y checks', a11yTest(null, true));
   });
 
   it('passes a11y checks', a11yTest(null, true));

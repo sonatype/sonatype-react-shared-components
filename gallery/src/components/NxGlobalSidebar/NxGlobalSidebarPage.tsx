@@ -100,11 +100,8 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>string</NxTable.Cell>
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>
-                  The path to an image placed in the top left corner which displays branding and product name.
-                  <NxWarningAlert>
-                    Note: the image should not be larger than 158px wide and 43px tall. It should
-                    display either a logo (maximum 43px x 43px) and the product name, or just the product name.
-                  </NxWarningAlert>
+                  The path to an image placed in the top left corner which displays branding and product name. Note that
+                  the image will be rendered at a size no greater than 158px x 43px. 
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
