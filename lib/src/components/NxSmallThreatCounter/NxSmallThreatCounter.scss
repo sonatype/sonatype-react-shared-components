@@ -11,13 +11,8 @@
   @each $category in critical, severe, moderate, low, none, unspecified {
     &--#{$category} {
       background-color: var(--nx-color-threat-#{$category});
+      color: var(--nx-color-threat-#{$category}-text);
     }
-  }
-
-  &--critical,
-  &--none,
-  &--unspecified {
-    color: var(--nx-swatch-white);
   }
 }
 
@@ -25,7 +20,6 @@
   $height: 25px;
   position: relative;
   border-radius: math.div($height, 2);
-  color: var(--nx-color-text-dark);
   font-size: var(--nx-font-size-s);
   font-weight: bold;
   height: $height;
@@ -50,8 +44,8 @@
   }
 
   &--zero {
-    background-color: var(--nx-swatch-grey-90);
-    color: var(--nx-swatch-grey-40);
+    background-color: var(--nx-color-small-threat-counter-zero-background);
+    color: var(--nx-color-small-threat-counter-zero-text);
   }
 }
 

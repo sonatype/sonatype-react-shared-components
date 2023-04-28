@@ -20,32 +20,57 @@ $-width: 44px;
   max-width: var(--nx-width-form-element-wide);
   position: relative;
 
-  &.nx-toggle--disabled {
-    &, &:hover {
-      cursor: default;
+  &__content {
+    grid-area: content;
+  }
+  
+  &__control {
+    background-color: var(--nx-color-toggle-off-track);
+    border: var(--nx-border-width) solid var(--nx-color-toggle-off-border);
+    border-radius: 12px;
+    box-sizing: border-box;
+    display: flex;
+    grid-area: toggle;
+    height: $-height;
+    padding: calc(var(--nx-spacing-base) - var(--nx-border-width));
+    width: $-width;
+  }
+  
+  &__indicator {
+    color: var(--nx-color-toggle-off-handle);
+    border-radius: 8px;
+    margin-left: 0;
+    transition: margin-left 0.35s;
+  }
 
-      .nx-toggle__control, .nx-toggle__input:checked + .nx-toggle__control {
-        background-color: var(--nx-color-interactive-background-disabled);
-        border-color: var(--nx-color-interactive-border-disabled);
-      }
-      .nx-toggle__indicator, .nx-toggle__input:checked + .nx-toggle__control .nx-toggle__indicator {
-        color: var(--nx-color-interactive-border-disabled);
+  &:hover {
+    cursor: pointer;
+
+    .nx-toggle__control {
+      border-color: var(--nx-color-toggle-off-border-hover);
+      background-color: var(--nx-color-toggle-off-track-hover);
+    }
+
+    .nx-toggle__indicator {
+      color: var(--nx-color-toggle-off-handle-hover);
+    }
+
+    .nx-toggle__input {
+      &:checked + .nx-toggle__control {
+        background-color: var(--nx-color-toggle-on-track-hover);
+        border-color: var(--nx-color-toggle-on-border-hover);
       }
     }
   }
 
   &:focus-within {
     .nx-toggle__control {
-      &:hover {
-        border-color: var(--nx-color-interactive-border-hover);
-      }
-
       &::after {
         border-radius: 16px;
         content: '';
         display: block;
         height: calc(#{$-height} + 4px);
-        outline: 2px solid var(--nx-color-interactive-border-focus);
+        box-shadow: 0 0 0 2px var(--nx-color-interactive-border-focus);
         position: absolute;
         left: -2px;
         top: -2px;
@@ -54,63 +79,37 @@ $-width: 44px;
     }
   }
 
-  &:hover {
-    cursor: pointer;
+  &.nx-toggle--disabled {
+    &, &:hover {
+      cursor: default;
 
-    .nx-toggle__control {
-      background-color: var(--nx-swatch-indigo-95);
-      border-color: var(--nx-color-interactive-border-hover);
+      .nx-toggle__control, .nx-toggle__input:checked + .nx-toggle__control {
+        border-color: var(--nx-color-disabled);
+        background-color: var(--nx-color-toggle-track-disabled);
+      }
+
+      .nx-toggle__indicator, .nx-toggle__input:checked + .nx-toggle__control .nx-toggle__indicator {
+        color: var(--nx-color-toggle-handle-disabled);
+      }
     }
+  }
 
-    .nx-toggle__input {
-      &:checked {
-        + .nx-toggle__control {
-          border-color: var(--nx-color-interactive-border-hover);
-          background-color: var(--nx-swatch-blue-30);
+  &__input {
+    @include nx-hide-checkbox-helper.hide-checkbox;
+    grid-area: toggle;
+  
+    &:checked {
+      + .nx-toggle__control {
+        background-color: var(--nx-color-toggle-on-track);
+        border-color: var(--nx-color-toggle-on-border);
+
+        .nx-toggle__indicator {
+          color: var(--nx-color-toggle-on-handle);
+          margin-left: 20px;
         }
       }
     }
   }
-}
-
-.nx-toggle__input {
-  @include nx-hide-checkbox-helper.hide-checkbox;
-  grid-area: toggle;
-
-  &:checked {
-    + .nx-toggle__control {
-      background-color: var(--nx-swatch-blue-40);
-      border-color: var(--nx-swatch-blue-40);
-
-      .nx-toggle__indicator {
-        color: var(--nx-swatch-white);
-        margin-left: 20px;
-      }
-    }
-  }
-}
-
-.nx-toggle__content {
-  grid-area: content;
-}
-
-.nx-toggle__control {
-  background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-swatch-grey-30);
-  border-radius: 12px;
-  box-sizing: border-box;
-  display: flex;
-  grid-area: toggle;
-  height: $-height;
-  padding: calc(var(--nx-spacing-base) - 1px);
-  width: $-width;
-}
-
-.nx-toggle__indicator {
-  color: var(--nx-swatch-blue-40);
-  border-radius: 8px;
-  margin-left: 0;
-  transition: margin-left 0.35s;
 }
 
 .nx-legend + .nx-toggle {
