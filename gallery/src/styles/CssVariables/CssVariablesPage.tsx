@@ -927,6 +927,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-system-notice-text">
               The text color for <NxCode>NxSystemNotice</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-line">
+              The value used for line colors within the <NxCode>NIVO_THEME</NxCode> export.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-text">
+              The value used for text colors within the <NxCode>NIVO_THEME</NxCode> export.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>

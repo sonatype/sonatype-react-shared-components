@@ -6,13 +6,14 @@
  */
 import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
-import { NIVO_COLORS } from '@sonatype/react-shared-components';
+import { NIVO_COLORS, NIVO_THEME } from '@sonatype/react-shared-components';
 import { barData } from './barData';
 
 export default function NivoBarExample() {
   return (
     <div style={{ height: '400px' }}>
       <ResponsiveBar data={barData}
+                     theme={NIVO_THEME}
                      layout="vertical"
                      colorBy="indexValue"
                      enableLabel={false}
