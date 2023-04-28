@@ -80,7 +80,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
   flex: 1 1 auto;
   display: flex;
   overflow: hidden;
-  padding-right: var(--nx-spacing-3x);
+  margin-right: var(--nx-spacing-3x);
 
   &:focus-visible {
     outline: none;
@@ -168,7 +168,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
 
   .nx-global-sidebar__product-info {
     width: 0;
-    padding-right: 0;
+    margin-right: 0;
   }
 
   .nx-global-sidebar__header {
