@@ -17,14 +17,6 @@ $-text-color: var(--nx-swatch-white);
 
 $-button-border-width: 2px;
 
-@mixin link-no-outline {
-  color: var(--nx-color-global-sidebar-link-text-interactive);
-
-  .nx-icon {
-    color: var(--nx-color-global-sidebar-link-icon-color);
-  }
-}
-
 .nx-global-sidebar {
   @include nx-container-helpers.container-vertical;
 
@@ -144,18 +136,30 @@ $-button-border-width: 2px;
   }
 
   &:hover {
-    @include link-no-outline;
     background-color: var(--nx-color-global-sidebar-link-hover);
+    color: var(--nx-color-global-sidebar-link-text-interactive);
+
+    .nx-icon {
+      color: var(--nx-color-global-sidebar-link-icon-color);
+    }
   }
 
   &:active {
-    @include link-no-outline;
     background-color: var(--nx-color-global-sidebar-link-active);
+    color: var(--nx-color-global-sidebar-link-text-interactive);
+
+    .nx-icon {
+      color: var(--nx-color-global-sidebar-link-icon-color);
+    }
   }
 
   &.selected {
-    @include link-no-outline;
     background-color: var(--nx-color-global-sidebar-link-selected);
+    color: var(--nx-color-global-sidebar-link-text-interactive);
+
+    .nx-icon {
+      color: var(--nx-color-global-sidebar-link-icon-color);
+    }
   }
 
   &:active:focus {
