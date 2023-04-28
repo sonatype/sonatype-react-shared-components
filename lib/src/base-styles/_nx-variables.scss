@@ -67,7 +67,7 @@
 
   // for global sidebar
   --nx-focus-outline-offset-global-sidebar-link: 0px;
-  --nx-focus-outline-offset-global-sidebar-menu-icon: 1px;
+  --nx-focus-outline-offset-global-sidebar-toggle: 1px;
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-border-grid: var(--nx-border-default);
@@ -75,7 +75,7 @@
 
     // for global sidebar
     --nx-focus-outline-offset-global-sidebar-link: 2px;
-    --nx-focus-outline-offset-global-sidebar-menu-icon: 0px;
+    --nx-focus-outline-offset-global-sidebar-toggle: 0px;
   }
 
   // Deprecated variables
