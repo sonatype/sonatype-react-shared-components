@@ -123,48 +123,42 @@ $-button-border-width: 2px;
     margin: 0;
   }
 
-  &:focus:not(.selected) {
-    border-radius: 0;
-    outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-border-focus);
-    outline-offset: calc(0px - var(--nx-focus-outline-width));
-  }
-
-  &:focus, &:focus:hover {
-    border-radius: 0;
-    outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-link-border-focus);
-    outline-offset: calc(0px - var(--nx-focus-outline-offset-global-sidebar-link) - var(--nx-focus-outline-width));
-  }
-
-  &:hover {
-    background-color: var(--nx-color-global-sidebar-link-hover);
-    color: var(--nx-color-global-sidebar-link-text-interactive);
-
-    .nx-icon {
-      color: var(--nx-color-global-sidebar-link-icon-color);
+  &.nx-text-link {
+    &:focus:not(.selected) {
+      border-radius: 0;
+      outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-border-focus);
+      outline-offset: calc(0px - var(--nx-focus-outline-width));
     }
-  }
 
-  &:active {
-    background-color: var(--nx-color-global-sidebar-link-active);
-    color: var(--nx-color-global-sidebar-link-text-interactive);
-
-    .nx-icon {
-      color: var(--nx-color-global-sidebar-link-icon-color);
+    &:focus, &:focus:hover {
+      border-radius: 0;
+      outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-link-border-focus);
+      outline-offset: calc(0px - var(--nx-focus-outline-offset-global-sidebar-link) - var(--nx-focus-outline-width));
     }
-  }
 
-  &.selected {
-    background-color: var(--nx-color-global-sidebar-link-selected);
-    color: var(--nx-color-global-sidebar-link-text-interactive);
+    &:hover, &:active, &.selected {
+      color: var(--nx-color-global-sidebar-link-text-interactive);
 
-    .nx-icon {
-      color: var(--nx-color-global-sidebar-link-icon-color);
+      .nx-icon {
+        color: var(--nx-color-global-sidebar-link-icon-color);
+      }
     }
-  }
 
-  &:active:focus {
-    color: var(--nx-color-global-sidebar-link-text-interactive);
-    outline: none;
+    &:hover {
+      background-color: var(--nx-color-global-sidebar-link-hover);
+    }
+
+    &:active {
+      background-color: var(--nx-color-global-sidebar-link-active);
+    }
+
+    &.selected {
+      background-color: var(--nx-color-global-sidebar-link-selected);
+    }
+
+    &:active:focus {
+      outline: none;
+    }
   }
 }
 
