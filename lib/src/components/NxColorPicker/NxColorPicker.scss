@@ -47,7 +47,7 @@
   &__outline {
     fill: none;
     stroke: none;
-    stroke-width: 2px;
+    stroke-width: var(--nx-focus-outline-width);
   }
 
   &__check {
