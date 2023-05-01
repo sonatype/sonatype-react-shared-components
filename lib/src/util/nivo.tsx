@@ -29,5 +29,11 @@ export const NIVO_THEME = {
   },
   grid: {
     line: { stroke: 'var(--nx-color-chart-line)' }
+  },
+  tooltip: {
+    container: {
+      background: 'var(--nx-color-tooltip-background)',
+      color: 'var(--nx-color-tooltip-text)'
+    }
   }
 };
