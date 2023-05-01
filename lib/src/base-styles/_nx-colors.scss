@@ -286,6 +286,7 @@
 
   // NxDrawer
   --nx-color-drawer-background: var(--nx-color-component-background);
+  --nx-color-drawer-box-shadow: Hsla(var(--nx-swatch-grey-hs), 50%, 0.5);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
@@ -555,6 +556,7 @@
 
     // NxDrawer
     --nx-color-drawer-background: var(--nx-swatch-indigo-25);
+    --nx-color-drawer-box-shadow: Hsla(var(--nx-swatch-indigo-hs), 10%, 0.75);
   }
 
   // Deprecated variables
