@@ -194,7 +194,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
 .nx-global-sidebar__other-content {
   @include nx-container-helpers.container-vertical;
 
-  flex-grow: 1;
+  flex: 1;
   padding: var(--nx-spacing-4x) $-left-right-spacing;
   max-height: unset;
 

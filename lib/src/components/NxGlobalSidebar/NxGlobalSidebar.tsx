@@ -31,7 +31,7 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
 
   const id = useUniqueId('nx-global-sidebar');
 
-  const classes = classnames(className, 'nx-global-sidebar', {
+  const classes = classnames(className, 'nx-global-sidebar nx-viewport-sized', {
     'open': isOpen,
     'closed': !isOpen
   });
@@ -54,7 +54,7 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
 
   return (
     <div className={classes} id={id}>
-      <aside aria-label="global sidebar">
+      <aside className="nx-viewport-sized__container" aria-label="global sidebar">
         <div className="nx-global-sidebar__header">
           <a className="nx-global-sidebar__product-info"
              href={logoLink}>
