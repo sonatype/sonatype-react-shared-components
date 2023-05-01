@@ -73,6 +73,10 @@
 
   //NxAlert variables
   --nx-color-alert-text: var(--nx-color-text);
+  --nx-color-alert-link: var(--nx-color-link);
+  --nx-color-alert-link-focus: var(--nx-color-link-focus);
+  --nx-color-alert-link-hover: var(--nx-color-link-hover);
+  --nx-color-alert-link-active: var(--nx-color-link-active);
   --nx-color-alert-close-btn: var(--nx-color-text-stark);
   --nx-color-alert-close-btn-focus: var(--nx-color-interactive-border-focus);
   --nx-color-alert-info-background: var(--nx-swatch-blue-95);
@@ -359,6 +363,10 @@
 
     //NxAlert variables
     --nx-color-alert-text: var(--nx-swatch-blue-10);
+    --nx-color-alert-link: var(--nx-swatch-purple-20);
+    --nx-color-alert-link-focus: var(--nx-swatch-purple-30);
+    --nx-color-alert-link-hover: var(--nx-swatch-purple-10);
+    --nx-color-alert-link-active: var(--nx-color-alert-link-focus);
     --nx-color-alert-close-btn: var(--nx-color-alert-text);
     --nx-color-alert-close-btn-focus: var(--nx-swatch-purple-40);
     --nx-color-alert-info-background: var(--nx-swatch-blue-85);

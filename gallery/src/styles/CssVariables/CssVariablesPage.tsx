@@ -625,6 +625,18 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-alert-text">
               The text color used on <NxCode>NxAlert</NxCode>s.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link">
+              The color for hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link-focus">
+              The color for focus border of hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link-hover">
+              The color for hovered hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link-active">
+              The color for active hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-close-btn">
               The color of the<NxCode>NxAlert</NxCode> close button.
             </ColorDocRow>
