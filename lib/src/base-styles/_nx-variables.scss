@@ -65,9 +65,13 @@
                             0 1px 2px 0 rgba(91, 95, 141, 0.2),
                             0 1px 1px 0 rgba(124, 128, 179, 0.2);
 
+  //NxTable
+  --nx-outline-width-table-row-hover: 2px;
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-border-grid: var(--nx-border-default);
     --nx-border-width: 2px;
+    --nx-outline-width-table-row-hover: 0px;
   }
 
   // Deprecated variables
