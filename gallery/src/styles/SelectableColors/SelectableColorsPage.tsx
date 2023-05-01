@@ -147,6 +147,9 @@ const SelectableColorsPage = () =>
         <NxTile.SubsectionHeader>
           <NxH3>NxTag Color Variables</NxH3>
         </NxTile.SubsectionHeader>
+        <NxP>The following CSS variables are defined within the <NxCode>.nx-selectable-color--..</NxCode> classes,
+          and the variable values depend on which selectable color class is applied.
+        </NxP>
         <NxTable>
           <NxTable.Head>
             <NxTable.Row>
