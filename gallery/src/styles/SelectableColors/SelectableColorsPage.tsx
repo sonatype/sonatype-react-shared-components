@@ -10,6 +10,7 @@ import { NxP, NxCode, NxH3, NxTile, NxTable, selectableColors, selectableColorCl
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
+import '@sonatype/react-shared-components/scss-shared/_nx-tag-variables.scss';
 
 import SelectableColorNxTagExample from './SelectableColorNxTagExample';
 import SelectableColorCustomExample from './SelectableColorCustomExample';
@@ -138,6 +139,46 @@ const SelectableColorsPage = () =>
                 <ColorDocRow key={color} name={color} className={cls} />
               )
             }
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3>NxTag Color Variables</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Property Name</NxTable.Cell>
+              <NxTable.Cell>Description</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>--nx-color-tag-selected-hover-border</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                The default border color of a selected <NxCode>NxTag</NxCode> when hovered.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>--nx-color-tag-selected-hover-background</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                The default background color of a selected <NxCode>NxTag</NxCode> when hovered.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>--nx-color-tag-unselected-hover-border</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                The default border color of an unselected <NxCode>NxTag</NxCode> when hovered.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>--nx-color-tag-unselected-hover-background</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                The default background color of an unselected <NxCode>NxTag</NxCode> when hovered.
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
