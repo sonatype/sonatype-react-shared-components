@@ -194,14 +194,10 @@ $-separator-color: var(--nx-swatch-indigo-40);
 .nx-global-sidebar__other-content {
   @include nx-container-helpers.container-vertical;
 
+  border-bottom: 1px solid $-separator-color;
   flex: 1;
   padding: var(--nx-spacing-4x) $-left-right-spacing;
   max-height: unset;
-
-  + .nx-global-sidebar__footer {
-    border-top: 1px solid $-separator-color;
-    margin-top: 0;
-  }
 }
 
 .nx-global-sidebar__footer {
