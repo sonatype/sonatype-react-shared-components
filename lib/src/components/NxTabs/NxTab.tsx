@@ -11,6 +11,7 @@ import TabContext from './TabContext';
 
 import { NxTabProps, nxTabPropTypes } from './types';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
+import { modifierKeyIsPressed } from '../../util/keyboardUtil';
 export { NxTabProps };
 
 const SPACE = ' ';
@@ -47,7 +48,7 @@ const NxTab = function NxTabElement(props: NxTabProps) {
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLLIElement>) {
-    if (event.isDefaultPrevented()) {
+    if (event.isDefaultPrevented() || modifierKeyIsPressed(event)) {
       return;
     }
 

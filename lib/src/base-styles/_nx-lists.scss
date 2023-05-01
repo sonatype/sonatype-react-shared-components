@@ -206,20 +206,20 @@
 {
   &, > .nx-list__term, > .nx-list__description, > .nx-list__link, > .nx-list__btn {
     &:hover {
-      background-color: var(--nx-color-interactive-background-hover);
-      color: var(--nx-color-text-dark);
+      background-color: var(--nx-color-list-background-hover);
+      color: var(--nx-color-list-text);
     }
 
     &:focus, &:focus-within {
-      outline: 2px solid var(--nx-color-interactive-border-focus);
-      outline-offset: -2px;
+      outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+      outline-offset: calc(0px - var(--nx-focus-outline-inset));
       position: relative;
       z-index: 1;
     }
 
     &:active {
       background-color: var(--nx-color-interactive-background-active);
-      color: var(--nx-color-text-dark);
+      color: var(--nx-color-list-text);
       outline: none;
     }
 
@@ -245,7 +245,7 @@
 
     .nx-chevron {
       align-self: center;
-      color: var(--nx-color-text-dark);
+      color: var(--nx-color-list-icon);
       grid-area: actions;
 
       // custom sizing for the icon, brings it up to 13px
@@ -260,7 +260,7 @@
     &.selected {
       &, &:hover {
         background-color: var(--nx-color-interactive-background-selected);
-        color: var(--nx-color-text-dark);
+        color: var(--nx-color-list-text-selected);
       }
     }
   }
@@ -308,6 +308,13 @@
     &:focus-within {
       .nx-list__link, .nx-list__btn {
         outline: none;
+      }
+    }
+
+    &.disabled, &[disabled] {
+      .nx-list__link, .nx-list__btn {
+        color: var(--nx-color-text-disabled);
+        cursor: default;
       }
     }
   }

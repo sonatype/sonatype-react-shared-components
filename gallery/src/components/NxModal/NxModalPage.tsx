@@ -25,6 +25,7 @@ import NxModalFormErrorExample from './NxModalFormErrorExample';
 import NxModalExtraWideExample from './NxModalExtraWideExample';
 import NxModalNarrowExample from './NxModalNarrowExample';
 import NxModalEscExample from './NxModalEscExample';
+import NxModalNestedExample from './NxModalNestedExample';
 
 const NxModalSimpleSourceCode = require('./NxModalSimpleExample?raw');
 const NxModalAlertSourceCode = require('./NxModalAlertExample?raw');
@@ -34,6 +35,7 @@ const NxModalFormErrorSourceCode = require('./NxModalFormErrorExample?raw');
 const NxModalExtraWideSourceCode = require('./NxModalExtraWideExample?raw');
 const NxModalNarrowSourceCode = require('./NxModalNarrowExample?raw');
 const NxModalEscSourceCode = require('./NxModalEscExample?raw');
+const NxModalNestedSourceCode = require('./NxModalNestedExample?raw');
 
 export default function NxModalPage() {
   return (
@@ -264,15 +266,6 @@ export default function NxModalPage() {
         This example uses <NxCode>aria-label</NxCode>.
       </GalleryExampleTile>
 
-      <GalleryExampleTile title="NxModal with stacked modal example"
-                          id="nx-modal-stacked-example"
-                          liveExample={NxModalStackedExample}
-                          codeExamples={NxModalStackedSourceCode}>
-        <NxCode>NxModal</NxCode> also supports stacked or nested modals. A second modal can be
-        generated from inside of an <NxCode>NxModal</NxCode>.
-        This example uses <NxCode>aria-labelledby</NxCode>.
-      </GalleryExampleTile>
-
       <GalleryExampleTile title="NxModal example with other ESC-controller elements"
                           id="nx-modal-esc-example"
                           liveExample={NxModalEscExample}
@@ -318,6 +311,25 @@ export default function NxModalPage() {
                           codeExamples={NxModalNarrowSourceCode}>
         A demonstration of the <NxCode>narrow</NxCode> styles
         for <NxCode>NxModal</NxCode>.
+        This example uses <NxCode>aria-labelledby</NxCode>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxModal Stacked Example"
+                          id="nx-modal-stacked-example"
+                          liveExample={NxModalStackedExample}
+                          codeExamples={NxModalStackedSourceCode}>
+        <NxCode>NxModal</NxCode> also supports stacked modals.
+        This example demonstrates a stacked modals that are siblings.
+        A second modal can be generated from inside of an <NxCode>NxModal</NxCode>.
+        This example uses <NxCode>aria-labelledby</NxCode>.
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="NxModal Nested Example"
+                          id="nx-modal-nested-example"
+                          liveExample={NxModalNestedExample}
+                          codeExamples={NxModalNestedSourceCode}>
+        <NxCode>NxModal</NxCode> also supports nested modals.
+        This example demonstrates a stacked modals that are nested.
         This example uses <NxCode>aria-labelledby</NxCode>.
       </GalleryExampleTile>
     </>

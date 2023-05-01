@@ -117,8 +117,8 @@ $-separator-color: var(--nx-swatch-indigo-40);
 
   &:focus {
     border-radius: 0;
-    outline: 2px solid $-focus-color;
-    outline-offset: -2px;
+    outline: var(--nx-focus-outline-width) solid $-focus-color;
+    outline-offset: calc(0px - var(--nx-focus-outline-inset));
   }
 
   &:hover {

@@ -11,19 +11,8 @@
   @each $category in critical, severe, moderate, low, none, unspecified {
     &--#{$category} {
       background-color: var(--nx-color-threat-#{$category});
+      color: var(--nx-color-threat-#{$category}-text);
     }
-  }
-
-  &--critical,
-  &--low,
-  &--unspecified {
-    color: var(--nx-swatch-white);
-  }
-
-  &--severe,
-  &--moderate,
-  &--none {
-    color: var(--nx-color-text-dark);
   }
 }
 
@@ -55,8 +44,8 @@
   }
 
   &--zero {
-    background-color: var(--nx-swatch-grey-90);
-    color: var(--nx-swatch-grey-40);
+    background-color: var(--nx-color-small-threat-counter-zero-background);
+    color: var(--nx-color-small-threat-counter-zero-text);
   }
 }
 

@@ -41,7 +41,7 @@
       position: relative;
 
       &::after {
-        border: 2px solid var(--nx-color-interactive-border-focus);
+        border: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
         content: '';
         box-sizing: border-box;
         display: block;
