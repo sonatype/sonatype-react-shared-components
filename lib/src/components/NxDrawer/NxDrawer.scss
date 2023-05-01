@@ -51,6 +51,11 @@
   }
 
   background-color: var(--nx-color-drawer-background);
+  // A spread of -32px sets the spread inward to create the effect of a smaller, vertically centered
+  // element behind the drawer, as displayed in the mocks. The x-offset counteracts the shadow’s spread
+  // (to prevent it from being brought inward on the left), plus a further -2px of x-offset defined in the mocks.
+  // The y-offset can be zero as the shadow should be vertically centred relative to the drawer.
+  // The blur comes directly from the mocks where it is specified as 50px.
   box-shadow: -34px 0 50px -32px var(--nx-color-drawer-box-shadow);
   color: var(--nx-color-text);
 
