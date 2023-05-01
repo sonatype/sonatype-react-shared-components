@@ -13,7 +13,7 @@ function NxLinkInAlertExample() {
 
   return isOpen ? (
     <NxErrorAlert onClose={dismiss}>
-      This is an example <strong>error</strong> message including a <NxTextLink href='#'>text link</NxTextLink>.
+      This is an example <strong>error</strong> message including a <NxTextLink href='#/'>text link</NxTextLink>.
     </NxErrorAlert>
   ) : null;
 }
