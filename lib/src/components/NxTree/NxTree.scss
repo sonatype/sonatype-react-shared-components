@@ -84,7 +84,7 @@
       outline: none;
 
       &::before {
-        border: 2px solid var(--nx-color-interactive-border-focus);
+        border: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
         border-radius: var(--nx-border-radius);
         box-sizing: border-box;
         content: '';

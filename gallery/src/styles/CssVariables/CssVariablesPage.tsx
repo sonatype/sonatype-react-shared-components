@@ -625,6 +625,18 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-alert-text">
               The text color used on <NxCode>NxAlert</NxCode>s.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link">
+              The color for hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link-focus">
+              The color for focus border of hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link-hover">
+              The color for hovered hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link-active">
+              The color for active hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-close-btn">
               The color of the<NxCode>NxAlert</NxCode> close button.
             </ColorDocRow>
@@ -723,6 +735,15 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
               The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-header-background">
+              The background color of the <NxCode>NxTable</NxCode> header.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-row-background-hover">
+              The background color of an <NxCode>NxTable</NxCode> row on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-sort-icon-active">
+              The color of the sort icon in <NxCode>NxTable</NxCode> header when active.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-list-background-hover">
               The background color of the list item of <NxCode>NxList</NxCode> on hover.
@@ -926,6 +947,12 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-system-notice-text">
               The text color for <NxCode>NxSystemNotice</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-line">
+              The value used for line colors within the <NxCode>NIVO_THEME</NxCode> export.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-text">
+              The value used for text colors within the <NxCode>NIVO_THEME</NxCode> export.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>

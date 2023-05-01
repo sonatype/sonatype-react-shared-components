@@ -73,6 +73,10 @@
 
   //NxAlert variables
   --nx-color-alert-text: var(--nx-color-text);
+  --nx-color-alert-link: var(--nx-color-link);
+  --nx-color-alert-link-focus: var(--nx-color-link-focus);
+  --nx-color-alert-link-hover: var(--nx-color-link-hover);
+  --nx-color-alert-link-active: var(--nx-color-link-active);
   --nx-color-alert-close-btn: var(--nx-color-text-stark);
   --nx-color-alert-close-btn-focus: var(--nx-color-interactive-border-focus);
   --nx-color-alert-info-background: var(--nx-swatch-blue-95);
@@ -218,6 +222,11 @@
   --nx-color-policy-threat-slider-text-disabled: var(--nx-color-text-disabled);
   --nx-color-policy-threat-slider-text: var(--nx-color-text);
 
+  // NxTable
+  --nx-color-table-header-background: var(--nx-swatch-indigo-80);
+  --nx-color-table-row-background-hover: var(--nx-color-interactive-background-hover);
+  --nx-color-table-sort-icon-active: var(--nx-swatch-blue-40);
+
   // NxTransferList
   --nx-color-transfer-list-item-list-background: var(--nx-color-site-background);
   --nx-color-transfer-list-item-background: var(--nx-swatch-white);
@@ -300,9 +309,15 @@
   --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-blue-95);
   --nx-color-global-sidebar-link-icon-color: var(--nx-swatch-white);
 
+  // NxTag
+  --nx-color-tag-text: var(--nx-color-text-stark);
+
   --nx-color-system-notice-background: var(--nx-swatch-indigo-95);
   --nx-color-system-notice-background-alert: var(--nx-swatch-orange-95);
   --nx-color-system-notice-text: var(--nx-color-text);
+
+  --nx-color-chart-line: var(--nx-swatch-grey-40);
+  --nx-color-chart-text: var(--nx-color-text-dark);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
@@ -364,6 +379,10 @@
 
     //NxAlert variables
     --nx-color-alert-text: var(--nx-swatch-blue-10);
+    --nx-color-alert-link: var(--nx-swatch-purple-20);
+    --nx-color-alert-link-focus: var(--nx-swatch-purple-30);
+    --nx-color-alert-link-hover: var(--nx-swatch-purple-10);
+    --nx-color-alert-link-active: var(--nx-color-alert-link-focus);
     --nx-color-alert-close-btn: var(--nx-color-alert-text);
     --nx-color-alert-close-btn-focus: var(--nx-swatch-purple-40);
     --nx-color-alert-info-background: var(--nx-swatch-blue-85);
@@ -498,6 +517,11 @@
     --nx-color-policy-threat-slider-text-disabled: var(--nx-color-policy-threat-slider-border-disabled);
     --nx-color-policy-threat-slider-text: var(--nx-swatch-indigo-97);
 
+    // NxTable
+    --nx-color-table-header-background: var(--nx-swatch-indigo-35);
+    --nx-color-table-row-background-hover: var(--nx-swatch-indigo-15);
+    --nx-color-table-sort-icon-active: var(--nx-swatch-purple-80);
+
     // NxList
     --nx-color-list-background-hover: var(--nx-color-site-background);
     --nx-color-list-text: var(--nx-color-text);
@@ -585,6 +609,9 @@
     --nx-color-global-sidebar-link-text-interactive: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-link-icon-color: var(--nx-swatch-indigo-10);
+
+    // NxTag
+    --nx-color-tag-text: var(--nx-swatch-indigo-10);
 
     --nx-color-system-notice-background: var(--nx-swatch-indigo-30);
     --nx-color-system-notice-background-alert: var(--nx-swatch-pink-30);
