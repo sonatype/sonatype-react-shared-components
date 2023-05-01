@@ -121,7 +121,7 @@
     &:focus,
     &:hover:focus {
       outline: none;
-      box-shadow: inset 0 0 0 2px var(--nx-color-interactive-border-focus);
+      box-shadow: inset 0 0 0 var(--nx-focus-outline-width) var(--nx-color-interactive-border-focus);
     }
 
     &:active,

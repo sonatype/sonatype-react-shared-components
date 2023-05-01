@@ -8,7 +8,7 @@ import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__te
 
 import { default as NxCopyToClipboard, Props } from '../NxCopyToClipboard';
 import { NxCodeSnippet } from '../../../index';
-import { UserEvent } from '@testing-library/user-event/dist/types/setup';
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
 
 describe('NxCopyToClipboard', function() {
   const minimalProps: Props = {
