@@ -222,9 +222,6 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-box-shadow-dropdown">
             The standard box-shadow to apply to dropdown elements.
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-box-shadow-drawer">
-            The standard box-shadow to apply to dropdown elements.
-          </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-drop-shadow-focus">
             <NxWarningAlert>
               Deprecated: We no longer use a drop-shadow/box-shadow when elements are focused.
@@ -922,6 +919,9 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-drawer-background">
               The background color of <NxCode>NxDrawer</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-drawer-box-shadow">
+              The color of the box-shadow for <NxCode>NxDrawer</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
