@@ -124,13 +124,13 @@ $-button-border-width: 2px;
   }
 
   &.nx-text-link {
-    &:focus:not(.selected) {
+    &:focus {
       border-radius: 0;
       outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-border-focus);
       outline-offset: calc(0px - var(--nx-focus-outline-width));
     }
 
-    &:focus, &:focus:hover {
+    &:focus:hover, &.selected:focus {
       border-radius: 0;
       outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-link-border-focus);
       outline-offset: calc(0px - var(--nx-focus-outline-offset-global-sidebar-link) - var(--nx-focus-outline-width));
