@@ -9,11 +9,6 @@
 @use '../scss-shared/nx-button-helpers';
 @use '../scss-shared/_nx-table-variables';
 
-%table-outline {
-  outline-offset: -2px;
-  outline: 2px solid;
-}
-
 .nx-table {
   background-color: var(--nx-color-component-background);
   border-spacing: 0;
@@ -85,33 +80,32 @@
 
     &.nx-clickable {
       &:hover {
-        @extend %table-outline;
-        color: var(--nx-color-text-dark);
-        outline-color: var(--nx-color-border);
-
+        color: var(--nx-color-text-stark);
+        outline: var(--nx-outline-width-table-row-hover) solid var(--nx-color-border);
+        outline-offset: calc(0px - var(--nx-focus-outline-inset));
         > .nx-cell {
-          background-color: var(--nx-color-interactive-background-hover);
+          background-color: var(--nx-color-table-row-background-hover);
         }
       }
 
       &.selected {
-        color: var(--nx-color-text-dark);
+        color: var(--nx-color-text-stark);
         > .nx-cell {
           background-color: var(--nx-color-interactive-background-selected);
         }
       }
 
+      &:focus-within {
+        outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+        outline-offset: calc(0px - var(--nx-focus-outline-inset));
+      }
+      
       &:active {
-        color: var(--nx-color-text-dark);
+        color: var(--nx-color-text-stark);
         outline: 0;
         > .nx-cell {
           background-color: var(--nx-color-interactive-background-active);
         }
-      }
-
-      &:focus-within {
-        @extend %table-outline;
-        outline-color: var(--nx-color-interactive-border-focus);
       }
     }
   }
@@ -262,11 +256,11 @@
 
 .nx-cell--header {
   @include nx-text-helpers.bold;
-  background-color: var(--nx-swatch-indigo-80);
+  background-color: var(--nx-color-table-header-background);
   border-top: none;
   box-sizing: border-box;
 
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   font-size: var(--nx-font-size-s);
   height: nx-table-variables.$table-cell-header-height;
   text-align: left;
@@ -275,8 +269,8 @@
   vertical-align: middle;
 
   &:focus {
-    outline: 2px solid var(--nx-color-interactive-border-focus);
-    outline-offset: -2px;
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+    outline-offset: calc(0px - var(--nx-focus-outline-inset));
   }
 }
 
@@ -293,7 +287,7 @@
 
 
 .nx-cell--icon {
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   text-align: center;
 }
 
@@ -331,7 +325,7 @@
   }
 
   > :nth-child(2) path {
-    color: var(--nx-swatch-blue-40);
+    color: var(--nx-color-table-sort-icon-active);
   }
 }
 

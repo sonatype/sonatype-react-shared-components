@@ -218,6 +218,11 @@
   --nx-color-policy-threat-slider-text-disabled: var(--nx-color-text-disabled);
   --nx-color-policy-threat-slider-text: var(--nx-color-text);
 
+  // NxTable
+  --nx-color-table-header-background: var(--nx-swatch-indigo-80);
+  --nx-color-table-row-background-hover: var(--nx-color-interactive-background-hover);
+  --nx-color-table-sort-icon-active: var(--nx-swatch-blue-40);
+
   // NxTransferList
   --nx-color-transfer-list-item-list-background: var(--nx-color-site-background);
   --nx-color-transfer-list-item-background: var(--nx-swatch-white);
@@ -484,6 +489,11 @@
     --nx-color-policy-threat-slider-background-disabled: var(--nx-color-interactive-border-disabled);
     --nx-color-policy-threat-slider-text-disabled: var(--nx-color-policy-threat-slider-border-disabled);
     --nx-color-policy-threat-slider-text: var(--nx-swatch-indigo-97);
+
+    // NxTable
+    --nx-color-table-header-background: var(--nx-swatch-indigo-35);
+    --nx-color-table-row-background-hover: var(--nx-swatch-indigo-15);
+    --nx-color-table-sort-icon-active: var(--nx-swatch-purple-80);
 
     // NxList
     --nx-color-list-background-hover: var(--nx-color-site-background);

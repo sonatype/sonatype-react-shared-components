@@ -724,6 +724,15 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
               The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-header-background">
+              The background color of the <NxCode>NxTable</NxCode> header.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-row-background-hover">
+              The background color of an <NxCode>NxTable</NxCode> row on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-sort-icon-active">
+              The color of the sort icon in <NxCode>NxTable</NxCode> header when active.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-list-background-hover">
               The background color of the list item of <NxCode>NxList</NxCode> on hover.
             </ColorDocRow>
