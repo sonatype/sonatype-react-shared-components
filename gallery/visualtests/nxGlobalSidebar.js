@@ -48,5 +48,15 @@ describe('nx-global-sidebar', function() {
     it('has a blue background when selected', simpleTest(selectedLink));
   });
 
+  describe('sidebar toggle', function() {
+    const sidebarToggle = '.nx-global-sidebar .nx-global-sidebar__toggle';
+
+    it('looks right', simpleTest(sidebarToggle));
+    it('has a dark indigo background when hovered', hoverTest(sidebarToggle));
+    it('has a light indigo background when clicked', clickTest(sidebarToggle));
+    it('has a white outline when focused', focusTest(sidebarToggle));
+    it('has a white outline and dark indigo background when hovered and focused', focusAndHoverTest(sidebarToggle));
+  });
+
   it('passes a11y checks', a11yTest(null, true));
 });
