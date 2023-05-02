@@ -57,10 +57,14 @@ $-button-border-width: 2px;
 
   &:focus:not(:active) {
     outline-color: var(--nx-color-global-sidebar-border-focus);
+
+    &:hover {
+      outline-color: var(--nx-color-global-sidebar-toggle-outline);
+    }
   }
 
   &:hover {
-    background-color: var(--nx-color-global-sidebar-toggle-background-hover);
+    background-color: var(--nx-color-global-sidebar-background-hover);
     .nx-icon {
       color: var(--nx-color-global-sidebar-toggle-color);
     }
@@ -80,6 +84,7 @@ $-button-border-width: 2px;
 
   &:active {
     background-color: var(--nx-color-global-sidebar-toggle-background-active);
+    color: var(--nx-color-global-sidebar-toggle-color);
   }
 }
 
@@ -144,7 +149,7 @@ $-button-border-width: 2px;
     }
 
     &:hover {
-      background-color: var(--nx-color-global-sidebar-link-hover);
+      background-color: var(--nx-color-global-sidebar-background-hover);
     }
 
     &:active {
