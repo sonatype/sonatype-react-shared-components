@@ -14,20 +14,13 @@ $-logo-height: 34px;
 $-left-right-spacing: var(--nx-spacing-6x);
 
 $-text-color: var(--nx-swatch-white);
-$-background-color: var(--nx-swatch-blue-10);
-
-$-active-color: var(--nx-swatch-indigo-50);
-$-focus-color: var(--nx-swatch-blue-95);
-$-hover-color: var(--nx-swatch-indigo-30);
 
 $-button-border-width: 2px;
-
-$-separator-color: var(--nx-swatch-indigo-40);
 
 .nx-global-sidebar {
   @include nx-container-helpers.container-vertical;
 
-  background-color: $-background-color;
+  background-color: var(--nx-color-global-sidebar-background);
   box-sizing: border-box;
   color: $-text-color;
   display: flex;
@@ -60,19 +53,33 @@ $-separator-color: var(--nx-swatch-indigo-40);
   color: $-text-color;
   flex: none;
   margin: 0;
+  position: relative;
 
   &:focus:not(:active) {
-    outline-color: $-focus-color;
-    padding-top: calc(var(--nx-spacing-base) - #{$-button-border-width});
-    padding-bottom: calc(var(--nx-spacing-base) - #{$-button-border-width});
+    outline-color: var(--nx-color-global-sidebar-border-focus);
   }
 
   &:hover {
-    background-color: $-hover-color;
+    background-color: var(--nx-color-global-sidebar-toggle-background-hover);
+    .nx-icon {
+      color: var(--nx-color-global-sidebar-toggle-color);
+    }
+  }
+
+  &:hover:focus:not(:active)::before {
+    content: "";
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-toggle-inner-outline);
+    border-radius: 50%;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    outline-offset: calc(0px - var(--nx-focus-outline-inset) - var(--nx-focus-outline-offset-global-sidebar-toggle));
   }
 
   &:active {
-    background-color: $-active-color;
+    background-color: var(--nx-color-global-sidebar-toggle-background-active);
   }
 }
 
@@ -90,7 +97,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
 }
 
 .nx-global-sidebar__navigation {
-  border-bottom: 1px solid $-separator-color;
+  border-bottom: 1px solid var(--nx-color-global-sidebar-separator-color);
   flex: none;
   margin: 0;
   padding-bottom: var(--nx-spacing-12x);
@@ -101,6 +108,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
   @include nx-text-helpers.truncate-ellipsis;
 
   border: $-button-border-width solid transparent;
+  color: var(--nx-color-global-sidebar-link-text);
   display: block;
   padding: calc(var(--nx-spacing-base) - #{$-button-border-width})
            calc(#{$-left-right-spacing} - #{$-button-border-width})
@@ -115,26 +123,41 @@ $-separator-color: var(--nx-swatch-indigo-40);
     margin: 0;
   }
 
-  &:focus {
-    border-radius: 0;
-    outline: 2px solid $-focus-color;
-    outline-offset: -2px;
-  }
+  &.nx-text-link {
+    &:focus {
+      border-radius: 0;
+      outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-border-focus);
+      outline-offset: calc(0px - var(--nx-focus-outline-width));
 
-  &:hover {
-    background-color: $-hover-color;
-  }
+      &:hover, &.selected {
+        outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-link-border-focus);
+        outline-offset: calc(0px - var(--nx-focus-outline-offset-global-sidebar-link) - var(--nx-focus-outline-width));
+      }
+    }
 
-  &:active {
-    background-color: $-active-color;
-  }
+    &:hover, &:active, &.selected {
+      color: var(--nx-color-global-sidebar-link-text-interactive);
 
-  &.selected {
-    background-color: var(--nx-swatch-blue-40);
-  }
+      .nx-icon {
+        color: var(--nx-color-global-sidebar-link-icon-color);
+      }
+    }
 
-  &:active:focus {
-    color: $-text-color;
+    &:hover {
+      background-color: var(--nx-color-global-sidebar-link-hover);
+    }
+
+    &:active {
+      background-color: var(--nx-color-global-sidebar-link-active);
+    }
+
+    &.selected {
+      background-color: var(--nx-color-global-sidebar-link-selected);
+    }
+
+    &:active:focus {
+      outline: none;
+    }
   }
 }
 
@@ -190,7 +213,7 @@ $-separator-color: var(--nx-swatch-indigo-40);
   max-height: unset;
 
   + .nx-global-sidebar__footer {
-    border-top: 1px solid $-separator-color;
+    border-top: 1px solid var(--nx-color-global-sidebar-separator-color);
     margin-top: 0;
   }
 }

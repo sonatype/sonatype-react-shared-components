@@ -397,6 +397,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-validation-invalid">
               The color used on validatable form fields when they are invalid.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-success">
+              The color used for the success icon and for other equivalent icons and purposes.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error">
+              The color used for the error icon and for other equivalent icons and purposes.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-info">
               <NxWarningAlert>
                 Deprecated. Please use <NxCode>--nx-color-alert-info-icon</NxCode>.
@@ -408,10 +414,14 @@ const CssVariablesPage = () => {
               </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-success">
-              The color used on the <NxCode>NxAlert</NxCode> success icon and for other equivalent icons and purposes.
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-success</NxCode>.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-error">
-              The color used on the <NxCode>NxAlert</NxCode> error icon and for other equivalent icons and purposes.
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-error</NxCode>.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-background-mask">
               The color of the viewport-wide mask that falls behind elements such as <NxCode>NxModal</NxCode> and{' '}
@@ -625,6 +635,18 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-alert-text">
               The text color used on <NxCode>NxAlert</NxCode>s.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link">
+              The color for hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link-focus">
+              The color for focus border of hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link-hover">
+              The color for hovered hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-alert-link-active">
+              The color for active hyperlink text within <NxCode>NxAlert</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-close-btn">
               The color of the<NxCode>NxAlert</NxCode> close button.
             </ColorDocRow>
@@ -723,6 +745,15 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-policy-threat-slider-text">
               The default text color of <NxCode>NxPolicyThreatSlider</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-header-background">
+              The background color of the <NxCode>NxTable</NxCode> header.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-row-background-hover">
+              The background color of an <NxCode>NxTable</NxCode> row on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-sort-icon-active">
+              The color of the sort icon in <NxCode>NxTable</NxCode> header when active.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-list-background-hover">
               The background color of the list item of <NxCode>NxList</NxCode> on hover.
@@ -911,6 +942,12 @@ const CssVariablesPage = () => {
               The default active background color of <NxCode>NxCollapsibleItem</NxCode> when placed
               within <NxCode>.nx-page-sidebar</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-accordion-header-divider">
+              The color of the divider that separates the header and content in <NxCode>NxAccordion</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-accordion-container">
+              The background color of the <NxCode>NxAccordion</NxCode> container in <NxCode>NxTile</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-background">
               The background color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
             </ColorDocRow>
@@ -932,6 +969,44 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-chart-text">
               The value used for text colors within the <NxCode>NIVO_THEME</NxCode> export.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-color-picker-border-focus">
+              The focus border color of <NxCode>NxColorPicker</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-color-picker-check-icon">
+              The color of the check icon of <NxCode>NxColorPicker</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-1">
+              The first of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-2">
+              The second of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-3">
+              The third of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-4">
+              The fourth of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-5">
+              The fifth of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-6">
+              The sixth of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-7">
+              The seventh of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-8">
+              The last of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
