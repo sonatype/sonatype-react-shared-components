@@ -47,12 +47,16 @@ describe('dark mode mixin', function() {
   }
 
   describe('with prefers-color-scheme unset', function() {
+    beforeEach(async function() {
+      await getPage().emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'no-preference' }]);
+    });
+
     tests('light');
   });
 
   describe('with prefers-color-scheme: light', function() {
     beforeEach(async function() {
-      await getPage().emulateMediaFeatures({ name: 'prefers-color-scheme', value: 'light' });
+      await getPage().emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'light' }]);
     });
 
     tests('light');
