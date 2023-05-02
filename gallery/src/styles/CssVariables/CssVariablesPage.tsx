@@ -960,6 +960,38 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-color-picker-check-icon">
               The color of the check icon of <NxCode>NxColorPicker</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-1">
+              The first of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-2">
+              The second of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-3">
+              The third of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-4">
+              The fourth of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-5">
+              The fifth of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-6">
+              The sixth of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-7">
+              The seventh of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-chart-data-8">
+              The last of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
