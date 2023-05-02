@@ -942,6 +942,12 @@ const CssVariablesPage = () => {
               The default active background color of <NxCode>NxCollapsibleItem</NxCode> when placed
               within <NxCode>.nx-page-sidebar</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-accordion-header-divider">
+              The color of the divider that separates the header and content in <NxCode>NxAccordion</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-accordion-container">
+              The background color of the <NxCode>NxAccordion</NxCode> container in <NxCode>NxTile</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-background">
               The background color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
             </ColorDocRow>
