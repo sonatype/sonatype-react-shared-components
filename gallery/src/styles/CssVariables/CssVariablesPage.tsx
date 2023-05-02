@@ -397,6 +397,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-validation-invalid">
               The color used on validatable form fields when they are invalid.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-success">
+              The color used for the success icon and for other equivalent icons and purposes.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error">
+              The color used for the error icon and for other equivalent icons and purposes.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-info">
               <NxWarningAlert>
                 Deprecated. Please use <NxCode>--nx-color-alert-info-icon</NxCode>.
@@ -408,10 +414,14 @@ const CssVariablesPage = () => {
               </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-success">
-              The color used on the <NxCode>NxAlert</NxCode> success icon and for other equivalent icons and purposes.
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-success</NxCode>.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-error">
-              The color used on the <NxCode>NxAlert</NxCode> error icon and for other equivalent icons and purposes.
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-error</NxCode>.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-background-mask">
               The color of the viewport-wide mask that falls behind elements such as <NxCode>NxModal</NxCode> and{' '}
@@ -959,6 +969,12 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-chart-text">
               The value used for text colors within the <NxCode>NIVO_THEME</NxCode> export.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-color-picker-border-focus">
+              The focus border color of <NxCode>NxColorPicker</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-color-picker-check-icon">
+              The color of the check icon of <NxCode>NxColorPicker</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-chart-data-1">
               The first of eight colors meant to be used for chart data. For instance, each line in a line graph
