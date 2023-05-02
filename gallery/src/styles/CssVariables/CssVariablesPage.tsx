@@ -954,6 +954,48 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-chart-text">
               The value used for text colors within the <NxCode>NIVO_THEME</NxCode> export.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-background">
+              The background color of <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-separator-color">
+              The separator color between content areas of <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-border-focus">
+              The color of the focus borders of items in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-background-hover">
+              The hover background color of navigation links and toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-color">
+              The color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-active">
+              The active background color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-outline">
+              The outline color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-inner-outline">
+              The inner outline color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-active">
+              The active background color of navigation links in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-selected">
+              The selected background color of navigation links in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-text">
+              The text color of navigation links in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-text-interactive">
+              The text color of navigation links when interacted with in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-border-focus">
+              The focus border of navigation links in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-icon-color">
+              The color of icons in navigation links in <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
