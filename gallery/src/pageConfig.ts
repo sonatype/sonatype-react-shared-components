@@ -157,6 +157,7 @@ import NivoPage from './styles/Nivo/NivoPage';
 import NxBreadcrumbPage from './components/NxBreadcrumb/NxBreadcrumbPage';
 import NxStatefulBreadcrumbPage from './components/NxStatefulBreadcrumb/NxStatefulBreadcrumbPage';
 import DarkModeClassPage from './styles/DarkMode/DarkModeClassPage';
+import DarkModeMixinPage from './styles/DarkMode/DarkModeMixinPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -295,6 +296,7 @@ const pageConfig: PageConfig = {
     'Color Palettes': { content: ColorPalettePage, type: 'css' },
     'Custom App Font Size': { content: NxFontSizePage, type: 'sass' },
     'Dark Mode Activation Classes': { content: DarkModeClassPage, type: 'css' },
+    'Dark Mode Mixin': { content: DarkModeMixinPage, type: 'sass' },
     'Ellipsis Truncation': { content: NxTruncatePage, type: 'sass' },
     'nx-clickable': { content: NxClickablePage, type: 'css' },
     'Container Helpers': { content: NxContainerHelpersPage, type: 'sass' },
