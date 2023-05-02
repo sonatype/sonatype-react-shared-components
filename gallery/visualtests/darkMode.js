@@ -7,11 +7,7 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('dark mode classes', function() {
-  const {
-    getPage,
-    simpleTest,
-    a11yTest
-  } = setupBrowser('#/pages/Dark Mode Activation Classes');
+  const { getPage, simpleTest } = setupBrowser('#/pages/Dark Mode Activation Classes');
 
   function tests(userPreference) {
     describe('without opt-in', function() {
@@ -40,8 +36,8 @@ describe('dark mode classes', function() {
   });
 
   describe('with prefers-color-scheme: light', function() {
-    beforeEach(function() {
-      getPage().emulateMediaFeatures({ name: 'prefers-color-scheme', value: 'light' });
+    beforeEach(async function() {
+      await getPage().emulateMediaFeatures({ name: 'prefers-color-scheme', value: 'light' });
     });
 
     tests('light');
