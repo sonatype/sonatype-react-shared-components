@@ -26,7 +26,7 @@
     @include nx-container-helpers.container-horizontal;
     align-items: center;
     box-sizing: border-box;
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-text-stark);
     cursor: pointer;
     display: flex;
     font-weight: bold;
@@ -65,7 +65,7 @@
   @include nx-text-helpers.bold;
   @include nx-container-helpers.container-horizontal;
 
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   font-size: var(--nx-font-size-heading-3);
   margin-bottom: var(--nx-spacing-4x);
   max-width: var(--nx-width-text-wrapping);
