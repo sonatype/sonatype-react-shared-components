@@ -95,7 +95,7 @@ const ThemeSettingsModal = ({ onClose }: Props) => {
                    disabled={!themingEnabledState}>
             <span>Light Mode</span>
             <NxTooltip title={
-              <>Overrides the browser's default display theme to dark mode by adding the class
+              <>Overrides the browser's default display theme to light mode by adding the class
                 {' '}<NxCode>nx-html--light-mode</NxCode> to the HTML element.
               </>}>
               <NxFontAwesomeIcon icon={faInfoCircle}/>

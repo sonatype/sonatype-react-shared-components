@@ -4,58 +4,48 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {useState} from 'react';
+import React from 'react';
 
-import {NxModal, NxFontAwesomeIcon, NxButton} from '@sonatype/react-shared-components';
-import {faAngry} from '@fortawesome/free-solid-svg-icons';
+import {NxModal, NxButton, useToggle} from '@sonatype/react-shared-components';
 
 export default function NxModalStackedExample() {
-  const [showModal, setShowModal] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
-  const modal1CloseHandler = () => setShowModal(false);
-  const modal2CloseHandler = () => setShowModal2(false);
+  const [showModal, toggleModal] = useToggle(false);
+  const [showModal2, toggleModal2] = useToggle(false);
 
   return (
     <>
-      <NxButton onClick={() => setShowModal(true)}>Open modal with stacked example</NxButton>
+      <NxButton onClick={toggleModal}>Open First Modal</NxButton>
+
       {showModal &&
-        <NxModal id="nx-modal-stacked-example" onCancel={modal1CloseHandler} aria-labelledby="modal-stacked-header">
+        <NxModal onCancel={toggleModal} aria-labelledby="first-modal-header">
           <header className="nx-modal-header">
-            <h2 className="nx-h2" id="modal-stacked-header">
-              <NxFontAwesomeIcon icon={faAngry} />
-              <span>NxModal with a stacked modal</span>
-            </h2>
+            <h2 className="nx-h2" id="first-modal-header">First Modal</h2>
           </header>
           <div className="nx-modal-content">
             <p className="nx-p">
               This is some content inside a modal.
             </p>
-            <p className="nx-p">
-              This is some more content inside a modal.
-            </p>
+            <NxButton onClick={toggleModal2} variant="primary">Open Second Modal</NxButton>
           </div>
           <footer className="nx-footer">
             <div className="nx-btn-bar">
-              <NxButton onClick={() => setShowModal2(true)} variant="primary">Open second modal</NxButton>
-              <NxButton onClick={modal1CloseHandler}>Close</NxButton>
+              <NxButton onClick={toggleModal}>Close</NxButton>
             </div>
           </footer>
         </NxModal>
       }
       {showModal2 &&
-        <NxModal id="nx-modal-stacked-example2" onCancel={modal2CloseHandler} aria-labelledby="modal-stacked-header2">
+        <NxModal onCancel={toggleModal2} aria-labelledby="second-modal-header">
           <header className="nx-modal-header">
-            <h2 className="nx-h2" id="modal-stacked-header2">
-              <NxFontAwesomeIcon icon={faAngry} />
-              <span>NxModal stacked example</span>
-            </h2>
+            <h2 className="nx-h2" id="second-modal-header">Second Modal</h2>
           </header>
           <div className="nx-modal-content">
-            <p className="nx-p">This is the second modal.</p>
+            <p className="nx-p">This is some content inside a modal.</p>
           </div>
           <footer className="nx-footer">
             <div className="nx-btn-bar">
-              <NxButton onClick={modal2CloseHandler} variant="primary">Close</NxButton>
+              <NxButton onClick={() => alert('Boo!')} variant="secondary">Boo!</NxButton>
+              <NxButton onClick={toggleModal2} variant="primary">Close</NxButton>
             </div>
           </footer>
         </NxModal>

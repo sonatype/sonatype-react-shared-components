@@ -10,6 +10,7 @@ import { render, within } from '@testing-library/react';
 import * as AbstractDialogAll from '../../AbstractDialog/AbstractDialog';
 import NxModal, { Props } from '../NxModal';
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import useToggle from '../../../util/useToggle';
 
 describe('NxModal', function() {
   beforeAll(() => {
@@ -289,5 +290,243 @@ describe('NxModal', function() {
       await user.tab({ shift: true });
       expect(buttons[0]).toHaveFocus();
     });
+  });
+
+  it('should focus on the dialog element when there is no focusable element', function() {
+    const { getByRole } = render(
+      <NxModal onClose={() => {}}>
+        <h1>Hi</h1>
+      </NxModal>
+    );
+    expect(getByRole('dialog')).toHaveFocus();
+  });
+
+  it('should have proper tab focus cycling when modals are stacked', async function() {
+    const user = userEvent.setup();
+
+    const Fixture = () => {
+      const [showModal, toggleModal] = useToggle(false);
+      const [showStackedModal, toggleStackedModal] = useToggle(false);
+      return (
+        <>
+          <button data-testid="open-modal-button" onClick={toggleModal}>Open</button>
+
+          { showModal &&
+            <NxModal onClose={toggleModal}>
+              <button data-testid="tabbable-item">First</button>
+              <button data-testid="tabbable-item">Second</button>
+              <button data-testid="open-stacked-modal-button" onClick={toggleStackedModal}>Open</button>
+              <button data-testid="close-modal-button"onClick={toggleModal}>Close</button>
+            </NxModal>
+          }
+
+          { showStackedModal &&
+            <NxModal onClose={toggleStackedModal}>
+              <button data-testid="stacked-tabbable-item">First</button>
+              <button data-testid="stacked-tabbable-item">Second</button>
+              <button data-testid="close-stacked-modal-button" onClick={toggleStackedModal}>Close</button>
+            </NxModal>
+          }
+        </>
+      );
+    };
+
+    const { getByTestId, getAllByTestId } = render(<Fixture />);
+    const openModal1Button = getByTestId('open-modal-button');
+
+    await user.click(openModal1Button);
+    await runTimers();
+
+    const tabbableItems = getAllByTestId('tabbable-item');
+    const openStackedModalButton = getByTestId('open-stacked-modal-button');
+    const closeModalButton = getByTestId('close-modal-button');
+
+    // Tab cycling should work.
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[1]).toHaveFocus();
+    await user.tab();
+    expect(openStackedModalButton).toHaveFocus();
+    await user.tab();
+    expect(closeModalButton).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(openStackedModalButton).toHaveFocus();
+
+    await user.click(openStackedModalButton);
+    await runTimers();
+
+    const stackedTabbableItems = getAllByTestId('stacked-tabbable-item');
+    const closeStackedModalButton = getByTestId('close-stacked-modal-button');
+
+    // Should cycle tabbable elements in stacked modal properly
+    expect(stackedTabbableItems[0]).toHaveFocus();
+    await user.tab();
+    expect(stackedTabbableItems[1]).toHaveFocus();
+    await user.tab();
+    expect(closeStackedModalButton).toHaveFocus();
+    await user.tab();
+    expect(stackedTabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeStackedModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(stackedTabbableItems[1]).toHaveFocus();
+
+    await user.click(closeStackedModalButton);
+    await runTimers();
+
+    // Should focus on previously focused element
+    expect(openStackedModalButton).toHaveFocus();
+
+    // Focus cycling should still work
+    await user.tab();
+    expect(closeModalButton).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(openStackedModalButton).toHaveFocus();
+
+    await user.click(closeModalButton);
+    await runTimers();
+
+    // Should focus on previously focused element
+    expect(openModal1Button).toHaveFocus();
+  });
+
+  it('should have proper tab focus cycling when modals are nested', async function() {
+    const user = userEvent.setup();
+
+    const Fixture = () => {
+      const [showModal, toggleModal] = useToggle(false);
+      const [showNestedModal, toggleNestedModal] = useToggle(false);
+
+      return (
+        <>
+          <button data-testid="open-modal-button" onClick={toggleModal}>Open</button>
+
+          { showModal &&
+            <NxModal onClose={toggleModal}>
+              { showNestedModal &&
+                <NxModal onClose={toggleNestedModal}>
+                  <button data-testid="nested-tabbable-item">First</button>
+                  <button data-testid="nested-tabbable-item">Second</button>
+                  <button data-testid="close-nested-modal-button" onClick={toggleNestedModal}>Close</button>
+                </NxModal>
+              }
+
+              <button data-testid="tabbable-item">First</button>
+              <button data-testid="tabbable-item">Second</button>
+              <button data-testid="open-nested-modal-button" onClick={toggleNestedModal}>Open</button>
+              <button data-testid="close-modal-button" onClick={toggleModal}>Close</button>
+            </NxModal>
+          }
+        </>
+      );
+    };
+
+    const { getByTestId, getAllByTestId } = render(<Fixture />);
+    const openModalButton = getByTestId('open-modal-button');
+
+    await user.click(openModalButton);
+    await runTimers();
+
+    const tabbableItems = getAllByTestId('tabbable-item');
+    const openNestedModalButton = getByTestId('open-nested-modal-button');
+    const closeModalButton = getByTestId('close-modal-button');
+
+    // Tab cycling should work.
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[1]).toHaveFocus();
+    await user.tab();
+    expect(openNestedModalButton).toHaveFocus();
+    await user.tab();
+    expect(closeModalButton).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(openNestedModalButton).toHaveFocus();
+
+    await user.click(openNestedModalButton);
+    await runTimers();
+
+    const nestedTabbableItems = getAllByTestId('nested-tabbable-item');
+    const closeNestedModalButton = getByTestId('close-nested-modal-button');
+
+    // Should cycle tabbable elements in nested modal properly
+    expect(nestedTabbableItems[0]).toHaveFocus();
+    await user.tab();
+    expect(nestedTabbableItems[1]).toHaveFocus();
+    await user.tab();
+    expect(closeNestedModalButton).toHaveFocus();
+    await user.tab();
+    expect(nestedTabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeNestedModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(nestedTabbableItems[1]).toHaveFocus();
+
+    await user.click(closeNestedModalButton);
+    await runTimers();
+
+    // Should focus on previously focused element
+    expect(openNestedModalButton).toHaveFocus();
+
+    // Focus cycling should still work
+    await user.tab();
+    expect(closeModalButton).toHaveFocus();
+    await user.tab();
+    expect(tabbableItems[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(closeModalButton).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(openNestedModalButton).toHaveFocus();
+
+    await user.click(closeModalButton);
+    await runTimers();
+
+    // Should focus on previously focused element
+    expect(openModalButton).toHaveFocus();
+  });
+
+  it('should focus on the first item after tabbing when the currently focused element is removed', async function() {
+    const user = userEvent.setup();
+
+    const Fixture = () => {
+      const [showButton, toggleButton] = useToggle(true);
+      return (
+        <NxModal onClose={() => {}}>
+          <button>First</button>
+          {
+            showButton &&
+            <button onClick={toggleButton}>
+              Boom
+            </button>
+          }
+        </NxModal>
+      );
+    };
+
+    const { getAllByRole } = render(<Fixture />);
+    const buttons = getAllByRole('button');
+
+    expect(buttons[0]).toHaveFocus();
+
+    await user.tab();
+    expect(buttons[1]).toHaveFocus();
+    await user.click(buttons[1]);
+
+    // Focus is removed
+    expect(document.activeElement).toBe(document.body);
+
+    await user.tab();
+    expect(buttons[0]).toHaveFocus();
   });
 });

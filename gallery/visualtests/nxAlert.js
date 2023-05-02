@@ -14,7 +14,8 @@ describe('NxAlert', function() {
       errorSelector = '#nx-alert-error-example .nx-alert',
       infoSelector = '#nx-alert-info-example .nx-alert',
       warningSelector = '#nx-alert-warning-example .nx-alert',
-      noCloseSelector = '#nx-alert-no-close-example .nx-alert';
+      noCloseSelector = '#nx-alert-no-close-example .nx-alert',
+      withLinkSelector = '#nx-alert-with-link-example .nx-alert';
 
   describe('Custom NxAlert', function() {
     it('looks right', simpleTest(simpleSelector));
@@ -31,6 +32,15 @@ describe('NxAlert', function() {
     it('looks right with the close button clicked', clickTest(errorSelector, `${errorSelector} .nx-btn--close`));
     it('looks right with the close button focused and hovered',
         focusAndHoverTest(errorSelector, `${errorSelector} .nx-btn--close`));
+  });
+
+  describe('NxLinkInAlert', function() {
+    it('looks right', simpleTest(withLinkSelector));
+    it('looks right with the link hovered', hoverTest(withLinkSelector, `${withLinkSelector} .nx-text-link`));
+    it('looks right with the link focused', focusTest(withLinkSelector, `${withLinkSelector} .nx-text-link`));
+    it('looks right with the link clicked', clickTest(withLinkSelector, `${withLinkSelector} .nx-text-link`));
+    it('looks right with the link focused and hovered',
+        focusAndHoverTest(withLinkSelector, `${withLinkSelector} .nx-text-link`));
   });
 
   describe('NxInfoAlert', function() {

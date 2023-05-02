@@ -6,12 +6,34 @@
  */
 
 export const NIVO_COLORS = [
-  'var(--nx-swatch-teal-40)',
-  'var(--nx-swatch-red-65)',
-  'var(--nx-swatch-green-35)',
-  'var(--nx-swatch-purple-60)',
-  'var(--nx-swatch-orange-40)',
-  'var(--nx-swatch-pink-60)',
-  'var(--nx-swatch-turquoise-30)',
-  'var(--nx-swatch-indigo-60)'
+  'var(--nx-color-chart-data-1)',
+  'var(--nx-color-chart-data-2)',
+  'var(--nx-color-chart-data-3)',
+  'var(--nx-color-chart-data-4)',
+  'var(--nx-color-chart-data-5)',
+  'var(--nx-color-chart-data-6)',
+  'var(--nx-color-chart-data-7)',
+  'var(--nx-color-chart-data-8)'
 ];
+
+export const NIVO_THEME = {
+  background: 'var(--nx-color-component-background)',
+  textColor: 'var(--nx-color-chart-text)',
+  axis: {
+    domain: {
+      line: { stroke: 'var(--nx-color-chart-line)' }
+    },
+    ticks: {
+      line: { stroke: 'var(--nx-color-chart-line)' }
+    }
+  },
+  grid: {
+    line: { stroke: 'var(--nx-color-chart-line)' }
+  },
+  tooltip: {
+    container: {
+      background: 'var(--nx-color-tooltip-background)',
+      color: 'var(--nx-color-tooltip-text)'
+    }
+  }
+};
