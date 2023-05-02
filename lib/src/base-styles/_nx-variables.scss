@@ -65,12 +65,21 @@
                             0 1px 2px 0 rgba(91, 95, 141, 0.2),
                             0 1px 1px 0 rgba(124, 128, 179, 0.2);
 
+  // for global sidebar
+  --nx-focus-outline-offset-global-sidebar-link: 0px;
+  --nx-focus-outline-offset-global-sidebar-toggle: 1px;
+
   //NxTable
   --nx-outline-width-table-row-hover: 2px;
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-border-grid: var(--nx-border-default);
     --nx-border-width: 2px;
+
+    // for global sidebar
+    --nx-focus-outline-offset-global-sidebar-link: 2px;
+    --nx-focus-outline-offset-global-sidebar-toggle: 0px;
+
     --nx-outline-width-table-row-hover: 0px;
   }
 

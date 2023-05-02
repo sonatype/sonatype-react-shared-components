@@ -57,7 +57,9 @@ const NivoPage = () =>
                 on charts with RSC's <NxCode>NIVO_THEME</NxCode>. Note that these colors should only be used for data
                 that does not have some more meaningful set of colors that could be associated with it. For instance,
                 data where each category corresponds to a Threat Category should use the Threat Category colors,
-                not these arbitrary colors.
+                not these arbitrary colors. These colors are derived from
+                the <NxCode>--nx-color-chart-data-1</NxCode> - <NxCode>--nx-color-chart-data-8</NxCode> CSS variables
+                and have different values in dark mode than in might mode.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>

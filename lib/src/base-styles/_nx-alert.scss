@@ -94,6 +94,23 @@
 
   flex-grow: 1;
   overflow-wrap: anywhere;
+
+  .nx-text-link {
+    color: var(--nx-color-alert-link);
+
+    &:focus {
+      outline-color: var(--nx-color-alert-link-focus);
+      color: var(--nx-color-alert-link);
+    }
+
+    &:hover {
+      color: var(--nx-color-alert-link-hover);
+    }
+
+    &:active, &:active:focus {
+      color: var(--nx-color-alert-link-active);
+    }
+  }
 }
 
 footer, .nx-footer {
