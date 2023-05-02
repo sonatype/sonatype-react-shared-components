@@ -19,7 +19,7 @@ const NxDarkModeMixinPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        In order to add styles dark-mode-specific styles to your application,
+        In order to add dark-mode-specific styles to your application,
         the <NxCode>nx-dark-mode-helpers.dark-mode</NxCode> SCSS mixin can be used. Styles added via this mixin will
         be activated according to the rules documented on
         the <NxTextLink href="#/pages/Dark Mode Activation Classes">Dark Mode Activation Classes</NxTextLink> page.
