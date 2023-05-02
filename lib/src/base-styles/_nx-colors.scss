@@ -262,6 +262,9 @@
   --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-65);
   --nx-color-status-indicator-error-icon-border: var(--nx-color-alert-error);
 
+  // NxAccordion
+  --nx-color-accordion-header-divider: var(--nx-swatch-indigo-80);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
@@ -467,19 +470,19 @@
 
     --nx-color-toggle-off-border: var(--nx-swatch-indigo-70);
     --nx-color-toggle-off-border-hover: var(--nx-swatch-indigo-60);
-  
+
     --nx-color-toggle-off-track: var(--nx-color-component-background);
     --nx-color-toggle-off-track-hover: var(--nx-color-site-background);
-  
+
     --nx-color-toggle-off-handle: var(--nx-swatch-purple-80);
     --nx-color-toggle-off-handle-hover: var(--nx-swatch-purple-70);
-  
+
     --nx-color-toggle-on-border: var(--nx-swatch-purple-80);
     --nx-color-toggle-on-border-hover: var(--nx-swatch-purple-70);
-  
+
     --nx-color-toggle-on-track: var(--nx-swatch-purple-80);
     --nx-color-toggle-on-track-hover: var(--nx-swatch-purple-70);
-    
+
     --nx-color-toggle-on-handle: var(--nx-color-component-background);
 
     // NxStatusIndicator
@@ -506,6 +509,9 @@
     --nx-color-status-indicator-error-text: var(--nx-swatch-indigo-10);
     --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-40);
     --nx-color-status-indicator-error-icon-border: var(--nx-color-status-indicator-error-icon-background);
+
+    // NxAccordion
+    --nx-color-accordion-header-divider: var(--nx-swatch-indigo-45);
   }
 
   // Deprecated variables
