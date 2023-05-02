@@ -264,6 +264,7 @@
 
   // NxAccordion
   --nx-color-accordion-header-divider: var(--nx-swatch-indigo-80);
+  --nx-color-accordion-container: var(--nx-swatch-indigo-95);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
@@ -512,6 +513,7 @@
 
     // NxAccordion
     --nx-color-accordion-header-divider: var(--nx-swatch-indigo-45);
+    --nx-color-accordion-container: var(--nx-swatch-indigo-10);
   }
 
   // Deprecated variables
