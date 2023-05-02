@@ -952,7 +952,13 @@ const CssVariablesPage = () => {
               The value used for line colors within the <NxCode>NIVO_THEME</NxCode> export.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-chart-text">
-              The value used for text colors within the <NxCode>NIVO_THEME</NxCode> export.
+              The value used for text colors within the <NxCode>NIVO_THEME</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-color-picker-border-focus">
+              The focus border color of <NxCode>NxColorPicker</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-color-picker-check-icon">
+              The color of the check icon of <NxCode>NxColorPicker</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>
