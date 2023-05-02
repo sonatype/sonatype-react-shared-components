@@ -292,6 +292,10 @@
   --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-65);
   --nx-color-status-indicator-error-icon-border: var(--nx-color-error);
 
+  // NxColorPicker
+  --nx-color-color-picker-border-focus: var(--nx-swatch-teal-35);
+  --nx-color-color-picker-check-icon: var(--nx-swatch-grey-05);
+
   // NxGlobalSidebar
   --nx-color-global-sidebar-background: var(--nx-swatch-blue-10);
   --nx-color-global-sidebar-separator-color: var(--nx-swatch-indigo-40);
@@ -600,6 +604,10 @@
     --nx-color-status-indicator-error-text: var(--nx-swatch-indigo-10);
     --nx-color-status-indicator-error-icon-background: var(--nx-swatch-red-40);
     --nx-color-status-indicator-error-icon-border: var(--nx-color-status-indicator-error-icon-background);
+
+    // NxColorPicker
+    --nx-color-color-picker-border-focus: var(--nx-color-interactive-border-focus);
+    --nx-color-color-picker-check-icon: var(--nx-swatch-indigo-05);
 
     // NxGlobalSidebar
     --nx-color-global-sidebar-background: var(--nx-color-component-background);
