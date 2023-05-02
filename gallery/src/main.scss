@@ -27,6 +27,12 @@
   font-family: Courier Prime, sans-serif !important;
 }
 
+.gallery-example-iframe {
+  border-style: none;
+  width: 100%;
+  height: 120px;
+}
+
 .gallery-example--checkered-background {
   .gallery-example-live {
     --gallery-checker-color: #e9e9e9;
