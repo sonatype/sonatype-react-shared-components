@@ -446,13 +446,13 @@ const CssVariablesPage = () => {
               The border color of <NxCode>NxGlobalSidebar</NxCode>. Note that in light mode this
               has no effect as the border has a width of 0.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-separator-color">
+            <ColorDocRow colorVar="--nx-color-global-sidebar-separator">
               The color of the vertical separator borders within <NxCode>NxGlobalSidebar</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-border-focus">
               The border color of focused elements within <NxCode>NxGlobalSidebar</NxCode>.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-color">
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle">
               The color of the icon within the <NxCode>NxGlobalSidebar</NxCode> toggle button.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-hover">
@@ -484,7 +484,7 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-global-sidebar-link-border-focus">
               The border color of <NxCode>NxGlobalSidebar</NxCode> link items on focus.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-link-icon-color">
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-icon">
               The color of the <NxCode>NxGlobalSidebar</NxCode> navigation link item icons on hover,
               activation, or selection.
             </ColorDocRow>

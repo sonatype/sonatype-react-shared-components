@@ -303,9 +303,9 @@
   // NxGlobalSidebar
   --nx-color-global-sidebar-background: var(--nx-swatch-blue-10);
   --nx-color-global-sidebar-border: #fff; // note: has no effect in light mode since the border width is 0
-  --nx-color-global-sidebar-separator-color: var(--nx-swatch-indigo-40);
+  --nx-color-global-sidebar-separator: var(--nx-swatch-indigo-40);
   --nx-color-global-sidebar-border-focus: var(--nx-swatch-blue-95);
-  --nx-color-global-sidebar-toggle-color: var(--nx-swatch-white);
+  --nx-color-global-sidebar-toggle: var(--nx-swatch-white);
   --nx-color-global-sidebar-toggle-background-hover: var(--nx-swatch-indigo-30);
   --nx-color-global-sidebar-toggle-background-active: var(--nx-swatch-indigo-50);
   --nx-color-global-sidebar-toggle-inner-outline: var(--nx-swatch-indigo-30);
@@ -315,7 +315,7 @@
   --nx-color-global-sidebar-link-text: var(--nx-swatch-white);
   --nx-color-global-sidebar-link-text-interactive: var(--nx-color-global-sidebar-link-text);
   --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-blue-95);
-  --nx-color-global-sidebar-link-icon-color: var(--nx-swatch-white);
+  --nx-color-global-sidebar-link-icon: var(--nx-swatch-white);
 
   // NxTag
   --nx-color-tag-text: var(--nx-color-text-stark);
@@ -621,9 +621,9 @@
     // NxGlobalSidebar
     --nx-color-global-sidebar-background: var(--nx-color-site-background);
     --nx-color-global-sidebar-border: var(--nx-swatch-indigo-20);
-    --nx-color-global-sidebar-separator-color: var(--nx-swatch-indigo-25);
+    --nx-color-global-sidebar-separator: var(--nx-swatch-indigo-25);
     --nx-color-global-sidebar-border-focus: var(--nx-color-interactive-border-focus);
-    --nx-color-global-sidebar-toggle-color: var(--nx-swatch-indigo-10);
+    --nx-color-global-sidebar-toggle: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-toggle-background-hover: var(--nx-swatch-purple-80);
     --nx-color-global-sidebar-toggle-background-active: var(--nx-swatch-purple-90);
     --nx-color-global-sidebar-toggle-inner-outline: var(--nx-color-component-background);
@@ -633,7 +633,7 @@
     --nx-color-global-sidebar-link-text: var(--nx-swatch-indigo-97);
     --nx-color-global-sidebar-link-text-interactive: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-indigo-10);
-    --nx-color-global-sidebar-link-icon-color: var(--nx-swatch-indigo-10);
+    --nx-color-global-sidebar-link-icon: var(--nx-swatch-indigo-10);
 
     // NxTag
     --nx-color-tag-text: var(--nx-swatch-indigo-10);
