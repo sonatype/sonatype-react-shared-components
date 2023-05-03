@@ -100,11 +100,8 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>string</NxTable.Cell>
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>
-                  The path to an image placed in the top left corner which displays branding and product name.
-                  <NxWarningAlert>
-                    Note: the image should not be larger than 145px wide and 32px tall. It should
-                    display either a logo (apx 32px x 32px) and the product name, or just the product name.
-                  </NxWarningAlert>
+                  The path to an image placed in the top left corner which displays branding and product name. Note that
+                  the image will be rendered at a size no greater than 158px x 43px.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -290,7 +287,7 @@ export default function NxGlobalSidebarPage() {
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            This examples shows 10 nav items (the maximum), a middle content area with enough content to trigger
+            This example shows 10 nav items (the maximum), a middle content area with enough content to trigger
             scrolling, and all footer options enabled.
           </NxP>
           <NxP>

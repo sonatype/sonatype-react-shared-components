@@ -7,6 +7,8 @@
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-dark-mode-helpers';
 
+$-border-width: 1px;
+
 .nx-text-input {
   display: inline-block;
   position: relative;
@@ -21,7 +23,7 @@
 
     align-items: center;
     background-color: var(--nx-color-component-background);
-    border: 1px solid var(--nx-color-interactive-border);
+    border: $-border-width solid var(--nx-color-interactive-border);
     border-radius: var(--nx-border-radius);
     display: flex;
     padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
@@ -107,8 +109,8 @@
 
     &:focus-within {
       .nx-text-input__box {
-        outline: 2px solid var(--nx-color-interactive-border-focus);
-        outline-offset: -5px;
+        outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+        outline-offset: calc(0px - #{$-border-width} - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
       }
     }
   }

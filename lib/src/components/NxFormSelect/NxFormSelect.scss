@@ -6,9 +6,11 @@
  */
 @use '../../scss-shared/nx-text-helpers';
 
+$-border-width: 1px;
+
 %focus-outline {
-  outline: 2px solid var(--nx-color-interactive-border-focus);
-  outline-offset: -5px;
+  outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+  outline-offset: calc(0px - #{$-border-width} - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
 }
 
 .nx-form-select {
@@ -32,7 +34,7 @@
     -moz-appearance: none;
     appearance: none;
     background-color: var(--nx-color-component-background);
-    border: 1px solid var(--nx-color-interactive-border);
+    border: $-border-width solid var(--nx-color-interactive-border);
     border-radius: var(--nx-border-radius);
     color: var(--nx-color-text);
     font-size: var(--nx-font-size);

@@ -21,13 +21,13 @@
 
     &:focus-within {
       .nx-color-picker__outline {
-        stroke: var(--nx-swatch-teal-35);
+        stroke: var(--nx-color-color-picker-border-focus);
       }
     }
 
     &:hover {
       .nx-color-picker__color {
-        stroke: var(--nx-color-interactive-border-hover);
+        stroke: var(--nx-color-text-stark);
       }
     }
   }
@@ -47,11 +47,11 @@
   &__outline {
     fill: none;
     stroke: none;
-    stroke-width: 2px;
+    stroke-width: var(--nx-focus-outline-width);
   }
 
   &__check {
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-color-picker-check-icon);
   }
 
   &__input {

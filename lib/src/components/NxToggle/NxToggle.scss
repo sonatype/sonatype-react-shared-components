@@ -70,11 +70,11 @@ $-width: 44px;
         content: '';
         display: block;
         height: calc(#{$-height} + 4px);
-        box-shadow: 0 0 0 2px var(--nx-color-interactive-border-focus);
+        box-shadow: 0 0 0 var(--nx-focus-outline-width) var(--nx-color-interactive-border-focus);
         position: absolute;
-        left: -2px;
-        top: -2px;
-        width: calc(#{$-width} + 4px);
+        left: calc(0px - var(--nx-focus-outline-inset));
+        top: calc(0px - var(--nx-focus-outline-inset));
+        width: calc(#{$-width} + 2 * var(--nx-focus-outline-inset));
       }
     }
   }

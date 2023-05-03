@@ -4,9 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '~@sonatype/react-shared-components/scss-shared/nx-dark-mode-helpers';
+
 .gallery-custom-form {
   background-color: #eee;
   padding: var(--nx-spacing-4x);
+
+  // use dark mode helper here as it is for demonstration purpose only
+  @include nx-dark-mode-helpers.dark-mode {
+    background-color: var(--nx-swatch-indigo-15);
+  }
 }
 
 .gallery-custom-form__submit {
