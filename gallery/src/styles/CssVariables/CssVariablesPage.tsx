@@ -233,6 +233,9 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-width-global-sidebar">
+            The width of the border along the right side of the global sidebar.
+          </PropertyDocItem>
         </dl>
       </GalleryTile>
       <GalleryTile title="Semantic Color Properties">
@@ -435,6 +438,55 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-header-border">
               The border color used on the <NxCode>NxGlobalHeader</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-background">
+              The background color of <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-border">
+              The border color of <NxCode>NxGlobalSidebar</NxCode>. Note that in light mode this
+              has no effect as the border has a width of 0.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-separator-color">
+              The color of the vertical separator borders within <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-border-focus">
+              The border color of focused elements within <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-color">
+              The color of the icon within the <NxCode>NxGlobalSidebar</NxCode> toggle button.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-hover">
+              The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-active">
+              The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on activation.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-inner-outline">
+              In dark mode, the <NxCode>NxGlobalSidebar</NxCode> toggle button has an inner outline
+              when focused and hovered. This variable defines that color.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-active">
+              The background color of <NxCode>NxGlobalSidebar</NxCode> navigation link items on activation.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-hover">
+              The background color of <NxCode>NxGlobalSidebar</NxCode> navigation link items on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-selected">
+              The background color of the selected <NxCode>NxGlobalSidebar</NxCode> navigation link item.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-text">
+              The default text color of the <NxCode>NxGlobalSidebar</NxCode> navigation link items.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-text-interactive">
+              The text color of the <NxCode>NxGlobalSidebar</NxCode> navigation link items on hover,
+              activation, or selection.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-border-focus">
+              The border color of <NxCode>NxGlobalSidebar</NxCode> link items on focus.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-icon-color">
+              The color of the <NxCode>NxGlobalSidebar</NxCode> navigation link item icons on hover,
+              activation, or selection.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-page-header-background">
               The background color used on the <NxCode>NxPageHeader</NxCode>.
