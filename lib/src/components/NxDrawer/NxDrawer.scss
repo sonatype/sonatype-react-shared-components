@@ -50,9 +50,14 @@
     pointer-events: auto;
   }
 
-  background-color: var(--nx-swatch-white);
-  box-shadow: -34px 0 50px -32px hsla(0, 0%, 50%, 0.5);
-  color: var(--nx-swatch-grey-30);
+  background-color: var(--nx-color-drawer-background);
+  // A spread of -32px sets the spread inward to create the effect of a smaller, vertically centered
+  // element behind the drawer, as displayed in the mocks. The x-offset counteracts the shadow’s spread
+  // (to prevent it from being brought inward on the left), plus a further -2px of x-offset defined in the mocks.
+  // The y-offset can be zero as the shadow should be vertically centred relative to the drawer.
+  // The blur comes directly from the mocks where it is specified as 50px.
+  box-shadow: -34px 0 50px -32px var(--nx-color-drawer-box-shadow);
+  color: var(--nx-color-text);
 
   box-sizing: border-box;
   grid-area: content;
@@ -112,7 +117,7 @@
   @include nx-container-helpers.container-vertical;
 
   align-items: start;
-  border-bottom: 1px solid var(--nx-swatch-indigo-90);
+  border-bottom: var(--nx-border-default);
   display: grid;
   column-gap: var(--nx-spacing-2x);
   grid-template: "title close-button"
@@ -131,7 +136,7 @@
   &__title {
     @include nx-text-helpers.truncate-ellipsis;
 
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-text-stark);
     grid-area: title;
   }
 
