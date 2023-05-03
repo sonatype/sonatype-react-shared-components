@@ -21,6 +21,7 @@ $-button-border-width: 2px;
   @include nx-container-helpers.container-vertical;
 
   background-color: var(--nx-color-global-sidebar-background);
+  border-right: var(--nx-border-width-global-sidebar) solid var(--nx-color-global-sidebar-border);
   box-sizing: border-box;
   color: $-text-color;
   display: flex;
