@@ -334,6 +334,8 @@
   --nx-color-chart-data-7: var(--nx-swatch-turquoise-30);
   --nx-color-chart-data-8: var(--nx-swatch-indigo-60);
 
+  --nx-color-page-title-divider: var(--nx-color-border);
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
 
@@ -649,6 +651,8 @@
     --nx-color-chart-data-6: var(--nx-swatch-grey-97);
     --nx-color-chart-data-7: var(--nx-swatch-indigo-60);
     --nx-color-chart-data-8: var(--nx-swatch-teal-80);
+
+    --nx-color-page-title-divider: var(--nx-swatch-indigo-25);
   }
 
   // Deprecated variables

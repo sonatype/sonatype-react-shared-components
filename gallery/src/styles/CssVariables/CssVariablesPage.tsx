@@ -1008,6 +1008,9 @@ const CssVariablesPage = () => {
               The last of eight colors meant to be used for chart data. For instance, each line in a line graph
               could use a different one of these colors.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-page-title-divider">
+              The color of the divider between the title and subtitle within <NxCode>NxPageTitle</NxCode>.
+            </ColorDocRow>
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
