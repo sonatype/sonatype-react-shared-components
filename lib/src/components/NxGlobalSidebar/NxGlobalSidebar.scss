@@ -21,6 +21,7 @@ $-button-border-width: 2px;
   @include nx-container-helpers.container-vertical;
 
   background-color: var(--nx-color-global-sidebar-background);
+  border-right: var(--nx-border-width-global-sidebar) solid var(--nx-color-global-sidebar-border);
   box-sizing: border-box;
   color: $-text-color;
   display: flex;
@@ -62,7 +63,7 @@ $-button-border-width: 2px;
   &:hover {
     background-color: var(--nx-color-global-sidebar-toggle-background-hover);
     .nx-icon {
-      color: var(--nx-color-global-sidebar-toggle-color);
+      color: var(--nx-color-global-sidebar-toggle);
     }
   }
 
@@ -101,7 +102,7 @@ $-button-border-width: 2px;
 }
 
 .nx-global-sidebar__navigation {
-  border-bottom: 1px solid var(--nx-color-global-sidebar-separator-color);
+  border-bottom: 1px solid var(--nx-color-global-sidebar-separator);
   flex: none;
   margin: 0;
   padding-bottom: var(--nx-spacing-12x);
@@ -143,7 +144,7 @@ $-button-border-width: 2px;
       color: var(--nx-color-global-sidebar-link-text-interactive);
 
       .nx-icon {
-        color: var(--nx-color-global-sidebar-link-icon-color);
+        color: var(--nx-color-global-sidebar-link-icon);
       }
     }
 
@@ -217,7 +218,7 @@ $-button-border-width: 2px;
 .nx-global-sidebar__other-content {
   @include nx-container-helpers.container-vertical;
 
-  border-bottom: 1px solid var(--nx-color-global-sidebar-separator-color);
+  border-bottom: 1px solid var(--nx-color-global-sidebar-separator);
   flex: 1;
   padding: var(--nx-spacing-4x) $-left-right-spacing;
   max-height: unset;
