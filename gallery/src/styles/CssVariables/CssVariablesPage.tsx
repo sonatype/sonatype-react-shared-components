@@ -236,6 +236,14 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-border-width-global-sidebar">
             The width of the border along the right side of the global sidebar.
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-focus-outline-offset-global-sidebar-link">
+            The distance that the focus outline should be inset with a <NxCode>NxGlobalSidebar</NxCode>
+            navigation item.
+          </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-focus-outline-offset-global-sidebar-toggle">
+            The distance that the focus outline should be inset with the <NxCode>NxGlobalSidebar</NxCode>
+            toggle button.
+          </PropertyDocItem>
         </dl>
       </GalleryTile>
       <GalleryTile title="Semantic Color Properties">
