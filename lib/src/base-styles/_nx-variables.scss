@@ -72,6 +72,8 @@
   //NxTable
   --nx-outline-width-table-row-hover: 2px;
 
+  --nx-border-width-global-sidebar: 0px;
+
   @include nx-dark-mode-helpers.dark-mode {
     --nx-border-grid: var(--nx-border-default);
     --nx-border-width: 2px;
@@ -81,6 +83,8 @@
     --nx-focus-outline-offset-global-sidebar-toggle: 0px;
 
     --nx-outline-width-table-row-hover: 0px;
+
+    --nx-border-width-global-sidebar: 1px;
   }
 
   // Deprecated variables
