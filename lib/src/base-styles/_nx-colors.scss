@@ -298,7 +298,7 @@
   --nx-color-global-sidebar-separator-color: var(--nx-swatch-indigo-40);
   --nx-color-global-sidebar-border-focus: var(--nx-swatch-blue-95);
   --nx-color-global-sidebar-background-hover: var(--nx-swatch-indigo-30);
-  --nx-color-global-sidebar-toggle-color: var(--nx-swatch-white);
+  --nx-color-global-sidebar-toggle: var(--nx-swatch-white);
   --nx-color-global-sidebar-toggle-background-active: var(--nx-swatch-indigo-50);
   --nx-color-global-sidebar-toggle-outline: var(--nx-swatch-blue-95);
   --nx-color-global-sidebar-toggle-inner-outline: var(--nx-swatch-indigo-30);
@@ -307,7 +307,7 @@
   --nx-color-global-sidebar-link-text: var(--nx-swatch-white);
   --nx-color-global-sidebar-link-text-interactive: var(--nx-color-global-sidebar-link-text);
   --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-blue-95);
-  --nx-color-global-sidebar-link-icon-color: var(--nx-swatch-white);
+  --nx-color-global-sidebar-link-icon: var(--nx-swatch-white);
 
   // NxTag
   --nx-color-tag-text: var(--nx-color-text-stark);
@@ -599,7 +599,7 @@
     --nx-color-global-sidebar-separator-color: var(--nx-swatch-indigo-25);
     --nx-color-global-sidebar-border-focus: var(--nx-color-interactive-border-focus);
     --nx-color-global-sidebar-background-hover: var(--nx-swatch-purple-70);
-    --nx-color-global-sidebar-toggle-color: var(--nx-swatch-indigo-10);
+    --nx-color-global-sidebar-toggle: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-toggle-background-active: var(--nx-swatch-purple-90);
     --nx-color-global-sidebar-toggle-outline: var(--nx-swatch-purple-70);
     --nx-color-global-sidebar-toggle-inner-outline: var(--nx-swatch-indigo-10);
@@ -608,7 +608,7 @@
     --nx-color-global-sidebar-link-text: var(--nx-swatch-indigo-97);
     --nx-color-global-sidebar-link-text-interactive: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-indigo-10);
-    --nx-color-global-sidebar-link-icon-color: var(--nx-swatch-indigo-10);
+    --nx-color-global-sidebar-link-icon: var(--nx-swatch-indigo-10);
 
     // NxTag
     --nx-color-tag-text: var(--nx-swatch-indigo-10);
