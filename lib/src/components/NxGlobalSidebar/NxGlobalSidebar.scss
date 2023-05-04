@@ -80,7 +80,7 @@ $-button-border-width: 2px;
     width: 100%;
     top: 0;
     left: 0;
-    outline-offset: calc(0px - var(--nx-focus-outline-inset) - var(--nx-focus-outline-offset-global-sidebar-toggle));
+    outline-offset: calc(0px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-offset-global-sidebar-toggle));
   }
 
   &:active {

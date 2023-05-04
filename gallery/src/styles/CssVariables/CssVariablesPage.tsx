@@ -210,7 +210,7 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-focus-outline-width">
             The width of the outline when an element is focused.
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-focus-outline-inset">
+          <PropertyDocItem propertyVar="--nx-focus-outline-offset">
             The spacing between the focus outline and the element's border or outer edge (if no border is present).
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">

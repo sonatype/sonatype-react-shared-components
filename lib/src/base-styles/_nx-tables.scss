@@ -82,7 +82,7 @@
       &:hover {
         color: var(--nx-color-text-stark);
         outline: var(--nx-outline-width-table-row-hover) solid var(--nx-color-border);
-        outline-offset: calc(0px - var(--nx-focus-outline-inset));
+        outline-offset: calc(0px - var(--nx-focus-outline-offset));
         > .nx-cell {
           background-color: var(--nx-color-table-row-background-hover);
         }
@@ -97,7 +97,7 @@
 
       &:focus-within {
         outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
-        outline-offset: calc(0px - var(--nx-focus-outline-inset));
+        outline-offset: calc(0px - var(--nx-focus-outline-offset));
       }
       
       &:active {
@@ -270,7 +270,7 @@
 
   &:focus {
     outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
-    outline-offset: calc(0px - var(--nx-focus-outline-inset));
+    outline-offset: calc(0px - var(--nx-focus-outline-offset));
   }
 }
 
