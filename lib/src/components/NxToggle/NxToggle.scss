@@ -26,13 +26,13 @@ $-width: 44px;
   
   &__control {
     background-color: var(--nx-color-toggle-off-track);
-    border: var(--nx-border-width) solid var(--nx-color-toggle-off-border);
+    border: var(--nx-border-width-alt) solid var(--nx-color-toggle-off-border);
     border-radius: 12px;
     box-sizing: border-box;
     display: flex;
     grid-area: toggle;
     height: $-height;
-    padding: calc(var(--nx-spacing-base) - var(--nx-border-width));
+    padding: calc(var(--nx-spacing-base) - var(--nx-border-width-alt));
     width: $-width;
   }
   
