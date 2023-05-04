@@ -233,6 +233,17 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-border-grid">
             The standard border style for <NxCode>nx-grid</NxCode> vertical borders.
           </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-width-global-sidebar">
+            The width of the border along the right side of the global sidebar.
+          </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-focus-outline-offset-global-sidebar-link">
+            The distance that the focus outline should be inset with a <NxCode>NxGlobalSidebar</NxCode>
+            navigation item.
+          </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-focus-outline-offset-global-sidebar-toggle">
+            The distance that the focus outline should be inset with the <NxCode>NxGlobalSidebar</NxCode>
+            toggle button.
+          </PropertyDocItem>
         </dl>
       </GalleryTile>
       <GalleryTile title="Semantic Color Properties">
@@ -397,6 +408,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-validation-invalid">
               The color used on validatable form fields when they are invalid.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-success">
+              The color used for the success icon and for other equivalent icons and purposes.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-error">
+              The color used for the error icon and for other equivalent icons and purposes.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-info">
               <NxWarningAlert>
                 Deprecated. Please use <NxCode>--nx-color-alert-info-icon</NxCode>.
@@ -408,10 +425,14 @@ const CssVariablesPage = () => {
               </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-success">
-              The color used on the <NxCode>NxAlert</NxCode> success icon and for other equivalent icons and purposes.
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-success</NxCode>.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-alert-error">
-              The color used on the <NxCode>NxAlert</NxCode> error icon and for other equivalent icons and purposes.
+              <NxWarningAlert>
+                Deprecated. Please use <NxCode>--nx-color-error</NxCode>.
+              </NxWarningAlert>
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-background-mask">
               The color of the viewport-wide mask that falls behind elements such as <NxCode>NxModal</NxCode> and{' '}
@@ -425,6 +446,55 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-header-border">
               The border color used on the <NxCode>NxGlobalHeader</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-background">
+              The background color of <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-border">
+              The border color of <NxCode>NxGlobalSidebar</NxCode>. Note that in light mode this
+              has no effect as the border has a width of 0.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-separator">
+              The color of the vertical separator borders within <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-border-focus">
+              The border color of focused elements within <NxCode>NxGlobalSidebar</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle">
+              The color of the icon within the <NxCode>NxGlobalSidebar</NxCode> toggle button.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-hover">
+              The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-active">
+              The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on activation.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-inner-outline">
+              In dark mode, the <NxCode>NxGlobalSidebar</NxCode> toggle button has an inner outline
+              when focused and hovered. This variable defines that color.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-active">
+              The background color of <NxCode>NxGlobalSidebar</NxCode> navigation link items on activation.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-hover">
+              The background color of <NxCode>NxGlobalSidebar</NxCode> navigation link items on hover.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-selected">
+              The background color of the selected <NxCode>NxGlobalSidebar</NxCode> navigation link item.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-text">
+              The default text color of the <NxCode>NxGlobalSidebar</NxCode> navigation link items.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-text-interactive">
+              The text color of the <NxCode>NxGlobalSidebar</NxCode> navigation link items on hover,
+              activation, or selection.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-border-focus">
+              The border color of <NxCode>NxGlobalSidebar</NxCode> link items on focus.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-icon">
+              The color of the <NxCode>NxGlobalSidebar</NxCode> navigation link item icons on hover,
+              activation, or selection.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-page-header-background">
               The background color used on the <NxCode>NxPageHeader</NxCode>.
@@ -932,11 +1002,23 @@ const CssVariablesPage = () => {
               The default active background color of <NxCode>NxCollapsibleItem</NxCode> when placed
               within <NxCode>.nx-page-sidebar</NxCode>.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-accordion-header-divider">
+              The color of the divider that separates the header and content in <NxCode>NxAccordion</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-accordion-container">
+              The background color of the <NxCode>NxAccordion</NxCode> container in <NxCode>NxTile</NxCode>.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-background">
               The background color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-small-threat-counter-zero-text">
               The text color of the <NxCode>NxSmallThreatCounter</NxCode> with a value of 0.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-drawer-background">
+              The background color of <NxCode>NxDrawer</NxCode>.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-drawer-box-shadow">
+              The color of the box-shadow for <NxCode>NxDrawer</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-system-notice-background">
               The default background color for <NxCode>NxSystemNotice</NxCode>.
@@ -954,47 +1036,46 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-chart-text">
               The value used for text colors within the <NxCode>NIVO_THEME</NxCode> export.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-background">
-              The background color of <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-color-picker-border-focus">
+              The focus border color of <NxCode>NxColorPicker</NxCode>.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-separator-color">
-              The separator color between content areas of <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-color-picker-check-icon">
+              The color of the check icon of <NxCode>NxColorPicker</NxCode>.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-border-focus">
-              The color of the focus borders of items in <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-chart-data-1">
+              The first of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-background-hover">
-              The hover background color of navigation links and toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-chart-data-2">
+              The second of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-color">
-              The color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-chart-data-3">
+              The third of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-active">
-              The active background color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-chart-data-4">
+              The fourth of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-outline">
-              The outline color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-chart-data-5">
+              The fifth of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-inner-outline">
-              The inner outline color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-chart-data-6">
+              The sixth of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-link-active">
-              The active background color of navigation links in <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-chart-data-7">
+              The seventh of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-link-selected">
-              The selected background color of navigation links in <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-chart-data-8">
+              The last of eight colors meant to be used for chart data. For instance, each line in a line graph
+              could use a different one of these colors.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-link-text">
-              The text color of navigation links in <NxCode>NxGlobalSidebar</NxCode>.
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-link-text-interactive">
-              The text color of navigation links when interacted with in <NxCode>NxGlobalSidebar</NxCode>.
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-link-border-focus">
-              The focus border of navigation links in <NxCode>NxGlobalSidebar</NxCode>.
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-link-icon-color">
-              The color of icons in navigation links in <NxCode>NxGlobalSidebar</NxCode>.
+            <ColorDocRow colorVar="--nx-color-page-title-divider">
+              The color of the divider between the title and subtitle within <NxCode>NxPageTitle</NxCode>.
             </ColorDocRow>
           </NxTable.Body>
         </NxTable>

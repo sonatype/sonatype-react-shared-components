@@ -58,5 +58,14 @@ describe('nx-global-sidebar', function() {
     it('has a white outline and dark indigo background when hovered and focused', focusAndHoverTest(sidebarToggle));
   });
 
+  describe('with a different logo size', function() {
+    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarScrollingExample', false);
+
+    it('looks right', async function() {
+      await getPage().setViewport({ width: 1366, height: 1000 });
+      await checkFullPageScreenshot();
+    });
+  });
+
   it('passes a11y checks', a11yTest(null, true));
 });
