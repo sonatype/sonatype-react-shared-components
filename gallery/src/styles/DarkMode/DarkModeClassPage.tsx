@@ -43,7 +43,7 @@ const NxDarkModeClassPage = () =>
                 any non-default theming. If this class is not set, the light theme will always be used.
                 If this class is set, the user's theme preference determined by
                 the <NxCode>prefers-color-scheme</NxCode> media query will be used in conjunction with
-                the <NxCode>nx-html--dark-mode</NxCode> and <NxCode>nx-html--dark-mode</NxCode> classes to determine
+                the <NxCode>nx-html--light-mode</NxCode> and <NxCode>nx-html--dark-mode</NxCode> classes to determine
                 whether to show the light theme or the dark theme.
               </NxTable.Cell>
             </NxTable.Row>
