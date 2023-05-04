@@ -463,11 +463,14 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-global-sidebar-toggle">
               The color of the icon within the <NxCode>NxGlobalSidebar</NxCode> toggle button.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-hover">
+            <ColorDocRow colorVar="--nx-color-global-sidebar-background-hover">
               The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on hover.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-active">
               The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on activation.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-outline">
+              The outline color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-inner-outline">
               In dark mode, the <NxCode>NxGlobalSidebar</NxCode> toggle button has an inner outline
@@ -475,9 +478,6 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-link-active">
               The background color of <NxCode>NxGlobalSidebar</NxCode> navigation link items on activation.
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-link-hover">
-              The background color of <NxCode>NxGlobalSidebar</NxCode> navigation link items on hover.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-link-selected">
               The background color of the selected <NxCode>NxGlobalSidebar</NxCode> navigation link item.
