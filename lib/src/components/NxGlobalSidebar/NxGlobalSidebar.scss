@@ -129,7 +129,7 @@ $-button-border-width: 2px;
   text-decoration: none;
 
   .nx-icon {
-    color: var(--nx-swatch-indigo-90);
+    color: var(--nx-color-global-sidebar-link-icon);
     margin: 0;
   }
 
@@ -149,7 +149,7 @@ $-button-border-width: 2px;
       color: var(--nx-color-global-sidebar-link-text-interactive);
 
       .nx-icon {
-        color: var(--nx-color-global-sidebar-link-icon);
+        color: var(--nx-color-global-sidebar-link-icon-interactive);
       }
     }
 
