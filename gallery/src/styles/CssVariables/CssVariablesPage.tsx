@@ -464,7 +464,7 @@ const CssVariablesPage = () => {
               The color of the icon within the <NxCode>NxGlobalSidebar</NxCode> toggle button.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-background-hover">
-              The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on hover.
+              The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button and navigation links on hover.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-active">
               The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on activation.
