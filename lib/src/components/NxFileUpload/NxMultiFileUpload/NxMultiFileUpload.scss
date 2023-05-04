@@ -15,7 +15,7 @@
   &__container {
     align-items: flex-start;
     box-sizing: border-box;
-    border: var(--nx-border-default);
+    border: var(--nx-border-width) solid var(--nx-color-border);
     border-radius: var(--nx-border-radius);
     display: flex;
     flex-direction: column;
