@@ -58,10 +58,14 @@ $-button-border-width: 2px;
 
   &:focus:not(:active) {
     outline-color: var(--nx-color-global-sidebar-border-focus);
+
+    &:hover {
+      outline-color: var(--nx-color-global-sidebar-toggle-outline);
+    }
   }
 
   &:hover {
-    background-color: var(--nx-color-global-sidebar-toggle-background-hover);
+    background-color: var(--nx-color-global-sidebar-background-hover);
     .nx-icon {
       color: var(--nx-color-global-sidebar-toggle);
     }
@@ -76,11 +80,12 @@ $-button-border-width: 2px;
     width: 100%;
     top: 0;
     left: 0;
-    outline-offset: calc(0px - var(--nx-focus-outline-inset) - var(--nx-focus-outline-offset-global-sidebar-toggle));
+    outline-offset: calc(0px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-offset-global-sidebar-toggle));
   }
 
   &:active {
     background-color: var(--nx-color-global-sidebar-toggle-background-active);
+    color: var(--nx-color-global-sidebar-toggle);
   }
 }
 
@@ -149,7 +154,7 @@ $-button-border-width: 2px;
     }
 
     &:hover {
-      background-color: var(--nx-color-global-sidebar-link-hover);
+      background-color: var(--nx-color-global-sidebar-background-hover);
     }
 
     &:active {

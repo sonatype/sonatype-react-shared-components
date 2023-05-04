@@ -84,14 +84,14 @@
 
       &::after {
         border: var(--nx-focus-outline-width) solid var(--nx-color-primary-button-focus-outline);
-        border-radius: calc(var(--nx-border-radius) - var(--nx-focus-outline-inset));
+        border-radius: calc(var(--nx-border-radius) - var(--nx-focus-outline-offset));
         box-sizing: border-box;
         content: '';
-        height: calc(100% - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
+        height: calc(100% - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
         position: absolute;
-        left: var(--nx-focus-outline-inset);
-        top: var(--nx-focus-outline-inset);
-        width: calc(100% - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
+        left: var(--nx-focus-outline-offset);
+        top: var(--nx-focus-outline-offset);
+        width: calc(100% - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
       }
     }
   }

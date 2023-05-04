@@ -210,7 +210,7 @@ const CssVariablesPage = () => {
           <PropertyDocItem propertyVar="--nx-focus-outline-width">
             The width of the outline when an element is focused.
           </PropertyDocItem>
-          <PropertyDocItem propertyVar="--nx-focus-outline-inset">
+          <PropertyDocItem propertyVar="--nx-focus-outline-offset">
             The spacing between the focus outline and the element's border or outer edge (if no border is present).
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-box-shadow-focus">
@@ -463,11 +463,14 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-global-sidebar-toggle">
               The color of the icon within the <NxCode>NxGlobalSidebar</NxCode> toggle button.
             </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-hover">
-              The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on hover.
+            <ColorDocRow colorVar="--nx-color-global-sidebar-background-hover">
+              The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button and navigation links on hover.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-background-active">
               The background color of the <NxCode>NxGlobalSidebar</NxCode> toggle button on activation.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-outline">
+              The outline color of the toggle button in <NxCode>NxGlobalSidebar</NxCode>.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-toggle-inner-outline">
               In dark mode, the <NxCode>NxGlobalSidebar</NxCode> toggle button has an inner outline
@@ -475,9 +478,6 @@ const CssVariablesPage = () => {
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-link-active">
               The background color of <NxCode>NxGlobalSidebar</NxCode> navigation link items on activation.
-            </ColorDocRow>
-            <ColorDocRow colorVar="--nx-color-global-sidebar-link-hover">
-              The background color of <NxCode>NxGlobalSidebar</NxCode> navigation link items on hover.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-link-selected">
               The background color of the selected <NxCode>NxGlobalSidebar</NxCode> navigation link item.

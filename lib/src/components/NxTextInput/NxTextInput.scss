@@ -110,7 +110,7 @@ $-border-width: 1px;
     &:focus-within {
       .nx-text-input__box {
         outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
-        outline-offset: calc(0px - #{$-border-width} - var(--nx-focus-outline-inset) - var(--nx-focus-outline-width));
+        outline-offset: calc(0px - #{$-border-width} - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
       }
     }
   }
