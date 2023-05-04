@@ -205,7 +205,11 @@ const CssVariablesPage = () => {
             </NxWarningAlert>
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-border-width">
-            Standard border-width value used across multiple elements.
+            The standard border-width value.
+          </PropertyDocItem>
+          <PropertyDocItem propertyVar="--nx-border-width-alt">
+            An alternative border-width value that is identical to <NxCode>--nx-border-width</NxCode> in light mode,
+            but 1px thicker in dark mode.
           </PropertyDocItem>
           <PropertyDocItem propertyVar="--nx-focus-outline-width">
             The width of the outline when an element is focused.
