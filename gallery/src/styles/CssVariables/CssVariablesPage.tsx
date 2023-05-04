@@ -493,6 +493,9 @@ const CssVariablesPage = () => {
               The border color of <NxCode>NxGlobalSidebar</NxCode> link items on focus.
             </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-global-sidebar-link-icon">
+              The default color of the <NxCode>NxGlobalSidebar</NxCode> navigation link item icons.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-global-sidebar-link-icon-interactive">
               The color of the <NxCode>NxGlobalSidebar</NxCode> navigation link item icons on hover,
               activation, or selection.
             </ColorDocRow>
