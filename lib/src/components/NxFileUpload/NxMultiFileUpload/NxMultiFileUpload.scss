@@ -7,6 +7,8 @@
 
  @use '../../../scss-shared/nx-text-helpers';
 
+$-spacing-within-border: calc(var(--nx-spacing-6x) - var(--nx-border-width));
+
 .nx-multi-file-upload {
   height: 220px;
   width: 348px;
@@ -15,7 +17,7 @@
   &__container {
     align-items: flex-start;
     box-sizing: border-box;
-    border: var(--nx-border-default);
+    border: var(--nx-border-width) solid var(--nx-color-border);
     border-radius: var(--nx-border-radius);
     display: flex;
     flex-direction: column;
@@ -27,12 +29,12 @@
       flex: 1;
       list-style-type: none;
       margin: 0;
-      padding: var(--nx-spacing-6x);
+      padding: var(--nx-spacing-6x) $-spacing-within-border $-spacing-within-border $-spacing-within-border;
       width: 100%;
     }
 
     > .nx-btn {
-      margin: var(--nx-spacing-6x);
+      margin: $-spacing-within-border 0 var(--nx-spacing-6x) $-spacing-within-border;
     }
   }
 
