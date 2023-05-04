@@ -49,10 +49,11 @@
 
   --nx-border-radius: 6px;
 
-  --nx-border-default: 1px solid var(--nx-color-border);
+  --nx-border-width: 1px;
+  --nx-border-width-alt: 1px;
+  --nx-border-default: var(--nx-border-width) solid var(--nx-color-border);
   --nx-border-2x: 2px solid var(--nx-color-border);
   --nx-border-secondary: 1px solid var(--nx-color-border-secondary);
-  --nx-border-width: 1px;
 
   --nx-focus-outline-width: 2px;
   --nx-focus-outline-offset: 2px;
@@ -76,7 +77,7 @@
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-border-grid: var(--nx-border-default);
-    --nx-border-width: 2px;
+    --nx-border-width-alt: 2px;
 
     // for global sidebar
     --nx-focus-outline-offset-global-sidebar-link: 2px;

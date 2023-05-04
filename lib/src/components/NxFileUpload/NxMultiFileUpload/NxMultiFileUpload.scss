@@ -7,7 +7,7 @@
 
  @use '../../../scss-shared/nx-text-helpers';
 
-$-spacing-within-border: calc(var(--nx-spacing-6x) - var(--nx-border-width));
+$-spacing-within-border: calc(var(--nx-spacing-6x) - var(--nx-border-width-alt));
 
 .nx-multi-file-upload {
   height: 220px;
@@ -17,7 +17,7 @@ $-spacing-within-border: calc(var(--nx-spacing-6x) - var(--nx-border-width));
   &__container {
     align-items: flex-start;
     box-sizing: border-box;
-    border: var(--nx-border-width) solid var(--nx-color-border);
+    border: var(--nx-border-width-alt) solid var(--nx-color-border);
     border-radius: var(--nx-border-radius);
     display: flex;
     flex-direction: column;

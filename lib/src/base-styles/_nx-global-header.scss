@@ -11,7 +11,7 @@
 .nx-global-header {
   align-items: center;
   background-color: var(--nx-color-component-background);
-  border-bottom: var(--nx-border-width) solid var(--nx-color-global-header-border);
+  border-bottom: var(--nx-border-width-alt) solid var(--nx-color-global-header-border);
   display: flex;
   grid-area: header; // see nx-page's grid-template
   height: 42px;
