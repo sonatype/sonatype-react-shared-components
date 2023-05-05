@@ -104,9 +104,10 @@ describe('NxFileUpload', function() {
       const btnSelector = `${complexExampleSelector} .nx-selected-file__dismiss-btn`;
 
       it('has thick blue outline when focused', focusTest(complexExampleSelector, btnSelector));
-      it('has dark outline and dark background when hovered', hoverTest(complexExampleSelector, btnSelector));
+      it('has dark outline and dark background when hovered',
+          hoverTest(complexExampleSelector, btnSelector, true));
       it('has thick blue outline and dark background when hovered and focused',
-          focusAndHoverTest(complexExampleSelector, btnSelector));
+          focusAndHoverTest(complexExampleSelector, btnSelector, undefined, true));
       it('has normal outline and white background when clicked', clickTest(complexExampleSelector, btnSelector));
     });
   });
