@@ -67,7 +67,7 @@ describe('NxCheckbox', function() {
 
     it('has a blue outer border when focused', focusTest(labelSelector, undefined, OUTSET));
     it('has a blue outer border and a dark border when focused and hovered',
-        focusAndHoverTest(labelSelector, undefined, OUTSET));
+        focusAndHoverTest(labelSelector, undefined, undefined, OUTSET));
     it('shows overflow tooltips', hoverTest(exampleSelector, labelSelector, true, OUTSET));
   });
 

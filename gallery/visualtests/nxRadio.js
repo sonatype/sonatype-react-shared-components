@@ -72,7 +72,7 @@ describe('NxRadio', function() {
 
     it('has a blue outer border when focused', focusTest(simpleExampleLabelSelector, undefined, OUTSET));
     it('has a blue outer border and a dark border when focused and hovered',
-        focusAndHoverTest(simpleExampleLabelSelector, undefined, OUTSET)
+        focusAndHoverTest(simpleExampleLabelSelector, undefined, undefined, OUTSET)
     );
   });
 
