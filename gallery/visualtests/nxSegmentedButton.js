@@ -75,14 +75,6 @@ describe('NxSegmentedButton', function() {
         it('has a darker background and white inner outline when hovered and focused',
             openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector, true));
       });
-      // it('has a lighter blue background and white inner outline when opened',
-      //     openedTest(selector, dropdownBtnSelector));
-      // it('has a lighter blue background when opened and not focused',
-      //     openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector));
-      // it('has a darker background when hovered and focused when opened',
-      //     openedTest(selector, dropdownBtnSelector, null, true));
-      // it('has a darker background when hovered when opened',
-      //     openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector, true));
     });
 
     it('passes a11y checks when opened', async function() {
