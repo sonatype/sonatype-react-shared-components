@@ -107,7 +107,7 @@ describe('NxFileUpload', function() {
       it('has dark outline and dark background when hovered',
           hoverTest(complexExampleSelector, btnSelector, true));
       it('has thick blue outline and dark background when hovered and focused',
-          focusAndHoverTest(complexExampleSelector, btnSelector, undefined, true));
+          focusAndHoverTest(complexExampleSelector, btnSelector, true));
       it('has normal outline and white background when clicked', clickTest(complexExampleSelector, btnSelector));
     });
   });

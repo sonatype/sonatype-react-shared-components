@@ -349,7 +349,7 @@ module.exports = {
         };
       },
 
-      focusAndHoverTest(elementSelector, hoverSelector = elementSelector, outset, waitForTooltip = false) {
+      focusAndHoverTest(elementSelector, hoverSelector = elementSelector, waitForTooltip = false, outset) {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
