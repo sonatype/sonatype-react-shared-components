@@ -22,5 +22,9 @@
 
   &.open {
     background-color: var(--nx-color-interactive-background-selected);
+
+    &:hover:not(:active) {
+      background-color: var( --nx-color-interactive-background-hover);
+    }
   }
 }
