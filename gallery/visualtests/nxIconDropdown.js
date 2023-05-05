@@ -73,6 +73,37 @@ describe('NxIconDropdown', function() {
       await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 251, 346);
     });
 
+    it('has a grey background and blue border with expanded menu when hovered and focused', async function() {
+      const dropdownToggleSelector = `${defaultSelector} .nx-icon-dropdown__toggle`,
+          [targetElement, dropdownBtn] = await waitAndGetElements(defaultSelector, dropdownToggleSelector),
+          page = getPage();
+
+      await dropdownBtn.hover();
+
+      const { x, y } = await targetElement.boundingBox(),
+          pageScrollY = await page.evaluate(() => window.scrollY),
+          pageScrollX = await page.evaluate(() => window.scrollX);
+
+      await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 251, 346);
+    });
+
+    it('has a grey background with expanded menu when hovered', async function() {
+      const dropdownMenuItemSelector = `${defaultSelector} .nx-dropdown-menu .nx-dropdown-link:first-child`,
+          dropdownToggleSelector = `${defaultSelector} .nx-icon-dropdown__toggle`,
+          [targetElement, dropdownMenuItem, dropdownBtn] =
+            await waitAndGetElements(defaultSelector, dropdownMenuItemSelector, dropdownToggleSelector),
+          page = getPage();
+
+      await dropdownMenuItem.focus();
+      await dropdownBtn.hover();
+
+      const { x, y } = await targetElement.boundingBox(),
+          pageScrollY = await page.evaluate(() => window.scrollY),
+          pageScrollX = await page.evaluate(() => window.scrollX);
+
+      await checkScreenshotCoordinates(x + pageScrollX - 208, y + pageScrollY, 251, 346);
+    });
+
     it('shows overflow tooltip on dropdown menu item', async function() {
       const [example, menuItem] = await waitAndGetElements(
               defaultSelector,
