@@ -92,5 +92,6 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-syntax-highlighter": "^15.4.3"
-  }
+  },
+  "packageManager": "yarn@3.5.1"
 }
