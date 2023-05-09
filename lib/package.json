@@ -101,5 +101,6 @@
   "sideEffects": [
     "index.js",
     "*.scss"
-  ]
+  ],
+  "packageManager": "yarn@3.5.1"
 }
