@@ -2,3 +2,12 @@ node_modules
 dist
 webpack-modules
 test-results
+
+# Yarn 2+ recommended ignores (non-zero-installs)
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
