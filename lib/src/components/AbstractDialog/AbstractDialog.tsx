@@ -178,6 +178,13 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     // Set focus to first focusable element in this dialog if and only if
     // the focus is leaving from this dialog to something that is not inside a dialog modal.
     const handleFocusOut = (event: FocusEvent) => {
+      // Exit if relatedTarget is null
+      // this happens when focus goes out of the browser window
+      // or a browser alert is opened.
+      if (event.relatedTarget === null) {
+        return;
+      }
+
       const dialogEl = dialogRef.current;
       if (dialogEl) {
         const departingFocusIsInsideThisDialog = !!(
@@ -188,6 +195,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
           event.relatedTarget
           && (event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR)
         );
+
         // Focus is leaving from this dialog to something that is not inside a dialog modal.
         const focusIsLeavingDialogModal = departingFocusIsInsideThisDialog && !receivingFocusIsInsideAnyDialogModal;
         if (focusIsLeavingDialogModal) {
