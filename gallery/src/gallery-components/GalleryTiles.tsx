@@ -54,7 +54,7 @@ interface GalleryExampleTileProps extends GalleryBaseProps {
 // Component for a simple nx-tile with a specified title and contents
 export const GalleryTile: FunctionComponent<GalleryTileProps> =
   function GalleryTile({ className, id, title, actionButtons, children }) {
-    const tileClasses = classnames('nx-tile', className),
+    const tileClasses = classnames('nx-tile gallery-tile', className),
         routeParams = useParams<{ pageName: string }>();
 
     return (

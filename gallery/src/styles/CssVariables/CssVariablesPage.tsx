@@ -68,7 +68,7 @@ const CssVariablesPage = () => {
           naming schemes, depending on what type of value the variable holds.
         </NxP>
       </GalleryDescriptionTile>
-      <GalleryTile title="Spacing Properties">
+      <GalleryTile title="Spacing Properties" id="css-spacing-properties">
         <NxP>
           RSC has a set of spacing properties which are intended to be used for margin and padding values. They are
           not intended to be used for sizing of heights and widths. These properties are all simple multiples of
@@ -223,7 +223,7 @@ const CssVariablesPage = () => {
           </PropertyDocItem>
         </dl>
       </GalleryTile>
-      <GalleryTile title="Semantic Color Properties">
+      <GalleryTile title="Semantic Color Properties" id="css-semantic-color-properties">
         <NxP>
           RSC has a number of color defined in custom properties which are intended for specific purposes. These
           properties' names take the following form: <NxCode>--nx-color[-element?][-property?][-circumstance?]</NxCode>.
@@ -361,7 +361,7 @@ const CssVariablesPage = () => {
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
-      <GalleryTile title="Swatch Color Properties">
+      <GalleryTile title="Swatch Color Properties" id="swatch-color-properties">
         <NxP>
           While the color properties described in the previous section are higher-level, with specific semantics
           around their use, there is another set of lower level color properties defined in terms of color swatches and
@@ -369,7 +369,7 @@ const CssVariablesPage = () => {
           the <NxTextLink href="#/pages/Color%20Palettes">Color Palettes</NxTextLink> page.
         </NxP>
       </GalleryTile>
-      <GalleryTile title="SCSS Variables and Versioning Guarantees">
+      <GalleryTile title="SCSS Variables and Versioning Guarantees" id="scss-variables-versioning">
         <NxP>
           Previous versions of RSC defined a wide range of SCSS variables that were never properly delineated or
           documented in terms of which were public to downstream projects and which were internal to the library. In
@@ -380,7 +380,7 @@ const CssVariablesPage = () => {
           values are subject to change at any time.
         </NxP>
       </GalleryTile>
-      <GalleryTile title="Nomenclature: Custom Properties or Variables?">
+      <GalleryTile title="Nomenclature: Custom Properties or Variables?" id="nomenclature">
         <NxP>
           This same feature, the ability to define arbitrary named values in CSS using property names starting
           with <NxCode>--</NxCode>, and then referred to in <NxCode>var()</NxCode> expressions, is widely referred to
