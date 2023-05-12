@@ -25,8 +25,9 @@ describe('NxRadio', function() {
 
   const simpleExampleSelector = '#nx-radio-example .gallery-example-live',
       simpleExampleLabelSelector = '#nx-radio-example .gallery-example-live label:nth-of-type(3)',
-      disabledExampleLabelSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(1)',
-      disabledExampleLabelCheckedSelector = '#nx-radio-disabled-example .gallery-example-live label:nth-of-type(2)';
+      disabledExampleSelector = '#nx-radio-disabled-example .gallery-example-live',
+      disabledExampleLabelSelector = `${disabledExampleSelector} label:nth-of-type(1)`,
+      disabledExampleLabelCheckedSelector = `${disabledExampleSelector} label:nth-of-type(2)`;
 
   describe('Default NxRadio', function() {
 
@@ -71,12 +72,12 @@ describe('NxRadio', function() {
 
     it('has a blue outer border when focused', focusTest(simpleExampleLabelSelector, undefined, OUTSET));
     it('has a blue outer border and a dark border when focused and hovered',
-        focusAndHoverTest(simpleExampleLabelSelector, undefined, OUTSET)
+        focusAndHoverTest(simpleExampleLabelSelector, undefined, undefined, OUTSET)
     );
   });
 
   describe('Attribute-Disabled NxRadio and Attribute-Disabled-Checked', function() {
-    it('looks disabled by default', simpleTest(disabledExampleLabelSelector, OUTSET));
+    it('looks disabled by default', simpleTest(disabledExampleSelector, OUTSET));
   });
 
   describe('Attribute-Disabled NxRadio', function() {

@@ -35,8 +35,9 @@
     }
 
     &::after {
-      flex: 0;
+      color: var(--nx-color-text-stark);
       content: '/';
+      flex: 0;
       margin: 0 var(--nx-spacing-2x);
     }
 
@@ -52,7 +53,7 @@
     min-width: 0;
 
     &--current {
-      color: var(--nx-color-text-dark);
+      color: var(--nx-color-text-stark);
       font-weight: 600;
     }
   }

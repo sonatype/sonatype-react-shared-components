@@ -82,10 +82,10 @@
 
 %nx-code {
   @include monospace;
-  background-color: var(--nx-swatch-pink-97);
-  border: 1px solid var(--nx-swatch-pink-95);
+  background-color: var(--nx-color-code-background);
+  border: 1px solid var(--nx-color-code-border);
   border-radius: 4px;
-  color: var(--nx-swatch-grey-20);
+  color: var(--nx-color-code-text);
   // These paddings are added so the inline text matches the adjacent body text.
   padding: 4px 1px 0 1px;
   white-space: nowrap;
@@ -99,8 +99,8 @@
 
 %nx-pre {
   @include monospace;
-  background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-swatch-grey-10);
+  background-color: var(--nx-color-component-background);
+  border: 1px solid var(--nx-color-pre-border);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);
   font-size: var(--nx-font-size);
@@ -122,7 +122,7 @@
 
 %nx-blockquote {
   @include nx-container-helpers.container-vertical;
-  background-color: var(--nx-swatch-indigo-95);
+  background-color: var(--nx-color-blockquote-background);
   border: var(--nx-border-default);
   border-left-width: 8px;
   border-radius: var(--nx-border-radius);

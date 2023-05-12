@@ -9,8 +9,9 @@ import React from 'react';
 import { NxPageHeader } from '@sonatype/react-shared-components';
 
 const customLogo = require('../../assets/images/custom-logo.png');
+const customDarkLogo = require('../../assets/images/custom-logo-dark-mode.png');
 
 const SimplePageHeaderExample = () =>
-  <NxPageHeader logo={{ path: customLogo, alt: 'Custom Logo' }} />;
+  <NxPageHeader logo={{ path: customLogo, alt: 'Custom Logo', darkModePath: customDarkLogo }} />;
 
 export default SimplePageHeaderExample;

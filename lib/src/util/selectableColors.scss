@@ -4,10 +4,16 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-dark-mode-helpers';
+
 .nx-selectable-color--light-blue, // deprecated
 .nx-selectable-color--sky {
   --nx-selectable-color-dark: var(--nx-swatch-blue-80);
   --nx-selectable-color-light: var(--nx-swatch-blue-90);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-selectable-color-light: var(--nx-swatch-blue-95);
+  }
 }
 
 .nx-selectable-color--purple {
@@ -28,31 +34,58 @@
 .nx-selectable-color--red {
   --nx-selectable-color-dark: var(--nx-swatch-red-75);
   --nx-selectable-color-light: var(--nx-swatch-red-90);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-selectable-color-dark: var(--nx-swatch-red-70);
+  }
 }
 
 .nx-selectable-color--green, // deprecated
 .nx-selectable-color--turquoise {
   --nx-selectable-color-dark: var(--nx-swatch-turquoise-40);
   --nx-selectable-color-light: var(--nx-swatch-turquoise-95);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-selectable-color-light: var(--nx-swatch-turquoise-90);
+  }
 }
 
 .nx-selectable-color--orange {
   --nx-selectable-color-dark: var(--nx-swatch-orange-55);
   --nx-selectable-color-light: var(--nx-swatch-orange-90);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-selectable-color-dark: var(--nx-swatch-orange-65);
+  }
 }
 
 .nx-selectable-color--yellow {
   --nx-selectable-color-dark: var(--nx-swatch-yellow-60);
   --nx-selectable-color-light: var(--nx-swatch-yellow-95);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-selectable-color-dark: var(--nx-swatch-yellow-70);
+    --nx-selectable-color-light: var(--nx-swatch-yellow-90);
+  }
 }
 
 .nx-selectable-color--lime, // deprecated
 .nx-selectable-color--kiwi {
-  --nx-selectable-color-dark: var(--nx-swatch-green-80);
-  --nx-selectable-color-light: var(--nx-swatch-green-95);
+  --nx-selectable-color-dark: var(--nx-swatch-green-35);
+  --nx-selectable-color-light: var(--nx-swatch-green-90);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-selectable-color-dark: var(--nx-swatch-green-80);
+    --nx-selectable-color-light: var(--nx-swatch-green-95);
+  }
 }
 
 .nx-selectable-color--indigo {
   --nx-selectable-color-dark: var(--nx-swatch-indigo-70);
   --nx-selectable-color-light: var(--nx-swatch-indigo-95);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-selectable-color-dark: var(--nx-swatch-indigo-70);
+    --nx-selectable-color-light: var(--nx-swatch-indigo-95);
+  }
 }

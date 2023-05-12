@@ -8,32 +8,36 @@
 @use '../scss-shared/nx-text-helpers';
 
 %btn-focus-outline {
-  outline: 2px solid var(--nx-color-interactive-border-focus);
-  outline-offset: -5px;
+  outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+  outline-offset: calc(-1px - var(--nx-focus-outline-width) - var(--nx-focus-outline-offset));
 }
 
 .nx-btn-bar--pagination {
   justify-content: center;
 
   .nx-btn {
+    border: 1px solid var(--nx-color-tertiary-button-border);
     min-width: nx-pagination-variables.$pagination-button-height;
     margin: 0 var(--nx-spacing-2x) 0 0;
-    padding-left: calc(var(--nx-spacing-4x) - 1px);
-    padding-right: calc(var(--nx-spacing-4x) - 1px);
+    padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
 
     &:last-child {
       margin-right: 0;
     }
 
     &:last-child, &:first-child {
+      .nx-icon {
+        color: var(--nx-color-text-stark);
+      }
+
       &:hover {
         background-color: var(--nx-color-interactive-background-hover);
-        border-color: var(--nx-color-interactive-border-hover);
+        border-color: var(--nx-color-pagination-tertiary-border-hover);
       }
 
       &:active {
-        background-color: var(--nx-swatch-grey-95);
-        border-color: var(--nx-swatch-grey-20);
+        background-color: var(--nx-color-interactive-background-active);
+        border-color: var(--nx-color-pagination-tertiary-border-active);
         outline: none;
       }
 
@@ -57,31 +61,32 @@
 
   &:hover {
     background-color: var(--nx-color-interactive-background-hover);
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-pagination-tertiary-text-hover);
   }
 
   &:focus {
     @extend %btn-focus-outline;
-    outline-offset: -2px;
+    outline-offset: calc(0px - var(--nx-focus-outline-width));
   }
 
   &:active {
-    background-color: var(--nx-swatch-grey-95);
-    color: var(--nx-color-text);
+    background-color: var(--nx-color-interactive-background-active);
+    color: var(--nx-color-pagination-tertiary-text-active);
     outline: none;
   }
 
   &.selected {
     &, &:hover {
-      background-color: var(--nx-swatch-blue-40);
+      background-color: var(--nx-color-primary-button-background);
       border-color: transparent;
-      color: var(--nx-color-component-background);
+      color: var(--nx-color-primary-button-text);
       cursor: default;
+      font-weight: 600;
     }
 
     &:focus {
-      outline: 2px solid var(--nx-color-component-background);
-      outline-offset: -4px;
+      outline: var(--nx-focus-outline-width) solid var(--nx-color-primary-button-focus-outline);
+      outline-offset: calc(0px - var(--nx-focus-outline-width) - var(--nx-focus-outline-offset));
     }
   }
 }

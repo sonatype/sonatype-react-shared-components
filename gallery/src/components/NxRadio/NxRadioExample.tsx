@@ -22,9 +22,7 @@ export default function NxRadioExample() {
           Red
         </NxRadio>
         <NxRadio name="color" value="green" onChange={setColor} isChecked={color === 'green'} radioId="color-green">
-          <span style={{color: 'green'}}>Green</span>
-          {' '}
-          <em>(non-text children)</em>
+          Green <em>(non-text children)</em>
         </NxRadio>
         <NxRadio name="color" value="blue" onChange={setColor} isChecked={color === 'blue'} radioId="color-blue">
           Blue - but a very long and verbose blue that makes for a long label, so long that it should trigger ellipsis

@@ -6,6 +6,8 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
+@use '../scss-shared/nx-radio-checkbox-helpers';
 
 .nx-radio-checkbox {
   $max-width: 562px;
@@ -30,17 +32,18 @@
     cursor: pointer;
 
     .nx-radio-checkbox__control {
-      border-color: var(--nx-color-interactive-border-hover);
-      stroke: var(--nx-color-interactive-border-hover);
+      @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-interactive-border-hover));
     }
   }
 
   &:focus-within {
     .nx-checkbox__box, .nx-radio__focus {
       position: relative;
+
       &::after {
-        border: 2px solid var(--nx-color-interactive-border-focus);
+        border: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
         content: '';
+        box-sizing: border-box;
         display: block;
         position: absolute;
       }
@@ -48,12 +51,6 @@
 
     &:hover {
       .nx-radio-checkbox__control {
-        filter: none;
-      }
-
-      .nx-radio-checkbox__input:checked + .nx-radio-checkbox__control {
-        border-color: var(--nx-swatch-blue-40);
-        stroke: var(--nx-swatch-blue-40);
         filter: none;
       }
     }
@@ -70,40 +67,24 @@
   }
 }
 
-.nx-radio-checkbox__control {
-  background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-color-form-element-border);
-  flex-shrink: 0;
-  margin-right: var(--nx-spacing-2x);
+.nx-radio-checkbox--disabled {
+  &, &:hover {
+    cursor: default;
+  }
 }
 
-svg.nx-radio-checkbox__control {
-  border-style: none;
-  background: none;
-  fill: var(--nx-swatch-white);
-  stroke: var(--nx-color-form-element-border);
+.nx-radio-checkbox__control {
+  @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-interactive-border));
+
+  background-color: var(--nx-color-component-background);
+  border: 0;
+  flex-shrink: 0;
+  margin-right: var(--nx-spacing-2x);
 }
 
 .nx-radio-checkbox__content {
   @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
-}
-
-.nx-radio-checkbox--disabled {
-  &, &:hover {
-    cursor: default;
-
-    .nx-radio-checkbox__control {
-      background-color:var(--nx-color-interactive-background-disabled);
-      border-color: var(--nx-color-interactive-border-disabled);
-    }
-
-    svg.nx-radio-checkbox__control {
-      background: none;
-      fill: var(--nx-color-interactive-background-disabled);
-      stroke: var(--nx-color-interactive-border-disabled);
-    }
-  }
 }
 
 .nx-radio-checkbox__input {
@@ -120,26 +101,5 @@ svg.nx-radio-checkbox__control {
     vertical-align: 5px;
     width: 0;
     z-index: 0;
-  }
-
-  &:checked {
-    + .nx-radio-checkbox__control {
-      background-color: var(--nx-swatch-blue-40);
-      border-color: var(--nx-swatch-blue-40);
-
-      &:hover {
-        border-color: var(--nx-swatch-blue-40);
-      }
-    }
-
-    + svg.nx-radio-checkbox__control {
-      background: none;
-      fill: var(--nx-swatch-blue-40);
-      stroke: var(--nx-swatch-blue-40);
-
-      &:hover {
-        stroke: var(--nx-swatch-blue-40);
-      }
-    }
   }
 }

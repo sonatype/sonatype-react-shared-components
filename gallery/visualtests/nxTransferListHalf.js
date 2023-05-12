@@ -19,7 +19,8 @@ describe('NxTransferListHalf', function() {
     a11yTest,
     waitForSelectors,
     checkScreenshot,
-    checkScreenshotCoordinates
+    checkScreenshotCoordinates,
+    blurElement
   } = setupBrowser('#/pages/Transfer List Half');
 
   const wait1Sec = () => wait(1000);
@@ -80,6 +81,7 @@ describe('NxTransferListHalf', function() {
       const [input] = await waitAndGetElements(filterBoxSelector);
 
       await input.type('I');
+      await blurElement(input);
     });
 
     it('gives the move up button no tooltip of its own', hoverTest(complexListFullSelector, moveUpSelector, true));

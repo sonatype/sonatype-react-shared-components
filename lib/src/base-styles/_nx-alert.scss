@@ -5,27 +5,21 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
 
 /*
   #Alerts
 */
-@mixin close-btn-interaction-state($color, $hover-value: 80, $active-value: 90) {
-  &:hover {
-    background-color: var(--nx-swatch-#{$color}-#{$hover-value});
-  }
-  &:active {
-    background-color: var(--nx-swatch-#{$color}-#{$active-value});
-  }
-}
 
 .nx-alert {
   @include nx-container-helpers.container-horizontal;
 
   align-items: first baseline;
-  background-color: var(--nx-swatch-white);
-  border: 1px solid var(--nx-swatch-grey-05);
+  background-color: var(--nx-color-component-background);
+  border: 1px solid var(--nx-color-text-stark);
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
+  color: var(--nx-color-text);
   display: flex;
   margin: 16px 0 24px 0;
   padding: var(--nx-spacing-4x);
@@ -33,10 +27,35 @@
   max-width: var(--nx-width-text-wrapping);
 
   @each $type in warning, error, info, success {
-    &--#{$type} > .nx-icon {
-      color: var(--nx-color-alert-#{$type});
+    &--#{$type} {
+      border-color: var(--nx-color-alert-#{$type}-border);
+      background-color: var(--nx-color-alert-#{$type}-background);
+      color: var(--nx-color-alert-text);
+
+      > .nx-icon {
+        color: var(--nx-color-alert-#{$type}-icon);
+      }
+
+      > .nx-btn--close {
+        color: var(--nx-color-alert-close-btn);
+
+        &:hover {
+          background-color: var(--nx-color-alert-#{$type}-close-btn-hover);
+          color: var(--nx-color-alert-close-btn);
+        }
+
+        &:focus:not(:active) {
+          outline-color: var(--nx-color-alert-close-btn-focus);
+        }
+
+        &:active {
+          background-color: var(--nx-color-alert-#{$type}-close-btn-active);
+          color: var(--nx-color-alert-close-btn);
+        }
+      }
     }
   }
+
   > .nx-icon {
     // replicate the vertical-alignment that fontawesome icons usually have.  vertical-align itself has
     // no effect here so we use relative positioning instead
@@ -75,41 +94,22 @@
 
   flex-grow: 1;
   overflow-wrap: anywhere;
-}
 
-.nx-alert--warning {
-  background-color: var(--nx-swatch-orange-97);
-  border-color: var(--nx-swatch-orange-40);
+  .nx-text-link {
+    color: var(--nx-color-alert-link);
 
-  > .nx-btn--close {
-    @include close-btn-interaction-state("orange");
-  }
-}
+    &:focus {
+      outline-color: var(--nx-color-alert-link-focus);
+      color: var(--nx-color-alert-link);
+    }
 
-.nx-alert--error {
-  background-color: var(--nx-swatch-red-95);
-  border-color: var(--nx-color-alert-error);
+    &:hover {
+      color: var(--nx-color-alert-link-hover);
+    }
 
-  > .nx-btn--close {
-    @include close-btn-interaction-state("red");
-  }
-}
-
-.nx-alert--info {
-  background-color: var(--nx-swatch-blue-95);
-  border-color: var(--nx-color-alert-info);
-
-  > .nx-btn--close {
-    @include close-btn-interaction-state("blue");
-  }
-}
-
-.nx-alert--success {
-  background-color: var(--nx-swatch-green-95);
-  border-color: var(--nx-color-alert-success);
-
-  > .nx-btn--close {
-    @include close-btn-interaction-state("green", 75, 85);
+    &:active, &:active:focus {
+      color: var(--nx-color-alert-link-active);
+    }
   }
 }
 

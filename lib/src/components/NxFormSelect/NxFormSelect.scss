@@ -6,9 +6,11 @@
  */
 @use '../../scss-shared/nx-text-helpers';
 
+$-border-width: 1px;
+
 %focus-outline {
-  outline: 2px solid var(--nx-color-interactive-border-focus);
-  outline-offset: -5px;
+  outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+  outline-offset: calc(0px - #{$-border-width} - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
 }
 
 .nx-form-select {
@@ -31,8 +33,8 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: var(--nx-swatch-white);
-    border: 1px solid var(--nx-color-form-element-border);
+    background-color: var(--nx-color-component-background);
+    border: $-border-width solid var(--nx-color-interactive-border);
     border-radius: var(--nx-border-radius);
     color: var(--nx-color-text);
     font-size: var(--nx-font-size);
@@ -46,7 +48,7 @@
     width: 100%;
 
     &:hover {
-      border-color: var(--nx-color-form-element-border);
+      border-color: var(--nx-color-interactive-border);
     }
 
     &:focus {
@@ -105,7 +107,7 @@
       }
 
       .nx-form-select__caret {
-        color: var(--nx-color-validation-valid);
+        color: var(--nx-color-validation-valid-icon);
       }
     }
 
@@ -115,7 +117,7 @@
       }
 
       .nx-form-select__caret {
-        color: var(--nx-color-validation-invalid);
+        color: var(--nx-color-validation-invalid-icon);
       }
     }
   }

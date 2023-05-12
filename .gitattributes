@@ -1,1 +1,2 @@
 gallery/visualtests/__image_snapshots__/* filter=lfs diff=lfs merge=lfs -text
+gallery/visualtests/__image_snapshots_dark__/* filter=lfs diff=lfs merge=lfs -text
