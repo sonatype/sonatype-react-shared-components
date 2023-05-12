@@ -4,6 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../scss-shared/nx-dark-mode-helpers';
+
 :root {
   // page dimensions
   --nx-width-page-max: 1600px;
@@ -47,14 +49,48 @@
 
   --nx-border-radius: 6px;
 
-  --nx-border-default: 1px solid var(--nx-color-border);
+  --nx-border-width: 1px;
+  --nx-border-width-alt: 1px;
+  --nx-border-default: var(--nx-border-width) solid var(--nx-color-border);
   --nx-border-2x: 2px solid var(--nx-color-border);
   --nx-border-secondary: 1px solid var(--nx-color-border-secondary);
 
-  // for dropdown 
+  --nx-focus-outline-width: 2px;
+  --nx-focus-outline-offset: 2px;
+
+  // for nx-grid
+  --nx-border-grid: var(--nx-border-2x);
+
+  // for dropdown
   --nx-box-shadow-dropdown: 0 2px 12px 0 rgba(74, 77, 113, 0.2),
                             0 1px 2px 0 rgba(91, 95, 141, 0.2),
                             0 1px 1px 0 rgba(124, 128, 179, 0.2);
+
+  // for global sidebar
+  --nx-focus-outline-offset-global-sidebar-link: 0px;
+  --nx-focus-outline-offset-global-sidebar-toggle: 1px;
+  --nx-border-width-global-sidebar: 0px;
+
+  //NxTable
+  --nx-outline-width-table-row-hover: 2px;
+
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-border-grid: var(--nx-border-default);
+    --nx-border-width-alt: 2px;
+
+    // for global sidebar
+    --nx-focus-outline-offset-global-sidebar-link: 2px;
+    --nx-focus-outline-offset-global-sidebar-toggle: 0px;
+    --nx-border-width-global-sidebar: 1px;
+
+    --nx-outline-width-table-row-hover: 0px;
+
+    // for dropdown
+    --nx-box-shadow-dropdown: 0 2px 12px 0 Hsla(231, 43%, 15%, 0.75),
+                              0 1px 2px 0 Hsla(231, 41%, 10%, 0.75),
+                              0 1px 1px 0 Hsla(229, 44%, 5%, 0.75);
+  }
 
   // Deprecated variables
   --nx-border-subsection: 1px solid var(--nx-color-subsection-border);

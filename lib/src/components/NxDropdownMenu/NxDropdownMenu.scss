@@ -12,7 +12,7 @@
 .nx-dropdown-menu {
   @include nx-container-helpers.container-vertical;
 
-  background: var(--nx-swatch-white);
+  background: var(--nx-color-dropdown-menu-background);
   border-radius: var(--nx-border-radius);
   box-shadow: var(--nx-box-shadow-dropdown);
   box-sizing: border-box;
@@ -47,8 +47,8 @@
   &:focus {
     background-color: transparent;
     border-radius: 0;
-    outline-offset: -2px;
-    outline: 2px solid var(--nx-color-interactive-border-focus);
+    outline-offset: calc(0px - var(--nx-focus-outline-offset));
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
   }
 }
 
@@ -62,12 +62,12 @@
   width: 100%;
 
   &:hover {
-    background-color: var(--nx-color-interactive-background-hover);
-    color: var(--nx-color-text-dark);
+    background-color: var(--nx-color-dropdown-menu-background-hover);
+    color: var(--nx-color-dropdown-menu-text-hover);
   }
 
   &:active {
-    background-color: var(--nx-color-interactive-background-active);
+    background-color: var(--nx-color-dropdown-menu-background-active);
     outline: none;
   }
 

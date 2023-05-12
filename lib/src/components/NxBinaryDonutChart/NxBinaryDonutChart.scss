@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-binary-donut-chart {
   height: 30px;
@@ -11,12 +12,12 @@
 }
 
 .nx-binary-donut-chart__background {
-  fill: var(--nx-swatch-indigo-95);
+  fill: var(--nx-color-progress-background);
   fill-rule: evenodd;
-  stroke: var(--nx-swatch-white);
+  stroke: var(--nx-color-component-background);
   stroke-width: 1;
 }
 
 .nx-binary-donut-chart__arc {
-  stroke: var(--nx-swatch-teal-60);
+  stroke: var(--nx-color-progress-fill);
 }

@@ -1,0 +1,113 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../scss-shared/nx-dark-mode-helpers';
+
+%nx-tag-hover-style {
+  --nx-color-tag-selected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-selected-hover-background: var(--nx-selectable-color-dark);
+  --nx-color-tag-unselected-hover-border: var(--nx-color-interactive-border-hover);
+  --nx-color-tag-unselected-hover-background: var(--nx-selectable-color-light);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-border: var(--nx-color-tag-selected-hover-background);
+    --nx-color-tag-unselected-hover-border: var(--nx-selectable-color-dark);
+  }
+}
+
+.nx-selectable-color--light-blue, // deprecated
+.nx-selectable-color--sky {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-blue-75);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-blue-90);
+  }
+}
+
+.nx-selectable-color--purple {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-purple-75);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-purple-90);
+  }
+}
+
+.nx-selectable-color--pink {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-pink-75);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-pink-90);
+  }
+}
+
+.nx-selectable-color--blue {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-teal-40);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-teal-85);
+  }
+}
+
+.nx-selectable-color--red {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-red-65);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-red-85);
+  }
+}
+
+.nx-selectable-color--green, // deprecated
+.nx-selectable-color--turquoise {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-turquoise-35);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-turquoise-80);
+  }
+}
+
+.nx-selectable-color--orange {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-orange-60);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-orange-80);
+  }
+}
+
+.nx-selectable-color--yellow {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-yellow-60);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-yellow-80);
+  }
+
+}
+
+.nx-selectable-color--lime, // deprecated
+.nx-selectable-color--kiwi {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-green-75);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-green-90);
+  }
+}
+
+.nx-selectable-color--indigo {
+  @extend %nx-tag-hover-style;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-color-tag-selected-hover-background: var(--nx-swatch-indigo-65);
+    --nx-color-tag-unselected-hover-background: var(--nx-swatch-indigo-85);
+  }
+}

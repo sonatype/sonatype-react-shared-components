@@ -1,0 +1,13 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+// We are using box-shadow below instead of border
+// so we do not have to re-calculate the focus Pseudo-element in NxRadio and NxCheckbox
+// when the width changes in dark mode.
+@mixin inset-box-shadow($color, $border-width: var(--nx-border-width-alt)) {
+  box-shadow: inset 0 0 0 #{$border-width} #{$color};
+}

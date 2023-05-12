@@ -6,6 +6,7 @@
  */
 @use '../scss-shared/nx-container-helpers';
 @use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
 
 $-nx-scrollable-default-height: 400px;
 
@@ -46,4 +47,11 @@ $-nx-scrollable-default-height: 400px;
 
 .nx-blockquote {
   @extend %nx-blockquote;
+}
+
+:root {
+  @include nx-dark-mode-helpers.dark-mode {
+    // turn native controls like scrollbars dark
+    color-scheme: dark;
+  }
 }

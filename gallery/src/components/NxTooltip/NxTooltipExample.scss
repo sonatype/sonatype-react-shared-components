@@ -4,8 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use '~@sonatype/react-shared-components/scss-shared/nx-dark-mode-helpers';
+
 // Tooltip override classes should always be combined with `.nx-tooltip` to overcome the specificity of
 // the tooltip library's built-in styles
 .nx-tooltip.gallery-tooltip-example {
   color: tan;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    color: sienna;
+  }
 }

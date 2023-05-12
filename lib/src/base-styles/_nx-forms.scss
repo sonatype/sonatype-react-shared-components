@@ -18,7 +18,7 @@
 
   &__required-field-notice {
     font-weight: 600;
-    color: var(--nx-color-text-dark);
+    color: var(--nx-color-text-stark);
   }
 
   &__validation-errors {
@@ -104,7 +104,7 @@
   @include nx-text-helpers.bold;
   @include nx-container-helpers.container-horizontal;
 
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-text-stark);
   cursor: default;
   display: block;
   margin-bottom: var(--nx-spacing-2x);

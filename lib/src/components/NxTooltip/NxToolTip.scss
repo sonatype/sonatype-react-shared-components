@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-tooltip {
   // for specificity
@@ -12,8 +13,9 @@
     @include nx-text-helpers.semi-bold;
 
     box-sizing: border-box;
-    background-color: var(--nx-swatch-grey-20);
+    background-color: var( --nx-color-tooltip-background);
     border-radius: var(--nx-border-radius);
+    color: var(--nx-color-tooltip-text);
     font-size: var(--nx-font-size-s);
     line-height: var(--nx-line-height);
     max-width: 600px;

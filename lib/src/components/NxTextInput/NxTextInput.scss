@@ -5,6 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
+
+$-border-width: 1px;
 
 .nx-text-input {
   display: inline-block;
@@ -19,8 +22,8 @@
     @include nx-container-helpers.container-horizontal;
 
     align-items: center;
-    background-color: var(--nx-swatch-white);
-    border: 1px solid var(--nx-color-form-element-border);
+    background-color: var(--nx-color-component-background);
+    border: $-border-width solid var(--nx-color-interactive-border);
     border-radius: var(--nx-border-radius);
     display: flex;
     padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
@@ -60,7 +63,11 @@
     }
 
     &::placeholder {
-      color: var(--nx-swatch-grey-40);
+      color: var(--nx-color-text-placeholder);
+    }
+
+    &[disabled] {
+      color: var(--nx-color-text-disabled);
     }
   }
 
@@ -102,8 +109,8 @@
 
     &:focus-within {
       .nx-text-input__box {
-        outline: 2px solid var(--nx-color-interactive-border-focus);
-        outline-offset: -5px;
+        outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+        outline-offset: calc(0px - #{$-border-width} - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
       }
     }
   }
@@ -120,7 +127,12 @@
       &::placeholder {
         color: var(--nx-color-text-disabled);
       }
+
+      &::-webkit-datetime-edit {
+        color: var(--nx-color-text-disabled);
+      }
     }
+
     .nx-icon {
       display: none;
     }
@@ -135,11 +147,11 @@
   }
 
   .nx-icon--invalid {
-    color: var(--nx-color-validation-invalid);
+    color: var(--nx-color-validation-invalid-icon);
   }
 
   .nx-icon--valid {
-    color: var(--nx-color-validation-valid);
+    color: var(--nx-color-validation-valid-icon);
   }
 }
 

@@ -43,18 +43,25 @@ type GalleryTileProps = PropsWithRequiredChildren & GalleryBaseProps & {
 
 type StringOrCodeExampleProps = string | CodeExampleProps;
 
-interface GalleryExampleTileProps extends GalleryBaseProps {
+interface GalleryExampleTileBaseProps extends GalleryBaseProps {
   children: ReactNode;
+}
+
+interface GalleryExampleTileProps extends GalleryExampleTileBaseProps {
   liveExample?: JSXElementConstructor<Record<string, never>>;
   htmlExample?: string;
-  codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
   defaultCheckeredBackground?: boolean;
+  codeExamples: StringOrCodeExampleProps | StringOrCodeExampleProps[];
+}
+
+interface GalleryIframeExampleTileProps extends GalleryExampleTileBaseProps {
+  html: string;
 }
 
 // Component for a simple nx-tile with a specified title and contents
 export const GalleryTile: FunctionComponent<GalleryTileProps> =
   function GalleryTile({ className, id, title, actionButtons, children }) {
-    const tileClasses = classnames('nx-tile', className),
+    const tileClasses = classnames('nx-tile gallery-tile', className),
         routeParams = useParams<{ pageName: string }>();
 
     return (
@@ -152,6 +159,35 @@ export const GalleryExampleTile: FunctionComponent<GalleryExampleTileProps> =
             </NxAccordion.Header>
             {codeExampleElements}
             <GalleryTileFooter clipboardContent={codeExampleElements[0].props.content}/>
+          </NxStatefulAccordion>
+        </NxTile.Content>
+      </GalleryTile>
+    );
+  };
+
+export const GalleryIframeExampleTile: FunctionComponent<GalleryIframeExampleTileProps> =
+  function GalleryExampleTile(props: GalleryIframeExampleTileProps) {
+    const { id, children, className, title, html } = props,
+
+        tileClasses = classnames('gallery-example', className),
+        codeExampleElement = <CodeExample content={html} />;
+
+    return (
+      <GalleryTile id={id}
+                   title={title}
+                   className={tileClasses}>
+        <NxTile.Content className="gallery-example">
+          <p className="nx-p">{children}</p>
+          <iframe className="gallery-example-iframe" title={title} srcDoc={html} />
+        </NxTile.Content>
+
+        <NxTile.Content className="nx-tile-content--accordion-container">
+          <NxStatefulAccordion className="gallery-code-accordion">
+            <NxAccordion.Header>
+              <h2 className="nx-accordion__header-title">Example Code</h2>
+            </NxAccordion.Header>
+            {codeExampleElement}
+            <GalleryTileFooter clipboardContent={html}/>
           </NxStatefulAccordion>
         </NxTile.Content>
       </GalleryTile>
