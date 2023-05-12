@@ -5,25 +5,25 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { ReactNode, useEffect, useState } from 'react';
-import { NxTextLink, NxP, NxCode, NxList, NxWarningAlert, NxTable } from '@sonatype/react-shared-components';
+import { NxTextLink, NxP, NxCode, NxWarningAlert, NxTable, NxDescriptionList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
 
 import './CssVariablesPage.scss';
 
 const SpacingDemo = ({ spacingVar }: { spacingVar: string }) =>
-  <NxList.Item>
-    <NxList.DescriptionTerm><NxCode>{spacingVar}</NxCode></NxList.DescriptionTerm>
-    <NxList.Description>
+  <NxDescriptionList.Item>
+    <NxDescriptionList.Term><NxCode>{spacingVar}</NxCode></NxDescriptionList.Term>
+    <NxDescriptionList.Description>
       <div className="gallery-spacing-demo" style={{ width: `var(${spacingVar})` }} />
-    </NxList.Description>
-  </NxList.Item>;
+    </NxDescriptionList.Description>
+  </NxDescriptionList.Item>;
 
 const PropertyDocItem = ({ propertyVar, children }: { propertyVar: string, children: ReactNode }) =>
-  <NxList.Item>
-    <NxList.DescriptionTerm><NxCode>{propertyVar}</NxCode></NxList.DescriptionTerm>
-    <NxList.Description>{children}</NxList.Description>
-  </NxList.Item>;
+  <NxDescriptionList.Item>
+    <NxDescriptionList.Term><NxCode>{propertyVar}</NxCode></NxDescriptionList.Term>
+    <NxDescriptionList.Description>{children}</NxDescriptionList.Description>
+  </NxDescriptionList.Item>;
 
 const ColorDocRow = ({ colorVar, children }: { colorVar: string, children: ReactNode }) =>
   <NxTable.Row>
@@ -77,7 +77,7 @@ const CssVariablesPage = () => {
           as the <NxCode>--nx-spacing-base</NxCode> custom property. The others all follow a similar pattern
           but with a "<NxCode>multiplier</NxCode>x" suffix instead of "base", as seen in the sizing chart below:
         </NxP>
-        <dl className="nx-list nx-list--description-list">
+        <NxDescriptionList>
           <SpacingDemo spacingVar="--nx-spacing-base" />
           <SpacingDemo spacingVar="--nx-spacing-2x" />
           <SpacingDemo spacingVar="--nx-spacing-3x" />
@@ -87,7 +87,7 @@ const CssVariablesPage = () => {
           <SpacingDemo spacingVar="--nx-spacing-12x" />
           <SpacingDemo spacingVar="--nx-spacing-16x" />
           <SpacingDemo spacingVar="--nx-spacing-20x" />
-        </dl>
+        </NxDescriptionList>
       </GalleryTile>
       <GalleryTile title="Property Value Properties" id="css-property-values-tile">
         <NxP>
@@ -95,7 +95,7 @@ const CssVariablesPage = () => {
           pattern consisting of the <NxCode>--nx-</NxCode> prefix, the name of the property to which they apply, and
           then the name of the element and/or situation to which they apply. These variables are as follows:
         </NxP>
-        <dl className="nx-list nx-list--description-list">
+        <NxDescriptionList>
           <PropertyDocItem propertyVar="--nx-width-page-max">
             The maximum content width in Legacy Page Header based page layouts. In those layouts, when the viewport
             is wider than this value, the page content area (including any sidebar) will stay at this width and
@@ -248,7 +248,7 @@ const CssVariablesPage = () => {
             The distance that the focus outline should be inset with the <NxCode>NxGlobalSidebar</NxCode>
             toggle button.
           </PropertyDocItem>
-        </dl>
+        </NxDescriptionList>
       </GalleryTile>
       <GalleryTile title="Semantic Color Properties">
         <NxP>
