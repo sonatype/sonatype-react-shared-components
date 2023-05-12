@@ -29,7 +29,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
     function NxCheckbox(props, ref) {
       const {
             className,
-            onChange,
+            onChange: onChangeProp,
             isChecked,
             disabled,
             checkboxId,
@@ -55,6 +55,8 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
           unfilteredInputAttributes
       );
 
+      const onChange = onChangeProp ? () => { onChangeProp(!isChecked); } : undefined;
+
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
@@ -63,7 +65,7 @@ const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
                  disabled={!!disabled}
                  checked={isChecked}
                  readOnly={!onChange}
-                 onChange={onChange || undefined}
+                 onChange={onChange}
                  { ...otherInputAttributes } />
           <span className="nx-radio-checkbox__control nx-checkbox__box">
             { isChecked ?
