@@ -50,24 +50,35 @@ describe('NxTag', function() {
   });
 
   describe('NxSelectableTag', function() {
-    const selector = '#nx-selectable-tag-example .nx-tag:first-child',
-        inputSelector = `${selector} input`;
+    function runNxSelectableTagTests(selectableColor) {
+      const selector = `#nx-selectable-tag-example .nx-selectable-color--${selectableColor}`,
+          inputSelector = `${selector} input`;
 
-    it('has a lighter background and darker border by default', simpleTest(selector));
-    it('has a dark grey border when hovered', hoverTest(selector));
-    it('has a blue outline when focused', focusTest(selector, undefined, OUTSET));
-    it('has a blue outline and dark grey border when focused and hovered',
-        focusAndHoverTest(selector, undefined, OUTSET));
+      it('has a lighter background and darker border by default', simpleTest(selector));
+      it('has a dark grey border when hovered', hoverTest(selector));
+      it('has a blue outline when focused', focusTest(selector, undefined, OUTSET));
+      it('has a blue outline and dark grey border when focused and hovered',
+          focusAndHoverTest(selector, undefined, OUTSET));
 
-    it('has a darker background and no border when selected', async function() {
-      const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
+      it('has a darker background and no border when selected', async function () {
+        const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
 
-      await targetElement.click();
-      //remove focus from tag for snapshot
-      await blurElement(inputElement);
-      await moveMouseAway();
+        await targetElement.click();
+        //remove focus from tag for snapshot
+        await blurElement(inputElement);
+        await moveMouseAway();
 
-      await checkScreenshot(targetElement);
+        await checkScreenshot(targetElement);
+      });
+    }
+
+    const selectableColors =
+      ['purple', 'pink', 'blue', 'red', 'turquoise', 'orange', 'yellow', 'kiwi', 'sky', 'indigo'];
+
+    selectableColors.forEach(color => {
+      describe(color, function() {
+        runNxSelectableTagTests(color);
+      });
     });
   });
 
