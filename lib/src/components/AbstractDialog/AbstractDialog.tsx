@@ -191,10 +191,8 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
           event.target
           && (event.target as HTMLElement).closest(DIALOG_MODAL_SELECTOR) === dialogEl
         );
-        const receivingFocusIsInsideAnyDialogModal = !!(
-          event.relatedTarget
-          && (event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR)
-        );
+        const receivingFocusIsInsideAnyDialogModal =
+          !!(event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR);
 
         // Focus is leaving from this dialog to something that is not inside a dialog modal.
         const focusIsLeavingDialogModal = departingFocusIsInsideThisDialog && !receivingFocusIsInsideAnyDialogModal;
