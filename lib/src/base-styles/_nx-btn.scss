@@ -31,7 +31,7 @@
   }
 }
 
-.nx-btn, .nx-btn[href] {
+.nx-btn, a.nx-btn {
   @include nx-text-helpers.semi-bold;
   @include nx-container-helpers.container-horizontal;
 
@@ -70,46 +70,45 @@
   &.hidden {
     visibility: hidden;
   }
-}
 
+  &--primary {
+    @include solid-btn-styling("primary");
+  }
+
+  &--tertiary {
+    background-color: transparent;
+    border-color: var(--nx-color-tertiary-button-border);
+    color: var(--nx-color-tertiary-button-text);
+
+    &:hover {
+      background-color: var(--nx-color-tertiary-button-background-hover);
+      color: var(--nx-color-tertiary-button-text);
+    }
+
+    &:focus:not(:active) {
+      outline-color: var(--nx-color-tertiary-button-focus-outline);
+    }
+
+    &:active {
+      background-color: var(--nx-color-tertiary-button-background-active);
+      border-color: var(--nx-color-tertiary-button-border-active);
+      color: var(--nx-color-tertiary-button-text);
+    }
+  }
+
+  &--error {
+    @include solid-btn-styling("error");
+
+    .nx-icon {
+      color: var(--nx-color-error-button-text);
+      height: 16px;
+    }
+  }
+}
 
 .nx-btn, .nx-segmented-btn, .nx-icon-dropdown {
   + .nx-btn, + .nx-segmented-btn, + .nx-icon-dropdown {
     margin-left: 0;
-  }
-}
-
-.nx-btn--primary, .nx-btn--primary[href] {
-  @include solid-btn-styling("primary");
-}
-
-.nx-btn--tertiary, .nx-btn--tertiary[href] {
-  background-color: transparent;
-  border-color: var(--nx-color-tertiary-button-border);
-  color: var(--nx-color-tertiary-button-text);
-
-  &:hover {
-    background-color: var(--nx-color-tertiary-button-background-hover);
-    color: var(--nx-color-tertiary-button-text);
-  }
-
-  &:focus:not(:active) {
-    outline-color: var(--nx-color-tertiary-button-focus-outline);
-  }
-
-  &:active {
-    background-color: var(--nx-color-tertiary-button-background-active);
-    border-color: var(--nx-color-tertiary-button-border-active);
-    color: var(--nx-color-tertiary-button-text);
-  }
-}
-
-.nx-btn--error, .nx-btn--error[href] {
-  @include solid-btn-styling("error");
-
-  .nx-icon {
-    color: var(--nx-color-error-button-text);
-    height: 16px;
   }
 }
 
