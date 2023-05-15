@@ -6,6 +6,7 @@
  */
 @use 'sass:math';
 @use '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
+@use '~@sonatype/react-shared-components/scss-shared/nx-dark-mode-helpers';
 
 .gallery-example-section {
   margin: 15px 0;
@@ -26,11 +27,20 @@
   font-family: Courier Prime, sans-serif !important;
 }
 
+.gallery-example-iframe {
+  border-style: none;
+  width: 100%;
+  height: 120px;
+}
+
 .gallery-example--checkered-background {
   .gallery-example-live {
+    --gallery-checker-color: #e9e9e9;
+    --gallery-checker-bg-color: #f9f9f9;
+
     $checker-size: 12px;
-    $checker-color: #e9e9e9;
-    $checker-bg-color: #f9f9f9;
+    $checker-color: var(--gallery-checker-color);
+    $checker-bg-color: var(--gallery-checker-bg-color);
     $checker-dimensions: $checker-size $checker-size;
     $checker-layer-1-position: top left;
     $checker-layer-2-position: #{math.div($checker-size, 2)} #{math.div($checker-size, 2)};
@@ -43,6 +53,11 @@
     background: repeat $checker-layer-2-position/$checker-dimensions $checker-gradient,
                 repeat $checker-layer-1-position/$checker-dimensions $checker-gradient,
                 $checker-bg-color;
+
+    @include nx-dark-mode-helpers.dark-mode {
+      --gallery-checker-color: var(--nx-swatch-black);
+      --gallery-checker-bg-color: var(--nx-swatch-indigo-20);
+    }
   }
 }
 
@@ -107,6 +122,10 @@
   flex-shrink: 0;
   height: 64px;
   width: 64px;
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --shadow-color: var(--nx-swatch-indigo-05);
+  }
 }
 
 .gallery-color-sample__selectable-light {
@@ -162,19 +181,19 @@
       display: none;
     }
   }
-  
+
   &.gallery-aa-hidden {
     .gallery-level-aa {
       display: none;
     }
   }
-  
+
   &.gallery-aaa-hidden {
     .gallery-level-aaa {
       display: none;
     }
   }
-  
+
   &.gallery-reco-hidden {
     .gallery-level-reco {
       display: none;

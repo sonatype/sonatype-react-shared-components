@@ -70,11 +70,14 @@ const NxPageHeaderPage = () =>
             <NxTable.Cell>Object</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Optional data with which to construct an alternative logo image. If specified, should be an object
-              containing a <NxCode>path</NxCode> to be used as the image's <NxCode>src</NxCode> URL, and
-              an <NxCode>alt</NxCode> property to be used as the image's alt text.  This image
-              should have a height of 21px and a width no greater than 160px. Additionally the image should
-              have a transparent background and content that is easily visible over light colored backgrounds.
+              Optional data with which to construct an alternative logo image. If specified, it should be an object
+              containing a <NxCode>path</NxCode> to be used as the light mode image’s <NxCode>src</NxCode> URL,
+              an <NxCode>alt</NxCode> property to be used as the image’s alt text, and optionally a
+              {' '}<NxCode>darkModePath</NxCode> to be used as the dark mode image’s <NxCode>src</NxCode> URL. Failing
+              to provide the <NxCode>darkModePath</NxCode> will result in a default dark mode logo image. The image(s)
+              should have a height of 21px and a width no greater than 160px. Additionally, the image(s) provided should
+              have a transparent background and content that is easily visible over the designated light or dark
+              background.
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
@@ -164,7 +167,7 @@ const NxPageHeaderPage = () =>
                         codeExamples={complexPageHeaderExampleCode}
                         liveExample={ComplexPageHeaderExample}>
       An instance of <NxCode>NxPageHeader</NxCode> which includes all features
-      at once.
+      at once. It features a custom logo without the <NxCode>darkModePath</NxCode> provided.
     </GalleryExampleTile>
   </>;
 

@@ -17,7 +17,7 @@
 .nx-grid-col {
   @include nx-container-helpers.container-vertical;
 
-  border-left: var(--nx-border-2x);
+  border-left: var(--nx-border-grid);
   box-sizing: border-box;
   flex: 1 0;
   overflow-x: hidden;

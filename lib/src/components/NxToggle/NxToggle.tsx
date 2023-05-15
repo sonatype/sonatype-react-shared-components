@@ -18,7 +18,7 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
     function NxToggle(props, ref) {
       const {
         className,
-        onChange,
+        onChange: onChangeProp,
         isChecked,
         disabled,
         inputId,
@@ -46,6 +46,8 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
       const toggleIndicator =
         <NxFontAwesomeIcon icon={isChecked ? faCheckCircle : faTimesCircle} className="nx-toggle__indicator" />;
 
+      const onChange = onChangeProp ? () => { onChangeProp(!isChecked); } : undefined;
+
       return (
         <label { ...otherProps } ref={ref} className={labelClasses}>
           <input type="checkbox"
@@ -54,7 +56,7 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
                  disabled={!!disabled}
                  checked={isChecked}
                  readOnly={!onChange}
-                 onChange={onChange || undefined}
+                 onChange={onChange}
                  role="switch"
                  aria-checked={isChecked}
                  { ...otherInputAttributes } />

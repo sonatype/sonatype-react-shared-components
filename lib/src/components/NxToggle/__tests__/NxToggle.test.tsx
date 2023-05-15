@@ -48,15 +48,21 @@ describe('NxToggle', function() {
     }
   });
 
-  it('calls its onChange prop when the checkbox is clicked', async function() {
-    const user = userEvent.setup();
-    const onChange = jest.fn();
+  it('calls its onChange prop with the inverse of isChecked when the input is clicked', async function() {
+    const user = userEvent.setup(),
+        uncheckedOnChange = jest.fn(),
+        checkedOnChange = jest.fn(),
+        uncheckedInput = quickRender({ onChange: uncheckedOnChange }).getByRole('switch'),
+        checkedInput = quickRender({ isChecked: true, onChange: checkedOnChange }).getByRole('switch');
 
-    const checkbox = quickRender({ onChange }).getByRole('switch');
+    expect(uncheckedOnChange).not.toHaveBeenCalled();
+    expect(checkedOnChange).not.toHaveBeenCalled();
 
-    expect(onChange).not.toHaveBeenCalled();
-    await user.click(checkbox);
-    expect(onChange).toHaveBeenCalledTimes(1);
+    await user.click(uncheckedInput);
+    expect(uncheckedOnChange).toHaveBeenCalledWith(true);
+
+    await user.click(checkedInput);
+    expect(checkedOnChange).toHaveBeenCalledWith(false);
   });
 
   it('calls its onChange prop when the input is focused and space key is pressed', async function() {

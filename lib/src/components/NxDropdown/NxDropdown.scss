@@ -15,12 +15,12 @@
   width: nx-dropdown-variables.$dropdown-width;
 
   .nx-icon:not(.nx-icon--colorful, .nx-dropdown-link .nx-icon, .nx-dropdown :is(.disabled, [disabled]) .nx-icon) {
-    color: var(--nx-swatch-grey-05);
+    color: var(--nx-color-text-stark);
   }
 }
 
 .nx-dropdown-icon {
-  color: var(--nx-swatch-grey-05);
+  color: var(--nx-color-text-stark);
 }
 
 .nx-dropdown--short {
@@ -32,22 +32,28 @@
 }
 
 .nx-dropdown__toggle {
+  border: 1px solid var(--nx-color-interactive-border);
   color: var(--nx-color-text);
   display: flex;
   margin: 0;
   outline: none;
+  padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
   text-align: left;
-  padding-right: var(--nx-spacing-4x);
-  padding-left: var(--nx-spacing-4x);
   width: 100%;
 
   &:hover {
     background: transparent;
     border-color: var(--nx-color-interactive-border-hover);
+    color: var(--nx-color-text);
   }
 
   &:focus:not(:active) {
     outline-color: var(--nx-color-interactive-border-focus);
+    outline-offset: calc(0px - 1px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
+  }
+
+  &:active {
+    color: var(--nx-color-text);
   }
 
   .nx-dropdown__toggle-label {
@@ -59,11 +65,11 @@
 
   .nx-dropdown__toggle-caret {
     align-self: center;
-    color: var(--nx-swatch-grey-05);
   }
 
   &.disabled {
-    .nx-dropdown__toggle-caret {
+    &, &:hover, &:focus {
+      background-color: var(--nx-color-interactive-background-disabled);
       color: var(--nx-color-text-disabled);
     }
   }
@@ -76,7 +82,7 @@
     border-color: var(--nx-color-interactive-border-hover);
 
     &:focus {
-      border-color: var(--nx-color-form-element-border);
+      border-color: var(--nx-color-interactive-border);
     }
   }
 }

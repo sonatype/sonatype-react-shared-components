@@ -15,13 +15,15 @@ import NxWarningAlertExample from './NxWarningAlertExample';
 import NxInfoAlertExample from './NxInfoAlertExample';
 import NxSuccessAlertExample from './NxSuccessAlertExample';
 import NxNoCloseAlertExample from './NxNoCloseAlertExample';
+import NxLinkInAlertExample from './NxLinkInAlertExample';
 
 const nxErrorAlertExampleCode = require('./NxErrorAlertExample?raw'),
     nxInfoAlertExampleCode = require('./NxInfoAlertExample?raw'),
     nxSuccessAlertExampleCode = require('./NxSuccessAlertExample?raw'),
     nxNoCloseAlertExampleCode = require('./NxNoCloseAlertExample?raw'),
     nxWarningAlertExampleCode = require('./NxWarningAlertExample?raw'),
-    nxAlertExampleCode = require('./NxAlertExample?raw');
+    nxAlertExampleCode = require('./NxAlertExample?raw'),
+    nxLinkInAlertExampleCode = require('./NxLinkInAlertExample?raw');
 
 const NxAlertPage = () =>
   <>
@@ -142,6 +144,13 @@ const NxAlertPage = () =>
                         liveExample={NxNoCloseAlertExample}
                         codeExamples={nxNoCloseAlertExampleCode}>
       An example of an alert that does not have a close button.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Link In Alert Example"
+                        id="nx-alert-with-link-example"
+                        liveExample={NxLinkInAlertExample}
+                        codeExamples={nxLinkInAlertExampleCode}>
+      An example of an alert that includes a text link.
     </GalleryExampleTile>
   </>;
 

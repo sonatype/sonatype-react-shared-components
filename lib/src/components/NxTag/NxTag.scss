@@ -7,6 +7,7 @@
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-hide-checkbox-helper';
+@use '../../scss-shared/nx-tag-variables';
 
 .nx-tag {
   @include nx-text-helpers.semi-bold;
@@ -14,17 +15,17 @@
 
   align-items: center;
   background-color: var(--nx-selectable-color-dark);
-  border: 1px solid var(--nx-selectable-color-dark);
+  border: var(--nx-border-width-alt) solid var(--nx-selectable-color-dark);
   border-radius: 16px;
   box-sizing: border-box;
-  color: var(--nx-color-text-dark);
+  color: var(--nx-color-tag-text);
   cursor: default;
   display: inline-flex;
   font-size: var(--nx-font-size-s);
   height: 32px;
   line-height: 30px;
   margin: 0 var(--nx-spacing-2x) var(--nx-spacing-2x) 0;
-  padding: 0 calc(var(--nx-spacing-4x) - 1px) 0 calc(var(--nx-spacing-4x) - 1px);
+  padding: 0 calc(var(--nx-spacing-4x) - var(--nx-border-width-alt)) 0 calc(var(--nx-spacing-4x) - var(--nx-border-width-alt));
   position: relative;
   user-select: none;
   // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
@@ -33,19 +34,20 @@
 
 .nx-tag--selectable {
   cursor: pointer;
-  padding-right: var(--nx-spacing-2x);
+  padding-right: calc(var(--nx-spacing-2x) - var(--nx-border-width-alt));
   background-color: var(--nx-selectable-color-light);
 
   &:hover {
-    border-color: var(--nx-color-interactive-border-hover);
+    border-color: var(--nx-color-tag-unselected-hover-border);
+    background-color: var(--nx-color-tag-unselected-hover-background);
   }
 
   &:focus-within {
     &::before {
-      border: 2px solid var(--nx-color-interactive-border-focus);
+      border: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
       border-radius: 20px;
       content: '';
-      inset: calc(0px - (var(--nx-spacing-base) + 1px));
+      inset: calc(0px - (var(--nx-focus-outline-width) + var(--nx-focus-outline-offset) + var(--nx-border-width-alt)));
       position: absolute;
     }
   }
@@ -53,6 +55,11 @@
 
 .nx-tag--selected {
   background-color: var(--nx-selectable-color-dark);
+
+  &:hover {
+    border-color: var(--nx-color-tag-selected-hover-border);
+    background-color: var(--nx-color-tag-selected-hover-background);
+  }
 }
 
 .nx-tag__input {

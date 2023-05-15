@@ -53,9 +53,12 @@ const NxTogglePage = () =>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>onChange</NxTable.Cell>
-            <NxTable.Cell>Function (() =&gt; void)</NxTable.Cell>
+            <NxTable.Cell>Function ((boolean) =&gt; void)</NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
-            <NxTable.Cell>A callback for when the toggle control is toggled</NxTable.Cell>
+            <NxTable.Cell>
+              A callback for when the toggle control  is toggled. Receives the new value (i.e. the inverse of the
+              current <NxCode>isChecked</NxCode> value) as a parameter
+            </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
             <NxTable.Cell>disabled</NxTable.Cell>

@@ -1,0 +1,29 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+/**
+ * Dark mode activation rules, in order of precedence:
+ *
+ * 1. Light mode by default
+ * 2. If prefers-color-scheme is set, follow that.
+ *   Note that prefers-color-scheme: light doesn't really do anything since light is already the default.
+ * 3. If nx-html--dark-mode or nx-html--light-mode is set, follow that class, regardless of prefers-color-scheme.
+ *   Setting both of those classes simultaneously is not advised but will result in dark mode.
+ * 4. If nx-html--enable-color-schemes is NOT set, always light mode
+ */
+@mixin dark-mode {
+  .nx-html--enable-color-schemes.nx-html--dark-mode &, &.nx-html--enable-color-schemes.nx-html--dark-mode {
+    @content;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .nx-html--enable-color-schemes:not(.nx-html--light-mode) &,
+    &.nx-html--enable-color-schemes:not(.nx-html--light-mode)  {
+      @content;
+    }
+  }
+}

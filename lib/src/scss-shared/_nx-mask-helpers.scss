@@ -8,8 +8,7 @@
  @mixin background-mask($z-index) {
   align-items: center;
 
-  // note: function name must be at least partially uppercase so scss doesn't think we mean the scss hsla function
-  background-color: Hsla(var(--nx-swatch-grey-hs), 30%, 75%);
+  background-color: var(--nx-color-background-mask);
   display: flex;
   flex-direction: column;
   position: fixed;
