@@ -57,7 +57,7 @@ describe('NxTag', function() {
     it('has a dark grey border when hovered', hoverTest(selector));
     it('has a blue outline when focused', focusTest(selector, undefined, OUTSET));
     it('has a blue outline and dark grey border when focused and hovered',
-        focusAndHoverTest(selector, undefined, OUTSET));
+        focusAndHoverTest(selector, undefined, undefined, OUTSET));
 
     it('has a darker background and no border when selected', async function() {
       const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);

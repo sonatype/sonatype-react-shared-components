@@ -5,25 +5,25 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { ReactNode, useEffect, useState } from 'react';
-import { NxTextLink, NxP, NxCode, NxList, NxWarningAlert, NxTable } from '@sonatype/react-shared-components';
+import { NxTextLink, NxP, NxCode, NxWarningAlert, NxTable, NxDescriptionList } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryTile } from '../../gallery-components/GalleryTiles';
 
 import './CssVariablesPage.scss';
 
 const SpacingDemo = ({ spacingVar }: { spacingVar: string }) =>
-  <NxList.Item>
-    <NxList.DescriptionTerm><NxCode>{spacingVar}</NxCode></NxList.DescriptionTerm>
-    <NxList.Description>
+  <NxDescriptionList.Item>
+    <NxDescriptionList.Term><NxCode>{spacingVar}</NxCode></NxDescriptionList.Term>
+    <NxDescriptionList.Description>
       <div className="gallery-spacing-demo" style={{ width: `var(${spacingVar})` }} />
-    </NxList.Description>
-  </NxList.Item>;
+    </NxDescriptionList.Description>
+  </NxDescriptionList.Item>;
 
 const PropertyDocItem = ({ propertyVar, children }: { propertyVar: string, children: ReactNode }) =>
-  <NxList.Item>
-    <NxList.DescriptionTerm><NxCode>{propertyVar}</NxCode></NxList.DescriptionTerm>
-    <NxList.Description>{children}</NxList.Description>
-  </NxList.Item>;
+  <NxDescriptionList.Item>
+    <NxDescriptionList.Term><NxCode>{propertyVar}</NxCode></NxDescriptionList.Term>
+    <NxDescriptionList.Description>{children}</NxDescriptionList.Description>
+  </NxDescriptionList.Item>;
 
 const ColorDocRow = ({ colorVar, children }: { colorVar: string, children: ReactNode }) =>
   <NxTable.Row>
@@ -68,7 +68,7 @@ const CssVariablesPage = () => {
           naming schemes, depending on what type of value the variable holds.
         </NxP>
       </GalleryDescriptionTile>
-      <GalleryTile title="Spacing Properties">
+      <GalleryTile title="Spacing Properties" id="css-spacing-properties">
         <NxP>
           RSC has a set of spacing properties which are intended to be used for margin and padding values. They are
           not intended to be used for sizing of heights and widths. These properties are all simple multiples of
@@ -77,7 +77,7 @@ const CssVariablesPage = () => {
           as the <NxCode>--nx-spacing-base</NxCode> custom property. The others all follow a similar pattern
           but with a "<NxCode>multiplier</NxCode>x" suffix instead of "base", as seen in the sizing chart below:
         </NxP>
-        <dl className="nx-list nx-list--description-list">
+        <NxDescriptionList>
           <SpacingDemo spacingVar="--nx-spacing-base" />
           <SpacingDemo spacingVar="--nx-spacing-2x" />
           <SpacingDemo spacingVar="--nx-spacing-3x" />
@@ -87,7 +87,7 @@ const CssVariablesPage = () => {
           <SpacingDemo spacingVar="--nx-spacing-12x" />
           <SpacingDemo spacingVar="--nx-spacing-16x" />
           <SpacingDemo spacingVar="--nx-spacing-20x" />
-        </dl>
+        </NxDescriptionList>
       </GalleryTile>
       <GalleryTile title="Property Value Properties" id="css-property-values-tile">
         <NxP>
@@ -95,7 +95,7 @@ const CssVariablesPage = () => {
           pattern consisting of the <NxCode>--nx-</NxCode> prefix, the name of the property to which they apply, and
           then the name of the element and/or situation to which they apply. These variables are as follows:
         </NxP>
-        <dl className="nx-list nx-list--description-list">
+        <NxDescriptionList>
           <PropertyDocItem propertyVar="--nx-width-page-max">
             The maximum content width in Legacy Page Header based page layouts. In those layouts, when the viewport
             is wider than this value, the page content area (including any sidebar) will stay at this width and
@@ -248,9 +248,9 @@ const CssVariablesPage = () => {
             The distance that the focus outline should be inset with the <NxCode>NxGlobalSidebar</NxCode>
             toggle button.
           </PropertyDocItem>
-        </dl>
+        </NxDescriptionList>
       </GalleryTile>
-      <GalleryTile title="Semantic Color Properties">
+      <GalleryTile title="Semantic Color Properties" id="css-semantic-color-properties">
         <NxP>
           RSC has a number of color defined in custom properties which are intended for specific purposes. These
           properties' names take the following form: <NxCode>--nx-color[-element?][-property?][-circumstance?]</NxCode>.
@@ -1087,7 +1087,7 @@ const CssVariablesPage = () => {
           </NxTable.Body>
         </NxTable>
       </GalleryTile>
-      <GalleryTile title="Swatch Color Properties">
+      <GalleryTile title="Swatch Color Properties" id="swatch-color-properties">
         <NxP>
           While the color properties described in the previous section are higher-level, with specific semantics
           around their use, there is another set of lower level color properties defined in terms of color swatches and
@@ -1095,7 +1095,7 @@ const CssVariablesPage = () => {
           the <NxTextLink href="#/pages/Color%20Palettes">Color Palettes</NxTextLink> page.
         </NxP>
       </GalleryTile>
-      <GalleryTile title="SCSS Variables and Versioning Guarantees">
+      <GalleryTile title="SCSS Variables and Versioning Guarantees" id="scss-variables-versioning">
         <NxP>
           Previous versions of RSC defined a wide range of SCSS variables that were never properly delineated or
           documented in terms of which were public to downstream projects and which were internal to the library. In
@@ -1106,7 +1106,7 @@ const CssVariablesPage = () => {
           values are subject to change at any time.
         </NxP>
       </GalleryTile>
-      <GalleryTile title="Nomenclature: Custom Properties or Variables?">
+      <GalleryTile title="Nomenclature: Custom Properties or Variables?" id="nomenclature">
         <NxP>
           This same feature, the ability to define arbitrary named values in CSS using property names starting
           with <NxCode>--</NxCode>, and then referred to in <NxCode>var()</NxCode> expressions, is widely referred to
