@@ -31,7 +31,7 @@
   }
 }
 
-.nx-btn {
+.nx-btn, .nx-btn[href] {
   @include nx-text-helpers.semi-bold;
   @include nx-container-helpers.container-horizontal;
 
@@ -79,11 +79,11 @@
   }
 }
 
-.nx-btn--primary {
+.nx-btn--primary, .nx-btn--primary[href] {
   @include solid-btn-styling("primary");
 }
 
-.nx-btn--tertiary {
+.nx-btn--tertiary, .nx-btn--tertiary[href] {
   background-color: transparent;
   border-color: var(--nx-color-tertiary-button-border);
   color: var(--nx-color-tertiary-button-text);
@@ -104,7 +104,7 @@
   }
 }
 
-.nx-btn--error {
+.nx-btn--error, .nx-btn--error[href] {
   @include solid-btn-styling("error");
 
   .nx-icon {
@@ -115,7 +115,7 @@
 
 .nx-btn {
   &.disabled, &[disabled] {
-    &, &:hover, &:focus {
+    &, &:hover, &:focus:not(:active) {
       background-color: var(--nx-color-disabled-button-background);
       border-color: var(--nx-color-disabled-button-border);
       outline: 0;
@@ -158,7 +158,7 @@
   }
 
   &.disabled, &[disabled] {
-    &, &:hover, &:focus {
+    &, &:hover, &:focus:not(:active) {
       background-color: transparent;
       border-color: transparent;
       color: var(--nx-color-text-disabled);
