@@ -83,16 +83,21 @@ describe('NxCheckbox', function() {
     expect(quickRender({ isChecked: true }).getByRole('checkbox')).toBeChecked();
   });
 
-  it('calls its onChange prop when the input fires a change event', async function() {
+  it('calls its onChange prop with the inverse of isChecked when the input is clicked', async function() {
     const user = userEvent.setup(),
-        onChange = jest.fn(),
-        input = quickRender({ onChange }).getByRole('checkbox');
+        uncheckedOnChange = jest.fn(),
+        checkedOnChange = jest.fn(),
+        uncheckedInput = quickRender({ onChange: uncheckedOnChange }).getByRole('checkbox'),
+        checkedInput = quickRender({ isChecked: true, onChange: checkedOnChange }).getByRole('checkbox');
 
-    expect(onChange).not.toHaveBeenCalled();
+    expect(uncheckedOnChange).not.toHaveBeenCalled();
+    expect(checkedOnChange).not.toHaveBeenCalled();
 
-    await user.click(input);
+    await user.click(uncheckedInput);
+    expect(uncheckedOnChange).toHaveBeenCalledWith(true);
 
-    expect(onChange).toHaveBeenCalled();
+    await user.click(checkedInput);
+    expect(checkedOnChange).toHaveBeenCalledWith(false);
   });
 
   it('sets the input as readonly if there is no onChange handler', function() {
