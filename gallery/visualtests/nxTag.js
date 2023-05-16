@@ -52,18 +52,6 @@ describe('NxTag', function() {
     it('renders a default, Indigo colored NxTag if no color prop is passed', simpleTest(indigoTagSelector));
   });
 
-  // unselected
-  //   simpleTest
-  //   hoverTest
-  //   focusTest
-  //   focusAndHoverTest
-
-  // selected
-  //   simpleTest
-  //   hoverTest
-  //   focusTest
-  //   focusAndHoverTest
-
   describe('unselected NxSelectableTag', function() {
     function runUnselectedTests(selectableColor) {
       const selector = `#nx-selectable-tag-example .nx-selectable-color--${selectableColor}`;
@@ -81,7 +69,7 @@ describe('NxTag', function() {
     });
   });
 
-  describe('unselected NxSelectableTag', function() {
+  describe('selected NxSelectableTag', function() {
     function runSelectedTests(selectableColor) {
       const selector = `#nx-selectable-tag-example .nx-selectable-color--${selectableColor}`,
           inputSelector = `${selector} input`;
@@ -98,10 +86,11 @@ describe('NxTag', function() {
       });
 
       it('has a dark grey border when hovered', async function() {
-        const [targetElement] = await waitAndGetElements(selector, inputSelector);
+        const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
 
         await targetElement.click();
         //remove focus from tag for snapshot
+        await blurElement(inputElement);
         await targetElement.hover();
 
         await checkScreenshot(targetElement);
@@ -111,8 +100,8 @@ describe('NxTag', function() {
         const [targetElement] = await waitAndGetElements(selector, inputSelector);
 
         await targetElement.click();
-        //remove focus from tag for snapshot
         await targetElement.focus();
+        await moveMouseAway();
 
         await checkScreenshotWithOutset(targetElement, OUTSET);
       });
