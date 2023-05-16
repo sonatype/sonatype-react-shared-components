@@ -31,7 +31,7 @@
 
 .nx-threat-counter__text {
   @include nx-text-helpers.semi-bold;
-  margin-left: var(--nx-spacing-2x);
+  margin-left: var(--nx-spacing-base);
   text-transform: uppercase;
 }
 
