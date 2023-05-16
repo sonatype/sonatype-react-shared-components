@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FormEvent } from 'react';
+import React, { forwardRef, FormEvent, FunctionComponent } from 'react';
 import { always } from 'ramda';
 import classnames from 'classnames';
 
@@ -118,7 +118,8 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
     }
 );
 
-const NxForm = Object.assign(_NxForm, { propTypes, RequiredFieldNotice });
+type NxFormType = typeof _NxForm & { RequiredFieldNotice: FunctionComponent};
+const NxForm: NxFormType = Object.assign(_NxForm, { propTypes, RequiredFieldNotice });
 
 export default NxForm;
 export { Props, propTypes };

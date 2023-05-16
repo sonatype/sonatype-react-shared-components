@@ -25,7 +25,8 @@ export { Props, propTypes } from './types';
  */
 const NxLoadWrapper: FunctionComponent<Props> =
   function NxLoadWrapper({ error, loading, children, retryHandler }) {
-    const getChildren: (() => ReactNode) = children instanceof Function ? children : always(children);
+    const getChildren: (() => ReactNode) = children instanceof Function ?
+      children as (() => ReactNode) : always(children);
 
     return error ? <NxLoadError error={error} retryHandler={retryHandler} /> :
       loading ? <NxLoadingSpinner /> :
