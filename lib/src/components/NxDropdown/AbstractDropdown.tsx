@@ -16,6 +16,8 @@ export {
   AbstractDropdownRenderToggleElement
 } from './types';
 
+// internal component, no propTypes
+/* eslint-disable react/prop-types */
 /**
  * Abstracted Dropdown global event handling.
  * @param isOpen - a boolean to indicate if the dropdown is open or not.
@@ -33,7 +35,6 @@ export {
  *    Note that this fires after the close processing occurs
  * @return - A div with the toggle element and dropdown menu.
  */
-
 const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((props: AbstractDropdownProps, ref) => {
   const {
     className,

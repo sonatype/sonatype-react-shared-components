@@ -118,7 +118,7 @@ const _NxForm = forwardRef<HTMLFormElement, Props>(
     }
 );
 
-type NxFormType = typeof _NxForm & { RequiredFieldNotice: FunctionComponent};
+type NxFormType = typeof _NxForm & { RequiredFieldNotice: FunctionComponent };
 const NxForm: NxFormType = Object.assign(_NxForm, { propTypes, RequiredFieldNotice });
 
 export default NxForm;
