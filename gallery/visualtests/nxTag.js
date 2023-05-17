@@ -18,14 +18,19 @@ describe('NxTag', function() {
     hoverTest,
     simpleTest,
     waitAndGetElements,
-    checkScreenshot,
     checkScreenshotCoordinates,
-    checkScreenshotWithOutset,
     moveMouseAway,
     scrollIntoView,
     wait,
     a11yTest
   } = setupBrowser('#/pages/Tag');
+
+  function interactionStatesTest(selector) {
+    it('has a dark grey border when hovered', hoverTest(selector));
+    it('has a blue outline when focused', focusTest(selector, undefined, OUTSET));
+    it('has a blue outline and dark grey border when focused and hovered',
+        focusAndHoverTest(selector, undefined, undefined, OUTSET));
+  }
 
   describe('Basic NxTag', function() {
     const selector = '#nx-tag-example .gallery-example-live',
@@ -53,73 +58,33 @@ describe('NxTag', function() {
   });
 
   describe('unselected NxSelectableTag', function() {
-    function runUnselectedTests(selectableColor) {
-      const selector = `#nx-selectable-tag-example .nx-selectable-color--${selectableColor}`;
-      it('has a lighter background and darker border by default', simpleTest(selector));
-      it('has a dark grey border when hovered', hoverTest(selector));
-      it('has a blue outline when focused', focusTest(selector, undefined, OUTSET));
-      it('has a blue outline and dark grey border when focused and hovered',
-          focusAndHoverTest(selector, undefined, undefined, OUTSET));
-    }
-
     selectableColors.forEach(color => {
+      const selector = `#nx-selectable-tag-example .nx-selectable-color--${color}`;
+
       describe(color, function() {
-        runUnselectedTests(color);
+        it('has a lighter background and darker border by default', simpleTest(selector));
+
+        interactionStatesTest(selector);
       });
     });
   });
 
   describe('selected NxSelectableTag', function() {
-    function runSelectedTests(selectableColor) {
-      const selector = `#nx-selectable-tag-example .nx-selectable-color--${selectableColor}`,
-          inputSelector = `${selector} input`;
-
-      it('has a lighter background and darker border by default', async function() {
-        const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
-
-        await targetElement.click();
-        //remove focus from tag for snapshot
-        await blurElement(inputElement);
-        await moveMouseAway();
-
-        await checkScreenshot(targetElement);
-      });
-
-      it('has a dark grey border when hovered', async function() {
-        const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
-
-        await targetElement.click();
-        //remove focus from tag for snapshot
-        await blurElement(inputElement);
-        await targetElement.hover();
-
-        await checkScreenshot(targetElement);
-      });
-
-      it('has a blue outline when focused', async function() {
-        const [targetElement] = await waitAndGetElements(selector, inputSelector);
-
-        await targetElement.click();
-        await targetElement.focus();
-        await moveMouseAway();
-
-        await checkScreenshotWithOutset(targetElement, OUTSET);
-      });
-
-      it('has a blue outline and dark grey border when focused and hovered', async function() {
-        const [targetElement] = await waitAndGetElements(selector, inputSelector);
-
-        await targetElement.click();
-        await targetElement.focus();
-        await targetElement.hover();
-
-        await checkScreenshotWithOutset(targetElement, OUTSET);
-      });
-    }
-
     selectableColors.forEach(color => {
       describe(color, function() {
-        runSelectedTests(color);
+        const selector = `#nx-selectable-tag-example .nx-selectable-color--${color}`,
+            inputSelector = `${selector} input`;
+
+        beforeEach(async function() {
+          const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
+          await targetElement.click();
+          await blurElement(inputElement);
+          await moveMouseAway();
+        });
+
+        it('has a darker background and no borders by default', simpleTest(selector));
+
+        interactionStatesTest(selector);
       });
     });
   });
