@@ -1163,11 +1163,6 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/classnames@^2.2.11":
-  version "2.2.11"
-  resolved "https://registry.npmjs.org/@types/classnames/-/classnames-2.2.11.tgz#2521cc86f69d15c5b90664e4829d84566052c1cf"
-  integrity sha512-2koNhpWm3DgWRp5tpkiJ8JGc1xTn2q0l+jUNUE7oMKXUf5NpI9AIdC4kbjGNFBdHtcxBD18LAksoudAVhFKCjw==
-
 "@types/classnames@^2.3.1":
   version "2.3.1"
   resolved "https://registry.npmjs.org/@types/classnames/-/classnames-2.3.1.tgz#3c2467aa0f1a93f1f021e3b9bcf938bd5dfdc0dd"
@@ -1180,10 +1175,10 @@
   resolved "https://registry.npmjs.org/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
-"@types/debounce@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@types/debounce/-/debounce-1.2.0.tgz#9ee99259f41018c640b3929e1bb32c3dcecdb192"
-  integrity sha512-bWG5wapaWgbss9E238T0R6bfo5Fh3OkeoSt245CM7JJwVwpw6MEBCbIxLq5z8KzsE3uJhzcIuQkyiZmzV3M/Dw==
+"@types/debounce@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/@types/debounce/-/debounce-1.2.1.tgz#79b65710bc8b6d44094d286aecf38e44f9627852"
+  integrity sha512-epMsEE85fi4lfmJUH/89/iV/LI+F5CvNIvmgs5g5jYFPfhO2S/ae8WSsLOKWdwtoaZw9Q2IhJ4tQ5tFCcS/4HA==
 
 "@types/eslint-scope@^3.7.3":
   version "3.7.3"
@@ -1237,6 +1232,11 @@
   version "4.7.3"
   resolved "https://registry.npmjs.org/@types/history/-/history-4.7.3.tgz#856c99cdc1551d22c22b18b5402719affec9839a"
   integrity sha512-cS5owqtwzLN5kY+l+KgKdRJ/Cee8tlmQoGQuIE9tWnSmS3JMKzmxo2HIAk2wODMifGwO20d62xZQLYz+RLfXmw==
+
+"@types/history@^4.7.11":
+  version "4.7.11"
+  resolved "https://registry.npmjs.org/@types/history/-/history-4.7.11.tgz#56588b17ae8f50c53983a524fc3cc47437969d64"
+  integrity sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.3"
@@ -1297,13 +1297,6 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/ramda@^0.27.64":
-  version "0.27.64"
-  resolved "https://registry.npmjs.org/@types/ramda/-/ramda-0.27.64.tgz#7e23f2bf7b9729bcbd59223f100460ead6829008"
-  integrity sha512-EDf++ss/JoMiDpvT1MuA8oi88OwpvmqVE+o8Ojm5v/5bdJEPZ6eIQd/XYAeQ0imlwG6Tf0Npfq4Z9w3hAKBk9Q==
-  dependencies:
-    ts-toolbelt "^6.15.1"
-
 "@types/ramda@^0.29.1":
   version "0.29.1"
   resolved "https://registry.npmjs.org/@types/ramda/-/ramda-0.29.1.tgz#c3d3842b9bc4aa5fbe03e90faa0c3eff9ba0f9f4"
@@ -1318,12 +1311,12 @@
   dependencies:
     "@types/react" "^16"
 
-"@types/react-router-dom@^5.1.7":
-  version "5.1.7"
-  resolved "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-5.1.7.tgz#a126d9ea76079ffbbdb0d9225073eb5797ab7271"
-  integrity sha512-D5mHD6TbdV/DNHYsnwBTv+y73ei+mMjrkGrla86HthE4/PVvL1J94Bu3qABU+COXzpL23T1EZapVVpwHuBXiUg==
+"@types/react-router-dom@^5.3.3":
+  version "5.3.3"
+  resolved "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-5.3.3.tgz#e9d6b4a66fcdbd651a5f106c2656a30088cc1e83"
+  integrity sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==
   dependencies:
-    "@types/history" "*"
+    "@types/history" "^4.7.11"
     "@types/react" "*"
     "@types/react-router" "*"
 
@@ -1335,18 +1328,18 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-router@^5.1.11":
-  version "5.1.11"
-  resolved "https://registry.npmjs.org/@types/react-router/-/react-router-5.1.11.tgz#b01ce4cb21bf7d6b32edc862fc1e2c0088044b5b"
-  integrity sha512-ofHbZMlp0Y2baOHgsWBQ4K3AttxY61bDMkwTiBOkPg7U6C/3UwwB5WaIx28JmSVi/eX3uFEMRo61BV22fDQIvg==
+"@types/react-router@^5.1.20":
+  version "5.1.20"
+  resolved "https://registry.npmjs.org/@types/react-router/-/react-router-5.1.20.tgz#88eccaa122a82405ef3efbcaaa5dcdd9f021387c"
+  integrity sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==
   dependencies:
-    "@types/history" "*"
+    "@types/history" "^4.7.11"
     "@types/react" "*"
 
-"@types/react-syntax-highlighter@^13.5.0":
-  version "13.5.0"
-  resolved "https://registry.npmjs.org/@types/react-syntax-highlighter/-/react-syntax-highlighter-13.5.0.tgz#b93c05f28844e7c35a5f1d38d3819099ffa82fbd"
-  integrity sha512-U7DrUaQRv3b+fsbPXMf7vC21K7DOkdNCQtp14Wm0Z5YLI9fPhndN4YTZ9eVXwmAivIg6lZ3YBVtGYucAS3H76A==
+"@types/react-syntax-highlighter@^15.5.6":
+  version "15.5.6"
+  resolved "https://registry.npmjs.org/@types/react-syntax-highlighter/-/react-syntax-highlighter-15.5.6.tgz#77c95e6b74d2be23208fcdcf187b93b47025f1b1"
+  integrity sha512-i7wFuLbIAFlabTeD2I1cLjEOrG/xdMa/rpx2zwzAoGHuXJDhSqp9BSfDlMHSh9JSuNfxHk9eEmMX6D55GiyjGg==
   dependencies:
     "@types/react" "*"
 
@@ -8317,11 +8310,6 @@ ts-loader@^9.2.8:
     enhanced-resolve "^5.0.0"
     micromatch "^4.0.0"
     semver "^7.3.4"
-
-ts-toolbelt@^6.15.1:
-  version "6.15.5"
-  resolved "https://registry.npmjs.org/ts-toolbelt/-/ts-toolbelt-6.15.5.tgz#cb3b43ed725cb63644782c64fbcad7d8f28c0a83"
-  integrity sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==
 
 ts-toolbelt@^9.6.0:
   version "9.6.0"

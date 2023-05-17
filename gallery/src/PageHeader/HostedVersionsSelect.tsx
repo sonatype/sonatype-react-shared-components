@@ -19,7 +19,7 @@ const HOSTED_VERSIONS_JSON_PATH = '/hosted-versions.json';
 // eslint-disable-next-line no-undef
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-const getHostedVersions = async () => {
+async function getHostedVersions(): Promise<string[]> {
   const response = await fetch(HOSTED_VERSIONS_JSON_PATH);
 
   if (!response.ok) {
@@ -27,7 +27,7 @@ const getHostedVersions = async () => {
   }
 
   return response.json();
-};
+}
 
 const HostedVersionsSelect = () => {
   const [isLoadingHostedVersions, setIsLoadingHostedVersions] = useState(false);

@@ -45,7 +45,7 @@ export default function NxToastLegacyLayoutExample() {
     ]);
   };
 
-  const removeToast = (id: number) => setToasts(reject(propEq('id', id), toasts));
+  const removeToast = (id: number) => setToasts(reject(propEq(id, 'id'), toasts));
 
   return (
     <>
