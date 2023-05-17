@@ -7,7 +7,7 @@
 import React, { useEffect, useState } from 'react';
 import { negate, pipe, without } from 'ramda';
 import { NxStatefulDropdown } from '@sonatype/react-shared-components';
-import compareVersions from 'compare-versions';
+import { compareVersions } from 'compare-versions';
 
 import packageJson from '../../package.json';
 

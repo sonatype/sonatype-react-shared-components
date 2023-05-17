@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import SectionScrollingWrapper from '../NxViewportSized/SectionScrollingWrapper';
 
@@ -58,19 +58,19 @@ const pageScrollingPages = [
     ];
 
 const PageLayoutExamples = () =>
-  <Switch>
+  <Routes>
     {pageScrollingPages.map(PageComponent =>
-      <Route key={PageComponent.name} exact path={`/pageLayouts/pageScrolling/${PageComponent.name}`}>
+      <Route key={PageComponent.name} path={`/pageLayouts/pageScrolling/${PageComponent.name}`}>
         <PageComponent />
       </Route>
     )}
     {sectionScrollingPages.map(PageComponent =>
-      <Route key={PageComponent.name} exact path={`/pageLayouts/${PageComponent.name}`}>
+      <Route key={PageComponent.name} path={`/pageLayouts/${PageComponent.name}`}>
         <SectionScrollingWrapper>
           <PageComponent />
         </SectionScrollingWrapper>
       </Route>
     )}
-  </Switch>;
+  </Routes>;
 
 export default PageLayoutExamples;
