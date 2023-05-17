@@ -60,15 +60,17 @@ const pageScrollingPages = [
 const PageLayoutExamples = () =>
   <Routes>
     {pageScrollingPages.map(PageComponent =>
-      <Route key={PageComponent.name} path={`/pageLayouts/pageScrolling/${PageComponent.name}`}>
+      <Route key={PageComponent.name} path={`/pageScrolling/${PageComponent.name}`} element={
         <PageComponent />
+      }>
       </Route>
     )}
     {sectionScrollingPages.map(PageComponent =>
-      <Route key={PageComponent.name} path={`/pageLayouts/${PageComponent.name}`}>
+      <Route key={PageComponent.name} path={`/${PageComponent.name}`} element={
         <SectionScrollingWrapper>
           <PageComponent />
         </SectionScrollingWrapper>
+      }>
       </Route>
     )}
   </Routes>;

@@ -137,170 +137,202 @@ function Application() {
   return (
     <Router>
       <Routes>
-        <Route path="/pageLayouts">
+        <Route path="/pageLayouts/*" element={
           <PageLayoutExamples />
+        }>
         </Route>
-        <Route path="/NxGlobalSidebarExample">
+        <Route path="/NxGlobalSidebarExample" element={
           <SectionScrollingWrapper>
             <NxGlobalSidebarExample />
           </SectionScrollingWrapper>
-        </Route>
-        <Route path="/NxGlobalSidebarScrollingExample">
+        }></Route>
+        <Route path="/NxGlobalSidebarScrollingExample" element={
           <SectionScrollingWrapper>
             <NxGlobalSidebarScrollingExample />
           </SectionScrollingWrapper>
-        </Route>
-        <Route path="/NxStatefulGlobalSidebarExample">
+        }></Route>
+        <Route path="/NxStatefulGlobalSidebarExample" element={
           <SectionScrollingWrapper>
             <NxStatefulGlobalSidebarExample />
           </SectionScrollingWrapper>
-        </Route>
-        <Route path="/NxGlobalHeaderFullExample">
+        }></Route>
+        <Route path="/NxGlobalHeaderFullExample" element={
           <SectionScrollingWrapper>
             <NxGlobalHeaderFullExample />
           </SectionScrollingWrapper>
-        </Route>
-        <Route path="/NxGlobalHeaderNoBackButtonExample">
+        }></Route>
+        <Route path="/NxGlobalHeaderNoBackButtonExample" element={
           <SectionScrollingWrapper>
             <NxGlobalHeaderNoBackButtonExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxGlobalHeaderNoActionsExample">
+        <Route path="/NxGlobalHeaderNoActionsExample" element={
           <SectionScrollingWrapper>
             <NxGlobalHeaderNoActionsExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxGlobalHeaderEmptyExample">
+        <Route path="/NxGlobalHeaderEmptyExample" element={
           <SectionScrollingWrapper>
             <NxGlobalHeaderEmptyExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxToastSimpleLayoutExample">
+        <Route path="/NxToastSimpleLayoutExample" element={
           <SectionScrollingWrapper>
             <NxToastSimpleLayoutExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxToastWithNxDrawerExample">
+        <Route path="/NxToastWithNxDrawerExample" element={
           <SectionScrollingWrapper>
             <NxToastWithNxDrawerExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxToastComplexLayoutExample">
+        <Route path="/NxToastComplexLayoutExample" element={
           <SectionScrollingWrapper>
             <NxToastComplexLayoutExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxToastLegacySectionScrollingExample">
+        <Route path="/NxToastLegacySectionScrollingExample" element={
           <SectionScrollingWrapper>
             <NxToastLegacyLayoutExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxToastLegacyPageScrollingExample">
+        <Route path="/NxToastLegacyPageScrollingExample" element={
           <NxToastLegacyLayoutExample />
+        }>
         </Route>
-        <Route path="/NxSystemNoticeGlobalSidebarExample">
+        <Route path="/NxSystemNoticeGlobalSidebarExample" element={
           <SectionScrollingWrapper>
             <NxSystemNoticeGlobalSidebarExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxSystemNoticeTraditionalPageExample">
+        <Route path="/NxSystemNoticeTraditionalPageExample" element={
           <NxSystemNoticeTraditionalPageExample />
+        }>
         </Route>
-        <Route path="/NxSystemNoticeMultipleExample">
+        <Route path="/NxSystemNoticeMultipleExample" element={
           <SectionScrollingWrapper>
             <NxSystemNoticeMultipleExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxGlobalSidebarFooterExample">
+        <Route path="/NxGlobalSidebarFooterExample" element={
           <SectionScrollingWrapper>
             <NxGlobalSidebarFooterExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxGlobalSidebarFooterMinimalExample">
+        <Route path="/NxGlobalSidebarFooterMinimalExample" element={
           <SectionScrollingWrapper>
             <NxGlobalSidebarFooterMinimalExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxGlobalSidebarFooterEmptyExample">
+        <Route path="/NxGlobalSidebarFooterEmptyExample" element={
           <SectionScrollingWrapper>
             <NxGlobalSidebarFooterEmptyExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxDrawerVariantExample">
+        <Route path="/NxDrawerVariantExample" element={
           <SectionScrollingWrapper>
             <NxDrawerVariantExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxDrawerWithNxFormExample">
+        <Route path="/NxDrawerWithNxFormExample" element={
           <SectionScrollingWrapper>
             <NxDrawerWithNxFormExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxDrawerWithNxToastExample">
+        <Route path="/NxDrawerWithNxToastExample" element={
           <SectionScrollingWrapper>
             <NxDrawerWithNxToastExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxDrawerEscExample">
+        <Route path="/NxDrawerEscExample" element={
           <SectionScrollingWrapper>
             <NxDrawerEscExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxDrawerWithSubtitleOrDescriptionExample">
+        <Route path="/NxDrawerWithSubtitleOrDescriptionExample" element={
           <SectionScrollingWrapper>
             <NxDrawerWithSubtitleOrDescriptionExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxDrawerConditionalRenderingExample">
+        <Route path="/NxDrawerConditionalRenderingExample" element={
           <SectionScrollingWrapper>
             <NxDrawerConditionalRenderingExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxDrawerExample">
+        <Route path="/NxDrawerExample" element={
           <SectionScrollingWrapper>
             <NxDrawerExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route path="/NxBreadcrumbGlobalHeaderExample">
+        <Route path="/NxBreadcrumbGlobalHeaderExample" element={
           <SectionScrollingWrapper>
             <NxBreadcrumbGlobalHeaderExample />
           </SectionScrollingWrapper>
+        }>
         </Route>
-        <Route>
-          <PageHeader />
-          <div className="nx-page-content">
-            <aside className="nx-page-sidebar" id="gallery-sidebar">
-              <GalleryNav />
-            </aside>
-            <Routes>
-              <Route path="/pages/:pageName/:elementId?">
-                <Page />
-              </Route>
-              <Route path="/">
-                <Page />
-              </Route>
+        <Route path="*" element={
+          <>
+            <PageHeader />
+            <div className="nx-page-content">
+              <aside className="nx-page-sidebar" id="gallery-sidebar">
+                <GalleryNav />
+              </aside>
+              <Routes>
+                <Route path="/pages/:pageName/:elementId?" element={
+                  <Page />
+                }>
+                </Route>
+                <Route path="/" element={
+                  <Page />
+                }>
+                </Route>
 
-              {/* Special cases, these examples need their own page separate from their documentation */}
-              <Route path="/NxViewportSizedExample">
-                <SectionScrollingWrapper>
-                  <NxViewportSizedExample />
-                </SectionScrollingWrapper>
-              </Route>
-              <Route path="/NxViewportSizedExpandingExample">
-                <SectionScrollingWrapper>
-                  <NxViewportSizedExpandingExample />
-                </SectionScrollingWrapper>
-              </Route>
-              <Route path="/NxViewportSizedAdjacentExample">
-                <SectionScrollingWrapper>
-                  <NxViewportSizedAdjacentExample />
-                </SectionScrollingWrapper>
-              </Route>
-              <Route>
-                <Navigate to="/" />
-              </Route>
-            </Routes>
-          </div>
+                {/* Special cases, these examples need their own page separate from their documentation */}
+                <Route path="/NxViewportSizedExample" element={
+                  <SectionScrollingWrapper>
+                    <NxViewportSizedExample />
+                  </SectionScrollingWrapper>
+                }>
+                </Route>
+                <Route path="/NxViewportSizedExpandingExample" element={
+                  <SectionScrollingWrapper>
+                    <NxViewportSizedExpandingExample />
+                  </SectionScrollingWrapper>
+                }>
+                </Route>
+                <Route path="/NxViewportSizedAdjacentExample" element={
+                  <SectionScrollingWrapper>
+                    <NxViewportSizedAdjacentExample />
+                  </SectionScrollingWrapper>
+                }>
+                </Route>
+                <Route path="*" element={
+                  <Navigate to="/" />
+                }>
+                </Route>
+              </Routes>
+            </div>
+          </>
+        }>
         </Route>
       </Routes>
     </Router>
