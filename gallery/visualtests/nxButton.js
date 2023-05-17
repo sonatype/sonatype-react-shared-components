@@ -100,7 +100,8 @@ describe('NxButton', function() {
   });
 
   describe('nx-btn class on <a>', function() {
-    const selector = '#nx-btn-links-example .nx-btn-bar';
+    const selector = '#nx-btn-links-example .nx-btn-bar:first-child';
+    const disabledSelector = '#nx-btn-links-example .nx-btn-bar:last-child';
 
     const { simpleTest, hoverTest, clickTest, focusTest, focusAndHoverTest } = setupBrowser('#/pages/Button (HTML)');
 
@@ -134,8 +135,22 @@ describe('NxButton', function() {
     });
 
     describe('Disabled styled buttons', function() {
-      const disabledSelector = `${selector} .nx-btn.disabled`;
-      buttonTests(disabledSelector);
+      describe('secondary', function() {
+        const selector = `${disabledSelector} .nx-btn:not(.nx-btn--primary):not(.nx-btn--tertiary):not(.nx-btn--error)`;
+        buttonTests(selector);
+      });
+      describe('primary', function() {
+        const selector = `${disabledSelector} .nx-btn--primary`;
+        buttonTests(selector);
+      });
+      describe('tertiary', function() {
+        const selector = `${disabledSelector} .nx-btn--tertiary`;
+        buttonTests(selector);
+      });
+      describe('error', function() {
+        const selector = `${disabledSelector} .nx-btn--error`;
+        buttonTests(selector);
+      });
     });
   });
 
