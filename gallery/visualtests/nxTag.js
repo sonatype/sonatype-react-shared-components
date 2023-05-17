@@ -110,7 +110,6 @@ describe('NxTag', function() {
         const [targetElement] = await waitAndGetElements(selector, inputSelector);
 
         await targetElement.click();
-        //remove focus from tag for snapshot
         await targetElement.focus();
         await targetElement.hover();
 
