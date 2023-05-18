@@ -145,7 +145,7 @@
       background-color: var(--nx-color-primary-button-background-active);
 
       &:hover:not(:active) {
-        background-color: var(--nx-swatch-blue-30);
+        background-color: var(--nx-color-primary-button-background-hover);
       }
     }
 
@@ -154,7 +154,8 @@
       border-color: var(--nx-color-secondary-button-border-active);
 
       &:hover:not(:active) {
-        background-color: var(--nx-swatch-blue-90);
+        background-color: var(--nx-color-secondary-button-background-hover);
+        color: var(--nx-color-secondary-button-text);
       }
     }
 
@@ -163,9 +164,8 @@
       border-color: var(--nx-color-tertiary-button-border-active);
 
       &:hover:not(:active) {
-        background-color: var(--nx-swatch-indigo-90);
+        background-color: var(--nx-color-tertiary-button-background-hover);
       }
-      background-color: var(--nx-color-primary-button-background-active);
     }
   }
 }
