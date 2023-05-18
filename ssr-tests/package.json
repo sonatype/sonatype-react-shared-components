@@ -11,21 +11,24 @@
   "dependencies": {
     "@sonatype/react-shared-components": "file:../lib/dist",
     "next": "^12.0.8",
-    "next-transpile-modules": "^9.0.0",
+    "next-transpile-modules": "^10.0.0",
     "react": "16.14",
     "react-dom": "16.14",
-    "sass": "^1.49.0",
-    "webpack": "^5.66.0"
+    "sass": "^1.62.1",
+    "webpack": "^5.83.1"
   },
   "devDependencies": {
-    "@types/node": "16.11.7",
+    "@types/node": "^16.0.0",
     "@types/react": "17.0.34",
-    "@wdio/cli": "^7.16.14",
-    "@wdio/local-runner": "^7.16.14",
-    "@wdio/mocha-framework": "^7.16.14",
-    "@wdio/spec-reporter": "^7.16.14",
-    "start-server-and-test": "^1.14.0",
-    "typescript": "4.4.4",
-    "webdriverio": "^7.16.14"
+    "@wdio/cli": "^8.10.2",
+    "@wdio/local-runner": "^8.10.2",
+    "@wdio/mocha-framework": "^8.10.2",
+    "@wdio/spec-reporter": "^8.10.2",
+    "start-server-and-test": "^2.0.0",
+    "typescript": "4.5.5",
+    "webdriverio": "^8.10.2"
+  },
+  "resolutions": {
+    "@fortawesome/fontawesome-common-types": "0.3.0"
   }
 }
