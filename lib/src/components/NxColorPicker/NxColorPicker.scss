@@ -28,6 +28,7 @@
     &:hover {
       .nx-color-picker__color {
         stroke: var(--nx-color-text-stark);
+        stroke-width: var(--nx-border-width-alt);
       }
     }
   }
