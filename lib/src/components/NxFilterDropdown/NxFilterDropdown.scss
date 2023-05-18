@@ -30,8 +30,8 @@
     max-width: unset;
 
     &:focus-within {
-      outline-offset: -2px;
-      outline: 2px solid var(--nx-color-interactive-border-focus);
+      outline-offset: calc(0px - var(--nx-focus-outline-offset));
+      outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
 
       .nx-checkbox__box::after {
         display: none;
@@ -51,7 +51,7 @@
     }
 
     &[disabled] {
-      color: var(--nx-swatch-grey-60);
+      color: var(--nx-color-link-disabled);
     }
   }
 }

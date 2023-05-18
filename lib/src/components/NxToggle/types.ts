@@ -13,7 +13,7 @@ export type InputAttributesProp =
 
 export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
   inputId?: string | null;
-  onChange?: (() => void) | null;
+  onChange?: ((newVal: boolean) => void) | null;
   isChecked: boolean;
   disabled?: boolean | null;
   inputAttributes?: InputAttributesProp;

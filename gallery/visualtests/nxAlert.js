@@ -14,31 +14,45 @@ describe('NxAlert', function() {
       errorSelector = '#nx-alert-error-example .nx-alert',
       infoSelector = '#nx-alert-info-example .nx-alert',
       warningSelector = '#nx-alert-warning-example .nx-alert',
-      noCloseSelector = '#nx-alert-no-close-example .nx-alert';
+      noCloseSelector = '#nx-alert-no-close-example .nx-alert',
+      withLinkSelector = '#nx-alert-with-link-example .nx-alert';
+
+  const runTests = (selector) => {
+    it('looks right', simpleTest(selector));
+    it('looks right with the close button hovered', hoverTest(selector, `${selector} .nx-btn--close`));
+    it('looks right with the close button focused', focusTest(selector, `${selector} .nx-btn--close`));
+    it('looks right with the close button clicked', clickTest(selector, `${selector} .nx-btn--close`));
+    it('looks right with the close button focused and hovered',
+        focusAndHoverTest(selector, `${selector} .nx-btn--close`));
+  };
 
   describe('Custom NxAlert', function() {
-    it('looks right', simpleTest(simpleSelector));
+    runTests(simpleSelector);
   });
 
   describe('NxSuccessAlert', function() {
-    it('looks right', simpleTest(successSelector));
+    runTests(successSelector);
   });
 
   describe('NxErrorAlert', function() {
-    it('looks right', simpleTest(errorSelector));
-    it('looks right with the close button hovered', hoverTest(errorSelector, `${errorSelector} .nx-btn--close`));
-    it('looks right with the close button focused', focusTest(errorSelector, `${errorSelector} .nx-btn--close`));
-    it('looks right with the close button clicked', clickTest(errorSelector, `${errorSelector} .nx-btn--close`));
-    it('looks right with the close button focused and hovered',
-        focusAndHoverTest(errorSelector, `${errorSelector} .nx-btn--close`));
+    runTests(errorSelector);
   });
 
   describe('NxInfoAlert', function() {
-    it('looks right', simpleTest(infoSelector));
+    runTests(infoSelector);
   });
 
   describe('NxWarningAlert', function() {
-    it('looks right', simpleTest(warningSelector));
+    runTests(warningSelector);
+  });
+
+  describe('with a link', function() {
+    it('looks right', simpleTest(withLinkSelector));
+    it('looks right with the link hovered', hoverTest(withLinkSelector, `${withLinkSelector} .nx-text-link`));
+    it('looks right with the link focused', focusTest(withLinkSelector, `${withLinkSelector} .nx-text-link`));
+    it('looks right with the link clicked', clickTest(withLinkSelector, `${withLinkSelector} .nx-text-link`));
+    it('looks right with the link focused and hovered',
+        focusAndHoverTest(withLinkSelector, `${withLinkSelector} .nx-text-link`));
   });
 
   describe('without close button', function() {

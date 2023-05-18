@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { setupBrowser } = require('./testUtils');
+const { setupBrowser, TOOLTIP_WAIT } = require('./testUtils');
 
 describe('NxBreadcrumb', function() {
   const { simpleTest, a11yTest, waitAndGetElements, checkScreenshot, wait, checkScreenshotCoordinates, moveMouseAway } =
@@ -36,6 +36,7 @@ describe('NxBreadcrumb', function() {
     );
 
     await dropdownBtn.click();
+    await wait(TOOLTIP_WAIT);
     await moveMouseAway();
 
     await checkScreenshot(example, 848, 364);
@@ -48,6 +49,7 @@ describe('NxBreadcrumb', function() {
     );
 
     await dropdownBtn.click();
+    await wait(TOOLTIP_WAIT);
     await moveMouseAway();
 
     await checkScreenshot(example, 848, 396);
@@ -60,7 +62,7 @@ describe('NxBreadcrumb', function() {
     );
 
     await link.hover();
-    await wait(500);
+    await wait(TOOLTIP_WAIT);
 
     const { x, y, width, height } = await example.boundingBox();
 

@@ -40,7 +40,7 @@
 
 .nx-page-title__sub-title {
   @include nx-text-helpers.truncate-ellipsis;
-  border-left: var(--nx-border-default);
+  border-left: 1px solid var(--nx-color-page-title-divider);
   margin: 0 0 0 var(--nx-spacing-4x);
   padding-left: var(--nx-spacing-4x);
   min-width: 150px;

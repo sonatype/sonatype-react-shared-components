@@ -19,7 +19,7 @@ interface BaseProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChang
 }
 
 export interface Props extends BaseProps {
-  onChange?: (() => void) | null;
+  onChange?: ((newVal: boolean) => void) | null;
   isChecked: boolean;
 }
 

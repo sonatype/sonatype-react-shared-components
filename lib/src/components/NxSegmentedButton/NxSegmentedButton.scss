@@ -4,6 +4,29 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+ @use '../../scss-shared/nx-dark-mode-helpers';
+
+ @mixin base-btn-styling {
+  // get fancy to prevent mitred corners on the inner border
+  border-top-style: none;
+  border-bottom-style: none;
+
+  padding-top: var(--nx-spacing-2x);
+  padding-bottom: var(--nx-spacing-2x);
+ }
+
+ @mixin dropdown-btn-styling {
+   @include base-btn-styling;
+   border-right-style: none;
+   padding-left: calc(var(--nx-spacing-3x) - var(--nx-border-width-alt));
+   padding-right: calc(var(--nx-spacing-3x));
+ }
+
+ @mixin main-btn-styling {
+  @include base-btn-styling;
+  border-left-style: none;
+  padding-left: var(--nx-spacing-6x);
+}
 
 .nx-segmented-btn {
   display: inline-flex;
@@ -27,7 +50,7 @@
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   // overlap the segment borders
-  margin: 0 -1px 0 0;
+  margin: 0 calc(var(--nx-border-width-alt) * -1) 0 0;
 
   &:focus, &:hover, &:active {
     // make sure the overlapped border between the segments shows up no matter which side is being interacted
@@ -43,8 +66,8 @@
   // lock the line-height here so that it is not affected by the font-size increase on the icon
   line-height: 1em;
   margin: 0;
-  padding-left: calc(var(--nx-spacing-3x) - 1px);
-  padding-right: calc(var(--nx-spacing-3x) - 1px);
+  padding-left: calc(var(--nx-spacing-3x) - var(--nx-border-width-alt));
+  padding-right: calc(var(--nx-spacing-3x) - var(--nx-border-width-alt));
 
   > .nx-icon {
     font-size: 1.2em;
@@ -52,33 +75,66 @@
 }
 
 .nx-btn--primary:not([disabled]) {
+  &.nx-segmented-btn__main-btn, &.nx-segmented-btn__dropdown-btn {
+    border-color: var(--nx-color-primary-segmented-button-divider);
+    position: relative;
+
+    &:focus:not(:active) {
+      outline: none;
+
+      &::after {
+        border: var(--nx-focus-outline-width) solid var(--nx-color-primary-button-focus-outline);
+        border-radius: calc(var(--nx-border-radius) - var(--nx-focus-outline-offset));
+        box-sizing: border-box;
+        content: '';
+        height: calc(100% - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
+        position: absolute;
+        left: var(--nx-focus-outline-offset);
+        top: var(--nx-focus-outline-offset);
+        width: calc(100% - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
+      }
+    }
+  }
+
   &.nx-segmented-btn__main-btn {
-    border-right-color: var(--nx-swatch-blue-60);
+    @include main-btn-styling;
 
-    // get fancy to prevent mitred corners on the inner border
-    &:not(:focus) {
-      border-top-style: none;
-      border-bottom-style: none;
-      border-left-style: none;
-
-      padding-top: var(--nx-spacing-2x);
-      padding-bottom: var(--nx-spacing-2x);
-      padding-left: var(--nx-spacing-6x);
+    &:focus:not(:active) {
+      &::after {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
   }
 
   &.nx-segmented-btn__dropdown-btn {
-    border-left-color: var(--nx-swatch-blue-60);
+    @include dropdown-btn-styling;
+    
+    &:focus:not(:active) {
+      &::after {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
 
-    // get fancy to prevent mitred corners on the inner border
-    &:not(:focus) {
-      border-top-style: none;
-      border-right-style: none;
-      border-bottom-style: none;
+.nx-btn {
+  &.disabled, &[disabled] {
+    &.nx-segmented-btn__main-btn {
+      border-right-color: var(--nx-color-disabled-button-text);
 
-      padding-top: var(--nx-spacing-2x);
-      padding-right: var(--nx-spacing-3x);
-      padding-bottom: var(--nx-spacing-2x);
+      @include nx-dark-mode-helpers.dark-mode {
+       @include main-btn-styling;
+      }
+    }
+
+    &.nx-segmented-btn__dropdown-btn {
+      border-left-color: var(--nx-color-disabled-button-text);
+
+      @include nx-dark-mode-helpers.dark-mode {
+        @include dropdown-btn-styling;
+      }
     }
   }
 }
@@ -86,7 +142,7 @@
 .nx-segmented-btn--open {
   > .nx-segmented-btn__dropdown-btn {
     &.nx-btn--primary {
-      background-color: var(--nx-swatch-blue-50);
+      background-color: var(--nx-color-primary-button-background-active);
 
       &:hover:not(:active) {
         background-color: var(--nx-swatch-blue-30);
@@ -94,7 +150,8 @@
     }
 
     &.nx-btn--secondary {
-      background-color: var(--nx-swatch-blue-95);
+      background-color: var(--nx-color-secondary-button-background-active);
+      border-color: var(--nx-color-secondary-button-border-active);
 
       &:hover:not(:active) {
         background-color: var(--nx-swatch-blue-90);
@@ -102,11 +159,13 @@
     }
 
     &.nx-btn--tertiary {
-      background-color: var(--nx-swatch-indigo-97);
+      background-color: var(--nx-color-tertiary-button-background-active);
+      border-color: var(--nx-color-tertiary-button-border-active);
 
       &:hover:not(:active) {
         background-color: var(--nx-swatch-indigo-90);
       }
+      background-color: var(--nx-color-primary-button-background-active);
     }
   }
 }

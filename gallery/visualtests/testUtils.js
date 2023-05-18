@@ -14,7 +14,11 @@ const pageUrl = `file://${__dirname}/../dist/index.html`;
 
 const { AxePuppeteer } = require('@axe-core/puppeteer');
 
+const TOOLTIP_WAIT = 800;
+
 module.exports = {
+  TOOLTIP_WAIT,
+
   setupBrowser(pageFragmentIdentifier, ignoreVersionNumber = true) {
     let browser, page;
 
@@ -31,7 +35,7 @@ module.exports = {
 
     async function hideVersionNumber() {
       const [versionEl] = await waitAndGetElements('.gallery-page-header__version');
-      await versionEl.evaluate(el => { el.style.visibility = 'hidden'; });
+      await versionEl.evaluate(el => { el.style.display = 'none'; });
     }
 
     beforeAll(async function() {
@@ -61,14 +65,33 @@ module.exports = {
 
     beforeEach(async function() {
       page = await browser.newPage();
+
       await page.goto(pageUrl + pageFragmentIdentifier);
+
+      if (process.env.RSC_GALLERY_THEME === 'DARK') {
+        await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'dark' }]);
+      }
 
       if (ignoreVersionNumber) {
         await hideVersionNumber();
       }
 
+      await setThemingEnabled(true);
+
       await page.mouse.move(0, 0);
     });
+
+    async function setThemeOverride(theme) {
+      await page.evaluate((t) => {
+        window.setThemeOverride(t);
+      }, theme);
+    }
+
+    async function setThemingEnabled(newThemingEnabled) {
+      await page.evaluate((theme) => {
+        window.setThemingEnabled(theme);
+      }, newThemingEnabled);
+    }
 
     async function blurElement(element) {
       await page.evaluate(function(el) {
@@ -274,6 +297,8 @@ module.exports = {
       disableLoadingSpinnerAnimation,
       setupUploadableFiles,
       scrollIntoView,
+      setThemeOverride,
+      setThemingEnabled,
       scrollPage,
       typeOnKeyboard,
 
@@ -317,14 +342,14 @@ module.exports = {
           await focusElement.hover();
 
           if (waitForTooltip) {
-            await wait(500);
+            await wait(TOOLTIP_WAIT);
           }
 
           await checkScreenshotWithOutset(targetElement, outset);
         };
       },
 
-      focusAndHoverTest(elementSelector, hoverSelector = elementSelector, outset) {
+      focusAndHoverTest(elementSelector, hoverSelector = elementSelector, waitForTooltip = false, outset) {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
@@ -332,6 +357,11 @@ module.exports = {
             await scrollIntoView(targetElement);
             await focusElement.focus();
             await focusElement.hover();
+
+            if (waitForTooltip) {
+              await wait(TOOLTIP_WAIT);
+            }
+
             await checkScreenshotWithOutset(targetElement, outset);
           }
           finally {
@@ -360,7 +390,7 @@ module.exports = {
       a11yTest(builderCustomizer, fullPage = false) {
         return async () => {
           // to allow async code such as tooltip initialization to complete
-          await wait(500);
+          await wait(TOOLTIP_WAIT);
 
           // the color contrast checker seems to be buggy, it has many complaints about overlapping items when
           // there aren't any

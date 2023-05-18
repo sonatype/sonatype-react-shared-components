@@ -21,10 +21,14 @@
   margin-left: 0;
 
   &.open {
-    background-color: var(--nx-color-interactive-background-selected);
+    background-color: var(--nx-color-button-icon-only-background-selected);
 
     &:hover:not(:active) {
       background-color: var( --nx-color-interactive-background-hover);
+    }
+
+    &:focus:not(:active) {
+      outline-color: var(--nx-color-interactive-border-focus);
     }
   }
 }

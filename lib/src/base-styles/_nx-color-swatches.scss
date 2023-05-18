@@ -19,7 +19,9 @@
   --nx-swatch-blue-50: hsl(var(--nx-swatch-blue-hs), 50%);
   --nx-swatch-blue-60: hsl(var(--nx-swatch-blue-hs), 60%);
   --nx-swatch-blue-70: hsl(var(--nx-swatch-blue-hs), 70%);
+  --nx-swatch-blue-75: hsl(var(--nx-swatch-blue-hs), 75%);
   --nx-swatch-blue-80: hsl(var(--nx-swatch-blue-hs), 80%);
+  --nx-swatch-blue-85: hsl(var(--nx-swatch-blue-hs), 85%);
   --nx-swatch-blue-90: hsl(var(--nx-swatch-blue-hs), 90%);
   --nx-swatch-blue-95: hsl(var(--nx-swatch-blue-hs), 95%);
 
@@ -58,6 +60,7 @@
   --nx-swatch-teal-70: hsl(var(--nx-swatch-teal-hs), 70%);
   --nx-swatch-teal-75: hsl(var(--nx-swatch-teal-hs), 75%);
   --nx-swatch-teal-80: hsl(var(--nx-swatch-teal-hs), 80%);
+  --nx-swatch-teal-85: hsl(var(--nx-swatch-teal-hs), 85%);
   --nx-swatch-teal-90: hsl(var(--nx-swatch-teal-hs), 90%);
   --nx-swatch-teal-95: hsl(var(--nx-swatch-teal-hs), 95%);
 
@@ -71,7 +74,9 @@
   --nx-swatch-pink-50: hsl(var(--nx-swatch-pink-hs), 50%);
   --nx-swatch-pink-60: hsl(var(--nx-swatch-pink-hs), 60%);
   --nx-swatch-pink-70: hsl(var(--nx-swatch-pink-hs), 70%);
+  --nx-swatch-pink-75: hsl(var(--nx-swatch-pink-hs), 75%);
   --nx-swatch-pink-80: hsl(var(--nx-swatch-pink-hs), 80%);
+  --nx-swatch-pink-85: hsl(var(--nx-swatch-pink-hs), 85%);
   --nx-swatch-pink-90: hsl(var(--nx-swatch-pink-hs), 90%);
   --nx-swatch-pink-95: hsl(var(--nx-swatch-pink-hs), 95%);
   --nx-swatch-pink-97: hsl(var(--nx-swatch-pink-hs), 97%);
@@ -136,6 +141,7 @@
   --nx-swatch-red-05: hsl(var(--nx-swatch-red-hs), 5%);
   --nx-swatch-red-10: hsl(var(--nx-swatch-red-hs), 10%);
   --nx-swatch-red-20: hsl(var(--nx-swatch-red-hs), 20%);
+  --nx-swatch-red-25: hsl(var(--nx-swatch-red-hs), 25%);
   --nx-swatch-red-30: hsl(var(--nx-swatch-red-hs), 30%);
   --nx-swatch-red-35: hsl(var(--nx-swatch-red-hs), 35%);
   --nx-swatch-red-40: hsl(var(--nx-swatch-red-hs), 40%);
@@ -157,6 +163,7 @@
   --nx-swatch-turquoise-10: hsl(var(--nx-swatch-turquoise-hs), 10%);
   --nx-swatch-turquoise-20: hsl(var(--nx-swatch-turquoise-hs), 20%);
   --nx-swatch-turquoise-30: hsl(var(--nx-swatch-turquoise-hs), 30%);
+  --nx-swatch-turquoise-35: hsl(var(--nx-swatch-turquoise-hs), 35%);
   --nx-swatch-turquoise-40: hsl(var(--nx-swatch-turquoise-hs), 40%);
   --nx-swatch-turquoise-50: hsl(var(--nx-swatch-turquoise-hs), 50%);
   --nx-swatch-turquoise-60: hsl(var(--nx-swatch-turquoise-hs), 60%);
@@ -175,6 +182,7 @@
   --nx-swatch-purple-50: hsl(var(--nx-swatch-purple-hs), 50%);
   --nx-swatch-purple-60: hsl(var(--nx-swatch-purple-hs), 60%);
   --nx-swatch-purple-70: hsl(var(--nx-swatch-purple-hs), 70%);
+  --nx-swatch-purple-75: hsl(var(--nx-swatch-purple-hs), 75%);
   --nx-swatch-purple-80: hsl(var(--nx-swatch-purple-hs), 80%);
   --nx-swatch-purple-90: hsl(var(--nx-swatch-purple-hs), 90%);
   --nx-swatch-purple-95: hsl(var(--nx-swatch-purple-hs), 95%);
@@ -185,12 +193,17 @@
   --nx-swatch-indigo-10: hsl(var(--nx-swatch-indigo-hs), 10%);
   --nx-swatch-indigo-15: hsl(var(--nx-swatch-indigo-hs), 15%);
   --nx-swatch-indigo-20: hsl(var(--nx-swatch-indigo-hs), 20%);
+  --nx-swatch-indigo-25: hsl(var(--nx-swatch-indigo-hs), 25%);
   --nx-swatch-indigo-30: hsl(var(--nx-swatch-indigo-hs), 30%);
+  --nx-swatch-indigo-35: hsl(var(--nx-swatch-indigo-hs), 35%);
   --nx-swatch-indigo-40: hsl(var(--nx-swatch-indigo-hs), 40%);
+  --nx-swatch-indigo-45: hsl(var(--nx-swatch-indigo-hs), 45%);
   --nx-swatch-indigo-50: hsl(var(--nx-swatch-indigo-hs), 50%);
   --nx-swatch-indigo-60: hsl(var(--nx-swatch-indigo-hs), 60%);
+  --nx-swatch-indigo-65: hsl(var(--nx-swatch-indigo-hs), 65%);
   --nx-swatch-indigo-70: hsl(var(--nx-swatch-indigo-hs), 70%);
   --nx-swatch-indigo-80: hsl(var(--nx-swatch-indigo-hs), 80%);
+  --nx-swatch-indigo-85: hsl(var(--nx-swatch-indigo-hs), 85%);
   --nx-swatch-indigo-90: hsl(var(--nx-swatch-indigo-hs), 90%);
   --nx-swatch-indigo-95: hsl(var(--nx-swatch-indigo-hs), 95%);
   --nx-swatch-indigo-97: hsl(var(--nx-swatch-indigo-hs), 97%);
