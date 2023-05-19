@@ -69,10 +69,10 @@
     "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.3.0",
+    "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@nivo/bar": "^0.80.0",
     "@nivo/core": "^0.80.0",
     "@nivo/line": "^0.80.0",
@@ -94,8 +94,5 @@
     "react-router": "^6.11.2",
     "react-router-dom": "^6.11.2",
     "react-syntax-highlighter": "^15.5.0"
-  },
-  "resolutions": {
-    "@fortawesome/fontawesome-common-types": "0.3.0"
   }
 }

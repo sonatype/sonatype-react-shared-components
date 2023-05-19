@@ -27,8 +27,5 @@
     "start-server-and-test": "^2.0.0",
     "typescript": "4.5.5",
     "webdriverio": "^8.10.2"
-  },
-  "resolutions": {
-    "@fortawesome/fontawesome-common-types": "0.3.0"
   }
 }
