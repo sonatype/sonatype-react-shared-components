@@ -29,6 +29,13 @@
       .nx-color-picker__color {
         stroke: var(--nx-color-text-stark);
         stroke-width: var(--nx-border-width-alt);
+        r: calc(12px - var(--nx-border-width-alt) / 2);
+      }
+    }
+
+    &.selected:hover {
+      .nx-color-picker__color {
+        r: calc(14px - var(--nx-border-width-alt) / 2);
       }
     }
   }
