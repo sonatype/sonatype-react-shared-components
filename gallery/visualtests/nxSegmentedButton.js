@@ -14,6 +14,7 @@ describe('NxSegmentedButton', function() {
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
+    blurElement,
     checkScreenshotCoordinates,
     a11yTest
   } = setupBrowser('#/pages/Segmented%20Button');
@@ -25,16 +26,15 @@ describe('NxSegmentedButton', function() {
     await moveMouseAway();
   }
 
-  function openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector, hovered) {
+  function openedTest(selector, dropdownBtnSelector, focused, hovered) {
     return async function() {
       const [targetElement, dropdownBtn] = await waitAndGetElements(selector, dropdownBtnSelector);
       await openDropdown(dropdownBtnSelector);
 
       const { x, y } = await targetElement.boundingBox();
 
-      if (dropdownMenuItemSelector) {
-        const [menuItem] = await waitAndGetElements(dropdownMenuItemSelector);
-        menuItem.focus();
+      if (!focused) {
+        await blurElement(dropdownBtn);
       }
 
       if (hovered) {
@@ -43,8 +43,6 @@ describe('NxSegmentedButton', function() {
       await checkScreenshotCoordinates(x - 82, y, 250, 122);
     };
   }
-
-  const dropdownMenuItemSelector = '.nx-dropdown-menu .nx-dropdown-button:first-child';
 
   describe('Primary NxButton', function() {
     const exampleSelector = '#nx-segmented-button-primary-example',
@@ -67,13 +65,13 @@ describe('NxSegmentedButton', function() {
 
       describe('when open', function() {
         it('has a lighter background and white inner outline when focused',
-            openedTest(selector, dropdownBtnSelector));
+            openedTest(selector, dropdownBtnSelector, true));
         it('has a lighter background when not focused',
-            openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector));
+            openedTest(selector, dropdownBtnSelector, false));
         it('has a darker background when hovered',
-            openedTest(selector, dropdownBtnSelector, null, true));
+            openedTest(selector, dropdownBtnSelector, false, true));
         it('has a darker background and white inner outline when hovered and focused',
-            openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector, true));
+            openedTest(selector, dropdownBtnSelector, true, true));
       });
     });
 
@@ -105,13 +103,13 @@ describe('NxSegmentedButton', function() {
 
       describe('when open', function() {
         it('has a light blue background and darker blue inner outline when focused',
-            openedTest(selector, dropdownBtnSelector));
+            openedTest(selector, dropdownBtnSelector, true));
         it('has a light blue background when not focused',
-            openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector));
+            openedTest(selector, dropdownBtnSelector, false));
         it('has a darker background when hovered',
-            openedTest(selector, dropdownBtnSelector, null, true));
+            openedTest(selector, dropdownBtnSelector, false, true));
         it('has a darker background and blue inner outline when hovered and focused',
-            openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector, true));
+            openedTest(selector, dropdownBtnSelector, true, true));
       });
     });
   });
@@ -137,13 +135,13 @@ describe('NxSegmentedButton', function() {
 
       describe('when open', function() {
         it('has a light indigo background and darker grey inner outline when focused',
-            openedTest(selector, dropdownBtnSelector));
+            openedTest(selector, dropdownBtnSelector, true));
         it('has a light indigo background when not focused',
-            openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector));
+            openedTest(selector, dropdownBtnSelector, false));
         it('has a darker background when hovered',
-            openedTest(selector, dropdownBtnSelector, null, true));
+            openedTest(selector, dropdownBtnSelector, false, true));
         it('has a darker background and grey inner outline when hovered and focused',
-            openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector, true));
+            openedTest(selector, dropdownBtnSelector, true, true));
       });
     });
   });
