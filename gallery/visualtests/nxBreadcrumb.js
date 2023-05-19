@@ -7,7 +7,7 @@
 const { setupBrowser, TOOLTIP_WAIT } = require('./testUtils');
 
 describe('NxBreadcrumb', function() {
-  const { simpleTest, a11yTest, waitAndGetElements, checkScreenshot, wait, checkScreenshotCoordinates, moveMouseAway } =
+  const { simpleTest, a11yTest, waitAndGetElements, checkScreenshot, wait, checkScreenshotCoordinates } =
       setupBrowser('#/pages/Breadcrumb');
 
   const simpleExampleSelector = '#nx-breadcrumb-simple-example .gallery-example-live',
@@ -37,7 +37,6 @@ describe('NxBreadcrumb', function() {
 
     await dropdownBtn.click();
     await wait(TOOLTIP_WAIT);
-    await moveMouseAway();
 
     await checkScreenshot(example, 848, 364);
   });
@@ -50,7 +49,6 @@ describe('NxBreadcrumb', function() {
 
     await dropdownBtn.click();
     await wait(TOOLTIP_WAIT);
-    await moveMouseAway();
 
     await checkScreenshot(example, 848, 396);
   });
