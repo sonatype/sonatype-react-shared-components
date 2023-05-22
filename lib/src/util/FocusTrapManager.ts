@@ -30,7 +30,7 @@ export function useFocusTrap<T extends HTMLElement>(ref: RefObject<T>) {
 
 /**
  * Register an element as a focus trap, ensuring that other elements on the page (aside from the <body>) are
- * never the active element. At any given time, only the most-recently registered, not-yet-unregistered focus trap 
+ * never the active element. At any given time, only the most-recently registered, not-yet-unregistered focus trap
  * is active
  */
 export function register(el: HTMLElement) {
