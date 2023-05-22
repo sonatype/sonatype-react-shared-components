@@ -184,6 +184,38 @@ describe('NxModal', function() {
 
       expect(await isFocused(secondButton)).toBe(true);
     });
+
+    it('focuses on last focusable element after Shift+Tab, when focused element is hidden in css', async function() {
+      const openModalButtonSelector = `${nestedExampleSelector} button`,
+          firstHideButtonSelector = `${nestedExampleSelector} #hide-button`,
+          openNestedButtonSelector = `${nestedExampleSelector} #open-nested-modal`,
+          secondHideButtonSelector = `${nestedExampleSelector} #hide-button-2`,
+          closeButtonSelector = `${nestedExampleSelector} #second-close-button`,
+          keyboard = getPage().keyboard;
+
+      const [openModalButton] = await waitAndGetElements(openModalButtonSelector);
+      await openModalButton.click();
+
+      const [firstHideButton, openNestedButton] = await waitAndGetElements(
+          firstHideButtonSelector, openNestedButtonSelector
+      );
+
+      expect(await isFocused(firstHideButton)).toBe(true);
+      await openNestedButton.click();
+
+      const [secondHideButton, closeButton] = await waitAndGetElements(
+          secondHideButtonSelector, closeButtonSelector
+      );
+
+      expect(await isFocused(secondHideButton)).toBe(true);
+
+      await secondHideButton.click();
+      await keyboard.down('Shift');
+      await keyboard.press('Tab');
+      await keyboard.up('Shift');
+
+      expect(await isFocused(closeButton)).toBe(true);
+    });
   });
 
   describe('NxModal + NxDropdown ESC Closing behavior', function() {
