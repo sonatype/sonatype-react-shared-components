@@ -177,33 +177,35 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
     // Prevent leak when focus goes out of the dialog modal:
     // Set focus to first focusable element in this dialog if and only if
     // the focus is leaving from this dialog to something that is not inside a dialog modal.
-    const handleFocusOut = (event: FocusEvent) => {
-      const dialogEl = dialogRef.current;
+    const handleFocusIn = (event: FocusEvent) => {
+      const dialogEl = dialogRef.current,
+          target = event.target as HTMLElement | null,
+          relatedTarget = event.relatedTarget as HTMLElement | null;
+
       if (dialogEl) {
-        const departingFocusIsInsideThisDialog = !!(
-          event.target
-          && (event.target as HTMLElement).closest(DIALOG_MODAL_SELECTOR) === dialogEl
-        );
-        const receivingFocusIsInsideAnyDialogModal = !!(
-          event.relatedTarget
-          && (event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR)
-        );
-        // Focus is leaving from this dialog to something that is not inside a dialog modal.
-        const focusIsLeavingDialogModal = departingFocusIsInsideThisDialog && !receivingFocusIsInsideAnyDialogModal;
+        const departingFocusIsInsideThisDialog = !!(relatedTarget?.closest(DIALOG_MODAL_SELECTOR) === dialogEl),
+            receivingFocusIsInsideAnyDialogModal = !!target?.closest(DIALOG_MODAL_SELECTOR),
+
+            // Focus is leaving from this dialog to something that is not inside a dialog modal.
+            focusIsLeavingDialogModal = departingFocusIsInsideThisDialog && !receivingFocusIsInsideAnyDialogModal;
+
         if (focusIsLeavingDialogModal) {
-          getFirstVisibleFocusableElement(dialogEl).focus();
+          const elementToFocus =
+              departingFocusIsInsideThisDialog ? relatedTarget : getFirstVisibleFocusableElement(dialogEl);
+
+          elementToFocus.focus();
         }
       }
     };
 
     if (isModal) {
       document.addEventListener('keydown', keydownListener);
-      document.addEventListener('focusout', handleFocusOut);
+      document.addEventListener('focusin', handleFocusIn);
     }
 
     return () => {
       document.removeEventListener('keydown', keydownListener);
-      document.removeEventListener('focusout', handleFocusOut);
+      document.removeEventListener('focusin', handleFocusIn);
     };
   }, [isModal]);
 
