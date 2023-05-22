@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import classnames from 'classnames';
 import { pick, omit } from 'ramda';
 
@@ -14,11 +14,13 @@ import AbstractDialog from '../AbstractDialog/AbstractDialog';
 import { CloseHandler, Props, propTypes } from './types';
 
 import './NxModal.scss';
+import { useFocusTrap } from '../../util/FocusTrapManager';
+import useMergedRef from '@react-hook/merged-ref';
 
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */
 const _NxModal = forwardRef<HTMLDialogElement, Props>(
-    function NxModal({ className, onClose, onCancel = onClose, variant, role, ...attrs }, ref) {
+    function NxModal({ className, onClose, onCancel = onClose, variant, role, ...attrs }, externalRef) {
       const modalClasses = classnames('nx-modal', className, {
         'nx-modal--wide': variant === 'wide',
         'nx-modal--narrow': variant === 'narrow'
@@ -26,7 +28,11 @@ const _NxModal = forwardRef<HTMLDialogElement, Props>(
 
       const ariaLabelAttrNames = ['aria-label', 'aria-labelledby'] as const,
           ariaLabels = pick(ariaLabelAttrNames, attrs),
-          attrsWithoutLabels = omit(ariaLabelAttrNames, attrs);
+          attrsWithoutLabels = omit(ariaLabelAttrNames, attrs),
+          internalRef = useRef<HTMLDialogElement>(null),
+          ref = useMergedRef(internalRef, externalRef);
+
+      useFocusTrap(internalRef);
 
       return (
         <AbstractDialog ref={ref}
