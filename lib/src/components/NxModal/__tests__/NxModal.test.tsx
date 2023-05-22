@@ -7,16 +7,16 @@
 import React, { RefAttributes } from 'react';
 import { render, within } from '@testing-library/react';
 
-import * as AbstractDialogAll from '../../AbstractDialog/AbstractDialog';
+import * as focusUtil from '../../../util/focusUtil';
 import NxModal, { Props } from '../NxModal';
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import useToggle from '../../../util/useToggle';
 
 describe('NxModal', function() {
   beforeAll(() => {
-    // js-dom doesn't work with isVisible method in AbstractDialog
+    // js-dom doesn't work with isVisible method in focusUtil
     // so we're going to mock it to always return true.
-    jest.spyOn(AbstractDialogAll, 'isVisible').mockReturnValue(true);
+    jest.spyOn(focusUtil, 'isVisible').mockReturnValue(true);
   });
 
   const minimalProps: Props = {
