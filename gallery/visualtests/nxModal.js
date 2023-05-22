@@ -156,7 +156,7 @@ describe('NxModal', function() {
       await checkFullPageScreenshot();
     });
 
-    it('focuses on first focusable element, when focused element is hidden in css', async function() {
+    it('focuses on first focusable element after Tab, when focused element is hidden in css', async function() {
       const openModalButtonSelector = `${nestedExampleSelector} button`,
           firstHideButtonSelector = `${nestedExampleSelector} #hide-button`,
           openNestedButtonSelector = `${nestedExampleSelector} #open-nested-modal`,
@@ -180,6 +180,7 @@ describe('NxModal', function() {
       expect(await isFocused(secondHideButton)).toBe(true);
 
       await secondHideButton.click();
+      await getPage().keyboard.press('Tab');
 
       expect(await isFocused(secondButton)).toBe(true);
     });
