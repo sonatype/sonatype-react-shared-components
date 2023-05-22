@@ -7,6 +7,7 @@
 import React, { forwardRef, useRef } from 'react';
 import classnames from 'classnames';
 import { pick, omit } from 'ramda';
+import useMergedRef from '@react-hook/merged-ref';
 
 import withClass from '../../util/withClass';
 import AbstractDialog from '../AbstractDialog/AbstractDialog';
@@ -15,7 +16,6 @@ import { CloseHandler, Props, propTypes } from './types';
 
 import './NxModal.scss';
 import { useFocusTrap } from '../../util/FocusTrapManager';
-import useMergedRef from '@react-hook/merged-ref';
 
 // propTypes static analysis doesn't work with the way this component is written
 /* eslint-disable react/prop-types */
