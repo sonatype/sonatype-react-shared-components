@@ -15,9 +15,6 @@ export default function NxModalInsideModalExample() {
   const [showButton, toggleButton] = useToggle(true);
   const [showButton2, toggleButton2] = useToggle(true);
 
-  const buttonStyle = showButton ? {} : { display: 'none' };
-  const buttonStyle2 = showButton2 ? {} : { display: 'none' };
-
   return (
     <>
       <NxButton onClick={() => toggleModal()}>Open Modal</NxButton>
@@ -37,7 +34,9 @@ export default function NxModalInsideModalExample() {
               </div>
               <footer className="nx-footer">
                 <div className="nx-btn-bar">
-                  <NxButton id="hide-button-2" onClick={toggleButton2} style={buttonStyle2}>Hide Button</NxButton>
+                  { showButton2 &&
+                    <NxButton id="hide-button-2" onClick={toggleButton2}>Hide Button</NxButton>
+                  }
                   <NxButton id="second-button" onClick={() => alert('Boo!')}>Boo!</NxButton>
                   <NxButton onClick={toggleNestedModal}>Close</NxButton>
                 </div>
@@ -49,7 +48,7 @@ export default function NxModalInsideModalExample() {
             <h2 className="nx-h2" id="modal-header">Modal</h2>
           </header>
           <div className="nx-modal-content">
-            <NxButton id="hide-button" onClick={toggleButton} style={buttonStyle}>Hide Button</NxButton>
+            { showButton && <NxButton id="hide-button" onClick={toggleButton}>Hide Button</NxButton> }
             <NxButton id="open-nested-modal" variant="primary" onClick={toggleNestedModal}>Open Nested Modal</NxButton>
           </div>
           <footer className="nx-footer">
