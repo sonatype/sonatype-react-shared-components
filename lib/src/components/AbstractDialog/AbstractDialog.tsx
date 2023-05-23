@@ -10,17 +10,10 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { find, findLast } from 'ramda';
 import useMergedRef from '@react-hook/merged-ref';
 
 import { Props, DialogContextValue } from './types';
-
-const FOCUSABLE_ELEMENTS_SELECTOR
-  = '[href]:not([disabled]), button:not([disabled]), '
-  + 'input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [contenteditable], '
-  + 'object, iframe, [tabindex]:not([tabindex="-1"])';
-
-const DIALOG_MODAL_SELECTOR = 'dialog[aria-modal="true"]';
+import { getFirstVisibleFocusableElement } from '../../util/focusUtil';
 
 // https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element
 export const DialogContext = React.createContext<DialogContextValue | null>(null);
@@ -37,20 +30,6 @@ const hasWindow = typeof window !== 'undefined',
       && dynamicallyTypedWindow.HTMLDialogElement.prototype.show);
 
 const createCancelEvent = () => new Event('cancel', { cancelable: true });
-
-// Exported for testing
-export const isVisible = (element: HTMLElement | null) =>
-  !!(element && (element.offsetWidth || element.offsetHeight || element.getClientRects().length
-  && window.getComputedStyle(element).visibility !== 'hidden'));
-
-const getFocusableElements = (element: HTMLElement) =>
-  Array.from(element.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR)) as HTMLElement[];
-
-const getFirstVisibleFocusableElement = (element: HTMLElement) =>
-  find(isVisible, getFocusableElements(element)) || element;
-
-const getLastVisibleFocusableElement = (element: HTMLElement) =>
-  findLast(isVisible, getFocusableElements(element)) || element;
 
 /**
  * Abstracted Dialog element implementation and behaviors.
@@ -140,72 +119,6 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       return undefined;
     }
   }, [open, isModal]);
-
-  // Focus Trapping
-  useEffect(() => {
-    const keydownListener = (event: KeyboardEvent) => {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const dialogEl = dialogRef.current!;
-
-      // Only manage tab cycling when the focus is within the dialog
-      // and not nested inside another dialog
-      // so that there is no keynav conflict when another modal is open.
-      if (
-        document.activeElement
-        && document.activeElement.closest(DIALOG_MODAL_SELECTOR) === dialogEl
-      ) {
-        // Cycle focus on the first or last focusable item (if exists).
-        // Do the same if focus is NOT in the dialog to ensure that the focus is trapped within.
-        if (event.key === 'Tab') {
-          const firstFocusableElement = getFirstVisibleFocusableElement(dialogEl);
-          const lastFocusableElement = getLastVisibleFocusableElement(dialogEl);
-
-          if (event.shiftKey) {
-            if (document.activeElement === firstFocusableElement) {
-              lastFocusableElement.focus();
-              event.preventDefault();
-            }
-          }
-          else if (document.activeElement === lastFocusableElement) {
-            firstFocusableElement.focus();
-            event.preventDefault();
-          }
-        }
-      }
-    };
-
-    // Prevent leak when focus goes out of the dialog modal:
-    // Set focus to first focusable element in this dialog if and only if
-    // the focus is leaving from this dialog to something that is not inside a dialog modal.
-    const handleFocusOut = (event: FocusEvent) => {
-      const dialogEl = dialogRef.current;
-      if (dialogEl) {
-        const departingFocusIsInsideThisDialog = !!(
-          event.target
-          && (event.target as HTMLElement).closest(DIALOG_MODAL_SELECTOR) === dialogEl
-        );
-        const receivingFocusIsInsideAnyDialogModal = !!(
-          event.relatedTarget
-          && (event.relatedTarget as HTMLElement).closest(DIALOG_MODAL_SELECTOR)
-        );
-        // Focus is leaving from this dialog to something that is not inside a dialog modal.
-        const focusIsLeavingDialogModal = departingFocusIsInsideThisDialog && !receivingFocusIsInsideAnyDialogModal;
-        if (focusIsLeavingDialogModal) {
-          getFirstVisibleFocusableElement(dialogEl).focus();
-        }
-      }
-    };
-
-    if (isModal) {
-      document.addEventListener('keydown', keydownListener);
-      document.addEventListener('focusout', handleFocusOut);
-    }
-
-    return () => {
-      document.removeEventListener('keydown', keydownListener);
-      document.removeEventListener('focusout', handleFocusOut);
-    };
-  }, [isModal]);
 
   // Listen to the native HTMLDialogElement cancel event
   // which supporting browsers fire when the dialog is closed via ESC
