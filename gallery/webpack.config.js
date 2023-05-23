@@ -27,7 +27,7 @@ module.exports = function(env = { production: false }) {
       filename: 'bundle.js',
     },
     resolve: {
-      symlinks: false,
+      symlinks: true,
       extensions: ['.tsx', '.ts', '.js', '.jsx']
     },
     module: {

@@ -6,6 +6,10 @@
  */
 import { curry, lensPath, set } from 'ramda';
 
+// Workaround for https://github.com/microsoft/TypeScript/issues/47663 regarding ts-toolbelt being a transitive
+// dep of ramda
+import {} from 'ts-toolbelt';
+
 /**
  * [String] -> a -> b -> b
  * Set nested property using path
