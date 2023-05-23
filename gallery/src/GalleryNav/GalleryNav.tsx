@@ -55,9 +55,8 @@ const renderLinks = (filter?: string) =>
       .entries(entries)
       .map(([pageName, entry]) =>
         <NxCollapsibleItems.Child key={pageName} role="menuitem">
-          <NavLink className="gallery-nav-link"
-                   to={`/pages/${pageName}`}
-                   activeClassName="selected">
+          <NavLink className={({ isActive }) => 'gallery-nav-link' + isActive ? 'selected' : ''}
+                   to={`/pages/${pageName}`}>
             <span className="gallery-nav-link__icon">
               { PAGE_TYPE_TO_ICON_MAP[entry.type] }
             </span>

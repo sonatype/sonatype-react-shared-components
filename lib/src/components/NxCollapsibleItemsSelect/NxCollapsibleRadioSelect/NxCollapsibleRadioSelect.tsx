@@ -17,7 +17,7 @@ function NxCollapsibleRadioSelect<T extends Option>(props: Props<T>) {
   const { selectedId, onChange, optionTooltipGenerator, ...otherProps } = props,
       {name, options} = otherProps,
       disabled = !!props.disabled,
-      selectedItem = find(propEq('id', selectedId), options);
+      selectedItem = find(propEq(selectedId, 'id'), options);
 
   const renderOption = ({id, name: optionName}: Option) => (
     // NxCollapsibleItemsChild takes empty role to mean no role and normalizes it correctly

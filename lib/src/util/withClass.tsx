@@ -13,6 +13,7 @@ type NativeElType<E extends keyof JSX.IntrinsicElements> =
   JSX.IntrinsicElements[E] extends SVGProps<infer B> ? B :
   never;
 
+/* eslint-disable react/prop-types */
 export default function withClass<E extends keyof JSX.IntrinsicElements>(
   El: E,
   withClassName: string,
