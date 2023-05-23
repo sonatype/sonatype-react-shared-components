@@ -15,6 +15,7 @@ describe('NxIconDropdown', function() {
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
+    blurElement,
     checkScreenshotCoordinates,
     getPage,
     a11yTest,
@@ -33,6 +34,8 @@ describe('NxIconDropdown', function() {
   });
 
   describe('Default NxIconDropdown when open', function() {
+    const dropdownToggleSelector = `${defaultSelector} .nx-icon-dropdown__toggle`;
+
     beforeEach(async function() {
       const [button, sidebar] = await waitAndGetElements(
           defaultSelector + ' .nx-icon-dropdown__toggle',
@@ -59,11 +62,10 @@ describe('NxIconDropdown', function() {
     });
 
     it('has a light blue background with expanded menu when not focused', async function() {
-      const dropdownMenuItemSelector = `${defaultSelector} .nx-dropdown-menu .nx-dropdown-link:first-child`,
-          [targetElement, dropdownMenuItem] = await waitAndGetElements(defaultSelector, dropdownMenuItemSelector),
+      const [targetElement, dropdownBtn] = await waitAndGetElements(defaultSelector, dropdownToggleSelector),
           page = getPage();
 
-      dropdownMenuItem.focus();
+      await blurElement(dropdownBtn);
       await moveMouseAway();
 
       const { x, y } = await targetElement.boundingBox(),
@@ -74,8 +76,7 @@ describe('NxIconDropdown', function() {
     });
 
     it('has a grey background and blue border with expanded menu when hovered and focused', async function() {
-      const dropdownToggleSelector = `${defaultSelector} .nx-icon-dropdown__toggle`,
-          [targetElement, dropdownBtn] = await waitAndGetElements(defaultSelector, dropdownToggleSelector),
+      const [targetElement, dropdownBtn] = await waitAndGetElements(defaultSelector, dropdownToggleSelector),
           page = getPage();
 
       await dropdownBtn.hover();
@@ -88,13 +89,10 @@ describe('NxIconDropdown', function() {
     });
 
     it('has a grey background with expanded menu when hovered', async function() {
-      const dropdownMenuItemSelector = `${defaultSelector} .nx-dropdown-menu .nx-dropdown-link:first-child`,
-          dropdownToggleSelector = `${defaultSelector} .nx-icon-dropdown__toggle`,
-          [targetElement, dropdownMenuItem, dropdownBtn] =
-            await waitAndGetElements(defaultSelector, dropdownMenuItemSelector, dropdownToggleSelector),
+      const [targetElement, dropdownBtn] = await waitAndGetElements(defaultSelector, dropdownToggleSelector),
           page = getPage();
 
-      await dropdownMenuItem.focus();
+      await blurElement(dropdownBtn);
       await dropdownBtn.hover();
 
       const { x, y } = await targetElement.boundingBox(),
