@@ -7,7 +7,7 @@
 import React, { forwardRef, useContext } from 'react';
 import classnames from 'classnames';
 
-import { Props } from './types';
+import { Props, propTypes } from './types';
 import { FormAriaContext } from '../NxForm/context';
 import { getFirstValidationError, hasValidationErrors } from '../../util/validationUtil';
 import { useUniqueId } from '../../util/idUtil';
@@ -46,5 +46,7 @@ const NxFormSelect = forwardRef<HTMLDivElement, Props>(function NxFormSelect(pro
     </div>
   );
 });
+
+NxFormSelect.propTypes = propTypes;
 
 export default NxFormSelect;

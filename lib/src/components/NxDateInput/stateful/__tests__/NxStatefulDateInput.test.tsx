@@ -101,7 +101,8 @@ describe('NxStatefulDateInput', function() {
         expect(component.getByRole('alert')).toHaveTextContent('expect 2222');
         expect(input).toHaveErrorMessage('expect 2222');
 
-        await user.keyboard('{Backspace}'.repeat(4) + '2222');
+        await user.clear(input);
+        await user.keyboard('2222-11-11');
         expect(input).toHaveValue('2222-11-11');
         expect(validator).toHaveBeenCalledWith('2222-11-11');
         expect(component.queryByRole('alert')).not.toBeInTheDocument();

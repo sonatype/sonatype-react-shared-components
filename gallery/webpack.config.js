@@ -25,7 +25,6 @@ module.exports = function(env = { production: false }) {
     entry: './main.tsx',
     output: {
       filename: 'bundle.js',
-      publicPath: './'
     },
     resolve: {
       symlinks: false,
@@ -128,9 +127,11 @@ module.exports = function(env = { production: false }) {
 
       // needed for browserstack testing with Safari to work. Not considered a security risk because nothing
       // served here is sensitive and there is no server-side state to be at risk of changing.
-      disableHostCheck: true,
-      publicPath: '/',
-      contentBase: path.join(__dirname, 'src')
+      allowedHosts: 'all',
+      static: {
+        publicPath: '/',
+        directory: path.join(__dirname, 'src')
+      }
     },
     snapshot: {
       managedPaths: []
