@@ -9,7 +9,7 @@
     "webdriverio": "wdio run wdio.conf.js"
   },
   "dependencies": {
-    "@sonatype/react-shared-components": "file:../lib/dist",
+    "@sonatype/react-shared-components": "workspace:../lib/dist",
     "next": "^12.0.8",
     "next-transpile-modules": "^10.0.0",
     "react": "16.14",
@@ -27,5 +27,6 @@
     "start-server-and-test": "^2.0.0",
     "typescript": "4.5.5",
     "webdriverio": "^8.10.2"
-  }
+  },
+  "packageManager": "pnpm@8.5.1"
 }

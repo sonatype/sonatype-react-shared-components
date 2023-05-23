@@ -1,0 +1,4 @@
+packages:
+  - 'lib'
+  - 'gallery'
+  - 'ssr-tests'
