@@ -243,7 +243,8 @@ export default function NxTreeItem(props: ItemProps) {
         onKeyDown={onKeyDown}
         onFocus={onFocus}
         aria-labelledby={labelledBy}
-        aria-expanded={isOpen}>
+        aria-expanded={isOpen}
+        aria-selected={focusState === 'self'}>
       {intersection}
       <svg className="nx-tree__line-drop" viewBox="0 0 36 1" preserveAspectRatio="none">
         <line x1="12" x2="12" y2="1" />

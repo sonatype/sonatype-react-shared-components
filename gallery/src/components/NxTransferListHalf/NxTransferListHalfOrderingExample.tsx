@@ -29,7 +29,7 @@ export default function NxTransferListHalfOrderingExample() {
       [filter, setFilter] = useState('');
 
   function onItemChange(_: boolean, id: number) {
-    setItems(reject(propEq('id', id), items));
+    setItems(reject(propEq(id, 'id'), items));
   }
 
   function onReorderItem(id: number, direction: -1 | 1) {

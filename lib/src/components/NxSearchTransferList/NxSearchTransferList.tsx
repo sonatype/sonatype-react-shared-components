@@ -48,7 +48,7 @@ export default function NxSearchTransferList<T extends string | number>(props: P
   }
 
   function onItemRemove(_: boolean, id: T) {
-    onRemove(reject(propEq('id', id), addedItems));
+    onRemove(reject(propEq(id, 'id'), addedItems));
   }
 
   return (

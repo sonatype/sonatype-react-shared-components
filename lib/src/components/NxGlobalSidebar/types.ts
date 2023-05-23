@@ -39,7 +39,7 @@ export type NxGlobalSidebarNavigationProps = HTMLAttributes<HTMLDivElement>;
 // but non-required proptypes do, and the actual implementation does
 export const nxGlobalSidebarNavigationPropTypes = {
   className: PropTypes.string
-} as ValidationMap<NxGlobalSidebarNavigationProps>;
+};
 
 export interface NxGlobalSidebarNavigationLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   isSelected?: boolean | null;
