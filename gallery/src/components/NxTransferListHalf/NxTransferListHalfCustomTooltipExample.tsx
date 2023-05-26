@@ -35,7 +35,7 @@ export default function NxTransferListHalfCustomTooltipExample() {
       [filter, setFilter] = useState('');
 
   function onItemChange(_: boolean, id: number) {
-    setItems(reject(propEq('id', id), items));
+    setItems(reject(propEq(id, 'id'), items));
   }
 
   return <NxTransferListHalf label="Example Items"

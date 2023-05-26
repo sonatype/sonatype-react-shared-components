@@ -100,11 +100,58 @@ describe('NxButton', function() {
   });
 
   describe('nx-btn class on <a>', function() {
-    const selector = '#nx-btn-links-example .nx-btn-bar';
+    const selector = '#nx-btn-links-example .nx-btn-bar:first-child';
+    const disabledSelector = '#nx-btn-links-example .nx-btn-bar:last-child';
 
-    const { simpleTest } = setupBrowser('#/pages/Button (HTML)');
+    const { simpleTest, hoverTest, clickTest, focusTest, focusAndHoverTest } = setupBrowser('#/pages/Button (HTML)');
 
-    it('looks right', simpleTest(selector));
+    const buttonTests = (selector) => {
+      it('looks right by default', simpleTest(selector));
+      it('looks right when hovered', hoverTest(selector));
+      it('looks right when clicked', clickTest(selector));
+      it('looks right when focused', focusTest(selector));
+      it('looks right when focused and hovered',
+          focusAndHoverTest(selector));
+    };
+
+    describe('Secondary styled button', function() {
+      const secondarySelector = `${selector} .nx-btn:not(.nx-btn--primary):not(.nx-btn--tertiary):not(.nx-btn--error)`;
+      buttonTests(secondarySelector);
+    });
+
+    describe('Primary styled buttons', function() {
+      const primarySelector = `${selector} .nx-btn--primary`;
+      buttonTests(primarySelector);
+    });
+
+    describe('Tertiary styled buttons', function() {
+      const tertiarySelector = `${selector} .nx-btn--tertiary`;
+      buttonTests(tertiarySelector);
+    });
+
+    describe('Error styled buttons', function() {
+      const errorSelector = `${selector} .nx-btn--error`;
+      buttonTests(errorSelector);
+    });
+
+    describe('Disabled styled buttons', function() {
+      describe('secondary', function() {
+        const selector = `${disabledSelector} .nx-btn:not(.nx-btn--primary):not(.nx-btn--tertiary):not(.nx-btn--error)`;
+        buttonTests(selector);
+      });
+      describe('primary', function() {
+        const selector = `${disabledSelector} .nx-btn--primary`;
+        buttonTests(selector);
+      });
+      describe('tertiary', function() {
+        const selector = `${disabledSelector} .nx-btn--tertiary`;
+        buttonTests(selector);
+      });
+      describe('error', function() {
+        const selector = `${disabledSelector} .nx-btn--error`;
+        buttonTests(selector);
+      });
+    });
   });
 
   it('passes a11y checks', a11yTest());

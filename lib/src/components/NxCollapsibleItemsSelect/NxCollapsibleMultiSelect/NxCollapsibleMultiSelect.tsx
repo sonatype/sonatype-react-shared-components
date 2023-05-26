@@ -25,7 +25,7 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
 
   // Throw an error if one of the selectedIds is not part of the available options
   normalizedSelectedIds.forEach(itemId => {
-    if (!any(propEq('id', itemId), options)) {
+    if (!any(propEq<string>(itemId, 'id'), options)) {
       throw new Error(`You are attempting to select "${itemId}", but it is not part of the available options`);
     }
   });

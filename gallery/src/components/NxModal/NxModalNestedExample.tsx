@@ -39,7 +39,7 @@ export default function NxModalInsideModalExample() {
                 <div className="nx-btn-bar">
                   <NxButton id="hide-button-2" onClick={toggleButton2} style={buttonStyle2}>Hide Button</NxButton>
                   <NxButton id="second-button" onClick={() => alert('Boo!')}>Boo!</NxButton>
-                  <NxButton onClick={toggleNestedModal}>Close</NxButton>
+                  <NxButton id="second-close-button" onClick={toggleNestedModal}>Close</NxButton>
                 </div>
               </footer>
             </NxModal>

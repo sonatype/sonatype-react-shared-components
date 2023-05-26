@@ -7,6 +7,8 @@
 const { setupBrowser } = require('./testUtils');
 
 const OUTSET = 6;
+const selectableColors =
+['purple', 'pink', 'blue', 'red', 'turquoise', 'orange', 'yellow', 'kiwi', 'sky', 'indigo'];
 
 describe('NxTag', function() {
   const {
@@ -16,13 +18,19 @@ describe('NxTag', function() {
     hoverTest,
     simpleTest,
     waitAndGetElements,
-    checkScreenshot,
     checkScreenshotCoordinates,
     moveMouseAway,
     scrollIntoView,
     wait,
     a11yTest
   } = setupBrowser('#/pages/Tag');
+
+  function interactionStatesTest(selector) {
+    it('has a dark grey border when hovered', hoverTest(selector));
+    it('has a blue outline when focused', focusTest(selector, undefined, OUTSET));
+    it('has a blue outline and dark grey border when focused and hovered',
+        focusAndHoverTest(selector, undefined, undefined, OUTSET));
+  }
 
   describe('Basic NxTag', function() {
     const selector = '#nx-tag-example .gallery-example-live',
@@ -49,25 +57,35 @@ describe('NxTag', function() {
     it('renders a default, Indigo colored NxTag if no color prop is passed', simpleTest(indigoTagSelector));
   });
 
-  describe('NxSelectableTag', function() {
-    const selector = '#nx-selectable-tag-example .nx-tag:first-child',
-        inputSelector = `${selector} input`;
+  describe('unselected NxSelectableTag', function() {
+    selectableColors.forEach(color => {
+      const selector = `#nx-selectable-tag-example .nx-selectable-color--${color}`;
 
-    it('has a lighter background and darker border by default', simpleTest(selector));
-    it('has a dark grey border when hovered', hoverTest(selector));
-    it('has a blue outline when focused', focusTest(selector, undefined, OUTSET));
-    it('has a blue outline and dark grey border when focused and hovered',
-        focusAndHoverTest(selector, undefined, undefined, OUTSET));
+      describe(color, function() {
+        it('has a lighter background and darker border by default', simpleTest(selector));
 
-    it('has a darker background and no border when selected', async function() {
-      const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
+        interactionStatesTest(selector);
+      });
+    });
+  });
 
-      await targetElement.click();
-      //remove focus from tag for snapshot
-      await blurElement(inputElement);
-      await moveMouseAway();
+  describe('selected NxSelectableTag', function() {
+    selectableColors.forEach(color => {
+      describe(color, function() {
+        const selector = `#nx-selectable-tag-example .nx-selectable-color--${color}`,
+            inputSelector = `${selector} input`;
 
-      await checkScreenshot(targetElement);
+        beforeEach(async function() {
+          const [targetElement, inputElement] = await waitAndGetElements(selector, inputSelector);
+          await targetElement.click();
+          await blurElement(inputElement);
+          await moveMouseAway();
+        });
+
+        it('has a darker background and no borders by default', simpleTest(selector));
+
+        interactionStatesTest(selector);
+      });
     });
   });
 

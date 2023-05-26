@@ -43,7 +43,7 @@ export default function NxDrawerWithNxToastExample() {
     ]);
   };
 
-  const removeToast = (id: number) => setToasts(reject(propEq('id', id), toasts));
+  const removeToast = (id: number) => setToasts(reject(propEq(id, 'id'), toasts));
 
   return (
     <>
