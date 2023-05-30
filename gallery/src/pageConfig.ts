@@ -158,6 +158,7 @@ import NxBreadcrumbPage from './components/NxBreadcrumb/NxBreadcrumbPage';
 import NxStatefulBreadcrumbPage from './components/NxStatefulBreadcrumb/NxStatefulBreadcrumbPage';
 import DarkModeClassPage from './styles/DarkMode/DarkModeClassPage';
 import DarkModeMixinPage from './styles/DarkMode/DarkModeMixinPage';
+import NxSmallTagPage from './components/NxSmallTag/NxSmallTagPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -174,6 +175,7 @@ const pageConfig: PageConfig = {
     'Stateful Submit Mask': { content: NxStatefulSubmitMaskPage, type: 'react' },
     'System Notice': { content: NxSystemNoticePage, type: 'html' },
     'Tag': { content: NxTagPage, type: 'react' },
+    'Small Tag': { content: NxSmallTagPage, type: 'react' },
     'Threat Counter': { content: NxThreatCounterPage, type: 'react' },
     'Small Threat Counter': { content: NxSmallThreatCounterPage, type: 'react' },
     'Status Indicator': { content: NxStatusIndicatorPage, type: 'html' },
