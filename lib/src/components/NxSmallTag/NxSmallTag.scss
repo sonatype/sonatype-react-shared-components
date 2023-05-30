@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+ @use '../../scss-shared/nx-text-helpers';
+
+.nx-small-tag {
+  @include nx-text-helpers.semi-bold;
+
+  align-items: center;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: var(--nx-swatch-white);
+  display: inline-flex;
+  font-size: var(--nx-font-size-s);
+  height: 24px;
+  margin: 0;
+  max-width: Min(100%,200px);
+  padding: 0 var(--nx-spacing-2x);
+  position: relative;
+}
+
+.nx-small-tag-color {
+  &--blue {
+    background-color: var(--nx-swatch-blue-30);
+  }
+
+  &--green {
+    background-color: var(--nx-swatch-green-25);
+  }
+
+  &--indigo {
+    background-color: var(--nx-swatch-indigo-40);
+  }
+
+  &--orange {
+    background-color: var(--nx-swatch-orange-20);
+  }
+
+  &--pink {
+    background-color: var(--nx-swatch-pink-40);
+  }
+
+  &--purple {
+    background-color: var(--nx-swatch-purple-30);
+  }
+
+  &--red {
+    background-color: var(--nx-swatch-red-30);
+  }
+
+  &--teal {
+    background-color: var(--nx-swatch-teal-30);
+  }
+
+  &--turquoise {
+    background-color: var(--nx-swatch-turquoise-20);
+  }
+}
+
+.nx-small-tag-container {
+  display: flex;
+  gap: var(--nx-spacing-2x);
+}
+
+#nx-small-tag-in-table-example .nx-table .nx-small-tag{
+  margin-left: var(--nx-spacing-2x);
+}
