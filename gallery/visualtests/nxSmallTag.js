@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+const { setupBrowser } = require('./testUtils');
+
+describe('NxSmallTag', function() {
+  const { simpleTest, a11yTest } = setupBrowser('#/pages/Small%20Tag');
+
+  const smallTagSelector = '#nx-small-tag-example .gallery-example-live',
+      defaultTagSelector = `${smallTagSelector} .nx-small-tag-color--pink`,
+      smallTagInTableSelector = '#nx-small-tag-in-table-example .gallery-example-live';
+
+  it('looks right', simpleTest(smallTagSelector));
+  it('looks right within Table', simpleTest(smallTagInTableSelector));
+  it('renders a default pink colored NxSmallTag if no color prop is passed', simpleTest(defaultTagSelector));
+  it('passes a11y checks', a11yTest());
+});
