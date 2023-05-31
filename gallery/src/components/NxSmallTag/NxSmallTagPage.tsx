@@ -20,7 +20,7 @@ const NxSmallTagPage = () =>
     <GalleryDescriptionTile>
       <NxP>
         Small tags are used only by designers and developers when making a product, rather than
-        being applied and removed by uses of the product. <NxCode>NxSmallTag</NxCode> is an inline component
+        being applied and removed by users of the product. <NxCode>NxSmallTag</NxCode> is an inline component
         intended to call out product features ("Beta", "Custom", "Labs", etc), and is informational
         whereas <NxCode>NxTag</NxCode> is functional. There is a set of colors for small tags that can be specified
         via props.
