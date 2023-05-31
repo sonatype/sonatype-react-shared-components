@@ -14,6 +14,7 @@ describe('NxSegmentedButton', function() {
     simpleTest,
     waitAndGetElements,
     moveMouseAway,
+    blurElement,
     checkScreenshotCoordinates,
     a11yTest
   } = setupBrowser('#/pages/Segmented%20Button');
@@ -25,23 +26,23 @@ describe('NxSegmentedButton', function() {
     await moveMouseAway();
   }
 
-  function openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector) {
+  function openedTest(selector, dropdownBtnSelector, focused, hovered) {
     return async function() {
-      const [targetElement] = await waitAndGetElements(selector);
+      const [targetElement, dropdownBtn] = await waitAndGetElements(selector, dropdownBtnSelector);
       await openDropdown(dropdownBtnSelector);
 
       const { x, y } = await targetElement.boundingBox();
 
-      if (dropdownMenuItemSelector) {
-        const [menuItem] = await waitAndGetElements(dropdownMenuItemSelector);
-        menuItem.focus();
+      if (!focused) {
+        await blurElement(dropdownBtn);
       }
 
-      await checkScreenshotCoordinates(x - 90, y, 255, 122);
+      if (hovered) {
+        dropdownBtn.hover();
+      }
+      await checkScreenshotCoordinates(x - 82, y, 250, 122);
     };
   }
-
-  const dropdownMenuItemSelector = '.nx-dropdown-menu .nx-dropdown-button:first-child';
 
   describe('Primary NxButton', function() {
     const exampleSelector = '#nx-segmented-button-primary-example',
@@ -61,10 +62,17 @@ describe('NxSegmentedButton', function() {
       it('has a darker blue background when hovered', hoverTest(selector, dropdownBtnSelector));
       it('has a lighter blue background when clicked', clickTest(selector, dropdownBtnSelector));
       it('has a white inner outline when focused', focusTest(selector, dropdownBtnSelector));
-      it('has a lighter blue background and white inner outline when opened',
-          openedTest(selector, dropdownBtnSelector));
-      it('has a lighter blue background when opened and not focused',
-          openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector));
+
+      describe('when open', function() {
+        it('has a lighter background and white inner outline when focused',
+            openedTest(selector, dropdownBtnSelector, true));
+        it('has a lighter background when not focused',
+            openedTest(selector, dropdownBtnSelector, false));
+        it('has a darker background when hovered',
+            openedTest(selector, dropdownBtnSelector, false, true));
+        it('has a darker background and white inner outline when hovered and focused',
+            openedTest(selector, dropdownBtnSelector, true, true));
+      });
     });
 
     it('passes a11y checks when opened', async function() {
@@ -92,10 +100,17 @@ describe('NxSegmentedButton', function() {
       it('has a blue background when hovered', hoverTest(selector, dropdownBtnSelector));
       it('has a blue border and light blue background when clicked', clickTest(selector, dropdownBtnSelector));
       it('has a darker blue inner outline when focused', focusTest(selector, dropdownBtnSelector));
-      it('has a light blue background and darker blue inner outline when opened',
-          openedTest(selector, dropdownBtnSelector));
-      it('has a light blue background when opened and not focused',
-          openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector));
+
+      describe('when open', function() {
+        it('has a light blue background and darker blue inner outline when focused',
+            openedTest(selector, dropdownBtnSelector, true));
+        it('has a light blue background when not focused',
+            openedTest(selector, dropdownBtnSelector, false));
+        it('has a darker background when hovered',
+            openedTest(selector, dropdownBtnSelector, false, true));
+        it('has a darker background and blue inner outline when hovered and focused',
+            openedTest(selector, dropdownBtnSelector, true, true));
+      });
     });
   });
 
@@ -117,10 +132,17 @@ describe('NxSegmentedButton', function() {
       it('has a light indigo background when hovered', hoverTest(selector, dropdownBtnSelector));
       it('has a light grey border and light indigo background when clicked', clickTest(selector, dropdownBtnSelector));
       it('has a darker grey inner outline when focused', focusTest(selector, dropdownBtnSelector));
-      it('has a darker grey inner outline and light indigo background when opened',
-          openedTest(selector, dropdownBtnSelector));
-      it('has a light indigo background when opened and not focused',
-          openedTest(selector, dropdownBtnSelector, dropdownMenuItemSelector));
+
+      describe('when open', function() {
+        it('has a light indigo background and darker grey inner outline when focused',
+            openedTest(selector, dropdownBtnSelector, true));
+        it('has a light indigo background when not focused',
+            openedTest(selector, dropdownBtnSelector, false));
+        it('has a darker background when hovered',
+            openedTest(selector, dropdownBtnSelector, false, true));
+        it('has a darker background and grey inner outline when hovered and focused',
+            openedTest(selector, dropdownBtnSelector, true, true));
+      });
     });
   });
 

@@ -143,16 +143,29 @@
   > .nx-segmented-btn__dropdown-btn {
     &.nx-btn--primary {
       background-color: var(--nx-color-primary-button-background-active);
+
+      &:hover:not(:active) {
+        background-color: var(--nx-color-primary-button-background-hover);
+      }
     }
 
     &.nx-btn--secondary {
       background-color: var(--nx-color-secondary-button-background-active);
       border-color: var(--nx-color-secondary-button-border-active);
+
+      &:hover:not(:active) {
+        background-color: var(--nx-color-secondary-button-background-hover);
+        color: var(--nx-color-secondary-button-text);
+      }
     }
 
     &.nx-btn--tertiary {
       background-color: var(--nx-color-tertiary-button-background-active);
       border-color: var(--nx-color-tertiary-button-border-active);
+
+      &:hover:not(:active) {
+        background-color: var(--nx-color-tertiary-button-background-hover);
+      }
     }
   }
 }
