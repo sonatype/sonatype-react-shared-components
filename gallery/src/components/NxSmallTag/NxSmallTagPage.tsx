@@ -10,10 +10,8 @@ import { NxCode, NxP, NxTable, NxTextLink } from '@sonatype/react-shared-compone
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
 import NxSmallTagExample from './NxSmallTagExample';
-import NxSmallTagInTableExample from './NxSmallTagInTableExample';
 
 const NxSmallTagExampleCode = require('./NxSmallTagExample?raw');
-const NxSmallTagInTableExampleCode = require('./NxSmallTagInTableExample?raw');
 
 const NxSmallTagPage = () =>
   <>
@@ -70,13 +68,6 @@ const NxSmallTagPage = () =>
                         codeExamples={NxSmallTagExampleCode}>
       Example of small tags in all available colors. Note that the small tags have a maximum width
       of 200px and should be designed as short as possible, they do not truncate.
-    </GalleryExampleTile>
-
-    <GalleryExampleTile title="Small Tag In Table Example"
-                        id="nx-small-tag-in-table-example"
-                        liveExample={NxSmallTagInTableExample}
-                        codeExamples={NxSmallTagInTableExampleCode}>
-      Example of small tags in the table.
     </GalleryExampleTile>
   </>;
 

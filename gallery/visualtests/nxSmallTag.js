@@ -10,11 +10,9 @@ describe('NxSmallTag', function() {
   const { simpleTest, a11yTest } = setupBrowser('#/pages/Small%20Tag');
 
   const smallTagSelector = '#nx-small-tag-example .gallery-example-live',
-      defaultTagSelector = `${smallTagSelector} .nx-small-tag-color--pink`,
-      smallTagInTableSelector = '#nx-small-tag-in-table-example .gallery-example-live';
+      defaultTagSelector = `${smallTagSelector} .nx-small-tag-color--pink`;
 
   it('looks right', simpleTest(smallTagSelector));
-  it('looks right within Table', simpleTest(smallTagInTableSelector));
   it('renders a default pink colored NxSmallTag if no color prop is passed', simpleTest(defaultTagSelector));
   it('passes a11y checks', a11yTest());
 });
