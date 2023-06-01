@@ -14,8 +14,8 @@ export { Props } from './types';
 const NxSmallTag = forwardRef<HTMLLabelElement, Props>(function NxSmallTag(props, ref) {
   const { children, className, color, ...attrs } = props,
       tagClasses = classnames('nx-small-tag', className, {
-        'nx-small-tag-color--pink': !color,
-        [`nx-small-tag-color--${color}`]: color
+        'nx-small-tag--pink': !color,
+        [`nx-small-tag--${color}`]: color
       });
 
   return (
