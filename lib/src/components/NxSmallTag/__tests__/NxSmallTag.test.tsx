@@ -12,7 +12,7 @@ import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 describe('NxSmallTag', function() {
   type PropsWithRef = Props & RefAttributes<HTMLLabelElement>;
-  const renderEl = rtlRenderElement<PropsWithRef>(NxSmallTag, { children: 'small tag'});
+  const renderEl = rtlRenderElement<PropsWithRef>(NxSmallTag, { children: 'small tag' });
 
   it('sets ref on label element', function() {
     const ref = React.createRef<HTMLLabelElement>(),
