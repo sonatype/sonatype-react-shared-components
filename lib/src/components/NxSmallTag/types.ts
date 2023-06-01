@@ -11,12 +11,12 @@ export const NX_SMALL_TAG_COLORS = ['blue', 'green', 'indigo', 'orange', 'pink',
   'purple', 'red', 'teal', 'turquoise'] as const;
 export type NX_SMALL_TAG_COLOR_TYPE = (typeof NX_SMALL_TAG_COLORS)[number];
 
-export interface Props extends LabelHTMLAttributes<HTMLLabelElement> {
+export interface Props extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'color'> {
   children: ReactNode;
-  smallTagColor?: NX_SMALL_TAG_COLOR_TYPE | null;
+  color?: NX_SMALL_TAG_COLOR_TYPE | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   children: PropTypes.node.isRequired,
-  smallTagColor: PropTypes.oneOf(NX_SMALL_TAG_COLORS)
+  color: PropTypes.oneOf(NX_SMALL_TAG_COLORS)
 };
