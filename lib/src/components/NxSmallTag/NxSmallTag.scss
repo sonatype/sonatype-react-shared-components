@@ -16,10 +16,14 @@
   display: inline-flex;
   font-size: var(--nx-font-size-s);
   height: 24px;
-  margin: 0;
+  margin: 0 var(--nx-spacing-2x);
   max-width: Min(100%,200px);
   padding: 0 var(--nx-spacing-2x);
   position: relative;
+
+  + .nx-small-tag {
+    margin-left: 0;
+  }
 }
 
 .nx-small-tag-color {
@@ -58,13 +62,4 @@
   &--turquoise {
     background-color: var(--nx-swatch-turquoise-20);
   }
-}
-
-.nx-small-tag-container {
-  display: flex;
-  gap: var(--nx-spacing-2x);
-}
-
-#nx-small-tag-in-table-example .nx-table .nx-small-tag{
-  margin-left: var(--nx-spacing-2x);
 }

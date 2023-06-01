@@ -10,18 +10,16 @@ import { NxSmallTag } from '@sonatype/react-shared-components';
 function NxSmallTagExample() {
   return (
     <>
-      <div className='nx-small-tag-container'>
-        <NxSmallTag>Default</NxSmallTag>
-        <NxSmallTag color="blue">Blue</NxSmallTag>
-        <NxSmallTag color="indigo">Indigo</NxSmallTag>
-        <NxSmallTag color="green">Green</NxSmallTag>
-        <NxSmallTag color="orange">Orange</NxSmallTag>
-        <NxSmallTag color="pink">Pink</NxSmallTag>
-        <NxSmallTag color="purple">Purple</NxSmallTag>
-        <NxSmallTag color="red">Red</NxSmallTag>
-        <NxSmallTag color="teal">Teal</NxSmallTag>
-        <NxSmallTag color="turquoise">Turquoise</NxSmallTag>
-      </div>
+      <NxSmallTag>Default</NxSmallTag>
+      <NxSmallTag color="blue">Blue</NxSmallTag>
+      <NxSmallTag color="indigo">Indigo</NxSmallTag>
+      <NxSmallTag color="green">Green</NxSmallTag>
+      <NxSmallTag color="orange">Orange</NxSmallTag>
+      <NxSmallTag color="pink">Pink</NxSmallTag>
+      <NxSmallTag color="purple">Purple</NxSmallTag>
+      <NxSmallTag color="red">Red</NxSmallTag>
+      <NxSmallTag color="teal">Teal</NxSmallTag>
+      <NxSmallTag color="turquoise">Turquoise</NxSmallTag>
     </>
   );
 }
