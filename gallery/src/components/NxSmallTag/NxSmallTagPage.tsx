@@ -19,10 +19,10 @@ const NxSmallTagPage = () =>
   <>
     <GalleryDescriptionTile>
       <NxP>
-        <NxCode>NxSmallTag</NxCode> is an inline component
-        intended to call out product features ("Beta", "Custom", "Labs", etc). It is informational
-        whereas <NxCode>NxTag</NxCode> is functional. There is a set of colors for small tags that can be specified
-        via props.
+        <NxCode>NxSmallTag</NxCode> is an inline component intended to call out product
+        features ("Beta", "Custom", "Labs", etc). It is informational whereas <NxCode>NxTag</NxCode> is
+        functional. Small tags have their own set of colors that can be specified via props and specifically
+        do not use the <NxTextLink href="#/pages/Selectable Colors">Selectable Colors</NxTextLink>.
       </NxP>
       <NxTable>
         <NxTable.Head>
