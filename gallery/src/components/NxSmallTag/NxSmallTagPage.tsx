@@ -68,7 +68,8 @@ const NxSmallTagPage = () =>
                         id="nx-small-tag-example"
                         liveExample={NxSmallTagExample}
                         codeExamples={NxSmallTagExampleCode}>
-      Example of small tags in all available colors.
+      Example of small tags in all available colors. Note that the small tags have a maximum width
+      of 200px and should be designed as short as possible, they do not truncate.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Small Tag In Table Example"

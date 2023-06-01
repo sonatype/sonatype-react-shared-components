@@ -13,6 +13,7 @@ function NxSmallTagExample() {
       <NxSmallTag>Default</NxSmallTag>
       <NxSmallTag color="blue">Blue</NxSmallTag>
       <NxSmallTag color="indigo">Indigo</NxSmallTag>
+      <NxSmallTag>Wwwwwwwwwwwwwwww</NxSmallTag>
       <NxSmallTag color="green">Green</NxSmallTag>
       <NxSmallTag color="orange">Orange</NxSmallTag>
       <NxSmallTag color="pink">Pink</NxSmallTag>
