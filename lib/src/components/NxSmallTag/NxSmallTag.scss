@@ -4,61 +4,85 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
- @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-text-helpers';
 
 .nx-small-tag {
   @include nx-text-helpers.semi-bold;
+  $height: 24px;
 
-  align-items: center;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: var(--nx-swatch-white);
-  display: inline-flex;
-  font-size: var(--nx-font-size-s);
-  height: 24px;
-  margin: 0 var(--nx-spacing-2x);
-  max-width: 200px;
-  padding: 0 var(--nx-spacing-2x);
-  position: relative;
-  vertical-align: middle;
+  display: inline-block;
+  line-height: 1em;
+  margin: 0 var(--nx-spacing-2x) var(--nx-spacing-2x);
+  vertical-align: top;
 
   + .nx-small-tag {
     margin-left: 0;
   }
 
+  &__text {
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: var(--nx-swatch-white);
+    display: inline-block;
+    font-size: var(--nx-font-size-s);
+    height: $height;
+    line-height: $height;
+    max-width: 200px;
+    padding: 0 var(--nx-spacing-2x);
+    white-space: nowrap;
+  }
+
   &--blue {
-    background-color: var(--nx-swatch-blue-30);
+    .nx-small-tag__text {
+      background-color: var(--nx-swatch-blue-30);
+    }
   }
 
   &--green {
-    background-color: var(--nx-swatch-green-25);
+    .nx-small-tag__text {
+      background-color: var(--nx-swatch-green-25);
+    }
   }
 
   &--indigo {
-    background-color: var(--nx-swatch-indigo-40);
+    .nx-small-tag__text {
+      background-color: var(--nx-swatch-indigo-40);
+    }
   }
 
   &--orange {
-    background-color: var(--nx-swatch-orange-20);
+    .nx-small-tag__text {
+      background-color: var(--nx-swatch-orange-20);
+    }
   }
 
   &--pink {
-    background-color: var(--nx-swatch-pink-40);
+    .nx-small-tag__text {
+      background-color: var(--nx-swatch-pink-40);
+    }
   }
 
   &--purple {
-    background-color: var(--nx-swatch-purple-30);
+    .nx-small-tag__text {
+      background-color: var(--nx-swatch-purple-30);
+    }
   }
 
   &--red {
-    background-color: var(--nx-swatch-red-30);
+    .nx-small-tag__text {
+      background-color: var(--nx-swatch-red-30);
+    }
   }
 
   &--teal {
-    background-color: var(--nx-swatch-teal-30);
+    .nx-small-tag__text {
+      background-color: var(--nx-swatch-teal-30);
+    }
   }
 
   &--turquoise {
-    background-color: var(--nx-swatch-turquoise-20);
+    .nx-small-tag__text {
+      background-color: var(--nx-swatch-turquoise-20);
+    }
   }
 }

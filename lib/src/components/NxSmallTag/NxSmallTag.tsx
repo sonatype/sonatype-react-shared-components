@@ -20,7 +20,7 @@ const NxSmallTag = forwardRef<HTMLLabelElement, Props>(function NxSmallTag(props
 
   return (
     <label className={tagClasses} ref={ref} {...attrs}>
-      {children}
+      <span className="nx-small-tag__text">{children}</span>
     </label>
   );
 });
