@@ -7,6 +7,17 @@
 .gallery-overflow-example {
   background-color: var(--nx-swatch-indigo-40);
   margin-left: var(--nx-spacing-2x);
-  padding: var(--nx-spacing-2x) 0 0;
+  margin-top: var(--nx-spacing-2x);
+  padding: var(--nx-spacing-2x) 0;
   width: 400px;
+}
+
+.nx-h1, .nx-h2, .nx-h3 {
+  > :first-child {
+    margin-left: var(--nx-spacing-2x);
+  }
+}
+
+.small-font-size {
+  font-size: var(--nx-font-size-s);
 }
