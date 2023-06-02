@@ -7,13 +7,14 @@
 import React from 'react';
 import { NxSmallTag } from '@sonatype/react-shared-components';
 
+import './NxSmallTagExample.scss';
+
 function NxSmallTagExample() {
   return (
     <>
       <NxSmallTag>Default</NxSmallTag>
       <NxSmallTag color="blue">Blue</NxSmallTag>
       <NxSmallTag color="indigo">Indigo</NxSmallTag>
-      <NxSmallTag>Wwwwwwwwwwwwwwww</NxSmallTag>
       <NxSmallTag color="green">Green</NxSmallTag>
       <NxSmallTag color="orange">Orange</NxSmallTag>
       <NxSmallTag color="pink">Pink</NxSmallTag>
@@ -21,6 +22,9 @@ function NxSmallTagExample() {
       <NxSmallTag color="red">Red</NxSmallTag>
       <NxSmallTag color="teal">Teal</NxSmallTag>
       <NxSmallTag color="turquoise">Turquoise</NxSmallTag>
+      <div className="gallery-overflow-example">
+        <NxSmallTag>This tag content is too long and should overflow</NxSmallTag>
+      </div>
     </>
   );
 }
