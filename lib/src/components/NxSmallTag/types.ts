@@ -7,8 +7,8 @@
 import { LabelHTMLAttributes, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
-export const NX_SMALL_TAG_COLORS = ['blue', 'green', 'indigo', 'orange', 'pink',
-  'purple', 'red', 'teal', 'turquoise'] as const;
+export const NX_SMALL_TAG_COLORS =
+  ['blue', 'green', 'indigo', 'orange', 'pink', 'purple', 'red', 'teal', 'turquoise'] as const;
 export type NX_SMALL_TAG_COLOR_TYPE = (typeof NX_SMALL_TAG_COLORS)[number];
 
 export interface Props extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'color'> {
