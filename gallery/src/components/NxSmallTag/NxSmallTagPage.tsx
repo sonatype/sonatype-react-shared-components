@@ -69,7 +69,9 @@ const NxSmallTagPage = () =>
                         liveExample={NxSmallTagExample}
                         codeExamples={NxSmallTagExampleCode}>
       Example of small tags in all available colors. Note that the small tags have a maximum width
-      of 200px and should be designed as short as possible.  They do not use ellipsis truncation and should never be given content exceeding their max width.  The over-long content in this example is only present as a test of the max-width behavior.
+      of 200px and should be designed as short as possible. They do not use ellipsis truncation and
+      should never be given content exceeding their max width. The over-long content in this example
+      is only present as a test of the max-width behavior.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Small Tag Layout Example"
