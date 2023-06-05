@@ -15,6 +15,6 @@ describe('NxSmallTag', function() {
 
   it('looks right', simpleTest(smallTagSelector));
   it('renders a default pink colored NxSmallTag if no color prop is passed', simpleTest(defaultTagSelector));
-  it('looks right', simpleTest(smallTagLayoutSelector));
+  it('looks right with text of varying sizes', simpleTest(smallTagLayoutSelector));
   it('passes a11y checks', a11yTest());
 });
