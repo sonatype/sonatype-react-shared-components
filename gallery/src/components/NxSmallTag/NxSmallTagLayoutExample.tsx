@@ -15,7 +15,7 @@ function NxSmallTagLayoutExample() {
         <NxSmallTag>Pink</NxSmallTag>
       </NxH1>
       <NxP>Paragraph Text / 16px / Regular<NxSmallTag>Pink</NxSmallTag></NxP>
-      <NxP className="small-font-size">Paragraph Text / 14px / Regular<NxSmallTag>Pink</NxSmallTag></NxP>
+      <NxP className="gallery-small-font-size">Paragraph Text / 14px / Regular<NxSmallTag>Pink</NxSmallTag></NxP>
       <NxP>
         Paragraph of wrapping text - Toffee liquorice sugar plum halvah carrot cake. Powder jelly-o marzipan
         gingerbread ice cream fruitcake apple pie tootsie roll.<NxSmallTag>Pink</NxSmallTag>Croissant pastry
