@@ -10,7 +10,10 @@ import { NxH1, NxP, NxSmallTag } from '@sonatype/react-shared-components';
 function NxSmallTagLayoutExample() {
   return (
     <>
-      <NxH1>H1 Header / 32px / Bold<NxSmallTag>Pink</NxSmallTag></NxH1>
+      <NxH1>
+        <span>H1 Header / 32px / Bold</span>
+        <NxSmallTag>Pink</NxSmallTag>
+      </NxH1>
       <NxP>Paragraph Text / 16px / Regular<NxSmallTag>Pink</NxSmallTag></NxP>
       <NxP className="small-font-size">Paragraph Text / 14px / Regular<NxSmallTag>Pink</NxSmallTag></NxP>
       <NxP>
