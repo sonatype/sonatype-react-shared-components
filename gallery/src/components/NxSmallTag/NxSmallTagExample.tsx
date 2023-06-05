@@ -22,9 +22,7 @@ function NxSmallTagExample() {
       <NxSmallTag color="red">Red</NxSmallTag>
       <NxSmallTag color="teal">Teal</NxSmallTag>
       <NxSmallTag color="turquoise">Turquoise</NxSmallTag>
-      <div className="gallery-overflow-example">
-        <NxSmallTag>This tag content is too long and should overflow</NxSmallTag>
-      </div>
+      <NxSmallTag>This tag content is too long and should overflow</NxSmallTag>
     </>
   );
 }

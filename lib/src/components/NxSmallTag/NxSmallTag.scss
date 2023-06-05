@@ -29,6 +29,7 @@
     height: $height;
     line-height: $height;
     max-width: 200px;
+    overflow: hidden;
     padding: 0 var(--nx-spacing-2x);
     white-space: nowrap;
   }
