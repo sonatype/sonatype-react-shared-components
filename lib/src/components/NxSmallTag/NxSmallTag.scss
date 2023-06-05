@@ -10,8 +10,9 @@
   @include nx-text-helpers.semi-bold;
   $height: 24px;
 
-  display: inline;
-  line-height: 1em;
+  align-items: center;
+  display: inline-flex;
+  height: calc(1em * var(--nx-line-height));
   margin: 0 var(--nx-spacing-2x);
   vertical-align: top;
 
