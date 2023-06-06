@@ -17,10 +17,19 @@ function NxSmallTagLayoutExample() {
       <NxP>Paragraph Text / 16px / Regular<NxSmallTag>Pink</NxSmallTag></NxP>
       <NxP className="gallery-small-font-size">Paragraph Text / 14px / Regular<NxSmallTag>Pink</NxSmallTag></NxP>
       <NxP>
-        Paragraph of wrapping text - Toffee liquorice sugar plum halvah carrot cake. Powder jelly-o marzipan
-        gingerbread ice cream fruitcake apple pie tootsie roll.<NxSmallTag>Pink</NxSmallTag>Croissant pastry
-        dragée ice cream danish jelly muffin <NxSmallTag>Pink</NxSmallTag>macaroon. Jelly apple pie tiramisu
-        bonbon sweet roll chocolate liquorice lollipop marzipan. Donut apple pie candy canes chocolate.
+        <span>
+          Paragraph of wrapping text - Toffee liquorice sugar plum halvah carrot cake. Powder jelly-o marzipan
+          gingerbread ice cream fruitcake apple pie tootsie roll.
+        </span>
+        <NxSmallTag>Pink</NxSmallTag>
+        <span>
+          Croissant pastry dragée ice cream danish jelly muffin
+        </span>
+        <NxSmallTag>Pink</NxSmallTag>
+        <span>
+          macaroon. Jelly apple pie tiramisu bonbon sweet roll chocolate liquorice lollipop marzipan.
+          macaroon. Jelly apple pie tiramisu Donut apple pie candy canes chocolate.
+        </span>
       </NxP>
     </>
   );
