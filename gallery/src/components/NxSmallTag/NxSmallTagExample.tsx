@@ -7,8 +7,6 @@
 import React from 'react';
 import { NxSmallTag } from '@sonatype/react-shared-components';
 
-import './NxSmallTagExample.scss';
-
 function NxSmallTagExample() {
   return (
     <>
