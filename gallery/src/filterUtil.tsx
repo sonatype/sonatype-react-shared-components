@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { reduce, head, tail, toLower, isEmpty, splitAt, drop, join } from 'ramda';
+import {reduce, head, tail, toLower, isEmpty, splitAt, drop, join, map} from 'ramda';
 import React, { ReactNode } from 'react';
 
 /**
@@ -67,14 +67,22 @@ export function markByFilter(filter: string | undefined, text: string): ReactNod
 /**
  * @return true if the pageName contains every character present in the filter in the same order, case insensitive
  */
-export function matchesFilter(filter: string, pageName: string) {
+export function matchesFilter(filter: string, pageName: string, tags: string[] = []): boolean {
+  const matchesPageName = isStringIncludedInSecondStringCaseInsensitive(filter, pageName);
+  const matchesAnyTags: boolean = map((tag: string) => {
+    return isStringIncludedInSecondStringCaseInsensitive(filter, tag);
+  }, tags).reduce((acc, val) => acc || val, false);
+
+  return matchesPageName || matchesAnyTags;
+}
+
+function isStringIncludedInSecondStringCaseInsensitive(search: string, fullValue: string): boolean {
   const unmatchedFilterChars = reduce(
       (remainingFilter, pageNameChar) =>
         head(remainingFilter) === pageNameChar ? tail(remainingFilter) : remainingFilter,
-      Array.from(toLower(filter)),
-      Array.from(toLower(pageName))
+      Array.from(toLower(search)),
+      Array.from(toLower(fullValue))
   );
 
   return isEmpty(unmatchedFilterChars);
 }
-
