@@ -268,7 +268,7 @@ something and the snapshot comparisons will fail. When this happens, the puppete
 be updated to be compatible with the new version of Chromium.
 
 To sync your local docker Chromium version with the latest that Jenkins would use, re-run the `docker build` command
-described above with the `--no-cache` option on order to have it re-execute the `apt-get install` command which installs
+described above with the `--no-cache` option in order to have it re-execute the `apt-get install` command which installs
 the current version of Chromium.
 
 ---
