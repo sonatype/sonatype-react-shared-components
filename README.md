@@ -257,6 +257,20 @@ The commands above ensures you update the screenshots within the Docker containe
 Docker container or an equivalent environment to ensure that the updated baselines match on CI. Note that updating
 visual test screenshots take roughly the same amount of time as running the visual tests.
 
+### Visual Test Stability on CI
+
+Unfortunately we have been unable to lock down the visual test docker container construction to a specific version of
+Chromium – it uses whichever version is current in the Debian repos at the time the docker image is created. This
+changes over time, and in particular Jenkins rebuilds the docker image for each CI run, always using the latest
+Chromium version. As a result of this, Chromium updates may periodically break the visual tests in one of two ways:
+either the Chromium version will become incompatible with the puppeteer version, or the visual rendering will change
+something and the snapshot comparisons will fail. When this happens, the puppeteer version and/or the snapshots must
+be updated to be compatible with the new version of Chromium.
+
+To sync your local docker Chromium version with the latest that Jenkins would use, re-run the `docker build` command
+described above with the `--no-cache` option on order to have it re-execute the `apt-get install` command which installs
+the current version of Chromium.
+
 ---
 
 ### Windows Users!!
