@@ -51,6 +51,7 @@ import {
   NxSearchDropdown,
   NxSearchTransferList,
   NxSegmentedButton,
+  NxSmallTag,
   NxSmallThreatCounter,
   NxStableUniqueIdContext,
   NxStatefulAccordion,
@@ -322,6 +323,7 @@ const Home: NextPage = () => {
         <NxStatefulTextInput />
         <NxTextLink />
         <NxThreatCounter criticalCount={2} />
+        <NxSmallTag>Default</NxSmallTag>
         <NxSmallThreatCounter criticalCount={2} />
         <NxThreatIndicator />
         <NxThreatIndicatorLegend critical />
