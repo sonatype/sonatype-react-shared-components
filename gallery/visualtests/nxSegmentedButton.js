@@ -38,7 +38,7 @@ describe('NxSegmentedButton', function() {
       }
 
       if (hovered) {
-        dropdownBtn.hover();
+        await dropdownBtn.hover();
       }
       await checkScreenshotCoordinates(x - 82, y, 250, 122);
     };
