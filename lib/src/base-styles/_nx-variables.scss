@@ -62,7 +62,7 @@
   --nx-border-grid: var(--nx-border-2x);
 
   // for dropdown
-  --nx-box-shadow-dropdown: 0 2px 12px 0 Hsla(231, 43%, 80%, 0.2),
+  --nx-box-shadow-dropdown: 0 2px 12px 0 Hsla(var(--nx-swatch-indigo-hs), 80%, 0.2),
                             0 1px 2px 0 Hsla(231, 43%, 70%, 0.2),
                             0 1px 1px 0 Hsla(231, 43%, 60%, 0.2);
 
