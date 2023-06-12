@@ -63,8 +63,8 @@
 
   // for dropdown
   --nx-box-shadow-dropdown: 0 2px 12px 0 Hsla(var(--nx-swatch-indigo-hs), 80%, 0.2),
-                            0 1px 2px 0 Hsla(231, 43%, 70%, 0.2),
-                            0 1px 1px 0 Hsla(231, 43%, 60%, 0.2);
+                            0 1px 2px 0 Hsla(var(--nx-swatch-indigo-hs), 70%, 0.2),
+                            0 1px 1px 0 Hsla(var(--nx-swatch-indigo-hs), 60%, 0.2);
 
   // for global sidebar
   --nx-focus-outline-offset-global-sidebar-link: 0px;
@@ -87,9 +87,9 @@
     --nx-outline-width-table-row-hover: 0px;
 
     // for dropdown
-    --nx-box-shadow-dropdown: 0 2px 12px 0 Hsla(231, 43%, 15%, 0.75),
-                              0 1px 2px 0 Hsla(231, 43%, 10%, 0.75),
-                              0 1px 1px 0 Hsla(231, 43%, 5%, 0.75);
+    --nx-box-shadow-dropdown: 0 2px 12px 0 Hsla(var(--nx-swatch-indigo-hs), 15%, 0.75),
+                              0 1px 2px 0 Hsla(var(--nx-swatch-indigo-hs), 10%, 0.75),
+                              0 1px 1px 0 Hsla(var(--nx-swatch-indigo-hs), 5%, 0.75);
   }
 
   // Deprecated variables
