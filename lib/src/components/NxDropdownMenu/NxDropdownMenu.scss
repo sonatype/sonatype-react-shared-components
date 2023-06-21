@@ -85,7 +85,11 @@
 
 .nx-dropdown-link {
   color: var(--nx-color-link);
+  margin: var(--nx-spacing-base) var(--nx-spacing-4x);
+  max-width: calc(100% - var(--nx-spacing-8x));
+  padding: 0;
   text-decoration: underline;
+  width: fit-content;
 
   &:hover {
     color: var(--nx-color-link-hover);
@@ -101,6 +105,23 @@
       color: var(--nx-color-link-disabled);
       cursor: default;
     }
+  }
+
+  &:focus {
+    border-radius: 6px;
+    outline-offset: 0;
+  }
+
+  &:first-child {
+    margin-top: var(--nx-spacing-base);
+  }
+
+  &:last-child {
+    margin-bottom: var(--nx-spacing-base);
+  }
+
+  + .nx-dropdown-link {
+    margin-top: var(--nx-spacing-2x)
   }
 }
 
