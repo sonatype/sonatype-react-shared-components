@@ -40,12 +40,15 @@
   }
 
   &__reset {
+    color: var(--nx-color-link);
 
-    &, &:hover {
-      text-decoration: none;
+    &:hover {
+      background-color: transparent;
+      color: var(--nx-color-link-hover);
     }
 
     &:active {
+      background-color: transparent;
       color: var(--nx-color-link-active);
       outline: none;
     }
