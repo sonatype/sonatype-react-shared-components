@@ -99,7 +99,8 @@ describe('NxDropdown', function() {
   });
 
   describe('NxDropdown links', function() {
-    const selector = '#nx-dropdown-links-example .nx-dropdown';
+    const selector = '#nx-dropdown-links-example .nx-dropdown',
+        dropdownLinkSelector = `${selector} .nx-dropdown-menu .nx-dropdown-link:first-child`;
 
     beforeEach(async function() {
       const [button] = await waitAndGetElements(selector + ' .nx-dropdown__toggle');
@@ -112,6 +113,13 @@ describe('NxDropdown', function() {
 
       await moveMouseAway();
 
+      await checkScreenshot(targetElement, 251, 218);
+    });
+
+    it('has a blue outline when focused', async function() {
+      const [targetElement, dropdownLink] = await waitAndGetElements(selector, dropdownLinkSelector);
+
+      await dropdownLink.focus();
       await checkScreenshot(targetElement, 251, 218);
     });
   });
