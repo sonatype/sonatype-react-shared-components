@@ -116,7 +116,7 @@ describe('NxIconDropdown', function() {
           pageScrollY = await page.evaluate(() => window.scrollY),
           pageScrollX = await page.evaluate(() => window.scrollX);
 
-      await checkScreenshotCoordinates(x + pageScrollX - 212, y + pageScrollY, 350, 346);
+      await checkScreenshotCoordinates(x + pageScrollX - 212, y + pageScrollY, 366, 346);
     });
   });
 
