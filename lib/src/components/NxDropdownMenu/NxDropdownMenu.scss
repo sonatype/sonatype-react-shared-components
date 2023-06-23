@@ -83,6 +83,9 @@
 
 .nx-dropdown-link {
   color: var(--nx-color-link);
+
+  // Text links within the dropdown menu should use the interaction states of Text Links,
+  // to implement the correct style for focus state, we need to use margins instead of paddings
   margin: var(--nx-spacing-base) var(--nx-spacing-4x);
   max-width: calc(100% - var(--nx-spacing-8x));
   padding: 0;
