@@ -108,7 +108,7 @@
   }
 
   &:focus {
-    border-radius: 6px;
+    border-radius: var(--nx-border-radius);
     outline-offset: 0;
   }
 
