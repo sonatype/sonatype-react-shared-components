@@ -89,7 +89,7 @@
   max-width: calc(100% - var(--nx-spacing-8x));
   padding: 0;
   text-decoration: underline;
-  width: fit-content;
+  width: min-content;
 
   &:hover {
     color: var(--nx-color-link-hover);
