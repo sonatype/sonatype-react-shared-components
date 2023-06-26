@@ -43,13 +43,6 @@
   text-align: left;
   text-decoration: none;
   width: 100%;
-
-  &:focus {
-    background-color: transparent;
-    border-radius: 0;
-    outline-offset: calc(0px - var(--nx-focus-outline-offset));
-    outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
-  }
 }
 
 .nx-dropdown-button {
@@ -64,6 +57,11 @@
   &:hover {
     background-color: var(--nx-color-dropdown-menu-background-hover);
     color: var(--nx-color-dropdown-menu-text-hover);
+  }
+
+  &:focus {
+    outline-offset: calc(0px - var(--nx-focus-outline-offset));
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
   }
 
   &:active {
@@ -85,7 +83,14 @@
 
 .nx-dropdown-link {
   color: var(--nx-color-link);
+
+  // Text links within the dropdown menu should use the interaction states of Text Links,
+  // to implement the correct style for focus state, we need to use margins instead of paddings
+  margin: var(--nx-spacing-base) var(--nx-spacing-4x);
+  max-width: calc(100% - var(--nx-spacing-8x));
+  padding: 0;
   text-decoration: underline;
+  width: min-content;
 
   &:hover {
     color: var(--nx-color-link-hover);
@@ -101,6 +106,23 @@
       color: var(--nx-color-link-disabled);
       cursor: default;
     }
+  }
+
+  &:focus {
+    border-radius: var(--nx-border-radius);
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+  }
+
+  &:first-child {
+    margin-top: var(--nx-spacing-base);
+  }
+
+  &:last-child {
+    margin-bottom: var(--nx-spacing-base);
+  }
+
+  + .nx-dropdown-link {
+    margin-top: var(--nx-spacing-2x)
   }
 }
 

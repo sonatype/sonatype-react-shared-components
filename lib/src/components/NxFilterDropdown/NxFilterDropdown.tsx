@@ -89,7 +89,7 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
   const resetBtn = (
     <button key="reset-btn"
             disabled={!hasSelection}
-            className="nx-dropdown-link nx-filter-dropdown__reset"
+            className="nx-dropdown-button nx-filter-dropdown__reset"
             onClick={onResetClick}>
       <Close />
       <span>Reset</span>
