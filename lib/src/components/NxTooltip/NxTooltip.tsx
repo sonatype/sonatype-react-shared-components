@@ -6,7 +6,7 @@
  */
 import React, { createContext, FunctionComponent, useContext, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
-import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
+import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
 
 import { DialogContext } from '../AbstractDialog/AbstractDialog';
 import { Props, propTypes, TooltipPlacement } from './types';

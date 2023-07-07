@@ -6,7 +6,8 @@
  */
 import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, Validator } from 'react';
+import RequiredReactNode from '../../util/RequiredReactNode';
 
 import DataItem from '../../util/DataItem';
 
@@ -33,7 +34,7 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   error: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
-    displayName: PropTypes.node.isRequired
+    displayName: PropTypes.node.isRequired as Validator<RequiredReactNode>
   }).isRequired).isRequired,
   onSelect: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,

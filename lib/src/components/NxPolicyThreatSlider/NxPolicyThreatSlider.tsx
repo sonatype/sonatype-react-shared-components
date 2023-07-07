@@ -5,13 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { FunctionComponent } from 'react';
-import { Slider } from '@material-ui/core';
+import { Slider } from '@mui/material';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 
 import { categoryByPolicyThreatLevel, ThreatLevelNumber } from '../../util/threatLevels';
 
-import { Props, LabelDisplayProps, PolicyThreatLevelRange, propTypes } from './types';
+import { Props, PolicyThreatLevelRange, propTypes } from './types';
 export { Props, PolicyThreatLevelRange, propTypes } from './types';
 
 import './NxPolicyThreatSlider.scss';
@@ -20,7 +20,8 @@ import './NxPolicyThreatSlider.scss';
  * A ValueLabelComponent that renders the values inside of the thumbs and changes CSS classes depending on
  * position/value
  */
-function NxPolicyThreatSliderValueLabelDisplay(props: LabelDisplayProps) {
+//eslint-disable-next-line @typescript-eslint/no-explicit-any
+function NxPolicyThreatSliderValueLabelDisplay(props: any) {
 
   const { value, children, className, disabled, index, ...otherProps } = props,
 
@@ -65,8 +66,8 @@ const NxPolicyThreatSlider: FunctionComponent<Props> =
                 max={10}
                 marks={true}
                 disabled={disabled || undefined}
-                ValueLabelComponent={NxPolicyThreatSliderValueLabelDisplay}
-                onChange={sliderOnChange} />
+                onChange={sliderOnChange}
+                slots={{valueLabel: NxPolicyThreatSliderValueLabelDisplay}}/>
       </div>
     );
   };
