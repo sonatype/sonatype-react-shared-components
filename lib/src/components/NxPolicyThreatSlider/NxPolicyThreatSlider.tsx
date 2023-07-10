@@ -40,7 +40,7 @@ function NxPolicyThreatSliderValueLabelDisplay(props: any) {
         'aria-disabled': disabled,
         'aria-label': label
       },
-      thumbWithLabel = React.cloneElement(thumb, additionalThumbProps, limitedValue),
+      thumbWithLabel = React.cloneElement(thumb, additionalThumbProps, limitedValue, thumb.props.children),
       nxBaseClass = 'nx-policy-threat-slider__value-label',
       classes = classnames(nxBaseClass, `${nxBaseClass}--${threatCategory}`, className);
 
@@ -67,6 +67,7 @@ const NxPolicyThreatSlider: FunctionComponent<Props> =
                 marks={true}
                 disabled={disabled || undefined}
                 onChange={sliderOnChange}
+                valueLabelDisplay="on"
                 slots={{valueLabel: NxPolicyThreatSliderValueLabelDisplay}}/>
       </div>
     );
