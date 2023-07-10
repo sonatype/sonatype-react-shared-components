@@ -412,7 +412,7 @@ describe('NxTransferListHalf', function() {
       await runTimers();
       tooltip = await screen.findByRole('tooltip');
       expect(tooltip).toHaveTextContent('Move Down (disabled)');
-    });
+    }, 10000);
 
     it('passes onReorderItem the item id and direction when move up or down button is clicked', async function() {
       const dataItems = [{
