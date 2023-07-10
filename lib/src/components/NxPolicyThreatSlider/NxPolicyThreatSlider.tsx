@@ -7,7 +7,6 @@
 import React, { FunctionComponent } from 'react';
 import { Slider } from '@mui/material';
 import classnames from 'classnames';
-import { omit } from 'ramda';
 
 import { categoryByPolicyThreatLevel, ThreatLevelNumber } from '../../util/threatLevels';
 
@@ -16,36 +15,46 @@ export { Props, PolicyThreatLevelRange, propTypes } from './types';
 
 import './NxPolicyThreatSlider.scss';
 
+function toThreatLevelNumber(value: number): ThreatLevelNumber {
+  return Math.min(10, Math.max(0, Math.round(value))) as ThreatLevelNumber;
+}
+
+function getPolicyThreatCategory(value: number) {
+  return categoryByPolicyThreatLevel[toThreatLevelNumber(value)];
+}
+
+const getAriaLabel = (index: number) => `threat level ${index === 0 ? 'min' : 'max'}`;
+const getAriaValueText = (value: number) => {
+  const limitedValue = toThreatLevelNumber(value),
+      threatCategory = getPolicyThreatCategory(value);
+
+  return `${limitedValue} (${threatCategory})`;
+};
+
 /**
  * A ValueLabelComponent that renders the values inside of the thumbs and changes CSS classes depending on
  * position/value
  */
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
-function NxPolicyThreatSliderValueLabelDisplay(props: any) {
-
-  const { value, children, className, disabled, index, ...otherProps } = props,
-
-      // this impl doesn't need to support these props. Filter them out so they don't cause react warnings on the span
-      filteredProps = omit(['open', 'valueLabelFormat', 'valueLabelDisplay'], otherProps),
-      limitedValue = Math.min(10, Math.max(0, Math.round(value))) as ThreatLevelNumber,
-      threatCategory = categoryByPolicyThreatLevel[limitedValue],
-      thumb = React.Children.only(children),
-      screenReaderValue = `${limitedValue} (${threatCategory})`,
-      label = `threat level ${index === 0 ? 'min' : 'max'}`,
-
-      // the thumb element isn't initially constructed with any children. Add the value as its child and
-      // add extra accessibility attrs
-      additionalThumbProps = {
-        'aria-valuetext': screenReaderValue,
-        'aria-disabled': disabled,
-        'aria-label': label
-      },
-      thumbWithLabel = React.cloneElement(thumb, additionalThumbProps, limitedValue, thumb.props.children),
+function ValueLabel(props: any) {
+  const { value, className, ownerState, valueLabelDisplay, valueLabelFormat, children, ...otherProps } = props,
+      threatCategory = getPolicyThreatCategory(value),
       nxBaseClass = 'nx-policy-threat-slider__value-label',
-      classes = classnames(nxBaseClass, `${nxBaseClass}--${threatCategory}`, className);
+      classes = classnames(nxBaseClass, `${nxBaseClass}--${threatCategory}`, className),
+      thumb = React.Children.only(children),
+      thumbWithValue = React.cloneElement(thumb, { value });
+
+  return <span className={classes} { ...otherProps }>{thumbWithValue}</span>;
+}
+
+function Thumb(props: any) {
+  const { value, children, ownerState, ...otherProps } = props;
 
   return (
-    <span className={classes} { ...filteredProps }>{thumbWithLabel}</span>
+    <span { ...otherProps }>
+      {children}
+      {value}
+    </span>
   );
 }
 
@@ -68,7 +77,12 @@ const NxPolicyThreatSlider: FunctionComponent<Props> =
                 disabled={disabled || undefined}
                 onChange={sliderOnChange}
                 valueLabelDisplay="on"
-                slots={{valueLabel: NxPolicyThreatSliderValueLabelDisplay}}/>
+                getAriaLabel={getAriaLabel}
+                getAriaValueText={getAriaValueText}
+                slots={{
+                  valueLabel: ValueLabel,
+                  thumb: Thumb
+                }}/>
       </div>
     );
   };
