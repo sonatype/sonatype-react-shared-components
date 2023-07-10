@@ -7,13 +7,15 @@
 
 import { includes } from 'ramda';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { RefAttributes } from 'react';
 import { rtlRenderElement, rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import { within, render, screen } from '@testing-library/react';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxForm from '../../NxForm/NxForm';
 import NxTransferListHalf, { Props } from '../NxTransferListHalf';
+
+type RenderProps = Props & RefAttributes<HTMLDivElement>;
 
 describe('NxTransferListHalf', function() {
   const minimalProps: Props = {
@@ -23,8 +25,8 @@ describe('NxTransferListHalf', function() {
         items: [],
         footerContent: <div/>
       },
-      quickRender = rtlRender(NxTransferListHalf, minimalProps),
-      renderEl = rtlRenderElement(NxTransferListHalf, minimalProps);
+      quickRender = rtlRender<RenderProps>(NxTransferListHalf, minimalProps),
+      renderEl = rtlRenderElement<RenderProps>(NxTransferListHalf, minimalProps);
 
   it('renders a fieldset as top-level element', function() {
     const el = renderEl()!;
