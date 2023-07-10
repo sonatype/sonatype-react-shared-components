@@ -6,6 +6,7 @@
     "module": "commonjs",
     "allowJs": true,
     "checkJs": false,
-    "rootDir": "."
+    "rootDir": ".",
+    "target": "ES6"
   }
 }
