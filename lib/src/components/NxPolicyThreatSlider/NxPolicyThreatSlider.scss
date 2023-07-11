@@ -125,10 +125,14 @@
     border-radius: $border-radius 0 0 $border-radius;
     color: var(--nx-color-threat-none);
 
+    top: $thumb-vertical-overflow;
+    transform: none;
+
     // the first mark only goes from 0 - 0.5, so is only 5% wide.
     // The rest (except the last) each go from (n - 0.5) to (n + 0.5), so are 10% wide with a -5% left margin.
-    // The last one doesn't go beyond the end so is also only 5% wide
-    width: 5%;
+    // The last one doesn't go beyond the end so is also only 5% wide.
+    // Extra px added to prevent browser rounding errors from causing visible gaps
+    width: calc(5% + 1px);
 
     // ~ is the sibling selector (not to be confused with the adjacent sibling selector, +). Used here to count
     // which mark you are at. The marks are the elements that denote each step along the slider, and with this styling,
@@ -137,7 +141,8 @@
     ~ .MuiSlider-mark {
       border-radius: 0;
       margin-left: -5%;
-      width: 10%;
+
+      width: calc(10% + 1px);
 
       // threat level 1
       color: var(--nx-color-threat-low);
