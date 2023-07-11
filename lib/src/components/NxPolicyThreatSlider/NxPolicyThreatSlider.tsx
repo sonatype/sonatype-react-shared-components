@@ -35,9 +35,11 @@ const getAriaValueText = (value: number) => {
  * A ValueLabelComponent that renders the values inside of the thumbs and changes CSS classes depending on
  * position/value
  */
+// MUI doesn't appear to define an accurate type for these props. There's SliderValueLabelProps but it's missing
+// valueLabelDisplay, valueLabelFormat, and ownerState
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
 function ValueLabel(props: any) {
-  const { value, className, ownerState, valueLabelDisplay, valueLabelFormat, children, ...otherProps } = props,
+  const { value, className, ownerState, children, ...otherProps } = props,
       threatCategory = getPolicyThreatCategory(value),
       nxBaseClass = 'nx-policy-threat-slider__value-label',
       classes = classnames(nxBaseClass, `${nxBaseClass}--${threatCategory}`, className),
@@ -47,6 +49,8 @@ function ValueLabel(props: any) {
   return <span className={classes} { ...otherProps }>{thumbWithValue}</span>;
 }
 
+// MUI doesn't appear to define a specific type for these props
+//eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Thumb(props: any) {
   const { value, children, ownerState, ...otherProps } = props;
 
