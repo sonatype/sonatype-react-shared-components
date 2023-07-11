@@ -20,12 +20,15 @@
     line-height: var(--nx-line-height);
     max-width: 600px;
     padding: var(--nx-spacing-2x) var(--nx-spacing-4x);
-  }
 
-  &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {
-    margin: var(--nx-spacing-2x) 0;
-  }
-  &.MuiTooltip-tooltipPlacementRight, &.MuiTooltip-tooltipPlacementLeft {
-    margin: 0 var(--nx-spacing-2x);
+    // for even more specificity
+    .MuiTooltip-popper & {
+      &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {
+        margin: var(--nx-spacing-2x) 0;
+      }
+      &.MuiTooltip-tooltipPlacementRight, &.MuiTooltip-tooltipPlacementLeft {
+        margin: 0 var(--nx-spacing-2x);
+      }
+    }
   }
 }
