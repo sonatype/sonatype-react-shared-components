@@ -14,7 +14,7 @@ const pageUrl = `file://${__dirname}/../dist/index.html`;
 
 const { AxePuppeteer } = require('@axe-core/puppeteer');
 
-const TOOLTIP_WAIT = 900;
+const TOOLTIP_WAIT = 5000;
 
 module.exports = {
   TOOLTIP_WAIT,
