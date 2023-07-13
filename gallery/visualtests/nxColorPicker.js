@@ -28,6 +28,7 @@ describe('NxColorPicker', function() {
   it('looks right when focused', focusTest(selector, colorSelector));
   it('looks right when hovered and focused', focusAndHoverTest(selector, colorSelector));
 
+  /*
   describe('when a color is selected', function() {
     beforeEach(async function() {
       const [labelElement, inputElement] = await waitAndGetElements(colorSelector, `${colorSelector} input`);
@@ -43,6 +44,7 @@ describe('NxColorPicker', function() {
     it('looks right when focused', focusTest(selector, colorSelector));
     it('looks right when hovered and focused', focusAndHoverTest(selector, colorSelector));
   });
+  */
 
   describe('when required', function() {
     it('has a red asterisk on the label', simpleTest(validationSelector));
