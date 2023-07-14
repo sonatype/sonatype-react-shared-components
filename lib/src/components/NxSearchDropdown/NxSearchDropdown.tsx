@@ -7,7 +7,8 @@
 import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
-import { always, any, clamp, dec, inc, partial, pipe, prop } from 'ramda';
+import { always, any, clamp, dec, inc, pipe, prop } from 'ramda';
+import DataItem from '../../util/DataItem';
 
 import './NxSearchDropdown.scss';
 
@@ -131,8 +132,14 @@ function NxSearchDropdownRender<T extends string | number = string>(
   }
 
   function doSearch(value: string) {
+    focusTextInput();
     onSearch(value.trim());
   }
+
+  const handleOnClick = (match: DataItem<T>) => {
+    focusTextInput();
+    onSelect(match);
+  };
 
   function focusTextInput() {
     filterRef.current?.querySelector('input')?.focus();
@@ -204,7 +211,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       disabled={disabled || undefined}
                       key={match.id}
                       tabIndex={i === focusableBtnIndex ? 0 : -1}
-                      onClick={partial(onSelect, [match])}
+                      onClick={() => handleOnClick(match)}
                       onFocus={() => setFocusableBtnIndex(i)}>
                 {match.displayName}
               </button>
