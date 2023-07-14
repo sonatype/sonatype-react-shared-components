@@ -63,7 +63,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
       return <PrivateNxTextInput { ...cleanedProps }
                                  { ...{ prefixContent, className, suffixContent } }
                                  value={value}
-                                 onKeyDown={handleKeyDown}
+                                 inputAttributes={{ onKeyDown: handleKeyDown }}
                                  ref={ref}
                                  isPristine={false} />;
     }

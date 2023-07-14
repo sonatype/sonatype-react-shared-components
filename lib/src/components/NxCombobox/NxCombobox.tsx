@@ -335,7 +335,6 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
          { ...newAttrs }>
       <TextInput role="combobox"
                  ref={(div: HTMLElement | null) => inputRef.current = div?.querySelector('input')}
-                 id={inputId}
                  validationErrors={validationErrors}
                  validatable={validatable}
                  isPristine={!!isPristine}
@@ -345,15 +344,18 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                  onClick={() => setHiddenBySelection(false)}
                  disabled={disabled || undefined}
                  onKeyDown={handleKeyDown}
-                 aria-autocomplete={autoComplete ? 'both' : 'list'}
-                 aria-expanded={showDropdown}
-                 aria-controls={showDropdown ? dropdownId : undefined}
-                 aria-activedescendant={focusableBtnId}
-                 aria-required={ariaRequired}
-                 aria-describedby={inputDescribedby}
-                 aria-label={ariaLabel}
-                 // disable browser autocomplete
-                 autoComplete="off"
+                 inputAttributes={{
+                   id: inputId,
+                   'aria-autocomplete': autoComplete ? 'both' : 'list',
+                   'aria-expanded': showDropdown,
+                   'aria-controls': showDropdown ? dropdownId : undefined,
+                   'aria-activedescendant': focusableBtnId,
+                   'aria-required': ariaRequired,
+                   'aria-describedby': inputDescribedby,
+                   'aria-label': ariaLabel,
+                   // disable browser autocomplete
+                   autoComplete: "off"
+                 }}
                  { ...filterInputProps } />
       { isAlert ?
         <div id={alertDropdownId}

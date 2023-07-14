@@ -78,7 +78,7 @@ const NxTableFilterExample = () => {
             </NxTable.Cell>
             <NxTable.Cell>
               <NxFilterInput placeholder="Select a country"
-                             list={listId}
+                             inputAttributes={{ list: listId }}
                              onChange={onFilterCountryChange}
                              value={countryFilter}/>
               <datalist id={listId}>
