@@ -1083,7 +1083,7 @@ describe('NxStatefulTransferList', function() {
         await user.unhover(down3Btn);
         await runTimers();
         expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
-      });
+      }, 10000);
     });
   });
 

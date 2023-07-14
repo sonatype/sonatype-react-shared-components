@@ -182,17 +182,19 @@ function NxSearchDropdownRender<T extends string | number = string>(
 
   return (
     <div role="group" ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
-      <NxFilterInput role="searchbox"
-                     ref={filterRef}
+      <NxFilterInput ref={filterRef}
                      className={filterClassName}
                      value={searchText}
                      onChange={handleFilterChange}
                      disabled={disabled || undefined}
                      placeholder="Search"
                      searchIcon
-                     onKeyDown={handleKeyDown}
-                     aria-controls={dropdownMenuId}
-                     aria-haspopup="menu" />
+                     inputAttributes={{
+                       onKeyDown: handleKeyDown,
+                       role: 'searchbox',
+                       'aria-controls': dropdownMenuId,
+                       'aria-haspopup': 'menu'
+                     }} />
       <NxDropdownMenu id={dropdownMenuId}
                       role={dropdownMenuRole}
                       ref={menuRef}

@@ -27,6 +27,7 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
     function PrivateNxTextInput(props, forwardedRef) {
       const {
         type,
+        value,
         isPristine,
         validatable,
         validationErrors,
@@ -100,6 +101,7 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
             {prefixContent}
             {React.createElement(element, {
               ...inputAttributes,
+              value,
               id,
               disabled,
               placeholder,

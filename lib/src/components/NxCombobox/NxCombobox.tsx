@@ -221,6 +221,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         evt.preventDefault();
         break;
       case 'Escape':
+        console.log('NxCombobox handlekeyDown Escape');
         setFocusableBtnIndex(null);
 
         // NxFilterInput handles this itself
@@ -333,8 +334,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
          onFocus={handleComponentFocus}
          onBlur={handleComponentBlur}
          { ...newAttrs }>
-      <TextInput role="combobox"
-                 ref={(div: HTMLElement | null) => inputRef.current = div?.querySelector('input')}
+      <TextInput ref={(div: HTMLElement | null) => inputRef.current = div?.querySelector('input')}
                  validationErrors={validationErrors}
                  validatable={validatable}
                  isPristine={!!isPristine}
@@ -343,15 +343,16 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                  onChange={handleOnChange}
                  onClick={() => setHiddenBySelection(false)}
                  disabled={disabled || undefined}
-                 onKeyDown={handleKeyDown}
+                 aria-required={ariaRequired}
+                 aria-describedby={inputDescribedby}
                  inputAttributes={{
+                   role: 'combobox',
+                   onKeyDown: handleKeyDown,
                    id: inputId,
                    'aria-autocomplete': autoComplete ? 'both' : 'list',
                    'aria-expanded': showDropdown,
                    'aria-controls': showDropdown ? dropdownId : undefined,
                    'aria-activedescendant': focusableBtnId,
-                   'aria-required': ariaRequired,
-                   'aria-describedby': inputDescribedby,
                    'aria-label': ariaLabel,
                    // disable browser autocomplete
                    autoComplete: "off"

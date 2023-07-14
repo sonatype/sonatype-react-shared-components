@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { forwardRef, KeyboardEventHandler, KeyboardEvent } from 'react';
-import { omit } from 'ramda';
+import { mergeDeepRight, omit } from 'ramda';
 import classnames from 'classnames';
 import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,7 +20,7 @@ export { Props } from './types';
 
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
     function NxFilterInput(props, ref) {
-      const { className: classNameProp, searchIcon, onKeyDown, value, ...otherProps } = props,
+      const { className: classNameProp, searchIcon, onKeyDown, value, inputAttributes, ...otherProps } = props,
           isEmpty = value.trim() === '',
           className = classnames('nx-filter-input', classNameProp, {
             'nx-filter-input--empty': isEmpty
@@ -47,23 +47,24 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
       }
 
       const handleKeyDown: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
-        if (e.key === 'Escape') {
-          clearFilterInputText();
+            if (e.key === 'Escape') {
+              clearFilterInputText();
 
-          if (value !== '') {
-            // only prevent default if the ESC actually made a difference here
-            e.preventDefault();
-          }
-        }
+              if (value !== '') {
+                // only prevent default if the ESC actually made a difference here
+                e.preventDefault();
+              }
+            }
 
-        // NxFilterInput always uses <input> and not <textarea>
-        onKeyDown?.(e as KeyboardEvent<HTMLInputElement>);
-      };
+            // NxFilterInput always uses <input> and not <textarea>
+            onKeyDown?.(e as KeyboardEvent<HTMLInputElement>);
+          },
+          mergedInputAttributes = mergeDeepRight(inputAttributes ?? {}, { onKeyDown: handleKeyDown });
 
       return <PrivateNxTextInput { ...cleanedProps }
                                  { ...{ prefixContent, className, suffixContent } }
                                  value={value}
-                                 inputAttributes={{ onKeyDown: handleKeyDown }}
+                                 inputAttributes={mergedInputAttributes}
                                  ref={ref}
                                  isPristine={false} />;
     }
