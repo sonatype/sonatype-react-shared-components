@@ -17,7 +17,7 @@
     "webpack": "^5.83.1"
   },
   "devDependencies": {
-    "@types/node": "^16.0.0",
+    "@types/node": "^20.4.1",
     "@types/react": "^18.2.14",
     "@wdio/cli": "^8.10.2",
     "@wdio/local-runner": "^8.10.2",
