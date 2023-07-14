@@ -50,7 +50,7 @@ describe('NxTooltip', function() {
 
   it('wraps long text', hoverTest(wrappingExampleSelector, wrappingExampleBtnSelector, true));
   it('looks right in all placements', async function() {
-    await wait(TOOLTIP_WAIT);
+    await wait(200);
     await simpleTest(placementExampleSelector)();
   });
 

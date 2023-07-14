@@ -14,7 +14,7 @@ const pageUrl = `file://${__dirname}/../dist/index.html`;
 
 const { AxePuppeteer } = require('@axe-core/puppeteer');
 
-const TOOLTIP_WAIT = 10000;
+const TOOLTIP_WAIT = 5000;
 
 module.exports = {
   TOOLTIP_WAIT,
@@ -336,29 +336,16 @@ module.exports = {
 
       hoverTest(elementSelector, hoverSelector = elementSelector, waitForTooltip = false, outset) {
         return async function() {
-          const testName = expect.getState().currentTestName.replace(/ /g, '-');
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
           await scrollIntoView(targetElement);
           await focusElement.hover();
 
           if (waitForTooltip) {
-            console.time(`TOOLTIP_WAIT ${testName}`);
             await wait(TOOLTIP_WAIT);
-            console.timeEnd(`TOOLTIP_WAIT ${testName}`);
-            await page.screenshot({ path: `/tmp/before-${testName}.png` });
           }
 
-          //if (elementSelector.includes('color-picker')) {
-          //}
-          try {
-            await checkScreenshotWithOutset(targetElement, outset);
-          }
-          finally {
-            if (waitForTooltip) {
-              await page.screenshot({ path: `/tmp/after-${testName}.png` });
-            }
-          }
+          await checkScreenshotWithOutset(targetElement, outset);
         };
       },
 

@@ -8,7 +8,7 @@ const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
 const path = require('path');
 
 // To try to mitigate flaky tests due to blinking text carets and the like
-//jest.retryTimes(3);
+jest.retryTimes(3);
 
 const darkEnv = process.env.RSC_GALLERY_THEME === 'DARK';
 
