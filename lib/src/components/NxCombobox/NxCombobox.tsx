@@ -342,12 +342,12 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                  onChange={handleOnChange}
                  onClick={() => setHiddenBySelection(false)}
                  disabled={disabled || undefined}
+                 id={inputId}
                  aria-required={ariaRequired}
                  aria-describedby={inputDescribedby}
                  inputAttributes={{
                    role: 'combobox',
                    onKeyDown: handleKeyDown,
-                   id: inputId,
                    'aria-autocomplete': autoComplete ? 'both' : 'list',
                    'aria-expanded': showDropdown,
                    'aria-controls': showDropdown ? dropdownId : undefined,
