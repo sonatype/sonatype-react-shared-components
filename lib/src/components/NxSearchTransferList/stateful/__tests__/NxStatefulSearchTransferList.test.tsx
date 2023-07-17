@@ -174,8 +174,8 @@ describe('NxSearchTransferList', function() {
           await user.click(matches[0]);
 
           expect(onSearchMatchSelect).toHaveBeenCalledWith(
-            { id: '1', displayName: 'Item 1' },
-            expect.objectContaining({ target: matches[0] })
+              { id: '1', displayName: 'Item 1' },
+              expect.objectContaining({ target: matches[0] })
           );
         });
       });

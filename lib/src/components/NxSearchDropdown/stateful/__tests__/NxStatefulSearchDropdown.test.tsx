@@ -101,8 +101,8 @@ describe('NxStatefulSearchDropdown', function() {
     await user.click(menuItem);
 
     expect(onSelect).toHaveBeenCalledWith(
-      { id: 1, displayName: 'item 1' },
-      expect.objectContaining({ target: menuItem })
+        { id: 1, displayName: 'item 1' },
+        expect.objectContaining({ target: menuItem })
     );
     expect(input).toHaveValue('');
   });
@@ -265,8 +265,8 @@ describe('NxStatefulSearchDropdown', function() {
     await user.click(menuItem);
 
     expect(onSelect).toHaveBeenCalledWith(
-      { id: '2', displayName: 'Two' },
-      expect.objectContaining({ target: menuItem })
+        { id: '2', displayName: 'Two' },
+        expect.objectContaining({ target: menuItem })
     );
   });
 
