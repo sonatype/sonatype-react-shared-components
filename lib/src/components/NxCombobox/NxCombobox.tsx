@@ -221,7 +221,6 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         evt.preventDefault();
         break;
       case 'Escape':
-        console.log('NxCombobox handlekeyDown Escape');
         setFocusableBtnIndex(null);
 
         // NxFilterInput handles this itself
@@ -355,7 +354,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                    'aria-activedescendant': focusableBtnId,
                    'aria-label': ariaLabel,
                    // disable browser autocomplete
-                   autoComplete: "off"
+                   autoComplete: 'off'
                  }}
                  { ...filterInputProps } />
       { isAlert ?
