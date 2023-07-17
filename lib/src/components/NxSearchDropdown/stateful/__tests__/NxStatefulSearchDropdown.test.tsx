@@ -100,7 +100,10 @@ describe('NxStatefulSearchDropdown', function() {
     const menuItem = el.getByRole('menuitem', { name: 'item 1' });
     await user.click(menuItem);
 
-    expect(onSelect).toHaveBeenCalledWith({ id: 1, displayName: 'item 1' });
+    expect(onSelect).toHaveBeenCalledWith(
+      { id: 1, displayName: 'item 1' },
+      expect.objectContaining({ target: menuItem })
+    );
     expect(input).toHaveValue('');
   });
 
@@ -261,7 +264,10 @@ describe('NxStatefulSearchDropdown', function() {
 
     await user.click(menuItem);
 
-    expect(onSelect).toHaveBeenCalledWith({ id: '2', displayName: 'Two' });
+    expect(onSelect).toHaveBeenCalledWith(
+      { id: '2', displayName: 'Two' },
+      expect.objectContaining({ target: menuItem })
+    );
   });
 
   it('calls onSearch with the current trimmed searchbox text if focus enters the  ' +

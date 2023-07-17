@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, Ref, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
-import { always, any, clamp, dec, inc, pipe, prop } from 'ramda';
+import { always, any, clamp, dec, inc, partial, pipe, prop } from 'ramda';
 import DataItem from '../../util/DataItem';
 
 import './NxSearchDropdown.scss';
@@ -136,9 +136,9 @@ function NxSearchDropdownRender<T extends string | number = string>(
     onSearch(value.trim());
   }
 
-  const handleOnClick = (match: DataItem<T>) => {
+  const handleOnClick = (match: DataItem<T>, evt: MouseEvent<HTMLButtonElement>) => {
     focusTextInput();
-    onSelect(match);
+    onSelect(match, evt);
   };
 
   function focusTextInput() {
@@ -213,7 +213,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       disabled={disabled || undefined}
                       key={match.id}
                       tabIndex={i === focusableBtnIndex ? 0 : -1}
-                      onClick={() => handleOnClick(match)}
+                      onClick={partial(handleOnClick, [match])}
                       onFocus={() => setFocusableBtnIndex(i)}>
                 {match.displayName}
               </button>

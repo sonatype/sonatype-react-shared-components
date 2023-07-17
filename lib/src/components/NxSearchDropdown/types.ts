@@ -6,7 +6,7 @@
  */
 import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
-import { HTMLAttributes, ReactNode, Validator } from 'react';
+import { HTMLAttributes, ReactNode, Validator, MouseEvent } from 'react';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
 import DataItem from '../../util/DataItem';
@@ -18,7 +18,7 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
   loading?: boolean | null;
   error?: ReactNode;
   matches: DataItem<T>[];
-  onSelect: (m: DataItem<T>) => void;
+  onSelect: (m: DataItem<T>, evt: MouseEvent<HTMLButtonElement>) => void;
   long?: boolean | null;
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
