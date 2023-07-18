@@ -225,7 +225,10 @@
   @include nx-container-helpers.container-vertical;
   @include nx-container-helpers.container-horizontal;
 
-  min-height: nx-table-variables.$table-cell-min-height;
+  box-sizing: border-box;
+
+  // min-height doesn't work on table cells, and height works roughly the way min-height ought to
+  height: nx-table-variables.$table-cell-min-height;
   padding: nx-table-variables.$table-cell-vertical-padding var(--nx-spacing-3x);
   vertical-align: top;
 
