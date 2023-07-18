@@ -156,7 +156,6 @@ const NxTextInputPage = () =>
               <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>
                 Whether the <NxCode>&lt;input&gt;</NxCode> will be marked as aria-required.
-                div rendered by this component.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
