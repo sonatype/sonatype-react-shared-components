@@ -35,67 +35,68 @@
     padding: 0 var(--nx-spacing-2x);
     white-space: nowrap;
   }
-}
 
-.nx-small-tag--blue {
-  --nx-color-small-tag: var(--nx-swatch-blue-30);
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-small-tag: var(--nx-swatch-blue-80);
+  &--blue {
+    --nx-color-small-tag: var(--nx-swatch-blue-30);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-blue-80);
+    }
+  }
+
+  &--green {
+    --nx-color-small-tag: var(--nx-swatch-green-25);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-green-85);
+    }
+  }
+
+  &--indigo {
+    --nx-color-small-tag: var(--nx-swatch-indigo-40);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-indigo-80);
+    }
+  }
+  
+  &--orange {
+    --nx-color-small-tag: var(--nx-swatch-orange-20);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-orange-75);
+    }
+  }
+  
+  &--pink {
+    --nx-color-small-tag: var(--nx-swatch-pink-40);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-pink-70);
+    }
+  }
+  
+  &--purple {
+    --nx-color-small-tag: var(--nx-swatch-purple-30);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-purple-90);
+    }
+  }
+  
+  &--red {
+    --nx-color-small-tag: var(--nx-swatch-red-30);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-red-70);
+    }
+  }
+  
+  &--teal {
+    --nx-color-small-tag: var(--nx-swatch-teal-30);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-teal-70);
+    }
+  }
+  
+  &--turquoise {
+    --nx-color-small-tag: var(--nx-swatch-turquoise-20);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-turquoise-80);
+    }
   }
 }
 
-.nx-small-tag--green {
-  --nx-color-small-tag: var(--nx-swatch-green-25);
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-small-tag: var(--nx-swatch-green-85);
-  }
-}
-
-.nx-small-tag--indigo {
-  --nx-color-small-tag: var(--nx-swatch-indigo-40);
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-small-tag: var(--nx-swatch-indigo-80);
-  }
-}
-
-.nx-small-tag--orange {
-  --nx-color-small-tag: var(--nx-swatch-orange-20);
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-small-tag: var(--nx-swatch-orange-75);
-  }
-}
-
-.nx-small-tag--pink {
-  --nx-color-small-tag: var(--nx-swatch-pink-40);
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-small-tag: var(--nx-swatch-pink-70);
-  }
-}
-
-.nx-small-tag--purple {
-  --nx-color-small-tag: var(--nx-swatch-purple-30);
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-small-tag: var(--nx-swatch-purple-90);
-  }
-}
-
-.nx-small-tag--red {
-  --nx-color-small-tag: var(--nx-swatch-red-30);
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-small-tag: var(--nx-swatch-red-70);
-  }
-}
-
-.nx-small-tag--teal {
-  --nx-color-small-tag: var(--nx-swatch-teal-30);
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-small-tag: var(--nx-swatch-teal-70);
-  }
-}
-
-.nx-small-tag--turquoise {
-  --nx-color-small-tag: var(--nx-swatch-turquoise-20);
-  @include nx-dark-mode-helpers.dark-mode {
-    --nx-color-small-tag: var(--nx-swatch-turquoise-80);
-  }
-}
