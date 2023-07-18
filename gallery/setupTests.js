@@ -12,7 +12,7 @@ const path = require('path');
 // degree of transparency, no matter how much time is given for them to fade in. Experimentation appeared to reveal
 // that this only tends to happen in screenshots that are clipped (not full page) and that when multiple screenshots
 // are taken of the same element right after one another it can happen in any one of them (or multiple). This
-// inconsistency seems to suggest a bug the the screenshotting and/or clipping code, which appears to be implemented
+// inconsistency seems to suggest a bug in the screenshotting and/or clipping code, which appears to be implemented
 // within the browser or devtools, rather than puppeteer. All we can really do about it is increase the retryTimes.
 jest.retryTimes(6);
 
