@@ -816,6 +816,12 @@ const CssVariablesPage = () => {
             <ColorDocRow colorVar="--nx-color-table-header-background">
               The background color of the <NxCode>NxTable</NxCode> header.
             </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-header-button-background-hover">
+              The background color of the <NxCode>NxTable</NxCode> header button when hovered.
+            </ColorDocRow>
+            <ColorDocRow colorVar="--nx-color-table-header-button-background-active">
+              The background color of the <NxCode>NxTable</NxCode> header button when clicked.
+            </ColorDocRow>
             <ColorDocRow colorVar="--nx-color-table-row-background-hover">
               The background color of an <NxCode>NxTable</NxCode> row on hover.
             </ColorDocRow>
