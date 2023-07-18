@@ -32,8 +32,12 @@ export default function NxTextInputSimpleExample() {
                      type="textarea"
                      { ...state2 }
                      onChange={onChange2}
-                     placeholder="Text Area" />
+                     placeholder="Text Area"
+                     id="long-example-2"
+                     aria-required={true}
+                     aria-describedby="long-example-2-description" />
       </div>
+      <div id="long-example-2-description">This is the accessible description for the second input.</div>
     </>
   );
 }

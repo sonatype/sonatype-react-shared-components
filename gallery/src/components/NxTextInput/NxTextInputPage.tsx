@@ -393,7 +393,9 @@ const NxTextInputPage = () =>
                         liveExample={NxTextInputLongExample}
                         codeExamples={longSourceCode}>
       Examples of <NxCode>NxTextInput</NxCode>s using
-      the <NxCode>long</NxCode> modifier, which makes them wider.
+      the <NxCode>long</NxCode> modifier, which makes them wider. Additionally, the second input demonstrates that
+      the <NxCode>id</NxCode>, <NxCode>aria-required</NxCode>, and <NxCode>aria-describedby</NxCode> props are
+      passed down directly to the <NxCode>&lt;input&gt;</NxCode>/<NxCode>&lt;textarea&gt;</NxCode>.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Short example"
