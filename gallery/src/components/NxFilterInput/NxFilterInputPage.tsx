@@ -184,7 +184,7 @@ const NxFilterInputPage = () =>
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              Additional attributes to be pass to the
+              Additional attributes to be passed to the
               underlying <NxCode>&lt;input&gt;</NxCode> or <NxCode>&lt;textarea&gt;</NxCode>.
               The only notable exceptions are:
               <NxList bulleted>
