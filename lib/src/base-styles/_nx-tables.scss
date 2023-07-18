@@ -67,6 +67,7 @@
     &:last-child {
       > .nx-cell {
         border-bottom-style: none;
+        height: calc(#{nx-table-variables.$table-cell-min-height} - 1px);
       }
 
       > :first-child {
@@ -157,6 +158,7 @@
         }
 
         border-bottom-style: solid;
+        height: nx-table-variables.$table-cell-min-height;
       }
     }
 
