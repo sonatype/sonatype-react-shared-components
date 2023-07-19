@@ -9,6 +9,11 @@ const { setupBrowser } = require('./testUtils');
 describe('NxTable', function() {
   const {
     simpleTest,
+    focusTest,
+    focusAndHoverTest,
+    hoverTest,
+    blurElement,
+    moveMouseAway,
     waitAndGetElements,
     checkScreenshot,
     getPage,
@@ -53,12 +58,20 @@ describe('NxTable', function() {
 
   it('looks right with a custom clickable row icon', simpleTest(clickableCustomIconTableSelector));
 
-  it('looks right with an active sort column', async function() {
-    const columnSelector = `${sortableTableSelector} thead th:first-child`,
-        [table, columnHeader] = await waitAndGetElements(sortableTableSelector, columnSelector);
+  describe('Sortable Columns', function() {
+    const columnSelector = `${sortableTableSelector} thead th:first-child .nx-cell__sort-btn`;
+    it('looks right when hovered', hoverTest(sortableTableSelector, columnSelector));
+    it('looks right when focused', focusTest(sortableTableSelector, columnSelector));
+    it('looks right when focused and hovered', focusAndHoverTest(sortableTableSelector, columnSelector));
+    it('looks right when clicked', clickTest(sortableTableSelector, columnSelector));
+    it('looks right with an active sort column', async function() {
+      const [table, columnHeader] = await waitAndGetElements(sortableTableSelector, columnSelector);
 
-    await columnHeader.click();
-    await checkScreenshot(table);
+      await columnHeader.click();
+      await blurElement(columnHeader);
+      await moveMouseAway();
+      await checkScreenshot(table);
+    });
   });
 
   it('looks right when loading', async function() {
