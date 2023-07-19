@@ -5,16 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { map, zip } from 'ramda';
-import {
-  NxCode,
-  NxP,
-  NxTable,
-  NxTextLink,
-  NxTile,
-  NxH3,
-  NX_SMALL_TAG_COLORS
-} from '@sonatype/react-shared-components';
+import { NxCode, NxP, NxTable, NxTextLink } from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
 
@@ -23,17 +14,6 @@ import NxSmallTagLayoutExample from './NxSmallTagLayoutExample';
 
 const NxSmallTagExampleCode = require('./NxSmallTagExample?raw');
 const NxSmallTagLayoutExampleCode = require('./NxSmallTagLayoutExample?raw');
-
-const smallTagColorClasses =
-    map(color => `nx-small-tag--${color}`, NX_SMALL_TAG_COLORS);
-
-const ColorDocRow = ({ name, className }: { name: string, className: string }) =>
-  <NxTable.Row className={className}>
-    <NxTable.Cell><NxCode>{name}</NxCode></NxTable.Cell>
-    <NxTable.Cell>
-      <div className="gallery-color-sample gallery-color-sample__small-tag"/>
-    </NxTable.Cell>
-  </NxTable.Row>;
 
 const NxSmallTagPage = () =>
   <>
@@ -82,27 +62,6 @@ const NxSmallTagPage = () =>
           </NxTable.Row>
         </NxTable.Body>
       </NxTable>
-      <NxTile.Subsection>
-        <NxTile.SubsectionHeader>
-          <NxH3>NxSmallTag Color Names and Values</NxH3>
-          <NxP>The color options for <NxCode>NxSmallTag</NxCode>.</NxP>
-        </NxTile.SubsectionHeader>
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>Color Name</NxTable.Cell>
-              <NxTable.Cell>Sample</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body>
-            {
-              zip(NX_SMALL_TAG_COLORS, smallTagColorClasses).map(([color, cls]) =>
-                <ColorDocRow key={color} name={color} className={cls} />
-              )
-            }
-          </NxTable.Body>
-        </NxTable>
-      </NxTile.Subsection>
     </GalleryDescriptionTile>
 
     <GalleryExampleTile title="Small Tag Example"

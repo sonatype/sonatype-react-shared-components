@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { Props, propTypes } from './types';
 
 import './NxSmallTag.scss';
-export { Props, NX_SMALL_TAG_COLORS } from './types';
+export { Props } from './types';
 
 const NxSmallTag = forwardRef<HTMLLabelElement, Props>(function NxSmallTag(props, ref) {
   const { children, className, color, ...attrs } = props,
