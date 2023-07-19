@@ -20,7 +20,7 @@ export default function NxTooltipNameExample() {
       </NxTooltip>
       {' '}
       <NxTooltip title="This is a name tooltip" isName>
-      <button>
+        <button>
           This would be name content but it is masked by the tooltip
         </button>
       </NxTooltip>
