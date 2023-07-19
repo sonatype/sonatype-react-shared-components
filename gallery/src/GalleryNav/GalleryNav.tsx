@@ -27,11 +27,12 @@ import {
   NxCollapsibleItemsProps,
   NxFontAwesomeIcon
 } from '@sonatype/react-shared-components';
+import classnames from 'classnames';
 
 import pageConfig from '../pageConfig';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { PageMapping, PageConfig } from '../pageConfigTypes';
+import { PageMapping, PageConfig, PageContentDescription } from '../pageConfigTypes';
 import { markByFilter, matchesFilter } from '../filterUtil';
 
 import { faFile, faCode, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
@@ -50,20 +51,37 @@ const PAGE_TYPE_TO_ICON_MAP = {
   'css': <GalleryNavIconCSS3 />
 };
 
+interface GalleryNavLinkProps {
+  className?: string;
+  pageName: string;
+  filter?: string;
+  entry: PageContentDescription;
+}
+
+/**
+ * This component smooths over an incompatibility between the className API of NavLink and what
+ * NxCollapsibleItems.Child does to its child's className
+ */
+function GalleryNavLink({ className, pageName, filter, entry }: GalleryNavLinkProps) {
+  return (
+    <NavLink className={({ isActive }) => classnames(className, 'gallery-nav-link', isActive ? 'selected' : '')}
+             to={`/pages/${pageName}`}>
+      <span className="gallery-nav-link__icon">
+        {PAGE_TYPE_TO_ICON_MAP[entry.type]}
+      </span>
+      <span className="gallery-nav-link__label">
+        {markByFilter(filter, pageName)}
+      </span>
+    </NavLink>
+  );
+}
+
 const renderLinks = (filter?: string) =>
   (entries: PageMapping) => Object
       .entries(entries)
       .map(([pageName, entry]) =>
         <NxCollapsibleItems.Child key={pageName} role="menuitem">
-          <NavLink className={({ isActive }) => 'gallery-nav-link' + isActive ? 'selected' : ''}
-                   to={`/pages/${pageName}`}>
-            <span className="gallery-nav-link__icon">
-              { PAGE_TYPE_TO_ICON_MAP[entry.type] }
-            </span>
-            <span className="gallery-nav-link__label">
-              {markByFilter(filter, pageName)}
-            </span>
-          </NavLink>
+          <GalleryNavLink { ...{ pageName, filter, entry } } />
         </NxCollapsibleItems.Child>
       );
 

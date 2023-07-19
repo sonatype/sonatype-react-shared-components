@@ -21,6 +21,7 @@ describe('NxCopyToClipboard', function() {
 
   const multipleCopySelector = '#nx-copy-to-clipboard-simple-example .gallery-example-live',
       sizingCopySelector = '#nx-copy-to-clipboard-custom-sizing-example .gallery-example-live',
+      widthConstrainedSelector = '#nx-copy-to-clipboard-width-constrained-example .gallery-example-live',
       complexCopyExample = '#complex-nx-copy-to-clipboard',
       textareaSelector = `${complexCopyExample} textarea`,
       copyBtnSelector = `${complexCopyExample} .nx-btn`;
@@ -78,6 +79,8 @@ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 }`
     );
   });
+
+  it('looks right with constrained width', simpleTest(widthConstrainedSelector));
 
   it('passes a11y checks', a11yTest());
 });
