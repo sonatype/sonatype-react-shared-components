@@ -28,6 +28,9 @@ export default function NxTextInputSimpleExample() {
         <NxTextInput className="nx-text-input--long" { ...state1 } onChange={onChange1} placeholder="Input"/>
       </div>
       <div>
+        <label htmlFor="long-example-2" style={{ display: 'block' }}>
+          Text Area with label and description
+        </label>
         <NxTextInput className="nx-text-input--long"
                      type="textarea"
                      { ...state2 }
