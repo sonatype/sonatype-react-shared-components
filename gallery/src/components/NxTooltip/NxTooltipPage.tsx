@@ -12,10 +12,12 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 import NxTooltipExample from './NxTooltipExample';
 import NxTooltipWrappingExample from './NxTooltipWrappingExample';
 import NxTooltipPlacementExample from './NxTooltipPlacementExample';
+import NxTooltipNameExample from './NxTooltipNameExample';
 
 const tooltipsExampleCode = require('./NxTooltipExample?raw'),
     wrappingTooltipsExampleCode = require('./NxTooltipWrappingExample?raw'),
     placementTooltipsExampleCode = require('./NxTooltipPlacementExample?raw'),
+    nameTooltipsExampleCode = require('./NxTooltipNameExample?raw'),
     tooltipsExampleStyles = require('./NxTooltipExample.scss?raw');
 
 export default function NxTooltipPage() {
@@ -75,6 +77,19 @@ export default function NxTooltipPage() {
               <NxTable.Cell>Whether the tooltip should be open initially. Defaults to false</NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>isName</NxTable.Cell>
+              <NxTable.Cell>boolean</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                Whether the tooltip title should be configured as the accessible name of the element. If false, the
+                tooltip title is instead set as the accessible description. Note that when the tooltip is set as
+                the accessible name, on many types of elements it will mask whatever other content would have
+                been the accessible name, such as the text content of a button. For this reason this prop should
+                generally only be set to true on tooltips for elements which would otherwise have no accessible name.
+                Defaults to false.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>onOpen</NxTable.Cell>
               <NxTable.Cell>Function</NxTable.Cell>
               <NxTable.Cell>No</NxTable.Cell>
@@ -107,6 +122,14 @@ export default function NxTooltipPage() {
                           codeExamples={placementTooltipsExampleCode}
                           liveExample={NxTooltipPlacementExample}>
         This example shows all possible placements for tooltips
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Accessible Name Example"
+                          id="nx-tooltip-placement-example"
+                          codeExamples={nameTooltipsExampleCode}
+                          liveExample={NxTooltipNameExample}>
+        This example shows two tooltips attached to <button> elements. One sets the <NxCode>isName</NxCode> prop while the
+        other does not, demonstrating the difference between the two.
       </GalleryExampleTile>
     </>
   );

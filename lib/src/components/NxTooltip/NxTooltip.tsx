@@ -55,7 +55,7 @@ function fixOptional(props: Omit<Props, 'title'>): Omit<TooltipProps, 'title'> {
 export const TooltipContext = createContext<boolean>(false);
 
 const NxTooltip: FunctionComponent<Props> =
-    function NxTooltip({ className, title, ...otherProps }) {
+    function NxTooltip({ className, title, isName, ...otherProps }) {
 
       const [initialized, setInitialized] = useState(false),
           tooltipClassName = classnames('nx-tooltip', className),
@@ -77,7 +77,7 @@ const NxTooltip: FunctionComponent<Props> =
           <Tooltip { ...fixOptional(otherProps) }
                    title={initialized && title || ''}
                    classes={{ tooltip: tooltipClassName }}
-                   describeChild= {true}
+                   describeChild={!isName}
                    PopperProps={{ container: parentModalContextValue?.dialog }} />
         </TooltipContext.Provider>
       );
