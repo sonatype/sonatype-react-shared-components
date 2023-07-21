@@ -365,41 +365,57 @@
   }
 }
 
-.nx-cell__sort-btn {
-  height: nx-table-variables.$table-cell-header-height;
-  position: relative;
-
-  > * {
+.nx-cell {
+  .nx-cell__sort-btn {
+    height: nx-table-variables.$table-cell-header-height;
     position: relative;
-  }
-
-  &::before {
-    box-sizing: border-box;
-    border-radius: 4px;
-    content: '';
-    // offset by 1px on top and 2px on the bottom
-    height: calc(100% - 3px);
-    position: absolute;
-    left: 0;
-    top: 1px;
-    // the button is already 1px narrower than the <th> element, so width set to the full 100%
-    width: 100%;
-  }
-
-  &:hover {
+  
+    > * {
+      position: relative;
+    }
+  
     &::before {
-      background-color: var(--nx-color-table-header-button-background-hover);
+      box-sizing: border-box;
+      border-radius: 4px;
+      content: '';
+      // offset by 1px on top and 2px on the bottom
+      height: calc(100% - 3px);
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: calc(100% - 1px);
+    }
+  
+    &:hover {
+      &::before {
+        background-color: var(--nx-color-table-header-button-background-hover);
+      }
+    }
+    &:focus {
+      &::before {
+        border: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+      }
+    }
+    &:active {
+      &::before {
+        background-color: var(--nx-color-table-header-button-background-active);
+        border: none;
+      }
     }
   }
-  &:focus {
-    &::before {
-      border: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+  &:first-child {
+    .nx-cell__sort-btn {
+      &::before {
+        left: 1px;
+      }
     }
   }
-  &:active {
-    &::before {
-      background-color: var(--nx-color-table-header-button-background-active);
-      border: none;
+
+  &:not(:first-child), &:not(:last-child) {
+    .nx-cell__sort-btn {
+      &::before {
+        width: 100%;
+      }
     }
   }
 }
@@ -409,20 +425,29 @@
   $edge-spacing: calc(var(--nx-spacing-4x) - 1px);
 
   &:first-child {
-    > .nx-cell__sort-btn, > .nx-cell__row-btn {
+    > .nx-cell__row-btn {
       @include btn-cell-sizing($edge-spacing, var(--nx-spacing-3x));
+    }
+    > .nx-cell__sort-btn {
+      @include btn-cell-sizing(var(--nx-spacing-4x), var(--nx-spacing-3x));
     }
   }
 
   &:last-child {
-    > .nx-cell__sort-btn, > .nx-cell__row-btn {
+    > .nx-cell__row-btn {
       @include btn-cell-sizing(var(--nx-spacing-3x), $edge-spacing);
+    }
+    > .nx-cell__sort-btn {
+      @include btn-cell-sizing(var(--nx-spacing-3x), var(--nx-spacing-4x));
     }
   }
 
   &:first-child:last-child {
-    > .nx-cell__sort-btn, > .nx-cell__row-btn {
+    > .nx-cell__row-btn {
       @include btn-cell-sizing($edge-spacing, $edge-spacing);
+    }
+    > .nx-cell__sort-btn {
+      @include btn-cell-sizing(var(--nx-spacing-4x), var(--nx-spacing-4x));
     }
   }
 }
