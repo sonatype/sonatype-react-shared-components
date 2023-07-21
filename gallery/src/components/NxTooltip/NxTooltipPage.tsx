@@ -128,7 +128,7 @@ export default function NxTooltipPage() {
                           id="nx-tooltip-placement-example"
                           codeExamples={nameTooltipsExampleCode}
                           liveExample={NxTooltipNameExample}>
-        This example shows two tooltips attached to SVG elements. One sets the <NxCode>isName</NxCode> prop while the
+        This example shows two tooltips attached to <button> elements. One sets the <NxCode>isName</NxCode> prop while the
         other does not, demonstrating the difference between the two.
       </GalleryExampleTile>
     </>
