@@ -396,7 +396,7 @@ const NxTextInputPage = () =>
       the <NxCode>long</NxCode> modifier, which makes them wider. Additionally, the second input demonstrates that
       the <NxCode>id</NxCode>, <NxCode>aria-required</NxCode>, and <NxCode>aria-describedby</NxCode> props are
       passed down directly to the <NxCode>&lt;input&gt;</NxCode>/<NxCode>&lt;textarea&gt;</NxCode>. That input
-      is additional wrapped within a label – this is done to appease accessibility standards checking tools which
+      is additionally wrapped within a label – this is done to appease accessibility standards checking tools which
       require inputs with an accessible description to also have an accessible name.
     </GalleryExampleTile>
 
