@@ -381,9 +381,9 @@
       // offset by 1px on top and 2px on the bottom
       height: calc(100% - 3px);
       position: absolute;
-      left: 0;
+      left: 1px;
       top: 1px;
-      width: calc(100% - 1px);
+      width: calc(100% - 2px);
     }
   
     &:hover {
@@ -400,21 +400,6 @@
       &::before {
         background-color: var(--nx-color-table-header-button-background-active);
         border: none;
-      }
-    }
-  }
-  &:first-child {
-    .nx-cell__sort-btn {
-      &::before {
-        left: 1px;
-      }
-    }
-  }
-
-  &:not(:first-child), &:not(:last-child) {
-    .nx-cell__sort-btn {
-      &::before {
-        width: 100%;
       }
     }
   }
