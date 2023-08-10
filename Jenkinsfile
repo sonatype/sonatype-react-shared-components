@@ -20,6 +20,9 @@ dockerizedBuildPipeline(
   // expose gallery port and nextjs dev port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043 -p 3000:3000',
 
+  // an npmrc file that's compatible with the npm from node 18
+  npmConfigFileId: 'rsc-ro-npmrc-v9',
+
   prepare: {
     env['DEPLOY_BRANCH'] = deployBranch
 
