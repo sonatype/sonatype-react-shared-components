@@ -5,7 +5,7 @@
 # distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
 #
 
-FROM docker-all.repo.sonatype.com/node:18.17.0
+FROM docker-all.repo.sonatype.com/node@sha256:c85dc4392f44f5de1d0d72dd20a088a542734445f99bed7aa8ac895c706d370d
 
 RUN apt-get update && \
     apt-get autoremove -y && apt-get clean -y && \
