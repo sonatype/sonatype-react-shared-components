@@ -369,10 +369,7 @@
   .nx-cell__sort-btn {
     height: nx-table-variables.$table-cell-header-height;
     position: relative;
-
-    > * {
-      position: relative;
-    }
+    z-index: 0;
 
     &::before {
       box-sizing: border-box;
@@ -384,6 +381,7 @@
       left: 1px;
       top: 1px;
       width: calc(100% - 2px);
+      z-index: -1;
     }
 
     &:hover {
