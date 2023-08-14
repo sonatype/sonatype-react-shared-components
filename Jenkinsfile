@@ -139,7 +139,7 @@ dockerizedBuildPipeline(
     // publish to repo.s.c. We must do this in addition to publishing to npmjs.com because of the
     // namespace confusion protection feature of Nexus Firewall. See RSC-1430 and the slack conversation
     // linked therein
-    withDockerImage(env.DOCKER_IMAGE_ID, 'rsc-internal-write-npmrc') {
+    withDockerImage(env.DOCKER_IMAGE_ID, 'rsc-internal-write-npmrc-v9') {
       doPublish('https://repo.sonatype.com/repository/npm-internal/')
     }
 
