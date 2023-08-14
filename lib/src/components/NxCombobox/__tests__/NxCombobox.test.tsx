@@ -169,7 +169,7 @@ describe('NxCombobox', function() {
         <div>
           <div>Outside Combobox</div>
           <NxCombobox matches= {[{ id: '1', displayName: 'Foo' }]}
-                      value= ''
+                      value=""
                       onChange= {() => {}}
                       onSearch= {() => {}} />
         </div>
@@ -293,7 +293,7 @@ describe('NxCombobox', function() {
     rerender(<NxCombobox { ...minimalProps } loadError={'boo'} />);
     expect(getByRole('alert')).toHaveAttribute('aria-live', 'polite');
 
-    rerender(<NxCombobox { ...minimalProps } value='f' />);
+    rerender(<NxCombobox { ...minimalProps } value="f" />);
     expect(getByRole('alert')).toHaveAttribute('aria-live', 'polite');
   });
 
@@ -388,7 +388,7 @@ describe('NxCombobox', function() {
         jsx =
           <>
             <NxCombobox { ...minimalProps } value="f" loadError="err" onSearch={onSearch}/>
-            <button type='button'>Click</button>
+            <button type="button">Click</button>
           </>,
         component = render(jsx),
         inputElement = component.getByRole('combobox'),
