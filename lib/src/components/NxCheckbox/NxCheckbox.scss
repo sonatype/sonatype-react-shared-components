@@ -10,6 +10,10 @@
 $-height: 16px;
 $-width: 16px;
 
+.nx-checkbox {
+  min-width: $-width;
+}
+
 .nx-checkbox__box {
   align-items: center;
   border-radius: 2px;
