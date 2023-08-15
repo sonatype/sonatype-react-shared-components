@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 
 import {
   NxCheckbox,
@@ -38,8 +38,8 @@ export default function NxFormLayoutExample() {
 
   const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('', validator);
 
-  function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
-    setSelectVal(evt.currentTarget.value);
+  function onSelectChange(val: string) {
+    setSelectVal(val);
   }
 
   const {

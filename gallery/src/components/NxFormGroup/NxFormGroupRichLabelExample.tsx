@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 
 import { faGlobeEurope, faFlag } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,8 +13,8 @@ import { NxFormGroup, NxFontAwesomeIcon, NxFormSelect } from '@sonatype/react-sh
 export default function NxFormGroupRichLabelExample() {
   const [val, setVal] = useState('');
 
-  function onChange(e: ChangeEvent<HTMLSelectElement>) {
-    setVal(e.target.value);
+  function onChange(val:string) {
+    setVal(val);
   }
 
   const label = (
