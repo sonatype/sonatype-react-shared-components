@@ -38,10 +38,6 @@ export default function NxFormLayoutExample() {
 
   const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('', validator);
 
-  function onSelectChange(val: string) {
-    setSelectVal(val);
-  }
-
   const {
     states: {
       red: [isRed, toggleRed],
@@ -88,7 +84,7 @@ export default function NxFormLayoutExample() {
           <NxStatefulTextInput/>
         </NxFormGroup>
         <NxFormGroup label="Label" isRequired>
-          <NxFormSelect { ...selectState } validatable onChange={onSelectChange}>
+          <NxFormSelect { ...selectState } validatable onChange={setSelectVal}>
             <option value="">Select an option</option>
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>

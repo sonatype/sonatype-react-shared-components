@@ -53,11 +53,11 @@ export default function NxDrawerWithNxFormExample() {
               <NxStatefulTextInput />
             </NxFormGroup>
             <NxFormGroup label="Country" sublabel="Pick your favorite from the list">
-              <NxFormSelect value={country} onChange={val => setCountry(val)}>
+              <NxFormSelect value={country} onChange={setCountry}>
                 <option value="">Pick a Country</option>
                 <option value="USA">USA</option>
-                <option value="GER">Canada</option>
-                <option value="CAN">Germany</option>
+                <option value="CAN">Canada</option>
+                <option value="GER">Germany</option>
                 <option value="COL">Colombia</option>
               </NxFormSelect>
             </NxFormGroup>

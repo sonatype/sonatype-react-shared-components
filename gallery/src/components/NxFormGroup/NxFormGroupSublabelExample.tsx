@@ -11,17 +11,13 @@ import { NxFormGroup, NxFormSelect } from '@sonatype/react-shared-components';
 export default function NxFormGroupSublabelExample() {
   const [val, setVal] = useState('');
 
-  function onChange(val: string) {
-    setVal(val);
-  }
-
   return (
     <NxFormGroup label="Country" sublabel="Pick your favorite from the list">
-      <NxFormSelect value={val} onChange={onChange}>
+      <NxFormSelect value={val} onChange={setVal}>
         <option value="">Pick a Country</option>
         <option value="USA">USA</option>
-        <option value="GER">Canada</option>
-        <option value="CAN">Germany</option>
+        <option value="CAN">Canada</option>
+        <option value="GER">Germany</option>
         <option value="COL">Colombia</option>
       </NxFormSelect>
     </NxFormGroup>

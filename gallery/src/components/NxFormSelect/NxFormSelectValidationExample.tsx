@@ -14,13 +14,9 @@ function validator(c: string) {
 const NxFormSelectValidationExample = () => {
   const [selectState, setSelectValue] = nxFormSelectStateHelpers.useNxFormSelectState<string>('', validator);
 
-  function onChange(val: string) {
-    setSelectValue(val);
-  }
-
   return (
     <NxFormGroup label={`Selected Continent: ${selectState.value}`} isRequired>
-      <NxFormSelect onChange={onChange} validatable { ...selectState }>
+      <NxFormSelect onChange={setSelectValue} validatable { ...selectState }>
         <option value="">-- Select a Continent --</option>
         <option value="NA">North America</option>
         <option value="SA">South America</option>

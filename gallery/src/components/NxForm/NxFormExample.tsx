@@ -30,13 +30,8 @@ export default function NxFormExample() {
     return val.length ? null : 'Must be non-empty';
   }
 
-  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('');
-
-  function onSelectChange(val: string) {
-    setSelectVal(val);
-  }
-
-  const [usernameState, setUsernameState] = useState(initialState('', validator)),
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>(''),
+      [usernameState, setUsernameState] = useState(initialState('', validator)),
       [hostnameState, setHostnameState] = useState(initialState('')),
       [redChecked, toggleRed] = useToggle(false),
       [blueChecked, toggleBlue] = useToggle(false),
@@ -175,7 +170,7 @@ export default function NxFormExample() {
         </NxRadio>
       </NxFieldset>
       <NxFormGroup label="Select">
-        <NxFormSelect { ...selectState } onChange={onSelectChange}>
+        <NxFormSelect { ...selectState } onChange={setSelectVal}>
           <option value="">Select an option</option>
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>

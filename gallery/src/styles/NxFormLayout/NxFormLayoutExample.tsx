@@ -72,10 +72,6 @@ export default function NxFormLayoutExample() {
 
   const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('', validator);
 
-  function onSelectChange(val: string) {
-    setSelectVal(val);
-  }
-
   const {
     states: {
       red: [isRed, toggleRed],
@@ -209,7 +205,7 @@ export default function NxFormLayoutExample() {
         </NxRadio>
       </NxFieldset>
       <NxFormGroup label="Select a Continent" isRequired>
-        <NxFormSelect onChange={onSelectChange} validatable { ...selectState }>
+        <NxFormSelect onChange={setSelectVal} validatable { ...selectState }>
           <option value="">-- Select a Continent --</option>
           <option value="NA">North America</option>
           <option value="SA">South America</option>
