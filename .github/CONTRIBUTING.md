@@ -75,7 +75,7 @@ the following, as applicable:
 
 ## Submitting a PR
 
-* Add  as a reviewer to the PR
+* Add sonatype/rsc-steering as a reviewer to the PR
 * PRs must be approved by Ross Pokorny and (if they involve design changes) Jason Swearingen.
   You may also want to get an approval from another member of your development team.
 * Github is configured to enforce that a PR may only be merged to `main` once it has a passing CI build, at least one
