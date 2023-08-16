@@ -10,6 +10,10 @@
 $-size: 16px;
 $-checked-border-width: 4px;
 
+.nx-radio {
+  min-width: $-size;
+}
+
 .nx-radio__circle {
   background-color: var(--nx-color-component-background);
   border-radius: 50%;

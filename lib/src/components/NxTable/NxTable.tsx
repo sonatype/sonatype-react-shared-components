@@ -34,7 +34,7 @@ const NxTable = function NxTableElement(props: NxTableProps) {
 
   return (
     <table ref={tableRef} className={classnames('nx-table', className)} {...attrs}>
-      {caption && <caption className='nx-h2'>{caption}</caption>}
+      {caption && <caption className="nx-h2">{caption}</caption>}
       <ColumnCountContext.Provider value={columnCount}>
         {children}
       </ColumnCountContext.Provider>
