@@ -21,10 +21,9 @@
   $header-filter-row-height: calc(#{$text-input-height} + (var(--nx-spacing-4x) * 2) + 1px);
   $footer-height: calc(#{$pagination-button-height} + (#{$table-footer-vertical-padding} * 2) + 1px);
 
-  @return calc(#{
-    ($body-row-count - 1) * ($body-row-height + 1px) + // extra 1px for border
-    ($body-row-height) + // last row does not have border
-    $header-row-count * $header-row-height} +
+  @return calc(#{$body-row-count - 1} * #{$body-row-height} +
+    (#{$body-row-height} - 1px) +
+    #{$header-row-count} * #{$header-row-height} +
     #{$header-filter-row-height} * #{$header-filter-row-count} +
     #{$footer-height}
   );

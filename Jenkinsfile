@@ -20,6 +20,9 @@ dockerizedBuildPipeline(
   // expose gallery port and nextjs dev port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043 -p 3000:3000',
 
+  // an npmrc file that's compatible with the npm from node 18
+  npmConfigFileId: 'rsc-ro-npmrc-v9',
+
   prepare: {
     env['DEPLOY_BRANCH'] = deployBranch
 
@@ -136,7 +139,7 @@ dockerizedBuildPipeline(
     // publish to repo.s.c. We must do this in addition to publishing to npmjs.com because of the
     // namespace confusion protection feature of Nexus Firewall. See RSC-1430 and the slack conversation
     // linked therein
-    withDockerImage(env.DOCKER_IMAGE_ID, 'rsc-internal-write-npmrc') {
+    withDockerImage(env.DOCKER_IMAGE_ID, 'rsc-internal-write-npmrc-v9') {
       doPublish('https://repo.sonatype.com/repository/npm-internal/')
     }
 

@@ -11,10 +11,12 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 
 import NxCopyToClipboardExample from './NxCopyToClipboardExample';
 import NxCopyToClipboardComplexExample from './NxCopyToClipboardComplexExample';
+import NxCopyToClipboardWidthConstrainedExample from './NxCopyToClipboardWidthConstrainedExample';
 import NxCopyToClipboardSizingExample from './NxCopyToClipboardSizingExample';
 
 const nxCopyToClipabordCode = require('./NxCopyToClipboardExample?raw'),
     nxCopyToClipboardComplexCode = require('./NxCopyToClipboardComplexExample?raw'),
+    nxCopyToClipboardWidthConstrainedCode = require('./NxCopyToClipboardWidthConstrainedExample?raw'),
     nxCopyToClipboardSizingCode = require('./NxCopyToClipboardSizingExample?raw');
 
 export default function NxCopyToClipboardPage() {
@@ -130,6 +132,14 @@ export default function NxCopyToClipboardPage() {
         An <NxCode>NxCopyToClipboard</NxCode> demonstrating optional
         props: <NxCode>sublabel</NxCode>, <NxCode>onCopyUsingBtn</NxCode>,
         and <NxCode>inputProps</NxCode>
+      </GalleryExampleTile>
+
+      <GalleryExampleTile title="Width-Constrained Example"
+                          id="nx-copy-to-clipboard-width-constrained-example"
+                          liveExample={NxCopyToClipboardWidthConstrainedExample}
+                          codeExamples={nxCopyToClipboardWidthConstrainedCode}>
+        This example demonstrates that when an <NxCode>NxCopyToClipboard</NxCode> is within a container that is less
+        than 800px wide, the <NxCode>NxCopyToClipboard</NxCode> will be constrained to the width of the container.
       </GalleryExampleTile>
     </>
   );

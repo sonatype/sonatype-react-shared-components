@@ -225,6 +225,8 @@
   --nx-color-table-header-background: var(--nx-swatch-indigo-80);
   --nx-color-table-row-background-hover: var(--nx-color-interactive-background-hover);
   --nx-color-table-sort-icon-active: var(--nx-swatch-blue-40);
+  --nx-color-table-header-button-background-hover: var(--nx-swatch-indigo-70);
+  --nx-color-table-header-button-background-active: var(--nx-swatch-indigo-90);
 
   // NxTransferList
   --nx-color-transfer-list-item-list-background: var(--nx-color-site-background);
@@ -341,6 +343,9 @@
   // NxDrawer
   --nx-color-drawer-background: var(--nx-color-component-background);
   --nx-color-drawer-box-shadow: Hsla(var(--nx-swatch-grey-hs), 50%, 0.5);
+  
+  // NxSmallTag
+  --nx-color-small-tag-text: var(--nx-swatch-white);
 
   @include nx-dark-mode-helpers.dark-mode {
     --nx-color-disabled: var(--nx-swatch-indigo-40);
@@ -544,6 +549,8 @@
     --nx-color-table-header-background: var(--nx-swatch-indigo-35);
     --nx-color-table-row-background-hover: var(--nx-swatch-indigo-15);
     --nx-color-table-sort-icon-active: var(--nx-swatch-purple-80);
+    --nx-color-table-header-button-background-hover: var(--nx-swatch-indigo-25);
+    --nx-color-table-header-button-background-active: var(--nx-swatch-indigo-45);
 
     // NxList
     --nx-color-list-background-hover: var(--nx-color-site-background);
@@ -649,6 +656,9 @@
 
     // NxTag
     --nx-color-tag-text: var(--nx-swatch-indigo-10);
+
+    // NxSmallTag
+    --nx-color-small-tag-text: var(--nx-swatch-indigo-05);
 
     --nx-color-system-notice-background: var(--nx-swatch-indigo-30);
     --nx-color-system-notice-background-alert: var(--nx-swatch-pink-30);

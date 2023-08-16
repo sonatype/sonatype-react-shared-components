@@ -150,7 +150,7 @@ The RSC code is split into two separate codebases: the library itself which live
 ## Building
 
 ### Required Software
-* Node 16.x or 14.x. Automated testing is performed on 16.x.
+* Node 18.x or 16.x. Automated testing is performed on 18.x.
 * yarn 1.22.x
 * git-lfs for visual test snapshots. For the command line git client, git-lfs is a separate program which functions as a
 plugin, for graphical git clients, git-lfs support is often built-in. To check whether your checkout used git-lfs

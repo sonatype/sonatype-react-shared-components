@@ -5,6 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 @use '../../scss-shared/nx-text-helpers';
+@use '../../scss-shared/nx-dark-mode-helpers';
 
 .nx-small-tag {
   @include nx-text-helpers.semi-bold;
@@ -21,9 +22,10 @@
   }
 
   &__text {
+    background-color: var(--nx-color-small-tag);
     border-radius: 8px;
     box-sizing: border-box;
-    color: var(--nx-swatch-white);
+    color: var(--nx-color-small-tag-text);
     display: inline-block;
     font-size: var(--nx-font-size-s);
     height: $height;
@@ -35,56 +37,66 @@
   }
 
   &--blue {
-    .nx-small-tag__text {
-      background-color: var(--nx-swatch-blue-30);
+    --nx-color-small-tag: var(--nx-swatch-blue-30);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-blue-80);
     }
   }
 
   &--green {
-    .nx-small-tag__text {
-      background-color: var(--nx-swatch-green-25);
+    --nx-color-small-tag: var(--nx-swatch-green-25);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-green-85);
     }
   }
 
   &--indigo {
-    .nx-small-tag__text {
-      background-color: var(--nx-swatch-indigo-40);
+    --nx-color-small-tag: var(--nx-swatch-indigo-40);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-indigo-80);
     }
   }
-
+  
   &--orange {
-    .nx-small-tag__text {
-      background-color: var(--nx-swatch-orange-20);
+    --nx-color-small-tag: var(--nx-swatch-orange-20);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-orange-75);
     }
   }
-
+  
   &--pink {
-    .nx-small-tag__text {
-      background-color: var(--nx-swatch-pink-40);
+    --nx-color-small-tag: var(--nx-swatch-pink-40);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-pink-70);
     }
   }
-
+  
   &--purple {
-    .nx-small-tag__text {
-      background-color: var(--nx-swatch-purple-30);
+    --nx-color-small-tag: var(--nx-swatch-purple-30);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-purple-90);
     }
   }
-
+  
   &--red {
-    .nx-small-tag__text {
-      background-color: var(--nx-swatch-red-30);
+    --nx-color-small-tag: var(--nx-swatch-red-30);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-red-70);
     }
   }
-
+  
   &--teal {
-    .nx-small-tag__text {
-      background-color: var(--nx-swatch-teal-30);
+    --nx-color-small-tag: var(--nx-swatch-teal-30);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-teal-70);
     }
   }
-
+  
   &--turquoise {
-    .nx-small-tag__text {
-      background-color: var(--nx-swatch-turquoise-20);
+    --nx-color-small-tag: var(--nx-swatch-turquoise-20);
+    @include nx-dark-mode-helpers.dark-mode {
+      --nx-color-small-tag: var(--nx-swatch-turquoise-80);
     }
   }
 }
+

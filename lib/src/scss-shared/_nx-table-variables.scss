@@ -9,5 +9,5 @@
 // nx-tables css
 $table-cell-vertical-padding: var(--nx-spacing-3x);
 $table-cell-header-height: 48px;
-$table-cell-min-height: 48px; //content box only
+$table-cell-min-height: calc(var(--nx-font-size) * var(--nx-line-height) + #{$table-cell-vertical-padding} * 2 + 1px);
 $table-footer-vertical-padding: var(--nx-spacing-6x);
