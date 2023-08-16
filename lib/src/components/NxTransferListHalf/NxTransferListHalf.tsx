@@ -139,7 +139,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
       <div className="nx-transfer-list__control-box">
         <NxFilterInput className="nx-transfer-list__filter"
                        placeholder="Filter"
-                       aria-label="Filter"
+                       inputAttributes={{ 'aria-label': 'Filter' }}
                        value={filterValue}
                        onChange={onFilterChange} />
         { showMoveAll &&

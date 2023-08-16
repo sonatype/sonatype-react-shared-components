@@ -126,9 +126,17 @@ function NxDrawer(props: Props) {
         }
       };
 
-      document.addEventListener('click', listener);
+      // to prevent the click event from being called before the drawer is rendered
+      // https://github.com/facebook/react/issues/24657
+      // https://github.com/reactwg/react-18/discussions/128
+      const timeout = setTimeout(() => {
+        document.addEventListener('click', listener);
+      }, 0);
 
-      return () => document.removeEventListener('click', listener);
+      return () => {
+        clearTimeout(timeout);
+        document.removeEventListener('click', listener);
+      };
     }
     else {
       if (openState === 'open') {

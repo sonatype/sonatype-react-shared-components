@@ -51,7 +51,7 @@ export interface NxGlobalSidebarNavigationLinkProps extends AnchorHTMLAttributes
 export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSidebarNavigationLinkProps> = {
   isSelected: PropTypes.bool,
   icon: PropTypes.object.isRequired as Validator<IconDefinition>,
-  text: PropTypes.node.isRequired,
+  text: PropTypes.node.isRequired as Validator<RequiredReactNode>,
   href: PropTypes.string.isRequired
 };
 

@@ -6,8 +6,9 @@
  */
 import React, { useRef } from 'react';
 import classnames from 'classnames';
+import { mergeDeepRight } from 'ramda';
 
-import { Props, propTypes } from './types';
+import { Props, InternalInputProps, propTypes } from './types';
 import NxFormGroup from '../NxFormGroup/NxFormGroup';
 import NxTextInput from '../NxTextInput/NxTextInput';
 import NxButton from '../NxButton/NxButton';
@@ -19,7 +20,10 @@ export { Props };
 export default function NxCopyToClipboard(props: Props) {
   const { content, label, sublabel, className, onCopyUsingBtn, inputProps, ...otherProps } = props,
       classes = classnames('nx-copy-to-clipboard', className),
-      textInputRef = useRef<HTMLDivElement>(null);
+      textInputRef = useRef<HTMLDivElement>(null),
+      inputPropsWithReadOnly: InternalInputProps = mergeDeepRight(inputProps ?? {}, {
+        inputAttributes: { readOnly: true }
+      });
 
   function copyWithNavigatorClipboard() {
     window.navigator.clipboard.writeText(content).then(function() {
@@ -70,7 +74,11 @@ export default function NxCopyToClipboard(props: Props) {
     <div className={classes} { ...otherProps }>
       <NxButton type="button" variant="tertiary" onClick={copyToClipboard}>Copy to Clipboard</NxButton>
       <NxFormGroup label={label} sublabel={sublabel}>
-        <NxTextInput { ...inputProps } ref={textInputRef} type="textarea" value={content} isPristine={true} readOnly />
+        <NxTextInput { ...inputPropsWithReadOnly }
+                     ref={textInputRef}
+                     type="textarea"
+                     value={content}
+                     isPristine={true} />
       </NxFormGroup>
     </div>
   );

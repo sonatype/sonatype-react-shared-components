@@ -6,15 +6,17 @@
  */
 import * as PropTypes from 'prop-types';
 
-import { NxTextInputType, PublicNxTextInputType, HTMLProps, propTypes as nxTextInputPropTypes, Validator }
+import { NxTextInputType, PublicNxTextInputType, DivAttrs, InputAttrs, propTypes as nxTextInputPropTypes, Validator }
   from '../types';
 
-export interface Props extends HTMLProps {
+export interface Props extends DivAttrs {
   type?: NxTextInputType | null;
   defaultValue?: string | null;
   validator?: Validator;
   onChange?: ((newVal: string) => void) | null;
   onKeyPress?: ((newVal: string) => void) | null;
+  disabled?: boolean | null;
+  inputAttributes?: InputAttrs;
 }
 
 export interface PublicProps extends Props {

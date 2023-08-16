@@ -71,7 +71,7 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
           // focus the last element - but only after first unfocusing everything in order to trigger the
           // last element to update its child focus based on the navigation direction, in case the last element
           // was already the focused one
-          Promise.resolve().then(() => { setFocusedChild(ref.current?.lastElementChild || null); });
+          setTimeout(() => { setFocusedChild(ref.current?.lastElementChild || null); }, 0);
         },
 
         getTreeRoot: parentKeyNavContext ? parentKeyNavContext.getTreeRoot : () => ref.current

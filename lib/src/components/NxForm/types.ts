@@ -12,7 +12,7 @@ export interface FormAriaContextType {
   showValidationErrors: boolean;
 }
 
-export interface Props extends FormHTMLAttributes<HTMLFormElement> {
+export interface Props extends Omit<FormHTMLAttributes<HTMLFormElement>, 'children'> {
   loading?: boolean | null;
   doLoad?: (() => void) | null;
   onSubmit: () => void;

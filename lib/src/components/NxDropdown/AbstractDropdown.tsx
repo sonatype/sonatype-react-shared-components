@@ -53,7 +53,11 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   const menuRef = useRef<HTMLDivElement>(null),
       menuRefs = [menuRef, ...(menuRefProp ? [menuRefProp] : [])],
       mergedMenuRef = useMergedRef(...menuRefs),
-      toggleRef = useRef<HTMLButtonElement>(null);
+      toggleRef = useRef<HTMLButtonElement>(null),
+
+      // set in onToggleCollapse to signal to handleDocumentClick that the dropdown is opening and so shouldn't
+      // immediately be closed
+      openingRef = useRef(false);
 
   const onKeyDown: KeyboardEventHandler<HTMLDivElement> = event => {
     if (isOpen && !disabled && event.key === 'Escape' && onToggleCollapseProp) {
@@ -76,7 +80,11 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   };
 
   const handleDocumentClick = (event: MouseEvent) => {
-    if (isOpen && onToggleCollapseProp) {
+    if (openingRef.current) {
+      // Same event that caused the element to open in onToggleCollapse, don't immediately close
+      openingRef.current = false;
+    }
+    else if (isOpen && onToggleCollapseProp) {
       let defaultPrevented = false;
 
       if (onCloseClick) {
@@ -110,6 +118,7 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
     // (i.e. when not already open)
     if (!isOpen && onToggleCollapseProp) {
       onToggleCollapseProp();
+      openingRef.current = true;
     }
   }
 
