@@ -8,10 +8,11 @@ import {ReactNode} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { requiredNullableString } from '../../util/customPropTypes';
+import RequiredReactNode from '../../util/RequiredReactNode';
 
 export interface Option {
   id: string | null;
-  name: string;
+  name: string | RequiredReactNode;
 }
 
 export interface CommonProps<T extends Option = Option> {
@@ -34,7 +35,10 @@ export interface CommonProps<T extends Option = Option> {
 
 export const optionPropType = PropTypes.shape({
   id: requiredNullableString,
-  name: PropTypes.string.isRequired
+  name: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.node.isRequired
+  ]).isRequired
 }).isRequired;
 
 export const commonPropTypes: PropTypes.ValidationMap<CommonProps> = {
