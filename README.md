@@ -263,7 +263,7 @@ To update dark mode screenshots, run the following command:
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest-dark -u
 ```
 
-The commands above ensure you update the screenshots within the Docker container. The updates need be run within the
+The commands above ensure you update the screenshots within the Docker container. The updates need to be run within the
 Docker container or an equivalent environment to ensure that the updated baselines match on CI. Note that updating
 visual test screenshots take roughly the same amount of time as running the visual tests.
 
