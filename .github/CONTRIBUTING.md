@@ -39,7 +39,7 @@ and then a pull request submitted for review. PR Review is performed during the 
 
 ### Merging and Testing
 Once a PR has passed all necessary approvals and checks, it may be merged. On RSC, we do official manual testing _after_
-the PR is merged (though the developer should or course be manually testing their work during development, and reviewers
+the PR is merged (though the developer should of course be manually testing their work during development, and reviewers
 might do so as well). Once the PR is merged, the ticket should be moved to the "Testing" JIRA phase and unassigned.
 Another member of your team should then assign it to themselves and test it. Manual testing should be done in current
 versions of: at least one Chromium-based browser (e.g. Chrome or Edge), Firefox, and Safari. If issues are discovered,
