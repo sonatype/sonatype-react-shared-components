@@ -43,7 +43,7 @@ the PR is merged (though the developer should of course be manually testing thei
 might do so as well). Once the PR is merged, the ticket should be moved to the "Testing" JIRA phase and unassigned.
 Another member of your team should then assign it to themselves and test it. Manual testing should be done in current
 versions of: at least one Chromium-based browser (e.g. Chrome or Edge), Firefox, and Safari. If issues are discovered,
-they shoul be filed as Defect subtasks in JIRA, moved to Ready for Development, and fixed promptly. The Defect tickets
+they should be filed as Defect subtasks in JIRA, moved to Ready for Development, and fixed promptly. The Defect tickets
 go through the entire development cycle including their own PR review and testing phases.
 
 Once a ticket has passed testing and any Defect tickets are fixed, the ticket should be moved to Done.
