@@ -36,7 +36,9 @@ const NxCollapsibleMultiSelectDisabledExample = () => {
   const [filter, setFilter] = useState('');
 
   function filterPredicate(option: NxCollapsibleMultiSelectOption) {
-    return includes(toLower(filter), toLower(option.name));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const name = typeof option.name === 'string' ? option.name : (option.name as any).props.children[1].props.children;
+    return includes(toLower(filter), toLower(name));
   }
 
   return (
