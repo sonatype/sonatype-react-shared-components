@@ -71,7 +71,7 @@ the following, as applicable:
   https://www.w3.org/WAI/ARIA/apg/patterns/ and https://www.w3.org/TR/wai-aria-1.2/
   * Have you included an "a11yCheck" test in the visual test suite for your component?
 * If your contribution is a new component, have you added the component to the Server-Side Rendering Tests?
-* Have you added an appropriate version number bump to the lib and gallery `package.json` files?
+* Have you added an appropriate semver version number bump to the lib and gallery `package.json` files?
 
 ## Submitting a PR
 
