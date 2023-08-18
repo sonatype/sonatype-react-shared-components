@@ -52,9 +52,7 @@ const NxCollapsibleRadioSelectCustomTooltipExample = () => {
   const [filter, setFilter] = useState('');
 
   function filterPredicate(option: NxCollapsibleRadioSelectOption) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const name = typeof option.name === 'string' ? option.name : (option.name as any).props.children[1].props.children;
-    return includes(toLower(filter), toLower(name));
+    return includes(toLower(filter), toLower(option.name as string));
   }
 
   return (
