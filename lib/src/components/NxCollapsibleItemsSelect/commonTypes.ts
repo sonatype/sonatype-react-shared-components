@@ -40,10 +40,7 @@ export interface CommonProps<T extends Option = Option> {
 
 export const optionPropType = PropTypes.shape({
   id: requiredNullableString,
-  name: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.node.isRequired
-  ]).isRequired
+  name: PropTypes.node.isRequired
 }).isRequired;
 
 export const commonPropTypes: PropTypes.ValidationMap<CommonProps> = {
