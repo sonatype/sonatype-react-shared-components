@@ -15,6 +15,11 @@ export interface Option {
   name: string | RequiredReactNode;
 }
 
+export const stringName = '__rscOptionStringName';
+export interface OptionWithStringName extends Option {
+  [stringName]: string;
+}
+
 export interface CommonProps<T extends Option = Option> {
   options: T[];
   name: string;

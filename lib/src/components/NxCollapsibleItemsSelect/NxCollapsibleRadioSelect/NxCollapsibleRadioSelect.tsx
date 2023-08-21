@@ -18,7 +18,6 @@ function NxCollapsibleRadioSelect<T extends Option>(props: Props<T>) {
       {name, options} = otherProps,
       disabled = !!props.disabled,
       selectedItem = find(propEq(selectedId, 'id'), options);
-  console.log(otherProps);
 
   const renderOption = ({id, name: optionName}: Option) => (
     // NxCollapsibleItemsChild takes empty role to mean no role and normalizes it correctly
