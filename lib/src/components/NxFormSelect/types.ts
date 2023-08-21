@@ -8,10 +8,11 @@ import { SelectHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 import { ValidationErrors } from '../../util/validationUtil';
 
-export interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
+export interface Props extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
   isPristine?: boolean | null;
   validatable?: boolean | null;
   validationErrors?: ValidationErrors;
+  onChange?: ((val: string) => void) | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

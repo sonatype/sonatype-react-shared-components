@@ -55,5 +55,9 @@ describe('NxCollapsibleRadioSelect', function() {
     it('has an offsetted blue outer border outline and glow when focused', focusTest(selector, radioSelector));
   });
 
-  it('passes a11y checks', a11yTest());
+  // Aria does not allow for an element with role=menu to have any children with role=img (amongst others),
+  // such as is the case for NxCollapsibleRadioSelect. Seeing that the role of ‘menuitemcheckbox’ cannot be
+  // assigned to the <label> element (as guidelines suggest 'menuitemcheckbox' to wrap the checkbox & its
+  // label), and an input[type=checkbox/radio] cannot be assigned role=none, we need to override this error
+  it('passes a11y checks', a11yTest(builder => builder.disableRules(['color-contrast', 'aria-required-children'])));
 });

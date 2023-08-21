@@ -6,18 +6,28 @@
  */
 import React, { useState } from 'react';
 import { includes, toLower } from 'ramda';
+import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 
 import {
   NxCollapsibleRadioSelect,
   NxCollapsibleRadioSelectOption,
+  NxFontAwesomeIcon,
   useToggle
 } from '@sonatype/react-shared-components';
 
 const NxCollapsibleRadioSelectExample = () => {
+
+  const customNameElement = (
+    <>
+      <NxFontAwesomeIcon icon={faBicycle}/>
+      <span>Bicycle</span>
+    </>
+  );
+
   const options = [
     {
       id: 'bike',
-      name: 'Bicycle'
+      name: customNameElement
     }, {
       id: 'motorcycle',
       name: 'Motorcycle'
@@ -42,7 +52,9 @@ const NxCollapsibleRadioSelectExample = () => {
   const [filter, setFilter] = useState('');
 
   function filterPredicate(option: NxCollapsibleRadioSelectOption) {
-    return includes(toLower(filter), toLower(option.name));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const name = typeof option.name === 'string' ? option.name : (option.name as any).props.children[1].props.children;
+    return includes(toLower(filter), toLower(name));
   }
 
   return (

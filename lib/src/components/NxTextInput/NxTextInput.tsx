@@ -27,6 +27,7 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
     function PrivateNxTextInput(props, forwardedRef) {
       const {
         type,
+        value,
         isPristine,
         validatable,
         validationErrors,
@@ -36,6 +37,11 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
         disabled,
         prefixContent,
         suffixContent,
+        id,
+        placeholder,
+        inputAttributes,
+        'aria-required': ariaRequired,
+        'aria-describedby': ariaDescribedBy,
         ...attrs
       } = props;
 
@@ -86,7 +92,7 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
       }
 
       return (
-        <div ref={forwardedRef} className={internalClassName}>
+        <div ref={forwardedRef} className={internalClassName} { ...newProps }>
           {/* This click handler doesn't need to be accessible, it is only to mitigate a mouse-specific
             * presentational concern
             */}
@@ -94,13 +100,18 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
           <div className="nx-text-input__box" onClick={setFocusToInput}>
             {prefixContent}
             {React.createElement(element, {
-              ...newProps,
+              ...inputAttributes,
+              value,
+              id,
               disabled,
+              placeholder,
               ref: inputRef,
               type: typeAttr,
               onChange: inputOnChange,
               className: 'nx-text-input__input',
               onKeyPress: inputOnKeyPress,
+              'aria-required': ariaRequired,
+              'aria-describedby': ariaDescribedBy,
               'aria-invalid': isInvalid,
               'aria-errormessage': disabled ? undefined : invalidMessageId
             })}

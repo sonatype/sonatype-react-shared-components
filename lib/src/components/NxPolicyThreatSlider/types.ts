@@ -5,17 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValueLabelProps } from '@material-ui/core/Slider';
+// import { ValueLabelProps } from '@mui/material/Slider';
 
 import { ThreatLevelNumber, allThreatLevelNumbers } from '../../util/threatLevels';
 
 export type PolicyThreatLevelRange = [ThreatLevelNumber, ThreatLevelNumber];
-
-export interface LabelDisplayProps extends ValueLabelProps {
-  // MUI does actually pass these, though they are not included in their TS types
-  disabled?: boolean | null;
-  index?: number;
-}
 
 export interface Props {
   className?: string | null;

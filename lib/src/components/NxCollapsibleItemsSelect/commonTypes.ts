@@ -8,10 +8,16 @@ import {ReactNode} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { requiredNullableString } from '../../util/customPropTypes';
+import RequiredReactNode from '../../util/RequiredReactNode';
 
 export interface Option {
   id: string | null;
-  name: string;
+  name: RequiredReactNode;
+}
+
+export const stringName = '__rscOptionStringName';
+export interface OptionWithStringName extends Option {
+  [stringName]: string;
 }
 
 export interface CommonProps<T extends Option = Option> {
@@ -32,9 +38,9 @@ export interface CommonProps<T extends Option = Option> {
   filterThreshold?: number | null;
 }
 
-export const optionPropType = PropTypes.shape({
+export const optionPropType: PropTypes.Validator<Option> = PropTypes.shape({
   id: requiredNullableString,
-  name: PropTypes.string.isRequired
+  name: PropTypes.node.isRequired as PropTypes.Validator<RequiredReactNode>
 }).isRequired;
 
 export const commonPropTypes: PropTypes.ValidationMap<CommonProps> = {
