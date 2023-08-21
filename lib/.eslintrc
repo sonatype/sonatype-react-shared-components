@@ -151,7 +151,8 @@
     "react/no-unescaped-entities": "off",
     "react/jsx-no-target-blank": "off",
     "react/jsx-fragments": ["error", "syntax"],
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "jsx-quotes": ["error", "prefer-double"]
   },
   "settings": {
     "react": {

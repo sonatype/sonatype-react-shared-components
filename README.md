@@ -153,8 +153,8 @@ The RSC code is split into two separate codebases: the library itself which live
 * Node 18.x or 16.x. Automated testing is performed on 18.x.
 * yarn 1.22.x
 * git-lfs for visual test snapshots. For the command line git client, git-lfs is a separate program which functions as a
-plugin, for graphical git clients, git-lfs support is often built-in. To check whether your checkout used git-lfs
-successfully, check whether the files within `gallery/visualtests/__image_snapshots` are actual pngs as opposed to
+plugin; for graphical git clients, git-lfs support is often built-in. To check whether your checkout used git-lfs
+successfully, check whether the files within `gallery/visualtests/__image_snapshots__` are actual pngs as opposed to
 stub text files.
 
 ### Installation of Dependencies
@@ -164,6 +164,23 @@ In the lib/ directory, run `yarn install`
 For a one-time build, `yarn run build` in the lib/ directory.
 
 When developing, you probably want to use `yarn run watch` instead.
+
+## Typical Development Flow
+Developing RSC components typically involves running the lib watch and the gallery simultaneously, enabling you to make
+changes to the component code and to rapidly see the results within the local instance of the gallery. Running these two
+processes simultaneously is typically accomplished using two terminals simultaneously. For a _thoroughly clean_ watch
+(minimizing the risk of branch-switching problems), one might run the following two jobs:
+
+In `lib`:
+```
+yarn clean && rm -rf node_modules && yarn install && yarn watch
+```
+
+In `gallery`:
+```
+yarn clean && rm -rf node_modules && yarn install && yarn start
+```
+If on Windows, adapt the syntax and `rm` command as necessary.
 
 ## Running Unit Tests
 
@@ -202,14 +219,13 @@ We also use [jest-dom](https://testing-library.com/docs/ecosystem-jest-dom/) to 
 ## Running Visual Tests
 
 The visual tests use jest-image-snapshot to compare screenshots of the components to their expected state. This
-setup is configured for an exact visual match, so the tests must be run on a consistent platform. The browser used for
-the tests is downloaded via the puppeteer npm package. However, it is also important to run these tests on a consistent
-operating system. The cleanest way to do this is via Docker - specifically, to run the tests in a Docker environment
-identical to the one which the CI system uses.
+setup is configured for an exact visual match, so the tests must be run on a consistent browser and operating system.
+The cleanest way to do this is via Docker - specifically, to run the tests in a Docker environment identical to the one
+which the CI system uses.
 
 To test in a Docker environment, first [install Docker on your computer](https://docs.docker.com/get-docker/). Then,
 within the top level directory of the repository, log into Docker by running the following command. You may be asked to
-input credentials:
+input credentials. Non-Sonatype employees should skip this step.
 
 ```
 docker login docker-all.repo.sonatype.com
@@ -218,27 +234,21 @@ docker login docker-all.repo.sonatype.com
 Then build a Docker image using the command below. You build an image so that you can run tests within a container
 (environment) based on that image. The command below will create an image and give it a name of "rsc-visualtesting". Be
 sure to run this command within the top level directory of the repository. For non-Sonatype employees, you can edit the
-dockerfile to point to the public `node:12` base image instead of the copy hosted on Sonatype's infrastructure.
+Dockerfile to point to the public `node` base image instead of the copy hosted on Sonatype's infrastructure.
 
 ```
 docker build -t rsc-visualtesting .
 ```
-You can execute the tests for both light mode (default) and dark mode within the Docker container based on that image by running the following command:
+You can execute the tests for both light mode (default) and dark mode within the Docker container based on that image by
+running the following command:
 
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
 ```
 
-On some computers, visual testing may take more than 20 minutes, so let the tests run in the background. Note that the
-`yarn test` command will (re-)install the gallery dependencies, ensuring that puppeteer downloads the correct version
-of Chromium before running the gallery build and tests.
-
-### Visual Test Shortcut for Linux Hosts
-
-For developers whose physical systems are already running Linux, it may not be necessary to run the visual tests
-in the Docker container. In this scenario, feel free to try running without the container, by running `yarn test` in
-the gallery directory. Note however that whether or not this results in matching screenshots may depend on the
-specifics of your system. If seemingly spurious diffs are detected, try running in the Docker container instead.
+Visual testing may take more than 30 minutes, so let the tests run in the background. Note that the `yarn test` command
+will (re-)install the gallery dependencies, ensuring that all dependencies are configured properly for execution within
+the docker container rather than the host.
 
 ### Updating Visual Test Screenshots
 
@@ -253,7 +263,7 @@ To update dark mode screenshots, run the following command:
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest-dark -u
 ```
 
-The commands above ensures you update the screenshots within the Docker container. The updates need be run within the
+The commands above ensure you update the screenshots within the Docker container. The updates need to be run within the
 Docker container or an equivalent environment to ensure that the updated baselines match on CI. Note that updating
 visual test screenshots take roughly the same amount of time as running the visual tests.
 
@@ -324,6 +334,11 @@ gallery/, run `yarn install`.
 From gallery/, run `yarn start`.
 
 To view the gallery, point your browser to `http://localhost:4043/`.
+
+## Server-side Rendering Tests
+The `ssr-tests` top-level directory contains a simple next.js project which tests that RSC components can be used
+within next.js without causing server-side errors. Whenever a new component is created, these tests should be updated
+to include that new component. See `ssr-tests/README.md` for details.
 
 ## Continuous Integration and Releases
 This library has CI builds set up for both main and its dev branches. Builds of the main branch automatically get

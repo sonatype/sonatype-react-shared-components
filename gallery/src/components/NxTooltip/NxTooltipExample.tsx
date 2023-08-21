@@ -106,7 +106,7 @@ const NxTooltipExample = () => {
 
         <div>
           <NxTooltip title="NxFilterInput" placement="top">
-            <NxFilterInput value='' placeholder="NxFilterInput" />
+            <NxFilterInput value="" placeholder="NxFilterInput" />
           </NxTooltip>
         </div>
 
