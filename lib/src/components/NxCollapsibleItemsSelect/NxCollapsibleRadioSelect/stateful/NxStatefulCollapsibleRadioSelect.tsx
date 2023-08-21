@@ -10,6 +10,7 @@ import NxCollapsibleRadioSelect from '../NxCollapsibleRadioSelect';
 import { Props, propTypes } from './types';
 export { Props, Option } from './types';
 import useFuzzyFilter from '../../../../util/useFuzzyFilter';
+import {textContent} from '../../../../util/childUtil';
 
 const NxStatefulCollapsibleRadioSelect: FunctionComponent<Props> =
 function NxStatefulCollapsibleRadioSelect(props) {
@@ -21,7 +22,14 @@ function NxStatefulCollapsibleRadioSelect(props) {
         toggleOpen(!isOpen);
       };
 
-  const [filteredOptions, filter, setFilter] = useFuzzyFilter(options, {keys: ['name'], threshold: 0.1});
+  const copy = options.map(option => ({...option}));
+  const copy2 = copy.map((option) => {
+    option.name = textContent(option.name);
+    return option;
+  });
+  console.log(copy2, options);
+
+  const [filteredOptions, filter, setFilter] = useFuzzyFilter(copy2, {keys: ['name'], threshold: 0.1});
 
   return <NxCollapsibleRadioSelect {...props}
                                    isOpen={isOpen}
