@@ -394,12 +394,7 @@ module.exports = {
 
           // the color contrast checker seems to be buggy, it has many complaints about overlapping items when
           // there aren't any
-          // Aria does not allow for an element with role=menu to have any children with role=img (amongst others),
-          // such as is the case for NxCollapsibleRadioSelect & NxCollapsibleMultiSelect. Seeing that the role of
-          // ‘menuitemcheckbox’ cannot be assigned to the <label> element (as guidelines suggest 'menuitemcheckbox' to
-          // wrap the checkbox & its label), and an input[type=checkbox/radio] cannot be assigned role=none, we need to
-          // override this error
-          const builder = new AxePuppeteer(page).disableRules(['color-contrast', 'aria-required-children']),
+          const builder = new AxePuppeteer(page).disableRules(['color-contrast']),
               builderWithInclude = fullPage ? builder : builder.include('.gallery-example-live'),
               customizedBuilder = builderCustomizer ? builderCustomizer(builderWithInclude) : builderWithInclude,
               axeResults = await customizedBuilder.analyze();
