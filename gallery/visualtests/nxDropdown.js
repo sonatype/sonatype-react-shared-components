@@ -113,14 +113,14 @@ describe('NxDropdown', function() {
 
       await moveMouseAway();
 
-      await checkScreenshot(targetElement, 251, 218);
+      await checkScreenshot(targetElement, 251, 231);
     });
 
     it('has a blue outline when focused', async function() {
       const [targetElement, dropdownLink] = await waitAndGetElements(selector, dropdownLinkSelector);
 
       await dropdownLink.focus();
-      await checkScreenshot(targetElement, 251, 218);
+      await checkScreenshot(targetElement, 251, 231);
     });
   });
 
