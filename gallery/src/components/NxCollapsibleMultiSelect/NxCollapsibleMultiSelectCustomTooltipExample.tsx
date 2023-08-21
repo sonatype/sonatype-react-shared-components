@@ -55,7 +55,7 @@ const NxCollapsibleMultiSelectCustomTooltipExample = () => {
   const [filter, setFilter] = useState('');
 
   function filterPredicate(option: NxCollapsibleMultiSelectOption) {
-    return includes(toLower(filter), toLower(option.name));
+    return includes(toLower(filter), toLower(option.name as string));
   }
 
   return (

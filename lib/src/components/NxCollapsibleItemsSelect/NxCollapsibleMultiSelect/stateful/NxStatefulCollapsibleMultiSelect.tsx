@@ -8,8 +8,10 @@ import React, {FunctionComponent, useState} from 'react';
 
 import NxCollapsibleMultiSelect from '../NxCollapsibleMultiSelect';
 import { Props, propTypes } from './types';
+import { OptionWithStringName, stringName } from '../../commonTypes';
 export { Props, Option } from './types';
 import useFuzzyFilter from '../../../../util/useFuzzyFilter';
+import {textContent} from '../../../../util/childUtil';
 
 const NxStatefulCollapsibleMultiSelect: FunctionComponent<Props> =
 function NxStatefulCollapsibleMultiSelect(props) {
@@ -21,7 +23,11 @@ function NxStatefulCollapsibleMultiSelect(props) {
         toggleOpen(!isOpen);
       };
 
-  const [filteredOptions, filter, setFilter] = useFuzzyFilter(options, {keys: ['name'], threshold: 0.1});
+  const optionsWithStringName: OptionWithStringName[] =
+  options.map(option => ({ ...option, [stringName]: textContent(option.name) }));
+
+  const [filteredOptions, filter, setFilter] =
+    useFuzzyFilter(optionsWithStringName, {keys: [stringName], threshold: 0.1});
 
   return <NxCollapsibleMultiSelect {...props}
                                    isOpen={isOpen}
