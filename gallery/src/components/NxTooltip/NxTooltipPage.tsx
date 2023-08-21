@@ -100,7 +100,7 @@ export default function NxTooltipPage() {
                           id="nx-tooltip-wrapping-example"
                           codeExamples={wrappingTooltipsExampleCode}
                           liveExample={NxTooltipWrappingExample}>
-        This example demonstrates a tooltip who's content is long enough to wrap. Wrapping occurs at 600px.
+        This example demonstrates a tooltip who's content is long enough to wrap. Wrapping occurs at 800px.
       </GalleryExampleTile>
       <GalleryExampleTile title="Placement Example"
                           id="nx-tooltip-placement-example"
