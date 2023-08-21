@@ -12,7 +12,7 @@ import RequiredReactNode from '../../util/RequiredReactNode';
 
 export interface Option {
   id: string | null;
-  name: string | RequiredReactNode;
+  name: RequiredReactNode;
 }
 
 export const stringName = '__rscOptionStringName';
@@ -38,9 +38,9 @@ export interface CommonProps<T extends Option = Option> {
   filterThreshold?: number | null;
 }
 
-export const optionPropType = PropTypes.shape({
+export const optionPropType: PropTypes.Validator<Option> = PropTypes.shape({
   id: requiredNullableString,
-  name: PropTypes.node.isRequired
+  name: PropTypes.node.isRequired as PropTypes.Validator<RequiredReactNode>
 }).isRequired;
 
 export const commonPropTypes: PropTypes.ValidationMap<CommonProps> = {
