@@ -394,7 +394,7 @@ module.exports = {
 
           // the color contrast checker seems to be buggy, it has many complaints about overlapping items when
           // there aren't any
-          const builder = new AxePuppeteer(page).disableRules(['color-contrast']),
+          const builder = new AxePuppeteer(page).disableRules('color-contrast'),
               builderWithInclude = fullPage ? builder : builder.include('.gallery-example-live'),
               customizedBuilder = builderCustomizer ? builderCustomizer(builderWithInclude) : builderWithInclude,
               axeResults = await customizedBuilder.analyze();
