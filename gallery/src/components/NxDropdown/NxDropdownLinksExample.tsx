@@ -29,6 +29,7 @@ function NxDropdownActionsExample() {
         <span>Can't go here though</span>
         <NxFontAwesomeIcon icon={faExternalLinkAlt}/>
       </a>
+      <NxDropdown.Divider />
       <a href="#/" className="nx-dropdown-link">
         <span>Go to homepage</span>
       </a>
