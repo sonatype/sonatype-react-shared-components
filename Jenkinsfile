@@ -9,7 +9,7 @@
 def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
 def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
 
-def deployBranch = 'main'
+def deployBranch = '12.x-backports'
 
 def isMainBranch() {
   env.BRANCH_NAME == 'main'
