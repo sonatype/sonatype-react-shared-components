@@ -4,15 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode} from 'react';
+import {ReactNode, ReactElement} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { requiredNullableString } from '../../util/customPropTypes';
-import RequiredReactNode from '../../util/RequiredReactNode';
 
 export interface Option {
   id: string | null;
-  name: RequiredReactNode;
+  name: string | ReactElement;
 }
 
 export const stringName = '__rscOptionStringName';
@@ -40,7 +39,11 @@ export interface CommonProps<T extends Option = Option> {
 
 export const optionPropType: PropTypes.Validator<Option> = PropTypes.shape({
   id: requiredNullableString,
-  name: PropTypes.node.isRequired as PropTypes.Validator<RequiredReactNode>
+  // name: PropTypes.node.isRequired as PropTypes.Validator<RequiredReactNode>
+  name: PropTypes.oneOfType([
+    PropTypes.element.isRequired,
+    PropTypes.string.isRequired
+  ]).isRequired
 }).isRequired;
 
 export const commonPropTypes: PropTypes.ValidationMap<CommonProps> = {
