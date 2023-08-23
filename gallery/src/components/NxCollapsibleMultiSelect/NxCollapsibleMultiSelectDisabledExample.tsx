@@ -14,8 +14,12 @@ import {
   NxFontAwesomeIcon
 } from '@sonatype/react-shared-components';
 
+interface CustomOption extends NxCollapsibleMultiSelectOption {
+  name: string;
+}
+
 const NxCollapsibleMultiSelectDisabledExample = () => {
-  const options = [
+  const options: CustomOption[] = [
     {
       id: 'bike',
       name: 'Bicycle'
@@ -35,8 +39,8 @@ const NxCollapsibleMultiSelectDisabledExample = () => {
 
   const [filter, setFilter] = useState('');
 
-  function filterPredicate(option: NxCollapsibleMultiSelectOption) {
-    return includes(toLower(filter), toLower(option.name as string));
+  function filterPredicate(option: CustomOption) {
+    return includes(toLower(filter), toLower(option.name));
   }
 
   return (
