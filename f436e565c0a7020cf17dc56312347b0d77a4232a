@@ -1,0 +1,4 @@
+Fix unselected sort icon color - RSC-1737 #1164
+Fix dropdown link spacing around dividers - RSC-1733 #1163
+Fix tooltip max width - RSC-1735 #1165
+Add backporting info to CONTRIBUTING.md - RSC-1739 #1167
