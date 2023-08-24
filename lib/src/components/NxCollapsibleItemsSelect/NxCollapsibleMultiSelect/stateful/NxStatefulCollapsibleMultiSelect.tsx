@@ -15,7 +15,7 @@ import useFuzzyFilter from '../../../../util/useFuzzyFilter';
 import {textContent} from '../../../../util/childUtil';
 
 const NxStatefulCollapsibleMultiSelect: FunctionComponent<Props> =
-function NxStatefulCollapsibleMultiSelect(props) {
+function NxStatefulCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
   const { options, optionTooltipGenerator: optionTooltipGeneratorProp } = props,
       isOpenInitialState = !!props.isOpen;
 

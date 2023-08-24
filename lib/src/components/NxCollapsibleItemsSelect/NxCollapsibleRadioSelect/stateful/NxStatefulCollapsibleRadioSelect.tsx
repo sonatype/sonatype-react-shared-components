@@ -15,7 +15,7 @@ import useFuzzyFilter from '../../../../util/useFuzzyFilter';
 import {textContent} from '../../../../util/childUtil';
 
 const NxStatefulCollapsibleRadioSelect: FunctionComponent<Props> =
-function NxStatefulCollapsibleRadioSelect(props) {
+function NxStatefulCollapsibleRadioSelect<T extends Option>(props: Props<T>) {
   const { options, optionTooltipGenerator: optionTooltipGeneratorProp } = props,
       isOpenInitialState = !!props.isOpen;
 
