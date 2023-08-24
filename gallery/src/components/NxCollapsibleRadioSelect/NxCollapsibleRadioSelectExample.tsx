@@ -15,6 +15,10 @@ import {
   useToggle
 } from '@sonatype/react-shared-components';
 
+interface Option extends NxCollapsibleRadioSelectOption {
+  stringName: string;
+}
+
 const NxCollapsibleRadioSelectExample = () => {
 
   const customNameElement = (
@@ -24,25 +28,31 @@ const NxCollapsibleRadioSelectExample = () => {
     </>
   );
 
-  const options = [
+  const options: Option[] = [
     {
       id: 'bike',
-      name: customNameElement
+      name: customNameElement,
+      stringName: 'Bicycle'
     }, {
       id: 'motorcycle',
-      name: 'Motorcycle'
+      name: 'Motorcycle',
+      stringName: 'Motorcycle'
     }, {
       id: 'skate',
-      name: 'Skateboard'
+      name: 'Skateboard',
+      stringName: 'Skateboard'
     }, {
       id: 'longboard',
-      name: 'Loooooooooooooooooooooooooooooooooongboard'
+      name: 'Loooooooooooooooooooooooooooooooooongboard',
+      stringName: 'Loooooooooooooooooooooooooooooooooongboard'
     }, {
       id: 'moped',
-      name: 'Moped'
+      name: 'Moped',
+      stringName: 'Moped'
     }, {
       id: null,
-      name: 'No Transport'
+      name: 'No Transport',
+      stringName: 'No Transport'
     }
   ];
 
@@ -51,8 +61,8 @@ const NxCollapsibleRadioSelectExample = () => {
 
   const [filter, setFilter] = useState('');
 
-  function filterPredicate(option: NxCollapsibleRadioSelectOption) {
-    const name = typeof option.name === 'string' ? option.name : option.name.props.children[1].props.children;
+  function filterPredicate(option: Option) {
+    const name : string = option.stringName;
     return includes(toLower(filter), toLower(name));
   }
 
