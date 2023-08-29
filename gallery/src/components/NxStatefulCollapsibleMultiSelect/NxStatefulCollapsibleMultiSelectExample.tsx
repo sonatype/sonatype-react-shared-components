@@ -51,16 +51,11 @@ const NxStatefulCollapsibleMultiSelectExample = () => {
 
   const [selection, onSelectionChange] = useState<Set<string | null>>(new Set(['motorcycle']));
 
-  function handleOptionTooltip(option: Option) {
-    const name = option.stringName;
-    return name;
-  }
-
   return (
     <NxStatefulCollapsibleMultiSelect name="travel"
                                       id="stateful-travel"
                                       options={options}
-                                      optionTooltipGenerator={handleOptionTooltip}
+                                      optionTooltipGenerator={(option) => option.stringName}
                                       selectedIds={selection}
                                       onChange={onSelectionChange}
                                       filterPlaceholder="filter vehicle name"

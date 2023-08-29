@@ -51,16 +51,11 @@ const NxStatefulCollapsibleRadioSelectExample = () => {
 
   const [selection, onSelectionChange] = useState<string | null>('motorcycle');
 
-  function handleOptionTooltip(option: Option) {
-    const name: string = option.stringName;
-    return name;
-  }
-
   return (
     <NxStatefulCollapsibleRadioSelect name="travel"
                                       id="stateful-travel"
                                       options={options}
-                                      optionTooltipGenerator={handleOptionTooltip}
+                                      optionTooltipGenerator={(option) => option.stringName}
                                       selectedId={selection}
                                       onChange={onSelectionChange}
                                       filterPlaceholder="filter vehicle name"
