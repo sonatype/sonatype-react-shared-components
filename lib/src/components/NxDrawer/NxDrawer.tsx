@@ -29,9 +29,12 @@ import {
 } from './types';
 
 import './NxDrawer.scss';
+import NxTooltip from '../NxTooltip/NxTooltip';
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
-  closeDrawer: () => {}
+  closeDrawer: () => {},
+  closeBtnDisabled: false,
+  closeBtnDisabledTooltip: ''
 });
 
 const NxDrawerHeaderTitle = forwardRef<HTMLHeadingElement, NxDrawerHeaderTitleProps>((props, ref) => {
@@ -60,17 +63,19 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
     children,
     ...attrs
   } = props;
-  const { closeDrawer } = useContext(NxDrawerContext);
+  const { closeDrawer, closeBtnDisabled, closeBtnDisabledTooltip } = useContext(NxDrawerContext);
 
   const classes = classnames('nx-drawer-header', className);
 
   return (
     <header className={classes} role="none" {...attrs}>
-      <NxCloseButton className="nx-drawer-header__close-button"
-                     type="button"
-                     onClick={closeDrawer}>
-        Close
-      </NxCloseButton>
+      <NxTooltip title={closeBtnDisabled && closeBtnDisabledTooltip ? closeBtnDisabledTooltip : 'Close'}>
+        <NxCloseButton className={`nx-drawer-header__close-button ${closeBtnDisabled ? 'disabled' : ''}`}
+                       type="button"
+                       onClick={closeDrawer}>
+          Close
+        </NxCloseButton>
+      </NxTooltip>
       {children}
     </header>
   );
@@ -84,6 +89,8 @@ function NxDrawer(props: Props) {
     onCancel,
     children,
     variant,
+    closeBtnDisabled,
+    closeBtnDisabledTooltip,
     ...attrs
   } = props;
 
@@ -91,7 +98,7 @@ function NxDrawer(props: Props) {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const closeDrawer = () => onClose();
+  const closeDrawer = closeBtnDisabled ? () => {} : () => onClose();
 
   const handleAnimationEnd = () => {
     if (openState === 'closing') {
@@ -137,14 +144,14 @@ function NxDrawer(props: Props) {
 
       return undefined;
     }
-  }, [open]);
+  }, [open, closeBtnDisabled]);
 
   const classes = classnames('nx-drawer', 'nx-viewport-sized', {
     'nx-drawer--narrow': variant === 'narrow',
     [`nx-drawer--${openState}`]: openState !== 'open'
   }, className);
 
-  const drawerContextValue = { closeDrawer };
+  const drawerContextValue = { closeDrawer, closeBtnDisabled, closeBtnDisabledTooltip };
 
   return (
     <NxDrawerContext.Provider value={drawerContextValue}>
