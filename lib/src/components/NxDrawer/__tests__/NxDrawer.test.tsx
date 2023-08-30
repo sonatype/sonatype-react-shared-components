@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { render, fireEvent, within, screen } from '@testing-library/react';
-import { userEvent } from '../../../__testutils__/rtlUtils';
+import { runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
@@ -109,6 +109,23 @@ describe('NxDrawer', function() {
       expect(mockOnClose).toHaveBeenCalled();
     });
 
+    it('does not execute onClose callback when ESC key is pressed when closeBtnDisabled is true', async function() {
+      const user = userEvent.setup();
+      const mockOnClose = jest.fn();
+
+      quickRender({ onClose: mockOnClose, closeBtnDisabled: true });
+
+      const dialog = screen.getByRole('dialog', { hidden: true });
+      await fireEvent.animationEnd(dialog);
+
+      expect(mockOnClose).not.toHaveBeenCalled();
+
+      dialog.focus();
+      await user.keyboard('{Escape}');
+
+      expect(mockOnClose).not.toHaveBeenCalled();
+    });
+
     it('does not execute onClose if a key other than ESC is pressed', async function () {
       const user = userEvent.setup();
 
@@ -185,6 +202,36 @@ describe('NxDrawer', function() {
 
       expect(mockOnClose).toHaveBeenCalled();
     });
+
+    it('does not execute onClose when clicked outside of the drawer when closeBtnDisabled is true', async function() {
+      const user = userEvent.setup();
+      const mockOnClose = jest.fn();
+
+      render(
+        <div>
+          <div>Outside</div>
+          <NxDrawer open={true} onClose={mockOnClose} closeBtnDisabled={true}>
+            <NxButton>Inside</NxButton>
+          </NxDrawer>
+        </div>
+      );
+
+      const dialog = screen.getByRole('dialog', { hidden: true });
+      await fireEvent.animationEnd(dialog);
+
+      const outsideDiv = screen.getByText('Outside');
+      const insideButton = screen.getByRole('button', { name: 'Inside' });
+
+      expect(mockOnClose).not.toHaveBeenCalled();
+
+      await user.click(insideButton);
+
+      expect(mockOnClose).not.toHaveBeenCalled();
+
+      await user.click(outsideDiv);
+
+      expect(mockOnClose).not.toHaveBeenCalled();
+    });
   });
 
   describe('Header', function() {
@@ -201,21 +248,131 @@ describe('NxDrawer', function() {
       expect(screen.getByText('Title')).toBeInTheDocument();
     });
 
-    it('renders close button', async function() {
-      quickRender({
-        children: (
-          <NxDrawer.Header>
-            <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
-          </NxDrawer.Header>
-        )
+    describe('renders a close button', function() {
+
+      describe('with a default tooltip', function() {
+        it('if closeBtnDisabled and closeBtnDisabledTooltip props are not provided', async function() {
+          const user = userEvent.setup();
+
+          quickRender({
+            children: (
+              <NxDrawer.Header>
+                <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
+              </NxDrawer.Header>
+            )
+          });
+
+          const dialog = screen.getByRole('dialog', { hidden: true });
+          await fireEvent.animationEnd(dialog);
+
+          const closeButton = screen.getByRole('button', { name: /close/i });
+
+          expect(closeButton).toBeInTheDocument();
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          await user.hover(closeButton);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('Close');
+        });
+
+        it('if only the closeBtnDisabled prop is provided', async function() {
+          const user = userEvent.setup();
+
+          quickRender({
+            closeBtnDisabled: true,
+            children: (
+              <NxDrawer.Header>
+                <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
+              </NxDrawer.Header>
+            )
+          });
+
+          const dialog = screen.getByRole('dialog', { hidden: true });
+          await fireEvent.animationEnd(dialog);
+
+          const closeButton = screen.getByRole('button', { name: /close/i });
+
+          expect(closeButton).toBeInTheDocument();
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          await user.hover(closeButton);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('Close');
+        });
+
+        it('if only the closeBtnDisabledTooltip is provided', async function() {
+          const user = userEvent.setup();
+
+          quickRender({
+            closeBtnDisabledTooltip: 'Custom tooltip',
+            children: (
+              <NxDrawer.Header>
+                <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
+              </NxDrawer.Header>
+            )
+          });
+
+          const dialog = screen.getByRole('dialog', { hidden: true });
+          await fireEvent.animationEnd(dialog);
+
+          const closeButton = screen.getByRole('button', { name: /close/i });
+
+          expect(closeButton).toBeInTheDocument();
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          await user.hover(closeButton);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('Close');
+        });
       });
 
-      const dialog = screen.getByRole('dialog', { hidden: true });
-      await fireEvent.animationEnd(dialog);
+      describe('with a custom tooltip', function() {
+        it('only if both closeBtnDisabled and closeBtnDisabledTooltip props are provided', async function() {
+          const user = userEvent.setup();
 
-      const closeButton = screen.getByRole('button', { name: /close/i });
+          quickRender({
+            closeBtnDisabled: true,
+            closeBtnDisabledTooltip: 'Custom tooltip',
+            children: (
+              <NxDrawer.Header>
+                <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
+              </NxDrawer.Header>
+            )
+          });
 
-      expect(closeButton).toBeInTheDocument();
+          const dialog = screen.getByRole('dialog', { hidden: true });
+          await fireEvent.animationEnd(dialog);
+
+          const closeButton = screen.getByRole('button', { name: /close/i });
+
+          expect(closeButton).toBeInTheDocument();
+
+          await runTimers();
+          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+          await user.hover(closeButton);
+          await runTimers();
+
+          const tooltip = screen.getByRole('tooltip');
+
+          expect(tooltip).toHaveTextContent('Custom tooltip');
+        });
+      });
     });
 
     it('renders title, subtitle, description with the correct tags', async function() {
@@ -269,6 +426,32 @@ describe('NxDrawer', function() {
       await user.click(closeButton);
 
       expect(mockOnClose).toHaveBeenCalled();
+    });
+
+    it('does not execute onClose when close button is clicked if closeBtnDisabled prop is true ', async function() {
+      const user = userEvent.setup();
+      const mockOnClose = jest.fn();
+
+      quickRender({
+        closeBtnDisabled: true,
+        onClose: mockOnClose,
+        children: (
+          <NxDrawer.Header>
+            <NxDrawer.HeaderTitle>Hello</NxDrawer.HeaderTitle>
+          </NxDrawer.Header>
+        )
+      });
+
+      const dialog = screen.getByRole('dialog', { hidden: true });
+      await fireEvent.animationEnd(dialog);
+
+      const closeButton = screen.getByRole('button', { name: 'Close' });
+
+      expect(mockOnClose).not.toHaveBeenCalled();
+
+      await user.click(closeButton);
+
+      expect(mockOnClose).not.toHaveBeenCalled();
     });
   });
 });
