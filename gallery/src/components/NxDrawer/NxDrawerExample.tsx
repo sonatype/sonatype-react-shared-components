@@ -20,10 +20,12 @@ import { NxDrawer,
 
 export default function NxDrawerExample() {
   const [showDrawer, toggleDrawer] = useToggle(false);
+  const [showDrawerWithDisabledFunctionality, toggleDrawerWithDisabledFunctionality] = useToggle(false);
   const [showDrawerScroll, toggleDrawerScroll] = useToggle(false);
   const [showDrawerWithFooter, toggleDrawerWithFooter] = useToggle(false);
   const [showDrawerWithFooterScroll, toggleDrawerWithFooterScroll] = useToggle(false);
   const [showDrawerTruncated, toggleDrawerTruncated] = useToggle(false);
+  const [disabled, toggleDisabled] = useToggle(false);
 
   const content = (
     <NxDrawer.Content tabIndex={0}>
@@ -80,6 +82,30 @@ export default function NxDrawerExample() {
           <NxDrawer.HeaderTitle id="simple-drawer-title">A Simple Drawer</NxDrawer.HeaderTitle>
         </NxDrawer.Header>
         <NxDrawer.Content tabIndex={0}>
+          <NxP>
+            Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
+            I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
+            cotton candy halvah. Fruitcake halvah I love cheesecake I love I love. Wafer sweet sweet roll apple
+            pie jelly-o cheesecake candy I love.
+          </NxP>
+        </NxDrawer.Content>
+      </NxDrawer>
+
+      <NxDrawer id="nx-drawer-simple-conditionally-disabled"
+                open={showDrawerWithDisabledFunctionality}
+                onClose={toggleDrawerWithDisabledFunctionality}
+                aria-labelledby="simple-drawer-disabled-title"
+                closeBtnDisabled={disabled}
+                closeBtnDisabledTooltip="Please save or revert changes"
+                >
+        <NxDrawer.Header>
+          <NxDrawer.HeaderTitle id="simple-drawer-disabled-title">
+            A Simple Drawer With Disabled Functionality
+          </NxDrawer.HeaderTitle>
+        </NxDrawer.Header>
+        <NxDrawer.Content tabIndex={0}>
+          <NxP>Drawer state: {disabled ? 'disabled' : 'enabled'}</NxP>
+          <NxButton onClick={() => toggleDisabled()}>{disabled ? 'Enable' : 'Disable'} Drawer</NxButton>
           <NxP>
             Powder tiramisu gingerbread I love gummi bears I love. Lollipop gingerbread bonbon chupa chups cookie
             I love dessert cake. <strong>Pie</strong> candy canes liquorice jelly beans sweet roll. Jelly candy donut
@@ -185,6 +211,11 @@ export default function NxDrawerExample() {
         </NxP>
         <NxP>
           <NxButton id="nx-drawer-simple-open-button" onClick={toggleDrawer}>Open Simple Drawer</NxButton>
+        </NxP>
+        <NxP>
+          <NxButton id="nx-drawer-simple-open-button" onClick={toggleDrawerWithDisabledFunctionality}>
+            Open Simple Drawer With Disabled Functionality
+          </NxButton>
         </NxP>
         <NxP>
           <NxButton id="nx-drawer-simple-scroll-open-button" onClick={toggleDrawerScroll}>
