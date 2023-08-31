@@ -393,7 +393,7 @@ describe('NxDrawer', function() {
       expect(mockOnClose).toHaveBeenCalled();
     });
 
-    it('does not execute onClose when close button is clicked if closeBtnDisabled prop is true ', async function() {
+    it('does not execute onClose when close button is clicked if closeBtnDisabled prop is true', async function() {
       const user = userEvent.setup();
       const mockOnClose = jest.fn();
 
