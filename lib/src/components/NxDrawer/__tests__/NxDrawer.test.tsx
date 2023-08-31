@@ -251,7 +251,7 @@ describe('NxDrawer', function() {
     describe('renders a close button', function() {
 
       describe('with a default tooltip', function() {
-        it('if closeBtnDisabled and closeBtnDisabledTooltip props are not provided', async function() {
+        it('if closeBtnDisabled and closeBtnTooltip props are not provided', async function() {
           const user = userEvent.setup();
 
           quickRender({
@@ -310,11 +310,11 @@ describe('NxDrawer', function() {
           expect(tooltip).toHaveTextContent('Close');
         });
 
-        it('if only the closeBtnDisabledTooltip is provided', async function() {
+        it('if only the closeBtnTooltip is provided', async function() {
           const user = userEvent.setup();
 
           quickRender({
-            closeBtnDisabledTooltip: 'Custom tooltip',
+            closeBtnTooltip: 'Custom tooltip',
             children: (
               <NxDrawer.Header>
                 <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
@@ -342,12 +342,12 @@ describe('NxDrawer', function() {
       });
 
       describe('with a custom tooltip', function() {
-        it('only if both closeBtnDisabled and closeBtnDisabledTooltip props are provided', async function() {
+        it('only if both closeBtnDisabled and closeBtnTooltip props are provided', async function() {
           const user = userEvent.setup();
 
           quickRender({
             closeBtnDisabled: true,
-            closeBtnDisabledTooltip: 'Custom tooltip',
+            closeBtnTooltip: 'Custom tooltip',
             children: (
               <NxDrawer.Header>
                 <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>

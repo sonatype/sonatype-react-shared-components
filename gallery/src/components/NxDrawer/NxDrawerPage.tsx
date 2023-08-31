@@ -125,7 +125,7 @@ export default function NxDrawerPage() {
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
-                <NxTable.Cell>closeBtnDisabledTooltip</NxTable.Cell>
+                <NxTable.Cell>closeBtnTooltip</NxTable.Cell>
                 <NxTable.Cell>string</NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>"Close"</NxTable.Cell>

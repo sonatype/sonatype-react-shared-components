@@ -34,7 +34,7 @@ import NxTooltip from '../NxTooltip/NxTooltip';
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {},
   closeBtnDisabled: false,
-  closeBtnDisabledTooltip: ''
+  closeBtnTooltip: ''
 });
 
 const NxDrawerHeaderTitle = forwardRef<HTMLHeadingElement, NxDrawerHeaderTitleProps>((props, ref) => {
@@ -63,13 +63,13 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
     children,
     ...attrs
   } = props;
-  const { closeDrawer, closeBtnDisabled, closeBtnDisabledTooltip } = useContext(NxDrawerContext);
+  const { closeDrawer, closeBtnDisabled, closeBtnTooltip } = useContext(NxDrawerContext);
 
   const classes = classnames('nx-drawer-header', className);
 
   return (
     <header className={classes} role="none" {...attrs}>
-      <NxTooltip title={closeBtnDisabled && closeBtnDisabledTooltip ? closeBtnDisabledTooltip : 'Close'}>
+      <NxTooltip title={closeBtnDisabled && closeBtnTooltip ? closeBtnTooltip : 'Close'}>
         <NxCloseButton className={`nx-drawer-header__close-button ${closeBtnDisabled ? 'disabled' : ''}`}
                        type="button"
                        onClick={closeDrawer}>
@@ -90,7 +90,7 @@ function NxDrawer(props: Props) {
     children,
     variant,
     closeBtnDisabled,
-    closeBtnDisabledTooltip,
+    closeBtnTooltip,
     ...attrs
   } = props;
 
@@ -151,7 +151,7 @@ function NxDrawer(props: Props) {
     [`nx-drawer--${openState}`]: openState !== 'open'
   }, className);
 
-  const drawerContextValue = { closeDrawer, closeBtnDisabled, closeBtnDisabledTooltip };
+  const drawerContextValue = { closeDrawer, closeBtnDisabled, closeBtnTooltip };
 
   return (
     <NxDrawerContext.Provider value={drawerContextValue}>
