@@ -31,6 +31,7 @@ const NxDrawerWithSubtitleOrDescriptionSourceCode = require('./NxDrawerWithSubti
 const NxDrawerEscSourceCode = require('./NxDrawerEscExample?raw');
 const NxDrawerWithNxFormSourceCode = require('./NxDrawerWithNxFormExample?raw');
 const NxDrawerWithNxToastSourceCode = require('./NxDrawerWithNxToastExample?raw');
+const NxDrawerDisabledFunctionalitySourceCode = require('./NxDrawerDisabledFunctionalityExample?raw');
 
 export default function NxDrawerPage() {
   return (
@@ -111,6 +112,27 @@ export default function NxDrawerPage() {
                 <NxTable.Cell>
                   This prop specifies a style variant for the drawer. Currently, variants only differ in width.
                   "normal" drawers are 520px wide, and "narrow" drawers are 348px wide.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>closeBtnDisabled</NxTable.Cell>
+                <NxTable.Cell>boolean</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>false</NxTable.Cell>
+                <NxTable.Cell>
+                  This prop, when set to true, will disable the close button on the drawer and disable
+                  the drawer from being closed.
+                </NxTable.Cell>
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell>closeBtnDisabledTooltip</NxTable.Cell>
+                <NxTable.Cell>string</NxTable.Cell>
+                <NxTable.Cell>No</NxTable.Cell>
+                <NxTable.Cell>"Close"</NxTable.Cell>
+                <NxTable.Cell>
+                  This prop, when specified, adds a custom tooltip instead of the default "Close" tooltip on the
+                  close button when the <NxCode>closeBtnDisabled</NxCode> prop is set to true. Note that the custom
+                  tooltip will only be rendered if the <NxCode>closeBtnDisabled</NxCode> prop is set to true.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -381,6 +403,34 @@ export default function NxDrawerPage() {
             </NxAccordion.Header>
             <CodeExample content={NxDrawerEscSourceCode} />
             <GalleryTileFooter clipboardContent={NxDrawerEscSourceCode}/>
+          </NxStatefulAccordion>
+        </NxTile.Content>
+      </NxTile>
+
+      <NxTile>
+        <NxTile.Header>
+          <NxTile.HeaderTitle>
+            <NxH2>NxDrawer With Disabled Functionality Example</NxH2>
+          </NxTile.HeaderTitle>
+        </NxTile.Header>
+        <NxTile.Content>
+          <NxP>
+            An example of <NxCode>NxDrawer</NxCode> where the close button is disabled and the drawer cannot
+            be closed.
+          </NxP>
+          <NxP>
+            <NxTextLink href="#/NxDrawerDisabledFunctionalityExample">
+              Click here to navigate to the live example.
+            </NxTextLink>
+          </NxP>
+        </NxTile.Content>
+        <NxTile.Content className= "nx-tile-content--accordion-container">
+          <NxStatefulAccordion>
+            <NxAccordion.Header>
+              <NxAccordion.Title>Example Code</NxAccordion.Title>
+            </NxAccordion.Header>
+            <CodeExample content={NxDrawerDisabledFunctionalitySourceCode} />
+            <GalleryTileFooter clipboardContent={NxDrawerDisabledFunctionalitySourceCode}/>
           </NxStatefulAccordion>
         </NxTile.Content>
       </NxTile>
