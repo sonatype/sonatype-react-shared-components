@@ -251,7 +251,7 @@ describe('NxDrawer', function() {
     describe('renders a close button', function() {
 
       describe('with a default tooltip', function() {
-        it('if closeBtnDisabled and closeBtnTooltip props are not provided', async function() {
+        it('if closeBtnTooltip prop is not provided', async function() {
           const user = userEvent.setup();
 
           quickRender({
@@ -309,44 +309,13 @@ describe('NxDrawer', function() {
 
           expect(tooltip).toHaveTextContent('Close');
         });
-
-        it('if only the closeBtnTooltip is provided', async function() {
-          const user = userEvent.setup();
-
-          quickRender({
-            closeBtnTooltip: 'Custom tooltip',
-            children: (
-              <NxDrawer.Header>
-                <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
-              </NxDrawer.Header>
-            )
-          });
-
-          const dialog = screen.getByRole('dialog', { hidden: true });
-          await fireEvent.animationEnd(dialog);
-
-          const closeButton = screen.getByRole('button', { name: /close/i });
-
-          expect(closeButton).toBeInTheDocument();
-
-          await runTimers();
-          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
-
-          await user.hover(closeButton);
-          await runTimers();
-
-          const tooltip = screen.getByRole('tooltip');
-
-          expect(tooltip).toHaveTextContent('Close');
-        });
       });
 
       describe('with a custom tooltip', function() {
-        it('only if both closeBtnDisabled and closeBtnTooltip props are provided', async function() {
+        it('only if closeBtnTooltip prop is provided', async function() {
           const user = userEvent.setup();
 
           quickRender({
-            closeBtnDisabled: true,
             closeBtnTooltip: 'Custom tooltip',
             children: (
               <NxDrawer.Header>

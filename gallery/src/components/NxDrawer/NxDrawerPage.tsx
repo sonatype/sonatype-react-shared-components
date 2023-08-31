@@ -131,8 +131,7 @@ export default function NxDrawerPage() {
                 <NxTable.Cell>"Close"</NxTable.Cell>
                 <NxTable.Cell>
                   This prop, when specified, adds a custom tooltip instead of the default "Close" tooltip on the
-                  close button when the <NxCode>closeBtnDisabled</NxCode> prop is set to true. Note that the custom
-                  tooltip will only be rendered if the <NxCode>closeBtnDisabled</NxCode> prop is set to true.
+                  close button.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
