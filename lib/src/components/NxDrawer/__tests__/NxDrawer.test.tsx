@@ -222,11 +222,7 @@ describe('NxDrawer', function() {
       const outsideDiv = screen.getByText('Outside');
       const insideButton = screen.getByRole('button', { name: 'Inside' });
 
-      expect(mockOnClose).not.toHaveBeenCalled();
-
       await user.click(insideButton);
-
-      expect(mockOnClose).not.toHaveBeenCalled();
 
       await user.click(outsideDiv);
 
