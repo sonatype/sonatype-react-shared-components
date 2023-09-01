@@ -13,6 +13,10 @@ import {
   NxCollapsibleMultiSelectOption
 } from '@sonatype/react-shared-components';
 
+interface Option extends NxCollapsibleMultiSelectOption {
+  stringName: string;
+}
+
 const NxStatefulCollapsibleMultiSelectExample = () => {
   const customNameElement = (
     <>
@@ -21,38 +25,37 @@ const NxStatefulCollapsibleMultiSelectExample = () => {
     </>
   );
 
-  const options = [
+  const options: Option[] = [
     {
       id: 'bike',
-      name: customNameElement
+      name: customNameElement,
+      stringName: 'Bicycle'
     }, {
       id: 'motorcycle',
-      name: 'Motorcycle'
+      name: 'Motorcycle',
+      stringName: 'Motorcycle'
     }, {
       id: 'skate',
-      name: 'Skateboard'
+      name: 'Skateboard',
+      stringName: 'Skateboard'
     }, {
       id: 'moped',
-      name: 'Moped'
+      name: 'Moped',
+      stringName: 'Moped'
     }, {
       id: null,
-      name: 'No Transport'
+      name: 'No Transport',
+      stringName: 'No Transport'
     }
   ];
 
   const [selection, onSelectionChange] = useState<Set<string | null>>(new Set(['motorcycle']));
 
-  function handleOptionTooltip(option: NxCollapsibleMultiSelectOption) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const name = typeof option.name === 'string' ? option.name : (option.name as any).props.children[1].props.children;
-    return name;
-  }
-
   return (
     <NxStatefulCollapsibleMultiSelect name="travel"
                                       id="stateful-travel"
                                       options={options}
-                                      optionTooltipGenerator={handleOptionTooltip}
+                                      optionTooltipGenerator={(option) => option.stringName}
                                       selectedIds={selection}
                                       onChange={onSelectionChange}
                                       filterPlaceholder="filter vehicle name"

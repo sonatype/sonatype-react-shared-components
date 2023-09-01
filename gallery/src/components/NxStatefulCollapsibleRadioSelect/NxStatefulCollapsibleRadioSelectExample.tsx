@@ -13,6 +13,10 @@ import {
   NxCollapsibleRadioSelectOption
 } from '@sonatype/react-shared-components';
 
+interface Option extends NxCollapsibleRadioSelectOption {
+  stringName: string;
+}
+
 const NxStatefulCollapsibleRadioSelectExample = () => {
   const customNameElement = (
     <>
@@ -21,38 +25,37 @@ const NxStatefulCollapsibleRadioSelectExample = () => {
     </>
   );
 
-  const options = [
+  const options: Option[] = [
     {
       id: 'bike',
-      name: customNameElement
+      name: customNameElement,
+      stringName: 'Bicycle'
     }, {
       id: 'motorcycle',
-      name: 'Motorcycle'
+      name: 'Motorcycle',
+      stringName: 'Motorcycle'
     }, {
       id: 'skate',
-      name: 'Skateboard'
+      name: 'Skateboard',
+      stringName: 'Skateboard'
     }, {
       id: 'moped',
-      name: 'Moped'
+      name: 'Moped',
+      stringName: 'Moped'
     }, {
       id: null,
-      name: 'No Transport'
+      name: 'No Transport',
+      stringName: 'No Transport'
     }
   ];
 
   const [selection, onSelectionChange] = useState<string | null>('motorcycle');
 
-  function handleOptionTooltip(option: NxCollapsibleRadioSelectOption) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const name = typeof option.name === 'string' ? option.name : (option.name as any).props.children[1].props.children;
-    return name;
-  }
-
   return (
     <NxStatefulCollapsibleRadioSelect name="travel"
                                       id="stateful-travel"
                                       options={options}
-                                      optionTooltipGenerator={handleOptionTooltip}
+                                      optionTooltipGenerator={(option) => option.stringName}
                                       selectedId={selection}
                                       onChange={onSelectionChange}
                                       filterPlaceholder="filter vehicle name"

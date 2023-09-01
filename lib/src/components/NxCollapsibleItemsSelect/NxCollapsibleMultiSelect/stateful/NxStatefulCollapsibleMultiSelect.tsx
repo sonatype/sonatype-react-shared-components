@@ -4,45 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {FunctionComponent, useState} from 'react';
-import { omit } from 'ramda';
+import React from 'react';
 
 import NxCollapsibleMultiSelect from '../NxCollapsibleMultiSelect';
 import { Props, propTypes } from './types';
-import { OptionWithStringName, Option, stringName } from '../../commonTypes';
+import { Option } from '../../commonTypes';
 export { Props, Option } from './types';
-import useFuzzyFilter from '../../../../util/useFuzzyFilter';
-import {textContent} from '../../../../util/childUtil';
+import useStatefulCollapsibleSelect from '../../NxCollapsibleRadioSelect/stateful/useStatefulCollapsibleSelect';
 
-const NxStatefulCollapsibleMultiSelect: FunctionComponent<Props> =
-function NxStatefulCollapsibleMultiSelect(props) {
-  const { options, optionTooltipGenerator: optionTooltipGeneratorProp } = props,
-      isOpenInitialState = !!props.isOpen;
+export default function NxStatefulCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
+  const collapsibleSelectState = useStatefulCollapsibleSelect(props);
 
-  const [isOpen, toggleOpen] = useState(isOpenInitialState),
-      onToggleCollapse = () => {
-        toggleOpen(!isOpen);
-      };
-
-  const optionsWithStringName: OptionWithStringName[] =
-  options.map(option => ({ ...option, [stringName]: textContent(option.name) }));
-
-  const [filteredOptions, filter, setFilter] =
-    useFuzzyFilter(optionsWithStringName, {keys: [stringName], threshold: 0.1});
-
-  const optionTooltipGenerator = optionTooltipGeneratorProp && function optionTooltipGenerator(option: Option) {
-    return optionTooltipGeneratorProp(omit([stringName], option));
-  };
-
-  return <NxCollapsibleMultiSelect {...props}
-                                   optionTooltipGenerator={optionTooltipGenerator}
-                                   isOpen={isOpen}
-                                   onToggleCollapse={onToggleCollapse}
-                                   filteredOptions={filteredOptions}
-                                   onFilterChange={setFilter}
-                                   filter={filter} />;
-};
+  return <NxCollapsibleMultiSelect {...props} { ...collapsibleSelectState } />;
+}
 
 NxStatefulCollapsibleMultiSelect.propTypes = propTypes;
-
-export default NxStatefulCollapsibleMultiSelect;
