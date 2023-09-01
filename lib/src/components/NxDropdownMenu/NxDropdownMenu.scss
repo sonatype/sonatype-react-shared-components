@@ -131,6 +131,10 @@
   border: none;
   height: 1px;
   margin: var(--nx-spacing-2x) var(--nx-spacing-6x) var(--nx-spacing-2x) var(--nx-spacing-4x);
+
+  .nx-dropdown-link + &, + .nx-dropdown-link  {
+    margin-top: var(--nx-spacing-3x);
+  }
 }
 
 .nx-dropdown-button-content {

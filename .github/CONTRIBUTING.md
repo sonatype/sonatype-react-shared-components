@@ -96,3 +96,18 @@ Here are the general rules to follow when commenting on PRs for this repo:
   comments are addressed, but generally only when those comments are expected to be easily addressable without further
   discussion (for example simple formatting issues).  Even in this case though, the comments should still be addressed
   post-approval
+
+## Backports
+
+As of this writing, the current version of RSC is 13.x, and the 12.x branch is also still supported. The primary
+difference between these branches is that 12.x uses React 16, and 13.x uses React 18. When developing a new feature,
+think ahead in terms of which version of React it needs to run on, e.g. which version of React the application which
+needs the new feature currently uses. If it is only needed in React 18, develop the feature on a branch off of `main`,
+and merge it into `main` after PR review – `main` is the release branch for RSC 13.x. If on the other hand it is
+needed in React 16, develop the feature on a branch off of `12.x-backports`, and merge it into `12.x-backports` after PR
+review. Once it is merged into `12.x-backports`, `12.x-backports` itself should be merged into `main`. This establishes
+that no features get added only to 12.x – every feature in 12.x should also be in 13.x. If on the other hand a feature
+is added to `main` and then later it is identified that that feature is also needed in 12.x, it will need to be
+cherry-picked from `main` into the `12.x-backports` branch. Also note that while the `main` branch builds automatically
+when new commits are pushed to it, `12.x-backports` does not. Performing a build and corresponding release of 12.x
+requires that that branch be triggered manually in Jenkins.
