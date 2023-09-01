@@ -14,6 +14,7 @@ import {
 } from '@sonatype/react-shared-components';
 
 interface CustomOption extends NxCollapsibleRadioSelectOption {
+  // include name within CustomOption to narrow its type to string
   name: string
   description: string;
 }
