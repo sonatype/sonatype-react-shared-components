@@ -37,7 +37,7 @@ export default function NxDrawerExample() {
             A Simple Drawer With Disabled Functionality
           </NxDrawer.HeaderTitle>
         </NxDrawer.Header>
-        <NxDrawer.Content tabIndex={0}>
+        <NxDrawer.Content>
           <NxP>Drawer state: {disabled ? 'disabled' : 'enabled'}</NxP>
           <NxButton onClick={() => toggleDisabled()}>{disabled ? 'Enable' : 'Disable'} Drawer</NxButton>
           <NxP>
