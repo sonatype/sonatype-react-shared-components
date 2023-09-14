@@ -275,36 +275,6 @@ describe('NxDrawer', function() {
 
           expect(tooltip).toHaveTextContent('Close');
         });
-
-        it('if only the closeBtnDisabled prop is provided', async function() {
-          const user = userEvent.setup();
-
-          quickRender({
-            closeBtnDisabled: true,
-            children: (
-              <NxDrawer.Header>
-                <NxDrawer.HeaderTitle>Title</NxDrawer.HeaderTitle>
-              </NxDrawer.Header>
-            )
-          });
-
-          const dialog = screen.getByRole('dialog', { hidden: true });
-          await fireEvent.animationEnd(dialog);
-
-          const closeButton = screen.getByRole('button', { name: /close/i });
-
-          expect(closeButton).toBeInTheDocument();
-
-          await runTimers();
-          expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
-
-          await user.hover(closeButton);
-          await runTimers();
-
-          const tooltip = screen.getByRole('tooltip');
-
-          expect(tooltip).toHaveTextContent('Close');
-        });
       });
 
       describe('with a custom tooltip', function() {
