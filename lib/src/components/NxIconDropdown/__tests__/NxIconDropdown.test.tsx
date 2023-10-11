@@ -9,6 +9,7 @@ import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../__te
 import { createEvent, fireEvent, within } from '@testing-library/react';
 
 import NxIconDropdown, { Props } from '../NxIconDropdown';
+import { OptionalReactElement } from '../../../util/reactUtil';
 
 describe('NxIconDropdown', () => {
   const minimalProps: Props = {
@@ -99,6 +100,23 @@ describe('NxIconDropdown', () => {
     expect(menuChildren[1]).toHaveTextContent('Link2');
     expect(menuChildren[2]).toHaveTextContent('Link3');
     expect(menuChildren[3]).toHaveTextContent('Link4');
+  });
+
+  it('handles null, undefined, and false children', function() {
+    const children: OptionalReactElement[] = [
+      <a data-testid="menu-child" key="1">Link1</a>,
+      null,
+      undefined,
+      false
+    ];
+
+    const el = renderEl({ children, isOpen: true })!,
+        menu = el.querySelector('.nx-dropdown-menu'),
+        menuChildren = within(el).getAllByTestId('menu-child');
+
+    expect(menu).toBeInTheDocument();
+    expect(menuChildren.length).toBe(1);
+    expect(menuChildren[0]).toHaveTextContent('Link1');
   });
 
   it('calls onToggleCollapse if a click happens anywhere when the dropdown is already open', async function() {
