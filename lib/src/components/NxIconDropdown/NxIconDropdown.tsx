@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,6 +15,7 @@ import './NxIconDropdown.scss';
 import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 import AbstractDropdown, { AbstractDropdownRenderToggleElement } from '../NxDropdown/AbstractDropdown';
+import { OptionalReactElement } from '../../util/reactUtil';
 
 const NxIconDropdown: FunctionComponent<Props> = function NxIconDropdown(props) {
   const {
@@ -32,11 +33,14 @@ const NxIconDropdown: FunctionComponent<Props> = function NxIconDropdown(props) 
   const classes = classnames('nx-dropdown nx-icon-dropdown', className);
 
   // Wrap .nx-dropdown-button and .nx-dropdown-link children in overflow tooltips
-  const wrappedChildren = children && React.Children.map<ReactElement, ReactElement>(children, child => (
-    /(\s|^)nx-dropdown-(button|link)(\s|$)/.test(child.props.className) ?
-      <NxOverflowTooltip>{child}</NxOverflowTooltip> :
-      child
-  ));
+  const wrappedChildren = children && React.Children.map<OptionalReactElement, OptionalReactElement>(
+      children,
+      child => (
+        child && typeof child !== 'boolean' && /(\s|^)nx-dropdown-(button|link)(\s|$)/.test(child.props.className) ?
+          <NxOverflowTooltip>{child}</NxOverflowTooltip> :
+          child
+      )
+  );
 
   const renderToggleElement: AbstractDropdownRenderToggleElement = (toggleRef, onToggleCollapse) => (
     <NxButton ref={toggleRef}
