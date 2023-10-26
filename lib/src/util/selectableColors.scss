@@ -29,6 +29,10 @@
 .nx-selectable-color--blue {
   --nx-selectable-color-dark: var(--nx-swatch-teal-45);
   --nx-selectable-color-light: var(--nx-swatch-teal-90);
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-selectable-color-light: var(--nx-swatch-teal-95);
+  }
 }
 
 .nx-selectable-color--red {
