@@ -12,6 +12,7 @@
 
   color: var(--nx-color-link);
   cursor: pointer;
+  text-decoration: underline;
 
   &__truncate-text {
     @include nx-text-helpers.truncate-ellipsis;
