@@ -10,7 +10,12 @@ import { NxStatefulTextInput } from '@sonatype/react-shared-components';
 
 // exactly the same as NxStatefulTextInputSimpleExample, except for type="textarea"
 export default function NxStatefulTextInputTextAreaExample() {
+
+  function onChange(val: string) {
+    console.log('Value changed to:', val); // eslint-disable-line
+  }
+
   return (
-    <NxStatefulTextInput type="textarea" placeholder="placeholder text" />
+    <NxStatefulTextInput onChange={onChange} type="textarea" placeholder="placeholder text" />
   );
 }
