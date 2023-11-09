@@ -29,9 +29,12 @@ import {
 } from './types';
 
 import './NxDrawer.scss';
+import NxTooltip from '../NxTooltip/NxTooltip';
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
-  closeDrawer: () => {}
+  closeDrawer: () => {},
+  closeDisabled: false,
+  closeBtnTooltip: ''
 });
 
 const NxDrawerHeaderTitle = forwardRef<HTMLHeadingElement, NxDrawerHeaderTitleProps>((props, ref) => {
@@ -60,17 +63,19 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
     children,
     ...attrs
   } = props;
-  const { closeDrawer } = useContext(NxDrawerContext);
+  const { closeDrawer, closeDisabled, closeBtnTooltip } = useContext(NxDrawerContext);
 
   const classes = classnames('nx-drawer-header', className);
 
   return (
     <header className={classes} role="none" {...attrs}>
-      <NxCloseButton className="nx-drawer-header__close-button"
-                     type="button"
-                     onClick={closeDrawer}>
-        Close
-      </NxCloseButton>
+      <NxTooltip title={closeBtnTooltip ? closeBtnTooltip : 'Close'}>
+        <NxCloseButton className={`nx-drawer-header__close-button ${closeDisabled ? 'disabled' : ''}`}
+                       type="button"
+                       onClick={closeDrawer}>
+          Close
+        </NxCloseButton>
+      </NxTooltip>
       {children}
     </header>
   );
@@ -84,6 +89,8 @@ function NxDrawer(props: Props) {
     onCancel,
     children,
     variant,
+    closeDisabled,
+    closeBtnTooltip,
     ...attrs
   } = props;
 
@@ -91,7 +98,7 @@ function NxDrawer(props: Props) {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const closeDrawer = () => onClose();
+  const closeDrawer = closeDisabled ? () => {} : () => onClose();
 
   const handleAnimationEnd = () => {
     if (openState === 'closing') {
@@ -126,9 +133,17 @@ function NxDrawer(props: Props) {
         }
       };
 
-      document.addEventListener('click', listener);
+      // to prevent the click event from being called before the drawer is rendered
+      // https://github.com/facebook/react/issues/24657
+      // https://github.com/reactwg/react-18/discussions/128
+      const timeout = setTimeout(() => {
+        document.addEventListener('click', listener);
+      }, 0);
 
-      return () => document.removeEventListener('click', listener);
+      return () => {
+        clearTimeout(timeout);
+        document.removeEventListener('click', listener);
+      };
     }
     else {
       if (openState === 'open') {
@@ -137,14 +152,14 @@ function NxDrawer(props: Props) {
 
       return undefined;
     }
-  }, [open]);
+  }, [open, closeDisabled]);
 
   const classes = classnames('nx-drawer', 'nx-viewport-sized', {
     'nx-drawer--narrow': variant === 'narrow',
     [`nx-drawer--${openState}`]: openState !== 'open'
   }, className);
 
-  const drawerContextValue = { closeDrawer };
+  const drawerContextValue = { closeDrawer, closeDisabled, closeBtnTooltip };
 
   return (
     <NxDrawerContext.Provider value={drawerContextValue}>
