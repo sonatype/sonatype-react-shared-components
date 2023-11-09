@@ -32,9 +32,7 @@ import './NxDrawer.scss';
 import NxTooltip from '../NxTooltip/NxTooltip';
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
-  closeDrawer: () => {},
-  closeDisabled: false,
-  closeBtnTooltip: ''
+  closeDrawer: () => {}
 });
 
 const NxDrawerHeaderTitle = forwardRef<HTMLHeadingElement, NxDrawerHeaderTitleProps>((props, ref) => {
