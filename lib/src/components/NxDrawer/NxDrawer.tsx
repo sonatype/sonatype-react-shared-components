@@ -66,11 +66,12 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
   const { closeDrawer, closeDisabled, closeBtnTooltip } = useContext(NxDrawerContext);
 
   const classes = classnames('nx-drawer-header', className);
+  const closeBtnClasses = classnames('nx-drawer-header__close-button', { 'disabled': closeDisabled });
 
   return (
     <header className={classes} role="none" {...attrs}>
       <NxTooltip title={closeBtnTooltip ? closeBtnTooltip : 'Close'}>
-        <NxCloseButton className={`nx-drawer-header__close-button ${closeDisabled ? 'disabled' : ''}`}
+        <NxCloseButton className={closeBtnClasses}
                        type="button"
                        onClick={closeDrawer}>
           Close
