@@ -99,7 +99,7 @@ function NxDrawer(props: Props) {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const closeDrawer = closeDisabled ? () => {} : () => onClose();
+  const closeDrawer = closeDisabled ? () => {} : onClose;
 
   const handleAnimationEnd = () => {
     if (openState === 'closing') {
