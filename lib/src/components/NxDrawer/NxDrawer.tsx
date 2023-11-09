@@ -33,7 +33,7 @@ import NxTooltip from '../NxTooltip/NxTooltip';
 
 const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {},
-  closeBtnDisabled: false,
+  closeDisabled: false,
   closeBtnTooltip: ''
 });
 
@@ -63,14 +63,14 @@ const NxDrawerHeader = (props: NxDrawerHeaderProps) => {
     children,
     ...attrs
   } = props;
-  const { closeDrawer, closeBtnDisabled, closeBtnTooltip } = useContext(NxDrawerContext);
+  const { closeDrawer, closeDisabled, closeBtnTooltip } = useContext(NxDrawerContext);
 
   const classes = classnames('nx-drawer-header', className);
 
   return (
     <header className={classes} role="none" {...attrs}>
       <NxTooltip title={closeBtnTooltip ? closeBtnTooltip : 'Close'}>
-        <NxCloseButton className={`nx-drawer-header__close-button ${closeBtnDisabled ? 'disabled' : ''}`}
+        <NxCloseButton className={`nx-drawer-header__close-button ${closeDisabled ? 'disabled' : ''}`}
                        type="button"
                        onClick={closeDrawer}>
           Close
@@ -89,7 +89,7 @@ function NxDrawer(props: Props) {
     onCancel,
     children,
     variant,
-    closeBtnDisabled,
+    closeDisabled,
     closeBtnTooltip,
     ...attrs
   } = props;
@@ -98,7 +98,7 @@ function NxDrawer(props: Props) {
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const closeDrawer = closeBtnDisabled ? () => {} : () => onClose();
+  const closeDrawer = closeDisabled ? () => {} : () => onClose();
 
   const handleAnimationEnd = () => {
     if (openState === 'closing') {
@@ -144,14 +144,14 @@ function NxDrawer(props: Props) {
 
       return undefined;
     }
-  }, [open, closeBtnDisabled]);
+  }, [open, closeDisabled]);
 
   const classes = classnames('nx-drawer', 'nx-viewport-sized', {
     'nx-drawer--narrow': variant === 'narrow',
     [`nx-drawer--${openState}`]: openState !== 'open'
   }, className);
 
-  const drawerContextValue = { closeDrawer, closeBtnDisabled, closeBtnTooltip };
+  const drawerContextValue = { closeDrawer, closeDisabled, closeBtnTooltip };
 
   return (
     <NxDrawerContext.Provider value={drawerContextValue}>

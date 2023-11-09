@@ -109,11 +109,11 @@ describe('NxDrawer', function() {
       expect(mockOnClose).toHaveBeenCalled();
     });
 
-    it('does not execute onClose callback when ESC key is pressed when closeBtnDisabled is true', async function() {
+    it('does not execute onClose callback when ESC key is pressed when closeDisabled is true', async function() {
       const user = userEvent.setup();
       const mockOnClose = jest.fn();
 
-      quickRender({ onClose: mockOnClose, closeBtnDisabled: true });
+      quickRender({ onClose: mockOnClose, closeDisabled: true });
 
       const dialog = screen.getByRole('dialog', { hidden: true });
       await fireEvent.animationEnd(dialog);
@@ -203,14 +203,14 @@ describe('NxDrawer', function() {
       expect(mockOnClose).toHaveBeenCalled();
     });
 
-    it('does not execute onClose when clicked outside of the drawer when closeBtnDisabled is true', async function() {
+    it('does not execute onClose when clicked outside of the drawer when closeDisabled is true', async function() {
       const user = userEvent.setup();
       const mockOnClose = jest.fn();
 
       render(
         <div>
           <div>Outside</div>
-          <NxDrawer open={true} onClose={mockOnClose} closeBtnDisabled={true}>
+          <NxDrawer open={true} onClose={mockOnClose} closeDisabled={true}>
             <NxButton>Inside</NxButton>
           </NxDrawer>
         </div>
@@ -363,12 +363,12 @@ describe('NxDrawer', function() {
       expect(mockOnClose).toHaveBeenCalled();
     });
 
-    it('does not execute onClose when close button is clicked if closeBtnDisabled prop is true', async function() {
+    it('does not execute onClose when close button is clicked if closeDisabled prop is true', async function() {
       const user = userEvent.setup();
       const mockOnClose = jest.fn();
 
       quickRender({
-        closeBtnDisabled: true,
+        closeDisabled: true,
         onClose: mockOnClose,
         children: (
           <NxDrawer.Header>

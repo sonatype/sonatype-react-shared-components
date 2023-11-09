@@ -18,7 +18,7 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   onCancel?: (() => void) | null;
   children?: ReactNode;
   variant?: NX_DRAWER_VARIANT_TYPE | null;
-  closeBtnDisabled?: boolean | null;
+  closeDisabled?: boolean | null;
   closeBtnTooltip?: string | null;
 }
 
@@ -28,7 +28,7 @@ export type NxDrawerHeaderTitleProps = HTMLAttributes<HTMLHeadingElement>;
 
 export interface NxDrawerContextValue {
   closeDrawer: () => void;
-  closeBtnDisabled?: boolean | null;
+  closeDisabled?: boolean | null;
   closeBtnTooltip?: string | null;
 }
 
@@ -37,7 +37,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onClose: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   variant: PropTypes.oneOf(NX_DRAWER_VARIANTS),
-  closeBtnDisabled: PropTypes.bool,
+  closeDisabled: PropTypes.bool,
   closeBtnTooltip: PropTypes.string
 };
 
