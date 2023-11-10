@@ -237,4 +237,19 @@ describe('NxDrawer', function() {
       expect(await isFocused(openButton)).toBe(true);
     });
   });
+
+  describe('NxDrawer with Disabled Functionality', function() {
+    const browserSetup = setupBrowser('#/NxDrawerDisabledFunctionalityExample', false);
+    const { getPage, checkFullPageScreenshot } = browserSetup;
+    const openDrawer = openDrawerFromPage(browserSetup);
+
+    const buttonId = 'nx-drawer-disabled-functionality-button';
+    const drawerId = 'nx-drawer-disabled-functionality';
+
+    it('looks right', async function() {
+      await getPage().setViewport(viewportSize);
+      await openDrawer(buttonId, drawerId);
+      await checkFullPageScreenshot();
+    });
+  });
 });
