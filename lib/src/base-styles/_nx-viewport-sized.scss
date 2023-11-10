@@ -16,6 +16,10 @@
     margin-top: 0;
     width: 100%;
   }
+
+  > .MuiTooltip-popper {
+    width: auto;
+  }
 }
 
 // note: it is important that these properties appear below the nested block above for specificity reasons
