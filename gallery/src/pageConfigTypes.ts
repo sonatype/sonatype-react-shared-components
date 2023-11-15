@@ -21,6 +21,8 @@ export type PageType = typeof PAGE_TYPES[number];
 export interface PageContentDescription {
   content: ComponentType;
   type: PageType;
+
+  tags?: string []
 }
 
 export type PageConfig = Record<string, PageMapping>;
