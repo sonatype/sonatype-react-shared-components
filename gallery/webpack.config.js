@@ -8,11 +8,8 @@ const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyModulesPlugin = require('copy-modules-webpack-plugin');
-const styleSrcHashes = require('@sonatype/react-shared-components/style-src-hashes.json');
 
 const libImgDir = path.resolve(__dirname, 'node_modules/@sonatype/react-shared-components/assets/img');
-
-const styleSrc = ['self'].concat(styleSrcHashes).map(s => `'${s}'`).join(' ');
 
 module.exports = function(env = { production: false }) {
   const productionPlugins = env.production ? [
@@ -140,7 +137,7 @@ module.exports = function(env = { production: false }) {
       headers: {
         // Note: script-src requires unsafe-eval in dev mode but not in production.
         'Content-Security-Policy':
-            `default-src 'none'; script-src 'self' 'unsafe-eval'; img-src 'self'; style-src ${styleSrc}; ` +
+            `default-src 'none'; script-src 'self' 'unsafe-eval'; img-src 'self'; style-src 'self'; ` +
             "form-action 'self'; font-src 'self'; connect-src 'self';"
       }
       */
