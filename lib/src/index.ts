@@ -6,6 +6,8 @@
  */
 import './base-styles/_base.scss';
 
+import './fontawesomeConfig';
+
 export { default as NxButton, Props as NxButtonProps } from './components/NxButton/NxButton';
 export { default as NxCheckbox, Props as NxCheckboxProps } from './components/NxCheckbox/NxCheckbox';
 export { default as NxRadio, Props as NxRadioProps } from './components/NxRadio/NxRadio';

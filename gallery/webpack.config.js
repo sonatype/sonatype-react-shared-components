@@ -131,7 +131,16 @@ module.exports = function(env = { production: false }) {
       static: {
         publicPath: '/',
         directory: path.join(__dirname, 'src')
+      },
+      /* This section should be uncommented once ALL CSP violations are fixed
+       * (https://sonatype.atlassian.net/browse/RSC-1764)
+      headers: {
+        // Note: script-src requires unsafe-eval in dev mode but not in production.
+        'Content-Security-Policy':
+            `default-src 'none'; script-src 'self' 'unsafe-eval'; img-src 'self'; style-src 'self'; ` +
+            "form-action 'self'; font-src 'self'; connect-src 'self';"
       }
+      */
     },
     snapshot: {
       managedPaths: []
