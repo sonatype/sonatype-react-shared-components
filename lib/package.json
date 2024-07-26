@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components",
-  "version": "12.16.15",
+  "version": "12.16.16",
   "description": "Sonatype shared UI components and utilities written in React",
   "main": "index.js",
   "repository": {
@@ -100,6 +100,7 @@
   ],
   "sideEffects": [
     "index.js",
+    "fontawesomeConfig.js",
     "*.scss"
   ]
 }
