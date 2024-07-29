@@ -6,6 +6,7 @@
  */
 @use 'sass:math';
 @use "../../scss-shared/nx-container-helpers";
+@use '../../scss-shared/nx-color-picker-variables';
 
 .nx-color-picker {
   @include nx-container-helpers.container-horizontal;
@@ -28,6 +29,7 @@
     &:hover {
       .nx-color-picker__color {
         stroke: var(--nx-color-text-stark);
+        fill: var(--nx-color-picker-hover-background);
       }
     }
 
