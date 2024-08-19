@@ -153,12 +153,12 @@
 
     > tbody > :last-child {
       > .nx-cell {
+        border-bottom-style: solid;
+        height: nx-table-variables.$table-cell-min-height;
+
         &:first-child, &:last-child {
           border-radius: 0;
         }
-
-        border-bottom-style: solid;
-        height: nx-table-variables.$table-cell-min-height;
       }
     }
 
@@ -180,8 +180,6 @@
 }
 
 .nx-table-container__footer {
-  @include nx-container-helpers.container-vertical;
-
   background-color: var(--nx-color-component-background);
   border-top: var(--nx-border-default);
   margin-top: auto;
@@ -195,6 +193,8 @@
   position: sticky;
   bottom: 0;
   z-index: 1;
+
+  @include nx-container-helpers.container-vertical;
 }
 
 // nested and located this far down the file for specificity reasons
@@ -224,9 +224,6 @@
 }
 
 .nx-cell {
-  @include nx-container-helpers.container-vertical;
-  @include nx-container-helpers.container-horizontal;
-
   box-sizing: border-box;
 
   // min-height doesn't work on table cells, and height works roughly the way min-height ought to
@@ -253,6 +250,9 @@
       @include nx-button-helpers.small-icon-btn;
     }
   }
+
+  @include nx-container-helpers.container-vertical;
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-cell--label {
@@ -342,8 +342,8 @@
 .nx-cell__sort-btn, .nx-cell__row-btn {
   box-sizing: border-box;
   cursor: pointer;
-
-  @include nx-container-helpers.container-horizontal;
+  text-align: inherit;
+  text-transform: uppercase;
 
   // first-child and last-child added for specificity
   &, &:first-child, &:last-child {
@@ -355,15 +355,14 @@
     padding-bottom: var(--nx-spacing-3x);
   }
 
-  text-align: inherit;
-  text-transform: uppercase;
-
   &, &:hover, &:active, &:focus {
     border: none;
     background: none;
     font: inherit;
     outline: none;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-cell {

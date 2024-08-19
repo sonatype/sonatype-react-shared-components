@@ -8,8 +8,6 @@
 @use '../scss-shared/nx-text-helpers';
 
 .nx-text-link {
-  @include nx-container-helpers.container-horizontal;
-
   color: var(--nx-color-link);
   cursor: pointer;
   text-decoration: underline;
@@ -64,6 +62,8 @@
       text-decoration: underline;
     }
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 button.nx-text-link {

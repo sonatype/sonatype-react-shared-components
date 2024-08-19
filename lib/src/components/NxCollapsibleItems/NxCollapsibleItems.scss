@@ -85,11 +85,11 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 }
 
 .nx-collapsible-items__action-content {
-  @include nx-container-helpers.container-horizontal;
-
   .nx-btn--icon-only {
     @include nx-button-helpers.small-icon-btn;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 %collapsible-items-focus-style {
@@ -98,7 +98,6 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 }
 
 .nx-collapsible-items__trigger {
-  @include nx-container-helpers.container-horizontal;
   align-items: center;
   background: none;
   border: 0;
@@ -128,6 +127,8 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
     background-color: var(--nx-color-interactive-background-active);
     outline: none;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-collapsible-items__twisty {
@@ -143,7 +144,6 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
 }
 
 .nx-collapsible-items__text {
-  @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
 
   align-items: center;
@@ -161,6 +161,8 @@ $-form-child-left-padding: calc(#{$-trigger-side-padding} + #{$-triangle-box-wid
     flex-shrink: 0;
     max-width: 110px;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-collapsible-items__child {

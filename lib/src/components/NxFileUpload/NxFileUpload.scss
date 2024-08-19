@@ -10,8 +10,6 @@
 @use '../../scss-shared/nx-button-helpers';
 
 .nx-file-upload {
-  @include nx-container-helpers.container-horizontal;
-
   position: relative; // correctly position validation error when scrolling
   margin-bottom: var(--nx-spacing-8x);
 
@@ -31,8 +29,6 @@
   }
 
   &__no-file-message {
-    @include nx-container-helpers.container-horizontal;
-
     > .nx-icon {
       display: none;
     }
@@ -49,7 +45,11 @@
     &.hidden {
       display: none;
     }
+
+    @include nx-container-helpers.container-horizontal;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-selected-file {
@@ -90,8 +90,6 @@
   }
 
   &__dismiss-btn {
-    @include nx-container-helpers.container-horizontal;
-
     align-items: center;
     background: transparent;
     border-color: transparent;
@@ -130,5 +128,7 @@
           var(--nx-color-file-upload-selected-border);
       background-color: var(--nx-color-file-upload-selected-dismiss-background-active);
     }
+
+    @include nx-container-helpers.container-horizontal;
   }
 }

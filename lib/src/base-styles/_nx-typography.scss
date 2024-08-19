@@ -92,38 +92,42 @@
 
 .nx-h1 {
   @include nx-text-helpers.bold;
-  @include nx-container-helpers.container-horizontal;
   @extend %nx-heading;
 
   font-size: var(--nx-font-size-heading-1);
   margin-bottom: var(--nx-spacing-6x);
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-h2 {
   @include nx-text-helpers.semi-bold;
-  @include nx-container-helpers.container-horizontal;
   @extend %nx-heading;
 
   font-size: var(--nx-font-size-heading-2);
   margin-bottom: var(--nx-spacing-4x);
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-h3 {
   @include nx-text-helpers.bold;
-  @include nx-container-helpers.container-horizontal;
   @extend %nx-heading;
 
   font-size: var(--nx-font-size-heading-3);
   margin-bottom: var(--nx-spacing-4x);
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-h4 {
   @include nx-text-helpers.semi-bold;
-  @include nx-container-helpers.container-horizontal;
   @extend %nx-heading;
 
   font-size: var(--nx-font-size-heading-4);
   margin-bottom: var(--nx-spacing-2x);
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-p {

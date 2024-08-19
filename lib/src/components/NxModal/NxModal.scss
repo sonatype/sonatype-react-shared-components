@@ -9,8 +9,6 @@
 @use '../../scss-shared/nx-mask-helpers';
 
 .nx-modal {
-  @include nx-container-helpers.container-vertical;
-
   // the "padding" around the interior of nx-modal. In order to get borders and scrollbars to appear
   // in the desired locations, this can't actually be implemented as padding on .nx-modal, but must instead be
   // a mix of padding and margin on the .nx-modal, .nx-modal-header, .nx-modal-content, and .nx-footer elements
@@ -41,6 +39,8 @@
   .nx-footer {
     margin: 0;
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-modal--narrow {
@@ -52,8 +52,6 @@
 }
 
 .nx-modal-header {
-  @include nx-container-helpers.container-vertical;
-
   border-bottom: var(--nx-border-default);
   padding-bottom: var(--nx-spacing-6x);
 
@@ -61,6 +59,8 @@
     @include nx-text-helpers.truncate-ellipsis;
     max-width: unset;
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-modal-backdrop {
@@ -85,7 +85,6 @@
 }
 
 .nx-modal-content {
-  @include nx-container-helpers.container-vertical;
   flex-shrink: 1;
   flex-basis: auto;
 
@@ -96,6 +95,8 @@
   margin-left: calc(0px - var(--nx-modal-padding));
   padding: var(--nx-spacing-6x) var(--nx-modal-padding) var(--nx-spacing-8x) var(--nx-modal-padding);
   overflow-y: auto;
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-modal-content--tabs {

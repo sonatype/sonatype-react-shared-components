@@ -121,7 +121,6 @@
 }
 
 %nx-blockquote {
-  @include nx-container-helpers.container-vertical;
   background-color: var(--nx-color-blockquote-background);
   border: var(--nx-border-default);
   border-left-width: 8px;
@@ -129,6 +128,8 @@
   margin: var(--nx-spacing-4x) 0 var(--nx-spacing-6x) 0;
   padding: var(--nx-spacing-6x);
   max-width: var(--nx-width-text-wrapping);
+
+  @include nx-container-helpers.container-vertical;
 }
 
 //Class that allows making content visible only to screen readers
