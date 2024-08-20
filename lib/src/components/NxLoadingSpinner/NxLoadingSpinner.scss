@@ -7,6 +7,7 @@
 @use '../../scss-shared/nx-container-helpers';
 
 .nx-loading-spinner {
-  @include nx-container-helpers.container-horizontal;
   margin: 8px 0;
+
+  @include nx-container-helpers.container-horizontal;
 }

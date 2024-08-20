@@ -17,8 +17,6 @@
 }
 
 .nx-submit-mask__message {
-  @include nx-container-helpers.container-horizontal;
-  @include nx-container-helpers.container-vertical;
   @include nx-text-helpers.semi-bold;
 
   background-color: var(--nx-color-component-background);
@@ -29,6 +27,9 @@
   text-align: center;
   min-width: 124px;
   max-width: 250px;
+
+  @include nx-container-helpers.container-horizontal;
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-submit-mask--success {

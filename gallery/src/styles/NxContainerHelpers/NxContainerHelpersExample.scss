@@ -7,9 +7,10 @@
 @use '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 
 .gallery-container-example {
-  @include nx-container-helpers.container-vertical;
   border: 1px solid #ccc;
   padding: 8px;
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .gallery-container-example__child {

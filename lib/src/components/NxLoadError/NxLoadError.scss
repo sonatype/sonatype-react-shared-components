@@ -8,11 +8,12 @@
 
 .nx-load-error {
   &__content {
-    @include nx-container-helpers.container-horizontal;
     align-items: first baseline;
     display: flex;
     flex-wrap: wrap;
     row-gap: var(--nx-spacing-6x);
+
+    @include nx-container-helpers.container-horizontal;
   }
 
   &__message {

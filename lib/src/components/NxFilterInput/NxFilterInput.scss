@@ -8,8 +8,6 @@
 @use '../../scss-shared/nx-button-helpers';
 
 .nx-filter-input {
-  @include nx-container-helpers.container-horizontal;
-
   margin-bottom: 0;
   white-space: nowrap;
 
@@ -45,4 +43,6 @@
       visibility: hidden;
     }
   }
+
+  @include nx-container-helpers.container-horizontal;
 }

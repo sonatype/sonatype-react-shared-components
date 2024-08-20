@@ -92,9 +92,11 @@
                               0 1px 1px 0 Hsla(var(--nx-swatch-indigo-hs), 5%, 0.75);
   }
 
-  // Deprecated variables
-  --nx-border-subsection: 1px solid var(--nx-color-subsection-border);
-  --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
-  // similar to box-shadow-focus listed above, but for use in drop-shadow filters rather than box-shadow properties
-  --nx-drop-shadow-focus: 0 0 3px var(--nx-color-interactive-shadow-focus);
+  & {
+    // Deprecated variables
+    --nx-border-subsection: 1px solid var(--nx-color-subsection-border);
+    --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
+    // similar to box-shadow-focus listed above, but for use in drop-shadow filters rather than box-shadow properties
+    --nx-drop-shadow-focus: 0 0 3px var(--nx-color-interactive-shadow-focus);
+  }
 }

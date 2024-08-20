@@ -24,8 +24,6 @@
 }
 
 .nx-page-header__inner {
-  @include nx-container-helpers.container-horizontal;
-
   align-items: flex-start;
   box-sizing: border-box;
   display: flex;
@@ -34,11 +32,13 @@
   padding: 0 var(--nx-spacing-6x);
   width: 100%;
   max-width: var(--nx-width-page-max);
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-page-header__links {
-  @include nx-container-helpers.container-horizontal;
   margin: 26px var(--nx-spacing-16x) 0 var(--nx-spacing-16x);
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-page-header__link {
@@ -79,8 +79,6 @@
 }
 
 .nx-page-header__extra-content {
-  @include nx-container-helpers.container-horizontal;
-
   align-items: center;
   align-self: stretch;
   display: flex;
@@ -89,6 +87,8 @@
   .nx-btn--icon-only {
     @include nx-button-helpers.small-icon-btn;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-product {

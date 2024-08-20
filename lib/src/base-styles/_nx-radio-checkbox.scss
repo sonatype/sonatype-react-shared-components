@@ -12,7 +12,6 @@
 .nx-radio-checkbox {
   $max-width: 562px;
 
-  @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.regular;
 
   align-items: center;
@@ -65,6 +64,8 @@
       z-index: -1;
     }
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-radio-checkbox--disabled {
@@ -83,8 +84,8 @@
 }
 
 .nx-radio-checkbox__content {
-  @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-radio-checkbox__input {
