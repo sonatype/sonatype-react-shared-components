@@ -22,6 +22,8 @@
   padding: var(--nx-modal-padding);
   width: 800px;
 
+  @include nx-container-helpers.container-vertical;
+
   &, > .nx-form {
     display: flex;
     flex-basis: auto;
@@ -39,8 +41,6 @@
   .nx-footer {
     margin: 0;
   }
-
-  @include nx-container-helpers.container-vertical;
 }
 
 .nx-modal--narrow {

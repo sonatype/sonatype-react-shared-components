@@ -231,6 +231,9 @@
   padding: nx-table-variables.$table-cell-vertical-padding var(--nx-spacing-3x);
   vertical-align: top;
 
+  @include nx-container-helpers.container-vertical;
+  @include nx-container-helpers.container-horizontal;
+
   &:first-child {
     padding-left: var(--nx-spacing-4x);
   }
@@ -250,9 +253,6 @@
       @include nx-button-helpers.small-icon-btn;
     }
   }
-
-  @include nx-container-helpers.container-vertical;
-  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-cell--label {
