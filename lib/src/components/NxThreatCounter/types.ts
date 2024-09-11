@@ -28,3 +28,5 @@ export const propTypes: ValidationMap<Props> = {
   layout: PropTypes.string,
   className: PropTypes.string
 };
+
+//This is the type of the component
