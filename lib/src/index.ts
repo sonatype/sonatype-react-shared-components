@@ -278,7 +278,7 @@ export { default as NxThreatCounter, Props as NxThreatCounterProps }
 
 export { default as NxVulnerabilityCounter, Props as NxVulnerabilityCounterProps }
   from './components/NxVulnerabilityCounter/NxVulnerabilityCounter';
-  
+
 export { default as NxFormSelect, Props as NxFormSelectProps } from './components/NxFormSelect/NxFormSelect';
 import * as nxFormSelectStateHelpers from './components/NxFormSelect/stateHelpers';
 export { nxFormSelectStateHelpers };
