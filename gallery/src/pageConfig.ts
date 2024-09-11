@@ -99,6 +99,7 @@ import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
 import WithClassPage from './jsUtilPages/WithClass/WithClassPage';
 import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPage';
+import NxVulnerabilityCounterPage from './components/NxVulnerabilityCounter/NxVulnerabilityCounterPage';
 import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
 import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
@@ -177,6 +178,7 @@ const pageConfig: PageConfig = {
     'Tag': { content: NxTagPage, type: 'react' },
     'Small Tag': { content: NxSmallTagPage, type: 'react' },
     'Threat Counter': { content: NxThreatCounterPage, type: 'react' },
+    'Vulnerability Counter': { content: NxVulnerabilityCounterPage, type: 'react' },
     'Small Threat Counter': { content: NxSmallThreatCounterPage, type: 'react' },
     'Status Indicator': { content: NxStatusIndicatorPage, type: 'html' },
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
