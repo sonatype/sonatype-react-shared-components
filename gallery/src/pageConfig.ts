@@ -22,6 +22,7 @@ import NxPageTitlePage from './styles/NxPageTitle/NxPageTitlePage';
 import NxTilePage from './styles/NxTile/NxTilePage';
 import NxBtnPage from './styles/NxBtn/NxBtnPage';
 import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndicatorPage';
+import NxVulnerabilityIndicatorPage from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicatorPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
@@ -181,6 +182,7 @@ const pageConfig: PageConfig = {
     'Status Indicator': { content: NxStatusIndicatorPage, type: 'html' },
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
+    'Vulnerability Indicator': { content: NxVulnerabilityIndicatorPage, type: 'react' },
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
     'Toast': { content: NxToastPage, type: 'react' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },

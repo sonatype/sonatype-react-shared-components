@@ -48,6 +48,10 @@ export {
 
 export { default as NxThreatIndicator, Props as NxThreatIndicatorProps }
   from './components/NxThreatIndicator/NxThreatIndicator';
+
+export { default as NxVulnerabilityIndicator, Props as NxVulnerabilityIndicatorProps }
+  from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicator';
+
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
 
