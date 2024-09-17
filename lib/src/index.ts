@@ -347,6 +347,7 @@ export { default as NxDrawer, Props as NxDrawerProps } from './components/NxDraw
 
 export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';
 export { default as NxFileUpload, Props as NxFileUploadProps } from './components/NxFileUpload/NxFileUpload';
+export { StateProps as NxFileUploadStateProps } from './components/NxFileUpload/types';
 export { default as NxStatefulFileUpload, Props as NxStatefulFileUploadProps }
   from './components/NxFileUpload/stateful/NxStatefulFileUpload';
 export { default as NxMultiFileUpload, Props as NxMultiFileUploadProps }
