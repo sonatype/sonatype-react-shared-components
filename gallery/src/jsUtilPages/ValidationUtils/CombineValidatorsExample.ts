@@ -10,7 +10,7 @@ export const isRequired = (value: string) => !(value?.length > 0) ? 'This field 
 export const maxLength = (max: number) => (value: string) =>
   value?.length > max ? `This value may be no more than ${max} charcters` : null;
 export const noZero = (value: string) =>
-  value?.includes('0') ? 'This value may be contain "0"' : null;
+  value?.includes('0') ? 'This value may not contain "0"' : null;
 
 const validator = combineValidators(isRequired, maxLength(5), noZero);
 
