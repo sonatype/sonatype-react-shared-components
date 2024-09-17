@@ -53,6 +53,13 @@ const ValidationUtilsPage = () =>
       single <NxCode>ValidationErrors</NxCode> object containing all of the errors in those
       arguments, in the same order.
     </GalleryExampleTile>
+
+    <GalleryExampleTile title="combineValidators" codeExamples={combineValidatorsExampleCode}>
+      <NxCode>combineValidators</NxCode> takes a series
+      of functions which can produce a <NxCode>ValidationErrors</NxCode> objects when passed a <NxCode>string</NxCode>
+      and returns a single function which, when passed a <NxCode>string</NxCode>, will return the combined result of
+      running it through all of the validators.
+    </GalleryExampleTile>
   </>;
 
 export default ValidationUtilsPage;
