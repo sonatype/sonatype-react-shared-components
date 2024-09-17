@@ -12,7 +12,8 @@ import { GalleryExampleTile, GalleryDescriptionTile } from '../../gallery-compon
 const validationErrorsExampleCode = require('./ValidationErrorsExample?raw'),
     hasValidationErrorsExampleCode = require('./HasValidationErrorsExample?raw'),
     getFirstValidationErrorExampleCode = require('./GetFirstValidationErrorExample?raw'),
-    combineValidationErrorsExampleCode = require('./CombineValidationErrorsExample?raw');
+    combineValidationErrorsExampleCode = require('./CombineValidationErrorsExample?raw'),
+    combineValidatorsExampleCode = require('./CombineValidatorsExample?raw');
 
 const ValidationUtilsPage = () =>
   <>
