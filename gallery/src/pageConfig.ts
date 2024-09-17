@@ -117,6 +117,8 @@ import AccessibilityPage from './pages/Accessibility';
 import AccessibilityChecklistPage from './pages/AccessibilityChecklist';
 import NxDividerPage from './styles/NxDivider/NxDividerPage';
 import NxThreatIndicatorLegendPage from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegendPage';
+import NxVulnerabilityIndicatorLegendPage
+  from './components/NxVulnerabilityIndicatorLegend/NxVulnerabilityIndicatorLegendPage';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
 import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/NxStatefulSearchDropdownPage';
 import NxSearchTransferListPage from './components/NxSearchTransferList/NxSearchTransferListPage';
@@ -183,6 +185,7 @@ const pageConfig: PageConfig = {
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
     'Vulnerability Indicator': { content: NxVulnerabilityIndicatorPage, type: 'react' },
+    'Vulnerability Indicator Legend': { content: NxVulnerabilityIndicatorLegendPage, type: 'react' },
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
     'Toast': { content: NxToastPage, type: 'react' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
