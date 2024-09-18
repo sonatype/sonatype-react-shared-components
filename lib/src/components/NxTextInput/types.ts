@@ -35,7 +35,7 @@ export interface StateProps {
 type FusedProps = InputHTMLAttributes<HTMLInputElement> & TextareaHTMLAttributes<HTMLTextAreaElement>;
 // Leave out props to be re-defined
 export type InputAttrs = Omit<FusedProps, 'onChange'|'onKeyPress'|'type'|'defaultValue'|'disabled'|'placeholder'>;
-export type DivAttrs = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'|'onKeyPress'|'defaultValue'>;
+export type DivAttrs = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'|'onKeyPress'|'defaultValue'|'placeholder'>;
 
 export type TextInputElement = HTMLInputElement | HTMLTextAreaElement;
 
@@ -46,7 +46,7 @@ export type Props = Omit<StateProps, 'trimmedValue'> & DivAttrs & {
   onKeyPress?: ((keyCode: string) => void) | null;
   validatable?: boolean | null;
   disabled?: boolean | null;
-  placeholder?: string | undefined;
+  placeholder?: string | null;
   inputAttributes?: InputAttrs;
 
   // For internal use only, these props are used by NxFilterInput
