@@ -16,7 +16,7 @@ export interface Props extends DivAttrs {
   onChange?: ((newVal: string) => void) | null;
   onKeyPress?: ((newVal: string) => void) | null;
   disabled?: boolean | null;
-  placeholder?: string | null;
+  placeholder?: string | undefined;
   inputAttributes?: InputAttrs;
 }
 
