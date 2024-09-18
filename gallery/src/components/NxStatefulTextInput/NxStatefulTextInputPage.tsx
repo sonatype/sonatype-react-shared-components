@@ -78,6 +78,16 @@ const NxStatefulTextInputPage = () =>
               Any attribute supported by <NxCode>NxTextInput</NxCode>
             </NxTable.Cell>
           </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              placeholder
+            </NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              The placeholder for the input
+            </NxTable.Cell>
+          </NxTable.Row>
         </NxTable.Body>
       </NxTable>
     </GalleryDescriptionTile>
