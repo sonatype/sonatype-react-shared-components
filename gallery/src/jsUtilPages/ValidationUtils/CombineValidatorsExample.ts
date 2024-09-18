@@ -15,6 +15,6 @@ export const noZero = (value: string) =>
 const validator = combineValidators(isRequired, maxLength(5), noZero);
 
 validator('123456'); // ['This value may be no more than 5 characters']
-validator('1234560'); // ['This value may be no more than 5 characters', 'This value may be contain "0"']
+validator('1234560'); // ['This value may be no more than 5 characters', 'This value may not contain "0"']
 validator('12345'); // []
 validator(''); // ['This field is required']
