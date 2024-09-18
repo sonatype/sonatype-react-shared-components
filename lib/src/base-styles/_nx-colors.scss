@@ -171,8 +171,9 @@
   --nx-color-small-threat-counter-zero-text: var(--nx-swatch-grey-40);
 
   //NxSmallVulnerabilityCounter
-  --nx-color-small-vulnerability-counter-zero-background: var(--nx-color-interactive-background-disabled);
-  --nx-color-small-vulnerability-counter-zero-text: var(--nx-swatch-grey-40);
+  --nx-color-small-vulnerability-counter-zero-background: var(--nx-swatch-grey-80);
+  --nx-color-small-vulnerability-counter-zero-border: var(--nx-swatch-grey-10);
+  --nx-color-small-vulnerability-counter-zero-text: var(--nx-swatch-grey-05);
 
   //NxTooltip variables
   --nx-color-tooltip-background: var(--nx-swatch-grey-20);
