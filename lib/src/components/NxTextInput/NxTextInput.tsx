@@ -16,7 +16,7 @@ import { Props, PublicProps, propTypes, TextInputElement } from './types';
 import { hasValidationErrors, getFirstValidationError } from '../../util/validationUtil';
 import { useUniqueId } from '../../util/idUtil';
 import { FormAriaContext } from '../NxForm/context';
-export { Props, PublicProps, StateProps, propTypes, inputTypes } from './types';
+export { Props, PublicProps, StateProps, Validator, propTypes, inputTypes } from './types';
 
 /*
  * The full implementation of NxTextInput including options that are only for use internally within
