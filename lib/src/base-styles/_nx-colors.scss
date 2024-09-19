@@ -41,11 +41,23 @@
   --nx-color-vulnerability-unspecified: var(--nx-swatch-grey-05);
   --nx-color-vulnerability-none: var(--nx-swatch-grey-80);
   --nx-color-vulnerability-low: var(--nx-swatch-indigo-50);
-  --nx-color-vulnerability-medium: var(--nx-swatch-yellow-50);
-  --nx-color-vulnerability-high: var(--nx-swatch-orange-45);
+  --nx-color-vulnerability-medium: var(--nx-swatch-yellow-60);
+  --nx-color-vulnerability-high: var(--nx-swatch-orange-50);
   --nx-color-vulnerability-critical: var(--nx-swatch-red-40);
   --nx-color-vulnerability-indicator-legend-header-text: var(--nx-color-text-stark);
   --nx-color-vulnerability-level-text: var(--nx-color-text);
+
+  --nx-color-vulnerability-critical-text: var(--nx-swatch-grey-97);
+  --nx-color-vulnerability-high-text: var(--nx-swatch-grey-05);
+  --nx-color-vulnerability-medium-text: var(--nx-swatch-black);
+  --nx-color-vulnerability-low-text: var(--nx-swatch-white);
+  --nx-color-vulnerability-none-text: var(--nx-swatch-grey-05);
+
+  --nx-color-vulnerability-critical-border: var(--nx-swatch-red-10);
+  --nx-color-vulnerability-high-border: var(--nx-swatch-orange-10);
+  --nx-color-vulnerability-medium-border: var(--nx-swatch-yellow-20);
+  --nx-color-vulnerability-low-border: var(--nx-swatch-indigo-10);
+  --nx-color-vulnerability-none-border: var(--nx-swatch-grey-10);
    
   --nx-color-threat-unspecified: var(--nx-swatch-grey-05);
   --nx-color-threat-none: var(--nx-swatch-teal-50);
