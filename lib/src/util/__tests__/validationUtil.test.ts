@@ -4,7 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { combineValidationErrors, hasValidationErrors, getFirstValidationError } from '../validationUtil';
+import {
+  combineValidationErrors,
+  hasValidationErrors,
+  getFirstValidationError,
+  combineValidators
+} from '../validationUtil';
 
 describe('validationUtil', function() {
   describe('hasValidationErrors', function() {
@@ -69,6 +74,18 @@ describe('validationUtil', function() {
       expect(combineValidationErrors(['foo'])).toEqual(['foo']);
       expect(combineValidationErrors(['foo'], ['bar'], [], null)).toEqual(['foo', 'bar']);
       expect(combineValidationErrors(['foo', 'bar'], ['baz'])).toEqual(['foo', 'bar', 'baz']);
+    });
+  });
+
+  describe('combineValidators', function() {
+    it('returns a function that combines the results of all the validators', function() {
+      const validator1 = (val: string) => val === 'foo' ? 'foo is not allowed' : null;
+      const validator2 = (val: string) => val === 'bar' ? 'bar is not allowed' : null;
+      const combined = combineValidators(validator1, validator2);
+
+      expect(combined('foo')).toEqual(['foo is not allowed']);
+      expect(combined('bar')).toEqual(['bar is not allowed']);
+      expect(combined('baz')).toEqual([]);
     });
   });
 });
