@@ -200,6 +200,7 @@ export {
 } from './components/NxForm/stateful/NxStatefulForm';
 
 export * from './util/threatLevels';
+export * from './util/vulnerabilityLevels';
 export * from './util/validationUtil';
 
 export {
