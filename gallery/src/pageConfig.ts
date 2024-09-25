@@ -63,7 +63,8 @@ import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
 import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
 import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
-import VulnerabilityThreatLevelUtilsPage from './jsUtilPages/VulnerabilityThreatLevelUtils/VulnerabilityThreatLevelUtilsPage';
+import VulnerabilityThreatLevelUtilsPage
+  from './jsUtilPages/VulnerabilityThreatLevelUtils/VulnerabilityThreatLevelUtilsPage';
 import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
 import NxClickablePage from './styles/NxClickable/NxClickablePage';
 import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
