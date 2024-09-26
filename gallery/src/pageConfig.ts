@@ -37,6 +37,7 @@ import NxIconPage from './styles/NxIcon/NxIconPage';
 import NxFontAwesomeIconPage from './components/NxFontAwesomeIcon/NxFontAwesomeIconPage';
 import NxCounterPage from './styles/NxCounter/NxCounterPage';
 import NxThreatNumberPage from './styles/NxThreatNumber/NxThreatNumberPage';
+import NxVulnerabilityScorePage from './styles/NxVulnerabilityScore/NxVulnerabilityScorePage';
 import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
 import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
@@ -189,6 +190,7 @@ const pageConfig: PageConfig = {
     'Vulnerability Indicator': { content: NxVulnerabilityIndicatorPage, type: 'react' },
     'Vulnerability Indicator Legend': { content: NxVulnerabilityIndicatorLegendPage, type: 'react' },
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
+    'Vulnerability Score': { content: NxVulnerabilityScorePage, type: 'html' },
     'Toast': { content: NxToastPage, type: 'react' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
     'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' }
