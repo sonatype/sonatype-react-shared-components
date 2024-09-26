@@ -295,6 +295,10 @@ export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps
 
 export { default as NxThreatIndicatorLegend, NxThreatIndicatorLegendProps }
   from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegend';
+
+export { default as NxVulnerabilityIndicatorLegend, NxVulnerabilityIndicatorLegendProps}
+  from './components/NxVulnerabilityIndicatorLegend/NxVulnerabilityIndicatorLegend';
+
 export {
   default as NxSearchDropdown,
   Props as NxSearchDropdownProps,
