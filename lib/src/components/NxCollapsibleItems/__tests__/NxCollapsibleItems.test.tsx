@@ -61,7 +61,7 @@ describe('NxCollapsibleItems', function() {
       expect(renderAndGetTrigger()).toHaveAttribute('type', 'button');
     });
 
-    it('references the treeview children items using aria-controls', async function() {
+    it('references the treeview children items using aria-controls', function() {
       const view = quickRender({ children: <span data-testid="child" /> }),
           trigger = view.getByRole('button'),
           childrenElId = trigger.getAttribute('aria-controls')!;
