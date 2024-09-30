@@ -364,7 +364,7 @@ describe('NxCollapsibleMultiSelect', function() {
 
   describe('collapsible items', function () {
     it('renders an element with menu role containing the options with menuitemcheckbox role', function() {
-      const view = quickRender(),
+      const view = quickRender({ isOpen: true }), // individual children only render when open
           childrenEl = view.getByRole('menu'),
           childEl = within(childrenEl).getAllByRole('menuitemcheckbox');
 
@@ -374,7 +374,7 @@ describe('NxCollapsibleMultiSelect', function() {
 
     describe('options', function() {
       it('has labeled text as specified in name of the option', function () {
-        const view = quickRender(),
+        const view = quickRender({ isOpen: true }),
             options = view.getAllByRole('menuitemcheckbox');
 
         expect(options).toHaveLength(4);
@@ -386,7 +386,8 @@ describe('NxCollapsibleMultiSelect', function() {
 
       it('renders checked option when selected', function () {
         const view = quickRender({
-              selectedIds: new Set(['foo'])
+              selectedIds: new Set(['foo']),
+              isOpen: true
             }),
             options = view.getAllByRole('menuitemcheckbox');
 
@@ -397,7 +398,7 @@ describe('NxCollapsibleMultiSelect', function() {
       });
 
       it('renders all unchecked options if selectedIds is not provided', function () {
-        const view = quickRender(),
+        const view = quickRender({ isOpen: true }),
             options = view.getAllByRole('menuitemcheckbox');
 
         expect(options[0]).not.toBeChecked();
@@ -410,7 +411,7 @@ describe('NxCollapsibleMultiSelect', function() {
         'when an option is clicked', async function() {
         const user = userEvent.setup(),
             onChange = jest.fn(),
-            view = quickRender({ onChange }),
+            view = quickRender({ onChange, isOpen: true }),
             options = view.getAllByRole('menuitemcheckbox');
 
         expect(onChange).not.toHaveBeenCalled();
@@ -422,6 +423,7 @@ describe('NxCollapsibleMultiSelect', function() {
 
         view.rerender(<NxCollapsibleMultiSelect { ...minimalProps }
                                                 onChange={onChange}
+                                                isOpen
                                                 selectedIds={new Set(['foo'])}/>);
 
         // now the first option is checked; also check the second one
@@ -431,9 +433,10 @@ describe('NxCollapsibleMultiSelect', function() {
 
         view.rerender(<NxCollapsibleMultiSelect { ...minimalProps }
                                                 onChange={onChange}
+                                                isOpen
                                                 selectedIds={new Set(['foo', 'bar'])}/>);
 
-        // now the first two optoins are checked; uncheck the first one
+        // now the first two options are checked; uncheck the first one
         await user.click(options[1]);
         expect(onChange).toHaveBeenCalledTimes(3);
         expect(onChange).toHaveBeenCalledWith(new Set(['bar']), 'foo');
@@ -448,7 +451,7 @@ describe('NxCollapsibleMultiSelect', function() {
                 {id: 'cat', name: 'Cat'},
                 {id: 'dog', name: 'Dog'}
               ],
-              view = quickRender({ options: optionsProp, optionTooltipGenerator }),
+              view = quickRender({ options: optionsProp, optionTooltipGenerator, isOpen: true }),
               options = view.getAllByRole('menuitemcheckbox');
 
           await runTimers();
@@ -470,7 +473,8 @@ describe('NxCollapsibleMultiSelect', function() {
               optionTooltipGenerator = jest.fn().mockReturnValue('customized-tooltip'),
               view = quickRender({
                 optionTooltipGenerator,
-                tooltipModifierClass: 'tooltipClass'
+                tooltipModifierClass: 'tooltipClass',
+                isOpen: true
               }),
               options = view.getAllByRole('menuitemcheckbox');
 
@@ -491,7 +495,8 @@ describe('NxCollapsibleMultiSelect', function() {
     describe('toggle all option', function () {
       it('renders unchecked toggle all option if not all options are selected', function () {
         const view = quickRender({
-              selectedIds: new Set(['foo', null])
+              selectedIds: new Set(['foo', null]),
+              isOpen: true
             }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -500,7 +505,8 @@ describe('NxCollapsibleMultiSelect', function() {
 
       it('renders checked toggle all option if all options are selected', function () {
         const view = quickRender({
-              selectedIds: new Set(['foo', 'bar', null])
+              selectedIds: new Set(['foo', 'bar', null]),
+              isOpen: true
             }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -511,7 +517,8 @@ describe('NxCollapsibleMultiSelect', function() {
         const user = userEvent.setup(),
             onChange = jest.fn(),
             view = quickRender({
-              onChange
+              onChange,
+              isOpen: true
             }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -527,7 +534,8 @@ describe('NxCollapsibleMultiSelect', function() {
             onChange = jest.fn(),
             view = quickRender({
               onChange,
-              selectedIds: new Set(['foo'])
+              selectedIds: new Set(['foo']),
+              isOpen: true
             }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -543,7 +551,8 @@ describe('NxCollapsibleMultiSelect', function() {
             onChange = jest.fn(),
             view = quickRender({
               onChange,
-              selectedIds: new Set(['foo', 'bar', null])
+              selectedIds: new Set(['foo', 'bar', null]),
+              isOpen: true
             }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -560,7 +569,8 @@ describe('NxCollapsibleMultiSelect', function() {
                 filteredOptions: [
                   {id: 'foo', name: 'Foo'},
                   {id: 'bar', name: 'Bar'}
-                ]
+                ],
+                isOpen: true
               }),
               toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -574,7 +584,8 @@ describe('NxCollapsibleMultiSelect', function() {
                   {id: 'bar', name: 'Bar'},
                   {id: null, name: 'Null'}
                 ],
-                selectedIds: new Set(['foo', 'bar', null])
+                selectedIds: new Set(['foo', 'bar', null]),
+                isOpen: true
               }),
               toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -583,7 +594,8 @@ describe('NxCollapsibleMultiSelect', function() {
 
         it('renders nothing if no options are displayed due to filter', function () {
           const view = quickRender({
-            filteredOptions: []
+            filteredOptions: [],
+            isOpen: true
           });
 
           expect(view.queryAllByRole('menuitemcheckbox')).toHaveLength(0);
@@ -597,7 +609,8 @@ describe('NxCollapsibleMultiSelect', function() {
                 selectedIds: new Set(['foo']),
                 filteredOptions: [
                   {id: 'bar', name: 'Bar'}
-                ]
+                ],
+                isOpen: true
               }),
               toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -616,7 +629,8 @@ describe('NxCollapsibleMultiSelect', function() {
                 selectedIds: new Set(['foo', 'bar', null]),
                 filteredOptions: [
                   {id: 'bar', name: 'Bar'}
-                ]
+                ],
+                isOpen: true
               }),
               toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 

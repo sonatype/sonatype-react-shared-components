@@ -61,18 +61,15 @@ describe('NxCollapsibleItems', function() {
       expect(renderAndGetTrigger()).toHaveAttribute('type', 'button');
     });
 
-    it('references the treeview children items using aria-controls', function() {
+    it('references the treeview children items using aria-controls', async function() {
       const view = quickRender({ children: <span data-testid="child" /> }),
           trigger = view.getByRole('button'),
           childrenElId = trigger.getAttribute('aria-controls')!;
 
       expect(childrenElId).toBeDefined();
 
-      const childrenEl = document.getElementById(childrenElId)!,
-          childEl = screen.getByTestId('child');
-
+      const childrenEl = document.getElementById(childrenElId)!;
       expect(view.container).toContainElement(childrenEl);
-      expect(childrenEl).toContainElement(childEl);
     });
 
     it('sets aria-expanded iff both the isOpen prop is true and there are children', function() {
@@ -170,7 +167,7 @@ describe('NxCollapsibleItems', function() {
   });
 
   it('renders the children in an element with role=list', function() {
-    const view = quickRender({ children: <span data-testid="child">foo</span> }),
+    const view = quickRender({ children: <span data-testid="child">foo</span>, isOpen: true }),
         childrenEl = view.getByRole('list'),
         childEl = view.getByTestId('child');
 
@@ -179,7 +176,7 @@ describe('NxCollapsibleItems', function() {
   });
 
   it('sets specified role on the element containing the children', function() {
-    const view = quickRender({ role: 'menu', children: <span data-testid="child">foo</span> }),
+    const view = quickRender({ role: 'menu', children: <span data-testid="child">foo</span>, isOpen: true }),
         childrenEl = view.getByRole('menu'),
         childEl = view.getByTestId('child');
 
