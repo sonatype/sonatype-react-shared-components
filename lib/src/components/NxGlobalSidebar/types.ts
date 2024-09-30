@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValidationMap, HTMLAttributes, AnchorHTMLAttributes, Validator, ReactNode } from 'react';
+import { ValidationMap, AnchorHTMLAttributes, Validator, ReactNode } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
@@ -15,9 +15,6 @@ export interface Props {
   toggleOpenIcon: IconDefinition;
   toggleCloseIcon: IconDefinition;
   onToggleClick: (() => void);
-  logoImg: string;
-  logoAltText: string;
-  logoLink: string;
   children?: ReactNode | null;
 }
 
@@ -27,18 +24,7 @@ export const propTypes: ValidationMap<Props> = {
   toggleOpenIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
   toggleCloseIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
   onToggleClick: PropTypes.func.isRequired,
-  logoImg: PropTypes.string.isRequired,
-  logoAltText: PropTypes.string.isRequired,
-  logoLink: PropTypes.string.isRequired,
   children: PropTypes.node
-};
-
-export type NxGlobalSidebarNavigationProps = HTMLAttributes<HTMLDivElement>;
-
-// Casting to hack around flaws in react's typings: the typings for HTMLAttributes.className don't claim to accept null,
-// but non-required proptypes do, and the actual implementation does
-export const nxGlobalSidebarNavigationPropTypes = {
-  className: PropTypes.string
 };
 
 export interface NxGlobalSidebarNavigationLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -53,20 +39,4 @@ export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSideb
   icon: PropTypes.object.isRequired as Validator<IconDefinition>,
   text: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired
-};
-
-export interface NxGlobalSidebarFooterProps extends HTMLAttributes<HTMLDivElement> {
-  supportText?: ReactNode | null;
-  supportLink?: string | null;
-  releaseText?: ReactNode | null;
-  productTagLine?: ReactNode | null;
-  showCreatedBy?: boolean | null;
-}
-
-export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooterProps> = {
-  supportText: PropTypes.node,
-  supportLink: PropTypes.string,
-  releaseText: PropTypes.node,
-  productTagLine: PropTypes.node,
-  showCreatedBy: PropTypes.bool
 };

@@ -303,9 +303,9 @@
   --nx-color-accordion-container: var(--nx-swatch-indigo-90);
 
   // NxGlobalSidebar
-  --nx-color-global-sidebar-background: var(--nx-swatch-blue-10);
-  --nx-color-global-sidebar-border: #fff; // note: has no effect in light mode since the border width is 0
-  --nx-color-global-sidebar-separator: var(--nx-swatch-indigo-40);
+  --nx-color-global-sidebar-background: var(--nx-swatch-white);
+  --nx-color-global-sidebar-border: var(--nx-swatch-indigo-80);
+  //--nx-color-global-sidebar-separator: var(--nx-swatch-indigo-40);
   --nx-color-global-sidebar-border-focus: var(--nx-swatch-blue-95);
   --nx-color-global-sidebar-background-hover: var(--nx-swatch-indigo-30);
   --nx-color-global-sidebar-toggle: var(--nx-swatch-white);

@@ -254,14 +254,10 @@ export { default as useToggle } from './util/useToggle';
 
 export { default as NxGlobalSidebar, Props as NxGlobalSidebarProps }
   from './components/NxGlobalSidebar/NxGlobalSidebar';
-export { default as NxGlobalSidebarNavigation, NxGlobalSidebarNavigationProps }
-  from './components/NxGlobalSidebar/NxGlobalSidebarNavigation';
 export { default as NxGlobalSidebarNavigationLink, NxGlobalSidebarNavigationLinkProps }
   from './components/NxGlobalSidebar/NxGlobalSidebarNavigationLink';
 export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarProps }
   from './components/NxGlobalSidebar/stateful/NxStatefulGlobalSidebar';
-export { default as NxGlobalSidebarFooter, NxGlobalSidebarFooterProps }
-  from './components/NxGlobalSidebar/NxGlobalSidebarFooter';
 
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
 
