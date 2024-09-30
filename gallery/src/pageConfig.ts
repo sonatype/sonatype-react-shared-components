@@ -105,7 +105,6 @@ import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
 import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage';
 import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
-import NxGlobalSidebarFooterPage from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterPage';
 import NxFormSelectComponentPage from './components/NxFormSelect/NxFormSelectPage';
 import CssVariablesPage from './styles/CssVariables/CssVariablesPage';
 import NxTransferListPage from './components/NxTransferList/NxTransferListPage';
@@ -267,7 +266,6 @@ const pageConfig: PageConfig = {
     'Global Header': { content: NxGlobalHeaderPage, type: 'html' },
     'Global Sidebar': { content: NxGlobalSidebarPage, type: 'react' },
     'Stateful Global Sidebar': { content: NxStatefulGlobalSidebarPage, type: 'react' },
-    'Global Sidebar Footer': { content: NxGlobalSidebarFooterPage, type: 'react' },
     'Grid': { content: NxGridPage, type: 'html' },
     'Modal': { content: NxModalPage, type: 'react' },
     'Drawer': { content: NxDrawerPage, type: 'react' },

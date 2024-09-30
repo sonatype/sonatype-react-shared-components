@@ -13,7 +13,6 @@ import {
   NxTile,
   NxH2,
   NxStatefulGlobalSidebar,
-  NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
   NxGlobalHeader,
   NxBackButton
@@ -21,7 +20,6 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 const exampleCode = require('./GlobalSidebarHeaderSidebarLayout?raw');
 
 export default function GlobalSidebarHeaderSidebarLayout() {
@@ -29,15 +27,10 @@ export default function GlobalSidebarHeaderSidebarLayout() {
     <>
       <NxStatefulGlobalSidebar isDefaultOpen={true}
                                toggleOpenIcon={faArrowLeft}
-                               toggleCloseIcon={faArrowRight}
-                               logoImg={logoImg}
-                               logoAltText="RSC Plaid Villain"
-                               logoLink="#">
-        <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink}
-                                         text="Page Layout Examples"
-                                         href="#/pages/Page%20Layout%20Examples"/>
-        </NxGlobalSidebarNavigation>
+                               toggleCloseIcon={faArrowRight}>
+        <NxGlobalSidebarNavigationLink icon={faLink}
+                                       text="Page Layout Examples"
+                                       href="#/pages/Page%20Layout%20Examples"/>
       </NxStatefulGlobalSidebar>
       <NxGlobalHeader>
         <NxBackButton href="#/pages/Page%20Layout%20Examples" />
