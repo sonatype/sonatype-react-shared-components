@@ -12,6 +12,7 @@ export { Props, Option } from './types';
 import NxCheckbox from '../../NxCheckbox/NxCheckbox';
 import MultiSelectCounter from '../../Counter/MultiSelectCounter';
 import AbstractCollapsibleItemsSelect, { generateId } from '../AbstractCollapsibleItemsSelect';
+import { isProduction } from '../../../util/envUtil';
 
 function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
   // exclude onChange and selectedIds from the props we pass to AbstractCollapsibleItemsSelect
@@ -23,12 +24,15 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
       disabled = !!props.disabled,
       allFilteredSelected = all(item => normalizedSelectedIds.has(item.id), filteredOptions);
 
-  // Throw an error if one of the selectedIds is not part of the available options
-  normalizedSelectedIds.forEach(itemId => {
-    if (!any(propEq<string>(itemId, 'id'), options)) {
-      throw new Error(`You are attempting to select "${itemId}", but it is not part of the available options`);
-    }
-  });
+  if (!isProduction) {
+    console.warn('not production');
+    // Throw an error if one of the selectedIds is not part of the available options
+    normalizedSelectedIds.forEach(itemId => {
+      if (!any(propEq<string>(itemId, 'id'), options)) {
+        throw new Error(`You are attempting to select "${itemId}", but it is not part of the available options`);
+      }
+    });
+  }
 
   function toggle(id: string | null) {
     const newSelected = new Set(normalizedSelectedIds);
