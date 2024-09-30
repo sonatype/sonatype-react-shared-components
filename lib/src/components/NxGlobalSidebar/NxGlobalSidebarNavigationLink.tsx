@@ -13,6 +13,8 @@ import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import { NxGlobalSidebarNavigationLinkProps as Props, nxGlobalSidebarNavigationLinkPropTypes } from './types';
 export { NxGlobalSidebarNavigationLinkProps } from './types';
 
+import './NxGlobalSidebarNavigationLink.scss';
+
 const NxGlobalSidebarNavigationLink: FunctionComponent<Props> = function NxNavigationSidebarLink(props) {
   const { className, isSelected, icon, text, ...attrs } = props;
 
