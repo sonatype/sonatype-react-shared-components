@@ -9,7 +9,6 @@ import { faArrowLeft, faArrowRight, faLink } from '@fortawesome/free-solid-svg-i
 import {
   NxPageMain,
   NxStatefulGlobalSidebar,
-  NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
   NxLoadWrapper,
   NxGlobalHeader,
@@ -22,7 +21,6 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 const exampleCode = require('./GlobalSidebarHeaderLoadWrapperLayout?raw');
 
 export default function GlobalSidebarHeaderLoadWrapperLayout() {
@@ -44,15 +42,10 @@ export default function GlobalSidebarHeaderLoadWrapperLayout() {
     <>
       <NxStatefulGlobalSidebar isDefaultOpen={true}
                                toggleOpenIcon={faArrowLeft}
-                               toggleCloseIcon={faArrowRight}
-                               logoImg={logoImg}
-                               logoAltText="RSC Plaid Villain"
-                               logoLink="#">
-        <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink}
-                                         text="Page Layout Examples"
-                                         href="#/pages/Page%20Layout%20Examples"/>
-        </NxGlobalSidebarNavigation>
+                               toggleCloseIcon={faArrowRight}>
+        <NxGlobalSidebarNavigationLink icon={faLink}
+                                       text="Page Layout Examples"
+                                       href="#/pages/Page%20Layout%20Examples"/>
       </NxStatefulGlobalSidebar>
       <NxGlobalHeader>
         <NxBackButton href="#/pages/Page%20Layout%20Examples" />

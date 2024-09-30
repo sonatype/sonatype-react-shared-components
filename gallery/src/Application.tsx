@@ -21,7 +21,6 @@ import handleQueryParams from './handleQueryParams';
 
 import PageLayoutExamples from './styles/PageLayout/PageLayoutExamples';
 import NxGlobalSidebarExample from './components/NxGlobalSidebar/NxGlobalSidebarExample';
-import NxGlobalSidebarScrollingExample from './components/NxGlobalSidebar/NxGlobalSidebarScrollingExample';
 import NxStatefulGlobalSidebarExample from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarExample';
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
@@ -37,11 +36,6 @@ import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEm
 import NxSystemNoticeGlobalSidebarExample from './styles/NxSystemNotice/NxSystemNoticeGlobalSidebarExample';
 import NxSystemNoticeTraditionalPageExample from './styles/NxSystemNotice/NxSystemNoticeTraditionalPageExample';
 import NxSystemNoticeMultipleExample from './styles/NxSystemNotice/NxSystemNoticeMultipleExample';
-import NxGlobalSidebarFooterExample from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterExample';
-import NxGlobalSidebarFooterMinimalExample
-  from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterMinimalExample';
-import NxGlobalSidebarFooterEmptyExample
-  from './components/NxGlobalSidebarFooter/NxGlobalSidebarFooterEmptyExample';
 
 import NxDrawerEscExample from './components/NxDrawer/NxDrawerEscExample';
 import NxDrawerExample from './components/NxDrawer/NxDrawerExample';
@@ -150,13 +144,6 @@ function Application() {
                  </SectionScrollingWrapper>
                }>
         </Route>
-        <Route path="/NxGlobalSidebarScrollingExample"
-               element={
-                 <SectionScrollingWrapper>
-                   <NxGlobalSidebarScrollingExample />
-                 </SectionScrollingWrapper>
-               }>
-        </Route>
         <Route path="/NxStatefulGlobalSidebarExample"
                element={
                  <SectionScrollingWrapper>
@@ -241,27 +228,6 @@ function Application() {
                element={
                  <SectionScrollingWrapper>
                    <NxSystemNoticeMultipleExample />
-                 </SectionScrollingWrapper>
-               }>
-        </Route>
-        <Route path="/NxGlobalSidebarFooterExample"
-               element={
-                 <SectionScrollingWrapper>
-                   <NxGlobalSidebarFooterExample />
-                 </SectionScrollingWrapper>
-               }>
-        </Route>
-        <Route path="/NxGlobalSidebarFooterMinimalExample"
-               element={
-                 <SectionScrollingWrapper>
-                   <NxGlobalSidebarFooterMinimalExample />
-                 </SectionScrollingWrapper>
-               }>
-        </Route>
-        <Route path="/NxGlobalSidebarFooterEmptyExample"
-               element={
-                 <SectionScrollingWrapper>
-                   <NxGlobalSidebarFooterEmptyExample />
                  </SectionScrollingWrapper>
                }>
         </Route>

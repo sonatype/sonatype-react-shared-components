@@ -10,7 +10,6 @@ import {
   NxSystemNotice,
   NxPageMain,
   NxStatefulGlobalSidebar,
-  NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
   NxLoadWrapper,
   NxGlobalHeader,
@@ -23,7 +22,6 @@ import {
 
 import CodeExample from '../../CodeExample';
 
-const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 const exampleCode = require('./GlobalSidebarHeaderSystemNoticeLoadWrapperLayout?raw');
 
 export default function GlobalSidebarHeaderSystemNoticeLoadWrapperLayout() {
@@ -45,15 +43,10 @@ export default function GlobalSidebarHeaderSystemNoticeLoadWrapperLayout() {
     <>
       <NxStatefulGlobalSidebar isDefaultOpen={true}
                                toggleOpenIcon={faArrowLeft}
-                               toggleCloseIcon={faArrowRight}
-                               logoImg={logoImg}
-                               logoAltText="RSC Plaid Villain"
-                               logoLink="#">
-        <NxGlobalSidebarNavigation>
-          <NxGlobalSidebarNavigationLink icon={faLink}
-                                         text="Page Layout Examples"
-                                         href="#/pages/Page%20Layout%20Examples"/>
-        </NxGlobalSidebarNavigation>
+                               toggleCloseIcon={faArrowRight}>
+        <NxGlobalSidebarNavigationLink icon={faLink}
+                                       text="Page Layout Examples"
+                                       href="#/pages/Page%20Layout%20Examples"/>
       </NxStatefulGlobalSidebar>
       <NxSystemNotice>This is a System Notice</NxSystemNotice>
       <NxGlobalHeader>

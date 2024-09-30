@@ -10,8 +10,7 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert, NxTextLink, NxList }
   from '@sonatype/react-shared-components';
 
-const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw'),
-    NxGlobalSidebarScrollingExample = require('./NxGlobalSidebarScrollingExample.tsx?raw');
+const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw');
 
 export default function NxGlobalSidebarPage() {
   return (
@@ -277,25 +276,6 @@ export default function NxGlobalSidebarPage() {
             </NxTextLink>
           </NxP>
           <CodeExample content={NxGlobalSidebarExample} />
-        </NxTile.Content>
-      </NxTile>
-      <NxTile>
-        <NxTile.Header>
-          <NxTile.HeaderTitle>
-            <NxH2>Global Sidebar Example with Nav, Extra Content, and Footer</NxH2>
-          </NxTile.HeaderTitle>
-        </NxTile.Header>
-        <NxTile.Content>
-          <NxP>
-            This example shows 10 nav items (the maximum), a middle content area with enough content to trigger
-            scrolling, and all footer options enabled.
-          </NxP>
-          <NxP>
-            <NxTextLink href="#/NxGlobalSidebarScrollingExample">
-              Click here to navigate to the live example.
-            </NxTextLink>
-          </NxP>
-          <CodeExample content={NxGlobalSidebarScrollingExample} />
         </NxTile.Content>
       </NxTile>
     </>
