@@ -36,8 +36,8 @@
   // row of this template.
   grid-template:
     'old-header     old-header  old-header' auto
-    'global-sidebar   notices      notices' auto
-    'global-sidebar   header        header' auto
+    'notices         notices       notices' auto
+    'header          header         header' auto
     'global-sidebar old-sidebar    content' 1fr /
      auto    $old-sidebar-col-width    1fr;
 }
