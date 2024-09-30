@@ -7,8 +7,10 @@
 @use '../../scss-shared/nx-container-helpers';
 
 .nx-global-sidebar__navigation-link {
+  align-items: center;
   border-radius: var(--nx-border-radius);
-  display: block;
+  display: flex;
+  font-size: var(--nx-font-size-s);
   font-weight: 600;
   margin: var(--nx-spacing-2x) 0;
   padding: var(--nx-spacing-3x);
@@ -16,6 +18,8 @@
 
   .nx-icon {
     color: inherit;
+    font-size: var(--nx-font-size);
+    margin-right: var(--nx-spacing-3x);
   }
 
   &.nx-text-link {
