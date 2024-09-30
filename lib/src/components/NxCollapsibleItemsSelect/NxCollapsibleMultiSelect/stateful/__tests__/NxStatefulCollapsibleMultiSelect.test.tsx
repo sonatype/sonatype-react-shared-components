@@ -633,7 +633,9 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
           const user = userEvent.setup(),
               view = quickRender({
                 filterThreshold: 1,
-                selectedIds: new Set(['foo', 'boo']), isOpen: true }),
+                selectedIds: new Set(['foo', 'boo']),
+                isOpen: true
+              }),
               toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' }),
               inputEl = view.getByRole('textbox');
 
