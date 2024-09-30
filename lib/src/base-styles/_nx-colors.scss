@@ -305,20 +305,11 @@
   // NxGlobalSidebar
   --nx-color-global-sidebar-background: var(--nx-swatch-white);
   --nx-color-global-sidebar-border: var(--nx-swatch-indigo-80);
-  //--nx-color-global-sidebar-separator: var(--nx-swatch-indigo-40);
-  --nx-color-global-sidebar-border-focus: var(--nx-swatch-blue-95);
-  --nx-color-global-sidebar-background-hover: var(--nx-swatch-indigo-30);
-  --nx-color-global-sidebar-toggle: var(--nx-swatch-white);
-  --nx-color-global-sidebar-toggle-background-active: var(--nx-swatch-indigo-50);
-  --nx-color-global-sidebar-toggle-outline: var(--nx-swatch-blue-95);
-  --nx-color-global-sidebar-toggle-inner-outline: var(--nx-swatch-indigo-30);
-  --nx-color-global-sidebar-link-active: var(--nx-color-global-sidebar-toggle-background-active);
-  --nx-color-global-sidebar-link-selected: var(--nx-swatch-blue-40);
-  --nx-color-global-sidebar-link-text: var(--nx-swatch-white);
-  --nx-color-global-sidebar-link-text-interactive: var(--nx-color-global-sidebar-link-text);
-  --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-blue-95);
-  --nx-color-global-sidebar-link-icon: var(--nx-swatch-indigo-90);
-  --nx-color-global-sidebar-link-icon-interactive: var(--nx-swatch-white);
+  --nx-color-global-sidebar-link: var(--nx-swatch-black);
+  --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-blue-40);
+  --nx-color-global-sidebar-link-background-hover: var(--nx-swatch-grey-90);
+  --nx-color-global-sidebar-link-background-active: var(--nx-swatch-grey-95);
+  --nx-color-global-sidebar-link-selected: var(--nx-swatch-indigo-97);
 
   // NxTag
   --nx-color-tag-text: var(--nx-color-text-stark);

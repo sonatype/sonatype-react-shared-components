@@ -24,69 +24,6 @@ $-button-border-width: 2px;
   @include nx-container-helpers.container-vertical;
 }
 
-.nx-global-sidebar__navigation-link {
-  @include nx-text-helpers.truncate-ellipsis;
-
-  border: $-button-border-width solid transparent;
-  color: var(--nx-color-global-sidebar-link-text);
-  display: block;
-  //padding: calc(var(--nx-spacing-base) - #{$-button-border-width})
-           //calc(#{$-left-right-spacing} - #{$-button-border-width})
-           //calc(var(--nx-spacing-base) - #{$-button-border-width})
-           //// We need to add an extra pixel to the left to properly centre
-           //// the icons when the sidebar is collapsed
-           //calc(#{$-left-right-spacing} - #{$-button-border-width} + 1px);
-  text-decoration: none;
-
-  .nx-icon {
-    color: var(--nx-color-global-sidebar-link-icon);
-    margin: 0;
-  }
-
-  &.nx-text-link {
-    &:focus {
-      border-radius: 0;
-      outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-border-focus);
-      outline-offset: calc(0px - var(--nx-focus-outline-width));
-
-      &:hover, &.selected {
-        outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-link-border-focus);
-        outline-offset: calc(0px - var(--nx-focus-outline-offset-global-sidebar-link) - var(--nx-focus-outline-width));
-      }
-    }
-
-    &:hover, &:active, &.selected {
-      color: var(--nx-color-global-sidebar-link-text-interactive);
-
-      .nx-icon {
-        color: var(--nx-color-global-sidebar-link-icon-interactive);
-      }
-    }
-
-    &:hover {
-      background-color: var(--nx-color-global-sidebar-background-hover);
-    }
-
-    &:active {
-      background-color: var(--nx-color-global-sidebar-link-active);
-    }
-
-    &.selected {
-      background-color: var(--nx-color-global-sidebar-link-selected);
-    }
-
-    &:active:focus {
-      outline: none;
-    }
-  }
-
-  @include nx-container-helpers.container-horizontal;
-}
-
-.nx-global-sidebar__navigation-text {
-  margin-left: var(--nx-spacing-2x);
-}
-
 .nx-global-sidebar.closed {
   width: $-width-closed;
 
