@@ -41,9 +41,9 @@ export default function GlobalSidebarLoadWrapperLayout() {
       <NxStatefulGlobalSidebar isDefaultOpen={true}
                                toggleOpenIcon={faArrowLeft}
                                toggleCloseIcon={faArrowRight}>
-      <NxGlobalSidebarNavigationLink icon={faLink}
-                                     text="Page Layout Examples"
-                                     href="#/pages/Page%20Layout%20Examples"/>
+        <NxGlobalSidebarNavigationLink icon={faLink}
+                                       text="Page Layout Examples"
+                                       href="#/pages/Page%20Layout%20Examples"/>
       </NxStatefulGlobalSidebar>
       <NxLoadWrapper loading={loading} retryHandler={() => { setError(null); }} error={error}>
         <NxPageSidebar>
