@@ -46,7 +46,8 @@
 
   .nx-global-sidebar.closed & {
     .nx-global-sidebar__text {
-      display: none;
+      overflow-x: hidden;
+      width: 0;
     }
 
     .nx-icon {

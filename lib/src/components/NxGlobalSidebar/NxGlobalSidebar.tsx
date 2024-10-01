@@ -13,6 +13,7 @@ import { useUniqueId } from '../../util/idUtil';
 import { Props, propTypes } from './types';
 
 import './NxGlobalSidebar.scss';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props) {
   const {
@@ -32,19 +33,21 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
   });
 
   const toggleButtonIcon = isOpen ? toggleOpenIcon : toggleCloseIcon;
-  const toggleButton = (
-    <NxButton aria-expanded={isOpen} aria-controls={id} onClick={onToggleClick} className="nx-global-sidebar__toggle">
-      <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
-      <span className="nx-global-sidebar__text">Collapse Menu</span>
-    </NxButton>
-  );
 
   return (
     <div className={classes} id={id}>
       <nav className="nx-global-sidebar__nav nx-viewport-sized__container" aria-label="global sidebar">
         {children}
       </nav>
-      {toggleButton}
+      <NxOverflowTooltip>
+        <NxButton aria-expanded={isOpen}
+                  aria-controls={id}
+                  onClick={onToggleClick}
+                  className="nx-global-sidebar__toggle">
+          <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
+          <span className="nx-global-sidebar__text">Collapse Menu</span>
+        </NxButton>
+      </NxOverflowTooltip>
     </div>
   );
 };
