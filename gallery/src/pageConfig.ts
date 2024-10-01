@@ -64,8 +64,8 @@ import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
 import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
 import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
-import VulnerabilityThreatLevelUtilsPage
-  from './jsUtilPages/VulnerabilityThreatLevelUtils/VulnerabilityThreatLevelUtilsPage';
+import VulnerabilitySeverityLevelUtilsPage
+  from './jsUtilPages/VulnerabilitySeverityLevelUtils/VulnerabilitySeverityLevelUtilsPage';
 import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
 import NxClickablePage from './styles/NxClickable/NxClickablePage';
 import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
@@ -318,7 +318,7 @@ const pageConfig: PageConfig = {
   'JavaScript & TypeScript Utilities': {
     'IDUtils': { content: IdUtilPage, type: 'js' },
     'Policy Threat Level Utils': { content: PolicyThreatLevelUtilsPage, type: 'js' },
-    'Vulnerability Threat Level Utils': { content: VulnerabilityThreatLevelUtilsPage, type: 'js' },
+    'Vulnerability Severity Level Utils': { content: VulnerabilitySeverityLevelUtilsPage, type: 'js' },
     'Server Side Rendering Utilities': { content: ServerSideRenderingUtilsPage, type: 'js'},
     'TooltipConfigProps': { content: TooltipConfigPropsPage, type: 'js' },
     'useToggle': { content: UseTogglePage, type: 'js' },
