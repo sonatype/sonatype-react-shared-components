@@ -32,21 +32,16 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
   });
 
   const toggleButtonIcon = isOpen ? toggleOpenIcon : toggleCloseIcon;
-  const toggleButtonTitle = isOpen ? 'Collapse Sidebar' : 'Expand Sidebar';
   const toggleButton = (
-    <NxButton aria-expanded={isOpen}
-              aria-controls={id}
-              variant="icon-only"
-              onClick={onToggleClick}
-              className="nx-global-sidebar__toggle"
-              title={toggleButtonTitle}>
+    <NxButton aria-expanded={isOpen} aria-controls={id} onClick={onToggleClick} className="nx-global-sidebar__toggle">
       <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
+      <span>Collapse Menu</span>
     </NxButton>
   );
 
   return (
     <div className={classes} id={id}>
-      <nav className="nx-viewport-sized__container" aria-label="global sidebar">
+      <nav className="nx-global-sidebar__nav nx-viewport-sized__container" aria-label="global sidebar">
         {children}
       </nav>
       {toggleButton}

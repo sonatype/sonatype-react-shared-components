@@ -21,15 +21,12 @@ const NxGlobalSidebarNavigationLink: FunctionComponent<Props> = function NxNavig
   const classes = classnames(className, 'nx-global-sidebar__navigation-link nx-text-link', {
     'selected': isSelected
   });
-  const textClasses = 'nx-global-sidebar__navigation-text';
 
   return (
     <NxOverflowTooltip>
       <a className={classes} { ...attrs }>
         <NxFontAwesomeIcon icon={icon} fixedWidth />
-        <span className={textClasses}>
-          {text}
-        </span>
+        <span>{text}</span>
       </a>
     </NxOverflowTooltip>
   );
