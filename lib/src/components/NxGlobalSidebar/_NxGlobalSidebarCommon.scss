@@ -47,6 +47,7 @@
   .nx-global-sidebar.closed & {
     .nx-global-sidebar__text {
       overflow-x: hidden;
+      white-space: nowrap;
       width: 0;
     }
 
