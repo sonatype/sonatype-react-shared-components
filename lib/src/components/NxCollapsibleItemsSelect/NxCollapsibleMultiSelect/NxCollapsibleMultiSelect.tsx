@@ -25,7 +25,6 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
       allFilteredSelected = all(item => normalizedSelectedIds.has(item.id), filteredOptions);
 
   if (!isProduction) {
-    console.warn('not production');
     // Throw an error if one of the selectedIds is not part of the available options
     normalizedSelectedIds.forEach(itemId => {
       if (!any(propEq<string>(itemId, 'id'), options)) {
