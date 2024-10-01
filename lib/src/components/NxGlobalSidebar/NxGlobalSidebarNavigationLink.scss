@@ -4,46 +4,8 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-@use '../../scss-shared/nx-container-helpers';
+@use './NxGlobalSidebarCommon';
 
-.nx-global-sidebar__navigation-link {
-  align-items: center;
-  border-radius: var(--nx-border-radius);
-  display: flex;
-  font-size: var(--nx-font-size-s);
-  font-weight: 600;
-  margin: var(--nx-spacing-2x) 0;
-  padding: var(--nx-spacing-3x);
-  text-decoration: none;
-
-  .nx-icon {
-    color: inherit;
-    font-size: var(--nx-font-size);
-    margin-right: var(--nx-spacing-3x);
-  }
-
-  &.nx-text-link {
-    color: var(--nx-color-global-sidebar-link);
-
-    &:focus {
-      outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-link-border-focus);
-    }
-
-    &:hover {
-      background-color: var(--nx-color-global-sidebar-link-background-hover);
-    }
-
-    &:active {
-      background-color: var(--nx-color-global-sidebar-link-background-active);
-    }
-
-    &.selected {
-      background: var(--nx-background-global-sidebar-link-selected);
-      color: var(--nx-color-global-sidebar-link-selected);
-      outline-color: var(--nx-color-global-sidebar-link-selected);
-      outline-offset: calc(0px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
-    }
-  }
-
-  @include nx-container-helpers.container-horizontal;
+.nx-global-sidebar__navigation-link.nx-text-link {
+  @extend %nx-global-sidebar__clickable;
 }

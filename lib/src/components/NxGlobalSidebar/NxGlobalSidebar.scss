@@ -7,6 +7,7 @@
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-container-helpers';
 @use '../../scss-shared/nx-button-helpers';
+@use './NxGlobalSidebarCommon';
 
 $-width-open: 250px;
 $-width-closed: 68px;
@@ -18,21 +19,24 @@ $-button-border-width: 2px;
   border-right: 1px solid var(--nx-color-global-sidebar-border);
   box-sizing: border-box;
   grid-area: global-sidebar;
+  min-height: 0;
   padding: var(--nx-spacing-3x);
   width: $-width-open;
 
   @include nx-container-helpers.container-vertical;
+
+  &__nav {
+    flex: 1 auto;
+    min-height: 0;
+    overflow-y: hidden;
+  }
+
+  &__toggle.nx-btn {
+    @extend %nx-global-sidebar__clickable;
+    margin-top: var(--nx-spacing-3x);
+  }
 }
 
 .nx-global-sidebar.closed {
   width: $-width-closed;
-
-  .nx-global-sidebar__navigation-link {
-    text-overflow: revert;
-  }
-
-  .nx-global-sidebar__navigation-text {
-    display: inline-block;
-    visibility: hidden;
-  }
 }

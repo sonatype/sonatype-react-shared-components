@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../../scss-shared/nx-container-helpers';
+
+%nx-global-sidebar__clickable {
+  align-items: center;
+  border: none;
+  border-radius: var(--nx-border-radius);
+  color: var(--nx-color-global-sidebar-link);
+  display: flex;
+  font-size: var(--nx-font-size-s);
+  font-weight: 600;
+  margin: var(--nx-spacing-2x) 0;
+  outline-offset: 0;
+  padding: var(--nx-spacing-3x);
+  text-decoration: none;
+
+  .nx-icon {
+    color: inherit;
+    font-size: var(--nx-font-size);
+    margin-right: var(--nx-spacing-3x);
+  }
+
+  &:focus {
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-link-border-focus);
+  }
+
+  &:hover {
+    background-color: var(--nx-color-global-sidebar-link-background-hover);
+  }
+
+  &:active {
+    background-color: var(--nx-color-global-sidebar-link-background-active);
+  }
+
+  &.selected {
+    background: var(--nx-background-global-sidebar-link-selected);
+    color: var(--nx-color-global-sidebar-link-selected);
+    outline-color: var(--nx-color-global-sidebar-link-selected);
+    outline-offset: calc(0px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
+  }
+
+  @include nx-container-helpers.container-horizontal;
+}
