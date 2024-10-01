@@ -37,6 +37,10 @@
     background-color: var(--nx-color-interactive-background-active);
   }
 
+  &:focus:active {
+    color: var(--nx-color-global-sidebar-link);
+  }
+
   &.selected {
     background: var(--nx-background-global-sidebar-link-selected);
     color: var(--nx-color-global-sidebar-link-selected);
