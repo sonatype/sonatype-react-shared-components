@@ -35,7 +35,7 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
   const toggleButton = (
     <NxButton aria-expanded={isOpen} aria-controls={id} onClick={onToggleClick} className="nx-global-sidebar__toggle">
       <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
-      <span>Collapse Menu</span>
+      <span className="nx-global-sidebar__text">Collapse Menu</span>
     </NxButton>
   );
 

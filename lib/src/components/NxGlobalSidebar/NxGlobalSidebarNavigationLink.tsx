@@ -26,7 +26,7 @@ const NxGlobalSidebarNavigationLink: FunctionComponent<Props> = function NxNavig
     <NxOverflowTooltip>
       <a className={classes} { ...attrs }>
         <NxFontAwesomeIcon icon={icon} fixedWidth />
-        <span>{text}</span>
+        <span className="nx-global-sidebar__text">{text}</span>
       </a>
     </NxOverflowTooltip>
   );
