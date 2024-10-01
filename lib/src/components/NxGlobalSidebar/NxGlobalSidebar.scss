@@ -10,7 +10,6 @@
 @use './NxGlobalSidebarCommon';
 
 $-width-open: 250px;
-$-width-closed: 68px;
 
 $-button-border-width: 2px;
 
@@ -37,8 +36,8 @@ $-button-border-width: 2px;
     @extend %nx-global-sidebar__clickable;
     margin-top: var(--nx-spacing-3x);
   }
-}
 
-.nx-global-sidebar.closed {
-  width: $-width-closed;
+  &.closed {
+    width: min-content;
+  }
 }
