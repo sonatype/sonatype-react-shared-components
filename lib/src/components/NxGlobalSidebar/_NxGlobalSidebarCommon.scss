@@ -15,7 +15,7 @@
   font-size: var(--nx-font-size-s);
   font-weight: 600;
   margin: var(--nx-spacing-2x) 0;
-  outline-offset: 0;
+  outline-offset: calc(0px - var(--nx-focus-outline-width));
   padding: var(--nx-spacing-3x);
   text-decoration: none;
 
@@ -26,15 +26,15 @@
   }
 
   &:focus {
-    outline: var(--nx-focus-outline-width) solid var(--nx-color-global-sidebar-link-border-focus);
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
   }
 
   &:hover {
-    background-color: var(--nx-color-global-sidebar-link-background-hover);
+    background-color: var(--nx-color-interactive-background-hover);
   }
 
   &:active {
-    background-color: var(--nx-color-global-sidebar-link-background-active);
+    background-color: var(--nx-color-interactive-background-active);
   }
 
   &.selected {
