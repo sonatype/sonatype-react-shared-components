@@ -7,8 +7,7 @@
 import React from 'react';
 import CodeExample from '../../CodeExample';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
-import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxWarningAlert, NxTextLink, NxList }
-  from '@sonatype/react-shared-components';
+import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxTextLink } from '@sonatype/react-shared-components';
 
 const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw');
 
@@ -17,38 +16,17 @@ export default function NxGlobalSidebarPage() {
     <>
       <GalleryDescriptionTile>
         <NxP>
-          <NxCode>NxGlobalSidebar</NxCode> is a collapsible page level sidebar. It has three main sections:
-        </NxP>
-        <NxList className="nx-list--bulleted">
-          <NxList.Item>
-            <NxList.Text>A header which contains branding as well as the open/close toggle</NxList.Text>
-          </NxList.Item>
-          <NxList.Item>
-            <NxList.Text>
-              A navigation link section which display an icon plus text in the open state and an icon in the closed
-              state
-            </NxList.Text>
-          </NxList.Item>
-          <NxList.Item>
-            <NxList.Text>
-              A footer which contains meta-information about the application. Refer to the
-              {' '}<a className="nx-text-link" href="#/pages/Global%20Sidebar%20Footer">Global Sidebar Footer</a> page
-              for its documentation.
-            </NxList.Text>
-          </NxList.Item>
-        </NxList>
-        <NxP>
-          <NxCode>NxGlobalSidebar</NxCode> should only be used with section scrolling (make sure that
-          <NxCode>.nx-html--page-scrolling</NxCode> is <strong>not</strong> used) and in full-width mode (
-          make sure that <NxCode>.nx-page-content--full-width</NxCode> <strong>is</strong> used).
+          <NxCode>NxGlobalSidebar</NxCode> is a collapsible page level sidebar which
+          contains <NxCode>NxGlobalSidebarNavigationLink</NxCode>s.
         </NxP>
         <NxP>
-          Because <NxCode>NxGlobalSidebar</NxCode> contains product branding it should not be used in conjunction
-          with <NxCode>NxPageHeader</NxCode> or <NxCode>NxNexusPageHeader</NxCode>.
-        </NxP>
-        <NxP>
-          Additional custom content may be added below the navigation links if desired, care should be taken that such
-          content can adapt to both the open and closed states.
+          <NxCode>NxGlobalSidebar</NxCode> should only be used with section scrolling (make sure
+          that <NxCode>.nx-html--page-scrolling</NxCode> is <strong>not</strong> used) and in full-width mode (make sure
+          that <NxCode>.nx-page-content--full-width</NxCode> <strong>is</strong> used, or
+          that <NxCode>.nx-page-content</NxCode> is not used at all).  <NxCode>NxGlobalSidebar</NxCode> is intended to
+          always be used in conjunction with <NxCode>NxGlobalHeader</NxCode>, and never
+          with <NxCode>NxPageHeader</NxCode>.  Additional custom content may be added below the navigation links if
+          desired, care should be taken that such content can adapt to both the open and closed states.
         </NxP>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
@@ -92,79 +70,6 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>
                   An icon used by the sidebar's open/close toggle when the sidebar is in the closed state. This icon
                   should make it clear that clicking it will open the sidebar.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>logoImg</NxTable.Cell>
-                <NxTable.Cell>string</NxTable.Cell>
-                <NxTable.Cell>Yes</NxTable.Cell>
-                <NxTable.Cell>
-                  The path to an image placed in the top left corner which displays branding and product name. Note that
-                  the image will be rendered at a size no greater than 158px x 43px.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>logoAltText</NxTable.Cell>
-                <NxTable.Cell>string</NxTable.Cell>
-                <NxTable.Cell>Yes</NxTable.Cell>
-                <NxTable.Cell>Alt text for the logo</NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>logoLink</NxTable.Cell>
-                <NxTable.Cell>string</NxTable.Cell>
-                <NxTable.Cell>Yes</NxTable.Cell>
-                <NxTable.Cell>
-                  When the logo is clicked it navigates to a page (typically Home) specified here.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
-                <NxTable.Cell>
-                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
-                    HTML div Attributes
-                  </NxTextLink>
-                </NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>
-                  <NxCode>NxGlobalSidebar</NxCode> supports any HTML attribute that's normally
-                  supported by <NxCode>&lt;div&gt;</NxCode>.
-                </NxTable.Cell>
-              </NxTable.Row>
-            </NxTable.Body>
-          </NxTable>
-        </NxTile.Subsection>
-        <NxTile.Subsection>
-          <NxTile.SubsectionHeader>
-            <NxH3><NxCode>NxGlobalSidebarNavigation</NxCode> Props</NxH3>
-          </NxTile.SubsectionHeader>
-          <NxP>
-            <NxCode>NxGlobalSidebarNavigation</NxCode> is a container for navigation links.
-          </NxP>
-          <NxWarningAlert>
-            Note that the number of navigation links must be kept to 10 or less in order to ensure that there is enough
-            space for both the navigation and footer areas in smaller viewports.
-          </NxWarningAlert>
-          <NxTable>
-            <NxTable.Head>
-              <NxTable.Row>
-                <NxTable.Cell>Prop</NxTable.Cell>
-                <NxTable.Cell>Type</NxTable.Cell>
-                <NxTable.Cell>Required</NxTable.Cell>
-                <NxTable.Cell>Details</NxTable.Cell>
-              </NxTable.Row>
-            </NxTable.Head>
-            <NxTable.Body>
-              <NxTable.Row>
-                <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
-                <NxTable.Cell>
-                  <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
-                    HTML div Attributes
-                  </NxTextLink>
-                </NxTable.Cell>
-                <NxTable.Cell>No</NxTable.Cell>
-                <NxTable.Cell>
-                  <NxCode>NxGlobalSidebar</NxCode> supports any HTML attribute that's normally
-                  supported by <NxCode>&lt;div&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
@@ -223,40 +128,6 @@ export default function NxGlobalSidebarPage() {
                 <NxTable.Cell>
                   <NxCode>NxGlobalSidebarNavigationLink</NxCode> supports any HTML attribute that's
                   normally supported by <NxCode>&lt;a&gt;</NxCode>.
-                </NxTable.Cell>
-              </NxTable.Row>
-            </NxTable.Body>
-          </NxTable>
-        </NxTile.Subsection>
-        <NxTile.Subsection>
-          <NxTile.SubsectionHeader>
-            <NxH3>CSS Classes</NxH3>
-          </NxTile.SubsectionHeader>
-          <NxP>The following CSS classes are available for use on child elements.</NxP>
-          <NxTable>
-            <NxTable.Head>
-              <NxTable.Row>
-                <NxTable.Cell>Name</NxTable.Cell>
-                <NxTable.Cell>Location</NxTable.Cell>
-                <NxTable.Cell>Description</NxTable.Cell>
-              </NxTable.Row>
-            </NxTable.Head>
-            <NxTable.Body>
-              <NxTable.Row>
-                <NxTable.Cell><NxCode>nx-global-sidebar__expanded-content</NxCode></NxTable.Cell>
-                <NxTable.Cell>element</NxTable.Cell>
-                <NxTable.Cell>
-                  Content wrapped with <NxCode>nx-global-sidebar__expanded-content</NxCode> will appear in the
-                  expanded view, but will not be displayed in the collapsed view.
-                </NxTable.Cell>
-              </NxTable.Row>
-              <NxTable.Row>
-                <NxTable.Cell><NxCode>nx-global-sidebar__other-content</NxCode></NxTable.Cell>
-                <NxTable.Cell>element</NxTable.Cell>
-                <NxTable.Cell>
-                  A simple container for content that will appears below the navigation and above the footer. If you
-                  want this content area to be scrollable (which is very strongly suggested) you should also apply
-                  {' '}<NxCode>.nx-scrollable</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>
