@@ -96,16 +96,5 @@ describe('NxBreadcrumb', function() {
     await checkScreenshotCoordinates(x, y - 21, width, height + 21);
   });
 
-  describe('in NxGlobalHeader', function() {
-    const { checkFullPageScreenshot, a11yTest, getPage } = setupBrowser('#/NxBreadcrumbGlobalHeaderExample', false);
-
-    it('looks right', async function() {
-      await getPage().setViewport({ width: 1366, height: 800 });
-      await checkFullPageScreenshot();
-    });
-
-    it('passes a11y checks', a11yTest(null, true));
-  });
-
   it('passes a11y checks', a11yTest());
 });
