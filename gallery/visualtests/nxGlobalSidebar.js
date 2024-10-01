@@ -41,30 +41,22 @@ describe('nx-global-sidebar', function() {
         selectedLink = '.nx-global-sidebar__navigation-link:nth-of-type(4)';
 
     it('looks right', simpleTest(defaultLink));
-    it('has a dark indigo background when hovered', hoverTest(defaultLink));
-    it('has a light indigo background when clicked', clickTest(defaultLink));
-    it('has a white outline when focused', focusTest(defaultLink));
-    it('has a white outline and dark indigo background when hovered and focused', focusAndHoverTest(defaultLink));
-    it('has a blue background when selected', simpleTest(selectedLink));
+    it('has a grey background when hovered', hoverTest(defaultLink));
+    it('has a light grey background when clicked', clickTest(defaultLink));
+    it('has a blue outline when focused', focusTest(defaultLink));
+    it('has a blue outline and grey background when hovered and focused', focusAndHoverTest(defaultLink));
+    it('has a gradient background when selected', simpleTest(selectedLink));
+    it('has a gradient background and white outline when selected and focused', focusTest(selectedLink));
   });
 
   describe('sidebar toggle', function() {
     const sidebarToggle = '.nx-global-sidebar .nx-global-sidebar__toggle';
 
     it('looks right', simpleTest(sidebarToggle));
-    it('has a dark indigo background when hovered', hoverTest(sidebarToggle));
-    it('has a light indigo background when clicked', clickTest(sidebarToggle));
-    it('has a white outline when focused', focusTest(sidebarToggle));
-    it('has a white outline and dark indigo background when hovered and focused', focusAndHoverTest(sidebarToggle));
-  });
-
-  describe('with a different logo size', function() {
-    const { getPage, checkFullPageScreenshot } = setupBrowser('#/NxGlobalSidebarScrollingExample', false);
-
-    it('looks right', async function() {
-      await getPage().setViewport({ width: 1366, height: 1000 });
-      await checkFullPageScreenshot();
-    });
+    it('has a grey background when hovered', hoverTest(sidebarToggle));
+    it('has a light grey background when clicked', clickTest(sidebarToggle));
+    it('has a blue outline when focused', focusTest(sidebarToggle));
+    it('has a blue outline and grey background when hovered and focused', focusAndHoverTest(sidebarToggle));
   });
 
   it('passes a11y checks', a11yTest(null, true));

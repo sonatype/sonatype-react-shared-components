@@ -189,34 +189,6 @@ const NxBreadcrumbPage = () =>
       An example of <NxCode>NxBreadcrumb</NxCode> with exactly five segments. This is the smallest number of segments
       that will cause the dropdown to be rendered (containing two of the segments).
     </GalleryExampleTile>
-
-    <NxTile>
-      <NxTile.Header>
-        <NxTile.HeaderTitle>
-          <NxH2>Example within Global Header</NxH2>
-        </NxTile.HeaderTitle>
-      </NxTile.Header>
-      <NxTile.Content>
-        <NxP>
-          <NxCode>NxBreadcrumb</NxCode> would typically be used within <NxCode>NxGlobalHeader</NxCode> as depicted
-          here.
-        </NxP>
-        <NxP>
-          <NxTextLink href="#/NxBreadcrumbGlobalHeaderExample">
-            Click here to navigate to the live example.
-          </NxTextLink>
-        </NxP>
-      </NxTile.Content>
-      <NxTile.Content className= "nx-tile-content--accordion-container">
-        <NxStatefulAccordion>
-          <NxAccordion.Header>
-            <NxAccordion.Title>Example Code</NxAccordion.Title>
-          </NxAccordion.Header>
-          <CodeExample content={globalheaderExampleCode} />
-          <GalleryTileFooter clipboardContent={globalheaderExampleCode}/>
-        </NxStatefulAccordion>
-      </NxTile.Content>
-    </NxTile>
   </>;
 
 export default NxBreadcrumbPage;
