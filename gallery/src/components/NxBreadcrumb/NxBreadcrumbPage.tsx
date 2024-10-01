@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxAccordion, NxCode, NxH2, NxH3, NxInfoAlert, NxP, NxStatefulAccordion, NxTable, NxTextLink, NxTile }
+import { NxCode, NxH3, NxInfoAlert, NxP, NxTable, NxTextLink, NxTile }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -18,8 +18,6 @@ import NxBreadcrumbManyLongSegmentsExample from './NxBreadcrumbManyLongSegmentsE
 import NxBreadcrumbOneSegmentExample from './NxBreadcrumbOneSegmentExample';
 import NxBreadcrumbFourSegmentsExample from './NxBreadcrumbFourSegmentsExample';
 import NxBreadcrumbFiveSegmentsExample from './NxBreadcrumbFiveSegmentsExample';
-import CodeExample from '../../CodeExample';
-import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 const exampleCode = require('./NxBreadcrumbExample?raw'),
     longSegmentsExampleCode = require('./NxBreadcrumbLongSegmentsExample?raw'),
@@ -28,8 +26,7 @@ const exampleCode = require('./NxBreadcrumbExample?raw'),
     manyLongSegmentsExampleCode = require('./NxBreadcrumbManyLongSegmentsExample?raw'),
     oneSegmentExampleCode = require('./NxBreadcrumbOneSegmentExample?raw'),
     fourSegmentsExampleCode = require('./NxBreadcrumbFourSegmentsExample?raw'),
-    fiveSegmentsExampleCode = require('./NxBreadcrumbFiveSegmentsExample?raw'),
-    globalheaderExampleCode = require('./NxBreadcrumbGlobalHeaderExample?raw');
+    fiveSegmentsExampleCode = require('./NxBreadcrumbFiveSegmentsExample?raw');
 
 const NxBreadcrumbPage = () =>
   <>
