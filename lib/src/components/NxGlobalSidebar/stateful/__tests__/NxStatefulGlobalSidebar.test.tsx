@@ -20,45 +20,49 @@ describe('NxStatefulGlobalSidebar', function() {
 
   const quickRender = rtlRender<Props>(NxStatefulGlobalSidebar, minimalProps);
 
-  it('renders a "Collapse Menu" button with aria-controls set to the sidebar id', async function() {
+  it('renders an "Expand Menu" button with aria-controls set to the sidebar id', async function() {
     const view = quickRender(),
         sidebarId = view.container.firstElementChild?.getAttribute('id');
 
     await runTimers();
 
-    const toggleBtn = view.getByRole('button', { name: /collapse menu/i });
+    const toggleBtn = view.getByRole('button', { name: /expand menu/i });
 
-    expect(toggleBtn).toHaveAccessibleName('Collapse Menu');
+    expect(toggleBtn).toHaveAccessibleName('Expand Menu');
     expect(toggleBtn).toHaveAttribute('aria-controls', sidebarId);
   });
 
-  it('sets the Collapse Menu button\'s initial aria-expanded attribute to the isDefaultOpen prop', async function() {
-    const closedView = quickRender(),
-        openView = quickRender({ isDefaultOpen: true });
+  it('sets the Expand/Collapse Menu button\'s initial aria-expanded attribute to the isDefaultOpen prop',
+     async function() {
+      const closedView = quickRender(),
+          openView = quickRender({ isDefaultOpen: true });
 
-    await runTimers();
+      await runTimers();
 
-    const closedToggleBtn = closedView.getByRole('button', { name: /Collapse Menu/i }),
-        openToggleBtn = openView.getByRole('button', { name: /Collapse Menu/i });
+      const closedToggleBtn = closedView.getByRole('button', { name: /Expand Menu/i }),
+          openToggleBtn = openView.getByRole('button', { name: /Collapse Menu/i });
 
-    expect(closedToggleBtn).toHaveAttribute('aria-expanded', 'false');
-    expect(openToggleBtn).toHaveAttribute('aria-expanded', 'true');
-  });
+      expect(closedToggleBtn).toHaveAttribute('aria-expanded', 'false');
+      expect(openToggleBtn).toHaveAttribute('aria-expanded', 'true');
+    }
+  );
 
-  it('toggles the aria-expanded attribute of the Collapse Menu button when clicked', async function() {
+  it('toggles the aria-expanded attribute of the Collapse/Expand Menu button when clicked', async function() {
     const view = quickRender(),
         user = userEvent.setup();
 
     await runTimers();
 
-    const toggleBtn = view.getByRole('button', { name: /Collapse Menu/i });
+    const toggleBtn = view.getByRole('button', { name: /Expand Menu/i });
     expect(toggleBtn).toHaveAttribute('aria-expanded', 'false');
 
     await user.click(toggleBtn);
     expect(toggleBtn).toHaveAttribute('aria-expanded', 'true');
+    expect(toggleBtn).toHaveAccessibleName('Collapse Menu');
 
     await user.click(toggleBtn);
     expect(toggleBtn).toHaveAttribute('aria-expanded', 'false');
+    expect(toggleBtn).toHaveAccessibleName('Expand Menu');
   });
 
   it('renders passed in children within a navigation element named "global sidebar"', function() {

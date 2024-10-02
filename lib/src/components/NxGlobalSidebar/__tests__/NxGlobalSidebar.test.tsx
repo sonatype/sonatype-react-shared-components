@@ -21,29 +21,52 @@ describe('NxGlobalSidebar', function() {
 
   const quickRender = rtlRender<Props>(NxGlobalSidebar, minimalProps);
 
-  it('renders a "Collapse Menu" button with aria-controls set to the sidebar id', async function() {
-    const view = quickRender(),
-        sidebarId = view.container.firstElementChild?.getAttribute('id');
+  describe('when the isOpen is true', function() {
+    it('renders a "Collapse Menu" button with aria-controls set to the sidebar id', async function() {
+      const view = quickRender({ isOpen: true }),
+          sidebarId = view.container.firstElementChild?.getAttribute('id');
 
-    await runTimers();
+      await runTimers();
 
-    const toggleBtn = view.getByRole('button', { name: /collapse menu/i });
+      const toggleBtn = view.getByRole('button', { name: /collapse menu/i });
 
-    expect(toggleBtn).toHaveAccessibleName('Collapse Menu');
-    expect(toggleBtn).toHaveAttribute('aria-controls', sidebarId);
+      expect(toggleBtn).toHaveAccessibleName('Collapse Menu');
+      expect(toggleBtn).toHaveAttribute('aria-controls', sidebarId);
+    });
+
+    it('sets the Collapse Menu button\'s aria-expanded attribute to true', async function() {
+      const view = quickRender({ isOpen: true });
+
+      await runTimers();
+
+      const toggleBtn = view.getByRole('button', { name: /Collapse Menu/i });
+
+      expect(toggleBtn).toHaveAttribute('aria-expanded', 'true');
+    });
   });
 
-  it('sets the Collapse Menu button\'s aria-expanded attribute to the isOpen prop', async function() {
-    const closedView = quickRender({ isOpen: false }),
-        openView = quickRender({ isOpen: true });
+  describe('when the isOpen is false', function() {
+    it('renders an "Expand Menu" button with aria-controls set to the sidebar id', async function() {
+      const view = quickRender({ isOpen: false }),
+          sidebarId = view.container.firstElementChild?.getAttribute('id');
 
-    await runTimers();
+      await runTimers();
 
-    const closedToggleBtn = closedView.getByRole('button', { name: /Collapse Menu/i }),
-        openToggleBtn = openView.getByRole('button', { name: /Collapse Menu/i });
+      const toggleBtn = view.getByRole('button', { name: /expand menu/i });
 
-    expect(closedToggleBtn).toHaveAttribute('aria-expanded', 'false');
-    expect(openToggleBtn).toHaveAttribute('aria-expanded', 'true');
+      expect(toggleBtn).toHaveAccessibleName('Expand Menu');
+      expect(toggleBtn).toHaveAttribute('aria-controls', sidebarId);
+    });
+
+    it('sets the Collapse Menu button\'s aria-expanded attribute to false', async function() {
+      const view = quickRender({ isOpen: false });
+
+      await runTimers();
+
+      const toggleBtn = view.getByRole('button', { name: /Expand Menu/i });
+
+      expect(toggleBtn).toHaveAttribute('aria-expanded', 'false');
+    });
   });
 
   it('renders passed in children within a navigation element named "global sidebar"', function() {

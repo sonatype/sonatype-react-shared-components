@@ -8,12 +8,12 @@ import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
 import NxButton from '../NxButton/NxButton';
+import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { useUniqueId } from '../../util/idUtil';
 import { Props, propTypes } from './types';
 
 import './NxGlobalSidebar.scss';
-import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 
 const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props) {
   const {
@@ -45,7 +45,9 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
                   onClick={onToggleClick}
                   className="nx-global-sidebar__toggle">
           <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
-          <span className="nx-global-sidebar__text">Collapse Menu</span>
+          <span className="nx-global-sidebar__text">
+            { isOpen ? 'Collapse' : 'Expand' } Menu
+          </span>
         </NxButton>
       </NxOverflowTooltip>
     </div>
