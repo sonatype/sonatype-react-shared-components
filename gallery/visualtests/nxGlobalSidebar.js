@@ -57,6 +57,13 @@ describe('nx-global-sidebar', function() {
     it('has a light grey background when clicked', clickTest(sidebarToggle));
     it('has a blue outline when focused', focusTest(sidebarToggle));
     it('has a blue outline and grey background when hovered and focused', focusAndHoverTest(sidebarToggle));
+
+    it('has an "Expand Menu" tooltip when collapsed', async function() {
+      const [targetElement] = await waitAndGetElements(sidebarToggle);
+      await targetElement.click();
+
+      await hoverTest('body', sidebarToggle, true)();
+    });
   });
 
   it('passes a11y checks', a11yTest(null, true));
