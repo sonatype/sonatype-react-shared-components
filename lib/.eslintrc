@@ -8,7 +8,8 @@
   "globals": {
     "module": true,
     "require": true,
-    "JSX": true
+    "JSX": true,
+    "process": true
   },
   "env": {
     "browser": true,
