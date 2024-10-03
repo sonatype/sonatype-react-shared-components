@@ -32,20 +32,18 @@ describe('NxStatefulGlobalSidebar2', function() {
     expect(toggleBtn).toHaveAttribute('aria-controls', sidebarId);
   });
 
-  it('sets the Expand/Collapse Menu button\'s initial aria-expanded attribute to the isDefaultOpen prop',
-     async function() {
-      const closedView = quickRender(),
-          openView = quickRender({ isDefaultOpen: true });
+  it('sets the Expand/Collapse Menu button\'s initial aria-expanded attribute to the isDefaultOpen prop', async () => {
+    const closedView = quickRender(),
+        openView = quickRender({ isDefaultOpen: true });
 
-      await runTimers();
+    await runTimers();
 
-      const closedToggleBtn = closedView.getByRole('button', { name: /Expand Menu/i }),
-          openToggleBtn = openView.getByRole('button', { name: /Collapse Menu/i });
+    const closedToggleBtn = closedView.getByRole('button', { name: /Expand Menu/i }),
+        openToggleBtn = openView.getByRole('button', { name: /Collapse Menu/i });
 
-      expect(closedToggleBtn).toHaveAttribute('aria-expanded', 'false');
-      expect(openToggleBtn).toHaveAttribute('aria-expanded', 'true');
-    }
-  );
+    expect(closedToggleBtn).toHaveAttribute('aria-expanded', 'false');
+    expect(openToggleBtn).toHaveAttribute('aria-expanded', 'true');
+  });
 
   it('toggles the aria-expanded attribute of the Collapse/Expand Menu button when clicked', async function() {
     const view = quickRender(),
