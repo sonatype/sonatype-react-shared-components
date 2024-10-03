@@ -7,7 +7,7 @@
 @use '../../scss-shared/nx-container-helpers';
 
 %nx-global-sidebar__clickable {
-  align-items: center;
+  align-items: first baseline;
   border: none;
   border-radius: var(--nx-border-radius);
   color: var(--nx-color-global-sidebar-link);
@@ -22,7 +22,10 @@
   .nx-icon {
     color: inherit;
     font-size: var(--nx-font-size);
+    line-height: calc(var(--nx-font-size-s) * var(--nx-line-height));
     margin-right: var(--nx-spacing-3x);
+    position: relative;
+    top: calc((1lh - 1em) / 2);
   }
 
   &:focus {
