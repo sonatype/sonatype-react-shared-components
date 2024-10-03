@@ -51,6 +51,8 @@ describe('NxToast', function() {
   };
 
   testNxToast('#/NxToastComplexLayoutExample', 'with global sidebar and header');
+  testNxToast('#/NxToastSimpleLayoutExample', 'with global sidebar and without header');
   testNxToast('#/NxToastLegacySectionScrollingExample', 'with legacy layout and section scrolling');
   testNxToast('#/NxToastLegacyPageScrollingExample', 'with legacy layout and page scrolling');
+
 });
