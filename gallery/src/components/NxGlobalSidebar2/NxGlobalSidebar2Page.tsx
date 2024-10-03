@@ -9,28 +9,29 @@ import CodeExample from '../../CodeExample';
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import { NxP, NxCode, NxTable, NxTile, NxH2, NxH3, NxTextLink } from '@sonatype/react-shared-components';
 
-const NxGlobalSidebarExample = require('./NxGlobalSidebarExample.tsx?raw');
+const NxGlobalSidebar2Example = require('./NxGlobalSidebar2Example.tsx?raw');
 
-export default function NxGlobalSidebarPage() {
+export default function NxGlobalSidebar2Page() {
   return (
     <>
       <GalleryDescriptionTile>
         <NxP>
-          <NxCode>NxGlobalSidebar</NxCode> is a collapsible page level sidebar which
-          contains <NxCode>NxGlobalSidebarNavigationLink</NxCode>s.
+          <NxCode>NxGlobalSidebar2</NxCode> is a collapsible page level sidebar which
+          contains <NxCode>NxGlobalSidebar2NavigationLink</NxCode>s. It is intended as a more modern replacement
+          for <NxCode>NxGlobalSidebar</NxCode>, though that component is also still supported.
         </NxP>
         <NxP>
-          <NxCode>NxGlobalSidebar</NxCode> should only be used with section scrolling (make sure
+          <NxCode>NxGlobalSidebar2</NxCode> should only be used with section scrolling (make sure
           that <NxCode>.nx-html--page-scrolling</NxCode> is <strong>not</strong> used) and in full-width mode (make sure
           that <NxCode>.nx-page-content--full-width</NxCode> <strong>is</strong> used, or
-          that <NxCode>.nx-page-content</NxCode> is not used at all).  <NxCode>NxGlobalSidebar</NxCode> is intended to
+          that <NxCode>.nx-page-content</NxCode> is not used at all).  <NxCode>NxGlobalSidebar2</NxCode> is intended to
           always be used in conjunction with <NxCode>NxGlobalHeader</NxCode>, and never
           with <NxCode>NxPageHeader</NxCode>.  Additional custom content may be added below the navigation links if
           desired, care should be taken that such content can adapt to both the open and closed states.
         </NxP>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <NxH3><NxCode>NxGlobalSidebar</NxCode> Props</NxH3>
+            <NxH3><NxCode>NxGlobalSidebar2</NxCode> Props</NxH3>
           </NxTile.SubsectionHeader>
           <NxTable>
             <NxTable.Head>
@@ -77,7 +78,7 @@ export default function NxGlobalSidebarPage() {
         </NxTile.Subsection>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
-            <NxH3><NxCode>NxGlobalSidebarNavigationLink</NxCode> Props</NxH3>
+            <NxH3><NxCode>NxGlobalSidebar2NavigationLink</NxCode> Props</NxH3>
           </NxTile.SubsectionHeader>
           <NxTable>
             <NxTable.Head>
@@ -126,7 +127,7 @@ export default function NxGlobalSidebarPage() {
                 </NxTable.Cell>
                 <NxTable.Cell>No</NxTable.Cell>
                 <NxTable.Cell>
-                  <NxCode>NxGlobalSidebarNavigationLink</NxCode> supports any HTML attribute that's
+                  <NxCode>NxGlobalSidebar2NavigationLink</NxCode> supports any HTML attribute that's
                   normally supported by <NxCode>&lt;a&gt;</NxCode>.
                 </NxTable.Cell>
               </NxTable.Row>
@@ -142,11 +143,11 @@ export default function NxGlobalSidebarPage() {
         </NxTile.Header>
         <NxTile.Content>
           <NxP>
-            <NxTextLink href="#/NxGlobalSidebarExample">
+            <NxTextLink href="#/NxGlobalSidebar2Example">
               Click here to navigate to the live example.
             </NxTextLink>
           </NxP>
-          <CodeExample content={NxGlobalSidebarExample} />
+          <CodeExample content={NxGlobalSidebar2Example} />
         </NxTile.Content>
       </NxTile>
     </>
