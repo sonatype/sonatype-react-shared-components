@@ -9,25 +9,25 @@
 @use '../../scss-shared/nx-button-helpers';
 @use './NxGlobalSidebarCommon';
 
-$-width-open: 250px;
-
-$-button-border-width: 2px;
-
 .nx-global-sidebar {
+  $padding: var(--nx-spacing-3x);
+  $right-padding: calc(#{$padding} - var(--nx-border-width));
+
   background-color: var(--nx-color-global-sidebar-background);
-  border-right: 1px solid var(--nx-color-global-sidebar-border);
+  border-right: var(--nx-border-width) solid var(--nx-color-global-sidebar-border);
   box-sizing: border-box;
   grid-area: global-sidebar;
   min-height: 0;
-  padding: var(--nx-spacing-3x);
-  width: $-width-open;
+  padding: 0px $right-padding $padding $padding;
+  width: 250px;
 
   @include nx-container-helpers.container-vertical;
 
   &__nav {
-    flex: 1 auto;
-    min-height: 0;
-    overflow-y: hidden;
+    margin-right: calc(0px - #{$right-padding});
+    padding-right: $right-padding;
+    padding-top: $padding;
+    width: auto;
   }
 
   &__toggle.nx-btn {
