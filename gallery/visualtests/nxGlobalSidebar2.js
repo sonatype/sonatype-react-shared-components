@@ -6,7 +6,7 @@
  */
 const { setupBrowser } = require('./testUtils');
 
-describe('nx-global-sidebar', function() {
+describe('nx-global-sidebar-2', function() {
   const {
     getPage,
     waitAndGetElements,
@@ -17,7 +17,7 @@ describe('nx-global-sidebar', function() {
     focusTest,
     simpleTest,
     focusAndHoverTest
-  } = setupBrowser('#/NxGlobalSidebarExample', false);
+  } = setupBrowser('#/NxGlobalSidebar2Example', false);
 
   beforeEach(async function() {
     await getPage().setViewport({ width: 1366, height: 1000 });
@@ -28,7 +28,7 @@ describe('nx-global-sidebar', function() {
   });
 
   it('looks right when closed', async function() {
-    const sidebarToggle = '.nx-global-sidebar .nx-global-sidebar__toggle';
+    const sidebarToggle = '.nx-global-sidebar-2 .nx-global-sidebar-2__toggle';
     const [targetElement] = await waitAndGetElements(sidebarToggle);
 
     await targetElement.click();
@@ -37,8 +37,8 @@ describe('nx-global-sidebar', function() {
   });
 
   describe('navigation link', function() {
-    const defaultLink = '.nx-global-sidebar__navigation-link:nth-of-type(1)',
-        selectedLink = '.nx-global-sidebar__navigation-link:nth-of-type(4)';
+    const defaultLink = '.nx-global-sidebar-2__navigation-link:nth-of-type(1)',
+        selectedLink = '.nx-global-sidebar-2__navigation-link:nth-of-type(4)';
 
     it('looks right', simpleTest(defaultLink));
     it('has a grey background when hovered', hoverTest(defaultLink));
@@ -50,7 +50,7 @@ describe('nx-global-sidebar', function() {
   });
 
   describe('sidebar toggle', function() {
-    const sidebarToggle = '.nx-global-sidebar .nx-global-sidebar__toggle';
+    const sidebarToggle = '.nx-global-sidebar-2 .nx-global-sidebar-2__toggle';
 
     it('looks right', simpleTest(sidebarToggle));
     it('has a grey background when hovered', hoverTest(sidebarToggle));
