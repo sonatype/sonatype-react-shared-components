@@ -36,7 +36,7 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
 
   return (
     <div className={classes} id={id}>
-      <nav className="nx-global-sidebar__nav nx-viewport-sized__container" aria-label="global sidebar">
+      <nav className="nx-global-sidebar__nav nx-scrollable nx-viewport-sized__scrollable" aria-label="global sidebar">
         {children}
       </nav>
       <NxOverflowTooltip>
