@@ -10,7 +10,6 @@ import { NxTable, NxCode, NxP, NxH3, NxH2, NxTile, NxTextLink } from '@sonatype/
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
 import CodeExample from '../../CodeExample';
-import './NxStatefulGlobalSidebar2Page.scss';
 
 const NxStatefulGlobalSidebar2Example = require('./NxStatefulGlobalSidebar2Example.tsx?raw');
 

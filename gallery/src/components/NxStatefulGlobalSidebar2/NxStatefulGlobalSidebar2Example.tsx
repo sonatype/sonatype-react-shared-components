@@ -18,8 +18,8 @@ export default function NxStatefulGlobalSidebar2Example() {
   return (
     <div className="nx-page-content nx-page-content--full-width">
       <NxStatefulGlobalSidebar2 isDefaultOpen={true}
-                               toggleOpenIcon={faArrowLeft}
-                               toggleCloseIcon={faArrowRight}>
+                                toggleOpenIcon={faArrowLeft}
+                                toggleCloseIcon={faArrowRight}>
         <NxGlobalSidebar2NavigationLink icon={faLink}
                                         text="NxStatefulGlobalSidebar2"
                                         href="#/pages/Stateful%20Global%20Sidebar%202"/>
