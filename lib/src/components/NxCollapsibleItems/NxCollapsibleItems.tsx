@@ -88,7 +88,7 @@ function PrivateNxCollapsibleItems(props: Props) {
       </div>
       {contentBeforeChildren}
       <div className="nx-collapsible-items__children" role={treeViewChildrenRole} id={treeViewChildrenId}>
-        {children}
+        {isExpanded && children}
       </div>
     </div>
   );
