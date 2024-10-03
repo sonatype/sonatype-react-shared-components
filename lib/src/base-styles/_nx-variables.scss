@@ -60,7 +60,7 @@
 
   --nx-gradient-sonatype-platform: linear-gradient(to right, hsl(265, 86%, 53%), hsl(208, 76%, 40%));
 
-  --nx-background-global-sidebar-link-selected: var(--nx-gradient-sonatype-platform);
+  --nx-background-global-sidebar-2-link-selected: var(--nx-gradient-sonatype-platform);
 
   // for nx-grid
   --nx-border-grid: var(--nx-border-2x);
@@ -70,6 +70,11 @@
                             0 1px 2px 0 Hsla(var(--nx-swatch-indigo-hs), 70%, 0.2),
                             0 1px 1px 0 Hsla(var(--nx-swatch-indigo-hs), 60%, 0.2);
 
+  // for global sidebar
+  --nx-focus-outline-offset-global-sidebar-link: 0px;
+  --nx-focus-outline-offset-global-sidebar-toggle: 1px;
+  --nx-border-width-global-sidebar: 0px;
+
   //NxTable
   --nx-outline-width-table-row-hover: 2px;
 
@@ -77,6 +82,11 @@
   @include nx-dark-mode-helpers.dark-mode {
     --nx-border-grid: var(--nx-border-default);
     --nx-border-width-alt: 2px;
+
+    // for global sidebar
+    --nx-focus-outline-offset-global-sidebar-link: 2px;
+    --nx-focus-outline-offset-global-sidebar-toggle: 0px;
+    --nx-border-width-global-sidebar: 1px;
 
     --nx-gradient-sonatype-platform: linear-gradient(to right, hsl(259, 85%, 70%), hsl(197, 100%, 50%));
 
