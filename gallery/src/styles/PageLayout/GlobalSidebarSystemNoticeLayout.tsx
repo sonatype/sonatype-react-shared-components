@@ -13,11 +13,13 @@ import {
   NxTile,
   NxH2,
   NxStatefulGlobalSidebar,
+  NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink
 } from '@sonatype/react-shared-components';
 
 import CodeExample from '../../CodeExample';
 
+const logoImg = require('../../assets/images/logo-plaid-villain-text.png');
 const exampleCode = require('./GlobalSidebarSystemNoticeLayout?raw');
 
 export default function GlobalSidebarSystemNoticeLayout() {
@@ -25,10 +27,15 @@ export default function GlobalSidebarSystemNoticeLayout() {
     <>
       <NxStatefulGlobalSidebar isDefaultOpen={true}
                                toggleOpenIcon={faArrowLeft}
-                               toggleCloseIcon={faArrowRight}>
-        <NxGlobalSidebarNavigationLink icon={faLink}
-                                       text="Page Layout Examples"
-                                       href="#/pages/Page%20Layout%20Examples"/>
+                               toggleCloseIcon={faArrowRight}
+                               logoImg={logoImg}
+                               logoAltText="RSC Plaid Villain"
+                               logoLink="#">
+        <NxGlobalSidebarNavigation>
+          <NxGlobalSidebarNavigationLink icon={faLink}
+                                         text="Page Layout Examples"
+                                         href="#/pages/Page%20Layout%20Examples"/>
+        </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxSystemNotice>This is a System Notice</NxSystemNotice>
       <NxPageMain>

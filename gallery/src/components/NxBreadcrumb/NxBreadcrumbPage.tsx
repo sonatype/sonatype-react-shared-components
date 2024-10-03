@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxCode, NxH3, NxInfoAlert, NxP, NxTable, NxTextLink, NxTile }
+import { NxAccordion, NxCode, NxH2, NxH3, NxInfoAlert, NxP, NxStatefulAccordion, NxTable, NxTextLink, NxTile }
   from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile, GalleryExampleTile } from '../../gallery-components/GalleryTiles';
@@ -18,6 +18,8 @@ import NxBreadcrumbManyLongSegmentsExample from './NxBreadcrumbManyLongSegmentsE
 import NxBreadcrumbOneSegmentExample from './NxBreadcrumbOneSegmentExample';
 import NxBreadcrumbFourSegmentsExample from './NxBreadcrumbFourSegmentsExample';
 import NxBreadcrumbFiveSegmentsExample from './NxBreadcrumbFiveSegmentsExample';
+import CodeExample from '../../CodeExample';
+import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 
 const exampleCode = require('./NxBreadcrumbExample?raw'),
     longSegmentsExampleCode = require('./NxBreadcrumbLongSegmentsExample?raw'),
@@ -26,7 +28,8 @@ const exampleCode = require('./NxBreadcrumbExample?raw'),
     manyLongSegmentsExampleCode = require('./NxBreadcrumbManyLongSegmentsExample?raw'),
     oneSegmentExampleCode = require('./NxBreadcrumbOneSegmentExample?raw'),
     fourSegmentsExampleCode = require('./NxBreadcrumbFourSegmentsExample?raw'),
-    fiveSegmentsExampleCode = require('./NxBreadcrumbFiveSegmentsExample?raw');
+    fiveSegmentsExampleCode = require('./NxBreadcrumbFiveSegmentsExample?raw'),
+    globalheaderExampleCode = require('./NxBreadcrumbGlobalHeaderExample?raw');
 
 const NxBreadcrumbPage = () =>
   <>
@@ -186,6 +189,34 @@ const NxBreadcrumbPage = () =>
       An example of <NxCode>NxBreadcrumb</NxCode> with exactly five segments. This is the smallest number of segments
       that will cause the dropdown to be rendered (containing two of the segments).
     </GalleryExampleTile>
+
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>Example within Global Header</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          <NxCode>NxBreadcrumb</NxCode> would typically be used within <NxCode>NxGlobalHeader</NxCode> as depicted
+          here.
+        </NxP>
+        <NxP>
+          <NxTextLink href="#/NxBreadcrumbGlobalHeaderExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+      </NxTile.Content>
+      <NxTile.Content className= "nx-tile-content--accordion-container">
+        <NxStatefulAccordion>
+          <NxAccordion.Header>
+            <NxAccordion.Title>Example Code</NxAccordion.Title>
+          </NxAccordion.Header>
+          <CodeExample content={globalheaderExampleCode} />
+          <GalleryTileFooter clipboardContent={globalheaderExampleCode}/>
+        </NxStatefulAccordion>
+      </NxTile.Content>
+    </NxTile>
   </>;
 
 export default NxBreadcrumbPage;

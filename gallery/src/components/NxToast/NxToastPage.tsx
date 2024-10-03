@@ -23,6 +23,7 @@ import { GalleryTileFooter } from '../../gallery-components/GalleryTileFooter';
 import CodeExample from '../../CodeExample';
 
 const NxToastComplexLayoutExampleCode = require('./NxToastComplexLayoutExample?raw'),
+    NxToastSimpleLayoutExampleCode = require('./NxToastSimpleLayoutExample?raw'),
     NxToastLegacyLayoutExampleCode = require('./NxToastLegacyLayoutExample?raw'),
     NxToastWithNxDrawerExample = require('./NxToastWithNxDrawerExample?raw');
 
@@ -139,7 +140,35 @@ const NxToastPage = () =>
     <NxTile>
       <NxTile.Header>
         <NxTile.HeaderTitle>
-          <NxH2>Toasts With Global Sidebar Example</NxH2>
+          <NxH2>Toasts With Simple Page Layout Example</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          A simple full page layout example. Note that this layout does not have <NxCode>NxGlobalHeader</NxCode> and
+          therefore the toasts will be positioned in the top right corner of the screen.
+        </NxP>
+        <NxP>
+          <NxTextLink href="#/NxToastSimpleLayoutExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+      </NxTile.Content>
+      <NxTile.Content className= "nx-tile-content--accordion-container">
+        <NxStatefulAccordion>
+          <NxAccordion.Header>
+            <NxAccordion.Title>Example Code</NxAccordion.Title>
+          </NxAccordion.Header>
+          <CodeExample content={NxToastSimpleLayoutExampleCode} />
+          <GalleryTileFooter clipboardContent={NxToastSimpleLayoutExampleCode}/>
+        </NxStatefulAccordion>
+      </NxTile.Content>
+    </NxTile>
+
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>Toasts With Complex Page Layout Example</NxH2>
         </NxTile.HeaderTitle>
       </NxTile.Header>
       <NxTile.Content>

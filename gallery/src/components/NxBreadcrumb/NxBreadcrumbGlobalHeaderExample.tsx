@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import {
+  NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
   NxStatefulGlobalSidebar,
   NxPageMain,
@@ -17,6 +18,8 @@ import {
   useToggle
 } from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink } from '@fortawesome/free-solid-svg-icons';
+
+const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
 const crumbs = [{
   name: 'Universe - Everything everywhere that we can observe',
@@ -76,8 +79,13 @@ export default function NxGlobalHeaderEmptyExample() {
       </NxGlobalHeader>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
-                               toggleCloseIcon={faArrowRight}>
-        <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
+                               toggleCloseIcon={faArrowRight}
+                               logoImg={sidebarLogoPath}
+                               logoAltText="RSC Plaid Villain"
+                               logoLink="#">
+        <NxGlobalSidebarNavigation>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
+        </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageMain>
         <NxPageTitle>

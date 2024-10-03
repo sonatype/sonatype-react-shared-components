@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import {
+  NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
   NxStatefulGlobalSidebar,
   NxPageMain,
@@ -15,14 +16,21 @@ import {
 } from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink } from '@fortawesome/free-solid-svg-icons';
 
+const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
+
 export default function NxGlobalHeaderEmptyExample() {
   return (
     <>
       <header className="nx-global-header"></header>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
-                               toggleCloseIcon={faArrowRight}>
-        <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
+                               toggleCloseIcon={faArrowRight}
+                               logoImg={sidebarLogoPath}
+                               logoAltText="RSC Plaid Villain"
+                               logoLink="#">
+        <NxGlobalSidebarNavigation>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
+        </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageMain>
         <NxPageTitle>

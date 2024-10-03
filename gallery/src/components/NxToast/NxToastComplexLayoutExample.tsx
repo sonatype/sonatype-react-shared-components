@@ -9,6 +9,7 @@ import { useState, ComponentType } from 'react';
 import { reject, propEq } from 'ramda';
 
 import {
+  NxGlobalSidebarNavigation,
   NxGlobalSidebarNavigationLink,
   NxButton,
   NxButtonBar,
@@ -33,6 +34,8 @@ import {
   faArrowRight,
   faLink
 } from '@fortawesome/free-solid-svg-icons';
+
+const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
 interface ToastModel {
   id: number;
@@ -83,8 +86,13 @@ export default function NxToastComplexLayoutExample() {
       </NxToastContainer>
       <NxStatefulGlobalSidebar isDefaultOpen={false}
                                toggleOpenIcon={faArrowLeft}
-                               toggleCloseIcon={faArrowRight}>
-        <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
+                               toggleCloseIcon={faArrowRight}
+                               logoImg={sidebarLogoPath}
+                               logoAltText="RSC Plaid Villain"
+                               logoLink="#">
+        <NxGlobalSidebarNavigation>
+          <NxGlobalSidebarNavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/NxGlobalSidebar"/>
+        </NxGlobalSidebarNavigation>
       </NxStatefulGlobalSidebar>
       <NxPageMain>
         <NxPageTitle>
