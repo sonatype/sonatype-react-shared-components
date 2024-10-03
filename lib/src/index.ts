@@ -259,6 +259,13 @@ export { default as NxGlobalSidebarNavigationLink, NxGlobalSidebarNavigationLink
 export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarProps }
   from './components/NxGlobalSidebar/stateful/NxStatefulGlobalSidebar';
 
+export { default as NxGlobalSidebar2, Props as NxGlobalSidebar2Props }
+  from './components/NxGlobalSidebar2/NxGlobalSidebar2';
+export { default as NxGlobalSidebar2NavigationLink, NxGlobalSidebar2NavigationLinkProps }
+  from './components/NxGlobalSidebar2/NxGlobalSidebar2NavigationLink';
+export { default as NxStatefulGlobalSidebar2, Props as NxStatefulGlobalSidebar2Props }
+  from './components/NxGlobalSidebar2/stateful/NxStatefulGlobalSidebar2';
+
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
 
 export { default as withClass } from './util/withClass';
