@@ -13,10 +13,10 @@
   $padding: var(--nx-spacing-3x);
   $right-padding: calc(#{$padding} - var(--nx-border-width));
 
-  background-color: var(--nx-color-global-sidebar-background);
-  border-right: var(--nx-border-width) solid var(--nx-color-global-sidebar-border);
+  background-color: var(--nx-color-global-sidebar-2-background);
+  border-right: var(--nx-border-width) solid var(--nx-color-global-sidebar-2-border);
   box-sizing: border-box;
-  grid-area: global-sidebar;
+  grid-area: global-sidebar-2;
   min-height: 0;
   padding: 0px $right-padding $padding $padding;
   width: 250px;
