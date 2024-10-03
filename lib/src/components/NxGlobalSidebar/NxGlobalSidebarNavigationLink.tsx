@@ -13,20 +13,21 @@ import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import { NxGlobalSidebarNavigationLinkProps as Props, nxGlobalSidebarNavigationLinkPropTypes } from './types';
 export { NxGlobalSidebarNavigationLinkProps } from './types';
 
-import './NxGlobalSidebarNavigationLink.scss';
-
 const NxGlobalSidebarNavigationLink: FunctionComponent<Props> = function NxNavigationSidebarLink(props) {
   const { className, isSelected, icon, text, ...attrs } = props;
 
   const classes = classnames(className, 'nx-global-sidebar__navigation-link nx-text-link', {
     'selected': isSelected
   });
+  const textClasses = 'nx-global-sidebar__navigation-text';
 
   return (
     <NxOverflowTooltip>
       <a className={classes} { ...attrs }>
         <NxFontAwesomeIcon icon={icon} fixedWidth />
-        <span className="nx-global-sidebar__text">{text}</span>
+        <span className={textClasses}>
+          {text}
+        </span>
       </a>
     </NxOverflowTooltip>
   );

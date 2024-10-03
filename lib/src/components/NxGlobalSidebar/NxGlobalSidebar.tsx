@@ -8,12 +8,13 @@ import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
 import NxButton from '../NxButton/NxButton';
-import NxOverflowTooltip from '../NxTooltip/NxOverflowTooltip';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { useUniqueId } from '../../util/idUtil';
 import { Props, propTypes } from './types';
 
 import './NxGlobalSidebar.scss';
+import { splitOutFirst } from '../../util/childUtil';
+import NxGlobalSidebarFooter from './NxGlobalSidebarFooter';
 
 const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props) {
   const {
@@ -22,7 +23,10 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
     className,
     toggleOpenIcon,
     toggleCloseIcon,
-    onToggleClick
+    onToggleClick,
+    logoImg,
+    logoAltText,
+    logoLink
   } = props;
 
   const id = useUniqueId('nx-global-sidebar');
@@ -33,23 +37,34 @@ const NxGlobalSidebar: FunctionComponent<Props> = function NxGlobalSidebar(props
   });
 
   const toggleButtonIcon = isOpen ? toggleOpenIcon : toggleCloseIcon;
+  const toggleButtonTitle = isOpen ? 'Collapse Sidebar' : 'Expand Sidebar';
+  const toggleButton = (
+    <NxButton aria-expanded={isOpen}
+              aria-controls={id}
+              variant="icon-only"
+              onClick={onToggleClick}
+              className="nx-global-sidebar__toggle"
+              title={toggleButtonTitle}>
+      <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
+    </NxButton>
+  );
+
+  const logo = <img src={logoImg} alt={logoAltText} className="nx-global-sidebar__logo" />,
+      [footer, otherChildren] = splitOutFirst(NxGlobalSidebarFooter, children);
 
   return (
     <div className={classes} id={id}>
-      <nav className="nx-global-sidebar__nav nx-scrollable nx-viewport-sized__scrollable" aria-label="global sidebar">
-        {children}
-      </nav>
-      <NxOverflowTooltip>
-        <NxButton aria-expanded={isOpen}
-                  aria-controls={id}
-                  onClick={onToggleClick}
-                  className="nx-global-sidebar__toggle">
-          <NxFontAwesomeIcon icon={toggleButtonIcon} fixedWidth />
-          <span className="nx-global-sidebar__text">
-            { isOpen ? 'Collapse' : 'Expand' } Menu
-          </span>
-        </NxButton>
-      </NxOverflowTooltip>
+      <aside className="nx-viewport-sized__container" aria-label="global sidebar">
+        <div className="nx-global-sidebar__header">
+          <a className="nx-global-sidebar__product-info"
+             href={logoLink}>
+            { logo }
+          </a>
+          { toggleButton }
+        </div>
+        {otherChildren}
+      </aside>
+      { footer }
     </div>
   );
 };
