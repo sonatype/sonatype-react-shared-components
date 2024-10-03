@@ -385,7 +385,7 @@ describe('NxCollapsibleMultiSelect', function() {
       });
 
       it('renders react element as name of the option if supplied', function() {
-        const view = quickRender({ options: [{id: 'foo', name: <span data-testid="foo">Foo</span> }]});
+        const view = quickRender({ isOpen: true, options: [{id: 'foo', name: <span data-testid="foo">Foo</span> }]});
         const option = view.getByRole('menu');
         expect(within(option).getByTestId('foo')).toBeInTheDocument();
         expect(within(option).getByTestId('foo')).toHaveTextContent('Foo');
