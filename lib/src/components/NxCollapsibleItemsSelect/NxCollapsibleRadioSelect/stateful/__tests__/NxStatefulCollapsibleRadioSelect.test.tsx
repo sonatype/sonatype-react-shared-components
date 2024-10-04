@@ -58,11 +58,9 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
 
       expect(childrenElId).toBeDefined();
 
-      const childrenEl = document.getElementById(childrenElId)!,
-          childEl = screen.getByText('Foo');
+      const childrenEl = document.getElementById(childrenElId)!;
 
       expect(view.container).toContainElement(childrenEl);
-      expect(childrenEl).toContainElement(childEl);
     });
 
     it('sets aria-expanded iff both the isOpen prop is true and options is populated', function() {
@@ -198,7 +196,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
   it('calls onChange with options\'s id when an option is toggled', async function() {
     const user = userEvent.setup(),
         onChange = jest.fn(),
-        view = quickRender({ onChange }),
+        view = quickRender({ onChange, isOpen: true }),
         radios = view.getAllByRole('menuitemradio');
 
     expect(onChange).not.toHaveBeenCalled();
@@ -219,7 +217,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
   it('doesn\'t call onChange when options are disabled', async function() {
     const user = userEvent.setup(),
         onChange = jest.fn(),
-        view = quickRender({ onChange, disabled: true }),
+        view = quickRender({ onChange, disabled: true, isOpen: true }),
         radios = view.getAllByRole('menuitemradio');
 
     expect(onChange).not.toHaveBeenCalled();
@@ -231,7 +229,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
 
   describe('collapsible items', function() {
     it('renders options with role=menuitemradio in an element with role=menu', function() {
-      const view = quickRender(),
+      const view = quickRender({ isOpen: true }),
           menu = view.getByRole('menu'),
           options = within(menu).getAllByRole('menuitemradio');
 
@@ -240,7 +238,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
     });
 
     it('renders accessible name according to option\'s name prop', function() {
-      const options = quickRender().getAllByRole('menuitemradio');
+      const options = quickRender({ isOpen: true }).getAllByRole('menuitemradio');
 
       expect(options[0]).toHaveAccessibleName('Foo');
       expect(options[1]).toHaveAccessibleName('Bar');
@@ -248,15 +246,17 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
     });
 
     it('renders an unchecked radio if option is not selected', function() {
-      expect(quickRender({ selectedId: 'bar' }).getByRole('menuitemradio', { name: 'Foo' })).not.toBeChecked();
+      expect(quickRender({ selectedId: 'bar', isOpen: true }).getByRole('menuitemradio', { name: 'Foo' }))
+          .not.toBeChecked();
     });
 
     it('renders a checked radio if option is selected', function() {
-      expect(quickRender({ selectedId: 'bar' }).getByRole('menuitemradio', { name: 'Bar' })).toBeChecked();
+      expect(quickRender({ selectedId: 'bar', isOpen: true }).getByRole('menuitemradio', { name: 'Bar' }))
+          .toBeChecked();
     });
 
     it('renders all unchecked radios if no selectedId is provided', function() {
-      const options = quickRender().getAllByRole('menuitemradio');
+      const options = quickRender({ isOpen: true }).getAllByRole('menuitemradio');
 
       expect(options[0]).not.toBeChecked();
       expect(options[1]).not.toBeChecked();
@@ -264,7 +264,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
     });
 
     it('render all radios as disabled if disabled prop is true', function() {
-      const view = quickRender({ disabled: true }),
+      const view = quickRender({ disabled: true, isOpen: true }),
           options = view.getAllByRole('menuitemradio');
 
       expect(options[0]).toBeDisabled();
@@ -275,7 +275,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
     describe('tooltip', function() {
       it('adds a tooltip for each option when optionTooltipGenerator prop is provided', async function() {
         const user = userEvent.setup(),
-            view = quickRender({ optionTooltipGenerator: option => option.name }),
+            view = quickRender({ optionTooltipGenerator: option => option.name, isOpen: true }),
             options = view.getAllByRole('menuitemradio');
 
         await runTimers();
@@ -310,7 +310,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
       it('has a specified classname when the tooltipModifierClass prop is provided', async function() {
         const user = userEvent.setup(),
             optionTooltipGenerator = jest.fn().mockReturnValue('tip'),
-            view = quickRender({ optionTooltipGenerator, tooltipModifierClass: 'customClass' }),
+            view = quickRender({ optionTooltipGenerator, tooltipModifierClass: 'customClass', isOpen: true }),
             options = view.getAllByRole('menuitemradio');
 
         await runTimers();
@@ -334,7 +334,8 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
             {id: 'baz', name: 'Baz'},
             {id: 'boo', name: 'Boo'}
           ],
-          filterThreshold: 2
+          filterThreshold: 2,
+          isOpen: true
         },
         quickFilterRender = rtlRender(NxStatefulCollapsibleRadioSelect, filterProps);
 

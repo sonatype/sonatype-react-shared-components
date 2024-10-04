@@ -232,7 +232,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
   describe('filter', function() {
     const filterView = (props?: Partial<Props>) => quickRender({
       ...props,
-      filterThreshold: 1
+      filterThreshold: 1,
+      isOpen: true
     });
 
     it('renders an input with type="text" iff when the number of options ' +
@@ -425,7 +426,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
 
   describe('collapsible items', function() {
     it('renders an element with menu role containing the options with menuitemcheckbox role', function() {
-      const view = quickRender(),
+      const view = quickRender({ isOpen: true }),
           childrenEl = view.getByRole('menu'),
           childEl = within(childrenEl).getAllByRole('menuitemcheckbox');
 
@@ -435,7 +436,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
 
     describe('options', function () {
       it('has labeled text as specified in name of the option', function () {
-        const view = quickRender(),
+        const view = quickRender({ isOpen: true }),
             options = view.getAllByRole('menuitemcheckbox');
 
         expect(options).toHaveLength(3);
@@ -446,7 +447,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
 
       it('renders checked option when selected', function () {
         const view = quickRender({
-              selectedIds: new Set(['foo'])
+              selectedIds: new Set(['foo']),
+              isOpen: true
             }),
             options = view.getAllByRole('menuitemcheckbox');
 
@@ -456,7 +458,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       });
 
       it('renders all unchecked options if selectedIds is not provided', function () {
-        const view = quickRender(),
+        const view = quickRender({ isOpen: true }),
             options = view.getAllByRole('menuitemcheckbox');
 
         expect(options[0]).not.toBeChecked();
@@ -468,7 +470,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
         'when an option is clicked', async function() {
         const user = userEvent.setup(),
             onChange = jest.fn(),
-            view = quickRender({ onChange }),
+            view = quickRender({ onChange, isOpen: true }),
             options = view.getAllByRole('menuitemcheckbox');
 
         expect(onChange).not.toHaveBeenCalled();
@@ -506,7 +508,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
                 {id: 'cat', name: 'Cat'},
                 {id: 'dog', name: 'Dog'}
               ],
-              view = quickRender({ options: optionsProp, optionTooltipGenerator }),
+              view = quickRender({ options: optionsProp, optionTooltipGenerator, isOpen: true }),
               options = view.getAllByRole('menuitemcheckbox');
 
           await runTimers();
@@ -528,7 +530,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
               optionTooltipGenerator = jest.fn().mockReturnValue('customized-tooltip'),
               view = quickRender({
                 optionTooltipGenerator,
-                tooltipModifierClass: 'tooltipClass'
+                tooltipModifierClass: 'tooltipClass',
+                isOpen: true
               }),
               options = view.getAllByRole('menuitemcheckbox');
 
@@ -549,7 +552,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
     describe('toggle all option', function () {
       it('renders unchecked toggle all option if not all options are selected', function () {
         const view = quickRender({
-              selectedIds: new Set(['foo'])
+              selectedIds: new Set(['foo']),
+              isOpen: true
             }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -558,7 +562,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
 
       it('renders checked toggle all option if all options are selected', function () {
         const view = quickRender({
-              selectedIds: new Set(['foo', 'boo'])
+              selectedIds: new Set(['foo', 'boo']),
+              isOpen: true
             }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -568,7 +573,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       it('selects all options when no options are selected', async function() {
         const user = userEvent.setup(),
             onChange = jest.fn(),
-            view = quickRender({ onChange }),
+            view = quickRender({ onChange, isOpen: true }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
         expect(onChange).not.toHaveBeenCalled();
@@ -583,7 +588,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
             onChange = jest.fn(),
             view = quickRender({
               onChange,
-              selectedIds: new Set(['foo'])
+              selectedIds: new Set(['foo']),
+              isOpen: true
             }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -599,7 +605,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
             onChange = jest.fn(),
             view = quickRender({
               onChange,
-              selectedIds: new Set(['foo', 'boo'])
+              selectedIds: new Set(['foo', 'boo']),
+              isOpen: true
             }),
             toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
 
@@ -613,7 +620,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       describe('when options are filtered', function () {
         it('renders unchecked toggle all option if not all filtered options are selected', async function () {
           const user = userEvent.setup(),
-              view = quickRender({ filterThreshold: 1 }),
+              view = quickRender({ filterThreshold: 1, isOpen: true }),
               toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' }),
               inputEl = view.getByRole('textbox');
 
@@ -626,7 +633,9 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
           const user = userEvent.setup(),
               view = quickRender({
                 filterThreshold: 1,
-                selectedIds: new Set(['foo', 'boo']) }),
+                selectedIds: new Set(['foo', 'boo']),
+                isOpen: true
+              }),
               toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' }),
               inputEl = view.getByRole('textbox');
 
@@ -638,7 +647,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
         it('renders nothing if no options are displayed due to filter', async function () {
           const user = userEvent.setup(),
               view = quickRender({
-                filterThreshold: 1
+                filterThreshold: 1,
+                isOpen: true
               }),
               inputEl = view.getByRole('textbox');
 
@@ -653,7 +663,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
               view = quickRender({
                 onChange,
                 filterThreshold: 1,
-                selectedIds: new Set(['foo'])
+                selectedIds: new Set(['foo']),
+                isOpen: true
               }),
               inputEl = view.getByRole('textbox'),
               toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
@@ -672,7 +683,8 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
               view = quickRender({
                 onChange,
                 filterThreshold: 1,
-                selectedIds: new Set(['foo', 'boo'])
+                selectedIds: new Set(['foo', 'boo']),
+                isOpen: true
               }),
               inputEl = view.getByRole('textbox'),
               toggleAllOption = view.getByRole('menuitemcheckbox', { name: 'all/none' });
