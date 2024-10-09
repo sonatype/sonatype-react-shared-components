@@ -7,7 +7,6 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import withClass from '../../util/withClass';
 import { Props, propTypes } from './types';
 
 export default function NxGlobalHeader2({ logoImg, logoAltText, logoLink, className, children, ...otherProps }: Props) {
@@ -18,12 +17,12 @@ export default function NxGlobalHeader2({ logoImg, logoAltText, logoLink, classN
       <a href={logoLink} className="nx-global-header-2__home-link">
         <img src={logoImg} alt={logoAltText} className="nx-global-header-2__logo" />
       </a>
-      {children}
+      <div className="nx-global-header-2__actions">
+        {children}
+      </div>
     </header>
   );
 }
-
-NxGlobalHeader2.Actions = withClass('div', 'nx-global-header-2__actions');
 
 NxGlobalHeader2.propTypes = propTypes;
 export { Props, propTypes } from './types';
