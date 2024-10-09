@@ -6,14 +6,13 @@
  */
 
 import * as PropTypes from "prop-types";
-import { PropsWithChildren } from "react";
+import { HTMLAttributes } from "react";
 
-export type Props = PropsWithChildren<{
-  className?: string | null;
+export interface Props extends HTMLAttributes<HTMLElement> {
   logoImg: string;
   logoAltText: string;
   logoLink: string;
-}>;
+};
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   logoImg: PropTypes.string.isRequired,

@@ -10,11 +10,11 @@ import classnames from 'classnames';
 import withClass from '../../util/withClass';
 import { Props, propTypes } from './types';
 
-export default function NxGlobalHeader2({ logoImg, logoAltText, logoLink, className, children }: Props) {
+export default function NxGlobalHeader2({ logoImg, logoAltText, logoLink, className, children, ...otherProps }: Props) {
   const classes = classnames(className, 'nx-global-header-2');
 
   return (
-    <header className={classes}>
+    <header className={classes} { ...otherProps }>
       <a href={logoLink} className="nx-global-header-2__home-link">
         <img src={logoImg} alt={logoAltText} className="nx-global-header-2__logo" />
       </a>
