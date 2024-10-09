@@ -1,0 +1,46 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../../scss-shared/nx-button-helpers';
+@use '../../scss-shared/_nx-dark-mode-helpers';
+
+.nx-global-header-2 {
+  align-items: center;
+  border: var(--nx-border-width) solid var(--nx-color-global-sidebar-2-border);
+  display: flex;
+  grid-area: header; // see nx-page's grid-template
+  height: 55px;
+  justify-content: space-between;
+
+  &__home-link {
+    display: contents;
+  }
+
+  &__actions {
+    align-items: center;
+    display: flex;
+
+    .nx-btn--icon-only {
+      @include nx-button-helpers.small-icon-btn;
+    }
+  }
+
+  &__logo {
+    &-dark {
+      display: none;
+
+      @include nx-dark-mode-helpers.dark-mode {
+        display: initial;
+      }
+    }
+
+    &-light {
+      @include nx-dark-mode-helpers.dark-mode {
+        display: none;
+      }
+    }
+  }
+}

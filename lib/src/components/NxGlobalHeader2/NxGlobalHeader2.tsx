@@ -9,13 +9,22 @@ import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
 
-export default function NxGlobalHeader2({ logoImg, logoAltText, logoLink, className, children, ...otherProps }: Props) {
-  const classes = classnames(className, 'nx-global-header-2');
+import './NxGlobalHeader2.scss';
+
+const defaultSonatypeLogoLight = require('../../assets/img/sonatype-header.png'),
+    defaultSonatypeLogoDark = require('../../assets/img/sonatype-header-dark-mode.png'),
+    defaultAltText = 'Sonatype';
+
+export default function NxGlobalHeader2({ logoProps, homeHref, className, children, ...otherProps }: Props) {
+  const classes = classnames(className, 'nx-global-header-2'),
+      { lightPath = defaultSonatypeLogoLight, darkPath = defaultSonatypeLogoDark, altText = defaultAltText } =
+        logoProps ?? {};
 
   return (
     <header className={classes} { ...otherProps }>
-      <a href={logoLink} className="nx-global-header-2__home-link">
-        <img src={logoImg} alt={logoAltText} className="nx-global-header-2__logo" />
+      <a href={homeHref} className="nx-global-header-2__home-link" aria-label="Home">
+        <img src={lightPath} alt={altText} className="nx-global-header-2__logo-light" />
+        <img src={darkPath} alt={altText} className="nx-global-header-2__logo-dark" />
       </a>
       <div className="nx-global-header-2__actions">
         {children}

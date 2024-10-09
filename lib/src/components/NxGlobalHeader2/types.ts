@@ -8,14 +8,22 @@
 import * as PropTypes from 'prop-types';
 import { HTMLAttributes } from 'react';
 
+export interface LogoProps {
+  lightPath: string;
+  darkPath: string;
+  altText: string;
+}
+
 export interface Props extends HTMLAttributes<HTMLElement> {
-  logoImg: string;
-  logoAltText: string;
-  logoLink: string;
+  logoProps?: LogoProps | null;
+  homeHref: string;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  logoImg: PropTypes.string.isRequired,
-  logoAltText: PropTypes.string.isRequired,
-  logoLink: PropTypes.string.isRequired
+  logoProps: PropTypes.shape({
+    lightPath: PropTypes.string.isRequired,
+    darkPath: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired
+  }),
+  homeHref: PropTypes.string.isRequired
 };

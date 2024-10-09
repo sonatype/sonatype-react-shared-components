@@ -26,7 +26,8 @@ export default function NxGlobalSidebar2Example() {
 
   return (
     <>
-      <NxGlobalHeader2 logoImg={logoPath} logoAltText="RSC Plaid Villain" logoLink="#/">
+      <NxGlobalHeader2 logoProps={{ lightPath: logoPath, darkPath: logoPath, altText: 'RSC Plaid Villain' }}
+                       homeHref="#/">
         <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
         <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
         <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
