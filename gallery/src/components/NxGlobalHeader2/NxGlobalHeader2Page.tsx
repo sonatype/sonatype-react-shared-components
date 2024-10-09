@@ -1,0 +1,151 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+import React from 'react';
+import { NxTable, NxP, NxCode, NxTile, NxH2, NxTextLink, NxH3, NxList } from '@sonatype/react-shared-components';
+
+import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
+
+import CodeExample from '../../CodeExample';
+
+const nxGlobalHeader2ExampleCode = require('./NxGlobalHeader2Example?raw'),
+    nxGlobalHeader2NoActionsExampleCode = require('./NxGlobalHeader2NoActionsExample?raw');
+
+const NxGlobalHeader2Page = () =>
+  <>
+    <GalleryDescriptionTile>
+      <NxP>
+        A page header to be used along with the <NxCode>NxGlobalSidebar2</NxCode>. So named in order to distinguish
+        it from the <NxCode>nx-page-header</NxCode> used within the legacy page layouts as well
+        as <NxCode>NxGlobalHeader</NxCode> used alongside <NxCode>NxGlobalSidebar</NxCode>.
+      </NxP>
+      <NxP>
+        Like all parts of the <NxCode>NxGlobalSidebar2</NxCode> layout, this component is only to be
+        used in full-width, section-scrolling layouts. Although the contents of <NxCode>NxGlobalHeader2</NxCode> are
+        flexible, there are strong design guidelines for the content that should be present. From left to right,
+        the header <em>should</em> contain the following items:
+      </NxP>
+      <NxList bulleted>
+        <NxList.Item>The official product logo depicting its name</NxList.Item>
+        <NxList.Item>
+          <NxList bulleted>
+            <NxList.Item>A search text input with product-specific behavior</NxList.Item>
+            <NxList.Item>Any desired product-specific icon-only buttons and icon dropdowns</NxList.Item>
+            <NxList.Item>In Sonatype products, the Sonatype Product Switcher</NxList.Item>
+            <NxList.Item>
+              An icon-dropdown containing a menu of user-focused options such as a link to the user's profile and a
+              logout button
+            </NxList.Item>
+          </NxList>
+        </NxList.Item>
+      </NxList>
+      <NxTile.Subsection>
+        <NxTile.SubsectionHeader>
+          <NxH3><NxCode>NxGlobalHeader2</NxCode> Props</NxH3>
+        </NxTile.SubsectionHeader>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Prop</NxTable.Cell>
+              <NxTable.Cell>Type</NxTable.Cell>
+              <NxTable.Cell>Required</NxTable.Cell>
+              <NxTable.Cell>Details</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>logoImg</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                The path to an image placed in the top left corner which displays branding and product name.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>logoAltText</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                Alt text for the logo. Typically this would be set to the text visible in the logo,
+                for instance "Sonatype Product Name"
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>logoLink</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>
+                When the logo is clicked it navigates to a "home" page specified here.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>children</NxTable.Cell>
+              <NxTable.Cell>ReactNode</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                Children passed to <NxCode>NxGlobalHeader2</NxCode> should be search boxes, icon buttons, and/or icon
+                dropdowns which will be rendered at the right end of the header.
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>HTML <NxCode>&lt;header&gt;</NxCode> Attributes</NxTable.Cell>
+              <NxTable.Cell>
+                <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/header">
+                  HTML header Attributes
+                </NxTextLink>
+              </NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>
+                <NxCode>NxGlobalHeader2</NxCode> supports any HTML attribute that's normally
+                supported by <NxCode>&lt;header&gt;</NxCode>.
+              </NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
+      </NxTile.Subsection>
+    </GalleryDescriptionTile>
+
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>Typical Example</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          An example demonstrating an NxGlobalHeader2 with typical (albeit non-functioning) contents consisting of a
+          logo image and an actions area containing a search box and user dropdown
+        </NxP>
+        <NxP>
+          <NxTextLink href="#/NxGlobalHeader2Example">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+        <CodeExample content={nxGlobalHeader2ExampleCode} />
+      </NxTile.Content>
+    </NxTile>
+
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>No Actions Example</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          The actions collection within the header is optional as seen here.
+        </NxP>
+        <NxP>
+          <NxTextLink href="#/NxGlobalHeader2NoActionsExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+        <CodeExample content={nxGlobalHeader2NoActionsExampleCode} />
+      </NxTile.Content>
+    </NxTile>
+  </>;
+
+export default NxGlobalHeader2Page;
