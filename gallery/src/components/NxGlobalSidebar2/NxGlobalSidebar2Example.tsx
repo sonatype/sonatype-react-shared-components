@@ -12,17 +12,26 @@ import {
   NxPageMain,
   NxH1,
   NxPageTitle,
-  NxGlobalHeader
+  NxGlobalHeader2,
+  NxButton,
+  NxFontAwesomeIcon
 } from '@sonatype/react-shared-components';
-import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt, faQuestionCircle, faBell, faCog, faUserCircle }
+  from '@fortawesome/free-solid-svg-icons';
+
+const logoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
 export default function NxGlobalSidebar2Example() {
   const [sidebarOpen, onToggleCollapse] = useToggle(true);
 
   return (
     <>
-      {/* TODO switch to NxGlobalHeader2 once it exists */}
-      <NxGlobalHeader />
+      <NxGlobalHeader2 logoImg={logoPath} logoAltText="RSC Plaid Villain" logoLink="#/">
+        <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
+        <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
+        <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+        <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
+      </NxGlobalHeader2>
       <NxGlobalSidebar2 isOpen={sidebarOpen}
                         toggleOpenIcon={faArrowLeft}
                         toggleCloseIcon={faArrowRight}
