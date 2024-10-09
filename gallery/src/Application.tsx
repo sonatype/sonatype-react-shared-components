@@ -23,6 +23,8 @@ import PageLayoutExamples from './styles/PageLayout/PageLayoutExamples';
 import NxGlobalSidebarExample from './components/NxGlobalSidebar/NxGlobalSidebarExample';
 import NxGlobalSidebarScrollingExample from './components/NxGlobalSidebar/NxGlobalSidebarScrollingExample';
 import NxStatefulGlobalSidebarExample from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarExample';
+import NxStatefulGlobalSidebar2Example from './components/NxStatefulGlobalSidebar2/NxStatefulGlobalSidebar2Example';
+import NxGlobalSidebar2Example from './components/NxGlobalSidebar2/NxGlobalSidebar2Example';
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
@@ -161,6 +163,20 @@ function Application() {
                element={
                  <SectionScrollingWrapper>
                    <NxStatefulGlobalSidebarExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalSidebar2Example"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalSidebar2Example />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxStatefulGlobalSidebar2Example"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxStatefulGlobalSidebar2Example />
                  </SectionScrollingWrapper>
                }>
         </Route>

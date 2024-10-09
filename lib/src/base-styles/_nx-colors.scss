@@ -320,6 +320,13 @@
   --nx-color-global-sidebar-link-icon: var(--nx-swatch-indigo-90);
   --nx-color-global-sidebar-link-icon-interactive: var(--nx-swatch-white);
 
+  // NxGlobalSidebar2
+  --nx-color-global-sidebar-2-background: var(--nx-color-component-background);
+  --nx-color-global-sidebar-2-border: var(--nx-color-indigo-80);
+  --nx-color-global-sidebar-2-link: var(--nx-swatch-black);
+  --nx-color-global-sidebar-2-link-selected: var(--nx-swatch-indigo-97);
+  --nx-color-global-sidebar-2-border: var(--nx-swatch-indigo-80);
+
   // NxTag
   --nx-color-tag-text: var(--nx-color-text-stark);
 
@@ -653,6 +660,11 @@
     --nx-color-global-sidebar-link-border-focus: var(--nx-swatch-indigo-10);
     --nx-color-global-sidebar-link-icon: var(--nx-swatch-indigo-95);
     --nx-color-global-sidebar-link-icon-interactive: var(--nx-swatch-indigo-10);
+
+    // NxGlobalSidebar2
+    --nx-color-global-sidebar-2-border: var(--nx-color-border);
+    --nx-color-global-sidebar-2-link: var(--nx-color-text-stark);
+    --nx-color-global-sidebar-2-link-selected: var(--nx-swatch-indigo-05);
 
     // NxTag
     --nx-color-tag-text: var(--nx-swatch-indigo-10);

@@ -35,11 +35,11 @@
   // In traditional layouts that use plain nx-page-content, that element manages everything below the second
   // row of this template.
   grid-template:
-    'old-header     old-header  old-header' auto
-    'global-sidebar   notices      notices' auto
-    'global-sidebar   header        header' auto
-    'global-sidebar old-sidebar    content' 1fr /
-     auto    $old-sidebar-col-width    1fr;
+    'old-header        old-header          old-header  old-header' auto
+    'global-sidebar     notices             notices       notices' auto
+    'global-sidebar      header              header        header' auto
+    'global-sidebar global-sidebar-2       old-sidebar    content' 1fr /
+     auto                 auto       $old-sidebar-col-width   1fr;
 }
 
 .nx-page-content {

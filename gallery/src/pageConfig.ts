@@ -101,6 +101,8 @@ import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPage';
 import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
 import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
+import NxGlobalSidebar2Page from './components/NxGlobalSidebar2/NxGlobalSidebar2Page';
+import NxStatefulGlobalSidebar2Page from './components/NxStatefulGlobalSidebar2/NxStatefulGlobalSidebar2Page';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
 import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage';
 import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
@@ -268,6 +270,8 @@ const pageConfig: PageConfig = {
     'Global Sidebar': { content: NxGlobalSidebarPage, type: 'react' },
     'Stateful Global Sidebar': { content: NxStatefulGlobalSidebarPage, type: 'react' },
     'Global Sidebar Footer': { content: NxGlobalSidebarFooterPage, type: 'react' },
+    'Global Sidebar 2': { content: NxGlobalSidebar2Page, type: 'react' },
+    'Stateful Global Sidebar 2': { content: NxStatefulGlobalSidebar2Page, type: 'react' },
     'Grid': { content: NxGridPage, type: 'html' },
     'Modal': { content: NxModalPage, type: 'react' },
     'Drawer': { content: NxDrawerPage, type: 'react' },
