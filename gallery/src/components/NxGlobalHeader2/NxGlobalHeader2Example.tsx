@@ -27,6 +27,7 @@ import {
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
+// TODO correctly sized logos, both light and dark
 const logoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
 export default function NxGlobalHeader2Example() {

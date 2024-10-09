@@ -27,14 +27,10 @@ import {
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
-// TODO correctly sized logos, both light and dark
-const logoPath = require('../../assets/images/logo-plaid-villain-text.png');
-
-export default function NxGlobalHeader2NoActionsExample() {
+export default function NxGlobalHeader2Example() {
   return (
     <>
-      <NxGlobalHeader2 logoProps={{ lightPath: logoPath, darkPath: logoPath, altText: 'RSC Plaid Villain' }}
-                       homeHref="#/">
+      <NxGlobalHeader2 homeHref="#/">
         <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
         <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
         <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>

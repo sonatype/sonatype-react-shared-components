@@ -18,13 +18,20 @@ const defaultSonatypeLogoLight = require('../../assets/img/sonatype-header.png')
 export default function NxGlobalHeader2({ logoProps, homeHref, className, children, ...otherProps }: Props) {
   const classes = classnames(className, 'nx-global-header-2'),
       { lightPath = defaultSonatypeLogoLight, darkPath = defaultSonatypeLogoDark, altText = defaultAltText } =
-        logoProps ?? {};
+        logoProps ?? {},
+      isDefaultLogo = !logoProps,
+      lightLogoClasses = classnames('nx-global-header-2__logo-light', {
+        'nx-global-header-2__logo-light--default-logo': isDefaultLogo
+      }),
+      darkLogoClasses = classnames('nx-global-header-2__logo-dark', {
+        'nx-global-header-2__logo-dark--default-logo': isDefaultLogo
+      });
 
   return (
     <header className={classes} { ...otherProps }>
       <a href={homeHref} className="nx-global-header-2__home-link" aria-label="Home">
-        <img src={lightPath} alt={altText} className="nx-global-header-2__logo-light" />
-        <img src={darkPath} alt={altText} className="nx-global-header-2__logo-dark" />
+        <img src={lightPath} alt={altText} className={lightLogoClasses} />
+        <img src={darkPath} alt={altText} className={darkLogoClasses} />
       </a>
       <div className="nx-global-header-2__actions">
         {children}

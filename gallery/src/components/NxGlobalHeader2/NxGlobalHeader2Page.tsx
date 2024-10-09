@@ -12,7 +12,8 @@ import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 import CodeExample from '../../CodeExample';
 
 const nxGlobalHeader2ExampleCode = require('./NxGlobalHeader2Example?raw'),
-    nxGlobalHeader2NoActionsExampleCode = require('./NxGlobalHeader2NoActionsExample?raw');
+    nxGlobalHeader2NoActionsExampleCode = require('./NxGlobalHeader2NoActionsExample?raw'),
+    nxGlobalHeader2DefaultLogoExampleCode = require('./NxGlobalHeader2DefaultLogoExample?raw');
 
 const NxGlobalHeader2Page = () =>
   <>
@@ -57,24 +58,30 @@ const NxGlobalHeader2Page = () =>
           </NxTable.Head>
           <NxTable.Body>
             <NxTable.Row>
-              <NxTable.Cell>logoImg</NxTable.Cell>
-              <NxTable.Cell>string</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
+              <NxTable.Cell>logoProps</NxTable.Cell>
+              <NxTable.Cell>object</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
               <NxTable.Cell>
-                The path to an image placed in the top left corner which displays branding and product name.
+                <NxP>
+                  An optional object specifying properties for the logo image and its alt text. If unspecified, a
+                  general "Sonatype" logo will be used.
+                </NxP>
+                <NxList bulleted>
+                  <NxList.Item>
+                    <NxCode>lightPath</NxCode> - the path to the light-mode variant of the logo image
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxCode>darkPath</NxCode> - the path to the dark-mode variant of the logo image
+                  </NxList.Item>
+                  <NxList.Item>
+                    <NxCode>altText</NxCode> - Alt text for the logo. Typically this would be set to the text visible in
+                      the logo, for instance "Sonatype Product Name"
+                  </NxList.Item>
+                </NxList>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
-              <NxTable.Cell>logoAltText</NxTable.Cell>
-              <NxTable.Cell>string</NxTable.Cell>
-              <NxTable.Cell>Yes</NxTable.Cell>
-              <NxTable.Cell>
-                Alt text for the logo. Typically this would be set to the text visible in the logo,
-                for instance "Sonatype Product Name"
-              </NxTable.Cell>
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell>logoLink</NxTable.Cell>
+              <NxTable.Cell>homeHref</NxTable.Cell>
               <NxTable.Cell>string</NxTable.Cell>
               <NxTable.Cell>Yes</NxTable.Cell>
               <NxTable.Cell>
@@ -144,6 +151,25 @@ const NxGlobalHeader2Page = () =>
           </NxTextLink>
         </NxP>
         <CodeExample content={nxGlobalHeader2NoActionsExampleCode} />
+      </NxTile.Content>
+    </NxTile>
+
+    <NxTile>
+      <NxTile.Header>
+        <NxTile.HeaderTitle>
+          <NxH2>Default Logo Example</NxH2>
+        </NxTile.HeaderTitle>
+      </NxTile.Header>
+      <NxTile.Content>
+        <NxP>
+          An example which uses the default logo rather than specifying a custom one.
+        </NxP>
+        <NxP>
+          <NxTextLink href="#/NxGlobalHeader2DefaultLogoExample">
+            Click here to navigate to the live example.
+          </NxTextLink>
+        </NxP>
+        <CodeExample content={nxGlobalHeader2DefaultLogoExampleCode} />
       </NxTile.Content>
     </NxTile>
   </>;

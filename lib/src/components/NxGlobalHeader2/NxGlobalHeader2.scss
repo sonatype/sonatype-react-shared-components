@@ -14,6 +14,8 @@
   grid-area: header; // see nx-page's grid-template
   height: 55px;
   justify-content: space-between;
+  padding-left: var(--nx-spacing-6x);
+  padding-right: var(--nx-spacing-3x);
 
   &__home-link {
     display: contents;
