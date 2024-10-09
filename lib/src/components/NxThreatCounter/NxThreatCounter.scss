@@ -7,6 +7,8 @@
 @use '../../scss-shared/nx-text-helpers';
 @use '../../scss-shared/nx-dark-mode-helpers';
 
+$threat-counter: 28px;
+
 .nx-threat-counter {
   align-items: center;
   box-sizing: content-box;
@@ -18,7 +20,7 @@
   flex-direction: row-reverse;
   font-size: var(--nx-font-size-s);
   justify-content: flex-end;
-  height: 28px;
+  height: $threat-counter;
   margin: 0;
   padding-right: calc(var(--nx-spacing-4x) - 2px);
   padding-left: var(--nx-spacing-4x);
