@@ -101,6 +101,7 @@ import IdUtilPage from './jsUtilPages/IdUtil/IdUtilPage';
 import WithClassPage from './jsUtilPages/WithClass/WithClassPage';
 import NxTextLinkPage from './components/NxTextLink/NxTextLinkPage';
 import NxThreatCounterPage from './components/NxThreatCounter/NxThreatCounterPage';
+import NxVulnerabilityCounterPage from './components/NxVulnerabilityCounter/NxVulnerabilityCounterPage';
 import NxGlobalSidebarPage from './components/NxGlobalSidebar/NxGlobalSidebarPage';
 import NxStatefulGlobalSidebarPage from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarPage';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
@@ -161,6 +162,7 @@ import NxStatefulBreadcrumbPage from './components/NxStatefulBreadcrumb/NxStatef
 import DarkModeClassPage from './styles/DarkMode/DarkModeClassPage';
 import DarkModeMixinPage from './styles/DarkMode/DarkModeMixinPage';
 import NxSmallTagPage from './components/NxSmallTag/NxSmallTagPage';
+import NxSmallVulnerabilityCounterPage from './components/NxSmallVulnerabilityCounter/NxSmallVulnerabilityCounterPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -179,7 +181,9 @@ const pageConfig: PageConfig = {
     'Tag': { content: NxTagPage, type: 'react' },
     'Small Tag': { content: NxSmallTagPage, type: 'react' },
     'Threat Counter': { content: NxThreatCounterPage, type: 'react' },
+    'Vulnerability Counter': { content: NxVulnerabilityCounterPage, type: 'react' },
     'Small Threat Counter': { content: NxSmallThreatCounterPage, type: 'react' },
+    'Small Vulnerability Counter': { content: NxSmallVulnerabilityCounterPage, type: 'react' },
     'Status Indicator': { content: NxStatusIndicatorPage, type: 'html' },
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
