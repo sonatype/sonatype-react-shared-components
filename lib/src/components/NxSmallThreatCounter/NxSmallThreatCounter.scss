@@ -7,8 +7,6 @@
 @use 'sass:math';
 @use '../../scss-shared/nx-text-helpers';
 
-$small-counter-height: 25px;
-
 @mixin counter-colors {
   @each $category in critical, severe, moderate, low, none, unspecified {
     &--#{$category} {
@@ -19,7 +17,7 @@ $small-counter-height: 25px;
 }
 
 .nx-small-threat-counter {
-  $height: $small-counter-height;
+  $height: 25px;
   position: relative;
   border-radius: math.div($height, 2);
   font-size: var(--nx-font-size-s);
