@@ -12,9 +12,7 @@ import NxGlobalHeader2, { Props } from '../NxGlobalHeader2';
 
 describe('NxGlobalHeader2', function() {
   const minimalProps: Props = {
-    logoImg: 'logoImg',
-    logoAltText: 'alt text',
-    logoLink: '/ref'
+    homeHref: '/ref'
   };
 
   const quickRender = rtlRender<Props>(NxGlobalHeader2, minimalProps);
@@ -45,23 +43,42 @@ describe('NxGlobalHeader2', function() {
     }
   });
 
-  it('renders a link to the home page as specified by logoLink', function() {
+  it('renders a link to the home page as specified by homeHref', function() {
     const banner = renderEl()!,
         link = within(banner).getByRole('link');
 
     expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('href', minimalProps.logoLink);
+    expect(link).toHaveAttribute('href', minimalProps.homeHref);
   });
 
-  it('renders a logo within the home page link with the specified img src and alt text', function() {
+  // "at least" one due to the dark mode setup.  Only one logo should be a11y-visible at a time but we can't test
+  // that without the CSS
+  it('renders at least one logo within the home page link with default alt text of "Sonatype"', function() {
     const banner = renderEl()!,
         link = within(banner).getByRole('link'),
-        img = within(link).getByRole('img');
+        img = within(link).getAllByRole('img', { name: 'Sonatype' })[0];
 
-    expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', minimalProps.logoImg);
-    expect(img).toHaveAttribute('alt', minimalProps.logoAltText);
-    expect(img).toHaveAccessibleName(minimalProps.logoAltText);
+    expect(img).toHaveAttribute('alt', 'Sonatype');
+  });
+
+  it('renders light and dark mode logos with the designated paths and alt text if specified', function() {
+    const banner = renderEl({
+          logoProps: {
+            lightPath: 'liiiight',
+            darkPath: 'daaark',
+            altText: 'custom alt text'
+          }
+        })!,
+        link = within(banner).getByRole('link'),
+        imgs = within(link).getAllByRole('img', { name: 'custom alt text' });
+
+    expect(imgs).toHaveLength(2);
+    expect(imgs[0]).toHaveAttribute('alt', 'custom alt text');
+    expect(imgs[0]).toHaveAttribute('src', 'liiiight');
+    expect(imgs[1]).toHaveAttribute('alt', 'custom alt text');
+    expect(imgs[1]).toHaveAttribute('src', 'daaark');
+
+    expect(within(banner).queryByRole('img', { name: 'Sonatype' })).not.toBeInTheDocument();
   });
 
   it('renders children', function() {
