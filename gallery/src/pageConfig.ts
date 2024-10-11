@@ -181,15 +181,15 @@ const pageConfig: PageConfig = {
     'Tag': { content: NxTagPage, type: 'react' },
     'Small Tag': { content: NxSmallTagPage, type: 'react' },
     'Threat Counter': { content: NxThreatCounterPage, type: 'react' },
-    'Vulnerability Counter': { content: NxVulnerabilityCounterPage, type: 'react' },
     'Small Threat Counter': { content: NxSmallThreatCounterPage, type: 'react' },
-    'Small Vulnerability Counter': { content: NxSmallVulnerabilityCounterPage, type: 'react' },
     'Status Indicator': { content: NxStatusIndicatorPage, type: 'html' },
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
     'Toast': { content: NxToastPage, type: 'react' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
+    'Vulnerability Counter': { content: NxVulnerabilityCounterPage, type: 'react' },
+    'Small Vulnerability Counter': { content: NxSmallVulnerabilityCounterPage, type: 'react' },
     'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' }
   },
   'Buttons and Dropdowns': {
