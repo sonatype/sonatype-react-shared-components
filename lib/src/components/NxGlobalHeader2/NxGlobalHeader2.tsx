@@ -11,8 +11,8 @@ import { Props, propTypes } from './types';
 
 import './NxGlobalHeader2.scss';
 
-const defaultSonatypeLogoLight = require('../../assets/img/sonatype-header.png'),
-    defaultSonatypeLogoDark = require('../../assets/img/sonatype-header-dark-mode.png'),
+const defaultSonatypeLogoLight = require('../../assets/img/sonatype-header.svg'),
+    defaultSonatypeLogoDark = require('../../assets/img/sonatype-header-dark-mode.svg'),
     defaultAltText = 'Sonatype';
 
 export default function NxGlobalHeader2({ logoProps, homeHref, className, children, ...otherProps }: Props) {
