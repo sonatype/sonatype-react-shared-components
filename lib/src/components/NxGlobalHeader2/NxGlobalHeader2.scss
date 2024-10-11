@@ -9,6 +9,7 @@
 
 .nx-global-header-2 {
   align-items: center;
+  background-color: var(--nx-color-global-sidebar-2-background);
   border: var(--nx-border-width) solid var(--nx-color-global-sidebar-2-border);
   display: flex;
   grid-area: header; // see nx-page's grid-template
@@ -24,6 +25,7 @@
   &__actions {
     align-items: center;
     display: flex;
+    flex-shrink: 0;
 
     .nx-btn--icon-only {
       @include nx-button-helpers.small-icon-btn;
