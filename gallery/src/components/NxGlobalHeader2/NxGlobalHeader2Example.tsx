@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   NxGlobalHeader2,
   NxGlobalSidebar2NavigationLink,
@@ -15,15 +15,13 @@ import {
   NxPageMain,
   NxP,
   NxPageTitle,
-  NxH1
+  NxH1,
+  NxFilterInput
 } from '@sonatype/react-shared-components';
 import {
   faArrowLeft,
   faArrowRight,
   faLink,
-  faQuestionCircle,
-  faBell,
-  faCog,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -31,13 +29,13 @@ import {
 const logoPath = require('../../assets/images/logo-plaid-villain-text.png');
 
 export default function NxGlobalHeader2Example() {
+  const [filterInputValue, setFilterInputValue] = useState('');
+
   return (
     <>
       <NxGlobalHeader2 logoProps={{ lightPath: logoPath, darkPath: logoPath, altText: 'RSC Plaid Villain' }}
                        homeHref="#/">
-        <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
-        <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
-        <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+        <NxFilterInput searchIcon value={filterInputValue} onChange={setFilterInputValue} />
         <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
       </NxGlobalHeader2>
       <NxStatefulGlobalSidebar2 isDefaultOpen={false}
