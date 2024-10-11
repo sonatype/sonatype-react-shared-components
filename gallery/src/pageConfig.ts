@@ -187,12 +187,12 @@ const pageConfig: PageConfig = {
     'Status Indicator': { content: NxStatusIndicatorPage, type: 'html' },
     'Threat Indicator': { content: NxThreatIndicatorPage, type: 'react' },
     'Threat Indicator Legend': { content: NxThreatIndicatorLegendPage, type: 'react' },
-    'Vulnerability Indicator': { content: NxVulnerabilityIndicatorPage, type: 'react' },
-    'Vulnerability Indicator Legend': { content: NxVulnerabilityIndicatorLegendPage, type: 'react' },
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
-    'Vulnerability Score': { content: NxVulnerabilityScorePage, type: 'html' },
     'Toast': { content: NxToastPage, type: 'react' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
+    'Vulnerability Indicator': { content: NxVulnerabilityIndicatorPage, type: 'react' },
+    'Vulnerability Indicator Legend': { content: NxVulnerabilityIndicatorLegendPage, type: 'react' },
+    'Vulnerability Score': { content: NxVulnerabilityScorePage, type: 'html' },
     'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' }
   },
   'Buttons and Dropdowns': {
