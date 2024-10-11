@@ -20,10 +20,10 @@ export default function NxGlobalHeader2({ logoProps, homeHref, className, childr
       { lightPath = defaultSonatypeLogoLight, darkPath = defaultSonatypeLogoDark, altText = defaultAltText } =
         logoProps ?? {},
       isDefaultLogo = !logoProps,
-      lightLogoClasses = classnames('nx-global-header-2__logo-light', {
+      lightLogoClasses = classnames('nx-global-header-2__logo', 'nx-global-header-2__logo--light', {
         'nx-global-header-2__logo-light--default-logo': isDefaultLogo
       }),
-      darkLogoClasses = classnames('nx-global-header-2__logo-dark', {
+      darkLogoClasses = classnames('nx-global-header-2__logo', 'nx-global-header-2__logo--dark', {
         'nx-global-header-2__logo-dark--default-logo': isDefaultLogo
       });
 
