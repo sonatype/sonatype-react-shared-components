@@ -196,6 +196,16 @@ export {
 } from './components/NxForm/stateful/NxStatefulForm';
 
 export * from './util/threatLevels';
+
+export {
+  VulnerabilityScore,
+  VulnerabilitySeverityRating,
+  allVulnerabilitySeverityRatings,
+  vulnerabilitySeverityAndScoreRangeList,
+  formatVulnerabilityScore,
+  getVulnerabilitySeverityRating
+} from './util/vulnerabilitySeverityRatings';
+
 export * from './util/validationUtil';
 
 export {
