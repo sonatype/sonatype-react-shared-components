@@ -35,12 +35,14 @@ export default function NxGlobalHeader2Example() {
     <>
       <NxGlobalHeader2 logoProps={{ lightPath: logoPath, darkPath: logoPath, altText: 'RSC Plaid Villain' }}
                        homeHref="#/">
-        <NxFilterInput searchIcon value={filterInputValue} onChange={setFilterInputValue} />
+        <NxFilterInput placeholder="Search"
+                       aria-label="Global Search"
+                       searchIcon
+                       value={filterInputValue}
+                       onChange={setFilterInputValue} />
         <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
       </NxGlobalHeader2>
-      <NxStatefulGlobalSidebar2 isDefaultOpen={false}
-                                toggleOpenIcon={faArrowLeft}
-                                toggleCloseIcon={faArrowRight}>
+      <NxStatefulGlobalSidebar2 isDefaultOpen={false} toggleOpenIcon={faArrowLeft} toggleCloseIcon={faArrowRight}>
         <NxGlobalSidebar2NavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
       </NxStatefulGlobalSidebar2>
       <NxPageSidebar tabIndex={0}>

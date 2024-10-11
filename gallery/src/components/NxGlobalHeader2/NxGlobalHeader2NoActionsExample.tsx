@@ -9,8 +9,6 @@ import {
   NxGlobalHeader2,
   NxGlobalSidebar2NavigationLink,
   NxPageSidebar,
-  NxButton,
-  NxFontAwesomeIcon,
   NxStatefulGlobalSidebar2,
   NxPageMain,
   NxP,
@@ -20,11 +18,7 @@ import {
 import {
   faArrowLeft,
   faArrowRight,
-  faLink,
-  faQuestionCircle,
-  faBell,
-  faCog,
-  faUserCircle
+  faLink
 } from '@fortawesome/free-solid-svg-icons';
 
 // TODO correctly sized logos, both light and dark
@@ -34,15 +28,8 @@ export default function NxGlobalHeader2NoActionsExample() {
   return (
     <>
       <NxGlobalHeader2 logoProps={{ lightPath: logoPath, darkPath: logoPath, altText: 'RSC Plaid Villain' }}
-                       homeHref="#/">
-        <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
-        <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
-        <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
-        <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
-      </NxGlobalHeader2>
-      <NxStatefulGlobalSidebar2 isDefaultOpen={false}
-                                toggleOpenIcon={faArrowLeft}
-                                toggleCloseIcon={faArrowRight}>
+                       homeHref="#/" />
+      <NxStatefulGlobalSidebar2 isDefaultOpen={false} toggleOpenIcon={faArrowLeft} toggleCloseIcon={faArrowRight}>
         <NxGlobalSidebar2NavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
       </NxStatefulGlobalSidebar2>
       <NxPageSidebar tabIndex={0}>
