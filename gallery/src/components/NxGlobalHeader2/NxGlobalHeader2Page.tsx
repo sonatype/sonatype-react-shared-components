@@ -75,7 +75,7 @@ const NxGlobalHeader2Page = () =>
                   </NxList.Item>
                   <NxList.Item>
                     <NxCode>altText</NxCode> - Alt text for the logo. Typically this would be set to the text visible in
-                      the logo, for instance "Sonatype Product Name"
+                    the logo, for instance "Sonatype Product Name"
                   </NxList.Item>
                 </NxList>
               </NxTable.Cell>
