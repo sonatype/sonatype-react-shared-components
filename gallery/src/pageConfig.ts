@@ -161,6 +161,8 @@ import NxStatefulBreadcrumbPage from './components/NxStatefulBreadcrumb/NxStatef
 import DarkModeClassPage from './styles/DarkMode/DarkModeClassPage';
 import DarkModeMixinPage from './styles/DarkMode/DarkModeMixinPage';
 import NxSmallTagPage from './components/NxSmallTag/NxSmallTagPage';
+import NxVulnerabilityCounterPage from './components/NxVulnerabilityCounter/NxVulnerabilityCounterPage';
+import NxSmallVulnerabilityCounterPage from './components/NxSmallVulnerabilityCounter/NxSmallVulnerabilityCounterPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -186,7 +188,9 @@ const pageConfig: PageConfig = {
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
     'Toast': { content: NxToastPage, type: 'react' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
-    'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' }
+    'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' },
+    'Vulnerability Counter': { content: NxVulnerabilityCounterPage, type: 'react' },
+    'Small Vulnerability Counter': { content: NxSmallVulnerabilityCounterPage, type: 'react' }
   },
   'Buttons and Dropdowns': {
     'Back Button': { content: NxBackButtonPage, type: 'react' },
