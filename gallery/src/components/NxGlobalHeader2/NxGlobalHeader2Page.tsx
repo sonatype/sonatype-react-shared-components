@@ -30,15 +30,26 @@ const NxGlobalHeader2Page = () =>
         the header <em>should</em> contain the following items:
       </NxP>
       <NxList bulleted>
-        <NxList.Item>The official product logo depicting its name</NxList.Item>
+        <NxList.Item><NxList.Text>The official product logo depicting its name</NxList.Text></NxList.Item>
         <NxList.Item>
+          <NxList.Text>
+            An actions area on the right containing the following
+          </NxList.Text>
           <NxList bulleted>
-            <NxList.Item>A search text input with product-specific behavior</NxList.Item>
-            <NxList.Item>Any desired product-specific icon-only buttons and icon dropdowns</NxList.Item>
-            <NxList.Item>In Sonatype products, the Sonatype Product Switcher</NxList.Item>
             <NxList.Item>
-              An icon-dropdown containing a menu of user-focused options such as a link to the user's profile and a
-              logout button
+              <NxList.Text>A search text input with product-specific behavior</NxList.Text>
+            </NxList.Item>
+            <NxList.Item>
+              <NxList.Text>Any desired product-specific icon-only buttons and icon dropdowns</NxList.Text>
+            </NxList.Item>
+            <NxList.Item>
+              <NxList.Text>In Sonatype products, the Sonatype Product Switcher</NxList.Text>
+            </NxList.Item>
+            <NxList.Item>
+              <NxList.Text>
+                An icon-dropdown containing a menu of user-focused options such as a link to the user's profile and a
+                logout button
+              </NxList.Text>
             </NxList.Item>
           </NxList>
         </NxList.Item>
