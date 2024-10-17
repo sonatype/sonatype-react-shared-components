@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+.nx-global-footer-2 {
+  background-color: var(--nx-color-global-sidebar-2-background);
+  display: flex;
+  font-size: var(--nx-font-size-xs);
+  gap: var(--nx-spacing-6x);
+  line-height: 2;
+  padding: var(--nx-spacing-2x) var(--nx-spacing-6x);
+  white-space: nowrap;
+}
