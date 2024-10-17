@@ -29,7 +29,8 @@ import {
   NxReadOnly,
   NxTableContainer,
   NxGlobalHeader,
-  NxFormRow
+  NxFormRow,
+  NxGlobalFooter2
 } from '../SimpleComponents';
 
 function test(Component: ComponentType<{}>, tagName: string, ...classNames: string[]) {
@@ -215,4 +216,8 @@ describe('NxDivider', function() {
 
 describe('NxFormRow', function() {
   it('makes a <div> tag with the nx-form-row class', test(NxFormRow, 'div', 'nx-form-row'));
+});
+
+describe('NxGlobalFooter2', function() {
+  it('makes a <footer> tag with the nx-global-footer-2 class', test(NxGlobalFooter2, 'footer', 'nx-global-footer-2'));
 });
