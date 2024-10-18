@@ -21,13 +21,13 @@ import {
   faLink
 } from '@fortawesome/free-solid-svg-icons';
 
-// TODO correctly sized logos, both light and dark
-const logoPath = require('../../assets/images/logo-plaid-villain-text.png');
+const lightPath = require('../../assets/images/custom-logo-header2.png'),
+    darkPath = require('../../assets/images/custom-logo-header2-dark-mode.png');
 
 export default function NxGlobalHeader2NoActionsExample() {
   return (
     <>
-      <NxGlobalHeader2 logoProps={{ lightPath: logoPath, darkPath: logoPath, altText: 'RSC Plaid Villain' }}
+      <NxGlobalHeader2 logoProps={{ lightPath, darkPath, altText: 'Custom' }}
                        homeHref="#/" />
       <NxStatefulGlobalSidebar2 isDefaultOpen={false} toggleOpenIcon={faArrowLeft} toggleCloseIcon={faArrowRight}>
         <NxGlobalSidebar2NavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>

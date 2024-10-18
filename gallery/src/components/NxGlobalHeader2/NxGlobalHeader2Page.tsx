@@ -141,7 +141,8 @@ const NxGlobalHeader2Page = () =>
       <NxTile.Content>
         <NxP>
           An example demonstrating an NxGlobalHeader2 with typical (albeit non-functioning) contents consisting of a
-          logo image and an actions area containing a search box and user dropdown
+          logo image and an actions area containing a search box and user dropdown. Notice that custom logo images
+          are constrained to a max-height of 31px.
         </NxP>
         <NxP>
           <NxTextLink href="#/NxGlobalHeader2Example">

@@ -25,15 +25,15 @@ import {
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
-// TODO correctly sized logos, both light and dark
-const logoPath = require('../../assets/images/logo-plaid-villain-text.png');
+const lightPath = require('../../assets/images/custom-logo-header2.png'),
+    darkPath = require('../../assets/images/custom-logo-header2-dark-mode.png');
 
 export default function NxGlobalHeader2Example() {
   const [filterInputValue, setFilterInputValue] = useState('');
 
   return (
     <>
-      <NxGlobalHeader2 logoProps={{ lightPath: logoPath, darkPath: logoPath, altText: 'RSC Plaid Villain' }}
+      <NxGlobalHeader2 logoProps={{ lightPath, darkPath, altText: 'Custom' }}
                        homeHref="#/">
         <NxFilterInput placeholder="Search"
                        aria-label="Global Search"
