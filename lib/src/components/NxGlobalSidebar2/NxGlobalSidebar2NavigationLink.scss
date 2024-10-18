@@ -7,5 +7,15 @@
 @use './NxGlobalSidebar2Common';
 
 .nx-global-sidebar-2__navigation-link.nx-text-link {
+  margin-top: var(--nx-spacing-2x);
+  margin-bottom: var(--nx-spacing-2x);
   @extend %nx-global-sidebar-2__clickable;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
