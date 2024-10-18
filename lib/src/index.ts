@@ -270,6 +270,9 @@ export { default as NxGlobalSidebar2NavigationLink, NxGlobalSidebar2NavigationLi
 export { default as NxStatefulGlobalSidebar2, Props as NxStatefulGlobalSidebar2Props }
   from './components/NxGlobalSidebar2/stateful/NxStatefulGlobalSidebar2';
 
+export { default as NxGlobalHeader2, Props as NxGlobalHeader2Props }
+  from './components/NxGlobalHeader2/NxGlobalHeader2';
+
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
 
 export { default as withClass } from './util/withClass';
