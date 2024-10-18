@@ -28,6 +28,8 @@
     padding-right: $right-padding;
     padding-top: $padding;
     width: auto;
+
+    @include nx-container-helpers.container-vertical;
   }
 
   &__toggle.nx-btn {
