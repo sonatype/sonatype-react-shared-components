@@ -79,14 +79,20 @@ const NxGlobalHeader2Page = () =>
                 </NxP>
                 <NxList bulleted>
                   <NxList.Item>
-                    <NxCode>lightPath</NxCode> - the path to the light-mode variant of the logo image
+                    <NxList.Text>
+                      <NxCode>lightPath</NxCode> - the path to the light-mode variant of the logo image
+                    </NxList.Text>
                   </NxList.Item>
                   <NxList.Item>
-                    <NxCode>darkPath</NxCode> - the path to the dark-mode variant of the logo image
+                    <NxList.Text>
+                      <NxCode>darkPath</NxCode> - the path to the dark-mode variant of the logo image
+                    </NxList.Text>
                   </NxList.Item>
                   <NxList.Item>
-                    <NxCode>altText</NxCode> - Alt text for the logo. Typically this would be set to the text visible in
-                    the logo, for instance "Sonatype Product Name"
+                    <NxList.Text>
+                      <NxCode>altText</NxCode> - Alt text for the logo. Typically this would be set to the text visible
+                      in the logo, for instance "Sonatype Product Name"
+                    </NxList.Text>
                   </NxList.Item>
                 </NxList>
               </NxTable.Cell>
