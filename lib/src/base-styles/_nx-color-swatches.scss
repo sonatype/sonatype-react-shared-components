@@ -10,7 +10,7 @@
   // code printouts in the gallery swatch page
 
   // Greys
-  --nx-swatch-grey-hs:0, 0%;
+  --nx-swatch-grey-hs:60, 4%;
   --nx-swatch-black: hsl(var(--nx-swatch-grey-hs), 0%);
   --nx-swatch-grey-05: hsl(var(--nx-swatch-grey-hs), 5%);
   --nx-swatch-grey-10: hsl(var(--nx-swatch-grey-hs), 10%);
@@ -78,6 +78,7 @@
   --nx-swatch-purple-80: hsl(var(--nx-swatch-purple-hs), 80%);
   --nx-swatch-purple-90: hsl(var(--nx-swatch-purple-hs), 90%);
   --nx-swatch-purple-95: hsl(var(--nx-swatch-purple-hs), 95%);
+  --nx-swatch-purple-97: hsl(var(--nx-swatch-purple-hs), 97%);
 
   // Indigo
   --nx-swatch-indigo-hs:228, 44%;
@@ -207,6 +208,7 @@
   --nx-swatch-turquoise-80: hsl(var(--nx-swatch-turquoise-hs), 80%);
   --nx-swatch-turquoise-90: hsl(var(--nx-swatch-turquoise-hs), 90%);
   --nx-swatch-turquoise-95: hsl(var(--nx-swatch-turquoise-hs), 95%);
+  --nx-swatch-turquoise-97: hsl(var(--nx-swatch-turquoise-hs), 97%);
 
   // Orange
   --nx-swatch-orange-hs:24, 96%;
