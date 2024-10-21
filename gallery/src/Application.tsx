@@ -28,7 +28,8 @@ import NxGlobalSidebar2Example from './components/NxGlobalSidebar2/NxGlobalSideb
 import NxGlobalFooter2Example from './styles/NxGlobalFooter2/NxGlobalFooter2Example';
 import NxGlobalFooter2InnerSidebarExample from './styles/NxGlobalFooter2/NxGlobalFooter2InnerSidebarExample';
 import NxGlobalFooter2ViewportSizedExample from './styles/NxGlobalFooter2/NxGlobalFooter2ViewportSizedExample';
-import NxGlobalFooter2ViewportSizedExpandingExample from './styles/NxGlobalFooter2/NxGlobalFooter2ViewportSizedExpandingExample';
+import NxGlobalFooter2ViewportSizedExpandingExample from
+  './styles/NxGlobalFooter2/NxGlobalFooter2ViewportSizedExpandingExample';
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';

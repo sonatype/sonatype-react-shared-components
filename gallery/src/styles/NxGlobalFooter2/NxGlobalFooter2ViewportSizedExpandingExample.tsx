@@ -16,6 +16,8 @@ import {
   NxGlobalFooter2,
   NxTable,
   NxInfoAlert,
+  NxH1,
+  NxTableContainer
 } from '@sonatype/react-shared-components';
 import {
   faArrowLeft,
@@ -49,57 +51,58 @@ export default function NxGlobalFooter2ViewportSizedExpandingExample() {
       </NxStatefulGlobalSidebar2>
       <NxGlobalFooter2.Container className="nx-viewport-sized">
         <NxPageMain className="nx-viewport-sized__container">
-        <NxBackButton targetPageTitle="nx-viewport-sized Docs" href="#/pages/nx-viewport-sized"/>
-        <section className="nx-tile nx-viewport-sized__container">
-          <header className="nx-tile-header">
-            <div className="nx-tile-header__title">
-              <h2 className="nx-h2">A table, with some stuff above</h2>
+          <NxBackButton targetPageTitle="nx-viewport-sized Docs" href="#/pages/nx-viewport-sized"/>
+          <NxH1>Viewport Sized Example</NxH1>
+          <section className="nx-tile nx-viewport-sized__container">
+            <header className="nx-tile-header">
+              <div className="nx-tile-header__title">
+                <h2 className="nx-h2">A table, with some stuff above</h2>
+              </div>
+            </header>
+            <div className="nx-tile-content nx-viewport-sized__container">
+              <p className="nx-p">
+                Observe that the table below, along with its containing tile, shrinks to fit the viewport and gets a
+                scrollbar. As the page size is adjusted, the table size changes accordingly.
+              </p>
+              <p className="nx-p" style={{ width: '400px' }}>
+                This paragraph has an explicit, non-100% width. It is still left-aligned within the tile just like it
+                would be in block layout.
+              </p>
+              <p className="nx-p">
+                Single line paragraph.
+              </p>
+              <NxInfoAlert>
+                This alert is stretched as expected.
+              </NxInfoAlert>
+              <NxTableContainer className="nx-scrollable nx-viewport-sized__scrollable" tabIndex={0}>
+                <NxTable>
+                  <NxTable.Head>
+                    <NxTable.Row>
+                      <NxTable.Cell>Oct</NxTable.Cell>
+                      <NxTable.Cell>Dev</NxTable.Cell>
+                      <NxTable.Cell>Hex</NxTable.Cell>
+                      <NxTable.Cell>Char</NxTable.Cell>
+                    </NxTable.Row>
+                  </NxTable.Head>
+                  <NxTable.Body>
+                    <NxTable.Row>
+                      <NxTable.Cell>040</NxTable.Cell>
+                      <NxTable.Cell>32</NxTable.Cell>
+                      <NxTable.Cell>20</NxTable.Cell>
+                      <NxTable.Cell>(space)</NxTable.Cell>
+                    </NxTable.Row>
+                    <NxTable.Row>
+                      <NxTable.Cell>041</NxTable.Cell>
+                      <NxTable.Cell>33</NxTable.Cell>
+                      <NxTable.Cell>21</NxTable.Cell>
+                      <NxTable.Cell>!</NxTable.Cell>
+                    </NxTable.Row>
+                  </NxTable.Body>
+                </NxTable>
+              </NxTableContainer>
             </div>
-          </header>
-          <div className="nx-tile-content nx-viewport-sized__container">
-            <p className="nx-p">
-              Observe that the table below, along with its containing tile, shrinks to fit the viewport and gets a
-              scrollbar. As the page size is adjusted, the table size changes accordingly.
-            </p>
-            <p className="nx-p" style={{ width: '400px' }}>
-              This paragraph has an explicit, non-100% width. It is still left-aligned within the tile just like it
-              would be in block layout.
-            </p>
-            <p className="nx-p">
-              Single line paragraph.
-            </p>
-            <NxInfoAlert>
-              This alert is stretched as expected.
-            </NxInfoAlert>
-            <div className="nx-scrollable nx-table-container nx-viewport-sized__scrollable">
-              <NxTable>
-                <NxTable.Head>
-                  <NxTable.Row>
-                    <NxTable.Cell>Oct</NxTable.Cell>
-                    <NxTable.Cell>Dev</NxTable.Cell>
-                    <NxTable.Cell>Hex</NxTable.Cell>
-                    <NxTable.Cell>Char</NxTable.Cell>
-                  </NxTable.Row>
-                </NxTable.Head>
-                <NxTable.Body>
-                  <NxTable.Row>
-                    <NxTable.Cell>040</NxTable.Cell>
-                    <NxTable.Cell>32</NxTable.Cell>
-                    <NxTable.Cell>20</NxTable.Cell>
-                    <NxTable.Cell>(space)</NxTable.Cell>
-                  </NxTable.Row>
-                  <NxTable.Row>
-                    <NxTable.Cell>041</NxTable.Cell>
-                    <NxTable.Cell>33</NxTable.Cell>
-                    <NxTable.Cell>21</NxTable.Cell>
-                    <NxTable.Cell>!</NxTable.Cell>
-                  </NxTable.Row>
-                </NxTable.Body>
-              </NxTable>
-            </div>
-          </div>
-        </section>
-      </NxPageMain>
+          </section>
+        </NxPageMain>
         <NxGlobalFooter2>
           <span>Thank you for choosing RSC</span>
           <NxTextLink href="/#">Home</NxTextLink>

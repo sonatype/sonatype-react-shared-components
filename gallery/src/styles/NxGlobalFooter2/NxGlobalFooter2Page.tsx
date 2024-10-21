@@ -5,7 +5,8 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
-import { NxTable, NxP, NxCode, NxTile, NxH2, NxTextLink, NxStatefulAccordion, NxAccordion } from '@sonatype/react-shared-components';
+import { NxTable, NxP, NxCode, NxTile, NxH2, NxTextLink, NxStatefulAccordion, NxAccordion }
+  from '@sonatype/react-shared-components';
 
 import { GalleryDescriptionTile } from '../../gallery-components/GalleryTiles';
 
@@ -29,7 +30,8 @@ const NxGlobalFooter2Page = () =>
         the main content.  It does not undercut either <NxCode>NxGlobalSidebar2</NxCode> nor{' '}
         <NxCode>NxPageSidebar</NxCode>. The <NxCode>NxGlobalFooter2</NxCode> and <NxCode>NxPageMain</NxCode> elements
         should be siblings, contained within an <NxCode>NxGlobalFooter2.Container</NxCode> element that is a direct
-        child of the <NxCode>.nx-page</NxCode> element.  </NxP>
+        child of the <NxCode>.nx-page</NxCode> element.
+      </NxP>
       <NxTable className="gallery-documentation-table">
         <NxTable.Head>
           <NxTable.Row>
