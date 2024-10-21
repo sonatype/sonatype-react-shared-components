@@ -29,7 +29,7 @@ export const NxDivider = withClass('hr', 'nx-divider');
 export const NxFormRow = withClass('div', 'nx-form-row');
 
 export const NxGlobalFooter2 = Object.assign(withClass('footer', 'nx-global-footer-2'), {
-  Container: withClass('div', 'nx-global-footer-2-container'),
+  Container: withClass('div', 'nx-global-footer-2-container')
 });
 
 export const NxCard = Object.assign(withClass('section', 'nx-card'), {
