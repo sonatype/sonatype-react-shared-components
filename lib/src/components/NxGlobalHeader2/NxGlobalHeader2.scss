@@ -28,9 +28,15 @@
     align-items: center;
     display: flex;
     flex-shrink: 0;
+    gap: var(--nx-spacing-3x);
 
     .nx-btn--icon-only {
       @include nx-button-helpers.small-icon-btn;
+    }
+
+    > * {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
