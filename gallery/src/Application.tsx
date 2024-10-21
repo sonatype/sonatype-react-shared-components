@@ -26,6 +26,9 @@ import NxStatefulGlobalSidebarExample from './components/NxStatefulGlobalSidebar
 import NxStatefulGlobalSidebar2Example from './components/NxStatefulGlobalSidebar2/NxStatefulGlobalSidebar2Example';
 import NxGlobalSidebar2Example from './components/NxGlobalSidebar2/NxGlobalSidebar2Example';
 import NxGlobalFooter2Example from './styles/NxGlobalFooter2/NxGlobalFooter2Example';
+import NxGlobalFooter2InnerSidebarExample from './styles/NxGlobalFooter2/NxGlobalFooter2InnerSidebarExample';
+import NxGlobalFooter2ViewportSizedExample from './styles/NxGlobalFooter2/NxGlobalFooter2ViewportSizedExample';
+import NxGlobalFooter2ViewportSizedExpandingExample from './styles/NxGlobalFooter2/NxGlobalFooter2ViewportSizedExpandingExample';
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
@@ -178,6 +181,27 @@ function Application() {
                element={
                  <SectionScrollingWrapper>
                    <NxGlobalFooter2Example />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalFooter2InnerSidebarExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalFooter2InnerSidebarExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalFooter2ViewportSizedExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalFooter2ViewportSizedExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalFooter2ViewportSizedExpandingExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalFooter2ViewportSizedExpandingExample />
                  </SectionScrollingWrapper>
                }>
         </Route>

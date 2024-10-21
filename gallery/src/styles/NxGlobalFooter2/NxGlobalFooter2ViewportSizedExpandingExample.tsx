@@ -1,0 +1,111 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+import React from 'react';
+import {
+  NxButton,
+  NxFontAwesomeIcon,
+  NxBackButton,
+  NxPageMain,
+  NxStatefulGlobalSidebar2,
+  NxGlobalSidebar2NavigationLink,
+  NxTextLink,
+  NxGlobalFooter2,
+  NxTable,
+  NxInfoAlert,
+} from '@sonatype/react-shared-components';
+import {
+  faArrowLeft,
+  faArrowRight,
+  faLink,
+  faQuestionCircle,
+  faBell,
+  faCog,
+  faUserCircle
+} from '@fortawesome/free-solid-svg-icons';
+
+//const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
+
+export default function NxGlobalFooter2ViewportSizedExpandingExample() {
+  return (
+    <>
+      {/* TODO: use NxGlobalHeader2 once it is merged */}
+      <header className="nx-global-header">
+        <NxBackButton href="#/pages/Global%20Header" targetPageTitle="Documentation" />
+        <div className="nx-global-header__actions">
+          <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
+          <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
+          <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
+          <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
+        </div>
+      </header>
+      <NxStatefulGlobalSidebar2 isDefaultOpen={false}
+                                toggleOpenIcon={faArrowLeft}
+                                toggleCloseIcon={faArrowRight}>
+        <NxGlobalSidebar2NavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
+      </NxStatefulGlobalSidebar2>
+      <NxGlobalFooter2.Container className="nx-viewport-sized">
+        <NxPageMain className="nx-viewport-sized__container">
+        <NxBackButton targetPageTitle="nx-viewport-sized Docs" href="#/pages/nx-viewport-sized"/>
+        <section className="nx-tile nx-viewport-sized__container">
+          <header className="nx-tile-header">
+            <div className="nx-tile-header__title">
+              <h2 className="nx-h2">A table, with some stuff above</h2>
+            </div>
+          </header>
+          <div className="nx-tile-content nx-viewport-sized__container">
+            <p className="nx-p">
+              Observe that the table below, along with its containing tile, shrinks to fit the viewport and gets a
+              scrollbar. As the page size is adjusted, the table size changes accordingly.
+            </p>
+            <p className="nx-p" style={{ width: '400px' }}>
+              This paragraph has an explicit, non-100% width. It is still left-aligned within the tile just like it
+              would be in block layout.
+            </p>
+            <p className="nx-p">
+              Single line paragraph.
+            </p>
+            <NxInfoAlert>
+              This alert is stretched as expected.
+            </NxInfoAlert>
+            <div className="nx-scrollable nx-table-container nx-viewport-sized__scrollable">
+              <NxTable>
+                <NxTable.Head>
+                  <NxTable.Row>
+                    <NxTable.Cell>Oct</NxTable.Cell>
+                    <NxTable.Cell>Dev</NxTable.Cell>
+                    <NxTable.Cell>Hex</NxTable.Cell>
+                    <NxTable.Cell>Char</NxTable.Cell>
+                  </NxTable.Row>
+                </NxTable.Head>
+                <NxTable.Body>
+                  <NxTable.Row>
+                    <NxTable.Cell>040</NxTable.Cell>
+                    <NxTable.Cell>32</NxTable.Cell>
+                    <NxTable.Cell>20</NxTable.Cell>
+                    <NxTable.Cell>(space)</NxTable.Cell>
+                  </NxTable.Row>
+                  <NxTable.Row>
+                    <NxTable.Cell>041</NxTable.Cell>
+                    <NxTable.Cell>33</NxTable.Cell>
+                    <NxTable.Cell>21</NxTable.Cell>
+                    <NxTable.Cell>!</NxTable.Cell>
+                  </NxTable.Row>
+                </NxTable.Body>
+              </NxTable>
+            </div>
+          </div>
+        </section>
+      </NxPageMain>
+        <NxGlobalFooter2>
+          <span>Thank you for choosing RSC</span>
+          <NxTextLink href="/#">Home</NxTextLink>
+          <NxTextLink href="/#">Also Home</NxTextLink>
+        </NxGlobalFooter2>
+      </NxGlobalFooter2.Container>
+    </>
+  );
+}
