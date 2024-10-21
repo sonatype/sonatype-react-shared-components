@@ -221,3 +221,8 @@ describe('NxFormRow', function() {
 describe('NxGlobalFooter2', function() {
   it('makes a <footer> tag with the nx-global-footer-2 class', test(NxGlobalFooter2, 'footer', 'nx-global-footer-2'));
 });
+
+describe('NxGlobalFooter2.Container', function() {
+  it('makes a <div> tag with the nx-global-footer-2-container class',
+      test(NxGlobalFooter2.Container, 'div', 'nx-global-footer-2-container'));
+});
