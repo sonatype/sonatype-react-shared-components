@@ -8,10 +8,11 @@ const { setupBrowser } = require('./testUtils');
 
 describe('NxGlobalHeader2', function() {
   describe('with full content', function() {
-    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeader2Example', false);
+    const { getPage, wait, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeader2Example', false);
 
     it('looks right', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
+      await wait(100); // some aspects of page rendering don't seem to be stable without this
       await checkFullPageScreenshot();
     });
 
@@ -19,10 +20,12 @@ describe('NxGlobalHeader2', function() {
   });
 
   describe('without action bar', function() {
-    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeader2NoActionsExample', false);
+    const { getPage, wait, checkFullPageScreenshot, a11yTest } =
+        setupBrowser('#/NxGlobalHeader2NoActionsExample', false);
 
     it('looks right', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
+      await wait(100);
       await checkFullPageScreenshot();
     });
 
@@ -30,10 +33,12 @@ describe('NxGlobalHeader2', function() {
   });
 
   describe('with default logo', function() {
-    const { getPage, checkFullPageScreenshot, a11yTest } = setupBrowser('#/NxGlobalHeader2DefaultLogoExample', false);
+    const { getPage, wait, checkFullPageScreenshot, a11yTest } =
+        setupBrowser('#/NxGlobalHeader2DefaultLogoExample', false);
 
     it('looks right', async function() {
       await getPage().setViewport({ width: 1366, height: 1000 });
+      await wait(100);
       await checkFullPageScreenshot();
     });
 
