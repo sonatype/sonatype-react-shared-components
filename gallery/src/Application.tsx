@@ -40,6 +40,9 @@ import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFul
 import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
 import NxGlobalHeaderNoActionsExample from './styles/NxGlobalHeader/NxGlobalHeaderNoActionsExample';
 import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEmptyExample';
+import NxGlobalHeader2Example from './components/NxGlobalHeader2/NxGlobalHeader2Example';
+import NxGlobalHeader2NoActionsExample from './components/NxGlobalHeader2/NxGlobalHeader2NoActionsExample';
+import NxGlobalHeader2DefaultLogoExample from './components/NxGlobalHeader2/NxGlobalHeader2DefaultLogoExample';
 
 import NxSystemNoticeGlobalSidebarExample from './styles/NxSystemNotice/NxSystemNoticeGlobalSidebarExample';
 import NxSystemNoticeTraditionalPageExample from './styles/NxSystemNotice/NxSystemNoticeTraditionalPageExample';
@@ -238,6 +241,27 @@ function Application() {
                element={
                  <SectionScrollingWrapper>
                    <NxGlobalHeaderEmptyExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalHeader2Example"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalHeader2Example />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalHeader2NoActionsExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalHeader2NoActionsExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalHeader2DefaultLogoExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalHeader2DefaultLogoExample />
                  </SectionScrollingWrapper>
                }>
         </Route>
