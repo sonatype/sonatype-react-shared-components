@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   NxPageSidebar,
   NxButton,
@@ -17,7 +17,9 @@ import {
   NxStatefulGlobalSidebar2,
   NxGlobalSidebar2NavigationLink,
   NxTextLink,
-  NxGlobalFooter2
+  NxGlobalFooter2,
+  NxGlobalHeader2,
+  NxFilterInput
 } from '@sonatype/react-shared-components';
 import {
   faArrowLeft,
@@ -29,12 +31,19 @@ import {
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
-//const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
-
 export default function NxGlobalFooter2InnerSidebarExample() {
+  const [filterInputValue, setFilterInputValue] = useState('');
+
   return (
     <>
-      {/* TODO: use NxGlobalHeader2 once it is merged */}
+      <NxGlobalHeader2 homeHref="#/">
+        <NxFilterInput placeholder="Search"
+                       aria-label="Global Search"
+                       searchIcon
+                       value={filterInputValue}
+                       onChange={setFilterInputValue} />
+        <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
+      </NxGlobalHeader2>
       <header className="nx-global-header">
         <NxBackButton href="#/pages/Global%20Header" targetPageTitle="Documentation" />
         <div className="nx-global-header__actions">

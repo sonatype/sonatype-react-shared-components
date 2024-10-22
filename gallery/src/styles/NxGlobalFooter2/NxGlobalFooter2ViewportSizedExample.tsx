@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   NxButton,
   NxFontAwesomeIcon,
@@ -17,34 +17,30 @@ import {
   NxTable,
   NxInfoAlert,
   NxH1,
-  NxTableContainer
+  NxTableContainer,
+  NxGlobalHeader2,
+  NxFilterInput
 } from '@sonatype/react-shared-components';
 import {
   faArrowLeft,
   faArrowRight,
   faLink,
-  faQuestionCircle,
-  faBell,
-  faCog,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
-//const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png');
-
 export default function NxGlobalFooter2ViewportSizedExample() {
+  const [filterInputValue, setFilterInputValue] = useState('');
+
   return (
     <>
-      {/* TODO: use NxGlobalHeader2 once it is merged */}
-      <header className="nx-global-header">
-        <NxBackButton href="#/pages/Global%20Header" targetPageTitle="Documentation" />
-        <div className="nx-global-header__actions">
-          <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
-          <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
-          <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
-          <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
-        </div>
-      </header>
-      <NxStatefulGlobalSidebar2 isDefaultOpen={false}
+      <NxGlobalHeader2 homeHref="#/">
+        <NxFilterInput placeholder="Search"
+                       aria-label="Global Search"
+                       searchIcon
+                       value={filterInputValue}
+                       onChange={setFilterInputValue} />
+        <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
+      </NxGlobalHeader2><NxStatefulGlobalSidebar2 isDefaultOpen={false}
                                 toggleOpenIcon={faArrowLeft}
                                 toggleCloseIcon={faArrowRight}>
         <NxGlobalSidebar2NavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
