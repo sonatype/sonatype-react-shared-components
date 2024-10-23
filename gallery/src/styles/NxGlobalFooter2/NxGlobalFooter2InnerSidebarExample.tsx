@@ -9,7 +9,6 @@ import {
   NxPageSidebar,
   NxButton,
   NxFontAwesomeIcon,
-  NxBackButton,
   NxPageMain,
   NxP,
   NxPageTitle,
@@ -25,9 +24,6 @@ import {
   faArrowLeft,
   faArrowRight,
   faLink,
-  faQuestionCircle,
-  faBell,
-  faCog,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -44,15 +40,6 @@ export default function NxGlobalFooter2InnerSidebarExample() {
                        onChange={setFilterInputValue} />
         <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
       </NxGlobalHeader2>
-      <header className="nx-global-header">
-        <NxBackButton href="#/pages/Global%20Header" targetPageTitle="Documentation" />
-        <div className="nx-global-header__actions">
-          <NxButton title="Help" variant="icon-only"><NxFontAwesomeIcon icon={faQuestionCircle} /></NxButton>
-          <NxButton title="Notifications" variant="icon-only"><NxFontAwesomeIcon icon={faBell} /></NxButton>
-          <NxButton title="Settings" variant="icon-only"><NxFontAwesomeIcon icon={faCog} /></NxButton>
-          <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
-        </div>
-      </header>
       <NxStatefulGlobalSidebar2 isDefaultOpen={false}
                                 toggleOpenIcon={faArrowLeft}
                                 toggleCloseIcon={faArrowRight}>
