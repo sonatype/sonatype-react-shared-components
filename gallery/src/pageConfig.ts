@@ -105,6 +105,7 @@ import NxGlobalSidebar2Page from './components/NxGlobalSidebar2/NxGlobalSidebar2
 import NxStatefulGlobalSidebar2Page from './components/NxStatefulGlobalSidebar2/NxStatefulGlobalSidebar2Page';
 import NxGlobalFooter2Page from './styles/NxGlobalFooter2/NxGlobalFooter2Page';
 import NxGlobalHeaderPage from './styles/NxGlobalHeader/NxGlobalHeaderPage';
+import NxGlobalHeader2Page from './components/NxGlobalHeader2/NxGlobalHeader2Page';
 import SelectableColorsPage from './styles/SelectableColors/SelectableColorsPage';
 import NxReadOnlyGridTilePage from './styles/NxReadOnlyGridTile/NxReadOnlyGridTilePage';
 import NxSystemNoticePage from './styles/NxSystemNotice/NxSystemNoticePage';
@@ -268,6 +269,7 @@ const pageConfig: PageConfig = {
     'Card': { content: NxCardPage, type: 'html' },
     'Divider': { content: NxDividerPage, type: 'html' },
     'Global Header': { content: NxGlobalHeaderPage, type: 'html' },
+    'Global Header 2': { content: NxGlobalHeader2Page, type: 'html' },
     'Global Sidebar': { content: NxGlobalSidebarPage, type: 'react' },
     'Stateful Global Sidebar': { content: NxStatefulGlobalSidebarPage, type: 'react' },
     'Global Sidebar Footer': { content: NxGlobalSidebarFooterPage, type: 'react' },

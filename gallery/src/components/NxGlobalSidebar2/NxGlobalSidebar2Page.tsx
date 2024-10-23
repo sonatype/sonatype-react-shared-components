@@ -61,7 +61,9 @@ export default function NxGlobalSidebar2Page() {
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>
                   An icon used by the sidebar's open/close toggle when the sidebar is in the open state. The icon
-                  should make it clear that clicking it will close the sidebar.
+                  should make it clear that clicking it will close the sidebar. When FontAwesome Pro icons are
+                  available, this icon <em>should</em> be <NxCode>faArrowLeftFromLine</NxCode> in
+                  FontAwesome's <NxCode>regular</NxCode> style.
                 </NxTable.Cell>
               </NxTable.Row>
               <NxTable.Row>
@@ -70,7 +72,9 @@ export default function NxGlobalSidebar2Page() {
                 <NxTable.Cell>Yes</NxTable.Cell>
                 <NxTable.Cell>
                   An icon used by the sidebar's open/close toggle when the sidebar is in the closed state. This icon
-                  should make it clear that clicking it will open the sidebar.
+                  should make it clear that clicking it will open the sidebar. When FontAwesome Pro icons are
+                  available, this icon <em>should</em> be <NxCode>faArrowRightFromLine</NxCode> in
+                  FontAwesome's <NxCode>regular</NxCode> style.
                 </NxTable.Cell>
               </NxTable.Row>
             </NxTable.Body>

@@ -12,7 +12,7 @@ import {
   NxPageMain,
   NxH1,
   NxPageTitle,
-  NxGlobalHeader
+  NxGlobalHeader2
 } from '@sonatype/react-shared-components';
 import { faArrowLeft, faArrowRight, faLink, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,8 +21,7 @@ export default function NxGlobalSidebar2Example() {
 
   return (
     <>
-      {/* TODO switch to NxGlobalHeader2 once it exists */}
-      <NxGlobalHeader />
+      <NxGlobalHeader2 homeHref="#/" />
       <NxGlobalSidebar2 isOpen={sidebarOpen}
                         toggleOpenIcon={faArrowLeft}
                         toggleCloseIcon={faArrowRight}
