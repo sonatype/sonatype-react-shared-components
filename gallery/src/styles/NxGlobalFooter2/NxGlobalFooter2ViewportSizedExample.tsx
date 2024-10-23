@@ -40,7 +40,8 @@ export default function NxGlobalFooter2ViewportSizedExample() {
                        value={filterInputValue}
                        onChange={setFilterInputValue} />
         <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
-      </NxGlobalHeader2><NxStatefulGlobalSidebar2 isDefaultOpen={false}
+      </NxGlobalHeader2>
+      <NxStatefulGlobalSidebar2 isDefaultOpen={false}
                                 toggleOpenIcon={faArrowLeft}
                                 toggleCloseIcon={faArrowRight}>
         <NxGlobalSidebar2NavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>

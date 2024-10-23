@@ -33,7 +33,7 @@ export default function NxGlobalFooter2ViewportSizedExpandingExample() {
 
   return (
     <>
-    <NxGlobalHeader2 homeHref="#/">
+      <NxGlobalHeader2 homeHref="#/">
         <NxFilterInput placeholder="Search"
                        aria-label="Global Search"
                        searchIcon
