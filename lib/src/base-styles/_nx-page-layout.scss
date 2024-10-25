@@ -93,7 +93,7 @@
   position: relative;
   white-space: normal;
 
-  + .nx-page-main {
+  + .nx-page-main, + .nx-global-footer-2-container {
     // When inner sidebar is present, main should only be in the content area
     grid-area: content;
   }
