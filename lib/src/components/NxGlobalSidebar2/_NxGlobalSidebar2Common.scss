@@ -49,7 +49,7 @@
     color: var(--nx-color-global-sidebar-2-link);
   }
 
-  &.selected {
+  &.selected, &.open {
     background: var(--nx-background-global-sidebar-2-link-selected);
     color: var(--nx-color-global-sidebar-2-link-selected);
     outline-color: var(--nx-color-global-sidebar-2-link-selected);
