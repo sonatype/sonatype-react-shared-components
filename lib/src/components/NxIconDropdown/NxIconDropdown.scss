@@ -27,6 +27,10 @@
       background-color: var( --nx-color-interactive-background-hover);
     }
 
+    &:focus {
+      outline-color: var(--nx-color-interactive-border-focus);
+    }
+
     &:active {
       background-color: var(--nx-color-button-icon-only-background-selected);
     }

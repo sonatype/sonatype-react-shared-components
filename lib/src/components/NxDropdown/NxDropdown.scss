@@ -43,7 +43,6 @@
   display: flex;
   margin: 0;
   outline: none;
-  outline-color: var(--nx-color-interactive-border-focus);
   padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
   text-align: left;
   width: 100%;
@@ -55,6 +54,7 @@
   }
 
   &:focus {
+    outline-color: var(--nx-color-interactive-border-focus);
     outline-offset: calc(0px - 1px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
   }
 
