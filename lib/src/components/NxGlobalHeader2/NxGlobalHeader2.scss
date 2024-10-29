@@ -30,7 +30,7 @@
     flex-shrink: 0;
     gap: var(--nx-spacing-3x);
 
-    // parent clas needed for specificity
+    // parent class needed for specificity
     .nx-global-header-2 & > * {
       margin-left: 0;
       margin-right: 0;
