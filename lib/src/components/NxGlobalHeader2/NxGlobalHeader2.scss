@@ -6,7 +6,6 @@
  */
 @use '../../scss-shared/nx-button-helpers';
 @use '../../scss-shared/_nx-dark-mode-helpers';
-@use '../NxGlobalSidebar2/_NxGlobalSidebar2Common';
 
 .nx-global-header-2 {
   $header-content-height: 55px;
@@ -30,26 +29,6 @@
     display: flex;
     flex-shrink: 0;
     gap: var(--nx-spacing-3x);
-
-    .nx-btn {
-      @extend %nx-global-sidebar-2__clickable;
-
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      width: 48px;
-      height: 48px;
-
-      &.open:active {
-        background: var(--nx-color-interactive-background-active);
-        outline-color: var(--nx-color-interactive-border-focus);
-        outline-offset: calc(0px - var(--nx-focus-outline-width));
-      }
-
-      .nx-icon {
-        position: static;
-      }
-    }
 
     // parent clas needed for specificity
     .nx-global-header-2 & > * {

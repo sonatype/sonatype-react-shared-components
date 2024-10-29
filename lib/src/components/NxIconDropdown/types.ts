@@ -13,6 +13,7 @@ import { childrenPropTypes } from '../NxDropdown/types';
 export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   isOpen: boolean;
   className?: string | null;
+  dropdownMenuClassName?: string | null;
   children?: OptionalReactElement | OptionalReactElement[] | null;
   disabled?: boolean | null;
   onToggleCollapse?: (() => void) | null;
