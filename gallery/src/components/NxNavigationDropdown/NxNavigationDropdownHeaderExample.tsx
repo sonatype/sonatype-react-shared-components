@@ -20,7 +20,7 @@ function NxNavigationDropdownHeaderExample() {
                     icon={faEllipsisV}
                     title="Options">
       <NxNavigationDropdown.MenuHeader>
-        <NxH4>Menu</NxH4>
+        <NxH4>MENU</NxH4>
         <NxP>Some description</NxP>
       </NxNavigationDropdown.MenuHeader>
       <NxTextLink onClick={onClick} href="#/pages/Dropdown" className="nx-dropdown-link">

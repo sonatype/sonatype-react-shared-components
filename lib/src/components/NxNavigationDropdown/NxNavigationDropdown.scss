@@ -71,4 +71,26 @@
 
     @include nx-container-helpers.container-vertical;
   }
+
+  &__menu-header {
+    border-bottom: var(--nx-border-width) solid var(--nx-color-global-sidebar-2-border); // TODO confirm color
+
+    margin-bottom: var(--nx-spacing-4x);
+    margin-left: var(--nx-spacing-3x);
+    margin-right: var(--nx-spacing-3x);
+
+    padding-top: var(--nx-spacing-2x);
+    padding-bottom: var(--nx-spacing-4x);
+
+    .nx-h4 {
+      margin-bottom: var(--nx-spacing-base);
+    }
+
+    .nx-p {
+      font-size: var(--nx-font-size-xs);
+      margin: 0;
+    }
+
+    @include nx-container-helpers.container-vertical;
+  }
 }
