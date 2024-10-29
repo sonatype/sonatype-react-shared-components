@@ -23,7 +23,6 @@ export interface AbstractDropdownProps extends HTMLAttributes<HTMLDivElement> {
   onCloseKeyDown?: KeyboardEventHandler | null;
   onCloseClick?: ((e: MouseEvent) => void) | null;
   menuRef?: Ref<HTMLDivElement>;
-  dropdownMenuClassName?: string | null;
 }
 
 export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
@@ -38,7 +37,6 @@ export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   onCloseClick?: ((e: MouseEvent) => void) | null;
   toggleTooltip?: TooltipConfigProps | string | null;
   menuRef?: Ref<HTMLDivElement>;
-  dropdownMenuClassName?: string | null;
 };
 
 export const childrenPropTypes = PropTypes.oneOfType([

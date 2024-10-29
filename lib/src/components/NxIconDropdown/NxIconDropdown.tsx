@@ -60,7 +60,8 @@ const NxIconDropdown: FunctionComponent<Props> = function NxIconDropdown(props) 
                       renderToggleElement={renderToggleElement}
                       isOpen={isOpen}
                       disabled={disabled}
-                      { ...otherProps }>
+                      { ...otherProps }
+    >
       { wrappedChildren }
     </AbstractDropdown>
   );
