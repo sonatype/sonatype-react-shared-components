@@ -9,14 +9,13 @@ import {
   NxGlobalHeader2,
   NxGlobalSidebar2NavigationLink,
   NxPageSidebar,
-  NxButton,
-  NxFontAwesomeIcon,
   NxStatefulGlobalSidebar2,
   NxPageMain,
   NxP,
   NxPageTitle,
   NxH1,
-  NxFilterInput
+  NxFilterInput,
+  NxStatefulIconDropdown
 } from '@sonatype/react-shared-components';
 import {
   faArrowLeft,
@@ -36,7 +35,11 @@ export default function NxGlobalHeader2Example() {
                        searchIcon
                        value={filterInputValue}
                        onChange={setFilterInputValue} />
-        <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
+        <NxStatefulIconDropdown title="User" icon={faUserCircle}>
+          <button onClick={() => alert('clicked')} className="nx-dropdown-button">
+            Button Link
+          </button>
+        </NxStatefulIconDropdown>
       </NxGlobalHeader2>
       <NxStatefulGlobalSidebar2 isDefaultOpen={false} toggleOpenIcon={faArrowLeft} toggleCloseIcon={faArrowRight}>
         <NxGlobalSidebar2NavigationLink icon={faLink} text="NxGlobalSidebar" href="#/pages/Global%20Sidebar"/>
