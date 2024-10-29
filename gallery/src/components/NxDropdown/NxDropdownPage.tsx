@@ -155,6 +155,12 @@ const NxDropdownPage = () =>
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
+              <NxTable.Cell>dropdownMenuClassName</NxTable.Cell>
+              <NxTable.Cell>string</NxTable.Cell>
+              <NxTable.Cell>No</NxTable.Cell>
+              <NxTable.Cell>Extra class names to apply to the <NxCode>nx-dropdown-menu</NxCode> element</NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
               <NxTable.Cell>HTML <NxCode>&lt;div&gt;</NxCode> Attributes</NxTable.Cell>
               <NxTable.Cell>
                 <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/element/div">
@@ -337,7 +343,8 @@ const NxDropdownPage = () =>
                         id="nx-dropdown-custom-label-example"
                         liveExample={NxDropdownCustomLabelExample}
                         codeExamples={nxDropdownCustomLabelExampleCode}>
-      This dropdown contains more complex JSX in its label.
+      This dropdown contains more complex JSX in its label and also demonstrates how to apply additional class names
+      to the dropdown and the dropdown menu.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Custom label with NxThreatIndicator example"

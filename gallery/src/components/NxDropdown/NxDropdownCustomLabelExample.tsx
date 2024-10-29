@@ -22,6 +22,7 @@ function NxDropdownCustomLabelExample() {
   return (
     <NxDropdown label={labelElement}
                 className="extra-class"
+                dropdownMenuClassName="extra-menu-class"
                 isOpen={isOpen}
                 onToggleCollapse={onToggleCollapse}>
       <button onClick={onClick} className="nx-dropdown-button">

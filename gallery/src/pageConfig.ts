@@ -127,6 +127,9 @@ import NxStatefulSearchTransferListPage
   from './components/NxStatefulSearchTransferList/NxStatefulSearchTransferListPage';
 import NxIconDropdownPage from './components/NxIconDropdown/NxIconDropdownPage';
 import NxStatefulIconDropdownPage from './components/NxStatefulIconDropdown/NxStatefulIconDropdownPage';
+import NxNavigationDropdownPage from './components/NxNavigationDropdown/NxNavigationDropdownPage';
+import NxStatefulNavigationDropdownPage
+  from './components/NxStatefulNavigationDropdown/NxStatefulNavigationDropdownPage';
 import NxSmallThreatCounterPage from './components/NxSmallThreatCounter/NxSmallThreatCounterPage';
 import NxCollapsibleItemsPage from './components/NxCollapsibleItems/NxCollapsibleItemsPage';
 import NxCollapsibleMultiSelectPage
@@ -205,6 +208,8 @@ const pageConfig: PageConfig = {
     'Stateful Filter Dropdown': { content: NxStatefulFilterDropdownPage, type: 'react' },
     'Icon Dropdown': { content: NxIconDropdownPage, type: 'react' },
     'Stateful Icon Dropdown': { content: NxStatefulIconDropdownPage, type: 'react' },
+    'Navigation Dropdown': { content: NxNavigationDropdownPage, type: 'react' },
+    'Stateful Navigation Dropdown': { content: NxStatefulNavigationDropdownPage, type: 'react' },
     'Pagination': { content: NxPaginationPage, type: 'react' },
     'Indeterminate Pagination': { content: NxIndeterminatePaginationPage, type: 'react' },
     'Search Dropdown': { content: NxSearchDropdownPage, type: 'react' },
