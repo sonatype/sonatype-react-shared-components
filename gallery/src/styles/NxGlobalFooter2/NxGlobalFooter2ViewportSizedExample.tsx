@@ -18,7 +18,7 @@ import {
   NxTableContainer,
   NxGlobalHeader2,
   NxFilterInput,
-  NxStatefulIconDropdown
+  NxStatefulNavigationDropdown
 } from '@sonatype/react-shared-components';
 import {
   faArrowLeft,
@@ -38,11 +38,11 @@ export default function NxGlobalFooter2ViewportSizedExample() {
                        searchIcon
                        value={filterInputValue}
                        onChange={setFilterInputValue} />
-        <NxStatefulIconDropdown title="User" icon={faUserCircle}>
+        <NxStatefulNavigationDropdown title="User" icon={faUserCircle}>
           <button onClick={() => alert('clicked')} className="nx-dropdown-button">
             Button Link
           </button>
-        </NxStatefulIconDropdown>
+        </NxStatefulNavigationDropdown>
       </NxGlobalHeader2>
       <NxStatefulGlobalSidebar2 isDefaultOpen={false}
                                 toggleOpenIcon={faArrowLeft}
