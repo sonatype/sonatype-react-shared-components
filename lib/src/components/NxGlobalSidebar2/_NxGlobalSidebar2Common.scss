@@ -43,6 +43,7 @@
 
   &:active {
     background-color: var(--nx-color-interactive-background-active);
+    outline: none;
   }
 
   &:focus:active {

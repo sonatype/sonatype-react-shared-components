@@ -329,6 +329,7 @@
 
   // NxNavigationDropdown
   --nx-color-navigation-dropdown-text: var(--nx-swatch-black);
+  --nx-color-navigation-dropdown-header-border: var(--nx-swatch-indigo-90);
 
   // NxTag
   --nx-color-tag-text: var(--nx-color-text-stark);
@@ -668,6 +669,10 @@
     --nx-color-global-sidebar-2-border: var(--nx-color-border);
     --nx-color-global-sidebar-2-link: var(--nx-color-text-stark);
     --nx-color-global-sidebar-2-link-selected: var(--nx-swatch-indigo-05);
+
+    // NxNavigationDropdown
+    --nx-color-navigation-dropdown-text: var(--nx-swatch-indigo-80);
+    --nx-color-navigation-dropdown-header-border: var(--nx-swatch-indigo-40);
 
     // NxTag
     --nx-color-tag-text: var(--nx-swatch-indigo-10);

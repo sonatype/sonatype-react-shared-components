@@ -19,7 +19,7 @@
     .nx-dropdown-link .nx-icon,
     .nx-filter-dropdown__reset .nx-icon,
     .nx-dropdown :is(.disabled, [disabled]) .nx-icon,
-    .nx-global-header-2__actions .nx-dropdown .nx-icon
+    .nx-navigation-dropdown .nx-icon
   ) {
     color: var(--nx-color-text-stark);
   }
