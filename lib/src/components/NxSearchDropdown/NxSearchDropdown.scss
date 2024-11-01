@@ -22,10 +22,10 @@
   }
 
   &__empty-message {
-    @include nx-container-helpers.container-horizontal;
-
     padding: var(--nx-spacing-base) var(--nx-spacing-4x);
     text-align: center;
+
+    @include nx-container-helpers.container-horizontal;
   }
 
   &--dropdown-showable {

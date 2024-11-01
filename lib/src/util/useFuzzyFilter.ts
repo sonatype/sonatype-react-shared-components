@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {useState} from 'react';
+import {useMemo, useState} from 'react';
 import Fuse from 'fuse.js';
 
 import fuzzyFilter from './fuzzyFilter';
@@ -12,7 +12,11 @@ import fuzzyFilter from './fuzzyFilter';
 function useFuzzyFilter<T>(input: T[], options: Fuse.IFuseOptions<T>): [T[], string, ((s: string) => void)] {
   const [filterTerm, setFilterTerm] = useState('');
 
-  const output = filterTerm ? fuzzyFilter(input, filterTerm, options) : input;
+  const output = useMemo(
+      () => filterTerm ? fuzzyFilter(input, filterTerm, options) : input,
+      [filterTerm, input, options]
+  );
+
   return [output, filterTerm, setFilterTerm];
 }
 

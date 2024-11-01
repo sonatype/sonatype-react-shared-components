@@ -12,21 +12,21 @@
 }
 
 .nx-tab-list {
-  @include nx-container-helpers.container-horizontal;
-
   border-bottom: var(--nx-border-default);
   display: flex;
   margin: 0 0 var(--nx-spacing-6x) 0;
   padding: 0;
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-tab-panel {
-  @include nx-container-helpers.container-vertical;
-
   &:focus {
     outline: solid 1px var(--nx-color-interactive-border-focus);
     outline-offset: -1px;
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-tab {
