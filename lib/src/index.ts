@@ -48,6 +48,10 @@ export {
 
 export { default as NxThreatIndicator, Props as NxThreatIndicatorProps }
   from './components/NxThreatIndicator/NxThreatIndicator';
+
+export { default as NxVulnerabilityIndicator, Props as NxVulnerabilityIndicatorProps }
+  from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicator';
+
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
 
@@ -303,6 +307,10 @@ export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps
 
 export { default as NxThreatIndicatorLegend, NxThreatIndicatorLegendProps }
   from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegend';
+
+export { default as NxVulnerabilityIndicatorLegend, NxVulnerabilityIndicatorLegendProps}
+  from './components/NxVulnerabilityIndicatorLegend/NxVulnerabilityIndicatorLegend';
+
 export {
   default as NxSearchDropdown,
   Props as NxSearchDropdownProps,

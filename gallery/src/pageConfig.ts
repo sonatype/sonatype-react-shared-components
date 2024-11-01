@@ -22,6 +22,7 @@ import NxPageTitlePage from './styles/NxPageTitle/NxPageTitlePage';
 import NxTilePage from './styles/NxTile/NxTilePage';
 import NxBtnPage from './styles/NxBtn/NxBtnPage';
 import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndicatorPage';
+import NxVulnerabilityIndicatorPage from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicatorPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
@@ -36,6 +37,7 @@ import NxIconPage from './styles/NxIcon/NxIconPage';
 import NxFontAwesomeIconPage from './components/NxFontAwesomeIcon/NxFontAwesomeIconPage';
 import NxCounterPage from './styles/NxCounter/NxCounterPage';
 import NxThreatNumberPage from './styles/NxThreatNumber/NxThreatNumberPage';
+import NxVulnerabilityScorePage from './styles/NxVulnerabilityScore/NxVulnerabilityScorePage';
 import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
 import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
@@ -118,6 +120,8 @@ import AccessibilityPage from './pages/Accessibility';
 import AccessibilityChecklistPage from './pages/AccessibilityChecklist';
 import NxDividerPage from './styles/NxDivider/NxDividerPage';
 import NxThreatIndicatorLegendPage from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegendPage';
+import NxVulnerabilityIndicatorLegendPage
+  from './components/NxVulnerabilityIndicatorLegend/NxVulnerabilityIndicatorLegendPage';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
 import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/NxStatefulSearchDropdownPage';
 import NxSearchTransferListPage from './components/NxSearchTransferList/NxSearchTransferListPage';
@@ -190,7 +194,10 @@ const pageConfig: PageConfig = {
     'Tooltip': { content: NxTooltipPage, type: 'react' },
     'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' },
     'Vulnerability Counter': { content: NxVulnerabilityCounterPage, type: 'react' },
-    'Small Vulnerability Counter': { content: NxSmallVulnerabilityCounterPage, type: 'react' }
+    'Small Vulnerability Counter': { content: NxSmallVulnerabilityCounterPage, type: 'react' },
+    'Vulnerability Indicator': { content: NxVulnerabilityIndicatorPage, type: 'react' },
+    'Vulnerability Indicator Legend': { content: NxVulnerabilityIndicatorLegendPage, type: 'react' },
+    'Vulnerability Score': { content: NxVulnerabilityScorePage, type: 'html' }
   },
   'Buttons and Dropdowns': {
     'Back Button': { content: NxBackButtonPage, type: 'react' },
