@@ -170,7 +170,7 @@
   --nx-color-small-threat-counter-zero-background: var(--nx-color-interactive-background-disabled);
   --nx-color-small-threat-counter-zero-text: var(--nx-swatch-grey-40);
 
-  //NxSmallVulnerabilityCounter
+  // NxSmallVulnerabilityCounter
   --nx-color-small-vulnerability-counter-zero-background: var(--nx-swatch-grey-80);
   --nx-color-small-vulnerability-counter-zero-border: var(--nx-swatch-grey-10);
   --nx-color-small-vulnerability-counter-zero-text: var(--nx-swatch-grey-05);
@@ -500,9 +500,13 @@
     --nx-color-policy-indicator-icon: var(--nx-swatch-blue-10);
     --nx-color-policy-indicator-text: var(--nx-swatch-indigo-97);
 
-    //NxSmallThreatCounter
+    // NxSmallThreatCounter
     --nx-color-small-threat-counter-zero-background: var(--nx-color-disabled);
     --nx-color-small-threat-counter-zero-text: var(--nx-swatch-indigo-20);
+
+    // NxSmallVulnerabilityCounter
+    --nx-color-small-vulnerability-counter-zero-background: var(--nx-color-small-threat-counter-zero-background);
+    --nx-color-small-vulnerability-counter-zero-text: var(--nx-color-small-threat-counter-zero-text);
 
     //NxThreatIndicator variables
     --nx-color-threat-indicator-legend-header-text: var(--nx-swatch-indigo-95);
