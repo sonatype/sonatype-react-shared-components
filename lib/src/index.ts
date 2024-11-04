@@ -290,6 +290,9 @@ export { default as NxTextLink, Props as NxTextLinkProps } from './components/Nx
 export { default as NxThreatCounter, Props as NxThreatCounterProps }
   from './components/NxThreatCounter/NxThreatCounter';
 
+export { default as NxVulnerabilityCounter, Props as NxVulnerabilityCounterProps }
+  from './components/NxVulnerabilityCounter/NxVulnerabilityCounter';
+
 export { default as NxFormSelect, Props as NxFormSelectProps } from './components/NxFormSelect/NxFormSelect';
 import * as nxFormSelectStateHelpers from './components/NxFormSelect/stateHelpers';
 export { nxFormSelectStateHelpers };
@@ -339,6 +342,9 @@ export { default as NxStatefulIconDropdown }
 
 export { default as NxSmallThreatCounter, Props as NxSmallThreatCounterProps }
   from './components/NxSmallThreatCounter/NxSmallThreatCounter';
+
+export { default as NxSmallVulnerabilityCounter, Props as NxSmallVulnerabilityCounterProps }
+  from './components/NxSmallVulnerabilityCounter/NxSmallVulnerabilityCounter';
 
 export { default as NxTree, ItemProps as NxTreeItemProps } from './components/NxTree/NxTree';
 export { StatefulItemProps as NxTreeStatefulItemProps } from './components/NxTree/stateful/NxTreeStatefulItem';
