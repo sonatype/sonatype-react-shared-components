@@ -28,7 +28,7 @@ function NxNavigationDropdownExample() {
       <button onClick={onClick} className="nx-dropdown-button">
         Button Link 1 - this link should trigger truncation
       </button>
-      <button onClick={onClick} className="nx-dropdown-button">
+      <button onClick={onClick} className="nx-dropdown-button selected">
         Button Link 2
       </button>
       <button onClick={onClick} className="nx-dropdown-button">
