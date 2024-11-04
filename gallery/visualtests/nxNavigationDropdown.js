@@ -65,7 +65,7 @@ describe('NxNavigationDropdown', function() {
 
     it('has a gradient background and white inset border with expanded menu when hovered and focused',
         async function() {
-          const [targetElement, dropdownBtn] = await waitAndGetElements(defaultSelector, dropdownToggleSelector),
+          const [targetElement] = await waitAndGetElements(defaultSelector),
               page = getPage();
 
           await moveMouseAway();
