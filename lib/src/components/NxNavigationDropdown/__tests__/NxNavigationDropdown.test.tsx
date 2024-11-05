@@ -12,7 +12,7 @@ import NxNavigationDropdown, { Props } from '../NxNavigationDropdown';
 import { OptionalReactElement } from '../../../util/reactUtil';
 
 /**
- * Note: this is essentially a copy of the tests for NxIconDropdown, as this component is the same thing but with 
+ * Note: this is essentially a copy of the tests for NxIconDropdown, as this component is the same thing but with
  * an extra CSS class (which is an implementation detail)
  */
 describe('NxNavigationDropdown', () => {
