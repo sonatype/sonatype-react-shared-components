@@ -24,7 +24,6 @@ import NxBtnPage from './styles/NxBtn/NxBtnPage';
 import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndicatorPage';
 import NxVulnerabilityIndicatorPage from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicatorPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
-import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
 import NxListPageV2 from './components/NxList/NxListPage';
 import NxTableStylePage from './styles/NxTable/NxTableStylePage';
@@ -289,8 +288,7 @@ const pageConfig: PageConfig = {
     'Read Only': { content: NxReadOnlyPage, type: 'html' },
     'Tabs': { content: NxTabsPage, type: 'react' },
     'Stateful Tabs': { content: NxStatefulTabsPage, type: 'react' },
-    'Tile': { content: NxTilePage, type: 'html' },
-    'Vulnerability Details': { content: NxVulnerabilityDetailsPage, type: 'react' }
+    'Tile': { content: NxTilePage, type: 'html' }
   },
   'Typography and Icons': {
     'Blockquote': { content: NxBlockquotePage, type: 'html' },

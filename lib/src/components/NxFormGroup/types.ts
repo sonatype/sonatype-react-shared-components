@@ -10,6 +10,7 @@ import * as PropTypes from 'prop-types';
 interface ChildrenProps {
   id?: string | null;
   'aria-describedby'?: string | null;
+  'aria-required'?: boolean | null;
 }
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {

@@ -6,33 +6,53 @@
  */
 import React, { useState } from 'react';
 import { includes, toLower } from 'ramda';
+import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 
 import {
   NxCollapsibleRadioSelect,
   NxCollapsibleRadioSelectOption,
+  NxFontAwesomeIcon,
   useToggle
 } from '@sonatype/react-shared-components';
 
+interface Option extends NxCollapsibleRadioSelectOption {
+  stringName: string;
+}
+
 const NxCollapsibleRadioSelectExample = () => {
-  const options = [
+
+  const customNameElement = (
+    <>
+      <NxFontAwesomeIcon icon={faBicycle}/>
+      <span>Bicycle</span>
+    </>
+  );
+
+  const options: Option[] = [
     {
       id: 'bike',
-      name: 'Bicycle'
+      name: customNameElement,
+      stringName: 'Bicycle'
     }, {
       id: 'motorcycle',
-      name: 'Motorcycle'
+      name: 'Motorcycle',
+      stringName: 'Motorcycle'
     }, {
       id: 'skate',
-      name: 'Skateboard'
+      name: 'Skateboard',
+      stringName: 'Skateboard'
     }, {
       id: 'longboard',
-      name: 'Loooooooooooooooooooooooooooooooooongboard'
+      name: 'Loooooooooooooooooooooooooooooooooongboard',
+      stringName: 'Loooooooooooooooooooooooooooooooooongboard'
     }, {
       id: 'moped',
-      name: 'Moped'
+      name: 'Moped',
+      stringName: 'Moped'
     }, {
       id: null,
-      name: 'No Transport'
+      name: 'No Transport',
+      stringName: 'No Transport'
     }
   ];
 
@@ -41,8 +61,9 @@ const NxCollapsibleRadioSelectExample = () => {
 
   const [filter, setFilter] = useState('');
 
-  function filterPredicate(option: NxCollapsibleRadioSelectOption) {
-    return includes(toLower(filter), toLower(option.name));
+  function filterPredicate(option: Option) {
+    const name : string = option.stringName;
+    return includes(toLower(filter), toLower(name));
   }
 
   return (

@@ -20,7 +20,7 @@ const NxFontAwesomeIcon = forwardRef<SVGSVGElement, Props>((props, ref) => {
       titleId = useUniqueId(''), // FA adds its own prefix to this, no need for us to add one too
       otherProps = props.title ? { titleId } as Partial<Props> : undefined;
 
-  return <FontAwesomeIcon forwardedRef={ref} { ...otherProps } { ...props } className={className} />;
+  return <FontAwesomeIcon ref={ref} { ...otherProps } { ...props } className={className} />;
 });
 
 export default NxFontAwesomeIcon;

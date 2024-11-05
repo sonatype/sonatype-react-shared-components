@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef, useContext, FormEvent } from 'react';
 import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
@@ -19,7 +19,14 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 export { Props };
 
 const NxFormSelect = forwardRef<HTMLDivElement, Props>(function NxFormSelect(props: Props, forwardedRef) {
-  const { className: classNameProp, validatable, isPristine, validationErrors, ...attrs } = props,
+  const {
+        className: classNameProp,
+        validatable,
+        isPristine,
+        validationErrors,
+        onChange,
+        ...attrs
+      } = props,
       { showValidationErrors: formShowValidationErrors } = useContext(FormAriaContext),
       showValidationErrors = formShowValidationErrors || !isPristine,
       isInvalid = !!(validatable && showValidationErrors && hasValidationErrors(validationErrors)),
@@ -31,9 +38,16 @@ const NxFormSelect = forwardRef<HTMLDivElement, Props>(function NxFormSelect(pro
         valid: !isPristine && validatable && !isInvalid
       });
 
+  function selectOnChange(e: FormEvent<HTMLSelectElement>) {
+    if (onChange) {
+      onChange(e.currentTarget.value);
+    }
+  }
+
   return (
     <div ref={forwardedRef} className={className}>
       <select className="nx-form-select__select"
+              onChange={selectOnChange}
               { ...attrs }
               aria-invalid={isInvalid}
               aria-errormessage={invalidMessageId} />

@@ -37,14 +37,31 @@ describe('NxFilterInput', function() {
     }
   });
 
-  it('passes additional attrs to the Input', function() {
-    const input = quickRender({ id: 'foo', lang: 'en-US' }).getByRole('textbox');
+  it('passes id, disabled, placeholder, aria-required, and aria-describedby to the input', function() {
+    render(<p id="desc">Description</p>);
+
+    const input = quickRender({
+      id: 'foo',
+      placeholder: 'place',
+      disabled: true,
+      'aria-required': true,
+      'aria-describedby': 'desc'
+    }).getByRole('textbox');
 
     expect(input).toHaveAttribute('id', 'foo');
-    expect(input).toHaveAttribute('lang', 'en-US');
+    expect(input).toHaveAttribute('placeholder', 'place');
+    expect(input).toHaveAttribute('disabled');
+    expect(input).toHaveAttribute('aria-required', 'true');
+    expect(input).toHaveAccessibleDescription('Description');
   });
 
-  it('does not pass validatable, validationErrors, or type props to the Input', function() {
+  it('passes additional attrs to the top-level element', function() {
+    const el = renderEl({ lang: 'en-US' });
+
+    expect(el).toHaveAttribute('lang', 'en-US');
+  });
+
+  it('does not pass validatable, validationErrors, or type props to the Input or top-level element', function() {
     const input = quickRender({
       validatable: true,
       validationErrors: 'It\'s all wrong',
@@ -54,6 +71,16 @@ describe('NxFilterInput', function() {
     expect(input).not.toHaveAttribute('type', 'textarea');
     expect(input).not.toHaveAttribute('aria-invalid');
     expect(input).not.toHaveErrorMessage('It\'s all wrong');
+
+    const el = renderEl({
+      validatable: true,
+      validationErrors: 'It\'s all wrong',
+      type: 'textarea'
+    } as Partial<Props>);
+
+    expect(el).not.toHaveAttribute('type', 'textarea');
+    expect(el).not.toHaveAttribute('aria-invalid');
+    expect(el).not.toHaveErrorMessage('It\'s all wrong');
   });
 
   it('sets ref on the Input', function() {

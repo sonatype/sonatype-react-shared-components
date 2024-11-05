@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   NxCheckbox,
@@ -30,13 +30,8 @@ export default function NxFormExample() {
     return val.length ? null : 'Must be non-empty';
   }
 
-  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('');
-
-  function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
-    setSelectVal(evt.currentTarget.value);
-  }
-
-  const [usernameState, setUsernameState] = useState(initialState('', validator)),
+  const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>(''),
+      [usernameState, setUsernameState] = useState(initialState('', validator)),
       [hostnameState, setHostnameState] = useState(initialState('')),
       [redChecked, toggleRed] = useToggle(false),
       [blueChecked, toggleBlue] = useToggle(false),
@@ -153,7 +148,7 @@ export default function NxFormExample() {
         </NxRadio>
       </NxFieldset>
       <NxFormGroup label="Select">
-        <NxFormSelect { ...selectState } onChange={onSelectChange}>
+        <NxFormSelect { ...selectState } onChange={setSelectVal}>
           <option value="">Select an option</option>
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>

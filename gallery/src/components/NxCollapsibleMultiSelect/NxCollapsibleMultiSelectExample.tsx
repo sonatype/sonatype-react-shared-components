@@ -15,26 +15,43 @@ import {
   useToggle
 } from '@sonatype/react-shared-components';
 
+interface Option extends NxCollapsibleMultiSelectOption {
+  stringName: string;
+}
+
 const NxCollapsibleMultiSelectExample = () => {
-  const options = [
+  const customNameElement = (
+    <>
+      <NxFontAwesomeIcon icon={faBicycle}/>
+      <span>Bicycle</span>
+    </>
+  );
+
+  const options: Option[] = [
     {
       id: 'bike',
-      name: 'Bicycle'
+      name: customNameElement,
+      stringName: 'Bicycle'
     }, {
       id: 'motorcycle',
-      name: 'Motorcycle'
+      name: 'Motorcycle',
+      stringName: 'Motorcycle'
     }, {
       id: 'skate',
-      name: 'Skateboard'
+      name: 'Skateboard',
+      stringName: 'Skateboard'
     }, {
       id: 'longboard',
-      name: 'Loooooooooooooooooooooooooooooooooongboard'
+      name: 'Loooooooooooooooooooooooooooooooooongboard',
+      stringName: 'Loooooooooooooooooooooooooooooooooongboard'
     }, {
       id: 'moped',
-      name: 'Moped'
+      name: 'Moped',
+      stringName: 'Moped'
     }, {
       id: null,
-      name: 'No Transport'
+      name: 'No Transport',
+      stringName: 'No Transport'
     }
   ];
 
@@ -44,8 +61,9 @@ const NxCollapsibleMultiSelectExample = () => {
 
   const [filter, setFilter] = useState('');
 
-  function filterPredicate(option: NxCollapsibleMultiSelectOption) {
-    return includes(toLower(filter), toLower(option.name));
+  function filterPredicate(option: Option) {
+    const name: string = option.stringName;
+    return includes(toLower(filter), toLower(name));
   }
 
   return (

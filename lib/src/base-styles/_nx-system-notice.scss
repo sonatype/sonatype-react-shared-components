@@ -13,11 +13,12 @@
 
 .nx-system-notice {
   @include nx-text-helpers.truncate-ellipsis;
-  @include nx-container-helpers.container-horizontal;
 
   background-color: var(--nx-color-system-notice-background);
   color: var(--nx-color-system-notice-text);
   padding: var(--nx-spacing-3x) var(--nx-spacing-6x);
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-system-notice--alert {

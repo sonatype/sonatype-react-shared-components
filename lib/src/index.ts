@@ -16,8 +16,12 @@ export { default as NxLoadingSpinner } from './components/NxLoadingSpinner/NxLoa
 export { default as NxLoadError, Props as NxLoadErrorProps } from './components/NxLoadError/NxLoadError';
 export { default as NxLoadWrapper, Props as NxLoadWrapperProps } from './components/NxLoadWrapper/NxLoadWrapper';
 export { default as NxModal, Props as NxModalProps } from './components/NxModal/NxModal';
-export { default as NxTextInput, PublicProps as NxTextInputProps, StateProps as NxTextInputStateProps }
-  from './components/NxTextInput/NxTextInput';
+export {
+  default as NxTextInput,
+  PublicProps as NxTextInputProps,
+  StateProps as NxTextInputStateProps,
+  Validator as NxTextInputValidator
+} from './components/NxTextInput/NxTextInput';
 
 export { default as NxDateInput, PublicProps as NxDateInputProps, StateProps as NxDateInputStateProps }
   from './components/NxDateInput/NxDateInput';
@@ -54,13 +58,6 @@ export { default as NxVulnerabilityIndicator, Props as NxVulnerabilityIndicatorP
 
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
-
-// deprecated
-export {
-  default as NxVulnerabilityDetails,
-  vulnerabilityDetailsPropType,
-  Props as NxVulnerabilityDetailsProps
-} from './components/NxVulnerabilityDetails/NxVulnerabilityDetails';
 
 export {
   default as NxSubmitMask,
@@ -374,6 +371,7 @@ export { default as NxDrawer, Props as NxDrawerProps } from './components/NxDraw
 
 export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';
 export { default as NxFileUpload, Props as NxFileUploadProps } from './components/NxFileUpload/NxFileUpload';
+export { StateProps as NxFileUploadStateProps } from './components/NxFileUpload/types';
 export { default as NxStatefulFileUpload, Props as NxStatefulFileUploadProps }
   from './components/NxFileUpload/stateful/NxStatefulFileUpload';
 export { default as NxMultiFileUpload, Props as NxMultiFileUploadProps }

@@ -9,7 +9,11 @@ import React from 'react';
 import { NxStatefulTextInput } from '@sonatype/react-shared-components';
 
 export default function NxStatefulTextInputSimpleExample() {
+  function onChange(val: string) {
+    console.log('Value changed to:', val); // eslint-disable-line
+  }
+
   return (
-    <NxStatefulTextInput />
+    <NxStatefulTextInput onChange={onChange}/>
   );
 }

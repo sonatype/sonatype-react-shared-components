@@ -12,12 +12,20 @@ function validator(val: string) {
   return val.length ? null : 'Must be non-empty';
 }
 
+function onChange(val: string) {
+  console.log('Value changed to:', val); // eslint-disable-line
+}
+
 function onKeyPress(key: string) {
   console.log('Pressed key:', key); // eslint-disable-line
 }
 
 export default function NxStatefulTextInputValidationExample() {
   return (
-    <NxStatefulTextInput validator={validator} onKeyPress={onKeyPress} placeholder="placeholder text"/>
+    <NxStatefulTextInput validator={validator}
+                         onChange={onChange}
+                         onKeyPress={onKeyPress}
+                         placeholder="placeholder text"
+    />
   );
 }
