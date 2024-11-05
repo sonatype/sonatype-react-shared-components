@@ -275,7 +275,7 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
     describe('tooltip', function() {
       it('adds a tooltip for each option when optionTooltipGenerator prop is provided', async function() {
         const user = userEvent.setup(),
-            view = quickRender({ optionTooltipGenerator: option => option.name as string }),
+            view = quickRender({ optionTooltipGenerator: option => option.name as string, isOpen: true }),
             options = view.getAllByRole('menuitemradio');
 
         await runTimers();
