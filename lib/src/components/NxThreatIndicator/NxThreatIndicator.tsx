@@ -33,7 +33,8 @@ const NxThreatIndicator: FunctionComponent<Props> =
       <NxFontAwesomeIcon aria-label={presentational ? undefined : label}
                          className={className}
                          icon={faCircle}
-                         role={presentational ? 'presentation' : 'graphics-symbol img'} />
+                         role={presentational ? 'presentation' : 'graphics-symbol img'}
+                         fixedWidth />
     );
 
     return presentational ? icon : (
