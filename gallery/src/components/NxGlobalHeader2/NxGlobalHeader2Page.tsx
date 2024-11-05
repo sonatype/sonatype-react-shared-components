@@ -40,15 +40,17 @@ const NxGlobalHeader2Page = () =>
               <NxList.Text>A search text input with product-specific behavior</NxList.Text>
             </NxList.Item>
             <NxList.Item>
-              <NxList.Text>Any desired product-specific icon-only buttons and icon dropdowns</NxList.Text>
+              <NxList.Text>
+                Any desired product-specific <NxCode>NxNavigationDropdown</NxCode>s
+              </NxList.Text>
             </NxList.Item>
             <NxList.Item>
               <NxList.Text>In Sonatype products, the Sonatype Product Switcher</NxList.Text>
             </NxList.Item>
             <NxList.Item>
               <NxList.Text>
-                An icon-dropdown containing a menu of user-focused options such as a link to the user's profile and a
-                logout button
+                An <NxCode>NxNavigationDropdown</NxCode> containing a menu of user-focused options such as a
+                link to the user's profile and a logout button
               </NxList.Text>
             </NxList.Item>
           </NxList>
