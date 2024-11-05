@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../__testutils__/rtlUtils';
-import { createEvent, fireEvent, within } from '@testing-library/react';
+import { createEvent, fireEvent, within, render } from '@testing-library/react';
 
 import NxNavigationDropdown, { Props } from '../NxNavigationDropdown';
 import { OptionalReactElement } from '../../../util/reactUtil';
@@ -341,4 +341,13 @@ describe('NxNavigationDropdown', () => {
 
         expect(document.activeElement).toBe(toggleBtn);
       });
+
+  describe('MenuHeader', function() {
+    it('renders an hgroup', function() {
+      const { container } = render(<NxNavigationDropdown.MenuHeader />);
+
+      const hgroup = container.getElementsByTagName('HGROUP')[0];
+      expect(hgroup).toBeInTheDocument();
+    });
+  });
 });
