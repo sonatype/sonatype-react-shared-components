@@ -22,6 +22,7 @@ import { Props, TransferListItemProps, NxTransferListDataItem, propTypes } from 
 import './NxTransferListHalf.scss';
 import { wrapTooltipProps } from '../../util/tooltipUtils';
 import { useUniqueId } from '../../util/idUtil';
+import NxScrollRender from '../NxScrollRender/NxScrollRender';
 
 export { Props, NxTransferListDataItem };
 
@@ -149,6 +150,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
           </button>
         }
         {/* Add the tabIndex here to meet the a11y requirement that scrollable region must have keyboard access */}
+        <NxScrollRender>
         <div className="nx-transfer-list__item-list" tabIndex={onItemChange || allowReordering ? undefined : 0}>
           { visibleItems.map(
               (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
@@ -162,6 +164,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
                                                  { ...i } />)
           }
         </div>
+        </NxScrollRender>
         <div className="nx-transfer-list__footer">
           {footerContent}
         </div>
