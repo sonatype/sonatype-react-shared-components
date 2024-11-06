@@ -212,19 +212,7 @@ export default function NxTransferListHalf<T extends string | number = string>(
           </button>
         )}
         {/* Add the tabIndex here to meet the a11y requirement that scrollable region must have keyboard access */}
-        <div>
-          Barra
-          <NxScrollRender initialChildCount={11} spacerEl="li">
-            <NxList className="nx-scrollable">
-              {range(1, 2000).map((i) => (
-                <NxList.Item key={i}>
-                  <NxList.Text>{i}</NxList.Text>
-                </NxList.Item>
-              ))}
-            </NxList>
-          </NxScrollRender>
-        </div>
-        <NxScrollRender initialChildCount={11} spacerEl="li">
+        <NxScrollRender>
           <div
             className="nx-transfer-list__item-list"
             tabIndex={onItemChange || allowReordering ? undefined : 0}
@@ -244,24 +232,6 @@ export default function NxTransferListHalf<T extends string | number = string>(
             ))}
           </div>
         </NxScrollRender>
-        <div
-          className="nx-transfer-list__item-list"
-          tabIndex={onItemChange || allowReordering ? undefined : 0}
-        >
-          {visibleItems.map((i, index) => (
-            <TransferListItem<T>
-              showReorderingButtons={allowReordering}
-              isFilteredItem={!!filterValue}
-              key={i.id}
-              checked={isSelected}
-              onChange={onItemChange}
-              onReorderItem={onReorderItem}
-              isTopItem={index === 0}
-              isBottomItem={index === visibleItems.length - 1}
-              {...i}
-            />
-          ))}
-        </div>
         <div className="nx-transfer-list__footer">{footerContent}</div>
       </div>
     </NxFieldset>
