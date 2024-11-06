@@ -151,19 +151,19 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         }
         {/* Add the tabIndex here to meet the a11y requirement that scrollable region must have keyboard access */}
         <NxScrollRender>
-        <div className="nx-transfer-list__item-list" tabIndex={onItemChange || allowReordering ? undefined : 0}>
-          { visibleItems.map(
-              (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
-                                                 isFilteredItem={!!filterValue}
-                                                 key={i.id}
-                                                 checked={isSelected}
-                                                 onChange={onItemChange}
-                                                 onReorderItem={onReorderItem}
-                                                 isTopItem={index === 0}
-                                                 isBottomItem={index === visibleItems.length - 1}
-                                                 { ...i } />)
-          }
-        </div>
+          <div className="nx-transfer-list__item-list" tabIndex={onItemChange || allowReordering ? undefined : 0}>
+            { visibleItems.map(
+                (i, index) => <TransferListItem<T> showReorderingButtons={allowReordering}
+                                                   isFilteredItem={!!filterValue}
+                                                   key={i.id}
+                                                   checked={isSelected}
+                                                   onChange={onItemChange}
+                                                   onReorderItem={onReorderItem}
+                                                   isTopItem={index === 0}
+                                                   isBottomItem={index === visibleItems.length - 1}
+                                                   { ...i } />)
+           }
+          </div>
         </NxScrollRender>
         <div className="nx-transfer-list__footer">
           {footerContent}

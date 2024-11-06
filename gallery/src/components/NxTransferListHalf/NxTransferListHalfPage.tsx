@@ -25,7 +25,7 @@ const nxTransferListHalfExample = require('./NxTransferListHalfExample?raw'),
     tooltipScss = require('../NxTooltip/NxTooltipExample.scss?raw'),
     nxTransferListHalfDisableTransferExample = require('./NxTransferListHalfDisableTransferExample?raw'),
     nxTransferListHalfOrderingWithDisableTransferExample =
-      require('./NxTransferListHalfOrderingWithDisableTransferExample?raw'), 
+     require('./NxTransferListHalfOrderingWithDisableTransferExample?raw'),
     nxTransferListHalfLongListExample = require('./NxTransferListHalfLongListExample?raw');
 
 const tooltipExampleCode = [nxTransferListHalfCustomTooltipExample, { language: 'scss', content: tooltipScss }];
@@ -282,7 +282,8 @@ const NxTransferListPage = () =>
                         id="nx-transfer-list-half-long-list-example"
                         codeExamples={nxTransferListHalfLongListExample}
                         liveExample={NxTransferListHalfLongListExample}>
-      Demonstrates an <NxCode>NxTransferListHalf</NxCode> with a long list. Note that even using a long list, rendering and filtering are not affected.
+      Demonstrates an <NxCode>NxTransferListHalf</NxCode> with a long list. Note that even using a long list,
+      rendering and filtering are not affected.
     </GalleryExampleTile>
   </>;
 
