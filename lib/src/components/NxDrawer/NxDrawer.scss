@@ -68,7 +68,7 @@
   padding: $padding;
   padding-bottom: 0;
   width: 520px;
-  border: var(--nx-border-component);
+  border-left: var(--nx-border-component);
 
   &--narrow {
     width: 348px;
