@@ -8,7 +8,7 @@
 import { includes } from 'ramda';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { rtlRenderElement, rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import { within, render, screen } from '@testing-library/react';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -25,6 +25,37 @@ describe('NxTransferListHalf', function() {
       },
       quickRender = rtlRender(NxTransferListHalf, minimalProps),
       renderEl = rtlRenderElement(NxTransferListHalf, minimalProps);
+
+  beforeEach(function() {
+    const getHeight = (el: Element) => {
+      const isContainer = el.classList.contains('nx-transfer-list__item-list'),
+          isItem = el.classList.contains('nx-transfer-list__item'),
+          height = isContainer ? 520 :
+            isItem ? 40 :
+            0;
+      return height;
+    };
+
+    Element.prototype.getBoundingClientRect = jest.fn().mockImplementation(function(this: Element) {
+      const height = getHeight(this),
+          siblingItems = this.parentElement!.children,
+          idx = Array.prototype.indexOf.call(siblingItems, this),
+          top = 40 * idx;
+
+      return {
+        bottom: 0,
+        height,
+        left: 0,
+        right: 0,
+        top,
+        width: 0
+      } as DOMRect;
+    });
+
+    jest.spyOn(Element.prototype, 'clientHeight', 'get').mockImplementation(function(this: Element) {
+      return getHeight(this);
+    });
+  });
 
   it('renders a fieldset as top-level element', function() {
     const el = renderEl()!;
