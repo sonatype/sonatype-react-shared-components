@@ -7,8 +7,6 @@
 import React, { useState } from 'react';
 import {
   NxPageSidebar,
-  NxButton,
-  NxFontAwesomeIcon,
   NxPageMain,
   NxP,
   NxPageTitle,
@@ -18,7 +16,8 @@ import {
   NxTextLink,
   NxGlobalFooter2,
   NxGlobalHeader2,
-  NxFilterInput
+  NxFilterInput,
+  NxStatefulNavigationDropdown
 } from '@sonatype/react-shared-components';
 import {
   faArrowLeft,
@@ -38,7 +37,11 @@ export default function NxGlobalFooter2InnerSidebarExample() {
                        searchIcon
                        value={filterInputValue}
                        onChange={setFilterInputValue} />
-        <NxButton title="User" variant="icon-only"><NxFontAwesomeIcon icon={faUserCircle} /></NxButton>
+        <NxStatefulNavigationDropdown title="User" icon={faUserCircle}>
+          <button onClick={() => alert('clicked')} className="nx-dropdown-button">
+            Button Link
+          </button>
+        </NxStatefulNavigationDropdown>
       </NxGlobalHeader2>
       <NxStatefulGlobalSidebar2 isDefaultOpen={false}
                                 toggleOpenIcon={faArrowLeft}

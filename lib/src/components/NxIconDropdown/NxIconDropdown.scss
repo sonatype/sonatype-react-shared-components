@@ -23,12 +23,16 @@
   &.open {
     background-color: var(--nx-color-button-icon-only-background-selected);
 
-    &:hover:not(:active) {
+    &:hover {
       background-color: var( --nx-color-interactive-background-hover);
     }
 
-    &:focus:not(:active) {
+    &:focus {
       outline-color: var(--nx-color-interactive-border-focus);
+    }
+
+    &:active {
+      background-color: var(--nx-color-button-icon-only-background-selected);
     }
   }
 }

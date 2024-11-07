@@ -7,8 +7,9 @@
 import { HTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'className'> {
   onClosing: () => void;
+  className?: string | null;
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

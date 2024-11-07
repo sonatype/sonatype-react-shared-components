@@ -342,6 +342,12 @@ export { default as NxFilterDropdown, Props as NxFilterDropdownProps }
 export { default as NxStatefulFilterDropdown, Props as NxStatefulFilterDropdownProps }
   from './components/NxFilterDropdown/stateful/NxStatefulFilterDropdown';
 
+export { default as NxNavigationDropdown, Props as NxNavigationDropdownProps }
+  from './components/NxNavigationDropdown/NxNavigationDropdown';
+
+export { default as NxStatefulNavigationDropdown, Props as NxStatefulNavigationDropdownProps }
+  from './components/NxNavigationDropdown/stateful/NxStatefulNavigationDropdown';
+
 export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemNotice';
 
 export { default as NxProgressBar, Props as NxProgressBarProps } from './components/NxProgressBar/NxProgressBar';

@@ -30,11 +30,8 @@
     flex-shrink: 0;
     gap: var(--nx-spacing-3x);
 
-    .nx-btn--icon-only {
-      @include nx-button-helpers.small-icon-btn;
-    }
-
-    > * {
+    // parent class needed for specificity
+    .nx-global-header-2 & > * {
       margin-left: 0;
       margin-right: 0;
     }
