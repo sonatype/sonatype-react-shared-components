@@ -31,8 +31,8 @@ describe('NxTransferListHalf', function() {
       const isContainer = el.classList.contains('nx-transfer-list__item-list'),
           isItem = el.classList.contains('nx-transfer-list__item'),
           height = isContainer ? 520 :
-            isItem ? 40 :
-            0;
+          isItem ? 40 :
+          0;
       return height;
     };
 
