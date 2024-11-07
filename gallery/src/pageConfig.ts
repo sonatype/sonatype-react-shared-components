@@ -22,6 +22,7 @@ import NxPageTitlePage from './styles/NxPageTitle/NxPageTitlePage';
 import NxTilePage from './styles/NxTile/NxTilePage';
 import NxBtnPage from './styles/NxBtn/NxBtnPage';
 import NxThreatIndicatorPage from './components/NxThreatIndicator/NxThreatIndicatorPage';
+import NxVulnerabilityIndicatorPage from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicatorPage';
 import NxRadioPage from './components/NxRadio/NxRadioPage';
 import NxVulnerabilityDetailsPage from './components/NxVulnerabilityDetails/NxVulnerabilityDetailsPage';
 import NxListPage from './styles/NxList/NxListPage';
@@ -36,6 +37,7 @@ import NxIconPage from './styles/NxIcon/NxIconPage';
 import NxFontAwesomeIconPage from './components/NxFontAwesomeIcon/NxFontAwesomeIconPage';
 import NxCounterPage from './styles/NxCounter/NxCounterPage';
 import NxThreatNumberPage from './styles/NxThreatNumber/NxThreatNumberPage';
+import NxVulnerabilityScorePage from './styles/NxVulnerabilityScore/NxVulnerabilityScorePage';
 import NxFormLayoutPage from './styles/NxFormLayout/NxFormLayoutPage';
 import NxSubmitMaskPage from './components/NxSubmitMask/NxSubmitMaskPage';
 import NxStatefulSubmitMaskPage from './components/NxStatefulSubmitMask/NxStatefulSubmitMaskPage';
@@ -63,6 +65,8 @@ import NxCloseButtonPage from './components/NxCloseButton/NxCloseButtonPage';
 import NxScrollablePage from './styles/NxScrollable/NxScrollablePage';
 import TooltipConfigPropsPage from './jsUtilPages/TooltipConfigProps/TooltipConfigPropsPage';
 import PolicyThreatLevelUtilsPage from './jsUtilPages/PolicyThreatLevelUtils/PolicyThreatLevelUtilsPage';
+import VulnerabilityRatingUtilsPage
+  from './jsUtilPages/VulnerabilityLevelUtils/VulnerabilityRatingUtilsPage';
 import ValidationUtilsPage from './jsUtilPages/ValidationUtils/ValidationUtilsPage';
 import NxClickablePage from './styles/NxClickable/NxClickablePage';
 import NxPageHeaderPage from './components/NxPageHeader/NxPageHeaderPage';
@@ -120,6 +124,8 @@ import AccessibilityPage from './pages/Accessibility';
 import AccessibilityChecklistPage from './pages/AccessibilityChecklist';
 import NxDividerPage from './styles/NxDivider/NxDividerPage';
 import NxThreatIndicatorLegendPage from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegendPage';
+import NxVulnerabilityIndicatorLegendPage
+  from './components/NxVulnerabilityIndicatorLegend/NxVulnerabilityIndicatorLegendPage';
 import NxSearchDropdownPage from './components/NxSearchDropdown/NxSearchDropdownPage';
 import NxStatefulSearchDropdownPage from './components/NxStatefulSearchDropdown/NxStatefulSearchDropdownPage';
 import NxSearchTransferListPage from './components/NxSearchTransferList/NxSearchTransferListPage';
@@ -166,6 +172,8 @@ import NxStatefulBreadcrumbPage from './components/NxStatefulBreadcrumb/NxStatef
 import DarkModeClassPage from './styles/DarkMode/DarkModeClassPage';
 import DarkModeMixinPage from './styles/DarkMode/DarkModeMixinPage';
 import NxSmallTagPage from './components/NxSmallTag/NxSmallTagPage';
+import NxVulnerabilityCounterPage from './components/NxVulnerabilityCounter/NxVulnerabilityCounterPage';
+import NxSmallVulnerabilityCounterPage from './components/NxSmallVulnerabilityCounter/NxSmallVulnerabilityCounterPage';
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
@@ -191,7 +199,12 @@ const pageConfig: PageConfig = {
     'Threat Number': { content: NxThreatNumberPage, type: 'html' },
     'Toast': { content: NxToastPage, type: 'react' },
     'Tooltip': { content: NxTooltipPage, type: 'react' },
-    'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' }
+    'Overflow Tooltip': { content: NxOverflowTooltipPage, type: 'react' },
+    'Vulnerability Counter': { content: NxVulnerabilityCounterPage, type: 'react' },
+    'Small Vulnerability Counter': { content: NxSmallVulnerabilityCounterPage, type: 'react' },
+    'Vulnerability Indicator': { content: NxVulnerabilityIndicatorPage, type: 'react' },
+    'Vulnerability Indicator Legend': { content: NxVulnerabilityIndicatorLegendPage, type: 'react' },
+    'Vulnerability Score': { content: NxVulnerabilityScorePage, type: 'html' }
   },
   'Buttons and Dropdowns': {
     'Back Button': { content: NxBackButtonPage, type: 'react' },
@@ -324,6 +337,7 @@ const pageConfig: PageConfig = {
   'JavaScript & TypeScript Utilities': {
     'IDUtils': { content: IdUtilPage, type: 'js' },
     'Policy Threat Level Utils': { content: PolicyThreatLevelUtilsPage, type: 'js' },
+    'Vulnerability Rating Utils': { content: VulnerabilityRatingUtilsPage, type: 'js' },
     'Server Side Rendering Utilities': { content: ServerSideRenderingUtilsPage, type: 'js'},
     'TooltipConfigProps': { content: TooltipConfigPropsPage, type: 'js' },
     'useToggle': { content: UseTogglePage, type: 'js' },

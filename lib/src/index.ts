@@ -48,6 +48,10 @@ export {
 
 export { default as NxThreatIndicator, Props as NxThreatIndicatorProps }
   from './components/NxThreatIndicator/NxThreatIndicator';
+
+export { default as NxVulnerabilityIndicator, Props as NxVulnerabilityIndicatorProps }
+  from './components/NxVulnerabilityIndicator/NxVulnerabilityIndicator';
+
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
 
@@ -196,6 +200,16 @@ export {
 } from './components/NxForm/stateful/NxStatefulForm';
 
 export * from './util/threatLevels';
+
+export {
+  VulnerabilityScore,
+  VulnerabilitySeverityRating,
+  allVulnerabilitySeverityRatings,
+  vulnerabilitySeverityAndScoreRangeList,
+  formatVulnerabilityScore,
+  getVulnerabilitySeverityRating
+} from './util/vulnerabilitySeverityRatings';
+
 export * from './util/validationUtil';
 
 export {
@@ -286,6 +300,9 @@ export { default as NxTextLink, Props as NxTextLinkProps } from './components/Nx
 export { default as NxThreatCounter, Props as NxThreatCounterProps }
   from './components/NxThreatCounter/NxThreatCounter';
 
+export { default as NxVulnerabilityCounter, Props as NxVulnerabilityCounterProps }
+  from './components/NxVulnerabilityCounter/NxVulnerabilityCounter';
+
 export { default as NxFormSelect, Props as NxFormSelectProps } from './components/NxFormSelect/NxFormSelect';
 import * as nxFormSelectStateHelpers from './components/NxFormSelect/stateHelpers';
 export { nxFormSelectStateHelpers };
@@ -300,6 +317,10 @@ export { default as NxStatefulTransferList, Props as NxStatefulTransferListProps
 
 export { default as NxThreatIndicatorLegend, NxThreatIndicatorLegendProps }
   from './components/NxThreatIndicatorLegend/NxThreatIndicatorLegend';
+
+export { default as NxVulnerabilityIndicatorLegend, NxVulnerabilityIndicatorLegendProps}
+  from './components/NxVulnerabilityIndicatorLegend/NxVulnerabilityIndicatorLegend';
+
 export {
   default as NxSearchDropdown,
   Props as NxSearchDropdownProps,
@@ -331,6 +352,9 @@ export { default as NxStatefulIconDropdown }
 
 export { default as NxSmallThreatCounter, Props as NxSmallThreatCounterProps }
   from './components/NxSmallThreatCounter/NxSmallThreatCounter';
+
+export { default as NxSmallVulnerabilityCounter, Props as NxSmallVulnerabilityCounterProps }
+  from './components/NxSmallVulnerabilityCounter/NxSmallVulnerabilityCounter';
 
 export { default as NxTree, ItemProps as NxTreeItemProps } from './components/NxTree/NxTree';
 export { StatefulItemProps as NxTreeStatefulItemProps } from './components/NxTree/stateful/NxTreeStatefulItem';
