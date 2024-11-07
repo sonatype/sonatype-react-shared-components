@@ -943,6 +943,7 @@ describe('NxTransferList', function() {
                                       allowReordering={true}
                                       selectedItems={[1, 3, 2]} />);
 
+        await user.click(up3Btn);
         expect(onChange).toHaveBeenCalledWith([3, 1, 2]);
 
         view.rerender(<NxTransferList { ...minimalProps }
