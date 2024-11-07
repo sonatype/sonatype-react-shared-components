@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use './NxGlobalSidebar2Common';
+
+.nx-global-sidebar-2__navigation-link.nx-text-link {
+  margin-top: var(--nx-spacing-2x);
+  margin-bottom: var(--nx-spacing-2x);
+  @extend %nx-global-sidebar-2__clickable;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

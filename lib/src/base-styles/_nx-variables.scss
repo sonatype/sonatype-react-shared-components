@@ -58,6 +58,10 @@
   --nx-focus-outline-width: 2px;
   --nx-focus-outline-offset: 2px;
 
+  --nx-gradient-sonatype-platform: linear-gradient(to right, hsl(265, 86%, 53%), hsl(208, 76%, 40%));
+
+  --nx-background-global-sidebar-2-link-selected: var(--nx-gradient-sonatype-platform);
+
   // for nx-grid
   --nx-border-grid: var(--nx-border-2x);
 
@@ -83,6 +87,8 @@
     --nx-focus-outline-offset-global-sidebar-link: 2px;
     --nx-focus-outline-offset-global-sidebar-toggle: 0px;
     --nx-border-width-global-sidebar: 1px;
+
+    --nx-gradient-sonatype-platform: linear-gradient(to right, hsl(259, 85%, 70%), hsl(197, 100%, 50%));
 
     --nx-outline-width-table-row-hover: 0px;
 

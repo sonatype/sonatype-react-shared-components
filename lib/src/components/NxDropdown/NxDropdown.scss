@@ -14,7 +14,13 @@
   position: relative;
   width: nx-dropdown-variables.$dropdown-width;
 
-  .nx-icon:not(.nx-icon--colorful, .nx-dropdown-link .nx-icon, .nx-filter-dropdown__reset .nx-icon, .nx-dropdown :is(.disabled, [disabled]) .nx-icon) {
+  .nx-icon:not(
+    .nx-icon--colorful,
+    .nx-dropdown-link .nx-icon,
+    .nx-filter-dropdown__reset .nx-icon,
+    .nx-dropdown :is(.disabled, [disabled]) .nx-icon,
+    .nx-navigation-dropdown .nx-icon
+  ) {
     color: var(--nx-color-text-stark);
   }
 }
@@ -47,13 +53,14 @@
     color: var(--nx-color-text);
   }
 
-  &:focus:not(:active) {
+  &:focus {
     outline-color: var(--nx-color-interactive-border-focus);
     outline-offset: calc(0px - 1px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
   }
 
   &:active {
     color: var(--nx-color-text);
+    outline: none;
   }
 
   .nx-dropdown__toggle-label {
