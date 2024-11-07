@@ -19,7 +19,7 @@
     color: var(--nx-color-#{$variant}-button-text);
   }
 
-  &:focus:not(:active) {
+  &:focus {
     outline-color: var(--nx-color-#{$variant}-button-focus-outline);
     outline-offset: calc(0px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
   }
@@ -53,18 +53,15 @@
     color: var(--nx-color-secondary-button-text-hover);
   }
 
-  &:focus:not(:active) {
+  &:focus {
     @include nx-button-helpers.bordered-btn-focus-outline("secondary");
-  }
-
-  &:focus-visible {
-    outline: none;
   }
 
   &:active {
     background-color: var(--nx-color-secondary-button-background-active);
     border-color: var(--nx-color-secondary-button-border-active);
     color: var(--nx-color-secondary-button-text);
+    outline: none;
   }
 
   &.hidden {
@@ -85,7 +82,7 @@
       color: var(--nx-color-tertiary-button-text);
     }
 
-    &:focus:not(:active) {
+    &:focus {
       outline-color: var(--nx-color-tertiary-button-focus-outline);
     }
 
@@ -114,7 +111,7 @@
 
 .nx-btn {
   &.disabled, &[disabled] {
-    &, &:hover, &:focus:not(:active) {
+    &, &:hover, &:focus {
       background-color: var(--nx-color-disabled-button-background);
       border-color: var(--nx-color-disabled-button-border);
       outline: 0;
@@ -134,7 +131,7 @@
     color: var(--nx-color-text-stark);
   }
 
-  &:focus:not(:active) {
+  &:focus {
     outline: var(--nx-focus-outline-width) solid var(--nx-color-button-icon-only-border-focus);
     outline-offset: calc(0px - var(--nx-focus-outline-width));
   }
@@ -143,6 +140,7 @@
     background-color: var(--nx-color-interactive-background-active);
     border-color: transparent;
     color: var(--nx-color-text-stark);
+    outline: none;
   }
 
   // icon width can vary, just don't bother with padding in this direction and let the centering work it out
@@ -157,7 +155,7 @@
   }
 
   &.disabled, &[disabled] {
-    &, &:hover, &:focus:not(:active) {
+    &, &:hover, &:focus {
       background-color: transparent;
       border-color: transparent;
       color: var(--nx-color-text-disabled);

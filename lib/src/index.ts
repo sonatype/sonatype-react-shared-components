@@ -277,6 +277,16 @@ export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarPro
 export { default as NxGlobalSidebarFooter, NxGlobalSidebarFooterProps }
   from './components/NxGlobalSidebar/NxGlobalSidebarFooter';
 
+export { default as NxGlobalSidebar2, Props as NxGlobalSidebar2Props }
+  from './components/NxGlobalSidebar2/NxGlobalSidebar2';
+export { default as NxGlobalSidebar2NavigationLink, NxGlobalSidebar2NavigationLinkProps }
+  from './components/NxGlobalSidebar2/NxGlobalSidebar2NavigationLink';
+export { default as NxStatefulGlobalSidebar2, Props as NxStatefulGlobalSidebar2Props }
+  from './components/NxGlobalSidebar2/stateful/NxStatefulGlobalSidebar2';
+
+export { default as NxGlobalHeader2, Props as NxGlobalHeader2Props }
+  from './components/NxGlobalHeader2/NxGlobalHeader2';
+
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
 
 export { default as withClass } from './util/withClass';
@@ -355,6 +365,12 @@ export { default as NxFilterDropdown, Props as NxFilterDropdownProps }
 
 export { default as NxStatefulFilterDropdown, Props as NxStatefulFilterDropdownProps }
   from './components/NxFilterDropdown/stateful/NxStatefulFilterDropdown';
+
+export { default as NxNavigationDropdown, Props as NxNavigationDropdownProps }
+  from './components/NxNavigationDropdown/NxNavigationDropdown';
+
+export { default as NxStatefulNavigationDropdown, Props as NxStatefulNavigationDropdownProps }
+  from './components/NxNavigationDropdown/stateful/NxStatefulNavigationDropdown';
 
 export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemNotice';
 
