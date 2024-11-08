@@ -870,18 +870,12 @@ describe('NxStatefulTransferList', function() {
       it('fires onChange with the newly ordered array when Move Up is clicked', async function() {
         const user = userEvent.setup(),
             onChange = jest.fn(),
-            view = quickRender({ allItems, selectedItems: [1, 2, 3], onChange }),
-            group1 = view.getByRole('group', { name: 'One' }),
-            group2 = view.getByRole('group', { name: 'Two' }),
-            group3 = view.getByRole('group', { name: 'Three' });
-
+            view = quickRender({ allItems, selectedItems: [1, 2, 3], onChange });
         await runTimers();
-        const up1Btn = within(group1).getByRole('button', { name: /up/i }),
-            up2Btn = within(group2).getByRole('button', { name: /up/i }),
-            up3Btn = within(group3).getByRole('button', { name: /up/i });
-
         expect(onChange).not.toHaveBeenCalled();
 
+        let group3 = view.getByRole('group', { name: 'Three' });
+        let up3Btn = within(group3).getByRole('button', { name: /up/i });
         await user.click(up3Btn);
         expect(onChange).toHaveBeenCalledWith([1, 3, 2]);
 
@@ -889,6 +883,10 @@ describe('NxStatefulTransferList', function() {
                                               { ...{ allItems, onChange } }
                                               allowReordering={true}
                                               selectedItems={[1, 3, 2]} />);
+        await runTimers();
+        await user.unhover(up3Btn);
+        group3 = view.getByRole('group', { name: 'Three' });
+        up3Btn = within(group3).getByRole('button', { name: /up/i });
         await user.click(up3Btn);
         expect(onChange).toHaveBeenCalledWith([3, 1, 2]);
 
@@ -896,6 +894,10 @@ describe('NxStatefulTransferList', function() {
                                               { ...{ allItems, onChange } }
                                               allowReordering={true}
                                               selectedItems={[3, 1, 2]} />);
+        await runTimers();
+        await user.unhover(up3Btn);
+        const group1 = view.getByRole('group', { name: 'One' });
+        const up1Btn = within(group1).getByRole('button', { name: /up/i });
         await user.click(up1Btn);
         expect(onChange).toHaveBeenCalledWith([1, 3, 2]);
 
@@ -903,6 +905,10 @@ describe('NxStatefulTransferList', function() {
                                               { ...{ allItems, onChange } }
                                               allowReordering={true}
                                               selectedItems={[1, 3, 2]} />);
+        await runTimers();
+        await user.unhover(up1Btn);
+        const group2 = view.getByRole('group', { name: 'Two' });
+        const up2Btn = within(group2).getByRole('button', { name: /up/i });
         await user.click(up2Btn);
         expect(onChange).toHaveBeenCalledWith([1, 2, 3]);
       });
@@ -910,18 +916,12 @@ describe('NxStatefulTransferList', function() {
       it('fires onChange with the newly ordered array when Move Down is clicked', async function() {
         const user = userEvent.setup(),
             onChange = jest.fn(),
-            view = quickRender({ allItems, selectedItems: [1, 2, 3], onChange }),
-            group1 = view.getByRole('group', { name: 'One' }),
-            group2 = view.getByRole('group', { name: 'Two' }),
-            group3 = view.getByRole('group', { name: 'Three' });
-
+            view = quickRender({ allItems, selectedItems: [1, 2, 3], onChange });
         await runTimers();
-        const down1Btn = within(group1).getByRole('button', { name: /down/i }),
-            down2Btn = within(group2).getByRole('button', { name: /down/i }),
-            down3Btn = within(group3).getByRole('button', { name: /down/i });
-
         expect(onChange).not.toHaveBeenCalled();
 
+        let group1 = view.getByRole('group', { name: 'One' });
+        let down1Btn = within(group1).getByRole('button', { name: /down/i });
         await user.click(down1Btn);
         expect(onChange).toHaveBeenCalledWith([2, 1, 3]);
 
@@ -929,6 +929,10 @@ describe('NxStatefulTransferList', function() {
                                               { ...{ allItems, onChange } }
                                               allowReordering={true}
                                               selectedItems={[2, 1, 3]} />);
+        await runTimers();
+        await user.unhover(down1Btn);
+        group1 = view.getByRole('group', { name: 'One' });
+        down1Btn = within(group1).getByRole('button', { name: /down/i });
         await user.click(down1Btn);
         expect(onChange).toHaveBeenCalledWith([2, 3, 1]);
 
@@ -936,6 +940,10 @@ describe('NxStatefulTransferList', function() {
                                               { ...{ allItems, onChange } }
                                               allowReordering={true}
                                               selectedItems={[2, 3, 1]} />);
+        await runTimers();
+        await user.unhover(down1Btn);
+        const group3 = view.getByRole('group', { name: 'Three' });
+        const down3Btn = within(group3).getByRole('button', { name: /down/i });
         await user.click(down3Btn);
         expect(onChange).toHaveBeenCalledWith([2, 1, 3]);
 
@@ -943,6 +951,10 @@ describe('NxStatefulTransferList', function() {
                                               { ...{ allItems, onChange } }
                                               allowReordering={true}
                                               selectedItems={[2, 1, 3]} />);
+        await runTimers();
+        await user.unhover(down3Btn);
+        const group2 = view.getByRole('group', { name: 'Two' });
+        const down2Btn = within(group2).getByRole('button', { name: /down/i });
         await user.click(down2Btn);
         expect(onChange).toHaveBeenCalledWith([1, 2, 3]);
       });
