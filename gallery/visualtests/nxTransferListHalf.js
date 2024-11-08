@@ -32,6 +32,7 @@ describe('NxTransferListHalf', function() {
       disableTransferListSelector = '#nx-transfer-list-half-disable-transfer-example .nx-transfer-list__half',
       orderingWithDisableTransferListSelector =
        '#nx-transfer-list-half-ordering-with-disable-transfer-example .nx-transfer-list__half',
+      longListListSelector = '#nx-transfer-list-half-long-list-example .nx-transfer-list__half',
       itemsSelector = `${simpleListSelector} .nx-transfer-list__item`,
       tooltipItemsSelector = `${tooltipListSelector} .nx-transfer-list__item`,
       disableTransferItemSelector = `${disableTransferListSelector} .nx-transfer-list__item`,
@@ -130,6 +131,10 @@ describe('NxTransferListHalf', function() {
 
   describe('ordering with disable transfer', function() {
     it('looks right', simpleTest(orderingWithDisableTransferListSelector));
+  });
+
+  describe('long list', function() {
+    it('looks right', simpleTest(longListListSelector));
   });
 
   it('passes a11y checks', async function() {
