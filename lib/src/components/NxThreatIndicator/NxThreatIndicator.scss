@@ -13,6 +13,10 @@ $-vertical-alignment: -0.1em;
   font-size: var(--nx-font-size-s);
   margin: 0 var(--nx-spacing-2x);
   vertical-align: $-vertical-alignment;
+
+  &.fa-fw {
+    width: 1em;
+  }
 }
 
 .nx-list__item {
