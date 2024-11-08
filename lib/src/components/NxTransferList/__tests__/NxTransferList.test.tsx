@@ -971,7 +971,7 @@ describe('NxTransferList', function() {
       });
 
       it('fires onChange with the newly ordered array when Move Down is clicked', async function() {
-        const user = userEvent.setup(),
+        let user = userEvent.setup(),
             onChange = jest.fn(),
             view = quickRender({ allItems, selectedItems: [1, 2, 3], onChange }),
             group1 = view.getByRole('group', { name: 'One' }),
@@ -979,7 +979,7 @@ describe('NxTransferList', function() {
             group3 = view.getByRole('group', { name: 'Three' });
 
         await runTimers();
-        const down1Btn = within(group1).getByRole('button', { name: /down/i }),
+        let down1Btn = within(group1).getByRole('button', { name: /down/i }),
             down2Btn = within(group2).getByRole('button', { name: /down/i }),
             down3Btn = within(group3).getByRole('button', { name: /down/i });
 
@@ -992,6 +992,8 @@ describe('NxTransferList', function() {
                                       { ...{ allItems, onChange } }
                                       allowReordering={true}
                                       selectedItems={[2, 1, 3]} />);
+        group1 = view.getByRole('group', { name: 'One' });
+        down1Btn = within(group1).getByRole('button', { name: /down/i }),
         await user.click(down1Btn);
         expect(onChange).toHaveBeenCalledWith([2, 3, 1]);
 
