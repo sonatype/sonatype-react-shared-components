@@ -36,18 +36,18 @@ describe('NxTransferListHalf', function() {
       itemsSelector = `${simpleListSelector} .nx-transfer-list__item`,
       tooltipItemsSelector = `${tooltipListSelector} .nx-transfer-list__item`,
       disableTransferItemSelector = `${disableTransferListSelector} .nx-transfer-list__item`,
-      firstItemSelector = `${itemsSelector}:first-child .nx-transfer-list__select`,
-      secondItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
+      firstItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
+      secondItemSelector = `${itemsSelector}:nth-child(3) .nx-transfer-list__select`,
       transferAllSelector = `${complexListSelector} .nx-transfer-list__move-all`,
-      complexFirstItemSelector = `${complexListSelector} .nx-transfer-list__item:first-child`,
+      complexFirstItemSelector = `${complexListSelector} .nx-transfer-list__item:nth-child(2)`,
       complexSecondItemSelector
-          = `${complexListSelector} .nx-transfer-list__item:nth-child(2) .nx-transfer-list__select`,
+          = `${complexListSelector} .nx-transfer-list__item:nth-child(3) .nx-transfer-list__select`,
       moveUpSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :first-child`,
       moveDownSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :last-child`,
       filterBoxSelector = `${complexListSelector} .nx-text-input__input`,
-      firstTooltipItemSelector = `${tooltipItemsSelector}:first-child .nx-transfer-list__select`,
-      secondTooltipItemSelector = `${tooltipItemsSelector}:nth-child(2) .nx-transfer-list__select`,
-      secondDisableTransferItemSelector = `${disableTransferItemSelector}:nth-child(2) .nx-transfer-list__select`;
+      firstTooltipItemSelector = `${tooltipItemsSelector}:nth-child(2) .nx-transfer-list__select`,
+      secondTooltipItemSelector = `${tooltipItemsSelector}:nth-child(3) .nx-transfer-list__select`,
+      secondDisableTransferItemSelector = `${disableTransferItemSelector}:nth-child(3) .nx-transfer-list__select`;
 
   it('looks right', simpleTest(simpleListSelector));
   it('looks right with complex options', simpleTest(complexListSelector));

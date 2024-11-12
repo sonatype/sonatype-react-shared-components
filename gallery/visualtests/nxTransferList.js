@@ -25,9 +25,9 @@ describe('NxTransferList', function() {
       fullWidthListSelector = '#nx-transfer-list-full-width-example .nx-transfer-list',
       itemsSelector =
         `${simpleListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__item`,
-      firstItemSelector = `${itemsSelector}:first-child .nx-transfer-list__select`,
-      lastItemSelector = `${itemsSelector}:last-child .nx-transfer-list__select`,
-      secondItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
+      firstItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
+      lastItemSelector = `${itemsSelector}:nth-last-child(2) .nx-transfer-list__select`,
+      secondItemSelector = `${itemsSelector}:nth-child(3) .nx-transfer-list__select`,
       transferAllSelector =
         `${complexListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__move-all`;
 
