@@ -206,6 +206,11 @@ module.exports = {
       await el.evaluate(e => e.scrollIntoView({ block: 'center' }));
     }
 
+    async function scrollTop(el) {
+      // TODO remove magic number
+      await el.evaluate(e => e.scrollTop += 100000);
+    }
+
     async function scrollPage(y) {
       await page.evaluate((y) => window.scrollTo(0, y), y);
     }
@@ -297,6 +302,7 @@ module.exports = {
       disableLoadingSpinnerAnimation,
       setupUploadableFiles,
       scrollIntoView,
+      scrollTop,
       setThemeOverride,
       setThemingEnabled,
       scrollPage,

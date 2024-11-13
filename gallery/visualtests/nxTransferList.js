@@ -17,12 +17,15 @@ describe('NxTransferList', function() {
     checkScreenshot,
     wait,
     scrollIntoView,
+    scrollTop,
     a11yTest
   } = setupBrowser('#/pages/Transfer List');
 
   const simpleListSelector = '#nx-transfer-list-minimal-example .nx-transfer-list',
       complexListSelector = '#nx-transfer-list-complex-example .nx-transfer-list',
       fullWidthListSelector = '#nx-transfer-list-full-width-example .nx-transfer-list',
+      listSelector =
+        `${simpleListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__item-list`,
       itemsSelector =
         `${simpleListSelector} .nx-transfer-list__half:first-child .nx-transfer-list__item`,
       firstItemSelector = `${itemsSelector}:nth-child(2) .nx-transfer-list__select`,
@@ -47,13 +50,19 @@ describe('NxTransferList', function() {
   });
 
   it('handles overflowing content with a tooltip on items initially scrolled out of view', async function() {
-    const [list, lastItem] = await waitAndGetElements(simpleListSelector, lastItemSelector);
+    const [list] = await waitAndGetElements(simpleListSelector);
+    await scrollIntoView(list);
 
-    await scrollIntoView(lastItem);
+    // TODO how can I be sure this element is what I want?
+    const [listHalf] = await waitAndGetElements(listSelector);
+    await scrollTop(listHalf);
+
+    const [lastItem] = await waitAndGetElements(lastItemSelector);
+    await scrollIntoView(lastItem);    
     await lastItem.hover();
 
     await waitAndGetElements('.nx-tooltip');
-    await wait(500);
+    await wait(1000);
 
     await checkScreenshot(list);
   });
