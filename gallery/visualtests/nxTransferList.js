@@ -53,15 +53,15 @@ describe('NxTransferList', function() {
     await scrollIntoView(list);
 
     const [listHalf] = await waitAndGetElements(listSelector);
-    await listHalf.evaluate(e => e.scrollBy(0, 100000));
-    await wait(1000);
+    await listHalf.evaluate(e => e.scrollBy(0, 10000));
+    await wait(500);
 
     const [lastItem] = await waitAndGetElements(lastItemSelector);
     await scrollIntoView(lastItem);
     await lastItem.hover();
 
     await waitAndGetElements('.nx-tooltip');
-    await wait(1000);
+    await wait(500);
 
     await checkScreenshot(list);
   });
