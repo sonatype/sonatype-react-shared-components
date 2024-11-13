@@ -57,7 +57,7 @@ describe('NxTransferList', function() {
     await wait(1000);
 
     const [lastItem] = await waitAndGetElements(lastItemSelector);
-    await scrollIntoView(lastItem);    
+    await scrollIntoView(lastItem);
     await lastItem.hover();
 
     await waitAndGetElements('.nx-tooltip');
