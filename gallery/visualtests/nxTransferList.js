@@ -17,7 +17,6 @@ describe('NxTransferList', function() {
     checkScreenshot,
     wait,
     scrollIntoView,
-    scrollTop,
     a11yTest
   } = setupBrowser('#/pages/Transfer List');
 
@@ -53,9 +52,9 @@ describe('NxTransferList', function() {
     const [list] = await waitAndGetElements(simpleListSelector);
     await scrollIntoView(list);
 
-    // TODO how can I be sure this element is what I want?
     const [listHalf] = await waitAndGetElements(listSelector);
-    await scrollTop(listHalf);
+    await listHalf.evaluate(e => e.scrollBy(0, 100000));
+    await wait(1000);
 
     const [lastItem] = await waitAndGetElements(lastItemSelector);
     await scrollIntoView(lastItem);    
