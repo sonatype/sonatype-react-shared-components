@@ -29,9 +29,7 @@ describe('NxSearchTransferList', function() {
       quickRender = rtlRender(NxSearchTransferList as ComponentType<Props<string>>, minimalProps),
       renderEl = rtlRenderElement(NxSearchTransferList as ComponentType<Props<string>>, minimalProps);
 
-  beforeEach(function() {
-    mockTransferListLayout();
-  });
+  beforeEach(mockTransferListLayout);
 
   it('adds specified classnames in addition to the defaults', function() {
     const defaultEl = renderEl()!,
