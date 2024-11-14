@@ -8,6 +8,7 @@ import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../../__testutils__/rtlUtils';
+import { mockTransferListLayout } from '../../../../__testutils__/transferListUtils';
 import NxStatefulTransferList, { Props } from '../NxStatefulTransferList';
 import NxForm from '../../../NxForm/NxForm';
 
@@ -30,34 +31,7 @@ describe('NxStatefulTransferList', function() {
     // silence overflow tooltip warnings
     jest.spyOn(console, 'warn').mockImplementation(() => {});
 
-    const getHeight = (el: Element) => {
-      const isContainer = el.classList.contains('nx-transfer-list__item-list'),
-          isItem = el.classList.contains('nx-transfer-list__item'),
-          height = isContainer ? 520 :
-          isItem ? 40 :
-          0;
-      return height;
-    };
-
-    Element.prototype.getBoundingClientRect = jest.fn().mockImplementation(function(this: Element) {
-      const height = getHeight(this),
-          siblingItems = this.parentElement!.children,
-          idx = Array.prototype.indexOf.call(siblingItems, this),
-          top = 40 * idx;
-
-      return {
-        bottom: 0,
-        height,
-        left: 0,
-        right: 0,
-        top,
-        width: 0
-      } as DOMRect;
-    });
-
-    jest.spyOn(Element.prototype, 'clientHeight', 'get').mockImplementation(function(this: Element) {
-      return getHeight(this);
-    });
+    mockTransferListLayout();
   });
 
   it('renders a top-level element with a role of group and no default a11y name', function() {

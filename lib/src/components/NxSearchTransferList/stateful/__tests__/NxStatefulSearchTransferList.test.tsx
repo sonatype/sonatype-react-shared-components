@@ -9,6 +9,7 @@ import React, { ComponentType } from 'react';
 import { includes } from 'ramda';
 import { within, render } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../../__testutils__/rtlUtils';
+import { mockTransferListLayout } from '../../../../__testutils__/transferListUtils';
 import NxStatefulSearchTransferList, { Props } from '../NxStatefulSearchTransferList';
 import NxForm from '../../../NxForm/NxForm';
 
@@ -25,34 +26,7 @@ describe('NxSearchTransferList', function() {
       renderEl = rtlRenderElement(NxStatefulSearchTransferList as ComponentType<Props<string>>, minimalProps);
 
   beforeEach(function() {
-    const getHeight = (el: Element) => {
-      const isContainer = el.classList.contains('nx-transfer-list__item-list'),
-          isItem = el.classList.contains('nx-transfer-list__item'),
-          height = isContainer ? 520 :
-          isItem ? 40 :
-          0;
-      return height;
-    };
-
-    Element.prototype.getBoundingClientRect = jest.fn().mockImplementation(function(this: Element) {
-      const height = getHeight(this),
-          siblingItems = this.parentElement!.children,
-          idx = Array.prototype.indexOf.call(siblingItems, this),
-          top = 40 * idx;
-
-      return {
-        bottom: 0,
-        height,
-        left: 0,
-        right: 0,
-        top,
-        width: 0
-      } as DOMRect;
-    });
-
-    jest.spyOn(Element.prototype, 'clientHeight', 'get').mockImplementation(function(this: Element) {
-      return getHeight(this);
-    });
+    mockTransferListLayout();
   });
 
   it('adds specified classnames in addition to the defaults', function() {
