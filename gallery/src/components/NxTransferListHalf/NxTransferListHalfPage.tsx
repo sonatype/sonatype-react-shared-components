@@ -282,7 +282,7 @@ const NxTransferListPage = () =>
                         id="nx-transfer-list-half-long-list-example"
                         codeExamples={nxTransferListHalfLongListExample}
                         liveExample={NxTransferListHalfLongListExample}>
-      Demonstrates an <NxCode>NxTransferListHalf</NxCode> with a long list. This component suffers from performance
+      Demonstrates an <NxCode>NxTransferListHalf</NxCode> with a long list. Previous versions of this component suffered from performance
       issues when the list is very long. To address this, it has been updated to use NxScrollRender to render
       efficiently. Note that even using a long list, rendering and filtering are not affected.
     </GalleryExampleTile>
