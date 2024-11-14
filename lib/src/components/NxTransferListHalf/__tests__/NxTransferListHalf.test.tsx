@@ -27,9 +27,7 @@ describe('NxTransferListHalf', function() {
       quickRender = rtlRender(NxTransferListHalf, minimalProps),
       renderEl = rtlRenderElement(NxTransferListHalf, minimalProps);
 
-  beforeEach(function() {
-    mockTransferListLayout();
-  });
+  beforeEach(mockTransferListLayout);
 
   it('renders a fieldset as top-level element', function() {
     const el = renderEl()!;
