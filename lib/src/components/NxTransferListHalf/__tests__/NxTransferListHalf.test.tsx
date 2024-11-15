@@ -8,7 +8,8 @@
 import { includes } from 'ramda';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { rtlRenderElement, rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import { mockTransferListLayout } from '../../../__testutils__/transferListUtils';
 import { within, render, screen } from '@testing-library/react';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -25,6 +26,8 @@ describe('NxTransferListHalf', function() {
       },
       quickRender = rtlRender(NxTransferListHalf, minimalProps),
       renderEl = rtlRenderElement(NxTransferListHalf, minimalProps);
+
+  beforeEach(mockTransferListLayout);
 
   it('renders a fieldset as top-level element', function() {
     const el = renderEl()!;

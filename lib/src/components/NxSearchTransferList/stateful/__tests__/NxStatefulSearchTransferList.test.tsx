@@ -9,6 +9,7 @@ import React, { ComponentType } from 'react';
 import { includes } from 'ramda';
 import { within, render } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../../__testutils__/rtlUtils';
+import { mockTransferListLayout } from '../../../../__testutils__/transferListUtils';
 import NxStatefulSearchTransferList, { Props } from '../NxStatefulSearchTransferList';
 import NxForm from '../../../NxForm/NxForm';
 
@@ -23,6 +24,8 @@ describe('NxSearchTransferList', function() {
       },
       quickRender = rtlRender(NxStatefulSearchTransferList as ComponentType<Props<string>>, minimalProps),
       renderEl = rtlRenderElement(NxStatefulSearchTransferList as ComponentType<Props<string>>, minimalProps);
+
+  beforeEach(mockTransferListLayout);
 
   it('adds specified classnames in addition to the defaults', function() {
     const defaultEl = renderEl()!,
