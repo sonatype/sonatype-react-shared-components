@@ -105,16 +105,16 @@ describe('NxPolicyThreatSlider', function() {
         .toHaveAttribute('aria-valuetext', '0 (none)');
   });
 
-  it('sets aria-disabled to true on the sliders when they are disabled', function() {
+  it('sets disabled to true on the sliders when they are disabled', function() {
     const disabledSliders = quickRender({ disabled: true }).getAllByRole('slider'),
         enabledSliders = quickRender().getAllByRole('slider');
 
     for (const slider of disabledSliders) {
-      expect(slider).toHaveAttribute('aria-disabled', 'true');
+      expect(slider).toBeDisabled();
     }
 
     for (const slider of enabledSliders) {
-      expect(slider).not.toHaveAttribute('aria-disabled', 'true');
+      expect(slider).toBeEnabled();
     }
   });
 
@@ -295,173 +295,10 @@ describe('NxPolicyThreatSlider', function() {
   });
 
   describe('keyboard interactions', function() {
-    it('fires onChange with a decreased first value when the min slider receives an ArrowLeft key press',
-        async function() {
-          const user = userEvent.setup(),
-              onChange = jest.fn(),
-              view = quickRender({ onChange, value: [3, 4] }),
-              slider = view.getByRole('slider', { name: 'threat level min' });
-
-          expect(onChange).not.toHaveBeenCalled();
-
-          await user.tab();
-          expect(document.activeElement).toBe(slider);
-
-          await user.keyboard('[ArrowLeft]');
-
-          // no change in focus
-          expect(document.activeElement).toBe(slider);
-          expect(onChange).toHaveBeenCalledWith([2, 4]);
-        }
-    );
-
-    it('fires onChange with an increased first value when the min slider receives an ArrowRight key press',
-        async function() {
-          const user = userEvent.setup(),
-              onChange = jest.fn(),
-              view = quickRender({ onChange, value: [3, 5] }),
-              slider = view.getByRole('slider', { name: 'threat level min' });
-
-          expect(onChange).not.toHaveBeenCalled();
-
-          await user.tab();
-          expect(document.activeElement).toBe(slider);
-
-          await user.keyboard('[ArrowRight]');
-
-          // no change in focus
-          expect(document.activeElement).toBe(slider);
-          expect(onChange).toHaveBeenCalledWith([4, 5]);
-        }
-    );
-
-    it('fires onChange with a decreased second value when the max slider receives an ArrowLeft key press',
-        async function() {
-          const user = userEvent.setup(),
-              onChange = jest.fn(),
-              view = quickRender({ onChange, value: [2, 4] }),
-              slider = view.getByRole('slider', { name: 'threat level max' });
-
-          expect(onChange).not.toHaveBeenCalled();
-
-          await user.tab();
-          await user.tab();
-          expect(document.activeElement).toBe(slider);
-
-          await user.keyboard('[ArrowLeft]');
-
-          // no change in focus
-          expect(document.activeElement).toBe(slider);
-          expect(onChange).toHaveBeenCalledWith([2, 3]);
-        }
-    );
-
-    it('fires onChange with an increased second value when the max slider receives an ArrowRight key press',
-        async function() {
-          const user = userEvent.setup(),
-              onChange = jest.fn(),
-              view = quickRender({ onChange, value: [3, 5] }),
-              slider = view.getByRole('slider', { name: 'threat level max' });
-
-          expect(onChange).not.toHaveBeenCalled();
-
-          await user.tab();
-          await user.tab();
-          expect(document.activeElement).toBe(slider);
-
-          await user.keyboard('[ArrowRight]');
-
-          // no change in focus
-          expect(document.activeElement).toBe(slider);
-          expect(onChange).toHaveBeenCalledWith([3, 6]);
-        }
-    );
-
-    describe('when the sliders are initially equal', function() {
-      it('fires onChange with a decreased first value when the min slider receives an ArrowLeft key press',
-          async function() {
-            const user = userEvent.setup(),
-                onChange = jest.fn(),
-                view = quickRender({ onChange, value: [5, 5] }),
-                slider = view.getByRole('slider', { name: 'threat level min' });
-
-            expect(onChange).not.toHaveBeenCalled();
-
-            await user.tab();
-            expect(document.activeElement).toBe(slider);
-
-            await user.keyboard('[ArrowLeft]');
-
-            // no change in focus
-            expect(document.activeElement).toBe(slider);
-            expect(onChange).toHaveBeenCalledWith([4, 5]);
-          }
-      );
-
-      it('fires onChange with an increased second value when the min slider receives an ArrowRight key press',
-          async function() {
-            const user = userEvent.setup(),
-                onChange = jest.fn(),
-                view = quickRender({ onChange, value: [5, 5] }),
-                minSlider = view.getByRole('slider', { name: 'threat level min' }),
-                maxSlider = view.getByRole('slider', { name: 'threat level max' });
-
-            expect(onChange).not.toHaveBeenCalled();
-
-            await user.tab();
-            expect(document.activeElement).toBe(minSlider);
-
-            await user.keyboard('[ArrowRight]');
-
-            // focus should be on the slider representing the increase, which is the max slider
-            expect(document.activeElement).toBe(maxSlider);
-            expect(onChange).toHaveBeenCalledWith([5, 6]);
-          }
-      );
-
-      it('fires onChange with a decreased first value when the max slider receives an ArrowLeft key press',
-          async function() {
-            const user = userEvent.setup(),
-                onChange = jest.fn(),
-                view = quickRender({ onChange, value: [5, 5] }),
-                minSlider = view.getByRole('slider', { name: 'threat level min' }),
-                maxSlider = view.getByRole('slider', { name: 'threat level max' });
-
-            expect(onChange).not.toHaveBeenCalled();
-
-            await user.tab();
-            await user.tab();
-            expect(document.activeElement).toBe(maxSlider);
-
-            await user.keyboard('[ArrowLeft]');
-
-            // focus should be on the slider representing the decrease, which is the min slider
-            expect(document.activeElement).toBe(minSlider);
-            expect(onChange).toHaveBeenCalledWith([4, 5]);
-          }
-      );
-
-      it('fires onChange with an increased second value when the max slider receives an ArrowRight key press',
-          async function() {
-            const user = userEvent.setup(),
-                onChange = jest.fn(),
-                view = quickRender({ onChange, value: [5, 5] }),
-                slider = view.getByRole('slider', { name: 'threat level max' });
-
-            expect(onChange).not.toHaveBeenCalled();
-
-            await user.tab();
-            await user.tab();
-            expect(document.activeElement).toBe(slider);
-
-            await user.keyboard('[ArrowRight]');
-
-            // no change in focus
-            expect(document.activeElement).toBe(slider);
-            expect(onChange).toHaveBeenCalledWith([5, 6]);
-          }
-      );
-    });
+    /*
+     * NOTE: RTL userEvent does not currently support keyboard events on <input type="range">. This will
+     * have to be tested in functional tests
+     */
 
     it('is not included in the tab order if disabled', async function() {
       const user = userEvent.setup(),

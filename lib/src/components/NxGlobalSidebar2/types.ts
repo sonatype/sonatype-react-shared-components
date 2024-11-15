@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValidationMap, AnchorHTMLAttributes, Validator, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ReactNode } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
@@ -18,11 +18,11 @@ export interface Props {
   children?: ReactNode | null;
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   isOpen: PropTypes.bool.isRequired,
   className: PropTypes.string,
-  toggleOpenIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
-  toggleCloseIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
+  toggleOpenIcon: PropTypes.object.isRequired as PropTypes.Validator<IconDefinition>,
+  toggleCloseIcon: PropTypes.object.isRequired as PropTypes.Validator<IconDefinition>,
   onToggleClick: PropTypes.func.isRequired,
   children: PropTypes.node
 };
@@ -34,9 +34,9 @@ export interface NxGlobalSidebar2NavigationLinkProps extends AnchorHTMLAttribute
   href: string;
 }
 
-export const nxGlobalSidebar2NavigationLinkPropTypes: ValidationMap<NxGlobalSidebar2NavigationLinkProps> = {
+export const nxGlobalSidebar2NavigationLinkPropTypes: PropTypes.ValidationMap<NxGlobalSidebar2NavigationLinkProps> = {
   isSelected: PropTypes.bool,
-  icon: PropTypes.object.isRequired as Validator<IconDefinition>,
-  text: PropTypes.node.isRequired,
+  icon: PropTypes.object.isRequired as PropTypes.Validator<IconDefinition>,
+  text: PropTypes.node.isRequired as PropTypes.Validator<RequiredReactNode>,
   href: PropTypes.string.isRequired
 };

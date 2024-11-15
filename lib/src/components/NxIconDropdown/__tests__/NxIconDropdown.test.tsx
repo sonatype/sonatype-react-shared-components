@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { rtlRender, rtlRenderElement, userEvent, runTimers } from '../../../__testutils__/rtlUtils';
-import { createEvent, fireEvent, within } from '@testing-library/react';
+import { act, createEvent, fireEvent, within } from '@testing-library/react';
 
 import NxIconDropdown, { Props } from '../NxIconDropdown';
 import { OptionalReactElement } from '../../../util/reactUtil';
@@ -231,7 +231,7 @@ describe('NxIconDropdown', () => {
 
         expect(onToggleCollapse).not.toHaveBeenCalled();
 
-        toggleBtn.focus();
+        await act(() => { toggleBtn.focus(); });
         await user.keyboard('[Escape]');
 
         expect(onToggleCollapse).not.toHaveBeenCalled();
@@ -245,7 +245,7 @@ describe('NxIconDropdown', () => {
 
         expect(onToggleCollapse).not.toHaveBeenCalled();
 
-        toggleBtn.focus();
+        await act(() => { toggleBtn.focus(); });
         await user.keyboard('[Escape]');
 
         expect(onToggleCollapse).not.toHaveBeenCalled();
@@ -262,7 +262,7 @@ describe('NxIconDropdown', () => {
               onCloseKeyDown: e => e.preventDefault()
             }).getByRole('button');
 
-        toggleBtn.focus();
+        await act(() => { toggleBtn.focus(); });
         await user.keyboard('[Escape]');
 
         expect(onToggleCollapse).not.toHaveBeenCalled();
@@ -321,7 +321,8 @@ describe('NxIconDropdown', () => {
 
   it('moves focus to the dropdown toggle button if a menu item is focused when the dropdown is closed',
       async function() {
-        const props: Partial<Props> = {
+        const user = userEvent.setup(),
+            props: Partial<Props> = {
               children: <button>Foo</button>,
               isOpen: true
             },
@@ -329,12 +330,13 @@ describe('NxIconDropdown', () => {
             menuBtn = getByRole('button', { name: 'Foo' }),
             toggleBtn = await findByRole('button', { name: 'Test tooltip' });
 
-        menuBtn.focus();
+        await user.click(menuBtn);
 
         expect(document.activeElement).toBe(menuBtn);
 
         rerender(<NxIconDropdown { ...minimalProps } {...props} isOpen={false} />);
 
         expect(document.activeElement).toBe(toggleBtn);
-      });
+      }
+  );
 });

@@ -20,7 +20,6 @@
 }
 
 .nx-card {
-  @include nx-container-helpers.container-vertical;
   background-color: var(--nx-color-component-background);
   border-radius: var(--nx-border-radius);
   box-sizing: border-box;
@@ -30,18 +29,20 @@
   text-align: center;
   min-width: 230px;
   max-width: 330px;
+  @include nx-container-helpers.container-vertical;
 }
 
 // Safari does not support gap in flex layouts so we need to use this query and margin for Safari.
 @media not all and (min-resolution:.001dpcm) {
   @supports (-webkit-appearance:none) and (display:flow-root) {
     .nx-card-container {
-      @include nx-container-helpers.container-horizontal;
       margin-bottom: 0;
 
       + .nx-card-container {
         margin-top: 0;
       }
+
+      @include nx-container-helpers.container-horizontal;
     }
 
     .nx-card {
@@ -65,18 +66,18 @@
 }
 
 .nx-card__header {
-  @include nx-container-helpers.container-vertical;
   margin-bottom: var(--nx-spacing-4x);
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-card__content {
-  @include nx-container-helpers.container-vertical;
   align-items: center;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   gap: var(--nx-spacing-4x);
   margin-bottom: var(--nx-spacing-6x);
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-card__footer {

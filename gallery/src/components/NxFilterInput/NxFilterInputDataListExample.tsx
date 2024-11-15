@@ -16,7 +16,7 @@ const NxFilterInputDataListExample = () => {
       <NxFilterInput placeholder="Choose browser"
                      onChange={changeValue}
                      value={value}
-                     list="browsers" />
+                     inputAttributes={{ list: 'browsers' }} />
 
       <datalist id="browsers">
         <option value="Chrome" />

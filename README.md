@@ -180,7 +180,17 @@ In `gallery`:
 ```
 yarn clean && rm -rf node_modules && yarn install && yarn start
 ```
-If on Windows, adapt the syntax and `rm` command as necessary.
+If on Windows, adapt the syntax and `rm` command as necessary e.g.
+
+In `lib`:
+```
+yarn clean; Remove-Item -Recurse -Force -Path .\node_modules; yarn install; yarn watch
+```
+
+In `gallery`:
+```
+yarn clean; Remove-Item -Recurse -Force -Path .\node_modules; yarn install; yarn start
+```
 
 ## Running Unit Tests
 

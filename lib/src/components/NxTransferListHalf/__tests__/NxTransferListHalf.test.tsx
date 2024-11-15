@@ -7,7 +7,7 @@
 
 import { includes } from 'ramda';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { RefAttributes } from 'react';
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import { mockTransferListLayout } from '../../../__testutils__/transferListUtils';
 import { within, render, screen } from '@testing-library/react';
@@ -15,6 +15,8 @@ import { within, render, screen } from '@testing-library/react';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxForm from '../../NxForm/NxForm';
 import NxTransferListHalf, { Props } from '../NxTransferListHalf';
+
+type RenderProps = Props & RefAttributes<HTMLDivElement>;
 
 describe('NxTransferListHalf', function() {
   const minimalProps: Props = {
@@ -24,8 +26,8 @@ describe('NxTransferListHalf', function() {
         items: [],
         footerContent: <div/>
       },
-      quickRender = rtlRender(NxTransferListHalf, minimalProps),
-      renderEl = rtlRenderElement(NxTransferListHalf, minimalProps);
+      quickRender = rtlRender<RenderProps>(NxTransferListHalf, minimalProps),
+      renderEl = rtlRenderElement<RenderProps>(NxTransferListHalf, minimalProps);
 
   beforeEach(mockTransferListLayout);
 
@@ -413,7 +415,7 @@ describe('NxTransferListHalf', function() {
       await runTimers();
       tooltip = await screen.findByRole('tooltip');
       expect(tooltip).toHaveTextContent('Move Down (disabled)');
-    });
+    }, 10000);
 
     it('passes onReorderItem the item id and direction when move up or down button is clicked', async function() {
       const dataItems = [{

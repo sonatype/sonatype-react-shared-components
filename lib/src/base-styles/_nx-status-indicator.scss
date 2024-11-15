@@ -57,7 +57,9 @@
   }
 
   // negative styles (default)
-  @include status-indicator-styling("negative");
+  & {
+    @include status-indicator-styling("negative");
+  }
 
   &--intermediate {
     @include status-indicator-styling("intermediate");

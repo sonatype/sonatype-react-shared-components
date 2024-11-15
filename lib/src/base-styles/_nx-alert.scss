@@ -12,8 +12,6 @@
 */
 
 .nx-alert {
-  @include nx-container-helpers.container-horizontal;
-
   align-items: first baseline;
   background-color: var(--nx-color-component-background);
   border: 1px solid var(--nx-color-text-stark);
@@ -78,20 +76,20 @@
     content: '\200b';
     margin: var(--nx-spacing-base) 0;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-alert__content-wrap {
-  @include nx-container-helpers.container-horizontal;
-
   align-items: center;
   display: flex;
   flex-grow: 1;
   min-height: 32px;
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-alert__content {
-  @include nx-container-helpers.container-vertical;
-
   flex-grow: 1;
   overflow-wrap: anywhere;
 
@@ -111,6 +109,8 @@
       color: var(--nx-color-alert-link-active);
     }
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 footer, .nx-footer {

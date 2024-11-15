@@ -91,7 +91,7 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
     <NxFilterInput disabled={disabled}
                    placeholder={filterPlaceholder || 'filter'}
                    id={generateId(name, 'filter-input')}
-                   aria-controls={menuId}
+                   inputAttributes={{ 'aria-controls': menuId }}
                    onChange={onFilterChange}
                    value={filter || ''}/>
   );

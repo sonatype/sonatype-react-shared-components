@@ -36,6 +36,6 @@ export default function NxCopyToClipboardExample() {
                             id="complex-nx-copy-to-clipboard"
                             sublabel="The following is a winner of the International Obfuscated C Code Competition"
                             onCopyUsingBtn={() => alert('Copied using the button')}
-                            inputProps={{rows: 20}}
+                            inputProps={{ inputAttributes: { rows: 20 } }}
                             content={snippet} />;
 }
