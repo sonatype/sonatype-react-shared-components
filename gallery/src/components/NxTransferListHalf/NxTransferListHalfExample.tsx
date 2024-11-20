@@ -5,17 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useState } from 'react';
-import { DataItem, NxFontAwesomeIcon, NxTransferListHalf } from '@sonatype/react-shared-components';
-import { map, range, prepend, reject, propEq } from 'ramda';
-import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons';
+import { DataItem, NxTransferListHalf } from '@sonatype/react-shared-components';
+import { reject, propEq } from 'ramda';
 
-const initialItems: DataItem<number>[] = prepend(
-    {
-      id: 0,
-      displayName: <><NxFontAwesomeIcon icon={faArrowsAltH} /><span>Loooooooooooooooooooooooooong Name</span></>
-    },
-    map<number, DataItem<number>>(i => ({ id: i, displayName: `Item ${i}` }), range(1, 101))
-);
+const initialItems: DataItem<number>[] = [
+  // { id: 1, displayName: 'Item 1' }
+];
 
 export default function NxTransferListHalfExample() {
   const [items, setItems] = useState<DataItem<number>[]>(initialItems),
@@ -25,12 +20,20 @@ export default function NxTransferListHalfExample() {
     setItems(reject(propEq(id, 'id'), items));
   }
 
-  return <NxTransferListHalf label="Example Items"
+  function addItem() {
+    const newItem: DataItem<number> = { id: items.length + 1, displayName: `Item ${items.length + 1}` };
+    setItems([...items, newItem]);
+  }
+
+  return <>
+  <button onClick={addItem}>ADD</button>
+  <NxTransferListHalf label="Example Items"
                              filterValue={filter}
                              onFilterChange={setFilter}
                              showMoveAll={false}
                              onMoveAll={() => {}}
                              items={items}
                              onItemChange={onItemChange}
-                             footerContent={`${items.length} items`} />;
+                             footerContent={`${items.length} items`} />
+  </>;
 }
