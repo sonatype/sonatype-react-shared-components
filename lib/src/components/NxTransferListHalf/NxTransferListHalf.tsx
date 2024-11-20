@@ -116,6 +116,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
         items,
         onItemChange,
         onReorderItem,
+        footerContent,
         filterFn: filterFnProp
       } = props,
       isSelected = isSelectedProp ?? true,
@@ -149,15 +150,6 @@ export default function NxTransferListHalf<T extends string | number = string>(p
           </button>
         }
         {/* Add the tabIndex here to meet the a11y requirement that scrollable region must have keyboard access */}
-        <div>length: {visibleItems.length}</div>
-        <NxScrollRender>
-        <ul>
-            { visibleItems.map(
-                (i, index) => <li key={index}>{i.displayName}</li>)
-           }
-          </ul>
-        </NxScrollRender>
-        
         <NxScrollRender>
           <div className="nx-transfer-list__item-list" tabIndex={onItemChange || allowReordering ? undefined : 0}>
             { visibleItems.map(
@@ -173,6 +165,9 @@ export default function NxTransferListHalf<T extends string | number = string>(p
            }
           </div>
         </NxScrollRender>
+        <div className="nx-transfer-list__footer">
+          {footerContent}
+        </div>
       </div>
     </NxFieldset>
   );
