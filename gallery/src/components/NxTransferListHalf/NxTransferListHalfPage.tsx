@@ -8,9 +8,12 @@ import React, { useState} from 'react';
 
 import { NxScrollRender } from '@sonatype/react-shared-components';
 
-
-const ListComponent = () => {
-  const [items, setItems] = useState<string[]>([]);
+const ListComponent = (props: any) => {
+  const initialItems: string[] = [];
+  if (props.a != undefined && props.a != null) {
+    initialItems.push(props.a);
+  }
+  const [items, setItems] = useState<string[]>(initialItems);
 
   const addItem = () => {
     const newItem = `Item ${items.length + 1}`;
