@@ -168,6 +168,7 @@ describe('NxTransferListHalf', function() {
     expect(items[1]).toHaveTextContent('baz');
   });
 
+  // This test is to ensure that the bug reported in CLM-32936 was fixed.
   it('render from 0 to 3 items', function() {
     const view = quickRender({ items: [] });
     expect(within(view.container).queryByRole('group')).not.toBeInTheDocument();
@@ -187,10 +188,8 @@ describe('NxTransferListHalf', function() {
                             displayName: 'baz'
                           }]}/>
     );
-    group = view.getByRole('group', { name: 'foo' });
-    expect(group).toBeInTheDocument();
-    group = view.getByRole('group', { name: 'baz' });
-    expect(group).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'baz' })).toBeInTheDocument();
 
     view.rerender(
       <NxTransferListHalf {...minimalProps}
@@ -205,12 +204,9 @@ describe('NxTransferListHalf', function() {
                             displayName: 'foobar'
                           }]}/>
     );
-    group = view.getByRole('group', { name: 'foo' });
-    expect(group).toBeInTheDocument();
-    group = view.getByRole('group', { name: 'baz' });
-    expect(group).toBeInTheDocument();
-    group = view.getByRole('group', { name: 'foobar' });
-    expect(group).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'baz' })).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'foobar' })).toBeInTheDocument();
   });
 
   it('renders a checkbox input only when onItemChange is provided', function() {

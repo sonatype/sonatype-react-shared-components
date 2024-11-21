@@ -68,6 +68,11 @@ const NxScrollRenderPage = () =>
               start of the first child to the start of the next must be the same.
             </NxList.Text>
           </NxList.Item>
+          <NxList.Item>
+            <NxList.Text>
+              The individual children must not change height over time.
+            </NxList.Text>
+          </NxList.Item>
         </NxList>
       </NxTile.Subsection>
       <NxTile.Subsection>
