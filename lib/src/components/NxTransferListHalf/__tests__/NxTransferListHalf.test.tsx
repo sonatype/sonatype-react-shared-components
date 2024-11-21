@@ -170,18 +170,15 @@ describe('NxTransferListHalf', function() {
 
   it('render from 0 to 3 items', function() {
     const view = quickRender({ items: [] });
-    let container = view.container;
-    let itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
+    const itemList = view.container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
         items = itemList.querySelectorAll('.nx-transfer-list__item');
     expect(items.length).toBe(0);
 
     view.rerender(
       <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
     );
-    container = view.container;
-    itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
-    items = itemList.querySelectorAll('.nx-transfer-list__item');
-    expect(items.length).toBe(1);
+    let group = view.getByRole('group', { name: 'foo' });
+    expect(group).toBeInTheDocument();
 
     view.rerender(
       <NxTransferListHalf {...minimalProps}
@@ -193,10 +190,10 @@ describe('NxTransferListHalf', function() {
                             displayName: 'baz'
                           }]}/>
     );
-    container = view.container;
-    itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
-    items = itemList.querySelectorAll('.nx-transfer-list__item');
-    expect(items.length).toBe(2);
+    group = view.getByRole('group', { name: 'foo' });
+    expect(group).toBeInTheDocument();
+    group = view.getByRole('group', { name: 'baz' });
+    expect(group).toBeInTheDocument();
 
     view.rerender(
       <NxTransferListHalf {...minimalProps}
@@ -211,10 +208,12 @@ describe('NxTransferListHalf', function() {
                             displayName: 'foobar'
                           }]}/>
     );
-    container = view.container;
-    itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
-    items = itemList.querySelectorAll('.nx-transfer-list__item');
-    expect(items.length).toBe(3);
+    group = view.getByRole('group', { name: 'foo' });
+    expect(group).toBeInTheDocument();
+    group = view.getByRole('group', { name: 'baz' });
+    expect(group).toBeInTheDocument();
+    group = view.getByRole('group', { name: 'foobar' });
+    expect(group).toBeInTheDocument();
   });
 
   it('renders a checkbox input only when onItemChange is provided', function() {
