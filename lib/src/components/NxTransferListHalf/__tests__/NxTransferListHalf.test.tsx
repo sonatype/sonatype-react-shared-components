@@ -168,6 +168,55 @@ describe('NxTransferListHalf', function() {
     expect(items[1]).toHaveTextContent('baz');
   });
 
+  it('render from 0 to 3 items', function() {
+    const view = quickRender({ items: [] });
+    let container = view.container;
+    let itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
+        items = itemList.querySelectorAll('.nx-transfer-list__item');
+    expect(items.length).toBe(0);
+
+    view.rerender(
+      <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
+    );
+    container = view.container;
+    itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
+    items = itemList.querySelectorAll('.nx-transfer-list__item');
+    expect(items.length).toBe(1);
+
+    view.rerender(
+      <NxTransferListHalf {...minimalProps}
+                          items={[{
+                            id: '1',
+                            displayName: 'foo'
+                          }, {
+                            id: '2',
+                            displayName: 'baz'
+                          }]}/>
+    );
+    container = view.container;
+    itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
+    items = itemList.querySelectorAll('.nx-transfer-list__item');
+    expect(items.length).toBe(2);
+
+    view.rerender(
+      <NxTransferListHalf {...minimalProps}
+                          items={[{
+                            id: '1',
+                            displayName: 'foo'
+                          }, {
+                            id: '2',
+                            displayName: 'baz'
+                          }, {
+                            id: '3',
+                            displayName: 'foobar'
+                          }]}/>
+    );
+    container = view.container;
+    itemList = container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
+    items = itemList.querySelectorAll('.nx-transfer-list__item');
+    expect(items.length).toBe(3);
+  });
+
   it('renders a checkbox input only when onItemChange is provided', function() {
     const onItemChange = jest.fn(),
         { container, rerender } = quickRender({ items: [{id: '1', displayName: 'foo'}], onItemChange }),
