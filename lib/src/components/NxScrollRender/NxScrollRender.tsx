@@ -112,8 +112,7 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
           secondChild = parentRef.current.children[2];
 
       if (!secondChild) {
-        // setting a minimum height
-        setChildHeight(1);
+        setChildHeight(0);
       }
       else {
         const firstChildTop = firstChild?.getBoundingClientRect()?.top ?? 0,
@@ -124,7 +123,7 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
 
       setParentHeight(parentRef.current.clientHeight);
     }
-  }, []);
+  }, [childCount === 0]);
 
   useResizeObserver(parentRef, useCallback(function({ contentBoxSize: [{ blockSize }] }) {
     setParentHeight(blockSize);
