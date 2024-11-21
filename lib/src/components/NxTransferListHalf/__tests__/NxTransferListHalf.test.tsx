@@ -170,9 +170,7 @@ describe('NxTransferListHalf', function() {
 
   it('render from 0 to 3 items', function() {
     const view = quickRender({ items: [] });
-    const itemList = view.container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
-        items = itemList.querySelectorAll('.nx-transfer-list__item');
-    expect(items.length).toBe(0);
+    expect(within(view.container).queryByRole('group')).not.toBeInTheDocument();
 
     view.rerender(
       <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
