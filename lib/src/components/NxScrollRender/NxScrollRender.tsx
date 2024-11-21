@@ -112,7 +112,8 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
           secondChild = parentRef.current.children[2];
 
       if (!secondChild) {
-        setChildHeight(0);
+        // setting a minimum height
+        setChildHeight(1);
       }
       else {
         const firstChildTop = firstChild?.getBoundingClientRect()?.top ?? 0,
