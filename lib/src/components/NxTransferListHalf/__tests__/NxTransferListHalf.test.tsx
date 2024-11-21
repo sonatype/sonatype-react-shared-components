@@ -171,7 +171,9 @@ describe('NxTransferListHalf', function() {
   // This test is to ensure that the bug reported in CLM-32936 was fixed.
   it('render from 0 to 3 items', function() {
     const view = quickRender({ items: [] });
-    expect(within(view.container).queryByRole('group')).not.toBeInTheDocument();
+    const itemList = view.container.querySelector('.nx-transfer-list__item-list') as HTMLElement,
+        items = itemList.querySelectorAll('.nx-transfer-list__item');
+    expect(items.length).toBe(0);
 
     view.rerender(
       <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
