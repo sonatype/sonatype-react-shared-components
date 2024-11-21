@@ -177,8 +177,7 @@ describe('NxTransferListHalf', function() {
     view.rerender(
       <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
     );
-    let group = view.getByRole('group', { name: 'foo' });
-    expect(group).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
 
     view.rerender(
       <NxTransferListHalf {...minimalProps}
