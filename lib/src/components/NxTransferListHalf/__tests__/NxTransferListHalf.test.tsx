@@ -168,6 +168,47 @@ describe('NxTransferListHalf', function() {
     expect(items[1]).toHaveTextContent('baz');
   });
 
+  // This test is to ensure that the bug reported in CLM-32936 was fixed.
+  it('render from 0 to 3 items', function() {
+    const view = quickRender({ items: [] });
+    expect(within(view.container.firstElementChild as HTMLElement).queryByRole('group')).not.toBeInTheDocument();
+
+    view.rerender(
+      <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
+    );
+    expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
+
+    view.rerender(
+      <NxTransferListHalf {...minimalProps}
+                          items={[{
+                            id: '1',
+                            displayName: 'foo'
+                          }, {
+                            id: '2',
+                            displayName: 'baz'
+                          }]}/>
+    );
+    expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'baz' })).toBeInTheDocument();
+
+    view.rerender(
+      <NxTransferListHalf {...minimalProps}
+                          items={[{
+                            id: '1',
+                            displayName: 'foo'
+                          }, {
+                            id: '2',
+                            displayName: 'baz'
+                          }, {
+                            id: '3',
+                            displayName: 'foobar'
+                          }]}/>
+    );
+    expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'baz' })).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'foobar' })).toBeInTheDocument();
+  });
+
   it('renders a checkbox input only when onItemChange is provided', function() {
     const onItemChange = jest.fn(),
         { container, rerender } = quickRender({ items: [{id: '1', displayName: 'foo'}], onItemChange }),
