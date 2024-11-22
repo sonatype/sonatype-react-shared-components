@@ -23,7 +23,6 @@
   }
 
   > .nx-accordion__summary-wrapper {
-    @include nx-container-helpers.container-horizontal;
     align-items: center;
     box-sizing: border-box;
     color: var(--nx-color-text-stark);
@@ -41,6 +40,8 @@
         @include nx-button-helpers.small-icon-btn;
       }
     }
+
+    @include nx-container-helpers.container-horizontal;
   }
 
   &:focus {
@@ -63,12 +64,13 @@
 
 .nx-accordion__subheader {
   @include nx-text-helpers.bold;
-  @include nx-container-helpers.container-horizontal;
 
   color: var(--nx-color-text-stark);
   font-size: var(--nx-font-size-heading-3);
   margin-bottom: var(--nx-spacing-4x);
   max-width: var(--nx-width-text-wrapping);
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-accordion__chevron {
@@ -76,7 +78,6 @@
 }
 
 .nx-accordion__content {
-  @include nx-container-helpers.container-vertical;
   $vertical-padding: var(--nx-spacing-6x);
 
   border-top: 1px solid var(--nx-color-accordion-header-divider);
@@ -92,4 +93,6 @@
       }
     }
   }
+
+  @include nx-container-helpers.container-vertical;
 }

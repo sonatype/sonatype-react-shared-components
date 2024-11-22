@@ -7,10 +7,10 @@
 @use '../scss-shared/nx-container-helpers';
 
 .nx-btn-bar {
-  @include nx-container-helpers.container-horizontal;
-
   align-items: center;
   display: flex;
   justify-content: flex-end;
   margin: var(--nx-spacing-6x) 0;
+
+  @include nx-container-helpers.container-horizontal;
 }

@@ -9,8 +9,8 @@ import * as PropTypes from 'prop-types';
 import {Option, optionPropType} from '../../commonTypes';
 export {Option} from '../../commonTypes';
 
-export interface Props {
-  options: Option[];
+export interface Props<T extends Option = Option> {
+  options: T[];
   name: string;
   children: ReactNode;
   onChange: ((selectedIds: Set<string | null>, toggledId?: string | null) => void);
@@ -19,7 +19,7 @@ export interface Props {
   isOpen?: boolean | null;
   disabled?: boolean | null;
   disabledTooltip?: string | null;
-  optionTooltipGenerator?: ((option: Option) => string) | null;
+  optionTooltipGenerator?: ((option: T) => string) | null;
   tooltipModifierClass?: string | null;
   filterPlaceholder?: string | null;
   filterThreshold?: number | null;

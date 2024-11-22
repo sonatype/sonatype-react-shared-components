@@ -240,6 +240,13 @@ describe('NxCollapsibleRadioSelect', function() {
       expect(options.length).toBe(3);
     });
 
+    it('renders react element as option\'s name prop if supplied', function() {
+      const view = quickRender({ isOpen: true, options: [{id: 'foo', name: <span data-testid="foo">Foo</span> }]});
+      const option = view.getByRole('menu');
+      expect(within(option).getByTestId('foo')).toBeInTheDocument();
+      expect(within(option).getByTestId('foo')).toHaveTextContent('Foo');
+    });
+
     it('renders accessible name according to option\'s name prop', function() {
       const options = quickRender({ isOpen: true }).getAllByRole('menuitemradio');
 
@@ -278,7 +285,7 @@ describe('NxCollapsibleRadioSelect', function() {
     describe('tooltip', function() {
       it('adds a tooltip for each option when optionTooltipGenerator prop is provided', async function() {
         const user = userEvent.setup(),
-            view = quickRender({ optionTooltipGenerator: option => option.name, isOpen: true }),
+            view = quickRender({ optionTooltipGenerator: option => option.name as string, isOpen: true }),
             options = view.getAllByRole('menuitemradio');
 
         await runTimers();

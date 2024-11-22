@@ -43,8 +43,6 @@
 }
 
 .nx-page-content {
-  @include nx-container-helpers.container-horizontal;
-
   justify-self: center;
   box-sizing: border-box;
   display: flex;
@@ -54,6 +52,8 @@
   max-width: var(--nx-width-page-max);
   overflow-y: hidden;
   width: 100%;
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-page, .nx-page-content {
@@ -75,8 +75,6 @@
 }
 
 .nx-page-sidebar {
-  @include nx-container-helpers.container-vertical;
-
   background-color: var(--nx-color-site-background);
   box-sizing: border-box;
 
@@ -97,11 +95,11 @@
     // When inner sidebar is present, main should only be in the content area
     grid-area: content;
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-page-main {
-  @include nx-container-helpers.container-vertical;
-
   box-sizing: border-box;
   flex: auto;
 
@@ -112,6 +110,8 @@
   overflow-y: auto;
   padding: var(--nx-spacing-6x) var(--nx-spacing-6x);
   white-space: normal;
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-html--page-scrolling {

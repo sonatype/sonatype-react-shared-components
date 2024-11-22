@@ -14,6 +14,8 @@ import {
 } from '@sonatype/react-shared-components';
 
 interface CustomOption extends NxCollapsibleRadioSelectOption {
+  // include name within CustomOption to narrow its type to string
+  name: string
   description: string;
 }
 
@@ -51,7 +53,7 @@ const NxCollapsibleRadioSelectCustomTooltipExample = () => {
 
   const [filter, setFilter] = useState('');
 
-  function filterPredicate(option: NxCollapsibleRadioSelectOption) {
+  function filterPredicate(option: CustomOption) {
     return includes(toLower(filter), toLower(option.name));
   }
 

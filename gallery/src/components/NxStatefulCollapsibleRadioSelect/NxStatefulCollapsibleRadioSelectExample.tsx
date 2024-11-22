@@ -9,26 +9,43 @@ import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 
 import {
   NxFontAwesomeIcon,
-  NxStatefulCollapsibleRadioSelect
+  NxStatefulCollapsibleRadioSelect,
+  NxCollapsibleRadioSelectOption
 } from '@sonatype/react-shared-components';
 
+interface Option extends NxCollapsibleRadioSelectOption {
+  stringName: string;
+}
+
 const NxStatefulCollapsibleRadioSelectExample = () => {
-  const options = [
+  const customNameElement = (
+    <>
+      <NxFontAwesomeIcon icon={faBicycle}/>
+      <span>Bicycle</span>
+    </>
+  );
+
+  const options: Option[] = [
     {
       id: 'bike',
-      name: 'Bicycle'
+      name: customNameElement,
+      stringName: 'Bicycle'
     }, {
       id: 'motorcycle',
-      name: 'Motorcycle'
+      name: 'Motorcycle',
+      stringName: 'Motorcycle'
     }, {
       id: 'skate',
-      name: 'Skateboard'
+      name: 'Skateboard',
+      stringName: 'Skateboard'
     }, {
       id: 'moped',
-      name: 'Moped'
+      name: 'Moped',
+      stringName: 'Moped'
     }, {
       id: null,
-      name: 'No Transport'
+      name: 'No Transport',
+      stringName: 'No Transport'
     }
   ];
 
@@ -38,7 +55,7 @@ const NxStatefulCollapsibleRadioSelectExample = () => {
     <NxStatefulCollapsibleRadioSelect name="travel"
                                       id="stateful-travel"
                                       options={options}
-                                      optionTooltipGenerator={option => option.name}
+                                      optionTooltipGenerator={(option) => option.stringName}
                                       selectedId={selection}
                                       onChange={onSelectionChange}
                                       filterPlaceholder="filter vehicle name"

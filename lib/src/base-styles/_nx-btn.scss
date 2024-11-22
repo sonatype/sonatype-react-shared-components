@@ -33,7 +33,6 @@
 
 .nx-btn, a.nx-btn {
   @include nx-text-helpers.semi-bold;
-  @include nx-container-helpers.container-horizontal;
 
   background-color: var(--nx-color-secondary-button-background);
   border: var(--nx-border-width-alt) solid var(--nx-color-secondary-button-border);
@@ -101,6 +100,8 @@
       height: 16px;
     }
   }
+  @include nx-container-helpers.container-horizontal;
+
 }
 
 .nx-btn, .nx-segmented-btn, .nx-icon-dropdown {
@@ -126,6 +127,13 @@
   border-color: transparent;
   color: var(--nx-color-text-stark);
 
+  // icon width can vary, just don't bother with padding in this direction and let the centering work it out
+  padding-left: 0;
+  padding-right: 0;
+
+  // essentially, calculate the width the same way that the height is calculated (line height plus padding and border)
+  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x));
+
   &:hover {
     background-color: var(--nx-color-interactive-background-hover);
     color: var(--nx-color-text-stark);
@@ -142,13 +150,6 @@
     color: var(--nx-color-text-stark);
     outline: none;
   }
-
-  // icon width can vary, just don't bother with padding in this direction and let the centering work it out
-  padding-left: 0;
-  padding-right: 0;
-
-  // essentially, calculate the width the same way that the height is calculated (line height plus padding and border)
-  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x));
 
   .nx-icon {
     height: 1em;
