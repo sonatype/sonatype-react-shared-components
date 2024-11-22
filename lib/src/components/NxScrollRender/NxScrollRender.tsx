@@ -123,7 +123,7 @@ export default function NxScrollRender({ children, reuseChildren, initialChildCo
 
       setParentHeight(parentRef.current.clientHeight);
     }
-  }, []);
+  }, [childCount === 0]);
 
   useResizeObserver(parentRef, useCallback(function({ contentBoxSize: [{ blockSize }] }) {
     setParentHeight(blockSize);
