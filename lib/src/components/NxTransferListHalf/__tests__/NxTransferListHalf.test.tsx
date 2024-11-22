@@ -31,8 +31,6 @@ describe('NxTransferListHalf', function() {
 
   beforeEach(mockTransferListLayout);
 
-  beforeEach(mockTransferListLayout);
-
   it('renders a fieldset as top-level element', function() {
     const el = renderEl()!;
     expect(el.tagName).toBe('FIELDSET');
