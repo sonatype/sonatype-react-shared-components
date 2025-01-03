@@ -7,8 +7,8 @@
 import { useEffect, useRef } from 'react';
 
 export default function usePrevious<T>(currentValue: T) {
-  const currentValueRef = useRef<T>(),
-      previousValueRef = useRef<T>();
+  const currentValueRef = useRef<T>(undefined),
+      previousValueRef = useRef<T>(undefined);
 
   useEffect(function() {
     if (currentValue !== currentValueRef.current) {

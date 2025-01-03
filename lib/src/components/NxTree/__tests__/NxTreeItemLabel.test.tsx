@@ -63,9 +63,9 @@ describe('NxTree.ItemLabel', function() {
         firstItemLabelId = firstItemLabel.getAttribute('id');
 
     rerender(
-      <TreeKeyNavContext.Provider value={keyNavContext}>
-        <NxTree.ItemLabel />
-      </TreeKeyNavContext.Provider>
+        <TreeKeyNavContext.Provider value={keyNavContext}>
+          <NxTree.ItemLabel />
+        </TreeKeyNavContext.Provider>
     );
 
     const secondItemLabel = container.firstElementChild!,

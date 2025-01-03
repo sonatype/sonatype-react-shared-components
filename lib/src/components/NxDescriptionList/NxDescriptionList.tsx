@@ -36,7 +36,7 @@ const _NxDescriptionList = forwardRef<HTMLElement, Props>(
       );
 
       return isEmpty ? emptyList :
-      <dl ref={ref} className={classnames(className, 'nx-list', 'nx-list--description-list')} { ...otherProps } />;
+        <dl ref={ref} className={classnames(className, 'nx-list', 'nx-list--description-list')} { ...otherProps } />;
     });
 
 _NxDescriptionList.propTypes = propTypes;

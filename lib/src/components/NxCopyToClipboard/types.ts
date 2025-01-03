@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValidationMap } from 'react';
 import { Props as NxFormGroupProps, propTypes as nxFormGroupPropTypes } from '../NxFormGroup/types';
 import { PublicProps as NxTextInputProps, propTypes as nxTextInputPropTypes } from '../NxTextInput/types';
 import { omit } from 'ramda';
@@ -19,9 +18,9 @@ export interface Props extends Omit<NxFormGroupProps, 'children' | 'isRequired'>
   inputProps?: ExternalInputProps | null;
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   ...omit(['children', 'isRequired'], nxFormGroupPropTypes),
   content: PropTypes.string.isRequired,
   onCopyUsingBtn: PropTypes.func,
-  inputProps: PropTypes.shape(omit(['type', 'value', 'isPristine', 'readOnly'], nxTextInputPropTypes))
+  inputProps: PropTypes.shape(omit(['type', 'value', 'isPristine'], nxTextInputPropTypes))
 };

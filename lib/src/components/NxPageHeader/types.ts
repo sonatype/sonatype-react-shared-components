@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ValidationMap } from 'react';
 import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
 
@@ -13,7 +12,7 @@ import { Props as AbstractNxPageHeaderProps, propTypes as abstractNxPageHeaderPr
 
 export interface ProductInfo {
   name: string;
-  version? : string | null;
+  version?: string | null;
 }
 
 export interface LogoProps {
@@ -27,7 +26,7 @@ export interface Props extends Omit<AbstractNxPageHeaderProps, 'logo' | 'product
   logo?: LogoProps | null;
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   ...omit(['logo', 'productInfoContent'], abstractNxPageHeaderPropTypes),
   productInfo: PropTypes.shape({
     name: PropTypes.string.isRequired,

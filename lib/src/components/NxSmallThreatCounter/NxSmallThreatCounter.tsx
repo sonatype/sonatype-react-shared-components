@@ -16,7 +16,7 @@ import NxTooltip from '../NxTooltip/NxTooltip';
 import { ThreatLevelCategory } from '../../util/threatLevels';
 
 function BaseCounter({ category, count, display, children }: BaseCounterProps) {
-  const categoryForDisplay = `${toUpper(head(category))}${tail(category)}`,
+  const categoryForDisplay = `${toUpper(head(category) as string)}${tail(category)}`,
       className = classnames(`nx-small-threat-counter nx-small-threat-counter--${category}`, {
         'nx-small-threat-counter--zero': count === 0
       });

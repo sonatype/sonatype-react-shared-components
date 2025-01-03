@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, ReactNode, WeakValidationMap } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
 export const NX_DRAWER_VARIANTS = ['normal', 'narrow'] as const;
@@ -41,7 +41,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   closeBtnTooltip: PropTypes.string
 };
 
-export const nxDrawerHeaderTitlePropTypes: WeakValidationMap<NxDrawerHeaderTitleProps> = {
+export const nxDrawerHeaderTitlePropTypes: PropTypes.WeakValidationMap<NxDrawerHeaderTitleProps> = {
   className: PropTypes.string,
   children: PropTypes.node
 };

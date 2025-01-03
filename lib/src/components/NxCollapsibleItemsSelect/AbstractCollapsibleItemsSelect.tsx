@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 /* eslint react/prop-types: 0 */
-import React, { ReactElement } from 'react';
+import React, { HTMLAttributes, ReactElement } from 'react';
 
 import { Option } from './commonTypes';
 import NxCollapsibleItems, { PrivateNxCollapsibleItems } from '../NxCollapsibleItems/NxCollapsibleItems';
@@ -16,11 +16,12 @@ import { ensureStartEndElements } from '../../util/reactUtil';
 import { useUniqueId } from '../../util/idUtil';
 
 import { CommonProps } from './commonTypes';
+import { NxCollapsibleItemsChildElement } from '../NxCollapsibleItems/types';
 
 export interface Props<T extends Option = Option> extends CommonProps<T> {
-  renderOption: ((option: T) => ReactElement);
-  renderToggleAllOption?: (() => ReactElement | null) | null;
-  renderCounter?: (() => ReactElement | null) | null;
+  renderOption: (option: T) => NxCollapsibleItemsChildElement;
+  renderToggleAllOption?: (() => NxCollapsibleItemsChildElement | null) | null;
+  renderCounter?: (() => ReactElement<HTMLAttributes<HTMLElement>> | null) | null;
 }
 
 export function generateId(groupName: string, elementId: string | null) {
@@ -120,7 +121,7 @@ function AbstractCollapsibleItemsSelect<T extends Option>(props: Props<T>) {
                                triggerTooltip={getTriggerTooltip()}
                                disabled={disabled}
                                className="nx-collapsible-items--select"
-                               aria-describedby={counter && counter.props.id}
+                               aria-describedby={(counter && counter.props.id) ?? undefined}
                                collapsibleChildrenId= {menuId}>
       { selectAllOption && <NxCollapsibleItems.Child>{selectAllOption}</NxCollapsibleItems.Child> }
       {renderedOptions}

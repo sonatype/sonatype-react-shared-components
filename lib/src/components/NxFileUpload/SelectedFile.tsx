@@ -19,7 +19,6 @@ export { SelectedFileProps };
 const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 const SelectedFile = forwardRef<HTMLSpanElement, SelectedFileProps>(
-    /* eslint-disable react/prop-types */
     function SelectedFile({ file, onDismiss, descriptionId }, ref) {
       // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
       const buttonLabel = 'Dismiss Upload';

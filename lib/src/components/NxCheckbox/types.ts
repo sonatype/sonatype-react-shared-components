@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { InputHTMLAttributes, LabelHTMLAttributes, Validator } from 'react';
+import { InputHTMLAttributes, LabelHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 export type InputAttributesProp =
@@ -34,7 +34,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   isChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
   overflowTooltip: PropTypes.bool,
-  inputAttributes: PropTypes.object as Validator<InputAttributesProp>
+  inputAttributes: PropTypes.object as PropTypes.Validator<InputAttributesProp>
 };
 
 export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
@@ -43,5 +43,5 @@ export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {
   defaultChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
   overflowTooltip: PropTypes.bool,
-  inputAttributes: PropTypes.object as Validator<InputAttributesProp>
+  inputAttributes: PropTypes.object as PropTypes.Validator<InputAttributesProp>
 };

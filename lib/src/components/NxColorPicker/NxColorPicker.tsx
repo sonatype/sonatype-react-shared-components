@@ -33,7 +33,7 @@ interface ColorRadioProps {
 // (i.e. spaced and capitalized)
 const humanReadable: (c: SelectableColor) => string = pipe(
     split('-'),
-    map(s => `${toUpper(head(s))}${tail(s)}`),
+    map(s => `${toUpper(head(s) ?? '')}${tail(s)}`),
     join(' ')
 );
 

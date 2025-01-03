@@ -141,14 +141,14 @@ export function useCheckboxGroupState<K extends string>(
     return [state, () => { setIsPristine(false); toggler(); }];
   }
 
-  const rawStates = map<CheckboxInitValues<K>, CheckboxStates<K>>(_useToggle, initialValues),
+  const rawStates = map(_useToggle, initialValues),
       [isPristine, setIsPristine] = useState(true),
       values = map<Pair, K>(head, filter<Pair, Pair[]>(([, [isSet]]) => isSet, toPairs(rawStates)));
 
   return {
     isPristine,
     validationErrors: validator ? validator(values) : null,
-    states: map<CheckboxStates<K>, CheckboxStates<K>>(wrapState, rawStates)
+    states: map(wrapState, rawStates)
   };
 }
 

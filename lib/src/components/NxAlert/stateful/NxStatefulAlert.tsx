@@ -15,7 +15,7 @@ function mkStatefulAlertComponent<T extends Props>(StatelessAlert: JSXElementCon
       function NxStatefulAlertBase(props, ref) {
         const [isOpen, onClose] = useToggle(true);
 
-        return isOpen ? <StatelessAlert { ...props } { ...({ ref, onClose }) } /> : null;
+        return isOpen ? <StatelessAlert { ...({ ...props, ref, onClose } as T ) } /> : null;
       }
   );
 }

@@ -39,7 +39,7 @@ const getAriaValueText = (value: number) => {
 // valueLabelDisplay, valueLabelFormat, and ownerState
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
 function ValueLabel(props: any) {
-  const { value, className, ownerState, children, valueLabelDisplay, valueLabelFormat, ...otherProps } = props,
+  const { value, className, children, _ownerState, _valueLabelDisplay, _valueLabelFormat, ...otherProps } = props,
       threatCategory = getPolicyThreatCategory(value),
       nxBaseClass = 'nx-policy-threat-slider__value-label',
       classes = classnames(nxBaseClass, `${nxBaseClass}--${threatCategory}`, className),

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, ValidationMap } from 'react';
+import { HTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface Props extends Omit<HTMLAttributes<HTMLDListElement>, 'className' | 'children'> {
@@ -18,7 +18,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDListElement>, 'className
   className?: string | null;
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   criticalCount: PropTypes.number,
   severeCount: PropTypes.number,
   moderateCount: PropTypes.number,

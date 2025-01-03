@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, ReactElement, ReactChild, HTMLAttributes, WeakValidationMap} from 'react';
+import { ReactNode, ReactElement, HTMLAttributes, RefAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
@@ -24,9 +24,11 @@ export interface Props extends PublicProps {
   collapsibleChildrenId?: string | null;
 }
 
+export type NxCollapsibleItemsChildElement = ReactElement<HTMLAttributes<Element> & RefAttributes<Element | null>>;
+
 // NxCollapsibleItemsChild takes exactly one child element
 export interface NxCollapsibleItemsChildProps extends HTMLAttributes<Element> {
-  children: ReactChild;
+  children: NxCollapsibleItemsChildElement | string | number;
 }
 
 export const propTypes: PropTypes.ValidationMap<PublicProps> = {
@@ -45,6 +47,6 @@ export const propTypes: PropTypes.ValidationMap<PublicProps> = {
   ])
 };
 
-export const childPropTypes: WeakValidationMap<NxCollapsibleItemsChildProps> = {
+export const childPropTypes: PropTypes.WeakValidationMap<NxCollapsibleItemsChildProps> = {
   children: PropTypes.any // there isn't a proptype that quite matches/typechecks against ReactChild
 };

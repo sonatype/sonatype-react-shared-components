@@ -74,9 +74,9 @@ describe('NxTransferListHalf', function() {
     const user = userEvent.setup(),
         onSubmit = jest.fn(),
         view = render(
-          <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-            <NxTransferListHalf { ...minimalProps } filterValue="foo" />
-          </NxForm>
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxTransferListHalf { ...minimalProps } filterValue="foo" />
+            </NxForm>
         );
 
     await runTimers();
@@ -176,35 +176,35 @@ describe('NxTransferListHalf', function() {
     expect(within(view.container.firstElementChild as HTMLElement).queryByRole('group')).not.toBeInTheDocument();
 
     view.rerender(
-      <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
+        <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
     );
     expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
 
     view.rerender(
-      <NxTransferListHalf {...minimalProps}
-                          items={[{
-                            id: '1',
-                            displayName: 'foo'
-                          }, {
-                            id: '2',
-                            displayName: 'baz'
-                          }]}/>
+        <NxTransferListHalf {...minimalProps}
+                            items={[{
+                              id: '1',
+                              displayName: 'foo'
+                            }, {
+                              id: '2',
+                              displayName: 'baz'
+                            }]}/>
     );
     expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
     expect(view.getByRole('group', { name: 'baz' })).toBeInTheDocument();
 
     view.rerender(
-      <NxTransferListHalf {...minimalProps}
-                          items={[{
-                            id: '1',
-                            displayName: 'foo'
-                          }, {
-                            id: '2',
-                            displayName: 'baz'
-                          }, {
-                            id: '3',
-                            displayName: 'foobar'
-                          }]}/>
+        <NxTransferListHalf {...minimalProps}
+                            items={[{
+                              id: '1',
+                              displayName: 'foo'
+                            }, {
+                              id: '2',
+                              displayName: 'baz'
+                            }, {
+                              id: '3',
+                              displayName: 'foobar'
+                            }]}/>
     );
     expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
     expect(view.getByRole('group', { name: 'baz' })).toBeInTheDocument();
@@ -221,7 +221,7 @@ describe('NxTransferListHalf', function() {
     expect(checkbox).toBeInTheDocument();
 
     rerender(
-      <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
+        <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
     );
     expect(checkbox).not.toBeInTheDocument();
   });
@@ -256,9 +256,9 @@ describe('NxTransferListHalf', function() {
         const user = userEvent.setup(),
             onItemChange = jest.fn(),
             { rerender, getAllByRole } = render(
-              <div>
-                <NxTransferListHalf {...minimalProps} items={dataItems} onItemChange={onItemChange}/>
-              </div>
+                <div>
+                  <NxTransferListHalf {...minimalProps} items={dataItems} onItemChange={onItemChange}/>
+                </div>
             ),
             selectedItem = getAllByRole('checkbox');
 
@@ -268,9 +268,9 @@ describe('NxTransferListHalf', function() {
         expect(onItemChange).toHaveBeenCalledWith(false, '1');
 
         rerender(
-          <div>
-            <NxTransferListHalf {...minimalProps} items={dataItems} onItemChange={onItemChange} isSelected={false}/>
-          </div>
+            <div>
+              <NxTransferListHalf {...minimalProps} items={dataItems} onItemChange={onItemChange} isSelected={false}/>
+            </div>
         );
 
         await user.click(selectedItem[1]);
@@ -379,7 +379,7 @@ describe('NxTransferListHalf', function() {
           expect(buttons[1]).not.toBeInTheDocument();
 
           rerender(
-            <NxTransferListHalf {...minimalProps} allowReordering={undefined} items={dataItems}/>
+              <NxTransferListHalf {...minimalProps} allowReordering={undefined} items={dataItems}/>
           );
           expect(buttons[0]).not.toBeInTheDocument();
           expect(buttons[1]).not.toBeInTheDocument();

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { RefObject, ReactNode, HTMLAttributes, WeakValidationMap, KeyboardEventHandler, Ref } from 'react';
+import { RefObject, ReactNode, HTMLAttributes, KeyboardEventHandler, Ref } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
@@ -12,7 +12,7 @@ import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUti
 import { OptionalReactElement } from '../../util/reactUtil';
 
 export type AbstractDropdownRenderToggleElement =
-  (toggleRef: RefObject<HTMLButtonElement>, onToggleCollapse: (() => void)) => ReactNode;
+  (toggleRef: RefObject<HTMLButtonElement | null>, onToggleCollapse: (() => void)) => ReactNode;
 
 export interface AbstractDropdownProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
@@ -42,9 +42,9 @@ export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
 export const childrenPropTypes = PropTypes.oneOfType([
   PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.element, PropTypes.oneOf([null, undefined, false])])),
   PropTypes.oneOfType([PropTypes.element, PropTypes.oneOf([null, undefined, false])])
-]);
+]) as PropTypes.Validator<Props['children']>;
 
-export const propTypes: WeakValidationMap<Props> = {
+export const propTypes: PropTypes.WeakValidationMap<Props> = {
   label: PropTypes.oneOfType([
     PropTypes.node.isRequired,
     PropTypes.string.isRequired

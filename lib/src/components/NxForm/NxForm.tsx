@@ -28,7 +28,6 @@ function RequiredFieldNotice() {
   );
 }
 
-/* eslint-disable react/prop-types */
 const _NxForm = forwardRef<HTMLFormElement, Props>(
     function NxForm(props, ref) {
       const {

@@ -21,7 +21,6 @@ function NxCollapsibleRadioSelect<T extends Option>(props: Props<T>) {
 
   const renderOption = ({id, name: optionName}: Option) => (
     // NxCollapsibleItemsChild takes empty role to mean no role and normalizes it correctly
-    /* eslint-disable jsx-a11y/aria-role */
     <NxRadio radioId={generateId(name, id)}
              name={name}
              value={id}
@@ -33,7 +32,6 @@ function NxCollapsibleRadioSelect<T extends Option>(props: Props<T>) {
              role="">
       {optionName}
     </NxRadio>
-    /* eslint-enable jsx-a11y/aria-role */
   );
 
   const renderCounter = () =>

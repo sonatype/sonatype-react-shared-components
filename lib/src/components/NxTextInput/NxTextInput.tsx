@@ -22,7 +22,6 @@ export { Props, PublicProps, StateProps, Validator, propTypes, inputTypes } from
  * The full implementation of NxTextInput including options that are only for use internally within
  * other RSC compoents
  */
-/* eslint-disable react/prop-types */
 export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
     function PrivateNxTextInput(props, forwardedRef) {
       const {
@@ -52,7 +51,8 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
        * `title` is removed to prevent errors when `NxTextInput`, which itself uses` NxTooltip`, is wrapped
        * in another `NxTooltip`
        */
-      const newProps = omit(['trimmedValue', 'title'], attrs);
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      const newProps = omit(['trimmedValue', 'title'] as any, attrs);
       const isTextArea = type === 'textarea',
           element = isTextArea ? 'textarea' : 'input',
           typeAttr = isTextArea ? undefined : (type || 'text'),
@@ -93,10 +93,6 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
 
       return (
         <div ref={forwardedRef} className={internalClassName} { ...newProps }>
-          {/* This click handler doesn't need to be accessible, it is only to mitigate a mouse-specific
-            * presentational concern
-            */}
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions*/}
           <div className="nx-text-input__box" onClick={setFocusToInput}>
             {prefixContent}
             {React.createElement(element, {
@@ -128,7 +124,6 @@ export const PrivateNxTextInput = forwardRef<HTMLDivElement, Props>(
       );
     }
 );
-/* eslint-enable react/prop-types */
 
 /*
  * The public version of NxTextInput

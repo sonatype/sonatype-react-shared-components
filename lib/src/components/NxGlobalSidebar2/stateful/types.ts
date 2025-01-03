@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValidationMap } from 'react';
 import { omit } from 'ramda';
 
 import { Props as NxGlobalSidebarProps, propTypes as nxGlobalSidebarPropTypes } from '../types';
@@ -14,7 +13,7 @@ export interface Props extends Omit<NxGlobalSidebarProps, 'isOpen' | 'onToggleCl
   isDefaultOpen: boolean
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   ...omit(['isOpen', 'onToggleClick'], nxGlobalSidebarPropTypes),
   isDefaultOpen: PropTypes.bool.isRequired
 };

@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import React, { ReactElement, HTMLAttributes, ReactNode, KeyboardEventHandler, ButtonHTMLAttributes } from 'react';
+import React, { ReactElement, HTMLAttributes, ReactNode, KeyboardEventHandler, ButtonHTMLAttributes, RefAttributes } from 'react';
 import { without } from 'ramda';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
@@ -21,7 +21,7 @@ export const NX_SEGMENTED_BUTTON_VARIANTS =
 
 export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   variant: NX_SEGMENTED_BUTTON_VARIANT_TYPE;
-  children: ReactElement | ReactElement[];
+  children: ReactElement<RefAttributes<HTMLElement>> | ReactElement<RefAttributes<HTMLElement>>[];
   buttonContent: ReactNode;
   isOpen: boolean;
   onToggleOpen: () => void;
@@ -37,7 +37,9 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired,
     PropTypes.arrayOf(PropTypes.element.isRequired).isRequired
-  ]).isRequired,
+  ]).isRequired as PropTypes.Validator<
+    ReactElement<RefAttributes<HTMLElement>> | ReactElement<RefAttributes<HTMLElement>>[]
+  >,
   buttonContent: PropTypes.node.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onToggleOpen: PropTypes.func.isRequired,

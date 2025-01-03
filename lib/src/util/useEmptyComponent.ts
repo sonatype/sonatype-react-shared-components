@@ -21,8 +21,8 @@ const mutationObserverConfig = { subtree: false, childList: true, attributes: fa
  */
 
 const useEmptyComponent = (
-  parentRef: RefObject<HTMLElement>,
-  emptyChildRef: RefObject<HTMLElement>
+  parentRef: RefObject<HTMLElement | null>,
+  emptyChildRef: RefObject<HTMLElement | null>
 ) => {
   const [isEmpty, setIsEmpty] = useState(false);
 

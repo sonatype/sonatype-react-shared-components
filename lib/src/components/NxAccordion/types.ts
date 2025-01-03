@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { DetailsHTMLAttributes, ValidationMap, HTMLAttributes, MouseEvent } from 'react';
+import { DetailsHTMLAttributes, HTMLAttributes, MouseEvent } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface HeaderContextType {
@@ -19,6 +19,6 @@ export interface Props extends Omit<DetailsHTMLAttributes<HTMLDetailsElement>, '
 
 export type HeaderProps = HTMLAttributes<HTMLElement>;
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   onToggle: PropTypes.func
 };

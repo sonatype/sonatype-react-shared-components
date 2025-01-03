@@ -53,7 +53,7 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
             * The reason we need two `a`s for each is because svg gets confused trying to draw a full
             * circle described with this syntax and just draws nothing. Each `a` is half the circle.
             */
-            /* eslint-disable @typescript-eslint/indent */
+            /* eslint-disable @stylistic/indent */
           }
           <path className="nx-binary-donut-chart__background"
                 d={`M 0 -14.5
@@ -63,7 +63,6 @@ const NxBinaryDonutChart = forwardRef<SVGSVGElement, Props>(
                       `M 0 ${-innerBorderRadius}
                         a ${innerBorderRadius} ${innerBorderRadius} 0 1 1 0 ${innerBorderRadius * 2}
                         a ${innerBorderRadius} ${innerBorderRadius} 0 1 1 0 ${-innerBorderRadius * 2}`}`} />
-          {/* eslint-enable @typescript-eslint/indent */}
           { calculatedPercent > 0 && calculatedPercent < 100 &&
             <path className="nx-binary-donut-chart__arc"
                   d={`M 0 ${-arcR} A ${arcR} ${arcR} 0 ${largeArc} 1 ${arcEndX} ${arcEndY}`}

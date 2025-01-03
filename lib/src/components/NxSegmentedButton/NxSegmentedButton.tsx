@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, ReactElement } from 'react';
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
@@ -35,7 +35,7 @@ const NxSegmentedButton = forwardRef<HTMLDivElement, Props>(
           classes = classnames('nx-segmented-btn', className, {
             'nx-segmented-btn--open': isOpen
           }),
-          wrappedMenuItems = React.Children.map<ReactElement, ReactElement>(children, item => (
+          wrappedMenuItems = React.Children.map(children, item => (
             <NxOverflowTooltip>{item}</NxOverflowTooltip>
           ));
 

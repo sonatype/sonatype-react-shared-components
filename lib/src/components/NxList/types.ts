@@ -7,12 +7,11 @@
 import {
   HTMLAttributes,
   LiHTMLAttributes,
-  ValidationMap,
   ReactNode,
   ButtonHTMLAttributes,
   AnchorHTMLAttributes
 } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { ValidationMap } from 'prop-types';
 
 export interface NxListProps extends HTMLAttributes<HTMLUListElement> {
   bulleted?: boolean | null;

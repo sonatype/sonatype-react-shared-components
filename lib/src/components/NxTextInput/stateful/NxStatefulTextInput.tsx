@@ -12,7 +12,6 @@ import { PrivateNxTextInput } from '../NxTextInput';
 import { Props, PublicProps, propTypes } from './types';
 export { Props, PublicProps, propTypes } from './types';
 
-/* eslint-disable react/prop-types */
 export const PrivateNxStatefulTextInput = forwardRef<HTMLDivElement, Props>(
     function PrivateNxStatefulTextInput(props, ref) {
       const { defaultValue, onChange, validator, ...attrs } = props,
@@ -33,7 +32,6 @@ export const PrivateNxStatefulTextInput = forwardRef<HTMLDivElement, Props>(
                                  onChange={changeHandler} />;
     }
 );
-/* eslint-enable react/prop-types */
 
 const NxStatefulTextInput = forwardRef<HTMLDivElement, PublicProps>(
     function NxStatefulTextInput(props, ref) {

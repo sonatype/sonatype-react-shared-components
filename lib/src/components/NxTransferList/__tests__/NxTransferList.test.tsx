@@ -640,9 +640,9 @@ describe('NxTransferList', function() {
       const user = userEvent.setup(),
           onSubmit = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxTransferList { ...minimalProps } availableItemsFilter="a" />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxTransferList { ...minimalProps } availableItemsFilter="a" />
+              </NxForm>
           ),
           selectedGroup = view.getByRole('group', { name: 'Available Items' });
 
@@ -659,9 +659,9 @@ describe('NxTransferList', function() {
       const user = userEvent.setup(),
           onSubmit = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxTransferList { ...minimalProps } selectedItemsFilter="a" />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxTransferList { ...minimalProps } selectedItemsFilter="a" />
+              </NxForm>
           ),
           selectedGroup = view.getByRole('group', { name: 'Transferred Items' });
 

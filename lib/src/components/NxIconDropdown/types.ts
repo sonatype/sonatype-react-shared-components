@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, WeakValidationMap, KeyboardEventHandler } from 'react';
+import { HTMLAttributes, KeyboardEventHandler } from 'react';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import * as PropTypes from 'prop-types';
 import { OptionalReactElement } from '../../util/reactUtil';
@@ -21,7 +21,7 @@ export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
   icon?: IconDefinition;
 };
 
-export const propTypes: WeakValidationMap<Props> = {
+export const propTypes: PropTypes.WeakValidationMap<Props> = {
   isOpen: PropTypes.bool.isRequired,
   className: PropTypes.string,
   children: childrenPropTypes,

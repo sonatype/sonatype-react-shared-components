@@ -16,6 +16,7 @@ import Close from '../../icons/Close';
 import NxButton from '../NxButton/NxButton';
 import { Props, propTypes } from './types';
 import { PrivateNxTextInput } from '../NxTextInput/NxTextInput';
+import { PublicProps as NxTextInputProps } from '../NxTextInput/NxTextInput';
 export { Props } from './types';
 
 const NxFilterInput = forwardRef<HTMLDivElement, Props>(
@@ -28,7 +29,7 @@ const NxFilterInput = forwardRef<HTMLDivElement, Props>(
           btnClassName = classnames('nx-btn--clear', { 'hidden': isEmpty }),
           // just in case these props get passed in, avoid passing them to NxTextInput as they would cause
           // malfunction
-          cleanedProps = omit(['validatable', 'validationErrors', 'type'], otherProps),
+          cleanedProps = omit(['validatable', 'validationErrors', 'type'], otherProps as NxTextInputProps),
           filterIcon = searchIcon ? faSearch : faFilter,
           btnTitle = searchIcon ? 'Clear search' : 'Clear filter',
           prefixContent = <NxFontAwesomeIcon icon={filterIcon} className="nx-icon--filter-icons" />,

@@ -87,7 +87,6 @@ export default function NxAccordion(props: Props) {
   return (
     // By the standards, this role shouldn't be here explicitly and aria-expanded isn't valid.
     // But real-world screenreaders need them
-    /* eslint-disable-next-line jsx-a11y/no-redundant-roles, jsx-a11y/role-supports-aria-props */
     <details id={accordionId} className={classes} open={open} { ...otherProps} role="group" aria-expanded={!!open}>
       <HeaderContext.Provider value={headerContext}>{header}</HeaderContext.Provider>
       <div className="nx-accordion__content">{otherChildren}</div>

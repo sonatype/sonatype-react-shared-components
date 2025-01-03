@@ -81,9 +81,9 @@ function PrivateNxCollapsibleItems(props: Props) {
           ) : trigger
         }
         { actionContent && (
-        <div className="nx-collapsible-items__action-content">
-          {actionContent}
-        </div>
+          <div className="nx-collapsible-items__action-content">
+            {actionContent}
+          </div>
         )}
       </div>
       {contentBeforeChildren}

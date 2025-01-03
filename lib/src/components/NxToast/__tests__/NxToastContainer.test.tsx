@@ -71,14 +71,14 @@ describe('NxToastContainer', function() {
       async function() {
         const user = userEvent.setup();
         render(
-          <>
-            <button type="button">Focus Me</button>
-            <NxToastContainer>
-              <NxToast onClose={()=>{}}>
-                <NxAlert icon={faEye}>This is an Alert</NxAlert>
-              </NxToast>
-            </NxToastContainer>
-          </>
+            <>
+              <button type="button">Focus Me</button>
+              <NxToastContainer>
+                <NxToast onClose={()=>{}}>
+                  <NxAlert icon={faEye}>This is an Alert</NxAlert>
+                </NxToast>
+              </NxToastContainer>
+            </>
         );
 
         const prevFocusBtn = screen.getByRole('button', {name: 'Focus Me'});
@@ -97,26 +97,26 @@ describe('NxToastContainer', function() {
 
         const user = userEvent.setup();
         const { rerender } = render(
-          <>
-            <button type="button">Focus Me</button>
-            <NxToastContainer>
-              {}
-            </NxToastContainer>
-          </>
+            <>
+              <button type="button">Focus Me</button>
+              <NxToastContainer>
+                {}
+              </NxToastContainer>
+            </>
         );
         const prevFocusBtn = screen.getByRole('button', {name: 'Focus Me'});
 
         prevFocusBtn.focus();
 
         rerender(
-          <>
-            <button type="button">Focus Me</button>
-            <NxToastContainer>
-              <NxToast onClose={()=>{}}>
-                <NxAlert icon={faEye}>This is an Alert</NxAlert>
-              </NxToast>
-            </NxToastContainer>
-          </>
+            <>
+              <button type="button">Focus Me</button>
+              <NxToastContainer>
+                <NxToast onClose={()=>{}}>
+                  <NxAlert icon={faEye}>This is an Alert</NxAlert>
+                </NxToast>
+              </NxToastContainer>
+            </>
         );
 
         const closeBtn = screen.getByRole('button', {name: 'Close'});

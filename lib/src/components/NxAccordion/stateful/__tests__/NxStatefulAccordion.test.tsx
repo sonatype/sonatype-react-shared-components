@@ -44,12 +44,12 @@ describe('NxStatefulAccordion', function() {
 
   it('renders non-header children in content wrapper', function() {
     const { container } = render(
-      <NxStatefulAccordion>
-        <NxAccordion.Header>
-          <span>Foo</span>
-        </NxAccordion.Header>
-        <span className="bar">Bar</span>
-      </NxStatefulAccordion>
+        <NxStatefulAccordion>
+          <NxAccordion.Header>
+            <span>Foo</span>
+          </NxAccordion.Header>
+          <span className="bar">Bar</span>
+        </NxStatefulAccordion>
     );
 
     expect(container.querySelector('summary .bar')).not.toBeInTheDocument();
@@ -177,11 +177,11 @@ describe('NxStatefulAccordion', function() {
             onToggle = jest.fn();
 
         const component = render(
-          <NxStatefulAccordion onToggle={onToggle}>
-            <NxAccordion.Header>
-              <span data-testid="foo" onClick={titleOnClick}>Foo</span>
-            </NxAccordion.Header>
-          </NxStatefulAccordion>,
+            <NxStatefulAccordion onToggle={onToggle}>
+              <NxAccordion.Header>
+                <span data-testid="foo" onClick={titleOnClick}>Foo</span>
+              </NxAccordion.Header>
+            </NxStatefulAccordion>
         );
         const title = component.getByTestId('foo');
 
@@ -204,15 +204,15 @@ describe('NxStatefulAccordion', function() {
             onToggle = jest.fn();
 
         const component = render(
-          <NxStatefulAccordion onToggle={onToggle}>
-            <NxAccordion.Header>
-              <NxAccordion.Title>Foo</NxAccordion.Title>
-              <div className="nx-btn-bar">
-                <NxButton data-testid="btn1"/>
-                <NxButton data-testid="btn2" onClick={btnOnClick} />
-              </div>
-            </NxAccordion.Header>
-          </NxStatefulAccordion>,
+            <NxStatefulAccordion onToggle={onToggle}>
+              <NxAccordion.Header>
+                <NxAccordion.Title>Foo</NxAccordion.Title>
+                <div className="nx-btn-bar">
+                  <NxButton data-testid="btn1"/>
+                  <NxButton data-testid="btn2" onClick={btnOnClick} />
+                </div>
+              </NxAccordion.Header>
+            </NxStatefulAccordion>
         );
         const btn1 = component.getByTestId('btn1'),
             btn2 = component.getByTestId('btn2');

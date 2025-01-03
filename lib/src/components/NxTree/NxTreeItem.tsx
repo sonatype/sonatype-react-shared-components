@@ -34,7 +34,8 @@ export default function NxTreeItem(props: ItemProps) {
         open: isOpen,
         'nx-tree__item--collapsible': collapsible
       }),
-      attrs = omit(['isOpen', 'onToggleCollapse'], otherProps),
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      attrs = omit(['isOpen', 'onToggleCollapse'] as any, otherProps),
       intersectionLineClasses = classnames('nx-tree__line-intersection', {
         'nx-tree__line-intersection--collapsible': collapsible
       }),

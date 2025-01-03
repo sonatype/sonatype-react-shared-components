@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValidationMap, HTMLAttributes, AnchorHTMLAttributes, Validator, ReactNode } from 'react';
+import { HTMLAttributes, AnchorHTMLAttributes, ReactNode } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
@@ -21,11 +21,11 @@ export interface Props {
   children?: ReactNode | null;
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   isOpen: PropTypes.bool.isRequired,
   className: PropTypes.string,
-  toggleOpenIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
-  toggleCloseIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
+  toggleOpenIcon: PropTypes.object.isRequired as PropTypes.Validator<IconDefinition>,
+  toggleCloseIcon: PropTypes.object.isRequired as PropTypes.Validator<IconDefinition>,
   onToggleClick: PropTypes.func.isRequired,
   logoImg: PropTypes.string.isRequired,
   logoAltText: PropTypes.string.isRequired,
@@ -48,10 +48,10 @@ export interface NxGlobalSidebarNavigationLinkProps extends AnchorHTMLAttributes
   href: string;
 }
 
-export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSidebarNavigationLinkProps> = {
+export const nxGlobalSidebarNavigationLinkPropTypes: PropTypes.ValidationMap<NxGlobalSidebarNavigationLinkProps> = {
   isSelected: PropTypes.bool,
-  icon: PropTypes.object.isRequired as Validator<IconDefinition>,
-  text: PropTypes.node.isRequired as Validator<RequiredReactNode>,
+  icon: PropTypes.object.isRequired as PropTypes.Validator<IconDefinition>,
+  text: PropTypes.node.isRequired as PropTypes.Validator<RequiredReactNode>,
   href: PropTypes.string.isRequired
 };
 
@@ -63,7 +63,7 @@ export interface NxGlobalSidebarFooterProps extends HTMLAttributes<HTMLDivElemen
   showCreatedBy?: boolean | null;
 }
 
-export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooterProps> = {
+export const nxGlobalSidebarFooterPropTypes: PropTypes.ValidationMap<NxGlobalSidebarFooterProps> = {
   supportText: PropTypes.node,
   supportLink: PropTypes.string,
   releaseText: PropTypes.node,

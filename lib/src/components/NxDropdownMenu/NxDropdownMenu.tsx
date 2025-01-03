@@ -17,7 +17,6 @@ export { Props };
  * This component is not currently intended for public export. It is a helper for NxDropdown and NxSegmentedButton
  * so they can reset focus when they close
  */
-/* eslint-disable-next-line react/prop-types */
 const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu(props, ref) {
   const { onClosing, className: classNameProp, ...attrs } = props,
       className = classnames('nx-dropdown-menu', classNameProp);

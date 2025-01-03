@@ -42,7 +42,8 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
   const wrappedChildren = children && React.Children.map<OptionalReactElement, OptionalReactElement>(
       children,
       child => (
-        child && typeof child !== 'boolean' && /(\s|^)nx-dropdown-(button|link)(\s|$)/.test(child.props.className) ?
+        child && typeof child !== 'boolean' && child.props.className &&
+            /(\s|^)nx-dropdown-(button|link)(\s|$)/.test(child.props.className) ?
           <NxOverflowTooltip>{child}</NxOverflowTooltip> :
           child
       )

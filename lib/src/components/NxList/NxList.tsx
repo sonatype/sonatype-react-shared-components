@@ -18,7 +18,6 @@ import NxListLinkItem from './NxListLinkItem';
 import { NxListProps, nxListPropTypes } from './types';
 import useEmptyComponent from '../../util/useEmptyComponent';
 
-/* eslint-disable react/prop-types */
 const NxList = Object.assign(
     forwardRef<HTMLUListElement, NxListProps>(function NxList(props: NxListProps, externalRef) {
       const {className, children, bulleted, emptyMessage, isLoading = false, error, retryHandler, ...attrs} = props;

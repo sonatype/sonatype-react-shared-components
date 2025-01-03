@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { Ref, RefAttributes, ReactElement, forwardRef, PropsWithoutRef } from 'react';
+import { Ref, RefAttributes, forwardRef, PropsWithoutRef, ReactNode } from 'react';
 
 /*
  * The type signature that forwardRef ships with cannot pass through generic type parameters from the render
@@ -19,8 +19,8 @@ import { Ref, RefAttributes, ReactElement, forwardRef, PropsWithoutRef } from 'r
  */
 interface Holder {
   forwardRef<T, P = Record<string, unknown>>(
-    render: (props: P, ref: Ref<T>) => ReactElement | null
-  ): (props: PropsWithoutRef<P> & RefAttributes<T>) => ReactElement | null;
+    render: (props: PropsWithoutRef<P>, ref: Ref<T>) => ReactNode
+  ): (props: PropsWithoutRef<P> & RefAttributes<T>) => ReactNode;
 }
 
 const holder: Holder = { forwardRef };

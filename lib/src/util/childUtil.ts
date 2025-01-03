@@ -58,7 +58,8 @@ export function textContent(children: ReactNode): string {
   }
 
   if (React.isValidElement(children)) {
-    children = children.props.children;
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    children = (children.props as any).children;
   }
 
   return React.Children.toArray(children).reduce((text: string, child: ReactNode) => {

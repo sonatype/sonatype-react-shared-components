@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -36,10 +36,10 @@ const NxToggle = forwardRef<HTMLLabelElement, Props>(
       const {
         className: checkboxClassName,
         ...unfilteredInputAttributes
-      } = inputAttributes;
+      } = inputAttributes as InputHTMLAttributes<HTMLInputElement>;
 
       const otherInputAttributes = omit(
-          ['disabled', 'checked', 'readonly', 'onChange'],
+          ['disabled', 'checked', 'readOnly', 'onChange'],
           unfilteredInputAttributes
       );
 

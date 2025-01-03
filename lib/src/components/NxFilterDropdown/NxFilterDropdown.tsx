@@ -7,16 +7,16 @@
 import React, { Ref, useRef } from 'react';
 import { propEq, any } from 'ramda';
 import classnames from 'classnames';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 import { Props, propTypes } from './types';
 import NxCheckbox from '../NxCheckbox/NxCheckbox';
 import MultiSelectCounter from '../Counter/MultiSelectCounter';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import NxDropdown from '../NxDropdown/NxDropdown';
 import DataItem from '../../util/DataItem';
-import forwardRef from '../../util/genericForwardRef';
 import Close from '../../icons/Close';
+import genericForwardRef from '../../util/genericForwardRef';
 
 import './NxFilterDropdown.scss';
 
@@ -113,6 +113,6 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
   );
 }
 
-const NxFilterDropdown = Object.assign(forwardRef(NxFilterDropdownRender), { propTypes });
+const NxFilterDropdown = Object.assign(genericForwardRef(NxFilterDropdownRender), { propTypes });
 
 export default NxFilterDropdown;

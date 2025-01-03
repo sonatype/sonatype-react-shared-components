@@ -5,11 +5,11 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 
-import { ReactElement, ReactHTML } from 'react';
+import { DOMAttributes, HTMLElementType, PropsWithChildren, ReactElement, RefAttributes } from 'react';
 
-export interface Props {
-  children: ReactElement;
+export interface Props<T extends HTMLElement> {
+  children: ReactElement<PropsWithChildren & RefAttributes<T> & Pick<DOMAttributes<T>, 'onScroll'>>;
   reuseChildren?: boolean | null;
   initialChildCount?: number | null;
-  spacerEl?: keyof ReactHTML | null;
+  spacerEl?: HTMLElementType | null;
 }

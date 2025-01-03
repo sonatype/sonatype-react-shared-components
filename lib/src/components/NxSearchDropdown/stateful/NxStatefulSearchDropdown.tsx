@@ -4,11 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { Ref, MouseEvent, useState } from 'react';
+import React, { Ref, MouseEvent, forwardRef, useState } from 'react';
 import NxSearchDropdown from '../NxSearchDropdown';
 import DataItem from '../../../util/DataItem';
 
-import forwardRef from '../../../util/genericForwardRef';
 import { StatefulProps as Props, statefulPropTypes as propTypes } from '../types';
 
 function NxStatefulSearchDropdownRender<T extends string | number = string>(

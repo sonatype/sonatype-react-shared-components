@@ -38,8 +38,6 @@ const createCancelEvent = () => new Event('cancel', { cancelable: true });
  * @return - Abstracted dialog element.
  */
 
-// propTypes static analysis doesn't work with the way this component is written
-/* eslint-disable react/prop-types */
 const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   const {
     className,

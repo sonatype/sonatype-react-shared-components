@@ -123,7 +123,7 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       if (idx === files.length - 1) {
         // if the selected file is the last in the container, set the focus to the next last dismiss button
         // if selected file is only file, set focus on the input
-        closeBtns.length === 1 ? inputRef.current?.focus() : closeBtns[idx - 1].focus();
+        (closeBtns.length === 1 ? inputRef.current : closeBtns[idx - 1])?.focus();
       }
       else {
         closeBtns[idx + 1].focus({preventScroll: true});

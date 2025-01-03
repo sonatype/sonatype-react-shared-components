@@ -121,7 +121,7 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
     <TreeKeyNavContext.Provider value={childKeyNavContext}>
       <ul ref={ref}
           className={classes}
-          role={!!parentKeyNavContext ? 'group' : 'tree'}
+          role={parentKeyNavContext ? 'group' : 'tree'}
           onFocus={onFocus}
           { ...otherProps } />
     </TreeKeyNavContext.Provider>

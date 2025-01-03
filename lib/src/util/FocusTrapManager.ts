@@ -13,7 +13,7 @@ const registeredFocusTraps: HTMLElement[] = [];
  * A React hook that sets up a focus trap on the element found within ref. At any given time, only the most-recently
  * created still-existing focus trap is active
  */
-export function useFocusTrap<T extends HTMLElement>(ref: RefObject<T>) {
+export function useFocusTrap<T extends HTMLElement>(ref: RefObject<T | null>) {
   useEffect(function() {
     if (ref.current) {
       const el = ref.current;

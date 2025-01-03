@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, Validator } from 'react';
+import { HTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
@@ -34,7 +34,7 @@ export interface Props<T extends string | number = string> extends StatefulProps
 
 const matchesPropType = PropTypes.arrayOf(PropTypes.shape({
   id: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.string.isRequired]).isRequired,
-  displayName: PropTypes.node.isRequired as Validator<RequiredReactNode>
+  displayName: PropTypes.node.isRequired as PropTypes.Validator<RequiredReactNode>
 }).isRequired).isRequired;
 
 export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps<string | number>> = {

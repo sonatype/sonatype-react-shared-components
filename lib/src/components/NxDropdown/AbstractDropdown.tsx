@@ -16,8 +16,6 @@ export {
   AbstractDropdownRenderToggleElement
 } from './types';
 
-// internal component, no propTypes
-/* eslint-disable react/prop-types */
 /**
  * Abstracted Dropdown global event handling.
  * @param isOpen - a boolean to indicate if the dropdown is open or not.
@@ -147,8 +145,6 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   }
 
   return (
-    // Ignore the a11y linter, this onKeyDown is to catch events bubbling up from interactive children
-    /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
     <div ref={ref} className={className} onKeyDown={onKeyDown} {...attrs}>
       { renderToggleElement(toggleRef, onToggleCollapse) }
       { isOpen &&

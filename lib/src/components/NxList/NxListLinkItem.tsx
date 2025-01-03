@@ -30,7 +30,6 @@ const NxListLinkItem = forwardRef<HTMLLIElement, NxListLinkItemProps>(
       return (
         // aria-current is the valid one here by the standards, but aria-selected is the one that actually
         // tends to work in real-world screenreaders
-        /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
         <li ref={ref} className={liClassNames} {...attrs} aria-selected={selected} aria-current={selected}>
           <a aria-disabled={includesDisabledClass(aClassNames)}
              className={aClassNames}

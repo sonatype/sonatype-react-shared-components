@@ -17,8 +17,6 @@ import { CloseHandler, Props, propTypes } from './types';
 import './NxModal.scss';
 import { useFocusTrap } from '../../util/FocusTrapManager';
 
-// propTypes static analysis doesn't work with the way this component is written
-/* eslint-disable react/prop-types */
 const _NxModal = forwardRef<HTMLDialogElement, Props>(
     function NxModal({ className, onClose, onCancel = onClose, variant, role, ...attrs }, externalRef) {
       const modalClasses = classnames('nx-modal', className, {

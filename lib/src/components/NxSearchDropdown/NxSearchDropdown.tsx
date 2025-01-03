@@ -4,15 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  FocusEvent,
+  KeyboardEvent,
+  Ref,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
 import { always, any, clamp, dec, inc, partial, pipe, prop } from 'ramda';
 import DataItem from '../../util/DataItem';
+import genericForwardRef from '../../util/genericForwardRef';
 
 import './NxSearchDropdown.scss';
 
-import forwardRef from '../../util/genericForwardRef';
 import { Props, propTypes } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
@@ -226,6 +235,6 @@ function NxSearchDropdownRender<T extends string | number = string>(
   );
 }
 
-const NxSearchDropdown = Object.assign(forwardRef(NxSearchDropdownRender), { propTypes });
+const NxSearchDropdown = Object.assign(genericForwardRef(NxSearchDropdownRender), { propTypes });
 
 export default NxSearchDropdown;

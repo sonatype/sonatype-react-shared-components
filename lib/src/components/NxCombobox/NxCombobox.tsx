@@ -4,14 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, useEffect, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, Ref, forwardRef, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { always, dec, head, inc, tail, omit } from 'ramda';
 import usePrevious from '../../util/usePrevious';
 
 import './NxCombobox.scss';
 
-import forwardRef from '../../util/genericForwardRef';
 import { DataItemType, Props, propTypes } from './types';
 import NxTextInput from '../NxTextInput/NxTextInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
@@ -52,7 +51,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
         ...attrs
       } = props,
       previousValue = usePrevious(value),
-      newAttrs = omit(['trimmedValue'], attrs),
+      newAttrs = omit(['trimmedValue'] as any, attrs), // eslint-disable-line @typescript-eslint/no-explicit-any
 
       // A state variable tracking when a selection is made from the dropdown. This state helps close the dropdown
       // when a selection is made, and re-open when the input receives focus
@@ -67,7 +66,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
       showEmptyMessage = isEmpty && value.length,
       isAlert = (loading || loadError || showEmptyMessage) && !hiddenBySelection && inputIsFocused,
       dropdownRef = useRef<HTMLDivElement>(null),
-      inputRef = useRef<HTMLInputElement | null>(),
+      inputRef = useRef<HTMLInputElement>(null),
       alertRef = useRef<HTMLDivElement>(null),
       showDropdown = !disabled && !isEmpty && !hiddenBySelection && inputIsFocused,
       showAlert = !!(!disabled && isAlert && value),
@@ -333,7 +332,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
          onFocus={handleComponentFocus}
          onBlur={handleComponentBlur}
          { ...newAttrs }>
-      <TextInput ref={(div: HTMLElement | null) => inputRef.current = div?.querySelector('input')}
+      <TextInput ref={(div: HTMLElement | null) => { inputRef.current = (div?.querySelector('input') ?? null); }}
                  validationErrors={validationErrors}
                  validatable={validatable}
                  isPristine={!!isPristine}

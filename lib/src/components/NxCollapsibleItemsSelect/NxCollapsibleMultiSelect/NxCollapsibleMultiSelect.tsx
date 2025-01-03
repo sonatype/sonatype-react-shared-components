@@ -27,7 +27,7 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
   if (!isProduction) {
     // Throw an error if one of the selectedIds is not part of the available options
     normalizedSelectedIds.forEach(itemId => {
-      if (!any(propEq<string>(itemId, 'id'), options)) {
+      if (!any(propEq(itemId, 'id'), options)) {
         throw new Error(`You are attempting to select "${itemId}", but it is not part of the available options`);
       }
     });
@@ -72,8 +72,6 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
   }
 
   const renderOption = ({id, name: optionName}: Option) => (
-    // NxCollapsibleItemsChild takes empty role to mean no role and normalizes it correctly
-    /* eslint-disable jsx-a11y/aria-role */
     <NxCheckbox checkboxId={generateId(name, id)}
                 onChange={() => toggle(id)}
                 isChecked={normalizedSelectedIds.has(id)}
@@ -83,11 +81,9 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
                 role="">
       {optionName}
     </NxCheckbox>
-    /* eslint-enable jsx-a11y/aria-role */
   );
 
   const renderToggleAllOption = () => filteredOptions.length > 0 ? (
-    /* eslint-disable jsx-a11y/aria-role */
     <NxCheckbox checkboxId={generateId(name, 'all/none')}
                 onChange={toggleSelectAll}
                 isChecked={allFilteredSelected}
@@ -96,7 +92,6 @@ function NxCollapsibleMultiSelect<T extends Option>(props: Props<T>) {
                 role="">
       all/none
     </NxCheckbox>
-    /* eslint-enable jsx-a11y/aria-role */
   ) : null;
 
   const renderCounter = () => <MultiSelectCounter options={options} selectedIds={normalizedSelectedIds} />;

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { InputHTMLAttributes, LabelHTMLAttributes, Validator } from 'react';
+import { InputHTMLAttributes, LabelHTMLAttributes } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { requiredNullableString } from '../../util/customPropTypes';
@@ -34,5 +34,5 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   disabled: PropTypes.bool,
   radioId: PropTypes.string,
   overflowTooltip: PropTypes.bool,
-  inputAttributes: PropTypes.object as Validator<InputAttributesProp>
+  inputAttributes: PropTypes.object as PropTypes.Validator<InputAttributesProp>
 };

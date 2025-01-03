@@ -25,7 +25,7 @@ export interface Props<C extends HTMLElement = HTMLElement> {
   placement?: TooltipPlacement | null;
   isName?: boolean | null;
   title?: ReactNode;
-  children: ReactElement & RefAttributes<C>;
+  children: ReactElement<RefAttributes<C>>;
 }
 
 export type OverflowTooltipProps<C extends HTMLElement = HTMLElement> = Omit<Props<C>, 'open'>;

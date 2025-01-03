@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, HTMLAttributes, LiHTMLAttributes } from 'react';
+import { HTMLAttributes, LiHTMLAttributes, PropsWithChildren, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 
 export interface TabContextType {
@@ -17,7 +17,7 @@ export interface TabContextType {
 export type NxTabsProps = HTMLAttributes<HTMLDivElement> & {
   activeTab?: number | null ;
   onTabSelect: ((index: number) => void);
-  children?: ReactNode | null;
+  children?: ReactElement<PropsWithChildren>[] | null;
 };
 
 export type NxTabListProps = HTMLAttributes<HTMLUListElement>;
@@ -29,7 +29,7 @@ export type NxTabProps = LiHTMLAttributes<HTMLLIElement> & {
 export const nxTabsPropTypes: PropTypes.ValidationMap<NxTabsProps> = {
   activeTab: PropTypes.number,
   onTabSelect: PropTypes.func.isRequired,
-  children: PropTypes.node
+  children: PropTypes.arrayOf(PropTypes.element) as PropTypes.Validator<ReactElement<PropsWithChildren>[]>
 };
 
 export const nxTabPropTypes: PropTypes.ValidationMap<NxTabProps> = {

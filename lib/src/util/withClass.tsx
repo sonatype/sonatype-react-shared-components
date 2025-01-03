@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, DetailedHTMLProps, SVGProps } from 'react';
+import React, { JSX, forwardRef, DetailedHTMLProps, SVGProps } from 'react';
 import classnames from 'classnames';
 
 type NativeElType<E extends keyof JSX.IntrinsicElements> =
@@ -13,7 +13,6 @@ type NativeElType<E extends keyof JSX.IntrinsicElements> =
   JSX.IntrinsicElements[E] extends SVGProps<infer B> ? B :
   never;
 
-/* eslint-disable react/prop-types */
 export default function withClass<E extends keyof JSX.IntrinsicElements>(
   El: E,
   withClassName: string,

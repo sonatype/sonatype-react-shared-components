@@ -100,7 +100,7 @@ export default function NxOverflowTooltip<C extends HTMLElement = HTMLElement>(p
       [needsTooltip, setNeedsTooltip] = useState(false),
       ref = useRef<C>(null),
       isUnmounted = useRef(false),
-      childRef = children.ref,
+      childRef = children.props.ref,
       mergedRef = useMergedRef(ref, childRef ?? null),
       childrenWithRef = React.cloneElement(children, { ref: mergedRef });
 
