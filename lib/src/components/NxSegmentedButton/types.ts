@@ -5,7 +5,14 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import React, { ReactElement, HTMLAttributes, ReactNode, KeyboardEventHandler, ButtonHTMLAttributes, RefAttributes } from 'react';
+import React, {
+  ReactElement,
+  HTMLAttributes,
+  ReactNode,
+  KeyboardEventHandler,
+  ButtonHTMLAttributes,
+  RefAttributes
+} from 'react';
 import { without } from 'ramda';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
