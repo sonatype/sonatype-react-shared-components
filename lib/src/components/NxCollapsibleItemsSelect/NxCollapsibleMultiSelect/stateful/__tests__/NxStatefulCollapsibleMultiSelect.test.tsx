@@ -76,7 +76,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
 
       const childrenEl = document.getElementById(childrenElId);
 
-      expect(childrenEl).toBeInTheDocument;
+      expect(childrenEl).toBeInTheDocument();
       expect(childrenEl).toHaveAttribute('role', 'menu');
       expect(trigger).toHaveAttribute('aria-controls', childrenElId);
     });
@@ -321,9 +321,9 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       const user = userEvent.setup(),
           onSubmit = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxStatefulCollapsibleMultiSelect { ...minimalProps } filterThreshold={1} />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxStatefulCollapsibleMultiSelect { ...minimalProps } filterThreshold={1} />
+              </NxForm>
           ),
           inputEl = view.getByRole('textbox');
 
@@ -350,7 +350,7 @@ describe('NxStatefulCollapsibleMultiSelect', function() {
       ];
 
       beforeEach(() => {
-        view = filterView({ options }),
+        view = filterView({ options });
         inputEl = view.getByRole('textbox');
       });
 

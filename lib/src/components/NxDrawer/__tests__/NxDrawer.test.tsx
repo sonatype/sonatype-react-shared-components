@@ -25,7 +25,6 @@ describe('NxDrawer', function() {
   const getDrawer = rtlRenderElement(NxDrawer, minimalProps);
 
   it('renders a dialog element', function () {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const dialog = getDrawer()!;
     expect(dialog.nodeName).toBe('DIALOG');
   });
@@ -36,14 +35,12 @@ describe('NxDrawer', function() {
   });
 
   it('renders children nodes within dialog', function() {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer({ children: <div data-testid="foo"/> })!;
     expect(within(drawer).getByTestId('foo')).toBeInTheDocument();
   });
 
   it('merges any passed in className to the nx-drawer dialog', function() {
     const drawerWithAddedClassName = getDrawer({ className: 'foo' });
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const drawer = getDrawer()!;
 
     expect(drawerWithAddedClassName).toHaveClass('foo');
@@ -131,7 +128,6 @@ describe('NxDrawer', function() {
 
       const mockOnClose = jest.fn();
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const drawer = getDrawer({ onClose: mockOnClose })!;
 
       await fireEvent.animationEnd(drawer);
@@ -178,12 +174,12 @@ describe('NxDrawer', function() {
       const mockOnClose = jest.fn();
 
       render(
-        <div>
-          <div>Outside</div>
-          <NxDrawer open={true} onClose={mockOnClose}>
-            <NxButton>Inside</NxButton>
-          </NxDrawer>
-        </div>
+          <div>
+            <div>Outside</div>
+            <NxDrawer open={true} onClose={mockOnClose}>
+              <NxButton>Inside</NxButton>
+            </NxDrawer>
+          </div>
       );
 
       const dialog = screen.getByRole('dialog', { hidden: true });
@@ -208,12 +204,12 @@ describe('NxDrawer', function() {
       const mockOnClose = jest.fn();
 
       render(
-        <div>
-          <div>Outside</div>
-          <NxDrawer open={true} onClose={mockOnClose} closeDisabled={true}>
-            <NxButton>Inside</NxButton>
-          </NxDrawer>
-        </div>
+          <div>
+            <div>Outside</div>
+            <NxDrawer open={true} onClose={mockOnClose} closeDisabled={true}>
+              <NxButton>Inside</NxButton>
+            </NxDrawer>
+          </div>
       );
 
       const dialog = screen.getByRole('dialog', { hidden: true });

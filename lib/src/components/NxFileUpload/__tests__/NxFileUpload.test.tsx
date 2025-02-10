@@ -50,9 +50,9 @@ describe('NxFileUpload', function() {
 
   it('shows an error when in a form with showValidationErrors if it is isRequired and no file is selected', function() {
     const renderWithForm = render(
-      <NxForm onSubmit={() => {}} showValidationErrors={true}>
-        <NxFileUpload { ...minimalProps } isRequired={true} />
-      </NxForm>
+        <NxForm onSubmit={() => {}} showValidationErrors={true}>
+          <NxFileUpload { ...minimalProps } isRequired={true} />
+        </NxForm>
     );
 
     expect(renderWithForm.queryByRole('alert')).toBeTruthy();

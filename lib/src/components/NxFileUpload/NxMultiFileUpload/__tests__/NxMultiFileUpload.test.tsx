@@ -80,9 +80,9 @@ describe('NxMultiFileUpload', function() {
 
   it('shows an error when in a form with showValidationErrors if it is isRequired and no file is selected', function() {
     const { rerender, container } = render(
-      <NxForm onSubmit={() => {}} showValidationErrors={true}>
-        <NxMultiFileUpload { ...minimalProps } isRequired={true} isPristine={false}/>
-      </NxForm>
+        <NxForm onSubmit={() => {}} showValidationErrors={true}>
+          <NxMultiFileUpload { ...minimalProps } isRequired={true} isPristine={false}/>
+        </NxForm>
     );
 
     expect(screen.queryByRole('alert')).toBeTruthy();
@@ -91,9 +91,9 @@ describe('NxMultiFileUpload', function() {
     expect(container.querySelector('input[type=file]')).toHaveErrorMessage('This field is required!');
 
     rerender(
-      <NxForm onSubmit={() => {}} showValidationErrors={true}>
-        <NxMultiFileUpload { ...minimalProps } isRequired={true} isPristine={true}/>
-      </NxForm>
+        <NxForm onSubmit={() => {}} showValidationErrors={true}>
+          <NxMultiFileUpload { ...minimalProps } isRequired={true} isPristine={true}/>
+        </NxForm>
     );
 
     expect(screen.queryByRole('alert')).toBeTruthy();

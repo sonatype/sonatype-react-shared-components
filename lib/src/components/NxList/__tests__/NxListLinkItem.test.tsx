@@ -11,9 +11,7 @@ import NxList from '../NxList';
 import { NxListLinkItemProps } from '../types';
 
 describe('NxList.LinkItem', function() {
-  const minimalProps: NxListLinkItemProps & RefAttributes<HTMLLIElement> = {
-        href: 'www.sonatype.com'
-      },
+  const minimalProps: NxListLinkItemProps & RefAttributes<HTMLLIElement> = { href: 'www.sonatype.com' },
       quickRender = rtlRender(NxList.LinkItem, minimalProps),
       renderEl = rtlRenderElement(NxList.LinkItem, minimalProps);
 

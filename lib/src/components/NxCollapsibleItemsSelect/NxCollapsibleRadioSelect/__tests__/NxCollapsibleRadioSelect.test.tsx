@@ -470,12 +470,12 @@ describe('NxCollapsibleRadioSelect', function() {
           onSubmit = jest.fn(),
           onFilterChange = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxCollapsibleRadioSelect { ...minimalProps }
-                                        filter="f"
-                                        onFilterChange={onFilterChange}
-                                        filterThreshold={2} />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxCollapsibleRadioSelect { ...minimalProps }
+                                          filter="f"
+                                          onFilterChange={onFilterChange}
+                                          filterThreshold={2} />
+              </NxForm>
           );
 
       await runTimers();

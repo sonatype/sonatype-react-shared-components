@@ -59,8 +59,8 @@ describe('NxProgressBar', function() {
           finishedEl = renderEl({ value: 100 })!,
           inProgressWithMaxEl = renderEl({ value: 20, max: 40 });
 
-      expect(noProgressEl).toHaveTextContent('0%'),
-      expect(inProgressEl).toHaveTextContent('50%'),
+      expect(noProgressEl).toHaveTextContent('0%');
+      expect(inProgressEl).toHaveTextContent('50%');
       expect(finishedEl).toHaveTextContent('100%');
       expect(inProgressWithMaxEl).toHaveTextContent('50%');
     });

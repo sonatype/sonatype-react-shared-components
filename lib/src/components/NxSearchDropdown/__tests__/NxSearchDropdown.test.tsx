@@ -344,9 +344,9 @@ describe('NxSearchDropdown', function() {
   it('does not submit form when close button on searchbox is clicked', async function() {
     const onSubmit = jest.fn(),
         view = render(
-          <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-            <NxSearchDropdown { ...minimalProps } searchText="One" />
-          </NxForm>
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxSearchDropdown { ...minimalProps } searchText="One" />
+            </NxForm>
         );
 
     await runTimers();

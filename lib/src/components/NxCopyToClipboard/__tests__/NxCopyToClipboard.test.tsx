@@ -82,8 +82,8 @@ describe('NxCopyToClipboard', function() {
     }
 
     describe('when navigator.clipboard is available', function() {
-      let resolveClipboardPromise: Function | null,
-          rejectClipboardPromise: Function | null,
+      let resolveClipboardPromise: (() => void) | null,
+          rejectClipboardPromise: ((x: unknown) => void) | null,
           user: UserEvent;
 
       beforeEach(function() {

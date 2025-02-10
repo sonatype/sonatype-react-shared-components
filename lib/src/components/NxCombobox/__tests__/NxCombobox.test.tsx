@@ -172,13 +172,13 @@ describe('NxCombobox', function() {
     it('sets aria-expanded to true when the input is refocused after dropdown selection and blur', async function() {
       const user = userEvent.setup();
       render(
-        <div>
-          <div>Outside Combobox</div>
-          <NxCombobox matches= {[{ id: '1', displayName: 'Foo' }]}
-                      value=""
-                      onChange= {() => {}}
-                      onSearch= {() => {}} />
-        </div>
+          <div>
+            <div>Outside Combobox</div>
+            <NxCombobox matches= {[{ id: '1', displayName: 'Foo' }]}
+                        value=""
+                        onChange= {() => {}}
+                        onSearch= {() => {}} />
+          </div>
       );
 
       const inputElement = screen.getByRole('combobox'),
@@ -797,9 +797,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -850,9 +850,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -895,9 +895,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -948,9 +948,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -997,9 +997,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -1050,9 +1050,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -1106,9 +1106,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -1159,9 +1159,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -1249,9 +1249,9 @@ describe('NxCombobox', function() {
         const user = userEvent.setup(),
             onSubmit = jest.fn(),
             view = render(
-              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-                <NxCombobox {...minimalProps} filterInput={true} value="a" />
-              </NxForm>
+                <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                  <NxCombobox {...minimalProps} filterInput={true} value="a" />
+                </NxForm>
             );
 
         await runTimers();
@@ -1356,9 +1356,9 @@ describe('NxCombobox', function() {
         const user = userEvent.setup(),
             onSubmit = jest.fn(),
             view = render(
-              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-                <NxCombobox {...minimalProps} filterInput={true} value="a"/>
-              </NxForm>
+                <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                  <NxCombobox {...minimalProps} filterInput={true} value="a"/>
+                </NxForm>
             );
 
         await runTimers();

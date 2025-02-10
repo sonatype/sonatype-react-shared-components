@@ -142,11 +142,13 @@ describe('NxPolicyThreatSlider', function() {
       expect(onChange).not.toHaveBeenCalled();
 
       await act(async () => {
+        /* eslint-disable @stylistic/no-multi-spaces */
         await user.pointer([
           { target: slider, coords: { x: 0, y: 5 }, keys: '[MouseLeft>]' },   // mouse down on slider
           { target: slider, coords: { x: 20, y: 5 } },                        // drag to (20, 5)
           '[/MouseLeft]'                                                      // mouse up
         ]);
+        /* eslint-enable @stylistic/no-multi-spaces */
       });
 
       expect(onChange).toHaveBeenCalledWith([2, 10]);
@@ -185,11 +187,13 @@ describe('NxPolicyThreatSlider', function() {
       expect(onChange).not.toHaveBeenCalled();
 
       await act(async () => {
+        /* eslint-disable @stylistic/no-multi-spaces */
         await user.pointer([
           { target: slider, coords: { x: 100, y: 5 }, keys: '[MouseLeft>]' },     // mouse down on slider
           { target: slider, coords: { x: 20, y: 5 } },                            // drag to (20, 5)
           '[/MouseLeft]'                                                          // mouse up
         ]);
+        /* eslint-enable @stylistic/no-multi-spaces */
       });
 
       expect(onChange).toHaveBeenCalledWith([0, 2]);
@@ -229,11 +233,13 @@ describe('NxPolicyThreatSlider', function() {
           expect(onChange).not.toHaveBeenCalled();
 
           await act(async () => {
+            /* eslint-disable @stylistic/no-multi-spaces */
             await user.pointer([
               { target: slider, coords: { x: 40, y: 5 }, keys: '[MouseLeft>]' },     // mouse down on slider
               { target: slider, coords: { x: 20, y: 5 } },                           // drag to (20, 5)
               '[/MouseLeft]'                                                         // mouse up
             ]);
+            /* eslint-enable @stylistic/no-multi-spaces */
           });
 
           expect(onChange).toHaveBeenCalledWith([2, 3]);
@@ -250,11 +256,13 @@ describe('NxPolicyThreatSlider', function() {
           expect(onChange).not.toHaveBeenCalled();
 
           await act(async () => {
+            /* eslint-disable @stylistic/no-multi-spaces */
             await user.pointer([
               { target: slider, coords: { x: 40, y: 5 }, keys: '[MouseLeft>]' },      // mouse down on slider
               { target: slider, coords: { x: 30, y: 5 } },                            // drag to (30, 5)
               '[/MouseLeft]'                                                          // mouse up
             ]);
+            /* eslint-enable @stylistic/no-multi-spaces */
           });
 
           expect(onChange).toHaveBeenCalledWith([3, 3]);

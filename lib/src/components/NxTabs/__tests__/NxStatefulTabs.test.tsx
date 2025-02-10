@@ -53,12 +53,12 @@ describe('NxStatefulTabs', function() {
 
   it('renders tab elements with unique id based on the parent id', function() {
     const { container, getByRole } = render(
-      <NxStatefulTabs defaultActiveTab={0} id="my-tabs" onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxStatefulTabs>
+        <NxStatefulTabs defaultActiveTab={0} id="my-tabs" onTabSelect={() => {}}>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+        </NxStatefulTabs>
     );
 
     expect(container.firstElementChild!.id).toEqual('my-tabs');
@@ -81,14 +81,14 @@ describe('NxStatefulTabs', function() {
 
   it('selects the default tab initially', function() {
     const { getByRole } = render(
-      <NxStatefulTabs defaultActiveTab={1}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-          <NxTab>Tab 1</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-        <NxTabPanel>Content 1</NxTabPanel>
-      </NxStatefulTabs>
+        <NxStatefulTabs defaultActiveTab={1}>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+            <NxTab>Tab 1</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+          <NxTabPanel>Content 1</NxTabPanel>
+        </NxStatefulTabs>
     );
 
     const activeTab = getByRole('tab', { selected: true });
@@ -99,14 +99,14 @@ describe('NxStatefulTabs', function() {
     const user = userEvent.setup();
 
     const { getAllByRole, getByRole, queryByRole } = render(
-      <NxStatefulTabs>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-          <NxTab>Tab 1</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-        <NxTabPanel>Content 1</NxTabPanel>
-      </NxStatefulTabs>
+        <NxStatefulTabs>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+            <NxTab>Tab 1</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+          <NxTabPanel>Content 1</NxTabPanel>
+        </NxStatefulTabs>
     );
 
     expect(queryByRole('tab', { selected: true })).not.toBeInTheDocument();
@@ -120,14 +120,14 @@ describe('NxStatefulTabs', function() {
     const selectHandler = jest.fn();
 
     const { getAllByRole } = render(
-      <NxStatefulTabs onTabSelect={selectHandler}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-          <NxTab>Tab 1</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-        <NxTabPanel>Content 1</NxTabPanel>
-      </NxStatefulTabs>
+        <NxStatefulTabs onTabSelect={selectHandler}>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+            <NxTab>Tab 1</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+          <NxTabPanel>Content 1</NxTabPanel>
+        </NxStatefulTabs>
     );
 
     const secondTab = getAllByRole('tab')[1];
@@ -163,14 +163,14 @@ describe('NxStatefulTabs', function() {
     const user = userEvent.setup();
 
     const { getByRole } = render(
-      <NxStatefulTabs defaultActiveTab={0}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-          <NxTab>Tab 1</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-        <NxTabPanel>Content 1</NxTabPanel>
-      </NxStatefulTabs>
+        <NxStatefulTabs defaultActiveTab={0}>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+            <NxTab>Tab 1</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+          <NxTabPanel>Content 1</NxTabPanel>
+        </NxStatefulTabs>
     );
     const getActiveTabControls = () => getByRole('tab', { selected: true }).getAttribute('aria-controls');
 

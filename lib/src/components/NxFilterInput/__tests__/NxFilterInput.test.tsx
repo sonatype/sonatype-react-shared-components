@@ -161,9 +161,9 @@ describe('NxFilterInput', function() {
     const user = userEvent.setup(),
         onSubmit = jest.fn(),
         view = render(
-          <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-            <NxFilterInput { ...minimalProps } value="a"/>
-          </NxForm>
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxFilterInput { ...minimalProps } value="a"/>
+            </NxForm>
         );
 
     await runTimers();

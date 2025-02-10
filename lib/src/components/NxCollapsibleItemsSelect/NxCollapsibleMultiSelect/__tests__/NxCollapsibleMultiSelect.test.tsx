@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../../__testutils__/rtlUtils';
-import { createEvent, fireEvent, screen, within, render } from '@testing-library/react';
+import { createEvent, fireEvent, screen, within, render, RenderResult } from '@testing-library/react';
 
 import NxCollapsibleMultiSelect, { Props } from '../NxCollapsibleMultiSelect';
 import { NxTreeViewMultiSelect } from '../../../../index';
@@ -77,7 +77,7 @@ describe('NxCollapsibleMultiSelect', function() {
 
       const childrenEl = document.getElementById(childrenElId);
 
-      expect(childrenEl).toBeInTheDocument;
+      expect(childrenEl).toBeInTheDocument();
       expect(childrenEl).toHaveAttribute('role', 'menu');
       expect(trigger).toHaveAttribute('aria-controls', childrenElId);
     });
@@ -238,7 +238,7 @@ describe('NxCollapsibleMultiSelect', function() {
 
   describe('filter', function() {
     let onFilterChange: jest.Mock,
-        filterView: Function;
+        filterView: (props?: Partial<Props>) => RenderResult;
 
     beforeEach(() => {
       onFilterChange = jest.fn();
@@ -343,12 +343,12 @@ describe('NxCollapsibleMultiSelect', function() {
           onSubmit = jest.fn(),
           onFilterChange = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxCollapsibleMultiSelect { ...minimalProps }
-                                        filter="f"
-                                        onFilterChange={onFilterChange}
-                                        filterThreshold={2} />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxCollapsibleMultiSelect { ...minimalProps }
+                                          filter="f"
+                                          onFilterChange={onFilterChange}
+                                          filterThreshold={2} />
+              </NxForm>
           );
 
       await runTimers();

@@ -105,9 +105,9 @@ describe('NxSearchTransferList', function() {
       const user = userEvent.setup(),
           onSubmit = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxStatefulSearchTransferList { ...minimalProps } />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxStatefulSearchTransferList { ...minimalProps } />
+              </NxForm>
           ),
           searchInput = view.getByRole('searchbox');
 
@@ -290,10 +290,10 @@ describe('NxSearchTransferList', function() {
           const user = userEvent.setup(),
               onSearch = jest.fn(),
               outsideView = render(
-                <>
-                  <NxStatefulSearchTransferList {...minimalProps} onSearch= {onSearch} loadError="oops" />
-                  <button>Click Me</button>
-                </>
+                  <>
+                    <NxStatefulSearchTransferList {...minimalProps} onSearch= {onSearch} loadError="oops" />
+                    <button>Click Me</button>
+                  </>
               ),
               searchInput = outsideView.getByRole('searchbox'),
               outsideBtn = outsideView.getByRole('button', { name: 'Click Me' });
@@ -526,9 +526,9 @@ describe('NxSearchTransferList', function() {
         const user = userEvent.setup(),
             onSubmit = jest.fn(),
             view = render(
-              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-                <NxStatefulSearchTransferList {...minimalProps} />
-              </NxForm>
+                <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                  <NxStatefulSearchTransferList {...minimalProps} />
+                </NxForm>
             ),
             filterInput = view.getByRole('searchbox');
 

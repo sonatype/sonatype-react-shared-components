@@ -12,9 +12,7 @@ import { userEvent } from '../../../__testutils__/rtlUtils';
 import NxCheckbox, { Props } from '../NxCheckbox';
 
 describe('NxCheckbox', function() {
-  const minimalProps: Props & RefAttributes<HTMLLabelElement> = {
-        isChecked: false
-      },
+  const minimalProps: Props & RefAttributes<HTMLLabelElement> = { isChecked: false },
       quickRender = rtlRender(NxCheckbox, minimalProps),
       renderEl = rtlRenderElement(NxCheckbox, minimalProps);
 

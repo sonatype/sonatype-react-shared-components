@@ -435,9 +435,9 @@ describe('NxStatefulCollapsibleRadioSelect', function() {
       const user = userEvent.setup(),
           onSubmit = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxStatefulCollapsibleRadioSelect {...minimalProps} filterThreshold={2} />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxStatefulCollapsibleRadioSelect {...minimalProps} filterThreshold={2} />
+              </NxForm>
           ),
           inputEl = view.getByRole('textbox');
 

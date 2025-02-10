@@ -206,11 +206,11 @@ describe('NxDescriptionList.LinkItem', function() {
 
   it('has the first link as its only tabstop', async function() {
     const component = render(
-      <>
-        <button data-testid="before">Before</button>
-        <NxDescriptionList.LinkItem { ...minimalProps } />
-        <button data-testid="after">After</button>
-      </>
+        <>
+          <button data-testid="before">Before</button>
+          <NxDescriptionList.LinkItem { ...minimalProps } />
+          <button data-testid="after">After</button>
+        </>
     );
 
     const user = userEvent.setup(),
