@@ -128,7 +128,7 @@ function GalleryNav() {
       [openTreeViews, setOpenTreeViews] = useState(initialOpenTreeViews),
       isFiltering = !!filter,
       filteredConfig: PageConfig = isFiltering ? pipe<[PageConfig], PageConfig, PageConfig>(
-          map<PageConfig, PageConfig>(pickBy<PageMapping>((_, pageName) => matchesFilter(filter, pageName))),
+          map<PageMapping, PageMapping>(pickBy((_, pageName) => matchesFilter(filter, pageName))),
           pickBy(complement(isEmpty))
       )(pageConfig) : pageConfig,
       filteredCategories = pipe<[PageConfig], [string, PageMapping][], ReactNode[]>(

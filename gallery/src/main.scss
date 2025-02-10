@@ -4,6 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
+@use 'sass:color';
 @use 'sass:math';
 @use '~@sonatype/react-shared-components/scss-shared/nx-container-helpers';
 @use '~@sonatype/react-shared-components/scss-shared/nx-dark-mode-helpers';
@@ -91,7 +92,7 @@
 }
 
 .gallery-highlight-background-example {
-  background-color: transparentize(#79acfb, 0.5);
+  background-color: color.adjust(#79acfb, $alpha: 0.5);
 }
 
 .gallery-example-image {
