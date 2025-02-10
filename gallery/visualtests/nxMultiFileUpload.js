@@ -229,7 +229,7 @@ describe('NxMultiFileUpload', function() {
             `${complexExampleSelector} li:nth-child(3) .nx-selected-file`,
             `${complexExampleSelector} li:nth-child(3) .nx-selected-file .nx-selected-file__dismiss-btn`,
             `${complexExampleSelector} li:nth-child(4) .nx-selected-file`,
-            `${complexExampleSelector} li:nth-child(4) .nx-selected-file .nx-selected-file__dismiss-btn`,
+            `${complexExampleSelector} li:nth-child(4) .nx-selected-file .nx-selected-file__dismiss-btn`
         );
 
         // certify all 4 files are indeed uploaded
@@ -424,7 +424,7 @@ describe('NxMultiFileUpload', function() {
             `${statefulExampleSelector} li:nth-child(3) .nx-selected-file`,
             `${statefulExampleSelector} li:nth-child(3) .nx-selected-file .nx-selected-file__dismiss-btn`,
             `${statefulExampleSelector} li:nth-child(4) .nx-selected-file`,
-            `${statefulExampleSelector} li:nth-child(4) .nx-selected-file .nx-selected-file__dismiss-btn`,
+            `${statefulExampleSelector} li:nth-child(4) .nx-selected-file .nx-selected-file__dismiss-btn`
         );
 
         // certify all 4 files are indeed uploaded

@@ -16,7 +16,6 @@ import './HostedVersionsSelect.scss';
 const CURRENT_VERSION = packageJson.version;
 const HOSTED_VERSIONS_JSON_PATH = '/hosted-versions.json';
 
-// eslint-disable-next-line no-undef
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 async function getHostedVersions(): Promise<string[]> {

@@ -8,6 +8,7 @@ import { ThreatLevelCategory, allThreatLevelCategories } from '@sonatype/react-s
 
 const category: ThreatLevelCategory = 'severe';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 allThreatLevelCategories.indexOf(category) >= 0; // true
 
 /*

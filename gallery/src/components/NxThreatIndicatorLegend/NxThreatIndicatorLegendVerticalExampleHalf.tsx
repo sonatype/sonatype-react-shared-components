@@ -12,8 +12,7 @@ const NxThreatIndicatorLegendVerticalExample = () => (
                            vertical
                            critical
                            severe
-                           moderate
-    />
+                           moderate />
 );
 
 export default NxThreatIndicatorLegendVerticalExample;

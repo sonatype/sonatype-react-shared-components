@@ -36,21 +36,21 @@ export const GalleryTileFooter = (props: GalleryTileFooterProps) => {
     <footer className="nx-footer">
       <div className="nx-btn-bar">
         {copyStatus === 'success' &&
-        <>
-          <NxFontAwesomeIcon className="gallery-footer-clipboard__success"
-                             icon={faCheckCircle}
-                             title="Copied!"/>
-          <span>Copied!</span>
-        </>
-                }
+          <>
+            <NxFontAwesomeIcon className="gallery-footer-clipboard__success"
+                               icon={faCheckCircle}
+                               title="Copied!"/>
+            <span>Copied!</span>
+          </>
+        }
         {copyStatus === 'error' &&
-        <>
-          <NxFontAwesomeIcon className="gallery-footer-clipboard__error"
-                             icon={faExclamationCircle}
-                             title="Copy failed."/>
-          <span>Copy failed.</span>
-        </>
-                }
+          <>
+            <NxFontAwesomeIcon className="gallery-footer-clipboard__error"
+                               icon={faExclamationCircle}
+                               title="Copy failed."/>
+            <span>Copy failed.</span>
+          </>
+        }
         <NxButton onClick={copyOnClick}>Copy to Clipboard</NxButton>
       </div>
     </footer>);

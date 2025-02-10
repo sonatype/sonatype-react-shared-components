@@ -20,7 +20,6 @@ const NxListClickableLinksExample = () =>
       {/* aria-current is the valid one here by the standards, but aria-selected is the one that actually
         * tends to work in real-world screenreaders
         */}
-      {/* eslint-disable-next-line jsx-a11y/role-supports-aria-props */}
       <a href="#/pages/Table%20(HTML)" className="nx-list__link selected" aria-selected="true" aria-current="true">
         <span className="nx-list__text nx-truncate-ellipsis">
           Table (HTML) page. This list item should be truncated at the right end edge. youtube weathered network

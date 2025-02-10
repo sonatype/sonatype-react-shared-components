@@ -260,9 +260,7 @@ describe('NxSearchDropdown', function() {
           page = getPage();
 
       await input.type('1');
-      const [secondBtn] = await waitAndGetElements(
-          `${basicExampleSelector} .nx-dropdown-button:nth-child(2)`,
-      );
+      const [secondBtn] = await waitAndGetElements(`${basicExampleSelector} .nx-dropdown-button:nth-child(2)`);
 
       await secondBtn.focus();
 

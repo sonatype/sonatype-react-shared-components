@@ -30,8 +30,7 @@ export default function NxDrawerExample() {
                 onClose={toggleDrawerWithDisabledFunctionality}
                 aria-labelledby="simple-drawer-disabled-title"
                 closeDisabled={disabled}
-                closeBtnTooltip={disabled ? 'Please save or revert changes' : undefined}
-                >
+                closeBtnTooltip={disabled ? 'Please save or revert changes' : undefined}>
         <NxDrawer.Header>
           <NxDrawer.HeaderTitle id="simple-drawer-disabled-title">
             A Simple Drawer With Disabled Functionality

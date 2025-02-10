@@ -16,7 +16,7 @@ function regexpFilter(filterStr: string, itemDisplayName: string) {
   try {
     regex = new RegExp(filterStr);
   }
-  catch (e) {
+  catch {
     // string is not a valid regex, don't filter anything.
     return true;
   }
