@@ -11,7 +11,7 @@ import DataItem from '../../../util/DataItem';
 import { StatefulProps as Props, statefulPropTypes as propTypes } from '../types';
 
 export default function NxStatefulSearchDropdown<T extends string | number = string>(
-  { defaultSearchText, onSelect: onSelectProp, ...otherProps }: Props<T>,
+  { defaultSearchText, onSelect: onSelectProp, ...otherProps }: Props<T>
 ) {
   const [searchText, setSearchText] = useState(defaultSearchText || '');
 
