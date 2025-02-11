@@ -32,7 +32,7 @@ describe('NxTree', function() {
 
   async function itemWithText(tree, text) {
     // creates a relative XPath selector for a tree item with the given text
-    return (await tree.$x(`.//li[./span//*[text()="${text}"]]`))[0];
+    return (await tree.$(`::-p-xpath(.//li[./span//*[text()="${text}"]])`));
   }
 
   function clickTarget(treeitem) {
