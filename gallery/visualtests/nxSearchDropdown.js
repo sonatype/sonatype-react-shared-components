@@ -49,8 +49,7 @@ describe('NxSearchDropdown', function() {
       await checkScreenshot(component, 300, 125);
     });
 
-    // color-contrast rule doesn't work when elements overlap, which of course happens when the dropdown is open
-    it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
+    it('passes a11y checks', a11yTest(builder => builder.disableRules(['color-contrast', 'aria-valid-attr-value'])));
   });
 
   describe('when displaying results', function() {
@@ -69,7 +68,15 @@ describe('NxSearchDropdown', function() {
       await checkScreenshot(component, 300, 376);
     });
 
-    it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
+    it('passes a11y checks', a11yTest(builder => builder.disableRules([
+      // color-contrast rule doesn't work when elements overlap, which of course happens when the dropdown is open
+      'color-contrast',
+
+      // This rule appears to be broken in this case, says
+      // "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup".
+      // Manual review of the code and gallery indicates that the attributes are set up correctly.
+      'aria-valid-attr-value'
+    ])));
   });
 
   describe('with truncated results', function() {
@@ -127,7 +134,7 @@ describe('NxSearchDropdown', function() {
       await checkScreenshot(component, 300, 88);
     });
 
-    it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
+    it('passes a11y checks', a11yTest(builder => builder.disableRules(['color-contrast', 'aria-valid-attr-value'])));
   });
 
   describe('when displaying an error', function() {

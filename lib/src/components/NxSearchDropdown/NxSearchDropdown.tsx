@@ -201,7 +201,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                      inputAttributes={{
                        onKeyDown: handleKeyDown,
                        role: 'searchbox',
-                       'aria-controls': dropdownMenuId,
+                       'aria-controls': showDropdown ? dropdownMenuId : undefined,
                        'aria-haspopup': 'menu'
                      }} />
       <NxDropdownMenu id={dropdownMenuId}
