@@ -56,7 +56,7 @@ module.exports = {
 
     afterEach(async function() {
       await page.removeAllListeners();
-      await page.close();
+      // await page.close(); // seems to already be closed?
     });
 
     afterAll(async function() {
@@ -157,7 +157,7 @@ module.exports = {
         image = await element.screenshot();
       }
 
-      expect(image).toMatchImageSnapshot();
+      expect(Buffer.from(image)).toMatchImageSnapshot();
     }
 
     async function checkScreenshotCoordinates(x, y, width, height) {
@@ -172,7 +172,7 @@ module.exports = {
             }
           });
 
-      expect(image).toMatchImageSnapshot();
+      expect(Buffer.from(image)).toMatchImageSnapshot();
     }
 
     async function checkScreenshotWithOutset(element, outset = 0) {
@@ -182,7 +182,7 @@ module.exports = {
 
     async function checkFullPageScreenshot() {
       const screenshot = await page.screenshot();
-      expect(screenshot).toMatchImageSnapshot();
+      expect(Buffer.from(screenshot)).toMatchImageSnapshot();
     }
 
     async function dismissResultingDialog(action, waitTime) {
