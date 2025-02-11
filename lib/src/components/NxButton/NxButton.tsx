@@ -11,14 +11,6 @@ import {Props, propTypes} from './types';
 import NxTooltip, { TooltipContext } from '../NxTooltip/NxTooltip';
 import { includesDisabledClass } from '../../util/classUtil';
 
-const foo: unknown = {
-      bar: 'baz'
-    },
-    asdf = 'asdf';
-
-// eslint-disable-next-line no-console
-console.log(foo, asdf);
-
 const NxButton = forwardRef<HTMLButtonElement, Props>(
     function NxButton({ variant, className, children, title: titleProp, disabled, ...attrs }, ref) {
       const classNames = classnames(className, 'nx-btn', `nx-btn--${variant || 'secondary'}`),
