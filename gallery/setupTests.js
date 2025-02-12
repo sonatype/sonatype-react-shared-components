@@ -14,7 +14,7 @@ const path = require('path');
 // are taken of the same element right after one another it can happen in any one of them (or multiple). This
 // inconsistency seems to suggest a bug in the screenshotting and/or clipping code, which appears to be implemented
 // within the browser or devtools, rather than puppeteer. All we can really do about it is increase the retryTimes.
-jest.retryTimes(12);
+jest.retryTimes(4);
 
 const darkEnv = process.env.RSC_GALLERY_THEME === 'DARK';
 

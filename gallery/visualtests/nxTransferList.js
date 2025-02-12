@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { setupBrowser } = require('./testUtils');
+const { setupBrowser, TOOLTIP_WAIT } = require('./testUtils');
 
 describe('NxTransferList', function() {
   const {
@@ -43,7 +43,7 @@ describe('NxTransferList', function() {
     await firstItem.hover();
 
     await waitAndGetElements('.nx-tooltip');
-    await wait(500);
+    await wait(TOOLTIP_WAIT);
 
     await checkScreenshot(list);
   });
@@ -61,7 +61,7 @@ describe('NxTransferList', function() {
     await lastItem.hover();
 
     await waitAndGetElements('.nx-tooltip');
-    await wait(500);
+    await wait(TOOLTIP_WAIT);
 
     await checkScreenshot(list);
   });

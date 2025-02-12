@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { setupBrowser } = require('./testUtils');
+const { setupBrowser, TOOLTIP_WAIT } = require('./testUtils');
 
 describe('NxColorPicker', function() {
   const {
@@ -17,8 +17,7 @@ describe('NxColorPicker', function() {
     blurElement,
     checkScreenshot,
     a11yTest,
-    wait,
-    TOOLTIP_WAIT
+    wait
   } = setupBrowser('#/pages/Color%20Picker');
 
   const selector = '#nx-color-picker-example .gallery-example-live',
@@ -27,19 +26,7 @@ describe('NxColorPicker', function() {
 
   it('looks right', simpleTest(selector));
   it('looks right when hovered and shows a tooltip', hoverTest(selector, colorSelector, true));
-  it('looks right when focused', async function() {
-    const [targetElement, focusElement] = await waitAndGetElements(selector, colorSelector);
-
-    try {
-      await focusElement.focus();
-      await wait(TOOLTIP_WAIT);
-      await checkScreenshot(targetElement);
-    }
-    finally {
-      await blurElement(focusElement);
-    }
-  });
-
+  it('looks right when focused', focusTest(selector, colorSelector, 0, true));
   it('looks right when hovered and focused', focusAndHoverTest(selector, colorSelector, true));
 
   describe('when a color is selected', function() {
@@ -54,18 +41,7 @@ describe('NxColorPicker', function() {
 
     it('looks right', simpleTest(selector));
     it('looks right when hovered and shows a tooltip', hoverTest(selector, colorSelector, true));
-    it('looks right when focused', async function() {
-      const [targetElement, focusElement] = await waitAndGetElements(selector, colorSelector);
-
-      try {
-        await focusElement.focus();
-        await wait(TOOLTIP_WAIT);
-        await checkScreenshot(targetElement);
-      }
-      finally {
-        await blurElement(focusElement);
-      }
-    });
+    it('looks right when focused', focusTest(selector, colorSelector, 0, true));
     it('looks right when hovered and focused', focusAndHoverTest(selector, colorSelector, true));
   });
 

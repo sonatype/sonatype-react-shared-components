@@ -14,7 +14,7 @@ const pageUrl = `file://${__dirname}/../dist/index.html`;
 
 const { AxePuppeteer } = require('@axe-core/puppeteer');
 
-const TOOLTIP_WAIT = 900;
+const TOOLTIP_WAIT = 10000;
 
 module.exports = {
   TOOLTIP_WAIT,
@@ -320,12 +320,21 @@ module.exports = {
         };
       },
 
-      focusTest(elementSelector, focusSelector = elementSelector, outset) {
+      focusTest(elementSelector, focusSelector = elementSelector, outset, waitForTooltip = false) {
         return async function() {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, focusSelector);
 
           try {
+            if (waitForTooltip) {
+              await wait(TOOLTIP_WAIT);
+            }
+
             await focusElement.focus();
+
+            if (waitForTooltip) {
+              await wait(TOOLTIP_WAIT);
+            }
+
             await checkScreenshotWithOutset(targetElement, outset);
           }
           finally {
@@ -339,6 +348,11 @@ module.exports = {
           const [targetElement, focusElement] = await waitAndGetElements(elementSelector, hoverSelector);
 
           await scrollIntoView(targetElement);
+
+          if (waitForTooltip) {
+            await wait(TOOLTIP_WAIT);
+          }
+
           await focusElement.hover();
 
           if (waitForTooltip) {
@@ -355,6 +369,11 @@ module.exports = {
 
           try {
             await scrollIntoView(targetElement);
+
+            if (waitForTooltip) {
+              await wait(TOOLTIP_WAIT);
+            }
+
             await focusElement.focus();
             await focusElement.hover();
 
@@ -370,11 +389,15 @@ module.exports = {
         };
       },
 
-      clickTest(elementSelector, clickSelector = elementSelector, outset) {
+      clickTest(elementSelector, clickSelector = elementSelector, outset, waitForTooltip = false) {
         return async () => {
           const [targetElement, clickElement] = await waitAndGetElements(elementSelector, clickSelector);
 
           await scrollIntoView(targetElement);
+
+          if (waitForTooltip) {
+            await wait(TOOLTIP_WAIT);
+          }
 
           const { x, y, width, height } = await clickElement.boundingBox();
 
@@ -382,6 +405,11 @@ module.exports = {
 
           await dismissResultingDialog(async () => {
             await page.mouse.down();
+
+            if (waitForTooltip) {
+              await wait(TOOLTIP_WAIT);
+            }
+
             await checkScreenshotWithOutset(targetElement, outset);
           }, 300);
         };

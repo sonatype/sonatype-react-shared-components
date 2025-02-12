@@ -89,10 +89,8 @@ describe('NxRadio', function() {
   });
 
   describe('Tooltip for NxRadio', function() {
-    it(
-        'has a tooltip on hover when set to true',
-        hoverTest(simpleExampleSelector, simpleExampleLabelSelector, true, OUTSET)
-    );
+    it('has a tooltip on hover when set to true',
+        hoverTest(simpleExampleSelector, simpleExampleLabelSelector, true, OUTSET));
 
     it('does have a tooltip on hover when overflowTooltip is not false and the content is overflowing',
         async function() {

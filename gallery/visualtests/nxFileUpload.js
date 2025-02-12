@@ -103,12 +103,13 @@ describe('NxFileUpload', function() {
     describe('file dismiss button', function() {
       const btnSelector = `${complexExampleSelector} .nx-selected-file__dismiss-btn`;
 
-      it('has thick blue outline when focused', focusTest(complexExampleSelector, btnSelector));
+      it('has thick blue outline when focused', focusTest(complexExampleSelector, btnSelector, 0, true));
       it('has dark outline and dark background when hovered',
           hoverTest(complexExampleSelector, btnSelector, true));
       it('has thick blue outline and dark background when hovered and focused',
           focusAndHoverTest(complexExampleSelector, btnSelector, true));
-      it('has normal outline and white background when clicked', clickTest(complexExampleSelector, btnSelector));
+      it('has normal outline and white background when clicked',
+          clickTest(complexExampleSelector, btnSelector, 0, true));
     });
   });
 

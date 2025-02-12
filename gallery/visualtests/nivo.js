@@ -7,11 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('Nivo', function() {
-  const { simpleTest } = setupBrowser('#/pages/Nivo%20Charts');
+  const { simpleTest, wait } = setupBrowser('#/pages/Nivo%20Charts');
 
   const lineSelector = '#nivo-line-chart-example',
       barSelector = '#nivo-bar-chart-example',
       pieSelector = '#nivo-pie-chart-example';
+
+  beforeEach(async function() {
+    // wait for charts to stabilize
+    await wait(2000);
+  });
 
   describe('Line Chart', function() {
     it('looks right', simpleTest(lineSelector));
