@@ -5,10 +5,10 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import useResizeObserver from '@react-hook/resize-observer';
 import useMergedRef from '@react-hook/merged-ref';
 
 import { textContent } from '../../util/childUtil';
+import useResizeObserver from '../../util/useResizeObserver';
 
 import { OverflowTooltipProps, overflowTooltipPropTypes } from './types';
 import NxTooltip from './NxTooltip';

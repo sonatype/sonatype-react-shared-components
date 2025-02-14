@@ -6,8 +6,9 @@
  */
 import React, { ReactElement, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { always, clamp, dec, identity, inc, isNil } from 'ramda';
-import useResizeObserver from '@react-hook/resize-observer';
 import { useThrottleCallback } from '@react-hook/throttle';
+
+import useResizeObserver from '../../util/useResizeObserver';
 
 import { Props } from './types';
 
