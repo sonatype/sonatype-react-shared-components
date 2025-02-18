@@ -8,11 +8,11 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
-import NxFormGroup from '../NxFormGroup';
+import NxFormGroup, { Props } from '../NxFormGroup';
 import NxStatefulTextInput from '../../NxTextInput/stateful/NxStatefulTextInput';
 
 describe('NxFormGroup', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         label: 'foo',
         children: <NxStatefulTextInput/>
       },

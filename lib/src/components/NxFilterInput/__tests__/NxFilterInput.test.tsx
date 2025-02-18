@@ -70,7 +70,7 @@ describe('NxFilterInput', function() {
 
     expect(input).not.toHaveAttribute('type', 'textarea');
     expect(input).not.toHaveAttribute('aria-invalid');
-    expect(input).not.toHaveErrorMessage('It\'s all wrong');
+    expect(input).not.toHaveAccessibleErrorMessage('It\'s all wrong');
 
     const el = renderEl({
       validatable: true,
@@ -80,7 +80,7 @@ describe('NxFilterInput', function() {
 
     expect(el).not.toHaveAttribute('type', 'textarea');
     expect(el).not.toHaveAttribute('aria-invalid');
-    expect(el).not.toHaveErrorMessage('It\'s all wrong');
+    expect(el).not.toHaveAccessibleErrorMessage('It\'s all wrong');
   });
 
   it('sets ref on the Input', function() {

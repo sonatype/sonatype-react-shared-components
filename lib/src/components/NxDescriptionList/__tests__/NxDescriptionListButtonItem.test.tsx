@@ -10,10 +10,10 @@ import { userEvent } from '../../../__testutils__/rtlUtils';
 import { render, within } from '@testing-library/react';
 
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import NxDescriptionList from '../NxDescriptionList';
+import NxDescriptionList, { ButtonItemProps } from '../NxDescriptionList';
 
 describe('NxDescriptionList.ButtonItem', function() {
-  const minimalProps = {
+  const minimalProps: ButtonItemProps = {
         onClick: () => {},
         term: '',
         description: ''

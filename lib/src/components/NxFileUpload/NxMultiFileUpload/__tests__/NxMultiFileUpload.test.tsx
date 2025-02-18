@@ -9,11 +9,11 @@ import { render, screen } from '@testing-library/react';
 import { pipe } from 'ramda';
 
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
-import NxMultiFileUpload from '../NxMultiFileUpload';
+import NxMultiFileUpload, { Props } from '../NxMultiFileUpload';
 import NxForm from '../../../NxForm/NxForm';
 
 describe('NxMultiFileUpload', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         files: null,
         onChange: () => {}
       },
@@ -88,7 +88,7 @@ describe('NxMultiFileUpload', function() {
     expect(screen.queryByRole('alert')).toBeTruthy();
     expect(screen.queryByRole('alert')).toHaveTextContent('This field is required!');
     expect(container.querySelector('input[type=file]')).toHaveAttribute('aria-invalid', 'true');
-    expect(container.querySelector('input[type=file]')).toHaveErrorMessage('This field is required!');
+    expect(container.querySelector('input[type=file]')).toHaveAccessibleErrorMessage('This field is required!');
 
     rerender(
         <NxForm onSubmit={() => {}} showValidationErrors={true}>
@@ -99,7 +99,7 @@ describe('NxMultiFileUpload', function() {
     expect(screen.queryByRole('alert')).toBeTruthy();
     expect(screen.queryByRole('alert')).toHaveTextContent('This field is required!');
     expect(container.querySelector('input[type=file]')).toHaveAttribute('aria-invalid', 'true');
-    expect(container.querySelector('input[type=file]')).toHaveErrorMessage('This field is required!');
+    expect(container.querySelector('input[type=file]')).toHaveAccessibleErrorMessage('This field is required!');
   });
 
   it('sets aria-required on the input if isRequired is true', function() {
@@ -118,11 +118,12 @@ describe('NxMultiFileUpload', function() {
       });
 
   it('sets aria-errormessage on the input to the id of the validation error, when present', function() {
-    expect(renderInput()).not.toHaveErrorMessage();
-    expect(renderInput({ isPristine: true })).not.toHaveErrorMessage();
-    expect(renderInput({ isRequired: true, isPristine: true })).not.toHaveErrorMessage();
+    expect(renderInput()).not.toHaveAccessibleErrorMessage();
+    expect(renderInput({ isPristine: true })).not.toHaveAccessibleErrorMessage();
+    expect(renderInput({ isRequired: true, isPristine: true })).not.toHaveAccessibleErrorMessage();
 
-    expect(renderInput({ isRequired: true, isPristine: false })).toHaveErrorMessage('This field is required!');
+    expect(renderInput({ isRequired: true, isPristine: false }))
+        .toHaveAccessibleErrorMessage('This field is required!');
   });
 
   it('attaches a ref to the top-level element', function() {

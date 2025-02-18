@@ -112,14 +112,14 @@ describe('NxStatefulDateInput', function() {
         expect(input).toHaveValue('1111-11-11');
         expect(validator).toHaveBeenCalledWith('1111-11-11');
         expect(component.getByRole('alert')).toHaveTextContent('expect 2222');
-        expect(input).toHaveErrorMessage('expect 2222');
+        expect(input).toHaveAccessibleErrorMessage('expect 2222');
 
         await user.clear(input);
         await user.keyboard('2222-11-11');
         expect(input).toHaveValue('2222-11-11');
         expect(validator).toHaveBeenCalledWith('2222-11-11');
         expect(component.queryByRole('alert')).not.toBeInTheDocument();
-        expect(input).not.toHaveErrorMessage();
+        expect(input).not.toHaveAccessibleErrorMessage();
       }
   );
 
@@ -137,7 +137,7 @@ describe('NxStatefulDateInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -161,7 +161,7 @@ describe('NxStatefulDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -186,7 +186,7 @@ describe('NxStatefulDateInput', function() {
           fireEvent.change(input, {target: {value: '2222-11-11'}});
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -218,7 +218,7 @@ describe('NxStatefulDateInput', function() {
             fireEvent.change(input, {target: {value: '2222-11-11'}});
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -249,7 +249,7 @@ describe('NxStatefulDateInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -273,7 +273,7 @@ describe('NxStatefulDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -295,10 +295,10 @@ describe('NxStatefulDateInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(singleError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(multiError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -330,10 +330,10 @@ describe('NxStatefulDateInput', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.container.querySelector('input')).toHaveErrorMessage('foo');
+            expect(singleError.container.querySelector('input')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.container.querySelector('input')).toHaveErrorMessage('bar');
+            expect(multiError.container.querySelector('input')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {
@@ -361,7 +361,7 @@ describe('NxStatefulDateInput', function() {
           fireEvent.change(input, {target: {value: '2222-11-11'}});
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -393,7 +393,7 @@ describe('NxStatefulDateInput', function() {
             fireEvent.change(input, {target: {value: '2222-11-11'}});
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -425,10 +425,10 @@ describe('NxStatefulDateInput', function() {
           fireEvent.change(multiErrorInput, {target: {value: '2222-11-11'}});
 
           expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-          expect(singleError.container.querySelector('input')).toHaveErrorMessage('foo');
+          expect(singleError.container.querySelector('input')).toHaveAccessibleErrorMessage('foo');
 
           expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-          expect(multiError.container.querySelector('input')).toHaveErrorMessage('bar');
+          expect(multiError.container.querySelector('input')).toHaveAccessibleErrorMessage('bar');
         });
 
         it('sets aria-invalid on the input', function() {
@@ -470,10 +470,10 @@ describe('NxStatefulDateInput', function() {
             fireEvent.change(multiErrorInput, {target: {value: '2222-11-11'}});
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.container.querySelector('input')).toHaveErrorMessage('foo');
+            expect(singleError.container.querySelector('input')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.container.querySelector('input')).toHaveErrorMessage('bar');
+            expect(multiError.container.querySelector('input')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {

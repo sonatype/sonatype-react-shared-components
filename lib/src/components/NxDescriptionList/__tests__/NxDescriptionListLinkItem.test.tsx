@@ -10,10 +10,10 @@ import { userEvent } from '../../../__testutils__/rtlUtils';
 import { fireEvent, render, within } from '@testing-library/react';
 
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import NxDescriptionList from '../NxDescriptionList';
+import NxDescriptionList, { LinkItemProps } from '../NxDescriptionList';
 
 describe('NxDescriptionList.LinkItem', function() {
-  const minimalProps = {
+  const minimalProps: LinkItemProps = {
         href: '',
         term: '',
         description: ''

@@ -100,7 +100,7 @@ describe('NxToastContainer', function() {
             <>
               <button type="button">Focus Me</button>
               <NxToastContainer>
-                {}
+                {[]}
               </NxToastContainer>
             </>
         );

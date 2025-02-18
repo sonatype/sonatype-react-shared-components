@@ -16,7 +16,7 @@ import NxTab from '../NxTab';
 import NxTabPanel from '../NxTabPanel';
 
 describe('NxStatefulTabs', function() {
-  const minimumProps = {
+  const minimumProps: Props = {
     defaultActiveTab: -1,
     children: (
       <NxTabList>
@@ -25,8 +25,8 @@ describe('NxStatefulTabs', function() {
     )
   };
 
-  const quickRender = rtlRender<Props>(NxStatefulTabs, minimumProps);
-  const renderEl = rtlRenderElement<Props>(NxStatefulTabs, minimumProps);
+  const quickRender = rtlRender(NxStatefulTabs, minimumProps);
+  const renderEl = rtlRenderElement(NxStatefulTabs, minimumProps);
 
   it('merges any passed in className', function() {
     const tabsWithAddedClassName = renderEl({ className: 'foo' });

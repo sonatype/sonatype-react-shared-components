@@ -10,7 +10,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import useMergedRef from '@react-hook/merged-ref';
+//import useMergedRef from '@react-hook/merged-ref';
 
 import { Props, DialogContextValue } from './types';
 import { getFirstVisibleFocusableElement } from '../../util/focusUtil';
@@ -57,7 +57,8 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   const [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
   const previouslyFocusedElementRef = useRef<HTMLElement | null>(null);
 
-  const mergedRef = useMergedRef(dialogRef, ref);
+  //const mergedRef = useMergedRef(dialogRef, ref);
+  const mergedRef = ref;
 
   // Handle open and close logic.
   useEffect(function() {

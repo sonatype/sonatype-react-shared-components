@@ -11,11 +11,14 @@ import PropTypes from 'prop-types';
 export type Props = HTMLAttributes<HTMLDivElement> & {
   defaultActiveTab?: number | null;
   onTabSelect?: ((id: number) => void) | null;
-  children?: ReactElement<PropsWithChildren>[] | null;
+  children?: ReactElement<PropsWithChildren> | ReactElement<PropsWithChildren>[] | null;
 };
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   defaultActiveTab: PropTypes.number,
   onTabSelect: PropTypes.func,
-  children: PropTypes.arrayOf(PropTypes.element) as PropTypes.Validator<ReactElement<PropsWithChildren>[]>
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element.isRequired)
+  ]) as PropTypes.Validator<ReactElement<PropsWithChildren> | ReactElement<PropsWithChildren>[]>
 };

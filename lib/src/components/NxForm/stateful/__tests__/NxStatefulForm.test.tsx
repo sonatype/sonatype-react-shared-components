@@ -9,12 +9,12 @@ import { within, fireEvent, screen } from '@testing-library/dom';
 import { userEvent } from '../../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
-import NxStatefulForm from '../NxStatefulForm';
+import NxStatefulForm, { Props } from '../NxStatefulForm';
 import NxButton from '../../../NxButton/NxButton';
 import { FormAriaContext } from '../../context';
 
 describe('NxStatefulForm', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         onSubmit: () => {},
         children: <div/>
       },

@@ -14,7 +14,7 @@ import { render, within } from '@testing-library/react';
 import NxForm from '../../NxForm/NxForm';
 
 describe('NxFormSelect', function() {
-  const minimalProps = { value: '', onChange: () => {} },
+  const minimalProps: Props = { value: '', onChange: () => {} },
       quickRender = rtlRender(NxFormSelect, minimalProps),
       renderEl = rtlRenderElement(NxFormSelect, minimalProps);
 
@@ -99,7 +99,7 @@ describe('NxFormSelect', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -123,7 +123,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -143,10 +143,10 @@ describe('NxFormSelect', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -171,7 +171,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -192,7 +192,7 @@ describe('NxFormSelect', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -216,7 +216,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -236,10 +236,10 @@ describe('NxFormSelect', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -264,7 +264,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -289,7 +289,7 @@ describe('NxFormSelect', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -313,7 +313,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -333,10 +333,10 @@ describe('NxFormSelect', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -365,10 +365,10 @@ describe('NxFormSelect', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('combobox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('combobox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the select', function() {
@@ -393,7 +393,7 @@ describe('NxFormSelect', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -417,7 +417,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -437,10 +437,10 @@ describe('NxFormSelect', function() {
               multiError = multiRender();
 
           expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-          expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+          expect(singleError.getByRole('combobox')).toHaveAccessibleErrorMessage('foo');
 
           expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-          expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+          expect(multiError.getByRole('combobox')).toHaveAccessibleErrorMessage('bar');
         });
 
         it('sets aria-invalid on the select', function() {
@@ -472,10 +472,10 @@ describe('NxFormSelect', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('combobox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('combobox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the select', function() {

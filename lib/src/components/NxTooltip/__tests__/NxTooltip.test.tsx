@@ -9,10 +9,10 @@ import { userEvent } from '../../../__testutils__/rtlUtils';
 import React from 'react';
 import { rtlRender } from '../../../__testutils__/rtlUtils';
 
-import NxTooltip from '../NxTooltip';
+import NxTooltip, { Props } from '../NxTooltip';
 
 describe('NxTooltip', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         children: <div data-testid="foo" />,
         title: 'tip'
       },

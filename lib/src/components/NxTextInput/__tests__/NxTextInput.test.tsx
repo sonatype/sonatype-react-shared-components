@@ -125,7 +125,7 @@ describe('NxTextInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -149,7 +149,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -171,10 +171,10 @@ describe('NxTextInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -202,7 +202,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -223,7 +223,7 @@ describe('NxTextInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -247,7 +247,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -269,10 +269,10 @@ describe('NxTextInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -300,7 +300,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -325,7 +325,7 @@ describe('NxTextInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -349,7 +349,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -371,10 +371,10 @@ describe('NxTextInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -406,10 +406,10 @@ describe('NxTextInput', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('textbox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('textbox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('textbox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {
@@ -434,7 +434,7 @@ describe('NxTextInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -458,7 +458,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -480,10 +480,10 @@ describe('NxTextInput', function() {
               multiError = multiRender();
 
           expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-          expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
+          expect(singleError.getByRole('textbox')).toHaveAccessibleErrorMessage('foo');
 
           expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-          expect(multiError.getByRole('textbox')).toHaveErrorMessage('bar');
+          expect(multiError.getByRole('textbox')).toHaveAccessibleErrorMessage('bar');
         });
 
         it('sets aria-invalid on the input', function() {
@@ -515,10 +515,10 @@ describe('NxTextInput', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('textbox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('textbox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('textbox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {

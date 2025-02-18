@@ -128,7 +128,7 @@ describe('NxDateInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -152,7 +152,7 @@ describe('NxDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -174,10 +174,10 @@ describe('NxDateInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(singleError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(multiError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -205,7 +205,7 @@ describe('NxDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -226,7 +226,7 @@ describe('NxDateInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -250,7 +250,7 @@ describe('NxDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -272,10 +272,10 @@ describe('NxDateInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(singleError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(multiError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -303,7 +303,7 @@ describe('NxDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -328,7 +328,7 @@ describe('NxDateInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -352,7 +352,7 @@ describe('NxDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -374,10 +374,10 @@ describe('NxDateInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(singleError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(multiError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -409,10 +409,10 @@ describe('NxDateInput', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.container.querySelector('input')).toHaveErrorMessage('foo');
+            expect(singleError.container.querySelector('input')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.container.querySelector('input')).toHaveErrorMessage('bar');
+            expect(multiError.container.querySelector('input')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {
@@ -437,7 +437,7 @@ describe('NxDateInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -461,7 +461,7 @@ describe('NxDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -483,10 +483,10 @@ describe('NxDateInput', function() {
               multiError = multiRender();
 
           expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-          expect(singleError.container.querySelector('input')).toHaveErrorMessage('foo');
+          expect(singleError.container.querySelector('input')).toHaveAccessibleErrorMessage('foo');
 
           expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-          expect(multiError.container.querySelector('input')).toHaveErrorMessage('bar');
+          expect(multiError.container.querySelector('input')).toHaveAccessibleErrorMessage('bar');
         });
 
         it('sets aria-invalid on the input', function() {
@@ -518,10 +518,10 @@ describe('NxDateInput', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.container.querySelector('input')).toHaveErrorMessage('foo');
+            expect(singleError.container.querySelector('input')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.container.querySelector('input')).toHaveErrorMessage('bar');
+            expect(multiError.container.querySelector('input')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {

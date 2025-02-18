@@ -8,7 +8,7 @@ import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import { includesDisabledClass } from '../../util/classUtil';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { NxFontAwesomeIcon } from '../..';
+import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import { NxListLinkItemProps, nxListLinkItemPropTypes } from './types';
 
 const NxListLinkItem = forwardRef<HTMLLIElement, NxListLinkItemProps>(

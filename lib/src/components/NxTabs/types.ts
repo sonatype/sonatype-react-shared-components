@@ -17,7 +17,7 @@ export interface TabContextType {
 export type NxTabsProps = HTMLAttributes<HTMLDivElement> & {
   activeTab?: number | null ;
   onTabSelect: ((index: number) => void);
-  children?: ReactElement<PropsWithChildren>[] | null;
+  children?: ReactElement<PropsWithChildren> | ReactElement<PropsWithChildren>[] | null;
 };
 
 export type NxTabListProps = HTMLAttributes<HTMLUListElement>;
@@ -29,7 +29,10 @@ export type NxTabProps = LiHTMLAttributes<HTMLLIElement> & {
 export const nxTabsPropTypes: PropTypes.ValidationMap<NxTabsProps> = {
   activeTab: PropTypes.number,
   onTabSelect: PropTypes.func.isRequired,
-  children: PropTypes.arrayOf(PropTypes.element) as PropTypes.Validator<ReactElement<PropsWithChildren>[]>
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element.isRequired)
+  ]) as PropTypes.Validator<ReactElement<PropsWithChildren> | ReactElement<PropsWithChildren>[]>
 };
 
 export const nxTabPropTypes: PropTypes.ValidationMap<NxTabProps> = {

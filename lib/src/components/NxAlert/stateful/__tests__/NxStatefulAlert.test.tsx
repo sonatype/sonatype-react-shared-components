@@ -15,7 +15,7 @@ import NxStatefulAlert,
   NxStatefulSuccessAlert
 } from '../NxStatefulAlert';
 
-import { Props } from '../../NxAlert';
+import { NxAlertProps, Props } from '../../NxAlert';
 
 describe('NxStatefulAlert', function() {
   function baseTests<P extends Props>(
@@ -73,7 +73,7 @@ describe('NxStatefulAlert', function() {
     });
   }
 
-  const minimalProps = {
+  const minimalProps: NxAlertProps = {
         children: 'A message to show in an alert',
         icon: faBiohazard
       },

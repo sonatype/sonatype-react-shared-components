@@ -8,13 +8,13 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
-import NxCollapsibleItems, { Props } from '../NxCollapsibleItems';
+import NxCollapsibleItems, { NxCollapsibleItemsChildProps, Props } from '../NxCollapsibleItems';
 import { NxTreeView, NxTreeViewChild } from '../../../index';
 
 import NxIconDropdown from '../../NxIconDropdown/NxIconDropdown';
 
 describe('NxCollapsibleItems', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         isOpen: false,
         triggerContent: <span data-testid="trigger-content">Trigger</span>
       },
@@ -210,7 +210,7 @@ describe('NxCollapsibleItems', function() {
 
   describe('NxCollapsibleItems.Child', function() {
     describe('when children is a string', function() {
-      const minimalProps = { children: 'foo' },
+      const minimalProps: NxCollapsibleItemsChildProps = { children: 'foo' },
           quickRender = rtlRender(NxCollapsibleItems.Child, minimalProps),
           renderEl = rtlRenderElement(NxCollapsibleItems.Child, minimalProps);
 
@@ -258,7 +258,7 @@ describe('NxCollapsibleItems', function() {
     });
 
     describe('when children is an element', function() {
-      const minimalProps = {
+      const minimalProps: NxCollapsibleItemsChildProps = {
             children: <div id="test-id" className="bar" lang="en">foo</div>
           },
           quickRender = rtlRender(NxCollapsibleItems.Child, minimalProps),

@@ -11,12 +11,15 @@ type CloseableElementWithRoleProps = Pick<DialogHTMLAttributes<HTMLElement>, 'ro
 
 export interface NxToastProps extends HTMLAttributes<HTMLDivElement> {
   onClose: () => void;
-  children: ReactElement<CloseableElementWithRoleProps>;
+  children: ReactElement<CloseableElementWithRoleProps> | ReactElement<CloseableElementWithRoleProps>[];
 }
 
 export const nxToastPropTypes: PropTypes.ValidationMap<NxToastProps> = {
   onClose: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired as PropTypes.Validator<ReactElement<CloseableElementWithRoleProps>>
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
+    PropTypes.element.isRequired
+  ]) as PropTypes.Validator<ReactElement<CloseableElementWithRoleProps>[]>
 };
 
 export type NxToastContainerContextType = {

@@ -6,7 +6,7 @@
  */
 
 import React, { ChangeEvent } from 'react';
-import Fuse from 'fuse.js';
+import * as Fuse from 'fuse.js';
 
 import { render } from '@testing-library/react';
 import { rtlRender, userEvent} from '../../__testutils__/rtlUtils';

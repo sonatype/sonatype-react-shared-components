@@ -8,10 +8,10 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import NxFontAwesomeIcon from '../NxFontAwesomeIcon';
+import NxFontAwesomeIcon, { Props } from '../NxFontAwesomeIcon';
 
 describe('NxFontAwesomeIcon', function() {
-  const minimalProps = { icon: faCheck },
+  const minimalProps: Props = { icon: faCheck },
       renderEl = rtlRenderElement(NxFontAwesomeIcon, minimalProps);
 
   it('renders a FontAwesomeIcon', function () {

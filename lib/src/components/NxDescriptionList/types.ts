@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, HTMLAttributes, ReactNode, Ref } from 'react';
 import * as PropTypes from 'prop-types';
 
 type AttributeOmissions = 'disabled' | 'className' | 'onClick' | 'href';
@@ -17,6 +17,7 @@ export interface ButtonItemProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean | null;
   buttonClassName?: string | null;
   buttonAttributes?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, AttributeOmissions> | null;
+  ref?: Ref<HTMLDivElement>;
 }
 
 export interface LinkItemProps extends HTMLAttributes<HTMLDivElement> {
@@ -27,6 +28,7 @@ export interface LinkItemProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean | null;
   anchorClassName?: string | null;
   anchorAttributes?: Omit<AnchorHTMLAttributes<HTMLAnchorElement>, AttributeOmissions> | null;
+  ref?: Ref<HTMLDivElement>;
 }
 
 export interface Props extends HTMLAttributes<HTMLElement> {
