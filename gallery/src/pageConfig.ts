@@ -176,9 +176,9 @@ import NxSmallVulnerabilityCounterPage from './components/NxSmallVulnerabilityCo
 
 const pageConfig: PageConfig = {
   'Alerts and Indicators': {
-    'Alert': { content: NxAlertComponentsPage, type: 'react' },
-    'Stateful Alert': { content: NxStatefulAlertComponentsPage, type: 'react' },
-    'Counter': { content: NxCounterPage, type: 'html' },
+    'Alert': { content: NxAlertComponentsPage, type: 'react', tags: ['NxAlert'] },
+    'Stateful Alert': { content: NxStatefulAlertComponentsPage, type: 'react', tags: ['NxStatefulAlert'] },
+    'Counter': { content: NxCounterPage, type: 'html', tags: ['NxCounter'] },
     'Load Error': { content: NxLoadErrorPage, type: 'react' },
     'Load Wrapper': { content: NxLoadWrapperPage, type: 'react' },
     'Loading Spinner': { content: NxLoadingSpinnerPage, type: 'react' },
@@ -308,7 +308,7 @@ const pageConfig: PageConfig = {
     'Code': { content: NxCodePage, type: 'html' },
     'Font Awesome Icon': { content: NxFontAwesomeIconPage, type: 'react' },
     'H*': { content: NxHPage, type: 'html' },
-    'P': { content: NxPPage, type: 'html' },
+    'P': { content: NxPPage, type: 'html', tags: ['NxP'] },
     'Pre': { content: NxPrePage, type: 'html' }
   },
   'HTML Variants': {
