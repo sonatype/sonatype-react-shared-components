@@ -14,7 +14,7 @@ import NxDescriptionList, { LinkItemProps } from '../NxDescriptionList';
 
 describe('NxDescriptionList.LinkItem', function() {
   const minimalProps: LinkItemProps = {
-        href: '',
+        href: 'a', // note: an empty href would change the <a> element's role
         term: '',
         description: ''
       },

@@ -63,8 +63,8 @@ describe('NxStatefulAccordion', function() {
           <NxAccordion.Header></NxAccordion.Header>
         )
       });
-      const id = container.querySelector('DETAILS')?.getAttribute('id');
-      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', id);
+      const id = container.querySelector('details')?.getAttribute('id');
+      expect(container.querySelector('summary')).toHaveAttribute('aria-controls', id);
     });
 
     it('sets aria-controls to the specified accordion id', function() {
@@ -77,7 +77,7 @@ describe('NxStatefulAccordion', function() {
         )
       });
 
-      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', 'foo');
+      expect(container.querySelector('summary')).toHaveAttribute('aria-controls', 'foo');
     });
   });
 

@@ -19,8 +19,8 @@ describe('childUtil', function() {
 
   beforeEach(function() {
     component = <Component />;
-    div = <div />;
-    span = <span />;
+    div = <div key="d" />;
+    span = <span key="s" />;
   });
 
   describe('splitOutFirst', function() {
@@ -59,12 +59,21 @@ describe('childUtil', function() {
 
     describe('when given a series of children with multiple matches', function() {
       it('returns the first match and then the rest of the children', function() {
-        const otherComponent = <Component />,
+        const otherComponent = <Component key="c" />,
             results = splitOutFirst(Component, [div, component, span, otherComponent]);
 
         expect(results).toEqual([component, [div, span, otherComponent]]);
         expect(results[0]).toBe(component);
         expect((results[1] as ReactNode[])[2]).toBe(otherComponent);
+      });
+    });
+
+    describe('when given children with no keys', function() {
+      it('adds keys to the non-matching element children', function() {
+        // eslint-disable-next-line react/jsx-key
+        const results = splitOutFirst(Component, [component, div, <div />, span, <span />, 'foo']);
+
+        expect(results).toEqual([component, [div, <div key={1} />, span, <span key={3} />, 'foo']]);
       });
     });
   });
