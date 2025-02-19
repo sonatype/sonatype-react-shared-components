@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, HTMLAttributes } from 'react';
+import { ReactNode, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
 
 import { Props as NxFilterInputProps } from '../NxFilterInput/NxFilterInput';
@@ -14,7 +14,7 @@ export type FilterFn<T extends string | number = string> =
     (d: NxTransferListDataItem<T>[]) => NxTransferListDataItem<T>[];
 
 export interface BaseStatefulProps<T extends string | number = string>
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {
+  extends Omit<ComponentProps<'div'>, 'children' | 'onChange'> {
   allItems: NxTransferListDataItem<T>[];
   availableItemsLabel?: ReactNode;
   selectedItemsLabel?: ReactNode;

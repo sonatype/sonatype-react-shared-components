@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useLayoutEffect, forwardRef } from 'react';
+import React, { useLayoutEffect } from 'react';
 import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
@@ -17,16 +17,14 @@ export { Props };
  * This component is not currently intended for public export. It is a helper for NxDropdown and NxSegmentedButton
  * so they can reset focus when they close
  */
-const NxDropdownMenu = forwardRef<HTMLDivElement, Props>(function NxDropdownMenu(props, ref) {
+export default function NxDropdownMenu(props: Props) {
   const { onClosing, className: classNameProp, ...attrs } = props,
       className = classnames('nx-dropdown-menu', classNameProp);
 
   // onClosing must execute when this element is being removed but BEFORE it actually gets removed from the DOM
   useLayoutEffect(() => onClosing, []);
 
-  return <div ref={ref} { ...{ className, ...attrs } } />;
-});
+  return <div { ...{ className, ...attrs } } />;
+}
 
 NxDropdownMenu.propTypes = propTypes;
-
-export default NxDropdownMenu;

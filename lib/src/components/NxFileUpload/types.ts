@@ -4,10 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { InputHTMLAttributes, Ref } from 'react';
+import { ComponentProps, Ref } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface SelectedFileProps {
+  ref?: Ref<HTMLSpanElement>;
   descriptionId?: string;
   file: File;
   onDismiss: () => void;
@@ -19,7 +20,7 @@ export interface MultiSelectedFileProps extends Omit<SelectedFileProps, 'onDismi
 }
 
 // Props for NxStatefulFileUpload
-export interface StatefulProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'multiple'> {
+export interface StatefulProps extends Omit<ComponentProps<'input'>, 'ref' | 'onChange' | 'multiple'> {
   onChange?: ((files: FileList | null) => void) | null;
   isRequired?: boolean | null;
   ref?: Ref<HTMLDivElement>;
@@ -34,7 +35,6 @@ export interface StateProps {
 // Props for NxFileUpload
 export type Props = StatefulProps & StateProps & {
   onChange: (files: FileList | null) => void;
-  ref?: Ref<HTMLDivElement>;
 };
 
 export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps> = {

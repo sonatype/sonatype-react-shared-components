@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, InputHTMLAttributes } from 'react';
+import React, { ComponentProps } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,65 +25,61 @@ export { Props } from './types';
  * @param props.children VDOM rendered as label. Should be
  * [phrasing content](https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content).
  */
-const NxCheckbox = forwardRef<HTMLLabelElement, Props>(
-    function NxCheckbox(props, ref) {
-      const {
-            className,
-            onChange: onChangeProp,
-            isChecked,
-            disabled,
-            checkboxId,
-            overflowTooltip,
-            children,
-            inputAttributes = {},
-            ...otherProps
-          } = props,
-          labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', className, {
-            'nx-radio-checkbox--disabled': disabled,
-            'tm-checked': isChecked,
-            'tm-unchecked': !isChecked
-          }),
-          content = children && <span className="nx-radio-checkbox__content nx-checkbox__content">{children}</span>;
+export default function NxCheckbox(props: Props) {
+  const {
+        className,
+        onChange: onChangeProp,
+        isChecked,
+        disabled,
+        checkboxId,
+        overflowTooltip,
+        children,
+        inputAttributes = {},
+        ...otherProps
+      } = props,
+      labelClasses = classnames('nx-radio-checkbox', 'nx-checkbox', className, {
+        'nx-radio-checkbox--disabled': disabled,
+        'tm-checked': isChecked,
+        'tm-unchecked': !isChecked
+      }),
+      content = children && <span className="nx-radio-checkbox__content nx-checkbox__content">{children}</span>;
 
-      const {
-        className: checkboxClassName,
-        ...unfilteredInputAttributes
-      } = inputAttributes as InputHTMLAttributes<HTMLInputElement>;
+  const {
+    className: checkboxClassName,
+    ...unfilteredInputAttributes
+  } = inputAttributes as ComponentProps<'input'>;
 
-      const otherInputAttributes = omit(
-          ['disabled', 'checked', 'readOnly', 'onChange'],
-          unfilteredInputAttributes
-      );
+  const otherInputAttributes = omit(
+      ['disabled', 'checked', 'readOnly', 'onChange'],
+      unfilteredInputAttributes
+  );
 
-      const onChange = onChangeProp ? () => { onChangeProp(!isChecked); } : undefined;
+  const onChange = onChangeProp ? () => { onChangeProp(!isChecked); } : undefined;
 
-      return (
-        <label { ...otherProps } ref={ref} className={labelClasses}>
-          <input type="checkbox"
-                 id={otherInputAttributes.id || checkboxId || undefined}
-                 className={classnames('nx-radio-checkbox__input', 'nx-checkbox__input', checkboxClassName)}
-                 disabled={!!disabled}
-                 checked={isChecked}
-                 readOnly={!onChange}
-                 onChange={onChange}
-                 { ...otherInputAttributes } />
-          <span className="nx-radio-checkbox__control nx-checkbox__box">
-            { isChecked ?
-              // The undefined aria attrs are to work around an issue with the axe a11y checker in
-              // NxCollapsibleMultiSelect
-              <FontAwesomeIcon role="none" aria-hidden={undefined} icon={faCheck} /> :
-              // Put a space in the box if not checked, in order to provide a consistent vertical-align baseline
-              '\u00A0'
-            }
-          </span>
-          { content &&
-            (overflowTooltip !== false ? <NxOverflowTooltip>{content}</NxOverflowTooltip> : content)
-          }
-        </label>
-      );
-    }
-);
+  return (
+    <label { ...otherProps } className={labelClasses}>
+      <input type="checkbox"
+             id={otherInputAttributes.id || checkboxId || undefined}
+             className={classnames('nx-radio-checkbox__input', 'nx-checkbox__input', checkboxClassName)}
+             disabled={!!disabled}
+             checked={isChecked}
+             readOnly={!onChange}
+             onChange={onChange}
+             { ...otherInputAttributes } />
+      <span className="nx-radio-checkbox__control nx-checkbox__box">
+        { isChecked ?
+          // The undefined aria attrs are to work around an issue with the axe a11y checker in
+          // NxCollapsibleMultiSelect
+          <FontAwesomeIcon role="none" aria-hidden={undefined} icon={faCheck} /> :
+          // Put a space in the box if not checked, in order to provide a consistent vertical-align baseline
+          '\u00A0'
+        }
+      </span>
+      { content &&
+        (overflowTooltip !== false ? <NxOverflowTooltip>{content}</NxOverflowTooltip> : content)
+      }
+    </label>
+  );
+}
 
 NxCheckbox.propTypes = propTypes;
-
-export default NxCheckbox;

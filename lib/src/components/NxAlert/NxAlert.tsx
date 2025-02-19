@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { faCheckCircle, faExclamationTriangle, faExclamationCircle, faInfoCircle }
   from '@fortawesome/free-solid-svg-icons';
@@ -21,22 +21,20 @@ export { Props, propTypes, NxAlertProps, nxAlertPropTypes } from './types';
  * @param className CSS class names to apply to the rendered component.
  * @param icon FontAwesome icon data to render
  */
-const NxAlert = forwardRef<HTMLDivElement, NxAlertProps>(
-    function NxAlert(props, ref) {
-      const { className, icon, iconLabel, children, onClose, ...otherProps } = props,
-          classes = classnames('nx-alert', className);
+function NxAlert(props: NxAlertProps) {
+  const { className, icon, iconLabel, children, onClose, ...otherProps } = props,
+      classes = classnames('nx-alert', className);
 
-      return (
-        <div { ...otherProps } ref={ref} className={classes} aria-atomic={true}>
-          <NxFontAwesomeIcon aria-label={iconLabel || undefined} aria-hidden={!iconLabel} icon={icon}/>
-          <div className="nx-alert__content-wrap">
-            <div className="nx-alert__content">{children}</div>
-          </div>
-          { onClose && <NxCloseButton onClick={onClose} /> }
-        </div>
-      );
-    }
-);
+  return (
+    <div { ...otherProps } className={classes} aria-atomic={true}>
+      <NxFontAwesomeIcon aria-label={iconLabel || undefined} aria-hidden={!iconLabel} icon={icon}/>
+      <div className="nx-alert__content-wrap">
+        <div className="nx-alert__content">{children}</div>
+      </div>
+      { onClose && <NxCloseButton onClick={onClose} /> }
+    </div>
+  );
+}
 
 NxAlert.propTypes = nxAlertPropTypes;
 export default NxAlert;
@@ -45,18 +43,15 @@ export default NxAlert;
  * Component that renders a standardized error alert.
  * @param children VDOM nodes to be included after the icon.
  */
-export const NxErrorAlert = forwardRef<HTMLDivElement, Props>(
-    function NxErrorAlert(props, ref) {
-      const classes = classnames('nx-alert--error', props.className);
+export function NxErrorAlert(props: Props) {
+  const classes = classnames('nx-alert--error', props.className);
 
-      return <NxAlert role="alert"
-                      { ...props }
-                      ref={ref}
-                      className={classes}
-                      icon={faExclamationCircle}
-                      iconLabel="Error" />;
-    }
-);
+  return <NxAlert role="alert"
+                  { ...props }
+                  className={classes}
+                  icon={faExclamationCircle}
+                  iconLabel="Error" />;
+}
 
 NxErrorAlert.propTypes = propTypes;
 
@@ -64,26 +59,23 @@ NxErrorAlert.propTypes = propTypes;
  * Component that renders a standardized information alert.
  * @param children VDOM nodes to be included after the icon.
  */
-export const NxInfoAlert = forwardRef<HTMLDivElement, Props>(
-    function NxInfoAlert(props, ref) {
-      const classes = classnames('nx-alert--info', props.className);
+export function NxInfoAlert(props: Props) {
+  const classes = classnames('nx-alert--info', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faInfoCircle} iconLabel="Info" />;
-    }
-);
+  return <NxAlert { ...props } className={classes} icon={faInfoCircle} iconLabel="Info" />;
+}
+
 NxInfoAlert.propTypes = propTypes;
 
 /**
  * Component that renders a standardized warning alert.
  * @param children VDOM nodes to be included after the icon.
  */
-export const NxWarningAlert = forwardRef<HTMLDivElement, Props>(
-    function NxWarningAlert(props, ref) {
-      const classes = classnames('nx-alert--warning', props.className);
+export function NxWarningAlert(props: Props) {
+  const classes = classnames('nx-alert--warning', props.className);
 
-      return <NxAlert { ...props } ref={ref} className={classes} icon={faExclamationTriangle} iconLabel="Warning" />;
-    }
-);
+  return <NxAlert { ...props } className={classes} icon={faExclamationTriangle} iconLabel="Warning" />;
+}
 
 NxWarningAlert.propTypes = propTypes;
 
@@ -91,17 +83,14 @@ NxWarningAlert.propTypes = propTypes;
  * Component that renders a standardized success alert.
  * @param children VDOM nodes to be included after the icon.
  */
-export const NxSuccessAlert = forwardRef<HTMLDivElement, Props>(
-    function NxSuccessAlert(props, ref) {
-      const classes = classnames('nx-alert--success', props.className);
+export function NxSuccessAlert(props: Props) {
+  const classes = classnames('nx-alert--success', props.className);
 
-      return <NxAlert role="status"
-                      { ...props }
-                      ref={ref}
-                      className={classes}
-                      icon={faCheckCircle}
-                      iconLabel="Success" />;
-    }
-);
+  return <NxAlert role="status"
+                  { ...props }
+                  className={classes}
+                  icon={faCheckCircle}
+                  iconLabel="Success" />;
+}
 
 NxSuccessAlert.propTypes = propTypes;

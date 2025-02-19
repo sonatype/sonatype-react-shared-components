@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { SVGAttributes } from 'react';
+import { ComponentProps } from 'react';
 import * as PropTypes from 'prop-types';
 import { optionalPercentNumber } from '../../util/customPropTypes';
 
-interface BaseProps extends SVGAttributes<SVGSVGElement> {
+interface BaseProps extends ComponentProps<'svg'> {
   innerRadiusPercent?: number | null;
   maxVal?: number | null;
 }

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { HTMLAttributes, useContext, useRef, useEffect, useState, FocusEvent } from 'react';
+import React, { useContext, useRef, useEffect, useState, FocusEvent, ComponentProps } from 'react';
 import classnames from 'classnames';
 
 import { ItemProps, NavigationDirection } from './types';
@@ -17,7 +17,7 @@ export { ItemProps };
 
 import './NxTree.scss';
 
-function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
+export default function NxTree(props: ComponentProps<'ul'>) {
   const { className, onFocus: onFocusProp, ...otherProps } = props,
       parentKeyNavContext = useContext(TreeKeyNavContext),
       ref = useRef<HTMLUListElement>(null),
@@ -128,10 +128,6 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
   );
 }
 
-const NxTree = Object.assign(_NxTree, {
-  Item: NxTreeItem,
-  StatefulItem: NxTreeStatefulItem,
-  ItemLabel: NxTreeItemLabel
-});
-
-export default NxTree;
+NxTree.Item = NxTreeItem;
+NxTree.StatefulItem = NxTreeStatefulItem;
+NxTree.ItemLabel = NxTreeItemLabel;

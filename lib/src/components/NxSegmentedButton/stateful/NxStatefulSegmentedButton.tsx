@@ -4,21 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import NxSegmentedButton from '../NxSegmentedButton';
 import { Props, propTypes } from './types';
 import useToggle from '../../../util/useToggle';
 
-const NxStatefulSegmentedButton = forwardRef<HTMLDivElement, Props>(
-    function NxStatefulSegmentedButton(props, ref) {
-      const [isOpen, onToggleOpen] = useToggle(false);
+export default function NxStatefulSegmentedButton(props: Props) {
+  const [isOpen, onToggleOpen] = useToggle(false);
 
-      return <NxSegmentedButton ref={ref} { ...{ isOpen, onToggleOpen } } { ...props } />;
-    }
-);
+  return <NxSegmentedButton { ...{ isOpen, onToggleOpen } } { ...props } />;
+}
 
 NxStatefulSegmentedButton.propTypes = propTypes;
-export default NxStatefulSegmentedButton;
 
 export { Props, propTypes } from './types';

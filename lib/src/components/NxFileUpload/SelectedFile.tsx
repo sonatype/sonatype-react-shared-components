@@ -4,8 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import prettyBytes from 'pretty-bytes';
 
@@ -18,30 +17,26 @@ export { SelectedFileProps };
 
 const formatSize = (size: number) => prettyBytes(size, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-const SelectedFile = forwardRef<HTMLSpanElement, SelectedFileProps>(
-    function SelectedFile({ file, onDismiss, descriptionId }, ref) {
-      // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
-      const buttonLabel = 'Dismiss Upload';
+export default function SelectedFile({ ref, file, onDismiss, descriptionId }: SelectedFileProps) {
+  // Testing on NVDA shows a need to set this as the aria-label in addition to the tooltip
+  const buttonLabel = 'Dismiss Upload';
 
-      return (
-        <span className="nx-selected-file" ref={ref}>
-          <span className="nx-selected-file__info" id={descriptionId}>
-            <NxOverflowTooltip>
-              <span className="nx-selected-file__name">{file.name}</span>
-            </NxOverflowTooltip>
-            <span className="nx-selected-file__size">{formatSize(file.size)}</span>
-          </span>
-          <NxTooltip title={buttonLabel}>
-            <button type="button"
-                    aria-label={buttonLabel}
-                    className="nx-selected-file__dismiss-btn"
-                    onClick={onDismiss}>
-              <NxFontAwesomeIcon icon={faTimesCircle} />
-            </button>
-          </NxTooltip>
-        </span>
-      );
-    }
-);
-
-export default SelectedFile;
+  return (
+    <span className="nx-selected-file" ref={ref}>
+      <span className="nx-selected-file__info" id={descriptionId}>
+        <NxOverflowTooltip>
+          <span className="nx-selected-file__name">{file.name}</span>
+        </NxOverflowTooltip>
+        <span className="nx-selected-file__size">{formatSize(file.size)}</span>
+      </span>
+      <NxTooltip title={buttonLabel}>
+        <button type="button"
+                aria-label={buttonLabel}
+                className="nx-selected-file__dismiss-btn"
+                onClick={onDismiss}>
+          <NxFontAwesomeIcon icon={faTimesCircle} />
+        </button>
+      </NxTooltip>
+    </span>
+  );
+}

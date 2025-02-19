@@ -6,7 +6,7 @@
  */
 
 import * as PropTypes from 'prop-types';
-import { HTMLAttributes } from 'react';
+import { ComponentProps } from 'react';
 
 export interface LogoProps {
   lightPath: string;
@@ -14,7 +14,7 @@ export interface LogoProps {
   altText: string;
 }
 
-export interface Props extends HTMLAttributes<HTMLElement> {
+export interface Props extends ComponentProps<'header'> {
   logoProps?: LogoProps | null;
   homeHref: string;
 }

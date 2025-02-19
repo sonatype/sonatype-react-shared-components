@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, InputHTMLAttributes } from 'react';
+import React, { ComponentProps } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -14,61 +14,57 @@ import './NxToggle.scss';
 import { Props, propTypes } from './types';
 export { Props } from './types';
 
-const NxToggle = forwardRef<HTMLLabelElement, Props>(
-    function NxToggle(props, ref) {
-      const {
-        className,
-        onChange: onChangeProp,
-        isChecked,
-        disabled,
-        inputId,
-        children,
-        inputAttributes = {},
-        ...otherProps
-      } = props;
+export default function NxToggle(props: Props) {
+  const {
+    className,
+    onChange: onChangeProp,
+    isChecked,
+    disabled,
+    inputId,
+    children,
+    inputAttributes = {},
+    ...otherProps
+  } = props;
 
-      const labelClasses = classnames('nx-toggle', className, {
-        'nx-toggle--disabled': disabled,
-        'tm-checked': isChecked,
-        'tm-unchecked': !isChecked
-      });
+  const labelClasses = classnames('nx-toggle', className, {
+    'nx-toggle--disabled': disabled,
+    'tm-checked': isChecked,
+    'tm-unchecked': !isChecked
+  });
 
-      const {
-        className: checkboxClassName,
-        ...unfilteredInputAttributes
-      } = inputAttributes as InputHTMLAttributes<HTMLInputElement>;
+  const {
+    className: checkboxClassName,
+    ...unfilteredInputAttributes
+  } = inputAttributes as ComponentProps<'input'>;
 
-      const otherInputAttributes = omit(
-          ['disabled', 'checked', 'readOnly', 'onChange'],
-          unfilteredInputAttributes
-      );
+  const otherInputAttributes = omit(
+      ['disabled', 'checked', 'readOnly', 'onChange'],
+      unfilteredInputAttributes
+  );
 
-      const toggleIndicator =
-        <NxFontAwesomeIcon icon={isChecked ? faCheckCircle : faTimesCircle} className="nx-toggle__indicator" />;
+  const toggleIndicator =
+    <NxFontAwesomeIcon icon={isChecked ? faCheckCircle : faTimesCircle} className="nx-toggle__indicator" />;
 
-      const onChange = onChangeProp ? () => { onChangeProp(!isChecked); } : undefined;
+  const onChange = onChangeProp ? () => { onChangeProp(!isChecked); } : undefined;
 
-      return (
-        <label { ...otherProps } ref={ref} className={labelClasses}>
-          <input type="checkbox"
-                 id={otherInputAttributes.id || inputId || undefined}
-                 className={classnames('nx-toggle__input', checkboxClassName)}
-                 disabled={!!disabled}
-                 checked={isChecked}
-                 readOnly={!onChange}
-                 onChange={onChange}
-                 role="switch"
-                 aria-checked={isChecked}
-                 { ...otherInputAttributes } />
-          <div className="nx-toggle__control">
-            {toggleIndicator}
-          </div>
-          { children && <span className="nx-toggle__content">{children}</span> }
-        </label>
-      );
-    }
-);
+  return (
+    <label { ...otherProps } className={labelClasses}>
+      <input type="checkbox"
+             id={otherInputAttributes.id || inputId || undefined}
+             className={classnames('nx-toggle__input', checkboxClassName)}
+             disabled={!!disabled}
+             checked={isChecked}
+             readOnly={!onChange}
+             onChange={onChange}
+             role="switch"
+             aria-checked={isChecked}
+             { ...otherInputAttributes } />
+      <div className="nx-toggle__control">
+        {toggleIndicator}
+      </div>
+      { children && <span className="nx-toggle__content">{children}</span> }
+    </label>
+  );
+}
 
 NxToggle.propTypes = propTypes;
-
-export default NxToggle;

@@ -4,11 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { MouseEvent, HTMLAttributes } from 'react';
+import { MouseEvent, ComponentProps } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'className'> {
-  className?: string | null;
+export interface Props extends ComponentProps<'div'> {
   isFirstPage?: boolean | null;
   isLastPage?: boolean | null;
   onPrevPageSelect: ((evt: MouseEvent) => void);
@@ -16,7 +15,6 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'className'>
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
-  className: PropTypes.string,
   isFirstPage: PropTypes.bool,
   isLastPage: PropTypes.bool,
   onPrevPageSelect: PropTypes.func.isRequired,

@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, ReactElement, LabelHTMLAttributes} from 'react';
+import {ReactNode, ReactElement, ComponentProps} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { selectableColors, SelectableColor } from '../../util/selectableColors';
 
-export interface Props extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onSelect'> {
+export interface Props extends Omit<ComponentProps<'label'>, 'onSelect'> {
   children: ReactNode;
   tagColor?: SelectableColor | null;
   // For internal use only, this prop is for our select/deselect tag icons

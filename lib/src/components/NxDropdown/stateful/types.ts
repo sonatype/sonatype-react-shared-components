@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, HTMLAttributes } from 'react';
+import { ReactNode, ComponentProps } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../../NxButton/types';
@@ -12,10 +12,9 @@ import { TooltipConfigProps, tooltipPropTypesShape } from '../../../util/tooltip
 import { OptionalReactElement } from '../../../util/reactUtil';
 import { childrenPropTypes } from '../types';
 
-export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
+export interface Props extends ComponentProps<'div'> {
   label: ReactNode | string;
   variant?: NX_BUTTON_VARIANT_TYPE | null;
-  className?: string | null;
   children?: OptionalReactElement | OptionalReactElement[] | null;
   disabled?: boolean | null;
   toggleTooltip?: TooltipConfigProps | string | null;

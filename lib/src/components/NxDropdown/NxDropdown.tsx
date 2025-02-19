@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 
@@ -20,7 +20,7 @@ import AbstractDropdown, { AbstractDropdownRenderToggleElement } from './Abstrac
 import withClass from '../../util/withClass';
 import { OptionalReactElement } from '../../util/reactUtil';
 
-const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props, ref) {
+export default function NxDropdown(props: Props) {
   const {
     children,
     className,
@@ -71,20 +71,13 @@ const _NxDropdown = forwardRef<HTMLDivElement, Props>(function NxDropdown(props,
                       isOpen={isOpen}
                       disabled={disabled}
                       renderToggleElement={renderToggleElement}
-                      ref={ref}
-                      { ...otherProps }
-    >
+                      { ...otherProps }>
       { wrappedChildren }
     </AbstractDropdown>
   );
-});
+}
 
-_NxDropdown.propTypes = propTypes;
-
-const NxDropdown = Object.assign(_NxDropdown, {
-  Divider: withClass('hr', 'nx-dropdown__divider')
-});
-
-export default NxDropdown;
+NxDropdown.propTypes = propTypes;
+NxDropdown.Divider = withClass('hr', 'nx-dropdown__divider');
 
 export { Props, propTypes } from './types';

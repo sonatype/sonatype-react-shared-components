@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, LiHTMLAttributes, PropsWithChildren, ReactElement } from 'react';
+import { ComponentProps, PropsWithChildren, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 
 export interface TabContextType {
@@ -14,15 +14,15 @@ export interface TabContextType {
   onTabSelect: (index: number) => void;
 }
 
-export type NxTabsProps = HTMLAttributes<HTMLDivElement> & {
+export type NxTabsProps = ComponentProps<'div'> & {
   activeTab?: number | null ;
   onTabSelect: ((index: number) => void);
   children?: ReactElement<PropsWithChildren> | ReactElement<PropsWithChildren>[] | null;
 };
 
-export type NxTabListProps = HTMLAttributes<HTMLUListElement>;
-export type NxTabPanelProps = HTMLAttributes<HTMLDivElement>;
-export type NxTabProps = LiHTMLAttributes<HTMLLIElement> & {
+export type NxTabListProps = ComponentProps<'ul'>;
+export type NxTabPanelProps = ComponentProps<'div'>;
+export type NxTabProps = ComponentProps<'li'> & {
   index?: number | null;
 };
 

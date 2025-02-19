@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { RefObject, ReactNode, HTMLAttributes, KeyboardEventHandler, Ref } from 'react';
+import { RefObject, ReactNode, KeyboardEventHandler, Ref, ComponentProps } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
@@ -14,7 +14,7 @@ import { OptionalReactElement } from '../../util/reactUtil';
 export type AbstractDropdownRenderToggleElement =
   (toggleRef: RefObject<HTMLButtonElement | null>, onToggleCollapse: (() => void)) => ReactNode;
 
-export interface AbstractDropdownProps extends HTMLAttributes<HTMLDivElement> {
+export interface AbstractDropdownProps extends ComponentProps<'div'> {
   isOpen: boolean;
   disabled?: boolean | null;
   renderToggleElement: AbstractDropdownRenderToggleElement;
@@ -25,7 +25,7 @@ export interface AbstractDropdownProps extends HTMLAttributes<HTMLDivElement> {
   menuRef?: Ref<HTMLDivElement>;
 }
 
-export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
+export type Props = Omit<ComponentProps<'div'>, 'className'> & {
   label: ReactNode | string;
   isOpen: boolean;
   variant?: NX_BUTTON_VARIANT_TYPE | null;

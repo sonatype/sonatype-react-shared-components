@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useContext } from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,7 +16,7 @@ import { TooltipContext } from '../NxTooltip/NxTooltip';
 import { Props, propTypes, SelectableProps, selectablePropTypes } from './types';
 export { SelectableProps, PublicProps } from './types';
 
-const NxTag = forwardRef<HTMLLabelElement, Props>(function NxTag(props, ref) {
+export default function NxTag(props: Props) {
   const hasTooltip = useContext(TooltipContext);
 
   const { children, className, selectedIcons, color, title, ...attrs } = props,
@@ -26,41 +26,38 @@ const NxTag = forwardRef<HTMLLabelElement, Props>(function NxTag(props, ref) {
       });
 
   const label = (
-    <label className={tagClasses} title={title} ref={ref} {...attrs}>
+    <label className={tagClasses} title={title} {...attrs}>
       <span className="nx-tag__text">{children}</span>
       {selectedIcons}
     </label>
   );
 
   return !hasTooltip ? <NxOverflowTooltip>{label}</NxOverflowTooltip> : label;
-});
+}
 
 NxTag.propTypes = propTypes;
-export default NxTag;
 
-export const NxSelectableTag = forwardRef<HTMLLabelElement, SelectableProps>(
-    function NxSelectableTag(props, ref) {
-      const { children, className, selected, onSelect, ...attrs } = props,
-          isSelected = selected,
-          tagClasses = classnames('nx-tag--selectable', className, {
-            'nx-tag--selected': isSelected,
-            'nx-tag--unselected': !isSelected
-          }),
-          tagIcons =
-            <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} className="nx-tag__action" />;
+export function NxSelectableTag(props: SelectableProps) {
+  const { children, className, selected, onSelect, ...attrs } = props,
+      isSelected = selected,
+      tagClasses = classnames('nx-tag--selectable', className, {
+        'nx-tag--selected': isSelected,
+        'nx-tag--unselected': !isSelected
+      }),
+      tagIcons =
+        <NxFontAwesomeIcon icon={isSelected ? faTimesCircle : faPlusCircle} className="nx-tag__action" />;
 
-      return (
-        <NxTag className={tagClasses} selectedIcons={tagIcons} ref={ref} {...attrs}>
-          {children}
-          <input type="checkbox"
-                 className="nx-tag__input"
-                 checked={isSelected}
-                 aria-checked={isSelected}
-                 role="switch"
-                 onChange={onSelect || undefined} />
-        </NxTag>
-      );
-    }
-);
+  return (
+    <NxTag className={tagClasses} selectedIcons={tagIcons} {...attrs}>
+      {children}
+      <input type="checkbox"
+             className="nx-tag__input"
+             checked={isSelected}
+             aria-checked={isSelected}
+             role="switch"
+             onChange={onSelect || undefined} />
+    </NxTag>
+  );
+}
 
 NxSelectableTag.propTypes = selectablePropTypes;

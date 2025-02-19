@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes } from 'react';
+import { ComponentProps } from 'react';
 import PropTypes, { ValidationMap } from 'prop-types';
 import { ThreatLevelCategory } from '../../util/threatLevels';
 
-export interface NxThreatIndicatorLegendProps extends HTMLAttributes<HTMLDivElement> {
+export interface NxThreatIndicatorLegendProps extends ComponentProps<'div'> {
   critical?: boolean | null;
   severe?: boolean | null;
   moderate?: boolean | null;

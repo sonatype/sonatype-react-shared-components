@@ -106,9 +106,9 @@ describe('NxBinaryDonutChart', function() {
           .querySelector('.nx-binary-donut-chart__background');
 
       expect(withZeroInnerRadius).toHaveAttribute('d', `M 0 -14.5
-                      a 14.5 14.5 0 1 1 0 29
-                      a 14.5 14.5 0 1 1 0 -29
-                    `);
+                  a 14.5 14.5 0 1 1 0 29
+                  a 14.5 14.5 0 1 1 0 -29
+                `);
     });
 
     it('clamps the innerRadiusPercent between zero and 100', function() {
@@ -218,9 +218,9 @@ describe('NxBinaryDonutChart', function() {
           .querySelector('.nx-binary-donut-chart__background');
 
       expect(withZeroInnerRadius).toHaveAttribute('d', `M 0 -14.5
-                      a 14.5 14.5 0 1 1 0 29
-                      a 14.5 14.5 0 1 1 0 -29
-                    `);
+                  a 14.5 14.5 0 1 1 0 29
+                  a 14.5 14.5 0 1 1 0 -29
+                `);
     });
 
     it('clamps the innerRadiusPercent between zero and 100', function() {

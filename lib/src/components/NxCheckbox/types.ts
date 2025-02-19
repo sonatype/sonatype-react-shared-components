@@ -4,14 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { InputHTMLAttributes, LabelHTMLAttributes } from 'react';
+import { ComponentProps } from 'react';
 import * as PropTypes from 'prop-types';
 
 export type InputAttributesProp =
-  Omit<InputHTMLAttributes<HTMLInputElement>,
+  Omit<ComponentProps<'input'>,
   'disabled' | 'checked' | 'readOnly' | 'onChange'>;
 
-interface BaseProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> {
+interface BaseProps extends Omit<ComponentProps<'label'>, 'onChange'> {
   checkboxId?: string | null;
   disabled?: boolean | null;
   overflowTooltip?: boolean | null;

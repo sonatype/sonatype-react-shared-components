@@ -4,34 +4,32 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, HTMLAttributes, ReactNode, Ref } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
 type AttributeOmissions = 'disabled' | 'className' | 'onClick' | 'href';
 
-export interface ButtonItemProps extends HTMLAttributes<HTMLDivElement> {
+export interface ButtonItemProps extends ComponentProps<'div'> {
   onClick: () => void;
   term: Exclude<ReactNode, undefined | null>;
   description: Exclude<ReactNode, undefined | null>;
   selected?: boolean | null;
   disabled?: boolean | null;
   buttonClassName?: string | null;
-  buttonAttributes?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, AttributeOmissions> | null;
-  ref?: Ref<HTMLDivElement>;
+  buttonAttributes?: Omit<ComponentProps<'button'>, AttributeOmissions> | null;
 }
 
-export interface LinkItemProps extends HTMLAttributes<HTMLDivElement> {
+export interface LinkItemProps extends ComponentProps<'div'> {
   href: string;
   term: Exclude<ReactNode, undefined | null>;
   description: Exclude<ReactNode, undefined | null>;
   selected?: boolean | null;
   disabled?: boolean | null;
   anchorClassName?: string | null;
-  anchorAttributes?: Omit<AnchorHTMLAttributes<HTMLAnchorElement>, AttributeOmissions> | null;
-  ref?: Ref<HTMLDivElement>;
+  anchorAttributes?: Omit<ComponentProps<'a'>, AttributeOmissions> | null;
 }
 
-export interface Props extends HTMLAttributes<HTMLElement> {
+export interface Props extends ComponentProps<'dl'> {
   emptyMessage?: string | null;
 }
 

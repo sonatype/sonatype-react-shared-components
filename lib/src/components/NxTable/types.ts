@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { TableHTMLAttributes, HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes, ReactNode } from 'react';
+import { ReactNode, ComponentProps } from 'react';
 import PropTypes from 'prop-types';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-export type NxTableProps = TableHTMLAttributes<HTMLTableElement> & {
+export interface NxTableProps extends ComponentProps<'table'> {
   caption?: string | null,
 };
 
@@ -16,7 +16,7 @@ export const nxTablePropTypes: PropTypes.ValidationMap<NxTableProps> = {
   children: PropTypes.node
 };
 
-export type NxTableBodyProps = HTMLAttributes<HTMLTableSectionElement> & {
+export type NxTableBodyProps = ComponentProps<'tbody'> & {
   isLoading?: boolean | null;
   error?: string | null;
   emptyMessage?: ReactNode | null;
@@ -31,21 +31,20 @@ export const nxTableBodyPropTypes: PropTypes.ValidationMap<NxTableBodyProps> = {
   children: PropTypes.node
 };
 
-export type NxTableCellProps =
-    (TdHTMLAttributes<HTMLTableCellElement> | ThHTMLAttributes<HTMLTableCellElement>) & {
-      metaInfo?: boolean | null;
-      isNumeric?: boolean | null;
-      isSortable?: boolean | null;
-      isFilterHeader?: boolean | null;
-      hasIcon?: boolean | null;
-      chevron?: boolean | null;
+export type NxTableCellProps = (ComponentProps<'th'> | ComponentProps<'td'>) & {
+  metaInfo?: boolean | null;
+  isNumeric?: boolean | null;
+  isSortable?: boolean | null;
+  isFilterHeader?: boolean | null;
+  hasIcon?: boolean | null;
+  chevron?: boolean | null;
 
-      // NOTE: ideally this would be the wider IconProp type but that type is so complex that attempting to do much
-      // of anything with it trips a limit in the TS compiler and fails. In practice we only really use IconDefinitions
-      // anyway.
-      rowBtnIcon?: IconDefinition | null;
-      sortDir?: 'asc' | 'desc' | null;
-    };
+  // NOTE: ideally this would be the wider IconProp type but that type is so complex that attempting to do much
+  // of anything with it trips a limit in the TS compiler and fails. In practice we only really use IconDefinitions
+  // anyway.
+  rowBtnIcon?: IconDefinition | null;
+  sortDir?: 'asc' | 'desc' | null;
+};
 
 export const nxTableCellPropTypes: PropTypes.ValidationMap<NxTableCellProps> = {
   metaInfo: PropTypes.bool,
@@ -58,13 +57,13 @@ export const nxTableCellPropTypes: PropTypes.ValidationMap<NxTableCellProps> = {
   children: PropTypes.node
 };
 
-export type NxTableHeadProps = HTMLAttributes<HTMLTableSectionElement>;
+export type NxTableHeadProps = ComponentProps<'thead'>;
 
 export const nxTableHeadPropTypes: PropTypes.ValidationMap<NxTableHeadProps> = {
   children: PropTypes.node
 };
 
-export type NxTableRowProps = HTMLAttributes<HTMLTableRowElement> & {
+export type NxTableRowProps = ComponentProps<'tr'> & {
   isFilterHeader?: boolean | null;
   isClickable?: boolean | null;
   selected?: boolean | null;

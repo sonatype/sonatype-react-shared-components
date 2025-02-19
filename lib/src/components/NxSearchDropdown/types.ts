@@ -6,12 +6,12 @@
  */
 import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
-import { HTMLAttributes, ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent, ComponentProps } from 'react';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
 import DataItem from '../../util/DataItem';
 
-export interface Props<T extends string | number = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
+export interface Props<T extends string | number = string> extends Omit<ComponentProps<'div'>, 'onSelect'> {
   searchText: string;
   onSearchTextChange: (s: string) => void;
   onSearch: (s: string) => void;

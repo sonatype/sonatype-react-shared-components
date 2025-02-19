@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes, ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
 export const NX_DRAWER_VARIANTS = ['normal', 'narrow'] as const;
@@ -12,7 +12,7 @@ export type NX_DRAWER_VARIANT_TYPE = (typeof NX_DRAWER_VARIANTS)[number];
 
 export type OpenState = 'open' | 'closed' | 'opening' | 'closing';
 
-export interface Props extends HTMLAttributes<HTMLDialogElement> {
+export interface Props extends Omit<ComponentProps<'dialog'>, 'onCancel'> {
   open: boolean;
   onClose: () => void;
   onCancel?: (() => void) | null;
@@ -22,9 +22,9 @@ export interface Props extends HTMLAttributes<HTMLDialogElement> {
   closeBtnTooltip?: string | null;
 }
 
-export type NxDrawerHeaderProps = HTMLAttributes<HTMLElement>;
+export type NxDrawerHeaderProps = ComponentProps<'header'>;
 
-export type NxDrawerHeaderTitleProps = HTMLAttributes<HTMLHeadingElement>;
+export type NxDrawerHeaderTitleProps = ComponentProps<'h2'>;
 
 export interface NxDrawerContextValue {
   closeDrawer: () => void;

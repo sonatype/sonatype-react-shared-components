@@ -5,14 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import React, {
-  ReactElement,
-  HTMLAttributes,
-  ReactNode,
-  KeyboardEventHandler,
-  ButtonHTMLAttributes,
-  RefAttributes
-} from 'react';
+import React, { ReactElement, ReactNode, KeyboardEventHandler, RefAttributes, ComponentProps } from 'react';
 import { without } from 'ramda';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
@@ -26,7 +19,7 @@ export type NX_SEGMENTED_BUTTON_VARIANT_TYPE =
 export const NX_SEGMENTED_BUTTON_VARIANTS =
     without(invalidButtonVariants, NX_BUTTON_VARIANTS) as NX_SEGMENTED_BUTTON_VARIANT_TYPE[];
 
-export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
+export interface Props extends Omit<ComponentProps<'div'>, 'onClick'> {
   variant: NX_SEGMENTED_BUTTON_VARIANT_TYPE;
   children: ReactElement<RefAttributes<HTMLElement>> | ReactElement<RefAttributes<HTMLElement>>[];
   buttonContent: ReactNode;
@@ -36,7 +29,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   onCloseKeyDown?: KeyboardEventHandler | null;
   onCloseClick?: ((e: MouseEvent) => void) | null;
   disabled?: boolean | null;
-  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+  type?: ComponentProps<'button'>['type'];
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {

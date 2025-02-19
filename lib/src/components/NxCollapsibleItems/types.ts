@@ -4,13 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, ReactElement, HTMLAttributes, RefAttributes, Ref } from 'react';
+import { ReactNode, ReactElement, HTMLAttributes, RefAttributes, Ref, ComponentProps } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { TooltipConfigProps, tooltipPropTypesShape } from '../../util/tooltipUtils';
 
-export interface PublicProps extends HTMLAttributes<HTMLDivElement> {
-  ref?: Ref<HTMLDivElement>;
+export interface PublicProps extends ComponentProps<'div'> {
   onToggleCollapse?: (() => void) | null;
   isOpen: boolean;
   disabled?: boolean | null;

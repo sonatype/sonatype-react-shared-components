@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { AnchorHTMLAttributes, ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
@@ -27,7 +27,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   children: PropTypes.node
 };
 
-export interface NxGlobalSidebar2NavigationLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface NxGlobalSidebar2NavigationLinkProps extends ComponentProps<'a'> {
   isSelected?: boolean | null;
   icon: IconDefinition;
   text: RequiredReactNode;

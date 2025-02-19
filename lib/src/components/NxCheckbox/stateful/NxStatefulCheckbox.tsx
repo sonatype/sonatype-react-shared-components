@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import NxCheckbox from '../NxCheckbox';
 import { StatefulProps as Props, statefulPropTypes as propTypes } from '../types';
@@ -20,21 +20,18 @@ export { Props };
  * @param props.children VDOM rendered as label. Should be
  * [phrasing content](https://www.w3.org/TR/2011/WD-html-markup-20110525/terminology.html#phrasing-content).
  */
-const NxStatefulCheckbox = forwardRef<HTMLLabelElement, Props>(
-    function NxStatefulCheckbox({ defaultChecked, onChange, ...otherProps }, ref) {
-      const [isChecked, toggle] = useToggle(defaultChecked);
+export default function NxStatefulCheckbox({ defaultChecked, onChange, ...otherProps }: Props) {
+  const [isChecked, toggle] = useToggle(defaultChecked);
 
-      function changeHandler() {
-        const newCheckedStatus = toggle();
+  function changeHandler() {
+    const newCheckedStatus = toggle();
 
-        if (onChange) {
-          onChange(newCheckedStatus);
-        }
-      }
-
-      return <NxCheckbox ref={ref} { ...otherProps } onChange={changeHandler} isChecked={isChecked} />;
+    if (onChange) {
+      onChange(newCheckedStatus);
     }
-);
+  }
+
+  return <NxCheckbox { ...otherProps } onChange={changeHandler} isChecked={isChecked} />;
+}
 
 NxStatefulCheckbox.propTypes = propTypes;
-export default NxStatefulCheckbox;

@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { HTMLAttributes } from 'react';
+import { ComponentProps } from 'react';
 
 export const NX_PROGRESS_BAR_VARIANTS = ['inline', 'small', 'normal', 'full'] as const;
 export type NX_PROGRESS_BAR_VARIANT_TYPE = (typeof NX_PROGRESS_BAR_VARIANTS)[number];
@@ -15,7 +15,7 @@ export interface StepsProps {
   value: number;
 }
 
-export interface Props extends HTMLAttributes<Omit<HTMLProgressElement, 'value' | 'max'>> {
+export interface Props extends Omit<ComponentProps<'progress'>, 'value' | 'max'> {
   inlineCounter?: boolean | null;
   label: string;
   labelSuccess?: string | null;

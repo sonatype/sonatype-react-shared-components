@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { HTMLAttributes, AnchorHTMLAttributes, ReactNode } from 'react';
+import { ReactNode, ComponentProps } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
@@ -33,15 +33,13 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   children: PropTypes.node
 };
 
-export type NxGlobalSidebarNavigationProps = HTMLAttributes<HTMLDivElement>;
+export type NxGlobalSidebarNavigationProps = ComponentProps<'div'>;
 
-// Casting to hack around flaws in react's typings: the typings for HTMLAttributes.className don't claim to accept null,
-// but non-required proptypes do, and the actual implementation does
 export const nxGlobalSidebarNavigationPropTypes = {
   className: PropTypes.string
 };
 
-export interface NxGlobalSidebarNavigationLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface NxGlobalSidebarNavigationLinkProps extends ComponentProps<'a'> {
   isSelected?: boolean | null;
   icon: IconDefinition;
   text: RequiredReactNode;
@@ -55,7 +53,7 @@ export const nxGlobalSidebarNavigationLinkPropTypes: PropTypes.ValidationMap<NxG
   href: PropTypes.string.isRequired
 };
 
-export interface NxGlobalSidebarFooterProps extends HTMLAttributes<HTMLDivElement> {
+export interface NxGlobalSidebarFooterProps extends ComponentProps<'div'> {
   supportText?: ReactNode | null;
   supportLink?: string | null;
   releaseText?: ReactNode | null;
