@@ -66,14 +66,6 @@ describe('NxSearchTransferList', function() {
       expect(searchInput).toHaveAttribute('type', 'text');
     });
 
-    it('sets the aria-controls on the input to the dropdown id', function() {
-      const view = quickRender(),
-          searchInput = view.getByRole('searchbox'),
-          dropdownId = view.getByRole('alert', { hidden: true }).getAttribute('id');
-
-      expect(searchInput).toHaveAttribute('aria-controls', dropdownId);
-    });
-
     it('clears the search input when the ESC key is pressed', async function() {
       const user = userEvent.setup(),
           searchInput = quickRender().getByRole('searchbox');
@@ -181,6 +173,14 @@ describe('NxSearchTransferList', function() {
               expect.objectContaining({ target: matches[0] })
           );
         });
+
+        it('sets the aria-controls on the input to the dropdown id', async function() {
+          const view = await viewWithMatches(),
+              searchInput = view.getByRole('searchbox'),
+              dropdownId = view.getByRole('menu').getAttribute('id');
+
+          expect(searchInput).toHaveAttribute('aria-controls', dropdownId);
+        });
       });
 
       describe('when there are no matches', function() {
@@ -241,6 +241,14 @@ describe('NxSearchTransferList', function() {
         'or loading state', async function() {
           const emptyDropdown = (await viewNoMatches()).getByRole('alert');
           expect(emptyDropdown).toHaveTextContent('No Results Found');
+        });
+
+        it('sets the aria-controls on the input to the dropdown id', async function() {
+          const view = await viewNoMatches(),
+              searchInput = view.getByRole('searchbox'),
+              dropdownId = view.getByRole('alert', { hidden: true }).getAttribute('id');
+
+          expect(searchInput).toHaveAttribute('aria-controls', dropdownId);
         });
       });
 

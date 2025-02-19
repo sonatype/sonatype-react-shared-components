@@ -4,11 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, Ref } from 'react';
 
 export type CancelHandler = (evt: Event) => void;
 
 export interface Props extends HTMLAttributes<HTMLDialogElement> {
+  ref?: Ref<HTMLDialogElement>;
   onCancel: CancelHandler;
   useNativeCancelOnEscape?: boolean | null;
   isModal?: boolean | null;

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { HTMLAttributes, ReactElement, ReactNode, RefAttributes } from 'react';
+import React, { HTMLAttributes, ReactElement, ReactNode, Ref, RefAttributes } from 'react';
 import { findIndex, findLastIndex, includes } from 'ramda';
 
 type ReactText = string | number;
@@ -68,4 +68,12 @@ export function ensureStartEndElements(content: ReactNode): Exclude<ReactNode, R
   else {
     return ensureElement(content);
   }
+}
+
+/**
+ * Takes an optional `ref` and returns a definite `ref` that will not be `undefined`. Helps with type sginature
+ * compatibility with useMergedRef.
+ */
+export function ensureRef<T>(ref: Ref<T> | undefined): Ref<T> {
+  return ref ?? (() => {});
 }

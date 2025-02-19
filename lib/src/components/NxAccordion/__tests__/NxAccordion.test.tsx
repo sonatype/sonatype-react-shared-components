@@ -5,13 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { render } from '@testing-library/react';
 import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxAccordion from '../NxAccordion';
 import NxButton from '../../NxButton/NxButton';
-import { render } from '@testing-library/react';
 
 describe('NxAccordion', function() {
   const quickRender = rtlRender(NxAccordion, {});
@@ -89,8 +89,8 @@ describe('NxAccordion', function() {
           <NxAccordion.Header></NxAccordion.Header>
         )
       });
-      const id = container.querySelector('DETAILS')?.getAttribute('id');
-      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', id);
+      const id = container.querySelector('details')?.getAttribute('id');
+      expect(container.querySelector('summary')).toHaveAttribute('aria-controls', id);
     });
 
     it('sets aria-controls to the specified accordion id', function() {
@@ -103,7 +103,7 @@ describe('NxAccordion', function() {
         )
       });
 
-      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', 'foo');
+      expect(container.querySelector('summary')).toHaveAttribute('aria-controls', 'foo');
     });
   });
 

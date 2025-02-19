@@ -4,16 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {
-  forwardRef,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
-//import useMergedRef from '@react-hook/merged-ref';
+import React, { useEffect, useRef, useState } from 'react';
+import useMergedRef from '@react-hook/merged-ref';
 
 import { Props, DialogContextValue } from './types';
 import { getFirstVisibleFocusableElement } from '../../util/focusUtil';
+import { ensureRef } from '../../util/reactUtil';
 
 // https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element
 export const DialogContext = React.createContext<DialogContextValue | null>(null);
@@ -38,8 +34,9 @@ const createCancelEvent = () => new Event('cancel', { cancelable: true });
  * @return - Abstracted dialog element.
  */
 
-const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
+export default function AbstractDialog(props: Props) {
   const {
+    ref,
     className,
     children,
     onCancel,
@@ -57,8 +54,7 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
   const [dialogRefState, setDialogRefState] = useState<HTMLDialogElement | null>(null);
   const previouslyFocusedElementRef = useRef<HTMLElement | null>(null);
 
-  //const mergedRef = useMergedRef(dialogRef, ref);
-  const mergedRef = ref;
+  const mergedRef = useMergedRef(dialogRef, ensureRef(ref));
 
   // Handle open and close logic.
   useEffect(function() {
@@ -187,7 +183,6 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
       </dialog>
     </DialogContext.Provider>
   );
-});
+}
 
-export default AbstractDialog;
 export { Props } from './types';

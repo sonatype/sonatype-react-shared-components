@@ -23,7 +23,12 @@ export function splitOutFirst(type: ComponentType, children: ReactNode): [ReactE
       matchingChild = child;
     }
     else {
-      nonMatchingChildren.push(child);
+      if (React.isValidElement(child) && child.key === null) {
+        nonMatchingChildren.push(React.cloneElement(child, { key: nonMatchingChildren.length }));
+      }
+      else {
+        nonMatchingChildren.push(child);
+      }
     }
   });
 
