@@ -14,7 +14,7 @@ const pageUrl = `file://${__dirname}/../dist/index.html`;
 
 const { AxePuppeteer } = require('@axe-core/puppeteer');
 
-const TOOLTIP_WAIT = 10000;
+const TOOLTIP_WAIT = 1000;
 
 module.exports = {
   TOOLTIP_WAIT,
@@ -56,7 +56,6 @@ module.exports = {
 
     afterEach(async function() {
       await page.removeAllListeners();
-      // await page.close(); // seems to already be closed?
     });
 
     afterAll(async function() {
