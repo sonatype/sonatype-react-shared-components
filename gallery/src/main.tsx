@@ -10,7 +10,7 @@ import 'es6-set/implement';
 import 'es6-object-assign/auto';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import './main.scss';
 
@@ -18,4 +18,6 @@ import Application from './Application';
 import * as telemetry from './telemetry';
 
 telemetry.init();
-ReactDOM.render(<Application />, document.getElementById('ui'));
+
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+createRoot(document.getElementById('ui')!).render(<Application />);

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { Ref, useState } from 'react';
+import React, { Ref, MouseEvent, useState } from 'react';
 import NxSearchDropdown from '../NxSearchDropdown';
 import DataItem from '../../../util/DataItem';
 
@@ -17,9 +17,9 @@ function NxStatefulSearchDropdownRender<T extends string | number = string>(
 ) {
   const [searchText, setSearchText] = useState(defaultSearchText || '');
 
-  function onSelect(item: DataItem<T>) {
+  function onSelect(item: DataItem<T>, evt: MouseEvent<HTMLButtonElement>) {
     setSearchText('');
-    onSelectProp(item);
+    onSelectProp(item, evt);
   }
 
   return <NxSearchDropdown { ...{ ref, searchText, onSelect, ...otherProps } } onSearchTextChange={setSearchText} />;

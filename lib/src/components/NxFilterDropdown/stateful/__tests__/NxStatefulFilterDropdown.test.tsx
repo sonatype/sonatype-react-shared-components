@@ -4,12 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { RefAttributes } from 'react';
 import { createEvent, fireEvent } from '@testing-library/react';
 import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
 
 import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
 import NxStatefulFilterDropdown, { Props } from '../NxStatefulFilterDropdown';
+
+type RenderProps = Props<number> & RefAttributes<HTMLDivElement>;
 
 describe('NxStatefulDropdown', function() {
   const minimalProps: Props<number> = {
@@ -23,8 +25,8 @@ describe('NxStatefulDropdown', function() {
         { id: 2, displayName: 'Two' },
         { id: 3, displayName: 'Three' }
       ],
-      quickRender = rtlRender(NxStatefulFilterDropdown, minimalProps),
-      renderEl = rtlRenderElement(NxStatefulFilterDropdown, minimalProps);
+      quickRender = rtlRender<RenderProps>(NxStatefulFilterDropdown, minimalProps),
+      renderEl = rtlRenderElement<RenderProps>(NxStatefulFilterDropdown, minimalProps);
 
   async function renderAndOpenDropdown(props?: Partial<Props<number>>, user?: UserEvent) {
     const _user = user ?? userEvent.setup(),
@@ -52,7 +54,7 @@ describe('NxStatefulDropdown', function() {
   });
 
   describe('toggle label', function() {
-    const quickRender = rtlRender(NxStatefulFilterDropdown, { ...minimalProps, options });
+    const quickRender = rtlRender<RenderProps>(NxStatefulFilterDropdown, { ...minimalProps, options });
 
     describe('when no options are selected', function() {
       it('says "Filter" by default', function() {

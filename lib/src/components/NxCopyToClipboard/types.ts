@@ -10,12 +10,13 @@ import { Props as NxFormGroupProps, propTypes as nxFormGroupPropTypes } from '..
 import { PublicProps as NxTextInputProps, propTypes as nxTextInputPropTypes } from '../NxTextInput/types';
 import { omit } from 'ramda';
 
-type InputProps = Omit<NxTextInputProps, 'type' | 'value' | 'isPristine' | 'readOnly'>;
+export type InternalInputProps = Omit<NxTextInputProps, 'type' | 'value' | 'isPristine'>;
+type ExternalInputProps = Omit<InternalInputProps, 'readOnly'>;
 
 export interface Props extends Omit<NxFormGroupProps, 'children' | 'isRequired'> {
   content: string;
   onCopyUsingBtn?: (() => void) | null;
-  inputProps?: InputProps | null;
+  inputProps?: ExternalInputProps | null;
 }
 
 export const propTypes: ValidationMap<Props> = {

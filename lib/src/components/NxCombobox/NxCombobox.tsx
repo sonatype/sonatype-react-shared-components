@@ -333,9 +333,7 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
          onFocus={handleComponentFocus}
          onBlur={handleComponentBlur}
          { ...newAttrs }>
-      <TextInput role="combobox"
-                 ref={(div: HTMLElement | null) => inputRef.current = div?.querySelector('input')}
-                 id={inputId}
+      <TextInput ref={(div: HTMLElement | null) => inputRef.current = div?.querySelector('input')}
                  validationErrors={validationErrors}
                  validatable={validatable}
                  isPristine={!!isPristine}
@@ -344,16 +342,20 @@ function NxComboboxRender<T extends string | number | DataItem<string | number, 
                  onChange={handleOnChange}
                  onClick={() => setHiddenBySelection(false)}
                  disabled={disabled || undefined}
-                 onKeyDown={handleKeyDown}
-                 aria-autocomplete={autoComplete ? 'both' : 'list'}
-                 aria-expanded={showDropdown}
-                 aria-controls={showDropdown ? dropdownId : undefined}
-                 aria-activedescendant={focusableBtnId}
+                 id={inputId}
                  aria-required={ariaRequired}
                  aria-describedby={inputDescribedby}
-                 aria-label={ariaLabel}
-                 // disable browser autocomplete
-                 autoComplete="off"
+                 inputAttributes={{
+                   role: 'combobox',
+                   onKeyDown: handleKeyDown,
+                   'aria-autocomplete': autoComplete ? 'both' : 'list',
+                   'aria-expanded': showDropdown,
+                   'aria-controls': showDropdown ? dropdownId : undefined,
+                   'aria-activedescendant': focusableBtnId,
+                   'aria-label': ariaLabel,
+                   // disable browser autocomplete
+                   autoComplete: 'off'
+                 }}
                  { ...filterInputProps } />
       { isAlert ?
         <div id={alertDropdownId}

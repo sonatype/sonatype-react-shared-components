@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { within, screen, act } from '@testing-library/react';
+import { within, screen, act, render } from '@testing-library/react';
 import { userEvent } from '../../../__testutils__/rtlUtils';
 import React from 'react';
 import { rtlRender } from '../../../__testutils__/rtlUtils';
@@ -314,5 +314,148 @@ describe('NxTooltip', function() {
           expect(buttonWithOwnDescription).not.toHaveAttribute('title');
         }
     );
+  });
+
+  describe('when isName is true', function() {
+    const quickRender = rtlRender(NxTooltip, { ...minimalProps, isName: true });
+
+    describe('when title is a non-empty string', function() {
+      it('sets the title as the accessible name of the child', async function() {
+        const user = userEvent.setup(),
+            children = <button>Foo</button>,
+            view = quickRender({ children }),
+            button = view.getByRole('button');
+
+        await runTimers();
+        expect(button).toHaveAccessibleName('tip');
+
+        await user.hover(button);
+        await runTimers();
+
+        expect(button).toHaveAccessibleName('tip');
+      });
+
+      it('does not override the accessible name if already set by aria-label or aria-labelledby', async function() {
+        render(<span id="label">baz</span>);
+
+        const user = userEvent.setup(),
+            childrenWithLabelName = <button aria-label="bar">Foo</button>,
+            childrenWithLabelledByName = <button aria-labelledby="label">Foo</button>,
+            viewWithLabelName = quickRender({ children: childrenWithLabelName }),
+            viewWithLabelledByName = quickRender({ children: childrenWithLabelledByName }),
+            buttonWithLabelName = viewWithLabelName.getByRole('button'),
+            buttonWithLabelledByName = viewWithLabelledByName.getByRole('button');
+
+        await user.hover(buttonWithLabelName);
+        await runTimers();
+
+        expect(buttonWithLabelName).toHaveAccessibleName('bar');
+        expect(buttonWithLabelName).not.toHaveAttribute('title');
+
+        await user.hover(buttonWithLabelledByName);
+        await runTimers();
+
+        expect(buttonWithLabelledByName).toHaveAccessibleName('baz');
+        expect(buttonWithLabelledByName).not.toHaveAttribute('title');
+      });
+
+      it('does not override the accessible description and does not set the title', async function() {
+        const user = userEvent.setup(),
+            childrenWithOwnDescription = <button aria-describedby="descriptionId">Foo</button>,
+            childrenWithNoDescription = <button>Foo</button>,
+            viewWithOwnDescription = quickRender({ children: childrenWithOwnDescription }),
+            viewWithNoDescription = quickRender({ children: childrenWithNoDescription }),
+            buttonWithOwnDescription = viewWithOwnDescription.getByRole('button'),
+            buttonWithNoDescription = viewWithNoDescription.getByRole('button');
+
+        expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
+        expect(buttonWithOwnDescription).not.toHaveAttribute('title');
+        expect(buttonWithNoDescription).not.toHaveAccessibleDescription();
+        expect(buttonWithNoDescription).not.toHaveAttribute('title');
+
+        await user.hover(buttonWithOwnDescription);
+        await runTimers();
+
+        expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
+        expect(buttonWithOwnDescription).not.toHaveAttribute('title');
+
+        await user.hover(buttonWithNoDescription);
+        await runTimers();
+
+        expect(buttonWithNoDescription).not.toHaveAccessibleDescription();
+        expect(buttonWithNoDescription).not.toHaveAttribute('title');
+      });
+    });
+
+    describe('when title is JSX', function() {
+      const title = <span data-testid="tooltip-content">tiptip</span>,
+          quickRender = rtlRender(NxTooltip, { ...minimalProps, isName: true, title });
+
+      it('sets the title as the accessible name of the child only when hovered', async function() {
+        const user = userEvent.setup(),
+            children = <button>Foo</button>,
+            view = quickRender({ children }),
+            button = view.getByRole('button');
+
+        await runTimers();
+        expect(button).toHaveAccessibleName('Foo');
+
+        await user.hover(button);
+        await runTimers();
+
+        expect(button).toHaveAccessibleName('tiptip');
+      });
+
+      it('overrides the accessible name if already set by aria-label but not aria-labelledby', async function() {
+        render(<span id="label">baz</span>);
+
+        const user = userEvent.setup(),
+            childrenWithLabelName = <button aria-label="bar">Foo</button>,
+            childrenWithLabelledByName = <button aria-labelledby="label">Foo</button>,
+            viewWithLabelName = quickRender({ children: childrenWithLabelName }),
+            viewWithLabelledByName = quickRender({ children: childrenWithLabelledByName }),
+            buttonWithLabelName = viewWithLabelName.getByRole('button'),
+            buttonWithLabelledByName = viewWithLabelledByName.getByRole('button');
+
+        await user.hover(buttonWithLabelName);
+        await runTimers();
+
+        expect(buttonWithLabelName).toHaveAccessibleName('tiptip');
+        expect(buttonWithLabelName).not.toHaveAttribute('title');
+
+        await user.hover(buttonWithLabelledByName);
+        await runTimers();
+
+        expect(buttonWithLabelledByName).toHaveAccessibleName('baz');
+        expect(buttonWithLabelledByName).not.toHaveAttribute('title');
+      });
+
+      it('does not override the accessible description and does not set the title', async function() {
+        const user = userEvent.setup(),
+            childrenWithOwnDescription = <button aria-describedby="descriptionId">Foo</button>,
+            childrenWithNoDescription = <button>Foo</button>,
+            viewWithOwnDescription = quickRender({ children: childrenWithOwnDescription }),
+            viewWithNoDescription = quickRender({ children: childrenWithNoDescription }),
+            buttonWithOwnDescription = viewWithOwnDescription.getByRole('button'),
+            buttonWithNoDescription = viewWithNoDescription.getByRole('button');
+
+        expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
+        expect(buttonWithOwnDescription).not.toHaveAttribute('title');
+        expect(buttonWithNoDescription).not.toHaveAccessibleDescription();
+        expect(buttonWithNoDescription).not.toHaveAttribute('title');
+
+        await user.hover(buttonWithOwnDescription);
+        await runTimers();
+
+        expect(buttonWithOwnDescription).toHaveAccessibleDescription('Description Text');
+        expect(buttonWithOwnDescription).not.toHaveAttribute('title');
+
+        await user.hover(buttonWithNoDescription);
+        await runTimers();
+
+        expect(buttonWithNoDescription).not.toHaveAccessibleDescription();
+        expect(buttonWithNoDescription).not.toHaveAttribute('title');
+      });
+    });
   });
 });

@@ -75,7 +75,6 @@
 
 .nx-list__text {
   @include nx-text-helpers.semi-bold;
-  @include nx-container-helpers.container-horizontal;
 
   display: block;
   grid-area: list-text;
@@ -91,6 +90,8 @@
     height: calc(var(--nx-line-height) * 1em);
     max-width: unset;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-list__subtext {
@@ -118,8 +119,6 @@
 }
 
 .nx-list__item--error {
-  @include nx-container-helpers.container-vertical;
-
   display: list-item;
   padding-left: 0;
   padding-right: 0;
@@ -128,6 +127,8 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-list--bulleted, .nx-list--numbered {
@@ -136,8 +137,6 @@
   padding: 0 0 0 26px;
 
   .nx-list__item {
-    @include nx-container-helpers.container-vertical;
-
     border: none;
     display: list-item;
     list-style: disc outside;
@@ -179,6 +178,8 @@
         list-style-type: square;
       }
     }
+
+    @include nx-container-helpers.container-vertical;
   }
 }
 
@@ -278,8 +279,6 @@
 }
 
 .nx-list__actions {
-  @include nx-container-helpers.container-horizontal;
-
   grid-area: actions;
   // list items have 16px of padding, but the buttons are supposed to be 12px from the top
   margin: -4px 0 -4px var(--nx-spacing-4x);
@@ -295,6 +294,8 @@
   .nx-btn--icon-only {
     @include nx-button-helpers.small-icon-btn;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-list--description-list {
@@ -336,12 +337,12 @@
 
 .nx-list__description {
   &, > .nx-list__link, > .nx-list__btn {
-    @include nx-container-helpers.container-vertical;
-
     flex: 1;
     margin: 0;
     padding: var(--nx-spacing-4x) var(--nx-padding-without-border)
       var(--nx-padding-without-border) var(--nx-spacing-6x);
+
+    @include nx-container-helpers.container-vertical;
   }
 
   > .nx-list__link, > .nx-list__btn {

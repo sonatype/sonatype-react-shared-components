@@ -6,7 +6,8 @@
  */
 import * as PropTypes from 'prop-types';
 import { omit } from 'ramda';
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, Validator, MouseEvent } from 'react';
+import RequiredReactNode from '../../util/RequiredReactNode';
 
 import DataItem from '../../util/DataItem';
 
@@ -17,7 +18,7 @@ export interface Props<T extends string | number = string> extends Omit<HTMLAttr
   loading?: boolean | null;
   error?: ReactNode;
   matches: DataItem<T>[];
-  onSelect: (m: DataItem<T>) => void;
+  onSelect: (m: DataItem<T>, evt: MouseEvent<HTMLButtonElement>) => void;
   long?: boolean | null;
   disabled?: boolean | null;
   emptyMessage?: ReactNode;
@@ -33,7 +34,7 @@ export const propTypes: PropTypes.ValidationMap<Props<string | number>> = {
   error: PropTypes.node,
   matches: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]).isRequired,
-    displayName: PropTypes.node.isRequired
+    displayName: PropTypes.node.isRequired as Validator<RequiredReactNode>
   }).isRequired).isRequired,
   onSelect: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,

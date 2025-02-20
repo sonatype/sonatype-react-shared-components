@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react';
+import { FormEvent, InputHTMLAttributes, TextareaHTMLAttributes, ReactNode, HTMLAttributes } from 'react';
 
 /**
  * The valid values for the `type` Prop
@@ -34,16 +34,20 @@ export interface StateProps {
 // Imported props from react to provide support for all the regular html attributes
 type FusedProps = InputHTMLAttributes<HTMLInputElement> & TextareaHTMLAttributes<HTMLTextAreaElement>;
 // Leave out props to be re-defined
-export type HTMLProps = Omit<FusedProps, 'onChange'|'onKeyPress'|'type'|'defaultValue'>;
+export type InputAttrs = Omit<FusedProps, 'onChange'|'onKeyPress'|'type'|'defaultValue'|'disabled'|'placeholder'>;
+export type DivAttrs = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'|'onKeyPress'|'defaultValue'|'placeholder'>;
 
 export type TextInputElement = HTMLInputElement | HTMLTextAreaElement;
 
 // Final Props are the HTMLProps & our re-definitions
-export type Props = Omit<StateProps, 'trimmedValue'> & HTMLProps & {
+export type Props = Omit<StateProps, 'trimmedValue'> & DivAttrs & {
   type?: NxTextInputType | null;
   onChange?: ((newVal: string, e?: FormEvent<TextInputElement>) => void) | null;
   onKeyPress?: ((keyCode: string) => void) | null;
   validatable?: boolean | null;
+  disabled?: boolean | null;
+  placeholder?: string | null;
+  inputAttributes?: InputAttrs;
 
   // For internal use only, these props are used by NxFilterInput
   // additional content to be inserted before the <input>
@@ -63,5 +67,6 @@ export const propTypes: PropTypes.ValidationMap<PublicProps> = {
   validationErrors: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string.isRequired), PropTypes.string]),
   onChange: PropTypes.func,
   onKeyPress: PropTypes.func,
-  validatable: PropTypes.bool
+  validatable: PropTypes.bool,
+  inputAttributes: PropTypes.object as PropTypes.Validator<InputAttrs>
 };

@@ -94,7 +94,6 @@ import {
   NxTooltip,
   NxTransferList,
   NxTree,
-  NxVulnerabilityDetails,
   NxWarningAlert,
   NxFileUpload,
   NxStatefulFileUpload,
@@ -362,7 +361,6 @@ const Home: NextPage = () => {
             <NxTree.ItemLabel>Foo</NxTree.ItemLabel>
           </NxTree.StatefulItem>
         </NxTree>
-        <NxVulnerabilityDetails vulnerabilityDetails={vulnerabilityDetailsJson} />
         <NxFilterDropdown isOpen={true}
                           onToggleCollapse={noop}
                           options={[{ id: 'a', displayName: 'b' }]}

@@ -23,6 +23,13 @@ import PageLayoutExamples from './styles/PageLayout/PageLayoutExamples';
 import NxGlobalSidebarExample from './components/NxGlobalSidebar/NxGlobalSidebarExample';
 import NxGlobalSidebarScrollingExample from './components/NxGlobalSidebar/NxGlobalSidebarScrollingExample';
 import NxStatefulGlobalSidebarExample from './components/NxStatefulGlobalSidebar/NxStatefulGlobalSidebarExample';
+import NxStatefulGlobalSidebar2Example from './components/NxStatefulGlobalSidebar2/NxStatefulGlobalSidebar2Example';
+import NxGlobalSidebar2Example from './components/NxGlobalSidebar2/NxGlobalSidebar2Example';
+import NxGlobalFooter2Example from './styles/NxGlobalFooter2/NxGlobalFooter2Example';
+import NxGlobalFooter2InnerSidebarExample from './styles/NxGlobalFooter2/NxGlobalFooter2InnerSidebarExample';
+import NxGlobalFooter2ViewportSizedExample from './styles/NxGlobalFooter2/NxGlobalFooter2ViewportSizedExample';
+import NxGlobalFooter2ViewportSizedExpandingExample from
+  './styles/NxGlobalFooter2/NxGlobalFooter2ViewportSizedExpandingExample';
 import NxViewportSizedExample from './styles/NxViewportSized/NxViewportSizedExample';
 import NxViewportSizedExpandingExample
   from './styles/NxViewportSized/NxViewportSizedExpandingExample';
@@ -33,6 +40,9 @@ import NxGlobalHeaderFullExample from './styles/NxGlobalHeader/NxGlobalHeaderFul
 import NxGlobalHeaderNoBackButtonExample from './styles/NxGlobalHeader/NxGlobalHeaderNoBackButtonExample';
 import NxGlobalHeaderNoActionsExample from './styles/NxGlobalHeader/NxGlobalHeaderNoActionsExample';
 import NxGlobalHeaderEmptyExample from './styles/NxGlobalHeader/NxGlobalHeaderEmptyExample';
+import NxGlobalHeader2Example from './components/NxGlobalHeader2/NxGlobalHeader2Example';
+import NxGlobalHeader2NoActionsExample from './components/NxGlobalHeader2/NxGlobalHeader2NoActionsExample';
+import NxGlobalHeader2DefaultLogoExample from './components/NxGlobalHeader2/NxGlobalHeader2DefaultLogoExample';
 
 import NxSystemNoticeGlobalSidebarExample from './styles/NxSystemNotice/NxSystemNoticeGlobalSidebarExample';
 import NxSystemNoticeTraditionalPageExample from './styles/NxSystemNotice/NxSystemNoticeTraditionalPageExample';
@@ -164,6 +174,48 @@ function Application() {
                  </SectionScrollingWrapper>
                }>
         </Route>
+        <Route path="/NxGlobalSidebar2Example"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalSidebar2Example />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalFooter2Example"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalFooter2Example />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalFooter2InnerSidebarExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalFooter2InnerSidebarExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalFooter2ViewportSizedExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalFooter2ViewportSizedExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalFooter2ViewportSizedExpandingExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalFooter2ViewportSizedExpandingExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxStatefulGlobalSidebar2Example"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxStatefulGlobalSidebar2Example />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
         <Route path="/NxGlobalHeaderFullExample"
                element={
                  <SectionScrollingWrapper>
@@ -189,6 +241,27 @@ function Application() {
                element={
                  <SectionScrollingWrapper>
                    <NxGlobalHeaderEmptyExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalHeader2Example"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalHeader2Example />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalHeader2NoActionsExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalHeader2NoActionsExample />
+                 </SectionScrollingWrapper>
+               }>
+        </Route>
+        <Route path="/NxGlobalHeader2DefaultLogoExample"
+               element={
+                 <SectionScrollingWrapper>
+                   <NxGlobalHeader2DefaultLogoExample />
                  </SectionScrollingWrapper>
                }>
         </Route>

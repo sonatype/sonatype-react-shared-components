@@ -16,8 +16,12 @@ export { default as NxLoadingSpinner } from './components/NxLoadingSpinner/NxLoa
 export { default as NxLoadError, Props as NxLoadErrorProps } from './components/NxLoadError/NxLoadError';
 export { default as NxLoadWrapper, Props as NxLoadWrapperProps } from './components/NxLoadWrapper/NxLoadWrapper';
 export { default as NxModal, Props as NxModalProps } from './components/NxModal/NxModal';
-export { default as NxTextInput, PublicProps as NxTextInputProps, StateProps as NxTextInputStateProps }
-  from './components/NxTextInput/NxTextInput';
+export {
+  default as NxTextInput,
+  PublicProps as NxTextInputProps,
+  StateProps as NxTextInputStateProps,
+  Validator as NxTextInputValidator
+} from './components/NxTextInput/NxTextInput';
 
 export { default as NxDateInput, PublicProps as NxDateInputProps, StateProps as NxDateInputStateProps }
   from './components/NxDateInput/NxDateInput';
@@ -54,13 +58,6 @@ export { default as NxVulnerabilityIndicator, Props as NxVulnerabilityIndicatorP
 
 export { default as NxFontAwesomeIcon, Props as NxFontAwesomeIconProps }
   from './components/NxFontAwesomeIcon/NxFontAwesomeIcon';
-
-// deprecated
-export {
-  default as NxVulnerabilityDetails,
-  vulnerabilityDetailsPropType,
-  Props as NxVulnerabilityDetailsProps
-} from './components/NxVulnerabilityDetails/NxVulnerabilityDetails';
 
 export {
   default as NxSubmitMask,
@@ -277,6 +274,16 @@ export { default as NxStatefulGlobalSidebar, Props as NxStatefulGlobalSidebarPro
 export { default as NxGlobalSidebarFooter, NxGlobalSidebarFooterProps }
   from './components/NxGlobalSidebar/NxGlobalSidebarFooter';
 
+export { default as NxGlobalSidebar2, Props as NxGlobalSidebar2Props }
+  from './components/NxGlobalSidebar2/NxGlobalSidebar2';
+export { default as NxGlobalSidebar2NavigationLink, NxGlobalSidebar2NavigationLinkProps }
+  from './components/NxGlobalSidebar2/NxGlobalSidebar2NavigationLink';
+export { default as NxStatefulGlobalSidebar2, Props as NxStatefulGlobalSidebar2Props }
+  from './components/NxGlobalSidebar2/stateful/NxStatefulGlobalSidebar2';
+
+export { default as NxGlobalHeader2, Props as NxGlobalHeader2Props }
+  from './components/NxGlobalHeader2/NxGlobalHeader2';
+
 export { default as NxColorPicker, Props } from './components/NxColorPicker/NxColorPicker';
 
 export { default as withClass } from './util/withClass';
@@ -356,6 +363,12 @@ export { default as NxFilterDropdown, Props as NxFilterDropdownProps }
 export { default as NxStatefulFilterDropdown, Props as NxStatefulFilterDropdownProps }
   from './components/NxFilterDropdown/stateful/NxStatefulFilterDropdown';
 
+export { default as NxNavigationDropdown, Props as NxNavigationDropdownProps }
+  from './components/NxNavigationDropdown/NxNavigationDropdown';
+
+export { default as NxStatefulNavigationDropdown, Props as NxStatefulNavigationDropdownProps }
+  from './components/NxNavigationDropdown/stateful/NxStatefulNavigationDropdown';
+
 export { default as NxSystemNotice } from './components/NxSystemNotice/NxSystemNotice';
 
 export { default as NxProgressBar, Props as NxProgressBarProps } from './components/NxProgressBar/NxProgressBar';
@@ -374,6 +387,7 @@ export { default as NxDrawer, Props as NxDrawerProps } from './components/NxDraw
 
 export * as nxFileUploadStateHelpers from './components/NxFileUpload/stateHelpers';
 export { default as NxFileUpload, Props as NxFileUploadProps } from './components/NxFileUpload/NxFileUpload';
+export { StateProps as NxFileUploadStateProps } from './components/NxFileUpload/types';
 export { default as NxStatefulFileUpload, Props as NxStatefulFileUploadProps }
   from './components/NxFileUpload/stateful/NxStatefulFileUpload';
 export { default as NxMultiFileUpload, Props as NxMultiFileUploadProps }

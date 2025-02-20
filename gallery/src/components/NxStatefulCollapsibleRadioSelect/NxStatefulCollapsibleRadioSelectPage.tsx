@@ -37,13 +37,13 @@ const NxStatefulCollapsibleRadioSelectPage = () =>
         <NxTable.Body>
           <NxTable.Row>
             <NxTable.Cell>options</NxTable.Cell>
-            <NxTable.Cell>Array of {'{id:String, name:String}'}</NxTable.Cell>
+            <NxTable.Cell>Array of {'{id:String, name:String | ReactNode}'}</NxTable.Cell>
             <NxTable.Cell>Yes</NxTable.Cell>
             <NxTable.Cell>
               <NxP>
                 An array of objects that corresponds to the possible options of the component (the radios).
                 These objects need to at least have an <NxCode>id: string | null</NxCode> property{' '}
-                and a <NxCode>name: string</NxCode> property. If an empty array is passed in,{' '}
+                and a <NxCode>name: string | ReactNode</NxCode> property. If an empty array is passed in,{' '}
                 the component will be disabled.
               </NxP>
               <NxP>

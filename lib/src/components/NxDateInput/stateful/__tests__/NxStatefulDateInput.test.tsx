@@ -48,11 +48,26 @@ describe('NxStatefulDateInput', function() {
     }
   });
 
-  it('passes additional attrs to the input', function() {
-    const input = quickRender({ id: 'foo', lang: 'en-US' }).container.querySelector('input');
+  it('passes id, disabled, aria-required, and aria-describedby to the input', function() {
+    render(<p id="desc">Description</p>);
+
+    const input = renderEl({
+      id: 'foo',
+      disabled: true,
+      'aria-required': true,
+      'aria-describedby': 'desc'
+    })!.querySelector('input');
 
     expect(input).toHaveAttribute('id', 'foo');
-    expect(input).toHaveAttribute('lang', 'en-US');
+    expect(input).toHaveAttribute('disabled');
+    expect(input).toHaveAttribute('aria-required', 'true');
+    expect(input).toHaveAccessibleDescription('Description');
+  });
+
+  it('passes additional attrs to the top-level element', function() {
+    const el = renderEl({ lang: 'en-US' });
+
+    expect(el).toHaveAttribute('lang', 'en-US');
   });
 
   it('sets the value as specified', function() {

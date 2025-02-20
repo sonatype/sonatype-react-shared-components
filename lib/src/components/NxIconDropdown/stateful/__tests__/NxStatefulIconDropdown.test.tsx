@@ -178,7 +178,7 @@ describe('NxStatefulIconDropdown', () => {
 
     expect(container.querySelector('.nx-dropdown-menu')).toBeInTheDocument();
 
-    toggleBtn.focus();
+    await act(() => { toggleBtn.focus(); });
     await user.keyboard('[Escape]');
 
     expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
@@ -191,7 +191,7 @@ describe('NxStatefulIconDropdown', () => {
 
     expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
 
-    toggleBtn.focus();
+    await act(() => { toggleBtn.focus(); });
     await user.keyboard('[Escape]');
 
     expect(container.querySelector('.nx-dropdown-menu')).not.toBeInTheDocument();
@@ -208,7 +208,7 @@ describe('NxStatefulIconDropdown', () => {
 
     rerender(<NxStatefulIconDropdown {...minimalProps} disabled={true}/>);
 
-    toggleBtn.focus();
+    await act(() => { toggleBtn.focus(); });
     await user.keyboard('[Escape]');
 
     expect(container.querySelector('.nx-dropdown-menu')).toBeInTheDocument();

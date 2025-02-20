@@ -14,6 +14,7 @@ describe('NxTree', function() {
     waitAndGetElements,
     getPage,
     isFocused,
+    wait,
     scrollPage,
     a11yTest
   } = setupBrowser('#/pages/Tree');
@@ -199,6 +200,7 @@ describe('NxTree', function() {
       // collapse the images subtree, and then reset the focus at the top before testing keynav
       await imagesCollapse.click();
       await rootClick.click();
+      expect(await isFocused(root)).toBe(true);
 
       await page.keyboard.press('ArrowDown');
       expect(await isFocused(srv)).toBe(true);
@@ -219,7 +221,6 @@ describe('NxTree', function() {
       expect(await isFocused(images)).toBe(true);
 
       // images children do not get focused since they are collapsed
-
       await page.keyboard.press('ArrowDown');
       expect(await isFocused(videos)).toBe(true);
 
@@ -342,6 +343,7 @@ describe('NxTree', function() {
 
       await imagesCollapse.click();
       await videosClick.click();
+      expect(await isFocused(videos)).toBe(true);
 
       // collapsed subtree is skipped
       await page.keyboard.press('ArrowUp');
@@ -538,6 +540,7 @@ describe('NxTree', function() {
       expect(await hasClass(provinces, 'open')).toBe(true);
 
       await nunavutClick.click();
+      expect(await isFocused(nunavut)).toBe(true);
 
       await page.keyboard.press('Home');
       expect(await isFocused(provinces)).toBe(true);
@@ -546,12 +549,14 @@ describe('NxTree', function() {
       expect(await isFocused(provinces)).toBe(true);
 
       await territoriesClick.click();
+      expect(await isFocused(territories)).toBe(true);
 
       await page.keyboard.press('Home');
       expect(await isFocused(provinces)).toBe(true);
 
       await provincesCollapse.click();
       await territoriesClick.click();
+      expect(await isFocused(territories)).toBe(true);
 
       await page.keyboard.press('Home');
       expect(await isFocused(provinces)).toBe(true);
@@ -579,24 +584,28 @@ describe('NxTree', function() {
       expect(await isFocused(manitoba)).toBe(true);
 
       await page.keyboard.press('End');
-      expect(await isFocused(nunavut)).toBe(true);
       expect(await hasClass(provinces, 'open')).toBe(true);
       expect(await hasClass(territories, 'open')).toBe(true);
+      expect(await isFocused(nunavut)).toBe(true);
 
       await provincesClick.click();
+      expect(await isFocused(provinces)).toBe(true);
 
       await page.keyboard.press('End');
       expect(await isFocused(nunavut)).toBe(true);
 
       await page.keyboard.press('End');
+      await wait(200);
       expect(await isFocused(nunavut)).toBe(true);
 
       await territoriesClick.click();
+      expect(await isFocused(territories)).toBe(true);
 
       await page.keyboard.press('End');
       expect(await isFocused(nunavut)).toBe(true);
 
       await yukonClick.click();
+      expect(await isFocused(yukon)).toBe(true);
 
       await page.keyboard.press('End');
       expect(await isFocused(nunavut)).toBe(true);
@@ -605,6 +614,7 @@ describe('NxTree', function() {
       expect(await hasClass(territories, 'open')).toBe(false);
 
       await manitobaClick.click();
+      expect(await isFocused(manitoba)).toBe(true);
 
       await page.keyboard.press('End');
       expect(await isFocused(territories)).toBe(true);

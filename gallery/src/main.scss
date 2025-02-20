@@ -203,8 +203,8 @@
 
 .gallery-icon-description-list {
   .nx-list__term {
-    @include nx-container-helpers.container-horizontal;
-
     width: auto;
+
+    @include nx-container-helpers.container-horizontal;
   }
 }

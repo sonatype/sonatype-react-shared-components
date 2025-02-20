@@ -134,7 +134,6 @@
   }
 
   &__item-label {
-    @include nx-container-helpers.container-horizontal;
     @include nx-text-helpers.truncate-ellipsis;
 
     grid-area: label;
@@ -144,6 +143,8 @@
     .nx-icon:not(.nx-tree__colored-icon, .nx-icon--colorful) {
       color: var(--nx-color-text-stark);
     }
+
+    @include nx-container-helpers.container-horizontal;
   }
 
   &--no-gutter > .nx-tree__item {

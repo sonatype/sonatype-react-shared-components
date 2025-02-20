@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import {
   NxCheckbox,
@@ -71,10 +71,6 @@ export default function NxFormLayoutExample() {
   }
 
   const [selectState, setSelectVal] = nxFormSelectStateHelpers.useNxFormSelectState<string>('', validator);
-
-  function onSelectChange(evt: FormEvent<HTMLSelectElement>) {
-    setSelectVal(evt.currentTarget.value);
-  }
 
   const {
     states: {
@@ -209,7 +205,7 @@ export default function NxFormLayoutExample() {
         </NxRadio>
       </NxFieldset>
       <NxFormGroup label="Select a Continent" isRequired>
-        <NxFormSelect onChange={onSelectChange} validatable { ...selectState }>
+        <NxFormSelect onChange={setSelectVal} validatable { ...selectState }>
           <option value="">-- Select a Continent --</option>
           <option value="NA">North America</option>
           <option value="SA">South America</option>

@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
-import { within } from '@testing-library/react';
+import { act, within } from '@testing-library/react';
 
 import NxTree from '../NxTree';
 import { ItemProps as Props, TreeKeyNavContextType } from '../types';
@@ -151,7 +151,7 @@ describe('NxTreeItem', function() {
       expect(el).toHaveAttribute('aria-expanded', 'false');
       expect(onToggleCollapse).not.toHaveBeenCalled();
 
-      el.focus();
+      await act(() => { el.focus(); });
       await user.keyboard('[ArrowRight]');
       expect(onToggleCollapse).toHaveBeenCalled();
     });
@@ -165,7 +165,7 @@ describe('NxTreeItem', function() {
       expect(el).toHaveAttribute('aria-expanded', 'true');
       expect(onToggleCollapse).not.toHaveBeenCalled();
 
-      el.focus();
+      await act(() => { el.focus(); });
       await user.keyboard('[ArrowLeft]');
       expect(onToggleCollapse).toHaveBeenCalled();
     });
@@ -183,7 +183,7 @@ describe('NxTreeItem', function() {
         el = renderEl({ onActivate, children: interactiveChildren })!;
 
     expect(onActivate).not.toHaveBeenCalled();
-    el.focus();
+    await act(() => { el.focus(); });
     await user.keyboard('[Enter]');
 
     expect(onActivate).toHaveBeenCalled();

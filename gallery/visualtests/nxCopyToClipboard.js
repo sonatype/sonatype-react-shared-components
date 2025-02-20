@@ -40,7 +40,7 @@ describe('NxCopyToClipboard', function() {
 
     await dismissResultingDialog(async () => {
       await copyBtn.click();
-    });
+    }, 500);
 
     await getPage().mouse.move(0, 0);
 

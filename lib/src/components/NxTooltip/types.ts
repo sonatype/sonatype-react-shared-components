@@ -23,6 +23,7 @@ export interface Props<C extends HTMLElement = HTMLElement> {
   onClose?: (() => void) | null;
   open?: boolean | null;
   placement?: TooltipPlacement | null;
+  isName?: boolean | null;
   title?: ReactNode;
   children: ReactElement & RefAttributes<C>;
 }
@@ -34,6 +35,7 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
   open: PropTypes.bool,
+  isName: PropTypes.bool,
   placement: PropTypes.oneOf(tooltipPlacements),
   title: PropTypes.node
 };

@@ -1,0 +1,72 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../../scss-shared/nx-container-helpers';
+
+%nx-global-sidebar-2__clickable {
+  align-items: first baseline;
+  border: none;
+  border-radius: var(--nx-border-radius);
+  color: var(--nx-color-global-sidebar-2-link);
+  display: flex;
+  font-size: var(--nx-font-size-s);
+  font-weight: 600;
+  margin-left: 0;
+  margin-right: 0;
+  outline-offset: calc(0px - var(--nx-focus-outline-width));
+  padding: var(--nx-spacing-3x);
+  text-decoration: none;
+
+  .nx-icon {
+    color: inherit;
+    font-size: var(--nx-font-size);
+    line-height: calc(var(--nx-font-size-s) * var(--nx-line-height));
+    margin-right: var(--nx-spacing-3x);
+    position: relative;
+    top: calc((1lh - 1em) / 2);
+  }
+
+  .nx-global-sidebar-2__text {
+    overflow-x: hidden;
+  }
+
+  &:focus {
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+  }
+
+  &:hover {
+    background-color: var(--nx-color-interactive-background-hover);
+  }
+
+  &:active {
+    background-color: var(--nx-color-interactive-background-active);
+    outline: none;
+  }
+
+  &:focus:active {
+    color: var(--nx-color-global-sidebar-2-link);
+  }
+
+  &.selected, &.open {
+    background: var(--nx-background-global-sidebar-2-link-selected);
+    color: var(--nx-color-global-sidebar-2-link-selected);
+    outline-color: var(--nx-color-global-sidebar-2-link-selected);
+    outline-offset: calc(0px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
+  }
+
+  .nx-global-sidebar-2.closed & {
+    .nx-global-sidebar-2__text {
+      white-space: nowrap;
+      width: 0;
+    }
+
+    .nx-icon {
+      margin-right: 0;
+    }
+  }
+
+  @include nx-container-helpers.container-horizontal;
+}

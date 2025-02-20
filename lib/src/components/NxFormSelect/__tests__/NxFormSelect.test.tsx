@@ -64,10 +64,8 @@ describe('NxFormSelect', function() {
   });
 
   it('calls onChange when the select value is changed', async function() {
-    let capturedValue: HTMLSelectElement;
-
     const user = userEvent.setup(),
-        onChange = jest.fn().mockImplementation(evt => { capturedValue = evt.target.value; }),
+        onChange = jest.fn(),
         component = quickRender({
           onChange,
           children: (
@@ -84,7 +82,7 @@ describe('NxFormSelect', function() {
     await user.selectOptions(select, 'Bar');
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(capturedValue!).toBe('Bar');
+    expect(onChange).toHaveBeenCalledWith('Bar');
   });
 
   describe('when not validatable', function() {

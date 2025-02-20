@@ -1,0 +1,98 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../../scss-shared/_nx-container-helpers';
+@use '../NxGlobalSidebar2/_NxGlobalSidebar2Common';
+
+.nx-navigation-dropdown {
+  .nx-icon-dropdown__toggle {
+    @extend %nx-global-sidebar-2__clickable;
+
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+
+    &.open:active {
+      background: var(--nx-color-interactive-background-active);
+      outline-color: var(--nx-color-interactive-border-focus);
+      outline-offset: calc(0px - var(--nx-focus-outline-width));
+    }
+
+    .nx-icon {
+      position: static;
+    }
+  }
+
+  .nx-dropdown-menu {
+    border: var(--nx-border-width) solid var(--nx-color-global-sidebar-2-border);
+    padding: var(--nx-spacing-4x) var(--nx-spacing-3x);
+
+    .nx-dropdown-link, .nx-dropdown-button {
+      border-radius: var(--nx-border-radius);
+      color: var(--nx-color-navigation-dropdown-text);
+      display: block;
+      margin: var(--nx-spacing-2x) 0;
+      padding: var(--nx-spacing-2x) var(--nx-spacing-3x);
+      text-decoration: none;
+      width: 100%;
+      max-width: initial;
+
+      &:hover {
+        background-color: var(--nx-color-interactive-background-hover);
+      }
+
+      &:focus {
+        outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+        outline-offset: calc(0px - var(--nx-focus-outline-width));
+      }
+
+      &:active {
+        background-color: var(--nx-color-interactive-background-active);
+        outline: none;
+      }
+
+      &.selected {
+        background: var(--nx-background-global-sidebar-2-link-selected);
+        color: var(--nx-color-global-sidebar-2-link-selected);
+        outline-color: var(--nx-color-global-sidebar-2-link-selected);
+        outline-offset: calc(0px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
+      }
+
+      &.disabled, &[disabled] {
+        background: none;
+        color: var(--nx-color-disabled);
+        cursor: default;
+        outline: none;
+      }
+    }
+
+    @include nx-container-helpers.container-vertical;
+  }
+
+  &__menu-header {
+    border-bottom: var(--nx-border-width) solid var(--nx-color-navigation-dropdown-header-border);
+
+    margin-bottom: var(--nx-spacing-4x);
+    margin-left: var(--nx-spacing-3x);
+    margin-right: var(--nx-spacing-3x);
+
+    padding-top: var(--nx-spacing-2x);
+    padding-bottom: var(--nx-spacing-4x);
+
+    .nx-h4 {
+      margin-bottom: var(--nx-spacing-base);
+    }
+
+    .nx-p {
+      font-size: var(--nx-font-size-xs);
+      margin: 0;
+    }
+
+    @include nx-container-helpers.container-vertical;
+  }
+}

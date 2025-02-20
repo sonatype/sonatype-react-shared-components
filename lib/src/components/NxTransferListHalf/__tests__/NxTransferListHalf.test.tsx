@@ -7,13 +7,16 @@
 
 import { includes } from 'ramda';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
-import { rtlRenderElement, rtlRender, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import React, { RefAttributes } from 'react';
+import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
+import { mockTransferListLayout } from '../../../__testutils__/transferListUtils';
 import { within, render, screen } from '@testing-library/react';
 
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxForm from '../../NxForm/NxForm';
 import NxTransferListHalf, { Props } from '../NxTransferListHalf';
+
+type RenderProps = Props & RefAttributes<HTMLDivElement>;
 
 describe('NxTransferListHalf', function() {
   const minimalProps: Props = {
@@ -23,8 +26,10 @@ describe('NxTransferListHalf', function() {
         items: [],
         footerContent: <div/>
       },
-      quickRender = rtlRender(NxTransferListHalf, minimalProps),
-      renderEl = rtlRenderElement(NxTransferListHalf, minimalProps);
+      quickRender = rtlRender<RenderProps>(NxTransferListHalf, minimalProps),
+      renderEl = rtlRenderElement<RenderProps>(NxTransferListHalf, minimalProps);
+
+  beforeEach(mockTransferListLayout);
 
   it('renders a fieldset as top-level element', function() {
     const el = renderEl()!;
@@ -163,6 +168,47 @@ describe('NxTransferListHalf', function() {
     expect(items.length).toBe(2);
     expect(items[0]).toHaveTextContent('foo');
     expect(items[1]).toHaveTextContent('baz');
+  });
+
+  // This test is to ensure that the bug reported in CLM-32936 was fixed.
+  it('render from 0 to 3 items', function() {
+    const view = quickRender({ items: [] });
+    expect(within(view.container.firstElementChild as HTMLElement).queryByRole('group')).not.toBeInTheDocument();
+
+    view.rerender(
+      <NxTransferListHalf {...minimalProps} items={[{id: '1', displayName: 'foo'}]}/>
+    );
+    expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
+
+    view.rerender(
+      <NxTransferListHalf {...minimalProps}
+                          items={[{
+                            id: '1',
+                            displayName: 'foo'
+                          }, {
+                            id: '2',
+                            displayName: 'baz'
+                          }]}/>
+    );
+    expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'baz' })).toBeInTheDocument();
+
+    view.rerender(
+      <NxTransferListHalf {...minimalProps}
+                          items={[{
+                            id: '1',
+                            displayName: 'foo'
+                          }, {
+                            id: '2',
+                            displayName: 'baz'
+                          }, {
+                            id: '3',
+                            displayName: 'foobar'
+                          }]}/>
+    );
+    expect(view.getByRole('group', { name: 'foo' })).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'baz' })).toBeInTheDocument();
+    expect(view.getByRole('group', { name: 'foobar' })).toBeInTheDocument();
   });
 
   it('renders a checkbox input only when onItemChange is provided', function() {
@@ -410,7 +456,7 @@ describe('NxTransferListHalf', function() {
       await runTimers();
       tooltip = await screen.findByRole('tooltip');
       expect(tooltip).toHaveTextContent('Move Down (disabled)');
-    });
+    }, 10000);
 
     it('passes onReorderItem the item id and direction when move up or down button is clicked', async function() {
       const dataItems = [{

@@ -1,11 +1,12 @@
 {
   /* These are the "test" options. They compile to commonjs modules for running in node/jsdom */
   "extends": "./tsconfig.json",
-  "include": ["src", "node_modules"],
+  "include": ["src"],
   "compilerOptions": {
     "module": "commonjs",
     "allowJs": true,
     "checkJs": false,
-    "rootDir": "."
+    "rootDir": ".",
+    "target": "ES6"
   }
 }

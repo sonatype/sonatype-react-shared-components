@@ -8,8 +8,6 @@
 @use '../scss-shared/nx-text-helpers';
 
 .nx-page-title {
-  @include nx-container-helpers.container-horizontal;
-  @include nx-container-helpers.container-vertical;
   align-items: center;
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -32,6 +30,9 @@
     grid-area: actions;
     margin: 0 0 0 var(--nx-spacing-6x);
   }
+
+  @include nx-container-helpers.container-horizontal;
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-page-title__headings {
@@ -48,7 +49,6 @@
 }
 
 .nx-page-title__description {
-  @include nx-container-helpers.container-vertical;
   grid-area: description;
   margin-top: var(--nx-spacing-2x);
   max-width: var(--nx-width-text-wrapping);
@@ -56,11 +56,11 @@
   + .nx-page-title__tags {
     margin-top: var(--nx-spacing-4x);
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-page-title__tags {
-  @include nx-container-helpers.container-horizontal;
-
   display: flex;
   flex-wrap: wrap;
   grid-area: tags;
@@ -100,4 +100,6 @@
       margin-left: var(--nx-spacing-6x);
     }
   }
+
+  @include nx-container-helpers.container-horizontal;
 }

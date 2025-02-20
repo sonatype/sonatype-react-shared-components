@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { rtlRenderElement, rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxTabs, { NxTabsProps } from '../NxTabs';
@@ -127,7 +127,7 @@ describe('NxTabs', function() {
 
     const firstTab = getAllByRole('tab')[0];
 
-    firstTab.focus();
+    await act(() => { firstTab.focus(); });
     await user.keyboard('{ArrowRight}{Enter}');
 
     expect(onTabSelect).toHaveBeenCalledWith(1);
@@ -150,7 +150,7 @@ describe('NxTabs', function() {
 
     const firstTab = getAllByRole('tab')[0];
 
-    firstTab.focus();
+    await act(() => { firstTab.focus(); });
     await user.keyboard('{ArrowRight}{Enter}');
 
     expect(onTabSelect).toHaveBeenCalledWith(1);
