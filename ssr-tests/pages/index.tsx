@@ -234,13 +234,13 @@ const Home: NextPage = () => {
                          toggleOpenIcon={faEdit}
                          toggleCloseIcon={faEdit}
                          onToggleClick={noop}
-                         logoImg=""
+                         logoImg="cat1.jpg"
                          logoAltText="Foo"
                          logoLink="#" />
         <NxStatefulGlobalSidebar isDefaultOpen={false}
                                  toggleOpenIcon={faEdit}
                                  toggleCloseIcon={faEdit}
-                                 logoImg=""
+                                 logoImg="cat1.jpg"
                                  logoAltText="Foo"
                                  logoLink="#" />
         <NxGlobalSidebarFooter />
