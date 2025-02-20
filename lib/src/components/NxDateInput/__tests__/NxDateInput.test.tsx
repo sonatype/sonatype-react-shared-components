@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { render, within } from '@testing-library/react';
 import { userEvent } from '../../../__testutils__/rtlUtils';
 
@@ -19,8 +19,8 @@ describe('NxDateInput', function() {
         value: '2021-10-04',
         isPristine: false
       },
-      quickRender = rtlRender<Props & RefAttributes<HTMLDivElement>>(NxDateInput, minimalProps),
-      renderEl = rtlRenderElement<Props & RefAttributes<HTMLDivElement>>(NxDateInput, minimalProps);
+      quickRender = rtlRender<Props>(NxDateInput, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxDateInput, minimalProps);
 
   it('renders an input with type="date" by default', function() {
     const { container } = quickRender();

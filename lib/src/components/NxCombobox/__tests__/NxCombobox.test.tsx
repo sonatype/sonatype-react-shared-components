@@ -4,14 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { screen, fireEvent, render, within, createEvent } from '@testing-library/react';
 import { runTimers, userEvent, rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxCombobox, { Props } from '../NxCombobox';
 import NxForm from '../../NxForm/NxForm';
-
-type RenderProps = Props & RefAttributes<HTMLDivElement>;
 
 describe('NxCombobox', function() {
   const minimalProps: Props = {
@@ -20,8 +18,8 @@ describe('NxCombobox', function() {
         onSearch: () => {},
         matches: []
       },
-      quickRender = rtlRender<RenderProps>(NxCombobox, minimalProps),
-      renderEl = rtlRenderElement<RenderProps>(NxCombobox, minimalProps);
+      quickRender = rtlRender<Props>(NxCombobox, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxCombobox, minimalProps);
 
   it('sets specified classNames and attributes on the top-level element', function() {
     const component = renderEl()!,
@@ -781,7 +779,7 @@ describe('NxCombobox', function() {
 
       describe('when there are no validation errors', function() {
         const noValidationErrorsMinimalProps:Props = pristineMinimalProps,
-            quickRender = rtlRender<RenderProps>(NxCombobox, noValidationErrorsMinimalProps);
+            quickRender = rtlRender<Props>(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const component = quickRender();
@@ -825,8 +823,8 @@ describe('NxCombobox', function() {
             { ...pristineMinimalProps, validationErrors: 'foo', id: '1' },
             multiValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'], id: '2' },
-            singleRender = rtlRenderElement<RenderProps>(NxCombobox, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement<RenderProps>(NxCombobox, multiValidationErrorsMinimalProps);
+            singleRender = rtlRenderElement<Props>(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement<Props>(NxCombobox, multiValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const singleError = within(singleRender() as HTMLElement),
@@ -879,7 +877,7 @@ describe('NxCombobox', function() {
 
       describe('when there are no validation errors', function() {
         const noValidationErrorsMinimalProps:Props = nonPristineMinimalProps,
-            quickRender = rtlRender<RenderProps>(NxCombobox, noValidationErrorsMinimalProps);
+            quickRender = rtlRender<Props>(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const component = quickRender();
@@ -923,8 +921,8 @@ describe('NxCombobox', function() {
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
             multiValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRenderElement<RenderProps>(NxCombobox, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement<RenderProps>(NxCombobox, multiValidationErrorsMinimalProps);
+            singleRender = rtlRenderElement<Props>(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement<Props>(NxCombobox, multiValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const singleError = within(singleRender() as HTMLElement),
@@ -981,7 +979,7 @@ describe('NxCombobox', function() {
 
       describe('when there are no validation errors', function() {
         const noValidationErrorsMinimalProps:Props = pristineMinimalProps,
-            quickRender = rtlRender<RenderProps>(NxCombobox, noValidationErrorsMinimalProps);
+            quickRender = rtlRender<Props>(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const component = quickRender();
@@ -1025,8 +1023,8 @@ describe('NxCombobox', function() {
             { ...pristineMinimalProps, validationErrors: 'foo' },
             multiValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRender<RenderProps>(NxCombobox, singleValidationErrorsMinimalProps),
-            multiRender = rtlRender<RenderProps>(NxCombobox, multiValidationErrorsMinimalProps);
+            singleRender = rtlRender<Props>(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRender<Props>(NxCombobox, multiValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const singleError = singleRender(),
@@ -1090,7 +1088,7 @@ describe('NxCombobox', function() {
 
       describe('when there are no validation errors', function() {
         const noValidationErrorsMinimalProps:Props = nonPristineMinimalProps,
-            quickRender = rtlRender<RenderProps>(NxCombobox, noValidationErrorsMinimalProps);
+            quickRender = rtlRender<Props>(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const component = quickRender();
@@ -1134,8 +1132,8 @@ describe('NxCombobox', function() {
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
             multiValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRenderElement<RenderProps>(NxCombobox, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement<RenderProps>(NxCombobox, multiValidationErrorsMinimalProps);
+            singleRender = rtlRenderElement<Props>(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement<Props>(NxCombobox, multiValidationErrorsMinimalProps);
 
         it('has non-empty validation alert and a11y error message based on the first error', function() {
           const singleError = within(singleRender() as HTMLElement),
@@ -1224,7 +1222,7 @@ describe('NxCombobox', function() {
     });
 
     describe('when true', function() {
-      const quickRender = rtlRender<RenderProps>(NxCombobox, { ...minimalProps, filterInput: true });
+      const quickRender = rtlRender<Props>(NxCombobox, { ...minimalProps, filterInput: true });
 
       // Note: the button only being visible when a value is entered is implemented in CSS and so not
       // tested here

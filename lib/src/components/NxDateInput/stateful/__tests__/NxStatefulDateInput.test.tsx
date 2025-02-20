@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { fireEvent, render, within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
 import { userEvent } from '../../../../__testutils__/rtlUtils';
@@ -13,7 +13,7 @@ import NxStatefulDateInput, { Props } from '../NxStatefulDateInput';
 import NxForm from '../../../NxForm/NxForm';
 
 describe('NxStatefulDateInput', function() {
-  const minimalProps: Props & RefAttributes<HTMLDivElement> = { defaultValue: '1990-11-11' },
+  const minimalProps: Props = { defaultValue: '1990-11-11' },
       quickRender = rtlRender(NxStatefulDateInput, minimalProps),
       renderEl = rtlRenderElement(NxStatefulDateInput, minimalProps);
 
