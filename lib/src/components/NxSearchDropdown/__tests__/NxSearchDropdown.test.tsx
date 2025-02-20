@@ -4,14 +4,13 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import NxSearchDropdown, { Props } from '../NxSearchDropdown';
 import NxForm from '../../NxForm/NxForm';
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import { within, render } from '@testing-library/react';
 
 describe('NxSearchDropdown', function() {
-  type PropsWithRef = Props<string | number> & RefAttributes<HTMLDivElement>;
   const minimalProps: Props<string | number> = {
         searchText: '',
         onSearchTextChange: () => {},
@@ -19,8 +18,8 @@ describe('NxSearchDropdown', function() {
         matches: [],
         onSelect: () => {}
       },
-      renderEl = rtlRenderElement<PropsWithRef>(NxSearchDropdown, minimalProps),
-      quickRender = rtlRender<PropsWithRef>(NxSearchDropdown, minimalProps),
+      renderEl = rtlRenderElement<Props<string | number>>(NxSearchDropdown, minimalProps),
+      quickRender = rtlRender<Props<string | number>>(NxSearchDropdown, minimalProps),
       matches = [
         { id: '1', displayName: 'One' },
         { id: '2', displayName: 'Two' }

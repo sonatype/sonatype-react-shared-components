@@ -7,7 +7,7 @@
 
 import { includes } from 'ramda';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../__testutils__/rtlUtils';
 import { mockTransferListLayout } from '../../../__testutils__/transferListUtils';
 import { within, render, screen } from '@testing-library/react';
@@ -15,8 +15,6 @@ import { within, render, screen } from '@testing-library/react';
 import NxFontAwesomeIcon from '../../NxFontAwesomeIcon/NxFontAwesomeIcon';
 import NxForm from '../../NxForm/NxForm';
 import NxTransferListHalf, { Props } from '../NxTransferListHalf';
-
-type RenderProps = Props & RefAttributes<HTMLDivElement>;
 
 describe('NxTransferListHalf', function() {
   const minimalProps: Props = {
@@ -26,8 +24,8 @@ describe('NxTransferListHalf', function() {
         items: [],
         footerContent: <div/>
       },
-      quickRender = rtlRender<RenderProps>(NxTransferListHalf, minimalProps),
-      renderEl = rtlRenderElement<RenderProps>(NxTransferListHalf, minimalProps);
+      quickRender = rtlRender<Props>(NxTransferListHalf, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxTransferListHalf, minimalProps);
 
   beforeEach(mockTransferListLayout);
 

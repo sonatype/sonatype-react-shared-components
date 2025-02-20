@@ -4,13 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { createEvent, fireEvent } from '@testing-library/react';
 
 import NxFilterDropdown, { Props } from '../NxFilterDropdown';
 import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
-
-type RenderProps = Props<number> & RefAttributes<HTMLDivElement>;
 
 describe('NxFilterDropdown', function() {
   const minimalProps: Props<number> = {
@@ -26,8 +24,8 @@ describe('NxFilterDropdown', function() {
         { id: 2, displayName: 'Two' },
         { id: 3, displayName: 'Three' }
       ],
-      quickRender = rtlRender<RenderProps>(NxFilterDropdown, minimalProps),
-      renderEl = rtlRenderElement<RenderProps>(NxFilterDropdown, minimalProps);
+      quickRender = rtlRender<Props<number>>(NxFilterDropdown, minimalProps),
+      renderEl = rtlRenderElement<Props<number>>(NxFilterDropdown, minimalProps);
 
   it('correctly renders the menu based on isOpen prop', function() {
     const { container, rerender } = quickRender({ isOpen: true });
@@ -59,7 +57,7 @@ describe('NxFilterDropdown', function() {
   });
 
   describe('toggle label', function() {
-    const quickRender = rtlRender<RenderProps>(NxFilterDropdown, { ...minimalProps, options });
+    const quickRender = rtlRender<Props<number>>(NxFilterDropdown, { ...minimalProps, options });
 
     describe('when no options are selected', function() {
       it('says "Filter" by default', function() {
@@ -103,7 +101,7 @@ describe('NxFilterDropdown', function() {
   });
 
   describe('reset button', function() {
-    const quickRender = rtlRender<RenderProps>(NxFilterDropdown, { ...minimalProps, options, isOpen: true });
+    const quickRender = rtlRender<Props<number>>(NxFilterDropdown, { ...minimalProps, options, isOpen: true });
 
     it('is only visible when the dropdown is open', function() {
       const closedView = quickRender({ isOpen: false }),

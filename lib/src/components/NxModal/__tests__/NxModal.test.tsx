@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { render, within } from '@testing-library/react';
 
 import * as focusUtil from '../../../util/focusUtil';
@@ -24,9 +24,8 @@ describe('NxModal', function() {
     onClose: () => {}
   };
 
-  type PropsWithRef = Props & RefAttributes<HTMLDialogElement>;
-  const quickRender = rtlRender<PropsWithRef>(NxModal, minimalProps),
-      renderEl = rtlRenderElement<PropsWithRef>(NxModal, minimalProps);
+  const quickRender = rtlRender<Props>(NxModal, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxModal, minimalProps);
 
   it('renders a top-level element with role="dialog"', function () {
     const view = quickRender(),

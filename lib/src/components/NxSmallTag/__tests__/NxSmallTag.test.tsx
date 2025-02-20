@@ -4,15 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 
 import NxSmallTag, { Props } from '../NxSmallTag';
 
 import { rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 describe('NxSmallTag', function() {
-  type PropsWithRef = Props & RefAttributes<HTMLLabelElement>;
-  const renderEl = rtlRenderElement<PropsWithRef>(NxSmallTag, { children: 'small tag' });
+  const renderEl = rtlRenderElement<Props>(NxSmallTag, { children: 'small tag' });
 
   it('sets ref on label element', function() {
     const ref = React.createRef<HTMLLabelElement>(),
