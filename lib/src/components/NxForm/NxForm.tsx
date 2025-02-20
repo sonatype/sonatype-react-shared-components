@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, FormEvent, FunctionComponent } from 'react';
+import React, { FormEvent } from 'react';
 import { always } from 'ramda';
 import classnames from 'classnames';
 
@@ -28,97 +28,94 @@ function RequiredFieldNotice() {
   );
 }
 
-const _NxForm = forwardRef<HTMLFormElement, Props>(
-    function NxForm(props, ref) {
-      const {
-            className,
-            loading,
-            doLoad,
-            onSubmit: onSubmitProp,
-            onCancel,
-            loadError,
-            submitError,
-            submitErrorTitleMessage,
-            validationErrors,
-            submitBtnClasses: submitBtnClassesProp,
-            submitBtnText,
-            submitMaskState,
-            submitMaskMessage,
-            submitMaskSuccessMessage,
-            children,
-            additionalFooterBtns,
-            showValidationErrors,
-            ...formAttrs
-          } = props,
-          formHasValidationErrors = hasValidationErrors(validationErrors),
-          formClasses = classnames('nx-form', className, {
-            'nx-form--show-validation-errors': showValidationErrors,
-            'nx-form--has-validation-errors': formHasValidationErrors,
-            'nx-form--has-submit-error': !!submitError
-          }),
-          getChildren = children instanceof Function ? children : always(children),
-          submitBtnClasses = classnames('nx-form__submit-btn', submitBtnClassesProp);
+export default function NxForm(props: Props) {
+  const {
+        className,
+        loading,
+        doLoad,
+        onSubmit: onSubmitProp,
+        onCancel,
+        loadError,
+        submitError,
+        submitErrorTitleMessage,
+        validationErrors,
+        submitBtnClasses: submitBtnClassesProp,
+        submitBtnText,
+        submitMaskState,
+        submitMaskMessage,
+        submitMaskSuccessMessage,
+        children,
+        additionalFooterBtns,
+        showValidationErrors,
+        ...formAttrs
+      } = props,
+      formHasValidationErrors = hasValidationErrors(validationErrors),
+      formClasses = classnames('nx-form', className, {
+        'nx-form--show-validation-errors': showValidationErrors,
+        'nx-form--has-validation-errors': formHasValidationErrors,
+        'nx-form--has-submit-error': !!submitError
+      }),
+      getChildren = children instanceof Function ? children : always(children),
+      submitBtnClasses = classnames('nx-form__submit-btn', submitBtnClassesProp);
 
-      if (showValidationErrors == null) {
-        throw new Error('showValidationErrors is strictly required!');
-      }
+  if (showValidationErrors == null) {
+    throw new Error('showValidationErrors is strictly required!');
+  }
 
-      function onSubmit(evt: FormEvent) {
-        evt.preventDefault();
+  function onSubmit(evt: FormEvent) {
+    evt.preventDefault();
 
-        onSubmitProp();
-      }
+    onSubmitProp();
+  }
 
-      const renderForm = () => {
-        return (
-          <form ref={ref} className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
-            <FormAriaContext.Provider value={{ showValidationErrors }}>
-              {getChildren()}
-            </FormAriaContext.Provider>
-            <footer className="nx-footer">
-              <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
-                           error={submitError}
-                           submitOnRetry={true}
-                           aria-label="form saving errors"/>
-              { formHasValidationErrors && !submitError &&
-                <NxErrorAlert className="nx-form__validation-errors" aria-label="form validation errors">
-                  There were validation errors.{' '}
-                  {getFirstValidationError(validationErrors)}
-                </NxErrorAlert>
-              }
-              <div className="nx-btn-bar">
-                { additionalFooterBtns }
-                { onCancel &&
-                  <NxButton type="button" onClick={onCancel} className="nx-form__cancel-btn">
-                    Cancel
-                  </NxButton>
-                }
-                <NxButton variant="primary" className={submitBtnClasses}>
-                  {submitBtnText || 'Submit'}
-                </NxButton>
-              </div>
-
-            </footer>
-            { submitMaskState != null &&
-              <NxSubmitMask success={submitMaskState}
-                            message={submitMaskMessage}
-                            successMessage={submitMaskSuccessMessage}
-                            aria-label="form submit status" />
+  const renderForm = () => {
+    return (
+      <form className={formClasses} onSubmit={onSubmit} { ...formAttrs }>
+        <FormAriaContext.Provider value={{ showValidationErrors }}>
+          {getChildren()}
+        </FormAriaContext.Provider>
+        <footer className="nx-footer">
+          <NxLoadError titleMessage={submitErrorTitleMessage || 'An error occurred saving data.'}
+                       error={submitError}
+                       submitOnRetry={true}
+                       aria-label="form saving errors"/>
+          { formHasValidationErrors && !submitError &&
+            <NxErrorAlert className="nx-form__validation-errors" aria-label="form validation errors">
+              There were validation errors.{' '}
+              {getFirstValidationError(validationErrors)}
+            </NxErrorAlert>
+          }
+          <div className="nx-btn-bar">
+            { additionalFooterBtns }
+            { onCancel &&
+              <NxButton type="button" onClick={onCancel} className="nx-form__cancel-btn">
+                Cancel
+              </NxButton>
             }
-          </form>
-        );
-      };
+            <NxButton variant="primary" className={submitBtnClasses}>
+              {submitBtnText || 'Submit'}
+            </NxButton>
+          </div>
 
-      return doLoad ? (
-        <NxLoadWrapper loading={loading} error={loadError} retryHandler={doLoad}>
-          {renderForm}
-        </NxLoadWrapper>
-      ) : renderForm();
-    }
-);
+        </footer>
+        { submitMaskState != null &&
+          <NxSubmitMask success={submitMaskState}
+                        message={submitMaskMessage}
+                        successMessage={submitMaskSuccessMessage}
+                        aria-label="form submit status" />
+        }
+      </form>
+    );
+  };
 
-type NxFormType = typeof _NxForm & { RequiredFieldNotice: FunctionComponent };
-const NxForm: NxFormType = Object.assign(_NxForm, { propTypes, RequiredFieldNotice });
+  return doLoad ? (
+    <NxLoadWrapper loading={loading} error={loadError} retryHandler={doLoad}>
+      {renderForm}
+    </NxLoadWrapper>
+  ) : renderForm();
+}
 
-export default NxForm;
+NxForm.propTypes = propTypes;
+NxForm.RequiredFieldNotice = RequiredFieldNotice;
+
 export { Props, propTypes };

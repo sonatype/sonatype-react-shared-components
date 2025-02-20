@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent, forwardRef, useRef, useContext, useEffect } from 'react';
+import React, { FormEvent, useRef, useContext, useEffect } from 'react';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import { without, indexOf } from 'ramda';
@@ -38,8 +38,9 @@ function SelectedFileWrapper({file, onDismiss: onDismissProp}: MultiSelectedFile
   );
 }
 
-const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFileUpload(props, ref) {
+export default function NxMultiFileUpload(props: Props) {
   const {
+        ref,
         className: classNameProp,
         onChange: onChangeProp,
         files,
@@ -199,7 +200,6 @@ const NxMultiFileUpload = forwardRef<HTMLDivElement, Props>(function NxMultiFile
       }
     </div>
   );
-});
+}
 
 NxMultiFileUpload.propTypes = propTypes;
-export default NxMultiFileUpload;

@@ -7,7 +7,6 @@
 import React, {
   FocusEvent,
   KeyboardEvent,
-  Ref,
   MouseEvent,
   useCallback,
   useEffect,
@@ -18,7 +17,6 @@ import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
 import { always, any, clamp, dec, inc, partial, pipe, prop } from 'ramda';
 import DataItem from '../../util/DataItem';
-import genericForwardRef from '../../util/genericForwardRef';
 
 import './NxSearchDropdown.scss';
 
@@ -28,14 +26,12 @@ import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import { useUniqueId } from '../../util/idUtil';
 import useMutationObserver from '@rooks/use-mutation-observer';
+import { ensureRef } from '../../util/reactUtil';
 export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
 
-function NxSearchDropdownRender<T extends string | number = string>(
-  props: Props<T>,
-  externalRef: Ref<HTMLDivElement>
-) {
+export default function NxSearchDropdown<T extends string | number = string>(props: Props<T>) {
   const {
         className: classNameProp,
         loading,
@@ -48,6 +44,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
         long,
         disabled,
         emptyMessage,
+        ref: externalRef,
         ...attrs
       } = props,
 
@@ -55,7 +52,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
       showDropdown = !!(searchText && !disabled),
 
       ref = useRef<HTMLDivElement>(null),
-      mergedRef = useMergedRef(externalRef, ref),
+      mergedRef = useMergedRef(ensureRef(externalRef), ref),
       menuRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
@@ -235,6 +232,4 @@ function NxSearchDropdownRender<T extends string | number = string>(
   );
 }
 
-const NxSearchDropdown = Object.assign(genericForwardRef(NxSearchDropdownRender), { propTypes });
-
-export default NxSearchDropdown;
+NxSearchDropdown.propTypes = propTypes;

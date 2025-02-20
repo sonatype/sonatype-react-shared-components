@@ -5,12 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import useMergedRef from '@react-hook/merged-ref';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { KeyboardEventHandler, useEffect, useRef } from 'react';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 
 import { AbstractDropdownProps } from './types';
+import { ensureRef } from '../../util/reactUtil';
 export {
   AbstractDropdownProps,
   AbstractDropdownRenderToggleElement
@@ -33,7 +34,7 @@ export {
  *    Note that this fires after the close processing occurs
  * @return - A div with the toggle element and dropdown menu.
  */
-const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((props: AbstractDropdownProps, ref) => {
+export default function AbstractDropdown(props: AbstractDropdownProps) {
   const {
     className,
     isOpen,
@@ -49,8 +50,7 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   } = props;
 
   const menuRef = useRef<HTMLDivElement>(null),
-      menuRefs = [menuRef, ...(menuRefProp ? [menuRefProp] : [])],
-      mergedMenuRef = useMergedRef(...menuRefs),
+      mergedMenuRef = useMergedRef(menuRef, ensureRef(menuRefProp)),
       toggleRef = useRef<HTMLButtonElement>(null),
 
       // set in onToggleCollapse to signal to handleDocumentClick that the dropdown is opening and so shouldn't
@@ -145,7 +145,7 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   }
 
   return (
-    <div ref={ref} className={className} onKeyDown={onKeyDown} {...attrs}>
+    <div className={className} onKeyDown={onKeyDown} {...attrs}>
       { renderToggleElement(toggleRef, onToggleCollapse) }
       { isOpen &&
         <NxDropdownMenu ref={mergedMenuRef} onClosing={onMenuClosing}>
@@ -154,6 +154,4 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
       }
     </div>
   );
-});
-
-export default AbstractDropdown;
+}

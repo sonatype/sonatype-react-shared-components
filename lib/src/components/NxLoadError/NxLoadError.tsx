@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 
@@ -27,39 +27,36 @@ import './NxLoadError.scss';
  * @param submitOnRetry If this is defined, a Retry button will be rendered with type attribute set to "submit".
  * it will also execute retryHandler if it is specified.
  */
-const NxLoadError = forwardRef<HTMLDivElement, Props>(
-    function NxLoadError({ error, titleMessage, submitOnRetry, retryHandler, className, ...otherProps }, ref) {
-      const alertClasses = classnames('nx-alert--load-error', className);
+export default function NxLoadError(props: Props) {
+  const { error, titleMessage, submitOnRetry, retryHandler, className, ...otherProps } = props;
+  const alertClasses = classnames('nx-alert--load-error', className);
 
-      return error != null && (
-        <NxErrorAlert { ...otherProps } className={alertClasses} ref={ref}>
-          <div className="nx-load-error__content">
-            <span className="nx-load-error__message">
-              { titleMessage || 'An error occurred loading data.' }
-              {' '}
-              { error }
-            </span>
-            { (retryHandler || submitOnRetry) &&
-              <NxButton type={submitOnRetry ? 'submit' : 'button'}
-                        variant="error"
-                        onClick={retryHandler ?? undefined}
-                        // This is to prevent focus from going to the <body> in Safari
-                        // and closing the dropdown menu prematurely inside NxCombobox.
-                        onMouseDown={(event) => {
-                          event.preventDefault();
-                          event.currentTarget.focus();
-                        }}
-                        className="nx-load-error__retry">
-                <NxFontAwesomeIcon icon={faSync} />
-                <span>Retry</span>
-              </NxButton>
-            }
-          </div>
-        </NxErrorAlert>
-      ) || null;
-    }
-);
+  return error != null && (
+    <NxErrorAlert { ...otherProps } className={alertClasses}>
+      <div className="nx-load-error__content">
+        <span className="nx-load-error__message">
+          { titleMessage || 'An error occurred loading data.' }
+          {' '}
+          { error }
+        </span>
+        { (retryHandler || submitOnRetry) &&
+          <NxButton type={submitOnRetry ? 'submit' : 'button'}
+                    variant="error"
+                    onClick={retryHandler ?? undefined}
+                    // This is to prevent focus from going to the <body> in Safari
+                    // and closing the dropdown menu prematurely inside NxCombobox.
+                    onMouseDown={(event) => {
+                      event.preventDefault();
+                      event.currentTarget.focus();
+                    }}
+                    className="nx-load-error__retry">
+            <NxFontAwesomeIcon icon={faSync} />
+            <span>Retry</span>
+          </NxButton>
+        }
+      </div>
+    </NxErrorAlert>
+  ) || null;
+}
 
 NxLoadError.propTypes = propTypes;
-
-export default NxLoadError;

@@ -4,16 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { InputHTMLAttributes, LabelHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef, ComponentPropsWithRef } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { requiredNullableString } from '../../util/customPropTypes';
 
 type InputAttributesProp =
-  Omit<InputHTMLAttributes<HTMLInputElement>,
-  'name' | 'disabled' | 'checked' | 'onChange' | 'readonly'>;
+    Omit<ComponentPropsWithoutRef<'input'>, 'name' | 'disabled' | 'checked' | 'onChange' | 'readonly'>;
 
-export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
+export type Props = Omit<ComponentPropsWithRef<'label'>, 'onChange'> & {
   name: string;
   value: string | null;
   onChange?: ((currentValue: string | null) => void) | null;

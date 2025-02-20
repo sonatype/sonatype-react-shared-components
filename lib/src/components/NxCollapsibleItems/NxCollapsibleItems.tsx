@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FC, forwardRef } from 'react';
+import React, { FC } from 'react';
 import classnames from 'classnames';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,13 +18,9 @@ export { Props, PublicProps, NxCollapsibleItemsChildProps } from './types';
 import './NxCollapsibleItems.scss';
 import { ensureStartEndElements } from '../../util/reactUtil';
 
-type NxCollapsibleItemsFC =
-  FC<PublicProps> &
-  {
-    Child: React.ForwardRefExoticComponent<NxCollapsibleItemsChildProps & React.RefAttributes<Element>>
-  };
+type NxCollapsibleItemsFC = FC<PublicProps> & { Child: FC<NxCollapsibleItemsChildProps> };
 
-function PrivateNxCollapsibleItems(props: Props) {
+export function PrivateNxCollapsibleItems(props: Props) {
   const {
     onToggleCollapse,
     isOpen,
@@ -100,25 +96,25 @@ function PrivateNxCollapsibleItems(props: Props) {
  * challenges) but instead adds the needed class and role to its child. If on the other hand the child is text,
  * this wraps it in a div
  */
-const NxCollapsibleItemsChild = forwardRef<Element, NxCollapsibleItemsChildProps>(
-    function NxCollapsibleItemsChildImpl({ children, className, ...otherProps }: NxCollapsibleItemsChildProps, ref) {
-      if (typeof children === 'string' || typeof children === 'number') {
-        return (
-          <NxCollapsibleItemsChild className={className} ref={ref} { ...otherProps }>
-            <div>{children}</div>
-          </NxCollapsibleItemsChild>
-        );
-      }
-      else {
-        const classes = classnames('nx-collapsible-items__child', children.props.className, className),
+export function NxCollapsibleItemsChild(
+  { children, className, ...otherProps }: NxCollapsibleItemsChildProps
+) {
+  if (typeof children === 'string' || typeof children === 'number') {
+    return (
+      <NxCollapsibleItemsChild className={className} { ...otherProps }>
+        <div>{children}</div>
+      </NxCollapsibleItemsChild>
+    );
+  }
+  else {
+    const classes = classnames('nx-collapsible-items__child', children.props.className, className),
 
-            // if no role is specified, default it to listitem. If role is specified as empty string, unset it entirely
-            role = (children.props.role ?? 'listitem') || undefined;
+        // if no role is specified, default it to listitem. If role is specified as empty string, unset it entirely
+        role = (children.props.role ?? 'listitem') || undefined;
 
-        return React.cloneElement(children, { className: classes, ref, role, ...otherProps });
-      }
-    }
-);
+    return React.cloneElement(children, { className: classes, role, ...otherProps });
+  }
+}
 
 const NxCollapsibleItems: NxCollapsibleItemsFC = Object.assign(PrivateNxCollapsibleItems, {
   Child: NxCollapsibleItemsChild,
@@ -128,5 +124,3 @@ const NxCollapsibleItems: NxCollapsibleItemsFC = Object.assign(PrivateNxCollapsi
 NxCollapsibleItemsChild.propTypes = childPropTypes;
 
 export default NxCollapsibleItems;
-
-export { NxCollapsibleItemsChild, PrivateNxCollapsibleItems };
