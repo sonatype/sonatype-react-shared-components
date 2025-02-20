@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { setupBrowser, TOOLTIP_WAIT } = require('./testUtils');
+const { setupBrowser } = require('./testUtils');
 
 describe('NxColorPicker', function() {
   const {
@@ -16,8 +16,7 @@ describe('NxColorPicker', function() {
     moveMouseAway,
     blurElement,
     checkScreenshot,
-    a11yTest,
-    wait
+    a11yTest
   } = setupBrowser('#/pages/Color%20Picker');
 
   const selector = '#nx-color-picker-example .gallery-example-live',
