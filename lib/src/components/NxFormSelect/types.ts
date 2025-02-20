@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentProps, Ref } from 'react';
+import { ComponentPropsWithoutRef, Ref } from 'react';
 import * as PropTypes from 'prop-types';
 import { ValidationErrors } from '../../util/validationUtil';
 
-export interface Props extends Omit<ComponentProps<'select'>, 'onChange' | 'ref'> {
+export interface Props extends Omit<ComponentPropsWithoutRef<'select'>, 'onChange'> {
   ref?: Ref<HTMLDivElement>;
   isPristine?: boolean | null;
   validatable?: boolean | null;

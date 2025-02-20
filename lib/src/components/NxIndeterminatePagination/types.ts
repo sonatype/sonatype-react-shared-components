@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { MouseEvent, ComponentProps } from 'react';
+import { MouseEvent, ComponentPropsWithRef } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props extends ComponentProps<'div'> {
+export interface Props extends ComponentPropsWithRef<'div'> {
   isFirstPage?: boolean | null;
   isLastPage?: boolean | null;
   onPrevPageSelect: ((evt: MouseEvent) => void);

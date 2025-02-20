@@ -4,14 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ComponentProps, Ref} from 'react';
+import {ComponentPropsWithoutRef, Ref} from 'react';
 import * as PropTypes from 'prop-types';
 
 export type CloseHandler = (evt: Event) => void;
 export const NX_MODAL_VARIANTS = ['wide', 'normal', 'narrow'] as const;
 export type NX_MODAL_VARIANT_TYPE = (typeof NX_MODAL_VARIANTS)[number];
 
-interface BaseProps extends Omit<ComponentProps<'div'>, 'ref'> {
+interface BaseProps extends ComponentPropsWithoutRef<'div'> {
   ref?: Ref<HTMLDialogElement>;
   variant?: NX_MODAL_VARIANT_TYPE | null;
 }

@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentPropsWithRef, ReactNode } from 'react';
 import DataItem from '../../util/DataItem';
 
 /*
@@ -23,7 +23,7 @@ export type DataItemType<T extends string | number | DataItem<string | number, s
 type FilterInputType = boolean | 'search';
 
 export interface Props<T extends string | number | DataItem<string | number, string> = string>
-  extends Omit<ComponentProps<'div'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
   value: string;
   loading?: boolean | null;
   loadError?: ReactNode;

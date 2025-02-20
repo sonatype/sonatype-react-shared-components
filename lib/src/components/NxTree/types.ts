@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ComponentProps } from 'react';
+import { ComponentPropsWithRef } from 'react';
 
 export type NavigationDirection = 'up' | 'down';
 
@@ -70,13 +70,13 @@ interface CollapsibleItemProps {
   onToggleCollapse: (() => void);
 }
 
-export type ItemProps = ComponentProps<'li'> & (NonCollapsibleItemProps | CollapsibleItemProps) & {
+export type ItemProps = ComponentPropsWithRef<'li'> & (NonCollapsibleItemProps | CollapsibleItemProps) & {
   onActivate?: () => void;
 };
 
-export type ItemLabelProps = ComponentProps<'span'>;
+export type ItemLabelProps = ComponentPropsWithRef<'span'>;
 
-export interface StatefulItemProps extends ComponentProps<'li'> {
+export interface StatefulItemProps extends ComponentPropsWithRef<'li'> {
   collapsible?: boolean | null;
   defaultOpen?: boolean | null;
 }

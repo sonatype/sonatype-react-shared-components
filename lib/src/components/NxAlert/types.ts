@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentProps } from 'react';
+import { ComponentPropsWithRef } from 'react';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import * as PropTypes from 'prop-types';
 
-export interface Props extends ComponentProps<'div'> {
+export interface Props extends ComponentPropsWithRef<'div'> {
   onClose?: (() => void) | null;
 };
 

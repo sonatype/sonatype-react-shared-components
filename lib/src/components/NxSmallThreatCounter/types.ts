@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentPropsWithRef, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 import { ThreatLevelCategory } from '../../util/threatLevels';
 
@@ -21,7 +21,7 @@ export interface MaxDigitCounterProps extends CounterProps {
   maxDigits: number;
 }
 
-export interface Props extends Omit<ComponentProps<'div'>, 'children'> {
+export interface Props extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
   criticalCount?: number | null;
   severeCount?: number | null;
   moderateCount?: number | null;

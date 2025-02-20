@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { FormEvent, ReactNode, ComponentProps } from 'react';
+import { FormEvent, ReactNode, ComponentPropsWithRef, ComponentPropsWithoutRef } from 'react';
 
 /**
  * The valid values for the `type` Prop
@@ -32,14 +32,14 @@ export interface StateProps {
 }
 
 // Imported props from react to provide support for all the regular html attributes
-type FusedProps = ComponentProps<'input'> & ComponentProps<'textarea'>;
+type FusedProps = ComponentPropsWithoutRef<'input'> & ComponentPropsWithoutRef<'textarea'>;
 
 // Leave out props to be re-defined
 export type InputAttrs =
     Omit<FusedProps, 'onChange' | 'onKeyPress' | 'type' | 'defaultValue' | 'disabled' | 'placeholder'>;
 
 export type DivAttrs =
-    Omit<ComponentProps<'div'>, 'onChange' | 'onKeyPress' | 'defaultValue' | 'placeholder'>;
+    Omit<ComponentPropsWithRef<'div'>, 'onChange' | 'onKeyPress' | 'defaultValue' | 'placeholder'>;
 
 export type TextInputElement = HTMLInputElement | HTMLTextAreaElement;
 

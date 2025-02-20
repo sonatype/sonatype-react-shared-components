@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentPropsWithRef, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 import { ValidationErrors } from '../../util/validationUtil';
 
-export interface Props extends ComponentProps<'fieldset'> {
+export interface Props extends ComponentPropsWithRef<'fieldset'> {
   label: Exclude<ReactNode, null | undefined>;
   sublabel?: ReactNode | null;
   isRequired?: boolean | null;

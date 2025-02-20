@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentProps } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import * as PropTypes from 'prop-types';
 
-export interface Props extends ComponentProps<'a'> {
+export interface Props extends ComponentPropsWithoutRef<'a'> {
   external?: boolean | null;
   noReferrer?: boolean | null;
   newTab?: boolean | null;

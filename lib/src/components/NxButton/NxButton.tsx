@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { useContext, ComponentProps } from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
@@ -16,11 +16,11 @@ export default function NxButton({ variant, className, children, title: titlePro
       alreadyHasTooltip = useContext(TooltipContext),
       title = titleProp || undefined,
       isIconOnly = variant === 'icon-only',
-      getBtn = (extraProps?: Partial<ComponentProps<'button'>>) => (
+      getBtn = (title?: string) => (
         <button aria-disabled={includesDisabledClass(className) || disabled}
                 disabled={disabled}
                 className={classNames}
-                {...extraProps}
+                title={title}
                 {...attrs}>
           {children}
         </button>
@@ -32,7 +32,7 @@ export default function NxButton({ variant, className, children, title: titlePro
   if (isIconOnly && !title && !disabled && !alreadyHasTooltip) {
     console.warn('Using icon-only buttons without the title prop is deprecated');
   }
-  return wrapInTooltip ? <NxTooltip isName={isIconOnly} title={title}>{getBtn()}</NxTooltip> : getBtn({ title });
+  return wrapInTooltip ? <NxTooltip isName={isIconOnly} title={title}>{getBtn()}</NxTooltip> : getBtn(title);
 }
 
 NxButton.propTypes = propTypes;

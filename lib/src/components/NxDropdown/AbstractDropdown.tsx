@@ -11,6 +11,7 @@ import { KeyboardEventHandler, useEffect, useRef } from 'react';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 
 import { AbstractDropdownProps } from './types';
+import { ensureRef } from '../../util/reactUtil';
 export {
   AbstractDropdownProps,
   AbstractDropdownRenderToggleElement
@@ -49,8 +50,7 @@ export default function AbstractDropdown(props: AbstractDropdownProps) {
   } = props;
 
   const menuRef = useRef<HTMLDivElement>(null),
-      menuRefs = [menuRef, ...(menuRefProp ? [menuRefProp] : [])],
-      mergedMenuRef = useMergedRef(...menuRefs),
+      mergedMenuRef = useMergedRef(menuRef, ensureRef(menuRefProp)),
       toggleRef = useRef<HTMLButtonElement>(null),
 
       // set in onToggleCollapse to signal to handleDocumentClick that the dropdown is opening and so shouldn't

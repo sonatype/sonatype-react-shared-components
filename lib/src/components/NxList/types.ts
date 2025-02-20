@@ -4,10 +4,10 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, ComponentProps } from 'react';
+import { ReactNode, ComponentPropsWithRef, ComponentPropsWithoutRef } from 'react';
 import PropTypes, { ValidationMap } from 'prop-types';
 
-export interface NxListProps extends ComponentProps<'ul'> {
+export interface NxListProps extends ComponentPropsWithRef<'ul'> {
   bulleted?: boolean | null;
   emptyMessage?: ReactNode;
   error?: string | null;
@@ -23,11 +23,11 @@ export const nxListPropTypes: ValidationMap<NxListProps> = {
   retryHandler: PropTypes.func
 };
 
-export interface NxListButtonItemProps extends ComponentProps<'li'> {
+export interface NxListButtonItemProps extends ComponentPropsWithRef<'li'> {
   selected?: boolean | null,
   disabled?: boolean | null,
   buttonClassName?: string | null,
-  buttonAttributes?: ComponentProps<'button'> | null,
+  buttonAttributes?: ComponentPropsWithoutRef<'button'> | null,
 }
 
 export const nxListButtonItemPropTypes: ValidationMap<NxListButtonItemProps> = {
@@ -37,12 +37,12 @@ export const nxListButtonItemPropTypes: ValidationMap<NxListButtonItemProps> = {
   buttonAttributes: PropTypes.object
 };
 
-export interface NxListLinkItemProps extends ComponentProps<'li'> {
+export interface NxListLinkItemProps extends ComponentPropsWithRef<'li'> {
   disabled?: boolean | null,
   selected?: boolean | null,
   href: string,
   anchorClassName?: string | null,
-  anchorAttributes?: ComponentProps<'a'> | null,
+  anchorAttributes?: ComponentPropsWithoutRef<'a'> | null,
 }
 
 export const nxListLinkItemPropTypes: ValidationMap<NxListLinkItemProps> = {

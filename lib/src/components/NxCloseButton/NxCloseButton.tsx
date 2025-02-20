@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ComponentProps } from 'react';
+import React, { ComponentPropsWithRef } from 'react';
 import * as PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -13,7 +13,7 @@ import { includesDisabledClass } from '../../util/classUtil';
 
 import './NxCloseButton.scss';
 
-export default function NxCloseButton({ className, ...otherProps }: ComponentProps<'button'>) {
+export default function NxCloseButton({ className, ...otherProps }: ComponentPropsWithRef<'button'>) {
   const btnClasses = classnames('nx-btn nx-btn--icon-only nx-btn--close', className);
 
   // NOTE: not using NxButton because we don't want the tooltip that icon-only NxButtons require

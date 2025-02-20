@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, ComponentProps } from 'react';
+import { ReactNode, ComponentPropsWithRef } from 'react';
 import PropTypes from 'prop-types';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-export interface NxTableProps extends ComponentProps<'table'> {
+export interface NxTableProps extends ComponentPropsWithRef<'table'> {
   caption?: string | null,
 };
 
@@ -16,7 +16,7 @@ export const nxTablePropTypes: PropTypes.ValidationMap<NxTableProps> = {
   children: PropTypes.node
 };
 
-export type NxTableBodyProps = ComponentProps<'tbody'> & {
+export type NxTableBodyProps = ComponentPropsWithRef<'tbody'> & {
   isLoading?: boolean | null;
   error?: string | null;
   emptyMessage?: ReactNode | null;
@@ -31,7 +31,7 @@ export const nxTableBodyPropTypes: PropTypes.ValidationMap<NxTableBodyProps> = {
   children: PropTypes.node
 };
 
-export type NxTableCellProps = (ComponentProps<'th'> | ComponentProps<'td'>) & {
+export type NxTableCellProps = (ComponentPropsWithRef<'th'> | ComponentPropsWithRef<'td'>) & {
   metaInfo?: boolean | null;
   isNumeric?: boolean | null;
   isSortable?: boolean | null;
@@ -57,13 +57,13 @@ export const nxTableCellPropTypes: PropTypes.ValidationMap<NxTableCellProps> = {
   children: PropTypes.node
 };
 
-export type NxTableHeadProps = ComponentProps<'thead'>;
+export type NxTableHeadProps = ComponentPropsWithRef<'thead'>;
 
 export const nxTableHeadPropTypes: PropTypes.ValidationMap<NxTableHeadProps> = {
   children: PropTypes.node
 };
 
-export type NxTableRowProps = ComponentProps<'tr'> & {
+export type NxTableRowProps = ComponentPropsWithRef<'tr'> & {
   isFilterHeader?: boolean | null;
   isClickable?: boolean | null;
   selected?: boolean | null;

@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentProps } from 'react';
+import { ComponentPropsWithRef } from 'react';
 import * as PropTypes from 'prop-types';
 
 import DataItem from '../../util/DataItem';
 
-export interface Props<T extends string | number = string> extends Omit<ComponentProps<'div'>, 'onChange'> {
+export interface Props<T extends string | number = string> extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
   options: DataItem<T>[];
   isOpen: boolean;
   onToggleCollapse: (() => void);

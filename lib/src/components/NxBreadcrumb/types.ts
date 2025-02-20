@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentProps } from 'react';
+import { ComponentPropsWithRef } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface Crumb {
@@ -18,7 +18,7 @@ export interface DropdownProps {
   onToggleCollapse: () => void;
 }
 
-export interface StatefulProps extends ComponentProps<'nav'> {
+export interface StatefulProps extends ComponentPropsWithRef<'nav'> {
   crumbs: Crumb[];
 }
 

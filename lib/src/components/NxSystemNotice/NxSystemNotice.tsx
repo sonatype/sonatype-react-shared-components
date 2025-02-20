@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ComponentProps } from 'react';
+import React, { ComponentPropsWithRef } from 'react';
 import * as PropTypes from 'prop-types';
 import classnames from 'classnames';
 import withClass from '../../util/withClass';
 
-export default function NxSystemNotice({ className, ...otherProps }: ComponentProps<'div'>) {
+export default function NxSystemNotice({ className, ...otherProps }: ComponentPropsWithRef<'div'>) {
   const classes = classnames('nx-system-notice', className);
 
   return (

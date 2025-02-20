@@ -4,11 +4,11 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentProps } from 'react';
+import { ComponentPropsWithRef } from 'react';
 
 export type CancelHandler = (evt: Event) => void;
 
-export interface Props extends Omit<ComponentProps<'dialog'>, 'open' | 'onCancel'> {
+export interface Props extends Omit<ComponentPropsWithRef<'dialog'>, 'open' | 'onCancel'> {
   onCancel: CancelHandler;
   useNativeCancelOnEscape?: boolean | null;
   isModal?: boolean | null;

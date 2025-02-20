@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ReactNode, ComponentProps } from 'react';
+import { ReactNode, ComponentPropsWithRef } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
@@ -33,13 +33,13 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   children: PropTypes.node
 };
 
-export type NxGlobalSidebarNavigationProps = ComponentProps<'div'>;
+export type NxGlobalSidebarNavigationProps = ComponentPropsWithRef<'div'>;
 
 export const nxGlobalSidebarNavigationPropTypes = {
   className: PropTypes.string
 };
 
-export interface NxGlobalSidebarNavigationLinkProps extends ComponentProps<'a'> {
+export interface NxGlobalSidebarNavigationLinkProps extends ComponentPropsWithRef<'a'> {
   isSelected?: boolean | null;
   icon: IconDefinition;
   text: RequiredReactNode;
@@ -53,7 +53,7 @@ export const nxGlobalSidebarNavigationLinkPropTypes: PropTypes.ValidationMap<NxG
   href: PropTypes.string.isRequired
 };
 
-export interface NxGlobalSidebarFooterProps extends ComponentProps<'div'> {
+export interface NxGlobalSidebarFooterProps extends ComponentPropsWithRef<'div'> {
   supportText?: ReactNode | null;
   supportLink?: string | null;
   releaseText?: ReactNode | null;

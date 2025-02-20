@@ -5,12 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ComponentProps } from 'react';
+import { ComponentPropsWithRef } from 'react';
 
 import { ThreatLevelNumber, ThreatLevelCategory, allThreatLevelCategories, allThreatLevelNumbers }
   from '../../util/threatLevels';
 
-export interface Props extends ComponentProps<'div'> {
+export interface Props extends ComponentPropsWithRef<'div'> {
   threatLevelCategory?: ThreatLevelCategory;
   policyThreatLevel?: ThreatLevelNumber;
   children?: string | null;

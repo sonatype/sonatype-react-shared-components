@@ -5,9 +5,9 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentPropsWithRef, ReactNode } from 'react';
 
-export interface Props extends Omit<ComponentProps<'meter'>, 'max' | 'min' | 'low' | 'high' | 'optimum'> {
+export interface Props extends Omit<ComponentPropsWithRef<'meter'>, 'max' | 'min' | 'low' | 'high' | 'optimum'> {
   max?: number | null;
   value: number;
   children: Exclude<ReactNode, null | undefined>;

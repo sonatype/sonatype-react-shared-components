@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ComponentProps } from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
@@ -35,7 +35,7 @@ export default function NxToggle(props: Props) {
   const {
     className: checkboxClassName,
     ...unfilteredInputAttributes
-  } = inputAttributes as ComponentProps<'input'>;
+  } = inputAttributes as ComponentPropsWithoutRef<'input'>;
 
   const otherInputAttributes = omit(
       ['disabled', 'checked', 'readOnly', 'onChange'],

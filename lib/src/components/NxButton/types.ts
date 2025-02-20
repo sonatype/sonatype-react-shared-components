@@ -5,12 +5,12 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ComponentProps } from 'react';
+import { ComponentPropsWithRef } from 'react';
 
 export const NX_BUTTON_VARIANTS = ['primary', 'secondary', 'tertiary', 'icon-only', 'error'] as const;
 export type NX_BUTTON_VARIANT_TYPE = (typeof NX_BUTTON_VARIANTS)[number]; // See https://stackoverflow.com/a/45486495
 
-interface CommonProps extends Omit<ComponentProps<'button'>, 'title'> {
+interface CommonProps extends Omit<ComponentPropsWithRef<'button'>, 'title'> {
   // deprecated; only here to avoid type checker breaking changes. Remove in 3.0
   inline?: boolean;
   title?: string | null;

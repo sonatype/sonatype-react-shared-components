@@ -4,32 +4,32 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ComponentPropsWithRef, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
 type AttributeOmissions = 'disabled' | 'className' | 'onClick' | 'href';
 
-export interface ButtonItemProps extends ComponentProps<'div'> {
+export interface ButtonItemProps extends ComponentPropsWithRef<'div'> {
   onClick: () => void;
   term: Exclude<ReactNode, undefined | null>;
   description: Exclude<ReactNode, undefined | null>;
   selected?: boolean | null;
   disabled?: boolean | null;
   buttonClassName?: string | null;
-  buttonAttributes?: Omit<ComponentProps<'button'>, AttributeOmissions> | null;
+  buttonAttributes?: Omit<ComponentPropsWithoutRef<'button'>, AttributeOmissions> | null;
 }
 
-export interface LinkItemProps extends ComponentProps<'div'> {
+export interface LinkItemProps extends ComponentPropsWithRef<'div'> {
   href: string;
   term: Exclude<ReactNode, undefined | null>;
   description: Exclude<ReactNode, undefined | null>;
   selected?: boolean | null;
   disabled?: boolean | null;
   anchorClassName?: string | null;
-  anchorAttributes?: Omit<ComponentProps<'a'>, AttributeOmissions> | null;
+  anchorAttributes?: Omit<ComponentPropsWithoutRef<'a'>, AttributeOmissions> | null;
 }
 
-export interface Props extends ComponentProps<'dl'> {
+export interface Props extends ComponentPropsWithRef<'dl'> {
   emptyMessage?: string | null;
 }
 
