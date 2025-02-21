@@ -112,7 +112,9 @@ describe('NxIconDropdown', function() {
 
       await wait(TOOLTIP_WAIT);
       await menuItem.hover();
-      await wait(TOOLTIP_WAIT);
+
+      // for some reason an extra long wait is necessary for this test
+      await wait(2000);
 
       const { x, y } = await example.boundingBox(),
           pageScrollY = await page.evaluate(() => window.scrollY),
