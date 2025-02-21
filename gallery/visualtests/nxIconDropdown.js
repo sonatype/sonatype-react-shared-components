@@ -110,6 +110,7 @@ describe('NxIconDropdown', function() {
           ),
           page = getPage();
 
+      await wait(TOOLTIP_WAIT);
       await menuItem.hover();
       await wait(TOOLTIP_WAIT);
 
