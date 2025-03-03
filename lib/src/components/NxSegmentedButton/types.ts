@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import React, { ReactElement, HTMLAttributes, ReactNode, KeyboardEventHandler, ButtonHTMLAttributes } from 'react';
+import React, { ReactElement, ReactNode, KeyboardEventHandler, RefAttributes, ComponentPropsWithRef } from 'react';
 import { without } from 'ramda';
 
 import { NX_BUTTON_VARIANTS, NX_BUTTON_VARIANT_TYPE } from '../NxButton/types';
@@ -19,9 +19,9 @@ export type NX_SEGMENTED_BUTTON_VARIANT_TYPE =
 export const NX_SEGMENTED_BUTTON_VARIANTS =
     without(invalidButtonVariants, NX_BUTTON_VARIANTS) as NX_SEGMENTED_BUTTON_VARIANT_TYPE[];
 
-export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
+export interface Props extends Omit<ComponentPropsWithRef<'div'>, 'onClick'> {
   variant: NX_SEGMENTED_BUTTON_VARIANT_TYPE;
-  children: ReactElement | ReactElement[];
+  children: ReactElement<RefAttributes<HTMLElement>> | ReactElement<RefAttributes<HTMLElement>>[];
   buttonContent: ReactNode;
   isOpen: boolean;
   onToggleOpen: () => void;
@@ -29,7 +29,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   onCloseKeyDown?: KeyboardEventHandler | null;
   onCloseClick?: ((e: MouseEvent) => void) | null;
   disabled?: boolean | null;
-  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+  type?: ComponentPropsWithRef<'button'>['type'];
 }
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
@@ -37,7 +37,9 @@ export const propTypes: PropTypes.ValidationMap<Props> = {
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired,
     PropTypes.arrayOf(PropTypes.element.isRequired).isRequired
-  ]).isRequired,
+  ]).isRequired as PropTypes.Validator<
+    ReactElement<RefAttributes<HTMLElement>> | ReactElement<RefAttributes<HTMLElement>>[]
+  >,
   buttonContent: PropTypes.node.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onToggleOpen: PropTypes.func.isRequired,

@@ -65,20 +65,20 @@ describe('NxTable', function() {
 
   it('renders children of table with correct element types', function() {
     render(
-      <NxTable>
-        <NxTable.Head>
-          <NxTable.Row>
-            <NxTable.Cell>Foo</NxTable.Cell>
-            <NxTable.Cell>Bar</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Head>
-        <NxTable.Body>
-          <NxTable.Row>
-            <NxTable.Cell>0</NxTable.Cell>
-            <NxTable.Cell>1024</NxTable.Cell>
-          </NxTable.Row>
-        </NxTable.Body>
-      </NxTable>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell>Foo</NxTable.Cell>
+              <NxTable.Cell>Bar</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Head>
+          <NxTable.Body>
+            <NxTable.Row>
+              <NxTable.Cell>0</NxTable.Cell>
+              <NxTable.Cell>1024</NxTable.Cell>
+            </NxTable.Row>
+          </NxTable.Body>
+        </NxTable>
     );
 
     const table = screen.getByRole('table');
@@ -106,15 +106,15 @@ describe('NxTable', function() {
   describe('NxTable.Body', function() {
     it('Puts the correct colSpan on a loading meta-info cell', function() {
       render(
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>Foo</NxTable.Cell>
-              <NxTable.Cell>Bar</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body isLoading />
-        </NxTable>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Foo</NxTable.Cell>
+                <NxTable.Cell>Bar</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body isLoading />
+          </NxTable>
       );
 
       expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
@@ -122,15 +122,15 @@ describe('NxTable', function() {
 
     it('Puts the correct colSpan on an emptyMessage meta-info cell', async function() {
       render(
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>Foo</NxTable.Cell>
-              <NxTable.Cell>Bar</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body emptyMessage="Empty" />
-        </NxTable>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Foo</NxTable.Cell>
+                <NxTable.Cell>Bar</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body emptyMessage="Empty" />
+          </NxTable>
       );
 
       expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
@@ -139,15 +139,15 @@ describe('NxTable', function() {
 
     it('Puts the correct colSpan on an error meta-info cell', function() {
       render(
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>Foo</NxTable.Cell>
-              <NxTable.Cell>Bar</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body error="Error!" />
-        </NxTable>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Foo</NxTable.Cell>
+                <NxTable.Cell>Bar</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body error="Error!" />
+          </NxTable>
       );
 
       expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
@@ -156,28 +156,28 @@ describe('NxTable', function() {
 
     it('correctly updates the colspan if the number of columns changes', async function() {
       const { rerender } = render(
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>Foo</NxTable.Cell>
-              <NxTable.Cell>Bar</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body error="Error!" />
-        </NxTable>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Foo</NxTable.Cell>
+                <NxTable.Cell>Bar</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body error="Error!" />
+          </NxTable>
       );
 
       expect(screen.getByRole('cell')).toHaveAttribute('colspan', '2');
 
       rerender(
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row>
-              <NxTable.Cell>Foo</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-          <NxTable.Body error="Error!" />
-        </NxTable>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row>
+                <NxTable.Cell>Foo</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+            <NxTable.Body error="Error!" />
+          </NxTable>
       );
 
       await waitFor(() => expect(screen.getByRole('cell')).toHaveAttribute('colspan', '1'));
@@ -187,13 +187,13 @@ describe('NxTable', function() {
 
     it('does not show the emptyMessage when there are children', async function() {
       render(
-        <NxTable>
-          <NxTable.Body emptyMessage="Empty message">
-            <NxTable.Row>
-              <NxTable.Cell>Foo</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Body>
-        </NxTable>
+          <NxTable>
+            <NxTable.Body emptyMessage="Empty message">
+              <NxTable.Row>
+                <NxTable.Cell>Foo</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
       );
 
       expect(screen.getByRole('rowgroup')).not.toHaveTextContent('Empty message');
@@ -216,16 +216,16 @@ describe('NxTable', function() {
       expect(screen.getByRole('rowgroup')).toHaveTextContent('Empty message');
 
       rerender(
-        <NxTable>
-          <NxTable.Body emptyMessage="Empty message">
-            <NxTable.Row>
-              <NxTable.Cell />
-            </NxTable.Row>
-            <NxTable.Row>
-              <NxTable.Cell />
-            </NxTable.Row>
-          </NxTable.Body>
-        </NxTable>
+          <NxTable>
+            <NxTable.Body emptyMessage="Empty message">
+              <NxTable.Row>
+                <NxTable.Cell />
+              </NxTable.Row>
+              <NxTable.Row>
+                <NxTable.Cell />
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
       );
 
       await waitFor(() => expect(screen.getByRole('rowgroup')).not.toHaveTextContent('Empty message'));
@@ -235,13 +235,13 @@ describe('NxTable', function() {
   describe('NxTable.Row', function() {
     it('renders cell instead of columnheader when isFilterHeader is set to true', function() {
       render(
-        <NxTable>
-          <NxTable.Head>
-            <NxTable.Row isFilterHeader={true}>
-              <NxTable.Cell>Foo</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Head>
-        </NxTable>
+          <NxTable>
+            <NxTable.Head>
+              <NxTable.Row isFilterHeader={true}>
+                <NxTable.Cell>Foo</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Head>
+          </NxTable>
       );
 
       expect(screen.getByRole('cell')).toBeInTheDocument();
@@ -249,14 +249,14 @@ describe('NxTable', function() {
 
     it('sets the clickable row accessible name based on the text of its cells', function() {
       render(
-        <NxTable>
-          <NxTable.Body>
-            <NxTable.Row isClickable={true}>
-              <NxTable.Cell>Foo</NxTable.Cell>
-              <NxTable.Cell>Bar</NxTable.Cell>
-            </NxTable.Row>
-          </NxTable.Body>
-        </NxTable>
+          <NxTable>
+            <NxTable.Body>
+              <NxTable.Row isClickable={true}>
+                <NxTable.Cell>Foo</NxTable.Cell>
+                <NxTable.Cell>Bar</NxTable.Cell>
+              </NxTable.Row>
+            </NxTable.Body>
+          </NxTable>
       );
 
       expect(screen.getByRole('row')).toHaveAccessibleName('Foo Bar');
@@ -265,26 +265,26 @@ describe('NxTable', function() {
 
   describe('NxTable.Cell', function() {
     const renderColumnHeader = (extraProps?: NxTableCellProps) => render(
-      <NxTable>
-        <NxTable.Head>
-          <NxTable.Row>
-            <NxTable.Cell { ...extraProps }/>
-          </NxTable.Row>
-        </NxTable.Head>
-      </NxTable>
+        <NxTable>
+          <NxTable.Head>
+            <NxTable.Row>
+              <NxTable.Cell { ...extraProps }/>
+            </NxTable.Row>
+          </NxTable.Head>
+        </NxTable>
     ).getByRole('columnheader') as HTMLElement;
 
     describe('when the chevron prop is true', function() {
       describe('when not isHeader', function() {
         it('sets the button accessible name from the row clickAccessibleLabel', function() {
           render(
-            <NxTable>
-              <NxTable.Body>
-                <NxTable.Row clickAccessibleLabel="dolphin">
-                  <NxTable.Cell chevron/>
-                </NxTable.Row>
-              </NxTable.Body>
-            </NxTable>
+              <NxTable>
+                <NxTable.Body>
+                  <NxTable.Row clickAccessibleLabel="dolphin">
+                    <NxTable.Cell chevron/>
+                  </NxTable.Row>
+                </NxTable.Body>
+              </NxTable>
           );
 
           expect(screen.getByRole('button')).toHaveAccessibleName('dolphin');
@@ -315,11 +315,11 @@ describe('NxTable', function() {
         );
 
         return render(
-          <NxTable>
-            { isHeader ? <NxTable.Head>{children}</NxTable.Head>
-            : <NxTable.Body>{children}</NxTable.Body>
-            }
-          </NxTable>
+            <NxTable>
+              { isHeader ? <NxTable.Head>{children}</NxTable.Head>
+              : <NxTable.Body>{children}</NxTable.Body>
+              }
+            </NxTable>
         ).getAllByRole(isHeader ? 'columnheader' : 'cell')[2] as HTMLElement;
       };
 

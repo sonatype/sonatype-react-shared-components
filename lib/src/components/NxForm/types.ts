@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { FormHTMLAttributes, ValidationMap, ReactNode } from 'react';
+import { ComponentPropsWithRef, ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 import { ValidationErrors, propTypes as nxTextInputPropTypes } from '../NxTextInput/types';
 
@@ -12,7 +12,7 @@ export interface FormAriaContextType {
   showValidationErrors: boolean;
 }
 
-export interface Props extends Omit<FormHTMLAttributes<HTMLFormElement>, 'children'> {
+export interface Props extends Omit<ComponentPropsWithRef<'form'>, 'children'> {
   loading?: boolean | null;
   doLoad?: (() => void) | null;
   onSubmit: () => void;
@@ -33,7 +33,7 @@ export interface Props extends Omit<FormHTMLAttributes<HTMLFormElement>, 'childr
 
 export type StatefulProps = Omit<Props, 'showValidationErrors'>;
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   loading: PropTypes.bool,
   doLoad: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,

@@ -25,8 +25,8 @@ describe('NxColorPicker', function() {
 
   it('looks right', simpleTest(selector));
   it('looks right when hovered and shows a tooltip', hoverTest(selector, colorSelector, true));
-  it('looks right when focused', focusTest(selector, colorSelector));
-  it('looks right when hovered and focused', focusAndHoverTest(selector, colorSelector));
+  it('looks right when focused', focusTest(selector, colorSelector, 0, true));
+  it('looks right when hovered and focused', focusAndHoverTest(selector, colorSelector, true));
 
   describe('when a color is selected', function() {
     beforeEach(async function() {
@@ -40,8 +40,8 @@ describe('NxColorPicker', function() {
 
     it('looks right', simpleTest(selector));
     it('looks right when hovered and shows a tooltip', hoverTest(selector, colorSelector, true));
-    it('looks right when focused', focusTest(selector, colorSelector));
-    it('looks right when hovered and focused', focusAndHoverTest(selector, colorSelector));
+    it('looks right when focused', focusTest(selector, colorSelector, 0, true));
+    it('looks right when hovered and focused', focusAndHoverTest(selector, colorSelector, true));
   });
 
   describe('when required', function() {

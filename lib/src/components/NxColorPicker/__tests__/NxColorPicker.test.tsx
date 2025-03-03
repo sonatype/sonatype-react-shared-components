@@ -100,9 +100,9 @@ describe('NxColorPicker', function() {
         function() {
           function renderWithForm(showValidationErrors: boolean, props?: Partial<Props>) {
             return render(
-              <NxForm onSubmit={() => {}} showValidationErrors={showValidationErrors}>
-                <NxColorPicker { ...minimalProps } { ...props } />
-              </NxForm>
+                <NxForm onSubmit={() => {}} showValidationErrors={showValidationErrors}>
+                  <NxColorPicker { ...minimalProps } { ...props } />
+                </NxForm>
             );
           }
 
@@ -122,9 +122,9 @@ describe('NxColorPicker', function() {
       expect(renderEl({ isPristine: false, validationErrors: ['asdf', 'zxcv'] })).toHaveAccessibleDescription('asdf');
 
       const formView = render(
-        <NxForm onSubmit={() => {}} showValidationErrors={true}>
-          <NxColorPicker { ...minimalProps } validationErrors="asdf" />
-        </NxForm>
+          <NxForm onSubmit={() => {}} showValidationErrors={true}>
+            <NxColorPicker { ...minimalProps } validationErrors="asdf" />
+          </NxForm>
       );
 
       expect(within(formView.container).getByRole('group')).toHaveAccessibleDescription('asdf');

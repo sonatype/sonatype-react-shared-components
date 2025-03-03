@@ -19,7 +19,8 @@ describe('NxIconDropdown', function() {
     checkScreenshotCoordinates,
     getPage,
     a11yTest,
-    wait
+    wait,
+    TOOLTIP_WAIT
   } = setupBrowser('#/pages/Icon%20Dropdown');
 
   const defaultSelector = '#nx-icon-dropdown-simple-example .nx-icon-dropdown',
@@ -109,8 +110,11 @@ describe('NxIconDropdown', function() {
           ),
           page = getPage();
 
+      await wait(TOOLTIP_WAIT);
       await menuItem.hover();
-      await wait(500);
+
+      // for some reason an extra long wait is necessary for this test
+      await wait(2000);
 
       const { x, y } = await example.boundingBox(),
           pageScrollY = await page.evaluate(() => window.scrollY),

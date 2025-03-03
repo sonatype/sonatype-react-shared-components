@@ -10,10 +10,10 @@ import { userEvent } from '../../../__testutils__/rtlUtils';
 import { render, within } from '@testing-library/react';
 
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import NxDescriptionList from '../NxDescriptionList';
+import NxDescriptionList, { ButtonItemProps } from '../NxDescriptionList';
 
 describe('NxDescriptionList.ButtonItem', function() {
-  const minimalProps = {
+  const minimalProps: ButtonItemProps = {
         onClick: () => {},
         term: '',
         description: ''
@@ -229,11 +229,11 @@ describe('NxDescriptionList.ButtonItem', function() {
 
   it('has the first button as its only tabstop', async function() {
     const component = render(
-      <>
-        <button data-testid="before">Before</button>
-        <NxDescriptionList.ButtonItem { ...minimalProps } />
-        <button data-testid="after">After</button>
-      </>
+        <>
+          <button data-testid="before">Before</button>
+          <NxDescriptionList.ButtonItem { ...minimalProps } />
+          <button data-testid="after">After</button>
+        </>
     );
 
     const user = userEvent.setup(),

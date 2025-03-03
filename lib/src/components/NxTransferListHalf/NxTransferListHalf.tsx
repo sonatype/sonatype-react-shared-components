@@ -162,7 +162,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
                                                    isTopItem={index === 0}
                                                    isBottomItem={index === visibleItems.length - 1}
                                                    { ...i } />)
-           }
+            }
           </div>
         </NxScrollRender>
         <div className="nx-transfer-list__footer">

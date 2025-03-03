@@ -33,7 +33,7 @@ import {
   NxGlobalFooter2
 } from '../SimpleComponents';
 
-function test(Component: ComponentType<{}>, tagName: string, ...classNames: string[]) {
+function test(Component: ComponentType<object>, tagName: string, ...classNames: string[]) {
   return () => {
     const el = render(<Component/>).container.firstElementChild!;
     expect(el.tagName).toBe(tagName.toUpperCase());

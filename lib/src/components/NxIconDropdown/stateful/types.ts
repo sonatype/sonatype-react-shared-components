@@ -4,23 +4,21 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {HTMLAttributes, ReactElement, WeakValidationMap} from 'react';
+import { ComponentPropsWithRef } from 'react';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import * as PropTypes from 'prop-types';
 
-export type Props = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & {
-  className?: string | null;
-  children?: ReactElement | ReactElement[] | null;
+import { OptionalReactElement } from '../../../util/reactUtil';
+import { childrenPropTypes } from '../../NxDropdown/types';
+
+export interface Props extends ComponentPropsWithRef<'div'> {
+  children?: OptionalReactElement | OptionalReactElement[] | null;
   disabled?: boolean | null;
   icon?: IconDefinition;
 };
 
-export const propTypes: WeakValidationMap<Props> = {
-  className: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
-    PropTypes.element.isRequired
-  ]),
+export const propTypes: PropTypes.ValidationMap<Props> = {
+  children: childrenPropTypes,
   disabled: PropTypes.bool,
   icon: PropTypes.any
 };

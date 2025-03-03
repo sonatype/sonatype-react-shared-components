@@ -24,8 +24,7 @@ export default function NivoPieExample() {
                        enableArcLabels={false}
                        innerRadius={0.4}
                        isInteractive={true}
-                       colors={NIVO_COLORS}
-          />
+                       colors={NIVO_COLORS} />
       </div>
     </>
   );

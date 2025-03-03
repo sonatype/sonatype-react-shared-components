@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useContext, FormEvent } from 'react';
+import React, { useContext, FormEvent } from 'react';
 import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
@@ -18,8 +18,9 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 export { Props };
 
-const NxFormSelect = forwardRef<HTMLDivElement, Props>(function NxFormSelect(props: Props, forwardedRef) {
+export default function NxFormSelect(props: Props) {
   const {
+        ref,
         className: classNameProp,
         validatable,
         isPristine,
@@ -45,7 +46,7 @@ const NxFormSelect = forwardRef<HTMLDivElement, Props>(function NxFormSelect(pro
   }
 
   return (
-    <div ref={forwardedRef} className={className}>
+    <div ref={ref} className={className}>
       <select className="nx-form-select__select"
               onChange={selectOnChange}
               { ...attrs }
@@ -59,8 +60,6 @@ const NxFormSelect = forwardRef<HTMLDivElement, Props>(function NxFormSelect(pro
       }
     </div>
   );
-});
+}
 
 NxFormSelect.propTypes = propTypes;
-
-export default NxFormSelect;

@@ -4,7 +4,15 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  FocusEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
 import { always, any, clamp, dec, inc, partial, pipe, prop } from 'ramda';
@@ -12,21 +20,18 @@ import DataItem from '../../util/DataItem';
 
 import './NxSearchDropdown.scss';
 
-import forwardRef from '../../util/genericForwardRef';
 import { Props, propTypes } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import { useUniqueId } from '../../util/idUtil';
 import useMutationObserver from '@rooks/use-mutation-observer';
+import { ensureRef } from '../../util/reactUtil';
 export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
 
-function NxSearchDropdownRender<T extends string | number = string>(
-  props: Props<T>,
-  externalRef: Ref<HTMLDivElement>
-) {
+export default function NxSearchDropdown<T extends string | number = string>(props: Props<T>) {
   const {
         className: classNameProp,
         loading,
@@ -39,6 +44,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
         long,
         disabled,
         emptyMessage,
+        ref: externalRef,
         ...attrs
       } = props,
 
@@ -46,7 +52,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
       showDropdown = !!(searchText && !disabled),
 
       ref = useRef<HTMLDivElement>(null),
-      mergedRef = useMergedRef(externalRef, ref),
+      mergedRef = useMergedRef(ensureRef(externalRef), ref),
       menuRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
@@ -192,7 +198,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                      inputAttributes={{
                        onKeyDown: handleKeyDown,
                        role: 'searchbox',
-                       'aria-controls': dropdownMenuId,
+                       'aria-controls': showDropdown ? dropdownMenuId : undefined,
                        'aria-haspopup': 'menu'
                      }} />
       <NxDropdownMenu id={dropdownMenuId}
@@ -226,6 +232,4 @@ function NxSearchDropdownRender<T extends string | number = string>(
   );
 }
 
-const NxSearchDropdown = Object.assign(forwardRef(NxSearchDropdownRender), { propTypes });
-
-export default NxSearchDropdown;
+NxSearchDropdown.propTypes = propTypes;

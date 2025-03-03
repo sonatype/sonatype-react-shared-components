@@ -23,11 +23,11 @@ describe('Page Layout', function() {
       it('looks right', async function() {
         await disableLoadingSpinnerAnimation();
         let screenshot = await getPage().screenshot();
-        expect(screenshot).toMatchImageSnapshot();
+        expect(Buffer.from(screenshot)).toMatchImageSnapshot();
 
         await waitForSelectors('.nx-alert');
         screenshot = await getPage().screenshot();
-        expect(screenshot).toMatchImageSnapshot();
+        expect(Buffer.from(screenshot)).toMatchImageSnapshot();
       });
     });
   }

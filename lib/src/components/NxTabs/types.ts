@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, HTMLAttributes, LiHTMLAttributes } from 'react';
+import { ComponentPropsWithRef, PropsWithChildren, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 
 export interface TabContextType {
@@ -14,22 +14,25 @@ export interface TabContextType {
   onTabSelect: (index: number) => void;
 }
 
-export type NxTabsProps = HTMLAttributes<HTMLDivElement> & {
+export type NxTabsProps = ComponentPropsWithRef<'div'> & {
   activeTab?: number | null ;
   onTabSelect: ((index: number) => void);
-  children?: ReactNode | null;
+  children?: ReactElement<PropsWithChildren> | ReactElement<PropsWithChildren>[] | null;
 };
 
-export type NxTabListProps = HTMLAttributes<HTMLUListElement>;
-export type NxTabPanelProps = HTMLAttributes<HTMLDivElement>;
-export type NxTabProps = LiHTMLAttributes<HTMLLIElement> & {
+export type NxTabListProps = ComponentPropsWithRef<'ul'>;
+export type NxTabPanelProps = ComponentPropsWithRef<'div'>;
+export type NxTabProps = ComponentPropsWithRef<'li'> & {
   index?: number | null;
 };
 
 export const nxTabsPropTypes: PropTypes.ValidationMap<NxTabsProps> = {
   activeTab: PropTypes.number,
   onTabSelect: PropTypes.func.isRequired,
-  children: PropTypes.node
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element.isRequired)
+  ]) as PropTypes.Validator<ReactElement<PropsWithChildren> | ReactElement<PropsWithChildren>[]>
 };
 
 export const nxTabPropTypes: PropTypes.ValidationMap<NxTabProps> = {

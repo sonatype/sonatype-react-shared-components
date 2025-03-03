@@ -133,15 +133,15 @@ describe('idUtil', function() {
       }
 
       const firstRender = ReactDOMServer.renderToStaticMarkup(
-        <NxStableUniqueIdContext>
-          <Fixture /> <Fixture />
-        </NxStableUniqueIdContext>
+          <NxStableUniqueIdContext>
+            <Fixture /> <Fixture />
+          </NxStableUniqueIdContext>
       );
 
       const secondRender = ReactDOMServer.renderToStaticMarkup(
-        <NxStableUniqueIdContext>
-          <Fixture /> <Fixture />
-        </NxStableUniqueIdContext>
+          <NxStableUniqueIdContext>
+            <Fixture /> <Fixture />
+          </NxStableUniqueIdContext>
       );
 
       expect(firstRender).toEqual(secondRender);

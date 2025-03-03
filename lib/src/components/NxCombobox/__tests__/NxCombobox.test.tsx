@@ -4,14 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { screen, fireEvent, render, within, createEvent } from '@testing-library/react';
 import { runTimers, userEvent, rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxCombobox, { Props } from '../NxCombobox';
 import NxForm from '../../NxForm/NxForm';
-
-type RenderProps = Props & RefAttributes<HTMLDivElement>;
 
 describe('NxCombobox', function() {
   const minimalProps: Props = {
@@ -20,8 +18,8 @@ describe('NxCombobox', function() {
         onSearch: () => {},
         matches: []
       },
-      quickRender = rtlRender<RenderProps>(NxCombobox, minimalProps),
-      renderEl = rtlRenderElement<RenderProps>(NxCombobox, minimalProps);
+      quickRender = rtlRender<Props>(NxCombobox, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxCombobox, minimalProps);
 
   it('sets specified classNames and attributes on the top-level element', function() {
     const component = renderEl()!,
@@ -172,13 +170,13 @@ describe('NxCombobox', function() {
     it('sets aria-expanded to true when the input is refocused after dropdown selection and blur', async function() {
       const user = userEvent.setup();
       render(
-        <div>
-          <div>Outside Combobox</div>
-          <NxCombobox matches= {[{ id: '1', displayName: 'Foo' }]}
-                      value=""
-                      onChange= {() => {}}
-                      onSearch= {() => {}} />
-        </div>
+          <div>
+            <div>Outside Combobox</div>
+            <NxCombobox matches= {[{ id: '1', displayName: 'Foo' }]}
+                        value=""
+                        onChange= {() => {}}
+                        onSearch= {() => {}} />
+          </div>
       );
 
       const inputElement = screen.getByRole('combobox'),
@@ -781,13 +779,13 @@ describe('NxCombobox', function() {
 
       describe('when there are no validation errors', function() {
         const noValidationErrorsMinimalProps:Props = pristineMinimalProps,
-            quickRender = rtlRender<RenderProps>(NxCombobox, noValidationErrorsMinimalProps);
+            quickRender = rtlRender<Props>(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the combobox', function() {
@@ -797,9 +795,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -811,7 +809,7 @@ describe('NxCombobox', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the combobox', function() {
@@ -825,18 +823,18 @@ describe('NxCombobox', function() {
             { ...pristineMinimalProps, validationErrors: 'foo', id: '1' },
             multiValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'], id: '2' },
-            singleRender = rtlRenderElement<RenderProps>(NxCombobox, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement<RenderProps>(NxCombobox, multiValidationErrorsMinimalProps);
+            singleRender = rtlRenderElement<Props>(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement<Props>(NxCombobox, multiValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const singleError = within(singleRender() as HTMLElement),
               multiError = within(multiRender() as HTMLElement);
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the combobox', function() {
@@ -850,9 +848,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -864,7 +862,7 @@ describe('NxCombobox', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the combobox', function() {
@@ -879,13 +877,13 @@ describe('NxCombobox', function() {
 
       describe('when there are no validation errors', function() {
         const noValidationErrorsMinimalProps:Props = nonPristineMinimalProps,
-            quickRender = rtlRender<RenderProps>(NxCombobox, noValidationErrorsMinimalProps);
+            quickRender = rtlRender<Props>(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the combobox', function() {
@@ -895,9 +893,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -909,7 +907,7 @@ describe('NxCombobox', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the combobox', function() {
@@ -923,18 +921,18 @@ describe('NxCombobox', function() {
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
             multiValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRenderElement<RenderProps>(NxCombobox, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement<RenderProps>(NxCombobox, multiValidationErrorsMinimalProps);
+            singleRender = rtlRenderElement<Props>(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement<Props>(NxCombobox, multiValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const singleError = within(singleRender() as HTMLElement),
               multiError = within(multiRender() as HTMLElement);
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the combobox', function() {
@@ -948,9 +946,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -962,7 +960,7 @@ describe('NxCombobox', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the combobox', function() {
@@ -981,13 +979,13 @@ describe('NxCombobox', function() {
 
       describe('when there are no validation errors', function() {
         const noValidationErrorsMinimalProps:Props = pristineMinimalProps,
-            quickRender = rtlRender<RenderProps>(NxCombobox, noValidationErrorsMinimalProps);
+            quickRender = rtlRender<Props>(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the combobox', function() {
@@ -997,9 +995,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -1011,7 +1009,7 @@ describe('NxCombobox', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the combobox', function() {
@@ -1025,18 +1023,18 @@ describe('NxCombobox', function() {
             { ...pristineMinimalProps, validationErrors: 'foo' },
             multiValidationErrorsMinimalProps:Props =
             { ...pristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRender<RenderProps>(NxCombobox, singleValidationErrorsMinimalProps),
-            multiRender = rtlRender<RenderProps>(NxCombobox, multiValidationErrorsMinimalProps);
+            singleRender = rtlRender<Props>(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRender<Props>(NxCombobox, multiValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const singleError = singleRender(),
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the combobox', function() {
@@ -1050,9 +1048,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -1068,10 +1066,10 @@ describe('NxCombobox', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('combobox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('combobox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the combobox', function() {
@@ -1090,13 +1088,13 @@ describe('NxCombobox', function() {
 
       describe('when there are no validation errors', function() {
         const noValidationErrorsMinimalProps:Props = nonPristineMinimalProps,
-            quickRender = rtlRender<RenderProps>(NxCombobox, noValidationErrorsMinimalProps);
+            quickRender = rtlRender<Props>(NxCombobox, noValidationErrorsMinimalProps);
 
         it('has no validation alert and no a11y error message', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the combobox', function() {
@@ -1106,9 +1104,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -1120,7 +1118,7 @@ describe('NxCombobox', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the combobox', function() {
@@ -1134,18 +1132,18 @@ describe('NxCombobox', function() {
             { ...nonPristineMinimalProps, validationErrors: 'foo' },
             multiValidationErrorsMinimalProps:Props =
             { ...nonPristineMinimalProps, validationErrors: ['bar', 'foo'] },
-            singleRender = rtlRenderElement<RenderProps>(NxCombobox, singleValidationErrorsMinimalProps),
-            multiRender = rtlRenderElement<RenderProps>(NxCombobox, multiValidationErrorsMinimalProps);
+            singleRender = rtlRenderElement<Props>(NxCombobox, singleValidationErrorsMinimalProps),
+            multiRender = rtlRenderElement<Props>(NxCombobox, multiValidationErrorsMinimalProps);
 
         it('has non-empty validation alert and a11y error message based on the first error', function() {
           const singleError = within(singleRender() as HTMLElement),
               multiError = within(multiRender() as HTMLElement);
 
           expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-          expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+          expect(singleError.getByRole('combobox')).toHaveAccessibleErrorMessage('foo');
 
           expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-          expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+          expect(multiError.getByRole('combobox')).toHaveAccessibleErrorMessage('bar');
         });
 
         it('sets aria-invalid on the combobox', function() {
@@ -1159,9 +1157,9 @@ describe('NxCombobox', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxCombobox { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -1177,10 +1175,10 @@ describe('NxCombobox', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('combobox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('combobox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the combobox', function() {
@@ -1224,7 +1222,7 @@ describe('NxCombobox', function() {
     });
 
     describe('when true', function() {
-      const quickRender = rtlRender<RenderProps>(NxCombobox, { ...minimalProps, filterInput: true });
+      const quickRender = rtlRender<Props>(NxCombobox, { ...minimalProps, filterInput: true });
 
       // Note: the button only being visible when a value is entered is implemented in CSS and so not
       // tested here
@@ -1249,9 +1247,9 @@ describe('NxCombobox', function() {
         const user = userEvent.setup(),
             onSubmit = jest.fn(),
             view = render(
-              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-                <NxCombobox {...minimalProps} filterInput={true} value="a" />
-              </NxForm>
+                <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                  <NxCombobox {...minimalProps} filterInput={true} value="a" />
+                </NxForm>
             );
 
         await runTimers();
@@ -1356,9 +1354,9 @@ describe('NxCombobox', function() {
         const user = userEvent.setup(),
             onSubmit = jest.fn(),
             view = render(
-              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-                <NxCombobox {...minimalProps} filterInput={true} value="a"/>
-              </NxForm>
+                <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                  <NxCombobox {...minimalProps} filterInput={true} value="a"/>
+                </NxForm>
             );
 
         await runTimers();

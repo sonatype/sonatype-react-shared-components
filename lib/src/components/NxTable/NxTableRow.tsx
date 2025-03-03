@@ -4,17 +4,19 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef, useContext, useRef, useEffect, useState, useMemo } from 'react';
+import React, { useContext, useRef, useEffect, useState, useMemo } from 'react';
 import classnames from 'classnames';
 import { join, map, prop, filter } from 'ramda';
 import useMergedRef from '@react-hook/merged-ref';
 
 import { NxTableRowProps, nxTableRowPropTypes} from './types';
 import { HeaderContext, RowContext } from './contexts';
+import { ensureRef } from '../../util/reactUtil';
 export { NxTableRowProps };
 
-const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxTableRow(props, externalRef) {
+export default function NxTableRow(props: NxTableRowProps) {
   const {
+        ref: externalRef,
         isFilterHeader: isFilterHeaderProp,
         isClickable = false,
         className,
@@ -30,7 +32,7 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
       // This component uses the DOM to retrieve that and provides it via RowContext
       [rowTextContent, setRowTextContent] = useState(''),
       rowRef = useRef<HTMLTableRowElement>(null),
-      ref = useMergedRef(rowRef, externalRef),
+      ref = useMergedRef(rowRef, ensureRef(externalRef)),
       rowLabel = clickAccessibleLabel || rowTextContent,
       rowContext = useMemo(() => ({
         label: rowLabel,
@@ -63,8 +65,6 @@ const NxTableRow = forwardRef<HTMLTableRowElement, NxTableRowProps>(function NxT
       </RowContext.Provider>
     </tr>
   );
-});
+}
 
 NxTableRow.propTypes = nxTableRowPropTypes;
-
-export default NxTableRow;

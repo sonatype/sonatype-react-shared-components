@@ -9,11 +9,11 @@ import { userEvent } from '../../../__testutils__/rtlUtils';
 import React from 'react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
-import NxLoadWrapper from '../NxLoadWrapper';
+import NxLoadWrapper, { Props } from '../NxLoadWrapper';
 
 describe('NxLoadError', function() {
   const children = <div className="children">Foo</div>;
-  const minimalProps = {
+  const minimalProps: Props = {
     children,
     retryHandler: () => {}
   };

@@ -9,12 +9,12 @@ import { within, fireEvent, screen } from '@testing-library/dom';
 import { userEvent } from '../../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
-import NxStatefulForm from '../NxStatefulForm';
+import NxStatefulForm, { Props } from '../NxStatefulForm';
 import NxButton from '../../../NxButton/NxButton';
 import { FormAriaContext } from '../../context';
 
 describe('NxStatefulForm', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         onSubmit: () => {},
         children: <div/>
       },
@@ -357,9 +357,9 @@ describe('NxStatefulForm', function() {
     expect(screen.getByTestId('foo')).toHaveTextContent('false');
 
     rerender(
-      <NxStatefulForm { ...minimalProps } validationErrors={[]}>
-        <Fixture />
-      </NxStatefulForm>
+        <NxStatefulForm { ...minimalProps } validationErrors={[]}>
+          <Fixture />
+        </NxStatefulForm>
     );
 
     await user.click(screen.getByRole('button', { name: 'Submit' }));
@@ -368,9 +368,9 @@ describe('NxStatefulForm', function() {
     expect(screen.getByTestId('foo')).toHaveTextContent('false');
 
     rerender(
-      <NxStatefulForm { ...minimalProps } validationErrors="foo">
-        <Fixture />
-      </NxStatefulForm>
+        <NxStatefulForm { ...minimalProps } validationErrors="foo">
+          <Fixture />
+        </NxStatefulForm>
     );
 
     await user.click(screen.getByRole('button', { name: 'Submit' }));
@@ -379,27 +379,27 @@ describe('NxStatefulForm', function() {
     expect(screen.getByTestId('foo')).toHaveTextContent('true');
 
     rerender(
-      <NxStatefulForm { ...minimalProps } validationErrors="bar">
-        <Fixture />
-      </NxStatefulForm>
+        <NxStatefulForm { ...minimalProps } validationErrors="bar">
+          <Fixture />
+        </NxStatefulForm>
     );
 
     // changing to having different validationErrors doesn't count
     expect(screen.getByTestId('foo')).toHaveTextContent('true');
 
     rerender(
-      <NxStatefulForm { ...minimalProps } validationErrors={[]}>
-        <Fixture />
-      </NxStatefulForm>
+        <NxStatefulForm { ...minimalProps } validationErrors={[]}>
+          <Fixture />
+        </NxStatefulForm>
     );
 
     // only changing back to not having validationErrors counts
     expect(screen.getByTestId('foo')).toHaveTextContent('false');
 
     rerender(
-      <NxStatefulForm { ...minimalProps } validationErrors="bar">
-        <Fixture />
-      </NxStatefulForm>
+        <NxStatefulForm { ...minimalProps } validationErrors="bar">
+          <Fixture />
+        </NxStatefulForm>
     );
 
     await user.click(screen.getByRole('button', { name: 'Submit' }));
@@ -407,9 +407,9 @@ describe('NxStatefulForm', function() {
     expect(screen.getByTestId('foo')).toHaveTextContent('true');
 
     rerender(
-      <NxStatefulForm { ...minimalProps }>
-        <Fixture />
-      </NxStatefulForm>
+        <NxStatefulForm { ...minimalProps }>
+          <Fixture />
+        </NxStatefulForm>
     );
 
     // null or undefined validationErrors also counts

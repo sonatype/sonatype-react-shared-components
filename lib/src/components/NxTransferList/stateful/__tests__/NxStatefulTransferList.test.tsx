@@ -581,9 +581,9 @@ describe('NxStatefulTransferList', function() {
       const user = userEvent.setup(),
           onSubmit = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxStatefulTransferList { ...minimalProps } />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxStatefulTransferList { ...minimalProps } />
+              </NxForm>
           ),
           availableGroup = view.getByRole('group', { name: 'Available Items' }),
           availableFilterInput = within(availableGroup).getByRole('textbox', { name: 'Filter' });
@@ -603,9 +603,9 @@ describe('NxStatefulTransferList', function() {
       const user = userEvent.setup(),
           onSubmit = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxStatefulTransferList { ...minimalProps } />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxStatefulTransferList { ...minimalProps } />
+              </NxForm>
           ),
           selectedGroup = view.getByRole('group', { name: 'Transferred Items' }),
           selectedFilterInput = within(selectedGroup).getByRole('textbox', { name: 'Filter' });
@@ -853,10 +853,13 @@ describe('NxStatefulTransferList', function() {
         await user.click(up3Btn);
         expect(onChange).toHaveBeenCalledWith([1, 3, 2]);
 
-        view.rerender(<NxStatefulTransferList { ...minimalProps }
-                                              { ...{ allItems, onChange } }
-                                              allowReordering={true}
-                                              selectedItems={[1, 3, 2]} />);
+        view.rerender(
+            <NxStatefulTransferList { ...minimalProps }
+                                    { ...{ allItems, onChange } }
+                                    allowReordering={true}
+                                    selectedItems={[1, 3, 2]} />
+        );
+
         await runTimers();
         await user.unhover(up3Btn);
         group3 = view.getByRole('group', { name: 'Three' });
@@ -864,10 +867,13 @@ describe('NxStatefulTransferList', function() {
         await user.click(up3Btn);
         expect(onChange).toHaveBeenCalledWith([3, 1, 2]);
 
-        view.rerender(<NxStatefulTransferList { ...minimalProps }
-                                              { ...{ allItems, onChange } }
-                                              allowReordering={true}
-                                              selectedItems={[3, 1, 2]} />);
+        view.rerender(
+            <NxStatefulTransferList { ...minimalProps }
+                                    { ...{ allItems, onChange } }
+                                    allowReordering={true}
+                                    selectedItems={[3, 1, 2]} />
+        );
+
         await runTimers();
         await user.unhover(up3Btn);
         const group1 = view.getByRole('group', { name: 'One' });
@@ -875,10 +881,13 @@ describe('NxStatefulTransferList', function() {
         await user.click(up1Btn);
         expect(onChange).toHaveBeenCalledWith([1, 3, 2]);
 
-        view.rerender(<NxStatefulTransferList { ...minimalProps }
-                                              { ...{ allItems, onChange } }
-                                              allowReordering={true}
-                                              selectedItems={[1, 3, 2]} />);
+        view.rerender(
+            <NxStatefulTransferList { ...minimalProps }
+                                    { ...{ allItems, onChange } }
+                                    allowReordering={true}
+                                    selectedItems={[1, 3, 2]} />
+        );
+
         await runTimers();
         await user.unhover(up1Btn);
         const group2 = view.getByRole('group', { name: 'Two' });

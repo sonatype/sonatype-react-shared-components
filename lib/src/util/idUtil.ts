@@ -44,7 +44,7 @@ function _getUniqueId(prefix: string, contextBox?: ContextBox) {
  * computation expense of a random id.
  */
 export function useUniqueId(prefix: string, explicitId?: string | null) {
-  const idBox = useRef<string>(),
+  const idBox = useRef<string>(undefined),
       contextBox = useContext(StableUniqueIdContext);
 
   if (explicitId != null) {

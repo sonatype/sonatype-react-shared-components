@@ -15,7 +15,7 @@ export { Props } from './types';
 export default function NxStatefulFilterDropdown<T extends string | number = string>(props: Props<T>) {
   const [isOpen, onToggleCollapse] = useToggle(false);
 
-  return <NxFilterDropdown { ...{ isOpen, onToggleCollapse } } {...props} />;
+  return <NxFilterDropdown<T> { ...{ isOpen, onToggleCollapse } } {...props} />;
 }
 
 NxStatefulFilterDropdown.propTypes = propTypes;

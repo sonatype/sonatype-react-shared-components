@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { createEvent, fireEvent, waitFor, render } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, runTimers } from '../../../__testutils__/rtlUtils';
 import { userEvent } from '../../../__testutils__/rtlUtils';
@@ -13,7 +13,7 @@ import NxFilterInput, { Props } from '../NxFilterInput';
 import NxForm from '../../NxForm/NxForm';
 
 describe('NxFilterInput', function() {
-  const minimalProps: Props & RefAttributes<HTMLDivElement> = { value: '' },
+  const minimalProps: Props = { value: '' },
       quickRender = rtlRender(NxFilterInput, minimalProps),
       renderEl = rtlRenderElement(NxFilterInput, minimalProps);
 
@@ -70,7 +70,7 @@ describe('NxFilterInput', function() {
 
     expect(input).not.toHaveAttribute('type', 'textarea');
     expect(input).not.toHaveAttribute('aria-invalid');
-    expect(input).not.toHaveErrorMessage('It\'s all wrong');
+    expect(input).not.toHaveAccessibleErrorMessage('It\'s all wrong');
 
     const el = renderEl({
       validatable: true,
@@ -80,7 +80,7 @@ describe('NxFilterInput', function() {
 
     expect(el).not.toHaveAttribute('type', 'textarea');
     expect(el).not.toHaveAttribute('aria-invalid');
-    expect(el).not.toHaveErrorMessage('It\'s all wrong');
+    expect(el).not.toHaveAccessibleErrorMessage('It\'s all wrong');
   });
 
   it('sets ref on the Input', function() {
@@ -161,9 +161,9 @@ describe('NxFilterInput', function() {
     const user = userEvent.setup(),
         onSubmit = jest.fn(),
         view = render(
-          <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-            <NxFilterInput { ...minimalProps } value="a"/>
-          </NxForm>
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxFilterInput { ...minimalProps } value="a"/>
+            </NxForm>
         );
 
     await runTimers();

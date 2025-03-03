@@ -15,6 +15,7 @@ const NxStatefulIconDropdown: FunctionComponent<Props> = function NxStatefulIcon
 
   return <NxIconDropdown { ...{ isOpen, onToggleCollapse } } {...props} />;
 };
+
 NxStatefulIconDropdown.propTypes = propTypes;
 export default NxStatefulIconDropdown;
 

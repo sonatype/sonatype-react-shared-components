@@ -10,21 +10,21 @@
   },
   "dependencies": {
     "@sonatype/react-shared-components": "file:../lib/dist",
-    "next": "^13.4.9",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.62.1",
-    "webpack": "^5.83.1"
+    "next": "^15.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sass": "^1.85.0",
+    "webpack": "^5.98.0"
   },
   "devDependencies": {
-    "@types/node": "^20.4.1",
-    "@types/react": "^18.2.14",
-    "@wdio/cli": "^8.10.2",
-    "@wdio/local-runner": "^8.10.2",
-    "@wdio/mocha-framework": "^8.10.2",
-    "@wdio/spec-reporter": "^8.10.2",
-    "start-server-and-test": "^2.0.0",
-    "typescript": "~5.0.0",
-    "webdriverio": "^8.10.2"
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.8",
+    "@wdio/cli": "^9.9.0",
+    "@wdio/local-runner": "^9.9.0",
+    "@wdio/mocha-framework": "^9.9.0",
+    "@wdio/spec-reporter": "^9.9.0",
+    "start-server-and-test": "^2.0.10",
+    "typescript": "~5.7.3",
+    "webdriverio": "^9.9.0"
   }
 }

@@ -97,9 +97,9 @@ describe('NxRadio', function() {
       const { container, rerender } = quickRender();
 
       rerender(
-        <NxRadio { ...minimalProps }>
-          <div className="bar"></div>
-        </NxRadio>
+          <NxRadio { ...minimalProps }>
+            <div className="bar"></div>
+          </NxRadio>
       );
 
       expect(container.querySelector('.bar')).toBeInTheDocument();

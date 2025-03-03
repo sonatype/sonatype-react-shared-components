@@ -6,8 +6,9 @@
  */
 import React, { ReactElement, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { always, clamp, dec, identity, inc, isNil } from 'ramda';
-import useResizeObserver from '@react-hook/resize-observer';
 import { useThrottleCallback } from '@react-hook/throttle';
+
+import useResizeObserver from '../../util/useResizeObserver';
 
 import { Props } from './types';
 
@@ -18,15 +19,16 @@ const divOrZero = (x: number, y: number) => x === 0 || y === 0 ? 0 : x / y;
 
 const DEFAULT_INITIAL_CHILD_COUNT = 40;
 
-export default function NxScrollRender({ children, reuseChildren, initialChildCount, spacerEl }: Props) {
-  const fullParent = children,
+export default function NxScrollRender<T extends HTMLElement = HTMLElement>(props: Props<T>) {
+  const { children, reuseChildren, initialChildCount, spacerEl } = props,
+      fullParent = children,
 
       childArray = useMemo(() => React.Children.toArray(fullParent.props.children) as ReactElement[],
           [fullParent.props.children]),
 
       childCount = childArray.length,
 
-      parentRef = useRef<HTMLElement>(null),
+      parentRef = useRef<T>(null),
       leadingSpacerRef = useRef<HTMLElement | null>(null),
       leadingSpacerRefFn = (e: HTMLElement | null) => { leadingSpacerRef.current = e; },
       trailingSpacerRef = useRef<HTMLElement | null>(null),

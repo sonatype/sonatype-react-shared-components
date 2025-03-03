@@ -60,9 +60,9 @@ describe('NxSystemNotice', function() {
   describe('NxSystemNotice.Container', function() {
     it('makes a generic element with the specified children', function() {
       const view = render(
-        <NxSystemNotice.Container>
-          <NxSystemNotice data-testid="child" />
-        </NxSystemNotice.Container>
+          <NxSystemNotice.Container>
+            <NxSystemNotice data-testid="child" />
+          </NxSystemNotice.Container>
       );
       const container = within(view.container).getByRole('generic');
 
