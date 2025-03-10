@@ -23,6 +23,7 @@
   border-radius: var(--nx-border-radius);
   margin: var(--nx-spacing-2x) 0 var(--nx-spacing-6x) 0;
   padding: var(--nx-tile-spacing);
+  border: var(--nx-border-component);
 
   > .nx-footer, > .nx-form > .nx-footer {
     margin-top: var(--nx-spacing-8x);
