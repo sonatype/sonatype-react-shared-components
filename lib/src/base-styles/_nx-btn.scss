@@ -100,6 +100,19 @@
       height: 16px;
     }
   }
+
+  &--small {
+    font-size: var(--nx-font-size-s);
+    padding: var(--nx-spacing-base) var(--nx-spacing-3x);
+    margin: 0 var(--nx-spacing-3x) 0 0;
+
+    .nx-icon {
+      height: var(--nx-spacing-3x);
+      margin-right: var(--nx-spacing-2x);
+    }
+  }
+
+
   @include nx-container-helpers.container-horizontal;
 
 }

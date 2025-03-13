@@ -12,6 +12,7 @@ import {GalleryDescriptionTile, GalleryExampleTile} from '../../gallery-componen
 const nxBtnPrimaryCode = require('./NxBtnPrimaryExample.html'),
     nxBtnDefaultCode = require('./NxBtnDefaultExample.html'),
     nxBtnTertiaryCode = require('./NxBtnTertiaryExample.html'),
+    nxBtnSmallCode = require('./NxBtnSmallExample.html'),
     nxBtnErrorCode = require('./NxBtnErrorExample.html'),
     nxBtnIconCode = require('./NxBtnIconExample.html'),
     nxBtnLinkCode = require('./NxBtnLinkExample.html');
@@ -67,6 +68,13 @@ const NxBtnPage = () =>
               <NxTable.Cell>Modifier on <NxCode>.nx-btn</NxCode></NxTable.Cell>
               <NxTable.Cell>
                 Buttons that indicate or which are used in conjunction with errors and which are styled accordingly
+              </NxTable.Cell>
+            </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell><NxCode>nx-btn--small</NxCode></NxTable.Cell>
+              <NxTable.Cell>Modifier on <NxCode>.nx-btn</NxCode></NxTable.Cell>
+              <NxTable.Cell>
+                Buttons that typically are used in situations where patterns that contain a button are repeated
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
@@ -143,6 +151,13 @@ const NxBtnPage = () =>
                         codeExamples={nxBtnErrorCode}>
       A demonstration of an <NxCode>nx-btn</NxCode> using "error" styles, along with a disabled
       error buttons. Note that the standard disabled styles override the error styles.
+    </GalleryExampleTile>
+
+    <GalleryExampleTile title="Small"
+                        htmlExample={nxBtnSmallCode}
+                        codeExamples={nxBtnSmallCode}>
+      A demonstration of an <NxCode>nx-btn</NxCode> using "small" styles, along with a disabled
+      error buttons. Note that the standard disabled styles override the small styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Buttons with Icons"
