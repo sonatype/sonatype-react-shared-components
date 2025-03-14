@@ -134,6 +134,11 @@ describe('NxButton', function() {
       buttonTests(errorSelector);
     });
 
+    describe('Small styled buttons', function() {
+      const smallSelector = `${selector} .nx-btn--small`;
+      buttonTests(smallSelector);
+    });
+
     describe('Disabled styled buttons', function() {
       describe('secondary', function() {
         const selector = `${disabledSelector} .nx-btn:not(.nx-btn--primary):not(.nx-btn--tertiary):not(.nx-btn--error)`;
@@ -149,6 +154,10 @@ describe('NxButton', function() {
       });
       describe('error', function() {
         const selector = `${disabledSelector} .nx-btn--error`;
+        buttonTests(selector);
+      });
+      describe('small', function() {
+        const selector = `${disabledSelector} .nx-btn--small`;
         buttonTests(selector);
       });
     });
