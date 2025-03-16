@@ -84,17 +84,6 @@ describe('NxButton', function() {
     it('has a dark red background and white inner outline when focused and hovered', focusAndHoverTest(selector));
   });
 
-  describe('Small NxButton', function() {
-    const selector = '#nx-button-small-example .nx-btn:not([disabled]):not(.disabled)';
-
-    it('has a white background by default', simpleTest(selector));
-    it('has a light blue background when hovered', hoverTest(selector));
-    it('has a light blue background when clicked', clickTest(selector));
-    it('has a blue inner outline when focused', focusTest(selector));
-    it('has a darker blue inner outline and light blue background when focused and hovered',
-        focusAndHoverTest(selector));
-  });
-
   describe('NxButton with icon', function() {
     const selector = '#nx-button-icon-example .nx-btn';
 
@@ -124,6 +113,17 @@ describe('NxButton', function() {
       it('looks right when focused and hovered',
           focusAndHoverTest(selector));
     };
+
+    describe('Small NxButton section', function() {
+      const selector = '#nx-button-small-example .nx-btn--small:first-child';
+
+      it('has a white background by default', simpleTest(selector));
+      it('has a light blue background when hovered', hoverTest(selector));
+      it('has a light blue background when clicked', clickTest(selector));
+      it('has a blue inner outline when focused', focusTest(selector));
+      it('has a darker blue inner outline and light blue background when focused and hovered',
+          focusAndHoverTest(selector));
+    });
 
     describe('Secondary styled button', function() {
       const secondarySelector = `${selector} .nx-btn:not(.nx-btn--primary):not(.nx-btn--tertiary):not(.nx-btn--error)`
