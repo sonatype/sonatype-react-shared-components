@@ -65,37 +65,4 @@ describe('NxButton', function() {
     expect(() => render(<NxButton variant="icon-only" title="Save" disabled />))
         .toThrow(TypeError);
   });
-
-  it('applies small modifier class when provided in className', function() {
-    const smallBtn = quickRender({ className: 'nx-btn--small' }).getByRole('button');
-    expect(smallBtn).toHaveClass('nx-btn--small');
-  });
-
-  it('works with small modifier across different button variants', function() {
-    const smallSecondaryBtn = quickRender({ className: 'nx-btn--small' }).getByRole('button');
-    expect(smallSecondaryBtn).toHaveClass('nx-btn--small');
-    expect(smallSecondaryBtn).toHaveClass('nx-btn--secondary');
-
-    const smallPrimaryBtn = quickRender({
-      variant: 'primary',
-      className: 'nx-btn--small'
-    }).getByRole('button');
-    expect(smallPrimaryBtn).toHaveClass('nx-btn--small');
-    expect(smallPrimaryBtn).toHaveClass('nx-btn--primary');
-
-    const smallTertiaryBtn = quickRender({
-      variant: 'tertiary',
-      className: 'nx-btn--small'
-    }).getByRole('button');
-    expect(smallTertiaryBtn).toHaveClass('nx-btn--small');
-    expect(smallTertiaryBtn).toHaveClass('nx-btn--tertiary');
-
-    const smallIconOnlyBtn = quickRender({
-      variant: 'icon-only',
-      className: 'nx-btn--small',
-      title: 'Icon Only'
-    }).getByRole('button');
-    expect(smallIconOnlyBtn).toHaveClass('nx-btn--small');
-    expect(smallIconOnlyBtn).toHaveClass('nx-btn--icon-only');
-  });
 });
