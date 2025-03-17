@@ -67,7 +67,9 @@ const NxBtnPage = () =>
               <NxTable.Cell><NxCode>nx-btn--small</NxCode></NxTable.Cell>
               <NxTable.Cell>Modifier on <NxCode>.nx-btn</NxCode></NxTable.Cell>
               <NxTable.Cell>
-                Buttons that typically are used in situations where patterns that contain a button are repeated
+                Small Buttons are typically used in situations where patterns that contain a button are repeated
+                (Tables, Cards, etc). This is done in order to reduce user overwhelm, as well as the page height
+                used.
               </NxTable.Cell>
             </NxTable.Row>
             <NxTable.Row>
