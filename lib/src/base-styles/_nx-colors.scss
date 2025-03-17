@@ -140,6 +140,12 @@
   --nx-color-tertiary-button-border-active: var(--nx-swatch-grey-60);
   --nx-color-tertiary-button-focus-outline: var(--nx-swatch-grey-40);
   --nx-color-tertiary-button-text: var(--nx-color-text-stark);
+  --nx-color-small-button-background-hover: var(--nx-swatch-indigo-90);
+  --nx-color-small-button-background-active: var(--nx-swatch-indigo-97);
+  --nx-color-small-button-border:  var(--nx-swatch-grey-50);
+  --nx-color-small-button-border-active: var(--nx-swatch-grey-60);
+  --nx-color-small-button-focus-outline: var(--nx-swatch-grey-40);
+  --nx-color-small-button-text: var(--nx-color-text-stark);
   --nx-color-error-button-background: var(--nx-color-error);
   --nx-color-error-button-background-hover: var(--nx-swatch-red-30);
   --nx-color-error-button-background-active: var(--nx-swatch-pink-40);
@@ -487,6 +493,12 @@
     --nx-color-tertiary-button-border-active: var(--nx-swatch-indigo-90);
     --nx-color-tertiary-button-focus-outline: var(--nx-color-tertiary-button-border);
     --nx-color-tertiary-button-text: var(--nx-color-text);
+    --nx-color-small-button-background-hover: var(--nx-swatch-indigo-15);
+    --nx-color-small-button-background-active: var(--nx-swatch-indigo-25);
+    --nx-color-small-button-border:  var(--nx-swatch-indigo-60);
+    --nx-color-small-button-border-active: var(--nx-swatch-indigo-90);
+    --nx-color-small-button-focus-outline: var(--nx-color-tertiary-button-border);
+    --nx-color-small-button-text: var(--nx-color-text);
     --nx-color-error-button-background: var(--nx-swatch-red-35);
     --nx-color-error-button-background-hover: var(--nx-swatch-red-25);
     --nx-color-error-button-text: var(--nx-swatch-red-95);

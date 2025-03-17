@@ -106,8 +106,8 @@
     font-size: var(--nx-font-size-s);
     padding: var(--nx-spacing-base) var(--nx-spacing-3x);
     margin: 0 var(--nx-spacing-3x) 0 0;
-    border-color: var(--nx-swatch-grey-50);
-    color: var(--nx-swatch-grey-05);
+    border-color: var(--nx-color-small-button-border);
+    color: var(--nx-color-small-button-text);
 
     .nx-icon {
       height: var(--nx-spacing-3x);
@@ -115,18 +115,18 @@
     }
 
     &:hover {
-      background-color: var(--nx-swatch-indigo-90);
-      color: var(--nx-swatch-grey-05);
+      background-color: var(--nx-color-small-button-background-hover);
+      color: var(--nx-color-small-button-text);
     }
 
     &:focus {
-      outline-color: var(--nx-swatch-grey-40);
+      outline-color: var(--nx-color-small-button-focus-outline);
     }
 
     &:active {
-      background-color: var(--nx-color-tertiary-button-background-active);
-      border-color: var(--nx-color-tertiary-button-border-active);
-      color: var(--nx-color-tertiary-button-text);
+      background-color: var(--nx-color-small-button-background-active);
+      border-color: var(--nx-color-small-button-border-active);
+      color: var(--nx-color-small-button-text);
     }
   }
 }
