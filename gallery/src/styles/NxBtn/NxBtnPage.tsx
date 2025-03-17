@@ -156,8 +156,9 @@ const NxBtnPage = () =>
     <GalleryExampleTile title="Small"
                         htmlExample={nxBtnSmallCode}
                         codeExamples={nxBtnSmallCode}>
-      A demonstration of an <NxCode>nx-btn</NxCode> using "small" styles, along with a disabled
-      small buttons. Note that the standard disabled styles override the small styles.
+      A demonstration of buttons using the <NxCode>nx-btn--small</NxCode> modifier, which can be combined with any
+      button variant (primary, secondary, tertiary, error, icon-only). This example shows various combinations including
+      disabled states. Note that the standard disabled styles override the error styles.
     </GalleryExampleTile>
 
     <GalleryExampleTile title="Buttons with Icons"
