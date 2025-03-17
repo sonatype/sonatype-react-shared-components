@@ -119,10 +119,10 @@ describe('NxButton', function() {
       const selector = '#nx-button-small-example .nx-btn--small:first-child';
 
       it('has a white background by default', simpleTest(selector));
-      it('has a light blue background when hovered', hoverTest(selector));
-      it('has a light blue background when clicked', clickTest(selector));
-      it('has a blue inner outline when focused', focusTest(selector));
-      it('has a darker blue inner outline and light blue background when focused and hovered',
+      it('has a indigo background when hovered', hoverTest(selector));
+      it('has a light indigo background when clicked', clickTest(selector));
+      it('has a grey inner outline and white background when focused', focusTest(selector));
+      it('has a grey inner outline and indigo background when focused and hovered',
           focusAndHoverTest(selector));
     });
 

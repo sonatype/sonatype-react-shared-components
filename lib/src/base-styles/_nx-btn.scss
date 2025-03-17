@@ -106,10 +106,27 @@
     font-size: var(--nx-font-size-s);
     padding: var(--nx-spacing-base) var(--nx-spacing-3x);
     margin: 0 var(--nx-spacing-3x) 0 0;
+    border-color: var(--nx-swatch-grey-50);
+    color: var(--nx-swatch-grey-05);
 
     .nx-icon {
       height: var(--nx-spacing-3x);
       margin-right: var(--nx-spacing-2x);
+    }
+
+    &:hover {
+      background-color: var(--nx-swatch-indigo-90);
+      color: var(--nx-swatch-grey-05);
+    }
+
+    &:focus {
+      outline-color: var(--nx-swatch-grey-40);
+    }
+
+    &:active {
+      background-color: var(--nx-color-tertiary-button-background-active);
+      border-color: var(--nx-color-tertiary-button-border-active);
+      color: var(--nx-color-tertiary-button-text);
     }
   }
 }
