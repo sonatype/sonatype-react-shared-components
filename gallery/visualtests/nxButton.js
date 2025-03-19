@@ -115,8 +115,8 @@ describe('NxButton', function() {
     };
 
     describe('Secondary styled button', function() {
-      const secondarySelector = `${selector} .nx-btn:not`
-      + '(:is(.nx-btn--primary, .nx-btn--tertiary, .nx-btn--error, .nx-btn--small))';
+      const secondarySelector = `${selector} ` +
+          '.nx-btn:not(:is(.nx-btn--primary, .nx-btn--tertiary, .nx-btn--error, .nx-btn--small))';
       buttonTests(secondarySelector);
     });
 
@@ -142,8 +142,8 @@ describe('NxButton', function() {
 
     describe('Disabled styled buttons', function() {
       describe('secondary', function() {
-        const selector = `${disabledSelector} .nx-btn:not`
-            + '(:is(.nx-btn--primary, .nx-btn--tertiary, .nx-btn--error, .nx-btn--small))';
+        const selector = `${disabledSelector} ` +
+            '.nx-btn:not(:is(.nx-btn--primary, .nx-btn--tertiary, .nx-btn--error, .nx-btn--small))';
         buttonTests(selector);
       });
       describe('primary', function() {

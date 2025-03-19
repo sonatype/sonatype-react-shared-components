@@ -68,7 +68,7 @@ describe('Small NxButton section', function () {
   });
 
   describe('Small Button with Icon', function () {
-    const withIconSelector = `${selector} .nx-btn-bar:nth-child(2) .nx-btn--small:has(span, svg.nx-icon)`;
+    const withIconSelector = `${selector} #nx-button-small-icon-button`;
     it('looks right', simpleTest(withIconSelector));
   });
 });
