@@ -108,8 +108,10 @@
 
     .nx-icon {
       max-height: 12px;
-      max-width: 12px;
     }
+
+    display: inline-flex;
+    align-items: center;
   }
 }
 
