@@ -98,10 +98,10 @@ describe('NxButton', function() {
 
     it('shows tooltips', hoverTest(iconOnlyBtnExample, selector, true));
   });
-
   describe('nx-btn class on <a>', function() {
     const selector = '#nx-btn-links-example .nx-btn-bar:first-child';
-    const disabledSelector = '#nx-btn-links-example .nx-btn-bar:last-child';
+    const disabledSelector = '#nx-btn-links-example .nx-btn-bar:nth-child(2)';
+    const smallDisabledSelector = '#nx-btn-links-example .nx-btn-bar:nth-child(3)';
 
     const { simpleTest, hoverTest, clickTest, focusTest, focusAndHoverTest } = setupBrowser('#/pages/Button (HTML)');
 
@@ -115,7 +115,8 @@ describe('NxButton', function() {
     };
 
     describe('Secondary styled button', function() {
-      const secondarySelector = `${selector} .nx-btn:not(.nx-btn--primary):not(.nx-btn--tertiary):not(.nx-btn--error)`;
+      const secondarySelector = selector +
+          ' .nx-btn:not(:is(.nx-btn--primary, .nx-btn--tertiary, .nx-btn--error, .nx-btn--small))';
       buttonTests(secondarySelector);
     });
 
@@ -134,9 +135,15 @@ describe('NxButton', function() {
       buttonTests(errorSelector);
     });
 
+    describe('Small styled buttons', function() {
+      const smallSelector = `${selector} .nx-btn--small`;
+      buttonTests(smallSelector);
+    });
+
     describe('Disabled styled buttons', function() {
       describe('secondary', function() {
-        const selector = `${disabledSelector} .nx-btn:not(.nx-btn--primary):not(.nx-btn--tertiary):not(.nx-btn--error)`;
+        const selector = disabledSelector +
+            ' .nx-btn:not(:is(.nx-btn--primary, .nx-btn--tertiary, .nx-btn--error, .nx-btn--small))';
         buttonTests(selector);
       });
       describe('primary', function() {
@@ -149,6 +156,10 @@ describe('NxButton', function() {
       });
       describe('error', function() {
         const selector = `${disabledSelector} .nx-btn--error`;
+        buttonTests(selector);
+      });
+      describe('small', function() {
+        const selector = `${smallDisabledSelector} .nx-btn--small`;
         buttonTests(selector);
       });
     });
