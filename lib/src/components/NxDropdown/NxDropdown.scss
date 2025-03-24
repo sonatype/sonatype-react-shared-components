@@ -64,10 +64,11 @@
   }
 
   .nx-dropdown__toggle-label {
-    @include nx-container-helpers.container-horizontal;
     @include nx-text-helpers.truncate-ellipsis;
 
     flex-grow: 1;
+
+    @include nx-container-helpers.container-horizontal;
   }
 
   .nx-dropdown__toggle-caret {

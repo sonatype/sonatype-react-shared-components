@@ -14,8 +14,6 @@
 // Base Tiles
 
 .nx-tile {
-  @include nx-container-helpers.container-vertical;
-
   // the "padding" around the inside edge of the nx-tile
   --nx-tile-spacing: var(--nx-spacing-6x);
 
@@ -27,6 +25,8 @@
   > .nx-footer, > .nx-form > .nx-footer {
     margin-top: var(--nx-spacing-8x);
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 // Tile headers
@@ -74,23 +74,23 @@
 }
 
 .nx-tile__actions {
-  @include nx-container-helpers.container-horizontal;
-
   align-self: start;
   grid-area: actions;
   margin-left: var(--nx-spacing-6x);
   text-align: right;
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-tile__tags {
-  @include nx-container-helpers.container-horizontal;
-
   grid-area: tags;
   margin-left: var(--nx-spacing-4x);
 
   .nx-policy-violation-indicator {
     margin: 0;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-tile-content {
@@ -110,7 +110,6 @@
 
 // On pages with tiles with multiple sections these are lighter weight titles
 .nx-tile-subsection {
-  @include nx-container-helpers.container-vertical;
   margin-top: var(--nx-spacing-8x);
 
   // the first subsection should be separated from preceding non-subsection content by a line. The line should not
@@ -127,8 +126,10 @@
   }
 
   .nx-tile-subsection__header {
-    @include nx-container-helpers.container-vertical;
-
     margin-bottom: var(--nx-spacing-4x);
+
+    @include nx-container-helpers.container-vertical;
   }
+
+  @include nx-container-helpers.container-vertical;
 }

@@ -150,7 +150,7 @@ The RSC code is split into two separate codebases: the library itself which live
 ## Building
 
 ### Required Software
-* Node 18.x or 16.x. Automated testing is performed on 18.x.
+* Node 20.x
 * yarn 1.22.x
 * git-lfs for visual test snapshots. For the command line git client, git-lfs is a separate program which functions as a
 plugin; for graphical git clients, git-lfs support is often built-in. To check whether your checkout used git-lfs
@@ -180,7 +180,17 @@ In `gallery`:
 ```
 yarn clean && rm -rf node_modules && yarn install && yarn start
 ```
-If on Windows, adapt the syntax and `rm` command as necessary.
+If on Windows, adapt the syntax and `rm` command as necessary e.g.
+
+In `lib`:
+```
+yarn clean; Remove-Item -Recurse -Force -Path .\node_modules; yarn install; yarn watch
+```
+
+In `gallery`:
+```
+yarn clean; Remove-Item -Recurse -Force -Path .\node_modules; yarn install; yarn start
+```
 
 ## Running Unit Tests
 

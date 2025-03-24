@@ -5,19 +5,18 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import useMergedRef from '@react-hook/merged-ref';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { KeyboardEventHandler, useEffect, useRef } from 'react';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 
 import { AbstractDropdownProps } from './types';
+import { ensureRef } from '../../util/reactUtil';
 export {
   AbstractDropdownProps,
   AbstractDropdownRenderToggleElement
 } from './types';
 
-// internal component, no propTypes
-/* eslint-disable react/prop-types */
 /**
  * Abstracted Dropdown global event handling.
  * @param isOpen - a boolean to indicate if the dropdown is open or not.
@@ -35,7 +34,7 @@ export {
  *    Note that this fires after the close processing occurs
  * @return - A div with the toggle element and dropdown menu.
  */
-const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((props: AbstractDropdownProps, ref) => {
+export default function AbstractDropdown(props: AbstractDropdownProps) {
   const {
     className,
     isOpen,
@@ -51,9 +50,12 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   } = props;
 
   const menuRef = useRef<HTMLDivElement>(null),
-      menuRefs = [menuRef, ...(menuRefProp ? [menuRefProp] : [])],
-      mergedMenuRef = useMergedRef(...menuRefs),
-      toggleRef = useRef<HTMLButtonElement>(null);
+      mergedMenuRef = useMergedRef(menuRef, ensureRef(menuRefProp)),
+      toggleRef = useRef<HTMLButtonElement>(null),
+
+      // set in onToggleCollapse to signal to handleDocumentClick that the dropdown is opening and so shouldn't
+      // immediately be closed
+      openingRef = useRef(false);
 
   const onKeyDown: KeyboardEventHandler<HTMLDivElement> = event => {
     if (isOpen && !disabled && event.key === 'Escape' && onToggleCollapseProp) {
@@ -76,7 +78,11 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   };
 
   const handleDocumentClick = (event: MouseEvent) => {
-    if (isOpen && onToggleCollapseProp) {
+    if (openingRef.current) {
+      // Same event that caused the element to open in onToggleCollapse, don't immediately close
+      openingRef.current = false;
+    }
+    else if (isOpen && onToggleCollapseProp) {
       let defaultPrevented = false;
 
       if (onCloseClick) {
@@ -110,6 +116,7 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
     // (i.e. when not already open)
     if (!isOpen && onToggleCollapseProp) {
       onToggleCollapseProp();
+      openingRef.current = true;
     }
   }
 
@@ -138,9 +145,7 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
   }
 
   return (
-    // Ignore the a11y linter, this onKeyDown is to catch events bubbling up from interactive children
-    /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
-    <div ref={ref} className={className} onKeyDown={onKeyDown} {...attrs}>
+    <div className={className} onKeyDown={onKeyDown} {...attrs}>
       { renderToggleElement(toggleRef, onToggleCollapse) }
       { isOpen &&
         <NxDropdownMenu ref={mergedMenuRef} onClosing={onMenuClosing}>
@@ -149,6 +154,4 @@ const AbstractDropdown = forwardRef<HTMLDivElement, AbstractDropdownProps>((prop
       }
     </div>
   );
-});
-
-export default AbstractDropdown;
+}

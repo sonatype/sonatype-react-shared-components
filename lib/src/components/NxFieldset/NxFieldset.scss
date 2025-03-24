@@ -11,8 +11,6 @@
 // be used, but you'll still typically want the <legend> styled the way a <label> on a text field would be using
 // .nx-label.
 .nx-fieldset {
-  @include nx-container-helpers.container-vertical;
-
   border: 0;
   margin: 0 0 var(--nx-spacing-8x) 0;
   min-inline-size: auto;
@@ -23,4 +21,6 @@
   &.invalid > :nth-last-child(2) {
     margin-bottom: 0;
   }
+
+  @include nx-container-helpers.container-vertical;
 }

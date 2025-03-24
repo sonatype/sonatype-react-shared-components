@@ -23,7 +23,12 @@ export function splitOutFirst(type: ComponentType, children: ReactNode): [ReactE
       matchingChild = child;
     }
     else {
-      nonMatchingChildren.push(child);
+      if (React.isValidElement(child) && child.key === null) {
+        nonMatchingChildren.push(React.cloneElement(child, { key: nonMatchingChildren.length }));
+      }
+      else {
+        nonMatchingChildren.push(child);
+      }
     }
   });
 
@@ -58,7 +63,8 @@ export function textContent(children: ReactNode): string {
   }
 
   if (React.isValidElement(children)) {
-    children = children.props.children;
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    children = (children.props as any).children;
   }
 
   return React.Children.toArray(children).reduce((text: string, child: ReactNode) => {

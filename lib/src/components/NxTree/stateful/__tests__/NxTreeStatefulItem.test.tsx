@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { rtlRender, rtlRenderElement, userEvent } from '../../../../__testutils__/rtlUtils';
-import { within } from '@testing-library/react';
+import { act, within } from '@testing-library/react';
 
 import NxTree from '../../NxTree';
 import { StatefulItemProps as Props, TreeKeyNavContextType } from '../../types';
@@ -151,7 +151,7 @@ describe('NxTreeStatefulItem', function() {
       // make sure NxTree.StatefulItem is closed before user interaction
       expect(el).toHaveAttribute('aria-expanded', 'false');
 
-      el.focus();
+      await act(() => { el.focus(); });
       await user.keyboard('[ArrowRight]');
       expect(el).toHaveAttribute('aria-expanded', 'true');
     });
@@ -163,7 +163,7 @@ describe('NxTreeStatefulItem', function() {
       // make sure NxTree.StatefulItem is open before user interaction
       expect(el).toHaveAttribute('aria-expanded', 'true');
 
-      el.focus();
+      await act(() => { el.focus(); });
       await user.keyboard('[ArrowLeft]');
       expect(el).toHaveAttribute('aria-expanded', 'false');
     });

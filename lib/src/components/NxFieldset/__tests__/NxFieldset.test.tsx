@@ -97,9 +97,9 @@ describe('NxFieldset', function() {
       'in the FormAriaContext', function() {
       function renderWithContext(showValidationErrors: boolean, props?: Partial<Props>) {
         return render(
-          <FormAriaContext.Provider value={{ showValidationErrors }}>
-            <NxFieldset { ...minimalProps } { ...props } />
-          </FormAriaContext.Provider>
+            <FormAriaContext.Provider value={{ showValidationErrors }}>
+              <NxFieldset { ...minimalProps } { ...props } />
+            </FormAriaContext.Provider>
         );
       }
 

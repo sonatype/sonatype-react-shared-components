@@ -89,17 +89,105 @@ const NxFilterInputPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
-            <NxTable.Cell>HTML <NxCode>&lt;input&gt;</NxCode> Attributes</NxTable.Cell>
             <NxTable.Cell>
-              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/input">
-                Input Attributes
+              id
+            </NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              An HTML id, which will be applied to the underlying <NxCode>&lt;input&gt;</NxCode> and not the top-level
+              div rendered by this component.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              disabled
+            </NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Whether the input is disabled
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              placeholder
+            </NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              The placeholder for the input
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              aria-required
+            </NxTable.Cell>
+            <NxTable.Cell>boolean</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Whether the <NxCode>&lt;input&gt;</NxCode> will be marked as aria-required.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              aria-describedby
+            </NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              An HTML id reference which refers to the element(s) whose content should be used as the accessible
+              description of the <NxCode>&lt;input&gt;</NxCode>.
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              HTML <NxCode>&lt;div&gt;</NxCode> Attributes
+            </NxTable.Cell>
+            <NxTable.Cell>
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/div">
+                Div Attributes
               </NxTextLink>
             </NxTable.Cell>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
-              NxFilterInput supports any html attribute that's normally supported by HTML Inputs. The only notable
-              exceptions are:
-              <NxList className="nx-list--bulleted">
+              NxTextInput supports any html attribute/React prop that's normally supported by HTML
+              <NxCode>&lt;div&gt;</NxCode> elements. The only notable exceptions are:
+              <NxList bulleted>
+                <NxList.Item>
+                  <NxList.Text>
+                    <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly
+                    known as{' '}
+                    <NxTextLink external href="https://reactjs.org/docs/uncontrolled-components.html">
+                      uncontrolled inputs
+                    </NxTextLink>
+                  </NxList.Text>
+                </NxList.Item>
+                <NxList.Item>
+                  <NxList.Text>
+                    The attributes specified above, whose types are as defined here and not as specified in the
+                    react propTypes.
+                  </NxList.Text>
+                </NxList.Item>
+              </NxList>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>inputAttributes</NxTable.Cell>
+            <NxTable.Cell>
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/input">
+                Input Attributes
+              </NxTextLink>
+              <NxTextLink external href="https://developer.mozilla.org/en/docs/Web/HTML/Element/textarea">
+                Textarea Attributes
+              </NxTextLink>
+            </NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              Additional attributes to be passed to the
+              underlying <NxCode>&lt;input&gt;</NxCode> or <NxCode>&lt;textarea&gt;</NxCode>.
+              The only notable exceptions are:
+              <NxList bulleted>
                 <NxList.Item>
                   <NxList.Text>
                     <NxCode>defaultValue</NxCode> which is left out because it creates what's commonly

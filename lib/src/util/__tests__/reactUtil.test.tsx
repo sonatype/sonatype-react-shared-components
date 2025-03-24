@@ -55,7 +55,7 @@ describe('reactUtil', function() {
 
     it('wraps arrays that start with a string', function() {
       const arr = ['bar', <span key="baz">baz</span>],
-          result = ensureStartEndElements(arr) as ReactElement,
+          result = ensureStartEndElements(arr) as any,
           renderResult = renderEl(result);
 
       expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>');
@@ -66,7 +66,7 @@ describe('reactUtil', function() {
 
     it('wraps arrays that start with a number', function() {
       const arr = [5, <span key="baz">baz</span>],
-          result = ensureStartEndElements(arr) as ReactElement,
+          result = ensureStartEndElements(arr) as any,
           renderResult = renderEl(result);
 
       expect(renderResult).toContainHTML('<span>5<span>baz</span></span>');
@@ -77,7 +77,7 @@ describe('reactUtil', function() {
 
     it('wraps arrays that end with a string', function() {
       const arr = [<span key="foo">foo</span>, 'bar'],
-          result = ensureStartEndElements(arr) as ReactElement,
+          result = ensureStartEndElements(arr) as any,
           renderResult = renderEl(result);
 
       expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>');
@@ -88,7 +88,7 @@ describe('reactUtil', function() {
 
     it('wraps arrays that end with a number', function() {
       const arr = [<span key="foo">foo</span>, 5],
-          result = ensureStartEndElements(arr) as ReactElement,
+          result = ensureStartEndElements(arr) as any,
           renderResult = renderEl(result);
 
       expect(renderResult).toContainHTML('<span><span>foo</span>5</span>');
@@ -100,7 +100,7 @@ describe('reactUtil', function() {
     it('wraps arrays whose first printable element is a string', function() {
       [null, undefined, false, true].forEach(function(nonPrintableVal) {
         const arr = [nonPrintableVal, 'bar', <span key="baz">baz</span>],
-            result = ensureStartEndElements(arr) as ReactElement,
+            result = ensureStartEndElements(arr) as any,
             renderResult = renderEl(result);
 
         expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>');
@@ -113,7 +113,7 @@ describe('reactUtil', function() {
     it('wraps arrays whose first printable element is a number', function() {
       [null, undefined, false, true].forEach(function(nonPrintableVal) {
         const arr = [nonPrintableVal, 5, <span key="baz">baz</span>],
-            result = ensureStartEndElements(arr) as ReactElement,
+            result = ensureStartEndElements(arr) as any,
             renderResult = renderEl(result);
 
         expect(renderResult).toContainHTML('<span>5<span>baz</span></span>');
@@ -126,7 +126,7 @@ describe('reactUtil', function() {
     it('wraps arrays whose last printable element is a string', function() {
       [null, undefined, false, true].forEach(function(nonPrintableVal) {
         const arr = [<span key="foo">foo</span>, 'bar', nonPrintableVal],
-            result = ensureStartEndElements(arr) as ReactElement,
+            result = ensureStartEndElements(arr) as any,
             renderResult = renderEl(result);
 
         expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>');
@@ -139,7 +139,7 @@ describe('reactUtil', function() {
     it('wraps arrays whose last printable element is a number', function() {
       [null, undefined, false, true].forEach(function(nonPrintableVal) {
         const arr = [<span key="foo">foo</span>, 5, nonPrintableVal],
-            result = ensureStartEndElements(arr) as ReactElement,
+            result = ensureStartEndElements(arr) as any,
             renderResult = renderEl(result);
 
         expect(renderResult).toContainHTML('<span><span>foo</span>5</span>');
@@ -182,7 +182,7 @@ describe('reactUtil', function() {
     // The key difference from ensureStartEndElements
     it('wraps arrays that start and end with elements', function() {
       const arr = [<span key="foo">foo</span>, 'bar', null, false, <span key="baz">baz</span>],
-          result = ensureElement(arr) as ReactElement,
+          result = ensureElement(arr) as any,
           renderResult = renderEl(result);
 
       expect(renderResult)
@@ -200,7 +200,7 @@ describe('reactUtil', function() {
 
     it('wraps arrays that start with a string', function() {
       const arr = ['bar', <span key="baz">baz</span>],
-          result = ensureElement(arr) as ReactElement,
+          result = ensureElement(arr) as any,
           renderResult = renderEl(result);
 
       expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>');
@@ -211,7 +211,7 @@ describe('reactUtil', function() {
 
     it('wraps arrays that start with a number', function() {
       const arr = [5, <span key="baz">baz</span>],
-          result = ensureElement(arr) as ReactElement,
+          result = ensureElement(arr) as any,
           renderResult = renderEl(result);
 
       expect(renderResult).toContainHTML('<span>5<span>baz</span></span>');
@@ -222,7 +222,7 @@ describe('reactUtil', function() {
 
     it('wraps arrays that end with a string', function() {
       const arr = [<span key="foo">foo</span>, 'bar'],
-          result = ensureElement(arr) as ReactElement,
+          result = ensureElement(arr) as any,
           renderResult = renderEl(result);
 
       expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>');
@@ -233,7 +233,7 @@ describe('reactUtil', function() {
 
     it('wraps arrays that end with a number', function() {
       const arr = [<span key="foo">foo</span>, 5],
-          result = ensureElement(arr) as ReactElement,
+          result = ensureElement(arr) as any,
           renderResult = renderEl(result);
 
       expect(renderResult).toContainHTML('<span><span>foo</span>5</span>');
@@ -245,7 +245,7 @@ describe('reactUtil', function() {
     it('wraps arrays whose first printable element is a string', function() {
       [null, undefined, false, true].forEach(function(nonPrintableVal) {
         const arr = [nonPrintableVal, 'bar', <span key="baz">baz</span>],
-            result = ensureElement(arr) as ReactElement,
+            result = ensureElement(arr) as any,
             renderResult = renderEl(result);
 
         expect(renderResult).toContainHTML('<span>bar<span>baz</span></span>');
@@ -258,7 +258,7 @@ describe('reactUtil', function() {
     it('wraps arrays whose first printable element is a number', function() {
       [null, undefined, false, true].forEach(function(nonPrintableVal) {
         const arr = [nonPrintableVal, 5, <span key="baz">baz</span>],
-            result = ensureElement(arr) as ReactElement,
+            result = ensureElement(arr) as any,
             renderResult = renderEl(result);
 
         expect(renderResult).toContainHTML('<span>5<span>baz</span></span>');
@@ -271,7 +271,7 @@ describe('reactUtil', function() {
     it('wraps arrays whose last printable element is a string', function() {
       [null, undefined, false, true].forEach(function(nonPrintableVal) {
         const arr = [<span key="foo">foo</span>, 'bar', nonPrintableVal],
-            result = ensureElement(arr) as ReactElement,
+            result = ensureElement(arr) as any,
             renderResult = renderEl(result);
 
         expect(renderResult).toContainHTML('<span><span>foo</span>bar</span>');
@@ -284,7 +284,7 @@ describe('reactUtil', function() {
     it('wraps arrays whose last printable element is a number', function() {
       [null, undefined, false, true].forEach(function(nonPrintableVal) {
         const arr = [<span key="foo">foo</span>, 5, nonPrintableVal],
-            result = ensureElement(arr) as ReactElement,
+            result = ensureElement(arr) as any,
             renderResult = renderEl(result);
 
         expect(renderResult).toContainHTML('<span><span>foo</span>5</span>');

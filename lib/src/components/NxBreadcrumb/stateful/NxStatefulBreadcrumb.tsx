@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { NxBreadcrumb } from '../../..';
+import NxBreadcrumb from '../NxBreadcrumb';
 import useToggle from '../../../util/useToggle';
 
 import { StatefulProps } from '../types';

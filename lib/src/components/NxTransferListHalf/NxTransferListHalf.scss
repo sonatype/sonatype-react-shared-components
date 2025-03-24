@@ -45,8 +45,6 @@ $-visible-item-count: 10;
 }
 
 .nx-transfer-list__move-all {
-  @include nx-container-helpers.container-horizontal;
-
   align-self: start;
   background: initial;
   border: initial;
@@ -67,6 +65,8 @@ $-visible-item-count: 10;
   + .nx-transfer-list__item-list {
     margin-top: var(--nx-spacing-4x);
   }
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-transfer-list__item-list {
@@ -102,7 +102,6 @@ $-visible-item-count: 10;
 }
 
 .nx-transfer-list__select {
-  @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
 
   border-radius: var(--nx-border-radius);
@@ -110,6 +109,8 @@ $-visible-item-count: 10;
   flex: auto;
   padding: calc(var(--nx-spacing-2x) - 1px);
   padding-left: var(--nx-spacing-4x);
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-transfer-list__item--movable {

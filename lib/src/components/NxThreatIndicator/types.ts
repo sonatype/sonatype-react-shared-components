@@ -4,7 +4,6 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { WeakValidationMap } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { ThreatLevelNumber, ThreatLevelCategory, allThreatLevelCategories, allThreatLevelNumbers }
@@ -18,7 +17,7 @@ export interface Props {
   presentational?: boolean | null;
 }
 
-export const propTypes: WeakValidationMap<Props> = {
+export const propTypes: PropTypes.WeakValidationMap<Props> = {
   title: PropTypes.string,
   threatLevelCategory: PropTypes.oneOf(allThreatLevelCategories),
   policyThreatLevel: PropTypes.oneOf(allThreatLevelNumbers),

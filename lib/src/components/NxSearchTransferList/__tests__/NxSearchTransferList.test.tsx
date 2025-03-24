@@ -126,9 +126,9 @@ describe('NxSearchTransferList', function() {
       const user = userEvent.setup(),
           onSubmit = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxSearchTransferList { ...minimalProps } searchText="b" />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxSearchTransferList { ...minimalProps } searchText="b" />
+              </NxForm>
           );
 
       await runTimers();
@@ -274,10 +274,10 @@ describe('NxSearchTransferList', function() {
       'while in an error state', function() {
         const onSearch = jest.fn(),
             outsideView = render(
-              <>
-                <NxSearchTransferList {...minimalProps} onSearch= {onSearch} searchText="i" loadError="oops" />
-                <button>Click Me</button>
-              </>
+                <>
+                  <NxSearchTransferList {...minimalProps} onSearch= {onSearch} searchText="i" loadError="oops" />
+                  <button>Click Me</button>
+                </>
             ),
             searchbox = outsideView.getByRole('searchbox'),
             retryBtn = outsideView.getByRole('button', { name: 'Retry' }),
@@ -497,9 +497,9 @@ describe('NxSearchTransferList', function() {
         const user = userEvent.setup(),
             onSubmit = jest.fn(),
             view = render(
-              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-                <NxSearchTransferList {...minimalProps} addedItemsFilter="b" />
-              </NxForm>
+                <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                  <NxSearchTransferList {...minimalProps} addedItemsFilter="b" />
+                </NxForm>
             );
 
         await runTimers();

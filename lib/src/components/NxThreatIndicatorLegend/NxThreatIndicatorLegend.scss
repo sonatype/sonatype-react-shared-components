@@ -24,9 +24,10 @@
   }
 
   .nx-threat-indicator-legend__threat-container {
-    @include nx-container-helpers.container-horizontal;
     @include nx-text-helpers.semi-bold;
     color: var(--nx-color-threat-level-text);
+
+    @include nx-container-helpers.container-horizontal;
   }
 }
 

@@ -7,16 +7,16 @@
 const { setupBrowser } = require('./testUtils');
 
 describe('NxPolicyThreatSlider', function() {
-  const { focusTest, simpleTest, getPage, waitAndGetElements, scrollIntoView, a11yTest } =
+  const { focusTest, simpleTest, getPage, waitAndGetElements, scrollIntoView, a11yTest, wait, isFocused } =
       setupBrowser('#/pages/Policy%20Threat%20Slider');
 
   const exampleSelector = '#nx-policy-threat-slider-example .gallery-example-live',
       disabledExampleSelector = '#nx-policy-threat-slider-disabled-example .nx-policy-threat-slider',
       lowerSliderSelector =
-          `${exampleSelector} .nx-policy-threat-slider__value-label .MuiSlider-thumb`,
+          `${exampleSelector} .nx-policy-threat-slider__value-label .MuiSlider-thumb input`,
       upperSliderSelector =
           `${exampleSelector}
-            .nx-policy-threat-slider__value-label ~ .nx-policy-threat-slider__value-label .MuiSlider-thumb`;
+            .nx-policy-threat-slider__value-label ~ .nx-policy-threat-slider__value-label .MuiSlider-thumb input`;
 
   async function dragSliderHandle(sliderElement, spaces) {
     const { mouse } = getPage(),
@@ -59,6 +59,68 @@ describe('NxPolicyThreatSlider', function() {
 
   describe('Disabled NxPolicyThreatSlider', function() {
     it('looks right', simpleTest(disabledExampleSelector));
+  });
+
+  it('responds correctly to arrow key navigation', async function() {
+    const { keyboard } = getPage(),
+        [lowerSliderElement, upperSliderElement] = await waitAndGetElements(lowerSliderSelector, upperSliderSelector);
+
+    await lowerSliderElement.focus();
+
+    expect(await lowerSliderElement.evaluate(el => el.value)).toBe('0');
+
+    // can't go beyond minimum
+    await keyboard.press('ArrowLeft');
+    await wait(500);
+    expect(await lowerSliderElement.evaluate(el => el.value)).toBe('0');
+
+    await keyboard.press('ArrowRight');
+    await wait(500);
+    expect(await lowerSliderElement.evaluate(el => el.value)).toBe('1');
+
+    await keyboard.press('ArrowRight');
+    await keyboard.press('ArrowRight');
+    await keyboard.press('ArrowRight');
+    await wait(500);
+    expect(await lowerSliderElement.evaluate(el => el.value)).toBe('4');
+
+    await keyboard.press('Tab');
+    expect(await isFocused(upperSliderElement)).toBe(true);
+    expect(await upperSliderElement.evaluate(el => el.value)).toBe('10');
+
+    await keyboard.press('ArrowRight');
+    await wait(500);
+    expect(await upperSliderElement.evaluate(el => el.value)).toBe('10');
+
+    await keyboard.press('ArrowLeft');
+    await wait(500);
+    expect(await upperSliderElement.evaluate(el => el.value)).toBe('9');
+    expect(await lowerSliderElement.evaluate(el => el.value)).toBe('4');
+
+    await keyboard.press('ArrowLeft');
+    await keyboard.press('ArrowLeft');
+    await keyboard.press('ArrowLeft');
+    await keyboard.press('ArrowLeft');
+    await keyboard.press('ArrowLeft');
+    await wait(500);
+    // sliders now equal
+    expect(await upperSliderElement.evaluate(el => el.value)).toBe('4');
+    expect(await lowerSliderElement.evaluate(el => el.value)).toBe('4');
+
+    // crossing to the left
+    await keyboard.press('ArrowLeft');
+    await wait(500);
+    expect(await lowerSliderElement.evaluate(el => el.value)).toBe('3');
+    expect(await upperSliderElement.evaluate(el => el.value)).toBe('4');
+    expect(await isFocused(lowerSliderElement)).toBe(true);
+
+    // crossing to the right
+    await keyboard.press('ArrowRight');
+    await keyboard.press('ArrowRight');
+    await wait(500);
+    expect(await lowerSliderElement.evaluate(el => el.value)).toBe('4');
+    expect(await upperSliderElement.evaluate(el => el.value)).toBe('5');
+    expect(await isFocused(upperSliderElement)).toBe(true);
   });
 
   it('passes a11y checks', a11yTest());

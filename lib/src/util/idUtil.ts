@@ -43,8 +43,8 @@ function _getUniqueId(prefix: string, contextBox?: ContextBox) {
  * if the result of this hook will go unused, you can pass the empty string as the explicitId to avoid the
  * computation expense of a random id.
  */
-export function useUniqueId(prefix: string, explicitId?: string) {
-  const idBox = useRef<string>(),
+export function useUniqueId(prefix: string, explicitId?: string | null) {
+  const idBox = useRef<string>(undefined),
       contextBox = useContext(StableUniqueIdContext);
 
   if (explicitId != null) {

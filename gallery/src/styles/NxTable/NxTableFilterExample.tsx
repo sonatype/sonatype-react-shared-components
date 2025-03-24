@@ -19,7 +19,7 @@ const NxTableFilter = () =>
           <NxFilterInput value="" placeholder="Type a name"/>
         </td>
         <td className="nx-cell nx-cell--header">
-          <NxFilterInput value="" placeholder="Select a country" list="countryList"/>
+          <NxFilterInput value="" placeholder="Select a country" inputAttributes={{ list: 'countryList' }}/>
           <datalist id="countryList">
             <option value="Colombia"/>
             <option value="France"/>

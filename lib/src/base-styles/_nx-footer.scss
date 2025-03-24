@@ -7,8 +7,6 @@
 @use '../scss-shared/nx-container-helpers';
 
 .nx-footer {
-  @include nx-container-helpers.container-vertical;
-
   border-top: var(--nx-border-default);
   margin-top: var(--nx-spacing-6x);
   padding-top: var(--nx-spacing-6x);
@@ -16,4 +14,6 @@
   .nx-alert {
     margin-bottom: var(--nx-spacing-6x);
   }
+
+  @include nx-container-helpers.container-vertical;
 }

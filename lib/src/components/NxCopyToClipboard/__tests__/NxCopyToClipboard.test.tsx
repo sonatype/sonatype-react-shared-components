@@ -69,8 +69,8 @@ describe('NxCopyToClipboard', function() {
     expect(quickRender().getByRole('textbox')).toHaveAttribute('readonly');
   });
 
-  it('adds inputProps to the textbox', function() {
-    const textbox = quickRender({ inputProps: { rows: 1, id: 'foo' } }).getByRole('textbox');
+  it('adds inputProps and inputAttributes to the textbox', function() {
+    const textbox = quickRender({ inputProps: { inputAttributes: { rows: 1 }, id: 'foo' } }).getByRole('textbox');
 
     expect(textbox).toHaveAttribute('id', 'foo');
     expect(textbox).toHaveAttribute('rows', '1');
@@ -82,8 +82,8 @@ describe('NxCopyToClipboard', function() {
     }
 
     describe('when navigator.clipboard is available', function() {
-      let resolveClipboardPromise: Function | null,
-          rejectClipboardPromise: Function | null,
+      let resolveClipboardPromise: (() => void) | null,
+          rejectClipboardPromise: ((x: unknown) => void) | null,
           user: UserEvent;
 
       beforeEach(function() {

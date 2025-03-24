@@ -20,7 +20,6 @@
   }
 
   &__alert {
-    @include nx-container-helpers.container-vertical;
     position: absolute;
     width: 100%;
     border-radius: var(--nx-border-radius);
@@ -36,6 +35,8 @@
     &--error {
       padding: 0;
     }
+
+    @include nx-container-helpers.container-vertical;
   }
 
   &__empty-message {

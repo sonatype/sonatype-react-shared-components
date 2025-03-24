@@ -4,28 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { Ref, useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import NxSearchDropdown from '../NxSearchDropdown';
 import DataItem from '../../../util/DataItem';
 
-import forwardRef from '../../../util/genericForwardRef';
 import { StatefulProps as Props, statefulPropTypes as propTypes } from '../types';
 
-function NxStatefulSearchDropdownRender<T extends string | number = string>(
-  { defaultSearchText, onSelect: onSelectProp, ...otherProps }: Props<T>,
-  ref: Ref<HTMLDivElement>
+export default function NxStatefulSearchDropdown<T extends string | number = string>(
+  { defaultSearchText, onSelect: onSelectProp, ...otherProps }: Props<T>
 ) {
   const [searchText, setSearchText] = useState(defaultSearchText || '');
 
-  function onSelect(item: DataItem<T>) {
+  function onSelect(item: DataItem<T>, evt: MouseEvent<HTMLButtonElement>) {
     setSearchText('');
-    onSelectProp(item);
+    onSelectProp(item, evt);
   }
 
-  return <NxSearchDropdown { ...{ ref, searchText, onSelect, ...otherProps } } onSearchTextChange={setSearchText} />;
+  return <NxSearchDropdown { ...{ searchText, onSelect, ...otherProps } } onSearchTextChange={setSearchText} />;
 }
 
-const NxStatefulSearchDropdown = Object.assign(forwardRef(NxStatefulSearchDropdownRender), { propTypes });
-
-export default NxStatefulSearchDropdown;
+NxStatefulSearchDropdown.propTypes = propTypes;
 export { Props };

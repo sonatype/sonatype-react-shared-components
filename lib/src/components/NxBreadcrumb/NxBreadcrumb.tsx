@@ -22,7 +22,6 @@ function CurrentBreadcrumb({ name }: Crumb) {
   return (
     <NxOverflowTooltip>
       <li className="nx-breadcrumb__list-item nx-breadcrumb__list-item--link-container">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a className="nx-breadcrumb__link nx-breadcrumb__link--current" aria-current="page">{name}</a>
       </li>
     </NxOverflowTooltip>

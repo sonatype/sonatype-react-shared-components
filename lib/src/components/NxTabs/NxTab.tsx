@@ -57,12 +57,13 @@ const NxTab = function NxTabElement(props: NxTabProps) {
 
     const getNextElementFromEventKey = (key: string) => {
       switch (key) {
-        case 'Tab':
+        case 'Tab': {
           if (!activeTab) {
             return;
           }
           const tabId = tabElements[activeTab].getAttribute('aria-controls') as string;
           return document.getElementById(tabId);
+        }
         case 'ArrowLeft':
           return tabElements[index - 1] ?? tabElements[tabElements.length - 1];
         case 'ArrowRight':

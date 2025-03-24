@@ -16,6 +16,7 @@ describe('NxCopyToClipboard', function() {
     waitAndGetElements,
     dismissResultingDialog,
     getPage,
+    wait,
     checkScreenshot
   } = setupBrowser('#/pages/Copy%20To%20Clipboard');
 
@@ -40,9 +41,10 @@ describe('NxCopyToClipboard', function() {
 
     await dismissResultingDialog(async () => {
       await copyBtn.click();
-    });
+    }, 500);
 
     await getPage().mouse.move(0, 0);
+    await wait(200);
 
     await checkScreenshot(codeSnippet);
   });

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { setupBrowser } = require('./testUtils');
+const { setupBrowser, TOOLTIP_WAIT } = require('./testUtils');
 
 describe('NxTransferListHalf', function() {
   const {
@@ -23,8 +23,6 @@ describe('NxTransferListHalf', function() {
     blurElement
   } = setupBrowser('#/pages/Transfer List Half');
 
-  const wait1Sec = () => wait(1000);
-
   const simpleListSelector = '#nx-transfer-list-half-example .nx-transfer-list__half',
       complexListSelector = '#nx-transfer-list-half-ordering-example .nx-transfer-list__half',
       complexListFullSelector = '#nx-transfer-list-half-ordering-example .gallery-example-live',
@@ -40,8 +38,8 @@ describe('NxTransferListHalf', function() {
       secondItemSelector = `${itemsSelector}:nth-child(3) .nx-transfer-list__select`,
       transferAllSelector = `${complexListSelector} .nx-transfer-list__move-all`,
       complexFirstItemSelector = `${complexListSelector} .nx-transfer-list__item:nth-child(2)`,
-      complexSecondItemSelector
-          = `${complexListSelector} .nx-transfer-list__item:nth-child(3) .nx-transfer-list__select`,
+      complexSecondItemSelector =
+        `${complexListSelector} .nx-transfer-list__item:nth-child(3) .nx-transfer-list__select`,
       moveUpSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :first-child`,
       moveDownSelector = `${complexFirstItemSelector} .nx-transfer-list__button-bar > :last-child`,
       filterBoxSelector = `${complexListSelector} .nx-text-input__input`,
@@ -55,12 +53,12 @@ describe('NxTransferListHalf', function() {
     const [list, firstItem] = await waitAndGetElements(simpleListSelector, firstItemSelector);
 
     await scrollIntoView(list);
+    await wait(500);
     await firstItem.hover();
 
     await waitForSelectors('.nx-tooltip');
 
-    // give tooltip time to fully appear
-    await wait1Sec();
+    await wait(TOOLTIP_WAIT);
 
     await checkScreenshot(list);
   });
@@ -94,12 +92,12 @@ describe('NxTransferListHalf', function() {
       const [list, secondItem] = await waitAndGetElements(tooltipListSelector, secondTooltipItemSelector);
 
       await scrollIntoView(list);
+      await wait(500);
       await secondItem.hover();
 
       await waitForSelectors('.nx-tooltip');
 
-      // give tooltip time to fully appear
-      await wait1Sec();
+      await wait(TOOLTIP_WAIT);
 
       await checkScreenshot(list);
     });
@@ -108,12 +106,13 @@ describe('NxTransferListHalf', function() {
       const [list, firstItem] = await waitAndGetElements(tooltipListSelector, firstTooltipItemSelector);
 
       await scrollIntoView(list);
+      await wait(500);
       await firstItem.hover();
 
       await waitForSelectors('.nx-tooltip');
 
       // give tooltip time to fully appear
-      await wait1Sec();
+      await wait(TOOLTIP_WAIT);
 
       const { x, y, width, height } = await list.boundingBox();
 

@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useState, ComponentType } from 'react';
 import { reject, propEq } from 'ramda';
 import {
@@ -37,7 +37,7 @@ const sidebarLogoPath = require('../../assets/images/logo-plaid-villain-text.png
 
 interface ToastModel {
   id: number;
-  alertComponent: ComponentType;
+  alertComponent: ComponentType<{children: ReactNode}>;
   message: string;
 }
 
@@ -45,7 +45,7 @@ export default function NxToastSimpleLayoutExample() {
   const [toastIdInc, setToastIdInc] = useState<number>(0);
   const [toasts, setToasts] = useState<ToastModel[]>([]);
 
-  const addToast = (alertComponent: ComponentType, message: string) => {
+  const addToast = (alertComponent: ComponentType<{children: ReactNode}>, message: string) => {
     const toastId = toastIdInc + 1;
     setToastIdInc(toastId);
     setToasts([

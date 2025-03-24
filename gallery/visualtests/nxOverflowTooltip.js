@@ -102,7 +102,7 @@ describe('NxOverflowTooltip', function() {
       async function() {
         const [inputEl, targetEl] = await waitAndGetElements(
             dynamicExampleTextInputSelector,
-            dynamicExampleTooltipTargetSelector,
+            dynamicExampleTooltipTargetSelector
         );
 
         await inputEl.focus();

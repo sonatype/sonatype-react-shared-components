@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { render, within } from '@testing-library/react';
 
 import * as focusUtil from '../../../util/focusUtil';
@@ -24,9 +24,8 @@ describe('NxModal', function() {
     onClose: () => {}
   };
 
-  type PropsWithRef = Props & RefAttributes<HTMLDialogElement>;
-  const quickRender = rtlRender<PropsWithRef>(NxModal, minimalProps),
-      renderEl = rtlRenderElement<PropsWithRef>(NxModal, minimalProps);
+  const quickRender = rtlRender<Props>(NxModal, minimalProps),
+      renderEl = rtlRenderElement<Props>(NxModal, minimalProps);
 
   it('renders a top-level element with role="dialog"', function () {
     const view = quickRender(),
@@ -149,9 +148,9 @@ describe('NxModal', function() {
           user = userEvent.setup();
 
       render(
-        <div onKeyDown={wrapperKeyDownListener}>
-          <NxModal onClose={jest.fn()}><button>Hello</button></NxModal>
-        </div>
+          <div onKeyDown={wrapperKeyDownListener}>
+            <NxModal onClose={jest.fn()}><button>Hello</button></NxModal>
+          </div>
       );
 
       await user.keyboard('[Escape]');
@@ -165,7 +164,7 @@ describe('NxModal', function() {
   describe('NxModal.Header', function() {
     it('renders an element with role="banner"', function() {
       const view = render(
-        <NxModal { ...minimalProps }><NxModal.Header>Test</NxModal.Header></NxModal>
+          <NxModal { ...minimalProps }><NxModal.Header>Test</NxModal.Header></NxModal>
       );
 
       expect(view.getByRole('banner')).toBeInTheDocument();
@@ -215,29 +214,29 @@ describe('NxModal', function() {
       const user = userEvent.setup();
 
       const { getAllByTestId } = render(
-        <NxModal {...minimalProps}>
-          <a data-testid="tabbable" href="#">foo</a>
-          <a>bar</a>
+          <NxModal {...minimalProps}>
+            <a data-testid="tabbable" href="#">foo</a>
+            <a>bar</a>
 
-          <input data-testid="tabbable" type="text" />
-          <input type="text" disabled />
+            <input data-testid="tabbable" type="text" />
+            <input type="text" disabled />
 
-          <textarea data-testid="tabbable" />
-          <textarea disabled />
+            <textarea data-testid="tabbable" />
+            <textarea disabled />
 
-          <select data-testid="tabbable">
-            <option>foo</option>
-          </select>
-          <select disabled>
-            <option>bar</option>
-          </select>
+            <select data-testid="tabbable">
+              <option>foo</option>
+            </select>
+            <select disabled>
+              <option>bar</option>
+            </select>
 
-          <div data-testid="tabbable" tabIndex={0}>Foo</div>
-          <div tabIndex={-1}>bar</div>
+            <div data-testid="tabbable" tabIndex={0}>Foo</div>
+            <div tabIndex={-1}>bar</div>
 
-          <button data-testid="tabbable">Foo</button>
-          <button disabled>Bar</button>
-        </NxModal>
+            <button data-testid="tabbable">Foo</button>
+            <button disabled>Bar</button>
+          </NxModal>
       );
 
       const tabbables = getAllByTestId('tabbable');
@@ -251,11 +250,11 @@ describe('NxModal', function() {
       const user = userEvent.setup();
 
       const { getAllByRole } = render(
-        <NxModal {...minimalProps}>
-          <button>First</button>
-          <button>Middle</button>
-          <button>Last</button>
-        </NxModal>
+          <NxModal {...minimalProps}>
+            <button>First</button>
+            <button>Middle</button>
+            <button>Last</button>
+          </NxModal>
       );
 
       const buttons = getAllByRole('button');
@@ -273,11 +272,11 @@ describe('NxModal', function() {
       const user = userEvent.setup();
 
       const { getAllByRole } = render(
-        <NxModal {...minimalProps}>
-          <button>First</button>
-          <button>Middle</button>
-          <button>Last</button>
-        </NxModal>
+          <NxModal {...minimalProps}>
+            <button>First</button>
+            <button>Middle</button>
+            <button>Last</button>
+          </NxModal>
       );
 
       const buttons = getAllByRole('button');
@@ -294,9 +293,9 @@ describe('NxModal', function() {
 
   it('should focus on the dialog element when there is no focusable element', function() {
     const { getByRole } = render(
-      <NxModal onClose={() => {}}>
-        <h1>Hi</h1>
-      </NxModal>
+        <NxModal onClose={() => {}}>
+          <h1>Hi</h1>
+        </NxModal>
     );
     expect(getByRole('dialog')).toHaveFocus();
   });

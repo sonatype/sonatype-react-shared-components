@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import NxStatefulSearchDropdown from '../NxStatefulSearchDropdown';
 import NxForm from '../../../NxForm/NxForm';
 import { StatefulProps } from '../../types';
@@ -12,15 +12,14 @@ import { rtlRender, rtlRenderElement, runTimers, userEvent } from '../../../../_
 import { within, render } from '@testing-library/react';
 
 describe('NxStatefulSearchDropdown', function() {
-  type PropsWithRef = StatefulProps<string | number> & RefAttributes<HTMLDivElement>;
   const minimalProps: StatefulProps<string | number> = {
         defaultSearchText: '',
         onSearch: () => {},
         matches: [],
         onSelect: () => {}
       },
-      renderEl = rtlRenderElement<PropsWithRef>(NxStatefulSearchDropdown, minimalProps),
-      quickRender = rtlRender<PropsWithRef>(NxStatefulSearchDropdown, minimalProps),
+      renderEl = rtlRenderElement<StatefulProps<string | number>>(NxStatefulSearchDropdown, minimalProps),
+      quickRender = rtlRender<StatefulProps<string | number>>(NxStatefulSearchDropdown, minimalProps),
       matches = [
         { id: '1', displayName: 'One' },
         { id: '2', displayName: 'Two' }
@@ -100,7 +99,10 @@ describe('NxStatefulSearchDropdown', function() {
     const menuItem = el.getByRole('menuitem', { name: 'item 1' });
     await user.click(menuItem);
 
-    expect(onSelect).toHaveBeenCalledWith({ id: 1, displayName: 'item 1' });
+    expect(onSelect).toHaveBeenCalledWith(
+        { id: 1, displayName: 'item 1' },
+        expect.objectContaining({ target: menuItem })
+    );
     expect(input).toHaveValue('');
   });
 
@@ -261,7 +263,10 @@ describe('NxStatefulSearchDropdown', function() {
 
     await user.click(menuItem);
 
-    expect(onSelect).toHaveBeenCalledWith({ id: '2', displayName: 'Two' });
+    expect(onSelect).toHaveBeenCalledWith(
+        { id: '2', displayName: 'Two' },
+        expect.objectContaining({ target: menuItem })
+    );
   });
 
   it('calls onSearch with the current trimmed searchbox text if focus enters the  ' +
@@ -367,9 +372,9 @@ describe('NxStatefulSearchDropdown', function() {
   it('does not submit form when close button on searchbox is clicked', async function() {
     const onSubmit = jest.fn(),
         view = render(
-          <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-            <NxStatefulSearchDropdown { ...minimalProps } defaultSearchText="One" />
-          </NxForm>
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxStatefulSearchDropdown { ...minimalProps } defaultSearchText="One" />
+            </NxForm>
         );
 
     await runTimers();

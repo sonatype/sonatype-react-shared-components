@@ -53,13 +53,13 @@ export default function NxSearchTransferList<T extends string | number>(props: P
 
   return (
     <div className={classnames('nx-search-transfer-list', classNameProp)} { ...attrs }>
-      <NxSearchDropdown searchText={searchText}
-                        onSearchTextChange={onSearchTextChange}
-                        onSearch={onSearch}
-                        loading={loading}
-                        error={loadError}
-                        matches={searchMatches}
-                        onSelect={onSearchMatchSelect} />
+      <NxSearchDropdown<T> searchText={searchText}
+                           onSearchTextChange={onSearchTextChange}
+                           onSearch={onSearch}
+                           loading={loading}
+                           error={loadError}
+                           matches={searchMatches}
+                           onSelect={onSearchMatchSelect} />
       <NxTransferListHalf<T> label={addedItemsLabel || 'Items Added'}
                              filterValue={addedItemsFilter}
                              onFilterChange={onAddedItemsFilterChange}

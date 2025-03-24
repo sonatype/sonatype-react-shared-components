@@ -19,7 +19,7 @@ instances. This is most easily accomplished via docker.  See the Jenkinsfile for
 following command which is adequate for creating a local test environment:
 
 ```
-docker run --name selenium-chrome -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:3.141.59
+docker run --name selenium-chrome -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:127.0-20250202
 ```
 
 When using docker, you must also set the `TEST_IP` environment variable to a non-localhost IP address, i.e.

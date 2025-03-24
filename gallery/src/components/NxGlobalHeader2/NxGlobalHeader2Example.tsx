@@ -34,11 +34,7 @@ export default function NxGlobalHeader2Example() {
     <>
       <NxGlobalHeader2 logoProps={{ lightPath, darkPath, altText: 'Custom' }}
                        homeHref="#/">
-        <NxFilterInput placeholder="Search"
-                       aria-label="Global Search"
-                       searchIcon
-                       value={filterInputValue}
-                       onChange={setFilterInputValue} />
+        <NxFilterInput placeholder="Search" searchIcon value={filterInputValue} onChange={setFilterInputValue} />
         <NxStatefulNavigationDropdown title="User" icon={faUserCircle}>
           <button onClick={() => alert('clicked')} className="nx-dropdown-button">
             Button Link

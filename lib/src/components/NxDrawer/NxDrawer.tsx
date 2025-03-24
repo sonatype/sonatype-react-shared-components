@@ -5,7 +5,6 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React, {
-  forwardRef,
   useContext,
   useEffect,
   useRef,
@@ -35,7 +34,7 @@ const NxDrawerContext = React.createContext<NxDrawerContextValue>({
   closeDrawer: () => {}
 });
 
-const NxDrawerHeaderTitle = forwardRef<HTMLHeadingElement, NxDrawerHeaderTitleProps>((props, ref) => {
+function NxDrawerHeaderTitle(props: NxDrawerHeaderTitleProps) {
   const {
     className,
     children,
@@ -46,12 +45,12 @@ const NxDrawerHeaderTitle = forwardRef<HTMLHeadingElement, NxDrawerHeaderTitlePr
 
   return (
     <NxOverflowTooltip>
-      <h2 className={classes} {...attrs} ref={ref}>
+      <h2 className={classes} {...attrs}>
         {children}
       </h2>
     </NxOverflowTooltip>
   );
-});
+}
 
 NxDrawerHeaderTitle.propTypes = nxDrawerHeaderTitlePropTypes;
 
@@ -132,9 +131,17 @@ function NxDrawer(props: Props) {
         }
       };
 
-      document.addEventListener('click', listener);
+      // to prevent the click event from being called before the drawer is rendered
+      // https://github.com/facebook/react/issues/24657
+      // https://github.com/reactwg/react-18/discussions/128
+      const timeout = setTimeout(() => {
+        document.addEventListener('click', listener);
+      }, 0);
 
-      return () => document.removeEventListener('click', listener);
+      return () => {
+        clearTimeout(timeout);
+        document.removeEventListener('click', listener);
+      };
     }
     else {
       if (openState === 'open') {

@@ -4,13 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { HTMLAttributes } from 'react';
+import { ComponentPropsWithRef } from 'react';
 import * as PropTypes from 'prop-types';
+import RequiredReactNode from '../../util/RequiredReactNode';
 
 import { Props as NxSearchDropdownProps } from '../NxSearchDropdown/types';
 import { Props as NxTransferListHalfProps } from '../NxTransferListHalf/types';
 
-export interface StatefulProps<T extends string | number = string> extends HTMLAttributes<HTMLDivElement> {
+export interface StatefulProps<T extends string | number = string> extends ComponentPropsWithRef<'div'> {
   onSearch: NxSearchDropdownProps<T>['onSearch'];
   loading: NxSearchDropdownProps<T>['loading'];
   loadError?: NxSearchDropdownProps<T>['error'];
@@ -33,7 +34,7 @@ export interface Props<T extends string | number = string> extends StatefulProps
 
 const matchesPropType = PropTypes.arrayOf(PropTypes.shape({
   id: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.string.isRequired]).isRequired,
-  displayName: PropTypes.node.isRequired
+  displayName: PropTypes.node.isRequired as PropTypes.Validator<RequiredReactNode>
 }).isRequired).isRequired;
 
 export const statefulPropTypes: PropTypes.ValidationMap<StatefulProps<string | number>> = {

@@ -4,15 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 
 import NxTag, { NxSelectableTag, PublicProps, SelectableProps } from '../NxTag';
 
 import { rtlRender, rtlRenderElement, userEvent } from '../../../__testutils__/rtlUtils';
 
 describe('NxTag', function() {
-  type PropsWithRef = PublicProps & RefAttributes<HTMLLabelElement>;
-  const renderEl = rtlRenderElement<PropsWithRef>(NxTag, { children: 'basic tag '});
+  const renderEl = rtlRenderElement<PublicProps>(NxTag, { children: 'basic tag '});
 
   it('forwards a ref', function() {
     const ref = React.createRef<HTMLLabelElement>(),
@@ -44,11 +43,9 @@ describe('NxTag', function() {
 });
 
 describe('NxSelectableTag', function() {
-  type PropsWithRef = SelectableProps & RefAttributes<HTMLLabelElement>;
-
   const minimalProps = { children: 'selectable tag', selected: false, onSelect: () => {} },
-      quickRender = rtlRender<PropsWithRef>(NxSelectableTag, minimalProps),
-      renderEl = rtlRenderElement<PropsWithRef>(NxSelectableTag, minimalProps);
+      quickRender = rtlRender<SelectableProps>(NxSelectableTag, minimalProps),
+      renderEl = rtlRenderElement<SelectableProps>(NxSelectableTag, minimalProps);
 
   it('renders the supplied text', function() {
     const el = renderEl();

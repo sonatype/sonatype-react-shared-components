@@ -66,14 +66,6 @@ describe('NxSearchTransferList', function() {
       expect(searchInput).toHaveAttribute('type', 'text');
     });
 
-    it('sets the aria-controls on the input to the dropdown id', function() {
-      const view = quickRender(),
-          searchInput = view.getByRole('searchbox'),
-          dropdownId = view.getByRole('alert', { hidden: true }).getAttribute('id');
-
-      expect(searchInput).toHaveAttribute('aria-controls', dropdownId);
-    });
-
     it('clears the search input when the ESC key is pressed', async function() {
       const user = userEvent.setup(),
           searchInput = quickRender().getByRole('searchbox');
@@ -105,9 +97,9 @@ describe('NxSearchTransferList', function() {
       const user = userEvent.setup(),
           onSubmit = jest.fn(),
           view = render(
-            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-              <NxStatefulSearchTransferList { ...minimalProps } />
-            </NxForm>
+              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                <NxStatefulSearchTransferList { ...minimalProps } />
+              </NxForm>
           ),
           searchInput = view.getByRole('searchbox');
 
@@ -176,7 +168,18 @@ describe('NxSearchTransferList', function() {
 
           await user.click(matches[0]);
 
-          expect(onSearchMatchSelect).toHaveBeenCalledWith({ id: '1', displayName: 'Item 1' });
+          expect(onSearchMatchSelect).toHaveBeenCalledWith(
+              { id: '1', displayName: 'Item 1' },
+              expect.objectContaining({ target: matches[0] })
+          );
+        });
+
+        it('sets the aria-controls on the input to the dropdown id', async function() {
+          const view = await viewWithMatches(),
+              searchInput = view.getByRole('searchbox'),
+              dropdownId = view.getByRole('menu').getAttribute('id');
+
+          expect(searchInput).toHaveAttribute('aria-controls', dropdownId);
         });
       });
 
@@ -239,6 +242,14 @@ describe('NxSearchTransferList', function() {
           const emptyDropdown = (await viewNoMatches()).getByRole('alert');
           expect(emptyDropdown).toHaveTextContent('No Results Found');
         });
+
+        it('sets the aria-controls on the input to the dropdown id', async function() {
+          const view = await viewNoMatches(),
+              searchInput = view.getByRole('searchbox'),
+              dropdownId = view.getByRole('alert', { hidden: true }).getAttribute('id');
+
+          expect(searchInput).toHaveAttribute('aria-controls', dropdownId);
+        });
       });
 
       describe('onSearch', function() {
@@ -287,10 +298,10 @@ describe('NxSearchTransferList', function() {
           const user = userEvent.setup(),
               onSearch = jest.fn(),
               outsideView = render(
-                <>
-                  <NxStatefulSearchTransferList {...minimalProps} onSearch= {onSearch} loadError="oops" />
-                  <button>Click Me</button>
-                </>
+                  <>
+                    <NxStatefulSearchTransferList {...minimalProps} onSearch= {onSearch} loadError="oops" />
+                    <button>Click Me</button>
+                  </>
               ),
               searchInput = outsideView.getByRole('searchbox'),
               outsideBtn = outsideView.getByRole('button', { name: 'Click Me' });
@@ -523,9 +534,9 @@ describe('NxSearchTransferList', function() {
         const user = userEvent.setup(),
             onSubmit = jest.fn(),
             view = render(
-              <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-                <NxStatefulSearchTransferList {...minimalProps} />
-              </NxForm>
+                <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+                  <NxStatefulSearchTransferList {...minimalProps} />
+                </NxForm>
             ),
             filterInput = view.getByRole('searchbox');
 

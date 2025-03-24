@@ -27,7 +27,7 @@ describe('NxScrollRender', function() {
 
   async function scroll(container, scrollTop) {
     await container.evaluate((e, scrollTop) => e.scrollTop = scrollTop, scrollTop);
-    await wait(100);
+    await wait(200);
   }
 
   async function getTextContent(el) {

@@ -24,7 +24,6 @@ export default function NxModalSimpleExample() {
               <span>Example NxModal header</span>
             </h2>
           </header>
-          {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
           <div className="nx-modal-content" tabIndex={0}>
             <p className="nx-p">
               Bacon ipsum dolor amet tri-tip pork belly pork chop, prosciutto cupim short ribs strip steak frankfurter

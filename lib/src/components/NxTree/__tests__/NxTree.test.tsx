@@ -26,12 +26,12 @@ describe('NxTree', function() {
 
   it('renders any subtrees with a role of group', function() {
     const view = render(
-      <NxTree>
-        <NxTree.Item>
-          <NxTree.ItemLabel>Foo</NxTree.ItemLabel>
-          <NxTree />
-        </NxTree.Item>
-      </NxTree>
+            <NxTree>
+              <NxTree.Item>
+                <NxTree.ItemLabel>Foo</NxTree.ItemLabel>
+                <NxTree />
+              </NxTree.Item>
+            </NxTree>
         ),
         tree = view.getByRole('tree'),
         subtree = view.getByRole('group');

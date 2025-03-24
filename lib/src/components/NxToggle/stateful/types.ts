@@ -4,23 +4,23 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { LabelHTMLAttributes, Validator } from 'react';
+import { ComponentPropsWithRef } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { InputAttributesProp } from '../types';
 
-export type Props = Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'> & {
+export interface Props extends Omit<ComponentPropsWithRef<'label'>, 'onChange'> {
   inputId?: string | null;
   onChange?: ((isChecked: boolean) => void) | null;
   defaultChecked: boolean;
   disabled?: boolean | null;
   inputAttributes?: InputAttributesProp;
-};
+}
 
 export const propTypes: PropTypes.ValidationMap<Props> = {
   inputId: PropTypes.string,
   onChange: PropTypes.func,
   defaultChecked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
-  inputAttributes: PropTypes.object as Validator<InputAttributesProp>
+  inputAttributes: PropTypes.object as PropTypes.Validator<InputAttributesProp>
 };

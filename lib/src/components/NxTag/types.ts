@@ -4,12 +4,12 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import {ReactNode, ReactElement, ValidationMap, LabelHTMLAttributes} from 'react';
+import {ReactNode, ReactElement, ComponentPropsWithRef} from 'react';
 import * as PropTypes from 'prop-types';
 
 import { selectableColors, SelectableColor } from '../../util/selectableColors';
 
-export interface Props extends Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onSelect'> {
+export interface Props extends Omit<ComponentPropsWithRef<'label'>, 'onSelect'> {
   children: ReactNode;
   tagColor?: SelectableColor | null;
   // For internal use only, this prop is for our select/deselect tag icons
@@ -23,12 +23,12 @@ export interface SelectableProps extends Props {
   selected: boolean;
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   children: PropTypes.node.isRequired,
   tagColor: PropTypes.oneOf(selectableColors)
 };
 
-export const selectablePropTypes: ValidationMap<SelectableProps> = {
+export const selectablePropTypes: PropTypes.ValidationMap<SelectableProps> = {
   ...propTypes,
   onSelect: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired

@@ -140,7 +140,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
       <div className="nx-transfer-list__control-box">
         <NxFilterInput className="nx-transfer-list__filter"
                        placeholder="Filter"
-                       aria-label="Filter"
+                       inputAttributes={{ 'aria-label': 'Filter' }}
                        value={filterValue}
                        onChange={onFilterChange} />
         { showMoveAll &&
@@ -162,7 +162,7 @@ export default function NxTransferListHalf<T extends string | number = string>(p
                                                    isTopItem={index === 0}
                                                    isBottomItem={index === visibleItems.length - 1}
                                                    { ...i } />)
-           }
+            }
           </div>
         </NxScrollRender>
         <div className="nx-transfer-list__footer">

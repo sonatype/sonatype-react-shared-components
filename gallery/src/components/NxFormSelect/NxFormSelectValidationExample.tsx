@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FormEvent } from 'react';
+import React from 'react';
 import { NxFormSelect, nxFormSelectStateHelpers, NxFormGroup } from '@sonatype/react-shared-components';
 
 function validator(c: string) {
@@ -14,13 +14,9 @@ function validator(c: string) {
 const NxFormSelectValidationExample = () => {
   const [selectState, setSelectValue] = nxFormSelectStateHelpers.useNxFormSelectState<string>('', validator);
 
-  function onChange(evt: FormEvent<HTMLSelectElement>) {
-    setSelectValue(evt.currentTarget.value);
-  }
-
   return (
     <NxFormGroup label={`Selected Continent: ${selectState.value}`} isRequired>
-      <NxFormSelect onChange={onChange} validatable { ...selectState }>
+      <NxFormSelect onChange={setSelectValue} validatable { ...selectState }>
         <option value="">-- Select a Continent --</option>
         <option value="NA">North America</option>
         <option value="SA">South America</option>

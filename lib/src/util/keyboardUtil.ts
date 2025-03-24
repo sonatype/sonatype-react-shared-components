@@ -4,9 +4,9 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { ModifierKey } from 'react';
 
-export const MODIFIER_KEYS = ['Alt', 'AltGraph', 'Control', 'Meta', 'OS', 'Shift'];
+export const MODIFIER_KEYS: ModifierKey[] = ['Alt', 'AltGraph', 'Control', 'Meta', 'Shift'];
 
 export function modifierKeyIsPressed(event: React.KeyboardEvent | KeyboardEvent) {
   return MODIFIER_KEYS.some((key) => event.getModifierState(key));

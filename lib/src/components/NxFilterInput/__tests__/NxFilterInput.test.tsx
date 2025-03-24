@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { createEvent, fireEvent, waitFor, render } from '@testing-library/react';
 import { rtlRender, rtlRenderElement, runTimers } from '../../../__testutils__/rtlUtils';
 import { userEvent } from '../../../__testutils__/rtlUtils';
@@ -13,7 +13,7 @@ import NxFilterInput, { Props } from '../NxFilterInput';
 import NxForm from '../../NxForm/NxForm';
 
 describe('NxFilterInput', function() {
-  const minimalProps: Props & RefAttributes<HTMLDivElement> = { value: '' },
+  const minimalProps: Props = { value: '' },
       quickRender = rtlRender(NxFilterInput, minimalProps),
       renderEl = rtlRenderElement(NxFilterInput, minimalProps);
 
@@ -37,14 +37,31 @@ describe('NxFilterInput', function() {
     }
   });
 
-  it('passes additional attrs to the Input', function() {
-    const input = quickRender({ id: 'foo', lang: 'en-US' }).getByRole('textbox');
+  it('passes id, disabled, placeholder, aria-required, and aria-describedby to the input', function() {
+    render(<p id="desc">Description</p>);
+
+    const input = quickRender({
+      id: 'foo',
+      placeholder: 'place',
+      disabled: true,
+      'aria-required': true,
+      'aria-describedby': 'desc'
+    }).getByRole('textbox');
 
     expect(input).toHaveAttribute('id', 'foo');
-    expect(input).toHaveAttribute('lang', 'en-US');
+    expect(input).toHaveAttribute('placeholder', 'place');
+    expect(input).toHaveAttribute('disabled');
+    expect(input).toHaveAttribute('aria-required', 'true');
+    expect(input).toHaveAccessibleDescription('Description');
   });
 
-  it('does not pass validatable, validationErrors, or type props to the Input', function() {
+  it('passes additional attrs to the top-level element', function() {
+    const el = renderEl({ lang: 'en-US' });
+
+    expect(el).toHaveAttribute('lang', 'en-US');
+  });
+
+  it('does not pass validatable, validationErrors, or type props to the Input or top-level element', function() {
     const input = quickRender({
       validatable: true,
       validationErrors: 'It\'s all wrong',
@@ -53,7 +70,17 @@ describe('NxFilterInput', function() {
 
     expect(input).not.toHaveAttribute('type', 'textarea');
     expect(input).not.toHaveAttribute('aria-invalid');
-    expect(input).not.toHaveErrorMessage('It\'s all wrong');
+    expect(input).not.toHaveAccessibleErrorMessage('It\'s all wrong');
+
+    const el = renderEl({
+      validatable: true,
+      validationErrors: 'It\'s all wrong',
+      type: 'textarea'
+    } as Partial<Props>);
+
+    expect(el).not.toHaveAttribute('type', 'textarea');
+    expect(el).not.toHaveAttribute('aria-invalid');
+    expect(el).not.toHaveAccessibleErrorMessage('It\'s all wrong');
   });
 
   it('sets ref on the Input', function() {
@@ -134,9 +161,9 @@ describe('NxFilterInput', function() {
     const user = userEvent.setup(),
         onSubmit = jest.fn(),
         view = render(
-          <NxForm onSubmit={onSubmit} showValidationErrors={false} >
-            <NxFilterInput { ...minimalProps } value="a"/>
-          </NxForm>
+            <NxForm onSubmit={onSubmit} showValidationErrors={false} >
+              <NxFilterInput { ...minimalProps } value="a"/>
+            </NxForm>
         );
 
     await runTimers();

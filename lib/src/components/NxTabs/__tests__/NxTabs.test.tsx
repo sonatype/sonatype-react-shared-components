@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { rtlRenderElement, rtlRender, userEvent } from '../../../__testutils__/rtlUtils';
 
 import NxTabs, { NxTabsProps } from '../NxTabs';
@@ -52,12 +52,12 @@ describe('NxTabs', function() {
 
   it('renders tab elements with unique id based on the parent id', function() {
     const { container, getByRole } = render(
-      <NxTabs activeTab={0} id="my-tabs" onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-      </NxTabs>
+        <NxTabs activeTab={0} id="my-tabs" onTabSelect={() => {}}>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+        </NxTabs>
     );
 
     expect(container.firstElementChild!.id).toEqual('my-tabs');
@@ -80,14 +80,14 @@ describe('NxTabs', function() {
 
   it('activates the active tab', function() {
     const { getAllByRole, getByRole } = render(
-      <NxTabs activeTab={1} onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-          <NxTab>Tab 1</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-        <NxTabPanel>Content 1</NxTabPanel>
-      </NxTabs>
+        <NxTabs activeTab={1} onTabSelect={() => {}}>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+            <NxTab>Tab 1</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+          <NxTabPanel>Content 1</NxTabPanel>
+        </NxTabs>
     );
 
     const selectedTabs = getAllByRole('tab', { selected: true });
@@ -127,7 +127,7 @@ describe('NxTabs', function() {
 
     const firstTab = getAllByRole('tab')[0];
 
-    firstTab.focus();
+    await act(() => { firstTab.focus(); });
     await user.keyboard('{ArrowRight}{Enter}');
 
     expect(onTabSelect).toHaveBeenCalledWith(1);
@@ -150,7 +150,7 @@ describe('NxTabs', function() {
 
     const firstTab = getAllByRole('tab')[0];
 
-    firstTab.focus();
+    await act(() => { firstTab.focus(); });
     await user.keyboard('{ArrowRight}{Enter}');
 
     expect(onTabSelect).toHaveBeenCalledWith(1);
@@ -158,14 +158,14 @@ describe('NxTabs', function() {
 
   it('sets id and aria labelledby to panel to reference active tab aria-controls', async function() {
     const { rerender } = render(
-      <NxTabs activeTab={0} onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-          <NxTab>Tab 1</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-        <NxTabPanel>Content 1</NxTabPanel>
-      </NxTabs>
+        <NxTabs activeTab={0} onTabSelect={() => {}}>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+            <NxTab>Tab 1</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+          <NxTabPanel>Content 1</NxTabPanel>
+        </NxTabs>
     );
 
     const getActiveTabControls = () => screen.getByRole('tab', { selected: true }).getAttribute('aria-controls');
@@ -174,14 +174,14 @@ describe('NxTabs', function() {
     expect(screen.getByRole('tabpanel')).toHaveAccessibleName(/^Tab 0/);
 
     rerender(
-      <NxTabs activeTab={1} onTabSelect={() => {}}>
-        <NxTabList>
-          <NxTab>Tab 0</NxTab>
-          <NxTab>Tab 1</NxTab>
-        </NxTabList>
-        <NxTabPanel>Content 0</NxTabPanel>
-        <NxTabPanel>Content 1</NxTabPanel>
-      </NxTabs>
+        <NxTabs activeTab={1} onTabSelect={() => {}}>
+          <NxTabList>
+            <NxTab>Tab 0</NxTab>
+            <NxTab>Tab 1</NxTab>
+          </NxTabList>
+          <NxTabPanel>Content 0</NxTabPanel>
+          <NxTabPanel>Content 1</NxTabPanel>
+        </NxTabs>
     );
 
     expect(screen.getByRole('tabpanel').id).toEqual(getActiveTabControls());

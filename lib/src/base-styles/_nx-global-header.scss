@@ -27,7 +27,6 @@
 }
 
 .nx-global-header__actions {
-  @include nx-container-helpers.container-horizontal;
   align-items: center;
   border-left: var(--nx-border-default);
   display: flex;
@@ -37,4 +36,6 @@
   .nx-btn--icon-only {
     @include nx-button-helpers.small-icon-btn;
   }
+
+  @include nx-container-helpers.container-horizontal;
 }

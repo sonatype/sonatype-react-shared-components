@@ -8,10 +8,10 @@ import React from 'react';
 import { pipe } from 'ramda';
 
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
-import NxStatefulFileUpload from '../NxStatefulFileUpload';
+import NxStatefulFileUpload, { Props } from '../NxStatefulFileUpload';
 
 describe('NxStatefulFileUpload', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         onChange: () => {}
       },
       render = rtlRender(NxStatefulFileUpload, minimalProps),

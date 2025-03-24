@@ -58,6 +58,14 @@ const NxStatefulTextInputPage = () =>
             </NxTable.Cell>
           </NxTable.Row>
           <NxTable.Row>
+            <NxTable.Cell>onChange</NxTable.Cell>
+            <NxTable.Cell>Function ((string) =&gt; void)</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              A callback for when the user changes the value of the text box (e.g. by typing a letter)
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
             <NxTable.Cell>
               HTML <NxCode>&lt;input&gt;</NxCode> Attributes |
               HTML <NxCode>&lt;textarea&gt;</NxCode> Attributes
@@ -68,6 +76,16 @@ const NxStatefulTextInputPage = () =>
             <NxTable.Cell>No</NxTable.Cell>
             <NxTable.Cell>
               Any attribute supported by <NxCode>NxTextInput</NxCode>
+            </NxTable.Cell>
+          </NxTable.Row>
+          <NxTable.Row>
+            <NxTable.Cell>
+              placeholder
+            </NxTable.Cell>
+            <NxTable.Cell>string</NxTable.Cell>
+            <NxTable.Cell>No</NxTable.Cell>
+            <NxTable.Cell>
+              The placeholder for the input
             </NxTable.Cell>
           </NxTable.Row>
         </NxTable.Body>

@@ -4,33 +4,18 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, {FunctionComponent, useState} from 'react';
+import React from 'react';
 
 import NxCollapsibleRadioSelect from '../NxCollapsibleRadioSelect';
 import { Props, propTypes } from './types';
+import { Option } from '../../commonTypes';
 export { Props, Option } from './types';
-import useFuzzyFilter from '../../../../util/useFuzzyFilter';
+import useStatefulCollapsibleSelect from './useStatefulCollapsibleSelect';
 
-const NxStatefulCollapsibleRadioSelect: FunctionComponent<Props> =
-function NxStatefulCollapsibleRadioSelect(props) {
-  const {options} = props,
-      isOpenInitialState = !!props.isOpen;
+export default function NxStatefulCollapsibleRadioSelect<T extends Option>(props: Props<T>) {
+  const collapsibleSelectState = useStatefulCollapsibleSelect(props);
 
-  const [isOpen, toggleOpen] = useState(isOpenInitialState),
-      onToggleCollapse = () => {
-        toggleOpen(!isOpen);
-      };
-
-  const [filteredOptions, filter, setFilter] = useFuzzyFilter(options, {keys: ['name'], threshold: 0.1});
-
-  return <NxCollapsibleRadioSelect {...props}
-                                   isOpen={isOpen}
-                                   onToggleCollapse={onToggleCollapse}
-                                   filteredOptions={filteredOptions}
-                                   onFilterChange={setFilter}
-                                   filter={filter} />;
-};
+  return <NxCollapsibleRadioSelect { ...props } { ...collapsibleSelectState } />;
+}
 
 NxStatefulCollapsibleRadioSelect.propTypes = propTypes;
-
-export default NxStatefulCollapsibleRadioSelect;

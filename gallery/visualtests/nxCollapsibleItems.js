@@ -30,7 +30,7 @@ describe('NxCollapsibleItems', function() {
   async function expandCollapsibleItems(selector) {
     const [targetElement] = await waitAndGetElements(selector);
     await targetElement.click();
-    await wait(350);
+    await wait(500);
   }
 
   function simpleExpandedTest(selector) {
