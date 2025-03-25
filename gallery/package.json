@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -94,5 +94,8 @@
     "react-router": "^7.1.5",
     "react-router-dom": "^7.1.5",
     "react-syntax-highlighter": "^15.6.1"
+  },
+  "resolutions": {
+    "prismjs": "^1.30.0"
   }
 }

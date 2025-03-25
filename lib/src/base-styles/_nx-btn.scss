@@ -102,6 +102,18 @@
   }
   @include nx-container-helpers.container-horizontal;
 
+
+  &--small {
+    font-size: var(--nx-font-size-s);
+    font-weight: 400;
+    padding: calc(var(--nx-spacing-base) - var(--nx-border-width-alt)) calc(var(--nx-spacing-3x) - var(--nx-border-width-alt));
+
+    &.nx-btn--primary:focus,
+    &.nx-btn--error:focus {
+      outline-offset: calc(0px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width) - 1px);
+    }
+
+  }
 }
 
 .nx-btn, .nx-segmented-btn, .nx-icon-dropdown {
