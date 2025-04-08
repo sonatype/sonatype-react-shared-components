@@ -13,7 +13,8 @@ describe('NxModal', function() {
     getPage,
     a11yTest,
     isInDocument,
-    isFocused
+    isFocused,
+    wait
   } = setupBrowser('#/pages/Modal');
 
   const simpleExampleSelector = '#nx-modal-simple-example',
@@ -210,6 +211,7 @@ describe('NxModal', function() {
       expect(await isFocused(secondHideButton)).toBe(true);
 
       await secondHideButton.click();
+      await wait(100);
       await keyboard.down('Shift');
       await keyboard.press('Tab');
       await keyboard.up('Shift');
