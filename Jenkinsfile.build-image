@@ -27,6 +27,8 @@ dockerizedBuildPipeline(
         new Expectation('chromium', 'chromium', '--version', /Chromium/)
     ])
   },
+  // This image is only used in the build of this repo, it doesn't need a vuln scan
+  skipVulnerabilityScan: true,
   deploy: {
     withSonatypeDockerRegistry() {
       sh "docker buildx create --driver-opt=\"image=${sonatypeDockerRegistryId()}/moby/buildkit\" --use"
