@@ -38,13 +38,6 @@ withCredentials([string(credentialsId: 'zion-nexus-cache', variable: 'ZION_AGENT
             "--tag ${sonatypeDockerRegistryId()}/${imageName}:${env.VERSION} ."
       }
     },
-    postDeploy: {
-      sshagent(credentials: [sonatypeZionCredentialsId()]) {
-        runSafely "git config user.email 'sonatype-zion@sonatype.com'"
-        runSafely "git tag release-${env.VERSION}"
-        runSafely "git push origin release-${env.VERSION}"
-      }
-    },
     onUnstable: {
       notifyChat(env: env, currentBuild: currentBuild, room: 'react-components')
     },
