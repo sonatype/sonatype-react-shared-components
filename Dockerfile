@@ -12,7 +12,7 @@ RUN apt-get update && \
     apt-get install jq -y && \
     apt-get install chromium libatk-bridge2.0-0 libxkbcommon0 libgbm1 -y
 
-ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 RUN useradd -u 1002 -g 100 jenkins
 RUN mkdir -p /home/jenkins/.npm
