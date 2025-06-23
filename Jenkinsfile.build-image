@@ -17,32 +17,28 @@ String deployBranch = 'main'
  * is not constantly changing and affecting the visual tests.
  * This Jenkinsfile is based off of https://github.com/sonatype/bnr-license-check/blob/main/Jenkinsfile
  */
-withCredentials([string(credentialsId: 'zion-nexus-cache', variable: 'ZION_AGENT_TOKEN')]) {
-  dockerizedBuildPipeline(
-    dockerSecrets: ['id=ZION_AGENT_TOKEN'],
-    deployBranch: deployBranch,
-    retentionPolicy: RetentionPolicy.TEN_BUILDS,
-    setVersion: { env['VERSION'] = "${env.BUILD_NUMBER}" },
-    buildAndTest: {
-      // Note that we don't want to expect a specific chromium version, as that it what is likely to change
-      validateExpectations([
-          new Expectation('chromium', 'chromium', '--version', /Chromium/)
-      ])
-    },
-    deploy: {
-      withSonatypeDockerRegistry() {
-        sh "docker buildx create --driver-opt=\"image=${sonatypeDockerRegistryId()}/moby/buildkit\" --use"
-        sh "docker buildx build --platform linux/amd64,linux/arm64 --push " +
-            "--secret id=ZION_AGENT_TOKEN " +
-            "--tag ${sonatypeDockerRegistryId()}/${imageName}:latest " +
-            "--tag ${sonatypeDockerRegistryId()}/${imageName}:${env.VERSION} ."
-      }
-    },
-    onUnstable: {
-      notifyChat(env: env, currentBuild: currentBuild, room: 'react-components')
-    },
-    onFailure: {
-      notifyChat(env: env, currentBuild: currentBuild, room: 'react-components')
+dockerizedBuildPipeline(
+  deployBranch: deployBranch,
+  retentionPolicy: RetentionPolicy.TEN_BUILDS,
+  setVersion: { env['VERSION'] = "${env.BUILD_NUMBER}" },
+  buildAndTest: {
+    // Note that we don't want to expect a specific chromium version, as that it what is likely to change
+    validateExpectations([
+        new Expectation('chromium', 'chromium', '--version', /Chromium/)
+    ])
+  },
+  deploy: {
+    withSonatypeDockerRegistry() {
+      sh "docker buildx create --driver-opt=\"image=${sonatypeDockerRegistryId()}/moby/buildkit\" --use"
+      sh "docker buildx build --platform linux/amd64,linux/arm64 --push " +
+          "--tag ${sonatypeDockerRegistryId()}/${imageName}:latest " +
+          "--tag ${sonatypeDockerRegistryId()}/${imageName}:${env.VERSION} ."
     }
-  )
-}
+  },
+  onUnstable: {
+    notifyChat(env: env, currentBuild: currentBuild, room: 'react-components')
+  },
+  onFailure: {
+    notifyChat(env: env, currentBuild: currentBuild, room: 'react-components')
+  }
+)
