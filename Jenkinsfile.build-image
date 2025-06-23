@@ -22,7 +22,7 @@ dockerizedBuildPipeline(
   retentionPolicy: RetentionPolicy.TEN_BUILDS,
   setVersion: { env['VERSION'] = "${env.BUILD_NUMBER}" },
   buildAndTest: {
-    // Note that we don't want to expect a specific chromium version, as that it what is likely to change
+    // Note that we don't want to expect a specific chromium version, as that is what is likely to change
     validateExpectations([
         new Expectation('chromium', 'chromium', '--version', /Chromium/)
     ])
