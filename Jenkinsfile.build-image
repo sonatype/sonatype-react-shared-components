@@ -36,11 +36,5 @@ dockerizedBuildPipeline(
           "--tag ${sonatypeDockerRegistryId()}/${imageName}:latest " +
           "--tag ${sonatypeDockerRegistryId()}/${imageName}:${env.VERSION} ."
     }
-  },
-  onUnstable: {
-    notifyChat(env: env, currentBuild: currentBuild, room: 'react-components')
-  },
-  onFailure: {
-    notifyChat(env: env, currentBuild: currentBuild, room: 'react-components')
   }
 )
