@@ -37,6 +37,14 @@ const NxLoadingSpinnerPage = () =>
                 string that describes the status accessible name
               </NxTable.Cell>
             </NxTable.Row>
+            <NxTable.Row>
+              <NxTable.Cell>children</NxTable.Cell>
+              <NxTable.Cell>ReactNode</NxTable.Cell>
+              <NxTable.Cell>false</NxTable.Cell>
+              <NxTable.Cell>
+                the text content to render next to the loading spinner icon. Defaults to "Loading…"
+              </NxTable.Cell>
+            </NxTable.Row>
           </NxTable.Body>
         </NxTable>
       </NxTile.Subsection>
