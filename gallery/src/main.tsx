@@ -6,7 +6,6 @@
  */
 /// <reference types="./require" />
 
-import 'es6-set/implement';
 import 'es6-object-assign/auto';
 
 import React from 'react';
