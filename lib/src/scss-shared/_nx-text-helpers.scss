@@ -60,7 +60,7 @@
   &.nx-body,
 
   // buttons
-  .nx-btn,
+  .nx-btn:not(.nx-btn--small),
   .nx-dropdown-link,
   .nx-dropdown-button,
 
