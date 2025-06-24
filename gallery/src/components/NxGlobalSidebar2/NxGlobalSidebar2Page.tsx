@@ -25,9 +25,10 @@ export default function NxGlobalSidebar2Page() {
           that <NxCode>.nx-html--page-scrolling</NxCode> is <strong>not</strong> used) and in full-width mode (make sure
           that <NxCode>.nx-page-content--full-width</NxCode> <strong>is</strong> used, or
           that <NxCode>.nx-page-content</NxCode> is not used at all).  <NxCode>NxGlobalSidebar2</NxCode> is intended to
-          always be used in conjunction with <NxCode>NxGlobalHeader</NxCode>, and never
-          with <NxCode>NxPageHeader</NxCode>.  Additional custom content may be added below the navigation links if
-          desired, care should be taken that such content can adapt to both the open and closed states.
+          always be used in conjunction with <NxCode>NxGlobalHeader2</NxCode>, and never
+          with <NxCode>NxPageHeader</NxCode> or <NxCode>NxGlobalHeader</NxCode>.  Additional custom content may be added
+          below the navigation links if desired, care should be taken that such content can adapt to both the open and
+          closed states.
         </NxP>
         <NxTile.Subsection>
           <NxTile.SubsectionHeader>
