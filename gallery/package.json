@@ -85,7 +85,6 @@
     "compare-versions": "^6.1.1",
     "core-js": "^3.40.0",
     "es6-object-assign": "^1.1.0",
-    "es6-set": "^0.1.6",
     "prop-types": "^15.8.1",
     "query-string": "^9.1.1",
     "ramda": "^0.30.1",
