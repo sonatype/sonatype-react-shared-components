@@ -9,7 +9,7 @@ import com.sonatype.jenkins.shared.Expectation
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
 String imageName = 'sonatype/react-shared-components-ci'
-String deployBranch = 'main'
+String deployBranch = 'RSC-1797_resuable_build_image'
 
 /**
  * This build builds the docker image within which the actual RSC build (defined in `Jenkinsfile`) executes.
