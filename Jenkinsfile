@@ -20,7 +20,7 @@ def isMainBranch() {
 dockerizedBuildPipeline(
   deployBranch: deployBranch,
 
-  dockerImageId: 'docker-internal.repo.sonatype.com/sonatype/react-shared-components-ci:latest',
+  buildImageId: 'docker-internal.repo.sonatype.com/sonatype/react-shared-components-ci:latest',
 
   // expose gallery port and nextjs dev port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043 -p 3000:3000',
