@@ -236,7 +236,7 @@ which the CI system uses.
 To test in a Docker environment, first [install Docker on your computer](https://docs.docker.com/get-docker/). Then, you
 must either build or download the docker image within which to run the tests. Sonatype employees should use the image
 available on docker-all.repo.sonatype.com, which is what the CI pipeline uses.  Using this identical build of the docker
-image reduces issue with screenshots changing due to minor variations between browser versions. Within the top level
+image reduces issues with screenshots changing due to minor variations between browser versions. Within the top level
 directory of the repository, log into Docker by running the following command. You may be asked to input credentials.
 
 ```
