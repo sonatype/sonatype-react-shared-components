@@ -233,25 +233,33 @@ setup is configured for an exact visual match, so the tests must be run on a con
 The cleanest way to do this is via Docker - specifically, to run the tests in a Docker environment identical to the one
 which the CI system uses.
 
-To test in a Docker environment, first [install Docker on your computer](https://docs.docker.com/get-docker/). Then,
-within the top level directory of the repository, log into Docker by running the following command. You may be asked to
-input credentials. Non-Sonatype employees should skip this step.
+To test in a Docker environment, first [install Docker on your computer](https://docs.docker.com/get-docker/). Then, you
+must either build or download the docker image within which to run the tests. Sonatype employees should use the image
+available on docker-all.repo.sonatype.com, which is what the CI pipeline uses.  Using this identical build of the docker
+image reduces issue with screenshots changing due to minor variations between browser versions. Within the top level
+directory of the repository, log into Docker by running the following command. You may be asked to input credentials.
 
 ```
 docker login docker-all.repo.sonatype.com
 ```
 
-Then build a Docker image using the command below. You build an image so that you can run tests within a container
-(environment) based on that image. The command below will create an image and give it a name of "rsc-visualtesting". Be
-sure to run this command within the top level directory of the repository. For non-Sonatype employees, you can edit the
-Dockerfile to point to the public `node` base image instead of the copy hosted on Sonatype's infrastructure.
+You can then execute the tests for both light mode (default) and dark mode by running the following command:
+
+```
+docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn test
+```
+
+If you are not a Sonatype employee and thus don't have access to docker-all.repo.sonatype.com, or if you want to build
+your own docker image for any other reason, you can build the image using the command below. The command below will
+create an image and give it a name of "rsc-visualtesting". Be sure to run this command within the top level directory of
+the repository. For non-Sonatype employees, you should edit the Dockerfile to point to the public `node` base image
+instead of the copy hosted on Sonatype's infrastructure.
 
 ```
 docker build -t rsc-visualtesting .
 ```
-You can execute the tests for both light mode (default) and dark mode within the Docker container based on that image by
-running the following command:
 
+You can then run the visual tests within your docker image using the following command:
 ```
 docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
 ```
@@ -265,12 +273,12 @@ the docker container rather than the host.
 If running the tests results in differences that are expected/intended based on new changes to the library, then the
 baseline screenshots may be updated. To update light mode screenshots, run the following command:
 ```
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest -u
+docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest -u
 ```
 
 To update dark mode screenshots, run the following command:
 ```
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn jest-dark -u
+docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest-dark -u
 ```
 
 The commands above ensure you update the screenshots within the Docker container. The updates need to be run within the
@@ -301,34 +309,34 @@ From simple command prompt
 
 Run tests:
 ```
-docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn test
+docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn test
 ```
 
 Update screenshots in light mode:
 ```
-docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn jest -u
+docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest -u
 ```
 
 Update screenshots in dark mode:
 ```
-docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins rsc-visualtesting yarn jest-dark -u
+docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest-dark -u
 ```
 
 And from PowerShell
 
 Run tests:
 ```
-docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn test
+docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn test
 ```
 
 Update screenshots in light mode:
 ```
-docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn jest -u
+docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest -u
 ```
 
 Update screenshots in dark mode:
 ```
-docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins rsc-visualtesting yarn jest-dark -u
+docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest-dark -u
 ```
 
 ---
