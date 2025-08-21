@@ -21,6 +21,7 @@
   margin: 100px 0;
   padding: var(--nx-modal-padding);
   width: 800px;
+  border: var(--nx-border-component);
 
   @include nx-container-helpers.container-vertical;
 
