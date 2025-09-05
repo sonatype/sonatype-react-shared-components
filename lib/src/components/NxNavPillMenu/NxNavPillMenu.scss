@@ -1,0 +1,196 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../../scss-shared/nx-container-helpers';
+@use '../../scss-shared/nx-text-helpers';
+
+.nx-nav-pill-menu {
+  // Container with indigo-90 background and 12px rounded corners
+  background-color: var(--nx-swatch-indigo-90);
+  border-radius: 12px;
+  padding: 4px; // Reduced padding to achieve 41px total height
+  margin: 0 0 var(--nx-spacing-4x) 0; // Remove top margin
+  height: 41px; // Fixed height as requested
+  // Sticky positioning to keep nav bar at top
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  // Dynamic width that hugs content but respects container bounds
+  width: fit-content;
+  max-width: 100%;
+  // Flex layout for arrows and list
+  display: flex;
+  align-items: center;
+
+  @include nx-container-helpers.container-horizontal;
+}
+
+.nx-nav-pill-menu__list {
+  display: flex;
+  flex-wrap: nowrap; // Changed from wrap to nowrap for horizontal scrolling
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  flex: 1; // Take up available space
+  // Enable horizontal scrolling when pills overflow
+  overflow-x: auto;
+  // Hide scrollbars completely
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE/Edge
+  
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari, Opera
+  }
+}
+
+.nx-nav-pill-menu__list-item {
+  flex-shrink: 0;
+}
+
+.nx-nav-pill-menu__item {
+  @include nx-text-helpers.semi-bold;
+  @include nx-text-helpers.truncate-ellipsis;
+
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 12px; // Pill shape
+  box-sizing: border-box;
+  color: var(--nx-swatch-indigo-40);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--nx-font-family); // Open Sans
+  font-size: 14px; // Specific 14px as requested
+  font-weight: 600; // Semibold
+  height: 33px; // Fixed height as requested
+  line-height: 1;
+  margin: 0; // No margin needed, using gap spacing instead
+  max-width: 200px;
+  min-width: 60px;
+  padding: 0 8px; // 8px horizontal padding as requested
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover:not(&--disabled) {
+    background-color: var(--nx-swatch-indigo-97);
+  }
+
+  &:active:not(&--disabled) {
+    background-color: var(--nx-swatch-white);
+    border: none;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: var(--nx-swatch-indigo-97);
+  }
+
+  &:focus-visible {
+    outline: none;
+    background-color: var(--nx-swatch-indigo-97);
+  }
+
+  &--disabled {
+    color: var(--nx-color-text-disabled);
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  // Remove default link styles
+  &:visited {
+    color: inherit;
+  }
+}
+
+// Scroll arrow buttons
+.nx-nav-pill-menu__scroll-arrow {
+  background: transparent;
+  border: none;
+  color: var(--nx-swatch-indigo-40);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 33px; // Match pill height
+  width: 32px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  
+  &:hover {
+    background-color: var(--nx-swatch-indigo-97);
+    color: var(--nx-swatch-indigo-30);
+  }
+  
+  &:active {
+    background-color: var(--nx-swatch-white);
+    color: var(--nx-swatch-indigo-40);
+  }
+  
+  &:focus {
+    outline: none;
+    background-color: var(--nx-swatch-indigo-97);
+  }
+  
+  // Position arrows outside the rounded container
+  &--left {
+    margin-right: 4px;
+  }
+  
+  &--right {
+    margin-left: 4px;
+  }
+  
+  .nx-icon {
+    font-size: 14px;
+  }
+}
+
+
+// Responsive adjustments
+@media (max-width: 480px) {
+  .nx-nav-pill-menu {
+    padding: 3px; // Slightly reduced for mobile
+    height: 39px; // Slightly smaller on mobile
+    // Maintain dynamic width behavior on mobile
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .nx-nav-pill-menu__item {
+    font-size: 12px;
+    height: 31px; // Proportionally smaller on mobile
+    padding: 0 6px; // Proportionally smaller padding on mobile
+    min-width: 50px;
+    max-width: 150px;
+    border-radius: 10px; // Proportionally smaller radius on mobile
+  }
+  
+  .nx-nav-pill-menu__scroll-arrow {
+    height: 31px; // Match smaller pill height on mobile
+    width: 28px; // Proportionally smaller
+    border-radius: 10px; // Match pill radius
+    
+    .nx-icon {
+      font-size: 12px; // Smaller icon on mobile
+    }
+  }
+}
