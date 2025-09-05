@@ -413,5 +413,9 @@ export { default as NxBreadcrumb, Props as NxBreadcrumbProps, Crumb as NxBreadcr
 
 export { default as NxStatefulBreadcrumb, Props as NxStatefulBreadcrumbProps }
   from './components/NxBreadcrumb/stateful/NxStatefulBreadcrumb';
+export { default as NxNavPillMenu, NxNavPillMenuProps, NavPillMenuItem }
+  from './components/NxNavPillMenu/NxNavPillMenu';
+export { default as NxStatefulNavPillMenu, NxStatefulNavPillMenuProps }
+  from './components/NxNavPillMenu/stateful/NxStatefulNavPillMenu';
 
 export { default as NxSmallTag, Props as NxSmallTagProps } from './components/NxSmallTag/NxSmallTag';
