@@ -169,6 +169,7 @@ import NxMeterPage from './components/NxMeter/NxMeterPage';
 import NivoPage from './styles/Nivo/NivoPage';
 import NxBreadcrumbPage from './components/NxBreadcrumb/NxBreadcrumbPage';
 import NxStatefulBreadcrumbPage from './components/NxStatefulBreadcrumb/NxStatefulBreadcrumbPage';
+import NxNavPillMenuPage from './components/NxNavPillMenu/NxNavPillMenuPage';
 import DarkModeClassPage from './styles/DarkMode/DarkModeClassPage';
 import DarkModeMixinPage from './styles/DarkMode/DarkModeMixinPage';
 import NxSmallTagPage from './components/NxSmallTag/NxSmallTagPage';
@@ -210,6 +211,7 @@ const pageConfig: PageConfig = {
     'Back Button': { content: NxBackButtonPage, type: 'react' },
     'Breadcrumb': { content: NxBreadcrumbPage, type: 'react' },
     'Stateful Breadcrumb': { content: NxStatefulBreadcrumbPage, type: 'react' },
+    'Nav Pill Menu': { content: NxNavPillMenuPage, type: 'react' },
     'Button': { content: NxButtonPage, type: 'react' },
     'Segmented Button': { content: NxSegmentedButtonPage, type: 'react' },
     'Stateful Segmented Button': { content: NxStatefulSegmentedButtonPage, type: 'react' },
