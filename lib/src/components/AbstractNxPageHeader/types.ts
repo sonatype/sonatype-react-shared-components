@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import { ReactNode, ValidationMap } from 'react';
+import { ReactNode } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface HeaderLinkProps {
@@ -22,7 +22,7 @@ export interface Props {
   children?: ReactNode | null;
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   logo: PropTypes.node.isRequired,
   links: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,

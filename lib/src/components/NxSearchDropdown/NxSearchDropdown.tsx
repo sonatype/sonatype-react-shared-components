@@ -4,28 +4,34 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { FocusEvent, KeyboardEvent, Ref, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  FocusEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import useMergedRef from '@react-hook/merged-ref';
 import classnames from 'classnames';
 import { always, any, clamp, dec, inc, partial, pipe, prop } from 'ramda';
+import DataItem from '../../util/DataItem';
 
 import './NxSearchDropdown.scss';
 
-import forwardRef from '../../util/genericForwardRef';
 import { Props, propTypes } from './types';
 import NxFilterInput from '../NxFilterInput/NxFilterInput';
 import NxDropdownMenu from '../NxDropdownMenu/NxDropdownMenu';
 import NxLoadWrapper from '../NxLoadWrapper/NxLoadWrapper';
 import { useUniqueId } from '../../util/idUtil';
 import useMutationObserver from '@rooks/use-mutation-observer';
+import { ensureRef } from '../../util/reactUtil';
 export { Props } from './types';
 
 export const SEARCH_DEBOUNCE_TIME = 500;
 
-function NxSearchDropdownRender<T extends string | number = string>(
-  props: Props<T>,
-  externalRef: Ref<HTMLDivElement>
-) {
+export default function NxSearchDropdown<T extends string | number = string>(props: Props<T>) {
   const {
         className: classNameProp,
         loading,
@@ -38,6 +44,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
         long,
         disabled,
         emptyMessage,
+        ref: externalRef,
         ...attrs
       } = props,
 
@@ -45,7 +52,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
       showDropdown = !!(searchText && !disabled),
 
       ref = useRef<HTMLDivElement>(null),
-      mergedRef = useMergedRef(externalRef, ref),
+      mergedRef = useMergedRef(ensureRef(externalRef), ref),
       menuRef = useRef<HTMLDivElement>(null),
       filterRef = useRef<HTMLDivElement>(null),
       elFocusedOnMostRecentRender = useRef<Element | null>(null),
@@ -131,8 +138,14 @@ function NxSearchDropdownRender<T extends string | number = string>(
   }
 
   function doSearch(value: string) {
+    focusTextInput();
     onSearch(value.trim());
   }
+
+  const handleOnClick = (match: DataItem<T>, evt: MouseEvent<HTMLButtonElement>) => {
+    focusTextInput();
+    onSelect(match, evt);
+  };
 
   function focusTextInput() {
     filterRef.current?.querySelector('input')?.focus();
@@ -175,17 +188,19 @@ function NxSearchDropdownRender<T extends string | number = string>(
 
   return (
     <div role="group" ref={mergedRef} className={className} onFocus={handleComponentFocus} { ...attrs }>
-      <NxFilterInput role="searchbox"
-                     ref={filterRef}
+      <NxFilterInput ref={filterRef}
                      className={filterClassName}
                      value={searchText}
                      onChange={handleFilterChange}
                      disabled={disabled || undefined}
                      placeholder="Search"
                      searchIcon
-                     onKeyDown={handleKeyDown}
-                     aria-controls={dropdownMenuId}
-                     aria-haspopup="menu" />
+                     inputAttributes={{
+                       onKeyDown: handleKeyDown,
+                       role: 'searchbox',
+                       'aria-controls': showDropdown ? dropdownMenuId : undefined,
+                       'aria-haspopup': 'menu'
+                     }} />
       <NxDropdownMenu id={dropdownMenuId}
                       role={dropdownMenuRole}
                       ref={menuRef}
@@ -204,7 +219,7 @@ function NxSearchDropdownRender<T extends string | number = string>(
                       disabled={disabled || undefined}
                       key={match.id}
                       tabIndex={i === focusableBtnIndex ? 0 : -1}
-                      onClick={partial(onSelect, [match])}
+                      onClick={partial(handleOnClick, [match])}
                       onFocus={() => setFocusableBtnIndex(i)}>
                 {match.displayName}
               </button>
@@ -217,6 +232,4 @@ function NxSearchDropdownRender<T extends string | number = string>(
   );
 }
 
-const NxSearchDropdown = Object.assign(forwardRef(NxSearchDropdownRender), { propTypes });
-
-export default NxSearchDropdown;
+NxSearchDropdown.propTypes = propTypes;

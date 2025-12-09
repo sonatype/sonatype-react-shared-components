@@ -33,8 +33,6 @@
 }
 
 .nx-toast {
-  @include nx-container-helpers.container-vertical;
-  
   position: relative;
   right: 0;
   opacity: 1;
@@ -46,6 +44,8 @@
   &.nx-toast--closing {
     animation: nx-toast-animation-out 250ms ease-in;
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 // Setting the max-height of each toast to $nx-toast-height in both animations allows for each 

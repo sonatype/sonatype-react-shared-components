@@ -9,12 +9,12 @@ import { within, fireEvent } from '@testing-library/dom';
 import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
-import NxForm from '../NxForm';
+import NxForm, { Props } from '../NxForm';
 import NxButton from '../../NxButton/NxButton';
 import { FormAriaContext } from '../context';
 
 describe('NxForm', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         onSubmit: () => {},
         showValidationErrors: false,
         children: <div/>

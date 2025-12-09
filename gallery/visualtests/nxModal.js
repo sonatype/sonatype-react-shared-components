@@ -171,7 +171,6 @@ describe('NxModal', function() {
           firstHideButtonSelector, openNestedButtonSelector
       );
 
-      await wait(100);
       expect(await isFocused(firstHideButton)).toBe(true);
       await openNestedButton.click();
 
@@ -179,13 +178,11 @@ describe('NxModal', function() {
           secondHideButtonSelector, secondButtonSelector
       );
 
-      await wait(100);
       expect(await isFocused(secondHideButton)).toBe(true);
 
       await secondHideButton.click();
       await getPage().keyboard.press('Tab');
 
-      await wait(100);
       expect(await isFocused(secondButton)).toBe(true);
     });
 
@@ -204,7 +201,6 @@ describe('NxModal', function() {
           firstHideButtonSelector, openNestedButtonSelector
       );
 
-      await wait(100);
       expect(await isFocused(firstHideButton)).toBe(true);
       await openNestedButton.click();
 
@@ -212,15 +208,14 @@ describe('NxModal', function() {
           secondHideButtonSelector, closeButtonSelector
       );
 
-      await wait(100);
       expect(await isFocused(secondHideButton)).toBe(true);
 
       await secondHideButton.click();
+      await wait(100);
       await keyboard.down('Shift');
       await keyboard.press('Tab');
       await keyboard.up('Shift');
 
-      await wait(100);
       expect(await isFocused(closeButton)).toBe(true);
     });
   });
@@ -259,7 +254,6 @@ describe('NxModal', function() {
         await keyboard.press('Escape');
       }
 
-      await wait(100);
       expect(await isInDocument(modal2CloseBtn)).toBe(true);
       expect(await isFocused(modal2CloseBtn)).toBe(true);
 

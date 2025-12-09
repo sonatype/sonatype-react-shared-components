@@ -94,7 +94,6 @@ import {
   NxTooltip,
   NxTransferList,
   NxTree,
-  NxVulnerabilityDetails,
   NxWarningAlert,
   NxFileUpload,
   NxStatefulFileUpload,
@@ -235,13 +234,13 @@ const Home: NextPage = () => {
                          toggleOpenIcon={faEdit}
                          toggleCloseIcon={faEdit}
                          onToggleClick={noop}
-                         logoImg=""
+                         logoImg="cat1.jpg"
                          logoAltText="Foo"
                          logoLink="#" />
         <NxStatefulGlobalSidebar isDefaultOpen={false}
                                  toggleOpenIcon={faEdit}
                                  toggleCloseIcon={faEdit}
-                                 logoImg=""
+                                 logoImg="cat1.jpg"
                                  logoAltText="Foo"
                                  logoLink="#" />
         <NxGlobalSidebarFooter />
@@ -362,7 +361,6 @@ const Home: NextPage = () => {
             <NxTree.ItemLabel>Foo</NxTree.ItemLabel>
           </NxTree.StatefulItem>
         </NxTree>
-        <NxVulnerabilityDetails vulnerabilityDetails={vulnerabilityDetailsJson} />
         <NxFilterDropdown isOpen={true}
                           onToggleCollapse={noop}
                           options={[{ id: 'a', displayName: 'b' }]}

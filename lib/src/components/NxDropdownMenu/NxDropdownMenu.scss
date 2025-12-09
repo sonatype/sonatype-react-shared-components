@@ -10,8 +10,6 @@
 @use '../../scss-shared/nx-button-helpers';
 
 .nx-dropdown-menu {
-  @include nx-container-helpers.container-vertical;
-
   background: var(--nx-color-dropdown-menu-background);
   border-radius: var(--nx-border-radius);
   box-shadow: var(--nx-box-shadow-dropdown);
@@ -25,10 +23,11 @@
   top: 100%;
   width: nx-dropdown-variables.$dropdown-width;
   z-index: 1;
+
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-dropdown-link, .nx-dropdown-button {
-  @include nx-container-helpers.container-horizontal;
   @include nx-text-helpers.truncate-ellipsis;
   @include nx-text-helpers.regular;
 
@@ -43,6 +42,8 @@
   text-align: left;
   text-decoration: none;
   width: 100%;
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-dropdown-button {

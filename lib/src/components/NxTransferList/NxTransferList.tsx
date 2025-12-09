@@ -75,7 +75,7 @@ export default function NxTransferList<T extends string | number = string>(props
         return allowReordering
           ? {
             available: reject((item: DataItem<T>) => selectedItemsSet.has(item.id), allItems),
-            selected: chain(item => allItemsIdToItemLookUp[item.toString()], selectedItemsArray)
+            selected: chain(item => allItemsIdToItemLookUp[item.toString()] ?? [], selectedItemsArray)
           }
           : groupBy(item => selectedItemsSet.has(item.id) ? 'selected' : 'available', allItems);
       },

@@ -15,8 +15,6 @@
 }
 
 .nx-grid-col {
-  @include nx-container-helpers.container-vertical;
-
   border-left: var(--nx-border-grid);
   box-sizing: border-box;
   flex: 1 0;
@@ -33,6 +31,8 @@
   &:last-child {
     padding-right: 0;
   }
+
+  @include nx-container-helpers.container-vertical;
 }
 
 @each $percent in (25, 50, 75, 33, 67) {
@@ -50,8 +50,8 @@
 
 // Grid headers
 .nx-grid-header {
-  @include nx-container-helpers.container-vertical;
   margin-bottom: var(--nx-spacing-4x);
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-grid-header__title {
@@ -60,8 +60,8 @@
 }
 
 .nx-grid-col__section {
-  @include nx-container-helpers.container-vertical;
-
   margin-top: var(--nx-spacing-6x);
   margin-bottom: var(--nx-spacing-6x);
+
+  @include nx-container-helpers.container-vertical;
 }

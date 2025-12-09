@@ -8,6 +8,7 @@ import { ThreatLevelNumber, allThreatLevelNumbers } from '@sonatype/react-shared
 
 const threatLevel: ThreatLevelNumber = 9;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 allThreatLevelNumbers.indexOf(threatLevel) >= 0; // true
 
 /*

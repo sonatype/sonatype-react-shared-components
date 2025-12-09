@@ -5,7 +5,7 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import * as PropTypes from 'prop-types';
-import { ValidationMap, HTMLAttributes, AnchorHTMLAttributes, Validator, ReactNode } from 'react';
+import { ReactNode, ComponentPropsWithRef } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import RequiredReactNode from '../../util/RequiredReactNode';
 
@@ -21,11 +21,11 @@ export interface Props {
   children?: ReactNode | null;
 }
 
-export const propTypes: ValidationMap<Props> = {
+export const propTypes: PropTypes.ValidationMap<Props> = {
   isOpen: PropTypes.bool.isRequired,
   className: PropTypes.string,
-  toggleOpenIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
-  toggleCloseIcon: PropTypes.object.isRequired as Validator<IconDefinition>,
+  toggleOpenIcon: PropTypes.object.isRequired as PropTypes.Validator<IconDefinition>,
+  toggleCloseIcon: PropTypes.object.isRequired as PropTypes.Validator<IconDefinition>,
   onToggleClick: PropTypes.func.isRequired,
   logoImg: PropTypes.string.isRequired,
   logoAltText: PropTypes.string.isRequired,
@@ -33,29 +33,27 @@ export const propTypes: ValidationMap<Props> = {
   children: PropTypes.node
 };
 
-export type NxGlobalSidebarNavigationProps = HTMLAttributes<HTMLDivElement>;
+export type NxGlobalSidebarNavigationProps = ComponentPropsWithRef<'div'>;
 
-// Casting to hack around flaws in react's typings: the typings for HTMLAttributes.className don't claim to accept null,
-// but non-required proptypes do, and the actual implementation does
 export const nxGlobalSidebarNavigationPropTypes = {
   className: PropTypes.string
 };
 
-export interface NxGlobalSidebarNavigationLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface NxGlobalSidebarNavigationLinkProps extends ComponentPropsWithRef<'a'> {
   isSelected?: boolean | null;
   icon: IconDefinition;
   text: RequiredReactNode;
   href: string;
 }
 
-export const nxGlobalSidebarNavigationLinkPropTypes: ValidationMap<NxGlobalSidebarNavigationLinkProps> = {
+export const nxGlobalSidebarNavigationLinkPropTypes: PropTypes.ValidationMap<NxGlobalSidebarNavigationLinkProps> = {
   isSelected: PropTypes.bool,
-  icon: PropTypes.object.isRequired as Validator<IconDefinition>,
-  text: PropTypes.node.isRequired,
+  icon: PropTypes.object.isRequired as PropTypes.Validator<IconDefinition>,
+  text: PropTypes.node.isRequired as PropTypes.Validator<RequiredReactNode>,
   href: PropTypes.string.isRequired
 };
 
-export interface NxGlobalSidebarFooterProps extends HTMLAttributes<HTMLDivElement> {
+export interface NxGlobalSidebarFooterProps extends ComponentPropsWithRef<'div'> {
   supportText?: ReactNode | null;
   supportLink?: string | null;
   releaseText?: ReactNode | null;
@@ -63,7 +61,7 @@ export interface NxGlobalSidebarFooterProps extends HTMLAttributes<HTMLDivElemen
   showCreatedBy?: boolean | null;
 }
 
-export const nxGlobalSidebarFooterPropTypes: ValidationMap<NxGlobalSidebarFooterProps> = {
+export const nxGlobalSidebarFooterPropTypes: PropTypes.ValidationMap<NxGlobalSidebarFooterProps> = {
   supportText: PropTypes.node,
   supportLink: PropTypes.string,
   releaseText: PropTypes.node,

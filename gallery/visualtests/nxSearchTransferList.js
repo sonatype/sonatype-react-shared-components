@@ -37,8 +37,8 @@ describe('NxSearchTransferList', function() {
       await checkScreenshot(component);
     });
 
-    // color-contrast rule doesn't work when elements overlap, which of course happens when the dropdown is open
-    it('passes a11y checks', a11yTest(builder => builder.disableRules('color-contrast')));
+    // see notes in nxSearchDropdown.js
+    it('passes a11y checks', a11yTest(builder => builder.disableRules(['color-contrast', 'aria-valid-attr-value'])));
   });
 
   it('looks right with complex options', simpleTest(complexListSelector));

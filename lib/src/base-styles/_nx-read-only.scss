@@ -8,8 +8,8 @@
 @use '../scss-shared/nx-text-helpers';
 
 .nx-read-only {
-  @include nx-container-helpers.container-vertical;
   margin: 0 0 var(--nx-spacing-8x) 0;
+  @include nx-container-helpers.container-vertical;
 }
 
 .nx-read-only--grid {

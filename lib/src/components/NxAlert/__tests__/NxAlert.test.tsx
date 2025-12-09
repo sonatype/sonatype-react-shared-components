@@ -10,7 +10,7 @@ import { faBiohazard } from '@fortawesome/free-solid-svg-icons';
 import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
-import NxAlert, { Props, NxErrorAlert, NxWarningAlert, NxInfoAlert, NxSuccessAlert } from '../NxAlert';
+import NxAlert, { Props, NxErrorAlert, NxWarningAlert, NxInfoAlert, NxSuccessAlert, NxAlertProps } from '../NxAlert';
 
 describe('NxAlert', function() {
   function baseTests<P extends Props>(
@@ -75,7 +75,7 @@ describe('NxAlert', function() {
     });
   }
 
-  const minimalProps = {
+  const minimalProps: NxAlertProps = {
         children: 'A message to show in an alert',
         icon: faBiohazard
       },

@@ -10,11 +10,11 @@ import { userEvent } from '../../../__testutils__/rtlUtils';
 import { fireEvent, render, within } from '@testing-library/react';
 
 import { rtlRenderElement, rtlRender } from '../../../__testutils__/rtlUtils';
-import NxDescriptionList from '../NxDescriptionList';
+import NxDescriptionList, { LinkItemProps } from '../NxDescriptionList';
 
 describe('NxDescriptionList.LinkItem', function() {
-  const minimalProps = {
-        href: '',
+  const minimalProps: LinkItemProps = {
+        href: 'a', // note: an empty href would change the <a> element's role
         term: '',
         description: ''
       },
@@ -206,11 +206,11 @@ describe('NxDescriptionList.LinkItem', function() {
 
   it('has the first link as its only tabstop', async function() {
     const component = render(
-      <>
-        <button data-testid="before">Before</button>
-        <NxDescriptionList.LinkItem { ...minimalProps } />
-        <button data-testid="after">After</button>
-      </>
+        <>
+          <button data-testid="before">Before</button>
+          <NxDescriptionList.LinkItem { ...minimalProps } />
+          <button data-testid="after">After</button>
+        </>
     );
 
     const user = userEvent.setup(),

@@ -11,8 +11,7 @@ const NxThreatIndicatorLegendHorizontalExample = () => (
   <NxThreatIndicatorLegend header="Threat Legend"
                            critical
                            severe
-                           moderate
-    />
+                           moderate />
 );
 
 export default NxThreatIndicatorLegendHorizontalExample;

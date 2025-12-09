@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-const { setupBrowser } = require('./testUtils');
+const { setupBrowser, TOOLTIP_WAIT } = require('./testUtils');
 
 describe('nx-tile', function() {
   const {
@@ -105,10 +105,11 @@ describe('nx-tile', function() {
       );
 
       await scrollIntoView(exampleElement);
+      await wait(500);
 
       await titleElement.hover();
 
-      await wait(500);
+      await wait(TOOLTIP_WAIT);
 
       const { x, y, height, width } = await exampleElement.boundingBox();
       const tooltipHeightOffset = 16;

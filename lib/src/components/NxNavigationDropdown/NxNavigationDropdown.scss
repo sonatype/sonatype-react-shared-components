@@ -30,6 +30,7 @@
 
   .nx-dropdown-menu {
     border: var(--nx-border-width) solid var(--nx-color-global-sidebar-2-border);
+    max-height: unset;
     padding: var(--nx-spacing-4x) var(--nx-spacing-3x);
 
     .nx-dropdown-link, .nx-dropdown-button {

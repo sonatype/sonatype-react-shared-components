@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { HTMLAttributes, useContext, useRef, useEffect, useState, FocusEvent } from 'react';
+import React, { useContext, useRef, useEffect, useState, FocusEvent, ComponentPropsWithRef } from 'react';
 import classnames from 'classnames';
 
 import { ItemProps, NavigationDirection } from './types';
@@ -17,7 +17,7 @@ export { ItemProps };
 
 import './NxTree.scss';
 
-function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
+export default function NxTree(props: ComponentPropsWithRef<'ul'>) {
   const { className, onFocus: onFocusProp, ...otherProps } = props,
       parentKeyNavContext = useContext(TreeKeyNavContext),
       ref = useRef<HTMLUListElement>(null),
@@ -71,7 +71,7 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
           // focus the last element - but only after first unfocusing everything in order to trigger the
           // last element to update its child focus based on the navigation direction, in case the last element
           // was already the focused one
-          Promise.resolve().then(() => { setFocusedChild(ref.current?.lastElementChild || null); });
+          setTimeout(() => { setFocusedChild(ref.current?.lastElementChild || null); }, 0);
         },
 
         getTreeRoot: parentKeyNavContext ? parentKeyNavContext.getTreeRoot : () => ref.current
@@ -121,17 +121,13 @@ function _NxTree(props: HTMLAttributes<HTMLUListElement>) {
     <TreeKeyNavContext.Provider value={childKeyNavContext}>
       <ul ref={ref}
           className={classes}
-          role={!!parentKeyNavContext ? 'group' : 'tree'}
+          role={parentKeyNavContext ? 'group' : 'tree'}
           onFocus={onFocus}
           { ...otherProps } />
     </TreeKeyNavContext.Provider>
   );
 }
 
-const NxTree = Object.assign(_NxTree, {
-  Item: NxTreeItem,
-  StatefulItem: NxTreeStatefulItem,
-  ItemLabel: NxTreeItemLabel
-});
-
-export default NxTree;
+NxTree.Item = NxTreeItem;
+NxTree.StatefulItem = NxTreeStatefulItem;
+NxTree.ItemLabel = NxTreeItemLabel;

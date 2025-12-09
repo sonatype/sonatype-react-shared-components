@@ -8,5 +8,5 @@
 
 .nx-threat-number {
   @include nx-text-helpers.semi-bold;
-  font-size: 16px;
+  font-size: var(--nx-font-size);
 }

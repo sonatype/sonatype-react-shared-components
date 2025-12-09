@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { render, within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import { userEvent } from '../../../__testutils__/rtlUtils';
@@ -13,10 +13,7 @@ import NxTextInput, { PublicProps } from '../NxTextInput';
 import NxForm from '../../NxForm/NxForm';
 
 describe('NxTextInput', function() {
-  const minimalProps: PublicProps & RefAttributes<HTMLDivElement> = {
-        value: '',
-        isPristine: false
-      },
+  const minimalProps: PublicProps = { value: '', isPristine: false },
       quickRender = rtlRender(NxTextInput, minimalProps),
       renderEl = rtlRenderElement(NxTextInput, minimalProps);
 
@@ -55,11 +52,28 @@ describe('NxTextInput', function() {
     }
   });
 
-  it('passes additional attrs to the input', function() {
-    const input = quickRender({ id: 'foo', lang: 'en-US' }).getByRole('textbox');
+  it('passes id, disabled, placeholder, aria-required, and aria-describedby to the input', function() {
+    render(<p id="desc">Description</p>);
+
+    const input = quickRender({
+      id: 'foo',
+      placeholder: 'place',
+      disabled: true,
+      'aria-required': true,
+      'aria-describedby': 'desc'
+    }).getByRole('textbox');
 
     expect(input).toHaveAttribute('id', 'foo');
-    expect(input).toHaveAttribute('lang', 'en-US');
+    expect(input).toHaveAttribute('placeholder', 'place');
+    expect(input).toHaveAttribute('disabled');
+    expect(input).toHaveAttribute('aria-required', 'true');
+    expect(input).toHaveAccessibleDescription('Description');
+  });
+
+  it('passes additional attrs to the top-level element', function() {
+    const el = renderEl({ lang: 'en-US' });
+
+    expect(el).toHaveAttribute('lang', 'en-US');
   });
 
   it('sets the value as specified', function() {
@@ -111,7 +125,7 @@ describe('NxTextInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -121,9 +135,9 @@ describe('NxTextInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<PublicProps>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -135,7 +149,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -157,10 +171,10 @@ describe('NxTextInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -174,9 +188,9 @@ describe('NxTextInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<PublicProps>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -188,7 +202,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -209,7 +223,7 @@ describe('NxTextInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -219,9 +233,9 @@ describe('NxTextInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<PublicProps>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -233,7 +247,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -255,10 +269,10 @@ describe('NxTextInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -272,9 +286,9 @@ describe('NxTextInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<PublicProps>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxTextInput { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -286,7 +300,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -311,7 +325,7 @@ describe('NxTextInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -321,9 +335,9 @@ describe('NxTextInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<PublicProps>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -335,7 +349,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -357,10 +371,10 @@ describe('NxTextInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -374,9 +388,9 @@ describe('NxTextInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<PublicProps>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -392,10 +406,10 @@ describe('NxTextInput', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('textbox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('textbox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('textbox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {
@@ -420,7 +434,7 @@ describe('NxTextInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+          expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -430,9 +444,9 @@ describe('NxTextInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<PublicProps>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -444,7 +458,7 @@ describe('NxTextInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('textbox')).not.toHaveErrorMessage();
+            expect(component.getByRole('textbox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -466,10 +480,10 @@ describe('NxTextInput', function() {
               multiError = multiRender();
 
           expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-          expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
+          expect(singleError.getByRole('textbox')).toHaveAccessibleErrorMessage('foo');
 
           expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-          expect(multiError.getByRole('textbox')).toHaveErrorMessage('bar');
+          expect(multiError.getByRole('textbox')).toHaveAccessibleErrorMessage('bar');
         });
 
         it('sets aria-invalid on the input', function() {
@@ -483,9 +497,9 @@ describe('NxTextInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<PublicProps>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxTextInput { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -501,10 +515,10 @@ describe('NxTextInput', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('textbox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('textbox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('textbox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('textbox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {

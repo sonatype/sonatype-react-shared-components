@@ -5,13 +5,13 @@
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
 import React from 'react';
+import { render } from '@testing-library/react';
 import { userEvent } from '../../../__testutils__/rtlUtils';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxAccordion from '../NxAccordion';
 import NxButton from '../../NxButton/NxButton';
-import { render } from '@testing-library/react';
 
 describe('NxAccordion', function() {
   const quickRender = rtlRender(NxAccordion, {});
@@ -89,8 +89,8 @@ describe('NxAccordion', function() {
           <NxAccordion.Header></NxAccordion.Header>
         )
       });
-      const id = container.querySelector('DETAILS')?.getAttribute('id');
-      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', id);
+      const id = container.querySelector('details')?.getAttribute('id');
+      expect(container.querySelector('summary')).toHaveAttribute('aria-controls', id);
     });
 
     it('sets aria-controls to the specified accordion id', function() {
@@ -103,7 +103,7 @@ describe('NxAccordion', function() {
         )
       });
 
-      expect(container.querySelector('SUMMARY')).toHaveAttribute('aria-controls', 'foo');
+      expect(container.querySelector('summary')).toHaveAttribute('aria-controls', 'foo');
     });
   });
 
@@ -115,11 +115,11 @@ describe('NxAccordion', function() {
         const onToggle = jest.fn();
 
         const { container } = render(
-          <NxAccordion onToggle={onToggle} open={false}>
-            <NxAccordion.Header>
-              <span>Foo</span>
-            </NxAccordion.Header>
-          </NxAccordion>,
+            <NxAccordion onToggle={onToggle} open={false}>
+              <NxAccordion.Header>
+                <span>Foo</span>
+              </NxAccordion.Header>
+            </NxAccordion>
         );
 
         const header = container.querySelector<HTMLElement>('summary')!;
@@ -144,11 +144,11 @@ describe('NxAccordion', function() {
         const onToggle = jest.fn();
 
         const { container } = render(
-          <NxAccordion onToggle={onToggle} open={true}>
-            <NxAccordion.Header>
-              <span>Foo</span>
-            </NxAccordion.Header>
-          </NxAccordion>,
+            <NxAccordion onToggle={onToggle} open={true}>
+              <NxAccordion.Header>
+                <span>Foo</span>
+              </NxAccordion.Header>
+            </NxAccordion>
         );
 
         const header = container.querySelector<HTMLElement>('summary')!;
@@ -174,11 +174,11 @@ describe('NxAccordion', function() {
             onToggle = jest.fn();
 
         const { container } = render(
-          <NxAccordion onToggle={onToggle}>
-            <NxAccordion.Header>
-              <NxAccordion.Title onClick={titleOnClick}>Foo</NxAccordion.Title>
-            </NxAccordion.Header>
-          </NxAccordion>,
+            <NxAccordion onToggle={onToggle}>
+              <NxAccordion.Header>
+                <NxAccordion.Title onClick={titleOnClick}>Foo</NxAccordion.Title>
+              </NxAccordion.Header>
+            </NxAccordion>
         );
         const title = container.querySelector<HTMLElement>('.nx-accordion__header-title')!;
 
@@ -199,15 +199,15 @@ describe('NxAccordion', function() {
             onToggle = jest.fn();
 
         const { container } = render(
-          <NxAccordion onToggle={onToggle}>
-            <NxAccordion.Header>
-              <NxAccordion.Title>Foo</NxAccordion.Title>
-              <div className="nx-btn-bar">
-                <NxButton id="btn1" />
-                <NxButton id="btn2" onClick={btnOnClick} />
-              </div>
-            </NxAccordion.Header>
-          </NxAccordion>,
+            <NxAccordion onToggle={onToggle}>
+              <NxAccordion.Header>
+                <NxAccordion.Title>Foo</NxAccordion.Title>
+                <div className="nx-btn-bar">
+                  <NxButton id="btn1" />
+                  <NxButton id="btn2" onClick={btnOnClick} />
+                </div>
+              </NxAccordion.Header>
+            </NxAccordion>
         );
         const btn1 = container.querySelector('button#btn1') as HTMLElement,
             btn2 = container.querySelector('button#btn2') as HTMLElement;

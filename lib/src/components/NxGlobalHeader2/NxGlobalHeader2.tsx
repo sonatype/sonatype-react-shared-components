@@ -8,11 +8,12 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { Props, propTypes } from './types';
+import importImage from '../../util/importImage';
 
 import './NxGlobalHeader2.scss';
 
-const defaultSonatypeLogoLight = require('../../assets/img/sonatype-header.svg'),
-    defaultSonatypeLogoDark = require('../../assets/img/sonatype-header-dark-mode.svg'),
+const defaultSonatypeLogoLight = importImage('sonatype-header.svg'),
+    defaultSonatypeLogoDark = importImage('sonatype-header-dark-mode.svg'),
     defaultAltText = 'Sonatype';
 
 export default function NxGlobalHeader2({ logoProps, homeHref, className, children, ...otherProps }: Props) {

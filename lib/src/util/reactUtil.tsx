@@ -4,14 +4,17 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { ReactElement, ReactNode, ReactText } from 'react';
+import React, { HTMLAttributes, ReactElement, ReactNode, Ref, RefAttributes } from 'react';
 import { findIndex, findLastIndex, includes } from 'ramda';
+
+type ReactText = string | number;
 
 // NOTE: while technically `true` would not be an expected value here, the inferred type of boolean-including
 // expressions within JSX is `boolean` and not simply `false`, even when `true` cannot actually be a result.
 // So it would be exceedingly inconvenient to calling code if this type was restricted to just `false` and not
 // `boolean`.
-export type OptionalReactElement = ReactElement | null | undefined | boolean;
+export type OptionalReactElement<T = HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement>> =
+  ReactElement<T> | null | undefined | boolean;
 
 function isReactText(content: ReactNode): content is ReactText {
   return typeof content === 'string' || typeof content === 'number';
@@ -65,4 +68,12 @@ export function ensureStartEndElements(content: ReactNode): Exclude<ReactNode, R
   else {
     return ensureElement(content);
   }
+}
+
+/**
+ * Takes an optional `ref` and returns a definite `ref` that will not be `undefined`. Helps with type sginature
+ * compatibility with useMergedRef.
+ */
+export function ensureRef<T>(ref: Ref<T> | undefined): Ref<T> {
+  return ref ?? (() => {});
 }

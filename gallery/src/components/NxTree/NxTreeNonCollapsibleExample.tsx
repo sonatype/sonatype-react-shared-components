@@ -223,7 +223,7 @@ export default function NxTreeNonCollapsibleExample() {
                                 <NxTree.ItemLabel>
                                   <NxFontAwesomeIcon fixedWidth icon={faFolderOpen} />
                                   <span>
-                                    {/* eslint-disable-next-line max-len */}
+                                    {/* eslint-disable-next-line @stylistic/max-len */}
                                     longnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongname.avi
                                   </span>
                                 </NxTree.ItemLabel>

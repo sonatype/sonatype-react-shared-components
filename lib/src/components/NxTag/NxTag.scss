@@ -11,7 +11,6 @@
 
 .nx-tag {
   @include nx-text-helpers.semi-bold;
-  @include nx-container-helpers.container-horizontal;
 
   align-items: center;
   background-color: var(--nx-selectable-color-dark);
@@ -30,6 +29,8 @@
   user-select: none;
   // Uppercase Min so SCSS ignores it and uses CSS min, not SCSS min
   max-width: Min(100%, 320px);
+
+  @include nx-container-helpers.container-horizontal;
 }
 
 .nx-tag--selectable {

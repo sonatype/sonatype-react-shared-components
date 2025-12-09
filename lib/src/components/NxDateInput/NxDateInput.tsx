@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { PrivateNxTextInput } from '../../components/NxTextInput/NxTextInput';
 
@@ -12,10 +12,8 @@ import { Props, propTypes } from './types';
 
 export { Props, PublicProps, StateProps, propTypes } from './types';
 
-const NxDateInput = forwardRef<HTMLDivElement, Props>((props, ref) => {
-  return <PrivateNxTextInput { ...props } type="date" ref={ref} />;
-});
+export default function NxDateInput(props: Props) {
+  return <PrivateNxTextInput { ...props } type="date" />;
+}
 
 NxDateInput.propTypes = propTypes;
-
-export default NxDateInput;

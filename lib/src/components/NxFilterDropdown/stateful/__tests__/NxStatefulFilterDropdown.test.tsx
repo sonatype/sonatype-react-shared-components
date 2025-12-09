@@ -23,8 +23,8 @@ describe('NxStatefulDropdown', function() {
         { id: 2, displayName: 'Two' },
         { id: 3, displayName: 'Three' }
       ],
-      quickRender = rtlRender(NxStatefulFilterDropdown, minimalProps),
-      renderEl = rtlRenderElement(NxStatefulFilterDropdown, minimalProps);
+      quickRender = rtlRender<Props<number>>(NxStatefulFilterDropdown, minimalProps),
+      renderEl = rtlRenderElement<Props<number>>(NxStatefulFilterDropdown, minimalProps);
 
   async function renderAndOpenDropdown(props?: Partial<Props<number>>, user?: UserEvent) {
     const _user = user ?? userEvent.setup(),
@@ -52,7 +52,7 @@ describe('NxStatefulDropdown', function() {
   });
 
   describe('toggle label', function() {
-    const quickRender = rtlRender(NxStatefulFilterDropdown, { ...minimalProps, options });
+    const quickRender = rtlRender<Props<number>>(NxStatefulFilterDropdown, { ...minimalProps, options });
 
     describe('when no options are selected', function() {
       it('says "Filter" by default', function() {

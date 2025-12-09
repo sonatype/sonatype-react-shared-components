@@ -49,8 +49,7 @@ export default function NivoLineExample() {
                           itemWidth: 80,
                           itemHeight: 20
                         }
-                      ]}
-        />
+                      ]} />
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function NxCopyToClipboardSizingExample() {
     <>
       <NxCopyToClipboard label="RSC Github URL"
                          content="https://github.com/sonatype/sonatype-react-shared-components"
-                         inputProps={{rows: 1}} />
+                         inputProps={{ inputAttributes: { rows: 1 } }} />
     </>
   );
 }

@@ -28,21 +28,21 @@ describe('NxDescriptionList', function() {
 
   it('adds specified classNames to the element in addition to the defaults when not empty', function() {
     const el = render(
-      <NxDescriptionList className="foo">
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
-          <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-      </NxDescriptionList>
+        <NxDescriptionList className="foo">
+          <NxDescriptionList.Item>
+            <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
+            <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
+          </NxDescriptionList.Item>
+        </NxDescriptionList>
     ).container.firstElementChild;
 
     const defaultEl = render(
-      <NxDescriptionList>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
-          <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-      </NxDescriptionList>
+        <NxDescriptionList>
+          <NxDescriptionList.Item>
+            <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
+            <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
+          </NxDescriptionList.Item>
+        </NxDescriptionList>
     ).container.firstElementChild!;
 
     expect(el).toHaveClass('foo');
@@ -97,12 +97,12 @@ describe('NxDescriptionList', function() {
 
   it('renders a dl when non-empty', function() {
     const component = render(
-      <NxDescriptionList>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
-          <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-      </NxDescriptionList>
+        <NxDescriptionList>
+          <NxDescriptionList.Item>
+            <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
+            <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
+          </NxDescriptionList.Item>
+        </NxDescriptionList>
     );
 
     // dl's don't have a role
@@ -114,16 +114,16 @@ describe('NxDescriptionList', function() {
 
   it('renders terms and definitions for appropriate children', function() {
     const component = render(
-      <NxDescriptionList>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
-          <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term>Baz</NxDescriptionList.Term>
-          <NxDescriptionList.Description>Qwerty</NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-      </NxDescriptionList>
+        <NxDescriptionList>
+          <NxDescriptionList.Item>
+            <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
+            <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
+          </NxDescriptionList.Item>
+          <NxDescriptionList.Item>
+            <NxDescriptionList.Term>Baz</NxDescriptionList.Term>
+            <NxDescriptionList.Description>Qwerty</NxDescriptionList.Description>
+          </NxDescriptionList.Item>
+        </NxDescriptionList>
     );
 
     const terms = component.getAllByRole('term'),
@@ -140,16 +140,16 @@ describe('NxDescriptionList', function() {
 
   it('renders valid HTML children for dl', function() {
     const component = render(
-      <NxDescriptionList>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
-          <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-        <NxDescriptionList.Item>
-          <NxDescriptionList.Term>Bar</NxDescriptionList.Term>
-          <NxDescriptionList.Description>qwerty</NxDescriptionList.Description>
-        </NxDescriptionList.Item>
-      </NxDescriptionList>
+        <NxDescriptionList>
+          <NxDescriptionList.Item>
+            <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
+            <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
+          </NxDescriptionList.Item>
+          <NxDescriptionList.Item>
+            <NxDescriptionList.Term>Bar</NxDescriptionList.Term>
+            <NxDescriptionList.Description>qwerty</NxDescriptionList.Description>
+          </NxDescriptionList.Item>
+        </NxDescriptionList>
     );
 
     const list = component.container.firstElementChild!;
@@ -170,12 +170,12 @@ describe('NxDescriptionList', function() {
         nonEmptyListRef = React.createRef<HTMLDListElement>(),
         emptyList = render(<NxDescriptionList ref={emptyListRef} />),
         nonEmptyList = render(
-          <NxDescriptionList ref={nonEmptyListRef} >
-            <NxDescriptionList.Item>
-              <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
-              <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
-            </NxDescriptionList.Item>
-          </NxDescriptionList>
+            <NxDescriptionList ref={nonEmptyListRef} >
+              <NxDescriptionList.Item>
+                <NxDescriptionList.Term>Foo</NxDescriptionList.Term>
+                <NxDescriptionList.Description>Bar</NxDescriptionList.Description>
+              </NxDescriptionList.Item>
+            </NxDescriptionList>
         );
 
     expect(emptyListRef.current).toBe(emptyList.container.firstElementChild!);

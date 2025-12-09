@@ -4,16 +4,14 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 
 import NxList from '../NxList';
 import { NxListLinkItemProps } from '../types';
 
 describe('NxList.LinkItem', function() {
-  const minimalProps: NxListLinkItemProps & RefAttributes<HTMLLIElement> = {
-        href: 'www.sonatype.com'
-      },
+  const minimalProps: NxListLinkItemProps = { href: 'www.sonatype.com' },
       quickRender = rtlRender(NxList.LinkItem, minimalProps),
       renderEl = rtlRenderElement(NxList.LinkItem, minimalProps);
 

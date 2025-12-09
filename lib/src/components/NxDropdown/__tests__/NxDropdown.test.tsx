@@ -13,7 +13,7 @@ import NxDropdown, { Props } from '../NxDropdown';
 import { OptionalReactElement } from '../../../util/reactUtil';
 
 describe('NxDropdown', () => {
-  const minimalProps = {
+  const minimalProps: Props = {
     label: 'dropdown-toggle',
     isOpen: false,
     onToggleCollapse: () => {}

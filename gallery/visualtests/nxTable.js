@@ -18,6 +18,7 @@ describe('NxTable', function() {
     checkScreenshot,
     getPage,
     disableLoadingSpinnerAnimation,
+    wait,
     clickTest,
     a11yTest
   } = setupBrowser('#/pages/Table');
@@ -80,7 +81,11 @@ describe('NxTable', function() {
   });
   it('looks right when showing an error', simpleTest(errorTableSelector));
   it('looks right with an icon column', simpleTest(iconColumnTableSelector));
-  it('looks right with a pagination bar and a filter row', simpleTest(paginationFilterTableSelector));
+  it('looks right with a pagination bar and a filter row', async function() {
+    // placeholder rendering seems unstable
+    await wait(500);
+    await simpleTest(paginationFilterTableSelector)();
+  });
 
   describe('Scrollable table', function() {
     const { simpleTest, waitAndGetElements, checkScreenshot } = setupBrowser('#/pages/Table Container');

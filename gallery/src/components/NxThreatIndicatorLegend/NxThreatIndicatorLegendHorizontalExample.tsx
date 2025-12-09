@@ -13,8 +13,7 @@ const NxThreatIndicatorLegendHorizontalExample = () => (
                            moderate
                            low
                            none
-                           unspecified
-    />
+                           unspecified />
 );
 
 export default NxThreatIndicatorLegendHorizontalExample;

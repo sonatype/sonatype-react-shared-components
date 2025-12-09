@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { fireEvent, render, within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../../__testutils__/rtlUtils';
 import { userEvent } from '../../../../__testutils__/rtlUtils';
@@ -13,9 +13,7 @@ import NxStatefulDateInput, { Props } from '../NxStatefulDateInput';
 import NxForm from '../../../NxForm/NxForm';
 
 describe('NxStatefulDateInput', function() {
-  const minimalProps: Props & RefAttributes<HTMLDivElement> = {
-        defaultValue: '1990-11-11'
-      },
+  const minimalProps: Props = { defaultValue: '1990-11-11' },
       quickRender = rtlRender(NxStatefulDateInput, minimalProps),
       renderEl = rtlRenderElement(NxStatefulDateInput, minimalProps);
 
@@ -48,11 +46,26 @@ describe('NxStatefulDateInput', function() {
     }
   });
 
-  it('passes additional attrs to the input', function() {
-    const input = quickRender({ id: 'foo', lang: 'en-US' }).container.querySelector('input');
+  it('passes id, disabled, aria-required, and aria-describedby to the input', function() {
+    render(<p id="desc">Description</p>);
+
+    const input = renderEl({
+      id: 'foo',
+      disabled: true,
+      'aria-required': true,
+      'aria-describedby': 'desc'
+    })!.querySelector('input');
 
     expect(input).toHaveAttribute('id', 'foo');
-    expect(input).toHaveAttribute('lang', 'en-US');
+    expect(input).toHaveAttribute('disabled');
+    expect(input).toHaveAttribute('aria-required', 'true');
+    expect(input).toHaveAccessibleDescription('Description');
+  });
+
+  it('passes additional attrs to the top-level element', function() {
+    const el = renderEl({ lang: 'en-US' });
+
+    expect(el).toHaveAttribute('lang', 'en-US');
   });
 
   it('sets the value as specified', function() {
@@ -99,14 +112,14 @@ describe('NxStatefulDateInput', function() {
         expect(input).toHaveValue('1111-11-11');
         expect(validator).toHaveBeenCalledWith('1111-11-11');
         expect(component.getByRole('alert')).toHaveTextContent('expect 2222');
-        expect(input).toHaveErrorMessage('expect 2222');
+        expect(input).toHaveAccessibleErrorMessage('expect 2222');
 
         await user.clear(input);
         await user.keyboard('2222-11-11');
         expect(input).toHaveValue('2222-11-11');
         expect(validator).toHaveBeenCalledWith('2222-11-11');
         expect(component.queryByRole('alert')).not.toBeInTheDocument();
-        expect(input).not.toHaveErrorMessage();
+        expect(input).not.toHaveAccessibleErrorMessage();
       }
   );
 
@@ -124,7 +137,7 @@ describe('NxStatefulDateInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -134,9 +147,9 @@ describe('NxStatefulDateInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxStatefulDateInput { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxStatefulDateInput { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -148,7 +161,7 @@ describe('NxStatefulDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -173,7 +186,7 @@ describe('NxStatefulDateInput', function() {
           fireEvent.change(input, {target: {value: '2222-11-11'}});
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -188,9 +201,9 @@ describe('NxStatefulDateInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxStatefulDateInput { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxStatefulDateInput { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -205,7 +218,7 @@ describe('NxStatefulDateInput', function() {
             fireEvent.change(input, {target: {value: '2222-11-11'}});
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -236,7 +249,7 @@ describe('NxStatefulDateInput', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -246,9 +259,9 @@ describe('NxStatefulDateInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxStatefulDateInput { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxStatefulDateInput { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -260,7 +273,7 @@ describe('NxStatefulDateInput', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -282,10 +295,10 @@ describe('NxStatefulDateInput', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(singleError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(multiError.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -299,9 +312,9 @@ describe('NxStatefulDateInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxStatefulDateInput { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxStatefulDateInput { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -317,10 +330,10 @@ describe('NxStatefulDateInput', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.container.querySelector('input')).toHaveErrorMessage('foo');
+            expect(singleError.container.querySelector('input')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.container.querySelector('input')).toHaveErrorMessage('bar');
+            expect(multiError.container.querySelector('input')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {
@@ -348,7 +361,7 @@ describe('NxStatefulDateInput', function() {
           fireEvent.change(input, {target: {value: '2222-11-11'}});
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+          expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the input', function() {
@@ -363,9 +376,9 @@ describe('NxStatefulDateInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxStatefulDateInput { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxStatefulDateInput { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -380,7 +393,7 @@ describe('NxStatefulDateInput', function() {
             fireEvent.change(input, {target: {value: '2222-11-11'}});
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.container.querySelector('input')).not.toHaveErrorMessage();
+            expect(component.container.querySelector('input')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the input', function() {
@@ -412,10 +425,10 @@ describe('NxStatefulDateInput', function() {
           fireEvent.change(multiErrorInput, {target: {value: '2222-11-11'}});
 
           expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-          expect(singleError.container.querySelector('input')).toHaveErrorMessage('foo');
+          expect(singleError.container.querySelector('input')).toHaveAccessibleErrorMessage('foo');
 
           expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-          expect(multiError.container.querySelector('input')).toHaveErrorMessage('bar');
+          expect(multiError.container.querySelector('input')).toHaveAccessibleErrorMessage('bar');
         });
 
         it('sets aria-invalid on the input', function() {
@@ -434,9 +447,9 @@ describe('NxStatefulDateInput', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxStatefulDateInput { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxStatefulDateInput { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -457,10 +470,10 @@ describe('NxStatefulDateInput', function() {
             fireEvent.change(multiErrorInput, {target: {value: '2222-11-11'}});
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.container.querySelector('input')).toHaveErrorMessage('foo');
+            expect(singleError.container.querySelector('input')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.container.querySelector('input')).toHaveErrorMessage('bar');
+            expect(multiError.container.querySelector('input')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the input', function() {

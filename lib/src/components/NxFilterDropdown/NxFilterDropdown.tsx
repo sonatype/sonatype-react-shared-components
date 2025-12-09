@@ -4,25 +4,24 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { Ref, useRef } from 'react';
+import React, { useRef } from 'react';
 import { propEq, any } from 'ramda';
 import classnames from 'classnames';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 import { Props, propTypes } from './types';
 import NxCheckbox from '../NxCheckbox/NxCheckbox';
 import MultiSelectCounter from '../Counter/MultiSelectCounter';
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import NxDropdown from '../NxDropdown/NxDropdown';
 import DataItem from '../../util/DataItem';
-import forwardRef from '../../util/genericForwardRef';
 import Close from '../../icons/Close';
 
 import './NxFilterDropdown.scss';
 
 export { Props };
 
-function NxFilterDropdownRender<T extends string | number = string>(props: Props<T>, ref: Ref<HTMLDivElement>) {
+export default function NxFilterDropdown<T extends string | number = string>(props: Props<T>) {
   const {
         onChange,
         selectedIds,
@@ -106,13 +105,10 @@ function NxFilterDropdownRender<T extends string | number = string>(props: Props
                 onToggleCollapse={onToggleCollapse}
                 onCloseClick={onCloseClick}
                 menuRef={menuRef}
-                ref={ref}
                 { ...attrs }>
       {children}
     </NxDropdown>
   );
 }
 
-const NxFilterDropdown = Object.assign(forwardRef(NxFilterDropdownRender), { propTypes });
-
-export default NxFilterDropdown;
+NxFilterDropdown.propTypes = propTypes;

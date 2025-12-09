@@ -24,8 +24,8 @@ describe('NxFilterDropdown', function() {
         { id: 2, displayName: 'Two' },
         { id: 3, displayName: 'Three' }
       ],
-      quickRender = rtlRender(NxFilterDropdown, minimalProps),
-      renderEl = rtlRenderElement(NxFilterDropdown, minimalProps);
+      quickRender = rtlRender<Props<number>>(NxFilterDropdown, minimalProps),
+      renderEl = rtlRenderElement<Props<number>>(NxFilterDropdown, minimalProps);
 
   it('correctly renders the menu based on isOpen prop', function() {
     const { container, rerender } = quickRender({ isOpen: true });
@@ -57,7 +57,7 @@ describe('NxFilterDropdown', function() {
   });
 
   describe('toggle label', function() {
-    const quickRender = rtlRender(NxFilterDropdown, { ...minimalProps, options });
+    const quickRender = rtlRender<Props<number>>(NxFilterDropdown, { ...minimalProps, options });
 
     describe('when no options are selected', function() {
       it('says "Filter" by default', function() {
@@ -101,7 +101,7 @@ describe('NxFilterDropdown', function() {
   });
 
   describe('reset button', function() {
-    const quickRender = rtlRender(NxFilterDropdown, { ...minimalProps, options, isOpen: true });
+    const quickRender = rtlRender<Props<number>>(NxFilterDropdown, { ...minimalProps, options, isOpen: true });
 
     it('is only visible when the dropdown is open', function() {
       const closedView = quickRender({ isOpen: false }),

@@ -6,10 +6,12 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
+// Selenium is only used for the SSR tests.  The visual tests use puppeteer, which accesses Chromium in the local
+// environment
 def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
-def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
+def seleniumDockerVersion = '132.0-20250202'
 
-def deployBranch = '12.x-backports'
+def deployBranch = 'main'
 
 def isMainBranch() {
   env.BRANCH_NAME == 'main'
@@ -17,6 +19,9 @@ def isMainBranch() {
 
 dockerizedBuildPipeline(
   deployBranch: deployBranch,
+
+  buildImageId: 'docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest',
+
   // expose gallery port and nextjs dev port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043 -p 3000:3000',
 

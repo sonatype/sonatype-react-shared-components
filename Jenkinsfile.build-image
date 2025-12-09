@@ -1,0 +1,40 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+import com.sonatype.jenkins.shared.Expectation
+
+@Library(['private-pipeline-library', 'jenkins-shared']) _
+
+String imageName = 'sonatype/react-shared-components-ci'
+String deployBranch = 'main'
+
+/**
+ * This build builds the docker image within which the actual RSC build (defined in `Jenkinsfile`) executes.
+ * The docker image is build separately, on-demand, so that the version of chromium used in the RSC build
+ * is not constantly changing and affecting the visual tests.
+ * This Jenkinsfile is based off of https://github.com/sonatype/bnr-license-check/blob/main/Jenkinsfile
+ */
+dockerizedBuildPipeline(
+  deployBranch: deployBranch,
+  retentionPolicy: RetentionPolicy.TEN_BUILDS,
+  setVersion: { env['VERSION'] = "${env.BUILD_NUMBER}" },
+  buildAndTest: {
+    // Note that we don't want to expect a specific chromium version, as that is what is likely to change
+    validateExpectations([
+        new Expectation('chromium', 'chromium', '--version', /Chromium/)
+    ])
+  },
+  // This image is only used in the build of this repo, it doesn't need a vuln scan
+  skipVulnerabilityScan: true,
+  deploy: {
+    withSonatypeDockerRegistry() {
+      sh "docker buildx create --driver-opt=\"image=${sonatypeDockerRegistryId()}/moby/buildkit\" --use"
+      sh "docker buildx build --platform linux/amd64,linux/arm64 --push " +
+          "--tag ${sonatypeDockerRegistryId()}/${imageName}:latest " +
+          "--tag ${sonatypeDockerRegistryId()}/${imageName}:${env.VERSION} ."
+    }
+  }
+)

@@ -7,10 +7,10 @@
 import React from 'react';
 
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
-import NxMeter from '../NxMeter';
+import NxMeter, { Props } from '../NxMeter';
 
 describe('NxMeter', function() {
-  const minimalProps = {
+  const minimalProps: Props = {
         value: 1,
         children: 'foo'
       },

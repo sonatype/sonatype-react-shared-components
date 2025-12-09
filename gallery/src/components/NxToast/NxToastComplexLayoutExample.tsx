@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useState, ComponentType } from 'react';
 import { reject, propEq } from 'ramda';
 
@@ -45,6 +45,7 @@ interface ToastModel {
 
 type AlertComponentProps = {
   role?: string;
+  children: ReactNode
 };
 
 export default function NxToastComplexLayoutExample() {

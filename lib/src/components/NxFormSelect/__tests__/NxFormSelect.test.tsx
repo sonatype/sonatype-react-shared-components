@@ -14,7 +14,7 @@ import { render, within } from '@testing-library/react';
 import NxForm from '../../NxForm/NxForm';
 
 describe('NxFormSelect', function() {
-  const minimalProps = { value: '', onChange: () => {} },
+  const minimalProps: Props = { value: '', onChange: () => {} },
       quickRender = rtlRender(NxFormSelect, minimalProps),
       renderEl = rtlRenderElement(NxFormSelect, minimalProps);
 
@@ -64,10 +64,8 @@ describe('NxFormSelect', function() {
   });
 
   it('calls onChange when the select value is changed', async function() {
-    let capturedValue: HTMLSelectElement;
-
     const user = userEvent.setup(),
-        onChange = jest.fn().mockImplementation(evt => { capturedValue = evt.target.value; }),
+        onChange = jest.fn(),
         component = quickRender({
           onChange,
           children: (
@@ -84,7 +82,7 @@ describe('NxFormSelect', function() {
     await user.selectOptions(select, 'Bar');
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(capturedValue!).toBe('Bar');
+    expect(onChange).toHaveBeenCalledWith('Bar');
   });
 
   describe('when not validatable', function() {
@@ -101,7 +99,7 @@ describe('NxFormSelect', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -111,9 +109,9 @@ describe('NxFormSelect', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -125,7 +123,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -145,10 +143,10 @@ describe('NxFormSelect', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -159,9 +157,9 @@ describe('NxFormSelect', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -173,7 +171,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -194,7 +192,7 @@ describe('NxFormSelect', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -204,9 +202,9 @@ describe('NxFormSelect', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -218,7 +216,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -238,10 +236,10 @@ describe('NxFormSelect', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -252,9 +250,9 @@ describe('NxFormSelect', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxFormSelect data-testid="select" { ...nonValidatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -266,7 +264,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -291,7 +289,7 @@ describe('NxFormSelect', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -301,9 +299,9 @@ describe('NxFormSelect', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -315,7 +313,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -335,10 +333,10 @@ describe('NxFormSelect', function() {
               multiError = multiRender();
 
           expect(singleError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(singleError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(singleError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
 
           expect(multiError.queryByRole('alert')).not.toBeInTheDocument();
-          expect(multiError.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(multiError.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -349,9 +347,9 @@ describe('NxFormSelect', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -367,10 +365,10 @@ describe('NxFormSelect', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('combobox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('combobox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the select', function() {
@@ -395,7 +393,7 @@ describe('NxFormSelect', function() {
           const component = quickRender();
 
           expect(component.queryByRole('alert')).not.toBeInTheDocument();
-          expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+          expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
         });
 
         it('does not set aria-invalid on the select', function() {
@@ -405,9 +403,9 @@ describe('NxFormSelect', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -419,7 +417,7 @@ describe('NxFormSelect', function() {
             const component = quickRender();
 
             expect(component.queryByRole('alert')).not.toBeInTheDocument();
-            expect(component.getByRole('combobox')).not.toHaveErrorMessage();
+            expect(component.getByRole('combobox')).not.toHaveAccessibleErrorMessage();
           });
 
           it('does not set aria-invalid on the select', function() {
@@ -439,10 +437,10 @@ describe('NxFormSelect', function() {
               multiError = multiRender();
 
           expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-          expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+          expect(singleError.getByRole('combobox')).toHaveAccessibleErrorMessage('foo');
 
           expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-          expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+          expect(multiError.getByRole('combobox')).toHaveAccessibleErrorMessage('bar');
         });
 
         it('sets aria-invalid on the select', function() {
@@ -456,9 +454,9 @@ describe('NxFormSelect', function() {
         describe('when in a form with showValidationErrors', function() {
           function quickRender(extraProps?: Partial<Props>) {
             const renderResult = render(
-              <NxForm showValidationErrors onSubmit={() => {}}>
-                <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
-              </NxForm>
+                <NxForm showValidationErrors onSubmit={() => {}}>
+                  <NxFormSelect data-testid="select" { ...validatableMinimalProps } { ...extraProps } />
+                </NxForm>
             );
 
             const boundQueries = within(renderResult.container);
@@ -474,10 +472,10 @@ describe('NxFormSelect', function() {
                 multiError = multiRender();
 
             expect(singleError.getByRole('alert')).toHaveTextContent('foo');
-            expect(singleError.getByRole('combobox')).toHaveErrorMessage('foo');
+            expect(singleError.getByRole('combobox')).toHaveAccessibleErrorMessage('foo');
 
             expect(multiError.getByRole('alert')).toHaveTextContent('bar');
-            expect(multiError.getByRole('combobox')).toHaveErrorMessage('bar');
+            expect(multiError.getByRole('combobox')).toHaveAccessibleErrorMessage('bar');
           });
 
           it('sets aria-invalid on the select', function() {

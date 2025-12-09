@@ -41,8 +41,7 @@ export default function NivoBarExample() {
                        legendOffset: -40,
                        legendPosition: 'middle'
                      }}
-                     colors={NIVO_COLORS}
-        />
+                     colors={NIVO_COLORS} />
     </div>
   );
 }

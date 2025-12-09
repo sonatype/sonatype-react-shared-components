@@ -62,10 +62,8 @@ describe('NxTabs', function() {
             `${tabSimpleExampleSelector} .nx-tab:nth-child(2)`));
   });
 
-  it(
-      'shows tooltip when text is truncated',
-      hoverTest(tabTileExampleSelector, tabTileExampleSelector + ' .nx-tab:nth-child(3)', true)
-  );
+  it('shows tooltip when text is truncated',
+      hoverTest(tabTileExampleSelector, tabTileExampleSelector + ' .nx-tab:nth-child(3)', true));
 
   describe('Check tab panel', function() {
     it('has a blue border when focused',

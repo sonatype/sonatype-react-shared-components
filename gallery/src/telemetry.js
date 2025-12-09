@@ -7,7 +7,6 @@
 
 export function init() {
   // Filled in via the webpack EnvironmentPlugin
-  /* eslint-disable-next-line no-undef */
   const apiKey = process.env.PX_API_KEY;
 
   if (apiKey) {

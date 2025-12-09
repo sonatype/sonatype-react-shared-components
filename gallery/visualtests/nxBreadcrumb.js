@@ -35,6 +35,7 @@ describe('NxBreadcrumb', function() {
         `${manySegmentsExample} .nx-icon-dropdown__toggle`
     );
 
+    await wait(TOOLTIP_WAIT);
     await dropdownBtn.click();
     await wait(TOOLTIP_WAIT);
 

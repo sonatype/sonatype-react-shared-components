@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { Children, ReactElement, cloneElement, isValidElement } from 'react';
+import React, { Children, PropsWithChildren, ReactElement, cloneElement, isValidElement } from 'react';
 import classnames from 'classnames';
 
 import { useUniqueId } from '../../util/idUtil';
@@ -25,13 +25,13 @@ const NxTabs = function NxTabsElement(props: NxTabsProps) {
     ...attrs
   } = props;
 
-  const [tabList, ...tabPanels] = Children.toArray(children);
+  const [tabList, ...tabPanels] = Children.toArray(children) as ReactElement<PropsWithChildren>[];
 
   if (!isValidElement(tabList)) {
     console.error('NxTabs must have an NxTabList');
     return null;
   }
-  else if (tabList.props.children.length === 0) {
+  else if (Children.toArray(tabList.props.children).length === 0) {
     console.error('NxTabs must have at least one NxTab');
     return null;
   }

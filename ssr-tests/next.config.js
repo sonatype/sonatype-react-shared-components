@@ -6,6 +6,9 @@
  */
 /** @type {import('next').NextConfig} */
 
-const withTM = require('next-transpile-modules')(['@sonatype/react-shared-components']);
+const nextConfig = {
+    transpilePackages: ['@sonatype/react-shared-components']
+};
 
-module.exports = withTM({});
+module.exports = nextConfig;
+

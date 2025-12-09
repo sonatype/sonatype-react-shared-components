@@ -4,7 +4,7 @@
  * the terms of the Eclipse Public License 2.0 which accompanies this
  * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
  */
-import React, { RefAttributes } from 'react';
+import React from 'react';
 import { within } from '@testing-library/react';
 import { rtlRender, rtlRenderElement } from '../../../__testutils__/rtlUtils';
 import { userEvent } from '../../../__testutils__/rtlUtils';
@@ -12,9 +12,7 @@ import { userEvent } from '../../../__testutils__/rtlUtils';
 import NxCheckbox, { Props } from '../NxCheckbox';
 
 describe('NxCheckbox', function() {
-  const minimalProps: Props & RefAttributes<HTMLLabelElement> = {
-        isChecked: false
-      },
+  const minimalProps: Props = { isChecked: false },
       quickRender = rtlRender(NxCheckbox, minimalProps),
       renderEl = rtlRenderElement(NxCheckbox, minimalProps);
 
