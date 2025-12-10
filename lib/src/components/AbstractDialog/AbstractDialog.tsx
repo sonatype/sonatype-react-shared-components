@@ -127,8 +127,13 @@ const AbstractDialog = forwardRef<HTMLDialogElement, Props>((props, ref) => {
 
     if (dialog && hasNativeModalSupport) {
       /* eslint-disable @typescript-eslint/no-non-null-assertion */
-      dialog.addEventListener('cancel', onCancel!);
-      return () => { dialog.removeEventListener('cancel', onCancel!); };
+      const handleCancel = (event: Event) => {
+        if (event.target === dialog) {
+          onCancel!(event);
+        }
+      };
+      dialog.addEventListener('cancel', handleCancel);
+      return () => { dialog.removeEventListener('cancel', handleCancel); };
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
     }
     else {
