@@ -1038,7 +1038,7 @@
   integrity sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==
 
 "@sonatype/react-shared-components@file:../lib/dist":
-  version "14.0.10"
+  version "14.0.11"
   dependencies:
     "@emotion/react" "^11.14.0"
     "@emotion/styled" "^11.14.0"
