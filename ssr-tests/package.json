@@ -10,9 +10,10 @@
   },
   "dependencies": {
     "@sonatype/react-shared-components": "file:../lib/dist",
-    "next": "^15.5.7",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
+    "@types/react-dom": "^19.2.3",
+    "next": "^15.5.9",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "sass": "^1.85.0",
     "webpack": "^5.98.0"
   },
