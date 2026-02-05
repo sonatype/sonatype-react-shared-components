@@ -8,7 +8,7 @@
 
 // Selenium is only used for the SSR tests.  The visual tests use puppeteer, which accesses Chromium in the local
 // environment
-def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
+def seleniumDockerImage = 'sonatype.repo.sonatype.app/docker-all/selenium/standalone-chrome'
 def seleniumDockerVersion = '4.0.0-rc-1-prerelease-20210618'
 
 def deployBranch = '12.x-backports'
@@ -20,7 +20,7 @@ def isMainBranch() {
 dockerizedBuildPipeline(
   deployBranch: deployBranch,
 
-  buildImageId: 'docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest',
+  buildImageId: 'sonatype.repo.sonatype.app/docker-all/sonatype/react-shared-components-ci:latest',
 
   // expose gallery port and nextjs dev port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043 -p 3000:3000',
@@ -96,7 +96,7 @@ dockerizedBuildPipeline(
 
     withCredentials([string(credentialsId: 'GAINSIGHT_PX_API_KEY', variable: 'PX_API_KEY')]) {
       sh """
-        registry=https://repo.sonatype.com/repository/npm-all/
+        registry=https://sonatype.repo.sonatype.app/repository/npm-all/
 
         cd lib
         yarn install --registry "\${registry}" --frozen-lockfile
@@ -145,7 +145,7 @@ dockerizedBuildPipeline(
     // namespace confusion protection feature of Nexus Firewall. See RSC-1430 and the slack conversation
     // linked therein
     withDockerImage(env.DOCKER_IMAGE_ID, 'rsc-internal-write-npmrc-v9') {
-      doPublish('https://repo.sonatype.com/repository/npm-internal/')
+      doPublish('https://sonatype.repo.sonatype.app/repository/npm-internal/')
     }
 
     // publish to npmjs.com
