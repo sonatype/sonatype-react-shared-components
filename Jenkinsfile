@@ -8,8 +8,8 @@
 
 // Selenium is only used for the SSR tests.  The visual tests use puppeteer, which accesses Chromium in the local
 // environment
-def seleniumDockerImage = 'docker-all.repo.sonatype.com/selenium/standalone-chrome'
-def seleniumDockerVersion = '132.0-20250202'
+def seleniumDockerImage = 'sonatype.repo.sonatype.app/docker-all/selenium/standalone-chrome'
+def seleniumDockerVersion = '120.0-20240123'
 
 def deployBranch = 'main'
 
@@ -20,7 +20,7 @@ def isMainBranch() {
 dockerizedBuildPipeline(
   deployBranch: deployBranch,
 
-  buildImageId: 'docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest',
+  buildImageId: 'sonatype.repo.sonatype.app/docker-all/sonatype/react-shared-components-ci:latest',
 
   // expose gallery port and nextjs dev port on host so selenium container can hit it
   dockerArgs: '-p 4043:4043 -p 3000:3000',
@@ -80,13 +80,13 @@ dockerizedBuildPipeline(
       fi
     '''
 
-    // As this is an open source project, yarn.lock URLs should point to npmjs.org, not repo.sonatype.com
+    // As this is an open source project, yarn.lock URLs should point to npmjs.org, not sonatype.repo.sonatype.app
     sh '''
       exitSuccessfully=0
 
       for f in */yarn.lock; do
-        if ( grep --quiet 'repo\\.sonatype\\.com' "${f}" ); then
-          echo "repo.sonatype.com URL found in ${f}"
+        if ( grep --quiet 'sonatype\\.repo\\.sonatype\\.app' "${f}" ); then
+          echo "sonatype.repo.sonatype.app URL found in ${f}"
           exitSuccessfully=1
         fi
       done
@@ -96,7 +96,7 @@ dockerizedBuildPipeline(
 
     withCredentials([string(credentialsId: 'GAINSIGHT_PX_API_KEY', variable: 'PX_API_KEY')]) {
       sh """
-        registry=https://repo.sonatype.com/repository/npm-all/
+        registry=https://sonatype.repo.sonatype.app/repository/npm-all/
 
         cd lib
         yarn install --registry "\${registry}" --frozen-lockfile
@@ -145,7 +145,7 @@ dockerizedBuildPipeline(
     // namespace confusion protection feature of Nexus Firewall. See RSC-1430 and the slack conversation
     // linked therein
     withDockerImage(env.DOCKER_IMAGE_ID, 'rsc-internal-write-npmrc-v9') {
-      doPublish('https://repo.sonatype.com/repository/npm-internal/')
+      doPublish('https://sonatype.repo.sonatype.app/repository/npm-internal/')
     }
 
     // publish to npmjs.com

@@ -240,7 +240,7 @@ image reduces issues with screenshots changing due to minor variations between b
 directory of the repository, log into Docker by running the following command. You may be asked to input credentials.
 
 ```
-docker login docker-all.repo.sonatype.com
+docker login sonatype.repo.sonatype.app
 ```
 
 You can then execute the tests for both light mode (default) and dark mode by running the following command:
