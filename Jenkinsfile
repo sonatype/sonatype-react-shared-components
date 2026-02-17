@@ -9,7 +9,7 @@
 // Selenium is only used for the SSR tests.  The visual tests use puppeteer, which accesses Chromium in the local
 // environment
 def seleniumDockerImage = 'sonatype.repo.sonatype.app/docker-all/selenium/standalone-chrome'
-def seleniumDockerVersion = '144.0-20260202'
+def seleniumDockerVersion = '132.0-20250202'
 
 def deployBranch = '12.x-backports'
 
