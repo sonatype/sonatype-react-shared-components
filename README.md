@@ -228,7 +228,7 @@ within the top level directory of the repository, log into Docker by running the
 input credentials. Non-Sonatype employees should skip this step.
 
 ```
-docker login docker-all.repo.sonatype.com
+docker login sonatype.repo.sonatype.app
 ```
 
 Then build a Docker image using the command below. You build an image so that you can run tests within a container
