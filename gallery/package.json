@@ -88,7 +88,7 @@
     "es6-set": "^0.1.6",
     "prop-types": "^15.8.1",
     "query-string": "^8.1.0",
-    "ramda": "^0.29.0",
+    "ramda": "^0.32.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router": "^6.30.3",

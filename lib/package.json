@@ -89,7 +89,7 @@
     "fuse.js": "^6.6.2",
     "pretty-bytes": "^6.1.0",
     "prop-types": "^15.8.1",
-    "ramda": "^0.29.0"
+    "ramda": "^0.32.0"
   },
   "peerDependencies": {
     "react": "^16.14.0",
