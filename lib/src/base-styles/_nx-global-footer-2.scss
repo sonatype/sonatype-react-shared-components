@@ -24,14 +24,13 @@
   overflow-y: auto;
 
   > .nx-page-main {
-    flex: 0 0 auto;
+    flex: 1 0 auto;
   }
 
   &.nx-viewport-sized {
     overflow: hidden;
 
     > .nx-page-main {
-      flex-grow: 1;
       flex-shrink: 1;
     }
   }
