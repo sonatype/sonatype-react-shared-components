@@ -148,10 +148,11 @@ dockerizedBuildPipeline(
       doPublish('https://sonatype.repo.sonatype.app/repository/npm-internal/')
     }
 
-    // publish to npmjs.com
-    withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
-      withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc', doPublish)
-    }
+    // publish to npmjs.com - DISABLED currently as npmjs publishing requires a one-time-password, and publishing FOSS
+    // versions of RSC is no longer a priority
+    //withCredentials([string(credentialsId: 'uxui-npm-auth-token', variable: 'NPM_TOKEN')]) {
+      //withDockerImage(env.DOCKER_IMAGE_ID, 'npmjs-npmrc', doPublish)
+    //}
   },
   postDeploy: {
     sshagent(credentials: [sonatypeZionCredentialsId()]) {
