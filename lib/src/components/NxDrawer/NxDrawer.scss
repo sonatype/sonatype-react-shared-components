@@ -62,6 +62,7 @@
   padding: $padding;
   padding-bottom: 0;
   width: 520px;
+  border-left: var(--nx-border-component);
 
   &::backdrop {
     // Chrome tries to add its own subtle mask here which doubles up with our own
