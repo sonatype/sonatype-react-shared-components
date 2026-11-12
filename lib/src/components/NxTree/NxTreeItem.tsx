@@ -8,6 +8,7 @@ import React, { useContext, useEffect, useRef, useState, FocusEvent, KeyboardEve
 import classnames from 'classnames';
 import { omit } from 'ramda';
 import { faMinusSquare, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 import NxFontAwesomeIcon from '../NxFontAwesomeIcon/NxFontAwesomeIcon';
 
@@ -29,7 +30,11 @@ export default function NxTreeItem(props: ItemProps) {
       // so that TS understands the type guard
       isOpen = props.collapsible ? props.isOpen : true,
       onToggleCollapse = props.collapsible ? props.onToggleCollapse : undefined,
-      collapseIcon = isOpen ? faMinusSquare : faPlusSquare,
+      // free-regular-svg-icons is on 7.x while fontawesome-svg-core is pinned to 6.7.2, so the icons carry the
+      // IconDefinition from their own nested fontawesome-common-types@7, whose IconPrefix union adds prefixes
+      // ("faslr" and friends) that core's 6.7.2 copy doesn't know. These icons still use the "far" prefix that
+      // both unions contain, so narrow them to core's IconDefinition, which is what NxFontAwesomeIcon accepts.
+      collapseIcon = (isOpen ? faMinusSquare : faPlusSquare) as IconDefinition,
       classes = classnames('nx-tree__item', className, {
         open: isOpen,
         'nx-tree__item--collapsible': collapsible
