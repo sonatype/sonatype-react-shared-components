@@ -20,6 +20,7 @@
   },
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",
+  "packageManager": "yarn@1.22.22",
   "devDependencies": {
     "@babel/runtime": "^7.26.7",
     "@types/classnames": "^2.3.4",
@@ -64,7 +65,7 @@
     "@nivo/tooltip": "^0.88.0",
     "@react-hook/debounce": "^4.0.0",
     "@sonatype/react-shared-components": "link:../lib/dist",
-    "axios": "^1.7.9",
+    "axios": "1.21.0",
     "classnames": "^2.5.1",
     "compare-versions": "^6.1.1",
     "core-js": "^3.40.0",
