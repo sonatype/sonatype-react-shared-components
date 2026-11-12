@@ -59,17 +59,15 @@ the following, as applicable:
 
 * Does your contribution have Jest/RTL unit tests?
 * Is your contribution documented in the gallery?
-* Does your contribution have visual tests of every substantially different visual state?
 * If your contribution involves component state, have you created separate stateless and "stateful" versions of the
   component? (see `NxDropdown` vs `NxStatefulDropdown` for an example)
   * Does it make sense for your component's state needs to be implemented via exported helper functions? (see
     nxTextInputStateHelpers for an example)
 * Does your contribution support appropriate keyboard navigation? For common complex component patterns
   consult https://www.w3.org/WAI/ARIA/apg/patterns/
-  * Does the keyboard navigation have automated tests, either in RTL or in the visual test suite?
+  * Does the keyboard navigation have automated tests in RTL?
 * Does your contribution perform well with screenreaders? Have you implemented all appropriate ARIA metadata? See
   https://www.w3.org/WAI/ARIA/apg/patterns/ and https://www.w3.org/TR/wai-aria-1.2/
-  * Have you included an "a11yCheck" test in the visual test suite for your component?
 * If your contribution is a new component, have you added the component to the Server-Side Rendering Tests?
 * Have you added an appropriate semver version number bump to the lib and gallery `package.json` files?
 

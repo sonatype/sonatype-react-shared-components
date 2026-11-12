@@ -6,8 +6,7 @@
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
 
-// Selenium is only used for the SSR tests.  The visual tests use puppeteer, which accesses Chromium in the local
-// environment
+// Selenium is only used for the SSR tests.
 def seleniumDockerImage = 'sonatype.repo.sonatype.app/docker-all/selenium/standalone-chrome'
 def seleniumDockerVersion = '120.0-20240123'
 
@@ -109,14 +108,13 @@ dockerizedBuildPipeline(
         cd gallery
         yarn install --registry "\${registry}" --frozen-lockfile
 
-        yarn ci-test
         yarn build
         cd ..
 
         cd ssr-tests
         yarn install --registry "\${registry}" --frozen-lockfile
 
-        # Run the server-side rendering tests, through docker similarly to the visual tests
+        # Run the server-side rendering tests
         TEST_IP=\$JENKINS_AGENT_IP NEXT_TELEMETRY_DISABLED=1 yarn test
       """
     }
@@ -163,7 +161,7 @@ dockerizedBuildPipeline(
     }
   },
   archiveArtifacts: 'lib/dist/*.tgz,gallery/dist/**/*',
-  testResults: ['lib/junit.xml', 'gallery/test-results/junit.xml'],
+  testResults: ['lib/junit.xml'],
   onSuccess: {
     githubStatusUpdate('success')
     if (deployBranch.equals(env.BRANCH_NAME)) {
@@ -175,7 +173,6 @@ dockerizedBuildPipeline(
   },
   onFailure: {
     githubStatusUpdate('failure')
-    archiveArtifacts(artifacts: 'gallery/test-results/**/*')
     sendEmailNotification(currentBuild, env,
         [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], null)
   },
