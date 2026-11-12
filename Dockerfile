@@ -9,10 +9,7 @@ FROM sonatype.repo.sonatype.app/docker-all/node:22.23.4@sha256:63538dfe497cc29df
 
 RUN apt-get update && \
     apt-get autoremove -y && apt-get clean -y && \
-    apt-get install jq -y && \
-    apt-get install chromium libatk-bridge2.0-0 libxkbcommon0 libgbm1 -y
-
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+    apt-get install jq -y
 
 RUN useradd -u 1002 -g 100 jenkins
 RUN mkdir -p /home/jenkins/.npm

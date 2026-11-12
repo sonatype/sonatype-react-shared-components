@@ -100,8 +100,7 @@ See the [contributing document](./.github/CONTRIBUTING.md) for details.
   pull in modules individually, with the assurance that they will bring all of their dependencies with them.  This
   applies to both JS/TS files and SCSS files.
 
-* Provide solid automated testing of the reusable components including unit tests and possibly visual tests of the
-  gallery
+* Provide solid automated testing of the reusable components including unit tests
 
 ## Build layout
 
@@ -152,10 +151,6 @@ The RSC code is split into two separate codebases: the library itself which live
 ### Required Software
 * Node 22.x
 * yarn 1.22.x
-* git-lfs for visual test snapshots. For the command line git client, git-lfs is a separate program which functions as a
-plugin; for graphical git clients, git-lfs support is often built-in. To check whether your checkout used git-lfs
-successfully, check whether the files within `gallery/visualtests/__image_snapshots__` are actual pngs as opposed to
-stub text files.
 
 ### Installation of Dependencies
 In the lib/ directory, run `yarn install`
@@ -225,121 +220,6 @@ We currently use [React Testing Library](https://testing-library.com/docs/react-
 our React components.
 
 We also use [jest-dom](https://testing-library.com/docs/ecosystem-jest-dom/) to provide custom DOM element matchers.
-
-## Running Visual Tests
-
-The visual tests use jest-image-snapshot to compare screenshots of the components to their expected state. This
-setup is configured for an exact visual match, so the tests must be run on a consistent browser and operating system.
-The cleanest way to do this is via Docker - specifically, to run the tests in a Docker environment identical to the one
-which the CI system uses.
-
-To test in a Docker environment, first [install Docker on your computer](https://docs.docker.com/get-docker/). Then, you
-must either build or download the docker image within which to run the tests. Sonatype employees should use the image
-available on docker-all.repo.sonatype.com, which is what the CI pipeline uses.  Using this identical build of the docker
-image reduces issues with screenshots changing due to minor variations between browser versions. Within the top level
-directory of the repository, log into Docker by running the following command. You may be asked to input credentials.
-
-```
-docker login sonatype.repo.sonatype.app
-```
-
-You can then execute the tests for both light mode (default) and dark mode by running the following command:
-
-```
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn test
-```
-
-If you are not a Sonatype employee and thus don't have access to docker-all.repo.sonatype.com, or if you want to build
-your own docker image for any other reason, you can build the image using the command below. The command below will
-create an image and give it a name of "rsc-visualtesting". Be sure to run this command within the top level directory of
-the repository. For non-Sonatype employees, you should edit the Dockerfile to point to the public `node` base image
-instead of the copy hosted on Sonatype's infrastructure.
-
-```
-docker build -t rsc-visualtesting .
-```
-
-You can then run the visual tests within your docker image using the following command:
-```
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins rsc-visualtesting yarn test
-```
-
-Visual testing may take more than 30 minutes, so let the tests run in the background. Note that the `yarn test` command
-will (re-)install the gallery dependencies, ensuring that all dependencies are configured properly for execution within
-the docker container rather than the host.
-
-### Updating Visual Test Screenshots
-
-If running the tests results in differences that are expected/intended based on new changes to the library, then the
-baseline screenshots may be updated. To update light mode screenshots, run the following command:
-```
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest -u
-```
-
-To update dark mode screenshots, run the following command:
-```
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest-dark -u
-```
-
-The commands above ensure you update the screenshots within the Docker container. The updates need to be run within the
-Docker container or an equivalent environment to ensure that the updated baselines match on CI. Note that updating
-visual test screenshots take roughly the same amount of time as running the visual tests.
-
-### Visual Test Stability on CI
-
-Unfortunately we have been unable to lock down the visual test docker container construction to a specific version of
-Chromium – it uses whichever version is current in the Debian repos at the time the docker image is created. This
-changes over time, and in particular Jenkins rebuilds the docker image for each CI run, always using the latest
-Chromium version. As a result of this, Chromium updates may periodically break the visual tests in one of two ways:
-either the Chromium version will become incompatible with the puppeteer version, or the visual rendering will change
-something and the snapshot comparisons will fail. When this happens, the puppeteer version and/or the snapshots must
-be updated to be compatible with the new version of Chromium.
-
-To sync your local docker Chromium version with the latest that Jenkins would use, re-run the `docker build` command
-described above with the `--no-cache` option in order to have it re-execute the `apt-get install` command which installs
-the current version of Chromium.
-
----
-
-### Windows Users!!
-
-For you seemingly rare Windows (Windows 11 to be precise) users, you have a couple options.
-
-From simple command prompt
-
-Run tests:
-```
-docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn test
-```
-
-Update screenshots in light mode:
-```
-docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest -u
-```
-
-Update screenshots in dark mode:
-```
-docker run --rm -it -w /home/jenkins/gallery -v %CD%:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest-dark -u
-```
-
-And from PowerShell
-
-Run tests:
-```
-docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn test
-```
-
-Update screenshots in light mode:
-```
-docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest -u
-```
-
-Update screenshots in dark mode:
-```
-docker run --rm -it -w /home/jenkins/gallery -v $pwd\:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest-dark -u
-```
-
----
 
 ## Component Gallery
 You can view components in your browser by running the gallery.

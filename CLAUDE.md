@@ -36,22 +36,7 @@ The library provides reusable React UI components and utilities designed for Son
 - `yarn install` - Install dependencies  
 - `yarn start` - Start development server at http://localhost:4043
 - `yarn build` - Build gallery for production
-- `yarn test` - Run visual tests (requires Docker)
 - `yarn lint` - Lint gallery code
-
-### Visual Testing (run in repository root)
-Visual tests use Docker for consistency. Sonatype employees should use:
-```bash
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn test
-```
-
-To update snapshots:
-```bash
-# Light mode
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest -u
-# Dark mode  
-docker run --rm -it -w /home/jenkins/gallery -v $PWD:/home/jenkins docker-all.repo.sonatype.com/sonatype/react-shared-components-ci:latest yarn jest-dark -u
-```
 
 ## Architecture & Code Organization
 
@@ -102,8 +87,7 @@ This allows real-time development with the library watch updating components whi
 
 ### Testing Strategy
 - Unit tests use React Testing Library and Jest
-- Visual regression tests use jest-image-snapshot with Puppeteer
-- Components include both RTL unit tests and visual tests
+- Components are covered by RTL unit tests (visual regression tests have been removed)
 - SSR compatibility is tested with the Next.js project in `ssr-tests/`
 
 ### Version Management
@@ -116,6 +100,5 @@ This allows real-time development with the library watch updating components whi
 - **SCSS** for styling
 - **Webpack** for building
 - **Jest** with React Testing Library for unit testing
-- **Puppeteer** with jest-image-snapshot for visual testing
 - **FontAwesome** for icons
 - **Emotion** for some styling needs
