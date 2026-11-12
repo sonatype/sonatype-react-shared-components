@@ -13,8 +13,8 @@ String deployBranch = 'main'
 
 /**
  * This build builds the docker image within which the actual RSC build (defined in `Jenkinsfile`) executes.
- * The docker image is build separately, on-demand, so that the version of chromium used in the RSC build
- * is not constantly changing and affecting the visual tests.
+ * The docker image is built separately, on-demand, so that the tools used in the RSC build are not constantly
+ * changing.
  * This Jenkinsfile is based off of https://github.com/sonatype/bnr-license-check/blob/main/Jenkinsfile
  */
 dockerizedBuildPipeline(
@@ -22,9 +22,8 @@ dockerizedBuildPipeline(
   retentionPolicy: RetentionPolicy.TEN_BUILDS,
   setVersion: { env['VERSION'] = "${env.BUILD_NUMBER}" },
   buildAndTest: {
-    // Note that we don't want to expect a specific chromium version, as that is what is likely to change
     validateExpectations([
-        new Expectation('chromium', 'chromium', '--version', /Chromium/)
+        new Expectation('jq', 'jq', '--version', /jq/)
     ])
   },
   // This image is only used in the build of this repo, it doesn't need a vuln scan
