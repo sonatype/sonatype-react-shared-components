@@ -64,7 +64,7 @@
     "@nivo/tooltip": "^0.88.0",
     "@react-hook/debounce": "^4.0.0",
     "@sonatype/react-shared-components": "link:../lib/dist",
-    "axios": "1.21.0",
+    "axios": "^1.21.0",
     "classnames": "^2.5.1",
     "compare-versions": "^6.1.1",
     "core-js": "^3.40.0",
