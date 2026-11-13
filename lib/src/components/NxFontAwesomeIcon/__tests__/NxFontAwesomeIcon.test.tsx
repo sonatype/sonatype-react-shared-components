@@ -41,12 +41,17 @@ describe('NxFontAwesomeIcon', function() {
     }
   });
 
-  it('passes a unique titleId to FontAwesomeIcon if title is defined', function() {
-    const component1 = renderEl({ title: 'foo' })!,
-        component2 = renderEl({ title: 'foo' })!,
-        component1TitleId = component1.querySelector('title')!.id,
-        component2TitleId = component2.querySelector('title')!.id;
+  // Font Awesome 7 no longer renders a <title> element within the SVG, so a `title` is conveyed to
+  // assistive technology via aria-label rather than via a <title>/aria-labelledby pair.
+  it('uses the title as the accessible name if title is defined', function() {
+    const component = renderEl({ title: 'foo' })!;
 
-    expect(component1TitleId).not.toEqual(component2TitleId);
+    expect(component).toHaveAccessibleName('foo');
+  });
+
+  it('gives the title precedence over an explicitly passed aria-label', function() {
+    const component = renderEl({ title: 'foo', 'aria-label': 'bar' })!;
+
+    expect(component).toHaveAccessibleName('foo');
   });
 });
