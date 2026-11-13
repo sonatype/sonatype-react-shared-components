@@ -7,17 +7,21 @@
 import React from 'react';
 import { FontAwesomeIcon, FontAwesomeIconProps as Props } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
-import { useUniqueId } from '../../util/idUtil';
 
-export { Props } from '@fortawesome/react-fontawesome';
+// react-fontawesome 3 dropped its `Props` alias, exporting only the `FontAwesomeIconProps` name
+export type { FontAwesomeIconProps as Props } from '@fortawesome/react-fontawesome';
 
 /**
  * A wrapper component around FontAwesomeIcon that adds our nx-icon css class. Takes the same props as FontAwesomeIcon
  */
 export default function NxFontAwesomeIcon(props: Props) {
+  // Font Awesome 7 no longer renders a <title> element within the SVG, so the `title` prop by itself no
+  // longer provides an accessible name (and no longer needs a `titleId`). aria-label is the mechanism FA 7
+  // does honor, and setting it also clears the aria-hidden that FA otherwise adds. A `title` takes
+  // precedence over an explicitly passed aria-label, matching the precedence that the aria-labelledby/<title>
+  // pair had over aria-label under Font Awesome 6.
   const className = classnames(props.className, 'nx-icon'),
-      titleId = useUniqueId(''), // FA adds its own prefix to this, no need for us to add one too
-      otherProps = props.title ? { titleId } as Partial<Props> : undefined;
+      ariaLabel = props.title || props['aria-label'];
 
-  return <FontAwesomeIcon { ...otherProps } { ...props } className={className} />;
+  return <FontAwesomeIcon { ...props } aria-label={ariaLabel} className={className} />;
 }
