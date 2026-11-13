@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components",
-  "version": "14.0.18",
+  "version": "14.0.19",
   "description": "Sonatype shared UI components and utilities written in React",
   "main": "index.js",
   "repository": {
@@ -35,7 +35,6 @@
   },
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",
-  "packageManager": "yarn@1.22.22",
   "devDependencies": {
     "@stylistic/eslint-plugin": "^2.12.1",
     "@testing-library/dom": "^10.4.0",
