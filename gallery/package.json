@@ -1,7 +1,6 @@
 {
   "name": "@sonatype/react-shared-components-gallery",
-  "version": "14.0.16",
-  "packageManager": "yarn@1.22.22",
+  "version": "14.0.21",
   "description": "Gallery application to demonstrate usage and look of Sonatype shared UI components",
   "main": "src/main.ts",
   "scripts": {
@@ -22,7 +21,7 @@
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",
   "devDependencies": {
-    "@babel/runtime": "^7.26.7",
+    "@babel/runtime": "8.1.2",
     "@types/classnames": "^2.3.4",
     "@types/debounce": "^1.2.4",
     "@types/ramda": "^0.30.2",
@@ -65,7 +64,7 @@
     "@nivo/tooltip": "^0.88.0",
     "@react-hook/debounce": "^4.0.0",
     "@sonatype/react-shared-components": "link:../lib/dist",
-    "axios": "^1.7.9",
+    "axios": "1.21.0",
     "classnames": "^2.5.1",
     "compare-versions": "^6.1.1",
     "core-js": "^3.40.0",
