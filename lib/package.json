@@ -1,6 +1,6 @@
 {
   "name": "@sonatype/react-shared-components",
-  "version": "14.0.16",
+  "version": "14.0.20",
   "description": "Sonatype shared UI components and utilities written in React",
   "main": "index.js",
   "repository": {
@@ -48,7 +48,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "7.37.2",
     "file-loader": "^6.2.0",
-    "globals": "^15.14.0",
+    "globals": "^14.0.0",
     "ignore-emit-webpack-plugin": "^2.0.6",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
@@ -75,7 +75,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fortawesome/fontawesome-svg-core": "6.7.2",
-    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "7.3.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@juggle/resize-observer": "4.0.0-4",
