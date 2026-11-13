@@ -21,7 +21,7 @@
   "author": "Sonatype, Inc.",
   "license": "EPL-2.0",
   "devDependencies": {
-    "@babel/runtime": "^7.26.7",
+    "@babel/runtime": "^7.29.14",
     "@types/classnames": "^2.3.4",
     "@types/debounce": "^1.2.4",
     "@types/ramda": "^0.30.2",
