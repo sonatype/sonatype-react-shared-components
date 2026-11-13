@@ -84,7 +84,7 @@
     "@react-hook/resize-observer": "^2.0.2",
     "@react-hook/throttle": "^2.2.0",
     "@rooks/use-mutation-observer": "^4.11.2",
-    "@types/prop-types": "^15.7.14",
+    "@types/prop-types": "15.7.15",
     "@types/ramda": "^0.30.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
