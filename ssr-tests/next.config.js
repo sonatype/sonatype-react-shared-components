@@ -7,7 +7,12 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-    transpilePackages: ['@sonatype/react-shared-components']
+    transpilePackages: ['@sonatype/react-shared-components'],
+
+    // Next 16 blocks dev-server resources (such as the HMR websocket) requested from any origin other than
+    // localhost. The tests run in a separate browser container which reaches the server at TEST_IP, so it has to
+    // be allowed explicitly
+    allowedDevOrigins: process.env.TEST_IP ? [process.env.TEST_IP] : []
 };
 
 module.exports = nextConfig;
