@@ -1143,6 +1143,13 @@
   dependencies:
     undici-types "~6.19.2"
 
+"@types/node@^22.20.4":
+  version "22.20.5"
+  resolved "https://registry.npmjs.org/@types/node/-/node-22.20.5.tgz#afa7bde6da81b8b83ea4e2f020487e9b148c11fd"
+  integrity sha512-U2+DNr+wSjpsTS/wZGYHq7GcwfuSmKiKvoPvK22zwTlRhU91yOniN4qRR5KhIjvif7ysw/dz/hKmfDH0Ris4aA==
+  dependencies:
+    undici-types "~6.21.0"
+
 "@types/normalize-package-data@^2.4.1":
   version "2.4.4"
   resolved "https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.4.tgz#56e2cc26c397c038fab0e3a917a12d5c5909e901"
@@ -1351,6 +1358,16 @@
   dependencies:
     "@types/node" "^20.1.0"
 
+"@wdio/reporter@10.2.0":
+  version "10.2.0"
+  resolved "https://registry.npmjs.org/@wdio/reporter/-/reporter-10.2.0.tgz#b84ff6bfa68ccb07fc3939e7227a8c6bdc1a4498"
+  integrity sha512-Cd3b9F3uUKEjICh9ClCJZ6x7MNcA5lX9GquylAtAwcSaJ1qmL0P2plVwRexyhybA9TM6sXWAe+0UK9kAS3SDVw==
+  dependencies:
+    "@types/node" "^22.20.4"
+    "@wdio/types" "10.2.0"
+    diff "^9.0.0"
+    object-inspect "^1.12.0"
+
 "@wdio/reporter@9.9.0":
   version "9.9.0"
   resolved "https://registry.npmjs.org/@wdio/reporter/-/reporter-9.9.0.tgz#6451b49eb95628d9e2a79c4c31996eae59f41ab6"
@@ -1379,16 +1396,23 @@
     webdriver "9.9.0"
     webdriverio "9.9.0"
 
-"@wdio/spec-reporter@^9.9.0":
-  version "9.9.0"
-  resolved "https://registry.npmjs.org/@wdio/spec-reporter/-/spec-reporter-9.9.0.tgz#94a5e016de32eae3d2c9564e352a21cc72421273"
-  integrity sha512-9Zb6J7Ku8NvthO3RNxZ90o2S0ApYnNwZE4W6zKTzFKj0z7YrPGbLl6k8lrrpgH+aL5Q9cqAnXFz9QRPTBL/CoQ==
+"@wdio/spec-reporter@10.2.0":
+  version "10.2.0"
+  resolved "https://registry.npmjs.org/@wdio/spec-reporter/-/spec-reporter-10.2.0.tgz#73fde2bc7cd92f3621e78e14fdf4233493631509"
+  integrity sha512-RCuGXCJae/GM2ml2mB5M4yx56/nvjAvzN8cfMCF9zQnSearBOQ52fQ8qo+NSLJ/RJkjfhkTeC97CSUDrlBKo1A==
   dependencies:
-    "@wdio/reporter" "9.9.0"
-    "@wdio/types" "9.9.0"
-    chalk "^5.1.2"
+    "@wdio/reporter" "10.2.0"
+    "@wdio/types" "10.2.0"
+    chalk "^6.0.1"
     easy-table "^1.2.0"
-    pretty-ms "^9.0.0"
+    pretty-ms "^10.0.0"
+
+"@wdio/types@10.2.0":
+  version "10.2.0"
+  resolved "https://registry.npmjs.org/@wdio/types/-/types-10.2.0.tgz#b1556aaffb4379d990c2cab11aaf4c158a0be2e3"
+  integrity sha512-a9qwqHzf0t2ctrXs+qUEhobH/VK0PmeoErCBWdN6DRxhTP8YiXQco4wjTj1z7H4k5xwZYxMT0KC0QzN/e4B73Q==
+  dependencies:
+    "@types/node" "^22.20.4"
 
 "@wdio/types@9.9.0":
   version "9.9.0"
@@ -1898,6 +1922,11 @@ chalk@^5.0.1, chalk@^5.1.2, chalk@^5.2.0:
   resolved "https://registry.npmjs.org/chalk/-/chalk-5.4.1.tgz#1b48bf0963ec158dce2aacf69c093ae2dd2092d8"
   integrity sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==
 
+chalk@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-6.0.1.tgz#077d4667ad6e608c9687782caed3d534d7f9abc3"
+  integrity sha512-/Ce6KNm3vIbWdMlNna6RVIZ/ICQxnJxCicet5LBKK9ZffBkqzDw0xh9EiKSljdRtiIQ1S1z4YgcscUUGzNCWrA==
+
 chardet@^0.7.0:
   version "0.7.0"
   resolved "https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
@@ -2220,6 +2249,11 @@ diff@^7.0.0:
   version "7.0.0"
   resolved "https://registry.npmjs.org/diff/-/diff-7.0.0.tgz#3fb34d387cd76d803f6eebea67b921dab0182a9a"
   integrity sha512-PJWHUb1RFevKCwaFA9RlG5tCd+FO5iRh9A8HEtkmBH2Li03iJriB6m6JIN4rGz3K3JLawI7/veA1xzRKP6ISBw==
+
+diff@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.npmjs.org/diff/-/diff-9.0.0.tgz#297c31cd7c280f13dfe335791ec2063bd4a73a6f"
+  integrity sha512-svtcdpS8CgJyqAjEQIXdb3OjhFVVYjzGAPO8WGCmRbrml64SPw/jJD4GoE98aR7r25A0XcgrK3F02yw9R/vhQw==
 
 dom-helpers@^5.0.1:
   version "5.2.1"
@@ -3726,6 +3760,11 @@ pretty-format@^29.7.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
+pretty-ms@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.npmjs.org/pretty-ms/-/pretty-ms-10.0.0.tgz#3a223bfea7625711955557f1a58389b80d9ed00c"
+  integrity sha512-6BWuxY2dCNgT45VnGzZcfNy7WeLqXiZqhhy4aHThTE6KI56R2ZBw9HQ7spPFKYchDizvJbPxTEknIpmW4FSmQA==
+
 pretty-ms@^9.0.0:
   version "9.2.0"
   resolved "https://registry.npmjs.org/pretty-ms/-/pretty-ms-9.2.0.tgz#e14c0aad6493b69ed63114442a84133d7e560ef0"
@@ -4500,6 +4539,11 @@ undici-types@~6.20.0:
   version "6.20.0"
   resolved "https://registry.npmjs.org/undici-types/-/undici-types-6.20.0.tgz#8171bf22c1f588d1554d55bf204bc624af388433"
   integrity sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==
+
+undici-types@~6.21.0:
+  version "6.21.0"
+  resolved "https://registry.npmjs.org/undici-types/-/undici-types-6.21.0.tgz#691d00af3909be93a7faa13be61b3a5b50ef12cb"
+  integrity sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==
 
 undici@^6.19.5, undici@^6.20.1:
   version "6.21.1"
