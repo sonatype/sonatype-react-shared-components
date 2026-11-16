@@ -1217,12 +1217,12 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.14.tgz#1433419d73b2a7ebfc6918dcefd2ec0d5cd698f2"
   integrity sha512-gNMvNH49DJ7OJYv+KAKn0Xp45p8PLl6zo2YnvDIbTd4J6MER2BmWN49TG7n9LvkyihINxeKW8+3bfS2yDC9dzQ==
 
-"@types/ramda@^0.30.2":
-  version "0.30.2"
-  resolved "https://registry.npmjs.org/@types/ramda/-/ramda-0.30.2.tgz#70661b20c1bb969589a551b7134ae75008ffbfb6"
-  integrity sha512-PyzHvjCalm2BRYjAU6nIB3TprYwMNOUY/7P/N8bSzp9W/yM2YrtGtAnnVtaCNSeOZ8DzKyFDvaqQs7LnWwwmBA==
+"@types/ramda@0.32.0":
+  version "0.32.0"
+  resolved "https://registry.npmjs.org/@types/ramda/-/ramda-0.32.0.tgz#c138a9255d3eceac5a49275c701ae66c89b07bab"
+  integrity sha512-eTRIFYUxjVvZimlPNpXzXc3j4tnSYc7lBsD7X3zwtRvJML3qXclM4+m8vvmAZAHhBASKPmZAp6qu2C/DwJpBGQ==
   dependencies:
-    types-ramda "^0.30.1"
+    types-ramda "^0.32.0"
 
 "@types/react-dom@^19.3.0":
   version "19.3.0"
@@ -6976,10 +6976,10 @@ typed-array-length@^1.0.7:
     possible-typed-array-names "^1.0.0"
     reflect.getprototypeof "^1.0.6"
 
-types-ramda@^0.30.1:
-  version "0.30.1"
-  resolved "https://registry.npmjs.org/types-ramda/-/types-ramda-0.30.1.tgz#03d255128e3696aeaac76281ca19949e01dddc78"
-  integrity sha512-1HTsf5/QVRmLzcGfldPFvkVsAdi1db1BBKzi7iW3KBUlOICg/nKnFS+jGqDJS3YD8VsWbAh7JiHeBvbsw8RPxA==
+types-ramda@^0.32.0:
+  version "0.32.0"
+  resolved "https://registry.npmjs.org/types-ramda/-/types-ramda-0.32.0.tgz#ea4ca5f9e0753f1f0ee20f72cb294a4db2d3db0a"
+  integrity sha512-iZtriSUdsDqOlip/wUaDNcoiskbVf5RdcqLNpQdUcOM1JKFClochCvPZCDjn/cc9HzoBzi4DEB4iPr1PbrhN1w==
   dependencies:
     ts-toolbelt "^9.6.0"
 
